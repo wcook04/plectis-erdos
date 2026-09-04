@@ -253,7 +253,7 @@ def validate_indexed_problem_routes() -> None:
     for problem in problems:
         route_id = problem["problem_id"]
         packet = query("--route", route_id)
-        assert len(json.dumps(packet, ensure_ascii=False, indent=2).encode("utf-8")) <= (
+        assert len(query_corpus.encode_packet(packet).encode("utf-8")) <= (
             query_corpus.OUTPUT_BUDGET_BYTES
         )
         assert packet["kind"] == "problem_route"

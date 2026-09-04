@@ -1,0 +1,61 @@
+{
+  "depth": 8000,
+  "probe": "socket_run_rational_cap",
+  "problem_id": "erdos_257",
+  "schema": "aiw-formal-math-receipt/1",
+  "targets": {
+    "1/2": {
+      "dyadic_vacuous": true,
+      "runs_checked": 0,
+      "violations": 0
+    },
+    "1/21": {
+      "dyadic_vacuous": false,
+      "runs_checked": 3034,
+      "tightest_C": 0,
+      "tightest_K": 2,
+      "tightest_at_N": 38,
+      "tightest_ratio_q_C1_over_2K": 5.25,
+      "violations": 0
+    },
+    "1/465": {
+      "dyadic_vacuous": false,
+      "runs_checked": 2907,
+      "tightest_C": 0,
+      "tightest_K": 2,
+      "tightest_at_N": 134,
+      "tightest_ratio_q_C1_over_2K": 116.25,
+      "violations": 0
+    },
+    "1/5": {
+      "dyadic_vacuous": false,
+      "runs_checked": 3112,
+      "tightest_C": 0,
+      "tightest_K": 2,
+      "tightest_at_N": 68,
+      "tightest_ratio_q_C1_over_2K": 1.25,
+      "violations": 0
+    },
+    "4/9": {
+      "dyadic_vacuous": false,
+      "runs_checked": 3329,
+      "tightest_C": 1,
+      "tightest_K": 3,
+      "tightest_at_N": 3287,
+      "tightest_ratio_q_C1_over_2K": 2.25,
+      "violations": 0
+    },
+    "5/12": {
+      "dyadic_vacuous": false,
+      "runs_checked": 3230,
+      "tightest_C": 2,
+      "tightest_K": 3,
+      "tightest_at_N": 457,
+      "tightest_ratio_q_C1_over_2K": 4.5,
+      "violations": 0
+    }
+  },
+  "total_runs": 15612,
+  "total_violations": 0,
+  "verdict": "The rational socket cap 2^K < q*(C_(N+K)+1) holds at every socket run of every non-dyadic candidate, with a small tightest ratio, so it is tight rather than vacuous. 1/2 is dyadic and the criterion is vacuous there by construction. This is a necessary condition on a counterexample and a producer shape -- force socket runs longer than log2(q(C+1)) and the target is excluded -- not progress on Erdos 257."
+}

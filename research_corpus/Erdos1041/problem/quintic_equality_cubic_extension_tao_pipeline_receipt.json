@@ -1,0 +1,24 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "checkpoint_id": "quintic_equality_cubic_extension_20260825",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/QuinticEqualityCubicExtension.md",
+    "ErdosProblems/Erdos1041/QuinticEqualityCubicExtension.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_equality_cubic_extension.py"
+  ],
+  "human_understanding_delta": "The paired cubic mode is not merely sign-opposite at two equality contacts. On all four active contacts its normalized values sum to -48, while the coefficient tetrahedron gradients sum to zero. Hence the extended first variations have strictly negative average for every positive cubic scale; at zero scale the original tetrahedron applies. This removes the entire equality-transition direction in one barycentric identity.",
+  "verification_state": {
+    "analytic_derivation": "complete_for_extended_equality_contact_selector",
+    "exact_symbolic_replay": "pass_four_contact_values_and_minus_48_y_cubed_sum",
+    "directional_stress_replay": "pass_one_million_extended_directions_largest_best_variation_minus_0_0717031",
+    "lean_focused_build": "pass_canonical_cached_exact_target"
+  },
+  "publication_or_review_state": "private_expert_checkpoint_not_yet_external_reviewed",
+  "canonicalization_state": "verified_equality_cubic_extension_pending_scoped_commit",
+  "unresolved_downstream_bottleneck": "Insert the extended contact selector into the transverse anchored finite expansion and combine it with the strict non-equality atlas boxes.",
+  "next_stage_owner": "Current proof owner through verification and scoped commit; then Refinery owns the transverse finite transfer.",
+  "claim_ceiling": "This closes the extended first-order selector at the unique quintic equality orbit. Do not claim the full transverse finite transfer, all quintics, or unrestricted Erdős #1041."
+}

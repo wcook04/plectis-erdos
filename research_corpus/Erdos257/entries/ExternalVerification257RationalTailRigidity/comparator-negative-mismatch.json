@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257RationalTailRigidity.Challenge",
+  "solution_module": "ExternalVerification257RationalTailRigidity.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

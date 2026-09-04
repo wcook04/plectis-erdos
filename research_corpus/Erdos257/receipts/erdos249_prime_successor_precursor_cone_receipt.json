@@ -1,0 +1,420 @@
+{
+  "consequence_decisions": [
+    {
+      "decision": "eliminated",
+      "mechanism": "single_bottom_lock_exact_one_block_backward_propagation",
+      "reason": "complete exact preimage cone is nonempty"
+    },
+    {
+      "decision": "opened_as_required_stronger_input",
+      "mechanism": "multiple_lock_or_cross_gap_arithmetic_coupling",
+      "reason": "the single-block consumer cannot force a crossing"
+    },
+    {
+      "decision": "not_claimed",
+      "mechanism": "universal_escape_or_irrationality",
+      "reason": "certificate is finite and local"
+    }
+  ],
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "falsification_consequence": "A nonempty cone eliminates the one-block route; any successful proof must couple multiple locks or add a cross-gap arithmetic invariant.",
+      "survival_consequence": "An empty cone would open a local one-block route from cofinal prime bottom locks to endpoint escape."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "single_prime_successor_lock_forces_backward_crossing",
+      "statement": "The Lean-checked prime-successor bottom lock, propagated backward through the exact preceding totient letters while enforcing every endpoint bound, forces a lower-boundary crossing."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PureDyadicEndpointCocycleComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_prime_successor_precursor_cone.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos249_pure_dyadic_endpoint_cocycle_receipt.json"
+      ]
+    },
+    "probe": {
+      "computation": "Enumerate the terminal integer interval allowed by the exact bottom-lock inequality, invert E_(h+1)=2E_h+phi(c+h+1)-k with parity checks, intersect every layer with its moving endpoint window, and replay all surviving seeds forward.",
+      "falsifier": "Any surviving geometry-boundary seed whose exact forward replay remains endpoint-trapped and reaches the terminal bottom-lock interval.",
+      "id": "exact_integer_backward_precursor_cone",
+      "question": "Is the full integer preimage cone of the c=490794 bottom lock empty at the geometry-clear boundary?",
+      "stop_condition": "Stop once the complete finite preimage cone is enumerated and every surviving seed is independently replayed."
+    },
+    "problem": {
+      "claim_ceiling": "Exact finite mechanism elimination at the c=490794 record word; no infinite endpoint trap, universal escape, or irrationality proof.",
+      "id": "erdos_249",
+      "target_statement": "Prove irrationality of sum_(n>=1) phi(n)/2^n."
+    },
+    "result": {
+      "status": "exact_one_way_result",
+      "summary": "The exact 14-letter preimage cone has 35 geometry-boundary seeds.  Every seed replays inside every endpoint window to the prime-successor bottom lock, and the actual seed 53713 is among them.  Thus one local bottom lock plus the exact intervening letters does not force escape."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "precursor_cone_certificate": {
+    "actual_geometry_seed_error": 53713,
+    "actual_seed_is_admissible": true,
+    "all_replays_endpoint_trapped": true,
+    "backward_layer_summaries": [
+      {
+        "allowed_error_count": 581112,
+        "height": 34,
+        "maximum_error": 90282,
+        "minimum_error": -490829
+      },
+      {
+        "allowed_error_count": 290556,
+        "height": 33,
+        "maximum_error": 95690,
+        "minimum_error": -194865,
+        "totient_letter_consumed": 226512
+      },
+      {
+        "allowed_error_count": 145278,
+        "height": 32,
+        "maximum_error": 60018,
+        "minimum_error": -85259,
+        "totient_letter_consumed": 303264
+      },
+      {
+        "allowed_error_count": 72639,
+        "height": 31,
+        "maximum_error": 88640,
+        "minimum_error": 16002,
+        "totient_letter_consumed": 210348
+      },
+      {
+        "allowed_error_count": 36319,
+        "height": 30,
+        "maximum_error": 18845,
+        "minimum_error": -17473,
+        "totient_letter_consumed": 378560
+      },
+      {
+        "allowed_error_count": 18160,
+        "height": 29,
+        "maximum_error": 96428,
+        "minimum_error": 78269,
+        "totient_letter_consumed": 153600
+      },
+      {
+        "allowed_error_count": 9080,
+        "height": 28,
+        "maximum_error": -21081,
+        "minimum_error": -30160,
+        "totient_letter_consumed": 466200
+      },
+      {
+        "allowed_error_count": 4540,
+        "height": 27,
+        "maximum_error": 30560,
+        "minimum_error": 26021,
+        "totient_letter_consumed": 245410
+      },
+      {
+        "allowed_error_count": 2270,
+        "height": 26,
+        "maximum_error": 21673,
+        "minimum_error": 19404,
+        "totient_letter_consumed": 314824
+      },
+      {
+        "allowed_error_count": 1135,
+        "height": 25,
+        "maximum_error": 90162,
+        "minimum_error": 89028,
+        "totient_letter_consumed": 168960
+      },
+      {
+        "allowed_error_count": 567,
+        "height": 24,
+        "maximum_error": -1462,
+        "minimum_error": -2028,
+        "totient_letter_consumed": 420696
+      },
+      {
+        "allowed_error_count": 283,
+        "height": 23,
+        "maximum_error": 81906,
+        "minimum_error": 81624,
+        "totient_letter_consumed": 162336
+      },
+      {
+        "allowed_error_count": 141,
+        "height": 22,
+        "maximum_error": -39892,
+        "minimum_error": -40032,
+        "totient_letter_consumed": 489300
+      },
+      {
+        "allowed_error_count": 70,
+        "height": 21,
+        "maximum_error": 21171,
+        "minimum_error": 21102,
+        "totient_letter_consumed": 245376
+      },
+      {
+        "allowed_error_count": 35,
+        "height": 20,
+        "maximum_error": 53719,
+        "minimum_error": 53685,
+        "totient_letter_consumed": 241344
+      }
+    ],
+    "basepoint_c": 490794,
+    "exact_forward_replays": [
+      {
+        "geometry_seed_error": 53685,
+        "minimum_endpoint_margin": 16200,
+        "terminal_error": -474629
+      },
+      {
+        "geometry_seed_error": 53686,
+        "minimum_endpoint_margin": 32584,
+        "terminal_error": -458245
+      },
+      {
+        "geometry_seed_error": 53687,
+        "minimum_endpoint_margin": 48968,
+        "terminal_error": -441861
+      },
+      {
+        "geometry_seed_error": 53688,
+        "minimum_endpoint_margin": 65352,
+        "terminal_error": -425477
+      },
+      {
+        "geometry_seed_error": 53689,
+        "minimum_endpoint_margin": 81736,
+        "terminal_error": -409093
+      },
+      {
+        "geometry_seed_error": 53690,
+        "minimum_endpoint_margin": 98120,
+        "terminal_error": -392709
+      },
+      {
+        "geometry_seed_error": 53691,
+        "minimum_endpoint_margin": 114504,
+        "terminal_error": -376325
+      },
+      {
+        "geometry_seed_error": 53692,
+        "minimum_endpoint_margin": 130888,
+        "terminal_error": -359941
+      },
+      {
+        "geometry_seed_error": 53693,
+        "minimum_endpoint_margin": 147272,
+        "terminal_error": -343557
+      },
+      {
+        "geometry_seed_error": 53694,
+        "minimum_endpoint_margin": 163656,
+        "terminal_error": -327173
+      },
+      {
+        "geometry_seed_error": 53695,
+        "minimum_endpoint_margin": 180040,
+        "terminal_error": -310789
+      },
+      {
+        "geometry_seed_error": 53696,
+        "minimum_endpoint_margin": 196424,
+        "terminal_error": -294405
+      },
+      {
+        "geometry_seed_error": 53697,
+        "minimum_endpoint_margin": 212808,
+        "terminal_error": -278021
+      },
+      {
+        "geometry_seed_error": 53698,
+        "minimum_endpoint_margin": 229192,
+        "terminal_error": -261637
+      },
+      {
+        "geometry_seed_error": 53699,
+        "minimum_endpoint_margin": 245576,
+        "terminal_error": -245253
+      },
+      {
+        "geometry_seed_error": 53700,
+        "minimum_endpoint_margin": 261960,
+        "terminal_error": -228869
+      },
+      {
+        "geometry_seed_error": 53701,
+        "minimum_endpoint_margin": 278344,
+        "terminal_error": -212485
+      },
+      {
+        "geometry_seed_error": 53702,
+        "minimum_endpoint_margin": 294728,
+        "terminal_error": -196101
+      },
+      {
+        "geometry_seed_error": 53703,
+        "minimum_endpoint_margin": 311112,
+        "terminal_error": -179717
+      },
+      {
+        "geometry_seed_error": 53704,
+        "minimum_endpoint_margin": 327496,
+        "terminal_error": -163333
+      },
+      {
+        "geometry_seed_error": 53705,
+        "minimum_endpoint_margin": 343880,
+        "terminal_error": -146949
+      },
+      {
+        "geometry_seed_error": 53706,
+        "minimum_endpoint_margin": 360264,
+        "terminal_error": -130565
+      },
+      {
+        "geometry_seed_error": 53707,
+        "minimum_endpoint_margin": 376648,
+        "terminal_error": -114181
+      },
+      {
+        "geometry_seed_error": 53708,
+        "minimum_endpoint_margin": 393032,
+        "terminal_error": -97797
+      },
+      {
+        "geometry_seed_error": 53709,
+        "minimum_endpoint_margin": 399761,
+        "terminal_error": -81413
+      },
+      {
+        "geometry_seed_error": 53710,
+        "minimum_endpoint_margin": 399249,
+        "terminal_error": -65029
+      },
+      {
+        "geometry_seed_error": 53711,
+        "minimum_endpoint_margin": 398737,
+        "terminal_error": -48645
+      },
+      {
+        "geometry_seed_error": 53712,
+        "minimum_endpoint_margin": 398225,
+        "terminal_error": -32261
+      },
+      {
+        "geometry_seed_error": 53713,
+        "minimum_endpoint_margin": 397713,
+        "terminal_error": -15877
+      },
+      {
+        "geometry_seed_error": 53714,
+        "minimum_endpoint_margin": 397201,
+        "terminal_error": 507
+      },
+      {
+        "geometry_seed_error": 53715,
+        "minimum_endpoint_margin": 396689,
+        "terminal_error": 16891
+      },
+      {
+        "geometry_seed_error": 53716,
+        "minimum_endpoint_margin": 396177,
+        "terminal_error": 33275
+      },
+      {
+        "geometry_seed_error": 53717,
+        "minimum_endpoint_margin": 395665,
+        "terminal_error": 49659
+      },
+      {
+        "geometry_seed_error": 53718,
+        "minimum_endpoint_margin": 395153,
+        "terminal_error": 66043
+      },
+      {
+        "geometry_seed_error": 53719,
+        "minimum_endpoint_margin": 394641,
+        "terminal_error": 82427
+      }
+    ],
+    "exact_geometry_seed_errors": [
+      53685,
+      53686,
+      53687,
+      53688,
+      53689,
+      53690,
+      53691,
+      53692,
+      53693,
+      53694,
+      53695,
+      53696,
+      53697,
+      53698,
+      53699,
+      53700,
+      53701,
+      53702,
+      53703,
+      53704,
+      53705,
+      53706,
+      53707,
+      53708,
+      53709,
+      53710,
+      53711,
+      53712,
+      53713,
+      53714,
+      53715,
+      53716,
+      53717,
+      53718,
+      53719
+    ],
+    "fixed_quotient_k": 327611,
+    "geometry_clear_height": 20,
+    "geometry_seed_count": 35,
+    "prime_argument": 490829,
+    "single_block_forced_crossing": false,
+    "successor_totient_letter": 130880,
+    "terminal_bottom_lock_interval": [
+      -490829,
+      90282
+    ],
+    "terminal_preprime_height": 34
+  },
+  "schema": "erdos249-prime-successor-precursor-cone/1",
+  "source_records": [
+    {
+      "byte_length": 10823,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_prime_successor_precursor_cone.py",
+      "sha256": "a6796aad0e06353c6caa37aa21af4d82e3dcb9722a60959b057541149f5e87ce"
+    },
+    {
+      "byte_length": 82239,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos249_pure_dyadic_endpoint_cocycle_receipt.json",
+      "sha256": "ed3c1bb5c8e66c0ba39990219a0195a14fb8ddfdde39eae0758e89a5a4dc866b"
+    },
+    {
+      "byte_length": 6913,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PureDyadicEndpointCocycleComputationalLab.md",
+      "sha256": "e808ea82b41e9a052e6785be708ebb63f0c1001e2357e6f6010295b6c691a04d"
+    },
+    {
+      "byte_length": 22005,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "sha256": "11d05c7c29d76991e281d90c6b42eb2deeff8f3c55a37429d2c12cca5de6bb2c"
+    }
+  ],
+  "status": "verified_exact_single_block_mechanism_elimination"
+}

@@ -1,0 +1,72 @@
+{
+  "algebra": "every element is a multiple of 4, so tau_E(m)=0 for 4 !| m; tau_E(4k) = 1 + omega(k)",
+  "construction": "E = {4} u {4p : p prime} = 4*({1} u P)",
+  "growth_test": {
+    "HI": [
+      25000,
+      50000,
+      100000,
+      200000,
+      400000
+    ],
+    "fourN_tracks_sqrt": true,
+    "maxgap_4N": [
+      628,
+      884,
+      1260,
+      1780,
+      2524
+    ],
+    "maxgap_4_union_4p": [
+      52,
+      76,
+      76,
+      76,
+      76
+    ],
+    "new_E_plateaus": true,
+    "sqrt_model_8_sqrt_HI_over_4": [
+      632,
+      894,
+      1265,
+      1789,
+      2530
+    ]
+  },
+  "my_wrong_threshold": "the '<=64 => KILLS' label was arbitrary and mislabelled the new E as a survivor at a single window; the growth test settled it",
+  "real_invariant": "what tau_E restricted to min(E)*N IS: d(k) -> odd only at squares -> sparse; 1+omega(k) -> odd half the time -> parity-dense",
+  "refutes": "T46a as a SUFFICIENT criterion: identical tau_E=1 density, opposite verdicts",
+  "spot_checks": [
+    {
+      "k": 1,
+      "omega": 0,
+      "tau_E_4k": 1
+    },
+    {
+      "k": 2,
+      "omega": 1,
+      "tau_E_4k": 2
+    },
+    {
+      "k": 6,
+      "omega": 2,
+      "tau_E_4k": 3
+    },
+    {
+      "k": 30,
+      "omega": 3,
+      "tau_E_4k": 4
+    },
+    {
+      "k": 210,
+      "omega": 4,
+      "tau_E_4k": 5
+    }
+  ],
+  "tau_eq_1_set": "{4} -- a single point",
+  "verdict": {
+    "E_4N": "Odd_E non-syndetic (sqrt growth) -> socket survives",
+    "E_new": "Odd_E SYNDETIC in range (plateau 76) -> socket KILLS",
+    "tau_eq_1_density_identical": true
+  }
+}

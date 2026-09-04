@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification249DyadicTotientKernel.Challenge",
+  "solution_module": "ExternalVerification249DyadicTotientKernel.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

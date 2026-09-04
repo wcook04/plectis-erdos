@@ -1,0 +1,3 @@
+import ExternalVerification249DyadicTotientKernel.Solution
+
+#print axioms Erdos249257.ExternalVerification249DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks

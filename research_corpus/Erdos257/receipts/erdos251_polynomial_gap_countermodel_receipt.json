@@ -1,0 +1,97 @@
+{
+  "assertions": {
+    "adjacent_difference_ne_plus_or_minus_two_for_all_naturals": true,
+    "adjacent_difference_polynomial_identity": true,
+    "geometric_ratio_strictly_below_one": true,
+    "series_value_is_rational_32": true,
+    "tail_orbit_positive_integral_for_all_naturals": true,
+    "tail_recurrence_polynomial_identity": true,
+    "terminal_geometric_domination_for_all_naturals": true
+  },
+  "authority_boundary": "The checker proves polynomial identities and geometric domination by exact integer coefficient arithmetic. The linked completed command-run receipt records a focused Lean/Lake PASS for the source module; no full-project integration claim is made.",
+  "canonical_payload_sha256": "sha256:3ef1ee9df4525d8fd05cad336c3305b046b3312ef996dc4defb44574f0452163",
+  "exact_identities": {
+    "adjacent_difference": "g_(n+1) - g_n = 4*n + 10",
+    "adjacent_difference_residual_coefficients": [
+      0
+    ],
+    "tail_recurrence": "T_(n+1) = 2*T_n - g_(n+1)",
+    "tail_recurrence_residual_coefficients": [
+      0
+    ]
+  },
+  "infinite_series_certificate": {
+    "finite_telescope": "T_0 = sum_(1<=j<=N) g_j/2^j + T_N/2^N",
+    "ratio_bound": "a_(n+1)/a_n <= 25/32 < 1",
+    "ratio_bound_residual_coefficients": [
+      0,
+      40,
+      9
+    ],
+    "ratio_bound_residual_identity": "25(n+4)^2 - 16(n+5)^2 = n(9n+40)",
+    "series_value": 32,
+    "terminal_limit": "T_N/2^N -> 0",
+    "terminal_sequence": "a_n = T_n/2^n = 2(n+4)^2/2^n"
+  },
+  "lean_validation": {
+    "authority_scope": "focused module plus final serialized Lake authority check",
+    "duration_s": 38.969,
+    "exit_code": 0,
+    "finished_at": "2026-08-22T23:22:41+00:00",
+    "run_id": "cmdrun_20260822T232202Z_76530_bc0c7e5b6f5b",
+    "source_status_sha256": "f595471d727155214047cd23f1cb32d6eb2598cf79f160244d7c1142e89c9067",
+    "source_unstaged_diff_sha256": "5ca34ef2a8c2d188f40e10830ee30b8c6b31171d9767c4040e65db4638f145e7",
+    "status": "focused_lake_pass",
+    "target": "ErdosProblems.Erdos251.PrimeGapDyadicTail"
+  },
+  "links": {
+    "analysis": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PolynomialGapTailCountermodel.md",
+    "checker": "formal_math/erdos257_period_noncollapse/scripts/erdos251_polynomial_gap_countermodel.py",
+    "lean_source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+    "lean_validation_receipt": "state/command_runs/runs/cmdrun_20260822T232202Z_76530_bc0c7e5b6f5b.json",
+    "receipt": "state/formal_math/erdos257_period_noncollapse/erdos251_polynomial_gap_countermodel_receipt.json",
+    "research_packet": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/research_packet.json"
+  },
+  "mechanism_consequence": {
+    "does_not_prove": "irrationality or rationality of the actual prime-gap series",
+    "eliminated": "positivity + parity + polynomial growth + unboundedness + nonperiodicity + dyadic recurrence force the h=1 adjacent-small-mismatch producer",
+    "surviving_requirement": "finer consecutive-prime arithmetic or an external fractional-tail theorem"
+  },
+  "polynomials_low_to_high": {
+    "adjacent_difference": [
+      10,
+      4
+    ],
+    "gap_g_n": [
+      4,
+      8,
+      2
+    ],
+    "gap_g_n_plus_1": [
+      14,
+      12,
+      2
+    ],
+    "tail_T_n": [
+      32,
+      16,
+      2
+    ],
+    "tail_T_n_plus_1": [
+      50,
+      20,
+      2
+    ]
+  },
+  "problem_id": "erdos_251",
+  "proof_scope": "symbolic_all_indices_not_finite_horizon",
+  "schema": "erdos251_polynomial_gap_countermodel_receipt_v1",
+  "source_digests": {
+    "analysis": "sha256:cfeaa3a1c13abc6c9676bf5f6f0efdc9f99be38a5cd9530bc8ebccce2a2e3434",
+    "checker": "sha256:5731fd2b1f65d7d7ae8a8942adaaf2055ae7a67e1eaed0eacdc0ac43543220dc",
+    "lean_source": "sha256:d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1",
+    "lean_validation_receipt": "sha256:66dda9ff78d35aa769155d1b5bc0bea836ee22b5a90057a009fad6042bc7fd1f",
+    "research_packet": "sha256:850a3c255bd74668960039e1f39cc0aed33ec18cc5a9b387a6bf3212a860cd82"
+  },
+  "status": "exact_symbolic_infinite_countermodel_verified"
+}

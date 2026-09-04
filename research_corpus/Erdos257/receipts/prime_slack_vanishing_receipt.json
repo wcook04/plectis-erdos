@@ -1,0 +1,229 @@
+{
+  "depth": 20000,
+  "rows": [
+    {
+      "density_s1": 0.0,
+      "density_vanish": 1.0,
+      "depth": 20000,
+      "first_vanish": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19
+      ],
+      "mismatch_vs_characterisation": 0,
+      "n_primes": 2262,
+      "n_vanish": 2262,
+      "outside_01": 0,
+      "slack_values": {
+        "0": 2262
+      },
+      "status": "alive",
+      "target": "1/2"
+    },
+    {
+      "density_s1": 0.248894783377542,
+      "density_vanish": 0.751105216622458,
+      "depth": 20000,
+      "first_vanish": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        19,
+        31
+      ],
+      "mismatch_vs_characterisation": 0,
+      "n_primes": 2262,
+      "n_vanish": 1699,
+      "outside_01": 0,
+      "slack_values": {
+        "0": 1699,
+        "1": 563
+      },
+      "status": "alive",
+      "target": "1/21"
+    },
+    {
+      "density_s1": 0.0004420866489832007,
+      "density_vanish": 0.9995579133510168,
+      "depth": 20000,
+      "first_vanish": [
+        2,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23
+      ],
+      "mismatch_vs_characterisation": 0,
+      "n_primes": 2262,
+      "n_vanish": 2261,
+      "outside_01": 0,
+      "slack_values": {
+        "0": 2261,
+        "1": 1
+      },
+      "status": "alive",
+      "target": "4/9"
+    },
+    {
+      "density_s1": 0.246684350132626,
+      "density_vanish": 0.753315649867374,
+      "depth": 20000,
+      "first_vanish": [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19
+      ],
+      "mismatch_vs_characterisation": 0,
+      "n_primes": 2262,
+      "n_vanish": 1704,
+      "outside_01": 0,
+      "slack_values": {
+        "0": 1704,
+        "1": 558
+      },
+      "status": "alive",
+      "target": "1/465"
+    },
+    {
+      "density_s1": 0.23872679045092837,
+      "density_vanish": 0.7612732095490716,
+      "depth": 20000,
+      "first_vanish": [
+        2,
+        3,
+        5,
+        7,
+        13,
+        17,
+        29,
+        31
+      ],
+      "mismatch_vs_characterisation": 0,
+      "n_primes": 2262,
+      "n_vanish": 1722,
+      "outside_01": 0,
+      "slack_values": {
+        "0": 1722,
+        "1": 540
+      },
+      "status": "alive",
+      "target": "1/5"
+    },
+    {
+      "density_s1": 0.5141467727674625,
+      "density_vanish": 0.4858532272325376,
+      "depth": 20000,
+      "first_vanish": [
+        2,
+        11,
+        17,
+        19,
+        23,
+        29,
+        31,
+        37
+      ],
+      "mismatch_vs_characterisation": 0,
+      "n_primes": 2262,
+      "n_vanish": 1099,
+      "outside_01": 0,
+      "slack_values": {
+        "0": 1099,
+        "1": 1163
+      },
+      "status": "alive",
+      "target": "5/12"
+    },
+    {
+      "density_s1": 0.2497789566755084,
+      "density_vanish": 0.7502210433244916,
+      "depth": 20000,
+      "first_vanish": [
+        2,
+        7,
+        11,
+        13,
+        19,
+        29,
+        31,
+        37
+      ],
+      "mismatch_vs_characterisation": 0,
+      "n_primes": 2262,
+      "n_vanish": 1697,
+      "outside_01": 0,
+      "slack_values": {
+        "0": 1697,
+        "1": 565
+      },
+      "status": "alive",
+      "target": "3/7"
+    },
+    {
+      "density_s1": 0.2493368700265252,
+      "density_vanish": 0.7506631299734748,
+      "depth": 20000,
+      "first_vanish": [
+        2,
+        3,
+        7,
+        11,
+        13,
+        19,
+        29,
+        31
+      ],
+      "mismatch_vs_characterisation": 0,
+      "n_primes": 2262,
+      "n_vanish": 1698,
+      "outside_01": 0,
+      "slack_values": {
+        "0": 1698,
+        "1": 564
+      },
+      "status": "alive",
+      "target": "2/21"
+    },
+    {
+      "density_s1": 0.0008841732979664014,
+      "density_vanish": 0.9991158267020336,
+      "depth": 20000,
+      "first_vanish": [
+        2,
+        3,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29
+      ],
+      "mismatch_vs_characterisation": 0,
+      "n_primes": 2262,
+      "n_vanish": 2260,
+      "outside_01": 0,
+      "slack_values": {
+        "0": 2260,
+        "1": 2
+      },
+      "status": "alive",
+      "target": "1013/2048"
+    }
+  ]
+}

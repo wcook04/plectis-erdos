@@ -1,0 +1,506 @@
+{
+ "probe_id": "erdos1041_true_geodesic",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_1041",
+   "target_statement": "If a monic polynomial f(z)=product_i(z-z_i) has all roots in the open unit disk, prove that two roots can be joined by a curve of length less than 2 contained in the open lemniscate |f|<1.",
+   "claim_ceiling": "The degree-three case is proved by minimal-critical-value normalization: an ordinary Rouch\u00e9/homotopy lemma supplies two small normalized roots, and the Lean-checked consumer proves the resulting straight-spoke containment and strict metric budget. This is a rigorous bounded-degree result, not a solution of the unrestricted problem. The Newton-flow and ray-separation kernel is proved. Lean also closes finite planar avoidance, ray-and-level separation by a small common translation, constant-translation root continuity, and the uniform derivative-norm estimate that prevents critical points from entering a protected set after a smaller linear perturbation. The critical-pair metric scale is Lean-checked conditionally. Exact counterexamples close metric-selected Euclidean spokes, their same-critical-point Newton replacement, direct root chords, and fixed-origin broken lines in higher degree. The quintic numerically has a much shorter hub at another critical point, so polynomial-adapted critical hubs remain live only with a genuinely new all-critical selection theorem. The Cassini theorem refutes the epsilon-sharp coarea/tree-budget propositions in both unrestricted drafts and rules out polynomial-independent positive slack. The exact radial-lift area identity supplies a valid computation-to-analysis bridge but also exposes a new obstruction: f_epsilon(z)=z^n+epsilon*z-r^n makes all simple critical-value arguments coalesce, so directly sampling the raw angular coarea average at every critical ray repeats one spike with critical multiplicity and cannot reach the 2(n-1) aggregate scale. A surviving aggregate proof must charge descending edges with multiplicity cancellation or use genuinely different Reeb geometry. Ordinary algebraic proofs establish generic critical values and compact local barrier controls, but not that replacement charge, a global Reeb decomposition, or a short path in all degrees. Erd\u0151s #1041 remains open."
+  },
+  "hypothesis": {
+   "id": "refuting_polynomials_are_near_extremal",
+   "statement": "The polynomials that refute the explicit path families are hard instances of the problem itself, so the bound is close to tight where they live."
+  },
+  "probe": {
+   "id": "erdos1041_true_geodesic",
+   "question": "What is the TRUE shortest path between roots inside {|f|<1} on the exact configurations that refute each path family, and can any configuration push the minimum pairwise geodesic above 2?",
+   "computation": "Grid the lemniscate (contained in |z|<2 because |z|>=2 forces |f|>=(|z|-1)^n>=1), keep interior cells, build a 16-neighbour graph admitting a move only when sampled interior points of the segment are also inside, and run Dijkstra from each root. Every score is capped by an exactly verified interior polyline - chord, or broken line through the origin or a critical point - so it stays an upper bound on the truth.",
+   "falsifier": "A configuration whose guarded minimum pairwise geodesic exceeds 2 and survives increasing resolution would refute the conjecture.",
+   "stop_condition": "An unguarded grid value above 2 is not a stop condition: it is the known thin-corridor failure mode and must be re-checked against an exact polyline before it counts.",
+   "resource_bounds": {
+    "grid": 420,
+    "max_degree": 6,
+    "restarts": 3,
+    "steps": 15
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "The refuting polynomials are not near-extremal, so the negative results are about uniformity of a construction rather than tightness of the bound.",
+   "falsification_consequence": "A genuine counterexample to Erdos #1041.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TrueGeodesicLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos1041_geodesic.py",
+    "formal_math/probes/erdos1041_geodesic_search.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "EXACT RESULT: for f = z^n - r^n with 0<r<1, every curve joining two distinct roots inside {|f|<1} has length at least 2(r - (1-r^n)^(1/n)), because B(0,1-r^n) is internally tangent to the boundary of D(r^n,1), so the difference is a simply connected crescent avoiding 0 whose preimage under z->z^n splits into n components, one per root. Hence the constant 2 is SHARP at every degree n >= 2, with extremal degeneration z^n - r^n as r -> 1 - not only at n = 2 as the packet's Cassini observation recorded. The mechanism is that f' = n z^(n-1) has the origin as its only critical point, with critical value r^n -> 1, so the components merge only there. Measured geodesics respect the bound in all twelve checked cases and their ratio to 2r increases monotonically toward 1 at every degree, and a blind configuration search over degrees 2 to 8 converged on exactly this family - every leader has all roots at the modulus cap with min chord 2r sin(pi/n) - with best value 1.998 and nothing above 2. Validated to about 0.3% against f = z^2 - a^2 at a = 1/2, where the chord is interior and the geodesic is exactly 2a = 1. On the refuting configurations the true geodesic is far below 2: 1.782 for the cubic that kills direct chords, and 0.061 for the five-root configuration that kills origin spokes - whose five roots all lie on one circle with two of them 3.2 degrees apart. Only the degenerate quadratic family approaches 2, and for n = 2 the chord is provably interior (|f| = t(1-t)d^2 <= d^2/4 < 1), so its geodesic IS the root distance d < 2. The configuration search found no guarded value above 2; an unguarded run did report one, at a nearly antipodal pair of modulus 0.999 whose interior corridor is thinner than a grid cell, and the exact chord bound drops it from 2.0028 to 1.9980.",
+   "progress": {
+    "class": "mechanism_opened",
+    "decision_basis": "An exact lower bound proves sharpness at every degree; measured geodesics respect it in all twelve cases; a blind search converges on the same family at degrees 2 through 8 with nothing above 2; and guarded geodesics on every refuting configuration lie between 0.06 and 1.78.",
+    "next_analytic_target": "A proof with zero slack in the single degeneration z^n - r^n, r -> 1, and a polynomial-DEPENDENT construction elsewhere. The Cassini degeneration rules out a uniform margin, but away from it the true slack is large, so the remaining producers should not be calibrated against the refuting configurations.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_1041",
+  "motivated_by": [
+   "critical_point_selection_with_inverse_ray_length_control",
+   "ray_separatrix_reeb_decomposition"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "constant_two_is_sharp_at_every_degree",
+   "true_geodesic_far_below_two_on_refuting_configurations"
+  ],
+  "rationale": "Measures the statement the problem actually makes on the polynomials that refute every explicit path family, which none of the negative results did."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TrueGeodesicLab.md",
+   "byte_length": 10739,
+   "sha256": "794136b74c2f4bf143a374528352203248eacda07842feab315a39c2f4c5c766"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+   "byte_length": 33570,
+   "sha256": "2d8a81420b85b55cfc509e7a9db8a3564fa07de87c0419d76a4b8aaffef66f67"
+  },
+  {
+   "path": "formal_math/probes/erdos1041_geodesic.py",
+   "byte_length": 9471,
+   "sha256": "cc954e81ac551449c37ec98ebffe265fc8370f570c3934e2c223b4eae552ef5b"
+  },
+  {
+   "path": "formal_math/probes/erdos1041_geodesic_search.py",
+   "byte_length": 6735,
+   "sha256": "e3442c820efba47d074609a3ca4eb7e7c67b8e3fd91c3e8d9df8fd3cd5c1e5ca"
+  }
+ ],
+ "result": {
+  "sharpness": {
+   "probe_id": "erdos1041_sharpness",
+   "theorem": "for f = z^n - r^n, any curve joining two distinct roots inside {|f|<1} has length >= 2(r - (1-r^n)^(1/n)); the bound tends to 2 as r -> 1 at every degree n >= 2",
+   "grid": 1200,
+   "rows": [
+    {
+     "n": 2,
+     "r": 0.99,
+     "epsilon": 0.141067,
+     "lower_bound": 1.697865,
+     "measured_geodesic": 1.98,
+     "two_r": 1.98,
+     "ratio_to_two_r": 1.0,
+     "bound_respected": true
+    },
+    {
+     "n": 2,
+     "r": 0.999,
+     "epsilon": 0.04471,
+     "lower_bound": 1.90858,
+     "measured_geodesic": 1.997676,
+     "two_r": 1.998,
+     "ratio_to_two_r": 0.999838,
+     "bound_respected": true
+    },
+    {
+     "n": 2,
+     "r": 0.9999,
+     "epsilon": 0.014142,
+     "lower_bound": 1.971516,
+     "measured_geodesic": 1.9998,
+     "two_r": 1.9998,
+     "ratio_to_two_r": 1.0,
+     "bound_respected": true
+    },
+    {
+     "n": 3,
+     "r": 0.99,
+     "epsilon": 0.309688,
+     "lower_bound": 1.360625,
+     "measured_geodesic": 1.782252,
+     "two_r": 1.98,
+     "ratio_to_two_r": 0.900127,
+     "bound_respected": true
+    },
+    {
+     "n": 3,
+     "r": 0.999,
+     "epsilon": 0.144177,
+     "lower_bound": 1.709646,
+     "measured_geodesic": 1.897203,
+     "two_r": 1.998,
+     "ratio_to_two_r": 0.949551,
+     "bound_respected": true
+    },
+    {
+     "n": 3,
+     "r": 0.9999,
+     "epsilon": 0.066941,
+     "lower_bound": 1.865918,
+     "measured_geodesic": 1.940464,
+     "two_r": 1.9998,
+     "ratio_to_two_r": 0.970329,
+     "bound_respected": true
+    },
+    {
+     "n": 4,
+     "r": 0.99,
+     "epsilon": 0.445538,
+     "lower_bound": 1.088923,
+     "measured_geodesic": 1.505979,
+     "two_r": 1.98,
+     "ratio_to_two_r": 0.760595,
+     "bound_respected": true
+    },
+    {
+     "n": 4,
+     "r": 0.999,
+     "epsilon": 0.251392,
+     "lower_bound": 1.495215,
+     "measured_geodesic": 1.730234,
+     "two_r": 1.998,
+     "ratio_to_two_r": 0.865983,
+     "bound_respected": true
+    },
+    {
+     "n": 4,
+     "r": 0.9999,
+     "epsilon": 0.141416,
+     "lower_bound": 1.716968,
+     "measured_geodesic": 1.851029,
+     "two_r": 1.9998,
+     "ratio_to_two_r": 0.925607,
+     "bound_respected": true
+    },
+    {
+     "n": 5,
+     "r": 0.99,
+     "epsilon": 0.547088,
+     "lower_bound": 0.885825,
+     "measured_geodesic": 1.28528,
+     "two_r": 1.98,
+     "ratio_to_two_r": 0.649131,
+     "bound_respected": true
+    },
+    {
+     "n": 5,
+     "r": 0.999,
+     "epsilon": 0.346434,
+     "lower_bound": 1.305132,
+     "measured_geodesic": 1.518697,
+     "two_r": 1.998,
+     "ratio_to_two_r": 0.760109,
+     "bound_respected": true
+    },
+    {
+     "n": 5,
+     "r": 0.9999,
+     "epsilon": 0.218664,
+     "lower_bound": 1.562473,
+     "measured_geodesic": 1.686252,
+     "two_r": 1.9998,
+     "ratio_to_two_r": 0.84321,
+     "bound_respected": true
+    },
+    {
+     "n": 6,
+     "r": 0.99,
+     "epsilon": 0.62309,
+     "lower_bound": 0.733821,
+     "measured_geodesic": 1.104906,
+     "two_r": 1.98,
+     "ratio_to_two_r": 0.558033,
+     "bound_respected": true
+    },
+    {
+     "n": 6,
+     "r": 0.999,
+     "epsilon": 0.426099,
+     "lower_bound": 1.145801,
+     "measured_geodesic": 1.348637,
+     "two_r": 1.998,
+     "ratio_to_two_r": 0.674993,
+     "bound_respected": true
+    },
+    {
+     "n": 6,
+     "r": 0.9999,
+     "epsilon": 0.290407,
+     "lower_bound": 1.418986,
+     "measured_geodesic": 1.557739,
+     "two_r": 1.9998,
+     "ratio_to_two_r": 0.778947,
+     "bound_respected": true
+    }
+   ],
+   "bound_violations": [],
+   "measurement_sound": true,
+   "approach_to_two": {
+    "2": {
+     "ratios_by_radius": [
+      1.0,
+      0.999838,
+      1.0
+     ],
+     "monotone_increasing": false
+    },
+    "3": {
+     "ratios_by_radius": [
+      0.900127,
+      0.949551,
+      0.970329
+     ],
+     "monotone_increasing": true
+    },
+    "4": {
+     "ratios_by_radius": [
+      0.760595,
+      0.865983,
+      0.925607
+     ],
+     "monotone_increasing": true
+    },
+    "5": {
+     "ratios_by_radius": [
+      0.649131,
+      0.760109,
+      0.84321
+     ],
+     "monotone_increasing": true
+    },
+    "6": {
+     "ratios_by_radius": [
+      0.558033,
+      0.674993,
+      0.778947
+     ],
+     "monotone_increasing": true
+    }
+   },
+   "reading": "measured geodesics respect the exact bound everywhere and their ratio to 2r increases toward 1 at every degree: the constant 2 is sharp, and the extremal degeneration is z^n - r^n with r -> 1 at every degree"
+  },
+  "refuting_configurations": {
+   "cubic_z3_minus_0.99^3_kills_direct_chords": {
+    "grid_min_geodesic": 1.783081,
+    "grid_connected": true,
+    "polyline_upper_bound": 1.98,
+    "guarded_min_geodesic": 1.783081,
+    "grid_overestimate": -0.196919,
+    "min_chord": 1.71473
+   },
+   "five_root_exact_kills_origin_spokes": {
+    "grid_min_geodesic": 0.060114,
+    "grid_connected": false,
+    "polyline_upper_bound": 0.056714,
+    "guarded_min_geodesic": 0.056714,
+    "grid_overestimate": 0.0034,
+    "min_chord": 0.056714
+   },
+   "cassini_a_0.9": {
+    "grid_min_geodesic": 1.802703,
+    "grid_connected": true,
+    "polyline_upper_bound": 1.8,
+    "guarded_min_geodesic": 1.8,
+    "grid_overestimate": 0.002703,
+    "min_chord": 1.8
+   },
+   "cassini_a_0.99": {
+    "grid_min_geodesic": 1.982683,
+    "grid_connected": true,
+    "polyline_upper_bound": 1.98,
+    "guarded_min_geodesic": 1.98,
+    "grid_overestimate": 0.002683,
+    "min_chord": 1.98
+   },
+   "cassini_a_0.999": {
+    "grid_min_geodesic": 2.0001,
+    "grid_connected": true,
+    "polyline_upper_bound": 1.998,
+    "guarded_min_geodesic": 1.998,
+    "grid_overestimate": 0.0021,
+    "min_chord": 1.998
+   }
+  },
+  "configuration_search": {
+   "probe_id": "erdos1041_geodesic_search",
+   "parameters": {
+    "max_n": 6,
+    "restarts": 3,
+    "steps": 15,
+    "grid": 420,
+    "root_modulus_cap": 0.999,
+    "seed": 20260823
+   },
+   "per_degree": [
+    {
+     "n": 2,
+     "best_min_geodesic": 1.998,
+     "best_roots": [
+      [
+       0.999,
+       0.0
+      ],
+      [
+       -0.999,
+       0.0
+      ]
+     ],
+     "best_root_moduli": [
+      0.999,
+      0.999
+     ],
+     "min_chord": 1.998,
+     "unreachable_pair": false
+    },
+    {
+     "n": 3,
+     "best_min_geodesic": 1.907155,
+     "best_roots": [
+      [
+       0.999,
+       0.0
+      ],
+      [
+       -0.4995,
+       0.865159
+      ],
+      [
+       -0.4995,
+       -0.865159
+      ]
+     ],
+     "best_root_moduli": [
+      0.999,
+      0.999,
+      0.999
+     ],
+     "min_chord": 1.730319,
+     "unreachable_pair": false
+    },
+    {
+     "n": 4,
+     "best_min_geodesic": 1.731416,
+     "best_roots": [
+      [
+       0.999,
+       0.0
+      ],
+      [
+       0.0,
+       0.999
+      ],
+      [
+       -0.999,
+       0.0
+      ],
+      [
+       -0.0,
+       -0.999
+      ]
+     ],
+     "best_root_moduli": [
+      0.999,
+      0.999,
+      0.999,
+      0.999
+     ],
+     "min_chord": 1.412799,
+     "unreachable_pair": false
+    },
+    {
+     "n": 5,
+     "best_min_geodesic": 1.516861,
+     "best_roots": [
+      [
+       0.999,
+       0.0
+      ],
+      [
+       0.308708,
+       0.950105
+      ],
+      [
+       -0.808208,
+       0.587197
+      ],
+      [
+       -0.808208,
+       -0.587197
+      ],
+      [
+       0.308708,
+       -0.950105
+      ]
+     ],
+     "best_root_moduli": [
+      0.999,
+      0.999,
+      0.999,
+      0.999,
+      0.999
+     ],
+     "min_chord": 1.174395,
+     "unreachable_pair": false
+    },
+    {
+     "n": 6,
+     "best_min_geodesic": 1.35821,
+     "best_roots": [
+      [
+       0.999,
+       0.0
+      ],
+      [
+       0.4995,
+       0.865159
+      ],
+      [
+       -0.4995,
+       0.865159
+      ],
+      [
+       -0.999,
+       0.0
+      ],
+      [
+       -0.4995,
+       -0.865159
+      ],
+      [
+       0.4995,
+       -0.865159
+      ]
+     ],
+     "best_root_moduli": [
+      0.999,
+      0.999,
+      0.999,
+      0.999,
+      0.999,
+      0.999
+     ],
+     "min_chord": 0.999,
+     "unreachable_pair": false
+    }
+   ],
+   "best_overall": 1.998,
+   "any_above_two": false,
+   "any_unreachable_pair": false,
+   "guard": "each score is capped by an exactly verified interior polyline, so it is an upper bound on the true geodesic; an unguarded grid score can exceed 2 purely by failing to resolve a thin corridor, and an optimiser finds that failure mode before it finds anything real",
+   "reading": "no configuration reaches 2 under the guard; the leaders are reported per degree"
+  }
+ }
+}

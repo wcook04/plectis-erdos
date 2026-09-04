@@ -1,0 +1,244 @@
+{
+ "probe_id": "erdos249_fixed_quotient_delay_law",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_249",
+   "target_statement": "Prove that the binary totient series sum_{n>=1} phi(n)/2^n is irrational.",
+   "claim_ceiling": "Erdos #249 remains open. For X-2, unbounded clean cyclotomic prime support and the multiple-period consumers are Lean-checked, as are the two exact 331 certificates and their finite denominator exclusions. Lean proves the target equivalent to FullMersenneCanonicalBasepointResidueGapSupply. For every candidate denominator 2^c v, with v odd, one must find an Euler-multiple H for which (-totientBlock(H,c)) mod ((2^H-1)/v) lies in the central interval of radius c+H+1. On the pure-dyadic axis the endpoint trap has a kernel-checked affine coordinate E_(H+1)=2E_H+phi(c+H+1)-k. The exact scan through c<=1000000 finds a fixed-quotient delay-nineteen word at c=490794, eliminating uniform caps through seventeen. Pointwise legal-letter methods admit a permanent constant-two trap, but the actual word excludes that mode. Every shifted actual word has cofinally late prime positions satisfying c+H-k <= |E_(H+1)|+2|E_H|, so bounded, periodic, and sublinear-error fixed-quotient modes are impossible. Lean now also excludes every eventually affine linear-scale error: the recurrence would make the totient word affine, while the arbitrarily late points at primes p<q and at 2p have nonzero affine determinant -p(q-p). The two-step prime-successor theorem is directional: if the successor remains upper-trapped then 4E_H+p+phi(p+1)<=4+3k, and any permanent trap therefore has cofinally bottom-locked pre-prime errors. Exact complete precursor cones eliminate one-, two-, and three-local-lock forced crossing. At c=1858 the third-lock cone still contains 15 seeds, so lock count is not even a monotone uniqueness mechanism. The remaining local producer must use an unbounded/cofinal lock family with a genuinely global cross-gap invariant, or construct a compatible genuinely non-affine linear-scale trap. The rank-one Schur lane remains closed at its 21/320 floor, while other surviving seams require genuinely coupled/signed denominator compression or a repaired-sieve lower bound beating log(2)/2. No irrationality proof is claimed. The pure-dyadic delay-cap programme is now retired on measurement rather than on another refuted constant: the maximum post-clear fixed-quotient delay over c <= C grows like log2 C, reproducing this packet's own delay-nineteen witness at c=490794 from an independent statistic, so every uniform cap is refuted at c about 2^cap. The producer should target the growth law - escape within O(log c) steps of clearing - not a constant. The target irrationality remains open. The supply producer has now been measured off the pure-dyadic axis for the first time: max_(c<=C) delay(c,v) = ceil(log2(C)/phi(v)), of which the packet's log2(C) law is the phi(v)=1 case, and the tallest height needed across 480000 instances is 60. Since R_c = 2^c S - integer, the delay is a translation of ||v 2^c S||, and H_min(c,v) tracks phi(v)*ceil(log2(v c/||v 2^c S||)/phi(v)) to within one admissible step. So the producer is an irrationality-measure statement for S on the denominator family v*2^c. The measured min_(c<=C)||v 2^c S|| is of order 1/C with no v-dependence, which refutes every uniform cap on every axis rather than only at v=1, and bounds what can be hoped for: the usable target is ||v 2^c S|| >= c^-A for a fixed A>1 uniformly in odd v. A certified continued-fraction prefix of 23438 partial quotients gives the unrestricted denominator exclusion q > 10^12039, complementing the restricted-family v*2^c exclusion; the expansion is generic against Levy and Gauss-Kuzmin, so it offers no anomalous convergent."
+  },
+  "hypothesis": {
+   "id": "uniform_fixed_quotient_delay_cap",
+   "statement": "The fixed-quotient trap on the pure-dyadic axis admits a uniform delay cap, so a large enough finite search settles it."
+  },
+  "probe": {
+   "id": "erdos249_fixed_quotient_delay_law",
+   "question": "Does the maximum post-clear fixed-quotient delay over c <= C saturate, or does it grow with C - and if it grows, at what rate?",
+   "computation": "For every c in range, iterate totientBlock by its exact doubling recurrence, take the least absolute residue modulo 2^H - 1, and measure the longest run of consecutive H that have cleared the trivial threshold (2^H-1)/2 > c+H+1, are trapped inside radius c+H+1, and share one quotient. Record every new maximum against log2(c).",
+   "falsifier": "A running maximum that stops setting records, which would make a uniform cap plausible after all.",
+   "stop_condition": "Saturation retires the growth-law reading; continued records retire the cap programme.",
+   "resource_bounds": {
+    "max_c": 1400000,
+    "max_h": 64
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "A uniform cap exists and finite search can settle the branch.",
+   "falsification_consequence": "No uniform cap can exist, every future cap will be refuted at c about 2^cap, and the producer must target the growth law instead.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FixedQuotientDelayLawLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos249_fixed_quotient_delay_law.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "Records keep coming: post-clear delay 15 at c=14177, 17 at c=50490, 18 at c=403191 and 19 at c=490794, with delay/log2(c) settling at 1.00-1.09. The last row is the packet's own witness - same delay, same c - recovered from an independently written statistic, which fixes the definition. The law is max{post-clear delay : c <= C} ~ log2 C, so cap 17 dies at c ~ 2^15.6, cap 19 at c ~ 2^18.9, and cap N at c ~ 2^N. The delay-cap programme is dead rather than unlucky, and the redirected target is: after the window clears, the doubling recurrence escapes a radius-c window within O(log c) steps.",
+   "progress": {
+    "class": "mechanism_eliminated",
+    "decision_basis": "Independent reconstruction of the packet's delay-nineteen witness at the same c, plus continued records with a ratio to log2(c) settling at 1.",
+    "next_analytic_target": "A bound of the form post-clear delay <= (1+o(1)) log2 c: the number of consecutive near-cancellations between the doubling of E_H and the totient increment phi(c+H+1) - k.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_249",
+  "motivated_by": [
+   "totient_specific_moving_dyadic_escape"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "post_clear_delay_grows_like_log2_c"
+  ],
+  "rationale": "Explains the packet's own history of refuted delay caps as a growth law rather than a sequence of near misses, and replaces the cap target with one that its own data does not refute."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FixedQuotientDelayLawLab.md",
+   "byte_length": 3873,
+   "sha256": "62b42faf239da5e09ce34da1250ad230fe4c6a28c5763d1bb5d105bd77449014"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+   "byte_length": 51939,
+   "sha256": "db9f5d25bcb65410937b101ad3f411425bb138c470d6b357b8b8a1b88256c49b",
+   "scoped_sha256": "bd7835e735a1db31bf38cd5ea763649c04cef0ae09cc6332bbe02cd89f2efd99",
+   "scope_ids": [
+    "post_clear_delay_grows_like_log2_c",
+    "totient_specific_moving_dyadic_escape"
+   ]
+  },
+  {
+   "path": "formal_math/probes/erdos249_fixed_quotient_delay_law.py",
+   "byte_length": 6366,
+   "sha256": "327bfc26df73c77c1fb76370c82a3d2c0259516cc70ef729538717f0e08ee247"
+  }
+ ],
+ "result": {
+  "probe_id": "erdos249_fixed_quotient_delay_law",
+  "parameters": {
+   "max_c": 1400000,
+   "max_h": 64,
+   "sample_stride": 1
+  },
+  "running_max_delay": 22,
+  "running_max_post_clear_delay": 19,
+  "post_clear_records": [
+   {
+    "c": 1,
+    "post_clear_delay": 1,
+    "log2_c": 0.0,
+    "post_over_log2c": null
+   },
+   {
+    "c": 3,
+    "post_clear_delay": 2,
+    "log2_c": 1.585,
+    "post_over_log2c": 1.2619
+   },
+   {
+    "c": 7,
+    "post_clear_delay": 4,
+    "log2_c": 2.807,
+    "post_over_log2c": 1.4248
+   },
+   {
+    "c": 27,
+    "post_clear_delay": 5,
+    "log2_c": 4.755,
+    "post_over_log2c": 1.0515
+   },
+   {
+    "c": 141,
+    "post_clear_delay": 6,
+    "log2_c": 7.14,
+    "post_over_log2c": 0.8404
+   },
+   {
+    "c": 178,
+    "post_clear_delay": 7,
+    "log2_c": 7.476,
+    "post_over_log2c": 0.9364
+   },
+   {
+    "c": 349,
+    "post_clear_delay": 12,
+    "log2_c": 8.447,
+    "post_over_log2c": 1.4206
+   },
+   {
+    "c": 14177,
+    "post_clear_delay": 15,
+    "log2_c": 13.791,
+    "post_over_log2c": 1.0876
+   },
+   {
+    "c": 50490,
+    "post_clear_delay": 17,
+    "log2_c": 15.624,
+    "post_over_log2c": 1.0881
+   },
+   {
+    "c": 403191,
+    "post_clear_delay": 18,
+    "log2_c": 18.621,
+    "post_over_log2c": 0.9666
+   },
+   {
+    "c": 490794,
+    "post_clear_delay": 19,
+    "log2_c": 18.905,
+    "post_over_log2c": 1.005
+   }
+  ],
+  "record_count": 12,
+  "records": [
+   {
+    "c": 1,
+    "delay": 3,
+    "log2_c": 0.0,
+    "excess": 3.0
+   },
+   {
+    "c": 2,
+    "delay": 4,
+    "log2_c": 1.0,
+    "excess": 3.0
+   },
+   {
+    "c": 3,
+    "delay": 5,
+    "log2_c": 1.585,
+    "excess": 3.415
+   },
+   {
+    "c": 7,
+    "delay": 7,
+    "log2_c": 2.807,
+    "excess": 4.193
+   },
+   {
+    "c": 16,
+    "delay": 8,
+    "log2_c": 4.0,
+    "excess": 4.0
+   },
+   {
+    "c": 76,
+    "delay": 9,
+    "log2_c": 6.248,
+    "excess": 2.752
+   },
+   {
+    "c": 141,
+    "delay": 11,
+    "log2_c": 7.14,
+    "excess": 3.86
+   },
+   {
+    "c": 349,
+    "delay": 16,
+    "log2_c": 8.447,
+    "excess": 7.553
+   },
+   {
+    "c": 14177,
+    "delay": 18,
+    "log2_c": 13.791,
+    "excess": 4.209
+   },
+   {
+    "c": 31341,
+    "delay": 19,
+    "log2_c": 14.936,
+    "excess": 4.064
+   },
+   {
+    "c": 50491,
+    "delay": 20,
+    "log2_c": 15.624,
+    "excess": 4.376
+   },
+   {
+    "c": 403191,
+    "delay": 22,
+    "log2_c": 18.621,
+    "excess": 3.379
+   }
+  ],
+  "excess_min": 2.752,
+  "excess_max": 7.553,
+  "excess_last": 3.379,
+  "reading": "post-clear delay keeps setting records as c grows, so no uniform cap survives; the records occur near c ~ 2^delay, which is the growth law a producer must target instead of a constant"
+ }
+}

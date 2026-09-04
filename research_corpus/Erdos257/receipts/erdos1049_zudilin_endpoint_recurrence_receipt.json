@@ -1,0 +1,252 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "zudilinScalarPlusBorder_cannot_meet_required_charge"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "falsification_consequence": "Failure identifies the exact first index where the fixed recurrence must acquire additional residue-class dependence.",
+      "survival_consequence": "Survival across composite d=6 and degree-six d=7 opens an all-d q-Lucas proof of first-appearance noncancellation."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "uniform_endpoint_and_corner_recurrence",
+      "statement": "The cross-block kernel is endpoint-supported and its corner ratios are universally 11/4 and 50/3 after scaling by rho_d."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinEndpointRecurrenceLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinFirstAppearanceBorderFormLab.md"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_phi1_kernel_receipt.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_first_appearance_border_form_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_endpoint_recurrence.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/zudilin_cyclotomic_local.py",
+        "system/lib/formal_math_cyclotomic_local.py",
+        "system/lib/formal_math_bordered_determinant.py"
+      ]
+    },
+    "probe": {
+      "computation": "Construct only moments d,...,3d and 4d in the local cyclotomic ring, compute the rectangular cross-block cofactors, and test the last-column multiplier and three corner contributions exactly.",
+      "falsifier": "An interior nonzero cofactor, failed endpoint column proportionality, or failed 11/4, 50/3 corner ratio kills the uniform recurrence.",
+      "id": "targeted_phi6_phi7_endpoint_recurrence",
+      "question": "Do the exact recurrence and factor-73 identities survive a composite index and the first degree-six cyclotomic field?",
+      "resource_bounds": {
+        "cyclotomic_index_count": 2,
+        "maximum_cyclotomic_index": 7,
+        "maximum_local_modulus_degree": 72,
+        "maximum_required_moment_count": 16,
+        "minimum_cyclotomic_index": 6
+      },
+      "stop_condition": "Stop after d=6,7 decide the named invariant; do not extend indices without beginning the q-Lucas proof."
+    },
+    "problem": {
+      "claim_ceiling": "Exact endpoint/corner decisions and implied first-appearance residues at d=6,7; not an all-d theorem or irrationality proof.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the Lambert value at p=3/2."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "The probe targets the exact all-d recurrence predicted by d<=5, rather than auditing another unrestricted determinant horizon.",
+        "next_analytic_target": "Prove the root-of-unity source-row recurrence uniformly using the q-Lucas decomposition of indices n=qd+s."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The endpoint recurrence and fixed 11/4, 50/3 corner ratios survive exactly at composite d=6 and degree-six d=7, imply nonzero first-appearance residues, and preserve the universal factor-73 identity. The q-Lucas identity is also replayed exactly through every quotient block used by the proposed proof, and the prime-index source multiplier is exactly 12*d^3*(p-1)^3 at d=7. The universal corner constants are the q=2,3,4 moments of the committed Phi_1 harmonic kernel and their endpoint contraction is -54*73."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "all_73_identities_hold": true,
+    "all_applicable_prime_multiplier_formulas_hold": true,
+    "all_endpoint_recurrences_hold": true,
+    "all_fixed_corner_ratios_hold": true,
+    "all_q_lucas_regressions_hold": true,
+    "authority_boundary": "The targeted computation exactly decides the endpoint recurrence and implied first-appearance residue at the listed indices. It does not by itself prove the identities for all d.",
+    "phi1_kernel_microcosm": {
+      "binary_contraction": -3942,
+      "binary_contraction_equals_minus_54_times_73": true,
+      "corner_ratios_match_eleven_fourths_and_fifty_thirds": true,
+      "endpoint_vector": [
+        3,
+        1
+      ],
+      "moment_formula": "m_q=(q!)^3 H_q",
+      "moments": {
+        "2": 12,
+        "3": 396,
+        "4": 28800
+      },
+      "scaled_corner_triple": [
+        -36,
+        297,
+        -5400
+      ]
+    },
+    "records": [
+      {
+        "cofactor_vector": [
+          "-157464*(153268805725*p - 15880399333)",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "-52488*(137388406392*p - 153268805725)"
+        ],
+        "cofactor_vector_supported_only_at_endpoints": true,
+        "corner_entries": {
+          "z00": "72*(2*p - 1)",
+          "z0d": "-594*(p + 1)",
+          "zdd": "-10800*(p - 2)"
+        },
+        "cyclotomic_degree": 2,
+        "cyclotomic_index": 6,
+        "cyclotomic_polynomial": "p**2 - p + 1",
+        "endpoint_column_multiplier_rho": "3*(p - 1)",
+        "last_cross_column_equals_rho_times_first": true,
+        "maximum_local_modulus_degree": 24,
+        "minimum_assignment_count_avoided": 448,
+        "predicted_first_appearance_residue": "-21720342295296*(27854892322826692248697*p + 14007634530523353294814)",
+        "predicted_residue_nonzero": true,
+        "prime_index_multiplier_formula_applicable": false,
+        "prime_index_multiplier_formula_matches": null,
+        "q_lucas_regression": {
+          "case_count": 465,
+          "matches": true,
+          "maximum_quotient_block": 4,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "rank": 13,
+        "required_moment_count": 14,
+        "required_moment_indices": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          24
+        ],
+        "six_signed_residue_equals_seventy_three_top_left": true,
+        "source_block_multiplier_K": "-62208*(2*p - 1)",
+        "top_left_contribution": "-1785233613312*(27854892322826692248697*p + 14007634530523353294814)",
+        "z0d_equals_eleven_fourths_rho_z00": true,
+        "zdd_equals_fifty_thirds_rho_squared_z00": true
+      },
+      {
+        "cofactor_vector": [
+          "45927*(45326027259*p**5 - 7323409409*p**4 + 9112772175*p**3 - 44506488897*p**2 - 13482567113*p + 2824218111)",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "-15309*(44506488897*p**5 + 103315083269*p**4 + 93167455749*p**3 + 102280227924*p**2 + 12447711768*p + 6288554064)"
+        ],
+        "cofactor_vector_supported_only_at_endpoints": true,
+        "corner_entries": {
+          "z00": "36*p**2*(2*p**3 + 2*p**2 + 2*p + 1)",
+          "z0d": "-297*(p**5 + p**4 + p**3 + 2*p**2 + p + 1)",
+          "zdd": "-5400*p**2*(p - 1)"
+        },
+        "cyclotomic_degree": 6,
+        "cyclotomic_index": 7,
+        "cyclotomic_polynomial": "p**6 + p**5 + p**4 + p**3 + p**2 + p + 1",
+        "endpoint_column_multiplier_rho": "-3*(p**4 + 1)",
+        "last_cross_column_equals_rho_times_first": true,
+        "maximum_local_modulus_degree": 72,
+        "minimum_assignment_count_avoided": 1024,
+        "predicted_first_appearance_residue": "923868726102*(13319982870518002701864*p**5 + 16867136046341948478616*p**4 + 17652524105000417393270*p**3 + 10908521720820563120118*p**2 - 350971378381203848826*p + 271059327172560669447)",
+        "predicted_residue_nonzero": true,
+        "prime_index_multiplier_formula_applicable": true,
+        "prime_index_multiplier_formula_matches": true,
+        "q_lucas_regression": {
+          "case_count": 630,
+          "matches": true,
+          "maximum_quotient_block": 4,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "rank": 15,
+        "required_moment_count": 16,
+        "required_moment_indices": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          28
+        ],
+        "six_signed_residue_equals_seventy_three_top_left": true,
+        "source_block_multiplier_K": "4116*(p - 1)**3",
+        "top_left_contribution": "-75934415844*(13319982870518002701864*p**5 + 16867136046341948478616*p**4 + 17652524105000417393270*p**3 + 10908521720820563120118*p**2 - 350971378381203848826*p + 271059327172560669447)",
+        "z0d_equals_eleven_fourths_rho_z00": true,
+        "zdd_equals_fifty_thirds_rho_squared_z00": true
+      }
+    ],
+    "schema": "erdos1049-zudilin-endpoint-recurrence/1"
+  },
+  "schema": "erdos1049-zudilin-endpoint-recurrence-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 23092,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_endpoint_recurrence.py",
+      "sha256": "abd58015759051d5bbd9132fdfbe5d657c7e8576139f9b9226087b2746ebfe31"
+    },
+    {
+      "byte_length": 12391,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/zudilin_cyclotomic_local.py",
+      "sha256": "3774921041e15f06b6df553155b92fe7d222e691bcd725884fc044c8ee210d01"
+    },
+    {
+      "byte_length": 4675,
+      "path": "system/lib/formal_math_cyclotomic_local.py",
+      "sha256": "6eb3f6778225c4956fcf0a0ff18b21d5f1f7a36fabf883c7fd67605952f27bb3"
+    },
+    {
+      "byte_length": 4296,
+      "path": "system/lib/formal_math_bordered_determinant.py",
+      "sha256": "5546551a1d75d36a10e129df0c4fa9cae260aa8a1a83d8a7825c2b0ef3e4bffa"
+    },
+    {
+      "byte_length": 7257,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinEndpointRecurrenceLab.md",
+      "sha256": "523bf42541cf5ddfaf2dbee3448e1241c17e13471ec7b611059e396f7f7f354d"
+    },
+    {
+      "byte_length": 4339,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinFirstAppearanceBorderFormLab.md",
+      "sha256": "3d917bc685b9b09be4b4bc772e75b030edc3d0798c5986484aeb2b2223f24021"
+    },
+    {
+      "byte_length": 15852,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "sha256": "4dce15dfc8a96099e1787b3229bccea000c484a8db5625f7dbe88c604c84ac03"
+    }
+  ],
+  "status": "exact_mechanism_opened"
+}

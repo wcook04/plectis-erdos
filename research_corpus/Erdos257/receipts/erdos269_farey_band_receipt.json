@@ -1,0 +1,368 @@
+{
+  "claim_ceiling": "This eliminates monotone continuation and width-only density arguments; it does not prove arbitrary-depth occupancy or irrationality.",
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ResidueEscape.lean",
+      "falsification_consequence": "A producer must control endpoint arithmetic or rotate anchors; nesting and coarse density cannot carry the proof.",
+      "survival_consequence": "Monotone occupancy would reduce arbitrary-depth construction to one seed."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "monotone_affine_cylinder_rational_continuation",
+      "statement": "Once a nested affine cylinder contains a denominator-admissible rational, the next first-clear shift remains occupied, or occupancy follows from interval width alone."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicWindowComputationalLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_farey_band.py",
+        "system/lib/formal_math_affine_cylinder.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_affine_cylinders.py"
+      ]
+    },
+    "probe": {
+      "computation": "Count floor(B*u)-floor(B*l) over the exact denominator band, with inclusion-exclusion for gcd(B,30)=1, using logarithmic floor sums.",
+      "falsifier": "One occupied-to-empty adjacent shift in the actual cylinders.",
+      "id": "exact_floor_sum_farey_band_decision",
+      "question": "Are adjacent exact first-clear bands monotonically occupied?",
+      "stop_condition": "After both transition polarities and singleton bands are certified, stop extending depth and target arithmetic phase control."
+    },
+    "problem": {
+      "claim_ceiling": "Exact selected-band decisions do not establish arbitrary-depth admissibility or the universal denominator theorem.",
+      "id": "erdos_269",
+      "target_statement": "Prove irrationality for prime support {2,3,5}."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "Complete exact counts certify occupied-to-empty adjacent shifts at depths 16, 24, and 50, plus the reverse polarity and singleton bands.",
+        "next_analytic_target": "Control the Farey phase of the actual final endpoint across anchors or construct a cofinal anchor-selection law."
+      },
+      "status": "exact_one_way_result",
+      "summary": "Exact floor-sum counts show both occupied-to-empty and empty-to-occupied adjacent first-clear shifts, with six singleton bands. Rational-point admissibility is sparse and nonmonotone even after exact cylinder nesting."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "parameters": {
+    "anchor": 100,
+    "coprime_to": 30
+  },
+  "rows": [
+    {
+      "active_lower_label": "offset_7",
+      "active_upper_label": "offset_7",
+      "admissible_rational_count": 1,
+      "denominator_band_maximum": 27140191,
+      "denominator_band_minimum": 4601016,
+      "depth": 8,
+      "first_clear_length": 13,
+      "first_denominator": 21161507,
+      "first_witness_numerator": 20567594070,
+      "first_witness_reduced_denominator": 21161507,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_15",
+      "active_upper_label": "offset_15",
+      "admissible_rational_count": 3,
+      "denominator_band_maximum": 15798462190539,
+      "denominator_band_minimum": 539537576259,
+      "depth": 16,
+      "first_clear_length": 19,
+      "first_denominator": 1336942888957,
+      "first_witness_numerator": 1299420624194707,
+      "first_witness_reduced_denominator": 1336942888957,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_15",
+      "active_upper_label": "offset_15",
+      "admissible_rational_count": 0,
+      "denominator_band_maximum": 31344662609196,
+      "denominator_band_minimum": 15798462190540,
+      "depth": 16,
+      "first_clear_length": 20,
+      "first_denominator": null,
+      "first_witness_numerator": null,
+      "first_witness_reduced_denominator": null,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_23",
+      "active_upper_label": "offset_23",
+      "admissible_rational_count": 1,
+      "denominator_band_maximum": 108462510859515570934,
+      "denominator_band_minimum": 18353059206245391855,
+      "depth": 24,
+      "first_clear_length": 27,
+      "first_denominator": 43072369144481389729,
+      "first_witness_numerator": 41863512092824315397552,
+      "first_witness_reduced_denominator": 43072369144481389729,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_23",
+      "active_upper_label": "offset_23",
+      "admissible_rational_count": 0,
+      "denominator_band_maximum": 1068437355364800605967,
+      "denominator_band_minimum": 108462510859515570935,
+      "depth": 24,
+      "first_clear_length": 28,
+      "first_denominator": null,
+      "first_witness_numerator": null,
+      "first_witness_reduced_denominator": null,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_31",
+      "active_upper_label": "offset_31",
+      "admissible_rational_count": 0,
+      "denominator_band_maximum": 3723924674258746271659583029,
+      "denominator_band_minimum": 126814585616818920134116106,
+      "depth": 32,
+      "first_clear_length": 35,
+      "first_denominator": null,
+      "first_witness_numerator": null,
+      "first_witness_reduced_denominator": null,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_31",
+      "active_upper_label": "offset_31",
+      "admissible_rational_count": 1,
+      "denominator_band_maximum": 7395308677506862344083604899,
+      "denominator_band_minimum": 3723924674258746271659583030,
+      "depth": 32,
+      "first_clear_length": 36,
+      "first_denominator": 7112412462325785580372790683,
+      "first_witness_numerator": 6912797485714317281750392105181,
+      "first_witness_reduced_denominator": 7112412462325785580372790683,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_39",
+      "active_upper_label": "offset_39",
+      "admissible_rational_count": 0,
+      "denominator_band_maximum": 255866906338115354265016332970378436,
+      "denominator_band_minimum": 25931280886700288397810958719005473,
+      "depth": 40,
+      "first_clear_length": 44,
+      "first_denominator": null,
+      "first_witness_numerator": null,
+      "first_witness_reduced_denominator": null,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_39",
+      "active_upper_label": "offset_39",
+      "admissible_rational_count": 1,
+      "denominator_band_maximum": 1514935419001582666571936056838365896,
+      "denominator_band_minimum": 255866906338115354265016332970378437,
+      "depth": 40,
+      "first_clear_length": 45,
+      "first_denominator": 1313894874618929427020280448795101323,
+      "first_witness_numerator": 1277019468973343262076273277245687136945,
+      "first_witness_reduced_denominator": 1313894874618929427020280448795101323,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_49",
+      "active_upper_label": "offset_49",
+      "admissible_rational_count": 1,
+      "denominator_band_maximum": 312807056231698646019500022320778704036179070,
+      "denominator_band_minimum": 10624559953352887678667319581512172932776932,
+      "depth": 50,
+      "first_clear_length": 54,
+      "first_denominator": 56815646114017195159290270880378001165836781,
+      "first_witness_numerator": 55221074099206573568755166074569261327180823837,
+      "first_witness_reduced_denominator": 56815646114017195159290270880378001165836781,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_49",
+      "active_upper_label": "offset_49",
+      "admissible_rational_count": 0,
+      "denominator_band_maximum": 621734419213450679586199502343614374168161564,
+      "denominator_band_minimum": 312807056231698646019500022320778704036179071,
+      "depth": 50,
+      "first_clear_length": 55,
+      "first_denominator": null,
+      "first_witness_numerator": null,
+      "first_witness_reduced_denominator": null,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_63",
+      "active_upper_label": "offset_63",
+      "admissible_rational_count": 0,
+      "denominator_band_maximum": 44961301610581361316447273260028402720681665296359967112,
+      "denominator_band_minimum": 7580682377712216972444253013340502575045997966847858050,
+      "depth": 64,
+      "first_clear_length": 67,
+      "first_denominator": null,
+      "first_witness_numerator": null,
+      "first_witness_reduced_denominator": null,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_63",
+      "active_upper_label": "offset_63",
+      "admissible_rational_count": 0,
+      "denominator_band_maximum": 444474708195341025875777494849328834265165882613728725893,
+      "denominator_band_minimum": 44961301610581361316447273260028402720681665296359967113,
+      "depth": 64,
+      "first_clear_length": 68,
+      "first_denominator": null,
+      "first_witness_numerator": null,
+      "first_witness_reduced_denominator": null,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_63",
+      "active_upper_label": "offset_63",
+      "admissible_rational_count": 0,
+      "denominator_band_maximum": 2636543893362196844626218170262061800443171026679545140946,
+      "denominator_band_minimum": 444474708195341025875777494849328834265165882613728725894,
+      "depth": 64,
+      "first_clear_length": 69,
+      "first_denominator": null,
+      "first_witness_numerator": null,
+      "first_witness_reduced_denominator": null,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_63",
+      "active_upper_label": "offset_63",
+      "admissible_rational_count": 24,
+      "denominator_band_maximum": 77761403140946090230090798743388052793692845401299095102060,
+      "denominator_band_minimum": 2636543893362196844626218170262061800443171026679545140947,
+      "depth": 64,
+      "first_clear_length": 70,
+      "first_denominator": 8482752459672612046728694835836217596072294822268236763357,
+      "first_witness_numerator": 8244677904406351058818538786165204288976225715418814918245596,
+      "first_witness_reduced_denominator": 8482752459672612046728694835836217596072294822268236763357,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_79",
+      "active_upper_label": "offset_79",
+      "admissible_rational_count": 0,
+      "denominator_band_maximum": 334738243014120952778771231552955394827167310877967973495306460519050248,
+      "denominator_band_minimum": 11334812446269076763496057470980221839631030041135164332903976399218848,
+      "depth": 80,
+      "first_clear_length": 84,
+      "first_denominator": null,
+      "first_witness_numerator": null,
+      "first_witness_reduced_denominator": null,
+      "nested": true
+    },
+    {
+      "active_lower_label": "offset_79",
+      "active_upper_label": "offset_79",
+      "admissible_rational_count": 1,
+      "denominator_band_maximum": 665994216739470448318446347132533736014214216929566385004543666671187728,
+      "denominator_band_minimum": 334738243014120952778771231552955394827167310877967973495306460519050249,
+      "depth": 80,
+      "first_clear_length": 85,
+      "first_denominator": 618625339156404765127315993500849750836011630567283540174905647435202133,
+      "first_witness_numerator": 601263173609753283840276203095220133795544983552096221452339917319457237347,
+      "first_witness_reduced_denominator": 618625339156404765127315993500849750836011630567283540174905647435202133,
+      "nested": true
+    }
+  ],
+  "schema": "erdos269-farey-band-occupancy/1",
+  "sources": [
+    {
+      "byte_length": 8584,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_farey_band.py",
+      "sha256": "d47b6fd78d983fb33ca1defc57ed74c7defde7ae407594b7af3469dd77778ce3"
+    },
+    {
+      "byte_length": 12252,
+      "path": "system/lib/formal_math_affine_cylinder.py",
+      "sha256": "16e23d423dcea475320a96fdc9201ebe77ac3b9b40d4fbff8284d572f78e6e3b"
+    },
+    {
+      "byte_length": 18285,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_affine_cylinders.py",
+      "sha256": "3718141d62942420bdcd351a9f8532ba1311593e283fca6bfadbb8a493323791"
+    },
+    {
+      "byte_length": 7612,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ResidueEscape.lean",
+      "sha256": "a9ecacf70d358918e3135c39eb9e6c5c3587d99bc46b8726daba4fc8dd315e7e"
+    }
+  ],
+  "structural_result": {
+    "eliminated_mechanism": "Neither exact interval nesting, increasing first-clear length, nor band width alone propagates an admissible rational witness.",
+    "empty_to_occupied_adjacent_shifts": [
+      [
+        32,
+        35,
+        36
+      ],
+      [
+        40,
+        44,
+        45
+      ],
+      [
+        64,
+        69,
+        70
+      ],
+      [
+        80,
+        84,
+        85
+      ]
+    ],
+    "occupied_to_empty_adjacent_shifts": [
+      [
+        16,
+        19,
+        20
+      ],
+      [
+        24,
+        27,
+        28
+      ],
+      [
+        50,
+        54,
+        55
+      ]
+    ],
+    "opened_mechanism": "An arbitrary-depth producer must control the arithmetic Farey phase of the actual endpoint, or rotate anchors; mere density is insufficient.",
+    "singleton_bands": [
+      [
+        8,
+        13
+      ],
+      [
+        24,
+        27
+      ],
+      [
+        32,
+        36
+      ],
+      [
+        40,
+        45
+      ],
+      [
+        50,
+        54
+      ],
+      [
+        80,
+        85
+      ]
+    ]
+  }
+}

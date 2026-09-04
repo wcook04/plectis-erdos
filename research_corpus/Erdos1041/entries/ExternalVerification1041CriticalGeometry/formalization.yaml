@@ -1,0 +1,181 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #1041: global two-root critical proximity and exact straight-line obstructions"
+  description: >-
+    For every degree n at least two and every list of n complex roots, at a critical point
+    that is not a root the two distances to some pair of distinct root occurrences sum to at
+    most twice the geometric mean of all root distances. In the unit-disk regime the two
+    smallest distances d at most e at a critical point satisfy d + e at most 2 whenever the
+    inverse-square budget N at most (1 - t^2)(1/d^2 + (N-1)/e^2), the reciprocal balance e
+    at most (N-1)d, and the diameter bound e at most 1 + t hold, for every real N at least
+    two and every t less than one. A strict diameter margin e less than 1 + t upgrades that
+    conclusion to d + e strictly less than 2. For the explicit monic cubic z^3 - (99/100)^3
+    the midpoint of every pair of distinct roots lies strictly outside the unit lemniscate,
+    an exact countermodel to universal straight-line containment. A second exact rational
+    certificate gives escape at one tenth along the unique nearest spoke of the source
+    quintic construction, whose reciprocal-balance and uniqueness components are separate
+    source theorems. The mechanism is the vanishing sum of reciprocals at a critical point
+    converted into an inverse-square budget on the two smallest root distances, which is
+    what makes the metric conclusion uniform in the degree, and priority for these
+    statements is unassessed. The positive theorems supply distances rather than lemniscate
+    containment, the obstruction rules out straight root-pair segments and leaves curved
+    paths open, and Erdős #1041 remains open.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification1041CriticalGeometry/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification1041CriticalGeometry/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_and_comparator_replay_pending"
+  research_interest_status: "research_note_grade_metric_selector_solved_family_kernel_and_exact_no_go_geometry"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "focused Lean and axiom checks are pending"
+    - "terminal positive and deliberate-negative Comparator receipts are pending"
+    - "public immutable source identity is pending"
+
+classification:
+  arxiv: ["math.CV"]
+  msc2020: ["30C10", "30C15"]
+
+sources:
+  - title: "Critical two-root proximity and cubic containment"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #1041"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/1041"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    Five compared theorems expose the scale-sensitive critical metric selector,
+    the global disk inverse-balance theorem and strict refinement, and two
+    exact straight-line no-go endpoints without claiming unrestricted
+    containment. The cubic safe-spoke theorem is compared only in
+    ExternalVerification1041SolvedFamilies, so no declaration is owned by two
+    entries.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 5
+  axiom_audit_status: "public_ci_2026_09_02_run_33646295554_all_compared_declarations_printed_within_permitted_axioms_no_sorryAx"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification1041CriticalGeometry.criticalGeometricMean_twoRootProximity"
+      file: "ExternalVerification1041CriticalGeometry/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1041CriticalGeometry/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean"
+      novelty_status: "unassessed"
+      contribution_class: "all-degree critical metric selector"
+      boundary: "Does not prove lemniscate containment."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity"
+      file: "ExternalVerification1041CriticalGeometry/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1041CriticalGeometry/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean"
+      novelty_status: "unassessed"
+      contribution_class: "global unit-disk critical metric theorem"
+      boundary: "Lean checks the exact inverse-balance implication; polynomial-level geometric hypotheses are assembled in the ordinary proof, and containment remains open."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity_strict"
+      file: "ExternalVerification1041CriticalGeometry/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1041CriticalGeometry/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean"
+      novelty_status: "unassessed"
+      contribution_class: "strict global unit-disk critical metric refinement"
+      boundary: "Requires strict diameter margin and still supplies distance rather than lemniscate containment."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1041CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes"
+      file: "ExternalVerification1041CriticalGeometry/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1041CriticalGeometry/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact unique-nearest-spoke escape endpoint"
+      boundary: "The reciprocal-balance and unique-nearest-root certificate components remain separately checked source declarations."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes"
+      file: "ExternalVerification1041CriticalGeometry/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification1041CriticalGeometry/comparator.json"
+      canonical_claim_status: "source_proved_explicit_private_definition_transport_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact all-straight-root-pair cubic obstruction"
+      boundary: "Rules out universal straight root-pair segments, not curved or topological paths."
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    Five theorem types are copied directly from public source declarations.
+    The all-straight cubic theorem reproduces four source-private definitions
+    literally before transporting the same proof. No unrestricted path theorem
+    or ordinary fibre-assembly claim is added.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The metric/containment boundary, exact no-go scope, private-definition
+    transport, and ordinary-versus-Lean assembly were reviewed; mechanical
+    replay remains pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification1041CriticalGeometry"
+  statements:
+    - source: "ErdosProblems.Erdos1041.exists_two_roots_dist_sum_le_two_mul_geomMean"
+      lean: "Erdos249257.ExternalVerification1041CriticalGeometry.criticalGeometricMean_twoRootProximity"
+      module: "ExternalVerification1041CriticalGeometry/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1041.two_add_le_two_of_disk_inverse_balance"
+      lean: "Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity"
+      module: "ExternalVerification1041CriticalGeometry/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1041.two_add_lt_two_of_disk_inverse_balance_of_strict_diameter"
+      lean: "Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity_strict"
+      module: "ExternalVerification1041CriticalGeometry/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1041.nearestSpoke_unique_nearest_spoke_escapes"
+      lean: "Erdos249257.ExternalVerification1041CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes"
+      module: "ExternalVerification1041CriticalGeometry/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos1041.allStraightCubic_every_pair_midpoint_escapes"
+      lean: "Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes"
+      module: "ExternalVerification1041CriticalGeometry/Challenge.lean"
+      status: "exact-explicit-private-definition-transport-pending-check"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

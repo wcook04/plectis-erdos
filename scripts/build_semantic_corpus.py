@@ -48,6 +48,8 @@ import argparse
 import hashlib
 import json
 import os
+import posixpath
+import re
 import stat
 import sys
 from collections import Counter, defaultdict
@@ -547,6 +549,16 @@ def collect(*, defer_review_receipts: bool = False) -> dict:
                 else:
                     resolved.append({**ev, "resolved": False})
             node["evidence"] = resolved
+            sources = []
+            for source in node.get("source_evidence", []):
+                if source.get("evidence_class") != "ordinary_mathematical_proof":
+                    raise ValueError("source evidence must declare its non-Lean proof class")
+                data = safe_read_bytes(ROOT / source["path"])
+                digest = hashlib.sha256(data).hexdigest()
+                if digest != source.get("sha256"):
+                    raise ValueError(f"stale mathematical source: {source['path']}")
+                sources.append({**source, "resolved": True})
+            node["source_evidence"] = sources
             local = node["id"]
             qualified = f"{zid}::{local}"
             node["local_id"] = local
@@ -1485,10 +1497,96 @@ def render(payload: dict) -> str:
     ) + "\n"
 
 
+def browser_surfaces(payload: dict) -> dict[Path, str]:
+    """Link graph projected from all authored nodes, with no statement truncation."""
+    authored = payload["statement_nodes"]
+    by_zone = defaultdict(list)
+    for node in authored:
+        by_zone[node["zone"]].append(node)
+    def anchor(nid):
+        return "node-" + hashlib.sha256(nid.encode()).hexdigest()[:16]
+    chunks = {}
+    for zone, members in sorted(by_zone.items()):
+        for offset in range(0, len(members), 32):
+            chunks[f"{zone}_{offset // 32 + 1}"] = members[offset:offset + 32]
+    links = {n["id"]: f"BROWSER_{chunk}.md#{anchor(n['id'])}"
+             for chunk, members in chunks.items() for n in members}
+    edges = defaultdict(list)
+    for edge in payload["relations"]:
+        if edge.get("suppressed_in_views"):
+            continue
+        for endpoint in (edge.get("from"), edge.get("to")):
+            if endpoint in links:
+                edges[endpoint].append(edge)
+    surfaces = {}
+    index = ["# Browse the mathematical graph", "",
+             "Start with your problem, open the relevant result, then follow its proof and typed links.",
+             "Every statement node is included in full, including structural families. These pages are generated from the same",
+             "graph used by the command routes; they require no clone or Python.", "",
+             "The objective is to solve the original problem. Use these results as prior work, follow",
+             "connections across problems when useful, and choose any proof strategy. Check scope and hypotheses.", "",
+             "[Full graph, including generated structural families](../semantic_corpus.json)", ""]
+    zones = {z["id"] if "id" in z else z["zone_id"]: z for z in payload["zones"]}
+    problems = defaultdict(list)
+    for zid, nodes in sorted(chunks.items()):
+        title = zones.get(nodes[0]["zone"], {}).get("title", zid)
+        page = [f"# {zid}: {title}", "", "[All problems and zones](BROWSER.md)", ""]
+        for n in nodes:
+            problem = str(n.get("problem", "shared_substrate"))
+            problems[problem].append((n, links[n["id"]]))
+            page += [f'<a id="{anchor(n["id"])}"></a>', f"## {n.get('local_id') or Path(n.get('source_module', n['id'])).stem}", "",
+                     str(n.get("canonical_statement", "")), "",
+                     f"Class: {n.get('logical_class')}. Interpretation: {n.get('interpretation_tier')}. Prior-art assessment: {n.get('prior_art_state')}.", ""]
+            if n.get("scope_caveat"):
+                page += ["Scope: " + n["scope_caveat"], ""]
+            if n.get("open_antecedents"):
+                page += ["Open hypotheses: " + json.dumps(n["open_antecedents"], ensure_ascii=False), ""]
+            for e in n.get("evidence", []):
+                if e.get("resolved"):
+                    locator = e.get("id", "").split(":", 2)
+                    module = e.get("module") or (locator[0] if len(locator) == 3 else "")
+                    if not module:
+                        continue
+                    e = {"declaration": locator[-1], "line": locator[1] if len(locator) == 3 else 1, **e}
+                    path = module if module.endswith(".lean") else module.replace(".", "/") + ".lean"
+                    page += [f"- Lean declaration: [{e['declaration']}](../../{path}#L{e['line']})"]
+            for e in n.get("source_evidence", []):
+                page += [f"- Ordinary mathematical proof (not Lean checked): [{Path(e['path']).name}](../../{e['path']})"]
+            page += [""]
+            for e in edges[n["id"]]:
+                other = e["to"] if e["from"] == n["id"] else e["from"]
+                direction = "outgoing" if e["from"] == n["id"] else "incoming"
+                target = links.get(other)
+                label = f"[{other}]({target})" if target else f"{other} (structural node in full graph)"
+                page += [f"- {direction} **{e['relation']}**: {label}. {e.get('basis', '')}"]
+            page += [""]
+        surfaces[SEMANTIC_DIR / f"BROWSER_{zid}.md"] = "\n".join(page) + "\n"
+    for problem, rows in sorted(problems.items()):
+        index += [f"## Problem {problem}", ""]
+        if problem.isdigit():
+            index += [f"[Full research frontier and additional proof sources](../../research_corpus/Erdos{problem}/FRONTIER.md)", ""]
+        grouped = defaultdict(list)
+        for n, link in rows:
+            grouped[link.split("#")[0]].append(n)
+        for page, members in grouped.items():
+            label = zones.get(members[0]["zone"], {}).get("title", members[0]["zone"])
+            if members[0]["zone"] == "structural":
+                modules = list(dict.fromkeys(Path(n.get("source_module", n["id"])).stem for n in members))
+                label = ", ".join(modules[:3]) + (f" (+{len(modules)-3} modules)" if len(modules) > 3 else "")
+            else:
+                ids = [n.get("local_id", n["id"]) for n in members]
+                label += f" — {ids[0]}" + (f" … {ids[-1]}" if len(ids) > 1 else "")
+            index += [f"- [{label} — {members[0]['zone']}, {len(members)} nodes]({page})"]
+        index += [""]
+    surfaces[SEMANTIC_DIR / "BROWSER.md"] = "\n".join(index) + "\n"
+    return surfaces
+
+
 def generated_surface_texts(payload: dict) -> dict[Path, str]:
     census = payload["summary"]["public_semantic_census"]
     macros = semantic_coverage_macro_region(payload)
     return {
+        **browser_surfaces(payload),
         RESULTS: replace_generated_region(
             safe_read_text(RESULTS),
             begin=MD_CENSUS_BEGIN,
@@ -1531,6 +1629,7 @@ def main() -> int:
     payload = collect()
     text = render(payload)
     surfaces = generated_surface_texts(payload)
+    obsolete_browser_pages = set(SEMANTIC_DIR.glob("BROWSER*.md")) - set(surfaces)
 
     if args.check:
         if not OUTPUT.is_file():
@@ -1542,8 +1641,8 @@ def main() -> int:
         stale_surfaces = [
             path.relative_to(ROOT).as_posix()
             for path, expected in surfaces.items()
-            if safe_read_text(path) != expected
-        ]
+            if not path.is_file() or safe_read_text(path) != expected
+        ] + [p.relative_to(ROOT).as_posix() for p in sorted(obsolete_browser_pages)]
         if stale_surfaces:
             print(
                 "semantic census/coverage projections are stale: "
@@ -1558,6 +1657,8 @@ def main() -> int:
         )
         return 0
 
+    for path in obsolete_browser_pages:
+        _safe_semantic_path(path).unlink()
     safe_write_text(OUTPUT, text)
     for path, expected in surfaces.items():
         safe_write_text(path, expected)

@@ -206,6 +206,17 @@ All 70 source-current review families are accounted for here. The categories pre
 **Read.** [Programme paper](../erdos-68-factorial-denominator-irrationality.pdf) · [Lean source](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
 
 <details>
+<summary>Source-current research frontier</summary>
+
+[Dated frontier](../research_corpus/Erdos68/FRONTIER.md) · [strongest-result map](../research_corpus/Erdos68/STRONGEST_RESULTS.json) · [corpus manifest](../research_corpus/Erdos68/CORPUS_MANIFEST.json) · [checkpoint](../research_corpus/Erdos68/PUBLIC_CORPUS_CHECKPOINT.json)
+
+This source-fingerprinted route contains 111 activated research results at source checkpoint `c83f7c86ff88328eecc056a477f8a7caa6e2b1d1`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
+
+Authority boundary: these are public research evidence, not reviewed claim-registry entries or Comparator interfaces. They do not close Erdős #1041 or promote research-corpus rows into the checked result set.
+
+</details>
+
+<details>
 <summary>Representative checked declaration</summary>
 
 <code>ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses</code>
@@ -297,6 +308,17 @@ Exact registry keys and Comparator routing are listed separately.
 **Open boundary.** The unrestricted problem.
 
 **Read.** [Programme paper](../erdos-243-reciprocal-tail-rigidity.pdf) · [Lean source](../ErdosProblems/Erdos243/ReciprocalTailRigidity.lean)
+
+<details>
+<summary>Source-current research frontier</summary>
+
+[Dated frontier](../research_corpus/Erdos243/FRONTIER.md) · [strongest-result map](../research_corpus/Erdos243/STRONGEST_RESULTS.json) · [corpus manifest](../research_corpus/Erdos243/CORPUS_MANIFEST.json) · [checkpoint](../research_corpus/Erdos243/PUBLIC_CORPUS_CHECKPOINT.json)
+
+This source-fingerprinted route contains 85 activated research results at source checkpoint `c83f7c86ff88328eecc056a477f8a7caa6e2b1d1`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
+
+Authority boundary: these are public research evidence, not reviewed claim-registry entries or Comparator interfaces. They do not close Erdős #1041 or promote research-corpus rows into the checked result set.
+
+</details>
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -402,6 +424,17 @@ Exact registry keys and Comparator routing are listed separately.
 **Open boundary.** The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint.
 
 **Read.** [Programme paper](../erdos-249-binary-totient-series.pdf) · [Lean source](../ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean)
+
+<details>
+<summary>Source-current research frontier</summary>
+
+[Dated frontier](../research_corpus/Erdos249/FRONTIER.md) · [strongest-result map](../research_corpus/Erdos249/STRONGEST_RESULTS.json) · [corpus manifest](../research_corpus/Erdos249/CORPUS_MANIFEST.json) · [checkpoint](../research_corpus/Erdos249/PUBLIC_CORPUS_CHECKPOINT.json)
+
+This source-fingerprinted route contains 52 activated research results at source checkpoint `c83f7c86ff88328eecc056a477f8a7caa6e2b1d1`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
+
+Authority boundary: these are public research evidence, not reviewed claim-registry entries or Comparator interfaces. They do not close Erdős #1041 or promote research-corpus rows into the checked result set.
+
+</details>
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -687,6 +720,17 @@ Exact registry keys and Comparator routing are listed separately.
 **Read.** [Programme paper](../erdos-251-prime-gap-dyadic-series.pdf) · [Lean source](../ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
 
 <details>
+<summary>Source-current research frontier</summary>
+
+[Dated frontier](../research_corpus/Erdos251/FRONTIER.md) · [strongest-result map](../research_corpus/Erdos251/STRONGEST_RESULTS.json) · [corpus manifest](../research_corpus/Erdos251/CORPUS_MANIFEST.json) · [checkpoint](../research_corpus/Erdos251/PUBLIC_CORPUS_CHECKPOINT.json)
+
+This source-fingerprinted route contains 30 activated research results at source checkpoint `c83f7c86ff88328eecc056a477f8a7caa6e2b1d1`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
+
+Authority boundary: these are public research evidence, not reviewed claim-registry entries or Comparator interfaces. They do not close Erdős #1041 or promote research-corpus rows into the checked result set.
+
+</details>
+
+<details>
 <summary>Representative checked declaration</summary>
 
 <code>ErdosProblems.Erdos251.dyadicPartialSumQ_eq_start_add_differences</code>
@@ -805,6 +849,17 @@ Exact registry keys and Comparator routing are listed separately.
 **Open boundary.** The universal irrationality problem, or irrationality for any new infinite support.
 
 **Read.** [Programme paper](../erdos-257-mersenne-support-subseries.pdf) · [Lean source](../ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)
+
+<details>
+<summary>Source-current research frontier</summary>
+
+[Dated frontier](../research_corpus/Erdos257/FRONTIER.md) · [strongest-result map](../research_corpus/Erdos257/STRONGEST_RESULTS.json) · [corpus manifest](../research_corpus/Erdos257/CORPUS_MANIFEST.json) · [checkpoint](../research_corpus/Erdos257/PUBLIC_CORPUS_CHECKPOINT.json)
+
+This source-fingerprinted route contains 57 activated research results at source checkpoint `c83f7c86ff88328eecc056a477f8a7caa6e2b1d1`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
+
+Authority boundary: these are public research evidence, not reviewed claim-registry entries or Comparator interfaces. They do not close Erdős #1041 or promote research-corpus rows into the checked result set.
+
+</details>
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -1031,6 +1086,17 @@ Every two-prime case is settled at transcendence level by a paper argument in th
 </details>
 
 <details>
+<summary>Source-current research frontier</summary>
+
+[Dated frontier](../research_corpus/Erdos269/FRONTIER.md) · [strongest-result map](../research_corpus/Erdos269/STRONGEST_RESULTS.json) · [corpus manifest](../research_corpus/Erdos269/CORPUS_MANIFEST.json) · [checkpoint](../research_corpus/Erdos269/PUBLIC_CORPUS_CHECKPOINT.json)
+
+This source-fingerprinted route contains 64 activated research results at source checkpoint `c83f7c86ff88328eecc056a477f8a7caa6e2b1d1`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
+
+Authority boundary: these are public research evidence, not reviewed claim-registry entries or Comparator interfaces. They do not close Erdős #1041 or promote research-corpus rows into the checked result set.
+
+</details>
+
+<details>
 <summary>Representative checked declaration</summary>
 
 <code>ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight</code>
@@ -1169,7 +1235,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 [Dated frontier](../research_corpus/Erdos1041/FRONTIER.md) · [strongest-result map](../research_corpus/Erdos1041/STRONGEST_RESULTS.json) · [corpus manifest](../research_corpus/Erdos1041/CORPUS_MANIFEST.json) · [checkpoint](../research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json)
 
-This source-fingerprinted route contains 45 activated research results at source checkpoint `867638684907b4ebd4ab2ef7b5de22dafda71e36`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
+This source-fingerprinted route contains 185 activated research results at source checkpoint `c83f7c86ff88328eecc056a477f8a7caa6e2b1d1`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
 
 Authority boundary: these are public research evidence, not reviewed claim-registry entries or Comparator interfaces. They do not close Erdős #1041 or promote research-corpus rows into the checked result set.
 
@@ -1282,6 +1348,17 @@ Exact registry keys and Comparator routing are listed separately.
 **Open boundary.** Irrationality at base three halves, or for any rational base.
 
 **Read.** [Programme paper](../erdos-1049-rational-base-lambert.pdf) · [Lean source](../ErdosProblems/Erdos1049/RationalBaseLambert.lean)
+
+<details>
+<summary>Source-current research frontier</summary>
+
+[Dated frontier](../research_corpus/Erdos1049/FRONTIER.md) · [strongest-result map](../research_corpus/Erdos1049/STRONGEST_RESULTS.json) · [corpus manifest](../research_corpus/Erdos1049/CORPUS_MANIFEST.json) · [checkpoint](../research_corpus/Erdos1049/PUBLIC_CORPUS_CHECKPOINT.json)
+
+This source-fingerprinted route contains 90 activated research results at source checkpoint `c83f7c86ff88328eecc056a477f8a7caa6e2b1d1`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
+
+Authority boundary: these are public research evidence, not reviewed claim-registry entries or Comparator interfaces. They do not close Erdős #1041 or promote research-corpus rows into the checked result set.
+
+</details>
 
 <details>
 <summary>Representative checked declaration</summary>

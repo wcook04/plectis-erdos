@@ -1,0 +1,9 @@
+import ExternalVerification68PrimeUnitTranslator.Solution
+
+namespace Erdos249257.ExternalVerification68PrimeUnitTranslator
+
+#print axioms primeTranslator_exact_profile
+#print axioms channelResidual_appendPrimeTranslator
+#print axioms exists_remote_factorialGrid_primeTranslator_reduction
+
+end Erdos249257.ExternalVerification68PrimeUnitTranslator

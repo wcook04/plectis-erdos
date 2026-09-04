@@ -1,0 +1,226 @@
+{
+  "cap": 64,
+  "cohorts": {
+    "ap3": {
+      "argmax_N": 2,
+      "block_length_histogram": {
+        "0": 499999,
+        "1": 1
+      },
+      "control_argmax_N": 463736,
+      "control_max_K": 1,
+      "max_K": 1,
+      "witness_block": [
+        {
+          "N_plus_j": 3,
+          "j": 1,
+          "tau_N_plus_j": 1,
+          "tau_j": 0
+        }
+      ]
+    },
+    "lacunary": {
+      "argmax_N": 2,
+      "block_length_histogram": {
+        "0": 388888,
+        "1": 111112
+      },
+      "control_argmax_N": 382532,
+      "control_max_K": 10,
+      "max_K": 1,
+      "witness_block": [
+        {
+          "N_plus_j": 3,
+          "j": 1,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        }
+      ]
+    },
+    "naturals": {
+      "argmax_N": 2,
+      "block_length_histogram": {
+        "0": 458462,
+        "1": 41537,
+        "2": 1
+      },
+      "control_argmax_N": 141823,
+      "control_max_K": 1,
+      "max_K": 2,
+      "witness_block": [
+        {
+          "N_plus_j": 3,
+          "j": 1,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        },
+        {
+          "N_plus_j": 4,
+          "j": 2,
+          "tau_N_plus_j": 3,
+          "tau_j": 2
+        }
+      ]
+    },
+    "powers2": {
+      "argmax_N": 1,
+      "block_length_histogram": {
+        "0": 375000,
+        "1": 125000
+      },
+      "control_argmax_N": 31701,
+      "control_max_K": 3,
+      "max_K": 1,
+      "witness_block": [
+        {
+          "N_plus_j": 2,
+          "j": 1,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        }
+      ]
+    },
+    "primes": {
+      "argmax_N": 840,
+      "block_length_histogram": {
+        "0": 458276,
+        "1": 36278,
+        "12": 1,
+        "2": 4209,
+        "3": 1024,
+        "4": 144,
+        "5": 46,
+        "6": 14,
+        "7": 5,
+        "8": 2,
+        "9": 1
+      },
+      "control_argmax_N": 39677,
+      "control_max_K": 8,
+      "max_K": 12,
+      "witness_block": [
+        {
+          "N_plus_j": 841,
+          "j": 1,
+          "tau_N_plus_j": 1,
+          "tau_j": 0
+        },
+        {
+          "N_plus_j": 842,
+          "j": 2,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        },
+        {
+          "N_plus_j": 843,
+          "j": 3,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        },
+        {
+          "N_plus_j": 844,
+          "j": 4,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        },
+        {
+          "N_plus_j": 845,
+          "j": 5,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        },
+        {
+          "N_plus_j": 846,
+          "j": 6,
+          "tau_N_plus_j": 3,
+          "tau_j": 2
+        },
+        {
+          "N_plus_j": 847,
+          "j": 7,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        },
+        {
+          "N_plus_j": 848,
+          "j": 8,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        },
+        {
+          "N_plus_j": 849,
+          "j": 9,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        },
+        {
+          "N_plus_j": 850,
+          "j": 10,
+          "tau_N_plus_j": 3,
+          "tau_j": 2
+        },
+        {
+          "N_plus_j": 851,
+          "j": 11,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        },
+        {
+          "N_plus_j": 852,
+          "j": 12,
+          "tau_N_plus_j": 3,
+          "tau_j": 2
+        }
+      ]
+    },
+    "squares": {
+      "argmax_N": 39443,
+      "block_length_histogram": {
+        "0": 362494,
+        "1": 105927,
+        "2": 26355,
+        "3": 5162,
+        "4": 55,
+        "5": 7
+      },
+      "control_argmax_N": 156247,
+      "control_max_K": 5,
+      "max_K": 5,
+      "witness_block": [
+        {
+          "N_plus_j": 39444,
+          "j": 1,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        },
+        {
+          "N_plus_j": 39445,
+          "j": 2,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        },
+        {
+          "N_plus_j": 39446,
+          "j": 3,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        },
+        {
+          "N_plus_j": 39447,
+          "j": 4,
+          "tau_N_plus_j": 3,
+          "tau_j": 2
+        },
+        {
+          "N_plus_j": 39448,
+          "j": 5,
+          "tau_N_plus_j": 2,
+          "tau_j": 1
+        }
+      ]
+    }
+  },
+  "max_n": 1000000,
+  "nmax": 500000,
+  "seed": 20260823
+}

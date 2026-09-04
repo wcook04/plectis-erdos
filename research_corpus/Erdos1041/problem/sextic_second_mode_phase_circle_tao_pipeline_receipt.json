@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_all_phase_pure_second_mode_circle",
+  "recorded_at": "2026-08-25",
+  "input_stage": "second_mode_dominant_residual_plus_canonical_square_contact_slice",
+  "output_stage": "complete_all_phase_pure_second_mode_connector_theorem",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticSecondModePhaseCircle.md",
+    "ErdosProblems/Erdos1041/SexticSecondModePhaseCircle.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_second_mode_phase_circle.py"
+  ],
+  "human_understanding_delta": "The canonical B=-1 double-contact connector is the worst boundary of the entire pure second-mode phase circle. Three sixth-root rotations reduce every phase to [pi/3,pi]; on the two chord halves a cosine envelope reduces to phases pi/3 and pi, which are the same canonical Bernstein certificate by rotation and reversal. One algebraic radius works for all phases.",
+  "verification_state": {
+    "analytic": "complete_phase_reduction_ray_bound_two_boundary_envelope_and_canonical_certificate_fan_in",
+    "symbolic": "passed_two_exact_boundary_identities_and_1441_phase_fixed_radius_replay",
+    "lean": "passed_canonical_cached_focused_build_and_final_serialized_authority_check_warning_free",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "analytic theorem, Lean phase envelope, symbolic checker, canonical research packet update, and mixed-neighborhood handoff authored and focused validation passed",
+  "unresolved_downstream_bottleneck": "Prove a uniform mixed neighborhood of the second-mode phase circle with normalized E1 and E3, using the null-box atlas at double-contact phases, then absorb the nonlinear remainder.",
+  "next_stage_owner": "Refinery: audit the phase-sector and symmetry identities, then route the mixed neighborhood to the sextic compact-atlas owner.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex computation-guided analytic derivation under operator direction, reusing the existing canonical square-contact proof",
+    "computation": "A bounded minimax sweep identified the canonical worst phase and exact-radius hypothesis; symbolic identities and Lean, not the sweep, prove the theorem.",
+    "formalization": "Lean checks the three-rotation cover, two-half cosine envelope, canonical ray bound, and chord fan-in to the existing Bernstein certificate.",
+    "claim_boundary": "Closes every phase of the homogeneous pure second-mode sextic family. It does not prove a mixed neighborhood, finite nonlinear transfer, all sextics, or unrestricted Erdos #1041."
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "cap": 220,
+  "every_bounded_gap_family_pinned_at_2^-G": true,
+  "families": [
+    {
+      "argmin_N": 1,
+      "close_return_possible": false,
+      "family": "all_naturals",
+      "matches_prediction": true,
+      "max_gap": 1,
+      "min_excess": 0.6066951524152918,
+      "predicted_floor_2^-G": 0.5,
+      "reciprocal_sum": "divergent",
+      "tail_min": 1.8416257174706403,
+      "tail_min_excess": 1.8416257174706403
+    },
+    {
+      "argmin_N": 2,
+      "close_return_possible": false,
+      "family": "evens",
+      "matches_prediction": true,
+      "max_gap": 2,
+      "min_excess": 0.2632930581002713,
+      "predicted_floor_2^-G": 0.25,
+      "reciprocal_sum": "divergent",
+      "tail_min": 0.4268000352112856,
+      "tail_min_excess": 0.4268000352112856
+    },
+    {
+      "argmin_N": 1,
+      "close_return_possible": false,
+      "family": "odds",
+      "matches_prediction": true,
+      "max_gap": 2,
+      "min_excess": 0.185597466381868,
+      "predicted_floor_2^-G": 0.25,
+      "reciprocal_sum": "divergent",
+      "tail_min": 1.1144033600803218,
+      "tail_min_excess": 1.1144033600803218
+    },
+    {
+      "argmin_N": 1,
+      "close_return_possible": false,
+      "family": "one_mod_three",
+      "matches_prediction": true,
+      "max_gap": 3,
+      "min_excess": 0.07565772358932929,
+      "predicted_floor_2^-G": 0.125,
+      "reciprocal_sum": "divergent",
+      "tail_min": 0.42362951931179815,
+      "tail_min_excess": 0.42362951931179815
+    },
+    {
+      "argmin_N": 7,
+      "close_return_possible": false,
+      "family": "zero_mod_seven",
+      "matches_prediction": true,
+      "max_gap": 7,
+      "min_excess": 0.007812973169624357,
+      "predicted_floor_2^-G": 0.0078125,
+      "reciprocal_sum": "divergent",
+      "tail_min": 0.007935531437851778,
+      "tail_min_excess": 0.007935531437851778
+    },
+    {
+      "argmin_N": 64,
+      "close_return_possible": true,
+      "family": "powers_of_two",
+      "max_gap": 64,
+      "min_excess": 5.421010862427522e-20,
+      "reciprocal_sum": "summable",
+      "tail_min": 5.421010862427522e-20
+    },
+    {
+      "argmin_N": 36,
+      "close_return_possible": true,
+      "family": "squares",
+      "max_gap": 27,
+      "min_excess": 0.00041196472201310394,
+      "reciprocal_sum": "summable",
+      "tail_min": 0.006092563038892663
+    }
+  ],
+  "max_excess_over_summable_families": 0.00041196472201310394,
+  "nmax": 120,
+  "verdict": "criterion separates: every bounded-gap (divergent) family is pinned at its 2^-G floor for large N, every summable family reaches ~0"
+}

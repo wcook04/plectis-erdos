@@ -1,0 +1,347 @@
+{
+  "M": 1000000,
+  "P1_instability": true,
+  "P3_naturals_stays_small": true,
+  "cap": 64,
+  "cohorts": {
+    "ap3": {
+      "head_values": [
+        2,
+        0,
+        24,
+        0,
+        0,
+        4,
+        0,
+        2
+      ],
+      "iid_control_runs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "iid_max": 1,
+      "iid_min": 0,
+      "maxK_by_head_value": {
+        "0": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "2": [
+          1,
+          1
+        ],
+        "24": [
+          1
+        ],
+        "4": [
+          1
+        ]
+      },
+      "perm_control_runs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "perm_max": 1,
+      "perm_min": 1,
+      "perm_range": 0,
+      "recorded_control_max_K": 1,
+      "recorded_real_max_K": 1
+    },
+    "lacunary": {
+      "head_values": [
+        2,
+        1,
+        7,
+        1,
+        1,
+        2,
+        1,
+        2
+      ],
+      "iid_control_runs": [
+        6,
+        6,
+        6,
+        5,
+        5,
+        7,
+        4,
+        6
+      ],
+      "iid_max": 7,
+      "iid_min": 4,
+      "maxK_by_head_value": {
+        "1": [
+          7,
+          7,
+          8,
+          10
+        ],
+        "2": [
+          4,
+          4,
+          5
+        ],
+        "7": [
+          2
+        ]
+      },
+      "perm_control_runs": [
+        4,
+        7,
+        2,
+        10,
+        7,
+        4,
+        8,
+        5
+      ],
+      "perm_max": 10,
+      "perm_min": 2,
+      "perm_range": 8,
+      "recorded_control_max_K": 10,
+      "recorded_real_max_K": 1
+    },
+    "naturals": {
+      "head_values": [
+        4,
+        4,
+        28,
+        8,
+        16,
+        8,
+        12,
+        4
+      ],
+      "iid_control_runs": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "iid_max": 1,
+      "iid_min": 0,
+      "maxK_by_head_value": {
+        "12": [
+          1
+        ],
+        "16": [
+          1
+        ],
+        "28": [
+          0
+        ],
+        "4": [
+          1,
+          1,
+          1
+        ],
+        "8": [
+          1,
+          1
+        ]
+      },
+      "perm_control_runs": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "perm_max": 1,
+      "perm_min": 0,
+      "perm_range": 1,
+      "recorded_control_max_K": 1,
+      "recorded_real_max_K": 2
+    },
+    "powers2": {
+      "head_values": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        3,
+        1
+      ],
+      "iid_control_runs": [
+        6,
+        8,
+        4,
+        6,
+        4,
+        4,
+        5,
+        7
+      ],
+      "iid_max": 8,
+      "iid_min": 4,
+      "maxK_by_head_value": {
+        "1": [
+          6,
+          6,
+          7,
+          7,
+          8
+        ],
+        "2": [
+          6,
+          8
+        ],
+        "3": [
+          5
+        ]
+      },
+      "perm_control_runs": [
+        6,
+        8,
+        6,
+        8,
+        6,
+        7,
+        5,
+        7
+      ],
+      "perm_max": 8,
+      "perm_min": 5,
+      "perm_range": 3,
+      "recorded_control_max_K": 3,
+      "recorded_real_max_K": 1
+    },
+    "primes": {
+      "head_values": [
+        2,
+        2,
+        3,
+        3,
+        4,
+        3,
+        3,
+        2
+      ],
+      "iid_control_runs": [
+        5,
+        7,
+        4,
+        10,
+        5,
+        5,
+        4,
+        7
+      ],
+      "iid_max": 10,
+      "iid_min": 4,
+      "maxK_by_head_value": {
+        "2": [
+          5,
+          7,
+          9
+        ],
+        "3": [
+          7,
+          7,
+          8,
+          9
+        ],
+        "4": [
+          5
+        ]
+      },
+      "perm_control_runs": [
+        5,
+        9,
+        7,
+        8,
+        5,
+        7,
+        9,
+        7
+      ],
+      "perm_max": 9,
+      "perm_min": 5,
+      "perm_range": 4,
+      "recorded_control_max_K": 8,
+      "recorded_real_max_K": 12
+    },
+    "squares": {
+      "head_values": [
+        1,
+        1,
+        4,
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
+      "iid_control_runs": [
+        6,
+        8,
+        4,
+        6,
+        5,
+        4,
+        5,
+        10
+      ],
+      "iid_max": 10,
+      "iid_min": 4,
+      "maxK_by_head_value": {
+        "1": [
+          4,
+          4,
+          5,
+          6,
+          9,
+          10
+        ],
+        "2": [
+          5
+        ],
+        "4": [
+          5
+        ]
+      },
+      "perm_control_runs": [
+        5,
+        9,
+        5,
+        10,
+        4,
+        6,
+        5,
+        4
+      ],
+      "perm_max": 10,
+      "perm_min": 4,
+      "perm_range": 6,
+      "recorded_control_max_K": 5,
+      "recorded_real_max_K": 5
+    }
+  },
+  "falsifier_survived": true,
+  "nmax": 500000,
+  "seeds": 8
+}

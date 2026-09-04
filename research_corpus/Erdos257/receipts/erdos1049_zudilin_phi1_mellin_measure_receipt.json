@@ -1,0 +1,214 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1AssociatedGradedKernel.md",
+      "falsification_consequence": "The direct product-exponential Gram proof is unavailable; a surviving route needs another positive functional or determinant recurrence.",
+      "survival_consequence": "A nonnegative canonical density would immediately make every shifted factorial-harmonic Hankel matrix a Gram matrix."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "canonical_factorial_cube_mellin_measure_is_positive",
+      "statement": "The factorial cube in m_n=(n!)^3 H_n should supply a direct positive product-exponential moment measure for the shifted Hankel kernel."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1MellinMeasureNoGo.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1AssociatedGradedKernel.md"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_phi1_kernel_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi1_mellin_measure.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1AssociatedGradedKernel.md"
+      ]
+    },
+    "probe": {
+      "computation": "Differentiate Gamma(s)^3, add EulerGamma times the original Mellin transform, specialize at s=n+1, and determine the exact sign of the resulting density factor around exp(-3*EulerGamma).",
+      "falsifier": "The representing factor EulerGamma+log(t)/3 is strictly negative below exp(-3*EulerGamma) and strictly positive above it.",
+      "id": "differentiate_product_exponential_mellin_transform",
+      "question": "What exact density represents (n!)^3 H_n under the canonical Gamma(s)^3 Mellin transform, and does it stay nonnegative?",
+      "resource_bounds": {
+        "maximum_exact_integer_regression_index": 20
+      },
+      "stop_condition": "Stop after the exact sign-changing density is derived; do not infer failure of alternate measures or of direct determinant positivity."
+    },
+    "problem": {
+      "claim_ceiling": "Exact elimination of the canonical product-exponential Mellin density as a positive measure for the shifted Phi_1 factorial-harmonic kernel; not a no-go for all positivity proofs.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the Lambert value at p=3/2."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The sign change follows from an all-s Mellin derivative identity and an exact threshold, not from numerical quadrature or finite minors.",
+        "next_analytic_target": "Construct an alternate positive functional for the shifted moments or prove their Hankel signs through condensation/sign-regularity; do not extend the leading-minor audit."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The canonical Mellin density for (n!)^3 H_n is f_3(t)(EulerGamma+log(t)/3), which changes sign at exp(-3*EulerGamma); the source-natural positive-measure mechanism is therefore eliminated exactly."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "above_threshold_factor_is_positive": true,
+    "above_threshold_sample_factor": "log(2)/3",
+    "all_exact_moment_regressions_hold": true,
+    "authority_boundary": "This eliminates only the canonical product-exponential Mellin density as a positive Gram measure. It does not rule out another representing measure or a direct positive-definiteness proof.",
+    "below_threshold_factor_is_negative": true,
+    "below_threshold_sample_factor": "-log(2)/3",
+    "canonical_density_factor": "EulerGamma + log(t)/3",
+    "canonical_shifted_density_is_not_positive": true,
+    "mellin_transform": "Gamma(s)^3",
+    "moment_records": [
+      {
+        "differentiated_mellin_moment": "0",
+        "factorial_harmonic_moment": "0",
+        "identity_holds": true,
+        "index": 0
+      },
+      {
+        "differentiated_mellin_moment": "1",
+        "factorial_harmonic_moment": "1",
+        "identity_holds": true,
+        "index": 1
+      },
+      {
+        "differentiated_mellin_moment": "12",
+        "factorial_harmonic_moment": "12",
+        "identity_holds": true,
+        "index": 2
+      },
+      {
+        "differentiated_mellin_moment": "396",
+        "factorial_harmonic_moment": "396",
+        "identity_holds": true,
+        "index": 3
+      },
+      {
+        "differentiated_mellin_moment": "28800",
+        "factorial_harmonic_moment": "28800",
+        "identity_holds": true,
+        "index": 4
+      },
+      {
+        "differentiated_mellin_moment": "3945600",
+        "factorial_harmonic_moment": "3945600",
+        "identity_holds": true,
+        "index": 5
+      },
+      {
+        "differentiated_mellin_moment": "914457600",
+        "factorial_harmonic_moment": "914457600",
+        "identity_holds": true,
+        "index": 6
+      },
+      {
+        "differentiated_mellin_moment": "331948108800",
+        "factorial_harmonic_moment": "331948108800",
+        "identity_holds": true,
+        "index": 7
+      },
+      {
+        "differentiated_mellin_moment": "178150971801600",
+        "factorial_harmonic_moment": "178150971801600",
+        "identity_holds": true,
+        "index": 8
+      },
+      {
+        "differentiated_mellin_moment": "135181472425574400",
+        "factorial_harmonic_moment": "135181472425574400",
+        "identity_holds": true,
+        "index": 9
+      },
+      {
+        "differentiated_mellin_moment": "139959945009561600000",
+        "factorial_harmonic_moment": "139959945009561600000",
+        "identity_holds": true,
+        "index": 10
+      },
+      {
+        "differentiated_mellin_moment": "192068638634351001600000",
+        "factorial_harmonic_moment": "192068638634351001600000",
+        "identity_holds": true,
+        "index": 11
+      },
+      {
+        "differentiated_mellin_moment": "341053219253531757772800000",
+        "factorial_harmonic_moment": "341053219253531757772800000",
+        "identity_holds": true,
+        "index": 12
+      },
+      {
+        "differentiated_mellin_moment": "767867587214170176199065600000",
+        "factorial_harmonic_moment": "767867587214170176199065600000",
+        "identity_holds": true,
+        "index": 13
+      },
+      {
+        "differentiated_mellin_moment": "2154354356497764947830662758400000",
+        "factorial_harmonic_moment": "2154354356497764947830662758400000",
+        "identity_holds": true,
+        "index": 14
+      },
+      {
+        "differentiated_mellin_moment": "7420021899303514949600831078400000000",
+        "factorial_harmonic_moment": "7420021899303514949600831078400000000",
+        "identity_holds": true,
+        "index": 15
+      },
+      {
+        "differentiated_mellin_moment": "30964861332661660916146806089318400000000",
+        "factorial_harmonic_moment": "30964861332661660916146806089318400000000",
+        "identity_holds": true,
+        "index": 16
+      },
+      {
+        "differentiated_mellin_moment": "154777380078888020149287510728717107200000000",
+        "factorial_harmonic_moment": "154777380078888020149287510728717107200000000",
+        "identity_holds": true,
+        "index": 17
+      },
+      {
+        "differentiated_mellin_moment": "917241446684254144126611216854600279654400000000",
+        "factorial_harmonic_moment": "917241446684254144126611216854600279654400000000",
+        "identity_holds": true,
+        "index": 18
+      },
+      {
+        "differentiated_mellin_moment": "6386098402692335685146976356347827591944601600000000",
+        "factorial_harmonic_moment": "6386098402692335685146976356347827591944601600000000",
+        "identity_holds": true,
+        "index": 19
+      },
+      {
+        "differentiated_mellin_moment": "51808806052664962961603191002342765216399360000000000000",
+        "factorial_harmonic_moment": "51808806052664962961603191002342765216399360000000000000",
+        "identity_holds": true,
+        "index": 20
+      }
+    ],
+    "schema": "erdos1049-zudilin-phi1-mellin-measure/1",
+    "sign_change_threshold": "exp(-3*EulerGamma)",
+    "zeroth_moment_is_zero": true
+  },
+  "schema": "erdos1049-zudilin-phi1-mellin-measure-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 8055,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi1_mellin_measure.py",
+      "sha256": "c5f60763fa96b9479f7a9a4554137471494d58c3f522c84935e3514a49438ab6"
+    },
+    {
+      "byte_length": 4193,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1MellinMeasureNoGo.md",
+      "sha256": "e0c7b26beb066f16d45a469c278f08cd721a613b27c62ee50446d6a1eb66c26f"
+    },
+    {
+      "byte_length": 5657,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1AssociatedGradedKernel.md",
+      "sha256": "331153728c2eb05e70c41c9259f5b71dd7e7e9666ec8f5e38cc6c25258d51649"
+    }
+  ],
+  "status": "exact_mechanism_eliminated"
+}

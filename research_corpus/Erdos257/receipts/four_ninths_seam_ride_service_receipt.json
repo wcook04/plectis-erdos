@@ -1,0 +1,93 @@
+{
+  "canonical_digest": "15490cb8d2559496f38c5f7452b011e01500ad7ef75b86f5f275e6f954bd7cb0",
+  "census": {
+    "maximal_no_strip_ride_count": 792514,
+    "nonzero_strip_count": 3979477,
+    "run_census_sha256": "c7b706aa3b66c4364439e596c4f8f208cfafb9dea47a5474c13cfeb093c7f8b3"
+  },
+  "claim_ceiling": "exact finite service census for the existing 4/9 cylinder; no uniform stall bound, all-depth seam exclusion, or Erdos 257 conclusion",
+  "extremes": {
+    "maximum_doubling_stall_prefix": 7,
+    "maximum_doubling_tail_length": 10,
+    "maximum_escape_service_deficit": {
+      "correction": -62,
+      "offset": 18,
+      "rank": 1349998,
+      "value": 26
+    },
+    "maximum_escape_stall_prefix": 7,
+    "maximum_escape_tail_length": 10,
+    "maximum_post_strip_reset_offset": {
+      "common_bits_stripped": 1,
+      "offset": 1664649,
+      "rank": 9994924
+    },
+    "maximum_post_strip_width": {
+      "common_bits_stripped": 1,
+      "offset": 4474,
+      "rank": 6300964,
+      "width": 23
+    },
+    "maximum_ride_length": 13,
+    "maximum_strict_growth_stall_prefix": 4,
+    "maximum_tripling_stall_prefix": 7
+  },
+  "mechanism_decision": {
+    "candidate": "prove a uniform bound on the number of initial no-strip steps before x' >= max(1,2*x) holds forever on that ride",
+    "observed_stall_bound": 7,
+    "one_way_effect": "a uniform stall bound plus the linear carry corridor bounds every no-strip ride by O(log n), reducing the 4/9 seam theorem to the already elementary post-strip reset geometry",
+    "status": "finite_service_target_opened",
+    "stop_condition": "prove or exactly falsify the bounded-stall service statement; do not extend the horizon without a structural service lemma"
+  },
+  "parameters": {
+    "crosscheck": 300,
+    "horizon": 10000000
+  },
+  "schema": "erdos257_four_ninths_seam_ride_service_v0",
+  "source": {
+    "existing_cylinder_audit": "erdos257_period_noncollapse/scripts/totient_four_ninths_even_cylinder_audit.py",
+    "existing_cylinder_audit_sha256": "45745f784faa95a293cc462b42268a2801854c3fa1b225e4db5d4a961d5839bc"
+  },
+  "terminal": {
+    "boundary_below_top": 809787,
+    "prefix_length": 9999979,
+    "rank": 10000000,
+    "suffix_width": 21
+  },
+  "validation": {
+    "exact_integer_recurrence": true,
+    "full_prefix_crosscheck": true,
+    "midpoint_seam_seen": false,
+    "trace_sha256": "9c68ef165af5674fb308cec13c665f0bc1555a50e08ee6e90062250f5b20b750"
+  },
+  "witnesses": {
+    "longest_escape_tail": {
+      "corrections": [-33, -6, -12, -10, -15, -28, -6, 2, -11, -25, -27],
+      "doubling_tail_start": 1,
+      "end_rank": 4662100,
+      "escape_tail_start": 1,
+      "even_loads": [34, 1, 12, 7, 6, 24, 3, 1, 9, 8, 18],
+      "length": 11,
+      "odd_loads": [0, 4, 0, 2, 6, 2, 2, 0, 1, 9, 6],
+      "offsets": [9, 3, 6, 12, 38, 137, 520, 2074, 8298, 33181, 132699, 530769],
+      "start_rank": 4662078,
+      "starting_width": 21,
+      "strict_growth_tail_start": 1,
+      "tripling_tail_start": 3
+    },
+    "worst_escape_stall": {
+      "corrections": [-42, -4, -10, -21, -7, -14, -14, -9, -26, -9, -21, -26, -11],
+      "doubling_tail_start": 7,
+      "end_rank": 293604,
+      "escape_tail_start": 7,
+      "even_loads": [36, 3, 11, 9, 6, 17, 10, 6, 5, 7, 22, 1, 11],
+      "length": 13,
+      "odd_loads": [3, 1, 1, 6, 1, 0, 2, 2, 12, 1, 0, 14, 0],
+      "offsets": [11, 2, 4, 6, 3, 5, 6, 10, 31, 98, 383, 1511, 6018, 24061],
+      "start_rank": 293578,
+      "starting_width": 17,
+      "strict_growth_tail_start": 4,
+      "tripling_tail_start": 7
+    }
+  }
+}

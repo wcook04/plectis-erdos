@@ -1,0 +1,109 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "declaration": "QuinticDoubleTightCompactAtlas.Theorem_DTE_event_excision",
+    "evidence_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticDoubleTightCompactAtlas.md",
+    "evidence_sha256": "953bd29a6de4d964103a2c6bf5fc8a2b35232ffc31c57b4539decb4dd24374bd",
+    "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_double_tight_compact_atlas.py",
+    "verifier_sha256": "10eab661a788a4045b8b9327a411f2078447e1f07d901da5a5c71411c5246bc9",
+    "source_commit_status": "worktree_source_pending_scoped_commit",
+    "formal_status": "ordinary exact continuity and algebra theorem with exact symbolic event charts and fresh dyadic-ball certified point margins; no Lean formalization is claimed",
+    "relation_to_erdos_1041": "This removes all three singular interior fibres from the sole remaining quintic model-wall atlas. It is a strict model-metric reduction, not EX-W, degree five, or the unrestricted parent theorem.",
+    "claim_ceiling": "Only disjoint compact truncations of the twenty regular double-tight branch traces remain in the model metric problem. The effective atlas, model-to-real transfer, degree five, and unrestricted Erdos 1041 remain open."
+  },
+  "source_current_consequence_map": {
+    "status": "candidates_ready_for_judgment",
+    "query": "Erdos 1041 exact event excision theorem removing kappa minus, zero, plus singular fibres from compact double-tight atlas",
+    "precision_note": "The extractor's kappa_0 and N_0 matches outside the #1041 compact carrier are lexical collisions. Semantic consumers are the carrier, wall-sheet theorem, universal chamber, FRONTIER, and research packet."
+  },
+  "decisions": [
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticDoubleTightCriticalValueCarrier.md",
+      "decision": "update_now",
+      "mathematical_reason": "Its event charts now compose with strict point margins and continuity to remove neighborhoods of every interior carrier event.",
+      "validation_or_reentry": "carrier and event-excision exact checkers"
+    },
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticWallSheetSubharmonicReduction.md",
+      "decision": "update_now",
+      "mathematical_reason": "The sole wall residual narrows from the full compact carrier to disjoint regular compact branch truncations.",
+      "validation_or_reentry": "wall-sheet and event-excision exact checkers"
+    },
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticTraceMaxUniversalChamber.md",
+      "decision": "update_now",
+      "mathematical_reason": "The canonical EX-U decomposition must expose that all event and exceptional fibres are already negative.",
+      "validation_or_reentry": "universal, carrier, and event-excision checkers"
+    },
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FRONTIER.md",
+      "decision": "update_now",
+      "mathematical_reason": "The active frontier is the effective regular subatlas, not the three singular event fibres.",
+      "validation_or_reentry": "frontier integrity, exact checker, and cold-reader query"
+    },
+    {
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The owner packet needs the exact event-excision row, verifier, receipt, and narrowed surviving obligation.",
+      "validation_or_reentry": "JSON parse, source checker, consequence rerun"
+    },
+    {
+      "file": "all non-1041 N_0/kappa_0 matches returned by the consequence map",
+      "decision": "outside_scope",
+      "mathematical_reason": "They are unrelated arithmetic or local-variable symbols and consume no double-tight geometry.",
+      "validation_or_reentry": "none"
+    }
+  ],
+  "semantic_second_pass": {
+    "significance": "The finite atlas no longer has to cross any multiple carrier root or exceptional limiting fibre; every remaining cell is uniformly regular after compact truncation.",
+    "hard_mechanism": "At kappa_+- the exact double-root tangent cones have finite nonreal conjugate slopes, while fresh exact-dyadic wall-engine replays give E<-1/6 and E<-1. At kappa=0 the exact fibre factorization and squarefree Newton polygons exhaust the limits, which are already uniformly negative by the mu=-10 side-arm and mu* endpoint-plus-angular theorems. Local uniform continuity then supplies relative negative neighborhoods.",
+    "natural_friction_or_failed_route": "Restricting a subharmonic wall function to the curved real kappa carrier does not give endpoint domination; numerical branch tracking has genuine interior bumps. The theorem therefore uses strict local margins and continuity, not a false monotonicity claim.",
+    "surviving_boundary": "Produce an effective negative cover of the disjoint regular compact branch truncations, for example by interval Newton plus DT-Lip or a finite semialgebraic support-variation certificate.",
+    "strongest_exact_non_support": "No numerical neighborhood radius is claimed. The theorem does not prove the remaining regular subatlas, EX-W, EX-U, model-to-real transfer, degree five, or unrestricted Erdős 1041, and it is not a new solved family."
+  },
+  "canonical_consumer_handoff": {
+    "claims": {
+      "decision": "defer_until_scoped_commit_and_model_closure",
+      "payload": "Treat as a private exact reduction beneath the #1041 model atlas, not as a parent-level family."
+    },
+    "individual_1041_paper_owner": {
+      "decision": "handoff_no_edit_during_proof_search",
+      "payload": "When the paper is refreshed, state that all exceptional and event fibres are negative and the only model boundary is the regular effective subatlas."
+    },
+    "readme_results": {
+      "decision": "defer_until_model_closure",
+      "payload": "Not yet a standalone public endpoint."
+    },
+    "comparator": {
+      "decision": "not_yet_applicable",
+      "payload": "Ordinary/certified theorem with no isolated Lean interface; do not promote checker sections as separate families."
+    },
+    "palomar": {
+      "decision": "not_yet_applicable",
+      "payload": "Wait for model closure or a representative formal interface."
+    },
+    "independent_assurance": {
+      "decision": "ready_for_replay",
+      "payload": "Independently replay the two dyadic point certificates and audit the continuity consumption of all incident event charts."
+    }
+  },
+  "source_files": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticDoubleTightCompactAtlas.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_double_tight_compact_atlas.py"
+  ],
+  "propagated_surface_files": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticDoubleTightCriticalValueCarrier.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticWallSheetSubharmonicReduction.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/QuinticTraceMaxUniversalChamber.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FRONTIER.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/quintic_double_tight_event_excision_20260830_consequence_receipt.json"
+  ],
+  "checkpoint_class": "bounded_private_frontier_advance",
+  "nothing_to_refine": {
+    "stewardship_checked": true,
+    "next_best_lane_checked": true,
+    "reason": "The existing exact-boundary and consequence-routing rules handled this reduction without exposing a reusable workflow defect.",
+    "reentry_condition": "Re-enter when the effective regular subatlas is proved or exactly obstructed."
+  }
+}

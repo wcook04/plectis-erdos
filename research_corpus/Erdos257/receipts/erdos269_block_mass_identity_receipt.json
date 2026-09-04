@@ -1,0 +1,226 @@
+{
+  "checked_shell_count": 100,
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "threePrimeHeight_dyadicShell_factor_two",
+        "halfClearedMassOne_eq_blockDigitOne",
+        "halfClearedMassTwo_eq_blockDigitTwo",
+        "dyadicHalfClearedMass235_eq_thresholdCounts",
+        "dyadicHalfClearedMass235_eq_orderedBlockDigit235"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicBlockThresholdPartition.lean",
+      "falsification_consequence": "Reject the checker digit as a source-faithful compression and repair the endpoint or height convention.",
+      "survival_consequence": "Use the all-a threshold-ordered source identity to derive the actual affine rationality carry recurrence."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "dyadic_block_digit_is_half_height_cleared_mass",
+      "statement": "The checker digit equals one half of the height-cleared mass of the actual half-open dyadic smooth shell."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicWindowComputationalLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_block_mass_identity.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_dyadic_windows.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicBlockMassIdentity.lean",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicBlockThresholdPartition.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Enumerate all {2,3,5}-smooth values in each half-open dyadic shell, sum the exact integer height quotients, and compare with twice the block digit built from ordered prime-power jumps.",
+      "falsifier": "Any shell with cleared_mass != 2*block_digit.",
+      "id": "direct_smooth_shell_height_mass",
+      "question": "Does direct source enumeration agree exactly with the independently constructed block digit, including endpoint normalization?",
+      "stop_condition": "The all-a threshold partition is Lean-certified; stop finite shell extension and move to the actual rationality carry recurrence."
+    },
+    "problem": {
+      "claim_ceiling": "Lean proves the all-scale terminal-two height factorization, local cell algebra, and the exact threshold-ordered summation formula. The actual affine carry recurrence and cofinal Farey-phase producer remain open.",
+      "id": "erdos_269",
+      "target_statement": "Identify the actual ordered smooth-prefix block digit and derive its exact affine carry recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "Lean proves for every scale and every actual smooth shell point that the right-endpoint height factors as point-height times 2 and an odd suffix product and its all-scale threshold partition; direct enumeration independently verifies both ordered threshold formulas against the checker digit.",
+        "next_analytic_target": "Bind the threshold-ordered source digit into the actual rationality carry recurrence, then control its arithmetic Farey phase cofinally."
+      },
+      "status": "exact_one_way_result",
+      "summary": "For every 1<=a<=100, exact enumeration verifies that the height-cleared mass of the half-open shell [2^a,2^(a+1)) is exactly twice the checker block digit. Lean proves at every scale that each source height quotient has a terminal factor 2 times an odd suffix product and sums it by the unique odd-channel thresholds. The same enumeration verifies the theorem's ordered coefficient formula against the independently constructed checker digit."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "first_rows": [
+    {
+      "a": 1,
+      "before_both_count": 0,
+      "before_five_count": 0,
+      "before_three_count": 1,
+      "block_base": 6,
+      "block_digit": 4,
+      "ending_jump_index": 2,
+      "height_cleared_shell_mass": 8,
+      "ordered_threshold_digit": 4,
+      "shell_cardinality": 2,
+      "threshold_order": "five_then_three"
+    },
+    {
+      "a": 2,
+      "before_both_count": 0,
+      "before_five_count": 1,
+      "before_three_count": 0,
+      "block_base": 10,
+      "block_digit": 7,
+      "ending_jump_index": 4,
+      "height_cleared_shell_mass": 14,
+      "ordered_threshold_digit": 7,
+      "shell_cardinality": 3,
+      "threshold_order": "three_then_five"
+    },
+    {
+      "a": 3,
+      "before_both_count": 0,
+      "before_five_count": 0,
+      "before_three_count": 1,
+      "block_base": 6,
+      "block_digit": 7,
+      "ending_jump_index": 6,
+      "height_cleared_shell_mass": 14,
+      "ordered_threshold_digit": 7,
+      "shell_cardinality": 5,
+      "threshold_order": "five_then_three"
+    },
+    {
+      "a": 4,
+      "before_both_count": 4,
+      "before_five_count": 4,
+      "before_three_count": 5,
+      "block_base": 30,
+      "block_digit": 65,
+      "ending_jump_index": 9,
+      "height_cleared_shell_mass": 130,
+      "ordered_threshold_digit": 65,
+      "shell_cardinality": 7,
+      "threshold_order": "five_then_three"
+    },
+    {
+      "a": 5,
+      "before_both_count": 0,
+      "before_five_count": 0,
+      "before_three_count": 0,
+      "block_base": 2,
+      "block_digit": 8,
+      "ending_jump_index": 10,
+      "height_cleared_shell_mass": 16,
+      "ordered_threshold_digit": 8,
+      "shell_cardinality": 8,
+      "threshold_order": "five_then_three"
+    },
+    {
+      "a": 6,
+      "before_both_count": 4,
+      "before_five_count": 10,
+      "before_three_count": 4,
+      "block_base": 30,
+      "block_digit": 91,
+      "ending_jump_index": 13,
+      "height_cleared_shell_mass": 182,
+      "ordered_threshold_digit": 91,
+      "shell_cardinality": 11,
+      "threshold_order": "three_then_five"
+    }
+  ],
+  "identity": "sum_{x smooth, 2^a <= x < 2^(a+1)} H(2^(a+1))/H(x) = 2*block_digit(a)",
+  "last_rows": [
+    {
+      "a": 98,
+      "before_both_count": 0,
+      "before_five_count": 0,
+      "before_three_count": 368,
+      "block_base": 6,
+      "block_digit": 2120,
+      "ending_jump_index": 202,
+      "height_cleared_shell_mass": 4240,
+      "ordered_threshold_digit": 2120,
+      "shell_cardinality": 1384,
+      "threshold_order": "five_then_three"
+    },
+    {
+      "a": 99,
+      "before_both_count": 1189,
+      "before_five_count": 1189,
+      "before_three_count": 1202,
+      "block_base": 30,
+      "block_digit": 18085,
+      "ending_jump_index": 205,
+      "height_cleared_shell_mass": 36170,
+      "ordered_threshold_digit": 18085,
+      "shell_cardinality": 1413,
+      "threshold_order": "five_then_three"
+    },
+    {
+      "a": 100,
+      "before_both_count": 0,
+      "before_five_count": 0,
+      "before_three_count": 0,
+      "block_base": 2,
+      "block_digit": 1440,
+      "ending_jump_index": 206,
+      "height_cleared_shell_mass": 2880,
+      "ordered_threshold_digit": 1440,
+      "shell_cardinality": 1440,
+      "threshold_order": "five_then_three"
+    }
+  ],
+  "lean_declarations": [
+    "mem_strictSmoothExponents235_iff",
+    "mem_dyadicSmoothShell235_iff",
+    "log_two_eq_of_mem_dyadicSmoothShell235",
+    "threePrimeHeight_dyadicShell_factor_two",
+    "halfClearedMassOne_eq_blockDigitOne",
+    "halfClearedMassTwo_eq_blockDigitTwo",
+    "halfOpenMass_eq_rightClosedMass_add",
+    "clearedMassTwo_eq_two_mul_blockDigitTwo",
+    "pow_log_dyadic_suffix_eq_if",
+    "oddHeightSuffix235_eq_thresholdFactors",
+    "dyadicHalfClearedMass235_eq_thresholdCounts",
+    "dyadicBeforeBothThresholdsCount235_eq_three",
+    "dyadicBeforeBothThresholdsCount235_eq_five",
+    "dyadicHalfClearedMass235_eq_orderedBlockDigit235"
+  ],
+  "parameters": {
+    "max_a": 100,
+    "min_a": 1
+  },
+  "problem_id": "erdos_269",
+  "result_summary": "For every 1<=a<=100, exact enumeration verifies that the height-cleared mass of the half-open shell [2^a,2^(a+1)) is exactly twice the checker block digit. Lean proves at every scale that each source height quotient has a terminal factor 2 times an odd suffix product and sums it by the unique odd-channel thresholds. The same enumeration verifies the theorem's ordered coefficient formula against the independently constructed checker digit.",
+  "row_sha256": "48f1a991752162027b0cdaaaf584fc9ffcd11450b2d3529a68fb1e4f0dcf51a4",
+  "schema": "erdos269-block-mass-identity/2",
+  "smooth_value_count": 50134,
+  "sources": [
+    {
+      "byte_length": 11560,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_block_mass_identity.py",
+      "sha256": "ccd89ebfc4172a5d8a740e1090e0ebd382508ad2d9f97182131e79fceaef4a1d"
+    },
+    {
+      "byte_length": 21749,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_dyadic_windows.py",
+      "sha256": "8e5c78e80afdef66898ef1dd0a31090d52fd12604b8d04a91db4aa2639cebd5e"
+    },
+    {
+      "byte_length": 8990,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicBlockMassIdentity.lean",
+      "sha256": "aa8a13d21f911f5ac181e6af049b83794b37b5e8633bfe387addde18a01b789d"
+    },
+    {
+      "byte_length": 7506,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicBlockThresholdPartition.lean",
+      "sha256": "669de0df8a27d96860989ba01c885c56bde6a489a3bd2bee4026aa91ec9ef037"
+    }
+  ]
+}

@@ -1,0 +1,600 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "falsification_consequence": "Retain direct coarea-average sampling as a possible aggregate proof.",
+      "survival_consequence": "Abandon direct L1-average sampling and require a multiplicity-aware Reeb-edge or attachment charge that does not count one angular spike once per nearby critical point."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "coarea_average_directly_controls_critical_ray_hub_sum",
+      "statement": "The angular average of total radial inverse-lift length can be sampled at every critical-value argument to bound the unweighted sum of critical inverse-ray hubs at scale 2h."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/RadialLiftCoareaGapLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/InverseRayAggregateComputationalLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_radial_lift_coarea_gap.py"
+      ]
+    },
+    "probe": {
+      "computation": "Replay the exact critical point and value formulas for z^n+epsilon*z-r^n, verify angular coalescence, and compare the repeated limiting full-lift majorant with the desired 2(n-1) scale.",
+      "falsifier": "A uniform angular separation of the n-1 critical values, or a repeated full-lift majorant no larger than 2(n-1).",
+      "id": "regular_polygon_critical_ray_coalescence",
+      "question": "Can distinct simple critical-value arguments cluster while the same full-lift pointwise majorant is charged once per critical point?",
+      "resource_bounds": {
+        "epsilon_count_per_degree": 4,
+        "maximum_degree": 9,
+        "minimum_degree": 3
+      },
+      "stop_condition": "Stop once the exact family algebra and decreasing angular spread are replayed for degrees 3 through 9."
+    },
+    "problem": {
+      "claim_ceiling": "The exact change-of-variables identity and explicit perturbation family eliminate only an unweighted sampling of the coarea angular average at critical-value rays. They do not refute the aggregate inverse-ray inequality or prove Erdos #1041.",
+      "id": "erdos_1041",
+      "target_statement": "Find two roots joined by a curve of length less than two inside the strict unit lemniscate."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The family changes the analytic consumer: aggregate selection can no longer be obtained by evaluating an angular average at the critical rays without a new multiplicity-aware charge.",
+        "next_analytic_target": "Charge only the descending Reeb edge below each saddle, with overlap or multiplicity cancellation before any angular integration."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The radial-lift area identity is an angular L1 statement, while z^n+epsilon*z-r^n has n-1 simple critical-value arguments coalescing at pi. Repeating the same critical-ray full-lift majorant already exceeds the desired aggregate scale."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "aggregate_conjecture_status": "still_open_requires_multiplicity_aware_edge_charge",
+    "degenerate_critical_ray_formula": "R(pi)=n*(r+(1-r^n)^(1/n)); descending part=n*r",
+    "degree_summaries": [
+      {
+        "argument_spreads_by_decreasing_epsilon": [
+          0.0005279837362057727,
+          5.279837851368541e-07,
+          5.279838788396773e-10,
+          5.280220705117245e-13
+        ],
+        "degree": 3,
+        "desired_aggregate_scale": 4.0,
+        "limiting_repeated_full_lift_majorant": 9.282764176176219,
+        "smallest_argument_spread": 5.280220705117245e-13,
+        "strictly_decreasing_argument_spread": true
+      },
+      {
+        "argument_spreads_by_decreasing_epsilon": [
+          0.0013446377171035806,
+          2.8946935004547925e-06,
+          6.236417604554845e-09,
+          1.3436363133223495e-11
+        ],
+        "degree": 4,
+        "desired_aggregate_scale": 6.0,
+        "limiting_repeated_full_lift_majorant": 19.989445152436545,
+        "smallest_argument_spread": 1.3436363133223495e-11,
+        "strictly_decreasing_argument_spread": true
+      },
+      {
+        "argument_spreads_by_decreasing_epsilon": [
+          0.002030018883822038,
+          6.406527920166383e-06,
+          2.0259090405261304e-08,
+          6.406475350217988e-11
+        ],
+        "degree": 5,
+        "desired_aggregate_scale": 8.0,
+        "limiting_repeated_full_lift_majorant": 34.7294975615229,
+        "smallest_argument_spread": 6.406475350217988e-11,
+        "strictly_decreasing_argument_spread": true
+      },
+      {
+        "argument_spreads_by_decreasing_epsilon": [
+          0.00414335569592339,
+          1.651723858220322e-05,
+          6.575666233743505e-08,
+          2.617817074224149e-10
+        ],
+        "degree": 6,
+        "desired_aggregate_scale": 10.0,
+        "limiting_repeated_full_lift_majorant": 53.43921980532031,
+        "smallest_argument_spread": 2.617817074224149e-10,
+        "strictly_decreasing_argument_spread": true
+      },
+      {
+        "argument_spreads_by_decreasing_epsilon": [
+          0.006014055084342829,
+          2.791510747002235e-05,
+          1.2957045081307683e-07,
+          6.014126974207556e-10
+        ],
+        "degree": 7,
+        "desired_aggregate_scale": 12.0,
+        "limiting_repeated_full_lift_majorant": 76.07200433472684,
+        "smallest_argument_spread": 6.014126974207556e-10,
+        "strictly_decreasing_argument_spread": true
+      },
+      {
+        "argument_spreads_by_decreasing_epsilon": [
+          0.007639439678222892,
+          3.9500534331438075e-05,
+          2.0459018301721699e-07,
+          1.0596696853326648e-09
+        ],
+        "degree": 8,
+        "desired_aggregate_scale": 14.0,
+        "limiting_repeated_full_lift_majorant": 102.59487581564085,
+        "smallest_argument_spread": 1.0596696853326648e-09,
+        "strictly_decreasing_argument_spread": true
+      },
+      {
+        "argument_spreads_by_decreasing_epsilon": [
+          0.009091181996122799,
+          5.09341528136531e-05,
+          2.8641778193616574e-07,
+          1.6106458389231193e-09
+        ],
+        "degree": 9,
+        "desired_aggregate_scale": 16.0,
+        "limiting_repeated_full_lift_majorant": 132.9842207729805,
+        "smallest_argument_spread": 1.6106458389231193e-09,
+        "strictly_decreasing_argument_spread": true
+      }
+    ],
+    "exact_critical_point_equation": "c^(n-1)=-epsilon/n",
+    "exact_critical_value_equation": "f_epsilon(c)=-r^n-(n-1)c^n",
+    "family": "f_epsilon(z)=z^n+epsilon*z-r^n",
+    "mechanism_verdict": "unweighted_coarea_average_to_critical_ray_sampling_eliminated",
+    "radial_lift_area_identity": "integral_0^2pi R(theta) dtheta = integral_{|f|<1} |f'(z)|/|f(z)| dA(z)",
+    "rows": [
+      {
+        "critical_value_unit_disk_margin": 0.27099989838948013,
+        "degenerate_limit_critical_ray_descending_length": 2.7,
+        "degenerate_limit_critical_ray_total_lift_length": 4.641382088088109,
+        "degree": 3,
+        "desired_aggregate_scale": 4.0,
+        "epsilon": 0.01,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 0.0005279837362057727,
+        "maximum_critical_value_identity_residual": 1.6263032587282567e-19,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 9.282764176176219,
+        "rouche_unit_disk_root_containment_margin": 0.2609999999999999,
+        "simple_critical_point_count": 2
+      },
+      {
+        "critical_value_unit_disk_margin": 0.27099999999989843,
+        "degenerate_limit_critical_ray_descending_length": 2.7,
+        "degenerate_limit_critical_ray_total_lift_length": 4.641382088088109,
+        "degree": 3,
+        "desired_aggregate_scale": 4.0,
+        "epsilon": 0.0001,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 5.279837851368541e-07,
+        "maximum_critical_value_identity_residual": 5.293955920339377e-23,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 9.282764176176219,
+        "rouche_unit_disk_root_containment_margin": 0.2708999999999999,
+        "simple_critical_point_count": 2
+      },
+      {
+        "critical_value_unit_disk_margin": 0.2709999999999999,
+        "degenerate_limit_critical_ray_descending_length": 2.7,
+        "degenerate_limit_critical_ray_total_lift_length": 4.641382088088109,
+        "degree": 3,
+        "desired_aggregate_scale": 4.0,
+        "epsilon": 1e-06,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 5.279838788396773e-10,
+        "maximum_critical_value_identity_residual": 1.550963648536927e-25,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 9.282764176176219,
+        "rouche_unit_disk_root_containment_margin": 0.2709989999999999,
+        "simple_critical_point_count": 2
+      },
+      {
+        "critical_value_unit_disk_margin": 0.2709999999999999,
+        "degenerate_limit_critical_ray_descending_length": 2.7,
+        "degenerate_limit_critical_ray_total_lift_length": 4.641382088088109,
+        "degree": 3,
+        "desired_aggregate_scale": 4.0,
+        "epsilon": 1e-08,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 5.280220705117245e-13,
+        "maximum_critical_value_identity_residual": 0.0,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 9.282764176176219,
+        "rouche_unit_disk_root_containment_margin": 0.27099998999999986,
+        "simple_critical_point_count": 2
+      },
+      {
+        "critical_value_unit_disk_margin": 0.34288209339377684,
+        "degenerate_limit_critical_ray_descending_length": 3.6,
+        "degenerate_limit_critical_ray_total_lift_length": 6.663148384145515,
+        "degree": 4,
+        "desired_aggregate_scale": 6.0,
+        "epsilon": 0.01,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 0.0013446377171035806,
+        "maximum_critical_value_identity_residual": 1.951563910473908e-18,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 19.989445152436545,
+        "rouche_unit_disk_root_containment_margin": 0.3339,
+        "simple_critical_point_count": 3
+      },
+      {
+        "critical_value_unit_disk_margin": 0.34389780698669636,
+        "degenerate_limit_critical_ray_descending_length": 3.6,
+        "degenerate_limit_critical_ray_total_lift_length": 6.663148384145515,
+        "degree": 4,
+        "desired_aggregate_scale": 6.0,
+        "epsilon": 0.0001,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 2.8946935004547925e-06,
+        "maximum_critical_value_identity_residual": 4.658681209898652e-21,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 19.989445152436545,
+        "rouche_unit_disk_root_containment_margin": 0.3438,
+        "simple_critical_point_count": 3
+      },
+      {
+        "critical_value_unit_disk_margin": 0.343899995275296,
+        "degenerate_limit_critical_ray_descending_length": 3.6,
+        "degenerate_limit_critical_ray_total_lift_length": 6.663148384145515,
+        "degree": 4,
+        "desired_aggregate_scale": 6.0,
+        "epsilon": 1e-06,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 6.236417604554845e-09,
+        "maximum_critical_value_identity_residual": 9.926167350636332e-24,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 19.989445152436545,
+        "rouche_unit_disk_root_containment_margin": 0.34389899999999995,
+        "simple_critical_point_count": 3
+      },
+      {
+        "critical_value_unit_disk_margin": 0.3438999999898209,
+        "degenerate_limit_critical_ray_descending_length": 3.6,
+        "degenerate_limit_critical_ray_total_lift_length": 6.663148384145515,
+        "degree": 4,
+        "desired_aggregate_scale": 6.0,
+        "epsilon": 1e-08,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 1.3436363133223495e-11,
+        "maximum_critical_value_identity_residual": 3.2311742677852644e-26,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 19.989445152436545,
+        "rouche_unit_disk_root_containment_margin": 0.34389998999999993,
+        "simple_critical_point_count": 3
+      },
+      {
+        "critical_value_unit_disk_margin": 0.4083125116500024,
+        "degenerate_limit_critical_ray_descending_length": 4.5,
+        "degenerate_limit_critical_ray_total_lift_length": 8.682374390380724,
+        "degree": 5,
+        "desired_aggregate_scale": 8.0,
+        "epsilon": 0.01,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 0.002030018883822038,
+        "maximum_critical_value_identity_residual": 8.673617379884035e-19,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 34.7294975615229,
+        "rouche_unit_disk_root_containment_margin": 0.3995099999999999,
+        "simple_critical_point_count": 4
+      },
+      {
+        "critical_value_unit_disk_margin": 0.4095062170214463,
+        "degenerate_limit_critical_ray_descending_length": 4.5,
+        "degenerate_limit_critical_ray_total_lift_length": 8.682374390380724,
+        "degree": 5,
+        "desired_aggregate_scale": 8.0,
+        "epsilon": 0.0001,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 6.406527920166383e-06,
+        "maximum_critical_value_identity_residual": 4.235164736271502e-21,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 34.7294975615229,
+        "rouche_unit_disk_root_containment_margin": 0.40940999999999994,
+        "simple_critical_point_count": 4
+      },
+      {
+        "critical_value_unit_disk_margin": 0.4095099880372096,
+        "degenerate_limit_critical_ray_descending_length": 4.5,
+        "degenerate_limit_critical_ray_total_lift_length": 8.682374390380724,
+        "degree": 5,
+        "desired_aggregate_scale": 8.0,
+        "epsilon": 1e-06,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 2.0259090405261304e-08,
+        "maximum_critical_value_identity_residual": 9.926167350636332e-24,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 34.7294975615229,
+        "rouche_unit_disk_root_containment_margin": 0.4095089999999999,
+        "simple_critical_point_count": 4
+      },
+      {
+        "critical_value_unit_disk_margin": 0.4095099999621703,
+        "degenerate_limit_critical_ray_descending_length": 4.5,
+        "degenerate_limit_critical_ray_total_lift_length": 8.682374390380724,
+        "degree": 5,
+        "desired_aggregate_scale": 8.0,
+        "epsilon": 1e-08,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 6.406475350217988e-11,
+        "maximum_critical_value_identity_residual": 3.2311742677852644e-26,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 34.7294975615229,
+        "rouche_unit_disk_root_containment_margin": 0.4095099899999999,
+        "simple_critical_point_count": 4
+      },
+      {
+        "critical_value_unit_disk_margin": 0.46624059927533157,
+        "degenerate_limit_critical_ray_descending_length": 5.4,
+        "degenerate_limit_critical_ray_total_lift_length": 10.687843961064063,
+        "degree": 6,
+        "desired_aggregate_scale": 10.0,
+        "epsilon": 0.01,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 0.00414335569592339,
+        "maximum_critical_value_identity_residual": 3.0357660829594124e-18,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 53.43921980532031,
+        "rouche_unit_disk_root_containment_margin": 0.45855899999999994,
+        "simple_critical_point_count": 5
+      },
+      {
+        "critical_value_unit_disk_margin": 0.46854977028047284,
+        "degenerate_limit_critical_ray_descending_length": 5.4,
+        "degenerate_limit_critical_ray_total_lift_length": 10.687843961064063,
+        "degree": 6,
+        "desired_aggregate_scale": 10.0,
+        "epsilon": 0.0001,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 1.651723858220322e-05,
+        "maximum_critical_value_identity_residual": 1.5246593050577406e-20,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 53.43921980532031,
+        "rouche_unit_disk_root_containment_margin": 0.46845899999999996,
+        "simple_critical_point_count": 5
+      },
+      {
+        "critical_value_unit_disk_margin": 0.4685589632558247,
+        "degenerate_limit_critical_ray_descending_length": 5.4,
+        "degenerate_limit_critical_ray_total_lift_length": 10.687843961064063,
+        "degree": 6,
+        "desired_aggregate_scale": 10.0,
+        "epsilon": 1e-06,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 6.575666233743505e-08,
+        "maximum_critical_value_identity_residual": 6.617444900424221e-23,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 53.43921980532031,
+        "rouche_unit_disk_root_containment_margin": 0.4685579999999999,
+        "simple_critical_point_count": 5
+      },
+      {
+        "critical_value_unit_disk_margin": 0.46855899985371874,
+        "degenerate_limit_critical_ray_descending_length": 5.4,
+        "degenerate_limit_critical_ray_total_lift_length": 10.687843961064063,
+        "degree": 6,
+        "desired_aggregate_scale": 10.0,
+        "epsilon": 1e-08,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 2.617817074224149e-10,
+        "maximum_critical_value_identity_residual": 1.2924697071141057e-25,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 53.43921980532031,
+        "rouche_unit_disk_root_containment_margin": 0.4685589899999999,
+        "simple_critical_point_count": 5
+      },
+      {
+        "critical_value_unit_disk_margin": 0.5192097932372757,
+        "degenerate_limit_critical_ray_descending_length": 6.3,
+        "degenerate_limit_critical_ray_total_lift_length": 12.67866738912114,
+        "degree": 7,
+        "desired_aggregate_scale": 12.0,
+        "epsilon": 0.01,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 0.006014055084342829,
+        "maximum_critical_value_identity_residual": 6.938893903907228e-18,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 76.07200433472684,
+        "rouche_unit_disk_root_containment_margin": 0.5117030999999999,
+        "simple_critical_point_count": 6
+      },
+      {
+        "critical_value_unit_disk_margin": 0.5216915370339137,
+        "degenerate_limit_critical_ray_descending_length": 6.3,
+        "degenerate_limit_critical_ray_total_lift_length": 12.67866738912114,
+        "degree": 7,
+        "desired_aggregate_scale": 12.0,
+        "epsilon": 0.0001,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 2.791510747002235e-05,
+        "maximum_critical_value_identity_residual": 3.6422416731934915e-20,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 76.07200433472684,
+        "rouche_unit_disk_root_containment_margin": 0.5216030999999999,
+        "simple_critical_point_count": 6
+      },
+      {
+        "critical_value_unit_disk_margin": 0.521703046329681,
+        "degenerate_limit_critical_ray_descending_length": 6.3,
+        "degenerate_limit_critical_ray_total_lift_length": 12.67866738912114,
+        "degree": 7,
+        "desired_aggregate_scale": 12.0,
+        "epsilon": 1e-06,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 1.2957045081307683e-07,
+        "maximum_critical_value_identity_residual": 1.6543612251060553e-22,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 76.07200433472684,
+        "rouche_unit_disk_root_containment_margin": 0.5217021,
+        "simple_critical_point_count": 6
+      },
+      {
+        "critical_value_unit_disk_margin": 0.5217030997508844,
+        "degenerate_limit_critical_ray_descending_length": 6.3,
+        "degenerate_limit_critical_ray_total_lift_length": 12.67866738912114,
+        "degree": 7,
+        "desired_aggregate_scale": 12.0,
+        "epsilon": 1e-08,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 6.014126974207556e-10,
+        "maximum_critical_value_identity_residual": 8.530300066953098e-25,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 76.07200433472684,
+        "rouche_unit_disk_root_containment_margin": 0.5217030899999999,
+        "simple_critical_point_count": 6
+      },
+      {
+        "critical_value_unit_disk_margin": 0.5661654969650955,
+        "degenerate_limit_critical_ray_descending_length": 7.2,
+        "degenerate_limit_critical_ray_total_lift_length": 14.656410830805836,
+        "degree": 8,
+        "desired_aggregate_scale": 14.0,
+        "epsilon": 0.01,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 0.007639439678222892,
+        "maximum_critical_value_identity_residual": 7.806255641895632e-18,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 102.59487581564085,
+        "rouche_unit_disk_root_containment_margin": 0.5595327899999999,
+        "simple_critical_point_count": 7
+      },
+      {
+        "critical_value_unit_disk_margin": 0.5695153491909881,
+        "degenerate_limit_critical_ray_descending_length": 7.2,
+        "degenerate_limit_critical_ray_total_lift_length": 14.656410830805836,
+        "degree": 8,
+        "desired_aggregate_scale": 14.0,
+        "epsilon": 0.0001,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 3.9500534331438075e-05,
+        "maximum_critical_value_identity_residual": 3.3881317890172014e-20,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 102.59487581564085,
+        "rouche_unit_disk_root_containment_margin": 0.5694327899999999,
+        "simple_critical_point_count": 7
+      },
+      {
+        "critical_value_unit_disk_margin": 0.5695326996657712,
+        "degenerate_limit_critical_ray_descending_length": 7.2,
+        "degenerate_limit_critical_ray_total_lift_length": 14.656410830805836,
+        "degree": 8,
+        "desired_aggregate_scale": 14.0,
+        "epsilon": 1e-06,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 2.0459018301721699e-07,
+        "maximum_critical_value_identity_residual": 2.5808035111654463e-22,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 102.59487581564085,
+        "rouche_unit_disk_root_containment_margin": 0.5695317899999999,
+        "simple_critical_point_count": 7
+      },
+      {
+        "critical_value_unit_disk_margin": 0.5695327895321161,
+        "degenerate_limit_critical_ray_descending_length": 7.2,
+        "degenerate_limit_critical_ray_total_lift_length": 14.656410830805836,
+        "degree": 8,
+        "desired_aggregate_scale": 14.0,
+        "epsilon": 1e-08,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 1.0596696853326648e-09,
+        "maximum_critical_value_identity_residual": 1.0339757656912846e-24,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 102.59487581564085,
+        "rouche_unit_disk_root_containment_margin": 0.5695327799999998,
+        "simple_critical_point_count": 7
+      },
+      {
+        "critical_value_unit_disk_margin": 0.6090678159459011,
+        "degenerate_limit_critical_ray_descending_length": 8.1,
+        "degenerate_limit_critical_ray_total_lift_length": 16.623027596622563,
+        "degree": 9,
+        "desired_aggregate_scale": 16.0,
+        "epsilon": 0.01,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 0.009091181996122799,
+        "maximum_critical_value_identity_residual": 5.558267943191599e-17,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 132.9842207729805,
+        "rouche_unit_disk_root_containment_margin": 0.6025795109999998,
+        "simple_critical_point_count": 8
+      },
+      {
+        "critical_value_unit_disk_margin": 0.6125597783956878,
+        "degenerate_limit_critical_ray_descending_length": 8.1,
+        "degenerate_limit_critical_ray_total_lift_length": 16.623027596622563,
+        "degree": 9,
+        "desired_aggregate_scale": 16.0,
+        "epsilon": 0.0001,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 5.09341528136531e-05,
+        "maximum_critical_value_identity_residual": 1.1689054672109345e-19,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 132.9842207729805,
+        "rouche_unit_disk_root_containment_margin": 0.6124795109999999,
+        "simple_critical_point_count": 8
+      },
+      {
+        "critical_value_unit_disk_margin": 0.6125794000358935,
+        "degenerate_limit_critical_ray_descending_length": 8.1,
+        "degenerate_limit_critical_ray_total_lift_length": 16.623027596622563,
+        "degree": 9,
+        "desired_aggregate_scale": 16.0,
+        "epsilon": 1e-06,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 2.8641778193616574e-07,
+        "maximum_critical_value_identity_residual": 6.485096002415737e-22,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 132.9842207729805,
+        "rouche_unit_disk_root_containment_margin": 0.6125785109999999,
+        "simple_critical_point_count": 8
+      },
+      {
+        "critical_value_unit_disk_margin": 0.6125795103760029,
+        "degenerate_limit_critical_ray_descending_length": 8.1,
+        "degenerate_limit_critical_ray_total_lift_length": 16.623027596622563,
+        "degree": 9,
+        "desired_aggregate_scale": 16.0,
+        "epsilon": 1e-08,
+        "full_lift_majorant_already_exceeds_desired_scale": true,
+        "maximum_critical_value_argument_distance_from_pi": 1.6106458389231193e-09,
+        "maximum_critical_value_identity_residual": 3.877409121342317e-24,
+        "radius": 0.9,
+        "repeated_full_lift_majorant": 132.9842207729805,
+        "rouche_unit_disk_root_containment_margin": 0.6125795009999999,
+        "simple_critical_point_count": 8
+      }
+    ]
+  },
+  "schema": "erdos1041-radial-lift-coarea-gap/1",
+  "source_records": [
+    {
+      "byte_length": 11509,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_radial_lift_coarea_gap.py",
+      "sha256": "922c91e62c4e526f3def3cb106acf388cda00af430fbb2cb13f56fc4b2cc04c2"
+    },
+    {
+      "byte_length": 3393,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/RadialLiftCoareaGapLab.md",
+      "sha256": "3e650928cec7e59f177db1e411bc494095c814d592dcc1c94807114a9c06e20e"
+    },
+    {
+      "byte_length": 3624,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/InverseRayAggregateComputationalLab.md",
+      "sha256": "b63a3a90b2166797c26dc2a5a9f363f64991b2ba42c4944592a2a605ddfbfb33"
+    },
+    {
+      "byte_length": 31369,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "sha256": "f8766feafc98379dbff2c9e07da84d5a0df994ea84e6d751eb21cb077edeb332"
+    }
+  ],
+  "status": "exact_coarea_sampling_mechanism_elimination"
+}

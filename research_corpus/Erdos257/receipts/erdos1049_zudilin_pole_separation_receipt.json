@@ -1,0 +1,2606 @@
+{
+  "analytic_theorem": {
+    "authority": "authored_mathematical_argument",
+    "lean_formalized": false,
+    "proof_lemmas": [
+      "source_denominator_regrouping",
+      "primitive_root_pole_criterion",
+      "q_lucas_pole_vector_separation",
+      "ordinary_C_vector_coefficient_extraction",
+      "harmonic_Legendre_weighted_cancellation"
+    ],
+    "proof_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinChannelDivisibilityProof.md",
+    "statement": "For every n>=1, p^(n+1)P_n(p)^3 divides the cleared source difference Btilde_n(p)-2*Ctilde_n(p). Consequently B=2C on the leading Phi_d layer for every d<=n."
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "zudilinScalarPlusBorder_cannot_meet_required_charge"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "falsification_consequence": "Failure would retain only the finite global divisibility evidence and return the proof to cross-pole partial fractions.",
+      "survival_consequence": "The authored proof eliminates B/C imbalance at every leading cyclotomic layer and reduces block collapse to the single C channel."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "zudilin_cyclotomic_pole_vectors_q_lucas_separate",
+      "statement": "At n=qd+s and a primitive d-th root, the B and C pole-residue vectors share one residue factor and reduce to ordinary binomial vectors whose weighted difference vanishes."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinChannelDivisibilityProof.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinChannelDivisibilityLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1AssociatedGradedKernel.md"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_phi1_kernel_receipt.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_phi1_block_collapse_receipt.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_channel_divisibility_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_pole_separation.py",
+        "system/lib/formal_math_cyclotomic_local.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi3_associated_graded.py",
+        "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/extracted.md"
+      ]
+    },
+    "probe": {
+      "computation": "Construct exact pole vectors in QQ[p]/(Phi_d), compare them with ordinary binomial tails, replay the coefficient-extraction and harmonic Legendre identities, and exhibit the n=2 termwise failure.",
+      "falsifier": "A failed vector separation, nonzero weighted residue, failed ordinary identity, or survival of the purported n=2 counterexample invalidates the corresponding proof step.",
+      "id": "exact_pole_separation_and_ordinary_binomial_regression",
+      "question": "Does the proposed all-n pole cancellation factor through a universal ordinary vector, and does the stronger termwise telescope fail?",
+      "resource_bounds": {
+        "cyclotomic_index_count": 5,
+        "local_separation_case_count": 45,
+        "maximum_cyclotomic_index": 5,
+        "maximum_gaussian_top": 48,
+        "maximum_quotient_block": 4,
+        "minimum_cyclotomic_index": 1,
+        "ordinary_regression_maximum": 12
+      },
+      "stop_condition": "Stop cyclotomic sampling after all d<=5 residue classes and quotient blocks 2,3,4 replay the factorization; the all-n quantifiers must come from the displayed source algebra."
+    },
+    "problem": {
+      "claim_ceiling": "Authored all-n polynomial-divisibility proof with exact finite source regressions; not a Lean formalization, full determinant charge theorem, or irrationality proof.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the Lambert value at p=3/2."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The proof removes an all-index source channel from the surviving boundary mechanism and falsifies a stronger but incorrect telescope.",
+        "next_analytic_target": "Apply the same q-Lucas residue-window factorization to the single C source row and prove its quotient-block constants 1, 11/4, 50/3 uniformly in d and the residue class."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The authored all-n argument proves p^(n+1)P_n^3 divides the cleared Zudilin difference B_n-2C_n: q-Lucas separates every primitive-root pole vector into one residue factor times an ordinary binomial vector; the C vector is identically one, and the harmonic Legendre identity makes its weighted difference sum zero. Exact regressions cover all d=1,...,5 residue classes at quotient blocks 2,3,4 and the ordinary identities through quotient 12. The tempting denominator-by-denominator telescope is exactly falsified at n=2, where only cross-pole residues cancel. Thus B=2C on every leading Phi_d layer, all n and d<=n."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "all_common_residue_factors_nonzero": true,
+    "all_legendre_harmonic_identities_hold": true,
+    "all_local_B_vectors_separate": true,
+    "all_local_C_vectors_separate": true,
+    "all_local_difference_vectors_separate": true,
+    "all_local_weighted_pole_residues_vanish": true,
+    "all_ordinary_C_identities_hold": true,
+    "all_ordinary_weighted_residues_vanish": true,
+    "authority_boundary": "Finite computations regress the source factorization used by the authored all-n proof. The universal quantifiers come from the q-Lucas and coefficient-extraction argument, not this range.",
+    "cyclotomic_indices": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "local_records": [
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "6"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 1,
+        "cyclotomic_polynomial": "p - 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "4"
+        ],
+        "maximum_gaussian_top": 4,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 0,
+        "source_index": 2,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "2",
+          "-10",
+          "20"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 1,
+        "cyclotomic_polynomial": "p - 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "-12",
+          "18"
+        ],
+        "maximum_gaussian_top": 6,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 0,
+        "source_index": 3,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "20",
+          "-70",
+          "70"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 1,
+        "cyclotomic_polynomial": "p - 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "18",
+          "-72",
+          "68"
+        ],
+        "maximum_gaussian_top": 8,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 0,
+        "source_index": 4,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "6"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 2,
+        "cyclotomic_polynomial": "p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "4"
+        ],
+        "maximum_gaussian_top": 8,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 0,
+        "source_index": 4,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "-6"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-1",
+          "-1"
+        ],
+        "common_residue_factor_kappa": "-1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 2,
+        "cyclotomic_polynomial": "p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "2",
+          "-4"
+        ],
+        "maximum_gaussian_top": 10,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 1,
+        "source_index": 5,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "-2",
+          "10",
+          "-20"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-1",
+          "-1",
+          "-1"
+        ],
+        "common_residue_factor_kappa": "-1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 2,
+        "cyclotomic_polynomial": "p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "12",
+          "-18"
+        ],
+        "maximum_gaussian_top": 12,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 0,
+        "source_index": 6,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "2",
+          "-10",
+          "20"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 2,
+        "cyclotomic_polynomial": "p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "-12",
+          "18"
+        ],
+        "maximum_gaussian_top": 14,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 1,
+        "source_index": 7,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "20",
+          "-70",
+          "70"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 2,
+        "cyclotomic_polynomial": "p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "18",
+          "-72",
+          "68"
+        ],
+        "maximum_gaussian_top": 16,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 0,
+        "source_index": 8,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "-20",
+          "70",
+          "-70"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-1",
+          "-1",
+          "-1",
+          "-1"
+        ],
+        "common_residue_factor_kappa": "-1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 2,
+        "cyclotomic_polynomial": "p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "2",
+          "-18",
+          "72",
+          "-68"
+        ],
+        "maximum_gaussian_top": 18,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 1,
+        "source_index": 9,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "6"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 3,
+        "cyclotomic_polynomial": "p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "4"
+        ],
+        "maximum_gaussian_top": 12,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 0,
+        "source_index": 6,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "-12"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-2",
+          "-2"
+        ],
+        "common_residue_factor_kappa": "-2",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 3,
+        "cyclotomic_polynomial": "p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "4",
+          "-8"
+        ],
+        "maximum_gaussian_top": 14,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 1,
+        "source_index": 7,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "6"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 3,
+        "cyclotomic_polynomial": "p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "4"
+        ],
+        "maximum_gaussian_top": 16,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 2,
+        "source_index": 8,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "2",
+          "-10",
+          "20"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 3,
+        "cyclotomic_polynomial": "p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "-12",
+          "18"
+        ],
+        "maximum_gaussian_top": 18,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 0,
+        "source_index": 9,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "-4",
+          "20",
+          "-40"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-2",
+          "-2",
+          "-2"
+        ],
+        "common_residue_factor_kappa": "-2",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 3,
+        "cyclotomic_polynomial": "p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "24",
+          "-36"
+        ],
+        "maximum_gaussian_top": 20,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 1,
+        "source_index": 10,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "2",
+          "-10",
+          "20"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 3,
+        "cyclotomic_polynomial": "p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "-12",
+          "18"
+        ],
+        "maximum_gaussian_top": 22,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 2,
+        "source_index": 11,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "20",
+          "-70",
+          "70"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 3,
+        "cyclotomic_polynomial": "p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "18",
+          "-72",
+          "68"
+        ],
+        "maximum_gaussian_top": 24,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 0,
+        "source_index": 12,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "-40",
+          "140",
+          "-140"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-2",
+          "-2",
+          "-2",
+          "-2"
+        ],
+        "common_residue_factor_kappa": "-2",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 3,
+        "cyclotomic_polynomial": "p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "4",
+          "-36",
+          "144",
+          "-136"
+        ],
+        "maximum_gaussian_top": 26,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 1,
+        "source_index": 13,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "20",
+          "-70",
+          "70"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 3,
+        "cyclotomic_polynomial": "p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "18",
+          "-72",
+          "68"
+        ],
+        "maximum_gaussian_top": 28,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 2,
+        "source_index": 14,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "6"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "4"
+        ],
+        "maximum_gaussian_top": 16,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 0,
+        "source_index": 8,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "6*(p - 2)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "p - 2",
+          "p - 2"
+        ],
+        "common_residue_factor_kappa": "p - 2",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2*(p - 2)",
+          "4*(p - 2)"
+        ],
+        "maximum_gaussian_top": 18,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 1,
+        "source_index": 9,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "6*(p + 2)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "p + 2",
+          "p + 2"
+        ],
+        "common_residue_factor_kappa": "p + 2",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2*(p + 2)",
+          "4*(p + 2)"
+        ],
+        "maximum_gaussian_top": 20,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 2,
+        "source_index": 10,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "-6"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-1",
+          "-1"
+        ],
+        "common_residue_factor_kappa": "-1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "2",
+          "-4"
+        ],
+        "maximum_gaussian_top": 22,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 3,
+        "source_index": 11,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "-2",
+          "10",
+          "-20"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-1",
+          "-1",
+          "-1"
+        ],
+        "common_residue_factor_kappa": "-1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "12",
+          "-18"
+        ],
+        "maximum_gaussian_top": 24,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 0,
+        "source_index": 12,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "-2*(p - 2)",
+          "10*(p - 2)",
+          "-20*(p - 2)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "2 - p",
+          "2 - p",
+          "2 - p"
+        ],
+        "common_residue_factor_kappa": "2 - p",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "12*(p - 2)",
+          "-18*(p - 2)"
+        ],
+        "maximum_gaussian_top": 26,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 1,
+        "source_index": 13,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "-2*(p + 2)",
+          "10*(p + 2)",
+          "-20*(p + 2)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-p - 2",
+          "-p - 2",
+          "-p - 2"
+        ],
+        "common_residue_factor_kappa": "-p - 2",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "12*(p + 2)",
+          "-18*(p + 2)"
+        ],
+        "maximum_gaussian_top": 28,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 2,
+        "source_index": 14,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "2",
+          "-10",
+          "20"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "-12",
+          "18"
+        ],
+        "maximum_gaussian_top": 30,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 3,
+        "source_index": 15,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "20",
+          "-70",
+          "70"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "18",
+          "-72",
+          "68"
+        ],
+        "maximum_gaussian_top": 32,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 0,
+        "source_index": 16,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "20*(p - 2)",
+          "-70*(p - 2)",
+          "70*(p - 2)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "p - 2",
+          "p - 2",
+          "p - 2",
+          "p - 2"
+        ],
+        "common_residue_factor_kappa": "p - 2",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2*(p - 2)",
+          "18*(p - 2)",
+          "-72*(p - 2)",
+          "68*(p - 2)"
+        ],
+        "maximum_gaussian_top": 34,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 1,
+        "source_index": 17,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "20*(p + 2)",
+          "-70*(p + 2)",
+          "70*(p + 2)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "p + 2",
+          "p + 2",
+          "p + 2",
+          "p + 2"
+        ],
+        "common_residue_factor_kappa": "p + 2",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2*(p + 2)",
+          "18*(p + 2)",
+          "-72*(p + 2)",
+          "68*(p + 2)"
+        ],
+        "maximum_gaussian_top": 36,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 2,
+        "source_index": 18,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "-20",
+          "70",
+          "-70"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-1",
+          "-1",
+          "-1",
+          "-1"
+        ],
+        "common_residue_factor_kappa": "-1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "2",
+          "-18",
+          "72",
+          "-68"
+        ],
+        "maximum_gaussian_top": 38,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 3,
+        "source_index": 19,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "6"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "4"
+        ],
+        "maximum_gaussian_top": 20,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 0,
+        "source_index": 10,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "6*(p**2 + p - 1)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "p**2 + p - 1",
+          "p**2 + p - 1"
+        ],
+        "common_residue_factor_kappa": "p**2 + p - 1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2*(p**2 + p - 1)",
+          "4*(p**2 + p - 1)"
+        ],
+        "maximum_gaussian_top": 22,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 1,
+        "source_index": 11,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "-6*(p**3 + p**2 - 3)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-p**3 - p**2 + 3",
+          "-p**3 - p**2 + 3"
+        ],
+        "common_residue_factor_kappa": "-p**3 - p**2 + 3",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "2*(p**3 + p**2 - 3)",
+          "-4*(p**3 + p**2 - 3)"
+        ],
+        "maximum_gaussian_top": 24,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 2,
+        "source_index": 12,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "-6*(p**2 + p + 2)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-p**2 - p - 2",
+          "-p**2 - p - 2"
+        ],
+        "common_residue_factor_kappa": "-p**2 - p - 2",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "2*(p**2 + p + 2)",
+          "-4*(p**2 + p + 2)"
+        ],
+        "maximum_gaussian_top": 26,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 3,
+        "source_index": 13,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "6"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "4"
+        ],
+        "maximum_gaussian_top": 28,
+        "ordinary_B_vector": [
+          0,
+          6
+        ],
+        "ordinary_C_vector": [
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          4
+        ],
+        "quotient_block": 2,
+        "residue_class": 4,
+        "source_index": 14,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "2",
+          "-10",
+          "20"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "-12",
+          "18"
+        ],
+        "maximum_gaussian_top": 30,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 0,
+        "source_index": 15,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "2*(p**2 + p - 1)",
+          "-10*(p**2 + p - 1)",
+          "20*(p**2 + p - 1)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "p**2 + p - 1",
+          "p**2 + p - 1",
+          "p**2 + p - 1"
+        ],
+        "common_residue_factor_kappa": "p**2 + p - 1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "-12*(p**2 + p - 1)",
+          "18*(p**2 + p - 1)"
+        ],
+        "maximum_gaussian_top": 32,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 1,
+        "source_index": 16,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "-2*(p**3 + p**2 - 3)",
+          "10*(p**3 + p**2 - 3)",
+          "-20*(p**3 + p**2 - 3)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-p**3 - p**2 + 3",
+          "-p**3 - p**2 + 3",
+          "-p**3 - p**2 + 3"
+        ],
+        "common_residue_factor_kappa": "-p**3 - p**2 + 3",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "12*(p**3 + p**2 - 3)",
+          "-18*(p**3 + p**2 - 3)"
+        ],
+        "maximum_gaussian_top": 34,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 2,
+        "source_index": 17,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "-2*(p**2 + p + 2)",
+          "10*(p**2 + p + 2)",
+          "-20*(p**2 + p + 2)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-p**2 - p - 2",
+          "-p**2 - p - 2",
+          "-p**2 - p - 2"
+        ],
+        "common_residue_factor_kappa": "-p**2 - p - 2",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "12*(p**2 + p + 2)",
+          "-18*(p**2 + p + 2)"
+        ],
+        "maximum_gaussian_top": 36,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 3,
+        "source_index": 18,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "2",
+          "-10",
+          "20"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "0",
+          "-12",
+          "18"
+        ],
+        "maximum_gaussian_top": 38,
+        "ordinary_B_vector": [
+          2,
+          -10,
+          20
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "quotient_block": 3,
+        "residue_class": 4,
+        "source_index": 19,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "20",
+          "-70",
+          "70"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "18",
+          "-72",
+          "68"
+        ],
+        "maximum_gaussian_top": 40,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 0,
+        "source_index": 20,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "20*(p**2 + p - 1)",
+          "-70*(p**2 + p - 1)",
+          "70*(p**2 + p - 1)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "p**2 + p - 1",
+          "p**2 + p - 1",
+          "p**2 + p - 1",
+          "p**2 + p - 1"
+        ],
+        "common_residue_factor_kappa": "p**2 + p - 1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2*(p**2 + p - 1)",
+          "18*(p**2 + p - 1)",
+          "-72*(p**2 + p - 1)",
+          "68*(p**2 + p - 1)"
+        ],
+        "maximum_gaussian_top": 42,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 1,
+        "source_index": 21,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "-20*(p**3 + p**2 - 3)",
+          "70*(p**3 + p**2 - 3)",
+          "-70*(p**3 + p**2 - 3)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-p**3 - p**2 + 3",
+          "-p**3 - p**2 + 3",
+          "-p**3 - p**2 + 3",
+          "-p**3 - p**2 + 3"
+        ],
+        "common_residue_factor_kappa": "-p**3 - p**2 + 3",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "2*(p**3 + p**2 - 3)",
+          "-18*(p**3 + p**2 - 3)",
+          "72*(p**3 + p**2 - 3)",
+          "-68*(p**3 + p**2 - 3)"
+        ],
+        "maximum_gaussian_top": 44,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 2,
+        "source_index": 22,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "-20*(p**2 + p + 2)",
+          "70*(p**2 + p + 2)",
+          "-70*(p**2 + p + 2)"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "-p**2 - p - 2",
+          "-p**2 - p - 2",
+          "-p**2 - p - 2",
+          "-p**2 - p - 2"
+        ],
+        "common_residue_factor_kappa": "-p**2 - p - 2",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "2*(p**2 + p + 2)",
+          "-18*(p**2 + p + 2)",
+          "72*(p**2 + p + 2)",
+          "-68*(p**2 + p + 2)"
+        ],
+        "maximum_gaussian_top": 46,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 3,
+        "source_index": 23,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      },
+      {
+        "B_q_lucas_separates": true,
+        "B_vector": [
+          "0",
+          "20",
+          "-70",
+          "70"
+        ],
+        "C_q_lucas_separates": true,
+        "C_vector": [
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "common_residue_factor_kappa": "1",
+        "common_residue_factor_nonzero": true,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "difference_q_lucas_separates": true,
+        "difference_vector": [
+          "-2",
+          "18",
+          "-72",
+          "68"
+        ],
+        "maximum_gaussian_top": 48,
+        "ordinary_B_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "ordinary_C_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "ordinary_difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "quotient_block": 4,
+        "residue_class": 4,
+        "source_index": 24,
+        "weighted_pole_residue": "0",
+        "weighted_pole_residue_is_zero": true
+      }
+    ],
+    "naive_telescope_counterexample": {
+      "cross_pole_remainder_sum": "0",
+      "cross_pole_remainders_cancel": true,
+      "denominator_by_denominator_telescope_fails": true,
+      "records": [
+        {
+          "denominator_divides_numerator": false,
+          "numerator": "p*(p + 1)*(p**5 - 2*p**2 - p + 1)",
+          "pole_index": 1,
+          "remainder_mod_p_to_r_minus_one": "-2"
+        },
+        {
+          "denominator_divides_numerator": false,
+          "numerator": "p**3*(p + 1)*(p**3 + 2*p - 1)",
+          "pole_index": 2,
+          "remainder_mod_p_to_r_minus_one": "2*(p + 1)"
+        }
+      ],
+      "row_index": 2
+    },
+    "ordinary_records": [
+      {
+        "B_tail_vector": [
+          2
+        ],
+        "C_coefficient_vector": [
+          1
+        ],
+        "all_C_coefficients_equal_one": true,
+        "difference_vector": [
+          0
+        ],
+        "legendre_harmonic_identity_holds": true,
+        "legendre_harmonic_sum": "2",
+        "quotient_block": 1,
+        "twice_harmonic_number": "2",
+        "weighted_difference_sum": "0",
+        "weighted_difference_sum_is_zero": true
+      },
+      {
+        "B_tail_vector": [
+          0,
+          6
+        ],
+        "C_coefficient_vector": [
+          1,
+          1
+        ],
+        "all_C_coefficients_equal_one": true,
+        "difference_vector": [
+          -2,
+          4
+        ],
+        "legendre_harmonic_identity_holds": true,
+        "legendre_harmonic_sum": "3",
+        "quotient_block": 2,
+        "twice_harmonic_number": "3",
+        "weighted_difference_sum": "0",
+        "weighted_difference_sum_is_zero": true
+      },
+      {
+        "B_tail_vector": [
+          2,
+          -10,
+          20
+        ],
+        "C_coefficient_vector": [
+          1,
+          1,
+          1
+        ],
+        "all_C_coefficients_equal_one": true,
+        "difference_vector": [
+          0,
+          -12,
+          18
+        ],
+        "legendre_harmonic_identity_holds": true,
+        "legendre_harmonic_sum": "11/3",
+        "quotient_block": 3,
+        "twice_harmonic_number": "11/3",
+        "weighted_difference_sum": "0",
+        "weighted_difference_sum_is_zero": true
+      },
+      {
+        "B_tail_vector": [
+          0,
+          20,
+          -70,
+          70
+        ],
+        "C_coefficient_vector": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "all_C_coefficients_equal_one": true,
+        "difference_vector": [
+          -2,
+          18,
+          -72,
+          68
+        ],
+        "legendre_harmonic_identity_holds": true,
+        "legendre_harmonic_sum": "25/6",
+        "quotient_block": 4,
+        "twice_harmonic_number": "25/6",
+        "weighted_difference_sum": "0",
+        "weighted_difference_sum_is_zero": true
+      },
+      {
+        "B_tail_vector": [
+          2,
+          -28,
+          182,
+          -378,
+          252
+        ],
+        "C_coefficient_vector": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "all_C_coefficients_equal_one": true,
+        "difference_vector": [
+          0,
+          -30,
+          180,
+          -380,
+          250
+        ],
+        "legendre_harmonic_identity_holds": true,
+        "legendre_harmonic_sum": "137/30",
+        "quotient_block": 5,
+        "twice_harmonic_number": "137/30",
+        "weighted_difference_sum": "0",
+        "weighted_difference_sum_is_zero": true
+      },
+      {
+        "B_tail_vector": [
+          0,
+          42,
+          -378,
+          1302,
+          -1848,
+          924
+        ],
+        "C_coefficient_vector": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "all_C_coefficients_equal_one": true,
+        "difference_vector": [
+          -2,
+          40,
+          -380,
+          1300,
+          -1850,
+          922
+        ],
+        "legendre_harmonic_identity_holds": true,
+        "legendre_harmonic_sum": "49/10",
+        "quotient_block": 6,
+        "twice_harmonic_number": "49/10",
+        "weighted_difference_sum": "0",
+        "weighted_difference_sum_is_zero": true
+      },
+      {
+        "B_tail_vector": [
+          2,
+          -54,
+          702,
+          -3498,
+          8052,
+          -8580,
+          3432
+        ],
+        "C_coefficient_vector": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "all_C_coefficients_equal_one": true,
+        "difference_vector": [
+          0,
+          -56,
+          700,
+          -3500,
+          8050,
+          -8582,
+          3430
+        ],
+        "legendre_harmonic_identity_holds": true,
+        "legendre_harmonic_sum": "363/70",
+        "quotient_block": 7,
+        "twice_harmonic_number": "363/70",
+        "weighted_difference_sum": "0",
+        "weighted_difference_sum_is_zero": true
+      },
+      {
+        "B_tail_vector": [
+          0,
+          72,
+          -1188,
+          8052,
+          -26598,
+          45474,
+          -38610,
+          12870
+        ],
+        "C_coefficient_vector": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "all_C_coefficients_equal_one": true,
+        "difference_vector": [
+          -2,
+          70,
+          -1190,
+          8050,
+          -26600,
+          45472,
+          -38612,
+          12868
+        ],
+        "legendre_harmonic_identity_holds": true,
+        "legendre_harmonic_sum": "761/140",
+        "quotient_block": 8,
+        "twice_harmonic_number": "761/140",
+        "weighted_difference_sum": "0",
+        "weighted_difference_sum_is_zero": true
+      },
+      {
+        "B_tail_vector": [
+          2,
+          -88,
+          1892,
+          -16588,
+          73502,
+          -178750,
+          241670,
+          -170170,
+          48620
+        ],
+        "C_coefficient_vector": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "all_C_coefficients_equal_one": true,
+        "difference_vector": [
+          0,
+          -90,
+          1890,
+          -16590,
+          73500,
+          -178752,
+          241668,
+          -170172,
+          48618
+        ],
+        "legendre_harmonic_identity_holds": true,
+        "legendre_harmonic_sum": "7129/1260",
+        "quotient_block": 9,
+        "twice_harmonic_number": "7129/1260",
+        "weighted_difference_sum": "0",
+        "weighted_difference_sum_is_zero": true
+      },
+      {
+        "B_tail_vector": [
+          0,
+          110,
+          -2860,
+          31460,
+          -178750,
+          578006,
+          -1103674,
+          1230086,
+          -739024,
+          184756
+        ],
+        "C_coefficient_vector": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "all_C_coefficients_equal_one": true,
+        "difference_vector": [
+          -2,
+          108,
+          -2862,
+          31458,
+          -178752,
+          578004,
+          -1103676,
+          1230084,
+          -739026,
+          184754
+        ],
+        "legendre_harmonic_identity_holds": true,
+        "legendre_harmonic_sum": "7381/1260",
+        "quotient_block": 10,
+        "twice_harmonic_number": "7381/1260",
+        "weighted_difference_sum": "0",
+        "weighted_difference_sum_is_zero": true
+      },
+      {
+        "B_tail_vector": [
+          2,
+          -130,
+          4160,
+          -55900,
+          394550,
+          -1623466,
+          4094246,
+          -6407674,
+          6063356,
+          -3174444,
+          705432
+        ],
+        "C_coefficient_vector": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "all_C_coefficients_equal_one": true,
+        "difference_vector": [
+          0,
+          -132,
+          4158,
+          -55902,
+          394548,
+          -1623468,
+          4094244,
+          -6407676,
+          6063354,
+          -3174446,
+          705430
+        ],
+        "legendre_harmonic_identity_holds": true,
+        "legendre_harmonic_sum": "83711/13860",
+        "quotient_block": 11,
+        "twice_harmonic_number": "83711/13860",
+        "weighted_difference_sum": "0",
+        "weighted_difference_sum_is_zero": true
+      },
+      {
+        "B_tail_vector": [
+          0,
+          156,
+          -5850,
+          94250,
+          -806650,
+          4094246,
+          -13058890,
+          26848406,
+          -35506744,
+          29157856,
+          -13520780,
+          2704156
+        ],
+        "C_coefficient_vector": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "all_C_coefficients_equal_one": true,
+        "difference_vector": [
+          -2,
+          154,
+          -5852,
+          94248,
+          -806652,
+          4094244,
+          -13058892,
+          26848404,
+          -35506746,
+          29157854,
+          -13520782,
+          2704154
+        ],
+        "legendre_harmonic_identity_holds": true,
+        "legendre_harmonic_sum": "86021/13860",
+        "quotient_block": 12,
+        "twice_harmonic_number": "86021/13860",
+        "weighted_difference_sum": "0",
+        "weighted_difference_sum_is_zero": true
+      }
+    ],
+    "schema": "erdos1049-zudilin-pole-separation-result/1"
+  },
+  "schema": "erdos1049-zudilin-pole-separation-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 21669,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_pole_separation.py",
+      "sha256": "986ee008b79b6aca25f4b8e1598a8bee63291fcf0dc04388bc9a653f2bacc51f"
+    },
+    {
+      "byte_length": 4675,
+      "path": "system/lib/formal_math_cyclotomic_local.py",
+      "sha256": "6eb3f6778225c4956fcf0a0ff18b21d5f1f7a36fabf883c7fd67605952f27bb3"
+    },
+    {
+      "byte_length": 21002,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi3_associated_graded.py",
+      "sha256": "61bdcecd6861c6b4e148abd22143596b020596499d529e7dd16f5601d526af58"
+    },
+    {
+      "byte_length": 32617,
+      "path": "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/extracted.md",
+      "sha256": "98785ce71ae61c284dc06a9db5c217b0e7a48ab0719e0953f777ead54b93904e"
+    },
+    {
+      "byte_length": 6936,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinChannelDivisibilityProof.md",
+      "sha256": "807af024fde8fdd8b9668ddb3cd6f0e550d386362b00879bbfbadcd95451e1eb"
+    },
+    {
+      "byte_length": 4344,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinChannelDivisibilityLab.md",
+      "sha256": "f3d0fe93ded439d37943ad268f06eea69a8094548d1bb9306d6ae0bfbec8db3b"
+    },
+    {
+      "byte_length": 4646,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1AssociatedGradedKernel.md",
+      "sha256": "d14db2c9162e5f150deee2ed835db7072723e909583f8c771f0ccb48a71012cb"
+    },
+    {
+      "byte_length": 15852,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "sha256": "4dce15dfc8a96099e1787b3229bccea000c484a8db5625f7dbe88c604c84ac03"
+    }
+  ],
+  "status": "authored_all_n_mechanism_eliminated"
+}

@@ -1,0 +1,25 @@
+{
+  "actual_polynomial_regression": {
+    "actual_polynomial_rows": 24,
+    "leaf_ancestor_incidences": 407,
+    "max_aggregate_error": 6.517938173394255e-16,
+    "max_relative_error": 6.0948625239418e-16
+  },
+  "claim_boundary": "exact ratio ledger and discounted-energy identity; no universal attachment-age bound or metric allocation is claimed",
+  "exact_exponent_replay": {
+    "leaf_ancestor_incidences": 69804,
+    "max_leaves": 9,
+    "ordered_binary_trees": 2055,
+    "positive_age_symbolic_rows": 52228
+  },
+  "schema": "erdos1041_entrance_energy_ratio_bridge_check_v1",
+  "sharp_scalar_boundary": {
+    "beta_child": "1/10",
+    "beta_parent": "9/10",
+    "child_size": 2,
+    "entrance_to_undiscounted_ratio": "1/3",
+    "parent_size": 3,
+    "squared_ratio": "1/9"
+  },
+  "status": "pass"
+}

@@ -3,6 +3,8 @@
 
 # Agent entry
 
+Web-only proof search: [browse all mathematical results and proof links](docs/semantic/BROWSER.md).
+
 This is an ordinary public Lean project and a pinned scholarly artefact. It is
 not an entrypoint into any private development system. Work only from the files
 in this repository, and never infer unpublished results or private machinery.

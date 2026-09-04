@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification257AchievementSetGeometry.Challenge",
+  "solution_module": "ExternalVerification257AchievementSetGeometry.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

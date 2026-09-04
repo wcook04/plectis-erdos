@@ -19,7 +19,7 @@
  "source_provenance": {
   "identity_kind": "content_addressed_input_set",
   "declaration_atlas_digest": "sha256:1bb1469d237e84cb930b5bb4b34badef5697d0986b04d8ee9566281e63e9d898",
-  "semantic_corpus_digest": "sha256:c0cb1d033ac4b0eb1e53b29a525b9af494b201e3aa270bffe2db2a66c12a37f2",
+  "semantic_corpus_digest": "sha256:df0a4aafc88179f171795aa2ae35c67f1f74f7b67de8de86fa4bab7f2d95a46a",
   "authored_lab_source_digests": {
    "docs/semantic/lab/benchmark_items.json": "sha256:51e9f9fde535fdb0e526f0826239eace0cfa478a6f30b37d663c1432bd1f984f",
    "docs/semantic/lab/benchmark_results.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
@@ -93,16 +93,16 @@
   "failure_receipts": 3,
   "benchmark_items": 4,
   "benchmark_results": 0,
-  "statement_nodes_total": 6364,
+  "statement_nodes_total": 6371,
   "statement_nodes_explained": 8,
   "explained_fraction": 0.0013,
   "authored_theorem_like": 143410,
   "unexplained_by_logical_class": {
-   "unconditional_object_theorem": 354,
+   "unconditional_object_theorem": 360,
    "reduction_or_transport": 94,
    "finite_instance": 85,
    "classical_formalised": 44,
-   "conditional_implication": 160,
+   "conditional_implication": 161,
    "representation_normalisation": 161,
    "barrier_no_go": 72,
    "equivalence_or_classification": 104,
@@ -619,7 +619,7 @@
   ],
   "unexplained_residual": {
    "rule": "Statement nodes no mechanism claims to explain. A large residual is a real finding about the basis, not a bookkeeping gap.",
-   "count": 6356,
+   "count": 6363,
    "nodes": [
     "Z01::bounded_crt_exact_valuation_frame",
     "Z01::canonical_witness_selector_reduction",
@@ -1728,6 +1728,13 @@
     "Z94::integral_affine_maps_cancel_exactly_the_gcd_from_a_rational_denominator",
     "Z94::the_actual_diagonal_inherits_the_first_support_directed_interval",
     "Z94::the_first_omitted_mobius_channel_splits_and_directs_the_squared_tail",
+    "Z95::all_arity_unique_active_stationarity_exclusion",
+    "Z95::effective_signed_atomic_hankel_asymptotics",
+    "Z95::fresh_prime_first_contact_requires_single_step_valuation_resonance",
+    "Z95::robust_merge_scalar_separation_and_one_root_bergman",
+    "Z95::strict_rise_loglog_lcm_ordinary_rigidity",
+    "Z95::weighted_quadratic_free_point_all_degrees",
+    "Z95::zudilin_normalized_hankel_qorder_factorial_pattern",
     "generated::diagonal_pincer_windows",
     "generated::emitted_block_certificates",
     "generated::lucas_primality_closures",
@@ -6986,7 +6993,7 @@
  },
  "integrity": {
   "declarations_known": 152842,
-  "statement_nodes_known": 6364,
+  "statement_nodes_known": 6371,
   "mechanism_ids": [
    "composite_dilation_defect_accounting",
    "dyadic_odd_core_basis",

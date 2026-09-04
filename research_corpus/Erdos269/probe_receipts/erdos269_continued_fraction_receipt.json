@@ -1,0 +1,167 @@
+{
+ "probe_id": "erdos269_continued_fraction",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_269",
+   "target_statement": "Prove irrationality in the first unresolved support case with three distinct prime generators.",
+   "claim_ceiling": "No three-prime irrationality or transcendence theorem has been proved. Lean identifies the actual compressed dyadic radix with the successive threePrimeHeight and literal smoothPrefixLcm ratio and proves that it lies in {2,6,10,30}. It proves an all-scale quadratic bound for the literal ordered digit, a polynomial-geometric majorant and summability for the actual real shell masses, constructs the genuine infinite dyadic-shell tsum tail, and proves its exact recurrence X_(a+1)=b_a X_a-d_a. The bounded-radix theorem therefore applies directly: the actual normalized infinite tail either reaches an exact integral state or returns cofinally to distance at least 1/31 from every integer. The infinite-tail specialization is closed; excluding the exact-integral-state branch is now the precise unresolved throat. Lean also proves the complete local-window canonical-residue consumer and the two-window projective shadow d_a*H_b=d_b*H_a mod B. Exact B=11 and B=7 witnesses establish strict projective exclusion power while eliminating a uniform small-centered-defect shortcut, but they supply no universal or cofinal quantifiers. Exact affine-cylinder reconstruction at anchor a=100 reaches depth 200 and falsifies every proposed general-denominator post-clear delay cap K<=199. On the special denominator-one branch, the exact source word at a=2295 survives four transitions after first base-clear, separately eliminating a uniform three-transition classification. Exact left-null certificates eliminate every direct radix-phase-conditioned polynomial coboundary of total degree at most two in the source coordinates; higher-degree, nonpolynomial, unbounded-memory, and later-onset carries remain open. Exact Farey-band counting eliminates monotone admissibility propagation from nesting, later first-clear length, or coarse width; residue-one counterexamples rule out fixed windows and denominator-independent residue bounds. Arbitrary-order nonsingular kernel minors eliminate finite-dimensional observers of the full symbolic kernel without excluding a proved collapse of the actual reachable subspace. The remaining producer must exclude exact integral normalized source-tail states, force denominator-adaptive cofinal one-window or projective-pair escape, prove a reachable-subspace collapse, use an infinite-dimensional or nonlinear observer, or construct and analyze admissible rational affine cylinders at arbitrary depth. Exact integral tails remain unexcluded. The dyadic radix word is now identified exactly as the superposition of the Beatty characteristic sequences of log_2 3 and log_2 5, so the source system is a cocycle over a rotation of the 2-torus by (log_3 2, log_5 2); factor complexity is bounded by (n+1)^2 and measured equal to it for n <= 22. Within that new family the Adamczewski-Bugeaud stammering route is retired on measured evidence plus the Dirichlet cap, with the missing effective simultaneous-approximation bound named explicitly. The normalized tail is Diophantine-generic over 2,162 airtight-certified partial quotients, which both explains the failure of every finite-memory functional attempt and proves the value is not rational with denominator below 2^3736. Finally the escape route's own ceiling is measured: the largest excludable denominator at window depth L is Theta(sqrt(B_L)), so deeper finite certificates cannot reach a cofinal quantifier. Exact integral tails remain unexcluded and the target is open."
+  },
+  "hypothesis": {
+   "id": "normalized_tail_diophantine_genericity",
+   "statement": "The normalized source tail X_1 has an exceptional Diophantine type - Liouville behaviour, or a self-similar or algebraic continued fraction - that a proof could exploit."
+  },
+  "probe": {
+   "id": "erdos269_continued_fraction",
+   "question": "What is the certified continued fraction of X_1, and does it deviate from Gauss-Kuzmin and Levy genericity?",
+   "computation": "Exact truncation X_1 = (F + t)/B with 0 < t <= kappa, then the continued fraction prefix common to both interval endpoints - an airtight certification, since continued-fraction prefixes are cylinder memberships and cylinders are intervals.",
+   "falsifier": "Partial-quotient statistics departing from Gauss-Kuzmin, a Levy constant away from pi^2/(12 ln 2), or an irrationality exponent above 2.",
+   "stop_condition": "Genericity across the certified range retires the exceptional-structure reading; it is not repaired by extending the expansion.",
+   "resource_bounds": {
+    "truncation_depth": 15000
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "An exceptional Diophantine structure exists and can carry a proof.",
+   "falsification_consequence": "No structure to exploit, and no delayed Liouville conspiracy at any reachable scale, so the retired Lyapunov, coboundary and observer attempts were searching for something that is not there.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/HalfHeightDenominatorTransport.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos269_engine.py",
+    "formal_math/probes/erdos269_continued_fraction.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "2,162 airtight-certified partial quotients. Gauss-Kuzmin frequencies 0.4265/0.1651/0.0888/0.0587 against 0.4150/0.1699/0.0931/0.0589; Levy constant 1.19749 against 1.18657; empirical irrationality exponent 2.005. X_1 is Diophantine-generic. The expansion does not terminate within the certified range, so X_1 is not rational with denominator below 2^3737.",
+   "progress": {
+    "class": "mechanism_eliminated",
+    "decision_basis": "Certified expansion matches three independent genericity statistics.",
+    "next_analytic_target": "An effective irrationality-measure statement for X_1 derived from the torus-rotation cocycle.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_269",
+  "motivated_by": [
+   "exclude_exact_integral_dyadic_tails",
+   "finite_denominator_exclusion",
+   "phase_conditioned_source_quadratic_coboundary_no_go"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "normalized_tail_diophantine_genericity"
+  ],
+  "rationale": "Explains why every finite-memory functional attempt on the integral-tail branch failed, and supplies the strongest exact denominator exclusion on record for this problem."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+   "byte_length": 14385,
+   "sha256": "271d03d7211814b204b94f74d9251e1e687d7c591c34605110348903c025572e"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+   "byte_length": 57166,
+   "sha256": "d6fd961aebd3e3ff0faac37ce7bfd4637c6d7b3acf236dc3439201efbff187b0"
+  },
+  {
+   "path": "formal_math/probes/erdos269_engine.py",
+   "byte_length": 5343,
+   "sha256": "a4de6896e1b580af3ed8545c51344ef9912e45530328a6f10b12d55af757a2cd"
+  },
+  {
+   "path": "formal_math/probes/erdos269_continued_fraction.py",
+   "byte_length": 5946,
+   "sha256": "7b97262364541daf8dd4ba97820f29ce006a750dd635109a3b6aad7128a52000"
+  }
+ ],
+ "result": {
+  "probe_id": "erdos269_continued_fraction",
+  "start": 1,
+  "truncation_depth": 15000,
+  "base_bits": 45000,
+  "certified_partial_quotients": 13109,
+  "largest_denominator_bits": 22483,
+  "max_partial_quotient": 129114,
+  "largest_partial_quotients_with_index": [
+   [
+    129114,
+    13095
+   ],
+   [
+    14402,
+    1756
+   ],
+   [
+    7804,
+    9040
+   ],
+   [
+    5414,
+    66
+   ],
+   [
+    5268,
+    10494
+   ],
+   [
+    4619,
+    10311
+   ],
+   [
+    3769,
+    4932
+   ],
+   [
+    2508,
+    6847
+   ],
+   [
+    2412,
+    1225
+   ],
+   [
+    1926,
+    2662
+   ],
+   [
+    1780,
+    2933
+   ],
+   [
+    1761,
+    7986
+   ]
+  ],
+  "mean_partial_quotient": 23.4133,
+  "gauss_kuzmin_reference": {
+   "1": 0.415,
+   "2": 0.1699,
+   "3": 0.0931,
+   "4": 0.0589,
+   "5": 0.0406
+  },
+  "observed_frequencies": {
+   "1": 0.4208,
+   "2": 0.1665,
+   "3": 0.0917,
+   "4": 0.0575,
+   "5": 0.0391
+  },
+  "levy_constant_observed": 1.18869,
+  "levy_constant_reference": 1.18657,
+  "irrationality_exponent_proxy_max": 2.04373,
+  "irrationality_exponent_proxy_tail_max": 1.00096
+ }
+}

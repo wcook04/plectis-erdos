@@ -1,0 +1,2204 @@
+{
+  "analysis_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/RecordCofinitenessBoundary.md",
+  "analytic_boundary": {
+    "consequence": "Any cofinal supply of non-record ranks excludes the fatal branch. FAPL4 is sufficient but much stronger than necessary.",
+    "proved_on_paper": "A final skip gives a positive limiting residual delta. The exact defect decomposition yields Q_n/2^n -> delta. Since f(n)<=n, eventually Q_(n-1)>f(n)-t_n, so Q_n>Q_(n-1); after surpassing the finite earlier maximum, every rank is strict."
+  },
+  "anchor_universality_countermodel": {
+    "consequence": "Containing the six anchor exponents does not imply M120R. A proof for 1/21 must use source-reachable prefix/boundary ancestry, not the anchors or a support-independent divisor law.",
+    "load_at_row": 6,
+    "predecessor_defect_lower_bound": 10,
+    "predecessor_tail_coordinate_strict_lower_bound": "43/4",
+    "repair_margin_upper_bound": -4,
+    "row": 1962960,
+    "successor": 1962961,
+    "successor_divisor_count": 32,
+    "successor_factorization": "7*11*13*37*53",
+    "support": "the six anchors {5,8,10,20,24,60} together with every nontrivial divisor of 1962961",
+    "support_size": 37,
+    "target_is_below_one": true,
+    "target_upper_bound": "1723/3937"
+  },
+  "canonical_twenty_one": {
+    "last_record_rank": 1441439,
+    "longest_consecutive_record_run": 1,
+    "mature_phase_violation_count": 0,
+    "mature_record_successor_mod_4": {
+      "0": 37
+    },
+    "multiple_120_primorial_cofactor_classes": {
+      "composite": {
+        "equality_count": 0,
+        "minimum_margin": 1,
+        "row_count": 14737,
+        "statement": "U_30(120*k)-Q_(120*k-1)-1 grouped by whether k is composite",
+        "tightest_rows": [
+          [
+            652560,
+            1
+          ],
+          [
+            764880,
+            1
+          ],
+          [
+            1852080,
+            1
+          ],
+          [
+            1902480,
+            1
+          ],
+          [
+            311280,
+            2
+          ],
+          [
+            686640,
+            2
+          ],
+          [
+            1075920,
+            2
+          ],
+          [
+            1667760,
+            2
+          ],
+          [
+            1757040,
+            2
+          ],
+          [
+            1853520,
+            2
+          ],
+          [
+            1983120,
+            2
+          ],
+          [
+            1998960,
+            2
+          ],
+          [
+            480,
+            3
+          ],
+          [
+            4080,
+            3
+          ],
+          [
+            148560,
+            3
+          ],
+          [
+            162600,
+            3
+          ],
+          [
+            175920,
+            3
+          ],
+          [
+            211440,
+            3
+          ],
+          [
+            245040,
+            3
+          ],
+          [
+            276240,
+            3
+          ]
+        ],
+        "violation_count": 0
+      },
+      "prime": {
+        "equality_count": 3,
+        "minimum_margin": 0,
+        "row_count": 1928,
+        "statement": "U_30(120*k)-Q_(120*k-1)-1 grouped by whether k is prime",
+        "tightest_rows": [
+          [
+            999480,
+            0
+          ],
+          [
+            1699080,
+            0
+          ],
+          [
+            1905240,
+            0
+          ],
+          [
+            213960,
+            1
+          ],
+          [
+            282840,
+            1
+          ],
+          [
+            423960,
+            1
+          ],
+          [
+            641640,
+            1
+          ],
+          [
+            728040,
+            1
+          ],
+          [
+            740760,
+            1
+          ],
+          [
+            926040,
+            1
+          ],
+          [
+            944760,
+            1
+          ],
+          [
+            1003560,
+            1
+          ],
+          [
+            1053480,
+            1
+          ],
+          [
+            1063560,
+            1
+          ],
+          [
+            1362360,
+            1
+          ],
+          [
+            1478760,
+            1
+          ],
+          [
+            1743960,
+            1
+          ],
+          [
+            1790760,
+            1
+          ],
+          [
+            1841880,
+            1
+          ],
+          [
+            1846920,
+            1
+          ]
+        ],
+        "violation_count": 0
+      },
+      "unit": {
+        "equality_count": 0,
+        "minimum_margin": 2,
+        "row_count": 1,
+        "statement": "U_30(120*k)-Q_(120*k-1)-1 grouped by whether k is unit",
+        "tightest_rows": [
+          [
+            120,
+            2
+          ]
+        ],
+        "violation_count": 0
+      }
+    },
+    "multiple_120_primorial_equality_anatomy": [
+      {
+        "cofactor_factorization": [
+          [
+            8329,
+            1
+          ]
+        ],
+        "cofactor_over_120": 8329,
+        "previous_defect": 9,
+        "primorial_union_load": 10,
+        "rank": 999480,
+        "rank_factorization": [
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            8329,
+            1
+          ]
+        ],
+        "selected_union_ranks": [
+          5,
+          8,
+          10,
+          20,
+          24,
+          60,
+          16658,
+          83290,
+          124935,
+          499740
+        ],
+        "seven_columns": {
+          "10": 1,
+          "15": 2,
+          "2": 8,
+          "3": 6,
+          "30": 1,
+          "5": 3,
+          "6": 5
+        }
+      },
+      {
+        "cofactor_factorization": [
+          [
+            14159,
+            1
+          ]
+        ],
+        "cofactor_over_120": 14159,
+        "previous_defect": 10,
+        "primorial_union_load": 11,
+        "rank": 1699080,
+        "rank_factorization": [
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            14159,
+            1
+          ]
+        ],
+        "selected_union_ranks": [
+          5,
+          8,
+          10,
+          20,
+          24,
+          60,
+          28318,
+          56636,
+          84954,
+          212385,
+          283180
+        ],
+        "seven_columns": {
+          "10": 3,
+          "15": 3,
+          "2": 9,
+          "3": 7,
+          "30": 2,
+          "5": 5,
+          "6": 6
+        }
+      },
+      {
+        "cofactor_factorization": [
+          [
+            15877,
+            1
+          ]
+        ],
+        "cofactor_over_120": 15877,
+        "previous_defect": 10,
+        "primorial_union_load": 11,
+        "rank": 1905240,
+        "rank_factorization": [
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            5,
+            1
+          ],
+          [
+            15877,
+            1
+          ]
+        ],
+        "selected_union_ranks": [
+          5,
+          8,
+          10,
+          20,
+          24,
+          60,
+          95262,
+          317540,
+          476310,
+          635080,
+          952620
+        ],
+        "seven_columns": {
+          "10": 1,
+          "15": 1,
+          "2": 8,
+          "3": 6,
+          "30": 0,
+          "5": 3,
+          "6": 4
+        }
+      }
+    ],
+    "multiple_120_primorial_factor_descent_falsifier": {
+      "all_parent_decrease_count": 4,
+      "all_parent_decrease_rows": [
+        {
+          "child_margin": 5,
+          "cofactor": 32,
+          "parent_edges": [
+            {
+              "child_margin": 5,
+              "cofactor": 32,
+              "difference": -1,
+              "parent_cofactor": 16,
+              "parent_margin": 6,
+              "prime_removed": 2
+            }
+          ]
+        },
+        {
+          "child_margin": 1,
+          "cofactor": 5438,
+          "parent_edges": [
+            {
+              "child_margin": 1,
+              "cofactor": 5438,
+              "difference": -2,
+              "parent_cofactor": 2719,
+              "parent_margin": 3,
+              "prime_removed": 2
+            },
+            {
+              "child_margin": 1,
+              "cofactor": 5438,
+              "difference": -1,
+              "parent_cofactor": 2,
+              "parent_margin": 2,
+              "prime_removed": 2719
+            }
+          ]
+        },
+        {
+          "child_margin": 1,
+          "cofactor": 6374,
+          "parent_edges": [
+            {
+              "child_margin": 1,
+              "cofactor": 6374,
+              "difference": -2,
+              "parent_cofactor": 3187,
+              "parent_margin": 3,
+              "prime_removed": 2
+            },
+            {
+              "child_margin": 1,
+              "cofactor": 6374,
+              "difference": -1,
+              "parent_cofactor": 2,
+              "parent_margin": 2,
+              "prime_removed": 3187
+            }
+          ]
+        },
+        {
+          "child_margin": 1,
+          "cofactor": 15854,
+          "parent_edges": [
+            {
+              "child_margin": 1,
+              "cofactor": 15854,
+              "difference": -1,
+              "parent_cofactor": 7927,
+              "parent_margin": 2,
+              "prime_removed": 2
+            },
+            {
+              "child_margin": 1,
+              "cofactor": 15854,
+              "difference": -1,
+              "parent_cofactor": 2,
+              "parent_margin": 2,
+              "prime_removed": 7927
+            }
+          ]
+        }
+      ],
+      "composite_cofactor_count": 14737,
+      "consequence": "The observed composite unit slack is not inherited by static factor descent.  Any proof of PU240+ must couple the selected divisor-layer gain to the simultaneous live-defect change.",
+      "decreasing_edge_count": 119,
+      "factor_descent_edge_count": 39516,
+      "first_decreasing_edge": {
+        "child_margin": 5,
+        "cofactor": 32,
+        "difference": -1,
+        "parent_cofactor": 16,
+        "parent_margin": 6,
+        "prime_removed": 2
+      },
+      "inductive_statement": "every composite cofactor has a prime-deletion parent whose primorial repair margin is no larger",
+      "minimum_difference": -3,
+      "status": "falsified_exact_finite",
+      "strong_statement": "adjoining a prime factor to the cofactor never decreases U_30(120*m)-Q_(120*m-1)-1",
+      "tightest_edges": [
+        {
+          "child_margin": 4,
+          "cofactor": 16358,
+          "difference": -3,
+          "parent_cofactor": 8179,
+          "parent_margin": 7,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 4,
+          "cofactor": 1154,
+          "difference": -2,
+          "parent_cofactor": 577,
+          "parent_margin": 6,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 3,
+          "cofactor": 4502,
+          "difference": -2,
+          "parent_cofactor": 2251,
+          "parent_margin": 5,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 1,
+          "cofactor": 5438,
+          "difference": -2,
+          "parent_cofactor": 2719,
+          "parent_margin": 3,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 1,
+          "cofactor": 6374,
+          "difference": -2,
+          "parent_cofactor": 3187,
+          "parent_margin": 3,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 6,
+          "cofactor": 6425,
+          "difference": -2,
+          "parent_cofactor": 1285,
+          "parent_margin": 8,
+          "prime_removed": 5
+        },
+        {
+          "child_margin": 10,
+          "cofactor": 6878,
+          "difference": -2,
+          "parent_cofactor": 3439,
+          "parent_margin": 12,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 18,
+          "cofactor": 6880,
+          "difference": -2,
+          "parent_cofactor": 3440,
+          "parent_margin": 20,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 15,
+          "cofactor": 8174,
+          "difference": -2,
+          "parent_cofactor": 4087,
+          "parent_margin": 17,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 3,
+          "cofactor": 12074,
+          "difference": -2,
+          "parent_cofactor": 6037,
+          "parent_margin": 5,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 12,
+          "cofactor": 12128,
+          "difference": -2,
+          "parent_cofactor": 6064,
+          "parent_margin": 14,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 11,
+          "cofactor": 13472,
+          "difference": -2,
+          "parent_cofactor": 6736,
+          "parent_margin": 13,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 3,
+          "cofactor": 15014,
+          "difference": -2,
+          "parent_cofactor": 7507,
+          "parent_margin": 5,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 11,
+          "cofactor": 15266,
+          "difference": -2,
+          "parent_cofactor": 7633,
+          "parent_margin": 13,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 5,
+          "cofactor": 32,
+          "difference": -1,
+          "parent_cofactor": 16,
+          "parent_margin": 6,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 3,
+          "cofactor": 34,
+          "difference": -1,
+          "parent_cofactor": 17,
+          "parent_margin": 4,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 4,
+          "cofactor": 38,
+          "difference": -1,
+          "parent_cofactor": 19,
+          "parent_margin": 5,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 6,
+          "cofactor": 134,
+          "difference": -1,
+          "parent_cofactor": 67,
+          "parent_margin": 7,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 9,
+          "cofactor": 160,
+          "difference": -1,
+          "parent_cofactor": 80,
+          "parent_margin": 10,
+          "prime_removed": 2
+        },
+        {
+          "child_margin": 4,
+          "cofactor": 446,
+          "difference": -1,
+          "parent_cofactor": 223,
+          "parent_margin": 5,
+          "prime_removed": 2
+        }
+      ]
+    },
+    "multiple_120_primorial_union_candidate": {
+      "equality_count": 3,
+      "minimum_margin": 0,
+      "row_count": 16666,
+      "statement": "U_30(120*k) >= Q_(120*k-1)+1, where U_30(n) counts selected d dividing at least one of n/2,n/3,n/5",
+      "tightest_rows": [
+        [
+          999480,
+          0
+        ],
+        [
+          1699080,
+          0
+        ],
+        [
+          1905240,
+          0
+        ],
+        [
+          213960,
+          1
+        ],
+        [
+          282840,
+          1
+        ],
+        [
+          423960,
+          1
+        ],
+        [
+          641640,
+          1
+        ],
+        [
+          652560,
+          1
+        ],
+        [
+          728040,
+          1
+        ],
+        [
+          740760,
+          1
+        ],
+        [
+          764880,
+          1
+        ],
+        [
+          926040,
+          1
+        ],
+        [
+          944760,
+          1
+        ],
+        [
+          1003560,
+          1
+        ],
+        [
+          1053480,
+          1
+        ],
+        [
+          1063560,
+          1
+        ],
+        [
+          1362360,
+          1
+        ],
+        [
+          1478760,
+          1
+        ],
+        [
+          1743960,
+          1
+        ],
+        [
+          1790760,
+          1
+        ]
+      ],
+      "violation_count": 0
+    },
+    "multiple_120_proper_load_candidate": {
+      "equality_count": 3,
+      "minimum_margin": 0,
+      "row_count": 16666,
+      "statement": "sum_(d|120*k,d<120*k) b_d >= Q_(120*k-1)+1",
+      "tightest_rows": [
+        [
+          999480,
+          0
+        ],
+        [
+          1699080,
+          0
+        ],
+        [
+          1905240,
+          0
+        ],
+        [
+          213960,
+          1
+        ],
+        [
+          282840,
+          1
+        ],
+        [
+          423960,
+          1
+        ],
+        [
+          641640,
+          1
+        ],
+        [
+          728040,
+          1
+        ],
+        [
+          740760,
+          1
+        ],
+        [
+          926040,
+          1
+        ],
+        [
+          944760,
+          1
+        ],
+        [
+          1003560,
+          1
+        ],
+        [
+          1053480,
+          1
+        ],
+        [
+          1063560,
+          1
+        ],
+        [
+          1362360,
+          1
+        ],
+        [
+          1478760,
+          1
+        ],
+        [
+          1743960,
+          1
+        ],
+        [
+          1790760,
+          1
+        ],
+        [
+          1841880,
+          1
+        ],
+        [
+          1846920,
+          1
+        ]
+      ],
+      "violation_count": 0
+    },
+    "multiple_120_repair_candidate": {
+      "equality_count": 1,
+      "minimum_margin": 0,
+      "row_count": 16666,
+      "statement": "f(120*k) >= Q_(120*k-1) + t_(120*k)",
+      "tightest_rows": [
+        [
+          999480,
+          0
+        ],
+        [
+          423960,
+          1
+        ],
+        [
+          1053480,
+          1
+        ],
+        [
+          1478760,
+          1
+        ],
+        [
+          1699080,
+          1
+        ],
+        [
+          1846920,
+          1
+        ],
+        [
+          1905240,
+          1
+        ],
+        [
+          120,
+          2
+        ],
+        [
+          47640,
+          2
+        ],
+        [
+          105720,
+          2
+        ],
+        [
+          146040,
+          2
+        ],
+        [
+          199560,
+          2
+        ],
+        [
+          213960,
+          2
+        ],
+        [
+          244680,
+          2
+        ],
+        [
+          282840,
+          2
+        ],
+        [
+          293640,
+          2
+        ],
+        [
+          338280,
+          2
+        ],
+        [
+          343320,
+          2
+        ],
+        [
+          348360,
+          2
+        ],
+        [
+          413880,
+          2
+        ]
+      ],
+      "violation_count": 0
+    },
+    "multiple_240_coupled_factor_descent_candidate": {
+      "all_row_minimum_balance": 2,
+      "consequence": "The Lean strong-induction consumer reduces PU240+ to the coupled proper-divisor descent and the unit/16/prime boundary. Finite survival does not prove either all-depth premise.",
+      "debt": "D(m)=Q_(240m-1)+g(8m)",
+      "deterministic_descent_statement": "for composite m!=16, deleting the largest prime factor does not decrease P(m)-D(m)",
+      "exception_16": {
+        "balance": 6,
+        "cofactor": 16,
+        "debt": 8,
+        "payment": 14,
+        "pu240_slack": 4
+      },
+      "factor_descent_edge_count": 7287,
+      "minimum_difference_away_from_16": 0,
+      "payment": "P(m)=f(120m)+g(40m)+g(24m)",
+      "prime_column_normal_form": {
+        "base_column_constant": 7,
+        "boundary_equality_rows": [
+          {
+            "coupled_balance": 2,
+            "identity_holds": true,
+            "predicted_balance": 2,
+            "previous_defect": 11,
+            "prime": 2719,
+            "prime_mod_6": 1,
+            "scaled_column_load": 6,
+            "scaled_column_word": [
+              1,
+              10,
+              16,
+              24,
+              40,
+              80
+            ]
+          },
+          {
+            "coupled_balance": 2,
+            "identity_holds": true,
+            "predicted_balance": 2,
+            "previous_defect": 9,
+            "prime": 3187,
+            "prime_mod_6": 1,
+            "scaled_column_load": 4,
+            "scaled_column_word": [
+              6,
+              15,
+              20,
+              60
+            ]
+          },
+          {
+            "coupled_balance": 2,
+            "identity_holds": true,
+            "predicted_balance": 2,
+            "previous_defect": 10,
+            "prime": 7717,
+            "prime_mod_6": 1,
+            "scaled_column_load": 5,
+            "scaled_column_word": [
+              5,
+              30,
+              48,
+              80,
+              120
+            ]
+          },
+          {
+            "coupled_balance": 2,
+            "identity_holds": true,
+            "predicted_balance": 2,
+            "previous_defect": 8,
+            "prime": 7927,
+            "prime_mod_6": 1,
+            "scaled_column_load": 3,
+            "scaled_column_word": [
+              1,
+              4,
+              120
+            ]
+          }
+        ],
+        "coefficient_set": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          10,
+          12,
+          15,
+          16,
+          20,
+          24,
+          30,
+          40,
+          48,
+          60,
+          80,
+          120
+        ],
+        "coefficient_set_cardinality": 19,
+        "coefficient_set_description": "Div(120) union {16,48,80}",
+        "consequence": "The Lean prime-boundary equivalence removes every moving payment term except this fixed 19-column pullback.  The remaining all-prime problem is a defect-versus-selected-column inequality, with an observed extra unit on p=5 mod 6.",
+        "fixed_selected_columns": [
+          5,
+          8,
+          10,
+          16,
+          20,
+          24,
+          60
+        ],
+        "identity": "for prime p>5, P(p)-D(p)=7+|{c in C:c*p in A}|-Q_(240*p-1)",
+        "identity_check_count": 1042,
+        "identity_failure_count": 0,
+        "identity_failures": [],
+        "mod_6_candidate": {
+          "classes": {
+            "1": {
+              "equality_count": 4,
+              "minimum_balance": 2,
+              "row_count": 515,
+              "tightest_rows": [
+                {
+                  "coupled_balance": 2,
+                  "identity_holds": true,
+                  "predicted_balance": 2,
+                  "previous_defect": 11,
+                  "prime": 2719,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 6,
+                  "scaled_column_word": [
+                    1,
+                    10,
+                    16,
+                    24,
+                    40,
+                    80
+                  ]
+                },
+                {
+                  "coupled_balance": 2,
+                  "identity_holds": true,
+                  "predicted_balance": 2,
+                  "previous_defect": 9,
+                  "prime": 3187,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 4,
+                  "scaled_column_word": [
+                    6,
+                    15,
+                    20,
+                    60
+                  ]
+                },
+                {
+                  "coupled_balance": 2,
+                  "identity_holds": true,
+                  "predicted_balance": 2,
+                  "previous_defect": 10,
+                  "prime": 7717,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 5,
+                  "scaled_column_word": [
+                    5,
+                    30,
+                    48,
+                    80,
+                    120
+                  ]
+                },
+                {
+                  "coupled_balance": 2,
+                  "identity_holds": true,
+                  "predicted_balance": 2,
+                  "previous_defect": 8,
+                  "prime": 7927,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 3,
+                  "scaled_column_word": [
+                    1,
+                    4,
+                    120
+                  ]
+                },
+                {
+                  "coupled_balance": 3,
+                  "identity_holds": true,
+                  "predicted_balance": 3,
+                  "previous_defect": 11,
+                  "prime": 1297,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 7,
+                  "scaled_column_word": [
+                    3,
+                    8,
+                    16,
+                    24,
+                    30,
+                    40,
+                    48
+                  ]
+                },
+                {
+                  "coupled_balance": 3,
+                  "identity_holds": true,
+                  "predicted_balance": 3,
+                  "previous_defect": 11,
+                  "prime": 4483,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 7,
+                  "scaled_column_word": [
+                    1,
+                    2,
+                    8,
+                    10,
+                    16,
+                    48,
+                    80
+                  ]
+                },
+                {
+                  "coupled_balance": 3,
+                  "identity_holds": true,
+                  "predicted_balance": 3,
+                  "previous_defect": 10,
+                  "prime": 6949,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 6,
+                  "scaled_column_word": [
+                    5,
+                    8,
+                    15,
+                    16,
+                    24,
+                    40
+                  ]
+                },
+                {
+                  "coupled_balance": 3,
+                  "identity_holds": true,
+                  "predicted_balance": 3,
+                  "previous_defect": 11,
+                  "prime": 7321,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 7,
+                  "scaled_column_word": [
+                    5,
+                    12,
+                    16,
+                    24,
+                    40,
+                    48,
+                    80
+                  ]
+                },
+                {
+                  "coupled_balance": 3,
+                  "identity_holds": true,
+                  "predicted_balance": 3,
+                  "previous_defect": 10,
+                  "prime": 7723,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 6,
+                  "scaled_column_word": [
+                    2,
+                    3,
+                    15,
+                    40,
+                    48,
+                    60
+                  ]
+                },
+                {
+                  "coupled_balance": 3,
+                  "identity_holds": true,
+                  "predicted_balance": 3,
+                  "previous_defect": 8,
+                  "prime": 8263,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 4,
+                  "scaled_column_word": [
+                    3,
+                    6,
+                    30,
+                    80
+                  ]
+                },
+                {
+                  "coupled_balance": 3,
+                  "identity_holds": true,
+                  "predicted_balance": 3,
+                  "previous_defect": 10,
+                  "prime": 8329,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 6,
+                  "scaled_column_word": [
+                    2,
+                    10,
+                    15,
+                    16,
+                    48,
+                    60
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 10,
+                  "prime": 619,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 7,
+                  "scaled_column_word": [
+                    6,
+                    15,
+                    16,
+                    20,
+                    30,
+                    60,
+                    120
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 9,
+                  "prime": 733,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 6,
+                  "scaled_column_word": [
+                    1,
+                    2,
+                    5,
+                    16,
+                    40,
+                    48
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 9,
+                  "prime": 1021,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 6,
+                  "scaled_column_word": [
+                    2,
+                    5,
+                    20,
+                    24,
+                    40,
+                    48
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 9,
+                  "prime": 1321,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 6,
+                  "scaled_column_word": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    12,
+                    40
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 8,
+                  "prime": 1549,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 5,
+                  "scaled_column_word": [
+                    2,
+                    8,
+                    30,
+                    48,
+                    60
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 8,
+                  "prime": 1663,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 5,
+                  "scaled_column_word": [
+                    2,
+                    6,
+                    10,
+                    60,
+                    80
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 10,
+                  "prime": 2251,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 7,
+                  "scaled_column_word": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    10,
+                    24,
+                    40
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 10,
+                  "prime": 2389,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 7,
+                  "scaled_column_word": [
+                    3,
+                    4,
+                    10,
+                    12,
+                    16,
+                    24,
+                    30
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 13,
+                  "prime": 2617,
+                  "prime_mod_6": 1,
+                  "scaled_column_load": 10,
+                  "scaled_column_word": [
+                    1,
+                    4,
+                    5,
+                    6,
+                    15,
+                    16,
+                    24,
+                    40,
+                    60,
+                    120
+                  ]
+                }
+              ],
+              "violation_count": 0
+            },
+            "5": {
+              "equality_count": 1,
+              "minimum_balance": 3,
+              "row_count": 527,
+              "tightest_rows": [
+                {
+                  "coupled_balance": 3,
+                  "identity_holds": true,
+                  "predicted_balance": 3,
+                  "previous_defect": 10,
+                  "prime": 2861,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 6,
+                  "scaled_column_word": [
+                    1,
+                    3,
+                    10,
+                    12,
+                    15,
+                    48
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 9,
+                  "prime": 17,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 6,
+                  "scaled_column_word": [
+                    2,
+                    3,
+                    10,
+                    20,
+                    30,
+                    80
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 8,
+                  "prime": 881,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 5,
+                  "scaled_column_word": [
+                    1,
+                    4,
+                    8,
+                    16,
+                    20
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 10,
+                  "prime": 1151,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 7,
+                  "scaled_column_word": [
+                    5,
+                    8,
+                    10,
+                    16,
+                    20,
+                    24,
+                    80
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 7,
+                  "prime": 1217,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 4,
+                  "scaled_column_word": [
+                    3,
+                    16,
+                    30,
+                    60
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 8,
+                  "prime": 1307,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 5,
+                  "scaled_column_word": [
+                    1,
+                    3,
+                    4,
+                    15,
+                    24
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 8,
+                  "prime": 1487,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 5,
+                  "scaled_column_word": [
+                    1,
+                    3,
+                    4,
+                    20,
+                    80
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 10,
+                  "prime": 1553,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 7,
+                  "scaled_column_word": [
+                    1,
+                    2,
+                    3,
+                    15,
+                    20,
+                    40,
+                    120
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 9,
+                  "prime": 1613,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 6,
+                  "scaled_column_word": [
+                    2,
+                    4,
+                    8,
+                    10,
+                    15,
+                    48
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 9,
+                  "prime": 1997,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 6,
+                  "scaled_column_word": [
+                    4,
+                    10,
+                    15,
+                    20,
+                    30,
+                    40
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 8,
+                  "prime": 2039,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 5,
+                  "scaled_column_word": [
+                    1,
+                    2,
+                    3,
+                    10,
+                    60
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 8,
+                  "prime": 2069,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 5,
+                  "scaled_column_word": [
+                    3,
+                    4,
+                    10,
+                    16,
+                    40
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 9,
+                  "prime": 2393,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 6,
+                  "scaled_column_word": [
+                    6,
+                    8,
+                    24,
+                    40,
+                    60,
+                    120
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 8,
+                  "prime": 2447,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 5,
+                  "scaled_column_word": [
+                    1,
+                    16,
+                    20,
+                    30,
+                    80
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 7,
+                  "prime": 2789,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 4,
+                  "scaled_column_word": [
+                    12,
+                    16,
+                    40,
+                    120
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 8,
+                  "prime": 2819,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 5,
+                  "scaled_column_word": [
+                    10,
+                    12,
+                    15,
+                    16,
+                    24
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 11,
+                  "prime": 2999,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 8,
+                  "scaled_column_word": [
+                    2,
+                    5,
+                    8,
+                    12,
+                    15,
+                    16,
+                    40,
+                    48
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 8,
+                  "prime": 3533,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 5,
+                  "scaled_column_word": [
+                    1,
+                    5,
+                    16,
+                    48,
+                    80
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 12,
+                  "prime": 3581,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 9,
+                  "scaled_column_word": [
+                    3,
+                    10,
+                    15,
+                    20,
+                    24,
+                    30,
+                    40,
+                    48,
+                    80
+                  ]
+                },
+                {
+                  "coupled_balance": 4,
+                  "identity_holds": true,
+                  "predicted_balance": 4,
+                  "previous_defect": 10,
+                  "prime": 3917,
+                  "prime_mod_6": 5,
+                  "scaled_column_load": 7,
+                  "scaled_column_word": [
+                    5,
+                    6,
+                    8,
+                    15,
+                    30,
+                    48,
+                    60
+                  ]
+                }
+              ],
+              "violation_count": 0
+            }
+          },
+          "statement": "Q_(240*p-1)<=columnLoad(p)+5 for p=1 mod 6, and Q_(240*p-1)<=columnLoad(p)+4 for p=5 mod 6"
+        },
+        "status": "exact_identity_and_named_phase_candidate_survive_finite_discrimination"
+      },
+      "prime_or_unit_boundary_count": 1046,
+      "prime_or_unit_equality_rows": [
+        {
+          "balance": 2,
+          "cofactor": 2719,
+          "debt": 13,
+          "payment": 15,
+          "pu240_slack": 0
+        },
+        {
+          "balance": 2,
+          "cofactor": 3187,
+          "debt": 10,
+          "payment": 12,
+          "pu240_slack": 0
+        },
+        {
+          "balance": 2,
+          "cofactor": 7717,
+          "debt": 11,
+          "payment": 13,
+          "pu240_slack": 0
+        },
+        {
+          "balance": 2,
+          "cofactor": 7927,
+          "debt": 9,
+          "payment": 11,
+          "pu240_slack": 0
+        }
+      ],
+      "prime_or_unit_minimum_balance": 2,
+      "row_count": 8333,
+      "status": "survives_exact_finite_discrimination",
+      "target": "D(m)+2<=P(m), exactly equivalent to PU240+ by DL240",
+      "tightest_edges_away_from_16": [
+        {
+          "child_balance": 8,
+          "cofactor": 64,
+          "difference": 0,
+          "largest_prime_removed": 2,
+          "parent_balance": 8,
+          "parent_cofactor": 32
+        },
+        {
+          "child_balance": 12,
+          "cofactor": 500,
+          "difference": 0,
+          "largest_prime_removed": 5,
+          "parent_balance": 12,
+          "parent_cofactor": 100
+        },
+        {
+          "child_balance": 11,
+          "cofactor": 1024,
+          "difference": 0,
+          "largest_prime_removed": 2,
+          "parent_balance": 11,
+          "parent_cofactor": 512
+        },
+        {
+          "child_balance": 4,
+          "cofactor": 4786,
+          "difference": 0,
+          "largest_prime_removed": 2393,
+          "parent_balance": 4,
+          "parent_cofactor": 2
+        },
+        {
+          "child_balance": 4,
+          "cofactor": 7234,
+          "difference": 0,
+          "largest_prime_removed": 3617,
+          "parent_balance": 4,
+          "parent_cofactor": 2
+        },
+        {
+          "child_balance": 5,
+          "cofactor": 4,
+          "difference": 1,
+          "largest_prime_removed": 2,
+          "parent_balance": 4,
+          "parent_cofactor": 2
+        },
+        {
+          "child_balance": 9,
+          "cofactor": 128,
+          "difference": 1,
+          "largest_prime_removed": 2,
+          "parent_balance": 8,
+          "parent_cofactor": 64
+        },
+        {
+          "child_balance": 10,
+          "cofactor": 256,
+          "difference": 1,
+          "largest_prime_removed": 2,
+          "parent_balance": 9,
+          "parent_cofactor": 128
+        },
+        {
+          "child_balance": 17,
+          "cofactor": 486,
+          "difference": 1,
+          "largest_prime_removed": 3,
+          "parent_balance": 16,
+          "parent_cofactor": 162
+        },
+        {
+          "child_balance": 11,
+          "cofactor": 512,
+          "difference": 1,
+          "largest_prime_removed": 2,
+          "parent_balance": 10,
+          "parent_cofactor": 256
+        },
+        {
+          "child_balance": 15,
+          "cofactor": 1000,
+          "difference": 1,
+          "largest_prime_removed": 5,
+          "parent_balance": 14,
+          "parent_cofactor": 200
+        },
+        {
+          "child_balance": 5,
+          "cofactor": 1486,
+          "difference": 1,
+          "largest_prime_removed": 743,
+          "parent_balance": 4,
+          "parent_cofactor": 2
+        },
+        {
+          "child_balance": 7,
+          "cofactor": 2019,
+          "difference": 1,
+          "largest_prime_removed": 673,
+          "parent_balance": 6,
+          "parent_cofactor": 3
+        },
+        {
+          "child_balance": 12,
+          "cofactor": 2048,
+          "difference": 1,
+          "largest_prime_removed": 2,
+          "parent_balance": 11,
+          "parent_cofactor": 1024
+        },
+        {
+          "child_balance": 5,
+          "cofactor": 2434,
+          "difference": 1,
+          "largest_prime_removed": 1217,
+          "parent_balance": 4,
+          "parent_cofactor": 2
+        },
+        {
+          "child_balance": 7,
+          "cofactor": 2481,
+          "difference": 1,
+          "largest_prime_removed": 827,
+          "parent_balance": 6,
+          "parent_cofactor": 3
+        },
+        {
+          "child_balance": 5,
+          "cofactor": 2558,
+          "difference": 1,
+          "largest_prime_removed": 1279,
+          "parent_balance": 4,
+          "parent_cofactor": 2
+        },
+        {
+          "child_balance": 5,
+          "cofactor": 2614,
+          "difference": 1,
+          "largest_prime_removed": 1307,
+          "parent_balance": 4,
+          "parent_cofactor": 2
+        },
+        {
+          "child_balance": 6,
+          "cofactor": 2855,
+          "difference": 1,
+          "largest_prime_removed": 571,
+          "parent_balance": 5,
+          "parent_cofactor": 5
+        },
+        {
+          "child_balance": 13,
+          "cofactor": 4096,
+          "difference": 1,
+          "largest_prime_removed": 2,
+          "parent_balance": 12,
+          "parent_cofactor": 2048
+        }
+      ],
+      "violation_count": 1,
+      "violation_count_away_from_16": 0,
+      "violations": [
+        {
+          "child_balance": 6,
+          "cofactor": 16,
+          "difference": -1,
+          "largest_prime_removed": 2,
+          "parent_balance": 7,
+          "parent_cofactor": 8
+        }
+      ]
+    },
+    "multiple_240_primorial_unit_slack_candidate": {
+      "equality_count": 0,
+      "minimum_margin": 1,
+      "row_count": 8333,
+      "statement": "U_30(240*k) >= Q_(240*k-1)+2; this cofinal doubled-row producer alone would imply 1/21 membership",
+      "tightest_rows": [
+        [
+          652560,
+          1
+        ],
+        [
+          764880,
+          1
+        ],
+        [
+          1852080,
+          1
+        ],
+        [
+          1902480,
+          1
+        ],
+        [
+          240,
+          2
+        ],
+        [
+          311280,
+          2
+        ],
+        [
+          686640,
+          2
+        ],
+        [
+          1075920,
+          2
+        ],
+        [
+          1667760,
+          2
+        ],
+        [
+          1757040,
+          2
+        ],
+        [
+          1853520,
+          2
+        ],
+        [
+          1983120,
+          2
+        ],
+        [
+          1998960,
+          2
+        ],
+        [
+          480,
+          3
+        ],
+        [
+          4080,
+          3
+        ],
+        [
+          148560,
+          3
+        ],
+        [
+          175920,
+          3
+        ],
+        [
+          211440,
+          3
+        ],
+        [
+          245040,
+          3
+        ],
+        [
+          276240,
+          3
+        ]
+      ],
+      "violation_count": 0
+    },
+    "nonrecord_count": 1999963,
+    "one_step_repairs": {
+      "count": 916970,
+      "last_repair": 2000002,
+      "maximum_gap": 10
+    },
+    "ranks": 2000002,
+    "strict_record_count": 39,
+    "strict_record_ranks": [
+      6,
+      19,
+      79,
+      139,
+      319,
+      419,
+      779,
+      839,
+      1439,
+      1679,
+      2519,
+      3359,
+      5039,
+      6719,
+      10079,
+      13859,
+      15839,
+      20159,
+      27719,
+      31679,
+      32759,
+      43679,
+      55439,
+      65519,
+      95759,
+      110879,
+      131039,
+      180179,
+      205919,
+      221759,
+      327599,
+      332639,
+      360359,
+      480479,
+      655199,
+      720719,
+      1053359,
+      1081079,
+      1441439
+    ]
+  },
+  "claim_status": "exact finite discrimination plus analytic theorem selector",
+  "exact_algebra": {
+    "circularity_guard": "future-column dominance cannot prove membership because the identification of Q with the support tail already assumes it",
+    "conditional_future_column_equivalence": "if the support already represents 1/21, then for n=120*k M120R is equivalent to sum_(r>=1) f(n+r)/2^r < f(n)",
+    "conditional_margin_quantization": "under the same representation hypothesis, if m=f(n)-Q_(n-1)-1, then f(n)-sum_(r>=1)f(n+r)/2^r = 2*m+20/21",
+    "future_tail_coordinate": "conditional on sum_A 1/(2^d-1)=x: Q_(n-1)=floor(sum_(r>=0) f(n+r)/2^(r+1))",
+    "phase_free_primorial_form": "at n=120*k the U_30 target-digit pulse equals t_n=1; therefore U_30(n)>=Q_(n-1)+1 is equivalent to 2*J^-(n)-J(n)>=Q_(n-1), where J is the seven-scale inclusion-exclusion operator on Q",
+    "unconditional_m120_equivalence": "Q_n=2*Q_(n-1)+t_n-f(n), so for n=120*k, M120R is equivalent to Q_n <= Q_(n-1)"
+  },
+  "exact_fatal_gap_splices": [
+    {
+      "all_later_bits_are_one": true,
+      "canonical_prefix_preserved_through": 39,
+      "death_rank": 40,
+      "defect_at_suffix_start_bit_length": 3,
+      "depth": 200,
+      "fatal_skip_bit": 0,
+      "first_mod_four_phase_violation": 84,
+      "first_post_gap_record": 47,
+      "gap_certificate": {
+        "gap_residual_above_tail_upper": true,
+        "gap_residual_below_death_coin": true,
+        "tail_upper_below_death_coin": true
+      },
+      "maximum_load_on_terminal_suffix": 9,
+      "multiple_120_primorial_union": {
+        "failure_count": 1,
+        "first_failure": [
+          120,
+          -183251937962
+        ],
+        "predeath_failure_count": 0,
+        "row_count": 1
+      },
+      "post_gap_phase_violation_count": 88,
+      "terminal_every_rank_record_suffix_start": 83,
+      "terminal_record_suffix_length": 118
+    },
+    {
+      "all_later_bits_are_one": true,
+      "canonical_prefix_preserved_through": 79,
+      "death_rank": 80,
+      "defect_at_suffix_start_bit_length": 4,
+      "depth": 400,
+      "fatal_skip_bit": 0,
+      "first_mod_four_phase_violation": 89,
+      "first_post_gap_record": 89,
+      "gap_certificate": {
+        "gap_residual_above_tail_upper": true,
+        "gap_residual_below_death_coin": true,
+        "tail_upper_below_death_coin": true
+      },
+      "maximum_load_on_terminal_suffix": 13,
+      "multiple_120_primorial_union": {
+        "failure_count": 2,
+        "first_failure": [
+          240,
+          -201487636602438195784361
+        ],
+        "predeath_failure_count": 0,
+        "row_count": 3
+      },
+      "post_gap_phase_violation_count": 179,
+      "terminal_every_rank_record_suffix_start": 164,
+      "terminal_record_suffix_length": 237
+    },
+    {
+      "all_later_bits_are_one": true,
+      "canonical_prefix_preserved_through": 139,
+      "death_rank": 140,
+      "defect_at_suffix_start_bit_length": 4,
+      "depth": 700,
+      "fatal_skip_bit": 0,
+      "first_mod_four_phase_violation": 284,
+      "first_post_gap_record": 143,
+      "gap_certificate": {
+        "gap_residual_above_tail_upper": true,
+        "gap_residual_below_death_coin": true,
+        "tail_upper_below_death_coin": true
+      },
+      "maximum_load_on_terminal_suffix": 12,
+      "multiple_120_primorial_union": {
+        "failure_count": 3,
+        "first_failure": [
+          360,
+          -201487636602438195784360
+        ],
+        "predeath_failure_count": 0,
+        "row_count": 5
+      },
+      "post_gap_phase_violation_count": 313,
+      "terminal_every_rank_record_suffix_start": 284,
+      "terminal_record_suffix_length": 417
+    },
+    {
+      "all_later_bits_are_one": true,
+      "canonical_prefix_preserved_through": 199,
+      "death_rank": 200,
+      "defect_at_suffix_start_bit_length": 4,
+      "depth": 1000,
+      "fatal_skip_bit": 0,
+      "first_mod_four_phase_violation": 404,
+      "first_post_gap_record": 319,
+      "gap_certificate": {
+        "gap_residual_above_tail_upper": true,
+        "gap_residual_below_death_coin": true,
+        "tail_upper_below_death_coin": true
+      },
+      "maximum_load_on_terminal_suffix": 17,
+      "multiple_120_primorial_union": {
+        "failure_count": 5,
+        "first_failure": [
+          480,
+          -201487636602438195784360
+        ],
+        "predeath_failure_count": 0,
+        "row_count": 8
+      },
+      "post_gap_phase_violation_count": 448,
+      "terminal_every_rank_record_suffix_start": 404,
+      "terminal_record_suffix_length": 597
+    }
+  ],
+  "not_claimed": [
+    "an all-depth cofinal non-record producer for 1/21",
+    "membership of 1/21 in the Mersenne achievement set",
+    "a proof or disproof of Erdos problem 257"
+  ],
+  "schema": "erdos257_record_cofiniteness_boundary_v1"
+}

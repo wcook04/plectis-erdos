@@ -1,0 +1,140 @@
+{
+  "parameters": {
+    "denominators": "101,211,509,1021,4099,10007",
+    "pad": 128,
+    "per_q": 60,
+    "ranks": 25000,
+    "write": "state/formal_math/erdos257_period_noncollapse/deep_run_anomaly_receipt.json"
+  },
+  "payload_sha256": "25c6ea033fa565299057857248e74133a36c139a7192d7af5e8899f3463618c6",
+  "result": {
+    "alive": 247,
+    "dead": 148,
+    "death_rank_histogram": {
+      "1": 96,
+      "10": 1,
+      "2": 29,
+      "3": 10,
+      "4": 5,
+      "5": 3,
+      "6": 2,
+      "7": 1,
+      "9": 1
+    },
+    "death_rank_max": 10,
+    "depth": 25000,
+    "gumbel_expected_max_over_sample": 22.558035027689996,
+    "gumbel_mode_log2_N": 14.609640474436812,
+    "log4_q_range": [
+      3.33,
+      3.86,
+      4.5,
+      5.0,
+      6.0,
+      6.64
+    ],
+    "max_support_density": 0.51024,
+    "max_take_run_histogram": {
+      "1": 2,
+      "10": 1,
+      "11": 10,
+      "12": 40,
+      "13": 61,
+      "14": 51,
+      "15": 30,
+      "16": 24,
+      "17": 12,
+      "18": 10,
+      "19": 3,
+      "20": 1,
+      "21": 1,
+      "22": 1
+    },
+    "mean_support_density": 0.49605991902834007,
+    "min_support_density": 4e-05,
+    "observed_max_take_run": 22,
+    "top_runs": [
+      [
+        22,
+        "251/211",
+        16320
+      ],
+      [
+        21,
+        "92/509",
+        22302
+      ],
+      [
+        20,
+        "547/509",
+        18415
+      ],
+      [
+        19,
+        "2404/10007",
+        13972
+      ],
+      [
+        19,
+        "105/101",
+        11665
+      ],
+      [
+        19,
+        "101/211",
+        23215
+      ],
+      [
+        18,
+        "6/211",
+        4937
+      ],
+      [
+        18,
+        "5608/10007",
+        1648
+      ],
+      [
+        18,
+        "4579/4099",
+        20544
+      ],
+      [
+        18,
+        "4006/10007",
+        13125
+      ],
+      [
+        18,
+        "3739/10007",
+        6717
+      ],
+      [
+        18,
+        "326/211",
+        17411
+      ],
+      [
+        18,
+        "321/211",
+        392
+      ],
+      [
+        18,
+        "296/211",
+        16242
+      ],
+      [
+        18,
+        "190/1021",
+        23779
+      ]
+    ],
+    "undecided": 0
+  },
+  "schema": "erdos257_deep_run_anomaly_v1",
+  "source": {
+    "analysis": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SupportWordStructureLab.md",
+    "script": "formal_math/erdos257_period_noncollapse/scripts/deep_run_anomaly_scan.py"
+  }
+}

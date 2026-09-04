@@ -1,0 +1,16 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "numerical_selector_falsifier_from_joint_spoke_radius_probe",
+  "output_stage": "exact_analytic_counterexample_formally_verified_and_handed_to_research_frontier",
+  "artifact": [
+    "ErdosProblems/Erdos1041/ConcyclicSmallestGapSelectorCounterexample.md",
+    "ErdosProblems/Erdos1041/ConcyclicSmallestGapSelectorCounterexample.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_concyclic_smallest_gap_selector_counterexample.py"
+  ],
+  "human_understanding_delta": "Angular crowding alone cannot select the Form-A pair. A unique smallest gap can have an unsafe full spoke at radius zero and an unsafe chord at every positive common radius; the uniform obstruction is exposed by a positive Bernstein polynomial.",
+  "verification_state": "PASS: exact Fraction/SymPy checker and canonical cached focused Lean build with --jobs 2",
+  "publication_or_review_state": "private_corpus_not_externally_reviewed",
+  "canonicalization_state": "private exact no-go companion reconciled into the Form-A note and research packet; not externally reviewed or canonical",
+  "unresolved_downstream_bottleneck": "The unrestricted Form-A objective remains open and must combine spoke/potential information with angular geometry rather than choose by smallest gap alone.",
+  "next_stage_owner": "Research frontier: replace angular-only selection by a genuinely joint potential-gap or topology mechanism; Refinery may independently review the no-go without promoting the parent problem."
+}

@@ -1,0 +1,92 @@
+{
+  "M": 120000,
+  "P1_sparse_kills": true,
+  "P2_dense_survives_but_periodic": true,
+  "P3_perturbation_restores_death": true,
+  "falsifier_survived": true,
+  "families": {
+    "4N_xor_sparse": {
+      "complement_eventually_periodic": false,
+      "density_Odd_E": 0.1909,
+      "density_tau_eq_1": 0.0293,
+      "kind": "perturbed",
+      "maxgap_Odd_E": 12,
+      "min_E": 8,
+      "socket": "KILLS"
+    },
+    "6N_xor_factorial": {
+      "complement_eventually_periodic": false,
+      "density_Odd_E": 0.3682,
+      "density_tau_eq_1": 0.3333,
+      "kind": "perturbed",
+      "maxgap_Odd_E": 4,
+      "min_E": 2,
+      "socket": "KILLS"
+    },
+    "dense_4N": {
+      "complement_eventually_periodic": true,
+      "density_Odd_E": 0.002,
+      "density_tau_eq_1": 0.0,
+      "kind": "dense_in_progression",
+      "maxgap_Odd_E": 972,
+      "min_E": 4,
+      "socket": "survives_in_range"
+    },
+    "dense_6N": {
+      "complement_eventually_periodic": true,
+      "density_Odd_E": 0.0017,
+      "density_tau_eq_1": 0.0,
+      "kind": "dense_in_progression",
+      "maxgap_Odd_E": 1194,
+      "min_E": 6,
+      "socket": "survives_in_range"
+    },
+    "primes": {
+      "complement_eventually_periodic": false,
+      "density_Odd_E": 0.5041,
+      "density_tau_eq_1": 0.1025,
+      "kind": "sparse",
+      "maxgap_Odd_E": 20,
+      "min_E": 2,
+      "socket": "KILLS"
+    },
+    "sparse_dbl_exp": {
+      "complement_eventually_periodic": false,
+      "density_Odd_E": 0.3086,
+      "density_tau_eq_1": 0.25,
+      "kind": "sparse",
+      "maxgap_Odd_E": 4,
+      "min_E": 2,
+      "socket": "KILLS"
+    },
+    "sparse_factorial": {
+      "complement_eventually_periodic": false,
+      "density_Odd_E": 0.3679,
+      "density_tau_eq_1": 0.3333,
+      "kind": "sparse",
+      "maxgap_Odd_E": 4,
+      "min_E": 2,
+      "socket": "KILLS"
+    },
+    "sparse_pow2": {
+      "complement_eventually_periodic": false,
+      "density_Odd_E": 0.3333,
+      "density_tau_eq_1": 0.25,
+      "kind": "sparse",
+      "maxgap_Odd_E": 4,
+      "min_E": 2,
+      "socket": "KILLS"
+    },
+    "sparse_squares": {
+      "complement_eventually_periodic": false,
+      "density_Odd_E": 0.3419,
+      "density_tau_eq_1": 0.2752,
+      "kind": "sparse",
+      "maxgap_Odd_E": 8,
+      "min_E": 4,
+      "socket": "KILLS"
+    }
+  },
+  "gap_inhabited": false,
+  "hi": 60000
+}

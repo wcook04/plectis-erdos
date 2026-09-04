@@ -1,0 +1,39 @@
+{
+  "carry_material_found": {
+    "CrossRepresentationInformationLossMap_hits": 19,
+    "SupportWordStructureLab_hits": 22,
+    "dedicated_notes": [
+      "AdjointFluxSummationByParts.md",
+      "DelayedDoublingBorrowCocycleAudit.md",
+      "MultiplicityRenormalisationAttack.md",
+      "SourceClockBorrowNoGo.md",
+      "StableBoundaryCarryAttack.md"
+    ],
+    "lean_theorems": [
+      "CertificateKernel.lean:9569 irrational_erdosSupportSeries_of_weighted_coeff_carry_certificates",
+      "SupportSunflowerDichotomy.lean:458 irrational_erdosSupportSeries_of_sunflower_forcedCarry_supply"
+    ],
+    "note_hits": 42,
+    "xindex_hits": 22
+  },
+  "closure": {
+    "aggregate_content": "y <= E - 1 = T_1 = 0.6066951524152918",
+    "ceiling": "tau_A(n) <= d(n) - 1 (since 1 not in A)",
+    "generality": "ANY index set with ANY weights gives an UPPER bound on y, because the recursion is LINEAR in tau_A and y is its generating value; an upper bound on a free parameter is never a contradiction",
+    "iterate": "Q_N >= sum_{n=1..N} 2^(N-n) (t_n + 1 - d(n))",
+    "limit": "0 >= y + 1 - sum_n d(n)/2^n, and sum_n d(n)/2^n = E = 1.6066951524152917",
+    "recurrence": "Q_n = 2 Q_{n-1} + t_n - tau_A(n), Q_n >= 0",
+    "where": "CertificateSocketCollapse.md section 19",
+    "why_vacuous": "immediate from 1 not in A: y = sum_{a>=2} z_a <= T_1"
+  },
+  "computation_run_this_iteration": "none -- the reading closed it",
+  "covers_T18_prime_route": true,
+  "lanes_now_closed_by_my_own_prior_sections": [
+    "divisor layer (s5d, via s72)",
+    "carry aggregate (s19, via s73)"
+  ],
+  "open_item_located": "T18: M8's FORCING half -- deterministic forcing identity, not a signal claim",
+  "route_taken": "T51b applied: read cross-index carry ROWS first, followed them to s18 then s19, and stopped before running anything",
+  "surviving_sliver": "a NON-LINEAR use of the ceiling -- s19 closes every LINEAR functional",
+  "verdict": "NEGATIVE ITERATION -- the carry lane s72 routed to was already closed by my own s19"
+}

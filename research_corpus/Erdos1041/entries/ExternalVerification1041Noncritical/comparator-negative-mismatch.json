@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041Noncritical.Challenge",
+  "solution_module": "ExternalVerification1041Noncritical.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041Noncritical.noncritical_on_of_norm_lt_uniform_lower_bound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

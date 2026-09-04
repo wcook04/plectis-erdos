@@ -1,0 +1,101 @@
+{
+  "falsifier_survived": true,
+  "max_n": 200000,
+  "nullity_box": "d=2,D=5",
+  "preimage_of_2mod4": [
+    2,
+    4
+  ],
+  "rows": {
+    "CALIB N": {
+      "nullity_k234": [
+        14,
+        9,
+        8
+      ],
+      "odd_gap_grows": true,
+      "odd_maxgap_by_scale": {
+        "1000": 61,
+        "10000": 199,
+        "100000": 631,
+        "200000": 893
+      },
+      "reciprocal_partial_sum": 12.783290810429623
+    },
+    "CALIB primes": {
+      "nullity_k234": [
+        0,
+        0,
+        0
+      ],
+      "odd_gap_grows": true,
+      "odd_maxgap_by_scale": {
+        "1000": 9,
+        "10000": 11,
+        "100000": 20,
+        "200000": 20
+      },
+      "reciprocal_partial_sum": 2.7636141323832404
+    },
+    "CANDIDATE (N\\{2^i}) xor {4p}": {
+      "nullity_k234": [
+        0,
+        0,
+        0
+      ],
+      "odd_gap_grows": false,
+      "odd_maxgap_by_scale": {
+        "1000": 4,
+        "10000": 4,
+        "100000": 4,
+        "200000": 4
+      },
+      "reciprocal_partial_sum": 11.372485860681174
+    },
+    "CONTRAST (N\\{2^i}) xor primes": {
+      "nullity_k234": [
+        0,
+        0,
+        0
+      ],
+      "odd_gap_grows": true,
+      "odd_maxgap_by_scale": {
+        "1000": 10,
+        "10000": 12,
+        "100000": 18,
+        "200000": 23
+      },
+      "reciprocal_partial_sum": 10.019684307440913
+    },
+    "ingredient {4p}": {
+      "nullity_k234": [
+        0,
+        0,
+        0
+      ],
+      "odd_gap_grows": true,
+      "odd_maxgap_by_scale": {
+        "1000": 36,
+        "10000": 44,
+        "100000": 56,
+        "200000": 80
+      },
+      "reciprocal_partial_sum": 0.6608125791429805
+    },
+    "reference N\\{2^i} (adapted)": {
+      "nullity_k234": [
+        8,
+        0,
+        2
+      ],
+      "odd_gap_grows": false,
+      "odd_maxgap_by_scale": {
+        "1000": 4,
+        "10000": 4,
+        "100000": 4,
+        "200000": 4
+      },
+      "reciprocal_partial_sum": 11.783298439824154
+    }
+  }
+}

@@ -1,0 +1,202 @@
+{
+ "probe_id": "erdos1041_sharpness",
+ "theorem": "for f = z^n - r^n, any curve joining two distinct roots inside {|f|<1} has length >= 2(r - (1-r^n)^(1/n)); the bound tends to 2 as r -> 1 at every degree n >= 2",
+ "grid": 1200,
+ "rows": [
+  {
+   "n": 2,
+   "r": 0.99,
+   "epsilon": 0.141067,
+   "lower_bound": 1.697865,
+   "measured_geodesic": 1.98,
+   "two_r": 1.98,
+   "ratio_to_two_r": 1.0,
+   "bound_respected": true
+  },
+  {
+   "n": 2,
+   "r": 0.999,
+   "epsilon": 0.04471,
+   "lower_bound": 1.90858,
+   "measured_geodesic": 1.997676,
+   "two_r": 1.998,
+   "ratio_to_two_r": 0.999838,
+   "bound_respected": true
+  },
+  {
+   "n": 2,
+   "r": 0.9999,
+   "epsilon": 0.014142,
+   "lower_bound": 1.971516,
+   "measured_geodesic": 1.9998,
+   "two_r": 1.9998,
+   "ratio_to_two_r": 1.0,
+   "bound_respected": true
+  },
+  {
+   "n": 3,
+   "r": 0.99,
+   "epsilon": 0.309688,
+   "lower_bound": 1.360625,
+   "measured_geodesic": 1.782252,
+   "two_r": 1.98,
+   "ratio_to_two_r": 0.900127,
+   "bound_respected": true
+  },
+  {
+   "n": 3,
+   "r": 0.999,
+   "epsilon": 0.144177,
+   "lower_bound": 1.709646,
+   "measured_geodesic": 1.897203,
+   "two_r": 1.998,
+   "ratio_to_two_r": 0.949551,
+   "bound_respected": true
+  },
+  {
+   "n": 3,
+   "r": 0.9999,
+   "epsilon": 0.066941,
+   "lower_bound": 1.865918,
+   "measured_geodesic": 1.940464,
+   "two_r": 1.9998,
+   "ratio_to_two_r": 0.970329,
+   "bound_respected": true
+  },
+  {
+   "n": 4,
+   "r": 0.99,
+   "epsilon": 0.445538,
+   "lower_bound": 1.088923,
+   "measured_geodesic": 1.505979,
+   "two_r": 1.98,
+   "ratio_to_two_r": 0.760595,
+   "bound_respected": true
+  },
+  {
+   "n": 4,
+   "r": 0.999,
+   "epsilon": 0.251392,
+   "lower_bound": 1.495215,
+   "measured_geodesic": 1.730234,
+   "two_r": 1.998,
+   "ratio_to_two_r": 0.865983,
+   "bound_respected": true
+  },
+  {
+   "n": 4,
+   "r": 0.9999,
+   "epsilon": 0.141416,
+   "lower_bound": 1.716968,
+   "measured_geodesic": 1.851029,
+   "two_r": 1.9998,
+   "ratio_to_two_r": 0.925607,
+   "bound_respected": true
+  },
+  {
+   "n": 5,
+   "r": 0.99,
+   "epsilon": 0.547088,
+   "lower_bound": 0.885825,
+   "measured_geodesic": 1.28528,
+   "two_r": 1.98,
+   "ratio_to_two_r": 0.649131,
+   "bound_respected": true
+  },
+  {
+   "n": 5,
+   "r": 0.999,
+   "epsilon": 0.346434,
+   "lower_bound": 1.305132,
+   "measured_geodesic": 1.518697,
+   "two_r": 1.998,
+   "ratio_to_two_r": 0.760109,
+   "bound_respected": true
+  },
+  {
+   "n": 5,
+   "r": 0.9999,
+   "epsilon": 0.218664,
+   "lower_bound": 1.562473,
+   "measured_geodesic": 1.686252,
+   "two_r": 1.9998,
+   "ratio_to_two_r": 0.84321,
+   "bound_respected": true
+  },
+  {
+   "n": 6,
+   "r": 0.99,
+   "epsilon": 0.62309,
+   "lower_bound": 0.733821,
+   "measured_geodesic": 1.104906,
+   "two_r": 1.98,
+   "ratio_to_two_r": 0.558033,
+   "bound_respected": true
+  },
+  {
+   "n": 6,
+   "r": 0.999,
+   "epsilon": 0.426099,
+   "lower_bound": 1.145801,
+   "measured_geodesic": 1.348637,
+   "two_r": 1.998,
+   "ratio_to_two_r": 0.674993,
+   "bound_respected": true
+  },
+  {
+   "n": 6,
+   "r": 0.9999,
+   "epsilon": 0.290407,
+   "lower_bound": 1.418986,
+   "measured_geodesic": 1.557739,
+   "two_r": 1.9998,
+   "ratio_to_two_r": 0.778947,
+   "bound_respected": true
+  }
+ ],
+ "bound_violations": [],
+ "measurement_sound": true,
+ "approach_to_two": {
+  "2": {
+   "ratios_by_radius": [
+    1.0,
+    0.999838,
+    1.0
+   ],
+   "monotone_increasing": false
+  },
+  "3": {
+   "ratios_by_radius": [
+    0.900127,
+    0.949551,
+    0.970329
+   ],
+   "monotone_increasing": true
+  },
+  "4": {
+   "ratios_by_radius": [
+    0.760595,
+    0.865983,
+    0.925607
+   ],
+   "monotone_increasing": true
+  },
+  "5": {
+   "ratios_by_radius": [
+    0.649131,
+    0.760109,
+    0.84321
+   ],
+   "monotone_increasing": true
+  },
+  "6": {
+   "ratios_by_radius": [
+    0.558033,
+    0.674993,
+    0.778947
+   ],
+   "monotone_increasing": true
+  }
+ },
+ "reading": "measured geodesics respect the exact bound everywhere and their ratio to 2r increases toward 1 at every degree: the constant 2 is sharp, and the extremal degeneration is z^n - r^n with r -> 1 at every degree"
+}

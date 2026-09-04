@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification251ActualPrimeGapTail.Challenge",
+  "solution_module": "ExternalVerification251ActualPrimeGapTail.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

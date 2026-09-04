@@ -1,0 +1,94 @@
+version: "v0.4"
+project:
+  name: "Erdős #68 companion-orbit rationality boundary"
+  description: "Rationality of the Erdős #68 series S = sum over d at least 2 of 1/(d! - 1) is equivalent to eventual residence of an explicit factorial orbit in one congruence class. The fixed companion constant is C = sum over n at least 2 of 1/(n!(n! - 1)), and S is rational exactly when floor(m! C) is congruent to -2 modulo m for all sufficiently large m, and irrational exactly when that residue is missed cofinally. The same equivalence is proved at every real base point x: the number x + (e - 2) is rational exactly when the canonical factorial digits of x are eventually m - 2, equivalently when floor(m! x) is congruent to -2 modulo m eventually. Each member of the shifted family sum over n at least 2 of 1/(n! + t) therefore falls under the boundary once its companion constant is named, and the member t = -1 is carried out in full here. The evaluation sum over n at least 2 of 1/n! = e - 2 supplies the shift. Every statement is an exact equivalence in both directions. The boundary is that an equivalence produces no cofinal miss of the exceptional residue on its own, so this development leaves the irrationality of S undecided and Erdős #68 open."
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A63", "11A05"]
+sources:
+  - title: "A companion-orbit rationality boundary for Erdős Problem 68"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development is the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #68"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/68"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex", "Claude Opus"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The exact hypotheses, theorem boundaries, and open-problem limitation were checked by the author with AI assistance; no independent review is claimed."
+palomar_qualification:
+  status: "candidate_pending_registry_submission"
+  challenge_dependency_boundary: "Mathlib_only"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification68CompanionOrbitBoundary/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification68CompanionOrbitBoundary/formalization.yaml"
+  replay_status: "focused_Lean_and_exact_axiom_audit_passed_supported_Comparator_NanoDa_terminal_replay_pending"
+  note: "The local replay built Challenge and Solution and audited the axioms of all three endpoints. The deliberate negative fixture compiles with its trusted sorries and has not been run through a supported Comparator mismatch check. No Palomar verdict, novelty ruling, or submission is claimed."
+status:
+  scope: "Three exact source-backed declarations transported from ErdosProblems.Erdos68.CompanionOrbitRationality; one trusted sorry per Challenge theorem."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axiom_audit_status: "focused_replay_passed_all_three_endpoints_exactly_propext_Quot_sound_Classical_choice"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  axioms: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_genericShift"
+      file: "ExternalVerification68CompanionOrbitBoundary/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification68CompanionOrbitBoundary/comparator.json"
+      canonical_claim_status: "source_transport_focused_build_clean"
+      novelty_status: "unassessed"
+      boundary: "The equivalence holds at every real base point and decides rationality of the shifted number from the orbit alone. It supplies no orbit behaviour for any particular base point."
+    - declaration: "Erdos249257.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries"
+      file: "ExternalVerification68CompanionOrbitBoundary/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification68CompanionOrbitBoundary/comparator.json"
+      canonical_claim_status: "source_transport_focused_build_clean"
+      novelty_status: "unassessed"
+      boundary: "Irrationality of the Erdős #68 series is shown equivalent to a cofinal miss of the residue -2 along the companion orbit. The cofinal miss itself is unproved, so Erdős #68 remains open."
+    - declaration: "Erdos249257.ExternalVerification68CompanionOrbitBoundary.tsum_unitFactTerm_eq_exp_one_sub_two"
+      file: "ExternalVerification68CompanionOrbitBoundary/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification68CompanionOrbitBoundary/comparator.json"
+      canonical_claim_status: "source_transport_focused_build_clean"
+      novelty_status: "unassessed"
+      boundary: "The identity is the exact evaluation of the anchored unit-factorial series. It is classical and is recorded here because it fixes the shift used by the two boundary theorems."
+fidelity:
+  divergences: "The Challenge restates the five definitions inline over Mathlib alone. Each restatement is definitionally equal to its counterpart in ErdosProblems.Erdos68, and the Solution discharges the transport by rfl."
+alignment:
+  namespace: "Erdos249257.ExternalVerification68CompanionOrbitBoundary"
+  statements:
+    - source: "ErdosProblems.Erdos68.not_irrational_add_unitFact_iff_eventually_canonicalDigit_eq_sub_two and ErdosProblems.Erdos68.not_irrational_add_unitFact_iff_eventually_facFloor_mod_neg_two"
+      lean: "companionOrbitBoundary_genericShift"
+      module: "ExternalVerification68CompanionOrbitBoundary/Challenge.lean"
+      status: "exact-transport"
+    - source: "ErdosProblems.Erdos68.not_irrational_factorialGapSeries_iff_eventually_companion_floor_neg_two and ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_companion_floor_misses"
+      lean: "companionOrbitBoundary_factorialGapSeries"
+      module: "ExternalVerification68CompanionOrbitBoundary/Challenge.lean"
+      status: "exact-transport"
+    - source: "ErdosProblems.Erdos68.tsum_unitFactTerm_eq_exp_one_sub_two"
+      lean: "tsum_unitFactTerm_eq_exp_one_sub_two"
+      module: "ExternalVerification68CompanionOrbitBoundary/Challenge.lean"
+      status: "exact-transport"

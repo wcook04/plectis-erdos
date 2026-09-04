@@ -1,0 +1,400 @@
+{
+  "degenerate_hub_under_report_reaches_the_shell": false,
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "falsification_consequence": "A shell violation would refute the aggregate and send the obligation back to the minimum over admissible hubs, which the aggregate was chosen to avoid.",
+      "survival_consequence": "The aggregate's evidence moves from a bulk maximum of 0.98885 to a hard-regime maximum an order of magnitude closer to the boundary, measured where the inequality is tight, so the remaining component-charge lemma is worth proof effort rather than further search."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "admissible_forest_aggregate_in_the_hard_regime",
+      "statement": "The aggregate sum_{c in A} L(c) <= 2 R m survives inside the near-Fekete shell, where it is tight, and the degenerate-hub under-report of the branch integrator does not reach that shell."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTreeLengthCharge.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/HardRegimeIsNearFekete.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_aggregate_near_fekete.py",
+        "system/lib/formal_math_lemniscate.py"
+      ]
+    },
+    "probe": {
+      "computation": "Roots are drawn as r(1+a_k)exp(i(2 pi k/n + t_k)) with r just below one and a, t at eight perturbation scales from 1e-2 to 1e-7, then translated so the smallest enclosing circle is centred. Every admissible hub's arc is integrated twice, by the level substitution f(z(u)) = (1-u^2) f(c) and independently through the square-root resolution xi^2 = f(c) - w, and the gap between them is recorded.",
+      "falsifier": "The aggregate fails if any shell configuration reaches ratio one under either integrator. The reliability claim fails if the two integrators disagree by more than 1e-6 at any measured scale, which would mean the aggregate cannot be read there.",
+      "id": "erdos1041_aggregate_near_fekete",
+      "question": "Does the admissible-forest aggregate survive in the near-Fekete shell rather than only in bulk samples, and are the branch lengths there measured reliably enough for the answer to mean anything?",
+      "resource_bounds": {
+        "maximum_degree": 6,
+        "perturbation_scales": 8,
+        "trials_per_cell": 14
+      },
+      "stop_condition": "Stop once the shell has been swept at eight scales across four degrees with both integrators agreeing. Further bulk sampling is a longer horizon and was already the weaker measurement."
+    },
+    "problem": {
+      "claim_ceiling": "Finite falsifier evidence for the admissible-forest aggregate stated in CriticalTreeLengthCharge.md, taken in the regime HardRegimeIsNearFekete.md identifies as hard, with a second integrator establishing that the measurement is trustworthy there. It proves neither the aggregate nor the component charge, and Erdos #1041 remains open.",
+      "id": "erdos_1041",
+      "target_statement": "If a monic polynomial f(z)=product_i(z-z_i) has all roots in the open unit disk, prove that two roots can be joined by a curve of length less than 2 contained in the open lemniscate |f|<1."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "finite_horizon_only",
+        "decision_basis": "Falsifier survival in the regime the corpus identifies as hard, with an independent integrator establishing measurement reliability there.",
+        "next_analytic_target": "Prove the component charge: nonnegative combined endpoint-deficit plus signed-curvature charge on each complete admissible component, retaining the global circumradius and the external-root factors in f'/f."
+      },
+      "status": "finite_support",
+      "summary": "The aggregate holds at every measured scale, rising monotonically to 0.999974301 against the prior bulk maximum 0.988850245. The two integrators agree to 3.43e-13 at perturbation scales at or above 1e-4, so the degenerate-hub under-report does not reach the shell and the measurement can be read."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "integrator_agreement_at_scales_above_1e_minus_4": 3.426148253993233e-13,
+  "prior_bulk_maximum": 0.988850245227178,
+  "shell_maximum": 0.9999743006863224,
+  "shell_rows": [
+    {
+      "admissible_hub_count": 2,
+      "circumradius": 0.9885271528707358,
+      "degree": 3,
+      "holds": true,
+      "perturbation_scale": 0.01,
+      "ratio_descending_pair": 0.987168990209799,
+      "ratio_resolved_diameter": 0.9871689902097973,
+      "status": "measured",
+      "worst_integrator_gap": 4.884981308350689e-15
+    },
+    {
+      "admissible_hub_count": 2,
+      "circumradius": 0.9974243288100139,
+      "degree": 3,
+      "holds": true,
+      "perturbation_scale": 0.003,
+      "ratio_descending_pair": 0.9890847082489204,
+      "ratio_resolved_diameter": 0.9890847082489186,
+      "status": "measured",
+      "worst_integrator_gap": 3.774758283725532e-15
+    },
+    {
+      "admissible_hub_count": 2,
+      "circumradius": 0.9985441440922804,
+      "degree": 3,
+      "holds": true,
+      "perturbation_scale": 0.001,
+      "ratio_descending_pair": 0.9987767059131952,
+      "ratio_resolved_diameter": 0.9987767059132018,
+      "status": "measured",
+      "worst_integrator_gap": 2.042810365310288e-14
+    },
+    {
+      "admissible_hub_count": 2,
+      "circumradius": 0.9997707673055471,
+      "degree": 3,
+      "holds": true,
+      "perturbation_scale": 0.0003,
+      "ratio_descending_pair": 0.9987960368200911,
+      "ratio_resolved_diameter": 0.9987960368201448,
+      "status": "measured",
+      "worst_integrator_gap": 2.0117241206207837e-13
+    },
+    {
+      "admissible_hub_count": 2,
+      "circumradius": 0.9994629555937395,
+      "degree": 3,
+      "holds": true,
+      "perturbation_scale": 0.0001,
+      "ratio_descending_pair": 0.9988181048319005,
+      "ratio_resolved_diameter": 0.9988181048320206,
+      "status": "measured",
+      "worst_integrator_gap": 3.426148253993233e-13
+    },
+    {
+      "admissible_hub_count": 2,
+      "circumradius": 0.9999915603588954,
+      "degree": 3,
+      "holds": true,
+      "perturbation_scale": 1e-05,
+      "ratio_descending_pair": 0.999814824424997,
+      "ratio_resolved_diameter": 0.9998148244296943,
+      "status": "measured",
+      "worst_integrator_gap": 1.872946242542639e-11
+    },
+    {
+      "admissible_hub_count": 2,
+      "circumradius": 0.9999786425243555,
+      "degree": 3,
+      "holds": true,
+      "perturbation_scale": 1e-06,
+      "ratio_descending_pair": 0.9999031990857689,
+      "ratio_resolved_diameter": 0.9999031993290504,
+      "status": "measured",
+      "worst_integrator_gap": 9.399123701570034e-10
+    },
+    {
+      "admissible_hub_count": 2,
+      "circumradius": 0.999999106361539,
+      "degree": 3,
+      "holds": true,
+      "perturbation_scale": 1e-07,
+      "ratio_descending_pair": 0.9999743006863224,
+      "ratio_resolved_diameter": 0.9999743028953495,
+      "status": "measured",
+      "worst_integrator_gap": 8.821897656829947e-09
+    },
+    {
+      "admissible_hub_count": 3,
+      "circumradius": 0.9927701607566829,
+      "degree": 4,
+      "holds": true,
+      "perturbation_scale": 0.01,
+      "ratio_descending_pair": 0.9516750088417948,
+      "ratio_resolved_diameter": 0.9516750088417956,
+      "status": "measured",
+      "worst_integrator_gap": 3.9968028886505635e-15
+    },
+    {
+      "admissible_hub_count": 3,
+      "circumradius": 0.9989994748530113,
+      "degree": 4,
+      "holds": true,
+      "perturbation_scale": 0.003,
+      "ratio_descending_pair": 0.9519580345694592,
+      "ratio_resolved_diameter": 0.9519580345694586,
+      "status": "measured",
+      "worst_integrator_gap": 2.6645352591003757e-15
+    },
+    {
+      "admissible_hub_count": 3,
+      "circumradius": 0.9992635083503927,
+      "degree": 4,
+      "holds": true,
+      "perturbation_scale": 0.001,
+      "ratio_descending_pair": 0.9690191868810476,
+      "ratio_resolved_diameter": 0.9690191868810468,
+      "status": "measured",
+      "worst_integrator_gap": 3.9968028886505635e-15
+    },
+    {
+      "degree": 4,
+      "perturbation_scale": 0.0003,
+      "status": "no_complete_admissible_hub_set"
+    },
+    {
+      "admissible_hub_count": 3,
+      "circumradius": 0.9995902171207833,
+      "degree": 4,
+      "holds": true,
+      "perturbation_scale": 0.0001,
+      "ratio_descending_pair": 0.9893818209209305,
+      "ratio_resolved_diameter": 0.9893818209209413,
+      "status": "measured",
+      "worst_integrator_gap": 4.04121180963557e-14
+    },
+    {
+      "admissible_hub_count": 3,
+      "circumradius": 0.9999766818492528,
+      "degree": 4,
+      "holds": true,
+      "perturbation_scale": 1e-05,
+      "ratio_descending_pair": 0.9946722550027003,
+      "ratio_resolved_diameter": 0.9946722550036662,
+      "status": "measured",
+      "worst_integrator_gap": 3.6137759451548845e-12
+    },
+    {
+      "admissible_hub_count": 3,
+      "circumradius": 0.9999761883427899,
+      "degree": 4,
+      "holds": true,
+      "perturbation_scale": 1e-06,
+      "ratio_descending_pair": 0.9980203404025102,
+      "ratio_resolved_diameter": 0.9980203404985108,
+      "status": "measured",
+      "worst_integrator_gap": 3.2831115603926264e-10
+    },
+    {
+      "admissible_hub_count": 3,
+      "circumradius": 0.9999998419774266,
+      "degree": 4,
+      "holds": true,
+      "perturbation_scale": 1e-07,
+      "ratio_descending_pair": 0.999094112440741,
+      "ratio_resolved_diameter": 0.9990941226239616,
+      "status": "measured",
+      "worst_integrator_gap": 3.920834101833748e-08
+    },
+    {
+      "admissible_hub_count": 4,
+      "circumradius": 0.9949642034238309,
+      "degree": 5,
+      "holds": true,
+      "perturbation_scale": 0.01,
+      "ratio_descending_pair": 0.8920808072266101,
+      "ratio_resolved_diameter": 0.8920808072266099,
+      "status": "measured",
+      "worst_integrator_gap": 2.886579864025407e-15
+    },
+    {
+      "admissible_hub_count": 4,
+      "circumradius": 0.9977872177441836,
+      "degree": 5,
+      "holds": true,
+      "perturbation_scale": 0.003,
+      "ratio_descending_pair": 0.9049659366733831,
+      "ratio_resolved_diameter": 0.904965936673384,
+      "status": "measured",
+      "worst_integrator_gap": 6.439293542825908e-15
+    },
+    {
+      "admissible_hub_count": 4,
+      "circumradius": 0.9993208295629141,
+      "degree": 5,
+      "holds": true,
+      "perturbation_scale": 0.001,
+      "ratio_descending_pair": 0.9523283817287976,
+      "ratio_resolved_diameter": 0.9523283817287977,
+      "status": "measured",
+      "worst_integrator_gap": 2.4424906541753444e-15
+    },
+    {
+      "admissible_hub_count": 4,
+      "circumradius": 0.999410235252019,
+      "degree": 5,
+      "holds": true,
+      "perturbation_scale": 0.0003,
+      "ratio_descending_pair": 0.9492172964412594,
+      "ratio_resolved_diameter": 0.9492172964412615,
+      "status": "measured",
+      "worst_integrator_gap": 6.217248937900877e-15
+    },
+    {
+      "admissible_hub_count": 4,
+      "circumradius": 0.9998880551256819,
+      "degree": 5,
+      "holds": true,
+      "perturbation_scale": 0.0001,
+      "ratio_descending_pair": 0.9722510624529652,
+      "ratio_resolved_diameter": 0.9722510624529748,
+      "status": "measured",
+      "worst_integrator_gap": 3.6193270602780103e-14
+    },
+    {
+      "admissible_hub_count": 4,
+      "circumradius": 0.9997582505995021,
+      "degree": 5,
+      "holds": true,
+      "perturbation_scale": 1e-05,
+      "ratio_descending_pair": 0.984317466815289,
+      "ratio_resolved_diameter": 0.9843174668163773,
+      "status": "measured",
+      "worst_integrator_gap": 3.838263040734091e-12
+    },
+    {
+      "admissible_hub_count": 4,
+      "circumradius": 0.9999981033683075,
+      "degree": 5,
+      "holds": true,
+      "perturbation_scale": 1e-06,
+      "ratio_descending_pair": 0.9902245858798928,
+      "ratio_resolved_diameter": 0.9902245859051882,
+      "status": "measured",
+      "worst_integrator_gap": 1.0069411970903275e-10
+    },
+    {
+      "admissible_hub_count": 4,
+      "circumradius": 0.999927091240177,
+      "degree": 5,
+      "holds": true,
+      "perturbation_scale": 1e-07,
+      "ratio_descending_pair": 0.9950046303128453,
+      "ratio_resolved_diameter": 0.9950046328309495,
+      "status": "measured",
+      "worst_integrator_gap": 9.407105761027879e-09
+    },
+    {
+      "degree": 6,
+      "perturbation_scale": 0.01,
+      "status": "no_complete_admissible_hub_set"
+    },
+    {
+      "degree": 6,
+      "perturbation_scale": 0.003,
+      "status": "no_complete_admissible_hub_set"
+    },
+    {
+      "degree": 6,
+      "perturbation_scale": 0.001,
+      "status": "no_complete_admissible_hub_set"
+    },
+    {
+      "admissible_hub_count": 5,
+      "circumradius": 0.9999199479090938,
+      "degree": 6,
+      "holds": true,
+      "perturbation_scale": 0.0003,
+      "ratio_descending_pair": 0.9309569143120194,
+      "ratio_resolved_diameter": 0.9309569143120218,
+      "status": "measured",
+      "worst_integrator_gap": 1.0436096431476471e-14
+    },
+    {
+      "admissible_hub_count": 5,
+      "circumradius": 0.9991425127477799,
+      "degree": 6,
+      "holds": true,
+      "perturbation_scale": 0.0001,
+      "ratio_descending_pair": 0.945555412073443,
+      "ratio_resolved_diameter": 0.9455554120734914,
+      "status": "measured",
+      "worst_integrator_gap": 1.7141843500212417e-13
+    },
+    {
+      "admissible_hub_count": 5,
+      "circumradius": 0.999938515100542,
+      "degree": 6,
+      "holds": true,
+      "perturbation_scale": 1e-05,
+      "ratio_descending_pair": 0.966905615659983,
+      "ratio_resolved_diameter": 0.9669056156607259,
+      "status": "measured",
+      "worst_integrator_gap": 2.9265478929119126e-12
+    },
+    {
+      "admissible_hub_count": 5,
+      "circumradius": 0.9999985085379278,
+      "degree": 6,
+      "holds": true,
+      "perturbation_scale": 1e-06,
+      "ratio_descending_pair": 0.9814224047205268,
+      "ratio_resolved_diameter": 0.9814224050024674,
+      "status": "measured",
+      "worst_integrator_gap": 1.1582821368705254e-09
+    },
+    {
+      "admissible_hub_count": 5,
+      "circumradius": 0.9998438789399884,
+      "degree": 6,
+      "holds": true,
+      "perturbation_scale": 1e-07,
+      "ratio_descending_pair": 0.9899327790589698,
+      "ratio_resolved_diameter": 0.98993278873906,
+      "status": "measured",
+      "worst_integrator_gap": 3.4892633227201486e-08
+    }
+  ],
+  "sources": [
+    {
+      "byte_length": 14654,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_aggregate_near_fekete.py",
+      "sha256": "375f106bc8e64f5dc2b32681a6cee772c97e78997e1f312c5c814d437ceebb2e"
+    },
+    {
+      "byte_length": 16610,
+      "path": "system/lib/formal_math_lemniscate.py",
+      "sha256": "ecc1b894d4832f8408a83c1463dea6c769c6c5b2ba0a70edf92d4ee4fa9a161f"
+    }
+  ],
+  "statement": "sum over admissible critical points of L(c) <= 2 R m, measured inside the near-Fekete shell rather than in the bulk, with a second independent integrator as a reliability check"
+}

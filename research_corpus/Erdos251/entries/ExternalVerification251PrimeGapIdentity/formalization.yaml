@@ -1,0 +1,143 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #251: unconditional prime-gap identity"
+  description: >-
+    Unconditional convergence, exact infinite summation by parts, and the
+    irrationality equivalence between the prime and consecutive-gap series.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification251PrimeGapIdentity/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification251PrimeGapIdentity/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_and_comparator_replay_pending"
+  research_interest_status: "research_note_grade_exact_unconditional_reduction"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "focused Lean and axiom checks are pending"
+    - "terminal positive and deliberate-negative Comparator receipts are pending"
+    - "public immutable source identity is pending"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11B83"]
+
+sources:
+  - title: "Prime-gap dyadic-tail reduction"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #251"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/251"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    Four compared endpoints expose unconditional summability, the exact
+    infinite prime-gap identity, and the irrationality equivalence without
+    claiming irrationality.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 4
+  axiom_audit_status: "pending_focused_lean_check"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_summable"
+      file: "ExternalVerification251PrimeGapIdentity/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251PrimeGapIdentity/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+      novelty_status: "unassessed"
+      contribution_class: "unconditional convergence"
+      boundary: "No irrationality conclusion."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeGapSeries_summable"
+      file: "ExternalVerification251PrimeGapIdentity/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251PrimeGapIdentity/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+      novelty_status: "unassessed"
+      contribution_class: "unconditional convergence"
+      boundary: "No irrationality conclusion."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries"
+      file: "ExternalVerification251PrimeGapIdentity/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251PrimeGapIdentity/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact unconditional infinite identity"
+      boundary: "Transforms the target but does not solve it."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries"
+      file: "ExternalVerification251PrimeGapIdentity/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251PrimeGapIdentity/comparator.json"
+      canonical_claim_status: "source_proved_composite_pending_focused_check"
+      local_proof_provenance: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact irrationality reduction"
+      boundary: "Neither side is proved irrational."
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    The challenge reproduces the source definitions literally. The final
+    theorem composes the source irrationality equivalence with its proved
+    unconditional summability hypothesis.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The identity, normalization, and open irrationality boundary were reviewed."
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification251PrimeGapIdentity"
+  statements:
+    - source: "ErdosProblems.Erdos251.summable_primeDyadicTerm"
+      lean: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_summable"
+      module: "ExternalVerification251PrimeGapIdentity/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos251.summable_primeGapDyadicTerm"
+      lean: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeGapSeries_summable"
+      module: "ExternalVerification251PrimeGapIdentity/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional"
+      lean: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries"
+      module: "ExternalVerification251PrimeGapIdentity/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap + summable_primeDyadicTerm"
+      lean: "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries"
+      module: "ExternalVerification251PrimeGapIdentity/Challenge.lean"
+      status: "exact-composite-pending-check"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

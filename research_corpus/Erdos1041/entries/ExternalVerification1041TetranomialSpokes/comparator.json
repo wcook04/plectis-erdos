@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification1041TetranomialSpokes.Challenge",
+  "solution_module": "ExternalVerification1041TetranomialSpokes.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_factorization",
+    "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget",
+    "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget",
+    "Erdos249257.ExternalVerification1041TetranomialSpokes.sum_normSq_const_add_mul",
+    "Erdos249257.ExternalVerification1041TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget",
+    "Erdos249257.ExternalVerification1041TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,231 @@
+{
+  "consequence_decisions": [
+    {
+      "decision": "eliminated",
+      "mechanism": "two_safe_root_to_origin_spokes"
+    },
+    {
+      "decision": "remains_open_and_not_touched_by_witness",
+      "mechanism": "all_critical_inverse_ray_hub_selection"
+    },
+    {
+      "decision": "not_claimed",
+      "mechanism": "erdos_1041"
+    }
+  ],
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "falsification_consequence": "A fixed origin hub cannot replace critical-point selection; retain the all-critical inverse-ray aggregate or global Reeb route.",
+      "survival_consequence": "Two safe origin spokes would solve the metric and containment requirements simultaneously via a broken line of length below two."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "two_safe_root_to_origin_spokes",
+      "statement": "Every monic polynomial with roots in the open unit disk has two distinct roots whose straight spokes to the origin remain in the strict unit lemniscate."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/OriginSpokePairCounterexampleComputationalLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_origin_spoke_pair.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/OriginSpokePairCounterexampleComputationalLab.md"
+      ]
+    },
+    "probe": {
+      "computation": "Evaluate the factored polynomial in Gaussian rational arithmetic at one explicit rational waypoint on each of four spokes.",
+      "falsifier": "A five-root polynomial for which four spokes have an exact waypoint satisfying |f|^2>1.",
+      "id": "rational_boundary_cluster_origin_spoke_falsifier",
+      "question": "Can four of five distinct root spokes be forced outside |f|<1 by a rational boundary-near configuration?",
+      "stop_condition": "Stop after four exact spoke escapes leave at most one safe spoke."
+    },
+    "problem": {
+      "claim_ceiling": "Exact counterexample to selecting two root-to-origin straight spokes; not a counterexample to Erd\u0151s #1041.",
+      "id": "erdos_1041",
+      "target_statement": "Join two roots by a curve of length less than two inside the strict unit lemniscate."
+    },
+    "result": {
+      "status": "finite_counterexample",
+      "summary": "Four exact rational waypoints escape the unit lemniscate, leaving at most one safe origin spoke and eliminating the two-spoke shortcut."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "schema": "erdos1041-origin-spoke-pair-counterexample/1",
+  "source_records": [
+    {
+      "byte_length": 8764,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_origin_spoke_pair.py",
+      "sha256": "4a4cb3d2f272242f24c219964735b3530ff9b2b9ac4605a4a84f60d4d049a008"
+    },
+    {
+      "byte_length": 2640,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/OriginSpokePairCounterexampleComputationalLab.md",
+      "sha256": "617e6eea15cef48fb2cec33ab0ccd5d2634b6d4f8518f3885d0f899809369a85"
+    },
+    {
+      "byte_length": 27418,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "sha256": "1caa3de7f45211078dec5b70468c33bb71817136a5f3ecd3a4133607c3067f8f"
+    }
+  ],
+  "status": "verified_exact_mechanism_elimination",
+  "witness": {
+    "all_root_norms_strictly_below_one": true,
+    "all_roots_distinct": true,
+    "directions": [
+      {
+        "imag": "0",
+        "real": "1"
+      },
+      {
+        "imag": "99/101",
+        "real": "-20/101"
+      },
+      {
+        "imag": "-99/101",
+        "real": "-20/101"
+      },
+      {
+        "imag": "195/197",
+        "real": "-28/197"
+      },
+      {
+        "imag": "-195/197",
+        "real": "-28/197"
+      }
+    ],
+    "radius": "99999/100000",
+    "roots": [
+      {
+        "imag": "0",
+        "real": "99999/100000"
+      },
+      {
+        "imag": "9899901/10100000",
+        "real": "-99999/505000"
+      },
+      {
+        "imag": "-9899901/10100000",
+        "real": "-99999/505000"
+      },
+      {
+        "imag": "3899961/3940000",
+        "real": "-699993/4925000"
+      },
+      {
+        "imag": "-3899961/3940000",
+        "real": "-699993/4925000"
+      }
+    ],
+    "safe_origin_spoke_count_upper_bound": 1,
+    "unsafe_origin_spoke_count": 4,
+    "unsafe_origin_spokes": [
+      {
+        "polynomial_value": {
+          "imag": "9655923758909410097040202717046722000342083/1234108089624047279357910156250000000000000000",
+          "real": "-49398777623709558064735829505320068279436103/49364323584961891174316406250000000000000000"
+        },
+        "polynomial_value_norm_sq": {
+          "denominator": 72455195682030115733596176141873002052307128906250000000000000000000000000000000,
+          "numerator": 72560807383167213249264741667203535339828994868160243667586195194081018322376257,
+          "value": "72560807383167213249264741667203535339828994868160243667586195194081018322376257/72455195682030115733596176141873002052307128906250000000000000000000000000000000"
+        },
+        "root": {
+          "imag": "9899901/10100000",
+          "real": "-99999/505000"
+        },
+        "root_index": 1,
+        "strict_unit_escape_margin_sq": {
+          "denominator": 72455195682030115733596176141873002052307128906250000000000000000000000000000000,
+          "numerator": 105611701137097515668565525330533287521865961910243667586195194081018322376257,
+          "value": "105611701137097515668565525330533287521865961910243667586195194081018322376257/72455195682030115733596176141873002052307128906250000000000000000000000000000000"
+        },
+        "waypoint": {
+          "imag": "29699703/1262500000",
+          "real": "-299997/63125000"
+        },
+        "waypoint_parameter": "3/125"
+      },
+      {
+        "polynomial_value": {
+          "imag": "-9655923758909410097040202717046722000342083/1234108089624047279357910156250000000000000000",
+          "real": "-49398777623709558064735829505320068279436103/49364323584961891174316406250000000000000000"
+        },
+        "polynomial_value_norm_sq": {
+          "denominator": 72455195682030115733596176141873002052307128906250000000000000000000000000000000,
+          "numerator": 72560807383167213249264741667203535339828994868160243667586195194081018322376257,
+          "value": "72560807383167213249264741667203535339828994868160243667586195194081018322376257/72455195682030115733596176141873002052307128906250000000000000000000000000000000"
+        },
+        "root": {
+          "imag": "-9899901/10100000",
+          "real": "-99999/505000"
+        },
+        "root_index": 2,
+        "strict_unit_escape_margin_sq": {
+          "denominator": 72455195682030115733596176141873002052307128906250000000000000000000000000000000,
+          "numerator": 105611701137097515668565525330533287521865961910243667586195194081018322376257,
+          "value": "105611701137097515668565525330533287521865961910243667586195194081018322376257/72455195682030115733596176141873002052307128906250000000000000000000000000000000"
+        },
+        "waypoint": {
+          "imag": "-29699703/1262500000",
+          "real": "-299997/63125000"
+        },
+        "waypoint_parameter": "3/125"
+      },
+      {
+        "polynomial_value": {
+          "imag": "65802258043216656927269358805641529568750936496537/11987054942582800000000000000000000000000000000000000",
+          "real": "-74943243316278787624257015023297198747055824281130631/74919093391142500000000000000000000000000000000000000"
+        },
+        "polynomial_value_norm_sq": {
+          "denominator": 302673137300215700000000000000000000000000000000000000000000000000000000000000000000000000000000,
+          "numerator": 302877420893800411135993588241855548514651632364361457174568287921880807918148138280764912164493,
+          "value": "302877420893800411135993588241855548514651632364361457174568287921880807918148138280764912164493/302673137300215700000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "root": {
+          "imag": "3899961/3940000",
+          "real": "-699993/4925000"
+        },
+        "root_index": 3,
+        "strict_unit_escape_margin_sq": {
+          "denominator": 302673137300215700000000000000000000000000000000000000000000000000000000000000000000000000000000,
+          "numerator": 204283593584711135993588241855548514651632364361457174568287921880807918148138280764912164493,
+          "value": "204283593584711135993588241855548514651632364361457174568287921880807918148138280764912164493/302673137300215700000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "waypoint": {
+          "imag": "66299337/3940000000",
+          "real": "-11899881/4925000000"
+        },
+        "waypoint_parameter": "17/1000"
+      },
+      {
+        "polynomial_value": {
+          "imag": "-65802258043216656927269358805641529568750936496537/11987054942582800000000000000000000000000000000000000",
+          "real": "-74943243316278787624257015023297198747055824281130631/74919093391142500000000000000000000000000000000000000"
+        },
+        "polynomial_value_norm_sq": {
+          "denominator": 302673137300215700000000000000000000000000000000000000000000000000000000000000000000000000000000,
+          "numerator": 302877420893800411135993588241855548514651632364361457174568287921880807918148138280764912164493,
+          "value": "302877420893800411135993588241855548514651632364361457174568287921880807918148138280764912164493/302673137300215700000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "root": {
+          "imag": "-3899961/3940000",
+          "real": "-699993/4925000"
+        },
+        "root_index": 4,
+        "strict_unit_escape_margin_sq": {
+          "denominator": 302673137300215700000000000000000000000000000000000000000000000000000000000000000000000000000000,
+          "numerator": 204283593584711135993588241855548514651632364361457174568287921880807918148138280764912164493,
+          "value": "204283593584711135993588241855548514651632364361457174568287921880807918148138280764912164493/302673137300215700000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "waypoint": {
+          "imag": "-66299337/3940000000",
+          "real": "-11899881/4925000000"
+        },
+        "waypoint_parameter": "17/1000"
+      }
+    ]
+  }
+}

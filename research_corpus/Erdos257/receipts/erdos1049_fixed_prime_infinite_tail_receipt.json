@@ -1,0 +1,180 @@
+{
+  "all_pass": true,
+  "elapsed_s": 9.17,
+  "failed": [],
+  "falsifiers": {
+    "F1_descent_lemma": {
+      "pass": true,
+      "tested": 19996,
+      "violations": []
+    },
+    "F2_J5_finite": {
+      "J5": [
+        4,
+        20,
+        24
+      ],
+      "empty_level_at_depth": 3,
+      "pass": true,
+      "terminated": true
+    },
+    "F3_monodromy_R_antiperiodic": {
+      "levels": [
+        [
+          1,
+          2,
+          300
+        ],
+        [
+          2,
+          10,
+          292
+        ],
+        [
+          3,
+          50,
+          252
+        ]
+      ],
+      "pass": true,
+      "violations": []
+    },
+    "F4_five_adic_continuity_C5": {
+      "coherent": true,
+      "g_star": {
+        "1": 2,
+        "2": 17,
+        "3": 17
+      },
+      "levels": [
+        [
+          0,
+          120,
+          [
+            2
+          ]
+        ],
+        [
+          1,
+          24,
+          [
+            17
+          ]
+        ],
+        [
+          2,
+          5,
+          [
+            17
+          ]
+        ]
+      ],
+      "pass": true
+    },
+    "F5_loss_set_exact": {
+      "actual": [
+        8,
+        9,
+        40,
+        41,
+        48,
+        49
+      ],
+      "d": 2,
+      "eps": 1,
+      "j_range": "[2,301]",
+      "pass": true,
+      "predicted": [
+        8,
+        9,
+        40,
+        41,
+        48,
+        49
+      ]
+    },
+    "F6_valuation_law": {
+      "mismatches": [],
+      "pass": true,
+      "tested": 294
+    },
+    "F7_old_hypothesis_H_is_false": {
+      "g_m_mod_25": [
+        2,
+        7,
+        17
+      ],
+      "note": "(H) claimed a single constant; three residues refute it, (C5) replaces it",
+      "pass": true
+    },
+    "F8_fixed_prime_tail": {
+      "pass": true,
+      "threshold": 50,
+      "v5_values_on_tail": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "verified_to": 301,
+      "violations": [],
+      "window_gcd_5part_at_start_s": "5^(1+floor(log_5(s/2)))"
+    }
+  },
+  "prime_family_with_proved_finite_J": [
+    {
+      "J": [
+        4,
+        20,
+        24
+      ],
+      "d": 2,
+      "eps": 1,
+      "p": 5,
+      "tail_from": 50
+    },
+    {
+      "J": [
+        12,
+        156,
+        168
+      ],
+      "d": 4,
+      "eps": 1,
+      "p": 13,
+      "tail_from": 676
+    },
+    {
+      "J": [
+        16,
+        272,
+        288
+      ],
+      "d": 16,
+      "eps": 1,
+      "p": 17,
+      "tail_from": 4624
+    },
+    {
+      "J": [
+        22
+      ],
+      "d": 11,
+      "eps": 2,
+      "p": 23,
+      "tail_from": 253
+    },
+    {
+      "J": [
+        40,
+        1640,
+        1680
+      ],
+      "d": 40,
+      "eps": 1,
+      "p": 41,
+      "tail_from": 67240
+    }
+  ],
+  "probe": "erdos1049_fixed_prime_infinite_tail"
+}

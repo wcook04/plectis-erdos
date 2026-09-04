@@ -1,0 +1,173 @@
+{
+  "canonical_boundary_scan": {
+    "complete_pair_scan_through_s": 2500,
+    "exact_records": [
+      {
+        "P": [],
+        "companion_carry": 3,
+        "delta": 2,
+        "depth": 3,
+        "hole": 4,
+        "lower_feedback_coefficient": 0,
+        "row_2s_child_carries": {
+          "left_bit_0": 3,
+          "left_bit_1": 2,
+          "right_bit_0": 6,
+          "right_bit_1": 5
+        },
+        "s": 2,
+        "terminal_bound_at_feedback": 8
+      },
+      {
+        "P": [
+          2
+        ],
+        "companion_carry": 3,
+        "delta": 2,
+        "depth": 5,
+        "hole": 3,
+        "lower_feedback_coefficient": 1,
+        "row_2s_child_carries": {
+          "left_bit_0": 2,
+          "left_bit_1": 1,
+          "right_bit_0": 5,
+          "right_bit_1": 4
+        },
+        "s": 3,
+        "terminal_bound_at_feedback": 8
+      },
+      {
+        "P": [
+          2,
+          3,
+          6
+        ],
+        "companion_carry": 3,
+        "delta": 2,
+        "depth": 13,
+        "hole": 3,
+        "lower_feedback_coefficient": 1,
+        "row_2s_child_carries": {
+          "left_bit_0": 2,
+          "left_bit_1": 1,
+          "right_bit_0": 5,
+          "right_bit_1": 4
+        },
+        "s": 7,
+        "terminal_bound_at_feedback": 10
+      }
+    ],
+    "post_base_in_strip_hole_count": 0,
+    "post_base_pair_count": 0,
+    "post_base_start_s": 10,
+    "record_count": 3
+  },
+  "depth_18_base_cylinder": {
+    "bound": 12,
+    "common_prefix": "0110011000000",
+    "common_prefix_length": 13,
+    "endpoint": 17,
+    "suffix_encoding": "bin_L(endpoint - terminal_carry)",
+    "suffix_width": 5,
+    "terminal_carry_range": [
+      1,
+      12
+    ],
+    "unique_terminal_words": 12
+  },
+  "method": {
+    "arithmetic": "exact Python integers",
+    "enumeration": "complete two-child expansion of every admissible word",
+    "terminal_state_policy": "distinct words at one carry are a hard collision failure"
+  },
+  "negative_regression": {
+    "depth": 14,
+    "depth_13_cylinder": {
+      "bound": 10,
+      "common_prefix": "011001",
+      "common_prefix_length": 6,
+      "endpoint": 66,
+      "suffix_encoding": "bin_L(endpoint - terminal_carry)",
+      "suffix_width": 7,
+      "terminal_carry_range": [
+        1,
+        10
+      ],
+      "unique_terminal_words": 10
+    },
+    "lower_fixed_coefficient": 1,
+    "missing_carry": 3,
+    "seam_delta": 2,
+    "terminal_bound": 10,
+    "terminal_carries": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "unique_terminal_words": 9
+  },
+  "nonclaims": [
+    "No statement beyond max_depth is proved.",
+    "Full terminal coverage is not itself a uniform induction theorem.",
+    "The finite tree does not prove HalfCarryEvenSeamEscape or HalfCarryFullStripReachability.",
+    "Long common ancestry is finite evidence, not a reverse-rigidity proof.",
+    "Absence of a post-base canonical boundary pair is finite evidence only.",
+    "No infinite support, exact value 1/2, or decision of Erdos #257 is certified here."
+  ],
+  "parameters": {
+    "base_depth": 18,
+    "max_depth": 5000,
+    "recurrence": "K_1=1; K_n=2*K_(n-1)-sum_{d|n}a_d; a_1=0",
+    "strip": "1 <= K_n <= 2*floor(sqrt(n))+4 for every enumerated prefix"
+  },
+  "receipt_payload_sha256": "d21af155a466e00c743a19f71e626c67849e7ead90a8166b5b8244ce09638a96",
+  "schema": "erdos257_half_carry_reachability_exact_finite_v2",
+  "status": "pass_exact_finite_computation_not_asymptotic_proof",
+  "terminal_depth": {
+    "bound": 144,
+    "common_prefix_length": 4990,
+    "common_prefix_selected_count": 2506,
+    "common_prefix_sha256": "f6f08ca637041d8ff275f1005f7df218662612e57e484c6ba9b481d0c67ab99a",
+    "depth": 5000,
+    "endpoint": 613,
+    "suffix_encoding": "bin_L(endpoint - terminal_carry)",
+    "suffix_width": 10,
+    "terminal_carry_one_selected_count": 2510,
+    "terminal_carry_range": [
+      1,
+      144
+    ],
+    "unique_terminal_words": 144
+  },
+  "verified_tree": {
+    "admissible_child_count": 486523,
+    "candidate_child_count": 972760,
+    "collision_count": 0,
+    "complete_enumeration_through_depth": 5000,
+    "enumerated_terminal_state_count": 486524,
+    "exact_tree_trace_sha256": "7b4bcab20aec5cea52de2355a2526c2f3f51968c7743755408b500604db68f6c",
+    "full_strip_depth_runs": [
+      [
+        9,
+        13
+      ],
+      [
+        18,
+        5000
+      ]
+    ],
+    "full_unique_terminal_strip_range": [
+      18,
+      5000
+    ],
+    "full_unique_terminal_strip_verified": true,
+    "maximum_common_prefix_lag": 19,
+    "noncommon_proper_coefficient_depths_from_18": []
+  }
+}

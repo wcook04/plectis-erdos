@@ -1,0 +1,263 @@
+{
+ "probe_id": "erdos1041_geodesic_search",
+ "parameters": {
+  "max_n": 8,
+  "restarts": 6,
+  "steps": 40,
+  "grid": 460,
+  "root_modulus_cap": 0.999,
+  "seed": 20260823
+ },
+ "per_degree": [
+  {
+   "n": 2,
+   "best_min_geodesic": 1.998,
+   "best_roots": [
+    [
+     0.999,
+     0.0
+    ],
+    [
+     -0.999,
+     0.0
+    ]
+   ],
+   "best_root_moduli": [
+    0.999,
+    0.999
+   ],
+   "min_chord": 1.998,
+   "unreachable_pair": false
+  },
+  {
+   "n": 3,
+   "best_min_geodesic": 1.894867,
+   "best_roots": [
+    [
+     0.999,
+     0.0
+    ],
+    [
+     -0.4995,
+     0.865159
+    ],
+    [
+     -0.4995,
+     -0.865159
+    ]
+   ],
+   "best_root_moduli": [
+    0.999,
+    0.999,
+    0.999
+   ],
+   "min_chord": 1.730319,
+   "unreachable_pair": false
+  },
+  {
+   "n": 4,
+   "best_min_geodesic": 1.734429,
+   "best_roots": [
+    [
+     0.999,
+     0.0
+    ],
+    [
+     0.0,
+     0.999
+    ],
+    [
+     -0.999,
+     0.0
+    ],
+    [
+     -0.0,
+     -0.999
+    ]
+   ],
+   "best_root_moduli": [
+    0.999,
+    0.999,
+    0.999,
+    0.999
+   ],
+   "min_chord": 1.412799,
+   "unreachable_pair": false
+  },
+  {
+   "n": 5,
+   "best_min_geodesic": 1.514915,
+   "best_roots": [
+    [
+     0.999,
+     0.0
+    ],
+    [
+     0.308708,
+     0.950105
+    ],
+    [
+     -0.808208,
+     0.587197
+    ],
+    [
+     -0.808208,
+     -0.587197
+    ],
+    [
+     0.308708,
+     -0.950105
+    ]
+   ],
+   "best_root_moduli": [
+    0.999,
+    0.999,
+    0.999,
+    0.999,
+    0.999
+   ],
+   "min_chord": 1.174395,
+   "unreachable_pair": false
+  },
+  {
+   "n": 6,
+   "best_min_geodesic": 1.352952,
+   "best_roots": [
+    [
+     0.999,
+     0.0
+    ],
+    [
+     0.4995,
+     0.865159
+    ],
+    [
+     -0.4995,
+     0.865159
+    ],
+    [
+     -0.999,
+     0.0
+    ],
+    [
+     -0.4995,
+     -0.865159
+    ],
+    [
+     0.4995,
+     -0.865159
+    ]
+   ],
+   "best_root_moduli": [
+    0.999,
+    0.999,
+    0.999,
+    0.999,
+    0.999,
+    0.999
+   ],
+   "min_chord": 0.999,
+   "unreachable_pair": false
+  },
+  {
+   "n": 7,
+   "best_min_geodesic": 1.212241,
+   "best_roots": [
+    [
+     0.999,
+     0.0
+    ],
+    [
+     0.622866,
+     0.78105
+    ],
+    [
+     -0.222298,
+     0.973953
+    ],
+    [
+     -0.900068,
+     0.43345
+    ],
+    [
+     -0.900068,
+     -0.43345
+    ],
+    [
+     -0.222298,
+     -0.973953
+    ],
+    [
+     0.622866,
+     -0.78105
+    ]
+   ],
+   "best_root_moduli": [
+    0.999,
+    0.999,
+    0.999,
+    0.999,
+    0.999,
+    0.999,
+    0.999
+   ],
+   "min_chord": 0.8669,
+   "unreachable_pair": false
+  },
+  {
+   "n": 8,
+   "best_min_geodesic": 1.103774,
+   "best_roots": [
+    [
+     0.999,
+     0.0
+    ],
+    [
+     0.7064,
+     0.7064
+    ],
+    [
+     0.0,
+     0.999
+    ],
+    [
+     -0.7064,
+     0.7064
+    ],
+    [
+     -0.999,
+     0.0
+    ],
+    [
+     -0.7064,
+     -0.7064
+    ],
+    [
+     -0.0,
+     -0.999
+    ],
+    [
+     0.7064,
+     -0.7064
+    ]
+   ],
+   "best_root_moduli": [
+    0.999,
+    0.999,
+    0.999,
+    0.999,
+    0.999,
+    0.999,
+    0.999,
+    0.999
+   ],
+   "min_chord": 0.764601,
+   "unreachable_pair": false
+  }
+ ],
+ "best_overall": 1.998,
+ "any_above_two": false,
+ "any_unreachable_pair": false,
+ "guard": "each score is capped by an exactly verified interior polyline, so it is an upper bound on the true geodesic; an unguarded grid score can exceed 2 purely by failing to resolve a thin corridor, and an optimiser finds that failure mode before it finds anything real",
+ "reading": "no configuration reaches 2 under the guard; the leaders are reported per degree"
+}

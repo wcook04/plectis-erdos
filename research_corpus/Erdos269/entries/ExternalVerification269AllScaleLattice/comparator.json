@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification269AllScaleLattice.Challenge",
+  "solution_module": "ExternalVerification269AllScaleLattice.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification269AllScaleLattice.qsmul_normalizedTailState_eq_int_of_value_eq_rat",
+    "Erdos249257.ExternalVerification269AllScaleLattice.exists_normalizedTailState_collision_of_value_eq_rat",
+    "Erdos249257.ExternalVerification269AllScaleLattice.smoothHeight_mul_prime_dvd_boundaryHeight",
+    "Erdos249257.ExternalVerification269AllScaleLattice.dyadicShellTsumTailR235_eq_range_add",
+    "Erdos249257.ExternalVerification269AllScaleLattice.heightNormalizer235_mul_windowMass_eq_int",
+    "Erdos249257.ExternalVerification269AllScaleLattice.two_mul_heightNormalizer235"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

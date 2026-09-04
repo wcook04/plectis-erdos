@@ -1,0 +1,30 @@
+{
+  "schema_version": "tao_pipeline_receipt_v1",
+  "result_id": "near_fekete_orbit_pointwise_no_go",
+  "problem_id": "erdos_1041",
+  "input_stage": "lean_checked_cyclic_hub_orbit_correlation_kernel",
+  "output_stage": "high_precision_pointwise_mechanism_elimination",
+  "artifact": [
+    "ErdosProblems/Erdos1041/NearFeketeOrbitPointwiseNoGo.md",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_near_fekete_orbit_pointwise_no_go.py"
+  ],
+  "human_understanding_delta": "Complete cyclic cancellation does not survive direct substitution of the actual hub-dependent branches at a common value parameter. In degree four an exact algebraic orbit seed and s=5 give a total pointwise signed charge density below -0.12, well away from every other saddle.",
+  "verification_state": "The source-current guarded branch tracer selects six endpoints; independent 80- and 120-digit root refinement agrees beyond 60 digits, polynomial residuals are below 1e-70, and minimum separation from another saddle exceeds 0.35. This is high-precision deterministic evidence, not Lean or exact interval authority.",
+  "publication_or_review_state": "private authoring checkpoint; no external specialist review",
+  "canonicalization_state": "The false pointwise fan-in is recorded beneath the existing complete-orbit algebraic kernel, without weakening the integrated combined-charge target.",
+  "unresolved_downstream_bottleneck": "Prove an integrated orbit compensation, build an invariant measure/reparametrization, or control the full component charge by endpoint and global information.",
+  "next_stage_owner": "Mathematical Closure Engine: integrated near-Fekete orbit charge or a structurally distinct COVER/FP-GM route.",
+  "paper_assimilation": {
+    "paper": "private Erdős 1041 research corpus",
+    "section": "componentwise combined critical-forest charge",
+    "canonical_mechanism_family": "near-Fekete cyclic hub aggregation",
+    "relation": "finite high-precision no-go for a pointwise strengthening; integrated target untouched",
+    "understanding_delta": "Moves the exact obstruction from vague parameter dependence to a pinned negative total density after complete hub fan-in.",
+    "evidence_boundary": "guarded float homotopy plus independent 80/120-digit algebraic root refinement; no exact interval or Lean sign proof",
+    "hard_step": "recover positivity only after integration or through a genuinely invariant measure",
+    "meaningful_failed_route": "pointwise nonnegativity of the complete-orbit charge density at common value increment",
+    "open_remainder": "integrated component charge, COVER, FP-GM, and unrestricted Erdős 1041"
+  },
+  "tool_disclosure": "The witness was found by deterministic parameter scans and replayed at high precision. The exact algebraic seed and common parameter are fixed in the checker.",
+  "claim_boundary": "Falsified numerically with a robust deterministic margin: pointwise complete-orbit charge-density nonnegativity. Not refuted: integrated orbit charge, componentwise combined charge, COVER, FP-GM, or Erdős 1041."
+}

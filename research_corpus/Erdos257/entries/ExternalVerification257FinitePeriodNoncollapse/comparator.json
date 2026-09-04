@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification257FinitePeriodNoncollapse.Challenge",
+  "solution_module": "ExternalVerification257FinitePeriodNoncollapse.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den",
+    "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

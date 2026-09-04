@@ -1,0 +1,93 @@
+{
+  "consequence_decisions": [
+    {
+      "decision": "eliminated",
+      "mechanism": "automatic_predecessor_threshold_at_prime_indices",
+      "witness": 5
+    },
+    {
+      "decision": "remains_open_and_strictly_sharper",
+      "mechanism": "prime_lower_endpoint_cylinder_escape"
+    },
+    {
+      "decision": "not_claimed",
+      "mechanism": "irrationality_of_erdos_68"
+    }
+  ],
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+      "falsification_consequence": "The universal every-prime threshold assertion is false. An eventual-prime theorem allowing finite exceptions remains possible; alternatively the prime route can use the sharper lower-cylinder escape or extra denominator/residue structure.",
+      "survival_consequence": "Universal prime supply would reduce the cofinal threshold producer to Euclid's theorem."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "prime_indices_automatically_meet_predecessor_gap_threshold",
+      "statement": "Every prime m satisfies ((m+2)m!-2)v_m <= m^2(m!-1)u_m for the exact reduced predecessor gap u_m/v_m."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimePredecessorGapComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_prime_predecessor_threshold.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Iterate the exact Fraction recurrence for Delta_m, reduce it to u_m/v_m, and compare the two cleared integers at prime indices.",
+      "falsifier": "One prime with cleared_left > cleared_right.",
+      "id": "exact_fraction_prime_predecessor_threshold",
+      "question": "Does the cleared threshold hold at every prime?",
+      "stop_condition": "Stop at the first exact prime-index failure."
+    },
+    "problem": {
+      "claim_ceiling": "One exact prime-index counterexample to a sufficient threshold; no cofinal carry theorem or irrationality proof.",
+      "id": "erdos_68",
+      "target_statement": "Prove irrationality of sum_(n>=2) 1/(n!-1)."
+    },
+    "result": {
+      "status": "finite_counterexample",
+      "summary": "The threshold first fails at the prime m=5: the exact cleared right-minus-left margin is negative. Primehood alone therefore does not force this sufficient certificate."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "probe": {
+    "delta_indexing": "the threshold at m uses Delta_m before the recurrence advances to Delta_(m+1)",
+    "first_prime_failure": {
+      "cleared_left": 96370,
+      "cleared_right": 53550,
+      "prime_m": 5,
+      "signed_cleared_margin": -42820,
+      "threshold_holds": false,
+      "u_m": 18,
+      "v_m": 115
+    },
+    "prime_rows_checked": 2,
+    "primes_before_failure": [
+      3
+    ],
+    "searched_through": 100
+  },
+  "schema": "erdos68-prime-predecessor-threshold/1",
+  "source_records": [
+    {
+      "byte_length": 7802,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_prime_predecessor_threshold.py",
+      "sha256": "de36044348eba1d30c0112a8ef709a7967f45b1be0f2167d9d51cc1621d820f8"
+    },
+    {
+      "byte_length": 288482,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+      "sha256": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849"
+    },
+    {
+      "byte_length": 1703,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimePredecessorGapComputationalLab.md",
+      "sha256": "54be4b89ae9ccaead84e782204779c6f829eb578128ee2aaa6e16496ba81126d"
+    }
+  ],
+  "status": "verified_exact_prime_supply_mechanism_elimination"
+}

@@ -1,0 +1,143 @@
+{
+  "bits": 200,
+  "falsifier_survived": true,
+  "max_n": 100000,
+  "nullity_box": "d=2, D=5",
+  "rows": {
+    "CALIB N (must fire)": {
+      "nullity_k234": [
+        14,
+        9,
+        8
+      ],
+      "odd_gap_grows": true,
+      "odd_maxgap_by_scale": {
+        "1000": 61,
+        "10000": 199,
+        "100000": 631
+      },
+      "reciprocal_partial_sum": 12.090146129863427,
+      "size": 100000
+    },
+    "CALIB primes (must be 0,0,0)": {
+      "nullity_k234": [
+        0,
+        0,
+        0
+      ],
+      "odd_gap_grows": true,
+      "odd_maxgap_by_scale": {
+        "1000": 9,
+        "10000": 11,
+        "100000": 20
+      },
+      "reciprocal_partial_sum": 2.705272179047264,
+      "size": 9592
+    },
+    "ingredient 3N": {
+      "nullity_k234": [
+        6,
+        3,
+        3
+      ],
+      "odd_gap_grows": true,
+      "odd_maxgap_by_scale": {
+        "1000": 105,
+        "10000": 339,
+        "100000": 1089
+      },
+      "reciprocal_partial_sum": 3.6638446137428837,
+      "size": 33333
+    },
+    "ingredient {n^2}": {
+      "nullity_k234": [
+        0,
+        0,
+        0
+      ],
+      "odd_gap_grows": true,
+      "odd_maxgap_by_scale": {
+        "1000": 5,
+        "10000": 6,
+        "100000": 7
+      },
+      "reciprocal_partial_sum": 1.6417745118147271,
+      "size": 316
+    },
+    "primes minus {p=1 mod 4}": {
+      "nullity_k234": [
+        0,
+        0,
+        0
+      ],
+      "odd_gap_grows": true,
+      "odd_maxgap_by_scale": {
+        "1000": 8,
+        "10000": 8,
+        "100000": 11
+      },
+      "reciprocal_partial_sum": 1.7699578994407175,
+      "size": 4809
+    },
+    "primes xor 3N": {
+      "nullity_k234": [
+        0,
+        0,
+        0
+      ],
+      "odd_gap_grows": true,
+      "odd_maxgap_by_scale": {
+        "1000": 12,
+        "10000": 12,
+        "100000": 20
+      },
+      "reciprocal_partial_sum": 5.702450126123481,
+      "size": 42923
+    },
+    "primes xor {2^(2^k)}": {
+      "nullity_k234": [
+        0,
+        0,
+        0
+      ],
+      "odd_gap_grows": true,
+      "odd_maxgap_by_scale": {
+        "1000": 10,
+        "10000": 19,
+        "100000": 19
+      },
+      "reciprocal_partial_sum": 2.5216936878363265,
+      "size": 9595
+    },
+    "primes xor {2^i}": {
+      "nullity_k234": [
+        0,
+        0,
+        0
+      ],
+      "odd_gap_grows": true,
+      "odd_maxgap_by_scale": {
+        "1000": 10,
+        "10000": 12,
+        "100000": 18
+      },
+      "reciprocal_partial_sum": 2.7052569202582015,
+      "size": 9606
+    },
+    "primes xor {n^2}": {
+      "nullity_k234": [
+        0,
+        0,
+        0
+      ],
+      "odd_gap_grows": true,
+      "odd_maxgap_by_scale": {
+        "1000": 10,
+        "10000": 13,
+        "100000": 17
+      },
+      "reciprocal_partial_sum": 4.347046690861991,
+      "size": 9908
+    }
+  }
+}

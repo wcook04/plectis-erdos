@@ -1,0 +1,2659 @@
+{
+  "canonical_regression_witness": {
+    "c": 50490,
+    "first_central_height": 34,
+    "fixed_trap_quotient": 35363,
+    "geometry_clear_height": 17,
+    "post_geometry_clear_delay": 17,
+    "trajectory": [
+      {
+        "argument": 50507,
+        "central": false,
+        "height": 17,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50508,
+        "signed_endpoint_error": 8683,
+        "totient_letter": 47520
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50508,
+        "central": false,
+        "height": 18,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50509,
+        "signed_endpoint_error": -2157,
+        "totient_letter": 15840
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50509,
+        "central": false,
+        "height": 19,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50510,
+        "signed_endpoint_error": 9827,
+        "totient_letter": 49504
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50510,
+        "central": false,
+        "height": 20,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50511,
+        "signed_endpoint_error": 4491,
+        "totient_letter": 20200
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50511,
+        "central": false,
+        "height": 21,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50512,
+        "signed_endpoint_error": 6771,
+        "totient_letter": 33152
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50512,
+        "central": false,
+        "height": 22,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50513,
+        "signed_endpoint_error": -2621,
+        "totient_letter": 19200
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50513,
+        "central": false,
+        "height": 23,
+        "nearest_quotient": 35363,
+        "prime_argument": true,
+        "prime_excursion_certificate": {
+          "adjacent_error_budget": 15149,
+          "inequality_verified": true,
+          "prime_minus_one_minus_quotient": 15149
+        },
+        "radius": 50514,
+        "signed_endpoint_error": 9907,
+        "totient_letter": 50512
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50514,
+        "central": false,
+        "height": 24,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50515,
+        "signed_endpoint_error": 1287,
+        "totient_letter": 16836
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50515,
+        "central": false,
+        "height": 25,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50516,
+        "signed_endpoint_error": 7619,
+        "totient_letter": 40408
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50516,
+        "central": false,
+        "height": 26,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50517,
+        "signed_endpoint_error": 4643,
+        "totient_letter": 24768
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50517,
+        "central": false,
+        "height": 27,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50518,
+        "signed_endpoint_error": 7583,
+        "totient_letter": 33660
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50518,
+        "central": false,
+        "height": 28,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50519,
+        "signed_endpoint_error": 1979,
+        "totient_letter": 22176
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50519,
+        "central": false,
+        "height": 29,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50520,
+        "signed_endpoint_error": 11855,
+        "totient_letter": 43260
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50520,
+        "central": false,
+        "height": 30,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50521,
+        "signed_endpoint_error": 1787,
+        "totient_letter": 13440
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50521,
+        "central": false,
+        "height": 31,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50522,
+        "signed_endpoint_error": 16055,
+        "totient_letter": 47844
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50522,
+        "central": false,
+        "height": 32,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50523,
+        "signed_endpoint_error": 22007,
+        "totient_letter": 25260
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50523,
+        "central": false,
+        "height": 33,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50524,
+        "signed_endpoint_error": 39251,
+        "totient_letter": 30600
+      },
+      {
+        "affine_recurrence_verified": true,
+        "argument": 50524,
+        "central": true,
+        "height": 34,
+        "nearest_quotient": 35363,
+        "prime_argument": false,
+        "radius": 50525,
+        "signed_endpoint_error": 66883,
+        "totient_letter": 23744
+      }
+    ]
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "falsification_consequence": "Delay 17 is impossible; the exact fixed-k cocycle redirects the frontier to anti-shadowing for totient-letter words in a moving window.",
+      "survival_consequence": "A genuine universal delay cap would directly feed the canonical Mersenne residue-gap supply."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "pure_dyadic_post_geometry_delay_at_most_tested_threshold",
+      "statement": "Every pure-dyadic canonical residue escapes the endpoint window within 17 heights after the central interval first becomes nonempty."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PureDyadicEndpointCocycleComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_pure_dyadic_endpoint_cocycle.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Sieve phi through c=1000000, update Q_H and M_H exactly through H=100, and verify E_(H+1)=2E_H+phi(c+H+1)-k on each record endpoint word.",
+      "falsifier": "An exact c with post-geometry-clear delay above 17; a quotient change inside its trapped word would falsify the fixed-k model.",
+      "id": "signed_endpoint_error_totient_word_scan",
+      "question": "Do exact totient words produce a delay beyond 17, and is their trap governed by a fixed-quotient affine error cocycle?",
+      "stop_condition": "Stop after the first scan range containing a new delay record above 17 and bind its complete signed endpoint word."
+    },
+    "problem": {
+      "claim_ceiling": "Finite pure-dyadic scan, an exact affine recurrence, and exact prime-successor bottom-lock certificates; no proof of unbounded delay, universal residue escape, or irrationality.",
+      "id": "erdos_249",
+      "target_statement": "Prove irrationality of sum_(n>=1) phi(n)/2^n."
+    },
+    "result": {
+      "status": "exact_one_way_result",
+      "summary": "At c=490794 geometry clears at H=20, the fixed quotient k=327611 keeps the signed error endpoint-trapped through H=38, and escape first occurs at H=39: exact delay 19, eliminating delay<=17.  Every prime argument inside every record word also satisfies the exact adjacent-error excursion inequality p-1-k <= |E_H|+2|E_(H-1)|.  Whenever its successor is still trapped, the directional certificate 4E_(H-1)+p+phi(p+1) <= 4+3k is also verified."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "parameters": {
+    "delay_threshold": 17,
+    "max_c": 1000000,
+    "max_height": 100
+  },
+  "scan": {
+    "delay_threshold": 17,
+    "final_champion": {
+      "c": 490794,
+      "first_central_height": 39,
+      "fixed_trap_quotient": 327611,
+      "geometry_clear_height": 20,
+      "post_geometry_clear_delay": 19,
+      "trajectory": [
+        {
+          "argument": 490814,
+          "central": false,
+          "height": 20,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490815,
+          "signed_endpoint_error": 53713,
+          "totient_letter": 245406
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490815,
+          "central": false,
+          "height": 21,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490816,
+          "signed_endpoint_error": 21159,
+          "totient_letter": 241344
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490816,
+          "central": false,
+          "height": 22,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490817,
+          "signed_endpoint_error": -39917,
+          "totient_letter": 245376
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490817,
+          "central": false,
+          "height": 23,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490818,
+          "signed_endpoint_error": 81855,
+          "totient_letter": 489300
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490818,
+          "central": false,
+          "height": 24,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490819,
+          "signed_endpoint_error": -1565,
+          "totient_letter": 162336
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490819,
+          "central": false,
+          "height": 25,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490820,
+          "signed_endpoint_error": 89955,
+          "totient_letter": 420696
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490820,
+          "central": false,
+          "height": 26,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490821,
+          "signed_endpoint_error": 21259,
+          "totient_letter": 168960
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490821,
+          "central": false,
+          "height": 27,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490822,
+          "signed_endpoint_error": 29731,
+          "totient_letter": 314824
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490822,
+          "central": false,
+          "height": 28,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490823,
+          "signed_endpoint_error": -22739,
+          "totient_letter": 245410
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490823,
+          "central": false,
+          "height": 29,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490824,
+          "signed_endpoint_error": 93111,
+          "totient_letter": 466200
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490824,
+          "central": false,
+          "height": 30,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490825,
+          "signed_endpoint_error": 12211,
+          "totient_letter": 153600
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490825,
+          "central": false,
+          "height": 31,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490826,
+          "signed_endpoint_error": 75371,
+          "totient_letter": 378560
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490826,
+          "central": false,
+          "height": 32,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490827,
+          "signed_endpoint_error": 33479,
+          "totient_letter": 210348
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490827,
+          "central": false,
+          "height": 33,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490828,
+          "signed_endpoint_error": 42611,
+          "totient_letter": 303264
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490828,
+          "central": false,
+          "height": 34,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490829,
+          "signed_endpoint_error": -15877,
+          "totient_letter": 226512
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490829,
+          "central": false,
+          "height": 35,
+          "nearest_quotient": 327611,
+          "prime_argument": true,
+          "prime_excursion_certificate": {
+            "adjacent_error_budget": 163217,
+            "inequality_verified": true,
+            "prime_minus_one_minus_quotient": 163217
+          },
+          "radius": 490830,
+          "signed_endpoint_error": 131463,
+          "totient_letter": 490828
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490830,
+          "central": false,
+          "height": 36,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490831,
+          "signed_endpoint_error": 66195,
+          "totient_letter": 130880
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490831,
+          "central": false,
+          "height": 37,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490832,
+          "signed_endpoint_error": 250979,
+          "totient_letter": 446200
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490832,
+          "central": false,
+          "height": 38,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490833,
+          "signed_endpoint_error": 419755,
+          "totient_letter": 245408
+        },
+        {
+          "affine_recurrence_verified": true,
+          "argument": 490833,
+          "central": true,
+          "height": 39,
+          "nearest_quotient": 327611,
+          "prime_argument": false,
+          "radius": 490834,
+          "signed_endpoint_error": 787083,
+          "totient_letter": 275184
+        }
+      ]
+    },
+    "largest_delay": 19,
+    "max_height": 100,
+    "record_champion_prime_excursions": [
+      {
+        "adjacent_error_budget": 15,
+        "argument": 5,
+        "c": 0,
+        "height": 5,
+        "inequality_verified": true,
+        "prime_minus_one_minus_quotient": 3,
+        "radius": 6
+      },
+      {
+        "adjacent_error_budget": 7,
+        "argument": 13,
+        "c": 7,
+        "height": 6,
+        "inequality_verified": true,
+        "prime_minus_one_minus_quotient": 7,
+        "radius": 14
+      },
+      {
+        "adjacent_error_budget": 57,
+        "argument": 37,
+        "c": 27,
+        "height": 10,
+        "inequality_verified": true,
+        "prime_minus_one_minus_quotient": 19,
+        "radius": 38
+      },
+      {
+        "adjacent_error_budget": 67,
+        "argument": 151,
+        "c": 141,
+        "height": 10,
+        "inequality_verified": true,
+        "prime_minus_one_minus_quotient": 67,
+        "radius": 152
+      },
+      {
+        "adjacent_error_budget": 109,
+        "argument": 191,
+        "c": 178,
+        "height": 13,
+        "inequality_verified": true,
+        "prime_minus_one_minus_quotient": 55,
+        "radius": 192
+      },
+      {
+        "adjacent_error_budget": 443,
+        "argument": 193,
+        "c": 178,
+        "height": 15,
+        "inequality_verified": true,
+        "prime_minus_one_minus_quotient": 57,
+        "radius": 194
+      },
+      {
+        "adjacent_error_budget": 317,
+        "argument": 367,
+        "c": 349,
+        "height": 18,
+        "inequality_verified": true,
+        "prime_minus_one_minus_quotient": 199,
+        "radius": 368
+      },
+      {
+        "adjacent_error_budget": 8017,
+        "argument": 14197,
+        "c": 14177,
+        "height": 20,
+        "inequality_verified": true,
+        "prime_minus_one_minus_quotient": 6987,
+        "radius": 14198
+      },
+      {
+        "adjacent_error_budget": 41585,
+        "argument": 14207,
+        "c": 14177,
+        "height": 30,
+        "inequality_verified": true,
+        "prime_minus_one_minus_quotient": 6997,
+        "radius": 14208
+      },
+      {
+        "adjacent_error_budget": 15149,
+        "argument": 50513,
+        "c": 50490,
+        "height": 23,
+        "inequality_verified": true,
+        "prime_minus_one_minus_quotient": 15149,
+        "radius": 50514
+      },
+      {
+        "adjacent_error_budget": 170175,
+        "argument": 403219,
+        "c": 403191,
+        "height": 28,
+        "inequality_verified": true,
+        "prime_minus_one_minus_quotient": 170175,
+        "radius": 403220
+      },
+      {
+        "adjacent_error_budget": 163217,
+        "argument": 490829,
+        "c": 490794,
+        "height": 35,
+        "inequality_verified": true,
+        "prime_minus_one_minus_quotient": 163217,
+        "radius": 490830
+      }
+    ],
+    "record_champion_prime_successor_bottom_locks": [
+      {
+        "bottom_lock_lhs": 7,
+        "bottom_lock_rhs": 19,
+        "bottom_lock_slack": 12,
+        "c": 7,
+        "inequality_verified": true,
+        "preprime_error": -3,
+        "preprime_height": 5,
+        "preprime_negative": true,
+        "prime_argument": 13,
+        "prime_error": 1,
+        "quotient": 5,
+        "successor_error": 3,
+        "successor_totient_letter": 6
+      },
+      {
+        "bottom_lock_lhs": -21,
+        "bottom_lock_rhs": 55,
+        "bottom_lock_slack": 76,
+        "c": 27,
+        "inequality_verified": true,
+        "preprime_error": -19,
+        "preprime_height": 9,
+        "preprime_negative": true,
+        "prime_argument": 37,
+        "prime_error": -19,
+        "quotient": 17,
+        "successor_error": -37,
+        "successor_totient_letter": 18
+      },
+      {
+        "bottom_lock_lhs": 107,
+        "bottom_lock_rhs": 253,
+        "bottom_lock_slack": 146,
+        "c": 141,
+        "inequality_verified": true,
+        "preprime_error": -29,
+        "preprime_height": 9,
+        "preprime_negative": true,
+        "prime_argument": 151,
+        "prime_error": 9,
+        "quotient": 83,
+        "successor_error": 7,
+        "successor_totient_letter": 72
+      },
+      {
+        "bottom_lock_lhs": 91,
+        "bottom_lock_rhs": 409,
+        "bottom_lock_slack": 318,
+        "c": 178,
+        "inequality_verified": true,
+        "preprime_error": -41,
+        "preprime_height": 12,
+        "preprime_negative": true,
+        "prime_argument": 191,
+        "prime_error": -27,
+        "quotient": 135,
+        "successor_error": -125,
+        "successor_totient_letter": 64
+      },
+      {
+        "bottom_lock_lhs": 27,
+        "bottom_lock_rhs": 505,
+        "bottom_lock_slack": 478,
+        "c": 349,
+        "inequality_verified": true,
+        "preprime_error": -129,
+        "preprime_height": 17,
+        "preprime_negative": true,
+        "prime_argument": 367,
+        "prime_error": -59,
+        "quotient": 167,
+        "successor_error": -109,
+        "successor_totient_letter": 176
+      },
+      {
+        "bottom_lock_lhs": 6033,
+        "bottom_lock_rhs": 21631,
+        "bottom_lock_slack": 15598,
+        "c": 14177,
+        "inequality_verified": true,
+        "preprime_error": -3751,
+        "preprime_height": 19,
+        "preprime_negative": true,
+        "prime_argument": 14197,
+        "prime_error": -515,
+        "quotient": 7209,
+        "successor_error": -1399,
+        "successor_totient_letter": 6840
+      },
+      {
+        "bottom_lock_lhs": 56865,
+        "bottom_lock_rhs": 106093,
+        "bottom_lock_slack": 49228,
+        "c": 50490,
+        "inequality_verified": true,
+        "preprime_error": -2621,
+        "preprime_height": 22,
+        "preprime_negative": true,
+        "prime_argument": 50513,
+        "prime_error": 9907,
+        "quotient": 35363,
+        "successor_error": 1287,
+        "successor_totient_letter": 16836
+      },
+      {
+        "bottom_lock_lhs": 302047,
+        "bottom_lock_rhs": 699133,
+        "bottom_lock_slack": 397086,
+        "c": 403191,
+        "inequality_verified": true,
+        "preprime_error": -65613,
+        "preprime_height": 27,
+        "preprime_negative": true,
+        "prime_argument": 403219,
+        "prime_error": 38949,
+        "quotient": 233043,
+        "successor_error": 6135,
+        "successor_totient_letter": 161280
+      },
+      {
+        "bottom_lock_lhs": 558201,
+        "bottom_lock_rhs": 982837,
+        "bottom_lock_slack": 424636,
+        "c": 490794,
+        "inequality_verified": true,
+        "preprime_error": -15877,
+        "preprime_height": 34,
+        "preprime_negative": true,
+        "prime_argument": 490829,
+        "prime_error": 131463,
+        "quotient": 327611,
+        "successor_error": 66195,
+        "successor_totient_letter": 130880
+      }
+    ],
+    "record_champions": [
+      {
+        "c": 0,
+        "first_central_height": 5,
+        "fixed_trap_quotient": 1,
+        "geometry_clear_height": 4,
+        "post_geometry_clear_delay": 1,
+        "trajectory": [
+          {
+            "argument": 4,
+            "central": false,
+            "height": 4,
+            "nearest_quotient": 1,
+            "prime_argument": false,
+            "radius": 5,
+            "signed_endpoint_error": 3,
+            "totient_letter": 2
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 5,
+            "central": true,
+            "height": 5,
+            "nearest_quotient": 1,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 15,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 3
+            },
+            "radius": 6,
+            "signed_endpoint_error": 9,
+            "totient_letter": 4
+          }
+        ]
+      },
+      {
+        "c": 3,
+        "first_central_height": 7,
+        "fixed_trap_quotient": 3,
+        "geometry_clear_height": 5,
+        "post_geometry_clear_delay": 2,
+        "trajectory": [
+          {
+            "argument": 8,
+            "central": false,
+            "height": 5,
+            "nearest_quotient": 3,
+            "prime_argument": false,
+            "radius": 9,
+            "signed_endpoint_error": -5,
+            "totient_letter": 4
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 9,
+            "central": false,
+            "height": 6,
+            "nearest_quotient": 3,
+            "prime_argument": false,
+            "radius": 10,
+            "signed_endpoint_error": -7,
+            "totient_letter": 6
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 10,
+            "central": true,
+            "height": 7,
+            "nearest_quotient": 3,
+            "prime_argument": false,
+            "radius": 11,
+            "signed_endpoint_error": -13,
+            "totient_letter": 4
+          }
+        ]
+      },
+      {
+        "c": 7,
+        "first_central_height": 9,
+        "fixed_trap_quotient": 5,
+        "geometry_clear_height": 5,
+        "post_geometry_clear_delay": 4,
+        "trajectory": [
+          {
+            "argument": 12,
+            "central": false,
+            "height": 5,
+            "nearest_quotient": 5,
+            "prime_argument": false,
+            "radius": 13,
+            "signed_endpoint_error": -3,
+            "totient_letter": 4
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 13,
+            "central": false,
+            "height": 6,
+            "nearest_quotient": 5,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 7,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 7
+            },
+            "radius": 14,
+            "signed_endpoint_error": 1,
+            "totient_letter": 12
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14,
+            "central": false,
+            "height": 7,
+            "nearest_quotient": 5,
+            "prime_argument": false,
+            "radius": 15,
+            "signed_endpoint_error": 3,
+            "totient_letter": 6
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 15,
+            "central": false,
+            "height": 8,
+            "nearest_quotient": 5,
+            "prime_argument": false,
+            "radius": 16,
+            "signed_endpoint_error": 9,
+            "totient_letter": 8
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 16,
+            "central": true,
+            "height": 9,
+            "nearest_quotient": 5,
+            "prime_argument": false,
+            "radius": 17,
+            "signed_endpoint_error": 21,
+            "totient_letter": 8
+          }
+        ]
+      },
+      {
+        "c": 27,
+        "first_central_height": 12,
+        "fixed_trap_quotient": 17,
+        "geometry_clear_height": 7,
+        "post_geometry_clear_delay": 5,
+        "trajectory": [
+          {
+            "argument": 34,
+            "central": false,
+            "height": 7,
+            "nearest_quotient": 17,
+            "prime_argument": false,
+            "radius": 35,
+            "signed_endpoint_error": -7,
+            "totient_letter": 16
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 35,
+            "central": false,
+            "height": 8,
+            "nearest_quotient": 17,
+            "prime_argument": false,
+            "radius": 36,
+            "signed_endpoint_error": -7,
+            "totient_letter": 24
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 36,
+            "central": false,
+            "height": 9,
+            "nearest_quotient": 17,
+            "prime_argument": false,
+            "radius": 37,
+            "signed_endpoint_error": -19,
+            "totient_letter": 12
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 37,
+            "central": false,
+            "height": 10,
+            "nearest_quotient": 17,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 57,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 19
+            },
+            "radius": 38,
+            "signed_endpoint_error": -19,
+            "totient_letter": 36
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 38,
+            "central": false,
+            "height": 11,
+            "nearest_quotient": 17,
+            "prime_argument": false,
+            "radius": 39,
+            "signed_endpoint_error": -37,
+            "totient_letter": 18
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 39,
+            "central": true,
+            "height": 12,
+            "nearest_quotient": 17,
+            "prime_argument": false,
+            "radius": 40,
+            "signed_endpoint_error": -67,
+            "totient_letter": 24
+          }
+        ]
+      },
+      {
+        "c": 141,
+        "first_central_height": 15,
+        "fixed_trap_quotient": 83,
+        "geometry_clear_height": 9,
+        "post_geometry_clear_delay": 6,
+        "trajectory": [
+          {
+            "argument": 150,
+            "central": false,
+            "height": 9,
+            "nearest_quotient": 83,
+            "prime_argument": false,
+            "radius": 151,
+            "signed_endpoint_error": -29,
+            "totient_letter": 40
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 151,
+            "central": false,
+            "height": 10,
+            "nearest_quotient": 83,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 67,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 67
+            },
+            "radius": 152,
+            "signed_endpoint_error": 9,
+            "totient_letter": 150
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 152,
+            "central": false,
+            "height": 11,
+            "nearest_quotient": 83,
+            "prime_argument": false,
+            "radius": 153,
+            "signed_endpoint_error": 7,
+            "totient_letter": 72
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 153,
+            "central": false,
+            "height": 12,
+            "nearest_quotient": 83,
+            "prime_argument": false,
+            "radius": 154,
+            "signed_endpoint_error": 27,
+            "totient_letter": 96
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 154,
+            "central": false,
+            "height": 13,
+            "nearest_quotient": 83,
+            "prime_argument": false,
+            "radius": 155,
+            "signed_endpoint_error": 31,
+            "totient_letter": 60
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 155,
+            "central": false,
+            "height": 14,
+            "nearest_quotient": 83,
+            "prime_argument": false,
+            "radius": 156,
+            "signed_endpoint_error": 99,
+            "totient_letter": 120
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 156,
+            "central": true,
+            "height": 15,
+            "nearest_quotient": 83,
+            "prime_argument": false,
+            "radius": 157,
+            "signed_endpoint_error": 163,
+            "totient_letter": 48
+          }
+        ]
+      },
+      {
+        "c": 178,
+        "first_central_height": 16,
+        "fixed_trap_quotient": 135,
+        "geometry_clear_height": 9,
+        "post_geometry_clear_delay": 7,
+        "trajectory": [
+          {
+            "argument": 187,
+            "central": false,
+            "height": 9,
+            "nearest_quotient": 135,
+            "prime_argument": false,
+            "radius": 188,
+            "signed_endpoint_error": 31,
+            "totient_letter": 160
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 188,
+            "central": false,
+            "height": 10,
+            "nearest_quotient": 135,
+            "prime_argument": false,
+            "radius": 189,
+            "signed_endpoint_error": 19,
+            "totient_letter": 92
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 189,
+            "central": false,
+            "height": 11,
+            "nearest_quotient": 135,
+            "prime_argument": false,
+            "radius": 190,
+            "signed_endpoint_error": 11,
+            "totient_letter": 108
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 190,
+            "central": false,
+            "height": 12,
+            "nearest_quotient": 135,
+            "prime_argument": false,
+            "radius": 191,
+            "signed_endpoint_error": -41,
+            "totient_letter": 72
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 191,
+            "central": false,
+            "height": 13,
+            "nearest_quotient": 135,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 109,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 55
+            },
+            "radius": 192,
+            "signed_endpoint_error": -27,
+            "totient_letter": 190
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 192,
+            "central": false,
+            "height": 14,
+            "nearest_quotient": 135,
+            "prime_argument": false,
+            "radius": 193,
+            "signed_endpoint_error": -125,
+            "totient_letter": 64
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 193,
+            "central": false,
+            "height": 15,
+            "nearest_quotient": 135,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 443,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 57
+            },
+            "radius": 194,
+            "signed_endpoint_error": -193,
+            "totient_letter": 192
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 194,
+            "central": true,
+            "height": 16,
+            "nearest_quotient": 135,
+            "prime_argument": false,
+            "radius": 195,
+            "signed_endpoint_error": -425,
+            "totient_letter": 96
+          }
+        ]
+      },
+      {
+        "c": 349,
+        "first_central_height": 22,
+        "fixed_trap_quotient": 167,
+        "geometry_clear_height": 10,
+        "post_geometry_clear_delay": 12,
+        "trajectory": [
+          {
+            "argument": 359,
+            "central": false,
+            "height": 10,
+            "nearest_quotient": 167,
+            "prime_argument": true,
+            "radius": 360,
+            "signed_endpoint_error": -15,
+            "totient_letter": 358
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 360,
+            "central": false,
+            "height": 11,
+            "nearest_quotient": 167,
+            "prime_argument": false,
+            "radius": 361,
+            "signed_endpoint_error": -101,
+            "totient_letter": 96
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 361,
+            "central": false,
+            "height": 12,
+            "nearest_quotient": 167,
+            "prime_argument": false,
+            "radius": 362,
+            "signed_endpoint_error": -27,
+            "totient_letter": 342
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 362,
+            "central": false,
+            "height": 13,
+            "nearest_quotient": 167,
+            "prime_argument": false,
+            "radius": 363,
+            "signed_endpoint_error": -41,
+            "totient_letter": 180
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 363,
+            "central": false,
+            "height": 14,
+            "nearest_quotient": 167,
+            "prime_argument": false,
+            "radius": 364,
+            "signed_endpoint_error": -29,
+            "totient_letter": 220
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 364,
+            "central": false,
+            "height": 15,
+            "nearest_quotient": 167,
+            "prime_argument": false,
+            "radius": 365,
+            "signed_endpoint_error": -81,
+            "totient_letter": 144
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 365,
+            "central": false,
+            "height": 16,
+            "nearest_quotient": 167,
+            "prime_argument": false,
+            "radius": 366,
+            "signed_endpoint_error": -41,
+            "totient_letter": 288
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 366,
+            "central": false,
+            "height": 17,
+            "nearest_quotient": 167,
+            "prime_argument": false,
+            "radius": 367,
+            "signed_endpoint_error": -129,
+            "totient_letter": 120
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 367,
+            "central": false,
+            "height": 18,
+            "nearest_quotient": 167,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 317,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 199
+            },
+            "radius": 368,
+            "signed_endpoint_error": -59,
+            "totient_letter": 366
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 368,
+            "central": false,
+            "height": 19,
+            "nearest_quotient": 167,
+            "prime_argument": false,
+            "radius": 369,
+            "signed_endpoint_error": -109,
+            "totient_letter": 176
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 369,
+            "central": false,
+            "height": 20,
+            "nearest_quotient": 167,
+            "prime_argument": false,
+            "radius": 370,
+            "signed_endpoint_error": -145,
+            "totient_letter": 240
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 370,
+            "central": false,
+            "height": 21,
+            "nearest_quotient": 167,
+            "prime_argument": false,
+            "radius": 371,
+            "signed_endpoint_error": -313,
+            "totient_letter": 144
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 371,
+            "central": true,
+            "height": 22,
+            "nearest_quotient": 167,
+            "prime_argument": false,
+            "radius": 372,
+            "signed_endpoint_error": -481,
+            "totient_letter": 312
+          }
+        ]
+      },
+      {
+        "c": 14177,
+        "first_central_height": 30,
+        "fixed_trap_quotient": 7209,
+        "geometry_clear_height": 15,
+        "post_geometry_clear_delay": 15,
+        "trajectory": [
+          {
+            "argument": 14192,
+            "central": false,
+            "height": 15,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14193,
+            "signed_endpoint_error": -1191,
+            "totient_letter": 7088
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14193,
+            "central": false,
+            "height": 16,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14194,
+            "signed_endpoint_error": -735,
+            "totient_letter": 8856
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14194,
+            "central": false,
+            "height": 17,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14195,
+            "signed_endpoint_error": -1779,
+            "totient_letter": 6900
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14195,
+            "central": false,
+            "height": 18,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14196,
+            "signed_endpoint_error": -143,
+            "totient_letter": 10624
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14196,
+            "central": false,
+            "height": 19,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14197,
+            "signed_endpoint_error": -3751,
+            "totient_letter": 3744
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14197,
+            "central": false,
+            "height": 20,
+            "nearest_quotient": 7209,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 8017,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 6987
+            },
+            "radius": 14198,
+            "signed_endpoint_error": -515,
+            "totient_letter": 14196
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14198,
+            "central": false,
+            "height": 21,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14199,
+            "signed_endpoint_error": -1399,
+            "totient_letter": 6840
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14199,
+            "central": false,
+            "height": 22,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14200,
+            "signed_endpoint_error": -543,
+            "totient_letter": 9464
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14200,
+            "central": false,
+            "height": 23,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14201,
+            "signed_endpoint_error": -2695,
+            "totient_letter": 5600
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14201,
+            "central": false,
+            "height": 24,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14202,
+            "signed_endpoint_error": 301,
+            "totient_letter": 12900
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14202,
+            "central": false,
+            "height": 25,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14203,
+            "signed_endpoint_error": -1891,
+            "totient_letter": 4716
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14203,
+            "central": false,
+            "height": 26,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14204,
+            "signed_endpoint_error": 1177,
+            "totient_letter": 12168
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14204,
+            "central": false,
+            "height": 27,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14205,
+            "signed_endpoint_error": 2009,
+            "totient_letter": 6864
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14205,
+            "central": false,
+            "height": 28,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14206,
+            "signed_endpoint_error": 4377,
+            "totient_letter": 7568
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14206,
+            "central": false,
+            "height": 29,
+            "nearest_quotient": 7209,
+            "prime_argument": false,
+            "radius": 14207,
+            "signed_endpoint_error": 8647,
+            "totient_letter": 7102
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 14207,
+            "central": true,
+            "height": 30,
+            "nearest_quotient": 7209,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 41585,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 6997
+            },
+            "radius": 14208,
+            "signed_endpoint_error": 24291,
+            "totient_letter": 14206
+          }
+        ]
+      },
+      {
+        "c": 50490,
+        "first_central_height": 34,
+        "fixed_trap_quotient": 35363,
+        "geometry_clear_height": 17,
+        "post_geometry_clear_delay": 17,
+        "trajectory": [
+          {
+            "argument": 50507,
+            "central": false,
+            "height": 17,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50508,
+            "signed_endpoint_error": 8683,
+            "totient_letter": 47520
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50508,
+            "central": false,
+            "height": 18,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50509,
+            "signed_endpoint_error": -2157,
+            "totient_letter": 15840
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50509,
+            "central": false,
+            "height": 19,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50510,
+            "signed_endpoint_error": 9827,
+            "totient_letter": 49504
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50510,
+            "central": false,
+            "height": 20,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50511,
+            "signed_endpoint_error": 4491,
+            "totient_letter": 20200
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50511,
+            "central": false,
+            "height": 21,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50512,
+            "signed_endpoint_error": 6771,
+            "totient_letter": 33152
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50512,
+            "central": false,
+            "height": 22,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50513,
+            "signed_endpoint_error": -2621,
+            "totient_letter": 19200
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50513,
+            "central": false,
+            "height": 23,
+            "nearest_quotient": 35363,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 15149,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 15149
+            },
+            "radius": 50514,
+            "signed_endpoint_error": 9907,
+            "totient_letter": 50512
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50514,
+            "central": false,
+            "height": 24,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50515,
+            "signed_endpoint_error": 1287,
+            "totient_letter": 16836
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50515,
+            "central": false,
+            "height": 25,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50516,
+            "signed_endpoint_error": 7619,
+            "totient_letter": 40408
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50516,
+            "central": false,
+            "height": 26,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50517,
+            "signed_endpoint_error": 4643,
+            "totient_letter": 24768
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50517,
+            "central": false,
+            "height": 27,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50518,
+            "signed_endpoint_error": 7583,
+            "totient_letter": 33660
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50518,
+            "central": false,
+            "height": 28,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50519,
+            "signed_endpoint_error": 1979,
+            "totient_letter": 22176
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50519,
+            "central": false,
+            "height": 29,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50520,
+            "signed_endpoint_error": 11855,
+            "totient_letter": 43260
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50520,
+            "central": false,
+            "height": 30,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50521,
+            "signed_endpoint_error": 1787,
+            "totient_letter": 13440
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50521,
+            "central": false,
+            "height": 31,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50522,
+            "signed_endpoint_error": 16055,
+            "totient_letter": 47844
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50522,
+            "central": false,
+            "height": 32,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50523,
+            "signed_endpoint_error": 22007,
+            "totient_letter": 25260
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50523,
+            "central": false,
+            "height": 33,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50524,
+            "signed_endpoint_error": 39251,
+            "totient_letter": 30600
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 50524,
+            "central": true,
+            "height": 34,
+            "nearest_quotient": 35363,
+            "prime_argument": false,
+            "radius": 50525,
+            "signed_endpoint_error": 66883,
+            "totient_letter": 23744
+          }
+        ]
+      },
+      {
+        "c": 403191,
+        "first_central_height": 38,
+        "fixed_trap_quotient": 233043,
+        "geometry_clear_height": 20,
+        "post_geometry_clear_delay": 18,
+        "trajectory": [
+          {
+            "argument": 403211,
+            "central": false,
+            "height": 20,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403212,
+            "signed_endpoint_error": 22131,
+            "totient_letter": 393792
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403212,
+            "central": false,
+            "height": 21,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403213,
+            "signed_endpoint_error": -54381,
+            "totient_letter": 134400
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403213,
+            "central": false,
+            "height": 22,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403214,
+            "signed_endpoint_error": 34659,
+            "totient_letter": 376464
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403214,
+            "central": false,
+            "height": 23,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403215,
+            "signed_endpoint_error": 6507,
+            "totient_letter": 170232
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403215,
+            "central": false,
+            "height": 24,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403216,
+            "signed_endpoint_error": -4989,
+            "totient_letter": 215040
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403216,
+            "central": false,
+            "height": 25,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403217,
+            "signed_endpoint_error": -68301,
+            "totient_letter": 174720
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403217,
+            "central": false,
+            "height": 26,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403218,
+            "signed_endpoint_error": 20535,
+            "totient_letter": 390180
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403218,
+            "central": false,
+            "height": 27,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403219,
+            "signed_endpoint_error": -65613,
+            "totient_letter": 126360
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403219,
+            "central": false,
+            "height": 28,
+            "nearest_quotient": 233043,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 170175,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 170175
+            },
+            "radius": 403220,
+            "signed_endpoint_error": 38949,
+            "totient_letter": 403218
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403220,
+            "central": false,
+            "height": 29,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403221,
+            "signed_endpoint_error": 6135,
+            "totient_letter": 161280
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403221,
+            "central": false,
+            "height": 30,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403222,
+            "signed_endpoint_error": -9093,
+            "totient_letter": 211680
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403222,
+            "central": false,
+            "height": 31,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403223,
+            "signed_endpoint_error": -49619,
+            "totient_letter": 201610
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403223,
+            "central": false,
+            "height": 32,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403224,
+            "signed_endpoint_error": 47207,
+            "totient_letter": 379488
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403224,
+            "central": false,
+            "height": 33,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403225,
+            "signed_endpoint_error": -7173,
+            "totient_letter": 131456
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403225,
+            "central": false,
+            "height": 34,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403226,
+            "signed_endpoint_error": 72651,
+            "totient_letter": 320040
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403226,
+            "central": false,
+            "height": 35,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403227,
+            "signed_endpoint_error": 108387,
+            "totient_letter": 196128
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403227,
+            "central": false,
+            "height": 36,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403228,
+            "signed_endpoint_error": 228051,
+            "totient_letter": 244320
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403228,
+            "central": false,
+            "height": 37,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403229,
+            "signed_endpoint_error": 395859,
+            "totient_letter": 172800
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403229,
+            "central": true,
+            "height": 38,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403230,
+            "signed_endpoint_error": 957651,
+            "totient_letter": 398976
+          }
+        ]
+      },
+      {
+        "c": 490794,
+        "first_central_height": 39,
+        "fixed_trap_quotient": 327611,
+        "geometry_clear_height": 20,
+        "post_geometry_clear_delay": 19,
+        "trajectory": [
+          {
+            "argument": 490814,
+            "central": false,
+            "height": 20,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490815,
+            "signed_endpoint_error": 53713,
+            "totient_letter": 245406
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490815,
+            "central": false,
+            "height": 21,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490816,
+            "signed_endpoint_error": 21159,
+            "totient_letter": 241344
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490816,
+            "central": false,
+            "height": 22,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490817,
+            "signed_endpoint_error": -39917,
+            "totient_letter": 245376
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490817,
+            "central": false,
+            "height": 23,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490818,
+            "signed_endpoint_error": 81855,
+            "totient_letter": 489300
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490818,
+            "central": false,
+            "height": 24,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490819,
+            "signed_endpoint_error": -1565,
+            "totient_letter": 162336
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490819,
+            "central": false,
+            "height": 25,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490820,
+            "signed_endpoint_error": 89955,
+            "totient_letter": 420696
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490820,
+            "central": false,
+            "height": 26,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490821,
+            "signed_endpoint_error": 21259,
+            "totient_letter": 168960
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490821,
+            "central": false,
+            "height": 27,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490822,
+            "signed_endpoint_error": 29731,
+            "totient_letter": 314824
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490822,
+            "central": false,
+            "height": 28,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490823,
+            "signed_endpoint_error": -22739,
+            "totient_letter": 245410
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490823,
+            "central": false,
+            "height": 29,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490824,
+            "signed_endpoint_error": 93111,
+            "totient_letter": 466200
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490824,
+            "central": false,
+            "height": 30,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490825,
+            "signed_endpoint_error": 12211,
+            "totient_letter": 153600
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490825,
+            "central": false,
+            "height": 31,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490826,
+            "signed_endpoint_error": 75371,
+            "totient_letter": 378560
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490826,
+            "central": false,
+            "height": 32,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490827,
+            "signed_endpoint_error": 33479,
+            "totient_letter": 210348
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490827,
+            "central": false,
+            "height": 33,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490828,
+            "signed_endpoint_error": 42611,
+            "totient_letter": 303264
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490828,
+            "central": false,
+            "height": 34,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490829,
+            "signed_endpoint_error": -15877,
+            "totient_letter": 226512
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490829,
+            "central": false,
+            "height": 35,
+            "nearest_quotient": 327611,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 163217,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 163217
+            },
+            "radius": 490830,
+            "signed_endpoint_error": 131463,
+            "totient_letter": 490828
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490830,
+            "central": false,
+            "height": 36,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490831,
+            "signed_endpoint_error": 66195,
+            "totient_letter": 130880
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490831,
+            "central": false,
+            "height": 37,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490832,
+            "signed_endpoint_error": 250979,
+            "totient_letter": 446200
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490832,
+            "central": false,
+            "height": 38,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490833,
+            "signed_endpoint_error": 419755,
+            "totient_letter": 245408
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490833,
+            "central": true,
+            "height": 39,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490834,
+            "signed_endpoint_error": 787083,
+            "totient_letter": 275184
+          }
+        ]
+      }
+    ],
+    "record_champions_above_threshold": [
+      {
+        "c": 403191,
+        "first_central_height": 38,
+        "fixed_trap_quotient": 233043,
+        "geometry_clear_height": 20,
+        "post_geometry_clear_delay": 18,
+        "trajectory": [
+          {
+            "argument": 403211,
+            "central": false,
+            "height": 20,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403212,
+            "signed_endpoint_error": 22131,
+            "totient_letter": 393792
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403212,
+            "central": false,
+            "height": 21,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403213,
+            "signed_endpoint_error": -54381,
+            "totient_letter": 134400
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403213,
+            "central": false,
+            "height": 22,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403214,
+            "signed_endpoint_error": 34659,
+            "totient_letter": 376464
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403214,
+            "central": false,
+            "height": 23,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403215,
+            "signed_endpoint_error": 6507,
+            "totient_letter": 170232
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403215,
+            "central": false,
+            "height": 24,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403216,
+            "signed_endpoint_error": -4989,
+            "totient_letter": 215040
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403216,
+            "central": false,
+            "height": 25,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403217,
+            "signed_endpoint_error": -68301,
+            "totient_letter": 174720
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403217,
+            "central": false,
+            "height": 26,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403218,
+            "signed_endpoint_error": 20535,
+            "totient_letter": 390180
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403218,
+            "central": false,
+            "height": 27,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403219,
+            "signed_endpoint_error": -65613,
+            "totient_letter": 126360
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403219,
+            "central": false,
+            "height": 28,
+            "nearest_quotient": 233043,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 170175,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 170175
+            },
+            "radius": 403220,
+            "signed_endpoint_error": 38949,
+            "totient_letter": 403218
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403220,
+            "central": false,
+            "height": 29,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403221,
+            "signed_endpoint_error": 6135,
+            "totient_letter": 161280
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403221,
+            "central": false,
+            "height": 30,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403222,
+            "signed_endpoint_error": -9093,
+            "totient_letter": 211680
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403222,
+            "central": false,
+            "height": 31,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403223,
+            "signed_endpoint_error": -49619,
+            "totient_letter": 201610
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403223,
+            "central": false,
+            "height": 32,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403224,
+            "signed_endpoint_error": 47207,
+            "totient_letter": 379488
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403224,
+            "central": false,
+            "height": 33,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403225,
+            "signed_endpoint_error": -7173,
+            "totient_letter": 131456
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403225,
+            "central": false,
+            "height": 34,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403226,
+            "signed_endpoint_error": 72651,
+            "totient_letter": 320040
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403226,
+            "central": false,
+            "height": 35,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403227,
+            "signed_endpoint_error": 108387,
+            "totient_letter": 196128
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403227,
+            "central": false,
+            "height": 36,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403228,
+            "signed_endpoint_error": 228051,
+            "totient_letter": 244320
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403228,
+            "central": false,
+            "height": 37,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403229,
+            "signed_endpoint_error": 395859,
+            "totient_letter": 172800
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 403229,
+            "central": true,
+            "height": 38,
+            "nearest_quotient": 233043,
+            "prime_argument": false,
+            "radius": 403230,
+            "signed_endpoint_error": 957651,
+            "totient_letter": 398976
+          }
+        ]
+      },
+      {
+        "c": 490794,
+        "first_central_height": 39,
+        "fixed_trap_quotient": 327611,
+        "geometry_clear_height": 20,
+        "post_geometry_clear_delay": 19,
+        "trajectory": [
+          {
+            "argument": 490814,
+            "central": false,
+            "height": 20,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490815,
+            "signed_endpoint_error": 53713,
+            "totient_letter": 245406
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490815,
+            "central": false,
+            "height": 21,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490816,
+            "signed_endpoint_error": 21159,
+            "totient_letter": 241344
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490816,
+            "central": false,
+            "height": 22,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490817,
+            "signed_endpoint_error": -39917,
+            "totient_letter": 245376
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490817,
+            "central": false,
+            "height": 23,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490818,
+            "signed_endpoint_error": 81855,
+            "totient_letter": 489300
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490818,
+            "central": false,
+            "height": 24,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490819,
+            "signed_endpoint_error": -1565,
+            "totient_letter": 162336
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490819,
+            "central": false,
+            "height": 25,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490820,
+            "signed_endpoint_error": 89955,
+            "totient_letter": 420696
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490820,
+            "central": false,
+            "height": 26,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490821,
+            "signed_endpoint_error": 21259,
+            "totient_letter": 168960
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490821,
+            "central": false,
+            "height": 27,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490822,
+            "signed_endpoint_error": 29731,
+            "totient_letter": 314824
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490822,
+            "central": false,
+            "height": 28,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490823,
+            "signed_endpoint_error": -22739,
+            "totient_letter": 245410
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490823,
+            "central": false,
+            "height": 29,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490824,
+            "signed_endpoint_error": 93111,
+            "totient_letter": 466200
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490824,
+            "central": false,
+            "height": 30,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490825,
+            "signed_endpoint_error": 12211,
+            "totient_letter": 153600
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490825,
+            "central": false,
+            "height": 31,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490826,
+            "signed_endpoint_error": 75371,
+            "totient_letter": 378560
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490826,
+            "central": false,
+            "height": 32,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490827,
+            "signed_endpoint_error": 33479,
+            "totient_letter": 210348
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490827,
+            "central": false,
+            "height": 33,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490828,
+            "signed_endpoint_error": 42611,
+            "totient_letter": 303264
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490828,
+            "central": false,
+            "height": 34,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490829,
+            "signed_endpoint_error": -15877,
+            "totient_letter": 226512
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490829,
+            "central": false,
+            "height": 35,
+            "nearest_quotient": 327611,
+            "prime_argument": true,
+            "prime_excursion_certificate": {
+              "adjacent_error_budget": 163217,
+              "inequality_verified": true,
+              "prime_minus_one_minus_quotient": 163217
+            },
+            "radius": 490830,
+            "signed_endpoint_error": 131463,
+            "totient_letter": 490828
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490830,
+            "central": false,
+            "height": 36,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490831,
+            "signed_endpoint_error": 66195,
+            "totient_letter": 130880
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490831,
+            "central": false,
+            "height": 37,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490832,
+            "signed_endpoint_error": 250979,
+            "totient_letter": 446200
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490832,
+            "central": false,
+            "height": 38,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490833,
+            "signed_endpoint_error": 419755,
+            "totient_letter": 245408
+          },
+          {
+            "affine_recurrence_verified": true,
+            "argument": 490833,
+            "central": true,
+            "height": 39,
+            "nearest_quotient": 327611,
+            "prime_argument": false,
+            "radius": 490834,
+            "signed_endpoint_error": 787083,
+            "totient_letter": 275184
+          }
+        ]
+      }
+    ],
+    "resolved_count": 1000001,
+    "tested_c_count": 1000001,
+    "unresolved_count": 0
+  },
+  "schema": "erdos249-pure-dyadic-endpoint-cocycle/1",
+  "source_records": [
+    {
+      "byte_length": 14806,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_pure_dyadic_endpoint_cocycle.py",
+      "sha256": "26ce5d82cc799934292fb2500c004bf3b6b1c7f2c04e6b4c3378620ccd1c48cf"
+    },
+    {
+      "byte_length": 22005,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "sha256": "11d05c7c29d76991e281d90c6b42eb2deeff8f3c55a37429d2c12cca5de6bb2c"
+    },
+    {
+      "byte_length": 5533,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PureDyadicEndpointCocycleComputationalLab.md",
+      "sha256": "8566eda9f232547d8da169bcb4fad78739828e71ad6a42dfb87887a4d5dea326"
+    }
+  ],
+  "status": "verified_exact_record_cocycle_prime_excursions_and_successor_bottom_locks"
+}

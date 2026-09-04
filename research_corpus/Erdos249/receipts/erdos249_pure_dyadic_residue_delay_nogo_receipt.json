@@ -1,0 +1,4855 @@
+{
+  "claim_ceiling": "Finite denominator grid only; success does not prove the universal canonical-basepoint residue-gap supply or irrationality.",
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "falsification_consequence": "The tested residue-delay constant is impossible even after separating deterministic interval growth; the producer must explain the exact endpoint trap.",
+      "survival_consequence": "A universal short-multiplier theorem would instantiate the Lean canonical-basepoint gap supply and prove irrationality."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "uniform_post_geometry_residue_escape_delay",
+      "statement": "Once the central interval is nonempty, every denominator in the probe grid reaches a central residue within 5 additional Euler multiples."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CanonicalMersenneResidueComputationalLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_canonical_mersenne_residue.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean"
+      ]
+    },
+    "probe": {
+      "computation": "For every 2^c v in the grid, build the exact totient block and test (-block) mod ((2^H-1)/v) at successive Euler multiples.",
+      "falsifier": "Any exact (c,v) whose post-geometry-clear residue delay exceeds 5.",
+      "id": "canonical_mersenne_residue_denominator_grid",
+      "question": "After deterministic modulus growth makes the central interval possible, do exact denominators create long residue traps?",
+      "stop_condition": "At a delay violation, retire the proposed uniform multiplier and inspect its endpoint-residue trajectory; if no violation appears, formulate a structural centrality lemma rather than treating a larger grid as proof."
+    },
+    "problem": {
+      "claim_ceiling": "Finite denominator/multiplier scans do not prove the universal canonical-basepoint residue-gap supply.",
+      "id": "erdos_249",
+      "target_statement": "Prove irrationality of sum_{n>=1} phi(n)/2^n."
+    },
+    "result": {
+      "status": "finite_counterexample",
+      "summary": "The exact grid contains 61 denominators whose residue stays trapped for more than 5 Euler multiples after the central interval first becomes nonempty."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "parameters": {
+    "max_dyadic_exponent": 2000,
+    "max_euler_multiplier": 30,
+    "max_odd_denominator": 1,
+    "residue_delay_threshold": 5
+  },
+  "scan": {
+    "first_multiplier_histogram": {
+      "10": 121,
+      "11": 261,
+      "12": 502,
+      "13": 499,
+      "14": 233,
+      "15": 130,
+      "16": 55,
+      "17": 37,
+      "18": 19,
+      "19": 14,
+      "20": 6,
+      "21": 4,
+      "22": 4,
+      "5": 5,
+      "6": 4,
+      "7": 16,
+      "8": 29,
+      "9": 62
+    },
+    "first_threshold_violations": [
+      {
+        "c": 141,
+        "first_central_height": 15,
+        "first_central_multiplier": 15,
+        "first_geometry_clear_multiplier": 9,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 6,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 143,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 144,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 145,
+            "residue": 6
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 146,
+            "residue": 12
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 5,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 147,
+            "residue": 5
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 9,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 148,
+            "residue": 9
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 29,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 149,
+            "residue": 29
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 7,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 150,
+            "residue": 248
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 29,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 151,
+            "residue": 29
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 9,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 152,
+            "residue": 1014
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 7,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 153,
+            "residue": 2040
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 27,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 154,
+            "residue": 4068
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 31,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 155,
+            "residue": 8160
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 99,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 156,
+            "residue": 16284
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 163,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 157,
+            "residue": 32604
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 178,
+        "first_central_height": 16,
+        "first_central_multiplier": 16,
+        "first_geometry_clear_multiplier": 9,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 7,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 180,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 181,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 182,
+            "residue": 6
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 7,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 183,
+            "residue": 7
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 184,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 15,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 185,
+            "residue": 48
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 39,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 186,
+            "residue": 88
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 187,
+            "residue": 252
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 31,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 188,
+            "residue": 480
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 19,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 189,
+            "residue": 1004
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 11,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 190,
+            "residue": 2036
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 41,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 191,
+            "residue": 41
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 27,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 192,
+            "residue": 27
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 125,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 193,
+            "residue": 125
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 193,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 194,
+            "residue": 193
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 425,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 195,
+            "residue": 425
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 218,
+        "first_central_height": 15,
+        "first_central_multiplier": 15,
+        "first_geometry_clear_multiplier": 9,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 6,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 220,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 221,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 222,
+            "residue": 3
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 7,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 223,
+            "residue": 7
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 14,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 224,
+            "residue": 14
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 225,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 13,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 226,
+            "residue": 13
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 45,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 227,
+            "residue": 45
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 5,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 228,
+            "residue": 506
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 49,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 229,
+            "residue": 49
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 1,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 230,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 45,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 231,
+            "residue": 45
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 101,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 232,
+            "residue": 101
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 221,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 233,
+            "residue": 221
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 341,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 234,
+            "residue": 341
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 241,
+        "first_central_height": 15,
+        "first_central_multiplier": 15,
+        "first_geometry_clear_multiplier": 9,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 6,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 243,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 244,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 2,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 245,
+            "residue": 5
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 246,
+            "residue": 14
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 15,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 247,
+            "residue": 16
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 7,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 248,
+            "residue": 7
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 23,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 249,
+            "residue": 23
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 11,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 250,
+            "residue": 11
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 51,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 251,
+            "residue": 51
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 19,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 252,
+            "residue": 1004
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 19,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 253,
+            "residue": 19
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 53,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 254,
+            "residue": 4042
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 103,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 255,
+            "residue": 8088
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 205,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 256,
+            "residue": 16178
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 409,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 257,
+            "residue": 32358
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 349,
+        "first_central_height": 22,
+        "first_central_multiplier": 22,
+        "first_geometry_clear_multiplier": 10,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 12,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 351,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 352,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 353,
+            "residue": 6
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 6,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 354,
+            "residue": 9
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 7,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 355,
+            "residue": 7
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 25,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 356,
+            "residue": 25
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 41,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 357,
+            "residue": 41
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 57,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 358,
+            "residue": 57
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 103,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 359,
+            "residue": 103
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 15,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 360,
+            "residue": 15
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 101,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 361,
+            "residue": 101
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 27,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 362,
+            "residue": 27
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 41,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 363,
+            "residue": 41
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 29,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 364,
+            "residue": 29
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 81,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 365,
+            "residue": 81
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 41,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 366,
+            "residue": 41
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 129,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 367,
+            "residue": 129
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 59,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 368,
+            "residue": 59
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 109,
+            "height": 19,
+            "modulus": 524287,
+            "multiplier": 19,
+            "radius": 369,
+            "residue": 109
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 145,
+            "height": 20,
+            "modulus": 1048575,
+            "multiplier": 20,
+            "radius": 370,
+            "residue": 145
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 313,
+            "height": 21,
+            "modulus": 2097151,
+            "multiplier": 21,
+            "radius": 371,
+            "residue": 313
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 481,
+            "height": 22,
+            "modulus": 4194303,
+            "multiplier": 22,
+            "radius": 372,
+            "residue": 481
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 350,
+        "first_central_height": 21,
+        "first_central_multiplier": 21,
+        "first_geometry_clear_multiplier": 10,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 11,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 352,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 353,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 354,
+            "residue": 4
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 7,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 355,
+            "residue": 7
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 9,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 356,
+            "residue": 9
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 6,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 357,
+            "residue": 57
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 10,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 358,
+            "residue": 10
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 56,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 359,
+            "residue": 56
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 32,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 360,
+            "residue": 479
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 54,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 361,
+            "residue": 54
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 20,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 362,
+            "residue": 2027
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 6,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 363,
+            "residue": 4089
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 18,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 364,
+            "residue": 8173
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 34,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 365,
+            "residue": 34
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 6,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 366,
+            "residue": 32761
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 82,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 367,
+            "residue": 82
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 12,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 368,
+            "residue": 12
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 62,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 369,
+            "residue": 62
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 98,
+            "height": 19,
+            "modulus": 524287,
+            "multiplier": 19,
+            "radius": 370,
+            "residue": 98
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 266,
+            "height": 20,
+            "modulus": 1048575,
+            "multiplier": 20,
+            "radius": 371,
+            "residue": 266
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 434,
+            "height": 21,
+            "modulus": 2097151,
+            "multiplier": 21,
+            "radius": 372,
+            "residue": 434
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 351,
+        "first_central_height": 20,
+        "first_central_multiplier": 20,
+        "first_geometry_clear_multiplier": 10,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 10,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 353,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 354,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 355,
+            "residue": 3
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 5,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 356,
+            "residue": 10
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 4,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 357,
+            "residue": 27
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 12,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 358,
+            "residue": 12
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 58,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 359,
+            "residue": 58
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 30,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 360,
+            "residue": 225
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 56,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 361,
+            "residue": 56
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 18,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 362,
+            "residue": 1005
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 4,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 363,
+            "residue": 2043
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 16,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 364,
+            "residue": 4079
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 36,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 365,
+            "residue": 36
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 4,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 366,
+            "residue": 16379
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 84,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 367,
+            "residue": 84
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 14,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 368,
+            "residue": 14
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 64,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 369,
+            "residue": 64
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 100,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 370,
+            "residue": 100
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 268,
+            "height": 19,
+            "modulus": 524287,
+            "multiplier": 19,
+            "radius": 371,
+            "residue": 268
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 436,
+            "height": 20,
+            "modulus": 1048575,
+            "multiplier": 20,
+            "radius": 372,
+            "residue": 436
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 352,
+        "first_central_height": 19,
+        "first_central_multiplier": 19,
+        "first_geometry_clear_multiplier": 10,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 9,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 354,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 355,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 2,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 356,
+            "residue": 5
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 4,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 357,
+            "residue": 4
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 9,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 358,
+            "residue": 22
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 6,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 359,
+            "residue": 6
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 45,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 360,
+            "residue": 45
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 4,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 361,
+            "residue": 4
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 70,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 362,
+            "residue": 441
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 56,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 363,
+            "residue": 967
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 68,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 364,
+            "residue": 1979
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 16,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 365,
+            "residue": 4079
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 56,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 366,
+            "residue": 8135
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 32,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 367,
+            "residue": 32
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 38,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 368,
+            "residue": 32729
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 12,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 369,
+            "residue": 12
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 48,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 370,
+            "residue": 48
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 216,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 371,
+            "residue": 216
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 384,
+            "height": 19,
+            "modulus": 524287,
+            "multiplier": 19,
+            "radius": 372,
+            "residue": 384
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 353,
+        "first_central_height": 18,
+        "first_central_multiplier": 18,
+        "first_geometry_clear_multiplier": 10,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 8,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 355,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 356,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 357,
+            "residue": 4
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 358,
+            "residue": 3
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 359,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 6,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 360,
+            "residue": 6
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 35,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 361,
+            "residue": 92
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 18,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 362,
+            "residue": 18
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 32,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 363,
+            "residue": 32
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 20,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 364,
+            "residue": 20
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 72,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 365,
+            "residue": 72
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 32,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 366,
+            "residue": 32
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 120,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 367,
+            "residue": 120
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 50,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 368,
+            "residue": 50
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 100,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 369,
+            "residue": 100
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 136,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 370,
+            "residue": 136
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 304,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 371,
+            "residue": 304
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 472,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 372,
+            "residue": 472
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 354,
+        "first_central_height": 17,
+        "first_central_multiplier": 17,
+        "first_geometry_clear_multiplier": 10,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 7,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 356,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 357,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 2,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 358,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 4,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 359,
+            "residue": 4
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 8,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 360,
+            "residue": 8
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 31,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 361,
+            "residue": 32
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 42,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 362,
+            "residue": 85
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 28,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 363,
+            "residue": 227
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 40,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 364,
+            "residue": 471
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 12,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 365,
+            "residue": 12
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 28,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 366,
+            "residue": 2019
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 60,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 367,
+            "residue": 60
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 10,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 368,
+            "residue": 8181
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 40,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 369,
+            "residue": 40
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 76,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 370,
+            "residue": 76
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 244,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 371,
+            "residue": 244
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 412,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 372,
+            "residue": 412
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 355,
+        "first_central_height": 16,
+        "first_central_multiplier": 16,
+        "first_geometry_clear_multiplier": 10,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 6,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 357,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 358,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 359,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 5,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 360,
+            "residue": 5
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 14,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 361,
+            "residue": 14
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 2,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 362,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 16,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 363,
+            "residue": 16
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 4,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 364,
+            "residue": 4
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 56,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 365,
+            "residue": 56
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 16,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 366,
+            "residue": 16
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 104,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 367,
+            "residue": 104
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 34,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 368,
+            "residue": 34
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 84,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 369,
+            "residue": 84
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 120,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 370,
+            "residue": 120
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 288,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 371,
+            "residue": 288
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 456,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 372,
+            "residue": 456
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 365,
+        "first_central_height": 16,
+        "first_central_multiplier": 16,
+        "first_geometry_clear_multiplier": 10,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 6,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 367,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 368,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 2,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 369,
+            "residue": 5
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 370,
+            "residue": 14
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 7,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 371,
+            "residue": 24
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 372,
+            "residue": 62
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 48,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 373,
+            "residue": 79
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 13,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 374,
+            "residue": 242
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 15,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 375,
+            "residue": 15
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 31,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 376,
+            "residue": 31
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 79,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 377,
+            "residue": 79
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 23,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 378,
+            "residue": 23
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 139,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 379,
+            "residue": 139
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 101,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 380,
+            "residue": 101
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 259,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 381,
+            "residue": 259
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 467,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 382,
+            "residue": 467
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 406,
+        "first_central_height": 17,
+        "first_central_multiplier": 17,
+        "first_geometry_clear_multiplier": 10,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 7,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 408,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 409,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 410,
+            "residue": 3
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 411,
+            "residue": 12
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 13,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 412,
+            "residue": 13
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 13,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 413,
+            "residue": 50
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 42,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 414,
+            "residue": 42
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 13,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 415,
+            "residue": 242
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 65,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 416,
+            "residue": 446
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 33,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 417,
+            "residue": 990
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 53,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 418,
+            "residue": 1994
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 3,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 419,
+            "residue": 3
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 123,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 420,
+            "residue": 8068
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 53,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 421,
+            "residue": 16330
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 237,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 422,
+            "residue": 32530
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 395,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 423,
+            "residue": 65140
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 777,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 424,
+            "residue": 130294
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 407,
+        "first_central_height": 16,
+        "first_central_multiplier": 16,
+        "first_geometry_clear_multiplier": 10,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 6,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 409,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 410,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 411,
+            "residue": 3
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 7,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 412,
+            "residue": 7
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 4,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 413,
+            "residue": 27
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 14,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 414,
+            "residue": 49
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 58,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 415,
+            "residue": 58
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 6,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 416,
+            "residue": 6
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 38,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 417,
+            "residue": 38
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 18,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 418,
+            "residue": 18
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 74,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 419,
+            "residue": 74
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 52,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 420,
+            "residue": 4043
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 18,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 421,
+            "residue": 18
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 166,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 422,
+            "residue": 16217
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 324,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 423,
+            "residue": 32443
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 706,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 424,
+            "residue": 64829
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 763,
+        "first_central_height": 22,
+        "first_central_multiplier": 22,
+        "first_geometry_clear_multiplier": 11,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 11,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 765,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 766,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 767,
+            "residue": 4
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 6,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 768,
+            "residue": 9
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 10,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 769,
+            "residue": 10
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 28,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 770,
+            "residue": 28
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 34,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 771,
+            "residue": 93
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 77,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 772,
+            "residue": 77
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 173,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 773,
+            "residue": 173
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 23,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 774,
+            "residue": 1000
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 105,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 775,
+            "residue": 105
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 13,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 776,
+            "residue": 13
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 45,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 777,
+            "residue": 45
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 61,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 778,
+            "residue": 61
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 137,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 779,
+            "residue": 137
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 43,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 780,
+            "residue": 65492
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 125,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 781,
+            "residue": 125
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 47,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 782,
+            "residue": 262096
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 43,
+            "height": 19,
+            "modulus": 524287,
+            "multiplier": 19,
+            "radius": 783,
+            "residue": 524244
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 187,
+            "height": 20,
+            "modulus": 1048575,
+            "multiplier": 20,
+            "radius": 784,
+            "residue": 1048388
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 307,
+            "height": 21,
+            "modulus": 2097151,
+            "multiplier": 21,
+            "radius": 785,
+            "residue": 2096844
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 835,
+            "height": 22,
+            "modulus": 4194303,
+            "multiplier": 22,
+            "radius": 786,
+            "residue": 4193468
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 764,
+        "first_central_height": 21,
+        "first_central_multiplier": 21,
+        "first_geometry_clear_multiplier": 11,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 10,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 766,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 767,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 768,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 7,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 769,
+            "residue": 7
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 4,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 770,
+            "residue": 4
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 7,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 771,
+            "residue": 7
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 54,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 772,
+            "residue": 54
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 105,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 773,
+            "residue": 150
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 46,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 774,
+            "residue": 465
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 82,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 775,
+            "residue": 82
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 10,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 776,
+            "residue": 2037
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 22,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 777,
+            "residue": 22
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 38,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 778,
+            "residue": 38
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 114,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 779,
+            "residue": 114
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 66,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 780,
+            "residue": 32701
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 102,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 781,
+            "residue": 102
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 70,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 782,
+            "residue": 131001
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 66,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 783,
+            "residue": 262077
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 210,
+            "height": 19,
+            "modulus": 524287,
+            "multiplier": 19,
+            "radius": 784,
+            "residue": 524077
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 330,
+            "height": 20,
+            "modulus": 1048575,
+            "multiplier": 20,
+            "radius": 785,
+            "residue": 1048245
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 858,
+            "height": 21,
+            "modulus": 2097151,
+            "multiplier": 21,
+            "radius": 786,
+            "residue": 2096293
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 765,
+        "first_central_height": 20,
+        "first_central_multiplier": 20,
+        "first_geometry_clear_multiplier": 11,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 9,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 767,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 768,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 2,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 769,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 5,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 770,
+            "residue": 5
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 771,
+            "residue": 28
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 12,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 772,
+            "residue": 12
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 19,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 773,
+            "residue": 108
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 88,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 774,
+            "residue": 167
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 40,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 775,
+            "residue": 40
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 52,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 776,
+            "residue": 971
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 20,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 777,
+            "residue": 2027
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 4,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 778,
+            "residue": 4091
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 72,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 779,
+            "residue": 72
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 108,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 780,
+            "residue": 16275
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 60,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 781,
+            "residue": 60
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 112,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 782,
+            "residue": 65423
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 108,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 783,
+            "residue": 130963
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 252,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 784,
+            "residue": 261891
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 372,
+            "height": 19,
+            "modulus": 524287,
+            "multiplier": 19,
+            "radius": 785,
+            "residue": 523915
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 900,
+            "height": 20,
+            "modulus": 1048575,
+            "multiplier": 20,
+            "radius": 786,
+            "residue": 1047675
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 766,
+        "first_central_height": 19,
+        "first_central_multiplier": 19,
+        "first_geometry_clear_multiplier": 11,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 8,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 768,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 769,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 770,
+            "residue": 3
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 2,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 771,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 12,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 772,
+            "residue": 19
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 22,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 773,
+            "residue": 22
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 47,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 774,
+            "residue": 80
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 46,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 775,
+            "residue": 209
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 138,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 776,
+            "residue": 373
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 106,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 777,
+            "residue": 917
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 90,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 778,
+            "residue": 1957
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 14,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 779,
+            "residue": 4081
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 194,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 780,
+            "residue": 7997
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 26,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 781,
+            "residue": 16357
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 198,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 782,
+            "residue": 32569
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 194,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 783,
+            "residue": 65341
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 338,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 784,
+            "residue": 130733
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 458,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 785,
+            "residue": 261685
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 986,
+            "height": 19,
+            "modulus": 524287,
+            "multiplier": 19,
+            "radius": 786,
+            "residue": 523301
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 767,
+        "first_central_height": 18,
+        "first_central_multiplier": 18,
+        "first_geometry_clear_multiplier": 11,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 7,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 769,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 770,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 771,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 7,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 772,
+            "residue": 8
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 9,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 773,
+            "residue": 9
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 31,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 774,
+            "residue": 31
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 31,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 775,
+            "residue": 96
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 4,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 776,
+            "residue": 4
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 36,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 777,
+            "residue": 36
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 52,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 778,
+            "residue": 52
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 128,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 779,
+            "residue": 128
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 52,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 780,
+            "residue": 4043
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 116,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 781,
+            "residue": 116
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 56,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 782,
+            "residue": 16327
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 52,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 783,
+            "residue": 32715
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 196,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 784,
+            "residue": 65339
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 316,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 785,
+            "residue": 130755
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 844,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 786,
+            "residue": 261299
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 768,
+        "first_central_height": 17,
+        "first_central_multiplier": 17,
+        "first_geometry_clear_multiplier": 11,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 6,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 770,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 771,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 772,
+            "residue": 3
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 7,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 773,
+            "residue": 8
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 2,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 774,
+            "residue": 29
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 775,
+            "residue": 3
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 25,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 776,
+            "residue": 102
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 120,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 777,
+            "residue": 135
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 104,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 778,
+            "residue": 407
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 28,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 779,
+            "residue": 995
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 208,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 780,
+            "residue": 1839
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 40,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 781,
+            "residue": 4055
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 212,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 782,
+            "residue": 7979
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 208,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 783,
+            "residue": 16175
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 352,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 784,
+            "residue": 32415
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 472,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 785,
+            "residue": 65063
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 1000,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 786,
+            "residue": 130071
+          }
+        ],
+        "v": 1
+      }
+    ],
+    "first_unresolved_pairs": [],
+    "largest_first_central_multiplier": 22,
+    "largest_first_central_multiplier_case_count": 4,
+    "largest_first_central_multiplier_cases": [
+      {
+        "c": 349,
+        "first_central_height": 22,
+        "first_central_multiplier": 22,
+        "first_geometry_clear_multiplier": 10,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 12,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 351,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 352,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 353,
+            "residue": 6
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 6,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 354,
+            "residue": 9
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 7,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 355,
+            "residue": 7
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 25,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 356,
+            "residue": 25
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 41,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 357,
+            "residue": 41
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 57,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 358,
+            "residue": 57
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 103,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 359,
+            "residue": 103
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 15,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 360,
+            "residue": 15
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 101,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 361,
+            "residue": 101
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 27,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 362,
+            "residue": 27
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 41,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 363,
+            "residue": 41
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 29,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 364,
+            "residue": 29
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 81,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 365,
+            "residue": 81
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 41,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 366,
+            "residue": 41
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 129,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 367,
+            "residue": 129
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 59,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 368,
+            "residue": 59
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 109,
+            "height": 19,
+            "modulus": 524287,
+            "multiplier": 19,
+            "radius": 369,
+            "residue": 109
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 145,
+            "height": 20,
+            "modulus": 1048575,
+            "multiplier": 20,
+            "radius": 370,
+            "residue": 145
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 313,
+            "height": 21,
+            "modulus": 2097151,
+            "multiplier": 21,
+            "radius": 371,
+            "residue": 313
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 481,
+            "height": 22,
+            "modulus": 4194303,
+            "multiplier": 22,
+            "radius": 372,
+            "residue": 481
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 763,
+        "first_central_height": 22,
+        "first_central_multiplier": 22,
+        "first_geometry_clear_multiplier": 11,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 11,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 765,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 766,
+            "residue": 2
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 3,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 767,
+            "residue": 4
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 6,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 768,
+            "residue": 9
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 10,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 769,
+            "residue": 10
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 28,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 770,
+            "residue": 28
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 34,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 771,
+            "residue": 93
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 77,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 772,
+            "residue": 77
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 173,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 773,
+            "residue": 173
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 23,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 774,
+            "residue": 1000
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 105,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 775,
+            "residue": 105
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 13,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 776,
+            "residue": 13
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 45,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 777,
+            "residue": 45
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 61,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 778,
+            "residue": 61
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 137,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 779,
+            "residue": 137
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 43,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 780,
+            "residue": 65492
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 125,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 781,
+            "residue": 125
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 47,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 782,
+            "residue": 262096
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 43,
+            "height": 19,
+            "modulus": 524287,
+            "multiplier": 19,
+            "radius": 783,
+            "residue": 524244
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 187,
+            "height": 20,
+            "modulus": 1048575,
+            "multiplier": 20,
+            "radius": 784,
+            "residue": 1048388
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 307,
+            "height": 21,
+            "modulus": 2097151,
+            "multiplier": 21,
+            "radius": 785,
+            "residue": 2096844
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 835,
+            "height": 22,
+            "modulus": 4194303,
+            "multiplier": 22,
+            "radius": 786,
+            "residue": 4193468
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 1130,
+        "first_central_height": 22,
+        "first_central_multiplier": 22,
+        "first_geometry_clear_multiplier": 12,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 10,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 1132,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 1133,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 1,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 1134,
+            "residue": 1
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 6,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 1135,
+            "residue": 9
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 2,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 1136,
+            "residue": 29
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 16,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 1137,
+            "residue": 47
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 11,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 1138,
+            "residue": 11
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 127,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 1139,
+            "residue": 127
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 129,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 1140,
+            "residue": 382
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 127,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 1141,
+            "residue": 127
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 45,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 1142,
+            "residue": 2002
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 13,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 1143,
+            "residue": 13
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 57,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 1144,
+            "residue": 8134
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 79,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 1145,
+            "residue": 79
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 81,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 1146,
+            "residue": 32686
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 131,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 1147,
+            "residue": 131
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 145,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 1148,
+            "residue": 130926
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 97,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 1149,
+            "residue": 262046
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 285,
+            "height": 19,
+            "modulus": 524287,
+            "multiplier": 19,
+            "radius": 1150,
+            "residue": 524002
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 337,
+            "height": 20,
+            "modulus": 1048575,
+            "multiplier": 20,
+            "radius": 1151,
+            "residue": 1048238
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 1151,
+            "height": 21,
+            "modulus": 2097151,
+            "multiplier": 21,
+            "radius": 1152,
+            "residue": 2096000
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 2013,
+            "height": 22,
+            "modulus": 4194303,
+            "multiplier": 22,
+            "radius": 1153,
+            "residue": 4192290
+          }
+        ],
+        "v": 1
+      },
+      {
+        "c": 1858,
+        "first_central_height": 22,
+        "first_central_multiplier": 22,
+        "first_geometry_clear_multiplier": 12,
+        "phi_v": 1,
+        "post_geometry_clear_residue_delay": 10,
+        "trajectory": [
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 1,
+            "modulus": 1,
+            "multiplier": 1,
+            "radius": 1860,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 0,
+            "height": 2,
+            "modulus": 3,
+            "multiplier": 2,
+            "radius": 1861,
+            "residue": 0
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 2,
+            "height": 3,
+            "modulus": 7,
+            "multiplier": 3,
+            "radius": 1862,
+            "residue": 5
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 6,
+            "height": 4,
+            "modulus": 15,
+            "multiplier": 4,
+            "radius": 1863,
+            "residue": 9
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 4,
+            "height": 5,
+            "modulus": 31,
+            "multiplier": 5,
+            "radius": 1864,
+            "residue": 27
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 5,
+            "height": 6,
+            "modulus": 63,
+            "multiplier": 6,
+            "radius": 1865,
+            "residue": 5
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 27,
+            "height": 7,
+            "modulus": 127,
+            "multiplier": 7,
+            "radius": 1866,
+            "residue": 27
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 78,
+            "height": 8,
+            "modulus": 255,
+            "multiplier": 8,
+            "radius": 1867,
+            "residue": 177
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 250,
+            "height": 9,
+            "modulus": 511,
+            "multiplier": 9,
+            "radius": 1868,
+            "residue": 250
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 203,
+            "height": 10,
+            "modulus": 1023,
+            "multiplier": 10,
+            "radius": 1869,
+            "residue": 820
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": false,
+            "distance_to_nearest_endpoint": 211,
+            "height": 11,
+            "modulus": 2047,
+            "multiplier": 11,
+            "radius": 1870,
+            "residue": 1836
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 189,
+            "height": 12,
+            "modulus": 4095,
+            "multiplier": 12,
+            "radius": 1871,
+            "residue": 189
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 241,
+            "height": 13,
+            "modulus": 8191,
+            "multiplier": 13,
+            "radius": 1872,
+            "residue": 7950
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 193,
+            "height": 14,
+            "modulus": 16383,
+            "multiplier": 14,
+            "radius": 1873,
+            "residue": 193
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 235,
+            "height": 15,
+            "modulus": 32767,
+            "multiplier": 15,
+            "radius": 1874,
+            "residue": 32532
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 155,
+            "height": 16,
+            "modulus": 65535,
+            "multiplier": 16,
+            "radius": 1875,
+            "residue": 65380
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 59,
+            "height": 17,
+            "modulus": 131071,
+            "multiplier": 17,
+            "radius": 1876,
+            "residue": 131012
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 341,
+            "height": 18,
+            "modulus": 262143,
+            "multiplier": 18,
+            "radius": 1877,
+            "residue": 341
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 57,
+            "height": 19,
+            "modulus": 524287,
+            "multiplier": 19,
+            "radius": 1878,
+            "residue": 57
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 741,
+            "height": 20,
+            "modulus": 1048575,
+            "multiplier": 20,
+            "radius": 1879,
+            "residue": 741
+          },
+          {
+            "central_gap": false,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 855,
+            "height": 21,
+            "modulus": 2097151,
+            "multiplier": 21,
+            "radius": 1880,
+            "residue": 855
+          },
+          {
+            "central_gap": true,
+            "central_interval_nonempty": true,
+            "distance_to_nearest_endpoint": 2225,
+            "height": 22,
+            "modulus": 4194303,
+            "multiplier": 22,
+            "radius": 1881,
+            "residue": 2225
+          }
+        ],
+        "v": 1
+      }
+    ],
+    "largest_post_geometry_clear_residue_delay": 12,
+    "post_geometry_clear_residue_delay_histogram": {
+      "0": 485,
+      "1": 758,
+      "10": 4,
+      "11": 2,
+      "12": 1,
+      "2": 363,
+      "3": 188,
+      "4": 95,
+      "5": 51,
+      "6": 26,
+      "7": 17,
+      "8": 7,
+      "9": 4
+    },
+    "residue_delay_threshold": 5,
+    "resolved_pair_count": 2001,
+    "tested_pairs": 2001,
+    "threshold_violation_count": 61,
+    "unresolved_pair_count": 0
+  },
+  "schema": "erdos249-canonical-mersenne-residue-grid/1",
+  "sources": [
+    {
+      "byte_length": 13158,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_canonical_mersenne_residue.py",
+      "sha256": "f7716147fc7f83d774d914663aeb61c7f17dc7a3e6330b069fcc63615b30018a"
+    },
+    {
+      "byte_length": 129144,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "sha256": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065"
+    }
+  ]
+}

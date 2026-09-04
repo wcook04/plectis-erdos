@@ -1,0 +1,23 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "checkpoint_id": "form_a_cut_quantitative_expansion_20260825",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/FormACutQuantitativeExpansion.md",
+    "ErdosProblems/Erdos1041/FormACutQuantitativeExpansion.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_form_a_cut_quantitative_expansion.py"
+  ],
+  "human_understanding_delta": "The informal near-Fekete O(eta^2) term is replaced first by an explicit three-part budget and then by a stronger origin-anchored theorem: the nonlinear error is O(eta^2 |z|), the infinite Fourier tail resums exactly to one finite rational potential, and the exact negative value log|f(0)| is retained. Root-disk geometry controls quadratic perturbation energy by radial deficit and pairs each high mode with its low complementary mode up to twice that deficit. Literal first-nonzero-mode normalization is not uniform, but the remaining competition is finite and tangent-dominant modes reduce to m <= n/2.",
+  "verification_state": {
+    "analytic_proof": "complete",
+    "deterministic_replay": "PASS_324_configurations_unanchored_and_anchored_bounds_finite_resummation_and_root_disk_pairing",
+    "lean_focused_build": "PASS_canonical_cached_build_FormACutQuantitativeExpansion"
+  },
+  "publication_or_review_state": "private_expert_checkpoint_not_yet_external_reviewed",
+  "canonicalization_state": "focused_build_passed_pending_scoped_commit",
+  "unresolved_downstream_bottleneck": "Construct the finite mode-envelope spoke/connector selector using the origin-anchored O(eta^2 |z|) budget and complementary-mode pairing, then overlap its explicit near-Fekete neighborhood with the existing non-near-Fekete regime.",
+  "next_stage_owner": "Refinery: verify the exact constants and consume the expansion in the multiscale selector; external novelty/priority review only after an end-to-end theorem exists.",
+  "claim_ceiling": "This checkpoint proves a quantitative expansion and stability certificate, not the unrestricted Erdős #1041 theorem."
+}

@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification257ActualUpperSuccessor.Challenge",
+  "solution_module": "ExternalVerification257ActualUpperSuccessor.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification257ActualUpperSuccessor.actualUpperRightPacketLinearEscape_iff_successorLinearEscape",
+    "Erdos249257.ExternalVerification257ActualUpperSuccessor.actualUpperSuccessorLinearEscape_completeCounterexample"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

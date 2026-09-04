@@ -505,7 +505,7 @@ def main() -> int:
         evidence = node.get("evidence", [])
         external = node.get("prior_art_state") in ("known_classical", "prior_art_found")
         check(
-            bool(evidence) or external or bool(node.get("open_antecedents")),
+            bool(evidence) or any(e.get("resolved") and e.get("evidence_class") == "ordinary_mathematical_proof" for e in node.get("source_evidence", [])) or external or bool(node.get("open_antecedents")),
             f"statement node {nid} has no evidence declaration and is not marked external or open",
         )
         unresolved = [e for e in evidence if not e.get("resolved")]

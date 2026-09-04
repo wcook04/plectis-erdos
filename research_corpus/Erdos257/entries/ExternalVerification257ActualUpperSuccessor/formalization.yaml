@@ -1,0 +1,127 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #257: actual upper-successor counterexample endpoint"
+  description: >-
+    The actual upper/right-run packet lower envelope is equivalent to a
+    pulse-free immediate-successor inequality. That exact successor producer
+    conditionally yields an infinite reciprocal-Mersenne support of value one
+    half and refutes universal irrationality. The producer is not constructed.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "candidate_source_focused_validation_green_paper_and_portfolio_synced"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification257ActualUpperSuccessor/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification257ActualUpperSuccessor/formalization.yaml"
+  repository_scope: "private_package_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_source_challenge_solution_negative_and_axiom_validation_passed_supported_macos_entrypoint_typed_exit_75_systemd_unavailable_terminal_Comparator_NanoDa_pending"
+  submission_authorization: "not_authorized"
+  blockers:
+    - "public immutable source identity and terminal Comparator/NanoDa receipts are pending"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A25"]
+
+editorial_assessment:
+  plectis_signal:
+    score: 95
+    band: "summit"
+    components:
+      theorem_closure: 25
+      parent_problem_proximity: 25
+      mechanism_depth: 20
+      hypothesis_sharpness: 12
+      consequence_reach: 13
+    scale: "0 is the weakest coherent family still worth Comparator admission; 100 is the strongest direct contribution in the current portfolio"
+    authority_boundary: >-
+      Portfolio-relative editorial reading priority only, not proof authority,
+      novelty, Comparator replay, Palomar acceptance, mechanical readiness, or
+      submission authorization.
+    rationale: >-
+      The family retains the exact realized upper/right-run mechanism, proves
+      an exact packet/successor equivalence, and reaches an infinite rational
+      counterexample endpoint. The lower-envelope producer remains open and is
+      stronger than the terminal-only compactness hypothesis.
+
+sources:
+  - title: "Actual upper-successor endpoint for Erdős Problem 257"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #257"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/257"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    Two declarations expose the exact realized packet/successor equivalence
+    and the conditional infinite-support half-value/universal-refutation
+    consequence. No producer is constructed and the parent problem is open.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 2
+  sorry_boundary: >-
+    Challenge.lean has one intended placeholder for each selected theorem.
+    Solution.lean must contain no placeholders; NegativeSolution.lean is an
+    untrusted deliberate mismatch fixture.
+  axiom_audit_status: "passed_exact_permitted_axiom_budget"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257ActualUpperSuccessor.actualUpperRightPacketLinearEscape_iff_successorLinearEscape"
+      file: "ExternalVerification257ActualUpperSuccessor/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact_source_transport_focused_validation_passed"
+    - declaration: "Erdos249257.ExternalVerification257ActualUpperSuccessor.actualUpperSuccessorLinearEscape_completeCounterexample"
+      file: "ExternalVerification257ActualUpperSuccessor/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact_source_transport_focused_validation_passed"
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    The Challenge represents the concrete adjacent cut by the two fields used
+    in the selected source statements. Solution.lean binds those fields to the
+    actual source cut. The selected hypotheses and conclusions are unchanged.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "Focused five-root validation and exact axiom audit pass; paper and portfolio routes are synchronized. The supported macOS replay entrypoint returned typed exit 75 because systemd-run is unavailable, not a theorem verdict. Public immutable identity and terminal Comparator/NanoDa receipts remain pending."
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification257ActualUpperSuccessor"
+  statements:
+    - source: "ErdosProblems.Erdos257.seamActualUpperRightPacketLinearEscape_iff_successorLinearEscape"
+      lean: "Erdos249257.ExternalVerification257ActualUpperSuccessor.actualUpperRightPacketLinearEscape_iff_successorLinearEscape"
+      module: "ExternalVerification257ActualUpperSuccessor/Challenge.lean"
+      status: "exact-source-transport-focused-validation-passed"
+    - source: "ErdosProblems.Erdos257.actualUpperSuccessorLinearEscape_completeCounterexample"
+      lean: "Erdos249257.ExternalVerification257ActualUpperSuccessor.actualUpperSuccessorLinearEscape_completeCounterexample"
+      module: "ExternalVerification257ActualUpperSuccessor/Challenge.lean"
+      status: "exact-source-transport-focused-validation-passed"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

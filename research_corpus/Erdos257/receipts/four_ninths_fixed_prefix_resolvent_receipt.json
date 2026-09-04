@@ -1,0 +1,107 @@
+{
+  "canonical_digest": "3ebdda2eee0bca3a589dfe16faff13c9dfa27cef7a5ddbbcc0a866a4e691ee68",
+  "claim_ceiling": "exact cross-program coordinate identity plus certified finite intervals; no seam exclusion, support construction, or Erdos 257 conclusion",
+  "cross_program_identity": {
+    "boundary_residual": "x_n - sigma_n^P = u_n when Q_n = x_n",
+    "fixed_prefix_resolvent": "sigma_n^P = Psi_n^P - theta_n",
+    "status": "exact_existing_coordinate_identified",
+    "target_rotation": "theta_n = fractional_part(2^n * 4/9)",
+    "weighted_divisor_term": "Psi_n^P = sum_{d in P} 2^(-rho_d(n))/(1-2^(-d))"
+  },
+  "mechanism_decision": {
+    "candidate": "treat the fixed-prefix resolvent as a new seam mechanism",
+    "reason": "pairing odd/even rows gives sigma=Psi-theta and x-sigma=u, already the hole-geometry coordinate",
+    "status": "equivalent_coordinate_eliminated",
+    "stop_condition": "do not count resolvent anti-concentration separately from the existing u/Psi/theta lane; rotate to a distinct mechanism"
+  },
+  "parameters": {"crosscheck": 300, "horizon": 4662078, "resolvent_terms": 96},
+  "record_rides": [
+    {
+      "prefix_length": 293561,
+      "resolvent": {
+        "boundary_offset_minus_center": "3.58478338132539457e-04",
+        "center_distance_to_nearest_integer": "3.58478338132539457e-04",
+        "center_nearest_integer": 11,
+        "center_residual_amplified_by_ride": "2.40570740406826044e+04",
+        "correction_stream_sha256": "11249fe4d572b233afb0d51f94dc94eb81da117a7083335e97fcec2ae55a81d0",
+        "nearest_integer_equals_boundary_offset": true,
+        "paired_load_stream_sha256": "9fcf82f142686f80499a900a71d25090d788ff15d26a7e573d1f50d8c104a107",
+        "paired_target_stream_sha256": "ba5310b850cb86670cab51e6a25b534db6ff1a3bf3f48e8924b5ee9f2bedbea4",
+        "residual_sign_certified_under_tail_bound": true,
+        "tail_radius_bound": "2.34501536226785843e-53",
+        "term_count": 96,
+        "theta_n": "1/9",
+        "truncated_sigma_equals_truncated_Psi_minus_theta": true
+      },
+      "ride_corrections": [-42, -4, -10, -21, -7, -14, -14, -9, -26, -9, -21, -26, -11],
+      "ride_length": 13,
+      "ride_offsets": [11, 2, 4, 6, 3, 5, 6, 10, 31, 98, 383, 1511, 6018, 24061],
+      "selected_fixed_bit_count": 147198,
+      "start_rank": 293578,
+      "starting_boundary_offset": 11,
+      "starting_suffix_width": 17
+    },
+    {
+      "prefix_length": 2287916,
+      "resolvent": {
+        "boundary_offset_minus_center": "3.22992120360184303e-03",
+        "center_distance_to_nearest_integer": "3.22992120360184303e-03",
+        "center_nearest_integer": 2,
+        "center_residual_amplified_by_ride": "2.16756342783232394e+05",
+        "correction_stream_sha256": "3cfdc71b70b7658ad7a7136cfc8d268ad220febec9306ddd73f09c65d4dc7dd0",
+        "nearest_integer_equals_boundary_offset": true,
+        "paired_load_stream_sha256": "cda62cfb391a244fbaa235e701fdd1d1edbfadf2e34142af6cbb4c244179f60e",
+        "paired_target_stream_sha256": "ba5310b850cb86670cab51e6a25b534db6ff1a3bf3f48e8924b5ee9f2bedbea4",
+        "residual_sign_certified_under_tail_bound": true,
+        "tail_radius_bound": "1.82185194411151676e-52",
+        "term_count": 96,
+        "theta_n": "1/9",
+        "truncated_sigma_equals_truncated_Psi_minus_theta": true
+      },
+      "ride_corrections": [-2, -22, 2, -34, -15, -15, -28, -9, -6, -25, -10, -19, -28],
+      "ride_length": 13,
+      "ride_offsets": [2, 6, 2, 10, 6, 9, 21, 56, 215, 854, 3391, 13554, 54197, 216760],
+      "selected_fixed_bit_count": 1143594,
+      "start_rank": 2287936,
+      "starting_boundary_offset": 2,
+      "starting_suffix_width": 20
+    },
+    {
+      "prefix_length": 4662057,
+      "resolvent": {
+        "boundary_offset_minus_center": "1.26544697199219069e-01",
+        "center_distance_to_nearest_integer": "1.26544697199219069e-01",
+        "center_nearest_integer": 9,
+        "center_residual_amplified_by_ride": "5.30766929641473340e+05",
+        "correction_stream_sha256": "0ef44c216d3a086926e3701fa179c2da575102bb2a6711c14e55534de77fd2a0",
+        "nearest_integer_equals_boundary_offset": true,
+        "paired_load_stream_sha256": "e4596e5f8b67558fbf88493d0d97d6776a34939f70a690f084e06d516a2906da",
+        "paired_target_stream_sha256": "fb3eb4aaca0696b322ab9acb0c39478a12b658ed36ea938e61d4276f65b5703d",
+        "residual_sign_certified_under_tail_bound": true,
+        "tail_radius_bound": "3.71222914368848483e-52",
+        "term_count": 96,
+        "theta_n": "4/9",
+        "truncated_sigma_equals_truncated_Psi_minus_theta": true
+      },
+      "ride_corrections": [-33, -6, -12, -10, -15, -28, -6, 2, -11, -25, -27],
+      "ride_length": 11,
+      "ride_offsets": [9, 3, 6, 12, 38, 137, 520, 2074, 8298, 33181, 132699, 530769],
+      "selected_fixed_bit_count": 2330203,
+      "start_rank": 4662078,
+      "starting_boundary_offset": 9,
+      "starting_suffix_width": 21
+    }
+  ],
+  "schema": "erdos257_four_ninths_fixed_prefix_resolvent_v0",
+  "source": {
+    "existing_cylinder_audit": "erdos257_period_noncollapse/scripts/totient_four_ninths_even_cylinder_audit.py",
+    "existing_cylinder_audit_sha256": "45745f784faa95a293cc462b42268a2801854c3fa1b225e4db5d4a961d5839bc"
+  },
+  "validation": {
+    "exact_integer_cylinder": true,
+    "fixed_prefix_future_loads_recounted_from_divisors": true,
+    "paired_resolvent_factorization_verified": true,
+    "record_ride_lengths_reproduced": true,
+    "trace_sha256": "96d332c32330afc3442a25bb4ab5dad1031bc6553531e04c056edcf643d37cdc"
+  }
+}

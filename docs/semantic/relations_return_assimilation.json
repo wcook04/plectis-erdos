@@ -1,0 +1,14 @@
+{
+  "lens": "return_assimilation",
+  "edges": [
+    {
+      "from": "effective_signed_atomic_hankel_asymptotics",
+      "from_zone": "Z95",
+      "to": "every_shifted_order_two_hankel_minor_is_negative",
+      "to_zone": "Z37",
+      "relation": "complements",
+      "basis": "The effective signed-atomic theorem gives every fixed order eventually in shift, while Z37 gives order two at every positive shift. Neither coverage statement is silently substituted for the other.",
+      "confidence": "high"
+    }
+  ]
+}

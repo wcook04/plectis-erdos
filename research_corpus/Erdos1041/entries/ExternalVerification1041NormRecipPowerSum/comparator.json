@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041NormRecipPowerSum.Challenge",
+  "solution_module": "ExternalVerification1041NormRecipPowerSum.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041NormRecipPowerSum.norm_recipPowerSum_le"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

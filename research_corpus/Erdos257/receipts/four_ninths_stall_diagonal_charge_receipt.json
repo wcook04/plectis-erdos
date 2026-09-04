@@ -1,0 +1,56 @@
+{
+  "canonical_digest": "eee86e28bf49ab1dd051e38712307a9dcbf41ecb9622dac7d3ab345c508af26a",
+  "claim_ceiling": "exact finite diagonal charge comparison; no all-depth margin exclusion, seam exclusion, support construction, or Erdos 257 conclusion",
+  "diagonal_census": {
+    "maximum_dyadic_leading_zero_count": {
+      "rank": 90374,
+      "rho_bit_length": 90355,
+      "selected_count": 45521,
+      "value": 19
+    },
+    "selected_count_through_limit": 73469,
+    "small_two_thirds_margin_event_count": 0,
+    "small_two_thirds_margin_events": []
+  },
+  "mechanism_decision": {
+    "candidate": "charge seam-stall fresh contributors to the diagonal's selected two-thirds-small-margin events",
+    "status": "eliminated_on_actual_stall_cohort",
+    "stop_condition": "do not charge seam-stall contributors to diagonal small-margin selection; seek a different reachability resource"
+  },
+  "parameters": {
+    "crosscheck": 300,
+    "limit": 146794
+  },
+  "schema": "erdos257_four_ninths_stall_diagonal_charge_v0",
+  "source": {
+    "stall_ancestry": "erdos257_period_noncollapse/scripts/four_ninths_seam_stall_ancestry.py",
+    "stall_ancestry_sha256": "3c943a52c462ee69ca44da55f0f78974ace60389264608d9387277c07dad3460"
+  },
+  "stall_contributor_census": {
+    "count": 88,
+    "dyadic_leading_zero_histogram": {
+      "0": 37,
+      "1": 24,
+      "2": 19,
+      "3": 5,
+      "4": 1,
+      "5": 2
+    },
+    "maximum_dyadic_leading_zero_witness": {
+      "dyadic_leading_zero_count": 5,
+      "rank": 314,
+      "rho_bit_length": 309,
+      "rho_low_64": 12668210486983202869,
+      "rho_sha256": "f2416be7cdc7801c9962b5da49aa769a009906c3639b5cf70641572e2b5c7109",
+      "selected_count": 149,
+      "three_rho_lt_two_selected": false
+    },
+    "small_two_thirds_margin_count": 0
+  },
+  "validation": {
+    "cohort_table_sha256": "6020651b541f601f1408371e2ee08f034167983f14587486e12326d4a41485dd",
+    "contributor_count": 88,
+    "every_stall_contributor_selected_on_diagonal": true,
+    "exact_integer_diagonal": true
+  }
+}

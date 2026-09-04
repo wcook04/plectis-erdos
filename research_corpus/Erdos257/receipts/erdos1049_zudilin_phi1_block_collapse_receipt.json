@@ -1,0 +1,1556 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "zudilinScalarPlusBorder_cannot_meet_required_charge"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "falsification_consequence": "Failure eliminates full block collapse and names the first exact residue correction that a weaker endpoint proof must retain.",
+      "survival_consequence": "Survival opens a symbolic q-Lucas/Pochhammer proof whose quotient sum is exactly the committed Phi_1 harmonic moment."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "phi_d_source_rows_collapse_to_phi1_harmonic_blocks",
+      "statement": "After scalar extraction, B=2C and both channels separately obey the same quotient-block law K_d^(q-1)c_q, uniformly over residue classes s, with c_q=(q!)^3 H_q/12^(q-1)."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1BlockCollapseLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinEndpointRecurrenceLab.md"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_phi1_kernel_receipt.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_endpoint_recurrence_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi1_block_collapse.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/zudilin_cyclotomic_local.py",
+        "system/lib/formal_math_cyclotomic_local.py"
+      ]
+    },
+    "probe": {
+      "computation": "Construct S_n=(-B_n-C_n)U_n exactly in QQ[p]/(Phi_d) for d<=n<5d, infer K_d=S_(2d)/S_d, and compare every q=2,3,4, 0<=s<d source residue against the Phi_1 harmonic prediction.",
+      "falsifier": "Any nonzero exact block-law difference in either source channel, or any failure of B=2C, kills the strong block-collapse mechanism.",
+      "id": "exact_d1_d5_full_residue_strip_block_collapse",
+      "question": "Does the stronger source-row block law hold in every residue class, including the new degree-four d=5 strip?",
+      "resource_bounds": {
+        "cyclotomic_index_count": 5,
+        "identity_check_count": 45,
+        "maximum_cyclotomic_index": 5,
+        "maximum_local_modulus_degree": 48,
+        "maximum_quotient_block": 4,
+        "minimum_cyclotomic_index": 1,
+        "separately_recorded_channel_and_combined_comparison_count": 135
+      },
+      "stop_condition": "Stop after the complete d=1,...,5 strips decide the mechanism; do not substitute further index sampling for the symbolic reduction."
+    },
+    "problem": {
+      "claim_ceiling": "Exact full-strip block-collapse decisions at d=1,...,5 and q=2,3,4; not an all-d theorem or irrationality proof.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the Lambert value at p=3/2."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "The channelwise full residue strip strictly strengthens the committed endpoint recurrence, tests reduction to one source channel, and either exposes an analytic source identity or kills it.",
+        "next_analytic_target": "Derive the block-collapse symbolically by splitting the terminating source sum at n=qd+s into quotient and residue variables, proving that the quotient sum is the normalized Phi_1 harmonic moment."
+      },
+      "status": "exact_one_way_result",
+      "summary": "For every d=1,...,5, q=2,3,4, and 0<=s<d, the exact B and C source channels separately satisfy S_(qd+s)=K_d^(q-1)c_q S_(d+s), with the same K_d and c_q=(q!)^3 H_q/12^(q-1). Moreover B=2C throughout every complete source strip, so the combined collapse is three times a single channel and cannot depend on B/C cancellation. All source bases and multipliers are nonzero, all primitive mu coefficients vanish, and the finite q-Lucas regressions hold. This opens a uniform root-of-unity block-collapse proof from one Zudilin source sum to the Phi_1 harmonic kernel."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "all_B_equals_twice_C_on_complete_source_strips": true,
+    "all_block_identities_hold": true,
+    "all_channel_multipliers_equal": true,
+    "all_channelwise_block_identities_hold": true,
+    "all_primitive_mu_coefficients_vanish": true,
+    "all_q_lucas_regressions_hold": true,
+    "all_source_bases_and_multipliers_nonzero": true,
+    "authority_boundary": "The exact computation decides every listed quotient/residue identity at the listed cyclotomic indices. It does not prove the identity for all d or all quotient blocks.",
+    "phi1_block_constants": {
+      "2": "1",
+      "3": "11/4",
+      "4": "50/3"
+    },
+    "records": [
+      {
+        "B_equals_twice_C_on_complete_source_strip": true,
+        "all_block_identities_hold": true,
+        "all_channelwise_block_identities_hold": true,
+        "all_observed_B_equals_twice_C": true,
+        "channel_base_residues_nonzero": true,
+        "channel_block_multipliers": {
+          "B": "12",
+          "C": "12"
+        },
+        "channel_block_multipliers_equal_combined_K": true,
+        "checks": [
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-24",
+                "predicted": "-24"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-12",
+                "predicted": "-12"
+              }
+            },
+            "difference": "0",
+            "left_index": 2,
+            "matches": true,
+            "observed": "-36",
+            "phi1_block_constant": "1",
+            "predicted": "-36",
+            "quotient": 2,
+            "residue_class": 0,
+            "right_index": 1
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-792",
+                "predicted": "-792"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-396",
+                "predicted": "-396"
+              }
+            },
+            "difference": "0",
+            "left_index": 3,
+            "matches": true,
+            "observed": "-1188",
+            "phi1_block_constant": "11/4",
+            "predicted": "-1188",
+            "quotient": 3,
+            "residue_class": 0,
+            "right_index": 1
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-57600",
+                "predicted": "-57600"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-28800",
+                "predicted": "-28800"
+              }
+            },
+            "difference": "0",
+            "left_index": 4,
+            "matches": true,
+            "observed": "-86400",
+            "phi1_block_constant": "50/3",
+            "predicted": "-86400",
+            "quotient": 4,
+            "residue_class": 0,
+            "right_index": 1
+          }
+        ],
+        "cyclotomic_degree": 1,
+        "cyclotomic_index": 1,
+        "cyclotomic_polynomial": "p - 1",
+        "failures": [],
+        "identity_check_count": 3,
+        "identity_failure_count": 0,
+        "maximum_local_modulus_degree": 12,
+        "observed_B_equals_twice_C_check_count": 3,
+        "primitive_mu_coefficients_vanish": true,
+        "q_lucas_regression": {
+          "case_count": 15,
+          "matches": true,
+          "maximum_quotient_block": 4,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "quotient_blocks": [
+          2,
+          3,
+          4
+        ],
+        "required_source_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "residue_class_count": 1,
+        "source_base_residue_S_d": "-3",
+        "source_base_residue_nonzero": true,
+        "source_block_multiplier_K": "12",
+        "source_block_multiplier_nonzero": true
+      },
+      {
+        "B_equals_twice_C_on_complete_source_strip": true,
+        "all_block_identities_hold": true,
+        "all_channelwise_block_identities_hold": true,
+        "all_observed_B_equals_twice_C": true,
+        "channel_base_residues_nonzero": true,
+        "channel_block_multipliers": {
+          "B": "-768",
+          "C": "-768"
+        },
+        "channel_block_multipliers_equal_combined_K": true,
+        "checks": [
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-49152",
+                "predicted": "-49152"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-24576",
+                "predicted": "-24576"
+              }
+            },
+            "difference": "0",
+            "left_index": 4,
+            "matches": true,
+            "observed": "-73728",
+            "phi1_block_constant": "1",
+            "predicted": "-73728",
+            "quotient": 2,
+            "residue_class": 0,
+            "right_index": 2
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "393216",
+                "predicted": "393216"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "196608",
+                "predicted": "196608"
+              }
+            },
+            "difference": "0",
+            "left_index": 5,
+            "matches": true,
+            "observed": "589824",
+            "phi1_block_constant": "1",
+            "predicted": "589824",
+            "quotient": 2,
+            "residue_class": 1,
+            "right_index": 3
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "103809024",
+                "predicted": "103809024"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "51904512",
+                "predicted": "51904512"
+              }
+            },
+            "difference": "0",
+            "left_index": 6,
+            "matches": true,
+            "observed": "155713536",
+            "phi1_block_constant": "11/4",
+            "predicted": "155713536",
+            "quotient": 3,
+            "residue_class": 0,
+            "right_index": 2
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-830472192",
+                "predicted": "-830472192"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-415236096",
+                "predicted": "-415236096"
+              }
+            },
+            "difference": "0",
+            "left_index": 7,
+            "matches": true,
+            "observed": "-1245708288",
+            "phi1_block_constant": "11/4",
+            "predicted": "-1245708288",
+            "quotient": 3,
+            "residue_class": 1,
+            "right_index": 3
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-483183820800",
+                "predicted": "-483183820800"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-241591910400",
+                "predicted": "-241591910400"
+              }
+            },
+            "difference": "0",
+            "left_index": 8,
+            "matches": true,
+            "observed": "-724775731200",
+            "phi1_block_constant": "50/3",
+            "predicted": "-724775731200",
+            "quotient": 4,
+            "residue_class": 0,
+            "right_index": 2
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "3865470566400",
+                "predicted": "3865470566400"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "1932735283200",
+                "predicted": "1932735283200"
+              }
+            },
+            "difference": "0",
+            "left_index": 9,
+            "matches": true,
+            "observed": "5798205849600",
+            "phi1_block_constant": "50/3",
+            "predicted": "5798205849600",
+            "quotient": 4,
+            "residue_class": 1,
+            "right_index": 3
+          }
+        ],
+        "cyclotomic_degree": 1,
+        "cyclotomic_index": 2,
+        "cyclotomic_polynomial": "p + 1",
+        "failures": [],
+        "identity_check_count": 6,
+        "identity_failure_count": 0,
+        "maximum_local_modulus_degree": 12,
+        "observed_B_equals_twice_C_check_count": 6,
+        "primitive_mu_coefficients_vanish": true,
+        "q_lucas_regression": {
+          "case_count": 55,
+          "matches": true,
+          "maximum_quotient_block": 4,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "quotient_blocks": [
+          2,
+          3,
+          4
+        ],
+        "required_source_indices": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "residue_class_count": 2,
+        "source_base_residue_S_d": "96",
+        "source_base_residue_nonzero": true,
+        "source_block_multiplier_K": "-768",
+        "source_block_multiplier_nonzero": true
+      },
+      {
+        "B_equals_twice_C_on_complete_source_strip": true,
+        "all_block_identities_hold": true,
+        "all_channelwise_block_identities_hold": true,
+        "all_observed_B_equals_twice_C": true,
+        "channel_base_residues_nonzero": true,
+        "channel_block_multipliers": {
+          "B": "972*(2*p + 1)",
+          "C": "972*(2*p + 1)"
+        },
+        "channel_block_multipliers_equal_combined_K": true,
+        "checks": [
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-157464*(p - 1)",
+                "predicted": "-157464*(p - 1)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-78732*(p - 1)",
+                "predicted": "-78732*(p - 1)"
+              }
+            },
+            "difference": "0",
+            "left_index": 6,
+            "matches": true,
+            "observed": "-236196*(p - 1)",
+            "phi1_block_constant": "1",
+            "predicted": "-236196*(p - 1)",
+            "quotient": 2,
+            "residue_class": 0,
+            "right_index": 3
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "2834352",
+                "predicted": "2834352"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "1417176",
+                "predicted": "1417176"
+              }
+            },
+            "difference": "0",
+            "left_index": 7,
+            "matches": true,
+            "observed": "4251528",
+            "phi1_block_constant": "1",
+            "predicted": "4251528",
+            "quotient": 2,
+            "residue_class": 1,
+            "right_index": 4
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-4251528*(p + 2)",
+                "predicted": "-4251528*(p + 2)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-2125764*(p + 2)",
+                "predicted": "-2125764*(p + 2)"
+              }
+            },
+            "difference": "0",
+            "left_index": 8,
+            "matches": true,
+            "observed": "-6377292*(p + 2)",
+            "phi1_block_constant": "1",
+            "predicted": "-6377292*(p + 2)",
+            "quotient": 2,
+            "residue_class": 2,
+            "right_index": 5
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "1262703816*(p + 1)",
+                "predicted": "1262703816*(p + 1)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "631351908*(p + 1)",
+                "predicted": "631351908*(p + 1)"
+              }
+            },
+            "difference": "0",
+            "left_index": 9,
+            "matches": true,
+            "observed": "1894055724*(p + 1)",
+            "phi1_block_constant": "11/4",
+            "predicted": "1894055724*(p + 1)",
+            "quotient": 3,
+            "residue_class": 0,
+            "right_index": 3
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "7576222896*(2*p + 1)",
+                "predicted": "7576222896*(2*p + 1)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "3788111448*(2*p + 1)",
+                "predicted": "3788111448*(2*p + 1)"
+              }
+            },
+            "difference": "0",
+            "left_index": 10,
+            "matches": true,
+            "observed": "11364334344*(2*p + 1)",
+            "phi1_block_constant": "11/4",
+            "predicted": "11364334344*(2*p + 1)",
+            "quotient": 3,
+            "residue_class": 1,
+            "right_index": 4
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-34093003032*p",
+                "predicted": "-34093003032*p"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-17046501516*p",
+                "predicted": "-17046501516*p"
+              }
+            },
+            "difference": "0",
+            "left_index": 11,
+            "matches": true,
+            "observed": "-51139504548*p",
+            "phi1_block_constant": "11/4",
+            "predicted": "-51139504548*p",
+            "quotient": 3,
+            "residue_class": 2,
+            "right_index": 5
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "7438473388800*(p - 1)",
+                "predicted": "7438473388800*(p - 1)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "3719236694400*(p - 1)",
+                "predicted": "3719236694400*(p - 1)"
+              }
+            },
+            "difference": "0",
+            "left_index": 12,
+            "matches": true,
+            "observed": "11157710083200*(p - 1)",
+            "phi1_block_constant": "50/3",
+            "predicted": "11157710083200*(p - 1)",
+            "quotient": 4,
+            "residue_class": 0,
+            "right_index": 3
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-133892520998400",
+                "predicted": "-133892520998400"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-66946260499200",
+                "predicted": "-66946260499200"
+              }
+            },
+            "difference": "0",
+            "left_index": 13,
+            "matches": true,
+            "observed": "-200838781497600",
+            "phi1_block_constant": "50/3",
+            "predicted": "-200838781497600",
+            "quotient": 4,
+            "residue_class": 1,
+            "right_index": 4
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "200838781497600*(p + 2)",
+                "predicted": "200838781497600*(p + 2)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "100419390748800*(p + 2)",
+                "predicted": "100419390748800*(p + 2)"
+              }
+            },
+            "difference": "0",
+            "left_index": 14,
+            "matches": true,
+            "observed": "301258172246400*(p + 2)",
+            "phi1_block_constant": "50/3",
+            "predicted": "301258172246400*(p + 2)",
+            "quotient": 4,
+            "residue_class": 2,
+            "right_index": 5
+          }
+        ],
+        "cyclotomic_degree": 2,
+        "cyclotomic_index": 3,
+        "cyclotomic_polynomial": "p**2 + p + 1",
+        "failures": [],
+        "identity_check_count": 9,
+        "identity_failure_count": 0,
+        "maximum_local_modulus_degree": 24,
+        "observed_B_equals_twice_C_check_count": 9,
+        "primitive_mu_coefficients_vanish": true,
+        "q_lucas_regression": {
+          "case_count": 120,
+          "matches": true,
+          "maximum_quotient_block": 4,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "quotient_blocks": [
+          2,
+          3,
+          4
+        ],
+        "required_source_indices": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "residue_class_count": 3,
+        "source_base_residue_S_d": "-243*(p + 1)",
+        "source_base_residue_nonzero": true,
+        "source_block_multiplier_K": "972*(2*p + 1)",
+        "source_block_multiplier_nonzero": true
+      },
+      {
+        "B_equals_twice_C_on_complete_source_strip": true,
+        "all_block_identities_hold": true,
+        "all_channelwise_block_identities_hold": true,
+        "all_observed_B_equals_twice_C": true,
+        "channel_base_residues_nonzero": true,
+        "channel_block_multipliers": {
+          "B": "-6144",
+          "C": "-6144"
+        },
+        "channel_block_multipliers_equal_combined_K": true,
+        "checks": [
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "3145728*p",
+                "predicted": "3145728*p"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "1572864*p",
+                "predicted": "1572864*p"
+              }
+            },
+            "difference": "0",
+            "left_index": 8,
+            "matches": true,
+            "observed": "4718592*p",
+            "phi1_block_constant": "1",
+            "predicted": "4718592*p",
+            "quotient": 2,
+            "residue_class": 0,
+            "right_index": 4
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "6291456*(p + 3)",
+                "predicted": "6291456*(p + 3)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "3145728*(p + 3)",
+                "predicted": "3145728*(p + 3)"
+              }
+            },
+            "difference": "0",
+            "left_index": 9,
+            "matches": true,
+            "observed": "9437184*(p + 3)",
+            "phi1_block_constant": "1",
+            "predicted": "9437184*(p + 3)",
+            "quotient": 2,
+            "residue_class": 1,
+            "right_index": 5
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "50331648*(p - 3)",
+                "predicted": "50331648*(p - 3)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "25165824*(p - 3)",
+                "predicted": "25165824*(p - 3)"
+              }
+            },
+            "difference": "0",
+            "left_index": 10,
+            "matches": true,
+            "observed": "75497472*(p - 3)",
+            "phi1_block_constant": "1",
+            "predicted": "75497472*(p - 3)",
+            "quotient": 2,
+            "residue_class": 2,
+            "right_index": 6
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "201326592",
+                "predicted": "201326592"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "100663296",
+                "predicted": "100663296"
+              }
+            },
+            "difference": "0",
+            "left_index": 11,
+            "matches": true,
+            "observed": "301989888",
+            "phi1_block_constant": "1",
+            "predicted": "301989888",
+            "quotient": 2,
+            "residue_class": 3,
+            "right_index": 7
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-53150220288*p",
+                "predicted": "-53150220288*p"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-26575110144*p",
+                "predicted": "-26575110144*p"
+              }
+            },
+            "difference": "0",
+            "left_index": 12,
+            "matches": true,
+            "observed": "-79725330432*p",
+            "phi1_block_constant": "11/4",
+            "predicted": "-79725330432*p",
+            "quotient": 3,
+            "residue_class": 0,
+            "right_index": 4
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-106300440576*(p + 3)",
+                "predicted": "-106300440576*(p + 3)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-53150220288*(p + 3)",
+                "predicted": "-53150220288*(p + 3)"
+              }
+            },
+            "difference": "0",
+            "left_index": 13,
+            "matches": true,
+            "observed": "-159450660864*(p + 3)",
+            "phi1_block_constant": "11/4",
+            "predicted": "-159450660864*(p + 3)",
+            "quotient": 3,
+            "residue_class": 1,
+            "right_index": 5
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-850403524608*(p - 3)",
+                "predicted": "-850403524608*(p - 3)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-425201762304*(p - 3)",
+                "predicted": "-425201762304*(p - 3)"
+              }
+            },
+            "difference": "0",
+            "left_index": 14,
+            "matches": true,
+            "observed": "-1275605286912*(p - 3)",
+            "phi1_block_constant": "11/4",
+            "predicted": "-1275605286912*(p - 3)",
+            "quotient": 3,
+            "residue_class": 2,
+            "right_index": 6
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-3401614098432",
+                "predicted": "-3401614098432"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-1700807049216",
+                "predicted": "-1700807049216"
+              }
+            },
+            "difference": "0",
+            "left_index": 15,
+            "matches": true,
+            "observed": "-5102421147648",
+            "phi1_block_constant": "11/4",
+            "predicted": "-5102421147648",
+            "quotient": 3,
+            "residue_class": 3,
+            "right_index": 7
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "1979120929996800*p",
+                "predicted": "1979120929996800*p"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "989560464998400*p",
+                "predicted": "989560464998400*p"
+              }
+            },
+            "difference": "0",
+            "left_index": 16,
+            "matches": true,
+            "observed": "2968681394995200*p",
+            "phi1_block_constant": "50/3",
+            "predicted": "2968681394995200*p",
+            "quotient": 4,
+            "residue_class": 0,
+            "right_index": 4
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "3958241859993600*(p + 3)",
+                "predicted": "3958241859993600*(p + 3)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "1979120929996800*(p + 3)",
+                "predicted": "1979120929996800*(p + 3)"
+              }
+            },
+            "difference": "0",
+            "left_index": 17,
+            "matches": true,
+            "observed": "5937362789990400*(p + 3)",
+            "phi1_block_constant": "50/3",
+            "predicted": "5937362789990400*(p + 3)",
+            "quotient": 4,
+            "residue_class": 1,
+            "right_index": 5
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "31665934879948800*(p - 3)",
+                "predicted": "31665934879948800*(p - 3)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "15832967439974400*(p - 3)",
+                "predicted": "15832967439974400*(p - 3)"
+              }
+            },
+            "difference": "0",
+            "left_index": 18,
+            "matches": true,
+            "observed": "47498902319923200*(p - 3)",
+            "phi1_block_constant": "50/3",
+            "predicted": "47498902319923200*(p - 3)",
+            "quotient": 4,
+            "residue_class": 2,
+            "right_index": 6
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "126663739519795200",
+                "predicted": "126663739519795200"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "63331869759897600",
+                "predicted": "63331869759897600"
+              }
+            },
+            "difference": "0",
+            "left_index": 19,
+            "matches": true,
+            "observed": "189995609279692800",
+            "phi1_block_constant": "50/3",
+            "predicted": "189995609279692800",
+            "quotient": 4,
+            "residue_class": 3,
+            "right_index": 7
+          }
+        ],
+        "cyclotomic_degree": 2,
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "failures": [],
+        "identity_check_count": 12,
+        "identity_failure_count": 0,
+        "maximum_local_modulus_degree": 24,
+        "observed_B_equals_twice_C_check_count": 12,
+        "primitive_mu_coefficients_vanish": true,
+        "q_lucas_regression": {
+          "case_count": 210,
+          "matches": true,
+          "maximum_quotient_block": 4,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "quotient_blocks": [
+          2,
+          3,
+          4
+        ],
+        "required_source_indices": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "residue_class_count": 4,
+        "source_base_residue_S_d": "-768*p",
+        "source_base_residue_nonzero": true,
+        "source_block_multiplier_K": "-6144",
+        "source_block_multiplier_nonzero": true
+      },
+      {
+        "B_equals_twice_C_on_complete_source_strip": true,
+        "all_block_identities_hold": true,
+        "all_channelwise_block_identities_hold": true,
+        "all_observed_B_equals_twice_C": true,
+        "channel_base_residues_nonzero": true,
+        "channel_block_multipliers": {
+          "B": "1500*(p - 1)**3",
+          "C": "1500*(p - 1)**3"
+        },
+        "channel_block_multipliers_equal_combined_K": true,
+        "checks": [
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "1875000*(4*p**3 + p**2 + 2*p + 3)",
+                "predicted": "1875000*(4*p**3 + p**2 + 2*p + 3)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "937500*(4*p**3 + p**2 + 2*p + 3)",
+                "predicted": "937500*(4*p**3 + p**2 + 2*p + 3)"
+              }
+            },
+            "difference": "0",
+            "left_index": 10,
+            "matches": true,
+            "observed": "2812500*(4*p**3 + p**2 + 2*p + 3)",
+            "phi1_block_constant": "1",
+            "predicted": "2812500*(4*p**3 + p**2 + 2*p + 3)",
+            "quotient": 2,
+            "residue_class": 0,
+            "right_index": 5
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-9375000*(2*p**3 + 5*p**2 - 2*p + 6)",
+                "predicted": "-9375000*(2*p**3 + 5*p**2 - 2*p + 6)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-4687500*(2*p**3 + 5*p**2 - 2*p + 6)",
+                "predicted": "-4687500*(2*p**3 + 5*p**2 - 2*p + 6)"
+              }
+            },
+            "difference": "0",
+            "left_index": 11,
+            "matches": true,
+            "observed": "-14062500*(2*p**3 + 5*p**2 - 2*p + 6)",
+            "phi1_block_constant": "1",
+            "predicted": "-14062500*(2*p**3 + 5*p**2 - 2*p + 6)",
+            "quotient": 2,
+            "residue_class": 1,
+            "right_index": 6
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "9375000*(17*p**3 - p**2 + 16*p + 8)",
+                "predicted": "9375000*(17*p**3 - p**2 + 16*p + 8)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "4687500*(17*p**3 - p**2 + 16*p + 8)",
+                "predicted": "4687500*(17*p**3 - p**2 + 16*p + 8)"
+              }
+            },
+            "difference": "0",
+            "left_index": 12,
+            "matches": true,
+            "observed": "14062500*(17*p**3 - p**2 + 16*p + 8)",
+            "phi1_block_constant": "1",
+            "predicted": "14062500*(17*p**3 - p**2 + 16*p + 8)",
+            "quotient": 2,
+            "residue_class": 2,
+            "right_index": 7
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "46875000*(4*p**3 - p**2 + 2)",
+                "predicted": "46875000*(4*p**3 - p**2 + 2)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "23437500*(4*p**3 - p**2 + 2)",
+                "predicted": "23437500*(4*p**3 - p**2 + 2)"
+              }
+            },
+            "difference": "0",
+            "left_index": 13,
+            "matches": true,
+            "observed": "70312500*(4*p**3 - p**2 + 2)",
+            "phi1_block_constant": "1",
+            "predicted": "70312500*(4*p**3 - p**2 + 2)",
+            "quotient": 2,
+            "residue_class": 3,
+            "right_index": 8
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-234375000*(3*p**3 - p**2 + 2*p + 1)",
+                "predicted": "-234375000*(3*p**3 - p**2 + 2*p + 1)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-117187500*(3*p**3 - p**2 + 2*p + 1)",
+                "predicted": "-117187500*(3*p**3 - p**2 + 2*p + 1)"
+              }
+            },
+            "difference": "0",
+            "left_index": 14,
+            "matches": true,
+            "observed": "-351562500*(3*p**3 - p**2 + 2*p + 1)",
+            "phi1_block_constant": "1",
+            "predicted": "-351562500*(3*p**3 - p**2 + 2*p + 1)",
+            "quotient": 2,
+            "residue_class": 4,
+            "right_index": 9
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-38671875000*(3*p**3 + 3*p**2 + 5)",
+                "predicted": "-38671875000*(3*p**3 + 3*p**2 + 5)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-19335937500*(3*p**3 + 3*p**2 + 5)",
+                "predicted": "-19335937500*(3*p**3 + 3*p**2 + 5)"
+              }
+            },
+            "difference": "0",
+            "left_index": 15,
+            "matches": true,
+            "observed": "-58007812500*(3*p**3 + 3*p**2 + 5)",
+            "phi1_block_constant": "11/4",
+            "predicted": "-58007812500*(3*p**3 + 3*p**2 + 5)",
+            "quotient": 3,
+            "residue_class": 0,
+            "right_index": 5
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-38671875000*(36*p**3 - 18*p**2 + 33*p + 4)",
+                "predicted": "-38671875000*(36*p**3 - 18*p**2 + 33*p + 4)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-19335937500*(36*p**3 - 18*p**2 + 33*p + 4)",
+                "predicted": "-19335937500*(36*p**3 - 18*p**2 + 33*p + 4)"
+              }
+            },
+            "difference": "0",
+            "left_index": 16,
+            "matches": true,
+            "observed": "-58007812500*(36*p**3 - 18*p**2 + 33*p + 4)",
+            "phi1_block_constant": "11/4",
+            "predicted": "-58007812500*(36*p**3 - 18*p**2 + 33*p + 4)",
+            "quotient": 3,
+            "residue_class": 1,
+            "right_index": 6
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-193359375000*(p + 1)*(26*p**2 - 17*p + 26)",
+                "predicted": "-193359375000*(p + 1)*(26*p**2 - 17*p + 26)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-96679687500*(p + 1)*(26*p**2 - 17*p + 26)",
+                "predicted": "-96679687500*(p + 1)*(26*p**2 - 17*p + 26)"
+              }
+            },
+            "difference": "0",
+            "left_index": 17,
+            "matches": true,
+            "observed": "-290039062500*(p + 1)*(26*p**2 - 17*p + 26)",
+            "phi1_block_constant": "11/4",
+            "predicted": "-290039062500*(p + 1)*(26*p**2 - 17*p + 26)",
+            "quotient": 3,
+            "residue_class": 2,
+            "right_index": 7
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-966796875000*(2*p + 3)*(2*p**2 - p + 2)",
+                "predicted": "-966796875000*(2*p + 3)*(2*p**2 - p + 2)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-483398437500*(2*p + 3)*(2*p**2 - p + 2)",
+                "predicted": "-483398437500*(2*p + 3)*(2*p**2 - p + 2)"
+              }
+            },
+            "difference": "0",
+            "left_index": 18,
+            "matches": true,
+            "observed": "-1450195312500*(2*p + 3)*(2*p**2 - p + 2)",
+            "phi1_block_constant": "11/4",
+            "predicted": "-1450195312500*(2*p + 3)*(2*p**2 - p + 2)",
+            "quotient": 3,
+            "residue_class": 3,
+            "right_index": 8
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "4833984375000*(p + 1)*(5*p**2 - 3*p + 5)",
+                "predicted": "4833984375000*(p + 1)*(5*p**2 - 3*p + 5)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "2416992187500*(p + 1)*(5*p**2 - 3*p + 5)",
+                "predicted": "2416992187500*(p + 1)*(5*p**2 - 3*p + 5)"
+              }
+            },
+            "difference": "0",
+            "left_index": 19,
+            "matches": true,
+            "observed": "7250976562500*(p + 1)*(5*p**2 - 3*p + 5)",
+            "phi1_block_constant": "11/4",
+            "predicted": "7250976562500*(p + 1)*(5*p**2 - 3*p + 5)",
+            "quotient": 3,
+            "residue_class": 4,
+            "right_index": 9
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-351562500000000*(p - 1)*(11*p**2 - 7*p + 11)",
+                "predicted": "-351562500000000*(p - 1)*(11*p**2 - 7*p + 11)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-175781250000000*(p - 1)*(11*p**2 - 7*p + 11)",
+                "predicted": "-175781250000000*(p - 1)*(11*p**2 - 7*p + 11)"
+              }
+            },
+            "difference": "0",
+            "left_index": 20,
+            "matches": true,
+            "observed": "-527343750000000*(p - 1)*(11*p**2 - 7*p + 11)",
+            "phi1_block_constant": "50/3",
+            "predicted": "-527343750000000*(p - 1)*(11*p**2 - 7*p + 11)",
+            "quotient": 4,
+            "residue_class": 0,
+            "right_index": 5
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "1757812500000000*(76*p**3 + 18*p**2 + 36*p + 65)",
+                "predicted": "1757812500000000*(76*p**3 + 18*p**2 + 36*p + 65)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "878906250000000*(76*p**3 + 18*p**2 + 36*p + 65)",
+                "predicted": "878906250000000*(76*p**3 + 18*p**2 + 36*p + 65)"
+              }
+            },
+            "difference": "0",
+            "left_index": 21,
+            "matches": true,
+            "observed": "2636718750000000*(76*p**3 + 18*p**2 + 36*p + 65)",
+            "phi1_block_constant": "50/3",
+            "predicted": "2636718750000000*(76*p**3 + 18*p**2 + 36*p + 65)",
+            "quotient": 4,
+            "residue_class": 1,
+            "right_index": 6
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "8789062500000000*(12*p**3 + 24*p**2 - 7*p + 31)",
+                "predicted": "8789062500000000*(12*p**3 + 24*p**2 - 7*p + 31)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "4394531250000000*(12*p**3 + 24*p**2 - 7*p + 31)",
+                "predicted": "4394531250000000*(12*p**3 + 24*p**2 - 7*p + 31)"
+              }
+            },
+            "difference": "0",
+            "left_index": 22,
+            "matches": true,
+            "observed": "13183593750000000*(12*p**3 + 24*p**2 - 7*p + 31)",
+            "phi1_block_constant": "50/3",
+            "predicted": "13183593750000000*(12*p**3 + 24*p**2 - 7*p + 31)",
+            "quotient": 4,
+            "residue_class": 2,
+            "right_index": 7
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-43945312500000000*(2*p**3 - 4*p**2 + 4*p - 3)",
+                "predicted": "-43945312500000000*(2*p**3 - 4*p**2 + 4*p - 3)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-21972656250000000*(2*p**3 - 4*p**2 + 4*p - 3)",
+                "predicted": "-21972656250000000*(2*p**3 - 4*p**2 + 4*p - 3)"
+              }
+            },
+            "difference": "0",
+            "left_index": 23,
+            "matches": true,
+            "observed": "-65917968750000000*(2*p**3 - 4*p**2 + 4*p - 3)",
+            "phi1_block_constant": "50/3",
+            "predicted": "-65917968750000000*(2*p**3 - 4*p**2 + 4*p - 3)",
+            "quotient": 4,
+            "residue_class": 3,
+            "right_index": 8
+          },
+          {
+            "both_channels_match_separately": true,
+            "channel_checks": {
+              "B": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-43945312500000000*(11*p**3 + 22*p**2 - 7*p + 29)",
+                "predicted": "-43945312500000000*(11*p**3 + 22*p**2 - 7*p + 29)"
+              },
+              "C": {
+                "difference": "0",
+                "matches": true,
+                "observed": "-21972656250000000*(11*p**3 + 22*p**2 - 7*p + 29)",
+                "predicted": "-21972656250000000*(11*p**3 + 22*p**2 - 7*p + 29)"
+              }
+            },
+            "difference": "0",
+            "left_index": 24,
+            "matches": true,
+            "observed": "-65917968750000000*(11*p**3 + 22*p**2 - 7*p + 29)",
+            "phi1_block_constant": "50/3",
+            "predicted": "-65917968750000000*(11*p**3 + 22*p**2 - 7*p + 29)",
+            "quotient": 4,
+            "residue_class": 4,
+            "right_index": 9
+          }
+        ],
+        "cyclotomic_degree": 4,
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "failures": [],
+        "identity_check_count": 15,
+        "identity_failure_count": 0,
+        "maximum_local_modulus_degree": 48,
+        "observed_B_equals_twice_C_check_count": 15,
+        "primitive_mu_coefficients_vanish": true,
+        "q_lucas_regression": {
+          "case_count": 325,
+          "matches": true,
+          "maximum_quotient_block": 4,
+          "mismatch_count": 0,
+          "mismatches": []
+        },
+        "quotient_blocks": [
+          2,
+          3,
+          4
+        ],
+        "required_source_indices": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "residue_class_count": 5,
+        "source_base_residue_S_d": "-375*p*(p - 1)**2",
+        "source_base_residue_nonzero": true,
+        "source_block_multiplier_K": "1500*(p - 1)**3",
+        "source_block_multiplier_nonzero": true
+      }
+    ],
+    "schema": "erdos1049-zudilin-phi1-block-collapse-result/2"
+  },
+  "schema": "erdos1049-zudilin-phi1-block-collapse-receipt/2",
+  "source_records": [
+    {
+      "byte_length": 21112,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi1_block_collapse.py",
+      "sha256": "692a4a53a9a25d8db29a5a4906a949a53e5c0d49ccd60b1efcd7b3e370948c02"
+    },
+    {
+      "byte_length": 12391,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/zudilin_cyclotomic_local.py",
+      "sha256": "3774921041e15f06b6df553155b92fe7d222e691bcd725884fc044c8ee210d01"
+    },
+    {
+      "byte_length": 4675,
+      "path": "system/lib/formal_math_cyclotomic_local.py",
+      "sha256": "6eb3f6778225c4956fcf0a0ff18b21d5f1f7a36fabf883c7fd67605952f27bb3"
+    },
+    {
+      "byte_length": 7073,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi1BlockCollapseLab.md",
+      "sha256": "b98e20ed74d15aeb73c7475259cecb699c0e007b4aaa763f7fef59b6eab62d9c"
+    },
+    {
+      "byte_length": 7257,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinEndpointRecurrenceLab.md",
+      "sha256": "523bf42541cf5ddfaf2dbee3448e1241c17e13471ec7b611059e396f7f7f354d"
+    },
+    {
+      "byte_length": 15852,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "sha256": "4dce15dfc8a96099e1787b3229bccea000c484a8db5625f7dbe88c604c84ac03"
+    }
+  ],
+  "status": "exact_mechanism_opened"
+}

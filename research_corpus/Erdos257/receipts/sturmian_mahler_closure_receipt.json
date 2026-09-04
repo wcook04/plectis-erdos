@@ -1,0 +1,33 @@
+{
+  "claim_ceiling": "Exact finite elimination of the displayed polynomial Mahler box. It does not exclude unbounded-degree, non-polynomial, nonlinear, or genuinely infinite-tower identities and does not prove the Sturmian Lambert value irrational.",
+  "cohorts": [
+    {
+      "column_count": 13325,
+      "full_column_rank": true,
+      "rank": 13325,
+      "rows_used": 13327,
+      "slope": "golden_conjugate"
+    },
+    {
+      "column_count": 13325,
+      "full_column_rank": true,
+      "rank": 13325,
+      "rows_used": 13325,
+      "slope": "sqrt2_minus_1"
+    },
+    {
+      "column_count": 13325,
+      "full_column_rank": true,
+      "rank": 13325,
+      "rows_used": 13325,
+      "slope": "sqrt3_minus_1"
+    }
+  ],
+  "degree": 1024,
+  "field": "F_2 (full rank here implies full rank over Q)",
+  "levels": 13,
+  "maximum_tower_exponent": 4096,
+  "relation_family": "sum_{j=0}^{levels-1} P_j(x) H(x^(2^j)) = Q(x), deg(P_j)<=degree; Q arbitrary of degree<=degree",
+  "schema": "erdos257_sturmian_mahler_closure_probe_v1",
+  "status": "pass"
+}

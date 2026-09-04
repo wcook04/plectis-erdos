@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041LifetimeOrliczBound.Challenge",
+  "solution_module": "ExternalVerification1041LifetimeOrliczBound.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041LifetimeOrliczBound.orlicz_le_of_lifetime_le"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

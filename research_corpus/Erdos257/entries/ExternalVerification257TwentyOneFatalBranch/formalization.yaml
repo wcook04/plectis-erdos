@@ -1,0 +1,150 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #257: exact denominator-21 fatal branch"
+  description: >-
+    Five Lean-checked endpoints isolating the exact denominator-21 quotient-
+    greedy frontier: closed-row canonicalization, closed-state compactness,
+    the exact membership/fatal-branch dichotomy, and the eventual strict and
+    affine normal forms of the only surviving fatal regime. The package does
+    not prove that the fatal branch is impossible and therefore does not
+    settle membership of 1/21 or universal Erdős #257.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "candidate_focused_kernel_and_axiom_audit_passed_pending_public_pin_and_terminal_replay"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification257TwentyOneFatalBranch/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification257TwentyOneFatalBranch/formalization.yaml"
+  repository_scope: "public_pinned_snapshot_not_yet_prepared"
+  challenge_lines: 212
+  challenge_bytes: 7473
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_Lean_and_exact_axiom_audit_passed_terminal_comparator_pending"
+  research_interest_status: "high_value_frontier_self_assessed_not_palomar_reviewed"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not yet present in a public GitHub repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    This is an editorial-readiness record, not a Comparator verdict, Palomar
+    acceptance decision, registry entry, or claim that 1/21 is represented.
+
+classification:
+  arxiv: ["math.NT", "math.DS"]
+  msc2020: ["11J72", "11B37"]
+
+sources:
+  - title: "Erdős Problems #257"
+    authors: ["Thomas Bloom"]
+    id: "https://www.erdosproblems.com/257"
+    type: "website"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors: ["The mathlib contributors"]
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    The selected declaration family preserves the exact closed-state and
+    fatal-aligned predicates. Challenge.lean contains five deliberate trusted
+    theorem bodies; the proof-bearing source and Solution.lean are intended to
+    be sorry-free. The family classifies the remaining denominator-21 branch
+    without contradicting it.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 5
+  sorry_boundary: >-
+    The five placeholders occur only in the trusted Mathlib-only challenge.
+  axioms: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257TwentyOneFatalBranch.twentyOneClosedRow_forces_quotientGreedy"
+      file: "ExternalVerification257TwentyOneFatalBranch/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification257TwentyOneFatalBranch/comparator.json"
+      canonical_claim_status: "checked_exact_closed_row_canonicalization"
+      statement: "Every closed quotient row is the canonical integer-greedy row, including exact saturation."
+      boundary: "This does not supply a closed row or prove membership of 1/21."
+    - declaration: "Erdos249257.ExternalVerification257TwentyOneFatalBranch.one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates"
+      file: "ExternalVerification257TwentyOneFatalBranch/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification257TwentyOneFatalBranch/comparator.json"
+      canonical_claim_status: "checked_closed_state_compactness_endpoint"
+      statement: "Closed lower states at every even depth imply that 1/21 belongs to the Mersenne achievement set."
+      boundary: "The theorem is conditional on the exact closed-state supply predicate."
+    - declaration: "Erdos249257.ExternalVerification257TwentyOneFatalBranch.one_div_twenty_one_mem_iff_not_fatalAlignedBranch"
+      file: "ExternalVerification257TwentyOneFatalBranch/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification257TwentyOneFatalBranch/comparator.json"
+      canonical_claim_status: "checked_exact_membership_dichotomy"
+      statement: "Membership of 1/21 is equivalent to exclusion of the explicit fatal aligned branch."
+      boundary: "The theorem does not prove that the fatal aligned branch is impossible."
+    - declaration: "Erdos249257.ExternalVerification257TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_strict_supercapacity"
+      file: "ExternalVerification257TwentyOneFatalBranch/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification257TwentyOneFatalBranch/comparator.json"
+      canonical_claim_status: "checked_permanent_escape_normal_form"
+      statement: "Inside the fatal aligned branch, the canonical remainder is eventually strictly above closed binary capacity."
+      boundary: "This is a consequence inside the fatal branch, not a refutation of that branch."
+    - declaration: "Erdos249257.ExternalVerification257TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_affine_supercapacity"
+      file: "ExternalVerification257TwentyOneFatalBranch/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Quot.sound", "Classical.choice"]
+      comparator_config: "ExternalVerification257TwentyOneFatalBranch/comparator.json"
+      canonical_claim_status: "checked_affine_fatal_regime"
+      statement: "Inside the fatal aligned branch, support and remainder eventually follow one exact affine recurrence."
+      boundary: "This classifies the surviving regime but does not prove it cannot occur."
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Source and claim-boundary review"
+      tool_setup: "Human-directed review"
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted proof engineering and statement-isolated packaging"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: "Pinned cold replay after public identity exists"
+
+fidelity:
+  divergences: >-
+    The formalization selects a precise denominator-21 dynamical reduction
+    beneath the open universal problem. It does not promote the remaining
+    branch classification into an unconditional membership theorem.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Source types and scope were reviewed locally. The guarded focused build
+    and serialized Lake authority check passed, and all five selected results
+    print exactly propext, Quot.sound, and Classical.choice. No Palomar
+    editorial decision is claimed.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification257TwentyOneFatalBranch"
+  statements:
+    - source: "Exact denominator-21 closed-state and fatal-aligned branch frontier."
+      lean: "Erdos249257.ExternalVerification257TwentyOneFatalBranch.one_div_twenty_one_mem_iff_not_fatalAlignedBranch"
+      module: "ExternalVerification257TwentyOneFatalBranch/Challenge.lean"
+      status: "statement-isolated-focused-Lean-and-axiom-audit-passed"
+      note: "The package retains both directions of the exact equivalence and its literal fatal-branch boundary."
+
+acknowledgements: "Mathlib contributors; the Erdős Problems project for problem context."

@@ -1,0 +1,1113 @@
+{
+  "claim_ceiling": "The identities and long finite divisor runs are exact only for primitive rows 0 through 255 and tail starts 0 through 15. Explicit later loss blocks refute promotion of several fixed primes to infinite-tail divisors. The checker supplies neither a cofinal moving-window law nor asymptotic real-form decay or irrationality at 3/2.",
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/QAperyTailDenominator.lean",
+      "falsification_consequence": "Without persistent odd tail support, this source-specific route does not improve generic determinant nonvanishing.",
+      "survival_consequence": "Long finite-window arithmetic supplies an automatic rational nonvanishing and one-coordinate selector certificate."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "primitive_qapery_tail_denominator_support",
+      "statement": "Primitive q-Ap\u00e9ry moving tails carry odd denominator-coordinate divisors that also account for the extra Pl\u00fccker lattice index."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/QAperyTailDenominatorLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_qapery_tail_denominator.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_qapery_selector_remainder_escape.py"
+      ]
+    },
+    "probe": {
+      "computation": "Generate 256 primitive recurrence rows; for starts 0 through 15 compute exact coordinate gcds, anchor-minor gcds, source moduli, prime factorizations, determinant witnesses, and first-loss blocks.",
+      "falsifier": "A checked start where the source modulus does not divide every anchor minor, the normalized minor gcd differs from the tail-B gcd, or a new factor is absent from 3^s-2^s.",
+      "id": "exact_tail_coordinate_and_anchor_minor_gcd",
+      "question": "Does the primitive moving-tail lattice acquire persistent odd denominator support, and does it equal the Pl\u00fccker index beyond the certified 2-adic/3-adic modulus?",
+      "stop_condition": "Stop finite extension once fixed-prime infinite persistence is falsified and the required replacement is a precise moving-window law."
+    },
+    "problem": {
+      "claim_ceiling": "Exact finite tail-denominator/Plucker identities through row 255 plus explicit fixed-prime loss blocks; no cofinal window or irrationality theorem.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the Lambert value at q=3/2."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "The exact first long-run divisor is 211 from start five, while 5, 7, 13, 19, 23, 29 and 97 have explicit later loss blocks.",
+        "next_analytic_target": "Prove or falsify a cofinal moving-prime law on the exact selector window of width 3s^2+5s+3, analyze the block dynamics modulo each prime, then compare the finite-window gain with source-derived decay for two analytic-aware recombined forms."
+      },
+      "status": "exact_one_way_result",
+      "summary": "All checked primitive tail lattices remain primitive, while from start five the denominator-coordinate tail gcd is nontrivial. At every checked start it equals the anchor Pl\u00fccker gcd divided by the certified moving-tail modulus; each newly appearing factor divides 3^s-2^s."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "finite_conclusions": {
+    "all_tail_lattices_primitive": true,
+    "every_new_denominator_factor_is_source_supported": true,
+    "first_long_run_odd_prime": 211,
+    "first_long_run_odd_prime_start": 5,
+    "fixed_prime_infinite_persistence_falsified_for_displayed_primes": true,
+    "gcd_numerator_coordinates_constant": "6",
+    "normalized_plucker_equals_denominator_gcd_at_every_start": true
+  },
+  "first_nontrivial_tail": {
+    "anchor_plucker_gcd": "380837397805675817009416778022912",
+    "denominator_gcd_factorization": {
+      "211": 1
+    },
+    "finite_tail_end": 255,
+    "gcd_all_coordinates": "1",
+    "gcd_denominator_coordinates": "211",
+    "gcd_numerator_coordinates": "6",
+    "moving_tail_modulus": "1804916577278084440802923118592",
+    "new_denominator_factor": "211",
+    "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+    "new_factor_factorization": {
+      "211": 1
+    },
+    "normalized_plucker_equals_denominator_gcd": true,
+    "normalized_plucker_gcd": "211",
+    "prime_support_consumers": [
+      {
+        "first_numerator_unit_index": 5,
+        "prime": 211,
+        "squarefree_determinant_witness": {
+          "determinant": "-1036206169739631097067137479440447296443278922987635367375868187973628578625780489867281518013972480",
+          "determinant_mod_prime_squared": 43677,
+          "left_index": 5,
+          "right_index": 10
+        },
+        "tail_gcd_exponent": 1
+      }
+    ],
+    "source_difference": "211",
+    "tail_start": 5
+  },
+  "fixed_prime_loss_witnesses": [
+    {
+      "divides_every_denominator_from_order_through": 7,
+      "first_loss_index": 8,
+      "order_of_three_over_two_mod_prime": 2,
+      "prime": 5,
+      "returns_immediately_after_full_loss_block": true,
+      "verified_loss_block_end": 9
+    },
+    {
+      "divides_every_denominator_from_order_through": 53,
+      "first_loss_index": 54,
+      "order_of_three_over_two_mod_prime": 3,
+      "prime": 19,
+      "returns_immediately_after_full_loss_block": true,
+      "verified_loss_block_end": 56
+    },
+    {
+      "divides_every_denominator_from_order_through": 47,
+      "first_loss_index": 48,
+      "order_of_three_over_two_mod_prime": 4,
+      "prime": 13,
+      "returns_immediately_after_full_loss_block": true,
+      "verified_loss_block_end": 51
+    },
+    {
+      "divides_every_denominator_from_order_through": 35,
+      "first_loss_index": 36,
+      "order_of_three_over_two_mod_prime": 6,
+      "prime": 7,
+      "returns_immediately_after_full_loss_block": true,
+      "verified_loss_block_end": 41
+    },
+    {
+      "divides_every_denominator_from_order_through": 90,
+      "first_loss_index": 91,
+      "order_of_three_over_two_mod_prime": 7,
+      "prime": 29,
+      "returns_immediately_after_full_loss_block": true,
+      "verified_loss_block_end": 97
+    },
+    {
+      "divides_every_denominator_from_order_through": 87,
+      "first_loss_index": 88,
+      "order_of_three_over_two_mod_prime": 8,
+      "prime": 97,
+      "returns_immediately_after_full_loss_block": true,
+      "verified_loss_block_end": 95
+    },
+    {
+      "divides_every_denominator_from_order_through": 241,
+      "first_loss_index": 242,
+      "order_of_three_over_two_mod_prime": 11,
+      "prime": 23,
+      "returns_immediately_after_full_loss_block": true,
+      "verified_loss_block_end": 252
+    }
+  ],
+  "last_checked_tail": {
+    "anchor_plucker_gcd": "6230699521867461930683694656368675513207930442564812289215642124832741999786530038318493788963433731017136314815918723191269864515867166542499175750815974880315913703407319607331397723888123690562525253120526012830718045196564857169578600121237504",
+    "denominator_gcd_factorization": {
+      "1009": 1,
+      "211": 1,
+      "29927": 1,
+      "331": 1,
+      "3571": 1,
+      "463": 1,
+      "53": 1,
+      "71": 1
+    },
+    "finite_tail_end": 255,
+    "gcd_all_coordinates": "1",
+    "gcd_denominator_coordinates": "13121088310220174332337",
+    "gcd_numerator_coordinates": "6",
+    "moving_tail_modulus": "474861488205539683587838435660217345869186940686458793417644594721514338374921254105729222415069171915769865373438113982279016655412662168169554074186663598381104629523230301423798644766582747240782609863992560288358666862592",
+    "new_denominator_factor": "3571",
+    "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+    "new_factor_factorization": {
+      "3571": 1
+    },
+    "normalized_plucker_equals_denominator_gcd": true,
+    "normalized_plucker_gcd": "13121088310220174332337",
+    "prime_support_consumers": [
+      {
+        "first_numerator_unit_index": 15,
+        "prime": 53,
+        "squarefree_determinant_witness": {
+          "determinant": "-2526475121344495320947503326120304649060179959259766840475460181056191248547471279398458949065228410829386103274959667531962303225666284492240793829517011655197538627331128660055429449043625492699633513556363576366897628071383061746271989708858828837575770146267467344094273591371836965999471961570306112068279419324219337177405399786708155095633399000053844563833464237440149257822432465218786215989046757163367758611259870030352822578061257499340515863933826841646397836730519997952526422436605297248888820396257973196882114277758753514450108357022886731009469950542257978042681427795090434542612006625359106325968817236246559013034221150222286119269668213279948800",
+          "determinant_mod_prime_squared": 2120,
+          "left_index": 15,
+          "right_index": 26
+        },
+        "tail_gcd_exponent": 1
+      },
+      {
+        "first_numerator_unit_index": 15,
+        "prime": 71,
+        "squarefree_determinant_witness": {
+          "determinant": "-400807438223194793157221440533956522296344225820146142992707366058557339723130427718692608098552558749452804578406972824518021076834328785971227931106158984238729194084866034941708234184451453703492590453109542068954935614286798131397159228199648024545206580300726618630864989000114233349795533870518239299022099261146540311395888817093595168364630132202827118782765685446256748556199793629213067856130193522339998086226950623008446365479906115657862216889139200",
+          "determinant_mod_prime_squared": 1278,
+          "left_index": 15,
+          "right_index": 21
+        },
+        "tail_gcd_exponent": 1
+      },
+      {
+        "first_numerator_unit_index": 15,
+        "prime": 211,
+        "squarefree_determinant_witness": {
+          "determinant": "-43201640368351847582546272699165866110931625501803192619911707305114554021892055567768677543129679625464900737205047105849702762015646653936998278803531021134050418692054435769333951876760110211219733905170614815300670327113182493969230647266145736705038571681701637557430662865691813827836177572334546772944314325419743006244642570743316012106872126149100864464111143661368482944419086293378272358820018050099096675379524403200",
+          "determinant_mod_prime_squared": 11394,
+          "left_index": 15,
+          "right_index": 20
+        },
+        "tail_gcd_exponent": 1
+      },
+      {
+        "first_numerator_unit_index": 15,
+        "prime": 331,
+        "squarefree_determinant_witness": {
+          "determinant": "-1628320876583048146489694407325213331200746345890309751180097085099251346218675308115361634628878815021480001841126971244140147699399625740264739973201412771431664803305895595238421619802660382113663064128777702286617579755346266965229098668316004118787090096367655576976683930878862170674855407434550547838095585521964736043571639592060109886528417693807221037308786769830705520988197779253960723931624744344191654046906897054106143863655682047119172661790948208751460876002619743861958420044185600",
+          "determinant_mod_prime_squared": 91025,
+          "left_index": 15,
+          "right_index": 22
+        },
+        "tail_gcd_exponent": 1
+      },
+      {
+        "first_numerator_unit_index": 15,
+        "prime": 463,
+        "squarefree_determinant_witness": {
+          "determinant": "-218866136743769561813016623607877093504359004011130528704418613329839033471060198930659778982810151053819520068912023463600402687810499129719851936390365541606367310073778994043159292740384977244486326899762279139248005274846416782478587848793616200190820624916173277236965577278933585822520435789318346246483462044893195257485538609639186645500943062059820436350960418865684890298846187750535342218233980472323058507623775475658847930833513741696628666834458865382325476604977038275854794666716674070231943770940863893588493732762742644563952298164340907330219217699695420782397976124950712322992751509499602895194029602363830148634243794676109374706647267753223442813622424840086270390976866624062980024006399214184703140379450530517015832636005590394470400",
+          "determinant_mod_prime_squared": 43522,
+          "left_index": 15,
+          "right_index": 28
+        },
+        "tail_gcd_exponent": 1
+      },
+      {
+        "first_numerator_unit_index": 15,
+        "prime": 1009,
+        "squarefree_determinant_witness": {
+          "determinant": "-1085758697867212242094783121562276857608038082588209679467614964059334155397332708782878223280212080833127493026897645778405522819899456635438561716195306140923831460055959765525588668476510479217677836426239265051425544651942756521108055474544876588164717535890285057455104169851329432714067140649201229147716312377403462397960151890140033585179059619364864000",
+          "determinant_mod_prime_squared": 600355,
+          "left_index": 15,
+          "right_index": 18
+        },
+        "tail_gcd_exponent": 1
+      },
+      {
+        "first_numerator_unit_index": 15,
+        "prime": 3571,
+        "squarefree_determinant_witness": {
+          "determinant": "-3198263010688492382139079138846121766468333052044872081073067839623335242367686527301739394237612246052363111874348581350403174966627338072682103246967103068326226521854243399571461549913661543323671274125417307465809009626111361337890144923000842066989362643933547377652400658674918657199615770756820475598871263110727509432529519290702309719357766102979797533118195100619302396938563535162408723436768347981177291701244195158827980240237952460524675648708570889684658870696529656865898917126207020625004624422150624212336335932359242744790071450585096288345339198724692546244700444226881715286411296799346229251472045934384817139362974706783769122242071536503904158597597847943990288951005662452539908312476564475938434220451918204814388649732576314119500759212927614684680196811907229038262185888778402789416109161699788711050315922032075240736508870656000",
+          "determinant_mod_prime_squared": 6345667,
+          "left_index": 15,
+          "right_index": 30
+        },
+        "tail_gcd_exponent": 1
+      },
+      {
+        "first_numerator_unit_index": 15,
+        "prime": 29927,
+        "squarefree_determinant_witness": {
+          "determinant": "-2526475121344495320947503326120304649060179959259766840475460181056191248547471279398458949065228410829386103274959667531962303225666284492240793829517011655197538627331128660055429449043625492699633513556363576366897628071383061746271989708858828837575770146267467344094273591371836965999471961570306112068279419324219337177405399786708155095633399000053844563833464237440149257822432465218786215989046757163367758611259870030352822578061257499340515863933826841646397836730519997952526422436605297248888820396257973196882114277758753514450108357022886731009469950542257978042681427795090434542612006625359106325968817236246559013034221150222286119269668213279948800",
+          "determinant_mod_prime_squared": 817336297,
+          "left_index": 15,
+          "right_index": 26
+        },
+        "tail_gcd_exponent": 1
+      }
+    ],
+    "source_difference": "14316139",
+    "tail_start": 15
+  },
+  "parameters": {
+    "arithmetic": "exact Python integers generated from the exact Fraction recurrence",
+    "row_count": 256,
+    "tail_starts": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "schema": "erdos1049-qapery-tail-denominator/1",
+  "sources": [
+    {
+      "byte_length": 14499,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_qapery_tail_denominator.py",
+      "sha256": "77857dbe42451ea9b6c6d53d968260bf74621c5a036ce64c3d5ad42a2029f396"
+    },
+    {
+      "byte_length": 12208,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_qapery_selector_remainder_escape.py",
+      "sha256": "d77d95a3b61c8b7f3ed44466f6ecee07860012824399fb1390bad772f0c79e39"
+    },
+    {
+      "byte_length": 7005,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/QAperyTailDenominator.lean",
+      "sha256": "43d0fc98e92785172b12e3fc59b423fdf9c4ff88bb7172e6b00930f7f76d2cc6"
+    },
+    {
+      "byte_length": 6801,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/QAperyTailDenominatorLab.md",
+      "sha256": "5b329c89fb5708fea674f46aa90b7ac56dbef40e902676d2fa921b646be64e41"
+    }
+  ],
+  "tail_records": [
+    {
+      "anchor_plucker_gcd": "6",
+      "denominator_gcd_factorization": {},
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "1",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "6",
+      "new_denominator_factor": "1",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {},
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "1",
+      "prime_support_consumers": [],
+      "source_difference": "0",
+      "tail_start": 0
+    },
+    {
+      "anchor_plucker_gcd": "1152",
+      "denominator_gcd_factorization": {},
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "1",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "1152",
+      "new_denominator_factor": "1",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {},
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "1",
+      "prime_support_consumers": [],
+      "source_difference": "1",
+      "tail_start": 1
+    },
+    {
+      "anchor_plucker_gcd": "14155776",
+      "denominator_gcd_factorization": {},
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "1",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "14155776",
+      "new_denominator_factor": "1",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {},
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "1",
+      "prime_support_consumers": [],
+      "source_difference": "5",
+      "tail_start": 2
+    },
+    {
+      "anchor_plucker_gcd": "11132555231232",
+      "denominator_gcd_factorization": {},
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "1",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "11132555231232",
+      "new_denominator_factor": "1",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {},
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "1",
+      "prime_support_consumers": [],
+      "source_difference": "19",
+      "tail_start": 3
+    },
+    {
+      "anchor_plucker_gcd": "560319851238927630336",
+      "denominator_gcd_factorization": {},
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "1",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "560319851238927630336",
+      "new_denominator_factor": "1",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {},
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "1",
+      "prime_support_consumers": [],
+      "source_difference": "65",
+      "tail_start": 4
+    },
+    {
+      "anchor_plucker_gcd": "380837397805675817009416778022912",
+      "denominator_gcd_factorization": {
+        "211": 1
+      },
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "211",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "1804916577278084440802923118592",
+      "new_denominator_factor": "211",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {
+        "211": 1
+      },
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "211",
+      "prime_support_consumers": [
+        {
+          "first_numerator_unit_index": 5,
+          "prime": 211,
+          "squarefree_determinant_witness": {
+            "determinant": "-1036206169739631097067137479440447296443278922987635367375868187973628578625780489867281518013972480",
+            "determinant_mod_prime_squared": 43677,
+            "left_index": 5,
+            "right_index": 10
+          },
+          "tail_gcd_exponent": 1
+        }
+      ],
+      "source_difference": "211",
+      "tail_start": 5
+    },
+    {
+      "anchor_plucker_gcd": "78512840096117750267209228110820731776925696",
+      "denominator_gcd_factorization": {
+        "211": 1
+      },
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "211",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "372098768228046209797200133226638539227136",
+      "new_denominator_factor": "1",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {},
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "211",
+      "prime_support_consumers": [
+        {
+          "first_numerator_unit_index": 6,
+          "prime": 211,
+          "squarefree_determinant_witness": {
+            "determinant": "-337528380092750906010649418998727267136578723041783978605192948551536914135025686708806305819467448320",
+            "determinant_mod_prime_squared": 1688,
+            "left_index": 6,
+            "right_index": 10
+          },
+          "tail_gcd_exponent": 1
+        }
+      ],
+      "source_difference": "665",
+      "tail_start": 6
+    },
+    {
+      "anchor_plucker_gcd": "73549565084320142166085268308076244098299551908919395745792",
+      "denominator_gcd_factorization": {
+        "211": 1,
+        "71": 1
+      },
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "14981",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "4909523068174363671723200607975184840684837588206354432",
+      "new_denominator_factor": "71",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {
+        "71": 1
+      },
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "14981",
+      "prime_support_consumers": [
+        {
+          "first_numerator_unit_index": 7,
+          "prime": 71,
+          "squarefree_determinant_witness": {
+            "determinant": "-3213674390318421404837996511201975152005345631695374417344854315538683065827933345040402979263387289202619488544434777756063850228025552504273041959886835010786439200183914431691577529162792960",
+            "determinant_mod_prime_squared": 2840,
+            "left_index": 7,
+            "right_index": 14
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 7,
+          "prime": 211,
+          "squarefree_determinant_witness": {
+            "determinant": "-82622046557904238596800702014969645462038165297258043402030390635985803181144600267288328384742321731665920",
+            "determinant_mod_prime_squared": 38402,
+            "left_index": 7,
+            "right_index": 10
+          },
+          "tail_gcd_exponent": 1
+        }
+      ],
+      "source_difference": "2059",
+      "tail_start": 7
+    },
+    {
+      "anchor_plucker_gcd": "62107086357563669151234161586452441545449718020885022394598982212340678656",
+      "denominator_gcd_factorization": {
+        "211": 1,
+        "71": 1
+      },
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "14981",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "4145723673824422211550241077795370238665624325538016313637205941682176",
+      "new_denominator_factor": "1",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {},
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "14981",
+      "prime_support_consumers": [
+        {
+          "first_numerator_unit_index": 8,
+          "prime": 71,
+          "squarefree_determinant_witness": {
+            "determinant": "-18516677996857066732885762862893777379976364205408570736362259103432854380931521381223516266380129147453582537017296644217570590105147468858679466881951520788403968199987435608072113695916390612992",
+            "determinant_mod_prime_squared": 3195,
+            "left_index": 8,
+            "right_index": 14
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 8,
+          "prime": 211,
+          "squarefree_determinant_witness": {
+            "determinant": "-476055021679548391775565096390424515430111730559114112388607640578417259175097820426116335719978057273530384384",
+            "determinant_mod_prime_squared": 42833,
+            "left_index": 8,
+            "right_index": 10
+          },
+          "tail_gcd_exponent": 1
+        }
+      ],
+      "source_difference": "6305",
+      "tail_start": 8
+    },
+    {
+      "anchor_plucker_gcd": "3386673600429406496281799030989763295501805030147395923138580675917461654118211838702264516608",
+      "denominator_gcd_factorization": {
+        "1009": 1,
+        "211": 1,
+        "71": 1
+      },
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "15115829",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "224048155111400538884225207296917906090483362185917551934371623013032342064613977751552",
+      "new_denominator_factor": "1009",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {
+        "1009": 1
+      },
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "15115829",
+      "prime_support_consumers": [
+        {
+          "first_numerator_unit_index": 9,
+          "prime": 71,
+          "squarefree_determinant_witness": {
+            "determinant": "-13638861454498931365848366870801073295669217721830875749964184370315455410267591634232097958308175809072398131081710874394097881726619351671648691074180284232328741952329744052864099510640267134058364928",
+            "determinant_mod_prime_squared": 3550,
+            "left_index": 9,
+            "right_index": 14
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 9,
+          "prime": 211,
+          "squarefree_determinant_witness": {
+            "determinant": "-350648668532678006123921922640565813825128157824503395830735132005957597035654994906510972853204808541020264601747456",
+            "determinant_mod_prime_squared": 33760,
+            "left_index": 9,
+            "right_index": 10
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 9,
+          "prime": 1009,
+          "squarefree_determinant_witness": {
+            "determinant": "-9154196543011005971455156386002544932574735429418027371475062775815325810740469479872920634129440532745121396983201256472281296983675597868661957409071803869792666504003115032945084739033611838880627833263609026727880251031159732802562746321675858771437773906360929151084744065972299424894972196339395949261488128",
+            "determinant_mod_prime_squared": 985793,
+            "left_index": 9,
+            "right_index": 18
+          },
+          "tail_gcd_exponent": 1
+        }
+      ],
+      "source_difference": "19171",
+      "tail_start": 9
+    },
+    {
+      "anchor_plucker_gcd": "11713706469058077049920599341133476479149416898710097503424810650606417746722532651794445046612191974062999732224",
+      "denominator_gcd_factorization": {
+        "1009": 1,
+        "211": 1,
+        "71": 1
+      },
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "15115829",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "774929808286272426733631304054410544016435810348879806951031971227407887898343693342551377540205831520256",
+      "new_denominator_factor": "1",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {},
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "15115829",
+      "prime_support_consumers": [
+        {
+          "first_numerator_unit_index": 10,
+          "prime": 71,
+          "squarefree_determinant_witness": {
+            "determinant": "-6652781815136325039046043684500859907249909589555970767749071695158684813015180293807895106783132775659662044093018353305589095803860862243687326748888823101024331897217696076285412588081121773817480347648000",
+            "determinant_mod_prime_squared": 639,
+            "left_index": 10,
+            "right_index": 14
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 10,
+          "prime": 211,
+          "squarefree_determinant_witness": {
+            "determinant": "-23555381564309605155186280171763673770613865771169265398305223128317520934694891278458264529265573443377804553401086488818795571277585041899437162656441879424379226082751635307358249548448228212156165286285804558412788616545697792000",
+            "determinant_mod_prime_squared": 36925,
+            "left_index": 10,
+            "right_index": 15
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 10,
+          "prime": 1009,
+          "squarefree_determinant_witness": {
+            "determinant": "-4465246054203343824086454559323135168764649457155351065658457689780492889759977491437324736258526377337888308474674101792325238704814142262370632909744292001566802957066401647856033542800538073500334022311740481324485610857372542232285609226169454343207612726449224087988233407510911038996161392063658774215136378880000",
+            "determinant_mod_prime_squared": 772894,
+            "left_index": 10,
+            "right_index": 18
+          },
+          "tail_gcd_exponent": 1
+        }
+      ],
+      "source_difference": "58025",
+      "tail_start": 10
+    },
+    {
+      "anchor_plucker_gcd": "858268748686181711309579455640753355695517753243235346367054971207235173617001822543843321194155586344254257504983098478319970914664448",
+      "denominator_gcd_factorization": {
+        "1009": 1,
+        "211": 1,
+        "331": 1,
+        "71": 1
+      },
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "5003339399",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "171539182182548098474416417586056579188206647030869421610279804887414789111531512664396669524068716159515977202046112578404352",
+      "new_denominator_factor": "331",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {
+        "331": 1
+      },
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "5003339399",
+      "prime_support_consumers": [
+        {
+          "first_numerator_unit_index": 11,
+          "prime": 71,
+          "squarefree_determinant_witness": {
+            "determinant": "-452781190622878394018540314950033605584925037782935728063454764231165824393965123677153126057344571370747457122432922720882337950606687910820759527523841965658410687992522900132482575818810979386897059328125042688000",
+            "determinant_mod_prime_squared": 2059,
+            "left_index": 11,
+            "right_index": 14
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 11,
+          "prime": 211,
+          "squarefree_determinant_witness": {
+            "determinant": "-1603153989808961254745275306542715731894259731907787058003737518108149944749924560821647545301059943164697962467046406784536401200907763112659370517759744260442293534955645369467685047641668467248801098687824754471064387036376138621386752000",
+            "determinant_mod_prime_squared": 19412,
+            "left_index": 11,
+            "right_index": 15
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 11,
+          "prime": 331,
+          "squarefree_determinant_witness": {
+            "determinant": "-455761006797030541848542643124691576447968266086923714769653386829201294681337497387477658768755584707439126082539896803574049540467429437167437743808433572166278077481231450176977226117745565653657339100311569620523853041584650525838941197548252907981688605589357328531794236749730029851138815013208647096248320788371127080977677708427305636387831045039585609680433208632804258490413691295419497715976917473449797593160152626594364004143328337930331631823670476800",
+            "determinant_mod_prime_squared": 26480,
+            "left_index": 11,
+            "right_index": 22
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 11,
+          "prime": 1009,
+          "squarefree_determinant_witness": {
+            "determinant": "-303899854380670178385263417070728037053305938651977525481924687585621560693818832505786038680540716588820418588231759314988035259271877857750707515655266373587038214117450715377518965519972101708374213955116315984275498484059802219803484353785653020339731500783369163154003190337399851709288032049280252540740744674143109120000",
+            "determinant_mod_prime_squared": 17153,
+            "left_index": 11,
+            "right_index": 18
+          },
+          "tail_gcd_exponent": 1
+        }
+      ],
+      "source_difference": "175099",
+      "tail_start": 11
+    },
+    {
+      "anchor_plucker_gcd": "12159178716270286078228654081223417057634393420516177084450048194814961672410225815326328660075407951902591059159850916260606818339019165124139413383281639424",
+      "denominator_gcd_factorization": {
+        "1009": 1,
+        "211": 1,
+        "331": 1,
+        "71": 1
+      },
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "5003339399",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "2430212653313204923004395625095473771523448357718771875073839697920313255249191983772981829665281108366918336087048032829364894008266570749209214976",
+      "new_denominator_factor": "1",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {},
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "5003339399",
+      "prime_support_consumers": [
+        {
+          "first_numerator_unit_index": 12,
+          "prime": 71,
+          "squarefree_determinant_witness": {
+            "determinant": "-3114093553682552256977434634538783890626774304255798524683395542319317630948042485599844211029258147418284370134929589416334581806887773454305205921536412113730260089471479742733107354978192222168620857109187099348697088000",
+            "determinant_mod_prime_squared": 3195,
+            "left_index": 12,
+            "right_index": 14
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 12,
+          "prime": 211,
+          "squarefree_determinant_witness": {
+            "determinant": "-11026013466585669688623456013398087527442008283565178310818048781108763883832473609892011712717468345611337860565462525040826405464787351103552095148315153107133275946416888088034224985903462744795928336292646549235042315216991487512843997151232000",
+            "determinant_mod_prime_squared": 34815,
+            "left_index": 12,
+            "right_index": 15
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 12,
+          "prime": 331,
+          "squarefree_determinant_witness": {
+            "determinant": "-3134587837745723614227789188961576823885490857208566816226059313877515675928776561366577072247790170573527730074740659328784562837720914902605278833628608733614975303385950525404592498198984465661416340222967614009129689898918466079799161354461160694017541202976195341292201530254145284121104181330748955006819712341958283944554245491646161794238775288310765079246879036049264858091060668754375020165615710922428283775447020804080472075517126824727372315161892491781734400",
+            "determinant_mod_prime_squared": 46009,
+            "left_index": 12,
+            "right_index": 22
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 12,
+          "prime": 1009,
+          "squarefree_determinant_witness": {
+            "determinant": "-2090132269386042981578018699370554945556741608571577915304342492954011522186067962270790626660607770070493428452893398230862038976049137833446210681719171384867789435751815437148933869887088151293724193892721283095463604640177415339413085670267670013504039057902162333202475446275670544336657137074248677667392472112259795605520384000",
+            "determinant_mod_prime_squared": 984784,
+            "left_index": 12,
+            "right_index": 18
+          },
+          "tail_gcd_exponent": 1
+        }
+      ],
+      "source_difference": "527345",
+      "tail_start": 12
+    },
+    {
+      "anchor_plucker_gcd": "17486553121293214052599203777212850474994768675042516896249662527773320083521665142089992107289317381900788754720546848375643193866159179143335595992738791791747758281205974615680308215808",
+      "denominator_gcd_factorization": {
+        "1009": 1,
+        "211": 1,
+        "29927": 1,
+        "331": 1,
+        "53": 1,
+        "71": 1
+      },
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "7935951724275269",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "2203460117808381691893241708090195247670900362877685749422621468710878021774000708363467951244660812711065606964418642147999366869727387145137906569841405122460657314168832",
+      "new_denominator_factor": "1586131",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {
+        "29927": 1,
+        "53": 1
+      },
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "7935951724275269",
+      "prime_support_consumers": [
+        {
+          "first_numerator_unit_index": 13,
+          "prime": 53,
+          "squarefree_determinant_witness": {
+            "determinant": "-188855359947634694540783264877824949376214406671772577085287392290460715910075634034744432185250269845013564352812331909160628218312680609940763474351557583103159296084893832346497609066505807009011906505404091500178826386009577532025611025246701548863070101535609175097673191802711276106802971222089747248517279355210165852380390285704211140505655222942339810529719948613425104640006529877721567771307306867862152442556817130389702634309138452687542923081921793049345890533580221736317435770087043798760789810529857191777861779486067081560687479309356300246151779032647852759843701072091929021133702018061518937504407704515676614684248742854603571200",
+            "determinant_mod_prime_squared": 636,
+            "left_index": 13,
+            "right_index": 26
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 13,
+          "prime": 71,
+          "squarefree_determinant_witness": {
+            "determinant": "-120922047280222676251891881479237127644760497898088430930161275176325811964514758491622878392524620007632372790868357015200583375994930616416981913701002362242453268826221258033608254284604656730085329851952876437008294824281899008000",
+            "determinant_mod_prime_squared": 1491,
+            "left_index": 13,
+            "right_index": 14
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 13,
+          "prime": 211,
+          "squarefree_determinant_witness": {
+            "determinant": "-428146456981735404387902989258500186163540330808197541351705233012779800819792128052846521222304931998929158622897194860611044626440867522940402953851240302310529023412596301834666208372810781545395566652838214686242803802286801485578127551156745836429312000",
+            "determinant_mod_prime_squared": 29962,
+            "left_index": 13,
+            "right_index": 15
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 13,
+          "prime": 331,
+          "squarefree_determinant_witness": {
+            "determinant": "-121717852140847729715859335160108874646139395963016913693139614528258631541750604766071316023424091617990051555002080609396257167339599365878274220033923613202183325678820117498510228101739335845821413894281806896691841043926810696806297285585164879556225801944152943916652600222903931470742165606183747963633012276295546329787363890129508422143790950317634520397965653303819394464259570917994923371791561435539482882552931956329933772033347869457397882080623946080488598456919654400",
+            "determinant_mod_prime_squared": 3310,
+            "left_index": 13,
+            "right_index": 22
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 13,
+          "prime": 1009,
+          "squarefree_determinant_witness": {
+            "determinant": "-81161040522285798358843711938186604890276379497185604172426736820399355680038416898876064814738986389069574666900077792781458793358308307506860005580053488856917666460713635209952093777769645445837139102292016098522237658643718592393494057980099030834978965961292208017501541781509499808086958065815918851090757289220641727259860784386146304000",
+            "determinant_mod_prime_squared": 924244,
+            "left_index": 13,
+            "right_index": 18
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 13,
+          "prime": 29927,
+          "squarefree_determinant_witness": {
+            "determinant": "-188855359947634694540783264877824949376214406671772577085287392290460715910075634034744432185250269845013564352812331909160628218312680609940763474351557583103159296084893832346497609066505807009011906505404091500178826386009577532025611025246701548863070101535609175097673191802711276106802971222089747248517279355210165852380390285704211140505655222942339810529719948613425104640006529877721567771307306867862152442556817130389702634309138452687542923081921793049345890533580221736317435770087043798760789810529857191777861779486067081560687479309356300246151779032647852759843701072091929021133702018061518937504407704515676614684248742854603571200",
+            "determinant_mod_prime_squared": 378157572,
+            "left_index": 13,
+            "right_index": 26
+          },
+          "tail_gcd_exponent": 1
+        }
+      ],
+      "source_difference": "1586131",
+      "tail_start": 13
+    },
+    {
+      "anchor_plucker_gcd": "469814150223095608514334261411113351515500451763335906991510680543174523529422856784056925400761988944830819137644039198840588736302213375802614854532540946359077408840299991673874683382978874892516406412617912942592",
+      "denominator_gcd_factorization": {
+        "1009": 1,
+        "211": 1,
+        "29927": 1,
+        "331": 1,
+        "463": 1,
+        "53": 1,
+        "71": 1
+      },
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "3674345648339449547",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "127863351787662969390872729963347949401952579648942211577748612450063544417356955882766402108792011132585076340501398059025766269526322406096081249568733041447867898724395949734567976713372341108736",
+      "new_denominator_factor": "463",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {
+        "463": 1
+      },
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "3674345648339449547",
+      "prime_support_consumers": [
+        {
+          "first_numerator_unit_index": 14,
+          "prime": 53,
+          "squarefree_determinant_witness": {
+            "determinant": "-5100006428486922643882837041877216254406086153231971855754436478224288920486203997024602893317050511434731793157197003177750083760180534145754002466804584876644730441685533697076845775001912858378925498443984076266258607032068640954956996126313431608621235484505359078058087789274666336843464617755764625822234657115864584593304719005063790440762805562904428996667034405881352517387265820390562235118387192671353395626530928603741143845404696897717488750693874187103907481378281575196263148522787074745528280237936498813955556117625589768342392140726065663580760264229507838523585069860845638932014857497499637101724961810769059337622981057983601181930291200",
+            "determinant_mod_prime_squared": 106,
+            "left_index": 14,
+            "right_index": 26
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 14,
+          "prime": 71,
+          "squarefree_determinant_witness": {
+            "determinant": "-809080008053221706060489427501382587403225152885124707400574620125270160624814127411063859227924118882387506561582997223466216406454315669503999186122879538630918351402910543953514117861219778516425170859172757597404015130563053626647948370553958970801830351049197217031893453577109694841902394397385401557797466632223306892491254383526549155361836119064995499648202250425308354900858875621409185955321006678248938320758314049065187205546458020105420800",
+            "determinant_mod_prime_squared": 355,
+            "left_index": 14,
+            "right_index": 21
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 14,
+          "prime": 211,
+          "squarefree_determinant_witness": {
+            "determinant": "-11562021239673571955866197673929391481188069861750445951684819328148027978280729458806755606427389244549559869457068175954777929430211581188244034532687832661881136717837684115322690749195630456698084052093398740361412264480478385413693750258901413141943125278720000",
+            "determinant_mod_prime_squared": 33338,
+            "left_index": 14,
+            "right_index": 15
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 14,
+          "prime": 331,
+          "squarefree_determinant_witness": {
+            "determinant": "-3286969607598467572375528869337207221583795558780393333963303599609657641483937878270310217777061541068413436883964233667125095968562400078125291014806842688144473496594987853464773632671182193572790181214816830654066516804788118642328598446468977117846633030439245304132096528279740176964342305213407765950673014222712908728220186842108646534761428131885317723576694842158585112529768057207206223278077727019273155877912647981206889049768796627091416219233673331905518252410221588014694400",
+            "determinant_mod_prime_squared": 95990,
+            "left_index": 14,
+            "right_index": 22
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 14,
+          "prime": 463,
+          "squarefree_determinant_witness": {
+            "determinant": "-441808706106440064227843110231121094391957760944183670423919442122334847024692493009528464351060787569573699873899369291404307040917164299294555076611919422229489292710273604534536883144064983661686894150745347521184323118562296073683557594279921312237665211785749908043758645509715133377323391279525605174912498195878910486785944650760511644124494798677276899166473668719911841148887646173176952907649370229403282430159340652950057531238653270938901354925151751221258883091868414739487944205085856365351152008633809236853955514440491857443726307189222001159792680006212811995443770357369454127522171448734511567288503293180373011285751082147695787840819082346612341467287986613686977482467269025908515511347887325073119412818161567803398610852249600",
+            "determinant_mod_prime_squared": 50930,
+            "left_index": 14,
+            "right_index": 28
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 14,
+          "prime": 1009,
+          "squarefree_determinant_witness": {
+            "determinant": "-2191739903601975219839563619264962734798579011951068473902062746128089632906168665665133503936625043894882975892704171856456454587081118319226298492976938146339462402313480624482168390072414724467261828744904297604916775949921230994448466657597048174731063109459829678093029843431820525338224985095645930105342989499805141367270527361353786815676416000",
+            "determinant_mod_prime_squared": 667958,
+            "left_index": 14,
+            "right_index": 18
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 14,
+          "prime": 29927,
+          "squarefree_determinant_witness": {
+            "determinant": "-5100006428486922643882837041877216254406086153231971855754436478224288920486203997024602893317050511434731793157197003177750083760180534145754002466804584876644730441685533697076845775001912858378925498443984076266258607032068640954956996126313431608621235484505359078058087789274666336843464617755764625822234657115864584593304719005063790440762805562904428996667034405881352517387265820390562235118387192671353395626530928603741143845404696897717488750693874187103907481378281575196263148522787074745528280237936498813955556117625589768342392140726065663580760264229507838523585069860845638932014857497499637101724961810769059337622981057983601181930291200",
+            "determinant_mod_prime_squared": 569780153,
+            "left_index": 14,
+            "right_index": 26
+          },
+          "tail_gcd_exponent": 1
+        }
+      ],
+      "source_difference": "4766585",
+      "tail_start": 14
+    },
+    {
+      "anchor_plucker_gcd": "6230699521867461930683694656368675513207930442564812289215642124832741999786530038318493788963433731017136314815918723191269864515867166542499175750815974880315913703407319607331397723888123690562525253120526012830718045196564857169578600121237504",
+      "denominator_gcd_factorization": {
+        "1009": 1,
+        "211": 1,
+        "29927": 1,
+        "331": 1,
+        "3571": 1,
+        "463": 1,
+        "53": 1,
+        "71": 1
+      },
+      "finite_tail_end": 255,
+      "gcd_all_coordinates": "1",
+      "gcd_denominator_coordinates": "13121088310220174332337",
+      "gcd_numerator_coordinates": "6",
+      "moving_tail_modulus": "474861488205539683587838435660217345869186940686458793417644594721514338374921254105729222415069171915769865373438113982279016655412662168169554074186663598381104629523230301423798644766582747240782609863992560288358666862592",
+      "new_denominator_factor": "3571",
+      "new_factor_divides_three_pow_start_sub_two_pow_start": true,
+      "new_factor_factorization": {
+        "3571": 1
+      },
+      "normalized_plucker_equals_denominator_gcd": true,
+      "normalized_plucker_gcd": "13121088310220174332337",
+      "prime_support_consumers": [
+        {
+          "first_numerator_unit_index": 15,
+          "prime": 53,
+          "squarefree_determinant_witness": {
+            "determinant": "-2526475121344495320947503326120304649060179959259766840475460181056191248547471279398458949065228410829386103274959667531962303225666284492240793829517011655197538627331128660055429449043625492699633513556363576366897628071383061746271989708858828837575770146267467344094273591371836965999471961570306112068279419324219337177405399786708155095633399000053844563833464237440149257822432465218786215989046757163367758611259870030352822578061257499340515863933826841646397836730519997952526422436605297248888820396257973196882114277758753514450108357022886731009469950542257978042681427795090434542612006625359106325968817236246559013034221150222286119269668213279948800",
+            "determinant_mod_prime_squared": 2120,
+            "left_index": 15,
+            "right_index": 26
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 15,
+          "prime": 71,
+          "squarefree_determinant_witness": {
+            "determinant": "-400807438223194793157221440533956522296344225820146142992707366058557339723130427718692608098552558749452804578406972824518021076834328785971227931106158984238729194084866034941708234184451453703492590453109542068954935614286798131397159228199648024545206580300726618630864989000114233349795533870518239299022099261146540311395888817093595168364630132202827118782765685446256748556199793629213067856130193522339998086226950623008446365479906115657862216889139200",
+            "determinant_mod_prime_squared": 1278,
+            "left_index": 15,
+            "right_index": 21
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 15,
+          "prime": 211,
+          "squarefree_determinant_witness": {
+            "determinant": "-43201640368351847582546272699165866110931625501803192619911707305114554021892055567768677543129679625464900737205047105849702762015646653936998278803531021134050418692054435769333951876760110211219733905170614815300670327113182493969230647266145736705038571681701637557430662865691813827836177572334546772944314325419743006244642570743316012106872126149100864464111143661368482944419086293378272358820018050099096675379524403200",
+            "determinant_mod_prime_squared": 11394,
+            "left_index": 15,
+            "right_index": 20
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 15,
+          "prime": 331,
+          "squarefree_determinant_witness": {
+            "determinant": "-1628320876583048146489694407325213331200746345890309751180097085099251346218675308115361634628878815021480001841126971244140147699399625740264739973201412771431664803305895595238421619802660382113663064128777702286617579755346266965229098668316004118787090096367655576976683930878862170674855407434550547838095585521964736043571639592060109886528417693807221037308786769830705520988197779253960723931624744344191654046906897054106143863655682047119172661790948208751460876002619743861958420044185600",
+            "determinant_mod_prime_squared": 91025,
+            "left_index": 15,
+            "right_index": 22
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 15,
+          "prime": 463,
+          "squarefree_determinant_witness": {
+            "determinant": "-218866136743769561813016623607877093504359004011130528704418613329839033471060198930659778982810151053819520068912023463600402687810499129719851936390365541606367310073778994043159292740384977244486326899762279139248005274846416782478587848793616200190820624916173277236965577278933585822520435789318346246483462044893195257485538609639186645500943062059820436350960418865684890298846187750535342218233980472323058507623775475658847930833513741696628666834458865382325476604977038275854794666716674070231943770940863893588493732762742644563952298164340907330219217699695420782397976124950712322992751509499602895194029602363830148634243794676109374706647267753223442813622424840086270390976866624062980024006399214184703140379450530517015832636005590394470400",
+            "determinant_mod_prime_squared": 43522,
+            "left_index": 15,
+            "right_index": 28
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 15,
+          "prime": 1009,
+          "squarefree_determinant_witness": {
+            "determinant": "-1085758697867212242094783121562276857608038082588209679467614964059334155397332708782878223280212080833127493026897645778405522819899456635438561716195306140923831460055959765525588668476510479217677836426239265051425544651942756521108055474544876588164717535890285057455104169851329432714067140649201229147716312377403462397960151890140033585179059619364864000",
+            "determinant_mod_prime_squared": 600355,
+            "left_index": 15,
+            "right_index": 18
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 15,
+          "prime": 3571,
+          "squarefree_determinant_witness": {
+            "determinant": "-3198263010688492382139079138846121766468333052044872081073067839623335242367686527301739394237612246052363111874348581350403174966627338072682103246967103068326226521854243399571461549913661543323671274125417307465809009626111361337890144923000842066989362643933547377652400658674918657199615770756820475598871263110727509432529519290702309719357766102979797533118195100619302396938563535162408723436768347981177291701244195158827980240237952460524675648708570889684658870696529656865898917126207020625004624422150624212336335932359242744790071450585096288345339198724692546244700444226881715286411296799346229251472045934384817139362974706783769122242071536503904158597597847943990288951005662452539908312476564475938434220451918204814388649732576314119500759212927614684680196811907229038262185888778402789416109161699788711050315922032075240736508870656000",
+            "determinant_mod_prime_squared": 6345667,
+            "left_index": 15,
+            "right_index": 30
+          },
+          "tail_gcd_exponent": 1
+        },
+        {
+          "first_numerator_unit_index": 15,
+          "prime": 29927,
+          "squarefree_determinant_witness": {
+            "determinant": "-2526475121344495320947503326120304649060179959259766840475460181056191248547471279398458949065228410829386103274959667531962303225666284492240793829517011655197538627331128660055429449043625492699633513556363576366897628071383061746271989708858828837575770146267467344094273591371836965999471961570306112068279419324219337177405399786708155095633399000053844563833464237440149257822432465218786215989046757163367758611259870030352822578061257499340515863933826841646397836730519997952526422436605297248888820396257973196882114277758753514450108357022886731009469950542257978042681427795090434542612006625359106325968817236246559013034221150222286119269668213279948800",
+            "determinant_mod_prime_squared": 817336297,
+            "left_index": 15,
+            "right_index": 26
+          },
+          "tail_gcd_exponent": 1
+        }
+      ],
+      "source_difference": "14316139",
+      "tail_start": 15
+    }
+  ]
+}

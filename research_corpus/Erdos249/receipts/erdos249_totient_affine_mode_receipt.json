@@ -1,0 +1,102 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "not_eventuallyAffine_pureDyadicEndpointError"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientAffineModeEscape.lean",
+      "falsification_consequence": "Delete every eventually affine fixed-quotient boundary mode; only genuinely non-affine linear-scale traps can survive.",
+      "survival_consequence": "A zero determinant would retain affine linear-scale shadowing."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "eventually_affine_fixed_quotient_boundary_mode",
+      "statement": "A surviving endpoint trap may eventually have error A*H+B."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientAffineModeComputationalLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_totient_affine_mode.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientAffineModeEscape.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Symbolically evaluate the affine determinant of the exact totient values phi(p), phi(q), phi(2p) for primes 2<p<q.",
+      "falsifier": "A nonzero symbolic determinant for every 2<p<q.",
+      "id": "prime_prime_double_totient_affine_determinant",
+      "question": "Can the recurrence-forced affine totient word interpolate its values at arbitrarily late p, q, and 2p?",
+      "stop_condition": "Once the determinant factors as a manifestly nonzero product, formalize the cofinal contradiction and stop affine-mode scans."
+    },
+    "problem": {
+      "claim_ceiling": "Eventually affine fixed-quotient endpoint errors are excluded; general non-affine linear-scale traps and Erd\u0151s #249 remain open.",
+      "id": "erdos_249",
+      "target_statement": "Prove irrationality of sum_{n>=1} phi(n)/2^n by forcing cofinal escape of the exact endpoint cocycle."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The symbolic determinant is -p(q-p), and the Lean theorem constructs arbitrarily late prime pairs and consumes the exact endpoint recurrence.",
+        "next_analytic_target": "Attack non-affine full-linear-envelope traps by propagating the cofinal pre-prime bottom locks through composite totient blocks."
+      },
+      "status": "exact_one_way_result",
+      "summary": "For symbolic primes p<q, the totient points at p, q, and 2p have oriented affine determinant -p(q-p), hence are non-collinear. Lean uses arbitrarily late such triples to exclude every eventually affine fixed-quotient endpoint-error tail."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "lean_theorem": "ErdosProblems.Erdos249.PeriodMultipleEscape.not_eventuallyAffine_pureDyadicEndpointError",
+  "numeric_regressions": [
+    {
+      "determinant": -6,
+      "p": 3,
+      "q": 5
+    },
+    {
+      "determinant": -30,
+      "p": 5,
+      "q": 11
+    },
+    {
+      "determinant": -11110,
+      "p": 101,
+      "q": 211
+    },
+    {
+      "determinant": -1027162,
+      "p": 1009,
+      "q": 2027
+    }
+  ],
+  "problem_id": "erdos_249",
+  "result_summary": "For symbolic primes p<q, the totient points at p, q, and 2p have oriented affine determinant -p(q-p), hence are non-collinear. Lean uses arbitrarily late such triples to exclude every eventually affine fixed-quotient endpoint-error tail.",
+  "schema": "erdos249-totient-affine-mode/1",
+  "sources": [
+    {
+      "byte_length": 6207,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_totient_affine_mode.py",
+      "sha256": "952c9d8f153703e2c7611918f4a408ec2028880ea74db2dcbb600de04bad2dc1"
+    },
+    {
+      "byte_length": 3011,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientAffineModeEscape.lean",
+      "sha256": "9483a646e6bcb4a505149b00fc41b20b49f820ad5bada081184427132727f017"
+    }
+  ],
+  "symbolic_certificate": {
+    "determinant": "-p*(q-p)",
+    "nonzero_when": "2 < p < q are prime",
+    "points": [
+      "(p,p-1)",
+      "(q,q-1)",
+      "(2p,p-1)"
+    ],
+    "totient_inputs": [
+      "phi(p)=p-1",
+      "phi(q)=q-1",
+      "phi(2p)=p-1"
+    ]
+  }
+}

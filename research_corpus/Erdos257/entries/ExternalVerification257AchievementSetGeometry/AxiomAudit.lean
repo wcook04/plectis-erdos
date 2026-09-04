@@ -1,0 +1,3 @@
+import ExternalVerification257AchievementSetGeometry.Solution
+
+#print axioms Erdos249257.ExternalVerification257AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume

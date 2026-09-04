@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification68StrictSuccessorCarry.Challenge",
+  "solution_module": "ExternalVerification68StrictSuccessorCarry.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68StrictSuccessorCarry.companionOrbit_completeCharacterization",
+    "Erdos249257.ExternalVerification68StrictSuccessorCarry.strictSuccessorCarry_completeCharacterization"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,3126 @@
+{
+ "probe_id": "erdos269_denominator_exclusion",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_269",
+   "target_statement": "Prove irrationality in the first unresolved support case with three distinct prime generators.",
+   "claim_ceiling": "No three-prime irrationality or transcendence theorem has been proved. Lean identifies the actual compressed dyadic radix with the successive threePrimeHeight and literal smoothPrefixLcm ratio and proves that it lies in {2,6,10,30}. It proves an all-scale quadratic bound for the literal ordered digit, a polynomial-geometric majorant and summability for the actual real shell masses, constructs the genuine infinite dyadic-shell tsum tail, and proves its exact recurrence X_(a+1)=b_a X_a-d_a. The bounded-radix theorem therefore applies directly: the actual normalized infinite tail either reaches an exact integral state or returns cofinally to distance at least 1/31 from every integer. The infinite-tail specialization is closed; excluding the exact-integral-state branch is now the precise unresolved throat. Lean also proves the complete local-window canonical-residue consumer and the two-window projective shadow d_a*H_b=d_b*H_a mod B. Exact B=11 and B=7 witnesses establish strict projective exclusion power while eliminating a uniform small-centered-defect shortcut, but they supply no universal or cofinal quantifiers. Exact affine-cylinder reconstruction at anchor a=100 reaches depth 200 and falsifies every proposed general-denominator post-clear delay cap K<=199. On the special denominator-one branch, the exact source word at a=2295 survives four transitions after first base-clear, separately eliminating a uniform three-transition classification. Exact left-null certificates eliminate every direct radix-phase-conditioned polynomial coboundary of total degree at most two in the source coordinates; higher-degree, nonpolynomial, unbounded-memory, and later-onset carries remain open. Exact Farey-band counting eliminates monotone admissibility propagation from nesting, later first-clear length, or coarse width; residue-one counterexamples rule out fixed windows and denominator-independent residue bounds. Arbitrary-order nonsingular kernel minors eliminate finite-dimensional observers of the full symbolic kernel without excluding a proved collapse of the actual reachable subspace. The remaining producer must exclude exact integral normalized source-tail states, force denominator-adaptive cofinal one-window or projective-pair escape, prove a reachable-subspace collapse, use an infinite-dimensional or nonlinear observer, or construct and analyze admissible rational affine cylinders at arbitrary depth. Exact integral tails remain unexcluded. The dyadic radix word is now identified exactly as the superposition of the Beatty characteristic sequences of log_2 3 and log_2 5, so the source system is a cocycle over a rotation of the 2-torus by (log_3 2, log_5 2); factor complexity is bounded by (n+1)^2 and measured equal to it for n <= 22. Within that new family the Adamczewski-Bugeaud stammering route is retired on measured evidence plus the Dirichlet cap, with the missing effective simultaneous-approximation bound named explicitly. The normalized tail is Diophantine-generic over 2,162 airtight-certified partial quotients, which both explains the failure of every finite-memory functional attempt and proves the value is not rational with denominator below 2^3736. Finally the escape route's own ceiling is measured: the largest excludable denominator at window depth L is Theta(sqrt(B_L)), so deeper finite certificates cannot reach a cofinal quantifier. Exact integral tails remain unexcluded and the target is open."
+  },
+  "hypothesis": {
+   "id": "lattice_first_hit_denominator_exclusion",
+   "statement": "Excluding every denominator below Q at window depth L is a first-hit of a rotation in an interval, so the Stern-Brocot recursion certifies in O(log B) what a per-denominator scan needs O(Q) steps to reach."
+  },
+  "probe": {
+   "id": "erdos269_denominator_exclusion",
+   "question": "How large an exact denominator exclusion does the escape route support, and what is the growth law of the certified bound in the window base?",
+   "computation": "Dyadically staged binary search over Q, each stage one Stern-Brocot first-hit against the exact window base and forcing, cross-checked at ten depths against a direct 200,000-term denominator scan.",
+   "falsifier": "Disagreement with the direct scan at any depth, or a certified bound that fails to grow with depth.",
+   "stop_condition": "One unsound row retires the certificate; a bound not growing with depth retires the unbounded-family reading.",
+   "resource_bounds": {
+    "cross_check_scan_limit": 200000,
+    "max_depth": 420
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "Exact exclusions far beyond scan range become routine, and the measured growth law fixes the ceiling of the whole escape route.",
+   "falsification_consequence": "The lattice reformulation is wrong and exclusions stay scan-bound.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/HalfHeightDenominatorTransport.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos269_engine.py",
+    "formal_math/probes/erdos269_denominator_exclusion.py",
+    "formal_math/probes/lattice_first_hit.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "Sound at all ten cross-checked depths. At depth 420 every odd denominator up to about 10^187 is excluded exactly. The certified bound fits log2 Q = 0.4974 log2 B - 5.29, i.e. Theta(sqrt(B_L)) with the exponent within 0.5% of 1/2 over 420 depths - the exact best-approximation barrier. The route therefore cannot pass sqrt(B_L) and B_L grows only exponentially in depth, so no escape scan can reach a cofinal quantifier.",
+   "progress": {
+    "class": "mechanism_eliminated",
+    "decision_basis": "The certified exclusion saturates the sqrt(B) counting heuristic with no defect over 420 depths, so no residue bias remains to exploit and the route's ceiling is structural.",
+    "next_analytic_target": "A producer that does not route through finite escape certificates at all.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_269",
+  "motivated_by": [
+   "finite_denominator_exclusion",
+   "finite_farey_certificate_235_M200",
+   "unbounded_height_certificate"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "lattice_first_hit_denominator_exclusion"
+  ],
+  "rationale": "Answers how far the finite-Farey family can be pushed and measures the ceiling that stops it short of the unbounded-height producer."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+   "byte_length": 14385,
+   "sha256": "271d03d7211814b204b94f74d9251e1e687d7c591c34605110348903c025572e"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+   "byte_length": 57166,
+   "sha256": "d6fd961aebd3e3ff0faac37ce7bfd4637c6d7b3acf236dc3439201efbff187b0"
+  },
+  {
+   "path": "formal_math/probes/erdos269_engine.py",
+   "byte_length": 5343,
+   "sha256": "a4de6896e1b580af3ed8545c51344ef9912e45530328a6f10b12d55af757a2cd"
+  },
+  {
+   "path": "formal_math/probes/erdos269_denominator_exclusion.py",
+   "byte_length": 7539,
+   "sha256": "7f792e3be8fb3c5a5141f487f39d8185d88184f8c27e1d1aae5af153103d172c"
+  },
+  {
+   "path": "formal_math/probes/lattice_first_hit.py",
+   "byte_length": 2167,
+   "sha256": "6700364a771d64366f5e9709893b9ddb3ea1c2d22d25752785186b612fc799af"
+  }
+ ],
+ "result": {
+  "probe_id": "erdos269_denominator_exclusion",
+  "start": 1,
+  "max_depth": 420,
+  "cross_check": {
+   "depths_checked": 10,
+   "scan_limit": 200000,
+   "unsound_rows": [],
+   "status": "sound",
+   "rows": [
+    {
+     "depth": 1,
+     "lattice_bound": 0,
+     "scan_min_bad_q": 1,
+     "sound": true,
+     "tightness_vs_scan": null
+    },
+    {
+     "depth": 2,
+     "lattice_bound": 1,
+     "scan_min_bad_q": 5,
+     "sound": true,
+     "tightness_vs_scan": 0.25
+    },
+    {
+     "depth": 3,
+     "lattice_bound": 4,
+     "scan_min_bad_q": 6,
+     "sound": true,
+     "tightness_vs_scan": 0.8
+    },
+    {
+     "depth": 4,
+     "lattice_bound": 16,
+     "scan_min_bad_q": 21,
+     "sound": true,
+     "tightness_vs_scan": 0.8
+    },
+    {
+     "depth": 5,
+     "lattice_bound": 20,
+     "scan_min_bad_q": 21,
+     "sound": true,
+     "tightness_vs_scan": 1.0
+    },
+    {
+     "depth": 6,
+     "lattice_bound": 64,
+     "scan_min_bad_q": 236,
+     "sound": true,
+     "tightness_vs_scan": 0.2723
+    },
+    {
+     "depth": 7,
+     "lattice_bound": 235,
+     "scan_min_bad_q": 236,
+     "sound": true,
+     "tightness_vs_scan": 1.0
+    },
+    {
+     "depth": 8,
+     "lattice_bound": 235,
+     "scan_min_bad_q": 236,
+     "sound": true,
+     "tightness_vs_scan": 1.0
+    },
+    {
+     "depth": 9,
+     "lattice_bound": 1630,
+     "scan_min_bad_q": 1631,
+     "sound": true,
+     "tightness_vs_scan": 1.0
+    },
+    {
+     "depth": 10,
+     "lattice_bound": 1630,
+     "scan_min_bad_q": 1631,
+     "sound": true,
+     "tightness_vs_scan": 1.0
+    }
+   ]
+  },
+  "best_excluded_below_or_equal_digits": 188,
+  "best_excluded_below_or_equal_bits": 624,
+  "best_depth": 420,
+  "monotone_in_depth": true,
+  "depth_rows": [
+   {
+    "depth": 1,
+    "base_bits": 3,
+    "ending_jump_index": 2,
+    "excluded_below_or_equal_bits": 0,
+    "excluded_below_or_equal": "0"
+   },
+   {
+    "depth": 2,
+    "base_bits": 6,
+    "ending_jump_index": 4,
+    "excluded_below_or_equal_bits": 1,
+    "excluded_below_or_equal": "1"
+   },
+   {
+    "depth": 3,
+    "base_bits": 9,
+    "ending_jump_index": 6,
+    "excluded_below_or_equal_bits": 3,
+    "excluded_below_or_equal": "4"
+   },
+   {
+    "depth": 4,
+    "base_bits": 14,
+    "ending_jump_index": 9,
+    "excluded_below_or_equal_bits": 5,
+    "excluded_below_or_equal": "16"
+   },
+   {
+    "depth": 5,
+    "base_bits": 15,
+    "ending_jump_index": 10,
+    "excluded_below_or_equal_bits": 5,
+    "excluded_below_or_equal": "20"
+   },
+   {
+    "depth": 6,
+    "base_bits": 20,
+    "ending_jump_index": 13,
+    "excluded_below_or_equal_bits": 7,
+    "excluded_below_or_equal": "64"
+   },
+   {
+    "depth": 7,
+    "base_bits": 22,
+    "ending_jump_index": 15,
+    "excluded_below_or_equal_bits": 8,
+    "excluded_below_or_equal": "235"
+   },
+   {
+    "depth": 8,
+    "base_bits": 23,
+    "ending_jump_index": 16,
+    "excluded_below_or_equal_bits": 8,
+    "excluded_below_or_equal": "235"
+   },
+   {
+    "depth": 9,
+    "base_bits": 28,
+    "ending_jump_index": 19,
+    "excluded_below_or_equal_bits": 11,
+    "excluded_below_or_equal": "1630"
+   },
+   {
+    "depth": 10,
+    "base_bits": 29,
+    "ending_jump_index": 20,
+    "excluded_below_or_equal_bits": 11,
+    "excluded_below_or_equal": "1630"
+   },
+   {
+    "depth": 11,
+    "base_bits": 34,
+    "ending_jump_index": 23,
+    "excluded_below_or_equal_bits": 14,
+    "excluded_below_or_equal": "8192"
+   },
+   {
+    "depth": 12,
+    "base_bits": 37,
+    "ending_jump_index": 25,
+    "excluded_below_or_equal_bits": 15,
+    "excluded_below_or_equal": "22125"
+   },
+   {
+    "depth": 13,
+    "base_bits": 40,
+    "ending_jump_index": 27,
+    "excluded_below_or_equal_bits": 17,
+    "excluded_below_or_equal": "65536"
+   },
+   {
+    "depth": 14,
+    "base_bits": 43,
+    "ending_jump_index": 29,
+    "excluded_below_or_equal_bits": 18,
+    "excluded_below_or_equal": "131072"
+   },
+   {
+    "depth": 15,
+    "base_bits": 45,
+    "ending_jump_index": 31,
+    "excluded_below_or_equal_bits": 20,
+    "excluded_below_or_equal": "524288"
+   },
+   {
+    "depth": 16,
+    "base_bits": 49,
+    "ending_jump_index": 33,
+    "excluded_below_or_equal_bits": 21,
+    "excluded_below_or_equal": "1048576"
+   },
+   {
+    "depth": 17,
+    "base_bits": 51,
+    "ending_jump_index": 35,
+    "excluded_below_or_equal_bits": 22,
+    "excluded_below_or_equal": "2097152"
+   },
+   {
+    "depth": 18,
+    "base_bits": 55,
+    "ending_jump_index": 37,
+    "excluded_below_or_equal_bits": 24,
+    "excluded_below_or_equal": "8388608"
+   },
+   {
+    "depth": 19,
+    "base_bits": 57,
+    "ending_jump_index": 39,
+    "excluded_below_or_equal_bits": 25,
+    "excluded_below_or_equal": "16777216"
+   },
+   {
+    "depth": 20,
+    "base_bits": 62,
+    "ending_jump_index": 42,
+    "excluded_below_or_equal_bits": 26,
+    "excluded_below_or_equal": "33554432"
+   },
+   {
+    "depth": 21,
+    "base_bits": 63,
+    "ending_jump_index": 43,
+    "excluded_below_or_equal_bits": 27,
+    "excluded_below_or_equal": "67108864"
+   },
+   {
+    "depth": 22,
+    "base_bits": 66,
+    "ending_jump_index": 45,
+    "excluded_below_or_equal_bits": 29,
+    "excluded_below_or_equal": "268435456"
+   },
+   {
+    "depth": 23,
+    "base_bits": 70,
+    "ending_jump_index": 48,
+    "excluded_below_or_equal_bits": 32,
+    "excluded_below_or_equal": "2147483648"
+   },
+   {
+    "depth": 24,
+    "base_bits": 71,
+    "ending_jump_index": 49,
+    "excluded_below_or_equal_bits": 32,
+    "excluded_below_or_equal": "2443329240"
+   },
+   {
+    "depth": 25,
+    "base_bits": 76,
+    "ending_jump_index": 52,
+    "excluded_below_or_equal_bits": 35,
+    "excluded_below_or_equal": "17179869184"
+   },
+   {
+    "depth": 26,
+    "base_bits": 79,
+    "ending_jump_index": 54,
+    "excluded_below_or_equal_bits": 35,
+    "excluded_below_or_equal": "26146047044"
+   },
+   {
+    "depth": 27,
+    "base_bits": 82,
+    "ending_jump_index": 56,
+    "excluded_below_or_equal_bits": 37,
+    "excluded_below_or_equal": "82272661507"
+   },
+   {
+    "depth": 28,
+    "base_bits": 85,
+    "ending_jump_index": 58,
+    "excluded_below_or_equal_bits": 38,
+    "excluded_below_or_equal": "220671937478"
+   },
+   {
+    "depth": 29,
+    "base_bits": 86,
+    "ending_jump_index": 59,
+    "excluded_below_or_equal_bits": 38,
+    "excluded_below_or_equal": "220671937478"
+   },
+   {
+    "depth": 30,
+    "base_bits": 91,
+    "ending_jump_index": 62,
+    "excluded_below_or_equal_bits": 41,
+    "excluded_below_or_equal": "1297885577828"
+   },
+   {
+    "depth": 31,
+    "base_bits": 93,
+    "ending_jump_index": 64,
+    "excluded_below_or_equal_bits": 41,
+    "excluded_below_or_equal": "1297885577828"
+   },
+   {
+    "depth": 32,
+    "base_bits": 97,
+    "ending_jump_index": 66,
+    "excluded_below_or_equal_bits": 44,
+    "excluded_below_or_equal": "8796093022208"
+   },
+   {
+    "depth": 33,
+    "base_bits": 99,
+    "ending_jump_index": 68,
+    "excluded_below_or_equal_bits": 46,
+    "excluded_below_or_equal": "35184372088832"
+   },
+   {
+    "depth": 34,
+    "base_bits": 104,
+    "ending_jump_index": 71,
+    "excluded_below_or_equal_bits": 47,
+    "excluded_below_or_equal": "91487860213421"
+   },
+   {
+    "depth": 35,
+    "base_bits": 105,
+    "ending_jump_index": 72,
+    "excluded_below_or_equal_bits": 48,
+    "excluded_below_or_equal": "140737488355328"
+   },
+   {
+    "depth": 36,
+    "base_bits": 108,
+    "ending_jump_index": 74,
+    "excluded_below_or_equal_bits": 49,
+    "excluded_below_or_equal": "386137866948022"
+   },
+   {
+    "depth": 37,
+    "base_bits": 111,
+    "ending_jump_index": 76,
+    "excluded_below_or_equal_bits": 50,
+    "excluded_below_or_equal": "562949953421312"
+   },
+   {
+    "depth": 38,
+    "base_bits": 114,
+    "ending_jump_index": 78,
+    "excluded_below_or_equal_bits": 53,
+    "excluded_below_or_equal": "4503599627370496"
+   },
+   {
+    "depth": 39,
+    "base_bits": 119,
+    "ending_jump_index": 81,
+    "excluded_below_or_equal_bits": 56,
+    "excluded_below_or_equal": "36028797018963968"
+   },
+   {
+    "depth": 40,
+    "base_bits": 120,
+    "ending_jump_index": 82,
+    "excluded_below_or_equal_bits": 56,
+    "excluded_below_or_equal": "36357518771397166"
+   },
+   {
+    "depth": 41,
+    "base_bits": 125,
+    "ending_jump_index": 85,
+    "excluded_below_or_equal_bits": 56,
+    "excluded_below_or_equal": "45350363997509452"
+   },
+   {
+    "depth": 42,
+    "base_bits": 127,
+    "ending_jump_index": 87,
+    "excluded_below_or_equal_bits": 59,
+    "excluded_below_or_equal": "288230376151711744"
+   },
+   {
+    "depth": 43,
+    "base_bits": 128,
+    "ending_jump_index": 88,
+    "excluded_below_or_equal_bits": 59,
+    "excluded_below_or_equal": "411150891052955838"
+   },
+   {
+    "depth": 44,
+    "base_bits": 133,
+    "ending_jump_index": 91,
+    "excluded_below_or_equal_bits": 62,
+    "excluded_below_or_equal": "2305843009213693952"
+   },
+   {
+    "depth": 45,
+    "base_bits": 136,
+    "ending_jump_index": 93,
+    "excluded_below_or_equal_bits": 64,
+    "excluded_below_or_equal": "9223372036854775808"
+   },
+   {
+    "depth": 46,
+    "base_bits": 139,
+    "ending_jump_index": 95,
+    "excluded_below_or_equal_bits": 65,
+    "excluded_below_or_equal": "26643100035673222914"
+   },
+   {
+    "depth": 47,
+    "base_bits": 141,
+    "ending_jump_index": 97,
+    "excluded_below_or_equal_bits": 65,
+    "excluded_below_or_equal": "32127110326429547942"
+   },
+   {
+    "depth": 48,
+    "base_bits": 145,
+    "ending_jump_index": 99,
+    "excluded_below_or_equal_bits": 67,
+    "excluded_below_or_equal": "73786976294838206464"
+   },
+   {
+    "depth": 49,
+    "base_bits": 147,
+    "ending_jump_index": 101,
+    "excluded_below_or_equal_bits": 68,
+    "excluded_below_or_equal": "227631777430384998114"
+   },
+   {
+    "depth": 50,
+    "base_bits": 150,
+    "ending_jump_index": 103,
+    "excluded_below_or_equal_bits": 70,
+    "excluded_below_or_equal": "590295810358705651712"
+   },
+   {
+    "depth": 51,
+    "base_bits": 153,
+    "ending_jump_index": 105,
+    "excluded_below_or_equal_bits": 72,
+    "excluded_below_or_equal": "2862831775615716331665"
+   },
+   {
+    "depth": 52,
+    "base_bits": 156,
+    "ending_jump_index": 107,
+    "excluded_below_or_equal_bits": 72,
+    "excluded_below_or_equal": "4619631774405937220699"
+   },
+   {
+    "depth": 53,
+    "base_bits": 161,
+    "ending_jump_index": 110,
+    "excluded_below_or_equal_bits": 77,
+    "excluded_below_or_equal": "75557863725914323419136"
+   },
+   {
+    "depth": 54,
+    "base_bits": 162,
+    "ending_jump_index": 111,
+    "excluded_below_or_equal_bits": 77,
+    "excluded_below_or_equal": "100753499037535508410882"
+   },
+   {
+    "depth": 55,
+    "base_bits": 167,
+    "ending_jump_index": 114,
+    "excluded_below_or_equal_bits": 77,
+    "excluded_below_or_equal": "133090921458377068955782"
+   },
+   {
+    "depth": 56,
+    "base_bits": 168,
+    "ending_jump_index": 115,
+    "excluded_below_or_equal_bits": 77,
+    "excluded_below_or_equal": "133090921458377068955782"
+   },
+   {
+    "depth": 57,
+    "base_bits": 170,
+    "ending_jump_index": 117,
+    "excluded_below_or_equal_bits": 83,
+    "excluded_below_or_equal": "4835703278458516698824704"
+   },
+   {
+    "depth": 58,
+    "base_bits": 175,
+    "ending_jump_index": 120,
+    "excluded_below_or_equal_bits": 85,
+    "excluded_below_or_equal": "~10^25"
+   },
+   {
+    "depth": 59,
+    "base_bits": 176,
+    "ending_jump_index": 121,
+    "excluded_below_or_equal_bits": 85,
+    "excluded_below_or_equal": "~10^25"
+   },
+   {
+    "depth": 60,
+    "base_bits": 181,
+    "ending_jump_index": 124,
+    "excluded_below_or_equal_bits": 86,
+    "excluded_below_or_equal": "~10^25"
+   },
+   {
+    "depth": 61,
+    "base_bits": 184,
+    "ending_jump_index": 126,
+    "excluded_below_or_equal_bits": 87,
+    "excluded_below_or_equal": "~10^25"
+   },
+   {
+    "depth": 62,
+    "base_bits": 187,
+    "ending_jump_index": 128,
+    "excluded_below_or_equal_bits": 89,
+    "excluded_below_or_equal": "~10^26"
+   },
+   {
+    "depth": 63,
+    "base_bits": 190,
+    "ending_jump_index": 130,
+    "excluded_below_or_equal_bits": 90,
+    "excluded_below_or_equal": "~10^26"
+   },
+   {
+    "depth": 64,
+    "base_bits": 192,
+    "ending_jump_index": 132,
+    "excluded_below_or_equal_bits": 90,
+    "excluded_below_or_equal": "~10^26"
+   },
+   {
+    "depth": 65,
+    "base_bits": 195,
+    "ending_jump_index": 134,
+    "excluded_below_or_equal_bits": 92,
+    "excluded_below_or_equal": "~10^27"
+   },
+   {
+    "depth": 66,
+    "base_bits": 198,
+    "ending_jump_index": 136,
+    "excluded_below_or_equal_bits": 94,
+    "excluded_below_or_equal": "~10^27"
+   },
+   {
+    "depth": 67,
+    "base_bits": 201,
+    "ending_jump_index": 138,
+    "excluded_below_or_equal_bits": 96,
+    "excluded_below_or_equal": "~10^28"
+   },
+   {
+    "depth": 68,
+    "base_bits": 204,
+    "ending_jump_index": 140,
+    "excluded_below_or_equal_bits": 97,
+    "excluded_below_or_equal": "~10^28"
+   },
+   {
+    "depth": 69,
+    "base_bits": 209,
+    "ending_jump_index": 143,
+    "excluded_below_or_equal_bits": 99,
+    "excluded_below_or_equal": "~10^29"
+   },
+   {
+    "depth": 70,
+    "base_bits": 210,
+    "ending_jump_index": 144,
+    "excluded_below_or_equal_bits": 99,
+    "excluded_below_or_equal": "~10^29"
+   },
+   {
+    "depth": 71,
+    "base_bits": 215,
+    "ending_jump_index": 147,
+    "excluded_below_or_equal_bits": 100,
+    "excluded_below_or_equal": "~10^30"
+   },
+   {
+    "depth": 72,
+    "base_bits": 217,
+    "ending_jump_index": 149,
+    "excluded_below_or_equal_bits": 100,
+    "excluded_below_or_equal": "~10^30"
+   },
+   {
+    "depth": 73,
+    "base_bits": 218,
+    "ending_jump_index": 150,
+    "excluded_below_or_equal_bits": 100,
+    "excluded_below_or_equal": "~10^30"
+   },
+   {
+    "depth": 74,
+    "base_bits": 223,
+    "ending_jump_index": 153,
+    "excluded_below_or_equal_bits": 100,
+    "excluded_below_or_equal": "~10^30"
+   },
+   {
+    "depth": 75,
+    "base_bits": 224,
+    "ending_jump_index": 154,
+    "excluded_below_or_equal_bits": 101,
+    "excluded_below_or_equal": "~10^30"
+   },
+   {
+    "depth": 76,
+    "base_bits": 229,
+    "ending_jump_index": 157,
+    "excluded_below_or_equal_bits": 106,
+    "excluded_below_or_equal": "~10^31"
+   },
+   {
+    "depth": 77,
+    "base_bits": 232,
+    "ending_jump_index": 159,
+    "excluded_below_or_equal_bits": 108,
+    "excluded_below_or_equal": "~10^32"
+   },
+   {
+    "depth": 78,
+    "base_bits": 235,
+    "ending_jump_index": 161,
+    "excluded_below_or_equal_bits": 111,
+    "excluded_below_or_equal": "~10^33"
+   },
+   {
+    "depth": 79,
+    "base_bits": 238,
+    "ending_jump_index": 163,
+    "excluded_below_or_equal_bits": 113,
+    "excluded_below_or_equal": "~10^33"
+   },
+   {
+    "depth": 80,
+    "base_bits": 240,
+    "ending_jump_index": 165,
+    "excluded_below_or_equal_bits": 115,
+    "excluded_below_or_equal": "~10^34"
+   },
+   {
+    "depth": 81,
+    "base_bits": 244,
+    "ending_jump_index": 167,
+    "excluded_below_or_equal_bits": 117,
+    "excluded_below_or_equal": "~10^34"
+   },
+   {
+    "depth": 82,
+    "base_bits": 246,
+    "ending_jump_index": 169,
+    "excluded_below_or_equal_bits": 117,
+    "excluded_below_or_equal": "~10^35"
+   },
+   {
+    "depth": 83,
+    "base_bits": 250,
+    "ending_jump_index": 171,
+    "excluded_below_or_equal_bits": 118,
+    "excluded_below_or_equal": "~10^35"
+   },
+   {
+    "depth": 84,
+    "base_bits": 252,
+    "ending_jump_index": 173,
+    "excluded_below_or_equal_bits": 120,
+    "excluded_below_or_equal": "~10^35"
+   },
+   {
+    "depth": 85,
+    "base_bits": 257,
+    "ending_jump_index": 176,
+    "excluded_below_or_equal_bits": 123,
+    "excluded_below_or_equal": "~10^36"
+   },
+   {
+    "depth": 86,
+    "base_bits": 258,
+    "ending_jump_index": 177,
+    "excluded_below_or_equal_bits": 123,
+    "excluded_below_or_equal": "~10^36"
+   },
+   {
+    "depth": 87,
+    "base_bits": 261,
+    "ending_jump_index": 179,
+    "excluded_below_or_equal_bits": 125,
+    "excluded_below_or_equal": "~10^37"
+   },
+   {
+    "depth": 88,
+    "base_bits": 265,
+    "ending_jump_index": 182,
+    "excluded_below_or_equal_bits": 127,
+    "excluded_below_or_equal": "~10^37"
+   },
+   {
+    "depth": 89,
+    "base_bits": 266,
+    "ending_jump_index": 183,
+    "excluded_below_or_equal_bits": 128,
+    "excluded_below_or_equal": "~10^38"
+   },
+   {
+    "depth": 90,
+    "base_bits": 271,
+    "ending_jump_index": 186,
+    "excluded_below_or_equal_bits": 130,
+    "excluded_below_or_equal": "~10^38"
+   },
+   {
+    "depth": 91,
+    "base_bits": 274,
+    "ending_jump_index": 188,
+    "excluded_below_or_equal_bits": 131,
+    "excluded_below_or_equal": "~10^39"
+   },
+   {
+    "depth": 92,
+    "base_bits": 277,
+    "ending_jump_index": 190,
+    "excluded_below_or_equal_bits": 132,
+    "excluded_below_or_equal": "~10^39"
+   },
+   {
+    "depth": 93,
+    "base_bits": 280,
+    "ending_jump_index": 192,
+    "excluded_below_or_equal_bits": 132,
+    "excluded_below_or_equal": "~10^39"
+   },
+   {
+    "depth": 94,
+    "base_bits": 281,
+    "ending_jump_index": 193,
+    "excluded_below_or_equal_bits": 132,
+    "excluded_below_or_equal": "~10^39"
+   },
+   {
+    "depth": 95,
+    "base_bits": 286,
+    "ending_jump_index": 196,
+    "excluded_below_or_equal_bits": 134,
+    "excluded_below_or_equal": "~10^40"
+   },
+   {
+    "depth": 96,
+    "base_bits": 288,
+    "ending_jump_index": 198,
+    "excluded_below_or_equal_bits": 136,
+    "excluded_below_or_equal": "~10^40"
+   },
+   {
+    "depth": 97,
+    "base_bits": 292,
+    "ending_jump_index": 200,
+    "excluded_below_or_equal_bits": 139,
+    "excluded_below_or_equal": "~10^41"
+   },
+   {
+    "depth": 98,
+    "base_bits": 294,
+    "ending_jump_index": 202,
+    "excluded_below_or_equal_bits": 141,
+    "excluded_below_or_equal": "~10^42"
+   },
+   {
+    "depth": 99,
+    "base_bits": 299,
+    "ending_jump_index": 205,
+    "excluded_below_or_equal_bits": 144,
+    "excluded_below_or_equal": "~10^43"
+   },
+   {
+    "depth": 100,
+    "base_bits": 300,
+    "ending_jump_index": 206,
+    "excluded_below_or_equal_bits": 144,
+    "excluded_below_or_equal": "~10^43"
+   },
+   {
+    "depth": 101,
+    "base_bits": 303,
+    "ending_jump_index": 208,
+    "excluded_below_or_equal_bits": 144,
+    "excluded_below_or_equal": "~10^43"
+   },
+   {
+    "depth": 102,
+    "base_bits": 306,
+    "ending_jump_index": 210,
+    "excluded_below_or_equal_bits": 147,
+    "excluded_below_or_equal": "~10^43"
+   },
+   {
+    "depth": 103,
+    "base_bits": 309,
+    "ending_jump_index": 212,
+    "excluded_below_or_equal_bits": 149,
+    "excluded_below_or_equal": "~10^44"
+   },
+   {
+    "depth": 104,
+    "base_bits": 314,
+    "ending_jump_index": 215,
+    "excluded_below_or_equal_bits": 151,
+    "excluded_below_or_equal": "~10^45"
+   },
+   {
+    "depth": 105,
+    "base_bits": 315,
+    "ending_jump_index": 216,
+    "excluded_below_or_equal_bits": 151,
+    "excluded_below_or_equal": "~10^45"
+   },
+   {
+    "depth": 106,
+    "base_bits": 320,
+    "ending_jump_index": 219,
+    "excluded_below_or_equal_bits": 154,
+    "excluded_below_or_equal": "~10^46"
+   },
+   {
+    "depth": 107,
+    "base_bits": 322,
+    "ending_jump_index": 221,
+    "excluded_below_or_equal_bits": 154,
+    "excluded_below_or_equal": "~10^46"
+   },
+   {
+    "depth": 108,
+    "base_bits": 323,
+    "ending_jump_index": 222,
+    "excluded_below_or_equal_bits": 154,
+    "excluded_below_or_equal": "~10^46"
+   },
+   {
+    "depth": 109,
+    "base_bits": 328,
+    "ending_jump_index": 225,
+    "excluded_below_or_equal_bits": 158,
+    "excluded_below_or_equal": "~10^47"
+   },
+   {
+    "depth": 110,
+    "base_bits": 331,
+    "ending_jump_index": 227,
+    "excluded_below_or_equal_bits": 160,
+    "excluded_below_or_equal": "~10^47"
+   },
+   {
+    "depth": 111,
+    "base_bits": 334,
+    "ending_jump_index": 229,
+    "excluded_below_or_equal_bits": 162,
+    "excluded_below_or_equal": "~10^48"
+   },
+   {
+    "depth": 112,
+    "base_bits": 336,
+    "ending_jump_index": 231,
+    "excluded_below_or_equal_bits": 162,
+    "excluded_below_or_equal": "~10^48"
+   },
+   {
+    "depth": 113,
+    "base_bits": 340,
+    "ending_jump_index": 233,
+    "excluded_below_or_equal_bits": 163,
+    "excluded_below_or_equal": "~10^48"
+   },
+   {
+    "depth": 114,
+    "base_bits": 342,
+    "ending_jump_index": 235,
+    "excluded_below_or_equal_bits": 166,
+    "excluded_below_or_equal": "~10^49"
+   },
+   {
+    "depth": 115,
+    "base_bits": 345,
+    "ending_jump_index": 237,
+    "excluded_below_or_equal_bits": 167,
+    "excluded_below_or_equal": "~10^50"
+   },
+   {
+    "depth": 116,
+    "base_bits": 348,
+    "ending_jump_index": 239,
+    "excluded_below_or_equal_bits": 168,
+    "excluded_below_or_equal": "~10^50"
+   },
+   {
+    "depth": 117,
+    "base_bits": 351,
+    "ending_jump_index": 241,
+    "excluded_below_or_equal_bits": 168,
+    "excluded_below_or_equal": "~10^50"
+   },
+   {
+    "depth": 118,
+    "base_bits": 356,
+    "ending_jump_index": 244,
+    "excluded_below_or_equal_bits": 174,
+    "excluded_below_or_equal": "~10^52"
+   },
+   {
+    "depth": 119,
+    "base_bits": 357,
+    "ending_jump_index": 245,
+    "excluded_below_or_equal_bits": 174,
+    "excluded_below_or_equal": "~10^52"
+   },
+   {
+    "depth": 120,
+    "base_bits": 362,
+    "ending_jump_index": 248,
+    "excluded_below_or_equal_bits": 174,
+    "excluded_below_or_equal": "~10^52"
+   },
+   {
+    "depth": 121,
+    "base_bits": 363,
+    "ending_jump_index": 249,
+    "excluded_below_or_equal_bits": 174,
+    "excluded_below_or_equal": "~10^52"
+   },
+   {
+    "depth": 122,
+    "base_bits": 365,
+    "ending_jump_index": 251,
+    "excluded_below_or_equal_bits": 174,
+    "excluded_below_or_equal": "~10^52"
+   },
+   {
+    "depth": 123,
+    "base_bits": 370,
+    "ending_jump_index": 254,
+    "excluded_below_or_equal_bits": 178,
+    "excluded_below_or_equal": "~10^53"
+   },
+   {
+    "depth": 124,
+    "base_bits": 371,
+    "ending_jump_index": 255,
+    "excluded_below_or_equal_bits": 179,
+    "excluded_below_or_equal": "~10^53"
+   },
+   {
+    "depth": 125,
+    "base_bits": 376,
+    "ending_jump_index": 258,
+    "excluded_below_or_equal_bits": 182,
+    "excluded_below_or_equal": "~10^54"
+   },
+   {
+    "depth": 126,
+    "base_bits": 379,
+    "ending_jump_index": 260,
+    "excluded_below_or_equal_bits": 183,
+    "excluded_below_or_equal": "~10^54"
+   },
+   {
+    "depth": 127,
+    "base_bits": 382,
+    "ending_jump_index": 262,
+    "excluded_below_or_equal_bits": 186,
+    "excluded_below_or_equal": "~10^55"
+   },
+   {
+    "depth": 128,
+    "base_bits": 385,
+    "ending_jump_index": 264,
+    "excluded_below_or_equal_bits": 187,
+    "excluded_below_or_equal": "~10^56"
+   },
+   {
+    "depth": 129,
+    "base_bits": 387,
+    "ending_jump_index": 266,
+    "excluded_below_or_equal_bits": 187,
+    "excluded_below_or_equal": "~10^56"
+   },
+   {
+    "depth": 130,
+    "base_bits": 390,
+    "ending_jump_index": 268,
+    "excluded_below_or_equal_bits": 188,
+    "excluded_below_or_equal": "~10^56"
+   },
+   {
+    "depth": 131,
+    "base_bits": 393,
+    "ending_jump_index": 270,
+    "excluded_below_or_equal_bits": 189,
+    "excluded_below_or_equal": "~10^56"
+   },
+   {
+    "depth": 132,
+    "base_bits": 396,
+    "ending_jump_index": 272,
+    "excluded_below_or_equal_bits": 191,
+    "excluded_below_or_equal": "~10^57"
+   },
+   {
+    "depth": 133,
+    "base_bits": 399,
+    "ending_jump_index": 274,
+    "excluded_below_or_equal_bits": 193,
+    "excluded_below_or_equal": "~10^57"
+   },
+   {
+    "depth": 134,
+    "base_bits": 404,
+    "ending_jump_index": 277,
+    "excluded_below_or_equal_bits": 195,
+    "excluded_below_or_equal": "~10^58"
+   },
+   {
+    "depth": 135,
+    "base_bits": 405,
+    "ending_jump_index": 278,
+    "excluded_below_or_equal_bits": 197,
+    "excluded_below_or_equal": "~10^59"
+   },
+   {
+    "depth": 136,
+    "base_bits": 410,
+    "ending_jump_index": 281,
+    "excluded_below_or_equal_bits": 200,
+    "excluded_below_or_equal": "~10^60"
+   },
+   {
+    "depth": 137,
+    "base_bits": 412,
+    "ending_jump_index": 283,
+    "excluded_below_or_equal_bits": 200,
+    "excluded_below_or_equal": "~10^60"
+   },
+   {
+    "depth": 138,
+    "base_bits": 413,
+    "ending_jump_index": 284,
+    "excluded_below_or_equal_bits": 200,
+    "excluded_below_or_equal": "~10^60"
+   },
+   {
+    "depth": 139,
+    "base_bits": 418,
+    "ending_jump_index": 287,
+    "excluded_below_or_equal_bits": 203,
+    "excluded_below_or_equal": "~10^60"
+   },
+   {
+    "depth": 140,
+    "base_bits": 419,
+    "ending_jump_index": 288,
+    "excluded_below_or_equal_bits": 203,
+    "excluded_below_or_equal": "~10^60"
+   },
+   {
+    "depth": 141,
+    "base_bits": 424,
+    "ending_jump_index": 291,
+    "excluded_below_or_equal_bits": 205,
+    "excluded_below_or_equal": "~10^61"
+   },
+   {
+    "depth": 142,
+    "base_bits": 427,
+    "ending_jump_index": 293,
+    "excluded_below_or_equal_bits": 207,
+    "excluded_below_or_equal": "~10^62"
+   },
+   {
+    "depth": 143,
+    "base_bits": 430,
+    "ending_jump_index": 295,
+    "excluded_below_or_equal_bits": 209,
+    "excluded_below_or_equal": "~10^62"
+   },
+   {
+    "depth": 144,
+    "base_bits": 433,
+    "ending_jump_index": 297,
+    "excluded_below_or_equal_bits": 210,
+    "excluded_below_or_equal": "~10^63"
+   },
+   {
+    "depth": 145,
+    "base_bits": 435,
+    "ending_jump_index": 299,
+    "excluded_below_or_equal_bits": 212,
+    "excluded_below_or_equal": "~10^63"
+   },
+   {
+    "depth": 146,
+    "base_bits": 439,
+    "ending_jump_index": 301,
+    "excluded_below_or_equal_bits": 214,
+    "excluded_below_or_equal": "~10^64"
+   },
+   {
+    "depth": 147,
+    "base_bits": 441,
+    "ending_jump_index": 303,
+    "excluded_below_or_equal_bits": 214,
+    "excluded_below_or_equal": "~10^64"
+   },
+   {
+    "depth": 148,
+    "base_bits": 446,
+    "ending_jump_index": 306,
+    "excluded_below_or_equal_bits": 216,
+    "excluded_below_or_equal": "~10^64"
+   },
+   {
+    "depth": 149,
+    "base_bits": 447,
+    "ending_jump_index": 307,
+    "excluded_below_or_equal_bits": 217,
+    "excluded_below_or_equal": "~10^65"
+   },
+   {
+    "depth": 150,
+    "base_bits": 452,
+    "ending_jump_index": 310,
+    "excluded_below_or_equal_bits": 219,
+    "excluded_below_or_equal": "~10^65"
+   },
+   {
+    "depth": 151,
+    "base_bits": 453,
+    "ending_jump_index": 311,
+    "excluded_below_or_equal_bits": 220,
+    "excluded_below_or_equal": "~10^65"
+   },
+   {
+    "depth": 152,
+    "base_bits": 456,
+    "ending_jump_index": 313,
+    "excluded_below_or_equal_bits": 222,
+    "excluded_below_or_equal": "~10^66"
+   },
+   {
+    "depth": 153,
+    "base_bits": 460,
+    "ending_jump_index": 316,
+    "excluded_below_or_equal_bits": 224,
+    "excluded_below_or_equal": "~10^67"
+   },
+   {
+    "depth": 154,
+    "base_bits": 461,
+    "ending_jump_index": 317,
+    "excluded_below_or_equal_bits": 224,
+    "excluded_below_or_equal": "~10^67"
+   },
+   {
+    "depth": 155,
+    "base_bits": 466,
+    "ending_jump_index": 320,
+    "excluded_below_or_equal_bits": 225,
+    "excluded_below_or_equal": "~10^67"
+   },
+   {
+    "depth": 156,
+    "base_bits": 469,
+    "ending_jump_index": 322,
+    "excluded_below_or_equal_bits": 226,
+    "excluded_below_or_equal": "~10^67"
+   },
+   {
+    "depth": 157,
+    "base_bits": 472,
+    "ending_jump_index": 324,
+    "excluded_below_or_equal_bits": 229,
+    "excluded_below_or_equal": "~10^68"
+   },
+   {
+    "depth": 158,
+    "base_bits": 475,
+    "ending_jump_index": 326,
+    "excluded_below_or_equal_bits": 231,
+    "excluded_below_or_equal": "~10^69"
+   },
+   {
+    "depth": 159,
+    "base_bits": 476,
+    "ending_jump_index": 327,
+    "excluded_below_or_equal_bits": 232,
+    "excluded_below_or_equal": "~10^69"
+   },
+   {
+    "depth": 160,
+    "base_bits": 481,
+    "ending_jump_index": 330,
+    "excluded_below_or_equal_bits": 233,
+    "excluded_below_or_equal": "~10^69"
+   },
+   {
+    "depth": 161,
+    "base_bits": 483,
+    "ending_jump_index": 332,
+    "excluded_below_or_equal_bits": 234,
+    "excluded_below_or_equal": "~10^70"
+   },
+   {
+    "depth": 162,
+    "base_bits": 487,
+    "ending_jump_index": 334,
+    "excluded_below_or_equal_bits": 237,
+    "excluded_below_or_equal": "~10^71"
+   },
+   {
+    "depth": 163,
+    "base_bits": 489,
+    "ending_jump_index": 336,
+    "excluded_below_or_equal_bits": 237,
+    "excluded_below_or_equal": "~10^71"
+   },
+   {
+    "depth": 164,
+    "base_bits": 494,
+    "ending_jump_index": 339,
+    "excluded_below_or_equal_bits": 241,
+    "excluded_below_or_equal": "~10^72"
+   },
+   {
+    "depth": 165,
+    "base_bits": 495,
+    "ending_jump_index": 340,
+    "excluded_below_or_equal_bits": 241,
+    "excluded_below_or_equal": "~10^72"
+   },
+   {
+    "depth": 166,
+    "base_bits": 498,
+    "ending_jump_index": 342,
+    "excluded_below_or_equal_bits": 242,
+    "excluded_below_or_equal": "~10^72"
+   },
+   {
+    "depth": 167,
+    "base_bits": 501,
+    "ending_jump_index": 344,
+    "excluded_below_or_equal_bits": 244,
+    "excluded_below_or_equal": "~10^73"
+   },
+   {
+    "depth": 168,
+    "base_bits": 504,
+    "ending_jump_index": 346,
+    "excluded_below_or_equal_bits": 245,
+    "excluded_below_or_equal": "~10^73"
+   },
+   {
+    "depth": 169,
+    "base_bits": 509,
+    "ending_jump_index": 349,
+    "excluded_below_or_equal_bits": 248,
+    "excluded_below_or_equal": "~10^74"
+   },
+   {
+    "depth": 170,
+    "base_bits": 510,
+    "ending_jump_index": 350,
+    "excluded_below_or_equal_bits": 248,
+    "excluded_below_or_equal": "~10^74"
+   },
+   {
+    "depth": 171,
+    "base_bits": 514,
+    "ending_jump_index": 353,
+    "excluded_below_or_equal_bits": 248,
+    "excluded_below_or_equal": "~10^74"
+   },
+   {
+    "depth": 172,
+    "base_bits": 517,
+    "ending_jump_index": 355,
+    "excluded_below_or_equal_bits": 250,
+    "excluded_below_or_equal": "~10^74"
+   },
+   {
+    "depth": 173,
+    "base_bits": 518,
+    "ending_jump_index": 356,
+    "excluded_below_or_equal_bits": 251,
+    "excluded_below_or_equal": "~10^75"
+   },
+   {
+    "depth": 174,
+    "base_bits": 523,
+    "ending_jump_index": 359,
+    "excluded_below_or_equal_bits": 254,
+    "excluded_below_or_equal": "~10^76"
+   },
+   {
+    "depth": 175,
+    "base_bits": 526,
+    "ending_jump_index": 361,
+    "excluded_below_or_equal_bits": 256,
+    "excluded_below_or_equal": "~10^76"
+   },
+   {
+    "depth": 176,
+    "base_bits": 529,
+    "ending_jump_index": 363,
+    "excluded_below_or_equal_bits": 259,
+    "excluded_below_or_equal": "~10^77"
+   },
+   {
+    "depth": 177,
+    "base_bits": 531,
+    "ending_jump_index": 365,
+    "excluded_below_or_equal_bits": 260,
+    "excluded_below_or_equal": "~10^78"
+   },
+   {
+    "depth": 178,
+    "base_bits": 535,
+    "ending_jump_index": 367,
+    "excluded_below_or_equal_bits": 261,
+    "excluded_below_or_equal": "~10^78"
+   },
+   {
+    "depth": 179,
+    "base_bits": 537,
+    "ending_jump_index": 369,
+    "excluded_below_or_equal_bits": 262,
+    "excluded_below_or_equal": "~10^78"
+   },
+   {
+    "depth": 180,
+    "base_bits": 540,
+    "ending_jump_index": 371,
+    "excluded_below_or_equal_bits": 263,
+    "excluded_below_or_equal": "~10^79"
+   },
+   {
+    "depth": 181,
+    "base_bits": 543,
+    "ending_jump_index": 373,
+    "excluded_below_or_equal_bits": 265,
+    "excluded_below_or_equal": "~10^79"
+   },
+   {
+    "depth": 182,
+    "base_bits": 546,
+    "ending_jump_index": 375,
+    "excluded_below_or_equal_bits": 266,
+    "excluded_below_or_equal": "~10^79"
+   },
+   {
+    "depth": 183,
+    "base_bits": 551,
+    "ending_jump_index": 378,
+    "excluded_below_or_equal_bits": 268,
+    "excluded_below_or_equal": "~10^80"
+   },
+   {
+    "depth": 184,
+    "base_bits": 552,
+    "ending_jump_index": 379,
+    "excluded_below_or_equal_bits": 269,
+    "excluded_below_or_equal": "~10^80"
+   },
+   {
+    "depth": 185,
+    "base_bits": 557,
+    "ending_jump_index": 382,
+    "excluded_below_or_equal_bits": 271,
+    "excluded_below_or_equal": "~10^81"
+   },
+   {
+    "depth": 186,
+    "base_bits": 558,
+    "ending_jump_index": 383,
+    "excluded_below_or_equal_bits": 272,
+    "excluded_below_or_equal": "~10^81"
+   },
+   {
+    "depth": 187,
+    "base_bits": 560,
+    "ending_jump_index": 385,
+    "excluded_below_or_equal_bits": 273,
+    "excluded_below_or_equal": "~10^81"
+   },
+   {
+    "depth": 188,
+    "base_bits": 565,
+    "ending_jump_index": 388,
+    "excluded_below_or_equal_bits": 278,
+    "excluded_below_or_equal": "~10^83"
+   },
+   {
+    "depth": 189,
+    "base_bits": 566,
+    "ending_jump_index": 389,
+    "excluded_below_or_equal_bits": 278,
+    "excluded_below_or_equal": "~10^83"
+   },
+   {
+    "depth": 190,
+    "base_bits": 571,
+    "ending_jump_index": 392,
+    "excluded_below_or_equal_bits": 280,
+    "excluded_below_or_equal": "~10^84"
+   },
+   {
+    "depth": 191,
+    "base_bits": 574,
+    "ending_jump_index": 394,
+    "excluded_below_or_equal_bits": 280,
+    "excluded_below_or_equal": "~10^84"
+   },
+   {
+    "depth": 192,
+    "base_bits": 577,
+    "ending_jump_index": 396,
+    "excluded_below_or_equal_bits": 280,
+    "excluded_below_or_equal": "~10^84"
+   },
+   {
+    "depth": 193,
+    "base_bits": 580,
+    "ending_jump_index": 398,
+    "excluded_below_or_equal_bits": 282,
+    "excluded_below_or_equal": "~10^84"
+   },
+   {
+    "depth": 194,
+    "base_bits": 582,
+    "ending_jump_index": 400,
+    "excluded_below_or_equal_bits": 285,
+    "excluded_below_or_equal": "~10^85"
+   },
+   {
+    "depth": 195,
+    "base_bits": 585,
+    "ending_jump_index": 402,
+    "excluded_below_or_equal_bits": 286,
+    "excluded_below_or_equal": "~10^85"
+   },
+   {
+    "depth": 196,
+    "base_bits": 588,
+    "ending_jump_index": 404,
+    "excluded_below_or_equal_bits": 287,
+    "excluded_below_or_equal": "~10^86"
+   },
+   {
+    "depth": 197,
+    "base_bits": 591,
+    "ending_jump_index": 406,
+    "excluded_below_or_equal_bits": 289,
+    "excluded_below_or_equal": "~10^86"
+   },
+   {
+    "depth": 198,
+    "base_bits": 594,
+    "ending_jump_index": 408,
+    "excluded_below_or_equal_bits": 289,
+    "excluded_below_or_equal": "~10^86"
+   },
+   {
+    "depth": 199,
+    "base_bits": 599,
+    "ending_jump_index": 411,
+    "excluded_below_or_equal_bits": 290,
+    "excluded_below_or_equal": "~10^86"
+   },
+   {
+    "depth": 200,
+    "base_bits": 600,
+    "ending_jump_index": 412,
+    "excluded_below_or_equal_bits": 291,
+    "excluded_below_or_equal": "~10^87"
+   },
+   {
+    "depth": 201,
+    "base_bits": 602,
+    "ending_jump_index": 414,
+    "excluded_below_or_equal_bits": 294,
+    "excluded_below_or_equal": "~10^88"
+   },
+   {
+    "depth": 202,
+    "base_bits": 607,
+    "ending_jump_index": 417,
+    "excluded_below_or_equal_bits": 297,
+    "excluded_below_or_equal": "~10^89"
+   },
+   {
+    "depth": 203,
+    "base_bits": 608,
+    "ending_jump_index": 418,
+    "excluded_below_or_equal_bits": 297,
+    "excluded_below_or_equal": "~10^89"
+   },
+   {
+    "depth": 204,
+    "base_bits": 613,
+    "ending_jump_index": 421,
+    "excluded_below_or_equal_bits": 300,
+    "excluded_below_or_equal": "~10^90"
+   },
+   {
+    "depth": 205,
+    "base_bits": 614,
+    "ending_jump_index": 422,
+    "excluded_below_or_equal_bits": 300,
+    "excluded_below_or_equal": "~10^90"
+   },
+   {
+    "depth": 206,
+    "base_bits": 619,
+    "ending_jump_index": 425,
+    "excluded_below_or_equal_bits": 303,
+    "excluded_below_or_equal": "~10^90"
+   },
+   {
+    "depth": 207,
+    "base_bits": 622,
+    "ending_jump_index": 427,
+    "excluded_below_or_equal_bits": 304,
+    "excluded_below_or_equal": "~10^91"
+   },
+   {
+    "depth": 208,
+    "base_bits": 625,
+    "ending_jump_index": 429,
+    "excluded_below_or_equal_bits": 305,
+    "excluded_below_or_equal": "~10^91"
+   },
+   {
+    "depth": 209,
+    "base_bits": 628,
+    "ending_jump_index": 431,
+    "excluded_below_or_equal_bits": 305,
+    "excluded_below_or_equal": "~10^91"
+   },
+   {
+    "depth": 210,
+    "base_bits": 630,
+    "ending_jump_index": 433,
+    "excluded_below_or_equal_bits": 307,
+    "excluded_below_or_equal": "~10^92"
+   },
+   {
+    "depth": 211,
+    "base_bits": 634,
+    "ending_jump_index": 435,
+    "excluded_below_or_equal_bits": 310,
+    "excluded_below_or_equal": "~10^93"
+   },
+   {
+    "depth": 212,
+    "base_bits": 636,
+    "ending_jump_index": 437,
+    "excluded_below_or_equal_bits": 312,
+    "excluded_below_or_equal": "~10^93"
+   },
+   {
+    "depth": 213,
+    "base_bits": 641,
+    "ending_jump_index": 440,
+    "excluded_below_or_equal_bits": 313,
+    "excluded_below_or_equal": "~10^93"
+   },
+   {
+    "depth": 214,
+    "base_bits": 642,
+    "ending_jump_index": 441,
+    "excluded_below_or_equal_bits": 314,
+    "excluded_below_or_equal": "~10^94"
+   },
+   {
+    "depth": 215,
+    "base_bits": 647,
+    "ending_jump_index": 444,
+    "excluded_below_or_equal_bits": 318,
+    "excluded_below_or_equal": "~10^95"
+   },
+   {
+    "depth": 216,
+    "base_bits": 648,
+    "ending_jump_index": 445,
+    "excluded_below_or_equal_bits": 318,
+    "excluded_below_or_equal": "~10^95"
+   },
+   {
+    "depth": 217,
+    "base_bits": 651,
+    "ending_jump_index": 447,
+    "excluded_below_or_equal_bits": 318,
+    "excluded_below_or_equal": "~10^95"
+   },
+   {
+    "depth": 218,
+    "base_bits": 655,
+    "ending_jump_index": 450,
+    "excluded_below_or_equal_bits": 321,
+    "excluded_below_or_equal": "~10^96"
+   },
+   {
+    "depth": 219,
+    "base_bits": 656,
+    "ending_jump_index": 451,
+    "excluded_below_or_equal_bits": 321,
+    "excluded_below_or_equal": "~10^96"
+   },
+   {
+    "depth": 220,
+    "base_bits": 661,
+    "ending_jump_index": 454,
+    "excluded_below_or_equal_bits": 323,
+    "excluded_below_or_equal": "~10^97"
+   },
+   {
+    "depth": 221,
+    "base_bits": 664,
+    "ending_jump_index": 456,
+    "excluded_below_or_equal_bits": 324,
+    "excluded_below_or_equal": "~10^97"
+   },
+   {
+    "depth": 222,
+    "base_bits": 667,
+    "ending_jump_index": 458,
+    "excluded_below_or_equal_bits": 324,
+    "excluded_below_or_equal": "~10^97"
+   },
+   {
+    "depth": 223,
+    "base_bits": 670,
+    "ending_jump_index": 460,
+    "excluded_below_or_equal_bits": 326,
+    "excluded_below_or_equal": "~10^97"
+   },
+   {
+    "depth": 224,
+    "base_bits": 671,
+    "ending_jump_index": 461,
+    "excluded_below_or_equal_bits": 327,
+    "excluded_below_or_equal": "~10^98"
+   },
+   {
+    "depth": 225,
+    "base_bits": 676,
+    "ending_jump_index": 464,
+    "excluded_below_or_equal_bits": 330,
+    "excluded_below_or_equal": "~10^99"
+   },
+   {
+    "depth": 226,
+    "base_bits": 678,
+    "ending_jump_index": 466,
+    "excluded_below_or_equal_bits": 331,
+    "excluded_below_or_equal": "~10^99"
+   },
+   {
+    "depth": 227,
+    "base_bits": 682,
+    "ending_jump_index": 468,
+    "excluded_below_or_equal_bits": 333,
+    "excluded_below_or_equal": "~10^99"
+   },
+   {
+    "depth": 228,
+    "base_bits": 684,
+    "ending_jump_index": 470,
+    "excluded_below_or_equal_bits": 335,
+    "excluded_below_or_equal": "~10^100"
+   },
+   {
+    "depth": 229,
+    "base_bits": 689,
+    "ending_jump_index": 473,
+    "excluded_below_or_equal_bits": 336,
+    "excluded_below_or_equal": "~10^101"
+   },
+   {
+    "depth": 230,
+    "base_bits": 690,
+    "ending_jump_index": 474,
+    "excluded_below_or_equal_bits": 337,
+    "excluded_below_or_equal": "~10^101"
+   },
+   {
+    "depth": 231,
+    "base_bits": 693,
+    "ending_jump_index": 476,
+    "excluded_below_or_equal_bits": 339,
+    "excluded_below_or_equal": "~10^101"
+   },
+   {
+    "depth": 232,
+    "base_bits": 698,
+    "ending_jump_index": 479,
+    "excluded_below_or_equal_bits": 342,
+    "excluded_below_or_equal": "~10^102"
+   },
+   {
+    "depth": 233,
+    "base_bits": 699,
+    "ending_jump_index": 480,
+    "excluded_below_or_equal_bits": 343,
+    "excluded_below_or_equal": "~10^102"
+   },
+   {
+    "depth": 234,
+    "base_bits": 704,
+    "ending_jump_index": 483,
+    "excluded_below_or_equal_bits": 344,
+    "excluded_below_or_equal": "~10^103"
+   },
+   {
+    "depth": 235,
+    "base_bits": 705,
+    "ending_jump_index": 484,
+    "excluded_below_or_equal_bits": 345,
+    "excluded_below_or_equal": "~10^103"
+   },
+   {
+    "depth": 236,
+    "base_bits": 709,
+    "ending_jump_index": 487,
+    "excluded_below_or_equal_bits": 347,
+    "excluded_below_or_equal": "~10^104"
+   },
+   {
+    "depth": 237,
+    "base_bits": 712,
+    "ending_jump_index": 489,
+    "excluded_below_or_equal_bits": 349,
+    "excluded_below_or_equal": "~10^105"
+   },
+   {
+    "depth": 238,
+    "base_bits": 713,
+    "ending_jump_index": 490,
+    "excluded_below_or_equal_bits": 350,
+    "excluded_below_or_equal": "~10^105"
+   },
+   {
+    "depth": 239,
+    "base_bits": 718,
+    "ending_jump_index": 493,
+    "excluded_below_or_equal_bits": 350,
+    "excluded_below_or_equal": "~10^105"
+   },
+   {
+    "depth": 240,
+    "base_bits": 721,
+    "ending_jump_index": 495,
+    "excluded_below_or_equal_bits": 355,
+    "excluded_below_or_equal": "~10^106"
+   },
+   {
+    "depth": 241,
+    "base_bits": 724,
+    "ending_jump_index": 497,
+    "excluded_below_or_equal_bits": 356,
+    "excluded_below_or_equal": "~10^107"
+   },
+   {
+    "depth": 242,
+    "base_bits": 726,
+    "ending_jump_index": 499,
+    "excluded_below_or_equal_bits": 356,
+    "excluded_below_or_equal": "~10^107"
+   },
+   {
+    "depth": 243,
+    "base_bits": 730,
+    "ending_jump_index": 501,
+    "excluded_below_or_equal_bits": 357,
+    "excluded_below_or_equal": "~10^107"
+   },
+   {
+    "depth": 244,
+    "base_bits": 732,
+    "ending_jump_index": 503,
+    "excluded_below_or_equal_bits": 359,
+    "excluded_below_or_equal": "~10^107"
+   },
+   {
+    "depth": 245,
+    "base_bits": 735,
+    "ending_jump_index": 505,
+    "excluded_below_or_equal_bits": 359,
+    "excluded_below_or_equal": "~10^107"
+   },
+   {
+    "depth": 246,
+    "base_bits": 738,
+    "ending_jump_index": 507,
+    "excluded_below_or_equal_bits": 359,
+    "excluded_below_or_equal": "~10^107"
+   },
+   {
+    "depth": 247,
+    "base_bits": 741,
+    "ending_jump_index": 509,
+    "excluded_below_or_equal_bits": 361,
+    "excluded_below_or_equal": "~10^108"
+   },
+   {
+    "depth": 248,
+    "base_bits": 746,
+    "ending_jump_index": 512,
+    "excluded_below_or_equal_bits": 366,
+    "excluded_below_or_equal": "~10^109"
+   },
+   {
+    "depth": 249,
+    "base_bits": 747,
+    "ending_jump_index": 513,
+    "excluded_below_or_equal_bits": 366,
+    "excluded_below_or_equal": "~10^110"
+   },
+   {
+    "depth": 250,
+    "base_bits": 752,
+    "ending_jump_index": 516,
+    "excluded_below_or_equal_bits": 369,
+    "excluded_below_or_equal": "~10^110"
+   },
+   {
+    "depth": 251,
+    "base_bits": 753,
+    "ending_jump_index": 517,
+    "excluded_below_or_equal_bits": 369,
+    "excluded_below_or_equal": "~10^110"
+   },
+   {
+    "depth": 252,
+    "base_bits": 755,
+    "ending_jump_index": 519,
+    "excluded_below_or_equal_bits": 369,
+    "excluded_below_or_equal": "~10^111"
+   },
+   {
+    "depth": 253,
+    "base_bits": 760,
+    "ending_jump_index": 522,
+    "excluded_below_or_equal_bits": 373,
+    "excluded_below_or_equal": "~10^112"
+   },
+   {
+    "depth": 254,
+    "base_bits": 761,
+    "ending_jump_index": 523,
+    "excluded_below_or_equal_bits": 373,
+    "excluded_below_or_equal": "~10^112"
+   },
+   {
+    "depth": 255,
+    "base_bits": 766,
+    "ending_jump_index": 526,
+    "excluded_below_or_equal_bits": 375,
+    "excluded_below_or_equal": "~10^112"
+   },
+   {
+    "depth": 256,
+    "base_bits": 769,
+    "ending_jump_index": 528,
+    "excluded_below_or_equal_bits": 377,
+    "excluded_below_or_equal": "~10^113"
+   },
+   {
+    "depth": 257,
+    "base_bits": 772,
+    "ending_jump_index": 530,
+    "excluded_below_or_equal_bits": 379,
+    "excluded_below_or_equal": "~10^113"
+   },
+   {
+    "depth": 258,
+    "base_bits": 775,
+    "ending_jump_index": 532,
+    "excluded_below_or_equal_bits": 380,
+    "excluded_below_or_equal": "~10^114"
+   },
+   {
+    "depth": 259,
+    "base_bits": 777,
+    "ending_jump_index": 534,
+    "excluded_below_or_equal_bits": 381,
+    "excluded_below_or_equal": "~10^114"
+   },
+   {
+    "depth": 260,
+    "base_bits": 780,
+    "ending_jump_index": 536,
+    "excluded_below_or_equal_bits": 382,
+    "excluded_below_or_equal": "~10^114"
+   },
+   {
+    "depth": 261,
+    "base_bits": 783,
+    "ending_jump_index": 538,
+    "excluded_below_or_equal_bits": 385,
+    "excluded_below_or_equal": "~10^115"
+   },
+   {
+    "depth": 262,
+    "base_bits": 786,
+    "ending_jump_index": 540,
+    "excluded_below_or_equal_bits": 387,
+    "excluded_below_or_equal": "~10^116"
+   },
+   {
+    "depth": 263,
+    "base_bits": 789,
+    "ending_jump_index": 542,
+    "excluded_below_or_equal_bits": 388,
+    "excluded_below_or_equal": "~10^116"
+   },
+   {
+    "depth": 264,
+    "base_bits": 794,
+    "ending_jump_index": 545,
+    "excluded_below_or_equal_bits": 390,
+    "excluded_below_or_equal": "~10^117"
+   },
+   {
+    "depth": 265,
+    "base_bits": 795,
+    "ending_jump_index": 546,
+    "excluded_below_or_equal_bits": 390,
+    "excluded_below_or_equal": "~10^117"
+   },
+   {
+    "depth": 266,
+    "base_bits": 797,
+    "ending_jump_index": 548,
+    "excluded_below_or_equal_bits": 391,
+    "excluded_below_or_equal": "~10^117"
+   },
+   {
+    "depth": 267,
+    "base_bits": 802,
+    "ending_jump_index": 551,
+    "excluded_below_or_equal_bits": 391,
+    "excluded_below_or_equal": "~10^117"
+   },
+   {
+    "depth": 268,
+    "base_bits": 803,
+    "ending_jump_index": 552,
+    "excluded_below_or_equal_bits": 391,
+    "excluded_below_or_equal": "~10^117"
+   },
+   {
+    "depth": 269,
+    "base_bits": 808,
+    "ending_jump_index": 555,
+    "excluded_below_or_equal_bits": 395,
+    "excluded_below_or_equal": "~10^118"
+   },
+   {
+    "depth": 270,
+    "base_bits": 809,
+    "ending_jump_index": 556,
+    "excluded_below_or_equal_bits": 396,
+    "excluded_below_or_equal": "~10^118"
+   },
+   {
+    "depth": 271,
+    "base_bits": 814,
+    "ending_jump_index": 559,
+    "excluded_below_or_equal_bits": 400,
+    "excluded_below_or_equal": "~10^120"
+   },
+   {
+    "depth": 272,
+    "base_bits": 817,
+    "ending_jump_index": 561,
+    "excluded_below_or_equal_bits": 400,
+    "excluded_below_or_equal": "~10^120"
+   },
+   {
+    "depth": 273,
+    "base_bits": 820,
+    "ending_jump_index": 563,
+    "excluded_below_or_equal_bits": 402,
+    "excluded_below_or_equal": "~10^120"
+   },
+   {
+    "depth": 274,
+    "base_bits": 823,
+    "ending_jump_index": 565,
+    "excluded_below_or_equal_bits": 404,
+    "excluded_below_or_equal": "~10^121"
+   },
+   {
+    "depth": 275,
+    "base_bits": 825,
+    "ending_jump_index": 567,
+    "excluded_below_or_equal_bits": 406,
+    "excluded_below_or_equal": "~10^122"
+   },
+   {
+    "depth": 276,
+    "base_bits": 829,
+    "ending_jump_index": 569,
+    "excluded_below_or_equal_bits": 407,
+    "excluded_below_or_equal": "~10^122"
+   },
+   {
+    "depth": 277,
+    "base_bits": 831,
+    "ending_jump_index": 571,
+    "excluded_below_or_equal_bits": 409,
+    "excluded_below_or_equal": "~10^122"
+   },
+   {
+    "depth": 278,
+    "base_bits": 836,
+    "ending_jump_index": 574,
+    "excluded_below_or_equal_bits": 410,
+    "excluded_below_or_equal": "~10^123"
+   },
+   {
+    "depth": 279,
+    "base_bits": 837,
+    "ending_jump_index": 575,
+    "excluded_below_or_equal_bits": 411,
+    "excluded_below_or_equal": "~10^123"
+   },
+   {
+    "depth": 280,
+    "base_bits": 842,
+    "ending_jump_index": 578,
+    "excluded_below_or_equal_bits": 414,
+    "excluded_below_or_equal": "~10^124"
+   },
+   {
+    "depth": 281,
+    "base_bits": 843,
+    "ending_jump_index": 579,
+    "excluded_below_or_equal_bits": 414,
+    "excluded_below_or_equal": "~10^124"
+   },
+   {
+    "depth": 282,
+    "base_bits": 846,
+    "ending_jump_index": 581,
+    "excluded_below_or_equal_bits": 416,
+    "excluded_below_or_equal": "~10^124"
+   },
+   {
+    "depth": 283,
+    "base_bits": 850,
+    "ending_jump_index": 584,
+    "excluded_below_or_equal_bits": 418,
+    "excluded_below_or_equal": "~10^125"
+   },
+   {
+    "depth": 284,
+    "base_bits": 851,
+    "ending_jump_index": 585,
+    "excluded_below_or_equal_bits": 418,
+    "excluded_below_or_equal": "~10^125"
+   },
+   {
+    "depth": 285,
+    "base_bits": 856,
+    "ending_jump_index": 588,
+    "excluded_below_or_equal_bits": 421,
+    "excluded_below_or_equal": "~10^126"
+   },
+   {
+    "depth": 286,
+    "base_bits": 859,
+    "ending_jump_index": 590,
+    "excluded_below_or_equal_bits": 421,
+    "excluded_below_or_equal": "~10^126"
+   },
+   {
+    "depth": 287,
+    "base_bits": 862,
+    "ending_jump_index": 592,
+    "excluded_below_or_equal_bits": 423,
+    "excluded_below_or_equal": "~10^127"
+   },
+   {
+    "depth": 288,
+    "base_bits": 865,
+    "ending_jump_index": 594,
+    "excluded_below_or_equal_bits": 425,
+    "excluded_below_or_equal": "~10^127"
+   },
+   {
+    "depth": 289,
+    "base_bits": 866,
+    "ending_jump_index": 595,
+    "excluded_below_or_equal_bits": 425,
+    "excluded_below_or_equal": "~10^127"
+   },
+   {
+    "depth": 290,
+    "base_bits": 871,
+    "ending_jump_index": 598,
+    "excluded_below_or_equal_bits": 427,
+    "excluded_below_or_equal": "~10^128"
+   },
+   {
+    "depth": 291,
+    "base_bits": 873,
+    "ending_jump_index": 600,
+    "excluded_below_or_equal_bits": 429,
+    "excluded_below_or_equal": "~10^128"
+   },
+   {
+    "depth": 292,
+    "base_bits": 877,
+    "ending_jump_index": 602,
+    "excluded_below_or_equal_bits": 431,
+    "excluded_below_or_equal": "~10^129"
+   },
+   {
+    "depth": 293,
+    "base_bits": 879,
+    "ending_jump_index": 604,
+    "excluded_below_or_equal_bits": 432,
+    "excluded_below_or_equal": "~10^129"
+   },
+   {
+    "depth": 294,
+    "base_bits": 884,
+    "ending_jump_index": 607,
+    "excluded_below_or_equal_bits": 435,
+    "excluded_below_or_equal": "~10^130"
+   },
+   {
+    "depth": 295,
+    "base_bits": 885,
+    "ending_jump_index": 608,
+    "excluded_below_or_equal_bits": 435,
+    "excluded_below_or_equal": "~10^130"
+   },
+   {
+    "depth": 296,
+    "base_bits": 888,
+    "ending_jump_index": 610,
+    "excluded_below_or_equal_bits": 436,
+    "excluded_below_or_equal": "~10^130"
+   },
+   {
+    "depth": 297,
+    "base_bits": 893,
+    "ending_jump_index": 613,
+    "excluded_below_or_equal_bits": 439,
+    "excluded_below_or_equal": "~10^131"
+   },
+   {
+    "depth": 298,
+    "base_bits": 894,
+    "ending_jump_index": 614,
+    "excluded_below_or_equal_bits": 439,
+    "excluded_below_or_equal": "~10^131"
+   },
+   {
+    "depth": 299,
+    "base_bits": 899,
+    "ending_jump_index": 617,
+    "excluded_below_or_equal_bits": 440,
+    "excluded_below_or_equal": "~10^132"
+   },
+   {
+    "depth": 300,
+    "base_bits": 900,
+    "ending_jump_index": 618,
+    "excluded_below_or_equal_bits": 441,
+    "excluded_below_or_equal": "~10^132"
+   },
+   {
+    "depth": 301,
+    "base_bits": 904,
+    "ending_jump_index": 621,
+    "excluded_below_or_equal_bits": 444,
+    "excluded_below_or_equal": "~10^133"
+   },
+   {
+    "depth": 302,
+    "base_bits": 907,
+    "ending_jump_index": 623,
+    "excluded_below_or_equal_bits": 445,
+    "excluded_below_or_equal": "~10^133"
+   },
+   {
+    "depth": 303,
+    "base_bits": 908,
+    "ending_jump_index": 624,
+    "excluded_below_or_equal_bits": 446,
+    "excluded_below_or_equal": "~10^133"
+   },
+   {
+    "depth": 304,
+    "base_bits": 913,
+    "ending_jump_index": 627,
+    "excluded_below_or_equal_bits": 447,
+    "excluded_below_or_equal": "~10^134"
+   },
+   {
+    "depth": 305,
+    "base_bits": 916,
+    "ending_jump_index": 629,
+    "excluded_below_or_equal_bits": 449,
+    "excluded_below_or_equal": "~10^134"
+   },
+   {
+    "depth": 306,
+    "base_bits": 919,
+    "ending_jump_index": 631,
+    "excluded_below_or_equal_bits": 452,
+    "excluded_below_or_equal": "~10^135"
+   },
+   {
+    "depth": 307,
+    "base_bits": 921,
+    "ending_jump_index": 633,
+    "excluded_below_or_equal_bits": 454,
+    "excluded_below_or_equal": "~10^136"
+   },
+   {
+    "depth": 308,
+    "base_bits": 925,
+    "ending_jump_index": 635,
+    "excluded_below_or_equal_bits": 456,
+    "excluded_below_or_equal": "~10^137"
+   },
+   {
+    "depth": 309,
+    "base_bits": 927,
+    "ending_jump_index": 637,
+    "excluded_below_or_equal_bits": 457,
+    "excluded_below_or_equal": "~10^137"
+   },
+   {
+    "depth": 310,
+    "base_bits": 930,
+    "ending_jump_index": 639,
+    "excluded_below_or_equal_bits": 457,
+    "excluded_below_or_equal": "~10^137"
+   },
+   {
+    "depth": 311,
+    "base_bits": 933,
+    "ending_jump_index": 641,
+    "excluded_below_or_equal_bits": 459,
+    "excluded_below_or_equal": "~10^137"
+   },
+   {
+    "depth": 312,
+    "base_bits": 936,
+    "ending_jump_index": 643,
+    "excluded_below_or_equal_bits": 459,
+    "excluded_below_or_equal": "~10^137"
+   },
+   {
+    "depth": 313,
+    "base_bits": 941,
+    "ending_jump_index": 646,
+    "excluded_below_or_equal_bits": 462,
+    "excluded_below_or_equal": "~10^138"
+   },
+   {
+    "depth": 314,
+    "base_bits": 942,
+    "ending_jump_index": 647,
+    "excluded_below_or_equal_bits": 463,
+    "excluded_below_or_equal": "~10^139"
+   },
+   {
+    "depth": 315,
+    "base_bits": 947,
+    "ending_jump_index": 650,
+    "excluded_below_or_equal_bits": 465,
+    "excluded_below_or_equal": "~10^139"
+   },
+   {
+    "depth": 316,
+    "base_bits": 949,
+    "ending_jump_index": 652,
+    "excluded_below_or_equal_bits": 466,
+    "excluded_below_or_equal": "~10^139"
+   },
+   {
+    "depth": 317,
+    "base_bits": 950,
+    "ending_jump_index": 653,
+    "excluded_below_or_equal_bits": 467,
+    "excluded_below_or_equal": "~10^140"
+   },
+   {
+    "depth": 318,
+    "base_bits": 955,
+    "ending_jump_index": 656,
+    "excluded_below_or_equal_bits": 470,
+    "excluded_below_or_equal": "~10^141"
+   },
+   {
+    "depth": 319,
+    "base_bits": 956,
+    "ending_jump_index": 657,
+    "excluded_below_or_equal_bits": 471,
+    "excluded_below_or_equal": "~10^141"
+   },
+   {
+    "depth": 320,
+    "base_bits": 961,
+    "ending_jump_index": 660,
+    "excluded_below_or_equal_bits": 474,
+    "excluded_below_or_equal": "~10^142"
+   },
+   {
+    "depth": 321,
+    "base_bits": 964,
+    "ending_jump_index": 662,
+    "excluded_below_or_equal_bits": 474,
+    "excluded_below_or_equal": "~10^142"
+   },
+   {
+    "depth": 322,
+    "base_bits": 967,
+    "ending_jump_index": 664,
+    "excluded_below_or_equal_bits": 476,
+    "excluded_below_or_equal": "~10^143"
+   },
+   {
+    "depth": 323,
+    "base_bits": 970,
+    "ending_jump_index": 666,
+    "excluded_below_or_equal_bits": 477,
+    "excluded_below_or_equal": "~10^143"
+   },
+   {
+    "depth": 324,
+    "base_bits": 972,
+    "ending_jump_index": 668,
+    "excluded_below_or_equal_bits": 478,
+    "excluded_below_or_equal": "~10^143"
+   },
+   {
+    "depth": 325,
+    "base_bits": 975,
+    "ending_jump_index": 670,
+    "excluded_below_or_equal_bits": 480,
+    "excluded_below_or_equal": "~10^144"
+   },
+   {
+    "depth": 326,
+    "base_bits": 978,
+    "ending_jump_index": 672,
+    "excluded_below_or_equal_bits": 482,
+    "excluded_below_or_equal": "~10^144"
+   },
+   {
+    "depth": 327,
+    "base_bits": 981,
+    "ending_jump_index": 674,
+    "excluded_below_or_equal_bits": 483,
+    "excluded_below_or_equal": "~10^145"
+   },
+   {
+    "depth": 328,
+    "base_bits": 984,
+    "ending_jump_index": 676,
+    "excluded_below_or_equal_bits": 484,
+    "excluded_below_or_equal": "~10^145"
+   },
+   {
+    "depth": 329,
+    "base_bits": 989,
+    "ending_jump_index": 679,
+    "excluded_below_or_equal_bits": 487,
+    "excluded_below_or_equal": "~10^146"
+   },
+   {
+    "depth": 330,
+    "base_bits": 990,
+    "ending_jump_index": 680,
+    "excluded_below_or_equal_bits": 487,
+    "excluded_below_or_equal": "~10^146"
+   },
+   {
+    "depth": 331,
+    "base_bits": 992,
+    "ending_jump_index": 682,
+    "excluded_below_or_equal_bits": 489,
+    "excluded_below_or_equal": "~10^146"
+   },
+   {
+    "depth": 332,
+    "base_bits": 997,
+    "ending_jump_index": 685,
+    "excluded_below_or_equal_bits": 492,
+    "excluded_below_or_equal": "~10^148"
+   },
+   {
+    "depth": 333,
+    "base_bits": 998,
+    "ending_jump_index": 686,
+    "excluded_below_or_equal_bits": 493,
+    "excluded_below_or_equal": "~10^148"
+   },
+   {
+    "depth": 334,
+    "base_bits": 1003,
+    "ending_jump_index": 689,
+    "excluded_below_or_equal_bits": 493,
+    "excluded_below_or_equal": "~10^148"
+   },
+   {
+    "depth": 335,
+    "base_bits": 1004,
+    "ending_jump_index": 690,
+    "excluded_below_or_equal_bits": 493,
+    "excluded_below_or_equal": "~10^148"
+   },
+   {
+    "depth": 336,
+    "base_bits": 1009,
+    "ending_jump_index": 693,
+    "excluded_below_or_equal_bits": 497,
+    "excluded_below_or_equal": "~10^149"
+   },
+   {
+    "depth": 337,
+    "base_bits": 1012,
+    "ending_jump_index": 695,
+    "excluded_below_or_equal_bits": 498,
+    "excluded_below_or_equal": "~10^149"
+   },
+   {
+    "depth": 338,
+    "base_bits": 1013,
+    "ending_jump_index": 696,
+    "excluded_below_or_equal_bits": 499,
+    "excluded_below_or_equal": "~10^149"
+   },
+   {
+    "depth": 339,
+    "base_bits": 1018,
+    "ending_jump_index": 699,
+    "excluded_below_or_equal_bits": 501,
+    "excluded_below_or_equal": "~10^150"
+   },
+   {
+    "depth": 340,
+    "base_bits": 1020,
+    "ending_jump_index": 701,
+    "excluded_below_or_equal_bits": 503,
+    "excluded_below_or_equal": "~10^151"
+   },
+   {
+    "depth": 341,
+    "base_bits": 1024,
+    "ending_jump_index": 703,
+    "excluded_below_or_equal_bits": 504,
+    "excluded_below_or_equal": "~10^151"
+   },
+   {
+    "depth": 342,
+    "base_bits": 1026,
+    "ending_jump_index": 705,
+    "excluded_below_or_equal_bits": 504,
+    "excluded_below_or_equal": "~10^151"
+   },
+   {
+    "depth": 343,
+    "base_bits": 1031,
+    "ending_jump_index": 708,
+    "excluded_below_or_equal_bits": 507,
+    "excluded_below_or_equal": "~10^152"
+   },
+   {
+    "depth": 344,
+    "base_bits": 1032,
+    "ending_jump_index": 709,
+    "excluded_below_or_equal_bits": 508,
+    "excluded_below_or_equal": "~10^152"
+   },
+   {
+    "depth": 345,
+    "base_bits": 1037,
+    "ending_jump_index": 712,
+    "excluded_below_or_equal_bits": 510,
+    "excluded_below_or_equal": "~10^153"
+   },
+   {
+    "depth": 346,
+    "base_bits": 1038,
+    "ending_jump_index": 713,
+    "excluded_below_or_equal_bits": 510,
+    "excluded_below_or_equal": "~10^153"
+   },
+   {
+    "depth": 347,
+    "base_bits": 1041,
+    "ending_jump_index": 715,
+    "excluded_below_or_equal_bits": 513,
+    "excluded_below_or_equal": "~10^154"
+   },
+   {
+    "depth": 348,
+    "base_bits": 1045,
+    "ending_jump_index": 718,
+    "excluded_below_or_equal_bits": 515,
+    "excluded_below_or_equal": "~10^154"
+   },
+   {
+    "depth": 349,
+    "base_bits": 1046,
+    "ending_jump_index": 719,
+    "excluded_below_or_equal_bits": 515,
+    "excluded_below_or_equal": "~10^154"
+   },
+   {
+    "depth": 350,
+    "base_bits": 1051,
+    "ending_jump_index": 722,
+    "excluded_below_or_equal_bits": 519,
+    "excluded_below_or_equal": "~10^155"
+   },
+   {
+    "depth": 351,
+    "base_bits": 1054,
+    "ending_jump_index": 724,
+    "excluded_below_or_equal_bits": 519,
+    "excluded_below_or_equal": "~10^156"
+   },
+   {
+    "depth": 352,
+    "base_bits": 1057,
+    "ending_jump_index": 726,
+    "excluded_below_or_equal_bits": 519,
+    "excluded_below_or_equal": "~10^156"
+   },
+   {
+    "depth": 353,
+    "base_bits": 1060,
+    "ending_jump_index": 728,
+    "excluded_below_or_equal_bits": 521,
+    "excluded_below_or_equal": "~10^156"
+   },
+   {
+    "depth": 354,
+    "base_bits": 1061,
+    "ending_jump_index": 729,
+    "excluded_below_or_equal_bits": 522,
+    "excluded_below_or_equal": "~10^156"
+   },
+   {
+    "depth": 355,
+    "base_bits": 1066,
+    "ending_jump_index": 732,
+    "excluded_below_or_equal_bits": 524,
+    "excluded_below_or_equal": "~10^157"
+   },
+   {
+    "depth": 356,
+    "base_bits": 1068,
+    "ending_jump_index": 734,
+    "excluded_below_or_equal_bits": 526,
+    "excluded_below_or_equal": "~10^158"
+   },
+   {
+    "depth": 357,
+    "base_bits": 1072,
+    "ending_jump_index": 736,
+    "excluded_below_or_equal_bits": 528,
+    "excluded_below_or_equal": "~10^158"
+   },
+   {
+    "depth": 358,
+    "base_bits": 1074,
+    "ending_jump_index": 738,
+    "excluded_below_or_equal_bits": 529,
+    "excluded_below_or_equal": "~10^159"
+   },
+   {
+    "depth": 359,
+    "base_bits": 1079,
+    "ending_jump_index": 741,
+    "excluded_below_or_equal_bits": 533,
+    "excluded_below_or_equal": "~10^160"
+   },
+   {
+    "depth": 360,
+    "base_bits": 1080,
+    "ending_jump_index": 742,
+    "excluded_below_or_equal_bits": 533,
+    "excluded_below_or_equal": "~10^160"
+   },
+   {
+    "depth": 361,
+    "base_bits": 1083,
+    "ending_jump_index": 744,
+    "excluded_below_or_equal_bits": 534,
+    "excluded_below_or_equal": "~10^160"
+   },
+   {
+    "depth": 362,
+    "base_bits": 1088,
+    "ending_jump_index": 747,
+    "excluded_below_or_equal_bits": 537,
+    "excluded_below_or_equal": "~10^161"
+   },
+   {
+    "depth": 363,
+    "base_bits": 1089,
+    "ending_jump_index": 748,
+    "excluded_below_or_equal_bits": 537,
+    "excluded_below_or_equal": "~10^161"
+   },
+   {
+    "depth": 364,
+    "base_bits": 1094,
+    "ending_jump_index": 751,
+    "excluded_below_or_equal_bits": 538,
+    "excluded_below_or_equal": "~10^161"
+   },
+   {
+    "depth": 365,
+    "base_bits": 1095,
+    "ending_jump_index": 752,
+    "excluded_below_or_equal_bits": 538,
+    "excluded_below_or_equal": "~10^161"
+   },
+   {
+    "depth": 366,
+    "base_bits": 1099,
+    "ending_jump_index": 755,
+    "excluded_below_or_equal_bits": 541,
+    "excluded_below_or_equal": "~10^162"
+   },
+   {
+    "depth": 367,
+    "base_bits": 1102,
+    "ending_jump_index": 757,
+    "excluded_below_or_equal_bits": 543,
+    "excluded_below_or_equal": "~10^163"
+   },
+   {
+    "depth": 368,
+    "base_bits": 1103,
+    "ending_jump_index": 758,
+    "excluded_below_or_equal_bits": 543,
+    "excluded_below_or_equal": "~10^163"
+   },
+   {
+    "depth": 369,
+    "base_bits": 1108,
+    "ending_jump_index": 761,
+    "excluded_below_or_equal_bits": 546,
+    "excluded_below_or_equal": "~10^164"
+   },
+   {
+    "depth": 370,
+    "base_bits": 1111,
+    "ending_jump_index": 763,
+    "excluded_below_or_equal_bits": 548,
+    "excluded_below_or_equal": "~10^164"
+   },
+   {
+    "depth": 371,
+    "base_bits": 1114,
+    "ending_jump_index": 765,
+    "excluded_below_or_equal_bits": 550,
+    "excluded_below_or_equal": "~10^165"
+   },
+   {
+    "depth": 372,
+    "base_bits": 1116,
+    "ending_jump_index": 767,
+    "excluded_below_or_equal_bits": 550,
+    "excluded_below_or_equal": "~10^165"
+   },
+   {
+    "depth": 373,
+    "base_bits": 1120,
+    "ending_jump_index": 769,
+    "excluded_below_or_equal_bits": 552,
+    "excluded_below_or_equal": "~10^165"
+   },
+   {
+    "depth": 374,
+    "base_bits": 1122,
+    "ending_jump_index": 771,
+    "excluded_below_or_equal_bits": 554,
+    "excluded_below_or_equal": "~10^166"
+   },
+   {
+    "depth": 375,
+    "base_bits": 1125,
+    "ending_jump_index": 773,
+    "excluded_below_or_equal_bits": 555,
+    "excluded_below_or_equal": "~10^166"
+   },
+   {
+    "depth": 376,
+    "base_bits": 1128,
+    "ending_jump_index": 775,
+    "excluded_below_or_equal_bits": 555,
+    "excluded_below_or_equal": "~10^166"
+   },
+   {
+    "depth": 377,
+    "base_bits": 1131,
+    "ending_jump_index": 777,
+    "excluded_below_or_equal_bits": 556,
+    "excluded_below_or_equal": "~10^167"
+   },
+   {
+    "depth": 378,
+    "base_bits": 1136,
+    "ending_jump_index": 780,
+    "excluded_below_or_equal_bits": 560,
+    "excluded_below_or_equal": "~10^168"
+   },
+   {
+    "depth": 379,
+    "base_bits": 1137,
+    "ending_jump_index": 781,
+    "excluded_below_or_equal_bits": 560,
+    "excluded_below_or_equal": "~10^168"
+   },
+   {
+    "depth": 380,
+    "base_bits": 1142,
+    "ending_jump_index": 784,
+    "excluded_below_or_equal_bits": 564,
+    "excluded_below_or_equal": "~10^169"
+   },
+   {
+    "depth": 381,
+    "base_bits": 1144,
+    "ending_jump_index": 786,
+    "excluded_below_or_equal_bits": 565,
+    "excluded_below_or_equal": "~10^169"
+   },
+   {
+    "depth": 382,
+    "base_bits": 1145,
+    "ending_jump_index": 787,
+    "excluded_below_or_equal_bits": 565,
+    "excluded_below_or_equal": "~10^169"
+   },
+   {
+    "depth": 383,
+    "base_bits": 1150,
+    "ending_jump_index": 790,
+    "excluded_below_or_equal_bits": 567,
+    "excluded_below_or_equal": "~10^170"
+   },
+   {
+    "depth": 384,
+    "base_bits": 1151,
+    "ending_jump_index": 791,
+    "excluded_below_or_equal_bits": 568,
+    "excluded_below_or_equal": "~10^170"
+   },
+   {
+    "depth": 385,
+    "base_bits": 1156,
+    "ending_jump_index": 794,
+    "excluded_below_or_equal_bits": 569,
+    "excluded_below_or_equal": "~10^171"
+   },
+   {
+    "depth": 386,
+    "base_bits": 1159,
+    "ending_jump_index": 796,
+    "excluded_below_or_equal_bits": 572,
+    "excluded_below_or_equal": "~10^171"
+   },
+   {
+    "depth": 387,
+    "base_bits": 1162,
+    "ending_jump_index": 798,
+    "excluded_below_or_equal_bits": 572,
+    "excluded_below_or_equal": "~10^172"
+   },
+   {
+    "depth": 388,
+    "base_bits": 1165,
+    "ending_jump_index": 800,
+    "excluded_below_or_equal_bits": 572,
+    "excluded_below_or_equal": "~10^172"
+   },
+   {
+    "depth": 389,
+    "base_bits": 1167,
+    "ending_jump_index": 802,
+    "excluded_below_or_equal_bits": 573,
+    "excluded_below_or_equal": "~10^172"
+   },
+   {
+    "depth": 390,
+    "base_bits": 1170,
+    "ending_jump_index": 804,
+    "excluded_below_or_equal_bits": 576,
+    "excluded_below_or_equal": "~10^173"
+   },
+   {
+    "depth": 391,
+    "base_bits": 1173,
+    "ending_jump_index": 806,
+    "excluded_below_or_equal_bits": 578,
+    "excluded_below_or_equal": "~10^173"
+   },
+   {
+    "depth": 392,
+    "base_bits": 1176,
+    "ending_jump_index": 808,
+    "excluded_below_or_equal_bits": 580,
+    "excluded_below_or_equal": "~10^174"
+   },
+   {
+    "depth": 393,
+    "base_bits": 1179,
+    "ending_jump_index": 810,
+    "excluded_below_or_equal_bits": 582,
+    "excluded_below_or_equal": "~10^174"
+   },
+   {
+    "depth": 394,
+    "base_bits": 1184,
+    "ending_jump_index": 813,
+    "excluded_below_or_equal_bits": 583,
+    "excluded_below_or_equal": "~10^175"
+   },
+   {
+    "depth": 395,
+    "base_bits": 1185,
+    "ending_jump_index": 814,
+    "excluded_below_or_equal_bits": 584,
+    "excluded_below_or_equal": "~10^175"
+   },
+   {
+    "depth": 396,
+    "base_bits": 1187,
+    "ending_jump_index": 816,
+    "excluded_below_or_equal_bits": 585,
+    "excluded_below_or_equal": "~10^175"
+   },
+   {
+    "depth": 397,
+    "base_bits": 1192,
+    "ending_jump_index": 819,
+    "excluded_below_or_equal_bits": 590,
+    "excluded_below_or_equal": "~10^177"
+   },
+   {
+    "depth": 398,
+    "base_bits": 1193,
+    "ending_jump_index": 820,
+    "excluded_below_or_equal_bits": 590,
+    "excluded_below_or_equal": "~10^177"
+   },
+   {
+    "depth": 399,
+    "base_bits": 1198,
+    "ending_jump_index": 823,
+    "excluded_below_or_equal_bits": 591,
+    "excluded_below_or_equal": "~10^177"
+   },
+   {
+    "depth": 400,
+    "base_bits": 1201,
+    "ending_jump_index": 825,
+    "excluded_below_or_equal_bits": 592,
+    "excluded_below_or_equal": "~10^177"
+   },
+   {
+    "depth": 401,
+    "base_bits": 1204,
+    "ending_jump_index": 827,
+    "excluded_below_or_equal_bits": 593,
+    "excluded_below_or_equal": "~10^178"
+   },
+   {
+    "depth": 402,
+    "base_bits": 1207,
+    "ending_jump_index": 829,
+    "excluded_below_or_equal_bits": 595,
+    "excluded_below_or_equal": "~10^178"
+   },
+   {
+    "depth": 403,
+    "base_bits": 1208,
+    "ending_jump_index": 830,
+    "excluded_below_or_equal_bits": 596,
+    "excluded_below_or_equal": "~10^179"
+   },
+   {
+    "depth": 404,
+    "base_bits": 1213,
+    "ending_jump_index": 833,
+    "excluded_below_or_equal_bits": 598,
+    "excluded_below_or_equal": "~10^179"
+   },
+   {
+    "depth": 405,
+    "base_bits": 1215,
+    "ending_jump_index": 835,
+    "excluded_below_or_equal_bits": 599,
+    "excluded_below_or_equal": "~10^180"
+   },
+   {
+    "depth": 406,
+    "base_bits": 1219,
+    "ending_jump_index": 837,
+    "excluded_below_or_equal_bits": 602,
+    "excluded_below_or_equal": "~10^180"
+   },
+   {
+    "depth": 407,
+    "base_bits": 1221,
+    "ending_jump_index": 839,
+    "excluded_below_or_equal_bits": 603,
+    "excluded_below_or_equal": "~10^181"
+   },
+   {
+    "depth": 408,
+    "base_bits": 1226,
+    "ending_jump_index": 842,
+    "excluded_below_or_equal_bits": 606,
+    "excluded_below_or_equal": "~10^182"
+   },
+   {
+    "depth": 409,
+    "base_bits": 1227,
+    "ending_jump_index": 843,
+    "excluded_below_or_equal_bits": 607,
+    "excluded_below_or_equal": "~10^182"
+   },
+   {
+    "depth": 410,
+    "base_bits": 1232,
+    "ending_jump_index": 846,
+    "excluded_below_or_equal_bits": 607,
+    "excluded_below_or_equal": "~10^182"
+   },
+   {
+    "depth": 411,
+    "base_bits": 1233,
+    "ending_jump_index": 847,
+    "excluded_below_or_equal_bits": 610,
+    "excluded_below_or_equal": "~10^183"
+   },
+   {
+    "depth": 412,
+    "base_bits": 1236,
+    "ending_jump_index": 849,
+    "excluded_below_or_equal_bits": 611,
+    "excluded_below_or_equal": "~10^183"
+   },
+   {
+    "depth": 413,
+    "base_bits": 1240,
+    "ending_jump_index": 852,
+    "excluded_below_or_equal_bits": 612,
+    "excluded_below_or_equal": "~10^184"
+   },
+   {
+    "depth": 414,
+    "base_bits": 1241,
+    "ending_jump_index": 853,
+    "excluded_below_or_equal_bits": 612,
+    "excluded_below_or_equal": "~10^184"
+   },
+   {
+    "depth": 415,
+    "base_bits": 1246,
+    "ending_jump_index": 856,
+    "excluded_below_or_equal_bits": 617,
+    "excluded_below_or_equal": "~10^185"
+   },
+   {
+    "depth": 416,
+    "base_bits": 1249,
+    "ending_jump_index": 858,
+    "excluded_below_or_equal_bits": 618,
+    "excluded_below_or_equal": "~10^185"
+   },
+   {
+    "depth": 417,
+    "base_bits": 1252,
+    "ending_jump_index": 860,
+    "excluded_below_or_equal_bits": 619,
+    "excluded_below_or_equal": "~10^186"
+   },
+   {
+    "depth": 418,
+    "base_bits": 1255,
+    "ending_jump_index": 862,
+    "excluded_below_or_equal_bits": 619,
+    "excluded_below_or_equal": "~10^186"
+   },
+   {
+    "depth": 419,
+    "base_bits": 1256,
+    "ending_jump_index": 863,
+    "excluded_below_or_equal_bits": 621,
+    "excluded_below_or_equal": "~10^186"
+   },
+   {
+    "depth": 420,
+    "base_bits": 1261,
+    "ending_jump_index": 866,
+    "excluded_below_or_equal_bits": 624,
+    "excluded_below_or_equal": "~10^187"
+   }
+  ],
+  "best_excluded_value": "49660745043257631940214700461973791115545168592076138536777855449677974044164984794353250448397315829497765368891113418878638762606729984959688321109161198441153255450206444832603240619640"
+ }
+}

@@ -1,0 +1,45 @@
+{
+  "already_landed_in_s5d": {
+    "closed_form": "f_A(n) = tau_squarefree(n) = 2^omega(n), EVEN for every n >= 2",
+    "file": "ErdosProblems/Erdos257/SupportWordStructureLab.md section 5d",
+    "general_construction": "for ANY eventually periodic g, A_g = {n : (g*mu)(n) = 1} has sum_{a in A_g} 1/(t^a-1) = sum_n g(n) t^-n in F_2(t)",
+    "my_verification_range": 60000,
+    "simplest_witness": "g = delta_1 gives A = squarefree numbers",
+    "their_verification_range": 200000,
+    "title": "Characteristic two: the divisor layer alone cannot obstruct"
+  },
+  "conjecture_status": "FALSE, refuted by a landed construction that predates this section",
+  "conjecture_tested": "sparse Odd_S ==> S is essentially a union of arithmetic progressions",
+  "my_measurements_confirming_it": {
+    "N_calibrator_same_run": [
+      14,
+      9,
+      8
+    ],
+    "Odd_squarefree_to_60000": [
+      1
+    ],
+    "T48_screen_degY_gt_Dq": true,
+    "T49_screen_top_shift_fed": true,
+    "density_at_2e5": 0.607905,
+    "nullity_D12": [
+      0,
+      0,
+      0
+    ],
+    "nullity_D5": [
+      0,
+      0,
+      0
+    ],
+    "six_over_pi_sq": 0.607927,
+    "tau_squarefree_equals_2_pow_omega": {
+      "checked_to": 60000,
+      "violations": 0
+    }
+  },
+  "navigational_finding": "s66-s71 characterise which E die under the socket, but s5d had already established that the DIVISOR LAYER ALONE CANNOT OBSTRUCT -- so socket-survival was never going to be scarce. The socket criterion is a sharp result about a layer already known to be insufficient.",
+  "process_failure": "cross-index line 69 lists 'characteristic-two no-go; sum_{a squarefree} 1/(t^a-1) = 1/t in F_2((1/t)) | same, section 5d' -- I read that row THIS turn and only then followed it, after deriving the same thing from scratch.",
+  "verdict": "NEGATIVE ITERATION -- no new mathematics; s5d of SupportWordStructureLab.md had it all",
+  "what_is_possibly_mine": "aperiodicity of the squarefree SET by irrational density 6/pi^2 (s5d discusses eventual periodicity of f_A, a different object)"
+}

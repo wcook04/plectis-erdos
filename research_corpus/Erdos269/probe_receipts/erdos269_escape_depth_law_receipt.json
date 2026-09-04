@@ -1,0 +1,283 @@
+{
+ "probe_id": "erdos269_escape_depth_law",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_269",
+   "target_statement": "Prove irrationality in the first unresolved support case with three distinct prime generators.",
+   "claim_ceiling": "No three-prime irrationality or transcendence theorem has been proved. Lean identifies the actual compressed dyadic radix with the successive threePrimeHeight and literal smoothPrefixLcm ratio and proves that it lies in {2,6,10,30}. It proves an all-scale quadratic bound for the literal ordered digit, a polynomial-geometric majorant and summability for the actual real shell masses, constructs the genuine infinite dyadic-shell tsum tail, and proves its exact recurrence X_(a+1)=b_a X_a-d_a. The bounded-radix theorem therefore applies directly: the actual normalized infinite tail either reaches an exact integral state or returns cofinally to distance at least 1/31 from every integer. The infinite-tail specialization is closed; excluding the exact-integral-state branch is now the precise unresolved throat. Lean also proves the complete local-window canonical-residue consumer and the two-window projective shadow d_a*H_b=d_b*H_a mod B. Exact B=11 and B=7 witnesses establish strict projective exclusion power while eliminating a uniform small-centered-defect shortcut, but they supply no universal or cofinal quantifiers. Exact affine-cylinder reconstruction at anchor a=100 reaches depth 200 and falsifies every proposed general-denominator post-clear delay cap K<=199. On the special denominator-one branch, the exact source word at a=2295 survives four transitions after first base-clear, separately eliminating a uniform three-transition classification. Exact left-null certificates eliminate every direct radix-phase-conditioned polynomial coboundary of total degree at most two in the source coordinates; higher-degree, nonpolynomial, unbounded-memory, and later-onset carries remain open. Exact Farey-band counting eliminates monotone admissibility propagation from nesting, later first-clear length, or coarse width; residue-one counterexamples rule out fixed windows and denominator-independent residue bounds. Arbitrary-order nonsingular kernel minors eliminate finite-dimensional observers of the full symbolic kernel without excluding a proved collapse of the actual reachable subspace. The remaining producer must exclude exact integral normalized source-tail states, force denominator-adaptive cofinal one-window or projective-pair escape, prove a reachable-subspace collapse, use an infinite-dimensional or nonlinear observer, or construct and analyze admissible rational affine cylinders at arbitrary depth. Exact integral tails remain unexcluded. The dyadic radix word is now identified exactly as the superposition of the Beatty characteristic sequences of log_2 3 and log_2 5, so the source system is a cocycle over a rotation of the 2-torus by (log_3 2, log_5 2); factor complexity is bounded by (n+1)^2 and measured equal to it for n <= 22. Within that new family the Adamczewski-Bugeaud stammering route is retired on measured evidence plus the Dirichlet cap, with the missing effective simultaneous-approximation bound named explicitly. The normalized tail is Diophantine-generic over 2,162 airtight-certified partial quotients, which both explains the failure of every finite-memory functional attempt and proves the value is not rational with denominator below 2^3736. Finally the escape route's own ceiling is measured: the largest excludable denominator at window depth L is Theta(sqrt(B_L)), so deeper finite certificates cannot reach a cofinal quantifier. Exact integral tails remain unexcluded and the target is open."
+  },
+  "hypothesis": {
+   "id": "escape_delay_accumulates",
+   "statement": "Escape delay accumulates somewhere in the (denominator, start) plane, so that a conspiracy builds up which a Lyapunov function or finite-memory observer could detect."
+  },
+  "probe": {
+   "id": "erdos269_escape_depth_law",
+   "question": "Over a large rectangle of denominators and starts, does the canonical residue always escape the analytic cap, and does the escape depth stay close to the counting threshold log_8(q*kappa)?",
+   "computation": "Exact escape depth for every odd q <= 120 coprime to 30 against every start a <= 20000, with the excess over the counting threshold recorded.",
+   "falsifier": "Any pair with no escape inside the search depth, or an excess growing beyond the generic extreme-value prediction.",
+   "stop_condition": "One non-escaping pair, or a systematically growing excess, reinstates the conspiracy reading and the functional attempts with it.",
+   "resource_bounds": {
+    "max_denominator": 120,
+    "max_search_depth": 80,
+    "max_start": 20000
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "Escape is generic with no accumulation anywhere in the rectangle, so no residue bias exists for a functional to detect.",
+   "falsification_consequence": "A conspiracy region exists and is the place to aim a functional.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos269_engine.py",
+    "formal_math/probes/erdos269_escape_depth_law.py",
+    "formal_math/probes/erdos269_fast_engine.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "640,000 pairs, zero non-escapes. Maximum escape depth 18, concentrated at depths 10-13. Mean excess over the counting threshold 0.97; the single largest is 7.09 at q=113, a=11569, meaning 113*X_11569 sits within 4e-7 of an integer from below - against an expected closest approach of about 1.6e-6 for 640,000 draws of a generic quantity. Escape delay does not accumulate anywhere in the rectangle.",
+   "progress": {
+    "class": "mechanism_eliminated",
+    "decision_basis": "Zero non-escapes in 640,000 exact certificates with an extreme excess consistent with generic extreme-value behaviour.",
+    "next_analytic_target": "Anti-concentration for the residues derived from the torus-rotation cocycle, since no bias exists to exploit.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_269",
+  "motivated_by": [
+   "affine_cylinder_delay_101_counterexample",
+   "exclude_exact_integral_dyadic_tails",
+   "residue_delay_five_uniform_bound_counterexample"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "escape_is_generic_with_no_accumulation"
+  ],
+  "rationale": "Tests the shared premise of every retired functional attempt on the integral-tail branch - that delay accumulates - directly, at scale."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+   "byte_length": 14385,
+   "sha256": "271d03d7211814b204b94f74d9251e1e687d7c591c34605110348903c025572e"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+   "byte_length": 57166,
+   "sha256": "d6fd961aebd3e3ff0faac37ce7bfd4637c6d7b3acf236dc3439201efbff187b0"
+  },
+  {
+   "path": "formal_math/probes/erdos269_engine.py",
+   "byte_length": 5343,
+   "sha256": "a4de6896e1b580af3ed8545c51344ef9912e45530328a6f10b12d55af757a2cd"
+  },
+  {
+   "path": "formal_math/probes/erdos269_escape_depth_law.py",
+   "byte_length": 4669,
+   "sha256": "4b3ee684fda81a948ac228b6351bf797ecae414b6347d44f5b10eeec1785a248"
+  },
+  {
+   "path": "formal_math/probes/erdos269_fast_engine.py",
+   "byte_length": 5564,
+   "sha256": "cc16036f2a83f9cb91ef25c779983d16d372c80d38a30b4d6b386c98adb44c93"
+  }
+ ],
+ "result": {
+  "probe_id": "erdos269_escape_depth_law",
+  "parameters": {
+   "max_start": 20000,
+   "max_q": 120,
+   "max_length": 80,
+   "q_count": 32
+  },
+  "pairs_tested": 640000,
+  "no_escape_pairs": [],
+  "no_escape_count": 0,
+  "max_escape_depth": 18,
+  "depth_histogram": {
+   "1": 1,
+   "2": 3,
+   "3": 41,
+   "4": 183,
+   "5": 642,
+   "6": 2012,
+   "7": 5268,
+   "8": 16430,
+   "9": 43514,
+   "10": 114491,
+   "11": 225638,
+   "12": 185382,
+   "13": 39802,
+   "14": 5935,
+   "15": 550,
+   "16": 95,
+   "17": 12,
+   "18": 1
+  },
+  "depth_record_trace": [
+   {
+    "q": 1,
+    "start": 7,
+    "depth": 5,
+    "ending_jump_index": 23,
+    "window_base_bits": 15,
+    "cap": 87,
+    "escaped": true
+   },
+   {
+    "q": 1,
+    "start": 72,
+    "depth": 6,
+    "ending_jump_index": 159,
+    "window_base_bits": 17,
+    "cap": 2988,
+    "escaped": true
+   },
+   {
+    "q": 1,
+    "start": 86,
+    "depth": 7,
+    "ending_jump_index": 190,
+    "window_base_bits": 21,
+    "cap": 4225,
+    "escaped": true
+   },
+   {
+    "q": 1,
+    "start": 295,
+    "depth": 8,
+    "ending_jump_index": 623,
+    "window_base_bits": 23,
+    "cap": 43820,
+    "escaped": true
+   },
+   {
+    "q": 1,
+    "start": 447,
+    "depth": 9,
+    "ending_jump_index": 938,
+    "window_base_bits": 27,
+    "cap": 98805,
+    "escaped": true
+   },
+   {
+    "q": 1,
+    "start": 692,
+    "depth": 10,
+    "ending_jump_index": 1445,
+    "window_base_bits": 29,
+    "cap": 233611,
+    "escaped": true
+   },
+   {
+    "q": 1,
+    "start": 2181,
+    "depth": 11,
+    "ending_jump_index": 4517,
+    "window_base_bits": 33,
+    "cap": 2272054,
+    "escaped": true
+   },
+   {
+    "q": 1,
+    "start": 3611,
+    "depth": 14,
+    "ending_jump_index": 7472,
+    "window_base_bits": 43,
+    "cap": 6211725,
+    "escaped": true
+   },
+   {
+    "q": 7,
+    "start": 18614,
+    "depth": 15,
+    "ending_jump_index": 38404,
+    "window_base_bits": 46,
+    "cap": 1147417664,
+    "escaped": true
+   },
+   {
+    "q": 13,
+    "start": 16742,
+    "depth": 16,
+    "ending_jump_index": 34547,
+    "window_base_bits": 49,
+    "cap": 1724436575,
+    "escaped": true
+   },
+   {
+    "q": 47,
+    "start": 10514,
+    "depth": 17,
+    "ending_jump_index": 21709,
+    "window_base_bits": 51,
+    "cap": 2462266278,
+    "escaped": true
+   },
+   {
+    "q": 113,
+    "start": 11569,
+    "depth": 18,
+    "ending_jump_index": 23886,
+    "window_base_bits": 55,
+    "cap": 7166458531,
+    "escaped": true
+   }
+  ],
+  "excess_max": 7.0871,
+  "excess_argmax": {
+   "q": 113,
+   "start": 11569,
+   "depth": 18,
+   "predicted": 10.9129,
+   "excess": 7.0871
+  },
+  "excess_mean": 0.969,
+  "per_q_max_depth": {
+   "1": 14,
+   "7": 15,
+   "11": 15,
+   "13": 16,
+   "17": 16,
+   "19": 15,
+   "23": 16,
+   "29": 15,
+   "31": 16,
+   "37": 16,
+   "41": 16,
+   "43": 16,
+   "47": 17,
+   "49": 17,
+   "53": 16,
+   "59": 16,
+   "61": 16,
+   "67": 16,
+   "71": 16,
+   "73": 16,
+   "77": 16,
+   "79": 15,
+   "83": 17,
+   "89": 16,
+   "91": 16,
+   "97": 16,
+   "101": 16,
+   "103": 17,
+   "107": 16,
+   "109": 17,
+   "113": 18,
+   "119": 16
+  }
+ }
+}

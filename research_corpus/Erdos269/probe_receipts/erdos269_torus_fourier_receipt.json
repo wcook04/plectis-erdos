@@ -1,0 +1,137 @@
+{
+ "probe_id": "erdos269_torus_fourier_representation",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_269",
+   "target_statement": "Prove irrationality in the first unresolved support case with three distinct prime generators.",
+   "claim_ceiling": "No three-prime irrationality or transcendence theorem has been proved. Lean identifies the actual compressed dyadic radix with the successive threePrimeHeight and literal smoothPrefixLcm ratio and proves that it lies in {2,6,10,30}. It proves an all-scale quadratic bound for the literal ordered digit, a polynomial-geometric majorant and summability for the actual real shell masses, constructs the genuine infinite dyadic-shell tsum tail, and proves its exact recurrence X_(a+1)=b_a X_a-d_a. The bounded-radix theorem therefore applies directly: the actual normalized infinite tail either reaches an exact integral state or returns cofinally to distance at least 1/31 from every integer. The infinite-tail specialization is closed; excluding the exact-integral-state branch is now the precise unresolved throat. Lean also proves the complete local-window canonical-residue consumer and the two-window projective shadow d_a*H_b=d_b*H_a mod B. Exact B=11 and B=7 witnesses establish strict projective exclusion power while eliminating a uniform small-centered-defect shortcut, but they supply no universal or cofinal quantifiers. Exact affine-cylinder reconstruction at anchor a=100 reaches depth 200 and falsifies every proposed general-denominator post-clear delay cap K<=199. On the special denominator-one branch, the exact source word at a=2295 survives four transitions after first base-clear, separately eliminating a uniform three-transition classification. Exact left-null certificates eliminate every direct radix-phase-conditioned polynomial coboundary of total degree at most two in the source coordinates; higher-degree, nonpolynomial, unbounded-memory, and later-onset carries remain open. Exact Farey-band counting eliminates monotone admissibility propagation from nesting, later first-clear length, or coarse width; residue-one counterexamples rule out fixed windows and denominator-independent residue bounds. Arbitrary-order nonsingular kernel minors eliminate finite-dimensional observers of the full symbolic kernel without excluding a proved collapse of the actual reachable subspace. The remaining producer must exclude exact integral normalized source-tail states, force denominator-adaptive cofinal one-window or projective-pair escape, prove a reachable-subspace collapse, use an infinite-dimensional or nonlinear observer, or construct and analyze admissible rational affine cylinders at arbitrary depth. Exact integral tails remain unexcluded. The dyadic radix word is now identified exactly as the superposition of the Beatty characteristic sequences of log_2 3 and log_2 5, so the source system is a cocycle over a rotation of the 2-torus by (log_3 2, log_5 2); factor complexity is bounded by (n+1)^2 and measured equal to it for n <= 22. Within that new family the Adamczewski-Bugeaud stammering route is retired on measured evidence plus the Dirichlet cap, with the missing effective simultaneous-approximation bound named explicitly. The normalized tail is Diophantine-generic over 2,162 airtight-certified partial quotients, which both explains the failure of every finite-memory functional attempt and proves the value is not rational with denominator below 2^3736. Finally the escape route's own ceiling is measured: the largest excludable denominator at window depth L is Theta(sqrt(B_L)), so deeper finite certificates cannot reach a cofinal quantifier. Exact integral tails remain unexcluded and the target is open."
+  },
+  "hypothesis": {
+   "id": "value_has_a_torus_analytic_representation",
+   "statement": "Not only the radix word but the value itself is a torus object: S is an explicit triple Fourier series over modes indexed by a linear form in logarithms of 2, 3 and 5, up to a computable correction constant."
+  },
+  "probe": {
+   "id": "erdos269_torus_fourier_representation",
+   "question": "Does the pointwise height identity hold, does the axis telescope equal 1 exactly, and do the corrected Fourier partial sums converge to the directly computed value?",
+   "computation": "Check 1/H(s) = 2^{L}3^{L/theta}5^{L/phi}/s^3 against the literal height on 4,000 smooth s; evaluate sum_p (p-1) sum_n 1/H(p^n) in exact rationals; and compare corrected triple Fourier partial sums at |m| <= 20..320 against the directly summed value.",
+   "falsifier": "Corrected partial sums failing to converge to the direct value, or the telescope failing to equal 1 exactly.",
+   "stop_condition": "Either retires the representation; it is not repaired by more modes.",
+   "resource_bounds": {
+    "max_fourier_mode": 320,
+    "pointwise_samples": 4000
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "The value has an exact analytic form whose modes are governed by linear forms in logarithms of 2, 3 and 5.",
+   "falsification_consequence": "The torus reading does not reach the value and stays a statement about the digit word only.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicOrderedTailRecurrence.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos269_torus_fourier_representation.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "Pointwise identity holds to maximum relative error 1.5e-14. The telescope is exact: the sum truncated at 10^40 equals 1 - 1/H(last), so the total axis correction is 8 + 1/2 = 17/2. Corrected partial sums give errors 7.04e-2, 5.31e-2, 2.09e-2, 9.87e-3, 4.39e-3 at M = 20, 40, 80, 160, 320 - monotone and halving as M doubles, the 1/M rate a jump-discontinuous Fourier series gives. The sum is only conditionally summable, so it converges as a symmetric limit.",
+   "progress": {
+    "class": "mechanism_opened",
+    "decision_basis": "Exact pointwise identity, exact telescope, and monotone 1/M convergence of the corrected partial sums to the directly computed value.",
+    "next_analytic_target": "A regularisation of the conditionally summable triple series from which a Diophantine estimate on the modes lambda = m1 + m2 log_3 2 + m3 log_5 2 could be extracted.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_269",
+  "motivated_by": [
+   "dyadic_radix_word_two_torus_coding",
+   "exclude_exact_integral_dyadic_tails",
+   "running_lcm_height"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "running_height_prime_power_telescope",
+   "torus_fourier_representation_of_the_value"
+  ],
+  "rationale": "First representation of the value as an explicit analytic object, placing the arithmetic in linear forms in logarithms of 2, 3 and 5 - the same Diophantine input both remaining branches reduced to."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+   "byte_length": 14385,
+   "sha256": "271d03d7211814b204b94f74d9251e1e687d7c591c34605110348903c025572e"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+   "byte_length": 57166,
+   "sha256": "d6fd961aebd3e3ff0faac37ce7bfd4637c6d7b3acf236dc3439201efbff187b0"
+  },
+  {
+   "path": "formal_math/probes/erdos269_torus_fourier_representation.py",
+   "byte_length": 7050,
+   "sha256": "3b894c3af8028b65812beccd866b134495cb5a91c8784f4618800bd8989a3ae2"
+  }
+ ],
+ "result": {
+  "probe_id": "erdos269_torus_fourier_representation",
+  "direct_value": 1.8093193523893076,
+  "pointwise_identity_max_relative_error": 1.4817556756109772e-14,
+  "telescope_identity": {
+   "per_prime_sums": {
+    "2": 0.5931259677635827,
+    "3": 0.16954501494412402,
+    "5": 0.016946000587042306
+   },
+   "weighted_total": 1.0,
+   "one_minus_total_numerator": 1,
+   "one_minus_total_is_reciprocal_of_an_integer": true,
+   "telescope_holds_to_truncation": true
+  },
+  "correction_constant": "17/2",
+  "convergence": [
+   {
+    "M": 20,
+    "fourier_partial": 10.238960156,
+    "corrected": 1.738960156,
+    "abs_error": 0.070359196
+   },
+   {
+    "M": 40,
+    "fourier_partial": 10.256220085,
+    "corrected": 1.756220085,
+    "abs_error": 0.053099267
+   },
+   {
+    "M": 80,
+    "fourier_partial": 10.288380729,
+    "corrected": 1.788380729,
+    "abs_error": 0.020938624
+   },
+   {
+    "M": 160,
+    "fourier_partial": 10.299452476,
+    "corrected": 1.799452476,
+    "abs_error": 0.009866876
+   },
+   {
+    "M": 320,
+    "fourier_partial": 10.304929232,
+    "corrected": 1.804929232,
+    "abs_error": 0.004390121
+   }
+  ],
+  "error_is_decreasing": true,
+  "final_abs_error": 0.004390121,
+  "reading": "the corrected triple Fourier sum converges to the directly computed value; the representation is exact with correction constant 17/2"
+ }
+}

@@ -1,0 +1,202 @@
+{
+  "claim_ceiling": "This is a counterexample to one straight-spoke completion, not to Erd\u0151s #1041 and not to curved descending paths.",
+  "exact_checks": {
+    "all_roots_strictly_inside_unit_disk": true,
+    "critical_at_origin": true,
+    "excess_numerator_at_common_denominator": 167186825055722123673577759296931,
+    "polynomial_abs": {
+      "denominator": 59708022487203200000000000000000000,
+      "numerator": 59875209312258922123673577759296931
+    },
+    "polynomial_abs_exceeds_one": true,
+    "polynomial_value": {
+      "imaginary": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "real": {
+        "denominator": 59708022487203200000000000000000000,
+        "numerator": -59875209312258922123673577759296931
+      }
+    },
+    "pythagorean_identity": {
+      "holds": true,
+      "left": 811801,
+      "right": 811801
+    },
+    "reciprocal_sum": {
+      "imaginary": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "real": {
+        "denominator": 1,
+        "numerator": 0
+      }
+    },
+    "root_norm_squares": [
+      {
+        "denominator": 813604000000,
+        "numerator": 810178209801
+      },
+      {
+        "denominator": 1000000,
+        "numerator": 998001
+      },
+      {
+        "denominator": 1000000,
+        "numerator": 998001
+      },
+      {
+        "denominator": 1000000,
+        "numerator": 998001
+      },
+      {
+        "denominator": 1000000,
+        "numerator": 998001
+      }
+    ],
+    "spoke_parameter": {
+      "denominator": 10,
+      "numerator": 1
+    },
+    "spoke_point": {
+      "imaginary": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "real": {
+        "denominator": 9020000,
+        "numerator": 900099
+      }
+    },
+    "unique_nearest_root_index": 0
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+      "falsification_consequence": "The metric pair cannot be converted into the required path by using its two straight spokes; a curved/topological producer is essential.",
+      "survival_consequence": "If unique-nearest spokes were always safe, the checked metric pair theorem would have a direct containment route."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "two_nearest_straight_spokes_are_safe",
+      "statement": "At the critical point used by the geometric-mean metric theorem, the nearest and second-nearest roots can be joined to the critical point by straight segments contained in |f|<1."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearestSpokeCounterexampleComputationalLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos1041_nearest_spoke.py"
+      ]
+    },
+    "probe": {
+      "computation": "Construct five rational-complex roots with exact reciprocal sum zero, compare their rational squared norms, and evaluate the factored polynomial exactly at one tenth of the unique nearest root.",
+      "falsifier": "A balanced configuration with a unique nearest root whose straight spoke contains a point where |f|>1.",
+      "id": "balanced_rational_unique_nearest_spoke",
+      "question": "Can reciprocal balance, unique nearest-root selection, and an unsafe straight spoke occur simultaneously?",
+      "stop_condition": "At the first exact unique-nearest unsafe-spoke witness, retire the two-nearest straight-spoke completion and return to curved branch selection, collar stability, or the Reeb decomposition."
+    },
+    "problem": {
+      "claim_ceiling": "An exact counterexample to the nearest-root straight-spoke completion does not disprove the Erd\u0151s problem.",
+      "id": "erdos_1041",
+      "target_statement": "Find two roots joined by a curve of length less than 2 inside the strict unit lemniscate of a monic polynomial with roots in the open unit disk."
+    },
+    "result": {
+      "status": "exact_one_way_result",
+      "summary": "An exact balanced five-root polynomial has a unique nearest root to the critical point 0, yet its straight spoke leaves |f|<1 at one tenth of the root radius. This falsifies the two-nearest straight-spoke completion of the checked metric theorem."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "mechanism_effect": "The proof of exists_two_roots_dist_sum_le_two_mul_geomMean selects a nearest root and a second-nearest root. Here the nearest root is unique and its spoke is unsafe, so the selected broken straight line through the critical point cannot stay in the lemniscate.",
+  "parameters": {
+    "a": {
+      "denominator": 902000,
+      "numerator": 900099
+    },
+    "p": {
+      "denominator": 1000,
+      "numerator": 999
+    },
+    "u_minus": {
+      "imaginary": {
+        "denominator": 901,
+        "numerator": -780
+      },
+      "real": {
+        "denominator": 901,
+        "numerator": -451
+      }
+    },
+    "u_plus": {
+      "imaginary": {
+        "denominator": 901,
+        "numerator": 780
+      },
+      "real": {
+        "denominator": 901,
+        "numerator": -451
+      }
+    }
+  },
+  "roots": [
+    {
+      "imaginary": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "real": {
+        "denominator": 902000,
+        "numerator": 900099
+      }
+    },
+    {
+      "imaginary": {
+        "denominator": 1000,
+        "numerator": 999
+      },
+      "real": {
+        "denominator": 1,
+        "numerator": 0
+      }
+    },
+    {
+      "imaginary": {
+        "denominator": 1000,
+        "numerator": -999
+      },
+      "real": {
+        "denominator": 1,
+        "numerator": 0
+      }
+    },
+    {
+      "imaginary": {
+        "denominator": 45050,
+        "numerator": 38961
+      },
+      "real": {
+        "denominator": 901000,
+        "numerator": -450549
+      }
+    },
+    {
+      "imaginary": {
+        "denominator": 45050,
+        "numerator": -38961
+      },
+      "real": {
+        "denominator": 901000,
+        "numerator": -450549
+      }
+    }
+  ],
+  "schema": "erdos1041-nearest-spoke-exact-counterexample/1",
+  "source": {
+    "byte_length": 9348,
+    "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos1041_nearest_spoke.py",
+    "sha256": "0994d7bdc9179a9aa2c6a8122b7d322e1090ea50ec4c880f2ba9b42626f202b2"
+  }
+}

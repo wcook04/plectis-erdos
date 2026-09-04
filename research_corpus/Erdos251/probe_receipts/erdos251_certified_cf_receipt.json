@@ -1,0 +1,218 @@
+{
+ "probe_id": "erdos_251_certified_continued_fraction",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_251",
+   "target_statement": "Prove irrationality of the dyadic series built from consecutive prime gaps.",
+   "claim_ceiling": "The target irrationality is not proved. Lean proves the explicit elementary bound p_n <= 1250(n+1)^4 and therefore unconditionally checks convergence of the normalized prime and actual prime-gap dyadic series together with their exact infinite identity. Under non-irrationality it extracts a rational witness and proves that the rational candidate state and every fixed shift are exactly the corresponding scaled real tsum tails. Lean also checks the tail-shift integrality machinery, proves unboundedness and non-eventual-periodicity of the actual prime gaps, and verifies the implication from a cofinal adjacent small-mismatch supply to exclusion of eventual integral h-shifts. The explicit rational polynomial-tail countermodel g_n=2(n^2+4n+2), T_n=2(n+4)^2 now proves that positivity, parity, polynomial growth, unboundedness, and nonperiodicity cannot supply that producer: its adjacent differences are never \u00b12. For every rational candidate S, Lean decomposes the complete denominator into dyadic and odd parts, proves eventual integrality of one positive fixed shift, and therefore proves that this shift cannot be eventually small. Both the data-dependent affine cylinder and its fixed-lattice block-residue replacement are Lean-checked circular. The remaining producer must use genuinely finer consecutive-prime arithmetic or external control of actual prime-tail fractional parts, rather than recurrence-generated block pullbacks or coarse gap growth alone. The remaining producer's event has now been measured in the actual primes: it occurs for every offset h <= 16 over 6.8 million primes, at density bounded away from zero after the 1/log p rescaling, verified against the literal producer statement with margins eight orders above numerical resolution. The producer is therefore true in the actual primes rather than an artifact the polynomial countermodel generalises to, and the residual is a proof of cofinality whose missing input is Hardy-Littlewood k-tuple correlation at a fixed offset. Cofinality is not proved and the target irrationality remains open. Conditioning on the +-2 digit further separates the remaining producer event into a digit factor and a tail factor, both bounded away from zero and drifting alike, so the two can be attacked separately rather than jointly; the conditional structure is offset-independent from h = 5 onwards, leaving only small offsets to be treated specially. A certified continued-fraction prefix of 23369 partial quotients now gives the packet's first finite denominator exclusion, q > 10^12041, covering the prime series and the gap series alike since they differ by the integer 2. The expansion is generic: the one large partial quotient, 973919, has approximation exponent 2.0007, and the maximum irrationality-exponent witness above convergent denominators 2^10000 is 2.0010, matching Erdos 68 and 249 to four decimals."
+  },
+  "hypothesis": {
+   "id": "recorded_denominator_exclusion_is_near_best_available",
+   "statement": "The finite denominator exclusion recorded for this problem is close to what finite computation can give, so improving it needs new machinery."
+  },
+  "probe": {
+   "id": "erdos_251_certified_continued_fraction",
+   "question": "How large a denominator can be excluded for S = sum_(i>=0) p_i/2^(i+1) over the zero-based primes by a continued-fraction prefix whose every quotient is forced by a rigorous rational bracket, and do the certified quotients look generic?",
+   "computation": "Bracket S by exact integers lo <= 2^B S <= hi, run the interval continued fraction so a quotient is emitted only when both endpoints agree on it, and read the bound off the last certified convergent via best approximation of the second kind, checking |q_n S - p_n| > 0 against the bracket rather than assuming it. The arithmetic self-checks against the known expansion of e and the convergents of pi before every run.",
+   "falsifier": "A bound not far exceeding the recorded exclusion, which would mean the recorded one was already near best; or an anomalously large partial quotient, which would place S unusually close to a rational and hand over a concrete candidate denominator to test.",
+   "stop_condition": "A bound many orders of magnitude past the recorded one, with generic Levy and Gauss-Kuzmin statistics, settles the question and leaves nothing further for this route.",
+   "resource_bounds": {
+    "certified_quotients": 23369,
+    "denominator_lower_bound_bits": 39998,
+    "scale_bits": 80000
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "The recorded exclusion stands as near-best and finite denominator work needs genuinely new machinery.",
+   "falsification_consequence": "The recorded exclusion was far from best and this standard route, absent from the packet, replaces it.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Shared/CertifiedContinuedFractionLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/certified_continued_fraction.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "23369 certified partial quotients at B=80000 bits give q >= 2^39998, above 10^12041, with the separation |q_n S - p_n| > 0 verified against the bracket. The recorded exclusion was no finite denominator exclusion recorded. Summation by parts gives prime series = 2 + gap series, so the two differ by an integer, have the same denominator, and one certificate bounds both. The certified quotients are generic: Levy's constant matched to 0.02 percent, Gauss-Kuzmin worst |z| = 1.90 over the first five values, largest partial quotient 973919, and -- the coordinate that actually matters -- a maximum irrationality exponent witness of 2.00099 over convergent denominators above 2^10000. So there is no anomalous near-rational and no candidate denominator to hand back to the problem's own machinery.",
+   "progress": {
+    "class": "one_way_theorem",
+    "decision_basis": "Every quotient is forced by the bracket, the separation is verified rather than assumed, and the arithmetic reproduces the known expansions of e and pi.",
+    "next_analytic_target": "None from this route: the expansion is generic, so no larger partial quotient and no Liouville-flavoured candidate denominator is available. Finite denominator exclusion is not on the path to the cofinal statement.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_251",
+  "motivated_by": [
+   "elementary_prime_bound_and_unconditional_convergence",
+   "gap_series_identity"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "certified_continued_fraction_denominator_exclusion"
+  ],
+  "rationale": "Replaces the recorded finite denominator exclusion with one many orders of magnitude stronger by a standard route the packet did not contain, and records that the expansion is generic so the route is now exhausted."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Shared/CertifiedContinuedFractionLab.md",
+   "byte_length": 7842,
+   "sha256": "a6b442801b5090adca5febfceed8b44653f271c720d7d4a321ca9ac004dc155a"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/research_packet.json",
+   "byte_length": 21858,
+   "sha256": "d88a73fbbfc9c075347e6f0deac1c561db1823d575b5443a59ffc6e295cb7efc",
+   "scoped_sha256": "e6c631ed41d6d41917a1275f1c4be2bc4bc96ec47b0e2335b9abcd463b4ce80c",
+   "scope_ids": [
+    "certified_continued_fraction_denominator_exclusion",
+    "elementary_prime_bound_and_unconditional_convergence",
+    "gap_series_identity"
+   ]
+  },
+  {
+   "path": "formal_math/probes/certified_continued_fraction.py",
+   "byte_length": 14046,
+   "sha256": "7a6a001f6b4e39b96f34e4103a2fe92921cc93ef541f33aa8fbe6e4eb2d58fc4"
+  }
+ ],
+ "result": {
+  "certified_quotients": 23369,
+  "scale_bits": 80000,
+  "bracket_width": 1,
+  "denominator_lower_bound_bits": 39998,
+  "denominator_lower_bound_decimal_digits": 12041,
+  "separation_verified": true,
+  "max_partial_quotient": 973919,
+  "argmax_partial_quotient_index": 16442,
+  "irrationality_exponent_witness": {
+   "q_at_least_2_pow_100": {
+    "max_exponent": 2.0481780962882983,
+    "at_index": 82
+   },
+   "q_at_least_2_pow_1000": {
+    "max_exponent": 2.0077057303035777,
+    "at_index": 708
+   },
+   "q_at_least_2_pow_10000": {
+    "max_exponent": 2.0009911247309886,
+    "at_index": 6899
+   }
+  },
+  "partial_quotient_histogram": {
+   "3": 2182,
+   "1": 9737,
+   "2": 4010,
+   "11-100": 2538,
+   "6-10": 2298,
+   "5": 928,
+   "4": 1308,
+   "101+": 368
+  },
+  "gauss_kuzmin": {
+   "1": {
+    "observed": 0.4166631006889469,
+    "expected": 0.41503749927884376,
+    "z": 0.5043435251080541
+   },
+   "2": {
+    "observed": 0.17159484787539048,
+    "expected": 0.16992500144231237,
+    "z": 0.6796875105447651
+   },
+   "3": {
+    "observed": 0.09337156061448929,
+    "expected": 0.09310940439148145,
+    "z": 0.13791325611290645
+   },
+   "4": {
+    "observed": 0.05597158628952886,
+    "expected": 0.058893689053568614,
+    "z": -1.8974128041237748
+   },
+   "5": {
+    "observed": 0.03971072788737216,
+    "expected": 0.04064198449734577,
+    "z": -0.7209607560566963
+   }
+  },
+  "levy_observed": 1.1863674661103638,
+  "levy_expected": 1.1865691104156255,
+  "levy_relative_error": 0.0001699389470800185,
+  "first_quotients": [
+   3,
+   1,
+   2,
+   13,
+   1,
+   1,
+   2,
+   7,
+   1,
+   2,
+   1,
+   2,
+   18,
+   2,
+   15,
+   1,
+   1,
+   5,
+   5,
+   1,
+   2,
+   1,
+   1,
+   9
+  ],
+  "problem_id": "erdos_251",
+  "self_check": {
+   "e_prefix": [
+    2,
+    1,
+    2,
+    1,
+    1,
+    4,
+    1,
+    1,
+    6,
+    1,
+    1,
+    8,
+    1,
+    1
+   ],
+   "pi_convergents": [
+    [
+     3,
+     1
+    ],
+    [
+     22,
+     7
+    ],
+    [
+     333,
+     106
+    ],
+    [
+     355,
+     113
+    ]
+   ],
+   "status": "arithmetic_verified_against_known_expansions"
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+  "kind": "annex_distillation",
+  "schema_version": "annex_distillation_v1",
+  "slug": "arxiv-1601-02688-zudilin-generalized-q-logarithm",
+  "distillation_status": "partial",
+  "axes_covered": [
+    "paper_module_hologram"
+  ],
+  "last_distilled_at": "2026-07-08T14:38:06.475072+00:00",
+  "distilled_by": "controller:codex:erdos249_annex_router:2026-07-08",
+  "patterns": [
+    {
+      "name": "generalized q-logarithm Pade comparator",
+      "one_liner": "The generalized q-logarithm paper supplies q-Pade and Hankel determinant tactics for adjacent q-series, with a boundary around direct mu-weight transfer.",
+      "axis": "paper_module_hologram",
+      "adoption_lane": 5,
+      "adoption_status": "rejected",
+      "adoption_action": "Use as a q-Pade comparator when checking whether a proposed construction has a source precedent.",
+      "source_locus": [
+        "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/annex_index.json",
+        "annexes/arxiv-1601-02688-zudilin-generalized-q-logarithm/extracted.md",
+        "principal-results-s2",
+        "padé-approximations-s3",
+        "hankel-determinants-s4"
+      ],
+      "local_target": [
+        "docs/formal_math/erdos249_typeB_ambitious_modular_route.md"
+      ],
+      "relevance": 76,
+      "relevance_justification": "Distillation row is a route handle for the Erdos #249 paper packet, not proof authority.",
+      "confidence": "high",
+      "rejection_reason": "The generalized q-logarithm target has different coefficient structure from the mu-weighted second-power Lambert value.",
+      "reevaluation_trigger": "Reopen if a construction maps the mu target into the generalized q-logarithm framework with preserved denominator arithmetic.",
+      "id": "p001",
+      "added_at": "2026-07-08",
+      "last_refreshed_at": "2026-07-08"
+    }
+  ]
+}
