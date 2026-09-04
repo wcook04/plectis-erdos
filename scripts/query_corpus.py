@@ -3016,6 +3016,7 @@ def paper_coordinate(label: str | None, index: dict[str, dict[str, Any]]) -> dic
     return coordinate
 
 
+@lru_cache(maxsize=512)
 def claim_packet(claim_id: str) -> dict[str, Any]:
     claims = load("docs/claims.json")
     claim_index = {row["id"]: row for row in claims["claims"]}
@@ -3116,6 +3117,7 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
     }
 
 
+@lru_cache(maxsize=2_048)
 def paper_anchor_packet(handle: str, kind: str = "paper_anchor") -> dict[str, Any]:
     matches = [
         row
@@ -3247,6 +3249,7 @@ def paper_label_packet(label: str) -> dict[str, Any]:
     return paper_anchor_packet(label, kind="paper_label")
 
 
+@lru_cache(maxsize=512)
 def open_proposition_packet(open_id: str) -> dict[str, Any]:
     claims = load("docs/claims.json")
     proposition = next(
@@ -4031,6 +4034,7 @@ def reviewed_result_family_module_routes(
     return routes
 
 
+@lru_cache(maxsize=4_096)
 def declaration_packet(name: str, limit: int) -> dict[str, Any]:
     matches = declaration_rows_for_handle(name)
     if not matches:
@@ -4051,6 +4055,7 @@ def declaration_packet(name: str, limit: int) -> dict[str, Any]:
     }
 
 
+@lru_cache(maxsize=4_096)
 def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     match = re.fullmatch(r"(.+\.lean):(\d+)", source_ref.strip())
     if match is None:
@@ -4066,7 +4071,7 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     module = next((row for row in atlas["modules"] if row["path"] == module_path), None)
     if module is None:
         raise KeyError(f"unknown Lean source module: {module_path}")
-    source_lines = (ROOT / module_path).read_text(encoding="utf-8").splitlines()
+    source_lines = cached_source_lines(module_path)
     if line > len(source_lines):
         raise ValueError(
             f"source coordinate line {line} exceeds {module_path} length {len(source_lines)}"
@@ -4149,6 +4154,13 @@ def declaration_externally_addressable(row: dict[str, Any]) -> bool:
         r"^\s*(?:@\[[^\]\n]*\]\s*)*(?:private|local)\b",
         signature,
     ) is None
+
+
+@lru_cache(maxsize=128)
+def cached_source_lines(module_path: str) -> tuple[str, ...]:
+    """Read a source once for repeated coordinate and declaration queries."""
+
+    return tuple((ROOT / module_path).read_text(encoding="utf-8").splitlines())
 
 
 def compact_declaration(row: dict[str, Any]) -> dict[str, Any]:
@@ -6801,11 +6813,7 @@ def semantic_result_key(result: dict[str, Any]) -> str:
 
 def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
     """Resolve authored claim handles to exact atlas signatures and source lines."""
-    atlas = load("docs/declaration_atlas.json")
-    declarations = {
-        (row["name"], row["module"], row["line"]): row
-        for row in atlas_declarations(atlas)
-    }
+    declarations = declaration_row_indexes()["by_source"]
     claims = load("docs/claims.json")
     identity = formal_source_identity(claims)
     repository = identity["repository"].rstrip("/")
@@ -6857,9 +6865,7 @@ def declaration_source_dependency_candidates(
     declarations_by_module = declaration_row_indexes()["by_module"]
     module_declarations = declarations_by_module[declaration["module"]]
     declaration_index = module_declarations.index(declaration)
-    source_lines = (ROOT / declaration["module"]).read_text(
-        encoding="utf-8"
-    ).splitlines()
+    source_lines = cached_source_lines(declaration["module"])
     span_end = (
         module_declarations[declaration_index + 1]["line"] - 1
         if declaration_index + 1 < len(module_declarations)
@@ -8520,6 +8526,7 @@ def bounded_programme_signal_projection(spine: Mapping[str, Any]) -> dict[str, A
     }
 
 
+@lru_cache(maxsize=256)
 def route_packet(route_id: str) -> dict[str, Any]:
     claims = load("docs/claims.json")
     route = next(
