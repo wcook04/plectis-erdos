@@ -368,7 +368,7 @@ def main() -> int:
     checks = 4
 
     lean_clone_command = (
-        "git clone --depth=1 --filter=blob:none --single-branch --sparse "
+        "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
         "https://github.com/wcook04/plectis-lean-erdos249-257.git"
     )
     full_clone_command = (
@@ -378,7 +378,11 @@ def main() -> int:
     mutated_lean_clone_surfaces = human_surfaces.copy()
     mutated_lean_clone_surfaces["README.md"] = mutated_lean_clone_surfaces[
         "README.md"
-    ].replace(lean_clone_command, lean_clone_command.replace(" --sparse", ""), 1)
+    ].replace(
+        lean_clone_command,
+        lean_clone_command.replace(" --no-checkout", ""),
+        1,
+    )
     assert_human_rejected(
         summary,
         mutated_lean_clone_surfaces,
