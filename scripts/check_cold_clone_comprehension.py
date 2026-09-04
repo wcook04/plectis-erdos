@@ -1064,12 +1064,31 @@ def validate_human_first_contact(
     check_architecture_guide.validate_guide(surfaces["ARCHITECTURE.md"])
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
-    require(
+    lean_clone_command = (
+        "git clone --filter=blob:none --sparse "
+        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+    )
+    lean_sparse_command = (
+        "git -C plectis-lean-erdos249-257 sparse-checkout set "
+        "Erdos249257 ErdosProblems"
+    )
+    full_clone_command = (
         "git clone --filter=blob:none "
         "https://github.com/wcook04/plectis-lean-erdos249-257.git"
-        in readme_prefix,
+    )
+    require(
+        lean_clone_command in readme_prefix and lean_sparse_command in readme_prefix,
+        "README must expose the Lean-only partial/sparse clone commands before "
+        "a newcomer downloads the generated-document tree",
+    )
+    require(
+        full_clone_command in readme_prefix,
         "README must expose the blobless full-history clone command before "
         "a newcomer downloads obsolete generated blobs",
+    )
+    require(
+        readme_prefix.find(lean_clone_command) < readme_prefix.find(full_clone_command),
+        "README must offer the smaller Lean-only checkout before the full checkout",
     )
     # Retargeted when the README was cut to its human front-door word budget.
     # The order is the same reading order: what the eight papers are, what the

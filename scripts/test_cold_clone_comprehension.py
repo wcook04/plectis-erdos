@@ -367,13 +367,32 @@ def main() -> int:
     diagnostic.validate_human_first_contact(summary, human_surfaces)
     checks = 4
 
-    mutated_clone_surfaces = human_surfaces.copy()
-    mutated_clone_surfaces["README.md"] = mutated_clone_surfaces[
+    lean_clone_command = (
+        "git clone --filter=blob:none --sparse "
+        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+    )
+    full_clone_command = (
+        "git clone --filter=blob:none "
+        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+    )
+    mutated_lean_clone_surfaces = human_surfaces.copy()
+    mutated_lean_clone_surfaces["README.md"] = mutated_lean_clone_surfaces[
         "README.md"
-    ].replace("git clone --filter=blob:none ", "git clone ", 1)
+    ].replace(lean_clone_command, lean_clone_command.replace(" --sparse", ""), 1)
     assert_human_rejected(
         summary,
-        mutated_clone_surfaces,
+        mutated_lean_clone_surfaces,
+        "Lean-only partial/sparse clone option",
+    )
+    checks += 1
+
+    mutated_full_clone_surfaces = human_surfaces.copy()
+    mutated_full_clone_surfaces["README.md"] = mutated_full_clone_surfaces[
+        "README.md"
+    ].replace(full_clone_command, full_clone_command.replace("--filter=blob:none ", ""), 1)
+    assert_human_rejected(
+        summary,
+        mutated_full_clone_surfaces,
         "blobless full-history clone option",
     )
     checks += 1

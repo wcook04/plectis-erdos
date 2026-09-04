@@ -24,8 +24,18 @@ Large-language-model agents drafted prose, Lean proofs, and software. Will Cook
 set the objectives, reviewed the public claims and cited sources, and is
 responsible for the release.
 
-For a fresh checkout, keep the complete history required by the pinned-source
-checks without downloading every obsolete historical blob:
+For the default Lean proof build, skip the large generated-document tree and
+avoid downloading obsolete historical blobs:
+
+```bash
+git clone --filter=blob:none --sparse https://github.com/wcook04/plectis-lean-erdos249-257.git
+git -C plectis-lean-erdos249-257 sparse-checkout set Erdos249257 ErdosProblems
+cd plectis-lean-erdos249-257
+```
+
+This checks out the two default Lean libraries plus the root package files. A
+full release/document checkout should still keep the complete history required
+by the pinned-source checks without eagerly downloading obsolete blobs:
 
 ```bash
 git clone --filter=blob:none https://github.com/wcook04/plectis-lean-erdos249-257.git

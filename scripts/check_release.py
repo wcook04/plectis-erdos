@@ -2328,6 +2328,10 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_proof_cockpit.py"),
             ],
+            "clone_footprint": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_clone_footprint.py"),
+            ],
         }
     )
     query_check = late_checks["query"]
@@ -2366,6 +2370,12 @@ def main(argv: list[str] | None = None) -> int:
         proof_cockpit_check.returncode == 0,
         "cold-clone proof cockpit check failed: "
         f"{proof_cockpit_check.stdout.strip() or proof_cockpit_check.stderr.strip()}",
+    )
+    clone_footprint_check = late_checks["clone_footprint"]
+    check(
+        clone_footprint_check.returncode == 0,
+        "clone-footprint budget check failed: "
+        f"{clone_footprint_check.stdout.strip() or clone_footprint_check.stderr.strip()}",
     )
 
     # --- report ---------------------------------------------------------------------

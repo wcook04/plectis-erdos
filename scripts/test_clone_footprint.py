@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+"""Adversarial tests for the public clone-footprint contract."""
+
+from __future__ import annotations
+
+import unittest
+from pathlib import Path
+
+import check_clone_footprint as footprint
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+class CloneFootprintTests(unittest.TestCase):
+    def test_current_repository_stays_within_clone_budgets(self) -> None:
+        report = footprint.build_report(footprint.committed_entries(ROOT))
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertEqual(footprint.contract_errors(report, readme), [])
+        self.assertGreater(report["lean_sparse_omitted_bytes"], 200 * footprint.MIB)
+
+    def test_oversized_full_checkout_is_rejected(self) -> None:
+        entries = [
+            {"path": "Erdos249257/A.lean", "size_bytes": 150 * footprint.MIB},
+            {"path": "docs/generated.json", "size_bytes": 271 * footprint.MIB},
+        ]
+        report = footprint.build_report(entries)
+        errors = footprint.contract_errors(report, self.valid_readme())
+        self.assertTrue(any("full checkout" in error for error in errors))
+
+    def test_oversized_lean_checkout_is_rejected(self) -> None:
+        entries = [
+            {"path": "Erdos249257/A.lean", "size_bytes": 161 * footprint.MIB},
+            {"path": "docs/generated.json", "size_bytes": 200 * footprint.MIB},
+        ]
+        report = footprint.build_report(entries)
+        errors = footprint.contract_errors(report, self.valid_readme())
+        self.assertTrue(any("Lean sparse checkout" in error for error in errors))
+
+    def test_readme_cannot_drop_sparse_clone_route(self) -> None:
+        report = footprint.build_report(
+            [
+                {"path": "Erdos249257/A.lean", "size_bytes": 1},
+                {"path": "docs/generated.json", "size_bytes": 2},
+            ]
+        )
+        errors = footprint.contract_errors(report, footprint.FULL_CLONE_COMMAND)
+        self.assertTrue(any("--sparse" in error for error in errors))
+
+    @staticmethod
+    def valid_readme() -> str:
+        return "\n".join(
+            (
+                footprint.LEAN_CLONE_COMMAND,
+                footprint.LEAN_SPARSE_COMMAND,
+                footprint.FULL_CLONE_COMMAND,
+            )
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()
