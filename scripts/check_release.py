@@ -51,6 +51,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any
 
+from check_problem_note_sources import snapshot_lines_batch
 from methodology_contract import mutation_fixture_errors, render_markdown, validate_contract
 from lean_source import LIBRARY_ROOTS, lean_code_without_comments_and_strings
 from publication_contract import (
@@ -1385,6 +1386,35 @@ def main() -> int:
     check(re.search(rf"\\label\{{{re.escape(index_label)}\}}", paper) is not None,
           f"machine-readable paper index label {index_label!r} does not exist")
 
+    pinned_modules = {
+        decl["module"]
+        for claim in data["claims"]
+        for decl in claim["declarations"]
+    }
+    for _paper_path, paper_text in paper_sources:
+        for _macro, fname, _line_s, _name in re.findall(
+            r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?",
+            paper_text,
+        ):
+            if fname.startswith(("Erdos249257/", "ErdosProblems/")):
+                rel = fname
+            elif "\\input{problem-note-preamble}" in paper_text:
+                rel = f"ErdosProblems/{fname}"
+            else:
+                rel = f"Erdos249257/{fname}"
+            pinned_modules.add(rel)
+    pinned_cache: dict[tuple[str, str], list[str]] = {}
+    snapshot_lines_batch(
+        ((formal_ref, rel) for rel in pinned_modules),
+        pinned_cache,
+    )
+    cache.update(
+        {
+            (rel, ref): lines or None
+            for (ref, rel), lines in pinned_cache.items()
+        }
+    )
+
     # --- 3. claimed declarations -------------------------------------------
     for claim in data["claims"]:
         for decl in claim["declarations"]:
@@ -1609,52 +1639,86 @@ def main() -> int:
     check("mathematical programme" in flat_agents,
           "AGENTS.md must expose mathematical programme routes")
 
-    architecture_check = run(
-        [sys.executable, str(ROOT / "scripts" / "check_architecture_guide.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
+    mid_checks = run_independent_checks(
+        {
+            "architecture": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_architecture_guide.py"),
+            ],
+            "architecture_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_architecture_guide.py"),
+            ],
+            "agent_entry": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_agent_entry.py"),
+            ],
+            "agent_navigation_paper": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_agent_navigation_paper.py"),
+            ],
+            "certificate_probe": [
+                sys.executable,
+                str(ROOT / "scripts" / "probe_certificate_supply.py"),
+                "--check",
+            ],
+            "second_channel_probe": [
+                sys.executable,
+                str(ROOT / "scripts" / "probe_second_channel_separation.py"),
+                "--check",
+            ],
+            "semantic_contract": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_semantic_corpus.py"),
+            ],
+            "semantic_review": [
+                sys.executable,
+                str(ROOT / "scripts" / "semantic_review.py"),
+                "--check",
+            ],
+            "semantic_review_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_semantic_review.py"),
+            ],
+            "theory_lab_contract": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_theory_lab.py"),
+            ],
+            "reasoning_coordinates": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_reasoning_source_coordinates.py"),
+            ],
+            "reasoning_assembly": [
+                sys.executable,
+                str(ROOT / "scripts" / "assemble_reasoning_surfaces.py"),
+                "--check",
+            ],
+            "paper_boundary": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_rendered_paper_boundary.py"),
+                "--source-only",
+            ],
+        }
     )
+    architecture_check = mid_checks["architecture"]
     check(
         architecture_check.returncode == 0,
         "newcomer architecture guide failed: "
         f"{architecture_check.stdout.strip() or architecture_check.stderr.strip()}",
     )
-    architecture_fixture_check = run(
-        [sys.executable, str(ROOT / "scripts" / "test_architecture_guide.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    architecture_fixture_check = mid_checks["architecture_fixtures"]
     check(
         architecture_fixture_check.returncode == 0,
         "newcomer architecture guide fixtures failed: "
         f"{architecture_fixture_check.stdout.strip() or architecture_fixture_check.stderr.strip()}",
     )
-    agent_entry_check = run(
-        [sys.executable, str(ROOT / "scripts" / "test_agent_entry.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    agent_entry_check = mid_checks["agent_entry"]
     check(
         agent_entry_check.returncode == 0,
         "clone-local agent entry failed: "
         f"{agent_entry_check.stdout.strip() or agent_entry_check.stderr.strip()}",
     )
-    agent_navigation_paper_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "check_agent_navigation_paper.py"),
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    agent_navigation_paper_check = mid_checks["agent_navigation_paper"]
     check(
         agent_navigation_paper_check.returncode == 0,
         "agent-navigation paper failed: "
@@ -1703,27 +1767,11 @@ def main() -> int:
     check(atlas_check.returncode == 0,
           f"declaration atlas drift: {atlas_check.stdout.strip() or atlas_check.stderr.strip()}")
 
-    certificate_probe_check = run(
-        [sys.executable, str(ROOT / "scripts" / "probe_certificate_supply.py"), "--check"],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    certificate_probe_check = mid_checks["certificate_probe"]
     check(certificate_probe_check.returncode == 0,
           f"certificate-supply probe drift: {certificate_probe_check.stdout.strip() or certificate_probe_check.stderr.strip()}")
 
-    second_channel_probe_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "probe_second_channel_separation.py"),
-            "--check",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    second_channel_probe_check = mid_checks["second_channel_probe"]
     check(second_channel_probe_check.returncode == 0,
           f"second-channel separation probe drift: {second_channel_probe_check.stdout.strip() or second_channel_probe_check.stderr.strip()}")
 
@@ -1769,34 +1817,16 @@ def main() -> int:
     check(semantic_build.returncode == 0,
           f"semantic corpus drift: {semantic_build.stdout.strip() or semantic_build.stderr.strip()}")
 
-    semantic_contract = run(
-        [sys.executable, str(ROOT / "scripts" / "check_semantic_corpus.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    semantic_contract = mid_checks["semantic_contract"]
     check(semantic_contract.returncode == 0,
           f"semantic coverage contract: {semantic_contract.stdout.strip() or semantic_contract.stderr.strip()}")
-    semantic_review_check = run(
-        [sys.executable, str(ROOT / "scripts" / "semantic_review.py"), "--check"],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    semantic_review_check = mid_checks["semantic_review"]
     check(
         semantic_review_check.returncode == 0,
         "semantic review receipt contract: "
         f"{semantic_review_check.stdout.strip() or semantic_review_check.stderr.strip()}",
     )
-    semantic_review_fixtures = run(
-        [sys.executable, str(ROOT / "scripts" / "test_semantic_review.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    semantic_review_fixtures = mid_checks["semantic_review_fixtures"]
     check(
         semantic_review_fixtures.returncode == 0,
         "semantic review mutation fixtures: "
@@ -1819,13 +1849,7 @@ def main() -> int:
     check(lab_build.returncode == 0,
           f"theory lab drift: {lab_build.stdout.strip() or lab_build.stderr.strip()}")
 
-    lab_contract = run(
-        [sys.executable, str(ROOT / "scripts" / "check_theory_lab.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    lab_contract = mid_checks["theory_lab_contract"]
     check(lab_contract.returncode == 0,
           f"theory lab contract: {lab_contract.stdout.strip() or lab_contract.stderr.strip()}")
     theory_lab = json.loads(read(ROOT / "docs" / "theory_lab.json"))
@@ -1915,13 +1939,7 @@ def main() -> int:
             or reasoning_coordinate_check.stderr.strip()
         ),
     )
-    reasoning_coordinate_test = run(
-        [sys.executable, str(ROOT / "scripts" / "test_reasoning_source_coordinates.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    reasoning_coordinate_test = mid_checks["reasoning_coordinates"]
     check(
         reasoning_coordinate_test.returncode == 0,
         "reasoning source-coordinate regression: "
@@ -1950,17 +1968,7 @@ def main() -> int:
     )
     check(paper_alias_check.returncode == 0,
           f"paper module alias drift: {paper_alias_check.stdout.strip() or paper_alias_check.stderr.strip()}")
-    reasoning_assembly_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "assemble_reasoning_surfaces.py"),
-            "--check",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    reasoning_assembly_check = mid_checks["reasoning_assembly"]
     check(
         reasoning_assembly_check.returncode == 0,
         "reasoning-surface assembly drift: "
@@ -1969,17 +1977,7 @@ def main() -> int:
             or reasoning_assembly_check.stderr.strip()
         ),
     )
-    boundary = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "check_rendered_paper_boundary.py"),
-            "--source-only",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    boundary = mid_checks["paper_boundary"]
     check(
         boundary.returncode == 0,
         "human-facing paper boundary failed: "

@@ -228,6 +228,36 @@ def test_git_snapshot_reads_use_clean_bounded_environment() -> None:
     )
 
 
+def test_git_snapshot_batch_uses_one_clean_bounded_process() -> None:
+    first = ("a" * 40, "ErdosProblems/First.lean")
+    second = ("b" * 40, "ErdosProblems/Missing.lean")
+    first_blob = b"theorem first : True\n"
+    output = (
+        f"{'1' * 40} blob {len(first_blob)}\n".encode()
+        + first_blob
+        + b"\n"
+        + f"{second[0]}:{second[1]} missing\n".encode()
+    )
+    completed = scanner.subprocess.CompletedProcess(
+        ["git", "cat-file", "--batch"], 0, stdout=output, stderr=b""
+    )
+    cache: dict[tuple[str, str], list[str]] = {}
+    with patch.object(scanner.subprocess, "run", return_value=completed) as run:
+        scanner.snapshot_lines_batch([first, second, first], cache)
+    require(cache[first] == ["theorem first : True"], "batch lost a Git blob")
+    require(cache[second] == [], "batch did not type a missing Git blob")
+    require(len(run.call_args_list) == 1, "batch repeated the Git process")
+    kwargs = run.call_args.kwargs
+    require(
+        kwargs["env"] == scanner.singleflight.command_environment(),
+        "batch environment drifted",
+    )
+    require(
+        kwargs["timeout"] == scanner.singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "batch Git timeout drifted",
+    )
+
+
 def main() -> int:
     test_worktree_source_reader_boundary()
     test_comment_injection_is_not_a_declaration()
@@ -239,6 +269,7 @@ def main() -> int:
     test_mismatched_note_commitshort_is_rejected()
     test_commit_override_without_matching_short_is_rejected()
     test_git_snapshot_reads_use_clean_bounded_environment()
+    test_git_snapshot_batch_uses_one_clean_bounded_process()
     print(
         "test_problem_note_sources: comment injection, split heads, module "
         "collisions, required anchors, invalid floors, and mismatched source "

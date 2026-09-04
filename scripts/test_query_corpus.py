@@ -45,6 +45,7 @@ from check_problem_note_sources import (
     note_pinned_commit,
     pinned_commit as corpus_pinned_commit,
     snapshot_lines,
+    snapshot_lines_batch,
 )
 from refresh_source_coordinates import PAPERS as LIVE_COORDINATE_PAPERS
 
@@ -3466,10 +3467,25 @@ def main() -> int:
         "source link below would be treated as a pinned snapshot"
     )
     corpus_default_commit = corpus_pinned_commit()
+    anchors = paper_anchor_inventory()
     snapshot_cache: dict[tuple[str, str], list[str]] = {}
+    pinned_snapshot_requests = set()
+    for anchor in anchors:
+        paper_source = anchor["paper"]["source"]
+        if paper_source in live_coordinate_papers:
+            continue
+        note_commit = note_pinned_commit(
+            (ROOT / paper_source).read_text(encoding="utf-8"),
+            corpus_default_commit,
+        )
+        for link in anchor["source_links"]:
+            if link["declaration"]:
+                module, _, _line_text = link["source_ref"].rpartition(":")
+                pinned_snapshot_requests.add((note_commit, module))
+    snapshot_lines_batch(pinned_snapshot_requests, snapshot_cache)
     live_link_count = 0
     pinned_link_count = 0
-    for anchor in paper_anchor_inventory():
+    for anchor in anchors:
         paper_source = anchor["paper"]["source"]
         if paper_source in live_coordinate_papers:
             for link in anchor["source_links"]:
