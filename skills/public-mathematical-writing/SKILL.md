@@ -22,7 +22,7 @@ python3 scripts/query_corpus.py --ask "<the mathematical question>"
 ```
 
 Follow the returned claim, open proposition, declaration, problem, or paper
-handle. Lean source checked by the pinned kernel is proof authority;
+handle. Lean source checked by the pinned Lean kernel is proof authority;
 `docs/claims.json` owns reviewed claim identity and status;
 `docs/methodology.json` owns claim-change responsibilities; generated indices
 route; papers and Markdown explain. No private checkout, memory, prompt packet,
