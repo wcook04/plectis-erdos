@@ -279,8 +279,8 @@ exits `1` in that case, so a shallow clone cannot be misread as a claim that
 failed. `check_release.py` remains the authority for locators.
 
 A mathematician can follow the reading order above and then trace one result
-from the [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The per-problem papers
-are the live route; the [joint PDF](erdos249-257-main-paper.pdf) is retired.
+from the [SOURCE MAP](SOURCE_MAP.md) into Lean. The per-problem papers
+are the live route; the [joint PDF](../erdos249-257-main-paper.pdf) is retired.
 
 A coding agent starts from an ordinary-language task. The clone-local router
 returns a bounded lane, minimum read set, and skill:
@@ -292,9 +292,9 @@ python3 scripts/agent_entry.py --skills
 
 Skills run from the clone root. `scripts/install_agent_skills.py --list` only
 exposes them to an agent harness. Read
-[`AGENTS.override.md`](AGENTS.override.md), then the bounded
-[`orientation.json`](docs/orientation.json), and expand one programme or claim;
-[`AGENTS.md`](AGENTS.md) is the full reference.
+[`AGENTS.override.md`](../AGENTS.override.md), then the bounded
+[`orientation.json`](orientation.json), and expand one programme or claim;
+[`AGENTS.md`](../AGENTS.md) is the full reference.
 
 Whole-corpus agent navigation runs without a Lean build.
 `python3 scripts/query_corpus.py --tour --format card` and
@@ -307,13 +307,13 @@ every indexed declaration and exact dependencies for both loaded roots;
 coverage keeps direct evidence, family context, and structural discovery
 distinct. These are navigation projections, not proof authority.
 
-The [proof cockpit](docs/PROOF_COCKPIT.md) produces one cold-clone
+The [proof cockpit](PROOF_COCKPIT.md) produces one cold-clone
 status and frontier card (`python3 scripts/proof_cockpit.py`), and
-[the Agent Workbench](docs/AGENT_WORKBENCH.md) records typed reasoning moves
+[the Agent Workbench](AGENT_WORKBENCH.md) records typed reasoning moves
 and kernel probes under `workbench/sessions/`. The one landed prospective
 session,
-[`carry_pivot_2026_07_27`](workbench/sessions/carry_pivot_2026_07_27/ledger.jsonl),
-produced [`SuffixCylinderCarryPivot.lean`](Erdos249257/SuffixCylinderCarryPivot.lean).
+[`carry_pivot_2026_07_27`](../workbench/sessions/carry_pivot_2026_07_27/ledger.jsonl),
+produced [`SuffixCylinderCarryPivot.lean`](../Erdos249257/SuffixCylinderCarryPivot.lean).
 Only kernel receipts assert; ledger notes and static nominations stay
 advisory.
 
@@ -323,25 +323,25 @@ differs from the target it started from becomes a question for the kernel
 rather than for a rater; this is the failure mode
 [AlphaProof Nexus](https://arxiv.org/abs/2605.22763) reports prompting could
 not prevent. [Deciding whether a sketch reduced its target or renamed
-it](docs/RESIDUAL_PROGRESS.md) documents the evaluator, its eight labelled
+it](RESIDUAL_PROGRESS.md) documents the evaluator, its eight labelled
 fixtures, and what it refuses to decide.
-[The proof-state compiler](docs/PROOF_STATE_COMPILER.md) asks the pinned Lean
+[The proof-state compiler](PROOF_STATE_COMPILER.md) asks the pinned Lean
 environment which candidate applications it actually accepts from a goal, and
-[the semantic compiler](docs/SEMANTIC_COMPILER.md) nominates declarations
+[the semantic compiler](SEMANTIC_COMPILER.md) nominates declarations
 structurally without claiming they apply.
 
 Publication topology is reported by
 `python3 scripts/query_corpus.py --publication-architecture` and
 `python3 scripts/query_corpus.py --publication-family <id>`.
 
-The [Formal Conjectures crosswalk](docs/FORMAL_CONJECTURES_CROSSWALK.md)
+The [Formal Conjectures crosswalk](FORMAL_CONJECTURES_CROSSWALK.md)
 places the corpus against the public benchmark: it binds all eight programmes
 to Google DeepMind's Formal Conjectures statements at a pinned upstream
 commit, with a SHA-256 per source file and the indexing, ambient-type, and
 cast differences a reviewer must inspect. It is statement identity and
 adapter-review metadata, not a Lean equivalence proof or a
 submission-readiness decision; every row is `not_ready_to_submit`.
-[Related problems](docs/RELATED_PROBLEMS.md) places five of the eight
+[Related problems](RELATED_PROBLEMS.md) places five of the eight
 programmes among the neighbouring numbered problems, each external status as
 listed on its erdosproblems.com page.
 
@@ -351,8 +351,8 @@ full public-surface and query sweep.
 
 ## Recovered from the front page: how the repository fits together
 
-The package has two compact supported roots. [`Erdos249257.lean`](Erdos249257.lean)
-preserves the reviewed #249/#257 corpus. [`ErdosProblems.lean`](ErdosProblems.lean)
+The package has two compact supported roots. [`Erdos249257.lean`](../Erdos249257.lean)
+preserves the reviewed #249/#257 corpus. [`ErdosProblems.lean`](../ErdosProblems.lean)
 is the problem-owned expansion surface: work lives under its actual Erdős
 problem number instead of being forced into the historical #249/#257 tree.
 Kernel checking of that second root establishes its exact Lean propositions;
@@ -360,7 +360,7 @@ it does not by itself promote them into the reviewed claim registry or claim
 that an open problem is solved.
 
 The source has five reader-facing layers. The assembled kernel,
-[`CertificateKernel.lean`](Erdos249257/CertificateKernel.lean), contains the
+[`CertificateKernel.lean`](../Erdos249257/CertificateKernel.lean), contains the
 common series machinery, the full-support Erdős-Borwein theorem, named
 support-family interfaces, and the unconditional #249 denominator exclusion.
 The #249 reduction spine, comprising the period-killer, lcm-diagonal, cone,
@@ -381,8 +381,8 @@ and explicit open frontiers for one problem at a time; new entries remain
 outside the reviewed claim registry until mathematical review establishes
 their intended meaning and public framing.
 
-[SOURCE MAP](docs/SOURCE_MAP.md) gives module order; [METHODOLOGY](METHODOLOGY.md)
-governs claim changes; [WAVE INDEX](docs/WAVE_INDEX.md) gives chronology, not
+[SOURCE MAP](SOURCE_MAP.md) gives module order; [METHODOLOGY](../METHODOLOGY.md)
+governs claim changes; [WAVE INDEX](WAVE_INDEX.md) gives chronology, not
 reading order.
 
 ## Recovered from the front page: build and verify
@@ -391,8 +391,8 @@ Everything above this heading runs with Python alone. Building the Lean source
 needs the toolchain, and `lake` arrives with it: install `elan`, Lean's
 toolchain manager, from the
 [Lean setup guide](https://leanprover-community.github.io/get_started.html).
-`elan` then reads [`lean-toolchain`](lean-toolchain) and selects
-`leanprover/lean4:v4.29.1`; [`lake-manifest.json`](lake-manifest.json) pins the
+`elan` then reads [`lean-toolchain`](../lean-toolchain) and selects
+`leanprover/lean4:v4.29.1`; [`lake-manifest.json`](../lake-manifest.json) pins the
 matching Mathlib.
 
 ```sh
@@ -427,7 +427,7 @@ python3 scripts/test_methodology_contract.py
 The pinned public Lean proof corpus contains no `sorry`, `admit`, project-defined
 `axiom`, or `native_decide`; finite computations use kernel-checked `decide`.
 One deliberate exception is outside the default build:
-[`ExternalVerification/Challenge.lean`](ExternalVerification/Challenge.lean)
+[`ExternalVerification/Challenge.lean`](../ExternalVerification/Challenge.lean)
 states the trusted propositions Comparator checks the solution against; they
 carry `sorry` by construction.
 
@@ -445,6 +445,6 @@ The problem-owned expansion surface is imported with:
 import ErdosProblems
 ```
 
-[`examples/Examples.lean`](examples/Examples.lean) is the minimal downstream
+[`examples/Examples.lean`](../examples/Examples.lean) is the minimal downstream
 consumer; its conditional shell-pressure example leaves the analytic
 hypothesis explicit and does not prove universal #257.
