@@ -995,6 +995,16 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     require(not unpinned, "Lean CI uses an action that is not pinned to a commit with a version "
         "comment, so a reader cannot tell what it resolves to: "
         + "; ".join(unpinned))
+    require(
+        re.search(
+            r"^\s*run:\s*python3 scripts/check_cold_clone_comprehension\.py\s*$",
+            workflow,
+            re.M,
+        )
+        is None,
+        "Lean CI repeats the standalone cold-clone baseline after the release "
+        "gate already runs the combined baseline-plus-adversarial program",
+    )
 
     for token in (
         '"--changed-from"',

@@ -537,6 +537,22 @@ def main() -> int:
     else:
         raise AssertionError("changed-cone planner deletion escaped")
 
+    mutated_incremental = copy.deepcopy(incremental_surfaces)
+    mutated_incremental[".github/workflows/lean.yml"] = mutated_incremental[
+        ".github/workflows/lean.yml"
+    ].replace(
+        "run: python3 scripts/check_release.py",
+        "run: python3 scripts/check_release.py\n"
+        "        run: python3 scripts/check_cold_clone_comprehension.py",
+        1,
+    )
+    try:
+        diagnostic.validate_incremental_build_contract(mutated_incremental)
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("duplicate standalone cold-clone CI step escaped")
+
     mutated = copy.deepcopy(human_surfaces)
     mutated["README.md"] = (
         "This is an exceptional and impressive research-grade achievement.\n"

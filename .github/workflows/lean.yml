@@ -658,16 +658,11 @@ jobs:
       - name: Cross-surface release checks (proof trust, claims, projections)
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/check_release.py
-      # Most committed `check_*.py` gates are reached transitively: check_release
-      # subprocesses the problem-note, semantic-corpus, theory-lab, and rendered
-      # -paper checks, and test_check_release_ref imports the release-ref wrapper.
-      # The five below were reached by nothing, so only habit kept them current.
-      # check_cold_clone_comprehension is the one that stings: it is the gate
-      # that tests the published first-contact promise -- clone this, follow a
-      # claim -- and it was the least enforced check in the repository.
-      - name: Cold-clone comprehension (guards the published first-contact test)
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/check_cold_clone_comprehension.py
+      # Most committed `check_*.py` gates are reached transitively. In
+      # particular, check_release runs the combined cold-clone
+      # baseline-plus-adversarial program once; repeating the standalone
+      # baseline here added no authority. test_check_release_ref imports the
+      # release-ref wrapper, while the distinct checks below remain explicit.
       - name: Test the claim-following verb reports drift
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_verify_claims.py
