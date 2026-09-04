@@ -26,12 +26,12 @@ def require(condition: bool, message: str) -> None:
 def main() -> int:
     source = inspect.getsource(check_release)
     require(
-        "primary_source_disposition_check = run(" in source,
-        "primary-source disposition gate bypassed the release subprocess wrapper",
+        "primary_source_disposition_check = subprocess.run(" not in source,
+        "primary-source disposition gate invokes raw subprocess.run",
     )
     require(
-        "primary_source_disposition_check = subprocess.run(" not in source,
-        "primary-source disposition gate still invokes raw subprocess.run",
+        "proof_cockpit_check = subprocess.run(" not in source,
+        "proof-cockpit gate invokes raw subprocess.run",
     )
     require(
         "_read_safe_bytes" in inspect.getsource(check_release.read)
@@ -244,6 +244,30 @@ def main() -> int:
     finally:
         check_release._PROJECTION_CHECK_RESULTS = None
 
+    independent_dispatches: list[tuple[str, ...]] = []
+
+    def record_independent(
+        args: list[str], **kwargs: object
+    ) -> subprocess.CompletedProcess[str]:
+        independent_dispatches.append(tuple(args))
+        return subprocess.CompletedProcess(args, returncode=0, stdout="ok", stderr="")
+
+    independent_commands = {
+        "one": [sys.executable, "one.py"],
+        "two": [sys.executable, "two.py"],
+    }
+    with patch.object(check_release, "_SUBPROCESS_RUN", side_effect=record_independent):
+        independent_results = check_release.run_independent_checks(independent_commands)
+    require(
+        set(independent_results) == set(independent_commands),
+        "independent release batch lost a named result",
+    )
+    require(
+        sorted(independent_dispatches)
+        == sorted(tuple(argv) for argv in independent_commands.values()),
+        "independent release batch dropped or repeated a command",
+    )
+
     require(
         check_release.ENVIRONMENT_CONTRACT
         == "clean_committed_snapshot_subprocess_environment_v1",
@@ -266,6 +290,10 @@ def main() -> int:
         check_release.PROJECTION_CHECK_WORKERS
         == check_release.refresh_projections.CHECK_WORKERS,
         "release projection batch drifted from the aggregate freshness worker bound",
+    )
+    require(
+        1 <= check_release.RELEASE_CHECK_WORKERS <= 4,
+        "release suite batch exceeds its bounded worker policy",
     )
     print(
         "test_check_release_environment: release-gate child processes cannot "

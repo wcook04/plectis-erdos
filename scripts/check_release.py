@@ -74,6 +74,7 @@ SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 SANITIZED_GIT_ENVIRONMENT_KEYS = tuple(sorted(singleflight.GIT_CONTEXT_KEYS))
 _SUBPROCESS_RUN = subprocess.run
 PROJECTION_CHECK_WORKERS = refresh_projections.CHECK_WORKERS
+RELEASE_CHECK_WORKERS = 4
 _PROJECTION_CHECK_RESULTS: dict[str, subprocess.CompletedProcess[str]] | None = None
 
 
@@ -131,6 +132,31 @@ def projection_check_results() -> dict[str, subprocess.CompletedProcess[str]]:
             executor.map(check_builder, refresh_projections.BUILDERS)
         )
     return _PROJECTION_CHECK_RESULTS
+
+
+def run_independent_checks(
+    commands: dict[str, list[str]],
+) -> dict[str, subprocess.CompletedProcess[str]]:
+    """Run independent read-only release suites with bounded concurrency."""
+    def run_one(
+        item: tuple[str, list[str]],
+    ) -> tuple[str, subprocess.CompletedProcess[str]]:
+        check_id, argv = item
+        result = _SUBPROCESS_RUN(
+            argv,
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+            env=clean_environment(),
+            timeout=SUBPROCESS_TIMEOUT_SECONDS,
+        )
+        return check_id, result
+
+    with ThreadPoolExecutor(
+        max_workers=min(RELEASE_CHECK_WORKERS, len(commands))
+    ) as executor:
+        return dict(executor.map(run_one, commands.items()))
 
 ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
 PROOF_PATHS = tuple(
@@ -2122,49 +2148,53 @@ def main() -> int:
                 release_file_exists(ROOT / rel),
                 f"orientation drilldown path does not exist: {rel}",
             )
-    query_check = run(
-        [sys.executable, str(ROOT / "scripts" / "test_query_corpus.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
+    # These suites share no writable state: their mutations live in memory or
+    # in independent temporary directories. Run them as one bounded batch so
+    # the release wall clock follows the slowest suite rather than their sum.
+    late_checks = run_independent_checks(
+        {
+            "query": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_query_corpus.py"),
+            ],
+            "mutation_harness": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_publication_mutation_harness.py"),
+            ],
+            "public_boundary": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_public_artifact_boundary.py"),
+            ],
+            "primary_source_disposition": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_primary_source_dispositions.py"),
+            ],
+            "cold_clone_adversarial": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
+            ],
+            "proof_cockpit": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_proof_cockpit.py"),
+            ],
+        }
     )
+    query_check = late_checks["query"]
     check(query_check.returncode == 0,
           f"corpus query surface failed: {query_check.stdout.strip() or query_check.stderr.strip()}")
-    mutation_harness_check = run(
-        [sys.executable, str(ROOT / "scripts" / "test_publication_mutation_harness.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    mutation_harness_check = late_checks["mutation_harness"]
     check(
         mutation_harness_check.returncode == 0,
         "publication mutation harness self-test failed: "
         f"{mutation_harness_check.stdout.strip() or mutation_harness_check.stderr.strip()}",
     )
-    public_boundary_check = run(
-        [sys.executable, str(ROOT / "scripts" / "test_public_artifact_boundary.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    public_boundary_check = late_checks["public_boundary"]
     check(
         public_boundary_check.returncode == 0,
         "public-artifact boundary contract failed: "
         f"{public_boundary_check.stdout.strip() or public_boundary_check.stderr.strip()}",
     )
-    primary_source_disposition_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "check_primary_source_dispositions.py"),
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    primary_source_disposition_check = late_checks["primary_source_disposition"]
     check(
         primary_source_disposition_check.returncode == 0,
         "third-party source redistribution disposition contract failed: "
@@ -2175,24 +2205,12 @@ def main() -> int:
     # standalone diagnostic here as well would repeat every bounded query.
     # Keep the diagnostic as a user-facing command, but execute the combined
     # baseline-plus-adversarial program once in the release gate.
-    cold_clone_adversarial = run(
-        [sys.executable, str(ROOT / "scripts" / "test_cold_clone_comprehension.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    cold_clone_adversarial = late_checks["cold_clone_adversarial"]
     check(cold_clone_adversarial.returncode == 0,
           "bounded cold-clone baseline/adversarial check failed: "
           f"{cold_clone_adversarial.stdout.strip() or cold_clone_adversarial.stderr.strip()}")
 
-    proof_cockpit_check = subprocess.run(
-        [sys.executable, str(ROOT / "scripts" / "test_proof_cockpit.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    proof_cockpit_check = late_checks["proof_cockpit"]
     check(
         proof_cockpit_check.returncode == 0,
         "cold-clone proof cockpit check failed: "
