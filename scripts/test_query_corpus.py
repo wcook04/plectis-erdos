@@ -782,6 +782,25 @@ def validate_indexed_declaration_search_equivalence() -> None:
         assert actual == expected
 
 
+def validate_bounded_declaration_search_materialization() -> None:
+    """Broad search must not decorate every declaration it later discards."""
+    original = query_corpus.compact_declaration
+    compacted: list[str] = []
+
+    def counted(row: dict[str, object]) -> dict[str, object]:
+        compacted.append(str(row["id"]))
+        return original(row)
+
+    query_corpus.compact_declaration = counted
+    try:
+        packet = query_corpus.search_packet("totient", 3)
+    finally:
+        query_corpus.compact_declaration = original
+    assert 0 < len(compacted) <= 3
+    assert packet["match_count"] > len(compacted)
+    assert packet["omitted_match_count"] == packet["match_count"] - 3
+
+
 def validate_natural_language_search() -> None:
     assert query_corpus.search_rank("exact_id", "exact_id", "body") == 0
     assert query_corpus.search_rank("exact", "exact_id", "body") == 1
@@ -1958,6 +1977,7 @@ def main() -> int:
     validate_agent_tour()
     validate_paper_guide()
     validate_indexed_declaration_search_equivalence()
+    validate_bounded_declaration_search_materialization()
     validate_natural_language_search()
     validate_indexed_declaration_lookup()
     validate_route_memory_cards()

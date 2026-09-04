@@ -6294,6 +6294,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
         and is_generic_claim_status_query(query, claims["status_taxonomy"])
     )
     ranked: list[tuple[int, str, dict[str, Any]]] = []
+    deferred_declaration_match_count = 0
 
     for artifact in artifact_inventory():
         rank = search_rank(
@@ -6443,27 +6444,49 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
         kind == "declaration" for kind, _handle in hint_targets
     )
     if search_declarations:
-        for rank, row in ranked_declaration_search_rows(query, hint_targets):
+        declaration_matches = ranked_declaration_search_rows(query, hint_targets)
+        deferred_declaration_match_count = len(declaration_matches)
+        adjusted_declaration_matches = []
+        for rank, row in declaration_matches:
             if (
                 hint_priority := hint_targets.get(
                     ("declaration", row["name"])
                 )
             ) is not None:
                 rank = -10 + hint_priority
-            if rank is not None:
-                result = {"kind": "declaration", **compact_declaration(row)}
-                if row.get("signature"):
-                    result["signature_excerpt"] = str(row["signature"])[:240]
-                result["route_memory"] = declaration_route_memory_rows(
-                    [row], claims
-                )[0]["route_memory"]
-                ranked.append(
-                    (
-                        rank,
-                        f"declaration:{row['module']}:{row['line']}:{row['name']}",
-                        result,
-                    )
+            stable_key = (
+                f"declaration:{row['module']}:{row['line']}:{row['name']}"
+            )
+            adjusted_declaration_matches.append((rank, stable_key, row))
+        # A bounded search can emit at most ``limit`` declaration rows. Rank
+        # the lightweight atlas rows first, then resolve namespaces and route
+        # payloads only for that possible output window. Broad terms used to
+        # decorate tens of thousands of rows before discarding almost all of
+        # them at the final slice.
+        adjusted_declaration_matches.sort(
+            key=lambda item: (
+                item[0],
+                0
+                if item[0] <= 2
+                else int(not declaration_externally_addressable(item[2])),
+                0 if item[0] <= 2 else 5,
+                item[1],
+            )
+        )
+        for rank, stable_key, row in adjusted_declaration_matches[:limit]:
+            result = {"kind": "declaration", **compact_declaration(row)}
+            if row.get("signature"):
+                result["signature_excerpt"] = str(row["signature"])[:240]
+            result["route_memory"] = declaration_route_memory_rows(
+                [row], claims
+            )[0]["route_memory"]
+            ranked.append(
+                (
+                    rank,
+                    stable_key,
+                    result,
                 )
+            )
 
     for row in atlas["modules"]:
         sigil = sigil_by_path.get(row["path"])
@@ -6749,6 +6772,14 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
     ranked.sort(key=search_result_sort_key)
     results = [item[2] for item in ranked]
     emitted_results = results[:limit]
+    materialized_declaration_match_count = min(
+        deferred_declaration_match_count, limit
+    )
+    total_match_count = (
+        len(results)
+        + deferred_declaration_match_count
+        - materialized_declaration_match_count
+    )
     problems = load("docs/problems.json").get("problems", [])
     for result in emitted_results:
         if result["kind"] != "module":
@@ -6772,9 +6803,9 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
         "authority_posture": "navigation_projection_not_proof_authority",
         "query": query,
         "query_interpretation": semantic_query_interpretation(query),
-        "match_count": len(results),
+        "match_count": total_match_count,
         "results": emitted_results,
-        "omitted_match_count": max(0, len(results) - limit),
+        "omitted_match_count": max(0, total_match_count - limit),
         "limit": limit,
         "artifact_availability_receipt": {
             "status": (
