@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import bisect
+import gzip
 import hashlib
 import json
 import re
@@ -28,6 +29,7 @@ from build_module_synopsis_index import (
 )
 
 ROOT = Path(__file__).resolve().parent.parent
+DECLARATION_SEARCH_INDEX = ROOT / "docs" / "declaration_search_index.json.gz"
 DEFAULT_LIMIT = 20
 MAX_LIMIT = 100
 MODULE_PACKET_LIMIT = 12
@@ -5625,9 +5627,8 @@ def fast_declaration_search_terms(value: str) -> frozenset[str]:
     return frozenset(terms)
 
 
-@lru_cache(maxsize=1)
-def declaration_search_term_index() -> dict[str, Any]:
-    """Build a compact inverted index using the atlas's overwhelmingly ASCII text."""
+def build_declaration_search_term_index() -> dict[str, Any]:
+    """Build the exhaustive declaration-search index from the tracked atlas."""
     by_term: dict[str, list[int]] = {}
     by_name: dict[str, list[int]] = {}
     module_terms: dict[str, frozenset[str]] = {}
@@ -5652,7 +5653,38 @@ def declaration_search_term_index() -> dict[str, Any]:
         terms = fast_declaration_search_terms(local_text) | shared_terms
         for term in terms:
             by_term.setdefault(term, []).append(index)
-    return {"by_term": by_term, "by_name": by_name}
+    return {
+        "schema": "erdos249257-declaration-search-index/1",
+        "atlas_source_fingerprint": load("docs/declaration_atlas.json")[
+            "source_fingerprint"
+        ],
+        "by_term": by_term,
+        "by_name": by_name,
+    }
+
+
+@lru_cache(maxsize=1)
+def declaration_search_term_index() -> dict[str, Any]:
+    """Load the generated index, rebuilding safely when its binding is stale."""
+    atlas_fingerprint = load("docs/declaration_atlas.json")["source_fingerprint"]
+    try:
+        compressed = DECLARATION_SEARCH_INDEX.read_bytes()
+        if len(compressed) > 16 * 1024 * 1024:
+            raise ValueError("compressed declaration search index exceeds 16 MiB")
+        packet = json.loads(gzip.decompress(compressed))
+        if packet.get("schema") != "erdos249257-declaration-search-index/1":
+            raise ValueError("unknown declaration search index schema")
+        if packet.get("atlas_source_fingerprint") != atlas_fingerprint:
+            raise ValueError("declaration search index is stale")
+        if not isinstance(packet.get("by_term"), dict) or not isinstance(
+            packet.get("by_name"), dict
+        ):
+            raise ValueError("declaration search index mappings are missing")
+        return packet
+    except (FileNotFoundError, OSError, EOFError, gzip.BadGzipFile, ValueError, json.JSONDecodeError):
+        # Search stays functional in partial or locally edited checkouts. The
+        # tracked projection is a speed path, never a second source of truth.
+        return build_declaration_search_term_index()
 
 
 def ranked_declaration_search_rows(

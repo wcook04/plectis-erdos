@@ -78,6 +78,9 @@ BUILDERS = (
     "scripts/build_methodology.py",
     "scripts/build_module_graph.py",
     "scripts/build_declaration_atlas.py",
+    # This compressed speed path is bound to the atlas fingerprint and must
+    # refresh before any downstream projection consumes declaration search.
+    "scripts/build_declaration_search_index.py",
     # The authored zones under docs/semantic/zones/ pin Lean line numbers by
     # hand, and until 2026-08-31 no refresher owned them at all: 3722 of the
     # 149090 pinned rows across 39 of the 94 zones had rotted onto the wrong
