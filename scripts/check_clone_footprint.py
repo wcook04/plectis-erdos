@@ -67,6 +67,10 @@ LEAN_SPARSE_COMMAND = (
 LEAN_CHECKOUT_COMMAND = "git -C plectis-lean-erdos249-257 checkout"
 LEAN_BUILD_COMMAND = "python3 scripts/lean_fast_build.py --jobs 2"
 FULL_CLONE_COMMAND = (
+    "git clone --depth=1 --filter=blob:none --single-branch "
+    "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+)
+FULL_HISTORY_CLONE_COMMAND = (
     "git clone --filter=blob:none --single-branch "
     "https://github.com/wcook04/plectis-lean-erdos249-257.git"
 )
@@ -162,13 +166,24 @@ def contract_errors(
         LEAN_CHECKOUT_COMMAND,
         LEAN_BUILD_COMMAND,
         FULL_CLONE_COMMAND,
+        FULL_HISTORY_CLONE_COMMAND,
     ):
         if command not in readme:
             errors.append(f"README is missing optimized clone command: {command}")
     lean_position = readme.find(LEAN_CLONE_COMMAND)
     full_position = readme.find(FULL_CLONE_COMMAND, lean_position + len(LEAN_CLONE_COMMAND))
-    if lean_position < 0 or full_position < 0 or lean_position > full_position:
-        errors.append("README must offer the Lean sparse checkout before the full checkout")
+    history_position = readme.find(
+        FULL_HISTORY_CLONE_COMMAND, full_position + len(FULL_CLONE_COMMAND)
+    )
+    if (
+        lean_position < 0
+        or full_position < 0
+        or history_position < 0
+        or not lean_position < full_position < history_position
+    ):
+        errors.append(
+            "README must order Lean-only, current full, then full-history checkouts"
+        )
     if sparse_manifest != LEAN_SPARSE_MANIFEST_TEXT:
         errors.append("versioned Lean sparse manifest has drifted from the checked contract")
     return errors

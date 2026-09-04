@@ -117,6 +117,7 @@ class CloneFootprintTests(unittest.TestCase):
                 footprint.LEAN_CHECKOUT_COMMAND,
                 footprint.LEAN_BUILD_COMMAND,
                 footprint.FULL_CLONE_COMMAND,
+                footprint.FULL_HISTORY_CLONE_COMMAND,
             )
         )
 

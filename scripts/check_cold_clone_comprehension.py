@@ -1075,6 +1075,10 @@ def validate_human_first_contact(
     lean_checkout_command = "git -C plectis-lean-erdos249-257 checkout"
     lean_build_command = "python3 scripts/lean_fast_build.py --jobs 2"
     full_clone_command = (
+        "git clone --depth=1 --filter=blob:none --single-branch "
+        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+    )
+    full_history_clone_command = (
         "git clone --filter=blob:none --single-branch "
         "https://github.com/wcook04/plectis-lean-erdos249-257.git"
     )
@@ -1091,12 +1095,18 @@ def validate_human_first_contact(
     )
     require(
         full_clone_command in readme_prefix,
-        "README must expose the blobless full-history clone command before "
-        "a newcomer downloads obsolete generated blobs",
+        "README must expose a shallow current-document checkout before "
+        "a newcomer downloads historical revisions",
     )
     require(
-        readme_prefix.find(lean_clone_command) < readme_prefix.find(full_clone_command),
-        "README must offer the smaller Lean-only checkout before the full checkout",
+        full_history_clone_command in readme_prefix,
+        "README must retain a blobless full-history checkout for release validation",
+    )
+    require(
+        readme_prefix.find(lean_clone_command)
+        < readme_prefix.find(full_clone_command)
+        < readme_prefix.find(full_history_clone_command),
+        "README must order Lean-only, current full, then release-history checkouts",
     )
     # Retargeted when the README was cut to its human front-door word budget.
     # The order is the same reading order: what the eight papers are, what the

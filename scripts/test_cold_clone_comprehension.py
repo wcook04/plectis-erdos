@@ -372,7 +372,7 @@ def main() -> int:
         "https://github.com/wcook04/plectis-lean-erdos249-257.git"
     )
     full_clone_command = (
-        "git clone --filter=blob:none --single-branch "
+        "git clone --depth=1 --filter=blob:none --single-branch "
         "https://github.com/wcook04/plectis-lean-erdos249-257.git"
     )
     mutated_lean_clone_surfaces = human_surfaces.copy()
@@ -397,7 +397,7 @@ def main() -> int:
     assert_human_rejected(
         summary,
         mutated_full_clone_surfaces,
-        "blobless full-history clone option",
+        "shallow blobless full-current clone option",
     )
     checks += 1
 
