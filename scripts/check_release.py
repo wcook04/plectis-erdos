@@ -196,6 +196,13 @@ PROOF_TRUST_OPTION_RE = re.compile(
     r"set_option\s+(?:maxHeartbeats|maxRecDepth)\s+0\b"
 )
 PROOF_TRUST_NATIVE_ASSIGN_RE = re.compile(r"native\s*:=\s*true\b")
+PROOF_TRUST_LINE_DECL_BYTES_RE = re.compile(
+    rb"(?:unsafe|partial)\s+(?:def|theorem|opaque|instance)\b"
+)
+PROOF_TRUST_OPTION_BYTES_RE = re.compile(
+    rb"set_option\s+(?:maxHeartbeats|maxRecDepth)\s+0\b"
+)
+PROOF_TRUST_NATIVE_ASSIGN_BYTES_RE = re.compile(rb"native\s*:=\s*true\b")
 
 
 def fail(msg: str) -> None:
@@ -686,6 +693,115 @@ def proof_trust_candidate(text: str) -> bool:
         position += len("set_option")
 
 
+def _is_word_byte(value: int) -> bool:
+    """Conservatively approximate Unicode word boundaries before decoding."""
+
+    return (
+        value >= 128
+        or value == ord("_")
+        or ord("0") <= value <= ord("9")
+        or ord("A") <= value <= ord("Z")
+        or ord("a") <= value <= ord("z")
+    )
+
+
+def _contains_delimited_token_bytes(
+    data: bytes,
+    token: bytes,
+    *,
+    check_start: bool = True,
+    forbid_dot_before: bool = False,
+    require_space_after: bool = False,
+) -> bool:
+    """Apply the cheap trust-token boundary test without Unicode decoding."""
+
+    position = 0
+    while True:
+        position = data.find(token, position)
+        if position < 0:
+            return False
+        end = position + len(token)
+        before = data[position - 1] if position else None
+        after = data[end] if end < len(data) else None
+        start_ok = (
+            not check_start
+            or before is None
+            or (
+                not _is_word_byte(before)
+                and (not forbid_dot_before or before != ord("."))
+            )
+        )
+        end_ok = after is None or not _is_word_byte(after)
+        space_ok = (
+            not require_space_after
+            or after in {ord(" "), ord("\t"), ord("\n"), ord("\r"), ord("\f"), ord("\v")}
+        )
+        if start_ok and end_ok and space_ok:
+            return True
+        position = end
+
+
+def proof_trust_candidate_bytes(data: bytes) -> bool:
+    """Conservatively select sources that need exact lexical decoding."""
+
+    if _contains_delimited_token_bytes(data, b"sorry"):
+        return True
+    if _contains_delimited_token_bytes(data, b"admit"):
+        return True
+    if _contains_delimited_token_bytes(
+        data,
+        b"axiom",
+        forbid_dot_before=True,
+        require_space_after=True,
+    ):
+        return True
+    if b"native_decide" in data:
+        return True
+    if _contains_delimited_token_bytes(data, b"+native", check_start=False):
+        return True
+
+    position = 0
+    while True:
+        position = data.find(b"native", position)
+        if position < 0:
+            break
+        if (
+            (position == 0 or not _is_word_byte(data[position - 1]))
+            and PROOF_TRUST_NATIVE_ASSIGN_BYTES_RE.match(data, position)
+        ):
+            return True
+        position += len(b"native")
+
+    for token in (b"unsafe", b"partial"):
+        position = 0
+        while True:
+            position = data.find(token, position)
+            if position < 0:
+                break
+            if PROOF_TRUST_LINE_DECL_BYTES_RE.match(data, position):
+                return True
+            position += len(token)
+
+    position = 0
+    while True:
+        position = data.find(b"set_option", position)
+        if position < 0:
+            return False
+        if PROOF_TRUST_OPTION_BYTES_RE.match(data, position):
+            return True
+        position += len(b"set_option")
+
+
+def proof_trust_violation_bytes(data: bytes) -> str | None:
+    """Decode only sources whose byte prefilter can contain a violation."""
+
+    if not proof_trust_candidate_bytes(data):
+        return None
+    text = data.decode("utf-8")
+    match = PROOF_TRUST_RE.search(lean_code_without_comments_and_strings(text))
+    return match.group(0).strip() if match else None
+
+
 def check_proof_trust() -> None:
     """Run the cheap proof-trust gate before any expensive release checks."""
     # Pin the lexical boundary: prose and strings are harmless, executable
@@ -730,6 +846,33 @@ def check_proof_trust() -> None:
           "proof-trust scanner must ignore comments")
     check(proof_trust_violation('def label := "native_decide"\n') is None,
           "proof-trust scanner must ignore strings")
+    check(
+        not proof_trust_candidate_bytes(
+            b"#print axioms safe\nset_option maxRecDepth 10000\n"
+        ),
+        "byte prefilter must skip common safe trust-adjacent forms",
+    )
+    check(
+        proof_trust_violation_bytes(
+            b"/- prefix comment -/ unsafe def bad : Nat := 1\n"
+        )
+        == "unsafe def",
+        "byte prefilter must retain executable declarations after comments",
+    )
+    check(
+        proof_trust_violation_bytes(
+            b"/- outer /- nested -/ sorry -/\ntheorem ok : True := by trivial\n"
+        )
+        is None,
+        "chunked lexer must preserve nested-comment exclusion",
+    )
+    check(
+        proof_trust_violation_bytes(
+            b'def label := "escaped \\\" sorry"\ntheorem ok : True := by trivial\n'
+        )
+        is None,
+        "chunked lexer must preserve escaped-string exclusion",
+    )
     example_sources = sorted((ROOT / "examples").rglob("*.lean")) if (ROOT / "examples").is_dir() else []
     lean_sources = (
         [
@@ -743,7 +886,7 @@ def check_proof_trust() -> None:
         + example_sources
     )
     for lean in lean_sources:
-        violation = proof_trust_violation(read(lean))
+        violation = proof_trust_violation_bytes(read_bytes(lean))
         check(violation is None,
               f"proof-trust violation in {lean.relative_to(ROOT)}: {violation or ''}")
 
