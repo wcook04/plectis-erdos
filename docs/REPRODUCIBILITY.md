@@ -17,11 +17,18 @@ insufficient history; `verify_claims.py` reports that condition separately
 and exits `2` rather than presenting it as a mathematical failure.
 
 ```sh
-git clone https://github.com/wcook04/plectis-lean-erdos249-257.git
+git clone --filter=blob:none https://github.com/wcook04/plectis-lean-erdos249-257.git
 cd plectis-lean-erdos249-257
 git fetch --tags --force
 git status --short
 ```
+
+The blob filter retains the complete commit and tag graph required by the
+pinned-history gates, but downloads old file bodies only if a later command
+actually reads them. It does not make the clone shallow. This matters because
+the current checkout is hundreds of megabytes while historical generated
+projections are much larger; eagerly transferring every obsolete body does not
+strengthen any proof or release check.
 
 Run the following static, no-Lean first impression. These commands use the
 committed Python and JSON surfaces and do not need Lake, elan, or Mathlib:

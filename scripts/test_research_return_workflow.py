@@ -129,6 +129,8 @@ def workflow_errors(text: str) -> list[str]:
         errors.append("checkout must disable credential persistence exactly once")
     if text.count("fetch-depth: 0") != 1:
         errors.append("accepted-receipt ancestry validation requires full Git history")
+    if text.count("filter: blob:none") != 1:
+        errors.append("full-history checkout must defer unneeded historical blobs")
     if text.count("cancel-in-progress: true") != 1:
         errors.append("workflow must cancel an older run for the same ref")
 

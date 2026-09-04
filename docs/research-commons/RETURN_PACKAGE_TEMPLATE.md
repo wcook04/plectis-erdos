@@ -174,7 +174,7 @@ exactly one fresh contributor checkout for the replay; do not create a second cl
 worktree, copied tree, or duplicate dependency cache:
 
 ```sh
-git clone https://github.com/wcook04/plectis-lean-erdos249-257 <destination>
+git clone --filter=blob:none https://github.com/wcook04/plectis-lean-erdos249-257 <destination>
 cd <destination>
 git checkout --detach <starting commit>
 test "$(git status --porcelain)" = ""

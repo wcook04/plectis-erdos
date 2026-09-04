@@ -230,6 +230,20 @@ class LeanFastBuildTests(unittest.TestCase):
         for checkout in checkouts:
             self.assertIn("persist-credentials: false", checkout)
 
+    def test_full_history_checkouts_defer_unneeded_historical_blobs(self) -> None:
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        checkouts = re.findall(
+            r"(?ms)^      - uses: actions/checkout@.*?(?=^      - |\Z)",
+            workflow,
+        )
+        full_history = [row for row in checkouts if "fetch-depth: 0" in row]
+
+        self.assertEqual(len(full_history), 5)
+        for checkout in full_history:
+            self.assertIn("filter: blob:none", checkout)
+
     def test_ci_does_not_repeat_required_pr_checks_after_merge(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
             encoding="utf-8"

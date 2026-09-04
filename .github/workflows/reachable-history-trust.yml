@@ -34,6 +34,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           fetch-depth: 0
+          filter: blob:none # retain history without eagerly transferring obsolete large blobs
           fetch-tags: true
           persist-credentials: false
       - name: Install the pinned Python runtime
