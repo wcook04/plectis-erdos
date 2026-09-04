@@ -118,6 +118,20 @@ BUILDERS = (
     "scripts/build_publication_entry_packet.py",
 )
 
+# Builders whose bare invocation is a dry run. The two rosters print their
+# rendering to stdout unless told to write, and the reasoning-coordinate
+# refresher behaves as a check. Until 2026-09-04 refresh() invoked every
+# builder bare, so a full refresh "regenerated" the diagonal depth roster into
+# a discarded pipe and then reported the tree as impure when its own --check
+# still failed. test_refresh_projections_coverage.py now reads each builder's
+# argument parser and fails when a builder that declares --write is missing
+# from this table.
+WRITE_FLAGS: dict[str, tuple[str, ...]] = {
+    "scripts/build_off_diagonal_certificate_roster.py": ("--write",),
+    "scripts/build_checked_diagonal_depth_roster.py": ("--write",),
+    "scripts/refresh_reasoning_source_coordinates.py": ("--write",),
+}
+
 
 def tracked_diff() -> set[str]:
     result = run(["git", "diff", "--name-only"], cwd=ROOT)
@@ -187,7 +201,10 @@ def refresh() -> int:
         if not script.is_file():
             print(f"missing builder: {builder}")
             return 1
-        result = run([sys.executable, str(script)], cwd=ROOT)
+        result = run(
+            [sys.executable, str(script), *WRITE_FLAGS.get(builder, ())],
+            cwd=ROOT,
+        )
         if result.returncode != 0:
             print(f"{builder} failed:")
             print(result.stderr.strip() or result.stdout.strip())

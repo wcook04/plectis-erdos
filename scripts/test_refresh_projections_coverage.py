@@ -117,6 +117,20 @@ def main() -> int:
         "exempt in DELIBERATELY_UNREFRESHED.",
     )
 
+    # A builder whose bare invocation is a dry run must be told to write, or
+    # the refresh silently discards its rendering. On 2026-09-04 the diagonal
+    # depth roster was regenerated into a pipe this way and refresh() blamed
+    # an impure builder for its own no-op.
+    for entry in refresh_projections.BUILDERS:
+        declares_write = '"--write"' in (ROOT / entry).read_text(encoding="utf-8")
+        listed = "--write" in refresh_projections.WRITE_FLAGS.get(entry, ())
+        require(
+            declares_write == listed,
+            f"{entry} declares --write={declares_write} but "
+            f"refresh_projections.WRITE_FLAGS lists it={listed}; a bare run of "
+            "a --write builder is a dry run, so keep the table exact",
+        )
+
     for builder, reason in DELIBERATELY_UNREFRESHED.items():
         require(
             builder in checked,
