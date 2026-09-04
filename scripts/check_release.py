@@ -47,6 +47,7 @@ import re
 import stat
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any
 
@@ -63,6 +64,7 @@ from systems_paper_evidence import (
     validate_systems_paper_evidence,
 )
 import validation_singleflight as singleflight
+import refresh_projections
 
 ROOT = Path(__file__).resolve().parent.parent
 ERRORS: list[str] = []
@@ -71,6 +73,8 @@ ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 SANITIZED_GIT_ENVIRONMENT_KEYS = tuple(sorted(singleflight.GIT_CONTEXT_KEYS))
 _SUBPROCESS_RUN = subprocess.run
+PROJECTION_CHECK_WORKERS = refresh_projections.CHECK_WORKERS
+_PROJECTION_CHECK_RESULTS: dict[str, subprocess.CompletedProcess[str]] | None = None
 
 
 def clean_environment() -> dict[str, str]:
@@ -82,7 +86,51 @@ def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
     """Run a release-gate subprocess with checkout-independent Git state."""
     kwargs["env"] = clean_environment()
     kwargs.setdefault("timeout", SUBPROCESS_TIMEOUT_SECONDS)
+    builder = projection_check_builder(args, kwargs.get("cwd"))
+    if builder is not None:
+        return projection_check_results()[builder]
     return _SUBPROCESS_RUN(*args, **kwargs)
+
+
+def projection_check_builder(args: tuple[Any, ...], cwd: Any) -> str | None:
+    """Identify an exact read-only projection freshness invocation."""
+    if len(args) != 1 or not isinstance(args[0], (list, tuple)) or Path(cwd) != ROOT:
+        return None
+    argv = list(args[0])
+    if len(argv) != 3 or argv[0] != sys.executable or argv[2] != "--check":
+        return None
+    try:
+        builder = Path(argv[1]).relative_to(ROOT).as_posix()
+    except (TypeError, ValueError):
+        return None
+    return builder if builder in refresh_projections.BUILDERS else None
+
+
+def projection_check_results() -> dict[str, subprocess.CompletedProcess[str]]:
+    """Run the release gate's immutable projection checks once, in parallel."""
+    global _PROJECTION_CHECK_RESULTS
+    if _PROJECTION_CHECK_RESULTS is not None:
+        return _PROJECTION_CHECK_RESULTS
+
+    def check_builder(builder: str) -> tuple[str, subprocess.CompletedProcess[str]]:
+        result = _SUBPROCESS_RUN(
+            [sys.executable, str(ROOT / builder), "--check"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+            env=clean_environment(),
+            timeout=SUBPROCESS_TIMEOUT_SECONDS,
+        )
+        return builder, result
+
+    with ThreadPoolExecutor(
+        max_workers=min(PROJECTION_CHECK_WORKERS, len(refresh_projections.BUILDERS))
+    ) as executor:
+        _PROJECTION_CHECK_RESULTS = dict(
+            executor.map(check_builder, refresh_projections.BUILDERS)
+        )
+    return _PROJECTION_CHECK_RESULTS
 
 ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
 PROOF_PATHS = tuple(

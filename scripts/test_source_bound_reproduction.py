@@ -179,6 +179,33 @@ def test_toolchain_path_is_not_ambient() -> None:
         require(key not in environment, f"source-bound environment retained {key}")
 
 
+def test_default_plan_does_not_repeat_release_owned_checks() -> None:
+    ids = {row["id"] for row in subject.DEFAULT_PLAN}
+    require("release" in ids, "default reproduction plan lost the release authority")
+    repeated = {
+        "declaration_atlas",
+        "semantic_projection",
+        "semantic_contract",
+        "second_channel_separation_probe",
+        "off_diagonal_certificate_roster",
+        "checked_diagonal_depth_roster",
+        "corpus_descriptor",
+        "cold_clone_comprehension",
+    }
+    require(
+        ids.isdisjoint(repeated),
+        f"default reproduction plan repeats release-owned checks: {sorted(ids & repeated)}",
+    )
+    require(
+        {
+            "declaration_head_contract",
+            "projection_checkout_independence",
+        }
+        <= ids,
+        "default reproduction plan dropped a distinct non-release validation",
+    )
+
+
 def test_rejections(source: Path, plan: list[dict], receipt: dict) -> None:
     changed_source = source.parent / "changed"
     subject.copy_source(source, changed_source)
@@ -349,6 +376,7 @@ def main() -> None:
         test_environment_isolation(source)
         test_command_timeout()
         test_toolchain_path_is_not_ambient()
+        test_default_plan_does_not_repeat_release_owned_checks()
         test_rejections(source, plan, receipt)
         test_timestamp_and_tail_rejections(source, plan, receipt)
         test_git_capability_refusal(source)

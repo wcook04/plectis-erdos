@@ -3,21 +3,19 @@
 
 # Theory laboratory
 
-The semantic corpus one directory up answers *what has been proved and how the
-statements relate*. This layer answers three further questions:
+The semantic corpus answers *what is proved and how statements relate*. This
+layer asks three further questions:
 
-- **What are the few mechanisms underneath those proofs?** Not the theorems — the
-  reusable reasons the theorems are true, and the reasons methods fail.
+- **Which few mechanisms underlie those proofs?** The reusable reasons theorems
+  hold and methods fail, rather than the theorems themselves.
 - **What survives when the mathematics is deliberately perturbed?** A typed
   intervention shifts a coefficient, changes a base, or drops a structural
   precondition, records which mechanisms it predicts will break, and then checks.
-- **Does the explanation transfer to mathematics the system was not shown?** A
-  holdout checks the repository out at the commit before a theorem landed and
-  measures whether the layer helps recover it.
+- **Does the explanation transfer to unseen mathematics?** A holdout uses the
+  commit before a theorem landed and measures whether the layer helps recover it.
 
-The third question is the one that decides whether the first two are worth
-anything. A mechanism that reads well but does not improve recovery of held-out
-mathematics is a story, not an explanation.
+The third question tests the first two: a mechanism that reads well but does not
+improve held-out recovery is a story, not an explanation.
 
 ## Files
 
@@ -39,16 +37,14 @@ dependency cluster is not a mechanism.
 
 ## Why the negative space is first-class
 
-Most formal libraries are survivorship-biased: they record what worked. This
-corpus's unusual asset is the opposite — blocked engines, failed generalisations,
-repairs that restore one precondition and expose another. `receipts.json` keeps
-those, and the contract requires every receipt that rules a mechanism out to also
-name the sibling mechanisms it does **not** reach.
+Most formal libraries record what worked. This corpus also keeps blocked engines,
+failed generalisations, and repairs that expose the next precondition.
+`receipts.json` requires each receipt ruling out a mechanism to name the sibling
+mechanisms it does **not** reach.
 
-That rule exists for a specific reason. A barrier here was very nearly written up
-as closing a family of certificate engines when a weaker low-carry engine in the
-same development survived it. The omission was caught by luck. The contract now
-makes it impossible to record the barrier without answering the question.
+A barrier here nearly got recorded as closing a family of certificate engines
+although a weaker low-carry engine survived it. The contract now prevents a
+barrier from being recorded without naming unaffected siblings.
 
 ## Prediction integrity
 

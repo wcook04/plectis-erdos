@@ -76,46 +76,9 @@ DEFAULT_PLAN = [
     command("mathlib_cache", ["lake", "exe", "cache", "get"]),
     command("root_build", ["lake", "build"]),
     command("downstream_example", ["lake", "build", "Examples"]),
-    command(
-        "declaration_atlas",
-        ["python3", "scripts/build_declaration_atlas.py", "--check"],
-    ),
-    command(
-        "semantic_projection",
-        ["python3", "scripts/build_semantic_corpus.py", "--check"],
-    ),
-    command(
-        "semantic_contract",
-        ["python3", "scripts/check_semantic_corpus.py"],
-    ),
-    command(
-        "second_channel_separation_probe",
-        [
-            "python3",
-            "scripts/probe_second_channel_separation.py",
-            "--check",
-        ],
-    ),
-    command(
-        "off_diagonal_certificate_roster",
-        [
-            "python3",
-            "scripts/build_off_diagonal_certificate_roster.py",
-            "--check",
-        ],
-    ),
-    command(
-        "checked_diagonal_depth_roster",
-        [
-            "python3",
-            "scripts/build_checked_diagonal_depth_roster.py",
-            "--check",
-        ],
-    ),
-    command(
-        "corpus_descriptor",
-        ["python3", "scripts/build_corpus_descriptor.py", "--check"],
-    ),
+    # The release gate owns projection freshness and semantic consistency.
+    # Running its constituent checks here first used to pay the same
+    # source scans twice without adding an independent authority boundary.
     command(
         "declaration_head_contract",
         ["python3", "scripts/test_declaration_head_contract.py"],
@@ -123,10 +86,6 @@ DEFAULT_PLAN = [
     command(
         "projection_checkout_independence",
         ["python3", "scripts/test_projection_checkout_independence.py"],
-    ),
-    command(
-        "cold_clone_comprehension",
-        ["python3", "scripts/check_cold_clone_comprehension.py"],
     ),
     command(
         "release",

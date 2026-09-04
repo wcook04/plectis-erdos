@@ -204,6 +204,46 @@ def main() -> int:
             "release wrapper omitted its default subprocess timeout",
         )
 
+    dispatched: list[tuple[str, ...]] = []
+
+    def record_projection(
+        args: list[str], **kwargs: object
+    ) -> subprocess.CompletedProcess[str]:
+        dispatched.append(tuple(args))
+        return subprocess.CompletedProcess(args, returncode=0, stdout="current", stderr="")
+
+    check_release._PROJECTION_CHECK_RESULTS = None
+    first_builder = check_release.refresh_projections.BUILDERS[0]
+    last_builder = check_release.refresh_projections.BUILDERS[-1]
+    try:
+        with patch.object(check_release, "_SUBPROCESS_RUN", side_effect=record_projection):
+            first = check_release.run(
+                [sys.executable, str(check_release.ROOT / first_builder), "--check"],
+                cwd=check_release.ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            last = check_release.run(
+                [sys.executable, str(check_release.ROOT / last_builder), "--check"],
+                cwd=check_release.ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+        require(first.returncode == 0 and last.returncode == 0, "projection batch failed")
+        require(
+            sorted(Path(args[1]).relative_to(check_release.ROOT).as_posix() for args in dispatched)
+            == sorted(check_release.refresh_projections.BUILDERS),
+            "release projection batch did not dispatch each authoritative builder once",
+        )
+        require(
+            len(dispatched) == len(check_release.refresh_projections.BUILDERS),
+            "release projection result cache repeated a builder",
+        )
+    finally:
+        check_release._PROJECTION_CHECK_RESULTS = None
+
     require(
         check_release.ENVIRONMENT_CONTRACT
         == "clean_committed_snapshot_subprocess_environment_v1",
@@ -221,6 +261,11 @@ def main() -> int:
         check_release.SUBPROCESS_TIMEOUT_SECONDS
         == check_release.singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
         "release subprocess timeout drifted from the shared worker boundary",
+    )
+    require(
+        check_release.PROJECTION_CHECK_WORKERS
+        == check_release.refresh_projections.CHECK_WORKERS,
+        "release projection batch drifted from the aggregate freshness worker bound",
     )
     print(
         "test_check_release_environment: release-gate child processes cannot "
