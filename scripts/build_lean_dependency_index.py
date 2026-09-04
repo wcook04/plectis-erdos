@@ -35,6 +35,7 @@ EXPORTER = ROOT / "scripts" / "export_lean_dependency_edges.lean"
 SCHEMA = "erdos249257-lean-dependency-index/3"
 LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
 LEAN_FAST_BUILD = ROOT / "scripts" / "lean_fast_build.py"
+LEAN_ROOT_BUILD_TIMEOUT_SECONDS = 4 * singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 CHECK_RECEIPT = ROOT / ".lake" / "aiw" / "lean_dependency_index_check.json"
 TRACKED_CHECK_RECEIPT = ROOT / "docs" / "lean_dependency_index_check.json"
 CHECK_RECEIPT_SCHEMA = "erdos249257-lean-dependency-index-check/1"
@@ -496,6 +497,12 @@ def ensure_elaborated_environment() -> None:
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         check=False,
+        # A cold build of both public roots is not a metadata subprocess. It
+        # exceeded the generic 30-minute validation-worker budget while still
+        # actively compiling generated prime certificates. Keep a finite
+        # upper bound, but do not kill legitimate cold bootstrap work at the
+        # same deadline used by ordinary validation children.
+        timeout=LEAN_ROOT_BUILD_TIMEOUT_SECONDS,
     )
     if completed.returncode:
         sys.stderr.write(completed.stdout)

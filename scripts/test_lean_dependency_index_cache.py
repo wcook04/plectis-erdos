@@ -425,8 +425,13 @@ def check_environment_build_is_bounded() -> None:
     )
     require(
         run.call_args.kwargs["timeout"]
-        == builder.singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
-        "Lean dependency command escaped the validation-worker timeout budget",
+        == builder.LEAN_ROOT_BUILD_TIMEOUT_SECONDS,
+        "Lean root build lost its distinct cold-bootstrap timeout budget",
+    )
+    require(
+        builder.LEAN_ROOT_BUILD_TIMEOUT_SECONDS
+        > builder.singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
+        "Lean root build collapsed back onto the generic worker timeout",
     )
     require(
         builder.ENVIRONMENT_CONTRACT
