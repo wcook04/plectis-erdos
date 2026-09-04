@@ -10,7 +10,7 @@ This generated module materializes the kernel-safe prefix of finite
 pincer table: 12 distinct scales through `t = 17`. Prime factors are proved prime in Lean,
 the factorizations are multiplied back exactly, and Euler totients are
 reconstructed from pairwise-coprime prime-power blocks.  No
-`native evaluation`, custom axiom, or unbounded-supply inference is used.
+`native_decide`, custom axiom, or unbounded-supply inference is used.
 
 Results input SHA-256: `1114b667b8d044a97240d031dce4dcfd093d6ea93cef78086a05572c667416dd`.
 Factorization input SHA-256: `4a0c5360a08c34381c932692f66a2094178ff2dfec7302788caed8e6ee3fdf3d`.
@@ -78,6 +78,16 @@ theorem binaryPow_zmod {m : ℕ} [NeZero m] (a : ZMod m) (n : ℕ) :
     binaryPow a n = (binaryPowMod a.val m n : ZMod m) := by
   conv_lhs => rw [← ZMod.natCast_zmod_val a]
   exact binaryPow_natCast a.val m n
+
+/-- Reduce equality to one in `ZMod` to the corresponding natural remainder. -/
+theorem natCast_zmod_eq_one_iff (a m : ℕ) :
+    (a : ZMod m) = 1 ↔ a % m = 1 % m := by
+  simpa using ZMod.natCast_eq_natCast_iff' a 1 m
+
+/-- The disequality form used by compact Lucas factor checks. -/
+theorem natCast_zmod_ne_one_iff (a m : ℕ) :
+    (a : ZMod m) ≠ 1 ↔ a % m ≠ 1 % m := by
+  exact not_congr (natCast_zmod_eq_one_iff a m)
 
 /-- A checked prime-power factor list computes Euler's totient exactly. -/
 theorem totient_factorBlocks (bs : List FactorBlock)
