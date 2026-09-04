@@ -20,6 +20,7 @@ ROUTE_CASES = {
     "explain how this repo works to a newcomer": ("understand_repository", "explain-public-system"),
     "report theorem status and what remains open": ("mathematical_status", "explain-public-system"),
     "attack one open problem with proof search": ("bounded_research", "mine-open-problem"),
+    "find a proof in Lean": ("bounded_research", "mine-open-problem"),
     "run a sustained research campaign and keep working": (
         "sustained_research",
         "run-coupled-research-goals",
@@ -41,6 +42,14 @@ ROUTE_CASES = {
     "prepare a PR and submit pull request": ("submit_change", "submit-pull-request"),
     "install skills into Codex": ("install_skills", "install-clone-skills"),
     "improve cold clone agent entry and skill discovery": (
+        "repository_architecture",
+        "propagate-research-consequences",
+    ),
+    "speed up the public Lean repo clone and build commands": (
+        "repository_architecture",
+        "propagate-research-consequences",
+    ),
+    "debug slow clone and duplicate builds": (
         "repository_architecture",
         "propagate-research-consequences",
     ),
@@ -81,6 +90,17 @@ def main() -> int:
         assert expected_skill in {row["id"] for row in packet["skills"]}, (task, packet)
         assert packet["primary_lane"]["read"], task
         assert packet["primary_lane"]["boundary"], task
+
+    operational = entry_packet(
+        catalog, "speed up the public Lean repo clone and build commands"
+    )
+    assert "lean_validation" in {
+        row["id"] for row in operational["alternatives"]
+    }
+    duplicate_builds = entry_packet(catalog, "debug slow clone and duplicate builds")
+    assert "lean_validation" in {
+        row["id"] for row in duplicate_builds["alternatives"]
+    }
 
     fallback = entry_packet(catalog, "frobnicate the unspecified material")
     assert fallback["route_status"] == "fallback"
