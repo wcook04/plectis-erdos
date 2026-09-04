@@ -11,29 +11,28 @@ long-standing open Erdős problems: 68, 243, 249, 251, 257, 269, 1041, and 1049.
 They are a hard stress test: the aim is to publish exact, reusable progress
 that another researcher can continue.
 
-Each problem exposes its current frontier: checked results, failed routes, and
-the obligation still blocking the endpoint. Lean checks exact formal
-statements, not their intended meaning, novelty, or significance.
+Each problem exposes checked results, failed routes, and its open obligation.
+Lean checks formal statements, not intended meaning, novelty, or significance.
 
-Large-language-model agents drafted prose, Lean proofs, and software. Will Cook
-set the objectives, reviewed the public claims and cited sources, and is
-responsible for the release.
+Large-language-model agents drafted prose, proofs, and software. Will Cook
+reviewed the claims and sources and is responsible for the release.
 
 If you solve one, the result and credit are yours. If this repository or
 Plectis materially helped, cite the release and say so. The contribution record
 keeps solvers, collaborators, prior work, tools, and infrastructure distinct.
 
-New readers should begin with [A reader's way in](HUMAN_ENTRY.md), a
-command-free tour of the problems, evidence boundary, and open frontier.
+Start with [A reader's way in](HUMAN_ENTRY.md), a command-free tour of the
+problems and evidence boundary.
 
-Choose the checkout that matches what you want to inspect. The two sparse
-manifests below are alternatives applied to the same no-checkout clone.
+Choose a checkout. Apply one of the three sparse manifests to the same
+no-checkout clone.
 The proof build needs `elan`; install it from the
 [Lean setup guide](https://leanprover-community.github.io/get_started.html).
 
 ```bash
-# Lean source or reader files: choose one sparse manifest
+# Quick proof, full Lean source, or reader files: choose one manifest
 git clone --depth=1 --filter=blob:none --single-branch --no-checkout https://github.com/wcook04/plectis-lean-erdos249-257.git
+git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-quick-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
 git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
 git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
 git -C plectis-lean-erdos249-257 checkout
@@ -52,8 +51,8 @@ cd plectis-lean-erdos249-257
 python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.PeriodMultipleEscape
 ```
 
-The verifier resolves the statement to its Lean declaration, paper, receipts,
-and explicit stopping point. `--verify-all` checks every registered claim.
+The verifier links a claim to its declaration, paper, receipts, and stopping
+point; `--verify-all` checks them all.
 [REPRODUCIBILITY](docs/REPRODUCIBILITY.md) gives the smaller reader checkout,
 the 43-module quick Lean checkout, the complete proof source, and the full
 release replay. The [architecture and repository guide](ARCHITECTURE.md) and
@@ -87,16 +86,13 @@ No unbounded producer is proved.
 and a tail-shift equivalence. The concrete prime-tail bridge remains open.
 
 [**#257**](erdos-257-mersenne-support-subseries.pdf) checks full support,
-finite-period noncollapse, and the coding, topology, perfectness and measure of
-the Mersenne achievement set. The universal statement and the `1/2` and `1/21`
-targets remain open.
+finite-period noncollapse, and the Mersenne achievement set's topology and
+measure. The universal statement and the `1/2` and `1/21` targets remain open.
 
-[**#269**](erdos-269-three-prime-running-lcm.pdf) records that for two primes both
-sums are transcendental by a paper argument. **This is not first and not
-formalised.** Steve Fan posted the same argument on the erdosproblems.com #269
-page on 26 June 2026 and this note was first released on 22 July 2026, so no
-priority is claimed and no Lean declaration asserts it. From three primes the
-problem remains open.
+[**#269**](erdos-269-three-prime-running-lcm.pdf) records a two-prime
+transcendence argument. **This is not first and not formalised.** Steve Fan
+posted the same argument on erdosproblems.com on 26 June 2026, before this note;
+no priority or Lean theorem is claimed. Three or more primes remain open.
 
 [**#1041**](erdos-1041-lemniscate-newton-flow.pdf) checks Newton-flow decay, ray
 separation, collision geometry, and root retention. Topology and metric gluing
@@ -125,7 +121,8 @@ reduction still depends on its named open condition.
 
 `v0.9.0` is the citation anchor, and [`docs/claims.json`](docs/claims.json) pins
 its formal-source checkpoint. This public checkout is self-contained; only its
-pinned Lean source is proof authority.
+pinned Lean source is proof authority; do not infer results from private or
+unreleased work.
 
 ## Read or run it
 

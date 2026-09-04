@@ -3,10 +3,10 @@
 
 # Security
 
-This repository is a static scholarly artefact: Lean sources, a paper, and
-release metadata. It ships no service, network code, or credentials, so the
-realistic security surface is the build toolchain and the repository
-configuration.
+This is a scholarly code-and-document archive, not a network service. It ships
+no credentials or background service. Its security surface is the code a user
+chooses to run, the pinned Lean and Mathlib dependencies, release-only Python
+packages, and the continuous-integration configuration.
 
 ## Before you run anything
 
@@ -31,11 +31,8 @@ first and run it in a disposable virtual machine or container with no secrets
 or write access to important files. A green Lean build establishes proof
 checking for the imported declarations; it is not a general security audit.
 
-Report privately via GitHub Private Vulnerability Reporting:
-
-```text
-https://github.com/wcook04/plectis-lean-erdos249-257/security/advisories/new
-```
+Report privately through
+[GitHub Private Vulnerability Reporting](https://github.com/wcook04/plectis-lean-erdos249-257/security/advisories/new).
 
 Use it for anything sensitive: a supply-chain concern in the pinned
 toolchain or dependencies, a CI configuration issue, or leaked material that
