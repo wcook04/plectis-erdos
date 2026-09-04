@@ -56,8 +56,9 @@ The verifier resolves the statement to its Lean declaration, paper, receipts,
 and explicit stopping point. `--verify-all` checks every registered claim.
 [REPRODUCIBILITY](docs/REPRODUCIBILITY.md) gives the smaller reader checkout,
 the 43-module quick Lean checkout, the complete proof source, and the full
-release replay. The [architecture guide](ARCHITECTURE.md) explains why those
-profiles exist.
+release replay. The [architecture and repository guide](ARCHITECTURE.md) and
+its [printable PDF](claim-faithful-publication-systems-paper.pdf) assume no Lean
+or project history.
 
 Cloning runs no project code and the repository defines no submodules, Git LFS
 filters, or hooks. The verifier runs tracked Python; proof builds run the pinned
