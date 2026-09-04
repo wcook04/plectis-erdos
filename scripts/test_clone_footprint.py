@@ -106,6 +106,17 @@ class CloneFootprintTests(unittest.TestCase):
         errors = footprint.contract_errors(footprint.build_report(entries), readme)
         self.assertTrue(any("optimized clone command" in error for error in errors))
 
+    def test_claim_verification_keeps_the_pinned_history_fetch(self) -> None:
+        entries = [
+            {"path": "Erdos249257/A.lean", "size_bytes": 1},
+            {"path": "docs/generated.json", "size_bytes": 2},
+        ]
+        readme = self.valid_readme().replace(
+            footprint.PINNED_HISTORY_FETCH_COMMAND, "", 1
+        )
+        errors = footprint.contract_errors(footprint.build_report(entries), readme)
+        self.assertTrue(any("optimized clone command" in error for error in errors))
+
     def test_lean_sparse_checkout_keeps_its_build_wrapper(self) -> None:
         entries = [
             {"path": "Erdos249257/A.lean", "size_bytes": 10},
@@ -167,6 +178,7 @@ class CloneFootprintTests(unittest.TestCase):
                 footprint.LEAN_BUILD_COMMAND,
                 footprint.READER_SPARSE_COMMAND,
                 footprint.FULL_CLONE_COMMAND,
+                footprint.PINNED_HISTORY_FETCH_COMMAND,
                 footprint.FULL_HISTORY_CLONE_COMMAND,
             )
         )

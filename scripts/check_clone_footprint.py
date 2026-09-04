@@ -131,6 +131,9 @@ FULL_CLONE_COMMAND = (
     "git clone --depth=1 --filter=blob:none --single-branch "
     "https://github.com/wcook04/plectis-lean-erdos249-257.git"
 )
+PINNED_HISTORY_FETCH_COMMAND = (
+    "git fetch --filter=blob:none --unshallow origin main"
+)
 FULL_HISTORY_CLONE_COMMAND = (
     "git clone --filter=blob:none --single-branch "
     "https://github.com/wcook04/plectis-lean-erdos249-257.git"
@@ -292,6 +295,7 @@ def contract_errors(
         READER_CLONE_COMMAND,
         READER_SPARSE_COMMAND,
         FULL_CLONE_COMMAND,
+        PINNED_HISTORY_FETCH_COMMAND,
         FULL_HISTORY_CLONE_COMMAND,
     ):
         if command not in readme:
@@ -305,8 +309,12 @@ def contract_errors(
         READER_SPARSE_COMMAND, lean_sparse_position + len(LEAN_SPARSE_COMMAND)
     )
     full_position = readme.find(FULL_CLONE_COMMAND, lean_position + len(LEAN_CLONE_COMMAND))
+    pinned_history_position = readme.find(
+        PINNED_HISTORY_FETCH_COMMAND, full_position + len(FULL_CLONE_COMMAND)
+    )
     history_position = readme.find(
-        FULL_HISTORY_CLONE_COMMAND, full_position + len(FULL_CLONE_COMMAND)
+        FULL_HISTORY_CLONE_COMMAND,
+        pinned_history_position + len(PINNED_HISTORY_FETCH_COMMAND),
     )
     if (
         lean_position < 0
@@ -314,6 +322,7 @@ def contract_errors(
         or lean_sparse_position < 0
         or reader_sparse_position < 0
         or full_position < 0
+        or pinned_history_position < 0
         or history_position < 0
         or not (
             lean_position
@@ -321,11 +330,13 @@ def contract_errors(
             < lean_sparse_position
             < reader_sparse_position
             < full_position
+            < pinned_history_position
             < history_position
         )
     ):
         errors.append(
-            "README must order quick proof, full Lean, reader, current full, then full-history checkouts"
+            "README must order quick proof, full Lean, reader, current full, "
+            "pinned-history fetch, then full-history checkouts"
         )
     if quick_sparse_manifest != QUICK_LEAN_SPARSE_MANIFEST_TEXT:
         errors.append("versioned quick Lean sparse manifest has drifted from its import cone")

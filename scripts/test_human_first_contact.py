@@ -20,6 +20,12 @@ def words(text: str) -> list[str]:
     return re.findall(r"[A-Za-z0-9][A-Za-z0-9'’+#./−≥≤]*", text)
 
 
+def prose_words(text: str) -> list[str]:
+    """Count reader prose without charging the separately bounded code block."""
+
+    return words(re.sub(r"```.*?```", "", text, flags=re.DOTALL))
+
+
 def authored_prose_blocks(text: str) -> list[str]:
     """Return ordinary prose blocks, excluding metadata and navigation syntax."""
     blocks: list[str] = []
@@ -47,7 +53,10 @@ def main() -> None:
     results = (ROOT / "docs/RESULTS.md").read_text(encoding="utf-8")
     docs_index = (ROOT / "docs/README.md").read_text(encoding="utf-8")
 
-    require(len(words(readme)) <= 1_400, "README exceeds the human front-door budget")
+    require(
+        len(prose_words(readme)) <= 1_400,
+        "README prose exceeds the human front-door budget",
+    )
     require(readme.count("```") <= 2, "README contains more than one command block")
     require(
         "All eight problems remain open" in readme,
