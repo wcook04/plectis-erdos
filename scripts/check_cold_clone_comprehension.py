@@ -1074,6 +1074,13 @@ def validate_human_first_contact(
     check_architecture_guide.validate_guide(surfaces["ARCHITECTURE.md"])
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
+    require(
+        "git clone --filter=blob:none "
+        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+        in readme_prefix,
+        "README must expose the blobless full-history clone command before "
+        "a newcomer downloads obsolete generated blobs",
+    )
     # Retargeted when the README was cut to its human front-door word budget.
     # The order is the same reading order: what the eight papers are, what the
     # checks do and do not establish, then how to read or run it. The open

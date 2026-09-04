@@ -366,6 +366,18 @@ def main() -> int:
     diagnostic.validate_human_first_contact(quick_summary, human_surfaces)
     diagnostic.validate_human_first_contact(summary, human_surfaces)
     checks = 4
+
+    mutated_clone_surfaces = human_surfaces.copy()
+    mutated_clone_surfaces["README.md"] = mutated_clone_surfaces[
+        "README.md"
+    ].replace("git clone --filter=blob:none ", "git clone ", 1)
+    assert_human_rejected(
+        summary,
+        mutated_clone_surfaces,
+        "blobless full-history clone option",
+    )
+    checks += 1
+
     try:
         diagnostic.validate_paper_library_first_contact(paper_library)
     except AssertionError:

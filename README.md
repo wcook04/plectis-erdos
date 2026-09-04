@@ -24,6 +24,14 @@ Large-language-model agents drafted prose, Lean proofs, and software. Will Cook
 set the objectives, reviewed the public claims and cited sources, and is
 responsible for the release.
 
+For a fresh checkout, keep the complete history required by the pinned-source
+checks without downloading every obsolete historical blob:
+
+```bash
+git clone --filter=blob:none https://github.com/wcook04/plectis-lean-erdos249-257.git
+cd plectis-lean-erdos249-257
+```
+
 A single claim can be followed without installing Lean:
 
 ```bash
