@@ -577,7 +577,9 @@ PROOF_PLAN_QUERIES = {
 }
 
 
+@lru_cache(maxsize=None)
 def read(rel: str) -> str:
+    """Read each immutable committed surface once per validation process."""
     return safe_read_text(rel)
 
 

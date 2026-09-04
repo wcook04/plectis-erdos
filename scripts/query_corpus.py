@@ -396,6 +396,22 @@ SEMANTIC_VOCABULARY = (
             "--route agent_native_corpus_navigation",
         ),
     },
+    {
+        "id": "continued_fraction_run_geometry",
+        "vocabulary_kind": "entity",
+        "pref_label": "Stern-Brocot and continued-fraction run geometry",
+        "alt_labels": (
+            "stern brocot",
+            "continued fraction geometry",
+            "continued fraction run geometry",
+        ),
+        "query_expansions": (
+            "stern brocot cylinder fibonacci continuant",
+        ),
+        "route_hints": (
+            "--route probabilistic_gcd_geometry",
+        ),
+    },
 )
 
 
@@ -5683,10 +5699,8 @@ def search_result_sort_key(
     )
 
 
-def exact_discovery_route(
-    query: str, claims: dict[str, Any]
-) -> dict[str, Any] | None:
-    """Resolve an authored first-contact phrase without scanning 151k declarations.
+def exact_discovery_routes(query: str, claims: dict[str, Any]) -> list[dict[str, Any]]:
+    """Resolve every route owning an exact authored first-contact phrase.
 
     Discovery terms are an explicit routing contract, not fuzzy corpus content.
     An exact normalized match may therefore take the fast path while all other
@@ -5702,17 +5716,25 @@ def exact_discovery_route(
         }:
             continue
         matches.append(row)
-    if len(matches) != 1:
-        return None
-    row = matches[0]
-    return {
-        "kind": "reading_route",
-        "id": row["id"],
-        "route_kind": row.get("route_kind", "reading_route"),
-        "title": row.get("title"),
-        "intent": row["intent"],
-        "problem_target_claim_ids": row.get("problem_target_claim_ids", []),
-    }
+    return [
+        {
+            "kind": "reading_route",
+            "id": row["id"],
+            "route_kind": row.get("route_kind", "reading_route"),
+            "title": row.get("title"),
+            "intent": row["intent"],
+            "problem_target_claim_ids": row.get("problem_target_claim_ids", []),
+        }
+        for row in matches
+    ]
+
+
+def exact_discovery_route(
+    query: str, claims: dict[str, Any]
+) -> dict[str, Any] | None:
+    """Resolve one unambiguous authored first-contact phrase."""
+    routes = exact_discovery_routes(query, claims)
+    return routes[0] if len(routes) == 1 else None
 
 
 def has_exact_discovery_term(query: str, claims: dict[str, Any]) -> bool:
@@ -6029,6 +6051,34 @@ def direct_route_search_packet(
     }
 
 
+def direct_routes_search_packet(
+    query: str,
+    limit: int,
+    routes: list[dict[str, Any]],
+    *,
+    selection: str,
+) -> dict[str, Any]:
+    """Return an exact multi-route phrase without an exhaustive corpus scan."""
+    packet = direct_route_search_packet(
+        query,
+        limit,
+        routes[0],
+        selection=selection,
+    )
+    routed_results: list[dict[str, Any]] = []
+    for route in routes:
+        routed_route = dict(route)
+        if route.get("route_kind") == "mathematical_programme":
+            routed_route["route_memory"] = route_packet(route["id"]).get(
+                "route_memory"
+            )
+        routed_results.append(routed_route)
+    packet["match_count"] = len(routed_results)
+    packet["results"] = routed_results[:limit]
+    packet["omitted_match_count"] = max(0, len(routed_results) - limit)
+    return packet
+
+
 def search_packet(query: str, limit: int) -> dict[str, Any]:
     query = query.strip()
     if not query:
@@ -6049,8 +6099,9 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 problem_route.get("remaining_open_proposition_ids", [])
             ),
         )
-    exact_route = exact_discovery_route(query, claims)
-    if exact_route is not None:
+    exact_routes = exact_discovery_routes(query, claims)
+    if len(exact_routes) == 1:
+        exact_route = exact_routes[0]
         return direct_route_search_packet(
             query,
             limit,
@@ -6059,6 +6110,13 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             remaining_open_proposition_ids=tuple(
                 exact_route.get("remaining_open_proposition_ids", [])
             ),
+        )
+    if len(exact_routes) > 1:
+        return direct_routes_search_packet(
+            query,
+            limit,
+            exact_routes,
+            selection="exact_authored_multi_route_term",
         )
     hinted_route_ids = [
         handle
@@ -6251,21 +6309,36 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 )
             )
 
-    for rank, row in ranked_declaration_search_rows(query, hint_targets):
-        if (
-            hint_priority := hint_targets.get(
-                ("declaration", row["name"])
-            )
-        ) is not None:
-            rank = -10 + hint_priority
-        if rank is not None:
-            result = {"kind": "declaration", **compact_declaration(row)}
-            if row.get("signature"):
-                result["signature_excerpt"] = str(row["signature"])[:240]
-            result["route_memory"] = declaration_route_memory_rows(
-                [row], claims
-            )[0]["route_memory"]
-            ranked.append((rank, f"declaration:{row['module']}:{row['line']}:{row['name']}", result))
+    # Controlled-vocabulary route queries already have their intended reading
+    # routes in ``hint_targets``.  Building the exhaustive 153k-declaration
+    # lexical index for those queries adds seconds while contributing only
+    # incidental declaration matches.  Retain it for unhinted discovery and
+    # for vocabulary entries that explicitly name a declaration.
+    search_declarations = not hinted_route_ids or any(
+        kind == "declaration" for kind, _handle in hint_targets
+    )
+    if search_declarations:
+        for rank, row in ranked_declaration_search_rows(query, hint_targets):
+            if (
+                hint_priority := hint_targets.get(
+                    ("declaration", row["name"])
+                )
+            ) is not None:
+                rank = -10 + hint_priority
+            if rank is not None:
+                result = {"kind": "declaration", **compact_declaration(row)}
+                if row.get("signature"):
+                    result["signature_excerpt"] = str(row["signature"])[:240]
+                result["route_memory"] = declaration_route_memory_rows(
+                    [row], claims
+                )[0]["route_memory"]
+                ranked.append(
+                    (
+                        rank,
+                        f"declaration:{row['module']}:{row['line']}:{row['name']}",
+                        result,
+                    )
+                )
 
     for row in atlas["modules"]:
         sigil = sigil_by_path.get(row["path"])

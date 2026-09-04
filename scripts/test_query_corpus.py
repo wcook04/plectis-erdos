@@ -867,6 +867,16 @@ def validate_natural_language_search() -> None:
         natural_search = query("--search", search_text, "--limit", "10")
         assert natural_search["results"][0]["kind"] == "reading_route"
         assert natural_search["results"][0]["id"] == route_id
+    geometry_search = query(
+        "--search",
+        "what Stern Brocot or continued fraction geometry is proved",
+        "--limit",
+        "10",
+    )
+    assert geometry_search["routing_receipt"] == {
+        "selection": "controlled_vocabulary_route",
+        "declaration_scan_required": False,
+    }
 
     capability_question = (
         "What can I search in this mathematical corpus and how do I traverse "
@@ -968,7 +978,16 @@ def validate_natural_language_search() -> None:
     )
     assert portfolio_search["results"][0]["kind"] == "reading_route"
     assert portfolio_search["results"][0]["id"] == "instant_orientation"
-    ruled_out = query("--search", "what is ruled out", "--limit", "10")
+    original_declaration_search = query_corpus.ranked_declaration_search_rows
+    query_corpus.ranked_declaration_search_rows = (
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            AssertionError("controlled multi-route query must not build declaration index")
+        )
+    )
+    try:
+        ruled_out = query("--search", "what is ruled out", "--limit", "10")
+    finally:
+        query_corpus.ranked_declaration_search_rows = original_declaration_search
     assert {
         row["id"]
         for row in ruled_out["results"]
@@ -977,6 +996,10 @@ def validate_natural_language_search() -> None:
         "transport_curvature_programme",
         "lambert_obstruction_interfaces",
         "arithmetic_obstruction_interfaces",
+    }
+    assert ruled_out["routing_receipt"] == {
+        "selection": "exact_authored_multi_route_term",
+        "declaration_scan_required": False,
     }
     for row in ruled_out["results"]:
         if (

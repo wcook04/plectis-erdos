@@ -183,6 +183,7 @@ def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+@lru_cache(maxsize=1)
 def mathematical_questions() -> list[dict[str, Any]]:
     rows = load_json(FRONTIER).get("expert_questions", [])
     declarations = {
@@ -202,10 +203,12 @@ def mathematical_questions() -> list[dict[str, Any]]:
     return [{"domain": MATH_DOMAIN, **row} for row in rows]
 
 
+@lru_cache(maxsize=1)
 def systems_questions() -> list[dict[str, Any]]:
     return list(load_json(PROTOCOL).get("questions", []))
 
 
+@lru_cache(maxsize=1)
 def all_questions() -> list[dict[str, Any]]:
     return [*mathematical_questions(), *systems_questions()]
 
