@@ -1915,17 +1915,15 @@ def main(argv: list[str] | None = None) -> int:
                 "is a second checker, not an independent verification of the "
                 "mathematics",
             )
-    # Check only the first column of the canonical Status/Result table. Other
-    # README tables legitimately bold identifiers such as the six problem
-    # numbers, so a document-wide first-column scan produces false failures.
-    # Keep the permissive cell capture: punctuation in an invalid status must
-    # still reach the taxonomy check rather than evade it.
+    # When the human-first README uses a Status/Result reference table, check
+    # only its first column. The table itself is optional: current first contact
+    # explains evidence classes in prose and routes exhaustive status to the
+    # claim registry. Other README tables legitimately bold problem numbers.
     status_table = re.search(
         r"(?ms)^\| Status \| Result \|\n^\|---\|---\|\n"
         r"(?P<body>(?:^\|.*\n)+)",
         readme,
     )
-    check(status_table is not None, "README lost the Status/Result table")
     status_table_body = status_table.group("body") if status_table else ""
     for status in re.findall(r"\|\s*\*\*([^*\n]+)\*\*\s*\|", status_table_body):
         check(status in taxonomy,

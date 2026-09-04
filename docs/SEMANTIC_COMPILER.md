@@ -214,10 +214,9 @@ builder inputs, declaration atlas and generated manifest, the claim registry's
 formal-source release slice, the dependency-extraction helper definitions, and
 committed index bytes. The ordinary `--check` is metadata-only: it reuses that
 receipt only while every bound byte is unchanged and otherwise fails fast
-without launching Lean. After the one coordinated root build, use
-`--check --full-check` to rerun the environment export and refresh the receipt
-explicitly. Because CI restores `.lake`, documentation-only and otherwise
-unchanged revisions do not repeat the export.
+without launching Lean. After the coordinated root build,
+`--check --full-check` refreshes the export and receipt. Because CI restores
+`.lake`, unchanged revisions do not repeat the export.
 The exhaustive declaration inventory remains the route for auxiliary forest
 modules that intentionally are not imported into a compact mathematical root:
 
