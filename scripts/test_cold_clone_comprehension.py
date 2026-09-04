@@ -361,7 +361,7 @@ def main() -> int:
         + "\n\n### Represented natural friction\n\n- fixture friction\n\n"
         "### Explicitly subordinate, rejected, and long tail\n\n"
         "- fixture long tail\n\n"
-        "## Problem portfolio (complete 14-paper inventory)\n"
+        "## Problem portfolio (complete 15-paper inventory)\n"
     )
     diagnostic.validate_human_first_contact(quick_summary, human_surfaces)
     diagnostic.validate_human_first_contact(summary, human_surfaces)
@@ -441,7 +441,7 @@ def main() -> int:
 
     mutated_paper_library = compliant_paper_library.replace(
         "## Mathematical signal first",
-        "## Problem portfolio (complete 14-paper inventory)\n\n## Mathematical signal first",
+        "## Problem portfolio (complete 15-paper inventory)\n\n## Mathematical signal first",
         1,
     )
     try:

@@ -232,12 +232,48 @@ jobs:
         # Raw follow-up builds would duplicate work outside the shared
         # validation key, so every supported target is named here instead.
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants ResidualBench
+      # actions/cache saves only when the job succeeds. A build that compiles
+      # the whole tree and then fails the dependency-index check below threw
+      # away the compiled oleans, so every rerun paid a cold build again.
+      # Save the compiled tree as soon as the build step finishes, whatever
+      # the later evidence checks decide.
+      - name: Save project Lean cache after the build
+        if: always() && steps.lean-inputs.outputs.changed == 'true'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake
+          key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
       - name: Verify elaborated dependency index
+        id: dependency-index
         if: steps.lean-inputs.outputs.changed == 'true'
         # The coordinated build above is the sole compilation owner. This
         # explicit full check exports that already-built environment and writes
         # its exact receipt into .lake; plain --check is always noncompiling.
+        continue-on-error: true
         run: python3 scripts/build_lean_dependency_index.py --check --full-check
+      # The tracked index can only be refreshed from an elaborated environment,
+      # which is exactly what this job has just built. When the check finds the
+      # tracked index stale, export the fresh one and publish it as a run
+      # artifact so the operator can land it without a local full build. The
+      # job still fails below: the artifact is evidence for a commit, not a
+      # waiver of the check.
+      - name: Export the fresh dependency index for the operator
+        if: steps.dependency-index.outcome == 'failure'
+        run: python3 scripts/build_lean_dependency_index.py
+      - name: Upload the fresh dependency index
+        if: steps.dependency-index.outcome == 'failure'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lean-dependency-index-${{ github.sha }}
+          path: |
+            docs/lean_dependency_index.json
+            docs/lean_dependency_index_check.json
+          if-no-files-found: error
+      - name: Fail on a stale dependency index
+        if: steps.dependency-index.outcome == 'failure'
+        run: |
+          echo "the tracked dependency index is stale; download artifact lean-dependency-index-${{ github.sha }} and commit it" >&2
+          exit 1
       - name: Record documentation-only build skip
         if: steps.lean-inputs.outputs.changed != 'true'
         run: echo "No Lean source or proof-environment input changed; compilation is unchanged."

@@ -1022,7 +1022,7 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         line.strip()
         for line in workflow.splitlines()
         if line.strip().startswith(("- uses: actions/", "uses: actions/"))
-        and not re.search(r"uses: actions/[\w-]+@[0-9a-f]{40} # v[\d.]+$", line.strip())
+        and not re.search(r"uses: actions/[\w-]+(?:/[\w-]+)*@[0-9a-f]{40} # v[\d.]+$", line.strip())
     ]
     require(not unpinned, "Lean CI uses an action that is not pinned to a commit with a version "
         "comment, so a reader cannot tell what it resolves to: "

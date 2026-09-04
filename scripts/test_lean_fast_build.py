@@ -100,7 +100,7 @@ class LeanFastBuildTests(unittest.TestCase):
                 continue
             self.assertRegex(
                 stripped,
-                r"uses: actions/[\w-]+@[0-9a-f]{40} # v[\d.]+$",
+                r"uses: actions/[\w-]+(?:/[\w-]+)*@[0-9a-f]{40} # v[\d.]+$",
                 msg=(
                     "workflow action is not pinned to a commit with a version "
                     f"comment: {stripped}"
