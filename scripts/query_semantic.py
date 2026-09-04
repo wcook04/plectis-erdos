@@ -137,6 +137,7 @@ PROBLEMS = tuple(
 PROBLEM_SCOPES = (*PROBLEMS, "both", "shared_substrate")
 
 
+@lru_cache(maxsize=1)
 def load() -> dict:
     if not CORPUS.is_file():
         raise SystemExit(
@@ -1558,8 +1559,8 @@ def paper_citation_keys(module: str, declaration: str) -> set[tuple[str, str]]:
     cited source line.  Match both without weakening the module coordinate: a
     short declaration name is never resolved repo-wide.
     """
-    module_aliases = {module, Path(module).name}
-    parts = Path(module).parts
+    parts = module.split("/")
+    module_aliases = {module, parts[-1]}
     if parts and parts[0] in ("ErdosProblems", "Erdos249257"):
         module_aliases.add("/".join(parts[1:]))
     declaration_aliases = {declaration, declaration.rsplit(".", 1)[-1]}
@@ -1570,9 +1571,21 @@ def paper_citation_keys(module: str, declaration: str) -> set[tuple[str, str]]:
     }
 
 
+_PAPER_CITATION_ROLE_INDEX_CACHE: tuple[
+    dict, dict[tuple[str, str], list[dict]]
+] | None = None
+
+
 def paper_citation_role_index(
     corpus: dict,
 ) -> dict[tuple[str, str], list[dict]]:
+    """Index immutable loaded-corpus citation aliases once per process."""
+    global _PAPER_CITATION_ROLE_INDEX_CACHE
+    if (
+        _PAPER_CITATION_ROLE_INDEX_CACHE is not None
+        and _PAPER_CITATION_ROLE_INDEX_CACHE[0] is corpus
+    ):
+        return _PAPER_CITATION_ROLE_INDEX_CACHE[1]
     index: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for role in corpus["declaration_roles"]:
         module = role.get("module")
@@ -1581,6 +1594,7 @@ def paper_citation_role_index(
             continue
         for key in paper_citation_keys(module, declaration):
             index[key].append(role)
+    _PAPER_CITATION_ROLE_INDEX_CACHE = (corpus, index)
     return index
 
 
@@ -1619,17 +1633,16 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
     # exhaustive citation route.  An earlier version used evidence lists and
     # consequently labelled node-routed citations "unmatched" whenever an
     # author had not repeated every supporting declaration on the node.
-    declaration_routes: dict[tuple[str, str], set[str]] = defaultdict(set)
-    known_declarations: set[tuple[str, str]] = set()
-    for role in corpus["declaration_roles"]:
-        module = role.get("module")
-        declaration = role.get("declaration")
-        if not module or not declaration:
-            continue
-        for key in paper_citation_keys(module, declaration):
-            known_declarations.add(key)
-            if role.get("statement_node"):
-                declaration_routes[key].add(role["statement_node"])
+    role_index = paper_citation_role_index(corpus)
+    known_declarations = set(role_index)
+    declaration_routes: dict[tuple[str, str], set[str]] = {
+        key: {
+            role["statement_node"]
+            for role in roles
+            if role.get("statement_node")
+        }
+        for key, roles in role_index.items()
+    }
 
     artifacts = contract.get("artifacts", [])
     if args.paper:

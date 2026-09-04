@@ -1,18 +1,27 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-"""Focused tests for the bounded public corpus query surface."""
+"""Focused tests for the bounded public corpus query surface.
+
+Functional cases reuse one imported CLI parser so exhaustive projections are
+loaded once. Explicit subprocess cases below retain the installed-script,
+working-directory, and process-output boundaries.
+"""
 
 from __future__ import annotations
 
-import json
+import contextlib
 import copy
+import io
+import json
 import re
 import subprocess
 import sys
+from collections.abc import Callable
 from pathlib import Path
 
 import query_corpus
+import query_semantic
 from query_corpus import (
     agent_tour_packet,
     all_entrypoints,
@@ -103,35 +112,45 @@ PROGRAMME_EXPECTATIONS = {
 }
 
 
-def query(*args: str) -> dict[str, object]:
-    completed = subprocess.run(
-        [sys.executable, str(SCRIPT), *args],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=True,
+def invoke_main(
+    main: Callable[[], int],
+    script: Path,
+    args: tuple[str, ...],
+) -> subprocess.CompletedProcess[str]:
+    """Exercise one CLI parser while retaining immutable projection caches."""
+    stdout = io.StringIO()
+    stderr = io.StringIO()
+    previous_argv = sys.argv
+    try:
+        sys.argv = [str(script), *args]
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            try:
+                returncode = main()
+            except SystemExit as exc:
+                returncode = exc.code if isinstance(exc.code, int) else 1
+    finally:
+        sys.argv = previous_argv
+    return subprocess.CompletedProcess(
+        [sys.executable, str(script), *args],
+        returncode,
+        stdout.getvalue(),
+        stderr.getvalue(),
     )
+
+
+def query(*args: str) -> dict[str, object]:
+    completed = invoke_main(query_corpus.main, SCRIPT, args)
+    completed.check_returncode()
     return json.loads(completed.stdout)
 
 
 def run(*args: str) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
-        [sys.executable, str(SCRIPT), *args],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    return invoke_main(query_corpus.main, SCRIPT, args)
 
 
 def semantic_query(*args: str) -> dict[str, object]:
-    completed = subprocess.run(
-        [sys.executable, str(SEMANTIC_SCRIPT), *args],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=True,
-    )
+    completed = invoke_main(query_semantic.main, SEMANTIC_SCRIPT, args)
+    completed.check_returncode()
     return json.loads(completed.stdout)
 
 
@@ -674,6 +693,58 @@ def validate_paper_guide() -> None:
     assert [row["paper_id"] for row in natural["papers"]] == [
         row["paper_id"] for row in packet["papers"]
     ]
+
+
+def validate_indexed_declaration_search_equivalence() -> None:
+    """The folded prefilter must preserve ranking on a stable atlas sample."""
+    prepared_rows = query_corpus.declaration_search_rows()
+    sampled_by_id = {
+        prepared[0]["id"]: prepared
+        for prepared in (*prepared_rows[:2000], *prepared_rows[::127])
+    }
+    for (
+        _row,
+        primary,
+        haystack,
+        _primary_folded,
+        _haystack_folded,
+    ) in sampled_by_id.values():
+        assert query_corpus.fast_declaration_search_terms(primary) == frozenset(
+            query_corpus.search_terms(primary)
+        )
+        assert query_corpus.fast_declaration_search_terms(haystack) == frozenset(
+            query_corpus.search_terms(haystack)
+        )
+    for phrase in (
+        "denominator obstruction",
+        "divisibility certificate",
+        "BooleanMobiusSkipRowCofinal",
+        "prefix whole phrase",
+        "solving the open problem",
+        "unknown mathematical phrase",
+    ):
+        expected = {}
+        for prepared in sampled_by_id.values():
+            row, primary, haystack, primary_folded, haystack_folded = prepared
+            rank = query_corpus.search_rank(
+                phrase,
+                primary,
+                haystack,
+                primary_folded=primary_folded,
+                haystack_folded=haystack_folded,
+            )
+            if rank is not None:
+                expected[row["id"]] = rank
+        all_actual = {
+            row["id"]: rank
+            for rank, row in query_corpus.ranked_declaration_search_rows(phrase, {})
+        }
+        actual = {
+            row_id: all_actual[row_id]
+            for row_id in sampled_by_id
+            if row_id in all_actual
+        }
+        assert actual == expected
 
 
 def validate_natural_language_search() -> None:
@@ -1251,6 +1322,9 @@ def validate_connection_query_ranking() -> None:
 
 def validate_paper_semantic_citation_aliases() -> None:
     """Qualified authored roles must resolve ordinary source-level paper links."""
+    corpus = query_semantic.load()
+    role_index = query_semantic.paper_citation_role_index(corpus)
+    assert query_semantic.paper_citation_role_index(corpus) is role_index
     packet = semantic_query(
         "paper-coverage",
         "--paper",
@@ -1762,6 +1836,7 @@ def main() -> int:
     validate_research_corpus_fingerprint()
     validate_agent_tour()
     validate_paper_guide()
+    validate_indexed_declaration_search_equivalence()
     validate_natural_language_search()
     validate_indexed_declaration_lookup()
     validate_route_memory_cards()
@@ -2736,10 +2811,14 @@ def main() -> int:
     aliases = json.loads((ROOT / "paper" / "module-aliases.json").read_text(encoding="utf-8"))
     assert aliases["alias_count"] == len(aliases["aliases"])
     assert len({row["sigil"] for row in aliases["aliases"]}) == aliases["alias_count"]
+    # Exhaustive alias coverage belongs to the indexed resolver used by the
+    # packet builder. Building all downstream claim/paper joins 126 times made
+    # this one assertion dominate the release gate; representative full module
+    # packets above and below still exercise those joins through the same resolver.
     for row in aliases["aliases"]:
-        resolved = query("--module", row["sigil"], "--limit", "1")
-        assert resolved["module"]["path"] == row["path"]
-        assert resolved["paper_sigil"] == row["sigil"]
+        resolved, method = query_corpus.resolve_module_handle(row["sigil"])
+        assert resolved["path"] == row["path"]
+        assert method == "paper_sigil"
 
     exact_row_module = query(
         "--module", "BooleanMobiusSkipRowCofinal", "--limit", "12"

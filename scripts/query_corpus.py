@@ -4143,6 +4143,58 @@ def module_roles(claims: dict[str, Any]) -> dict[str, str]:
     return roles
 
 
+@lru_cache(maxsize=1)
+def module_handle_indexes() -> dict[str, Any]:
+    """Index exact module, stem, and paper-sigil handles once per process."""
+    atlas = load("docs/declaration_atlas.json")
+    aliases = load("paper/module-aliases.json")["aliases"]
+    modules = atlas["modules"]
+    by_stem: dict[str, list[dict[str, Any]]] = {}
+    for row in modules:
+        by_stem.setdefault(Path(row["path"]).stem.casefold(), []).append(row)
+    return {
+        "by_id": {row["id"]: row for row in modules},
+        "by_path": {row["path"]: row for row in modules},
+        "by_stem": by_stem,
+        "alias_by_sigil": {row["sigil"].casefold(): row for row in aliases},
+        "alias_by_path": {row["path"]: row for row in aliases},
+    }
+
+
+def resolve_module_handle(handle: str) -> tuple[dict[str, Any], str]:
+    """Resolve one module handle without rebuilding a full module packet."""
+    requested_handle = handle
+    indexes = module_handle_indexes()
+    alias = indexes["alias_by_sigil"].get(handle.casefold())
+    resolution = "exact_module_handle"
+    if alias is not None:
+        handle = alias["path"]
+        resolution = "paper_sigil"
+    normalized = handle.replace(".", "/") + ".lean" if "/" not in handle else handle
+    normalized = normalized.removeprefix("./")
+    module = (
+        indexes["by_id"].get(handle)
+        or indexes["by_path"].get(handle)
+        or indexes["by_path"].get(normalized)
+    )
+    if module is None and alias is None:
+        stem_matches = indexes["by_stem"].get(
+            Path(handle).name.removesuffix(".lean").casefold(), []
+        )
+        if len(stem_matches) > 1:
+            candidates = ", ".join(row["path"] for row in stem_matches[:8])
+            raise KeyError(
+                f"ambiguous module shorthand: {requested_handle}; candidates: "
+                f"{candidates}"
+            )
+        if len(stem_matches) == 1:
+            module = stem_matches[0]
+            resolution = "unique_module_stem"
+    if module is None:
+        raise KeyError(f"unknown module handle: {handle}")
+    return module, resolution
+
+
 def compact_module(row: dict[str, Any], roles: dict[str, str]) -> dict[str, Any]:
     return {
         "id": row["id"],
@@ -4489,41 +4541,8 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
     requested_handle = handle
     atlas = load("docs/declaration_atlas.json")
     claims = load("docs/claims.json")
-    aliases = load("paper/module-aliases.json")["aliases"]
-    alias = next((row for row in aliases if row["sigil"].casefold() == handle.casefold()), None)
-    resolution = "exact_module_handle"
-    if alias is not None:
-        handle = alias["path"]
-        resolution = "paper_sigil"
-    normalized = handle.replace(".", "/") + ".lean" if "/" not in handle else handle
-    normalized = normalized.removeprefix("./")
-    module = next(
-        (
-            row
-            for row in atlas["modules"]
-            if handle in (row["id"], row["path"]) or normalized == row["path"]
-        ),
-        None,
-    )
-    if module is None and alias is None:
-        requested_stem = Path(handle).name.removesuffix(".lean").casefold()
-        stem_matches = [
-            row
-            for row in atlas["modules"]
-            if Path(row["path"]).stem.casefold() == requested_stem
-        ]
-        if len(stem_matches) > 1:
-            candidates = ", ".join(row["path"] for row in stem_matches[:8])
-            raise KeyError(
-                f"ambiguous module shorthand: {requested_handle}; candidates: "
-                f"{candidates}"
-            )
-        if len(stem_matches) == 1:
-            module = stem_matches[0]
-            handle = module["path"]
-            resolution = "unique_module_stem"
-    if module is None:
-        raise KeyError(f"unknown module handle: {handle}")
+    module, resolution = resolve_module_handle(handle)
+    module_indexes = module_handle_indexes()
     roles = module_roles(claims)
     module_view = {
         **module,
@@ -4535,11 +4554,7 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
     }
     imported_rows = [row for row in atlas["modules"] if row["id"] in module["imports"]]
     importer_rows = [row for row in atlas["modules"] if module["id"] in row["imports"]]
-    declarations = [
-        row
-        for row in atlas_declarations(atlas)
-        if row["module"] == module["path"]
-    ]
+    declarations = declaration_row_indexes()["by_module"].get(module["path"], [])
     attached_claim_ids = sorted(
         {
             claim_id
@@ -4594,9 +4609,9 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
             "authority": "docs/declaration_atlas.json::modules",
         },
         "module": module_view,
-        "paper_sigil": next(
-            (row["sigil"] for row in aliases if row["path"] == module["path"]), None
-        ),
+        "paper_sigil": module_indexes["alias_by_path"].get(
+            module["path"], {}
+        ).get("sigil"),
         "attached_claims": claim_rows,
         "reviewed_result_families": reviewed_family_routes,
         "claim_family_routes": claim_family_routes,
@@ -4823,20 +4838,24 @@ SEARCH_TERM_ALIASES = {
     "solved": "resolution_status",
     "unresolved": "resolution_status",
 }
+SEARCH_CAMEL_BOUNDARY_RE = re.compile(r"(?<=[a-z0-9])(?=[A-Z])")
+SEARCH_NO_GO_RE = re.compile(r"\bno[\s-]+go\b")
+SEARCH_TOKEN_RE = re.compile(r"[a-z0-9]+")
 
 
 @lru_cache(maxsize=32_768)
 def search_terms(value: str) -> set[str]:
     """Return stable lexical terms for bounded natural-language fallback."""
     terms: set[str] = set()
-    value = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", value)
+    value = SEARCH_CAMEL_BOUNDARY_RE.sub(" ", value)
     folded = "".join(
         character
         for character in unicodedata.normalize("NFKD", value.casefold())
         if not unicodedata.combining(character)
     )
-    folded = re.sub(r"\bno[\s-]+go\b", " obstruction ", folded)
-    for token in re.findall(r"[a-z0-9]+", folded):
+    if "no" in folded:
+        folded = SEARCH_NO_GO_RE.sub(" obstruction ", folded)
+    for token in SEARCH_TOKEN_RE.findall(folded):
         if token in SEARCH_STOP_WORDS:
             continue
         if token.endswith("ing") and len(token) > 6:
@@ -4893,7 +4912,7 @@ def normalized_search_text(value: str) -> str:
         for character in unicodedata.normalize("NFKD", value.casefold())
         if not unicodedata.combining(character)
     )
-    return " ".join(re.findall(r"[a-z0-9]+", folded))
+    return " ".join(SEARCH_TOKEN_RE.findall(folded))
 
 
 def is_repository_overview_query(query: str) -> bool:
@@ -5418,10 +5437,19 @@ def is_generic_claim_status_query(
     )
 
 
-def search_rank(query: str, primary: str, haystack: str) -> int | None:
+def search_rank(
+    query: str,
+    primary: str,
+    haystack: str,
+    *,
+    primary_folded: str | None = None,
+    haystack_folded: str | None = None,
+    primary_terms: frozenset[str] | set[str] | None = None,
+    haystack_terms: frozenset[str] | set[str] | None = None,
+) -> int | None:
     needle = query.casefold()
-    key = primary.casefold()
-    body = haystack.casefold()
+    key = primary_folded if primary_folded is not None else primary.casefold()
+    body = haystack_folded if haystack_folded is not None else haystack.casefold()
     if needle == key:
         return 0
     if key.startswith(needle):
@@ -5433,8 +5461,8 @@ def search_rank(query: str, primary: str, haystack: str) -> int | None:
     query_terms = semantic_content_terms(query)
     if not query_terms:
         return None
-    key_terms = search_terms(primary)
-    body_terms = search_terms(haystack)
+    key_terms = primary_terms if primary_terms is not None else search_terms(primary)
+    body_terms = haystack_terms if haystack_terms is not None else search_terms(haystack)
     if query_terms <= key_terms:
         return 4
     if query_terms <= body_terms:
@@ -5453,6 +5481,123 @@ def search_rank(query: str, primary: str, haystack: str) -> int | None:
     if matched >= required:
         return 10 + len(query_terms) - matched
     return None
+
+
+@lru_cache(maxsize=1)
+def declaration_search_rows() -> tuple[
+    tuple[dict[str, Any], str, str, str, str],
+    ...,
+]:
+    """Prepare folded declaration text once without tokenizing the whole atlas."""
+    atlas = load("docs/declaration_atlas.json")
+    prepared = []
+    for row in atlas_declarations(atlas):
+        primary = row["name"]
+        haystack = " ".join(
+            str(value)
+            for value in (row["signature"], row.get("docstring"), row["module"])
+            if value
+        )
+        prepared.append(
+            (
+                row,
+                primary,
+                haystack,
+                primary.casefold(),
+                haystack.casefold(),
+            )
+        )
+    return tuple(prepared)
+
+
+def fast_declaration_search_terms(value: str) -> frozenset[str]:
+    """Tokenize mostly-ASCII atlas text without the generic Unicode slow path."""
+    separated = SEARCH_CAMEL_BOUNDARY_RE.sub(" ", value)
+    folded = separated.casefold()
+    if not folded.isascii():
+        folded = "".join(
+            character
+            for character in unicodedata.normalize("NFKD", folded)
+            if not unicodedata.combining(character)
+        )
+    if "no" in folded:
+        folded = SEARCH_NO_GO_RE.sub(" obstruction ", folded)
+    terms = set()
+    for token in SEARCH_TOKEN_RE.findall(folded):
+        if token in SEARCH_STOP_WORDS:
+            continue
+        if token.endswith("ing") and len(token) > 6:
+            token = token[:-3]
+        elif token.endswith("s") and len(token) > 4 and not token.endswith("ss"):
+            token = token[:-1]
+        terms.add(SEARCH_TERM_ALIASES.get(token, token))
+    return frozenset(terms)
+
+
+@lru_cache(maxsize=1)
+def declaration_search_term_index() -> dict[str, Any]:
+    """Build a compact inverted index using the atlas's overwhelmingly ASCII text."""
+    by_term: dict[str, list[int]] = {}
+    by_name: dict[str, list[int]] = {}
+    for index, prepared in enumerate(declaration_search_rows()):
+        row, primary, haystack, _primary_folded, _haystack_folded = prepared
+        by_name.setdefault(row["name"], []).append(index)
+        for term in fast_declaration_search_terms(f"{primary} {haystack}"):
+            by_term.setdefault(term, []).append(index)
+    return {"by_term": by_term, "by_name": by_name}
+
+
+def ranked_declaration_search_rows(
+    query: str,
+    hint_targets: Mapping[tuple[str, str], int],
+) -> list[tuple[int, dict[str, Any]]]:
+    """Rank candidates selected by a process-local inverted lexical index."""
+    prepared_rows = declaration_search_rows()
+    term_index = declaration_search_term_index()
+    candidate_indexes: set[int] = set()
+    term_variants = [semantic_content_terms(query), *semantic_query_variants(query)]
+    for terms in term_variants:
+        if not terms:
+            continue
+        required = 1 if len(terms) == 1 else max(2, (2 * len(terms) + 2) // 3)
+        overlaps = Counter(
+            index
+            for term in terms
+            for index in term_index["by_term"].get(term, ())
+        )
+        candidate_indexes.update(
+            index for index, count in overlaps.items() if count >= required
+        )
+    needle = query.casefold()
+    candidate_indexes.update(
+        index
+        for index, prepared in enumerate(prepared_rows)
+        if needle in prepared[3] or needle in prepared[4]
+    )
+    for (kind, handle), _priority in hint_targets.items():
+        if kind == "declaration":
+            candidate_indexes.update(term_index["by_name"].get(handle, ()))
+
+    ranks: dict[int, int] = {}
+    for index in candidate_indexes:
+        (
+            _row,
+            primary,
+            haystack,
+            primary_folded,
+            haystack_folded,
+        ) = prepared_rows[index]
+        rank = search_rank(
+            query,
+            primary,
+            haystack,
+            primary_folded=primary_folded,
+            haystack_folded=haystack_folded,
+        )
+        if rank is not None:
+            ranks[index] = rank
+
+    return [(rank, prepared_rows[index][0]) for index, rank in ranks.items()]
 
 
 def search_result_sort_key(
@@ -6055,12 +6200,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 )
             )
 
-    for row in atlas_declarations(atlas):
-        rank = search_rank(
-            query,
-            row["name"],
-            " ".join(str(value) for value in (row["signature"], row.get("docstring"), row["module"]) if value),
-        )
+    for rank, row in ranked_declaration_search_rows(query, hint_targets):
         if (
             hint_priority := hint_targets.get(
                 ("declaration", row["name"])
@@ -7377,7 +7517,6 @@ def module_local_declaration_results(
     query_terms = semantic_content_terms(query)
     if not query_terms:
         return []
-    atlas = load("docs/declaration_atlas.json")
     theorem_requested = (
         semantic_query_operator(query)["id"] == "support"
         or bool(
@@ -7386,9 +7525,9 @@ def module_local_declaration_results(
         )
     )
     ranked = []
-    for row in atlas_declarations(atlas):
-        if row["module"] != module_result["path"]:
-            continue
+    for row in declaration_row_indexes()["by_module"].get(
+        module_result["path"], []
+    ):
         candidate_terms = search_terms(
             " ".join(
                 str(value)

@@ -34,6 +34,7 @@ import re
 import stat
 import subprocess
 import sys
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -147,6 +148,7 @@ DECL_KEYWORDS = (
 )
 
 
+@lru_cache(maxsize=256)
 def strip_comments(text: str) -> str:
     return "\n".join(COMMENT_RE.sub("", line) for line in text.splitlines())
 
