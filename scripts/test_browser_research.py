@@ -10,6 +10,14 @@ import build_semantic_corpus as builder
 import check_research_browser as browser
 
 class BrowserTests(unittest.TestCase):
+    def test_structural_modules_are_named_in_menu_and_heading(self):
+        node = {"id": "structural::opaque", "zone": "structural", "problem": "1041",
+                "source_module": "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+                "canonical_statement": "Exact proposition", "evidence": []}
+        surfaces = builder.browser_surfaces({"statement_nodes": [node], "relations": [], "zones": []})
+        self.assertIn("CriticalTwoRootProximity", surfaces[builder.SEMANTIC_DIR / "BROWSER.md"])
+        self.assertIn("## CriticalTwoRootProximity", surfaces[builder.SEMANTIC_DIR / "BROWSER_structural_1.md"])
+
     def test_bounded_machine_route_preserves_every_field(self):
         import query_corpus
         packet = {f"result_{i}": {"statement": "x" * 80, "hypotheses": ["a", "b"]}

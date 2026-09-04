@@ -1534,7 +1534,7 @@ def browser_surfaces(payload: dict) -> dict[Path, str]:
         for n in nodes:
             problem = str(n.get("problem", "shared_substrate"))
             problems[problem].append((n, links[n["id"]]))
-            page += [f'<a id="{anchor(n["id"])}"></a>', f"## {n.get('local_id', n['id'])}", "",
+            page += [f'<a id="{anchor(n["id"])}"></a>', f"## {n.get('local_id') or Path(n.get('source_module', n['id'])).stem}", "",
                      str(n.get("canonical_statement", "")), "",
                      f"Class: {n.get('logical_class')}. Interpretation: {n.get('interpretation_tier')}. Prior-art assessment: {n.get('prior_art_state')}.", ""]
             if n.get("scope_caveat"):
@@ -1570,6 +1570,12 @@ def browser_surfaces(payload: dict) -> dict[Path, str]:
             grouped[link.split("#")[0]].append(n)
         for page, members in grouped.items():
             label = zones.get(members[0]["zone"], {}).get("title", members[0]["zone"])
+            if members[0]["zone"] == "structural":
+                modules = list(dict.fromkeys(Path(n.get("source_module", n["id"])).stem for n in members))
+                label = ", ".join(modules[:3]) + (f" (+{len(modules)-3} modules)" if len(modules) > 3 else "")
+            else:
+                ids = [n.get("local_id", n["id"]) for n in members]
+                label += f" — {ids[0]}" + (f" … {ids[-1]}" if len(ids) > 1 else "")
             index += [f"- [{label} — {members[0]['zone']}, {len(members)} nodes]({page})"]
         index += [""]
     surfaces[SEMANTIC_DIR / "BROWSER.md"] = "\n".join(index) + "\n"

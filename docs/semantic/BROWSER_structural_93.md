@@ -3,7 +3,7 @@
 [All problems and zones](BROWSER.md)
 
 <a id="node-a8e7d7ee6286096f"></a>
-## structural::8fbcb36c8c4a45e99ffb
+## EndpointWeightedPrivateSupport
 
 SOURCE-DOCUMENTED: Exact incidence-count form of the upper-hit normalization theorem. For a prime already known to hit the upper half of the block, a positive prime power survives in the normalized collision core exactly when that power hits at least two displayed factorial gaps. Thus any external prime-power hit-count bound of at most one deletes that exponent from `Ctilde_p` directly.
 
@@ -15,7 +15,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-e3d3ce4640470f1c"></a>
-## structural::8fc5218b0f6476b7ee30
+## FreeKill64NinetySevenCQ
 
 SOURCE-STRUCTURAL FAMILY: 102 theorem/lemma declaration(s) in `ErdosProblems/FreePosition/FreeKill64NinetySevenCQ.lean` share the normalized Lean proposition schema `: Nat.totient <num> = <num>`.
 
@@ -128,7 +128,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-e932de52cf6350b4"></a>
-## structural::8fcbf36f169ad8a0066e
+## BooleanMobiusLocalRepair
 
 SOURCE-DOCUMENTED: A genuine negative least defect (`S ≥ 2`) gives the strict estimate `H < 2A` used to localize the binary repair block.
 
@@ -140,7 +140,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-eb746630583878b0"></a>
-## structural::8fd4d42647838b6140ff
+## BooleanMobiusLocalRepair
 
 SOURCE-DOCUMENTED: The endpoint repair coefficient is nonnegative as a theorem, not as a feasibility hypothesis.
 
@@ -152,7 +152,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-d27660b6a920d154"></a>
-## structural::8feebda8319b5b5145ae
+## GreedyAchievementSet
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `Erdos249257/GreedyAchievementSet.lean` share the normalized Lean proposition schema `{n : ℕ} (hn : <num> < n) : <num> < mersenneWeightRat n`.
 
@@ -164,7 +164,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-b724f588048a9738"></a>
-## structural::8ff4525f65319dc7909c
+## GreedyAchievementSet
 
 SOURCE-DOCUMENTED: The two-channel cap is exactly the one-sided phase inequality `greedyMersenneSecondChannelPhase n ≤ 1 / 6`. This is an algebraic equivalence and assumes no greedy branch decision.
 
@@ -176,7 +176,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-4fe66022d71df44b"></a>
-## structural::8ffdcee67f8c4e9e53f5
+## C6
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `ErdosProblems/Rem/C6.lean` share the normalized Lean proposition schema `: seamWeightsFrom <num> <num> = [<num>, <num>, <num>, <num>, <num>, <num>, <num>, <num>, <num>, <num>, <num>] ++ seamWeightsFrom <num> <num>`.
 
@@ -188,7 +188,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-a9c7d206684eaa00"></a>
-## structural::900aa12271fa82cddad7
+## ClusterF
 
 SOURCE-DOCUMENTED: **The arithmetic core of `G090 → G091`.** Purely about naturals: if the low-carry height inequality `q·(V·P + C + (N+L+2)) < 2^L` holds and the middle window `M` is bounded by `C`, then the widened residue `P·V + M` is already reduced mod `2^L`, its `q`-multiple is still below `2^L`, and the gap inequality follows.
 
@@ -200,7 +200,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-5e463db1d5712a3f"></a>
-## structural::901a76d437430dd8509c
+## V2
 
 SOURCE-DOCUMENTED: `lateEntryRemainder 6 5 = 34`. Rank `5` is the first late rank of row `6` (`2 * 6 < 3 * 5` and `¬ (2 * 6 < 3 * 4)`).
 
@@ -212,7 +212,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-64595e67ca4d8627"></a>
-## structural::90200900b908db16d406
+## PrimeZeroBranch
 
 SOURCE-DOCUMENTED: The complete killed prime-power product is positive, including when the killed set is empty.
 
@@ -224,7 +224,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-ebbceb6fde84e66e"></a>
-## structural::9023f311a61a8a44d9c8
+## FreeKill64TwentyThreeU
 
 SOURCE-STRUCTURAL FAMILY: 587 theorem/lemma declaration(s) in `ErdosProblems/FreePosition/FreeKill64TwentyThreeU.lean` share the normalized Lean proposition schema `: Nat.Prime <num>`.
 
@@ -822,7 +822,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-c2f0ad018fb5202b"></a>
-## structural::9029d3bb9e9aaca13d2b
+## V2
 
 SOURCE-DOCUMENTED: The other direction, on a row where nothing fails: row `20` has no failing late rank at all. This is the non-vacuity witness for the *negative* side of `exists_not_hlow_iff`, also absent from `H2`.
 
@@ -834,7 +834,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-e390b00f89b6b210"></a>
-## structural::902aa05e38edbaf00e79
+## RationalSupportCarrySkeleton
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `Erdos249257/RationalSupportCarrySkeleton.lean` share the normalized Lean proposition schema `(p : ℕ) {v h : ℕ} (hv : <num> < v) (hperiod : IsDoublingPeriod v h) : Tendsto (cesaroMean (fun N : ℕ => (doublingResidue p v N : ℝ) / (v : ℝ))) atTop (nhds ((doublingWrapCount p v h : ℝ) / (h : ℝ)))`.
 
@@ -846,7 +846,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-d9e45bad9fdf480f"></a>
-## structural::9032bf551fc93fe7ea3e
+## TotientParityCoboundaryCountermodel
 
 SOURCE-DOCUMENTED: The route-pruning witness can be chosen with explicit lacunary binary carry pairs: every spike coefficient is six and its successor is zero. Thus the rationality mechanism survives even after the nonperiodicity witness is made completely visible in the theorem statement.
 
@@ -858,7 +858,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-92b36df584420524"></a>
-## structural::904798f96662e1326ee0
+## TotientMahlerDefect
 
 SOURCE-DOCUMENTED: At positive depth, every canonical channel occurs literally in the complete truncation.
 
@@ -870,7 +870,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-acfaaa6bf429687d"></a>
-## structural::905c321ad774b8cc6ea2
+## PrimeZeroBranch
 
 SOURCE-DOCUMENTED: Conversely, a prime dividing both the current factorial gap and one strictly earlier gap cannot be selected as prefix-private, so its complete current support remains in the unselected birth cofactor.
 
@@ -882,7 +882,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-11e98b9884b765c3"></a>
-## structural::906d210cc778691b76e2
+## FactorialChannelCertificate
 
 SOURCE-DOCUMENTED: The floor-factorial channel denominator divides the ambient factorial.
 
@@ -894,7 +894,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-e7d0061243550121"></a>
-## structural::906e12ac208734aa7d38
+## EndpointWeightedPrivateSupport
 
 SOURCE-DOCUMENTED: Leave-one-out specialization for the weighted endpoint numerator.
 
@@ -906,7 +906,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-b3cf12c802dfd946"></a>
-## structural::90762339db59faf36d30
+## FreeKill64OneHundredTwoCV
 
 SOURCE-STRUCTURAL FAMILY: 102 theorem/lemma declaration(s) in `ErdosProblems/FreePosition/FreeKill64OneHundredTwoCV.lean` share the normalized Lean proposition schema `: Nat.totient <num> = <num>`.
 
@@ -1019,7 +1019,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-00fcdb845dca8b63"></a>
-## structural::907761d9fe6cfbbbd280
+## IncidenceQuotientHermitePade
 
 SOURCE-DOCUMENTED: The evaluated finite companion family has zero kernel. This is the exact finite no-compression statement needed to reject a non-trivial incidence quotient at jet horizon `N`.
 
@@ -1031,7 +1031,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-82c723f5f4469e96"></a>
-## structural::908a1966d00e976b9f73
+## Corr2
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `ErdosProblems/Bit/Corr2.lean` share the normalized Lean proposition schema `{s d : ℕ} (hd : <num> ≤ d) : rowCarry s d ≤ <num>`.
 
@@ -1043,7 +1043,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-b5a5e107b3b32384"></a>
-## structural::908b74d1b5ff2e59540b
+## EndpointWeightedPrivateSupport
 
 SOURCE-DOCUMENTED: Every displayed denominator divides the full endpoint lcm.
 
@@ -1055,7 +1055,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-4aef129cc22fbeca"></a>
-## structural::9090e6705bbc8187a5c0
+## RankOneSharpFloor
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `ErdosProblems/Erdos249/RankOneSharpFloor.lean` share the normalized Lean proposition schema `: rankOneSubrankQuotient <num> <num> - mobiusMersenneTheta <num> < (<num> : ℝ) / <num>`.
 
@@ -1067,7 +1067,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-4920035f03e8cbfc"></a>
-## structural::90b00b887587c1b9f6de
+## SelectedSuffixCylinder
 
 SOURCE-DOCUMENTED: Exact cylinder certificate for the existing certified induction base.
 
@@ -1079,7 +1079,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-9829b4938600812e"></a>
-## structural::90bdb94b370ad3eacfe9
+## BooleanMobiusCarry
 
 SOURCE-DOCUMENTED: After exact division, the carry quotient is precisely `f_A(N+1)`.
 
@@ -1091,7 +1091,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-25539a2eb6b3779f"></a>
-## structural::90d373485032714acd12
+## D1
 
 SOURCE-DOCUMENTED: **When the break repairs itself.** If the excess is below the *next* tail, C6's invariant is restored one rank later. This is the exact repair condition: `R d < 2 ^ (2*s-d) + weightTail s (d+1)` is equivalent to `R (d+1) < 2 ^ (2*s-d-1)` in the broken state.
 
@@ -1103,7 +1103,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-9b87d42f6ccf2cd5"></a>
-## structural::90e933d87d8ab03661cc
+## BooleanMobiusGreedyReduction
 
 SOURCE-DOCUMENTED: The even half-cutoff inequality has a sharp two-interval form. The terminal coin fills the upper interval and leaves the lower interval alone.
 
@@ -1115,7 +1115,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-7ec795e3c168e6a8"></a>
-## structural::90fe06967bd274b62b14
+## TotientActualLcmTopEdgeStaircase
 
 SOURCE-DOCUMENTED: Modulo `2^m`, a depth-`K` discrepancy depends only on its final `m` letters. This is the non-vacuous replacement for asking every terminal letter to vanish separately.
 
@@ -1127,7 +1127,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-5ef3904ec5db7a3c"></a>
-## structural::910a29293c6f64136d48
+## FreeKill64OneHundredTenDD
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `ErdosProblems/FreePosition/FreeKill64OneHundredTenDD.lean` share the normalized Lean proposition schema `{M : Type*} [Monoid M] (a : M) (n : ℕ) : oneHundredTenDDFastPow a n = a ^ n`.
 
@@ -1139,7 +1139,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-afb0faf0f14bdf2e"></a>
-## structural::9110862f36c653861a1c
+## TwentyOneQuotientGreedy
 
 SOURCE-DOCUMENTED: The exact sign classifier for any denominator-`21` quotient row. Overshoot is neither a real-analytic mystery nor a quotient-remainder estimate: it is precisely the comparison between source fractional mass and quotient defect plus the periodic target fraction.
 
@@ -1151,7 +1151,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-3720eae1f8b73a1b"></a>
-## structural::9112336075cfb30d439a
+## D3
 
 SOURCE-DOCUMENTED: `LateEntryAdmissible 13 9`: the row that refutes the `∀ d` form is admissible for all of `T4` at its first late rank.
 
@@ -1163,7 +1163,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-db7ab2692d95fc80"></a>
-## structural::912a63dabfe837b32075
+## H1
 
 SOURCE-STRUCTURAL FAMILY: 2 theorem/lemma declaration(s) in `ErdosProblems/Hlow/H1.lean` share the normalized Lean proposition schema `: <num> * seamIntegerGreedyRemainder <num> < <num> * <num> ^ <num> + <num> * <num> ^ <num> + <num>`.
 

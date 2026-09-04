@@ -3,7 +3,7 @@
 [All problems and zones](BROWSER.md)
 
 <a id="node-c736139d29ebb650"></a>
-## structural::1de3bd250d92d643ac1e
+## EndpointWeightedPrivateSupport
 
 SOURCE-DOCUMENTED: Complete abstract private-support survival theorem for the canonical collision core: its canonical weighted numerator is coprime to the entire private modulus.
 
@@ -15,7 +15,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-69f0ea737d9e0de7"></a>
-## structural::1df46c95a560a0b3b1ca
+## D2
 
 SOURCE-DOCUMENTED: The same at the terminal rank: a bound on `ρ s` from its last declined rank.
 
@@ -27,7 +27,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-3d24fe32084c4820"></a>
-## structural::1e0a15592d932177dadd
+## FreeKill64EighteenP
 
 SOURCE-STRUCTURAL FAMILY: 653 theorem/lemma declaration(s) in `ErdosProblems/FreePosition/FreeKill64EighteenP.lean` share the normalized Lean proposition schema `: Nat.Prime <num>`.
 
@@ -691,7 +691,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-9657c4ce5a3138ca"></a>
-## structural::1e1485b9773b1bc232f1
+## CyclicTrinomialFiberCase
 
 SOURCE-DOCUMENTED: A Vieta-small quotient root produces a safe radial spoke for `w^m+a*w^r+c`. The application substitutes `u=t^q`.
 
@@ -703,7 +703,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-53028a6d8ad937d2"></a>
-## structural::1e27419fac5520109a6b
+## FullDepthRayAmplifier
 
 SOURCE-DOCUMENTED: The shift is an affine function of the series with an integer offset.
 
@@ -715,7 +715,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-7b9850dd6500d48d"></a>
-## structural::1e2b2cdc7cb818692f04
+## BooleanMobiusCarry
 
 SOURCE-DOCUMENTED: The initial value and recurrence determine the denominator-two support carry uniquely, and identify it with the existing affine orbit.
 
@@ -727,7 +727,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-87481ba4307ca286"></a>
-## structural::1e38c6290012ad213c16
+## WeightedCRTRepair
 
 SOURCE-DOCUMENTED: Whole-multiplier lacunarity bounds the product of every initial segment by the cube of its final multiplier.
 
@@ -739,7 +739,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-c996f8b2896dc5a5"></a>
-## structural::1e55a6a84a201694804c
+## PrimeUnitTranslator
 
 SOURCE-DOCUMENTED: The first factorial-grid channel node is strictly larger than the moment node.
 
@@ -751,7 +751,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-d242c6a4b021667d"></a>
-## structural::1e679b3a830a1a04c70c
+## AngleB3
 
 SOURCE-DOCUMENTED: **The non-escape band.** Under the explicit hypothesis that the potential is never positive, the excess satisfies `3 * E s ≤ 2 * s` at every rank.
 
@@ -763,7 +763,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-3b3a9cff5fbce1ed"></a>
-## structural::1e88dad9ce6d28a4745c
+## CyclicTetranomialCoefficientCase
 
 SOURCE-DOCUMENTED: The sharp root-dependent scalar condition for the new Abel tail.
 
@@ -775,7 +775,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-f4edb56463558ef2"></a>
-## structural::1e892678b14a1a3e0513
+## PrimeZeroBranch
 
 SOURCE-DOCUMENTED: Cofinal prefix-private factorial-gap primes are unconditional. Given a cutoff `B`, choose a prime `q ≥ B! + 5`; Wilson supplies the hit at `q - 2`. The least hit for `q` cannot occur at or below `B`, since then the prime would be at most `B! - 1`. Thus cofinal private support needs no external large-prime-factor theorem. Quantitative applications still need a sharper estimate, such as the prime-product pigeonhole above, to control `q` relative to its least hit.
 
@@ -787,7 +787,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-098c777f45fcec00"></a>
-## structural::1e9a18db69a039f02bb1
+## HalfCylinderMiddleCarryLowerBound
 
 SOURCE-DOCUMENTED: Exact finite iterate of a signed base-four excess orbit. This is the division-free form of `X₀ = X_k / 4^k + ∑_{j<k} (pulse_j+4)/4^(j+1)`.
 
@@ -799,7 +799,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-8b442e0de8aa4a46"></a>
-## structural::1ebfdea317c5320b0824
+## EndpointWeightedPrivateSupport
 
 SOURCE-DOCUMENTED: The analytic upper endpoint of the window cross-multiplies exactly to the natural inequality used in the CRT contradiction.
 
@@ -811,7 +811,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-f3ffc5a18295e8c6"></a>
-## structural::1ed4f6144c26ddaeab64
+## Discharge2_G100
 
 SOURCE-STRUCTURAL FAMILY: 4 theorem/lemma declaration(s) in `ErdosProblems/DemandLedger/edges/Discharge2_G100.lean` share the normalized Lean proposition schema `: ConeCell <num>`.
 
@@ -826,7 +826,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-7ee4766187da8131"></a>
-## structural::1edbed6a1365fde72771
+## FreeKill64FiftyNineBE
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `ErdosProblems/FreePosition/FreeKill64FiftyNineBE.lean` share the normalized Lean proposition schema `{M : Type*} [Monoid M] (a : M) (n : ℕ) : fiftyNineBEFastPow a n = a ^ n`.
 
@@ -838,7 +838,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-890b8806c9a0a706"></a>
-## structural::1eea9268c2f6c8807cf4
+## FreeKill64SeventySevenBW
 
 SOURCE-STRUCTURAL FAMILY: 653 theorem/lemma declaration(s) in `ErdosProblems/FreePosition/FreeKill64SeventySevenBW.lean` share the normalized Lean proposition schema `: Nat.Prime <num>`.
 
@@ -1502,7 +1502,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-5d2cd87e3c6f1614"></a>
-## structural::1eeb4196a6862acc5b10
+## T1
 
 SOURCE-DOCUMENTED: **The no-go, in the form that matters.** For `s ≥ 8` no interval ceiling reaches `2 ^ (s + 1)`. So the target `ρ s < 2 ^ (s + 1)` — never mind `ρ s ≤ 2 ^ s` — is unreachable by any one-step induction on the rank recursion, whatever ceiling it carries. C6's induction "does not close" because nothing in its class closes.
 
@@ -1514,7 +1514,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-8dcc026bc3866970"></a>
-## structural::1ef63a1db5d5e61b74f9
+## D2
 
 SOURCE-DOCUMENTED: **PROVED UNCONDITIONAL DISJUNCTION.** Either the half point is achieved, or `Recon257.seamExcess (D+1) ≠ 2` for every sufficiently large `D`. This derives eventual `hright` and `hcof` only inside the negative half-membership alternative. It does not establish which alternative holds; moreover the landing equality has no audited instance for `s ∈ [5,102]`.
 
@@ -1526,7 +1526,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-01a396435aa236a2"></a>
-## structural::1f14a1eaac486e5a76d9
+## Recon249
 
 SOURCE-DOCUMENTED: **The natural guess dies at offset 4.** Hypotheses `h1`–`h3` are the three Euler totients recorded (kernel-checked, via Pratt certificates) in `DiagonalPincerCertificatesT61` and `DiagonalPincerCertificatesT64`; note that `H₆₄ + 4 = 2·H₆₁ + 4`, so the two windows share the value in `h2`. Given them, the guess `c_{2H}(d) ≡ 2 · c_H(d) (mod 2^d)` holds modulo `2^3` and fails modulo `2^4`. This is not the congruence hypothesis consumed by `certifiedKill_transfer`, and scaling a safe residue need not preserve the excluded arc. The theorem refutes this coefficient-scaling guess; it does not by itself refute every possible certificate-transfer argument.
 
@@ -1538,7 +1538,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-fad6858b84b4d59e"></a>
-## structural::1f1d0d94eeb71a0d9c7d
+## GcdMomentCalculus
 
 SOURCE-DOCUMENTED: The stop mass at a node is at least a third of its cylinder mass: `(1/3)·M(a,b) ≤ 1/(2^{a+b}-1)`, i.e. `2^{a+b} - 1 ≤ 3(2ᵃ-1)(2ᵇ-1)` — equality exactly at the root `(1,1)`.
 
@@ -1550,7 +1550,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-f3a17bb9dbd4909c"></a>
-## structural::1f242fa3bab88d8e05b2
+## DyadicPrefixCompression
 
 SOURCE-DOCUMENTED: Rank two is the first selected exponent of the half-greedy orbit.
 
@@ -1562,7 +1562,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-15882cbbaa28e783"></a>
-## structural::1f2cd195fd446978c2e4
+## T4
 
 SOURCE-DOCUMENTED: In the late zone the whole `4 ^ k` correction budget is below `2 ^ s`, not merely below `2 ^ (s+1)` as in `BitCorr.lateCorrection_lt_two_pow`.
 
@@ -1574,7 +1574,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-1dde874a51a5a40d"></a>
-## structural::1f3959a3855d43172b56
+## FreeKill64ThirteenK
 
 SOURCE-STRUCTURAL FAMILY: 99 theorem/lemma declaration(s) in `ErdosProblems/FreePosition/FreeKill64ThirteenK.lean` share the normalized Lean proposition schema `: Nat.totient <num> = <num>`.
 
@@ -1684,7 +1684,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-eee0ab333c447de0"></a>
-## structural::1f3ab709ff653b0268a1
+## D4
 
 SOURCE-DOCUMENTED: **No interval ceiling certifies `hhigh`.** For `s ≥ 11` and any late rank `d` of row `s`, every `IntervalCeiling s` has `2 ^ (2 * s - d + 1) ≤ bound (d-1)`. The mechanism: writing `P = 2 ^ (2*s-d+1)` and `Q = 2 ^ (d-1)` we have `P * Q = 4 ^ s`, while `4 ^ s ≤ 105 * bound (d-1) + 90`. If the ceiling were below `P` this would force `Q < 105`, i.e. `d ≤ 7`, i.e. `s ≤ 10`. So `D4`'s verdict — "`hhigh` is the obstruction, and it is out of reach of the induction `C6` attempted" — is correct. Only its citation was wrong.
 
@@ -1696,7 +1696,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-651a66a91f0b8725"></a>
-## structural::1f3daed25b10e4986e7c
+## RationalSupportCarrySkeleton
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `Erdos249257/RationalSupportCarrySkeleton.lean` share the normalized Lean proposition schema `(a : ℕ) (ha : <num> < a) : Tendsto (fun N : ℕ => ((N / a : ℕ) : ℝ) / (N : ℝ)) atTop (nhds ((<num> : ℝ) / (a : ℝ)))`.
 
@@ -1708,7 +1708,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-b94cb1c2ac050699"></a>
-## structural::1f45f0e5f3798949e3cb
+## RationalSupportCarrySkeleton
 
 SOURCE-DOCUMENTED: Any shifted natural tail state with the correct numerator congruence inherits the canonical wrap-count lower bound on every complete block.
 
@@ -1720,7 +1720,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-72600e45a2a50060"></a>
-## structural::1f4a9c8c76bbac86d46e
+## TwentyOneQuotientGreedy
 
 SOURCE-DOCUMENTED: **Closed-state endpoint.** The sharp recurrence may land exactly on the binary boundary. That does not obstruct the limiting construction: closed-window states alone already put `1/21` in the Mersenne achievement set.
 
@@ -1732,7 +1732,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-d5107a00d64f197d"></a>
-## structural::1f506e8de48fb4eaac36
+## FullDepthRayAmplifier
 
 SOURCE-DOCUMENTED: **Shift concatenation.** Consecutive blocks along a ray are not independent: they differ by an integer after one dyadic scaling.
 
@@ -1744,7 +1744,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-1531fa2a60387caf"></a>
-## structural::1f7d555bdcb9b124b57c
+## W6
 
 SOURCE-DOCUMENTED: B1/B2. `certifiedKill_depth_split` is NOT vacuous. At `(h, N, L) = (22, 4535, 15)` the doubling hypothesis holds (`4 * 4574 = 18296 < 32768 = 2^15`) AND the depth-`16` certificate holds, so the theorem fires on live data.
 
@@ -1756,7 +1756,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-c6d8b274902f326e"></a>
-## structural::1f941e2515af32d18784
+## HalfTrappingReturnCarry
 
 SOURCE-DOCUMENTED: When the coefficient and output bits agree at one position, the carry difference doubles across that position.
 
@@ -1768,7 +1768,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-086728afd428a9c6"></a>
-## structural::1f957b54515f2bc5211c
+## FreeKill64FiftySevenBC
 
 SOURCE-STRUCTURAL FAMILY: 682 theorem/lemma declaration(s) in `ErdosProblems/FreePosition/FreeKill64FiftySevenBC.lean` share the normalized Lean proposition schema `: Nat.Prime <num>`.
 
@@ -2461,7 +2461,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-31c4c1c3b60552d9"></a>
-## structural::1fa87559eb6f4d6c1253
+## FreeKill64OneHundredSeventeenDK
 
 SOURCE-STRUCTURAL FAMILY: 102 theorem/lemma declaration(s) in `ErdosProblems/FreePosition/FreeKill64OneHundredSeventeenDK.lean` share the normalized Lean proposition schema `: Nat.totient <num> = <num>`.
 

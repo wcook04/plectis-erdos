@@ -3,7 +3,7 @@
 [All problems and zones](BROWSER.md)
 
 <a id="node-360b63f8f0030e7a"></a>
-## structural::836adbade51d7998d4b7
+## C6
 
 SOURCE-DOCUMENTED: The greedy on a concatenation is the greedy on the tail started from the remainder of the head.
 
@@ -15,7 +15,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-33b5b9af1de6820c"></a>
-## structural::838c60edc82ef02db36a
+## PrimeZeroBranch
 
 SOURCE-DOCUMENTED: A common multiple of all summand denominators is already a common denominator for the reduced finite sum. This retains least-common-multiple rather than product-level valuation information.
 
@@ -27,7 +27,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-90497cb16ac280b2"></a>
-## structural::838cb7fd701ac6769854
+## PrimeZeroBranch
 
 SOURCE-DOCUMENTED: Every prefix-private prime factor of `m! - 1` therefore enters the next reduced predecessor denominator.
 
@@ -39,7 +39,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-68837d3de8546af1"></a>
-## structural::838e3752b096d99a1905
+## HalfCylinderSkippedEndpointClassifier
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `Erdos249257/HalfCylinderSkippedEndpointClassifier.lean` share the normalized Lean proposition schema `{s d : ℕ} (hd : <num> < d) (hds : d < s) : d ∈ halfGreedyPrefixSupport s ↔ d ∈ halfGreedyPrefixSupport (s - <num>)`.
 
@@ -51,7 +51,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-acb7e51480e9d59b"></a>
-## structural::839148f9f6680042aab0
+## EndpointWeightedPrivateSupport
 
 SOURCE-DOCUMENTED: A congruent endpoint numerator smaller than a projection modulus is exactly the corresponding projected residue.
 
@@ -63,7 +63,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-02472d1f7ffedf15"></a>
-## structural::83944b4270aa3515ac83
+## AngleA1
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `ErdosProblems/Lift/AngleA1.lean` share the normalized Lean proposition schema `(L : ℕ) : ∑ j ∈ Finset.range L, (<num> : ℤ) ^ (L - <num> - j) = <num> ^ L - <num>`.
 
@@ -75,7 +75,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-7b1ddc784d4c25ea"></a>
-## structural::839fa023b36b2081985d
+## SuffixCylinderThreshold
 
 SOURCE-STRUCTURAL FAMILY: 8 theorem/lemma declaration(s) in `Erdos249257/SuffixCylinderThreshold.lean` share the normalized Lean proposition schema `: stage2<num>.endpoint = <num>`.
 
@@ -94,7 +94,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-f810616d990300c7"></a>
-## structural::83a186375c2a4a0300f9
+## DyadicPrefixCompression
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `Erdos249257/DyadicPrefixCompression.lean` share the normalized Lean proposition schema `(n : ℕ) : (halfGreedyResidualDisplayedNumerator n).natAbs.Coprime (halfGreedyPrefixDenominator n)`.
 
@@ -106,7 +106,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-87333461e49f2a8a"></a>
-## structural::83aee2f16df37b9c9db7
+## HalfUpperResetCriticalBand
 
 SOURCE-DOCUMENTED: A largest false rank either yields a strict earlier boundary row or is the terminal rank `s-1`. The high-quotient identity above applies in both cases; only the first disjunct is a genuine descent.
 
@@ -118,7 +118,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-8eb2fcbac9b5b0d8"></a>
-## structural::83bbaa06f489ee0545ea
+## TwentyOneQuotientGreedy
 
 SOURCE-DOCUMENTED: **A saturated escape forces an older support hole.** Write the unique crossing residue as `R = 3a+2`. The second endpoint in the crossing pulse is `2R+2 = 6(a+1)`. Both `a+1` and `2(a+1)` divide that endpoint. Since a crossing has total two-step support pulse at most one, at least one of those two ancestor ranks is absent. This is the one-third-scale obstruction attached to the actual entrance into supercapacity, rather than to a later saturated transition.
 
@@ -130,7 +130,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-0b9373c487db4fec"></a>
-## structural::83e163510c6509703922
+## DyadicPrefixCompression
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `Erdos249257/DyadicPrefixCompression.lean` share the normalized Lean proposition schema `(n : ℕ) (hskip : ¬ mersenneWeightRat (n + <num>) ≤ greedyMersenneRemainderRat (<num> / <num> : ℚ) n) : halfGreedyResidualDisplayedNumerator (n + <num>) = halfGreedyResidualDisplayedNumerator n`.
 
@@ -142,7 +142,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-97ce48cc789d0c44"></a>
-## structural::83e4ba0e34feefc80005
+## TwentyOneQuotientGreedy
 
 SOURCE-DOCUMENTED: The decoded upper support always misses a carry in the closed window by at most one.
 
@@ -154,7 +154,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-35b91da5c7711529"></a>
-## structural::83f1a5935738bd43147d
+## GeometricCoprimality
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `Erdos249257/GeometricCoprimality.lean` share the normalized Lean proposition schema `(r : ℝ) (p : ℕ × ℕ) : (if <num> < p.<num> ∧ Nat.Coprime p.<num> p.<num> then r ^ (p.<num> + p.<num>) else <num>) = (if <num> < p.<num> ∧ <num> < p.<num> ∧ Nat.Coprime p.<num> p.<num> then r ^ (p.<num> + p.<num>) else <num>) + (if p = ((<num> : ℕ), (<num> : ℕ)) then r else <num>)`.
 
@@ -166,7 +166,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-6000547cd89593ad"></a>
-## structural::840b070c8c572f4a09b2
+## V6
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `ErdosProblems/Skip/verify/V6.lean` share the normalized Lean proposition schema `(D : ℕ) (hD : <num> ≤ D) (hright : ∀ s : ℕ, D + <num> ≤ s → HalfCylinderIntegerGreedy.seamGreedyWord (s + <num>) = (HalfCylinderIntegerGreedy.seamGreedyWord s).extend true) : (<num> / <num> : ℝ) ∉ mersenneAchievementSet`.
 
@@ -178,7 +178,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-ee7198a980508956"></a>
-## structural::841135f7bf7e9ce7d3ba
+## TotientTailCarryPeriod
 
 SOURCE-DOCUMENTED: **Closed form for every integral carry trajectory.** After `L` steps, the initial state contributes only `2^L d`; all lower binary digits are the negative discrepancy word.
 
@@ -190,7 +190,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-c334caff527a8aad"></a>
-## structural::8411ea76360bbe6a92a7
+## Corr1
 
 SOURCE-DOCUMENTED: **Bit criterion for the corpus's own seam greedy word.** Once the entering remainder `lateEntryRemainder s d` satisfies the two side conditions, membership of a late rank `e` in `seamWordSupport (seamGreedyWord s)` is *exactly* bit `2 * s - e` of that remainder.
 
@@ -202,7 +202,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-a5033027e7f09a43"></a>
-## structural::8417d28e996d473a61ac
+## H2
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `ErdosProblems/Hlow/H2.lean` share the normalized Lean proposition schema `{s d : ℕ} (h : BitAdmissible s d) (hfail : ¬ (lateCorrection s d ≤ lateEntryRemainder s d % <num> ^ (s + <num>))) : seamIntegerGreedyRemainder s ≤ <num> ^ s`.
 
@@ -214,7 +214,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-c7eeb2ed969b0136"></a>
-## structural::841c5f3be56265b6a83d
+## PrimitivePrefixRigidity
 
 SOURCE-DOCUMENTED: A cancellation-free reduced block collapses to the two scalar data `primitiveBlockA` and `primitiveBlockB`. The numerator identity is stated over `ℤ` so no truncated subtraction can hide a side condition.
 
@@ -226,7 +226,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-6498865e662e6143"></a>
-## structural::84492469b083d5fc7689
+## FreeKill64NineteenQ
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `ErdosProblems/FreePosition/FreeKill64NineteenQ.lean` share the normalized Lean proposition schema `{M : Type*} [Monoid M] (a : M) (n : ℕ) : nineteenQFastPow a n = a ^ n`.
 
@@ -238,7 +238,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-ceeaeeb3c591dcc9"></a>
-## structural::84546ce470273e0df968
+## T4
 
 SOURCE-DOCUMENTED: **Reduction 1.** If bit `s` of the entering remainder is clear at arbitrarily large admissible rows, Erdős #257's `1/2` question is answered positively.
 
@@ -250,7 +250,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-60c95419a8cd5a54"></a>
-## structural::84578189c2a49b53e2d3
+## SupportSunflowerDichotomy
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `Erdos249257/SupportSunflowerDichotomy.lean` share the normalized Lean proposition schema `{A : Set ℕ} (hB : OrthogonalPetalBouquet A) (i : ℕ) : <num> < hB.ray i`.
 
@@ -262,7 +262,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-dd20c83b2430cf85"></a>
-## structural::845b82f200d06788389f
+## HalfUpperResetCriticalBand
 
 SOURCE-DOCUMENTED: Every suffix of an actual upper/right cylinder is a divisor-incidence packet completing the terminal remainder to zero modulo the corresponding power of four.
 
@@ -274,7 +274,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-0d2cdd1f5927071f"></a>
-## structural::84656e869bbac6e1b683
+## C1
 
 SOURCE-DOCUMENTED: **A second cofinal criterion for `1/2 ∈ mersenneAchievementSet`.** Independent of `BitR2.RemainderReachesHalfPointCofinally`: it fires at rows whose remainder sits *above* the half point.
 
@@ -286,7 +286,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-db78d4cc61800fa1"></a>
-## structural::84707ddade2b5fbbfcbe
+## MersenneSubseriesRigidity
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean` share the normalized Lean proposition schema `: supportedMersenneAchievementSet Set.univ = mersenneAchievementSet`.
 
@@ -298,7 +298,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-2fd7d6f371c26a6a"></a>
-## structural::8477dc9a8d38e4cedc74
+## CampbellShiftSynchronization
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `Erdos249257/CampbellShiftSynchronization.lean` share the normalized Lean proposition schema `{M : ℕ} (hlast : IsLastHalfGreedySkip M) : <num> < M`.
 
@@ -310,7 +310,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-ab76cdad2eee360c"></a>
-## structural::848738dd9ceb6e494a28
+## FreeKill61E
 
 SOURCE-DOCUMENTED: An off-diagonal free-position kill at `periodLcm 61 - 1`.
 
@@ -322,7 +322,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-af60593bd962a4b3"></a>
-## structural::849b2bf023e418478139
+## TwentyOneQuotientGreedy
 
 SOURCE-DOCUMENTED: The aggregate two-step pulse therefore depends only on the oldest two-thirds of a bounded support. This is the exact horizon-stability fact behind the observed one-dimensional quotient replay.
 
@@ -334,7 +334,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-748d3945a2a8b8ed"></a>
-## structural::84a176780c1587510ccc
+## FreeKill64QuadB
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `ErdosProblems/FreePosition/FreeKill64QuadB.lean` share the normalized Lean proposition schema `: certifiedKill <num> <num> <num>`.
 
@@ -346,7 +346,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-2d13fdd5cfd72185"></a>
-## structural::84c24016a51759526236
+## HalfCylinderSeamLimit
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `Erdos249257/HalfCylinderSeamLimit.lean` share the normalized Lean proposition schema `(s : ℕ) (hs : <num> ≤ s) (hR : seamIntegerGreedyRemainder s < <num> ^ (s + <num>)) : <num> ≤ (<num> / <num> : ℝ) - seamGreedyFiniteValue s ∧ (<num> / <num> : ℝ) - seamGreedyFiniteValue s ≤ <num> * (<num> / <num> : ℝ) ^ s`.
 
@@ -358,7 +358,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-07c6ba2cc8e75a83"></a>
-## structural::84cc71c403868739136a
+## C4
 
 SOURCE-DOCUMENTED: **PROVED implication, not a resolution of `#257`.** If `1/2` lies in the Mersenne achievement set then the seam greedy remainder is below `3 · 2 ^ s` at cofinally many rows. This conclusion already follows from `Skip/D2` and the stronger imported `Bit/R2` late-row ceiling.
 
@@ -370,7 +370,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-720c75e7fd90ac38"></a>
-## structural::84ce30729be565419650
+## SuffixCylinderCarryPivot
 
 SOURCE-DOCUMENTED: Set-level carry-pivot normal form: consecutive zero-based suffix numerals decompose as one pivot rank entering `A`, a fully flipped deeper block, and an agreeing shallow block.
 
@@ -382,7 +382,7 @@ Scope: This machine-derived family proves exact source linkage and shared propos
 
 
 <a id="node-38da1d23a00838a9"></a>
-## structural::84ec595759cd1947f197
+## B1
 
 SOURCE-STRUCTURAL FAMILY: 1 theorem/lemma declaration(s) in `ErdosProblems/Bit/verify/B1.lean` share the normalized Lean proposition schema `: lateCorrection <num> <num> = <num>`.
 
