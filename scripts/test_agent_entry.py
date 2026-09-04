@@ -65,6 +65,10 @@ ROUTE_CASES = {
         "repository_architecture",
         "maintain-public-infrastructure",
     ),
+    "audit every clone-local skill against the repository as it exists now and repair drift": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
     "make the public clone self explaining and propagate accepted work": (
         "repository_architecture",
         "maintain-public-infrastructure",

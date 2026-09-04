@@ -6,12 +6,17 @@ from __future__ import annotations
 import json
 import re
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 INSTALLER = ROOT / "scripts" / "install_agent_skills.py"
+PYTHON_COMMAND_RE = re.compile(
+    r"python3\s+(scripts/[A-Za-z0-9_./-]+\.py)([^`\n]*)"
+)
+OPTION_RE = re.compile(r"(?<![A-Za-z0-9_-])(--[a-z][a-z0-9-]*)")
 
 
 def local_skill_references(source: str) -> set[str]:
@@ -39,6 +44,61 @@ def local_skill_references(source: str) -> set[str]:
             continue
         result.add(value)
     return result
+
+
+def advertised_python_commands(source: str) -> list[tuple[str, str | None, set[str]]]:
+    """Extract tracked Python CLIs and options from runnable documentation."""
+    joined = re.sub(r"\\\s*\n\s*", " ", source)
+    commands: list[tuple[str, str | None, set[str]]] = []
+    for match in PYTHON_COMMAND_RE.finditer(joined):
+        script = match.group(1)
+        tail = match.group(2).strip()
+        first = tail.split(maxsplit=1)[0] if tail else ""
+        positional = first if re.fullmatch(r"[a-z][a-z0-9_-]*", first) else None
+        commands.append((script, positional, set(OPTION_RE.findall(tail))))
+    return commands
+
+
+def validate_advertised_python_commands(documents: dict[str, str]) -> None:
+    """Require every advertised CLI selector to exist in that command's help."""
+    help_cache: dict[tuple[str, str | None], str] = {}
+    for document, source in documents.items():
+        for script, positional, options in advertised_python_commands(source):
+            path = ROOT / script
+            assert path.is_file(), (document, script)
+            if not options:
+                continue
+            cache_key = (script, None)
+            if cache_key not in help_cache:
+                result = subprocess.run(
+                    [sys.executable, str(path), "--help"],
+                    cwd=ROOT,
+                    text=True,
+                    capture_output=True,
+                    check=False,
+                )
+                assert result.returncode == 0, (document, script, result.stderr)
+                help_cache[cache_key] = result.stdout + result.stderr
+            help_text = help_cache[cache_key]
+            if positional is not None:
+                assert positional in help_text, (document, script, positional)
+            missing = options - set(OPTION_RE.findall(help_text))
+            if missing and positional is not None:
+                cache_key = (script, positional)
+                if cache_key not in help_cache:
+                    result = subprocess.run(
+                        [sys.executable, str(path), positional, "--help"],
+                        cwd=ROOT,
+                        text=True,
+                        capture_output=True,
+                        check=False,
+                    )
+                    assert result.returncode == 0, (document, script, positional, result.stderr)
+                    help_cache[cache_key] = result.stdout + result.stderr
+                missing -= set(OPTION_RE.findall(help_cache[cache_key]))
+            assert not missing, (document, script, sorted(missing))
+
+
 def run(*args: str, expected: int = 0) -> subprocess.CompletedProcess[str]:
     result = subprocess.run(
         ["python3", str(INSTALLER), *args],
@@ -62,12 +122,14 @@ def main() -> int:
     registry = json.loads((ROOT / "skills" / "registry.json").read_text(encoding="utf-8"))
     registered = {row["id"] for row in registry["skills"]}
     skills = tuple(row["id"] for row in registry["skills"])
+    command_documents: dict[str, str] = {}
 
     listed = run("--list").stdout
     for name in skills:
         skill = ROOT / "skills" / name / "SKILL.md"
         assert skill.is_file(), skill
         source = skill.read_text(encoding="utf-8")
+        command_documents[str(skill.relative_to(ROOT))] = source
         assert f"name: {name}" in source, name
         assert name in listed, name
         description = next(
@@ -86,8 +148,13 @@ def main() -> int:
         ):
             assert (ROOT / reference).is_file(), (name, reference)
 
-    assert 'agent_entry.py --entry "<task in ordinary language>"' in readme
-    assert "CONTRIBUTING.md" in readme
+    return_template = "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"
+    command_documents[return_template] = (ROOT / return_template).read_text(encoding="utf-8")
+    validate_advertised_python_commands(command_documents)
+
+    assert "[`AGENTS.override.md`](AGENTS.override.md)" in readme
+    assert "[`CONTRIBUTING.md`](CONTRIBUTING.md)" in readme
+    assert 'agent_entry.py --entry "<task in ordinary language>"' in entry
     assert "agent_entry.py --skills" in entry
 
     with tempfile.TemporaryDirectory(prefix="plectis-skill-test-") as temp:
@@ -146,7 +213,10 @@ def main() -> int:
             "--check",
         )
 
-    print("clone skills: discovery, preview, copy, symlink, collision, and routes PASS")
+    print(
+        "clone skills: discovery, live CLI grammar, preview, copy, symlink, "
+        "collision, and routes PASS"
+    )
     return 0
 
 

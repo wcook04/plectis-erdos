@@ -34,7 +34,7 @@
   },
   "evidence": [
     {
-      "command": "python3 scripts/query_corpus.py --problem 257",
+      "command": "python3 scripts/query_corpus.py --route erdos_257",
       "exit_state": "not_run",
       "exit_code": null,
       "observed": "Fixture records the first next command instead of claiming it ran.",

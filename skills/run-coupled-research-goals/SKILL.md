@@ -24,7 +24,14 @@ exact routes for any claim the operator wants to inspect.
 
 Before either goal works, record the shared starting commit, ultimate open
 endpoint, current bounded frontier, claim ceiling, and available compute or
-human-review budget. Obtain the frontier from the clone:
+human-review budget. For a resumable attributable session, use the tracked
+continuation owner rather than inventing a chat-local ledger:
+
+```sh
+python3 scripts/continue_research.py start --help
+```
+
+Obtain the frontier from the clone:
 
 ```sh
 python3 scripts/query_corpus.py --overview --format card

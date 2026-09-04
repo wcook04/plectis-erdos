@@ -34,6 +34,12 @@ counterexamples, computations, and no-go results. State the target,
 hypotheses, evidence class, known obstruction, and stop condition before a
 long run.
 
+When a problem card prints a `resume` command, run that exact
+`scripts/query_route_memory.py --problem <number>` route for source-current
+continuation state. Problem selection in `query_corpus.py` uses
+`--route erdos_<number>` or ordinary-language `--ask`; it has no `--problem`
+selector.
+
 If a stewardship or consequence-propagation receipt exists, consume its
 source-pinned frontier before selecting work. Treat its ranking as a reasoned
 allocation input, not proof authority. Prefer the strongest attackable

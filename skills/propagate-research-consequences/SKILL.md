@@ -48,9 +48,13 @@ may not convert significance or agreement into proof.
 
 Record the starting commit, current commit, changed object, evidence class,
 strongest supported conclusion, and surviving limitation. Begin with the
-original branch rather than the current upstream branch:
+original branch rather than the current upstream branch. Include uncommitted
+work instead of silently treating `HEAD` as the whole delta:
 
 ```sh
+git status --short
+git diff --name-status
+git diff --cached --name-status
 git diff --name-status <starting-commit>..HEAD
 git log --oneline <starting-commit>..HEAD
 ```

@@ -200,7 +200,7 @@ def accepted_result_matrix() -> tuple[list[tuple[str, dict, bytes]], str]:
         receipt["repository"]["changed_paths"] = [changed_path]
         receipt["evidence"][0].update(
             {
-                "command": "python3 scripts/query_corpus.py --problem 257",
+                "command": "python3 scripts/query_corpus.py --route erdos_257",
                 "exit_state": "passed",
                 "exit_code": 0,
                 "observed": f"Accepted {result_class} fixture evidence.",

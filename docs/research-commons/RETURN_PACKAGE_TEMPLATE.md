@@ -49,14 +49,14 @@ anchor; for a registered problem-owned note, start at the problem packet:
 # For a reviewed paper or claim packet, use:
 python3 scripts/query_corpus.py --paper-anchor <canonical_paper_label>
 # For a registered problem-owned note, start with:
-python3 scripts/query_corpus.py --problem <number>
+python3 scripts/query_corpus.py --route erdos_<number>
 # Then continue with the registered note artifact:
 python3 scripts/query_corpus.py --publication-artifact erdos_<number>_note
 # To enumerate that note's exact paper anchors, use its returned artifact id:
 python3 scripts/query_corpus.py --search "erdos_<number>_note::" --limit 100
 python3 scripts/query_corpus.py --paper-anchor erdos_<number>_note::<label>
 # For source-only #68 or #1041, continue with the module returned above:
-python3 scripts/query_corpus.py --module <module-or-path returned by --problem>
+python3 scripts/query_corpus.py --module <module-or-path returned by the problem route>
 ```
 
 The namespaced `<artifact_id>::<label>` handle keeps repeated paper labels
@@ -138,7 +138,7 @@ this package.
 Use the public query route before describing the frontier:
 
 ```sh
-python3 scripts/query_corpus.py --problem <number>
+python3 scripts/query_corpus.py --route erdos_<number>
 python3 scripts/query_corpus.py --open <remaining-open-id>
 ```
 
@@ -221,7 +221,7 @@ Minimum useful evidence, as applicable:
 ```sh
 git diff --check
 python3 scripts/check_cold_clone_comprehension.py --quick
-python3 scripts/query_corpus.py --problem <number>
+python3 scripts/query_corpus.py --route erdos_<number>
 python3 scripts/validate_research_return.py return.json \
   --require-submitted --check-git \
   --require-route-memory-receipt \
