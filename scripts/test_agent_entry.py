@@ -39,6 +39,10 @@ ROUTE_CASES = {
         "return_research",
         "erdos-research-return",
     ),
+    "I cloned this repository, made mathematical progress, and want to send it back so it can be reviewed, assimilated, propagated, and credited": (
+        "return_research",
+        "erdos-research-return",
+    ),
     "prepare a PR and submit pull request": ("submit_change", "submit-pull-request"),
     "install skills into Codex": ("install_skills", "install-clone-skills"),
     "improve cold clone agent entry and skill discovery": (

@@ -328,12 +328,19 @@
     {
       "id": "return_research",
       "title": "Package or assimilate research from a clone",
+      "priority": 40,
       "task_cues": [
         "return research",
         "research return",
         "assimilate",
+        "assimilated",
         "older clone",
         "credit contribution",
+        "credited",
+        "made mathematical progress",
+        "send it back",
+        "send work back",
+        "reviewed and credited",
         "package evidence",
         "resume work"
       ],
@@ -345,7 +352,10 @@
         "skills/erdos-research-return/SKILL.md",
         "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"
       ],
-      "commands": [],
+      "commands": [
+        "python3 scripts/continue_research.py --help",
+        "python3 scripts/validate_research_return.py --help"
+      ],
       "boundary": "Preserve the starting commit, original delta, evidence limits, and contributor credit."
     },
     {

@@ -7,6 +7,9 @@ import json
 import re
 from pathlib import Path
 
+from agent_entry import entry_packet
+from agent_skill_catalog import load_catalog
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -146,6 +149,19 @@ def main() -> int:
     require(
         "agent_entry.py --skills" in agent_entry,
         "compact agent entry does not route to the complete skill registry",
+    )
+    returned_work = entry_packet(
+        load_catalog(),
+        "I cloned this repository, made mathematical progress, and want to send it back "
+        "so it can be reviewed, assimilated, propagated, and credited",
+    )
+    require(
+        returned_work["primary_lane"]["id"] == "return_research",
+        "ordinary-language returned work does not reach the contribution lane",
+    )
+    require(
+        returned_work["skills"][0]["id"] == "erdos-research-return",
+        "ordinary-language returned work does not reach the assimilation skill",
     )
 
     consequence_skill = text("skills/propagate-research-consequences/SKILL.md")
