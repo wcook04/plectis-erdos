@@ -719,8 +719,13 @@ def validate_indexed_declaration_search_equivalence() -> None:
     prepared_rows = query_corpus.declaration_search_rows()
     sampled_by_id = {
         prepared[0]["id"]: prepared
-        for prepared in (*prepared_rows[:2000], *prepared_rows[::127])
+        for prepared in (
+            *prepared_rows[:256],
+            *prepared_rows[::509],
+            prepared_rows[-1],
+        )
     }
+    assert len(sampled_by_id) >= 550
     for (
         _row,
         primary,

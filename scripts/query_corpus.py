@@ -4323,11 +4323,13 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
         if "/" not in resolved_handle and not resolved_handle.endswith(".lean")
         else resolved_handle
     ).removeprefix("./")
-    declaration_matches = [
-        row
-        for row in atlas_declarations(atlas)
-        if row["name"] == resolved_handle
-    ]
+    # Reuse the immutable atlas grouping owned by exact lookup. Building and
+    # sorting the 153k-row module map inside every connection card made four
+    # cards in the canonical corpus suite pay the same full scan four times.
+    declaration_indexes = declaration_row_indexes()
+    declaration_matches = list(
+        declaration_indexes["by_name"].get(resolved_handle, ())
+    )
     module = next(
         (
             row
@@ -4346,17 +4348,11 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
 
     roles = module_roles(claims)
     by_module = {row["id"]: row for row in atlas["modules"]}
-    declarations_by_path: dict[str, list[dict[str, Any]]] = {}
-    for row in atlas_declarations(atlas):
-        declarations_by_path.setdefault(row["module"], []).append(row)
-    for rows in declarations_by_path.values():
-        rows.sort(key=lambda row: (row["line"], row["name"]))
-
     source_path = ROOT / module["path"]
     source_text = source_path.read_text(encoding="utf-8")
     source_counts = identifier_counts(source_text)
     anchor_names = {row["name"] for row in declaration_matches}
-    module_declarations = declarations_by_path.get(module["path"], [])
+    module_declarations = declaration_indexes["by_module"].get(module["path"], [])
     declaration_relevance: dict[str, dict[str, Any]] = {}
     if query:
         query_terms = semantic_content_terms(query) or search_terms(query)
@@ -4451,7 +4447,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
         imported = by_module.get(imported_id)
         if imported is None:
             continue
-        rows = declarations_by_path.get(imported["path"], [])
+        rows = declaration_indexes["by_module"].get(imported["path"], [])
         used = [row for row in rows if source_counts.get(row["name"], 0) > 0]
         pool = used or rows
         propositions = [row for row in pool if row["kind"] in {"theorem", "lemma"}]
@@ -4489,7 +4485,9 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
     for importer in importer_rows[: min(6, limit)]:
         importer_path = ROOT / importer["path"]
         importer_lines = importer_path.read_text(encoding="utf-8").splitlines()
-        importer_declarations = declarations_by_path.get(importer["path"], [])
+        importer_declarations = declaration_indexes["by_module"].get(
+            importer["path"], []
+        )
         consumer_rows: list[tuple[dict[str, Any], list[str]]] = []
         for index, row in enumerate(importer_declarations):
             end = (
