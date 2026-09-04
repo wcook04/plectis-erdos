@@ -19,15 +19,51 @@ FULL_CHECKOUT_LIMIT_BYTES = 420 * MIB
 LEAN_CHECKOUT_LIMIT_BYTES = 160 * MIB
 SINGLE_BLOB_LIMIT_BYTES = 100 * MIB
 MINIMUM_LEAN_CHECKOUT_REDUCTION = 0.50
-LEAN_LIBRARY_PREFIXES = ("Erdos249257/", "ErdosProblems/")
+LEAN_SPARSE_MANIFEST_PATH = ROOT / "scripts/lean-sparse-checkout"
+LEAN_SPARSE_PATTERNS = (
+    "/Erdos249257/",
+    "/ErdosProblems/",
+    "/scripts/lean_fast_build.py",
+    "/scripts/lean_package_share.py",
+    "/scripts/lean-sparse-checkout",
+    "/scripts/validation_singleflight.py",
+    "/.gitignore",
+    "/AGENTS.md",
+    "/AGENTS.override.md",
+    "/ARCHITECTURE.md",
+    "/CITATION.cff",
+    "/CLAUDE.md",
+    "/CODEX.md",
+    "/CONTRIBUTING.md",
+    "/CURSOR.md",
+    "/Erdos249257.lean",
+    "/ErdosProblems.lean",
+    "/GEMINI.md",
+    "/HUMAN_ENTRY.md",
+    "/LICENSE",
+    "/METHODOLOGY.md",
+    "/PRIVACY.md",
+    "/README.md",
+    "/REUSE.toml",
+    "/SCOPE.md",
+    "/SECURITY.md",
+    "/docs/repository_identity.json",
+    "/formalization.yaml",
+    "/lake-manifest.json",
+    "/lakefile.toml",
+    "/lean-toolchain",
+)
+LEAN_SPARSE_MANIFEST_TEXT = "\n".join(LEAN_SPARSE_PATTERNS) + "\n"
 LEAN_CLONE_COMMAND = (
-    "git clone --depth=1 --filter=blob:none --single-branch --sparse "
+    "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
     "https://github.com/wcook04/plectis-lean-erdos249-257.git"
 )
 LEAN_SPARSE_COMMAND = (
-    "git -C plectis-lean-erdos249-257 sparse-checkout set "
-    "Erdos249257 ErdosProblems"
+    "git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | "
+    "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
 )
+LEAN_CHECKOUT_COMMAND = "git -C plectis-lean-erdos249-257 checkout"
+LEAN_BUILD_COMMAND = "python3 scripts/lean_fast_build.py --jobs 2"
 FULL_CLONE_COMMAND = (
     "git clone --filter=blob:none --single-branch "
     "https://github.com/wcook04/plectis-lean-erdos249-257.git"
@@ -62,10 +98,14 @@ def committed_entries(root: Path = ROOT, revision: str = "HEAD") -> list[dict[st
     return entries
 
 
-def belongs_to_lean_cone(path: str) -> bool:
-    """Match what Git cone-mode sparse checkout materializes for two roots."""
+def belongs_to_lean_sparse_checkout(path: str) -> bool:
+    """Match the versioned non-cone proof-build checkout manifest."""
 
-    return "/" not in path or path.startswith(LEAN_LIBRARY_PREFIXES)
+    rooted = f"/{path}"
+    return any(
+        rooted == pattern or (pattern.endswith("/") and rooted.startswith(pattern))
+        for pattern in LEAN_SPARSE_PATTERNS
+    )
 
 
 def build_report(entries: Iterable[dict[str, Any]]) -> dict[str, Any]:
@@ -74,7 +114,7 @@ def build_report(entries: Iterable[dict[str, Any]]) -> dict[str, Any]:
     lean_bytes = sum(
         int(row["size_bytes"])
         for row in rows
-        if belongs_to_lean_cone(str(row["path"]))
+        if belongs_to_lean_sparse_checkout(str(row["path"]))
     )
     largest = max(rows, key=lambda row: int(row["size_bytes"]), default=None)
     reduction = (full_bytes - lean_bytes) / full_bytes if full_bytes else 0.0
@@ -94,7 +134,11 @@ def build_report(entries: Iterable[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def contract_errors(report: dict[str, Any], readme: str) -> list[str]:
+def contract_errors(
+    report: dict[str, Any],
+    readme: str,
+    sparse_manifest: str = LEAN_SPARSE_MANIFEST_TEXT,
+) -> list[str]:
     errors: list[str] = []
     if int(report["full_checkout_bytes"]) > FULL_CHECKOUT_LIMIT_BYTES:
         errors.append("committed full checkout exceeds the 420 MiB clone budget")
@@ -107,13 +151,21 @@ def contract_errors(report: dict[str, Any], readme: str) -> list[str]:
         )
     if float(report["lean_sparse_reduction_fraction"]) < MINIMUM_LEAN_CHECKOUT_REDUCTION:
         errors.append("Lean sparse checkout no longer omits at least half the full tree")
-    for command in (LEAN_CLONE_COMMAND, LEAN_SPARSE_COMMAND, FULL_CLONE_COMMAND):
+    for command in (
+        LEAN_CLONE_COMMAND,
+        LEAN_SPARSE_COMMAND,
+        LEAN_CHECKOUT_COMMAND,
+        LEAN_BUILD_COMMAND,
+        FULL_CLONE_COMMAND,
+    ):
         if command not in readme:
             errors.append(f"README is missing optimized clone command: {command}")
     lean_position = readme.find(LEAN_CLONE_COMMAND)
     full_position = readme.find(FULL_CLONE_COMMAND, lean_position + len(LEAN_CLONE_COMMAND))
     if lean_position < 0 or full_position < 0 or lean_position > full_position:
         errors.append("README must offer the Lean sparse checkout before the full checkout")
+    if sparse_manifest != LEAN_SPARSE_MANIFEST_TEXT:
+        errors.append("versioned Lean sparse manifest has drifted from the checked contract")
     return errors
 
 
@@ -123,7 +175,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--revision", default="HEAD")
     args = parser.parse_args(argv)
     report = build_report(committed_entries(ROOT, args.revision))
-    errors = contract_errors(report, (ROOT / "README.md").read_text(encoding="utf-8"))
+    errors = contract_errors(
+        report,
+        (ROOT / "README.md").read_text(encoding="utf-8"),
+        LEAN_SPARSE_MANIFEST_PATH.read_text(encoding="utf-8"),
+    )
     report["status"] = "pass" if not errors else "fail"
     report["errors"] = errors
     print(json.dumps(report, indent=2, sort_keys=True))

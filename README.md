@@ -24,18 +24,26 @@ Large-language-model agents drafted prose, Lean proofs, and software. Will Cook
 set the objectives, reviewed the public claims and cited sources, and is
 responsible for the release.
 
-For the default Lean proof build, skip the large generated-document tree and
-avoid downloading obsolete historical blobs:
+For the default Lean proof build, first install `elan` from the
+[Lean setup guide](https://leanprover-community.github.io/get_started.html),
+then skip the large generated-document tree and obsolete historical blobs:
 
 ```bash
-git clone --depth=1 --filter=blob:none --single-branch --sparse https://github.com/wcook04/plectis-lean-erdos249-257.git
-git -C plectis-lean-erdos249-257 sparse-checkout set Erdos249257 ErdosProblems
+git clone --depth=1 --filter=blob:none --single-branch --no-checkout https://github.com/wcook04/plectis-lean-erdos249-257.git
+git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
+git -C plectis-lean-erdos249-257 checkout
 cd plectis-lean-erdos249-257
+python3 scripts/lean_fast_build.py --jobs 2
 ```
 
-This checks out the two default Lean libraries plus the root package files. A
-full release/document checkout should still keep the complete history required
-by the pinned-source checks without eagerly downloading obsolete blobs:
+The versioned sparse manifest checks out the two default Lean libraries, the
+three scripts that own the build path, and the small root package/orientation
+files. It does not make Git fetch the root PDFs or the generated-document tree
+before the sparse rules exist. The wrapper fetches the pinned dependency cache
+only when needed, reuses compatible host packages across clones, and joins
+duplicate concurrent builds. A full release/document checkout should still
+keep the complete history required by the pinned-source checks without
+eagerly downloading obsolete blobs:
 
 ```bash
 git clone --filter=blob:none --single-branch https://github.com/wcook04/plectis-lean-erdos249-257.git

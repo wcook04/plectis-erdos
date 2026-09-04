@@ -1065,21 +1065,29 @@ def validate_human_first_contact(
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
     lean_clone_command = (
-        "git clone --depth=1 --filter=blob:none --single-branch --sparse "
+        "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
         "https://github.com/wcook04/plectis-lean-erdos249-257.git"
     )
     lean_sparse_command = (
-        "git -C plectis-lean-erdos249-257 sparse-checkout set "
-        "Erdos249257 ErdosProblems"
+        "git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | "
+        "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
     )
+    lean_checkout_command = "git -C plectis-lean-erdos249-257 checkout"
+    lean_build_command = "python3 scripts/lean_fast_build.py --jobs 2"
     full_clone_command = (
         "git clone --filter=blob:none --single-branch "
         "https://github.com/wcook04/plectis-lean-erdos249-257.git"
     )
     require(
-        lean_clone_command in readme_prefix and lean_sparse_command in readme_prefix,
+        lean_clone_command in readme_prefix
+        and lean_sparse_command in readme_prefix
+        and lean_checkout_command in readme_prefix,
         "README must expose the Lean-only partial/sparse clone commands before "
         "a newcomer downloads the generated-document tree",
+    )
+    require(
+        lean_build_command in readme_prefix,
+        "README's Lean-only checkout must include and invoke its bounded build wrapper",
     )
     require(
         full_clone_command in readme_prefix,

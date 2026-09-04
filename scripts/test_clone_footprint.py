@@ -18,7 +18,8 @@ class CloneFootprintTests(unittest.TestCase):
     def test_current_repository_stays_within_clone_budgets(self) -> None:
         report = footprint.build_report(footprint.committed_entries(ROOT))
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertEqual(footprint.contract_errors(report, readme), [])
+        manifest = footprint.LEAN_SPARSE_MANIFEST_PATH.read_text(encoding="utf-8")
+        self.assertEqual(footprint.contract_errors(report, readme, manifest), [])
         self.assertGreater(report["lean_sparse_omitted_bytes"], 200 * footprint.MIB)
 
     def test_oversized_full_checkout_is_rejected(self) -> None:
@@ -47,7 +48,7 @@ class CloneFootprintTests(unittest.TestCase):
             ]
         )
         errors = footprint.contract_errors(report, footprint.FULL_CLONE_COMMAND)
-        self.assertTrue(any("--sparse" in error for error in errors))
+        self.assertTrue(any("--no-checkout" in error for error in errors))
 
     def test_readme_cannot_restore_all_branch_clone(self) -> None:
         entries = [
@@ -67,12 +68,46 @@ class CloneFootprintTests(unittest.TestCase):
         errors = footprint.contract_errors(footprint.build_report(entries), readme)
         self.assertTrue(any("optimized clone command" in error for error in errors))
 
+    def test_lean_sparse_checkout_keeps_its_build_wrapper(self) -> None:
+        entries = [
+            {"path": "Erdos249257/A.lean", "size_bytes": 10},
+            {"path": "scripts/lean_fast_build.py", "size_bytes": 20},
+            {"path": "docs/generated.json", "size_bytes": 40},
+        ]
+        report = footprint.build_report(entries)
+        self.assertEqual(report["lean_sparse_checkout_bytes"], 30)
+        readme = self.valid_readme().replace(footprint.LEAN_BUILD_COMMAND, "")
+        self.assertTrue(
+            any(
+                footprint.LEAN_BUILD_COMMAND in error
+                for error in footprint.contract_errors(report, readme)
+            )
+        )
+
+    def test_lean_sparse_checkout_omits_unneeded_scripts_and_root_pdfs(self) -> None:
+        entries = [
+            {"path": "scripts/lean_fast_build.py", "size_bytes": 10},
+            {"path": "scripts/query_corpus.py", "size_bytes": 20},
+            {"path": "erdos249-257-main-paper.pdf", "size_bytes": 40},
+        ]
+        report = footprint.build_report(entries)
+        self.assertEqual(report["lean_sparse_checkout_bytes"], 10)
+
+    def test_sparse_manifest_drift_is_rejected(self) -> None:
+        report = footprint.build_report(
+            [{"path": "Erdos249257/A.lean", "size_bytes": 1}]
+        )
+        errors = footprint.contract_errors(report, self.valid_readme(), "/README.md\n")
+        self.assertTrue(any("manifest has drifted" in error for error in errors))
+
     @staticmethod
     def valid_readme() -> str:
         return "\n".join(
             (
                 footprint.LEAN_CLONE_COMMAND,
                 footprint.LEAN_SPARSE_COMMAND,
+                footprint.LEAN_CHECKOUT_COMMAND,
+                footprint.LEAN_BUILD_COMMAND,
                 footprint.FULL_CLONE_COMMAND,
             )
         )
