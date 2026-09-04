@@ -182,6 +182,29 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("lake exe cache get", workflow)
         self.assertNotIn("leanprover/lean-action@", workflow)
 
+    def test_ci_and_cache_warm_use_one_complete_wrapper_owner(self) -> None:
+        targets = (
+            "Erdos249257",
+            "ErdosProblems",
+            "Examples",
+            "FormalConjecturesAdapter",
+            "FormalConjecturesVariants",
+            "ResidualBench",
+        )
+        for relative in (
+            ".github/workflows/lean.yml",
+            ".github/workflows/lean-cache-warm.yml",
+        ):
+            workflow = (fast.ROOT / relative).read_text(encoding="utf-8")
+            commands = re.findall(
+                r"(?m)^\s*run:\s*(python3 scripts/lean_fast_build\.py[^\n]*)$",
+                workflow,
+            )
+            self.assertEqual(len(commands), 1, f"{relative} has duplicate build owners")
+            self.assertNotRegex(workflow, r"(?m)^\s*run:\s*lake build\b")
+            for target in targets:
+                self.assertIn(target, commands[0], f"{relative} lost {target}")
+
     def test_ci_pins_external_actions_to_full_commit_shas(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
             encoding="utf-8"

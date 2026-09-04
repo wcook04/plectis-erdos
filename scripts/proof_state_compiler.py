@@ -172,8 +172,9 @@ def _require_lean_dependencies(repo_root: Path) -> None:
     raise LeanDependenciesUnavailable(
         f"{len(missing)} of {len(required)} Lean dependencies pinned in "
         f"lake-manifest.json are absent from {packages_dir}: "
-        f"{', '.join(missing)}. Run `lake exe cache get` and then `lake build` "
-        "in this checkout (see docs/REPRODUCIBILITY.md), then re-run this "
+        f"{', '.join(missing)}. Run `python3 scripts/lean_fast_build.py "
+        "--jobs 2` in this checkout (it owns cache acquisition; see "
+        "docs/REPRODUCIBILITY.md), then re-run this "
         "check."
     )
 

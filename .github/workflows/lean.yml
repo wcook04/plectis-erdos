@@ -226,41 +226,12 @@ jobs:
           lake exe cache get
       - name: Memory-bounded Lean build
         if: steps.lean-inputs.outputs.changed == 'true'
-        # Drain independent Lucas modules without Lake's unbounded ready-set
-        # fan-out. Lake's own trace hashes validate restored project outputs;
-        # final serialized Lake checks remain the proof-authority check.
-        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness
-      - name: Build the problem-centric library
-        if: steps.lean-inputs.outputs.changed == 'true'
-        # This is already a default root. Keep an explicit warm authority check
-        # so the problem-centric root has its own CI receipt after the bounded
-        # planner; restored Lake traces make the repeated check cheap.
-        run: lake build ErdosProblems
-      - name: Build downstream consumer example
-        if: steps.lean-inputs.outputs.changed == 'true'
-        run: lake build Examples
-      - name: Build foreign-corpus statement adapters
-        if: steps.lean-inputs.outputs.changed == 'true'
-        # These restate another corpus's propositions verbatim and derive them
-        # from this library, so an external `formal_proof` link points at them.
-        # They are not a default target, so without an explicit build a change
-        # here would break the link target silently.
-        run: lake build FormalConjecturesAdapter
-      - name: Build foreign-corpus variant candidates
-        if: steps.lean-inputs.outputs.changed == 'true'
-        # Named separately rather than left to the line above: the library and
-        # one of its modules share the name `FormalConjecturesAdapter`, so that
-        # target resolves to the module and would build this file only by
-        # accident. These are the statements offered upstream as new
-        # `variants.*` declarations, and each is a `formal_proof` link target.
-        run: lake build FormalConjecturesVariants
-      - name: Build residual-evaluation fixtures
-        if: steps.lean-inputs.outputs.changed == 'true'
-        # Ground truth for `scripts/residual_evaluator.py`.  Also not a default
-        # target: without an explicit build, the evaluator would start reporting
-        # that it could not decide anything, and the cause would look like a
-        # tactic-budget limit rather than a missing module.
-        run: lake build ResidualBench
+        # One wrapper owner drains the two public roots plus every supported
+        # non-default consumer. It prebuilds with bounded fan-out.
+        # The final serialized Lake checks remain the proof-authority check.
+        # Raw follow-up builds would duplicate work outside the shared
+        # validation key, so every supported target is named here instead.
+        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants ResidualBench
       - name: Verify elaborated dependency index
         if: steps.lean-inputs.outputs.changed == 'true'
         # The first changed environment performs the full export and writes an
