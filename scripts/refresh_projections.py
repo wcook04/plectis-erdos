@@ -29,6 +29,7 @@ from __future__ import annotations
 import argparse
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import validation_singleflight as singleflight
@@ -36,6 +37,7 @@ import validation_singleflight as singleflight
 ROOT = Path(__file__).resolve().parent.parent
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
+CHECK_WORKERS = 4
 SANITIZED_GIT_ENVIRONMENT_KEYS = tuple(
     sorted(singleflight.GIT_CONTEXT_KEYS | singleflight.GIT_PROCESS_CONTROL_KEYS)
 )
@@ -139,13 +141,23 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
 
 def check_only() -> int:
     """Run every builder's --check and report staleness without mutating the tree."""
-    stale = []
     for builder in BUILDERS:
         script = ROOT / builder
         if not script.is_file():
             print(f"missing builder: {builder}")
             return 1
-        result = run([sys.executable, str(script), "--check"], cwd=ROOT)
+
+    def check_builder(builder: str) -> tuple[str, subprocess.CompletedProcess[str]]:
+        script = ROOT / builder
+        return builder, run([sys.executable, str(script), "--check"], cwd=ROOT)
+
+    # Check mode is read-only and every builder reads the same committed
+    # generation. Preserve dependency order for mutation in refresh(), but do
+    # not serialize independent freshness comparisons.
+    with ThreadPoolExecutor(max_workers=min(CHECK_WORKERS, len(BUILDERS))) as executor:
+        results = list(executor.map(check_builder, BUILDERS))
+    stale = []
+    for builder, result in results:
         if result.returncode != 0:
             stale.append((builder, result.stdout.strip() or result.stderr.strip()))
 

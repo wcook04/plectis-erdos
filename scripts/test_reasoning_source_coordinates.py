@@ -39,7 +39,27 @@ def run_git(root: Path, *args: str) -> str:
     return result.stdout.strip()
 
 
+def check_comment_projection() -> None:
+    source = (
+        'def visible := 1 -- def lineHidden := 2\n'
+        '/- outer /- nested -/ def blockHidden := 3 -/\n'
+        'def quoted := "/- string content stays -/"\n'
+    )
+    projected = coordinates.strip_lean_comments(source)
+    require(len(projected) == len(source), "comment projection changed source offsets")
+    require(
+        [index for index, char in enumerate(projected) if char == "\n"]
+        == [index for index, char in enumerate(source) if char == "\n"],
+        "comment projection changed source lines",
+    )
+    require("def visible" in projected, "comment projection removed Lean code")
+    require("lineHidden" not in projected, "line-comment content survived")
+    require("blockHidden" not in projected, "nested block-comment content survived")
+    require("string content stays" in projected, "string content was treated as a comment")
+
+
 def main() -> int:
+    check_comment_projection()
     with tempfile.TemporaryDirectory(prefix="reasoning-coordinate-test-") as temporary:
         root = Path(temporary)
         run_git(root, "init", "--quiet")

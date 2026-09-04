@@ -89,6 +89,9 @@ CONSTRUCT_OPENER = re.compile(
     r"axiom|constant|opaque|example|macro|notation|syntax)"
     r"(?![A-Za-z0-9_'])"
 )
+LEAN_IDENTIFIER_BOUNDARY = frozenset(
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_'"
+)
 
 # A pin whose name encodes its own line, e.g. `example@79`.  Name and coordinate
 # have to agree or one of them is lying.
@@ -225,11 +228,18 @@ class Sources:
         lines = self.lines(module)
         if lines is None or not 1 <= line <= len(lines):
             return False
-        token = re.compile(
-            r"(?<![A-Za-z0-9_'])" + re.escape(name) + r"(?![A-Za-z0-9_'])"
-        )
         window = lines[line - 1 : line - 1 + DECLARATION_HEAD_LINES]
-        return any(token.search(candidate) for candidate in window)
+        for candidate in window:
+            start = candidate.find(name)
+            while start >= 0:
+                end = start + len(name)
+                if (
+                    (start == 0 or candidate[start - 1] not in LEAN_IDENTIFIER_BOUNDARY)
+                    and (end == len(candidate) or candidate[end] not in LEAN_IDENTIFIER_BOUNDARY)
+                ):
+                    return True
+                start = candidate.find(name, start + 1)
+        return False
 
     def opens_construct_at(self, module: str, line: int) -> bool:
         """Does ``line`` begin a Lean construct outside every comment?"""

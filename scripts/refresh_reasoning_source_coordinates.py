@@ -61,54 +61,65 @@ def normalize(value: str) -> str:
     )
 
 
+LEAN_COMMENT_MARKER = re.compile(r'--|/-|-/|"|\\|\n')
+NON_NEWLINE_RUN = re.compile(r"[^\n]+")
+
+
+def masked_span(value: str) -> str:
+    return NON_NEWLINE_RUN.sub(lambda match: " " * len(match.group()), value)
+
+
 def strip_lean_comments(text: str) -> str:
     """Blank nested Lean comments without changing source line numbers."""
 
     output: list[str] = []
-    index = 0
     depth = 0
-    in_string = False
-    while index < len(text):
+    state = "code"
+    string_escaped = False
+    cursor = 0
+    for match in LEAN_COMMENT_MARKER.finditer(text):
+        token = match.group()
+        gap = text[cursor : match.start()]
+        output.append(masked_span(gap) if depth or state == "line_comment" else gap)
+
         if depth:
-            if text.startswith("/-", index):
+            if token == "/-":
                 depth += 1
-                output.extend("  ")
-                index += 2
-            elif text.startswith("-/", index):
+            elif token == "-/":
                 depth -= 1
-                output.extend("  ")
-                index += 2
-            else:
-                output.append("\n" if text[index] == "\n" else " ")
-                index += 1
-        elif in_string:
-            char = text[index]
-            output.append(char)
-            if char == "\\" and index + 1 < len(text):
-                output.append(text[index + 1])
-                index += 2
-            else:
-                if char == '"':
-                    in_string = False
-                index += 1
-        elif text.startswith("/-", index):
+            output.append(masked_span(token))
+        elif state == "line_comment":
+            output.append(masked_span(token))
+            if token == "\n":
+                state = "code"
+        elif state == "string":
+            output.append(token)
+            escaped_token = string_escaped and not gap
+            if string_escaped and gap:
+                string_escaped = False
+            if escaped_token:
+                string_escaped = False
+            elif token == "\\":
+                string_escaped = True
+            elif token == '"':
+                state = "code"
+                string_escaped = False
+        elif token == "--":
+            state = "line_comment"
+            output.append("  ")
+        elif token == "/-":
             depth = 1
-            output.extend("  ")
-            index += 2
-        elif text.startswith("--", index):
-            newline = text.find("\n", index)
-            if newline < 0:
-                output.extend(" " * (len(text) - index))
-                break
-            output.extend(" " * (newline - index))
-            output.append("\n")
-            index = newline + 1
+            output.append("  ")
+        elif token == '"':
+            state = "string"
+            string_escaped = False
+            output.append(token)
         else:
-            char = text[index]
-            output.append(char)
-            if char == '"':
-                in_string = True
-            index += 1
+            output.append(token)
+        cursor = match.end()
+
+    tail = text[cursor:]
+    output.append(masked_span(tail) if depth or state == "line_comment" else tail)
     if depth:
         raise CoordinateError("unterminated block comment in pinned Lean source")
     return "".join(output)
