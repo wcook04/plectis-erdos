@@ -68,6 +68,7 @@ PROJECTIONS = (
     "docs/methodology.json",
     "docs/claims.json",
     "docs/semantic_corpus.json",
+    "docs/semantic_corpus_check.json",
     "docs/theory_lab.json",
     "docs/publication_entry_packet.json",
     "docs/WAVE_INDEX.md",

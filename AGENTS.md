@@ -597,7 +597,12 @@ python3 scripts/test_cold_clone_comprehension.py
 
 The `--quick` path checks the committed compact human and agent projections
 without a Lean build or typed-query sweep, so a fresh clone gets an immediate
-readability receipt. The full diagnostic proves the first-contact boundary
+readability receipt. Semantic-corpus freshness is proved from the tracked
+content-addressed receipt in `docs/semantic_corpus_check.json`; the receipt is
+accepted only while the exact builder inputs, generated corpus, and projected
+census surfaces retain their recorded digests. Run
+`python3 scripts/build_semantic_corpus.py --check --full-check` to bypass that
+fast path and rebuild the projection in memory. The full diagnostic proves the first-contact boundary
 through the same bounded public query packets a cold coding agent would follow;
 it does not concatenate the claim registry, methodology, or declaration atlas
 as evidence. Both check navigation semantics and response budgets, not Lean

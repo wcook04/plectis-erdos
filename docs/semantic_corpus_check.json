@@ -1,0 +1,136 @@
+{
+  "builder_schema": "erdos249257-semantic-corpus/1",
+  "input_fingerprint": "sha256:db26893bf14e9109b8d37a6679e0d3e7c85bb1d3d2f4084dbe55e4dc3dea3922",
+  "output_digest": "sha256:da097a15fd5dee86b163e5470eb74f3a1c72c2aa847cbf81a702a8c995c62bc7",
+  "schema": "erdos249257-semantic-corpus-check/1",
+  "summary": {
+    "declarations": 153671,
+    "orphan_count": 0,
+    "public_semantic_census": {
+      "authored_statement_node_count": 1115,
+      "bare_equivalences": {
+        "1041": 0,
+        "1049": 0,
+        "243": 0,
+        "249": 15,
+        "251": 0,
+        "257": 15,
+        "269": 0,
+        "68": 0,
+        "both": 0,
+        "shared_substrate": 2,
+        "total": 32
+      },
+      "by_logical_class": {
+        "barrier_no_go": 73,
+        "classical_formalised": 44,
+        "conditional_implication": 161,
+        "equivalence_or_classification": 106,
+        "finite_instance": 85,
+        "generated_certificate_instance": 4,
+        "infrastructure": 5278,
+        "reduction_or_transport": 94,
+        "representation_normalisation": 161,
+        "unconditional_object_theorem": 358
+      },
+      "classical": {
+        "1041": 0,
+        "1049": 1,
+        "243": 1,
+        "249": 36,
+        "251": 0,
+        "257": 23,
+        "269": 0,
+        "68": 0,
+        "both": 0,
+        "shared_substrate": 40,
+        "total": 101
+      },
+      "demand_equivalent_by_problem": {
+        "249": 14,
+        "257": 3
+      },
+      "demand_equivalent_total": 17,
+      "demand_lattice_counts": {
+        "closed_props_extracted": 101,
+        "conditional_declarations_walked": 259,
+        "edges_direct_not_routed_through_the_problem": 7,
+        "edges_proved": 144,
+        "equivalence_classes": 7,
+        "substantial": 23
+      },
+      "indexed_problem_ids": [
+        "68",
+        "243",
+        "249",
+        "251",
+        "257",
+        "269",
+        "1041",
+        "1049"
+      ],
+      "nonrecurring": {
+        "1041": 0,
+        "1049": 5,
+        "243": 3,
+        "249": 89,
+        "251": 0,
+        "257": 168,
+        "269": 0,
+        "68": 0,
+        "both": 0,
+        "shared_substrate": 19,
+        "total": 284
+      },
+      "nonrecurring_by_logical_class": {
+        "barrier_no_go": 55,
+        "reduction_or_transport": 46,
+        "unconditional_object_theorem": 183
+      },
+      "nonrecurring_prior_art_not_assessed_count": 229,
+      "open_antecedent_cluster_count": 52,
+      "open_antecedent_endpoint_equivalent_count": 10,
+      "prior_art_not_assessed": {
+        "1041": 118,
+        "1049": 58,
+        "243": 70,
+        "249": 277,
+        "251": 42,
+        "257": 313,
+        "269": 39,
+        "68": 694,
+        "both": 0,
+        "shared_substrate": 4169,
+        "total": 5780
+      },
+      "prior_art_review_queue": {
+        "1041": 0,
+        "1049": 0,
+        "243": 0,
+        "249": 2,
+        "251": 0,
+        "257": 5,
+        "269": 0,
+        "68": 0,
+        "both": 0,
+        "shared_substrate": 1,
+        "total": 8
+      },
+      "prior_art_review_queue_count": 8,
+      "reviewed_frontier_shortlist_by_problem": {
+        "249": 5,
+        "257": 6
+      },
+      "reviewed_frontier_shortlist_count": 11,
+      "source_structural_family_node_count": 5246
+    },
+    "statement_nodes": 6364
+  },
+  "surface_digests": {
+    "docs/RESULTS.md": "sha256:895915c5fd821f92bacc95c9f533b0873f8a46e48287b0263c06c7c465aff408",
+    "docs/TRUTH_AUDIT.md": "sha256:8d70f9488a3f6e47a5a978e1423873dac17ad92b91ea9fd984d4671131d851aa",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:9affc936d64f39dc9e71ec468688ed4d3bae638f042f8e1924529dda1ecc930c",
+    "paper/cold-clone-to-proof-receipt.tex": "sha256:af53dce269a5911fddd4b2406dcb2425c0373b5aa489f114d90d84525f9ec4ea"
+  },
+  "verification_posture": "content_addressed_generated_corpus_and_public_census_surfaces_matched_a_full_builder_run"
+}

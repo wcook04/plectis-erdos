@@ -27,10 +27,12 @@ import re
 import stat
 import subprocess
 import sys
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
 import build_corpus_descriptor
+import build_semantic_corpus
 import check_architecture_guide
 import query_corpus
 import query_expert_handoffs
@@ -439,13 +441,15 @@ def publication_architecture_budget_bytes(family_count: int) -> int:
 # tuned until one module fits.
 MODULE_PACKET_BASE_BYTES = 12_000
 MODULE_PACKET_BYTES_PER_DECLARATION = 1_400
-_ATLAS_MODULE_DECLARATION_COUNTS: dict[str, int] = {}
-for _row in json.loads(safe_read_text("docs/declaration_atlas.json"))["declarations"]:
-    _module = _row.get("module")
-    if _module:
-        _ATLAS_MODULE_DECLARATION_COUNTS[_module] = (
-            _ATLAS_MODULE_DECLARATION_COUNTS.get(_module, 0) + 1
-        )
+@lru_cache(maxsize=1)
+def atlas_module_declaration_counts() -> dict[str, int]:
+    """Load the exhaustive atlas only for full module-packet checks."""
+    counts: dict[str, int] = {}
+    for row in json.loads(safe_read_text("docs/declaration_atlas.json"))["declarations"]:
+        module = row.get("module")
+        if module:
+            counts[module] = counts.get(module, 0) + 1
+    return counts
 
 
 def module_packet_budget_bytes(module: str) -> int:
@@ -454,7 +458,7 @@ def module_packet_budget_bytes(module: str) -> int:
         PACKET_BUDGET_BYTES,
         MODULE_PACKET_BASE_BYTES
         + MODULE_PACKET_BYTES_PER_DECLARATION
-        * _ATLAS_MODULE_DECLARATION_COUNTS.get(module, 0),
+        * atlas_module_declaration_counts().get(module, 0),
     )
 
 
@@ -645,17 +649,24 @@ def run_child(
     )
 
 
-def check_semantic_corpus_freshness() -> None:
-    """Keep the quick entry check honest after claim-route source edits."""
+def check_semantic_corpus_freshness() -> dict[str, Any]:
+    """Return an exact receipt, rebuilding only when the receipt cannot prove freshness."""
+    receipt = build_semantic_corpus.load_cached_check()
+    if receipt is not None:
+        return receipt
     completed = run_child(
         [
             sys.executable,
             str(ROOT / "scripts" / "build_semantic_corpus.py"),
             "--check",
+            "--full-check",
         ],
         cwd=ROOT,
     )
     require(completed.returncode == 0, completed.stdout.strip() or completed.stderr.strip())
+    receipt = build_semantic_corpus.load_cached_check()
+    require(receipt is not None, "semantic corpus full check produced no exact receipt")
+    return receipt
 
 
 def encoded_bytes(value: Any) -> int:
@@ -1276,36 +1287,8 @@ def validate_paper_library_first_contact(
         )
 
 
-def semantic_census() -> dict[str, Any]:
-    """Recompute the public diagnostic census from the generated graph."""
-    corpus = json.loads(read("docs/semantic_corpus.json"))
-    public = corpus["summary"]["public_semantic_census"]
-    nodes = corpus["statement_nodes"]
-    frontier = corpus["frontier"]
-    nonrecurring_ids = set(corpus["views"]["nonrecurring"]["nodes"])
-    nonrecurring = [node for node in nodes if node["id"] in nonrecurring_ids]
-    bare = [
-        node
-        for node in nodes
-        if node.get("logical_class") == "equivalence_or_classification"
-        and node.get("is_restatement_of_open_problem")
-    ]
-    classical = [
-        node
-        for node in nodes
-        if node.get("logical_class") == "classical_formalised"
-        or node.get("prior_art_state") in ("known_classical", "prior_art_found")
-    ]
-    open_antecedents = frontier["open_antecedents"]
-    demand_lattice = frontier["demand_lattice"]
-    demand_classes = demand_lattice["classes"]
-    demand_equivalent_classes = [
-        row for row in demand_classes if row.get("equivalent_to_problem")
-    ]
-
-    def problem_counts(rows: list[dict[str, Any]]) -> Counter[str]:
-        return Counter(row["problem"] for row in rows)
-
+def semantic_census_from_public(public: dict[str, Any]) -> dict[str, Any]:
+    """Project the compact public census recorded by the semantic builder."""
     return {
         "indexed_problem_ids": public["indexed_problem_ids"],
         "nonrecurring_total": public["nonrecurring"]["total"],
@@ -1332,21 +1315,24 @@ def semantic_census() -> dict[str, Any]:
         "open_antecedent_equivalent_total": public[
             "open_antecedent_endpoint_equivalent_count"
         ],
-        "demand_lattice_counts": demand_lattice["counts"],
-        "demand_equivalent_total": sum(
-            len(row["members"]) for row in demand_equivalent_classes
-        ),
+        "demand_lattice_counts": public["demand_lattice_counts"],
+        "demand_equivalent_total": public["demand_equivalent_total"],
         "demand_equivalent_by_problem": Counter(
-            {
-                problem: sum(
-                    len(row["members"])
-                    for row in demand_equivalent_classes
-                    if row["problem"] == problem
-                )
-                for problem in ("249", "257")
-            }
+            public["demand_equivalent_by_problem"]
         ),
     }
+
+
+def semantic_census(receipt: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Read the compact exact receipt, or fall back to the exhaustive graph."""
+    if receipt is not None:
+        return semantic_census_from_public(
+            receipt["summary"]["public_semantic_census"]
+        )
+    corpus = json.loads(read("docs/semantic_corpus.json"))
+    return semantic_census_from_public(
+        corpus["summary"]["public_semantic_census"]
+    )
 
 
 def validate_public_semantic_census(
@@ -3037,14 +3023,14 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
 
 def run_quick_check() -> int:
     """Verify the zero-build first-contact path from committed projections."""
-    check_semantic_corpus_freshness()
+    semantic_receipt = check_semantic_corpus_freshness()
     check_route_memory_descriptor()
     summary = quick_summary()
     human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
     validate_human_first_contact(summary, human_surfaces)
     validate_paper_library_first_contact(read(PAPER_LIBRARY_SURFACE))
     validate_public_semantic_census(
-        semantic_census(),
+        semantic_census(semantic_receipt),
         {path: read(path) for path in CENSUS_SURFACES},
     )
     validate_gateway_opening(read(GATEWAY_PAPER))

@@ -39,7 +39,12 @@ python3 scripts/query_corpus.py --tour --format card
 The quick check is a bounded navigation check, not a proof build. It confirms
 that the eight-problem entry surface, both public Lean roots, claim/source
 routes, paper handles, open-boundary routes, and environment guidance are
-present before any toolchain download.
+present before any toolchain download. Its semantic-corpus freshness step uses
+the tracked content-addressed receipt in `docs/semantic_corpus_check.json`, so
+an unchanged clone hashes the relevant inputs and outputs instead of rebuilding
+the 153,000-declaration projection. Use
+`python3 scripts/build_semantic_corpus.py --check --full-check` when a full
+in-memory rebuild is the thing being tested.
 
 Before installing or building anything, a reader can return from any indexed
 problem to its public evidence with the same no-build query surface:

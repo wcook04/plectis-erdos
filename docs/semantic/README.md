@@ -18,6 +18,7 @@ Lean source
 docs/declaration_atlas.json          exhaustive declaration inventory
     ↓  exact structural families + authored interpretation   ← THIS DIRECTORY
 docs/semantic_corpus.json            statement nodes, typed relations, coverage receipt
+docs/semantic_corpus_check.json      content-addressed fast-check receipt
     ↓  selected_as
 docs/claims.json                     curated ledger: 100 reviewed claims
     ↓  rendered_as
@@ -48,6 +49,7 @@ fails to rule out.
 | `frontier.json` | **authored.** Open antecedents, engine hierarchies, nonrecurring candidates |
 | `reviews.json` | **authored.** Digest-bound reviews for selected nodes and relations |
 | `../semantic_corpus.json` | **generated.** The merged graph plus coverage receipts and views |
+| `../semantic_corpus_check.json` | **generated.** Content-addressed input, output, and public-census freshness receipt |
 | `../generated_certificate_manifest.json` | **authored.** Which modules are emitted, and the schema each instantiates |
 
 ## The two objects
