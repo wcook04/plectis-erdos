@@ -10492,7 +10492,15 @@ def render_card(packet: dict[str, Any]) -> str:
     )
 
 
-def main() -> int:
+def query_args_packet(
+    argv: list[str] | tuple[str, ...] | None = None,
+) -> tuple[dict[str, Any], str]:
+    """Parse one CLI request and return its packet before output encoding.
+
+    The public process boundary still goes through :func:`main`.  In-process
+    validators can use this seam to exercise the same parser and dispatch
+    without serializing a packet only to parse those bytes back immediately.
+    """
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--claim", metavar="ID")
@@ -10551,7 +10559,7 @@ def main() -> int:
             "to JSON; all explicit routes also default to JSON"
         ),
     )
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     if args.format:
         output_format = args.format
     elif args.tour or args.papers:
@@ -10567,76 +10575,81 @@ def main() -> int:
         parser.error(f"--limit must be between 1 and {MAX_LIMIT}")
     if not 1 <= args.depth <= 8:
         parser.error("--depth must be between 1 and 8")
+    if args.claim:
+        packet = claim_packet(args.claim)
+    elif args.paper_label:
+        packet = paper_label_packet(args.paper_label)
+    elif args.paper_source:
+        packet = paper_source_packet(args.paper_source)
+    elif args.paper_anchor:
+        packet = paper_anchor_packet(args.paper_anchor)
+    elif args.open:
+        packet = open_proposition_packet(args.open)
+    elif args.declaration:
+        packet = declaration_packet(args.declaration, args.limit)
+    elif args.goal_support:
+        packet = formal_goal_support_packet(
+            args.goal_support,
+            args.limit,
+            explicit_goal=True,
+        )
+    elif args.proof_plan:
+        packet = formal_proof_plan_packet(
+            args.proof_plan,
+            args.limit,
+            args.depth,
+            explicit_goal=True,
+        )
+    elif args.proof_cone:
+        packet = formal_dependency_proof_cone(
+            args.proof_cone, args.depth, args.limit
+        )
+    elif args.dependency_path:
+        packet = formal_dependency_path(
+            args.dependency_path[0],
+            args.dependency_path[1],
+            args.depth,
+        )
+    elif args.source:
+        packet = source_coordinate_packet(args.source, args.limit)
+    elif args.artifact:
+        packet = artifact_packet(args.artifact)
+    elif args.publication_artifact:
+        packet = publication_artifact_packet(args.publication_artifact)
+    elif args.publication_evidence:
+        packet = publication_evidence_packet(args.publication_evidence)
+    elif args.module:
+        packet = module_packet(args.module, args.limit)
+    elif args.connections:
+        packet = connection_card(args.connections, args.limit, args.query)
+    elif args.route:
+        packet = route_packet(args.route)
+    elif args.status:
+        packet = claim_status_packet(args.status, args.limit)
+    elif args.publication_family:
+        packet = publication_family_packet(args.publication_family)
+    elif args.publication_architecture:
+        packet = publication_architecture_packet()
+    elif args.overview:
+        packet = repository_overview_packet()
+    elif args.papers:
+        packet = paper_reading_guide_packet()
+    elif args.tour:
+        packet = agent_tour_packet()
+    elif args.vocabulary:
+        packet = semantic_dictionary_packet()
+    elif args.search:
+        packet = search_packet(args.search, args.limit)
+    elif args.ask:
+        packet = semantic_slice_packet(args.ask, args.limit)
+    else:
+        packet = summary_packet()
+    return packet, output_format
+
+
+def main() -> int:
     try:
-        if args.claim:
-            packet = claim_packet(args.claim)
-        elif args.paper_label:
-            packet = paper_label_packet(args.paper_label)
-        elif args.paper_source:
-            packet = paper_source_packet(args.paper_source)
-        elif args.paper_anchor:
-            packet = paper_anchor_packet(args.paper_anchor)
-        elif args.open:
-            packet = open_proposition_packet(args.open)
-        elif args.declaration:
-            packet = declaration_packet(args.declaration, args.limit)
-        elif args.goal_support:
-            packet = formal_goal_support_packet(
-                args.goal_support,
-                args.limit,
-                explicit_goal=True,
-            )
-        elif args.proof_plan:
-            packet = formal_proof_plan_packet(
-                args.proof_plan,
-                args.limit,
-                args.depth,
-                explicit_goal=True,
-            )
-        elif args.proof_cone:
-            packet = formal_dependency_proof_cone(
-                args.proof_cone, args.depth, args.limit
-            )
-        elif args.dependency_path:
-            packet = formal_dependency_path(
-                args.dependency_path[0],
-                args.dependency_path[1],
-                args.depth,
-            )
-        elif args.source:
-            packet = source_coordinate_packet(args.source, args.limit)
-        elif args.artifact:
-            packet = artifact_packet(args.artifact)
-        elif args.publication_artifact:
-            packet = publication_artifact_packet(args.publication_artifact)
-        elif args.publication_evidence:
-            packet = publication_evidence_packet(args.publication_evidence)
-        elif args.module:
-            packet = module_packet(args.module, args.limit)
-        elif args.connections:
-            packet = connection_card(args.connections, args.limit, args.query)
-        elif args.route:
-            packet = route_packet(args.route)
-        elif args.status:
-            packet = claim_status_packet(args.status, args.limit)
-        elif args.publication_family:
-            packet = publication_family_packet(args.publication_family)
-        elif args.publication_architecture:
-            packet = publication_architecture_packet()
-        elif args.overview:
-            packet = repository_overview_packet()
-        elif args.papers:
-            packet = paper_reading_guide_packet()
-        elif args.tour:
-            packet = agent_tour_packet()
-        elif args.vocabulary:
-            packet = semantic_dictionary_packet()
-        elif args.search:
-            packet = search_packet(args.search, args.limit)
-        elif args.ask:
-            packet = semantic_slice_packet(args.ask, args.limit)
-        else:
-            packet = summary_packet()
+        packet, output_format = query_args_packet()
     except (KeyError, ValueError, json.JSONDecodeError, OSError) as exc:
         print(f"query_corpus: {exc}", file=sys.stderr)
         return 2

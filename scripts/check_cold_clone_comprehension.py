@@ -683,25 +683,15 @@ def query_packet(*args: str, budget_bytes: int = PACKET_BUDGET_BYTES) -> dict[st
     navigation session. Spawning one Python process per assertion made the
     evaluator repeatedly parse the exhaustive declaration atlas and measured
     process-start overhead rather than comprehension. The full check retains a
-    real external-process smoke below; this hot path calls the same ``main``
-    parser and packet renderer in one process.
+    real external-process smoke below; this hot path uses the same parser and
+    dispatch as ``main`` while retaining the packet before output encoding.
     """
-    stdout = io.StringIO()
-    stderr = io.StringIO()
-    previous_argv = sys.argv
-    try:
-        sys.argv = [str(QUERY), *args]
-        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
-            return_code = query_corpus.main()
-    finally:
-        sys.argv = previous_argv
-    if return_code != 0:
-        raise AssertionError(stdout.getvalue().strip() or stderr.getvalue().strip())
-    output = stdout.getvalue()
-    raw = output.encode("utf-8")
+    packet, output_format = query_corpus.query_args_packet(args)
+    require(output_format == "json", "cold-clone packet query selected card output")
+    raw = (json.dumps(packet, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
     require(len(raw) <= budget_bytes, f"query {' '.join(args) or '<summary>'} emitted {len(raw)} bytes "
         f"(budget {budget_bytes})")
-    return json.loads(output)
+    return packet
 
 
 def validate_query_cli_process_smoke() -> None:

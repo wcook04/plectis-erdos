@@ -48,6 +48,7 @@ import stat
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -318,7 +319,9 @@ def file_digest(path: Path) -> str:
     return "sha256:" + hashlib.sha256(_read_safe_bytes(path)).hexdigest()
 
 
+@lru_cache(maxsize=None)
 def read(path: Path, *, errors: str = "strict") -> str:
+    """Read each admitted immutable release input once per gate process."""
     return _read_safe_bytes(path).decode("utf-8", errors=errors)
 
 
@@ -745,6 +748,10 @@ def check_proof_trust() -> None:
 
 
 def main() -> int:
+    # ``read`` is a per-run immutable snapshot, not a cross-run file cache.
+    # Clearing here keeps repeated in-process invocations source-current while
+    # letting the thousands of consumers below share one admitted read.
+    read.cache_clear()
     cache: dict[tuple[str, str | None], list[str] | None] = {}
 
     # Fail fast on the cheapest high-severity invariant.  In particular, do

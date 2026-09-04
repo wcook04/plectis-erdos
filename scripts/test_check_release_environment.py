@@ -39,6 +39,21 @@ def main() -> int:
         and "safe_release_path" in inspect.getsource(check_release._read_safe_bytes),
         "release artifact readers bypass the in-checkout path guard",
     )
+    check_release.read.cache_clear()
+    cached_path = check_release.ROOT / "README.md"
+    with patch.object(
+        check_release,
+        "_read_safe_bytes",
+        wraps=check_release._read_safe_bytes,
+    ) as admitted_read:
+        first = check_release.read(cached_path)
+        second = check_release.read(cached_path)
+    require(first == second, "release snapshot cache changed decoded content")
+    require(
+        admitted_read.call_count == 1,
+        "release snapshot cache repeated path admission for one input",
+    )
+    check_release.read.cache_clear()
     hostile_environment = {
         "GIT_DIR": "/private/wrong-git-dir",
         "GIT_WORK_TREE": "/private/wrong-work-tree",

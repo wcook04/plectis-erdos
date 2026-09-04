@@ -145,6 +145,16 @@ def query(*args: str) -> dict[str, object]:
     return json.loads(completed.stdout)
 
 
+def validate_in_process_query_dispatch() -> None:
+    """The validator seam must preserve the public CLI packet and format."""
+    args = ("--claim", "denominator_exclusion")
+    packet, output_format = query_corpus.query_args_packet(args)
+    completed = invoke_main(query_corpus.main, SCRIPT, args)
+    completed.check_returncode()
+    assert output_format == "json"
+    assert packet == json.loads(completed.stdout)
+
+
 def run(*args: str) -> subprocess.CompletedProcess[str]:
     return invoke_main(query_corpus.main, SCRIPT, args)
 
@@ -1879,6 +1889,7 @@ def validate_module_synopsis_owner_adoption() -> None:
 
 
 def main() -> int:
+    validate_in_process_query_dispatch()
     validate_programme_routes()
     validate_indexed_problem_routes()
     validate_research_corpus_fingerprint()
