@@ -254,7 +254,7 @@ reviewed relationship after it has been recorded.
 ### A mathematical statement or proof changes
 
 1. Edit the relevant file under `Erdos249257/`.
-2. Run `python3 scripts/lean_fast_build.py --jobs 2` for the `lake build` proof check.
+2. Run the `lake build` check below.
 3. Review whether the formal statement, assumptions, or intended meaning
    changed. [`docs/methodology.json`](docs/methodology.json) states the minimum
    evidence and review required for each kind of change.
@@ -305,8 +305,8 @@ python3 scripts/check_cold_clone_comprehension.py --quick
 # Full check of public claims, documents, generated files, and release rules
 python3 scripts/check_release.py
 
-# Formal proof check
-python3 scripts/lean_fast_build.py --jobs 2
+# Changed proof cone; omit flag at release
+python3 scripts/lean_fast_build.py --jobs 2 --changed-from HEAD
 ```
 
 The Python release check confirms the identity of the Lean source but does not

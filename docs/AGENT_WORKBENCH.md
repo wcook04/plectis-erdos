@@ -398,7 +398,8 @@ toolchain manager, from the
 matching Mathlib.
 
 ```sh
-python3 scripts/lean_fast_build.py --jobs 2
+python3 scripts/lean_fast_build.py --jobs 2 \
+  ErdosProblems.Erdos249.PeriodMultipleEscape
 ```
 
 The wrapper fetches the pinned cache when needed. A focused build uses
@@ -412,6 +413,8 @@ graph scans in batches capped by `--jobs`.
 A cold clone can navigate before this step; formal editing needs the
 pinned toolchain. Later builds reuse outputs and rebuild only the selected or
 stale dependency cone; `--changed-from <git-ref>` selects changed modules.
+For source edits, use `--changed-from HEAD` before the untargeted integration
+build so a local proof iteration does not pay for unrelated generated modules.
 The dependency-index validator stores an exact `.lake` receipt: unchanged
 inputs make `--check` constant-time; `--check --full-check` forces an audit.
 

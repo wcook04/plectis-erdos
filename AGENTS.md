@@ -525,11 +525,15 @@ The wrapper uses a disposable local clone and excludes all caller worktree
 changes. `--probe-only` verifies ref resolution and clone preparation without
 running the expensive release gate.
 
-Run the full proof authority check after Lean changes:
+Validate the changed dependency cone after Lean changes:
 
 ```sh
-python3 scripts/lean_fast_build.py --jobs 2
+python3 scripts/lean_fast_build.py --jobs 2 --changed-from HEAD
 ```
+
+Run the untargeted two-root command only at the integration or release
+boundary. A focused PASS authorizes the edited source scope; it is not a full
+project integration receipt.
 
 The wrapper is the public concurrency boundary. Equivalent clean clones share
 one content-keyed validation future in the repository-scoped host cache.
