@@ -190,6 +190,10 @@ def normalize(text: str) -> str:
 def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
     normalized_task = normalize(task)
     task_tokens = set(normalized_task.split())
+    proof_intent = bool(
+        task_tokens & {"attack", "counterexample", "prove", "proof", "research", "solve"}
+    )
+    lean_context = bool(task_tokens & {"lean", "theorem"})
     ranked: list[dict[str, Any]] = []
     for order, lane in enumerate(catalog["lanes"]):
         matches: list[str] = []
@@ -205,6 +209,11 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
             elif len(cue_tokens) == 1 and cue_tokens[0] in task_tokens:
                 matches.append(cue)
                 score += 2
+        # "Lean" names both a proof environment and an operational toolchain.
+        # A genuine proof verb must keep proof search primary while the Lean
+        # validation lane remains visible as a scored alternative.
+        if lane["id"] == "bounded_research" and proof_intent and lean_context:
+            score += 6
         ranked.append({**lane, "score": score, "matched_cues": matches, "order": order})
     ranked.sort(key=lambda row: (-row["score"], -row.get("priority", 0), row["order"]))
     if ranked and ranked[0]["score"] > 0:
