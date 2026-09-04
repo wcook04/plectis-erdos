@@ -3089,6 +3089,11 @@ def main(argv: list[str] | None = None) -> int:
             "claim, paper, and route projection sweep"
         ),
     )
+    parser.add_argument(
+        "--singleflight-worker",
+        action="store_true",
+        help=argparse.SUPPRESS,
+    )
     args = parser.parse_args(argv)
     if args.quick:
         return run_quick_check()
@@ -3099,6 +3104,39 @@ def main(argv: list[str] | None = None) -> int:
             "boundaries verified"
         )
         return 0
+
+    if not args.singleflight_worker:
+        state_root = singleflight.default_state_root()
+        specification = singleflight.validator_spec(
+            "cold-clone", [], None, state_root
+        )
+        receipt = singleflight.submit(specification, state_root)
+        terminal, code = singleflight.collect(
+            state_root,
+            receipt["key"],
+            True,
+            singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
+        )
+        if terminal.get("state") != "terminal":
+            print(json.dumps(terminal, sort_keys=True), file=sys.stderr)
+            return code
+        stdout = terminal.get("stdout", {}).get("tail")
+        stderr = terminal.get("stderr", {}).get("tail")
+        if stdout:
+            print(stdout, end="" if stdout.endswith("\n") else "\n")
+        if stderr:
+            print(
+                stderr,
+                end="" if stderr.endswith("\n") else "\n",
+                file=sys.stderr,
+            )
+        print(
+            "cold-clone comprehension: shared validation "
+            f"key={receipt['key'][:12]} reuse={receipt.get('reuse', 'owner')} "
+            f"exit={code}",
+            file=sys.stderr,
+        )
+        return code
 
     validate_query_cli_process_smoke()
     check_route_memory_descriptor()

@@ -35,6 +35,7 @@ SINGLEFLIGHT_STATE_ROOT_ENV = "VALIDATION_SINGLEFLIGHT_STATE_ROOT"
 HOST_LOCK_ROOT_ENV = "PLECTIS_LEAN_HOST_LOCK_ROOT"
 HOST_LOCK_HELD_ENV = "AIW_PLECTIS_LEAN_HOST_LOCK_HELD"
 ROSTER_VALIDATORS = {
+    "cold-clone": "scripts/check_cold_clone_comprehension.py",
     "toolchain-cache": "lean-toolchain",
     "lean": "scripts/lean_fast_build.py",
     "paper": "docs/papers/check_paper_corpus.py",
@@ -733,6 +734,22 @@ def validator_spec(
             ROOT / "lake-manifest.json",
             ROOT / "lakefile.toml",
             *target_paths,
+        ]
+    elif kind == "cold-clone":
+        if targets or ref:
+            raise ValidationError(
+                "cold-clone validation accepts no target or ref arguments"
+            )
+        command = [
+            sys.executable,
+            "scripts/check_cold_clone_comprehension.py",
+            "--singleflight-worker",
+        ]
+        authority_paths = [
+            ROOT / "scripts/check_cold_clone_comprehension.py",
+            ROOT / "scripts/query_corpus.py",
+            ROOT / "scripts/query_semantic.py",
+            ROOT / "scripts/query_expert_handoffs.py",
         ]
     elif kind == "paper":
         if targets or ref:

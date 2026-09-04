@@ -219,6 +219,28 @@ class ValidationSingleflightTests(unittest.TestCase):
         self.assertEqual(completed.returncode, 0, completed.stderr)
         self.assertIn("lean-fast-build: targets=", completed.stdout)
 
+    def test_cold_clone_check_is_a_checkout_scoped_reusable_validation(self) -> None:
+        specification = singleflight.validator_spec(
+            "cold-clone", [], None, Path("/tmp/public-cold-clone-spec")
+        )
+        self.assertEqual(
+            specification["command"],
+            [
+                sys.executable,
+                "scripts/check_cold_clone_comprehension.py",
+                "--singleflight-worker",
+            ],
+        )
+        self.assertEqual(
+            specification["inputs"]["repository"]["identity_policy"],
+            "tree_and_dirty_content_checkout_independent",
+        )
+        paths = {
+            row["path"] for row in specification["inputs"]["relevant_sources"]
+        }
+        self.assertIn("scripts/check_cold_clone_comprehension.py", paths)
+        self.assertIn("scripts/query_corpus.py", paths)
+
     def test_identical_jobs_join_and_distinct_lean_jobs_serialize(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(
             singleflight, "automatic_cleanup", return_value={"status": "fixture"}
@@ -311,6 +333,7 @@ class ValidationSingleflightTests(unittest.TestCase):
 
     def test_tracked_worker_commands_accept_the_internal_recursion_flag(self) -> None:
         worker_sources = (
+            "scripts/check_cold_clone_comprehension.py",
             "scripts/lean_fast_build.py",
             "scripts/build_lean_dependency_index.py",
             "scripts/historical_bridge_experiment.py",

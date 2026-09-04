@@ -23,6 +23,7 @@ and 2 when the corpus is missing or unreadable.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import sys
@@ -31,7 +32,14 @@ from pathlib import Path
 CORPUS_REL = "docs/papers/corpus.json"
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--singleflight-worker",
+        action="store_true",
+        help=argparse.SUPPRESS,
+    )
+    parser.parse_args(argv)
     repo_root = Path(__file__).resolve().parents[2]
     corpus_path = repo_root / CORPUS_REL
     try:
