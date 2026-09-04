@@ -20,6 +20,11 @@ ROUTE_CASES = {
     "explain how this repo works to a newcomer": ("understand_repository", "explain-public-system"),
     "report theorem status and what remains open": ("mathematical_status", "explain-public-system"),
     "attack one open problem with proof search": ("bounded_research", "mine-open-problem"),
+    "Attempt one bounded research continuation and prepare a checkable return": (
+        "bounded_research",
+        "mine-open-problem",
+    ),
+    "give my agent a research shift": ("bounded_research", "mine-open-problem"),
     "run a sustained research campaign and keep working": (
         "sustained_research",
         "run-coupled-research-goals",
