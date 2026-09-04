@@ -190,14 +190,35 @@ def check_cached_output_rejection() -> None:
 
 
 def check_tracked_cold_clone_receipt() -> None:
-    receipt = builder.load_cached_check(
-        receipt_path=builder.TRACKED_CHECK_RECEIPT,
+    require(
+        builder.TRACKED_CHECK_RECEIPT.is_file(),
+        "tracked cold-clone receipt is missing",
     )
-    require(receipt is not None, "tracked cold-clone receipt is stale")
+    receipt = json.loads(
+        builder.TRACKED_CHECK_RECEIPT.read_text(encoding="utf-8")
+    )
+    require(
+        receipt.get("schema") == builder.CHECK_RECEIPT_SCHEMA
+        and receipt.get("builder_schema") == builder.SCHEMA,
+        "tracked cold-clone receipt schema drifted",
+    )
+    require(
+        receipt.get("output_digest")
+        == sha256_text(builder.OUTPUT.read_text(encoding="utf-8")),
+        "tracked cold-clone receipt no longer owns the committed index",
+    )
     require(
         receipt["verification_posture"].startswith("tracked_receipt_from_full_"),
         "tracked receipt lost its full-export provenance boundary",
     )
+    cached = builder.load_cached_check(
+        receipt_path=builder.TRACKED_CHECK_RECEIPT,
+    )
+    if cached is not None:
+        require(
+            cached == receipt,
+            "exact tracked cache lookup returned a different receipt",
+        )
 
 
 def check_safe_dependency_input_boundary() -> None:

@@ -5279,7 +5279,10 @@ def semantic_query_operator(query: str) -> dict[str, Any]:
     query_terms = search_terms(query)
     if (
         "resolution_status" in query_terms
-        and query_terms & {"claim", "public", "release", "status"}
+        and (
+            query_terms & {"claim", "public", "release", "status"}
+            or explicit_erdos_problem_numbers(query)
+        )
     ) or (
         "what should i try next" in query_text
         or "what blocks" in query_text
@@ -6104,8 +6107,9 @@ def explicit_problem_reading_route(
     if problem is None:
         return None
     problem_id = str(problem["problem_id"])
+    target_claim_ids = (problem_id, f"universal_{problem_number}")
     target_claim = next(
-        (row for row in claims["claims"] if row["id"] == problem_id),
+        (row for row in claims["claims"] if row["id"] in target_claim_ids),
         None,
     )
     remaining_open_ids = (
@@ -6119,7 +6123,9 @@ def explicit_problem_reading_route(
         "route_kind": "problem_route",
         "title": problem["short_title"],
         "intent": problem["question"],
-        "problem_target_claim_ids": [problem_id],
+        "problem_target_claim_ids": (
+            [target_claim["id"]] if target_claim is not None else [problem_id]
+        ),
         "remaining_open_proposition_ids": remaining_open_ids,
         "explicit_problem_number": problem_number,
     }
