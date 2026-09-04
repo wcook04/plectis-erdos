@@ -513,6 +513,246 @@ def apply_rebindings(rebindings: list[dict]) -> None:
         review["evidence_rebindings"] = history
 
 
+MOVED_REVISION_REASON = (
+    "re-review at a moved formal-source revision; every cited declaration's "
+    "statement verified byte-identical across the move"
+)
+
+
+def _atlas_signatures_at(revision: str) -> dict[tuple[str, str], tuple[str, str]]:
+    """Return ``(module, name) -> (kind, signature)`` from the atlas at ``revision``."""
+    import subprocess
+
+    raw = subprocess.run(
+        ["git", "show", f"{revision}:docs/declaration_atlas.json"],
+        cwd=ROOT,
+        capture_output=True,
+        check=True,
+    ).stdout
+    atlas = json.loads(raw)
+    return {
+        (str(row.get("module")), str(row.get("name"))): (
+            str(row.get("kind")),
+            str(row.get("signature")),
+        )
+        for row in atlas.get("declarations", [])
+    }
+
+
+def _cited_declarations(kind: str, subject: dict, nodes_by_id: dict) -> list[tuple[str, str]]:
+    if kind == "statement_node":
+        sources = [subject]
+    else:
+        sources = [
+            nodes_by_id[str(subject.get(end))]
+            for end in ("from", "to")
+            if str(subject.get(end)) in nodes_by_id
+        ]
+    cited = {
+        (str(evidence.get("module")), str(evidence.get("declaration")))
+        for node in sources
+        for evidence in node.get("evidence", [])
+        if evidence.get("declaration")
+    }
+    return sorted(cited)
+
+
+def rereview_moved_revision(
+    registry: dict,
+    committed_corpus: dict,
+    candidate_corpus: dict,
+    *,
+    new_revision: str,
+    today: str,
+    old_signatures: dict[tuple[str, str], tuple[str, str]] | None = None,
+    new_signatures: dict[tuple[str, str], tuple[str, str]] | None = None,
+) -> tuple[list[dict], list[str]]:
+    """Re-issue every receipt at a moved formal-source revision.
+
+    A rebind may move only the atlas fingerprint. When the claims release pins
+    a new formal-source commit, every receipt names the previous one and the
+    rebind refuses. The previous checkpoint moves were done by hand with one
+    proof: every declaration cited by a receipted subject was located in both
+    revisions and its full statement compared byte for byte. This is that
+    proof as a command. A receipt is re-issued only when (1) its digest still
+    reproduces against the committed corpus at the old revision, (2) its
+    substantive material is unchanged in the rebuilt corpus, and (3) every
+    cited declaration has the same kind and signature in the declaration
+    atlas at the old revision and in the rebuilt atlas. Any other difference
+    is a mathematical change and is refused for a real re-review.
+    """
+    old_fingerprint = str(committed_corpus.get("evidence_fingerprint"))
+    new_fingerprint = str(candidate_corpus.get("evidence_fingerprint"))
+    old_subjects = _subject_index(committed_corpus)
+    new_subjects = _subject_index(candidate_corpus)
+    new_nodes = {
+        subject.get("id"): subject
+        for (kind, _), subject in new_subjects.items()
+        if kind == "statement_node"
+    }
+    reviews = registry.get("reviews", [])
+    old_revisions = {str(review.get("reviewed_revision")) for review in reviews}
+    refusals: list[str] = []
+    if len(old_revisions) != 1:
+        return [], [f"receipts name {len(old_revisions)} distinct revisions; expected one"]
+    old_revision = next(iter(old_revisions))
+    if old_revision == new_revision:
+        return [], ["the claims release still pins the receipts' revision; nothing moved"]
+    if new_signatures is None:
+        current_atlas = json.loads(
+            (ROOT / "docs" / "declaration_atlas.json").read_text(encoding="utf-8")
+        )
+        new_signatures = {
+            (str(row.get("module")), str(row.get("name"))): (
+                str(row.get("kind")),
+                str(row.get("signature")),
+            )
+            for row in current_atlas.get("declarations", [])
+        }
+    if old_signatures is None:
+        old_signatures = _atlas_signatures_at(old_revision)
+
+    reissues: list[dict] = []
+    for review in reviews:
+        kind = str(review.get("subject_kind"))
+        subject_id = str(review.get("subject_id"))
+        identity = (kind, subject_id)
+        label = f"{kind} {subject_id}"
+        old_subject = old_subjects.get(identity)
+        new_subject = new_subjects.get(identity)
+        if old_subject is None or new_subject is None:
+            refusals.append(f"{label}: subject absent from the committed or rebuilt corpus")
+            continue
+        old_material = material_for(
+            kind, old_subject, evidence_fingerprint=old_fingerprint, reviewed_revision=old_revision
+        )
+        if review.get("evidence_digest") != canonical_digest(old_material):
+            refusals.append(
+                f"{label}: the stored digest does not reproduce against the committed "
+                "corpus at the old revision, so this receipt was already stale"
+            )
+            continue
+        new_material_old_rev = material_for(
+            kind, new_subject, evidence_fingerprint=new_fingerprint, reviewed_revision=old_revision
+        )
+        changed = _field_changes(
+            substantive_material(old_material), substantive_material(new_material_old_rev)
+        )
+        if changed:
+            refusals.append(
+                f"{label}: reviewed material changed in {', '.join(changed)}; "
+                "this is a mathematical change and needs a real re-review"
+            )
+            continue
+        cited = _cited_declarations(kind, new_subject, new_nodes)
+        if not cited:
+            refusals.append(f"{label}: no cited declaration to compare across revisions")
+            continue
+        moved = [
+            f"{module}:{name}"
+            for module, name in cited
+            if old_signatures.get((module, name)) != new_signatures.get((module, name))
+            or (module, name) not in old_signatures
+        ]
+        if moved:
+            refusals.append(
+                f"{label}: cited declaration statement differs between {old_revision[:12]} "
+                f"and {new_revision[:12]}: {', '.join(moved)}"
+            )
+            continue
+        new_material = material_for(
+            kind, new_subject, evidence_fingerprint=new_fingerprint, reviewed_revision=new_revision
+        )
+        reissues.append(
+            {
+                "review": review,
+                "label": label,
+                "cited": cited,
+                "previous_evidence_digest": review["evidence_digest"],
+                "previous_evidence_fingerprint": old_fingerprint,
+                "evidence_fingerprint": new_fingerprint,
+                "evidence_digest": canonical_digest(new_material),
+                "old_revision": old_revision,
+            }
+        )
+    return reissues, refusals
+
+
+def apply_rereviews(reissues: list[dict], *, new_revision: str, today: str) -> None:
+    for record in reissues:
+        review = record["review"]
+        old_revision = record["old_revision"]
+        history = list(review.get("evidence_rebindings", []))
+        history.append(
+            {
+                "previous_evidence_digest": record["previous_evidence_digest"],
+                "previous_evidence_fingerprint": record["previous_evidence_fingerprint"],
+                "evidence_fingerprint": record["evidence_fingerprint"],
+                "reason": MOVED_REVISION_REASON,
+            }
+        )
+        review["evidence_digest"] = record["evidence_digest"]
+        review["evidence_rebindings"] = history
+        review["reviewed_revision"] = new_revision
+        review["reviewed_at"] = today
+        review["review_scope"] = (
+            str(review.get("review_scope", "")).rstrip()
+            + f" Re-reviewed on {today} for the formal-source move from {old_revision} "
+            f"to {new_revision}. Every declaration cited by this subject was located in "
+            "both revisions and its full statement compared byte for byte: all are "
+            "identical, and only their line coordinates moved. The canonical wording, "
+            "typed relation basis, scope, and claim boundary are unchanged, so the "
+            "reviewed source-to-wording consistency carries over verbatim to the new "
+            "checkpoint. This is a model consistency review, not human mathematical "
+            "review and not Lean proof authority."
+        )
+
+
+def _rereview_command(*, apply_changes: bool) -> int:
+    import build_semantic_corpus
+    from datetime import date
+
+    registry = load(REGISTRY)
+    committed_corpus = load(CORPUS)
+    claims = load(CLAIMS)
+    new_revision = formal_source_revision(claims)
+    try:
+        candidate_corpus = build_semantic_corpus.collect(defer_review_receipts=True)
+    except Exception as error:  # noqa: BLE001 - report the builder's own message
+        print("semantic review re-review: FAIL: could not rebuild the candidate corpus")
+        print(f"  {error}")
+        return 1
+    today = date.today().isoformat()
+    reissues, refusals = rereview_moved_revision(
+        registry, committed_corpus, candidate_corpus, new_revision=new_revision, today=today
+    )
+    if refusals:
+        print("semantic review re-review: REFUSED")
+        for refusal in refusals:
+            print(f"  {refusal}")
+        print("\nNo receipt was rewritten; a differing statement needs a real re-review.")
+        return 1
+    declarations = sorted({row for record in reissues for row in record["cited"]})
+    if not apply_changes:
+        print(
+            f"semantic review re-review: {len(reissues)} receipt(s) would be re-issued at "
+            f"{new_revision}; {len(declarations)} cited declaration statement(s) verified "
+            "byte-identical across the move (dry run; add --apply)"
+        )
+        return 0
+    apply_rereviews(reissues, new_revision=new_revision, today=today)
+    REGISTRY.write_text(
+        json.dumps(registry, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    print(
+        f"semantic review re-review: re-issued {len(reissues)} receipt(s) at {new_revision}; "
+        f"{len(declarations)} cited declaration statement(s) verified byte-identical"
+    )
+    print("next: python3 scripts/build_semantic_corpus.py")
+    return 0
+
+
 def _rebind_command(*, apply_changes: bool) -> int:
     # Imported here, not at module scope: build_semantic_corpus imports this
     # module, so a top-level import would be circular.
@@ -612,17 +852,30 @@ def main(argv: Iterable[str] | None = None) -> int:
         ),
     )
     parser.add_argument(
+        "--rereview-moved-revision",
+        action="store_true",
+        help=(
+            "re-issue every receipt at the formal-source revision the claims "
+            "release now pins, after proving each cited declaration's "
+            "statement byte-identical across the move; refuse otherwise"
+        ),
+    )
+    parser.add_argument(
         "--apply",
         action="store_true",
-        help="with --rebind, write the rebound receipts to the registry",
+        help="with --rebind or --rereview-moved-revision, write the registry",
     )
     args = parser.parse_args(argv)
 
-    if args.apply and not args.rebind:
-        parser.error("--apply is only meaningful with --rebind")
+    if args.apply and not (args.rebind or args.rereview_moved_revision):
+        parser.error("--apply is only meaningful with --rebind or --rereview-moved-revision")
+    if args.rebind and args.rereview_moved_revision:
+        parser.error("--rebind and --rereview-moved-revision are mutually exclusive")
 
     if args.rebind:
         return _rebind_command(apply_changes=args.apply)
+    if args.rereview_moved_revision:
+        return _rereview_command(apply_changes=args.apply)
 
     corpus = load(CORPUS)
     claims = load(CLAIMS)
