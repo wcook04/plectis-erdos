@@ -576,8 +576,8 @@
     {
       "id": "lucas_shared_closure_t64",
       "label": "Shared Lucas primality closure for t = 47..64",
-      "modules_glob": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean",
-      "module_count": 1,
+      "modules_glob": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean + ClosureT64/*.lean",
+      "module_count": 15,
       "declaration_count": 1244,
       "template_statement": "Two helper lemmas (`natCast_zmod_eq_one_iff (a m : Nat) : (a : ZMod m) = 1 <-> a % m = 1 % m` and its negation) followed by 1,242 theorems `prime_lucas_{p} : Nat.Prime {p}` in dependency order. Each proof states `hfermat : (a : ZMod p) ^ (p - 1) = 1` and one `hfactor_i : (a : ZMod p) ^ ((p-1) / q_i) != 1` per prime factor q_i of p-1, each reduced by `rw [<- binaryPow_eq_pow, binaryPow_zmod, natCast_zmod_(n)e_one_iff]` and closed by `decide +kernel`, then `apply lucas_primality p (a : ZMod p)` with the factor list supplied as a `List FactorBlock` through `prime_dvd_factorBlocks`.",
       "parameters": [
@@ -588,7 +588,8 @@
       "parameter_values": {
         "prime_theorems": 1242,
         "helper_lemmas": 2,
-        "lines": 51792,
+        "certificate_shards": 13,
+        "dependency_levels": 7,
         "serves_scales": [
           47,
           49,
@@ -598,9 +599,9 @@
           64
         ]
       },
-      "generator": "ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py \u2014 NOT in this repository",
-      "generator_evidence": "T64_PRIME_CLOSURE_OUTPUT = PRIME_OUTPUT_DIR / \"ClosureT64.lean\" at line 55; the docstring line \"This generated module is the compressed primality dependency surface for\" is emitted at line 673 with the namespace lines at 680-681; it is threaded into build_scale_extension as `shared_prime_closure=t64_prime_closure` for t = 47,49,53,59,61,64.",
-      "provenance_evidence": "Module docstring: `# Shared Lucas closure through t=64 / This generated module is the compressed primality dependency surface for the t=47,49,53,59,61,64 diagonal-pincer certificates.  Dependencies are declared before consumers.  Each modular congruence is reduced through the logarithmic binaryPowMod recurrence and checked by kernel decide; lucas_primality remains the proof-producing theorem.` Options `maxRecDepth 100000` / `maxHeartbeats 2000000` (double the per-leaf value).",
+      "generator": "ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py emits the source monolith; scripts/shard_closure_t64.py owns its proof-term-preserving public sharding and structural check",
+      "generator_evidence": "The private emitter's T64_PRIME_CLOSURE_OUTPUT produces the source monolith and threads it into build_scale_extension for t = 47,49,53,59,61,64. The public scripts/shard_closure_t64.py verifies the reviewed 1,242-theorem digest, computes dependency depth, balances two shards per non-singleton level, derives exact prerequisite imports, and retains ClosureT64.lean as the stable aggregator.",
+      "provenance_evidence": "ClosureT64.lean is the stable public aggregator over Support.lean and 13 deterministic Level<depth><bin>.lean certificate shards. The public owner checks the exact theorem digest, unique membership, acyclic lower-level references, exact imports, manifest membership, and absence of native evaluation. Options remain maxRecDepth 100000 / maxHeartbeats 2000000.",
       "declaration_shapes": [
         {
           "name_pattern": "prime_lucas_N",
@@ -632,7 +633,7 @@
     }
   ],
   "totals": {
-    "generated_modules": 503,
+    "generated_modules": 517,
     "generated_declarations": 8171,
     "authored_modules": 147,
     "authored_declarations": 4638,
