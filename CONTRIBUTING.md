@@ -40,7 +40,7 @@ There are two first-class tracks:
    contributor experience.
 
 You can contribute an architecture idea before you have code. Use the
-[architecture proposal form](.github/ISSUE_TEMPLATE/architecture_proposal.yml)
+[architecture proposal form](https://github.com/wcook04/plectis-lean-erdos249-257/issues/new?template=architecture_proposal.yml)
 or read the [architecture contribution path](docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
 If an idea is adopted, the accepting change preserves the originator's credit
 in a tracked artifact and accepted receipt.
@@ -48,9 +48,10 @@ in a tracked artifact and accepted receipt.
 The ordinary contribution path is enough: fork or clone the repository, make
 a focused change, and open a pull request. Explain the question you started
 from, what you changed or learned, what another person can inspect, and what
-remains unresolved. If you have an observation but no finished patch, open a
-plain-language research-progress issue and write it in your own words. You do
-not need to learn the receipt format before telling us something useful.
+remains unresolved. If you have an observation but no finished patch, open the
+[plain-language research-progress form](https://github.com/wcook04/plectis-lean-erdos249-257/issues/new?template=research_progress.yml)
+and write it in your own words. You do not need to learn the receipt format
+before telling us something useful.
 
 For compute contributions, begin with a bounded route exposed by the papers,
 claim registry, or agent entry. The present routes are authored in the public
