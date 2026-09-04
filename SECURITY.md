@@ -38,5 +38,6 @@ Use it for anything sensitive: a supply-chain concern in the pinned
 toolchain or dependencies, a CI configuration issue, or leaked material that
 should not be public. Do not open a public issue with sensitive details.
 Mathematical errors and build failures are not security issues; use the
-ordinary issue forms for those. Reports get a best-effort response from a
-solo maintainer, normally within a week.
+[ordinary issue forms](https://github.com/wcook04/plectis-lean-erdos249-257/issues/new/choose)
+for those. Reports get a best-effort response from a solo maintainer, normally
+within a week.
