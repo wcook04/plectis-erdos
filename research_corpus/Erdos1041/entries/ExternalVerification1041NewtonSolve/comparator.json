@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041NewtonSolve.Challenge",
+  "solution_module": "ExternalVerification1041NewtonSolve.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041NewtonSolve.newton_solve"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

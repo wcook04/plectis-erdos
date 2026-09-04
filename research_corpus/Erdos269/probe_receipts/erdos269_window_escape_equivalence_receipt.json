@@ -1,0 +1,161 @@
+{
+  "checks": {
+    "escape": {
+      "escape_witnessed_for_every_tested_pair": true,
+      "rows": [
+        {
+          "B": 1,
+          "analytic_sufficient_len": 18,
+          "dist_B_X_lo_to_Z_lower_bound": 0.1906806476106836,
+          "first_escape_len": 6,
+          "lo": 1,
+          "max_short_residue_len": 5
+        },
+        {
+          "B": 1,
+          "analytic_sufficient_len": 17,
+          "dist_B_X_lo_to_Z_lower_bound": 0.4408388566410154,
+          "first_escape_len": 5,
+          "lo": 3,
+          "max_short_residue_len": 4
+        },
+        {
+          "B": 1,
+          "analytic_sufficient_len": 18,
+          "dist_B_X_lo_to_Z_lower_bound": 0.2980116092344467,
+          "first_escape_len": 5,
+          "lo": 6,
+          "max_short_residue_len": 4
+        },
+        {
+          "B": 7,
+          "analytic_sufficient_len": 20,
+          "dist_B_X_lo_to_Z_lower_bound": 0.3347645332747851,
+          "first_escape_len": 6,
+          "lo": 1,
+          "max_short_residue_len": 5
+        },
+        {
+          "B": 7,
+          "analytic_sufficient_len": 23,
+          "dist_B_X_lo_to_Z_lower_bound": 0.08587199648710798,
+          "first_escape_len": 7,
+          "lo": 3,
+          "max_short_residue_len": 6
+        },
+        {
+          "B": 7,
+          "analytic_sufficient_len": 23,
+          "dist_B_X_lo_to_Z_lower_bound": 0.08608126464112686,
+          "first_escape_len": 6,
+          "lo": 6,
+          "max_short_residue_len": 5
+        },
+        {
+          "B": 11,
+          "analytic_sufficient_len": 23,
+          "dist_B_X_lo_to_Z_lower_bound": 0.0974871237175195,
+          "first_escape_len": 7,
+          "lo": 1,
+          "max_short_residue_len": 6
+        },
+        {
+          "B": 11,
+          "analytic_sufficient_len": 23,
+          "dist_B_X_lo_to_Z_lower_bound": 0.1507725769488303,
+          "first_escape_len": 6,
+          "lo": 3,
+          "max_short_residue_len": 5
+        },
+        {
+          "B": 11,
+          "analytic_sufficient_len": 22,
+          "dist_B_X_lo_to_Z_lower_bound": 0.27812770157891364,
+          "first_escape_len": 6,
+          "lo": 6,
+          "max_short_residue_len": 5
+        },
+        {
+          "B": 49,
+          "analytic_sufficient_len": 23,
+          "dist_B_X_lo_to_Z_lower_bound": 0.3433517329234959,
+          "first_escape_len": 7,
+          "lo": 1,
+          "max_short_residue_len": 6
+        },
+        {
+          "B": 49,
+          "analytic_sufficient_len": 23,
+          "dist_B_X_lo_to_Z_lower_bound": 0.39889602459024415,
+          "first_escape_len": 7,
+          "lo": 3,
+          "max_short_residue_len": 6
+        },
+        {
+          "B": 49,
+          "analytic_sufficient_len": 24,
+          "dist_B_X_lo_to_Z_lower_bound": 0.397431147512112,
+          "first_escape_len": 7,
+          "lo": 6,
+          "max_short_residue_len": 6
+        },
+        {
+          "B": 1009,
+          "analytic_sufficient_len": 28,
+          "dist_B_X_lo_to_Z_lower_bound": 0.3967734391797427,
+          "first_escape_len": 9,
+          "lo": 1,
+          "max_short_residue_len": 8
+        },
+        {
+          "B": 1009,
+          "analytic_sufficient_len": 29,
+          "dist_B_X_lo_to_Z_lower_bound": 0.19359364921543532,
+          "first_escape_len": 9,
+          "lo": 3,
+          "max_short_residue_len": 8
+        },
+        {
+          "B": 1009,
+          "analytic_sufficient_len": 29,
+          "dist_B_X_lo_to_Z_lower_bound": 0.3062862824432856,
+          "first_escape_len": 9,
+          "lo": 6,
+          "max_short_residue_len": 8
+        }
+      ]
+    },
+    "pinning": {
+      "identity_and_bound_hold": true,
+      "note": "verified for every window whose residue does not exceed the short bound"
+    },
+    "recurrence_and_window_identity": {
+      "recurrence_holds_on_intervals": true,
+      "window_identity_holds_on_intervals": true,
+      "windows_tested": 133
+    },
+    "structure": {
+      "a_max": 160,
+      "digit_max": 33020,
+      "digit_min": 1,
+      "radix_alphabet": [
+        2,
+        6,
+        10,
+        30
+      ],
+      "width_bound_holds": true
+    }
+  },
+  "claim_boundary": "Verifies the mechanism of the proved EQUIVALENCE between ActualCofinalLocalWindowEscape and irrationality of the {2,3,5} running-LCM series. Proves neither side. Erdos #269 remains open.",
+  "failures": [],
+  "lean_module": "ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean",
+  "lean_theorems_probed": [
+    "trueNormalizedState_window",
+    "near_integer_of_residue_le",
+    "cofinalLocalWindowEscape_of_irrational",
+    "actualCofinalLocalWindowEscape_iff"
+  ],
+  "schema": "erdos269_window_escape_equivalence_probe_v1",
+  "status": "pass"
+}

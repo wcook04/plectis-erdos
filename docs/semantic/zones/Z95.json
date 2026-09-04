@@ -1,0 +1,181 @@
+{
+  "zone_id": "Z95",
+  "title": "Weighted free-point bounds, first-contact resonance and effective Hankel asymptotics",
+  "problem": "shared_substrate",
+  "concepts": [],
+  "statement_nodes": [
+    {
+      "id": "weighted_quadratic_free_point_all_degrees",
+      "canonical_statement": "For finitely many closed-disc points c_j and positive weights w_j summing to one, G(z)=product_k |1-conj(c_k)z|^{w_k} satisfies sum_j w_j G(c_j)^2 + sum_(nu>=1)(2nu-1)|a_nu|^2 <= 1, where a_nu are the Taylor coefficients of exp(sum_k w_k log(1-conj(c_k)z)). In particular sum_j w_j G(c_j)^2 <= 1-|sum_j w_j c_j|^2, with equality in the bound by one only at the origin configuration. Equal weights close FP_m for every m. The torus/psh bridge proves sum_j |f(w_j)|^{2/(n-1)} <= (n-1)R^{2n/(n-1)}, hence (S)_n in every degree.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "1041",
+      "concepts": [],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "source_bound_ordinary_mathematics",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Assimilated Type B return and Type A strengthening; no novelty adjudication.",
+      "scope_caveat": "Ordinary analytic proof. The critical-value mean does not supply the missing root-to-root metric connector.",
+      "confidence": "high",
+      "evidence": [],
+      "source_evidence": [
+        {
+          "path": "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FreePointQuadraticAllDegrees.md",
+          "sha256": "9cd28ee33b62e1d2dc99cdba87b8d6f347a9e3d7d2d2056986e4086d94ecfd14",
+          "evidence_class": "ordinary_mathematical_proof"
+        }
+      ],
+      "source_result_id": "weighted_quadratic_free_point_all_degrees"
+    },
+    {
+      "id": "robust_merge_scalar_separation_and_one_root_bergman",
+      "canonical_statement": "For every n>=2 and r with r^2 artanh(r^2)>2, an open coefficient neighbourhood of z^n-r^n fails the connected-cluster scalar at every regular multi-root level, while a strict full-cycle lollipop proves the parent on that neighbourhood. For a regular degree-k component C of |f|<t and h in C, some root a has d_C(h,a)^2 <= Area(C)/pi log(1/(1-(|f(h)|/t)^(2/k))). A strict uniform bound below one over a connected root-carrying continuum gives a length-below-two connector.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "1041",
+      "concepts": [],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "source_bound_ordinary_mathematics",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Assimilated Type B return and Type A strengthening; no novelty adjudication.",
+      "scope_caveat": "The regular-polygon no-go was already known. Robustness and the explicit one-root composition are additional; no universal forcing or parent theorem is asserted.",
+      "confidence": "high",
+      "evidence": [],
+      "source_evidence": [
+        {
+          "path": "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/R2MergeNodeSeparation.md",
+          "sha256": "ee4c65280df53b28780303c4cd4903c7876b5898fc3d362fdb7974079ff59177",
+          "evidence_class": "ordinary_mathematical_proof"
+        }
+      ],
+      "source_result_id": "robust_merge_scalar_separation_and_one_root_bergman"
+    },
+    {
+      "id": "all_arity_unique_active_stationarity_exclusion",
+      "canonical_statement": "For m>=2, the fixed-product attached-ray selector has no positive-valued stationary point in a cell with a unique active ray, a unique nondegenerate interior radial optimizer, and all angular/radial constraints strict. Angular and radial stationarity force all points to coincide, contradicting unique activity. This removes every smooth single-active stationary stratum at every level, strengthening the returned level-one local-maximum exclusion.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "1041",
+      "concepts": [],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "source_bound_ordinary_mathematics",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Assimilated Type B return and Type A strengthening; no novelty adjudication.",
+      "scope_caveat": "Does not remove multi-active switches, optimizer switches, closed boundaries or the regular orbit.",
+      "confidence": "high",
+      "evidence": [],
+      "source_evidence": [
+        {
+          "path": "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SmoothUniqueActiveContactExclusionAllArity.md",
+          "sha256": "91663e1ff0588b43dcc10932ec4bee368f32c2f29ba87649495f0292bb4b0d24",
+          "evidence_class": "ordinary_mathematical_proof"
+        }
+      ],
+      "source_result_id": "all_arity_unique_active_stationarity_exclusion"
+    },
+    {
+      "id": "fresh_prime_first_contact_requires_single_step_valuation_resonance",
+      "canonical_statement": "If a_j is LCM-fresh and p^e exactly divides a_j, first later contact p|U_t requires t>=j+2 and v_p(a_(t-1))=v_p(Lambda_(t-1))>=e. Thus the entire source prime power must be paid in one overlap step, with residual-unit cancellation modulo p; many smaller payments cannot create first contact. Whole-modulus retirement and disjoint CRT-wall cumulative bounds follow.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "243",
+      "concepts": [],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "source_bound_ordinary_mathematics",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Assimilated Type B return and Type A strengthening; no novelty adjudication.",
+      "scope_caveat": "Necessary contact condition, not a frequency theorem; global overlap-growth production remains open.",
+      "confidence": "high",
+      "evidence": [],
+      "source_evidence": [
+        {
+          "path": "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/R2CumulativePayment.md",
+          "sha256": "e1110560ab07da9d0d3d4ab7a3cafdfcb36c82849e60cbc0c3e2a19fc9289d87",
+          "evidence_class": "ordinary_mathematical_proof"
+        }
+      ],
+      "source_result_id": "fresh_prime_first_contact_requires_single_step_valuation_resonance"
+    },
+    {
+      "id": "strict_rise_loglog_lcm_ordinary_rigidity",
+      "canonical_statement": "Under the canonical exact LCM orbit and quadratic-growth hypotheses, if some delta in (0,1) bounds -V_n by (1-delta) log_2 log_2 max(4,U_n) at every sufficiently late strict rise, the orbit is eventually zero. The exact Q_n bridge shows finite upper limsup Q_n/M_n implies eventual Sylvester recurrence. Two consecutive gcd-payment-free steps force -u_n u_(n+2) to be a unit square modulo u_(n+1).",
+      "logical_class": "conditional_implication",
+      "problem": "243",
+      "concepts": [],
+      "open_antecedents": [
+        "strict-rise logarithmic bound or bounded LCM prefactor, as stated"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "source_bound_ordinary_mathematics",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Assimilated Type B return and Type A strengthening; no novelty adjudication.",
+      "scope_caveat": "The log-log or LCM-prefactor bound is an extra hypothesis. The unrestricted parent remains open.",
+      "confidence": "high",
+      "evidence": [],
+      "source_evidence": [
+        {
+          "path": "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/R2CumulativePayment.md",
+          "sha256": "e1110560ab07da9d0d3d4ab7a3cafdfcb36c82849e60cbc0c3e2a19fc9289d87",
+          "evidence_class": "ordinary_mathematical_proof"
+        }
+      ],
+      "source_result_id": "strict_rise_loglog_lcm_ordinary_rigidity"
+    },
+    {
+      "id": "effective_signed_atomic_hankel_asymptotics",
+      "canonical_statement": "For ordered nodes 1>=x_1>x_2>...>0, nonzero real a_j and A=sum |a_j|x_j<infinity, let X=product_(j<=N)x_j, Delta=product_(i<j<=N)(x_j-x_i), rho=x_(N+1)/x_N. The shifted moment determinant D_N(s) has leading term L(s)=(product_(j<=N)a_j) X^s Delta^2 and |D_N(s)/L(s)-1| <= A^N rho^(s-1)/(N! |product_(j<=N)a_j| X Delta^2), for s>=1. This proves effective eventual nonvanishing, eventual sign and infinite Hankel rank for the power Mobius-Mersenne ladder.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "source_bound_ordinary_mathematics",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Assimilated Type B return and Type A strengthening; no novelty adjudication.",
+      "scope_caveat": "Not nonvanishing at every shift and not irrationality of P_2. Literal Lambert rank one and all-base totient rank were already Lean-checked.",
+      "confidence": "high",
+      "evidence": [],
+      "source_evidence": [
+        {
+          "path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/SignedAtomicHankelAsymptotics.md",
+          "sha256": "9ced88363b2ec920c0bb06fa3020c23a4fd4f925ef8d255040e0cd7fe7a03a46",
+          "evidence_class": "ordinary_mathematical_proof"
+        }
+      ],
+      "source_result_id": "effective_signed_atomic_hankel_asymptotics"
+    },
+    {
+      "id": "zudilin_normalized_hankel_qorder_factorial_pattern",
+      "source_result_id": "zudilin_normalized_hankel_qorder_factorial_pattern",
+      "canonical_statement": "For every rank N, Zudilin's normalized Hankel determinant V_N^* at x=z=1 has q-order exactly N(N-1)(2N-1)/6 and leading coefficient exactly (N!)^2(N+1)!/2^N. The source backward-shift induction sharpens on the associated grade: for w_n(H,t), the leading coefficient after j transforms is (-1)^j[X^(j-t)]H_0(X)^(-1). The actual t=0 tail has reciprocal (1+X)/(1-X)^4, every t>=1 tail has reciprocal 1/(1-X)^3, and summing 0<=t<=j gives D_j v_(j+l)^*=(-1)^j(j+1)^2(j+2)/2 q^(j(j+1)/2+jl)+higher terms. Lean now defines both actual associated tail ratios and reciprocals, proves their coefficient formulas, specializes the all-depth recurrence, and proves the exact zero-plus-positive tail row scalar. It also defines each exact normalized source tail and the coefficientwise finite-tail moment at x=z=1, proves that the tail has exact order (n+1)t, zero coefficients below that shift, and leading coefficient one, proves the exact consecutive-index source-tail identity T_(n+1,t)=X^t T_(n,t)U_(n,t), clears both moving denominator factors of U_(n,t), proves U_(n,t)-1 vanishes below degree n+1, and proves its first associated coefficient is -5 at t=0 and -3 at every t>0. Lean further proves the exact Gaussian-binomial operator recurrence D_(j+1)=(1-X^jN)D_j on arbitrary power-series sequences and the resulting transformed-moment recurrence. This closes the first nontrivial transformed row in every column: ord(D_1v_(l+1)^*)=l+1 with leading coefficient -6. Lean also proves the lower-unitriangular row matrix has determinant one and preserves every power-series Hankel determinant, proves a generic unique-minimum Leibniz-order bridge, then identifies the associated-grade matrix as a diagonal scaling of a power-series Vandermonde matrix, proves its exact determinant product and all-rank noncancellation, computes its exact order as sum_(j<N)j^2, closes 6*ord=N(N-1)(2N-1), and checks the exact scaled factorial product for the row coefficients; the focused AdelicHeightBridge build and final serialized replay pass. The sole remaining Lean boundary is the entrywise initial-monomial theorem for rows j>=2 and all columns, iterating these exact filtered step identities. Thus hidden normalized-Hankel q-order is eliminated at all ranks as a source of extra cubic analytic decay; arithmetic denominator extraction or a different integral model is now mandatory. The finite checker regression-tests every tail contribution through rank seven. Receipt: state/formal_math/erdos257_period_noncollapse/erdos1049_hankel_qorder_receipt.json.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "1049",
+      "concepts": [],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "filtered_reciprocal_states",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Previously established ordinary theorem made accessible; not new mathematics credited to this return.",
+      "scope_caveat": "The full written argument is ordinary mathematics. Higher-row Lean formalization and the irrationality bridge remain open.",
+      "confidence": "high",
+      "evidence": [],
+      "source_evidence": [
+        {
+          "path": "research_corpus/Erdos1049/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/FilteredReciprocalStateLifting.md",
+          "sha256": "f82b177528860e99a9d8bc2707be29700cf6bb344db1fd1743ac11c3de14ffd3",
+          "evidence_class": "ordinary_mathematical_proof"
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [],
+  "intra_zone_relations": [
+    {
+      "from": "weighted_quadratic_free_point_all_degrees",
+      "to": "robust_merge_scalar_separation_and_one_root_bergman",
+      "relation": "complements",
+      "basis": "The all-degree critical-value mean supplies value control; the one-root Bergman bound addresses the separate intrinsic-length requirement. No implication to universal metric forcing is claimed.",
+      "confidence": "high"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_first_mode_three_quarter_overlap",
+  "input_stage": "computation_guided_proof_generation",
+  "output_stage": "verification_and_exposition",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticFirstModeThreeQuarterOverlap.lean",
+    "ErdosProblems/Erdos1041/SexticFirstModeThreeQuarterOverlap.md",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_first_mode_three_quarter_overlap.py"
+  ],
+  "human_understanding_delta": "An adversarial opposite-orientation connector search failed at |E1|/|E2| about 0.7975, revealing that the old 4/5 overlap constant—not the mixed geometry—created that apparent hole. The exact worst-ray polynomial stays positive at the cleaner threshold 3/4: one half has six positive Bernstein controls, and the other is a positive quadratic plus positive monomials. The small-chord budget retains an explicit Au/48 margin.",
+  "verification_state": "analytic proof complete; exact rational checker PASS on 4097 polynomial rows, 69649 ray rows, and 4160 chord rows; canonical focused Lean build and final serialized authority check PASS",
+  "publication_or_review_state": "private authoring checkpoint pending expert review",
+  "canonicalization_state": "new theorem module, concise exposition, exact replay, and packet handoff prepared",
+  "unresolved_downstream_bottleneck": "Cover the now smaller normalized mixed annulus |E1|/|E2|<3/4, glue it to the pure-second-mode and canonical null-box charts, then absorb actual-polynomial remainders. Unrestricted Erdos #1041 remains open.",
+  "next_stage_owner": "Refinery: rerun the parity-aware truncated-connector adversary only on |E1|/|E2|<3/4, isolate the next robust uncovered stratum, and demand a finite analytic cell or pivot to COVER.",
+  "tool_disclosure": "A bounded SciPy differential-evolution scout, recorded under PID 98224 with output /tmp/erdos1041_parity_atlas_probe_20260825.log, falsified the proposed universal opposite-orientation connector shortcut at ratio about 0.7975. Symbolic algebra then exposed the 3/4 polynomial identities. Computation selected the theorem; the written inequalities and Lean source carry the proof.",
+  "claim_boundary": "This strengthens a homogeneous sextic overlap theorem. It does not settle the remaining mixed atlas, nonlinear transfer, all sextics, or unrestricted Erdos #1041."
+}

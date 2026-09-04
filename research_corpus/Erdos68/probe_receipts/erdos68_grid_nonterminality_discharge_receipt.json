@@ -1,0 +1,105 @@
+{
+ "probe_id": "erdos68_grid_nonterminality_discharge",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_68",
+   "target_statement": "Prove that the Erd\u0151s #68 factorial-denominator series is irrational.",
+   "claim_ceiling": "Erd\u0151s #68 remains open. Lean checks the support-independent channel congruence and LCM obstruction, the finite factorial-gap segment inequalities and explicit radius lower bounds, summability and additivity of every finite-support channel residual, and the complete prime-unit translator giving exact integer residual shifts. Lean also checks the strict-successor carry recurrence, its exact normalized factorial-series expansion, and convergence of the normalized strict successors Z_n/n! to the literal series S. Consequently S is non-irrational exactly when the carries are eventually all one, and S is irrational exactly when non-unit carries occur cofinally. This is an exact characterization, not the missing producer. An independently implemented exact GMP certificate computes every carry through m=300000; combined with the Lean-checked consumer, its non-unit terminal carry proves only the finite bound q>=300000 for any displayed rational representation S=a/q with q>0. The source-verified Erd\u0151s--Straus Theorem 2.1 coboundary criterion applies to the checked ordinary-factorial carry expansion, not directly to denominators n!-1. Lean checks the criterion's small-numerator hypothesis from the sharp carry range, proves that every corresponding half-radix coboundary enters the canonical interval -B<c_m<=0, and proves that the finite residue state then hits zero at a large multiple of B and stays zero. Thus the entire Erd\u0151s--Straus route is formally reduced back to eventual unit carries rather than producing a distinct irrationality obstruction. The source-verified Kova\u010d--Tao interval lemma, together with a Lean-checked exact overlap inequality, gives a rational comparison series after decreasing each denominator n!-1 by at most n^2+1; this is a sharp perturbation boundary, not a result on the unperturbed endpoint. The source-verified Li Lai Theorem 1.1 supplies, after f=-1 specialization, a positive-lower-density family of n with P(n!-1)>(1+9 log 2-epsilon)n. Lean promotes least such prime hits to cofinally many uniquely supported upper-half anchors on explicit tailored blocks [2,2p-1]: prefix privacy handles all earlier indices and the prime cannot divide the immediately following factorial gap. Lean also proves the one-owner weighted projection is nonzero automatically. However, any one-owner closing inequality would force (2p+1)L_p<2p^2((2p-1)!)^2, while the source-verified Garaev--Luca--Shparlinski Theorem 12 yields the derived growth log L_p >> p^(4/3)log p, eventually exceeding that squared-factorial ceiling. Thus unique support is abundant but the one-owner route is asymptotically impossible; the eventual source-to-ceiling comparison is not Lean-checked. The source-verified Luca--Shparlinski Lemmas 4-5 now add exact prime and general-modulus hit bounds; for q=p^a they control reuse by O((x-y)log x/(a log p)+1), and their final remark controls aggregate p-adic load. Those are unweighted collision estimates, not weighted endpoint residue information. The componentwise denominator dynamics now prove a sharper multiplicity law: if q divides the repeated-birth cofactor B_n and ord_q(R_n)>ord_q(C_n), then ord_q(n!-1)<=ord_q(v_n); hence every genuinely amplifying repeated prime with ord_q(v_n)<ord_q(n!-1) enters C_(n+1) with its complete current-gap power. The canonical product A_n of all such full powers divides B_n, C_(n+1), and the next actual denominator v_(n+1); when nontrivial it also carries a nonzero next-numerator projection. This confines cancellation beyond old residual mass to non-amplifying q-adic collisions, but no source theorem yet supplies cofinally large A_n or bounds the exceptional mass. Lean further checks the uniform remote factorial-grid construction for every cutoff and threshold: its normalized augmented matrix is a shifted Vandermonde with nonzero determinant, Cramer's rule supplies a zero-channel vector with nonzero moment, and a remote prime translator reduces the residual to absolute value at most 1/2. Every Cramer tail numerator is an exact row-replacement determinant and is nonzero beyond the largest support. The full infinite-tail classification is now formal: R_D(c)=M(c)T_D+K universally, and under zero channels R_D(c)=M(c)S+K for the original series S; for the uniform Cramer kernel M(c)=det(A) is nonzero. Direct uniform tail-sign and total-positivity closure are false because nonaffine floor quotients force sign changes inside the finite pre-asymptotic tail. The global CRT route now has a Lean-checked fractional-part normal form: T_p/R_p=C_p*s_(2p-1), gcd(T_p,R_p)=1, and the normalized complementary residue is exactly the gap from C_p*s_(2p-1) to its next integer. A full unit-carry block p<=m<=2p forces the same endpoint window, so every collision-ceiling certificate now yields an exact failure of m | strictFacTopRat(factorialGapPrefix(m),m) somewhere in that block; cofinal certificates land directly in the exact cofinal miss predicate equivalent to the problem. The exact recurrence probe now explains all three observed private-owner transitions as the first block containing the exited prime's first later factorial-one hit, opening a cofinal two-owner renewal target rather than another blind horizon extension. Lean also splits a unit carry exactly into a lower zero-digit endpoint cylinder and an upper maximal-digit endpoint cylinder. Therefore it suffices to prove cofinal prime escape from only the lower cylinder m*theta_(m-1)<R_m, whose width is R_m/m=O(m^-2); rationality would force theta_(p-1)=0 for every sufficiently large prime. This sharper cofinal escape producer is still unproved for the actual series. No theorem proves that renewal supply, cylinder escape, cofinally many exact misses, the required global/two-projection bound, or det(A)S nonintegral for an unbounded family, so no irrationality resolution is claimed. The tail-free predecessor-gap certificate has now been evaluated for the first time: it fires for 204 of 208 values of m up to 210, with a failure count within 10% of the uniform prediction and no failures past m = 60. The producer's event is therefore generic, and its missing input is a non-concentration theorem for frac((m-1)! sum_(n<m) 1/(n!-1)) rather than a new arithmetic mechanism. The tail-free threshold producer, the exact prefix strict-successor miss, and the canonical-digit lane are now identified as three level sets of the single rounding digit D_m over 3<=m<=50000, with the digit statistically indistinguishable from generic on every tested statistic, so the surviving Archimedean input is one non-concentration statement for A_(m-1) at scale 1/m rather than three separate producers. The finite denominator exclusion is now a Kempner-index statement: a non-unit carry at m gives q not dividing (m-1)!, hence q not dividing 299999! from the landed certificate, which is strictly stronger than the previously recorded q>=300000. The finite denominator exclusion is now two independent statements: q does not divide 299999!, which kills every 299999-smooth denominator of any magnitude, and q > 10^12039 from 23449 certified continued-fraction partial quotients. Neither implies the other and the recorded q >= 300000 is superseded by both. The rank-two strict-nonvanishing producer is reclassified: its output is q not dividing det(A), a smoothness exclusion of the same species as the Kempner-index statement rather than a size bound, and nonvanishing alone cannot contradict rationality because |R| >= 1/q while the only recorded smallness is |R| <= 1/2. The continued-fraction bound discharges its hypothesis free on grid sizes n <= 1 and no further, the n = 2 determinant already being 10^15208. At n = 0 the determinant is 3(4t)!(4t+4)!/2^(2t+2), so nonvanishing there for any t >= 74999 would strictly strengthen q not dividing 299999!. A second priority-1 producer is removed: erdos68_appended_channel_determinant_beats_determinantal_divisor asks for 0 < |N| < Delta, which is unsatisfiable because Laplace expansion along the appended row makes Delta divide N, so N nonzero forces |N| >= Delta. The two removals share a cause - a linear-form producer closes irrationality only when its coefficient is forced to be a multiple of the hypothetical denominator, which erdos68_scalar_factorial_tail_orbit_nonintegrality satisfies and these two do not. cofinal_prime_grid_nonterminality is discharged for every prime p <= 300000 by the Kempner exclusion and for p <= 3824 by the continued-fraction bound, since S = G_p would force the denominator to divide (p-1)!. Because the Kempner exclusion follows from one certified non-unit carry at index m, that producer is a corollary of the carry certificate's depth rather than an independent open problem, and should be tracked against certificate depth."
+  },
+  "hypothesis": {
+   "id": "prime_grid_producer_is_independent_of_the_carry_certificate",
+   "statement": "cofinal_prime_grid_nonterminality is a free-standing priority-1 producer whose difficulty is unrelated to how deep the carry certificate has run."
+  },
+  "probe": {
+   "id": "erdos68_grid_nonterminality_discharge",
+   "question": "How far do the two finite denominator exclusions discharge the prime-grid producer, and which is operative?",
+   "computation": "S = G_p forces S = k/(p-1)!, so q divides (p-1)!. Compute where each exclusion's range ends: for Kempner, the largest p with (p-1)! dividing 299999!; for the continued fraction, the largest p with (p-1)! at most 2^39991, by accumulating log factorials.",
+   "falsifier": "The continued-fraction range exceeding the Kempner range, which would make the operative bound independent of the carry certificate and break the claimed linkage.",
+   "stop_condition": "Once both ranges are computed the producer's status against certificate depth is settled.",
+   "resource_bounds": {
+    "cf_bound_bits": 39991,
+    "kempner_index": 299999
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "The producer would stand as an independent open problem.",
+   "falsification_consequence": "The producer is a corollary of certificate depth and should be tracked against it rather than attacked on its own.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/FactorialZeroPlateau.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos68_grid_nonterminality_discharge.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "The producer is discharged for every prime p <= 300000, largest 299993, by the Kempner exclusion, and for p <= 3824, largest 3823, by the continued-fraction bound, where (p-1)! already has 12037 decimal digits. Kempner is operative by two orders of magnitude. Since it follows from a single certified non-unit carry at index m, the discharge extends to p <= m whenever the carry certificate is run to depth m: the producer is a corollary of certificate depth rather than an independent open problem, and only the cofinal tail is genuinely open.",
+   "progress": {
+    "class": "mechanism_eliminated",
+    "decision_basis": "The reduction S = k/(p-1)! is elementary and exact; both ranges are computed rather than estimated; Kempner exceeds the continued-fraction range by two orders of magnitude.",
+    "next_analytic_target": "Nothing free remains below p = 300000. Extending the GMP carry certificate past index m extends the discharge to p <= m mechanically; the cofinal tail needs the same non-concentration input as the rest of the packet.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_68",
+  "motivated_by": [
+   "certified_continued_fraction_denominator_exclusion",
+   "cofinal_prime_grid_nonterminality",
+   "kempner_index_denominator_exclusion"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "prime_grid_nonterminality_is_bounded_by_carry_certificate_depth"
+  ],
+  "rationale": "Reclassifies a priority-1 producer as a corollary of the carry certificate's depth, and discharges its explicit initial range."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json",
+   "byte_length": 295262,
+   "sha256": "1f9611a0969ec8c12142cbdca7bd60611057231049e41c4e87064d1dd712a098",
+   "scoped_sha256": "a5bc9a11e09d88098201648408f52664ebb73fc3a8e8a68a75229ba7ee69ddff",
+   "scope_ids": [
+    "certified_continued_fraction_denominator_exclusion",
+    "cofinal_prime_grid_nonterminality",
+    "kempner_index_denominator_exclusion",
+    "prime_grid_nonterminality_is_bounded_by_carry_certificate_depth"
+   ]
+  },
+  {
+   "path": "formal_math/probes/erdos68_grid_nonterminality_discharge.py",
+   "byte_length": 5180,
+   "sha256": "654509411c4ec2480c6fd9b7de4a2515be450efff790f764219c42f0aab363bf"
+  }
+ ],
+ "result": {
+  "producer": "cofinal_prime_grid_nonterminality",
+  "reduction": "S = G_p forces S = k/(p-1)!, so the reduced denominator q divides (p-1)!",
+  "kempner": {
+   "exclusion": "q does not divide 299999!",
+   "discharges_primes_up_to": 300000,
+   "largest_prime_discharged": 299993,
+   "reason": "for p-1 <= 299999, (p-1)! divides 299999!, so q | (p-1)! would give q | 299999!"
+  },
+  "continued_fraction": {
+   "exclusion": "q > 2^39991",
+   "largest_factorial_index_within_bound": 3823,
+   "that_factorial_decimal_digits": 12037,
+   "discharges_primes_up_to": 3824,
+   "largest_prime_discharged": 3823,
+   "reason": "for (p-1)! <= 2^39991, q | (p-1)! would force q <= 2^39991"
+  },
+  "operative_bound": "kempner",
+  "linkage": "The Kempner exclusion comes from a single certified non-unit carry at index m, so the discharge extends to p <= m whenever the GMP carry certificate is run to depth m. The producer is a corollary of the carry certificate's depth rather than an independent open problem; extending the certificate extends it mechanically, and only the cofinal tail is genuinely open."
+ }
+}

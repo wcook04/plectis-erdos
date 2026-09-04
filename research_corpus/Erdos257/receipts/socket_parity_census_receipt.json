@@ -1,0 +1,64 @@
+{
+  "cap": 40,
+  "cohorts": {
+    "ap3": {
+      "argmax_N": 62994,
+      "bound_respected": true,
+      "control_bound_respected": true,
+      "control_max_gap_odd": 8027,
+      "control_max_socket_run": 33,
+      "max_gap_odd": 3459,
+      "max_gap_odd_starts_at": 995328,
+      "max_socket_run": 8,
+      "odd_count": 577
+    },
+    "naturals": {
+      "argmax_N": 8851,
+      "bound_respected": true,
+      "control_bound_respected": true,
+      "control_max_gap_odd": 11840,
+      "control_max_socket_run": 6,
+      "max_gap_odd": 1999,
+      "max_gap_odd_starts_at": 998001,
+      "max_socket_run": 5,
+      "odd_count": 1000
+    },
+    "pow3": {
+      "argmax_N": 6558,
+      "bound_respected": true,
+      "control_bound_respected": true,
+      "control_max_gap_odd": 51,
+      "control_max_socket_run": 31,
+      "max_gap_odd": 6,
+      "max_gap_odd_starts_at": 6,
+      "max_socket_run": 5,
+      "odd_count": 250001
+    },
+    "powers2": {
+      "argmax_N": 14,
+      "bound_respected": true,
+      "control_bound_respected": true,
+      "control_max_gap_odd": 31,
+      "control_max_socket_run": 17,
+      "max_gap_odd": 4,
+      "max_gap_odd_starts_at": 2,
+      "max_socket_run": 3,
+      "odd_count": 333333
+    },
+    "primes": {
+      "argmax_N": 208,
+      "bound_respected": true,
+      "control_bound_respected": true,
+      "control_max_gap_odd": 21,
+      "control_max_socket_run": 2,
+      "max_gap_odd": 20,
+      "max_gap_odd_starts_at": 38403,
+      "max_socket_run": 2,
+      "odd_count": 500954
+    }
+  },
+  "falsifier_survived": true,
+  "max_n": 1000000,
+  "nmax": 500000,
+  "seed": 20260823
+}

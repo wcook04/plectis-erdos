@@ -1,0 +1,225 @@
+{
+ "probe_id": "erdos251_conditional_shift_distribution",
+ "prime_limit": 120000000,
+ "prime_count": 6841648,
+ "per_offset": [
+  {
+   "h": 1,
+   "plus_two": {
+    "digit_events": 471582,
+    "digit_rate": 0.068929,
+    "conditional_in_window": 0.05942,
+    "conditional_outside_toward_zero": 0.21841,
+    "conditional_outside_beyond_one": 0.72217,
+    "band_conditional_in_window": [
+     0.06909,
+     0.06178,
+     0.05874,
+     0.05593,
+     0.05613,
+     0.05485
+    ],
+    "band_drift": 0.7939
+   },
+   "minus_two": {
+    "digit_events": 472098,
+    "digit_rate": 0.069004,
+    "conditional_in_window": 0.06017,
+    "conditional_outside_toward_zero": 0.72773,
+    "conditional_outside_beyond_one": 0.2121,
+    "band_conditional_in_window": [
+     0.07104,
+     0.06109,
+     0.05935,
+     0.05722,
+     0.05732,
+     0.05498
+    ],
+    "band_drift": 0.7739
+   }
+  },
+  {
+   "h": 2,
+   "plus_two": {
+    "digit_events": 343275,
+    "digit_rate": 0.050175,
+    "conditional_in_window": 0.04586,
+    "conditional_outside_toward_zero": 0.38111,
+    "conditional_outside_beyond_one": 0.57303,
+    "band_conditional_in_window": [
+     0.05233,
+     0.04871,
+     0.04349,
+     0.04508,
+     0.04247,
+     0.04307
+    ],
+    "band_drift": 0.823
+   },
+   "minus_two": {
+    "digit_events": 343706,
+    "digit_rate": 0.050238,
+    "conditional_in_window": 0.04724,
+    "conditional_outside_toward_zero": 0.54933,
+    "conditional_outside_beyond_one": 0.40343,
+    "band_conditional_in_window": [
+     0.0542,
+     0.0487,
+     0.04678,
+     0.04555,
+     0.04383,
+     0.04437
+    ],
+    "band_drift": 0.8186
+   }
+  },
+  {
+   "h": 3,
+   "plus_two": {
+    "digit_events": 354886,
+    "digit_rate": 0.051872,
+    "conditional_in_window": 0.04253,
+    "conditional_outside_toward_zero": 0.42247,
+    "conditional_outside_beyond_one": 0.53501,
+    "band_conditional_in_window": [
+     0.04928,
+     0.04315,
+     0.04249,
+     0.04117,
+     0.03929,
+     0.0398
+    ],
+    "band_drift": 0.8076
+   },
+   "minus_two": {
+    "digit_events": 355863,
+    "digit_rate": 0.052015,
+    "conditional_in_window": 0.04254,
+    "conditional_outside_toward_zero": 0.50294,
+    "conditional_outside_beyond_one": 0.45452,
+    "band_conditional_in_window": [
+     0.04812,
+     0.0432,
+     0.04193,
+     0.04062,
+     0.04094,
+     0.04046
+    ],
+    "band_drift": 0.8408
+   }
+  },
+  {
+   "h": 5,
+   "plus_two": {
+    "digit_events": 357673,
+    "digit_rate": 0.052279,
+    "conditional_in_window": 0.04015,
+    "conditional_outside_toward_zero": 0.45567,
+    "conditional_outside_beyond_one": 0.50418,
+    "band_conditional_in_window": [
+     0.04672,
+     0.0408,
+     0.03999,
+     0.03877,
+     0.03759,
+     0.03701
+    ],
+    "band_drift": 0.7922
+   },
+   "minus_two": {
+    "digit_events": 357760,
+    "digit_rate": 0.052292,
+    "conditional_in_window": 0.04065,
+    "conditional_outside_toward_zero": 0.46962,
+    "conditional_outside_beyond_one": 0.48973,
+    "band_conditional_in_window": [
+     0.04699,
+     0.04122,
+     0.04007,
+     0.03857,
+     0.03923,
+     0.0378
+    ],
+    "band_drift": 0.8044
+   }
+  },
+  {
+   "h": 8,
+   "plus_two": {
+    "digit_events": 358619,
+    "digit_rate": 0.052418,
+    "conditional_in_window": 0.04026,
+    "conditional_outside_toward_zero": 0.46346,
+    "conditional_outside_beyond_one": 0.49628,
+    "band_conditional_in_window": [
+     0.04733,
+     0.04141,
+     0.03918,
+     0.03813,
+     0.03704,
+     0.03848
+    ],
+    "band_drift": 0.813
+   },
+   "minus_two": {
+    "digit_events": 358826,
+    "digit_rate": 0.052448,
+    "conditional_in_window": 0.04049,
+    "conditional_outside_toward_zero": 0.46273,
+    "conditional_outside_beyond_one": 0.49677,
+    "band_conditional_in_window": [
+     0.04767,
+     0.04042,
+     0.03903,
+     0.03973,
+     0.03816,
+     0.03796
+    ],
+    "band_drift": 0.7963
+   }
+  },
+  {
+   "h": 13,
+   "plus_two": {
+    "digit_events": 358741,
+    "digit_rate": 0.052436,
+    "conditional_in_window": 0.03982,
+    "conditional_outside_toward_zero": 0.46336,
+    "conditional_outside_beyond_one": 0.49682,
+    "band_conditional_in_window": [
+     0.04636,
+     0.04034,
+     0.03892,
+     0.0391,
+     0.03683,
+     0.03738
+    ],
+    "band_drift": 0.8063
+   },
+   "minus_two": {
+    "digit_events": 358331,
+    "digit_rate": 0.052376,
+    "conditional_in_window": 0.04036,
+    "conditional_outside_toward_zero": 0.46318,
+    "conditional_outside_beyond_one": 0.49647,
+    "band_conditional_in_window": [
+     0.04653,
+     0.04,
+     0.04054,
+     0.04035,
+     0.03737,
+     0.03734
+    ],
+    "band_drift": 0.8025
+   }
+  }
+ ],
+ "min_conditional_in_window": 0.03982,
+ "max_conditional_in_window": 0.06017,
+ "min_band_drift": 0.7739,
+ "max_band_drift": 0.8408,
+ "decomposition": "event density = P(digit = +-2) * P(D in window | digit); both factors are reported per offset so a proof can be aimed at each separately",
+ "conditional_bounded_below": true,
+ "conditional_stable_across_bands": true,
+ "reading": "the tail factor is bounded away from zero and stable across bands, so the producer's event factorises: a proof needs a Hardy-Littlewood count for the +-2 digit and a non-concentration statement for the tail, aimed separately rather than jointly"
+}

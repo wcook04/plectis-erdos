@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification68CompanionOrbitBoundary.Challenge",
+  "solution_module": "ExternalVerification68CompanionOrbitBoundary.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_genericShift",
+    "Erdos249257.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries",
+    "Erdos249257.ExternalVerification68CompanionOrbitBoundary.tsum_unitFactTerm_eq_exp_one_sub_two"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,212 @@
+{
+  "complete_affine_height_twenty_one_split": {
+    "affine_compression": {
+      "classified_height_twenty_one_classes": 180652032,
+      "classified_payment_eleven_refined_classes": 179161416,
+      "degree_1024_evaluations_per_source_class": 7,
+      "exactness": "bounded numpy.int64 modular arithmetic; height-three payment uses the equivalent parity test before an unsafe square",
+      "shared_primitive": "system.lib.formal_math_residue_cylinder.affine_lift_coordinates_mod"
+    },
+    "affine_slope_counts_mod_21": {
+      "0": 101376,
+      "12": 101376,
+      "18": 101376,
+      "3": 101376,
+      "9": 101376
+    },
+    "affine_slope_counts_mod_22": {
+      "0": 46075,
+      "10": 46088,
+      "12": 46070,
+      "14": 46084,
+      "16": 46092,
+      "18": 46081,
+      "2": 46089,
+      "20": 46079,
+      "4": 46070,
+      "6": 46074,
+      "8": 46078
+    },
+    "affine_slope_counts_mod_9": {
+      "0": 506880
+    },
+    "complete_height_twenty_one_class_count": 180652032,
+    "height_twenty_one_modulus": 16295479200,
+    "height_twenty_one_multiplier_counts_mod_22": {
+      "1": 120931560,
+      "11": 59720472
+    },
+    "height_twenty_one_parameter_counts_mod_22": {
+      "0": 120931560,
+      "6": 59720472
+    },
+    "height_twenty_one_payment_counts": {
+      "1": 120931560,
+      "11": 59720472
+    },
+    "input_height_twenty_class_count_mod_740703600": 8211456,
+    "payment_eleven_three_lift_refinement": {
+      "full_payment_three_cofinal_return": 0,
+      "height_three_full_payment_four_cofinal_return": 179161416,
+      "height_two_multiplier_counts_mod_3": {
+        "1": 179161416
+      },
+      "payment_one_to_height_three": 179161416,
+      "quotient_w_counts_mod_3": {
+        "2": 179161416
+      },
+      "r_counts_mod_66": {
+        "6": 179161416
+      },
+      "refined_class_count": 179161416
+    }
+  },
+  "consequence_reconciliation": {
+    "height_three_and_height_twenty_two_survivors": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "update_now",
+      "reason": "height three is closed; height twenty two is the only remaining negative branch"
+    },
+    "height_twenty_one_payment_eleven_mode": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "update_now",
+      "reason": "complete split forces the universal 21->2->3->1 cofinal cascade"
+    },
+    "public_projection": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "defer_with_reason",
+      "reason": "private exact result is not automatic publication authority",
+      "reentry_condition": "explicit public release wave with owner review"
+    }
+  },
+  "cumulative_source_class_partition": {
+    "common_modulus": 48886437600,
+    "continuing_negative_candidate_class_count": 362794680,
+    "exact_partition": "38684115486 zero + 9839527434 positive + 362794680 negative = 48886437600",
+    "height_three_negative_candidate_count": 0,
+    "height_twenty_two_negative_candidate_count": 362794680,
+    "new_cofinal_return_count": 179161416,
+    "positive_centered_class_count": 9839527434,
+    "zero_centered_class_count": 38684115486
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos243.heightTwentyOne_paymentOne",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_heightTwoIdentity",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_heightThreeIdentity",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_heightThreeMultiplierEven",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_fullPaymentFour",
+        "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_finalCollapse"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "falsification_consequence": "The full-payment-three mechanism is absent, but the singleton source residue forces an even height-three multiplier and full payment four; all 179161416 refined classes return cofinally.",
+      "survival_consequence": "A nonzero full-payment-three class would close part of the branch by cofinal return and leave its complement for separate refinement."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "height_twenty_one_payment_eleven_can_force_full_payment_three",
+      "statement": "Some actual height-21 payment-eleven cylinder can pay the full factor three after landing at height two and return cofinally."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_height20_payment_seven_cascade_receipt.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height21_payment_split.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height20_payment_seven_cascade.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_height20_payment_seven_cascade_receipt.json",
+        "system/lib/formal_math_residue_cylinder.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Recover the height-21 parameter by affine lift evaluations modulo 21 and 22, then refine the payment-eleven classes through a modulo-nine coordinate that determines the divided height-two multiplier modulo 3.",
+      "falsifier": "A complete exact split showing that no payment-eleven class has a height-two multiplier divisible by three and that every resulting height-three multiplier is even.",
+      "id": "affine_mod22_then_mod3_payment_eleven_split",
+      "question": "What payment mechanisms occur at height 21, and what does payment eleven force after its exact height-two landing?",
+      "resource_bounds": {
+        "classified_height_twenty_one_classes": 180652032,
+        "classified_payment_eleven_refined_classes": 179161416,
+        "degree_1024_evaluations_per_source_class": 7,
+        "input_base_classes": 506880,
+        "source_polynomial_degree": 1024,
+        "symbolic_residue_checks": 60
+      },
+      "stop_condition": "Stop after every payment-eleven three-lift class is certified through full payment four and cofinal return; do not horizon-audit the height-twenty-two survivors."
+    },
+    "problem": {
+      "claim_ceiling": "Exact height-21 payment image {1,11} and cofinal return of all 179161416 three-lift refinements of the payment-eleven classes through the forced 21->2->3->1 cascade; the height-22 branch and unrestricted #243 remain open.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "one_way_theorem",
+        "decision_basis": "Affine two-lift certificates classify the complete cylinders, and symbolic integer identities replace finite orbit-horizon inference.",
+        "next_analytic_target": "Discard every payment-eleven class and restrict the next probe to the 362794680 refined height-22 payment-one classes."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The height-21 parameter image is {0,6} modulo 22, so the payment image is {1,11}. Payment eleven always lands at height two, but its exact three-lift refinement has the singleton r-image {6} modulo 66: full payment three never occurs, but every class reaches height three with an even multiplier and then pays the full factor four."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "schema": "erdos243-height21-payment-split-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 24239,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height21_payment_split.py",
+      "sha256": "79f9c4df2d7a82d628523182892a225b1a05b66d21c7176d66aa0bf9584dfcd0"
+    },
+    {
+      "byte_length": 22407,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height20_payment_seven_cascade.py",
+      "sha256": "4b50694f299131b520fea7825ea329594e3f35237cd8143c9a04b84ee31ed70a"
+    },
+    {
+      "byte_length": 11230,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos243_height20_payment_seven_cascade_receipt.json",
+      "sha256": "63d77ee21f6c204df0165301dfc9e9383042cba5ee73298d59689502154983a5"
+    },
+    {
+      "byte_length": 6195,
+      "path": "system/lib/formal_math_residue_cylinder.py",
+      "sha256": "39a51a968941cdbe70898c44cca6f5f89a2d3812d1c54dfb821a0071dd6355c6"
+    },
+    {
+      "byte_length": 23577,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "sha256": "d412742672c6a3638e82207204de3cdccc8e9f0209147e1e4b2f578996027aa5"
+    },
+    {
+      "byte_length": 27982,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "625552c9823bd5f82fd52cfc5e1160f61bf82c62f7a437e5d6658dc8ca2795a1"
+    },
+    {
+      "byte_length": 87308,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "a4979894e449cb38ec5acd432c9647125c2b6dd67e487163112697f7abbe22ca"
+    }
+  ],
+  "status": "verified_exact_height_twenty_one_payment_split",
+  "symbolic_payment_eleven_transition": {
+    "actual_cascade": "(21,-1) --11--> (2,-1) --1--> (3,-1) --4--> (1,0 forever)",
+    "actual_source_digit_mod_3": 0,
+    "complete_symbolic_lifts": 60,
+    "input": "height-21 parameter r=22*a+6 and payment eleven",
+    "lean_declarations": [
+      "ErdosProblems.Erdos243.heightTwentyOne_paymentOne",
+      "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_heightTwoIdentity",
+      "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_heightThreeIdentity",
+      "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_heightThreeMultiplierEven",
+      "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_fullPaymentFour",
+      "ErdosProblems.Erdos243.heightTwentyOnePaymentEleven_finalCollapse"
+    ],
+    "universal_transition": "(21,-1) --11--> (2,-1)"
+  }
+}

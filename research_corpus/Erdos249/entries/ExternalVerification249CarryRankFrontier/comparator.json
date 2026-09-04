@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification249CarryRankFrontier.Challenge",
+  "solution_module": "ExternalVerification249CarryRankFrontier.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+    "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional",
+    "Erdos249257.ExternalVerification249CarryRankFrontier.finrank_canonicalCarryKernel_ge_of_certificate",
+    "Erdos249257.ExternalVerification249CarryRankFrontier.totient_carryKernel_diff",
+    "Erdos249257.ExternalVerification249CarryRankFrontier.carryShift_dvd_iff_tailDiff_mem_int",
+    "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

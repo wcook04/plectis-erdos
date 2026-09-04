@@ -1,0 +1,156 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #251: order lattice and diagonal irrationality criteria"
+  description: >-
+    The exact one-shift and cofinal rationality classifier, multiplicative-order
+    lattice of integral shifts, generic one-schedule criterion, and canonical
+    LCM-diagonal specialization.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "candidate_pending_public_identity_and_terminal_comparator"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification251LcmDiagonalCriterion/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification251LcmDiagonalCriterion/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_and_axiom_audit_passed_terminal_comparator_pending"
+  research_interest_status: "research_note_grade_exact_classifier_and_quantifier_compression"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "terminal positive and deliberate-negative Comparator receipts are pending"
+    - "public immutable source identity is pending"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11B83", "11J72"]
+
+sources:
+  - title: "The LCM-diagonal criterion for dyadic tail recurrences"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #251"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/251"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    Five compared theorems expose the exact one-shift and cofinal rationality
+    classifier, order lattice, generic schedule equivalence, and canonical LCM
+    schedule. The actual-prime producer remains outside the claim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 5
+  axiom_audit_status: "passed_2026_08_31_exactly_propext_Quot_sound_Classical_choice"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.notIrrationalInitial_iff_exists_integral_positive_tailShift"
+      file: "ExternalVerification251LcmDiagonalCriterion/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251LcmDiagonalCriterion/comparator.json"
+      canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
+      local_proof_provenance: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact one-shift rationality classifier"
+      boundary: "Abstract real recurrence theorem; it supplies no nonintegral shift for the actual prime-gap orbit."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_cofinalNonintegralTailShifts"
+      file: "ExternalVerification251LcmDiagonalCriterion/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251LcmDiagonalCriterion/comparator.json"
+      canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
+      local_proof_provenance: "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact cofinal irrationality classifier"
+      boundary: "The equivalence identifies the producer but does not prove it for actual prime gaps."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.tailShiftIntegral_iff_orderOf_dvd"
+      file: "ExternalVerification251LcmDiagonalCriterion/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251LcmDiagonalCriterion/comparator.json"
+      canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
+      local_proof_provenance: "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact multiplicative-order classification"
+      boundary: "Abstract rational recurrence theorem; no actual-prime nonintegrality is supplied."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_nonintegral_on_schedule"
+      file: "ExternalVerification251LcmDiagonalCriterion/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251LcmDiagonalCriterion/comparator.json"
+      canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
+      local_proof_provenance: "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean"
+      novelty_status: "unassessed"
+      contribution_class: "generic exact quantifier compression"
+      boundary: "Does not prove any schedule miss for actual prime gaps."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_allLcmDiagonal_nonintegral"
+      file: "ExternalVerification251LcmDiagonalCriterion/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification251LcmDiagonalCriterion/comparator.json"
+      canonical_claim_status: "source-proved exact transport; focused Lean and axiom audit passed"
+      local_proof_provenance: "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact quantifier compression"
+      boundary: "Does not prove diagonal nonintegrality for actual prime gaps."
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    The challenge reproduces the exact real recurrence, integrality, LCM
+    schedule, and equivalence, without a prime-specific producer claim.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The quantifier boundary and open prime-gap producer were reviewed."
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification251LcmDiagonalCriterion"
+  statements:
+    - source: "ErdosProblems.Erdos251.not_irrational_initial_iff_exists_integral_positive_tailShift"
+      lean: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.notIrrationalInitial_iff_exists_integral_positive_tailShift"
+      module: "ExternalVerification251LcmDiagonalCriterion/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos251.irrational_initial_iff_cofinalNonintegralTailShifts"
+      lean: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_cofinalNonintegralTailShifts"
+      module: "ExternalVerification251LcmDiagonalCriterion/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos251.tailShift_integral_iff_orderOf_dvd"
+      lean: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.tailShiftIntegral_iff_orderOf_dvd"
+      module: "ExternalVerification251LcmDiagonalCriterion/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos251.irrational_initial_iff_nonintegral_on_schedule"
+      lean: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_nonintegral_on_schedule"
+      module: "ExternalVerification251LcmDiagonalCriterion/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos251.irrational_initial_iff_all_lcmDiagonal_nonintegral"
+      lean: "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_allLcmDiagonal_nonintegral"
+      module: "ExternalVerification251LcmDiagonalCriterion/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

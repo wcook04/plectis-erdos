@@ -1,0 +1,7361 @@
+{
+  "probe": "erdos251_free_pair_and_state_compression",
+  "prime_limit": 20000000,
+  "primes": 1270607,
+  "gaps": 1270606,
+  "late_window": [
+    1143545,
+    1270540
+  ],
+  "free_pair_rows": [
+    {
+      "t": 1,
+      "min_witnesses": 37379346,
+      "min_latest_index": 1270539,
+      "samples": [
+        [
+          1270539,
+          1257934,
+          22,
+          24
+        ]
+      ]
+    },
+    {
+      "t": 2,
+      "min_witnesses": 9338080,
+      "min_latest_index": 1270538,
+      "samples": [
+        [
+          1270538,
+          1173186,
+          14,
+          16
+        ],
+        [
+          1270539,
+          1261491,
+          22,
+          24
+        ]
+      ]
+    },
+    {
+      "t": 3,
+      "min_witnesses": 4141486,
+      "min_latest_index": 1270537,
+      "samples": [
+        [
+          1270539,
+          1261491,
+          22,
+          24
+        ],
+        [
+          1256479,
+          1270537,
+          8,
+          10
+        ]
+      ]
+    },
+    {
+      "t": 4,
+      "min_witnesses": 2331090,
+      "min_latest_index": 1270536,
+      "samples": [
+        [
+          1270536,
+          1195080,
+          12,
+          14
+        ],
+        [
+          1270537,
+          1193257,
+          10,
+          12
+        ]
+      ]
+    },
+    {
+      "t": 5,
+      "min_witnesses": 1488988,
+      "min_latest_index": 1270535,
+      "samples": [
+        [
+          1270535,
+          1223090,
+          20,
+          22
+        ],
+        [
+          1270536,
+          1221726,
+          12,
+          14
+        ]
+      ]
+    },
+    {
+      "t": 6,
+      "min_witnesses": 1030272,
+      "min_latest_index": 1270534,
+      "samples": [
+        [
+          1270536,
+          1195080,
+          12,
+          14
+        ],
+        [
+          1270537,
+          1193257,
+          10,
+          12
+        ]
+      ]
+    },
+    {
+      "t": 7,
+      "min_witnesses": 746816,
+      "min_latest_index": 1270533,
+      "samples": [
+        [
+          1166382,
+          1270535,
+          18,
+          20
+        ],
+        [
+          1270536,
+          1166614,
+          12,
+          14
+        ]
+      ]
+    },
+    {
+      "t": 8,
+      "min_witnesses": 578127,
+      "min_latest_index": 1270532,
+      "samples": [
+        [
+          1262360,
+          1270536,
+          10,
+          12
+        ],
+        [
+          1270537,
+          1193257,
+          10,
+          12
+        ]
+      ]
+    },
+    {
+      "t": 9,
+      "min_witnesses": 451600,
+      "min_latest_index": 1270531,
+      "samples": [
+        [
+          1270539,
+          1204254,
+          22,
+          24
+        ],
+        [
+          1270531,
+          1167094,
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "t": 10,
+      "min_witnesses": 369876,
+      "min_latest_index": 1270530,
+      "samples": [
+        [
+          1270530,
+          1262970,
+          24,
+          26
+        ],
+        [
+          1270531,
+          1206631,
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "t": 11,
+      "min_witnesses": 303104,
+      "min_latest_index": 1270519,
+      "samples": [
+        [
+          1270533,
+          1180652,
+          8,
+          10
+        ],
+        [
+          1270534,
+          1158048,
+          10,
+          12
+        ]
+      ]
+    },
+    {
+      "t": 12,
+      "min_witnesses": 253411,
+      "min_latest_index": 1270528,
+      "samples": [
+        [
+          1270536,
+          1195080,
+          12,
+          14
+        ],
+        [
+          1270537,
+          1193257,
+          10,
+          12
+        ]
+      ]
+    },
+    {
+      "t": 13,
+      "min_witnesses": 215548,
+      "min_latest_index": 1270527,
+      "samples": [
+        [
+          1173887,
+          1270529,
+          14,
+          16
+        ],
+        [
+          1229034,
+          1270530,
+          22,
+          24
+        ]
+      ]
+    },
+    {
+      "t": 14,
+      "min_witnesses": 184027,
+      "min_latest_index": 1270526,
+      "samples": [
+        [
+          1179080,
+          1270528,
+          18,
+          20
+        ],
+        [
+          1270529,
+          1149989,
+          16,
+          18
+        ]
+      ]
+    },
+    {
+      "t": 15,
+      "min_witnesses": 163437,
+      "min_latest_index": 1270525,
+      "samples": [
+        [
+          1270530,
+          1262970,
+          24,
+          26
+        ],
+        [
+          1270531,
+          1206631,
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "t": 16,
+      "min_witnesses": 140682,
+      "min_latest_index": 1270514,
+      "samples": [
+        [
+          1163664,
+          1270528,
+          18,
+          20
+        ],
+        [
+          1270529,
+          1167441,
+          16,
+          18
+        ]
+      ]
+    },
+    {
+      "t": 17,
+      "min_witnesses": 125402,
+      "min_latest_index": 1270513,
+      "samples": [
+        [
+          1270529,
+          1230358,
+          16,
+          18
+        ],
+        [
+          1218901,
+          1270513,
+          50,
+          52
+        ]
+      ]
+    },
+    {
+      "t": 18,
+      "min_witnesses": 112507,
+      "min_latest_index": 1270522,
+      "samples": [
+        [
+          1270530,
+          1262970,
+          24,
+          26
+        ],
+        [
+          1270531,
+          1206631,
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "t": 19,
+      "min_witnesses": 98823,
+      "min_latest_index": 1270511,
+      "samples": [
+        [
+          1270511,
+          1150374,
+          10,
+          12
+        ],
+        [
+          1270531,
+          1226565,
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "t": 20,
+      "min_witnesses": 90150,
+      "min_latest_index": 1270520,
+      "samples": [
+        [
+          1270520,
+          1222260,
+          10,
+          12
+        ],
+        [
+          1270521,
+          1150261,
+          2,
+          4
+        ]
+      ]
+    }
+  ],
+  "excluded_odd_denominator_upto": 522815698852293024881809626091686401428991552589488699218170291897199271962253425952495505638168891971993067650025405632404377036501428136433397235712721530313086657695136972670620821880138806030928855801607874070131010513861187056782829547042311427748522917805518350692318227908028849824836632223106490035853569510837741929178504169881449937727300725362855953683426027703376911890287293808372378780219170633457264626980824234738395770308715183074124827433357090780299795379348379943038834390015759425085618683873669687260810780664877708025106425210368382990025021119180162984467221674081131591638465466,
+  "denominator_exclusion": {
+    "index": 1266210,
+    "precision_bits": 4096,
+    "tail_bound_Theta": 3254984168861064744563347460,
+    "hardest_denominator": 232357168294808186928936805384267350240676270625120697606937841601383323950344395823822460783950497519356324343874135770264253348624230090156292329705610162537545923674517191269643516107137060151531953017700686357636487526760906442741001127516637888489099685283634992276732332304113331028392068771796418850456146092704326522397973163604081260679417232638564153147739826108523014108118050688021687310095754844019559969911283873978982174367950203810126187303777484453000832509156680014646846375105066358613766717845183084410883812556022080893799529912754939695432532136521949265091156017756628425515721658,
+    "excluded_odd_denominator_upto": 522815698852293024881809626091686401428991552589488699218170291897199271962253425952495505638168891971993067650025405632404377036501428136433397235712721530313086657695136972670620821880138806030928855801607874070131010513861187056782829547042311427748522917805518350692318227908028849824836632223106490035853569510837741929178504169881449937727300725362855953683426027703376911890287293808372378780219170633457264626980824234738395770308715183074124827433357090780299795379348379943038834390015759425085618683873669687260810780664877708025106425210368382990025021119180162984467221674081131591638465466,
+    "sane": true
+  },
+  "falsifiers": [
+    {
+      "name": "free_pair_cofinality_all_residues",
+      "detail": "t <= 20, late window 1143545..1270540",
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "plus_minus_two_wall_on_witnesses",
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "averaging_input_sum_T_le_p",
+      "detail": {
+        "X": 1270604,
+        "sum_T": 19999993.65071207,
+        "bound_p_X_plus_1_plus_2T_X": 19999999.0,
+        "naive_bound_p_X_plus_1": 19999981.0,
+        "naive_bound_would_hold": false,
+        "holds": true
+      },
+      "passed": true
+    },
+    {
+      "name": "denominator_exclusion_verified",
+      "detail": {
+        "excluded_odd_d_upto": 522815698852293024881809626091686401428991552589488699218170291897199271962253425952495505638168891971993067650025405632404377036501428136433397235712721530313086657695136972670620821880138806030928855801607874070131010513861187056782829547042311427748522917805518350692318227908028849824836632223106490035853569510837741929178504169881449937727300725362855953683426027703376911890287293808372378780219170633457264626980824234738395770308715183074124827433357090780299795379348379943038834390015759425085618683873669687260810780664877708025106425210368382990025021119180162984467221674081131591638465466,
+        "checked": [
+          {
+            "d_bits": 1,
+            "dist_bits": 4094,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 2,
+            "dist_bits": 4095,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 3,
+            "dist_bits": 4095,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 3,
+            "dist_bits": 4093,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 4,
+            "dist_bits": 4091,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 6,
+            "dist_bits": 4090,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 7,
+            "dist_bits": 4086,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 11,
+            "dist_bits": 4086,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 11,
+            "dist_bits": 4085,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 12,
+            "dist_bits": 4083,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 13,
+            "dist_bits": 4083,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 14,
+            "dist_bits": 4081,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 16,
+            "dist_bits": 4069,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 28,
+            "dist_bits": 4066,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 31,
+            "dist_bits": 4066,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 31,
+            "dist_bits": 4061,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 36,
+            "dist_bits": 4061,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 36,
+            "dist_bits": 4059,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 37,
+            "dist_bits": 4059,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 38,
+            "dist_bits": 4057,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 40,
+            "dist_bits": 4056,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 40,
+            "dist_bits": 4056,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 41,
+            "dist_bits": 4054,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 43,
+            "dist_bits": 4054,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 43,
+            "dist_bits": 4051,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 46,
+            "dist_bits": 4048,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 49,
+            "dist_bits": 4044,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 53,
+            "dist_bits": 4041,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 55,
+            "dist_bits": 4041,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 56,
+            "dist_bits": 4040,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 57,
+            "dist_bits": 4038,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 59,
+            "dist_bits": 4036,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 60,
+            "dist_bits": 4036,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 61,
+            "dist_bits": 4035,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 62,
+            "dist_bits": 4034,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 62,
+            "dist_bits": 4032,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 65,
+            "dist_bits": 4031,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 65,
+            "dist_bits": 4031,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 66,
+            "dist_bits": 4030,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 67,
+            "dist_bits": 4027,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 70,
+            "dist_bits": 4026,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 71,
+            "dist_bits": 4025,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 71,
+            "dist_bits": 4024,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 73,
+            "dist_bits": 4021,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 76,
+            "dist_bits": 4021,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 76,
+            "dist_bits": 4019,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 77,
+            "dist_bits": 4018,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 79,
+            "dist_bits": 4017,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 80,
+            "dist_bits": 4015,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 81,
+            "dist_bits": 4015,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 82,
+            "dist_bits": 4013,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 83,
+            "dist_bits": 4013,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 84,
+            "dist_bits": 4010,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 87,
+            "dist_bits": 4009,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 87,
+            "dist_bits": 4009,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 88,
+            "dist_bits": 4006,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 91,
+            "dist_bits": 4006,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 91,
+            "dist_bits": 4004,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 93,
+            "dist_bits": 4003,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 93,
+            "dist_bits": 4003,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 94,
+            "dist_bits": 4000,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 97,
+            "dist_bits": 3999,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 97,
+            "dist_bits": 3997,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 99,
+            "dist_bits": 3997,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 100,
+            "dist_bits": 3993,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 104,
+            "dist_bits": 3991,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 106,
+            "dist_bits": 3990,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 106,
+            "dist_bits": 3987,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 110,
+            "dist_bits": 3986,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 110,
+            "dist_bits": 3985,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 111,
+            "dist_bits": 3985,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 112,
+            "dist_bits": 3982,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 115,
+            "dist_bits": 3980,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 117,
+            "dist_bits": 3979,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 118,
+            "dist_bits": 3978,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 119,
+            "dist_bits": 3977,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 120,
+            "dist_bits": 3976,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 121,
+            "dist_bits": 3973,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 123,
+            "dist_bits": 3973,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 124,
+            "dist_bits": 3972,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 125,
+            "dist_bits": 3969,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 128,
+            "dist_bits": 3968,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 128,
+            "dist_bits": 3968,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 129,
+            "dist_bits": 3966,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 131,
+            "dist_bits": 3966,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 131,
+            "dist_bits": 3963,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 134,
+            "dist_bits": 3963,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 134,
+            "dist_bits": 3961,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 136,
+            "dist_bits": 3960,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 137,
+            "dist_bits": 3959,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 138,
+            "dist_bits": 3959,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 138,
+            "dist_bits": 3956,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 141,
+            "dist_bits": 3954,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 142,
+            "dist_bits": 3953,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 143,
+            "dist_bits": 3953,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 144,
+            "dist_bits": 3951,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 146,
+            "dist_bits": 3948,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 149,
+            "dist_bits": 3947,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 150,
+            "dist_bits": 3946,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 150,
+            "dist_bits": 3945,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 152,
+            "dist_bits": 3943,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 154,
+            "dist_bits": 3942,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 154,
+            "dist_bits": 3941,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 156,
+            "dist_bits": 3937,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 160,
+            "dist_bits": 3937,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 160,
+            "dist_bits": 3933,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 164,
+            "dist_bits": 3932,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 164,
+            "dist_bits": 3932,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 165,
+            "dist_bits": 3930,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 167,
+            "dist_bits": 3930,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 167,
+            "dist_bits": 3922,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 175,
+            "dist_bits": 3920,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 177,
+            "dist_bits": 3918,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 179,
+            "dist_bits": 3917,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 179,
+            "dist_bits": 3917,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 180,
+            "dist_bits": 3914,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 183,
+            "dist_bits": 3911,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 186,
+            "dist_bits": 3910,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 186,
+            "dist_bits": 3910,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 187,
+            "dist_bits": 3908,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 188,
+            "dist_bits": 3908,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 189,
+            "dist_bits": 3906,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 190,
+            "dist_bits": 3906,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 191,
+            "dist_bits": 3904,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 193,
+            "dist_bits": 3903,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 193,
+            "dist_bits": 3902,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 195,
+            "dist_bits": 3901,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 195,
+            "dist_bits": 3901,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 196,
+            "dist_bits": 3899,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 198,
+            "dist_bits": 3898,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 198,
+            "dist_bits": 3897,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 200,
+            "dist_bits": 3894,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 203,
+            "dist_bits": 3891,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 206,
+            "dist_bits": 3891,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 206,
+            "dist_bits": 3886,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 211,
+            "dist_bits": 3886,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 211,
+            "dist_bits": 3884,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 213,
+            "dist_bits": 3884,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 213,
+            "dist_bits": 3880,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 217,
+            "dist_bits": 3879,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 217,
+            "dist_bits": 3877,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 220,
+            "dist_bits": 3877,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 220,
+            "dist_bits": 3874,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 222,
+            "dist_bits": 3874,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 223,
+            "dist_bits": 3873,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 224,
+            "dist_bits": 3871,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 225,
+            "dist_bits": 3871,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 226,
+            "dist_bits": 3870,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 227,
+            "dist_bits": 3869,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 227,
+            "dist_bits": 3868,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 229,
+            "dist_bits": 3867,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 230,
+            "dist_bits": 3867,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 230,
+            "dist_bits": 3860,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 237,
+            "dist_bits": 3859,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 238,
+            "dist_bits": 3858,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 239,
+            "dist_bits": 3856,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 240,
+            "dist_bits": 3855,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 241,
+            "dist_bits": 3855,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 242,
+            "dist_bits": 3850,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 247,
+            "dist_bits": 3850,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 247,
+            "dist_bits": 3848,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 249,
+            "dist_bits": 3845,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 251,
+            "dist_bits": 3844,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 252,
+            "dist_bits": 3844,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 253,
+            "dist_bits": 3841,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 256,
+            "dist_bits": 3839,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 257,
+            "dist_bits": 3839,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 258,
+            "dist_bits": 3836,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 261,
+            "dist_bits": 3834,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 262,
+            "dist_bits": 3834,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 263,
+            "dist_bits": 3832,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 265,
+            "dist_bits": 3828,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 268,
+            "dist_bits": 3828,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 269,
+            "dist_bits": 3823,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 274,
+            "dist_bits": 3823,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 274,
+            "dist_bits": 3819,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 278,
+            "dist_bits": 3817,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 280,
+            "dist_bits": 3815,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 282,
+            "dist_bits": 3815,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 282,
+            "dist_bits": 3813,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 284,
+            "dist_bits": 3813,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 284,
+            "dist_bits": 3809,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 288,
+            "dist_bits": 3808,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 288,
+            "dist_bits": 3808,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 289,
+            "dist_bits": 3806,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 291,
+            "dist_bits": 3805,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 291,
+            "dist_bits": 3804,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 293,
+            "dist_bits": 3803,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 294,
+            "dist_bits": 3802,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 294,
+            "dist_bits": 3801,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 296,
+            "dist_bits": 3801,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 296,
+            "dist_bits": 3798,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 299,
+            "dist_bits": 3797,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 299,
+            "dist_bits": 3796,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 301,
+            "dist_bits": 3795,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 302,
+            "dist_bits": 3791,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 306,
+            "dist_bits": 3789,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 307,
+            "dist_bits": 3789,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 308,
+            "dist_bits": 3787,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 310,
+            "dist_bits": 3785,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 312,
+            "dist_bits": 3784,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 312,
+            "dist_bits": 3783,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 314,
+            "dist_bits": 3782,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 314,
+            "dist_bits": 3782,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 315,
+            "dist_bits": 3780,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 317,
+            "dist_bits": 3777,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 320,
+            "dist_bits": 3775,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 322,
+            "dist_bits": 3774,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 323,
+            "dist_bits": 3771,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 325,
+            "dist_bits": 3768,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 329,
+            "dist_bits": 3768,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 329,
+            "dist_bits": 3766,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 331,
+            "dist_bits": 3766,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 331,
+            "dist_bits": 3759,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 338,
+            "dist_bits": 3758,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 338,
+            "dist_bits": 3758,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 339,
+            "dist_bits": 3757,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 340,
+            "dist_bits": 3756,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 340,
+            "dist_bits": 3754,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 343,
+            "dist_bits": 3749,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 348,
+            "dist_bits": 3745,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 352,
+            "dist_bits": 3744,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 352,
+            "dist_bits": 3744,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 353,
+            "dist_bits": 3742,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 355,
+            "dist_bits": 3741,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 355,
+            "dist_bits": 3741,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 356,
+            "dist_bits": 3739,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 358,
+            "dist_bits": 3737,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 360,
+            "dist_bits": 3735,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 362,
+            "dist_bits": 3734,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 362,
+            "dist_bits": 3733,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 364,
+            "dist_bits": 3732,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 365,
+            "dist_bits": 3729,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 368,
+            "dist_bits": 3729,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 368,
+            "dist_bits": 3723,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 374,
+            "dist_bits": 3722,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 374,
+            "dist_bits": 3722,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 375,
+            "dist_bits": 3721,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 376,
+            "dist_bits": 3715,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 382,
+            "dist_bits": 3713,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 384,
+            "dist_bits": 3707,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 390,
+            "dist_bits": 3706,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 391,
+            "dist_bits": 3704,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 393,
+            "dist_bits": 3703,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 393,
+            "dist_bits": 3703,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 394,
+            "dist_bits": 3699,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 398,
+            "dist_bits": 3699,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 398,
+            "dist_bits": 3698,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 399,
+            "dist_bits": 3697,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 400,
+            "dist_bits": 3697,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 400,
+            "dist_bits": 3693,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 404,
+            "dist_bits": 3691,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 406,
+            "dist_bits": 3691,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 406,
+            "dist_bits": 3688,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 409,
+            "dist_bits": 3685,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 411,
+            "dist_bits": 3683,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 414,
+            "dist_bits": 3681,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 415,
+            "dist_bits": 3681,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 416,
+            "dist_bits": 3679,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 418,
+            "dist_bits": 3678,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 418,
+            "dist_bits": 3678,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 419,
+            "dist_bits": 3677,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 419,
+            "dist_bits": 3677,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 420,
+            "dist_bits": 3674,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 423,
+            "dist_bits": 3673,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 424,
+            "dist_bits": 3672,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 425,
+            "dist_bits": 3669,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 428,
+            "dist_bits": 3667,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 429,
+            "dist_bits": 3665,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 432,
+            "dist_bits": 3664,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 433,
+            "dist_bits": 3661,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 435,
+            "dist_bits": 3660,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 436,
+            "dist_bits": 3660,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 437,
+            "dist_bits": 3657,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 440,
+            "dist_bits": 3654,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 443,
+            "dist_bits": 3653,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 444,
+            "dist_bits": 3649,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 448,
+            "dist_bits": 3648,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 448,
+            "dist_bits": 3648,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 449,
+            "dist_bits": 3646,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 451,
+            "dist_bits": 3646,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 451,
+            "dist_bits": 3644,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 453,
+            "dist_bits": 3632,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 465,
+            "dist_bits": 3632,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 465,
+            "dist_bits": 3631,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 466,
+            "dist_bits": 3630,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 466,
+            "dist_bits": 3630,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 467,
+            "dist_bits": 3627,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 470,
+            "dist_bits": 3626,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 471,
+            "dist_bits": 3625,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 472,
+            "dist_bits": 3624,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 473,
+            "dist_bits": 3621,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 476,
+            "dist_bits": 3621,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 476,
+            "dist_bits": 3613,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 484,
+            "dist_bits": 3613,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 484,
+            "dist_bits": 3609,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 488,
+            "dist_bits": 3608,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 488,
+            "dist_bits": 3608,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 489,
+            "dist_bits": 3606,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 491,
+            "dist_bits": 3605,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 491,
+            "dist_bits": 3605,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 492,
+            "dist_bits": 3602,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 494,
+            "dist_bits": 3602,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 495,
+            "dist_bits": 3601,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 496,
+            "dist_bits": 3599,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 498,
+            "dist_bits": 3597,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 500,
+            "dist_bits": 3595,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 501,
+            "dist_bits": 3595,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 502,
+            "dist_bits": 3593,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 504,
+            "dist_bits": 3592,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 504,
+            "dist_bits": 3592,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 505,
+            "dist_bits": 3590,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 507,
+            "dist_bits": 3589,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 508,
+            "dist_bits": 3588,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 509,
+            "dist_bits": 3587,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 509,
+            "dist_bits": 3583,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 514,
+            "dist_bits": 3583,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 514,
+            "dist_bits": 3580,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 517,
+            "dist_bits": 3577,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 520,
+            "dist_bits": 3576,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 521,
+            "dist_bits": 3573,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 524,
+            "dist_bits": 3566,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 531,
+            "dist_bits": 3566,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 531,
+            "dist_bits": 3562,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 535,
+            "dist_bits": 3561,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 535,
+            "dist_bits": 3560,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 536,
+            "dist_bits": 3560,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 537,
+            "dist_bits": 3558,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 538,
+            "dist_bits": 3557,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 540,
+            "dist_bits": 3556,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 540,
+            "dist_bits": 3556,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 541,
+            "dist_bits": 3553,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 543,
+            "dist_bits": 3553,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 544,
+            "dist_bits": 3550,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 547,
+            "dist_bits": 3549,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 547,
+            "dist_bits": 3549,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 548,
+            "dist_bits": 3547,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 550,
+            "dist_bits": 3545,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 552,
+            "dist_bits": 3543,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 553,
+            "dist_bits": 3543,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 554,
+            "dist_bits": 3540,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 557,
+            "dist_bits": 3539,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 557,
+            "dist_bits": 3539,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 558,
+            "dist_bits": 3537,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 560,
+            "dist_bits": 3536,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 561,
+            "dist_bits": 3533,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 564,
+            "dist_bits": 3532,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 565,
+            "dist_bits": 3531,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 565,
+            "dist_bits": 3530,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 567,
+            "dist_bits": 3527,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 570,
+            "dist_bits": 3526,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 570,
+            "dist_bits": 3525,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 572,
+            "dist_bits": 3521,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 576,
+            "dist_bits": 3520,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 577,
+            "dist_bits": 3519,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 577,
+            "dist_bits": 3519,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 578,
+            "dist_bits": 3517,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 580,
+            "dist_bits": 3507,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 590,
+            "dist_bits": 3506,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 591,
+            "dist_bits": 3501,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 596,
+            "dist_bits": 3499,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 598,
+            "dist_bits": 3497,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 600,
+            "dist_bits": 3496,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 600,
+            "dist_bits": 3496,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 601,
+            "dist_bits": 3494,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 603,
+            "dist_bits": 3494,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 603,
+            "dist_bits": 3491,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 605,
+            "dist_bits": 3491,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 606,
+            "dist_bits": 3488,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 609,
+            "dist_bits": 3487,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 609,
+            "dist_bits": 3485,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 612,
+            "dist_bits": 3484,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 612,
+            "dist_bits": 3482,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 615,
+            "dist_bits": 3481,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 615,
+            "dist_bits": 3479,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 618,
+            "dist_bits": 3476,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 621,
+            "dist_bits": 3475,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 621,
+            "dist_bits": 3475,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 622,
+            "dist_bits": 3470,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 627,
+            "dist_bits": 3470,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 627,
+            "dist_bits": 3468,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 629,
+            "dist_bits": 3467,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 630,
+            "dist_bits": 3465,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 632,
+            "dist_bits": 3465,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 632,
+            "dist_bits": 3462,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 634,
+            "dist_bits": 3462,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 635,
+            "dist_bits": 3460,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 637,
+            "dist_bits": 3454,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 643,
+            "dist_bits": 3450,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 647,
+            "dist_bits": 3448,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 649,
+            "dist_bits": 3447,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 649,
+            "dist_bits": 3446,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 650,
+            "dist_bits": 3445,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 651,
+            "dist_bits": 3445,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 652,
+            "dist_bits": 3443,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 654,
+            "dist_bits": 3443,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 654,
+            "dist_bits": 3441,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 655,
+            "dist_bits": 3441,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 656,
+            "dist_bits": 3439,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 657,
+            "dist_bits": 3439,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 658,
+            "dist_bits": 3437,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 660,
+            "dist_bits": 3435,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 661,
+            "dist_bits": 3435,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 662,
+            "dist_bits": 3432,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 665,
+            "dist_bits": 3432,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 665,
+            "dist_bits": 3431,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 666,
+            "dist_bits": 3430,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 666,
+            "dist_bits": 3428,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 669,
+            "dist_bits": 3424,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 673,
+            "dist_bits": 3420,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 677,
+            "dist_bits": 3419,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 678,
+            "dist_bits": 3416,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 681,
+            "dist_bits": 3415,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 681,
+            "dist_bits": 3414,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 682,
+            "dist_bits": 3413,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 684,
+            "dist_bits": 3412,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 685,
+            "dist_bits": 3410,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 687,
+            "dist_bits": 3409,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 688,
+            "dist_bits": 3408,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 689,
+            "dist_bits": 3406,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 691,
+            "dist_bits": 3404,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 692,
+            "dist_bits": 3404,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 693,
+            "dist_bits": 3402,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 695,
+            "dist_bits": 3401,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 696,
+            "dist_bits": 3399,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 698,
+            "dist_bits": 3398,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 699,
+            "dist_bits": 3395,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 702,
+            "dist_bits": 3394,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 702,
+            "dist_bits": 3392,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 705,
+            "dist_bits": 3392,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 705,
+            "dist_bits": 3388,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 709,
+            "dist_bits": 3384,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 713,
+            "dist_bits": 3383,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 713,
+            "dist_bits": 3383,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 714,
+            "dist_bits": 3379,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 718,
+            "dist_bits": 3377,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 719,
+            "dist_bits": 3376,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 721,
+            "dist_bits": 3375,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 722,
+            "dist_bits": 3372,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 725,
+            "dist_bits": 3369,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 728,
+            "dist_bits": 3369,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 728,
+            "dist_bits": 3367,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 730,
+            "dist_bits": 3366,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 730,
+            "dist_bits": 3365,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 731,
+            "dist_bits": 3364,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 733,
+            "dist_bits": 3358,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 739,
+            "dist_bits": 3358,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 739,
+            "dist_bits": 3356,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 741,
+            "dist_bits": 3351,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 746,
+            "dist_bits": 3350,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 747,
+            "dist_bits": 3348,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 748,
+            "dist_bits": 3348,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 749,
+            "dist_bits": 3345,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 752,
+            "dist_bits": 3345,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 752,
+            "dist_bits": 3342,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 755,
+            "dist_bits": 3342,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 755,
+            "dist_bits": 3338,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 759,
+            "dist_bits": 3333,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 764,
+            "dist_bits": 3331,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 765,
+            "dist_bits": 3331,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 766,
+            "dist_bits": 3327,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 770,
+            "dist_bits": 3326,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 771,
+            "dist_bits": 3324,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 773,
+            "dist_bits": 3322,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 775,
+            "dist_bits": 3315,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 782,
+            "dist_bits": 3315,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 782,
+            "dist_bits": 3313,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 783,
+            "dist_bits": 3313,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 784,
+            "dist_bits": 3307,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 790,
+            "dist_bits": 3306,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 790,
+            "dist_bits": 3305,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 792,
+            "dist_bits": 3303,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 794,
+            "dist_bits": 3302,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 794,
+            "dist_bits": 3301,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 796,
+            "dist_bits": 3298,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 799,
+            "dist_bits": 3297,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 799,
+            "dist_bits": 3296,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 800,
+            "dist_bits": 3295,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 802,
+            "dist_bits": 3294,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 803,
+            "dist_bits": 3292,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 805,
+            "dist_bits": 3291,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 806,
+            "dist_bits": 3286,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 811,
+            "dist_bits": 3285,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 811,
+            "dist_bits": 3285,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 812,
+            "dist_bits": 3283,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 814,
+            "dist_bits": 3282,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 814,
+            "dist_bits": 3282,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 815,
+            "dist_bits": 3279,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 817,
+            "dist_bits": 3279,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 818,
+            "dist_bits": 3274,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 823,
+            "dist_bits": 3270,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 827,
+            "dist_bits": 3267,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 829,
+            "dist_bits": 3266,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 831,
+            "dist_bits": 3263,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 834,
+            "dist_bits": 3258,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 839,
+            "dist_bits": 3256,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 841,
+            "dist_bits": 3255,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 841,
+            "dist_bits": 3254,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 843,
+            "dist_bits": 3253,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 843,
+            "dist_bits": 3252,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 844,
+            "dist_bits": 3252,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 845,
+            "dist_bits": 3240,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 857,
+            "dist_bits": 3239,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 857,
+            "dist_bits": 3238,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 859,
+            "dist_bits": 3233,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 864,
+            "dist_bits": 3233,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 864,
+            "dist_bits": 3231,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 865,
+            "dist_bits": 3231,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 866,
+            "dist_bits": 3226,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 871,
+            "dist_bits": 3225,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 872,
+            "dist_bits": 3223,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 873,
+            "dist_bits": 3223,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 874,
+            "dist_bits": 3221,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 876,
+            "dist_bits": 3215,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 882,
+            "dist_bits": 3210,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 887,
+            "dist_bits": 3207,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 890,
+            "dist_bits": 3207,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 890,
+            "dist_bits": 3205,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 892,
+            "dist_bits": 3204,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 892,
+            "dist_bits": 3204,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 893,
+            "dist_bits": 3198,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 899,
+            "dist_bits": 3197,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 900,
+            "dist_bits": 3196,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 900,
+            "dist_bits": 3195,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 902,
+            "dist_bits": 3190,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 907,
+            "dist_bits": 3187,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 910,
+            "dist_bits": 3186,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 910,
+            "dist_bits": 3185,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 912,
+            "dist_bits": 3185,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 912,
+            "dist_bits": 3179,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 918,
+            "dist_bits": 3177,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 920,
+            "dist_bits": 3175,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 922,
+            "dist_bits": 3174,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 922,
+            "dist_bits": 3174,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 923,
+            "dist_bits": 3172,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 924,
+            "dist_bits": 3170,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 927,
+            "dist_bits": 3170,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 927,
+            "dist_bits": 3169,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 928,
+            "dist_bits": 3168,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 929,
+            "dist_bits": 3167,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 930,
+            "dist_bits": 3166,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 930,
+            "dist_bits": 3166,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 931,
+            "dist_bits": 3163,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 933,
+            "dist_bits": 3162,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 935,
+            "dist_bits": 3157,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 940,
+            "dist_bits": 3157,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 940,
+            "dist_bits": 3155,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 942,
+            "dist_bits": 3154,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 943,
+            "dist_bits": 3152,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 945,
+            "dist_bits": 3145,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 952,
+            "dist_bits": 3138,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 959,
+            "dist_bits": 3137,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 960,
+            "dist_bits": 3137,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 960,
+            "dist_bits": 3131,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 966,
+            "dist_bits": 3131,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 966,
+            "dist_bits": 3128,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 969,
+            "dist_bits": 3128,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 969,
+            "dist_bits": 3122,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 975,
+            "dist_bits": 3122,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 975,
+            "dist_bits": 3120,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 977,
+            "dist_bits": 3120,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 977,
+            "dist_bits": 3116,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 981,
+            "dist_bits": 3115,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 981,
+            "dist_bits": 3115,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 982,
+            "dist_bits": 3112,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 985,
+            "dist_bits": 3112,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 985,
+            "dist_bits": 3109,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 988,
+            "dist_bits": 3107,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 989,
+            "dist_bits": 3106,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 991,
+            "dist_bits": 3105,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 991,
+            "dist_bits": 3105,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 992,
+            "dist_bits": 3104,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 993,
+            "dist_bits": 3102,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 994,
+            "dist_bits": 3102,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 995,
+            "dist_bits": 3098,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 999,
+            "dist_bits": 3096,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1000,
+            "dist_bits": 3096,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1001,
+            "dist_bits": 3095,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1002,
+            "dist_bits": 3094,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1002,
+            "dist_bits": 3094,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1003,
+            "dist_bits": 3087,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1010,
+            "dist_bits": 3087,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1010,
+            "dist_bits": 3086,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1011,
+            "dist_bits": 3086,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1011,
+            "dist_bits": 3084,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1013,
+            "dist_bits": 3083,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1014,
+            "dist_bits": 3080,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1016,
+            "dist_bits": 3080,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1017,
+            "dist_bits": 3077,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1019,
+            "dist_bits": 3077,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1020,
+            "dist_bits": 3076,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1021,
+            "dist_bits": 3075,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1022,
+            "dist_bits": 3074,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1022,
+            "dist_bits": 3073,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1024,
+            "dist_bits": 3072,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1025,
+            "dist_bits": 3071,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1025,
+            "dist_bits": 3070,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1026,
+            "dist_bits": 3070,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1027,
+            "dist_bits": 3069,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1027,
+            "dist_bits": 3069,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1028,
+            "dist_bits": 3067,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1030,
+            "dist_bits": 3063,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1034,
+            "dist_bits": 3062,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1035,
+            "dist_bits": 3061,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1035,
+            "dist_bits": 3060,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1037,
+            "dist_bits": 3058,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1039,
+            "dist_bits": 3057,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1039,
+            "dist_bits": 3054,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1043,
+            "dist_bits": 3047,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1050,
+            "dist_bits": 3046,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1050,
+            "dist_bits": 3045,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1052,
+            "dist_bits": 3041,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1056,
+            "dist_bits": 3040,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1057,
+            "dist_bits": 3035,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1062,
+            "dist_bits": 3034,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1062,
+            "dist_bits": 3033,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1063,
+            "dist_bits": 3033,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1064,
+            "dist_bits": 3031,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1066,
+            "dist_bits": 3029,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1068,
+            "dist_bits": 3028,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1069,
+            "dist_bits": 3025,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1072,
+            "dist_bits": 3025,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1072,
+            "dist_bits": 3023,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1074,
+            "dist_bits": 3020,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1076,
+            "dist_bits": 3019,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1078,
+            "dist_bits": 3018,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1079,
+            "dist_bits": 3009,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1088,
+            "dist_bits": 3008,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1088,
+            "dist_bits": 3006,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1090,
+            "dist_bits": 3006,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1091,
+            "dist_bits": 3004,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1093,
+            "dist_bits": 3002,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1094,
+            "dist_bits": 3000,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1097,
+            "dist_bits": 2998,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1099,
+            "dist_bits": 2997,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1099,
+            "dist_bits": 2997,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1100,
+            "dist_bits": 2995,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1102,
+            "dist_bits": 2994,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1103,
+            "dist_bits": 2992,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1105,
+            "dist_bits": 2991,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1106,
+            "dist_bits": 2990,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1107,
+            "dist_bits": 2987,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1110,
+            "dist_bits": 2986,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1110,
+            "dist_bits": 2986,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1111,
+            "dist_bits": 2984,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1113,
+            "dist_bits": 2982,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1115,
+            "dist_bits": 2980,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1117,
+            "dist_bits": 2979,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1118,
+            "dist_bits": 2976,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1121,
+            "dist_bits": 2974,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1123,
+            "dist_bits": 2973,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1123,
+            "dist_bits": 2972,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1125,
+            "dist_bits": 2968,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1129,
+            "dist_bits": 2967,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1129,
+            "dist_bits": 2967,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1130,
+            "dist_bits": 2962,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1135,
+            "dist_bits": 2958,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1139,
+            "dist_bits": 2958,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1139,
+            "dist_bits": 2955,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1142,
+            "dist_bits": 2952,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1145,
+            "dist_bits": 2951,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1145,
+            "dist_bits": 2951,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1146,
+            "dist_bits": 2950,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1147,
+            "dist_bits": 2941,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1156,
+            "dist_bits": 2935,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1162,
+            "dist_bits": 2934,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1163,
+            "dist_bits": 2932,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1164,
+            "dist_bits": 2929,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1168,
+            "dist_bits": 2927,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1170,
+            "dist_bits": 2926,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1170,
+            "dist_bits": 2926,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1171,
+            "dist_bits": 2923,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1174,
+            "dist_bits": 2922,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1174,
+            "dist_bits": 2922,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1175,
+            "dist_bits": 2920,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1177,
+            "dist_bits": 2917,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1180,
+            "dist_bits": 2916,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1180,
+            "dist_bits": 2916,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1181,
+            "dist_bits": 2911,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1186,
+            "dist_bits": 2910,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1186,
+            "dist_bits": 2910,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1187,
+            "dist_bits": 2906,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1191,
+            "dist_bits": 2905,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1191,
+            "dist_bits": 2904,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1192,
+            "dist_bits": 2904,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1193,
+            "dist_bits": 2901,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1195,
+            "dist_bits": 2899,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1198,
+            "dist_bits": 2898,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1198,
+            "dist_bits": 2897,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1200,
+            "dist_bits": 2896,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1200,
+            "dist_bits": 2896,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1201,
+            "dist_bits": 2894,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1203,
+            "dist_bits": 2893,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1204,
+            "dist_bits": 2889,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1208,
+            "dist_bits": 2889,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1208,
+            "dist_bits": 2887,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1210,
+            "dist_bits": 2887,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1210,
+            "dist_bits": 2884,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1213,
+            "dist_bits": 2884,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1213,
+            "dist_bits": 2881,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1216,
+            "dist_bits": 2880,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1217,
+            "dist_bits": 2879,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1217,
+            "dist_bits": 2878,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1219,
+            "dist_bits": 2877,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1220,
+            "dist_bits": 2875,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1222,
+            "dist_bits": 2875,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1222,
+            "dist_bits": 2870,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1227,
+            "dist_bits": 2869,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1227,
+            "dist_bits": 2869,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1228,
+            "dist_bits": 2868,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1229,
+            "dist_bits": 2867,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1230,
+            "dist_bits": 2866,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1230,
+            "dist_bits": 2864,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1232,
+            "dist_bits": 2864,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1233,
+            "dist_bits": 2863,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1233,
+            "dist_bits": 2862,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1234,
+            "dist_bits": 2861,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1236,
+            "dist_bits": 2854,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1243,
+            "dist_bits": 2853,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1243,
+            "dist_bits": 2852,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1244,
+            "dist_bits": 2850,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1247,
+            "dist_bits": 2848,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1249,
+            "dist_bits": 2846,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1250,
+            "dist_bits": 2846,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1251,
+            "dist_bits": 2844,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1253,
+            "dist_bits": 2842,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1255,
+            "dist_bits": 2841,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1255,
+            "dist_bits": 2841,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1256,
+            "dist_bits": 2839,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1258,
+            "dist_bits": 2833,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1264,
+            "dist_bits": 2830,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1267,
+            "dist_bits": 2823,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1274,
+            "dist_bits": 2822,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1274,
+            "dist_bits": 2822,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1275,
+            "dist_bits": 2815,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1282,
+            "dist_bits": 2815,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1282,
+            "dist_bits": 2814,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1283,
+            "dist_bits": 2814,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1283,
+            "dist_bits": 2806,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1291,
+            "dist_bits": 2805,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1291,
+            "dist_bits": 2804,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1292,
+            "dist_bits": 2804,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1293,
+            "dist_bits": 2802,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1295,
+            "dist_bits": 2800,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1297,
+            "dist_bits": 2800,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1297,
+            "dist_bits": 2794,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1303,
+            "dist_bits": 2793,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1304,
+            "dist_bits": 2790,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1307,
+            "dist_bits": 2789,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1307,
+            "dist_bits": 2789,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1308,
+            "dist_bits": 2786,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1311,
+            "dist_bits": 2786,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1311,
+            "dist_bits": 2785,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1312,
+            "dist_bits": 2784,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1312,
+            "dist_bits": 2781,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1316,
+            "dist_bits": 2780,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1317,
+            "dist_bits": 2779,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1318,
+            "dist_bits": 2778,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1318,
+            "dist_bits": 2777,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1320,
+            "dist_bits": 2774,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1323,
+            "dist_bits": 2773,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1324,
+            "dist_bits": 2772,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1324,
+            "dist_bits": 2771,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1326,
+            "dist_bits": 2768,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1329,
+            "dist_bits": 2765,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1332,
+            "dist_bits": 2763,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1334,
+            "dist_bits": 2763,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1334,
+            "dist_bits": 2761,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1336,
+            "dist_bits": 2759,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1338,
+            "dist_bits": 2756,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1341,
+            "dist_bits": 2755,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1341,
+            "dist_bits": 2755,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1342,
+            "dist_bits": 2752,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1345,
+            "dist_bits": 2751,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1346,
+            "dist_bits": 2748,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1349,
+            "dist_bits": 2747,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1350,
+            "dist_bits": 2744,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1352,
+            "dist_bits": 2743,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1354,
+            "dist_bits": 2740,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1357,
+            "dist_bits": 2739,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1358,
+            "dist_bits": 2737,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1360,
+            "dist_bits": 2734,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1363,
+            "dist_bits": 2730,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1367,
+            "dist_bits": 2727,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1370,
+            "dist_bits": 2725,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1371,
+            "dist_bits": 2725,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1372,
+            "dist_bits": 2722,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1375,
+            "dist_bits": 2721,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1376,
+            "dist_bits": 2720,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1376,
+            "dist_bits": 2718,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1379,
+            "dist_bits": 2715,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1381,
+            "dist_bits": 2715,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1382,
+            "dist_bits": 2714,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1383,
+            "dist_bits": 2713,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1384,
+            "dist_bits": 2712,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1384,
+            "dist_bits": 2712,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1385,
+            "dist_bits": 2710,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1386,
+            "dist_bits": 2710,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1387,
+            "dist_bits": 2708,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1388,
+            "dist_bits": 2707,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1390,
+            "dist_bits": 2706,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1391,
+            "dist_bits": 2705,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1391,
+            "dist_bits": 2704,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1393,
+            "dist_bits": 2701,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1396,
+            "dist_bits": 2700,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1396,
+            "dist_bits": 2700,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1397,
+            "dist_bits": 2699,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1397,
+            "dist_bits": 2699,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1398,
+            "dist_bits": 2696,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1401,
+            "dist_bits": 2696,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1401,
+            "dist_bits": 2694,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1403,
+            "dist_bits": 2685,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1412,
+            "dist_bits": 2684,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1413,
+            "dist_bits": 2681,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1416,
+            "dist_bits": 2679,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1418,
+            "dist_bits": 2678,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1419,
+            "dist_bits": 2674,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1423,
+            "dist_bits": 2673,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1423,
+            "dist_bits": 2673,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1424,
+            "dist_bits": 2670,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1427,
+            "dist_bits": 2670,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1427,
+            "dist_bits": 2667,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1430,
+            "dist_bits": 2664,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1433,
+            "dist_bits": 2662,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1434,
+            "dist_bits": 2662,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1435,
+            "dist_bits": 2661,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1436,
+            "dist_bits": 2660,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1437,
+            "dist_bits": 2659,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1438,
+            "dist_bits": 2656,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1441,
+            "dist_bits": 2655,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1441,
+            "dist_bits": 2655,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1442,
+            "dist_bits": 2653,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1444,
+            "dist_bits": 2648,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1449,
+            "dist_bits": 2645,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1452,
+            "dist_bits": 2643,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1454,
+            "dist_bits": 2637,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1460,
+            "dist_bits": 2636,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1461,
+            "dist_bits": 2635,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1462,
+            "dist_bits": 2628,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1469,
+            "dist_bits": 2625,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1472,
+            "dist_bits": 2624,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1473,
+            "dist_bits": 2622,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1475,
+            "dist_bits": 2621,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1476,
+            "dist_bits": 2619,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1478,
+            "dist_bits": 2619,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1478,
+            "dist_bits": 2615,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1481,
+            "dist_bits": 2615,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1482,
+            "dist_bits": 2613,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1484,
+            "dist_bits": 2612,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1484,
+            "dist_bits": 2612,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1485,
+            "dist_bits": 2611,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1486,
+            "dist_bits": 2610,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1487,
+            "dist_bits": 2609,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1487,
+            "dist_bits": 2608,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1489,
+            "dist_bits": 2606,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1491,
+            "dist_bits": 2600,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1497,
+            "dist_bits": 2599,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1497,
+            "dist_bits": 2598,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1499,
+            "dist_bits": 2597,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1500,
+            "dist_bits": 2597,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1500,
+            "dist_bits": 2593,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1504,
+            "dist_bits": 2593,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1504,
+            "dist_bits": 2592,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1505,
+            "dist_bits": 2591,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1505,
+            "dist_bits": 2591,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1506,
+            "dist_bits": 2586,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1511,
+            "dist_bits": 2584,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1513,
+            "dist_bits": 2583,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1514,
+            "dist_bits": 2580,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1517,
+            "dist_bits": 2579,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1517,
+            "dist_bits": 2579,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1518,
+            "dist_bits": 2576,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1521,
+            "dist_bits": 2574,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1523,
+            "dist_bits": 2571,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1526,
+            "dist_bits": 2569,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1527,
+            "dist_bits": 2569,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1528,
+            "dist_bits": 2568,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1529,
+            "dist_bits": 2567,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1530,
+            "dist_bits": 2566,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1531,
+            "dist_bits": 2565,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1531,
+            "dist_bits": 2565,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1532,
+            "dist_bits": 2563,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1534,
+            "dist_bits": 2562,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1535,
+            "dist_bits": 2561,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1536,
+            "dist_bits": 2559,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1537,
+            "dist_bits": 2559,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1538,
+            "dist_bits": 2558,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1539,
+            "dist_bits": 2558,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1539,
+            "dist_bits": 2554,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1543,
+            "dist_bits": 2553,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1543,
+            "dist_bits": 2552,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1544,
+            "dist_bits": 2552,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1545,
+            "dist_bits": 2549,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1548,
+            "dist_bits": 2548,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1549,
+            "dist_bits": 2548,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1549,
+            "dist_bits": 2543,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1554,
+            "dist_bits": 2543,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1554,
+            "dist_bits": 2541,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1555,
+            "dist_bits": 2540,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1557,
+            "dist_bits": 2538,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1558,
+            "dist_bits": 2537,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1560,
+            "dist_bits": 2531,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1566,
+            "dist_bits": 2530,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1566,
+            "dist_bits": 2530,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1567,
+            "dist_bits": 2527,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1570,
+            "dist_bits": 2520,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1577,
+            "dist_bits": 2519,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1577,
+            "dist_bits": 2519,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1578,
+            "dist_bits": 2518,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1579,
+            "dist_bits": 2515,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1581,
+            "dist_bits": 2514,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1583,
+            "dist_bits": 2512,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1584,
+            "dist_bits": 2511,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1586,
+            "dist_bits": 2509,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1588,
+            "dist_bits": 2508,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1588,
+            "dist_bits": 2507,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1590,
+            "dist_bits": 2504,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1593,
+            "dist_bits": 2502,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1594,
+            "dist_bits": 2501,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1596,
+            "dist_bits": 2497,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1600,
+            "dist_bits": 2496,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1600,
+            "dist_bits": 2496,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1601,
+            "dist_bits": 2490,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1607,
+            "dist_bits": 2489,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1607,
+            "dist_bits": 2487,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1609,
+            "dist_bits": 2486,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1611,
+            "dist_bits": 2484,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1612,
+            "dist_bits": 2483,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1614,
+            "dist_bits": 2482,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1615,
+            "dist_bits": 2482,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1615,
+            "dist_bits": 2478,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1619,
+            "dist_bits": 2477,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1619,
+            "dist_bits": 2477,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1620,
+            "dist_bits": 2476,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1621,
+            "dist_bits": 2475,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1621,
+            "dist_bits": 2475,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1622,
+            "dist_bits": 2474,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1623,
+            "dist_bits": 2473,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1623,
+            "dist_bits": 2472,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1624,
+            "dist_bits": 2472,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1625,
+            "dist_bits": 2470,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1626,
+            "dist_bits": 2470,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1627,
+            "dist_bits": 2468,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1629,
+            "dist_bits": 2467,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1629,
+            "dist_bits": 2467,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1630,
+            "dist_bits": 2466,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1631,
+            "dist_bits": 2465,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1631,
+            "dist_bits": 2465,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1632,
+            "dist_bits": 2463,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1633,
+            "dist_bits": 2462,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1635,
+            "dist_bits": 2460,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1637,
+            "dist_bits": 2460,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1637,
+            "dist_bits": 2455,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1642,
+            "dist_bits": 2454,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1642,
+            "dist_bits": 2454,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1643,
+            "dist_bits": 2453,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1644,
+            "dist_bits": 2452,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1644,
+            "dist_bits": 2451,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1645,
+            "dist_bits": 2451,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1646,
+            "dist_bits": 2450,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1646,
+            "dist_bits": 2448,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1649,
+            "dist_bits": 2448,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1649,
+            "dist_bits": 2443,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1654,
+            "dist_bits": 2443,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1654,
+            "dist_bits": 2439,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1658,
+            "dist_bits": 2439,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1658,
+            "dist_bits": 2435,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1662,
+            "dist_bits": 2433,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1664,
+            "dist_bits": 2432,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1664,
+            "dist_bits": 2431,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1666,
+            "dist_bits": 2430,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1666,
+            "dist_bits": 2429,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1668,
+            "dist_bits": 2428,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1668,
+            "dist_bits": 2428,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1669,
+            "dist_bits": 2423,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1674,
+            "dist_bits": 2422,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1675,
+            "dist_bits": 2421,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1676,
+            "dist_bits": 2421,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1676,
+            "dist_bits": 2416,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1681,
+            "dist_bits": 2415,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1681,
+            "dist_bits": 2415,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1682,
+            "dist_bits": 2408,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1689,
+            "dist_bits": 2406,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1690,
+            "dist_bits": 2406,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1691,
+            "dist_bits": 2405,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1692,
+            "dist_bits": 2402,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1695,
+            "dist_bits": 2398,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1699,
+            "dist_bits": 2397,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1699,
+            "dist_bits": 2396,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1701,
+            "dist_bits": 2396,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1701,
+            "dist_bits": 2393,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1704,
+            "dist_bits": 2392,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1705,
+            "dist_bits": 2388,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1709,
+            "dist_bits": 2387,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1709,
+            "dist_bits": 2387,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1710,
+            "dist_bits": 2385,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1712,
+            "dist_bits": 2385,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1712,
+            "dist_bits": 2382,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1715,
+            "dist_bits": 2381,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1715,
+            "dist_bits": 2380,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1717,
+            "dist_bits": 2374,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1723,
+            "dist_bits": 2371,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1726,
+            "dist_bits": 2370,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1726,
+            "dist_bits": 2369,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1727,
+            "dist_bits": 2369,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1728,
+            "dist_bits": 2367,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1730,
+            "dist_bits": 2365,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1732,
+            "dist_bits": 2362,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1735,
+            "dist_bits": 2358,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1739,
+            "dist_bits": 2357,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1739,
+            "dist_bits": 2357,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1740,
+            "dist_bits": 2355,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1742,
+            "dist_bits": 2354,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1743,
+            "dist_bits": 2352,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1745,
+            "dist_bits": 2351,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1745,
+            "dist_bits": 2350,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1747,
+            "dist_bits": 2347,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1750,
+            "dist_bits": 2346,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1751,
+            "dist_bits": 2344,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1753,
+            "dist_bits": 2343,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1754,
+            "dist_bits": 2341,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1755,
+            "dist_bits": 2341,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1756,
+            "dist_bits": 2340,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1757,
+            "dist_bits": 2339,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1758,
+            "dist_bits": 2338,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1758,
+            "dist_bits": 2337,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1760,
+            "dist_bits": 2333,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1764,
+            "dist_bits": 2331,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1765,
+            "dist_bits": 2330,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1767,
+            "dist_bits": 2329,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1767,
+            "dist_bits": 2329,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1768,
+            "dist_bits": 2328,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1768,
+            "dist_bits": 2328,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1769,
+            "dist_bits": 2321,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1776,
+            "dist_bits": 2316,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1781,
+            "dist_bits": 2316,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1781,
+            "dist_bits": 2313,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1784,
+            "dist_bits": 2309,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1788,
+            "dist_bits": 2306,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1791,
+            "dist_bits": 2306,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1791,
+            "dist_bits": 2302,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1795,
+            "dist_bits": 2302,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1795,
+            "dist_bits": 2299,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1798,
+            "dist_bits": 2298,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1798,
+            "dist_bits": 2297,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1800,
+            "dist_bits": 2296,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1800,
+            "dist_bits": 2295,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1801,
+            "dist_bits": 2295,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1802,
+            "dist_bits": 2294,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1802,
+            "dist_bits": 2294,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1803,
+            "dist_bits": 2292,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1805,
+            "dist_bits": 2291,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1805,
+            "dist_bits": 2291,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1806,
+            "dist_bits": 2286,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1810,
+            "dist_bits": 2286,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1811,
+            "dist_bits": 2284,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1813,
+            "dist_bits": 2283,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1813,
+            "dist_bits": 2282,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1814,
+            "dist_bits": 2282,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1815,
+            "dist_bits": 2280,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1817,
+            "dist_bits": 2278,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1818,
+            "dist_bits": 2277,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1820,
+            "dist_bits": 2276,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1821,
+            "dist_bits": 2274,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1823,
+            "dist_bits": 2269,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1828,
+            "dist_bits": 2267,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1830,
+            "dist_bits": 2266,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1830,
+            "dist_bits": 2265,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1832,
+            "dist_bits": 2264,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1832,
+            "dist_bits": 2261,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1836,
+            "dist_bits": 2258,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1839,
+            "dist_bits": 2258,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1839,
+            "dist_bits": 2255,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1842,
+            "dist_bits": 2255,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1842,
+            "dist_bits": 2251,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1846,
+            "dist_bits": 2249,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1848,
+            "dist_bits": 2247,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1850,
+            "dist_bits": 2246,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1851,
+            "dist_bits": 2244,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1852,
+            "dist_bits": 2243,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1854,
+            "dist_bits": 2241,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1855,
+            "dist_bits": 2240,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1857,
+            "dist_bits": 2239,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1858,
+            "dist_bits": 2237,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1859,
+            "dist_bits": 2237,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1860,
+            "dist_bits": 2235,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1861,
+            "dist_bits": 2235,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1862,
+            "dist_bits": 2234,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1863,
+            "dist_bits": 2233,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1864,
+            "dist_bits": 2232,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1864,
+            "dist_bits": 2231,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1865,
+            "dist_bits": 2231,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1866,
+            "dist_bits": 2229,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1868,
+            "dist_bits": 2227,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1870,
+            "dist_bits": 2226,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1871,
+            "dist_bits": 2225,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1872,
+            "dist_bits": 2216,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1881,
+            "dist_bits": 2213,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1884,
+            "dist_bits": 2211,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1886,
+            "dist_bits": 2204,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1893,
+            "dist_bits": 2200,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1897,
+            "dist_bits": 2200,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1897,
+            "dist_bits": 2197,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1900,
+            "dist_bits": 2195,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1902,
+            "dist_bits": 2192,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1905,
+            "dist_bits": 2191,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1905,
+            "dist_bits": 2191,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1906,
+            "dist_bits": 2184,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1912,
+            "dist_bits": 2183,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1914,
+            "dist_bits": 2180,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1917,
+            "dist_bits": 2179,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1918,
+            "dist_bits": 2178,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1919,
+            "dist_bits": 2175,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1921,
+            "dist_bits": 2175,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1922,
+            "dist_bits": 2172,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1925,
+            "dist_bits": 2171,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1926,
+            "dist_bits": 2167,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1930,
+            "dist_bits": 2165,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1932,
+            "dist_bits": 2164,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1933,
+            "dist_bits": 2162,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1935,
+            "dist_bits": 2161,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1935,
+            "dist_bits": 2161,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1936,
+            "dist_bits": 2158,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1939,
+            "dist_bits": 2157,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1940,
+            "dist_bits": 2155,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1942,
+            "dist_bits": 2151,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1946,
+            "dist_bits": 2150,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1947,
+            "dist_bits": 2149,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1948,
+            "dist_bits": 2148,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1948,
+            "dist_bits": 2146,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1951,
+            "dist_bits": 2146,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1951,
+            "dist_bits": 2144,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1953,
+            "dist_bits": 2142,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1955,
+            "dist_bits": 2138,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1958,
+            "dist_bits": 2138,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1959,
+            "dist_bits": 2136,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1961,
+            "dist_bits": 2133,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1964,
+            "dist_bits": 2132,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1965,
+            "dist_bits": 2131,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1965,
+            "dist_bits": 2130,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1967,
+            "dist_bits": 2130,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1967,
+            "dist_bits": 2125,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1972,
+            "dist_bits": 2125,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1972,
+            "dist_bits": 2123,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1973,
+            "dist_bits": 2120,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1977,
+            "dist_bits": 2118,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1979,
+            "dist_bits": 2113,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1984,
+            "dist_bits": 2110,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1987,
+            "dist_bits": 2109,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1988,
+            "dist_bits": 2108,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 1989,
+            "dist_bits": 2097,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 2000,
+            "dist_bits": 2097,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 2000,
+            "dist_bits": 2095,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 2002,
+            "dist_bits": 2094,
+            "slack_bits": 2094,
+            "excluded": true
+          },
+          {
+            "d_bits": 2003,
+            "dist_bits": 4094,
+            "slack_bits": 2094,
+            "excluded": true
+          }
+        ]
+      },
+      "failures": [],
+      "passed": true
+    }
+  ],
+  "all_passed": true
+}

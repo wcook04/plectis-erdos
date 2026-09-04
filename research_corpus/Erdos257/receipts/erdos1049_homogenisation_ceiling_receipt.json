@@ -1,0 +1,139 @@
+{
+  "all_pass": true,
+  "base_table": [
+    {
+      "a_gt_b2": true,
+      "base": "2/1",
+      "closes_now": true,
+      "closes_with_perfect_content": true,
+      "log_b_over_log_a": 0.0
+    },
+    {
+      "a_gt_b2": true,
+      "base": "3/1",
+      "closes_now": true,
+      "closes_with_perfect_content": true,
+      "log_b_over_log_a": 0.0
+    },
+    {
+      "a_gt_b2": true,
+      "base": "7/2",
+      "closes_now": true,
+      "closes_with_perfect_content": true,
+      "log_b_over_log_a": 0.35621
+    },
+    {
+      "a_gt_b2": true,
+      "base": "5/2",
+      "closes_now": false,
+      "closes_with_perfect_content": true,
+      "log_b_over_log_a": 0.43068
+    },
+    {
+      "a_gt_b2": false,
+      "base": "3/2",
+      "closes_now": false,
+      "closes_with_perfect_content": false,
+      "log_b_over_log_a": 0.63093
+    },
+    {
+      "a_gt_b2": false,
+      "base": "4/3",
+      "closes_now": false,
+      "closes_with_perfect_content": false,
+      "log_b_over_log_a": 0.79248
+    },
+    {
+      "a_gt_b2": true,
+      "base": "10/3",
+      "closes_now": false,
+      "closes_with_perfect_content": true,
+      "log_b_over_log_a": 0.47712
+    },
+    {
+      "a_gt_b2": false,
+      "base": "5/4",
+      "closes_now": false,
+      "closes_with_perfect_content": false,
+      "log_b_over_log_a": 0.86135
+    }
+  ],
+  "elapsed_s": 2.04,
+  "failed": [],
+  "falsifiers": {
+    "F1_exact_quadratic_growth": {
+      "den_R": 1.039720771,
+      "max_dev": "3.01e-08",
+      "num_R": 1.647918433,
+      "pass": true,
+      "target_den": 1.039720771,
+      "target_num": 1.647918433,
+      "tolerance": "1e-6 (float accuracy of lg on 10^5-bit ints)"
+    },
+    "F2_numerators_coprime": {
+      "at": [
+        40,
+        60,
+        80,
+        100,
+        120
+      ],
+      "gcds": [
+        1
+      ],
+      "pass": true
+    },
+    "F3_casoratian_cap_is_O_j": {
+      "note": "cap ~ 2 j log 3 = O(j) = o(j^2)",
+      "pass": true,
+      "worst": {
+        "cap_log": 263.667,
+        "cap_over_j2": 0.01831,
+        "j": 120,
+        "shared_log": 0.0
+      }
+    },
+    "F4_content_is_purely_the_two_power": {
+      "pass": true,
+      "sample": {
+        "gcd_over_j2": 1.04256,
+        "j": 120,
+        "odd_remainder": 0.0,
+        "two_part_over_j2": 1.04256
+      },
+      "target_two_part": 1.03972
+    },
+    "F5_height_exceeds_budget": {
+      "B_coprime_to_6": true,
+      "decay_budget": 1.2164,
+      "floor_already_over_budget": true,
+      "irreducible_floor": 1.64792,
+      "logB": {
+        "j": 120,
+        "logB_over_j2": 1.98739
+      },
+      "pass": true
+    },
+    "F6_threshold_law_derived_and_ceiling": {
+      "ceiling_threshold": 0.5,
+      "five_halves": {
+        "a_gt_b2": true,
+        "base": "5/2",
+        "closes_now": false,
+        "closes_with_perfect_content": true,
+        "log_b_over_log_a": 0.43068
+      },
+      "pass": true,
+      "recorded_threshold": 0.39868,
+      "three_halves": {
+        "a_gt_b2": false,
+        "base": "3/2",
+        "closes_now": false,
+        "closes_with_perfect_content": false,
+        "log_b_over_log_a": 0.63093
+      }
+    }
+  },
+  "probe": "erdos1049_homogenisation_ceiling",
+  "smallest_newly_reachable_base": "5/2"
+}

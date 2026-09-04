@@ -1,0 +1,117 @@
+{
+  "consequence_decisions": [
+    {
+      "decision": "opened_and_certified",
+      "mechanism": "quotient_centrality_implies_full_centrality"
+    },
+    {
+      "decision": "eliminated",
+      "mechanism": "pure_dyadic_escape_descends_to_odd_denominators",
+      "reason": "actual c=0, v=3, H=6 converse failure"
+    },
+    {
+      "decision": "still_open_requires_v_specific_input",
+      "mechanism": "full_odd_denominator_residue_supply"
+    }
+  ],
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "falsification_consequence": "Pure-dyadic escape alone cannot be quotient-projected to the full odd-denominator residual; v-specific arithmetic remains necessary.",
+      "survival_consequence": "If the converse held, a pure-dyadic residue theorem could feed all odd denominator quotients at the same heights."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "pure_dyadic_escape_descends_to_every_odd_denominator",
+      "statement": "At an Euler-compatible height, centrality modulo 2^H-1 remains central after quotienting by the candidate odd denominator v."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CanonicalMersenneResidueComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_mersenne_divisor_centrality.py",
+        "system/lib/formal_math_modular_arcs.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json"
+      ]
+    },
+    "probe": {
+      "computation": "Record the exact residue layer r_N=jM+r_M, certify that M-central implies N-central, and lexicographically stop at the first actual totient block with N-central but M-endpoint residue.",
+      "falsifier": "An actual Euler-compatible (c,v,H) whose full-Mersenne residue is central while its quotient-modulus residue is not.",
+      "id": "exact_mersenne_divisor_arc_projection",
+      "question": "What is the valid direction of central-arc inheritance under M=(2^H-1)/v dividing N=2^H-1, and does the converse fail on the actual totient block?",
+      "resource_bounds": {
+        "max_c": 12,
+        "max_multiplier": 8,
+        "max_odd_denominator": 15
+      },
+      "stop_condition": "Stop at the first lexicographic converse failure; do not extend the denominator or height horizon after the implication is decided."
+    },
+    "problem": {
+      "claim_ceiling": "General exact central-arc projection theorem plus one actual finite counterexample to its converse; no universal residue supply or irrationality proof.",
+      "id": "erdos_249",
+      "target_statement": "Prove irrationality of sum_(n>=1) phi(n)/2^n."
+    },
+    "result": {
+      "status": "exact_one_way_result",
+      "summary": "Centrality modulo a divisor implies centrality modulo its multiple. The converse fails for the actual block Q(6,0)=82: residue 44 is central modulo 63 at radius 7, but residue 2 is trapped modulo 21."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "first_actual_converse_failure": {
+    "c": 0,
+    "euler_multiplier": 3,
+    "height": 6,
+    "phi_v": 2,
+    "projection": {
+      "large_central": true,
+      "large_modulus": 63,
+      "large_residue": 44,
+      "modulus_factor": 3,
+      "radius": 7,
+      "residue_layer": 2,
+      "small_central": false,
+      "small_modulus": 21,
+      "small_residue": 2,
+      "value": -82
+    },
+    "totient_block": 82,
+    "v": 3
+  },
+  "general_theorem": {
+    "proof_coordinate": "Write z mod N = jM + (z mod M), with 0 <= j < N/M, and apply the two strict endpoint bounds.",
+    "statement": "For positive M|N and B>=0, if B < z mod M < M-B, then B < z mod N < N-B."
+  },
+  "schema": "erdos249-mersenne-divisor-centrality/1",
+  "source_records": [
+    {
+      "byte_length": 9939,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_mersenne_divisor_centrality.py",
+      "sha256": "92f40819c7a80516a9793c02af6dd7fc1f8176c398eff7f2e9493b12d36b70e9"
+    },
+    {
+      "byte_length": 3069,
+      "path": "system/lib/formal_math_modular_arcs.py",
+      "sha256": "d866c73328fd15c4291db9224965a95ef77a8c772531ba90d75de0a3bad6ccbc"
+    },
+    {
+      "byte_length": 4060,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CanonicalMersenneResidueComputationalLab.md",
+      "sha256": "9f901a361100a310e55846b047ab2ba303e36dddfc4d7ae5119e908fb1fef4e9"
+    },
+    {
+      "byte_length": 129144,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "sha256": "4c66b3a625ce6e28ebaadaf7bbc9f085325ec229e85a66f68a23817bc23df065"
+    },
+    {
+      "byte_length": 41280,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "sha256": "66e88e14f71c9eabe4332198a84ec9e1215b26b1413eac0650fd6e8edb515e66"
+    }
+  ],
+  "status": "verified_projection_theorem_and_exact_converse_failure"
+}

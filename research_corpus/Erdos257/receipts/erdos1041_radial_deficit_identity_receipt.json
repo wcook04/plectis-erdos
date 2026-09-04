@@ -1,0 +1,437 @@
+{
+  "schema": "erdos1041-radial-deficit-identity/1",
+  "identity": {
+    "claim": "L(c) = |a| + |b| - 2|c| + D(c)",
+    "samples": 80,
+    "worst_absolute_gap": 4.4756420791713936e-12,
+    "verdict": "identity_holds",
+    "rows": [
+      {
+        "degree": 3,
+        "trial": 0,
+        "length": 0.4904872836886067,
+        "identity_value": 0.49048728368860645,
+        "gap": 2.7755575615628914e-16,
+        "deficit": 0.373478618475481,
+        "twice_hub_radius": 1.326050837769017,
+        "radial_condition_slack": 0.952572219293536
+      },
+      {
+        "degree": 3,
+        "trial": 0,
+        "length": 1.1668248074895549,
+        "identity_value": 1.1668248074895544,
+        "gap": 4.440892098500626e-16,
+        "deficit": 0.6431134564834069,
+        "twice_hub_radius": 1.1505141826445329,
+        "radial_condition_slack": 0.507400726161126
+      },
+      {
+        "degree": 3,
+        "trial": 1,
+        "length": 0.5821033945777622,
+        "identity_value": 0.582103394577761,
+        "gap": 1.2212453270876722e-15,
+        "deficit": 0.4130597121583534,
+        "twice_hub_radius": 0.5921687413368543,
+        "radial_condition_slack": 0.17910902917850086
+      },
+      {
+        "degree": 3,
+        "trial": 1,
+        "length": 0.4714332619847591,
+        "identity_value": 0.47143326198475966,
+        "gap": -5.551115123125783e-16,
+        "deficit": 0.04381574105048269,
+        "twice_hub_radius": 0.046668473723117436,
+        "radial_condition_slack": 0.0028527326726347432
+      },
+      {
+        "degree": 3,
+        "trial": 2,
+        "length": 0.5910069151406211,
+        "identity_value": 0.5910069151406211,
+        "gap": 0.0,
+        "deficit": 0.440835493594386,
+        "twice_hub_radius": 1.7286009815343304,
+        "radial_condition_slack": 1.2877654879399443
+      },
+      {
+        "degree": 3,
+        "trial": 2,
+        "length": 1.361100810057208,
+        "identity_value": 1.3611008100572082,
+        "gap": -2.220446049250313e-16,
+        "deficit": 0.3553240803951063,
+        "twice_hub_radius": 0.44699714700151405,
+        "radial_condition_slack": 0.09167306660640773
+      }
+    ]
+  },
+  "deficit_representation": {
+    "claim": "D(c) = int 2 cos^2(arg(z f'/f)/2) drho/|f'|",
+    "samples": 8,
+    "worst_absolute_gap": 7.788325540047936e-12,
+    "verdict": "representation_holds",
+    "rows": [
+      {
+        "degree": 3,
+        "traced_deficit": 0.21546778824087362,
+        "representation": 0.21546778824064275,
+        "gap": 2.308708779708013e-13
+      },
+      {
+        "degree": 3,
+        "traced_deficit": 0.3986439080836449,
+        "representation": 0.39864390808538575,
+        "gap": -1.7408297026122455e-12
+      },
+      {
+        "degree": 4,
+        "traced_deficit": 0.7747523128942294,
+        "representation": 0.7747523128864411,
+        "gap": 7.788325540047936e-12
+      },
+      {
+        "degree": 4,
+        "traced_deficit": 0.328134637308308,
+        "representation": 0.3281346373070982,
+        "gap": 1.209810029934033e-12
+      }
+    ]
+  },
+  "local_model": {
+    "claim": "min_k kappa_k < 0 on the whole one-parameter local model",
+    "sweep": [
+      {
+        "degree": 3,
+        "saddle_radius": 0.5773502691896257,
+        "worst_min_kappa": -0.3510415222000568,
+        "at_beta": 2.0943951023931953,
+        "kappa_at_worst": [
+          -0.3510415222000568,
+          -0.3510415221998693
+        ]
+      },
+      {
+        "degree": 4,
+        "saddle_radius": 0.6299605249474366,
+        "worst_min_kappa": -0.6489347236385178,
+        "at_beta": 0.7853981633974483,
+        "kappa_at_worst": [
+          -1.136430727299853e-09,
+          -0.6489347236385165,
+          -0.6489347236385178
+        ]
+      },
+      {
+        "degree": 5,
+        "saddle_radius": 0.668740304976422,
+        "worst_min_kappa": -0.8416620694827477,
+        "at_beta": 0.0,
+        "kappa_at_worst": [
+          0.01922415215060802,
+          -0.8416620694827461,
+          -0.8416620694827477,
+          0.01922415592291249
+        ]
+      },
+      {
+        "degree": 6,
+        "saddle_radius": 0.6988271187715792,
+        "worst_min_kappa": -0.9775979271870286,
+        "at_beta": 0.5235987755982988,
+        "kappa_at_worst": [
+          -1.337323141115121e-09,
+          -0.7241234960862113,
+          -0.977597927186682,
+          -0.9775979271870286,
+          -0.7241234960869304
+        ]
+      },
+      {
+        "degree": 7,
+        "saddle_radius": 0.7230200263994838,
+        "worst_min_kappa": -1.080010174404295,
+        "at_beta": 0.8975979010256552,
+        "kappa_at_worst": [
+          0.06734672555816057,
+          -0.9264096324663048,
+          -1.080010174404295,
+          -1.080010174404259,
+          -0.9264096324661306,
+          0.06734656173652165
+        ]
+      },
+      {
+        "degree": 8,
+        "saddle_radius": 0.7429971445684742,
+        "worst_min_kappa": -1.1607314621039517,
+        "at_beta": 0.39269908169872414,
+        "kappa_at_worst": [
+          -3.1996061355954453e-09,
+          -0.45836232993914816,
+          -1.0587511287448825,
+          -1.1607314621039517,
+          -1.1607314621037859,
+          -1.0587511287450035,
+          -0.4583623299381485
+        ]
+      }
+    ],
+    "verdict": "min_kappa_negative_at_every_sampled_parameter"
+  },
+  "near_fekete": {
+    "claim": "(|a|+|b|-L(c))/rho -> -kappa(c), with residual O(rho)",
+    "rows": [
+      {
+        "degree": 3,
+        "eps": 1e-05,
+        "rho": 0.001862991939568869,
+        "measured_minus_kappa": 0.17702595274589045,
+        "model_minus_kappa": 0.1775652983111078,
+        "absolute_error": 0.0005393455652173418,
+        "error_over_rho": 0.2895050449558877
+      },
+      {
+        "degree": 3,
+        "eps": 1e-05,
+        "rho": 0.001862991939568869,
+        "measured_minus_kappa": 0.7879331380984788,
+        "model_minus_kappa": 0.7907517116042599,
+        "absolute_error": 0.0028185735057811856,
+        "error_over_rho": 1.512928449080384
+      },
+      {
+        "degree": 3,
+        "eps": 1e-07,
+        "rho": 0.00018629919395688686,
+        "measured_minus_kappa": 0.17751102110131922,
+        "model_minus_kappa": 0.1775652983110847,
+        "absolute_error": 5.427720976547423e-05,
+        "error_over_rho": 0.2913443081135123
+      },
+      {
+        "degree": 3,
+        "eps": 1e-07,
+        "rho": 0.00018629919395688686,
+        "measured_minus_kappa": 0.7904659254615845,
+        "model_minus_kappa": 0.7907517116042597,
+        "absolute_error": 0.0002857861426752706,
+        "error_over_rho": 1.5340170647297964
+      },
+      {
+        "degree": 4,
+        "eps": 1e-05,
+        "rho": 0.014567203514244753,
+        "measured_minus_kappa": 1.1483099492944233,
+        "model_minus_kappa": 1.1332499400649176,
+        "absolute_error": 0.015060009229505678,
+        "error_over_rho": 1.0338298091860272
+      },
+      {
+        "degree": 4,
+        "eps": 1e-05,
+        "rho": 0.014567203514244753,
+        "measured_minus_kappa": 0.5593074435230986,
+        "model_minus_kappa": 0.5854001528692205,
+        "absolute_error": 0.026092709346121956,
+        "error_over_rho": 1.791195497516515
+      },
+      {
+        "degree": 4,
+        "eps": 1e-05,
+        "rho": 0.014567203514244753,
+        "measured_minus_kappa": 0.6842248928889235,
+        "model_minus_kappa": 0.7052307822615609,
+        "absolute_error": 0.021005889372637365,
+        "error_over_rho": 1.4419987578327198
+      },
+      {
+        "degree": 4,
+        "eps": 1e-07,
+        "rho": 0.0031384088587843267,
+        "measured_minus_kappa": 1.136484273497734,
+        "model_minus_kappa": 1.1332499400649176,
+        "absolute_error": 0.0032343334328164275,
+        "error_over_rho": 1.0305647155448248
+      },
+      {
+        "degree": 4,
+        "eps": 1e-07,
+        "rho": 0.0031384088587843267,
+        "measured_minus_kappa": 0.57976347234422,
+        "model_minus_kappa": 0.5854001528692205,
+        "absolute_error": 0.005636680525000548,
+        "error_over_rho": 1.7960312944005439
+      },
+      {
+        "degree": 4,
+        "eps": 1e-07,
+        "rho": 0.0031384088587843267,
+        "measured_minus_kappa": 0.7007578644132918,
+        "model_minus_kappa": 0.7052307822615609,
+        "absolute_error": 0.004472917848269087,
+        "error_over_rho": 1.425218335001032
+      },
+      {
+        "degree": 5,
+        "eps": 1e-05,
+        "rho": 0.03592764351169083,
+        "measured_minus_kappa": -0.04567897348657831,
+        "model_minus_kappa": -0.06663266588645822,
+        "absolute_error": 0.02095369239987991,
+        "error_over_rho": 0.583219224858474
+      },
+      {
+        "degree": 5,
+        "eps": 1e-05,
+        "rho": 0.03592764351169083,
+        "measured_minus_kappa": 1.064395612506114,
+        "model_minus_kappa": 1.0229324310912409,
+        "absolute_error": 0.04146318141487315,
+        "error_over_rho": 1.1540746167051301
+      },
+      {
+        "degree": 5,
+        "eps": 1e-05,
+        "rho": 0.03592764351169083,
+        "measured_minus_kappa": 1.071380495961762,
+        "model_minus_kappa": 1.100952027104686,
+        "absolute_error": 0.02957153114292388,
+        "error_over_rho": 0.8230857426900633
+      },
+      {
+        "degree": 5,
+        "eps": 1e-05,
+        "rho": 0.03592764351169083,
+        "measured_minus_kappa": 1.3098458003745292,
+        "model_minus_kappa": 1.3143307176836232,
+        "absolute_error": 0.00448491730909395,
+        "error_over_rho": 0.1248319363788655
+      },
+      {
+        "degree": 5,
+        "eps": 1e-07,
+        "rho": 0.011361318445951334,
+        "measured_minus_kappa": 1.090938112731989,
+        "model_minus_kappa": 1.1009520271046864,
+        "absolute_error": 0.010013914372697386,
+        "error_over_rho": 0.8814042507774172
+      },
+      {
+        "degree": 5,
+        "eps": 1e-07,
+        "rho": 0.011361318445951334,
+        "measured_minus_kappa": -0.05969264712318346,
+        "model_minus_kappa": -0.06663266588648087,
+        "absolute_error": 0.006940018763297411,
+        "error_over_rho": 0.6108462496067544
+      },
+      {
+        "degree": 5,
+        "eps": 1e-07,
+        "rho": 0.011361318445951334,
+        "measured_minus_kappa": 1.0357313057688642,
+        "model_minus_kappa": 1.022932431091243,
+        "absolute_error": 0.012798874677621086,
+        "error_over_rho": 1.126530757720468
+      },
+      {
+        "degree": 5,
+        "eps": 1e-07,
+        "rho": 0.011361318445951334,
+        "measured_minus_kappa": 1.3136387841873454,
+        "model_minus_kappa": 1.3143307176836205,
+        "absolute_error": 0.0006919334962751655,
+        "error_over_rho": 0.060902570380970154
+      }
+    ],
+    "worst_error_over_rho": 1.7960312944005439,
+    "median_error_shrink_over_rho_shrink": 0.9973075096747448,
+    "verdict": "matched_asymptotic_confirmed"
+  },
+  "strong_form": {
+    "claim": "the strong form D(c) <= 2|c| is FALSE; the target is not",
+    "rows": [
+      {
+        "degree": 3,
+        "best_min_strong": 0.009463482725774658,
+        "strong_form_broken": true,
+        "target_at_witness": -0.878958310430495,
+        "witness_roots": [
+          "-0.413919206876-0.258918970408j",
+          "0.268039933247+0.559981352623j",
+          "0.80731366599-0.587982403492j"
+        ]
+      },
+      {
+        "degree": 4,
+        "best_min_strong": 0.011440423032370806,
+        "strong_form_broken": true,
+        "target_at_witness": -1.3164676327234983,
+        "witness_roots": [
+          "-0.31188608728-0.806284253683j",
+          "0.473883632721+0.434195581807j",
+          "0.879704174299-0.461622718223j",
+          "-0.0111598901424+0.0060273780752j"
+        ]
+      },
+      {
+        "degree": 5,
+        "best_min_strong": -0.15577053647894518,
+        "strong_form_broken": false,
+        "target_at_witness": -1.4074276957315963,
+        "witness_roots": [
+          "-0.221011810388-0.447109421423j",
+          "0.296626291843+0.39922498556j",
+          "0.0290523374685+0.0747902336606j",
+          "0.910846288457-0.0830686614904j",
+          "-0.755418914844+0.146005519469j"
+        ]
+      }
+    ],
+    "verdict": "strong_form_refuted_target_survives"
+  },
+  "symmetric": {
+    "claim": "closed-form polar cross-check of kappa at the symmetric saddle",
+    "rows": [
+      {
+        "degree": 3,
+        "saddle_radius": 0.5773502691896257,
+        "radial_deficit": 0.6855469954347704,
+        "kappa_symmetric": -0.4691535429444811
+      },
+      {
+        "degree": 4,
+        "saddle_radius": 0.6299605249474366,
+        "radial_deficit": 0.5454551808331791,
+        "kappa_symmetric": -0.7144658690616941
+      },
+      {
+        "degree": 5,
+        "saddle_radius": 0.668740304976422,
+        "radial_deficit": 0.4578816688989662,
+        "kappa_symmetric": -0.8795989410538778
+      },
+      {
+        "degree": 6,
+        "saddle_radius": 0.6988271187715792,
+        "radial_deficit": 0.39636480465591656,
+        "kappa_symmetric": -1.001289432887242
+      },
+      {
+        "degree": 7,
+        "saddle_radius": 0.7230200263994838,
+        "radial_deficit": 0.3502814659234052,
+        "kappa_symmetric": -1.0957585868755624
+      },
+      {
+        "degree": 8,
+        "saddle_radius": 0.7429971445684742,
+        "radial_deficit": 0.3142683743401845,
+        "kappa_symmetric": -1.171725914796764
+      }
+    ]
+  }
+}

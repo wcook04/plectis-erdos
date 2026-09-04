@@ -40,6 +40,10 @@ For a command-free first read, begin with
 [printable PDF](claim-faithful-publication-systems-paper.pdf) assume no Lean or
 project history.
 
+For proof search, [browse the linked mathematical graph](docs/semantic/BROWSER.md).
+It connects the results, their proof sources, and related work across all eight
+problems, with full research frontiers available directly in GitHub.
+
 ## What is here
 
 One paper per problem, each with its checked frontier and its open obligation.

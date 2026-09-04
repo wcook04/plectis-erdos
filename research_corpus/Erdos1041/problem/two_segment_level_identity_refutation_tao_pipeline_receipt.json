@@ -1,0 +1,21 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "checkpoint": "two_segment_level_identity_refutation",
+  "input_stage": "proof generation from the measured V_E=mu conjecture and its SPOKE>=1 necessary condition",
+  "output_stage": "exact rational falsification plus a Lean-checked logical gate kernel and expert-facing explanation",
+  "artifact": [
+    "ErdosProblems/Erdos1041/TwoSegmentLevelIdentityRefutation.md",
+    "ErdosProblems/Erdos1041/TwoSegmentLevelIdentityRefutation.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_two_segment_level_identity_refutation.py"
+  ],
+  "human_understanding_delta": "The free-hub mechanism does not operate exactly at the first critical level. A unique first merge can have zero straight root spokes at its own level, even for seven roots strictly in the disk; the successful hub must spend some of the real gap between mu and one. This retires the seductive factorisation V_E=mu<=R^n while leaving the level-one theorem and COVER untouched.",
+  "verification_state": {
+    "analytic": "complete conditional on standard first-merge topology; six critical disks and seven unsafe spokes are certified with exact Fraction arithmetic and Rouche inequalities",
+    "lean": "passed canonical cached build via scripts/lean_fast_build.py --jobs 2 on exact target ErdosProblems.Erdos1041.TwoSegmentLevelIdentityRefutation; 351/351 jobs and final serialized Lake authority check passed",
+    "computation": "deterministic exact rational checker; no sampled maximum in the verdict"
+  },
+  "publication_or_review_state": "private expert handoff; not externally reviewed; novelty and literature priority not claimed",
+  "canonicalization_state": "candidate negative-result authority replacing TwoSegmentLevelIdentity.md sections 3 and 3b",
+  "unresolved_downstream_bottleneck": "The weaker level-one free-hub conjecture V_E<=1 remains open, as do COVER, the component combined-charge lemma, and unrestricted Erdos #1041.",
+  "next_stage_owner": "Refinery: assimilate the refutation, remove V_E=mu and SPOKE>=1 from active producer language, and return the closure engine to the level-one free-hub/COVER bridge."
+}

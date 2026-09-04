@@ -1,0 +1,358 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "zudilinScalarPlusBorder_cannot_meet_required_charge"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "falsification_consequence": "Nonvanishing eliminates first-appearance minimum-layer Phi_5 cancellation as the missing height mechanism; the source identity independently eliminates parameter tuning in this layer for all d.",
+      "survival_consequence": "Vanishing opens a second Phi_5 content layer and licenses local extraction of its next associated-graded coefficient."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "rank_eleven_minimum_phi5_terms_cancel",
+      "statement": "At the first rank where Phi_5 has positive forced border order, the signed minimum determinant layer vanishes coefficientwise."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi5AssociatedGradedLab.md"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_residual_border_charge_receipt.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_phi4_associated_graded_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi5_associated_graded.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/zudilin_cyclotomic_local.py",
+        "system/lib/formal_math_cyclotomic_local.py",
+        "system/lib/formal_math_tropical_determinant.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_residual_border_charge.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_scalar_content.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/SoutheastBlockDeterminant.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Construct every source row only modulo Phi_5^(e_5(n)+1), divide the known scalar order locally, assemble primitive entry residues from scalar units, and sum the minimum layer by subset DP.",
+      "falsifier": "A nonzero local coefficientwise residue proves exact forced Phi_5 order one at rank eleven.",
+      "id": "local_phi_adic_subset_dp_phi5_minimum_determinant",
+      "question": "Does the exact rank-eleven minimum determinant coefficient vanish in Q[mu,p]/(p^4+p^3+p^2+p+1)?",
+      "resource_bounds": {
+        "cyclotomic_index": 5,
+        "global_source_regression_row_count": 5,
+        "maximum_local_modulus_degree": 48,
+        "maximum_subset_count": 2048,
+        "rank": 11
+      },
+      "stop_condition": "Stop after the exact first-appearance decision; a higher Phi_5 rank requires a new all-index residue mechanism."
+    },
+    "problem": {
+      "claim_ceiling": "Exact rank-eleven first-appearance Phi_5 minimum-layer decision; not an all-rank theorem or an irrationality proof.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the Lambert value at p=3/2."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "Phi_5 is the first cyclotomic field of degree four in this sequence, and rank eleven is its first positive-border rank. The local engine changes both the quotient field and computational mechanism.",
+        "next_analytic_target": "Do not extend the Phi_5 rank horizon blindly; use the local engine to seek an all-index identity or rotate to a distinct mechanism."
+      },
+      "status": "exact_one_way_result",
+      "summary": "At first appearance, the exact coefficientwise sum of all 192 minimum Phi_5 assignments is a nonzero element of Q[p]/(Phi_5), so no extra Phi_5 copy occurs and mu-dependent tuning is impossible."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "authority_boundary": "The local quotient computation decides the coefficientwise first-appearance minimum layer only; it is not an all-rank theorem or an irrationality proof.",
+    "cyclotomic_index": 5,
+    "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+    "forced_border_order": 1,
+    "forced_order_is_exact": true,
+    "genuine_minimum_layer_cancellation": false,
+    "local_constructor_matches_global_source": true,
+    "local_constructor_regressions": [
+      {
+        "local_modulus_degree": 4,
+        "local_precision": 1,
+        "matches_global_source_modulo_local_power": true,
+        "row_index": 0
+      },
+      {
+        "local_modulus_degree": 4,
+        "local_precision": 1,
+        "matches_global_source_modulo_local_power": true,
+        "row_index": 1
+      },
+      {
+        "local_modulus_degree": 4,
+        "local_precision": 1,
+        "matches_global_source_modulo_local_power": true,
+        "row_index": 2
+      },
+      {
+        "local_modulus_degree": 4,
+        "local_precision": 1,
+        "matches_global_source_modulo_local_power": true,
+        "row_index": 3
+      },
+      {
+        "local_modulus_degree": 4,
+        "local_precision": 1,
+        "matches_global_source_modulo_local_power": true,
+        "row_index": 4
+      }
+    ],
+    "maximum_local_modulus_degree": 48,
+    "maximum_moment_index": 20,
+    "minimum_assignment_count_formula": "(d+1) * 2^d",
+    "minimum_assignment_count_matches_formula": true,
+    "minimum_permutation_count": 192,
+    "minimum_permutation_order": 1,
+    "mu_one_residue": "5819278950*(p - 1)*(3*p**2 + 5*p + 3)",
+    "mu_zero_residue": "5819278950*(p - 1)*(3*p**2 + 5*p + 3)",
+    "primitive_mu_coefficient_zero_from_index_d_through_4d": true,
+    "primitive_mu_vanishing_indices": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "primitive_row_residues": [
+      {
+        "a_residue": "p",
+        "b_residue": "0",
+        "c_residue": "0",
+        "row_index": 0,
+        "scalar_cyclotomic_order": 0,
+        "scalar_unit_residue": "1"
+      },
+      {
+        "a_residue": "2*p**3 - p**2 - 1",
+        "b_residue": "p**2 + p + 1",
+        "c_residue": "-p**3",
+        "row_index": 1,
+        "scalar_cyclotomic_order": 0,
+        "scalar_unit_residue": "-p**2 + 2*p - 1"
+      },
+      {
+        "a_residue": "-4*p**3 - p**2 + p + 4",
+        "b_residue": "p**3 - 3*p**2 - 4*p - 3",
+        "c_residue": "2*p**3 + 2*p**2 + p - 2",
+        "row_index": 2,
+        "scalar_cyclotomic_order": 0,
+        "scalar_unit_residue": "-10*p**3 - 5*p**2 - 5*p - 5"
+      },
+      {
+        "a_residue": "3*p**3 + p**2 - 2*p - 2",
+        "b_residue": "p**3 + 3*p**2 + 3*p + 1",
+        "c_residue": "-4*p**3 - 3*p**2 + 1",
+        "row_index": 3,
+        "scalar_cyclotomic_order": 0,
+        "scalar_unit_residue": "-25*p**2"
+      },
+      {
+        "a_residue": "-p**3 - 2*p**2 - p - 1",
+        "b_residue": "0",
+        "c_residue": "2*p**3 + 4*p**2 + 2*p + 2",
+        "row_index": 4,
+        "scalar_cyclotomic_order": 0,
+        "scalar_unit_residue": "-75*p**3 - 25*p**2 + 25*p - 50"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "2*p**2 + 2*p + 2",
+        "c_residue": "p**2 + p + 1",
+        "row_index": 5,
+        "scalar_cyclotomic_order": 2,
+        "scalar_unit_residue": "-375*p**2 + 125*p - 375"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "2*p**3 - 2*p**2 + 2*p + 2",
+        "c_residue": "p**3 - p**2 + p + 1",
+        "row_index": 6,
+        "scalar_cyclotomic_order": 2,
+        "scalar_unit_residue": "625*p**3 - 625*p**2 + 625*p - 625"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "2*p**3 + 8*p**2 + 2*p",
+        "c_residue": "p**3 + 4*p**2 + p",
+        "row_index": 7,
+        "scalar_cyclotomic_order": 2,
+        "scalar_unit_residue": "-3125*p**3 - 3125"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "2*p**3 - 4*p - 2",
+        "c_residue": "p**3 - 2*p - 1",
+        "row_index": 8,
+        "scalar_cyclotomic_order": 2,
+        "scalar_unit_residue": "6250*p**3 - 3125*p**2 + 3125*p - 6250"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "-2*p**3 - 2*p**2 - 2*p - 2",
+        "c_residue": "-p**3 - p**2 - p - 1",
+        "row_index": 9,
+        "scalar_cyclotomic_order": 2,
+        "scalar_unit_residue": "15625*p**3 - 31250*p**2 + 15625*p"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "6*p**3 + 6*p",
+        "c_residue": "3*p**3 + 3*p",
+        "row_index": 10,
+        "scalar_cyclotomic_order": 5,
+        "scalar_unit_residue": "312500*p**3 - 312500*p**2 + 312500*p - 312500"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "-6*p**3 + 6*p**2 - 6*p - 6",
+        "c_residue": "-3*p**3 + 3*p**2 - 3*p - 3",
+        "row_index": 11,
+        "scalar_cyclotomic_order": 5,
+        "scalar_unit_residue": "4687500*p**3 + 3125000*p + 3125000"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "-24*p**2 - 30*p - 24",
+        "c_residue": "-12*p**2 - 15*p - 12",
+        "row_index": 12,
+        "scalar_cyclotomic_order": 5,
+        "scalar_unit_residue": "6250000*p**3 - 10937500*p**2 + 10937500*p - 6250000"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "18*p**2 + 24*p + 12",
+        "c_residue": "9*p**2 + 12*p + 6",
+        "row_index": 13,
+        "scalar_cyclotomic_order": 5,
+        "scalar_unit_residue": "31250000*p**3 + 31250000*p**2 + 54687500"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "6*p**2",
+        "c_residue": "3*p**2",
+        "row_index": 14,
+        "scalar_cyclotomic_order": 5,
+        "scalar_unit_residue": "-39062500*p**3 - 78125000*p**2 + 39062500*p - 117187500"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "-22*p**3 - 22*p",
+        "c_residue": "-11*p**3 - 11*p",
+        "row_index": 15,
+        "scalar_cyclotomic_order": 8,
+        "scalar_unit_residue": "5273437500*p**3 + 3515625000*p + 3515625000"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "22*p**3 - 44*p**2 + 22*p - 22",
+        "c_residue": "11*p**3 - 22*p**2 + 11*p - 11",
+        "row_index": 16,
+        "scalar_cyclotomic_order": 8,
+        "scalar_unit_residue": "7031250000*p**3 + 14062500000*p**2 - 5273437500*p + 19335937500"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "66*p**2 + 22*p + 66",
+        "c_residue": "33*p**2 + 11*p + 33",
+        "row_index": 17,
+        "scalar_cyclotomic_order": 8,
+        "scalar_unit_residue": "61523437500*p**3 + 35156250000*p + 35156250000"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "22*p**3 - 44*p - 22",
+        "c_residue": "11*p**3 - 22*p - 11",
+        "row_index": 18,
+        "scalar_cyclotomic_order": 8,
+        "scalar_unit_residue": "219726562500*p**3 + 131835937500*p**2 + 43945312500*p + 263671875000"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "-22*p**3 - 22*p**2",
+        "c_residue": "-11*p**3 - 11*p**2",
+        "row_index": 19,
+        "scalar_cyclotomic_order": 8,
+        "scalar_unit_residue": "1757812500000*p**3 + 659179687500*p**2 + 659179687500*p + 1757812500000"
+      },
+      {
+        "a_residue": "0",
+        "b_residue": "50*p**3 + 50*p**2 - 50",
+        "c_residue": "25*p**3 + 25*p**2 - 25",
+        "row_index": 20,
+        "scalar_cyclotomic_order": 11,
+        "scalar_unit_residue": "-203906250000000*p**3 + 330468750000000*p**2 - 330468750000000*p + 203906250000000"
+      }
+    ],
+    "rank": 11,
+    "schema": "erdos1049-zudilin-local-cyclotomic-associated-graded/1",
+    "signed_leading_residue": "5819278950*(p - 1)*(3*p**2 + 5*p + 3)",
+    "signed_leading_residue_is_mu_independent": true,
+    "signed_leading_residue_nonzero": true,
+    "subset_state_count": 2048
+  },
+  "schema": "erdos1049-zudilin-phi5-associated-graded-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 10215,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi5_associated_graded.py",
+      "sha256": "ef360e1796131c94dffb6695333c5497c4541183485966f6aeb8a9f3edff081c"
+    },
+    {
+      "byte_length": 12391,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/zudilin_cyclotomic_local.py",
+      "sha256": "3774921041e15f06b6df553155b92fe7d222e691bcd725884fc044c8ee210d01"
+    },
+    {
+      "byte_length": 4675,
+      "path": "system/lib/formal_math_cyclotomic_local.py",
+      "sha256": "6eb3f6778225c4956fcf0a0ff18b21d5f1f7a36fabf883c7fd67605952f27bb3"
+    },
+    {
+      "byte_length": 5511,
+      "path": "system/lib/formal_math_tropical_determinant.py",
+      "sha256": "00acb2774f58a8df75ac44d8bad72dc35b72715d1170b2a39887551204bb555c"
+    },
+    {
+      "byte_length": 18955,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_residual_border_charge.py",
+      "sha256": "1ebe02fc3ac2ca6019fe6884ee47dc9c31a65aa2c0ca6eb3c23a080a0d23c3f9"
+    },
+    {
+      "byte_length": 13070,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_scalar_content.py",
+      "sha256": "439aae4afc146d513dab5d1851ff91d1c0bce97b126e1f21df34f8eeb688c758"
+    },
+    {
+      "byte_length": 6193,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/SoutheastBlockDeterminant.lean",
+      "sha256": "08d072d20fa7795514bfc1e424f6bc370071b1e5bbe69ce05b5f8aa40154aec4"
+    },
+    {
+      "byte_length": 6910,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi5AssociatedGradedLab.md",
+      "sha256": "89e12581a32a5fa720bbdb5a402152ab69006a6aa03202f511c3d24f50524e29"
+    },
+    {
+      "byte_length": 15852,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "sha256": "4dce15dfc8a96099e1787b3229bccea000c484a8db5625f7dbe88c604c84ac03"
+    }
+  ],
+  "status": "exact_mechanism_eliminated"
+}

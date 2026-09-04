@@ -1,0 +1,78 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CubicCriticalHub.md",
+      "falsification_consequence": "Withdraw the cubic proof and repair the first failed identity.",
+      "survival_consequence": "Use the ordinary Rouch\u00e9/homotopy lemma and the Lean fan-in to land the cubic theorem, then seek a higher-degree replacement for cubic sparsity."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "minimal_critical_value_cubic_hub",
+      "statement": "For a cubic, the critical point with smaller critical-value modulus normalizes to P_b(w)=w^3-(3/2)b w^2+1 with at least two unit-disc zeros, and those zeros give safe short straight spokes."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CubicCriticalHub.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cubic_critical_hub.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CubicCriticalHub.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Expand and factor the normalized spoke remainder, the unit-circle boundary norm defect, and the radial strict-region defect over Q.",
+      "falsifier": "Any nonzero symbolic remainder, or a sign factor not forced nonpositive on |cos(u)|<=1.",
+      "id": "exact_normalized_cubic_boundary_and_spoke_identities",
+      "question": "Do the unit-circle exclusion, radial homotopy, and spoke containment reduce to the claimed exact identities?",
+      "resource_bounds": {
+        "symbolic_variables": 7
+      },
+      "stop_condition": "Stop after exact identities are checked; do not replace the Rouch\u00e9 zero count by floating root scans."
+    },
+    "problem": {
+      "claim_ceiling": "The exact symbolic checker verifies the algebraic identities in the ordinary Rouch\u00e9 proof. Lean checks the spoke and metric consumer. The unrestricted all-degree Erd\u0151s problem remains open.",
+      "id": "erdos_1041",
+      "target_statement": "For a monic cubic with all roots in the open unit disk, join two listed roots inside |f|<1 by a path of length less than two."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "one_way_theorem",
+        "decision_basis": "The symbolic receipt supports a complete ordinary proof of the degree-three case and a kernel-checked downstream consumer.",
+        "next_analytic_target": "At a minimal-modulus critical value in higher degree, replace the sparse cubic normalized form by a multiplicity-aware root-sheet bound."
+      },
+      "status": "exact_one_way_result",
+      "summary": "All three rational polynomial identities are exact. The unit-circle defect factors as (64/729)c^4(16c^2-27), which is nonpositive for |c|<=1; the spoke remainder is t^2 P_b(w)."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "boundary_sign_certificate": "For real |c|<=1, 16*c^2-27<=-11, so the defect is nonpositive; equality forces c=0 and then b=0.",
+    "normalized_cubic": "w^3-(3/2)*b*w^2+1",
+    "radial_strict_region_defect": "lam*(lam*norm_sq - 2*real_part)",
+    "rouche_large_parameter_threshold": "(3/2)*|b|>2, equivalently |b|>4/3",
+    "spoke_identity_consequence": "At a normalized root, P_b(tw)=1-t^2-t^2(1-t)w^3.",
+    "spoke_identity_remainder": "t**2*(-3*b*w**2 + 2*w**3 + 2)/2",
+    "unit_circle_boundary_defect": "64*c**4*(16*c**2 - 27)/729"
+  },
+  "schema": "erdos1041-cubic-critical-hub/1",
+  "source_records": [
+    {
+      "byte_length": 7555,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cubic_critical_hub.py",
+      "sha256": "06aebc53c8bb7736f66c7841213b00fdc521fd1fc1cc919b03c4d93a2e3d6722"
+    },
+    {
+      "byte_length": 4888,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CubicCriticalHub.md",
+      "sha256": "7ebbd851553a533a959bf8f45611bf8964ff3307f1ab1f39176bd793a5d1a8a1"
+    },
+    {
+      "byte_length": 5137,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CubicCriticalHub.lean",
+      "sha256": "b72d2f20eaee2613ce52f1a8a5334bde51ee89b1fd7ab80153b2cf92158d40a8"
+    }
+  ],
+  "status": "exact_symbolic_and_lean_consumed_cubic_theorem"
+}

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041StapleEquality.Challenge",
+  "solution_module": "ExternalVerification1041StapleEquality.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041StapleEquality.staple_length_eq"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

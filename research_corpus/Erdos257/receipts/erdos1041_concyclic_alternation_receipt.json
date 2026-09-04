@@ -1,0 +1,228 @@
+{
+  "schema": "erdos1041_concyclic_alternation_receipt_v1",
+  "arms": {
+    "theorem_sweep": {
+      "configs": 660,
+      "failures": 0,
+      "failing_rows": []
+    },
+    "regular_ngon_sharpness": [
+      {
+        "n": 2,
+        "min_gap_arc_max": 2.0,
+        "min_gap_chord_max": 1.0,
+        "predicted_chord": 1.0,
+        "num_good_gaps": 2
+      },
+      {
+        "n": 3,
+        "min_gap_arc_max": 1.9999999999999998,
+        "min_gap_chord_max": 1.1249999999999998,
+        "predicted_chord": 1.125,
+        "num_good_gaps": 3
+      },
+      {
+        "n": 4,
+        "min_gap_arc_max": 2.0,
+        "min_gap_chord_max": 1.25,
+        "predicted_chord": 1.25,
+        "num_good_gaps": 4
+      },
+      {
+        "n": 5,
+        "min_gap_arc_max": 1.9999999999999998,
+        "min_gap_chord_max": 1.3465678107421708,
+        "predicted_chord": 1.346567810742171,
+        "num_good_gaps": 5
+      },
+      {
+        "n": 6,
+        "min_gap_arc_max": 1.9999999999999996,
+        "min_gap_chord_max": 1.421875,
+        "predicted_chord": 1.4218750000000002,
+        "num_good_gaps": 6
+      },
+      {
+        "n": 7,
+        "min_gap_arc_max": 2.0,
+        "min_gap_chord_max": 1.4819128340102523,
+        "predicted_chord": 1.4819128340102523,
+        "num_good_gaps": 7
+      },
+      {
+        "n": 8,
+        "min_gap_arc_max": 2.0,
+        "min_gap_chord_max": 1.5307900429449557,
+        "predicted_chord": 1.5307900429449552,
+        "num_good_gaps": 8
+      },
+      {
+        "n": 9,
+        "min_gap_arc_max": 1.9999999999999971,
+        "min_gap_chord_max": 1.57131068685525,
+        "predicted_chord": 1.5713106868552509,
+        "num_good_gaps": 9
+      },
+      {
+        "n": 10,
+        "min_gap_arc_max": 2.0,
+        "min_gap_chord_max": 1.605429049713107,
+        "predicted_chord": 1.6054290497131063,
+        "num_good_gaps": 10
+      }
+    ],
+    "adversarial": [
+      {
+        "n": 3,
+        "adv_max_arc_constant": 1.9999999999999998,
+        "arc_budget": 2.0,
+        "adv_max_chord_constant": 1.1249999999999998,
+        "regular_ngon_chord": 1.125
+      },
+      {
+        "n": 4,
+        "adv_max_arc_constant": 2.0,
+        "arc_budget": 2.0,
+        "adv_max_chord_constant": 1.25,
+        "regular_ngon_chord": 1.25
+      },
+      {
+        "n": 5,
+        "adv_max_arc_constant": 1.9999999999999998,
+        "arc_budget": 2.0,
+        "adv_max_chord_constant": 1.3465678107421708,
+        "regular_ngon_chord": 1.346567810742171
+      },
+      {
+        "n": 6,
+        "adv_max_arc_constant": 1.9999999999999996,
+        "arc_budget": 2.0,
+        "adv_max_chord_constant": 1.421875,
+        "regular_ngon_chord": 1.4218750000000002
+      },
+      {
+        "n": 7,
+        "adv_max_arc_constant": 2.0,
+        "arc_budget": 2.0,
+        "adv_max_chord_constant": 1.4819128340102523,
+        "regular_ngon_chord": 1.4819128340102523
+      }
+    ],
+    "negative_control": [
+      {
+        "n": 3,
+        "false_statement_max_over_all_gaps": 7.999928805366474,
+        "threshold": 2.0,
+        "broken": true
+      },
+      {
+        "n": 4,
+        "false_statement_max_over_all_gaps": 15.995067274577414,
+        "threshold": 2.0,
+        "broken": true
+      },
+      {
+        "n": 5,
+        "false_statement_max_over_all_gaps": 31.9508387477967,
+        "threshold": 2.0,
+        "broken": true
+      },
+      {
+        "n": 6,
+        "false_statement_max_over_all_gaps": 63.85364198503243,
+        "threshold": 2.0,
+        "broken": true
+      },
+      {
+        "n": 7,
+        "false_statement_max_over_all_gaps": 127.29951819465299,
+        "threshold": 2.0,
+        "broken": true
+      }
+    ],
+    "corollary_at_threshold_radius": [
+      {
+        "n": 2,
+        "rho": 0.7071067811865476,
+        "worst_chord_level": 0.4999999994004108,
+        "level_budget": 1.0,
+        "worst_chord_length": 1.4142135615251479,
+        "length_budget": 2.0,
+        "ok": 1.0
+      },
+      {
+        "n": 3,
+        "rho": 0.7937005259840998,
+        "worst_chord_level": 0.5624701506245222,
+        "level_budget": 1.0,
+        "worst_chord_length": 1.3746566978342991,
+        "length_budget": 2.0,
+        "ok": 1.0
+      },
+      {
+        "n": 4,
+        "rho": 0.8408964152537145,
+        "worst_chord_level": 0.6248026841312387,
+        "level_budget": 1.0,
+        "worst_chord_length": 1.1889132206575401,
+        "length_budget": 2.0,
+        "ok": 1.0
+      },
+      {
+        "n": 5,
+        "rho": 0.8705505632961241,
+        "worst_chord_level": 0.6728934373636174,
+        "level_budget": 1.0,
+        "worst_chord_length": 1.0228774992471728,
+        "length_budget": 2.0,
+        "ok": 1.0
+      },
+      {
+        "n": 6,
+        "rho": 0.8908987181403393,
+        "worst_chord_level": 0.7098659374789364,
+        "level_budget": 1.0,
+        "worst_chord_length": 0.8904817334908596,
+        "length_budget": 2.0,
+        "ok": 1.0
+      },
+      {
+        "n": 7,
+        "rho": 0.9057236642639067,
+        "worst_chord_level": 0.7402425174860154,
+        "level_budget": 1.0,
+        "worst_chord_length": 0.785410653719501,
+        "length_budget": 2.0,
+        "ok": 1.0
+      },
+      {
+        "n": 8,
+        "rho": 0.9170040432046712,
+        "worst_chord_level": 0.7643786163216038,
+        "level_budget": 1.0,
+        "worst_chord_length": 0.7013022651370401,
+        "length_budget": 2.0,
+        "ok": 1.0
+      },
+      {
+        "n": 9,
+        "rho": 0.9258747122872905,
+        "worst_chord_level": 0.7844961528307606,
+        "level_budget": 1.0,
+        "worst_chord_length": 0.6330707096341968,
+        "length_budget": 2.0,
+        "ok": 1.0
+      },
+      {
+        "n": 10,
+        "rho": 0.9330329915368074,
+        "worst_chord_level": 0.8002367572700353,
+        "level_budget": 1.0,
+        "worst_chord_length": 0.5755634196940093,
+        "length_budget": 2.0,
+        "ok": 1.0
+      }
+    ]
+  },
+  "verdict": "PASS"
+}

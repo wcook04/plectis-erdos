@@ -1,0 +1,23 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "checkpoint_id": "quintic_equality_tetrahedron_20260825",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/QuinticEqualityTetrahedron.md",
+    "ErdosProblems/Erdos1041/QuinticEqualityTetrahedron.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_quintic_equality_tetrahedron.py"
+  ],
+  "human_understanding_delta": "The sharp mixed chart has four certified active contacts, not an uncontrolled degeneracy. Their points are one common scale times sqrt(5)+i, i(sqrt(3)-1), -sqrt(5)+i, and -i(sqrt(3)+1). The corresponding three-parameter gradients form an affinely independent tetrahedron whose barycentre is exactly zero. Hence every nonzero amplitude/phase perturbation strictly improves at least one connector to first order; nondegenerate double-contact curvature absorbs the quadratic Taylor remainder and proves a genuine open neighbourhood selector theorem.",
+  "verification_state": {
+    "analytic_derivation": "complete_four_connector_equality_atlas_and_open_neighbourhood_stability_theorem",
+    "exact_symbolic_replay": "pass_two_axis_double_contact_factorizations_four_strict_ray_certificates_exact_contact_geometry_centred_tetrahedron_and_500000_direction_stress_replay",
+    "lean_focused_build": "pass_canonical_cached_exact_target_and_final_serialized_lake_authority_check"
+  },
+  "publication_or_review_state": "private_expert_checkpoint_not_yet_external_reviewed",
+  "canonicalization_state": "new_private_authoring_module_and_exact_checker_verified_pending_scoped_commit",
+  "unresolved_downstream_bottleneck": "Cover the compact normalized mixed coefficient space outside symmetry copies of the proved equality neighbourhood by finitely many strict connector boxes, then transfer the selector through the finite near-Fekete expansion.",
+  "next_stage_owner": "Refinery: construct a rational interval/Bernstein finite cover of the compact parameter complement, using the equality neighbourhood as an excluded certified open set.",
+  "claim_ceiling": "This proves a genuine open parameter neighbourhood of the sharp canonical equality chart. It does not prove the global mixed-model selector, the full near-Fekete theorem, or unrestricted Erdős #1041."
+}

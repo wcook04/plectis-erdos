@@ -1,0 +1,62 @@
+version: "v0.4"
+project:
+  name: "Erdős #68 prime-unit translator and remote channel reduction"
+  description: "An exact prime-selective residual translator and an unconditional remote factorial-grid kernel with residual at most one half in absolute value."
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A05"]
+sources:
+  - title: "Prime-unit translators for Erdős Problem 68"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development and associated paper are the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #68"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/68"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The exact hypotheses, theorem boundaries, and open-problem limitation were checked by the author with AI assistance; no independent review is claimed."
+palomar_qualification:
+  status: "candidate_pending_terminal_comparator_gates"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "positive_and_deliberate_negative_pending"
+  note: "First-wave candidate; no Palomar verdict, novelty ruling, or submission is claimed."
+status:
+  scope: "Three exact source-backed declarations; one trusted sorry per Challenge theorem."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axiom_audit_status: "focused_lean_and_axiom_audit_passed_2026_08_31"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification68PrimeUnitTranslator.exists_remote_factorialGrid_primeTranslator_reduction"
+      file: "ExternalVerification68PrimeUnitTranslator/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "exact_source_transport_focused_lean_and_axiom_audit_passed"
+      novelty_status: "unassessed"
+      boundary: "The residual bound is non-strict and does not prove irrationality of Erdős #68."
+alignment:
+  namespace: "Erdos249257.ExternalVerification68PrimeUnitTranslator"
+  statements:
+    - source: "ErdosProblems.Erdos68.PrimeUnitTranslator"
+      lean: "primeTranslator exact profile, channelResidual_appendPrimeTranslator, and exists_remote_factorialGrid_primeTranslator_reduction"
+      module: "ExternalVerification68PrimeUnitTranslator/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"

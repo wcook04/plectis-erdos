@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification68ChannelRadius.Challenge",
+  "solution_module": "ExternalVerification68ChannelRadius.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68ChannelRadius.square_subsequence_radius_three_halves_lower"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

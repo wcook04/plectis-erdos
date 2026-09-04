@@ -1,0 +1,97 @@
+{
+  "K": 64,
+  "depth": 4000,
+  "probe": "gf2_parity_booleanisation",
+  "problem_id": "erdos_257",
+  "schema": "aiw-formal-math-receipt/1",
+  "sources": {
+    "g period 2: 01": {
+      "ambiguous_floor_ranks": 0,
+      "carry_parity_entropy_bits": 0.0,
+      "carry_parity_eventual_period_pre64_per512": [
+        0,
+        1
+      ],
+      "carry_parity_ones_fraction": 0.0,
+      "carry_parity_p12": 1,
+      "matched_bernoulli_p12": 1,
+      "max_carry": 0,
+      "parity_identity_holds": true,
+      "support_density": 0.00025,
+      "word_length": 2000
+    },
+    "g period 3: 011": {
+      "ambiguous_floor_ranks": 0,
+      "carry_parity_entropy_bits": 0.9962572968375276,
+      "carry_parity_eventual_period_pre64_per512": null,
+      "carry_parity_ones_fraction": 0.464,
+      "carry_parity_p12": 1473,
+      "matched_bernoulli_p12": 1584,
+      "max_carry": 11,
+      "parity_identity_holds": true,
+      "support_density": 0.1075,
+      "word_length": 2000
+    },
+    "g period 5: 01101": {
+      "ambiguous_floor_ranks": 0,
+      "carry_parity_entropy_bits": 0.9966619137320386,
+      "carry_parity_eventual_period_pre64_per512": null,
+      "carry_parity_ones_fraction": 0.466,
+      "carry_parity_p12": 1482,
+      "matched_bernoulli_p12": 1584,
+      "max_carry": 10,
+      "parity_identity_holds": true,
+      "support_density": 0.09975,
+      "word_length": 2000
+    },
+    "g period 6: 010011": {
+      "ambiguous_floor_ranks": 0,
+      "carry_parity_entropy_bits": 0.9999415700620251,
+      "carry_parity_eventual_period_pre64_per512": null,
+      "carry_parity_ones_fraction": 0.4955,
+      "carry_parity_p12": 1511,
+      "matched_bernoulli_p12": 1606,
+      "max_carry": 10,
+      "parity_identity_holds": true,
+      "support_density": 0.107,
+      "word_length": 2000
+    },
+    "g period 7: 0110100": {
+      "ambiguous_floor_ranks": 0,
+      "carry_parity_entropy_bits": 0.999953833266239,
+      "carry_parity_eventual_period_pre64_per512": null,
+      "carry_parity_ones_fraction": 0.496,
+      "carry_parity_p12": 1581,
+      "matched_bernoulli_p12": 1615,
+      "max_carry": 14,
+      "parity_identity_holds": true,
+      "support_density": 0.43275,
+      "word_length": 2000
+    },
+    "g=(3,7) best finite fit 0011111000": {
+      "ambiguous_floor_ranks": 0,
+      "carry_parity_entropy_bits": 0.9999819662368479,
+      "carry_parity_eventual_period_pre64_per512": null,
+      "carry_parity_ones_fraction": 0.4975,
+      "carry_parity_p12": 1550,
+      "matched_bernoulli_p12": 1612,
+      "max_carry": 18,
+      "parity_identity_holds": true,
+      "support_density": 0.48975,
+      "word_length": 2000
+    },
+    "squarefree g=10 (pre1,per1)": {
+      "ambiguous_floor_ranks": 0,
+      "carry_parity_entropy_bits": 0.9958294764724046,
+      "carry_parity_eventual_period_pre64_per512": null,
+      "carry_parity_ones_fraction": 0.462,
+      "carry_parity_p12": 1492,
+      "matched_bernoulli_p12": 1570,
+      "max_carry": 18,
+      "parity_identity_holds": true,
+      "support_density": 0.60825,
+      "word_length": 2000
+    }
+  },
+  "verdict": "In the characteristic-two lane tau_A(m) = g(m) mod 2 holds by construction, so eps_m = g(m) + C_m mod 2 and rationality of the real lift is EXACTLY eventual periodicity of the carry parity C_m mod 2. Measured: no eventual period up to preperiod 64 / period 512, subword complexity indistinguishable from a matched Bernoulli null, entropy ~1 bit. So CharacteristicTwoRealLiftScan.md section 4's 'larger source period / larger real period' caveat is not a horizon that a longer scan would clear: the composite output carries no structure the carry parity does not, and the carry parity is high-entropy for every source tested. Any future lift law must act on C mod 2. Route explanation, not progress on Erdos 257."
+}

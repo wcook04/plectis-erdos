@@ -1,0 +1,100 @@
+{
+  "schema": "erdos1041_three_exterior_endpoint_selector_receipt_v1",
+  "symbolic": {
+    "endpoint_identity_H1_equals_P": true,
+    "poisson_kernel_convexity": true,
+    "psi_constant_exact": true,
+    "phi_constant_exact": true,
+    "regular_comparator_slope_exact": true
+  },
+  "residual": {
+    "scan_min": 2.0327703426303856e-05,
+    "scan_max": 212.66722962865117,
+    "scan_all_nonnegative": true,
+    "equal_radius_residual": 4.440892098500626e-16,
+    "near_equal_quadratic_coefficients": [
+      14.064896987591169,
+      14.06215505772579,
+      14.062127684510983
+    ],
+    "endpoint_branch_brute_force_max_gap": 8.326672684688674e-17
+  },
+  "witness": {
+    "s": "0.0099332217255",
+    "per_ray_log_surplus_at_q_s": [
+      "9.20313618498",
+      "9.20313615917",
+      "9.20313618498"
+    ],
+    "min_ray_value_at_q_s": "9928.216753",
+    "literal_domain_falsified": true
+  },
+  "corrected_domain": {
+    "spot_checks": [
+      {
+        "radii": [
+          "0.5",
+          "0.33333333",
+          "0.2"
+        ],
+        "per_ray_barriers": [
+          "-1.921385102e-6",
+          "-7.253134272e-7",
+          "0.3836850177"
+        ],
+        "min_ray_barrier": "-1.921385102e-6",
+        "within_one": true
+      },
+      {
+        "radii": [
+          "0.9",
+          "0.5",
+          "0.5"
+        ],
+        "per_ray_barriers": [
+          "-1.879350128e-5",
+          "-2.092459485e-6",
+          "-4.034733358e-7"
+        ],
+        "min_ray_barrier": "-1.879350128e-5",
+        "within_one": true
+      },
+      {
+        "radii": [
+          "0.95",
+          "0.9",
+          "0.1"
+        ],
+        "per_ray_barriers": [
+          "-3.711279764e-5",
+          "-1.685574844e-5",
+          "0.08480599275"
+        ],
+        "min_ray_barrier": "-3.711279764e-5",
+        "within_one": true
+      },
+      {
+        "radii": [
+          "0.1",
+          "0.1",
+          "0.1"
+        ],
+        "per_ray_barriers": [
+          "0.1420829462",
+          "-2.625728041e-7",
+          "-2.625728041e-7"
+        ],
+        "min_ray_barrier": "-2.625728041e-7",
+        "within_one": true
+      }
+    ],
+    "all_within_one": true
+  },
+  "boundary_layer": {
+    "adversarial_min_margin": 0.04578255577887225,
+    "no_violation_found": true,
+    "regular_equality_margin_60dps": "0.0"
+  },
+  "claim_boundary": "Exact: endpoint identification, tangent constants, angle elimination to (E3), the [s,1] falsity witness, and regular equality. Numerical evidence only: E >= 0, (BL), and the corrected-domain selector conjecture. Unrestricted Erdos 1041 remains open.",
+  "pass": true
+}

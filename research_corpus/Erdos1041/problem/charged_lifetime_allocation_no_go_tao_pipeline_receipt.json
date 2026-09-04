@@ -1,0 +1,13 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "charged_lifetime_scalar_allocation_no_go",
+  "input_stage": "full_energy_charged_lifetime_LC3_and_successor_packet_desk_02",
+  "output_stage": "exact_abstraction_no_go_plus_lean_checked_slack_kernel",
+  "human_understanding_delta": "Strict positivity of the LC3 node and singleton charges has no uniform scalar floor: J_k(E;beta,delta) is at most kE/2. A target proof must exploit the polynomial constraints coupling these charges to attachment ancestry or connector geometry.",
+  "verification_state": "PASS: deterministic rational checker plus focused and final serialized Lean build, 3285 jobs",
+  "publication_or_review_state": "private source-authority candidate; not a solution claim",
+  "canonicalization_state": "companion Markdown theorem, Lean scalar kernel, and deterministic rational checker",
+  "unresolved_downstream_bottleneck": "prove a polynomial lower coupling or dichotomy converting small charged terms into a complete connector regime",
+  "next_stage_owner": "Type A verification, frontier propagation, and unsent packet-source displacement"
+}

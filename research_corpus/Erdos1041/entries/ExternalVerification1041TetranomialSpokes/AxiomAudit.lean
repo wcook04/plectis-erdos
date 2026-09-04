@@ -1,0 +1,13 @@
+/-
+Copyright (c) 2026 Will Cook. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Will Cook
+-/
+import ExternalVerification1041TetranomialSpokes.Solution
+
+#print axioms Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_factorization
+#print axioms Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget
+#print axioms Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget
+#print axioms Erdos249257.ExternalVerification1041TetranomialSpokes.sum_normSq_const_add_mul
+#print axioms Erdos249257.ExternalVerification1041TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget
+#print axioms Erdos249257.ExternalVerification1041TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget

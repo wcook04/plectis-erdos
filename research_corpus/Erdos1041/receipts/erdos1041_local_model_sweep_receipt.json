@@ -1,0 +1,131 @@
+{
+  "closed_form_negative": {
+    "observation": "At a fixed lambda = 1e-6 the ratio D/S at the minimising hub reads 0.29733, 0.24413, 0.20870, 0.18233 for degrees 3 to 6. Inverting and subtracting n log 2 gives 1.2839, 1.3236, 1.3258, 1.3257, which looks convergent and suggests D/S = 1/(n log 2 + kappa).",
+    "verdict": "no closed form; the apparent convergence is a fixed-lambda artifact",
+    "why": "Taking lambda to zero at each degree separately, the same quantity keeps drifting and kappa does not settle: 5.50, 1.51, 1.28, 1.21, 1.16, 1.12, 1.08, 1.05 for degrees 3 to 10, still falling. Different degrees reach their asymptotic regime at different lambda, so comparing them at one fixed lambda compares different stages of the same limit."
+  },
+  "derivation": "Perturbing z^n - r^n by eps*g puts the n-1 critical points at radius (eps|g'(0)|/n)^{1/(n-1)}, the measured cusp scale; zooming there sends every perturbation to this two-term model, and the scaling z -> mu z normalises lambda real and nonnegative, leaving three real parameters.",
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "falsification_consequence": "A cell with minimum hub ratio at least one would refute MIN on the local model and, given the model is the leading-order zoom, would strongly indicate a genuine counterexample nearby.",
+      "survival_consequence": "The regime where every previous mechanism failed is reduced to a compact searchable family on which MIN holds, so the remaining work is the uniformity estimate rather than a further search for counterexamples."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "hard_regime_local_model",
+      "statement": "The near-Fekete regime has a universal three-parameter local model z^n + lambda z - rho exp(i gamma), on which the minimum over admissible hubs of L(c)/(2R) stays below one while individual hubs exceed it."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/StraightSpokeHubCriterionLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/HardRegimeIsNearFekete.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_local_model_sweep.py",
+        "system/lib/formal_math_lemniscate.py"
+      ]
+    },
+    "probe": {
+      "computation": "The model is built from its coefficients directly, its roots taken, and every admissible hub's descending branch pair integrated with endpoint and level residual gates. Lambda runs over seven values including zero, the modulus over five, and the argument over eight, the argument being fixed only where lambda vanishes and the family is rotationally degenerate.",
+      "falsifier": "MIN fails if any cell has minimum hub ratio at least one. The sweep is inadequate if no cell has a hub ratio above one, since the per-hub form is independently known to fail in this regime.",
+      "id": "erdos1041_local_model_sweep",
+      "question": "Does the hard regime reduce to a compact parameter family, and does MIN survive a complete sweep of it while the per-hub form fails?",
+      "resource_bounds": {
+        "argument_values": 8,
+        "lambda_values": 7,
+        "maximum_degree": 6,
+        "modulus_values": 5
+      },
+      "stop_condition": "Stop once the three-parameter space is covered at every degree. Extending to finer grids is a longer horizon; what is missing is uniform control of the error between a polynomial and its local model, which is analysis."
+    },
+    "problem": {
+      "claim_ceiling": "Identifies the leading-order local model of the regime the corpus calls hard, and sweeps it completely. MIN survives on the model and its per-hub strengthening does not. It is a leading-order zoom, so it does not prove MIN near the extremal family, and Erdos #1041 remains open.",
+      "id": "erdos_1041",
+      "target_statement": "If a monic polynomial f(z)=product_i(z-z_i) has all roots in the open unit disk, prove that two roots can be joined by a curve of length less than 2 contained in the open lemniscate |f|<1."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "A complete sweep of the identified local model, with the per-hub failure acting as a positive control that the sweep reaches the intended regime.",
+        "next_analytic_target": "Control the error between a polynomial in the near-Fekete shell and its local model uniformly, so that a verification on the model transfers. The cusp order 1/(n-1) is the scale at which that control must hold."
+      },
+      "status": "finite_support",
+      "summary": "Across the three-parameter local model the minimum over admissible hubs stays below one at every degree, with suprema 0.999999996, 0.999996778, 0.999914693, 0.999470405 for degrees 3 to 6, each attained at lambda = 0 where equality is already known. Individual hubs exceed one in 23, 46, 87, 52 cells respectively, so the minimum over hubs is load-bearing."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "model": "f(z) = z^n + lambda z - rho exp(i gamma), lambda >= 0",
+  "sources": [
+    {
+      "byte_length": 14338,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_local_model_sweep.py",
+      "sha256": "418e8ffd5ecee88c62634dbbb482bad877579620d8a1aba1c5e224d9ea29452d"
+    },
+    {
+      "byte_length": 21774,
+      "path": "system/lib/formal_math_lemniscate.py",
+      "sha256": "3814a22fa9ad00656314252dd2663b9add8e7d07219490d2ae74eef3d85c9278"
+    }
+  ],
+  "sweep": [
+    {
+      "attained_at_lambda_modulus_argument_over_pi": [
+        0.0,
+        0.99999,
+        1.0
+      ],
+      "cells": 113,
+      "cells_with_a_hub_over_one": 23,
+      "degree": 3,
+      "min_over_hubs_holds": true,
+      "per_hub_form_fails": true,
+      "supremum_maximum_hub_ratio": 1.0269977262738046,
+      "supremum_minimum_hub_ratio": 0.9999999959946836
+    },
+    {
+      "attained_at_lambda_modulus_argument_over_pi": [
+        0.0,
+        0.99,
+        1.0
+      ],
+      "cells": 116,
+      "cells_with_a_hub_over_one": 46,
+      "degree": 4,
+      "min_over_hubs_holds": true,
+      "per_hub_form_fails": true,
+      "supremum_maximum_hub_ratio": 1.022278507179838,
+      "supremum_minimum_hub_ratio": 0.9999967778370654
+    },
+    {
+      "attained_at_lambda_modulus_argument_over_pi": [
+        0.0,
+        0.999,
+        1.0
+      ],
+      "cells": 113,
+      "cells_with_a_hub_over_one": 87,
+      "degree": 5,
+      "min_over_hubs_holds": true,
+      "per_hub_form_fails": true,
+      "supremum_maximum_hub_ratio": 1.0452021529894722,
+      "supremum_minimum_hub_ratio": 0.9999146931506782
+    },
+    {
+      "attained_at_lambda_modulus_argument_over_pi": [
+        0.0,
+        0.99,
+        1.0
+      ],
+      "cells": 116,
+      "cells_with_a_hub_over_one": 52,
+      "degree": 6,
+      "min_over_hubs_holds": true,
+      "per_hub_form_fails": true,
+      "supremum_maximum_hub_ratio": 1.032277271118987,
+      "supremum_minimum_hub_ratio": 0.999470404912529
+    }
+  ]
+}

@@ -4748,7 +4748,7 @@ def fit_module_family_routes(
             reviewed_total,
             claim_family_total,
         )
-        encoded = json.dumps(packet, ensure_ascii=False, indent=2) + "\n"
+        encoded = encode_packet(packet)
         if len(encoded.encode("utf-8")) <= MODULE_PACKET_BUDGET_BYTES:
             return
         # Claim-registry family routes are the weaker join: a reviewed family
@@ -10215,6 +10215,14 @@ def render_card(packet: dict[str, Any]) -> str:
     )
 
 
+def encode_packet(packet: dict[str, Any]) -> str:
+    """Keep every field when whitespace alone would overflow a bounded JSON route."""
+    pretty = json.dumps(packet, ensure_ascii=False, indent=2) + "\n"
+    if len(pretty.encode("utf-8")) <= OUTPUT_BUDGET_BYTES:
+        return pretty
+    return json.dumps(packet, ensure_ascii=False, separators=(",", ":")) + "\n"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group()
@@ -10366,7 +10374,7 @@ def main() -> int:
     if output_format == "card":
         print(render_card(packet))
     else:
-        encoded = json.dumps(packet, ensure_ascii=False, indent=2) + "\n"
+        encoded = encode_packet(packet)
         if len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES:
             print(
                 f"query_corpus: response exceeds {OUTPUT_BUDGET_BYTES} bytes; use --format card",

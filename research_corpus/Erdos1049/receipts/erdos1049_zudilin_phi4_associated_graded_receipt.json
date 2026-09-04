@@ -1,0 +1,208 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "zudilinScalarPlusBorder_cannot_meet_required_charge"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "falsification_consequence": "Nonvanishing eliminates minimum-layer Phi_4 cancellation at its first possible rank.",
+      "survival_consequence": "Coefficientwise vanishing opens a second Phi_4 content layer not visible in the entry valuations."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "rank_nine_minimum_phi4_terms_cancel",
+      "statement": "At the first rank where Phi_4 has positive forced border order, the signed minimum-order determinant terms cancel coefficientwise and create a second Phi_4 factor."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi4AssociatedGradedLab.md"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_residual_border_charge_receipt.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_phi3_associated_graded_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi4_associated_graded.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi3_associated_graded.py",
+        "system/lib/formal_math_tropical_determinant.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_residual_border_charge.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_scalar_content.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/SoutheastBlockDeterminant.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Use the termwise-cancelled Z[p] source constructor, extract exact Phi_4 valuations and leading residues, and sum all minimum-weight determinant terms by subset DP in Q[mu,p]/(Phi_4).",
+      "falsifier": "A nonzero coefficientwise minimum-layer residue proves the rank-nine Phi_4 order equals the forced border order one.",
+      "id": "quotient_ring_subset_dp_phi4_minimum_determinant",
+      "question": "Does the exact rank-nine minimum-weight determinant coefficient vanish in Q[mu,p]/(p^2+1)?",
+      "resource_bounds": {
+        "cyclotomic_index": 4,
+        "maximum_subset_count": 512,
+        "rank": 9,
+        "specialization_regression_count": 2
+      },
+      "stop_condition": "Stop after the exact first-appearance Phi_4 decision; a higher rank requires a new residue-class identity."
+    },
+    "problem": {
+      "claim_ceiling": "Exact rank-nine decision for minimum-term Phi_4 cancellation in the primitive residual Hankel determinant; not an all-rank theorem or an irrationality proof.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the Lambert value at p=3/2."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "Phi_4 is a new cyclotomic quotient and rank nine is its first positive border rank, so this is a mechanism change rather than a longer Phi_3 horizon.",
+        "next_analytic_target": "Seek an all-rank residue-class theorem or rotate to a genuinely new cyclotomic/integral mechanism; do not extend rank at Phi_4 blindly."
+      },
+      "status": "exact_one_way_result",
+      "summary": "At the first rank with positive forced Phi_4 border order, the coefficientwise associated-graded determinant is nonzero modulo Phi_4, so minimum-term cancellation supplies no extra Phi_4 copy."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "all_nonzero_entry_orders_match_residual_formula": true,
+    "authority_boundary": "The quotient-ring computation decides exact rank-9 Phi_4 minimum-layer cancellation. It neither proves an all-rank content formula nor irrationality at p=3/2.",
+    "coefficientwise_has_no_zero_entries": true,
+    "cyclotomic_index": 4,
+    "fast_row_constructor_matches_reference": true,
+    "first_appearance_support_theory": {
+      "applicable": true,
+      "expected_minimum_permutation_count": 80,
+      "formula": "(d+1) * 2^d",
+      "matches": true,
+      "observed_minimum_permutation_count": 80
+    },
+    "forced_cyclotomic_order_is_exact": true,
+    "minimum_layer_cancels_coefficientwise": false,
+    "rank": 9,
+    "records": [
+      {
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "entry_order_mismatch_count": 0,
+        "entry_order_mismatches": [],
+        "forced_border_order": 1,
+        "forced_order_is_exact": true,
+        "genuine_minimum_layer_cancellation": false,
+        "minimum_permutation_count": 80,
+        "minimum_permutation_order": 1,
+        "mu_specialization": 0,
+        "rank": 9,
+        "signed_leading_residue": "-1655261568",
+        "signed_leading_residue_nonzero": true,
+        "specialized_zero_entries": [
+          {
+            "column": 0,
+            "row": 0
+          }
+        ],
+        "specialized_zero_entry_count": 1,
+        "subset_state_count": 511
+      },
+      {
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "entry_order_mismatch_count": 0,
+        "entry_order_mismatches": [],
+        "forced_border_order": 1,
+        "forced_order_is_exact": true,
+        "genuine_minimum_layer_cancellation": false,
+        "minimum_permutation_count": 80,
+        "minimum_permutation_order": 1,
+        "mu_specialization": 1,
+        "rank": 9,
+        "signed_leading_residue": "-1655261568",
+        "signed_leading_residue_nonzero": true,
+        "specialized_zero_entries": [],
+        "specialized_zero_entry_count": 0,
+        "subset_state_count": 512
+      },
+      {
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "entry_order_mismatch_count": 0,
+        "entry_order_mismatches": [],
+        "forced_border_order": 1,
+        "forced_order_is_exact": true,
+        "genuine_minimum_layer_cancellation": false,
+        "minimum_permutation_count": 80,
+        "minimum_permutation_order": 1,
+        "mu_specialization": "coefficientwise",
+        "rank": 9,
+        "signed_leading_residue": "-1655261568",
+        "signed_leading_residue_nonzero": true,
+        "specialized_zero_entries": [],
+        "specialized_zero_entry_count": 0,
+        "subset_state_count": 512
+      }
+    ],
+    "row_constructor_regressions": [
+      {
+        "index": 0,
+        "matches_reference_constructor": true
+      },
+      {
+        "index": 1,
+        "matches_reference_constructor": true
+      },
+      {
+        "index": 2,
+        "matches_reference_constructor": true
+      },
+      {
+        "index": 3,
+        "matches_reference_constructor": true
+      },
+      {
+        "index": 4,
+        "matches_reference_constructor": true
+      }
+    ],
+    "schema": "erdos1049-zudilin-cyclotomic-associated-graded/2"
+  },
+  "schema": "erdos1049-zudilin-phi4-associated-graded-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 9544,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi4_associated_graded.py",
+      "sha256": "97eda27c7936d07485c8c4ab18440c9b7b64682bd18c8746e7db0a0c8f6a315e"
+    },
+    {
+      "byte_length": 21002,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_phi3_associated_graded.py",
+      "sha256": "61bdcecd6861c6b4e148abd22143596b020596499d529e7dd16f5601d526af58"
+    },
+    {
+      "byte_length": 5511,
+      "path": "system/lib/formal_math_tropical_determinant.py",
+      "sha256": "00acb2774f58a8df75ac44d8bad72dc35b72715d1170b2a39887551204bb555c"
+    },
+    {
+      "byte_length": 18955,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_residual_border_charge.py",
+      "sha256": "1ebe02fc3ac2ca6019fe6884ee47dc9c31a65aa2c0ca6eb3c23a080a0d23c3f9"
+    },
+    {
+      "byte_length": 13070,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_scalar_content.py",
+      "sha256": "439aae4afc146d513dab5d1851ff91d1c0bce97b126e1f21df34f8eeb688c758"
+    },
+    {
+      "byte_length": 6193,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/SoutheastBlockDeterminant.lean",
+      "sha256": "08d072d20fa7795514bfc1e424f6bc370071b1e5bbe69ce05b5f8aa40154aec4"
+    },
+    {
+      "byte_length": 5009,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinPhi4AssociatedGradedLab.md",
+      "sha256": "78001814eae22094f5c0bd7326b68177de317014562ec416aa8d1ce8fcdf816a"
+    },
+    {
+      "byte_length": 15852,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "sha256": "4dce15dfc8a96099e1787b3229bccea000c484a8db5625f7dbe88c604c84ac03"
+    }
+  ],
+  "status": "exact_mechanism_eliminated"
+}

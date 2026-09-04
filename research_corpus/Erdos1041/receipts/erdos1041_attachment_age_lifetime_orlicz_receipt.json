@@ -1,0 +1,112 @@
+{
+  "actual_polynomial_regression": {
+    "actual_polynomial_rows": 24,
+    "max_relative_error": 2.401851467141536e-60,
+    "nontrivial_age_edges": 271
+  },
+  "claim_boundary": "exact universal Orlicz transform, nonlinear chain bounds, and unweighted two-young-root selector; no energy-weighted compatible pair or unrestricted Erd\u0151s 1041 solution is claimed",
+  "jensen_chain_bounds": {
+    "checked_chains": 330,
+    "maximum_coarse_bound_defect": 0.0,
+    "maximum_weighted_bound_defect": 3.982729777831131e-59
+  },
+  "root_summed_age_product": {
+    "component_double_count_rows": 15521,
+    "max_leaves": 9,
+    "ordered_binary_trees": 2055,
+    "two_young_root_selector_rows": 15521
+  },
+  "schema": "erdos1041_attachment_age_lifetime_orlicz_check_v1",
+  "shape_and_bounds": {
+    "linear_no_go_rows": [
+      {
+        "k": 1,
+        "lifetime_per_age": 0.08036767291439398,
+        "x": "1e-5"
+      },
+      {
+        "k": 1,
+        "lifetime_per_age": 0.04168887750019648,
+        "x": "1e-10"
+      },
+      {
+        "k": 1,
+        "lifetime_per_age": 0.021262443787152956,
+        "x": "1e-20"
+      },
+      {
+        "k": 1,
+        "lifetime_per_age": 0.010741959577736163,
+        "x": "1e-40"
+      },
+      {
+        "k": 2,
+        "lifetime_per_age": 0.16073534582878796,
+        "x": "1e-5"
+      },
+      {
+        "k": 2,
+        "lifetime_per_age": 0.08337775500039296,
+        "x": "1e-10"
+      },
+      {
+        "k": 2,
+        "lifetime_per_age": 0.04252488757430591,
+        "x": "1e-20"
+      },
+      {
+        "k": 2,
+        "lifetime_per_age": 0.021483919155472327,
+        "x": "1e-40"
+      },
+      {
+        "k": 5,
+        "lifetime_per_age": 0.4018383645719699,
+        "x": "1e-5"
+      },
+      {
+        "k": 5,
+        "lifetime_per_age": 0.2084443875009824,
+        "x": "1e-10"
+      },
+      {
+        "k": 5,
+        "lifetime_per_age": 0.10631221893576477,
+        "x": "1e-20"
+      },
+      {
+        "k": 5,
+        "lifetime_per_age": 0.05370979788868081,
+        "x": "1e-40"
+      },
+      {
+        "k": 20,
+        "lifetime_per_age": 1.6073534582878797,
+        "x": "1e-5"
+      },
+      {
+        "k": 20,
+        "lifetime_per_age": 0.8337775500039296,
+        "x": "1e-10"
+      },
+      {
+        "k": 20,
+        "lifetime_per_age": 0.4252488757430591,
+        "x": "1e-20"
+      },
+      {
+        "k": 20,
+        "lifetime_per_age": 0.21483919155472325,
+        "x": "1e-40"
+      }
+    ],
+    "minimum_half_interval_margin": 0.0008860445449052625,
+    "monotonicity_rows": 400,
+    "strict_convexity_slope_rows": 399
+  },
+  "status": "pass",
+  "universal_transform": {
+    "checked_rows": 96,
+    "max_relative_error": 3.809526356772357e-55
+  }
+}

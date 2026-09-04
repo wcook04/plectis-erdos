@@ -1,0 +1,161 @@
+{
+  "parameters": {
+    "bases": "2,3,4,5,7,10",
+    "denominators": "101,509,1021,4099,10007",
+    "pad": 64,
+    "per_q": 120,
+    "ranks": 600,
+    "write": "state/formal_math/erdos257_period_noncollapse/base_b_rational_survival_receipt.json"
+  },
+  "payload_sha256": "641573b09834df62b4f3bbd3d0d396c2dd21b5bd0015ffff5454776e772cba6e",
+  "rows": [
+    {
+      "alive": 415,
+      "base": 2,
+      "dead": 254,
+      "death_rank_histogram": {
+        "1": 162,
+        "10": 3,
+        "2": 52,
+        "3": 21,
+        "4": 10,
+        "6": 3,
+        "7": 1,
+        "8": 1,
+        "9": 1
+      },
+      "deepest_death_rank": 10,
+      "depth": 600,
+      "erdos_borwein_E_b": 1.6066951524152917,
+      "gap_to_bridge_ratio_limit": 0.0,
+      "hausdorff_dimension": 1.0,
+      "measure_of_C_b": "1 (exactly)",
+      "predicted_all_dead_by_depth": Infinity,
+      "survivor_fraction": 0.6203288490284006,
+      "undecided": 0
+    },
+    {
+      "alive": 0,
+      "base": 3,
+      "dead": 626,
+      "death_rank_histogram": {
+        "1": 292,
+        "10": 3,
+        "12": 1,
+        "17": 1,
+        "2": 124,
+        "3": 72,
+        "4": 43,
+        "5": 31,
+        "6": 26,
+        "7": 17,
+        "8": 10,
+        "9": 6
+      },
+      "deepest_death_rank": 17,
+      "depth": 600,
+      "erdos_borwein_E_b": 0.6821535026052381,
+      "gap_to_bridge_ratio_limit": 0.5,
+      "hausdorff_dimension": 0.6309297535714574,
+      "measure_of_C_b": "0",
+      "predicted_all_dead_by_depth": 22.71722015753144,
+      "survivor_fraction": 0.0,
+      "undecided": 0
+    },
+    {
+      "alive": 0,
+      "base": 4,
+      "dead": 644,
+      "death_rank_histogram": {
+        "1": 376,
+        "19": 1,
+        "2": 139,
+        "3": 67,
+        "4": 33,
+        "5": 16,
+        "6": 7,
+        "8": 4,
+        "9": 1
+      },
+      "deepest_death_rank": 19,
+      "depth": 600,
+      "erdos_borwein_E_b": 0.4210976860334238,
+      "gap_to_bridge_ratio_limit": 0.6666666666666666,
+      "hausdorff_dimension": 0.5,
+      "measure_of_C_b": "0",
+      "predicted_all_dead_by_depth": 13.288721912782648,
+      "survivor_fraction": 0.0,
+      "undecided": 0
+    },
+    {
+      "alive": 0,
+      "base": 5,
+      "dead": 582,
+      "death_rank_histogram": {
+        "1": 384,
+        "2": 120,
+        "3": 47,
+        "4": 18,
+        "5": 9,
+        "6": 2,
+        "8": 2
+      },
+      "deepest_death_rank": 8,
+      "depth": 600,
+      "erdos_borwein_E_b": 0.30173385359797245,
+      "gap_to_bridge_ratio_limit": 0.75,
+      "hausdorff_dimension": 0.43067655807339306,
+      "measure_of_C_b": "0",
+      "predicted_all_dead_by_depth": 10.052530061338125,
+      "survivor_fraction": 0.0,
+      "undecided": 0
+    },
+    {
+      "alive": 0,
+      "base": 7,
+      "dead": 569,
+      "death_rank_histogram": {
+        "1": 424,
+        "2": 103,
+        "3": 28,
+        "4": 10,
+        "5": 4
+      },
+      "deepest_death_rank": 5,
+      "depth": 600,
+      "erdos_borwein_E_b": 0.19091006241026157,
+      "gap_to_bridge_ratio_limit": 0.8333333333333334,
+      "hausdorff_dimension": 0.3562071871080222,
+      "measure_of_C_b": "0",
+      "predicted_all_dead_by_depth": 7.352580143834698,
+      "survivor_fraction": 0.0,
+      "undecided": 0
+    },
+    {
+      "alive": 0,
+      "base": 10,
+      "dead": 447,
+      "death_rank_histogram": {
+        "1": 365,
+        "2": 66,
+        "3": 12,
+        "4": 4
+      },
+      "deepest_death_rank": 4,
+      "depth": 600,
+      "erdos_borwein_E_b": 0.12232424342624452,
+      "gap_to_bridge_ratio_limit": 0.8888888888888888,
+      "hausdorff_dimension": 0.30102999566398114,
+      "measure_of_C_b": "0",
+      "predicted_all_dead_by_depth": 5.723141014591707,
+      "survivor_fraction": 0.0,
+      "undecided": 0
+    }
+  ],
+  "schema": "erdos257_base_b_rational_survival_v1",
+  "source": {
+    "analysis": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SupportWordStructureLab.md",
+    "related": "formal_math/erdos257_period_noncollapse/scripts/base_b_tractability_map.py",
+    "script": "formal_math/erdos257_period_noncollapse/scripts/base_b_rational_survival_scan.py"
+  }
+}

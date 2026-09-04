@@ -1,0 +1,59 @@
+{
+  "falsifier_survived": true,
+  "max_n": 1000000,
+  "rows": {
+    "calibrator_naturals_d_even": {
+      "max_run_between_consecutive_squares": 1998,
+      "note": "d(m) even iff m is not a square; Erdos 1948 lives in this row"
+    },
+    "omega_eq_2": {
+      "max_run": 8,
+      "runs_ge_6": [
+        {
+          "length": 6,
+          "start": 91,
+          "three_smooth_multiple_of_6": [
+            96
+          ]
+        },
+        {
+          "length": 8,
+          "start": 141,
+          "three_smooth_multiple_of_6": [
+            144
+          ]
+        },
+        {
+          "length": 8,
+          "start": 212,
+          "three_smooth_multiple_of_6": [
+            216
+          ]
+        },
+        {
+          "length": 7,
+          "start": 323,
+          "three_smooth_multiple_of_6": [
+            324
+          ]
+        },
+        {
+          "length": 7,
+          "start": 2302,
+          "three_smooth_multiple_of_6": [
+            2304
+          ]
+        }
+      ],
+      "starts_at": 141
+    },
+    "omega_even": {
+      "max_run": 19,
+      "starts_at": 38404
+    },
+    "squarefree_semiprime": {
+      "max_run": 3,
+      "starts_at": 33
+    }
+  }
+}

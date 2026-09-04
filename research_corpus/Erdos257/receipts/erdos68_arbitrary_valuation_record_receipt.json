@@ -1,0 +1,225 @@
+{
+  "authority": {
+    "fast_backend": {
+      "backend": "compiled_cpp_uint64_q_squared_with_uint128_products",
+      "compiler": "/usr/bin/clang++",
+      "fast_source_sha256": "c715c2938b6ca5dac335dcc932417849d751374dbedeaef4d60dde3426f270d0",
+      "output_version": "1",
+      "thread_count": 10
+    },
+    "independent_method": "independent Python q^3 scan for every prime through 50000, Python q^3 rescan for every later square prime, and unrestricted integer factorials for every square prime",
+    "lean_consumers": [
+      "factorialGap_firstRepeatedPrimeSquare_entry",
+      "factorialGap_repeatedRecordPrimePower_dvd_succ_den",
+      "predecessorGapNumeratorNat_mod_repeatedRecordPrimePower_ne_zero"
+    ],
+    "prime_enumeration": "deterministic_eratosthenes_sieve",
+    "python_version": "3.13.7",
+    "source_sha256": "a538126e4389c409237dfec462ddb47bf6bb55e29d117d30db7dc7fb5add7f5e"
+  },
+  "certificate": {
+    "cube_hits": [],
+    "first_square_hit_count": 6,
+    "first_square_hits": [
+      {
+        "first_square_index": 9,
+        "first_square_is_repeated": false,
+        "first_support_index": 9,
+        "q": 11,
+        "terminal_wilson_index": true
+      },
+      {
+        "first_square_index": 15,
+        "first_square_is_repeated": false,
+        "first_support_index": 15,
+        "q": 31,
+        "terminal_wilson_index": false
+      },
+      {
+        "first_square_index": 105,
+        "first_square_is_repeated": true,
+        "first_support_index": 53,
+        "q": 107,
+        "terminal_wilson_index": true
+      },
+      {
+        "first_square_index": 112,
+        "first_square_is_repeated": false,
+        "first_support_index": 112,
+        "q": 571,
+        "terminal_wilson_index": false
+      },
+      {
+        "first_square_index": 609,
+        "first_square_is_repeated": true,
+        "first_support_index": 361,
+        "q": 971,
+        "terminal_wilson_index": false
+      },
+      {
+        "first_square_index": 4929,
+        "first_square_is_repeated": true,
+        "first_support_index": 2327,
+        "q": 4931,
+        "terminal_wilson_index": true
+      }
+    ],
+    "independent_exact_factorial_crosschecks": [
+      {
+        "first_cube_index": null,
+        "first_square_index": 9,
+        "first_support_index": 9,
+        "maximum_valuation": 2,
+        "q": 11,
+        "repeated_records": []
+      },
+      {
+        "first_cube_index": null,
+        "first_square_index": 15,
+        "first_support_index": 15,
+        "maximum_valuation": 2,
+        "q": 31,
+        "repeated_records": []
+      },
+      {
+        "first_cube_index": null,
+        "first_square_index": 105,
+        "first_support_index": 53,
+        "maximum_valuation": 2,
+        "q": 107,
+        "repeated_records": [
+          {
+            "new_record_valuation": 2,
+            "previous_record_valuation": 1,
+            "record_index": 105
+          }
+        ]
+      },
+      {
+        "first_cube_index": null,
+        "first_square_index": 112,
+        "first_support_index": 112,
+        "maximum_valuation": 2,
+        "q": 571,
+        "repeated_records": []
+      },
+      {
+        "first_cube_index": null,
+        "first_square_index": 609,
+        "first_support_index": 361,
+        "maximum_valuation": 2,
+        "q": 971,
+        "repeated_records": [
+          {
+            "new_record_valuation": 2,
+            "previous_record_valuation": 1,
+            "record_index": 609
+          }
+        ]
+      },
+      {
+        "first_cube_index": null,
+        "first_square_index": 4929,
+        "first_support_index": 2327,
+        "maximum_valuation": 2,
+        "q": 4931,
+        "repeated_records": [
+          {
+            "new_record_valuation": 2,
+            "previous_record_valuation": 1,
+            "record_index": 4929
+          }
+        ]
+      }
+    ],
+    "later_square_prime_modular_crosschecks": [],
+    "nonterminal_repeated_records": [
+      {
+        "earlier_support_index": 361,
+        "new_record_valuation": 2,
+        "previous_record_valuation": 1,
+        "prime_power": 942841,
+        "q": 971,
+        "record_index": 609,
+        "terminal_wilson_index": false
+      }
+    ],
+    "repeated_strict_record_count": 3,
+    "repeated_strict_record_events": [
+      {
+        "earlier_support_index": 53,
+        "new_record_valuation": 2,
+        "previous_record_valuation": 1,
+        "prime_power": 11449,
+        "q": 107,
+        "record_index": 105,
+        "terminal_wilson_index": true
+      },
+      {
+        "earlier_support_index": 361,
+        "new_record_valuation": 2,
+        "previous_record_valuation": 1,
+        "prime_power": 942841,
+        "q": 971,
+        "record_index": 609,
+        "terminal_wilson_index": false
+      },
+      {
+        "earlier_support_index": 2327,
+        "new_record_valuation": 2,
+        "previous_record_valuation": 1,
+        "prime_power": 24314761,
+        "q": 4931,
+        "record_index": 4929,
+        "terminal_wilson_index": true
+      }
+    ],
+    "scan_trace_sha256": "dd11174e08578a4f145c868a22d576cbc012ea20038d7a948596859973d216d7",
+    "terminal_wilson_repeated_records": [
+      {
+        "earlier_support_index": 53,
+        "new_record_valuation": 2,
+        "previous_record_valuation": 1,
+        "prime_power": 11449,
+        "q": 107,
+        "record_index": 105,
+        "terminal_wilson_index": true
+      },
+      {
+        "earlier_support_index": 2327,
+        "new_record_valuation": 2,
+        "previous_record_valuation": 1,
+        "prime_power": 24314761,
+        "q": 4931,
+        "record_index": 4929,
+        "terminal_wilson_index": true
+      }
+    ]
+  },
+  "mathematical_consequence": {
+    "claim": "Among all primes q<=1000000 and all factorial indices 2<=n<q, exactly 3 strict q-adic records occur after an earlier q-hit: (q,n)=(107,105), (q,n)=(971,609), (q,n)=(4931,4929).",
+    "lean_reach": "Each event satisfies the finite arithmetic shape of the checked repeated-record denominator theorems. The q=107 and nonterminal q=971 events are separately certified cell-by-cell in the Lean kernel; this receipt remains the finite authority for q=4931.",
+    "logical_reach": "finite_three_event_repeated_valuation_record_evidence",
+    "new_nonterminal_event": "The event (q,n)=(971,609), preceded by q|361!-1, is not a Wilson terminal index because 609<971-2. It proves that the arbitrary-index record family is strictly larger than the n=q-2 Wilson subfamily.",
+    "not_claimed": [
+      "a Lean-kernel certificate for q=4931",
+      "another repeated record above 1000000",
+      "infinitely many repeated valuation records",
+      "a positive density or asymptotic lower bound",
+      "cofinally large amplification mass",
+      "the required Archimedean numerator-residue lower bound",
+      "irrationality of the Erd\u0151s 68 series"
+    ]
+  },
+  "parameters": {
+    "arithmetic": "exact_compiled_integer_modular_multiplication_with_independent_python_prefix",
+    "factorial_index_interval": "2 <= n < q",
+    "floating_point_used": false,
+    "max_prime": 1000000,
+    "primary_modulus": "q^2_fast_scan_with_q^3_python_recheck_for_every_square_prime",
+    "prime_count": 78498,
+    "probabilistic_primality_used": false
+  },
+  "receipt_payload_sha256": "5c14b5a47ef0a20b0b8af66e88aedf2440f75e1904032cd479eb9f05bfa3153d",
+  "schema": "erdos68_arbitrary_valuation_record_exact_scan_v2"
+}

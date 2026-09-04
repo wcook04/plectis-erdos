@@ -36,10 +36,10 @@ status:
     subsidiary theorems, formalises selected known results, verifies finite
     instances, and records conditional reductions and method barriers.
   proof_corpus_sorry_count: 0
-  sorry_count: 5
+  sorry_count: 207
   sorry_in_definitions: 0
-  trusted_challenge_sorry_count: 5
-  sorry_boundary: "Every sorry is a trusted proposition package in one of the statement-isolated Comparator challenge fixtures (ExternalVerification/Challenge.lean; ExternalVerification1041SolvedFamilies/Challenge.lean; ExternalVerification1049/Challenge.lean). Each is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
+  trusted_challenge_sorry_count: 207
+  sorry_boundary: "Every sorry is a trusted proposition package in one of the statement-isolated Comparator challenge fixtures (ExternalVerification/Challenge.lean; ExternalVerification1041SolvedFamilies/Challenge.lean; ExternalVerification1049/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041ContactSurvives/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041CriticalGeometry/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041CyclicTetranomialCoefficient/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041CyclicTrinomialFiber/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041FiniteAvoidance/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041FirstMergeCriticalValueSeparation/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041GeometricTail/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041LevelSeparation/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041LifetimeOrliczBound/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041NewtonDecay/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041NewtonDerivative/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041NewtonSolve/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041Noncritical/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041NormRecipPowerSum/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041OrliczNoUniformLinear/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041QuadraticContact/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041QuarticQuotientFiber/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041ReciprocalHalfPlane/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041ReciprocalRigidity/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041RootRetention/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041SecondAgeBound/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041SignedMomentTetranomial/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041SolvedFamilies/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041StapleEquality/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041StapleLength/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041TetranomialSpokes/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041TranslationAvoidance/Challenge.lean; research_corpus/Erdos1041/entries/ExternalVerification1041WeightedChainConsumer/Challenge.lean; research_corpus/Erdos1049/entries/ExternalVerification1049/Challenge.lean; research_corpus/Erdos1049/entries/ExternalVerification1049AdelicHeightBridge/Challenge.lean; research_corpus/Erdos1049/entries/ExternalVerification1049BezoutPluckerJets/Challenge.lean; research_corpus/Erdos1049/entries/ExternalVerification1049HermitePadeNoGo/Challenge.lean; research_corpus/Erdos1049/entries/ExternalVerification1049PrimeSupportSelectors/Challenge.lean; research_corpus/Erdos1049/entries/ExternalVerification1049RationalBaseBarrier/Challenge.lean; research_corpus/Erdos243/entries/ExternalVerification243BoundedNegativePartRigidity/Challenge.lean; research_corpus/Erdos243/entries/ExternalVerification243PeriodicNegativeOrbit/Challenge.lean; research_corpus/Erdos243/entries/ExternalVerification243RepairEntropy/Challenge.lean; research_corpus/Erdos243/entries/ExternalVerification243SummableNegativeMassRigidity/Challenge.lean; research_corpus/Erdos249/entries/ExternalVerification249ActualLcmOrbit/Challenge.lean; research_corpus/Erdos249/entries/ExternalVerification249BinaryCyclotomicAnchors/Challenge.lean; research_corpus/Erdos249/entries/ExternalVerification249CanonicalMersenneFrontier/Challenge.lean; research_corpus/Erdos249/entries/ExternalVerification249CarryRankFrontier/Challenge.lean; research_corpus/Erdos249/entries/ExternalVerification249DyadicTotientKernel/Challenge.lean; research_corpus/Erdos249/entries/ExternalVerification249FullDepthRayAmplifier/Challenge.lean; research_corpus/Erdos249/entries/ExternalVerification249RankOneSharpFloor/Challenge.lean; research_corpus/Erdos251/entries/ExternalVerification251ActualPrimeGapTail/Challenge.lean; research_corpus/Erdos251/entries/ExternalVerification251AffineCircularity/Challenge.lean; research_corpus/Erdos251/entries/ExternalVerification251LcmDiagonalCriterion/Challenge.lean; research_corpus/Erdos251/entries/ExternalVerification251PolynomialShiftCountermodel/Challenge.lean; research_corpus/Erdos251/entries/ExternalVerification251PrimeGapIdentity/Challenge.lean; research_corpus/Erdos257/entries/ExternalVerification257AchievementSetGeometry/Challenge.lean; research_corpus/Erdos257/entries/ExternalVerification257ActualUpperSuccessor/Challenge.lean; research_corpus/Erdos257/entries/ExternalVerification257BooleanMobiusCarry/Challenge.lean; research_corpus/Erdos257/entries/ExternalVerification257FinitePeriodNoncollapse/Challenge.lean; research_corpus/Erdos257/entries/ExternalVerification257FourNinthsTetraprime/Challenge.lean; research_corpus/Erdos257/entries/ExternalVerification257PositiveSkipEquivalence/Challenge.lean; research_corpus/Erdos257/entries/ExternalVerification257RationalTailRigidity/Challenge.lean; research_corpus/Erdos257/entries/ExternalVerification257ReciprocalSupport/Challenge.lean; research_corpus/Erdos257/entries/ExternalVerification257ScaledGreedyTrap/Challenge.lean; research_corpus/Erdos257/entries/ExternalVerification257TerminalScaledVanishing/Challenge.lean; research_corpus/Erdos257/entries/ExternalVerification257TwentyOneFatalBranch/Challenge.lean; research_corpus/Erdos269/entries/ExternalVerification269ActualShellOrbit/Challenge.lean; research_corpus/Erdos269/entries/ExternalVerification269AllScaleLattice/Challenge.lean; research_corpus/Erdos269/entries/ExternalVerification269CarryMechanism/Challenge.lean; research_corpus/Erdos269/entries/ExternalVerification269IntegralBranchPinning/Challenge.lean; research_corpus/Erdos269/entries/ExternalVerification269ThreePrimeStructure/Challenge.lean; research_corpus/Erdos68/entries/ExternalVerification68AdjacentUnitCarryWindow/Challenge.lean; research_corpus/Erdos68/entries/ExternalVerification68ChannelRadius/Challenge.lean; research_corpus/Erdos68/entries/ExternalVerification68CompanionOrbitBoundary/Challenge.lean; research_corpus/Erdos68/entries/ExternalVerification68PrimePole/Challenge.lean; research_corpus/Erdos68/entries/ExternalVerification68PrimeUnitTranslator/Challenge.lean; research_corpus/Erdos68/entries/ExternalVerification68StrictSuccessorCarry/Challenge.lean). Each is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0."
   axioms:
     - "propext"
     - "Quot.sound"
@@ -1618,7 +1618,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:669ae15671ac204f882a855679cf6b73c767b57b296239762cb77d6a781ac908"
+  problem_index_digest: "sha256:e8a3db44fc166f7b7c2364c877bbbf0a5055c3d71eda5b4f38e9be75db042405"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1627,36 +1627,138 @@ external_verification:
       checked_frontier: "The exact integral normal form: the series is irrational if and only if the strict factorial successor Z_m misses divisibility by m cofinally."
       open_frontier: "Irrationality of the factorial-denominator series."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      research_frontier:
+        directory: "research_corpus/Erdos68"
+        authority_posture: "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry"
+        reading_rule: "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+        frontier: "research_corpus/Erdos68/FRONTIER.md"
+        strongest_results: "research_corpus/Erdos68/STRONGEST_RESULTS.json"
+        manifest: "research_corpus/Erdos68/CORPUS_MANIFEST.json"
+        checkpoint: "research_corpus/Erdos68/PUBLIC_CORPUS_CHECKPOINT.json"
+        content_digests:
+          frontier: "sha256:f22f419f9e4241cff391c065e5cf8ff8506be40fa619f4bb3622a3213021f479"
+          strongest_results: "sha256:942c5d385a9c7462fce40af246556611446ac74b061498509160e2f5718daa7c"
+          manifest: "sha256:6d6df551560109b4defc4dd573724066e481121ddcfb0ea4ef9e8f9cc239b9a1"
+          checkpoint: "sha256:81f99155a2b92b15a40b58e5505d7c45626389f1b18de1ab775d426de0114eb5"
+        activated_result_count: 111
+        source_checkpoint: "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1"
+        source_subtree_tree: null
+        promotion_boundary: "This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface."
     - id: "erdos_243"
       erdos_number: 243
       status: "open"
       checked_frontier: "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables."
       open_frontier: "The unrestricted problem."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      research_frontier:
+        directory: "research_corpus/Erdos243"
+        authority_posture: "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry"
+        reading_rule: "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+        frontier: "research_corpus/Erdos243/FRONTIER.md"
+        strongest_results: "research_corpus/Erdos243/STRONGEST_RESULTS.json"
+        manifest: "research_corpus/Erdos243/CORPUS_MANIFEST.json"
+        checkpoint: "research_corpus/Erdos243/PUBLIC_CORPUS_CHECKPOINT.json"
+        content_digests:
+          frontier: "sha256:4884b60a1aa9f378dd5462d58fa3fc0926b2d0045adbf9c377026f90cbed131a"
+          strongest_results: "sha256:a993679adeac9b94dbd51f0c01098a6a457640dc067d01ee9ca10e71dae04539"
+          manifest: "sha256:9749579cd95491b81525d05a0aa2166d6d54dc438993a7ee0119be7a564a3dc7"
+          checkpoint: "sha256:9e8bf864f1af12a5bdc4b8c1fee6c2f927ad06d2a8c25395325302b9580a5527"
+        activated_result_count: 85
+        source_checkpoint: "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1"
+        source_subtree_tree: null
+        promotion_boundary: "This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface."
     - id: "erdos_249"
       erdos_number: 249
       status: "open"
       checked_frontier: "Conditionally: a cofinal strict 9/10 gap for the exact natural prime-tail orbit supplies the existing finite pivot-point escape and hence the reviewed irrationality endpoint."
       open_frontier: "The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      research_frontier:
+        directory: "research_corpus/Erdos249"
+        authority_posture: "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry"
+        reading_rule: "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+        frontier: "research_corpus/Erdos249/FRONTIER.md"
+        strongest_results: "research_corpus/Erdos249/STRONGEST_RESULTS.json"
+        manifest: "research_corpus/Erdos249/CORPUS_MANIFEST.json"
+        checkpoint: "research_corpus/Erdos249/PUBLIC_CORPUS_CHECKPOINT.json"
+        content_digests:
+          frontier: "sha256:20e763464dcb16785df9c4b75584794c0e0babc1ed971f472c3dae97b8ef231c"
+          strongest_results: "sha256:db545efd7b86d75c10d1b73c4c9325b77180b27fe4480e8f7d861671fe32298a"
+          manifest: "sha256:4fd27eb433b65427705ed0d1c619c35a94324266852632da8d6bd566b34ec4d8"
+          checkpoint: "sha256:a5f50a5685f0336bb3f39a6e75a7ecd3267fc505b527e0a13761d8b2833002f3"
+        activated_result_count: 52
+        source_checkpoint: "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1"
+        source_subtree_tree: null
+        promotion_boundary: "This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface."
     - id: "erdos_251"
       erdos_number: 251
       status: "open"
       checked_frontier: "The finite summation-by-parts identity relating the prime dyadic partial sums to the prime-gap dyadic partial sums, with an exact endpoint term and no convergence premise."
       open_frontier: "The target irrationality."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      research_frontier:
+        directory: "research_corpus/Erdos251"
+        authority_posture: "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry"
+        reading_rule: "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+        frontier: "research_corpus/Erdos251/FRONTIER.md"
+        strongest_results: "research_corpus/Erdos251/STRONGEST_RESULTS.json"
+        manifest: "research_corpus/Erdos251/CORPUS_MANIFEST.json"
+        checkpoint: "research_corpus/Erdos251/PUBLIC_CORPUS_CHECKPOINT.json"
+        content_digests:
+          frontier: "sha256:246ced4aca1476947e9534c8fa5fce652e678bf569594530126916b855d02ad1"
+          strongest_results: "sha256:b3f95565f1818c57e565b5fdca0b01df6b6a4386a440148179aef5e1ebcc668b"
+          manifest: "sha256:91fd3cc70b655142aec4d1d096dafa72f632146f78a1faab71d14ba5577bb912"
+          checkpoint: "sha256:755e7c5dfd4503081e2ac845c0a1c076b06ce5c46fc912f61a5079c66636e916"
+        activated_result_count: 30
+        source_checkpoint: "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1"
+        source_subtree_tree: null
+        promotion_boundary: "This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface."
     - id: "erdos_257"
       erdos_number: 257
       status: "open"
       checked_frontier: "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights."
       open_frontier: "The universal irrationality problem, or irrationality for any new infinite support."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      research_frontier:
+        directory: "research_corpus/Erdos257"
+        authority_posture: "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry"
+        reading_rule: "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+        frontier: "research_corpus/Erdos257/FRONTIER.md"
+        strongest_results: "research_corpus/Erdos257/STRONGEST_RESULTS.json"
+        manifest: "research_corpus/Erdos257/CORPUS_MANIFEST.json"
+        checkpoint: "research_corpus/Erdos257/PUBLIC_CORPUS_CHECKPOINT.json"
+        content_digests:
+          frontier: "sha256:7f94c1963ac5279865fbbe8aa7fe5b17dda120b909f3d36ec0bd475abce15c25"
+          strongest_results: "sha256:081c6ce9d156226e3cb92be5b57bf058c0eea4d65dc0dff5b622c622e14f01de"
+          manifest: "sha256:d65725f443f208241408c89dd83d5191dcb859fbfd7ab92292f54ff3b5fe9ade"
+          checkpoint: "sha256:94611e7388a38fcd8f0860ef7f30dd6d58ca4ab49f35e31128bb4aeb398746c7"
+        activated_result_count: 57
+        source_checkpoint: "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1"
+        source_subtree_tree: null
+        promotion_boundary: "This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface."
     - id: "erdos_269"
       erdos_number: 269
       status: "open"
       checked_frontier: "That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff."
       open_frontier: "Irrationality or transcendence in any three-prime case."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+      research_frontier:
+        directory: "research_corpus/Erdos269"
+        authority_posture: "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry"
+        reading_rule: "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+        frontier: "research_corpus/Erdos269/FRONTIER.md"
+        strongest_results: "research_corpus/Erdos269/STRONGEST_RESULTS.json"
+        manifest: "research_corpus/Erdos269/CORPUS_MANIFEST.json"
+        checkpoint: "research_corpus/Erdos269/PUBLIC_CORPUS_CHECKPOINT.json"
+        content_digests:
+          frontier: "sha256:bf3095052b816942ea1886f61263516d903bcfa628beb914f3f3f132c0011b91"
+          strongest_results: "sha256:cad0cae2cbcccc46680e24b869fcf76b9d3f9f4ae60fa5fd0884787cdb40a777"
+          manifest: "sha256:21843d9095daeee032be34fdb37c17448be9fdb3008e9294b5eacb36b8eea8de"
+          checkpoint: "sha256:b859f35762b94db556fad3918be7dd3a8f962f6f2f18bac9d58d5e21dea43991"
+        activated_result_count: 64
+        source_checkpoint: "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1"
+        source_subtree_tree: null
+        promotion_boundary: "This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface."
     - id: "erdos_1041"
       erdos_number: 1041
       status: "open"
@@ -1665,20 +1767,20 @@ external_verification:
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
       research_frontier:
         directory: "research_corpus/Erdos1041"
-        authority_posture: "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority"
-        reading_rule: "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims."
+        authority_posture: "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry"
+        reading_rule: "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
         frontier: "research_corpus/Erdos1041/FRONTIER.md"
         strongest_results: "research_corpus/Erdos1041/STRONGEST_RESULTS.json"
         manifest: "research_corpus/Erdos1041/CORPUS_MANIFEST.json"
         checkpoint: "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json"
         content_digests:
-          frontier: "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293"
-          strongest_results: "sha256:57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf"
-          manifest: "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46"
-          checkpoint: "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f"
-        activated_result_count: 45
-        source_checkpoint: "867638684907b4ebd4ab2ef7b5de22dafda71e36"
-        source_subtree_tree: "cbc45f9392f218411c6d3f635c6de7d27cc4fc4d"
+          frontier: "sha256:dcc271df022f31adac7d57f696fce856457d9dc72709742b6dc45561be4c2f63"
+          strongest_results: "sha256:d577bb31fd24d03bb78b4432d4233f61ad311f6801941bde577ddfa57bc02212"
+          manifest: "sha256:3bdd044d177ef6736a09c8a5c12e7f9dd7c8bebcd296419233333d347065e7c5"
+          checkpoint: "sha256:834af969256183b309cd644eee13eda8ffac068786570d572e314b5ed438204b"
+        activated_result_count: 185
+        source_checkpoint: "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1"
+        source_subtree_tree: null
         promotion_boundary: "This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface."
     - id: "erdos_1049"
       erdos_number: 1049
@@ -1686,6 +1788,23 @@ external_verification:
       checked_frontier: "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves."
       open_frontier: "Irrationality at base three halves, or for any rational base."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
-  trusted_challenge_holes: 5
+      research_frontier:
+        directory: "research_corpus/Erdos1049"
+        authority_posture: "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry"
+        reading_rule: "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+        frontier: "research_corpus/Erdos1049/FRONTIER.md"
+        strongest_results: "research_corpus/Erdos1049/STRONGEST_RESULTS.json"
+        manifest: "research_corpus/Erdos1049/CORPUS_MANIFEST.json"
+        checkpoint: "research_corpus/Erdos1049/PUBLIC_CORPUS_CHECKPOINT.json"
+        content_digests:
+          frontier: "sha256:70871290e28e0dc3124f3404d2bcc717fc549dcb9d89f31a65cfce982f91a29f"
+          strongest_results: "sha256:53a87f4e63450ed5182ed4ea02e3535cda56c4fe53e73d0d1f33268c593fc1cc"
+          manifest: "sha256:ed4bb02be86e372a1267023b76242e38c33e18f151ee1fa2554787cc52e63ba6"
+          checkpoint: "sha256:6415118845617e4aa076f56a6a83f797a79a61aa124c012fa4c6f08dcb6fc38f"
+        activated_result_count: 90
+        source_checkpoint: "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1"
+        source_subtree_tree: null
+        promotion_boundary: "This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface."
+  trusted_challenge_holes: 207
   packet: "docs/EXTERNAL_VERIFICATION.md"
   receipt_contract: "docs/external_verification_packet.json::receipt_contract"

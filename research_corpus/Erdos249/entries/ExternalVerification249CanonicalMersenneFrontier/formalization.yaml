@@ -1,0 +1,62 @@
+version: "v0.4"
+project:
+  name: "Erdős #249: canonical Mersenne arithmetic frontier"
+  description: "Finite residue dynamics, canonical-to-remote dominance, and the exact canonical-basepoint equivalence to Erdős #249."
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11B83"]
+sources:
+  - title: "Canonical Mersenne residue dynamics for Erdős Problem 249"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    note: "The Lean development and associated paper are the first presentation recorded here; novelty is unassessed."
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #249"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/249"
+    type: "web discussion"
+    relationship: "background"
+    note: "The catalogue supplies the problem statement, numbering, references, and open status; this theorem family is not attributed to the catalogue."
+    license: "unknown"
+    author_endorsement: "not-contacted"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "The exact equivalence, hypotheses, and open producer boundary were checked by the author with AI assistance; no independent review is claimed."
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "deferred_low_disk_before_compilation"
+  note: "Exact equivalent reduction; the producer remains open and no submission is claimed."
+status:
+  scope: "Three source-backed declarations; no unconditional irrationality result."
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axiom_audit_status: "pending_guarded_build_low_disk_5747892224_free_minimum_17179869184"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification249CanonicalMersenneFrontier.fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational"
+      file: "ExternalVerification249CanonicalMersenneFrontier/Solution.lean"
+      sorry_count: 0
+      canonical_claim_status: "source_transport_pending_focused_check_low_disk"
+      novelty_status: "unassessed"
+      boundary: "Equivalent reduction only; the canonical residue-gap supply remains unproved."
+alignment:
+  namespace: "Erdos249257.ExternalVerification249CanonicalMersenneFrontier"
+  statements:
+    - source: "ErdosProblems.Erdos249.CyclotomicAnchoredKill"
+      lean: "three same-named source transports"
+      module: "ExternalVerification249CanonicalMersenneFrontier/Challenge.lean"
+      status: "exact-transport-pending-guarded-build-low-disk"

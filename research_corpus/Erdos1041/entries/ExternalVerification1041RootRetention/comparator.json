@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041RootRetention.Challenge",
+  "solution_module": "ExternalVerification1041RootRetention.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041RootRetention.constant_perturbation_roots_in_unitDisk"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

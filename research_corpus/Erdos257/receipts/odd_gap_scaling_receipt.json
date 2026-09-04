@@ -1,0 +1,77 @@
+{
+  "cohorts": {
+    "ap3": {
+      "grows_with_M": true,
+      "involution_checked_upto": 20000,
+      "involution_failures": 0,
+      "max_gap_by_scale": {
+        "1000": 105,
+        "10000": 339,
+        "100000": 1089,
+        "1000000": 3459
+      },
+      "row_ok": true,
+      "verdict": "GROWS -> escapes parity"
+    },
+    "naturals": {
+      "grows_with_M": true,
+      "involution_checked_upto": 20000,
+      "involution_failures": 0,
+      "max_gap_by_scale": {
+        "1000": 61,
+        "10000": 199,
+        "100000": 631,
+        "1000000": 1999
+      },
+      "row_ok": true,
+      "verdict": "GROWS -> escapes parity"
+    },
+    "pow3": {
+      "grows_with_M": false,
+      "involution_checked_upto": 20000,
+      "involution_failures": 0,
+      "max_gap_by_scale": {
+        "1000": 6,
+        "10000": 6,
+        "100000": 6,
+        "1000000": 6
+      },
+      "row_ok": true,
+      "verdict": "BOUNDED -> killed"
+    },
+    "powers2": {
+      "grows_with_M": false,
+      "involution_checked_upto": 20000,
+      "involution_failures": 0,
+      "max_gap_by_scale": {
+        "1000": 4,
+        "10000": 4,
+        "100000": 4,
+        "1000000": 4
+      },
+      "row_ok": true,
+      "verdict": "BOUNDED -> killed"
+    },
+    "primes": {
+      "grows_with_M": true,
+      "involution_checked_upto": 20000,
+      "involution_failures": 0,
+      "max_gap_by_scale": {
+        "1000": 9,
+        "10000": 11,
+        "100000": 20,
+        "1000000": 20
+      },
+      "row_ok": true,
+      "verdict": "GROWS -> escapes parity"
+    }
+  },
+  "falsifier_survived": true,
+  "max_n": 1000000,
+  "scales": [
+    1000,
+    10000,
+    100000,
+    1000000
+  ]
+}

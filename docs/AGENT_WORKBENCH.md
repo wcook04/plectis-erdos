@@ -1,5 +1,7 @@
 # Agent workbench
 
+Web proof search: [all results and proofs](semantic/BROWSER.md).
+
 This corpus is agent-native. It is not an autonomous theorem prover and
 is deliberately not trying to become one. It is a deep, instrumented
 mathematical environment designed to be *inhabited* by an intelligent

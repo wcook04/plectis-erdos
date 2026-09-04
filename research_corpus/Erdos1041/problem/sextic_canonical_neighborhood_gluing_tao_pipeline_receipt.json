@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_canonical_neighborhood_exact_gluing",
+  "recorded_at": "2026-08-25",
+  "input_stage": "transverse_outer_selector_and_complete_finite_null_box",
+  "output_stage": "lean_checked_exhaustive_canonical_chart_dichotomy",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticCanonicalNeighborhoodGluing.md",
+    "ErdosProblems/Erdos1041/SexticCanonicalNeighborhoodGluing.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_canonical_neighborhood_gluing.py"
+  ],
+  "human_understanding_delta": "The constants 6075 and 78 were already complementary: failure of the transverse energy threshold forces each normalized coordinate strictly inside the complete 78-box because 78 squared is 6084. The canonical chart therefore has no uncovered transition annulus.",
+  "verification_state": {
+    "analytic": "complete_exact_dichotomy_and_normalization_crosswalk",
+    "symbolic": "100000_exact_fraction_dichotomy_rows_passed",
+    "lean": "warning_free_canonical_cached_build_and_final_serialized_authority_check_passed",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "Lean gluing theorem, expert explanation, exact checker, and downstream handoff validated",
+  "unresolved_downstream_bottleneck": "Glue the complete canonical neighborhood to strict noncanonical phase collars and the 4/5 first-mode overlap, then transfer through the actual-polynomial remainder.",
+  "next_stage_owner": "Refinery: remove any residual asking for a third canonical transition chart; the next chart boundary is canonical versus noncanonical phase, not transverse outer versus null box.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex noticed and proved the exact constant overlap from the existing operator-directed corpus",
+    "computation": "100000 exact rational fixtures replay the dichotomy; computation is regression evidence only.",
+    "formalization": "Lean proves the coordinate bound, exhaustive outer-or-box dichotomy, and abstract proposition fan-in.",
+    "claim_boundary": "Closes the homogeneous canonical chart overlap. It does not prove the noncanonical overlap, nonlinear actual-polynomial transfer, or unrestricted Erdos #1041."
+  }
+}

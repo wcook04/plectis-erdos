@@ -650,6 +650,10 @@ jobs:
       # the checked source.  That is what happened between 2026-07-13 and
       # 2026-07-16.  Surfacing all failures at once weakens nothing; the job
       # still fails if any single check fails.
+      - name: Browser research regression tests
+        if: ${{ !cancelled() }}
+        run: |
+          python3 scripts/test_browser_research.py
       - name: Cross-surface release checks (proof trust, claims, projections)
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/check_release.py

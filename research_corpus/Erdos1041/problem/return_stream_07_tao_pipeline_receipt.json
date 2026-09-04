@@ -1,0 +1,30 @@
+{
+  "schema_version": "tao_pipeline_receipt_v1",
+  "result_id": "return_stream_07_metric_envelope_assimilation",
+  "problem_id": "erdos_1041",
+  "input_stage": "two_type_b_advisory_parent_proof_attempts",
+  "output_stage": "verified_auxiliary_closure_and_exact_frontier_correction",
+  "artifact": [
+    "ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md#8-return-stream-07-configuration-metric-strong-trace-refutation-and-envelope-closure",
+    "ErdosProblems/Erdos1041/BarycentricEnvelope.md#1a-power-mean-convex-cover-lattice"
+  ],
+  "human_understanding_delta": "The two new returns split cleanly into one exact convex-cover closure, one valid configuration-metric reduction, one already-refuted headline inequality, and one genuinely open lobe-radius conjecture. The returned L1 carrier and the existing quadratic carrier are unified into an exact nested p-power family, whose p=infinity endpoint is an intersection of root-centred discs. This makes the surviving attachment quantifier explicit: exact point coverage is abundant, but a carrier must remain attached to a root by intrinsic distance at most one to feed COVER.",
+  "verification_state": "Ordinary proofs check the power-mean carrier lattice and the configuration metric identities. The existing affine-normalised-moduli checker freshly replays a pinned minimum-critical strong-trace ratio above one. The lobe-radius conjecture has finite conditioning-aware evidence only; its stronger capacity-normalized variant is numerically falsified only.",
+  "publication_or_review_state": "private authoring checkpoint; no external specialist review",
+  "canonicalization_state": "The L1 return is consolidated into BarycentricEnvelope rather than creating a parallel envelope note. Duplicate projection, Fekete, and moment claims remain subordinate to their source-current owners.",
+  "unresolved_downstream_bottleneck": "Prove a root-attached carrier cover on the descending first-merge arc, prove the special configuration-metric systolic bridge, or find a target-deciding implication of the lobe-radius sum. None is currently established.",
+  "next_stage_owner": "Mathematical Closure Engine: exact or certified probe of p=1 carrier attachment along first-merge arcs, with a pivot to combined charge or COVER on failure.",
+  "paper_assimilation": {
+    "paper": "private Erdős 1041 research corpus",
+    "section": "convex containment and first-merge metric mechanisms",
+    "canonical_mechanism_family": "correlated convex carriers and inverse-fibre configuration metric",
+    "relation": "auxiliary closure plus refutation; not target-deciding",
+    "understanding_delta": "Unifies two exact envelope coordinates and separates point coverage from root attachment.",
+    "evidence_boundary": "ordinary proof for identities; pinned numerical counterexample replay for the strong trace; finite evidence for S(f)<=1",
+    "hard_step": "retain one root label and intrinsic distance-one attachment while carrier weights vary along a connected first-merge set",
+    "meaningful_failed_route": "the minimum-critical per-hub trace bound is false even though random degree-2-through-8 searches can miss its thin tied-value counterexample shell",
+    "open_remainder": "COVER, combined charge, FP-GM, configuration systole, lobe-radius sum, and unrestricted Erdős 1041"
+  },
+  "tool_disclosure": "The returned attempts were advisory. Exact algebra and ordinary proofs establish the retained identities. Floating-point computation was used only to replay a stored falsifier and to discriminate lobe-radius variants; it is not theorem authority.",
+  "claim_boundary": "Proved: the exact p-power convex-cover lattice and the stated configuration-metric identities. Rejected: theorem status for the minimum-critical strong trace. Unproved: S(f)<=1, the metric systolic bridge, any universal root-attached carrier cover, and the parent theorem."
+}

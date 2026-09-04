@@ -1,0 +1,55 @@
+{
+  "claim_boundary": "The sample and replay are exact and reproducible, but not exhaustive beyond the declared sample. A surviving bound is finite evidence only.",
+  "cohort": {
+    "alive_target_count": 5059,
+    "dead_target_count": 4941,
+    "observed_uniform_recovery_bound": 3,
+    "precision_target_count": 0,
+    "record_event_count": 45731,
+    "sampled_reduced_target_count": 10000
+  },
+  "falsifiers": {
+    "first_recovery_distance_over_four": null,
+    "worst_recovery": {
+      "block_identity_verified": true,
+      "carry_at_recovery": 2,
+      "homogeneous_mass": 24,
+      "previous_record_height": 2,
+      "record_height": 3,
+      "record_rank": 97,
+      "recovered_within_horizon": true,
+      "recovery_distance": 3,
+      "recovery_rank": 100,
+      "target": "625/46396",
+      "weighted_digit_supply": 0,
+      "weighted_divisor_compensation": 22
+    }
+  },
+  "mechanism_decision": {
+    "next_action": "do not infer a theorem; seek structural proof or a different mechanism",
+    "status": "finite_H4_record_recovery_survives_large_denominator_sample"
+  },
+  "parameters": {
+    "depth": 5000,
+    "max_denominator": 1000000,
+    "min_denominator": 501,
+    "samples": 10000,
+    "seed": 257,
+    "start_rank": 64
+  },
+  "payload_sha256": "7e0d8b2ca51ab24de6f8f9a27097f907b3ee5e419bdfa8d4647b0358624ed09d",
+  "programme_target": "Challenge the finite H=4 record-recovery bound on a deterministic large-denominator rational cohort.",
+  "schema": "erdos257_prime_record_recovery_random_v1",
+  "source": {
+    "census_library": "formal_math/erdos257_period_noncollapse/scripts/prime_record_recovery_census.py",
+    "census_library_sha256": "9d79bf183c38a046a6f0a036988a6938adc67d9134f3f8509218d43e6962afd3",
+    "engine": "formal_math/erdos257_period_noncollapse/scripts/cantor_staircase_run_length_lab.py",
+    "engine_sha256": "aee6d370c3639dc213a7eebb90777273ab0c253adb278d8ee35f63d2b349d4a5",
+    "script": "formal_math/erdos257_period_noncollapse/scripts/prime_record_recovery_random.py",
+    "script_sha256": "ee75aaeeff45f8472a4ac6c44334f6812d236d0c2eb4b7f2db71af9559f8f133"
+  },
+  "validation": {
+    "direct_floor_prefix_crosscheck_violation_count_through_rank_256": 0,
+    "record_recovery_block_identity_violation_count": 0
+  }
+}

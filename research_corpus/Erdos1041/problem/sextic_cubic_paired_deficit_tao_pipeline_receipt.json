@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_cubic_paired_radial_deficit_cone",
+  "recorded_at": "2026-08-25",
+  "input_stage": "four_mode_radial_deficit_cone_plus_actual_root_tangent_pairing",
+  "output_stage": "analytic_and_lean_checked_low_mode_normalization_branch",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticCubicPairedDeficitCone.md",
+    "ErdosProblems/Erdos1041/SexticCubicPairedDeficitCone.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_cubic_paired_deficit_cone.py"
+  ],
+  "human_understanding_delta": "Actual-root tangent pairing reduces all four non-cubic sextic modes to six times the radial deficit whenever |E1|+|E2|<=Delta. An exact degree-six Young factorization absorbs that factor for Delta^(1/5)<=1/10, giving a uniform half-deficit margin on three parity-selected rays and an inner disk. The unresolved normalization region is now the single transverse inequality |E1|+|E2|>Delta.",
+  "verification_state": {
+    "analytic": "complete_explicit_pairing_budget_young_factorization_inner_disk_and_metric_proof",
+    "symbolic": "passed_4160_exact_pairing_rows_4160_exact_young_identity_rows_and_inner_disk_endpoint",
+    "lean": "passed_canonical_cached_focused_build_and_final_serialized_authority_check",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "standalone theorem, analytic note, exact checker, canonical research packet update, and downstream transverse handoff authored and focused validation passed",
+  "unresolved_downstream_bottleneck": "Prove the complementary transverse branch |E1|+|E2|>Delta by compact normalization against the existing sextic mixed atlas, then absorb the origin-anchored finite perturbation remainder.",
+  "next_stage_owner": "Refinery: audit the pairing derivation and Young constants, then hand inequality (T) to the sextic transverse normalization owner.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation under operator direction, using the corpus's existing actual-root pairing inequality and sextic parity staple",
+    "computation": "Exact rational replay checks the factorization and constants; computation is not proof authority.",
+    "formalization": "Lean checks the pairing budget, exact weighted Young factorization, selected-ray half-margin, inner-disk half-margin, and exhaustive scalar dichotomy.",
+    "claim_boundary": "Closes the paired low-mode coefficient branch for sufficiently small radial deficit. It does not prove the transverse branch, actual-polynomial remainder transfer, all sextics, or unrestricted Erdos #1041."
+  }
+}

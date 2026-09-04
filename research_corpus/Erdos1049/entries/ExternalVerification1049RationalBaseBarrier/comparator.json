@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification1049RationalBaseBarrier.Challenge",
+  "solution_module": "ExternalVerification1049RationalBaseBarrier.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049RationalBaseBarrier.rationalBaseClearedTailQ_succ",
+    "Erdos249257.ExternalVerification1049RationalBaseBarrier.twoPow_le_rationalBaseForcingNat",
+    "Erdos249257.ExternalVerification1049RationalBaseBarrier.threeHalves_no_coordinatewiseCorridor"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

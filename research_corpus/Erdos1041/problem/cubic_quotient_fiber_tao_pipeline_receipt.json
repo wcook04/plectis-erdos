@@ -1,0 +1,22 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem": "Erdos_1041",
+  "checkpoint": "translated_cubic_quotient_fiber_case",
+  "date": "2026-08-24",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/CubicQuotientFiberCase.md",
+    "ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean"
+  ],
+  "human_understanding_delta": "Every cubic with roots in the open unit disk has at least one safe origin spoke.  The three root charges sum to more than -3, selecting one charge at least -1; AM-GM then turns its two residual distances into the exact cyclotomic envelope (1-t)(1+t+t^2)=1-t^3.  Pulling that spoke back under (z-h)^q produces a full regular fibre, while its mean-square orbit identity forces radius below one.  This settles all translated cubic quotient fibres in degrees 3q, q>=2.  An exact quartic configuration with charge -998001/1000000 but spoke-square 1.037036... proves the charge implication itself is degree-sharp.",
+  "verification_state": {
+    "analytic": "complete",
+    "lean": "PASS: canonical shared-cache build of ErdosProblems.Erdos1041.CubicQuotientFiberCase via lean_fast_build.py --jobs 2 on 2026-08-24",
+    "computation": "derived_from_exact_charge_and_AM_GM_algebra; no numerical premise"
+  },
+  "publication_or_review_state": "local analytic and Lean-verified checkpoint ready for scoped commit and expert review",
+  "canonicalization_state": "new_case_theorem_targeting_canonical_ErdosProblems.Erdos1041_namespace",
+  "unresolved_downstream_bottleneck": "The cubic charge implication is exactly false in degree four, so higher-degree quotients need a sharper multi-distance selector; whether every quartic has some safe origin spoke remains open, while the corpus contains a degree-five configuration with none.  Unrestricted Erdős #1041 and literature priority remain open.",
+  "next_stage_owner": "Refinery: assimilate the validated charge-and-fibre mechanism into the #1041 consequence map, then return the closure engine to the quartic-quotient or unrestricted selector boundary."
+}

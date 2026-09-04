@@ -1,0 +1,198 @@
+{
+  "claim_ceiling": "Erdos 251 remains open. The result retires fixed-lattice block-residue escape under dyadically dominated terminal bounds as an independent producer; it does not prove cofinal nonintegrality.",
+  "exact_result": {
+    "all_fixed_lattice_escapes": true,
+    "all_recurrence_identities_exact": true,
+    "all_reverse_triangle_bounds_exact": true,
+    "maximum_predicted_depth": 8,
+    "minimum_forced_margin_denominator": 254,
+    "minimum_forced_margin_numerator": 129,
+    "representative_first_row_by_depth": [
+      {
+        "basepoint_integer_distance_denominator": 3,
+        "basepoint_integer_distance_numerator": 1,
+        "block": 1,
+        "dyadic_modulus": 4,
+        "forced_margin_denominator": 6,
+        "forced_margin_numerator": 5,
+        "initial_denominator": 3,
+        "initial_numerator": 1,
+        "nearest_lattice_distance": 1,
+        "predicted_depth": 2,
+        "terminal_denominator": 3,
+        "terminal_numerator": 1
+      },
+      {
+        "basepoint_integer_distance_denominator": 5,
+        "basepoint_integer_distance_numerator": 1,
+        "block": 2,
+        "dyadic_modulus": 8,
+        "forced_margin_denominator": 10,
+        "forced_margin_numerator": 11,
+        "initial_denominator": 5,
+        "initial_numerator": 1,
+        "nearest_lattice_distance": 2,
+        "predicted_depth": 3,
+        "terminal_denominator": 5,
+        "terminal_numerator": -2
+      },
+      {
+        "basepoint_integer_distance_denominator": 9,
+        "basepoint_integer_distance_numerator": 1,
+        "block": 2,
+        "dyadic_modulus": 16,
+        "forced_margin_denominator": 18,
+        "forced_margin_numerator": 23,
+        "initial_denominator": 9,
+        "initial_numerator": 1,
+        "nearest_lattice_distance": 2,
+        "predicted_depth": 4,
+        "terminal_denominator": 9,
+        "terminal_numerator": -2
+      },
+      {
+        "basepoint_integer_distance_denominator": 17,
+        "basepoint_integer_distance_numerator": 1,
+        "block": 2,
+        "dyadic_modulus": 32,
+        "forced_margin_denominator": 34,
+        "forced_margin_numerator": 47,
+        "initial_denominator": 17,
+        "initial_numerator": 1,
+        "nearest_lattice_distance": 2,
+        "predicted_depth": 5,
+        "terminal_denominator": 17,
+        "terminal_numerator": -2
+      },
+      {
+        "basepoint_integer_distance_denominator": 33,
+        "basepoint_integer_distance_numerator": 1,
+        "block": 2,
+        "dyadic_modulus": 64,
+        "forced_margin_denominator": 66,
+        "forced_margin_numerator": 95,
+        "initial_denominator": 33,
+        "initial_numerator": 1,
+        "nearest_lattice_distance": 2,
+        "predicted_depth": 6,
+        "terminal_denominator": 33,
+        "terminal_numerator": -2
+      },
+      {
+        "basepoint_integer_distance_denominator": 65,
+        "basepoint_integer_distance_numerator": 1,
+        "block": 2,
+        "dyadic_modulus": 128,
+        "forced_margin_denominator": 130,
+        "forced_margin_numerator": 191,
+        "initial_denominator": 65,
+        "initial_numerator": 1,
+        "nearest_lattice_distance": 2,
+        "predicted_depth": 7,
+        "terminal_denominator": 65,
+        "terminal_numerator": -2
+      },
+      {
+        "basepoint_integer_distance_denominator": 129,
+        "basepoint_integer_distance_numerator": 1,
+        "block": 2,
+        "dyadic_modulus": 256,
+        "forced_margin_denominator": 258,
+        "forced_margin_numerator": 383,
+        "initial_denominator": 129,
+        "initial_numerator": 1,
+        "nearest_lattice_distance": 2,
+        "predicted_depth": 8,
+        "terminal_denominator": 129,
+        "terminal_numerator": -2
+      }
+    ],
+    "tested_initial_state_count": 8150
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos251.one_div_den_le_abs_sub_int_of_ne",
+        "ErdosProblems.Erdos251.exists_blockResidue_escape_of_not_integral",
+        "ErdosProblems.Erdos251.cofinal_blockResidue_escape_iff_not_eventuallyIntegral"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+      "falsification_consequence": "Equivalence redirects the frontier away from adaptive/fixed recurrence pullbacks and back to a genuinely external prime-tail mechanism.",
+      "survival_consequence": "A failure would reopen fixed-lattice block anti-concentration as a distinct prime-word mechanism."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "fixed_lattice_block_residue_independent_producer",
+      "statement": "Cofinal distance of observed blocks from 2^r*Z supplies new prime-word information beyond non-eventual integrality of the tail shift."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/BlockResidueComputationalLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos251_block_residue_no_go.py",
+        "system/lib/formal_math_dyadic_tail.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/BlockResidueComputationalLab.md"
+      ]
+    },
+    "probe": {
+      "computation": "Generate every reduced rational state with odd denominator in the requested range, keep its exact dyadic orbit balanced, and compare the integer block with 2^r*Z at the denominator-forced depth.",
+      "falsifier": "A nonintegral rational state and dyadically dominated terminal bound for which the predicted reverse-triangle block escape fails.",
+      "id": "denominator_forced_balanced_dyadic_orbits",
+      "question": "Does fixed-lattice escape arise automatically from rational denominator separation and the terminal bound, independently of digit structure?",
+      "stop_condition": "Once Lean proves the cofinal equivalence, retire this producer; do not extend the rational grid as if it could prove Erd\u0151s 251."
+    },
+    "problem": {
+      "claim_ceiling": "The no-go does not prove cofinal nonintegrality or Erd\u0151s 251.",
+      "id": "erdos_251",
+      "target_statement": "Prove irrationality of the dyadic series built from consecutive prime gaps."
+    },
+    "result": {
+      "status": "exact_one_way_result",
+      "summary": "Lean proves the fixed-lattice supply equivalent to non-eventual integrality for every dyadically dominated bound. Exact balanced-orbit replay verifies the denominator-forced escape coordinates for 8150 reduced rational initial states through odd denominator 199."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "parameters": {
+    "depth_rule": "least r with 2^r > reduced denominator",
+    "maximum_odd_denominator": 199,
+    "terminal_abs_bound_denominator": 2,
+    "terminal_abs_bound_numerator": 1
+  },
+  "schema": "erdos251-block-residue-no-go/1",
+  "sources": [
+    {
+      "byte_length": 10934,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos251_block_residue_no_go.py",
+      "sha256": "de674e536daa0138913ea679deb2aba5bf802a9caf1e4f4fa52623bd55650226"
+    },
+    {
+      "byte_length": 3941,
+      "path": "system/lib/formal_math_dyadic_tail.py",
+      "sha256": "9a112dba9b83492c344ec6935f5260f3137d6404df260a25c500b1f4d13bc55d"
+    },
+    {
+      "byte_length": 15718,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+      "sha256": "3d1d011245503897ebbd04d90aa5d4ce30cd89bf99cdc07227bee6cfd02034ce"
+    },
+    {
+      "byte_length": 3346,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/BlockResidueComputationalLab.md",
+      "sha256": "64bdb57ce37bf1b7a898793c63450a17582833e917188db3fb54abdfa34dca8f"
+    }
+  ],
+  "structural_consequence": {
+    "denominator_gap": "nonintegral rational x satisfies dist(x,Z) >= 1/x.den",
+    "forced_escape": "If 2^r/x.den > 2*bound(N+r), block escape follows without any property of the intervening digit word.",
+    "identity": "B_(N,r)-2^r*z = 2^r*(T_h(N)-z)-T_h(N+r)",
+    "lean_theorems": [
+      "ErdosProblems.Erdos251.one_div_den_le_abs_sub_int_of_ne",
+      "ErdosProblems.Erdos251.exists_blockResidue_escape_of_not_integral",
+      "ErdosProblems.Erdos251.cofinal_blockResidue_escape_iff_not_eventuallyIntegral"
+    ],
+    "mechanism_disposition": "For every DyadicScaleDominates bound, cofinal fixed-lattice block escape is equivalent to non-eventual integrality and therefore cannot serve as its independent prime-theoretic producer."
+  }
+}

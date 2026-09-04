@@ -1,0 +1,172 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #243: summable normalized-negative-mass rigidity"
+  description: >-
+    Exact product-cleared reciprocal-tail dynamics with division-free
+    normalized vanishing and summable normalized negative centered mass have
+    zero centered state eventually and obey the exact Sylvester recurrence
+    eventually. The theorem is conditional and does not settle unrestricted
+    Erdős #243.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification243SummableNegativeMassRigidity/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification243SummableNegativeMassRigidity/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_conditional_rigidity_theorem"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    The open parent problem is an explicit theorem boundary, not an editorial
+    veto. No local artifact is represented as a Palomar verdict or registry
+    entry.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A63", "11B37"]
+
+sources:
+  - title: "Summable normalized-negative-mass rigidity for reciprocal-tail dynamics"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The source-current Lean family turns summable normalized negative mass
+      and division-free normalized vanishing into eventual centered-state
+      extinction and exact Sylvester recurrence.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #243"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/243"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement and open status; this
+      conditional rigidity theorem is not attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    One compared theorem packages eventual zero centered state and eventual
+    exact Sylvester recurrence under the complete summable-negative-mass
+    hypotheses. Challenge.lean has one intentional Comparator specification
+    sorry; Solution.lean and the imported source are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only deliberate placeholder is the trusted theorem body in
+    Challenge.lean. It is excluded from the proof-corpus count.
+  axiom_audit_status: "pending_guarded_build_deferred_low_disk_exit_75"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification243SummableNegativeMassRigidity.summableNegativeMass_completeRigidity"
+      file: "ExternalVerification243SummableNegativeMassRigidity/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243SummableNegativeMassRigidity/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_guarded_focused_check"
+      local_proof_provenance: >-
+        Source theorems
+        ErdosProblems.Erdos243.eventually_zero_of_summable_negativeRelativeMass
+        and sylvesterNext_eventually_of_summable_negativeRelativeMass in
+        ErdosProblems/Erdos243/SparseResetRecovery.lean.
+      novelty_status: "unassessed"
+      contribution_class: "conditional exact reciprocal-tail rigidity"
+      statement: >-
+        The centered state vanishes eventually and the denominator orbit
+        follows the exact Sylvester recurrence eventually.
+      boundary: >-
+        The result assumes exact dynamics, positivity, normalized vanishing,
+        and summable normalized negative mass; it does not derive these for
+        unrestricted Erdős #243.
+      comparator_declaration: "Erdos249257.ExternalVerification243SummableNegativeMassRigidity.summableNegativeMass_completeRigidity"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner; no terminal replay receipt is recorded here.
+    - method: "other"
+      models: []
+      framework: "Lean kernel"
+      tool_setup: "Focused source-local Lean checking with the pinned toolchain"
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation, and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The compared theorem combines the source-current eventual-zero theorem and
+    its exact Sylvester consequence into their natural two-part reader
+    endpoint. It adds no mathematical claim beyond those checked declarations.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The exact hypotheses, source endpoints, normalized-mass definition, and
+    open-problem boundary were reviewed. The guarded focused build returned
+    exit 75 at 13,669,040,128 free bytes against a 17,179,869,184-byte floor;
+    focused Lean and axiom checks therefore remain pending. Comparator replay
+    is a separate supported-runner gate.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification243SummableNegativeMassRigidity"
+  statements:
+    - source: >-
+        ErdosProblems.Erdos243.eventually_zero_of_summable_negativeRelativeMass
+        and sylvesterNext_eventually_of_summable_negativeRelativeMass.
+      lean: "Erdos249257.ExternalVerification243SummableNegativeMassRigidity.summableNegativeMass_completeRigidity"
+      module: "ExternalVerification243SummableNegativeMassRigidity/Challenge.lean"
+      status: "exact-composite-transport-pending-guarded-build"
+      note: >-
+        The Challenge exposes the complete result family in literal
+        Mathlib-only vocabulary.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

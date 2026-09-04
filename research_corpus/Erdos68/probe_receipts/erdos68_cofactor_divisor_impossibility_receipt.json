@@ -1,0 +1,142 @@
+{
+ "probe_id": "erdos68_cofactor_divisor_impossibility",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_68",
+   "target_statement": "Prove that the Erd\u0151s #68 factorial-denominator series is irrational.",
+   "claim_ceiling": "Erd\u0151s #68 remains open. Lean checks the support-independent channel congruence and LCM obstruction, the finite factorial-gap segment inequalities and explicit radius lower bounds, summability and additivity of every finite-support channel residual, and the complete prime-unit translator giving exact integer residual shifts. Lean also checks the strict-successor carry recurrence, its exact normalized factorial-series expansion, and convergence of the normalized strict successors Z_n/n! to the literal series S. Consequently S is non-irrational exactly when the carries are eventually all one, and S is irrational exactly when non-unit carries occur cofinally. This is an exact characterization, not the missing producer. An independently implemented exact GMP certificate computes every carry through m=300000; combined with the Lean-checked consumer, its non-unit terminal carry proves only the finite bound q>=300000 for any displayed rational representation S=a/q with q>0. The source-verified Erd\u0151s--Straus Theorem 2.1 coboundary criterion applies to the checked ordinary-factorial carry expansion, not directly to denominators n!-1. Lean checks the criterion's small-numerator hypothesis from the sharp carry range, proves that every corresponding half-radix coboundary enters the canonical interval -B<c_m<=0, and proves that the finite residue state then hits zero at a large multiple of B and stays zero. Thus the entire Erd\u0151s--Straus route is formally reduced back to eventual unit carries rather than producing a distinct irrationality obstruction. The source-verified Kova\u010d--Tao interval lemma, together with a Lean-checked exact overlap inequality, gives a rational comparison series after decreasing each denominator n!-1 by at most n^2+1; this is a sharp perturbation boundary, not a result on the unperturbed endpoint. The source-verified Li Lai Theorem 1.1 supplies, after f=-1 specialization, a positive-lower-density family of n with P(n!-1)>(1+9 log 2-epsilon)n. Lean promotes least such prime hits to cofinally many uniquely supported upper-half anchors on explicit tailored blocks [2,2p-1]: prefix privacy handles all earlier indices and the prime cannot divide the immediately following factorial gap. Lean also proves the one-owner weighted projection is nonzero automatically. However, any one-owner closing inequality would force (2p+1)L_p<2p^2((2p-1)!)^2, while the source-verified Garaev--Luca--Shparlinski Theorem 12 yields the derived growth log L_p >> p^(4/3)log p, eventually exceeding that squared-factorial ceiling. Thus unique support is abundant but the one-owner route is asymptotically impossible; the eventual source-to-ceiling comparison is not Lean-checked. The source-verified Luca--Shparlinski Lemmas 4-5 now add exact prime and general-modulus hit bounds; for q=p^a they control reuse by O((x-y)log x/(a log p)+1), and their final remark controls aggregate p-adic load. Those are unweighted collision estimates, not weighted endpoint residue information. The componentwise denominator dynamics now prove a sharper multiplicity law: if q divides the repeated-birth cofactor B_n and ord_q(R_n)>ord_q(C_n), then ord_q(n!-1)<=ord_q(v_n); hence every genuinely amplifying repeated prime with ord_q(v_n)<ord_q(n!-1) enters C_(n+1) with its complete current-gap power. The canonical product A_n of all such full powers divides B_n, C_(n+1), and the next actual denominator v_(n+1); when nontrivial it also carries a nonzero next-numerator projection. This confines cancellation beyond old residual mass to non-amplifying q-adic collisions, but no source theorem yet supplies cofinally large A_n or bounds the exceptional mass. Lean further checks the uniform remote factorial-grid construction for every cutoff and threshold: its normalized augmented matrix is a shifted Vandermonde with nonzero determinant, Cramer's rule supplies a zero-channel vector with nonzero moment, and a remote prime translator reduces the residual to absolute value at most 1/2. Every Cramer tail numerator is an exact row-replacement determinant and is nonzero beyond the largest support. The full infinite-tail classification is now formal: R_D(c)=M(c)T_D+K universally, and under zero channels R_D(c)=M(c)S+K for the original series S; for the uniform Cramer kernel M(c)=det(A) is nonzero. Direct uniform tail-sign and total-positivity closure are false because nonaffine floor quotients force sign changes inside the finite pre-asymptotic tail. The global CRT route now has a Lean-checked fractional-part normal form: T_p/R_p=C_p*s_(2p-1), gcd(T_p,R_p)=1, and the normalized complementary residue is exactly the gap from C_p*s_(2p-1) to its next integer. A full unit-carry block p<=m<=2p forces the same endpoint window, so every collision-ceiling certificate now yields an exact failure of m | strictFacTopRat(factorialGapPrefix(m),m) somewhere in that block; cofinal certificates land directly in the exact cofinal miss predicate equivalent to the problem. The exact recurrence probe now explains all three observed private-owner transitions as the first block containing the exited prime's first later factorial-one hit, opening a cofinal two-owner renewal target rather than another blind horizon extension. Lean also splits a unit carry exactly into a lower zero-digit endpoint cylinder and an upper maximal-digit endpoint cylinder. Therefore it suffices to prove cofinal prime escape from only the lower cylinder m*theta_(m-1)<R_m, whose width is R_m/m=O(m^-2); rationality would force theta_(p-1)=0 for every sufficiently large prime. This sharper cofinal escape producer is still unproved for the actual series. No theorem proves that renewal supply, cylinder escape, cofinally many exact misses, the required global/two-projection bound, or det(A)S nonintegral for an unbounded family, so no irrationality resolution is claimed. The tail-free predecessor-gap certificate has now been evaluated for the first time: it fires for 204 of 208 values of m up to 210, with a failure count within 10% of the uniform prediction and no failures past m = 60. The producer's event is therefore generic, and its missing input is a non-concentration theorem for frac((m-1)! sum_(n<m) 1/(n!-1)) rather than a new arithmetic mechanism. The tail-free threshold producer, the exact prefix strict-successor miss, and the canonical-digit lane are now identified as three level sets of the single rounding digit D_m over 3<=m<=50000, with the digit statistically indistinguishable from generic on every tested statistic, so the surviving Archimedean input is one non-concentration statement for A_(m-1) at scale 1/m rather than three separate producers. The finite denominator exclusion is now a Kempner-index statement: a non-unit carry at m gives q not dividing (m-1)!, hence q not dividing 299999! from the landed certificate, which is strictly stronger than the previously recorded q>=300000. The finite denominator exclusion is now two independent statements: q does not divide 299999!, which kills every 299999-smooth denominator of any magnitude, and q > 10^12039 from 23449 certified continued-fraction partial quotients. Neither implies the other and the recorded q >= 300000 is superseded by both. The rank-two strict-nonvanishing producer is reclassified: its output is q not dividing det(A), a smoothness exclusion of the same species as the Kempner-index statement rather than a size bound, and nonvanishing alone cannot contradict rationality because |R| >= 1/q while the only recorded smallness is |R| <= 1/2. The continued-fraction bound discharges its hypothesis free on grid sizes n <= 1 and no further, the n = 2 determinant already being 10^15208. At n = 0 the determinant is 3(4t)!(4t+4)!/2^(2t+2), so nonvanishing there for any t >= 74999 would strictly strengthen q not dividing 299999!. A second priority-1 producer is removed: erdos68_appended_channel_determinant_beats_determinantal_divisor asks for 0 < |N| < Delta, which is unsatisfiable because Laplace expansion along the appended row makes Delta divide N, so N nonzero forces |N| >= Delta. The two removals share a cause - a linear-form producer closes irrationality only when its coefficient is forced to be a multiple of the hypothetical denominator, which erdos68_scalar_factorial_tail_orbit_nonintegrality satisfies and these two do not."
+  },
+  "hypothesis": {
+   "id": "appended_channel_determinant_producer_is_a_hard_open_case",
+   "statement": "No unbounded family with 0 < |N| < Delta was obtained because finding one is hard, so the producer is a live open case worth attacking."
+  },
+  "probe": {
+   "id": "erdos68_cofactor_divisor_impossibility",
+   "question": "Is 0 < |N| < Delta satisfiable at all, for an appended-row determinant N and Delta the gcd of maximal minors?",
+   "computation": "Laplace expansion along the appended row writes N as an integer combination of the maximal minors of the unappended channel matrix, all divisible by Delta, so Delta divides N. Checked on random integer channel matrices across six shapes, taking every (k+1)-column selection of the appended matrix rather than only the square case, with exact Bareiss determinants.",
+   "falsifier": "A single integer instance with 0 < |N| < Delta under any reading of the two quantities. That would mean the producer is live and this argument wrong.",
+   "stop_condition": "Divisibility holding on every witness settles it; the inequality is unsatisfiable and the producer is removed rather than deferred.",
+   "resource_bounds": {
+    "nonzero_witnesses": 6000,
+    "shapes": 6
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "The producer stands and the search should continue with better constructions.",
+   "falsification_consequence": "The producer asks for an object that cannot exist and leaves the frontier.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeUnitTranslator.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/CofactorDivisorImpossibilityLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos68_cofactor_divisor_impossibility.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "The condition is unsatisfiable. Delta divides N by Laplace expansion along the appended row, so N nonzero forces |N| >= Delta, and 0 < |N| < Delta has no integer solutions. The recorded failure to obtain an unbounded family is the expected outcome, not a hard open case. Verified on 6000 nonzero appended determinants across six channel shapes with zero escaping Delta. The conclusion is independent of the reading: gcd over the unappended matrix gives Delta | N; gcd over the appended square matrix gives Delta = |N| so |N| < Delta is false outright; wider channel matrices still expand into k-minors divisible by Delta. Recorded with it: N and Delta are defined only in packet prose, with no Lean declaration or script defining either, which is how an unsatisfiable condition survived on the frontier.",
+   "progress": {
+    "class": "mechanism_eliminated",
+    "decision_basis": "Laplace expansion is a theorem; the check adds 6000 nonzero witnesses with zero exceptions across six shapes and every column selection; and the conclusion survives all three readings of the undefined quantities.",
+    "next_analytic_target": "Nothing from this route. The sibling reclassification of erdos68_rank_two_strict_nonvanishing gives the shared criterion: a linear-form producer closes only when its coefficient is forced to be a multiple of the hypothetical denominator, which erdos68_scalar_factorial_tail_orbit_nonintegrality satisfies.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_68",
+  "motivated_by": [
+   "erdos68_appended_channel_determinant_beats_determinantal_divisor",
+   "primitive_cofactor_determinant_divisor_bottleneck"
+  ],
+  "eliminates": [
+   "erdos68_appended_channel_determinant_beats_determinantal_divisor"
+  ],
+  "opens": [],
+  "supports": [
+   "appended_channel_determinant_condition_is_unsatisfiable"
+  ],
+  "rationale": "Removes a priority-1 producer by showing its condition has no integer solutions, explaining the packet's own recorded search failure."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/CofactorDivisorImpossibilityLab.md",
+   "byte_length": 4298,
+   "sha256": "0740a045afeea40b1e7b95a5d14b210b575819b92bde5c36c0a063aae07a5ad4"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json",
+   "byte_length": 292991,
+   "sha256": "9b8c3b989c31d5362002f5aeb4ea0af83f26300287f2c46db4de418848f5505b",
+   "scoped_sha256": "a45be5bfb8689592c9f0b8c2ace8752ed6d0d19072963d42e2e681a79b0fc6ca",
+   "scope_ids": [
+    "appended_channel_determinant_condition_is_unsatisfiable",
+    "erdos68_appended_channel_determinant_beats_determinantal_divisor",
+    "primitive_cofactor_determinant_divisor_bottleneck"
+   ]
+  },
+  {
+   "path": "formal_math/probes/erdos68_cofactor_divisor_impossibility.py",
+   "byte_length": 7507,
+   "sha256": "83902678ab4fa44a03474f943f64ab5c56fa2cdd04858679111886a74cf8c1b9"
+  }
+ ],
+ "result": {
+  "shapes": [
+   {
+    "channel_rows": 2,
+    "channel_cols": 3,
+    "nonzero_appended_determinants": 400,
+    "rank_deficient_skipped": 0,
+    "all_divisible_by_delta": true
+   },
+   {
+    "channel_rows": 3,
+    "channel_cols": 4,
+    "nonzero_appended_determinants": 400,
+    "rank_deficient_skipped": 0,
+    "all_divisible_by_delta": true
+   },
+   {
+    "channel_rows": 3,
+    "channel_cols": 5,
+    "nonzero_appended_determinants": 2000,
+    "rank_deficient_skipped": 0,
+    "all_divisible_by_delta": true
+   },
+   {
+    "channel_rows": 4,
+    "channel_cols": 5,
+    "nonzero_appended_determinants": 400,
+    "rank_deficient_skipped": 0,
+    "all_divisible_by_delta": true
+   },
+   {
+    "channel_rows": 4,
+    "channel_cols": 6,
+    "nonzero_appended_determinants": 2400,
+    "rank_deficient_skipped": 0,
+    "all_divisible_by_delta": true
+   },
+   {
+    "channel_rows": 5,
+    "channel_cols": 6,
+    "nonzero_appended_determinants": 400,
+    "rank_deficient_skipped": 0,
+    "all_divisible_by_delta": true
+   }
+  ],
+  "total_nonzero_witnesses": 6000,
+  "counterexamples": [],
+  "lemma": "Delta divides every appended-row determinant, by Laplace expansion along the appended row: each cofactor is a maximal minor of the channel matrix and Delta divides all of them",
+  "consequence": "N nonzero forces |N| >= Delta, so 0 < |N| < Delta is unsatisfiable over the integers; the producer erdos68_appended_channel_determinant_beats_determinantal_divisor asks for an object that does not exist, which is why no family was obtained",
+  "definitional_caveat": "N and Delta are defined only in packet prose; no Lean declaration or script in the repository defines either, so the reading cannot be checked against a definition. The conclusion holds under every reading available: gcd over the unappended channel matrix, gcd over the appended square matrix (where Delta = |N|), and wider channel matrices with N a (k+1)-minor"
+ }
+}

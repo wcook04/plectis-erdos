@@ -1,0 +1,399 @@
+{
+  "consequence_decisions": [
+    {
+      "decision": "strictly_incomplete",
+      "mechanism": "ordinary_private_owner_collision_renewal_only"
+    },
+    {
+      "decision": "opened_by_exact_pair_37_41",
+      "mechanism": "globally_unique_terminal_owner_pairs"
+    },
+    {
+      "decision": "not_claimed",
+      "mechanism": "cofinal_pair_supply_or_irrationality"
+    }
+  ],
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos68.factorialBlock_endpointWindow_false_of_complementaryFactorPairFloor",
+        "ErdosProblems.Erdos68.irrational_factorialGapSeries_of_cofinal_complementaryFactorPairFloor_nat"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+      "falsification_consequence": "Open globally unique terminal-owner pairs as a separate cofinal supply target; the canonical pair already fires the complete finite factor-pair consumer, leaving only cofinal supply for this mechanism.",
+      "survival_consequence": "Retire terminal Wilson owners as too isolated and return to ordinary first-repeat renewal."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "terminal_wilson_first_hits_are_too_sparse_for_two_owner_blocks",
+      "statement": "Primes whose first factorial-one hit is q-2 do not occur in comparable pairs capable of supplying two private owners in one block."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrivateProjectionComputationalLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_terminal_private_owners.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_arbitrary_valuation_records.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_arbitrary_valuation_records_fast.cpp",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_private_projections.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Reuse the exact q^2 recurrence engine, select primes with first support index q-2, and test consecutive owner indices for joint membership in a block [2,2p-1].",
+      "falsifier": "One pair of terminal-first-hit primes whose two unique owner indices lie in a common factorial block.",
+      "id": "exact_terminal_first_hit_pair_scan",
+      "question": "Can Wilson endpoints supply two globally unique private owners without any collision-renewal obligation?",
+      "resource_bounds": {
+        "max_prime": 50000
+      },
+      "stop_condition": "Stop at the first exact pair opening the mechanism, then retain the configured census only as structural mapping rather than extending it as purported infinitary evidence."
+    },
+    "problem": {
+      "claim_ceiling": "One exact globally unique two-owner endpoint contradiction certificate and a finite terminal-owner census; no infinitude, density, cofinal certificate supply, cofinal miss, or irrationality theorem.",
+      "id": "erdos_68",
+      "target_statement": "Prove that S=sum_{n>=2} 1/(n!-1) is irrational."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "A source-faithful pair bypasses repeated-hit renewal and fires the existing endpoint contradiction through two globally unique channels.",
+        "next_analytic_target": "Prove cofinally many comparable terminal-first-hit prime pairs, or a weaker supply sufficient for the checked two-projection collision cap."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The exact pair q=37,41 owns indices 35,39 in block p=20; both factors divide the private modulus, their projections disagree, and the complete factor-pair endpoint inequality closes."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "canonical_factor_pair_endpoint_certificate": {
+      "block_index_interval": [
+        2,
+        39
+      ],
+      "block_parameter": 20,
+      "checks": {
+        "complementary_factor_projections_disagree": true,
+        "factor_pair_scale_inequality_closes": true,
+        "factors_are_coprime": true,
+        "global_complementary_residue_inequality_closes": true,
+        "left_factor_divides_private_modulus": true,
+        "private_modulus_nontrivial": true,
+        "right_factor_divides_private_modulus": true
+      },
+      "factor_pair_closing_margin": {
+        "bit_length": 2646,
+        "sha256": "cee440c9e1c7241a32b4ac7fb44157b891b5e79225bf6fea9056bfecdca196fe"
+      },
+      "global_closing_margin": {
+        "bit_length": 2651,
+        "sha256": "1fdab210b4f9b19bb6edcc4280e99d2f05dfad1e7d025a988dc956a1d0a92760"
+      },
+      "left_factor": 37,
+      "left_projection": {
+        "bit_length": 2483,
+        "sha256": "7176fd5b53a3ff2087d45f1be8f502fa08f11f6765685466c7a185f0f207f933"
+      },
+      "pair_floor": {
+        "bit_length": 2483,
+        "sha256": "2cd645ee68bfbd49244878f22c6c75145cbf584c72f951a27d5540e6279ccc48"
+      },
+      "private_modulus": {
+        "bit_length": 2488,
+        "sha256": "d36ea1f53f584edacdbdacadf6441008d4df0aa9d31bd6a2dd0bc7d9d39b615b"
+      },
+      "right_factor": 41,
+      "right_projection": {
+        "bit_length": 2482,
+        "sha256": "afb9a7fd934d08b0ddb622ed8b54e34b09c5180fe9aecfaf96061027c086c534"
+      }
+    },
+    "canonical_mechanism_witness": {
+      "block_index_interval": [
+        2,
+        39
+      ],
+      "block_parameter": 20,
+      "both_owner_indices_in_block": true,
+      "both_primes_divide_exactly_one_factorial_gap_globally": true,
+      "left_prime": 37,
+      "left_unique_owner_index": 35,
+      "right_prime": 41,
+      "right_unique_owner_index": 39
+    },
+    "comparable_pair_digest": "cab8931bd7c7f86b676df8eed07fae219dc774b825b6f7bca8c45fb70e377783",
+    "consecutive_comparable_pair_count": 1799,
+    "engine": {
+      "backend": "compiled_cpp_uint64_q_squared_with_uint128_products",
+      "checkpointing": {
+        "checkpoint_refs": [],
+        "chunk_count": 1,
+        "chunk_size": 100000,
+        "enabled": false,
+        "reused_chunk_count": 0,
+        "written_chunk_count": 0
+      },
+      "compiler": "/usr/bin/clang++",
+      "fast_source_sha256": "7602f1c8ecd5dda9b7f2da166f04277cc2ba38828e8bf86c9cc0031b196db436",
+      "output_version": "1",
+      "thread_count": 10
+    },
+    "first_20_comparable_pairs": [
+      [
+        5,
+        7
+      ],
+      [
+        7,
+        11
+      ],
+      [
+        11,
+        13
+      ],
+      [
+        13,
+        19
+      ],
+      [
+        37,
+        41
+      ],
+      [
+        41,
+        43
+      ],
+      [
+        43,
+        47
+      ],
+      [
+        47,
+        79
+      ],
+      [
+        79,
+        101
+      ],
+      [
+        101,
+        113
+      ],
+      [
+        113,
+        127
+      ],
+      [
+        127,
+        131
+      ],
+      [
+        131,
+        157
+      ],
+      [
+        157,
+        163
+      ],
+      [
+        163,
+        173
+      ],
+      [
+        173,
+        179
+      ],
+      [
+        179,
+        181
+      ],
+      [
+        181,
+        191
+      ],
+      [
+        191,
+        197
+      ],
+      [
+        197,
+        229
+      ]
+    ],
+    "largest_terminal_first_hit_prime": 49993,
+    "last_20_comparable_pairs": [
+      [
+        49393,
+        49409
+      ],
+      [
+        49409,
+        49411
+      ],
+      [
+        49411,
+        49429
+      ],
+      [
+        49429,
+        49481
+      ],
+      [
+        49481,
+        49523
+      ],
+      [
+        49523,
+        49529
+      ],
+      [
+        49529,
+        49597
+      ],
+      [
+        49597,
+        49603
+      ],
+      [
+        49603,
+        49613
+      ],
+      [
+        49613,
+        49633
+      ],
+      [
+        49633,
+        49711
+      ],
+      [
+        49711,
+        49747
+      ],
+      [
+        49747,
+        49787
+      ],
+      [
+        49787,
+        49801
+      ],
+      [
+        49801,
+        49853
+      ],
+      [
+        49853,
+        49871
+      ],
+      [
+        49871,
+        49877
+      ],
+      [
+        49877,
+        49919
+      ],
+      [
+        49919,
+        49957
+      ],
+      [
+        49957,
+        49993
+      ]
+    ],
+    "parameters": {
+      "max_prime": 50000
+    },
+    "prime_count": 5133,
+    "terminal_first_hit_prime_count": 1801,
+    "terminal_first_hit_prime_digest": "ea10f8a6b1854066c9f35fe75123088b9b003d1c8de6f94b9b22ea0fecce3229",
+    "terminal_first_hit_primes_first_20": [
+      5,
+      7,
+      11,
+      13,
+      19,
+      37,
+      41,
+      43,
+      47,
+      79,
+      101,
+      113,
+      127,
+      131,
+      157,
+      163,
+      173,
+      179,
+      181,
+      191
+    ],
+    "terminal_first_hit_primes_last_20": [
+      49409,
+      49411,
+      49429,
+      49481,
+      49523,
+      49529,
+      49597,
+      49603,
+      49613,
+      49633,
+      49711,
+      49747,
+      49787,
+      49801,
+      49853,
+      49871,
+      49877,
+      49919,
+      49957,
+      49993
+    ]
+  },
+  "schema": "erdos68-terminal-private-owner/1",
+  "source_records": [
+    {
+      "byte_length": 13751,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_terminal_private_owners.py",
+      "sha256": "56942c256c75c81242170e723b572844714cd3d5206490c09bca9f379a17a97d"
+    },
+    {
+      "byte_length": 29059,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_arbitrary_valuation_records.py",
+      "sha256": "308a8f7fe45e7eeb3c19bc9fa9b8a48bdccf0c948b40de06e3b78a331fda12e8"
+    },
+    {
+      "byte_length": 4733,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_arbitrary_valuation_records_fast.cpp",
+      "sha256": "7602f1c8ecd5dda9b7f2da166f04277cc2ba38828e8bf86c9cc0031b196db436"
+    },
+    {
+      "byte_length": 19774,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_private_projections.py",
+      "sha256": "16a5ef340cfc13e80ec7441e119f17069dcb2c30848d0ed5cbc0010798cfe106"
+    },
+    {
+      "byte_length": 9034,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrivateProjectionComputationalLab.md",
+      "sha256": "4803109131ee7d5e61da9278e4c09f832af43f40da6ba5d8a842e5dec22b884d"
+    },
+    {
+      "byte_length": 288482,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+      "sha256": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849"
+    },
+    {
+      "byte_length": 248839,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+      "sha256": "e76dee594f84438f2d189e028e6507efdd162b2157ab60eccd5998174d27c026"
+    }
+  ],
+  "status": "verified_exact_terminal_two_owner_mechanism_opening"
+}

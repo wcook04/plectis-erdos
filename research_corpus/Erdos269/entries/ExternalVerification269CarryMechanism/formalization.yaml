@@ -1,0 +1,196 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #269: conditional carry-lift extinction"
+  description: >-
+    Exact weighted lift-error algebra, two-anchor perturbation extinction,
+    exponential error-growth and finite unit-accuracy no-go theorems, together
+    with the residue-coboundary decomposition and checked local-window
+    consumer. The lift, block-nullity, anchor, and escape producers remain
+    unproved, and Erdős #269 remains open.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "candidate_pending_public_identity_and_terminal_comparator_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification269CarryMechanism/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification269CarryMechanism/formalization.yaml"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_passed_terminal_positive_and_deliberate_negative_pair_pending"
+  research_interest_status: "plausible_note_grade_conditional_extinction_family"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  reentry_condition: >-
+    Obtain focused Lean and axiom-audit passes, terminal Comparator receipts,
+    and an immutable public source identity; editorial review must then judge
+    the coherent conditional extinction family rather than reject it merely
+    because the parent Erdős problem remains open.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11B83", "11A07"]
+
+sources:
+  - title: "Conditional carry-lift extinction and carry-faithfulness"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Mathlib"
+    authors: ["The mathlib contributors"]
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    Six compared theorems expose the general one-index sub-two-power lift
+    no-go, the finite four-state unit-accuracy obstruction, two-anchor global
+    perturbation extinction, the exact weighted block defect, the conditional
+    local-window consumer, and the exact carry decomposition. Challenge.lean
+    has six deliberate specification sorries; Solution.lean imports the
+    checked source declarations.
+  sorry_count: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 6
+  axiom_audit_status: "focused_lean_and_axiom_audit_passed_2026_08_31"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification269CarryMechanism.no_carryLift_of_errorBound_below_twoPow"
+      file: "ExternalVerification269CarryMechanism/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269CarryMechanism/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos269/CarryLiftExtinction.lean"
+      novelty_status: "unassessed"
+      contribution_class: "conditional exponential carry-lift extinction"
+      boundary: >-
+        Assumes an integral lift, block-null perturbation, genuine 2→3 and
+        2→5 zero anchors, nonzero initial error, and one sub-2^N error bound;
+        none is produced for the actual ordered-power orbit.
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269CarryMechanism.no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull"
+      file: "ExternalVerification269CarryMechanism/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269CarryMechanism/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos269/CarryLiftExtinction.lean"
+      novelty_status: "unassessed"
+      contribution_class: "finite four-state unit-accuracy obstruction"
+      boundary: >-
+        Exact incompatibility under the stated four unit-interval states,
+        four unit-accuracy bounds, two anchors, and first-block nullity; it
+        does not show the actual orbit supplies those hypotheses.
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269CarryMechanism.perturbation_eq_zero_of_blockNull_twoAnchors"
+      file: "ExternalVerification269CarryMechanism/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269CarryMechanism/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos269/CarryLiftExtinction.lean"
+      novelty_status: "unassessed"
+      contribution_class: "three-channel global perturbation rigidity"
+      boundary: "Surjectivity, block-nullity, both genuine transitions, and both zero anchors are assumptions."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269CarryMechanism.carryLift_blockDefect"
+      file: "ExternalVerification269CarryMechanism/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269CarryMechanism/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
+      local_proof_provenance: "ErdosProblems/Erdos269/CarryLiftExtinction.lean"
+      novelty_status: "unassessed"
+      contribution_class: "exact weighted block-defect identity"
+      boundary: "The identity exposes, but does not cancel, the endpoint and interior error terms."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269CarryMechanism.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
+      file: "ExternalVerification269CarryMechanism/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269CarryMechanism/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
+      local_proof_provenance: >-
+        RestrictedFloorSum.lean at commit
+        4cd4eac29c6eefb6c041cb61b980de271c77ccc3 and SHA-256
+        14085590dfbf9b2dc34d4ac1b446667f3ce249b7c25687801c79f7d55db8189e.
+      novelty_status: "unassessed"
+      contribution_class: "conditional local-window contradiction"
+      boundary: "CofinalLocalWindowEscape is a hypothesis, not a theorem."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification269CarryMechanism.carry_eq_residueDigit_add_coboundary"
+      file: "ExternalVerification269CarryMechanism/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification269CarryMechanism/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_focused_lean_and_axiom_audit_passed"
+      local_proof_provenance: >-
+        WeightedPhaseCarry.lean at commit
+        29099573e974dd49188e936e9b9ae72b8854b642 and SHA-256
+        dfed95906a65288ea8b29213bcb996c1ca0832cfc10da01ab37aa868f2d7cef3.
+      novelty_status: "unassessed"
+      contribution_class: "exact carry coordinate decomposition"
+      boundary: "The quotient coordinate remains uncontrolled."
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization and verification packaging"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: "Positive and deliberate-negative replay pending a supported runner"
+
+fidelity:
+  divergences: >-
+    The Challenge exposes exact source statements. The lift, block-nullity,
+    anchor, and local-window producers are retained as hypotheses and are not
+    represented as proved.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Exact lift algebra, two-anchor hypotheses, one-index exponential
+    contradiction, finite four-state obstruction, carry decomposition,
+    producer-consumer boundary, and non-solution status reviewed; mechanical
+    gates beyond focused Lean and axiom audit remain pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification269CarryMechanism"
+  statements:
+    - source: "ErdosProblems.Erdos269.no_carryLift_of_errorBound_below_twoPow"
+      lean: "Erdos249257.ExternalVerification269CarryMechanism.no_carryLift_of_errorBound_below_twoPow"
+      module: "ExternalVerification269CarryMechanism/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos269.no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull"
+      lean: "Erdos249257.ExternalVerification269CarryMechanism.no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull"
+      module: "ExternalVerification269CarryMechanism/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos269.perturbation_eq_zero_of_blockNull_twoAnchors"
+      lean: "Erdos249257.ExternalVerification269CarryMechanism.perturbation_eq_zero_of_blockNull_twoAnchors"
+      module: "ExternalVerification269CarryMechanism/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos269.carryLift_blockDefect"
+      lean: "Erdos249257.ExternalVerification269CarryMechanism.carryLift_blockDefect"
+      module: "ExternalVerification269CarryMechanism/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
+      lean: "Erdos249257.ExternalVerification269CarryMechanism.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
+      module: "ExternalVerification269CarryMechanism/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+    - source: "ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary"
+      lean: "Erdos249257.ExternalVerification269CarryMechanism.carry_eq_residueDigit_add_coboundary"
+      module: "ExternalVerification269CarryMechanism/Challenge.lean"
+      status: "exact-transport-focused-lean-and-axiom-audit-passed"
+
+acknowledgements: "Mathlib contributors."

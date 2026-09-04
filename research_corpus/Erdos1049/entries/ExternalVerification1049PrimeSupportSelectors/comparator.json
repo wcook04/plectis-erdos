@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification1049PrimeSupportSelectors.Challenge",
+  "solution_module": "ExternalVerification1049PrimeSupportSelectors.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedTwoSelector_rationalGap",
+    "Erdos249257.ExternalVerification1049PrimeSupportSelectors.rationalTwoSelector_notBothTendstoZero",
+    "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedOneRow_rationalGap",
+    "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primePowerSupportedOneRow_rationalGap",
+    "Erdos249257.ExternalVerification1049PrimeSupportSelectors.twoSelector_unimodularHeightDecay_tradeoff",
+    "Erdos249257.ExternalVerification1049PrimeSupportSelectors.zeroDenominatorCoordinates_binaryCollision"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

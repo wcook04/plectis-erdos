@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_second_mode_strict_phase_arc",
+  "recorded_at": "2026-08-25",
+  "input_stage": "all_phase_second_mode_connector_and_mixed_tangent_adversarial_scout",
+  "output_stage": "canonical_equality_classification_and_noncanonical_stability_collars",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticSecondModeStrictPhaseArc.md",
+    "ErdosProblems/Erdos1041/SexticSecondModeStrictPhaseArc.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_second_mode_strict_phase_arc.py"
+  ],
+  "human_understanding_delta": "Every interior phase of the reduced second-mode sector has a strictly negative canonical-radius chord. Equality is confined to the two rotated canonical square-contact phases, exactly where the transverse selector and null-box atlas apply. Closed noncanonical phase arcs therefore have uniform mixed stability collars by compactness.",
+  "verification_state": {
+    "analytic": "complete_strict_two_half_cosine_envelope_equality_classification_and_compact_stability_argument",
+    "symbolic": "passed_four_dense_closed_subarc_margin_rows_and_mixed_tangent_adversarial_replay",
+    "lean": "passed_canonical_cached_focused_build_and_final_serialized_authority_check_warning_free",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "analytic theorem, Lean strict envelope, computational adversary, canonical research packet update, equality-set handoff, and claim boundary authored and focused validation passed",
+  "unresolved_downstream_bottleneck": "Make the phase-collar/null-box/4-over-5 overlap constants simultaneous on the explicit compact coefficient box, then absorb the nonlinear remainder.",
+  "next_stage_owner": "Refinery: audit strictness and equality cases, then route only the canonical endpoint neighborhoods to the null-box overlap owner.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex computation-guided analytic derivation under operator direction",
+    "computation": "The mixed scout concentrated at the canonical boundary and remained negative; dense subarc replay calibrates but does not prove strictness.",
+    "formalization": "Lean checks both strict cosine envelopes, strict chord fan-in, and the canonical endpoint equality dichotomy.",
+    "claim_boundary": "Classifies equality and proves strictness on noncanonical pure second-mode phases. It does not supply all mixed overlap constants, nonlinear transfer, all sextics, or unrestricted Erdos #1041."
+  }
+}

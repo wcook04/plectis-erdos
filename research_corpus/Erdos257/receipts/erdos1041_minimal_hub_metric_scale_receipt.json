@@ -1,0 +1,399 @@
+{
+  "adversarial_minimal_hub_suprema": {
+    "degree_three": {
+      "clustered": 0.999984316,
+      "combined": 0.999994283,
+      "near_collision": 0.99989768,
+      "near_extremal": 0.999071231,
+      "uniform": 0.999980136
+    },
+    "note": "Evolutionary maxima of L(c*)/(2|f(c*)|^{1/n}) under five independent seedings -- near-extremal, uniform, clustered, near-collision, and a combined restart -- reported as lower bounds on the supremum from the basins explored."
+  },
+  "conjecture": "At c* = argmin |f(c)| the descending branch pair satisfies L(c*) <= 2 |f(c*)|^{1/n}. With the Fekete bound |f(c*)| <= R^n this gives min_c L(c) <= 2R, hence Erdos #1041.",
+  "cubic_complete_parameter_sweep": {
+    "admissible_parameters_checked": 1506,
+    "attained_at_parameter": [
+      0.008660254037844385,
+      -0.0050000000000000044
+    ],
+    "equality_point": "s = 0, i.e. P = u^3 + 1, where the branches are two radii",
+    "maximum_branch_pair_length": 1.9979677067210235,
+    "statement": "normalised cubic P(u) = u^3 + s u^2 + 1; minimality is |1 + 4 s^3 / 27| >= 1; the branch pair at 0 must have length <= 2",
+    "violations": 0
+  },
+  "cusp_exponent": [
+    {
+      "deficit_by_scale": {
+        "0.0001": 0.0038728475955616495,
+        "0.001": 0.008714671935024584,
+        "0.01": 0.037481979263272125,
+        "1e-05": 0.000926776009030239,
+        "1e-06": 0.0002730253887217223,
+        "1e-07": 5.255612408117116e-05,
+        "1e-08": 3.1475352962736146e-05,
+        "1e-09": 1.1031945133003577e-05
+      },
+      "degree": 3,
+      "fitted_exponent": 0.5126498584545841,
+      "predicted_exponent": 0.5,
+      "relative_error": 0.025299716909168213,
+      "samples": 8
+    },
+    {
+      "deficit_by_scale": {
+        "0.0001": 0.0198424188769933,
+        "0.001": 0.05051821743850512,
+        "0.01": 0.10775186736531246,
+        "1e-05": 0.008396202717170379,
+        "1e-06": 0.005380316910731893,
+        "1e-07": 0.0025003579955388635,
+        "1e-08": 0.0010367349536818393,
+        "1e-09": 0.0005379554634894479
+      },
+      "degree": 4,
+      "fitted_exponent": 0.3266988461723822,
+      "predicted_exponent": 0.3333333333333333,
+      "relative_error": 0.019903461482853324,
+      "samples": 8
+    },
+    {
+      "deficit_by_scale": {
+        "0.0001": 0.06312518362641066,
+        "0.001": 0.10653475220860209,
+        "0.01": 0.20046111825572022,
+        "1e-05": 0.03401413521189952,
+        "1e-06": 0.0183635175234755,
+        "1e-07": 0.008005856921361762,
+        "1e-08": 0.005697459515451309,
+        "1e-09": 0.002942401417635946
+      },
+      "degree": 5,
+      "fitted_exponent": 0.2636956655312871,
+      "predicted_exponent": 0.25,
+      "relative_error": 0.054782662125148374,
+      "samples": 8
+    },
+    {
+      "deficit_by_scale": {
+        "0.0001": 0.1066788846824304,
+        "0.001": 0.1584105391574172,
+        "0.01": 0.2485594358490425,
+        "1e-05": 0.06419250533250472,
+        "1e-06": 0.04163994262817383,
+        "1e-07": 0.025848412058298575,
+        "1e-08": 0.015533308079200689,
+        "1e-09": 0.009010101260640132
+      },
+      "degree": 6,
+      "fitted_exponent": 0.20431443640428554,
+      "predicted_exponent": 0.2,
+      "relative_error": 0.021572182021427633,
+      "samples": 8
+    }
+  ],
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "falsification_consequence": "A violation of (M) would send the search back to a global selection over hubs, since the per-hub route would then be closed at the minimal hub too.",
+      "survival_consequence": "Erdos #1041 reduces to a single scale-invariant per-hub inequality whose equality cases are known and whose companion half is already proved."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "minimal_hub_metric_scale",
+      "statement": "At the critical point of least critical-value modulus, the descending inverse-ray branch pair has length at most twice the n-th root of that modulus -- the corpus's critical-pair metric scale, applied to arc length rather than straight distance."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/StraightSpokeHubCriterionLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_minimal_hub_metric_scale.py",
+        "system/lib/formal_math_lemniscate.py"
+      ]
+    },
+    "probe": {
+      "computation": "Branch pairs are integrated in the substitution f(z(u)) = (1-u^2) f(c) with endpoint and level residual gates. The cubic case is normalised to P(u) = u^3 + s u^2 + 1 and swept completely over the admissible region |1 + 4 s^3 / 27| >= 1. Equality is checked on quadratics and on z^n - r^n, the Fekete bound on configurations with circumradius pinned to one, and the ratio is compared between the minimal hub and general hubs.",
+      "falsifier": "(M) fails if any configuration gives L(c*) > 2|f(c*)|^{1/n}, or if the cubic sweep finds an admissible s with branch pair length above two. The necessity of minimality fails if no general hub exceeds the ratio. (F) fails if any circumradius-one configuration has min_j |f(c_j)| above one.",
+      "id": "erdos1041_minimal_hub_metric_scale",
+      "question": "Does the critical-pair metric scale 2|f(c)|^{1/n} bound the descending branch pair length at the least-critical-value hub, and does the Fekete bound supply the missing factor to reach 2R?",
+      "resource_bounds": {
+        "configurations_per_degree": 32,
+        "cubic_sweep_admissible_parameters": 1506,
+        "maximum_degree_swept": 8
+      },
+      "stop_condition": "Stop once the cubic case is swept completely and the equality identities and Fekete bound are pinned. More sampling in higher degree is a longer horizon; what is needed is a proof of (M)."
+    },
+    "problem": {
+      "claim_ceiling": "Reduces the surviving obligation to one per-hub inequality (M) paired with the Fekete bound (F), proves the two equality identities and the Fekete bound, and shows that minimality of the hub is necessary. (M) itself is supported by a complete cubic parameter sweep and finite evidence in higher degree. Erdos #1041 remains open.",
+      "id": "erdos_1041",
+      "target_statement": "If a monic polynomial f(z)=product_i(z-z_i) has all roots in the open unit disk, prove that two roots can be joined by a curve of length less than 2 contained in the open lemniscate |f|<1."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "producer_constructed",
+        "decision_basis": "The equality identities, the Fekete bound and the necessity of minimality are decided; (M) is finite evidence plus a complete cubic sweep.",
+        "next_analytic_target": "Prove (M). Normalised: P(u) = 1 + u^2 R(u) monic of degree n with P(0) = 1, P'(0) = 0 and |P(kappa)| >= 1 at every critical point; show the two descending branches at 0 have total length at most 2, with equality only for P = u^n + 1. Equivalently, in the resolved coordinate xi^2 = 1 - P, the curve Z with P(Z(xi)) = 1 - xi^2 and Z(0) = 0 must not increase the length of the segment [-1, 1] on average."
+      },
+      "status": "mixed",
+      "summary": "The two equality identities hold exactly (quadratic deviation 3.00e-11) and the Fekete bound held on every configuration. (M) survived at the minimal hub on every sample, worst ratio 0.991804, while the same ratio at general hubs reaches 1.081324 -- so minimality is the content, not the level. The complete cubic parameter sweep over 1506 admissible parameters found no violation, with maximum branch pair length 1.997967707."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "fekete_bound": [
+    {
+      "configurations": 45,
+      "degree": 3,
+      "fekete_bound_holds": true,
+      "maximum_of_min_critical_value_modulus": 0.7115772191647985
+    },
+    {
+      "configurations": 45,
+      "degree": 4,
+      "fekete_bound_holds": true,
+      "maximum_of_min_critical_value_modulus": 0.6191644422109074
+    },
+    {
+      "configurations": 45,
+      "degree": 5,
+      "fekete_bound_holds": true,
+      "maximum_of_min_critical_value_modulus": 0.2312125117322099
+    },
+    {
+      "configurations": 45,
+      "degree": 6,
+      "fekete_bound_holds": true,
+      "maximum_of_min_critical_value_modulus": 0.13486379144437402
+    },
+    {
+      "configurations": 45,
+      "degree": 8,
+      "fekete_bound_holds": true,
+      "maximum_of_min_critical_value_modulus": 0.04974601867499419
+    }
+  ],
+  "minimal_versus_general_hub_sweep": [
+    {
+      "degree": 3,
+      "general_hub_samples": 20,
+      "general_hub_violations": 0,
+      "maximum_general_hub_ratio": 0.9608248821909017,
+      "maximum_minimal_hub_ratio": 0.9918035391705371,
+      "minimal_hub_samples": 32,
+      "minimal_hub_violations": 0
+    },
+    {
+      "degree": 4,
+      "general_hub_samples": 30,
+      "general_hub_violations": 4,
+      "maximum_general_hub_ratio": 1.0644688573585634,
+      "maximum_minimal_hub_ratio": 0.9649328181880044,
+      "minimal_hub_samples": 32,
+      "minimal_hub_violations": 0
+    },
+    {
+      "degree": 5,
+      "general_hub_samples": 40,
+      "general_hub_violations": 0,
+      "maximum_general_hub_ratio": 0.9931130253541228,
+      "maximum_minimal_hub_ratio": 0.9105634178286057,
+      "minimal_hub_samples": 32,
+      "minimal_hub_violations": 0
+    },
+    {
+      "degree": 6,
+      "general_hub_samples": 50,
+      "general_hub_violations": 1,
+      "maximum_general_hub_ratio": 1.0087890517212061,
+      "maximum_minimal_hub_ratio": 0.8484348265874215,
+      "minimal_hub_samples": 32,
+      "minimal_hub_violations": 0
+    },
+    {
+      "degree": 8,
+      "general_hub_samples": 68,
+      "general_hub_violations": 1,
+      "maximum_general_hub_ratio": 1.0813242849798235,
+      "maximum_minimal_hub_ratio": 0.721690185598663,
+      "minimal_hub_samples": 32,
+      "minimal_hub_violations": 0
+    }
+  ],
+  "prior_work_in_this_corpus": {
+    "already_proved_there": [
+      "the first-merge reduction and the simple-connectivity of sublevel components",
+      "rho = |f(c)|^(1/n) <= R by the discriminant/Fekete sandwich, with the regular n-gon equality case",
+      "the strong (2 rho) versus weak (2 R) split, with the strong one flagged as possibly false",
+      "an exact degree-five counterexample to the straight completion at the minimum-critical hub, certified by rational Rouche disks"
+    ],
+    "analysis": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/MinimumCriticalNewtonHubLab.md",
+    "canonical_falsifier_run": {
+      "degree": 5,
+      "objective": "critical-scale-normalized-minimum-critical-newton-hub",
+      "score": 0.9495242630078684,
+      "trials": 300
+    },
+    "what_this_probe_adds": [
+      "multi-seeded adversarial pressure reaching 0.999994283 at degree three",
+      "a complete one-complex-parameter sweep of the cubic case",
+      "the quadratic equality family, second to z^n - r^n",
+      "the cusp structure of the extremum under perturbation",
+      "elimination of the per-hub form L(c) <= 2 max_k |z_k - c|"
+    ]
+  },
+  "pure_power_identity": [
+    {
+      "critical_value_identity_error": 0.0,
+      "critical_value_modulus": 0.21599999999999997,
+      "degree": 3,
+      "integrated_branch_pair_length": 1.199999993792942,
+      "integrator_deficit_at_degenerate_hub": 6.207057978713237e-09,
+      "radius": 0.6,
+      "radius_to_the_degree": 0.21599999999999997,
+      "ratio_from_integrator": 0.9999999948274517,
+      "true_branch_pair_length": 1.2
+    },
+    {
+      "critical_value_identity_error": 1.1102230246251565e-16,
+      "critical_value_modulus": 0.729,
+      "degree": 3,
+      "integrated_branch_pair_length": 1.7999999898134766,
+      "integrator_deficit_at_degenerate_hub": 1.018652340256665e-08,
+      "perturbation_response": {
+        "0.001": 0.9905956186326584,
+        "1e-06": 0.9997100807268753,
+        "1e-09": 0.9999899152387557
+      },
+      "radius": 0.9,
+      "radius_to_the_degree": 0.7290000000000001,
+      "ratio_from_integrator": 0.9999999943408203,
+      "true_branch_pair_length": 1.8
+    },
+    {
+      "critical_value_identity_error": 0.0,
+      "critical_value_modulus": 0.1296,
+      "degree": 4,
+      "integrated_branch_pair_length": 1.1999969997304758,
+      "integrator_deficit_at_degenerate_hub": 3.0002695241559962e-06,
+      "radius": 0.6,
+      "radius_to_the_degree": 0.1296,
+      "ratio_from_integrator": 0.9999974997753965,
+      "true_branch_pair_length": 1.2
+    },
+    {
+      "critical_value_identity_error": 1.1102230246251565e-16,
+      "critical_value_modulus": 0.6561000000000001,
+      "degree": 4,
+      "integrated_branch_pair_length": 1.79999535607225,
+      "integrator_deficit_at_degenerate_hub": 4.643927750125343e-06,
+      "perturbation_response": {
+        "0.001": 0.9490397679069983,
+        "1e-06": 0.9949474821643111,
+        "1e-09": 0.9994929433038268
+      },
+      "radius": 0.9,
+      "radius_to_the_degree": 0.6561,
+      "ratio_from_integrator": 0.9999974200401388,
+      "true_branch_pair_length": 1.8
+    },
+    {
+      "critical_value_identity_error": 0.0,
+      "critical_value_modulus": 0.07775999999999998,
+      "degree": 5,
+      "integrated_branch_pair_length": 1.1999293195200273,
+      "integrator_deficit_at_degenerate_hub": 7.068047997260685e-05,
+      "radius": 0.6,
+      "radius_to_the_degree": 0.07775999999999998,
+      "ratio_from_integrator": 0.9999410996000229,
+      "true_branch_pair_length": 1.2
+    },
+    {
+      "critical_value_identity_error": 1.1102230246251565e-16,
+      "critical_value_modulus": 0.5904900000000002,
+      "degree": 5,
+      "integrated_branch_pair_length": 1.7998478429432572,
+      "integrator_deficit_at_degenerate_hub": 0.00015215705674287427,
+      "perturbation_response": {
+        "0.001": 0.8855333579660186,
+        "1e-06": 0.9801236686961348,
+        "1e-09": 0.9964813874495002
+      },
+      "radius": 0.9,
+      "radius_to_the_degree": 0.5904900000000001,
+      "ratio_from_integrator": 0.9999154683018096,
+      "true_branch_pair_length": 1.8
+    },
+    {
+      "critical_value_identity_error": 6.938893903907228e-18,
+      "critical_value_modulus": 0.04665599999999998,
+      "degree": 6,
+      "integrated_branch_pair_length": 1.1993058115501771,
+      "integrator_deficit_at_degenerate_hub": 0.0006941884498228301,
+      "radius": 0.6,
+      "radius_to_the_degree": 0.04665599999999999,
+      "ratio_from_integrator": 0.9994215096251476,
+      "true_branch_pair_length": 1.2
+    },
+    {
+      "critical_value_identity_error": 1.1102230246251565e-16,
+      "critical_value_modulus": 0.5314410000000002,
+      "degree": 6,
+      "integrated_branch_pair_length": 1.7988949298646382,
+      "integrator_deficit_at_degenerate_hub": 0.0011050701353618742,
+      "perturbation_response": {
+        "0.001": 0.8152229210823552,
+        "1e-06": 0.95523944335912,
+        "1e-09": 0.9888736433198956
+      },
+      "radius": 0.9,
+      "radius_to_the_degree": 0.531441,
+      "ratio_from_integrator": 0.9993860721470211,
+      "true_branch_pair_length": 1.8
+    },
+    {
+      "critical_value_identity_error": 3.469446951953614e-18,
+      "critical_value_modulus": 0.016796159999999997,
+      "degree": 8,
+      "integrated_branch_pair_length": 1.194639169496405,
+      "integrator_deficit_at_degenerate_hub": 0.005360830503595038,
+      "radius": 0.6,
+      "radius_to_the_degree": 0.016796159999999994,
+      "ratio_from_integrator": 0.9955326412470041,
+      "true_branch_pair_length": 1.2
+    },
+    {
+      "critical_value_identity_error": 1.1102230246251565e-16,
+      "critical_value_modulus": 0.4304672100000002,
+      "degree": 8,
+      "integrated_branch_pair_length": 1.791887771062351,
+      "integrator_deficit_at_degenerate_hub": 0.008112228937648958,
+      "perturbation_response": {
+        "0.001": 0.6827666196123725,
+        "1e-06": 0.8866159146026444,
+        "1e-09": 0.9575925803472579
+      },
+      "radius": 0.9,
+      "radius_to_the_degree": 0.4304672100000001,
+      "ratio_from_integrator": 0.9954932061457505,
+      "true_branch_pair_length": 1.8
+    }
+  ],
+  "quadratic_identity": {
+    "maximum_deviation_from_equality": 2.9976354731786614e-11,
+    "quadratics_checked": 40,
+    "statement": "L(c) = |z1 - z2| = 2|d| and |f(c)| = |d|^2, so L = 2|f(c)|^{1/2}"
+  },
+  "sources": [
+    {
+      "byte_length": 28896,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_minimal_hub_metric_scale.py",
+      "sha256": "cd71eeea15b404d72e8159bff9bfd317d4df10ccf2e77f58200e8c5fbe72a95f"
+    },
+    {
+      "byte_length": 16610,
+      "path": "system/lib/formal_math_lemniscate.py",
+      "sha256": "ecc1b894d4832f8408a83c1463dea6c769c6c5b2ba0a70edf92d4ee4fa9a161f"
+    }
+  ]
+}

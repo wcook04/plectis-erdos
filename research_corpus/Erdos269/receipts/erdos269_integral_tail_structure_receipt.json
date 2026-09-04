@@ -1,0 +1,591 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos269.dyadicShellTsumTail_integer_or_cofinal_far",
+        "ErdosProblems.Erdos269.dyadicNormalizedShellTsumTailR235_succ"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicShellSummability.lean",
+      "falsification_consequence": "The first witness eliminates all proofs based on this two-step cap-gap Lyapunov function and forces a genuinely nonlocal functional.",
+      "survival_consequence": "An all-scale proof gives well-founded descent on a nonnegative integer and excludes every infinite integral-tail orbit, closing the remaining branch of the Lean-checked dichotomy."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "denominator_one_two_step_integer_gap_descent",
+      "statement": "After first base-clear, every still-trapped denominator-one state either escapes or reaches a strictly smaller integer cap gap within two actual source transitions."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/IntegralTailStructureLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicOrderedTailRecurrence.lean"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos269_integral_tail_escape_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_integral_tail_gap_descent.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_dyadic_windows.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_integral_tail_escape.py"
+      ]
+    },
+    "probe": {
+      "computation": "Replay every denominator-one canonical post-clear trajectory; verify g'=b*g-h with h=b*C-C'-d exactly; and test strict gap descent or escape within the predeclared two-transition window at every trapped position.",
+      "falsifier": "One exact trapped position whose next two source states neither escape nor have cap gap strictly below the starting gap.",
+      "id": "exact_post_clear_gap_charge_recurrence",
+      "question": "Can a state-dependent integer Lyapunov descent replace the false uniform three-transition escape bound?",
+      "resource_bounds": {
+        "descent_window": 2,
+        "max_dyadic_start": 3000,
+        "max_window_length": 16,
+        "min_dyadic_start": 1
+      },
+      "stop_condition": "Stop after deciding the two-step Lyapunov law. Do not replace a counterexample by a larger lookahead constant."
+    },
+    "problem": {
+      "claim_ceiling": "Exact finite Lyapunov-mechanism decision only. Survival in the configured scan is not an all-scale descent theorem or an irrationality proof.",
+      "id": "erdos_269",
+      "target_statement": "Exclude the exact integral-state branch of the genuine normalized {2,3,5} dyadic source tail."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The probe tests a state-dependent well-founded descent criterion, not a longer fixed escape horizon or a renamed residue target.",
+        "next_analytic_target": "Use the first exact violation to test a source-conditioned or nonlocal descent functional; do not increase the window constant."
+      },
+      "status": "exact_one_way_result",
+      "summary": "An exact trapped post-clear state survives two source transitions without reaching a smaller cap gap, eliminating the proposed two-step Lyapunov mechanism."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "all_tested_starts_reach_terminal_escape": true,
+    "first_one_step_violations": [
+      {
+        "dyadic_start": 117,
+        "from_length": 4,
+        "initial_gap": 5128,
+        "next_row": {
+          "base_clears_cap": true,
+          "canonical_state": 1881,
+          "gap": 5287,
+          "last_block_base": 2,
+          "last_block_digit": 2087,
+          "length": 5,
+          "state_escapes_cap": false,
+          "tail_cap": 7168,
+          "window_base": 21600
+        }
+      },
+      {
+        "dyadic_start": 134,
+        "from_length": 4,
+        "initial_gap": 7196,
+        "next_row": {
+          "base_clears_cap": true,
+          "canonical_state": 1341,
+          "gap": 7939,
+          "last_block_base": 2,
+          "last_block_digit": 2699,
+          "length": 5,
+          "state_escapes_cap": false,
+          "tail_cap": 9280,
+          "window_base": 21600
+        }
+      },
+      {
+        "dyadic_start": 276,
+        "from_length": 5,
+        "initial_gap": 32220,
+        "next_row": {
+          "base_clears_cap": true,
+          "canonical_state": 136,
+          "gap": 37759,
+          "last_block_base": 2,
+          "last_block_digit": 10954,
+          "length": 6,
+          "state_escapes_cap": false,
+          "tail_cap": 37895,
+          "window_base": 216000
+        }
+      },
+      {
+        "dyadic_start": 293,
+        "from_length": 5,
+        "initial_gap": 34774,
+        "next_row": {
+          "base_clears_cap": true,
+          "canonical_state": 3019,
+          "gap": 39554,
+          "last_block_base": 2,
+          "last_block_digit": 12305,
+          "length": 6,
+          "state_escapes_cap": false,
+          "tail_cap": 42573,
+          "window_base": 129600
+        }
+      },
+      {
+        "dyadic_start": 552,
+        "from_length": 6,
+        "initial_gap": 116636,
+        "next_row": {
+          "base_clears_cap": true,
+          "canonical_state": 19912,
+          "gap": 128313,
+          "last_block_base": 2,
+          "last_block_digit": 42752,
+          "length": 7,
+          "state_escapes_cap": false,
+          "tail_cap": 148225,
+          "window_base": 1296000
+        }
+      },
+      {
+        "dyadic_start": 592,
+        "from_length": 6,
+        "initial_gap": 142637,
+        "next_row": {
+          "base_clears_cap": true,
+          "canonical_state": 5148,
+          "gap": 164871,
+          "last_block_base": 2,
+          "last_block_digit": 49066,
+          "length": 7,
+          "state_escapes_cap": false,
+          "tail_cap": 170019,
+          "window_base": 1296000
+        }
+      },
+      {
+        "dyadic_start": 635,
+        "from_length": 6,
+        "initial_gap": 163985,
+        "next_row": {
+          "base_clears_cap": true,
+          "canonical_state": 27665,
+          "gap": 167994,
+          "last_block_base": 6,
+          "last_block_digit": 158839,
+          "length": 7,
+          "state_escapes_cap": false,
+          "tail_cap": 195659,
+          "window_base": 3888000
+        }
+      },
+      {
+        "dyadic_start": 668,
+        "from_length": 6,
+        "initial_gap": 182232,
+        "next_row": {
+          "base_clears_cap": true,
+          "canonical_state": 4485,
+          "gap": 211430,
+          "last_block_base": 2,
+          "last_block_digit": 62261,
+          "length": 7,
+          "state_escapes_cap": false,
+          "tail_cap": 215915,
+          "window_base": 1296000
+        }
+      },
+      {
+        "dyadic_start": 692,
+        "from_length": 7,
+        "initial_gap": 177534,
+        "next_row": {
+          "base_clears_cap": true,
+          "canonical_state": 41992,
+          "gap": 190332,
+          "last_block_base": 2,
+          "last_block_digit": 66946,
+          "length": 8,
+          "state_escapes_cap": false,
+          "tail_cap": 232324,
+          "window_base": 7776000
+        }
+      },
+      {
+        "dyadic_start": 693,
+        "from_length": 6,
+        "initial_gap": 177534,
+        "next_row": {
+          "base_clears_cap": true,
+          "canonical_state": 41992,
+          "gap": 190332,
+          "last_block_base": 2,
+          "last_block_digit": 66946,
+          "length": 7,
+          "state_escapes_cap": false,
+          "tail_cap": 232324,
+          "window_base": 1296000
+        }
+      },
+      {
+        "dyadic_start": 694,
+        "from_length": 5,
+        "initial_gap": 177534,
+        "next_row": {
+          "base_clears_cap": true,
+          "canonical_state": 41992,
+          "gap": 190332,
+          "last_block_base": 2,
+          "last_block_digit": 66946,
+          "length": 6,
+          "state_escapes_cap": false,
+          "tail_cap": 232324,
+          "window_base": 648000
+        }
+      },
+      {
+        "dyadic_start": 717,
+        "from_length": 6,
+        "initial_gap": 181044,
+        "next_row": {
+          "base_clears_cap": true,
+          "canonical_state": 62319,
+          "gap": 186017,
+          "last_block_base": 2,
+          "last_block_digit": 71601,
+          "length": 7,
+          "state_escapes_cap": false,
+          "tail_cap": 248336,
+          "window_base": 1296000
+        }
+      }
+    ],
+    "first_two_step_violations": [
+      {
+        "dyadic_start": 2220,
+        "from_length": 7,
+        "initial_gap": 1871381,
+        "lookahead": [
+          {
+            "base_clears_cap": true,
+            "canonical_state": 273638,
+            "gap": 2073386,
+            "last_block_base": 2,
+            "last_block_digit": 675606,
+            "length": 8,
+            "state_escapes_cap": false,
+            "tail_cap": 2347024,
+            "window_base": 7776000
+          },
+          {
+            "base_clears_cap": true,
+            "canonical_state": 347327,
+            "gap": 2001740,
+            "last_block_base": 6,
+            "last_block_digit": 1294501,
+            "length": 9,
+            "state_escapes_cap": false,
+            "tail_cap": 2349067,
+            "window_base": 46656000
+          }
+        ]
+      },
+      {
+        "dyadic_start": 2602,
+        "from_length": 7,
+        "initial_gap": 2776610,
+        "lookahead": [
+          {
+            "base_clears_cap": true,
+            "canonical_state": 350536,
+            "gap": 2870292,
+            "last_block_base": 10,
+            "last_block_digit": 4067724,
+            "length": 8,
+            "state_escapes_cap": false,
+            "tail_cap": 3220828,
+            "window_base": 38880000
+          },
+          {
+            "base_clears_cap": true,
+            "canonical_state": 372026,
+            "gap": 2851196,
+            "last_block_base": 6,
+            "last_block_digit": 1731190,
+            "length": 9,
+            "state_escapes_cap": false,
+            "tail_cap": 3223222,
+            "window_base": 233280000
+          }
+        ]
+      }
+    ],
+    "gap_recurrence_identity_failure_count": 0,
+    "gap_recurrence_identity_failures": [],
+    "maximum_descent_wait_examples": [
+      {
+        "dyadic_start": 117,
+        "from_length": 4,
+        "initial_gap": 5128,
+        "resolution_offset": 2,
+        "resolution_row": {
+          "base_clears_cap": true,
+          "canonical_state": 8985,
+          "gap": -1703,
+          "last_block_base": 6,
+          "last_block_digit": 2301,
+          "length": 6,
+          "state_escapes_cap": true,
+          "tail_cap": 7282,
+          "window_base": 129600
+        }
+      },
+      {
+        "dyadic_start": 134,
+        "from_length": 4,
+        "initial_gap": 7196,
+        "resolution_offset": 2,
+        "resolution_row": {
+          "base_clears_cap": true,
+          "canonical_state": 24546,
+          "gap": -15072,
+          "last_block_base": 30,
+          "last_block_digit": 15684,
+          "length": 6,
+          "state_escapes_cap": true,
+          "tail_cap": 9474,
+          "window_base": 648000
+        }
+      },
+      {
+        "dyadic_start": 276,
+        "from_length": 5,
+        "initial_gap": 32220,
+        "resolution_offset": 2,
+        "resolution_row": {
+          "base_clears_cap": true,
+          "canonical_state": 1283072,
+          "gap": -1244917,
+          "last_block_base": 6,
+          "last_block_digit": 13744,
+          "length": 7,
+          "state_escapes_cap": true,
+          "tail_cap": 38155,
+          "window_base": 1296000
+        }
+      },
+      {
+        "dyadic_start": 293,
+        "from_length": 5,
+        "initial_gap": 34774,
+        "resolution_offset": 2,
+        "resolution_row": {
+          "base_clears_cap": true,
+          "canonical_state": 3873926,
+          "gap": -3830939,
+          "last_block_base": 30,
+          "last_block_digit": 104644,
+          "length": 7,
+          "state_escapes_cap": true,
+          "tail_cap": 42987,
+          "window_base": 3888000
+        }
+      },
+      {
+        "dyadic_start": 552,
+        "from_length": 6,
+        "initial_gap": 116636,
+        "resolution_offset": 2,
+        "resolution_row": {
+          "base_clears_cap": true,
+          "canonical_state": 243415,
+          "gap": -94419,
+          "last_block_base": 30,
+          "last_block_digit": 353945,
+          "length": 8,
+          "state_escapes_cap": true,
+          "tail_cap": 148996,
+          "window_base": 38880000
+        }
+      },
+      {
+        "dyadic_start": 592,
+        "from_length": 6,
+        "initial_gap": 142637,
+        "resolution_offset": 2,
+        "resolution_row": {
+          "base_clears_cap": true,
+          "canonical_state": 59972,
+          "gap": 110872,
+          "last_block_base": 30,
+          "last_block_digit": 94468,
+          "length": 8,
+          "state_escapes_cap": false,
+          "tail_cap": 170844,
+          "window_base": 38880000
+        }
+      },
+      {
+        "dyadic_start": 635,
+        "from_length": 6,
+        "initial_gap": 163985,
+        "resolution_offset": 2,
+        "resolution_row": {
+          "base_clears_cap": true,
+          "canonical_state": 7774817,
+          "gap": -7578863,
+          "last_block_base": 2,
+          "last_block_digit": 56513,
+          "length": 8,
+          "state_escapes_cap": true,
+          "tail_cap": 195954,
+          "window_base": 7776000
+        }
+      },
+      {
+        "dyadic_start": 668,
+        "from_length": 6,
+        "initial_gap": 182232,
+        "resolution_offset": 2,
+        "resolution_row": {
+          "base_clears_cap": true,
+          "canonical_state": 38661044,
+          "gap": -38444199,
+          "last_block_base": 30,
+          "last_block_digit": 353506,
+          "length": 8,
+          "state_escapes_cap": true,
+          "tail_cap": 216845,
+          "window_base": 38880000
+        }
+      },
+      {
+        "dyadic_start": 692,
+        "from_length": 7,
+        "initial_gap": 177534,
+        "resolution_offset": 2,
+        "resolution_row": {
+          "base_clears_cap": true,
+          "canonical_state": 110552,
+          "gap": 122415,
+          "last_block_base": 6,
+          "last_block_digit": 141400,
+          "length": 9,
+          "state_escapes_cap": false,
+          "tail_cap": 232967,
+          "window_base": 46656000
+        }
+      },
+      {
+        "dyadic_start": 693,
+        "from_length": 6,
+        "initial_gap": 177534,
+        "resolution_offset": 2,
+        "resolution_row": {
+          "base_clears_cap": true,
+          "canonical_state": 110552,
+          "gap": 122415,
+          "last_block_base": 6,
+          "last_block_digit": 141400,
+          "length": 8,
+          "state_escapes_cap": false,
+          "tail_cap": 232967,
+          "window_base": 7776000
+        }
+      },
+      {
+        "dyadic_start": 694,
+        "from_length": 5,
+        "initial_gap": 177534,
+        "resolution_offset": 2,
+        "resolution_row": {
+          "base_clears_cap": true,
+          "canonical_state": 110552,
+          "gap": 122415,
+          "last_block_base": 6,
+          "last_block_digit": 141400,
+          "length": 7,
+          "state_escapes_cap": false,
+          "tail_cap": 232967,
+          "window_base": 3888000
+        }
+      },
+      {
+        "dyadic_start": 717,
+        "from_length": 6,
+        "initial_gap": 181044,
+        "resolution_offset": 2,
+        "resolution_row": {
+          "base_clears_cap": true,
+          "canonical_state": 1435871,
+          "gap": -1186537,
+          "last_block_base": 30,
+          "last_block_digit": 433699,
+          "length": 8,
+          "state_escapes_cap": true,
+          "tail_cap": 249334,
+          "window_base": 38880000
+        }
+      }
+    ],
+    "maximum_observed_descent_wait": 2,
+    "minimum_source_charge": [
+      34,
+      2,
+      1
+    ],
+    "one_step_strict_descent_or_escape_count": 1473,
+    "one_step_violation_count": 71,
+    "parameters": {
+      "descent_window": 2,
+      "max_dyadic_start": 3000,
+      "max_window_length": 16,
+      "min_dyadic_start": 1
+    },
+    "starts_without_terminal_escape": [],
+    "tested_start_count": 3000,
+    "trapped_post_clear_position_count": 1544,
+    "two_step_gap_descent_candidate_survives": false,
+    "two_step_strict_descent_or_escape_count": 1542,
+    "two_step_violation_count": 2
+  },
+  "schema": "erdos269-integral-tail-gap-descent/1",
+  "source_records": [
+    {
+      "byte_length": 16300,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_integral_tail_gap_descent.py",
+      "sha256": "c4ced93dcf58eb3487f754a80bc67ba17c77d2bd22cb0402c41d18910f09bed2"
+    },
+    {
+      "byte_length": 21749,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_dyadic_windows.py",
+      "sha256": "8e5c78e80afdef66898ef1dd0a31090d52fd12604b8d04a91db4aa2639cebd5e"
+    },
+    {
+      "byte_length": 10881,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_integral_tail_escape.py",
+      "sha256": "a60266a0a496b7eda396ba1f9151011376c336d6ed02f03cfabdb8663687e78d"
+    },
+    {
+      "byte_length": 2873,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/IntegralTailStructureLab.md",
+      "sha256": "dec597cfe282097af7b46f2c236a8aa45a7cd54fbaf7997376c4c2c69c3abcc0"
+    },
+    {
+      "byte_length": 5272,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicOrderedTailRecurrence.lean",
+      "sha256": "b591d5f23c6d6bb8c486f2a3390a41ee03ff90e2d9da2cd2165e79d9755bf06a"
+    },
+    {
+      "byte_length": 8918,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicShellSummability.lean",
+      "sha256": "42455b1fe8f36dfc2e83d58c469b0fd8268c3d7928b71843022dd308fd6f69ad"
+    },
+    {
+      "byte_length": 41541,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+      "sha256": "92b2afe1152bcb8897f103a64103c6ca765aafbe0ca608163ad578f68fc89bac"
+    },
+    {
+      "byte_length": 7868,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos269_integral_tail_escape_receipt.json",
+      "sha256": "8501078d86628485e8517fc2e703e5a384c95a6ff5bc8f9bd1741069296c42a4"
+    }
+  ],
+  "status": "exact_counterexample_to_two_step_gap_descent"
+}

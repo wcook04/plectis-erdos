@@ -1,0 +1,80 @@
+{
+  "census": {
+    "alive_target_count": 38045,
+    "dead_target_count": 38036,
+    "observed_uniform_recovery_bound": 4,
+    "precision_target_count": 34,
+    "record_event_count": 343251,
+    "reduced_target_count": 76115
+  },
+  "claim_boundary": "This is exhaustive only for the declared denominator cutoff and finite depth. It can falsify a proposed finite law but cannot prove the all-depth record-recovery theorem, rational membership, or Erd\u0151s 257.",
+  "falsifiers": {
+    "first_one_step_recovery_failure": {
+      "block_identity_verified": true,
+      "carry_at_recovery": 2,
+      "homogeneous_mass": 12,
+      "previous_record_height": 2,
+      "record_height": 3,
+      "record_rank": 142,
+      "recovered_within_horizon": true,
+      "recovery_distance": 2,
+      "recovery_rank": 144,
+      "target": "1/27",
+      "weighted_digit_supply": 1,
+      "weighted_divisor_compensation": 11
+    },
+    "first_two_step_recovery_failure": {
+      "block_identity_verified": true,
+      "carry_at_recovery": 1,
+      "homogeneous_mass": 24,
+      "previous_record_height": 2,
+      "record_height": 3,
+      "record_rank": 67,
+      "recovered_within_horizon": true,
+      "recovery_distance": 3,
+      "recovery_rank": 70,
+      "target": "32/85",
+      "weighted_digit_supply": 0,
+      "weighted_divisor_compensation": 23
+    },
+    "worst_recovery": {
+      "block_identity_verified": true,
+      "carry_at_recovery": 1,
+      "homogeneous_mass": 48,
+      "previous_record_height": 2,
+      "record_height": 3,
+      "record_rank": 74,
+      "recovered_within_horizon": true,
+      "recovery_distance": 4,
+      "recovery_rank": 78,
+      "target": "71/182",
+      "weighted_digit_supply": 8,
+      "weighted_divisor_compensation": 55
+    }
+  },
+  "mechanism_decision": {
+    "claim_ceiling": "The finite census falsifies every smaller observed recovery bound and retains only the displayed finite bound. It proves no uniform all-depth bound.",
+    "next_action": "retain H=4 as the current proof target; seek a structural reason or an exact longer-recovery falsifier",
+    "status": "bounds_below_observed_falsified_observed_bound_survives_finite_census"
+  },
+  "parameters": {
+    "depth": 5000,
+    "max_denominator": 500,
+    "start_rank": 64
+  },
+  "payload_sha256": "6aec355a6719cb9696b0c29e1d4af5a6fc62ab55e20cee0868b8a3733c72c9e3",
+  "programme_target": "Exhaustively seek a finite rational-target counterexample to the two-rank record-recovery mechanism for Erd\u0151s 257.",
+  "schema": "erdos257_prime_record_recovery_census_v1",
+  "source": {
+    "engine": "formal_math/erdos257_period_noncollapse/scripts/cantor_staircase_run_length_lab.py",
+    "engine_sha256": "aee6d370c3639dc213a7eebb90777273ab0c253adb278d8ee35f63d2b349d4a5",
+    "record_probe": "formal_math/erdos257_period_noncollapse/scripts/prime_record_compensation.py",
+    "record_probe_sha256": "a80ece3e9b0c469e8221e0118f4da85a65b4aa90d255b97b2ebb595c5da3f7a7",
+    "script": "formal_math/erdos257_period_noncollapse/scripts/prime_record_recovery_census.py",
+    "script_sha256": "9d79bf183c38a046a6f0a036988a6938adc67d9134f3f8509218d43e6962afd3"
+  },
+  "validation": {
+    "direct_floor_prefix_crosscheck_violation_count_through_rank_256": 0,
+    "record_recovery_block_identity_violation_count": 0
+  }
+}

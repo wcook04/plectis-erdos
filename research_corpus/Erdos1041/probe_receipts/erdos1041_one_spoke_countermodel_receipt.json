@@ -1,0 +1,207 @@
+{
+  "countermodel": {
+    "all_roots_distinct": true,
+    "all_roots_have_exact_squared_modulus_one": true,
+    "claim_effect": "ONE-SPOKE is false for n=5. This removes the proposed unit-circle equality-stratum stress statement. It does not refute first-merge COVER, because the countermodel concerns the origin/level-one radial spokes rather than intrinsic distance in the first-merge component.",
+    "e16_radius": "99999/100000",
+    "explicit_radial_family": {
+      "endpoint_check": "E16_RADIUS^10 * every unit witness value > 1",
+      "radius_interval": "[99999/100000, 1)",
+      "statement": "For every rational or real radius rho in this interval, the five roots rho*w_j lie in the open unit disk and every radial root-to-origin spoke has the same listed parameter t_j with |prod_k(t_j rho w_j-rho w_k)|^2 = rho^10 |prod_k(t_j w_j-w_k)|^2 > 1."
+    },
+    "minimum_e16_witness_value_abs_sq": {
+      "decimal": 1.000024065415642,
+      "exact": "40789630630123391135849301623083764752108197837917570651299353562706924345355091443866319023309/40788649034330900000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "minimum_unit_circle_witness_value_abs_sq": {
+      "decimal": 1.000124073322536,
+      "exact": "407937098175383459510341902400582839628023309/407886490343309000000000000000000000000000000"
+    },
+    "open_perturbation_family": "All five inequalities are strict at finitely many fixed parameters. Continuity in the five unit-circle angles therefore gives an open neighborhood of unit-circle configurations with no safe radial spoke.",
+    "spoke_count": 5,
+    "unit_circle_roots": [
+      {
+        "imaginary": "0",
+        "real": "1"
+      },
+      {
+        "imaginary": "99/101",
+        "real": "-20/101"
+      },
+      {
+        "imaginary": "-99/101",
+        "real": "-20/101"
+      },
+      {
+        "imaginary": "195/197",
+        "real": "-28/197"
+      },
+      {
+        "imaginary": "-195/197",
+        "real": "-28/197"
+      }
+    ],
+    "unsafe_spoke_count": 5,
+    "witnesses": [
+      {
+        "e16_open_disk_product_abs_sq": {
+          "decimal": 1.0002353070772552,
+          "exact": "39598376486211653961981580809206450292140863148984754123603933861111584925644254370712009/39589060900000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "parameter_t": "339/1000",
+        "root": {
+          "imaginary": "0",
+          "real": "1"
+        },
+        "spoke_index": 0,
+        "strict_margin_over_one": {
+          "decimal": 0.00033533610947709367,
+          "exact": "132756416600577275051619916379712009/395890609000000000000000000000000000000"
+        },
+        "unit_circle_product_abs_sq": {
+          "decimal": 1.0003353361094771,
+          "exact": "396023365416600577275051619916379712009/395890609000000000000000000000000000000"
+        }
+      },
+      {
+        "e16_open_disk_product_abs_sq": {
+          "decimal": 1.000024065415642,
+          "exact": "40789630630123391135849301623083764752108197837917570651299353562706924345355091443866319023309/40788649034330900000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "parameter_t": "1/1000",
+        "root": {
+          "imaginary": "99/101",
+          "real": "-20/101"
+        },
+        "spoke_index": 1,
+        "strict_margin_over_one": {
+          "decimal": 0.0001240733225360419,
+          "exact": "50607832074459510341902400582839628023309/407886490343309000000000000000000000000000000"
+        },
+        "unit_circle_product_abs_sq": {
+          "decimal": 1.000124073322536,
+          "exact": "407937098175383459510341902400582839628023309/407886490343309000000000000000000000000000000"
+        }
+      },
+      {
+        "e16_open_disk_product_abs_sq": {
+          "decimal": 1.000024065415642,
+          "exact": "40789630630123391135849301623083764752108197837917570651299353562706924345355091443866319023309/40788649034330900000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "parameter_t": "1/1000",
+        "root": {
+          "imaginary": "-99/101",
+          "real": "-20/101"
+        },
+        "spoke_index": 2,
+        "strict_margin_over_one": {
+          "decimal": 0.0001240733225360419,
+          "exact": "50607832074459510341902400582839628023309/407886490343309000000000000000000000000000000"
+        },
+        "unit_circle_product_abs_sq": {
+          "decimal": 1.000124073322536,
+          "exact": "407937098175383459510341902400582839628023309/407886490343309000000000000000000000000000000"
+        }
+      },
+      {
+        "e16_open_disk_product_abs_sq": {
+          "decimal": 1.000071148854242,
+          "exact": "295600265768695728256658108112466416268391695627742900819293430458111142514882012796040936157/295579235644741894531250000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "parameter_t": "1/500",
+        "root": {
+          "imaginary": "195/197",
+          "real": "-28/197"
+        },
+        "spoke_index": 3,
+        "strict_margin_over_one": {
+          "decimal": 0.00017116146973871228,
+          "exact": "505917763971991981304732940082197936157/2955792356447418945312500000000000000000000"
+        },
+        "unit_circle_product_abs_sq": {
+          "decimal": 1.0001711614697386,
+          "exact": "2956298274211390937293804732940082197936157/2955792356447418945312500000000000000000000"
+        }
+      },
+      {
+        "e16_open_disk_product_abs_sq": {
+          "decimal": 1.000071148854242,
+          "exact": "295600265768695728256658108112466416268391695627742900819293430458111142514882012796040936157/295579235644741894531250000000000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "parameter_t": "1/500",
+        "root": {
+          "imaginary": "-195/197",
+          "real": "-28/197"
+        },
+        "spoke_index": 4,
+        "strict_margin_over_one": {
+          "decimal": 0.00017116146973871228,
+          "exact": "505917763971991981304732940082197936157/2955792356447418945312500000000000000000000"
+        },
+        "unit_circle_product_abs_sq": {
+          "decimal": 1.0001711614697386,
+          "exact": "2956298274211390937293804732940082197936157/2955792356447418945312500000000000000000000"
+        }
+      }
+    ]
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/VisibilityOverlapReduction.md",
+      "falsification_consequence": "Retire ONE-SPOKE as an open producer; preserve COVER at the first-merge level as a distinct, strictly more flexible hypothesis.",
+      "survival_consequence": "If one spoke remained safe, ONE-SPOKE would survive this strongest stored common-radius witness."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "unit_circle_one_spoke",
+      "statement": "For any finite unit-circle configuration there is one root direction whose full radial product stays at most one for every t in [0,1]."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/VisibilityOverlapReduction.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_visibility_overlap.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos1041_visibility_overlap_receipt.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/probes/erdos1041_one_spoke_countermodel.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/VisibilityOverlapReduction.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_visibility_overlap.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos1041_visibility_overlap_receipt.json"
+      ]
+    },
+    "probe": {
+      "computation": "Evaluate the squared product exactly in Fraction arithmetic at one rational parameter on each of five Gaussian-rational unit directions, then verify exact scaling parity with the original open-disk E16 witness.",
+      "falsifier": "A unit-circle configuration with one exact product value greater than one on every root direction.",
+      "id": "exact_gaussian_rational_one_spoke_countermodel",
+      "question": "Does the normalized E16 common-radius witness leave even one safe unit-circle radial spoke?",
+      "stop_condition": "Stop after all five exact strict inequalities and the common-radius family endpoint are verified."
+    },
+    "problem": {
+      "claim_ceiling": "Exact counterexample to the auxiliary unit-circle ONE-SPOKE statement and an explicit open family; no counterexample to COVER or Erd\u0151s #1041.",
+      "id": "erdos_1041",
+      "target_statement": "For roots in the open unit disk, join two roots by a curve of length less than two inside the open lemniscate."
+    },
+    "result": {
+      "status": "finite_counterexample",
+      "summary": "ONE-SPOKE is false for n=5. This removes the proposed unit-circle equality-stratum stress statement. It does not refute first-merge COVER, because the countermodel concerns the origin/level-one radial spokes rather than intrinsic distance in the first-merge component."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "landed_origin_snapshot": {
+    "boundary": "The source note is concurrently owned and may carry later worktree edits. These hashes bind the exact landed evidence snapshot from which the normalized countermodel is derived.",
+    "checker_sha256": "95dbf7f8154c3b50fba3265b1308ef34f578e8a9d13cf4326acfe79bc1ac65b2",
+    "commit": "c77898fbb9f329f9f86d4801102e9c6d710ccfd2",
+    "note_sha256": "b373871efacea2492d96189b0f390240ba636bc2f3354fa74de31627af044edc",
+    "receipt_sha256": "7d40c539fd3ed5f03eabbcde4754fa00803631fde9c2931275bb038f02ff7712"
+  },
+  "schema": "erdos1041-one-spoke-countermodel/1",
+  "source_records": [
+    {
+      "byte_length": 11553,
+      "path": "formal_math/probes/erdos1041_one_spoke_countermodel.py",
+      "sha256": "e9f63e5f24a1deeda420a62101d5b6f72862931d775371cb44917b0711ed5083"
+    }
+  ],
+  "status": "verified_exact_unit_circle_countermodel"
+}

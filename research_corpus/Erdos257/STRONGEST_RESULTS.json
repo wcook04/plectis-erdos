@@ -1,0 +1,494 @@
+{
+  "schema": "plectis_strongest_result_activation_map_v2",
+  "problem_id": "erdos_257",
+  "status": "open",
+  "source_checkpoint": "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1",
+  "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
+  "results": [
+    {
+      "source_result_id": "localized_dilation_incidence_transfer_boundary",
+      "exact_statement": "For a in A, the divisor-incidence identity f_A(a*n)-f_A(n)=1-1_{a divides n} for every n holds exactly when a is coprime to every other element of A. Thus pairwise coprimality is the minimum algebraic condition for every support element to serve as a localized dilation parameter. Independently, A=2P has divergent reciprocal mass but no localized dilation parameter; distinct atoms 2p and 2q have covariance 1/(4pq), whose off-diagonal mass is quadratic in the reciprocal mass, and f_A(n)f_A(n+1)=0. Hence arbitrary reciprocal divergence cannot directly replace prime support in the Tao--Teravainen incidence argument.",
+      "status": "source_current_exact_algebraic_classification_and_countermodel",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TaoTeravainenIncidenceBoundary.md"
+      ]
+    },
+    {
+      "source_result_id": "reciprocal_summable_supports_base_two",
+      "exact_statement": "For every infinite support A of positive integers with summable reciprocal conductor mass sum_(a in A) 1/a, the reciprocal-power subseries sum_(a in A) 1/(b^a-1) is irrational for every integer base b>=2. The binary LCM-prefix/Cesaro close return transfers uniformly to every radix because each radix-b shifted-atom displacement is at most twice the binary displacement; an exact radix integer orbit supplies the final gap contradiction.",
+      "status": "lean_checked_complete_all_base_support_regime_theorem",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/AllBaseReciprocalSupportIrrationality.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_half_fatal_borrow_reduced_to_middle_reset_scale",
+      "exact_statement": "A mature fatal selected-ancestry borrow has midpoint residual R with R<2*sqrt(2d)+3 and aligned seam remainder R+1<d, hence is a row-small middle reset. The first-bad-row proof exposes the last false terminal before the first row-small seam state: an actual upper reset s>=13 followed by k literal right recurrences to endpoint s+k+1. Exact cylinder scaling turns its danger inequality into R_(s+k+1)+C_k<4^k*2(s+k), retaining the complete affine pulse packet. Lean packages the matching producer SeamActualUpperRightPacketLinearEscape, which asks for the reverse weak inequality at every literal upper/right prefix, proves it is weaker than the old all-index dyadic-band producer, and proves it implies row escape, SeamMiddleProducerRowEscape, and (1/2 : real) membership. This is an exact conditional counterexample endpoint, not a proof of the lower envelope. Separately, the stronger middle reset scale inequality also contradicts the fatal square-root envelope. All statements handle residual zero and positive residual uniformly.",
+      "status": "lean_checked_actual_last_upper_ancestor_thin_packet_and_actual_scale_linear_escape_endpoint",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FatalBorrowMiddleScaleContradiction.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_half_fatal_midpoint_cofinite_carry_transfer",
+      "exact_statement": "If an actual half-greedy skip at rank d has nonpositive complement budget, the fatal midpoint transfer supplies an exact row Q_(A_(d-1) union {d})(2d)+R=2^(2d-1), with seam remainder R+1. Completing the actual lower word by the open tail above d gives the exact centered-carry identity e_(2d+1)=4R+3-P_d, where P_d is the paired boundary pulse. When d>=13 and R=0, the cofinite completion is strictly below 1/2, the endpoint carry is nonzero, and the selected rank 2 supplies positive pulse; hence P_d is exactly 1 or 2 and the producer carry is exactly -1 or -2. The zero midpoint residual is therefore routed into the two already-surviving arithmetic cells and cannot be cell -3 or a fourth exceptional mechanism.",
+      "status": "lean_checked_exact_fatal_branch_coordinate_transfer_and_zero_branch_cell_collapse",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FatalBorrowCofiniteCarryTransfer.lean"
+      ]
+    },
+    {
+      "source_result_id": "twenty_one_nested_height_exact_alive_cylinder_discriminator",
+      "exact_statement": "Instead of choosing small-denominator rational targets and filtering survivors, the exact probe chooses an arbitrary Boolean prefix A through rank N and a dyadic residual 0<=r<=2^-N<T_N. Strict superincreasingness puts x=sum_(a in A)1/(2^a-1)+r inside the exact greedy survival cylinder of A; the executable rechecks every take and skip by integer cross-multiplication and reconstructs binary digits, divisor loads, defects, records, and heights with one common denominator. This distinguishes target-space breadth from another horizon extension.",
+      "status": "exact_target_space_probe_with_survival_conditioning_route_warning",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/scripts/nested_height_alive_cylinder_probe.py"
+      ]
+    },
+    {
+      "source_result_id": "twenty_one_selected_divisor_height_reduction_and_alive_prefix_guard",
+      "exact_statement": "Let S(d)=max_{m<=d} tau_A(m) for the canonical denominator-21 greedy support and H(d)=max(1,1+max_{N<d}Q_N). Lean proves tau_A(N+1)<=2Q_N+1 directly from the exact defect recurrence and successor nonnegativity, then proves S(d)+1<=2H(d). Therefore the single unconditional socket H(2d)<=S(d)+1 implies H(2d)<=2H(d), 1/21 membership, and the negation of universal Mersenne-subseries irrationality. The companion defect sandwich Q_N<=floor(D_N)+1 is valid only at alive ranks. Its measured floor-tail and record-divisor inequalities have the socket's numerical shape only on an already-alive prefix and cannot imply the all-depth socket across a hypothetical fatal tail.",
+      "status": "lean_checked_p1_reduction_with_corrected_alive_prefix_circularity_boundary",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TwentyOneSelectedDivisorHeightReduction.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_half_pulse_register_exact_multiplicity_window_bridge",
+      "exact_statement": "For every finite support A, one base-four pulse digit at row b is exactly c_A(2b+2)+2c_A(2b+1), so k fixed-support pulse steps equal the division-free binary coefficient-window numerator F_A(2b,2k). After subtracting the all-ones baseline, the window telescopes exactly to 2^J e_A(n-1)-e_A(n+J-1) in the centered Mobius carry. Clearing the affine digit denominator gives 3*C_affine=3*F_A(2b,2k)+4*(4^k-1). This is a literal coordinate bridge from the half-cylinder register to selected-divisor excess multiplicity, not an analogy.",
+      "status": "lean_checked_exact_coordinate_identity_with_rank_2500_sign_falsifier",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/HalfCylinderPullbackCardPropagation.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_half_symmetric_middle_reset_return_from_compulsory_rank_two_pulse",
+      "exact_statement": "For every carry row s>=12, the adjacent-cut upper pulse is positive: carry identifies the next greedy word with the false-extension of the upper word, while compulsory selected rank 2 contributes rowPulse(s,2)=1. Separation gives 2^(s+1)<=R_s+O_s and carry gives 4O_s+abovePulse_s<=2^(s+1); positivity makes the latter strict after removing the pulse, hence R_s>3*2^(s-1). For any actual right run of length k from source d>=12 which terminates in such a carry, the exact signed cylinder R_(d+k+1)-2^(d+k+1)+C_k=4^k*dev_d converts this terminal remainder bound into 2^(d+k)<4^k*dev_d. This is the symmetric middle-reset lower return inequality requested by the reset-law roadmap.",
+      "status": "lean_checked_all_mature_terminal_carries_with_exact_rank_2000_upper_packet_audit",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/HalfCylinderPullbackCardPropagation.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_half_quantitative_late_upper_two_block_amplification",
+      "exact_statement": "At an actual late upper reset, let Q be the nonnegative earlier critical pullback coordinate, G=2^(s-k+1)-seamUpperResetCharge(s) the forward critical gap, and R the endpoint seam remainder after k right steps. The support-sensitive premise card(endpoint)+2<=Q gives a 2Q digit budget in the backward fixed-support block and a 2G digit budget in the forward affine block. Lean proves 4^(s-d)Q+2Q<=3G and 4^kG+2G<=3R, hence 4^(s-d+k)Q+2*4^kQ+6G<=9R. This retains both base-four amplification factors and strictly strengthens the earlier order-only implication R>=G>=Q. The premise remains exactly LateUpperPreviousMiddleStaircaseEscape after rewriting Q through the preceding middle recurrence; it is not proved at all depths.",
+      "status": "lean_checked_actual_late_upper_parent_child_amplifier_with_exact_finite_specialization_audit",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/HalfCylinderPullbackCardPropagation.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_half_reset_sqrt_escape_three_margin_discharge",
+      "exact_statement": "A middle reset entered by another middle branch has R_s >= 2^s - 2*(s-2) unconditionally. Entered by a right branch the new remainder equals EXACTLY the previous take-decision margin (new SeamTakeMarginScaleProducer). Entered from an upper reset it equals 2^s - E_(s-1) exactly (needs new SeamUpperResetChargeCeilingProducer: 4*E_d + 3*2^((d+6)/2) + 2*(d-1) <= 2^(d+3)). Consequently floor+ceiling+take-margin jointly imply SeamResetSqrtEscape and 1/2 membership: every seam-greedy decision must clear half-row scale.",
+      "status": "lean_checked_build_3346_jobs_middle_producer_discharged_into_three_margin_producers",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/HalfResetSqrtEscapeMiddleDischarge.lean"
+      ]
+    },
+    {
+      "source_result_id": "hereditary_selected_tail_dominance",
+      "exact_statement": "For every set of selected future offsets, the selected Mersenne tail is strictly smaller than the current positive-index weight.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean"
+      ]
+    },
+    {
+      "source_result_id": "supported_digit_unique_coding",
+      "exact_statement": "The Mersenne digit-value map remains injective after restriction to any chosen support.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean"
+      ]
+    },
+    {
+      "source_result_id": "hereditary_mersenne_subachievement_topology",
+      "exact_statement": "For every selected support the supported digit space is closed and its Mersenne achievement set is compact, closed, and nowhere dense with unique coding. If the support is infinite, a free-coordinate flip in every basic product neighbourhood proves that the digit space and its achievement-set image are preperfect, hence the achievement set is perfect.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean"
+      ]
+    },
+    {
+      "source_result_id": "hereditary_mersenne_subachievement_measure",
+      "exact_statement": "The Lebesgue measure is exactly 2^-c when the support omits c coordinates and is zero when the complement is infinite. The proof kernel-checks the one-coordinate disjoint translated-face split, measure doubling, finite-complement induction, arbitrary-support monotonicity, and the limiting dyadic squeeze.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean"
+      ]
+    },
+    {
+      "source_result_id": "mersenne_bernoulli_phase_diagram",
+      "exact_statement": "The Bernoulli subseries law is absolutely continuous exactly for cofinite support with fair bits; then it is normalized Lebesgue measure restricted to the subachievement set. Every other parameter is singular.",
+      "status": "advisory_complete_proof_pending_lean",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "arithmetic_stride_dimension",
+      "exact_statement": "For support m*N+, m>=2, the achievement set is Ahlfors regular of Hausdorff dimension 1/m, and the p-biased law has entropy dimension H(p)/(m log 2).",
+      "status": "advisory_complete_proof_pending_lean",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "rational_half_counterexample_consumer",
+      "exact_statement": "Any cofinal terminal scaled-vanishing sequence produces an infinite support A with sum_{n in A} 1/(2^n-1)=1/2 and therefore negates the universal irrationality assertion.",
+      "status": "lean_checked_conditional_disproof",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TerminalOnlyScaledVanishing.lean"
+      ]
+    },
+    {
+      "source_result_id": "suffix_cylinder_terminal_frontier",
+      "exact_statement": "Lean proves an unconditional terminal-only strip witness at depth 55. A dependency-free integer replay follows the deterministic cylinder through 1000000 further feedback decisions without a crossing. It ends at cutoff 1000026 with 501016 high and 498984 low decisions, support size 501024, and smallest raw clearance 3984366 at cutoff 26. The canonical payload digest is 67df53225ae50a9b7d5f0133fb29cd1c1c022ef061bd1eb5d6f3f5eccca2f44b.",
+      "status": "lean_checked_to_depth_55_and_exact_computation_to_cutoff_1000026",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/SuffixCylinderTerminalOnlyBridge.lean"
+      ]
+    },
+    {
+      "source_result_id": "suffix_orbit_centered_recurrence",
+      "exact_statement": "For natural endpoint and coefficient data satisfying the exact two-row endpoint step, Lean proves the centered update delta_(k+1)=4 delta_k+(1-2b_k)2^(k+1)-2d_k-a_(k+1), with delta_k=2E_k-a_k-2^k. From cutoff two onward it also proves the necessary mod-8 pulse 8 | delta_(k+1)+2d_k+a_(k+1)-4a_k. This exposes the infinite producer as a support-dependent perturbed signed-doubling problem but does not prove global no-crossing.",
+      "status": "source_current_formal_anchor_validation_deferred",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/SuffixCylinderGlobalProducer.lean"
+      ]
+    },
+    {
+      "source_result_id": "orthogonal_petal_bouquet_reciprocal_subsumption",
+      "exact_statement": "Every OrthogonalPetalBouquet support is reciprocal-summable: each ray reciprocal is bounded by its petal reciprocal and the exceptional frame is finite. The existing reciprocal-support theorem therefore proves its Erdős support series irrational with no forced-slot selector. The older conditional bouquet endpoint remains correct but is subsumed, and this support class cannot enter the reciprocal-divergent or positive-density regime.",
+      "status": "lean_checked_route_elimination",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "mersenne_deficit_coefficient_phase_tower",
+      "exact_statement": "For the construction family y_k=3/(2^k-1), the exact deficit coefficient a_j=(2^j-2)^2/(2^j-1) has reduced denominator 2^j-1 and 2 has exact order j modulo it, so the joint raw coefficient phase period through J is lcm(2,...,J) and cannot stabilize. Certified support-bit comparisons additionally eliminate the concrete phase moduli 2, 6, 60, 420, and 2520 as complete nonlinear block-state descriptors: same-residue target pairs agree through all prior tested 64-bit block-boundary suffixes and first split at blocks 4, 6, 8, 10, and 12. This does not eliminate an adaptive growing-state transducer or a proved quotient that cancels the raw phases.",
+      "status": "exact_arithmetic_plus_certified_finite_route_elimination",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "one_over_twenty_one_finite_support_exclusion",
+      "exact_statement": "For every finite Boolean support F using only ranks n>=2, the finite base-two Mersenne sum finiteErdosSum F 2 is not 1/21. Therefore a future rank-at-least-two Boolean representation of 1/21 would necessarily have infinite support; this theorem does not construct such a representation, prove 1/21 membership, or settle universal Erdős #257.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "one_over_twenty_one_terminal_fringe_absorption",
+      "exact_statement": "The six former preterminal fringe exclusions are unnecessary. A single twice-last-coin preterminal ceiling yields full-row quotient defect at most three, which vanishes after 4^R normalization and proves 1/21 is in the Mersenne achievement set. The coarse ceiling itself remains unproved.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_over_twenty_one_next_coin_reduction",
+      "exact_statement": "The ordinary greedy next-coin invariant is enough: if every preterminal quotient remainder is below the next quotient coin, a checked constant-excess bound converts it to geometrically vanishing quotient error and proves 1/21 membership. No fixed fringe width, equality exclusion, or terminal defect cap remains in the producer.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_over_twenty_one_cofinal_full_overshoot_reduction",
+      "exact_statement": "It is enough to find an unbounded subsequence of deterministic full quotient-greedy rows whose rational prefix values reach or exceed 1/21. The exact scaled identity then bounds quotient defect by support cardinality, so the resulting linear numerator error vanishes against the exponential normalization. This is strictly weaker than proving a uniform next-coin or fixed-defect bound.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_over_twenty_one_rational_greedy_divergence_reduction",
+      "exact_statement": "A cofinal sequence of full quotient-greedy Boolean words that differs from exact rational greedy by the same horizon is sufficient for 1/21 membership. Lean proves a no-first-divergence comparison: every completed quotient row that remains rationally safe agrees with exact rational greedy, so any Boolean disagreement certifies strict overshoot and feeds the existing cofinal-overshoot endpoint. This supplies a finite-word recognizer for the producer but does not prove cofinal divergence or weaken the canonical overshoot hypothesis.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_over_twenty_one_eventual_rational_alignment_dichotomy",
+      "exact_statement": "Lean proves the unconditional terminal dichotomy: either 1/21 already belongs to the Mersenne achievement set, or all sufficiently deep full quotient-greedy Boolean words agree bit-for-bit with exact rational greedy through the same horizon. Equivalently, failure of achievement-set membership forces eventual rational alignment. The theorem sharpens the surviving nonmembership branch but does not decide which side holds.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_over_twenty_one_fatal_aligned_branch_classification",
+      "exact_statement": "Lean now identifies the exact remaining 1/21 frontier. Non-membership is equivalent to one explicit branch carrying a fatal greedy witness, finite skipped support and hence cofinite selected support, eventual full quotient/rational-greedy alignment, and eventual occupation of every doubling block. Equivalently, 1/21 belongs to the Mersenne achievement set exactly when this fatal/cofinite/aligned branch is impossible. This is an exact logical classification, not a proof that the branch is impossible or that 1/21 is represented.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_over_twenty_one_fatal_right_boundary_factorization",
+      "exact_statement": "Inside TwentyOneFatalAlignedBranch, Lean factors every sufficiently late dyadic prefix boundary through one fixed ancestor: after the fatal rank, P_(n+t)+1=2^t(P_n+1), and hence every late right boundary carries the entire forced power of two from the cofinite selected suffix. This is a negative result for the correction-amplification route: the right-boundary long-selected-run alternative contains no fresh forcing-depth growth. It redirects the surviving contradiction search toward the denominator-21 defect or another coordinate, but does not exclude the fatal branch or prove 1/21 membership.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_over_twenty_one_closed_row_canonicalization",
+      "exact_statement": "Lean proves that one denominator-21 lower quotient row with defect s<=2^R at every even depth is sufficient for 1/21 membership. The denominator-specific strong separation estimate shows that every such closed Boolean row is exactly the deterministic quotient-greedy row, including equality at s=2^R; there is no alternative Boolean support hidden at the saturated boundary. The recursive socket is now sharp at that boundary: because the new coin contributes one unit beyond its binary skeleton, the unique nonzero target pulse needs only two local endpoint-divisor units rather than three. Lean further classifies every newly saturated boundary state. Under the closed capacity bound it comes from exactly C=2^(R+1) in the skip branch or C=2^(R+2)+1 in the take branch; after a strict predecessor the exceptional take value is impossible, so new saturation is equivalent to the single exact mid-carry C=2^(R+1). The even target pulse is three-periodic in half-depth and equals three exactly when R mod 3=2. Endpoint pulses at the next two positions have a finite-memory horizon: for support bounded by R they depend only on denominators at most floor((2R+2)/3). In the signed capacity margin m_R=2^R-s, Lean gives exact affine take and skip recurrences. If a strict predecessor lands at the exact saturated mid-carry and that new endpoint fails the following saturated socket, then R mod 3=1 and an explicit older support hole occurs at a+1 or 2(a+1). The alignment bridge identifies the canonical quotient support with the actual greedy support on every sufficiently deep fatal-branch row. Cofinite selection fills both possible ancestor digits, so the fatal branch cannot sustain a bad saturated socket at sufficiently large R. Full alignment also identifies the entire canonical lower support with the audited rational greedy prefix and proves that its prefix value is at most 1/21. Consequently the fatal branch eventually satisfies the lower, nonnegative-carry inequality. Lean now proves more on the complementary side: any unbounded sequence of closed canonical rows s<=2^R already gives the compactness decay required for membership. Therefore the fatal branch is eventually strictly supercapacity, 2^R<s_R, at every rank; there the boundary coin always fits, the support appends R+1, and the scalar follows one literal affine recurrence with no residual Boolean branch. If an aligned row enters strict supercapacity from exact saturation, then the entrance occurs only at R mod 3=2 with local support pulse at most one and forces a missing canonical ancestor at rank a+1 or 2(a+1), where R=3a+2. That hole transports into the real greedy orbit: some skipped d satisfies d<=R<=3d and Q_d<2 sqrt(d)+6. This quantitatively connects quotient escape to the Lambert carry coordinate but does not prove that a late entrance occurs or contradict the permanent affine regime. These results remove the older bad-socket and negative-carry patterns and identify permanent affine supercapacity as the only remaining late fatal regime. They do not force an unbounded closed return, contradict that supercapacity regime, exclude the fatal branch, or establish 1/21 membership.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "one_over_twenty_one_fatal_erdos_borwein_interval",
+      "exact_statement": "If 1/21 is not represented, the finite skipped support has a greatest actual exponent M. Its finite Mersenne sum gives a rational approximation to the Erdos--Borwein Mersenne constant from above: the positive error is exactly the fatal greedy residual minus the complete tail and is strictly smaller than mersenneGap M. The reduced denominator of the skipped-prefix sum has odd binary doubling order exactly equal to the lcm of the skipped exponents, so in particular that order is at least M. The final skip is also dyadically unsafe: if N_(M-1) and N_(M+1) are the reduced rational greedy-remainder numerators immediately before the skip and after its forced successor take, then 2^M-1<|N_(M-1)| |N_(M+1)|. Hence at least one adjacent numerator is exponentially large. These are precise bridges from the fatal branch to height-, order-, and numerator-sensitive rational approximation. Irrationality of the constant supplies strict positivity but does not exclude one approximation in this interval. No theorem yet relates the numerator product or lcm/order to the approximation height strongly enough to contradict the gap, proves an applicable irrationality-measure lower bound for this structured family, or otherwise rules out the fatal branch.",
+      "status": "lean_checked_structured_approximation_interface_open_quantitative_exclusion",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_over_twenty_one_skipped_rank_sqrt_defect_bound",
+      "exact_statement": "Lean now gives a denominator-specific quantitative bound at every actually skipped positive rank N: the scaled Mersenne tail weight is at most two, and the canonical denominator-21 defect satisfies Q_N < 2 sqrt(N) + 6. The one-step floor bit is at most one, so Q_(N+L)+1 <= 2^L(Q_N+1); consequently a skip at N forces Q_(N+L)+1 < 2^L(2 sqrt(N)+7) at every later offset L. Contrapositively, crossing that explicit threshold certifies that N was selected. This converts sufficiently large later defect into a checked selected-rank witness, but it does not prove that the threshold is crossed on an unbounded family, establish the normalized-small-return producer, rule out TwentyOneFatalAlignedBranch, or prove 1/21 membership.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "one_over_twenty_one_slope_danger_reduction",
+      "exact_statement": "Lean replaces the false translation-invariant six-step contraction with the exact floor-slope obligation. Writing Q_N for the denominator-21 greedy defect and L_N for the weighted six-step repair load, the next slope step Q_(N+6)<=floor((N+6)/6) is equivalent to 64Q_N+3(2^N mod 21)<=L_N+floor(N/6)+1. Outside the explicit slope-danger predicate this is automatic from L_N>=0, and every dangerous rank satisfies N<384Q_N+354. Commit 397638dc weakens the required supply from an all-depth induction to cofinally many successful slope steps: arbitrarily late non-danger ranks already prove 1/21 membership, and more generally it is enough that arbitrarily late danger ranks satisfy the exact repair inequality. Equivalently, non-membership forces every sufficiently late rank to be slope-dangerous and forces the eventual lower bound N<384Q_N+354. The same commit gives the exact bridge between Q_N, the scaled greedy remainder, and a bounded finite-prefix divisor tail. These are conditional and contrapositive reductions; they do not prove a cofinal safe-or-repaired supply or 1/21 membership unconditionally.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/BooleanMobiusCarry.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_over_twenty_one_small_lambert_defect_return_evidence",
+      "exact_statement": "Exact integer regeneration through rank 200000 records 96 returns of the denominator-21 Lambert defect to zero, the last at rank 193690, and 4956 returns to defect at most one, the last at rank 199930, with maximum observed gap 492. Commit 3ac10c supplies the exact Lean consumer: cofinal recurrence of defect at most one already proves 1/21 membership, with no global defect bound or bounded return-gap hypothesis. The earlier rank-10000 receipt is retained for comparison. Neither the extended counts nor the observed gap proves that the returns are unbounded or cofinal, so this finite evidence does not promote the open claim.",
+      "status": "locally_regenerated_exact_finite_only",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "one_over_twenty_one_full_quotient_terminal_zero_evidence",
+      "exact_statement": "Exact integer regeneration through rank 200000 certifies that every audited canonical lower quotient state is strictly below 2^R. Completing each audited row with the exact binary suffix at ranks R+1 through 2R therefore leaves terminal defect zero, with no nonzero terminal row in the finite window. This is direct finite evidence for the closed-lower-state producer and rules out saturation only through the audited cutoff. It does not prove strict closure at every depth, the all-depth supply, cofinal attainment, 1/21 membership, or Erdős #257.",
+      "status": "locally_regenerated_exact_finite_only",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "one_over_twenty_one_cofinally_bounded_defect_reduction",
+      "exact_statement": "Lean proves that no uniform all-depth slope, maximum, or return-gap bound is needed: if the denominator-21 greedy defect visits any one fixed bounded band beyond every cutoff, then the carry has cofinal linear returns and 1/21 belongs to the Mersenne achievement set. The concrete band Q_N<=1 exactly matches the finite checker receipt. Proving that those observed small-defect returns continue cofinally is now the complete residual for this route.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "one_over_twenty_one_fatal_tail_subexponential_defect_split",
+      "exact_statement": "Lean now identifies the exact asymptotic content of the prescribed-point problem in the canonical denominator-21 defect coordinate. Once a greedy state is fatal, its positive excess over the complete remaining Mersenne tail is conserved, so non-membership supplies n and delta>0 with 2^(n+k) delta <= Q_(n+k)+1 for every k. Conversely, membership forces the canonical greedy carry divided by 2^N to tend to zero; the periodic carry/defect decomposition transfers that limit to (Q_N+1)/2^N. Therefore 1/21 belongs to the Mersenne achievement set if and only if TwentyOneGreedyDefectSubexponential holds. The equivalence makes subexponential defect growth the canonical residual rather than an arbitrary sufficient estimate, but it does not prove that estimate or establish 1/21 membership unconditionally.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "one_over_twenty_one_cofinal_normalized_return_characterization",
+      "exact_statement": "Lean now identifies the weakest checked positive producer in the normalized denominator-21 defect coordinate. Membership is equivalent to the following cofinal small-return condition: for every delta>0 and every cutoff K, some N>=K satisfies Q_N+1<2^N delta. Membership supplies the condition through the stronger full limit (Q_N+1)/2^N -> 0. Conversely, non-membership fixes one positive fatal excess and forces a geometric lower bound at every later rank, contradicting even one sufficiently small normalized return beyond the fatal rank. The theorem imposes no eventual upper bound and proves neither the cofinal returns nor 1/21 membership unconditionally.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "one_over_twenty_one_cofinal_scaled_remainder_characterization",
+      "exact_statement": "Lean gives an exact bounded-return characterization in the native greedy-remainder coordinate. Write r_N for the canonical greedy remainder of 1/21 after rank N. Membership is equivalent to the existence of one real B such that, beyond every cutoff K, some N>=K satisfies 2^N r_N<=B. On a surviving branch, r_N is at most the complete Mersenne tail and its scaled tail tends to 1. After a fatal rank, one fixed positive tail excess is conserved, so 2^N r_N eventually exceeds every proposed ceiling. This condition asks for neither convergence, a prescribed ceiling, nor a return frequency. It is an exact reformulation, not a proof that the bounded returns occur or that 1/21 is represented.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "one_over_twenty_one_period_six_full_row_sign_classifier",
+      "exact_statement": "Along the cofinal residue class 3 | R, the target fraction is exactly 1/21 and full-row overshoot is equivalent to the concrete inequality quotient-greedy defect + 1/21 <= local fractional mass. The remaining producer is therefore a bitwise/fractional-mass sign problem, not a generic real-analytic or quotient-remainder bound.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": []
+    },
+    {
+      "source_result_id": "one_over_twenty_one_final_skip_numerator_floor",
+      "exact_statement": "A hypothetical final denominator-21 skip has a reduced predecessor residual x=p/q in the exact three-channel window. Its dyadic excess Delta=p*2^M-q satisfies p<3Delta and Delta<p. Every denominator on the 1/21 greedy orbit is odd. These two facts exclude predecessor numerators p=1,2,3: p=2 is the already-forbidden Mersenne exceptional coordinate, while p=3 would force q even. Hence every final skip has predecessor numerator at least four. This sharpens the previously checked exponential adjacent-numerator product condition but is still only a necessary signature. It gives no upper bound on p, no contradiction with the fatal interval, no exclusion of TwentyOneFatalAlignedBranch, and no proof of 1/21 membership or Erdős #257.",
+      "status": "lean_checked_necessary_fatal_branch_signature",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_half_reciprocal_floor_obstruction_consumer",
+      "exact_statement": "For a positive natural numerator p, a block that is both skipped and dyadically unsafe forces floor(2D/p+1)=2^k. Specializing this exact arithmetic lemma to the displayed half-greedy residual proves that it is enough to exclude power-of-two floors at actual skipped ranks; no condition is needed at taken ranks. This skipped-rank predicate implies dyadic safety at every skip and therefore implies (1/2 : real) belongs to the Mersenne achievement set. The earlier orbit-wide predicate remains a checked stronger specialization. The result supplies the previously missing logical bridge and weakens its source hypothesis, but it does not prove the skipped-rank obstruction, does not prove one-half membership unconditionally, and does not settle Erdos Problem 257.",
+      "status": "lean_checked_conditional_membership_reduction",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/HalfGreedyDyadicSafe.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_half_skipped_two_thirds_margin_consumer",
+      "exact_statement": "At every actual skipped half-greedy rank n, write the displayed residual as p/q with q=2D and X=2^(n+1). Lean proves that the margin 3pX<=3q+p puts p/q strictly below the full remaining Mersenne tail, and that this rankwise hypothesis implies (1/2 : real) belongs to the Mersenne achievement set. A named actual-coordinate bridge now carries nonpositive dyadic excess into block safety and then carries orbit-wide dyadic safety into the two-thirds hypothesis. The exact skipped state (p,D,k)=(7,13,2) satisfies the two-thirds margin while failing dyadic safety, so this is a genuine weakening rather than another equivalent floor reformulation. The result does not prove the margin along every actual orbit rank, does not prove one-half membership unconditionally, and does not settle Erdos Problem 257.",
+      "status": "lean_checked_strictly_weaker_conditional_membership_reduction",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/HalfGreedyDyadicSafe.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_half_target_zero_quotient_row_small_slack_reduction",
+      "exact_statement": "Lean treats the exact target-zero quotient rows sum_d floor(2^N/(2^d-1))=2^(N-1) directly. Cofinal existence of those rows produces achievement-set points converging to 1/2 from above, hence an infinite rational support and a counterexample to universal_257. A midpoint quotient-take/real-skip event is forced onto the unique deterministic seam word: its seam remainder is E=R+1, its residual satisfies R<=card(seam support), and hence E<d. Therefore the all-depth inequality E>=card+2 from d>=8 eliminates every mature midpoint mismatch. Along an upper reset followed by right branches, failure of this support-cardinality gap is Lean-equivalent to the exact reset-and-pulse charge entering the top cylinder window of width card+2. The late-upper pullback theorem now proves more structure: if s>=13, the largest non-right rank d is late, and rank s is an upper reset, then d is a middle producer, every intervening filled rank is an actual right branch, R_d>=d, and R_s>=2^s+s. These declarations do not prove the all-depth seam gap, cofinal target-zero row existence, the LargestSkipLateStepSocket, or the remaining non-midpoint comparison, so they do not decide Erdős Problem 257.",
+      "status": "landed_lean_checked_support_cardinality_reduction_with_late_upper_pullback_and_exact_finite_mechanism_audit",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_over_twenty_one_final_skip_parity_cancellation",
+      "exact_statement": "At a hypothetical final denominator-21 skip, write the reduced predecessor residual as p/q. Lean turns the three-channel dyadic-excess window into an exact parity dichotomy. If p is odd, then 3*gcd(q,2^M-1)<p. If p is even, then 2*gcd(q,2^(M+1)-1)<p. In the even branch the adjacent numerator-product condition strengthens from 2^M-1<|N_(M-1)||N_(M+1)| to 2(2^M-1)<|N_(M-1)||N_(M+1)|. The coefficients are parity-sensitive: the odd branch does not assert the false uniform bound 2*gcd(q,2^M-1)<p. These are necessary final-skip signatures only. They give no incompatible upper-height, recurrence, or approximation bound, no contradiction with the fatal interval, no exclusion of TwentyOneFatalAlignedBranch, and no proof of 1/21 membership or Erdős #257.",
+      "status": "lean_checked_necessary_parity_sensitive_fatal_branch_signature",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TwentyOneQuotientGreedy.lean"
+      ]
+    },
+    {
+      "source_result_id": "rational_greedy_skip_cofinality_characterization",
+      "exact_statement": "For every nonnegative rational q, Lean proves that q belongs to the Mersenne achievement set if and only if its canonical greedy orbit omits infinitely many positive exponents, equivalently if and only if the actual greedy branch skips at arbitrarily late ranks. The forward implication uses irrationality of the full Erdos-Borwein constant: finitely many omissions would write that constant as q plus a finite rational Mersenne sum. The reverse implication is the existing absorbing-fatal-state consumer. The former half-specific theorem is retained as a wrapper. This is a general rational normal form, not a proof of cofinal skips for 1/2, 1/21, or any other unresolved target, and it does not decide Erdos Problem 257.",
+      "status": "lean_checked_general_rational_membership_normal_form",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GreedyAchievementSet.lean"
+      ]
+    },
+    {
+      "source_result_id": "rational_scaled_lower_separatrix_characterization",
+      "exact_statement": "Lean now expresses the exact lower separatrix in the native scaled coordinate y_N=2^N r_N. Rank N+1 is skipped exactly when 2*y_N is strictly below c_(N+1)=2^(N+1)/(2^(N+1)-1). Hence, for every nonnegative rational q, membership in the Mersenne achievement set is equivalent to crossing this moving lower barrier beyond every cutoff. The 1/21 endpoint is packaged as that exact equivalence. No theorem proves the positive cofinal-crossing side for 1/21, so this sharpens the remaining producer without deciding Erdős #257.",
+      "status": "lean_checked_exact_scaled_separatrix_normal_form",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GreedyTrapDynamics.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_half_reset_sqrt_escape_crossing_reduction",
+      "exact_statement": "Lean reconstructs the actual reset at the largest false rank and the actual intervening right suffix. If that suffix reaches either integer cell where the late rank crosses the two-thirds boundary while the current branch is still right, then the reset deviation at its creating row d has absolute value at most 2^((d+4)/2)+2d+3. Lean proves the square of that envelope is at most 2^(d+5) for d>=10. Consequently, the all-depth square-root escape 2^(d+5)<dev_d^2 discharges LargestSkipLateStepSocket and implies (1/2) belongs to the Mersenne achievement set. No theorem proves square-root escape, one-half membership unconditionally, or Erdos Problem 257.",
+      "status": "landed_lean_checked_all_depth_conditional_reset_crossing_reduction_with_exact_return_time_experiment",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/HalfCylinderResetSqrtEscape.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_half_reset_sqrt_escape_scale_producer_collapse",
+      "exact_statement": "On middle branches the landed recurrence gives dev_s = 4*R_s - belowPulse_s with the universal pulse bound belowPulse <= 2*(s-2), so middle sqrt escape follows from the producer 3*2^((s+5)/2)+2*(s-2) <= 4*R_s. On upper branches the landed reset identity gives dev_d = -(4*overshoot_d+abovePulse_d), so upper sqrt escape is exactly the producer 3*2^((d+5)/2) <= E_d. The factor 3 absorbs both parities since (3*2^k)^2 >= 9*2^(r+4) > 2^(r+5). The two named producers jointly imply SeamResetSqrtEscape and hence 1/2 membership. Boundary forms restate each producer on the post-reset landing remainder, the quantity the nested backward pullback identities control.",
+      "status": "lean_checked_exact_collapse_of_sqrt_escape_into_two_named_scale_producers",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/HalfResetSqrtEscapeScaleProducers.lean"
+      ]
+    },
+    {
+      "source_result_id": "four_ninths_diagonal_small_margin_obstruction",
+      "exact_statement": "For the exact 4/9 diagonal recurrence, coprimality of 2d-1 and 2d and the forced bit b_1=0 bound the full paired divisor load by twice the selected count s. Lean proves that skipped rows automatically preserve the reserve 2s<=3rho, so global nonnegativity is reduced to the single selected-landing producer b_(d+1)=1 -> 2s_(d+1)<=3rho_(d+1). The stronger sufficient producer b_(d+1)=1 -> d+1<=rho_(d+1) is equivalent to the literal endpoint inequality saying that the selected predecessor clears the dyadic coin by at least the landing rank. An exact kernel-checked countermodel retains the complete certified depth-twelve bit word 010110110001, the exact count six, load three, pulse one, and a large incoming reserve, but changes rho_12 to 2049; rank thirteen is then selected and lands at rho_13=1, violating the reserve for the new count seven. Therefore local phase, load, count, forced anchors, and even the full certified bit prefix do not imply the producer when rho is detached from history. Lean now proves the missing reachability identity: rho_d is the finite base-four weighted sum of every actual earlier pulse, divisor load, and selected coin. It rewrites failure of the landing-rank producer as existence of one actual selected endpoint inside the explicit rank-wide bad history window. This is an exact transformation, not an anti-concentration estimate. No theorem yet excludes that history window, proves the selected-landing producer, proves rho_d>=0 at all depths, establishes membership of 4/9, or resolves Erdős #257.",
+      "status": "lean_checked_arithmetic_reduction",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/FourNinthsDiagonalMarginProducer.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_half_selected_ancestry_budget_and_first_window_charge",
+      "exact_statement": "For the rational half-greedy orbit, write e_n=1/(2^n-1)-2^-n. The selected-ancestry budget starts at B_0=1/2, deposits e_n on a take, and spends 2^-n on a skip. Lean proves r_N=2^-N-B_N and 2^N r_N=1-2^N B_N, so the sharp phase ceiling is exactly B_N>0. A first negative crossing can occur only on a skip and lands in the strict recoverable interval -e_(N+1)<B_(N+1)<0. At an actual skipped rank N, the new bridge proves frozenMargin(N-1,N)=2^(2N)B_N-Phi_(A_N)(2N). It then proves that positivity of this selected-ancestry full-shell expression is equivalent to the already-landed HalfGreedySkippedFullShellNonnegative producer and consumes it to half-membership. Thus the first-window charge, future-skip capacity, frozen margin, and seam sign are exact views of one open producer, not independent advances.",
+      "status": "lean_checked_budget_conjugacy_and_source_current_frozen_margin_reconciliation_with_bounded_charge_audit",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SelectedAncestryBudget.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_half_selected_ancestry_tail_survival_equivalence",
+      "exact_statement": "For the pinned half-greedy orbit, let B_N be the selected-ancestry budget, E_N=mersenneTail(N)-2^-N the positive correction tail, and C_N=B_N+E_N. Lean proves C_N=mersenneTail(N)-r_N. A take preserves C_N and a skip subtracts exactly the omitted Mersenne weight. Every complete Mersenne tail is irrational, so the rational budget cannot meet the boundary B_N=-E_N. Consequently 1/2 belongs to the Mersenne achievement set if and only if C_N>0 for every N, equivalently B_N>-E_N for every N. This is strictly weaker than the previously targeted B_N>0/full-shell condition and changes the canonical selected-ancestry endpoint, but it is an exact equivalence rather than a proof of survival.",
+      "status": "lean_checked_exact_weak_endpoint_equivalence",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SelectedAncestryTailSurvival.lean"
+      ]
+    },
+    {
+      "source_result_id": "one_over_twenty_one_multiple120_primorial_repair_socket",
+      "exact_statement": "Let U_30(n) count actual selected divisors lying in the union of the n/2, n/3, and n/5 divisor columns. Lean proves the exact subtraction-free seven-column inclusion-exclusion identity, the doubled-layer identity, the coupled factor-descent consumer, and the nineteen-position prime-pullback normal form. Those identities remain valid. The proposed universal inequalities do not: the deeper certified orbit first violates PU240+ at n=5,296,080=240*22,067 with Q_(n-1)=12 and pullback-column load 6, so the required 12<=11 fails. Through rank 20,000,002 there are 17 PU120 violations and 11 PU240+ violations. This closes PU120, PU240+, the prime-column bound, and their coupled factor-descent route as proof producers without affecting the open 1/21 membership question.",
+      "status": "lean_checked_exact_conditional_reduction_with_deeper_canonical_falsification",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/TwentyOnePrimorialRepair.lean"
+      ]
+    },
+    {
+      "source_result_id": "prime_slack_two_valued_closed_form",
+      "exact_statement": "At a prime p the only divisor of p that can lie in A is p itself, since 1 is never selected, so tau_A(p)=1_A(p) in {0,1} and the carry identity becomes the subtraction-free t+cp=e+2*cm with t=tau_A(p)<=1, e=eps_p<=1, cp=C_p, cm=C_(p-1). Lean proves from that hypothesis alone: the halving bound 2*C_(p-1)<=C_p+1; that the prime slack s(p)=(C_p+1)/2-C_(p-1) is two-valued; the closed forms s(p)=1 iff (tau_A(p)=0 and eps_p=1) and s(p)=0 iff (tau_A(p)=1 or eps_p=0), so the vanishing set is exactly {p in A} union {p : eps_p=0}; and the parity corollary C_p = tau_A(p)+eps_p mod 2, which needs no bounds on t or e at all because the 2*cm term is even. The whole module is pure linear arithmetic over N with division by the literal 2 -- the fragment omega decides -- and contains no divisor theory, which is why section 84's result states abstractly.",
+      "status": "lean_checked_closed_form_for_the_sharpest_local_carry_constraint",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/PrimeSlackTwoValued.lean"
+      ]
+    },
+    {
+      "source_result_id": "socket_run_rational_cap_and_parity_obstruction_on_candidates",
+      "exact_statement": "A socket run of length K at N forces 2^k | tau_A(N+k) for k=1..K, so each head term tau_A(N+k)2^-k is an integer and drops out of the fractional part: frac(2^N y) <= sum_{k>K} tau_A(N+k)2^-k = S/2^K with S = sum_{j>=1} tau_A(N+K+j)2^-j the local divisor mass, whose floor is the forward carry, so S < C_(N+K)+1. If y = p/q in lowest terms with q odd then frac(2^N y) is a multiple of 1/q, hence vanishes or is at least 1/q. Lean proves the resulting cap 2^K < q*(C_(N+K)+1), i.e. K < log2 q + log2(C+1), together with its contrapositive producer form: a support with socket runs longer than log2(q(C+1)) cannot sum to p/q. Separately, the identity Odd_A = {m : tau_A(m) odd} = {m : eps_m != C_m mod 2} bridges section 46's parity obstruction to the section-11 carry transducer, two previously unlinked lanes.",
+      "status": "lean_checked_rationality_cap_on_socket_runs_plus_computed_parity_obstruction_slack_on_every_candidate",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SocketRunRationalCap.lean"
+      ]
+    },
+    {
+      "source_result_id": "four_ninths_coin_cancellation_removes_the_exponential",
+      "exact_statement": "Split the coin 2^(j+1)+1 in the history identity (5). Its power part is divisible by 2^d at every base-four weight, so rho_d modulo 2^d is a bounded-magnitude base-four sum over only the last ceil(d/2) pulse/load/decision increments. Independently, every old finite Mersenne quotient at endpoint 2d scales by four plus exactly the paired divisor load, while a newly selected boundary rank contributes 2^(d+1)+1. Therefore rho_d is exactly floor(4^(d+1)/9) minus the actual selected finite quotient row. The compactness module proves that the all-depth window 0<=rho_d<=2^d makes those finite supports converge to 4/9 and hence proves membership by closedness. The saturation module then proves that a first saturation must be a skipped row whose predecessor satisfies 4*rho_d=2^(d+1)+load-pulse, hence load=pulse mod 4; avoiding the corresponding final-half-history midline gives the strict upper window. Equivalently, it is sufficient that no skipped remainder have full-rank dyadic divisibility. The adaptive module proves that 2^d | rho_d forces, simultaneously for every 2k<=d, divisibility by 4^k of the weighted last-k small-increment suffix. Those increments lie between -(2j+1) and 2 after rank two; the newest digit is a nonpositive multiple of four, while a positive digit can occur only at pulse three with load at most two. The no-go companion proves that the local suffix conditions admit an arbitrary-depth -4,-3,-3,... carry. The midpoint companion restores the missing source coupling: at even depth 2k, rho_(2k)=4^k(rho_k-W_k)+S_k for the complete actual future-half take word W_k; full divisibility writes S_k=4^k c with c<=0, so saturation forces rho_k+c-W_k=1 and W_k<rho_k. At odd depth 2k+1 the exact quotient is two and saturation forces W_k^odd+2<=rho_(k+1). The module packages exclusion of those two exact equalities and proves that it is equivalent, with no slack, to the strict upper window rho_d<2^d at every depth; together with the independent selected-landing rank producer it feeds the compactness membership consumer. The cylinder transport companion now formalizes the base-four affine endpoint transport and deletes every state-dependent proper-divisor load except the midpoint m+1. It proves that suffix width L<=m-1 places that midpoint in the common prefix, making both next-row loads parent-independent, and separately proves that exact zero-defect even quotient rows at every depth imply 4/9 membership without any nesting assumption. The cofinal-repair companion introduces the scalar floor defect Q_N=floor(4*2^N/9)-P_N for the actual rational greedy orbit. Its exact recurrence, fatal-tail geometric lower bound, and divisor-pair cap prove that repairs Q_(N+1)<=Q_N beyond every cutoff force 4/9 membership. It also proves from the reduced-denominator order theorem that no finite rank-at-least-two Boolean support sums to 4/9: the support lcm divides six, leaving only ranks 2,3,6, and all eight subsets fail. Thus cofinal repairs conditionally yield an infinite exact-4/9 support and negate universal irrationality. The causal module now exposes the live 2-3-5 producer at multiples of 120, an exact but falsified 2-3-7 comparator at multiples of 84, and the stronger 2-3-5-7 candidate at multiples of 420. For modulus 84 Lean proves the seven-column identity, base load six, inclusion in the full load, conditional counterexample endpoint, and prime-row normal form with an eleven-position proper-divisor column and defect ceiling seventeen; the fifty-million-rank replay falsifies both its causal inequality and its actual periodic repair law. For modulus 420 Lean defines the subtraction-free four-parent union, proves inclusion in the full load, evaluates the exact base load as twelve, and connects its all-depth hypothesis to the same counterexample endpoint; the exact fifty-million replay retains minimum causal margin two with no violations or equalities. These are sharp producer/consumer and falsifier interfaces, not the missing global ancestry or cofinality theorem: excluding the exact midpoint carry equality, keeping the reachable cylinder below its midpoint seam, or proving the surviving modulus-120 periodic inequality still requires complete selected-divisor ancestry. Nonmembership remains reduced to a selected accumulated-history bad window, a skipped row with full-rank dyadic divisibility, or eventual strict scalar-defect increase. These are exact reductions, not the missing all-depth producer.",
+      "status": "source_current_lean_checked_cancellation_exact_even_quotient_compactness_saturated_boundary_midpoint_reachability_and_conditional_full_counterexample_reductions",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FourNinthsCoinCancellation.lean"
+      ]
+    },
+    {
+      "source_result_id": "prime_power_rich_powerful_support_irrationality",
+      "exact_statement": "The earlier ordinary theorem treated prime-power-rich powerful supports at every integer base. It is now strictly subsumed: every support contained in the powerful integers has summable reciprocal mass, so the stronger checked reciprocal-summable theorem covers every infinite powerful support at every integer base, with no isolated-prime-power hypothesis.",
+      "status": "superseded_as_a_consequence_of_the_all_base_reciprocal_summable_theorem",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos257/docs/formal_math/erdos257_iteration46_powerful_supports_2026_08_24.md"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "schema": "erdos1041-structural-candidate-search/1",
+  "status": "completed_candidate_only_not_a_certificate",
+  "claim_ceiling": "Numerical candidate reconnaissance only; no sampled score is a continuous-geometric certificate or an Erd\u0151s #1041 result.",
+  "parameters": {
+    "degree": 3,
+    "requested_trials": 240,
+    "completed_trials": 240,
+    "grid_size": 161,
+    "radius": 1.6,
+    "seed": 1041082303,
+    "objective": "inverse-ray-aggregate",
+    "spoke_samples": 257,
+    "flow_max_step": 0.01,
+    "regular_perturbation_scale": 0.01,
+    "resume_from": null,
+    "elite_mutation_probability": 0.8,
+    "mutation_scale": 0.002
+  },
+  "objective_score": 0.9970249692807763,
+  "root_groups": [],
+  "inverse_ray_aggregate": {
+    "admissible_simple_critical_hub_count": 2,
+    "total_inverse_ray_edge_length": 3.9880998771231053,
+    "normalized_average_length": 0.9970249692807763,
+    "minimum_edge_length": 1.981873916198278,
+    "maximum_edge_length": 2.0062259609248274,
+    "all_admissible_simple_critical_hubs": [
+      {
+        "critical_index": 0,
+        "critical_point": [
+          -0.020101742533620546,
+          0.0007464256848903044
+        ],
+        "critical_value_modulus": 0.9965001468101727,
+        "branches": [
+          {
+            "root_index": 2,
+            "length": 0.9908455509702974,
+            "endpoint_error": 1.1036095202486092e-11,
+            "maximum_level_residual": 3.302535624012171e-11
+          },
+          {
+            "root_index": 1,
+            "length": 0.9910283652279807,
+            "endpoint_error": 1.1071874249719219e-11,
+            "maximum_level_residual": 3.313230170545857e-11
+          }
+        ],
+        "total_length": 1.981873916198278
+      },
+      {
+        "critical_index": 1,
+        "critical_point": [
+          0.017894120916420644,
+          0.0010618231240702735
+        ],
+        "critical_value_modulus": 0.996527573941531,
+        "branches": [
+          {
+            "root_index": 0,
+            "length": 0.980199611271831,
+            "endpoint_error": 1.2007768602034294e-11,
+            "maximum_level_residual": 3.595256917565774e-11
+          },
+          {
+            "root_index": 1,
+            "length": 1.0260263496529964,
+            "endpoint_error": 1.1622388141542632e-11,
+            "maximum_level_residual": 3.477962977442719e-11
+          }
+        ],
+        "total_length": 2.0062259609248274
+      }
+    ]
+  },
+  "roots": [
+    [
+      0.998087706616017,
+      0.004489787984994476
+    ],
+    [
+      -0.5037966986200895,
+      0.8638106774979681
+    ],
+    [
+      -0.49760244042172735,
+      -0.8655880922695217
+    ]
+  ],
+  "links": {
+    "source_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/search_counterexample.py",
+    "research_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+    "analysis_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/InverseRayAggregateComputationalLab.md"
+  },
+  "experiment_contract": {
+    "schema_version": "formal_math_experiment_contract_v1",
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "problem": {
+      "id": "erdos_1041",
+      "target_statement": "Find two roots joined by a curve of length less than two inside the strict unit lemniscate.",
+      "claim_ceiling": "Adversarial numerical continuation is candidate evidence only. A normalized aggregate at least one must be exactified before it eliminates the aggregate mechanism."
+    },
+    "hypothesis": {
+      "id": "all_critical_inverse_ray_average_below_two",
+      "statement": "The sum of all admissible two-branch inverse-ray edge lengths is strictly less than twice the number of those critical hubs."
+    },
+    "probe": {
+      "id": "elite_mutation_inverse_ray_aggregate_adversary",
+      "question": "Can direct optimization of the complete critical-tree average cross its sharp normalized threshold one?",
+      "computation": "Mix global root restarts with mutations of the current aggregate maximizer, recomputing every admissible simple critical hub and retaining each improving configuration atomically.",
+      "falsifier": "One residual-gated configuration with normalized aggregate at least one; exactify that first candidate before mathematical use.",
+      "stop_condition": "Stop at the declared trial bound or the first threshold crossing. Do not count a subthreshold best score as mathematical progress.",
+      "resource_bounds": {
+        "degree": 3,
+        "trials": 240
+      }
+    },
+    "analytic_bridge": {
+      "survival_consequence": "No theorem follows. Rotate to an edge-disjoint or multiplicity-aware Reeb charge rather than merely increasing the sample horizon.",
+      "falsification_consequence": "Exactify the candidate and abandon every unweighted all-critical average-selection proof.",
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json"
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/InverseRayAggregateComputationalLab.md"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/search_counterexample.py"
+      ],
+      "input_receipt_refs": []
+    },
+    "result": {
+      "status": "finite_support",
+      "summary": "The degree-3 adversarial run over 240 trials reached normalized aggregate 0.997024969281; the threshold was not crossed and no theorem is claimed.",
+      "progress": {
+        "class": "inconclusive",
+        "decision_basis": "This optimizes the complete-tree aggregate directly, rather than reusing the already eliminated metric-selected pointwise hub.",
+        "next_analytic_target": "If subthreshold, seek an edge-disjoint Reeb charge with critical-ray multiplicity divided out; if superthreshold, exactify immediately.",
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+      }
+    }
+  }
+}

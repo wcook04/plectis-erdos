@@ -1,0 +1,161 @@
+{
+  "consequence_decisions": [
+    {
+      "decision": "opened_by_q971_at_successor_610",
+      "mechanism": "nonterminal_repeated_record_to_finite_threshold"
+    },
+    {
+      "decision": "not_claimed",
+      "mechanism": "all_repeated_records_force_threshold"
+    },
+    {
+      "decision": "not_claimed",
+      "mechanism": "cofinal_supply_or_irrationality"
+    }
+  ],
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos68.factorialGap_firstRepeatedPrimeSquare_entry",
+        "ErdosProblems.Erdos68.predecessorGapNumerator_threshold_iff_cleared",
+        "ErdosProblems.Erdos68.predecessorGapNumerator_threshold_forces_nonunit_or_maximal_digit",
+        "ErdosProblems.Erdos68.irrational_factorialGapSeries_of_cofinal_predecessorGapNumerator_threshold"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+      "falsification_consequence": "Open a composable repeated-record-to-threshold mechanism: seek a cofinal quantitative theorem guaranteeing both pieces together.",
+      "survival_consequence": "If the q=971 successor missed the threshold, keep the valuation and Archimedean producers separate pending a new coupling invariant."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "nonterminal_repeated_records_cannot_reach_archimedean_closure",
+      "statement": "The sparse nonterminal repeated-square mechanism may enter a reduced denominator but never reaches a state satisfying the checked Archimedean predecessor-gap threshold."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/NonterminalRecordThresholdBridgeComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos68_arbitrary_valuation_record_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_nonterminal_record_threshold_bridge.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_arbitrary_valuation_records.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Recompute the complete q^3 factorial-residue trace for q=971, then iterate the exact Fraction predecessor-gap recurrence through m=610 and compare the two cleared threshold integers.",
+      "falsifier": "One nonterminal repeated-square successor with q^2 dividing its reduced denominator, nonzero numerator modulo q^2, and nonnegative cleared threshold margin.",
+      "id": "q971_exact_successor_threshold_bridge",
+      "question": "Does the first nonterminal repeated square feed a genuine successor denominator and nonzero projection at a state where the complete cleared threshold also holds?",
+      "resource_bounds": {
+        "max_index": 610,
+        "prime_q": 971,
+        "record_index": 609
+      },
+      "stop_condition": "Stop at the first known genuinely nonterminal repeated record and bind its exact successor state; do not extend a prime horizon."
+    },
+    "problem": {
+      "claim_ceiling": "One finite nonterminal repeated-square event whose actual successor state also closes the exact tail-free threshold; no causal theorem for all records, cofinal supply, or irrationality proof.",
+      "id": "erdos_68",
+      "target_statement": "Prove irrationality of sum_(n>=2) 1/(n!-1)."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "The same exact successor state satisfies the Lean-consumed local amplification conditions and the independent Archimedean closing inequality, so the two formerly separate finite mechanisms compose.",
+        "next_analytic_target": "Prove cofinally that repeated-record amplification states meet the cleared threshold, or isolate a quantitative record condition that forces the required numerator-to-denominator ratio."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The q=971 record from indices 361 to 609 is nonterminal; at m=610, 971^2 divides the actual reduced denominator, the numerator is 41085 modulo 971^2, and the exact cleared threshold margin is positive."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "record": {
+    "cube_hit_count": 0,
+    "first_cube_index": null,
+    "first_square_index": 609,
+    "first_support_index": 361,
+    "maximum_valuation": 2,
+    "q": 971,
+    "repeated_records": [
+      {
+        "earlier_support_index": 361,
+        "new_record_valuation": 2,
+        "previous_record_valuation": 1,
+        "prime_power": 942841,
+        "q": 971,
+        "record_index": 609,
+        "terminal_wilson_index": false
+      }
+    ],
+    "square_hit_count": 1,
+    "support_count": 6
+  },
+  "schema": "erdos68-nonterminal-record-threshold-bridge/1",
+  "source_records": [
+    {
+      "byte_length": 11908,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_nonterminal_record_threshold_bridge.py",
+      "sha256": "e312a7b8976c5a6305dffdb47a5170153c6ec21889502753b0d8aa7f7ded6f15"
+    },
+    {
+      "byte_length": 29034,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos68_arbitrary_valuation_records.py",
+      "sha256": "c942534a4951325d432378ab380ac80910b5001e10a8d839fa9e2a6dd894b6bc"
+    },
+    {
+      "byte_length": 7387,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos68_arbitrary_valuation_record_receipt.json",
+      "sha256": "0917ac91361d4b475a778535ab9580ff592564352a0cc075f3654b8c68031578"
+    },
+    {
+      "byte_length": 2248,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/NonterminalRecordThresholdBridgeComputationalLab.md",
+      "sha256": "9594143354d66af9a5dd61ab4273c13181f85f8bc95f8bd3b05be63a07c3e7dc"
+    },
+    {
+      "byte_length": 288482,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+      "sha256": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849"
+    },
+    {
+      "byte_length": 275484,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json",
+      "sha256": "47b337756f6ebf2f581482c40b4b1bd604aad47561d07e5beffefa48a791a0a5"
+    }
+  ],
+  "status": "verified_exact_nonterminal_record_threshold_mechanism_opening",
+  "successor_state": {
+    "carry": 506,
+    "checks": {
+      "actual_successor_carry_is_nonunit": true,
+      "actual_successor_fraction_reduced": true,
+      "actual_successor_numerator_projection_nonzero": true,
+      "cleared_tailfree_threshold_holds": true,
+      "record_is_nonterminal": true,
+      "record_power_divides_actual_successor_denominator": true
+    },
+    "cleared_threshold_margin": {
+      "bit_length": 1326943,
+      "sha256": "53488568db98413313ff3878348f9693143916f8a12b362253e3d3e00ecf57da",
+      "sign": 1
+    },
+    "denominator": {
+      "bit_length": 1322158,
+      "sha256": "fb32e20adda4327a991a61ec2142727964a5f6956ee869f38aa7529cf881f94a",
+      "sign": 1
+    },
+    "denominator_mod_prime_power": 0,
+    "index": 610,
+    "numerator": {
+      "bit_length": 1322154,
+      "sha256": "adace1aedaf9f8ad896785903d9ca2afe799358da3c667a8bd9d3bdc6586f1e4",
+      "sign": 1
+    },
+    "numerator_mod_prime_power": 41085,
+    "prime_power": 942841
+  }
+}

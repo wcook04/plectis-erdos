@@ -1,0 +1,5227 @@
+{
+  "aggregate": {
+    "first_non_immediate_repair": {
+      "block_identity_verified": true,
+      "carry_at_recovery": 1,
+      "homogeneous_mass": 16,
+      "immediate_repair_below_previous_record": false,
+      "previous_record_height": 3,
+      "record_height": 4,
+      "record_height_lt_successor_load": false,
+      "record_increment": 1,
+      "record_is_prime": false,
+      "record_rank": 118,
+      "recovered_within_horizon": true,
+      "recovery_distance": 2,
+      "recovery_rank": 120,
+      "repair_load_slack": -2,
+      "repair_load_threshold": 5,
+      "successor_divisor_load": 3,
+      "successor_epsilon": 0,
+      "successor_load_is_prefix_record": false,
+      "successor_rank": 119,
+      "target": "31/1238",
+      "weighted_digit_supply": 0,
+      "weighted_divisor_compensation": 15
+    },
+    "immediate_repair_below_previous_record_count": 544,
+    "immediate_repair_below_previous_record_fraction": 0.998165137615,
+    "latest_unrecovered_record": null,
+    "most_common_record_successors": [
+      {
+        "successor_rank": 2520,
+        "target_event_count": 19
+      },
+      {
+        "successor_rank": 5040,
+        "target_event_count": 17
+      },
+      {
+        "successor_rank": 27720,
+        "target_event_count": 17
+      },
+      {
+        "successor_rank": 10080,
+        "target_event_count": 16
+      },
+      {
+        "successor_rank": 55440,
+        "target_event_count": 16
+      },
+      {
+        "successor_rank": 166320,
+        "target_event_count": 15
+      },
+      {
+        "successor_rank": 83160,
+        "target_event_count": 14
+      },
+      {
+        "successor_rank": 15120,
+        "target_event_count": 13
+      },
+      {
+        "successor_rank": 20160,
+        "target_event_count": 12
+      },
+      {
+        "successor_rank": 110880,
+        "target_event_count": 12
+      },
+      {
+        "successor_rank": 360,
+        "target_event_count": 10
+      },
+      {
+        "successor_rank": 1260,
+        "target_event_count": 10
+      },
+      {
+        "successor_rank": 50400,
+        "target_event_count": 10
+      },
+      {
+        "successor_rank": 138600,
+        "target_event_count": 10
+      },
+      {
+        "successor_rank": 720,
+        "target_event_count": 9
+      },
+      {
+        "successor_rank": 1680,
+        "target_event_count": 9
+      },
+      {
+        "successor_rank": 7560,
+        "target_event_count": 9
+      },
+      {
+        "successor_rank": 25200,
+        "target_event_count": 9
+      },
+      {
+        "successor_rank": 131040,
+        "target_event_count": 9
+      },
+      {
+        "successor_rank": 3780,
+        "target_event_count": 8
+      },
+      {
+        "successor_rank": 75600,
+        "target_event_count": 8
+      },
+      {
+        "successor_rank": 13860,
+        "target_event_count": 7
+      },
+      {
+        "successor_rank": 98280,
+        "target_event_count": 7
+      },
+      {
+        "successor_rank": 120,
+        "target_event_count": 6
+      }
+    ],
+    "observed_uniform_recovery_bound": 2,
+    "prime_record_event_count": 278,
+    "prime_record_fraction": 0.510091743119,
+    "record_event_count": 545,
+    "record_height_lt_successor_load_count": 544,
+    "recovered_record_event_count": 545,
+    "successor_load_is_prefix_record_count": 476,
+    "unrecovered_record_event_count": 0,
+    "worst_record_increment": {
+      "block_identity_verified": true,
+      "carry_at_recovery": 2,
+      "homogeneous_mass": 64,
+      "immediate_repair_below_previous_record": true,
+      "previous_record_height": 26,
+      "record_height": 32,
+      "record_height_lt_successor_load": true,
+      "record_increment": 6,
+      "record_is_prime": true,
+      "record_rank": 55439,
+      "recovered_within_horizon": true,
+      "recovery_distance": 1,
+      "recovery_rank": 55440,
+      "repair_load_slack": 24,
+      "repair_load_threshold": 38,
+      "successor_divisor_load": 62,
+      "successor_epsilon": 0,
+      "successor_load_is_prefix_record": true,
+      "successor_rank": 55440,
+      "target": "333/1669",
+      "weighted_digit_supply": 0,
+      "weighted_divisor_compensation": 62
+    },
+    "worst_recovery_distance": {
+      "block_identity_verified": true,
+      "carry_at_recovery": 1,
+      "homogeneous_mass": 16,
+      "immediate_repair_below_previous_record": false,
+      "previous_record_height": 3,
+      "record_height": 4,
+      "record_height_lt_successor_load": false,
+      "record_increment": 1,
+      "record_is_prime": false,
+      "record_rank": 118,
+      "recovered_within_horizon": true,
+      "recovery_distance": 2,
+      "recovery_rank": 120,
+      "repair_load_slack": -2,
+      "repair_load_threshold": 5,
+      "successor_divisor_load": 3,
+      "successor_epsilon": 0,
+      "successor_load_is_prefix_record": false,
+      "successor_rank": 119,
+      "target": "31/1238",
+      "weighted_digit_supply": 0,
+      "weighted_divisor_compensation": 15
+    }
+  },
+  "claim_boundary": "All replay, record, and compensation identities are exact. First-hit and recovery bounds are finite cohort observations; they do not prove a uniform height barrier, a subexponential carry, rational membership, or Erd\u0151s 257.",
+  "exact_block_identity": "C_R = 2^(R-P) C_P + sum_(j=P+1..R) 2^(R-j) epsilon_j - sum_(j=P+1..R) 2^(R-j) tau_A(j)",
+  "global_earliest_first_hit_curve": [
+    {
+      "first_rank": 67,
+      "height": 2,
+      "target": "5/1984"
+    },
+    {
+      "first_rank": 65,
+      "height": 3,
+      "target": "333/1669"
+    },
+    {
+      "first_rank": 79,
+      "height": 4,
+      "target": "891/1844"
+    },
+    {
+      "first_rank": 89,
+      "height": 5,
+      "target": "677/1133"
+    },
+    {
+      "first_rank": 119,
+      "height": 6,
+      "target": "970/1853"
+    },
+    {
+      "first_rank": 119,
+      "height": 7,
+      "target": "363/599"
+    },
+    {
+      "first_rank": 179,
+      "height": 8,
+      "target": "363/599"
+    },
+    {
+      "first_rank": 359,
+      "height": 9,
+      "target": "970/1853"
+    },
+    {
+      "first_rank": 419,
+      "height": 10,
+      "target": "363/599"
+    },
+    {
+      "first_rank": 719,
+      "height": 11,
+      "target": "970/1853"
+    },
+    {
+      "first_rank": 839,
+      "height": 12,
+      "target": "363/599"
+    },
+    {
+      "first_rank": 1259,
+      "height": 13,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 1679,
+      "height": 14,
+      "target": "363/599"
+    },
+    {
+      "first_rank": 1679,
+      "height": 15,
+      "target": "363/599"
+    },
+    {
+      "first_rank": 2519,
+      "height": 16,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 2519,
+      "height": 17,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 5039,
+      "height": 18,
+      "target": "121/657"
+    },
+    {
+      "first_rank": 5039,
+      "height": 19,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 5039,
+      "height": 20,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 9239,
+      "height": 21,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 10079,
+      "height": 22,
+      "target": "121/657"
+    },
+    {
+      "first_rank": 10079,
+      "height": 23,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 10919,
+      "height": 24,
+      "target": "363/599"
+    },
+    {
+      "first_rank": 13859,
+      "height": 25,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 13859,
+      "height": 26,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 21839,
+      "height": 27,
+      "target": "363/599"
+    },
+    {
+      "first_rank": 21839,
+      "height": 28,
+      "target": "363/599"
+    },
+    {
+      "first_rank": 27719,
+      "height": 29,
+      "target": "970/1853"
+    },
+    {
+      "first_rank": 27719,
+      "height": 30,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 27719,
+      "height": 31,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 27719,
+      "height": 32,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 46199,
+      "height": 33,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 55439,
+      "height": 34,
+      "target": "970/1853"
+    },
+    {
+      "first_rank": 55439,
+      "height": 35,
+      "target": "970/1853"
+    },
+    {
+      "first_rank": 55439,
+      "height": 36,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 55439,
+      "height": 37,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 55439,
+      "height": 38,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 55439,
+      "height": 39,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 83159,
+      "height": 40,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 110879,
+      "height": 41,
+      "target": "970/1853"
+    },
+    {
+      "first_rank": 110879,
+      "height": 42,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 110879,
+      "height": 43,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 110879,
+      "height": 44,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 110879,
+      "height": 45,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 131039,
+      "height": 46,
+      "target": "363/599"
+    },
+    {
+      "first_rank": 138599,
+      "height": 47,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 138599,
+      "height": 48,
+      "target": "740/1529"
+    },
+    {
+      "first_rank": 166319,
+      "height": 49,
+      "target": "740/1529"
+    }
+  ],
+  "mechanism_decision": {
+    "falsifier_condition": "Early large-height records or record events with recovery scales growing as fast as their ranks would eliminate this aggregate route.",
+    "producer_if_proved": "If every new record C_N is repaired below the previous record within a fixed H ranks, the exact block identity forces weighted divisor load >=(2^ell-1)C_N+1 for some ell<=H. Since every load is at most tau(m)<=2*sqrt(m), C_N<2*sqrt(N+H). Thus every carry is polynomial, the homogeneous mode dies, and the corresponding greedy rational support is certified. The current surviving finite candidate is H=2.",
+    "status": "one_step_record_repair_falsified_two_step_survives"
+  },
+  "parameters": {
+    "depth": 200000,
+    "source_ranks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      49,
+      71,
+      84,
+      118,
+      125,
+      134,
+      487
+    ],
+    "start_rank": 64,
+    "target_count": 23,
+    "target_limit": 128
+  },
+  "payload_sha256": "baca88c98215dbd9b7ba106584a48af8de0a285f9fc6e7e721a42d9876a41ba9",
+  "programme_target": "Use computation to isolate or falsify an aggregate mechanism that kills the expanding carry mode in Erd\u0151s 257.",
+  "schema": "erdos257_prime_record_compensation_v1",
+  "source": {
+    "carry_library": "formal_math/erdos257_period_noncollapse/scripts/interprime_carry_repair_falsifier.py",
+    "carry_library_sha256": "ff8aa3473b849de9c9fc3603e38a6ac777de03dd88ed21ce6bc5f509752f583f",
+    "engine": "formal_math/erdos257_period_noncollapse/scripts/cantor_staircase_run_length_lab.py",
+    "engine_sha256": "aee6d370c3639dc213a7eebb90777273ab0c253adb278d8ee35f63d2b349d4a5",
+    "input_receipt": "state/formal_math/erdos257_period_noncollapse/rational_target_headroom_funnel_receipt.json",
+    "input_receipt_sha256": "c42989ef8633bc3e0b572baf775efaf8e791a0b5c2e35cc6e335622e3e6d2da1",
+    "script": "formal_math/erdos257_period_noncollapse/scripts/prime_record_compensation.py",
+    "script_sha256": "a80ece3e9b0c469e8221e0118f4da85a65b4aa90d255b97b2ebb595c5da3f7a7"
+  },
+  "target_summaries": [
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 65,
+          "height": 3,
+          "log2_first_rank_over_height": 2.007455937676
+        },
+        {
+          "first_rank": 131,
+          "height": 4,
+          "log2_first_rank_over_height": 1.758355750384
+        },
+        {
+          "first_rank": 269,
+          "height": 5,
+          "log2_first_rank_over_height": 1.614292472511
+        },
+        {
+          "first_rank": 461,
+          "height": 6,
+          "log2_first_rank_over_height": 1.474770490072
+        },
+        {
+          "first_rank": 779,
+          "height": 7,
+          "log2_first_rank_over_height": 1.372211359723
+        },
+        {
+          "first_rank": 923,
+          "height": 8,
+          "log2_first_rank_over_height": 1.231273354706
+        },
+        {
+          "first_rank": 1259,
+          "height": 9,
+          "log2_first_rank_over_height": 1.144229174191
+        },
+        {
+          "first_rank": 1679,
+          "height": 10,
+          "log2_first_rank_over_height": 1.071338651494
+        },
+        {
+          "first_rank": 2519,
+          "height": 11,
+          "log2_first_rank_over_height": 1.027148673339
+        },
+        {
+          "first_rank": 3779,
+          "height": 12,
+          "log2_first_rank_over_height": 0.990315733605
+        },
+        {
+          "first_rank": 5039,
+          "height": 13,
+          "log2_first_rank_over_height": 0.946070903152
+        },
+        {
+          "first_rank": 5039,
+          "height": 14,
+          "log2_first_rank_over_height": 0.878494410069
+        },
+        {
+          "first_rank": 6719,
+          "height": 15,
+          "log2_first_rank_over_height": 0.847602054329
+        },
+        {
+          "first_rank": 7559,
+          "height": 16,
+          "log2_first_rank_over_height": 0.805248729613
+        },
+        {
+          "first_rank": 11339,
+          "height": 17,
+          "log2_first_rank_over_height": 0.792294458379
+        },
+        {
+          "first_rank": 13439,
+          "height": 18,
+          "log2_first_rank_over_height": 0.761896565016
+        },
+        {
+          "first_rank": 15119,
+          "height": 19,
+          "log2_first_rank_over_height": 0.730740794717
+        },
+        {
+          "first_rank": 15119,
+          "height": 20,
+          "log2_first_rank_over_height": 0.694203754981
+        },
+        {
+          "first_rank": 22679,
+          "height": 21,
+          "log2_first_rank_over_height": 0.689003305121
+        },
+        {
+          "first_rank": 25199,
+          "height": 22,
+          "log2_first_rank_over_height": 0.664594493743
+        },
+        {
+          "first_rank": 27719,
+          "height": 23,
+          "log2_first_rank_over_height": 0.64167772134
+        },
+        {
+          "first_rank": 27719,
+          "height": 24,
+          "log2_first_rank_over_height": 0.614941149617
+        },
+        {
+          "first_rank": 27719,
+          "height": 25,
+          "log2_first_rank_over_height": 0.590343503632
+        },
+        {
+          "first_rank": 45359,
+          "height": 26,
+          "log2_first_rank_over_height": 0.594965431309
+        },
+        {
+          "first_rank": 55439,
+          "height": 27,
+          "log2_first_rank_over_height": 0.58365235608
+        },
+        {
+          "first_rank": 55439,
+          "height": 28,
+          "log2_first_rank_over_height": 0.562807629077
+        },
+        {
+          "first_rank": 55439,
+          "height": 29,
+          "log2_first_rank_over_height": 0.543400469454
+        },
+        {
+          "first_rank": 55439,
+          "height": 30,
+          "log2_first_rank_over_height": 0.525287120472
+        },
+        {
+          "first_rank": 55439,
+          "height": 31,
+          "log2_first_rank_over_height": 0.50834237465
+        },
+        {
+          "first_rank": 55439,
+          "height": 32,
+          "log2_first_rank_over_height": 0.492456675442
+        },
+        {
+          "first_rank": 83159,
+          "height": 33,
+          "log2_first_rank_over_height": 0.495260145128
+        },
+        {
+          "first_rank": 83159,
+          "height": 34,
+          "log2_first_rank_over_height": 0.480693670271
+        },
+        {
+          "first_rank": 83159,
+          "height": 35,
+          "log2_first_rank_over_height": 0.466959565406
+        },
+        {
+          "first_rank": 138599,
+          "height": 36,
+          "log2_first_rank_over_height": 0.474459925634
+        },
+        {
+          "first_rank": 138599,
+          "height": 37,
+          "log2_first_rank_over_height": 0.461636684401
+        },
+        {
+          "first_rank": 138599,
+          "height": 38,
+          "log2_first_rank_over_height": 0.449488350601
+        },
+        {
+          "first_rank": 166319,
+          "height": 39,
+          "log2_first_rank_over_height": 0.444707524705
+        },
+        {
+          "first_rank": 166319,
+          "height": 40,
+          "log2_first_rank_over_height": 0.433589836588
+        },
+        {
+          "first_rank": 166319,
+          "height": 41,
+          "log2_first_rank_over_height": 0.42301447472
+        },
+        {
+          "first_rank": 166319,
+          "height": 42,
+          "log2_first_rank_over_height": 0.412942701512
+        },
+        {
+          "first_rank": 166319,
+          "height": 43,
+          "log2_first_rank_over_height": 0.403339382872
+        }
+      ],
+      "max_carry": 43,
+      "prime_record_event_count": 12,
+      "record_event_count_after_start": 24,
+      "source_rank": 1,
+      "support_density": 0.499225,
+      "support_word_sha256": "9167d2c52119b2ff1ae2e5ee5d6eafd8d2f48379aea659351dd0270056dc68f6",
+      "target": "333/1669",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 143,
+          "height": 4,
+          "log2_first_rank_over_height": 1.789967834195
+        },
+        {
+          "first_rank": 215,
+          "height": 5,
+          "log2_first_rank_over_height": 1.549638569918
+        },
+        {
+          "first_rank": 431,
+          "height": 6,
+          "log2_first_rank_over_height": 1.458590676515
+        },
+        {
+          "first_rank": 623,
+          "height": 7,
+          "log2_first_rank_over_height": 1.326155479003
+        },
+        {
+          "first_rank": 863,
+          "height": 8,
+          "log2_first_rank_over_height": 1.219152093647
+        },
+        {
+          "first_rank": 1439,
+          "height": 9,
+          "log2_first_rank_over_height": 1.165650097416
+        },
+        {
+          "first_rank": 2519,
+          "height": 10,
+          "log2_first_rank_over_height": 1.129863540673
+        },
+        {
+          "first_rank": 3023,
+          "height": 11,
+          "log2_first_rank_over_height": 1.051069569421
+        },
+        {
+          "first_rank": 3023,
+          "height": 12,
+          "log2_first_rank_over_height": 0.963480438636
+        },
+        {
+          "first_rank": 5039,
+          "height": 13,
+          "log2_first_rank_over_height": 0.946070903152
+        },
+        {
+          "first_rank": 5039,
+          "height": 14,
+          "log2_first_rank_over_height": 0.878494410069
+        },
+        {
+          "first_rank": 6047,
+          "height": 15,
+          "log2_first_rank_over_height": 0.837466924243
+        },
+        {
+          "first_rank": 10079,
+          "height": 16,
+          "log2_first_rank_over_height": 0.831191555424
+        },
+        {
+          "first_rank": 10079,
+          "height": 17,
+          "log2_first_rank_over_height": 0.782297934516
+        },
+        {
+          "first_rank": 10079,
+          "height": 18,
+          "log2_first_rank_over_height": 0.738836938154
+        },
+        {
+          "first_rank": 15119,
+          "height": 19,
+          "log2_first_rank_over_height": 0.730740794717
+        },
+        {
+          "first_rank": 20159,
+          "height": 20,
+          "log2_first_rank_over_height": 0.714956822718
+        },
+        {
+          "first_rank": 20159,
+          "height": 21,
+          "log2_first_rank_over_height": 0.680911259731
+        },
+        {
+          "first_rank": 20159,
+          "height": 22,
+          "log2_first_rank_over_height": 0.649960747925
+        },
+        {
+          "first_rank": 25199,
+          "height": 23,
+          "log2_first_rank_over_height": 0.635699080971
+        },
+        {
+          "first_rank": 30239,
+          "height": 24,
+          "log2_first_rank_over_height": 0.620171783756
+        },
+        {
+          "first_rank": 35279,
+          "height": 25,
+          "log2_first_rank_over_height": 0.604260881886
+        },
+        {
+          "first_rank": 50399,
+          "height": 26,
+          "log2_first_rank_over_height": 0.600811826465
+        },
+        {
+          "first_rank": 50399,
+          "height": 27,
+          "log2_first_rank_over_height": 0.578559536596
+        },
+        {
+          "first_rank": 50399,
+          "height": 28,
+          "log2_first_rank_over_height": 0.557896696003
+        },
+        {
+          "first_rank": 70559,
+          "height": 29,
+          "log2_first_rank_over_height": 0.555398017032
+        },
+        {
+          "first_rank": 75599,
+          "height": 30,
+          "log2_first_rank_over_height": 0.54020265102
+        },
+        {
+          "first_rank": 75599,
+          "height": 31,
+          "log2_first_rank_over_height": 0.522776759052
+        },
+        {
+          "first_rank": 75599,
+          "height": 32,
+          "log2_first_rank_over_height": 0.506439985331
+        },
+        {
+          "first_rank": 105839,
+          "height": 33,
+          "log2_first_rank_over_height": 0.505803388188
+        },
+        {
+          "first_rank": 105839,
+          "height": 34,
+          "log2_first_rank_over_height": 0.490926817947
+        },
+        {
+          "first_rank": 151199,
+          "height": 35,
+          "log2_first_rank_over_height": 0.491602544924
+        },
+        {
+          "first_rank": 151199,
+          "height": 36,
+          "log2_first_rank_over_height": 0.477946918676
+        },
+        {
+          "first_rank": 151199,
+          "height": 37,
+          "log2_first_rank_over_height": 0.465029434387
+        },
+        {
+          "first_rank": 151199,
+          "height": 38,
+          "log2_first_rank_over_height": 0.452791817693
+        }
+      ],
+      "max_carry": 38,
+      "prime_record_event_count": 8,
+      "record_event_count_after_start": 21,
+      "source_rank": 2,
+      "support_density": 0.500575,
+      "support_word_sha256": "05cb7abc495e87ca7836f2d25c93154747a77f7e3d943f494c2020be233ce478",
+      "target": "267/1678",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 89,
+          "height": 4,
+          "log2_first_rank_over_height": 1.618933357742
+        },
+        {
+          "first_rank": 179,
+          "height": 5,
+          "log2_first_rank_over_height": 1.496763155453
+        },
+        {
+          "first_rank": 359,
+          "height": 6,
+          "log2_first_rank_over_height": 1.414640005637
+        },
+        {
+          "first_rank": 503,
+          "height": 7,
+          "log2_first_rank_over_height": 1.282059227115
+        },
+        {
+          "first_rank": 629,
+          "height": 8,
+          "log2_first_rank_over_height": 1.16211452586
+        },
+        {
+          "first_rank": 1259,
+          "height": 9,
+          "log2_first_rank_over_height": 1.144229174191
+        },
+        {
+          "first_rank": 1259,
+          "height": 10,
+          "log2_first_rank_over_height": 1.029806256772
+        },
+        {
+          "first_rank": 1889,
+          "height": 11,
+          "log2_first_rank_over_height": 0.989400635126
+        },
+        {
+          "first_rank": 1889,
+          "height": 12,
+          "log2_first_rank_over_height": 0.906950582199
+        },
+        {
+          "first_rank": 2519,
+          "height": 13,
+          "log2_first_rank_over_height": 0.869125800518
+        },
+        {
+          "first_rank": 3779,
+          "height": 14,
+          "log2_first_rank_over_height": 0.848842057376
+        },
+        {
+          "first_rank": 3779,
+          "height": 15,
+          "log2_first_rank_over_height": 0.792252586884
+        },
+        {
+          "first_rank": 3779,
+          "height": 16,
+          "log2_first_rank_over_height": 0.742736800204
+        },
+        {
+          "first_rank": 7559,
+          "height": 17,
+          "log2_first_rank_over_height": 0.757881157283
+        },
+        {
+          "first_rank": 7559,
+          "height": 18,
+          "log2_first_rank_over_height": 0.715776648545
+        },
+        {
+          "first_rank": 7559,
+          "height": 19,
+          "log2_first_rank_over_height": 0.678104193358
+        },
+        {
+          "first_rank": 13859,
+          "height": 20,
+          "log2_first_rank_over_height": 0.687926777136
+        },
+        {
+          "first_rank": 15119,
+          "height": 21,
+          "log2_first_rank_over_height": 0.661146433315
+        },
+        {
+          "first_rank": 15119,
+          "height": 22,
+          "log2_first_rank_over_height": 0.63109432271
+        },
+        {
+          "first_rank": 22679,
+          "height": 23,
+          "log2_first_rank_over_height": 0.629089974241
+        },
+        {
+          "first_rank": 27719,
+          "height": 24,
+          "log2_first_rank_over_height": 0.614941149617
+        },
+        {
+          "first_rank": 27719,
+          "height": 25,
+          "log2_first_rank_over_height": 0.590343503632
+        },
+        {
+          "first_rank": 27719,
+          "height": 26,
+          "log2_first_rank_over_height": 0.567637984262
+        },
+        {
+          "first_rank": 27719,
+          "height": 27,
+          "log2_first_rank_over_height": 0.546614355215
+        },
+        {
+          "first_rank": 41579,
+          "height": 28,
+          "log2_first_rank_over_height": 0.547984551446
+        },
+        {
+          "first_rank": 41579,
+          "height": 29,
+          "log2_first_rank_over_height": 0.52908853243
+        },
+        {
+          "first_rank": 55439,
+          "height": 30,
+          "log2_first_rank_over_height": 0.525287120472
+        },
+        {
+          "first_rank": 55439,
+          "height": 31,
+          "log2_first_rank_over_height": 0.50834237465
+        },
+        {
+          "first_rank": 55439,
+          "height": 32,
+          "log2_first_rank_over_height": 0.492456675442
+        },
+        {
+          "first_rank": 55439,
+          "height": 33,
+          "log2_first_rank_over_height": 0.477533745883
+        },
+        {
+          "first_rank": 75599,
+          "height": 34,
+          "log2_first_rank_over_height": 0.476649397959
+        },
+        {
+          "first_rank": 83159,
+          "height": 35,
+          "log2_first_rank_over_height": 0.466959565406
+        },
+        {
+          "first_rank": 83159,
+          "height": 36,
+          "log2_first_rank_over_height": 0.453988466367
+        },
+        {
+          "first_rank": 83159,
+          "height": 37,
+          "log2_first_rank_over_height": 0.441718507817
+        },
+        {
+          "first_rank": 83159,
+          "height": 38,
+          "log2_first_rank_over_height": 0.430094336558
+        },
+        {
+          "first_rank": 138599,
+          "height": 39,
+          "log2_first_rank_over_height": 0.437963008277
+        },
+        {
+          "first_rank": 166319,
+          "height": 40,
+          "log2_first_rank_over_height": 0.433589836588
+        },
+        {
+          "first_rank": 166319,
+          "height": 41,
+          "log2_first_rank_over_height": 0.42301447472
+        },
+        {
+          "first_rank": 166319,
+          "height": 42,
+          "log2_first_rank_over_height": 0.412942701512
+        },
+        {
+          "first_rank": 166319,
+          "height": 43,
+          "log2_first_rank_over_height": 0.403339382872
+        },
+        {
+          "first_rank": 166319,
+          "height": 44,
+          "log2_first_rank_over_height": 0.394172578716
+        },
+        {
+          "first_rank": 166319,
+          "height": 45,
+          "log2_first_rank_over_height": 0.385413188078
+        }
+      ],
+      "max_carry": 45,
+      "prime_record_event_count": 14,
+      "record_event_count_after_start": 20,
+      "source_rank": 3,
+      "support_density": 0.500025,
+      "support_word_sha256": "6eceab6eae9ff9e8736f287acf72319411c3cdb4b0acb906ca7229fe71068c9e",
+      "target": "167/829",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 83,
+          "height": 4,
+          "log2_first_rank_over_height": 1.593759857837
+        },
+        {
+          "first_rank": 209,
+          "height": 5,
+          "log2_first_rank_over_height": 1.541471826416
+        },
+        {
+          "first_rank": 335,
+          "height": 6,
+          "log2_first_rank_over_height": 1.398002880891
+        },
+        {
+          "first_rank": 479,
+          "height": 7,
+          "log2_first_rank_over_height": 1.271983120819
+        },
+        {
+          "first_rank": 719,
+          "height": 8,
+          "log2_first_rank_over_height": 1.186230995055
+        },
+        {
+          "first_rank": 1007,
+          "height": 9,
+          "log2_first_rank_over_height": 1.108427552001
+        },
+        {
+          "first_rank": 1259,
+          "height": 10,
+          "log2_first_rank_over_height": 1.029806256772
+        },
+        {
+          "first_rank": 1439,
+          "height": 11,
+          "log2_first_rank_over_height": 0.953713716067
+        },
+        {
+          "first_rank": 2099,
+          "height": 12,
+          "log2_first_rank_over_height": 0.919623870941
+        },
+        {
+          "first_rank": 2519,
+          "height": 13,
+          "log2_first_rank_over_height": 0.869125800518
+        },
+        {
+          "first_rank": 3359,
+          "height": 14,
+          "log2_first_rank_over_height": 0.836701148588
+        },
+        {
+          "first_rank": 5039,
+          "height": 15,
+          "log2_first_rank_over_height": 0.819928116065
+        },
+        {
+          "first_rank": 5039,
+          "height": 16,
+          "log2_first_rank_over_height": 0.768682608811
+        },
+        {
+          "first_rank": 5039,
+          "height": 17,
+          "log2_first_rank_over_height": 0.723465984763
+        },
+        {
+          "first_rank": 5039,
+          "height": 18,
+          "log2_first_rank_over_height": 0.683273430054
+        },
+        {
+          "first_rank": 8399,
+          "height": 19,
+          "log2_first_rank_over_height": 0.68610536068
+        },
+        {
+          "first_rank": 10079,
+          "height": 20,
+          "log2_first_rank_over_height": 0.664953244339
+        },
+        {
+          "first_rank": 10079,
+          "height": 21,
+          "log2_first_rank_over_height": 0.633288804132
+        },
+        {
+          "first_rank": 10079,
+          "height": 22,
+          "log2_first_rank_over_height": 0.604502949399
+        },
+        {
+          "first_rank": 15119,
+          "height": 23,
+          "log2_first_rank_over_height": 0.603655439114
+        },
+        {
+          "first_rank": 20159,
+          "height": 24,
+          "log2_first_rank_over_height": 0.595797352265
+        },
+        {
+          "first_rank": 20159,
+          "height": 25,
+          "log2_first_rank_over_height": 0.571965458174
+        },
+        {
+          "first_rank": 25199,
+          "height": 26,
+          "log2_first_rank_over_height": 0.562349187013
+        },
+        {
+          "first_rank": 25199,
+          "height": 27,
+          "log2_first_rank_over_height": 0.541521439346
+        },
+        {
+          "first_rank": 25199,
+          "height": 28,
+          "log2_first_rank_over_height": 0.522181387941
+        },
+        {
+          "first_rank": 35279,
+          "height": 29,
+          "log2_first_rank_over_height": 0.52091455335
+        },
+        {
+          "first_rank": 50399,
+          "height": 30,
+          "log2_first_rank_over_height": 0.520703582936
+        },
+        {
+          "first_rank": 50399,
+          "height": 31,
+          "log2_first_rank_over_height": 0.503906693164
+        },
+        {
+          "first_rank": 50399,
+          "height": 32,
+          "log2_first_rank_over_height": 0.488159609003
+        },
+        {
+          "first_rank": 50399,
+          "height": 33,
+          "log2_first_rank_over_height": 0.473366893578
+        },
+        {
+          "first_rank": 70559,
+          "height": 34,
+          "log2_first_rank_over_height": 0.473721838057
+        },
+        {
+          "first_rank": 75599,
+          "height": 35,
+          "log2_first_rank_over_height": 0.463030843731
+        },
+        {
+          "first_rank": 75599,
+          "height": 36,
+          "log2_first_rank_over_height": 0.45016887585
+        },
+        {
+          "first_rank": 95759,
+          "height": 37,
+          "log2_first_rank_over_height": 0.447219472054
+        },
+        {
+          "first_rank": 105839,
+          "height": 38,
+          "log2_first_rank_over_height": 0.439250310795
+        },
+        {
+          "first_rank": 110879,
+          "height": 39,
+          "log2_first_rank_over_height": 0.429708375017
+        },
+        {
+          "first_rank": 131039,
+          "height": 40,
+          "log2_first_rank_over_height": 0.424990918173
+        },
+        {
+          "first_rank": 131039,
+          "height": 41,
+          "log2_first_rank_over_height": 0.414625286022
+        },
+        {
+          "first_rank": 151199,
+          "height": 42,
+          "log2_first_rank_over_height": 0.409668787436
+        },
+        {
+          "first_rank": 176399,
+          "height": 43,
+          "log2_first_rank_over_height": 0.405313554809
+        },
+        {
+          "first_rank": 191519,
+          "height": 44,
+          "log2_first_rank_over_height": 0.398798363612
+        }
+      ],
+      "max_carry": 44,
+      "prime_record_event_count": 12,
+      "record_event_count_after_start": 28,
+      "source_rank": 4,
+      "support_density": 0.50249,
+      "support_word_sha256": "fad3b900ad20a2090e33c186ec41234c65fbb751dca2d9d6361423a7399c077a",
+      "target": "121/657",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 83,
+          "height": 3,
+          "log2_first_rank_over_height": 2.125013143782
+        },
+        {
+          "first_rank": 167,
+          "height": 4,
+          "log2_first_rank_over_height": 1.845926073119
+        },
+        {
+          "first_rank": 215,
+          "height": 5,
+          "log2_first_rank_over_height": 1.549638569918
+        },
+        {
+          "first_rank": 431,
+          "height": 6,
+          "log2_first_rank_over_height": 1.458590676515
+        },
+        {
+          "first_rank": 503,
+          "height": 7,
+          "log2_first_rank_over_height": 1.282059227115
+        },
+        {
+          "first_rank": 1007,
+          "height": 8,
+          "log2_first_rank_over_height": 1.246980996001
+        },
+        {
+          "first_rank": 1511,
+          "height": 9,
+          "log2_first_rank_over_height": 1.173476438352
+        },
+        {
+          "first_rank": 1511,
+          "height": 10,
+          "log2_first_rank_over_height": 1.056128794516
+        },
+        {
+          "first_rank": 3023,
+          "height": 11,
+          "log2_first_rank_over_height": 1.051069569421
+        },
+        {
+          "first_rank": 3023,
+          "height": 12,
+          "log2_first_rank_over_height": 0.963480438636
+        },
+        {
+          "first_rank": 5543,
+          "height": 13,
+          "log2_first_rank_over_height": 0.956650099407
+        },
+        {
+          "first_rank": 6047,
+          "height": 14,
+          "log2_first_rank_over_height": 0.897285990261
+        },
+        {
+          "first_rank": 10079,
+          "height": 15,
+          "log2_first_rank_over_height": 0.886604325785
+        },
+        {
+          "first_rank": 11087,
+          "height": 16,
+          "log2_first_rank_over_height": 0.839786338943
+        },
+        {
+          "first_rank": 11879,
+          "height": 17,
+          "log2_first_rank_over_height": 0.796242692447
+        },
+        {
+          "first_rank": 18479,
+          "height": 18,
+          "log2_first_rank_over_height": 0.787422170349
+        },
+        {
+          "first_rank": 20159,
+          "height": 19,
+          "log2_first_rank_over_height": 0.752586129177
+        },
+        {
+          "first_rank": 22175,
+          "height": 20,
+          "log2_first_rank_over_height": 0.721832324204
+        },
+        {
+          "first_rank": 27719,
+          "height": 21,
+          "log2_first_rank_over_height": 0.702789885277
+        },
+        {
+          "first_rank": 27719,
+          "height": 22,
+          "log2_first_rank_over_height": 0.670844890491
+        },
+        {
+          "first_rank": 27719,
+          "height": 23,
+          "log2_first_rank_over_height": 0.64167772134
+        },
+        {
+          "first_rank": 47519,
+          "height": 24,
+          "log2_first_rank_over_height": 0.647342368984
+        },
+        {
+          "first_rank": 47519,
+          "height": 25,
+          "log2_first_rank_over_height": 0.621448674225
+        },
+        {
+          "first_rank": 55439,
+          "height": 26,
+          "log2_first_rank_over_height": 0.606100523621
+        },
+        {
+          "first_rank": 55439,
+          "height": 27,
+          "log2_first_rank_over_height": 0.58365235608
+        },
+        {
+          "first_rank": 55439,
+          "height": 28,
+          "log2_first_rank_over_height": 0.562807629077
+        },
+        {
+          "first_rank": 55439,
+          "height": 29,
+          "log2_first_rank_over_height": 0.543400469454
+        },
+        {
+          "first_rank": 83159,
+          "height": 30,
+          "log2_first_rank_over_height": 0.544786159641
+        },
+        {
+          "first_rank": 83159,
+          "height": 31,
+          "log2_first_rank_over_height": 0.527212412555
+        },
+        {
+          "first_rank": 83159,
+          "height": 32,
+          "log2_first_rank_over_height": 0.510737024663
+        },
+        {
+          "first_rank": 110879,
+          "height": 33,
+          "log2_first_rank_over_height": 0.507837170474
+        },
+        {
+          "first_rank": 110879,
+          "height": 34,
+          "log2_first_rank_over_height": 0.492900783107
+        },
+        {
+          "first_rank": 110879,
+          "height": 35,
+          "log2_first_rank_over_height": 0.47881790359
+        },
+        {
+          "first_rank": 138599,
+          "height": 36,
+          "log2_first_rank_over_height": 0.474459925634
+        },
+        {
+          "first_rank": 138599,
+          "height": 37,
+          "log2_first_rank_over_height": 0.461636684401
+        },
+        {
+          "first_rank": 166319,
+          "height": 38,
+          "log2_first_rank_over_height": 0.456410354303
+        },
+        {
+          "first_rank": 166319,
+          "height": 39,
+          "log2_first_rank_over_height": 0.444707524705
+        },
+        {
+          "first_rank": 166319,
+          "height": 40,
+          "log2_first_rank_over_height": 0.433589836588
+        }
+      ],
+      "max_carry": 40,
+      "prime_record_event_count": 13,
+      "record_event_count_after_start": 23,
+      "source_rank": 5,
+      "support_density": 0.501015,
+      "support_word_sha256": "b36477b6319986c779f107de22d68bdf4b1b3e87c775eb66fa99a0430d158fe6",
+      "target": "254/1685",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 111,
+          "height": 4,
+          "log2_first_rank_over_height": 1.698603966588
+        },
+        {
+          "first_rank": 139,
+          "height": 5,
+          "log2_first_rank_over_height": 1.423788214545
+        },
+        {
+          "first_rank": 279,
+          "height": 6,
+          "log2_first_rank_over_height": 1.354020218638
+        },
+        {
+          "first_rank": 419,
+          "height": 7,
+          "log2_first_rank_over_height": 1.2444009191
+        },
+        {
+          "first_rank": 559,
+          "height": 8,
+          "log2_first_rank_over_height": 1.140838059105
+        },
+        {
+          "first_rank": 839,
+          "height": 9,
+          "log2_first_rank_over_height": 1.079169666716
+        },
+        {
+          "first_rank": 1119,
+          "height": 10,
+          "log2_first_rank_over_height": 1.012799432098
+        },
+        {
+          "first_rank": 1679,
+          "height": 11,
+          "log2_first_rank_over_height": 0.973944228631
+        },
+        {
+          "first_rank": 2519,
+          "height": 12,
+          "log2_first_rank_over_height": 0.941552950561
+        },
+        {
+          "first_rank": 2519,
+          "height": 13,
+          "log2_first_rank_over_height": 0.869125800518
+        },
+        {
+          "first_rank": 3359,
+          "height": 14,
+          "log2_first_rank_over_height": 0.836701148588
+        },
+        {
+          "first_rank": 5039,
+          "height": 15,
+          "log2_first_rank_over_height": 0.819928116065
+        },
+        {
+          "first_rank": 5039,
+          "height": 16,
+          "log2_first_rank_over_height": 0.768682608811
+        },
+        {
+          "first_rank": 5039,
+          "height": 17,
+          "log2_first_rank_over_height": 0.723465984763
+        },
+        {
+          "first_rank": 10079,
+          "height": 18,
+          "log2_first_rank_over_height": 0.738836938154
+        },
+        {
+          "first_rank": 10079,
+          "height": 19,
+          "log2_first_rank_over_height": 0.699950783515
+        },
+        {
+          "first_rank": 10079,
+          "height": 20,
+          "log2_first_rank_over_height": 0.664953244339
+        },
+        {
+          "first_rank": 15119,
+          "height": 21,
+          "log2_first_rank_over_height": 0.661146433315
+        },
+        {
+          "first_rank": 15119,
+          "height": 22,
+          "log2_first_rank_over_height": 0.63109432271
+        },
+        {
+          "first_rank": 20159,
+          "height": 23,
+          "log2_first_rank_over_height": 0.621701584972
+        },
+        {
+          "first_rank": 20159,
+          "height": 24,
+          "log2_first_rank_over_height": 0.595797352265
+        },
+        {
+          "first_rank": 27719,
+          "height": 25,
+          "log2_first_rank_over_height": 0.590343503632
+        },
+        {
+          "first_rank": 30239,
+          "height": 26,
+          "log2_first_rank_over_height": 0.572466261929
+        },
+        {
+          "first_rank": 40319,
+          "height": 27,
+          "log2_first_rank_over_height": 0.566636008771
+        },
+        {
+          "first_rank": 50399,
+          "height": 28,
+          "log2_first_rank_over_height": 0.557896696003
+        },
+        {
+          "first_rank": 55439,
+          "height": 29,
+          "log2_first_rank_over_height": 0.543400469454
+        },
+        {
+          "first_rank": 55439,
+          "height": 30,
+          "log2_first_rank_over_height": 0.525287120472
+        },
+        {
+          "first_rank": 55439,
+          "height": 31,
+          "log2_first_rank_over_height": 0.50834237465
+        },
+        {
+          "first_rank": 55439,
+          "height": 32,
+          "log2_first_rank_over_height": 0.492456675442
+        },
+        {
+          "first_rank": 55439,
+          "height": 33,
+          "log2_first_rank_over_height": 0.477533745883
+        },
+        {
+          "first_rank": 95759,
+          "height": 34,
+          "log2_first_rank_over_height": 0.486680013706
+        },
+        {
+          "first_rank": 95759,
+          "height": 35,
+          "log2_first_rank_over_height": 0.472774870458
+        },
+        {
+          "first_rank": 110879,
+          "height": 36,
+          "log2_first_rank_over_height": 0.465517406268
+        },
+        {
+          "first_rank": 110879,
+          "height": 37,
+          "log2_first_rank_over_height": 0.452935854747
+        },
+        {
+          "first_rank": 110879,
+          "height": 38,
+          "log2_first_rank_over_height": 0.441016490149
+        },
+        {
+          "first_rank": 110879,
+          "height": 39,
+          "log2_first_rank_over_height": 0.429708375017
+        },
+        {
+          "first_rank": 166319,
+          "height": 40,
+          "log2_first_rank_over_height": 0.433589836588
+        },
+        {
+          "first_rank": 166319,
+          "height": 41,
+          "log2_first_rank_over_height": 0.42301447472
+        },
+        {
+          "first_rank": 166319,
+          "height": 42,
+          "log2_first_rank_over_height": 0.412942701512
+        },
+        {
+          "first_rank": 166319,
+          "height": 43,
+          "log2_first_rank_over_height": 0.403339382872
+        }
+      ],
+      "max_carry": 43,
+      "prime_record_event_count": 9,
+      "record_event_count_after_start": 22,
+      "source_rank": 6,
+      "support_density": 0.499995,
+      "support_word_sha256": "e14a7180f0b80016c9c460394d4fe694959b1cbe81af94d88bca1970ba24b912",
+      "target": "238/1979",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 69,
+          "height": 3,
+          "log2_first_rank_over_height": 2.036174818926
+        },
+        {
+          "first_rank": 139,
+          "height": 4,
+          "log2_first_rank_over_height": 1.779735268181
+        },
+        {
+          "first_rank": 279,
+          "height": 5,
+          "log2_first_rank_over_height": 1.624824262366
+        },
+        {
+          "first_rank": 359,
+          "height": 6,
+          "log2_first_rank_over_height": 1.414640005637
+        },
+        {
+          "first_rank": 559,
+          "height": 7,
+          "log2_first_rank_over_height": 1.303814924692
+        },
+        {
+          "first_rank": 719,
+          "height": 8,
+          "log2_first_rank_over_height": 1.186230995055
+        },
+        {
+          "first_rank": 1119,
+          "height": 9,
+          "log2_first_rank_over_height": 1.125332702331
+        },
+        {
+          "first_rank": 1679,
+          "height": 10,
+          "log2_first_rank_over_height": 1.071338651494
+        },
+        {
+          "first_rank": 2519,
+          "height": 11,
+          "log2_first_rank_over_height": 1.027148673339
+        },
+        {
+          "first_rank": 2519,
+          "height": 12,
+          "log2_first_rank_over_height": 0.941552950561
+        },
+        {
+          "first_rank": 2519,
+          "height": 13,
+          "log2_first_rank_over_height": 0.869125800518
+        },
+        {
+          "first_rank": 5039,
+          "height": 14,
+          "log2_first_rank_over_height": 0.878494410069
+        },
+        {
+          "first_rank": 5039,
+          "height": 15,
+          "log2_first_rank_over_height": 0.819928116065
+        },
+        {
+          "first_rank": 5039,
+          "height": 16,
+          "log2_first_rank_over_height": 0.768682608811
+        },
+        {
+          "first_rank": 10079,
+          "height": 17,
+          "log2_first_rank_over_height": 0.782297934516
+        },
+        {
+          "first_rank": 10079,
+          "height": 18,
+          "log2_first_rank_over_height": 0.738836938154
+        },
+        {
+          "first_rank": 10079,
+          "height": 19,
+          "log2_first_rank_over_height": 0.699950783515
+        },
+        {
+          "first_rank": 15119,
+          "height": 20,
+          "log2_first_rank_over_height": 0.694203754981
+        },
+        {
+          "first_rank": 20159,
+          "height": 21,
+          "log2_first_rank_over_height": 0.680911259731
+        },
+        {
+          "first_rank": 20159,
+          "height": 22,
+          "log2_first_rank_over_height": 0.649960747925
+        },
+        {
+          "first_rank": 27719,
+          "height": 23,
+          "log2_first_rank_over_height": 0.64167772134
+        },
+        {
+          "first_rank": 27719,
+          "height": 24,
+          "log2_first_rank_over_height": 0.614941149617
+        },
+        {
+          "first_rank": 27719,
+          "height": 25,
+          "log2_first_rank_over_height": 0.590343503632
+        },
+        {
+          "first_rank": 42839,
+          "height": 26,
+          "log2_first_rank_over_height": 0.591793737803
+        },
+        {
+          "first_rank": 42839,
+          "height": 27,
+          "log2_first_rank_over_height": 0.569875451218
+        },
+        {
+          "first_rank": 55439,
+          "height": 28,
+          "log2_first_rank_over_height": 0.562807629077
+        },
+        {
+          "first_rank": 55439,
+          "height": 29,
+          "log2_first_rank_over_height": 0.543400469454
+        },
+        {
+          "first_rank": 60479,
+          "height": 30,
+          "log2_first_rank_over_height": 0.529471555494
+        },
+        {
+          "first_rank": 83159,
+          "height": 31,
+          "log2_first_rank_over_height": 0.527212412555
+        },
+        {
+          "first_rank": 83159,
+          "height": 32,
+          "log2_first_rank_over_height": 0.510737024663
+        },
+        {
+          "first_rank": 85679,
+          "height": 33,
+          "log2_first_rank_over_height": 0.496565273375
+        },
+        {
+          "first_rank": 110879,
+          "height": 34,
+          "log2_first_rank_over_height": 0.492900783107
+        },
+        {
+          "first_rank": 128519,
+          "height": 35,
+          "log2_first_rank_over_height": 0.484903489568
+        },
+        {
+          "first_rank": 138599,
+          "height": 36,
+          "log2_first_rank_over_height": 0.474459925634
+        },
+        {
+          "first_rank": 138599,
+          "height": 37,
+          "log2_first_rank_over_height": 0.461636684401
+        },
+        {
+          "first_rank": 166319,
+          "height": 38,
+          "log2_first_rank_over_height": 0.456410354303
+        }
+      ],
+      "max_carry": 38,
+      "prime_record_event_count": 11,
+      "record_event_count_after_start": 23,
+      "source_rank": 7,
+      "support_density": 0.50148,
+      "support_word_sha256": "a86409b7b894348fbe1ef99c38d53ce5c7b77e29716952b41ae7697e85414382",
+      "target": "40/1067",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 119,
+          "height": 5,
+          "log2_first_rank_over_height": 1.378963552662
+        },
+        {
+          "first_rank": 167,
+          "height": 6,
+          "log2_first_rank_over_height": 1.230617382079
+        },
+        {
+          "first_rank": 359,
+          "height": 7,
+          "log2_first_rank_over_height": 1.21254857626
+        },
+        {
+          "first_rank": 419,
+          "height": 8,
+          "log2_first_rank_over_height": 1.088850804212
+        },
+        {
+          "first_rank": 599,
+          "height": 9,
+          "log2_first_rank_over_height": 1.02515691031
+        },
+        {
+          "first_rank": 1259,
+          "height": 10,
+          "log2_first_rank_over_height": 1.029806256772
+        },
+        {
+          "first_rank": 1259,
+          "height": 11,
+          "log2_first_rank_over_height": 0.936187506156
+        },
+        {
+          "first_rank": 2519,
+          "height": 12,
+          "log2_first_rank_over_height": 0.941552950561
+        },
+        {
+          "first_rank": 2519,
+          "height": 13,
+          "log2_first_rank_over_height": 0.869125800518
+        },
+        {
+          "first_rank": 3359,
+          "height": 14,
+          "log2_first_rank_over_height": 0.836701148588
+        },
+        {
+          "first_rank": 4199,
+          "height": 15,
+          "log2_first_rank_over_height": 0.802388671522
+        },
+        {
+          "first_rank": 5039,
+          "height": 16,
+          "log2_first_rank_over_height": 0.768682608811
+        },
+        {
+          "first_rank": 7559,
+          "height": 17,
+          "log2_first_rank_over_height": 0.757881157283
+        },
+        {
+          "first_rank": 7559,
+          "height": 18,
+          "log2_first_rank_over_height": 0.715776648545
+        },
+        {
+          "first_rank": 10079,
+          "height": 19,
+          "log2_first_rank_over_height": 0.699950783515
+        },
+        {
+          "first_rank": 10079,
+          "height": 20,
+          "log2_first_rank_over_height": 0.664953244339
+        },
+        {
+          "first_rank": 15119,
+          "height": 21,
+          "log2_first_rank_over_height": 0.661146433315
+        },
+        {
+          "first_rank": 20159,
+          "height": 22,
+          "log2_first_rank_over_height": 0.649960747925
+        },
+        {
+          "first_rank": 22679,
+          "height": 23,
+          "log2_first_rank_over_height": 0.629089974241
+        },
+        {
+          "first_rank": 30239,
+          "height": 24,
+          "log2_first_rank_over_height": 0.620171783756
+        },
+        {
+          "first_rank": 30239,
+          "height": 25,
+          "log2_first_rank_over_height": 0.595364912406
+        },
+        {
+          "first_rank": 30239,
+          "height": 26,
+          "log2_first_rank_over_height": 0.572466261929
+        },
+        {
+          "first_rank": 50399,
+          "height": 27,
+          "log2_first_rank_over_height": 0.578559536596
+        },
+        {
+          "first_rank": 60479,
+          "height": 28,
+          "log2_first_rank_over_height": 0.567290952315
+        },
+        {
+          "first_rank": 60479,
+          "height": 29,
+          "log2_first_rank_over_height": 0.547729195339
+        },
+        {
+          "first_rank": 60479,
+          "height": 30,
+          "log2_first_rank_over_height": 0.529471555494
+        },
+        {
+          "first_rank": 65519,
+          "height": 31,
+          "log2_first_rank_over_height": 0.51611695862
+        },
+        {
+          "first_rank": 83159,
+          "height": 32,
+          "log2_first_rank_over_height": 0.510737024663
+        },
+        {
+          "first_rank": 98279,
+          "height": 33,
+          "log2_first_rank_over_height": 0.50256350175
+        },
+        {
+          "first_rank": 131039,
+          "height": 34,
+          "log2_first_rank_over_height": 0.499989315497
+        },
+        {
+          "first_rank": 131039,
+          "height": 35,
+          "log2_first_rank_over_height": 0.485703906483
+        },
+        {
+          "first_rank": 131039,
+          "height": 36,
+          "log2_first_rank_over_height": 0.472212131303
+        },
+        {
+          "first_rank": 131039,
+          "height": 37,
+          "log2_first_rank_over_height": 0.459449641268
+        },
+        {
+          "first_rank": 131039,
+          "height": 38,
+          "log2_first_rank_over_height": 0.447358861234
+        },
+        {
+          "first_rank": 131039,
+          "height": 39,
+          "log2_first_rank_over_height": 0.435888121203
+        },
+        {
+          "first_rank": 196559,
+          "height": 40,
+          "log2_first_rank_over_height": 0.439615072438
+        },
+        {
+          "first_rank": 196559,
+          "height": 41,
+          "log2_first_rank_over_height": 0.428892753598
+        },
+        {
+          "first_rank": 196559,
+          "height": 42,
+          "log2_first_rank_over_height": 0.418681021369
+        }
+      ],
+      "max_carry": 42,
+      "prime_record_event_count": 11,
+      "record_event_count_after_start": 23,
+      "source_rank": 8,
+      "support_density": 0.49997,
+      "support_word_sha256": "237674e0c8b5775f6018d199ab826c86450f8011e04c059df7bf39fbb66ebe39",
+      "target": "280/1611",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 79,
+          "height": 4,
+          "log2_first_rank_over_height": 1.575945187044
+        },
+        {
+          "first_rank": 119,
+          "height": 5,
+          "log2_first_rank_over_height": 1.378963552662
+        },
+        {
+          "first_rank": 239,
+          "height": 6,
+          "log2_first_rank_over_height": 1.316811134663
+        },
+        {
+          "first_rank": 335,
+          "height": 7,
+          "log2_first_rank_over_height": 1.198288183621
+        },
+        {
+          "first_rank": 479,
+          "height": 8,
+          "log2_first_rank_over_height": 1.112985230717
+        },
+        {
+          "first_rank": 719,
+          "height": 9,
+          "log2_first_rank_over_height": 1.05442755116
+        },
+        {
+          "first_rank": 839,
+          "height": 10,
+          "log2_first_rank_over_height": 0.971252700044
+        },
+        {
+          "first_rank": 1679,
+          "height": 11,
+          "log2_first_rank_over_height": 0.973944228631
+        },
+        {
+          "first_rank": 1679,
+          "height": 12,
+          "log2_first_rank_over_height": 0.892782209578
+        },
+        {
+          "first_rank": 1679,
+          "height": 13,
+          "log2_first_rank_over_height": 0.824106654995
+        },
+        {
+          "first_rank": 3359,
+          "height": 14,
+          "log2_first_rank_over_height": 0.836701148588
+        },
+        {
+          "first_rank": 3779,
+          "height": 15,
+          "log2_first_rank_over_height": 0.792252586884
+        },
+        {
+          "first_rank": 5039,
+          "height": 16,
+          "log2_first_rank_over_height": 0.768682608811
+        },
+        {
+          "first_rank": 5039,
+          "height": 17,
+          "log2_first_rank_over_height": 0.723465984763
+        },
+        {
+          "first_rank": 7559,
+          "height": 18,
+          "log2_first_rank_over_height": 0.715776648545
+        },
+        {
+          "first_rank": 7559,
+          "height": 19,
+          "log2_first_rank_over_height": 0.678104193358
+        },
+        {
+          "first_rank": 7559,
+          "height": 20,
+          "log2_first_rank_over_height": 0.64419898369
+        },
+        {
+          "first_rank": 15119,
+          "height": 21,
+          "log2_first_rank_over_height": 0.661146433315
+        },
+        {
+          "first_rank": 15119,
+          "height": 22,
+          "log2_first_rank_over_height": 0.63109432271
+        },
+        {
+          "first_rank": 15119,
+          "height": 23,
+          "log2_first_rank_over_height": 0.603655439114
+        },
+        {
+          "first_rank": 15119,
+          "height": 24,
+          "log2_first_rank_over_height": 0.578503129151
+        },
+        {
+          "first_rank": 30239,
+          "height": 25,
+          "log2_first_rank_over_height": 0.595364912406
+        },
+        {
+          "first_rank": 30239,
+          "height": 26,
+          "log2_first_rank_over_height": 0.572466261929
+        },
+        {
+          "first_rank": 30239,
+          "height": 27,
+          "log2_first_rank_over_height": 0.551263807783
+        },
+        {
+          "first_rank": 41579,
+          "height": 28,
+          "log2_first_rank_over_height": 0.547984551446
+        },
+        {
+          "first_rank": 45359,
+          "height": 29,
+          "log2_first_rank_over_height": 0.533417283243
+        },
+        {
+          "first_rank": 52919,
+          "height": 30,
+          "log2_first_rank_over_height": 0.523049939303
+        },
+        {
+          "first_rank": 52919,
+          "height": 31,
+          "log2_first_rank_over_height": 0.506177360616
+        },
+        {
+          "first_rank": 52919,
+          "height": 32,
+          "log2_first_rank_over_height": 0.490359318097
+        },
+        {
+          "first_rank": 70559,
+          "height": 33,
+          "log2_first_rank_over_height": 0.488077045271
+        },
+        {
+          "first_rank": 90719,
+          "height": 34,
+          "log2_first_rank_over_height": 0.484385797559
+        },
+        {
+          "first_rank": 98279,
+          "height": 35,
+          "log2_first_rank_over_height": 0.473845587364
+        },
+        {
+          "first_rank": 105839,
+          "height": 36,
+          "log2_first_rank_over_height": 0.463653105839
+        },
+        {
+          "first_rank": 105839,
+          "height": 37,
+          "log2_first_rank_over_height": 0.451121940816
+        },
+        {
+          "first_rank": 131039,
+          "height": 38,
+          "log2_first_rank_over_height": 0.447358861234
+        },
+        {
+          "first_rank": 166319,
+          "height": 39,
+          "log2_first_rank_over_height": 0.444707524705
+        },
+        {
+          "first_rank": 166319,
+          "height": 40,
+          "log2_first_rank_over_height": 0.433589836588
+        },
+        {
+          "first_rank": 166319,
+          "height": 41,
+          "log2_first_rank_over_height": 0.42301447472
+        },
+        {
+          "first_rank": 166319,
+          "height": 42,
+          "log2_first_rank_over_height": 0.412942701512
+        },
+        {
+          "first_rank": 196559,
+          "height": 43,
+          "log2_first_rank_over_height": 0.408944253431
+        }
+      ],
+      "max_carry": 43,
+      "prime_record_event_count": 12,
+      "record_event_count_after_start": 24,
+      "source_rank": 9,
+      "support_density": 0.49842,
+      "support_word_sha256": "19ab8cddec3283118f0ea623faa8b2f3938a38178c5cfb9a9c59e787e37e02ab",
+      "target": "891/1844",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 143,
+          "height": 5,
+          "log2_first_rank_over_height": 1.431974267356
+        },
+        {
+          "first_rank": 335,
+          "height": 6,
+          "log2_first_rank_over_height": 1.398002880891
+        },
+        {
+          "first_rank": 359,
+          "height": 7,
+          "log2_first_rank_over_height": 1.21254857626
+        },
+        {
+          "first_rank": 719,
+          "height": 8,
+          "log2_first_rank_over_height": 1.186230995055
+        },
+        {
+          "first_rank": 1007,
+          "height": 9,
+          "log2_first_rank_over_height": 1.108427552001
+        },
+        {
+          "first_rank": 1079,
+          "height": 10,
+          "log2_first_rank_over_height": 1.007547914949
+        },
+        {
+          "first_rank": 1679,
+          "height": 11,
+          "log2_first_rank_over_height": 0.973944228631
+        },
+        {
+          "first_rank": 2159,
+          "height": 12,
+          "log2_first_rank_over_height": 0.923012294002
+        },
+        {
+          "first_rank": 2159,
+          "height": 13,
+          "log2_first_rank_over_height": 0.852011348309
+        },
+        {
+          "first_rank": 2519,
+          "height": 14,
+          "log2_first_rank_over_height": 0.807045386195
+        },
+        {
+          "first_rank": 5039,
+          "height": 15,
+          "log2_first_rank_over_height": 0.819928116065
+        },
+        {
+          "first_rank": 5039,
+          "height": 16,
+          "log2_first_rank_over_height": 0.768682608811
+        },
+        {
+          "first_rank": 5039,
+          "height": 17,
+          "log2_first_rank_over_height": 0.723465984763
+        },
+        {
+          "first_rank": 7559,
+          "height": 18,
+          "log2_first_rank_over_height": 0.715776648545
+        },
+        {
+          "first_rank": 7559,
+          "height": 19,
+          "log2_first_rank_over_height": 0.678104193358
+        },
+        {
+          "first_rank": 13859,
+          "height": 20,
+          "log2_first_rank_over_height": 0.687926777136
+        },
+        {
+          "first_rank": 15119,
+          "height": 21,
+          "log2_first_rank_over_height": 0.661146433315
+        },
+        {
+          "first_rank": 15119,
+          "height": 22,
+          "log2_first_rank_over_height": 0.63109432271
+        },
+        {
+          "first_rank": 15119,
+          "height": 23,
+          "log2_first_rank_over_height": 0.603655439114
+        },
+        {
+          "first_rank": 25199,
+          "height": 24,
+          "log2_first_rank_over_height": 0.609211619264
+        },
+        {
+          "first_rank": 27719,
+          "height": 25,
+          "log2_first_rank_over_height": 0.590343503632
+        },
+        {
+          "first_rank": 27719,
+          "height": 26,
+          "log2_first_rank_over_height": 0.567637984262
+        },
+        {
+          "first_rank": 41579,
+          "height": 27,
+          "log2_first_rank_over_height": 0.568280275573
+        },
+        {
+          "first_rank": 45359,
+          "height": 28,
+          "log2_first_rank_over_height": 0.552467900501
+        },
+        {
+          "first_rank": 52919,
+          "height": 29,
+          "log2_first_rank_over_height": 0.541086144107
+        },
+        {
+          "first_rank": 55439,
+          "height": 30,
+          "log2_first_rank_over_height": 0.525287120472
+        },
+        {
+          "first_rank": 55439,
+          "height": 31,
+          "log2_first_rank_over_height": 0.50834237465
+        },
+        {
+          "first_rank": 75599,
+          "height": 32,
+          "log2_first_rank_over_height": 0.506439985331
+        },
+        {
+          "first_rank": 75599,
+          "height": 33,
+          "log2_first_rank_over_height": 0.491093319109
+        },
+        {
+          "first_rank": 83159,
+          "height": 34,
+          "log2_first_rank_over_height": 0.480693670271
+        },
+        {
+          "first_rank": 83159,
+          "height": 35,
+          "log2_first_rank_over_height": 0.466959565406
+        },
+        {
+          "first_rank": 105839,
+          "height": 36,
+          "log2_first_rank_over_height": 0.463653105839
+        },
+        {
+          "first_rank": 138599,
+          "height": 37,
+          "log2_first_rank_over_height": 0.461636684401
+        },
+        {
+          "first_rank": 138599,
+          "height": 38,
+          "log2_first_rank_over_height": 0.449488350601
+        },
+        {
+          "first_rank": 166319,
+          "height": 39,
+          "log2_first_rank_over_height": 0.444707524705
+        },
+        {
+          "first_rank": 166319,
+          "height": 40,
+          "log2_first_rank_over_height": 0.433589836588
+        },
+        {
+          "first_rank": 166319,
+          "height": 41,
+          "log2_first_rank_over_height": 0.42301447472
+        },
+        {
+          "first_rank": 166319,
+          "height": 42,
+          "log2_first_rank_over_height": 0.412942701512
+        },
+        {
+          "first_rank": 166319,
+          "height": 43,
+          "log2_first_rank_over_height": 0.403339382872
+        }
+      ],
+      "max_carry": 43,
+      "prime_record_event_count": 10,
+      "record_event_count_after_start": 24,
+      "source_rank": 10,
+      "support_density": 0.49996,
+      "support_word_sha256": "068c3e6c7f7cbef379634c06b25e08f34ecafc000388bd0b03462da7fde7f0b9",
+      "target": "330/1703",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 119,
+          "height": 6,
+          "log2_first_rank_over_height": 1.149136293885
+        },
+        {
+          "first_rank": 239,
+          "height": 7,
+          "log2_first_rank_over_height": 1.128695258283
+        },
+        {
+          "first_rank": 239,
+          "height": 8,
+          "log2_first_rank_over_height": 0.987608350998
+        },
+        {
+          "first_rank": 359,
+          "height": 9,
+          "log2_first_rank_over_height": 0.943093337091
+        },
+        {
+          "first_rank": 479,
+          "height": 10,
+          "log2_first_rank_over_height": 0.890388184574
+        },
+        {
+          "first_rank": 719,
+          "height": 11,
+          "log2_first_rank_over_height": 0.862713450949
+        },
+        {
+          "first_rank": 1439,
+          "height": 12,
+          "log2_first_rank_over_height": 0.874237573062
+        },
+        {
+          "first_rank": 1439,
+          "height": 13,
+          "log2_first_rank_over_height": 0.80698852898
+        },
+        {
+          "first_rank": 2519,
+          "height": 14,
+          "log2_first_rank_over_height": 0.807045386195
+        },
+        {
+          "first_rank": 2519,
+          "height": 15,
+          "log2_first_rank_over_height": 0.753242360449
+        },
+        {
+          "first_rank": 3959,
+          "height": 16,
+          "log2_first_rank_over_height": 0.746932522002
+        },
+        {
+          "first_rank": 3959,
+          "height": 17,
+          "log2_first_rank_over_height": 0.702995314825
+        },
+        {
+          "first_rank": 5039,
+          "height": 18,
+          "log2_first_rank_over_height": 0.683273430054
+        },
+        {
+          "first_rank": 6719,
+          "height": 19,
+          "log2_first_rank_over_height": 0.669159516575
+        },
+        {
+          "first_rank": 7919,
+          "height": 20,
+          "log2_first_rank_over_height": 0.64755512725
+        },
+        {
+          "first_rank": 10079,
+          "height": 21,
+          "log2_first_rank_over_height": 0.633288804132
+        },
+        {
+          "first_rank": 10079,
+          "height": 22,
+          "log2_first_rank_over_height": 0.604502949399
+        },
+        {
+          "first_rank": 15119,
+          "height": 23,
+          "log2_first_rank_over_height": 0.603655439114
+        },
+        {
+          "first_rank": 18719,
+          "height": 24,
+          "log2_first_rank_over_height": 0.591342322724
+        },
+        {
+          "first_rank": 20159,
+          "height": 25,
+          "log2_first_rank_over_height": 0.571965458174
+        },
+        {
+          "first_rank": 20159,
+          "height": 26,
+          "log2_first_rank_over_height": 0.549966786706
+        },
+        {
+          "first_rank": 25199,
+          "height": 27,
+          "log2_first_rank_over_height": 0.541521439346
+        },
+        {
+          "first_rank": 27719,
+          "height": 28,
+          "log2_first_rank_over_height": 0.527092413958
+        },
+        {
+          "first_rank": 27719,
+          "height": 29,
+          "log2_first_rank_over_height": 0.508916813476
+        },
+        {
+          "first_rank": 47879,
+          "height": 30,
+          "log2_first_rank_over_height": 0.518236846668
+        },
+        {
+          "first_rank": 50399,
+          "height": 31,
+          "log2_first_rank_over_height": 0.503906693164
+        },
+        {
+          "first_rank": 50399,
+          "height": 32,
+          "log2_first_rank_over_height": 0.488159609003
+        },
+        {
+          "first_rank": 55439,
+          "height": 33,
+          "log2_first_rank_over_height": 0.477533745883
+        },
+        {
+          "first_rank": 55439,
+          "height": 34,
+          "log2_first_rank_over_height": 0.46348863571
+        },
+        {
+          "first_rank": 55439,
+          "height": 35,
+          "log2_first_rank_over_height": 0.450246103261
+        },
+        {
+          "first_rank": 83159,
+          "height": 36,
+          "log2_first_rank_over_height": 0.453988466367
+        },
+        {
+          "first_rank": 83159,
+          "height": 37,
+          "log2_first_rank_over_height": 0.441718507817
+        },
+        {
+          "first_rank": 100799,
+          "height": 38,
+          "log2_first_rank_over_height": 0.437397942125
+        },
+        {
+          "first_rank": 110879,
+          "height": 39,
+          "log2_first_rank_over_height": 0.429708375017
+        },
+        {
+          "first_rank": 110879,
+          "height": 40,
+          "log2_first_rank_over_height": 0.418965665641
+        },
+        {
+          "first_rank": 110879,
+          "height": 41,
+          "log2_first_rank_over_height": 0.408746990869
+        },
+        {
+          "first_rank": 151199,
+          "height": 42,
+          "log2_first_rank_over_height": 0.409668787436
+        },
+        {
+          "first_rank": 166319,
+          "height": 43,
+          "log2_first_rank_over_height": 0.403339382872
+        },
+        {
+          "first_rank": 166319,
+          "height": 44,
+          "log2_first_rank_over_height": 0.394172578716
+        },
+        {
+          "first_rank": 191519,
+          "height": 45,
+          "log2_first_rank_over_height": 0.389936177754
+        },
+        {
+          "first_rank": 191519,
+          "height": 46,
+          "log2_first_rank_over_height": 0.381459304325
+        }
+      ],
+      "max_carry": 46,
+      "prime_record_event_count": 15,
+      "record_event_count_after_start": 26,
+      "source_rank": 11,
+      "support_density": 0.49883,
+      "support_word_sha256": "4cdb6f7c3c649f3ec92a3242e447bde2de67f4a084352e5c403c5266501fa351",
+      "target": "970/1853",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 89,
+          "height": 5,
+          "log2_first_rank_over_height": 1.295146686193
+        },
+        {
+          "first_rank": 119,
+          "height": 6,
+          "log2_first_rank_over_height": 1.149136293885
+        },
+        {
+          "first_rank": 239,
+          "height": 7,
+          "log2_first_rank_over_height": 1.128695258283
+        },
+        {
+          "first_rank": 239,
+          "height": 8,
+          "log2_first_rank_over_height": 0.987608350998
+        },
+        {
+          "first_rank": 479,
+          "height": 9,
+          "log2_first_rank_over_height": 0.989320205082
+        },
+        {
+          "first_rank": 899,
+          "height": 10,
+          "log2_first_rank_over_height": 0.981217730551
+        },
+        {
+          "first_rank": 1319,
+          "height": 11,
+          "log2_first_rank_over_height": 0.94229353175
+        },
+        {
+          "first_rank": 2519,
+          "height": 12,
+          "log2_first_rank_over_height": 0.941552950561
+        },
+        {
+          "first_rank": 2639,
+          "height": 13,
+          "log2_first_rank_over_height": 0.874290433487
+        },
+        {
+          "first_rank": 2639,
+          "height": 14,
+          "log2_first_rank_over_height": 0.811841116809
+        },
+        {
+          "first_rank": 4619,
+          "height": 15,
+          "log2_first_rank_over_height": 0.81155765539
+        },
+        {
+          "first_rank": 5279,
+          "height": 16,
+          "log2_first_rank_over_height": 0.772878059417
+        },
+        {
+          "first_rank": 7919,
+          "height": 17,
+          "log2_first_rank_over_height": 0.761829561471
+        },
+        {
+          "first_rank": 9239,
+          "height": 18,
+          "log2_first_rank_over_height": 0.731862277335
+        },
+        {
+          "first_rank": 9239,
+          "height": 19,
+          "log2_first_rank_over_height": 0.693343210107
+        },
+        {
+          "first_rank": 13199,
+          "height": 20,
+          "log2_first_rank_over_height": 0.684407050496
+        },
+        {
+          "first_rank": 13859,
+          "height": 21,
+          "log2_first_rank_over_height": 0.655168359177
+        },
+        {
+          "first_rank": 18479,
+          "height": 22,
+          "log2_first_rank_over_height": 0.644254503013
+        },
+        {
+          "first_rank": 18479,
+          "height": 23,
+          "log2_first_rank_over_height": 0.616243437664
+        },
+        {
+          "first_rank": 27719,
+          "height": 24,
+          "log2_first_rank_over_height": 0.614941149617
+        },
+        {
+          "first_rank": 27719,
+          "height": 25,
+          "log2_first_rank_over_height": 0.590343503632
+        },
+        {
+          "first_rank": 27719,
+          "height": 26,
+          "log2_first_rank_over_height": 0.567637984262
+        },
+        {
+          "first_rank": 36959,
+          "height": 27,
+          "log2_first_rank_over_height": 0.561986596364
+        },
+        {
+          "first_rank": 46199,
+          "height": 28,
+          "log2_first_rank_over_height": 0.553413357275
+        },
+        {
+          "first_rank": 46199,
+          "height": 29,
+          "log2_first_rank_over_height": 0.534330138058
+        },
+        {
+          "first_rank": 55439,
+          "height": 30,
+          "log2_first_rank_over_height": 0.525287120472
+        },
+        {
+          "first_rank": 55439,
+          "height": 31,
+          "log2_first_rank_over_height": 0.50834237465
+        },
+        {
+          "first_rank": 69299,
+          "height": 32,
+          "log2_first_rank_over_height": 0.502517091052
+        },
+        {
+          "first_rank": 92399,
+          "height": 33,
+          "log2_first_rank_over_height": 0.499866352046
+        },
+        {
+          "first_rank": 92399,
+          "height": 34,
+          "log2_first_rank_over_height": 0.485164400515
+        },
+        {
+          "first_rank": 110879,
+          "height": 35,
+          "log2_first_rank_over_height": 0.47881790359
+        },
+        {
+          "first_rank": 120119,
+          "height": 36,
+          "log2_first_rank_over_height": 0.468725134554
+        },
+        {
+          "first_rank": 120119,
+          "height": 37,
+          "log2_first_rank_over_height": 0.456056887674
+        },
+        {
+          "first_rank": 138599,
+          "height": 38,
+          "log2_first_rank_over_height": 0.449488350601
+        },
+        {
+          "first_rank": 138599,
+          "height": 39,
+          "log2_first_rank_over_height": 0.437963008277
+        },
+        {
+          "first_rank": 138599,
+          "height": 40,
+          "log2_first_rank_over_height": 0.42701393307
+        },
+        {
+          "first_rank": 138599,
+          "height": 41,
+          "log2_first_rank_over_height": 0.416598959093
+        }
+      ],
+      "max_carry": 41,
+      "prime_record_event_count": 13,
+      "record_event_count_after_start": 24,
+      "source_rank": 12,
+      "support_density": 0.50047,
+      "support_word_sha256": "f73228b1d4925d3c49ccb9a8be0d1f1d881a3d906e468a4a02ece9be475e5675",
+      "target": "677/1133",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 131,
+          "height": 4,
+          "log2_first_rank_over_height": 1.758355750384
+        },
+        {
+          "first_rank": 179,
+          "height": 5,
+          "log2_first_rank_over_height": 1.496763155453
+        },
+        {
+          "first_rank": 419,
+          "height": 6,
+          "log2_first_rank_over_height": 1.451801072283
+        },
+        {
+          "first_rank": 539,
+          "height": 7,
+          "log2_first_rank_over_height": 1.29630592325
+        },
+        {
+          "first_rank": 779,
+          "height": 8,
+          "log2_first_rank_over_height": 1.200684939758
+        },
+        {
+          "first_rank": 1259,
+          "height": 9,
+          "log2_first_rank_over_height": 1.144229174191
+        },
+        {
+          "first_rank": 1679,
+          "height": 10,
+          "log2_first_rank_over_height": 1.071338651494
+        },
+        {
+          "first_rank": 2339,
+          "height": 11,
+          "log2_first_rank_over_height": 1.017425104214
+        },
+        {
+          "first_rank": 2519,
+          "height": 12,
+          "log2_first_rank_over_height": 0.941552950561
+        },
+        {
+          "first_rank": 3779,
+          "height": 13,
+          "log2_first_rank_over_height": 0.914137600251
+        },
+        {
+          "first_rank": 3779,
+          "height": 14,
+          "log2_first_rank_over_height": 0.848842057376
+        },
+        {
+          "first_rank": 5039,
+          "height": 15,
+          "log2_first_rank_over_height": 0.819928116065
+        },
+        {
+          "first_rank": 7559,
+          "height": 16,
+          "log2_first_rank_over_height": 0.805248729613
+        },
+        {
+          "first_rank": 7559,
+          "height": 17,
+          "log2_first_rank_over_height": 0.757881157283
+        },
+        {
+          "first_rank": 14039,
+          "height": 18,
+          "log2_first_rank_over_height": 0.765397364193
+        },
+        {
+          "first_rank": 14039,
+          "height": 19,
+          "log2_first_rank_over_height": 0.725113292393
+        },
+        {
+          "first_rank": 15119,
+          "height": 20,
+          "log2_first_rank_over_height": 0.694203754981
+        },
+        {
+          "first_rank": 15119,
+          "height": 21,
+          "log2_first_rank_over_height": 0.661146433315
+        },
+        {
+          "first_rank": 25199,
+          "height": 22,
+          "log2_first_rank_over_height": 0.664594493743
+        },
+        {
+          "first_rank": 27719,
+          "height": 23,
+          "log2_first_rank_over_height": 0.64167772134
+        },
+        {
+          "first_rank": 30239,
+          "height": 24,
+          "log2_first_rank_over_height": 0.620171783756
+        },
+        {
+          "first_rank": 37799,
+          "height": 25,
+          "log2_first_rank_over_height": 0.608242417878
+        },
+        {
+          "first_rank": 45359,
+          "height": 26,
+          "log2_first_rank_over_height": 0.594965431309
+        },
+        {
+          "first_rank": 49139,
+          "height": 27,
+          "log2_first_rank_over_height": 0.577206699188
+        },
+        {
+          "first_rank": 55439,
+          "height": 28,
+          "log2_first_rank_over_height": 0.562807629077
+        },
+        {
+          "first_rank": 55439,
+          "height": 29,
+          "log2_first_rank_over_height": 0.543400469454
+        },
+        {
+          "first_rank": 75599,
+          "height": 30,
+          "log2_first_rank_over_height": 0.54020265102
+        },
+        {
+          "first_rank": 75599,
+          "height": 31,
+          "log2_first_rank_over_height": 0.522776759052
+        },
+        {
+          "first_rank": 75599,
+          "height": 32,
+          "log2_first_rank_over_height": 0.506439985331
+        },
+        {
+          "first_rank": 98279,
+          "height": 33,
+          "log2_first_rank_over_height": 0.50256350175
+        },
+        {
+          "first_rank": 98279,
+          "height": 34,
+          "log2_first_rank_over_height": 0.487782222286
+        },
+        {
+          "first_rank": 138599,
+          "height": 35,
+          "log2_first_rank_over_height": 0.488015923509
+        },
+        {
+          "first_rank": 138599,
+          "height": 36,
+          "log2_first_rank_over_height": 0.474459925634
+        },
+        {
+          "first_rank": 138599,
+          "height": 37,
+          "log2_first_rank_over_height": 0.461636684401
+        },
+        {
+          "first_rank": 138599,
+          "height": 38,
+          "log2_first_rank_over_height": 0.449488350601
+        },
+        {
+          "first_rank": 166319,
+          "height": 39,
+          "log2_first_rank_over_height": 0.444707524705
+        },
+        {
+          "first_rank": 166319,
+          "height": 40,
+          "log2_first_rank_over_height": 0.433589836588
+        },
+        {
+          "first_rank": 196559,
+          "height": 41,
+          "log2_first_rank_over_height": 0.428892753598
+        },
+        {
+          "first_rank": 196559,
+          "height": 42,
+          "log2_first_rank_over_height": 0.418681021369
+        }
+      ],
+      "max_carry": 42,
+      "prime_record_event_count": 13,
+      "record_event_count_after_start": 26,
+      "source_rank": 13,
+      "support_density": 0.497825,
+      "support_word_sha256": "a67cbc3e1dbd87332f85b9c727eb5ac10c588b2d68cc30341ed8efb5cc598178",
+      "target": "171/1589",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 107,
+          "height": 4,
+          "log2_first_rank_over_height": 1.6853667466
+        },
+        {
+          "first_rank": 179,
+          "height": 5,
+          "log2_first_rank_over_height": 1.496763155453
+        },
+        {
+          "first_rank": 395,
+          "height": 6,
+          "log2_first_rank_over_height": 1.437618140511
+        },
+        {
+          "first_rank": 629,
+          "height": 7,
+          "log2_first_rank_over_height": 1.328130886697
+        },
+        {
+          "first_rank": 1079,
+          "height": 8,
+          "log2_first_rank_over_height": 1.259434893686
+        },
+        {
+          "first_rank": 1187,
+          "height": 9,
+          "log2_first_rank_over_height": 1.134789357738
+        },
+        {
+          "first_rank": 1259,
+          "height": 10,
+          "log2_first_rank_over_height": 1.029806256772
+        },
+        {
+          "first_rank": 2519,
+          "height": 11,
+          "log2_first_rank_over_height": 1.027148673339
+        },
+        {
+          "first_rank": 2771,
+          "height": 12,
+          "log2_first_rank_over_height": 0.95301591629
+        },
+        {
+          "first_rank": 3779,
+          "height": 13,
+          "log2_first_rank_over_height": 0.914137600251
+        },
+        {
+          "first_rank": 3779,
+          "height": 14,
+          "log2_first_rank_over_height": 0.848842057376
+        },
+        {
+          "first_rank": 6929,
+          "height": 15,
+          "log2_first_rank_over_height": 0.85056209606
+        },
+        {
+          "first_rank": 7559,
+          "height": 16,
+          "log2_first_rank_over_height": 0.805248729613
+        },
+        {
+          "first_rank": 9359,
+          "height": 17,
+          "log2_first_rank_over_height": 0.776008157185
+        },
+        {
+          "first_rank": 10079,
+          "height": 18,
+          "log2_first_rank_over_height": 0.738836938154
+        },
+        {
+          "first_rank": 10079,
+          "height": 19,
+          "log2_first_rank_over_height": 0.699950783515
+        },
+        {
+          "first_rank": 13859,
+          "height": 20,
+          "log2_first_rank_over_height": 0.687926777136
+        },
+        {
+          "first_rank": 18719,
+          "height": 21,
+          "log2_first_rank_over_height": 0.675819797399
+        },
+        {
+          "first_rank": 20159,
+          "height": 22,
+          "log2_first_rank_over_height": 0.649960747925
+        },
+        {
+          "first_rank": 27719,
+          "height": 23,
+          "log2_first_rank_over_height": 0.64167772134
+        },
+        {
+          "first_rank": 27719,
+          "height": 24,
+          "log2_first_rank_over_height": 0.614941149617
+        },
+        {
+          "first_rank": 30239,
+          "height": 25,
+          "log2_first_rank_over_height": 0.595364912406
+        },
+        {
+          "first_rank": 30239,
+          "height": 26,
+          "log2_first_rank_over_height": 0.572466261929
+        },
+        {
+          "first_rank": 55439,
+          "height": 27,
+          "log2_first_rank_over_height": 0.58365235608
+        },
+        {
+          "first_rank": 55439,
+          "height": 28,
+          "log2_first_rank_over_height": 0.562807629077
+        },
+        {
+          "first_rank": 55439,
+          "height": 29,
+          "log2_first_rank_over_height": 0.543400469454
+        },
+        {
+          "first_rank": 60479,
+          "height": 30,
+          "log2_first_rank_over_height": 0.529471555494
+        },
+        {
+          "first_rank": 65519,
+          "height": 31,
+          "log2_first_rank_over_height": 0.51611695862
+        },
+        {
+          "first_rank": 83159,
+          "height": 32,
+          "log2_first_rank_over_height": 0.510737024663
+        },
+        {
+          "first_rank": 98279,
+          "height": 33,
+          "log2_first_rank_over_height": 0.50256350175
+        },
+        {
+          "first_rank": 110879,
+          "height": 34,
+          "log2_first_rank_over_height": 0.492900783107
+        },
+        {
+          "first_rank": 110879,
+          "height": 35,
+          "log2_first_rank_over_height": 0.47881790359
+        },
+        {
+          "first_rank": 110879,
+          "height": 36,
+          "log2_first_rank_over_height": 0.465517406268
+        },
+        {
+          "first_rank": 131039,
+          "height": 37,
+          "log2_first_rank_over_height": 0.459449641268
+        },
+        {
+          "first_rank": 131039,
+          "height": 38,
+          "log2_first_rank_over_height": 0.447358861234
+        },
+        {
+          "first_rank": 131039,
+          "height": 39,
+          "log2_first_rank_over_height": 0.435888121203
+        },
+        {
+          "first_rank": 166319,
+          "height": 40,
+          "log2_first_rank_over_height": 0.433589836588
+        },
+        {
+          "first_rank": 196559,
+          "height": 41,
+          "log2_first_rank_over_height": 0.428892753598
+        },
+        {
+          "first_rank": 196559,
+          "height": 42,
+          "log2_first_rank_over_height": 0.418681021369
+        }
+      ],
+      "max_carry": 42,
+      "prime_record_event_count": 13,
+      "record_event_count_after_start": 28,
+      "source_rank": 14,
+      "support_density": 0.49868,
+      "support_word_sha256": "15f9459365f634b38d9a0a7050156b2f78d62e25a7ca962f7ebdcb5006d2b8a6",
+      "target": "428/1957",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 83,
+          "height": 3,
+          "log2_first_rank_over_height": 2.125013143782
+        },
+        {
+          "first_rank": 167,
+          "height": 4,
+          "log2_first_rank_over_height": 1.845926073119
+        },
+        {
+          "first_rank": 359,
+          "height": 5,
+          "log2_first_rank_over_height": 1.697568006765
+        },
+        {
+          "first_rank": 479,
+          "height": 6,
+          "log2_first_rank_over_height": 1.483980307623
+        },
+        {
+          "first_rank": 719,
+          "height": 7,
+          "log2_first_rank_over_height": 1.355692565777
+        },
+        {
+          "first_rank": 1439,
+          "height": 8,
+          "log2_first_rank_over_height": 1.311356359593
+        },
+        {
+          "first_rank": 1439,
+          "height": 9,
+          "log2_first_rank_over_height": 1.165650097416
+        },
+        {
+          "first_rank": 1439,
+          "height": 10,
+          "log2_first_rank_over_height": 1.049085087674
+        },
+        {
+          "first_rank": 2519,
+          "height": 11,
+          "log2_first_rank_over_height": 1.027148673339
+        },
+        {
+          "first_rank": 2879,
+          "height": 12,
+          "log2_first_rank_over_height": 0.957612672797
+        },
+        {
+          "first_rank": 5039,
+          "height": 13,
+          "log2_first_rank_over_height": 0.946070903152
+        },
+        {
+          "first_rank": 5039,
+          "height": 14,
+          "log2_first_rank_over_height": 0.878494410069
+        },
+        {
+          "first_rank": 8639,
+          "height": 15,
+          "log2_first_rank_over_height": 0.87177657392
+        },
+        {
+          "first_rank": 10079,
+          "height": 16,
+          "log2_first_rank_over_height": 0.831191555424
+        },
+        {
+          "first_rank": 10079,
+          "height": 17,
+          "log2_first_rank_over_height": 0.782297934516
+        },
+        {
+          "first_rank": 14399,
+          "height": 18,
+          "log2_first_rank_over_height": 0.767426722255
+        },
+        {
+          "first_rank": 20159,
+          "height": 19,
+          "log2_first_rank_over_height": 0.752586129177
+        },
+        {
+          "first_rank": 20159,
+          "height": 20,
+          "log2_first_rank_over_height": 0.714956822718
+        },
+        {
+          "first_rank": 20159,
+          "height": 21,
+          "log2_first_rank_over_height": 0.680911259731
+        },
+        {
+          "first_rank": 20159,
+          "height": 22,
+          "log2_first_rank_over_height": 0.649960747925
+        },
+        {
+          "first_rank": 32759,
+          "height": 23,
+          "log2_first_rank_over_height": 0.652156682502
+        },
+        {
+          "first_rank": 45359,
+          "height": 24,
+          "log2_first_rank_over_height": 0.644545883918
+        },
+        {
+          "first_rank": 50399,
+          "height": 25,
+          "log2_first_rank_over_height": 0.624844299524
+        },
+        {
+          "first_rank": 50399,
+          "height": 26,
+          "log2_first_rank_over_height": 0.600811826465
+        },
+        {
+          "first_rank": 50399,
+          "height": 27,
+          "log2_first_rank_over_height": 0.578559536596
+        },
+        {
+          "first_rank": 60479,
+          "height": 28,
+          "log2_first_rank_over_height": 0.567290952315
+        },
+        {
+          "first_rank": 90719,
+          "height": 29,
+          "log2_first_rank_over_height": 0.567900590242
+        },
+        {
+          "first_rank": 100799,
+          "height": 30,
+          "log2_first_rank_over_height": 0.554037393358
+        },
+        {
+          "first_rank": 100799,
+          "height": 31,
+          "log2_first_rank_over_height": 0.536165219379
+        },
+        {
+          "first_rank": 100799,
+          "height": 32,
+          "log2_first_rank_over_height": 0.519410056274
+        },
+        {
+          "first_rank": 131039,
+          "height": 33,
+          "log2_first_rank_over_height": 0.515140506876
+        },
+        {
+          "first_rank": 138599,
+          "height": 34,
+          "log2_first_rank_over_height": 0.502369333024
+        },
+        {
+          "first_rank": 138599,
+          "height": 35,
+          "log2_first_rank_over_height": 0.488015923509
+        },
+        {
+          "first_rank": 163799,
+          "height": 36,
+          "log2_first_rank_over_height": 0.481154639548
+        },
+        {
+          "first_rank": 181439,
+          "height": 37,
+          "log2_first_rank_over_height": 0.472138515363
+        }
+      ],
+      "max_carry": 37,
+      "prime_record_event_count": 12,
+      "record_event_count_after_start": 23,
+      "source_rank": 15,
+      "support_density": 0.50204,
+      "support_word_sha256": "7240c9f0871358bb75ecfa63dce492e4bbdea3f4dc2b5611759175d687174e1c",
+      "target": "9/953",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 95,
+          "height": 4,
+          "log2_first_rank_over_height": 1.642463902083
+        },
+        {
+          "first_rank": 209,
+          "height": 5,
+          "log2_first_rank_over_height": 1.541471826416
+        },
+        {
+          "first_rank": 383,
+          "height": 6,
+          "log2_first_rank_over_height": 1.430200096987
+        },
+        {
+          "first_rank": 419,
+          "height": 7,
+          "log2_first_rank_over_height": 1.2444009191
+        },
+        {
+          "first_rank": 839,
+          "height": 8,
+          "log2_first_rank_over_height": 1.214065875055
+        },
+        {
+          "first_rank": 839,
+          "height": 9,
+          "log2_first_rank_over_height": 1.079169666716
+        },
+        {
+          "first_rank": 1679,
+          "height": 10,
+          "log2_first_rank_over_height": 1.071338651494
+        },
+        {
+          "first_rank": 2519,
+          "height": 11,
+          "log2_first_rank_over_height": 1.027148673339
+        },
+        {
+          "first_rank": 2519,
+          "height": 12,
+          "log2_first_rank_over_height": 0.941552950561
+        },
+        {
+          "first_rank": 3359,
+          "height": 13,
+          "log2_first_rank_over_height": 0.901062775403
+        },
+        {
+          "first_rank": 4199,
+          "height": 14,
+          "log2_first_rank_over_height": 0.85970214806
+        },
+        {
+          "first_rank": 6719,
+          "height": 15,
+          "log2_first_rank_over_height": 0.847602054329
+        },
+        {
+          "first_rank": 6719,
+          "height": 16,
+          "log2_first_rank_over_height": 0.794626925933
+        },
+        {
+          "first_rank": 6719,
+          "height": 17,
+          "log2_first_rank_over_height": 0.747884165584
+        },
+        {
+          "first_rank": 10079,
+          "height": 18,
+          "log2_first_rank_over_height": 0.738836938154
+        },
+        {
+          "first_rank": 10079,
+          "height": 19,
+          "log2_first_rank_over_height": 0.699950783515
+        },
+        {
+          "first_rank": 20159,
+          "height": 20,
+          "log2_first_rank_over_height": 0.714956822718
+        },
+        {
+          "first_rank": 20159,
+          "height": 21,
+          "log2_first_rank_over_height": 0.680911259731
+        },
+        {
+          "first_rank": 20159,
+          "height": 22,
+          "log2_first_rank_over_height": 0.649960747925
+        },
+        {
+          "first_rank": 20159,
+          "height": 23,
+          "log2_first_rank_over_height": 0.621701584972
+        },
+        {
+          "first_rank": 27719,
+          "height": 24,
+          "log2_first_rank_over_height": 0.614941149617
+        },
+        {
+          "first_rank": 37799,
+          "height": 25,
+          "log2_first_rank_over_height": 0.608242417878
+        },
+        {
+          "first_rank": 40319,
+          "height": 26,
+          "log2_first_rank_over_height": 0.588429701416
+        },
+        {
+          "first_rank": 50399,
+          "height": 27,
+          "log2_first_rank_over_height": 0.578559536596
+        },
+        {
+          "first_rank": 50399,
+          "height": 28,
+          "log2_first_rank_over_height": 0.557896696003
+        },
+        {
+          "first_rank": 50399,
+          "height": 29,
+          "log2_first_rank_over_height": 0.5386588789
+        },
+        {
+          "first_rank": 75599,
+          "height": 30,
+          "log2_first_rank_over_height": 0.54020265102
+        },
+        {
+          "first_rank": 83159,
+          "height": 31,
+          "log2_first_rank_over_height": 0.527212412555
+        },
+        {
+          "first_rank": 83159,
+          "height": 32,
+          "log2_first_rank_over_height": 0.510737024663
+        },
+        {
+          "first_rank": 100799,
+          "height": 33,
+          "log2_first_rank_over_height": 0.503670357599
+        },
+        {
+          "first_rank": 100799,
+          "height": 34,
+          "log2_first_rank_over_height": 0.488856523552
+        },
+        {
+          "first_rank": 110879,
+          "height": 35,
+          "log2_first_rank_over_height": 0.47881790359
+        },
+        {
+          "first_rank": 110879,
+          "height": 36,
+          "log2_first_rank_over_height": 0.465517406268
+        },
+        {
+          "first_rank": 131039,
+          "height": 37,
+          "log2_first_rank_over_height": 0.459449641268
+        },
+        {
+          "first_rank": 131039,
+          "height": 38,
+          "log2_first_rank_over_height": 0.447358861234
+        },
+        {
+          "first_rank": 138599,
+          "height": 39,
+          "log2_first_rank_over_height": 0.437963008277
+        }
+      ],
+      "max_carry": 39,
+      "prime_record_event_count": 10,
+      "record_event_count_after_start": 22,
+      "source_rank": 16,
+      "support_density": 0.49977,
+      "support_word_sha256": "ca499e92c7d846951a03e371c8759ab25ba171470e2dbc81f02022d216e5c91c",
+      "target": "149/594",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 125,
+          "height": 5,
+          "log2_first_rank_over_height": 1.393156856932
+        },
+        {
+          "first_rank": 167,
+          "height": 6,
+          "log2_first_rank_over_height": 1.230617382079
+        },
+        {
+          "first_rank": 251,
+          "height": 7,
+          "log2_first_rank_over_height": 1.138791936279
+        },
+        {
+          "first_rank": 251,
+          "height": 8,
+          "log2_first_rank_over_height": 0.996442944244
+        },
+        {
+          "first_rank": 503,
+          "height": 9,
+          "log2_first_rank_over_height": 0.997157176645
+        },
+        {
+          "first_rank": 839,
+          "height": 10,
+          "log2_first_rank_over_height": 0.971252700044
+        },
+        {
+          "first_rank": 1007,
+          "height": 11,
+          "log2_first_rank_over_height": 0.906895269819
+        },
+        {
+          "first_rank": 1259,
+          "height": 12,
+          "log2_first_rank_over_height": 0.858171880643
+        },
+        {
+          "first_rank": 1259,
+          "height": 13,
+          "log2_first_rank_over_height": 0.792158659055
+        },
+        {
+          "first_rank": 2519,
+          "height": 14,
+          "log2_first_rank_over_height": 0.807045386195
+        },
+        {
+          "first_rank": 2519,
+          "height": 15,
+          "log2_first_rank_over_height": 0.753242360449
+        },
+        {
+          "first_rank": 2519,
+          "height": 16,
+          "log2_first_rank_over_height": 0.706164712921
+        },
+        {
+          "first_rank": 2519,
+          "height": 17,
+          "log2_first_rank_over_height": 0.664625612161
+        },
+        {
+          "first_rank": 5039,
+          "height": 18,
+          "log2_first_rank_over_height": 0.683273430054
+        },
+        {
+          "first_rank": 5039,
+          "height": 19,
+          "log2_first_rank_over_height": 0.647311670577
+        },
+        {
+          "first_rank": 5039,
+          "height": 20,
+          "log2_first_rank_over_height": 0.614946087048
+        },
+        {
+          "first_rank": 9239,
+          "height": 21,
+          "log2_first_rank_over_height": 0.62731052343
+        },
+        {
+          "first_rank": 10079,
+          "height": 22,
+          "log2_first_rank_over_height": 0.604502949399
+        },
+        {
+          "first_rank": 10079,
+          "height": 23,
+          "log2_first_rank_over_height": 0.578220212469
+        },
+        {
+          "first_rank": 13859,
+          "height": 24,
+          "log2_first_rank_over_height": 0.57327231428
+        },
+        {
+          "first_rank": 13859,
+          "height": 25,
+          "log2_first_rank_over_height": 0.550341421709
+        },
+        {
+          "first_rank": 13859,
+          "height": 26,
+          "log2_first_rank_over_height": 0.529174443951
+        },
+        {
+          "first_rank": 25199,
+          "height": 27,
+          "log2_first_rank_over_height": 0.541521439346
+        },
+        {
+          "first_rank": 25199,
+          "height": 28,
+          "log2_first_rank_over_height": 0.522181387941
+        },
+        {
+          "first_rank": 27719,
+          "height": 29,
+          "log2_first_rank_over_height": 0.508916813476
+        },
+        {
+          "first_rank": 27719,
+          "height": 30,
+          "log2_first_rank_over_height": 0.491952919694
+        },
+        {
+          "first_rank": 27719,
+          "height": 31,
+          "log2_first_rank_over_height": 0.476083470671
+        },
+        {
+          "first_rank": 27719,
+          "height": 32,
+          "log2_first_rank_over_height": 0.461205862213
+        },
+        {
+          "first_rank": 46199,
+          "height": 33,
+          "log2_first_rank_over_height": 0.469562848597
+        },
+        {
+          "first_rank": 55439,
+          "height": 34,
+          "log2_first_rank_over_height": 0.46348863571
+        },
+        {
+          "first_rank": 55439,
+          "height": 35,
+          "log2_first_rank_over_height": 0.450246103261
+        },
+        {
+          "first_rank": 55439,
+          "height": 36,
+          "log2_first_rank_over_height": 0.43773926706
+        },
+        {
+          "first_rank": 55439,
+          "height": 37,
+          "log2_first_rank_over_height": 0.425908476058
+        },
+        {
+          "first_rank": 55439,
+          "height": 38,
+          "log2_first_rank_over_height": 0.414700358267
+        },
+        {
+          "first_rank": 55439,
+          "height": 39,
+          "log2_first_rank_over_height": 0.404067015747
+        },
+        {
+          "first_rank": 83159,
+          "height": 40,
+          "log2_first_rank_over_height": 0.40858961973
+        },
+        {
+          "first_rank": 110879,
+          "height": 41,
+          "log2_first_rank_over_height": 0.408746990869
+        },
+        {
+          "first_rank": 110879,
+          "height": 42,
+          "log2_first_rank_over_height": 0.399014919658
+        },
+        {
+          "first_rank": 110879,
+          "height": 43,
+          "log2_first_rank_over_height": 0.389735502922
+        },
+        {
+          "first_rank": 110879,
+          "height": 44,
+          "log2_first_rank_over_height": 0.380877877856
+        },
+        {
+          "first_rank": 110879,
+          "height": 45,
+          "log2_first_rank_over_height": 0.372413925014
+        },
+        {
+          "first_rank": 138599,
+          "height": 46,
+          "log2_first_rank_over_height": 0.37131646354
+        },
+        {
+          "first_rank": 138599,
+          "height": 47,
+          "log2_first_rank_over_height": 0.363416113251
+        },
+        {
+          "first_rank": 138599,
+          "height": 48,
+          "log2_first_rank_over_height": 0.355844944225
+        },
+        {
+          "first_rank": 166319,
+          "height": 49,
+          "log2_first_rank_over_height": 0.35395088701
+        }
+      ],
+      "max_carry": 49,
+      "prime_record_event_count": 14,
+      "record_event_count_after_start": 20,
+      "source_rank": 49,
+      "support_density": 0.502055,
+      "support_word_sha256": "c72749860d4ee0b5c7d9adb6c990f17fdabe79ca5d6004c92cf3264c012c02a2",
+      "target": "740/1529",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 79,
+          "height": 4,
+          "log2_first_rank_over_height": 1.575945187044
+        },
+        {
+          "first_rank": 143,
+          "height": 5,
+          "log2_first_rank_over_height": 1.431974267356
+        },
+        {
+          "first_rank": 383,
+          "height": 6,
+          "log2_first_rank_over_height": 1.430200096987
+        },
+        {
+          "first_rank": 527,
+          "height": 7,
+          "log2_first_rank_over_height": 1.291665593091
+        },
+        {
+          "first_rank": 959,
+          "height": 8,
+          "log2_first_rank_over_height": 1.238173375627
+        },
+        {
+          "first_rank": 1583,
+          "height": 9,
+          "log2_first_rank_over_height": 1.180938393349
+        },
+        {
+          "first_rank": 1979,
+          "height": 10,
+          "log2_first_rank_over_height": 1.095055589705
+        },
+        {
+          "first_rank": 3023,
+          "height": 11,
+          "log2_first_rank_over_height": 1.051069569421
+        },
+        {
+          "first_rank": 3023,
+          "height": 12,
+          "log2_first_rank_over_height": 0.963480438636
+        },
+        {
+          "first_rank": 3779,
+          "height": 13,
+          "log2_first_rank_over_height": 0.914137600251
+        },
+        {
+          "first_rank": 5039,
+          "height": 14,
+          "log2_first_rank_over_height": 0.878494410069
+        },
+        {
+          "first_rank": 6719,
+          "height": 15,
+          "log2_first_rank_over_height": 0.847602054329
+        },
+        {
+          "first_rank": 10079,
+          "height": 16,
+          "log2_first_rank_over_height": 0.831191555424
+        },
+        {
+          "first_rank": 13199,
+          "height": 17,
+          "log2_first_rank_over_height": 0.805184765289
+        },
+        {
+          "first_rank": 13859,
+          "height": 18,
+          "log2_first_rank_over_height": 0.764363085707
+        },
+        {
+          "first_rank": 15839,
+          "height": 19,
+          "log2_first_rank_over_height": 0.734273349098
+        },
+        {
+          "first_rank": 20159,
+          "height": 20,
+          "log2_first_rank_over_height": 0.714956822718
+        },
+        {
+          "first_rank": 27719,
+          "height": 21,
+          "log2_first_rank_over_height": 0.702789885277
+        },
+        {
+          "first_rank": 27719,
+          "height": 22,
+          "log2_first_rank_over_height": 0.670844890491
+        },
+        {
+          "first_rank": 27719,
+          "height": 23,
+          "log2_first_rank_over_height": 0.64167772134
+        },
+        {
+          "first_rank": 36959,
+          "height": 24,
+          "log2_first_rank_over_height": 0.632234920909
+        },
+        {
+          "first_rank": 50399,
+          "height": 25,
+          "log2_first_rank_over_height": 0.624844299524
+        },
+        {
+          "first_rank": 55439,
+          "height": 26,
+          "log2_first_rank_over_height": 0.606100523621
+        },
+        {
+          "first_rank": 55439,
+          "height": 27,
+          "log2_first_rank_over_height": 0.58365235608
+        },
+        {
+          "first_rank": 55439,
+          "height": 28,
+          "log2_first_rank_over_height": 0.562807629077
+        },
+        {
+          "first_rank": 55439,
+          "height": 29,
+          "log2_first_rank_over_height": 0.543400469454
+        },
+        {
+          "first_rank": 73919,
+          "height": 30,
+          "log2_first_rank_over_height": 0.53912192064
+        },
+        {
+          "first_rank": 73919,
+          "height": 31,
+          "log2_first_rank_over_height": 0.521730890942
+        },
+        {
+          "first_rank": 110879,
+          "height": 32,
+          "log2_first_rank_over_height": 0.523707082051
+        },
+        {
+          "first_rank": 110879,
+          "height": 33,
+          "log2_first_rank_over_height": 0.507837170474
+        },
+        {
+          "first_rank": 110879,
+          "height": 34,
+          "log2_first_rank_over_height": 0.492900783107
+        },
+        {
+          "first_rank": 110879,
+          "height": 35,
+          "log2_first_rank_over_height": 0.47881790359
+        },
+        {
+          "first_rank": 110879,
+          "height": 36,
+          "log2_first_rank_over_height": 0.465517406268
+        },
+        {
+          "first_rank": 166319,
+          "height": 37,
+          "log2_first_rank_over_height": 0.468745769284
+        },
+        {
+          "first_rank": 166319,
+          "height": 38,
+          "log2_first_rank_over_height": 0.456410354303
+        },
+        {
+          "first_rank": 166319,
+          "height": 39,
+          "log2_first_rank_over_height": 0.444707524705
+        }
+      ],
+      "max_carry": 39,
+      "prime_record_event_count": 13,
+      "record_event_count_after_start": 23,
+      "source_rank": 71,
+      "support_density": 0.50121,
+      "support_word_sha256": "215d7782d78583a6c39c9e9a15ed0e6f63d1a03c747c289b80e76a1e6bf0162c",
+      "target": "223/1957",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 119,
+          "height": 7,
+          "log2_first_rank_over_height": 0.984973966187
+        },
+        {
+          "first_rank": 179,
+          "height": 8,
+          "log2_first_rank_over_height": 0.935476972158
+        },
+        {
+          "first_rank": 359,
+          "height": 9,
+          "log2_first_rank_over_height": 0.943093337091
+        },
+        {
+          "first_rank": 419,
+          "height": 10,
+          "log2_first_rank_over_height": 0.87108064337
+        },
+        {
+          "first_rank": 719,
+          "height": 11,
+          "log2_first_rank_over_height": 0.862713450949
+        },
+        {
+          "first_rank": 839,
+          "height": 12,
+          "log2_first_rank_over_height": 0.809377250037
+        },
+        {
+          "first_rank": 1679,
+          "height": 13,
+          "log2_first_rank_over_height": 0.824106654995
+        },
+        {
+          "first_rank": 1679,
+          "height": 14,
+          "log2_first_rank_over_height": 0.765241893924
+        },
+        {
+          "first_rank": 1679,
+          "height": 15,
+          "log2_first_rank_over_height": 0.714225767662
+        },
+        {
+          "first_rank": 2519,
+          "height": 16,
+          "log2_first_rank_over_height": 0.706164712921
+        },
+        {
+          "first_rank": 3359,
+          "height": 17,
+          "log2_first_rank_over_height": 0.68904800472
+        },
+        {
+          "first_rank": 5039,
+          "height": 18,
+          "log2_first_rank_over_height": 0.683273430054
+        },
+        {
+          "first_rank": 5039,
+          "height": 19,
+          "log2_first_rank_over_height": 0.647311670577
+        },
+        {
+          "first_rank": 5039,
+          "height": 20,
+          "log2_first_rank_over_height": 0.614946087048
+        },
+        {
+          "first_rank": 9239,
+          "height": 21,
+          "log2_first_rank_over_height": 0.62731052343
+        },
+        {
+          "first_rank": 10079,
+          "height": 22,
+          "log2_first_rank_over_height": 0.604502949399
+        },
+        {
+          "first_rank": 10079,
+          "height": 23,
+          "log2_first_rank_over_height": 0.578220212469
+        },
+        {
+          "first_rank": 10919,
+          "height": 24,
+          "log2_first_rank_over_height": 0.558939713118
+        },
+        {
+          "first_rank": 16379,
+          "height": 25,
+          "log2_first_rank_over_height": 0.559982386289
+        },
+        {
+          "first_rank": 21839,
+          "height": 26,
+          "log2_first_rank_over_height": 0.554408429878
+        },
+        {
+          "first_rank": 21839,
+          "height": 27,
+          "log2_first_rank_over_height": 0.533874784327
+        },
+        {
+          "first_rank": 21839,
+          "height": 28,
+          "log2_first_rank_over_height": 0.514807827744
+        },
+        {
+          "first_rank": 32759,
+          "height": 29,
+          "log2_first_rank_over_height": 0.517227713708
+        },
+        {
+          "first_rank": 32759,
+          "height": 30,
+          "log2_first_rank_over_height": 0.499986789918
+        },
+        {
+          "first_rank": 32759,
+          "height": 31,
+          "log2_first_rank_over_height": 0.483858183792
+        },
+        {
+          "first_rank": 54599,
+          "height": 32,
+          "log2_first_rank_over_height": 0.491768340858
+        },
+        {
+          "first_rank": 55439,
+          "height": 33,
+          "log2_first_rank_over_height": 0.477533745883
+        },
+        {
+          "first_rank": 55439,
+          "height": 34,
+          "log2_first_rank_over_height": 0.46348863571
+        },
+        {
+          "first_rank": 55439,
+          "height": 35,
+          "log2_first_rank_over_height": 0.450246103261
+        },
+        {
+          "first_rank": 65519,
+          "height": 36,
+          "log2_first_rank_over_height": 0.4444340477
+        },
+        {
+          "first_rank": 65519,
+          "height": 37,
+          "log2_first_rank_over_height": 0.432422316681
+        },
+        {
+          "first_rank": 65519,
+          "height": 38,
+          "log2_first_rank_over_height": 0.421042782032
+        },
+        {
+          "first_rank": 65519,
+          "height": 39,
+          "log2_first_rank_over_height": 0.410246813262
+        },
+        {
+          "first_rank": 98279,
+          "height": 40,
+          "log2_first_rank_over_height": 0.414614888943
+        },
+        {
+          "first_rank": 131039,
+          "height": 41,
+          "log2_first_rank_over_height": 0.414625286022
+        },
+        {
+          "first_rank": 131039,
+          "height": 42,
+          "log2_first_rank_over_height": 0.404753255403
+        },
+        {
+          "first_rank": 131039,
+          "height": 43,
+          "log2_first_rank_over_height": 0.395340388998
+        },
+        {
+          "first_rank": 131039,
+          "height": 44,
+          "log2_first_rank_over_height": 0.386355380157
+        },
+        {
+          "first_rank": 131039,
+          "height": 45,
+          "log2_first_rank_over_height": 0.377769705042
+        },
+        {
+          "first_rank": 131039,
+          "height": 46,
+          "log2_first_rank_over_height": 0.36955732015
+        },
+        {
+          "first_rank": 196559,
+          "height": 47,
+          "log2_first_rank_over_height": 0.374140487181
+        },
+        {
+          "first_rank": 196559,
+          "height": 48,
+          "log2_first_rank_over_height": 0.366345893698
+        }
+      ],
+      "max_carry": 48,
+      "prime_record_event_count": 12,
+      "record_event_count_after_start": 22,
+      "source_rank": 84,
+      "support_density": 0.500715,
+      "support_word_sha256": "c1b5c47129f43c385b3e903ca7a04dd11d2b114a41685958277c6c83aef71160",
+      "target": "363/599",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 103,
+          "height": 4,
+          "log2_first_rank_over_height": 1.671625131796
+        },
+        {
+          "first_rank": 239,
+          "height": 5,
+          "log2_first_rank_over_height": 1.580173361596
+        },
+        {
+          "first_rank": 359,
+          "height": 6,
+          "log2_first_rank_over_height": 1.414640005637
+        },
+        {
+          "first_rank": 719,
+          "height": 7,
+          "log2_first_rank_over_height": 1.355692565777
+        },
+        {
+          "first_rank": 839,
+          "height": 8,
+          "log2_first_rank_over_height": 1.214065875055
+        },
+        {
+          "first_rank": 839,
+          "height": 9,
+          "log2_first_rank_over_height": 1.079169666716
+        },
+        {
+          "first_rank": 1259,
+          "height": 10,
+          "log2_first_rank_over_height": 1.029806256772
+        },
+        {
+          "first_rank": 1679,
+          "height": 11,
+          "log2_first_rank_over_height": 0.973944228631
+        },
+        {
+          "first_rank": 2519,
+          "height": 12,
+          "log2_first_rank_over_height": 0.941552950561
+        },
+        {
+          "first_rank": 2519,
+          "height": 13,
+          "log2_first_rank_over_height": 0.869125800518
+        },
+        {
+          "first_rank": 4619,
+          "height": 14,
+          "log2_first_rank_over_height": 0.869526059346
+        },
+        {
+          "first_rank": 5039,
+          "height": 15,
+          "log2_first_rank_over_height": 0.819928116065
+        },
+        {
+          "first_rank": 7559,
+          "height": 16,
+          "log2_first_rank_over_height": 0.805248729613
+        },
+        {
+          "first_rank": 7559,
+          "height": 17,
+          "log2_first_rank_over_height": 0.757881157283
+        },
+        {
+          "first_rank": 10079,
+          "height": 18,
+          "log2_first_rank_over_height": 0.738836938154
+        },
+        {
+          "first_rank": 15119,
+          "height": 19,
+          "log2_first_rank_over_height": 0.730740794717
+        },
+        {
+          "first_rank": 15119,
+          "height": 20,
+          "log2_first_rank_over_height": 0.694203754981
+        },
+        {
+          "first_rank": 18479,
+          "height": 21,
+          "log2_first_rank_over_height": 0.67493328887
+        },
+        {
+          "first_rank": 18479,
+          "height": 22,
+          "log2_first_rank_over_height": 0.644254503013
+        },
+        {
+          "first_rank": 25199,
+          "height": 23,
+          "log2_first_rank_over_height": 0.635699080971
+        },
+        {
+          "first_rank": 25199,
+          "height": 24,
+          "log2_first_rank_over_height": 0.609211619264
+        },
+        {
+          "first_rank": 27719,
+          "height": 25,
+          "log2_first_rank_over_height": 0.590343503632
+        },
+        {
+          "first_rank": 27719,
+          "height": 26,
+          "log2_first_rank_over_height": 0.567637984262
+        },
+        {
+          "first_rank": 32759,
+          "height": 27,
+          "log2_first_rank_over_height": 0.555540877687
+        },
+        {
+          "first_rank": 52919,
+          "height": 28,
+          "log2_first_rank_over_height": 0.560410649253
+        },
+        {
+          "first_rank": 55439,
+          "height": 29,
+          "log2_first_rank_over_height": 0.543400469454
+        },
+        {
+          "first_rank": 55439,
+          "height": 30,
+          "log2_first_rank_over_height": 0.525287120472
+        },
+        {
+          "first_rank": 55439,
+          "height": 31,
+          "log2_first_rank_over_height": 0.50834237465
+        },
+        {
+          "first_rank": 83159,
+          "height": 32,
+          "log2_first_rank_over_height": 0.510737024663
+        },
+        {
+          "first_rank": 83159,
+          "height": 33,
+          "log2_first_rank_over_height": 0.495260145128
+        },
+        {
+          "first_rank": 83159,
+          "height": 34,
+          "log2_first_rank_over_height": 0.480693670271
+        },
+        {
+          "first_rank": 98279,
+          "height": 35,
+          "log2_first_rank_over_height": 0.473845587364
+        },
+        {
+          "first_rank": 98279,
+          "height": 36,
+          "log2_first_rank_over_height": 0.460683209937
+        },
+        {
+          "first_rank": 131039,
+          "height": 37,
+          "log2_first_rank_over_height": 0.459449641268
+        },
+        {
+          "first_rank": 163799,
+          "height": 38,
+          "log2_first_rank_over_height": 0.455830711151
+        },
+        {
+          "first_rank": 166319,
+          "height": 39,
+          "log2_first_rank_over_height": 0.444707524705
+        },
+        {
+          "first_rank": 166319,
+          "height": 40,
+          "log2_first_rank_over_height": 0.433589836588
+        },
+        {
+          "first_rank": 166319,
+          "height": 41,
+          "log2_first_rank_over_height": 0.42301447472
+        },
+        {
+          "first_rank": 166319,
+          "height": 42,
+          "log2_first_rank_over_height": 0.412942701512
+        }
+      ],
+      "max_carry": 42,
+      "prime_record_event_count": 12,
+      "record_event_count_after_start": 24,
+      "source_rank": 118,
+      "support_density": 0.500515,
+      "support_word_sha256": "f4591108768dce67f75bcd062e1293f56e292d9c504f883ff712be8c4a322f52",
+      "target": "197/1766",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 107,
+          "height": 3,
+          "log2_first_rank_over_height": 2.247155662134
+        },
+        {
+          "first_rank": 179,
+          "height": 4,
+          "log2_first_rank_over_height": 1.870953944316
+        },
+        {
+          "first_rank": 359,
+          "height": 5,
+          "log2_first_rank_over_height": 1.697568006765
+        },
+        {
+          "first_rank": 539,
+          "height": 6,
+          "log2_first_rank_over_height": 1.512356910459
+        },
+        {
+          "first_rank": 719,
+          "height": 7,
+          "log2_first_rank_over_height": 1.355692565777
+        },
+        {
+          "first_rank": 1259,
+          "height": 8,
+          "log2_first_rank_over_height": 1.287257820965
+        },
+        {
+          "first_rank": 1259,
+          "height": 9,
+          "log2_first_rank_over_height": 1.144229174191
+        },
+        {
+          "first_rank": 1889,
+          "height": 10,
+          "log2_first_rank_over_height": 1.088340698639
+        },
+        {
+          "first_rank": 2519,
+          "height": 11,
+          "log2_first_rank_over_height": 1.027148673339
+        },
+        {
+          "first_rank": 2519,
+          "height": 12,
+          "log2_first_rank_over_height": 0.941552950561
+        },
+        {
+          "first_rank": 3779,
+          "height": 13,
+          "log2_first_rank_over_height": 0.914137600251
+        },
+        {
+          "first_rank": 3779,
+          "height": 14,
+          "log2_first_rank_over_height": 0.848842057376
+        },
+        {
+          "first_rank": 5039,
+          "height": 15,
+          "log2_first_rank_over_height": 0.819928116065
+        },
+        {
+          "first_rank": 5039,
+          "height": 16,
+          "log2_first_rank_over_height": 0.768682608811
+        },
+        {
+          "first_rank": 7559,
+          "height": 17,
+          "log2_first_rank_over_height": 0.757881157283
+        },
+        {
+          "first_rank": 7559,
+          "height": 18,
+          "log2_first_rank_over_height": 0.715776648545
+        },
+        {
+          "first_rank": 10079,
+          "height": 19,
+          "log2_first_rank_over_height": 0.699950783515
+        },
+        {
+          "first_rank": 13859,
+          "height": 20,
+          "log2_first_rank_over_height": 0.687926777136
+        },
+        {
+          "first_rank": 15119,
+          "height": 21,
+          "log2_first_rank_over_height": 0.661146433315
+        },
+        {
+          "first_rank": 18899,
+          "height": 22,
+          "log2_first_rank_over_height": 0.645728285405
+        },
+        {
+          "first_rank": 25199,
+          "height": 23,
+          "log2_first_rank_over_height": 0.635699080971
+        },
+        {
+          "first_rank": 25199,
+          "height": 24,
+          "log2_first_rank_over_height": 0.609211619264
+        },
+        {
+          "first_rank": 27719,
+          "height": 25,
+          "log2_first_rank_over_height": 0.590343503632
+        },
+        {
+          "first_rank": 37799,
+          "height": 26,
+          "log2_first_rank_over_height": 0.584848478729
+        },
+        {
+          "first_rank": 37799,
+          "height": 27,
+          "log2_first_rank_over_height": 0.563187423961
+        },
+        {
+          "first_rank": 41579,
+          "height": 28,
+          "log2_first_rank_over_height": 0.547984551446
+        },
+        {
+          "first_rank": 52919,
+          "height": 29,
+          "log2_first_rank_over_height": 0.541086144107
+        },
+        {
+          "first_rank": 55439,
+          "height": 30,
+          "log2_first_rank_over_height": 0.525287120472
+        },
+        {
+          "first_rank": 55439,
+          "height": 31,
+          "log2_first_rank_over_height": 0.50834237465
+        },
+        {
+          "first_rank": 55439,
+          "height": 32,
+          "log2_first_rank_over_height": 0.492456675442
+        },
+        {
+          "first_rank": 75599,
+          "height": 33,
+          "log2_first_rank_over_height": 0.491093319109
+        },
+        {
+          "first_rank": 75599,
+          "height": 34,
+          "log2_first_rank_over_height": 0.476649397959
+        },
+        {
+          "first_rank": 83159,
+          "height": 35,
+          "log2_first_rank_over_height": 0.466959565406
+        },
+        {
+          "first_rank": 110879,
+          "height": 36,
+          "log2_first_rank_over_height": 0.465517406268
+        },
+        {
+          "first_rank": 110879,
+          "height": 37,
+          "log2_first_rank_over_height": 0.452935854747
+        },
+        {
+          "first_rank": 110879,
+          "height": 38,
+          "log2_first_rank_over_height": 0.441016490149
+        },
+        {
+          "first_rank": 166319,
+          "height": 39,
+          "log2_first_rank_over_height": 0.444707524705
+        },
+        {
+          "first_rank": 166319,
+          "height": 40,
+          "log2_first_rank_over_height": 0.433589836588
+        },
+        {
+          "first_rank": 166319,
+          "height": 41,
+          "log2_first_rank_over_height": 0.42301447472
+        },
+        {
+          "first_rank": 166319,
+          "height": 42,
+          "log2_first_rank_over_height": 0.412942701512
+        },
+        {
+          "first_rank": 166319,
+          "height": 43,
+          "log2_first_rank_over_height": 0.403339382872
+        }
+      ],
+      "max_carry": 43,
+      "prime_record_event_count": 18,
+      "record_event_count_after_start": 25,
+      "source_rank": 125,
+      "support_density": 0.50027,
+      "support_word_sha256": "9baab551ff41ccc9fa54f700614a8f22b1c2317a16db9a5c807400ca166cbdaa",
+      "target": "90/1343",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 118,
+          "height": 4,
+          "log2_first_rank_over_height": 1.72066076234
+        },
+        {
+          "first_rank": 119,
+          "height": 5,
+          "log2_first_rank_over_height": 1.378963552662
+        },
+        {
+          "first_rank": 359,
+          "height": 6,
+          "log2_first_rank_over_height": 1.414640005637
+        },
+        {
+          "first_rank": 479,
+          "height": 7,
+          "log2_first_rank_over_height": 1.271983120819
+        },
+        {
+          "first_rank": 959,
+          "height": 8,
+          "log2_first_rank_over_height": 1.238173375627
+        },
+        {
+          "first_rank": 1259,
+          "height": 9,
+          "log2_first_rank_over_height": 1.144229174191
+        },
+        {
+          "first_rank": 1439,
+          "height": 10,
+          "log2_first_rank_over_height": 1.049085087674
+        },
+        {
+          "first_rank": 2399,
+          "height": 11,
+          "log2_first_rank_over_height": 1.020747040208
+        },
+        {
+          "first_rank": 2519,
+          "height": 12,
+          "log2_first_rank_over_height": 0.941552950561
+        },
+        {
+          "first_rank": 2879,
+          "height": 13,
+          "log2_first_rank_over_height": 0.883950159505
+        },
+        {
+          "first_rank": 4919,
+          "height": 14,
+          "log2_first_rank_over_height": 0.876010667123
+        },
+        {
+          "first_rank": 5039,
+          "height": 15,
+          "log2_first_rank_over_height": 0.819928116065
+        },
+        {
+          "first_rank": 10079,
+          "height": 16,
+          "log2_first_rank_over_height": 0.831191555424
+        },
+        {
+          "first_rank": 10079,
+          "height": 17,
+          "log2_first_rank_over_height": 0.782297934516
+        },
+        {
+          "first_rank": 10079,
+          "height": 18,
+          "log2_first_rank_over_height": 0.738836938154
+        },
+        {
+          "first_rank": 17639,
+          "height": 19,
+          "log2_first_rank_over_height": 0.742446376458
+        },
+        {
+          "first_rank": 20159,
+          "height": 20,
+          "log2_first_rank_over_height": 0.714956822718
+        },
+        {
+          "first_rank": 20159,
+          "height": 21,
+          "log2_first_rank_over_height": 0.680911259731
+        },
+        {
+          "first_rank": 20159,
+          "height": 22,
+          "log2_first_rank_over_height": 0.649960747925
+        },
+        {
+          "first_rank": 27719,
+          "height": 23,
+          "log2_first_rank_over_height": 0.64167772134
+        },
+        {
+          "first_rank": 40319,
+          "height": 24,
+          "log2_first_rank_over_height": 0.637465509867
+        },
+        {
+          "first_rank": 40319,
+          "height": 25,
+          "log2_first_rank_over_height": 0.611966889473
+        },
+        {
+          "first_rank": 50399,
+          "height": 26,
+          "log2_first_rank_over_height": 0.600811826465
+        },
+        {
+          "first_rank": 55439,
+          "height": 27,
+          "log2_first_rank_over_height": 0.58365235608
+        },
+        {
+          "first_rank": 70559,
+          "height": 28,
+          "log2_first_rank_over_height": 0.575233660498
+        },
+        {
+          "first_rank": 75599,
+          "height": 29,
+          "log2_first_rank_over_height": 0.558830328641
+        },
+        {
+          "first_rank": 83159,
+          "height": 30,
+          "log2_first_rank_over_height": 0.544786159641
+        },
+        {
+          "first_rank": 100799,
+          "height": 31,
+          "log2_first_rank_over_height": 0.536165219379
+        },
+        {
+          "first_rank": 100799,
+          "height": 32,
+          "log2_first_rank_over_height": 0.519410056274
+        },
+        {
+          "first_rank": 110879,
+          "height": 33,
+          "log2_first_rank_over_height": 0.507837170474
+        },
+        {
+          "first_rank": 151199,
+          "height": 34,
+          "log2_first_rank_over_height": 0.506061443304
+        },
+        {
+          "first_rank": 151199,
+          "height": 35,
+          "log2_first_rank_over_height": 0.491602544924
+        },
+        {
+          "first_rank": 166319,
+          "height": 36,
+          "log2_first_rank_over_height": 0.481766485097
+        },
+        {
+          "first_rank": 166319,
+          "height": 37,
+          "log2_first_rank_over_height": 0.468745769284
+        },
+        {
+          "first_rank": 166319,
+          "height": 38,
+          "log2_first_rank_over_height": 0.456410354303
+        }
+      ],
+      "max_carry": 38,
+      "prime_record_event_count": 13,
+      "record_event_count_after_start": 26,
+      "source_rank": 134,
+      "support_density": 0.49769,
+      "support_word_sha256": "4ddeb036ab4927157f389a6e6b91a83c21bcabea8505da96453c560891162861",
+      "target": "31/1238",
+      "unrecovered_record_event_count": 0
+    },
+    {
+      "first_hit_curve": [
+        {
+          "first_rank": 67,
+          "height": 2,
+          "log2_first_rank_over_height": 3.033044595229
+        },
+        {
+          "first_rank": 139,
+          "height": 3,
+          "log2_first_rank_over_height": 2.372980357575
+        },
+        {
+          "first_rank": 287,
+          "height": 4,
+          "log2_first_rank_over_height": 2.041226731669
+        },
+        {
+          "first_rank": 559,
+          "height": 5,
+          "log2_first_rank_over_height": 1.825340894569
+        },
+        {
+          "first_rank": 935,
+          "height": 6,
+          "log2_first_rank_over_height": 1.644803759129
+        },
+        {
+          "first_rank": 1119,
+          "height": 7,
+          "log2_first_rank_over_height": 1.446856331568
+        },
+        {
+          "first_rank": 2015,
+          "height": 8,
+          "log2_first_rank_over_height": 1.372070515427
+        },
+        {
+          "first_rank": 2239,
+          "height": 9,
+          "log2_first_rank_over_height": 1.23651542365
+        },
+        {
+          "first_rank": 3779,
+          "height": 10,
+          "log2_first_rank_over_height": 1.188378880326
+        },
+        {
+          "first_rank": 4679,
+          "height": 11,
+          "log2_first_rank_over_height": 1.108362228487
+        },
+        {
+          "first_rank": 4679,
+          "height": 12,
+          "log2_first_rank_over_height": 1.015998709447
+        },
+        {
+          "first_rank": 6551,
+          "height": 13,
+          "log2_first_rank_over_height": 0.975192264099
+        },
+        {
+          "first_rank": 9359,
+          "height": 14,
+          "log2_first_rank_over_height": 0.942295619439
+        },
+        {
+          "first_rank": 9359,
+          "height": 15,
+          "log2_first_rank_over_height": 0.879475911477
+        },
+        {
+          "first_rank": 14039,
+          "height": 16,
+          "log2_first_rank_over_height": 0.861072034717
+        },
+        {
+          "first_rank": 14039,
+          "height": 17,
+          "log2_first_rank_over_height": 0.810420738557
+        },
+        {
+          "first_rank": 18719,
+          "height": 18,
+          "log2_first_rank_over_height": 0.788456430298
+        },
+        {
+          "first_rank": 18719,
+          "height": 19,
+          "log2_first_rank_over_height": 0.74695872344
+        },
+        {
+          "first_rank": 18719,
+          "height": 20,
+          "log2_first_rank_over_height": 0.709610787268
+        },
+        {
+          "first_rank": 27719,
+          "height": 21,
+          "log2_first_rank_over_height": 0.702789885277
+        },
+        {
+          "first_rank": 32759,
+          "height": 22,
+          "log2_first_rank_over_height": 0.68180016807
+        },
+        {
+          "first_rank": 32759,
+          "height": 23,
+          "log2_first_rank_over_height": 0.652156682502
+        },
+        {
+          "first_rank": 43679,
+          "height": 24,
+          "log2_first_rank_over_height": 0.642277175279
+        },
+        {
+          "first_rank": 50399,
+          "height": 25,
+          "log2_first_rank_over_height": 0.624844299524
+        },
+        {
+          "first_rank": 50399,
+          "height": 26,
+          "log2_first_rank_over_height": 0.600811826465
+        },
+        {
+          "first_rank": 65519,
+          "height": 27,
+          "log2_first_rank_over_height": 0.592578730267
+        },
+        {
+          "first_rank": 65519,
+          "height": 28,
+          "log2_first_rank_over_height": 0.571415204186
+        },
+        {
+          "first_rank": 83159,
+          "height": 29,
+          "log2_first_rank_over_height": 0.563571889283
+        },
+        {
+          "first_rank": 93599,
+          "height": 30,
+          "log2_first_rank_over_height": 0.550473516529
+        },
+        {
+          "first_rank": 98279,
+          "height": 31,
+          "log2_first_rank_over_height": 0.534986953475
+        },
+        {
+          "first_rank": 98279,
+          "height": 32,
+          "log2_first_rank_over_height": 0.518268611179
+        },
+        {
+          "first_rank": 131039,
+          "height": 33,
+          "log2_first_rank_over_height": 0.515140506876
+        },
+        {
+          "first_rank": 131039,
+          "height": 34,
+          "log2_first_rank_over_height": 0.499989315497
+        },
+        {
+          "first_rank": 131039,
+          "height": 35,
+          "log2_first_rank_over_height": 0.485703906483
+        },
+        {
+          "first_rank": 131039,
+          "height": 36,
+          "log2_first_rank_over_height": 0.472212131303
+        },
+        {
+          "first_rank": 196559,
+          "height": 37,
+          "log2_first_rank_over_height": 0.475259537771
+        },
+        {
+          "first_rank": 196559,
+          "height": 38,
+          "log2_first_rank_over_height": 0.462752707829
+        },
+        {
+          "first_rank": 196559,
+          "height": 39,
+          "log2_first_rank_over_height": 0.450887253782
+        }
+      ],
+      "max_carry": 39,
+      "prime_record_event_count": 8,
+      "record_event_count_after_start": 24,
+      "source_rank": 487,
+      "support_density": 0.50086,
+      "support_word_sha256": "8e7a761dbf44853cf2e882be4a9a85d23c5ac54cb2cdc388c7524a16b370f887",
+      "target": "5/1984",
+      "unrecovered_record_event_count": 0
+    }
+  ],
+  "validation": {
+    "all_greedy_replays_certified_alive": true,
+    "direct_floor_prefix_crosscheck_violation_count_through_rank_512": 0,
+    "integer_carry_recurrence_violation_count": 0,
+    "record_recovery_block_identity_violation_count": 0
+  }
+}

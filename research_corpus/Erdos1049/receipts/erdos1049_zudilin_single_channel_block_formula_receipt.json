@@ -1,0 +1,327 @@
+{
+  "analytic_theorem": {
+    "authority": "authored_mathematical_argument",
+    "lean_formalized": false,
+    "proof_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinSingleChannelBlockFormulaProof.md",
+    "statement": "For d>=1, q>=1, 0<=s<d, the leading inhomogeneous Zudilin source obeys S_(qd+s)=K_d^(q-1)(q!)^3H_q/12^(q-1)S_(d+s), with K_d=12d^3M_d(zeta)^3 nonzero."
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "zudilinScalarPlusBorder_cannot_meet_required_charge"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "falsification_consequence": "Failure would invalidate the claimed source block proof and return the boundary analysis to residue-dependent recurrences.",
+      "survival_consequence": "The all-d block theorem eliminates nonuniform quotient growth and reduces first-appearance cancellation to first-block cross rank."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "zudilin_single_C_channel_has_universal_phi1_block_law",
+      "statement": "The leading C source at n=qd+s is its first-block residue times K_d^(q-1)(q!)^3H_q/12^(q-1), uniformly in d and s."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinSingleChannelBlockFormulaProof.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinChannelDivisibilityProof.md"
+      ],
+      "input_receipt_refs": [
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_phi1_block_collapse_receipt.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_endpoint_recurrence_receipt.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_pole_separation_receipt.json"
+      ],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_single_channel_block_formula.py"
+      ]
+    },
+    "probe": {
+      "computation": "Compute A_d, M_d, and K_d in QQ[p]/(Phi_d), compare K_d against the committed d=1,...,7 source multipliers, and replay normalized factorial-harmonic constants.",
+      "falsifier": "A failed observed multiplier, root-product identity, nonzero claim, or harmonic normalization invalidates a step of the all-d formula.",
+      "id": "root_product_multiplier_and_harmonic_block_formula",
+      "question": "Does the pole-separated C channel yield the exact observed prime and composite multipliers and all Phi_1 harmonic block constants?",
+      "resource_bounds": {
+        "maximum_cyclotomic_index": 10,
+        "maximum_observed_cyclotomic_index": 7,
+        "maximum_quotient_block": 12,
+        "observed_multiplier_comparison_count": 7
+      },
+      "stop_condition": "Stop multiplier sampling after all committed d<=7 source values, including both composite cases, match; the universal result must come from the displayed block-product proof."
+    },
+    "problem": {
+      "claim_ceiling": "Authored all-d, all-block leading source identity with exact prior-receipt comparisons; not cross-block rank, full determinant charge, or irrationality.",
+      "id": "erdos_1049",
+      "target_statement": "Prove irrationality of the Lambert value at p=3/2."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The proof removes every quotient-block and residue-dependent degree of freedom above the first cyclotomic block.",
+        "next_analytic_target": "Prove the all-d nonsingularity of the first-block d-by-d cross matrix, or find its first exact singular cyclotomic index. The block law then turns that decision directly into endpoint support and factor-73 first-appearance noncancellation."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The authored source calculation proves for every d>=1, q>=1, and 0<=s<d that the leading C-channel row satisfies C_(qd+s)=K_d^(q-1) (q!)^3 H_q/12^(q-1) C_(d+s), where K_d=12 d^3 M_d(zeta)^3 and M_d=(p^d-1)/Phi_d at a primitive d-th root. The all-index B=2C theorem transfers the same law to the full inhomogeneous source. Exact multiplier comparisons reproduce d=1,...,7, including composite d=4,6; root-product identities are replayed through d=10 and harmonic constants through quotient 12. This eliminates nonuniform quotient-block growth as a first-appearance boundary mechanism."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "all_observed_multiplier_comparisons_hold": true,
+    "all_phi1_constant_identities_hold": true,
+    "all_predicted_multipliers_nonzero": true,
+    "all_root_product_identities_hold": true,
+    "authority_boundary": "The multiplier and constant computations regress the authored all-d block proof. Universal d,q,s quantifiers come from the root-product and pole-factorization algebra in the proof note.",
+    "constant_records": [
+      {
+        "identity": "c_q=(q!)^3*H_q/12^(q-1)",
+        "identity_holds": true,
+        "normalized_block_constant": "1",
+        "phi1_harmonic_moment": "1",
+        "quotient_block": 1
+      },
+      {
+        "identity": "c_q=(q!)^3*H_q/12^(q-1)",
+        "identity_holds": true,
+        "normalized_block_constant": "1",
+        "phi1_harmonic_moment": "12",
+        "quotient_block": 2
+      },
+      {
+        "identity": "c_q=(q!)^3*H_q/12^(q-1)",
+        "identity_holds": true,
+        "normalized_block_constant": "11/4",
+        "phi1_harmonic_moment": "396",
+        "quotient_block": 3
+      },
+      {
+        "identity": "c_q=(q!)^3*H_q/12^(q-1)",
+        "identity_holds": true,
+        "normalized_block_constant": "50/3",
+        "phi1_harmonic_moment": "28800",
+        "quotient_block": 4
+      },
+      {
+        "identity": "c_q=(q!)^3*H_q/12^(q-1)",
+        "identity_holds": true,
+        "normalized_block_constant": "3425/18",
+        "phi1_harmonic_moment": "3945600",
+        "quotient_block": 5
+      },
+      {
+        "identity": "c_q=(q!)^3*H_q/12^(q-1)",
+        "identity_holds": true,
+        "normalized_block_constant": "3675",
+        "phi1_harmonic_moment": "914457600",
+        "quotient_block": 6
+      },
+      {
+        "identity": "c_q=(q!)^3*H_q/12^(q-1)",
+        "identity_holds": true,
+        "normalized_block_constant": "444675/4",
+        "phi1_harmonic_moment": "331948108800",
+        "quotient_block": 7
+      },
+      {
+        "identity": "c_q=(q!)^3*H_q/12^(q-1)",
+        "identity_holds": true,
+        "normalized_block_constant": "14915600/3",
+        "phi1_harmonic_moment": "178150971801600",
+        "quotient_block": 8
+      },
+      {
+        "identity": "c_q=(q!)^3*H_q/12^(q-1)",
+        "identity_holds": true,
+        "normalized_block_constant": "314388900",
+        "phi1_harmonic_moment": "135181472425574400",
+        "quotient_block": 9
+      },
+      {
+        "identity": "c_q=(q!)^3*H_q/12^(q-1)",
+        "identity_holds": true,
+        "normalized_block_constant": "27125175000",
+        "phi1_harmonic_moment": "139959945009561600000",
+        "quotient_block": 10
+      },
+      {
+        "identity": "c_q=(q!)^3*H_q/12^(q-1)",
+        "identity_holds": true,
+        "normalized_block_constant": "3102015743750",
+        "phi1_harmonic_moment": "192068638634351001600000",
+        "quotient_block": 11
+      },
+      {
+        "identity": "c_q=(q!)^3*H_q/12^(q-1)",
+        "identity_holds": true,
+        "normalized_block_constant": "459016658100000",
+        "phi1_harmonic_moment": "341053219253531757772800000",
+        "quotient_block": 12
+      }
+    ],
+    "input_block_receipt_status": "exact_mechanism_opened",
+    "input_endpoint_receipt_status": "exact_mechanism_opened",
+    "input_pole_theorem_is_all_index": true,
+    "input_pole_theorem_statement": "For every n>=1, p^(n+1)P_n(p)^3 divides the cleared source difference Btilde_n(p)-2*Ctilde_n(p). Consequently B=2C on the leading Phi_d layer for every d<=n.",
+    "multiplier_records": [
+      {
+        "cyclotomic_index": 1,
+        "cyclotomic_polynomial": "p - 1",
+        "multiplier_formula": "K_d=12*d^3*M_d(zeta)^3",
+        "observed_multiplier_K_d": "12",
+        "observed_multiplier_matches": true,
+        "predicted_multiplier_K_d": "12",
+        "predicted_multiplier_nonzero": true,
+        "proper_cyclotomic_factor_M_d": "1",
+        "root_product_A_d": "1",
+        "root_product_equals_minus_one_to_d_minus_one_times_d": true
+      },
+      {
+        "cyclotomic_index": 2,
+        "cyclotomic_polynomial": "p + 1",
+        "multiplier_formula": "K_d=12*d^3*M_d(zeta)^3",
+        "observed_multiplier_K_d": "-768",
+        "observed_multiplier_matches": true,
+        "predicted_multiplier_K_d": "-768",
+        "predicted_multiplier_nonzero": true,
+        "proper_cyclotomic_factor_M_d": "p - 1",
+        "root_product_A_d": "-2",
+        "root_product_equals_minus_one_to_d_minus_one_times_d": true
+      },
+      {
+        "cyclotomic_index": 3,
+        "cyclotomic_polynomial": "p**2 + p + 1",
+        "multiplier_formula": "K_d=12*d^3*M_d(zeta)^3",
+        "observed_multiplier_K_d": "972*(2*p + 1)",
+        "observed_multiplier_matches": true,
+        "predicted_multiplier_K_d": "972*(2*p + 1)",
+        "predicted_multiplier_nonzero": true,
+        "proper_cyclotomic_factor_M_d": "p - 1",
+        "root_product_A_d": "3",
+        "root_product_equals_minus_one_to_d_minus_one_times_d": true
+      },
+      {
+        "cyclotomic_index": 4,
+        "cyclotomic_polynomial": "p**2 + 1",
+        "multiplier_formula": "K_d=12*d^3*M_d(zeta)^3",
+        "observed_multiplier_K_d": "-6144",
+        "observed_multiplier_matches": true,
+        "predicted_multiplier_K_d": "-6144",
+        "predicted_multiplier_nonzero": true,
+        "proper_cyclotomic_factor_M_d": "(p - 1)*(p + 1)",
+        "root_product_A_d": "-4",
+        "root_product_equals_minus_one_to_d_minus_one_times_d": true
+      },
+      {
+        "cyclotomic_index": 5,
+        "cyclotomic_polynomial": "p**4 + p**3 + p**2 + p + 1",
+        "multiplier_formula": "K_d=12*d^3*M_d(zeta)^3",
+        "observed_multiplier_K_d": "1500*(p - 1)**3",
+        "observed_multiplier_matches": true,
+        "predicted_multiplier_K_d": "1500*(p - 1)**3",
+        "predicted_multiplier_nonzero": true,
+        "proper_cyclotomic_factor_M_d": "p - 1",
+        "root_product_A_d": "5",
+        "root_product_equals_minus_one_to_d_minus_one_times_d": true
+      },
+      {
+        "cyclotomic_index": 6,
+        "cyclotomic_polynomial": "p**2 - p + 1",
+        "multiplier_formula": "K_d=12*d^3*M_d(zeta)^3",
+        "observed_multiplier_K_d": "-62208*(2*p - 1)",
+        "observed_multiplier_matches": true,
+        "predicted_multiplier_K_d": "-62208*(2*p - 1)",
+        "predicted_multiplier_nonzero": true,
+        "proper_cyclotomic_factor_M_d": "(p - 1)*(p + 1)*(p**2 + p + 1)",
+        "root_product_A_d": "-6",
+        "root_product_equals_minus_one_to_d_minus_one_times_d": true
+      },
+      {
+        "cyclotomic_index": 7,
+        "cyclotomic_polynomial": "p**6 + p**5 + p**4 + p**3 + p**2 + p + 1",
+        "multiplier_formula": "K_d=12*d^3*M_d(zeta)^3",
+        "observed_multiplier_K_d": "4116*(p - 1)**3",
+        "observed_multiplier_matches": true,
+        "predicted_multiplier_K_d": "4116*(p - 1)**3",
+        "predicted_multiplier_nonzero": true,
+        "proper_cyclotomic_factor_M_d": "p - 1",
+        "root_product_A_d": "7",
+        "root_product_equals_minus_one_to_d_minus_one_times_d": true
+      },
+      {
+        "cyclotomic_index": 8,
+        "cyclotomic_polynomial": "p**4 + 1",
+        "multiplier_formula": "K_d=12*d^3*M_d(zeta)^3",
+        "observed_multiplier_K_d": null,
+        "observed_multiplier_matches": null,
+        "predicted_multiplier_K_d": "-49152",
+        "predicted_multiplier_nonzero": true,
+        "proper_cyclotomic_factor_M_d": "(p - 1)*(p + 1)*(p**2 + 1)",
+        "root_product_A_d": "-8",
+        "root_product_equals_minus_one_to_d_minus_one_times_d": true
+      },
+      {
+        "cyclotomic_index": 9,
+        "cyclotomic_polynomial": "p**6 + p**3 + 1",
+        "multiplier_formula": "K_d=12*d^3*M_d(zeta)^3",
+        "observed_multiplier_K_d": null,
+        "observed_multiplier_matches": null,
+        "predicted_multiplier_K_d": "26244*(2*p**3 + 1)",
+        "predicted_multiplier_nonzero": true,
+        "proper_cyclotomic_factor_M_d": "(p - 1)*(p**2 + p + 1)",
+        "root_product_A_d": "9",
+        "root_product_equals_minus_one_to_d_minus_one_times_d": true
+      },
+      {
+        "cyclotomic_index": 10,
+        "cyclotomic_polynomial": "p**4 - p**3 + p**2 - p + 1",
+        "multiplier_formula": "K_d=12*d^3*M_d(zeta)^3",
+        "observed_multiplier_K_d": null,
+        "observed_multiplier_matches": null,
+        "predicted_multiplier_K_d": "-96000*(p + 1)**3",
+        "predicted_multiplier_nonzero": true,
+        "proper_cyclotomic_factor_M_d": "(p - 1)*(p + 1)*(p**4 + p**3 + p**2 + p + 1)",
+        "root_product_A_d": "-10",
+        "root_product_equals_minus_one_to_d_minus_one_times_d": true
+      }
+    ],
+    "observed_multiplier_comparison_count": 7,
+    "observed_q2_q4_constants_match_formula": true,
+    "schema": "erdos1049-zudilin-single-channel-block-formula-result/1"
+  },
+  "schema": "erdos1049-zudilin-single-channel-block-formula-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 14705,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/scripts/check_zudilin_single_channel_block_formula.py",
+      "sha256": "b29a3220366a9bb214249d8d2ccc1c8352cb7c6755e542134acf2e7b70dad71b"
+    },
+    {
+      "byte_length": 6620,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinSingleChannelBlockFormulaProof.md",
+      "sha256": "2e1b38106c767a2c3faaec627cc745ad58116b0aa5910599053438e79eb16722"
+    },
+    {
+      "byte_length": 7768,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/ZudilinChannelDivisibilityProof.md",
+      "sha256": "58245be6568573e7d1b2546859f9f98a7a0857845e3135146e54467aa3bdf45c"
+    },
+    {
+      "byte_length": 15852,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+      "sha256": "4dce15dfc8a96099e1787b3229bccea000c484a8db5625f7dbe88c604c84ac03"
+    },
+    {
+      "byte_length": 53877,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_phi1_block_collapse_receipt.json",
+      "sha256": "b2ef40e3248274b51b9e70992ba529d9e4ebd69e02911dacf9b40e85d33b7b0e"
+    },
+    {
+      "byte_length": 11214,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_endpoint_recurrence_receipt.json",
+      "sha256": "961702c97c9da76a977bb35d80bd8f99f1b193a626cca0d8eab18ea9cf45eb09"
+    },
+    {
+      "byte_length": 65229,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos1049_zudilin_pole_separation_receipt.json",
+      "sha256": "ef8556af4c728e8f358cfafd48a726ee912bb30712ae07161d8f2c104a7b84d6"
+    }
+  ],
+  "status": "authored_all_d_block_mechanism_eliminated"
+}

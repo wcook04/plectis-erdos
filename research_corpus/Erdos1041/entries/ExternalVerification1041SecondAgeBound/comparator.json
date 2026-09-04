@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1041SecondAgeBound.Challenge",
+  "solution_module": "ExternalVerification1041SecondAgeBound.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041SecondAgeBound.second_age_le_of_tail_lower"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

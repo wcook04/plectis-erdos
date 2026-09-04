@@ -1,0 +1,836 @@
+{
+  "arithmetic": {
+    "crossing_recurrence": "integer exact",
+    "first_pulse_divisor_mismatch": null,
+    "first_quotient_lift_failure": null,
+    "first_skip_capacity_identity_failure": null,
+    "orbit_decisions": "forced integer dyadic enclosure",
+    "quotient_check_max_n": 384,
+    "quotient_cross_checks": 456
+  },
+  "candidate_lemmas": {
+    "closing_endpoint_divisible_by_six": {
+      "first_counterexample": {
+        "closing_pulse": 0,
+        "endpoint": 5,
+        "length": 1,
+        "overshoot": 0,
+        "pre_margin": 0,
+        "rank": 4,
+        "selected_divisors": []
+      },
+      "status": "falsified"
+    },
+    "closing_pulse_is_two": {
+      "first_counterexample": {
+        "closing_pulse": 0,
+        "endpoint": 5,
+        "length": 1,
+        "overshoot": 0,
+        "pre_margin": 0,
+        "rank": 4,
+        "selected_divisors": []
+      },
+      "status": "falsified"
+    },
+    "crossing_by_fourth_future_skip": {
+      "first_counterexample": {
+        "binary_length": 15,
+        "centered_endpoint_carry": 0,
+        "closing_pulse": 33,
+        "endpoint": 24480,
+        "endpoint_branch": "skip",
+        "future_skip_capacity": 31,
+        "future_skip_count": 5,
+        "future_skips": [
+          24476,
+          24477,
+          24478,
+          24479,
+          24480
+        ],
+        "length": 7,
+        "overshoot": 31,
+        "pre_margin": -1,
+        "rank": 24473,
+        "required_pulse": 2,
+        "selected_divisors": [
+          2,
+          3,
+          6,
+          20,
+          32,
+          34,
+          45,
+          48,
+          51,
+          60,
+          96,
+          102,
+          144,
+          153,
+          160,
+          204,
+          240,
+          306,
+          340,
+          360,
+          408,
+          480,
+          544,
+          612,
+          765,
+          816,
+          1632,
+          2040,
+          2720,
+          3060,
+          4896,
+          6120,
+          8160
+        ]
+      },
+      "status": "falsified"
+    },
+    "crossing_by_second_future_skip": {
+      "first_counterexample": {
+        "binary_length": 9,
+        "centered_endpoint_carry": 0,
+        "closing_pulse": 11,
+        "endpoint": 420,
+        "endpoint_branch": "skip",
+        "future_skip_capacity": 7,
+        "future_skip_count": 3,
+        "future_skips": [
+          418,
+          419,
+          420
+        ],
+        "length": 3,
+        "overshoot": 7,
+        "pre_margin": -2,
+        "rank": 417,
+        "required_pulse": 4,
+        "selected_divisors": [
+          2,
+          3,
+          6,
+          7,
+          14,
+          20,
+          21,
+          35,
+          42,
+          60,
+          70
+        ]
+      },
+      "status": "falsified"
+    },
+    "crossing_endpoint_is_an_actual_skip": {
+      "first_counterexample": {
+        "binary_length": 3,
+        "centered_endpoint_carry": 0,
+        "closing_pulse": 2,
+        "endpoint": 6,
+        "endpoint_branch": "take",
+        "future_skip_capacity": 0,
+        "future_skip_count": 0,
+        "future_skips": [],
+        "length": 1,
+        "overshoot": 0,
+        "pre_margin": -1,
+        "rank": 5,
+        "required_pulse": 2,
+        "selected_divisors": [
+          2,
+          3
+        ]
+      },
+      "status": "falsified"
+    },
+    "endpoint_half_is_selected": {
+      "first_counterexample": {
+        "closing_pulse": 0,
+        "endpoint": 5,
+        "length": 1,
+        "overshoot": 0,
+        "pre_margin": 0,
+        "rank": 4,
+        "selected_divisors": []
+      },
+      "status": "falsified"
+    },
+    "pre_margin_is_minus_one": {
+      "first_counterexample": {
+        "closing_pulse": 0,
+        "endpoint": 5,
+        "length": 1,
+        "overshoot": 0,
+        "pre_margin": 0,
+        "rank": 4,
+        "selected_divisors": []
+      },
+      "status": "falsified"
+    },
+    "two_selected_divisors_at_most_twelve_close": {
+      "first_counterexample": {
+        "closing_pulse": 0,
+        "endpoint": 5,
+        "length": 1,
+        "overshoot": 0,
+        "pre_margin": 0,
+        "rank": 4,
+        "selected_divisors": []
+      },
+      "status": "falsified"
+    },
+    "unconditional_first_crossing_arithmetic": {
+      "claim": "if the last pre-crossing margin is negative, closing_pulse >= -2*pre_margin, hence closing_pulse >= 2",
+      "status": "proved_by_integer_order"
+    }
+  },
+  "crossings": {
+    "analyzed_skipped_ranks": 49785,
+    "claim": "every skipped n crosses by 2*ceil(log2 n)",
+    "closing_pulse_distribution": {
+      "0": 76,
+      "1": 3,
+      "10": 2654,
+      "11": 1711,
+      "12": 2209,
+      "13": 1451,
+      "14": 1455,
+      "15": 1136,
+      "16": 1232,
+      "17": 991,
+      "18": 899,
+      "19": 594,
+      "2": 4518,
+      "20": 729,
+      "21": 543,
+      "22": 497,
+      "23": 387,
+      "24": 435,
+      "25": 337,
+      "26": 355,
+      "27": 225,
+      "28": 237,
+      "29": 199,
+      "3": 2659,
+      "30": 251,
+      "31": 129,
+      "32": 146,
+      "33": 161,
+      "34": 145,
+      "35": 103,
+      "36": 98,
+      "37": 64,
+      "38": 75,
+      "39": 39,
+      "4": 5661,
+      "40": 50,
+      "41": 10,
+      "42": 46,
+      "43": 30,
+      "44": 13,
+      "45": 11,
+      "46": 49,
+      "47": 23,
+      "48": 30,
+      "49": 23,
+      "5": 3756,
+      "50": 8,
+      "51": 13,
+      "52": 3,
+      "54": 11,
+      "55": 3,
+      "56": 3,
+      "58": 2,
+      "59": 2,
+      "6": 4468,
+      "60": 6,
+      "65": 7,
+      "7": 2787,
+      "8": 3582,
+      "9": 2445
+    },
+    "crossing_endpoint_branch_distribution": {
+      "skip": 27451,
+      "take": 22334
+    },
+    "endpoint_mod_six_distribution": {
+      "0": 20637,
+      "1": 1993,
+      "2": 8261,
+      "3": 8129,
+      "4": 9452,
+      "5": 1313
+    },
+    "first_counterexample": null,
+    "future_skip_count_at_crossing": {
+      "0": 83,
+      "1": 16782,
+      "2": 25098,
+      "3": 7179,
+      "4": 624,
+      "5": 19
+    },
+    "initial_margin_distribution": {
+      "-1": 3088,
+      "-10": 500,
+      "-11": 557,
+      "-12": 229,
+      "-13": 276,
+      "-14": 104,
+      "-15": 150,
+      "-16": 57,
+      "-17": 97,
+      "-18": 27,
+      "-19": 59,
+      "-2": 9113,
+      "-20": 16,
+      "-21": 19,
+      "-22": 4,
+      "-23": 16,
+      "-24": 5,
+      "-25": 12,
+      "-26": 2,
+      "-27": 3,
+      "-3": 12001,
+      "-31": 1,
+      "-33": 2,
+      "-4": 8209,
+      "-5": 6670,
+      "-6": 3263,
+      "-7": 2848,
+      "-8": 1198,
+      "-9": 1180,
+      "0": 79
+    },
+    "largest_second_divisor_relative_to_rank": {
+      "endpoint": 52,
+      "rank": 43,
+      "ratio": "26/43",
+      "second_selected_divisor": 26,
+      "selected_divisors": [
+        2,
+        26
+      ]
+    },
+    "largest_second_selected_divisor": {
+      "endpoint": 99556,
+      "rank": 99552,
+      "second_selected_divisor": 49778,
+      "selected_divisors": [
+        2,
+        49778
+      ]
+    },
+    "length_distribution": {
+      "1": 1617,
+      "10": 188,
+      "11": 115,
+      "12": 61,
+      "13": 25,
+      "14": 12,
+      "15": 9,
+      "16": 1,
+      "17": 2,
+      "18": 1,
+      "19": 1,
+      "2": 8392,
+      "3": 14831,
+      "4": 11819,
+      "5": 6547,
+      "6": 3364,
+      "7": 1586,
+      "8": 800,
+      "9": 414
+    },
+    "maximum_future_skip_count": {
+      "binary_length": 15,
+      "centered_endpoint_carry": 0,
+      "closing_pulse": 33,
+      "endpoint": 24480,
+      "endpoint_branch": "skip",
+      "future_skip_capacity": 31,
+      "future_skip_count": 5,
+      "future_skips": [
+        24476,
+        24477,
+        24478,
+        24479,
+        24480
+      ],
+      "length": 7,
+      "overshoot": 31,
+      "pre_margin": -1,
+      "rank": 24473,
+      "required_pulse": 2,
+      "selected_divisors": [
+        2,
+        3,
+        6,
+        20,
+        32,
+        34,
+        45,
+        48,
+        51,
+        60,
+        96,
+        102,
+        144,
+        153,
+        160,
+        204,
+        240,
+        306,
+        340,
+        360,
+        408,
+        480,
+        544,
+        612,
+        765,
+        816,
+        1632,
+        2040,
+        2720,
+        3060,
+        4896,
+        6120,
+        8160
+      ]
+    },
+    "maximum_minimal_crossing": {
+      "binary_length": 16,
+      "centered_endpoint_carry": 1,
+      "closing_pulse": 17,
+      "endpoint": 55146,
+      "endpoint_branch": "take",
+      "future_skip_capacity": 6,
+      "future_skip_count": 2,
+      "future_skips": [
+        55144,
+        55145
+      ],
+      "length": 19,
+      "overshoot": 5,
+      "pre_margin": -6,
+      "rank": 55127,
+      "required_pulse": 12,
+      "selected_divisors": [
+        2,
+        3,
+        6,
+        7,
+        14,
+        21,
+        26,
+        39,
+        42,
+        91,
+        182,
+        273,
+        1414,
+        2121,
+        3939,
+        9191,
+        27573
+      ]
+    },
+    "most_common_smallest_divisor_pairs": [
+      {
+        "count": 20637,
+        "pair": "2,3"
+      },
+      {
+        "count": 4572,
+        "pair": "2,7"
+      },
+      {
+        "count": 2657,
+        "pair": "2,20"
+      },
+      {
+        "count": 2046,
+        "pair": "3,7"
+      },
+      {
+        "count": 1366,
+        "pair": "2,26"
+      },
+      {
+        "count": 1059,
+        "pair": "3,27"
+      },
+      {
+        "count": 922,
+        "pair": "2,32"
+      },
+      {
+        "count": 816,
+        "pair": "2,34"
+      },
+      {
+        "count": 785,
+        "pair": "3,33"
+      },
+      {
+        "count": 645,
+        "pair": "2,38"
+      },
+      {
+        "count": 562,
+        "pair": "3,39"
+      },
+      {
+        "count": 533,
+        "pair": "7,35"
+      },
+      {
+        "count": 481,
+        "pair": "2,44"
+      },
+      {
+        "count": 473,
+        "pair": "2,46"
+      },
+      {
+        "count": 386,
+        "pair": "3,45"
+      },
+      {
+        "count": 325,
+        "pair": "2,58"
+      },
+      {
+        "count": 317,
+        "pair": "3,51"
+      },
+      {
+        "count": 269,
+        "pair": "2,50"
+      },
+      {
+        "count": 249,
+        "pair": "2,74"
+      },
+      {
+        "count": 243,
+        "pair": "3,57"
+      }
+    ],
+    "overshoot_distribution": {
+      "0": 16139,
+      "1": 9739,
+      "10": 607,
+      "11": 539,
+      "12": 386,
+      "13": 352,
+      "14": 205,
+      "15": 153,
+      "16": 123,
+      "17": 102,
+      "18": 98,
+      "19": 77,
+      "2": 6402,
+      "20": 58,
+      "21": 75,
+      "22": 57,
+      "23": 35,
+      "24": 43,
+      "25": 24,
+      "26": 34,
+      "27": 23,
+      "28": 20,
+      "29": 13,
+      "3": 4514,
+      "30": 11,
+      "31": 6,
+      "32": 10,
+      "33": 6,
+      "34": 11,
+      "35": 1,
+      "36": 3,
+      "37": 5,
+      "38": 3,
+      "4": 3301,
+      "40": 2,
+      "41": 2,
+      "42": 1,
+      "43": 3,
+      "45": 1,
+      "47": 1,
+      "5": 2376,
+      "50": 1,
+      "51": 1,
+      "6": 1519,
+      "7": 1078,
+      "8": 909,
+      "9": 716
+    },
+    "pre_margin_distribution": {
+      "-1": 13513,
+      "-10": 933,
+      "-11": 405,
+      "-12": 551,
+      "-13": 221,
+      "-14": 313,
+      "-15": 145,
+      "-16": 214,
+      "-17": 78,
+      "-18": 100,
+      "-19": 43,
+      "-2": 12078,
+      "-20": 54,
+      "-21": 23,
+      "-22": 28,
+      "-23": 18,
+      "-24": 24,
+      "-25": 4,
+      "-26": 7,
+      "-27": 4,
+      "-28": 3,
+      "-3": 5764,
+      "-30": 4,
+      "-32": 2,
+      "-4": 5684,
+      "-5": 2642,
+      "-6": 3032,
+      "-7": 1375,
+      "-8": 1739,
+      "-9": 705,
+      "0": 79
+    },
+    "status": "not_falsified"
+  },
+  "orbit_trace_sha256": "cc1559e310bf7bc75aa7f85deae5914e02fadf9cde02716d1d60226f06378f84",
+  "range": {
+    "max_skipped_rank": 100000,
+    "min_skipped_rank": 2,
+    "orbit_max_rank": 100036
+  },
+  "sample_exceptional_crossings": [
+    {
+      "closing_pulse": 0,
+      "endpoint": 5,
+      "length": 1,
+      "overshoot": 0,
+      "pre_margin": 0,
+      "rank": 4,
+      "selected_divisors": []
+    },
+    {
+      "closing_pulse": 1,
+      "endpoint": 9,
+      "length": 1,
+      "overshoot": 1,
+      "pre_margin": 0,
+      "rank": 8,
+      "selected_divisors": [
+        3
+      ]
+    },
+    {
+      "closing_pulse": 1,
+      "endpoint": 10,
+      "length": 1,
+      "overshoot": 1,
+      "pre_margin": 0,
+      "rank": 9,
+      "selected_divisors": [
+        2
+      ]
+    },
+    {
+      "closing_pulse": 0,
+      "endpoint": 11,
+      "length": 1,
+      "overshoot": 0,
+      "pre_margin": 0,
+      "rank": 10,
+      "selected_divisors": []
+    },
+    {
+      "closing_pulse": 3,
+      "endpoint": 12,
+      "length": 1,
+      "overshoot": 1,
+      "pre_margin": -1,
+      "rank": 11,
+      "selected_divisors": [
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "closing_pulse": 0,
+      "endpoint": 13,
+      "length": 1,
+      "overshoot": 0,
+      "pre_margin": 0,
+      "rank": 12,
+      "selected_divisors": []
+    },
+    {
+      "closing_pulse": 2,
+      "endpoint": 14,
+      "length": 1,
+      "overshoot": 0,
+      "pre_margin": -1,
+      "rank": 13,
+      "selected_divisors": [
+        2,
+        7
+      ]
+    },
+    {
+      "closing_pulse": 1,
+      "endpoint": 16,
+      "length": 1,
+      "overshoot": 1,
+      "pre_margin": 0,
+      "rank": 15,
+      "selected_divisors": [
+        2
+      ]
+    },
+    {
+      "closing_pulse": 0,
+      "endpoint": 17,
+      "length": 1,
+      "overshoot": 0,
+      "pre_margin": 0,
+      "rank": 16,
+      "selected_divisors": []
+    },
+    {
+      "closing_pulse": 3,
+      "endpoint": 18,
+      "length": 1,
+      "overshoot": 1,
+      "pre_margin": -1,
+      "rank": 17,
+      "selected_divisors": [
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "closing_pulse": 0,
+      "endpoint": 19,
+      "length": 1,
+      "overshoot": 0,
+      "pre_margin": 0,
+      "rank": 18,
+      "selected_divisors": []
+    },
+    {
+      "closing_pulse": 2,
+      "endpoint": 21,
+      "length": 2,
+      "overshoot": 0,
+      "pre_margin": -1,
+      "rank": 19,
+      "selected_divisors": [
+        3,
+        7
+      ]
+    },
+    {
+      "closing_pulse": 0,
+      "endpoint": 23,
+      "length": 1,
+      "overshoot": 0,
+      "pre_margin": 0,
+      "rank": 22,
+      "selected_divisors": []
+    },
+    {
+      "closing_pulse": 3,
+      "endpoint": 24,
+      "length": 1,
+      "overshoot": 1,
+      "pre_margin": -1,
+      "rank": 23,
+      "selected_divisors": [
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "closing_pulse": 0,
+      "endpoint": 25,
+      "length": 1,
+      "overshoot": 0,
+      "pre_margin": 0,
+      "rank": 24,
+      "selected_divisors": []
+    },
+    {
+      "closing_pulse": 3,
+      "endpoint": 28,
+      "length": 3,
+      "overshoot": 1,
+      "pre_margin": -1,
+      "rank": 25,
+      "selected_divisors": [
+        2,
+        7,
+        14
+      ]
+    },
+    {
+      "closing_pulse": 0,
+      "endpoint": 29,
+      "length": 1,
+      "overshoot": 0,
+      "pre_margin": 0,
+      "rank": 28,
+      "selected_divisors": []
+    },
+    {
+      "closing_pulse": 3,
+      "endpoint": 30,
+      "length": 1,
+      "overshoot": 1,
+      "pre_margin": -1,
+      "rank": 29,
+      "selected_divisors": [
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "closing_pulse": 0,
+      "endpoint": 31,
+      "length": 1,
+      "overshoot": 0,
+      "pre_margin": 0,
+      "rank": 30,
+      "selected_divisors": []
+    },
+    {
+      "closing_pulse": 3,
+      "endpoint": 36,
+      "length": 5,
+      "overshoot": 1,
+      "pre_margin": -1,
+      "rank": 31,
+      "selected_divisors": [
+        2,
+        3,
+        6
+      ]
+    }
+  ],
+  "schema": "erdos257_selected_first_window_quotient_crossing_v1",
+  "target": "1/2"
+}

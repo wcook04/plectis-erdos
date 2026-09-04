@@ -1,0 +1,162 @@
+{
+  "schema": "erdos1041_concyclic_exact_witness_v1",
+  "cases": [
+    {
+      "n": 4,
+      "t_params": [
+        "0",
+        "1/3",
+        "3/4",
+        "5/2"
+      ],
+      "E1_all_on_unit_circle": true,
+      "E1_W_unimodular": true,
+      "E2_self_inversive_identity": true,
+      "E3_q_self_inversive": true,
+      "E3_same_constant_term": true,
+      "E3_diff_leading_zero": true,
+      "E3_diff_constant_zero": true,
+      "E3_diff_support": [
+        1,
+        2,
+        3
+      ],
+      "E3_nonzero_root_bound": 2,
+      "E4_good_arc_found": true,
+      "E4_t_range": [
+        "1/3",
+        "3/4"
+      ],
+      "E4_max_absg2_on_arc_pts": "27524210688/1786705953625",
+      "E4_bounded_by_4": true,
+      "E5_rho": "3/4",
+      "E5_2rho_n": "81/128",
+      "E5_max_absf2_on_chord": "5168475473355873/3892314112000000000",
+      "E5_level_ok": true,
+      "E5_chord_len2": "9/40",
+      "E5_length_ok": true,
+      "failed_keys": []
+    },
+    {
+      "n": 5,
+      "t_params": [
+        "0",
+        "1/5",
+        "2/5",
+        "1",
+        "7/3"
+      ],
+      "E1_all_on_unit_circle": true,
+      "E1_W_unimodular": true,
+      "E2_self_inversive_identity": true,
+      "E3_q_self_inversive": true,
+      "E3_same_constant_term": true,
+      "E3_diff_leading_zero": true,
+      "E3_diff_constant_zero": true,
+      "E3_diff_support": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "E3_nonzero_root_bound": 3,
+      "E4_good_arc_found": true,
+      "E4_t_range": [
+        "0",
+        "1/5"
+      ],
+      "E4_max_absg2_on_arc_pts": "23526530586000000/9069351127430468209",
+      "E4_bounded_by_4": true,
+      "E5_rho": "4/5",
+      "E5_2rho_n": "2048/3125",
+      "E5_max_absf2_on_chord": "40514854257/156128706500000",
+      "E5_level_ok": true,
+      "E5_chord_len2": "32/325",
+      "E5_length_ok": true,
+      "failed_keys": []
+    },
+    {
+      "n": 6,
+      "t_params": [
+        "0",
+        "1/7",
+        "1/3",
+        "4/5",
+        "3/2",
+        "4"
+      ],
+      "E1_all_on_unit_circle": true,
+      "E1_W_unimodular": true,
+      "E2_self_inversive_identity": true,
+      "E3_q_self_inversive": true,
+      "E3_same_constant_term": true,
+      "E3_diff_leading_zero": true,
+      "E3_diff_constant_zero": true,
+      "E3_diff_support": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "E3_nonzero_root_bound": 4,
+      "E4_good_arc_found": true,
+      "E4_t_range": [
+        "0",
+        "1/7"
+      ],
+      "E4_max_absg2_on_arc_pts": "14866208365195579392/11668870990472190078125",
+      "E4_bounded_by_4": true,
+      "E5_rho": "4/5",
+      "E5_2rho_n": "8192/15625",
+      "E5_max_absf2_on_chord": "243867539516877176832/2910383045673370361328125",
+      "E5_level_ok": true,
+      "E5_chord_len2": "32/625",
+      "E5_length_ok": true,
+      "failed_keys": []
+    },
+    {
+      "n": 7,
+      "t_params": [
+        "0",
+        "1/9",
+        "1/4",
+        "1/2",
+        "1",
+        "2",
+        "5"
+      ],
+      "E1_all_on_unit_circle": true,
+      "E1_W_unimodular": true,
+      "E2_self_inversive_identity": true,
+      "E3_q_self_inversive": true,
+      "E3_same_constant_term": true,
+      "E3_diff_leading_zero": true,
+      "E3_diff_constant_zero": true,
+      "E3_diff_support": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "E3_nonzero_root_bound": 5,
+      "E4_good_arc_found": true,
+      "E4_t_range": [
+        "0",
+        "1/9"
+      ],
+      "E4_max_absg2_on_arc_pts": "3473555193387417600/11349007972999657512149",
+      "E4_bounded_by_4": true,
+      "E5_rho": "4/5",
+      "E5_2rho_n": "32768/78125",
+      "E5_max_absf2_on_chord": "269315472307709997/20692641599856250000000",
+      "E5_level_ok": true,
+      "E5_chord_len2": "32/1025",
+      "E5_length_ok": true,
+      "failed_keys": []
+    }
+  ],
+  "verdict": "PASS"
+}

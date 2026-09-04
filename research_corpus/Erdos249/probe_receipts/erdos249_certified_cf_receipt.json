@@ -1,0 +1,218 @@
+{
+ "probe_id": "erdos_249_certified_continued_fraction",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_249",
+   "target_statement": "Prove that the binary totient series sum_{n>=1} phi(n)/2^n is irrational.",
+   "claim_ceiling": "Erdos #249 remains open. For X-2, unbounded clean cyclotomic prime support and the multiple-period consumers are Lean-checked, as are the two exact 331 certificates and their finite denominator exclusions. Lean proves the target equivalent to FullMersenneCanonicalBasepointResidueGapSupply. For every candidate denominator 2^c v, with v odd, one must find an Euler-multiple H for which (-totientBlock(H,c)) mod ((2^H-1)/v) lies in the central interval of radius c+H+1. On the pure-dyadic axis the endpoint trap has a kernel-checked affine coordinate E_(H+1)=2E_H+phi(c+H+1)-k. The exact scan through c<=1000000 finds a fixed-quotient delay-nineteen word at c=490794, eliminating uniform caps through seventeen. Pointwise legal-letter methods admit a permanent constant-two trap, but the actual word excludes that mode. Every shifted actual word has cofinally late prime positions satisfying c+H-k <= |E_(H+1)|+2|E_H|, so bounded, periodic, and sublinear-error fixed-quotient modes are impossible. Lean now also excludes every eventually affine linear-scale error: the recurrence would make the totient word affine, while the arbitrarily late points at primes p<q and at 2p have nonzero affine determinant -p(q-p). The two-step prime-successor theorem is directional: if the successor remains upper-trapped then 4E_H+p+phi(p+1)<=4+3k, and any permanent trap therefore has cofinally bottom-locked pre-prime errors. Exact complete precursor cones eliminate one-, two-, and three-local-lock forced crossing. At c=1858 the third-lock cone still contains 15 seeds, so lock count is not even a monotone uniqueness mechanism. The remaining local producer must use an unbounded/cofinal lock family with a genuinely global cross-gap invariant, or construct a compatible genuinely non-affine linear-scale trap. The rank-one Schur lane remains closed at its 21/320 floor, while other surviving seams require genuinely coupled/signed denominator compression or a repaired-sieve lower bound beating log(2)/2. No irrationality proof is claimed. The pure-dyadic delay-cap programme is now retired on measurement rather than on another refuted constant: the maximum post-clear fixed-quotient delay over c <= C grows like log2 C, reproducing this packet's own delay-nineteen witness at c=490794 from an independent statistic, so every uniform cap is refuted at c about 2^cap. The producer should target the growth law - escape within O(log c) steps of clearing - not a constant. The target irrationality remains open. The supply producer has now been measured off the pure-dyadic axis for the first time: max_(c<=C) delay(c,v) = ceil(log2(C)/phi(v)), of which the packet's log2(C) law is the phi(v)=1 case, and the tallest height needed across 480000 instances is 60. Since R_c = 2^c S - integer, the delay is a translation of ||v 2^c S||, and H_min(c,v) tracks phi(v)*ceil(log2(v c/||v 2^c S||)/phi(v)) to within one admissible step. So the producer is an irrationality-measure statement for S on the denominator family v*2^c. The measured min_(c<=C)||v 2^c S|| is of order 1/C with no v-dependence, which refutes every uniform cap on every axis rather than only at v=1, and bounds what can be hoped for: the usable target is ||v 2^c S|| >= c^-A for a fixed A>1 uniformly in odd v. A certified continued-fraction prefix of 23438 partial quotients gives the unrestricted denominator exclusion q > 10^12039, complementing the restricted-family v*2^c exclusion; the expansion is generic against Levy and Gauss-Kuzmin, so it offers no anomalous convergent."
+  },
+  "hypothesis": {
+   "id": "recorded_denominator_exclusion_is_near_best_available",
+   "statement": "The finite denominator exclusion recorded for this problem is close to what finite computation can give, so improving it needs new machinery."
+  },
+  "probe": {
+   "id": "erdos_249_certified_continued_fraction",
+   "question": "How large a denominator can be excluded for S = sum_(n>=1) phi(n)/2^n by a continued-fraction prefix whose every quotient is forced by a rigorous rational bracket, and do the certified quotients look generic?",
+   "computation": "Bracket S by exact integers lo <= 2^B S <= hi, run the interval continued fraction so a quotient is emitted only when both endpoints agree on it, and read the bound off the last certified convergent via best approximation of the second kind, checking |q_n S - p_n| > 0 against the bracket rather than assuming it. The arithmetic self-checks against the known expansion of e and the convergents of pi before every run.",
+   "falsifier": "A bound not far exceeding the recorded exclusion, which would mean the recorded one was already near best; or an anomalously large partial quotient, which would place S unusually close to a rational and hand over a concrete candidate denominator to test.",
+   "stop_condition": "A bound many orders of magnitude past the recorded one, with generic Levy and Gauss-Kuzmin statistics, settles the question and leaves nothing further for this route.",
+   "resource_bounds": {
+    "certified_quotients": 23438,
+    "denominator_lower_bound_bits": 39990,
+    "scale_bits": 80000
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "The recorded exclusion stands as near-best and finite denominator work needs genuinely new machinery.",
+   "falsification_consequence": "The recorded exclusion was far from best and this standard route, absent from the packet, replaces it.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Shared/CertifiedContinuedFractionLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/certified_continued_fraction.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "exact_one_way_result",
+   "summary": "23438 certified partial quotients at B=80000 bits give q >= 2^39990, above 10^12039, with the separation |q_n S - p_n| > 0 verified against the bracket. The recorded exclusion was finite exclusions tied to specific cyclotomic certificates. It is complementary to the v*2^c family exclusion rather than stronger: that one reaches much larger denominators inside a restricted family, this one excludes every denominator below its bound without restriction. The certified quotients are generic: Levy's constant matched to 0.33 percent, Gauss-Kuzmin worst |z| = 1.99 over the first five values, largest partial quotient 29403, and -- the coordinate that actually matters -- a maximum irrationality exponent witness of 2.00116 over convergent denominators above 2^10000. So there is no anomalous near-rational and no candidate denominator to hand back to the problem's own machinery.",
+   "progress": {
+    "class": "one_way_theorem",
+    "decision_basis": "Every quotient is forced by the bracket, the separation is verified rather than assumed, and the arithmetic reproduces the known expansions of e and pi.",
+    "next_analytic_target": "None from this route: the expansion is generic, so no larger partial quotient and no Liouville-flavoured candidate denominator is available. Finite denominator exclusion is not on the path to the cofinal statement.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_249",
+  "motivated_by": [
+   "cyclotomic_331_denominator_exclusion",
+   "dyadic_family_denominator_exclusion_with_margin"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "certified_continued_fraction_denominator_exclusion"
+  ],
+  "rationale": "Replaces the recorded finite denominator exclusion with one many orders of magnitude stronger by a standard route the packet did not contain, and records that the expansion is generic so the route is now exhausted."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Shared/CertifiedContinuedFractionLab.md",
+   "byte_length": 7842,
+   "sha256": "a6b442801b5090adca5febfceed8b44653f271c720d7d4a321ca9ac004dc155a"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+   "byte_length": 51939,
+   "sha256": "db9f5d25bcb65410937b101ad3f411425bb138c470d6b357b8b8a1b88256c49b",
+   "scoped_sha256": "03976a900eab8d46469ae067c8c3c98fd4d21e6e27eab9497bfadfa03a33d98c",
+   "scope_ids": [
+    "certified_continued_fraction_denominator_exclusion",
+    "cyclotomic_331_denominator_exclusion",
+    "dyadic_family_denominator_exclusion_with_margin"
+   ]
+  },
+  {
+   "path": "formal_math/probes/certified_continued_fraction.py",
+   "byte_length": 14046,
+   "sha256": "7a6a001f6b4e39b96f34e4103a2fe92921cc93ef541f33aa8fbe6e4eb2d58fc4"
+  }
+ ],
+ "result": {
+  "certified_quotients": 23438,
+  "scale_bits": 80000,
+  "bracket_width": 80002,
+  "denominator_lower_bound_bits": 39990,
+  "denominator_lower_bound_decimal_digits": 12039,
+  "separation_verified": true,
+  "max_partial_quotient": 29403,
+  "argmax_partial_quotient_index": 15470,
+  "irrationality_exponent_witness": {
+   "q_at_least_2_pow_100": {
+    "max_exponent": 2.050565726180108,
+    "at_index": 113
+   },
+   "q_at_least_2_pow_1000": {
+    "max_exponent": 2.00744191714147,
+    "at_index": 911
+   },
+   "q_at_least_2_pow_10000": {
+    "max_exponent": 2.0011606625355296,
+    "at_index": 7055
+   }
+  },
+  "partial_quotient_histogram": {
+   "1": 9642,
+   "2": 4097,
+   "11-100": 2609,
+   "6-10": 2266,
+   "3": 2228,
+   "4": 1363,
+   "5": 929,
+   "101+": 304
+  },
+  "gauss_kuzmin": {
+   "1": {
+    "observed": 0.4113832238245584,
+    "expected": 0.41503749927884376,
+    "z": -1.1354130296216183
+   },
+   "2": {
+    "observed": 0.17480160423244304,
+    "expected": 0.16992500144231237,
+    "z": 1.9878808497756857
+   },
+   "3": {
+    "observed": 0.09505930540148477,
+    "expected": 0.09310940439148145,
+    "z": 1.0273031405017838
+   },
+   "4": {
+    "observed": 0.05815342606024405,
+    "expected": 0.058893689053568614,
+    "z": -0.4813850422012751
+   },
+   "5": {
+    "observed": 0.039636487754927896,
+    "expected": 0.04064198449734577,
+    "z": -0.7795843922984051
+   }
+  },
+  "levy_observed": 1.1826424957001382,
+  "levy_expected": 1.1865691104156255,
+  "levy_relative_error": 0.003309217036765672,
+  "first_quotients": [
+   1,
+   2,
+   1,
+   2,
+   1,
+   1,
+   2,
+   1,
+   12,
+   1,
+   1,
+   2,
+   1,
+   1,
+   6,
+   6,
+   19,
+   3,
+   54,
+   1,
+   3,
+   1,
+   7,
+   1
+  ],
+  "problem_id": "erdos_249",
+  "self_check": {
+   "e_prefix": [
+    2,
+    1,
+    2,
+    1,
+    1,
+    4,
+    1,
+    1,
+    6,
+    1,
+    1,
+    8,
+    1,
+    1
+   ],
+   "pi_convergents": [
+    [
+     3,
+     1
+    ],
+    [
+     22,
+     7
+    ],
+    [
+     333,
+     106
+    ],
+    [
+     355,
+     113
+    ]
+   ],
+   "status": "arithmetic_verified_against_known_expansions"
+  }
+ }
+}

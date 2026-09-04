@@ -1,0 +1,4 @@
+import ExternalVerification257PositiveSkipEquivalence.Solution
+
+#print axioms Erdos249257.ExternalVerification257PositiveSkipEquivalence.greedyMersenneRemainderRat_half_pos
+#print axioms Erdos249257.ExternalVerification257PositiveSkipEquivalence.cofinalPositiveHalfGreedySkips_iff_half_mem

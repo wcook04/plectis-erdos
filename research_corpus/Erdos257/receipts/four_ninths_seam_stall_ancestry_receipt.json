@@ -1,0 +1,151 @@
+{
+  "canonical_digest": "02b88f7b88765e93565bbc803d6e98558764ef2ff68988d479f30afcd14a1ad3",
+  "claim_ceiling": "exact ancestry of specified finite transitions; no uniform fresh-load budget, all-depth seam exclusion, or Erdos 257 conclusion",
+  "mechanism_decision": {
+    "candidate": "bound the reachable supply of fresh selected divisors capable of paying for consecutive escape-service failures",
+    "status": "fresh_contributor_mechanism_measured",
+    "stop_condition": "use fixation/reachability history to bound fresh contributor supply; do not infer a bound from local divisor ancestry alone"
+  },
+  "parameters": {
+    "crosscheck": 300,
+    "horizon": 1350002,
+    "trace_ranks": [293578, 293580, 293582, 293584, 293586, 293588, 293590, 1349998]
+  },
+  "schema": "erdos257_four_ninths_seam_stall_ancestry_v0",
+  "source": {
+    "existing_cylinder_audit": "erdos257_period_noncollapse/scripts/totient_four_ninths_even_cylinder_audit.py",
+    "existing_cylinder_audit_sha256": "45745f784faa95a293cc462b42268a2801854c3fa1b225e4db5d4a961d5839bc"
+  },
+  "stall_summary": {
+    "contributors_reused_across_failures": [2, 4, 5, 7, 8, 12, 13],
+    "distinct_contributors_across_failures": 88,
+    "failure_count": 6,
+    "minimum_new_contributors_on_failure": 4,
+    "reused_contributor_count": 7,
+    "transition_count": 7
+  },
+  "trace_rows": [
+    {
+      "contributor_sha256": "ad62864c77e5b297392615ae628acd6a5eb589d432d25fbaa2aa1e7d91229369",
+      "correction": -42,
+      "escape_deficit": 20,
+      "escape_served": false,
+      "even_contributor_count": 36,
+      "new_contributor_count": 39,
+      "odd_contributor_count": 3,
+      "offset_after_raw": 2,
+      "offset_before": 11,
+      "reused_contributor_count": 0,
+      "source_rank": 293578,
+      "weighted_load": 42
+    },
+    {
+      "contributor_sha256": "9e363c5e0c65ba1ce7ff690d6e6dc8bec1148245fd40d53dc96d868e5c613e1a",
+      "correction": -4,
+      "escape_deficit": 0,
+      "escape_served": true,
+      "even_contributor_count": 3,
+      "new_contributor_count": 3,
+      "odd_contributor_count": 1,
+      "offset_after_raw": 4,
+      "offset_before": 2,
+      "reused_contributor_count": 1,
+      "source_rank": 293580,
+      "weighted_load": 5
+    },
+    {
+      "contributor_sha256": "9badfba7f80da4b18b1e9d5b2a87b6809ea72943e00ee8b7c2b1469c7f673bed",
+      "correction": -10,
+      "escape_deficit": 2,
+      "escape_served": false,
+      "even_contributor_count": 11,
+      "new_contributor_count": 10,
+      "odd_contributor_count": 1,
+      "offset_after_raw": 6,
+      "offset_before": 4,
+      "reused_contributor_count": 2,
+      "source_rank": 293582,
+      "weighted_load": 13
+    },
+    {
+      "contributor_sha256": "3e14a163a8219f7cefae17df5fadf3eab353fc719eab962f500f5a1306c4ed3e",
+      "correction": -21,
+      "escape_deficit": 9,
+      "escape_served": false,
+      "even_contributor_count": 9,
+      "new_contributor_count": 13,
+      "odd_contributor_count": 6,
+      "offset_after_raw": 3,
+      "offset_before": 6,
+      "reused_contributor_count": 2,
+      "source_rank": 293584,
+      "weighted_load": 21
+    },
+    {
+      "contributor_sha256": "60c4e4de749dc9449c488b8c38acdb158351494671be812525294e1bb5ffe717",
+      "correction": -7,
+      "escape_deficit": 1,
+      "escape_served": false,
+      "even_contributor_count": 6,
+      "new_contributor_count": 4,
+      "odd_contributor_count": 1,
+      "offset_after_raw": 5,
+      "offset_before": 3,
+      "reused_contributor_count": 3,
+      "source_rank": 293586,
+      "weighted_load": 8
+    },
+    {
+      "contributor_sha256": "aa4fd9b5fa9f8407b423ac67c1e9fcf7e2d3523ef8e21acd84fbb97205c49417",
+      "correction": -14,
+      "escape_deficit": 4,
+      "escape_served": false,
+      "even_contributor_count": 17,
+      "new_contributor_count": 15,
+      "odd_contributor_count": 0,
+      "offset_after_raw": 6,
+      "offset_before": 5,
+      "reused_contributor_count": 2,
+      "source_rank": 293588,
+      "weighted_load": 17
+    },
+    {
+      "contributor_sha256": "d170324d3117b878cf06673b0b35df8e6ff5536b6da27f26123a4a1e3dd543de",
+      "correction": -14,
+      "escape_deficit": 2,
+      "escape_served": false,
+      "even_contributor_count": 10,
+      "even_contributors": [2, 4, 8, 12, 13, 24, 39, 52, 78, 5646],
+      "new_contributor_count": 7,
+      "new_vs_prior_transition": [24, 39, 52, 78, 137, 2143, 5646],
+      "odd_contributor_count": 2,
+      "odd_contributors": [137, 2143],
+      "offset_after_raw": 10,
+      "offset_before": 6,
+      "reused_contributor_count": 5,
+      "reused_vs_prior_transition": [2, 4, 8, 12, 13],
+      "source_rank": 293590,
+      "weighted_load": 14
+    },
+    {
+      "contributor_sha256": "56827b26e9fc5a7fc63ca23ed985113e67317f084b6a83fd90d94742bfdfe6b6",
+      "correction": -62,
+      "escape_deficit": 26,
+      "escape_served": false,
+      "even_contributor_count": 60,
+      "even_contributors": [2, 4, 5, 8, 12, 16, 20, 24, 27, 30, 40, 48, 60, 80, 90, 100, 108, 120, 144, 180, 200, 225, 240, 270, 432, 540, 675, 750, 900, 1125, 1350, 1800, 2000, 2160, 2700, 3600, 4500, 5400, 5625, 6000, 6250, 7500, 9375, 10000, 10800, 11250, 12500, 13500, 25000, 27000, 33750, 50000, 67500, 112500, 135000, 150000, 168750, 270000, 337500, 675000],
+      "odd_contributor_count": 1,
+      "odd_contributors": [7],
+      "offset_after_raw": 10,
+      "offset_before": 18,
+      "source_rank": 1349998,
+      "weighted_load": 62
+    }
+  ],
+  "validation": {
+    "exact_integer_recurrence": true,
+    "load_ancestry_recounted_from_fixed_support": true,
+    "midpoint_seam_seen": false,
+    "trace_sha256": "e7fad3110e2b79c35614b91cbafe30406703c52539de19f17a79dd7f15d5d82a"
+  }
+}

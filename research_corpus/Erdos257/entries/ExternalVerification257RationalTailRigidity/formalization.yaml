@@ -1,0 +1,143 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #257: rational values force unbounded integer tail orbits and mass lower bounds"
+  description: >-
+    Suppose the series of 1/(2^a - 1) over an infinite set A of positive integers takes the
+    rational value p/(2^c v) with v positive, and write d_A(n) for the number of divisors of
+    n lying in A. The denominator-cleared binary tails are then strictly positive integers
+    u(n) obeying the exact recurrence u(n+1) + v d_A(c+n+1) = 2 u(n) and the residue law
+    u(n) = p 2^n mod v, and they are unbounded. Under the same rational value every zero
+    window of d_A is sublogarithmic: for each eps > 0 there is a constant B with h ≤ eps
+    log_2(N+1) + B for every window position N and every window length h. If the reciprocal
+    mass of A converges and the reduced denominator v is odd and greater than one, that mass
+    is at least the reciprocal of the multiplicative order of 2 modulo v, and for a dyadic
+    value with A infinite the reciprocal mass diverges or exceeds one strictly. One
+    mechanism produces all four laws: the divisor-counting coefficients of the support are
+    the binary coefficients of the value, so clearing the denominator turns rationality into
+    a positive integer orbit under doubling, and each law measures how often the support
+    must fire to keep that orbit positive and unbounded. These are support-uniform necessary
+    conditions in the irrationality theory of reciprocal-power series, imposed with no
+    density or regularity assumption on A, and priority for them has not been established.
+    They do not contradict all rational values, and Erdős #257 remains open.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification257RationalTailRigidity/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification257RationalTailRigidity/formalization.yaml"
+  repository_scope: "public_source_and_authoritative_paper_present_exact_identity_to_pin"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_lean_deferred_exit_75_low_disk"
+  research_interest_status: "principal_support_uniform_rationality_constraints"
+  submission_authorization: "operator_directed_submission_campaign_terminal_receipts_pending"
+  blockers:
+    - >-
+      Guarded focused Lean validation returned typed exit 75 before proof
+      checking: 6,840,217,600 free bytes were below the
+      17,179,869,184-byte build firewall floor.
+    - "focused Lean and axiom checks remain pending after storage clearance"
+    - "terminal positive acceptance and deliberate-negative rejection are pending"
+    - "exact public immutable source identity must be pinned in final metadata"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A25"]
+
+sources:
+  - title: "Rational-support tail rigidity for Erdős #257"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #257"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/257"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    Four exact necessary conditions on rational-valued supports. They neither
+    contradict all rational values nor solve the universal open problem.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 4
+  axiom_audit_status: "public_ci_2026_09_02_run_33646295554_all_compared_declarations_printed_within_permitted_axioms_no_sorryAx"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction"
+      file: "ExternalVerification257RationalTailRigidity/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257RationalTailRigidity/comparator.json"
+      canonical_claim_status: "exact_source_transport_pending_focused_check"
+      local_proof_provenance: "Erdos257PeriodNoncollapse/RationalSupportCarrySkeleton.lean"
+      novelty_status: "unassessed"
+      contribution_class: "unbounded exact tail recurrence"
+      boundary: "Unboundedness alone does not exclude a rational orbit."
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification257RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add"
+      file: "ExternalVerification257RationalTailRigidity/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257RationalTailRigidity/comparator.json"
+      canonical_claim_status: "exact_source_transport_pending_focused_check"
+      local_proof_provenance: "Erdos257PeriodNoncollapse/SublogDivisorCoverage.lean"
+      novelty_status: "unassessed"
+      contribution_class: "uniform sublogarithmic gap obstruction"
+      boundary: "The additive constant depends on the displayed rationality data."
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+
+fidelity:
+  divergences: >-
+    Challenge repeats the exact source definitions and theorem types. It adds
+    no irrationality conclusion and no universal support contradiction.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Exact hypotheses, strict inequalities, denominator cases, and open-problem
+    boundary were reviewed; mechanical replay remains pending.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification257RationalTailRigidity"
+  statements:
+    - source: "Erdos257PeriodNoncollapse.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction"
+      lean: "Erdos249257.ExternalVerification257RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction"
+      module: "ExternalVerification257RationalTailRigidity/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "Erdos257PeriodNoncollapse.supportCoeffZeroWindow_length_le_eps_logb_add"
+      lean: "Erdos249257.ExternalVerification257RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add"
+      module: "ExternalVerification257RationalTailRigidity/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "Erdos257PeriodNoncollapse.one_div_oddOrder_le_reciprocalMass_of_support_fraction"
+      lean: "Erdos249257.ExternalVerification257RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction"
+      module: "ExternalVerification257RationalTailRigidity/Challenge.lean"
+      status: "exact-transport-pending-check"
+    - source: "Erdos257PeriodNoncollapse.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one"
+      lean: "Erdos249257.ExternalVerification257RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one"
+      module: "ExternalVerification257RationalTailRigidity/Challenge.lean"
+      status: "exact-transport-pending-check"
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

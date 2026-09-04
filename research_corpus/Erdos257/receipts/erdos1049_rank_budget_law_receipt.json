@@ -1,0 +1,187 @@
+{
+  "all_pass": true,
+  "base_table": [
+    {
+      "base": "2/1",
+      "first_rank_under_reused_rank_two_clearing": 2,
+      "first_rank_under_zero_clearing_model": 2,
+      "t": 0.0
+    },
+    {
+      "base": "3/1",
+      "first_rank_under_reused_rank_two_clearing": 2,
+      "first_rank_under_zero_clearing_model": 2,
+      "t": 0.0
+    },
+    {
+      "base": "7/2",
+      "first_rank_under_reused_rank_two_clearing": 2,
+      "first_rank_under_zero_clearing_model": 2,
+      "t": 0.35621
+    },
+    {
+      "base": "5/2",
+      "first_rank_under_reused_rank_two_clearing": 3,
+      "first_rank_under_zero_clearing_model": 2,
+      "t": 0.43068
+    },
+    {
+      "base": "3/2",
+      "first_rank_under_reused_rank_two_clearing": 4,
+      "first_rank_under_zero_clearing_model": 3,
+      "t": 0.63093
+    },
+    {
+      "base": "10/3",
+      "first_rank_under_reused_rank_two_clearing": 3,
+      "first_rank_under_zero_clearing_model": 2,
+      "t": 0.47712
+    },
+    {
+      "base": "4/3",
+      "first_rank_under_reused_rank_two_clearing": 6,
+      "first_rank_under_zero_clearing_model": 5,
+      "t": 0.79248
+    },
+    {
+      "base": "5/4",
+      "first_rank_under_reused_rank_two_clearing": 9,
+      "first_rank_under_zero_clearing_model": 8,
+      "t": 0.86135
+    },
+    {
+      "base": "11/3",
+      "first_rank_under_reused_rank_two_clearing": 3,
+      "first_rank_under_zero_clearing_model": 2,
+      "t": 0.45816
+    },
+    {
+      "base": "17/4",
+      "first_rank_under_reused_rank_two_clearing": 3,
+      "first_rank_under_zero_clearing_model": 2,
+      "t": 0.4893
+    }
+  ],
+  "failed": [],
+  "falsifiers": {
+    "F1_rank_two_is_the_recorded_threshold": {
+      "derived": 0.398678816358,
+      "pass": true,
+      "recorded_half_minus_one_over_pi2": 0.398678816358
+    },
+    "F2_zero_clearing_rank_two_is_a_gt_b2": {
+      "ceiling": 0.5,
+      "checked_bases": 10,
+      "pass": true
+    },
+    "F3_published_cases_are_rank_two": {
+      "pass": true,
+      "ranks": {
+        "2/1": 2,
+        "3/1": 2,
+        "7/2": 2
+      }
+    },
+    "F4_reused_rank_two_clearing_first_admits_rank_four": {
+      "first_rank_under_reused_rank_two_clearing": 4,
+      "first_rank_under_zero_clearing_model": 3,
+      "pass": true,
+      "rank3_fails_by": 0.03181,
+      "rank4_margin": 0.06841,
+      "t": 0.63093
+    },
+    "F5_rank_three_clearing_target": {
+      "fraction_of_rank_two_rate": 0.5291,
+      "kappa3_must_be_below": 0.10721,
+      "pass": true,
+      "rank_two_rate": 0.20264
+    },
+    "F6_generic_rank3_solve_misses_by_an_order_of_magnitude": {
+      "at_D": [
+        [
+          3,
+          1.38803
+        ],
+        [
+          4,
+          1.19281
+        ],
+        [
+          5,
+          1.31867
+        ],
+        [
+          6,
+          1.33753
+        ]
+      ],
+      "best_generic_kappa3": 1.18838,
+      "budget": 0.10721,
+      "note": "D=2 is a degenerate index whose primitive coefficients are all +-1; it is a single index, not a family, and is excluded from the range scanned here",
+      "over_budget_factor": 11.1,
+      "pass": true
+    }
+  },
+  "generic_rank3_scan": [
+    {
+      "D": 3,
+      "kappa3": 1.38803,
+      "log_height": 4.5747
+    },
+    {
+      "D": 4,
+      "kappa3": 1.19281,
+      "log_height": 5.2417
+    },
+    {
+      "D": 5,
+      "kappa3": 1.31867,
+      "log_height": 7.2435
+    },
+    {
+      "D": 6,
+      "kappa3": 1.33753,
+      "log_height": 8.8166
+    },
+    {
+      "D": 7,
+      "kappa3": 1.18838,
+      "log_height": 9.139
+    },
+    {
+      "D": 8,
+      "kappa3": 1.20481,
+      "log_height": 10.589
+    },
+    {
+      "D": 9,
+      "kappa3": 1.29401,
+      "log_height": 12.7946
+    },
+    {
+      "D": 10,
+      "kappa3": 1.43804,
+      "log_height": 15.7985
+    },
+    {
+      "D": 11,
+      "kappa3": 1.47409,
+      "log_height": 17.814
+    },
+    {
+      "D": 12,
+      "kappa3": 1.54087,
+      "log_height": 20.3138
+    }
+  ],
+  "kappa": 0.20264236728467555,
+  "probe": "erdos1049_rank_budget_law",
+  "thresholds": {
+    "2": 0.39868,
+    "3": 0.59912,
+    "4": 0.69934,
+    "5": 0.75947,
+    "6": 0.79956,
+    "7": 0.82819
+  }
+}

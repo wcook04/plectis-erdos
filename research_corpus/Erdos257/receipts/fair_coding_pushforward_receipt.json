@@ -1,0 +1,773 @@
+{
+  "all_scale_statement_audited": {
+    "coding_space": "{0,1}^N with independent fair coordinates",
+    "conclusion": "map pi of fair Bernoulli product measure equals Lebesgue measure restricted to the Mersenne achievement set",
+    "cylinder_mass_identity": "P[prefix=u]=volume(pi[prefix=u])=2^(-|u|)",
+    "proof_location": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/FairCodingPushforward.md",
+    "value_map": "pi(b)=sum_{n>=1} b_n/(2^n-1)"
+  },
+  "claim_boundary": [
+    "Finite arithmetic validates the cylinder geometry; the all-scale conclusion is a mathematical proof using existing Lean-checked measure-one and injectivity theorems.",
+    "The pushforward theorem is metric. It does not imply that any prescribed rational belongs to the achievement set and does not settle Erdos 257."
+  ],
+  "consequence_decisions": [
+    {
+      "decision": "defer_with_reason",
+      "reason": "The mathematical proof is complete, but the named producer explicitly asks for formalisation and the owner path is concurrently claimed. Re-enter after the owner releases the path or after a Lean declaration lands.",
+      "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/research_packet.json::formalise_fair_pushforward"
+    },
+    {
+      "decision": "verified_no_change",
+      "reason": "The open-producer id remains correct until the pushforward theorem is Lean formalised.",
+      "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/assimilation_manifest.json"
+    },
+    {
+      "decision": "verified_no_change",
+      "reason": "They are inputs to the new theorem and their statements and authority do not change.",
+      "surface": "existing measure-one and injective-coding claims"
+    },
+    {
+      "decision": "verified_no_change",
+      "reason": "The new identity is measure-theoretic and supplies no arithmetic information on the null set of rational points.",
+      "surface": "rational-membership and universal Erdos 257 claims"
+    },
+    {
+      "decision": "outside_scope",
+      "reason": "Generic Python exact-arithmetic vocabulary is not a mathematical consequence edge.",
+      "surface": "mathematical_consequence_map candidates matched only by Fraction"
+    }
+  ],
+  "finite_cylinder_audit": {
+    "all_stage_volume_lower_bounds_strictly_above_one": true,
+    "all_strict_sibling_gaps_certified": true,
+    "largest_prefix_count": 16777216,
+    "rows": [
+      {
+        "depth": 1,
+        "fair_prefix_mass": "1/2",
+        "prefix_count": 2,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11421,
+          "numerator_bits": 11419,
+          "sha256": "ab5eb27fa2696d8aa1e7fefa1f16185def39aa57a6fe0359b84ac031df0ec9d2"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11421,
+          "sha256": "211893376f5d5b4a2a2552c70c3b28a9b08aadf6cf602bdcd15a042e0dee07ca"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11422,
+          "sha256": "29b097e6fa3d60bfa7689dddaf3d7237cf084ae7b2b4d2c3f048102acdf62cb8"
+        },
+        "tail_lower": {
+          "denominator_bits": 11422,
+          "numerator_bits": 11421,
+          "sha256": "928e2f7a8761c93a20028120885681922fb26501349edafc7c0a0a65f4aee916"
+        },
+        "tail_upper": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11422,
+          "sha256": "c014d1f4f1e19c11cd6a51f6bf5c642c09248a959a3ad5fe221cfd9fb7f4a386"
+        }
+      },
+      {
+        "depth": 2,
+        "fair_prefix_mass": "1/4",
+        "prefix_count": 4,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11420,
+          "numerator_bits": 11416,
+          "sha256": "60a91db488273979b89a4e21ddfd1765579a6202ad0d49038dc642713fb1269a"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11419,
+          "sha256": "ef15a2cf81ef5c8eedb637d205db3c9a96cfa0d06acc11c299f56971033c780b"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11419,
+          "sha256": "bb282b4012fc8e9d4a386dda6ec63cab9b80cade9481ac72b7740d842b6fcb1d"
+        },
+        "tail_lower": {
+          "denominator_bits": 11422,
+          "numerator_bits": 11420,
+          "sha256": "32c1817d1b425dd4fd5612670589e56a63ac7a0ba205a25c871c7198bd8fb797"
+        },
+        "tail_upper": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11421,
+          "sha256": "cf62e3387efcd586ae94c33397ef919820d52256328671dbafff5b2b798108e4"
+        }
+      },
+      {
+        "depth": 3,
+        "fair_prefix_mass": "1/8",
+        "prefix_count": 8,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11419,
+          "numerator_bits": 11414,
+          "sha256": "35c185063bbaf8f27833f73e338bd18d2778a3cf0e5493f58c714c5a59d76119"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11418,
+          "sha256": "f8ace553a01e2b236fb40933eccc7f45e00069ddf0a7620da014c96f1c3c942c"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11417,
+          "sha256": "40922af618e549b93e71aca8474f5e29972c8ea50c6276814ddc0d91a301e61d"
+        },
+        "tail_lower": {
+          "denominator_bits": 11422,
+          "numerator_bits": 11419,
+          "sha256": "fec18eb5cab4fd9b6f6f0fa3a5c859bf15a90a26759c633dcd63a2a6bf60aae4"
+        },
+        "tail_upper": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11420,
+          "sha256": "9fed510b554dba92db65c82228df0da58424ae7a5e7d30c417ad3c22b43ea233"
+        }
+      },
+      {
+        "depth": 4,
+        "fair_prefix_mass": "1/16",
+        "prefix_count": 16,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11418,
+          "numerator_bits": 11412,
+          "sha256": "48a3c425e88439a0da88bf81c12e0ae752c8b1d6d7a654c0983f27932b1dab55"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11417,
+          "sha256": "dff92017236a04edfd6aa1a71d7c198c2e3ccbbc60f1df4ad7ca478467d4fdee"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11414,
+          "sha256": "c5f7a95521cb03ae3cda0261aed3aa7da124ac9728005293013d8dbfad906d07"
+        },
+        "tail_lower": {
+          "denominator_bits": 11422,
+          "numerator_bits": 11418,
+          "sha256": "283875219baa9f65e847bc450d003267d64f0a1c8f79bfaf92cb86193365ca6b"
+        },
+        "tail_upper": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11419,
+          "sha256": "066b824ec81662c79b7aeaf08d23b89115c68b5ebb3d80781371702c5ad1db29"
+        }
+      },
+      {
+        "depth": 5,
+        "fair_prefix_mass": "1/32",
+        "prefix_count": 32,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11417,
+          "numerator_bits": 11410,
+          "sha256": "fd3a48f4f1f531dd91455778c3ef02c2f287a6f5056e985fb6bf9cfa28782002"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11416,
+          "sha256": "98ccda90c28906299a47f743bfdff4b447ff035a3210d09c10507290d1ae8d06"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11412,
+          "sha256": "00e01a28a655a04bb29c33f98d4b1b41535b162c022165e2cfa22076dff52d94"
+        },
+        "tail_lower": {
+          "denominator_bits": 11422,
+          "numerator_bits": 11417,
+          "sha256": "13b303a0de126995d4bbea28fefea37a6199f6b909a4ef013e66cbdb64b9ae17"
+        },
+        "tail_upper": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11418,
+          "sha256": "4fc54149946fd507442b013a270c8613c83690c03cc4b731cba884b324150fb8"
+        }
+      },
+      {
+        "depth": 6,
+        "fair_prefix_mass": "1/64",
+        "prefix_count": 64,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11416,
+          "numerator_bits": 11408,
+          "sha256": "e954477a9755bf0361c406e77dfe57b212ef0b9cb588e189b517657ad2245d31"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11415,
+          "sha256": "87e8525a9050a27ba93b92ec6604f56a6c080051c8b4fd413edb692f2a31c859"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11410,
+          "sha256": "577a8d9fe54e846c429f6e40bc71cbf90821ae91a6123d68519ce088efd100ef"
+        },
+        "tail_lower": {
+          "denominator_bits": 11422,
+          "numerator_bits": 11416,
+          "sha256": "cb0ac8b92a7483b15e6fef78f891730596c78c40bdc9f2dd2c4e6a717fad5d96"
+        },
+        "tail_upper": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11417,
+          "sha256": "016dfb46393562785c54ca8e8ca78b6b584e4eedd5294dcfecf353bc045e88cb"
+        }
+      },
+      {
+        "depth": 7,
+        "fair_prefix_mass": "1/128",
+        "prefix_count": 128,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11415,
+          "numerator_bits": 11406,
+          "sha256": "e4216fac72c91874d334b93a25014e4803308ef80c451c3cfc465b76fab725b1"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11414,
+          "sha256": "1f050d9c13efc39b83278b490aa47ac80971d25ed3968c444e5e66adb0f3f85d"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11408,
+          "sha256": "60230bee6f741dbb007fcb9c8d1cfb8d492b104755dec359be5f5c81fcbd648a"
+        },
+        "tail_lower": {
+          "denominator_bits": 11422,
+          "numerator_bits": 11415,
+          "sha256": "d3f14d6cec0d184143b08c7f14094745acef2d17e037d94fc40852e0e7cf1536"
+        },
+        "tail_upper": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11416,
+          "sha256": "c9412640d618d67d9bc9af735ea813c0c3c508ecb61c524fc4bfeb1576327ade"
+        }
+      },
+      {
+        "depth": 8,
+        "fair_prefix_mass": "1/256",
+        "prefix_count": 256,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11414,
+          "numerator_bits": 11404,
+          "sha256": "01fd228f0045f57b997e047c1f97306fded044dddc95b4b1463deb5f32e008c3"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11413,
+          "sha256": "054c7d5550714a41dde1c9befa3f150c9d1d60224b6a63833aa4607114c42d39"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11406,
+          "sha256": "5f7e20a2114bdd5dc8a640e174cb1ae1539059bdd932dbaa45b5aa72e93ec646"
+        },
+        "tail_lower": {
+          "denominator_bits": 11422,
+          "numerator_bits": 11414,
+          "sha256": "8453f21b9e9285c158e543bd70d177405a9c0c0a4e3fbf54a6057f5bb6133372"
+        },
+        "tail_upper": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11415,
+          "sha256": "533bb91a102a150f3578078584dc60f7248dbc0ce0b8ef45765206157dcd0aac"
+        }
+      },
+      {
+        "depth": 9,
+        "fair_prefix_mass": "1/512",
+        "prefix_count": 512,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11413,
+          "numerator_bits": 11402,
+          "sha256": "161d79c6a16dcd9ced52e4588ee0f5e2d5500261cdc71b5779ec2831c1903f3e"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11412,
+          "sha256": "2b59208bb61caa5fb3d8b3996e328e7059076a7e1dbe4344f4aadc672181e8ec"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11404,
+          "sha256": "0052f90f6e4ceaa7fa3c949d8f70200df6ca6146253458f1a42b4bbab3e3738c"
+        },
+        "tail_lower": {
+          "denominator_bits": 11422,
+          "numerator_bits": 11413,
+          "sha256": "1053df9ee61f95fe6e08e6be2ee4e5c53c8612983ca9a833cc8df96a2ba31559"
+        },
+        "tail_upper": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11414,
+          "sha256": "3aa35a8f5f8fac695f3735d2b21ea070a8f3928ffb2fc31e7c49fb9093fd2988"
+        }
+      },
+      {
+        "depth": 10,
+        "fair_prefix_mass": "1/1024",
+        "prefix_count": 1024,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11412,
+          "numerator_bits": 11400,
+          "sha256": "0d1131b81fb4873d24e313fb1e10199b8f75af8c9c22bc70dfe730a6467226db"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11411,
+          "sha256": "8282a1a5e9a996514efd86a4598a91f09e5eea31db3f496cc790ae6e8daf6ded"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11402,
+          "sha256": "9616b8f2c0d0e61d0a1bd2e90008a561167d0197dbef9d4d77f51862635a3b18"
+        },
+        "tail_lower": {
+          "denominator_bits": 11422,
+          "numerator_bits": 11412,
+          "sha256": "01aaca1594775c6328a0ebb3c179b27cb440daea23176541f1c837724cd2e8d7"
+        },
+        "tail_upper": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11413,
+          "sha256": "20a2bcd262bdb17d8e99320a9643d1facb39bf41c5413a00ed93143863f9f52c"
+        }
+      },
+      {
+        "depth": 11,
+        "fair_prefix_mass": "1/2048",
+        "prefix_count": 2048,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11411,
+          "numerator_bits": 11398,
+          "sha256": "b63017430763c1e51b8cb2eb370d58f90208bdf354927cfd543cef0c0bacc739"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11410,
+          "sha256": "54754de32ab4f5e2f4703f5585c1656f30a5999c691a4aa316575399739c6f8b"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11400,
+          "sha256": "14462b3f644bfa1c98390e83135d5143256f4dadf4ebe48ecd50966e3f14f5f6"
+        },
+        "tail_lower": {
+          "denominator_bits": 11422,
+          "numerator_bits": 11411,
+          "sha256": "a7c719e62428584034d5072757b1e7ce07b907e5084b8ff140f996577b75b561"
+        },
+        "tail_upper": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11412,
+          "sha256": "de25ae3d052955882b91d15c391704d1e8002580d4f0992f221cbb08abecdaae"
+        }
+      },
+      {
+        "depth": 12,
+        "fair_prefix_mass": "1/4096",
+        "prefix_count": 4096,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11410,
+          "numerator_bits": 11396,
+          "sha256": "202fa85ae5f0fe47c35c275291ed37090a4ee463249d16fe41fe50996d96003f"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11409,
+          "sha256": "3112f75d037c1442c67846dfe72955a0f11cc49aab5ce9724f51c2ad2dde412c"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11398,
+          "sha256": "20f59ec264fb09d482e81c6aad7b56c4d056dda27c689baefd2e539148b677d7"
+        },
+        "tail_lower": {
+          "denominator_bits": 11422,
+          "numerator_bits": 11410,
+          "sha256": "c9464622e55167bc86473b97254cbd8ad855d2e56ab36785f80ca4a9ba6d17ae"
+        },
+        "tail_upper": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11411,
+          "sha256": "ddb52dcbc6911d54dbc6ed0d4dde9287a069dd462c39325753e23b2d166d1160"
+        }
+      },
+      {
+        "depth": 13,
+        "fair_prefix_mass": "1/8192",
+        "prefix_count": 8192,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11409,
+          "numerator_bits": 11394,
+          "sha256": "3c7dd5b3fa0848bc74be554920ae4d31931cb0961f7b09e3c6c399c8c0881b0b"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11408,
+          "sha256": "4fcc394c1a249ce83a06250f8a525e59fd6bf47ea7aa824837205771940a774e"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11396,
+          "sha256": "96e294fee1dd6c4cfa63b452c80b8f461fdfddc39a8f5f2fca4f2a57eb6a0cc2"
+        },
+        "tail_lower": {
+          "denominator_bits": 11422,
+          "numerator_bits": 11409,
+          "sha256": "e30478ab34cd99373044ebf5887455223f33d1575a42d06e7a954cb8b23eb281"
+        },
+        "tail_upper": {
+          "denominator_bits": 11423,
+          "numerator_bits": 11410,
+          "sha256": "c2f9371d2c9432d17c80b61030f0fb43ff16c17664b06bc74d62579b67f19b31"
+        }
+      },
+      {
+        "depth": 14,
+        "fair_prefix_mass": "1/16384",
+        "prefix_count": 16384,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11413,
+          "numerator_bits": 11398,
+          "sha256": "43e714cad50f3bdb49a30031732918d6c273dfb498af64f23c4ebf0bd8214065"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11413,
+          "sha256": "429856b2b593bc6e2c724a9386985be91b190bc12bb0723bb7fb37ca03c919c8"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11400,
+          "sha256": "de9303bc7441eed1fe256d1694ffbc6d08a41d30d0ef00eee99533c740d77591"
+        },
+        "tail_lower": {
+          "denominator_bits": 11427,
+          "numerator_bits": 11413,
+          "sha256": "6ed10e90f0d38b0d43a61030f0c4f33e6049c0522a4712c82ad91294ae1b90b4"
+        },
+        "tail_upper": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11414,
+          "sha256": "6db9f41c3ccffaa4a9619ababc2bf0c081c4258e6a125743b4ce697be55c787b"
+        }
+      },
+      {
+        "depth": 15,
+        "fair_prefix_mass": "1/32768",
+        "prefix_count": 32768,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11412,
+          "numerator_bits": 11396,
+          "sha256": "b538e106afb88832b23a2850fff61ae73f98b0f5edcfadffbe2108da8e128f38"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11412,
+          "sha256": "dd052b4b1bfc43d1313232e4a2430ade0cffec1b8146ecc4ba53c30f317b6050"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11398,
+          "sha256": "fbaee1f640b057f59c0417b575ca3426d660fb540cede5fce5c21cb39aceb27b"
+        },
+        "tail_lower": {
+          "denominator_bits": 11427,
+          "numerator_bits": 11412,
+          "sha256": "d09c399c16a70ca9c9d4221e0a74ed1337632090f6329391a869891ccc19018b"
+        },
+        "tail_upper": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11413,
+          "sha256": "dba98d527e23789f5ba585eebe14215da47172809d435c2ae67546fafbddd1f8"
+        }
+      },
+      {
+        "depth": 16,
+        "fair_prefix_mass": "1/65536",
+        "prefix_count": 65536,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11411,
+          "numerator_bits": 11394,
+          "sha256": "34a5f9b58bdaccaa4cac16d59c57cc44efeb1f5d121fde5855ad0d03825fe395"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11411,
+          "sha256": "64ff5dc7a750dc578680836300f0c5b23bb514feab5967a7daa00319a671566b"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11396,
+          "sha256": "611d54df878d11fc73b6cfcd400527ae7454eb9a039aa1f820f6659691ac77f0"
+        },
+        "tail_lower": {
+          "denominator_bits": 11427,
+          "numerator_bits": 11411,
+          "sha256": "4d0ffd22412eba71d9201b07541510b1a42543922464692732515f512e4bc8a0"
+        },
+        "tail_upper": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11412,
+          "sha256": "c53a2a62dc6835a07812e7421f570c052f0a2123753e70aa1fa1dfdbfef27d08"
+        }
+      },
+      {
+        "depth": 17,
+        "fair_prefix_mass": "1/131072",
+        "prefix_count": 131072,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11410,
+          "numerator_bits": 11392,
+          "sha256": "a95a7b699cf5ea5de784a9f6bfd368186f8a8c35423da140948eba36d01027c6"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11410,
+          "sha256": "57e54a667779eb389415eca9be9cd3cc1649da8e2fc6394d33cd26279b626aed"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11394,
+          "sha256": "d17b94343e1d10953ddb2eff56dc3473601ff851d97588dd2c7ff4f7745dcb59"
+        },
+        "tail_lower": {
+          "denominator_bits": 11427,
+          "numerator_bits": 11410,
+          "sha256": "10ab9207ee3798e09c5757baa1506130cf33d3dc8cea105c0161b6fa9b1d77d9"
+        },
+        "tail_upper": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11411,
+          "sha256": "e1bb7ae535fa91735835f6ef49eb2284e6dae9b8418f55927ca8629815ea44aa"
+        }
+      },
+      {
+        "depth": 18,
+        "fair_prefix_mass": "1/262144",
+        "prefix_count": 262144,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11409,
+          "numerator_bits": 11390,
+          "sha256": "8140b780202c63433b69847f49831225c777d8b93dfd3de577ac78c2184211f7"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11409,
+          "sha256": "1913e96dc4da69ab51fa4e1b065ba1041dcab7f5a1556b18a239c35e421d8532"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11392,
+          "sha256": "3721ebbd61d7194c745b8b8bba16cfcb7e4c35ec7063b2f044542dc49b64a925"
+        },
+        "tail_lower": {
+          "denominator_bits": 11427,
+          "numerator_bits": 11409,
+          "sha256": "7631346903faed7fc11b4945a733e1896c50b6ad6059f6ac75e95d5973728120"
+        },
+        "tail_upper": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11410,
+          "sha256": "ba78a08b891cfaf621fed6275852943a080505e6ef1b3a3e65676747bc614379"
+        }
+      },
+      {
+        "depth": 19,
+        "fair_prefix_mass": "1/524288",
+        "prefix_count": 524288,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11408,
+          "numerator_bits": 11388,
+          "sha256": "4e4b8448663b5f17aee58c9fc1bbfc429c97bd63912c0cabddcb3896a92c5d32"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11408,
+          "sha256": "9be624def5997391a79cc863930184d9a72bd2fbd71c8a34d4f11f0589973076"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11390,
+          "sha256": "7915efbe0167a7aa4fc844ac3e7ecf68f72740ebc0ce1165dd8a4bb2a254b7c9"
+        },
+        "tail_lower": {
+          "denominator_bits": 11427,
+          "numerator_bits": 11408,
+          "sha256": "588feb71fb0a585bd7a69f5c731ddec9a345fa4b631d4f19c5b8648c8231ab3d"
+        },
+        "tail_upper": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11409,
+          "sha256": "94b656fb6292273d0fb223a819bcbcac1546a852370408c2351b57ded9481544"
+        }
+      },
+      {
+        "depth": 20,
+        "fair_prefix_mass": "1/1048576",
+        "prefix_count": 1048576,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11407,
+          "numerator_bits": 11386,
+          "sha256": "79f7c74add804d6b7d9869bc80a60c0758600b35625a45b59e63fe7dcae5b49a"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11407,
+          "sha256": "6cd87ff41ddf890b910c7e3aebf03851aa5bb635efee64697d006f5964390dc0"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11388,
+          "sha256": "7c7e349e06d43e285c869389b35a4519d1f2492a7ba46b64dae833ec3c40b0ee"
+        },
+        "tail_lower": {
+          "denominator_bits": 11427,
+          "numerator_bits": 11407,
+          "sha256": "65a94fd09bf333b5cc3d87a9779d37f9feee45ff63a5c45d20cb48effc8551c3"
+        },
+        "tail_upper": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11408,
+          "sha256": "f8929a9f050b70326e9ceae63806495132cbbe2560e126bbc6d373196e871d61"
+        }
+      },
+      {
+        "depth": 21,
+        "fair_prefix_mass": "1/2097152",
+        "prefix_count": 2097152,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11406,
+          "numerator_bits": 11384,
+          "sha256": "1245288d66d535a97a8b7a88dc3b92fa6c5050642e673d37c1b830a50d1f534e"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11406,
+          "sha256": "8aa33ccf08957487b544efd02cb8f9be975770387fb6a426828aa4dafbd914a2"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11386,
+          "sha256": "a1fa106e8a66eee8acf56d76756c4c546af8b443615c48ff99557e392a226970"
+        },
+        "tail_lower": {
+          "denominator_bits": 11427,
+          "numerator_bits": 11406,
+          "sha256": "3ce05cfd9ba67a02e741c44bbab0911af416bb94a08037928ba9d13f9ba28bd9"
+        },
+        "tail_upper": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11407,
+          "sha256": "b9be8f83d87f1addc6e9f25ea869c5bddc9406262dd4156449a8d3c24baab77f"
+        }
+      },
+      {
+        "depth": 22,
+        "fair_prefix_mass": "1/4194304",
+        "prefix_count": 4194304,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11405,
+          "numerator_bits": 11382,
+          "sha256": "ad64cb4c5048f8fdf51080f46173e5ae7460aedaa2ed22b92485eebf3432681c"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11405,
+          "sha256": "2faae4e7a0e89fdf33dc51c999885265e54b71c3f9286b0287d0d3ae9dfa8001"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11384,
+          "sha256": "4fac0fcd27218e672f725d403d7023f2b776fc4b0041bdc453daf1883122c978"
+        },
+        "tail_lower": {
+          "denominator_bits": 11427,
+          "numerator_bits": 11405,
+          "sha256": "82cd8fb36169d2bf3807d66e72d75965b5881c94bd4b731951a08389d7843c25"
+        },
+        "tail_upper": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11406,
+          "sha256": "eecbaae15cff52389f52556f0257426dd83fb22600dc31ab88904d819fd86345"
+        }
+      },
+      {
+        "depth": 23,
+        "fair_prefix_mass": "1/8388608",
+        "prefix_count": 8388608,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11404,
+          "numerator_bits": 11380,
+          "sha256": "1536bb4b57b4090fdc5fa0d6c8227efd71db4bb4fab025f03195d937a04b3858"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11404,
+          "sha256": "2de1152cd7f7a62cb42fc93239d528e20cac31e4d4c358f2c5eac37ed8cc0d36"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11382,
+          "sha256": "3b3728874f0ed2ddbb79c9086690055580e9d2349742dbc57b430bae378437ac"
+        },
+        "tail_lower": {
+          "denominator_bits": 11427,
+          "numerator_bits": 11404,
+          "sha256": "c823987aeb56a684a551f4abd1d8a6ccbe04e50f2b090065ed5058ea83438292"
+        },
+        "tail_upper": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11405,
+          "sha256": "cafbe4e9c95b483576cb0a2e32b2380ba7eda6f30f8b8f0717e15be7c2020b7c"
+        }
+      },
+      {
+        "depth": 24,
+        "fair_prefix_mass": "1/16777216",
+        "prefix_count": 16777216,
+        "stage_volume_lower_minus_one": {
+          "denominator_bits": 11403,
+          "numerator_bits": 11378,
+          "sha256": "d3076a0b712b2a157a2c19f18a6dccde4c0c89fd002fbef07af4a231cdaf6ce3"
+        },
+        "stage_volume_upper_minus_one": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11403,
+          "sha256": "c87a1423046904c7a9c99f1b716038218fb0d6f602e55e3cfa4aace929b08334"
+        },
+        "strict_sibling_gap_lower": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11380,
+          "sha256": "742f5c7c1a0727f1e7f20c7af859d9e2745d6e7224f2cb759350f676dadc7e76"
+        },
+        "tail_lower": {
+          "denominator_bits": 11427,
+          "numerator_bits": 11403,
+          "sha256": "c4c5a064af8b954a04feb23721d3081256c6367176bbf452f2bb64e97d44a147"
+        },
+        "tail_upper": {
+          "denominator_bits": 11428,
+          "numerator_bits": 11404,
+          "sha256": "df2bcda58ed1eb0e42873c8c26e4182172ba3b990f5e77068e316c14c535f16d"
+        }
+      }
+    ],
+    "stage_volumes_strictly_decrease_certified": true
+  },
+  "parameters": {
+    "depth": 24,
+    "tail_cutoff": 192
+  },
+  "schema": "erdos257_fair_coding_pushforward_audit_v0"
+}

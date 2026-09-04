@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_mixed_truncated_connector_open_coefficient_cell",
+  "recorded_at": "2026-08-25",
+  "input_stage": "exact_mixed_endpoint_radius_two_thirds_connector_with_uniform_chord_margin",
+  "output_stage": "quantitative_complex_coefficient_neighborhood_with_lean_kernel",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticMixedTruncatedNeighborhood.md",
+    "ErdosProblems/Erdos1041/SexticMixedTruncatedNeighborhood.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_mixed_truncated_neighborhood.py"
+  ],
+  "human_understanding_delta": "The strict endpoint fixture is stable on a literal product ball in the two complex low-mode coefficients: |A-A0| and |B-B0| at most 10^-4 preserve the same adjacent pair and rational radius 2/3. The chord keeps at least 3/5000 slack, direction one starts with the much larger exact margin 41/2916, and direction zero is protected by sign-stable low-mode projections. This is the first certified open cell of the residual moderate mixed atlas.",
+  "verification_state": {
+    "analytic": "complete_complex_coefficient_perturbation_and_explicit_margin_proof",
+    "symbolic": "exact_rational_margin_shifted_barrier_and_chord_norm_replay_passed",
+    "lean": "warning_free_canonical_cached_build_and_final_serialized_authority_check_passed",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "Open coefficient-cell theorem, expert explanation, exact checker, and atlas handoff validated",
+  "unresolved_downstream_bottleneck": "Transport or enlarge this cell and certify enough additional boundary fixtures to cover the compact moderate mixed coefficient band.",
+  "next_stage_owner": "Refinery: quotient the coefficient ball by sixth-root symmetry, compute its exact covered parameter box, and target the closest uncovered boundary point with the same compute-to-Bernstein-to-Lean loop.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic stability derivation and Lean formalization under operator direction",
+    "computation": "Exact SymPy replay checks the rational slack, shifted ray barrier, chord norm identity, and endpoint sign margins; computation guided constants but is not proof authority.",
+    "formalization": "Lean checks the actual complex tangent model, exact endpoint identities, norm perturbation bound, quantitative ray margin, and the full coefficient-ball connector.",
+    "claim_boundary": "Proves one explicit open cell in the homogeneous sextic tangent coefficient space. It does not cover the compact mixed band, transfer to the full nonlinear polynomial, or solve unrestricted Erdos #1041."
+  }
+}

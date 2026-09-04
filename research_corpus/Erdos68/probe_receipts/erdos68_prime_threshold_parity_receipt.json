@@ -1,0 +1,153 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+      "falsification_consequence": "Discard parity as the explanation and classify the first late odd failure.",
+      "survival_consequence": "Prove both the parity exclusion and the unit-carry boundary clause, prove the adjacent-carry sufficient rule, or prove the combined odd-index threshold theorem directly."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "eventual_odd_index_tailfree_threshold",
+      "statement": "Every odd m>=25 satisfies D_m+A_m>=2/m, the tail-free predecessor-gap threshold."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeThresholdParityLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/probes/erdos68_prime_threshold_parity.py",
+        "state/formal_math/probes/erdos68_gap_scalar_spectrum_receipt.json",
+        "state/formal_math/probes/erdos68_digit_law_receipt.json",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Independently recompute the exact Fraction prefix, verify it against the certified GMP-derived scalar-spectrum receipt, and filter the complete D_m=-1 list through 300000 by parity and primality, then bind it to the digit-law receipt's complete D_m=0 threshold margins.",
+      "falsifier": "One odd m>=25 with D_m=-1, or one odd D_m=0 index with A_m<2/m.",
+      "id": "certified_threshold_failure_parity_audit",
+      "question": "Does any odd or prime index after 23 either have D_m=-1 or fail the A_m>=2/m boundary when D_m=0?",
+      "stop_condition": "Stop at the certified horizon m=300000."
+    },
+    "problem": {
+      "claim_ceiling": "Finite exact parity pattern through m=300000; no cofinal odd-index theorem.",
+      "id": "erdos_68",
+      "target_statement": "Prove irrationality of sum_(n>=2) 1/(n!-1)."
+    },
+    "result": {
+      "status": "finite_support",
+      "summary": "Through m=300000, D_m=-1 occurs at odd indices only at 5,9,23, and every certified D_m=0 index clears its separate threshold margin. Thus the full threshold has no odd failure after 23 in this horizon."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "all_falsifiers_pass": true,
+    "candidate_theorem": "For every odd m >= 25, D_m + A_m >= 2/m; equivalently, the tail-free predecessor threshold holds. It splits into excluding D_m=-1 and controlling the D_m=0 boundary A_m>=2/m. A stronger purely discrete sufficient target is: carry_m>=1, and carry_m=1 implies carry_(m+1)>=3.",
+    "certified_horizon": 300000,
+    "certified_threshold_failures": [
+      5,
+      9,
+      23,
+      60,
+      470,
+      3026,
+      19222,
+      27472,
+      30324,
+      35366,
+      65768
+    ],
+    "claim_boundary": "Exact derived audit through m=300000, with an independently recomputed Fraction prefix and a source-bound audit of every unit-carry margin. It discovers a two-branch odd-index conjecture but proves no cofinal odd-index theorem and no irrationality result.",
+    "direct_exact_failures": [
+      5,
+      9,
+      23,
+      60
+    ],
+    "direct_exact_horizon": 100,
+    "failed_next_carry_rule": [],
+    "failed_unit_carry_margins": [],
+    "falsifiers": {
+      "digit-law margin rows cover every certified unit carry": true,
+      "direct exact recurrence reproduces certified prefix": true,
+      "every certified unit carry clears the threshold sliver": true,
+      "every certified unit carry has next carry at least three": true,
+      "no odd failure from 25 through certified horizon": true,
+      "no odd unit-carry sliver failure from 25 through certified horizon": true,
+      "no prime failure from 29 through certified horizon": true,
+      "only odd failures are 5, 9, 23": true,
+      "only prime failures are 5 and 23": true,
+      "upstream exact failure list has expected payload": true
+    },
+    "late_odd_failures": [],
+    "late_odd_unit_margin_failures": [],
+    "late_prime_failures": [],
+    "odd_failures": [
+      5,
+      9,
+      23
+    ],
+    "odd_unit_carries": [
+      591,
+      1407,
+      10991
+    ],
+    "prime_failures": [
+      5,
+      23
+    ],
+    "target_composition": "The full candidate theorem would make every prime p >= 29 a threshold certificate; Euclid plus the Lean cofinal-threshold consumer would prove irrationality of sum_(n>=2) 1/(n!-1).",
+    "unit_carries": [
+      52,
+      591,
+      1030,
+      1407,
+      1438,
+      2164,
+      4258,
+      10991,
+      21236
+    ],
+    "unit_carry_next_digits": {
+      "1030": 681,
+      "10991": 2824,
+      "1407": 572,
+      "1438": 147,
+      "21236": 10170,
+      "2164": 1772,
+      "4258": 2894,
+      "52": 31,
+      "591": 474
+    }
+  },
+  "schema": "erdos68-prime-threshold-parity/1",
+  "source_records": [
+    {
+      "byte_length": 11267,
+      "path": "formal_math/probes/erdos68_prime_threshold_parity.py",
+      "sha256": "cf81995a885b5ac3ccb9d89d6d69f1be550b6dbcfab63de35c32062ea62291e6"
+    },
+    {
+      "byte_length": 3161,
+      "path": "state/formal_math/probes/erdos68_gap_scalar_spectrum_receipt.json",
+      "sha256": "b99927bf3956b05aa03bd30cef4ed162d2cb9d8ec0584fa9e46944da742edb34"
+    },
+    {
+      "byte_length": 18495,
+      "path": "state/formal_math/probes/erdos68_digit_law_receipt.json",
+      "sha256": "487614cb73b71ceac1c2fe81b5ffca75ea5504d9740d688d918ffa544779f5ec"
+    },
+    {
+      "byte_length": 288482,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+      "sha256": "ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849"
+    },
+    {
+      "byte_length": 3478,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/PrimeThresholdParityLab.md",
+      "sha256": "37516bf1398af31f1a277b5e64a8111d0f4e9bf2a4f11ccf2a8050a41f1eb704"
+    }
+  ],
+  "status": "verified_exact_finite_parity_pattern"
+}

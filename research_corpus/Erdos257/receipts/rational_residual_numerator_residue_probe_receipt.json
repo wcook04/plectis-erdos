@@ -1,0 +1,3937 @@
+{
+  "analysis_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/RationalResidualNumeratorResidueProbe.md",
+  "analytic_boundary": {
+    "eliminated": "The actual rational greedy numerator orbit is not confined to one dyadic projective class at every selected primitive prime.",
+    "not_claimed": [
+      "unbounded coset proliferation",
+      "membership of any tested rational target",
+      "a proof or disproof of Erd\u0151s problem 257"
+    ],
+    "not_eliminated": "An all-depth source-specific relation involving many primitive channels simultaneously, rather than bounded one-channel trapping."
+  },
+  "claim_status": "exact finite source-reachable mechanism falsifier",
+  "exact_setup": {
+    "primitive_channel": "p divides 2^k-1 and ord_p(2)=k for a selected k",
+    "projective_coordinate": "(a_N mod p)^k; equal values iff residues occupy the same coset of <2> in F_p^*",
+    "residual": "r_N=y-sum_(k<=N,b_k=1) 1/(2^k-1)=a_N/D_N in lowest terms"
+  },
+  "parameters": {
+    "depth": 180,
+    "max_selected_period": 60
+  },
+  "schema": "erdos257_rational_residual_numerator_residue_probe_v0",
+  "summary": {
+    "channels_escaping_first_dyadic_coset": 117,
+    "maximum_distinct_dyadic_cosets_in_one_channel": 74,
+    "median_distinct_dyadic_cosets": 16,
+    "nontrivial_quotient_channel_count": 117,
+    "primitive_channel_count": 138,
+    "target_count": 5,
+    "universal_single_dyadic_coset_trap_falsified": true,
+    "widest_channel": {
+      "active_horizon_count": 164,
+      "distinct_dyadic_coset_count": 74,
+      "dyadic_subgroup_order": 17,
+      "first_coset_escape": {
+        "coset_signature": 12272,
+        "horizon": 19,
+        "residue": 125591
+      },
+      "initial_active_state": {
+        "coset_signature": 51256,
+        "horizon": 17,
+        "residue": 85554
+      },
+      "ordered_coset_signature_sha256": "702f8217042dac8ec0bc52346edafa3475a71977a680febe2d5f6f6bf37743da",
+      "primitive_prime": 131071,
+      "quotient_coset_capacity": 7710,
+      "selected_period": 17,
+      "signature_change_count": 73,
+      "single_dyadic_coset": false,
+      "smallest_centered_residue": {
+        "centered_residue": 1167,
+        "horizon": 153,
+        "prime": 131071
+      },
+      "target": "1/465"
+    }
+  },
+  "targets": [
+    {
+      "all_nontrivial_channels_single_coset": false,
+      "channels": [
+        {
+          "active_horizon_count": 179,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 2,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 2,
+            "residue": 1
+          },
+          "ordered_coset_signature_sha256": "c9b4ff2d0bdfab66250afe751d888038464fe765d82cd6eb18009d34d75b49f5",
+          "primitive_prime": 3,
+          "quotient_coset_capacity": 1,
+          "selected_period": 2,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 2,
+            "prime": 3
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 178,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 3,
+          "first_coset_escape": {
+            "coset_signature": 6,
+            "horizon": 21,
+            "residue": 3
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 3,
+            "residue": 1
+          },
+          "ordered_coset_signature_sha256": "cf8a7727b17906692ea8e22fc10ec969cfeb09b79cdbf7bfcdefe226824149d4",
+          "primitive_prime": 7,
+          "quotient_coset_capacity": 2,
+          "selected_period": 3,
+          "signature_change_count": 30,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 3,
+            "prime": 7
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 174,
+          "distinct_dyadic_coset_count": 17,
+          "dyadic_subgroup_order": 7,
+          "first_coset_escape": {
+            "coset_signature": 68,
+            "horizon": 20,
+            "residue": 21
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 7,
+            "residue": 1
+          },
+          "ordered_coset_signature_sha256": "e398e7ca05f42ddd5ee4c0fab92fee9f374083e0e1691328e85f3f8b095a0f8c",
+          "primitive_prime": 127,
+          "quotient_coset_capacity": 18,
+          "selected_period": 7,
+          "signature_change_count": 56,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 7,
+            "prime": 127
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 167,
+          "distinct_dyadic_coset_count": 3,
+          "dyadic_subgroup_order": 14,
+          "first_coset_escape": {
+            "coset_signature": 36,
+            "horizon": 21,
+            "residue": 3
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 14,
+            "residue": 1
+          },
+          "ordered_coset_signature_sha256": "3a784f5371638e4e2b131c989628b16cc95a667891b468f7372a1834847852cf",
+          "primitive_prime": 43,
+          "quotient_coset_capacity": 3,
+          "selected_period": 14,
+          "signature_change_count": 36,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 14,
+            "prime": 43
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 161,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 20,
+          "first_coset_escape": {
+            "coset_signature": 40,
+            "horizon": 21,
+            "residue": 29
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 20,
+            "residue": 33
+          },
+          "ordered_coset_signature_sha256": "f88449ea100488b71d3e1ee4acf7bc89e067aadaa61fc6a8ede9674348d84659",
+          "primitive_prime": 41,
+          "quotient_coset_capacity": 2,
+          "selected_period": 20,
+          "signature_change_count": 31,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 47,
+            "prime": 41
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 160,
+          "distinct_dyadic_coset_count": 16,
+          "dyadic_subgroup_order": 21,
+          "first_coset_escape": {
+            "coset_signature": 59,
+            "horizon": 26,
+            "residue": 322
+          },
+          "initial_active_state": {
+            "coset_signature": 336,
+            "horizon": 21,
+            "residue": 129
+          },
+          "ordered_coset_signature_sha256": "612511afc1c4a9c5af93f3d54b98b2d50e43ef20078fe32d91e7a0098cb39fdd",
+          "primitive_prime": 337,
+          "quotient_coset_capacity": 16,
+          "selected_period": 21,
+          "signature_change_count": 65,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 74,
+            "prime": 337
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 155,
+          "distinct_dyadic_coset_count": 52,
+          "dyadic_subgroup_order": 26,
+          "first_coset_escape": {
+            "coset_signature": 2412,
+            "horizon": 27,
+            "residue": 391
+          },
+          "initial_active_state": {
+            "coset_signature": 1648,
+            "horizon": 26,
+            "residue": 6
+          },
+          "ordered_coset_signature_sha256": "dabb4d8b7dc670919f66f064d10ae42126636978d0a294c27a0fe5a1b6c3d2cf",
+          "primitive_prime": 2731,
+          "quotient_coset_capacity": 105,
+          "selected_period": 26,
+          "signature_change_count": 64,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 6,
+            "horizon": 26,
+            "prime": 2731
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 154,
+          "distinct_dyadic_coset_count": 67,
+          "dyadic_subgroup_order": 27,
+          "first_coset_escape": {
+            "coset_signature": 170948,
+            "horizon": 32,
+            "residue": 213620
+          },
+          "initial_active_state": {
+            "coset_signature": 150892,
+            "horizon": 27,
+            "residue": 213511
+          },
+          "ordered_coset_signature_sha256": "647e132b1f9605bb90639917f7214b18a7fad1b3cdf71b00c508256ea0eeca93",
+          "primitive_prime": 262657,
+          "quotient_coset_capacity": 9728,
+          "selected_period": 27,
+          "signature_change_count": 66,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 3580,
+            "horizon": 152,
+            "prime": 262657
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 149,
+          "distinct_dyadic_coset_count": 63,
+          "dyadic_subgroup_order": 32,
+          "first_coset_escape": {
+            "coset_signature": 37313,
+            "horizon": 33,
+            "residue": 33377
+          },
+          "initial_active_state": {
+            "coset_signature": 13495,
+            "horizon": 32,
+            "residue": 37028
+          },
+          "ordered_coset_signature_sha256": "400d0eb3a00204655d495e6c2b43229ef3124902866e457007f0e26bd43f9478",
+          "primitive_prime": 65537,
+          "quotient_coset_capacity": 2048,
+          "selected_period": 32,
+          "signature_change_count": 64,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 293,
+            "horizon": 44,
+            "prime": 65537
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 148,
+          "distinct_dyadic_coset_count": 68,
+          "dyadic_subgroup_order": 33,
+          "first_coset_escape": {
+            "coset_signature": 484776,
+            "horizon": 34,
+            "residue": 171144
+          },
+          "initial_active_state": {
+            "coset_signature": 164945,
+            "horizon": 33,
+            "residue": 513432
+          },
+          "ordered_coset_signature_sha256": "3c8b2c5a6ed7af8156007bdc99cbb4eadf4065fe14c8636542b85674303ad332",
+          "primitive_prime": 599479,
+          "quotient_coset_capacity": 18166,
+          "selected_period": 33,
+          "signature_change_count": 67,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 6797,
+            "horizon": 51,
+            "prime": 599479
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 147,
+          "distinct_dyadic_coset_count": 63,
+          "dyadic_subgroup_order": 34,
+          "first_coset_escape": {
+            "coset_signature": 41931,
+            "horizon": 35,
+            "residue": 38501
+          },
+          "initial_active_state": {
+            "coset_signature": 9309,
+            "horizon": 34,
+            "residue": 14358
+          },
+          "ordered_coset_signature_sha256": "5a523d8ed4a462f828f08de1677afc085d3081fb6ba081d0d7788c2efa8d8254",
+          "primitive_prime": 43691,
+          "quotient_coset_capacity": 1285,
+          "selected_period": 34,
+          "signature_change_count": 63,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 54,
+            "horizon": 160,
+            "prime": 43691
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 146,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 35,
+          "first_coset_escape": {
+            "coset_signature": 70,
+            "horizon": 38,
+            "residue": 13
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 35,
+            "residue": 36
+          },
+          "ordered_coset_signature_sha256": "f19142c9872444d409e44c6625bbdd123b27a89c867632291eb167d680a00391",
+          "primitive_prime": 71,
+          "quotient_coset_capacity": 2,
+          "selected_period": 35,
+          "signature_change_count": 29,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 49,
+            "prime": 71
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 143,
+          "distinct_dyadic_coset_count": 60,
+          "dyadic_subgroup_order": 38,
+          "first_coset_escape": {
+            "coset_signature": 123940,
+            "horizon": 39,
+            "residue": 65920
+          },
+          "initial_active_state": {
+            "coset_signature": 3242,
+            "horizon": 38,
+            "residue": 55639
+          },
+          "ordered_coset_signature_sha256": "53d998f5f21ec39fded4934238cb0b8bcebfd05547f32d9da778c83b172c14ab",
+          "primitive_prime": 174763,
+          "quotient_coset_capacity": 4599,
+          "selected_period": 38,
+          "signature_change_count": 60,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 61,
+            "horizon": 46,
+            "prime": 174763
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 142,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 39,
+          "first_coset_escape": {
+            "coset_signature": 1,
+            "horizon": 42,
+            "residue": 44
+          },
+          "initial_active_state": {
+            "coset_signature": 78,
+            "horizon": 39,
+            "residue": 48
+          },
+          "ordered_coset_signature_sha256": "2386e4dde1943a8fd526832cdd2d882326735ae715e2fc599989253a8d7e7927",
+          "primitive_prime": 79,
+          "quotient_coset_capacity": 2,
+          "selected_period": 39,
+          "signature_change_count": 31,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 60,
+            "prime": 79
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 139,
+          "distinct_dyadic_coset_count": 48,
+          "dyadic_subgroup_order": 42,
+          "first_coset_escape": {
+            "coset_signature": 4759,
+            "horizon": 44,
+            "residue": 4716
+          },
+          "initial_active_state": {
+            "coset_signature": 3754,
+            "horizon": 42,
+            "residue": 1227
+          },
+          "ordered_coset_signature_sha256": "5ebecb32a3fa1c32aa8ead54241b369ee3d3d74e3d19449055b38df6ce4b55f6",
+          "primitive_prime": 5419,
+          "quotient_coset_capacity": 129,
+          "selected_period": 42,
+          "signature_change_count": 54,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 16,
+            "horizon": 151,
+            "prime": 5419
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 137,
+          "distinct_dyadic_coset_count": 9,
+          "dyadic_subgroup_order": 44,
+          "first_coset_escape": {
+            "coset_signature": 34,
+            "horizon": 45,
+            "residue": 108
+          },
+          "initial_active_state": {
+            "coset_signature": 79,
+            "horizon": 44,
+            "residue": 155
+          },
+          "ordered_coset_signature_sha256": "e176454b73c86ba17d7b9d1b0f428c9e03eeffbd629f9ebb6647376a097dff1f",
+          "primitive_prime": 397,
+          "quotient_coset_capacity": 9,
+          "selected_period": 44,
+          "signature_change_count": 54,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 70,
+            "prime": 397
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 136,
+          "distinct_dyadic_coset_count": 14,
+          "dyadic_subgroup_order": 45,
+          "first_coset_escape": {
+            "coset_signature": 190,
+            "horizon": 46,
+            "residue": 534
+          },
+          "initial_active_state": {
+            "coset_signature": 21,
+            "horizon": 45,
+            "residue": 340
+          },
+          "ordered_coset_signature_sha256": "936c8e1ebb9cb5dc4ff2eac7efd6b7491fb65ee119d9a99cf26d0c19bfdc9f7e",
+          "primitive_prime": 631,
+          "quotient_coset_capacity": 14,
+          "selected_period": 45,
+          "signature_change_count": 54,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 4,
+            "horizon": 122,
+            "prime": 631
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 135,
+          "distinct_dyadic_coset_count": 58,
+          "dyadic_subgroup_order": 46,
+          "first_coset_escape": {
+            "coset_signature": 2449569,
+            "horizon": 48,
+            "residue": 996582
+          },
+          "initial_active_state": {
+            "coset_signature": 22125,
+            "horizon": 46,
+            "residue": 615293
+          },
+          "ordered_coset_signature_sha256": "30933a2e85918af150e65a34d93e22d00e454cbbd637ef37a6b9d68d9c74e651",
+          "primitive_prime": 2796203,
+          "quotient_coset_capacity": 60787,
+          "selected_period": 46,
+          "signature_change_count": 57,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1825,
+            "horizon": 99,
+            "prime": 2796203
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 134,
+          "distinct_dyadic_coset_count": 33,
+          "dyadic_subgroup_order": 47,
+          "first_coset_escape": {
+            "coset_signature": 812,
+            "horizon": 49,
+            "residue": 873
+          },
+          "initial_active_state": {
+            "coset_signature": 939,
+            "horizon": 47,
+            "residue": 1703
+          },
+          "ordered_coset_signature_sha256": "1c32ff5e4d8bce2ca9be0e55159c3c455ce5c36aefe531ae3024ba30c779b816",
+          "primitive_prime": 2351,
+          "quotient_coset_capacity": 50,
+          "selected_period": 47,
+          "signature_change_count": 55,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 14,
+            "horizon": 167,
+            "prime": 2351
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 133,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 48,
+          "first_coset_escape": {
+            "coset_signature": 1,
+            "horizon": 49,
+            "residue": 64
+          },
+          "initial_active_state": {
+            "coset_signature": 96,
+            "horizon": 48,
+            "residue": 77
+          },
+          "ordered_coset_signature_sha256": "78a414bb942afb9c23f800c0747a6bc4b04fc13a804630ef46442b43fb2cfab1",
+          "primitive_prime": 97,
+          "quotient_coset_capacity": 2,
+          "selected_period": 48,
+          "signature_change_count": 28,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 107,
+            "prime": 97
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 132,
+          "distinct_dyadic_coset_count": 57,
+          "dyadic_subgroup_order": 49,
+          "first_coset_escape": {
+            "coset_signature": 1404170786104,
+            "horizon": 50,
+            "residue": 3508959582726
+          },
+          "initial_active_state": {
+            "coset_signature": 3111867304817,
+            "horizon": 49,
+            "residue": 3630123066961
+          },
+          "ordered_coset_signature_sha256": "b9c256a3e83985a49dee511de810dd980211eaa41f79fb0f8e00ad10d8fcb28c",
+          "primitive_prime": 4432676798593,
+          "quotient_coset_capacity": 90462791808,
+          "selected_period": 49,
+          "signature_change_count": 56,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 14602151711,
+            "horizon": 164,
+            "prime": 4432676798593
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 131,
+          "distinct_dyadic_coset_count": 5,
+          "dyadic_subgroup_order": 50,
+          "first_coset_escape": {
+            "coset_signature": 20,
+            "horizon": 51,
+            "residue": 121
+          },
+          "initial_active_state": {
+            "coset_signature": 219,
+            "horizon": 50,
+            "residue": 88
+          },
+          "ordered_coset_signature_sha256": "78bfceb2884f8d2a89ea7f96c3ce3d2964de207525e6bfd5d26684a5cfe771b7",
+          "primitive_prime": 251,
+          "quotient_coset_capacity": 5,
+          "selected_period": 50,
+          "signature_change_count": 42,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 144,
+            "prime": 251
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 130,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 51,
+          "first_coset_escape": {
+            "coset_signature": 102,
+            "horizon": 53,
+            "residue": 11
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 51,
+            "residue": 38
+          },
+          "ordered_coset_signature_sha256": "1f586c458494d7878cf995b1426d9836cf5c52d1cd8f64e654ed05728bb44b9b",
+          "primitive_prime": 103,
+          "quotient_coset_capacity": 2,
+          "selected_period": 51,
+          "signature_change_count": 30,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 123,
+            "prime": 103
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 128,
+          "distinct_dyadic_coset_count": 46,
+          "dyadic_subgroup_order": 53,
+          "first_coset_escape": {
+            "coset_signature": 4452,
+            "horizon": 55,
+            "residue": 5614
+          },
+          "initial_active_state": {
+            "coset_signature": 2858,
+            "horizon": 53,
+            "residue": 6292
+          },
+          "ordered_coset_signature_sha256": "3fc31607ffbac2e57eabb14b674bebf449a1d576483bd20b9f5e1be912234887",
+          "primitive_prime": 6361,
+          "quotient_coset_capacity": 120,
+          "selected_period": 53,
+          "signature_change_count": 52,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 69,
+            "horizon": 53,
+            "prime": 6361
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 126,
+          "distinct_dyadic_coset_count": 16,
+          "dyadic_subgroup_order": 55,
+          "first_coset_escape": {
+            "coset_signature": 114,
+            "horizon": 56,
+            "residue": 377
+          },
+          "initial_active_state": {
+            "coset_signature": 177,
+            "horizon": 55,
+            "residue": 49
+          },
+          "ordered_coset_signature_sha256": "6845d3f0eb06d60967efce9d5fb50cfe47c01d65baad5e43ba499d54dfe4184e",
+          "primitive_prime": 881,
+          "quotient_coset_capacity": 16,
+          "selected_period": 55,
+          "signature_change_count": 49,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 27,
+            "horizon": 125,
+            "prime": 881
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 125,
+          "distinct_dyadic_coset_count": 48,
+          "dyadic_subgroup_order": 56,
+          "first_coset_escape": {
+            "coset_signature": 5784543,
+            "horizon": 57,
+            "residue": 12039942
+          },
+          "initial_active_state": {
+            "coset_signature": 6954497,
+            "horizon": 56,
+            "residue": 8632338
+          },
+          "ordered_coset_signature_sha256": "85e44598c97f91d92d8833cec758a5f68d991da9bcefac88bd113eb9d1733711",
+          "primitive_prime": 15790321,
+          "quotient_coset_capacity": 281970,
+          "selected_period": 56,
+          "signature_change_count": 47,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 487801,
+            "horizon": 104,
+            "prime": 15790321
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 124,
+          "distinct_dyadic_coset_count": 48,
+          "dyadic_subgroup_order": 57,
+          "first_coset_escape": {
+            "coset_signature": 8734,
+            "horizon": 58,
+            "residue": 16170
+          },
+          "initial_active_state": {
+            "coset_signature": 20366,
+            "horizon": 57,
+            "residue": 16133
+          },
+          "ordered_coset_signature_sha256": "e0e89406fb271ca153c8fb3ecc72e821141c25dbec2469561d725e132db65aaa",
+          "primitive_prime": 32377,
+          "quotient_coset_capacity": 568,
+          "selected_period": 57,
+          "signature_change_count": 50,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 201,
+            "horizon": 86,
+            "prime": 32377
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 123,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 58,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 58,
+            "residue": 7
+          },
+          "ordered_coset_signature_sha256": "a8ff2652fda3a0d9cc66f14abc6daf06f4da7d826589f41c434ff0e81feda901",
+          "primitive_prime": 59,
+          "quotient_coset_capacity": 1,
+          "selected_period": 58,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 152,
+            "prime": 59
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 122,
+          "distinct_dyadic_coset_count": 49,
+          "dyadic_subgroup_order": 59,
+          "first_coset_escape": {
+            "coset_signature": 10116,
+            "horizon": 60,
+            "residue": 94398
+          },
+          "initial_active_state": {
+            "coset_signature": 107205,
+            "horizon": 59,
+            "residue": 40461
+          },
+          "ordered_coset_signature_sha256": "00f297b488c7c5bfa3bec6da29764ccacdf163ea5e21ebba1392046fd4bbcf7f",
+          "primitive_prime": 179951,
+          "quotient_coset_capacity": 3050,
+          "selected_period": 59,
+          "signature_change_count": 48,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 551,
+            "horizon": 144,
+            "prime": 179951
+          },
+          "target": "1/2"
+        },
+        {
+          "active_horizon_count": 121,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 60,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 60,
+            "residue": 41
+          },
+          "ordered_coset_signature_sha256": "e1d565a0934fa2b524c6bfa6d44b8c9fcde5823f3e63d13345fea7bc939e6f2c",
+          "primitive_prime": 61,
+          "quotient_coset_capacity": 1,
+          "selected_period": 60,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 63,
+            "prime": 61
+          },
+          "target": "1/2"
+        }
+      ],
+      "channels_escaping_first_dyadic_coset": 27,
+      "depth": 180,
+      "exceptional_selected_periods_without_primitive_prime": [
+        6
+      ],
+      "first_exact_coset_escape": {
+        "coset_signature": 68,
+        "horizon": 20,
+        "primitive_prime": 127,
+        "residue": 21,
+        "selected_period": 7
+      },
+      "nontrivial_quotient_channel_count": 27,
+      "primitive_channel_count": 30,
+      "selected_count": 78,
+      "target": "1/2",
+      "widest_channel": {
+        "active_horizon_count": 148,
+        "distinct_dyadic_coset_count": 68,
+        "dyadic_subgroup_order": 33,
+        "first_coset_escape": {
+          "coset_signature": 484776,
+          "horizon": 34,
+          "residue": 171144
+        },
+        "initial_active_state": {
+          "coset_signature": 164945,
+          "horizon": 33,
+          "residue": 513432
+        },
+        "ordered_coset_signature_sha256": "3c8b2c5a6ed7af8156007bdc99cbb4eadf4065fe14c8636542b85674303ad332",
+        "primitive_prime": 599479,
+        "quotient_coset_capacity": 18166,
+        "selected_period": 33,
+        "signature_change_count": 67,
+        "single_dyadic_coset": false,
+        "smallest_centered_residue": {
+          "centered_residue": 6797,
+          "horizon": 51,
+          "prime": 599479
+        },
+        "target": "1/2"
+      }
+    },
+    {
+      "all_nontrivial_channels_single_coset": false,
+      "channels": [
+        {
+          "active_horizon_count": 176,
+          "distinct_dyadic_coset_count": 6,
+          "dyadic_subgroup_order": 5,
+          "first_coset_escape": {
+            "coset_signature": 30,
+            "horizon": 7,
+            "residue": 30
+          },
+          "initial_active_state": {
+            "coset_signature": 25,
+            "horizon": 5,
+            "residue": 10
+          },
+          "ordered_coset_signature_sha256": "123f375eb045940bfbd6de71f2a298b29feaa91d14eaa3fda56ff5bb68761aa9",
+          "primitive_prime": 31,
+          "quotient_coset_capacity": 6,
+          "selected_period": 5,
+          "signature_change_count": 62,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 7,
+            "prime": 31
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 174,
+          "distinct_dyadic_coset_count": 18,
+          "dyadic_subgroup_order": 7,
+          "first_coset_escape": {
+            "coset_signature": 75,
+            "horizon": 8,
+            "residue": 97
+          },
+          "initial_active_state": {
+            "coset_signature": 126,
+            "horizon": 7,
+            "residue": 111
+          },
+          "ordered_coset_signature_sha256": "b7cbfa0f9fde7191972479f946cc2e02c8140ff5603d5f7c8bd81fbc4b6397e8",
+          "primitive_prime": 127,
+          "quotient_coset_capacity": 18,
+          "selected_period": 7,
+          "signature_change_count": 67,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 10,
+            "prime": 127
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 173,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 8,
+          "first_coset_escape": {
+            "coset_signature": 1,
+            "horizon": 11,
+            "residue": 9
+          },
+          "initial_active_state": {
+            "coset_signature": 16,
+            "horizon": 8,
+            "residue": 5
+          },
+          "ordered_coset_signature_sha256": "7a8bc7963689af45f25e4002481cca066d84df9f4dd78c1372946da00830c4af",
+          "primitive_prime": 17,
+          "quotient_coset_capacity": 2,
+          "selected_period": 8,
+          "signature_change_count": 29,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 22,
+            "prime": 17
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 172,
+          "distinct_dyadic_coset_count": 8,
+          "dyadic_subgroup_order": 9,
+          "first_coset_escape": {
+            "coset_signature": 51,
+            "horizon": 10,
+            "residue": 43
+          },
+          "initial_active_state": {
+            "coset_signature": 46,
+            "horizon": 9,
+            "residue": 19
+          },
+          "ordered_coset_signature_sha256": "acbc695ba82a5626c17b0525beb310adad0696246518ebb6f80638e2ddefa144",
+          "primitive_prime": 73,
+          "quotient_coset_capacity": 8,
+          "selected_period": 9,
+          "signature_change_count": 56,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 3,
+            "horizon": 58,
+            "prime": 73
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 161,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 10,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 10,
+            "residue": 5
+          },
+          "ordered_coset_signature_sha256": "01177f2d36494907fc49e9828a755474fffc7e2143fc0300994dffc8677ee297",
+          "primitive_prime": 11,
+          "quotient_coset_capacity": 1,
+          "selected_period": 10,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 37,
+            "prime": 11
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 115,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 11,
+          "first_coset_escape": {
+            "coset_signature": 22,
+            "horizon": 20,
+            "residue": 7
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 11,
+            "residue": 16
+          },
+          "ordered_coset_signature_sha256": "3cba0dbc21f673a73b714f7999048ec1e3ae32c077bf01f4ba50abe67b633f0e",
+          "primitive_prime": 23,
+          "quotient_coset_capacity": 2,
+          "selected_period": 11,
+          "signature_change_count": 29,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 57,
+            "prime": 23
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 168,
+          "distinct_dyadic_coset_count": 66,
+          "dyadic_subgroup_order": 13,
+          "first_coset_escape": {
+            "coset_signature": 1557,
+            "horizon": 16,
+            "residue": 394
+          },
+          "initial_active_state": {
+            "coset_signature": 2879,
+            "horizon": 13,
+            "residue": 7332
+          },
+          "ordered_coset_signature_sha256": "d6925c4d74719cb07eea41cb9430f451188018e099d2f56f8e36aa3beaf1f1ac",
+          "primitive_prime": 8191,
+          "quotient_coset_capacity": 630,
+          "selected_period": 13,
+          "signature_change_count": 69,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 39,
+            "horizon": 170,
+            "prime": 8191
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 165,
+          "distinct_dyadic_coset_count": 16,
+          "dyadic_subgroup_order": 16,
+          "first_coset_escape": {
+            "coset_signature": 253,
+            "horizon": 18,
+            "residue": 157
+          },
+          "initial_active_state": {
+            "coset_signature": 193,
+            "horizon": 16,
+            "residue": 153
+          },
+          "ordered_coset_signature_sha256": "43b6998ee4448e4dbcb638daccdf0774630da0ab3cc5bf51b8eb889847b167b6",
+          "primitive_prime": 257,
+          "quotient_coset_capacity": 16,
+          "selected_period": 16,
+          "signature_change_count": 57,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 28,
+            "prime": 257
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 163,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 18,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 18,
+            "residue": 4
+          },
+          "ordered_coset_signature_sha256": "bc0fdb98d403822525a7373b429a64e5f4d644beceaf34665cdda8aadfe04ae1",
+          "primitive_prime": 19,
+          "quotient_coset_capacity": 1,
+          "selected_period": 18,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 54,
+            "prime": 19
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 161,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 20,
+          "first_coset_escape": {
+            "coset_signature": 1,
+            "horizon": 22,
+            "residue": 39
+          },
+          "initial_active_state": {
+            "coset_signature": 40,
+            "horizon": 20,
+            "residue": 6
+          },
+          "ordered_coset_signature_sha256": "5998d3ee71785055e30971844b00911402c56474165b454627526cdeefdf9ec6",
+          "primitive_prime": 41,
+          "quotient_coset_capacity": 2,
+          "selected_period": 20,
+          "signature_change_count": 31,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 24,
+            "prime": 41
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 159,
+          "distinct_dyadic_coset_count": 25,
+          "dyadic_subgroup_order": 22,
+          "first_coset_escape": {
+            "coset_signature": 27,
+            "horizon": 24,
+            "residue": 497
+          },
+          "initial_active_state": {
+            "coset_signature": 311,
+            "horizon": 22,
+            "residue": 179
+          },
+          "ordered_coset_signature_sha256": "9505a992d745ca2926eb50e5288fdb39c7f371396446044e6aca397a7d7000f3",
+          "primitive_prime": 683,
+          "quotient_coset_capacity": 31,
+          "selected_period": 22,
+          "signature_change_count": 62,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 4,
+            "horizon": 28,
+            "prime": 683
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 157,
+          "distinct_dyadic_coset_count": 10,
+          "dyadic_subgroup_order": 24,
+          "first_coset_escape": {
+            "coset_signature": 36,
+            "horizon": 28,
+            "residue": 179
+          },
+          "initial_active_state": {
+            "coset_signature": 98,
+            "horizon": 24,
+            "residue": 79
+          },
+          "ordered_coset_signature_sha256": "b8b79d7a1b34ffcc96af927795244015bac7ebbf64a20304cf776ac8def415dd",
+          "primitive_prime": 241,
+          "quotient_coset_capacity": 10,
+          "selected_period": 24,
+          "signature_change_count": 51,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 115,
+            "prime": 241
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 153,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 28,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 28,
+            "residue": 15
+          },
+          "ordered_coset_signature_sha256": "5f772fa77dd6eba71c645fd5a0733d38539db12750560183542ae47b68fed53c",
+          "primitive_prime": 29,
+          "quotient_coset_capacity": 1,
+          "selected_period": 28,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 51,
+            "prime": 29
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 149,
+          "distinct_dyadic_coset_count": 63,
+          "dyadic_subgroup_order": 32,
+          "first_coset_escape": {
+            "coset_signature": 1007,
+            "horizon": 37,
+            "residue": 9815
+          },
+          "initial_active_state": {
+            "coset_signature": 57597,
+            "horizon": 32,
+            "residue": 8773
+          },
+          "ordered_coset_signature_sha256": "2bfda418f1704f5baf24e0071e8e9fa3d1b7257dafff5d380fdc013df9a347a7",
+          "primitive_prime": 65537,
+          "quotient_coset_capacity": 2048,
+          "selected_period": 32,
+          "signature_change_count": 63,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 312,
+            "horizon": 49,
+            "prime": 65537
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 147,
+          "distinct_dyadic_coset_count": 61,
+          "dyadic_subgroup_order": 34,
+          "first_coset_escape": {
+            "coset_signature": 40582,
+            "horizon": 37,
+            "residue": 21657
+          },
+          "initial_active_state": {
+            "coset_signature": 23243,
+            "horizon": 34,
+            "residue": 15577
+          },
+          "ordered_coset_signature_sha256": "3e5372c5c3ab78dd164cc9c42f3845b4a143a139fbe15797d4557f1bee8d8558",
+          "primitive_prime": 43691,
+          "quotient_coset_capacity": 1285,
+          "selected_period": 34,
+          "signature_change_count": 63,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 115,
+            "horizon": 111,
+            "prime": 43691
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 144,
+          "distinct_dyadic_coset_count": 6,
+          "dyadic_subgroup_order": 37,
+          "first_coset_escape": {
+            "coset_signature": 183,
+            "horizon": 39,
+            "residue": 183
+          },
+          "initial_active_state": {
+            "coset_signature": 39,
+            "horizon": 37,
+            "residue": 131
+          },
+          "ordered_coset_signature_sha256": "91cfde746a4a2c5fcb90592c966bac0e912ab1b364936b4641cd1e8832e32b63",
+          "primitive_prime": 223,
+          "quotient_coset_capacity": 6,
+          "selected_period": 37,
+          "signature_change_count": 50,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 109,
+            "prime": 223
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 142,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 39,
+          "first_coset_escape": {
+            "coset_signature": 78,
+            "horizon": 50,
+            "residue": 53
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 39,
+            "residue": 11
+          },
+          "ordered_coset_signature_sha256": "b1dbd394eed9db0c2a9020d089f6134bf3e3f52a9651b8344c4ebad0960c48bc",
+          "primitive_prime": 79,
+          "quotient_coset_capacity": 2,
+          "selected_period": 39,
+          "signature_change_count": 35,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 42,
+            "prime": 79
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 139,
+          "distinct_dyadic_coset_count": 45,
+          "dyadic_subgroup_order": 42,
+          "first_coset_escape": {
+            "coset_signature": 2400,
+            "horizon": 45,
+            "residue": 5073
+          },
+          "initial_active_state": {
+            "coset_signature": 3754,
+            "horizon": 42,
+            "residue": 2757
+          },
+          "ordered_coset_signature_sha256": "86ba7b8e45752c77b4f2dc5b457396c638c2cbf3c546df63bde842a5f7264c56",
+          "primitive_prime": 5419,
+          "quotient_coset_capacity": 129,
+          "selected_period": 42,
+          "signature_change_count": 52,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 35,
+            "horizon": 131,
+            "prime": 5419
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 136,
+          "distinct_dyadic_coset_count": 14,
+          "dyadic_subgroup_order": 45,
+          "first_coset_escape": {
+            "coset_signature": 362,
+            "horizon": 46,
+            "residue": 104
+          },
+          "initial_active_state": {
+            "coset_signature": 133,
+            "horizon": 45,
+            "residue": 312
+          },
+          "ordered_coset_signature_sha256": "b4a2fe48133498e93afec3fa9fb3b0010979b7c1b05e317a514e3d2960090e57",
+          "primitive_prime": 631,
+          "quotient_coset_capacity": 14,
+          "selected_period": 45,
+          "signature_change_count": 56,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 105,
+            "prime": 631
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 135,
+          "distinct_dyadic_coset_count": 59,
+          "dyadic_subgroup_order": 46,
+          "first_coset_escape": {
+            "coset_signature": 2393055,
+            "horizon": 49,
+            "residue": 1022125
+          },
+          "initial_active_state": {
+            "coset_signature": 1575057,
+            "horizon": 46,
+            "residue": 2565965
+          },
+          "ordered_coset_signature_sha256": "c08f3860b192aa34d3c840ec6785adc6e948e501f8655f167f8467ffbcc3a772",
+          "primitive_prime": 2796203,
+          "quotient_coset_capacity": 60787,
+          "selected_period": 46,
+          "signature_change_count": 58,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 7278,
+            "horizon": 51,
+            "prime": 2796203
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 134,
+          "distinct_dyadic_coset_count": 34,
+          "dyadic_subgroup_order": 47,
+          "first_coset_escape": {
+            "coset_signature": 2272,
+            "horizon": 49,
+            "residue": 2017
+          },
+          "initial_active_state": {
+            "coset_signature": 369,
+            "horizon": 47,
+            "residue": 1534
+          },
+          "ordered_coset_signature_sha256": "0ecd2b1b80ec96471a7d5889f79ff20d9547b44e02096feea4020bb3d2d165e9",
+          "primitive_prime": 2351,
+          "quotient_coset_capacity": 50,
+          "selected_period": 47,
+          "signature_change_count": 58,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 12,
+            "horizon": 174,
+            "prime": 2351
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 132,
+          "distinct_dyadic_coset_count": 61,
+          "dyadic_subgroup_order": 49,
+          "first_coset_escape": {
+            "coset_signature": 235830391540,
+            "horizon": 50,
+            "residue": 961291322687
+          },
+          "initial_active_state": {
+            "coset_signature": 66195401583,
+            "horizon": 49,
+            "residue": 3779450619748
+          },
+          "ordered_coset_signature_sha256": "8e2d716e0fc426728d424f711e5ab7c1b204f54884613319af3e7f3de1e06fa8",
+          "primitive_prime": 4432676798593,
+          "quotient_coset_capacity": 90462791808,
+          "selected_period": 49,
+          "signature_change_count": 60,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 51112120096,
+            "horizon": 170,
+            "prime": 4432676798593
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 131,
+          "distinct_dyadic_coset_count": 5,
+          "dyadic_subgroup_order": 50,
+          "first_coset_escape": {
+            "coset_signature": 149,
+            "horizon": 51,
+            "residue": 228
+          },
+          "initial_active_state": {
+            "coset_signature": 113,
+            "horizon": 50,
+            "residue": 143
+          },
+          "ordered_coset_signature_sha256": "7ac9a5c8e938e38aa63f32d53fd3526a13f863854679d14ce1e30d4e148cdcae",
+          "primitive_prime": 251,
+          "quotient_coset_capacity": 5,
+          "selected_period": 50,
+          "signature_change_count": 48,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 8,
+            "horizon": 79,
+            "prime": 251
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 130,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 51,
+          "first_coset_escape": {
+            "coset_signature": 102,
+            "horizon": 53,
+            "residue": 43
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 51,
+            "residue": 83
+          },
+          "ordered_coset_signature_sha256": "1de7c00ab117e1fb964b24dca40c5e8c0d05969e39565876ef20f1bc8da60566",
+          "primitive_prime": 103,
+          "quotient_coset_capacity": 2,
+          "selected_period": 51,
+          "signature_change_count": 39,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 54,
+            "prime": 103
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 128,
+          "distinct_dyadic_coset_count": 44,
+          "dyadic_subgroup_order": 53,
+          "first_coset_escape": {
+            "coset_signature": 4905,
+            "horizon": 54,
+            "residue": 3577
+          },
+          "initial_active_state": {
+            "coset_signature": 5532,
+            "horizon": 53,
+            "residue": 4140
+          },
+          "ordered_coset_signature_sha256": "af5b621bf7d5fc0b7792610108ac15ac7acfaaf7c2239013cf77cbb8d08d0262",
+          "primitive_prime": 6361,
+          "quotient_coset_capacity": 120,
+          "selected_period": 53,
+          "signature_change_count": 56,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 30,
+            "horizon": 124,
+            "prime": 6361
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 127,
+          "distinct_dyadic_coset_count": 48,
+          "dyadic_subgroup_order": 54,
+          "first_coset_escape": {
+            "coset_signature": 23205,
+            "horizon": 58,
+            "residue": 78874
+          },
+          "initial_active_state": {
+            "coset_signature": 55771,
+            "horizon": 54,
+            "residue": 33217
+          },
+          "ordered_coset_signature_sha256": "68c80fdb07ba1b39da01e54b898c7712f17da7b7d195fb4189bafa5caa660ad0",
+          "primitive_prime": 87211,
+          "quotient_coset_capacity": 1615,
+          "selected_period": 54,
+          "signature_change_count": 47,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 120,
+            "horizon": 115,
+            "prime": 87211
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 124,
+          "distinct_dyadic_coset_count": 49,
+          "dyadic_subgroup_order": 57,
+          "first_coset_escape": {
+            "coset_signature": 24473,
+            "horizon": 58,
+            "residue": 987
+          },
+          "initial_active_state": {
+            "coset_signature": 22517,
+            "horizon": 57,
+            "residue": 2961
+          },
+          "ordered_coset_signature_sha256": "1680891bbce51d7721f4ee79e19f1520ae33d4dd5e71b700cef57bbaff4a21ce",
+          "primitive_prime": 32377,
+          "quotient_coset_capacity": 568,
+          "selected_period": 57,
+          "signature_change_count": 55,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 5,
+            "horizon": 78,
+            "prime": 32377
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 123,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 58,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 58,
+            "residue": 13
+          },
+          "ordered_coset_signature_sha256": "a8ff2652fda3a0d9cc66f14abc6daf06f4da7d826589f41c434ff0e81feda901",
+          "primitive_prime": 59,
+          "quotient_coset_capacity": 1,
+          "selected_period": 58,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 134,
+            "prime": 59
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 122,
+          "distinct_dyadic_coset_count": 53,
+          "dyadic_subgroup_order": 59,
+          "first_coset_escape": {
+            "coset_signature": 22934,
+            "horizon": 60,
+            "residue": 42584
+          },
+          "initial_active_state": {
+            "coset_signature": 178258,
+            "horizon": 59,
+            "residue": 140717
+          },
+          "ordered_coset_signature_sha256": "9d76c4c0ea75bdfa09127747089223bb7500af0911eea9b29e3afe4f329f2eaa",
+          "primitive_prime": 179951,
+          "quotient_coset_capacity": 3050,
+          "selected_period": 59,
+          "signature_change_count": 52,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 4373,
+            "horizon": 123,
+            "prime": 179951
+          },
+          "target": "1/21"
+        },
+        {
+          "active_horizon_count": 121,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 60,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 60,
+            "residue": 19
+          },
+          "ordered_coset_signature_sha256": "e1d565a0934fa2b524c6bfa6d44b8c9fcde5823f3e63d13345fea7bc939e6f2c",
+          "primitive_prime": 61,
+          "quotient_coset_capacity": 1,
+          "selected_period": 60,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 134,
+            "prime": 61
+          },
+          "target": "1/21"
+        }
+      ],
+      "channels_escaping_first_dyadic_coset": 25,
+      "depth": 180,
+      "exceptional_selected_periods_without_primitive_prime": [],
+      "first_exact_coset_escape": {
+        "coset_signature": 30,
+        "horizon": 7,
+        "primitive_prime": 31,
+        "residue": 30,
+        "selected_period": 5
+      },
+      "nontrivial_quotient_channel_count": 25,
+      "primitive_channel_count": 30,
+      "selected_count": 82,
+      "target": "1/21",
+      "widest_channel": {
+        "active_horizon_count": 168,
+        "distinct_dyadic_coset_count": 66,
+        "dyadic_subgroup_order": 13,
+        "first_coset_escape": {
+          "coset_signature": 1557,
+          "horizon": 16,
+          "residue": 394
+        },
+        "initial_active_state": {
+          "coset_signature": 2879,
+          "horizon": 13,
+          "residue": 7332
+        },
+        "ordered_coset_signature_sha256": "d6925c4d74719cb07eea41cb9430f451188018e099d2f56f8e36aa3beaf1f1ac",
+        "primitive_prime": 8191,
+        "quotient_coset_capacity": 630,
+        "selected_period": 13,
+        "signature_change_count": 69,
+        "single_dyadic_coset": false,
+        "smallest_centered_residue": {
+          "centered_residue": 39,
+          "horizon": 170,
+          "prime": 8191
+        },
+        "target": "1/21"
+      }
+    },
+    {
+      "all_nontrivial_channels_single_coset": false,
+      "channels": [
+        {
+          "active_horizon_count": 169,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 2,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 2,
+            "residue": 1
+          },
+          "ordered_coset_signature_sha256": "236e8613c6ad9fb99b020a4dacd73ffb04b4f34bceb6a1ca9741485ee18d7188",
+          "primitive_prime": 3,
+          "quotient_coset_capacity": 1,
+          "selected_period": 2,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 2,
+            "prime": 3
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 173,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 4,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 4,
+            "residue": 2
+          },
+          "ordered_coset_signature_sha256": "87a2cd066ab39644563b104ae81e0f749c2c23cce4f008e0a0e3b8e4d3fd87e6",
+          "primitive_prime": 5,
+          "quotient_coset_capacity": 1,
+          "selected_period": 4,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 7,
+            "prime": 5
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 176,
+          "distinct_dyadic_coset_count": 6,
+          "dyadic_subgroup_order": 5,
+          "first_coset_escape": {
+            "coset_signature": 25,
+            "horizon": 7,
+            "residue": 20
+          },
+          "initial_active_state": {
+            "coset_signature": 26,
+            "horizon": 5,
+            "residue": 17
+          },
+          "ordered_coset_signature_sha256": "118c4bec96bc66169a843f0e6a86ff7411b161ffc7a412365e796c58dd2a9948",
+          "primitive_prime": 31,
+          "quotient_coset_capacity": 6,
+          "selected_period": 5,
+          "signature_change_count": 57,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 8,
+            "prime": 31
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 174,
+          "distinct_dyadic_coset_count": 18,
+          "dyadic_subgroup_order": 7,
+          "first_coset_escape": {
+            "coset_signature": 22,
+            "horizon": 8,
+            "residue": 34
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 7,
+            "residue": 2
+          },
+          "ordered_coset_signature_sha256": "ceb323487ce5cd9a89bcd1bfe477c025e608267e4d3854ed5fad84fbb2922d2d",
+          "primitive_prime": 127,
+          "quotient_coset_capacity": 18,
+          "selected_period": 7,
+          "signature_change_count": 70,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 7,
+            "prime": 127
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 173,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 8,
+          "first_coset_escape": {
+            "coset_signature": 16,
+            "horizon": 12,
+            "residue": 7
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 8,
+            "residue": 4
+          },
+          "ordered_coset_signature_sha256": "b7274a4999a3b39e22a3630524c4c31a9a9e1da9917774b59a8814cea4db4dcd",
+          "primitive_prime": 17,
+          "quotient_coset_capacity": 2,
+          "selected_period": 8,
+          "signature_change_count": 27,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 16,
+            "prime": 17
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 120,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 12,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 12,
+            "residue": 8
+          },
+          "ordered_coset_signature_sha256": "9e28833ab8a1d50db5e1721c8a07ef04d8618493f7125ba471f9c6878a031c02",
+          "primitive_prime": 13,
+          "quotient_coset_capacity": 1,
+          "selected_period": 12,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 126,
+            "prime": 13
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 168,
+          "distinct_dyadic_coset_count": 69,
+          "dyadic_subgroup_order": 13,
+          "first_coset_escape": {
+            "coset_signature": 3723,
+            "horizon": 16,
+            "residue": 5699
+          },
+          "initial_active_state": {
+            "coset_signature": 1795,
+            "horizon": 13,
+            "residue": 4796
+          },
+          "ordered_coset_signature_sha256": "8384f5827f0c60e2d1b1f08ccd76b36258396c53d62f010ea8d7f66bb5f0da3c",
+          "primitive_prime": 8191,
+          "quotient_coset_capacity": 630,
+          "selected_period": 13,
+          "signature_change_count": 76,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 14,
+            "horizon": 138,
+            "prime": 8191
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 165,
+          "distinct_dyadic_coset_count": 15,
+          "dyadic_subgroup_order": 16,
+          "first_coset_escape": {
+            "coset_signature": 4,
+            "horizon": 20,
+            "residue": 236
+          },
+          "initial_active_state": {
+            "coset_signature": 249,
+            "horizon": 16,
+            "residue": 24
+          },
+          "ordered_coset_signature_sha256": "0e7162be03b4445ce4351e0220b568a1d2745c0658dbcfd0344452f5cf329ad0",
+          "primitive_prime": 257,
+          "quotient_coset_capacity": 16,
+          "selected_period": 16,
+          "signature_change_count": 61,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 37,
+            "prime": 257
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 164,
+          "distinct_dyadic_coset_count": 72,
+          "dyadic_subgroup_order": 17,
+          "first_coset_escape": {
+            "coset_signature": 37266,
+            "horizon": 20,
+            "residue": 86623
+          },
+          "initial_active_state": {
+            "coset_signature": 61050,
+            "horizon": 17,
+            "residue": 83556
+          },
+          "ordered_coset_signature_sha256": "e7816df4ba88e9ede94421a1cd58cbe679c87f6bb2dbfec7bd7e10ca0a9e8701",
+          "primitive_prime": 131071,
+          "quotient_coset_capacity": 7710,
+          "selected_period": 17,
+          "signature_change_count": 73,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2608,
+            "horizon": 43,
+            "prime": 131071
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 161,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 20,
+          "first_coset_escape": {
+            "coset_signature": 40,
+            "horizon": 21,
+            "residue": 24
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 20,
+            "residue": 16
+          },
+          "ordered_coset_signature_sha256": "5abfb3c07739736853a0dfe2d1473fdf7375c4d237d20811362ce3b34340d62d",
+          "primitive_prime": 41,
+          "quotient_coset_capacity": 2,
+          "selected_period": 20,
+          "signature_change_count": 40,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 81,
+            "prime": 41
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 160,
+          "distinct_dyadic_coset_count": 16,
+          "dyadic_subgroup_order": 21,
+          "first_coset_escape": {
+            "coset_signature": 297,
+            "horizon": 23,
+            "residue": 92
+          },
+          "initial_active_state": {
+            "coset_signature": 278,
+            "horizon": 21,
+            "residue": 143
+          },
+          "ordered_coset_signature_sha256": "473bd6a4465121832094dd51312628b65c4ddb06f101da96dfb5ff88ef409750",
+          "primitive_prime": 337,
+          "quotient_coset_capacity": 16,
+          "selected_period": 21,
+          "signature_change_count": 63,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 10,
+            "horizon": 94,
+            "prime": 337
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 158,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 23,
+          "first_coset_escape": {
+            "coset_signature": 1,
+            "horizon": 27,
+            "residue": 4
+          },
+          "initial_active_state": {
+            "coset_signature": 46,
+            "horizon": 23,
+            "residue": 40
+          },
+          "ordered_coset_signature_sha256": "5243c44bda00d85d91a314d1162ec08e6fbdac210f3d5a8bb3dce00297ba69c8",
+          "primitive_prime": 47,
+          "quotient_coset_capacity": 2,
+          "selected_period": 23,
+          "signature_change_count": 37,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 81,
+            "prime": 47
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 157,
+          "distinct_dyadic_coset_count": 10,
+          "dyadic_subgroup_order": 24,
+          "first_coset_escape": {
+            "coset_signature": 91,
+            "horizon": 28,
+            "residue": 235
+          },
+          "initial_active_state": {
+            "coset_signature": 154,
+            "horizon": 24,
+            "residue": 202
+          },
+          "ordered_coset_signature_sha256": "b3257955631fa0ee8c72d770f56bdb0f93b3fd288b38637220d1605c06b6d758",
+          "primitive_prime": 241,
+          "quotient_coset_capacity": 10,
+          "selected_period": 24,
+          "signature_change_count": 52,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 4,
+            "horizon": 37,
+            "prime": 241
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 154,
+          "distinct_dyadic_coset_count": 70,
+          "dyadic_subgroup_order": 27,
+          "first_coset_escape": {
+            "coset_signature": 158357,
+            "horizon": 28,
+            "residue": 116640
+          },
+          "initial_active_state": {
+            "coset_signature": 38088,
+            "horizon": 27,
+            "residue": 254035
+          },
+          "ordered_coset_signature_sha256": "42a38f35b56a49b8369d13a6af0dfdde99516b715b305e555af5b5481541c51c",
+          "primitive_prime": 262657,
+          "quotient_coset_capacity": 9728,
+          "selected_period": 27,
+          "signature_change_count": 69,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 817,
+            "horizon": 98,
+            "prime": 262657
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 153,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 28,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 28,
+            "residue": 8
+          },
+          "ordered_coset_signature_sha256": "5f772fa77dd6eba71c645fd5a0733d38539db12750560183542ae47b68fed53c",
+          "primitive_prime": 29,
+          "quotient_coset_capacity": 1,
+          "selected_period": 28,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 39,
+            "prime": 29
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 151,
+          "distinct_dyadic_coset_count": 11,
+          "dyadic_subgroup_order": 30,
+          "first_coset_escape": {
+            "coset_signature": 293,
+            "horizon": 37,
+            "residue": 306
+          },
+          "initial_active_state": {
+            "coset_signature": 270,
+            "horizon": 30,
+            "residue": 167
+          },
+          "ordered_coset_signature_sha256": "7e465c4cccbbb4d9373d7d234554e8e1e41e4387045c9a80061791685863f6ac",
+          "primitive_prime": 331,
+          "quotient_coset_capacity": 11,
+          "selected_period": 30,
+          "signature_change_count": 49,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 6,
+            "horizon": 147,
+            "prime": 331
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 148,
+          "distinct_dyadic_coset_count": 66,
+          "dyadic_subgroup_order": 33,
+          "first_coset_escape": {
+            "coset_signature": 457647,
+            "horizon": 34,
+            "residue": 228549
+          },
+          "initial_active_state": {
+            "coset_signature": 333335,
+            "horizon": 33,
+            "residue": 541047
+          },
+          "ordered_coset_signature_sha256": "a90f11fe72a70d3ec5a8cf9f68f8cbdeef0c5d56e7a0f74b178da9c944cdff60",
+          "primitive_prime": 599479,
+          "quotient_coset_capacity": 18166,
+          "selected_period": 33,
+          "signature_change_count": 68,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 5182,
+            "horizon": 127,
+            "prime": 599479
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 147,
+          "distinct_dyadic_coset_count": 64,
+          "dyadic_subgroup_order": 34,
+          "first_coset_escape": {
+            "coset_signature": 4663,
+            "horizon": 37,
+            "residue": 38514
+          },
+          "initial_active_state": {
+            "coset_signature": 18035,
+            "horizon": 34,
+            "residue": 5502
+          },
+          "ordered_coset_signature_sha256": "56c7727dd80835807d71788a9b0314be8bca941012cd37be103aa8fe65030d10",
+          "primitive_prime": 43691,
+          "quotient_coset_capacity": 1285,
+          "selected_period": 34,
+          "signature_change_count": 64,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 113,
+            "horizon": 160,
+            "prime": 43691
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 144,
+          "distinct_dyadic_coset_count": 6,
+          "dyadic_subgroup_order": 37,
+          "first_coset_escape": {
+            "coset_signature": 1,
+            "horizon": 39,
+            "residue": 41
+          },
+          "initial_active_state": {
+            "coset_signature": 183,
+            "horizon": 37,
+            "residue": 58
+          },
+          "ordered_coset_signature_sha256": "182c86d513c9fa1280429d3a8770a8fde7ab840eb6396eda7029638521590b62",
+          "primitive_prime": 223,
+          "quotient_coset_capacity": 6,
+          "selected_period": 37,
+          "signature_change_count": 56,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 94,
+            "prime": 223
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 142,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 39,
+          "first_coset_escape": {
+            "coset_signature": 78,
+            "horizon": 40,
+            "residue": 53
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 39,
+            "residue": 19
+          },
+          "ordered_coset_signature_sha256": "f448e34c4f16633a332f69c23cb9f807ed286d9c7dab7710559d8733284a836b",
+          "primitive_prime": 79,
+          "quotient_coset_capacity": 2,
+          "selected_period": 39,
+          "signature_change_count": 34,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 108,
+            "prime": 79
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 141,
+          "distinct_dyadic_coset_count": 61,
+          "dyadic_subgroup_order": 40,
+          "first_coset_escape": {
+            "coset_signature": 12831,
+            "horizon": 43,
+            "residue": 32922
+          },
+          "initial_active_state": {
+            "coset_signature": 57667,
+            "horizon": 40,
+            "residue": 48761
+          },
+          "ordered_coset_signature_sha256": "16483348278bf7553871519e6169e0fa28578ce27ff1423eb2c4aeb9507df0a6",
+          "primitive_prime": 61681,
+          "quotient_coset_capacity": 1542,
+          "selected_period": 40,
+          "signature_change_count": 60,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 377,
+            "horizon": 103,
+            "prime": 61681
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 138,
+          "distinct_dyadic_coset_count": 10,
+          "dyadic_subgroup_order": 43,
+          "first_coset_escape": {
+            "coset_signature": 186,
+            "horizon": 46,
+            "residue": 233
+          },
+          "initial_active_state": {
+            "coset_signature": 95,
+            "horizon": 43,
+            "residue": 405
+          },
+          "ordered_coset_signature_sha256": "518c7e880767cd7a4cd024792fa65e461cee7f4d6c165fe538a171a810604155",
+          "primitive_prime": 431,
+          "quotient_coset_capacity": 10,
+          "selected_period": 43,
+          "signature_change_count": 54,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 120,
+            "prime": 431
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 135,
+          "distinct_dyadic_coset_count": 59,
+          "dyadic_subgroup_order": 46,
+          "first_coset_escape": {
+            "coset_signature": 167918,
+            "horizon": 48,
+            "residue": 2735693
+          },
+          "initial_active_state": {
+            "coset_signature": 1482354,
+            "horizon": 46,
+            "residue": 1913962
+          },
+          "ordered_coset_signature_sha256": "315b0313a66e37bfba6606bbbb6d14b976744fac5075e17c91b70891e85619ff",
+          "primitive_prime": 2796203,
+          "quotient_coset_capacity": 60787,
+          "selected_period": 46,
+          "signature_change_count": 58,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 60510,
+            "horizon": 48,
+            "prime": 2796203
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 133,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 48,
+          "first_coset_escape": {
+            "coset_signature": 96,
+            "horizon": 66,
+            "residue": 40
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 48,
+            "residue": 79
+          },
+          "ordered_coset_signature_sha256": "ac3efd0a6e76db7c4d524161b7e0158a9477ad78e371f68fda65e3e3adab0c0e",
+          "primitive_prime": 97,
+          "quotient_coset_capacity": 2,
+          "selected_period": 48,
+          "signature_change_count": 27,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 80,
+            "prime": 97
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 129,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 52,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 52,
+            "residue": 2
+          },
+          "ordered_coset_signature_sha256": "613ff1931c851372567d740192b7f4f42c818045ad0d5c787bbdb962d798e356",
+          "primitive_prime": 53,
+          "quotient_coset_capacity": 1,
+          "selected_period": 52,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 60,
+            "prime": 53
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 126,
+          "distinct_dyadic_coset_count": 16,
+          "dyadic_subgroup_order": 55,
+          "first_coset_escape": {
+            "coset_signature": 494,
+            "horizon": 61,
+            "residue": 792
+          },
+          "initial_active_state": {
+            "coset_signature": 583,
+            "horizon": 55,
+            "residue": 327
+          },
+          "ordered_coset_signature_sha256": "6b3f4dce18f5342921ac79eea34045b0f8509dc10fea5932605d8c5e61700044",
+          "primitive_prime": 881,
+          "quotient_coset_capacity": 16,
+          "selected_period": 55,
+          "signature_change_count": 51,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 12,
+            "horizon": 93,
+            "prime": 881
+          },
+          "target": "4/9"
+        },
+        {
+          "active_horizon_count": 121,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 60,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 60,
+            "residue": 26
+          },
+          "ordered_coset_signature_sha256": "e1d565a0934fa2b524c6bfa6d44b8c9fcde5823f3e63d13345fea7bc939e6f2c",
+          "primitive_prime": 61,
+          "quotient_coset_capacity": 1,
+          "selected_period": 60,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 105,
+            "prime": 61
+          },
+          "target": "4/9"
+        }
+      ],
+      "channels_escaping_first_dyadic_coset": 21,
+      "depth": 180,
+      "exceptional_selected_periods_without_primitive_prime": [],
+      "first_exact_coset_escape": {
+        "coset_signature": 25,
+        "horizon": 7,
+        "primitive_prime": 31,
+        "residue": 20,
+        "selected_period": 5
+      },
+      "nontrivial_quotient_channel_count": 21,
+      "primitive_channel_count": 27,
+      "selected_count": 85,
+      "target": "4/9",
+      "widest_channel": {
+        "active_horizon_count": 164,
+        "distinct_dyadic_coset_count": 72,
+        "dyadic_subgroup_order": 17,
+        "first_coset_escape": {
+          "coset_signature": 37266,
+          "horizon": 20,
+          "residue": 86623
+        },
+        "initial_active_state": {
+          "coset_signature": 61050,
+          "horizon": 17,
+          "residue": 83556
+        },
+        "ordered_coset_signature_sha256": "e7816df4ba88e9ede94421a1cd58cbe679c87f6bb2dbfec7bd7e10ca0a9e8701",
+        "primitive_prime": 131071,
+        "quotient_coset_capacity": 7710,
+        "selected_period": 17,
+        "signature_change_count": 73,
+        "single_dyadic_coset": false,
+        "smallest_centered_residue": {
+          "centered_residue": 2608,
+          "horizon": 43,
+          "prime": 131071
+        },
+        "target": "4/9"
+      }
+    },
+    {
+      "all_nontrivial_channels_single_coset": false,
+      "channels": [
+        {
+          "active_horizon_count": 172,
+          "distinct_dyadic_coset_count": 8,
+          "dyadic_subgroup_order": 9,
+          "first_coset_escape": {
+            "coset_signature": 63,
+            "horizon": 13,
+            "residue": 33
+          },
+          "initial_active_state": {
+            "coset_signature": 46,
+            "horizon": 9,
+            "residue": 46
+          },
+          "ordered_coset_signature_sha256": "13031611d67b2d0ca23ef691826aa18a8fb4038de111aac51e01fcf9b00a8c5d",
+          "primitive_prime": 73,
+          "quotient_coset_capacity": 8,
+          "selected_period": 9,
+          "signature_change_count": 57,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 52,
+            "prime": 73
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 168,
+          "distinct_dyadic_coset_count": 70,
+          "dyadic_subgroup_order": 13,
+          "first_coset_escape": {
+            "coset_signature": 5395,
+            "horizon": 14,
+            "residue": 2705
+          },
+          "initial_active_state": {
+            "coset_signature": 3485,
+            "horizon": 13,
+            "residue": 8115
+          },
+          "ordered_coset_signature_sha256": "d2502d5e5d12ee66b125b7895a64eec70833d732ef49dec0ecf8a55d53cb813c",
+          "primitive_prime": 8191,
+          "quotient_coset_capacity": 630,
+          "selected_period": 13,
+          "signature_change_count": 72,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 76,
+            "horizon": 13,
+            "prime": 8191
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 167,
+          "distinct_dyadic_coset_count": 3,
+          "dyadic_subgroup_order": 14,
+          "first_coset_escape": {
+            "coset_signature": 6,
+            "horizon": 17,
+            "residue": 18
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 14,
+            "residue": 21
+          },
+          "ordered_coset_signature_sha256": "2280b4638e1b37c5a0b69a33da0eb49a0768b19720fceaa935332be8b913d848",
+          "primitive_prime": 43,
+          "quotient_coset_capacity": 3,
+          "selected_period": 14,
+          "signature_change_count": 47,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 19,
+            "prime": 43
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 164,
+          "distinct_dyadic_coset_count": 74,
+          "dyadic_subgroup_order": 17,
+          "first_coset_escape": {
+            "coset_signature": 12272,
+            "horizon": 19,
+            "residue": 125591
+          },
+          "initial_active_state": {
+            "coset_signature": 51256,
+            "horizon": 17,
+            "residue": 85554
+          },
+          "ordered_coset_signature_sha256": "702f8217042dac8ec0bc52346edafa3475a71977a680febe2d5f6f6bf37743da",
+          "primitive_prime": 131071,
+          "quotient_coset_capacity": 7710,
+          "selected_period": 17,
+          "signature_change_count": 73,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1167,
+            "horizon": 153,
+            "prime": 131071
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 162,
+          "distinct_dyadic_coset_count": 72,
+          "dyadic_subgroup_order": 19,
+          "first_coset_escape": {
+            "coset_signature": 158018,
+            "horizon": 21,
+            "residue": 197530
+          },
+          "initial_active_state": {
+            "coset_signature": 512407,
+            "horizon": 19,
+            "residue": 164104
+          },
+          "ordered_coset_signature_sha256": "80ab26e66590b0f32a829df6d38cdc95bbd57c5e3f8bb841070f6184b8d3af66",
+          "primitive_prime": 524287,
+          "quotient_coset_capacity": 27594,
+          "selected_period": 19,
+          "signature_change_count": 72,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1282,
+            "horizon": 138,
+            "prime": 524287
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 160,
+          "distinct_dyadic_coset_count": 15,
+          "dyadic_subgroup_order": 21,
+          "first_coset_escape": {
+            "coset_signature": 252,
+            "horizon": 22,
+            "residue": 24
+          },
+          "initial_active_state": {
+            "coset_signature": 148,
+            "horizon": 21,
+            "residue": 72
+          },
+          "ordered_coset_signature_sha256": "6fa8882fd8849d4fb6b94ac96bac899d750710e50ede1e26c6b95ba773e407c7",
+          "primitive_prime": 337,
+          "quotient_coset_capacity": 16,
+          "selected_period": 21,
+          "signature_change_count": 60,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 11,
+            "horizon": 136,
+            "prime": 337
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 159,
+          "distinct_dyadic_coset_count": 25,
+          "dyadic_subgroup_order": 22,
+          "first_coset_escape": {
+            "coset_signature": 358,
+            "horizon": 24,
+            "residue": 438
+          },
+          "initial_active_state": {
+            "coset_signature": 646,
+            "horizon": 22,
+            "residue": 154
+          },
+          "ordered_coset_signature_sha256": "d1ca506ca4371614c318679a9b0568da8f627024046f624f0d278705e66f832f",
+          "primitive_prime": 683,
+          "quotient_coset_capacity": 31,
+          "selected_period": 22,
+          "signature_change_count": 59,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 36,
+            "prime": 683
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 158,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 23,
+          "first_coset_escape": {
+            "coset_signature": 1,
+            "horizon": 25,
+            "residue": 27
+          },
+          "initial_active_state": {
+            "coset_signature": 46,
+            "horizon": 23,
+            "residue": 23
+          },
+          "ordered_coset_signature_sha256": "8b748faee66d257392a395c29d3eb2a26fb07413e217c2f1741ac56bc6a4df99",
+          "primitive_prime": 47,
+          "quotient_coset_capacity": 2,
+          "selected_period": 23,
+          "signature_change_count": 35,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 118,
+            "prime": 47
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 157,
+          "distinct_dyadic_coset_count": 10,
+          "dyadic_subgroup_order": 24,
+          "first_coset_escape": {
+            "coset_signature": 87,
+            "horizon": 25,
+            "residue": 232
+          },
+          "initial_active_state": {
+            "coset_signature": 240,
+            "horizon": 24,
+            "residue": 203
+          },
+          "ordered_coset_signature_sha256": "8dcb410ce0a0ca68820180a9d026b6614e7ee223d162db383c26d5c22c2571aa",
+          "primitive_prime": 241,
+          "quotient_coset_capacity": 10,
+          "selected_period": 24,
+          "signature_change_count": 51,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 3,
+            "horizon": 63,
+            "prime": 241
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 156,
+          "distinct_dyadic_coset_count": 23,
+          "dyadic_subgroup_order": 25,
+          "first_coset_escape": {
+            "coset_signature": 577,
+            "horizon": 28,
+            "residue": 439
+          },
+          "initial_active_state": {
+            "coset_signature": 295,
+            "horizon": 25,
+            "residue": 425
+          },
+          "ordered_coset_signature_sha256": "b2f330493d02f340e60dc412b93d37694dfb9cad5bececa96acc6dc866aee64a",
+          "primitive_prime": 601,
+          "quotient_coset_capacity": 24,
+          "selected_period": 25,
+          "signature_change_count": 65,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 100,
+            "prime": 601
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 153,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 28,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 28,
+            "residue": 5
+          },
+          "ordered_coset_signature_sha256": "5f772fa77dd6eba71c645fd5a0733d38539db12750560183542ae47b68fed53c",
+          "primitive_prime": 29,
+          "quotient_coset_capacity": 1,
+          "selected_period": 28,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 35,
+            "prime": 29
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 152,
+          "distinct_dyadic_coset_count": 8,
+          "dyadic_subgroup_order": 29,
+          "first_coset_escape": {
+            "coset_signature": 1,
+            "horizon": 34,
+            "residue": 37
+          },
+          "initial_active_state": {
+            "coset_signature": 144,
+            "horizon": 29,
+            "residue": 177
+          },
+          "ordered_coset_signature_sha256": "ad1d097a541525744e9fb9fd68bae8302971626e361e865bc332c9bc6323d940",
+          "primitive_prime": 233,
+          "quotient_coset_capacity": 8,
+          "selected_period": 29,
+          "signature_change_count": 54,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 70,
+            "prime": 233
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 147,
+          "distinct_dyadic_coset_count": 63,
+          "dyadic_subgroup_order": 34,
+          "first_coset_escape": {
+            "coset_signature": 35231,
+            "horizon": 35,
+            "residue": 30087
+          },
+          "initial_active_state": {
+            "coset_signature": 8503,
+            "horizon": 34,
+            "residue": 6218
+          },
+          "ordered_coset_signature_sha256": "bf6f0361a9046afa6052f949f8c107d82209e5cef026d500746c847fda308f1e",
+          "primitive_prime": 43691,
+          "quotient_coset_capacity": 1285,
+          "selected_period": 34,
+          "signature_change_count": 63,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 404,
+            "horizon": 109,
+            "prime": 43691
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 146,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 35,
+          "first_coset_escape": {
+            "coset_signature": 70,
+            "horizon": 42,
+            "residue": 21
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 35,
+            "residue": 57
+          },
+          "ordered_coset_signature_sha256": "3fa5b62f8440d8888d7d91bb3a6e0eb444993b6853487bb4f6e0dce678f7f6fe",
+          "primitive_prime": 71,
+          "quotient_coset_capacity": 2,
+          "selected_period": 35,
+          "signature_change_count": 30,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 157,
+            "prime": 71
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 145,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 36,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 36,
+            "residue": 17
+          },
+          "ordered_coset_signature_sha256": "9580a6212a6d37309da43a0c0a25770004e3debd76a1d91b4d18733374ac0497",
+          "primitive_prime": 37,
+          "quotient_coset_capacity": 1,
+          "selected_period": 36,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 43,
+            "prime": 37
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 144,
+          "distinct_dyadic_coset_count": 6,
+          "dyadic_subgroup_order": 37,
+          "first_coset_escape": {
+            "coset_signature": 40,
+            "horizon": 42,
+            "residue": 57
+          },
+          "initial_active_state": {
+            "coset_signature": 39,
+            "horizon": 37,
+            "residue": 124
+          },
+          "ordered_coset_signature_sha256": "9f723e107e0001fadec41c53a0a8339805f6b7c137951b6e7e3467d31643d050",
+          "primitive_prime": 223,
+          "quotient_coset_capacity": 6,
+          "selected_period": 37,
+          "signature_change_count": 49,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 3,
+            "horizon": 68,
+            "prime": 223
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 139,
+          "distinct_dyadic_coset_count": 42,
+          "dyadic_subgroup_order": 42,
+          "first_coset_escape": {
+            "coset_signature": 1219,
+            "horizon": 47,
+            "residue": 3496
+          },
+          "initial_active_state": {
+            "coset_signature": 1155,
+            "horizon": 42,
+            "residue": 812
+          },
+          "ordered_coset_signature_sha256": "b1d8d7f2c89cbc3c6f4d30754f8ce25f37de0c26076ddf1a59db5ce47232a04e",
+          "primitive_prime": 5419,
+          "quotient_coset_capacity": 129,
+          "selected_period": 42,
+          "signature_change_count": 49,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 31,
+            "horizon": 114,
+            "prime": 5419
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 138,
+          "distinct_dyadic_coset_count": 10,
+          "dyadic_subgroup_order": 43,
+          "first_coset_escape": {
+            "coset_signature": 1,
+            "horizon": 47,
+            "residue": 16
+          },
+          "initial_active_state": {
+            "coset_signature": 245,
+            "horizon": 43,
+            "residue": 116
+          },
+          "ordered_coset_signature_sha256": "dadeef39f1418b3b57ee27c38de5e09f0089d2044d49b8ebe1c0a4ab143527d1",
+          "primitive_prime": 431,
+          "quotient_coset_capacity": 10,
+          "selected_period": 43,
+          "signature_change_count": 53,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 12,
+            "horizon": 63,
+            "prime": 431
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 134,
+          "distinct_dyadic_coset_count": 31,
+          "dyadic_subgroup_order": 47,
+          "first_coset_escape": {
+            "coset_signature": 1200,
+            "horizon": 48,
+            "residue": 697
+          },
+          "initial_active_state": {
+            "coset_signature": 1086,
+            "horizon": 47,
+            "residue": 1365
+          },
+          "ordered_coset_signature_sha256": "6472d836d92c8c9766b5e62c167b2bb8ef0d802a193d2fc50d92ac67adfae1f9",
+          "primitive_prime": 2351,
+          "quotient_coset_capacity": 50,
+          "selected_period": 47,
+          "signature_change_count": 56,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 35,
+            "horizon": 92,
+            "prime": 2351
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 133,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 48,
+          "first_coset_escape": {
+            "coset_signature": 1,
+            "horizon": 52,
+            "residue": 12
+          },
+          "initial_active_state": {
+            "coset_signature": 96,
+            "horizon": 48,
+            "residue": 45
+          },
+          "ordered_coset_signature_sha256": "b9386160d2c6adfb9b7dcaaf73db9dd8ada5b33f7245b814bfd7b33016674e64",
+          "primitive_prime": 97,
+          "quotient_coset_capacity": 2,
+          "selected_period": 48,
+          "signature_change_count": 24,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 3,
+            "horizon": 61,
+            "prime": 97
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 129,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 52,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 52,
+            "residue": 12
+          },
+          "ordered_coset_signature_sha256": "613ff1931c851372567d740192b7f4f42c818045ad0d5c787bbdb962d798e356",
+          "primitive_prime": 53,
+          "quotient_coset_capacity": 1,
+          "selected_period": 52,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 114,
+            "prime": 53
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 127,
+          "distinct_dyadic_coset_count": 49,
+          "dyadic_subgroup_order": 54,
+          "first_coset_escape": {
+            "coset_signature": 25939,
+            "horizon": 55,
+            "residue": 1086
+          },
+          "initial_active_state": {
+            "coset_signature": 63832,
+            "horizon": 54,
+            "residue": 17612
+          },
+          "ordered_coset_signature_sha256": "1f1889852ba5231e3ccd7c196b2d1d854e9b4515990a059a91798313ff5a5752",
+          "primitive_prime": 87211,
+          "quotient_coset_capacity": 1615,
+          "selected_period": 54,
+          "signature_change_count": 48,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 624,
+            "horizon": 84,
+            "prime": 87211
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 126,
+          "distinct_dyadic_coset_count": 16,
+          "dyadic_subgroup_order": 55,
+          "first_coset_escape": {
+            "coset_signature": 68,
+            "horizon": 59,
+            "residue": 259
+          },
+          "initial_active_state": {
+            "coset_signature": 177,
+            "horizon": 55,
+            "residue": 76
+          },
+          "ordered_coset_signature_sha256": "4df1dd6041be1df2a45ea52ec1d0c8462ff71ce942b2eca495726b60a5b97717",
+          "primitive_prime": 881,
+          "quotient_coset_capacity": 16,
+          "selected_period": 55,
+          "signature_change_count": 51,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 8,
+            "horizon": 157,
+            "prime": 881
+          },
+          "target": "1/465"
+        },
+        {
+          "active_horizon_count": 122,
+          "distinct_dyadic_coset_count": 54,
+          "dyadic_subgroup_order": 59,
+          "first_coset_escape": {
+            "coset_signature": 126322,
+            "horizon": 61,
+            "residue": 53217
+          },
+          "initial_active_state": {
+            "coset_signature": 125302,
+            "horizon": 59,
+            "residue": 17739
+          },
+          "ordered_coset_signature_sha256": "21ea1ef818f632436369166fbad5ed1189ed9bd3c082d7ec14e61aba2b323666",
+          "primitive_prime": 179951,
+          "quotient_coset_capacity": 3050,
+          "selected_period": 59,
+          "signature_change_count": 53,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2279,
+            "horizon": 94,
+            "prime": 179951
+          },
+          "target": "1/465"
+        }
+      ],
+      "channels_escaping_first_dyadic_coset": 21,
+      "depth": 180,
+      "exceptional_selected_periods_without_primitive_prime": [],
+      "first_exact_coset_escape": {
+        "coset_signature": 63,
+        "horizon": 13,
+        "primitive_prime": 73,
+        "residue": 33,
+        "selected_period": 9
+      },
+      "nontrivial_quotient_channel_count": 21,
+      "primitive_channel_count": 24,
+      "selected_count": 78,
+      "target": "1/465",
+      "widest_channel": {
+        "active_horizon_count": 164,
+        "distinct_dyadic_coset_count": 74,
+        "dyadic_subgroup_order": 17,
+        "first_coset_escape": {
+          "coset_signature": 12272,
+          "horizon": 19,
+          "residue": 125591
+        },
+        "initial_active_state": {
+          "coset_signature": 51256,
+          "horizon": 17,
+          "residue": 85554
+        },
+        "ordered_coset_signature_sha256": "702f8217042dac8ec0bc52346edafa3475a71977a680febe2d5f6f6bf37743da",
+        "primitive_prime": 131071,
+        "quotient_coset_capacity": 7710,
+        "selected_period": 17,
+        "signature_change_count": 73,
+        "single_dyadic_coset": false,
+        "smallest_centered_residue": {
+          "centered_residue": 1167,
+          "horizon": 153,
+          "prime": 131071
+        },
+        "target": "1/465"
+      }
+    },
+    {
+      "all_nontrivial_channels_single_coset": false,
+      "channels": [
+        {
+          "active_horizon_count": 155,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 2,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 2,
+            "residue": 2
+          },
+          "ordered_coset_signature_sha256": "afffbc6c75e5b75e0689700d81e1f310113646d101e7892ee275fe2c49e41b12",
+          "primitive_prime": 3,
+          "quotient_coset_capacity": 1,
+          "selected_period": 2,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 2,
+            "prime": 3
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 157,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 4,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 4,
+            "residue": 1
+          },
+          "ordered_coset_signature_sha256": "b332ea5808a8592f47ef15dc92be8c4b52c8baef813d8d88e3a99a4a4280f0bc",
+          "primitive_prime": 5,
+          "quotient_coset_capacity": 1,
+          "selected_period": 4,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 4,
+            "prime": 5
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 174,
+          "distinct_dyadic_coset_count": 18,
+          "dyadic_subgroup_order": 7,
+          "first_coset_escape": {
+            "coset_signature": 59,
+            "horizon": 8,
+            "residue": 106
+          },
+          "initial_active_state": {
+            "coset_signature": 20,
+            "horizon": 7,
+            "residue": 66
+          },
+          "ordered_coset_signature_sha256": "67dd09c97755bf27d53f3e227e79ed76913b550fea7540f5f84eb216a7ad759e",
+          "primitive_prime": 127,
+          "quotient_coset_capacity": 18,
+          "selected_period": 7,
+          "signature_change_count": 75,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 46,
+            "prime": 127
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 173,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 8,
+          "first_coset_escape": {
+            "coset_signature": 16,
+            "horizon": 11,
+            "residue": 14
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 8,
+            "residue": 2
+          },
+          "ordered_coset_signature_sha256": "0802d0bbccb7bd3c88fd212c0f700a63270ae9fc748b197d78e793766137d9a8",
+          "primitive_prime": 17,
+          "quotient_coset_capacity": 2,
+          "selected_period": 8,
+          "signature_change_count": 39,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 16,
+            "prime": 17
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 148,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 11,
+          "first_coset_escape": {
+            "coset_signature": 22,
+            "horizon": 16,
+            "residue": 15
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 11,
+            "residue": 2
+          },
+          "ordered_coset_signature_sha256": "d244e61a3477ee9629dac0b9aa1e6ae2d1c92e205298a420aa470887a787b999",
+          "primitive_prime": 23,
+          "quotient_coset_capacity": 2,
+          "selected_period": 11,
+          "signature_change_count": 31,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 13,
+            "prime": 23
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 169,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 12,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 12,
+            "residue": 8
+          },
+          "ordered_coset_signature_sha256": "236e8613c6ad9fb99b020a4dacd73ffb04b4f34bceb6a1ca9741485ee18d7188",
+          "primitive_prime": 13,
+          "quotient_coset_capacity": 1,
+          "selected_period": 12,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 19,
+            "prime": 13
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 168,
+          "distinct_dyadic_coset_count": 69,
+          "dyadic_subgroup_order": 13,
+          "first_coset_escape": {
+            "coset_signature": 3685,
+            "horizon": 15,
+            "residue": 2448
+          },
+          "initial_active_state": {
+            "coset_signature": 717,
+            "horizon": 13,
+            "residue": 5712
+          },
+          "ordered_coset_signature_sha256": "062bc33461efc835301df0581882bf76d9618ccf5a31be6e56a92870a5590bc5",
+          "primitive_prime": 8191,
+          "quotient_coset_capacity": 630,
+          "selected_period": 13,
+          "signature_change_count": 70,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 111,
+            "horizon": 47,
+            "prime": 8191
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 166,
+          "distinct_dyadic_coset_count": 10,
+          "dyadic_subgroup_order": 15,
+          "first_coset_escape": {
+            "coset_signature": 8,
+            "horizon": 16,
+            "residue": 25
+          },
+          "initial_active_state": {
+            "coset_signature": 19,
+            "horizon": 15,
+            "residue": 55
+          },
+          "ordered_coset_signature_sha256": "968b9e0baf2411ae5c5d4ffa62550fe51969e687e5309aee3a7348affaea08a8",
+          "primitive_prime": 151,
+          "quotient_coset_capacity": 10,
+          "selected_period": 15,
+          "signature_change_count": 64,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 41,
+            "prime": 151
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 165,
+          "distinct_dyadic_coset_count": 16,
+          "dyadic_subgroup_order": 16,
+          "first_coset_escape": {
+            "coset_signature": 1,
+            "horizon": 19,
+            "residue": 225
+          },
+          "initial_active_state": {
+            "coset_signature": 255,
+            "horizon": 16,
+            "residue": 179
+          },
+          "ordered_coset_signature_sha256": "71b12ea3eb375a303724715f49e07f06941246ba772d84cc714801686ab0b73d",
+          "primitive_prime": 257,
+          "quotient_coset_capacity": 16,
+          "selected_period": 16,
+          "signature_change_count": 62,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 3,
+            "horizon": 110,
+            "prime": 257
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 162,
+          "distinct_dyadic_coset_count": 71,
+          "dyadic_subgroup_order": 19,
+          "first_coset_escape": {
+            "coset_signature": 70034,
+            "horizon": 22,
+            "residue": 78254
+          },
+          "initial_active_state": {
+            "coset_signature": 278420,
+            "horizon": 19,
+            "residue": 344010
+          },
+          "ordered_coset_signature_sha256": "7afff987e3dfc150b59fea651887d142d52b02bc1b8b9126ce5d30e689e8008a",
+          "primitive_prime": 524287,
+          "quotient_coset_capacity": 27594,
+          "selected_period": 19,
+          "signature_change_count": 70,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 606,
+            "horizon": 180,
+            "prime": 524287
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 159,
+          "distinct_dyadic_coset_count": 28,
+          "dyadic_subgroup_order": 22,
+          "first_coset_escape": {
+            "coset_signature": 443,
+            "horizon": 24,
+            "residue": 158
+          },
+          "initial_active_state": {
+            "coset_signature": 646,
+            "horizon": 22,
+            "residue": 67
+          },
+          "ordered_coset_signature_sha256": "d4ba7afab07916a12b03698d9ab7a22690a14ffa67d12a8d7eb1d82a294c08ce",
+          "primitive_prime": 683,
+          "quotient_coset_capacity": 31,
+          "selected_period": 22,
+          "signature_change_count": 64,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 48,
+            "prime": 683
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 157,
+          "distinct_dyadic_coset_count": 10,
+          "dyadic_subgroup_order": 24,
+          "first_coset_escape": {
+            "coset_signature": 36,
+            "horizon": 25,
+            "residue": 14
+          },
+          "initial_active_state": {
+            "coset_signature": 91,
+            "horizon": 24,
+            "residue": 193
+          },
+          "ordered_coset_signature_sha256": "ca8b30a8cf91df7f97fb0656d3100eec4bc102f0d3aaf5f30b72a78af822c21b",
+          "primitive_prime": 241,
+          "quotient_coset_capacity": 10,
+          "selected_period": 24,
+          "signature_change_count": 58,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 163,
+            "prime": 241
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 156,
+          "distinct_dyadic_coset_count": 23,
+          "dyadic_subgroup_order": 25,
+          "first_coset_escape": {
+            "coset_signature": 25,
+            "horizon": 27,
+            "residue": 529
+          },
+          "initial_active_state": {
+            "coset_signature": 577,
+            "horizon": 25,
+            "residue": 577
+          },
+          "ordered_coset_signature_sha256": "8401416d28584cc81bd423de3a6e3ead44f6570f4748af5986831cfe5b0c9203",
+          "primitive_prime": 601,
+          "quotient_coset_capacity": 24,
+          "selected_period": 25,
+          "signature_change_count": 66,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 5,
+            "horizon": 99,
+            "prime": 601
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 154,
+          "distinct_dyadic_coset_count": 62,
+          "dyadic_subgroup_order": 27,
+          "first_coset_escape": {
+            "coset_signature": 153329,
+            "horizon": 29,
+            "residue": 238708
+          },
+          "initial_active_state": {
+            "coset_signature": 152501,
+            "horizon": 27,
+            "residue": 254674
+          },
+          "ordered_coset_signature_sha256": "510cd4f3f8308f092916df75db1d315d4db47e6a8fda7b62d3902b9db9a8d380",
+          "primitive_prime": 262657,
+          "quotient_coset_capacity": 9728,
+          "selected_period": 27,
+          "signature_change_count": 64,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2616,
+            "horizon": 151,
+            "prime": 262657
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 152,
+          "distinct_dyadic_coset_count": 8,
+          "dyadic_subgroup_order": 29,
+          "first_coset_escape": {
+            "coset_signature": 89,
+            "horizon": 33,
+            "residue": 197
+          },
+          "initial_active_state": {
+            "coset_signature": 232,
+            "horizon": 29,
+            "residue": 196
+          },
+          "ordered_coset_signature_sha256": "df89dd73b50a8686a5bd1f6d7f211d1992d01f237b97c71dabc8dcc6fb43e573",
+          "primitive_prime": 233,
+          "quotient_coset_capacity": 8,
+          "selected_period": 29,
+          "signature_change_count": 58,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 3,
+            "horizon": 130,
+            "prime": 233
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 151,
+          "distinct_dyadic_coset_count": 11,
+          "dyadic_subgroup_order": 30,
+          "first_coset_escape": {
+            "coset_signature": 80,
+            "horizon": 33,
+            "residue": 26
+          },
+          "initial_active_state": {
+            "coset_signature": 293,
+            "horizon": 30,
+            "residue": 262
+          },
+          "ordered_coset_signature_sha256": "0316e760849e981a7c62382cf699521562ada1e8f6a73c45f57468f3fdebc00a",
+          "primitive_prime": 331,
+          "quotient_coset_capacity": 11,
+          "selected_period": 30,
+          "signature_change_count": 51,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 92,
+            "prime": 331
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 148,
+          "distinct_dyadic_coset_count": 64,
+          "dyadic_subgroup_order": 33,
+          "first_coset_escape": {
+            "coset_signature": 460327,
+            "horizon": 37,
+            "residue": 57464
+          },
+          "initial_active_state": {
+            "coset_signature": 23144,
+            "horizon": 33,
+            "residue": 163692
+          },
+          "ordered_coset_signature_sha256": "eb1d899ba1dcd090735b7b9f53d92b09f68c2b8269a520b9d77d94f24de1e7e8",
+          "primitive_prime": 599479,
+          "quotient_coset_capacity": 18166,
+          "selected_period": 33,
+          "signature_change_count": 64,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 3612,
+            "horizon": 51,
+            "prime": 599479
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 144,
+          "distinct_dyadic_coset_count": 6,
+          "dyadic_subgroup_order": 37,
+          "first_coset_escape": {
+            "coset_signature": 40,
+            "horizon": 42,
+            "residue": 154
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 37,
+            "residue": 197
+          },
+          "ordered_coset_signature_sha256": "ea001d75e279f23acb155416d188c7ee7e59f2bef0f7811f0d9cb4b8c00d70d0",
+          "primitive_prime": 223,
+          "quotient_coset_capacity": 6,
+          "selected_period": 37,
+          "signature_change_count": 48,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 2,
+            "horizon": 58,
+            "prime": 223
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 140,
+          "distinct_dyadic_coset_count": 62,
+          "dyadic_subgroup_order": 41,
+          "first_coset_escape": {
+            "coset_signature": 9692,
+            "horizon": 42,
+            "residue": 6623
+          },
+          "initial_active_state": {
+            "coset_signature": 6213,
+            "horizon": 41,
+            "residue": 5734
+          },
+          "ordered_coset_signature_sha256": "ff104c2674f13eaaccbea260477236e40e0deec0de689619b7f18b9e3d03cbda",
+          "primitive_prime": 13367,
+          "quotient_coset_capacity": 326,
+          "selected_period": 41,
+          "signature_change_count": 63,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 238,
+            "horizon": 143,
+            "prime": 13367
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 139,
+          "distinct_dyadic_coset_count": 51,
+          "dyadic_subgroup_order": 42,
+          "first_coset_escape": {
+            "coset_signature": 1101,
+            "horizon": 46,
+            "residue": 3270
+          },
+          "initial_active_state": {
+            "coset_signature": 1931,
+            "horizon": 42,
+            "residue": 654
+          },
+          "ordered_coset_signature_sha256": "28a7bcf675b2047e2acc724fa907e91fccb567fb5ee06ecec416f845fba808b9",
+          "primitive_prime": 5419,
+          "quotient_coset_capacity": 129,
+          "selected_period": 42,
+          "signature_change_count": 59,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 26,
+            "horizon": 174,
+            "prime": 5419
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 135,
+          "distinct_dyadic_coset_count": 59,
+          "dyadic_subgroup_order": 46,
+          "first_coset_escape": {
+            "coset_signature": 738316,
+            "horizon": 48,
+            "residue": 799462
+          },
+          "initial_active_state": {
+            "coset_signature": 2228367,
+            "horizon": 46,
+            "residue": 1575661
+          },
+          "ordered_coset_signature_sha256": "a4c689fdd3268a28199a7d84ae8128bba5ce46e86c1fa10528aa3f6ed362e8f6",
+          "primitive_prime": 2796203,
+          "quotient_coset_capacity": 60787,
+          "selected_period": 46,
+          "signature_change_count": 59,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 35631,
+            "horizon": 69,
+            "prime": 2796203
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 134,
+          "distinct_dyadic_coset_count": 33,
+          "dyadic_subgroup_order": 47,
+          "first_coset_escape": {
+            "coset_signature": 1680,
+            "horizon": 48,
+            "residue": 878
+          },
+          "initial_active_state": {
+            "coset_signature": 2144,
+            "horizon": 47,
+            "residue": 1031
+          },
+          "ordered_coset_signature_sha256": "75c574efdaaf747035c92a273311817b179a1192f565e152066290c9ee4ff2e0",
+          "primitive_prime": 2351,
+          "quotient_coset_capacity": 50,
+          "selected_period": 47,
+          "signature_change_count": 57,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 23,
+            "horizon": 76,
+            "prime": 2351
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 133,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 48,
+          "first_coset_escape": {
+            "coset_signature": 96,
+            "horizon": 63,
+            "residue": 80
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 48,
+            "residue": 66
+          },
+          "ordered_coset_signature_sha256": "4920ca186af0b6c7cb07ecefdf6df3ac35348afbb8cd7db0caa31cb81ae87a63",
+          "primitive_prime": 97,
+          "quotient_coset_capacity": 2,
+          "selected_period": 48,
+          "signature_change_count": 22,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 163,
+            "prime": 97
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 130,
+          "distinct_dyadic_coset_count": 2,
+          "dyadic_subgroup_order": 51,
+          "first_coset_escape": {
+            "coset_signature": 102,
+            "horizon": 53,
+            "residue": 27
+          },
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 51,
+            "residue": 9
+          },
+          "ordered_coset_signature_sha256": "b02719fbbc045d30a6ed395693194f8c0eaf431e8d0b12f839805c2bfa1f329e",
+          "primitive_prime": 103,
+          "quotient_coset_capacity": 2,
+          "selected_period": 51,
+          "signature_change_count": 27,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 101,
+            "prime": 103
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 128,
+          "distinct_dyadic_coset_count": 44,
+          "dyadic_subgroup_order": 53,
+          "first_coset_escape": {
+            "coset_signature": 3588,
+            "horizon": 55,
+            "residue": 3123
+          },
+          "initial_active_state": {
+            "coset_signature": 1909,
+            "horizon": 53,
+            "residue": 6113
+          },
+          "ordered_coset_signature_sha256": "de8e39b9bf1329593b18f9c5bd6993c45962fadfec2db2e82f975328b03dd95d",
+          "primitive_prime": 6361,
+          "quotient_coset_capacity": 120,
+          "selected_period": 53,
+          "signature_change_count": 57,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 62,
+            "horizon": 105,
+            "prime": 6361
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 126,
+          "distinct_dyadic_coset_count": 15,
+          "dyadic_subgroup_order": 55,
+          "first_coset_escape": {
+            "coset_signature": 662,
+            "horizon": 58,
+            "residue": 658
+          },
+          "initial_active_state": {
+            "coset_signature": 583,
+            "horizon": 55,
+            "residue": 619
+          },
+          "ordered_coset_signature_sha256": "9b8f4706a0a7cdca9b5d4b97f31de34d061b5dfbde303f79f74a3ab6f8a37de1",
+          "primitive_prime": 881,
+          "quotient_coset_capacity": 16,
+          "selected_period": 55,
+          "signature_change_count": 53,
+          "single_dyadic_coset": false,
+          "smallest_centered_residue": {
+            "centered_residue": 3,
+            "horizon": 69,
+            "prime": 881
+          },
+          "target": "3/7"
+        },
+        {
+          "active_horizon_count": 123,
+          "distinct_dyadic_coset_count": 1,
+          "dyadic_subgroup_order": 58,
+          "first_coset_escape": null,
+          "initial_active_state": {
+            "coset_signature": 1,
+            "horizon": 58,
+            "residue": 45
+          },
+          "ordered_coset_signature_sha256": "a8ff2652fda3a0d9cc66f14abc6daf06f4da7d826589f41c434ff0e81feda901",
+          "primitive_prime": 59,
+          "quotient_coset_capacity": 1,
+          "selected_period": 58,
+          "signature_change_count": 0,
+          "single_dyadic_coset": true,
+          "smallest_centered_residue": {
+            "centered_residue": 1,
+            "horizon": 90,
+            "prime": 59
+          },
+          "target": "3/7"
+        }
+      ],
+      "channels_escaping_first_dyadic_coset": 23,
+      "depth": 180,
+      "exceptional_selected_periods_without_primitive_prime": [
+        6
+      ],
+      "first_exact_coset_escape": {
+        "coset_signature": 59,
+        "horizon": 8,
+        "primitive_prime": 127,
+        "residue": 106,
+        "selected_period": 7
+      },
+      "nontrivial_quotient_channel_count": 23,
+      "primitive_channel_count": 27,
+      "selected_count": 84,
+      "target": "3/7",
+      "widest_channel": {
+        "active_horizon_count": 162,
+        "distinct_dyadic_coset_count": 71,
+        "dyadic_subgroup_order": 19,
+        "first_coset_escape": {
+          "coset_signature": 70034,
+          "horizon": 22,
+          "residue": 78254
+        },
+        "initial_active_state": {
+          "coset_signature": 278420,
+          "horizon": 19,
+          "residue": 344010
+        },
+        "ordered_coset_signature_sha256": "7afff987e3dfc150b59fea651887d142d52b02bc1b8b9126ce5d30e689e8008a",
+        "primitive_prime": 524287,
+        "quotient_coset_capacity": 27594,
+        "selected_period": 19,
+        "signature_change_count": 70,
+        "single_dyadic_coset": false,
+        "smallest_centered_residue": {
+          "centered_residue": 606,
+          "horizon": 180,
+          "prime": 524287
+        },
+        "target": "3/7"
+      }
+    }
+  ]
+}

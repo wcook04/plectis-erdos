@@ -1,0 +1,1041 @@
+{
+  "all_parts_pass": true,
+  "consequence_decisions": [
+    {
+      "decision": "proved",
+      "mechanism": "cone_bound_branch_1_all_degrees"
+    },
+    {
+      "decision": "proved",
+      "mechanism": "cone_bound_branch_2_all_degrees"
+    },
+    {
+      "decision": "proved",
+      "mechanism": "kappa_n_positivity_aligned_direction"
+    },
+    {
+      "decision": "proved",
+      "mechanism": "branch_confinement_general_ray_direction"
+    },
+    {
+      "decision": "proved",
+      "mechanism": "kappa_n_positivity_all_ray_directions"
+    },
+    {
+      "decision": "open",
+      "mechanism": "cusp_law_O_rho_squared_remainder"
+    },
+    {
+      "decision": "untouched",
+      "mechanism": "D_bounded_away_from_1_regime"
+    },
+    {
+      "decision": "not_claimed",
+      "mechanism": "erdos_1041"
+    }
+  ],
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "falsification_consequence": "The functional would not be the right one, and (star) would remain a trigonometric inequality needing a degree-by-degree factorisation.",
+      "survival_consequence": "kappa_n > 0 becomes a theorem at every degree rather than at n = 3 only, closing the cone hypothesis named open in ConeBoundBranchGeometry.md section 7."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "cone_bound_via_monotone_harmonic_functional",
+      "statement": "On the model g(zeta) = zeta^n + n zeta the inequality (star) is the statement that Im Xi, with Xi(zeta) = (n-2) zeta - zeta^{2-n}, is monotone along a descending branch away from its hub value c_n; the monotonicity follows from sector confinement alone, at every degree and on both branches."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConeBoundMonotoneFunctional.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cone_bound_all_degrees.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConeBoundMonotoneFunctional.md"
+      ]
+    },
+    "probe": {
+      "computation": "Verify (X1), (X2), (X3) and the dt/dsigma identity at 40 digits for five descent-ray directions, Newton-continue both branches at degrees 3..14 and assert sector confinement plus the sign and monotonicity of Im Xi and of t plus |t| <= T_i, enumerate the Xi_m family, and integrate D_i.",
+      "falsifier": "Any identity residual above 1e-30, any branch leaving its sector, any sign or monotonicity reversal of Im Xi or t, any |t| above the closed-form T_i, an Xi_m admitted at m = n, or a degree where kappa_n <= C_n - B_n.",
+      "id": "monotone_functional_cone_bound_sweep",
+      "question": "Do the three Xi identities hold, is Im Xi monotone with the predicted sign on each confined branch, and does the resulting cone bound clear the closed-form C_n - B_n threshold at every degree?",
+      "stop_condition": "Stop once every degree in the sweep reports sector confinement, monotone Im Xi, |t| <= T_i, and C_n - B_n > 0."
+    },
+    "problem": {
+      "claim_ceiling": "Proves the cone hypothesis, hence kappa_n > 0, at every degree n >= 3 and on both descending branches of the fixed near-field model, at the aligned descent-ray direction. Does not prove confinement at other ray directions, does not quantify the O(rho^2) remainder of the cusp law, does not touch the D-bounded-away-from-1 regime, and does not prove Erd\u0151s #1041.",
+      "id": "erdos_1041",
+      "target_statement": "Join two roots by a curve of length less than two inside the strict unit lemniscate."
+    },
+    "result": {
+      "status": "exact_one_way_result",
+      "summary": "Xi(zeta) = (n-2) zeta - zeta^{2-n} satisfies Xi' = ((n-2)/n) g'/zeta^{n-1} and Xi(zeta_c) = (n-1) zeta_c, so d(Im Xi)/d sigma = ((n-2)/n) Im(zeta^{1-n}) has the sign opposite to Im g'; with sector confinement on both branches this proves (star) and its branch-2 mirror at every degree, hence kappa_n >= C_n - B_n > 0."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "parts": {
+    "branches": {
+      "claim": "Branch 1 stays in (0, phi_c) and branch 2 in (phi_c, 2 phi_c); on each, Im Xi is strictly monotone away from the hub value c_n, t is strictly monotone of constant sign, and |t| <= T_i with T_i the closed-form initial tangent offset, attained only at the hub.",
+      "passes": true,
+      "rows": [
+        {
+          "Phi_sign_after_hub": "positive",
+          "T_closed_form": "0.785398163397",
+          "alpha": "0.0",
+          "branch": 1,
+          "cap_slack": "1.361e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "9.184e-41",
+          "max_abs_t": "0.785398163384",
+          "n": 3,
+          "passes": true,
+          "phi_range": [
+            "6.6680001e-7",
+            "1.5707963"
+          ],
+          "sector": [
+            "0.0",
+            "1.5707963"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "negative",
+          "T_closed_form": "0.261799387799",
+          "alpha": "2.0943951",
+          "branch": 2,
+          "cap_slack": "1.361e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "1.358e-35",
+          "max_abs_t": "0.261799387786",
+          "n": 3,
+          "passes": true,
+          "phi_range": [
+            "1.5707963",
+            "2.0943092"
+          ],
+          "sector": [
+            "1.5707963",
+            "3.1415927"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "positive",
+          "T_closed_form": "1.0471975512",
+          "alpha": "0.0",
+          "branch": 1,
+          "cap_slack": "2.357e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "9.184e-41",
+          "max_abs_t": "1.04719755117",
+          "n": 4,
+          "passes": true,
+          "phi_range": [
+            "6.495797e-7",
+            "1.0471976"
+          ],
+          "sector": [
+            "0.0",
+            "1.0471976"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "negative",
+          "T_closed_form": "0.523598775598",
+          "alpha": "1.5707963",
+          "branch": 2,
+          "cap_slack": "2.357e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "2.296e-39",
+          "max_abs_t": "0.523598775575",
+          "n": 4,
+          "passes": true,
+          "phi_range": [
+            "1.0471976",
+            "1.5707654"
+          ],
+          "sector": [
+            "1.0471976",
+            "2.0943951"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "positive",
+          "T_closed_form": "1.1780972451",
+          "alpha": "0.0",
+          "branch": 1,
+          "cap_slack": "2.922e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "1.378e-40",
+          "max_abs_t": "1.17809724507",
+          "n": 5,
+          "passes": true,
+          "phi_range": [
+            "5.6571969e-7",
+            "0.78539816"
+          ],
+          "sector": [
+            "0.0",
+            "0.78539816"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "negative",
+          "T_closed_form": "0.706858347058",
+          "alpha": "1.2566371",
+          "branch": 2,
+          "cap_slack": "2.922e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "1.54e-35",
+          "max_abs_t": "0.706858347028",
+          "n": 5,
+          "passes": true,
+          "phi_range": [
+            "0.78539816",
+            "1.2566226"
+          ],
+          "sector": [
+            "0.78539816",
+            "1.5707963"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "positive",
+          "T_closed_form": "1.25663706144",
+          "alpha": "0.0",
+          "branch": 1,
+          "cap_slack": "3.274e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "1.837e-40",
+          "max_abs_t": "1.2566370614",
+          "n": 6,
+          "passes": true,
+          "phi_range": [
+            "4.8984355e-7",
+            "0.62831853"
+          ],
+          "sector": [
+            "0.0",
+            "0.62831853"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "negative",
+          "T_closed_form": "0.837758040957",
+          "alpha": "1.0471976",
+          "branch": 2,
+          "cap_slack": "3.274e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "2.836e-35",
+          "max_abs_t": "0.837758040925",
+          "n": 6,
+          "passes": true,
+          "phi_range": [
+            "0.62831853",
+            "1.0471894"
+          ],
+          "sector": [
+            "0.62831853",
+            "1.2566371"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "positive",
+          "T_closed_form": "1.308996939",
+          "alpha": "0.0",
+          "branch": 1,
+          "cap_slack": "3.513e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "1.837e-40",
+          "max_abs_t": "1.30899693896",
+          "n": 7,
+          "passes": true,
+          "phi_range": [
+            "4.2858771e-7",
+            "0.52359878"
+          ],
+          "sector": [
+            "0.0",
+            "0.52359878"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "negative",
+          "T_closed_form": "0.934997813568",
+          "alpha": "0.8975979",
+          "branch": 2,
+          "cap_slack": "3.513e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "3.303e-35",
+          "max_abs_t": "0.934997813533",
+          "n": 7,
+          "passes": true,
+          "phi_range": [
+            "0.52359878",
+            "0.8975927"
+          ],
+          "sector": [
+            "0.52359878",
+            "1.0471976"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "positive",
+          "T_closed_form": "1.34639685154",
+          "alpha": "0.0",
+          "branch": 1,
+          "cap_slack": "3.685e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "2.296e-40",
+          "max_abs_t": "1.3463968515",
+          "n": 8,
+          "passes": true,
+          "phi_range": [
+            "3.7966082e-7",
+            "0.44879895"
+          ],
+          "sector": [
+            "0.0",
+            "0.44879895"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "negative",
+          "T_closed_form": "1.00979763865",
+          "alpha": "0.78539816",
+          "branch": 2,
+          "cap_slack": "3.685e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "3.225e-35",
+          "max_abs_t": "1.00979763862",
+          "n": 8,
+          "passes": true,
+          "phi_range": [
+            "0.44879895",
+            "0.78539457"
+          ],
+          "sector": [
+            "0.44879895",
+            "0.8975979"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "positive",
+          "T_closed_form": "1.37444678595",
+          "alpha": "0.0",
+          "branch": 1,
+          "cap_slack": "3.814e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "2.755e-40",
+          "max_abs_t": "1.37444678591",
+          "n": 9,
+          "passes": true,
+          "phi_range": [
+            "3.4017317e-7",
+            "0.39269908"
+          ],
+          "sector": [
+            "0.0",
+            "0.39269908"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "negative",
+          "T_closed_form": "1.06901416685",
+          "alpha": "0.6981317",
+          "branch": 2,
+          "cap_slack": "3.814e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "4.325e-35",
+          "max_abs_t": "1.06901416681",
+          "n": 9,
+          "passes": true,
+          "phi_range": [
+            "0.39269908",
+            "0.69812906"
+          ],
+          "sector": [
+            "0.39269908",
+            "0.78539816"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "positive",
+          "T_closed_form": "1.3962634016",
+          "alpha": "0.0",
+          "branch": 1,
+          "cap_slack": "3.915e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "2.755e-40",
+          "max_abs_t": "1.39626340156",
+          "n": 10,
+          "passes": true,
+          "phi_range": [
+            "3.0782655e-7",
+            "0.34906585"
+          ],
+          "sector": [
+            "0.0",
+            "0.34906585"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "negative",
+          "T_closed_form": "1.11701072128",
+          "alpha": "0.62831853",
+          "branch": 2,
+          "cap_slack": "3.915e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "7.736e-35",
+          "max_abs_t": "1.11701072124",
+          "n": 10,
+          "passes": true,
+          "phi_range": [
+            "0.34906585",
+            "0.6283165"
+          ],
+          "sector": [
+            "0.34906585",
+            "0.6981317"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "positive",
+          "T_closed_form": "1.42799666072",
+          "alpha": "0.0",
+          "branch": 1,
+          "cap_slack": "4.061e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "3.673e-40",
+          "max_abs_t": "1.42799666068",
+          "n": 12,
+          "passes": true,
+          "phi_range": [
+            "2.582611e-7",
+            "0.28559933"
+          ],
+          "sector": [
+            "0.0",
+            "0.28559933"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "negative",
+          "T_closed_form": "1.18999721727",
+          "alpha": "0.52359878",
+          "branch": 2,
+          "cap_slack": "4.061e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "5.749e-35",
+          "max_abs_t": "1.18999721723",
+          "n": 12,
+          "passes": true,
+          "phi_range": [
+            "0.28559933",
+            "0.52359745"
+          ],
+          "sector": [
+            "0.28559933",
+            "0.57119866"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "positive",
+          "T_closed_form": "1.44996584012",
+          "alpha": "0.0",
+          "branch": 1,
+          "cap_slack": "4.163e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "4.592e-40",
+          "max_abs_t": "1.44996584008",
+          "n": 14,
+          "passes": true,
+          "phi_range": [
+            "2.2222663e-7",
+            "0.24166097"
+          ],
+          "sector": [
+            "0.0",
+            "0.24166097"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        },
+        {
+          "Phi_sign_after_hub": "negative",
+          "T_closed_form": "1.24282786296",
+          "alpha": "0.44879895",
+          "branch": 2,
+          "cap_slack": "4.163e-11",
+          "im_xi_monotone": true,
+          "im_xi_sign": true,
+          "levelset_residual": "8.069e-35",
+          "max_abs_t": "1.24282786292",
+          "n": 14,
+          "passes": true,
+          "phi_range": [
+            "0.24166097",
+            "0.44879801"
+          ],
+          "sector": [
+            "0.24166097",
+            "0.48332195"
+          ],
+          "sector_confined": true,
+          "t_constant_sign": true,
+          "t_monotone": true
+        }
+      ],
+      "sigma_max": "1.0e+6",
+      "steps": 1200
+    },
+    "general_ray_direction": {
+      "claim": "Both branches are confined exactly for descent-ray directions delta in (0, 2 pi/(n-1)), an interval of length equal to the hub spacing, so exactly one hub of the n-1 works for any given configuration. Necessity is proved from the asymptotic directions; sufficiency inside the window is measured here, with a negative control outside it.",
+      "passes": true,
+      "rows": [
+        {
+          "interior_failures": [],
+          "interior_samples": 7,
+          "n": 3,
+          "negative_control_leaks": [],
+          "passes": true,
+          "window": "(0, 3.1415927)",
+          "window_equals_hub_spacing": true
+        },
+        {
+          "interior_failures": [],
+          "interior_samples": 7,
+          "n": 4,
+          "negative_control_leaks": [],
+          "passes": true,
+          "window": "(0, 2.0943951)",
+          "window_equals_hub_spacing": true
+        },
+        {
+          "interior_failures": [],
+          "interior_samples": 7,
+          "n": 5,
+          "negative_control_leaks": [],
+          "passes": true,
+          "window": "(0, 1.5707963)",
+          "window_equals_hub_spacing": true
+        },
+        {
+          "interior_failures": [],
+          "interior_samples": 7,
+          "n": 6,
+          "negative_control_leaks": [],
+          "passes": true,
+          "window": "(0, 1.2566371)",
+          "window_equals_hub_spacing": true
+        }
+      ]
+    },
+    "identities": {
+      "claim": "(X1) Xi' = ((n-2)/n) g'/zeta^{n-1}; (X2) Xi(zeta_c) = (n-1) zeta_c; (X3) Im(e^{-i delta} G^2/zeta^n) = c - Im(e^{-i delta} Xi) on the level set; and sign(dt/ds) = sign of that, for every ray direction delta.",
+      "dps": 40,
+      "passes": true,
+      "rows": [
+        {
+          "dt_identity_residual": "5.1657e-41",
+          "n": 3,
+          "x1_residual": "2.2959e-41",
+          "x2_residual": "4.1341e-43",
+          "x3_residual_over_5_ray_directions": "1.3775e-40"
+        },
+        {
+          "dt_identity_residual": "2.8699e-41",
+          "n": 4,
+          "x1_residual": "4.5918e-41",
+          "x2_residual": "2.2959e-41",
+          "x3_residual_over_5_ray_directions": "5.1657e-41"
+        },
+        {
+          "dt_identity_residual": "5.0223e-41",
+          "n": 5,
+          "x1_residual": "9.4007e-41",
+          "x2_residual": "6.4938e-41",
+          "x3_residual_over_5_ray_directions": "1.8367e-40"
+        },
+        {
+          "dt_identity_residual": "8.6096e-41",
+          "n": 6,
+          "x1_residual": "0.0",
+          "x2_residual": "4.5918e-41",
+          "x3_residual_over_5_ray_directions": "1.8367e-40"
+        },
+        {
+          "dt_identity_residual": "3.4438e-41",
+          "n": 7,
+          "x1_residual": "1.851e-40",
+          "x2_residual": "0.0",
+          "x3_residual_over_5_ray_directions": "4.702e-38"
+        },
+        {
+          "dt_identity_residual": "4.5918e-41",
+          "n": 8,
+          "x1_residual": "1.8367e-40",
+          "x2_residual": "9.1835e-41",
+          "x3_residual_over_5_ray_directions": "1.8367e-40"
+        },
+        {
+          "dt_identity_residual": "5.1657e-41",
+          "n": 9,
+          "x1_residual": "4.107e-40",
+          "x2_residual": "4.5918e-41",
+          "x3_residual_over_5_ray_directions": "5.8775e-39"
+        },
+        {
+          "dt_identity_residual": "4.5918e-41",
+          "n": 10,
+          "x1_residual": "4.5918e-41",
+          "x2_residual": "0.0",
+          "x3_residual_over_5_ray_directions": "2.7551e-40"
+        },
+        {
+          "dt_identity_residual": "4.0178e-41",
+          "n": 12,
+          "x1_residual": "7.3468e-40",
+          "x2_residual": "4.5918e-41",
+          "x3_residual_over_5_ray_directions": "2.9387e-39"
+        },
+        {
+          "dt_identity_residual": "9.1835e-41",
+          "n": 14,
+          "x1_residual": "7.3468e-40",
+          "x2_residual": "0.0",
+          "x3_residual_over_5_ray_directions": "2.9387e-39"
+        }
+      ],
+      "worst_residual": "4.702e-38"
+    },
+    "kappa": {
+      "claim": "kappa_n >= C_n - B_n > 0 at every degree, where C_n - B_n is the closed-form bound of TurningLengthBound.md section 3 and the cone hypothesis it needs is supplied by the branch part above.",
+      "passes": true,
+      "quadrature": "trapezoid on a geometric sigma mesh; the measured kappa_n is a confirmation of the recorded constants, not part of the proof",
+      "rows": [
+        {
+          "B_n": "0.4800398112",
+          "C_n": "0.8660254038",
+          "D_1": "0.23510595",
+          "D_2": "0.02291097",
+          "kappa_n_quadrature": "0.6080084869",
+          "n": 3,
+          "passes": true,
+          "proved_lower_bound_C_minus_B": "0.3859855926"
+        },
+        {
+          "B_n": "0.6339745962",
+          "C_n": "1.366025404",
+          "D_1": "0.2767744",
+          "D_2": "0.059148036",
+          "kappa_n_quadrature": "1.030102964",
+          "n": 4,
+          "passes": true,
+          "proved_lower_bound_C_minus_B": "0.7320508076"
+        },
+        {
+          "B_n": "0.608141804",
+          "C_n": "1.722562452",
+          "D_1": "0.23271563",
+          "D_2": "0.090950503",
+          "kappa_n_quadrature": "1.398896319",
+          "n": 6,
+          "passes": true,
+          "proved_lower_bound_C_minus_B": "1.114420648"
+        },
+        {
+          "B_n": "0.459226312",
+          "C_n": "1.900954317",
+          "D_1": "0.15500159",
+          "D_2": "0.09119877",
+          "kappa_n_quadrature": "1.65475396",
+          "n": 10,
+          "passes": true,
+          "proved_lower_bound_C_minus_B": "1.441728005"
+        }
+      ]
+    },
+    "ray_direction_closure": {
+      "analytic_hypothesis_n_ge_5": {
+        "claim": "|gamma_i| <= phi_c = pi/(n-1) <= pi/4 and T_i < pi/2 for n >= 5, so |sin gamma_i| < cos gamma_i termwise and tan(T_i/2) < 1",
+        "max_T_minus_half_pi": "-0.02662",
+        "max_abs_gamma_minus_phi_c": "5.74e-42",
+        "passes": true
+      },
+      "claim": "Theorem R: the near-Fekete half of the limit model closes at every degree AND every descent-ray direction, replacing BridgeIdentityProof.md section 4a's measured 'min_phi kappa_n(phi) is attained at phi = 0'.",
+      "endpoint_symmetry": {
+        "claim": "T_1(2 phi_c) = T_2(0) and T_2(2 phi_c) = T_1(0): the window ends swap the two branches, as the hub-orbit picture requires",
+        "passes": true,
+        "worst_residual": "2.296e-41"
+      },
+      "lipschitz_certificate_n_3_4": {
+        "claim": "C_n(delta) - B_n(delta) > 0 on the closed window at n = 3 and 4, certified by a grid minimum minus L*h/2 with L = 1 + 4/n",
+        "passes": true,
+        "rows": [
+          {
+            "certified_lower_bound": "0.385802333",
+            "grid_min": "0.385985592618",
+            "grid_points": 20000,
+            "half_step_penalty": "0.0001833",
+            "lipschitz_constant": "2.33333",
+            "n": 3,
+            "passes": true
+          },
+          {
+            "certified_lower_bound": "0.7319460878",
+            "grid_min": "0.732050807569",
+            "grid_points": 20000,
+            "half_step_penalty": "0.0001047",
+            "lipschitz_constant": "2.0",
+            "n": 4,
+            "passes": true
+          }
+        ]
+      },
+      "passes": true,
+      "wall_identity": {
+        "claim": "on arg zeta = 2 phi_c, g' is real positive and d(arg zeta)/ds = sin(delta - 2 phi_c)/(r g') < 0 for delta in (0, 2 phi_c)",
+        "passes": true,
+        "worst_residual_or_sign_violation": "1.4839e-35"
+      },
+      "window_confinement": {
+        "claim": "both branches confined for every delta strictly inside (0, 2 pi/(n-1)), and not both outside it",
+        "degrees": [
+          3,
+          4,
+          6,
+          9
+        ],
+        "interior_directions": 9,
+        "interior_failures": [],
+        "negative_control_leaks": [],
+        "passes": true
+      }
+    },
+    "xi_m_family": {
+      "claim": "Along branch 1 the functionals Xi_m with Xi_m' = g' zeta^{-m} have d(Im Xi_m)/d sigma = -sin(m phi)/r^m < 0 for exactly m = 1..n-1; m = n-1 is the cone bound and the family stops at m = n.",
+      "passes": true,
+      "rows": [
+        {
+          "expected_m": [
+            1,
+            2
+          ],
+          "first_refused_m": 3,
+          "monotone_m": [
+            1,
+            2
+          ],
+          "n": 3,
+          "passes": true
+        },
+        {
+          "expected_m": [
+            1,
+            2,
+            3
+          ],
+          "first_refused_m": 4,
+          "monotone_m": [
+            1,
+            2,
+            3
+          ],
+          "n": 4,
+          "passes": true
+        },
+        {
+          "expected_m": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "first_refused_m": 5,
+          "monotone_m": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "n": 5,
+          "passes": true
+        },
+        {
+          "expected_m": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "first_refused_m": 6,
+          "monotone_m": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "n": 6,
+          "passes": true
+        },
+        {
+          "expected_m": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "first_refused_m": 7,
+          "monotone_m": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "n": 7,
+          "passes": true
+        },
+        {
+          "expected_m": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "first_refused_m": 8,
+          "monotone_m": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "n": 8,
+          "passes": true
+        },
+        {
+          "expected_m": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "first_refused_m": 9,
+          "monotone_m": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "n": 9,
+          "passes": true
+        },
+        {
+          "expected_m": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "first_refused_m": 10,
+          "monotone_m": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "n": 10,
+          "passes": true
+        },
+        {
+          "expected_m": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "first_refused_m": 12,
+          "monotone_m": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "n": 12,
+          "passes": true
+        },
+        {
+          "expected_m": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "first_refused_m": 14,
+          "monotone_m": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "n": 14,
+          "passes": true
+        }
+      ]
+    }
+  },
+  "schema": "erdos1041-cone-bound-all-degrees/1",
+  "source_records": [
+    {
+      "byte_length": 32996,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cone_bound_all_degrees.py",
+      "sha256": "ed09fab1c6a13f27a36662ea2e396cc6b58c0402ce3f747f9fa088b5fd61f71a"
+    },
+    {
+      "byte_length": 27226,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConeBoundMonotoneFunctional.md",
+      "sha256": "ef9c141fc27c1fe927bbd4833a0eb8be1d6d313803f97dc46ad0fa5bbda938ff"
+    },
+    {
+      "byte_length": 94819,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "sha256": "8f10f8601fae05f16053dc2473691d68f0a22e26e9f309ed58c3f7fddfd55007"
+    }
+  ],
+  "status": "verified_proof_all_degrees"
+}

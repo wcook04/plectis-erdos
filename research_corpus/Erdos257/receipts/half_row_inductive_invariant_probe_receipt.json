@@ -1,0 +1,101 @@
+{
+  "claim_ceiling": "exact counterexamples eliminate only the named induction lemmas; the modular row is an exact route retirement only under its stated strict bank boundary; absence of an actual hole on the finite range is not a proof",
+  "exact_arithmetic": "integer quotient greedy",
+  "first_actual_hole": null,
+  "maximum_two_adic_valuation_of_pre_residual": {
+    "pre_residual": 242862768043097813558184152662139875860991216041650034990191177519975891685292316893388112408471643105403044257476087490948413404337129140527848099029931540638931445930491904,
+    "rank": 575,
+    "valuation": 15
+  },
+  "mechanisms": {
+    "fixed_fourteen_bit_nonzero_window": {
+      "claim": "the even-row pre-residual is never divisible by 2^15",
+      "first_counterexample": {
+        "pre_residual": 242862768043097813558184152662139875860991216041650034990191177519975891685292316893388112408471643105403044257476087490948413404337129140527848099029931540638931445930491904,
+        "rank": 575,
+        "valuation": 15
+      },
+      "status": "falsified"
+    },
+    "odd_divisor_pulse": {
+      "claim": "the selected proper-divisor pulse is always odd",
+      "first_counterexample": {
+        "divisor_pulse": 2,
+        "pre_residual": 16776,
+        "rank": 14
+      },
+      "status": "falsified"
+    },
+    "pure_mod_2d_hole_exclusion": {
+      "claim": "the low-half quotient residue alone is nonzero",
+      "exact_relation": "(low_residue + pre_residual) mod 2^d = 0",
+      "first_counterexample": null,
+      "first_equivalence_failure": null,
+      "first_modular_identity_failure": null,
+      "first_strict_bank_bound_failure": null,
+      "route_obstruction": "on the strict bank interval, low_residue = 0 iff pre_residual = 2^d; modular nonvanishing is the midpoint hole exclusion itself, not an independent invariant",
+      "status": "not_falsified_but_exactly_the_midpoint_hole",
+      "strict_bank_boundary": "0 < pre_residual < 2^(d+1)"
+    },
+    "single_low_half_carry": {
+      "claim": "the selected low-half quotient load is below 2^d",
+      "first_counterexample": {
+        "low_load": 3833,
+        "modulus": 2048,
+        "pre_residual": 263,
+        "rank": 11
+      },
+      "status": "falsified"
+    }
+  },
+  "range": {
+    "max_rank": 2500,
+    "min_rank": 2
+  },
+  "schema": "erdos257_half_row_inductive_invariant_probe_v1",
+  "suffix_cylinder_fixture": {
+    "midpoint_take": true,
+    "post_residual": 35546624,
+    "pre_residual": 102655489,
+    "rank": 26,
+    "support_through_midpoint": [
+      2,
+      3,
+      6,
+      7,
+      14,
+      20,
+      21,
+      26
+    ]
+  },
+  "tested_hole": "pre_residual_at_even_row_2d_equals_2^d",
+  "trace_sha256": "cffd0efa9c4c424ca4f1924831bc045866bef802fee143373aacbb59364de9ee",
+  "two_adic_valuation_records": [
+    {
+      "pre_residual": 8,
+      "rank": 2,
+      "valuation": 3
+    },
+    {
+      "pre_residual": 510000832,
+      "rank": 30,
+      "valuation": 6
+    },
+    {
+      "pre_residual": 55352441707142393371823981157448393290869265357770120242277632,
+      "rank": 207,
+      "valuation": 8
+    },
+    {
+      "pre_residual": 108774701109978849155410708683553478303201809284947988126832378270006331169900119818470756352,
+      "rank": 309,
+      "valuation": 12
+    },
+    {
+      "pre_residual": 242862768043097813558184152662139875860991216041650034990191177519975891685292316893388112408471643105403044257476087490948413404337129140527848099029931540638931445930491904,
+      "rank": 575,
+      "valuation": 15
+    }
+  ]
+}

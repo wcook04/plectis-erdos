@@ -3,6 +3,8 @@
 
 # The semantic corpus layer
 
+For web research, [browse the mathematical graph](BROWSER.md).
+
 This directory owns a bounded answer the repository could not previously give
 without being reread: **what does the selected interpreted subset state, and
 how are those statements recorded as relating to each other?**
@@ -43,6 +45,7 @@ fails to rule out.
 
 | path | role |
 |---|---|
+| `BROWSER*.md` | **generated.** Complete statement/proof/link projection for GitHub readers |
 | `zones/<zone>.json` | **authored.** Per-zone statement nodes, declaration roles, intra-zone edges |
 | `relations_<lens>.json` | **authored.** Cross-zone typed edges, one file per relation lens |
 | `frontier.json` | **authored.** Open antecedents, engine hierarchies, nonrecurring candidates |
@@ -288,3 +291,7 @@ and evaluation questions.
 `claims.json` stays small and reviewed. Expanding it to one row per declaration
 would destroy the thing it is for. It selects from this graph; it does not
 replace it.
+
+Browser pages regenerate through `python3 scripts/refresh_projections.py`.
+Ordinary proofs use `source_evidence` with a public path, SHA256, and
+`evidence_class: ordinary_mathematical_proof`; this never confers Lean status.

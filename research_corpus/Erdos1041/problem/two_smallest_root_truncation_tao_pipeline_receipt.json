@@ -1,0 +1,18 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem": "Erdos 1041",
+  "checkpoint": "two_smallest_root_truncation",
+  "input_stage": "proof_generation",
+  "output_stage": "verification_and_exposition",
+  "artifact": [
+    "ErdosProblems/Erdos1041/TwoSmallestRootTruncation.md",
+    "ErdosProblems/Erdos1041/TwoSmallestRootTruncation.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_two_smallest_root_truncation.py"
+  ],
+  "human_understanding_delta": "The two smallest root moduli select a canonical Form A-cut path. Two perfect-square identities cap the selected factors by (r+q)^2/4. The exact remaining-factor budget is product(q+s_k), with the coefficient-free corollary (1+q)^(n-2) and a constant-term corollary through P=|f(0)|.",
+  "verification_state": "analytic proof authored; deterministic and randomized checker passed on 4400 configurations; the canonical cached focused Lean build passed after the sharper (r+q)^2/4 upgrade and the exact-tail theorem twoSmallest_factor_budget_of_tail",
+  "publication_or_review_state": "private authoring checkpoint; no literature-priority claim; exact Refinery placement specified",
+  "canonicalization_state": "focused theorem module, companion expert note, checker, and receipt are internally canonical; research-packet propagation remains the downstream assimilation step",
+  "unresolved_downstream_bottleneck": "The complementary regime ((r+q)^2/4)(1+q)^(n-2)>1 contains the regular-polygon extremal family and still requires angular, critical-value, or moving-hub information.",
+  "next_stage_owner": "Closure Engine for the unrestricted complement; Refinery for research-packet assimilation"
+}

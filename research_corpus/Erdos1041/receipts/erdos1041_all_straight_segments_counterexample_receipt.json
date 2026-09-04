@@ -1,0 +1,161 @@
+{
+  "all_distinct_pair_midpoints_escape": true,
+  "claim_ceiling": "This eliminates every proof that tries to choose a straight segment between two roots. It does not exclude a broken-line path and does not solve Erd\u0151s #1041.",
+  "common_midpoint_modulus": "8732691/8000000",
+  "common_midpoint_value": {
+    "a": "-8732691/8000000",
+    "b": "0"
+  },
+  "critical_point_hub_repair": {
+    "hub_value_modulus": "970299/1000000",
+    "hub_value_modulus_lt_one": true,
+    "length_argument": "the two radial legs each have length r, so total length 2r<2",
+    "meaning": "The cubic kills every direct chord but admits a short two-segment path through its critical point.",
+    "path": "r -> 0 -> r*omega",
+    "radial_leg_formula": "|f(s*r*u)|=r^3*(1-s^3)<1 for 0<=s<1",
+    "status": "exact_algebraic_path_not_lean_checked",
+    "strict_length_upper_bound": "99/50"
+  },
+  "exact_configuration": {
+    "all_roots_in_open_unit_disk": true,
+    "cyclotomic_relation": "omega^2+omega+1=0",
+    "polynomial": "z^3-r^3",
+    "radius": "99/100",
+    "root_norm_sq": "9801/10000",
+    "root_units": [
+      {
+        "a": "1",
+        "b": "0"
+      },
+      {
+        "a": "0",
+        "b": "1"
+      },
+      {
+        "a": "-1",
+        "b": "-1"
+      }
+    ]
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+      "falsification_consequence": "Any general proof must leave the single-chord geometry; the same cubic keeps critical-point hubs and more general paths live.",
+      "survival_consequence": "If some pair were safe, isolate its symmetry-breaking feature as a candidate root-selection lemma."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "some_straight_root_pair_always_stays_in_lemniscate",
+      "statement": "Every monic polynomial with roots in the open unit disk has two roots whose straight segment is contained in |f|<1."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AllStraightSegmentsCounterexampleComputationalLab.md"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos1041_all_straight_segments.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Evaluate z^3-r^3 exactly in Q(omega) at all three pair midpoints for r=99/100.",
+      "falsifier": "One pair midpoint with polynomial modulus at most one, or one root outside the open unit disk.",
+      "id": "exact_radial_cubic_all_pair_midpoints",
+      "question": "Can a symmetric cubic force every straight root-pair midpoint outside the strict unit lemniscate?",
+      "stop_condition": "After all three exact midpoint evaluations agree and exceed one, retire every straight-root-pair proof geometry."
+    },
+    "problem": {
+      "claim_ceiling": "The exact cubic eliminates straight root-pair segments only; critical-point hubs, multi-segment, curved, and topological routes remain open.",
+      "id": "erdos_1041",
+      "target_statement": "Find two roots joined by a curve of length less than two inside the strict unit lemniscate."
+    },
+    "result": {
+      "status": "exact_one_way_result",
+      "summary": "For f(z)=z^3-(99/100)^3, all three roots lie in the open unit disk, but every distinct root pair has midpoint value -9(99/100)^3/8, whose modulus is greater than one. Thus every straight root-pair segment exits the strict unit lemniscate."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "lean_theorems": [
+    "ErdosProblems.Erdos1041.allStraightCubic_roots_in_unitDisk",
+    "ErdosProblems.Erdos1041.allStraightCubic_roots",
+    "ErdosProblems.Erdos1041.allStraightCubic_every_pair_midpoint_escapes"
+  ],
+  "pair_midpoint_certificates": [
+    {
+      "escapes_strict_unit_lemniscate": true,
+      "midpoint": {
+        "a": "99/200",
+        "b": "99/200"
+      },
+      "pair": [
+        0,
+        1
+      ],
+      "polynomial_value": {
+        "a": "-8732691/8000000",
+        "b": "0"
+      },
+      "polynomial_value_norm_sq": "76259892101481/64000000000000"
+    },
+    {
+      "escapes_strict_unit_lemniscate": true,
+      "midpoint": {
+        "a": "0",
+        "b": "-99/200"
+      },
+      "pair": [
+        0,
+        2
+      ],
+      "polynomial_value": {
+        "a": "-8732691/8000000",
+        "b": "0"
+      },
+      "polynomial_value_norm_sq": "76259892101481/64000000000000"
+    },
+    {
+      "escapes_strict_unit_lemniscate": true,
+      "midpoint": {
+        "a": "-99/200",
+        "b": "0"
+      },
+      "pair": [
+        1,
+        2
+      ],
+      "polynomial_value": {
+        "a": "-8732691/8000000",
+        "b": "0"
+      },
+      "polynomial_value_norm_sq": "76259892101481/64000000000000"
+    }
+  ],
+  "problem_id": "erdos_1041",
+  "receipt_payload_sha256": "56f745117f070b0a57caa9a8d19a1a736cf3e1f9b8fc98f662555d9429545521",
+  "result_status": "exact_all_pair_straight_segment_mechanism_elimination",
+  "result_summary": "For f(z)=z^3-(99/100)^3, all three roots lie in the open unit disk, but every distinct root pair has midpoint value -9(99/100)^3/8, whose modulus is greater than one. Thus every straight root-pair segment exits the strict unit lemniscate.",
+  "schema": "erdos1041-all-straight-segments-counterexample/1",
+  "sources": [
+    {
+      "byte_length": 10547,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos1041_all_straight_segments.py",
+      "sha256": "7c7700a6243f2240741b44a0a4f5ad1372db48d11e4cd8f68e322aa844835fe5"
+    },
+    {
+      "byte_length": 18531,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+      "sha256": "884c3f3232f3e98a73a2daa34a1695a632bcf1216343794b571ce5ffd9e5d485"
+    },
+    {
+      "byte_length": 4220,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AllStraightSegmentsCounterexampleComputationalLab.md",
+      "sha256": "7024b5de035e3506d4177513e52bfd6bd533f8b2a688c7859263272f2a843257"
+    }
+  ],
+  "strict_escape_integer_inequality": {
+    "holds": true,
+    "left": 8732691,
+    "right": 8000000
+  }
+}

@@ -1,0 +1,164 @@
+{
+ "probe_id": "erdos269_stammering",
+ "experiment_contract": {
+  "schema_version": "formal_math_experiment_contract_v1",
+  "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+  "problem": {
+   "id": "erdos_269",
+   "target_statement": "Prove irrationality in the first unresolved support case with three distinct prime generators.",
+   "claim_ceiling": "No three-prime irrationality or transcendence theorem has been proved. Lean identifies the actual compressed dyadic radix with the successive threePrimeHeight and literal smoothPrefixLcm ratio and proves that it lies in {2,6,10,30}. It proves an all-scale quadratic bound for the literal ordered digit, a polynomial-geometric majorant and summability for the actual real shell masses, constructs the genuine infinite dyadic-shell tsum tail, and proves its exact recurrence X_(a+1)=b_a X_a-d_a. The bounded-radix theorem therefore applies directly: the actual normalized infinite tail either reaches an exact integral state or returns cofinally to distance at least 1/31 from every integer. The infinite-tail specialization is closed; excluding the exact-integral-state branch is now the precise unresolved throat. Lean also proves the complete local-window canonical-residue consumer and the two-window projective shadow d_a*H_b=d_b*H_a mod B. Exact B=11 and B=7 witnesses establish strict projective exclusion power while eliminating a uniform small-centered-defect shortcut, but they supply no universal or cofinal quantifiers. Exact affine-cylinder reconstruction at anchor a=100 reaches depth 200 and falsifies every proposed general-denominator post-clear delay cap K<=199. On the special denominator-one branch, the exact source word at a=2295 survives four transitions after first base-clear, separately eliminating a uniform three-transition classification. Exact left-null certificates eliminate every direct radix-phase-conditioned polynomial coboundary of total degree at most two in the source coordinates; higher-degree, nonpolynomial, unbounded-memory, and later-onset carries remain open. Exact Farey-band counting eliminates monotone admissibility propagation from nesting, later first-clear length, or coarse width; residue-one counterexamples rule out fixed windows and denominator-independent residue bounds. Arbitrary-order nonsingular kernel minors eliminate finite-dimensional observers of the full symbolic kernel without excluding a proved collapse of the actual reachable subspace. The remaining producer must exclude exact integral normalized source-tail states, force denominator-adaptive cofinal one-window or projective-pair escape, prove a reachable-subspace collapse, use an infinite-dimensional or nonlinear observer, or construct and analyze admissible rational affine cylinders at arbitrary depth. Exact integral tails remain unexcluded. The dyadic radix word is now identified exactly as the superposition of the Beatty characteristic sequences of log_2 3 and log_2 5, so the source system is a cocycle over a rotation of the 2-torus by (log_3 2, log_5 2); factor complexity is bounded by (n+1)^2 and measured equal to it for n <= 22. Within that new family the Adamczewski-Bugeaud stammering route is retired on measured evidence plus the Dirichlet cap, with the missing effective simultaneous-approximation bound named explicitly. The normalized tail is Diophantine-generic over 2,162 airtight-certified partial quotients, which both explains the failure of every finite-memory functional attempt and proves the value is not rational with denominator below 2^3736. Finally the escape route's own ceiling is measured: the largest excludable denominator at window depth L is Theta(sqrt(B_L)), so deeper finite certificates cannot reach a cofinal quantifier. Exact integral tails remain unexcluded and the target is open."
+  },
+  "hypothesis": {
+   "id": "product_sturmian_stammering",
+   "statement": "The radix word begins in arbitrarily high powers, supplying the stammering input the Adamczewski-Bugeaud Subspace-Theorem criterion needs."
+  },
+  "probe": {
+   "id": "erdos269_stammering",
+   "question": "Does the repetition exponent of the product word grow along the simultaneous-approximation record denominators of (log_3 2, log_5 2)?",
+   "computation": "Record denominators for max(||q log_3 2||, ||q log_5 2||) up to q = 150000, each measured against the literal 400,000-letter radix word by direct prefix period matching.",
+   "falsifier": "A repetition exponent that stays at 1 as q grows closes the lane.",
+   "stop_condition": "Exponents at the largest record denominators failing to exceed those at the smallest retires the route; it is not repaired by searching further.",
+   "resource_bounds": {
+    "max_period": 150000,
+    "word_length": 400000
+   }
+  },
+  "analytic_bridge": {
+   "survival_consequence": "The Subspace-Theorem transcendence machinery applies to the source word.",
+   "falsification_consequence": "The stammering route is closed and must not be re-attempted through repetition structure; the producer must come from anti-concentration.",
+   "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean"
+  },
+  "links": {
+   "analysis_refs": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json"
+   ],
+   "source_refs": [
+    "formal_math/probes/erdos269_engine.py",
+    "formal_math/probes/erdos269_stammering.py",
+    "formal_math/probes/erdos269_torus_coding.py"
+   ],
+   "input_receipt_refs": []
+  },
+  "result": {
+   "status": "finite_counterexample",
+   "summary": "Exponents at the record denominators q = 7061, 7126, 15810, 45807 are 1.0089, 1.0115, 1.0085, 1.0074: the matched length tracks 1/||q alpha|| and so grows like q^(1/2) while the period grows like q. Two rationally independent slopes cap simultaneous approximation at Dirichlet exponent 1/2, so the criterion's requirement fails by a full power of q, not by a search limit.",
+   "progress": {
+    "class": "mechanism_eliminated",
+    "decision_basis": "Measured exponents decay to 1 like 1 + O(q^-1/2) across four decades of record denominators, matching the Dirichlet cap rather than a search bound.",
+    "next_analytic_target": "Anti-concentration for the residues (-qF_L) mod B_L derived from the rotation's Diophantine properties.",
+    "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority."
+   }
+  }
+ },
+ "mechanism_bindings": {
+  "schema_version": "formal_math_mechanism_bindings_v1",
+  "problem_id": "erdos_269",
+  "motivated_by": [
+   "dyadic_radix_word_two_torus_coding",
+   "exclude_exact_integral_dyadic_tails"
+  ],
+  "eliminates": [],
+  "opens": [],
+  "supports": [
+   "product_sturmian_stammering_no_go"
+  ],
+  "rationale": "Closes the strongest tool the two-torus identification made available, so the opened family narrows to anti-concentration rather than repetition."
+ },
+ "sources": [
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/TorusCocycleAndDiophantineTypeLab.md",
+   "byte_length": 14385,
+   "sha256": "271d03d7211814b204b94f74d9251e1e687d7c591c34605110348903c025572e"
+  },
+  {
+   "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+   "byte_length": 57166,
+   "sha256": "d6fd961aebd3e3ff0faac37ce7bfd4637c6d7b3acf236dc3439201efbff187b0"
+  },
+  {
+   "path": "formal_math/probes/erdos269_engine.py",
+   "byte_length": 5343,
+   "sha256": "a4de6896e1b580af3ed8545c51344ef9912e45530328a6f10b12d55af757a2cd"
+  },
+  {
+   "path": "formal_math/probes/erdos269_stammering.py",
+   "byte_length": 4753,
+   "sha256": "b184c900b2d8de60858b0b3d1a2da118dabb5039a0fabce7da5e1567906dc3ae"
+  },
+  {
+   "path": "formal_math/probes/erdos269_torus_coding.py",
+   "byte_length": 6203,
+   "sha256": "1662ecad9e0546fb808c15d4e53173df74533b4806e60d1321950324ee78923e"
+  }
+ ],
+ "result": {
+  "probe_id": "erdos269_stammering",
+  "word_length": 400000,
+  "simultaneous_approximation_records": [
+   {
+    "period_q": 1,
+    "max_simultaneous_defect": 0.43067656,
+    "prefix_period_match_length": 0,
+    "repetition_exponent": 1.0
+   },
+   {
+    "period_q": 2,
+    "max_simultaneous_defect": 0.26185951,
+    "prefix_period_match_length": 1,
+    "repetition_exponent": 1.5
+   },
+   {
+    "period_q": 5,
+    "max_simultaneous_defect": 0.15464877,
+    "prefix_period_match_length": 0,
+    "repetition_exponent": 1.0
+   },
+   {
+    "period_q": 16,
+    "max_simultaneous_defect": 0.10917507,
+    "prefix_period_match_length": 5,
+    "repetition_exponent": 1.3125
+   },
+   {
+    "period_q": 30,
+    "max_simultaneous_defect": 0.07970326,
+    "prefix_period_match_length": 5,
+    "repetition_exponent": 1.1667
+   },
+   {
+    "period_q": 65,
+    "max_simultaneous_defect": 0.01043398,
+    "prefix_period_match_length": 82,
+    "repetition_exponent": 2.2615
+   },
+   {
+    "period_q": 7061,
+    "max_simultaneous_defect": 0.00717656,
+    "prefix_period_match_length": 63,
+    "repetition_exponent": 1.0089
+   },
+   {
+    "period_q": 7126,
+    "max_simultaneous_defect": 0.00542395,
+    "prefix_period_match_length": 82,
+    "repetition_exponent": 1.0115
+   },
+   {
+    "period_q": 15810,
+    "max_simultaneous_defect": 0.00361686,
+    "prefix_period_match_length": 135,
+    "repetition_exponent": 1.0085
+   },
+   {
+    "period_q": 45807,
+    "max_simultaneous_defect": 0.00109567,
+    "prefix_period_match_length": 337,
+    "repetition_exponent": 1.0074
+   }
+  ],
+  "max_repetition_exponent": 2.2615,
+  "exponent_is_growing": false,
+  "reading": "repetition exponent bounded => stammering lane closed"
+ }
+}

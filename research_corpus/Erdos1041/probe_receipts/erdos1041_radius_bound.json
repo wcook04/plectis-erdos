@@ -1,0 +1,212 @@
+{
+ "probe_id": "erdos1041_radius_bound",
+ "conjecture": "min pairwise geodesic <= 2 * max_i |z_i|, which implies Erdos 1041",
+ "named_cases": [
+  {
+   "case": "cubic_kills_chords",
+   "n": 3,
+   "max_modulus": 0.99,
+   "ratio": 0.898503,
+   "form_A_best_slack": -0.200964,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 2,
+   "two_smallest_moduli_sum": 1.98,
+   "min_geodesic": 1.779036
+  },
+  {
+   "case": "five_root_kills_origin_spokes",
+   "n": 5,
+   "max_modulus": 0.99999,
+   "ratio": 0.028249,
+   "form_A_best_slack": -1.943483,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.99998,
+   "min_geodesic": 0.056497
+  },
+  {
+   "case": "extremal_z^2-0.9^2",
+   "n": 2,
+   "max_modulus": 0.9,
+   "ratio": 0.998781,
+   "form_A_best_slack": -0.002195,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.8,
+   "min_geodesic": 1.797805
+  },
+  {
+   "case": "extremal_z^2-0.99^2",
+   "n": 2,
+   "max_modulus": 0.99,
+   "ratio": 1.0,
+   "form_A_best_slack": 0.0,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.98,
+   "min_geodesic": 1.981235
+  },
+  {
+   "case": "extremal_z^2-0.999^2",
+   "n": 2,
+   "max_modulus": 0.999,
+   "ratio": 1.0,
+   "form_A_best_slack": 0.0,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.998,
+   "min_geodesic": 2.002815
+  },
+  {
+   "case": "extremal_z^3-0.9^3",
+   "n": 3,
+   "max_modulus": 0.9,
+   "ratio": 0.866026,
+   "form_A_best_slack": -0.241154,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.8,
+   "min_geodesic": 1.559152
+  },
+  {
+   "case": "extremal_z^3-0.99^3",
+   "n": 3,
+   "max_modulus": 0.99,
+   "ratio": 0.898503,
+   "form_A_best_slack": -0.200964,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 2,
+   "two_smallest_moduli_sum": 1.98,
+   "min_geodesic": 1.779036
+  },
+  {
+   "case": "extremal_z^3-0.999^3",
+   "n": 3,
+   "max_modulus": 0.999,
+   "ratio": 0.950903,
+   "form_A_best_slack": -0.098095,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 2,
+   "two_smallest_moduli_sum": 1.998,
+   "min_geodesic": 1.899905
+  },
+  {
+   "case": "extremal_z^4-0.9^4",
+   "n": 4,
+   "max_modulus": 0.9,
+   "ratio": 0.706088,
+   "form_A_best_slack": -0.529041,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.8,
+   "min_geodesic": 1.270959
+  },
+  {
+   "case": "extremal_z^4-0.99^4",
+   "n": 4,
+   "max_modulus": 0.99,
+   "ratio": 0.760952,
+   "form_A_best_slack": -0.473316,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.98,
+   "min_geodesic": 1.506684
+  },
+  {
+   "case": "extremal_z^4-0.999^4",
+   "n": 4,
+   "max_modulus": 0.999,
+   "ratio": 0.868655,
+   "form_A_best_slack": -0.262428,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.998,
+   "min_geodesic": 1.735572
+  },
+  {
+   "case": "extremal_z^5-0.9^5",
+   "n": 5,
+   "max_modulus": 0.9,
+   "ratio": 0.587785,
+   "form_A_best_slack": -0.741987,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.8,
+   "min_geodesic": 1.062813
+  },
+  {
+   "case": "extremal_z^5-0.99^5",
+   "n": 5,
+   "max_modulus": 0.99,
+   "ratio": 0.647569,
+   "form_A_best_slack": -0.697813,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.98,
+   "min_geodesic": 1.282187
+  },
+  {
+   "case": "extremal_z^5-0.999^5",
+   "n": 5,
+   "max_modulus": 0.999,
+   "ratio": 0.759076,
+   "form_A_best_slack": -0.481366,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.998,
+   "min_geodesic": 1.516634
+  },
+  {
+   "case": "extremal_z^6-0.9^6",
+   "n": 6,
+   "max_modulus": 0.9,
+   "ratio": 0.5,
+   "form_A_best_slack": -0.9,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.8,
+   "min_geodesic": 0.900963
+  },
+  {
+   "case": "extremal_z^6-0.99^6",
+   "n": 6,
+   "max_modulus": 0.99,
+   "ratio": 0.556203,
+   "form_A_best_slack": -0.878719,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.98,
+   "min_geodesic": 1.101281
+  },
+  {
+   "case": "extremal_z^6-0.999^6",
+   "n": 6,
+   "max_modulus": 0.999,
+   "ratio": 0.676229,
+   "form_A_best_slack": -0.646895,
+   "form_A_holds": true,
+   "form_A_prime_origin_routes_found": 0,
+   "two_smallest_moduli_sum": 1.998,
+   "min_geodesic": 1.351105
+  }
+ ],
+ "search_best": {
+  "ratio": 0.920868,
+  "n": 2,
+  "roots": [
+   [
+    0.205539,
+    0.019379
+   ],
+   [
+    -0.172432,
+    0.06074
+   ]
+  ]
+ },
+ "max_ratio_seen": 1.0,
+ "form_A_failures": [],
+ "form_A_min_slack": -1.943483,
+ "any_ratio_above_one": false,
+ "reading": "no configuration exceeds the bound; it is tight on the extremal family, so it is a sharp conjecture that would imply Erdos 1041"
+}

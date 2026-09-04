@@ -1,0 +1,106 @@
+{
+  "canonical_digest": "fd4087e94b0586c2e900107d4b95b72d52db792c527d257a482e1bf1af4eb21a",
+  "census": {
+    "failures_financed_by_cutoff": {
+      "10": 0,
+      "100": 0,
+      "1000": 2,
+      "10000": 3,
+      "50": 0,
+      "500": 0,
+      "5000": 2
+    },
+    "maximum_over_failures": 146794,
+    "minimum_over_failures": 630,
+    "minimum_required_codivisor_cutoffs": [630, 73396, 827, 146794, 8635, 73398]
+  },
+  "claim_ceiling": "exact finite co-divisor spectrum of the worst observed stall; no all-depth service bound, seam exclusion, or Erdos 257 conclusion",
+  "failure_rows": [
+    {
+      "load_by_codivisor_cutoff": {"10": 5, "100": 17, "1000": 24, "10000": 32, "50": 16, "500": 22, "5000": 31},
+      "maximum_codivisor": 146790,
+      "minimum_codivisor": 2,
+      "minimum_codivisor_cutoff_supplying_failure_load": 630,
+      "minimum_load_to_fail_service": 23,
+      "offset_before": 11,
+      "source_rank": 293578,
+      "weighted_codivisor_sha256": "9ad88a76908c657653d1358d40b763cbf48bcd1f56d5914a2298baa8c84353fb",
+      "weighted_load": 42
+    },
+    {
+      "load_by_codivisor_cutoff": {"10": 3, "100": 3, "1000": 8, "10000": 9, "50": 3, "500": 6, "5000": 9},
+      "maximum_codivisor": 146792,
+      "minimum_codivisor": 3,
+      "minimum_codivisor_cutoff_supplying_failure_load": 73396,
+      "minimum_load_to_fail_service": 12,
+      "offset_before": 4,
+      "source_rank": 293582,
+      "weighted_codivisor_sha256": "7e4e97a22790a26bb957a57bc1568f754b82e5eba5a9f35b763133567bf1b487",
+      "weighted_load": 13
+    },
+    {
+      "load_by_codivisor_cutoff": {"10": 4, "100": 6, "1000": 15, "10000": 18, "50": 4, "500": 10, "5000": 18},
+      "maximum_codivisor": 146793,
+      "minimum_codivisor": 2,
+      "minimum_codivisor_cutoff_supplying_failure_load": 827,
+      "minimum_load_to_fail_service": 13,
+      "offset_before": 6,
+      "source_rank": 293584,
+      "weighted_codivisor_sha256": "535ac4418bcdaef695ebb27c0f3bf3aebc8acba4323c0f723392c511e6f19980",
+      "weighted_load": 21
+    },
+    {
+      "load_by_codivisor_cutoff": {"10": 1, "100": 3, "1000": 3, "10000": 4, "50": 2, "500": 3, "5000": 4},
+      "maximum_codivisor": 146794,
+      "minimum_codivisor": 2,
+      "minimum_codivisor_cutoff_supplying_failure_load": 146794,
+      "minimum_load_to_fail_service": 8,
+      "offset_before": 3,
+      "source_rank": 293586,
+      "weighted_codivisor_sha256": "30c8d4d64bb0aace3b7271ab0ecf0682ac026167387490bf443f80f619853baf",
+      "weighted_load": 8
+    },
+    {
+      "load_by_codivisor_cutoff": {"10": 1, "100": 5, "1000": 9, "10000": 14, "50": 4, "500": 8, "5000": 12},
+      "maximum_codivisor": 146795,
+      "minimum_codivisor": 5,
+      "minimum_codivisor_cutoff_supplying_failure_load": 8635,
+      "minimum_load_to_fail_service": 14,
+      "offset_before": 5,
+      "source_rank": 293588,
+      "weighted_codivisor_sha256": "70f21be51ea4da2ed768c76023013f204ccf8692f72b42fc45e81735f9e92366",
+      "weighted_load": 17
+    },
+    {
+      "load_by_codivisor_cutoff": {"10": 0, "100": 1, "1000": 3, "10000": 8, "50": 0, "500": 3, "5000": 6},
+      "maximum_codivisor": 146796,
+      "minimum_codivisor": 52,
+      "minimum_codivisor_cutoff_supplying_failure_load": 73398,
+      "minimum_load_to_fail_service": 13,
+      "offset_before": 6,
+      "source_rank": 293590,
+      "weighted_codivisor_sha256": "ccc9b1b1afd2744d446b6ec70496474abdd145b7718d59082200f398bf3064d4",
+      "weighted_load": 14
+    }
+  ],
+  "mechanism_decision": {
+    "candidate": "finance every escape-service failure from a fixed collection of small co-divisor diagonals q=m/d",
+    "reason": "no failure is financed by q<=50; four of six are not financed by q<=1000, and one needs channels through q=146794",
+    "status": "small_codivisor_channel_eliminated_on_actual_worst_stall",
+    "stop_condition": "do not reduce the seam stall to finitely many small quotient diagonals; any charge must work across quotient scales"
+  },
+  "parameters": {
+    "crosscheck": 300,
+    "thresholds": [10, 50, 100, 500, 1000, 5000, 10000]
+  },
+  "schema": "erdos257_four_ninths_stall_codivisor_spectrum_v0",
+  "source": {
+    "stall_ancestry": "erdos257_period_noncollapse/scripts/four_ninths_seam_stall_ancestry.py",
+    "stall_ancestry_sha256": "3c943a52c462ee69ca44da55f0f78974ace60389264608d9387277c07dad3460"
+  },
+  "validation": {
+    "exact_selected_divisor_ancestry": true,
+    "failure_count": 6,
+    "row_table_sha256": "0b1c1285f3fbdab0ad1174839281fc271e0d70f5d1671acfadb1993099060121"
+  }
+}

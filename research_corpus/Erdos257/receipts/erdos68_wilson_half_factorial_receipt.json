@@ -1,0 +1,101 @@
+{
+  "authority": {
+    "lean_consumers": [
+      "factorialWilsonQuotient_modEq_one_iff_square_dvd_gap",
+      "factorialGap_halfFactorial_Wilson_record_entry"
+    ],
+    "oeis_crosscheck": {
+      "accessed": "2026-07-30",
+      "external_only_claim_not_locally_reproduced": "No other A079853 terms below 4*10^11.",
+      "locally_asserted_prefix": [
+        2,
+        3,
+        11,
+        107,
+        4931
+      ],
+      "sequence": "A079853",
+      "url": "https://oeis.org/A079853"
+    },
+    "prime_enumeration": "deterministic_eratosthenes_sieve",
+    "python_version": "3.13.7",
+    "source_sha256": "0a49276a3d4b71318bf394d8c326ad9da0e87caaabe15fcbb0e6e26820012a8f"
+  },
+  "certificate": {
+    "half_factorial_plus_one_count": 1282,
+    "half_factorial_plus_one_trace_sha256": "d180ed1151bd7cf4bb1f80865e692d35d98a593e4052693195b21d27e21fd55a",
+    "independent_exact_factorial_crosschecks": [
+      {
+        "exact_factorial_p_minus_2_mod_p_squared": 1,
+        "exact_half_factorial_mod_p": 1,
+        "half_factorial_plus_one_hit": false,
+        "near_wilson_order_2": true,
+        "p": 2
+      },
+      {
+        "exact_factorial_p_minus_2_mod_p_squared": 1,
+        "exact_half_factorial_mod_p": 1,
+        "half_factorial_plus_one_hit": false,
+        "near_wilson_order_2": true,
+        "p": 3
+      },
+      {
+        "exact_factorial_p_minus_2_mod_p_squared": 1,
+        "exact_half_factorial_mod_p": 10,
+        "half_factorial_plus_one_hit": false,
+        "near_wilson_order_2": true,
+        "p": 11
+      },
+      {
+        "exact_factorial_p_minus_2_mod_p_squared": 1,
+        "exact_half_factorial_mod_p": 1,
+        "half_factorial_plus_one_hit": true,
+        "near_wilson_order_2": true,
+        "p": 107
+      },
+      {
+        "exact_factorial_p_minus_2_mod_p_squared": 1,
+        "exact_half_factorial_mod_p": 1,
+        "half_factorial_plus_one_hit": true,
+        "near_wilson_order_2": true,
+        "p": 4931
+      }
+    ],
+    "joint_first_square_record_count": 2,
+    "joint_first_square_record_primes": [
+      107,
+      4931
+    ],
+    "near_wilson_order_2_count": 5,
+    "near_wilson_order_2_primes": [
+      2,
+      3,
+      11,
+      107,
+      4931
+    ],
+    "scan_trace_sha256": "c4b4ed90cd0e64b9a89b1dd1b1ee056ce0980319a0010c45b5890b938816f50a"
+  },
+  "mathematical_consequence": {
+    "claim": "Within primes p<=50000, the joint half-factorial +1, near-Wilson order-2, and first-square-record hypotheses hold at precisely [107, 4931].",
+    "lean_reach": "Each certified joint event satisfies the arithmetic hypotheses of the checked denominator-growth theorem; the universal first-square premise is represented here by an exact finite scan, not imported into the Lean kernel for p=4931.",
+    "logical_reach": "finite_two_event_denominator_record_evidence",
+    "not_claimed": [
+      "a Lean-kernel certificate for every p=4931 scan cell",
+      "another event above 50000",
+      "infinitely many joint records",
+      "cofinally large amplification mass",
+      "the required Archimedean numerator-residue lower bound",
+      "irrationality of the Erd\u0151s 68 series"
+    ]
+  },
+  "parameters": {
+    "arithmetic": "exact_python_integer_modular_multiplication",
+    "floating_point_used": false,
+    "max_prime": 50000,
+    "prime_count": 5133,
+    "probabilistic_primality_used": false
+  },
+  "receipt_payload_sha256": "c39caf8b2ce6eff9ae4487fc0b9fc21462dacc73ede3778ab0a735a3ecde7cc9",
+  "schema": "erdos68_wilson_half_factorial_exact_scan_v1"
+}

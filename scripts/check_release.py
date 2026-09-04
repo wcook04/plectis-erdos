@@ -1704,6 +1704,12 @@ def main() -> int:
     )
     check(semantic_contract.returncode == 0,
           f"semantic coverage contract: {semantic_contract.stdout.strip() or semantic_contract.stderr.strip()}")
+    browser_contract = run(
+        [sys.executable, str(ROOT / "scripts" / "check_research_browser.py")],
+        cwd=ROOT, capture_output=True, text=True, check=False,
+    )
+    check(browser_contract.returncode == 0,
+          f"browser corpus contract: {browser_contract.stdout.strip() or browser_contract.stderr.strip()}")
     semantic_review_check = run(
         [sys.executable, str(ROOT / "scripts" / "semantic_review.py"), "--check"],
         cwd=ROOT,

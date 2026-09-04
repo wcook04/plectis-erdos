@@ -1,0 +1,161 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #257: terminal scaled-vanishing counterexample endpoint"
+  description: >-
+    A terminal scaled-vanishing sequence of finite Boolean support words
+    produces an infinite support whose base-two reciprocal-Mersenne subseries
+    is exactly one half, and therefore refutes the universal irrationality
+    assertion in Erdős Problem 257. The theorem is conditional: it does not
+    construct the sequence or settle the parent problem.
+  authors: ["Will Cook"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Will Cook"]
+
+palomar_qualification:
+  status: "candidate_focused_lean_gate_passed"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification257TerminalScaledVanishing/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification257TerminalScaledVanishing/formalization.yaml"
+  repository_scope: "private_package_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "focused_four_file_lean_green_exact_axiom_trio_supported_macos_entrypoint_typed_exit_75_systemd_unavailable_terminal_comparator_pair_pending_linux_runner"
+  research_interest_status: "serious_note_grade_conditional_counterexample_endpoint"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result package is not present in a public repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection are pending"
+  note: >-
+    The open parent problem is not a merit veto. This package records an exact
+    conditional refutation endpoint and its unresolved producer without
+    claiming that the producer has been constructed.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11A25"]
+
+editorial_assessment:
+  plectis_signal:
+    score: 96
+    band: "summit"
+    components:
+      theorem_closure: 25
+      parent_problem_proximity: 25
+      mechanism_depth: 19
+      hypothesis_sharpness: 13
+      consequence_reach: 14
+    scale: "0 is the weakest coherent family still worth Comparator admission; 100 is the strongest direct contribution in the current portfolio"
+    authority_boundary: >-
+      Portfolio-relative editorial reading priority only, not proof authority,
+      novelty, Comparator replay, Palomar acceptance, mechanical readiness, or
+      submission authorization.
+    rationale: >-
+      The theorem reaches an exact infinite-support rational counterexample and
+      negates the universal parent assertion from the weakest sequential
+      terminal-only producer currently formalized. Its hypothesis remains open,
+      which keeps it below the unconditional reciprocal-support theorem.
+
+sources:
+  - title: "Terminal scaled-vanishing counterexample endpoint for Erdős Problem 257"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+    note: >-
+      Original proof of the normalized terminal-carry consumer, infinite
+      support lift, and problem-level universal-refutation consequence.
+  - title: "Erdős Problem #257"
+    authors: ["Thomas F. Bloom"]
+    id: "https://www.erdosproblems.com/257"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+status:
+  scope: >-
+    One composite declaration states that an exact terminal scaled-vanishing
+    sequence produces an infinite support of value one half and negates the
+    universal irrationality assertion. It does not construct the sequence,
+    prove half-membership unconditionally, or solve Erdős Problem 257.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only intended Challenge placeholder is the selected theorem body.
+    Solution.lean transports source-proved endpoints and its focused check is
+    green. NegativeSolution.lean contains the one deliberate negative-fixture
+    placeholder outside the trusted proof corpus.
+  axiom_audit_status: "focused_green_exactly_propext_Quot_sound_Classical_choice"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification257TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample"
+      file: "ExternalVerification257TerminalScaledVanishing/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification257TerminalScaledVanishing/comparator.json"
+      canonical_claim_status: "exact_source_transport_focused_lean_green"
+      local_proof_provenance: >-
+        Erdos257PeriodNoncollapse/TerminalOnlyScaledVanishing.lean and
+        ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean.
+      novelty_status: "unassessed"
+      contribution_class: "exact conditional infinite rational counterexample endpoint"
+      statement: >-
+        Terminal scaled vanishing produces an infinite support with
+        reciprocal-Mersenne value exactly one half and refutes universal
+        irrationality.
+      boundary: >-
+        No terminal scaled-vanishing sequence is constructed. The theorem is
+        conditional and Erdős Problem 257 remains open.
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+
+fidelity:
+  divergences: >-
+    The compared declaration conjoins the source-proved infinite-support
+    half-value endpoint with its direct universal-refutation consequence. It
+    adds no producer and weakens no hypothesis.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The hypothesis, infinite-support conclusion, rational value, universal
+    consequence, and unresolved producer were reviewed. The focused Challenge,
+    Solution, deliberate-negative and axiom-audit build is green, and the
+    selected theorem uses exactly the permitted axiom trio. The supported
+    replay entrypoint is wired and returns typed exit 75 on the current macOS
+    host because systemd is unavailable; terminal Comparator and NanoDa replay
+    evidence remains pending on the Linux runner.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification257TerminalScaledVanishing"
+  statements:
+    - source: >-
+        ErdosProblems.Erdos257.exists_rational_half_counterexample_of_terminalScaledVanishing
+        and ErdosProblems.Erdos257.not_universal_of_terminalScaledVanishing
+      lean: "Erdos249257.ExternalVerification257TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample"
+      module: "ExternalVerification257TerminalScaledVanishing/Challenge.lean"
+      status: "exact-composite-transport-focused-lean-green"
+      note: >-
+        Routes to paper theorem res:terminalhalf, which gives the same
+        hypothesis, conclusion, consequence, and open boundary.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

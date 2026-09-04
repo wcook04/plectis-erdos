@@ -115,7 +115,16 @@
           "statement": "Construct an unbounded factorial-grid family whose exact Cramer residual is nonintegral, using a determinant, valuation, cancellation, or gcd-of-minors certificate that controls the finite sign-changing block."
         }
       ],
-      "finite_search": "An exact GMP recurrence checks the carry sequence through m = 300000 and finds a non-unit carry at that index. The Lean consumer turns that one certificate into q >= 300000 for any hypothetical positive rational denominator; it does not prove a cofinal statement."
+      "finite_search": "An exact GMP recurrence checks the carry sequence through m = 300000 and finds a non-unit carry at that index. The Lean consumer turns that one certificate into q >= 300000 for any hypothetical positive rational denominator; it does not prove a cofinal statement.",
+      "research_corpus": {
+        "directory": "research_corpus/Erdos68",
+        "frontier": "research_corpus/Erdos68/FRONTIER.md",
+        "strongest_results": "research_corpus/Erdos68/STRONGEST_RESULTS.json",
+        "manifest": "research_corpus/Erdos68/CORPUS_MANIFEST.json",
+        "checkpoint": "research_corpus/Erdos68/PUBLIC_CORPUS_CHECKPOINT.json",
+        "authority_posture": "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry",
+        "reading_rule": "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+      }
     },
     {
       "problem_id": "erdos_243",
@@ -209,7 +218,16 @@
           "statement": "Kernel-check the Erdos-Straus weighted criterion and Duverney's conditional characterisation under explicit analytic hypotheses."
         }
       ],
-      "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale."
+      "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale.",
+      "research_corpus": {
+        "directory": "research_corpus/Erdos243",
+        "frontier": "research_corpus/Erdos243/FRONTIER.md",
+        "strongest_results": "research_corpus/Erdos243/STRONGEST_RESULTS.json",
+        "manifest": "research_corpus/Erdos243/CORPUS_MANIFEST.json",
+        "checkpoint": "research_corpus/Erdos243/PUBLIC_CORPUS_CHECKPOINT.json",
+        "authority_posture": "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry",
+        "reading_rule": "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+      }
     },
     {
       "problem_id": "erdos_249",
@@ -314,7 +332,16 @@
           "statement": "Prove the sharp cusp asymptotic and then supply a non-formal bridge from the geometric parameter regime to the exact totient value."
         }
       ],
-      "finite_search": "The returned strict-orbit packet reports an exact finite deposit at parameters (147,23), verified through harmonic height 5022. It is research evidence, not a Lean-checked unbounded certificate."
+      "finite_search": "The returned strict-orbit packet reports an exact finite deposit at parameters (147,23), verified through harmonic height 5022. It is research evidence, not a Lean-checked unbounded certificate.",
+      "research_corpus": {
+        "directory": "research_corpus/Erdos249",
+        "frontier": "research_corpus/Erdos249/FRONTIER.md",
+        "strongest_results": "research_corpus/Erdos249/STRONGEST_RESULTS.json",
+        "manifest": "research_corpus/Erdos249/CORPUS_MANIFEST.json",
+        "checkpoint": "research_corpus/Erdos249/PUBLIC_CORPUS_CHECKPOINT.json",
+        "authority_posture": "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry",
+        "reading_rule": "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+      }
     },
     {
       "problem_id": "erdos_251",
@@ -421,7 +448,16 @@
           "statement": "Formalise summability of the actual prime and prime-gap dyadic series and identify the concrete infinite prime-gap tail with the checked real/rational dyadic recurrence, so the local consumer reaches the target series without a paper-only analytic bridge."
         }
       ],
-      "finite_search": null
+      "finite_search": null,
+      "research_corpus": {
+        "directory": "research_corpus/Erdos251",
+        "frontier": "research_corpus/Erdos251/FRONTIER.md",
+        "strongest_results": "research_corpus/Erdos251/STRONGEST_RESULTS.json",
+        "manifest": "research_corpus/Erdos251/CORPUS_MANIFEST.json",
+        "checkpoint": "research_corpus/Erdos251/PUBLIC_CORPUS_CHECKPOINT.json",
+        "authority_posture": "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry",
+        "reading_rule": "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+      }
     },
     {
       "problem_id": "erdos_257",
@@ -467,7 +503,16 @@
           "statement": "Extend the measure dichotomy to Bernoulli laws and periodic-stride dimensions without implying arithmetic consequences."
         }
       ],
-      "finite_search": null
+      "finite_search": null,
+      "research_corpus": {
+        "directory": "research_corpus/Erdos257",
+        "frontier": "research_corpus/Erdos257/FRONTIER.md",
+        "strongest_results": "research_corpus/Erdos257/STRONGEST_RESULTS.json",
+        "manifest": "research_corpus/Erdos257/CORPUS_MANIFEST.json",
+        "checkpoint": "research_corpus/Erdos257/PUBLIC_CORPUS_CHECKPOINT.json",
+        "authority_posture": "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry",
+        "reading_rule": "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+      }
     },
     {
       "problem_id": "erdos_269",
@@ -625,7 +670,16 @@
         }
       ],
       "finite_search": "The integer-only dyadic-window checker reproduces three exact packet certificates and, for all 106,666 pairs with denominator B <= 1000 coprime to 30 and dyadic start 100 <= a <= 500, finds an escaping window of length at most 18; the largest first successful length is 14. This is finite proof-consumer evidence only and proves neither unbounded-denominator nor cofinal escape.",
-      "source_priority_note": "Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it."
+      "source_priority_note": "Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it.",
+      "research_corpus": {
+        "directory": "research_corpus/Erdos269",
+        "frontier": "research_corpus/Erdos269/FRONTIER.md",
+        "strongest_results": "research_corpus/Erdos269/STRONGEST_RESULTS.json",
+        "manifest": "research_corpus/Erdos269/CORPUS_MANIFEST.json",
+        "checkpoint": "research_corpus/Erdos269/PUBLIC_CORPUS_CHECKPOINT.json",
+        "authority_posture": "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry",
+        "reading_rule": "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+      }
     },
     {
       "problem_id": "erdos_1041",
@@ -707,8 +761,8 @@
         "strongest_results": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
         "manifest": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
         "checkpoint": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
-        "authority_posture": "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority",
-        "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims."
+        "authority_posture": "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry",
+        "reading_rule": "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
       }
     },
     {
@@ -856,7 +910,16 @@
           "statement": "After dividing every coefficient pair by its rowwise common content, at positive quadratic target depths R_n,S_n exhibit at least 4R_n+2S_n primitive coefficient pairs from a genuinely non-collapsed deformation, prove that the required two-adic and three-adic gain survives primitive normalisation, and prove that at least one resulting checked {-1,0,1} collision has a nonzero polynomial pair and lies outside the analytic remainder nullspace; or prove an exact rank obstruction."
         }
       ],
-      "finite_search": null
+      "finite_search": null,
+      "research_corpus": {
+        "directory": "research_corpus/Erdos1049",
+        "frontier": "research_corpus/Erdos1049/FRONTIER.md",
+        "strongest_results": "research_corpus/Erdos1049/STRONGEST_RESULTS.json",
+        "manifest": "research_corpus/Erdos1049/CORPUS_MANIFEST.json",
+        "checkpoint": "research_corpus/Erdos1049/PUBLIC_CORPUS_CHECKPOINT.json",
+        "authority_posture": "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry",
+        "reading_rule": "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes."
+      }
     }
   ],
   "reviewed_problems": [

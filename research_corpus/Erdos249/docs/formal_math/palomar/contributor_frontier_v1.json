@@ -1,0 +1,160 @@
+{
+  "schema": "palomar_contributor_frontier_v1",
+  "what_this_is": "The contributor on-ramp for the public Lean release, one block per Erdős problem in the corpus. Each block says what the release already proves for that problem, where the live mathematical obstruction sits, and the smallest contribution that would move it. The exporter renders these blocks as PROBLEMS.md at the root of the public repository.",
+  "why_this_file_and_not_the_research_packet": "The per-problem research packet owns the research frontier and the claim ceiling, and its public_projection block carries private commits, private pull-request URLs and internal release-cut state. This file is the reader-facing editorial projection of that frontier and it sits beside launch_selection_v1.json, which is the other editorial half of the release. Keeping it here also keeps the on-ramp out of the problem directories, which concurrent proof work owns.",
+  "not_authority_for": [
+    "mathematical correctness",
+    "whether an entry replays",
+    "novelty or priority",
+    "the research frontier itself, which the per-problem research packet owns"
+  ],
+  "field_contract": {
+    "problem_statement": "Copied verbatim from the problem's research packet target.statement. Never paraphrased, never restated.",
+    "contributor_frontier.headline_theorem": "One declarative sentence naming the public entry that carries the strongest checked result for this problem.",
+    "contributor_frontier.live_obstruction": "The exact unresolved lemma or producer, in one sentence.",
+    "contributor_frontier.smallest_useful_contribution": "A kind drawn from proof, computation, literature, exposition, infrastructure, with one sentence saying what to do.",
+    "contributor_frontier.entry_ids": "The public entries for this problem. The exporter takes the launch manifest as authority and refuses to render a block whose entry_ids disagree with it.",
+    "contributor_frontier.validate_with": "Command template checked in the export. The exporter expands <Entry> over entry_ids."
+  },
+  "register": "Declarative paper register. No taglines. Novelty is unassessed throughout and no priority is claimed.",
+  "problems": {
+    "68": {
+      "problem_statement": "Prove that the Erdős #68 factorial-denominator series is irrational.",
+      "contributor_frontier": {
+        "headline_theorem": "ExternalVerification68CompanionOrbitBoundary proves that the series is rational exactly when floor(m! C) is congruent to -2 modulo m for all sufficiently large m, where C is the sum over n at least 2 of 1/(n!(n! - 1)), and irrational exactly when that residue is missed cofinally, with the same equivalence at every real base point.",
+        "live_obstruction": "No producer supplies the cofinal residue misses, and exact computation of the strict-successor carries through m = 300000 gives only a finite denominator exclusion for any displayed rational representation.",
+        "smallest_useful_contribution": {
+          "kind": "computation",
+          "note": "Extend the exact carry computation beyond m = 300000 and account for the odd-index pattern that has held from index 23 through 300000, since a Lean-checked consumer converts cofinally many non-unit carries into irrationality."
+        },
+        "entry_ids": [
+          "ExternalVerification68ChannelRadius",
+          "ExternalVerification68CompanionOrbitBoundary"
+        ],
+        "validate_with": "lake build <Entry> Solutions.<Entry>"
+      }
+    },
+    "243": {
+      "problem_statement": "Under a_{n+1}/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence.",
+      "contributor_frontier": {
+        "headline_theorem": "ExternalVerification243PeriodicNegativeOrbit proves that for every offset N, every period h > 0 and every positive drift M, positivity of the negative-magnitude sequence together with e_n < a_n on the tail, the exact recurrence and the shape equation D_n + e_n = (a_n - 1) C_n are contradictory, so no eventually periodic negative-magnitude orbit with positive drift carries a rational value.",
+        "live_obstruction": "The surviving signed-state obstruction is cofinally unbounded negative excursions in the exact dynamic cocycle, and the decisive producer is a global negative-mass, cumulative-LCM or repair-payment theorem.",
+        "smallest_useful_contribution": {
+          "kind": "proof",
+          "note": "Formalise the bridge from Koizumi, Irrationality of the reciprocal sum of doubly exponential sequences, arXiv:2504.05933, INTEGERS 26 (2026), A28, so that bounded-negative rigidity becomes a statement about Erdős #243 itself under one added hypothesis."
+        },
+        "entry_ids": [
+          "ExternalVerification243PeriodicNegativeOrbit"
+        ],
+        "validate_with": "lake build <Entry> Solutions.<Entry>"
+      }
+    },
+    "249": {
+      "problem_statement": "Prove that the binary totient series sum_{n>=1} phi(n)/2^n is irrational.",
+      "contributor_frontier": {
+        "headline_theorem": "ExternalVerification249RankOneSharpFloor proves that every admissible rank-one quotient exceeds the Möbius Mersenne rung by more than 21/320, that the minimum is attained at a unique admissible pair, and that 1/16 is the largest unit fraction bounding the gap from below.",
+        "live_obstruction": "Irrationality of the binary totient series is equivalent in Lean to a residue-gap supply statement, that for every c and every positive odd v there exists H > 0 divisible by phi(v) whose canonical totient-block residue modulo (2^H - 1)/v lies in the central interval of radius c + H + 1, and no construction supplies that H.",
+        "smallest_useful_contribution": {
+          "kind": "literature",
+          "note": "Test whether the Padé construction of Duverney and Tachiya for Lambert series survives a bounded non-periodic Möbius weight, and record the exact step at which it fails."
+        },
+        "entry_ids": [
+          "ExternalVerification249BinaryCyclotomicAnchors",
+          "ExternalVerification249RankOneSharpFloor"
+        ],
+        "validate_with": "lake build <Entry> Solutions.<Entry>"
+      }
+    },
+    "251": {
+      "problem_statement": "Prove irrationality of the dyadic series built from consecutive prime gaps.",
+      "contributor_frontier": {
+        "headline_theorem": "ExternalVerification251PolynomialShiftCountermodel exhibits the explicit digit word g(n) = 2(n^2 + 4n + 2) with orbit T(n) = 2(n + 4)^2, which satisfies the dyadic tail recurrence at every index, is positive, even, strictly increasing, unbounded and nonperiodic, has every fixed tail shift integral, and has every adjacent difference past the first term at least fourteen.",
+        "live_obstruction": "The remaining producer is the cofinal adjacent small mismatch, that for each fixed h at least 1 and every N0 there is an index N at least N0 at which T(N+h) - T(N) and T(N+h+1) - T(N+1) both lie strictly between -1 and 1 while g(N+h+1) differs from g(N+1).",
+        "smallest_useful_contribution": {
+          "kind": "proof",
+          "note": "Prove in Lean that the countermodel series sums to 32 as a tsum, which currently rests on a computed ratio bound of 25/32."
+        },
+        "entry_ids": [
+          "ExternalVerification251PolynomialShiftCountermodel",
+          "ExternalVerification251ActualPrimeGapTail"
+        ],
+        "validate_with": "lake build <Entry> Solutions.<Entry>"
+      }
+    },
+    "257": {
+      "problem_statement": "Prove irrationality of sum_{n in A} 1/(2^n-1) for every infinite support A.",
+      "contributor_frontier": {
+        "headline_theorem": "ExternalVerification257ReciprocalSupport proves that for every infinite exponent set A whose reciprocal sum converges and every integer base b at least two, the series with terms 1/(b^a - 1) supported on A is irrational, with no coprimality, periodicity, density or powerful-support hypothesis.",
+        "live_obstruction": "Every candidate counterexample support now has divergent reciprocal sum, and the surviving fatal branch at the rational target 1/21 is consistent with a permanent affine supercapacity regime, so no theorem forces the cofinal closed returns that would decide membership.",
+        "smallest_useful_contribution": {
+          "kind": "proof",
+          "note": "Formalise the 1/3 certificate lemma as an inequality chain of roughly two hundred lines, after which finite certificates decide an individual support and rational-target pair."
+        },
+        "entry_ids": [
+          "ExternalVerification257ReciprocalSupport",
+          "ExternalVerification257FinitePeriodNoncollapse",
+          "ExternalVerification257RationalTailRigidity"
+        ],
+        "validate_with": "lake build <Entry> Solutions.<Entry>"
+      }
+    },
+    "269": {
+      "problem_statement": "Prove irrationality in the first unresolved support case with three distinct prime generators.",
+      "contributor_frontier": {
+        "headline_theorem": "ExternalVerification269ThreePrimeStructure proves the exact three-prime running-LCM identity, that the reciprocal-height kernel is constant on every logarithmic cell with exactly 3m jump values across the first m positive jumps, and that the kernel admits injective minors of every order, so it has no finite separable representation.",
+        "live_obstruction": "The normalised infinite dyadic shell tail either reaches an exact integral state or returns cofinally at distance at least 1/31 from every integer, and excluding the exact-integral-state branch is the unresolved step.",
+        "smallest_useful_contribution": {
+          "kind": "proof",
+          "note": "Prove in Lean the telescoping identity that the sum over primes p of (p - 1) times the sum over n of 1/H(p^n) equals 1, where H is the running LCM height, which is a one-line difference identity and is absent from the corpus."
+        },
+        "entry_ids": [
+          "ExternalVerification269ThreePrimeStructure"
+        ],
+        "validate_with": "lake build <Entry> Solutions.<Entry>"
+      }
+    },
+    "1041": {
+      "problem_statement": "If a monic polynomial f(z)=product_i(z-z_i) has all roots in the open unit disk, prove that two roots can be joined by a curve of length less than 2 contained in the open lemniscate |f|<1.",
+      "contributor_frontier": {
+        "headline_theorem": "ExternalVerification1041FirstMergeCriticalValueSeparation proves the exact all-degree critical-value separation thresholds C(n, 4) < 1 for every n at least 3, C(n, 3) < 1 for every n at least 4, and C(n, 2) < 1 for every n at least 6, where C(n, S) = (1 + S)^(2/n) log(S/(S - 1)), together with the sign-free consumer that a squared length at most 4 C(n, S) with C(n, S) < 1 forces length strictly below 2.",
+        "live_obstruction": "The sharp constant is settled in every degree only under the critical-spectrum separation hypothesis, and the two surviving unconditional routes are the componentwise combined-charge lemma, that every nontrivial connected component C of the admissible critical forest satisfies the sum over edges e in C of D_e + K_e being at least 0, and the covering statement COVER, that for monic g with roots in the closed unit disk there is a level lambda in [mu, 1] and a compact connected subset Gamma of the first-merge component of {|g| <= lambda} carrying two roots with every point of Gamma within intrinsic distance 1 of a root.",
+        "smallest_useful_contribution": {
+          "kind": "computation",
+          "note": "Re-run the degree-five moment computation with directed rounding rather than IEEE double arithmetic, which converts the fifth arithmetic-mean strengthening into a certificate-backed statement and opens the sixth."
+        },
+        "entry_ids": [
+          "ExternalVerification1041SolvedFamilies",
+          "ExternalVerification1041CyclicTrinomialFiber",
+          "ExternalVerification1041QuarticQuotientFiber",
+          "ExternalVerification1041CriticalGeometry",
+          "ExternalVerification1041TetranomialSpokes",
+          "ExternalVerification1041FirstMergeCriticalValueSeparation"
+        ],
+        "validate_with": "lake build <Entry> Solutions.<Entry>"
+      }
+    },
+    "1049": {
+      "problem_statement": "Determine irrationality of the rational-base Lambert values, with 3/2 as the first resistant explicit base.",
+      "contributor_frontier": {
+        "headline_theorem": "ExternalVerification1049HermitePadeNoGo proves that on the admissible region rho at least 0 and sigma at least 1 + rho the rectangular two-function threshold of the explicit exponent model is at most 1/2 - 1/pi^2, with equality exactly at rho = 0 and sigma = 1.",
+        "live_obstruction": "At the base 3/2 the homogenisation ceiling caps every content lane on the fixed diagonal at a > b^2, rank two fails the model even at zero clearing, rank three would require kappa_3 < 0.10721, and no construction supplies a family, integrality, nonvanishing or remainder estimate.",
+        "smallest_useful_contribution": {
+          "kind": "infrastructure",
+          "note": "Add the power-certificate compiler, which is Lean-checked and already present in the public source, to the comparator configuration of the entry that consumes it."
+        },
+        "entry_ids": [
+          "ExternalVerification1049AdelicHeightBridge",
+          "ExternalVerification1049RationalBaseBarrier",
+          "ExternalVerification1049PrimeSupportSelectors",
+          "ExternalVerification1049HermitePadeNoGo"
+        ],
+        "validate_with": "lake build <Entry> Solutions.<Entry>"
+      }
+    }
+  },
+  "how_a_contribution_is_checked": {
+    "statement_parity": "Comparator compares the Challenge statement against the Solution declaration of the same name. A contribution is checked when the Solution proves the theorem the Challenge states, with the statement unchanged.",
+    "axiom_budget": "Each entry's AxiomAudit prints the axioms every selected declaration depends on. A contribution that introduces sorryAx, or an axiom outside the audited budget, is not checked.",
+    "novelty": "Palomar does not certify novelty. Where the literature does not settle novelty, the metadata records it as unassessed and makes no priority claim."
+  }
+}

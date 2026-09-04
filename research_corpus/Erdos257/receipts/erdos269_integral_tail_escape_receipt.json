@@ -1,0 +1,186 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos269.dyadicShellTsumTail_integer_or_cofinal_far",
+        "ErdosProblems.Erdos269.leastPositiveResidue_windowForcing_eq_carry"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ResidueEscape.lean",
+      "falsification_consequence": "Extract the first longer survivor as the new recurrent-cone object and abandon a fixed three-transition proof.",
+      "survival_consequence": "Seek an all-scale finite modular classification of the at-most-four post-clear states, using the source floor-sum digits and cap recurrence."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "denominator_one_three_transition_post_clear_escape",
+      "statement": "For the actual source digits with B=1, once a local window base first exceeds the proved tail cap, its canonical state escapes that cap within at most three further affine transitions."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicWindowComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicShellSummability.lean",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ResidueEscape.lean"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_integral_tail_escape.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_dyadic_windows.py"
+      ]
+    },
+    "probe": {
+      "computation": "For every configured dyadic start, compose exact actual block bases and digits, locate the first base-clear window, and follow the least positive denominator-one residue until it exceeds the analytic cap.",
+      "falsifier": "One exact start with no certificate in the configured window or with post-clear delay at least four.",
+      "id": "exact_integral_tail_post_clear_automaton",
+      "question": "Does the sole integral branch exhibit a fixed post-clear transition bound that is absent from general-denominator affine cylinders?",
+      "resource_bounds": {
+        "max_dyadic_start": 3000,
+        "max_window_length": 16,
+        "min_dyadic_start": 1
+      },
+      "stop_condition": "Stop at the configured structural map; do not enlarge the horizon as a substitute for proving or refuting the three-transition law."
+    },
+    "problem": {
+      "claim_ceiling": "Exact finite denominator-one mechanism map only. The scan neither proves an all-scale delay bound nor excludes every integral tail state.",
+      "id": "erdos_269",
+      "target_statement": "Exclude the exact integral-state branch of the genuine normalized {2,3,5} dyadic source tail."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The probe tests a denominator-one transition law, not a larger copy of the general denominator rectangle.",
+        "next_analytic_target": "Analyze the first longer survivor as a genuine expanding-error cone and abandon every proof that assumes a three-transition cap."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The denominator-one branch escapes in the tested range, but a start survives more than three transitions after first base-clear."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result": {
+    "all_tested_starts_escape": true,
+    "maximal_delay_examples": [
+      {
+        "dyadic_start": 2295,
+        "escape_length": 11,
+        "first_base_clear_length": 7,
+        "post_clear_delay": 4,
+        "post_clear_trajectory": [
+          {
+            "base_clears_cap": true,
+            "canonical_state": 385235,
+            "last_block_base": 30,
+            "last_block_digit": 1514335,
+            "length": 7,
+            "state_escapes_cap": false,
+            "tail_cap": 2505889,
+            "window_base": 3888000
+          },
+          {
+            "base_clears_cap": true,
+            "canonical_state": 217423,
+            "last_block_base": 6,
+            "last_block_digit": 2093987,
+            "length": 8,
+            "state_escapes_cap": false,
+            "tail_cap": 2508000,
+            "window_base": 23328000
+          },
+          {
+            "base_clears_cap": true,
+            "canonical_state": 432920,
+            "last_block_base": 10,
+            "last_block_digit": 1741310,
+            "length": 9,
+            "state_escapes_cap": false,
+            "tail_cap": 2510112,
+            "window_base": 233280000
+          },
+          {
+            "base_clears_cap": true,
+            "canonical_state": 1100228,
+            "last_block_base": 6,
+            "last_block_digit": 1497292,
+            "length": 10,
+            "state_escapes_cap": false,
+            "tail_cap": 2512225,
+            "window_base": 1399680000
+          },
+          {
+            "base_clears_cap": true,
+            "canonical_state": 8326020,
+            "last_block_base": 10,
+            "last_block_digit": 2676260,
+            "length": 11,
+            "state_escapes_cap": true,
+            "tail_cap": 2514339,
+            "window_base": 13996800000
+          }
+        ]
+      }
+    ],
+    "maximal_post_clear_delay": 4,
+    "minimal_escape_length_histogram": {
+      "1": 1,
+      "2": 3,
+      "3": 19,
+      "4": 36,
+      "5": 126,
+      "6": 353,
+      "7": 892,
+      "8": 1225,
+      "9": 305,
+      "10": 37,
+      "11": 3
+    },
+    "parameters": {
+      "denominator": 1,
+      "max_dyadic_start": 3000,
+      "max_window_length": 16,
+      "min_dyadic_start": 1
+    },
+    "post_clear_delay_histogram": {
+      "0": 1766,
+      "1": 948,
+      "2": 263,
+      "3": 22,
+      "4": 1
+    },
+    "starts_without_escape_certificate": [],
+    "tested_start_count": 3000,
+    "three_transition_hypothesis_survives": false
+  },
+  "schema": "erdos269-integral-tail-escape/1",
+  "source_records": [
+    {
+      "byte_length": 10881,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_integral_tail_escape.py",
+      "sha256": "a60266a0a496b7eda396ba1f9151011376c336d6ed02f03cfabdb8663687e78d"
+    },
+    {
+      "byte_length": 21749,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos269_dyadic_windows.py",
+      "sha256": "8e5c78e80afdef66898ef1dd0a31090d52fd12604b8d04a91db4aa2639cebd5e"
+    },
+    {
+      "byte_length": 8918,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicShellSummability.lean",
+      "sha256": "42455b1fe8f36dfc2e83d58c469b0fd8268c3d7928b71843022dd308fd6f69ad"
+    },
+    {
+      "byte_length": 7612,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/ResidueEscape.lean",
+      "sha256": "a9ecacf70d358918e3135c39eb9e6c5c3587d99bc46b8726daba4fc8dd315e7e"
+    },
+    {
+      "byte_length": 22214,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/DyadicWindowComputationalLab.md",
+      "sha256": "cfa12d2713dc1c994791b79a50260d05b5768daf9d84ca55fbfabdcee2ace088"
+    },
+    {
+      "byte_length": 38238,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos269/research_packet.json",
+      "sha256": "a83c8234310667310dc23f3cdb0035a75887694c80df0266afe623efc95bbe9f"
+    }
+  ],
+  "status": "exact_counterexample_to_three_transition_hypothesis"
+}

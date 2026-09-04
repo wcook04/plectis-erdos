@@ -1,0 +1,190 @@
+{
+  "all_checks_passed": true,
+  "composite_indistinguishability": [
+    {
+      "N": 12,
+      "indicator_differs": true,
+      "m_over_sqrtN": 1.7320508075688774,
+      "p_min": 2,
+      "required_radius_m": 6,
+      "tau_agrees_on_window": true,
+      "window_radius": 5
+    },
+    {
+      "N": 16,
+      "indicator_differs": true,
+      "m_over_sqrtN": 2.0,
+      "p_min": 2,
+      "required_radius_m": 8,
+      "tau_agrees_on_window": true,
+      "window_radius": 7
+    },
+    {
+      "N": 25,
+      "indicator_differs": true,
+      "m_over_sqrtN": 1.0,
+      "p_min": 5,
+      "required_radius_m": 5,
+      "tau_agrees_on_window": true,
+      "window_radius": 4
+    },
+    {
+      "N": 30,
+      "indicator_differs": true,
+      "m_over_sqrtN": 2.7386127875258306,
+      "p_min": 2,
+      "required_radius_m": 15,
+      "tau_agrees_on_window": true,
+      "window_radius": 14
+    },
+    {
+      "N": 49,
+      "indicator_differs": true,
+      "m_over_sqrtN": 1.0,
+      "p_min": 7,
+      "required_radius_m": 7,
+      "tau_agrees_on_window": true,
+      "window_radius": 6
+    },
+    {
+      "N": 64,
+      "indicator_differs": true,
+      "m_over_sqrtN": 4.0,
+      "p_min": 2,
+      "required_radius_m": 32,
+      "tau_agrees_on_window": true,
+      "window_radius": 31
+    },
+    {
+      "N": 81,
+      "indicator_differs": true,
+      "m_over_sqrtN": 3.0,
+      "p_min": 3,
+      "required_radius_m": 27,
+      "tau_agrees_on_window": true,
+      "window_radius": 26
+    },
+    {
+      "N": 100,
+      "indicator_differs": true,
+      "m_over_sqrtN": 5.0,
+      "p_min": 2,
+      "required_radius_m": 50,
+      "tau_agrees_on_window": true,
+      "window_radius": 49
+    },
+    {
+      "N": 128,
+      "indicator_differs": true,
+      "m_over_sqrtN": 5.65685424949238,
+      "p_min": 2,
+      "required_radius_m": 64,
+      "tau_agrees_on_window": true,
+      "window_radius": 63
+    },
+    {
+      "N": 210,
+      "indicator_differs": true,
+      "m_over_sqrtN": 7.24568837309472,
+      "p_min": 2,
+      "required_radius_m": 105,
+      "tau_agrees_on_window": true,
+      "window_radius": 104
+    },
+    {
+      "N": 243,
+      "indicator_differs": true,
+      "m_over_sqrtN": 5.196152422706632,
+      "p_min": 3,
+      "required_radius_m": 81,
+      "tau_agrees_on_window": true,
+      "window_radius": 80
+    },
+    {
+      "N": 256,
+      "indicator_differs": true,
+      "m_over_sqrtN": 8.0,
+      "p_min": 2,
+      "required_radius_m": 128,
+      "tau_agrees_on_window": true,
+      "window_radius": 127
+    },
+    {
+      "N": 361,
+      "indicator_differs": true,
+      "m_over_sqrtN": 1.0,
+      "p_min": 19,
+      "required_radius_m": 19,
+      "tau_agrees_on_window": true,
+      "window_radius": 18
+    },
+    {
+      "N": 1024,
+      "indicator_differs": true,
+      "m_over_sqrtN": 16.0,
+      "p_min": 2,
+      "required_radius_m": 512,
+      "tau_agrees_on_window": true,
+      "window_radius": 511
+    }
+  ],
+  "prime_recovery_control": [
+    {
+      "indicator": 0,
+      "p": 13,
+      "recovered": true,
+      "tau_p": 1,
+      "tau_p_minus_tau_1": 0
+    },
+    {
+      "indicator": 1,
+      "p": 13,
+      "recovered": true,
+      "tau_p": 2,
+      "tau_p_minus_tau_1": 1
+    },
+    {
+      "indicator": 0,
+      "p": 101,
+      "recovered": true,
+      "tau_p": 1,
+      "tau_p_minus_tau_1": 0
+    },
+    {
+      "indicator": 1,
+      "p": 101,
+      "recovered": true,
+      "tau_p": 2,
+      "tau_p_minus_tau_1": 1
+    },
+    {
+      "indicator": 0,
+      "p": 257,
+      "recovered": true,
+      "tau_p": 1,
+      "tau_p_minus_tau_1": 0
+    },
+    {
+      "indicator": 1,
+      "p": 257,
+      "recovered": true,
+      "tau_p": 2,
+      "tau_p_minus_tau_1": 1
+    },
+    {
+      "indicator": 0,
+      "p": 1009,
+      "recovered": true,
+      "tau_p": 1,
+      "tau_p_minus_tau_1": 0
+    },
+    {
+      "indicator": 1,
+      "p": 1009,
+      "recovered": true,
+      "tau_p": 2,
+      "tau_p_minus_tau_1": 1
+    }
+  ],
+  "proposition": "for composite N, 1_A(N) is undetermined by tau_A on any window of radius < m = N/p_min (>= sqrt N); for prime N, radius 0 plus tau_A(1) suffices"
+}

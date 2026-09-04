@@ -1,0 +1,385 @@
+{
+  "probe": "erdos1049_casoratian_block_law",
+  "max_index": 420,
+  "max_prime": 700,
+  "primes_analysed": 122,
+  "generic_primes": 78,
+  "exceptional_primes": 44,
+  "primes_with_eps_ge_2": [
+    [
+      23,
+      11,
+      2
+    ]
+  ],
+  "r_zero_primes": [
+    {
+      "p": 11,
+      "d": 10,
+      "residues": [
+        1
+      ]
+    },
+    {
+      "p": 41,
+      "d": 40,
+      "residues": [
+        34
+      ]
+    },
+    {
+      "p": 59,
+      "d": 58,
+      "residues": [
+        11,
+        38
+      ]
+    },
+    {
+      "p": 83,
+      "d": 82,
+      "residues": [
+        34,
+        47
+      ]
+    },
+    {
+      "p": 103,
+      "d": 102,
+      "residues": [
+        93
+      ]
+    },
+    {
+      "p": 107,
+      "d": 106,
+      "residues": [
+        12,
+        65,
+        73
+      ]
+    },
+    {
+      "p": 109,
+      "d": 108,
+      "residues": [
+        104
+      ]
+    },
+    {
+      "p": 137,
+      "d": 136,
+      "residues": [
+        7,
+        43,
+        105,
+        118
+      ]
+    },
+    {
+      "p": 157,
+      "d": 156,
+      "residues": [
+        57,
+        99
+      ]
+    },
+    {
+      "p": 167,
+      "d": 83,
+      "residues": [
+        73
+      ]
+    },
+    {
+      "p": 179,
+      "d": 178,
+      "residues": [
+        71,
+        75,
+        113,
+        161
+      ]
+    },
+    {
+      "p": 191,
+      "d": 95,
+      "residues": [
+        45
+      ]
+    },
+    {
+      "p": 223,
+      "d": 222,
+      "residues": [
+        131
+      ]
+    },
+    {
+      "p": 229,
+      "d": 228,
+      "residues": [
+        19,
+        37,
+        57
+      ]
+    },
+    {
+      "p": 233,
+      "d": 232,
+      "residues": [
+        4
+      ]
+    },
+    {
+      "p": 251,
+      "d": 250,
+      "residues": [
+        219
+      ]
+    },
+    {
+      "p": 257,
+      "d": 256,
+      "residues": [
+        17,
+        78,
+        86
+      ]
+    },
+    {
+      "p": 311,
+      "d": 155,
+      "residues": [
+        41
+      ]
+    },
+    {
+      "p": 313,
+      "d": 156,
+      "residues": [
+        41
+      ]
+    },
+    {
+      "p": 347,
+      "d": 346,
+      "residues": [
+        305
+      ]
+    },
+    {
+      "p": 353,
+      "d": 352,
+      "residues": [
+        128,
+        299
+      ]
+    },
+    {
+      "p": 359,
+      "d": 179,
+      "residues": [
+        164
+      ]
+    },
+    {
+      "p": 367,
+      "d": 366,
+      "residues": [
+        54,
+        300,
+        323,
+        344
+      ]
+    },
+    {
+      "p": 383,
+      "d": 191,
+      "residues": [
+        113,
+        170
+      ]
+    },
+    {
+      "p": 389,
+      "d": 194,
+      "residues": [
+        72
+      ]
+    },
+    {
+      "p": 421,
+      "d": 420,
+      "residues": [
+        200,
+        322
+      ]
+    },
+    {
+      "p": 433,
+      "d": 216,
+      "residues": [
+        73
+      ]
+    },
+    {
+      "p": 443,
+      "d": 442,
+      "residues": [
+        144,
+        315
+      ]
+    },
+    {
+      "p": 449,
+      "d": 448,
+      "residues": [
+        186
+      ]
+    },
+    {
+      "p": 499,
+      "d": 83,
+      "residues": [
+        76
+      ]
+    },
+    {
+      "p": 503,
+      "d": 251,
+      "residues": [
+        50
+      ]
+    },
+    {
+      "p": 521,
+      "d": 520,
+      "residues": [
+        380
+      ]
+    },
+    {
+      "p": 523,
+      "d": 261,
+      "residues": [
+        49
+      ]
+    },
+    {
+      "p": 569,
+      "d": 568,
+      "residues": [
+        313
+      ]
+    },
+    {
+      "p": 593,
+      "d": 592,
+      "residues": [
+        284
+      ]
+    },
+    {
+      "p": 607,
+      "d": 606,
+      "residues": [
+        266
+      ]
+    },
+    {
+      "p": 619,
+      "d": 309,
+      "residues": [
+        18
+      ]
+    },
+    {
+      "p": 641,
+      "d": 640,
+      "residues": [
+        344
+      ]
+    },
+    {
+      "p": 647,
+      "d": 323,
+      "residues": [
+        112
+      ]
+    },
+    {
+      "p": 653,
+      "d": 326,
+      "residues": [
+        245
+      ]
+    },
+    {
+      "p": 659,
+      "d": 658,
+      "residues": [
+        27,
+        181
+      ]
+    },
+    {
+      "p": 661,
+      "d": 660,
+      "residues": [
+        69
+      ]
+    },
+    {
+      "p": 673,
+      "d": 112,
+      "residues": [
+        59
+      ]
+    },
+    {
+      "p": 677,
+      "d": 338,
+      "residues": [
+        172
+      ]
+    }
+  ],
+  "falsifiers": [
+    {
+      "name": "casoratian_closed_form",
+      "indices_checked": 46,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "limit_is_the_erdos1049_constant",
+      "agreement_decimal_digits": 123,
+      "target": "sum_{n>=1} 2^n/(3^n - 2^n)",
+      "passed": true
+    },
+    {
+      "name": "divisibility_law_generic_class",
+      "generic_primes": 78,
+      "exceptional_primes": 44,
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "strict_valuation_law_generic_class",
+      "failures": [],
+      "passed": true
+    },
+    {
+      "name": "regression_p11_j31_still_exceptional",
+      "detail": "3 in J_11 (H_3 = 11/6) yet 11 | B_31",
+      "passed": true
+    },
+    {
+      "name": "no_loss_block_is_wholly_covered",
+      "covered": [],
+      "passed": true
+    }
+  ],
+  "all_passed": true
+}

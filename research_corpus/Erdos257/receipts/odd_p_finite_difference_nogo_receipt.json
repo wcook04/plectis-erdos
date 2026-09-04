@@ -1,0 +1,341 @@
+{
+  "d_equals_one_confirms_proposition": true,
+  "parameters": {
+    "budget": 400000,
+    "depth": 120,
+    "max_d": 5,
+    "primes": "3,5,7,11,13",
+    "write": "state/formal_math/erdos257_period_noncollapse/odd_p_finite_difference_nogo_receipt.json"
+  },
+  "payload_sha256": "8ef28dc03aa7d77d3e8b1a5380be83cfea0f482864c32c87253710a847aae1dd",
+  "rows": [
+    {
+      "candidates": 6,
+      "d": 1,
+      "p": 3,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 18,
+      "d": 2,
+      "p": 3,
+      "survivors": 8,
+      "survivors_taking_value_one": 6,
+      "witness": {
+        "b1": 0,
+        "g": [
+          0,
+          1
+        ],
+        "leading_differences": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "candidates": 54,
+      "d": 3,
+      "p": 3,
+      "survivors": 8,
+      "survivors_taking_value_one": 6,
+      "witness": {
+        "b1": 0,
+        "g": [
+          0,
+          1,
+          0
+        ],
+        "leading_differences": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "candidates": 162,
+      "d": 4,
+      "p": 3,
+      "survivors": 8,
+      "survivors_taking_value_one": 6,
+      "witness": {
+        "b1": 0,
+        "g": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "leading_differences": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "candidates": 486,
+      "d": 5,
+      "p": 3,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 10,
+      "d": 1,
+      "p": 5,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 50,
+      "d": 2,
+      "p": 5,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 250,
+      "d": 3,
+      "p": 5,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 1250,
+      "d": 4,
+      "p": 5,
+      "survivors": 32,
+      "survivors_taking_value_one": 30,
+      "witness": {
+        "b1": 0,
+        "g": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "leading_differences": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "candidates": 6250,
+      "d": 5,
+      "p": 5,
+      "survivors": 32,
+      "survivors_taking_value_one": 30,
+      "witness": {
+        "b1": 0,
+        "g": [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "leading_differences": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "candidates": 14,
+      "d": 1,
+      "p": 7,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 98,
+      "d": 2,
+      "p": 7,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 686,
+      "d": 3,
+      "p": 7,
+      "survivors": 8,
+      "survivors_taking_value_one": 6,
+      "witness": {
+        "b1": 0,
+        "g": [
+          0,
+          1,
+          3
+        ],
+        "leading_differences": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "candidates": 4802,
+      "d": 4,
+      "p": 7,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 33614,
+      "d": 5,
+      "p": 7,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 22,
+      "d": 1,
+      "p": 11,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 242,
+      "d": 2,
+      "p": 11,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 2662,
+      "d": 3,
+      "p": 11,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 29282,
+      "d": 4,
+      "p": 11,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 322102,
+      "d": 5,
+      "p": 11,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 26,
+      "d": 1,
+      "p": 13,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 338,
+      "d": 2,
+      "p": 13,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 4394,
+      "d": 3,
+      "p": 13,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    },
+    {
+      "candidates": 57122,
+      "d": 4,
+      "p": 13,
+      "survivors": 2,
+      "survivors_taking_value_one": 0,
+      "witness": null
+    }
+  ],
+  "schema": "erdos257_odd_p_finite_difference_nogo_v1",
+  "source": {
+    "analysis": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos257/SupportWordStructureLab.md",
+    "script": "formal_math/erdos257_period_noncollapse/scripts/odd_p_finite_difference_nogo.py",
+    "unaffected_companion": "formal_math/erdos257_period_noncollapse/scripts/characteristic_p_dichotomy_search.py"
+  },
+  "verdict": "The single-residue-class Boolean-lattice route to the odd-p dichotomy is CLOSED. For d = ord_P(rho) = 1 no survivor ever takes the value 1, which recovers the proven Proposition; for d >= 2 survivors taking 1 infinitely often exist, so iterating the argument over residue classes cannot force A finite."
+}

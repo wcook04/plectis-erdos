@@ -1,0 +1,278 @@
+{
+  "consequence_decisions": [
+    {
+      "decision": "eliminated",
+      "mechanism": "three_prime_successor_locks_force_endpoint_crossing",
+      "reason": "the complete three-lock precursor cone is nonempty"
+    },
+    {
+      "decision": "eliminated",
+      "mechanism": "post_hoc_finite_trapped_prefix_cone_emptying",
+      "reason": "exact preimage membership is equivalent to satisfying every original band, so the observed trapped seed is a survivor"
+    },
+    {
+      "decision": "required_stronger_input",
+      "mechanism": "global_cross_gap_or_cofinal_coherence",
+      "reason": "one, two, and now three finite local locks are insufficient"
+    },
+    {
+      "decision": "not_claimed",
+      "mechanism": "universal_escape_or_irrationality",
+      "reason": "the certificate is finite and local"
+    }
+  ],
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "falsification_consequence": "Three local locks are insufficient; any local proof must use a stronger cross-gap relation or genuinely global cofinal coherence.",
+      "survival_consequence": "An empty complete cone would leave a three-lock local crossing route open."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "three_prime_successor_locks_force_endpoint_escape",
+      "statement": "Three distinct trapped prime successors, together with every exact intervening totient letter and moving endpoint bound, force crossing."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PureDyadicEndpointCocycleComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_three_prime_lock_precursor_cone.py",
+        "system/lib/formal_math_affine_cylinder.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_pure_dyadic_endpoint_cocycle.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json"
+      ]
+    },
+    "probe": {
+      "computation": "Sieve the actual totient word, stop at the first three-lock trap, and intersect every exact affine seed inequality through the third successor.",
+      "falsifier": "A geometry-boundary seed that satisfies every moving endpoint bound through all three trapped prime successors.",
+      "id": "complete_three_lock_affine_precursor_intersection",
+      "question": "Does the complete geometry-boundary seed cone become empty by the successor of the third distinct prime lock?",
+      "resource_bounds": {
+        "max_c_plus_one": 1859,
+        "max_height": 20,
+        "tested_c_count": 1859
+      },
+      "stop_condition": "Stop at the first exact three-lock witness; if none occurs inside the declared bounds, retain only a typed null result and make no claim."
+    },
+    "problem": {
+      "claim_ceiling": "Exact elimination of three-local-lock forced crossing, together with the general proof boundary that an observed trapped finite prefix cannot empty its own complete affine precursor cone; no infinite endpoint trap, universal escape, or irrationality proof.",
+      "id": "erdos_249",
+      "target_statement": "Prove irrationality of sum_(n>=1) phi(n)/2^n."
+    },
+    "result": {
+      "status": "exact_one_way_result",
+      "summary": "At c=1858, the actual fixed-quotient word remains endpoint-trapped through three distinct prime successors, and the exact complete precursor cone remains nonempty. Exact seed-membership equivalence certifies that every already observed trapped finite prefix contains its actual seed."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "resource_bounds": {
+    "max_c": 1858,
+    "max_height": 20,
+    "min_c": 0
+  },
+  "schema": "erdos249-three-prime-lock-precursor-cone/1",
+  "source_records": [
+    {
+      "byte_length": 15409,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_three_prime_lock_precursor_cone.py",
+      "sha256": "8a90480faf21e5fc3fea9c643b3d44d6e31ad04722cfd58829ade935983ac3de"
+    },
+    {
+      "byte_length": 16895,
+      "path": "system/lib/formal_math_affine_cylinder.py",
+      "sha256": "613646499ad2510670642c5d7d2308dd1b627cbc0b88cb683bd10a66447efc6c"
+    },
+    {
+      "byte_length": 14806,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_pure_dyadic_endpoint_cocycle.py",
+      "sha256": "26ce5d82cc799934292fb2500c004bf3b6b1c7f2c04e6b4c3378620ccd1c48cf"
+    },
+    {
+      "byte_length": 11006,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PureDyadicEndpointCocycleComputationalLab.md",
+      "sha256": "b7cd498cd01be7379856cf4f3f9f0c393d3e3746ed96d64e8a5a0dbec3aa1112"
+    },
+    {
+      "byte_length": 22005,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "sha256": "11d05c7c29d76991e281d90c6b42eb2deeff8f3c55a37429d2c12cca5de6bb2c"
+    },
+    {
+      "byte_length": 94631,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "sha256": "509892e134a6ab8780ec3284efcac9b82de772c65333add965139257f7dbe725"
+    }
+  ],
+  "status": "verified_exact_three_lock_mechanism_elimination",
+  "witness": {
+    "basepoint_c": 1858,
+    "fixed_quotient_k": 1251,
+    "geometry_clear_height": 12,
+    "precursor_cone": {
+      "actual_geometry_seed_error": -189,
+      "actual_seed_survives_three_locks": true,
+      "actual_terminal_error": -741,
+      "actual_terminal_margin": 1138,
+      "complete_geometry_seed_count": 3743,
+      "complete_geometry_seed_interval": [
+        -1871,
+        1871
+      ],
+      "finite_prefix_membership_certificate": {
+        "constraint_count": 9,
+        "equivalence_verified": true,
+        "first_failed_constraint_index": null,
+        "first_failed_constraint_label": null,
+        "interval_contains_seed": true,
+        "proves_nonempty": true,
+        "satisfies_every_band": true,
+        "seed": -189
+      },
+      "finite_prefix_proof_boundary": "For any finite affine-band prefix, a seed lies in the complete pulled-back cone iff its trajectory value satisfies every original band. Hence an already observed trapped finite trajectory supplies an explicit survivor of its own complete prefix cone.",
+      "lock_intersections": [
+        {
+          "successor_height": 14,
+          "surviving_seed_count": 937,
+          "surviving_seed_interval": [
+            -609,
+            327
+          ]
+        },
+        {
+          "successor_height": 16,
+          "surviving_seed_count": 234,
+          "surviving_seed_interval": [
+            -315,
+            -82
+          ]
+        },
+        {
+          "successor_height": 20,
+          "surviving_seed_count": 15,
+          "surviving_seed_interval": [
+            -193,
+            -179
+          ]
+        }
+      ],
+      "terminal_surviving_seed_count": 15,
+      "terminal_surviving_seed_interval": [
+        -193,
+        -179
+      ]
+    },
+    "prime_successor_locks": [
+      {
+        "prime_argument": 1871,
+        "prime_height": 13,
+        "successor_height": 14
+      },
+      {
+        "prime_argument": 1873,
+        "prime_height": 15,
+        "successor_height": 16
+      },
+      {
+        "prime_argument": 1877,
+        "prime_height": 19,
+        "successor_height": 20
+      }
+    ],
+    "trajectory_through_third_lock": [
+      {
+        "argument": 1870,
+        "central": false,
+        "height": 12,
+        "nearest_quotient": 1251,
+        "prime_argument": false,
+        "radius": 1871,
+        "signed_endpoint_error": -189,
+        "totient_letter": 640
+      },
+      {
+        "argument": 1871,
+        "central": false,
+        "height": 13,
+        "nearest_quotient": 1251,
+        "prime_argument": true,
+        "radius": 1872,
+        "signed_endpoint_error": 241,
+        "totient_letter": 1870
+      },
+      {
+        "argument": 1872,
+        "central": false,
+        "height": 14,
+        "nearest_quotient": 1251,
+        "prime_argument": false,
+        "radius": 1873,
+        "signed_endpoint_error": -193,
+        "totient_letter": 576
+      },
+      {
+        "argument": 1873,
+        "central": false,
+        "height": 15,
+        "nearest_quotient": 1251,
+        "prime_argument": true,
+        "radius": 1874,
+        "signed_endpoint_error": 235,
+        "totient_letter": 1872
+      },
+      {
+        "argument": 1874,
+        "central": false,
+        "height": 16,
+        "nearest_quotient": 1251,
+        "prime_argument": false,
+        "radius": 1875,
+        "signed_endpoint_error": 155,
+        "totient_letter": 936
+      },
+      {
+        "argument": 1875,
+        "central": false,
+        "height": 17,
+        "nearest_quotient": 1251,
+        "prime_argument": false,
+        "radius": 1876,
+        "signed_endpoint_error": 59,
+        "totient_letter": 1000
+      },
+      {
+        "argument": 1876,
+        "central": false,
+        "height": 18,
+        "nearest_quotient": 1251,
+        "prime_argument": false,
+        "radius": 1877,
+        "signed_endpoint_error": -341,
+        "totient_letter": 792
+      },
+      {
+        "argument": 1877,
+        "central": false,
+        "height": 19,
+        "nearest_quotient": 1251,
+        "prime_argument": true,
+        "radius": 1878,
+        "signed_endpoint_error": -57,
+        "totient_letter": 1876
+      },
+      {
+        "argument": 1878,
+        "central": false,
+        "height": 20,
+        "nearest_quotient": 1251,
+        "prime_argument": false,
+        "radius": 1879,
+        "signed_endpoint_error": -741,
+        "totient_letter": 624
+      }
+    ]
+  }
+}

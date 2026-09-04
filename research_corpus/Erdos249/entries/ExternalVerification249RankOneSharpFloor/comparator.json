@@ -1,0 +1,18 @@
+{
+  "challenge_module": "ExternalVerification249RankOneSharpFloor.Challenge",
+  "solution_module": "ExternalVerification249RankOneSharpFloor.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_eq_one_five_iff",
+    "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty",
+    "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen",
+    "Erdos249257.ExternalVerification249RankOneSharpFloor.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen",
+    "Erdos249257.ExternalVerification249RankOneSharpFloor.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty",
+    "Erdos249257.ExternalVerification249RankOneSharpFloor.primitive_form_abs_gt_twentyOne_div_threeTwenty"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
