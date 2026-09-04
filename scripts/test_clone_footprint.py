@@ -19,7 +19,12 @@ class CloneFootprintTests(unittest.TestCase):
         report = footprint.build_report(footprint.committed_entries(ROOT))
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         manifest = footprint.LEAN_SPARSE_MANIFEST_PATH.read_text(encoding="utf-8")
-        self.assertEqual(footprint.contract_errors(report, readme, manifest), [])
+        reader_manifest = footprint.READER_SPARSE_MANIFEST_PATH.read_text(
+            encoding="utf-8"
+        )
+        self.assertEqual(
+            footprint.contract_errors(report, readme, manifest, reader_manifest), []
+        )
         self.assertGreater(report["lean_sparse_omitted_bytes"], 200 * footprint.MIB)
 
     def test_oversized_full_checkout_is_rejected(self) -> None:
@@ -108,6 +113,16 @@ class CloneFootprintTests(unittest.TestCase):
         errors = footprint.contract_errors(report, self.valid_readme(), "/README.md\n")
         self.assertTrue(any("manifest has drifted" in error for error in errors))
 
+    def test_reader_sparse_checkout_omits_machine_scale_corpora(self) -> None:
+        entries = [
+            {"path": "README.md", "size_bytes": 10},
+            {"path": "paper/main.tex", "size_bytes": 20},
+            {"path": "docs/claims.json", "size_bytes": 30},
+            {"path": "docs/semantic_corpus.json", "size_bytes": 1000},
+        ]
+        report = footprint.build_report(entries)
+        self.assertEqual(report["reader_sparse_checkout_bytes"], 60)
+
     @staticmethod
     def valid_readme() -> str:
         return "\n".join(
@@ -116,6 +131,7 @@ class CloneFootprintTests(unittest.TestCase):
                 footprint.LEAN_SPARSE_COMMAND,
                 footprint.LEAN_CHECKOUT_COMMAND,
                 footprint.LEAN_BUILD_COMMAND,
+                footprint.READER_SPARSE_COMMAND,
                 footprint.FULL_CLONE_COMMAND,
                 footprint.FULL_HISTORY_CLONE_COMMAND,
             )

@@ -42,8 +42,19 @@ files. It does not make Git fetch the root PDFs or the generated-document tree
 before the sparse rules exist. The wrapper fetches the pinned dependency cache
 only when needed, reuses compatible host packages across clones, and joins
 duplicate concurrent builds. Successful identical builds also reuse bounded
-copy-on-write output seeds across clones. To read the complete current
-documentation and generated corpus without downloading historical revisions:
+copy-on-write output seeds across clones. To read the human-facing papers,
+orientation, claims, and contribution/correction guidance without cloning the
+large generated machine corpora:
+
+```bash
+git clone --depth=1 --filter=blob:none --single-branch --no-checkout https://github.com/wcook04/plectis-lean-erdos249-257.git
+git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
+git -C plectis-lean-erdos249-257 checkout
+cd plectis-lean-erdos249-257
+```
+
+To query the complete current generated corpus without downloading historical
+revisions:
 
 ```bash
 git clone --depth=1 --filter=blob:none --single-branch https://github.com/wcook04/plectis-lean-erdos249-257.git

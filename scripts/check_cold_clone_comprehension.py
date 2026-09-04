@@ -1074,6 +1074,10 @@ def validate_human_first_contact(
     )
     lean_checkout_command = "git -C plectis-lean-erdos249-257 checkout"
     lean_build_command = "python3 scripts/lean_fast_build.py --jobs 2"
+    reader_sparse_command = (
+        "git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | "
+        "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
+    )
     full_clone_command = (
         "git clone --depth=1 --filter=blob:none --single-branch "
         "https://github.com/wcook04/plectis-lean-erdos249-257.git"
@@ -1094,6 +1098,10 @@ def validate_human_first_contact(
         "README's Lean-only checkout must include and invoke its bounded build wrapper",
     )
     require(
+        reader_sparse_command in readme_prefix,
+        "README must expose the bounded human-reader sparse checkout before the full corpus",
+    )
+    require(
         full_clone_command in readme_prefix,
         "README must expose a shallow current-document checkout before "
         "a newcomer downloads historical revisions",
@@ -1104,6 +1112,7 @@ def validate_human_first_contact(
     )
     require(
         readme_prefix.find(lean_clone_command)
+        < readme_prefix.find(reader_sparse_command)
         < readme_prefix.find(full_clone_command)
         < readme_prefix.find(full_history_clone_command),
         "README must order Lean-only, current full, then release-history checkouts",

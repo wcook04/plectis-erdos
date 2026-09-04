@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MIB = 1024 * 1024
 FULL_CHECKOUT_LIMIT_BYTES = 420 * MIB
 LEAN_CHECKOUT_LIMIT_BYTES = 160 * MIB
+READER_CHECKOUT_LIMIT_BYTES = 32 * MIB
 SINGLE_BLOB_LIMIT_BYTES = 100 * MIB
 MINIMUM_LEAN_CHECKOUT_REDUCTION = 0.50
 LEAN_SPARSE_MANIFEST_PATH = ROOT / "scripts/lean-sparse-checkout"
@@ -56,6 +57,31 @@ LEAN_SPARSE_PATTERNS = (
     "!/ErdosProblems/FreePosition/data.jsonl",
 )
 LEAN_SPARSE_MANIFEST_TEXT = "\n".join(LEAN_SPARSE_PATTERNS) + "\n"
+READER_SPARSE_MANIFEST_PATH = ROOT / "scripts/reader-sparse-checkout"
+READER_SPARSE_PATTERNS = (
+    "/.github/banner.png",
+    "/.github/system-map.png",
+    "/docs/AGENT_WORKBENCH.md",
+    "/docs/ARCHITECTURE.md",
+    "/docs/CONTRIBUTOR_PATH.md",
+    "/docs/CORRECTIONS.md",
+    "/docs/ORIENTATION.md",
+    "/docs/PAPER_LIBRARY.md",
+    "/docs/PROOF_COCKPIT.md",
+    "/docs/REPRODUCIBILITY.md",
+    "/docs/SOURCE_MAP.md",
+    "/docs/claims.json",
+    "/docs/problems.json",
+    "/paper/",
+    "/scripts/reader-sparse-checkout",
+    "/*.md",
+    "/*.pdf",
+    "/CITATION.cff",
+    "/LICENSE",
+    "/REUSE.toml",
+    "/SCOPE.md",
+)
+READER_SPARSE_MANIFEST_TEXT = "\n".join(READER_SPARSE_PATTERNS) + "\n"
 LEAN_CLONE_COMMAND = (
     "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
     "https://github.com/wcook04/plectis-lean-erdos249-257.git"
@@ -66,6 +92,14 @@ LEAN_SPARSE_COMMAND = (
 )
 LEAN_CHECKOUT_COMMAND = "git -C plectis-lean-erdos249-257 checkout"
 LEAN_BUILD_COMMAND = "python3 scripts/lean_fast_build.py --jobs 2"
+READER_CLONE_COMMAND = (
+    "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
+    "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+)
+READER_SPARSE_COMMAND = (
+    "git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | "
+    "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
+)
 FULL_CLONE_COMMAND = (
     "git clone --depth=1 --filter=blob:none --single-branch "
     "https://github.com/wcook04/plectis-lean-erdos249-257.git"
@@ -117,6 +151,17 @@ def belongs_to_lean_sparse_checkout(path: str) -> bool:
     return included
 
 
+def belongs_to_reader_sparse_checkout(path: str) -> bool:
+    rooted = f"/{path}"
+    return any(
+        rooted == pattern
+        or (pattern.endswith("/") and rooted.startswith(pattern))
+        or (pattern == "/*.md" and "/" not in path and path.endswith(".md"))
+        or (pattern == "/*.pdf" and "/" not in path and path.endswith(".pdf"))
+        for pattern in READER_SPARSE_PATTERNS
+    )
+
+
 def build_report(entries: Iterable[dict[str, Any]]) -> dict[str, Any]:
     rows = list(entries)
     full_bytes = sum(int(row["size_bytes"]) for row in rows)
@@ -124,6 +169,11 @@ def build_report(entries: Iterable[dict[str, Any]]) -> dict[str, Any]:
         int(row["size_bytes"])
         for row in rows
         if belongs_to_lean_sparse_checkout(str(row["path"]))
+    )
+    reader_bytes = sum(
+        int(row["size_bytes"])
+        for row in rows
+        if belongs_to_reader_sparse_checkout(str(row["path"]))
     )
     largest = max(rows, key=lambda row: int(row["size_bytes"]), default=None)
     reduction = (full_bytes - lean_bytes) / full_bytes if full_bytes else 0.0
@@ -133,6 +183,8 @@ def build_report(entries: Iterable[dict[str, Any]]) -> dict[str, Any]:
         "full_checkout_limit_bytes": FULL_CHECKOUT_LIMIT_BYTES,
         "lean_sparse_checkout_bytes": lean_bytes,
         "lean_sparse_checkout_limit_bytes": LEAN_CHECKOUT_LIMIT_BYTES,
+        "reader_sparse_checkout_bytes": reader_bytes,
+        "reader_sparse_checkout_limit_bytes": READER_CHECKOUT_LIMIT_BYTES,
         "lean_sparse_omitted_bytes": full_bytes - lean_bytes,
         "lean_sparse_reduction_fraction": round(reduction, 6),
         "minimum_lean_sparse_reduction_fraction": MINIMUM_LEAN_CHECKOUT_REDUCTION,
@@ -147,12 +199,15 @@ def contract_errors(
     report: dict[str, Any],
     readme: str,
     sparse_manifest: str = LEAN_SPARSE_MANIFEST_TEXT,
+    reader_sparse_manifest: str = READER_SPARSE_MANIFEST_TEXT,
 ) -> list[str]:
     errors: list[str] = []
     if int(report["full_checkout_bytes"]) > FULL_CHECKOUT_LIMIT_BYTES:
         errors.append("committed full checkout exceeds the 420 MiB clone budget")
     if int(report["lean_sparse_checkout_bytes"]) > LEAN_CHECKOUT_LIMIT_BYTES:
         errors.append("advertised Lean sparse checkout exceeds the 160 MiB budget")
+    if int(report["reader_sparse_checkout_bytes"]) > READER_CHECKOUT_LIMIT_BYTES:
+        errors.append("advertised reader sparse checkout exceeds the 32 MiB budget")
     largest = report.get("largest_blob")
     if isinstance(largest, dict) and int(largest["size_bytes"]) > SINGLE_BLOB_LIMIT_BYTES:
         errors.append(
@@ -165,27 +220,43 @@ def contract_errors(
         LEAN_SPARSE_COMMAND,
         LEAN_CHECKOUT_COMMAND,
         LEAN_BUILD_COMMAND,
+        READER_CLONE_COMMAND,
+        READER_SPARSE_COMMAND,
         FULL_CLONE_COMMAND,
         FULL_HISTORY_CLONE_COMMAND,
     ):
         if command not in readme:
             errors.append(f"README is missing optimized clone command: {command}")
     lean_position = readme.find(LEAN_CLONE_COMMAND)
+    lean_sparse_position = readme.find(LEAN_SPARSE_COMMAND, lean_position)
+    reader_sparse_position = readme.find(
+        READER_SPARSE_COMMAND, lean_sparse_position + len(LEAN_SPARSE_COMMAND)
+    )
     full_position = readme.find(FULL_CLONE_COMMAND, lean_position + len(LEAN_CLONE_COMMAND))
     history_position = readme.find(
         FULL_HISTORY_CLONE_COMMAND, full_position + len(FULL_CLONE_COMMAND)
     )
     if (
         lean_position < 0
+        or lean_sparse_position < 0
+        or reader_sparse_position < 0
         or full_position < 0
         or history_position < 0
-        or not lean_position < full_position < history_position
+        or not (
+            lean_position
+            < lean_sparse_position
+            < reader_sparse_position
+            < full_position
+            < history_position
+        )
     ):
         errors.append(
             "README must order Lean-only, current full, then full-history checkouts"
         )
     if sparse_manifest != LEAN_SPARSE_MANIFEST_TEXT:
         errors.append("versioned Lean sparse manifest has drifted from the checked contract")
+    if reader_sparse_manifest != READER_SPARSE_MANIFEST_TEXT:
+        errors.append("versioned reader sparse manifest has drifted from the checked contract")
     return errors
 
 
@@ -199,6 +270,7 @@ def main(argv: list[str] | None = None) -> int:
         report,
         (ROOT / "README.md").read_text(encoding="utf-8"),
         LEAN_SPARSE_MANIFEST_PATH.read_text(encoding="utf-8"),
+        READER_SPARSE_MANIFEST_PATH.read_text(encoding="utf-8"),
     )
     report["status"] = "pass" if not errors else "fail"
     report["errors"] = errors
