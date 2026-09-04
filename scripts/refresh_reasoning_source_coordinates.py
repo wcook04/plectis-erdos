@@ -61,7 +61,6 @@ def normalize(value: str) -> str:
     )
 
 
-LEAN_COMMENT_MARKER = re.compile(r'--|/-|-/|"|\\|\n')
 NON_NEWLINE_RUN = re.compile(r"[^\n]+")
 
 
@@ -73,55 +72,74 @@ def strip_lean_comments(text: str) -> str:
     """Blank nested Lean comments without changing source line numbers."""
 
     output: list[str] = []
-    depth = 0
     state = "code"
-    string_escaped = False
     cursor = 0
-    for match in LEAN_COMMENT_MARKER.finditer(text):
-        token = match.group()
-        gap = text[cursor : match.start()]
-        output.append(masked_span(gap) if depth or state == "line_comment" else gap)
-
-        if depth:
-            if token == "/-":
+    length = len(text)
+    depth = 0
+    while cursor < length:
+        if state == "code":
+            markers = tuple(
+                position
+                for position in (
+                    text.find("--", cursor),
+                    text.find("/-", cursor),
+                    text.find('"', cursor),
+                )
+                if position >= 0
+            )
+            if not markers:
+                output.append(text[cursor:])
+                break
+            marker = min(markers)
+            output.append(text[cursor:marker])
+            token = text[marker : marker + 2]
+            if token == "--":
+                newline = text.find("\n", marker + 2)
+                end = length if newline < 0 else newline
+                output.append(masked_span(text[marker:end]))
+                cursor = end
+            elif token == "/-":
+                output.append("  ")
+                cursor = marker + 2
+                depth = 1
+                state = "block_comment"
+            else:
+                output.append('"')
+                cursor = marker + 1
+                state = "string"
+        elif state == "block_comment":
+            opener = text.find("/-", cursor)
+            closer = text.find("-/", cursor)
+            candidates = [position for position in (opener, closer) if position >= 0]
+            if not candidates:
+                raise CoordinateError("unterminated block comment in pinned Lean source")
+            marker = min(candidates)
+            output.append(masked_span(text[cursor:marker]))
+            output.append("  ")
+            cursor = marker + 2
+            if marker == opener:
                 depth += 1
-            elif token == "-/":
+            else:
                 depth -= 1
-            output.append(masked_span(token))
-        elif state == "line_comment":
-            output.append(masked_span(token))
-            if token == "\n":
-                state = "code"
-        elif state == "string":
-            output.append(token)
-            escaped_token = string_escaped and not gap
-            if string_escaped and gap:
-                string_escaped = False
-            if escaped_token:
-                string_escaped = False
-            elif token == "\\":
-                string_escaped = True
-            elif token == '"':
-                state = "code"
-                string_escaped = False
-        elif token == "--":
-            state = "line_comment"
-            output.append("  ")
-        elif token == "/-":
-            depth = 1
-            output.append("  ")
-        elif token == '"':
-            state = "string"
-            string_escaped = False
-            output.append(token)
+                if depth == 0:
+                    state = "code"
         else:
-            output.append(token)
-        cursor = match.end()
-
-    tail = text[cursor:]
-    output.append(masked_span(tail) if depth or state == "line_comment" else tail)
-    if depth:
-        raise CoordinateError("unterminated block comment in pinned Lean source")
+            escape = text.find("\\", cursor)
+            quote = text.find('"', cursor)
+            candidates = [position for position in (escape, quote) if position >= 0]
+            if not candidates:
+                output.append(text[cursor:])
+                break
+            marker = min(candidates)
+            output.append(text[cursor:marker])
+            if marker == escape:
+                end = min(marker + 2, length)
+                output.append(text[marker:end])
+                cursor = end
+            else:
+                output.append('"')
+                cursor = marker + 1
+                state = "code"
     return "".join(output)
 
 

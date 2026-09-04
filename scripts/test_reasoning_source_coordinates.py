@@ -44,6 +44,7 @@ def check_comment_projection() -> None:
         'def visible := 1 -- def lineHidden := 2\n'
         '/- outer /- nested -/ def blockHidden := 3 -/\n'
         'def quoted := "/- string content stays -/"\n'
+        'def escaped := "quote: \\" -- still in string" -- hidden again\n'
     )
     projected = coordinates.strip_lean_comments(source)
     require(len(projected) == len(source), "comment projection changed source offsets")
@@ -56,6 +57,8 @@ def check_comment_projection() -> None:
     require("lineHidden" not in projected, "line-comment content survived")
     require("blockHidden" not in projected, "nested block-comment content survived")
     require("string content stays" in projected, "string content was treated as a comment")
+    require("still in string" in projected, "escaped quote ended a string early")
+    require("hidden again" not in projected, "comment after escaped string survived")
 
 
 def main() -> int:

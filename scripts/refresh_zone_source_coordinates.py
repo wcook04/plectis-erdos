@@ -53,7 +53,6 @@ against the intended document before it is written.
 from __future__ import annotations
 
 import argparse
-import copy
 import json
 import re
 import sys
@@ -314,7 +313,7 @@ def plan_zone(path: Path, atlas: Atlas, sources: Sources, report: Report) -> str
     raw = path.read_text(encoding="utf-8")
     document = json.loads(raw)
     zone = str(document.get("zone_id") or path.stem)
-    intended = copy.deepcopy(document)
+    intended = document
 
     rows = list(pinned_rows(intended))
     keys = list(DECLARATION_KEY.finditer(raw))
