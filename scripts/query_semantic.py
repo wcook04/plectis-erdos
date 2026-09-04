@@ -2436,14 +2436,9 @@ def cmd_inventory(corpus: dict, args) -> int:
         if row.get("zone_id") and row.get("problem")
     }
 
-    matches = []
+    total_matches = 0
+    results = []
     for route in corpus["declaration_roles"]:
-        route_problem = problem_for_route(
-            corpus,
-            route,
-            node_index=node_index,
-            zone_problems=zone_problems,
-        )
         searchable = " ".join(
             str(route.get(field) or "")
             for field in ("id", "module", "declaration", "statement_node")
@@ -2456,31 +2451,39 @@ def cmd_inventory(corpus: dict, args) -> int:
             continue
         if zone_filter and zone_filter != str(route.get("zone") or "").casefold():
             continue
-        if args.problem and not problem_scope_matches(
-            route_problem, args.problem
-        ):
+        route_problem = None
+        if args.problem or len(results) < args.limit:
+            route_problem = problem_for_route(
+                corpus,
+                route,
+                node_index=node_index,
+                zone_problems=zone_problems,
+            )
+        if args.problem and not problem_scope_matches(route_problem, args.problem):
             continue
-        matches.append(
-            {
-                "id": route["id"],
-                "module": route.get("module"),
-                "declaration": route.get("declaration"),
-                "problem": route_problem,
-                "role": route.get("role"),
-                "zone": route.get("zone"),
-                "statement_node": route.get("statement_node"),
-                "routing_origin": route.get("routing_origin", "authored"),
-                "interpretation_tier": route.get("interpretation_tier"),
-                "routing_basis_ref": route.get("routing_basis_ref"),
-                "routing_basis": (
-                    corpus.get("routing_basis_catalog", {}).get(
-                        route.get("routing_basis_ref")
-                    )
-                    if route.get("routing_basis_ref")
-                    else route.get("routing_basis")
-                ),
-            }
-        )
+        total_matches += 1
+        if len(results) < args.limit:
+            results.append(
+                {
+                    "id": route["id"],
+                    "module": route.get("module"),
+                    "declaration": route.get("declaration"),
+                    "problem": route_problem,
+                    "role": route.get("role"),
+                    "zone": route.get("zone"),
+                    "statement_node": route.get("statement_node"),
+                    "routing_origin": route.get("routing_origin", "authored"),
+                    "interpretation_tier": route.get("interpretation_tier"),
+                    "routing_basis_ref": route.get("routing_basis_ref"),
+                    "routing_basis": (
+                        corpus.get("routing_basis_catalog", {}).get(
+                            route.get("routing_basis_ref")
+                        )
+                        if route.get("routing_basis_ref")
+                        else route.get("routing_basis")
+                    ),
+                }
+            )
 
     return emit(
         {
@@ -2500,10 +2503,10 @@ def cmd_inventory(corpus: dict, args) -> int:
                 "zone": args.zone or "",
                 "problem": args.problem or "",
             },
-            "total_matches": len(matches),
-            "returned": min(len(matches), args.limit),
-            "omitted": max(0, len(matches) - args.limit),
-            "results": matches[: args.limit],
+            "total_matches": total_matches,
+            "returned": len(results),
+            "omitted": total_matches - len(results),
+            "results": results,
         }
     )
 
