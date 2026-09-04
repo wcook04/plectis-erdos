@@ -111,10 +111,19 @@ def main() -> int:
                 "GIT_REPLACE_REF_BASE": "refs/replacements/wrong",
                 "PYTHONPATH": "/private/wrong-python-path",
             }
-            with patch.dict(os.environ, hostile_environment, clear=False):
-                rendered, declarations, authored_locations, resolved_pin = (
-                    coordinates.render_all()
-                )
+            original_subprocess_run = subprocess.run
+            with patch.dict(os.environ, hostile_environment, clear=False), patch.object(
+                coordinates.subprocess,
+                "run",
+                wraps=original_subprocess_run,
+            ) as run_child:
+                rendered, declarations, authored_locations, resolved_pin = coordinates.render_all()
+            batch_calls = [
+                call
+                for call in run_child.call_args_list
+                if call.args and call.args[0] == ["git", "cat-file", "--batch"]
+            ]
+            require(len(batch_calls) == 1, "pinned sources were not fetched in one Git batch")
             require(resolved_pin == pin, "pinned source commit drifted")
             require(declarations == 1, "unexpected declaration count")
             require(authored_locations == 2, "unexpected authored location count")
