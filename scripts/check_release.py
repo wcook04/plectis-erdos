@@ -187,6 +187,13 @@ PROOF_TRUST_RE = re.compile(
     r"|^\s*set_option\s+(?:maxHeartbeats|maxRecDepth)\s+0\b",
     re.M,
 )
+PROOF_TRUST_LINE_DECL_RE = re.compile(
+    r"(?:unsafe|partial)\s+(?:def|theorem|opaque|instance)\b"
+)
+PROOF_TRUST_OPTION_RE = re.compile(
+    r"set_option\s+(?:maxHeartbeats|maxRecDepth)\s+0\b"
+)
+PROOF_TRUST_NATIVE_ASSIGN_RE = re.compile(r"native\s*:=\s*true\b")
 
 
 def fail(msg: str) -> None:
@@ -577,13 +584,102 @@ def internal_imports(path: Path) -> list[str]:
 
 def proof_trust_violation(text: str) -> str | None:
     """Return the first executable proof-trust violation, if any."""
-    # Most source files contain none of the four candidate words.  Avoid the
-    # character-by-character comment/string pass for that overwhelmingly
-    # common case; candidate-bearing files still receive the exact scan.
-    if PROOF_TRUST_RE.search(text) is None:
+    # The combined multiline expression is exact after lexical stripping, but
+    # using it as a raw-corpus prefilter makes Python try its anchored branches
+    # at nearly every character. On this 150 MB Lean tree that alone took over
+    # ten seconds. Cheap literal searches identify the same candidate-bearing
+    # files; only those files pay for the exact comment/string-aware scan.
+    if not proof_trust_candidate(text):
         return None
     match = PROOF_TRUST_RE.search(lean_code_without_comments_and_strings(text))
     return match.group(0).strip() if match else None
+
+
+def _is_word_character(character: str) -> bool:
+    r"""Match the boundary alphabet used by Python's Unicode ``\w``."""
+    return character == "_" or character.isalnum()
+
+
+def _contains_delimited_token(
+    text: str,
+    token: str,
+    *,
+    check_start: bool = True,
+    forbid_dot_before: bool = False,
+    require_space_after: bool = False,
+) -> bool:
+    """Find a literal token with the proof-trust expression's boundaries."""
+    position = 0
+    while True:
+        position = text.find(token, position)
+        if position < 0:
+            return False
+        end = position + len(token)
+        before = text[position - 1] if position else ""
+        after = text[end] if end < len(text) else ""
+        start_ok = (
+            not check_start
+            or not before
+            or (
+                not _is_word_character(before)
+                and (not forbid_dot_before or before != ".")
+            )
+        )
+        end_ok = not after or not _is_word_character(after)
+        space_ok = not require_space_after or bool(after and after.isspace())
+        if start_ok and end_ok and space_ok:
+            return True
+        position = end
+
+
+def proof_trust_candidate(text: str) -> bool:
+    """Cheaply over-approximate whether exact Lean lexing is required."""
+    if _contains_delimited_token(text, "sorry"):
+        return True
+    if _contains_delimited_token(text, "admit"):
+        return True
+    if _contains_delimited_token(
+        text,
+        "axiom",
+        forbid_dot_before=True,
+        require_space_after=True,
+    ):
+        return True
+    if "native_decide" in text:
+        return True
+    if _contains_delimited_token(text, "+native", check_start=False):
+        return True
+
+    position = 0
+    while True:
+        position = text.find("native", position)
+        if position < 0:
+            break
+        if (
+            (position == 0 or not _is_word_character(text[position - 1]))
+            and PROOF_TRUST_NATIVE_ASSIGN_RE.match(text, position)
+        ):
+            return True
+        position += len("native")
+
+    for token in ("unsafe", "partial"):
+        position = 0
+        while True:
+            position = text.find(token, position)
+            if position < 0:
+                break
+            if PROOF_TRUST_LINE_DECL_RE.match(text, position):
+                return True
+            position += len(token)
+
+    position = 0
+    while True:
+        position = text.find("set_option", position)
+        if position < 0:
+            return False
+        if PROOF_TRUST_OPTION_RE.match(text, position):
+            return True
+        position += len("set_option")
 
 
 def check_proof_trust() -> None:
@@ -610,9 +706,18 @@ def check_proof_trust() -> None:
     check(proof_trust_violation("partial def bad : Nat -> Nat := fun n => bad n\n") == "partial def",
           "proof-trust scanner must reject partial declarations")
     check(proof_trust_violation(
+        "/- prefix comment -/ unsafe def bad : Nat := 1\n"
+    ) == "unsafe def",
+          "proof-trust prefilter must retain declarations after inline comments")
+    check(proof_trust_violation(
         "set_option maxHeartbeats 0\nexample : True := by trivial\n"
     ) == "set_option maxHeartbeats 0",
           "proof-trust scanner must reject unbounded heartbeat limits")
+    check(proof_trust_violation(
+        "/- prefix comment -/ set_option maxHeartbeats 0 in\n"
+        "example : True := by trivial\n"
+    ) == "set_option maxHeartbeats 0",
+          "proof-trust prefilter must retain options after inline comments")
     check(proof_trust_violation(
         "set_option maxRecDepth 0 in\nexample : True := by trivial\n"
     ) == "set_option maxRecDepth 0",
