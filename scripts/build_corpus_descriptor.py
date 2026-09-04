@@ -497,7 +497,7 @@ def build_access_contract(repository: str) -> dict[str, Any]:
                     "research_corpus",
                 ],
                 "pinned_materialization_commands": [
-                    f"git clone --filter=blob:none --no-checkout {clone_url} <checkout>",
+                    f"git clone --depth=1 --filter=blob:none --single-branch --no-checkout {clone_url} <checkout>",
                     "git -C <checkout> fetch --depth=1 origin <remote_ref>",
                     "git -C <checkout> checkout --detach <published_commit>",
                     "test \"$(git -C <checkout> rev-parse HEAD)\" = \"<published_commit>\"",
@@ -511,8 +511,33 @@ def build_access_contract(repository: str) -> dict[str, Any]:
                 "purpose": "build the two default Lean libraries with the smallest useful checkout",
                 "checkout_shape": "depth_one_blobless_sparse_single_branch",
                 "commands": [
-                    f"git clone --depth=1 --filter=blob:none --single-branch --sparse {clone_url}",
-                    f"git -C {checkout} sparse-checkout set Erdos249257 ErdosProblems",
+                    f"git clone --depth=1 --filter=blob:none --single-branch --no-checkout {clone_url}",
+                    f"git -C {checkout} show HEAD:scripts/lean-sparse-checkout | git -C {checkout} sparse-checkout set --no-cone --stdin",
+                    f"git -C {checkout} checkout",
+                    f"cd {checkout} && python3 scripts/lean_fast_build.py --jobs 2",
+                ],
+            },
+            "human_reader": {
+                "purpose": "read the papers, orientation, claims, and contribution surfaces",
+                "checkout_shape": "depth_one_blobless_manifest_sparse_single_branch",
+                "commands": [
+                    f"git clone --depth=1 --filter=blob:none --single-branch --no-checkout {clone_url}",
+                    f"git -C {checkout} show HEAD:scripts/reader-sparse-checkout | git -C {checkout} sparse-checkout set --no-cone --stdin",
+                    f"git -C {checkout} checkout",
+                ],
+            },
+            "current_generated_corpus": {
+                "purpose": "query every current generated corpus without historical revisions",
+                "checkout_shape": "depth_one_blobless_full_worktree_single_branch",
+                "commands": [
+                    f"git clone --depth=1 --filter=blob:none --single-branch {clone_url}",
+                ],
+            },
+            "release_history": {
+                "purpose": "run provenance checks that require reachable historical commits",
+                "checkout_shape": "blobless_full_history_single_branch",
+                "commands": [
+                    f"git clone --filter=blob:none --single-branch {clone_url}",
                 ],
             },
         },

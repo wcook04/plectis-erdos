@@ -130,6 +130,29 @@ def test_descriptor_exposes_an_exact_commit_mathematical_reasoning_route() -> No
     assert any("<remote_ref>" in command for command in commands)
     assert any("<published_commit>" in command for command in commands)
     assert commands[-1].endswith("scripts/query_corpus.py --format card")
+    assert "--depth=1" in commands[0]
+
+    profiles = access["profiles"]
+    assert set(profiles) == {
+        "mathematical_reasoning",
+        "lean_proof_only",
+        "human_reader",
+        "current_generated_corpus",
+        "release_history",
+    }
+    assert any(
+        "scripts/lean-sparse-checkout" in command
+        for command in profiles["lean_proof_only"]["commands"]
+    )
+    assert profiles["lean_proof_only"]["commands"][-1].endswith(
+        "scripts/lean_fast_build.py --jobs 2"
+    )
+    assert any(
+        "scripts/reader-sparse-checkout" in command
+        for command in profiles["human_reader"]["commands"]
+    )
+    assert "--depth=1" in profiles["current_generated_corpus"]["commands"][0]
+    assert "--depth=1" not in profiles["release_history"]["commands"][0]
 
 
 if __name__ == "__main__":
