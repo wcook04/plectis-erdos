@@ -451,6 +451,39 @@ class ValidationSingleflightTests(unittest.TestCase):
         self.assertTrue(observed["owner_unavailable"])
         self.assertLess(singleflight.time.monotonic() - started, 1)
 
+    def test_old_failed_terminal_is_retried_but_recent_failure_collapses_herd(self) -> None:
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            singleflight, "automatic_cleanup", return_value={"status": "fixture"}
+        ):
+            state_root = Path(directory) / "state"
+            state = singleflight.ensure_state_root(state_root)
+            specification = self._safe_spec([sys.executable, "-c", "pass"])
+            failed = {
+                **specification,
+                "state": "terminal",
+                "exit_code": 1,
+                "exit_state": "failed",
+                "completed_at": "2000-01-01T00:00:00+00:00",
+                "updated_at": "2000-01-01T00:00:00+00:00",
+            }
+            singleflight.write_receipt(state, specification["key"], failed)
+            relaunched = {**specification, "state": "future"}
+            with mock.patch.object(
+                singleflight, "launch_worker", return_value=relaunched
+            ) as launch:
+                self.assertEqual(
+                    singleflight.submit(specification, state_root), relaunched
+                )
+            launch.assert_called_once()
+
+            failed["completed_at"] = singleflight.utc_now()
+            failed["updated_at"] = failed["completed_at"]
+            singleflight.write_receipt(state, specification["key"], failed)
+            with mock.patch.object(singleflight, "launch_worker") as launch:
+                reused = singleflight.submit(specification, state_root)
+            launch.assert_not_called()
+            self.assertEqual(reused["reuse"], "terminal")
+
     def test_external_sigterm_is_resumed_by_the_same_owner(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(
             singleflight, "automatic_cleanup", return_value={"status": "fixture"}

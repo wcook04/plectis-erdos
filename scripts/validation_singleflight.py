@@ -75,6 +75,7 @@ WORKER_TIMEOUT_EXIT_CODE = 124
 DEFAULT_MAX_BYTES = 1 << 30
 DEFAULT_MAX_INODES = 10_000
 AUTOMATIC_CLEANUP_INTERVAL_SECONDS = 60 * 60
+FAILED_TERMINAL_REUSE_SECONDS = 5
 GIT_COMMAND_TIMEOUT_SECONDS = 30
 STATE_DIRECTORIES = ("jobs", "locks", "artifacts")
 COPY_TREE_MARKERS = ("lean-toolchain", "lakefile.toml")
@@ -1279,6 +1280,21 @@ def submit(specification: dict[str, Any], state_root: Path) -> dict[str, Any]:
         if existing is not None and existing.get("state") == "terminal":
             if existing.get("exit_state") == "resource_busy":
                 return launch_worker(state, specification, existing)
+            if existing.get("exit_code") != 0:
+                completed_at = existing.get("completed_at") or existing.get("updated_at")
+                try:
+                    completed = dt.datetime.fromisoformat(str(completed_at))
+                    failure_age = (
+                        dt.datetime.now(dt.timezone.utc) - completed
+                    ).total_seconds()
+                except (TypeError, ValueError):
+                    failure_age = FAILED_TERMINAL_REUSE_SECONDS
+                if failure_age >= FAILED_TERMINAL_REUSE_SECONDS:
+                    # A failed validator can observe a transient intermediate
+                    # worktree state and later map back to the same content
+                    # key. Collapse the immediate caller herd, but never make
+                    # that failure a permanent cache entry.
+                    return launch_worker(state, specification, existing)
             if (
                 requires_lean_build_materialization(existing)
                 and existing.get("exit_code") == 0
