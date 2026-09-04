@@ -373,6 +373,11 @@ def main() -> int:
         1 <= check_release.RELEASE_CHECK_WORKERS <= 4,
         "release suite batch exceeds its bounded worker policy",
     )
+    require(
+        tuple(check_release.late_check_commands())[:2]
+        == ("query", "cold_clone_adversarial"),
+        "release late pool no longer starts both long readers first",
+    )
     print(
         "test_check_release_environment: release-gate child processes cannot "
         "inherit caller Git, Python, locale, or PATH state"

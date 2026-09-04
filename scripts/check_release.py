@@ -184,7 +184,14 @@ def finish_independent_checks(
 def late_check_commands() -> dict[str, list[str]]:
     """Read-only suites that may overlap the release gate's middle section."""
     return {
+        # These are the two long readers in this two-worker pool. Start both
+        # immediately; queuing cold-clone checks behind short diagnostics left
+        # several seconds of avoidable work on the release critical path.
         "query": [sys.executable, str(ROOT / "scripts" / "test_query_corpus.py")],
+        "cold_clone_adversarial": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
+        ],
         "mutation_harness": [
             sys.executable,
             str(ROOT / "scripts" / "test_publication_mutation_harness.py"),
@@ -196,10 +203,6 @@ def late_check_commands() -> dict[str, list[str]]:
         "primary_source_disposition": [
             sys.executable,
             str(ROOT / "scripts" / "check_primary_source_dispositions.py"),
-        ],
-        "cold_clone_adversarial": [
-            sys.executable,
-            str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
         ],
         "proof_cockpit": [
             sys.executable,
