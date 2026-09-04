@@ -23,9 +23,10 @@ This script verifies that every other public surface agrees with it:
   7. Licensing: every licence named in REUSE.toml or an SPDX header has its
      text under LICENSES/.
   8. AGENTS.md routes agent harnesses through the public machine-readable paper
-     without weakening the proof or open-problem boundary, and CONTRIBUTING.md
+     without weakening the proof or open-problem boundary; CONTRIBUTING.md
      describes the cold-clone baseline-plus-adversarial program as a release
-     gate rather than an advisory diagnostic.
+     gate rather than an advisory diagnostic; and the public conduct standard
+     remains present.
  9. Proof-trust guard: no sorry/admit/axiom or native evaluator in the
      Lean sources.
  10. The methodology source, generated root projection, claim-transition
@@ -1888,6 +1889,7 @@ def main(argv: list[str] | None = None) -> int:
                 "ARCHITECTURE.md",
                 "METHODOLOGY.md",
                 "SCOPE.md",
+                "CODE_OF_CONDUCT.md",
                 "CONTRIBUTING.md",
                 "SECURITY.md",
             )
