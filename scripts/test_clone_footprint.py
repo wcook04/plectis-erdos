@@ -93,6 +93,14 @@ class CloneFootprintTests(unittest.TestCase):
         report = footprint.build_report(entries)
         self.assertEqual(report["lean_sparse_checkout_bytes"], 10)
 
+    def test_lean_sparse_checkout_omits_historical_certificate_input(self) -> None:
+        entries = [
+            {"path": "ErdosProblems/FreePosition/Proof.lean", "size_bytes": 10},
+            {"path": "ErdosProblems/FreePosition/data.jsonl", "size_bytes": 20},
+        ]
+        report = footprint.build_report(entries)
+        self.assertEqual(report["lean_sparse_checkout_bytes"], 10)
+
     def test_sparse_manifest_drift_is_rejected(self) -> None:
         report = footprint.build_report(
             [{"path": "Erdos249257/A.lean", "size_bytes": 1}]

@@ -53,6 +53,7 @@ LEAN_SPARSE_PATTERNS = (
     "/lake-manifest.json",
     "/lakefile.toml",
     "/lean-toolchain",
+    "!/ErdosProblems/FreePosition/data.jsonl",
 )
 LEAN_SPARSE_MANIFEST_TEXT = "\n".join(LEAN_SPARSE_PATTERNS) + "\n"
 LEAN_CLONE_COMMAND = (
@@ -103,10 +104,13 @@ def belongs_to_lean_sparse_checkout(path: str) -> bool:
     """Match the versioned non-cone proof-build checkout manifest."""
 
     rooted = f"/{path}"
-    return any(
-        rooted == pattern or (pattern.endswith("/") and rooted.startswith(pattern))
-        for pattern in LEAN_SPARSE_PATTERNS
-    )
+    included = False
+    for raw_pattern in LEAN_SPARSE_PATTERNS:
+        excluded = raw_pattern.startswith("!")
+        pattern = raw_pattern.removeprefix("!")
+        if rooted == pattern or (pattern.endswith("/") and rooted.startswith(pattern)):
+            included = not excluded
+    return included
 
 
 def build_report(entries: Iterable[dict[str, Any]]) -> dict[str, Any]:

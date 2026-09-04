@@ -30,3 +30,4 @@
 /lake-manifest.json
 /lakefile.toml
 /lean-toolchain
+!/ErdosProblems/FreePosition/data.jsonl
