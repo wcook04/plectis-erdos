@@ -1004,6 +1004,14 @@ def main() -> int:
                 f"{cached['source_resolved_direct_edge_count']} edges)"
             )
             return 0
+        print(
+            "Lean dependency index: STALE exact receipt; ordinary --check "
+            "never compiles. After the coordinated root build, run "
+            "python3 scripts/build_lean_dependency_index.py --check "
+            "--full-check to export the elaborated environment.",
+            file=sys.stderr,
+        )
+        return 1
     initial_input_fingerprint = check_input_fingerprint()
     packet = build_packet()
     content = encoded(packet)

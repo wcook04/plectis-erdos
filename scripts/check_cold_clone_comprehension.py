@@ -1013,7 +1013,7 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         # Two workers, not four: four exhausted the runner while compiling
         # FactorialZeroPlateau.
         "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness",
-        "python3 scripts/build_lean_dependency_index.py --check",
+        "python3 scripts/build_lean_dependency_index.py --check --full-check",
         "No Lean source or proof-environment input changed; compilation is unchanged.",
     ):
         require(token in workflow, f"Lean CI lost cache/build contract: {token}")

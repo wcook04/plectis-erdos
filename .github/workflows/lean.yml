@@ -234,10 +234,10 @@ jobs:
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants ResidualBench
       - name: Verify elaborated dependency index
         if: steps.lean-inputs.outputs.changed == 'true'
-        # The first changed environment performs the full export and writes an
-        # exact receipt into .lake. An exact cache restore reuses that receipt;
-        # changed formal/exporter inputs force a fresh export.
-        run: python3 scripts/build_lean_dependency_index.py --check
+        # The coordinated build above is the sole compilation owner. This
+        # explicit full check exports that already-built environment and writes
+        # its exact receipt into .lake; plain --check is always noncompiling.
+        run: python3 scripts/build_lean_dependency_index.py --check --full-check
       - name: Record documentation-only build skip
         if: steps.lean-inputs.outputs.changed != 'true'
         run: echo "No Lean source or proof-environment input changed; compilation is unchanged."

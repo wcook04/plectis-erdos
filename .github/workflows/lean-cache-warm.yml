@@ -126,4 +126,4 @@ jobs:
       # reuses it on an exact cache restore; without it in the saved cache the
       # next branch pays the full export again.
       - name: Export elaborated dependency index
-        run: python3 scripts/build_lean_dependency_index.py --check
+        run: python3 scripts/build_lean_dependency_index.py --check --full-check

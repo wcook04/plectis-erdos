@@ -446,6 +446,25 @@ def check_environment_build_is_bounded() -> None:
                 raise AssertionError("external signal exit became a successful build")
 
 
+def check_plain_check_never_builds() -> None:
+    """A read-looking cache check must not acquire the Lean build owner."""
+    with patch.object(builder, "load_cached_check", return_value=None):
+        with patch.object(builder, "build_packet") as build_packet:
+            with patch.object(
+                builder.sys,
+                "argv",
+                ["build_lean_dependency_index.py", "--check"],
+            ):
+                require(
+                    builder.main() == 1,
+                    "stale ordinary dependency-index check did not fail fast",
+                )
+    require(
+        not build_packet.called,
+        "ordinary dependency-index --check unexpectedly launched Lean export",
+    )
+
+
 def main() -> int:
     check_safe_dependency_input_boundary()
     check_safe_dependency_output_boundary()
@@ -456,6 +475,7 @@ def main() -> int:
     check_receipt_uses_verified_snapshot()
     check_guarded_metadata_refresh()
     check_environment_build_is_bounded()
+    check_plain_check_never_builds()
     print("lean dependency index cache: PASS")
     return 0
 

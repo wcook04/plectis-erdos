@@ -106,7 +106,7 @@ invocation:
 python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness \
   Erdos249257 ErdosProblems Examples FormalConjecturesAdapter \
   FormalConjecturesVariants ResidualBench
-python3 scripts/build_lean_dependency_index.py --check
+python3 scripts/build_lean_dependency_index.py --check --full-check
 ```
 
 `Erdos249257` and `ErdosProblems` are the default library targets. `Examples`
@@ -225,6 +225,8 @@ python3 scripts/build_lean_dependency_index.py --check
 If a command reports stale generated output, regenerate from the named owning
 builder and commit the source plus all projections that builder declares. Do
 not copy files from another checkout or rely on a developer's `.lake` state.
+The ordinary dependency-index `--check` never compiles; an intentional release
+export uses `--check --full-check` after the coordinated Lean build above.
 
 ## Resource and boundary notes
 
