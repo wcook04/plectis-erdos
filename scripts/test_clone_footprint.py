@@ -49,6 +49,24 @@ class CloneFootprintTests(unittest.TestCase):
         errors = footprint.contract_errors(report, footprint.FULL_CLONE_COMMAND)
         self.assertTrue(any("--sparse" in error for error in errors))
 
+    def test_readme_cannot_restore_all_branch_clone(self) -> None:
+        entries = [
+            {"path": "Erdos249257/A.lean", "size_bytes": 1},
+            {"path": "docs/generated.json", "size_bytes": 2},
+        ]
+        readme = self.valid_readme().replace("--single-branch ", "", 1)
+        errors = footprint.contract_errors(footprint.build_report(entries), readme)
+        self.assertTrue(any("optimized clone command" in error for error in errors))
+
+    def test_readme_cannot_restore_full_history_for_proof_only_clone(self) -> None:
+        entries = [
+            {"path": "Erdos249257/A.lean", "size_bytes": 1},
+            {"path": "docs/generated.json", "size_bytes": 2},
+        ]
+        readme = self.valid_readme().replace("--depth=1 ", "", 1)
+        errors = footprint.contract_errors(footprint.build_report(entries), readme)
+        self.assertTrue(any("optimized clone command" in error for error in errors))
+
     @staticmethod
     def valid_readme() -> str:
         return "\n".join(

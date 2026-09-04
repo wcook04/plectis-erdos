@@ -21,7 +21,7 @@ SINGLE_BLOB_LIMIT_BYTES = 100 * MIB
 MINIMUM_LEAN_CHECKOUT_REDUCTION = 0.50
 LEAN_LIBRARY_PREFIXES = ("Erdos249257/", "ErdosProblems/")
 LEAN_CLONE_COMMAND = (
-    "git clone --filter=blob:none --sparse "
+    "git clone --depth=1 --filter=blob:none --single-branch --sparse "
     "https://github.com/wcook04/plectis-lean-erdos249-257.git"
 )
 LEAN_SPARSE_COMMAND = (
@@ -29,7 +29,7 @@ LEAN_SPARSE_COMMAND = (
     "Erdos249257 ErdosProblems"
 )
 FULL_CLONE_COMMAND = (
-    "git clone --filter=blob:none "
+    "git clone --filter=blob:none --single-branch "
     "https://github.com/wcook04/plectis-lean-erdos249-257.git"
 )
 

@@ -1065,7 +1065,7 @@ def validate_human_first_contact(
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
     lean_clone_command = (
-        "git clone --filter=blob:none --sparse "
+        "git clone --depth=1 --filter=blob:none --single-branch --sparse "
         "https://github.com/wcook04/plectis-lean-erdos249-257.git"
     )
     lean_sparse_command = (
@@ -1073,7 +1073,7 @@ def validate_human_first_contact(
         "Erdos249257 ErdosProblems"
     )
     full_clone_command = (
-        "git clone --filter=blob:none "
+        "git clone --filter=blob:none --single-branch "
         "https://github.com/wcook04/plectis-lean-erdos249-257.git"
     )
     require(

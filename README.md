@@ -28,7 +28,7 @@ For the default Lean proof build, skip the large generated-document tree and
 avoid downloading obsolete historical blobs:
 
 ```bash
-git clone --filter=blob:none --sparse https://github.com/wcook04/plectis-lean-erdos249-257.git
+git clone --depth=1 --filter=blob:none --single-branch --sparse https://github.com/wcook04/plectis-lean-erdos249-257.git
 git -C plectis-lean-erdos249-257 sparse-checkout set Erdos249257 ErdosProblems
 cd plectis-lean-erdos249-257
 ```
@@ -38,7 +38,7 @@ full release/document checkout should still keep the complete history required
 by the pinned-source checks without eagerly downloading obsolete blobs:
 
 ```bash
-git clone --filter=blob:none https://github.com/wcook04/plectis-lean-erdos249-257.git
+git clone --filter=blob:none --single-branch https://github.com/wcook04/plectis-lean-erdos249-257.git
 cd plectis-lean-erdos249-257
 ```
 

@@ -368,11 +368,11 @@ def main() -> int:
     checks = 4
 
     lean_clone_command = (
-        "git clone --filter=blob:none --sparse "
+        "git clone --depth=1 --filter=blob:none --single-branch --sparse "
         "https://github.com/wcook04/plectis-lean-erdos249-257.git"
     )
     full_clone_command = (
-        "git clone --filter=blob:none "
+        "git clone --filter=blob:none --single-branch "
         "https://github.com/wcook04/plectis-lean-erdos249-257.git"
     )
     mutated_lean_clone_surfaces = human_surfaces.copy()
