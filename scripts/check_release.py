@@ -1974,8 +1974,10 @@ def main(argv: list[str] | None = None) -> int:
         "scripts/check_release.py",
         "scripts/check_architecture_guide.py",
         "scripts/test_architecture_guide.py",
-        "scripts/agent_entry.py",
-        "scripts/test_agent_entry.py",
+            "scripts/agent_entry.py",
+            "scripts/agent_skill_catalog.py",
+            "scripts/test_agent_entry.py",
+            "skills/maintain-public-infrastructure/SKILL.md",
         "scripts/query_corpus.py",
     ):
         check(required in agents, f"AGENTS.md does not route through {required}")
@@ -2002,6 +2004,19 @@ def main(argv: list[str] | None = None) -> int:
             "agent_entry": [
                 sys.executable,
                 str(ROOT / "scripts" / "test_agent_entry.py"),
+            ],
+            "agent_skill_catalog": [
+                sys.executable,
+                str(ROOT / "scripts" / "agent_skill_catalog.py"),
+                "--check",
+            ],
+            "clone_skills": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_clone_skills.py"),
+            ],
+            "contribution_entry": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_contribution_entry.py"),
             ],
             "agent_navigation_paper": [
                 sys.executable,
@@ -2067,6 +2082,24 @@ def main(argv: list[str] | None = None) -> int:
         agent_entry_check.returncode == 0,
         "clone-local agent entry failed: "
         f"{agent_entry_check.stdout.strip() or agent_entry_check.stderr.strip()}",
+    )
+    agent_skill_catalog_check = mid_checks["agent_skill_catalog"]
+    check(
+        agent_skill_catalog_check.returncode == 0,
+        "clone-local skill catalog failed: "
+        f"{agent_skill_catalog_check.stdout.strip() or agent_skill_catalog_check.stderr.strip()}",
+    )
+    clone_skills_check = mid_checks["clone_skills"]
+    check(
+        clone_skills_check.returncode == 0,
+        "clone-local skill installation and discovery failed: "
+        f"{clone_skills_check.stdout.strip() or clone_skills_check.stderr.strip()}",
+    )
+    contribution_entry_check = mid_checks["contribution_entry"]
+    check(
+        contribution_entry_check.returncode == 0,
+        "public contribution and credit entry failed: "
+        f"{contribution_entry_check.stdout.strip() or contribution_entry_check.stderr.strip()}",
     )
     agent_navigation_paper_check = mid_checks["agent_navigation_paper"]
     check(

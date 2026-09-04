@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import tempfile
 from pathlib import Path
@@ -11,20 +12,33 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 INSTALLER = ROOT / "scripts" / "install_agent_skills.py"
-SKILLS = (
-    "install-clone-skills",
-    "explain-public-system",
-    "run-coupled-research-goals",
-    "mine-open-problem",
-    "lean-concurrent-validation",
-    "propagate-research-consequences",
-    "add-open-problem",
-    "submit-pull-request",
-    "erdos-research-return",
-    "public-mathematical-writing",
-)
 
 
+def local_skill_references(source: str) -> set[str]:
+    """Return exact clone-local paths advertised in Markdown links or code spans."""
+    candidates = set(re.findall(r"\[[^]]+\]\(([^)]+)\)", source))
+    candidates.update(re.findall(r"`([^`\n]+)`", source))
+    prefixes = (
+        ".github/",
+        "AGENTS",
+        "ARCHITECTURE",
+        "CONTRIBUTING",
+        "HUMAN_ENTRY",
+        "METHODOLOGY",
+        "README",
+        "docs/",
+        "scripts/",
+        "skills/",
+    )
+    result: set[str] = set()
+    for candidate in candidates:
+        value = candidate.split("#", 1)[0].strip().rstrip(".,:;")
+        if not value.startswith(prefixes):
+            continue
+        if any(marker in value for marker in ("<", ">", "*", " ", "://", "::")):
+            continue
+        result.add(value)
+    return result
 def run(*args: str, expected: int = 0) -> subprocess.CompletedProcess[str]:
     result = subprocess.run(
         ["python3", str(INSTALLER), *args],
@@ -47,9 +61,10 @@ def main() -> int:
     entry = (ROOT / "AGENTS.override.md").read_text(encoding="utf-8")
     registry = json.loads((ROOT / "skills" / "registry.json").read_text(encoding="utf-8"))
     registered = {row["id"] for row in registry["skills"]}
+    skills = tuple(row["id"] for row in registry["skills"])
 
     listed = run("--list").stdout
-    for name in SKILLS:
+    for name in skills:
         skill = ROOT / "skills" / name / "SKILL.md"
         assert skill.is_file(), skill
         source = skill.read_text(encoding="utf-8")
@@ -64,18 +79,16 @@ def main() -> int:
         assert name in skill_index, name
         assert name in registered, name
         assert "/Users/" not in source and "src/ai_workflow" not in source, name
+        for reference in local_skill_references(source):
+            assert (ROOT / reference).exists(), (name, reference)
+        for reference in set(
+            re.findall(r"(?<![A-Za-z0-9_.-])(scripts/[A-Za-z0-9_./-]+\.py)", source)
+        ):
+            assert (ROOT / reference).is_file(), (name, reference)
 
-    for name in (
-        "explain-public-system",
-        "run-coupled-research-goals",
-        "mine-open-problem",
-        "propagate-research-consequences",
-        "add-open-problem",
-        "submit-pull-request",
-    ):
-        assert name in readme, name
+    assert 'agent_entry.py --entry "<task in ordinary language>"' in readme
+    assert "CONTRIBUTING.md" in readme
     assert "agent_entry.py --skills" in entry
-    assert "install_agent_skills.py" in readme
 
     with tempfile.TemporaryDirectory(prefix="plectis-skill-test-") as temp:
         target = Path(temp) / "skills"

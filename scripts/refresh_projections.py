@@ -72,6 +72,9 @@ def run(
 # the one projection this list omitted, and it stayed stale through the paper
 # provenance edit while every builder listed above refreshed cleanly.
 BUILDERS = (
+    # Registry and skill frontmatter own the clone-local catalog projection.
+    # Keeping this first makes entry drift visible before expensive projections.
+    "scripts/agent_skill_catalog.py",
     "scripts/build_methodology.py",
     "scripts/build_module_graph.py",
     "scripts/build_declaration_atlas.py",

@@ -1,13 +1,13 @@
 ---
 name: add-open-problem
-description: Add a sourced mathematical problem as a new public problem world without silently promoting expansion work into a reviewed claim or pretending that the repository is hard-coded to the current eight.
+description: Add a sourced mathematical problem as a new public problem world without silently promoting expansion work into a reviewed claim or pretending that the indexed roster is fixed.
 ---
 
 # Add an open problem
 
-Use this skill to port a problem beyond the current eight into the public
+Use this skill to port a problem beyond the current indexed roster into the public
 corpus. This is a governed multi-surface change, not the creation of one Lean
-file. Read `AGENTS.md`, `ARCHITECTURE.md`, `paper/README.md`, and
+file. Read `AGENTS.md`, `ARCHITECTURE.md`, `docs/papers/README.md`, and
 `docs/problem_index_source.json` before editing.
 
 ## Entry requirements
@@ -48,7 +48,7 @@ problem world.
 Complete the coordinated migration below. At present this requires maintainer
 fan-in because `docs/papers/corpus.json` is generated outside this public
 clone, structured research returns enumerate the current roster, and the
-Formal Conjectures crosswalk assumes the present eight. Do not promise a
+Formal Conjectures crosswalk assumes that same roster. Do not promise a
 one-command import until those couplings have been removed.
 
 ## Build the fully indexed world
@@ -67,7 +67,7 @@ one-command import until those couplings have been removed.
    ```
 
 3. Write a standalone problem note. Register its source and PDF through all
-   five owners named in `paper/README.md`: `Makefile`,
+   five owners named in `docs/papers/README.md`: `Makefile`,
    `docs/publication_contract.json`, `REUSE.toml`,
    `docs/claims.json::publication_architecture.problem_series`, and the
    problem-index source. Use the public mathematical-writing skill and keep

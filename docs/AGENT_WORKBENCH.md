@@ -282,21 +282,19 @@ A mathematician can follow the reading order above and then trace one result
 from the [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The per-problem papers
 are the live route; the [joint PDF](erdos249-257-main-paper.pdf) is retired.
 
-A coding agent is routed by job description. The clone-local entry router
-maps ordinary language to a bounded lane, a minimum read set, and a skill
-recommendation, so the agent does not select a workflow file by guessing:
+A coding agent starts from an ordinary-language task. The clone-local router
+returns a bounded lane, minimum read set, and skill:
 
 ```bash
 python3 scripts/agent_entry.py --entry "improve cold-clone skill discovery"
 python3 scripts/agent_entry.py --skills
 ```
 
-The skills work from the clone; `scripts/install_agent_skills.py --list`
-previews installing them elsewhere. The agent reading order is
+Skills run from the clone root. `scripts/install_agent_skills.py --list` only
+exposes them to an agent harness. Read
 [`AGENTS.override.md`](AGENTS.override.md), then the bounded
-[`docs/orientation.json`](docs/orientation.json), selecting one programme or
-claim before expanding the registry; [`AGENTS.md`](AGENTS.md) is the complete
-reference.
+[`orientation.json`](docs/orientation.json), and expand one programme or claim;
+[`AGENTS.md`](AGENTS.md) is the full reference.
 
 Whole-corpus agent navigation runs without a Lean build.
 `python3 scripts/query_corpus.py --tour --format card` and

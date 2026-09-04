@@ -557,6 +557,13 @@ manifest is needed.
 The clone-local operational guide is
 [skills/lean-concurrent-validation/SKILL.md](skills/lean-concurrent-validation/SKILL.md).
 
+For agent-entry, skill-catalog, generated-projection, contribution-flow, or
+other clean-clone infrastructure repairs, load
+[skills/maintain-public-infrastructure/SKILL.md](skills/maintain-public-infrastructure/SKILL.md).
+Repair the public owner, preserve the observed task as a behavior fixture, and
+keep long-running validation productive through disjoint work rather than
+polling.
+
 After any stable theorem, counterexample, no-go, computation, correction,
 exposition change, or architecture repair, load
 [skills/propagate-research-consequences/SKILL.md](skills/propagate-research-consequences/SKILL.md)
@@ -585,7 +592,10 @@ A separate diagnostic checks that a cold clone stays readable:
 python3 scripts/test_proof_cockpit.py
 python3 scripts/agent_entry.py --entry "<task>"
 python3 scripts/agent_entry.py --skills
+python3 scripts/agent_skill_catalog.py --check
 python3 scripts/test_agent_entry.py
+python3 scripts/test_clone_skills.py
+python3 scripts/test_contribution_entry.py
 python3 scripts/check_cold_clone_comprehension.py --quick
 python3 scripts/check_architecture_guide.py
 python3 scripts/test_architecture_guide.py

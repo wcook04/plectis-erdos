@@ -22,7 +22,7 @@ def entry_packet(catalog: dict[str, Any], task: str) -> dict[str, Any]:
     alternatives = [row for row in ranked[1:] if row["score"] > 0][:2]
     skills = skill_map(catalog)
     return {
-        "schema": "plectis-agent-entry/1",
+        "schema": "plectis-agent-entry/2",
         "task": task,
         "route_status": "fallback" if primary.get("fallback") else "matched",
         "primary_lane": {
@@ -84,10 +84,17 @@ def render_entry(packet: dict[str, Any]) -> str:
 
 def render_skills(catalog: dict[str, Any]) -> str:
     lines = ["Clone-local skills", ""]
+    by_family = {family["id"]: [] for family in catalog["families"]}
     for skill in catalog["skills"]:
-        lines.append(f"{skill['id']}")
-        lines.append(f"  Use when: {skill['description']}")
-        lines.append(f"  Open: {skill['path']}")
+        by_family[skill["family"]].append(skill)
+    for family in catalog["families"]:
+        lines.append(f"{family['title']}")
+        lines.append(f"  {family['description']}")
+        for skill in by_family[family["id"]]:
+            lines.append(f"  {skill['id']} [{skill['stage']}]")
+            lines.append(f"    Use when: {skill['description']}")
+            lines.append(f"    Open: {skill['path']}")
+        lines.append("")
     lines.extend(("", 'Route a task: python3 scripts/agent_entry.py --entry "<task>"'))
     return "\n".join(lines)
 
@@ -101,12 +108,17 @@ def render_skill(catalog: dict[str, Any], skill_id: str) -> str:
     lanes = [lane for lane in catalog["lanes"] if skill_id in lane["skills"]]
     lines = [
         skill["id"],
+        f"Family: {skill['family']}",
+        f"Stage: {skill['stage']}",
         f"Use when: {skill['description']}",
         f"Open: {skill['path']}",
         "",
         "Used by lanes:",
     ]
     lines.extend(f"  - {lane['id']}: {lane['title']}" for lane in lanes)
+    if skill["composes_with"]:
+        lines.extend(("", "Common next workflows:"))
+        lines.extend(f"  - {related}" for related in skill["composes_with"])
     return "\n".join(lines)
 
 
@@ -128,7 +140,12 @@ def main() -> int:
             value: Any = entry_packet(catalog, args.entry)
             output = json.dumps(value, indent=2) if args.json else render_entry(value)
         elif args.skills:
-            value = {"schema": catalog["schema"], "skills": catalog["skills"]}
+            value = {
+                "schema": catalog["schema"],
+                "families": catalog["families"],
+                "skills": catalog["skills"],
+                "maintenance": catalog["maintenance"],
+            }
             output = json.dumps(value, indent=2) if args.json else render_skills(catalog)
         else:
             skills = skill_map(catalog)

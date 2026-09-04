@@ -43,15 +43,31 @@ ROUTE_CASES = {
     "install skills into Codex": ("install_skills", "install-clone-skills"),
     "improve cold clone agent entry and skill discovery": (
         "repository_architecture",
-        "propagate-research-consequences",
+        "maintain-public-infrastructure",
     ),
     "speed up the public Lean repo clone and build commands": (
         "repository_architecture",
-        "propagate-research-consequences",
+        "maintain-public-infrastructure",
     ),
     "debug slow clone and duplicate builds": (
         "repository_architecture",
-        "propagate-research-consequences",
+        "maintain-public-infrastructure",
+    ),
+    "organize consolidate and refresh clone-local skills": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
+    "the skills need organising consolidating and updating because they drifted": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
+    "make the public clone self explaining and propagate accepted work": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
+    "dogfood instruction drift without private infrastructure": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
     ),
 }
 
@@ -74,6 +90,13 @@ def main() -> int:
     }
     assert skill_ids == disk_ids
     assert all(row["description"] for row in catalog["skills"])
+    assert {row["family"] for row in catalog["skills"]} == {
+        row["id"] for row in catalog["families"]
+    }
+    assert all(row["stage"] and row["status"] == "active" for row in catalog["skills"])
+    assert all(
+        set(row["composes_with"]) <= skill_ids for row in catalog["skills"]
+    )
     assert all("/Users/" not in json.dumps(row) for row in catalog["lanes"])
     assert "ai_workflow" not in json.dumps(catalog)
     for lane in catalog["lanes"]:
@@ -109,6 +132,18 @@ def main() -> int:
     listed = run_cli(ROOT, "--skills", "--json")
     assert listed.returncode == 0, listed.stderr
     assert {row["id"] for row in json.loads(listed.stdout)["skills"]} == skill_ids
+    assert {row["id"] for row in json.loads(listed.stdout)["families"]} == {
+        row["id"] for row in catalog["families"]
+    }
+
+    catalog_check = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "agent_skill_catalog.py"), "--check"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    assert catalog_check.returncode == 0, catalog_check.stdout + catalog_check.stderr
 
     routed = run_cli(ROOT, "--entry", "run a lean build", "--json")
     assert routed.returncode == 0, routed.stderr
@@ -124,6 +159,7 @@ def main() -> int:
         for rel in ("scripts/agent_entry.py", "scripts/agent_skill_catalog.py"):
             shutil.copy2(ROOT / rel, clone / rel)
         shutil.copy2(ROOT / "skills" / "registry.json", clone / "skills" / "registry.json")
+        shutil.copy2(ROOT / "skills" / "README.md", clone / "skills" / "README.md")
         for row in catalog["skills"]:
             destination = clone / row["path"]
             destination.parent.mkdir(parents=True, exist_ok=True)
@@ -131,6 +167,39 @@ def main() -> int:
         cold = run_cli(clone, "--entry", "improve cold clone navigation", "--json")
         assert cold.returncode == 0, cold.stderr
         assert json.loads(cold.stdout)["primary_lane"]["id"] == "repository_architecture"
+
+        catalog_script = clone / "scripts" / "agent_skill_catalog.py"
+        current = subprocess.run(
+            [sys.executable, str(catalog_script), "--check"],
+            cwd=clone,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        assert current.returncode == 0, current.stdout + current.stderr
+        clone_readme = clone / "skills" / "README.md"
+        clone_readme.write_text(
+            clone_readme.read_text(encoding="utf-8") + "\nstale copy\n",
+            encoding="utf-8",
+        )
+        stale = subprocess.run(
+            [sys.executable, str(catalog_script), "--check"],
+            cwd=clone,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        assert stale.returncode == 1
+        assert "skills/README.md is stale" in stale.stderr
+
+        shutil.copy2(ROOT / "skills" / "README.md", clone_readme)
+        clone_registry = clone / "skills" / "registry.json"
+        invalid_registry = json.loads(clone_registry.read_text(encoding="utf-8"))
+        invalid_registry["skills"][0]["family"] = "missing-family"
+        clone_registry.write_text(json.dumps(invalid_registry), encoding="utf-8")
+        invalid = run_cli(clone, "--skills", "--json")
+        assert invalid.returncode != 0
+        assert "unknown family" in invalid.stderr
 
     print(
         "agent entry: pass "
