@@ -22,10 +22,34 @@ class CloneFootprintTests(unittest.TestCase):
         reader_manifest = footprint.READER_SPARSE_MANIFEST_PATH.read_text(
             encoding="utf-8"
         )
+        quick_manifest = footprint.QUICK_LEAN_SPARSE_MANIFEST_PATH.read_text(
+            encoding="utf-8"
+        )
         self.assertEqual(
-            footprint.contract_errors(report, readme, manifest, reader_manifest), []
+            footprint.contract_errors(
+                report, readme, manifest, reader_manifest, quick_manifest
+            ),
+            [],
         )
         self.assertGreater(report["lean_sparse_omitted_bytes"], 200 * footprint.MIB)
+        self.assertLess(
+            report["quick_lean_sparse_checkout_bytes"],
+            report["lean_sparse_checkout_bytes"] / 20,
+        )
+
+    def test_quick_lean_checkout_is_the_exact_focused_import_cone(self) -> None:
+        patterns = footprint.QUICK_LEAN_SPARSE_PATTERNS
+        source_patterns = tuple(
+            pattern for pattern in patterns if pattern.endswith(".lean")
+        )
+        self.assertEqual(len(source_patterns), 43)
+        self.assertIn(
+            "/ErdosProblems/Erdos249/PeriodMultipleEscape.lean", source_patterns
+        )
+        self.assertNotIn(
+            "/Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean",
+            source_patterns,
+        )
 
     def test_oversized_full_checkout_is_rejected(self) -> None:
         entries = [
@@ -128,6 +152,7 @@ class CloneFootprintTests(unittest.TestCase):
         return "\n".join(
             (
                 footprint.LEAN_CLONE_COMMAND,
+                footprint.QUICK_LEAN_SPARSE_COMMAND,
                 footprint.LEAN_SPARSE_COMMAND,
                 footprint.LEAN_CHECKOUT_COMMAND,
                 footprint.LEAN_BUILD_COMMAND,

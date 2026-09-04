@@ -37,24 +37,31 @@ and obsolete historical blobs:
 
 ```bash
 git clone --depth=1 --filter=blob:none --single-branch --no-checkout https://github.com/wcook04/plectis-lean-erdos249-257.git
-git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
+git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-quick-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
 git -C plectis-lean-erdos249-257 checkout
 cd plectis-lean-erdos249-257
 python3 scripts/lean_fast_build.py --jobs 2 \
   ErdosProblems.Erdos249.PeriodMultipleEscape
 ```
 
-The versioned sparse manifest checks out the two default Lean libraries, the
-three scripts that own the build path, and the small root package/orientation
-files. It does not make Git fetch the root PDFs or the generated-document tree
-before the sparse rules exist. The wrapper fetches the pinned dependency cache
-only when needed, reuses compatible host packages across clones, and joins
-duplicate concurrent builds. Successful identical builds also reuse bounded
-copy-on-write output seeds across clones. The focused command checks a real
-published theorem module without first elaborating every generated certificate.
+The quick manifest checks out the focused module's exact 43-module dependency
+cone instead of all 1,042 Lean files. It does not make Git fetch the root PDFs,
+generated-document tree, or unrelated proof modules before the sparse rules
+exist. The wrapper fetches the pinned dependency cache only when needed, reuses
+compatible host packages across clones, and joins duplicate concurrent builds.
+Successful identical builds also reuse bounded copy-on-write output seeds
+across clones. The focused command checks a real published theorem module
+without first elaborating every generated certificate.
 Use the full six-target command in
 [the release reproduction guide](docs/REPRODUCIBILITY.md#2-reproduce-the-lean-environment)
 only when you intend to replay the complete public proof environment.
+
+To expand the same checkout to every public Lean source first:
+
+```bash
+git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
+git -C plectis-lean-erdos249-257 checkout
+```
 
 To inspect the papers, claims, open boundaries, and contribution route without
 installing Lean, use the reader checkout. It avoids the machine-scale generated

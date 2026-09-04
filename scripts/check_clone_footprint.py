@@ -16,10 +16,30 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[1]
 MIB = 1024 * 1024
 FULL_CHECKOUT_LIMIT_BYTES = 420 * MIB
+QUICK_LEAN_CHECKOUT_LIMIT_BYTES = 8 * MIB
 LEAN_CHECKOUT_LIMIT_BYTES = 160 * MIB
 READER_CHECKOUT_LIMIT_BYTES = 32 * MIB
 SINGLE_BLOB_LIMIT_BYTES = 100 * MIB
 MINIMUM_LEAN_CHECKOUT_REDUCTION = 0.50
+QUICK_LEAN_TARGET = "ErdosProblems.Erdos249.PeriodMultipleEscape"
+QUICK_LEAN_SPARSE_MANIFEST_PATH = ROOT / "scripts/lean-quick-sparse-checkout"
+QUICK_LEAN_COMMON_PATTERNS = (
+    "/scripts/lean-quick-sparse-checkout",
+    "/scripts/lean-sparse-checkout",
+    "/scripts/lean_fast_build.py",
+    "/scripts/lean_build_share.py",
+    "/scripts/lean_package_share.py",
+    "/scripts/validation_singleflight.py",
+    "/*.md",
+    "/.gitignore",
+    "/CITATION.cff",
+    "/LICENSE",
+    "/REUSE.toml",
+    "/formalization.yaml",
+    "/lake-manifest.json",
+    "/lakefile.toml",
+    "/lean-toolchain",
+)
 LEAN_SPARSE_MANIFEST_PATH = ROOT / "scripts/lean-sparse-checkout"
 LEAN_SPARSE_PATTERNS = (
     "/Erdos249257/",
@@ -86,6 +106,10 @@ LEAN_CLONE_COMMAND = (
     "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
     "https://github.com/wcook04/plectis-lean-erdos249-257.git"
 )
+QUICK_LEAN_SPARSE_COMMAND = (
+    "git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-quick-sparse-checkout | "
+    "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
+)
 LEAN_SPARSE_COMMAND = (
     "git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | "
     "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
@@ -108,6 +132,26 @@ FULL_HISTORY_CLONE_COMMAND = (
     "git clone --filter=blob:none --single-branch "
     "https://github.com/wcook04/plectis-lean-erdos249-257.git"
 )
+
+
+def quick_lean_sparse_patterns(root: Path = ROOT) -> tuple[str, ...]:
+    """Derive the first proof check's exact local import cone."""
+
+    import lean_fast_build as planner
+
+    modules = planner.discover(root)
+    graph = planner.local_graph(modules)
+    if QUICK_LEAN_TARGET not in modules:
+        raise RuntimeError(f"quick Lean target is absent: {QUICK_LEAN_TARGET}")
+    source_patterns = tuple(
+        f"/{modules[name].relative_to(root).as_posix()}"
+        for name in sorted(planner.reachable([QUICK_LEAN_TARGET], graph))
+    )
+    return source_patterns + QUICK_LEAN_COMMON_PATTERNS
+
+
+QUICK_LEAN_SPARSE_PATTERNS = quick_lean_sparse_patterns()
+QUICK_LEAN_SPARSE_MANIFEST_TEXT = "\n".join(QUICK_LEAN_SPARSE_PATTERNS) + "\n"
 
 
 def committed_entries(root: Path = ROOT, revision: str = "HEAD") -> list[dict[str, Any]]:
@@ -151,6 +195,17 @@ def belongs_to_lean_sparse_checkout(path: str) -> bool:
     return included
 
 
+def belongs_to_quick_lean_sparse_checkout(path: str) -> bool:
+    """Match the exact first-proof import cone and its build tooling."""
+
+    rooted = f"/{path}"
+    return any(
+        rooted == pattern
+        or (pattern == "/*.md" and "/" not in path and path.endswith(".md"))
+        for pattern in QUICK_LEAN_SPARSE_PATTERNS
+    )
+
+
 def belongs_to_reader_sparse_checkout(path: str) -> bool:
     rooted = f"/{path}"
     return any(
@@ -165,6 +220,11 @@ def belongs_to_reader_sparse_checkout(path: str) -> bool:
 def build_report(entries: Iterable[dict[str, Any]]) -> dict[str, Any]:
     rows = list(entries)
     full_bytes = sum(int(row["size_bytes"]) for row in rows)
+    quick_lean_bytes = sum(
+        int(row["size_bytes"])
+        for row in rows
+        if belongs_to_quick_lean_sparse_checkout(str(row["path"]))
+    )
     lean_bytes = sum(
         int(row["size_bytes"])
         for row in rows
@@ -181,6 +241,8 @@ def build_report(entries: Iterable[dict[str, Any]]) -> dict[str, Any]:
         "schema": "plectis_clone_footprint_v1",
         "full_checkout_bytes": full_bytes,
         "full_checkout_limit_bytes": FULL_CHECKOUT_LIMIT_BYTES,
+        "quick_lean_sparse_checkout_bytes": quick_lean_bytes,
+        "quick_lean_sparse_checkout_limit_bytes": QUICK_LEAN_CHECKOUT_LIMIT_BYTES,
         "lean_sparse_checkout_bytes": lean_bytes,
         "lean_sparse_checkout_limit_bytes": LEAN_CHECKOUT_LIMIT_BYTES,
         "reader_sparse_checkout_bytes": reader_bytes,
@@ -200,10 +262,13 @@ def contract_errors(
     readme: str,
     sparse_manifest: str = LEAN_SPARSE_MANIFEST_TEXT,
     reader_sparse_manifest: str = READER_SPARSE_MANIFEST_TEXT,
+    quick_sparse_manifest: str = QUICK_LEAN_SPARSE_MANIFEST_TEXT,
 ) -> list[str]:
     errors: list[str] = []
     if int(report["full_checkout_bytes"]) > FULL_CHECKOUT_LIMIT_BYTES:
         errors.append("committed full checkout exceeds the 420 MiB clone budget")
+    if int(report["quick_lean_sparse_checkout_bytes"]) > QUICK_LEAN_CHECKOUT_LIMIT_BYTES:
+        errors.append("advertised quick Lean checkout exceeds the 8 MiB budget")
     if int(report["lean_sparse_checkout_bytes"]) > LEAN_CHECKOUT_LIMIT_BYTES:
         errors.append("advertised Lean sparse checkout exceeds the 160 MiB budget")
     if int(report["reader_sparse_checkout_bytes"]) > READER_CHECKOUT_LIMIT_BYTES:
@@ -217,6 +282,7 @@ def contract_errors(
         errors.append("Lean sparse checkout no longer omits at least half the full tree")
     for command in (
         LEAN_CLONE_COMMAND,
+        QUICK_LEAN_SPARSE_COMMAND,
         LEAN_SPARSE_COMMAND,
         LEAN_CHECKOUT_COMMAND,
         LEAN_BUILD_COMMAND,
@@ -228,7 +294,10 @@ def contract_errors(
         if command not in readme:
             errors.append(f"README is missing optimized clone command: {command}")
     lean_position = readme.find(LEAN_CLONE_COMMAND)
-    lean_sparse_position = readme.find(LEAN_SPARSE_COMMAND, lean_position)
+    quick_lean_sparse_position = readme.find(QUICK_LEAN_SPARSE_COMMAND, lean_position)
+    lean_sparse_position = readme.find(
+        LEAN_SPARSE_COMMAND, quick_lean_sparse_position + len(QUICK_LEAN_SPARSE_COMMAND)
+    )
     reader_sparse_position = readme.find(
         READER_SPARSE_COMMAND, lean_sparse_position + len(LEAN_SPARSE_COMMAND)
     )
@@ -238,12 +307,14 @@ def contract_errors(
     )
     if (
         lean_position < 0
+        or quick_lean_sparse_position < 0
         or lean_sparse_position < 0
         or reader_sparse_position < 0
         or full_position < 0
         or history_position < 0
         or not (
             lean_position
+            < quick_lean_sparse_position
             < lean_sparse_position
             < reader_sparse_position
             < full_position
@@ -251,8 +322,10 @@ def contract_errors(
         )
     ):
         errors.append(
-            "README must order Lean-only, current full, then full-history checkouts"
+            "README must order quick proof, full Lean, reader, current full, then full-history checkouts"
         )
+    if quick_sparse_manifest != QUICK_LEAN_SPARSE_MANIFEST_TEXT:
+        errors.append("versioned quick Lean sparse manifest has drifted from its import cone")
     if sparse_manifest != LEAN_SPARSE_MANIFEST_TEXT:
         errors.append("versioned Lean sparse manifest has drifted from the checked contract")
     if reader_sparse_manifest != READER_SPARSE_MANIFEST_TEXT:
@@ -271,6 +344,7 @@ def main(argv: list[str] | None = None) -> int:
         (ROOT / "README.md").read_text(encoding="utf-8"),
         LEAN_SPARSE_MANIFEST_PATH.read_text(encoding="utf-8"),
         READER_SPARSE_MANIFEST_PATH.read_text(encoding="utf-8"),
+        QUICK_LEAN_SPARSE_MANIFEST_PATH.read_text(encoding="utf-8"),
     )
     report["status"] = "pass" if not errors else "fail"
     report["errors"] = errors
