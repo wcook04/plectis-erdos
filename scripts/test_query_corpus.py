@@ -452,6 +452,25 @@ def validate_research_corpus_fingerprint() -> None:
         raise AssertionError("research corpus digest mutation escaped")
 
 
+def validate_lean_code_projection() -> None:
+    """The delimiter-jump lexer must retain exact source coordinates."""
+    source = (
+        'namespace Visible -- namespace Hidden\n'
+        '/- outer\n/- nested -/\nnamespace AlsoHidden\n-/\n'
+        'def quoted := "namespace StringHidden \\" still hidden"\n'
+        'namespace Final\n'
+    )
+    projected = query_corpus.lean_code_projection(source)
+    assert len(projected) == len(source)
+    assert [index for index, char in enumerate(projected) if char == "\n"] == [
+        index for index, char in enumerate(source) if char == "\n"
+    ]
+    assert "namespace Visible" in projected
+    assert "namespace Final" in projected
+    assert "Hidden" not in projected
+    assert "StringHidden" not in projected
+
+
 def validate_agent_tour() -> None:
     packet = agent_tour_packet()
     assert packet["kind"] == "agent_corpus_tour"
@@ -1857,6 +1876,7 @@ def main() -> int:
     validate_programme_routes()
     validate_indexed_problem_routes()
     validate_research_corpus_fingerprint()
+    validate_lean_code_projection()
     validate_agent_tour()
     validate_paper_guide()
     validate_indexed_declaration_search_equivalence()

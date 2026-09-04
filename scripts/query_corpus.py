@@ -428,56 +428,69 @@ def atlas_declarations(atlas: dict[str, Any]) -> list[dict[str, Any]]:
     ]
 
 
+_LEAN_PROJECTION_MARKER = re.compile(r'--|/-|-/|"|\\|\n')
+_LEAN_NON_NEWLINE_RUN = re.compile(r"[^\n]+")
+
+
+def _masked_lean_span(value: str) -> str:
+    """Blank a Lean lexical span without changing offsets or line numbers."""
+    return _LEAN_NON_NEWLINE_RUN.sub(lambda match: " " * len(match.group()), value)
+
+
 def lean_code_projection(text: str) -> str:
     """Replace Lean comments and strings with spaces while preserving lines."""
     projected: list[str] = []
     block_depth = 0
-    in_string = False
-    escaped = False
+    state = "code"
+    string_escaped = False
     cursor = 0
-    while cursor < len(text):
-        pair = text[cursor : cursor + 2]
-        char = text[cursor]
+    for match in _LEAN_PROJECTION_MARKER.finditer(text):
+        token = match.group()
+        gap = text[cursor : match.start()]
+        projected.append(
+            gap if state == "code" and not block_depth else _masked_lean_span(gap)
+        )
+
         if block_depth:
-            if pair == "/-":
-                projected.extend((" ", " "))
+            if token == "/-":
                 block_depth += 1
-                cursor += 2
-            elif pair == "-/":
-                projected.extend((" ", " "))
+            elif token == "-/":
                 block_depth -= 1
-                cursor += 2
-            else:
-                projected.append("\n" if char == "\n" else " ")
-                cursor += 1
-            continue
-        if in_string:
-            projected.append("\n" if char == "\n" else " ")
-            if escaped:
-                escaped = False
-            elif char == "\\":
-                escaped = True
-            elif char == '"':
-                in_string = False
-            cursor += 1
-            continue
-        if pair == "--":
-            while cursor < len(text) and text[cursor] != "\n":
-                projected.append(" ")
-                cursor += 1
-            continue
-        if pair == "/-":
-            projected.extend((" ", " "))
+            projected.append(_masked_lean_span(token))
+        elif state == "line_comment":
+            projected.append(_masked_lean_span(token))
+            if token == "\n":
+                state = "code"
+        elif state == "string":
+            projected.append(_masked_lean_span(token))
+            escaped_token = string_escaped and not gap
+            if string_escaped and gap:
+                string_escaped = False
+            if escaped_token:
+                string_escaped = False
+            elif token == "\\":
+                string_escaped = True
+            elif token == '"':
+                state = "code"
+                string_escaped = False
+        elif token == "--":
+            state = "line_comment"
+            projected.append("  ")
+        elif token == "/-":
             block_depth = 1
-            cursor += 2
-            continue
-        if char == '"':
+            projected.append("  ")
+        elif token == '"':
+            state = "string"
+            string_escaped = False
             projected.append(" ")
-            in_string = True
-            cursor += 1
-            continue
-        projected.append(char)
-        cursor += 1
+        else:
+            projected.append(token)
+        cursor = match.end()
+
+    tail = text[cursor:]
+    projected.append(
+        tail if state == "code" and not block_depth else _masked_lean_span(tail)
+    )
     return "".join(projected)
 
 
@@ -5606,10 +5619,27 @@ def declaration_search_term_index() -> dict[str, Any]:
     """Build a compact inverted index using the atlas's overwhelmingly ASCII text."""
     by_term: dict[str, list[int]] = {}
     by_name: dict[str, list[int]] = {}
+    module_terms: dict[str, frozenset[str]] = {}
     for index, prepared in enumerate(declaration_search_rows()):
         row, primary, haystack, _primary_folded, _haystack_folded = prepared
         by_name.setdefault(row["name"], []).append(index)
-        for term in fast_declaration_search_terms(f"{primary} {haystack}"):
+        signature = str(row.get("signature") or "")
+        docstring = str(row.get("docstring") or "")
+        # Every current atlas signature contains its declaration spelling. Keep
+        # a fallback for future declaration kinds, but do not tokenize 4.9 MB
+        # of names twice on every cold process. Modules repeat across 153,671
+        # rows, so tokenize each of the 1,023 paths once rather than another
+        # 8.3 MB per process.
+        local_text = f"{signature} {docstring}"
+        if primary not in signature:
+            local_text = f"{primary} {local_text}"
+        module = row["module"]
+        shared_terms = module_terms.get(module)
+        if shared_terms is None:
+            shared_terms = fast_declaration_search_terms(module)
+            module_terms[module] = shared_terms
+        terms = fast_declaration_search_terms(local_text) | shared_terms
+        for term in terms:
             by_term.setdefault(term, []).append(index)
     return {"by_term": by_term, "by_name": by_name}
 
