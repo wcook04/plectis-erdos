@@ -464,6 +464,15 @@ jobs:
       # into an actual gate.  The empty-output assertion is the load-bearing
       # one: without it, any future change that stops producing audit lines
       # would silently pass both grep checks.
+      # The two Comparator packets above build ExternalVerification and
+      # ExternalVerification1049 as a side effect of checking them.  Nothing
+      # checks ExternalVerification1041SolvedFamilies against a challenge, so
+      # nothing built it, and `lake env lean` on its audit file failed with
+      # "unknown module prefix" on every run since the library was published.
+      # Build it explicitly so the audit below elaborates against real oleans.
+      - name: Build the audited solved-families library
+        if: steps.external-inputs.outputs.changed == 'true'
+        run: lake build ExternalVerification1041SolvedFamilies
       - name: Post-verification axiom audit (gated)
         if: steps.external-inputs.outputs.changed == 'true'
         run: |
