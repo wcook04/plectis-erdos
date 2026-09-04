@@ -39,6 +39,7 @@ Stdlib only; run from the repository root:  python3 scripts/check_release.py
 
 from __future__ import annotations
 
+import argparse
 import copy
 import hashlib
 import json
@@ -747,7 +748,47 @@ def check_proof_trust() -> None:
               f"proof-trust violation in {lean.relative_to(ROOT)}: {violation or ''}")
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--singleflight-worker",
+        action="store_true",
+        help=argparse.SUPPRESS,
+    )
+    args = parser.parse_args(argv)
+    if not args.singleflight_worker:
+        state_root = singleflight.default_state_root()
+        specification = singleflight.validator_spec(
+            "release-worktree", [], None, state_root
+        )
+        receipt = singleflight.submit(specification, state_root)
+        terminal, code = singleflight.collect(
+            state_root,
+            receipt["key"],
+            True,
+            singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
+        )
+        if terminal.get("state") != "terminal":
+            print(json.dumps(terminal, sort_keys=True), file=sys.stderr)
+            return code
+        stdout = terminal.get("stdout", {}).get("tail")
+        stderr = terminal.get("stderr", {}).get("tail")
+        if stdout:
+            print(stdout, end="" if stdout.endswith("\n") else "\n")
+        if stderr:
+            print(
+                stderr,
+                end="" if stderr.endswith("\n") else "\n",
+                file=sys.stderr,
+            )
+        print(
+            "check_release: shared validation "
+            f"key={receipt['key'][:12]} reuse={receipt.get('reuse', 'owner')} "
+            f"exit={code}",
+            file=sys.stderr,
+        )
+        return code
+
     # ``read`` is a per-run immutable snapshot, not a cross-run file cache.
     # Clearing here keeps repeated in-process invocations source-current while
     # letting the thousands of consumers below share one admitted read.

@@ -40,6 +40,7 @@ ROSTER_VALIDATORS = {
     "lean": "scripts/lean_fast_build.py",
     "paper": "docs/papers/check_paper_corpus.py",
     "release": "scripts/check_release_ref.py",
+    "release-worktree": "scripts/check_release.py",
     "reachable-history": "scripts/test_reachable_release_history.py",
     "comparator": "scripts/verify-comparator.sh",
     "historical": "scripts/historical_bridge_experiment.py",
@@ -782,6 +783,20 @@ def validator_spec(
             "--singleflight-worker",
         ]
         authority_paths = [ROOT / "scripts/check_release_ref.py", ROOT / "scripts/check_release.py"]
+    elif kind == "release-worktree":
+        if targets or ref:
+            raise ValidationError(
+                "release-worktree validation accepts no target or ref arguments"
+            )
+        command = [
+            sys.executable,
+            "scripts/check_release.py",
+            "--singleflight-worker",
+        ]
+        authority_paths = [
+            ROOT / "scripts/check_release.py",
+            ROOT / "scripts/validation_singleflight.py",
+        ]
     elif kind == "reachable-history":
         if ref or len(targets) != 1 or targets[0] not in {"check", "release-gate"}:
             raise ValidationError(

@@ -241,6 +241,18 @@ class ValidationSingleflightTests(unittest.TestCase):
         self.assertIn("scripts/check_cold_clone_comprehension.py", paths)
         self.assertIn("scripts/query_corpus.py", paths)
 
+        release = singleflight.validator_spec(
+            "release-worktree", [], None, Path("/tmp/public-release-spec")
+        )
+        self.assertEqual(
+            release["command"],
+            [sys.executable, "scripts/check_release.py", "--singleflight-worker"],
+        )
+        self.assertEqual(
+            release["inputs"]["repository"]["identity_policy"],
+            "tree_and_dirty_content_checkout_independent",
+        )
+
     def test_identical_jobs_join_and_distinct_lean_jobs_serialize(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(
             singleflight, "automatic_cleanup", return_value={"status": "fixture"}
@@ -334,6 +346,7 @@ class ValidationSingleflightTests(unittest.TestCase):
     def test_tracked_worker_commands_accept_the_internal_recursion_flag(self) -> None:
         worker_sources = (
             "scripts/check_cold_clone_comprehension.py",
+            "scripts/check_release.py",
             "scripts/lean_fast_build.py",
             "scripts/build_lean_dependency_index.py",
             "scripts/historical_bridge_experiment.py",
