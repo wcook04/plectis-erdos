@@ -472,7 +472,7 @@ jobs:
       # Build it explicitly so the audit below elaborates against real oleans.
       - name: Build the audited solved-families library
         if: steps.external-inputs.outputs.changed == 'true'
-        run: lake build ExternalVerification1041SolvedFamilies
+        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness ExternalVerification1041SolvedFamilies.Solution
       - name: Post-verification axiom audit (gated)
         if: steps.external-inputs.outputs.changed == 'true'
         run: |

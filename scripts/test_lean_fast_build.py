@@ -200,10 +200,27 @@ class LeanFastBuildTests(unittest.TestCase):
                 r"(?m)^\s*run:\s*(python3 scripts/lean_fast_build\.py[^\n]*)$",
                 workflow,
             )
-            self.assertEqual(len(commands), 1, f"{relative} has duplicate build owners")
             self.assertNotRegex(workflow, r"(?m)^\s*run:\s*lake build\b")
-            for target in targets:
-                self.assertIn(target, commands[0], f"{relative} lost {target}")
+            # Exactly one invocation owns the complete supported-root build.
+            # Any other wrapper call must be focused on a library outside
+            # that set, such as the external-verification job building the
+            # solved-families library its axiom audit imports: a second call
+            # naming a supported root would be a duplicate build owner.
+            owners = [
+                command
+                for command in commands
+                if all(target in command for target in targets)
+            ]
+            self.assertEqual(len(owners), 1, f"{relative} has duplicate build owners")
+            for command in commands:
+                if command in owners:
+                    continue
+                for target in targets:
+                    self.assertNotRegex(
+                        command,
+                        rf"(?<![A-Za-z0-9_.]){re.escape(target)}(?![A-Za-z0-9_])",
+                        f"{relative} builds supported root {target} outside its owner",
+                    )
 
     def test_ci_pins_external_actions_to_full_commit_shas(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
