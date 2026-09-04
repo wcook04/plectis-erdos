@@ -41,9 +41,10 @@ three scripts that own the build path, and the small root package/orientation
 files. It does not make Git fetch the root PDFs or the generated-document tree
 before the sparse rules exist. The wrapper fetches the pinned dependency cache
 only when needed, reuses compatible host packages across clones, and joins
-duplicate concurrent builds. A full release/document checkout should still
-keep the complete history required by the pinned-source checks without
-eagerly downloading obsolete blobs:
+duplicate concurrent builds. Successful identical builds also reuse bounded
+copy-on-write output seeds across clones. A full release/document checkout
+should still keep the complete history required by the pinned-source checks
+without eagerly downloading obsolete blobs:
 
 ```bash
 git clone --filter=blob:none --single-branch https://github.com/wcook04/plectis-lean-erdos249-257.git

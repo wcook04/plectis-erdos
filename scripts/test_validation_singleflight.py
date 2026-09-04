@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -18,6 +19,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import validation_singleflight as singleflight  # noqa: E402
 import lean_fast_build as fast_build  # noqa: E402
+import lean_build_share as build_share  # noqa: E402
 
 
 class ValidationSingleflightTests(unittest.TestCase):
@@ -179,6 +181,66 @@ class ValidationSingleflightTests(unittest.TestCase):
             (state["artifacts"] / "scheduler.log").write_bytes(b"y" * 17)
             bytes_used, _inodes = singleflight.validation_state_usage(state)
         self.assertEqual(bytes_used, 17)
+
+    def test_successful_build_seed_hydrates_an_equivalent_clone(self) -> None:
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            build_share.package_share, "clone_tree"
+        ) as clone:
+            base = Path(directory)
+            producer = base / "producer"
+            consumer = base / "consumer"
+            state_root = base / "state"
+            source = producer / ".lake/build"
+            source.mkdir(parents=True)
+            (source / "Erdos249257.olean").write_text("checked", encoding="utf-8")
+
+            def clone_fixture(origin: Path, target: Path) -> None:
+                shutil.copytree(origin, target)
+
+            clone.side_effect = clone_fixture
+            published = build_share.publish(producer, state_root, "a" * 64)
+            with mock.patch.object(build_share, "_copy_contents") as copy_contents:
+                copy_contents.side_effect = lambda _source, target: target.mkdir(
+                    parents=True, exist_ok=True
+                )
+                hydrated = build_share.hydrate(consumer, state_root, "a" * 64)
+                materialized = build_share.is_materialized(consumer, "a" * 64)
+
+        self.assertEqual(published["status"], "ready")
+        self.assertEqual(hydrated["status"], "hydrated")
+        self.assertTrue(materialized)
+        copy_contents.assert_called_once()
+
+    def test_build_seed_retention_is_bounded(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory)
+            for character in ("a", "b", "c"):
+                build, receipt = build_share.seed_paths(state_root, character * 64)
+                build.mkdir(parents=True)
+                receipt.write_text(
+                    json.dumps(
+                        {"schema": build_share.SCHEMA, "status": "ready", "key": character * 64}
+                    ),
+                    encoding="utf-8",
+                )
+                os.utime(build.parent, ns=(ord(character), ord(character)))
+            removed = build_share.prune_seeds(state_root, retain=2)
+        self.assertEqual(removed, ["a" * 64])
+
+    def test_build_hydration_uses_copy_on_write_and_preserves_extra_outputs(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            source = base / "source"
+            target = base / "target"
+            source.mkdir()
+            target.mkdir()
+            (source / "shared.olean").write_text("shared", encoding="utf-8")
+            (target / "other.olean").write_text("other", encoding="utf-8")
+            if build_share.package_share.copy_on_write_command(source, target) is None:
+                self.skipTest("copy-on-write cloning is unavailable")
+            build_share._copy_contents(source, target)
+            self.assertEqual((target / "shared.olean").read_text(), "shared")
+            self.assertEqual((target / "other.olean").read_text(), "other")
 
     def test_automatic_cleanup_is_rate_limited_and_detached(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(

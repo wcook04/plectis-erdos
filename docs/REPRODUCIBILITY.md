@@ -127,8 +127,16 @@ and launches hourly terminal-state cleanup; it is disposable acceleration and
 never substitutes for the recorded Lake exit code. Lean keys cover every
 visible Lean source plus their toolchain and build
 authorities rather than the entire Git tree, so unrelated paper or README edits
-do not force a duplicate proof build. To submit without attaching the current
-shell, use:
+do not force a duplicate proof build. A successful owner publishes a bounded
+copy-on-write `.lake/build` seed keyed by those exact inputs. An equivalent
+clone hydrates that seed before accepting the terminal receipt, so reuse means
+the caller has local build outputs rather than only a cached success status.
+To submit without attaching the current shell, use:
+
+```sh
+python3 scripts/validation_singleflight.py submit --class lean \
+  --target ErdosProblems.Erdos249.PeriodMultipleEscape
+```
 
 The admitted owner also manages a same-lock dependency seed through
 `scripts/lean_package_share.py`. On APFS (or a Linux filesystem supporting
@@ -142,10 +150,11 @@ Lake behavior. Successful macOS builds also compact large repeated
 byte identity and source stability. Only the current and one previous semantic
 package seed are retained.
 
-```sh
-python3 scripts/validation_singleflight.py submit --class lean \
-  --target ErdosProblems.Erdos249.PeriodMultipleEscape
-```
+Build-output sharing follows the same no-symlink, no-full-copy rule and keeps
+only the two newest semantic seeds. Existing checkout outputs are preserved;
+matching files are updated by reflink under the same host-wide Lean lock.
+Unsupported filesystems fail closed for cross-clone receipt reuse and retain
+ordinary local build behavior.
 
 `run` is the corresponding submit-or-join-and-collect command. A later caller
 with the same semantic key reuses the in-flight or completed receipt; no human

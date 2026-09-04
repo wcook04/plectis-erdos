@@ -28,6 +28,8 @@ import time
 from pathlib import Path
 from typing import Any, BinaryIO, Iterable, Mapping
 
+import lean_build_share
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "repository-validation-singleflight/1"
@@ -730,6 +732,7 @@ def validator_spec(
         authority_paths = [
             ROOT / "scripts/validation_singleflight.py",
             ROOT / "scripts/lean_fast_build.py",
+            ROOT / "scripts/lean_build_share.py",
             ROOT / "scripts/lean_package_share.py",
             ROOT / "lean-toolchain",
             ROOT / "lake-manifest.json",
@@ -970,6 +973,19 @@ def validate_specification(specification: dict[str, Any]) -> None:
         raise ValidationError("validation key does not match its input fingerprint")
 
 
+def requires_lean_build_materialization(receipt: Mapping[str, Any]) -> bool:
+    """Distinguish the tracked Lean builder from scheduler-level test jobs."""
+
+    inputs = receipt.get("inputs")
+    if not isinstance(inputs, Mapping) or inputs.get("validation_class") != "lean":
+        return False
+    command = inputs.get("normalized_command")
+    return isinstance(command, list) and any(
+        isinstance(argument, str) and Path(argument).name == "lean_fast_build.py"
+        for argument in command
+    )
+
+
 def process_identity(pid: int) -> dict[str, Any] | None:
     try:
         os.kill(pid, 0)
@@ -1147,6 +1163,7 @@ def launch_worker(state: dict[str, Path], specification: dict[str, Any], previou
         "owner": None,
         "child": None,
         "launch_token": token,
+        "workspace_root": str(ROOT.resolve()),
         "recovered_from": previous.get("owner") if previous else None,
         "artifacts": [],
     }
@@ -1187,6 +1204,13 @@ def submit(specification: dict[str, Any], state_root: Path) -> dict[str, Any]:
     try:
         existing = load_receipt(state, key)
         if existing is not None and existing.get("state") == "terminal":
+            if (
+                requires_lean_build_materialization(existing)
+                and existing.get("exit_code") == 0
+                and not lean_build_share.is_materialized(ROOT, key)
+                and existing.get("build_seed", {}).get("status") != "ready"
+            ):
+                return launch_worker(state, specification, existing)
             existing["reuse"] = "terminal"
             return existing
         if existing is not None and receipt_is_live(existing):
@@ -1223,6 +1247,7 @@ def worker(state_root: Path, key: str, token: str) -> int:
     resource_lock: int | None = None
     started = utc_now()
     timed_out = False
+    build_seed: dict[str, Any] | None = None
     try:
         if resource_group:
             receipt.update(
@@ -1313,6 +1338,11 @@ def worker(state_root: Path, key: str, token: str) -> int:
             receipt["last_attempt_exit_code"] = last_attempt_code
             receipt["automatic_resume_count"] = max(0, attempt - 1)
             receipt["external_termination_exits"] = external_termination_exits
+        build_seed = (
+            lean_build_share.publish(ROOT, state_root, key)
+            if requires_lean_build_materialization(receipt) and code == 0
+            else None
+        )
     except OSError as exc:
         code = 75
         stderr_path.write_text(f"validation environment unavailable: {exc}\n", encoding="utf-8")
@@ -1343,6 +1373,8 @@ def worker(state_root: Path, key: str, token: str) -> int:
         "output_storage": output_storage,
         "validation_authority": ROSTER_VALIDATORS[receipt["inputs"]["validation_class"]],
     }
+    if build_seed is not None:
+        terminal["build_seed"] = build_seed
     write_receipt(state, key, terminal)
     return code
 
@@ -1361,6 +1393,25 @@ def collect(state_root: Path, key: str, wait: bool, timeout_seconds: float) -> t
     while True:
         receipt = status(state_root, key)
         if receipt.get("state") == "terminal":
+            if (
+                requires_lean_build_materialization(receipt)
+                and receipt.get("exit_code") == 0
+                and not lean_build_share.is_materialized(ROOT, key)
+            ):
+                state = ensure_state_root(state_root)
+                lock_path = resource_lock_path(state, "lean-host")
+                lock_path.parent.mkdir(parents=True, exist_ok=True)
+                lock = open_lock(lock_path)
+                assert lock is not None
+                try:
+                    materialization = lean_build_share.hydrate(ROOT, state_root, key)
+                finally:
+                    fcntl.flock(lock, fcntl.LOCK_UN)
+                    os.close(lock)
+                receipt["build_materialization"] = materialization
+                if materialization.get("status") != "hydrated":
+                    receipt["exit_state"] = "build_output_unavailable"
+                    return receipt, 75
             return receipt, int(receipt["exit_code"])
         if not wait:
             return receipt, 75

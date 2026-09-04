@@ -1,6 +1,7 @@
 /Erdos249257/
 /ErdosProblems/
 /scripts/lean_fast_build.py
+/scripts/lean_build_share.py
 /scripts/lean_package_share.py
 /scripts/lean-sparse-checkout
 /scripts/validation_singleflight.py
