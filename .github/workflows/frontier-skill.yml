@@ -1,0 +1,62 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: Frontier skill entry
+
+on:
+  pull_request:
+    paths:
+      - '.agents/skills/plectis-frontier/**'
+      - 'scripts/test_frontier_skill.py'
+      - 'docs/FRONTIER_*.md'
+      - '.github/workflows/frontier-skill.yml'
+      - 'REUSE.toml'
+      - 'LICENSES/MIT-0.txt'
+  push:
+    branches: [main]
+    paths:
+      - '.agents/skills/plectis-frontier/**'
+      - 'scripts/test_frontier_skill.py'
+      - '.github/workflows/frontier-skill.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frontier-skill-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  offline-wrapper:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.9'
+      - name: Test standalone wrapper with offline Git fixtures
+        run: python3 -B scripts/test_frontier_skill.py
+
+  public-source-entry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.9'
+      - name: Inspect source pin
+        run: python3 .agents/skills/plectis-frontier/scripts/bootstrap.py describe
+      - name: Obtain the exact public source without GitHub credentials
+        run: >-
+          python3 .agents/skills/plectis-frontier/scripts/bootstrap.py prepare
+          --destination "$RUNNER_TEMP/plectis-frontier-source" --allow-network
+      - name: Run pinned source entry and overview, not Lean or a hosted agent
+        run: >-
+          python3 .agents/skills/plectis-frontier/scripts/bootstrap.py smoke
+          --destination "$RUNNER_TEMP/plectis-frontier-source" --allow-execution
