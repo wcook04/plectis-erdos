@@ -85,6 +85,37 @@ class ValidationSingleflightTests(unittest.TestCase):
                 singleflight.default_state_root(), Path("/tmp/public-lean-shared")
             )
 
+    def test_status_card_omits_the_large_source_manifest(self) -> None:
+        receipt = {
+            "key": "a" * 64,
+            "state": "queued",
+            "live": True,
+            "resource_group": "lean-host",
+            "owner": {"pid": 123, "pgid": 123, "start_token": "fixture"},
+            "inputs": {
+                "validation_class": "lean",
+                "targets": ["Pkg.Root"],
+                "relevant_sources": [
+                    {"path": f"Pkg/Module{index}.lean", "sha256": "sha256:" + "f" * 64}
+                    for index in range(2_000)
+                ],
+            },
+        }
+        card = singleflight.status_card(receipt)
+        encoded = json.dumps(card)
+        self.assertEqual(card["state"], "queued")
+        self.assertEqual(card["owner"]["pid"], 123)
+        self.assertEqual(card["relevant_source_count"], 2_000)
+        self.assertNotIn("relevant_sources", encoded)
+        self.assertLess(len(encoded), 2_000)
+
+    def test_status_cli_is_compact_by_default_with_explicit_full_mode(self) -> None:
+        parser = singleflight.build_parser()
+        compact = parser.parse_args(["status", "--key", "a" * 64])
+        full = parser.parse_args(["status", "--key", "a" * 64, "--full"])
+        self.assertFalse(compact.full)
+        self.assertTrue(full.full)
+
     def test_heavy_lean_lock_is_host_wide_not_checkout_scoped(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.dict(
             os.environ,

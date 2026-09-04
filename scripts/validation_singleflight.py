@@ -52,6 +52,7 @@ ROSTER_VALIDATORS = {
     "palomar": "scripts/check_palomar_qualification.py",
 }
 TAIL_BYTES = 16_000
+STATUS_TAIL_CHARS = 2_000
 MAX_STORED_LOG_BYTES = 4 * 1024 * 1024
 TRUNCATED_LOG_PREFIX = b"[plectis: earlier validation output truncated; retained tail follows]\n"
 LAUNCH_GRACE_SECONDS = 15.0
@@ -1663,6 +1664,41 @@ def emit(value: dict[str, Any]) -> None:
     print(json.dumps(value, indent=2, sort_keys=True))
 
 
+def status_card(receipt: dict[str, Any]) -> dict[str, Any]:
+    """Project a bounded operational card without repeating hashed inputs."""
+
+    inputs = receipt.get("inputs")
+    inputs = inputs if isinstance(inputs, dict) else {}
+    sources = inputs.get("relevant_sources")
+    sources = sources if isinstance(sources, list) else []
+    targets = inputs.get("targets")
+    card: dict[str, Any] = {
+        "schema": "repository-validation-singleflight-status-card/1",
+        "key": receipt.get("key"),
+        "validation_class": inputs.get("validation_class"),
+        "state": receipt.get("state"),
+        "live": receipt.get("live"),
+        "reuse": receipt.get("reuse"),
+        "resource_group": receipt.get("resource_group"),
+        "owner": receipt.get("owner"),
+        "child": receipt.get("child"),
+        "created_at": receipt.get("created_at"),
+        "updated_at": receipt.get("updated_at"),
+        "started_at": receipt.get("started_at"),
+        "completed_at": receipt.get("completed_at"),
+        "exit_code": receipt.get("exit_code"),
+        "exit_state": receipt.get("exit_state"),
+        "owner_unavailable": receipt.get("owner_unavailable"),
+        "relevant_source_count": len(sources),
+        "target_count": len(targets) if isinstance(targets, list) else None,
+    }
+    for stream in ("stdout", "stderr"):
+        output = receipt.get(stream)
+        if isinstance(output, dict) and isinstance(output.get("tail"), str):
+            card[f"{stream}_tail"] = output["tail"][-STATUS_TAIL_CHARS:]
+    return {key: value for key, value in card.items() if value is not None}
+
+
 def add_validation_request_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--class", dest="kind", choices=tuple(ROSTER_VALIDATORS), required=True)
     parser.add_argument("--target", action="append", default=[])
@@ -1688,6 +1724,12 @@ def build_parser() -> argparse.ArgumentParser:
     for name in ("status", "collect"):
         child = commands.add_parser(name, help=f"read a validation receipt{' or explicitly wait' if name == 'collect' else ''}")
         child.add_argument("--key", type=parse_key, required=True)
+        if name == "status":
+            child.add_argument(
+                "--full",
+                action="store_true",
+                help="emit the complete hashed input receipt instead of the compact status card",
+            )
         if name == "collect":
             child.add_argument("--wait", action="store_true")
             child.add_argument(
@@ -1733,7 +1775,8 @@ def main(argv: list[str] | None = None) -> int:
             emit(terminal)
             return code
         if args.action == "status":
-            emit(status(args.state_root, args.key))
+            receipt = status(args.state_root, args.key)
+            emit(receipt if args.full else status_card(receipt))
             return 0
         if args.action == "collect":
             receipt, code = collect(args.state_root, args.key, args.wait, args.timeout_seconds)

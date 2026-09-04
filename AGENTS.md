@@ -557,6 +557,9 @@ supports it; mutable cache directories are never symlinked. Set
 `VALIDATION_SINGLEFLIGHT_STATE_ROOT` only when an
 explicitly isolated cache is required. None of this cache state is proof
 authority: the terminal receipt preserves the underlying Lake exit code.
+`python3 scripts/validation_singleflight.py status --key <key>` prints a
+bounded operational card; add `--full` only when the complete hashed source
+manifest is needed.
 The clone-local operational guide is
 [skills/lean-concurrent-validation/SKILL.md](skills/lean-concurrent-validation/SKILL.md).
 
