@@ -2043,6 +2043,10 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_contribution_entry.py"),
             ],
+            "human_first_contact": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_human_first_contact.py"),
+            ],
             "agent_navigation_paper": [
                 sys.executable,
                 str(ROOT / "scripts" / "check_agent_navigation_paper.py"),
