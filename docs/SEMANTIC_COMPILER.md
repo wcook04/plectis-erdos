@@ -184,6 +184,12 @@ python3 scripts/build_declaration_atlas.py --check
 python3 scripts/build_module_synopsis_index.py --check
 ```
 
+The ordinary declaration-atlas check validates the tracked exact-input receipt
+in `docs/declaration_atlas_check.json`: it binds all Lean source bytes, projected
+claim bindings, the generated-certificate manifest, builder code, and atlas
+bytes. Use `python3 scripts/build_declaration_atlas.py --check --full-check` when
+the complete 153,000-declaration parse is itself under test.
+
 Its stored source fingerprint must match the declaration atlas. The index is a
 performance projection; the Lean header remains the authored source.
 

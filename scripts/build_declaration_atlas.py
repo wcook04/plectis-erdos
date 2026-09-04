@@ -22,7 +22,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "declaration_atlas.json"
+CHECK_RECEIPT = ROOT / "docs" / "declaration_atlas_check.json"
 GENERATED_MANIFEST = ROOT / "docs" / "generated_certificate_manifest.json"
+CHECK_RECEIPT_SCHEMA = "erdos249257-declaration-atlas-check/1"
 
 # A Lean identifier may end in a prime or contain `?`/`!`.  The previous
 # pattern closed the name with `\b`, so `half_pow_term'` was recorded as
@@ -337,6 +339,83 @@ def source_fingerprint(paths: list[Path] | None = None) -> str:
     return f"sha256:{digest.hexdigest()}"
 
 
+def text_digest(text: str) -> str:
+    return f"sha256:{hashlib.sha256(text.encode('utf-8')).hexdigest()}"
+
+
+def claim_binding_fingerprint() -> str:
+    """Hash exactly the authored claim fields projected into atlas rows."""
+    claims = json.loads(safe_atlas_text(ROOT / "docs" / "claims.json"))
+    bindings = [
+        {
+            "id": claim["id"],
+            "declarations": [
+                {"module": row["module"], "name": row["name"]}
+                for row in claim["declarations"]
+            ],
+        }
+        for claim in claims["claims"]
+    ]
+    return text_digest(
+        json.dumps(bindings, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    )
+
+
+def current_check_receipt(
+    atlas_text: str,
+    *,
+    source_fingerprint_override: str | None = None,
+) -> dict[str, object]:
+    """Bind a fast check to every input that can change atlas bytes."""
+    manifest_text = safe_atlas_text(GENERATED_MANIFEST)
+    builder_text = safe_atlas_text(Path(__file__).resolve())
+    atlas = json.loads(atlas_text)
+    return {
+        "schema": CHECK_RECEIPT_SCHEMA,
+        "source_fingerprint": source_fingerprint_override or source_fingerprint(),
+        "claim_binding_fingerprint": claim_binding_fingerprint(),
+        "generated_manifest_digest": text_digest(manifest_text),
+        "builder_digest": text_digest(builder_text),
+        "atlas_digest": text_digest(atlas_text),
+        "summary": atlas["summary"],
+    }
+
+
+def check_receipt_mismatches(atlas_text: str) -> list[str]:
+    if not CHECK_RECEIPT.is_file():
+        return ["missing_receipt"]
+    try:
+        recorded = json.loads(safe_atlas_text(CHECK_RECEIPT))
+        current = current_check_receipt(atlas_text)
+    except (KeyError, json.JSONDecodeError, OSError, UnsafeAtlasPath) as error:
+        return [f"unreadable_receipt:{type(error).__name__}:{error}"]
+    return sorted(
+        key
+        for key in set(recorded) | set(current)
+        if recorded.get(key) != current.get(key)
+    )
+
+
+def cached_check_matches(atlas_text: str) -> bool:
+    return not check_receipt_mismatches(atlas_text)
+
+
+def write_check_receipt(atlas_text: str) -> None:
+    atlas = json.loads(atlas_text)
+    safe_atlas_output_text(
+        CHECK_RECEIPT,
+        json.dumps(
+            current_check_receipt(
+                atlas_text,
+                source_fingerprint_override=str(atlas["source_fingerprint"]),
+            ),
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
+    )
+
+
 def build() -> dict[str, object]:
     claims = json.loads(safe_atlas_text(ROOT / "docs" / "claims.json"))
     claim_refs: dict[tuple[str, str], list[str]] = {}
@@ -433,21 +512,42 @@ def render() -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if the tracked atlas is stale")
+    parser.add_argument(
+        "--full-check",
+        action="store_true",
+        help="rebuild the complete atlas in memory instead of using its exact receipt",
+    )
     args = parser.parse_args()
-    expected = render()
+    if args.full_check and not args.check:
+        parser.error("--full-check requires --check")
     if args.check:
         actual = safe_atlas_text(OUTPUT) if OUTPUT.is_file() else ""
-        if actual != expected:
+        if not actual:
+            print("declaration atlas is missing; run python3 scripts/build_declaration_atlas.py")
+            return 1
+        if args.full_check and actual != render():
             print("declaration atlas is stale; run python3 scripts/build_declaration_atlas.py")
+            return 1
+        receipt_mismatches = check_receipt_mismatches(actual)
+        if receipt_mismatches:
+            print(
+                "declaration atlas check receipt is stale; "
+                "mismatched fields: "
+                + ", ".join(receipt_mismatches)
+                + "; run python3 scripts/build_declaration_atlas.py"
+            )
             return 1
         atlas = json.loads(actual)
         print(
-            "declaration atlas current: "
-            f"{atlas['summary']['declaration_count']} declarations across "
+            "declaration atlas current"
+            + (" after full rebuild: " if args.full_check else " from exact receipt: ")
+            + f"{atlas['summary']['declaration_count']} declarations across "
             f"{atlas['summary']['module_count']} modules"
         )
         return 0
+    expected = render()
     safe_atlas_output_text(OUTPUT, expected)
+    write_check_receipt(expected)
     atlas = json.loads(expected)
     print(
         f"wrote {OUTPUT.relative_to(ROOT)}: "

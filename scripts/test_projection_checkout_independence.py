@@ -23,11 +23,14 @@ does not preserve an old Git commit under a current-sounding snapshot field:
 a generated file cannot contain the commit that first contains its own bytes.
 
 This test pins the invariant behaviourally rather than by inspecting source. It
-copies the public tree into two version-control-free workspaces that differ only
-in an inert checkout-shape marker, regenerates every projection in each, and
-requires byte-identical output. Running without repository metadata also proves
-that no projection builder needs to inspect a branch, index, or commit merely to
-render current content.
+materialises committed ``HEAD`` in a version-control-free workspace, gives it an
+inert checkout-shape marker, and requires every builder in this bounded
+release-shape probe to accept the committed bytes under a hostile inherited
+environment. Running without
+repository metadata proves that no projection builder needs to inspect a branch,
+index, or commit merely to render current content. Requiring the check commands
+to leave every projection byte-identical also keeps this cold-clone test
+read-only without paying for two redundant 150 MB regeneration passes.
 """
 
 from __future__ import annotations
@@ -47,7 +50,7 @@ import refresh_source_coordinates
 
 ROOT = Path(__file__).resolve().parent.parent
 
-# Builders that refresh_projections.py runs, in the same dependency order.
+# Builders owning the projections sampled below, in dependency order.
 BUILDERS = (
     "build_methodology.py",
     "build_module_graph.py",
@@ -66,6 +69,7 @@ PROJECTIONS = (
     "docs/orientation.json",
     "docs/ORIENTATION.md",
     "docs/declaration_atlas.json",
+    "docs/declaration_atlas_check.json",
     "docs/methodology.json",
     "docs/claims.json",
     "docs/semantic_corpus.json",
@@ -90,9 +94,6 @@ HOSTILE_ENVIRONMENT = {
     "LC_ALL": "C",
     "LANG": "C",
 }
-IMMUTABLE_BULK_SUFFIXES = {".lean", ".pdf"}
-
-
 def run(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         args,
@@ -151,79 +152,82 @@ def check_source_coordinate_title_contract() -> None:
             raise SystemExit(f"paper anchor resolved to an invalid line: {source}")
 
 
-def materialise(destination: Path, shape: str) -> None:
+def materialise(destination: Path) -> None:
     """Materialise tracked ``HEAD`` without version-control or build metadata."""
     destination.mkdir()
-    with tempfile.NamedTemporaryFile(
-        dir=destination.parent, prefix=".projection-head-", suffix=".tar"
-    ) as archive_file:
-        archived = subprocess.run(
-            ["git", "archive", "--format=tar", "HEAD"],
-            cwd=ROOT,
-            env=singleflight.command_environment(),
-            stdout=archive_file,
-            stderr=subprocess.PIPE,
-            check=False,
-            timeout=singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
-        )
-        if archived.returncode != 0:
-            raise SystemExit(
-                "could not materialise tracked HEAD: "
-                + archived.stderr.decode("utf-8", errors="replace").strip()
-            )
-        archive_file.flush()
-        archive_file.seek(0)
-        with tarfile.open(fileobj=archive_file, mode="r:") as archive:
+    archived = subprocess.Popen(
+        ["git", "archive", "--format=tar", "HEAD"],
+        cwd=ROOT,
+        env=singleflight.command_environment(),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    if archived.stdout is None:
+        archived.kill()
+        raise SystemExit("could not materialise tracked HEAD: archive pipe unavailable")
+    try:
+        # Stream extraction avoids writing and rereading a second full copy of
+        # the tracked Lean corpus merely to obtain a metadata-free checkout.
+        with tarfile.open(fileobj=archived.stdout, mode="r|") as archive:
             archive.extractall(destination, filter="data")
+        _, stderr = archived.communicate(
+            timeout=singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
+        )
+    except (subprocess.TimeoutExpired, tarfile.TarError) as error:
+        archived.kill()
+        archived.communicate()
+        raise SystemExit(f"could not materialise tracked HEAD: {error}") from error
+    if archived.returncode != 0:
+        raise SystemExit(
+            "could not materialise tracked HEAD: "
+            + stderr.decode("utf-8", errors="replace").strip()
+        )
     marker = destination / ".checkout-shape"
     marker.mkdir()
-    (marker / shape).write_text(
+    (marker / "metadata-free").write_text(
         "inert test marker; projection builders must ignore checkout shape\n",
         encoding="utf-8",
     )
 
 
-def clone_materialised_checkout(source: Path, destination: Path, shape: str) -> None:
-    """Clone a metadata-free checkout without copying immutable bulk twice."""
-
-    def copy_file(source_file: str, destination_file: str) -> str:
-        source_path = Path(source_file)
-        if source_path.suffix in IMMUTABLE_BULK_SUFFIXES:
-            os.link(source_file, destination_file)
-            return destination_file
-        return shutil.copy2(source_file, destination_file)
-
-    shutil.copytree(
-        source,
-        destination,
-        copy_function=copy_file,
-        ignore=shutil.ignore_patterns(".checkout-shape"),
-    )
-    marker = destination / ".checkout-shape"
-    marker.mkdir()
-    (marker / shape).write_text(
-        "inert test marker; projection builders must ignore checkout shape\n",
-        encoding="utf-8",
-    )
+def projection_bytes(checkout: Path) -> dict[str, bytes]:
+    return {
+        relative: path.read_bytes()
+        for relative in PROJECTIONS
+        if (path := checkout / relative).is_file()
+    }
 
 
-def regenerate(checkout: Path) -> dict[str, bytes]:
-    for builder in BUILDERS:
+def validate_checkout(checkout: Path) -> None:
+    before = projection_bytes(checkout)
+
+    def check_builder(builder: str) -> tuple[str, subprocess.CompletedProcess[str]]:
         script = checkout / "scripts" / builder
         if not script.is_file():
-            continue
-        result = run([sys.executable, str(script)], cwd=checkout)
+            raise SystemExit(f"projection shape probe is missing builder: {builder}")
+        return builder, run([sys.executable, str(script), "--check"], cwd=checkout)
+
+    # Check mode is read-only: every builder compares committed inputs with
+    # committed outputs. Bound the fan-out so independent JSON/source scans do
+    # not become another serial tail in a fresh clone.
+    with ThreadPoolExecutor(max_workers=min(4, len(BUILDERS))) as executor:
+        results = list(executor.map(check_builder, BUILDERS))
+    for builder, result in results:
         if result.returncode != 0:
             raise SystemExit(
                 f"{builder} failed inside the shape probe at {checkout.name}: "
                 f"{result.stderr.strip() or result.stdout.strip()}"
             )
-    rendered: dict[str, bytes] = {}
-    for relative in PROJECTIONS:
-        path = checkout / relative
-        if path.is_file():
-            rendered[relative] = path.read_bytes()
-    return rendered
+    after = projection_bytes(checkout)
+    mutated = sorted(
+        relative
+        for relative in set(before) | set(after)
+        if before.get(relative) != after.get(relative)
+    )
+    if mutated:
+        raise SystemExit(
+            "projection checks mutated committed outputs: " + ", ".join(mutated)
+        )
 
 
 def main() -> int:
@@ -231,45 +235,17 @@ def main() -> int:
     check_source_coordinate_title_contract()
     workspace = Path(tempfile.mkdtemp(prefix="projection-shape-"))
     try:
-        as_main = workspace / "as-main"
-        as_topic = workspace / "as-topic"
-        materialise(as_main, shape="main")
-        clone_materialised_checkout(as_main, as_topic, shape="topic")
+        checkout = workspace / "metadata-free"
+        materialise(checkout)
 
         with patch.dict(os.environ, HOSTILE_ENVIRONMENT):
-            # The two checkout shapes are deliberately independent.  Running
-            # their ordered builder chains concurrently preserves every
-            # dependency within a checkout while avoiding a second full wall-
-            # clock pass over the 150 MB generated-certificate source corpus.
-            with ThreadPoolExecutor(max_workers=2) as executor:
-                main_future = executor.submit(regenerate, as_main)
-                topic_future = executor.submit(regenerate, as_topic)
-                rendered_main = main_future.result()
-                rendered_topic = topic_future.result()
-
-        divergent = sorted(
-            relative
-            for relative in set(rendered_main) | set(rendered_topic)
-            if rendered_main.get(relative) != rendered_topic.get(relative)
-        )
-        if divergent:
-            print(
-                "generated projections depend on the shape of the checkout, so the same "
-                "commit renders differently on main and on a pull request branch:"
-            )
-            for relative in divergent:
-                print(f"  {relative}")
-            print(
-                "make the builder a pure function of the committed tree; do not consult "
-                "which refs the checkout carries, and do not record ancestry relative to main"
-            )
-            return 1
+            validate_checkout(checkout)
     finally:
         shutil.rmtree(workspace, ignore_errors=True)
 
     print(
-        f"test_projection_checkout_independence: {len(PROJECTIONS)} projections render "
-        "identically in two version-control-free checkout shapes"
+        f"test_projection_checkout_independence: {len(PROJECTIONS)} committed projections "
+        "are current and read-only in a version-control-free checkout"
     )
     return 0
 

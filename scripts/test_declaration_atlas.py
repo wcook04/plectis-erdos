@@ -22,6 +22,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
+CHECK_RECEIPT = ROOT / "docs" / "declaration_atlas_check.json"
 
 
 def require(condition: bool, message: str) -> None:
@@ -113,7 +114,20 @@ def test_atlas_module_and_coordinate_identity() -> None:
     )
 
 
+def test_atlas_check_receipt() -> None:
+    """The fast path must be bound to current inputs, code, and atlas bytes."""
+    builder = load_builder()
+    atlas_text = ATLAS.read_text(encoding="utf-8")
+    require(CHECK_RECEIPT.is_file(), "declaration atlas exact-check receipt is missing")
+    mismatches = builder.check_receipt_mismatches(atlas_text)
+    require(
+        not mismatches,
+        "declaration atlas exact-check receipt is stale: " + ", ".join(mismatches),
+    )
+
+
 if __name__ == "__main__":
     test_atlas_tracks_committed_source()
     test_atlas_module_and_coordinate_identity()
+    test_atlas_check_receipt()
     print("declaration atlas source-currentness: ok")
