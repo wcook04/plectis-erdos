@@ -90,8 +90,17 @@ The cache command is optional for correctness but avoids recompiling Mathlib
 from source. It may download several gigabytes. A cache is an acceleration,
 not authority: the toolchain file and manifest are the reproducibility inputs.
 
-Build the two supported public roots and the explicitly supported non-default
-consumers through one host-shared wrapper invocation:
+Check one real published theorem module first. This is the short feedback path
+for confirming that the toolchain, dependency cache, and project all work:
+
+```sh
+python3 scripts/lean_fast_build.py --jobs 2 \
+  ErdosProblems.Erdos249.PeriodMultipleEscape
+```
+
+For a complete release replay, build the two supported public roots and the
+explicitly supported non-default consumers through one host-shared wrapper
+invocation:
 
 ```sh
 python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness \
@@ -107,13 +116,6 @@ declarations do not enlarge the reviewed mathematical corpus. Keeping all six
 targets behind the wrapper gives the clean clone one bounded scheduler owner,
 one dependency plan, and the same host-wide duplicate-build suppression used
 by focused replay and CI.
-
-For a focused replay of the source-level #249 prime-excursion constraints,
-run the named problem module after the ordinary toolchain setup:
-
-```sh
-python3 scripts/lean_fast_build.py ErdosProblems.Erdos249.PeriodMultipleEscape
-```
 
 Both commands automatically enter the tracked public singleflight scheduler.
 On one host, identical source/toolchain requests from separate clones join the

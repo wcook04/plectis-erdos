@@ -929,6 +929,12 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     runbook = surfaces["docs/REPRODUCIBILITY.md"]
     workflow = surfaces[".github/workflows/lean.yml"]
     planner = surfaces["scripts/lean_fast_build.py"]
+    build_job = re.search(
+        r"(?ms)^  build:\n(?P<body>.*?)(?=^  [A-Za-z0-9_-]+:\n|\Z)",
+        workflow,
+    )
+    require(build_job is not None, "Lean CI lost its build job")
+    build_job_body = build_job.group("body") if build_job is not None else ""
 
     for token in (
         "A cold clone can navigate before this step",
@@ -957,6 +963,13 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     require(first_build_command >= 0, "README lost its coordinated Lean build command")
     require(toolchain_guide < first_build_command, "README names the Lean setup guide only after the first build command; "
         "a reader without elan hits `command not found` before they reach it")
+    first_build_block_end = first_contact.find("```", first_build_command)
+    require(
+        first_build_block_end > first_build_command
+        and "ErdosProblems.Erdos249.PeriodMultipleEscape"
+        in first_contact[first_build_command:first_build_block_end],
+        "README makes a full-corpus build the first Lean success path",
+    )
     require("elan" in readme, "README no longer names Lean's toolchain manager")
     require(
         re.search(r"(?m)^\s*lake build\b", runbook) is None,
@@ -975,6 +988,12 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
             )
         ),
         "reproducibility runbook lost a supported public build target",
+    )
+    focused_replay = runbook.find("ErdosProblems.Erdos249.PeriodMultipleEscape")
+    complete_replay = runbook.find("Erdos249257 ErdosProblems")
+    require(
+        0 <= focused_replay < complete_replay,
+        "runbook must offer a focused Lean success before the complete release replay",
     )
     require(
         "fetches the pinned cache when needed" in readme_flat,
@@ -996,7 +1015,6 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness",
         "python3 scripts/build_lean_dependency_index.py --check",
         "No Lean source or proof-environment input changed; compilation is unchanged.",
-        "This is already a default root.",
     ):
         require(token in workflow, f"Lean CI lost cache/build contract: {token}")
 
@@ -1019,6 +1037,24 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         "Lean CI repeats the standalone cold-clone baseline after the release "
         "gate already runs the combined baseline-plus-adversarial program",
     )
+    require(
+        len(re.findall(r"(?m)^\s*run:\s*python3 scripts/lean_fast_build\.py\b", build_job_body))
+        == 1,
+        "Lean CI must have exactly one coordinated build-wrapper owner",
+    )
+    require(
+        re.search(r"(?m)^\s*run:\s*lake build\b", build_job_body) is None,
+        "Lean CI launches a duplicate raw Lake build outside the wrapper",
+    )
+    for target in (
+        "Erdos249257",
+        "ErdosProblems",
+        "Examples",
+        "FormalConjecturesAdapter",
+        "FormalConjecturesVariants",
+        "ResidualBench",
+    ):
+        require(target in build_job_body, f"Lean CI wrapper lost target {target}")
 
     for token in (
         '"--changed-from"',

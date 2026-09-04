@@ -30,7 +30,7 @@ release and say that it helped. The public contribution record keeps the
 solver, collaborators, prior work, tools, and infrastructure roles separate;
 using this system does not transfer authorship of a proof to me.
 
-For the default Lean proof build, first install `elan` from the
+For a first Lean proof check, install `elan` from the
 [Lean setup guide](https://leanprover-community.github.io/get_started.html),
 then use the proof-only checkout. It skips the large generated-document tree
 and obsolete historical blobs:
@@ -40,7 +40,8 @@ git clone --depth=1 --filter=blob:none --single-branch --no-checkout https://git
 git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
 git -C plectis-lean-erdos249-257 checkout
 cd plectis-lean-erdos249-257
-python3 scripts/lean_fast_build.py --jobs 2
+python3 scripts/lean_fast_build.py --jobs 2 \
+  ErdosProblems.Erdos249.PeriodMultipleEscape
 ```
 
 The versioned sparse manifest checks out the two default Lean libraries, the
@@ -49,7 +50,11 @@ files. It does not make Git fetch the root PDFs or the generated-document tree
 before the sparse rules exist. The wrapper fetches the pinned dependency cache
 only when needed, reuses compatible host packages across clones, and joins
 duplicate concurrent builds. Successful identical builds also reuse bounded
-copy-on-write output seeds across clones.
+copy-on-write output seeds across clones. The focused command checks a real
+published theorem module without first elaborating every generated certificate.
+Use the full six-target command in
+[the release reproduction guide](docs/REPRODUCIBILITY.md#2-reproduce-the-lean-environment)
+only when you intend to replay the complete public proof environment.
 
 To inspect the papers, claims, open boundaries, and contribution route without
 installing Lean, use the reader checkout. It avoids the machine-scale generated

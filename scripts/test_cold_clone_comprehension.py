@@ -586,6 +586,19 @@ def main() -> int:
         raise AssertionError("raw Lake command bypassed the public build wrapper")
 
     mutated_incremental = copy.deepcopy(incremental_surfaces)
+    mutated_incremental["README.md"] = mutated_incremental["README.md"].replace(
+        "ErdosProblems.Erdos249.PeriodMultipleEscape",
+        "Erdos249257",
+        1,
+    )
+    try:
+        diagnostic.validate_incremental_build_contract(mutated_incremental)
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("full-corpus-first README regression escaped")
+
+    mutated_incremental = copy.deepcopy(incremental_surfaces)
     mutated_incremental["docs/REPRODUCIBILITY.md"] = mutated_incremental[
         "docs/REPRODUCIBILITY.md"
     ].replace(
@@ -599,6 +612,23 @@ def main() -> int:
         checks += 1
     else:
         raise AssertionError("runbook raw Lake command bypass escaped")
+
+    mutated_incremental = copy.deepcopy(incremental_surfaces)
+    mutated_incremental[".github/workflows/lean.yml"] = mutated_incremental[
+        ".github/workflows/lean.yml"
+    ].replace(
+        "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness",
+        "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness\n"
+        "      - name: Duplicate build\n"
+        "        run: lake build ErdosProblems",
+        1,
+    )
+    try:
+        diagnostic.validate_incremental_build_contract(mutated_incremental)
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("duplicate raw Lake CI build escaped")
 
     mutated_incremental = copy.deepcopy(incremental_surfaces)
     mutated_incremental[".github/workflows/lean.yml"] = mutated_incremental[
