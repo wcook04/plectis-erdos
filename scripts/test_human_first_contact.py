@@ -65,13 +65,15 @@ def main() -> None:
     results = (ROOT / "docs/RESULTS.md").read_text(encoding="utf-8")
     docs_index = (ROOT / "docs/README.md").read_text(encoding="utf-8")
 
-    for source in (
+    reader_surfaces = (
         ROOT / "README.md",
         HUMAN_ENTRY,
         ROOT / "docs/README.md",
         ROOT / "docs/RESULTS.md",
         ROOT / "docs/AGENT_WORKBENCH.md",
-    ):
+        *sorted((ROOT / "docs/papers/full-text").glob("*.md")),
+    )
+    for source in reader_surfaces:
         for target in local_markdown_targets(source):
             require(target.is_file(), f"{source.relative_to(ROOT)} has a dead local link: {target}")
 

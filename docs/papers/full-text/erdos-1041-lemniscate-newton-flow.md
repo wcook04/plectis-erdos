@@ -82,7 +82,7 @@ We study the Newton flow whose trajectories foliate the lemniscate.
 
 *Status.* The problem treated here is open, and this note does not close it. Every statement below marked as checked is a proposition that the pinned Lean kernel accepts from the sources this note links to, with no `sorry`, no added axiom, and no unchecked evaluation. That is a claim about the formal statement, not about its mathematical interest, its novelty, or the original problem. The unresolved obligations are named exactly, in their own section, and none of the finite computations, reductions, or no-go results here removes one of them.
 
-*Companion system context.* The [claim and trust boundary](claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
 
 | Statement | Status | Exact boundary |
 |:---|:---|:---|
