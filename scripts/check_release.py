@@ -141,25 +141,73 @@ def run_independent_checks(
     commands: dict[str, list[str]],
 ) -> dict[str, subprocess.CompletedProcess[str]]:
     """Run independent read-only release suites with bounded concurrency."""
-    def run_one(
-        item: tuple[str, list[str]],
-    ) -> tuple[str, subprocess.CompletedProcess[str]]:
-        check_id, argv = item
-        result = _SUBPROCESS_RUN(
-            argv,
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            check=False,
-            env=clean_environment(),
-            timeout=SUBPROCESS_TIMEOUT_SECONDS,
-        )
-        return check_id, result
+    executor, futures = start_independent_checks(commands)
+    return finish_independent_checks(executor, futures)
 
-    with ThreadPoolExecutor(
-        max_workers=min(RELEASE_CHECK_WORKERS, len(commands))
-    ) as executor:
-        return dict(executor.map(run_one, commands.items()))
+
+def _run_independent_check(argv: list[str]) -> subprocess.CompletedProcess[str]:
+    return _SUBPROCESS_RUN(
+        argv,
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+        env=clean_environment(),
+        timeout=SUBPROCESS_TIMEOUT_SECONDS,
+    )
+
+
+def start_independent_checks(
+    commands: dict[str, list[str]],
+) -> tuple[ThreadPoolExecutor, dict[str, Any]]:
+    """Start bounded read-only checks whose results are consumed at a later barrier."""
+    executor = ThreadPoolExecutor(max_workers=min(RELEASE_CHECK_WORKERS, len(commands)))
+    return executor, {
+        check_id: executor.submit(_run_independent_check, argv)
+        for check_id, argv in commands.items()
+    }
+
+
+def finish_independent_checks(
+    executor: ThreadPoolExecutor,
+    futures: dict[str, Any],
+) -> dict[str, subprocess.CompletedProcess[str]]:
+    """Collect a previously started check batch and always close its workers."""
+    try:
+        return {check_id: future.result() for check_id, future in futures.items()}
+    finally:
+        executor.shutdown(wait=True, cancel_futures=True)
+
+
+def late_check_commands() -> dict[str, list[str]]:
+    """Read-only suites that may overlap the release gate's middle section."""
+    return {
+        "query": [sys.executable, str(ROOT / "scripts" / "test_query_corpus.py")],
+        "mutation_harness": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_publication_mutation_harness.py"),
+        ],
+        "public_boundary": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_public_artifact_boundary.py"),
+        ],
+        "primary_source_disposition": [
+            sys.executable,
+            str(ROOT / "scripts" / "check_primary_source_dispositions.py"),
+        ],
+        "cold_clone_adversarial": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
+        ],
+        "proof_cockpit": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_proof_cockpit.py"),
+        ],
+        "clone_footprint": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_clone_footprint.py"),
+        ],
+    }
 
 ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
 PROOF_PATHS = tuple(
@@ -1996,6 +2044,10 @@ def main(argv: list[str] | None = None) -> int:
             ],
         }
     )
+    # These suites share no writable state with the checks below. Launch them
+    # now and consume their results at the existing final barrier so their
+    # wall time overlaps projection and contract verification.
+    late_executor, late_futures = start_independent_checks(late_check_commands())
     architecture_check = mid_checks["architecture"]
     check(
         architecture_check.returncode == 0,
@@ -2442,41 +2494,7 @@ def main(argv: list[str] | None = None) -> int:
                 release_file_exists(ROOT / rel),
                 f"orientation drilldown path does not exist: {rel}",
             )
-    # These suites share no writable state: their mutations live in memory or
-    # in independent temporary directories. Run them as one bounded batch so
-    # the release wall clock follows the slowest suite rather than their sum.
-    late_checks = run_independent_checks(
-        {
-            "query": [
-                sys.executable,
-                str(ROOT / "scripts" / "test_query_corpus.py"),
-            ],
-            "mutation_harness": [
-                sys.executable,
-                str(ROOT / "scripts" / "test_publication_mutation_harness.py"),
-            ],
-            "public_boundary": [
-                sys.executable,
-                str(ROOT / "scripts" / "test_public_artifact_boundary.py"),
-            ],
-            "primary_source_disposition": [
-                sys.executable,
-                str(ROOT / "scripts" / "check_primary_source_dispositions.py"),
-            ],
-            "cold_clone_adversarial": [
-                sys.executable,
-                str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
-            ],
-            "proof_cockpit": [
-                sys.executable,
-                str(ROOT / "scripts" / "test_proof_cockpit.py"),
-            ],
-            "clone_footprint": [
-                sys.executable,
-                str(ROOT / "scripts" / "test_clone_footprint.py"),
-            ],
-        }
-    )
+    late_checks = finish_independent_checks(late_executor, late_futures)
     query_check = late_checks["query"]
     check(query_check.returncode == 0,
           f"corpus query surface failed: {query_check.stdout.strip() or query_check.stderr.strip()}")

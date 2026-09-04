@@ -11,6 +11,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import threading
 from pathlib import Path
 from unittest.mock import patch
 
@@ -281,6 +282,36 @@ def main() -> int:
         sorted(independent_dispatches)
         == sorted(tuple(argv) for argv in independent_commands.values()),
         "independent release batch dropped or repeated a command",
+    )
+
+    release_deferred = threading.Event()
+    both_started = threading.Event()
+    dispatch_count = 0
+    dispatch_lock = threading.Lock()
+
+    def hold_independent(
+        args: list[str], **kwargs: object
+    ) -> subprocess.CompletedProcess[str]:
+        nonlocal dispatch_count
+        with dispatch_lock:
+            dispatch_count += 1
+            if dispatch_count == len(independent_commands):
+                both_started.set()
+        release_deferred.wait(timeout=2)
+        return subprocess.CompletedProcess(args, returncode=0, stdout="ok", stderr="")
+
+    with patch.object(check_release, "_SUBPROCESS_RUN", side_effect=hold_independent):
+        executor, futures = check_release.start_independent_checks(independent_commands)
+        require(both_started.wait(timeout=2), "deferred checks did not start concurrently")
+        require(
+            not any(future.done() for future in futures.values()),
+            "deferred check launch waited for a result",
+        )
+        release_deferred.set()
+        deferred_results = check_release.finish_independent_checks(executor, futures)
+    require(
+        set(deferred_results) == set(independent_commands),
+        "deferred release batch lost a named result",
     )
 
     require(
