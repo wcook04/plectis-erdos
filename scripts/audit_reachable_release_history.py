@@ -1455,8 +1455,50 @@ def _json_without_volatile(payload: dict[str, object]) -> dict[str, object]:
         inventory.pop("reachable_blob_count", None)
     refs = copy.get("refs")
     if isinstance(refs, list):
-        copy["refs"] = [row for row in refs if row.get("ref") != "refs/heads/main"]
+        copy["refs"] = _public_ref_view(refs)
     return copy
+
+
+def _public_ref_view(refs: list[dict[str, object]]) -> list[dict[str, object]]:
+    """Collapse ref rows to the view every public clone shape shares.
+
+    The evidence comparison used to keep every ref row verbatim, so a report
+    could validate only in a clone whose refs were row-for-row identical to
+    the one that generated it. No two checkouts are: a local clone carries
+    ``refs/heads/<branch>`` and ``refs/remotes/origin/HEAD``, a push-event
+    runner carries ``refs/heads/<branch>`` without the symbolic HEAD, and a
+    pull-request runner carries ``refs/remotes/pull/<n>/merge`` and no local
+    branch at all. The job had never been green. Compare instead by what a
+    public clone can actually reach: each branch name once, whether it is
+    seen as a local head or as origin's remote-tracking ref, plus every tag,
+    keyed by the commit it peels to. Pull-request merge refs and the
+    symbolic origin HEAD name nothing a reader can clone, so they are
+    dropped from the comparison; they are still scanned.
+    """
+    view: dict[tuple[str, str], str] = {}
+    for row in refs:
+        ref = str(row.get("ref", ""))
+        peeled = str(row.get("peeled_commit") or row.get("object_id") or "")
+        if ref.startswith("refs/heads/"):
+            key = ("branch", ref[len("refs/heads/"):])
+        elif ref.startswith("refs/remotes/origin/"):
+            name = ref[len("refs/remotes/origin/"):]
+            if name == "HEAD":
+                continue
+            key = ("branch", name)
+        elif ref.startswith("refs/remotes/pull/"):
+            continue
+        elif ref.startswith("refs/tags/"):
+            key = ("tag", ref[len("refs/tags/"):])
+        else:
+            key = ("other", ref)
+        if key == ("branch", "main"):
+            continue
+        view.setdefault(key, peeled)
+    return [
+        {"ref_class": ref_class, "name": name, "peeled_commit": peeled}
+        for (ref_class, name), peeled in sorted(view.items())
+    ]
 
 
 def comparison_errors(report: dict[str, object], current: dict[str, object], root: Path = ROOT) -> list[str]:
