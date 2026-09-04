@@ -1039,7 +1039,13 @@ def owner_is_live(owner: Any) -> bool:
 
 
 def receipt_is_live(receipt: dict[str, Any]) -> bool:
-    if receipt.get("state") not in {"launching", "future", "queued", "running"}:
+    if receipt.get("state") not in {
+        "launching",
+        "future",
+        "queued",
+        "running",
+        "retrying_external_termination",
+    }:
         return False
     if owner_is_live(receipt.get("owner")):
         return True
@@ -1145,6 +1151,56 @@ def publish_launch_failure(
     return terminal
 
 
+def publish_resource_busy(
+    state: dict[str, Path],
+    receipt: dict[str, Any],
+    artifact: Path,
+    resource_group: str,
+    started: str,
+) -> int:
+    """Finish promptly when a different heavy Lean validation owns the host."""
+
+    stdout_path = safe_child(artifact, "stdout.log")
+    stderr_path = safe_child(artifact, "stderr.log")
+    atomic_write(stdout_path, b"")
+    atomic_write(
+        stderr_path,
+        (
+            "validation deferred: another non-identical Lean validation owns "
+            f"the host resource group {resource_group!r}; retry after it finishes\n"
+        ).encode("utf-8"),
+    )
+    terminal = {
+        **receipt,
+        "state": "terminal",
+        "updated_at": utc_now(),
+        "completed_at": utc_now(),
+        "started_at": started,
+        "exit_code": 75,
+        "exit_state": "resource_busy",
+        "resource_group": resource_group,
+        "stdout": {
+            "path": f"artifacts/{receipt['key']}/stdout.log",
+            "sha256": digest_file(stdout_path),
+            "tail": bounded_tail(stdout_path),
+        },
+        "stderr": {
+            "path": f"artifacts/{receipt['key']}/stderr.log",
+            "sha256": digest_file(stderr_path),
+            "tail": bounded_tail(stderr_path),
+        },
+        "artifacts": [
+            f"artifacts/{receipt['key']}/stdout.log",
+            f"artifacts/{receipt['key']}/stderr.log",
+        ],
+        "validation_authority": ROSTER_VALIDATORS[
+            receipt["inputs"]["validation_class"]
+        ],
+    }
+    write_receipt(state, receipt["key"], terminal)
+    return 75
+
+
 def launch_worker(state: dict[str, Path], specification: dict[str, Any], previous: dict[str, Any] | None) -> dict[str, Any]:
     validate_specification(specification)
     key = specification["key"]
@@ -1204,6 +1260,8 @@ def submit(specification: dict[str, Any], state_root: Path) -> dict[str, Any]:
     try:
         existing = load_receipt(state, key)
         if existing is not None and existing.get("state") == "terminal":
+            if existing.get("exit_state") == "resource_busy":
+                return launch_worker(state, specification, existing)
             if (
                 requires_lean_build_materialization(existing)
                 and existing.get("exit_code") == 0
@@ -1260,8 +1318,15 @@ def worker(state_root: Path, key: str, token: str) -> int:
             write_receipt(state, key, receipt)
             selected_resource_lock = resource_lock_path(state, resource_group)
             selected_resource_lock.parent.mkdir(parents=True, exist_ok=True)
-            resource_lock = open_lock(selected_resource_lock)
-            assert resource_lock is not None
+            resource_lock = open_lock(selected_resource_lock, blocking=False)
+            if resource_lock is None:
+                return publish_resource_busy(
+                    state,
+                    receipt,
+                    artifact,
+                    resource_group,
+                    started,
+                )
         receipt.update({"state": "running", "updated_at": utc_now(), "child": None})
         write_receipt(state, key, receipt)
         child_environment = command_environment()
@@ -1413,6 +1478,9 @@ def collect(state_root: Path, key: str, wait: bool, timeout_seconds: float) -> t
                     receipt["exit_state"] = "build_output_unavailable"
                     return receipt, 75
             return receipt, int(receipt["exit_code"])
+        if not receipt.get("live", False):
+            receipt["owner_unavailable"] = True
+            return receipt, 75
         if not wait:
             return receipt, 75
         if time.monotonic() >= deadline:

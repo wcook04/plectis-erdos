@@ -315,18 +315,21 @@ class ValidationSingleflightTests(unittest.TestCase):
             "tree_and_dirty_content_checkout_independent",
         )
 
-    def test_identical_jobs_join_and_distinct_lean_jobs_serialize(self) -> None:
+    def test_identical_jobs_join_and_distinct_lean_jobs_defer_without_queueing(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(
             singleflight, "automatic_cleanup", return_value={"status": "fixture"}
         ):
             state_root = Path(directory) / "state"
             interval_paths = [Path(directory) / f"interval-{index}.json" for index in range(2)]
+            release_paths = [Path(directory) / f"release-{index}" for index in range(2)]
             specifications = []
-            for interval_path in interval_paths:
+            for interval_path, release_path in zip(interval_paths, release_paths):
                 code = (
                     "import json,time,pathlib; "
                     f"p=pathlib.Path({str(interval_path)!r}); "
-                    "start=time.time_ns(); time.sleep(0.25); "
+                    f"release=pathlib.Path({str(release_path)!r}); "
+                    "start=time.time_ns(); p.write_text(json.dumps({'start':start})); "
+                    "exec('while not release.exists():\\n    time.sleep(0.01)'); "
                     "p.write_text(json.dumps({'start':start,'end':time.time_ns()}))"
                 )
                 specifications.append(
@@ -335,15 +338,37 @@ class ValidationSingleflightTests(unittest.TestCase):
 
             first = singleflight.submit(specifications[0], state_root)
             duplicate = singleflight.submit(specifications[0], state_root)
+            deadline = singleflight.time.monotonic() + 2
+            while not interval_paths[0].exists() and singleflight.time.monotonic() < deadline:
+                singleflight.time.sleep(0.01)
+            self.assertTrue(interval_paths[0].exists(), first)
             second = singleflight.submit(specifications[1], state_root)
             self.assertEqual(first["key"], duplicate["key"])
             self.assertEqual(duplicate["reuse"], "future")
-            for receipt in (first, second):
-                terminal, code = singleflight.collect(
-                    state_root, receipt["key"], True, 10
-                )
-                self.assertEqual(code, 0, terminal)
-                self.assertEqual(terminal["resource_group"], "lean-host")
+            deferred, code = singleflight.collect(
+                state_root, second["key"], True, 10
+            )
+            self.assertEqual(code, 75, deferred)
+            self.assertEqual(deferred["exit_state"], "resource_busy")
+            self.assertEqual(deferred["resource_group"], "lean-host")
+
+            release_paths[0].write_text("release", encoding="utf-8")
+            terminal, code = singleflight.collect(
+                state_root, first["key"], True, 10
+            )
+            self.assertEqual(code, 0, terminal)
+
+            retried = singleflight.submit(specifications[1], state_root)
+            self.assertNotEqual(retried.get("reuse"), "terminal")
+            deadline = singleflight.time.monotonic() + 2
+            while not interval_paths[1].exists() and singleflight.time.monotonic() < deadline:
+                singleflight.time.sleep(0.01)
+            self.assertTrue(interval_paths[1].exists(), retried)
+            release_paths[1].write_text("release", encoding="utf-8")
+            terminal, code = singleflight.collect(
+                state_root, retried["key"], True, 10
+            )
+            self.assertEqual(code, 0, terminal)
 
             intervals = [json.loads(path.read_text()) for path in interval_paths]
             self.assertTrue(
@@ -351,6 +376,29 @@ class ValidationSingleflightTests(unittest.TestCase):
                 or intervals[1]["end"] <= intervals[0]["start"],
                 intervals,
             )
+
+    def test_collect_returns_promptly_when_a_nonterminal_owner_is_gone(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory) / "state"
+            state = singleflight.ensure_state_root(state_root)
+            specification = self._safe_spec([sys.executable, "-c", "pass"])
+            receipt = {
+                **specification,
+                "state": "queued",
+                "created_at": singleflight.utc_now(),
+                "updated_at": singleflight.utc_now(),
+                "owner": {"pid": 999_999_999, "pgid": 999_999_999, "start_token": "missing"},
+                "child": None,
+                "artifacts": [],
+            }
+            singleflight.write_receipt(state, specification["key"], receipt)
+            started = singleflight.time.monotonic()
+            observed, code = singleflight.collect(
+                state_root, specification["key"], True, 10
+            )
+        self.assertEqual(code, 75)
+        self.assertTrue(observed["owner_unavailable"])
+        self.assertLess(singleflight.time.monotonic() - started, 1)
 
     def test_external_sigterm_is_resumed_by_the_same_owner(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(
