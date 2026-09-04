@@ -107,10 +107,12 @@ LEAN_CLONE_COMMAND = (
     "https://github.com/wcook04/plectis-lean-erdos249-257.git"
 )
 QUICK_LEAN_SPARSE_COMMAND = (
+    "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-quick-sparse-checkout && "
     "git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-quick-sparse-checkout | "
     "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
 )
 LEAN_SPARSE_COMMAND = (
+    "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-sparse-checkout && "
     "git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | "
     "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
 )
@@ -121,6 +123,7 @@ READER_CLONE_COMMAND = (
     "https://github.com/wcook04/plectis-lean-erdos249-257.git"
 )
 READER_SPARSE_COMMAND = (
+    "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/reader-sparse-checkout && "
     "git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | "
     "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
 )

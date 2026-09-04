@@ -79,6 +79,15 @@ class CloneFootprintTests(unittest.TestCase):
         errors = footprint.contract_errors(report, footprint.FULL_CLONE_COMMAND)
         self.assertTrue(any("--no-checkout" in error for error in errors))
 
+    def test_sparse_commands_preflight_the_manifest_object(self) -> None:
+        for command in (
+            footprint.QUICK_LEAN_SPARSE_COMMAND,
+            footprint.LEAN_SPARSE_COMMAND,
+            footprint.READER_SPARSE_COMMAND,
+        ):
+            self.assertIn("cat-file -e HEAD:scripts/", command)
+            self.assertIn(" && git -C ", command)
+
     def test_readme_cannot_restore_all_branch_clone(self) -> None:
         entries = [
             {"path": "Erdos249257/A.lean", "size_bytes": 1},

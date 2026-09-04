@@ -1129,12 +1129,14 @@ def validate_human_first_contact(
         "https://github.com/wcook04/plectis-lean-erdos249-257.git"
     )
     lean_sparse_command = (
+        "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-sparse-checkout && "
         "git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | "
         "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
     )
     lean_checkout_command = "git -C plectis-lean-erdos249-257 checkout"
     lean_build_command = "python3 scripts/lean_fast_build.py --jobs 2"
     reader_sparse_command = (
+        "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/reader-sparse-checkout && "
         "git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | "
         "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
     )

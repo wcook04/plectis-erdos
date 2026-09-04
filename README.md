@@ -18,8 +18,8 @@ Large-language-model agents drafted prose, proofs, and software. Will Cook
 reviewed the claims and sources and is responsible for the release.
 
 If you solve one, the result and credit are yours. If this repository or
-Plectis materially helped, cite the release and say so. If it is useful before
-you have a result, star or share the repository so another researcher finds it.
+Plectis materially helped, cite the release and say so. If useful, star or share
+the repository so another researcher finds it.
 The contribution record keeps solvers, collaborators, prior work, tools, and
 infrastructure distinct.
 
@@ -34,14 +34,15 @@ The proof build needs `elan`; install it from the
 ```bash
 # Quick proof, full Lean source, or reader files: choose one manifest
 git clone --depth=1 --filter=blob:none --single-branch --no-checkout https://github.com/wcook04/plectis-lean-erdos249-257.git
-git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-quick-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
-git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
-git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
+git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-quick-sparse-checkout && git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-quick-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
+git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-sparse-checkout && git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
+git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/reader-sparse-checkout && git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
 git -C plectis-lean-erdos249-257 checkout
 
-# Complete current corpus, then inspect one claim
+# Complete current corpus, fetch its pinned history, then inspect one claim
 git clone --depth=1 --filter=blob:none --single-branch https://github.com/wcook04/plectis-lean-erdos249-257.git plectis-current
 cd plectis-current
+git fetch --filter=blob:none --unshallow origin main
 python3 scripts/verify_claims.py --claim eb_full_support
 cd ..
 

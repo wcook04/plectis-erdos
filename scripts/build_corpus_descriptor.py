@@ -512,7 +512,7 @@ def build_access_contract(repository: str) -> dict[str, Any]:
                 "checkout_shape": "depth_one_blobless_sparse_single_branch",
                 "commands": [
                     f"git clone --depth=1 --filter=blob:none --single-branch --no-checkout {clone_url}",
-                    f"git -C {checkout} show HEAD:scripts/lean-sparse-checkout | git -C {checkout} sparse-checkout set --no-cone --stdin",
+                    f"git -C {checkout} cat-file -e HEAD:scripts/lean-sparse-checkout && git -C {checkout} show HEAD:scripts/lean-sparse-checkout | git -C {checkout} sparse-checkout set --no-cone --stdin",
                     f"git -C {checkout} checkout",
                     f"cd {checkout} && python3 scripts/lean_fast_build.py --jobs 2",
                 ],
@@ -522,7 +522,7 @@ def build_access_contract(repository: str) -> dict[str, Any]:
                 "checkout_shape": "depth_one_blobless_manifest_sparse_single_branch",
                 "commands": [
                     f"git clone --depth=1 --filter=blob:none --single-branch --no-checkout {clone_url}",
-                    f"git -C {checkout} show HEAD:scripts/reader-sparse-checkout | git -C {checkout} sparse-checkout set --no-cone --stdin",
+                    f"git -C {checkout} cat-file -e HEAD:scripts/reader-sparse-checkout && git -C {checkout} show HEAD:scripts/reader-sparse-checkout | git -C {checkout} sparse-checkout set --no-cone --stdin",
                     f"git -C {checkout} checkout",
                 ],
             },
