@@ -5007,6 +5007,7 @@ def is_repository_overview_query(query: str) -> bool:
         "lay of the land",
         "walk me through this codebase",
         "what are the interesting and non trivial results",
+        "explain this project",
         "explain this project to me",
         "what has been formalized",
         "comprehensive tour",
@@ -5957,10 +5958,10 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
     return route
 
 
-def corpus_scope_boundary_packet(query: str) -> dict[str, Any] | None:
-    """Reject explicit problem numbers absent from the live public registry."""
+def explicit_problem_numbers(query: str) -> set[int]:
+    """Return Erdős problem numbers explicitly named in ordinary text."""
     normalized_query = normalized_search_text(query)
-    requested_numbers = {
+    return {
         int(match)
         for pattern in (
             r"\berdos(?:\s+problem)?\s*#?\s*(\d+)\b",
@@ -5968,6 +5969,22 @@ def corpus_scope_boundary_packet(query: str) -> dict[str, Any] | None:
         )
         for match in re.findall(pattern, normalized_query)
     }
+
+
+def explicit_erdos_problem_numbers(query: str) -> set[int]:
+    """Return numbers attached explicitly to the name Erdős."""
+    return {
+        int(match)
+        for match in re.findall(
+            r"\berdos(?:\s+problem)?\s*#?\s*(\d+)\b",
+            normalized_search_text(query),
+        )
+    }
+
+
+def corpus_scope_boundary_packet(query: str) -> dict[str, Any] | None:
+    """Reject explicit problem numbers absent from the live public registry."""
+    requested_numbers = explicit_problem_numbers(query)
     if not requested_numbers:
         return None
 
@@ -6004,6 +6021,63 @@ def corpus_scope_boundary_packet(query: str) -> dict[str, Any] | None:
             "requested problem; this corpus will not substitute ranked results "
             "from other problems."
         ),
+    }
+
+
+def explicit_problem_reading_route(
+    query: str, claims: dict[str, Any]
+) -> dict[str, Any] | None:
+    """Bind one explicitly named indexed problem to its canonical route.
+
+    This is deliberately stronger than lexical ranking. Once a reader names a
+    single Erdős number, unrelated declarations, open records, and programme
+    routes must not enter the bounded answer merely because they share words
+    such as ``open``, ``failed``, or ``programme``.
+    """
+    requested_numbers = explicit_erdos_problem_numbers(query)
+    if len(requested_numbers) != 1:
+        return None
+    problem_number = next(iter(requested_numbers))
+    indexed_numbers = {
+        int(row["erdos_number"])
+        for row in load("docs/problems.json").get("problems", [])
+    }
+    mentioned_indexed_numbers = {
+        int(token)
+        for token in re.findall(r"\b\d+\b", normalized_search_text(query))
+        if int(token) in indexed_numbers
+    }
+    if mentioned_indexed_numbers != {problem_number}:
+        return None
+    problem = next(
+        (
+            row
+            for row in load("docs/problems.json").get("problems", [])
+            if int(row["erdos_number"]) == problem_number
+        ),
+        None,
+    )
+    if problem is None:
+        return None
+    problem_id = str(problem["problem_id"])
+    target_claim = next(
+        (row for row in claims["claims"] if row["id"] == problem_id),
+        None,
+    )
+    remaining_open_ids = (
+        list(target_claim.get("remaining_open_proposition_ids", []))
+        if target_claim is not None
+        else []
+    )
+    return {
+        "kind": "reading_route",
+        "id": problem_id,
+        "route_kind": "problem_route",
+        "title": problem["short_title"],
+        "intent": problem["question"],
+        "problem_target_claim_ids": [problem_id],
+        "remaining_open_proposition_ids": remaining_open_ids,
+        "explicit_problem_number": problem_number,
     }
 
 
@@ -6125,6 +6199,17 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             selection="exact_problem_registry_term",
             remaining_open_proposition_ids=tuple(
                 problem_route.get("remaining_open_proposition_ids", [])
+            ),
+        )
+    explicit_problem_route = explicit_problem_reading_route(query, claims)
+    if explicit_problem_route is not None:
+        return direct_route_search_packet(
+            query,
+            limit,
+            explicit_problem_route,
+            selection="explicit_problem_number_route",
+            remaining_open_proposition_ids=tuple(
+                explicit_problem_route["remaining_open_proposition_ids"]
             ),
         )
     exact_routes = exact_discovery_routes(query, claims)
@@ -7007,6 +7092,13 @@ def semantic_cell(
             "programme": programme,
             "route_memory": packet.get("route_memory"),
         }
+        if packet["kind"] == "problem_route":
+            content["mathematical_signal_spine"] = packet[
+                "mathematical_signal_spine"
+            ]
+            content["canonical_problem_route"] = (
+                f"python3 scripts/query_corpus.py --route {handle}"
+            )
         expansion_command = f"python3 scripts/query_corpus.py --route {handle}"
         if programme and operator_id in ("trace", "digest"):
             witness_edges.extend(
@@ -7763,6 +7855,23 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
         return paper_reading_guide_packet()
     search = search_packet(query, max(12, min(MAX_LIMIT, limit)))
     interpretation = search["query_interpretation"]
+    routing_selection = search.get("routing_receipt", {}).get("selection")
+    if routing_selection == "explicit_problem_number_route":
+        constrained_route = search["results"][0]
+        interpretation = {
+            **interpretation,
+            "problem_constraint": {
+                "erdos_number": constrained_route["explicit_problem_number"],
+                "route_id": constrained_route["id"],
+                "authority_command": (
+                    "python3 scripts/query_corpus.py --route "
+                    f"{constrained_route['id']}"
+                ),
+                "selection_policy": (
+                    "explicit_number_excludes_other_problem_results_routes_and_open_records"
+                ),
+            },
+        }
     operator_id = interpretation["operator"]["id"]
     hint_targets = set(semantic_hint_targets(query))
     directly_routed = [
@@ -7977,8 +8086,13 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
                 ]
             )
     else:
+        selection_reason = (
+            "explicit_problem_number_route"
+            if routing_selection == "explicit_problem_number_route"
+            else "ranked_query_relative_match"
+        )
         selected_with_reasons = [
-            (result, "ranked_query_relative_match")
+            (result, selection_reason)
             for result in search["results"][
                 : min(limit, MAX_SEMANTIC_CELLS)
             ]
@@ -8001,10 +8115,9 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
                     )
                 )
             elif result["kind"] == "reading_route":
+                route_row = route_index.get(result["id"], result)
                 boundary_ids.extend(
-                    route_index[result["id"]].get(
-                        "remaining_open_proposition_ids", []
-                    )
+                    route_row.get("remaining_open_proposition_ids", [])
                 )
         existing_open_ids = {
             result["id"]
@@ -9416,6 +9529,16 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
         "kind": "repository_overview",
         "schema_version": "erdos249257-repository-overview/2",
         "authority_posture": "bounded_public_orientation_not_proof_authority",
+        "reader_entry": {
+            "human_entry": "HUMAN_ENTRY.md",
+            "instant_orientation": (
+                "python3 scripts/query_corpus.py --route instant_orientation"
+            ),
+            "boundary": (
+                "The human entry explains in ordinary language and the route "
+                "supplies bounded navigation; neither is proof authority."
+            ),
+        },
         "mathematical_signal_spine": mathematical_signal_spine(claims),
         "coverage_receipt": {
             "mathematical_programme_count": len(programmes),

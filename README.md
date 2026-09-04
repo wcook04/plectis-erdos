@@ -138,9 +138,11 @@ needs the pinned toolchain and is described in the
 consumer; its conditional shell-pressure example leaves the analytic hypothesis
 explicit and does not prove universal #257.
 
-An agent arriving cold reads [`AGENTS.override.md`](AGENTS.override.md), then the
-bounded [`docs/orientation.json`](docs/orientation.json), and selects one
-programme before expanding the registry.
+An agent arriving cold reads [`AGENTS.override.md`](AGENTS.override.md), then
+runs `python3 scripts/agent_entry.py --entry "<task in ordinary language>"` as
+its first action and follows the bounded read set it returns. The
+[`docs/orientation.json`](docs/orientation.json) projection is a later route
+when selected, not the task router.
 [The Agent Workbench](docs/AGENT_WORKBENCH.md) records typed reasoning moves and
 kernel probes; only kernel receipts assert.
 

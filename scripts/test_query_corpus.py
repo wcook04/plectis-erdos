@@ -849,6 +849,67 @@ def validate_natural_language_search() -> None:
         "| requested=#300 | out_of_scope=#300 "
     )
     assert "claim_effect=none" in boundary_card.stdout
+
+    problem_question = "What failed on Erdős 1041 and what remains open?"
+    problem_bound = query("--ask", problem_question, "--format", "json")
+    assert problem_bound["kind"] == "semantic_slice"
+    problem_cells = problem_bound["semantic_cells"]
+    assert [(row["kind"], row["handle"]) for row in problem_cells] == [
+        ("reading_route", "erdos_1041"),
+        ("open_proposition", "remaining_open.erdos_1041_lemniscate_connection"),
+    ]
+    assert all(
+        row["selection_reason"] == "explicit_problem_number_route"
+        for row in problem_cells
+    )
+    assert problem_bound["query_interpretation"]["problem_constraint"] == {
+        "erdos_number": 1041,
+        "route_id": "erdos_1041",
+        "authority_command": (
+            "python3 scripts/query_corpus.py --route erdos_1041"
+        ),
+        "selection_policy": (
+            "explicit_number_excludes_other_problem_results_routes_and_open_records"
+        ),
+    }
+    problem_route_cell = problem_cells[0]
+    assert problem_route_cell["content"]["route"]["id"] == "erdos_1041"
+    assert problem_route_cell["content"]["route"]["erdos_number"] == 1041
+    assert problem_route_cell["content"]["canonical_problem_route"] == (
+        "python3 scripts/query_corpus.py --route erdos_1041"
+    )
+    assert problem_route_cell["content"]["mathematical_signal_spine"][
+        "problem"
+    ] == 1041
+    assert [
+        row["id"]
+        for row in problem_bound["operator_synthesis"]["exact_open_records"]
+    ] == ["remaining_open.erdos_1041_lemniscate_connection"]
+    problem_bound_text = json.dumps(problem_bound, ensure_ascii=False)
+    assert "remaining_open.unbounded_certificate_supply" not in problem_bound_text
+    assert "transport_curvature_programme" not in problem_bound_text
+
+    lay_overview = query(
+        "--ask", "Explain this project to a non-specialist", "--format", "json"
+    )
+    assert lay_overview["kind"] == "repository_overview"
+    assert lay_overview["reader_entry"] == {
+        "human_entry": "HUMAN_ENTRY.md",
+        "instant_orientation": (
+            "python3 scripts/query_corpus.py --route instant_orientation"
+        ),
+        "boundary": (
+            "The human entry explains in ordinary language and the route "
+            "supplies bounded navigation; neither is proof authority."
+        ),
+    }
+    assert lay_overview["query_interpretation"]["routed_by"] == (
+        "ordinary_cold_reader_phrase"
+    )
+    assert "ErdosProblems.Hlow.verify.V1" not in json.dumps(
+        lay_overview, ensure_ascii=False
+    )
+
     dictionary = query("--vocabulary")
     assert dictionary["problem_registry_contract"]["source"] == "docs/problems.json"
     assert len(dictionary["problem_registry_contract"]["problems"]) == 8

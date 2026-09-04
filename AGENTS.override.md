@@ -71,8 +71,13 @@ change.
 
 ### Repository architecture, agent entry, cold-clone organization, or docs routing
 
-This lane is not a mathematical query. Start with the committed cold-clone
-contract and bounded orientation:
+The actual first action is:
+
+```sh
+python3 scripts/agent_entry.py --entry "<task in ordinary language>"
+```
+
+Then run the bounded architecture checks:
 
 ```sh
 python3 scripts/proof_cockpit.py --format card
@@ -80,8 +85,8 @@ python3 scripts/test_compact_agent_entry.py
 python3 scripts/check_cold_clone_comprehension.py --quick
 ```
 
-Then read `docs/orientation.json::agent_entry`, [ARCHITECTURE.md](ARCHITECTURE.md),
-or [docs/ORIENTATION.md](docs/ORIENTATION.md), whichever the owner names.
+Read [ARCHITECTURE.md](ARCHITECTURE.md) or
+[docs/ORIENTATION.md](docs/ORIENTATION.md) when the router names it.
 Generated orientation, source maps, indices, aliases, and publication packets
 change through their builder, never by hand.
 
