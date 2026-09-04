@@ -535,6 +535,11 @@ def propagate_stale_targets(
     return stale
 
 
+def missing_olean_targets(names: Iterable[str], root: Path = ROOT) -> list[str]:
+    """Return unquestionably stale targets without asking Lake to rehash."""
+    return [name for name in names if not olean(name, root).is_file()]
+
+
 def build_one(name: str, root: Path = ROOT) -> tuple[str, int, float]:
     started = time.monotonic()
     result = _run(
@@ -843,16 +848,30 @@ def main(argv: list[str] | None = None) -> int:
     build_waves = waves(reachable(target_modules, graph), graph)
     use_lake_staleness = args.lake_staleness
 
+    staleness_label = "mtime"
     if use_lake_staleness:
         # One verbose Lake authority query reports the complete stale import
-        # closure.  Partition that verdict into topological waves locally.
+        # closure. Partition that verdict into topological waves locally. A
+        # genuinely partial cold cache is cheaper and equally sound to start
+        # from its missing outputs: those targets and their dependents must be
+        # rebuilt under any Lake verdict. The final serialized Lake build still
+        # verifies content traces and catches any independent stale output.
         lake_targets = sorted(
             name
             for name in reachable(target_modules, graph)
             if name not in direct_target_names
         )
+        missing_targets = missing_olean_targets(lake_targets, root)
+        if missing_targets:
+            initial_stale_targets = missing_targets
+            staleness_label = "missing-output+final-lake"
+        else:
+            initial_stale_targets = (
+                lake_stale_targets(lake_targets, root) if lake_targets else []
+            )
+            staleness_label = "lake-trace"
         stale_targets = propagate_stale_targets(
-            lake_stale_targets(lake_targets, root) if lake_targets else [],
+            initial_stale_targets,
             build_waves,
             graph,
         )
@@ -888,7 +907,7 @@ def main(argv: list[str] | None = None) -> int:
     print(
         f"lean-fast-build: targets={','.join(target_modules)}; "
         f"{sum(map(len, pending))} stale/missing module(s), jobs={args.jobs}, "
-        f"staleness={'lake-trace' if use_lake_staleness else 'mtime'}",
+        f"staleness={staleness_label}",
         flush=True,
     )
     if args.plan:

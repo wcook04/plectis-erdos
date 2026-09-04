@@ -381,17 +381,12 @@ class LeanFastBuildTests(unittest.TestCase):
         pathspec = pathspec.split("; then", 1)[0]
         self.assertIn("lean-toolchain", pathspec, "the pathspec parse drifted")
 
-        # Seven, not nine. This floor is a ratchet against the list silently
-        # shrinking, and it read 9 until 3daf0de6 removed
-        # build_lean_dependency_index.py and lean_fast_build.py on purpose:
-        # test_lean_dependency_index_cache.check_live_input_surface requires
-        # both to be absent, because those wrappers feed check_input_paths and
-        # editing one would invalidate a semantic projection receipt that no
-        # Lean statement had moved. The ratchet was left at 9, so restoring
-        # them to satisfy it breaks that test instead. The pathspec below still
-        # names both files: a wrapper edit should re-run the build gate even
-        # though it does not invalidate the cached index.
-        self.assertGreaterEqual(len(index_builder.CHECK_INPUT_FILES), 7)
+        # Six authority inputs. The Python wrappers are deliberately absent:
+        # editing orchestration must re-run the CI gate, but must not invalidate
+        # a semantic projection receipt when no Lean statement or exporter
+        # input moved. The workflow pathspec below therefore still names the
+        # wrappers separately from this exact input list.
+        self.assertGreaterEqual(len(index_builder.CHECK_INPUT_FILES), 6)
         for declared in index_builder.CHECK_INPUT_FILES:
             with self.subTest(input=declared):
                 self.assertIn(
@@ -541,7 +536,7 @@ import Pkg.TooLate
 
         self.assertEqual(batches, [["Pkg.A", "Pkg.B"], ["Pkg.C", "Pkg.D"]])
 
-    def test_partial_cache_still_uses_lake_trace_staleness(self) -> None:
+    def test_partial_cache_starts_from_missing_outputs_before_final_lake(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source = root / "Pkg" / "Root.lean"
@@ -549,7 +544,9 @@ import Pkg.TooLate
             source.write_text("-- source\n", encoding="utf-8")
             completed = fast.subprocess.CompletedProcess([], 0, "", "")
             with mock.patch.object(fast, "ROOT", root), mock.patch.object(
-                fast, "lake_stale_targets", return_value=["Pkg.Root"]
+                fast,
+                "lake_stale_targets",
+                side_effect=AssertionError("missing output must not pay for rehash"),
             ) as stale_targets, mock.patch.object(
                 fast, "build_wave", return_value=[]
             ), mock.patch.object(fast.subprocess, "run", return_value=completed):
@@ -558,7 +555,7 @@ import Pkg.TooLate
                     0,
                 )
 
-            stale_targets.assert_called_once_with(["Pkg.Root"], root)
+            stale_targets.assert_not_called()
 
     def test_lake_stale_targets_parses_single_verbose_verdict(self) -> None:
         output = """progress\nSome required targets logged failures:\n- Pkg.A\n- Pkg.B\n"""
@@ -911,10 +908,20 @@ import Pkg.TooLate
                     0,
                 )
 
-            stale_targets.assert_called_once_with(["Pkg.Leaf"], root)
+            stale_targets.assert_not_called()
             self.assertEqual(
                 [call.args[0] for call in run.call_args_list],
                 [
+                    fast.lake_command(
+                        "--quiet",
+                        "--no-ansi",
+                        "--log-level=error",
+                        "build",
+                        "+Pkg.Leaf",
+                    ),
+                    # The missing registered output is prebuilt under the
+                    # bounded scheduler, then checked again at the serialized
+                    # Lake authority boundary before the direct source runs.
                     fast.lake_command(
                         "--quiet",
                         "--no-ansi",
