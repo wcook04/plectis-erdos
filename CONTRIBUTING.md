@@ -9,6 +9,10 @@ problem. A corrected proof step, a counterexample, a failed route with a reason
 another person can check, a clearer boundary, or a repaired public check can
 all save future work.
 
+Participation is governed by the [code of conduct](CODE_OF_CONDUCT.md). Direct
+criticism of a proof, claim, experiment, or repository decision is welcome;
+harassment and attacks on contributors are not.
+
 This contributor path is still a prototype. As of 31 August 2026, the author
 had not recorded a completed external cold-clone run or an accepted outside
 contribution. Reports about setup friction, unclear instructions, broken links,
