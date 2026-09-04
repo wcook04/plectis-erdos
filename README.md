@@ -18,8 +18,10 @@ Large-language-model agents drafted prose, proofs, and software. Will Cook
 reviewed the claims and sources and is responsible for the release.
 
 If you solve one, the result and credit are yours. If this repository or
-Plectis materially helped, cite the release and say so. The contribution record
-keeps solvers, collaborators, prior work, tools, and infrastructure distinct.
+Plectis materially helped, cite the release and say so. If it is useful before
+you have a result, star or share the repository so another researcher finds it.
+The contribution record keeps solvers, collaborators, prior work, tools, and
+infrastructure distinct.
 
 Start with [A reader's way in](HUMAN_ENTRY.md), a command-free tour of the
 problems and evidence boundary.
