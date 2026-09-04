@@ -2574,7 +2574,7 @@ Formalised: [residue–projection equivalence](https://github.com/wcook04/plecti
 
 #### Primality certificates at changing-lcm scales through $`t=64`$.
 
-A finite family of Lucas certificates proves the primality facts required by the diagonal certificates at every $`t\leq64`$ where $`M_t`$ increases; for example, [representative Lucas primality certificate](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean#L51759). This finite theorem family verifies the required primality inputs only through $`t=64`$.
+A finite family of Lucas certificates proves the primality facts required by the diagonal certificates at every $`t\leq64`$ where $`M_t`$ increases; for example, [representative Lucas primality certificate](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level1A.lean#L2398). This finite theorem family verifies the required primality inputs only through $`t=64`$.
 
 <a id="res:t64endpoint"></a>
 
