@@ -1080,6 +1080,45 @@ def main(argv: list[str] | None = None) -> int:
         "systems paper evidence fixtures stopped rejecting: "
         + ", ".join(systems_paper_fixture_failures),
     )
+    # Reject a stale formal-source checkpoint before starting the expensive
+    # projection, query, and adversarial pools. A split or moved Lean module
+    # otherwise makes the answer inevitable but used to keep CPU-heavy readers
+    # alive for another 20-30 seconds before reporting it.
+    release = data["release"]
+    formal_source = release.get("formal_source")
+    check(isinstance(formal_source, dict), "release must name a formal_source checkpoint")
+    formal_ref = formal_source.get("ref") if isinstance(formal_source, dict) else None
+    check(isinstance(formal_ref, str) and re.fullmatch(r"[0-9a-f]{40}", formal_ref or "") is not None,
+          "release.formal_source.ref must be a full lowercase Git commit id")
+    if isinstance(formal_ref, str) and re.fullmatch(r"[0-9a-f]{40}", formal_ref):
+        formal_ref_resolves = run(
+            ["git", "rev-parse", "--verify", f"{formal_ref}^{{commit}}"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        check(
+            formal_ref_resolves.returncode == 0,
+            f"release.formal_source.ref {formal_ref!r} does not resolve to a local commit",
+        )
+        if formal_ref_resolves.returncode == 0:
+            formal_tree_matches, formal_tree_detail = formal_source_matches_current_lean_tree(
+                formal_ref
+            )
+            check(
+                formal_tree_matches,
+                formal_tree_detail
+                or "current public Lean sources differ from formal-source checkpoint",
+            )
+    if ERRORS:
+        print(
+            "check_release: "
+            f"{len(ERRORS)} release-identity failure(s) across {CHECKS} checks"
+        )
+        for err in ERRORS:
+            print(f"  FAIL {err}")
+        return 1
     publication_stage_results = publication_stage_check_results()
     problem_index_check = _PROJECTION_CHECK_RESULTS[
         "scripts/build_problem_index.py"
@@ -1152,14 +1191,8 @@ def main(argv: list[str] | None = None) -> int:
         late_check_commands(), max_workers=2
     )
     taxonomy = set(data["status_taxonomy"])
-    release = data["release"]
     version, tag = release["version"], release["tag"]
     check(tag == f"v{version}", f"release tag {tag} does not match version {version}")
-    formal_source = release.get("formal_source")
-    check(isinstance(formal_source, dict), "release must name a formal_source checkpoint")
-    formal_ref = formal_source.get("ref") if isinstance(formal_source, dict) else None
-    check(isinstance(formal_ref, str) and re.fullmatch(r"[0-9a-f]{40}", formal_ref or "") is not None,
-          "release.formal_source.ref must be a full lowercase Git commit id")
     if isinstance(formal_source, dict):
         check(formal_source.get("ref_kind") == "commit",
               "release.formal_source.ref_kind must be 'commit'")
@@ -1638,12 +1671,6 @@ def main(argv: list[str] | None = None) -> int:
     paper_sources = [(row["source"], read(ROOT / row["source"])) for row in paper_rows]
     paper = paper_sources[0][1]
     all_paper = "\n".join(text for _path, text in paper_sources)
-    check(run(["git", "rev-parse", "--verify", f"{formal_ref}^{{commit}}"], cwd=ROOT,
-                         capture_output=True, text=True, check=False).returncode == 0,
-          f"release.formal_source.ref {formal_ref!r} does not resolve to a local commit")
-    formal_tree_matches, formal_tree_detail = formal_source_matches_current_lean_tree(formal_ref)
-    check(formal_tree_matches,
-          formal_tree_detail or "current public Lean sources differ from formal-source checkpoint")
     for paper_path, paper_text in paper_sources:
         m = re.search(
             r"\\(?:re)?newcommand\{\\commit\}\{([^}]+)\}", paper_text

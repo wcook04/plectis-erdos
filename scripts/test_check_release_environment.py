@@ -378,6 +378,13 @@ def main() -> int:
         == ("query", "cold_clone_adversarial"),
         "release late pool no longer starts both long readers first",
     )
+    main_source = inspect.getsource(check_release.main)
+    require(
+        main_source.index("formal_source_matches_current_lean_tree(")
+        < main_source.index("publication_stage_results =")
+        < main_source.index("start_independent_checks("),
+        "release identity no longer fails before expensive projection and late pools",
+    )
     print(
         "test_check_release_environment: release-gate child processes cannot "
         "inherit caller Git, Python, locale, or PATH state"
