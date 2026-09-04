@@ -54,6 +54,7 @@ def main() -> int:
         ".github/ISSUE_TEMPLATE/research_progress.yml",
         ".github/ISSUE_TEMPLATE/research_return.yml",
         ".github/ISSUE_TEMPLATE/architecture_proposal.yml",
+        ".github/ISSUE_TEMPLATE/review_offer.yml",
         ".github/PULL_REQUEST_TEMPLATE.md",
         "skills/README.md",
         "skills/install-clone-skills/SKILL.md",
@@ -106,6 +107,20 @@ def main() -> int:
     receipt_schema = text("docs/research-commons/schema/research-return-receipt.schema.json")
     for contract in ('"architecture"', '"contribution_roles"', '"consider_architecture_adoption"'):
         require(contract in receipt_schema, f"receipt schema omits architecture contract {contract}")
+
+    review_offer = text(".github/ISSUE_TEMPLATE/review_offer.yml")
+    for field in (
+        "labels: [\"review\"]",
+        "id: lens",
+        "id: target",
+        "id: time",
+        "id: background",
+        "id: credit",
+        "id: public_material",
+        "never be quoted as endorsement",
+        "silence is not treated as approval",
+    ):
+        require(field in review_offer, f"bounded review-offer form omits {field!r}")
 
     pull_request = text(".github/PULL_REQUEST_TEMPLATE.md")
     require("Credit and provenance" in pull_request, "pull request route omits contribution credit")
