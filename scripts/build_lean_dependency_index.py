@@ -23,6 +23,14 @@ import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "lean_dependency_index.json"
+ENVIRONMENT_VALIDATION_COMMAND = (
+    "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness "
+    "Erdos249257 ErdosProblems"
+)
+ENVIRONMENT_VALIDATION_POSTURE = (
+    "both_supported_compact_roots_are_built_before_environment_"
+    "export_so_source_fingerprint_and_loaded_olean_state_are_current"
+)
 EXPORTER = ROOT / "scripts" / "export_lean_dependency_edges.lean"
 SCHEMA = "erdos249257-lean-dependency-index/3"
 LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
@@ -41,7 +49,6 @@ CHECK_INPUT_FILES = (
     "lake-manifest.json",
     "lakefile.toml",
     "lean-toolchain",
-    "scripts/build_declaration_atlas.py",
     "scripts/export_lean_dependency_edges.lean",
 )
 QUERY_CORPUS_DEPENDENCY_HELPERS = (
@@ -335,6 +342,10 @@ def write_check_receipt(
     input_fingerprint: str,
     root: Path = ROOT,
     receipt_path: Path = CHECK_RECEIPT,
+    verification_posture: str = (
+        "full_supported_root_build_and_elaborated_environment_export_"
+        "matched_the_committed_index"
+    ),
 ) -> None:
     coverage = packet["coverage"]
     receipt = {
@@ -349,16 +360,125 @@ def write_check_receipt(
         "source_resolved_direct_edge_count": coverage[
             "source_resolved_direct_edge_count"
         ],
-        "verification_posture": (
-            "full_supported_root_build_and_elaborated_environment_export_"
-            "matched_the_committed_index"
-        ),
+        "verification_posture": verification_posture,
     }
     receipt_path.parent.mkdir(parents=True, exist_ok=True)
     safe_output_text(
         receipt_path,
         json.dumps(receipt, indent=2, sort_keys=True) + "\n",
     )
+
+
+def refresh_environment_validation_metadata(
+    *,
+    root: Path = ROOT,
+    output: Path = OUTPUT,
+    tracked_receipt_path: Path = TRACKED_CHECK_RECEIPT,
+    local_receipt_path: Path = CHECK_RECEIPT,
+) -> dict[str, Any]:
+    """Refresh operational metadata without repeating a current Lean export.
+
+    The declaration atlas is the dependency index's authoritative upstream
+    artifact.  Its producer implementation is governed by the atlas receipt;
+    changing that implementation must not invalidate an unchanged atlas and
+    trigger a full Lean rebuild here.  This narrow migration preserves prior
+    proof-environment evidence only when the packet, atlas, and tracked full-
+    export receipt agree on their source and coverage identities.
+    """
+
+    original = safe_dependency_text(output, root=root)
+    packet = json.loads(original)
+    atlas = json.loads(
+        safe_dependency_text(root / "docs" / "declaration_atlas.json", root=root)
+    )
+    tracked_receipt = json.loads(
+        safe_dependency_text(tracked_receipt_path, root=root)
+    )
+    coverage = packet.get("coverage", {})
+    expected_roots = sorted(LEAN_ROOT_TARGETS)
+    checks = (
+        (
+            packet.get("schema_version") == SCHEMA,
+            "dependency-index schema is not eligible for metadata refresh",
+        ),
+        (
+            packet.get("kind") == "lean_dependency_index",
+            "dependency-index kind is not eligible for metadata refresh",
+        ),
+        (
+            packet.get("source_fingerprint") == atlas.get("source_fingerprint"),
+            "dependency index and declaration atlas source fingerprints differ",
+        ),
+        (
+            sorted(coverage.get("loaded_library_roots", [])) == expected_roots,
+            "dependency index does not cover both supported Lean roots",
+        ),
+        (
+            packet.get("environment_validation", {}).get("posture")
+            == ENVIRONMENT_VALIDATION_POSTURE,
+            "dependency-index environment validation posture drifted",
+        ),
+        (
+            tracked_receipt.get("schema") == CHECK_RECEIPT_SCHEMA
+            and tracked_receipt.get("builder_schema") == SCHEMA,
+            "tracked dependency-index receipt schema drifted",
+        ),
+        (
+            tracked_receipt.get("output_digest") == sha256_text(original),
+            "tracked dependency-index receipt does not own the current output",
+        ),
+        (
+            tracked_receipt.get("source_fingerprint")
+            == packet.get("source_fingerprint"),
+            "tracked dependency-index receipt source fingerprint drifted",
+        ),
+        (
+            tracked_receipt.get("source_resolved_node_count")
+            == coverage.get("source_resolved_node_count")
+            and tracked_receipt.get("source_resolved_direct_edge_count")
+            == coverage.get("source_resolved_direct_edge_count"),
+            "tracked dependency-index receipt coverage drifted",
+        ),
+        (
+            str(tracked_receipt.get("verification_posture", "")).startswith(
+                "tracked_receipt_from_full_"
+            ),
+            "tracked dependency-index receipt lacks full-export provenance",
+        ),
+    )
+    for accepted, message in checks:
+        if not accepted:
+            raise RuntimeError(message)
+
+    packet["environment_validation"]["command"] = (
+        ENVIRONMENT_VALIDATION_COMMAND
+    )
+    content = encoded(packet)
+    input_fingerprint = check_input_fingerprint(root)
+    safe_output_text(output, content, root=root)
+    write_check_receipt(
+        content,
+        packet,
+        input_fingerprint=input_fingerprint,
+        root=root,
+        receipt_path=tracked_receipt_path,
+        verification_posture=(
+            "tracked_receipt_from_full_supported_root_build_and_elaborated_"
+            "environment_export_metadata_refreshed_without_rebuild"
+        ),
+    )
+    write_check_receipt(
+        content,
+        packet,
+        input_fingerprint=input_fingerprint,
+        root=root,
+        receipt_path=local_receipt_path,
+        verification_posture=(
+            "full_supported_root_build_and_elaborated_environment_export_"
+            "metadata_refreshed_without_rebuild"
+        ),
+    )
+    return packet
 
 
 def ensure_elaborated_environment() -> None:
@@ -752,11 +872,8 @@ def build_packet() -> dict[str, Any]:
         "source_fingerprint": atlas["source_fingerprint"],
         "formal_source": formal_source,
         "environment_validation": {
-            "command": "lake build Erdos249257 ErdosProblems",
-            "posture": (
-                "both_supported_compact_roots_are_built_before_environment_"
-                "export_so_source_fingerprint_and_loaded_olean_state_are_current"
-            ),
+            "command": ENVIRONMENT_VALIDATION_COMMAND,
+            "posture": ENVIRONMENT_VALIDATION_POSTURE,
         },
         "operational_posture": (
             "offline_full_environment_build_artifact_not_query_time_work"
@@ -848,6 +965,14 @@ def encoded(packet: dict[str, Any]) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument(
+        "--refresh-validation-metadata",
+        action="store_true",
+        help=(
+            "refresh only coordinated-build metadata when the current atlas "
+            "and tracked full-export receipt still own the dependency index"
+        ),
+    )
     parser.add_argument("--singleflight-worker", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument(
         "--full-check",
@@ -855,6 +980,19 @@ def main() -> int:
         help="ignore an exact cached receipt and rerun the Lean exporter",
     )
     args = parser.parse_args()
+    if args.refresh_validation_metadata:
+        if args.check or args.full_check:
+            parser.error(
+                "--refresh-validation-metadata is mutually exclusive with "
+                "--check and --full-check"
+            )
+        packet = refresh_environment_validation_metadata()
+        print(
+            "refreshed Lean dependency-index validation metadata "
+            f"({packet['coverage']['source_resolved_node_count']} nodes, "
+            f"{packet['coverage']['source_resolved_direct_edge_count']} edges)"
+        )
+        return 0
     if args.full_check and not args.check:
         parser.error("--full-check requires --check")
     if args.check and not args.full_check:

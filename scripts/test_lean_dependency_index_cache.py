@@ -105,8 +105,13 @@ def check_live_input_surface() -> None:
     )
     require(
         "scripts/build_lean_dependency_index.py" not in relative
-        and "scripts/lean_fast_build.py" not in relative,
+        and "scripts/lean_fast_build.py" not in relative
+        and "scripts/build_declaration_atlas.py" not in relative,
         "operational wrapper churn invalidates the semantic projection receipt",
+    )
+    require(
+        "docs/declaration_atlas.json" in relative,
+        "dependency index lost its authoritative upstream atlas artifact",
     )
     semantic_identities = {
         identity for identity, _payload in builder.semantic_check_inputs()
@@ -121,6 +126,20 @@ def check_live_input_surface() -> None:
     require(
         builder.check_input_fingerprint().startswith("sha256:"),
         "dependency-index input fingerprint is not a SHA-256 digest",
+    )
+    require(
+        builder.ENVIRONMENT_VALIDATION_COMMAND
+        == (
+            "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness "
+            "Erdos249257 ErdosProblems"
+        ),
+        "dependency-index metadata bypasses the coordinated Lean build owner",
+    )
+    committed = json.loads(builder.OUTPUT.read_text(encoding="utf-8"))
+    require(
+        committed["environment_validation"]["command"]
+        == builder.ENVIRONMENT_VALIDATION_COMMAND,
+        "committed dependency-index build guidance drifted from its producer",
     )
 
 
@@ -280,6 +299,90 @@ def check_receipt_uses_verified_snapshot() -> None:
         )
 
 
+def check_guarded_metadata_refresh() -> None:
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory)
+        docs = root / "docs"
+        local = root / ".lake" / "aiw"
+        docs.mkdir()
+        local.mkdir(parents=True)
+        output = docs / "lean_dependency_index.json"
+        tracked = docs / "lean_dependency_index_check.json"
+        local_receipt = local / "lean_dependency_index_check.json"
+        packet = {
+            "kind": "lean_dependency_index",
+            "schema_version": builder.SCHEMA,
+            "source_fingerprint": "sha256:source",
+            "environment_validation": {
+                "command": "lake build Erdos249257 ErdosProblems",
+                "posture": builder.ENVIRONMENT_VALIDATION_POSTURE,
+            },
+            "coverage": {
+                "loaded_library_roots": list(builder.LEAN_ROOT_TARGETS),
+                "source_resolved_node_count": 2,
+                "source_resolved_direct_edge_count": 3,
+            },
+        }
+        original = builder.encoded(packet)
+        output.write_text(original, encoding="utf-8")
+        (docs / "declaration_atlas.json").write_text(
+            json.dumps({"source_fingerprint": "sha256:source"}),
+            encoding="utf-8",
+        )
+        tracked.write_text(
+            json.dumps(
+                {
+                    "schema": builder.CHECK_RECEIPT_SCHEMA,
+                    "builder_schema": builder.SCHEMA,
+                    "output_digest": sha256_text(original),
+                    "source_fingerprint": "sha256:source",
+                    "source_resolved_node_count": 2,
+                    "source_resolved_direct_edge_count": 3,
+                    "verification_posture": "tracked_receipt_from_full_export",
+                }
+            ),
+            encoding="utf-8",
+        )
+        with patch.object(
+            builder,
+            "check_input_fingerprint",
+            return_value="sha256:current-input",
+        ):
+            refreshed = builder.refresh_environment_validation_metadata(
+                root=root,
+                output=output,
+                tracked_receipt_path=tracked,
+                local_receipt_path=local_receipt,
+            )
+        require(
+            refreshed["environment_validation"]["command"]
+            == builder.ENVIRONMENT_VALIDATION_COMMAND,
+            "metadata refresh did not install coordinated build guidance",
+        )
+        for receipt_path in (tracked, local_receipt):
+            receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+            require(
+                receipt["input_fingerprint"] == "sha256:current-input"
+                and receipt["output_digest"]
+                == sha256_text(output.read_text(encoding="utf-8")),
+                "metadata refresh did not bind the migrated output receipt",
+            )
+
+        packet["source_fingerprint"] = "sha256:changed"
+        output.write_text(builder.encoded(packet), encoding="utf-8")
+        try:
+            builder.refresh_environment_validation_metadata(
+                root=root,
+                output=output,
+                tracked_receipt_path=tracked,
+                local_receipt_path=local_receipt,
+            )
+        except RuntimeError:
+            pass
+        else:
+            raise AssertionError("metadata refresh accepted a changed source identity")
+
+
 def check_environment_build_is_bounded() -> None:
     hostile_environment = {
         "GIT_DIR": "/private/wrong-git-dir",
@@ -351,6 +454,7 @@ def main() -> int:
     check_cached_output_rejection()
     check_tracked_cold_clone_receipt()
     check_receipt_uses_verified_snapshot()
+    check_guarded_metadata_refresh()
     check_environment_build_is_bounded()
     print("lean dependency index cache: PASS")
     return 0
