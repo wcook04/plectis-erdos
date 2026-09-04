@@ -1088,19 +1088,22 @@ def formal_dependency_path(
 
 
 @lru_cache(maxsize=1)
-def declaration_row_indexes() -> dict[str, dict[str, Any]]:
+def declaration_row_indexes() -> dict[str, Any]:
     """Index atlas rows without eagerly resolving every Lean namespace."""
     atlas = load("docs/declaration_atlas.json")
     by_name: dict[str, list[dict[str, Any]]] = {}
     by_module: dict[str, list[dict[str, Any]]] = {}
+    by_source: dict[tuple[str, int, str], dict[str, Any]] = {}
     for row in atlas_declarations(atlas):
         by_name.setdefault(row["name"], []).append(row)
         by_module.setdefault(row["module"], []).append(row)
+        by_source[(row["module"], row["line"], row["name"])] = row
     for rows in by_module.values():
         rows.sort(key=lambda row: (row["line"], row["name"]))
     return {
         "by_name": by_name,
         "by_module": by_module,
+        "by_source": by_source,
     }
 
 
@@ -1248,7 +1251,9 @@ def formal_affordance_shape_matches(
 
 
 def formal_context_symbol_matches(
-    context_terms: set[str], affordance: dict[str, Any]
+    context_terms: set[str],
+    affordance: dict[str, Any],
+    binder_symbol_terms: frozenset[str] | set[str] | None = None,
 ) -> list[str]:
     """Match premise-language context against elaborated binder type symbols.
 
@@ -1257,18 +1262,19 @@ def formal_context_symbol_matches(
     symbols distinguish which of several conclusion-compatible theorems fits
     the premises the operator says are available.
     """
-    binder_symbols = {
-        symbol
-        for binder in affordance.get("binders", [])
-        for symbol in (
-            binder.get("type_head", ""),
-            *binder.get("type_symbols", []),
+    if binder_symbol_terms is None:
+        binder_symbols = {
+            symbol
+            for binder in affordance.get("binders", [])
+            for symbol in (
+                binder.get("type_head", ""),
+                *binder.get("type_symbols", []),
+            )
+            if symbol
+        }
+        binder_symbol_terms = set().union(
+            *(search_terms(symbol) for symbol in binder_symbols)
         )
-        if symbol
-    }
-    binder_symbol_terms = set().union(
-        *(search_terms(symbol) for symbol in binder_symbols)
-    )
     return sorted(
         context_term
         for context_term in context_terms
@@ -1284,6 +1290,79 @@ def formal_context_symbol_matches(
             for symbol_term in binder_symbol_terms
         )
     )
+
+
+@lru_cache(maxsize=1)
+def formal_goal_candidate_rows() -> tuple[
+    tuple[
+        str,
+        dict[str, Any],
+        dict[str, Any],
+        frozenset[str],
+        frozenset[str],
+        str,
+        frozenset[str],
+    ],
+    ...,
+]:
+    """Precompute immutable theorem features shared by goal-support queries."""
+    adjacency = lean_dependency_adjacency()
+    if adjacency is None:
+        return ()
+    declarations = declaration_row_indexes()["by_source"]
+    rows = []
+    theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
+    for handle, affordance in adjacency["formal_type_affordances"].items():
+        node = adjacency["nodes_by_handle"][handle]
+        declaration = declarations.get(
+            (node["module"], node["line"], node["name"])
+        )
+        if (
+            node["declaration_kind"] not in theorem_kinds
+            or declaration is None
+            or not declaration_externally_addressable(declaration)
+        ):
+            continue
+        symbol_terms = frozenset().union(
+            *(
+                search_terms(symbol)
+                for symbol in (
+                    affordance["conclusion_head"],
+                    *affordance["conclusion_symbols"],
+                )
+            )
+        )
+        statement_text = " ".join(
+            str(value)
+            for value in (
+                declaration.get("signature"),
+                declaration.get("docstring"),
+            )
+            if value
+        )
+        binder_symbols = {
+            symbol
+            for binder in affordance.get("binders", [])
+            for symbol in (
+                binder.get("type_head", ""),
+                *binder.get("type_symbols", []),
+            )
+            if symbol
+        }
+        rows.append(
+            (
+                handle,
+                declaration,
+                affordance,
+                symbol_terms,
+                frozenset(search_terms(statement_text)),
+                normalized_search_text(statement_text),
+                frozenset().union(
+                    *(search_terms(symbol) for symbol in binder_symbols)
+                ),
+            )
+        )
+    return tuple(rows)
 
 
 def formal_goal_support_packet(
@@ -1346,47 +1425,19 @@ def formal_goal_support_packet(
         normalized_search_text(request["context"]),
     )
     shape_cues = formal_goal_shape_cues(request["goal"])
-    declaration_rows = declaration_rows_by_qualified_name()
     ranked = []
-    for handle, affordance in adjacency[
-        "formal_type_affordances"
-    ].items():
-        node = adjacency["nodes_by_handle"][handle]
-        if node["declaration_kind"] not in {
-            "theorem",
-            "lemma",
-            "corollary",
-            "proposition",
-        }:
-            continue
-        declaration = declaration_rows.get(handle)
-        if (
-            declaration is None
-            or not declaration_externally_addressable(declaration)
-        ):
-            continue
-        symbol_terms = set().union(
-            *(
-                search_terms(symbol)
-                for symbol in (
-                    affordance["conclusion_head"],
-                    *affordance["conclusion_symbols"],
-                )
-            )
-        )
-        statement_text = " ".join(
-            str(value)
-            for value in (
-                declaration.get("signature"),
-                declaration.get("docstring"),
-            )
-            if value
-        )
-        statement_terms = search_terms(statement_text)
+    for (
+        handle,
+        declaration,
+        affordance,
+        symbol_terms,
+        statement_terms,
+        normalized_statement_text,
+        binder_symbol_terms,
+    ) in formal_goal_candidate_rows():
         context_phrase_match = bool(
             context_phrase
-            and context_phrase
-            in normalized_search_text(statement_text)
+            and context_phrase in normalized_statement_text
         )
         shape_matches = formal_affordance_shape_matches(
             shape_cues, affordance
@@ -1395,7 +1446,7 @@ def formal_goal_support_packet(
         goal_statement_matches = sorted(goal_terms & statement_terms)
         context_matches = sorted(context_terms & statement_terms)
         formal_context_matches = formal_context_symbol_matches(
-            context_terms, affordance
+            context_terms, affordance, binder_symbol_terms
         )
         if (
             not shape_matches
@@ -6611,28 +6662,14 @@ def declaration_source_dependency_candidates(
     This is source-current lexical evidence, not an elaborator dependency
     trace. The distinction is retained in every emitted row.
     """
-    atlas = load("docs/declaration_atlas.json")
-    matches = [
-        row
-        for row in atlas_declarations(atlas)
-        if row["name"] == name or qualified_declaration_name(row) == name
-    ]
+    matches = declaration_rows_for_handle(name)
     if len(matches) != 1:
         return []
     declaration = matches[0]
-    module = next(
-        row
-        for row in atlas["modules"]
-        if row["path"] == declaration["module"]
-    )
-    module_declarations = sorted(
-        (
-            row
-            for row in atlas_declarations(atlas)
-            if row["module"] == declaration["module"]
-        ),
-        key=lambda row: (row["line"], row["name"]),
-    )
+    module_indexes = module_handle_indexes()
+    module = module_indexes["by_path"][declaration["module"]]
+    declarations_by_module = declaration_row_indexes()["by_module"]
+    module_declarations = declarations_by_module[declaration["module"]]
     declaration_index = module_declarations.index(declaration)
     source_lines = (ROOT / declaration["module"]).read_text(
         encoding="utf-8"
@@ -6649,43 +6686,43 @@ def declaration_source_dependency_candidates(
     visible_paths = {
         declaration["module"],
         *(
-            row["path"]
-            for row in atlas["modules"]
-            if row["id"] in module.get("imports", [])
+            module_indexes["by_id"][module_id]["path"]
+            for module_id in module.get("imports", [])
+            if module_id in module_indexes["by_id"]
         ),
     }
     candidates = []
-    for row in atlas_declarations(atlas):
-        candidate_name = row["name"]
-        if (
-            row["module"] not in visible_paths
-            or row["id"] == declaration["id"]
-            or len(candidate_name) < 3
-            or row["kind"] not in ("theorem", "lemma")
-        ):
-            continue
-        occurrences = list(
-            re.finditer(rf"\b{re.escape(candidate_name)}\b", span)
-        )
-        if not occurrences:
-            continue
-        candidates.append(
-            (
-                occurrences[0].start(),
-                -len(candidate_name),
-                {
-                    "name": candidate_name,
-                    "qualified_name": qualified_declaration_name(row),
-                    "declaration_kind": row["kind"],
-                    "signature": row.get("signature"),
-                    "source_ref": f"{row['module']}:{row['line']}",
-                    "use_count_in_declaration_span": len(occurrences),
-                    "evidence_posture": (
-                        "source_lexical_dependency_candidate_not_elaborator_dependency_proof"
-                    ),
-                },
+    for visible_path in visible_paths:
+        for row in declarations_by_module.get(visible_path, ()):
+            candidate_name = row["name"]
+            if (
+                row["id"] == declaration["id"]
+                or len(candidate_name) < 3
+                or row["kind"] not in ("theorem", "lemma")
+            ):
+                continue
+            occurrences = list(
+                re.finditer(rf"\b{re.escape(candidate_name)}\b", span)
             )
-        )
+            if not occurrences:
+                continue
+            candidates.append(
+                (
+                    occurrences[0].start(),
+                    -len(candidate_name),
+                    {
+                        "name": candidate_name,
+                        "qualified_name": qualified_declaration_name(row),
+                        "declaration_kind": row["kind"],
+                        "signature": row.get("signature"),
+                        "source_ref": f"{row['module']}:{row['line']}",
+                        "use_count_in_declaration_span": len(occurrences),
+                        "evidence_posture": (
+                            "source_lexical_dependency_candidate_not_elaborator_dependency_proof"
+                        ),
+                    },
+                )
+            )
     candidates.sort(key=lambda item: (item[0], item[1], item[2]["name"]))
     return [item[2] for item in candidates[:limit]]
 
