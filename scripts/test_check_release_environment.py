@@ -284,6 +284,38 @@ def main() -> int:
         "independent release batch dropped or repeated a command",
     )
 
+    combined_dispatches: list[tuple[str, ...]] = []
+
+    def record_combined(
+        args: list[str], **kwargs: object
+    ) -> subprocess.CompletedProcess[str]:
+        combined_dispatches.append(tuple(args))
+        return subprocess.CompletedProcess(args, returncode=0, stdout="ok", stderr="")
+
+    check_release._PROJECTION_CHECK_RESULTS = None
+    with patch.object(check_release, "_SUBPROCESS_RUN", side_effect=record_combined):
+        publication_results = check_release.publication_stage_check_results()
+    require(
+        len(combined_dispatches) == len(check_release.refresh_projections.BUILDERS) + 4,
+        "publication-stage pool dropped or repeated a check",
+    )
+    require(
+        len(check_release._PROJECTION_CHECK_RESULTS or {})
+        == len(check_release.refresh_projections.BUILDERS),
+        "publication-stage pool did not populate the projection result cache",
+    )
+    require(
+        {
+            "external_verification_release",
+            "note_source",
+            "paper_corpus",
+            "publication_taxonomy",
+        }
+        <= publication_results.keys(),
+        "publication-stage pool lost a named diagnostic result",
+    )
+    check_release._PROJECTION_CHECK_RESULTS = None
+
     release_deferred = threading.Event()
     both_started = threading.Event()
     dispatch_count = 0

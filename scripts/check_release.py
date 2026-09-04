@@ -211,6 +211,54 @@ def late_check_commands() -> dict[str, list[str]]:
         ],
     }
 
+
+def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[str]]:
+    """Share one bounded pool across projection and publication diagnostics.
+
+    The projection freshness checks already form one parallel batch. Running
+    the remaining independent publication diagnostics only after that batch
+    left avoidable serial work on the release gate's critical path. Scheduling
+    both groups together preserves every check and the projection result cache
+    while keeping one four-worker ceiling.
+    """
+    global _PROJECTION_CHECK_RESULTS
+    projection_prefix = "projection:"
+    commands = {
+        f"{projection_prefix}{builder}": [
+            sys.executable,
+            str(ROOT / builder),
+            "--check",
+        ]
+        for builder in refresh_projections.BUILDERS
+    }
+    commands.update(
+        {
+            "external_verification_release": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_external_verification_release.py"),
+            ],
+            "note_source": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_problem_note_sources.py"),
+                "--coverage",
+            ],
+            "paper_corpus": [
+                sys.executable,
+                str(ROOT / "docs" / "papers" / "check_paper_corpus.py"),
+            ],
+            "publication_taxonomy": [
+                sys.executable,
+                str(ROOT / "docs" / "papers" / "check_publication_taxonomy.py"),
+            ],
+        }
+    )
+    results = run_independent_checks(commands)
+    _PROJECTION_CHECK_RESULTS = {
+        builder: results[f"{projection_prefix}{builder}"]
+        for builder in refresh_projections.BUILDERS
+    }
+    return results
+
 ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
 PROOF_PATHS = tuple(
     path
@@ -1028,79 +1076,38 @@ def main(argv: list[str] | None = None) -> int:
         "systems paper evidence fixtures stopped rejecting: "
         + ", ".join(systems_paper_fixture_failures),
     )
-    problem_index_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "build_problem_index.py"),
-            "--check",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    publication_stage_results = publication_stage_check_results()
+    problem_index_check = _PROJECTION_CHECK_RESULTS[
+        "scripts/build_problem_index.py"
+    ]
     check(
         problem_index_check.returncode == 0,
         "generated problem-index freshness failed: "
         f"{problem_index_check.stdout.strip() or problem_index_check.stderr.strip()}",
     )
-    external_verification_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "build_external_verification.py"),
-            "--check",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    external_verification_check = _PROJECTION_CHECK_RESULTS[
+        "scripts/build_external_verification.py"
+    ]
     check(
         external_verification_check.returncode == 0,
         "external-verification projection or statement-isolation check failed: "
         f"{external_verification_check.stdout.strip() or external_verification_check.stderr.strip()}",
     )
-    external_verification_release_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "test_external_verification_release.py"),
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    external_verification_release_check = publication_stage_results[
+        "external_verification_release"
+    ]
     check(
         external_verification_release_check.returncode == 0,
         "external-verification replay or immutable release-identity contract failed: "
         f"{external_verification_release_check.stdout.strip() or external_verification_release_check.stderr.strip()}",
     )
-    note_source_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "check_problem_note_sources.py"),
-            "--coverage",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    note_source_check = publication_stage_results["note_source"]
     check(
         note_source_check.returncode == 0,
         "problem-note pinned-source contract failed: "
         f"{note_source_check.stdout.strip() or note_source_check.stderr.strip()}",
     )
-    paper_corpus_check = run(
-        [
-            sys.executable,
-            str(ROOT / "docs" / "papers" / "check_paper_corpus.py"),
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    paper_corpus_check = publication_stage_results["paper_corpus"]
     check(
         paper_corpus_check.returncode == 0,
         "generated paper-corpus freshness failed: "
@@ -1109,32 +1116,17 @@ def main(argv: list[str] | None = None) -> int:
     # Freshness is not the only way the corpus can mislead. Nothing here has
     # been externally reviewed and nothing carries an archival identifier; a
     # field claiming either would read as a credential at publication stage.
-    publication_taxonomy_check = run(
-        [
-            sys.executable,
-            str(ROOT / "docs" / "papers" / "check_publication_taxonomy.py"),
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    publication_taxonomy_check = publication_stage_results[
+        "publication_taxonomy"
+    ]
     check(
         publication_taxonomy_check.returncode == 0,
         "paper publication-taxonomy honesty failed: "
         f"{publication_taxonomy_check.stdout.strip() or publication_taxonomy_check.stderr.strip()}",
     )
-    publication_taxonomy_current = run(
-        [
-            sys.executable,
-            str(ROOT / "docs" / "papers" / "build_publication_taxonomy.py"),
-            "--check",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    publication_taxonomy_current = _PROJECTION_CHECK_RESULTS[
+        "docs/papers/build_publication_taxonomy.py"
+    ]
     check(
         publication_taxonomy_current.returncode == 0,
         "paper publication-taxonomy projection is stale: "
