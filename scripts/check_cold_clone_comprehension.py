@@ -185,6 +185,7 @@ INCREMENTAL_BUILD_SURFACES = (
     # when the README was cut to its reader budget. It is on the document the
     # README names, verbatim, and this contract reads both.
     "docs/AGENT_WORKBENCH.md",
+    "docs/REPRODUCIBILITY.md",
     ".github/workflows/lean.yml",
     "scripts/lean_fast_build.py",
 )
@@ -925,6 +926,7 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     require(set(surfaces) == set(INCREMENTAL_BUILD_SURFACES), "cold-clone comprehension invariant")
     readme = surfaces["README.md"] + "\n" + surfaces["docs/AGENT_WORKBENCH.md"]
     readme_flat = normalized(readme)
+    runbook = surfaces["docs/REPRODUCIBILITY.md"]
     workflow = surfaces[".github/workflows/lean.yml"]
     planner = surfaces["scripts/lean_fast_build.py"]
 
@@ -956,6 +958,24 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     require(toolchain_guide < first_build_command, "README names the Lean setup guide only after the first build command; "
         "a reader without elan hits `command not found` before they reach it")
     require("elan" in readme, "README no longer names Lean's toolchain manager")
+    require(
+        re.search(r"(?m)^\s*lake build\b", runbook) is None,
+        "reproducibility runbook bypasses the host-shared Lean build wrapper",
+    )
+    require(
+        all(
+            target in runbook
+            for target in (
+                "Erdos249257",
+                "ErdosProblems",
+                "Examples",
+                "FormalConjecturesAdapter",
+                "FormalConjecturesVariants",
+                "ResidualBench",
+            )
+        ),
+        "reproducibility runbook lost a supported public build target",
+    )
     require(
         "fetches the pinned cache when needed" in readme_flat,
         "README no longer states that the build wrapper owns cache acquisition",

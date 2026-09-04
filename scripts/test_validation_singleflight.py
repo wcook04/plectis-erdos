@@ -173,6 +173,26 @@ class ValidationSingleflightTests(unittest.TestCase):
         self.assertIn("scripts/lean_package_share.py", paths)
         self.assertNotIn("README.md", paths)
 
+    def test_declared_lake_source_roots_resolve_for_singleflight(self) -> None:
+        expected = {
+            "Examples": "examples/Examples.lean",
+            "FormalConjecturesAdapter": "adapters/FormalConjecturesAdapter.lean",
+            "FormalConjecturesVariants": "adapters/FormalConjecturesVariants.lean",
+            "ResidualBench": "residualbench/ResidualBench.lean",
+            "ExternalVerificationPortfolio.Problem249": (
+                "examples/ExternalVerificationPortfolio/Problem249.lean"
+            ),
+        }
+        self.assertEqual(
+            {
+                target: singleflight.resolve_lean_target(target)
+                .relative_to(singleflight.ROOT)
+                .as_posix()
+                for target in expected
+            },
+            expected,
+        )
+
     def test_job_locks_use_a_bounded_bucket_namespace(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             state = singleflight.ensure_state_root(Path(directory))

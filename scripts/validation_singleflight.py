@@ -25,6 +25,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import tomllib
 from pathlib import Path
 from typing import Any, BinaryIO, Iterable, Mapping
 
@@ -601,10 +602,25 @@ def resolve_lean_target(target: str) -> Path:
     candidates = [
         ROOT / target if target.endswith(".lean") else ROOT / (target.replace(".", "/") + ".lean")
     ]
-    # Lake libraries declared with `srcDir = "examples"` are addressed by
-    # their library name even though their root source lives below examples/.
-    if not target.endswith(".lean") and "/" not in target and "." not in target:
-        candidates.append(ROOT / "examples" / f"{target}.lean")
+    # Lake libraries with ``srcDir`` are addressed by logical library/module
+    # names even though their root source lives below a physical directory.
+    if not target.endswith(".lean") and "/" not in target:
+        lakefile = ROOT / "lakefile.toml"
+        if lakefile.is_file():
+            try:
+                config = tomllib.loads(lakefile.read_text(encoding="utf-8"))
+            except (OSError, tomllib.TOMLDecodeError) as error:
+                raise ValidationError(
+                    f"cannot parse Lake configuration: {lakefile}"
+                ) from error
+            for library in config.get("lean_lib", []):
+                if not isinstance(library, dict):
+                    continue
+                src_dir = library.get("srcDir", "")
+                if isinstance(src_dir, str) and src_dir:
+                    candidates.append(
+                        ROOT / src_dir / (target.replace(".", "/") + ".lean")
+                    )
     candidate = next((path for path in candidates if path.is_file()), candidates[0])
     regular_file(candidate, "Lean target")
     relative_to_root(candidate)

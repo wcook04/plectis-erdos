@@ -90,23 +90,23 @@ The cache command is optional for correctness but avoids recompiling Mathlib
 from source. It may download several gigabytes. A cache is an acceleration,
 not authority: the toolchain file and manifest are the reproducibility inputs.
 
-Build the two supported public roots first, then the explicitly supported
-non-default consumers:
+Build the two supported public roots and the explicitly supported non-default
+consumers through one host-shared wrapper invocation:
 
 ```sh
-python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness
-lake build ErdosProblems
-lake build Examples
-lake build FormalConjecturesAdapter
-lake build FormalConjecturesVariants
-lake build ResidualBench
+python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness \
+  Erdos249257 ErdosProblems Examples FormalConjecturesAdapter \
+  FormalConjecturesVariants ResidualBench
 python3 scripts/build_lean_dependency_index.py --check
 ```
 
 `Erdos249257` and `ErdosProblems` are the default library targets. `Examples`
 is a downstream consumer and is deliberately not a default target. The other
 targets are separate adapter, variant, and residual-check surfaces; their
-declarations do not enlarge the reviewed mathematical corpus.
+declarations do not enlarge the reviewed mathematical corpus. Keeping all six
+targets behind the wrapper gives the clean clone one bounded scheduler owner,
+one dependency plan, and the same host-wide duplicate-build suppression used
+by focused replay and CI.
 
 For a focused replay of the source-level #249 prime-excursion constraints,
 run the named problem module after the ordinary toolchain setup:

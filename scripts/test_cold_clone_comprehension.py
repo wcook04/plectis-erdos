@@ -586,6 +586,21 @@ def main() -> int:
         raise AssertionError("raw Lake command bypassed the public build wrapper")
 
     mutated_incremental = copy.deepcopy(incremental_surfaces)
+    mutated_incremental["docs/REPRODUCIBILITY.md"] = mutated_incremental[
+        "docs/REPRODUCIBILITY.md"
+    ].replace(
+        "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness",
+        "lake build",
+        1,
+    )
+    try:
+        diagnostic.validate_incremental_build_contract(mutated_incremental)
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("runbook raw Lake command bypass escaped")
+
+    mutated_incremental = copy.deepcopy(incremental_surfaces)
     mutated_incremental[".github/workflows/lean.yml"] = mutated_incremental[
         ".github/workflows/lean.yml"
     ].replace(

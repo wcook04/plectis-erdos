@@ -26,6 +26,23 @@ LAKE = str(fast.TOOLCHAIN_BIN / "lake")
 
 
 class LeanFastBuildTests(unittest.TestCase):
+    def test_discovery_uses_declared_lake_source_roots(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "examples").mkdir()
+            (root / "examples" / "Examples.lean").write_text(
+                "-- example\n", encoding="utf-8"
+            )
+            (root / "lakefile.toml").write_text(
+                '[[lean_lib]]\nname = "Examples"\nsrcDir = "examples"\n',
+                encoding="utf-8",
+            )
+
+            self.assertEqual(
+                fast.discover(root),
+                {"Examples": root / "examples" / "Examples.lean"},
+            )
+
     def test_problem_library_preserves_interpreter_stack_headroom(self) -> None:
         lakefile = tomllib.loads((fast.ROOT / "lakefile.toml").read_text(
             encoding="utf-8"
