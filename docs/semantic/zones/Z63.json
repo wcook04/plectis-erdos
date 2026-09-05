@@ -35,12 +35,12 @@
         {
           "declaration": "diagonalPincerCertificateScales",
           "module": "Erdos249257/DiagonalPincerCertificates.lean",
-          "line": 2842
+          "line": 2852
         },
         {
           "declaration": "diagonalPincerKillDepth",
           "module": "Erdos249257/DiagonalPincerCertificates.lean",
-          "line": 2844
+          "line": 2854
         }
       ]
     },
@@ -64,7 +64,7 @@
         {
           "declaration": "certifiedKill_diagonal_all_imported",
           "module": "Erdos249257/DiagonalPincerCertificates.lean",
-          "line": 2860
+          "line": 2870
         }
       ]
     }
@@ -73,21 +73,21 @@
     {
       "declaration": "diagonalPincerCertificateScales",
       "module": "Erdos249257/DiagonalPincerCertificates.lean",
-      "line": 2842,
+      "line": 2852,
       "role": "representation",
       "statement_node": "base_diagonal_pincer_scale_and_depth_table_is_explicit_data"
     },
     {
       "declaration": "diagonalPincerKillDepth",
       "module": "Erdos249257/DiagonalPincerCertificates.lean",
-      "line": 2844,
+      "line": 2854,
       "role": "representation",
       "statement_node": "base_diagonal_pincer_scale_and_depth_table_is_explicit_data"
     },
     {
       "declaration": "certifiedKill_diagonal_all_imported",
       "module": "Erdos249257/DiagonalPincerCertificates.lean",
-      "line": 2860,
+      "line": 2870,
       "role": "statement",
       "statement_node": "twelve_base_diagonal_pincer_scales_fire_at_the_tabulated_depths"
     }

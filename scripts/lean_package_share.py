@@ -231,6 +231,14 @@ def seed_paths(state_root: Path, fingerprint: str) -> tuple[Path, Path]:
     return seed_root / "packages", seed_root / "seed.json"
 
 
+def durable_workspace_reference(root: Path) -> bool:
+    resolved = root.resolve()
+    return not any(
+        str(resolved).startswith(prefix)
+        for prefix in ("/tmp/", "/private/tmp/", "/var/folders/")
+    )
+
+
 def load_seed(
     state_root: Path, fingerprint: str
 ) -> tuple[Path, dict[str, str]] | None:
@@ -245,12 +253,18 @@ def load_seed(
         or not isinstance(receipt.get("package_heads"), dict)
     ):
         return None
+    source = packages
+    if receipt.get("source_role") == "durable_host_workspace_reference":
+        source_root = Path(str(receipt.get("source_path") or "")).expanduser()
+        if not source_root.is_absolute() or not durable_workspace_reference(source_root):
+            return None
+        source = source_root.resolve() / ".lake/packages"
     try:
-        observed = package_heads(packages)
+        observed = package_heads(source)
     except PackageShareError:
         return None
     expected = {str(key): str(value) for key, value in receipt["package_heads"].items()}
-    return (packages, observed) if observed == expected else None
+    return (source, observed) if observed == expected else None
 
 
 def remove_obsolete_seeds(
@@ -319,6 +333,38 @@ def publish_seed(
     source = root / ".lake/packages"
     packages, receipt_path = seed_paths(state_root, fingerprint)
     packages.parent.mkdir(parents=True, exist_ok=True)
+    if durable_workspace_reference(root):
+        atomic_json(
+            receipt_path,
+            {
+                "schema": SCHEMA,
+                "semantic_fingerprint": fingerprint,
+                "package_heads": heads,
+                "source_role": "durable_host_workspace_reference",
+                "source_path": str(root.resolve()),
+                "proof_scope": "cache_acceleration_not_proof_evidence",
+            },
+        )
+        atomic_json(
+            root / ".lake" / RECEIPT_NAME,
+            {
+                "schema": SCHEMA,
+                "semantic_fingerprint": fingerprint,
+                "package_heads": heads,
+                "relationship": "host_seed_points_to_durable_workspace",
+                "proof_scope": "cache_acceleration_not_proof_evidence",
+            },
+        )
+        removed = remove_obsolete_seeds(state_root, fingerprint)
+        return {
+            "schema": SCHEMA,
+            "status": "published_durable_workspace_reference",
+            "semantic_fingerprint": fingerprint,
+            "package_count": len(heads),
+            "physical_strategy": "validated_pointer_no_duplicate_package_tree",
+            "obsolete_seed_fingerprints_removed": removed,
+            "proof_scope": "cache_acceleration_not_proof_evidence",
+        }
     if packages.parent.stat().st_dev != source.stat().st_dev:
         return {
             "schema": SCHEMA,
@@ -368,6 +414,44 @@ def publish_seed(
         "physical_strategy": "copy_on_write_no_full_copy_fallback",
         "obsolete_seed_fingerprints_removed": removed,
         "proof_scope": "cache_acceleration_not_proof_evidence",
+    }
+
+
+def migrate_seed_to_durable_reference(root: Path, state_root: Path) -> dict[str, Any]:
+    """Replace one same-lock physical seed with a validated durable pointer."""
+
+    root = root.resolve()
+    state_root = state_root.resolve()
+    if not durable_workspace_reference(root):
+        raise PackageShareError("migration source must be a durable workspace")
+    reject_mutable_symlinks(root)
+    fingerprint, packages, _toolchain = semantic_fingerprint(root)
+    source = root / ".lake/packages"
+    heads = package_heads(source)
+    expected_names = {row["name"] for row in packages if row["name"]}
+    if set(heads) != expected_names:
+        raise PackageShareError("durable workspace package set does not match its manifest")
+    if lean_process_is_live(root):
+        return {
+            "schema": SCHEMA,
+            "status": "deferred_live_lean_process",
+            "proof_scope": "cache_acceleration_not_proof_evidence",
+        }
+    lock_path = state_root / "locks" / "resource-package-seed.lock"
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
+    descriptor = os.open(lock_path, os.O_CREAT | os.O_RDWR, 0o600)
+    fcntl.flock(descriptor, fcntl.LOCK_EX)
+    try:
+        seed_root = state_root / "package-seeds" / fingerprint
+        if seed_root.exists():
+            shutil.rmtree(seed_root)
+        receipt = publish_seed(root, state_root, fingerprint, heads)
+    finally:
+        fcntl.flock(descriptor, fcntl.LOCK_UN)
+        os.close(descriptor)
+    return {
+        **receipt,
+        "status": "migrated_to_durable_workspace_reference",
     }
 
 
@@ -749,12 +833,19 @@ def main(argv: Iterable[str] | None = None) -> int:
         action="store_true",
         help="byte-preservingly compact large Lake setup manifests where supported",
     )
+    mode.add_argument(
+        "--migrate-durable-reference",
+        action="store_true",
+        help="replace a physical host package seed with a validated durable-workspace pointer",
+    )
     args = parser.parse_args(list(argv) if argv is not None else None)
     try:
         if args.plan:
             receipt = plan_workspace(args.root, args.state_root)
         elif args.compact_setup:
             receipt = compact_setup_json(args.root)
+        elif args.migrate_durable_reference:
+            receipt = migrate_seed_to_durable_reference(args.root, args.state_root)
         else:
             receipt = prepare_workspace(args.root, args.state_root)
     except (OSError, ValueError, json.JSONDecodeError, PackageShareError) as exc:

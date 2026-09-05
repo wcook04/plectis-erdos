@@ -2759,11 +2759,155 @@
           ]
         },
         {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level0A",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level0A.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support"
+          ]
+        },
+        {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level0B",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level0B.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support"
+          ]
+        },
+        {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level1A",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level1A.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level0A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level0B"
+          ]
+        },
+        {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level1B",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level1B.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level0A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level0B"
+          ]
+        },
+        {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level2A",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level2A.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level0A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level1A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level1B"
+          ]
+        },
+        {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level2B",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level2B.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level0A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level1A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level1B"
+          ]
+        },
+        {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level3A",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level3A.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level2A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level2B"
+          ]
+        },
+        {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level3B",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level3B.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level2A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level2B"
+          ]
+        },
+        {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level4A",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level4A.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level3A"
+          ]
+        },
+        {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level4B",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level4B.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level3A"
+          ]
+        },
+        {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level5A",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level5A.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level4A"
+          ]
+        },
+        {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level5B",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level5B.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level4A"
+          ]
+        },
+        {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level6A",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level6A.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level5A"
+          ]
+        },
+        {
+          "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+          "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Support.lean",
+          "role": "Finite diagonal prime-certificate shard",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificates"
+          ]
+        },
+        {
           "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64",
           "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean",
           "role": "Finite diagonal prime-certificate shard",
           "imports": [
-            "Erdos249257.DiagonalPincerCertificates"
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level0A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level0B",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level1A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level1B",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level2A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level2B",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level3A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level3B",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level4A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level4B",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level5A",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level5B",
+            "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level6A"
           ]
         },
         {
@@ -11809,11 +11953,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
+      "ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-09-02-r2"
+      "public_tag": "formal-source-2026-09-04"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
@@ -15643,8 +15787,8 @@
       "declarations": [
         {
           "name": "prime_lucas_2364533768205644535022723273",
-          "module": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean",
-          "line": 51759
+          "module": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level1A.lean",
+          "line": 2398
         }
       ]
     },

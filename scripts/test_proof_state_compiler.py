@@ -141,7 +141,9 @@ def check_unfetched_dependencies_are_a_clean_skip_signal() -> None:
         def refuses(stage: str) -> None:
             try:
                 compiler._require_lean_dependencies(root)
-            except compiler.LeanDependenciesUnavailable:
+            except compiler.LeanDependenciesUnavailable as error:
+                assert "python3 scripts/lean_fast_build.py --jobs 2" in str(error)
+                assert "lake exe cache get" not in str(error)
                 return
             raise AssertionError(
                 f"an incomplete checkout ({stage}) did not raise "

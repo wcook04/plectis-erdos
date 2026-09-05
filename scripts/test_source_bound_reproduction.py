@@ -93,6 +93,41 @@ def test_hashing_and_exclusions(source: Path) -> None:
     )
 
 
+def test_excluded_directories_are_pruned_before_descent(source: Path) -> None:
+    observed_prune = False
+
+    def guarded_walk(root: Path, *, followlinks: bool = False):
+        nonlocal observed_prune
+        directory_names = [".lake", "included"]
+        yield str(root), directory_names, []
+        require(".lake" not in directory_names, "excluded runtime tree was not pruned")
+        observed_prune = True
+        yield str(Path(root) / "included"), [], ["a.txt"]
+
+    with patch.object(subject.os, "walk", side_effect=guarded_walk):
+        manifest = subject.source_manifest(source)
+    require(observed_prune, "manifest traversal did not resume after pruning")
+    require(
+        [row["path"] for row in manifest] == ["included/a.txt"],
+        "pruned manifest drifted",
+    )
+
+
+def test_execute_reuses_initial_manifest(source: Path, plan: list[dict]) -> None:
+    original_manifest = subject.source_manifest
+    calls = 0
+
+    def counted_manifest(root: Path) -> list[dict]:
+        nonlocal calls
+        calls += 1
+        return original_manifest(root)
+
+    with patch.object(subject, "source_manifest", side_effect=counted_manifest):
+        receipt = subject.execute(source, plan)
+    subject.validate_receipt(receipt, source, plan)
+    require(calls == 3, f"execute used {calls} manifests instead of three")
+
+
 def test_isolation_success_and_validation(source: Path, plan: list[dict]) -> dict:
     receipt = subject.execute(source, plan)
     require(
@@ -177,6 +212,33 @@ def test_toolchain_path_is_not_ambient() -> None:
     )
     for key in ("GIT_DIR", "GIT_NAMESPACE", "GIT_REPLACE_REF_BASE"):
         require(key not in environment, f"source-bound environment retained {key}")
+
+
+def test_default_plan_does_not_repeat_release_owned_checks() -> None:
+    ids = {row["id"] for row in subject.DEFAULT_PLAN}
+    require("release" in ids, "default reproduction plan lost the release authority")
+    repeated = {
+        "declaration_atlas",
+        "semantic_projection",
+        "semantic_contract",
+        "second_channel_separation_probe",
+        "off_diagonal_certificate_roster",
+        "checked_diagonal_depth_roster",
+        "corpus_descriptor",
+        "cold_clone_comprehension",
+    }
+    require(
+        ids.isdisjoint(repeated),
+        f"default reproduction plan repeats release-owned checks: {sorted(ids & repeated)}",
+    )
+    require(
+        {
+            "declaration_head_contract",
+            "projection_checkout_independence",
+        }
+        <= ids,
+        "default reproduction plan dropped a distinct non-release validation",
+    )
 
 
 def test_rejections(source: Path, plan: list[dict], receipt: dict) -> None:
@@ -345,10 +407,13 @@ def main() -> None:
         make_source(source)
         plan = tiny_plan()
         test_hashing_and_exclusions(source)
+        test_excluded_directories_are_pruned_before_descent(source)
         receipt = test_isolation_success_and_validation(source, plan)
+        test_execute_reuses_initial_manifest(source, plan)
         test_environment_isolation(source)
         test_command_timeout()
         test_toolchain_path_is_not_ambient()
+        test_default_plan_does_not_repeat_release_owned_checks()
         test_rejections(source, plan, receipt)
         test_timestamp_and_tail_rejections(source, plan, receipt)
         test_git_capability_refusal(source)

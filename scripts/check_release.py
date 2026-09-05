@@ -23,9 +23,10 @@ This script verifies that every other public surface agrees with it:
   7. Licensing: every licence named in REUSE.toml or an SPDX header has its
      text under LICENSES/.
   8. AGENTS.md routes agent harnesses through the public machine-readable paper
-     without weakening the proof or open-problem boundary, and CONTRIBUTING.md
+     without weakening the proof or open-problem boundary; CONTRIBUTING.md
      describes the cold-clone baseline-plus-adversarial program as a release
-     gate rather than an advisory diagnostic.
+     gate rather than an advisory diagnostic; and the public conduct standard
+     remains present.
  9. Proof-trust guard: no sorry/admit/axiom or native evaluator in the
      Lean sources.
  10. The methodology source, generated root projection, claim-transition
@@ -39,6 +40,7 @@ Stdlib only; run from the repository root:  python3 scripts/check_release.py
 
 from __future__ import annotations
 
+import argparse
 import copy
 import hashlib
 import json
@@ -47,9 +49,12 @@ import re
 import stat
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
+from check_problem_note_sources import snapshot_lines_batch
 from methodology_contract import mutation_fixture_errors, render_markdown, validate_contract
 from lean_source import LIBRARY_ROOTS, lean_code_without_comments_and_strings
 from publication_contract import (
@@ -63,6 +68,7 @@ from systems_paper_evidence import (
     validate_systems_paper_evidence,
 )
 import validation_singleflight as singleflight
+import refresh_projections
 
 ROOT = Path(__file__).resolve().parent.parent
 ERRORS: list[str] = []
@@ -71,6 +77,9 @@ ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 SANITIZED_GIT_ENVIRONMENT_KEYS = tuple(sorted(singleflight.GIT_CONTEXT_KEYS))
 _SUBPROCESS_RUN = subprocess.run
+PROJECTION_CHECK_WORKERS = refresh_projections.CHECK_WORKERS
+RELEASE_CHECK_WORKERS = 4
+_PROJECTION_CHECK_RESULTS: dict[str, subprocess.CompletedProcess[str]] | None = None
 
 
 def clean_environment() -> dict[str, str]:
@@ -82,7 +91,177 @@ def run(*args: Any, **kwargs: Any) -> subprocess.CompletedProcess[str]:
     """Run a release-gate subprocess with checkout-independent Git state."""
     kwargs["env"] = clean_environment()
     kwargs.setdefault("timeout", SUBPROCESS_TIMEOUT_SECONDS)
+    builder = projection_check_builder(args, kwargs.get("cwd"))
+    if builder is not None:
+        return projection_check_results()[builder]
     return _SUBPROCESS_RUN(*args, **kwargs)
+
+
+def projection_check_builder(args: tuple[Any, ...], cwd: Any) -> str | None:
+    """Identify an exact read-only projection freshness invocation."""
+    if len(args) != 1 or not isinstance(args[0], (list, tuple)) or Path(cwd) != ROOT:
+        return None
+    argv = list(args[0])
+    if len(argv) != 3 or argv[0] != sys.executable or argv[2] != "--check":
+        return None
+    try:
+        builder = Path(argv[1]).relative_to(ROOT).as_posix()
+    except (TypeError, ValueError):
+        return None
+    return builder if builder in refresh_projections.BUILDERS else None
+
+
+def projection_check_results() -> dict[str, subprocess.CompletedProcess[str]]:
+    """Run the release gate's immutable projection checks once, in parallel."""
+    global _PROJECTION_CHECK_RESULTS
+    if _PROJECTION_CHECK_RESULTS is not None:
+        return _PROJECTION_CHECK_RESULTS
+
+    def check_builder(builder: str) -> tuple[str, subprocess.CompletedProcess[str]]:
+        result = _SUBPROCESS_RUN(
+            [sys.executable, str(ROOT / builder), "--check"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+            env=clean_environment(),
+            timeout=SUBPROCESS_TIMEOUT_SECONDS,
+        )
+        return builder, result
+
+    with ThreadPoolExecutor(
+        max_workers=min(PROJECTION_CHECK_WORKERS, len(refresh_projections.BUILDERS))
+    ) as executor:
+        _PROJECTION_CHECK_RESULTS = dict(
+            executor.map(check_builder, refresh_projections.BUILDERS)
+        )
+    return _PROJECTION_CHECK_RESULTS
+
+
+def run_independent_checks(
+    commands: dict[str, list[str]],
+) -> dict[str, subprocess.CompletedProcess[str]]:
+    """Run independent read-only release suites with bounded concurrency."""
+    executor, futures = start_independent_checks(commands)
+    return finish_independent_checks(executor, futures)
+
+
+def _run_independent_check(argv: list[str]) -> subprocess.CompletedProcess[str]:
+    return _SUBPROCESS_RUN(
+        argv,
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+        env=clean_environment(),
+        timeout=SUBPROCESS_TIMEOUT_SECONDS,
+    )
+
+
+def start_independent_checks(
+    commands: dict[str, list[str]],
+    *,
+    max_workers: int = RELEASE_CHECK_WORKERS,
+) -> tuple[ThreadPoolExecutor, dict[str, Any]]:
+    """Start bounded read-only checks whose results are consumed at a later barrier."""
+    executor = ThreadPoolExecutor(max_workers=min(max_workers, len(commands)))
+    return executor, {
+        check_id: executor.submit(_run_independent_check, argv)
+        for check_id, argv in commands.items()
+    }
+
+
+def finish_independent_checks(
+    executor: ThreadPoolExecutor,
+    futures: dict[str, Any],
+) -> dict[str, subprocess.CompletedProcess[str]]:
+    """Collect a previously started check batch and always close its workers."""
+    try:
+        return {check_id: future.result() for check_id, future in futures.items()}
+    finally:
+        executor.shutdown(wait=True, cancel_futures=True)
+
+
+def late_check_commands() -> dict[str, list[str]]:
+    """Read-only suites that may overlap the release gate's middle section."""
+    return {
+        # These are the two long readers in this two-worker pool. Start both
+        # immediately; queuing cold-clone checks behind short diagnostics left
+        # several seconds of avoidable work on the release critical path.
+        "query": [sys.executable, str(ROOT / "scripts" / "test_query_corpus.py")],
+        "cold_clone_adversarial": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
+        ],
+        "mutation_harness": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_publication_mutation_harness.py"),
+        ],
+        "public_boundary": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_public_artifact_boundary.py"),
+        ],
+        "primary_source_disposition": [
+            sys.executable,
+            str(ROOT / "scripts" / "check_primary_source_dispositions.py"),
+        ],
+        "proof_cockpit": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_proof_cockpit.py"),
+        ],
+        "clone_footprint": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_clone_footprint.py"),
+        ],
+    }
+
+
+def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[str]]:
+    """Share one bounded pool across projection and publication diagnostics.
+
+    The projection freshness checks already form one parallel batch. Running
+    the remaining independent publication diagnostics only after that batch
+    left avoidable serial work on the release gate's critical path. Scheduling
+    both groups together preserves every check and the projection result cache
+    while keeping one four-worker ceiling.
+    """
+    global _PROJECTION_CHECK_RESULTS
+    projection_prefix = "projection:"
+    commands = {
+        f"{projection_prefix}{builder}": [
+            sys.executable,
+            str(ROOT / builder),
+            "--check",
+        ]
+        for builder in refresh_projections.BUILDERS
+    }
+    commands.update(
+        {
+            "external_verification_release": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_external_verification_release.py"),
+            ],
+            "note_source": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_problem_note_sources.py"),
+                "--coverage",
+            ],
+            "paper_corpus": [
+                sys.executable,
+                str(ROOT / "docs" / "papers" / "check_paper_corpus.py"),
+            ],
+            "publication_taxonomy": [
+                sys.executable,
+                str(ROOT / "docs" / "papers" / "check_publication_taxonomy.py"),
+            ],
+        }
+    )
+    results = run_independent_checks(commands)
+    _PROJECTION_CHECK_RESULTS = {
+        builder: results[f"{projection_prefix}{builder}"]
+        for builder in refresh_projections.BUILDERS
+    }
+    return results
 
 ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
 PROOF_PATHS = tuple(
@@ -112,6 +291,20 @@ PROOF_TRUST_RE = re.compile(
     r"|^\s*set_option\s+(?:maxHeartbeats|maxRecDepth)\s+0\b",
     re.M,
 )
+PROOF_TRUST_LINE_DECL_RE = re.compile(
+    r"(?:unsafe|partial)\s+(?:def|theorem|opaque|instance)\b"
+)
+PROOF_TRUST_OPTION_RE = re.compile(
+    r"set_option\s+(?:maxHeartbeats|maxRecDepth)\s+0\b"
+)
+PROOF_TRUST_NATIVE_ASSIGN_RE = re.compile(r"native\s*:=\s*true\b")
+PROOF_TRUST_LINE_DECL_BYTES_RE = re.compile(
+    rb"(?:unsafe|partial)\s+(?:def|theorem|opaque|instance)\b"
+)
+PROOF_TRUST_OPTION_BYTES_RE = re.compile(
+    rb"set_option\s+(?:maxHeartbeats|maxRecDepth)\s+0\b"
+)
+PROOF_TRUST_NATIVE_ASSIGN_BYTES_RE = re.compile(rb"native\s*:=\s*true\b")
 
 
 def fail(msg: str) -> None:
@@ -236,7 +429,9 @@ def file_digest(path: Path) -> str:
     return "sha256:" + hashlib.sha256(_read_safe_bytes(path)).hexdigest()
 
 
+@lru_cache(maxsize=None)
 def read(path: Path, *, errors: str = "strict") -> str:
+    """Read each admitted immutable release input once per gate process."""
     return _read_safe_bytes(path).decode("utf-8", errors=errors)
 
 
@@ -502,11 +697,209 @@ def internal_imports(path: Path) -> list[str]:
 
 def proof_trust_violation(text: str) -> str | None:
     """Return the first executable proof-trust violation, if any."""
-    # Most source files contain none of the four candidate words.  Avoid the
-    # character-by-character comment/string pass for that overwhelmingly
-    # common case; candidate-bearing files still receive the exact scan.
-    if PROOF_TRUST_RE.search(text) is None:
+    # The combined multiline expression is exact after lexical stripping, but
+    # using it as a raw-corpus prefilter makes Python try its anchored branches
+    # at nearly every character. On this 150 MB Lean tree that alone took over
+    # ten seconds. Cheap literal searches identify the same candidate-bearing
+    # files; only those files pay for the exact comment/string-aware scan.
+    if not proof_trust_candidate(text):
         return None
+    match = PROOF_TRUST_RE.search(lean_code_without_comments_and_strings(text))
+    return match.group(0).strip() if match else None
+
+
+def _is_word_character(character: str) -> bool:
+    r"""Match the boundary alphabet used by Python's Unicode ``\w``."""
+    return character == "_" or character.isalnum()
+
+
+def _contains_delimited_token(
+    text: str,
+    token: str,
+    *,
+    check_start: bool = True,
+    forbid_dot_before: bool = False,
+    require_space_after: bool = False,
+) -> bool:
+    """Find a literal token with the proof-trust expression's boundaries."""
+    position = 0
+    while True:
+        position = text.find(token, position)
+        if position < 0:
+            return False
+        end = position + len(token)
+        before = text[position - 1] if position else ""
+        after = text[end] if end < len(text) else ""
+        start_ok = (
+            not check_start
+            or not before
+            or (
+                not _is_word_character(before)
+                and (not forbid_dot_before or before != ".")
+            )
+        )
+        end_ok = not after or not _is_word_character(after)
+        space_ok = not require_space_after or bool(after and after.isspace())
+        if start_ok and end_ok and space_ok:
+            return True
+        position = end
+
+
+def proof_trust_candidate(text: str) -> bool:
+    """Cheaply over-approximate whether exact Lean lexing is required."""
+    if _contains_delimited_token(text, "sorry"):
+        return True
+    if _contains_delimited_token(text, "admit"):
+        return True
+    if _contains_delimited_token(
+        text,
+        "axiom",
+        forbid_dot_before=True,
+        require_space_after=True,
+    ):
+        return True
+    if "native_decide" in text:
+        return True
+    if _contains_delimited_token(text, "+native", check_start=False):
+        return True
+
+    position = 0
+    while True:
+        position = text.find("native", position)
+        if position < 0:
+            break
+        if (
+            (position == 0 or not _is_word_character(text[position - 1]))
+            and PROOF_TRUST_NATIVE_ASSIGN_RE.match(text, position)
+        ):
+            return True
+        position += len("native")
+
+    for token in ("unsafe", "partial"):
+        position = 0
+        while True:
+            position = text.find(token, position)
+            if position < 0:
+                break
+            if PROOF_TRUST_LINE_DECL_RE.match(text, position):
+                return True
+            position += len(token)
+
+    position = 0
+    while True:
+        position = text.find("set_option", position)
+        if position < 0:
+            return False
+        if PROOF_TRUST_OPTION_RE.match(text, position):
+            return True
+        position += len("set_option")
+
+
+def _is_word_byte(value: int) -> bool:
+    """Conservatively approximate Unicode word boundaries before decoding."""
+
+    return (
+        value >= 128
+        or value == ord("_")
+        or ord("0") <= value <= ord("9")
+        or ord("A") <= value <= ord("Z")
+        or ord("a") <= value <= ord("z")
+    )
+
+
+def _contains_delimited_token_bytes(
+    data: bytes,
+    token: bytes,
+    *,
+    check_start: bool = True,
+    forbid_dot_before: bool = False,
+    require_space_after: bool = False,
+) -> bool:
+    """Apply the cheap trust-token boundary test without Unicode decoding."""
+
+    position = 0
+    while True:
+        position = data.find(token, position)
+        if position < 0:
+            return False
+        end = position + len(token)
+        before = data[position - 1] if position else None
+        after = data[end] if end < len(data) else None
+        start_ok = (
+            not check_start
+            or before is None
+            or (
+                not _is_word_byte(before)
+                and (not forbid_dot_before or before != ord("."))
+            )
+        )
+        end_ok = after is None or not _is_word_byte(after)
+        space_ok = (
+            not require_space_after
+            or after in {ord(" "), ord("\t"), ord("\n"), ord("\r"), ord("\f"), ord("\v")}
+        )
+        if start_ok and end_ok and space_ok:
+            return True
+        position = end
+
+
+def proof_trust_candidate_bytes(data: bytes) -> bool:
+    """Conservatively select sources that need exact lexical decoding."""
+
+    if _contains_delimited_token_bytes(data, b"sorry"):
+        return True
+    if _contains_delimited_token_bytes(data, b"admit"):
+        return True
+    if _contains_delimited_token_bytes(
+        data,
+        b"axiom",
+        forbid_dot_before=True,
+        require_space_after=True,
+    ):
+        return True
+    if b"native_decide" in data:
+        return True
+    if _contains_delimited_token_bytes(data, b"+native", check_start=False):
+        return True
+
+    position = 0
+    while True:
+        position = data.find(b"native", position)
+        if position < 0:
+            break
+        if (
+            (position == 0 or not _is_word_byte(data[position - 1]))
+            and PROOF_TRUST_NATIVE_ASSIGN_BYTES_RE.match(data, position)
+        ):
+            return True
+        position += len(b"native")
+
+    for token in (b"unsafe", b"partial"):
+        position = 0
+        while True:
+            position = data.find(token, position)
+            if position < 0:
+                break
+            if PROOF_TRUST_LINE_DECL_BYTES_RE.match(data, position):
+                return True
+            position += len(token)
+
+    position = 0
+    while True:
+        position = data.find(b"set_option", position)
+        if position < 0:
+            return False
+        if PROOF_TRUST_OPTION_BYTES_RE.match(data, position):
+            return True
+        position += len(b"set_option")
+
+
+def proof_trust_violation_bytes(data: bytes) -> str | None:
+    """Decode only sources whose byte prefilter can contain a violation."""
+
+    if not proof_trust_candidate_bytes(data):
+        return None
+    text = data.decode("utf-8")
     match = PROOF_TRUST_RE.search(lean_code_without_comments_and_strings(text))
     return match.group(0).strip() if match else None
 
@@ -535,9 +928,18 @@ def check_proof_trust() -> None:
     check(proof_trust_violation("partial def bad : Nat -> Nat := fun n => bad n\n") == "partial def",
           "proof-trust scanner must reject partial declarations")
     check(proof_trust_violation(
+        "/- prefix comment -/ unsafe def bad : Nat := 1\n"
+    ) == "unsafe def",
+          "proof-trust prefilter must retain declarations after inline comments")
+    check(proof_trust_violation(
         "set_option maxHeartbeats 0\nexample : True := by trivial\n"
     ) == "set_option maxHeartbeats 0",
           "proof-trust scanner must reject unbounded heartbeat limits")
+    check(proof_trust_violation(
+        "/- prefix comment -/ set_option maxHeartbeats 0 in\n"
+        "example : True := by trivial\n"
+    ) == "set_option maxHeartbeats 0",
+          "proof-trust prefilter must retain options after inline comments")
     check(proof_trust_violation(
         "set_option maxRecDepth 0 in\nexample : True := by trivial\n"
     ) == "set_option maxRecDepth 0",
@@ -546,6 +948,33 @@ def check_proof_trust() -> None:
           "proof-trust scanner must ignore comments")
     check(proof_trust_violation('def label := "native_decide"\n') is None,
           "proof-trust scanner must ignore strings")
+    check(
+        not proof_trust_candidate_bytes(
+            b"#print axioms safe\nset_option maxRecDepth 10000\n"
+        ),
+        "byte prefilter must skip common safe trust-adjacent forms",
+    )
+    check(
+        proof_trust_violation_bytes(
+            b"/- prefix comment -/ unsafe def bad : Nat := 1\n"
+        )
+        == "unsafe def",
+        "byte prefilter must retain executable declarations after comments",
+    )
+    check(
+        proof_trust_violation_bytes(
+            b"/- outer /- nested -/ sorry -/\ntheorem ok : True := by trivial\n"
+        )
+        is None,
+        "chunked lexer must preserve nested-comment exclusion",
+    )
+    check(
+        proof_trust_violation_bytes(
+            b'def label := "escaped \\\" sorry"\ntheorem ok : True := by trivial\n'
+        )
+        is None,
+        "chunked lexer must preserve escaped-string exclusion",
+    )
     example_sources = sorted((ROOT / "examples").rglob("*.lean")) if (ROOT / "examples").is_dir() else []
     lean_sources = (
         [
@@ -559,12 +988,56 @@ def check_proof_trust() -> None:
         + example_sources
     )
     for lean in lean_sources:
-        violation = proof_trust_violation(read(lean))
+        violation = proof_trust_violation_bytes(read_bytes(lean))
         check(violation is None,
               f"proof-trust violation in {lean.relative_to(ROOT)}: {violation or ''}")
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--singleflight-worker",
+        action="store_true",
+        help=argparse.SUPPRESS,
+    )
+    args = parser.parse_args(argv)
+    if not args.singleflight_worker:
+        state_root = singleflight.default_state_root()
+        specification = singleflight.validator_spec(
+            "release-worktree", [], None, state_root
+        )
+        receipt = singleflight.submit(specification, state_root)
+        terminal, code = singleflight.collect(
+            state_root,
+            receipt["key"],
+            True,
+            singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
+        )
+        if terminal.get("state") != "terminal":
+            print(json.dumps(terminal, sort_keys=True), file=sys.stderr)
+            return code
+        stdout = terminal.get("stdout", {}).get("tail")
+        stderr = terminal.get("stderr", {}).get("tail")
+        if stdout:
+            print(stdout, end="" if stdout.endswith("\n") else "\n")
+        if stderr:
+            print(
+                stderr,
+                end="" if stderr.endswith("\n") else "\n",
+                file=sys.stderr,
+            )
+        print(
+            "check_release: shared validation "
+            f"key={receipt['key'][:12]} reuse={receipt.get('reuse', 'owner')} "
+            f"exit={code}",
+            file=sys.stderr,
+        )
+        return code
+
+    # ``read`` is a per-run immutable snapshot, not a cross-run file cache.
+    # Clearing here keeps repeated in-process invocations source-current while
+    # letting the thousands of consumers below share one admitted read.
+    read.cache_clear()
     cache: dict[tuple[str, str | None], list[str] | None] = {}
 
     # Fail fast on the cheapest high-severity invariant.  In particular, do
@@ -607,79 +1080,77 @@ def main() -> int:
         "systems paper evidence fixtures stopped rejecting: "
         + ", ".join(systems_paper_fixture_failures),
     )
-    problem_index_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "build_problem_index.py"),
-            "--check",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    # Reject a stale formal-source checkpoint before starting the expensive
+    # projection, query, and adversarial pools. A split or moved Lean module
+    # otherwise makes the answer inevitable but used to keep CPU-heavy readers
+    # alive for another 20-30 seconds before reporting it.
+    release = data["release"]
+    formal_source = release.get("formal_source")
+    check(isinstance(formal_source, dict), "release must name a formal_source checkpoint")
+    formal_ref = formal_source.get("ref") if isinstance(formal_source, dict) else None
+    check(isinstance(formal_ref, str) and re.fullmatch(r"[0-9a-f]{40}", formal_ref or "") is not None,
+          "release.formal_source.ref must be a full lowercase Git commit id")
+    if isinstance(formal_ref, str) and re.fullmatch(r"[0-9a-f]{40}", formal_ref):
+        formal_ref_resolves = run(
+            ["git", "rev-parse", "--verify", f"{formal_ref}^{{commit}}"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        check(
+            formal_ref_resolves.returncode == 0,
+            f"release.formal_source.ref {formal_ref!r} does not resolve to a local commit",
+        )
+        if formal_ref_resolves.returncode == 0:
+            formal_tree_matches, formal_tree_detail = formal_source_matches_current_lean_tree(
+                formal_ref
+            )
+            check(
+                formal_tree_matches,
+                formal_tree_detail
+                or "current public Lean sources differ from formal-source checkpoint",
+            )
+    if ERRORS:
+        print(
+            "check_release: "
+            f"{len(ERRORS)} release-identity failure(s) across {CHECKS} checks"
+        )
+        for err in ERRORS:
+            print(f"  FAIL {err}")
+        return 1
+    publication_stage_results = publication_stage_check_results()
+    problem_index_check = _PROJECTION_CHECK_RESULTS[
+        "scripts/build_problem_index.py"
+    ]
     check(
         problem_index_check.returncode == 0,
         "generated problem-index freshness failed: "
         f"{problem_index_check.stdout.strip() or problem_index_check.stderr.strip()}",
     )
-    external_verification_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "build_external_verification.py"),
-            "--check",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    external_verification_check = _PROJECTION_CHECK_RESULTS[
+        "scripts/build_external_verification.py"
+    ]
     check(
         external_verification_check.returncode == 0,
         "external-verification projection or statement-isolation check failed: "
         f"{external_verification_check.stdout.strip() or external_verification_check.stderr.strip()}",
     )
-    external_verification_release_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "test_external_verification_release.py"),
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    external_verification_release_check = publication_stage_results[
+        "external_verification_release"
+    ]
     check(
         external_verification_release_check.returncode == 0,
         "external-verification replay or immutable release-identity contract failed: "
         f"{external_verification_release_check.stdout.strip() or external_verification_release_check.stderr.strip()}",
     )
-    note_source_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "check_problem_note_sources.py"),
-            "--coverage",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    note_source_check = publication_stage_results["note_source"]
     check(
         note_source_check.returncode == 0,
         "problem-note pinned-source contract failed: "
         f"{note_source_check.stdout.strip() or note_source_check.stderr.strip()}",
     )
-    paper_corpus_check = run(
-        [
-            sys.executable,
-            str(ROOT / "docs" / "papers" / "check_paper_corpus.py"),
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    paper_corpus_check = publication_stage_results["paper_corpus"]
     check(
         paper_corpus_check.returncode == 0,
         "generated paper-corpus freshness failed: "
@@ -688,32 +1159,17 @@ def main() -> int:
     # Freshness is not the only way the corpus can mislead. Nothing here has
     # been externally reviewed and nothing carries an archival identifier; a
     # field claiming either would read as a credential at publication stage.
-    publication_taxonomy_check = run(
-        [
-            sys.executable,
-            str(ROOT / "docs" / "papers" / "check_publication_taxonomy.py"),
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    publication_taxonomy_check = publication_stage_results[
+        "publication_taxonomy"
+    ]
     check(
         publication_taxonomy_check.returncode == 0,
         "paper publication-taxonomy honesty failed: "
         f"{publication_taxonomy_check.stdout.strip() or publication_taxonomy_check.stderr.strip()}",
     )
-    publication_taxonomy_current = run(
-        [
-            sys.executable,
-            str(ROOT / "docs" / "papers" / "build_publication_taxonomy.py"),
-            "--check",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    publication_taxonomy_current = _PROJECTION_CHECK_RESULTS[
+        "docs/papers/build_publication_taxonomy.py"
+    ]
     check(
         publication_taxonomy_current.returncode == 0,
         "paper publication-taxonomy projection is stale: "
@@ -727,15 +1183,16 @@ def main() -> int:
         for err in ERRORS:
             print(f"  FAIL {err}")
         return 1
+    # The publication-stage contract is the last prerequisite for the larger
+    # query and cold-clone suites. Start those two CPU-heavy readers here with
+    # a two-worker cap, then consume them at the existing final barrier while
+    # the main thread advances the remaining release checks.
+    late_executor, late_futures = start_independent_checks(
+        late_check_commands(), max_workers=2
+    )
     taxonomy = set(data["status_taxonomy"])
-    release = data["release"]
     version, tag = release["version"], release["tag"]
     check(tag == f"v{version}", f"release tag {tag} does not match version {version}")
-    formal_source = release.get("formal_source")
-    check(isinstance(formal_source, dict), "release must name a formal_source checkpoint")
-    formal_ref = formal_source.get("ref") if isinstance(formal_source, dict) else None
-    check(isinstance(formal_ref, str) and re.fullmatch(r"[0-9a-f]{40}", formal_ref or "") is not None,
-          "release.formal_source.ref must be a full lowercase Git commit id")
     if isinstance(formal_source, dict):
         check(formal_source.get("ref_kind") == "commit",
               "release.formal_source.ref_kind must be 'commit'")
@@ -1214,12 +1671,6 @@ def main() -> int:
     paper_sources = [(row["source"], read(ROOT / row["source"])) for row in paper_rows]
     paper = paper_sources[0][1]
     all_paper = "\n".join(text for _path, text in paper_sources)
-    check(run(["git", "rev-parse", "--verify", f"{formal_ref}^{{commit}}"], cwd=ROOT,
-                         capture_output=True, text=True, check=False).returncode == 0,
-          f"release.formal_source.ref {formal_ref!r} does not resolve to a local commit")
-    formal_tree_matches, formal_tree_detail = formal_source_matches_current_lean_tree(formal_ref)
-    check(formal_tree_matches,
-          formal_tree_detail or "current public Lean sources differ from formal-source checkpoint")
     for paper_path, paper_text in paper_sources:
         m = re.search(
             r"\\(?:re)?newcommand\{\\commit\}\{([^}]+)\}", paper_text
@@ -1310,6 +1761,35 @@ def main() -> int:
     index_label = machine_paper["paper"]["principal_declaration_index_label"]
     check(re.search(rf"\\label\{{{re.escape(index_label)}\}}", paper) is not None,
           f"machine-readable paper index label {index_label!r} does not exist")
+
+    pinned_modules = {
+        decl["module"]
+        for claim in data["claims"]
+        for decl in claim["declarations"]
+    }
+    for _paper_path, paper_text in paper_sources:
+        for _macro, fname, _line_s, _name in re.findall(
+            r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?",
+            paper_text,
+        ):
+            if fname.startswith(("Erdos249257/", "ErdosProblems/")):
+                rel = fname
+            elif "\\input{problem-note-preamble}" in paper_text:
+                rel = f"ErdosProblems/{fname}"
+            else:
+                rel = f"Erdos249257/{fname}"
+            pinned_modules.add(rel)
+    pinned_cache: dict[tuple[str, str], list[str]] = {}
+    snapshot_lines_batch(
+        ((formal_ref, rel) for rel in pinned_modules),
+        pinned_cache,
+    )
+    cache.update(
+        {
+            (rel, ref): lines or None
+            for (ref, rel), lines in pinned_cache.items()
+        }
+    )
 
     # --- 3. claimed declarations -------------------------------------------
     for claim in data["claims"]:
@@ -1436,6 +1916,7 @@ def main() -> int:
                 "ARCHITECTURE.md",
                 "METHODOLOGY.md",
                 "SCOPE.md",
+                "CODE_OF_CONDUCT.md",
                 "CONTRIBUTING.md",
                 "SECURITY.md",
             )
@@ -1461,17 +1942,15 @@ def main() -> int:
                 "is a second checker, not an independent verification of the "
                 "mathematics",
             )
-    # Check only the first column of the canonical Status/Result table. Other
-    # README tables legitimately bold identifiers such as the six problem
-    # numbers, so a document-wide first-column scan produces false failures.
-    # Keep the permissive cell capture: punctuation in an invalid status must
-    # still reach the taxonomy check rather than evade it.
+    # When the human-first README uses a Status/Result reference table, check
+    # only its first column. The table itself is optional: current first contact
+    # explains evidence classes in prose and routes exhaustive status to the
+    # claim registry. Other README tables legitimately bold problem numbers.
     status_table = re.search(
         r"(?ms)^\| Status \| Result \|\n^\|---\|---\|\n"
         r"(?P<body>(?:^\|.*\n)+)",
         readme,
     )
-    check(status_table is not None, "README lost the Status/Result table")
     status_table_body = status_table.group("body") if status_table else ""
     for status in re.findall(r"\|\s*\*\*([^*\n]+)\*\*\s*\|", status_table_body):
         check(status in taxonomy,
@@ -1520,8 +1999,10 @@ def main() -> int:
         "scripts/check_release.py",
         "scripts/check_architecture_guide.py",
         "scripts/test_architecture_guide.py",
-        "scripts/agent_entry.py",
-        "scripts/test_agent_entry.py",
+            "scripts/agent_entry.py",
+            "scripts/agent_skill_catalog.py",
+            "scripts/test_agent_entry.py",
+            "skills/maintain-public-infrastructure/SKILL.md",
         "scripts/query_corpus.py",
     ):
         check(required in agents, f"AGENTS.md does not route through {required}")
@@ -1535,52 +2016,121 @@ def main() -> int:
     check("mathematical programme" in flat_agents,
           "AGENTS.md must expose mathematical programme routes")
 
-    architecture_check = run(
-        [sys.executable, str(ROOT / "scripts" / "check_architecture_guide.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
+    mid_checks = run_independent_checks(
+        {
+            "architecture": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_architecture_guide.py"),
+            ],
+            "architecture_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_architecture_guide.py"),
+            ],
+            "agent_entry": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_agent_entry.py"),
+            ],
+            "agent_skill_catalog": [
+                sys.executable,
+                str(ROOT / "scripts" / "agent_skill_catalog.py"),
+                "--check",
+            ],
+            "clone_skills": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_clone_skills.py"),
+            ],
+            "contribution_entry": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_contribution_entry.py"),
+            ],
+            "human_first_contact": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_human_first_contact.py"),
+            ],
+            "agent_navigation_paper": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_agent_navigation_paper.py"),
+            ],
+            "certificate_probe": [
+                sys.executable,
+                str(ROOT / "scripts" / "probe_certificate_supply.py"),
+                "--check",
+            ],
+            "second_channel_probe": [
+                sys.executable,
+                str(ROOT / "scripts" / "probe_second_channel_separation.py"),
+                "--check",
+            ],
+            "semantic_contract": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_semantic_corpus.py"),
+            ],
+            "semantic_review": [
+                sys.executable,
+                str(ROOT / "scripts" / "semantic_review.py"),
+                "--check",
+            ],
+            "semantic_review_fixtures": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_semantic_review.py"),
+            ],
+            "theory_lab_contract": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_theory_lab.py"),
+            ],
+            "reasoning_coordinates": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_reasoning_source_coordinates.py"),
+            ],
+            "reasoning_assembly": [
+                sys.executable,
+                str(ROOT / "scripts" / "assemble_reasoning_surfaces.py"),
+                "--check",
+            ],
+            "paper_boundary": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_rendered_paper_boundary.py"),
+                "--source-only",
+            ],
+        }
     )
+    architecture_check = mid_checks["architecture"]
     check(
         architecture_check.returncode == 0,
         "newcomer architecture guide failed: "
         f"{architecture_check.stdout.strip() or architecture_check.stderr.strip()}",
     )
-    architecture_fixture_check = run(
-        [sys.executable, str(ROOT / "scripts" / "test_architecture_guide.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    architecture_fixture_check = mid_checks["architecture_fixtures"]
     check(
         architecture_fixture_check.returncode == 0,
         "newcomer architecture guide fixtures failed: "
         f"{architecture_fixture_check.stdout.strip() or architecture_fixture_check.stderr.strip()}",
     )
-    agent_entry_check = run(
-        [sys.executable, str(ROOT / "scripts" / "test_agent_entry.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    agent_entry_check = mid_checks["agent_entry"]
     check(
         agent_entry_check.returncode == 0,
         "clone-local agent entry failed: "
         f"{agent_entry_check.stdout.strip() or agent_entry_check.stderr.strip()}",
     )
-    agent_navigation_paper_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "check_agent_navigation_paper.py"),
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
+    agent_skill_catalog_check = mid_checks["agent_skill_catalog"]
+    check(
+        agent_skill_catalog_check.returncode == 0,
+        "clone-local skill catalog failed: "
+        f"{agent_skill_catalog_check.stdout.strip() or agent_skill_catalog_check.stderr.strip()}",
     )
+    clone_skills_check = mid_checks["clone_skills"]
+    check(
+        clone_skills_check.returncode == 0,
+        "clone-local skill installation and discovery failed: "
+        f"{clone_skills_check.stdout.strip() or clone_skills_check.stderr.strip()}",
+    )
+    contribution_entry_check = mid_checks["contribution_entry"]
+    check(
+        contribution_entry_check.returncode == 0,
+        "public contribution and credit entry failed: "
+        f"{contribution_entry_check.stdout.strip() or contribution_entry_check.stderr.strip()}",
+    )
+    agent_navigation_paper_check = mid_checks["agent_navigation_paper"]
     check(
         agent_navigation_paper_check.returncode == 0,
         "agent-navigation paper failed: "
@@ -1629,27 +2179,11 @@ def main() -> int:
     check(atlas_check.returncode == 0,
           f"declaration atlas drift: {atlas_check.stdout.strip() or atlas_check.stderr.strip()}")
 
-    certificate_probe_check = run(
-        [sys.executable, str(ROOT / "scripts" / "probe_certificate_supply.py"), "--check"],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    certificate_probe_check = mid_checks["certificate_probe"]
     check(certificate_probe_check.returncode == 0,
           f"certificate-supply probe drift: {certificate_probe_check.stdout.strip() or certificate_probe_check.stderr.strip()}")
 
-    second_channel_probe_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "probe_second_channel_separation.py"),
-            "--check",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    second_channel_probe_check = mid_checks["second_channel_probe"]
     check(second_channel_probe_check.returncode == 0,
           f"second-channel separation probe drift: {second_channel_probe_check.stdout.strip() or second_channel_probe_check.stderr.strip()}")
 
@@ -1695,34 +2229,16 @@ def main() -> int:
     check(semantic_build.returncode == 0,
           f"semantic corpus drift: {semantic_build.stdout.strip() or semantic_build.stderr.strip()}")
 
-    semantic_contract = run(
-        [sys.executable, str(ROOT / "scripts" / "check_semantic_corpus.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    semantic_contract = mid_checks["semantic_contract"]
     check(semantic_contract.returncode == 0,
           f"semantic coverage contract: {semantic_contract.stdout.strip() or semantic_contract.stderr.strip()}")
-    semantic_review_check = run(
-        [sys.executable, str(ROOT / "scripts" / "semantic_review.py"), "--check"],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    semantic_review_check = mid_checks["semantic_review"]
     check(
         semantic_review_check.returncode == 0,
         "semantic review receipt contract: "
         f"{semantic_review_check.stdout.strip() or semantic_review_check.stderr.strip()}",
     )
-    semantic_review_fixtures = run(
-        [sys.executable, str(ROOT / "scripts" / "test_semantic_review.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    semantic_review_fixtures = mid_checks["semantic_review_fixtures"]
     check(
         semantic_review_fixtures.returncode == 0,
         "semantic review mutation fixtures: "
@@ -1745,13 +2261,7 @@ def main() -> int:
     check(lab_build.returncode == 0,
           f"theory lab drift: {lab_build.stdout.strip() or lab_build.stderr.strip()}")
 
-    lab_contract = run(
-        [sys.executable, str(ROOT / "scripts" / "check_theory_lab.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    lab_contract = mid_checks["theory_lab_contract"]
     check(lab_contract.returncode == 0,
           f"theory lab contract: {lab_contract.stdout.strip() or lab_contract.stderr.strip()}")
     theory_lab = json.loads(read(ROOT / "docs" / "theory_lab.json"))
@@ -1841,13 +2351,7 @@ def main() -> int:
             or reasoning_coordinate_check.stderr.strip()
         ),
     )
-    reasoning_coordinate_test = run(
-        [sys.executable, str(ROOT / "scripts" / "test_reasoning_source_coordinates.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    reasoning_coordinate_test = mid_checks["reasoning_coordinates"]
     check(
         reasoning_coordinate_test.returncode == 0,
         "reasoning source-coordinate regression: "
@@ -1876,17 +2380,7 @@ def main() -> int:
     )
     check(paper_alias_check.returncode == 0,
           f"paper module alias drift: {paper_alias_check.stdout.strip() or paper_alias_check.stderr.strip()}")
-    reasoning_assembly_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "assemble_reasoning_surfaces.py"),
-            "--check",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    reasoning_assembly_check = mid_checks["reasoning_assembly"]
     check(
         reasoning_assembly_check.returncode == 0,
         "reasoning-surface assembly drift: "
@@ -1895,17 +2389,7 @@ def main() -> int:
             or reasoning_assembly_check.stderr.strip()
         ),
     )
-    boundary = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "check_rendered_paper_boundary.py"),
-            "--source-only",
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    boundary = mid_checks["paper_boundary"]
     check(
         boundary.returncode == 0,
         "human-facing paper boundary failed: "
@@ -2074,49 +2558,23 @@ def main() -> int:
                 release_file_exists(ROOT / rel),
                 f"orientation drilldown path does not exist: {rel}",
             )
-    query_check = run(
-        [sys.executable, str(ROOT / "scripts" / "test_query_corpus.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    late_checks = finish_independent_checks(late_executor, late_futures)
+    query_check = late_checks["query"]
     check(query_check.returncode == 0,
           f"corpus query surface failed: {query_check.stdout.strip() or query_check.stderr.strip()}")
-    mutation_harness_check = run(
-        [sys.executable, str(ROOT / "scripts" / "test_publication_mutation_harness.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    mutation_harness_check = late_checks["mutation_harness"]
     check(
         mutation_harness_check.returncode == 0,
         "publication mutation harness self-test failed: "
         f"{mutation_harness_check.stdout.strip() or mutation_harness_check.stderr.strip()}",
     )
-    public_boundary_check = run(
-        [sys.executable, str(ROOT / "scripts" / "test_public_artifact_boundary.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    public_boundary_check = late_checks["public_boundary"]
     check(
         public_boundary_check.returncode == 0,
         "public-artifact boundary contract failed: "
         f"{public_boundary_check.stdout.strip() or public_boundary_check.stderr.strip()}",
     )
-    primary_source_disposition_check = run(
-        [
-            sys.executable,
-            str(ROOT / "scripts" / "check_primary_source_dispositions.py"),
-        ],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    primary_source_disposition_check = late_checks["primary_source_disposition"]
     check(
         primary_source_disposition_check.returncode == 0,
         "third-party source redistribution disposition contract failed: "
@@ -2127,28 +2585,22 @@ def main() -> int:
     # standalone diagnostic here as well would repeat every bounded query.
     # Keep the diagnostic as a user-facing command, but execute the combined
     # baseline-plus-adversarial program once in the release gate.
-    cold_clone_adversarial = run(
-        [sys.executable, str(ROOT / "scripts" / "test_cold_clone_comprehension.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    cold_clone_adversarial = late_checks["cold_clone_adversarial"]
     check(cold_clone_adversarial.returncode == 0,
           "bounded cold-clone baseline/adversarial check failed: "
           f"{cold_clone_adversarial.stdout.strip() or cold_clone_adversarial.stderr.strip()}")
 
-    proof_cockpit_check = subprocess.run(
-        [sys.executable, str(ROOT / "scripts" / "test_proof_cockpit.py")],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    proof_cockpit_check = late_checks["proof_cockpit"]
     check(
         proof_cockpit_check.returncode == 0,
         "cold-clone proof cockpit check failed: "
         f"{proof_cockpit_check.stdout.strip() or proof_cockpit_check.stderr.strip()}",
+    )
+    clone_footprint_check = late_checks["clone_footprint"]
+    check(
+        clone_footprint_check.returncode == 0,
+        "clone-footprint budget check failed: "
+        f"{clone_footprint_check.stdout.strip() or clone_footprint_check.stderr.strip()}",
     )
 
     # --- report ---------------------------------------------------------------------

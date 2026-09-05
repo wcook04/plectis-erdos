@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import ast
 import re
+import subprocess
 from pathlib import Path
 
 import refresh_projections
@@ -58,6 +59,28 @@ def checked_builders(source: str) -> set[str]:
     return found
 
 
+def check_check_only_dispatch() -> None:
+    """The freshness scheduler must dispatch every authoritative builder once."""
+    calls: list[tuple[str, ...]] = []
+    original = refresh_projections.run
+
+    def fake_run(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
+        require(cwd == ROOT, "check-only dispatched outside the repository root")
+        calls.append(tuple(args))
+        return subprocess.CompletedProcess(args, 0, "current", "")
+
+    refresh_projections.run = fake_run
+    try:
+        require(refresh_projections.check_only() == 0, "mocked check-only run failed")
+    finally:
+        refresh_projections.run = original
+    dispatched = [Path(args[1]).relative_to(ROOT).as_posix() for args in calls]
+    require(
+        sorted(dispatched) == sorted(refresh_projections.BUILDERS),
+        "check-only dispatch dropped or duplicated a projection builder",
+    )
+
+
 def main() -> int:
     source = CHECK_RELEASE.read_text(encoding="utf-8")
     checked = checked_builders(source)
@@ -94,6 +117,20 @@ def main() -> int:
         "exempt in DELIBERATELY_UNREFRESHED.",
     )
 
+    # A builder whose bare invocation is a dry run must be told to write, or
+    # the refresh silently discards its rendering. On 2026-09-04 the diagonal
+    # depth roster was regenerated into a pipe this way and refresh() blamed
+    # an impure builder for its own no-op.
+    for entry in refresh_projections.BUILDERS:
+        declares_write = '"--write"' in (ROOT / entry).read_text(encoding="utf-8")
+        listed = "--write" in refresh_projections.WRITE_FLAGS.get(entry, ())
+        require(
+            declares_write == listed,
+            f"{entry} declares --write={declares_write} but "
+            f"refresh_projections.WRITE_FLAGS lists it={listed}; a bare run of "
+            "a --write builder is a dry run, so keep the table exact",
+        )
+
     for builder, reason in DELIBERATELY_UNREFRESHED.items():
         require(
             builder in checked,
@@ -115,6 +152,7 @@ def main() -> int:
         "build_paper_module_aliases.py must run before it; with the current "
         "order a full refresh cannot converge",
     )
+    check_check_only_dispatch()
 
     print(
         "refresh projection coverage: PASS; "

@@ -34,19 +34,33 @@
   {
    "id": "lucas_primality_closures",
    "label": "Isolated Lucas primality certificates",
-   "module_count": 481,
+   "module_count": 495,
    "declaration_count": 1724,
-   "provenance_evidence": "One module per prime, named Prime<value>.lean; the shared ClosureT64 module states `This generated module is the compressed primality dependency surface` and each congruence is reduced through `binaryPowMod` and checked by kernel `decide`, with `lucas_primality` as the proof-producing theorem.",
+   "provenance_evidence": "One module per prime, named Prime<value>.lean; ClosureT64 is a stable aggregator over deterministic dependency-level shards whose theorem bodies preserve the original generated monolith exactly. Congruences use kernel `decide`, with `lucas_primality` as the proof-producing theorem.",
    "template_statement": "For a fixed prime p, `Nat.Prime p` is established by a Lucas certificate without native evaluation.",
    "parameters": [
     "prime p"
    ],
-   "generator": "unknown_emitter (parameter recoverable from the module name Prime<p>)",
+   "generator": "ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py emits the source monolith; scripts/shard_closure_t64.py owns its proof-term-preserving public sharding and structural check",
    "consumed_by": [
     "Erdos249257.TotientTailPeriodKiller diagonal-pincer certificates at t = 19..64"
    ],
    "module_paths": [
     "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level0A.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level0B.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level1A.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level1B.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level2A.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level2B.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level3A.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level3B.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level4A.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level4B.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level5A.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level5B.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level6A.lean",
+    "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Support.lean",
     "Erdos249257/DiagonalPincerPrimeCertificates/Prime1007065607398559.lean",
     "Erdos249257/DiagonalPincerPrimeCertificates/Prime100979387.lean",
     "Erdos249257/DiagonalPincerPrimeCertificates/Prime101023187.lean",

@@ -20,6 +20,24 @@ def words(text: str) -> list[str]:
     return re.findall(r"[A-Za-z0-9][A-Za-z0-9'’+#./−≥≤]*", text)
 
 
+def prose_words(text: str) -> list[str]:
+    """Count reader prose without charging the separately bounded code block."""
+
+    return words(re.sub(r"```.*?```", "", text, flags=re.DOTALL))
+
+
+def local_markdown_targets(path: Path) -> list[Path]:
+    """Resolve clone-local Markdown links from the document that owns them."""
+
+    targets: list[Path] = []
+    for raw in re.findall(r"\[[^]]+\]\(([^)]+)\)", path.read_text(encoding="utf-8")):
+        target = raw.split("#", 1)[0]
+        if not target or "://" in target or target.startswith("mailto:"):
+            continue
+        targets.append((path.parent / target).resolve())
+    return targets
+
+
 def authored_prose_blocks(text: str) -> list[str]:
     """Return ordinary prose blocks, excluding metadata and navigation syntax."""
     blocks: list[str] = []
@@ -47,7 +65,27 @@ def main() -> None:
     results = (ROOT / "docs/RESULTS.md").read_text(encoding="utf-8")
     docs_index = (ROOT / "docs/README.md").read_text(encoding="utf-8")
 
-    require(len(words(readme)) <= 1_400, "README exceeds the human front-door budget")
+    reader_surfaces = (
+        ROOT / "README.md",
+        HUMAN_ENTRY,
+        ROOT / "docs/README.md",
+        ROOT / "docs/RESULTS.md",
+        ROOT / "docs/AGENT_WORKBENCH.md",
+        *sorted((ROOT / "docs/papers/full-text").glob("*.md")),
+    )
+    for source in reader_surfaces:
+        for target in local_markdown_targets(source):
+            require(target.is_file(), f"{source.relative_to(ROOT)} has a dead local link: {target}")
+
+    require(
+        "../README.md#problem-papers" in results,
+        "RESULTS does not route readers to the current README paper anchor",
+    )
+
+    require(
+        len(prose_words(readme)) <= 1_400,
+        "README prose exceeds the human front-door budget",
+    )
     require(readme.count("```") <= 2, "README contains more than one command block")
     require(
         "All eight problems remain open" in readme,

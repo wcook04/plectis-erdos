@@ -91,9 +91,9 @@
       "path": "Erdos249257/DiagonalPincerDecomposition.lean"
     },
     {
-      "sigil": "CloT64",
-      "module": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean",
-      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean"
+      "sigil": "LevA",
+      "module": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level1A.lean",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level1A.lean"
     },
     {
       "sigil": "FirHarPiv",

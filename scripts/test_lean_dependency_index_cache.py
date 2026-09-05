@@ -105,8 +105,13 @@ def check_live_input_surface() -> None:
     )
     require(
         "scripts/build_lean_dependency_index.py" not in relative
-        and "scripts/lean_fast_build.py" not in relative,
+        and "scripts/lean_fast_build.py" not in relative
+        and "scripts/build_declaration_atlas.py" not in relative,
         "operational wrapper churn invalidates the semantic projection receipt",
+    )
+    require(
+        "docs/declaration_atlas.json" in relative,
+        "dependency index lost its authoritative upstream atlas artifact",
     )
     semantic_identities = {
         identity for identity, _payload in builder.semantic_check_inputs()
@@ -121,6 +126,20 @@ def check_live_input_surface() -> None:
     require(
         builder.check_input_fingerprint().startswith("sha256:"),
         "dependency-index input fingerprint is not a SHA-256 digest",
+    )
+    require(
+        builder.ENVIRONMENT_VALIDATION_COMMAND
+        == (
+            "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness "
+            "Erdos249257 ErdosProblems"
+        ),
+        "dependency-index metadata bypasses the coordinated Lean build owner",
+    )
+    committed = json.loads(builder.OUTPUT.read_text(encoding="utf-8"))
+    require(
+        committed["environment_validation"]["command"]
+        == builder.ENVIRONMENT_VALIDATION_COMMAND,
+        "committed dependency-index build guidance drifted from its producer",
     )
 
 
@@ -171,14 +190,35 @@ def check_cached_output_rejection() -> None:
 
 
 def check_tracked_cold_clone_receipt() -> None:
-    receipt = builder.load_cached_check(
-        receipt_path=builder.TRACKED_CHECK_RECEIPT,
+    require(
+        builder.TRACKED_CHECK_RECEIPT.is_file(),
+        "tracked cold-clone receipt is missing",
     )
-    require(receipt is not None, "tracked cold-clone receipt is stale")
+    receipt = json.loads(
+        builder.TRACKED_CHECK_RECEIPT.read_text(encoding="utf-8")
+    )
+    require(
+        receipt.get("schema") == builder.CHECK_RECEIPT_SCHEMA
+        and receipt.get("builder_schema") == builder.SCHEMA,
+        "tracked cold-clone receipt schema drifted",
+    )
+    require(
+        receipt.get("output_digest")
+        == sha256_text(builder.OUTPUT.read_text(encoding="utf-8")),
+        "tracked cold-clone receipt no longer owns the committed index",
+    )
     require(
         receipt["verification_posture"].startswith("tracked_receipt_from_full_"),
         "tracked receipt lost its full-export provenance boundary",
     )
+    cached = builder.load_cached_check(
+        receipt_path=builder.TRACKED_CHECK_RECEIPT,
+    )
+    if cached is not None:
+        require(
+            cached == receipt,
+            "exact tracked cache lookup returned a different receipt",
+        )
 
 
 def check_safe_dependency_input_boundary() -> None:
@@ -280,6 +320,90 @@ def check_receipt_uses_verified_snapshot() -> None:
         )
 
 
+def check_guarded_metadata_refresh() -> None:
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory)
+        docs = root / "docs"
+        local = root / ".lake" / "aiw"
+        docs.mkdir()
+        local.mkdir(parents=True)
+        output = docs / "lean_dependency_index.json"
+        tracked = docs / "lean_dependency_index_check.json"
+        local_receipt = local / "lean_dependency_index_check.json"
+        packet = {
+            "kind": "lean_dependency_index",
+            "schema_version": builder.SCHEMA,
+            "source_fingerprint": "sha256:source",
+            "environment_validation": {
+                "command": "lake build Erdos249257 ErdosProblems",
+                "posture": builder.ENVIRONMENT_VALIDATION_POSTURE,
+            },
+            "coverage": {
+                "loaded_library_roots": list(builder.LEAN_ROOT_TARGETS),
+                "source_resolved_node_count": 2,
+                "source_resolved_direct_edge_count": 3,
+            },
+        }
+        original = builder.encoded(packet)
+        output.write_text(original, encoding="utf-8")
+        (docs / "declaration_atlas.json").write_text(
+            json.dumps({"source_fingerprint": "sha256:source"}),
+            encoding="utf-8",
+        )
+        tracked.write_text(
+            json.dumps(
+                {
+                    "schema": builder.CHECK_RECEIPT_SCHEMA,
+                    "builder_schema": builder.SCHEMA,
+                    "output_digest": sha256_text(original),
+                    "source_fingerprint": "sha256:source",
+                    "source_resolved_node_count": 2,
+                    "source_resolved_direct_edge_count": 3,
+                    "verification_posture": "tracked_receipt_from_full_export",
+                }
+            ),
+            encoding="utf-8",
+        )
+        with patch.object(
+            builder,
+            "check_input_fingerprint",
+            return_value="sha256:current-input",
+        ):
+            refreshed = builder.refresh_environment_validation_metadata(
+                root=root,
+                output=output,
+                tracked_receipt_path=tracked,
+                local_receipt_path=local_receipt,
+            )
+        require(
+            refreshed["environment_validation"]["command"]
+            == builder.ENVIRONMENT_VALIDATION_COMMAND,
+            "metadata refresh did not install coordinated build guidance",
+        )
+        for receipt_path in (tracked, local_receipt):
+            receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+            require(
+                receipt["input_fingerprint"] == "sha256:current-input"
+                and receipt["output_digest"]
+                == sha256_text(output.read_text(encoding="utf-8")),
+                "metadata refresh did not bind the migrated output receipt",
+            )
+
+        packet["source_fingerprint"] = "sha256:changed"
+        output.write_text(builder.encoded(packet), encoding="utf-8")
+        try:
+            builder.refresh_environment_validation_metadata(
+                root=root,
+                output=output,
+                tracked_receipt_path=tracked,
+                local_receipt_path=local_receipt,
+            )
+        except RuntimeError:
+            pass
+        else:
+            raise AssertionError("metadata refresh accepted a changed source identity")
+
+
 def check_environment_build_is_bounded() -> None:
     hostile_environment = {
         "GIT_DIR": "/private/wrong-git-dir",
@@ -299,11 +423,10 @@ def check_environment_build_is_bounded() -> None:
         == [
             builder.sys.executable,
             str(builder.LEAN_FAST_BUILD),
-            "--singleflight-worker",
             "--lake-staleness",
             *builder.LEAN_ROOT_TARGETS,
         ],
-        "dependency-bootstrap command drifted",
+        "direct dependency bootstrap bypassed the shared Lean owner",
     )
     require(run.call_args.kwargs["cwd"] == builder.ROOT, "bootstrap cwd drifted")
     sanitized = run.call_args.kwargs["env"]
@@ -323,13 +446,38 @@ def check_environment_build_is_bounded() -> None:
     )
     require(
         run.call_args.kwargs["timeout"]
-        == builder.singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
-        "Lean dependency command escaped the validation-worker timeout budget",
+        == builder.LEAN_ROOT_BUILD_TIMEOUT_SECONDS,
+        "Lean root build lost its distinct cold-bootstrap timeout budget",
+    )
+    require(
+        builder.LEAN_ROOT_BUILD_TIMEOUT_SECONDS
+        > builder.singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
+        "Lean root build collapsed back onto the generic worker timeout",
     )
     require(
         builder.ENVIRONMENT_CONTRACT
         == "clean_committed_snapshot_subprocess_environment_v1",
         "dependency-index environment contract drifted",
+    )
+
+    with patch.dict(
+        os.environ,
+        {builder.singleflight.HOST_LOCK_HELD_ENV: "1"},
+        clear=False,
+    ):
+        with patch.object(builder.subprocess, "run") as run:
+            run.return_value.returncode = 0
+            builder.ensure_elaborated_environment()
+    require(
+        run.call_args.args[0]
+        == [
+            builder.sys.executable,
+            str(builder.LEAN_FAST_BUILD),
+            "--singleflight-worker",
+            "--lake-staleness",
+            *builder.LEAN_ROOT_TARGETS,
+        ],
+        "dependency bootstrap tried to reacquire its already-held Lean lock",
     )
 
     for observed, expected in ((-15, 143), (143, 143)):
@@ -343,6 +491,25 @@ def check_environment_build_is_bounded() -> None:
                 raise AssertionError("external signal exit became a successful build")
 
 
+def check_plain_check_never_builds() -> None:
+    """A read-looking cache check must not acquire the Lean build owner."""
+    with patch.object(builder, "load_cached_check", return_value=None):
+        with patch.object(builder, "build_packet") as build_packet:
+            with patch.object(
+                builder.sys,
+                "argv",
+                ["build_lean_dependency_index.py", "--check"],
+            ):
+                require(
+                    builder.main() == 1,
+                    "stale ordinary dependency-index check did not fail fast",
+                )
+    require(
+        not build_packet.called,
+        "ordinary dependency-index --check unexpectedly launched Lean export",
+    )
+
+
 def main() -> int:
     check_safe_dependency_input_boundary()
     check_safe_dependency_output_boundary()
@@ -351,7 +518,9 @@ def main() -> int:
     check_cached_output_rejection()
     check_tracked_cold_clone_receipt()
     check_receipt_uses_verified_snapshot()
+    check_guarded_metadata_refresh()
     check_environment_build_is_bounded()
+    check_plain_check_never_builds()
     print("lean dependency index cache: PASS")
     return 0
 

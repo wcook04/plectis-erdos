@@ -395,7 +395,7 @@ Consequently a cofinal $1/32$-separation of the raw approximant from every integ
 \#249. The corpus verifies the analogous kill \emph{unconditionally} at exactly two exponents,
 $a=4$ and $a=6$
 (\lean{actualLcmTailOrbit_four_and_six_notMem_int}{TotientActualLcmShortKill.lean:35}, \ev{Cert},
-\scale{fixed}, via \lean{certifiedKill_diagonal_t16}{DiagonalPincerCertificates.lean:2832} and
+\scale{fixed}, via \lean{certifiedKill_diagonal_t16}{DiagonalPincerCertificates.lean:2842} and
 \lean{certifiedKill_diagonal_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928}). Nothing beyond
 $a=6$ is proved. The depth $q$ is not free: the supply predicate pins $2q{+}1 =
 \mathtt{oddGuardedCanonicalAdjacentSuffixDepth}(2^a)$, so per scale $a$ there is exactly one
@@ -452,9 +452,9 @@ statement (it implies certified-kill directly, without the separation-and-round 
 \subsubsection{b11 --- the diagonal pincer certificate bank (\coord{diagonal-pincer})}
 
 \begin{thm}
-\lean{certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2860}, with
-\lean{diagonalPincerCertificateScales}{DiagonalPincerCertificates.lean:2842} and
-\lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2844}. \ev{Cert}. \scale{fixed}.
+\lean{certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2870}, with
+\lean{diagonalPincerCertificateScales}{DiagonalPincerCertificates.lean:2852} and
+\lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2854}. \ev{Cert}. \scale{fixed}.
 \[
   \forall t\in\{1,2,3,4,5,7,8,9,11,13,16,17\},\ \exists L,\
   \mathtt{certifiedKill}\ (\mathtt{periodLcm}\ t)\ (\mathtt{periodLcm}\ t)\ L

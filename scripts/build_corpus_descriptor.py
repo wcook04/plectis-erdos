@@ -466,6 +466,89 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
     }
 
 
+def build_access_contract(repository: str) -> dict[str, Any]:
+    """Describe how a cold external reasoner reaches the existing corpus.
+
+    The descriptor is the public registration envelope, so access belongs here
+    rather than in a packet-specific README.  Consumers materialise their exact
+    commit and ref into the placeholders below; the query/index plane stays the
+    one already owned by this repository.
+    """
+    clone_url = repository if repository.endswith(".git") else f"{repository}.git"
+    checkout = "plectis-lean-erdos249-257"
+    return {
+        "schema": "plectis-public-corpus-access/1",
+        "repository_web": repository,
+        "clone_url": clone_url,
+        "checkout_directory": checkout,
+        "profiles": {
+            "mathematical_reasoning": {
+                "purpose": (
+                    "query the complete public mathematical corpus, then fetch only "
+                    "the sources required by the active proof branch"
+                ),
+                "checkout_shape": "blobless_exact_commit_full_worktree",
+                "required_surfaces": [
+                    "docs/corpus_descriptor.json",
+                    "docs/problems.json",
+                    "docs/claims.json",
+                    "docs/declaration_atlas.json",
+                    "scripts/query_corpus.py",
+                    "research_corpus",
+                ],
+                "pinned_materialization_commands": [
+                    f"git clone --depth=1 --filter=blob:none --single-branch --no-checkout {clone_url} <checkout>",
+                    "git -C <checkout> fetch --depth=1 origin <remote_ref>",
+                    "git -C <checkout> checkout --detach <published_commit>",
+                    "test \"$(git -C <checkout> rev-parse HEAD)\" = \"<published_commit>\"",
+                    "python3 <checkout>/scripts/query_corpus.py --format card",
+                ],
+                "query_command_template": (
+                    "python3 <checkout>/scripts/query_corpus.py <selector> --format card"
+                ),
+            },
+            "lean_proof_only": {
+                "purpose": "build the two default Lean libraries with the smallest useful checkout",
+                "checkout_shape": "depth_one_blobless_sparse_single_branch",
+                "commands": [
+                    f"git clone --depth=1 --filter=blob:none --single-branch --no-checkout {clone_url}",
+                    f"git -C {checkout} cat-file -e HEAD:scripts/lean-sparse-checkout && git -C {checkout} show HEAD:scripts/lean-sparse-checkout | git -C {checkout} sparse-checkout set --no-cone --stdin",
+                    f"git -C {checkout} checkout",
+                    f"cd {checkout} && python3 scripts/lean_fast_build.py --jobs 2",
+                ],
+            },
+            "human_reader": {
+                "purpose": "read the papers, orientation, claims, and contribution surfaces",
+                "checkout_shape": "depth_one_blobless_manifest_sparse_single_branch",
+                "commands": [
+                    f"git clone --depth=1 --filter=blob:none --single-branch --no-checkout {clone_url}",
+                    f"git -C {checkout} cat-file -e HEAD:scripts/reader-sparse-checkout && git -C {checkout} show HEAD:scripts/reader-sparse-checkout | git -C {checkout} sparse-checkout set --no-cone --stdin",
+                    f"git -C {checkout} checkout",
+                ],
+            },
+            "current_generated_corpus": {
+                "purpose": "query every current generated corpus without historical revisions",
+                "checkout_shape": "depth_one_blobless_full_worktree_single_branch",
+                "commands": [
+                    f"git clone --depth=1 --filter=blob:none --single-branch {clone_url}",
+                ],
+            },
+            "release_history": {
+                "purpose": "run provenance checks that require reachable historical commits",
+                "checkout_shape": "blobless_full_history_single_branch",
+                "commands": [
+                    f"git clone --filter=blob:none --single-branch {clone_url}",
+                ],
+            },
+        },
+        "consumer_rule": (
+            "A packet or external tool must replace every placeholder with its frozen "
+            "checkout, ref, commit, and selector; verify HEAD before treating query output "
+            "as source-current. Reuse these profiles instead of inventing another corpus index."
+        ),
+    }
+
+
 def render_orientation_markdown(
     orientation: dict[str, Any], selection_navigation: dict[str, Any]
 ) -> str:
@@ -955,6 +1038,7 @@ def build() -> dict[str, Any]:
         "artifact_role": "self_describing_external_mathematical_corpus_root",
         "corpus_id": "plectis_lean_erdos249_257_public",
         "release_provenance": release["public_projection"],
+        "access": build_access_contract(repository),
         "authority_posture": {
             "proof": "Lean source checked by the pinned Lean kernel",
             "authored_argument": "docs/claims.json::machine_readable_paper.argument_graph",

@@ -184,6 +184,12 @@ python3 scripts/build_declaration_atlas.py --check
 python3 scripts/build_module_synopsis_index.py --check
 ```
 
+The ordinary declaration-atlas check validates the tracked exact-input receipt
+in `docs/declaration_atlas_check.json`: it binds all Lean source bytes, projected
+claim bindings, the generated-certificate manifest, builder code, and atlas
+bytes. Use `python3 scripts/build_declaration_atlas.py --check --full-check` when
+the complete 153,000-declaration parse is itself under test.
+
 Its stored source fingerprint must match the declaration atlas. The index is a
 performance projection; the Lean header remains the authored source.
 
@@ -206,11 +212,11 @@ After an exact full check, a receipt under the ignored `.lake` directory binds
 the complete supported Lean source, toolchain and Lake locks, exporter and
 builder inputs, declaration atlas and generated manifest, the claim registry's
 formal-source release slice, the dependency-extraction helper definitions, and
-committed index bytes. The ordinary `--check` reuses that receipt only while every bound byte is
-unchanged; `--full-check` deliberately bypasses it. Because CI restores
-`.lake`, documentation-only and otherwise unchanged revisions do not repeat
-the environment export, while any formal or exporter input change forces the
-incremental Lake build and a fresh full export.
+committed index bytes. The ordinary `--check` is metadata-only: it reuses that
+receipt only while every bound byte is unchanged and otherwise fails fast
+without launching Lean. After the coordinated root build,
+`--check --full-check` refreshes the export and receipt. Because CI restores
+`.lake`, unchanged revisions do not repeat the export.
 The exhaustive declaration inventory remains the route for auxiliary forest
 modules that intentionally are not imported into a compact mathematical root:
 

@@ -11,12 +11,12 @@ from query_corpus import search_packet
 CASES = (
     (
         "is Erdos 257 solved",
-        "erdos257_half_story",
+        "erdos_257",
         "remaining_open.universal_257_all_infinite_supports",
     ),
     (
         "has Erdős 249 been settled",
-        "erdos249_certificate_story",
+        "erdos_249",
         "remaining_open.erdos_249_irrationality",
     ),
 )

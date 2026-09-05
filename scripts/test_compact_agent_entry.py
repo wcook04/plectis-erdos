@@ -14,6 +14,7 @@ COMPACT = ROOT / "AGENTS.override.md"
 DEEP = ROOT / "AGENTS.md"
 WORKBENCH = ROOT / "docs" / "AGENT_WORKBENCH.md"
 PUBLICATION_ENTRY = ROOT / "docs" / "publication_entry_packet.json"
+README = ROOT / "README.md"
 
 # Every provider entry file a coding agent may auto-load. Copilot loads
 # `.github/copilot-instructions.md` AND the agent files (`AGENTS.md`,
@@ -76,7 +77,6 @@ def main() -> int:
         "agent_entry.py --skills",
         "skills/<id>/SKILL.md",
         "check_cold_clone_comprehension.py --quick",
-        "docs/orientation.json::agent_entry",
         "docs/publication_entry_packet.json",
         "--route comparator_assurance",
         "--route palomar_qualification",
@@ -86,6 +86,12 @@ def main() -> int:
         "Do not absorb the complete deep contract",
     ):
         assert required in text, required
+    assert "docs/orientation.json::agent_entry" not in text
+
+    readme = README.read_text(encoding="utf-8")
+    assert "An agent arriving cold starts at [`AGENTS.override.md`](AGENTS.override.md)." in readme
+    assert "[The Agent Workbench](docs/AGENT_WORKBENCH.md)" in readme
+    assert "keeps machine routing and kernel\nprobes out of the human reading path" in readme
 
     # Projection-only checks can pass while an advertised route returns
     # "unknown route id". Exercise the public commands themselves.

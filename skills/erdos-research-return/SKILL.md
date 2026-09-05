@@ -31,12 +31,27 @@ commit, contributor, route, intent, and stop condition. Do the bounded work in
 the same clone. Record positive, negative, inconclusive, and corrective results
 with equal care; never promote a claim beyond its evidence.
 
+The required arguments are maintained by the command itself:
+
+```sh
+python3 scripts/continue_research.py start --help
+python3 scripts/continue_research.py check --help
+python3 scripts/continue_research.py package --help
+```
+
 Use `scripts/continue_research.py check` before packaging. Then use
 `scripts/continue_research.py package` to emit `return.json`,
 `route-memory.json`, and the package manifest. Validate the pair with
-`scripts/validate_research_return.py --require-submitted --check-git
---require-route-memory-receipt`. A pull request may carry the pair as transient
-intake artifacts; they do not belong on the accepted main branch.
+the exact package pair:
+
+```sh
+python3 scripts/validate_research_return.py return.json \
+  --route-memory-receipt route-memory.json \
+  --require-submitted --check-git --require-route-memory-receipt
+```
+
+A pull request may carry the pair as transient intake artifacts; they do not
+belong on the accepted main branch.
 
 Before packaging a stable result, run
 `skills/propagate-research-consequences/SKILL.md`. The return should distinguish

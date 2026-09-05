@@ -17,11 +17,18 @@ insufficient history; `verify_claims.py` reports that condition separately
 and exits `2` rather than presenting it as a mathematical failure.
 
 ```sh
-git clone https://github.com/wcook04/plectis-lean-erdos249-257.git
+git clone --filter=blob:none https://github.com/wcook04/plectis-lean-erdos249-257.git
 cd plectis-lean-erdos249-257
 git fetch --tags --force
 git status --short
 ```
+
+The blob filter retains the complete commit and tag graph required by the
+pinned-history gates, but downloads old file bodies only if a later command
+actually reads them. It does not make the clone shallow. This matters because
+the current checkout is hundreds of megabytes while historical generated
+projections are much larger; eagerly transferring every obsolete body does not
+strengthen any proof or release check.
 
 Run the following static, no-Lean first impression. These commands use the
 committed Python and JSON surfaces and do not need Lake, elan, or Mathlib:
@@ -39,7 +46,12 @@ python3 scripts/query_corpus.py --tour --format card
 The quick check is a bounded navigation check, not a proof build. It confirms
 that the eight-problem entry surface, both public Lean roots, claim/source
 routes, paper handles, open-boundary routes, and environment guidance are
-present before any toolchain download.
+present before any toolchain download. Its semantic-corpus freshness step uses
+the tracked content-addressed receipt in `docs/semantic_corpus_check.json`, so
+an unchanged clone hashes the relevant inputs and outputs instead of rebuilding
+the 153,000-declaration projection. Use
+`python3 scripts/build_semantic_corpus.py --check --full-check` when a full
+in-memory rebuild is the thing being tested.
 
 Before installing or building anything, a reader can return from any indexed
 problem to its public evidence with the same no-build query surface:
@@ -78,30 +90,32 @@ The cache command is optional for correctness but avoids recompiling Mathlib
 from source. It may download several gigabytes. A cache is an acceleration,
 not authority: the toolchain file and manifest are the reproducibility inputs.
 
-Build the two supported public roots first, then the explicitly supported
-non-default consumers:
+Check one real published theorem module first. This is the short feedback path
+for confirming that the toolchain, dependency cache, and project all work:
 
 ```sh
-python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness
-lake build ErdosProblems
-lake build Examples
-lake build FormalConjecturesAdapter
-lake build FormalConjecturesVariants
-lake build ResidualBench
-python3 scripts/build_lean_dependency_index.py --check
+python3 scripts/lean_fast_build.py --jobs 2 \
+  ErdosProblems.Erdos249.PeriodMultipleEscape
+```
+
+For a complete release replay, build the two supported public roots and the
+explicitly supported non-default consumers through one host-shared wrapper
+invocation:
+
+```sh
+python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness \
+  Erdos249257 ErdosProblems Examples FormalConjecturesAdapter \
+  FormalConjecturesVariants ResidualBench
+python3 scripts/build_lean_dependency_index.py --check --full-check
 ```
 
 `Erdos249257` and `ErdosProblems` are the default library targets. `Examples`
 is a downstream consumer and is deliberately not a default target. The other
 targets are separate adapter, variant, and residual-check surfaces; their
-declarations do not enlarge the reviewed mathematical corpus.
-
-For a focused replay of the source-level #249 prime-excursion constraints,
-run the named problem module after the ordinary toolchain setup:
-
-```sh
-python3 scripts/lean_fast_build.py ErdosProblems.Erdos249.PeriodMultipleEscape
-```
+declarations do not enlarge the reviewed mathematical corpus. Keeping all six
+targets behind the wrapper gives the clean clone one bounded scheduler owner,
+one dependency plan, and the same host-wide duplicate-build suppression used
+by focused replay and CI.
 
 Both commands automatically enter the tracked public singleflight scheduler.
 On one host, identical source/toolchain requests from separate clones join the
@@ -115,8 +129,16 @@ and launches hourly terminal-state cleanup; it is disposable acceleration and
 never substitutes for the recorded Lake exit code. Lean keys cover every
 visible Lean source plus their toolchain and build
 authorities rather than the entire Git tree, so unrelated paper or README edits
-do not force a duplicate proof build. To submit without attaching the current
-shell, use:
+do not force a duplicate proof build. A successful owner publishes a bounded
+copy-on-write `.lake/build` seed keyed by those exact inputs. An equivalent
+clone hydrates that seed before accepting the terminal receipt, so reuse means
+the caller has local build outputs rather than only a cached success status.
+To submit without attaching the current shell, use:
+
+```sh
+python3 scripts/validation_singleflight.py submit --class lean \
+  --target ErdosProblems.Erdos249.PeriodMultipleEscape
+```
 
 The admitted owner also manages a same-lock dependency seed through
 `scripts/lean_package_share.py`. On APFS (or a Linux filesystem supporting
@@ -130,10 +152,11 @@ Lake behavior. Successful macOS builds also compact large repeated
 byte identity and source stability. Only the current and one previous semantic
 package seed are retained.
 
-```sh
-python3 scripts/validation_singleflight.py submit --class lean \
-  --target ErdosProblems.Erdos249.PeriodMultipleEscape
-```
+Build-output sharing follows the same no-symlink, no-full-copy rule and keeps
+only the two newest semantic seeds. Existing checkout outputs are preserved;
+matching files are updated by reflink under the same host-wide Lean lock.
+Unsupported filesystems fail closed for cross-clone receipt reuse and retain
+ordinary local build behavior.
 
 `run` is the corresponding submit-or-join-and-collect command. A later caller
 with the same semantic key reuses the in-flight or completed receipt; no human
@@ -202,6 +225,8 @@ python3 scripts/build_lean_dependency_index.py --check
 If a command reports stale generated output, regenerate from the named owning
 builder and commit the source plus all projections that builder declares. Do
 not copy files from another checkout or rely on a developer's `.lake` state.
+The ordinary dependency-index `--check` never compiles; an intentional release
+export uses `--check --full-check` after the coordinated Lean build above.
 
 ## Resource and boundary notes
 

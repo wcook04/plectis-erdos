@@ -1,0 +1,74 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+name: Offer to review one thing
+description: Volunteer a bounded review without needing to find an error first.
+title: "[review offer] "
+labels: ["review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        You do not need to review the whole repository or arrive with a defect.
+        Reading one statement, proof, source attribution, or paragraph carefully
+        is useful. A bounded “this looks right,” “this overclaims,” or “I am not
+        sure because…” is a real result and will never be quoted as endorsement.
+
+  - type: dropdown
+    id: lens
+    attributes:
+      label: What would you like to review?
+      options:
+        - Whether a Lean statement says what its English summary says
+        - Whether a result or method is already in the literature
+        - Whether a paper says more than its evidence establishes
+        - Whether an open-problem boundary is stated correctly
+        - Whether Comparator checks what the repository says it checks
+        - Whether a clean-clone reproduction works
+        - Something else
+    validations:
+      required: true
+
+  - type: input
+    id: target
+    attributes:
+      label: What should the review cover?
+      description: Give a problem number, claim id, declaration, paper section, or ask us to suggest one that fits your available time.
+      placeholder: "Erdős #257 — or: suggest one, I have about an hour"
+    validations:
+      required: true
+
+  - type: input
+    id: time
+    attributes:
+      label: How much time would you like to spend?
+      description: Optional. This helps us suggest a genuinely bounded target.
+      placeholder: "About 20 minutes"
+
+  - type: textarea
+    id: background
+    attributes:
+      label: Is there useful context about your background?
+      description: Optional and never a filter. It only helps calibrate a suitable target and response.
+
+  - type: input
+    id: credit
+    attributes:
+      label: How should the review be credited?
+      description: Give a name or handle, or say “anonymous.”
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: public_material
+    attributes:
+      label: Public-material confirmation
+      options:
+        - label: I have not included credentials, private correspondence, personal data, or unpublished material that should remain private.
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        **What happens next:** we agree on one small target before asking for work.
+        Your eventual review is recorded with its uncertainty and disagreement
+        intact. A negative review is useful; silence is not treated as approval.

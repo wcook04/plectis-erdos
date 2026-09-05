@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:eebbb41c4dcc4b741271c9aae2ac7dfda83db6b6e836ed0795da192a12858ead",
-  "module_count": 1044,
-  "synopsis_count": 849,
+  "source_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+  "module_count": 1058,
+  "synopsis_count": 863,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -195,7 +195,7 @@
     {
       "id": "Erdos249257.DiagonalPincerCertificates",
       "path": "Erdos249257/DiagonalPincerCertificates.lean",
-      "synopsis": "Finite diagonal-pincer certificates This generated module materializes the kernel-safe prefix of finite `certifiedKill (periodLcm t) (periodLcm t) L_min` rows in the imported pincer table: 12 distinct scales through `t = 17`. Prime factors are proved prime in Lean, the factorizations are multiplied back exactly, and Euler totients are reconstructed from pairwise-coprime prime-power blocks. No `native evaluation`, custom axiom, or unbounded-supply inference is used. Results input SHA-256: `1114b667b8d044a97240d031dce4dcfd093d6ea93cef78086a05572c667416dd`. Factorization input SHA-256: `4a0c5360a08c34381c932692f66a2094178ff2dfec7302788caed8e6ee3fdf3d`."
+      "synopsis": "Finite diagonal-pincer certificates This generated module materializes the kernel-safe prefix of finite `certifiedKill (periodLcm t) (periodLcm t) L_min` rows in the imported pincer table: 12 distinct scales through `t = 17`. Prime factors are proved prime in Lean, the factorizations are multiplied back exactly, and Euler totients are reconstructed from pairwise-coprime prime-power blocks. No `native_decide`, custom axiom, or unbounded-supply inference is used. Results input SHA-256: `1114b667b8d044a97240d031dce4dcfd093d6ea93cef78086a05572c667416dd`. Factorization input SHA-256: `4a0c5360a08c34381c932692f66a2094178ff2dfec7302788caed8e6ee3fdf3d`."
     },
     {
       "id": "Erdos249257.DiagonalPincerCertificatesT19",
@@ -283,9 +283,79 @@
       "synopsis": "Diagonal pincer decomposition This file wires the exact reduced explicit shadow into the actual lcm-diagonal tail difference. The scaled Möbius shadow is retained canonically in `ℚ`, with reduced numerator `a_t` and denominator `d_t`, and separated from the residual foreign defect by definition. The primary exact algebraic pincer is `diagonal ∈ ℤ ↔ d_t * foreignDefect = -a_t (mod d_t)`. For compatibility with the finite T4 channel interface, each selected target representative `u` may still be split off from the explicit shadow, leaving an orthogonal complement. That projected pincer is `diagonal ∈ ℤ ↔ m * (foreignDefect + channelComplement) = -u (mod m)`. The final theorems expose both supply sockets from the master development. They are conditional implications: an unbounded supply of channel misses gives an unbounded supply of non-integral diagonal cells, which the already-landed completeness theorem converts to irrationality. This file does not prove the avoidance supply itself and does not assert that denominator growth implies a miss."
     },
     {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level0A",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level0A.lean",
+      "synopsis": "ClosureT64 dependency level 0 Generated deterministically by `scripts/shard_closure_t64.py`; proof bodies are preserved verbatim from the original monolith."
+    },
+    {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level0B",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level0B.lean",
+      "synopsis": "ClosureT64 dependency level 0 Generated deterministically by `scripts/shard_closure_t64.py`; proof bodies are preserved verbatim from the original monolith."
+    },
+    {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level1A",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level1A.lean",
+      "synopsis": "ClosureT64 dependency level 1 Generated deterministically by `scripts/shard_closure_t64.py`; proof bodies are preserved verbatim from the original monolith."
+    },
+    {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level1B",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level1B.lean",
+      "synopsis": "ClosureT64 dependency level 1 Generated deterministically by `scripts/shard_closure_t64.py`; proof bodies are preserved verbatim from the original monolith."
+    },
+    {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level2A",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level2A.lean",
+      "synopsis": "ClosureT64 dependency level 2 Generated deterministically by `scripts/shard_closure_t64.py`; proof bodies are preserved verbatim from the original monolith."
+    },
+    {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level2B",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level2B.lean",
+      "synopsis": "ClosureT64 dependency level 2 Generated deterministically by `scripts/shard_closure_t64.py`; proof bodies are preserved verbatim from the original monolith."
+    },
+    {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level3A",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level3A.lean",
+      "synopsis": "ClosureT64 dependency level 3 Generated deterministically by `scripts/shard_closure_t64.py`; proof bodies are preserved verbatim from the original monolith."
+    },
+    {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level3B",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level3B.lean",
+      "synopsis": "ClosureT64 dependency level 3 Generated deterministically by `scripts/shard_closure_t64.py`; proof bodies are preserved verbatim from the original monolith."
+    },
+    {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level4A",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level4A.lean",
+      "synopsis": "ClosureT64 dependency level 4 Generated deterministically by `scripts/shard_closure_t64.py`; proof bodies are preserved verbatim from the original monolith."
+    },
+    {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level4B",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level4B.lean",
+      "synopsis": "ClosureT64 dependency level 4 Generated deterministically by `scripts/shard_closure_t64.py`; proof bodies are preserved verbatim from the original monolith."
+    },
+    {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level5A",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level5A.lean",
+      "synopsis": "ClosureT64 dependency level 5 Generated deterministically by `scripts/shard_closure_t64.py`; proof bodies are preserved verbatim from the original monolith."
+    },
+    {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level5B",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level5B.lean",
+      "synopsis": "ClosureT64 dependency level 5 Generated deterministically by `scripts/shard_closure_t64.py`; proof bodies are preserved verbatim from the original monolith."
+    },
+    {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Level6A",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Level6A.lean",
+      "synopsis": "ClosureT64 dependency level 6 Generated deterministically by `scripts/shard_closure_t64.py`; proof bodies are preserved verbatim from the original monolith."
+    },
+    {
+      "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64.Support",
+      "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64/Support.lean",
+      "synopsis": "Shared support for the Lucas closure through t=64 This generated support module contains the pre-t47 boundary imports shared by the ClosureT64 shards. Compact Lucas helpers live at the acyclic base."
+    },
+    {
       "id": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64",
       "path": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean",
-      "synopsis": "Shared Lucas closure through t=64 This generated module is the compressed primality dependency surface for the t=47,49,53,59,61,64 diagonal-pincer certificates. Dependencies are declared before consumers. Each modular congruence is reduced through the logarithmic `binaryPowMod` recurrence and checked by kernel `decide`; `lucas_primality` remains the proof-producing theorem."
+      "synopsis": "Shared Lucas closure through t=64 Stable public import surface for the dependency-safe generated certificate shards. The shard owner preserves the original 1,242 theorem bodies exactly and does not change the proof-authority posture (`decide +kernel` and `lucas_primality`)."
     },
     {
       "id": "Erdos249257.DiagonalPincerPrimeCertificates.Prime1007065607398559",

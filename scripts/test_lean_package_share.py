@@ -79,6 +79,59 @@ class LeanPackageShareTests(unittest.TestCase):
         self.assertEqual(receipt["status"], "attached_host_seed")
         attach.assert_called_once()
 
+    def test_durable_workspace_publishes_pointer_without_duplicate_package_tree(self) -> None:
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            package_share, "durable_workspace_reference", return_value=True
+        ), mock.patch.object(package_share, "clone_tree") as clone:
+            base = Path(directory)
+            repo_parent = base / "repo"
+            repo_parent.mkdir()
+            root = self.make_root(repo_parent)
+            (root / ".lake/packages").mkdir(parents=True)
+            state_root = base / "state"
+            receipt = package_share.publish_seed(
+                root,
+                state_root,
+                "a" * 64,
+                {"mathlib": "abc123"},
+            )
+            seed = json.loads(
+                (state_root / "package-seeds" / ("a" * 64) / "seed.json").read_text()
+            )
+
+        self.assertEqual(receipt["status"], "published_durable_workspace_reference")
+        self.assertEqual(seed["source_role"], "durable_host_workspace_reference")
+        self.assertEqual(seed["source_path"], str(root.resolve()))
+        self.assertFalse((state_root / "package-seeds" / ("a" * 64) / "packages").exists())
+        clone.assert_not_called()
+
+    def test_load_seed_resolves_validated_durable_workspace_pointer(self) -> None:
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(
+            package_share, "durable_workspace_reference", return_value=True
+        ), mock.patch.object(
+            package_share, "package_heads", return_value={"mathlib": "abc123"}
+        ):
+            base = Path(directory)
+            source_root = base / "repo"
+            source = source_root / ".lake/packages"
+            source.mkdir(parents=True)
+            state_root = base / "state"
+            _, receipt_path = package_share.seed_paths(state_root, "b" * 64)
+            package_share.atomic_json(
+                receipt_path,
+                {
+                    "schema": package_share.SCHEMA,
+                    "semantic_fingerprint": "b" * 64,
+                    "package_heads": {"mathlib": "abc123"},
+                    "source_role": "durable_host_workspace_reference",
+                    "source_path": str(source_root),
+                },
+            )
+
+            loaded = package_share.load_seed(state_root, "b" * 64)
+
+        self.assertEqual(loaded, (source.resolve(), {"mathlib": "abc123"}))
+
     def test_attach_rechecks_process_after_clone_staging(self) -> None:
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(
             package_share, "clone_tree"

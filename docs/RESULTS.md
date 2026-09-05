@@ -85,7 +85,7 @@ attention is maintained in
 statuses and open propositions live in [`claims.json`](claims.json).
 
 For a narrative account, open the relevant item in the
-[eight-paper portfolio](../README.md#the-eight-problem-papers). For exact
+[eight-paper portfolio](../README.md#problem-papers). For exact
 declarations and assumptions, use the [source map](SOURCE_MAP.md). The sections
 below retain the complete technical inventory, including result-family
 dispositions, semantic census data, finite measurements, and retractions;
@@ -1571,7 +1571,7 @@ The README is the human front door and is held to a short word budget. The secti
 
 ### Problem statements
 
-[`docs/papers/corpus.json`](docs/papers/corpus.json) is the machine-readable
+[`docs/papers/corpus.json`](papers/corpus.json) is the machine-readable
 index of the papers.
 
 | Problem | Mathematical statement |
@@ -1595,21 +1595,21 @@ network access.
 ### External verification
 
 Nineteen selected Lean propositions are declared a second time, without proofs,
-in [`ExternalVerification/Statements.lean`](ExternalVerification/Statements.lean).
+in [`ExternalVerification/Statements.lean`](../ExternalVerification/Statements.lean).
 Comparator checks the proof-bearing module against those separate declarations
 and against a fixed axiom budget of `propext`, `Quot.sound`, and
 `Classical.choice`; an adversarial fixture alters one statement and must be
-rejected. [`formalization.yaml`](formalization.yaml) records, per selected
+rejected. [`formalization.yaml`](../formalization.yaml) records, per selected
 result, the contribution class, exact statement, source declaration, boundary,
-`sorry` count, and axioms. Manifest and [verification packet](docs/EXTERNAL_VERIFICATION.md)
-cover all eight problem programmes; [replay](docs/EXTERNAL_VERIFICATION_REPLAY.md)
+`sorry` count, and axioms. Manifest and [verification packet](EXTERNAL_VERIFICATION.md)
+cover all eight problem programmes; [replay](EXTERNAL_VERIFICATION_REPLAY.md)
 gives the reviewer-run Linux route. The same check runs in continuous
 integration against the reviewed source commit. Comparator checks propositions
 only: no paper deduction, cited theorem, external computation, intended
 meaning, novelty, or significance.
 
-[RESULTS](docs/RESULTS.md) gives each strongest checked result and its limit;
-[prior art](docs/PRIOR_ART.md) records classical, subsuming, and earlier public
+[RESULTS](RESULTS.md) gives each strongest checked result and its limit;
+[prior art](PRIOR_ART.md) records classical, subsuming, and earlier public
 work. The finite #249 result is the
 classical Farey/mediant bound (numerical delta `0`): Farey's method supplies
 the number directly, exactly the Farey bound, not an improvement. Full-kernel
@@ -1618,7 +1618,7 @@ Martin externally, and #269's two-prime result is not first.
 
 This self-contained public Plectis checkout is not an entrypoint into any private
 development system. `v0.9.0` is the latest tagged release and citation anchor;
-[`docs/claims.json`](docs/claims.json) pins the exact formal-source checkpoint
+[`docs/claims.json`](claims.json) pins the exact formal-source checkpoint
 this release ships. Lean source checked by the pinned Lean kernel is
 proof authority; do not infer results from private or unreleased work.
 
@@ -1662,13 +1662,13 @@ eventually-periodic nonnegative weighted irrationality, a signed
 irrational-or-base-terminating dichotomy, five binary-carry
 criteria/consequences, and two scoped #249 no-go countermodels.
 Five further obstructions are stated with their limits in
-[RESULTS](docs/RESULTS.md#other-standalone-exact-obstructions).
+[RESULTS](#other-standalone-exact-obstructions).
 
 An exact final-skip band formula does not show that the actual orbit avoids
 an unsafe band.
 
-[Orientation](docs/ORIENTATION.md) routes claims; the retained
-[mathematics paper](erdos249-257-main-paper.pdf) preserves the joint
+[Orientation](ORIENTATION.md) routes claims; the retained
+[mathematics paper](../erdos249-257-main-paper.pdf) preserves the joint
 #249/#257 exposition.
 
 ## What remains open
@@ -1684,11 +1684,10 @@ The two working records each close with a section titled "The wall": every
 attempted argument class is stopped by a stated bound, recorded with what it
 does not rule out.
 
-[`SCOPE.md`](SCOPE.md) is the short boundary statement. The exact expert
+[`SCOPE.md`](../SCOPE.md) is the short boundary statement. The exact expert
 handoffs state what input is requested, current guess, alternatives,
 discriminating evidence, checked consumer, and endpoint-or-counterexample
 boundary. See
-[RESULTS](docs/RESULTS.md#exact-questions-for-a-human-expert) and
+[RESULTS](#exact-questions-for-a-human-expert) and
 `python3 scripts/query_expert_handoffs.py`. A refuted route is withdrawn in
 the next edition and the refutation credited.
-

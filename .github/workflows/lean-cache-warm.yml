@@ -118,19 +118,12 @@ jobs:
           lake exe cache get
 
       - name: Memory-bounded Lean build
-        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness
-
-      - name: Build the problem-centric library
-        run: lake build ErdosProblems
-
-      - name: Build foreign-corpus statement adapters
-        run: lake build FormalConjecturesAdapter
-
-      - name: Build foreign-corpus variant candidates
-        run: lake build FormalConjecturesVariants
+        # Warm exactly the target set consumed by the required build job under
+        # one planner/singleflight owner, including its non-default consumers.
+        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants ResidualBench
 
       # Writes the exact dependency-index receipt into `.lake`. `lean.yml`
       # reuses it on an exact cache restore; without it in the saved cache the
       # next branch pays the full export again.
       - name: Export elaborated dependency index
-        run: python3 scripts/build_lean_dependency_index.py --check
+        run: python3 scripts/build_lean_dependency_index.py --check --full-check

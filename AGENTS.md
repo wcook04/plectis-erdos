@@ -488,41 +488,31 @@ authored exposition, then generated projections.
 
 ## Validation
 
-Run the focused public-surface gate after documentation or registry changes:
+Choose one validation level. Do not run the full release gate and then rerun its
+component checks as a serial checklist.
 
-```sh
-python3 scripts/check_release.py
-python3 scripts/check_problem_note_sources.py --coverage
-python3 scripts/build_problem_index.py --check
-python3 scripts/build_semantic_corpus.py --check
-python3 scripts/check_semantic_corpus.py
-python3 scripts/semantic_review.py --check
-python3 scripts/build_theory_lab.py --check
-python3 scripts/check_theory_lab.py
-python3 scripts/test_declaration_head_contract.py
-python3 scripts/test_dependency_lock_contract.py
-python3 scripts/test_citation_identity_contract.py
-python3 scripts/test_license_map_contract.py
-python3 scripts/test_methodology_contract.py
-python3 scripts/build_module_graph.py --check
-python3 scripts/build_module_synopsis_index.py --check
-python3 scripts/build_lean_dependency_index.py --check
-python3 scripts/refresh_source_coordinates.py --check
-python3 scripts/build_corpus_descriptor.py --check
-python3 scripts/build_publication_entry_packet.py --check
-python3 scripts/check_publication_contract.py
-python3 scripts/test_publication_artifact_contract.py
-python3 scripts/run_publication_mutations.py --verify-operators
-python3 scripts/test_query_corpus.py --programme-routes-only
-python3 scripts/test_query_corpus_resilience.py
-python3 scripts/benchmark_semantic_reasoning.py --split held_out
-python3 scripts/audit_semantic_corpus.py
-python3 scripts/dogfood_semantic_proof.py
-python3 scripts/test_status_question_search.py
-python3 scripts/test_claim_packet_boundaries.py
-python3 scripts/test_publication_evidence_time_axis.py
-python3 scripts/test_query_corpus.py
-```
+- During an edit, run only the owning builder or focused test named by the
+  routed skill. For example, agent-entry work uses
+  `python3 scripts/test_agent_entry.py`; semantic projection work uses its
+  `build_*.py --check` command plus the matching contract test.
+- Before publishing a non-Lean public-surface change, run
+  `python3 scripts/check_release.py` once. It already runs the registered
+  projection freshness checks, source-coordinate checks, public-boundary
+  checks, query suite, cold-clone adversarial suite, and mutation fixtures.
+- After a Lean change, run the focused build wrapper below as the separate
+  proof-authority check. The Python release gate identifies the formal source
+  but deliberately does not elaborate Lean.
+
+Individual component commands remain useful for diagnosing a failing release
+gate, not as additional work after a pass. Start with the failed command named
+in the gate output. Common drilldowns are
+`python3 scripts/check_problem_note_sources.py --coverage`,
+`python3 scripts/build_semantic_corpus.py --check --full-check`,
+`python3 scripts/check_semantic_corpus.py`,
+`python3 scripts/build_module_graph.py --check`,
+`python3 scripts/refresh_source_coordinates.py --check`,
+`python3 scripts/build_publication_entry_packet.py --check`, and
+`python3 scripts/test_query_corpus.py`.
 
 When the shared worktree contains unrelated in-progress edits, validate the
 committed snapshot without cleaning or stashing anyone's files:
@@ -535,19 +525,24 @@ The wrapper uses a disposable local clone and excludes all caller worktree
 changes. `--probe-only` verifies ref resolution and clone preparation without
 running the expensive release gate.
 
-Run the full proof authority check after Lean changes:
+Validate the changed dependency cone after Lean changes:
 
 ```sh
-python3 scripts/lean_fast_build.py --jobs 2
+python3 scripts/lean_fast_build.py --jobs 2 --changed-from HEAD
 ```
 
+Run the untargeted two-root command only at the integration or release
+boundary. A focused PASS authorizes the edited source scope; it is not a full
+project integration receipt.
+
 The wrapper is the public concurrency boundary. Equivalent clean clones share
-one content-keyed validation future in the repository-scoped host cache;
-different Lean targets queue behind one `lean-host` owner instead of writing
-the same machine's build trees concurrently. That heavy-owner lock is above
+one content-keyed validation future in the repository-scoped host cache.
+A different Lean target returns deferred exit 75 immediately while one
+`lean-host` owner is active, rather than silently queueing another detached
+build; retrying after the owner finishes launches the deferred target. That heavy-owner lock is above
 the repository slug, allowing cooperating public and authoring checkouts to
-join the same pre-launch queue without sharing mutable build trees. The detached owner continues if
-an attached caller exits; externally killed Lean children automatically resume
+share identical work without sharing mutable build trees. The detached owner
+continues if an attached caller exits; externally killed Lean children automatically resume
 from partial output for up to three attempts, with exhaustion classified as
 deferred exit 75 rather than a theorem failure. Completed output is bounded,
 and terminal state is cleaned automatically. Same-lock cold clones receive independent
@@ -556,8 +551,18 @@ supports it; mutable cache directories are never symlinked. Set
 `VALIDATION_SINGLEFLIGHT_STATE_ROOT` only when an
 explicitly isolated cache is required. None of this cache state is proof
 authority: the terminal receipt preserves the underlying Lake exit code.
+`python3 scripts/validation_singleflight.py status --key <key>` prints a
+bounded operational card; add `--full` only when the complete hashed source
+manifest is needed.
 The clone-local operational guide is
 [skills/lean-concurrent-validation/SKILL.md](skills/lean-concurrent-validation/SKILL.md).
+
+For agent-entry, skill-catalog, generated-projection, contribution-flow, or
+other clean-clone infrastructure repairs, load
+[skills/maintain-public-infrastructure/SKILL.md](skills/maintain-public-infrastructure/SKILL.md).
+Repair the public owner, preserve the observed task as a behavior fixture, and
+keep long-running validation productive through disjoint work rather than
+polling.
 
 After any stable theorem, counterexample, no-go, computation, correction,
 exposition change, or architecture repair, load
@@ -587,7 +592,10 @@ A separate diagnostic checks that a cold clone stays readable:
 python3 scripts/test_proof_cockpit.py
 python3 scripts/agent_entry.py --entry "<task>"
 python3 scripts/agent_entry.py --skills
+python3 scripts/agent_skill_catalog.py --check
 python3 scripts/test_agent_entry.py
+python3 scripts/test_clone_skills.py
+python3 scripts/test_contribution_entry.py
 python3 scripts/check_cold_clone_comprehension.py --quick
 python3 scripts/check_architecture_guide.py
 python3 scripts/test_architecture_guide.py
@@ -597,7 +605,12 @@ python3 scripts/test_cold_clone_comprehension.py
 
 The `--quick` path checks the committed compact human and agent projections
 without a Lean build or typed-query sweep, so a fresh clone gets an immediate
-readability receipt. The full diagnostic proves the first-contact boundary
+readability receipt. Semantic-corpus freshness is proved from the tracked
+content-addressed receipt in `docs/semantic_corpus_check.json`; the receipt is
+accepted only while the exact builder inputs, generated corpus, and projected
+census surfaces retain their recorded digests. Run
+`python3 scripts/build_semantic_corpus.py --check --full-check` to bypass that
+fast path and rebuild the projection in memory. The full diagnostic proves the first-contact boundary
 through the same bounded public query packets a cold coding agent would follow;
 it does not concatenate the claim registry, methodology, or declaration atlas
 as evidence. Both check navigation semantics and response budgets, not Lean

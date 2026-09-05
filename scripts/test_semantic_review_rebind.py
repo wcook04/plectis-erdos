@@ -282,6 +282,109 @@ def check_corpus_lagging_a_rebind_is_not_alarming() -> None:
     )
 
 
+NEW_REVISION = "1" * 40
+CITED = {("Erdos257/Example.lean", "example_theorem"): ("theorem", "theorem example_theorem : True")}
+
+
+def cited_corpus(fingerprint: str) -> dict:
+    corpus = sample_corpus(fingerprint)
+    corpus["statement_nodes"][0]["evidence"] = [
+        {
+            "id": "Erdos257/Example.lean:3:example_theorem",
+            "kind": "theorem",
+            "resolved": True,
+            "module": "Erdos257/Example.lean",
+            "declaration": "example_theorem",
+        }
+    ]
+    corpus["statement_nodes"].append(
+        {
+            "id": "Z12::other",
+            "canonical_statement": "The base-fixed series is irrational.",
+            "logical_class": "unconditional",
+            "problem": "257",
+            "evidence": list(corpus["statement_nodes"][0]["evidence"]),
+            "open_antecedents": [],
+            "scope_caveat": "",
+            "prior_art_state": "novelty_unassessed",
+        }
+    )
+    return corpus
+
+
+def rereview(registry: dict, committed: dict, candidate: dict, *, old=CITED, new=CITED):
+    return sr.rereview_moved_revision(
+        registry,
+        committed,
+        candidate,
+        new_revision=NEW_REVISION,
+        today="2026-09-04",
+        old_signatures=old,
+        new_signatures=new,
+    )
+
+
+def check_moved_revision_with_identical_statements_is_reissued() -> None:
+    """The re-review route re-issues only when every cited statement is byte-identical."""
+    committed = cited_corpus(OLD_FINGERPRINT)
+    registry = sample_registry(committed)
+    candidate = cited_corpus(NEW_FINGERPRINT)
+    reissues, refusals = rereview(registry, committed, candidate)
+    require(not refusals, f"identical statements across a move were refused: {refusals}")
+    require(len(reissues) == 3, f"expected every receipt re-issued, got {len(reissues)}")
+    sr.apply_rereviews(reissues, new_revision=NEW_REVISION, today="2026-09-04")
+    for review in registry["reviews"]:
+        require(review["reviewed_revision"] == NEW_REVISION, "revision was not moved")
+        require(
+            review["evidence_rebindings"][-1]["reason"] == sr.MOVED_REVISION_REASON,
+            "re-issue did not record its reason",
+        )
+        require("byte for byte" in review["review_scope"], "re-review scope was not recorded")
+    # The registry must now digest cleanly against the candidate at the new revision.
+    node = candidate["statement_nodes"][0]
+    expected = sr.subject_digest(
+        "statement_node",
+        node,
+        evidence_fingerprint=NEW_FINGERPRINT,
+        reviewed_revision=NEW_REVISION,
+    )
+    require(registry["reviews"][0]["evidence_digest"] == expected, "re-issued digest is wrong")
+
+
+def check_moved_revision_with_changed_statement_is_refused() -> None:
+    """A cited declaration whose signature differs across the move is a real re-review."""
+    committed = cited_corpus(OLD_FINGERPRINT)
+    registry = sample_registry(committed)
+    candidate = cited_corpus(NEW_FINGERPRINT)
+    changed = {("Erdos257/Example.lean", "example_theorem"): ("theorem", "theorem example_theorem : False")}
+    reissues, refusals = rereview(registry, committed, candidate, new=changed)
+    require(not reissues, "a receipt was re-issued over a changed statement")
+    require(
+        refusals and all("statement differs" in refusal for refusal in refusals),
+        f"a changed statement was not refused by name: {refusals}",
+    )
+
+
+def check_moved_revision_with_vanished_declaration_is_refused() -> None:
+    """A declaration absent from the old atlas cannot be proved unchanged."""
+    committed = cited_corpus(OLD_FINGERPRINT)
+    registry = sample_registry(committed)
+    candidate = cited_corpus(NEW_FINGERPRINT)
+    reissues, refusals = rereview(registry, committed, candidate, old={})
+    require(not reissues and refusals, "a vanished declaration was silently accepted")
+
+
+def check_unmoved_revision_is_not_rereviewed() -> None:
+    committed = cited_corpus(OLD_FINGERPRINT)
+    registry = sample_registry(committed)
+    candidate = cited_corpus(NEW_FINGERPRINT)
+    reissues, refusals = sr.rereview_moved_revision(
+        registry, committed, candidate, new_revision=REVISION, today="2026-09-04",
+        old_signatures=CITED, new_signatures=CITED,
+    )
+    require(not reissues and refusals, "an unmoved revision was re-reviewed")
+
+
 def check_substantive_projection_excludes_only_the_pin() -> None:
     """Guard the guard: the exclusion list must never grow silently."""
     require(
@@ -311,6 +414,10 @@ def main() -> int:
     check_already_broken_receipt_is_refused()
     check_corpus_lagging_a_rebind_is_not_alarming()
     check_substantive_projection_excludes_only_the_pin()
+    check_moved_revision_with_identical_statements_is_reissued()
+    check_moved_revision_with_changed_statement_is_refused()
+    check_moved_revision_with_vanished_declaration_is_refused()
+    check_unmoved_revision_is_not_rereviewed()
     print(
         "semantic review rebind guard: PASS; a rebind moves the declaration-atlas "
         "fingerprint and refuses every change to reviewed mathematics"

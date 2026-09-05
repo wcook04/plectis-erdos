@@ -206,7 +206,10 @@ def main() -> int:
         metadata_errors = metadata_private_path_errors({"synthetic.md": payload})
         require(metadata_errors, "synthetic private metadata marker was accepted")
 
-    missing_artifact = notice.replace(data["artifacts"][0]["path"], "", 1)  # type: ignore[index]
+    # The notice may name the same artifact in both its inventory and its
+    # provenance explanation. Remove every mention so this fixture represents
+    # an actual omission rather than leaving the second reference authoritative.
+    missing_artifact = notice.replace(data["artifacts"][0]["path"], "")  # type: ignore[index]
     notice_mutation_errors = notice_errors(data, missing_artifact, requirements, lake_manifest)
     require(
         any("missing artifact path" in error for error in notice_mutation_errors),

@@ -27,13 +27,16 @@ import re
 import stat
 import subprocess
 import sys
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
 import build_corpus_descriptor
+import build_semantic_corpus
 import check_architecture_guide
 import query_corpus
 import query_expert_handoffs
+import query_semantic
 import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -182,6 +185,7 @@ INCREMENTAL_BUILD_SURFACES = (
     # when the README was cut to its reader budget. It is on the document the
     # README names, verbatim, and this contract reads both.
     "docs/AGENT_WORKBENCH.md",
+    "docs/REPRODUCIBILITY.md",
     ".github/workflows/lean.yml",
     "scripts/lean_fast_build.py",
 )
@@ -439,13 +443,15 @@ def publication_architecture_budget_bytes(family_count: int) -> int:
 # tuned until one module fits.
 MODULE_PACKET_BASE_BYTES = 12_000
 MODULE_PACKET_BYTES_PER_DECLARATION = 1_400
-_ATLAS_MODULE_DECLARATION_COUNTS: dict[str, int] = {}
-for _row in json.loads(safe_read_text("docs/declaration_atlas.json"))["declarations"]:
-    _module = _row.get("module")
-    if _module:
-        _ATLAS_MODULE_DECLARATION_COUNTS[_module] = (
-            _ATLAS_MODULE_DECLARATION_COUNTS.get(_module, 0) + 1
-        )
+@lru_cache(maxsize=1)
+def atlas_module_declaration_counts() -> dict[str, int]:
+    """Load the exhaustive atlas only for full module-packet checks."""
+    counts: dict[str, int] = {}
+    for row in json.loads(safe_read_text("docs/declaration_atlas.json"))["declarations"]:
+        module = row.get("module")
+        if module:
+            counts[module] = counts.get(module, 0) + 1
+    return counts
 
 
 def module_packet_budget_bytes(module: str) -> int:
@@ -454,7 +460,7 @@ def module_packet_budget_bytes(module: str) -> int:
         PACKET_BUDGET_BYTES,
         MODULE_PACKET_BASE_BYTES
         + MODULE_PACKET_BYTES_PER_DECLARATION
-        * _ATLAS_MODULE_DECLARATION_COUNTS.get(module, 0),
+        * atlas_module_declaration_counts().get(module, 0),
     )
 
 
@@ -572,7 +578,9 @@ PROOF_PLAN_QUERIES = {
 }
 
 
+@lru_cache(maxsize=None)
 def read(rel: str) -> str:
+    """Read each immutable committed surface once per validation process."""
     return safe_read_text(rel)
 
 
@@ -645,17 +653,24 @@ def run_child(
     )
 
 
-def check_semantic_corpus_freshness() -> None:
-    """Keep the quick entry check honest after claim-route source edits."""
+def check_semantic_corpus_freshness() -> dict[str, Any]:
+    """Return an exact receipt, rebuilding only when the receipt cannot prove freshness."""
+    receipt = build_semantic_corpus.load_cached_check()
+    if receipt is not None:
+        return receipt
     completed = run_child(
         [
             sys.executable,
             str(ROOT / "scripts" / "build_semantic_corpus.py"),
             "--check",
+            "--full-check",
         ],
         cwd=ROOT,
     )
     require(completed.returncode == 0, completed.stdout.strip() or completed.stderr.strip())
+    receipt = build_semantic_corpus.load_cached_check()
+    require(receipt is not None, "semantic corpus full check produced no exact receipt")
+    return receipt
 
 
 def encoded_bytes(value: Any) -> int:
@@ -669,86 +684,90 @@ def query_packet(*args: str, budget_bytes: int = PACKET_BUDGET_BYTES) -> dict[st
     navigation session. Spawning one Python process per assertion made the
     evaluator repeatedly parse the exhaustive declaration atlas and measured
     process-start overhead rather than comprehension. The full check retains a
-    real external-process smoke below; this hot path calls the same ``main``
-    parser and packet renderer in one process.
+    real external-process smoke below; this hot path uses the same parser and
+    dispatch as ``main`` while retaining the packet before output encoding.
     """
+    packet, output_format = query_corpus.query_args_packet(args)
+    require(output_format == "json", "cold-clone packet query selected card output")
+    raw = (json.dumps(packet, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    require(len(raw) <= budget_bytes, f"query {' '.join(args) or '<summary>'} emitted {len(raw)} bytes "
+        f"(budget {budget_bytes})")
+    return packet
+
+
+def validate_query_cli_process_smoke() -> None:
+    """Prove each installed query script works as a standalone cold process."""
+    smoke_commands = (
+        (
+            [sys.executable, str(QUERY), "--route", "agent_native_corpus_navigation"],
+            lambda packet: packet.get("kind") == "reading_route"
+            and packet.get("route", {}).get("id") == "agent_native_corpus_navigation",
+        ),
+        (
+            [sys.executable, str(SEMANTIC_QUERY), "problem-registry", "--limit", "1"],
+            lambda packet: packet.get("returned_problem_count") == 8
+            and isinstance(packet.get("problems"), list),
+        ),
+        (
+            [sys.executable, str(EXPERT_HANDOFF_QUERY)],
+            lambda packet: isinstance(packet.get("results"), list),
+        ),
+    )
+    for command, accepts in smoke_commands:
+        completed = run_child(command, cwd=ROOT.parent)
+        if completed.returncode != 0:
+            raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
+        require(accepts(json.loads(completed.stdout)), "cold-clone comprehension invariant")
+
+
+def _in_process_query_main(module: Any, args: tuple[str, ...]) -> tuple[int, str, str]:
+    """Exercise a CLI parser while retaining immutable projection caches."""
     stdout = io.StringIO()
     stderr = io.StringIO()
     previous_argv = sys.argv
     try:
-        sys.argv = [str(QUERY), *args]
+        sys.argv = [str(module.__file__), *args]
         with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
-            return_code = query_corpus.main()
+            return_code = module.main()
     finally:
         sys.argv = previous_argv
-    if return_code != 0:
-        raise AssertionError(stdout.getvalue().strip() or stderr.getvalue().strip())
-    output = stdout.getvalue()
-    raw = output.encode("utf-8")
-    require(len(raw) <= budget_bytes, f"query {' '.join(args) or '<summary>'} emitted {len(raw)} bytes "
-        f"(budget {budget_bytes})")
-    return json.loads(output)
-
-
-def validate_query_cli_process_smoke() -> None:
-    """Prove the installed script still works as a standalone cold process."""
-    completed = run_child(
-        [
-            sys.executable,
-            str(QUERY),
-            "--route",
-            "agent_native_corpus_navigation",
-        ],
-        cwd=ROOT.parent,
-    )
-    if completed.returncode != 0:
-        raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
-    packet = json.loads(completed.stdout)
-    require(packet["kind"] == "reading_route", "cold-clone comprehension invariant")
-    require(packet["route"]["id"] == "agent_native_corpus_navigation", "cold-clone comprehension invariant")
+    return return_code, stdout.getvalue(), stderr.getvalue()
 
 
 def semantic_query_packet(
     *args: str, budget_bytes: int = PACKET_BUDGET_BYTES
 ) -> dict[str, Any]:
-    """Run the public semantic CLI exactly as a cold coding agent would."""
-    completed = run_child(
-        [sys.executable, str(SEMANTIC_QUERY), *args],
-        cwd=ROOT,
-    )
-    if completed.returncode != 0:
-        raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
-    raw = completed.stdout.encode("utf-8")
+    """Exercise the semantic CLI without reparsing its atlas for every assertion."""
+    return_code, stdout, stderr = _in_process_query_main(query_semantic, args)
+    if return_code != 0:
+        raise AssertionError(stdout.strip() or stderr.strip())
+    raw = stdout.encode("utf-8")
     require(len(raw) <= budget_bytes, f"semantic query {' '.join(args)} emitted {len(raw)} bytes "
         f"(budget {budget_bytes})")
-    return json.loads(completed.stdout)
+    return json.loads(stdout)
 
 
 def expert_handoff_packet(
     *args: str, budget_bytes: int = PACKET_BUDGET_BYTES
 ) -> dict[str, Any]:
-    """Run the cross-domain expert-handoff query from a cold clone."""
-    completed = run_child(
-        [sys.executable, str(EXPERT_HANDOFF_QUERY), *args],
-        cwd=ROOT,
-    )
-    if completed.returncode != 0:
-        raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
-    raw = completed.stdout.encode("utf-8")
+    """Exercise expert-handoff parsing while retaining immutable input caches."""
+    return_code, stdout, stderr = _in_process_query_main(query_expert_handoffs, args)
+    if return_code != 0:
+        raise AssertionError(stdout.strip() or stderr.strip())
+    raw = stdout.encode("utf-8")
     require(len(raw) <= budget_bytes, f"expert-handoff query {' '.join(args) or '<default>'} emitted "
         f"{len(raw)} bytes (budget {budget_bytes})")
-    return json.loads(completed.stdout)
+    return json.loads(stdout)
 
 
 def check_expert_handoff_protocol() -> str:
     """Run the cross-domain protocol's own structural self-check."""
-    completed = run_child(
-        [sys.executable, str(EXPERT_HANDOFF_QUERY), "--check"],
-        cwd=ROOT,
+    return_code, stdout, stderr = _in_process_query_main(
+        query_expert_handoffs, ("--check",)
     )
-    if completed.returncode != 0:
-        raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
-    return completed.stdout.strip()
+    if return_code != 0:
+        raise AssertionError(stdout.strip() or stderr.strip())
+    return stdout.strip()
 
 
 def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
@@ -907,8 +926,15 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     require(set(surfaces) == set(INCREMENTAL_BUILD_SURFACES), "cold-clone comprehension invariant")
     readme = surfaces["README.md"] + "\n" + surfaces["docs/AGENT_WORKBENCH.md"]
     readme_flat = normalized(readme)
+    runbook = surfaces["docs/REPRODUCIBILITY.md"]
     workflow = surfaces[".github/workflows/lean.yml"]
     planner = surfaces["scripts/lean_fast_build.py"]
+    build_job = re.search(
+        r"(?ms)^  build:\n(?P<body>.*?)(?=^  [A-Za-z0-9_-]+:\n|\Z)",
+        workflow,
+    )
+    require(build_job is not None, "Lean CI lost its build job")
+    build_job_body = build_job.group("body") if build_job is not None else ""
 
     for token in (
         "A cold clone can navigate before this step",
@@ -918,26 +944,61 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     ):
         require(normalized(token) in readme_flat, f"README lost incremental-build contract: {token}")
 
-    # A newcomer meets `lake` before they ever meet Lean. Until 2026-08-16 the
-    # README opened its build section on `lake exe cache get` and the string
-    # "elan" appeared nowhere in this repository's documentation, so the first
-    # build command a reader was handed was `command not found` unless they
-    # already had the toolchain. Nothing caught it because every check that
-    # runs here has the toolchain installed by the time it runs.
+    # A newcomer meets the build wrapper before they ever meet Lean. Until
+    # 2026-08-16 the README opened on a raw `lake exe cache get` and the string
+    # "elan" appeared nowhere in this repository's documentation. The wrapper
+    # now owns cache acquisition as well as build deduplication, but it still
+    # needs the toolchain installed before the first invocation.
     #
     # This is deliberately a positional contract rather than a keyword one: a
     # prerequisite named eighteen lines below the command it is a prerequisite
     # for is not a prerequisite, and the previous README did carry a toolchain
     # sentence — just underneath the command that needed it.
-    toolchain_guide = readme.find(
+    first_contact = surfaces["README.md"]
+    toolchain_guide = first_contact.find(
         "https://leanprover-community.github.io/get_started.html"
     )
-    first_lake_command = readme.find("lake exe cache get")
+    first_build_command = first_contact.find("python3 scripts/lean_fast_build.py --jobs 2")
     require(toolchain_guide >= 0, "README no longer tells a reader where the Lean toolchain comes from")
-    require(first_lake_command >= 0, "README lost its Mathlib cache command")
-    require(toolchain_guide < first_lake_command, "README names the Lean setup guide only after the first lake command; "
+    require(first_build_command >= 0, "README lost its coordinated Lean build command")
+    require(toolchain_guide < first_build_command, "README names the Lean setup guide only after the first build command; "
         "a reader without elan hits `command not found` before they reach it")
+    first_build_block_end = first_contact.find("```", first_build_command)
+    require(
+        first_build_block_end > first_build_command
+        and "ErdosProblems.Erdos249.PeriodMultipleEscape"
+        in first_contact[first_build_command:first_build_block_end],
+        "README makes a full-corpus build the first Lean success path",
+    )
     require("elan" in readme, "README no longer names Lean's toolchain manager")
+    require(
+        re.search(r"(?m)^\s*lake build\b", runbook) is None,
+        "reproducibility runbook bypasses the host-shared Lean build wrapper",
+    )
+    require(
+        all(
+            target in runbook
+            for target in (
+                "Erdos249257",
+                "ErdosProblems",
+                "Examples",
+                "FormalConjecturesAdapter",
+                "FormalConjecturesVariants",
+                "ResidualBench",
+            )
+        ),
+        "reproducibility runbook lost a supported public build target",
+    )
+    focused_replay = runbook.find("ErdosProblems.Erdos249.PeriodMultipleEscape")
+    complete_replay = runbook.find("Erdos249257 ErdosProblems")
+    require(
+        0 <= focused_replay < complete_replay,
+        "runbook must offer a focused Lean success before the complete release replay",
+    )
+    require(
+        "fetches the pinned cache when needed" in readme_flat,
+        "README no longer states that the build wrapper owns cache acquisition",
+    )
 
     # Every token below describes something the workflow *does*. "# v5" sat in
     # this list too, and it describes only which version of the cache action
@@ -952,9 +1013,8 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         # Two workers, not four: four exhausted the runner while compiling
         # FactorialZeroPlateau.
         "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness",
-        "python3 scripts/build_lean_dependency_index.py --check",
+        "python3 scripts/build_lean_dependency_index.py --check --full-check",
         "No Lean source or proof-environment input changed; compilation is unchanged.",
-        "This is already a default root.",
     ):
         require(token in workflow, f"Lean CI lost cache/build contract: {token}")
 
@@ -962,11 +1022,39 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         line.strip()
         for line in workflow.splitlines()
         if line.strip().startswith(("- uses: actions/", "uses: actions/"))
-        and not re.search(r"uses: actions/[\w-]+@[0-9a-f]{40} # v[\d.]+$", line.strip())
+        and not re.search(r"uses: actions/[\w-]+(?:/[\w-]+)*@[0-9a-f]{40} # v[\d.]+$", line.strip())
     ]
     require(not unpinned, "Lean CI uses an action that is not pinned to a commit with a version "
         "comment, so a reader cannot tell what it resolves to: "
         + "; ".join(unpinned))
+    require(
+        re.search(
+            r"^\s*run:\s*python3 scripts/check_cold_clone_comprehension\.py\s*$",
+            workflow,
+            re.M,
+        )
+        is None,
+        "Lean CI repeats the standalone cold-clone baseline after the release "
+        "gate already runs the combined baseline-plus-adversarial program",
+    )
+    require(
+        len(re.findall(r"(?m)^\s*run:\s*python3 scripts/lean_fast_build\.py\b", build_job_body))
+        == 1,
+        "Lean CI must have exactly one coordinated build-wrapper owner",
+    )
+    require(
+        re.search(r"(?m)^\s*run:\s*lake build\b", build_job_body) is None,
+        "Lean CI launches a duplicate raw Lake build outside the wrapper",
+    )
+    for target in (
+        "Erdos249257",
+        "ErdosProblems",
+        "Examples",
+        "FormalConjecturesAdapter",
+        "FormalConjecturesVariants",
+        "ResidualBench",
+    ):
+        require(target in build_job_body, f"Lean CI wrapper lost target {target}")
 
     for token in (
         '"--changed-from"',
@@ -1036,6 +1124,61 @@ def validate_human_first_contact(
     check_architecture_guide.validate_guide(surfaces["ARCHITECTURE.md"])
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
+    lean_clone_command = (
+        "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
+        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+    )
+    lean_sparse_command = (
+        "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-sparse-checkout && "
+        "git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | "
+        "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
+    )
+    lean_checkout_command = "git -C plectis-lean-erdos249-257 checkout"
+    lean_build_command = "python3 scripts/lean_fast_build.py --jobs 2"
+    reader_sparse_command = (
+        "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/reader-sparse-checkout && "
+        "git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | "
+        "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
+    )
+    full_clone_command = (
+        "git clone --depth=1 --filter=blob:none --single-branch "
+        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+    )
+    full_history_clone_command = (
+        "git clone --filter=blob:none --single-branch "
+        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+    )
+    require(
+        lean_clone_command in readme_prefix
+        and lean_sparse_command in readme_prefix
+        and lean_checkout_command in readme_prefix,
+        "README must expose the Lean-only partial/sparse clone commands before "
+        "a newcomer downloads the generated-document tree",
+    )
+    require(
+        lean_build_command in readme_prefix,
+        "README's Lean-only checkout must include and invoke its bounded build wrapper",
+    )
+    require(
+        reader_sparse_command in readme_prefix,
+        "README must expose the bounded human-reader sparse checkout before the full corpus",
+    )
+    require(
+        full_clone_command in readme_prefix,
+        "README must expose a shallow current-document checkout before "
+        "a newcomer downloads historical revisions",
+    )
+    require(
+        full_history_clone_command in readme_prefix,
+        "README must retain a blobless full-history checkout for release validation",
+    )
+    require(
+        readme_prefix.find(lean_clone_command)
+        < readme_prefix.find(reader_sparse_command)
+        < readme_prefix.find(full_clone_command)
+        < readme_prefix.find(full_history_clone_command),
+        "README must order Lean-only, current full, then release-history checkouts",
+    )
     # Retargeted when the README was cut to its human front-door word budget.
     # The order is the same reading order: what the eight papers are, what the
     # checks do and do not establish, then how to read or run it. The open
@@ -1176,7 +1319,9 @@ def validate_paper_library_first_contact(
     long_tail_heading = paper_readme.find(
         "### Explicitly subordinate, rejected, and long tail"
     )
-    inventory_heading = paper_readme.find("## Problem portfolio (complete 14-paper inventory)")
+    inventory_heading = paper_readme.find(
+        "## Problem portfolio (complete 15-paper inventory)"
+    )
     positions = (
         signal_heading,
         ranked_heading,
@@ -1276,36 +1421,8 @@ def validate_paper_library_first_contact(
         )
 
 
-def semantic_census() -> dict[str, Any]:
-    """Recompute the public diagnostic census from the generated graph."""
-    corpus = json.loads(read("docs/semantic_corpus.json"))
-    public = corpus["summary"]["public_semantic_census"]
-    nodes = corpus["statement_nodes"]
-    frontier = corpus["frontier"]
-    nonrecurring_ids = set(corpus["views"]["nonrecurring"]["nodes"])
-    nonrecurring = [node for node in nodes if node["id"] in nonrecurring_ids]
-    bare = [
-        node
-        for node in nodes
-        if node.get("logical_class") == "equivalence_or_classification"
-        and node.get("is_restatement_of_open_problem")
-    ]
-    classical = [
-        node
-        for node in nodes
-        if node.get("logical_class") == "classical_formalised"
-        or node.get("prior_art_state") in ("known_classical", "prior_art_found")
-    ]
-    open_antecedents = frontier["open_antecedents"]
-    demand_lattice = frontier["demand_lattice"]
-    demand_classes = demand_lattice["classes"]
-    demand_equivalent_classes = [
-        row for row in demand_classes if row.get("equivalent_to_problem")
-    ]
-
-    def problem_counts(rows: list[dict[str, Any]]) -> Counter[str]:
-        return Counter(row["problem"] for row in rows)
-
+def semantic_census_from_public(public: dict[str, Any]) -> dict[str, Any]:
+    """Project the compact public census recorded by the semantic builder."""
     return {
         "indexed_problem_ids": public["indexed_problem_ids"],
         "nonrecurring_total": public["nonrecurring"]["total"],
@@ -1332,21 +1449,24 @@ def semantic_census() -> dict[str, Any]:
         "open_antecedent_equivalent_total": public[
             "open_antecedent_endpoint_equivalent_count"
         ],
-        "demand_lattice_counts": demand_lattice["counts"],
-        "demand_equivalent_total": sum(
-            len(row["members"]) for row in demand_equivalent_classes
-        ),
+        "demand_lattice_counts": public["demand_lattice_counts"],
+        "demand_equivalent_total": public["demand_equivalent_total"],
         "demand_equivalent_by_problem": Counter(
-            {
-                problem: sum(
-                    len(row["members"])
-                    for row in demand_equivalent_classes
-                    if row["problem"] == problem
-                )
-                for problem in ("249", "257")
-            }
+            public["demand_equivalent_by_problem"]
         ),
     }
+
+
+def semantic_census(receipt: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Read the compact exact receipt, or fall back to the exhaustive graph."""
+    if receipt is not None:
+        return semantic_census_from_public(
+            receipt["summary"]["public_semantic_census"]
+        )
+    corpus = json.loads(read("docs/semantic_corpus.json"))
+    return semantic_census_from_public(
+        corpus["summary"]["public_semantic_census"]
+    )
 
 
 def validate_public_semantic_census(
@@ -3037,14 +3157,14 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
 
 def run_quick_check() -> int:
     """Verify the zero-build first-contact path from committed projections."""
-    check_semantic_corpus_freshness()
+    semantic_receipt = check_semantic_corpus_freshness()
     check_route_memory_descriptor()
     summary = quick_summary()
     human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
     validate_human_first_contact(summary, human_surfaces)
     validate_paper_library_first_contact(read(PAPER_LIBRARY_SURFACE))
     validate_public_semantic_census(
-        semantic_census(),
+        semantic_census(semantic_receipt),
         {path: read(path) for path in CENSUS_SURFACES},
     )
     validate_gateway_opening(read(GATEWAY_PAPER))
@@ -3079,6 +3199,11 @@ def main(argv: list[str] | None = None) -> int:
             "claim, paper, and route projection sweep"
         ),
     )
+    parser.add_argument(
+        "--singleflight-worker",
+        action="store_true",
+        help=argparse.SUPPRESS,
+    )
     args = parser.parse_args(argv)
     if args.quick:
         return run_quick_check()
@@ -3089,6 +3214,39 @@ def main(argv: list[str] | None = None) -> int:
             "boundaries verified"
         )
         return 0
+
+    if not args.singleflight_worker:
+        state_root = singleflight.default_state_root()
+        specification = singleflight.validator_spec(
+            "cold-clone", [], None, state_root
+        )
+        receipt = singleflight.submit(specification, state_root)
+        terminal, code = singleflight.collect(
+            state_root,
+            receipt["key"],
+            True,
+            singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
+        )
+        if terminal.get("state") != "terminal":
+            print(json.dumps(terminal, sort_keys=True), file=sys.stderr)
+            return code
+        stdout = terminal.get("stdout", {}).get("tail")
+        stderr = terminal.get("stderr", {}).get("tail")
+        if stdout:
+            print(stdout, end="" if stdout.endswith("\n") else "\n")
+        if stderr:
+            print(
+                stderr,
+                end="" if stderr.endswith("\n") else "\n",
+                file=sys.stderr,
+            )
+        print(
+            "cold-clone comprehension: shared validation "
+            f"key={receipt['key'][:12]} reuse={receipt.get('reuse', 'owner')} "
+            f"exit={code}",
+            file=sys.stderr,
+        )
+        return code
 
     validate_query_cli_process_smoke()
     check_route_memory_descriptor()

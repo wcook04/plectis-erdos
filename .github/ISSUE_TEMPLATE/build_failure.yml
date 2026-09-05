@@ -1,14 +1,14 @@
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
 name: Lean build failure
-description: lake build fails, the Mathlib cache does not resolve, or the toolchain misbehaves.
+description: The coordinated Lean build fails, the Mathlib cache does not resolve, or the toolchain misbehaves.
 labels: ["build"]
 body:
   - type: textarea
     id: command
     attributes:
       label: Command and failing output
-      description: The exact command (e.g. `lake exe cache get && lake build`) and the tail of its output.
+      description: The exact command (e.g. `python3 scripts/lean_fast_build.py --jobs 2`) and the tail of its output.
       render: shell
     validations:
       required: true

@@ -26,6 +26,23 @@ LAKE = str(fast.TOOLCHAIN_BIN / "lake")
 
 
 class LeanFastBuildTests(unittest.TestCase):
+    def test_discovery_uses_declared_lake_source_roots(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "examples").mkdir()
+            (root / "examples" / "Examples.lean").write_text(
+                "-- example\n", encoding="utf-8"
+            )
+            (root / "lakefile.toml").write_text(
+                '[[lean_lib]]\nname = "Examples"\nsrcDir = "examples"\n',
+                encoding="utf-8",
+            )
+
+            self.assertEqual(
+                fast.discover(root),
+                {"Examples": root / "examples" / "Examples.lean"},
+            )
+
     def test_problem_library_preserves_interpreter_stack_headroom(self) -> None:
         lakefile = tomllib.loads((fast.ROOT / "lakefile.toml").read_text(
             encoding="utf-8"
@@ -83,7 +100,7 @@ class LeanFastBuildTests(unittest.TestCase):
                 continue
             self.assertRegex(
                 stripped,
-                r"uses: actions/[\w-]+@[0-9a-f]{40} # v[\d.]+$",
+                r"uses: actions/[\w-]+(?:/[\w-]+)*@[0-9a-f]{40} # v[\d.]+$",
                 msg=(
                     "workflow action is not pinned to a commit with a version "
                     f"comment: {stripped}"
@@ -165,6 +182,46 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("lake exe cache get", workflow)
         self.assertNotIn("leanprover/lean-action@", workflow)
 
+    def test_ci_and_cache_warm_use_one_complete_wrapper_owner(self) -> None:
+        targets = (
+            "Erdos249257",
+            "ErdosProblems",
+            "Examples",
+            "FormalConjecturesAdapter",
+            "FormalConjecturesVariants",
+            "ResidualBench",
+        )
+        for relative in (
+            ".github/workflows/lean.yml",
+            ".github/workflows/lean-cache-warm.yml",
+        ):
+            workflow = (fast.ROOT / relative).read_text(encoding="utf-8")
+            commands = re.findall(
+                r"(?m)^\s*run:\s*(python3 scripts/lean_fast_build\.py[^\n]*)$",
+                workflow,
+            )
+            self.assertNotRegex(workflow, r"(?m)^\s*run:\s*lake build\b")
+            # Exactly one invocation owns the complete supported-root build.
+            # Any other wrapper call must be focused on a library outside
+            # that set, such as the external-verification job building the
+            # solved-families library its axiom audit imports: a second call
+            # naming a supported root would be a duplicate build owner.
+            owners = [
+                command
+                for command in commands
+                if all(target in command for target in targets)
+            ]
+            self.assertEqual(len(owners), 1, f"{relative} has duplicate build owners")
+            for command in commands:
+                if command in owners:
+                    continue
+                for target in targets:
+                    self.assertNotRegex(
+                        command,
+                        rf"(?<![A-Za-z0-9_.]){re.escape(target)}(?![A-Za-z0-9_])",
+                        f"{relative} builds supported root {target} outside its owner",
+                    )
+
     def test_ci_pins_external_actions_to_full_commit_shas(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
             encoding="utf-8"
@@ -229,6 +286,20 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertEqual(len(checkouts), 6)
         for checkout in checkouts:
             self.assertIn("persist-credentials: false", checkout)
+
+    def test_full_history_checkouts_defer_unneeded_historical_blobs(self) -> None:
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        checkouts = re.findall(
+            r"(?ms)^      - uses: actions/checkout@.*?(?=^      - |\Z)",
+            workflow,
+        )
+        full_history = [row for row in checkouts if "fetch-depth: 0" in row]
+
+        self.assertEqual(len(full_history), 5)
+        for checkout in full_history:
+            self.assertIn("filter: blob:none", checkout)
 
     def test_ci_does_not_repeat_required_pr_checks_after_merge(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
@@ -327,17 +398,12 @@ class LeanFastBuildTests(unittest.TestCase):
         pathspec = pathspec.split("; then", 1)[0]
         self.assertIn("lean-toolchain", pathspec, "the pathspec parse drifted")
 
-        # Seven, not nine. This floor is a ratchet against the list silently
-        # shrinking, and it read 9 until 3daf0de6 removed
-        # build_lean_dependency_index.py and lean_fast_build.py on purpose:
-        # test_lean_dependency_index_cache.check_live_input_surface requires
-        # both to be absent, because those wrappers feed check_input_paths and
-        # editing one would invalidate a semantic projection receipt that no
-        # Lean statement had moved. The ratchet was left at 9, so restoring
-        # them to satisfy it breaks that test instead. The pathspec below still
-        # names both files: a wrapper edit should re-run the build gate even
-        # though it does not invalidate the cached index.
-        self.assertGreaterEqual(len(index_builder.CHECK_INPUT_FILES), 7)
+        # Six authority inputs. The Python wrappers are deliberately absent:
+        # editing orchestration must re-run the CI gate, but must not invalidate
+        # a semantic projection receipt when no Lean statement or exporter
+        # input moved. The workflow pathspec below therefore still names the
+        # wrappers separately from this exact input list.
+        self.assertGreaterEqual(len(index_builder.CHECK_INPUT_FILES), 6)
         for declared in index_builder.CHECK_INPUT_FILES:
             with self.subTest(input=declared):
                 self.assertIn(
@@ -487,7 +553,7 @@ import Pkg.TooLate
 
         self.assertEqual(batches, [["Pkg.A", "Pkg.B"], ["Pkg.C", "Pkg.D"]])
 
-    def test_partial_cache_still_uses_lake_trace_staleness(self) -> None:
+    def test_partial_cache_starts_from_missing_outputs_before_final_lake(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             source = root / "Pkg" / "Root.lean"
@@ -495,7 +561,9 @@ import Pkg.TooLate
             source.write_text("-- source\n", encoding="utf-8")
             completed = fast.subprocess.CompletedProcess([], 0, "", "")
             with mock.patch.object(fast, "ROOT", root), mock.patch.object(
-                fast, "lake_stale_targets", return_value=["Pkg.Root"]
+                fast,
+                "lake_stale_targets",
+                side_effect=AssertionError("missing output must not pay for rehash"),
             ) as stale_targets, mock.patch.object(
                 fast, "build_wave", return_value=[]
             ), mock.patch.object(fast.subprocess, "run", return_value=completed):
@@ -504,7 +572,7 @@ import Pkg.TooLate
                     0,
                 )
 
-            stale_targets.assert_called_once_with(["Pkg.Root"], root)
+            stale_targets.assert_not_called()
 
     def test_lake_stale_targets_parses_single_verbose_verdict(self) -> None:
         output = """progress\nSome required targets logged failures:\n- Pkg.A\n- Pkg.B\n"""
@@ -857,10 +925,20 @@ import Pkg.TooLate
                     0,
                 )
 
-            stale_targets.assert_called_once_with(["Pkg.Leaf"], root)
+            stale_targets.assert_not_called()
             self.assertEqual(
                 [call.args[0] for call in run.call_args_list],
                 [
+                    fast.lake_command(
+                        "--quiet",
+                        "--no-ansi",
+                        "--log-level=error",
+                        "build",
+                        "+Pkg.Leaf",
+                    ),
+                    # The missing registered output is prebuilt under the
+                    # bounded scheduler, then checked again at the serialized
+                    # Lake authority boundary before the direct source runs.
                     fast.lake_command(
                         "--quiet",
                         "--no-ansi",

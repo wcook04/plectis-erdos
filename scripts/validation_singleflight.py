@@ -25,8 +25,11 @@ import subprocess
 import sys
 import tempfile
 import time
+import tomllib
 from pathlib import Path
 from typing import Any, BinaryIO, Iterable, Mapping
+
+import lean_build_share
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,10 +38,12 @@ SINGLEFLIGHT_STATE_ROOT_ENV = "VALIDATION_SINGLEFLIGHT_STATE_ROOT"
 HOST_LOCK_ROOT_ENV = "PLECTIS_LEAN_HOST_LOCK_ROOT"
 HOST_LOCK_HELD_ENV = "AIW_PLECTIS_LEAN_HOST_LOCK_HELD"
 ROSTER_VALIDATORS = {
+    "cold-clone": "scripts/check_cold_clone_comprehension.py",
     "toolchain-cache": "lean-toolchain",
     "lean": "scripts/lean_fast_build.py",
     "paper": "docs/papers/check_paper_corpus.py",
     "release": "scripts/check_release_ref.py",
+    "release-worktree": "scripts/check_release.py",
     "reachable-history": "scripts/test_reachable_release_history.py",
     "comparator": "scripts/verify-comparator.sh",
     "historical": "scripts/historical_bridge_experiment.py",
@@ -48,6 +53,7 @@ ROSTER_VALIDATORS = {
     "palomar": "scripts/check_palomar_qualification.py",
 }
 TAIL_BYTES = 16_000
+STATUS_TAIL_CHARS = 2_000
 MAX_STORED_LOG_BYTES = 4 * 1024 * 1024
 TRUNCATED_LOG_PREFIX = b"[plectis: earlier validation output truncated; retained tail follows]\n"
 LAUNCH_GRACE_SECONDS = 15.0
@@ -69,6 +75,7 @@ WORKER_TIMEOUT_EXIT_CODE = 124
 DEFAULT_MAX_BYTES = 1 << 30
 DEFAULT_MAX_INODES = 10_000
 AUTOMATIC_CLEANUP_INTERVAL_SECONDS = 60 * 60
+FAILED_TERMINAL_REUSE_SECONDS = 5
 GIT_COMMAND_TIMEOUT_SECONDS = 30
 STATE_DIRECTORIES = ("jobs", "locks", "artifacts")
 COPY_TREE_MARKERS = ("lean-toolchain", "lakefile.toml")
@@ -596,10 +603,25 @@ def resolve_lean_target(target: str) -> Path:
     candidates = [
         ROOT / target if target.endswith(".lean") else ROOT / (target.replace(".", "/") + ".lean")
     ]
-    # Lake libraries declared with `srcDir = "examples"` are addressed by
-    # their library name even though their root source lives below examples/.
-    if not target.endswith(".lean") and "/" not in target and "." not in target:
-        candidates.append(ROOT / "examples" / f"{target}.lean")
+    # Lake libraries with ``srcDir`` are addressed by logical library/module
+    # names even though their root source lives below a physical directory.
+    if not target.endswith(".lean") and "/" not in target:
+        lakefile = ROOT / "lakefile.toml"
+        if lakefile.is_file():
+            try:
+                config = tomllib.loads(lakefile.read_text(encoding="utf-8"))
+            except (OSError, tomllib.TOMLDecodeError) as error:
+                raise ValidationError(
+                    f"cannot parse Lake configuration: {lakefile}"
+                ) from error
+            for library in config.get("lean_lib", []):
+                if not isinstance(library, dict):
+                    continue
+                src_dir = library.get("srcDir", "")
+                if isinstance(src_dir, str) and src_dir:
+                    candidates.append(
+                        ROOT / src_dir / (target.replace(".", "/") + ".lean")
+                    )
     candidate = next((path for path in candidates if path.is_file()), candidates[0])
     regular_file(candidate, "Lean target")
     relative_to_root(candidate)
@@ -728,11 +750,28 @@ def validator_spec(
         authority_paths = [
             ROOT / "scripts/validation_singleflight.py",
             ROOT / "scripts/lean_fast_build.py",
+            ROOT / "scripts/lean_build_share.py",
             ROOT / "scripts/lean_package_share.py",
             ROOT / "lean-toolchain",
             ROOT / "lake-manifest.json",
             ROOT / "lakefile.toml",
             *target_paths,
+        ]
+    elif kind == "cold-clone":
+        if targets or ref:
+            raise ValidationError(
+                "cold-clone validation accepts no target or ref arguments"
+            )
+        command = [
+            sys.executable,
+            "scripts/check_cold_clone_comprehension.py",
+            "--singleflight-worker",
+        ]
+        authority_paths = [
+            ROOT / "scripts/check_cold_clone_comprehension.py",
+            ROOT / "scripts/query_corpus.py",
+            ROOT / "scripts/query_semantic.py",
+            ROOT / "scripts/query_expert_handoffs.py",
         ]
     elif kind == "paper":
         if targets or ref:
@@ -765,6 +804,20 @@ def validator_spec(
             "--singleflight-worker",
         ]
         authority_paths = [ROOT / "scripts/check_release_ref.py", ROOT / "scripts/check_release.py"]
+    elif kind == "release-worktree":
+        if targets or ref:
+            raise ValidationError(
+                "release-worktree validation accepts no target or ref arguments"
+            )
+        command = [
+            sys.executable,
+            "scripts/check_release.py",
+            "--singleflight-worker",
+        ]
+        authority_paths = [
+            ROOT / "scripts/check_release.py",
+            ROOT / "scripts/validation_singleflight.py",
+        ]
     elif kind == "reachable-history":
         if ref or len(targets) != 1 or targets[0] not in {"check", "release-gate"}:
             raise ValidationError(
@@ -938,6 +991,19 @@ def validate_specification(specification: dict[str, Any]) -> None:
         raise ValidationError("validation key does not match its input fingerprint")
 
 
+def requires_lean_build_materialization(receipt: Mapping[str, Any]) -> bool:
+    """Distinguish the tracked Lean builder from scheduler-level test jobs."""
+
+    inputs = receipt.get("inputs")
+    if not isinstance(inputs, Mapping) or inputs.get("validation_class") != "lean":
+        return False
+    command = inputs.get("normalized_command")
+    return isinstance(command, list) and any(
+        isinstance(argument, str) and Path(argument).name == "lean_fast_build.py"
+        for argument in command
+    )
+
+
 def process_identity(pid: int) -> dict[str, Any] | None:
     try:
         os.kill(pid, 0)
@@ -991,7 +1057,13 @@ def owner_is_live(owner: Any) -> bool:
 
 
 def receipt_is_live(receipt: dict[str, Any]) -> bool:
-    if receipt.get("state") not in {"launching", "future", "queued", "running"}:
+    if receipt.get("state") not in {
+        "launching",
+        "future",
+        "queued",
+        "running",
+        "retrying_external_termination",
+    }:
         return False
     if owner_is_live(receipt.get("owner")):
         return True
@@ -1097,6 +1169,56 @@ def publish_launch_failure(
     return terminal
 
 
+def publish_resource_busy(
+    state: dict[str, Path],
+    receipt: dict[str, Any],
+    artifact: Path,
+    resource_group: str,
+    started: str,
+) -> int:
+    """Finish promptly when a different heavy Lean validation owns the host."""
+
+    stdout_path = safe_child(artifact, "stdout.log")
+    stderr_path = safe_child(artifact, "stderr.log")
+    atomic_write(stdout_path, b"")
+    atomic_write(
+        stderr_path,
+        (
+            "validation deferred: another non-identical Lean validation owns "
+            f"the host resource group {resource_group!r}; retry after it finishes\n"
+        ).encode("utf-8"),
+    )
+    terminal = {
+        **receipt,
+        "state": "terminal",
+        "updated_at": utc_now(),
+        "completed_at": utc_now(),
+        "started_at": started,
+        "exit_code": 75,
+        "exit_state": "resource_busy",
+        "resource_group": resource_group,
+        "stdout": {
+            "path": f"artifacts/{receipt['key']}/stdout.log",
+            "sha256": digest_file(stdout_path),
+            "tail": bounded_tail(stdout_path),
+        },
+        "stderr": {
+            "path": f"artifacts/{receipt['key']}/stderr.log",
+            "sha256": digest_file(stderr_path),
+            "tail": bounded_tail(stderr_path),
+        },
+        "artifacts": [
+            f"artifacts/{receipt['key']}/stdout.log",
+            f"artifacts/{receipt['key']}/stderr.log",
+        ],
+        "validation_authority": ROSTER_VALIDATORS[
+            receipt["inputs"]["validation_class"]
+        ],
+    }
+    write_receipt(state, receipt["key"], terminal)
+    return 75
+
+
 def launch_worker(state: dict[str, Path], specification: dict[str, Any], previous: dict[str, Any] | None) -> dict[str, Any]:
     validate_specification(specification)
     key = specification["key"]
@@ -1115,6 +1237,7 @@ def launch_worker(state: dict[str, Path], specification: dict[str, Any], previou
         "owner": None,
         "child": None,
         "launch_token": token,
+        "workspace_root": str(ROOT.resolve()),
         "recovered_from": previous.get("owner") if previous else None,
         "artifacts": [],
     }
@@ -1155,6 +1278,30 @@ def submit(specification: dict[str, Any], state_root: Path) -> dict[str, Any]:
     try:
         existing = load_receipt(state, key)
         if existing is not None and existing.get("state") == "terminal":
+            if existing.get("exit_state") == "resource_busy":
+                return launch_worker(state, specification, existing)
+            if existing.get("exit_code") != 0:
+                completed_at = existing.get("completed_at") or existing.get("updated_at")
+                try:
+                    completed = dt.datetime.fromisoformat(str(completed_at))
+                    failure_age = (
+                        dt.datetime.now(dt.timezone.utc) - completed
+                    ).total_seconds()
+                except (TypeError, ValueError):
+                    failure_age = FAILED_TERMINAL_REUSE_SECONDS
+                if failure_age >= FAILED_TERMINAL_REUSE_SECONDS:
+                    # A failed validator can observe a transient intermediate
+                    # worktree state and later map back to the same content
+                    # key. Collapse the immediate caller herd, but never make
+                    # that failure a permanent cache entry.
+                    return launch_worker(state, specification, existing)
+            if (
+                requires_lean_build_materialization(existing)
+                and existing.get("exit_code") == 0
+                and not lean_build_share.is_materialized(ROOT, key)
+                and existing.get("build_seed", {}).get("status") != "ready"
+            ):
+                return launch_worker(state, specification, existing)
             existing["reuse"] = "terminal"
             return existing
         if existing is not None and receipt_is_live(existing):
@@ -1191,6 +1338,7 @@ def worker(state_root: Path, key: str, token: str) -> int:
     resource_lock: int | None = None
     started = utc_now()
     timed_out = False
+    build_seed: dict[str, Any] | None = None
     try:
         if resource_group:
             receipt.update(
@@ -1203,8 +1351,15 @@ def worker(state_root: Path, key: str, token: str) -> int:
             write_receipt(state, key, receipt)
             selected_resource_lock = resource_lock_path(state, resource_group)
             selected_resource_lock.parent.mkdir(parents=True, exist_ok=True)
-            resource_lock = open_lock(selected_resource_lock)
-            assert resource_lock is not None
+            resource_lock = open_lock(selected_resource_lock, blocking=False)
+            if resource_lock is None:
+                return publish_resource_busy(
+                    state,
+                    receipt,
+                    artifact,
+                    resource_group,
+                    started,
+                )
         receipt.update({"state": "running", "updated_at": utc_now(), "child": None})
         write_receipt(state, key, receipt)
         child_environment = command_environment()
@@ -1281,6 +1436,11 @@ def worker(state_root: Path, key: str, token: str) -> int:
             receipt["last_attempt_exit_code"] = last_attempt_code
             receipt["automatic_resume_count"] = max(0, attempt - 1)
             receipt["external_termination_exits"] = external_termination_exits
+        build_seed = (
+            lean_build_share.publish(ROOT, state_root, key)
+            if requires_lean_build_materialization(receipt) and code == 0
+            else None
+        )
     except OSError as exc:
         code = 75
         stderr_path.write_text(f"validation environment unavailable: {exc}\n", encoding="utf-8")
@@ -1311,6 +1471,8 @@ def worker(state_root: Path, key: str, token: str) -> int:
         "output_storage": output_storage,
         "validation_authority": ROSTER_VALIDATORS[receipt["inputs"]["validation_class"]],
     }
+    if build_seed is not None:
+        terminal["build_seed"] = build_seed
     write_receipt(state, key, terminal)
     return code
 
@@ -1329,7 +1491,29 @@ def collect(state_root: Path, key: str, wait: bool, timeout_seconds: float) -> t
     while True:
         receipt = status(state_root, key)
         if receipt.get("state") == "terminal":
+            if (
+                requires_lean_build_materialization(receipt)
+                and receipt.get("exit_code") == 0
+                and not lean_build_share.is_materialized(ROOT, key)
+            ):
+                state = ensure_state_root(state_root)
+                lock_path = resource_lock_path(state, "lean-host")
+                lock_path.parent.mkdir(parents=True, exist_ok=True)
+                lock = open_lock(lock_path)
+                assert lock is not None
+                try:
+                    materialization = lean_build_share.hydrate(ROOT, state_root, key)
+                finally:
+                    fcntl.flock(lock, fcntl.LOCK_UN)
+                    os.close(lock)
+                receipt["build_materialization"] = materialization
+                if materialization.get("status") != "hydrated":
+                    receipt["exit_state"] = "build_output_unavailable"
+                    return receipt, 75
             return receipt, int(receipt["exit_code"])
+        if not receipt.get("live", False):
+            receipt["owner_unavailable"] = True
+            return receipt, 75
         if not wait:
             return receipt, 75
         if time.monotonic() >= deadline:
@@ -1512,6 +1696,41 @@ def emit(value: dict[str, Any]) -> None:
     print(json.dumps(value, indent=2, sort_keys=True))
 
 
+def status_card(receipt: dict[str, Any]) -> dict[str, Any]:
+    """Project a bounded operational card without repeating hashed inputs."""
+
+    inputs = receipt.get("inputs")
+    inputs = inputs if isinstance(inputs, dict) else {}
+    sources = inputs.get("relevant_sources")
+    sources = sources if isinstance(sources, list) else []
+    targets = inputs.get("targets")
+    card: dict[str, Any] = {
+        "schema": "repository-validation-singleflight-status-card/1",
+        "key": receipt.get("key"),
+        "validation_class": inputs.get("validation_class"),
+        "state": receipt.get("state"),
+        "live": receipt.get("live"),
+        "reuse": receipt.get("reuse"),
+        "resource_group": receipt.get("resource_group"),
+        "owner": receipt.get("owner"),
+        "child": receipt.get("child"),
+        "created_at": receipt.get("created_at"),
+        "updated_at": receipt.get("updated_at"),
+        "started_at": receipt.get("started_at"),
+        "completed_at": receipt.get("completed_at"),
+        "exit_code": receipt.get("exit_code"),
+        "exit_state": receipt.get("exit_state"),
+        "owner_unavailable": receipt.get("owner_unavailable"),
+        "relevant_source_count": len(sources),
+        "target_count": len(targets) if isinstance(targets, list) else None,
+    }
+    for stream in ("stdout", "stderr"):
+        output = receipt.get(stream)
+        if isinstance(output, dict) and isinstance(output.get("tail"), str):
+            card[f"{stream}_tail"] = output["tail"][-STATUS_TAIL_CHARS:]
+    return {key: value for key, value in card.items() if value is not None}
+
+
 def add_validation_request_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--class", dest="kind", choices=tuple(ROSTER_VALIDATORS), required=True)
     parser.add_argument("--target", action="append", default=[])
@@ -1537,6 +1756,12 @@ def build_parser() -> argparse.ArgumentParser:
     for name in ("status", "collect"):
         child = commands.add_parser(name, help=f"read a validation receipt{' or explicitly wait' if name == 'collect' else ''}")
         child.add_argument("--key", type=parse_key, required=True)
+        if name == "status":
+            child.add_argument(
+                "--full",
+                action="store_true",
+                help="emit the complete hashed input receipt instead of the compact status card",
+            )
         if name == "collect":
             child.add_argument("--wait", action="store_true")
             child.add_argument(
@@ -1582,7 +1807,8 @@ def main(argv: list[str] | None = None) -> int:
             emit(terminal)
             return code
         if args.action == "status":
-            emit(status(args.state_root, args.key))
+            receipt = status(args.state_root, args.key)
+            emit(receipt if args.full else status_card(receipt))
             return 0
         if args.action == "collect":
             receipt, code = collect(args.state_root, args.key, args.wait, args.timeout_seconds)

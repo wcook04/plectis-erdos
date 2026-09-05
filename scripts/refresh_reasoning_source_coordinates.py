@@ -61,56 +61,85 @@ def normalize(value: str) -> str:
     )
 
 
+NON_NEWLINE_RUN = re.compile(r"[^\n]+")
+
+
+def masked_span(value: str) -> str:
+    return NON_NEWLINE_RUN.sub(lambda match: " " * len(match.group()), value)
+
+
 def strip_lean_comments(text: str) -> str:
     """Blank nested Lean comments without changing source line numbers."""
 
     output: list[str] = []
-    index = 0
+    state = "code"
+    cursor = 0
+    length = len(text)
     depth = 0
-    in_string = False
-    while index < len(text):
-        if depth:
-            if text.startswith("/-", index):
-                depth += 1
-                output.extend("  ")
-                index += 2
-            elif text.startswith("-/", index):
-                depth -= 1
-                output.extend("  ")
-                index += 2
-            else:
-                output.append("\n" if text[index] == "\n" else " ")
-                index += 1
-        elif in_string:
-            char = text[index]
-            output.append(char)
-            if char == "\\" and index + 1 < len(text):
-                output.append(text[index + 1])
-                index += 2
-            else:
-                if char == '"':
-                    in_string = False
-                index += 1
-        elif text.startswith("/-", index):
-            depth = 1
-            output.extend("  ")
-            index += 2
-        elif text.startswith("--", index):
-            newline = text.find("\n", index)
-            if newline < 0:
-                output.extend(" " * (len(text) - index))
+    while cursor < length:
+        if state == "code":
+            markers = tuple(
+                position
+                for position in (
+                    text.find("--", cursor),
+                    text.find("/-", cursor),
+                    text.find('"', cursor),
+                )
+                if position >= 0
+            )
+            if not markers:
+                output.append(text[cursor:])
                 break
-            output.extend(" " * (newline - index))
-            output.append("\n")
-            index = newline + 1
+            marker = min(markers)
+            output.append(text[cursor:marker])
+            token = text[marker : marker + 2]
+            if token == "--":
+                newline = text.find("\n", marker + 2)
+                end = length if newline < 0 else newline
+                output.append(masked_span(text[marker:end]))
+                cursor = end
+            elif token == "/-":
+                output.append("  ")
+                cursor = marker + 2
+                depth = 1
+                state = "block_comment"
+            else:
+                output.append('"')
+                cursor = marker + 1
+                state = "string"
+        elif state == "block_comment":
+            opener = text.find("/-", cursor)
+            closer = text.find("-/", cursor)
+            candidates = [position for position in (opener, closer) if position >= 0]
+            if not candidates:
+                raise CoordinateError("unterminated block comment in pinned Lean source")
+            marker = min(candidates)
+            output.append(masked_span(text[cursor:marker]))
+            output.append("  ")
+            cursor = marker + 2
+            if marker == opener:
+                depth += 1
+            else:
+                depth -= 1
+                if depth == 0:
+                    state = "code"
         else:
-            char = text[index]
-            output.append(char)
-            if char == '"':
-                in_string = True
-            index += 1
-    if depth:
-        raise CoordinateError("unterminated block comment in pinned Lean source")
+            escape = text.find("\\", cursor)
+            quote = text.find('"', cursor)
+            candidates = [position for position in (escape, quote) if position >= 0]
+            if not candidates:
+                output.append(text[cursor:])
+                break
+            marker = min(candidates)
+            output.append(text[cursor:marker])
+            if marker == escape:
+                end = min(marker + 2, length)
+                output.append(text[marker:end])
+                cursor = end
+            else:
+                output.append('"')
+                cursor = marker + 1
+                state = "code"
     return "".join(output)
 
 
@@ -135,6 +164,7 @@ class Resolver:
     def __init__(self, pin: str) -> None:
         self.pin = pin
         self.cache: dict[str, PinnedSource] = {}
+        self.errors: dict[str, str] = {}
 
     @staticmethod
     def repository_path(cited_file: str) -> str:
@@ -142,32 +172,89 @@ class Resolver:
             return cited_file
         return f"Erdos249257/{cited_file}"
 
-    def source(self, cited_file: str) -> PinnedSource:
-        if cited_file in self.cache:
-            return self.cache[cited_file]
-        repository_path = self.repository_path(cited_file)
-        command = ["git", "show", f"{self.pin}:{repository_path}"]
-        result = subprocess.run(
-            command,
-            cwd=ROOT,
-            check=False,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            env=singleflight.command_environment(),
-            timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
-        )
-        if result.returncode:
-            detail = result.stderr.strip() or "git show failed"
-            raise CoordinateError(f"pinned source absent: {repository_path}: {detail}")
-        stripped = strip_lean_comments(result.stdout)
+    @staticmethod
+    def _parse_source(repository_path: str, text: str) -> PinnedSource:
+        stripped = strip_lean_comments(text)
         declarations = tuple(
             (match.group(1), stripped.count("\n", 0, match.start()) + 1)
             for match in DECL_RE.finditer(stripped)
         )
-        source = PinnedSource(repository_path, result.stdout, declarations)
-        self.cache[cited_file] = source
-        return source
+        return PinnedSource(repository_path, text, declarations)
+
+    def preload(self, cited_files: list[str]) -> None:
+        """Fetch every distinct pinned blob through one Git batch process."""
+
+        pending = [
+            cited_file
+            for cited_file in dict.fromkeys(cited_files)
+            if cited_file not in self.cache and cited_file not in self.errors
+        ]
+        if not pending:
+            return
+        rows = []
+        for cited_file in pending:
+            if "\n" in cited_file or "\r" in cited_file:
+                self.errors[cited_file] = "source path contains a newline"
+                continue
+            repository_path = self.repository_path(cited_file)
+            rows.append(
+                (cited_file, repository_path, f"{self.pin}:{repository_path}")
+            )
+        if not rows:
+            return
+        result = subprocess.run(
+            ["git", "cat-file", "--batch"],
+            cwd=ROOT,
+            check=False,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            input=("\n".join(spec for _, _, spec in rows) + "\n").encode("utf-8"),
+            env=singleflight.command_environment(),
+            timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        )
+        if result.returncode:
+            detail = result.stderr.decode("utf-8", errors="replace").strip()
+            raise CoordinateError(detail or "git cat-file --batch failed")
+        cursor = 0
+        for cited_file, repository_path, _spec in rows:
+            header_end = result.stdout.find(b"\n", cursor)
+            if header_end < 0:
+                raise CoordinateError("truncated git cat-file batch header")
+            header = result.stdout[cursor:header_end]
+            cursor = header_end + 1
+            if header.endswith(b" missing"):
+                self.errors[cited_file] = f"pinned source absent: {repository_path}"
+                continue
+            fields = header.split()
+            if len(fields) != 3 or fields[1] not in {b"blob", b"tree", b"commit", b"tag"}:
+                raise CoordinateError(
+                    "malformed git cat-file batch header: "
+                    + header.decode("utf-8", errors="replace")
+                )
+            try:
+                size = int(fields[2])
+            except ValueError as exc:
+                raise CoordinateError("invalid git cat-file batch size") from exc
+            end = cursor + size
+            if end >= len(result.stdout) or result.stdout[end : end + 1] != b"\n":
+                raise CoordinateError("truncated git cat-file batch payload")
+            try:
+                text = result.stdout[cursor:end].decode("utf-8")
+            except UnicodeDecodeError as exc:
+                raise CoordinateError(
+                    f"pinned source is not UTF-8: {repository_path}"
+                ) from exc
+            cursor = end + 1
+            self.cache[cited_file] = self._parse_source(repository_path, text)
+        if cursor != len(result.stdout):
+            raise CoordinateError("unexpected trailing git cat-file batch output")
+
+    def source(self, cited_file: str) -> PinnedSource:
+        if cited_file not in self.cache and cited_file not in self.errors:
+            self.preload([cited_file])
+        if cited_file in self.errors:
+            raise CoordinateError(self.errors[cited_file])
+        return self.cache[cited_file]
 
     def declaration_line(self, cited_file: str, cited_name: str) -> int:
         source = self.source(cited_file)
@@ -205,8 +292,12 @@ class Resolver:
                 )
 
 
-def render_file(path: Path, resolver: Resolver) -> tuple[str, int, int]:
-    text = path.read_text(encoding="utf-8")
+def render_file(
+    path: Path,
+    resolver: Resolver,
+    text: str | None = None,
+) -> tuple[str, int, int]:
+    text = path.read_text(encoding="utf-8") if text is None else text
     declarations = 0
     locations = 0
 
@@ -240,15 +331,28 @@ def render_file(path: Path, resolver: Resolver) -> tuple[str, int, int]:
 def render_all() -> tuple[dict[Path, str], int, int, str]:
     pin = pinned_commit()
     resolver = Resolver(pin)
+    source_texts = {
+        path: path.read_text(encoding="utf-8")
+        for directory in PARTS_DIRS
+        for path in sorted(directory.glob("*.tex"))
+    }
+    cited_files = []
+    for text in source_texts.values():
+        for match in LEAN_RE.finditer(text):
+            target_match = TARGET_RE.fullmatch(normalize(match.group(2)))
+            if target_match is not None:
+                cited_files.append(target_match.group(1))
+    resolver.preload(cited_files)
     rendered: dict[Path, str] = {}
     declarations = 0
     locations = 0
-    for directory in PARTS_DIRS:
-        for path in sorted(directory.glob("*.tex")):
-            updated, declaration_count, location_count = render_file(path, resolver)
-            rendered[path] = updated
-            declarations += declaration_count
-            locations += location_count
+    for path, text in source_texts.items():
+        updated, declaration_count, location_count = render_file(
+            path, resolver, text
+        )
+        rendered[path] = updated
+        declarations += declaration_count
+        locations += location_count
     return rendered, declarations, locations, pin
 
 

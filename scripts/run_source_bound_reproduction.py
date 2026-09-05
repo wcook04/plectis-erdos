@@ -76,46 +76,9 @@ DEFAULT_PLAN = [
     command("mathlib_cache", ["lake", "exe", "cache", "get"]),
     command("root_build", ["lake", "build"]),
     command("downstream_example", ["lake", "build", "Examples"]),
-    command(
-        "declaration_atlas",
-        ["python3", "scripts/build_declaration_atlas.py", "--check"],
-    ),
-    command(
-        "semantic_projection",
-        ["python3", "scripts/build_semantic_corpus.py", "--check"],
-    ),
-    command(
-        "semantic_contract",
-        ["python3", "scripts/check_semantic_corpus.py"],
-    ),
-    command(
-        "second_channel_separation_probe",
-        [
-            "python3",
-            "scripts/probe_second_channel_separation.py",
-            "--check",
-        ],
-    ),
-    command(
-        "off_diagonal_certificate_roster",
-        [
-            "python3",
-            "scripts/build_off_diagonal_certificate_roster.py",
-            "--check",
-        ],
-    ),
-    command(
-        "checked_diagonal_depth_roster",
-        [
-            "python3",
-            "scripts/build_checked_diagonal_depth_roster.py",
-            "--check",
-        ],
-    ),
-    command(
-        "corpus_descriptor",
-        ["python3", "scripts/build_corpus_descriptor.py", "--check"],
-    ),
+    # The release gate owns projection freshness and semantic consistency.
+    # Running its constituent checks here first used to pay the same
+    # source scans twice without adding an independent authority boundary.
     command(
         "declaration_head_contract",
         ["python3", "scripts/test_declaration_head_contract.py"],
@@ -123,10 +86,6 @@ DEFAULT_PLAN = [
     command(
         "projection_checkout_independence",
         ["python3", "scripts/test_projection_checkout_independence.py"],
-    ),
-    command(
-        "cold_clone_comprehension",
-        ["python3", "scripts/check_cold_clone_comprehension.py"],
     ),
     command(
         "release",
@@ -310,29 +269,40 @@ def source_manifest(root: Path) -> list[dict[str, Any]]:
     if not root.is_dir():
         raise ReproductionError(f"source root is not a directory: {root}")
     rows: list[dict[str, Any]] = []
-    for path in sorted(root.rglob("*")):
-        relative = path.relative_to(root)
-        if is_excluded(relative):
-            continue
-        if path.is_symlink():
-            raise ReproductionError(f"source manifest rejects symlink: {relative}")
-        if path.is_dir():
-            continue
-        if not path.is_file():
-            raise ReproductionError(f"source manifest rejects special file: {relative}")
-        data = path.read_bytes()
-        rows.append(
-            {
-                "path": relative.as_posix(),
-                "size_bytes": len(data),
-                "sha256": sha256_bytes(data),
-            }
-        )
+    excluded_directories = set(EXCLUSION_POLICY["excluded_directory_names"])
+    for directory, directory_names, file_names in os.walk(root, followlinks=False):
+        parent = Path(directory)
+        retained_directories = []
+        for name in sorted(directory_names):
+            path = parent / name
+            relative = path.relative_to(root)
+            if path.is_symlink():
+                raise ReproductionError(f"source manifest rejects symlink: {relative}")
+            if name not in excluded_directories:
+                retained_directories.append(name)
+        directory_names[:] = retained_directories
+        for name in sorted(file_names):
+            path = parent / name
+            relative = path.relative_to(root)
+            if is_excluded(relative):
+                continue
+            if path.is_symlink():
+                raise ReproductionError(f"source manifest rejects symlink: {relative}")
+            if not path.is_file():
+                raise ReproductionError(f"source manifest rejects special file: {relative}")
+            data = path.read_bytes()
+            rows.append(
+                {
+                    "path": relative.as_posix(),
+                    "size_bytes": len(data),
+                    "sha256": sha256_bytes(data),
+                }
+            )
+    rows.sort(key=lambda row: row["path"])
     return rows
 
 
-def source_identity(root: Path) -> dict[str, Any]:
-    manifest = source_manifest(root)
+def identity_from_manifest(manifest: list[dict[str, Any]]) -> dict[str, Any]:
     identity_payload = {
         "exclusion_policy": EXCLUSION_POLICY,
         "files": manifest,
@@ -345,10 +315,19 @@ def source_identity(root: Path) -> dict[str, Any]:
     }
 
 
-def copy_source(source_root: Path, destination: Path) -> None:
+def source_identity(root: Path) -> dict[str, Any]:
+    return identity_from_manifest(source_manifest(root))
+
+
+def copy_source(
+    source_root: Path,
+    destination: Path,
+    *,
+    manifest: list[dict[str, Any]] | None = None,
+) -> None:
     source_root = source_root.resolve()
     destination.mkdir(parents=True, exist_ok=False)
-    for row in source_manifest(source_root):
+    for row in manifest if manifest is not None else source_manifest(source_root):
         relative = Path(row["path"])
         target = destination / relative
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -481,11 +460,12 @@ def execute(
             "is required: " + ", ".join(git_rows)
         )
     source_root = source_root.resolve()
-    identity = source_identity(source_root)
+    manifest = source_manifest(source_root)
+    identity = identity_from_manifest(manifest)
     started_at = utc_now()
     with tempfile.TemporaryDirectory(prefix="plectis-source-repro-") as temp:
         isolated = Path(temp) / "source"
-        copy_source(source_root, isolated)
+        copy_source(source_root, isolated, manifest=manifest)
         if git_rows:
             copy_version_control_metadata(source_root, isolated)
         if source_identity(isolated) != identity:

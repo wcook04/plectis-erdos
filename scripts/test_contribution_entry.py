@@ -7,6 +7,9 @@ import json
 import re
 from pathlib import Path
 
+from agent_entry import entry_packet
+from agent_skill_catalog import load_catalog
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -51,6 +54,7 @@ def main() -> int:
         ".github/ISSUE_TEMPLATE/research_progress.yml",
         ".github/ISSUE_TEMPLATE/research_return.yml",
         ".github/ISSUE_TEMPLATE/architecture_proposal.yml",
+        ".github/ISSUE_TEMPLATE/review_offer.yml",
         ".github/PULL_REQUEST_TEMPLATE.md",
         "skills/README.md",
         "skills/install-clone-skills/SKILL.md",
@@ -58,6 +62,7 @@ def main() -> int:
         "skills/run-coupled-research-goals/SKILL.md",
         "skills/mine-open-problem/SKILL.md",
         "skills/lean-concurrent-validation/SKILL.md",
+        "skills/maintain-public-infrastructure/SKILL.md",
         "skills/propagate-research-consequences/SKILL.md",
         "skills/add-open-problem/SKILL.md",
         "skills/submit-pull-request/SKILL.md",
@@ -103,6 +108,20 @@ def main() -> int:
     for contract in ('"architecture"', '"contribution_roles"', '"consider_architecture_adoption"'):
         require(contract in receipt_schema, f"receipt schema omits architecture contract {contract}")
 
+    review_offer = text(".github/ISSUE_TEMPLATE/review_offer.yml")
+    for field in (
+        "labels: [\"review\"]",
+        "id: lens",
+        "id: target",
+        "id: time",
+        "id: background",
+        "id: credit",
+        "id: public_material",
+        "never be quoted as endorsement",
+        "silence is not treated as approval",
+    ):
+        require(field in review_offer, f"bounded review-offer form omits {field!r}")
+
     pull_request = text(".github/PULL_REQUEST_TEMPLATE.md")
     require("Credit and provenance" in pull_request, "pull request route omits contribution credit")
     require("What remains open or uncertain?" in pull_request, "pull request route omits result boundary")
@@ -136,6 +155,7 @@ def main() -> int:
         "explain-public-system",
         "run-coupled-research-goals",
         "mine-open-problem",
+        "maintain-public-infrastructure",
         "propagate-research-consequences",
         "add-open-problem",
         "submit-pull-request",
@@ -144,6 +164,19 @@ def main() -> int:
     require(
         "agent_entry.py --skills" in agent_entry,
         "compact agent entry does not route to the complete skill registry",
+    )
+    returned_work = entry_packet(
+        load_catalog(),
+        "I cloned this repository, made mathematical progress, and want to send it back "
+        "so it can be reviewed, assimilated, propagated, and credited",
+    )
+    require(
+        returned_work["primary_lane"]["id"] == "return_research",
+        "ordinary-language returned work does not reach the contribution lane",
+    )
+    require(
+        returned_work["skills"][0]["id"] == "erdos-research-return",
+        "ordinary-language returned work does not reach the assimilation skill",
     )
 
     consequence_skill = text("skills/propagate-research-consequences/SKILL.md")

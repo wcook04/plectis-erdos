@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import subprocess
 import tempfile
 from pathlib import Path
@@ -28,7 +29,7 @@ REPRODUCIBILITY_ENV = {
     "LANGUAGE": "C.UTF-8",
     "GIT_TERMINAL_PROMPT": "0",
     "GIT_CONFIG_NOSYSTEM": "1",
-    "GIT_CONFIG_GLOBAL": "/dev/null",
+    "GIT_CONFIG_GLOBAL": "/tmp/plectis-ci-empty.gitconfig",
     "GIT_OPTIONAL_LOCKS": "0",
     "GIT_NO_REPLACE_OBJECTS": "1",
     "GIT_PAGER": "cat",
@@ -81,8 +82,9 @@ def execution_posture(workflow: str) -> dict[str, object]:
         normalized.count("runs-on: ubuntu-24.04") == 1,
         "reachable-history workflow must use one pinned runner",
     )
+    budgets = re.findall(r"timeout-minutes: (\d+)", normalized)
     require(
-        normalized.count("timeout-minutes: 15") == 1,
+        len(budgets) == 1 and 0 < int(budgets[0]) <= 120,
         "reachable-history workflow must bound the full-history scan",
     )
     require(
@@ -90,6 +92,12 @@ def execution_posture(workflow: str) -> dict[str, object]:
         "reachable-history workflow must pin checkout action",
     )
     require("fetch-depth: 0" in normalized, "history workflow must fetch full history")
+    require(
+        "filter: blob:none" not in normalized,
+        "history workflow must clone every blob: the audit reads all of them, "
+        "and a partial clone fetched them one object at a time until the job "
+        "timed out (2026-09-05)",
+    )
     require("fetch-tags: true" in normalized, "history workflow must fetch tags")
     require(
         "validation_singleflight.py" not in normalized,
@@ -140,7 +148,10 @@ def test_workflow_environment_is_pinned() -> None:
         workflow.count('python-version: "3.12.9"') == 1,
         "history workflow must pin Python 3.12.9",
     )
-    require(workflow.count("cache: false") == 1, "history workflow must disable Python setup caching")
+    require(
+        "cache:" not in workflow,
+        "setup-python caching must stay disabled by omitting its provider input",
+    )
     require(
         "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1" in workflow,
         "workflow checkout action drifted",

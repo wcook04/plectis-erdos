@@ -14,38 +14,17 @@ WORKFLOW = ROOT / ".github" / "workflows" / "lean-cache-warm.yml"
 SETUP_PYTHON_ACTION = "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97"
 EXPECTED_ENVIRONMENT = {
     "GIT_CONFIG_NOSYSTEM": '"1"',
-    "GIT_CONFIG_GLOBAL": "/dev/null",
+    "GIT_CONFIG_GLOBAL": "/tmp/plectis-ci-empty.gitconfig",
     "GIT_OPTIONAL_LOCKS": '"0"',
     "GIT_NO_REPLACE_OBJECTS": '"1"',
+    "GIT_NAMESPACE": '""',
+    "GIT_REPLACE_REF_BASE": '""',
     "GIT_PAGER": "cat",
     "GIT_TERMINAL_PROMPT": '"0"',
     "GIT_ASKPASS": "/bin/false",
-    "GIT_TRACE": '""',
     "GIT_TRACE2": '""',
-    "GIT_TRACE_PACKET": '""',
-    "GIT_TRACE_PERFORMANCE": '""',
-    "GIT_TRACE_SETUP": '""',
-    "GIT_TRACE_CURL": '""',
     "GIT_TRACE2_EVENT": '""',
     "GIT_TRACE2_PERF": '""',
-    "GIT_SSH": '""',
-    "GIT_SSH_COMMAND": '""',
-    "GIT_SSH_VARIANT": '""',
-    "GIT_EXTERNAL_DIFF": '""',
-    "GIT_DIFF_OPTS": '""',
-    "GIT_EDITOR": '""',
-    "GIT_SEQUENCE_EDITOR": '""',
-    "GIT_MERGE_AUTOEDIT": '""',
-    "GIT_DIR": '""',
-    "GIT_WORK_TREE": '""',
-    "GIT_INDEX_FILE": '""',
-    "GIT_NAMESPACE": '""',
-    "GIT_REPLACE_REF_BASE": '""',
-    "GIT_OBJECT_DIRECTORY": '""',
-    "GIT_ALTERNATE_OBJECT_DIRECTORIES": '""',
-    "GIT_COMMON_DIR": '""',
-    "GIT_CEILING_DIRECTORIES": '""',
-    "GIT_DISCOVERY_ACROSS_FILESYSTEM": '""',
     "PYTHONHOME": '""',
     "PYTHONPATH": '""',
     "PYTHONSTARTUP": '""',
@@ -103,9 +82,13 @@ def main() -> int:
         body.count('python-version: "3.12.9"') == 1,
         "cache-warm job must install Python 3.12.9 exactly once",
     )
+    setup_step = body[
+        body.index("- name: Install the pinned Python runtime") :
+        body.index("- name: Test cache-warm command environment")
+    ]
     require(
-        body.count("cache: false") == 1,
-        "cache-warm job must not use an implicit setup-python cache",
+        "cache:" not in setup_step,
+        "cache-warm setup-python step must not request a package-manager cache",
     )
     require(
         len(re.findall(r"uses:[^\n]*@[0-9a-f]{40}(?:\s|#|$)", body)) == 3,

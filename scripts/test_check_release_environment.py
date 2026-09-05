@@ -11,6 +11,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import threading
 from pathlib import Path
 from unittest.mock import patch
 
@@ -26,12 +27,12 @@ def require(condition: bool, message: str) -> None:
 def main() -> int:
     source = inspect.getsource(check_release)
     require(
-        "primary_source_disposition_check = run(" in source,
-        "primary-source disposition gate bypassed the release subprocess wrapper",
+        "primary_source_disposition_check = subprocess.run(" not in source,
+        "primary-source disposition gate invokes raw subprocess.run",
     )
     require(
-        "primary_source_disposition_check = subprocess.run(" not in source,
-        "primary-source disposition gate still invokes raw subprocess.run",
+        "proof_cockpit_check = subprocess.run(" not in source,
+        "proof-cockpit gate invokes raw subprocess.run",
     )
     require(
         "_read_safe_bytes" in inspect.getsource(check_release.read)
@@ -39,6 +40,21 @@ def main() -> int:
         and "safe_release_path" in inspect.getsource(check_release._read_safe_bytes),
         "release artifact readers bypass the in-checkout path guard",
     )
+    check_release.read.cache_clear()
+    cached_path = check_release.ROOT / "README.md"
+    with patch.object(
+        check_release,
+        "_read_safe_bytes",
+        wraps=check_release._read_safe_bytes,
+    ) as admitted_read:
+        first = check_release.read(cached_path)
+        second = check_release.read(cached_path)
+    require(first == second, "release snapshot cache changed decoded content")
+    require(
+        admitted_read.call_count == 1,
+        "release snapshot cache repeated path admission for one input",
+    )
+    check_release.read.cache_clear()
     hostile_environment = {
         "GIT_DIR": "/private/wrong-git-dir",
         "GIT_WORK_TREE": "/private/wrong-work-tree",
@@ -204,6 +220,132 @@ def main() -> int:
             "release wrapper omitted its default subprocess timeout",
         )
 
+    dispatched: list[tuple[str, ...]] = []
+
+    def record_projection(
+        args: list[str], **kwargs: object
+    ) -> subprocess.CompletedProcess[str]:
+        dispatched.append(tuple(args))
+        return subprocess.CompletedProcess(args, returncode=0, stdout="current", stderr="")
+
+    check_release._PROJECTION_CHECK_RESULTS = None
+    first_builder = check_release.refresh_projections.BUILDERS[0]
+    last_builder = check_release.refresh_projections.BUILDERS[-1]
+    try:
+        with patch.object(check_release, "_SUBPROCESS_RUN", side_effect=record_projection):
+            first = check_release.run(
+                [sys.executable, str(check_release.ROOT / first_builder), "--check"],
+                cwd=check_release.ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            last = check_release.run(
+                [sys.executable, str(check_release.ROOT / last_builder), "--check"],
+                cwd=check_release.ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+        require(first.returncode == 0 and last.returncode == 0, "projection batch failed")
+        require(
+            sorted(Path(args[1]).relative_to(check_release.ROOT).as_posix() for args in dispatched)
+            == sorted(check_release.refresh_projections.BUILDERS),
+            "release projection batch did not dispatch each authoritative builder once",
+        )
+        require(
+            len(dispatched) == len(check_release.refresh_projections.BUILDERS),
+            "release projection result cache repeated a builder",
+        )
+    finally:
+        check_release._PROJECTION_CHECK_RESULTS = None
+
+    independent_dispatches: list[tuple[str, ...]] = []
+
+    def record_independent(
+        args: list[str], **kwargs: object
+    ) -> subprocess.CompletedProcess[str]:
+        independent_dispatches.append(tuple(args))
+        return subprocess.CompletedProcess(args, returncode=0, stdout="ok", stderr="")
+
+    independent_commands = {
+        "one": [sys.executable, "one.py"],
+        "two": [sys.executable, "two.py"],
+    }
+    with patch.object(check_release, "_SUBPROCESS_RUN", side_effect=record_independent):
+        independent_results = check_release.run_independent_checks(independent_commands)
+    require(
+        set(independent_results) == set(independent_commands),
+        "independent release batch lost a named result",
+    )
+    require(
+        sorted(independent_dispatches)
+        == sorted(tuple(argv) for argv in independent_commands.values()),
+        "independent release batch dropped or repeated a command",
+    )
+
+    combined_dispatches: list[tuple[str, ...]] = []
+
+    def record_combined(
+        args: list[str], **kwargs: object
+    ) -> subprocess.CompletedProcess[str]:
+        combined_dispatches.append(tuple(args))
+        return subprocess.CompletedProcess(args, returncode=0, stdout="ok", stderr="")
+
+    check_release._PROJECTION_CHECK_RESULTS = None
+    with patch.object(check_release, "_SUBPROCESS_RUN", side_effect=record_combined):
+        publication_results = check_release.publication_stage_check_results()
+    require(
+        len(combined_dispatches) == len(check_release.refresh_projections.BUILDERS) + 4,
+        "publication-stage pool dropped or repeated a check",
+    )
+    require(
+        len(check_release._PROJECTION_CHECK_RESULTS or {})
+        == len(check_release.refresh_projections.BUILDERS),
+        "publication-stage pool did not populate the projection result cache",
+    )
+    require(
+        {
+            "external_verification_release",
+            "note_source",
+            "paper_corpus",
+            "publication_taxonomy",
+        }
+        <= publication_results.keys(),
+        "publication-stage pool lost a named diagnostic result",
+    )
+    check_release._PROJECTION_CHECK_RESULTS = None
+
+    release_deferred = threading.Event()
+    both_started = threading.Event()
+    dispatch_count = 0
+    dispatch_lock = threading.Lock()
+
+    def hold_independent(
+        args: list[str], **kwargs: object
+    ) -> subprocess.CompletedProcess[str]:
+        nonlocal dispatch_count
+        with dispatch_lock:
+            dispatch_count += 1
+            if dispatch_count == len(independent_commands):
+                both_started.set()
+        release_deferred.wait(timeout=2)
+        return subprocess.CompletedProcess(args, returncode=0, stdout="ok", stderr="")
+
+    with patch.object(check_release, "_SUBPROCESS_RUN", side_effect=hold_independent):
+        executor, futures = check_release.start_independent_checks(independent_commands)
+        require(both_started.wait(timeout=2), "deferred checks did not start concurrently")
+        require(
+            not any(future.done() for future in futures.values()),
+            "deferred check launch waited for a result",
+        )
+        release_deferred.set()
+        deferred_results = check_release.finish_independent_checks(executor, futures)
+    require(
+        set(deferred_results) == set(independent_commands),
+        "deferred release batch lost a named result",
+    )
+
     require(
         check_release.ENVIRONMENT_CONTRACT
         == "clean_committed_snapshot_subprocess_environment_v1",
@@ -221,6 +363,27 @@ def main() -> int:
         check_release.SUBPROCESS_TIMEOUT_SECONDS
         == check_release.singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
         "release subprocess timeout drifted from the shared worker boundary",
+    )
+    require(
+        check_release.PROJECTION_CHECK_WORKERS
+        == check_release.refresh_projections.CHECK_WORKERS,
+        "release projection batch drifted from the aggregate freshness worker bound",
+    )
+    require(
+        1 <= check_release.RELEASE_CHECK_WORKERS <= 4,
+        "release suite batch exceeds its bounded worker policy",
+    )
+    require(
+        tuple(check_release.late_check_commands())[:2]
+        == ("query", "cold_clone_adversarial"),
+        "release late pool no longer starts both long readers first",
+    )
+    main_source = inspect.getsource(check_release.main)
+    require(
+        main_source.index("formal_source_matches_current_lean_tree(")
+        < main_source.index("publication_stage_results =")
+        < main_source.index("start_independent_checks("),
+        "release identity no longer fails before expensive projection and late pools",
     )
     print(
         "test_check_release_environment: release-gate child processes cannot "

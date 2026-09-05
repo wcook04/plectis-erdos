@@ -18,10 +18,19 @@ this function.
 
 from __future__ import annotations
 
+import re
+
 # The two libraries whose sources are the proof corpus proper.  Everything
 # else in the tree (Challenge fixtures, adapters, research corpus) is held to
 # a different contract and is classified separately by each consumer.
 LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
+NON_NEWLINE_RE = re.compile(r"[^\n]")
+
+
+def _blank_non_newlines(text: str) -> str:
+    """Blank one comment/string span in C-backed chunks, preserving lines."""
+
+    return NON_NEWLINE_RE.sub(" ", text)
 
 
 def lean_code_without_comments_and_strings(text: str) -> str:
@@ -32,44 +41,67 @@ def lean_code_without_comments_and_strings(text: str) -> str:
     in_string = False
     while index < len(text):
         if block_depth:
-            if text.startswith("/-", index):
+            nested = text.find("/-", index)
+            closing = text.find("-/", index)
+            boundaries = [position for position in (nested, closing) if position >= 0]
+            if not boundaries:
+                out.append(_blank_non_newlines(text[index:]))
+                break
+            boundary = min(boundaries)
+            out.append(_blank_non_newlines(text[index:boundary]))
+            if boundary == nested:
                 block_depth += 1
                 out.extend("  ")
-                index += 2
-            elif text.startswith("-/", index):
+            else:
                 block_depth -= 1
                 out.extend("  ")
-                index += 2
-            else:
-                out.append("\n" if text[index] == "\n" else " ")
-                index += 1
+            index = boundary + 2
         elif in_string:
-            if text[index] == "\\" and index + 1 < len(text):
+            escape = text.find("\\", index)
+            quote = text.find('"', index)
+            boundaries = [position for position in (escape, quote) if position >= 0]
+            if not boundaries:
+                out.append(_blank_non_newlines(text[index:]))
+                break
+            boundary = min(boundaries)
+            out.append(_blank_non_newlines(text[index:boundary]))
+            if boundary == escape and boundary + 1 < len(text):
                 out.extend("  ")
-                index += 2
-            elif text[index] == '"':
+                index = boundary + 2
+            elif boundary == quote:
                 in_string = False
                 out.append(" ")
-                index += 1
+                index = boundary + 1
             else:
-                out.append("\n" if text[index] == "\n" else " ")
-                index += 1
-        elif text.startswith("--", index):
-            end = text.find("\n", index)
-            if end < 0:
-                out.extend(" " * (len(text) - index))
+                out.append(" ")
                 break
-            out.extend(" " * (end - index))
-            index = end
-        elif text.startswith("/-", index):
-            block_depth = 1
-            out.extend("  ")
-            index += 2
-        elif text[index] == '"':
-            in_string = True
-            out.append(" ")
-            index += 1
         else:
-            out.append(text[index])
-            index += 1
+            line_comment = text.find("--", index)
+            block_comment = text.find("/-", index)
+            quote = text.find('"', index)
+            boundaries = [
+                position
+                for position in (line_comment, block_comment, quote)
+                if position >= 0
+            ]
+            if not boundaries:
+                out.append(text[index:])
+                break
+            boundary = min(boundaries)
+            out.append(text[index:boundary])
+            if boundary == line_comment:
+                end = text.find("\n", boundary)
+                if end < 0:
+                    out.extend(" " * (len(text) - boundary))
+                    break
+                out.extend(" " * (end - boundary))
+                index = end
+            elif boundary == block_comment:
+                block_depth = 1
+                out.extend("  ")
+                index = boundary + 2
+            else:
+                in_string = True
+                out.append(" ")
+                index = boundary + 1
     return "".join(out)

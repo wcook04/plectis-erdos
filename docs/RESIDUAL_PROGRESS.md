@@ -192,7 +192,7 @@ verdict; it does not yet have one.
 Requires a built Mathlib for this toolchain.
 
 ```
-lake build ResidualBench
+python3 scripts/lean_fast_build.py ResidualBench
 python3 scripts/residual_evaluator.py \
   --manifest scripts/residualbench_manifest.json \
   --lean-root . \

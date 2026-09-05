@@ -1,47 +1,133 @@
 {
-  "schema": "plectis-agent-skill-registry/1",
+  "schema": "plectis-agent-skill-registry/2",
   "authority_posture": "This registry routes tasks to clone-local workflows. Each referenced SKILL.md owns the workflow itself; Lean source and the public claim authorities remain mathematically authoritative.",
   "fallback_lane": "understand_repository",
+  "maintenance": {
+    "catalog_projection": "skills/README.md",
+    "write_command": "python3 scripts/agent_skill_catalog.py",
+    "check_command": "python3 scripts/agent_skill_catalog.py --check",
+    "dogfood_rule": "A route is not healthy merely because its files exist. Replay observed tasks, require the intended primary lane, and preserve the failing journey as a regression fixture."
+  },
+  "families": [
+    {
+      "id": "orientation",
+      "title": "Orientation and access",
+      "description": "Enter, explain, and optionally install the public workflows without requiring a private system."
+    },
+    {
+      "id": "research",
+      "title": "Research and expansion",
+      "description": "Select a bounded frontier, sustain discovery, or add a sourced problem world while preserving open boundaries."
+    },
+    {
+      "id": "validation",
+      "title": "Validation",
+      "description": "Coordinate reproducible Lean checks without turning build machinery into proof authority."
+    },
+    {
+      "id": "integration",
+      "title": "Return, propagation, and integration",
+      "description": "Return work from any clone, preserve attribution, reconcile it with current main, propagate consequences, and prepare reviewable upstream changes."
+    },
+    {
+      "id": "communication",
+      "title": "Public communication",
+      "description": "Explain checked mathematics in reader-facing prose without outrunning the evidence."
+    },
+    {
+      "id": "stewardship",
+      "title": "Infrastructure stewardship",
+      "description": "Dogfood and maintain the public agent, query, validation, contribution, and generated-projection surfaces as one self-contained system."
+    }
+  ],
   "skills": [
     {
       "id": "add-open-problem",
-      "path": "skills/add-open-problem/SKILL.md"
+      "path": "skills/add-open-problem/SKILL.md",
+      "family": "research",
+      "stage": "expansion",
+      "status": "active",
+      "composes_with": ["mine-open-problem", "propagate-research-consequences", "submit-pull-request"]
     },
     {
       "id": "erdos-research-return",
-      "path": "skills/erdos-research-return/SKILL.md"
+      "path": "skills/erdos-research-return/SKILL.md",
+      "family": "integration",
+      "stage": "return-and-assimilation",
+      "status": "active",
+      "composes_with": ["propagate-research-consequences", "submit-pull-request"]
     },
     {
       "id": "explain-public-system",
-      "path": "skills/explain-public-system/SKILL.md"
+      "path": "skills/explain-public-system/SKILL.md",
+      "family": "orientation",
+      "stage": "orientation",
+      "status": "active",
+      "composes_with": ["mine-open-problem", "run-coupled-research-goals"]
     },
     {
       "id": "install-clone-skills",
-      "path": "skills/install-clone-skills/SKILL.md"
+      "path": "skills/install-clone-skills/SKILL.md",
+      "family": "orientation",
+      "stage": "optional-installation",
+      "status": "active",
+      "composes_with": []
     },
     {
       "id": "lean-concurrent-validation",
-      "path": "skills/lean-concurrent-validation/SKILL.md"
+      "path": "skills/lean-concurrent-validation/SKILL.md",
+      "family": "validation",
+      "stage": "validation",
+      "status": "active",
+      "composes_with": ["propagate-research-consequences"]
+    },
+    {
+      "id": "maintain-public-infrastructure",
+      "path": "skills/maintain-public-infrastructure/SKILL.md",
+      "family": "stewardship",
+      "stage": "continuous-dogfood",
+      "status": "active",
+      "composes_with": ["propagate-research-consequences", "submit-pull-request"]
     },
     {
       "id": "mine-open-problem",
-      "path": "skills/mine-open-problem/SKILL.md"
+      "path": "skills/mine-open-problem/SKILL.md",
+      "family": "research",
+      "stage": "bounded-discovery",
+      "status": "active",
+      "composes_with": ["lean-concurrent-validation", "propagate-research-consequences", "erdos-research-return"]
     },
     {
       "id": "propagate-research-consequences",
-      "path": "skills/propagate-research-consequences/SKILL.md"
+      "path": "skills/propagate-research-consequences/SKILL.md",
+      "family": "integration",
+      "stage": "downstream-propagation",
+      "status": "active",
+      "composes_with": ["erdos-research-return", "submit-pull-request"]
     },
     {
       "id": "public-mathematical-writing",
-      "path": "skills/public-mathematical-writing/SKILL.md"
+      "path": "skills/public-mathematical-writing/SKILL.md",
+      "family": "communication",
+      "stage": "exposition",
+      "status": "active",
+      "composes_with": ["propagate-research-consequences"]
     },
     {
       "id": "run-coupled-research-goals",
-      "path": "skills/run-coupled-research-goals/SKILL.md"
+      "path": "skills/run-coupled-research-goals/SKILL.md",
+      "family": "research",
+      "stage": "sustained-discovery",
+      "status": "active",
+      "composes_with": ["mine-open-problem", "propagate-research-consequences", "erdos-research-return"]
     },
     {
       "id": "submit-pull-request",
-      "path": "skills/submit-pull-request/SKILL.md"
+      "path": "skills/submit-pull-request/SKILL.md",
+      "family": "integration",
+      "stage": "upstream-submission",
+      "status": "active",
+      "composes_with": []
     }
   ],
   "lanes": [
@@ -54,6 +140,7 @@
         "overview",
         "what is this",
         "how does this repo work",
+        "new here",
         "newcomer",
         "onboard"
       ],
@@ -76,10 +163,14 @@
         "theorem status",
         "problem status",
         "what is proved",
+        "is this proved",
+        "has been proved",
         "what remains open",
         "mathematical progress",
         "claim status",
-        "paper synthesis"
+        "paper synthesis",
+        "strongest theorem",
+        "current frontier"
       ],
       "skills": [
         "explain-public-system"
@@ -91,7 +182,7 @@
       "commands": [
         "python3 scripts/query_corpus.py --ask \"<question>\""
       ],
-      "boundary": "All eight headline problems remain open; query results route to evidence but do not create proof or claim authority."
+      "boundary": "Read source-current problem and claim status from the indexed public authorities; query results route to evidence but do not create proof or claim authority."
     },
     {
       "id": "bounded_research",
@@ -99,7 +190,10 @@
       "task_cues": [
         "mine",
         "attack",
+        "want to attack",
+        "want to solve",
         "prove",
+        "find a proof",
         "counterexample",
         "open problem",
         "research route",
@@ -129,6 +223,9 @@
       "task_cues": [
         "sustained research",
         "keep working",
+        "keep researching",
+        "continue researching",
+        "research until",
         "continuous research",
         "coupled goals",
         "research campaign",
@@ -153,7 +250,15 @@
       "title": "Build or validate Lean safely",
       "task_cues": [
         "lean build",
+        "build commands",
+        "duplicate builds",
+        "deduplicate builds",
         "compile",
+        "compiles",
+        "still compiles",
+        "check lean",
+        "lean theorem",
+        "run the tests",
         "validate lean",
         "lake build",
         "build failure",
@@ -182,7 +287,11 @@
         "new result",
         "no-go",
         "architecture delta",
-        "update consumers"
+        "update consumers",
+        "update every affected",
+        "affected paper",
+        "update papers and claims",
+        "found a counterexample"
       ],
       "skills": [
         "propagate-research-consequences"
@@ -202,6 +311,10 @@
         "write paper",
         "edit paper",
         "mathematical writing",
+        "write an explanation",
+        "theorem explanation",
+        "explain the theorem",
+        "for a mathematician",
         "reader-facing",
         "rewrite readme",
         "exposition",
@@ -224,7 +337,10 @@
       "task_cues": [
         "add problem",
         "new problem",
+        "another erdős problem",
         "register problem",
+        "register its paper",
+        "expand problem roster",
         "incubate problem",
         "ninth problem",
         "expand corpus"
@@ -242,24 +358,39 @@
     {
       "id": "return_research",
       "title": "Package or assimilate research from a clone",
+      "priority": 40,
       "task_cues": [
         "return research",
         "research return",
         "assimilate",
+        "assimilated",
         "older clone",
+        "old checkout",
+        "package the work",
+        "from a fork",
+        "review and credit",
         "credit contribution",
+        "credited",
+        "made mathematical progress",
+        "send it back",
+        "send work back",
+        "reviewed and credited",
         "package evidence",
         "resume work"
       ],
       "skills": [
         "erdos-research-return",
-        "propagate-research-consequences"
+        "propagate-research-consequences",
+        "submit-pull-request"
       ],
       "read": [
         "skills/erdos-research-return/SKILL.md",
         "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"
       ],
-      "commands": [],
+      "commands": [
+        "python3 scripts/continue_research.py --help",
+        "python3 scripts/validate_research_return.py --help"
+      ],
       "boundary": "Preserve the starting commit, original delta, evidence limits, and contributor credit."
     },
     {
@@ -268,6 +399,12 @@
       "task_cues": [
         "submit pull request",
         "open pull request",
+        "pull request",
+        "submit changes",
+        "changes upstream",
+        "finished commits",
+        "prepare commits",
+        "patch from a fork",
         "prepare pr",
         "commit contribution",
         "push branch",
@@ -286,8 +423,15 @@
     {
       "id": "install_skills",
       "title": "Install clone-local skills into an agent harness",
+      "priority": 60,
       "task_cues": [
         "install skills",
+        "install a skill",
+        "install clone local skills",
+        "install the clone local skills",
+        "install only",
+        "install workflow",
+        "make this skill available",
         "codex skills",
         "claude skills",
         "skill installer",
@@ -308,29 +452,68 @@
     {
       "id": "repository_architecture",
       "title": "Improve cold-clone architecture or agent navigation",
+      "priority": 50,
       "task_cues": [
         "architecture",
         "agent entry",
         "cold clone",
+        "public clone",
+        "self explaining",
+        "skill organization",
+        "organize skills",
+        "organise skills",
+        "organize consolidate",
+        "organise consolidate",
+        "refresh clone local skills",
+        "skills need organizing",
+        "skills need organising",
+        "consolidate skills",
+        "consolidating skills",
+        "audit skills",
+        "skill audit",
+        "audit every clone-local skill",
+        "update skills",
+        "refresh skills",
+        "improve skills",
+        "skill drift",
+        "instruction drift",
+        "dogfood",
+        "maintain infrastructure",
+        "infrastructure maintenance",
+        "public infrastructure",
+        "generated projection",
+        "private dependency",
+        "self contained",
+        "unified infrastructure",
+        "slow clone",
+        "speed up",
+        "command speed",
         "navigation",
         "skill discovery",
+        "skill routing",
+        "skill discoverability",
+        "discoverable skills",
+        "workflows discoverable",
+        "which skill",
+        "skills available",
+        "skills are available",
         "repository organization",
         "contributor experience",
         "reproducibility"
       ],
       "skills": [
-        "propagate-research-consequences",
-        "submit-pull-request"
+        "maintain-public-infrastructure"
       ],
       "read": [
-        "ARCHITECTURE.md",
-        "docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md"
+        "skills/maintain-public-infrastructure/SKILL.md"
       ],
       "commands": [
+        "python3 scripts/agent_skill_catalog.py --check",
+        "python3 scripts/test_agent_entry.py",
         "python3 scripts/test_compact_agent_entry.py",
         "python3 scripts/check_cold_clone_comprehension.py --quick"
       ],
-      "boundary": "Keep the public repository self-contained and change generated projections only through their owner builders."
+      "boundary": "Repair the public owner surface and preserve the observed journey as a fixture; do not depend on private infrastructure or hand-edit generated projections."
     }
   ]
 }

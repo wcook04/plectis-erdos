@@ -137,6 +137,7 @@ PROBLEMS = tuple(
 PROBLEM_SCOPES = (*PROBLEMS, "both", "shared_substrate")
 
 
+@lru_cache(maxsize=1)
 def load() -> dict:
     if not CORPUS.is_file():
         raise SystemExit(
@@ -1558,8 +1559,8 @@ def paper_citation_keys(module: str, declaration: str) -> set[tuple[str, str]]:
     cited source line.  Match both without weakening the module coordinate: a
     short declaration name is never resolved repo-wide.
     """
-    module_aliases = {module, Path(module).name}
-    parts = Path(module).parts
+    parts = module.split("/")
+    module_aliases = {module, parts[-1]}
     if parts and parts[0] in ("ErdosProblems", "Erdos249257"):
         module_aliases.add("/".join(parts[1:]))
     declaration_aliases = {declaration, declaration.rsplit(".", 1)[-1]}
@@ -1570,9 +1571,21 @@ def paper_citation_keys(module: str, declaration: str) -> set[tuple[str, str]]:
     }
 
 
+_PAPER_CITATION_ROLE_INDEX_CACHE: tuple[
+    dict, dict[tuple[str, str], list[dict]]
+] | None = None
+
+
 def paper_citation_role_index(
     corpus: dict,
 ) -> dict[tuple[str, str], list[dict]]:
+    """Index immutable loaded-corpus citation aliases once per process."""
+    global _PAPER_CITATION_ROLE_INDEX_CACHE
+    if (
+        _PAPER_CITATION_ROLE_INDEX_CACHE is not None
+        and _PAPER_CITATION_ROLE_INDEX_CACHE[0] is corpus
+    ):
+        return _PAPER_CITATION_ROLE_INDEX_CACHE[1]
     index: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for role in corpus["declaration_roles"]:
         module = role.get("module")
@@ -1581,6 +1594,7 @@ def paper_citation_role_index(
             continue
         for key in paper_citation_keys(module, declaration):
             index[key].append(role)
+    _PAPER_CITATION_ROLE_INDEX_CACHE = (corpus, index)
     return index
 
 
@@ -1619,17 +1633,16 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
     # exhaustive citation route.  An earlier version used evidence lists and
     # consequently labelled node-routed citations "unmatched" whenever an
     # author had not repeated every supporting declaration on the node.
-    declaration_routes: dict[tuple[str, str], set[str]] = defaultdict(set)
-    known_declarations: set[tuple[str, str]] = set()
-    for role in corpus["declaration_roles"]:
-        module = role.get("module")
-        declaration = role.get("declaration")
-        if not module or not declaration:
-            continue
-        for key in paper_citation_keys(module, declaration):
-            known_declarations.add(key)
-            if role.get("statement_node"):
-                declaration_routes[key].add(role["statement_node"])
+    role_index = paper_citation_role_index(corpus)
+    known_declarations = set(role_index)
+    declaration_routes: dict[tuple[str, str], set[str]] = {
+        key: {
+            role["statement_node"]
+            for role in roles
+            if role.get("statement_node")
+        }
+        for key, roles in role_index.items()
+    }
 
     artifacts = contract.get("artifacts", [])
     if args.paper:
@@ -2423,14 +2436,9 @@ def cmd_inventory(corpus: dict, args) -> int:
         if row.get("zone_id") and row.get("problem")
     }
 
-    matches = []
+    total_matches = 0
+    results = []
     for route in corpus["declaration_roles"]:
-        route_problem = problem_for_route(
-            corpus,
-            route,
-            node_index=node_index,
-            zone_problems=zone_problems,
-        )
         searchable = " ".join(
             str(route.get(field) or "")
             for field in ("id", "module", "declaration", "statement_node")
@@ -2443,31 +2451,39 @@ def cmd_inventory(corpus: dict, args) -> int:
             continue
         if zone_filter and zone_filter != str(route.get("zone") or "").casefold():
             continue
-        if args.problem and not problem_scope_matches(
-            route_problem, args.problem
-        ):
+        route_problem = None
+        if args.problem or len(results) < args.limit:
+            route_problem = problem_for_route(
+                corpus,
+                route,
+                node_index=node_index,
+                zone_problems=zone_problems,
+            )
+        if args.problem and not problem_scope_matches(route_problem, args.problem):
             continue
-        matches.append(
-            {
-                "id": route["id"],
-                "module": route.get("module"),
-                "declaration": route.get("declaration"),
-                "problem": route_problem,
-                "role": route.get("role"),
-                "zone": route.get("zone"),
-                "statement_node": route.get("statement_node"),
-                "routing_origin": route.get("routing_origin", "authored"),
-                "interpretation_tier": route.get("interpretation_tier"),
-                "routing_basis_ref": route.get("routing_basis_ref"),
-                "routing_basis": (
-                    corpus.get("routing_basis_catalog", {}).get(
-                        route.get("routing_basis_ref")
-                    )
-                    if route.get("routing_basis_ref")
-                    else route.get("routing_basis")
-                ),
-            }
-        )
+        total_matches += 1
+        if len(results) < args.limit:
+            results.append(
+                {
+                    "id": route["id"],
+                    "module": route.get("module"),
+                    "declaration": route.get("declaration"),
+                    "problem": route_problem,
+                    "role": route.get("role"),
+                    "zone": route.get("zone"),
+                    "statement_node": route.get("statement_node"),
+                    "routing_origin": route.get("routing_origin", "authored"),
+                    "interpretation_tier": route.get("interpretation_tier"),
+                    "routing_basis_ref": route.get("routing_basis_ref"),
+                    "routing_basis": (
+                        corpus.get("routing_basis_catalog", {}).get(
+                            route.get("routing_basis_ref")
+                        )
+                        if route.get("routing_basis_ref")
+                        else route.get("routing_basis")
+                    ),
+                }
+            )
 
     return emit(
         {
@@ -2487,10 +2503,10 @@ def cmd_inventory(corpus: dict, args) -> int:
                 "zone": args.zone or "",
                 "problem": args.problem or "",
             },
-            "total_matches": len(matches),
-            "returned": min(len(matches), args.limit),
-            "omitted": max(0, len(matches) - args.limit),
-            "results": matches[: args.limit],
+            "total_matches": total_matches,
+            "returned": len(results),
+            "omitted": total_matches - len(results),
+            "results": results,
         }
     )
 

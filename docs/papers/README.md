@@ -9,7 +9,7 @@ public repositories. A retired manuscript that remains shipped as a root
 PDF is carried only by its home repository for provenance; it is not
 mirrored or restored to an active publication route.
 
-This checkout carries 13 active papers and 1 retired provenance paper. Pick the question you are actually asking:
+This checkout carries 14 active papers and 1 retired provenance paper. Pick the question you are actually asking:
 
 ## Mathematical signal first
 
@@ -226,7 +226,7 @@ not currently earn scarce first-contact attention.
 - `root_retention`: `Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk`. These exact identities, finite instances, structural consumers, auxiliary facts, and no-go boundaries remain in the complete current roster, but they are not competitive with the selected endpoint under the current consequence, mechanism, and evidence ranking.
 - `rational_base_tail_recurrence`: `Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ`. These exact identities, finite instances, structural consumers, auxiliary facts, and no-go boundaries remain in the complete current roster, but they are not competitive with the selected endpoint under the current consequence, mechanism, and evidence ranking.
 
-## Problem portfolio (complete 14-paper inventory)
+## Problem portfolio (complete 15-paper inventory)
 
 The active mathematical notes form a growing problem-by-problem portfolio: Erdős #68, Erdős #243, Erdős #249, Erdős #251, Erdős #257, Erdős #269, Erdős #1041, Erdős #1049. Start with the named problem, then use its note for the exact checked results and remaining obligation. Retired combined manuscripts are provenance, not the portfolio's front door.
 
@@ -328,6 +328,14 @@ The paper's own reading map sends a first pass to [What can be trusted](full-tex
 
 This paper states no reading route. Its evidence boundary is in [The cold-clone problem](full-text/cold-clone-to-proof-receipt.md#sec:problem), [Four views of the mathematical library](full-text/cold-clone-to-proof-receipt.md#sec:layers), [From navigation to proof authority](full-text/cold-clone-to-proof-receipt.md#sec:authority), [Compilation after comprehension](full-text/cold-clone-to-proof-receipt.md#sec:incremental), [Limits and transfer conditions](full-text/cold-clone-to-proof-receipt.md#sec:limits).
 
+### How can outsiders contribute compute, mathematical direction, architecture, or review without receiving authority to declare a proof?
+
+**From Spare Compute to Cumulative Mathematics**
+
+[full text](full-text/open-source-mathematics-strategy.md) · [PDF](../../open-source-mathematics-strategy.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/open-source-mathematics-strategy.tex) · 29 sections · `open-source-mathematics-strategy` · native to this repository
+
+This paper states no reading route. Its evidence boundary is in [The strategy](full-text/open-source-mathematics-strategy.md#sec:strategy), [The public research object](full-text/open-source-mathematics-strategy.md#sec:object), [The contribution protocol](full-text/open-source-mathematics-strategy.md#sec:protocol), [From an agent claim to mathematical attention](full-text/open-source-mathematics-strategy.md#sec:attention), [Distributed compute without distributed authority](full-text/open-source-mathematics-strategy.md#sec:security), [Participation and growth](full-text/open-source-mathematics-strategy.md#sec:growth), [Limits and governance](full-text/open-source-mathematics-strategy.md#sec:limits).
+
 ### What may a stranger conclude from public evidence when the author chose both what to publish and what counts as a pass?
 
 **Plectis: What a Stranger Can Check**
@@ -364,6 +372,7 @@ is proof authority. In order:
 - `erdos-1049-rational-base-lambert` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #1049, which remains open.
 - `claim-faithful-publication-systems` is not authority for the mathematical content it uses as its worked example, and the correctness of the human review it preserves.
 - `cold-clone-to-proof-receipt` is not authority for proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project.
+- `open-source-mathematics-strategy` is not authority for a solution to any Erdős problem, measured discovery-rate improvement, human peer review, novelty, significance, or community endorsement.
 - `plectis-public-system` is not authority for the private system's internal state, which is not public, and the mathematical results it cites as evidence.
 
 ## For agents

@@ -34,8 +34,9 @@ import re
 import stat
 import subprocess
 import sys
+from functools import lru_cache
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 import validation_singleflight as singleflight
 
@@ -147,6 +148,7 @@ DECL_KEYWORDS = (
 )
 
 
+@lru_cache(maxsize=256)
 def strip_comments(text: str) -> str:
     return "\n".join(COMMENT_RE.sub("", line) for line in text.splitlines())
 
@@ -287,6 +289,59 @@ def snapshot_lines(
     else:
         cache[key] = completed.stdout.splitlines()
     return cache[key]
+
+
+def snapshot_lines_batch(
+    requests: Iterable[tuple[str, str]],
+    cache: dict[tuple[str, str], list[str]],
+) -> None:
+    """Fill snapshot lines with one Git process for many immutable blobs."""
+    missing = sorted(set(requests) - set(cache))
+    if not missing:
+        return
+    completed = subprocess.run(
+        ["git", "cat-file", "--batch"],
+        cwd=ROOT,
+        input="".join(f"{commit}:{relative}\n" for commit, relative in missing).encode(),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+    )
+    if completed.returncode != 0:
+        for key in missing:
+            cache[key] = []
+        return
+
+    output = completed.stdout
+    position = 0
+    for key in missing:
+        header_end = output.find(b"\n", position)
+        if header_end < 0:
+            cache[key] = []
+            continue
+        header = output[position:header_end]
+        position = header_end + 1
+        if header.endswith(b" missing"):
+            cache[key] = []
+            continue
+        fields = header.rsplit(b" ", 2)
+        if len(fields) != 3 or fields[1] != b"blob":
+            cache[key] = []
+            continue
+        try:
+            size = int(fields[2])
+        except ValueError:
+            cache[key] = []
+            continue
+        end = position + size
+        if end > len(output):
+            cache[key] = []
+            position = len(output)
+            continue
+        cache[key] = output[position:end].decode("utf-8").splitlines()
+        position = end + 1
 
 
 def library_relative(file_name: str) -> str:
@@ -593,6 +648,22 @@ def main() -> int:
     errors: list[str] = []
     checked = 0
     resolved_commits: set[str] = set()
+
+    # Resolve immutable note blobs in one Git protocol session. The validation
+    # loop below still owns every per-link diagnostic, while snapshot_lines()
+    # becomes a cache lookup instead of launching one `git show` per module.
+    snapshot_requests = set()
+    for source in sources:
+        try:
+            note_text = safe_worktree_text(ROOT / source)
+        except UnsafeSourceInput:
+            continue
+        commit = note_pinned_commit(note_text, default_commit)
+        snapshot_requests.update(
+            (commit, library_relative(file_name))
+            for file_name, _line_number, _declaration in links(note_text)
+        )
+    snapshot_lines_batch(snapshot_requests, cache)
 
     for source in sources:
         try:

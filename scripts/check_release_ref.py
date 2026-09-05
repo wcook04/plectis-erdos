@@ -216,8 +216,7 @@ def prepare_clone(commit: str, parent: Path) -> Path:
         [
             "git",
             "clone",
-            "--local",
-            "--no-hardlinks",
+            "--shared",
             "--no-checkout",
             "--quiet",
             str(ROOT),
@@ -227,6 +226,19 @@ def prepare_clone(commit: str, parent: Path) -> Path:
     )
     if cloned.returncode != 0:
         raise SnapshotError(cloned.stderr.strip() or "local clone failed")
+    alternates = clone / ".git/objects/info/alternates"
+    source_git_dir = run(["git", "rev-parse", "--absolute-git-dir"], cwd=ROOT)
+    if source_git_dir.returncode != 0:
+        raise SnapshotError(
+            source_git_dir.stderr.strip() or "could not resolve source Git directory"
+        )
+    expected_objects = (Path(source_git_dir.stdout.strip()) / "objects").resolve()
+    try:
+        shared_objects = Path(alternates.read_text(encoding="utf-8").strip()).resolve()
+    except OSError as exc:
+        raise SnapshotError("shared snapshot did not record its source object store") from exc
+    if alternates.is_symlink() or shared_objects != expected_objects:
+        raise SnapshotError("shared snapshot points at an unexpected Git object store")
     checked_out = run(
         ["git", "checkout", "--detach", "--quiet", commit],
         cwd=clone,

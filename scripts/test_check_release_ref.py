@@ -48,7 +48,7 @@ def test_snapshot_command_path_boundary() -> None:
 
 
 def test_snapshot_clone_isolation_flags_are_pinned() -> None:
-    """Keep disposable snapshots independent from the caller's object store."""
+    """Share immutable objects without copying the multi-gigabyte object store."""
     with tempfile.TemporaryDirectory() as raw:
         source = Path(raw) / "source"
         source.mkdir()
@@ -93,10 +93,10 @@ def test_snapshot_clone_isolation_flags_are_pinned() -> None:
         require(calls, "snapshot preparation did not invoke Git")
         clone_command, clone_cwd = calls[0]
         require(clone_command[:2] == ["git", "clone"], "snapshot did not use git clone")
-        require("--local" in clone_command, "snapshot clone lost local source mode")
+        require("--shared" in clone_command, "snapshot clone lost shared local mode")
         require(
-            "--no-hardlinks" in clone_command,
-            "snapshot clone may share mutable Git object files",
+            "--no-hardlinks" not in clone_command,
+            "snapshot clone restored the multi-gigabyte object copy",
         )
         require(
             "--no-checkout" in clone_command,

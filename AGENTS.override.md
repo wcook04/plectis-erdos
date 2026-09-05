@@ -3,9 +3,8 @@
 
 # Compact cold-clone agent entry
 
-This is the first-contact contract for repository-aware agents.
-[AGENTS.md](AGENTS.md) is the deep change, authority, and validation contract;
-open its relevant section after selecting a lane here.
+First-contact contract. [AGENTS.md](AGENTS.md) owns deep change,
+authority, and validation rules; open only the section the route names.
 
 This is a self-contained public Lean repository and scholarly artefact. Use only
 tracked files in this checkout. Do not depend on `ai_workflow`, sibling
@@ -71,8 +70,14 @@ change.
 
 ### Repository architecture, agent entry, cold-clone organization, or docs routing
 
-This lane is not a mathematical query. Start with the committed cold-clone
-contract and bounded orientation:
+Route first; if selected, open
+[the infrastructure skill](skills/maintain-public-infrastructure/SKILL.md):
+
+```sh
+python3 scripts/agent_entry.py --entry "<task in ordinary language>"
+```
+
+Then run the bounded checks:
 
 ```sh
 python3 scripts/proof_cockpit.py --format card
@@ -80,10 +85,8 @@ python3 scripts/test_compact_agent_entry.py
 python3 scripts/check_cold_clone_comprehension.py --quick
 ```
 
-Then read `docs/orientation.json::agent_entry`, [ARCHITECTURE.md](ARCHITECTURE.md),
-or [docs/ORIENTATION.md](docs/ORIENTATION.md), whichever the owner names.
-Generated orientation, source maps, indices, aliases, and publication packets
-change through their builder, never by hand.
+Open [ARCHITECTURE.md](ARCHITECTURE.md) or [orientation](docs/ORIENTATION.md)
+only when routed; builders own generated projections.
 
 ### Publication, systems-paper, or artifact-boundary work
 
@@ -176,8 +179,8 @@ paper sentence, or provider output may be promoted past that order.
   prove a theorem; a passing navigation check does not prove mathematics.
 - Never add `sorry`, `admit`, project-defined `axiom`, `native_decide`,
   unsafe/partial declarations, or unbounded kernel limits.
-- Use `python3 scripts/lean_fast_build.py --jobs 2` for bounded builds when
-  appropriate; do not overlap competing root and focused builds.
+- For Lean edits, run `python3 scripts/lean_fast_build.py --jobs 2
+  --changed-from HEAD`; never overlap builds.
 
 ## Validation
 
@@ -196,8 +199,8 @@ For a committed-snapshot release check in a dirty shared checkout:
 python3 scripts/check_release_ref.py --ref HEAD --receipt /tmp/release-head.json
 ```
 
-Run the relevant projection builders in `--check` mode and the focused tests
-named by [AGENTS.md](AGENTS.md). Run `lake build` after Lean changes.
+After Lean edits, run `python3 scripts/lean_fast_build.py --jobs 2
+--changed-from HEAD`; full roots are release-only.
 
 Do not absorb the complete deep contract, declaration atlas, module graph, or
 the papers merely to find the first action.

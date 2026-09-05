@@ -78,7 +78,7 @@ The definitions and claim boundary are repeated here so that the note is self-co
 
 *Status.* The problem treated here is open, and this note does not close it. Every statement below marked as checked is a proposition that the pinned Lean kernel accepts from the sources this note links to, with no `sorry`, no added axiom, and no unchecked evaluation. That is a claim about the formal statement, not about its mathematical interest, its novelty, or the original problem. The unresolved obligations are named exactly, in their own section, and none of the finite computations, reductions, or no-go results here removes one of them.
 
-*Companion system context.* The [claim and trust boundary](claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
 
 | Statement | Status | Exact boundary |
 |:---|:---|:---|
@@ -117,13 +117,13 @@ This is the factorial base taken in its canonical form. The kernel checks the fl
 x=\lfloor x\rfloor+\sum_{m=2}^{N}\frac{d_m}{m!}
    +\frac{\theta_N}{N!},
 ```
-and the propagation rule: a zero remainder at one index forces every later digit to vanish. These are *canonical digit eq floor mul remainder*, *canonical digit nonneg*, *canonical digit lt radix*, *canonical remainder recurrence*, the [finite factorial expansion](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L196), and the [zero-remainder termination theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L269); they hold for every real $`x`$, including $`S`$.
+and the propagation rule: a zero remainder at one index forces every later digit to vanish. These are *canonical digit eq floor mul remainder*, *canonical digit nonneg*, *canonical digit lt radix*, *canonical remainder recurrence*, the [finite factorial expansion](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L196), and the [zero-remainder termination theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L269); they hold for every real $`x`$, including $`S`$.
 
 The rational direction is also kernel-checked. If $`q>0`$ and $`q\le n`$, then
 ``` math
 \operatorname{facFloor}(a/q,n)=((n!/q):\mathbb{Z})a,
 ```
-and the canonical digit at radix $`n+1`$ vanishes. These are the [cleared-floor formula](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L47) and the [rational-input termination theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L81). They imply that every rational input has an eventually zero canonical factorial-digit expansion. They do not decide whether $`S`$ is rational and supply no recurrence estimate for its digits or remainders.
+and the canonical digit at radix $`n+1`$ vanishes. These are the [cleared-floor formula](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L47) and the [rational-input termination theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L81). They imply that every rational input has an eventually zero canonical factorial-digit expansion. They do not decide whether $`S`$ is rational and supply no recurrence estimate for its digits or remainders.
 
 The returned derivation additionally gives the converse for this particular representation: the digits $`d_m(S)`$ are eventually zero only if $`S`$ is rational, equivalently the factorial tail state is eventually integral. That converse is not yet kernel-checked here, and nothing below uses it as though it were.
 
@@ -196,7 +196,7 @@ In particular, in the first band $`d\le i_j<2d`$, channel cancellation $`C_d=0`$
 
 </div>
 
-The exact factorisation is checked for every quotient band at [the band identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L71), and its zero-channel consequence is [band cancellation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L91). The first-band form is explicit at [first-band factorisation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L101); the final breakpoint alternative is [breakpoint witness](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L130). The hard step is the constant quotient, not a valuation estimate: within one band every factorial has the same extracted power of $`d!`$. Thus a nonzero moment cannot be hidden entirely below $`2d`$ while the $`d`$-channel cancels. This is a finite-family obstruction only. It constructs no cancelling family, says nothing about simultaneous channels or residual size, and does not by itself address the cofinal non-unit-carry input for Problem #68.
+The exact factorisation is checked for every quotient band at [the band identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L71), and its zero-channel consequence is [band cancellation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L91). The first-band form is explicit at [first-band factorisation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L101); the final breakpoint alternative is [breakpoint witness](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L130). The hard step is the constant quotient, not a valuation estimate: within one band every factorial has the same extracted power of $`d!`$. Thus a nonzero moment cannot be hidden entirely below $`2d`$ while the $`d`$-channel cancels. This is a finite-family obstruction only. It constructs no cancelling family, says nothing about simultaneous channels or residual size, and does not by itself address the cofinal non-unit-carry input for Problem #68.
 
 Let $`\lambda`$ be a finitely supported integer vector on indices $`n\ge2`$, let $`M=M(\lambda)`$ be its factorial moment, and let $`V_{d}(\lambda)`$ be the $`d`$-th channel numerator. The kernel checks two facts about them.
 
@@ -239,7 +239,7 @@ Consequently, for sequences $`M(t),R(t)`$ satisfying the same three hypotheses f
 
 </div>
 
-The proof is finite. It takes the final block of $`2t`$ factorial gaps below $`D=2t^2`$, bounds their product by $`L_D`$ times an explicit power of $`D`$, and counts the loss from pairwise gcds by the cubic exponent $`\binom{2t+1}{3}`$. A Stirling estimate then converts the factorial upper bound on $`M`$ into the displayed lower bound for $`R`$. The pointwise statement is checked at [the sharp radius theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1084), and its sequence form at [the eventual no-go theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1103). A coarser checked form says that $`R(t)+1`$ cannot be $`o(t^3)`$ under the corresponding hypotheses from $`t\ge4096`$ onward [the little-o obstruction](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L905).
+The proof is finite. It takes the final block of $`2t`$ factorial gaps below $`D=2t^2`$, bounds their product by $`L_D`$ times an explicit power of $`D`$, and counts the loss from pairwise gcds by the cubic exponent $`\binom{2t+1}{3}`$. A Stirling estimate then converts the factorial upper bound on $`M`$ into the displayed lower bound for $`R`$. The pointwise statement is checked at [the sharp radius theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1084), and its sequence form at [the eventual no-go theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1103). A coarser checked form says that $`R(t)+1`$ cannot be $`o(t^3)`$ under the corresponding hypotheses from $`t\ge4096`$ onward [the little-o obstruction](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L905).
 
 The theorem does not show that a kernel attached to the factorial-gap series has vanishing channels through $`2t^2`$, nor does it construct the positive moment $`M`$ and radius $`R`$ with the stated factorial inequality. It therefore restricts any such channel construction but does not supply the missing cofinal non-unit carries.
 
@@ -359,13 +359,13 @@ Cancelling the common positive normalizer therefore reduces the complete window 
 ```
 the universal numerator bound for a reduced strict-successor gap.
 
-The four load-bearing formal statements are the [positive-offset window](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L148), [denominator telescope](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L215), [window-denominator identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L243), and [unit-pair offset factorization](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L337). They do not disprove adjacent unit carries. They prove that a surviving-prime, prime-power, or quotient-gcd obstruction obtained only after imposing the pair is circular: it rewrites a bound that every reduced positive fraction already satisfies. A successful cofinal argument must constrain the raw predecessor state before the pair assumption, for example through independent prefix arithmetic or an Archimedean non-concentration estimate.
+The four load-bearing formal statements are the [positive-offset window](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L148), [denominator telescope](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L215), [window-denominator identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L243), and [unit-pair offset factorization](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L337). They do not disprove adjacent unit carries. They prove that a surviving-prime, prime-power, or quotient-gcd obstruction obtained only after imposing the pair is circular: it rewrites a bound that every reduced positive fraction already satisfies. A successful cofinal argument must constrain the raw predecessor state before the pair assumption, for example through independent prefix arithmetic or an Archimedean non-concentration estimate.
 
 At $`m=60`$ the recurrence also proves $`b_{60}\ne1`$, and hence $`q\ge60`$. Since $`67`$ is prime, the prime-miss theorem applied at $`67`$ gives the stronger checked bound
 ``` math
 S=\frac aq,\ q>0 \quad\Longrightarrow\quad q\ge67.
 ```
-The two formal declarations behind this finite bound make its hypotheses explicit. The generic theorem [single non-unit carry bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L876) assumes $`m\ge3`$, an exact carry miss at that index, a positive denominator, and the displayed rational representation, then concludes $`m\le q`$. The source-level specialization [index-$`67`$ denominator bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L940) supplies the prime-index miss used above. These are finite implications: they do not manufacture misses at arbitrarily large indices, and they do not turn the separately checked $`300000`$-cell GMP computation into a Lean evaluation or a cofinal theorem.
+The two formal declarations behind this finite bound make its hypotheses explicit. The generic theorem [single non-unit carry bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L876) assumes $`m\ge3`$, an exact carry miss at that index, a positive denominator, and the displayed rational representation, then concludes $`m\le q`$. The source-level specialization [index-$`67`$ denominator bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L940) supplies the prime-index miss used above. These are finite implications: they do not manufacture misses at arbitrarily large indices, and they do not turn the separately checked $`300000`$-cell GMP computation into a Lean evaluation or a cofinal theorem.
 
 There is a second, more arithmetic mechanism at doubled prime indices. For every odd prime $`p`$, the kernel now specializes the strict-successor prime-power criterion to the literal prefixes:
 ``` math
@@ -916,95 +916,95 @@ The converse direction of the digit–rationality equivalence, the weighted prim
 
 The public `ErdosProblems.Erdos68` package contains the checked source for this note. The pinned snapshot contains fifteen cited modules: `AdjacentUnitCarryWindow`, `CanonicalFactorialDigits`, `ChannelBreakpointRigidity`, `ChannelIntegralCongruence`, `DivisorFactorialCentre`, `EndpointWeightedPrivateSupport`, `FactorialCarry`, `FactorialChannelCertificate`, `FactorialZeroPlateau`, `FiniteDefectAutomaton`, `GapScalarNormalForm`, `PrimeThresholdParity`, `PrimeUnitTranslator`, `PrimeZeroBranch`, and `StrictSuccessorArithmetic`. Only these public modules belong to the manuscript source surface; no private auxiliary digit-rigidity file is cited or projected. The public root imports every cited module. The declaration table below is pinned to the shared formal-source commit used throughout this problem-note series.
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L148)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L148)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L215)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L215)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L243)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L243)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L337)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L337)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L876)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L876)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L940)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L940)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L1090)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L1090)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L953)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L953)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L6099)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L6099)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4766)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4766)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/PrimeUnitTranslator.lean#L1559)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/PrimeUnitTranslator.lean#L1559)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L34)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L34)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L39)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L39)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L44)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L44)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L49)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L49)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L80)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L80)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L88)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L88)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L102)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L102)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L129)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L129)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L146)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L146)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L170)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L170)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L179)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L179)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L188)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L188)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L25)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L25)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L39)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L39)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L43)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L43)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L51)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L51)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L55)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L55)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L59)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L59)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L65)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L65)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L101)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L101)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L105)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L105)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L109)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L109)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L112)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L112)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L119)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L119)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L126)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L126)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L133)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L133)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L140)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L140)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L151)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L151)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L156)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L156)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L868)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L868)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L885)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L885)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L905)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L905)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1084)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1084)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1103)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1103)
 
 <a id="source-current-companion-orbit-and-comparator-routes."></a>
 

@@ -9,12 +9,20 @@ problem. A corrected proof step, a counterexample, a failed route with a reason
 another person can check, a clearer boundary, or a repaired public check can
 all save future work.
 
-This contributor path is still a prototype. As of 31 August 2026, the author
-had not recorded a completed external cold-clone run or an accepted outside
-contribution. Reports about setup friction, unclear instructions, broken links,
-agent-skill portability, unsafe defaults, or unnecessary steps are therefore
-substantive architecture contributions rather than housekeeping beneath the
-project's notice.
+If you want to help but do not yet have a target, begin with the pinned
+[eight-frontier issue](https://github.com/wcook04/plectis-lean-erdos249-257/issues/105).
+It links each problem paper and lists useful contributions beyond complete
+proofs.
+
+Participation is governed by the [code of conduct](CODE_OF_CONDUCT.md). Direct
+criticism of a proof, claim, experiment, or repository decision is welcome;
+harassment and attacks on contributors are not.
+
+Treat this contributor path as a prototype until an independent cold-clone run
+and an accepted outside contribution are recorded publicly. Reports about setup
+friction, unclear instructions, broken links, agent-skill portability, unsafe
+defaults, or unnecessary steps are substantive architecture contributions, not
+housekeeping beneath the project's notice.
 
 A cold reader is part of the validation surface. The cold-clone comprehension
 program runs as a combined baseline-plus-adversarial release-gate check: it
@@ -32,7 +40,7 @@ There are two first-class tracks:
    contributor experience.
 
 You can contribute an architecture idea before you have code. Use the
-[architecture proposal form](.github/ISSUE_TEMPLATE/architecture_proposal.yml)
+[architecture proposal form](https://github.com/wcook04/plectis-lean-erdos249-257/issues/new?template=architecture_proposal.yml)
 or read the [architecture contribution path](docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
 If an idea is adopted, the accepting change preserves the originator's credit
 in a tracked artifact and accepted receipt.
@@ -40,17 +48,18 @@ in a tracked artifact and accepted receipt.
 The ordinary contribution path is enough: fork or clone the repository, make
 a focused change, and open a pull request. Explain the question you started
 from, what you changed or learned, what another person can inspect, and what
-remains unresolved. If you have an observation but no finished patch, open a
-plain-language research-progress issue and write it in your own words. You do
-not need to learn the receipt format before telling us something useful.
+remains unresolved. If you have an observation but no finished patch, open the
+[plain-language research-progress form](https://github.com/wcook04/plectis-lean-erdos249-257/issues/new?template=research_progress.yml)
+and write it in your own words. You do not need to learn the receipt format
+before telling us something useful.
 
 For compute contributions, begin with a bounded route exposed by the papers,
 claim registry, or agent entry. The present routes are authored in the public
 corpus and should name the question, evidence class, and stopping condition;
-qualified external mathematical review is not claimed for every route. You may run them through Claude Code,
-Codex, Cursor, Antigravity, another agent harness, ordinary scripts, or your own
-reasoning. The runner is your choice; the returned evidence boundary is the
-shared contract.
+qualified external mathematical review is not claimed for every route. You may
+run them through Claude Code, Codex, Cursor, Antigravity, another agent harness,
+ordinary scripts, or your own reasoning. The runner is your choice; the
+returned evidence boundary is the shared contract.
 
 If an agent reports a solution, submit the source and evidence as a
 **candidate**, not as an established solution. Maintainers first replay it and

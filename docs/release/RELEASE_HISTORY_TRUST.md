@@ -97,10 +97,16 @@ the current-tree disposition is link-only. Secret-like matches are represented
 only by object IDs, paths, counts, and redacted SHA-256 fingerprints; payloads
 are never printed into logs or public artifacts.
 
-The cross-surface release checker, `python3 scripts/check_release.py`, invokes
-this same `--release-gate` command as a required child check. A passing
-top-level checker therefore requires current history evidence and a
-release-safe history decision; it cannot waive a red reachable-history result.
+The cross-surface release checker, `python3 scripts/check_release.py`, does
+not invoke this gate; the reachable-history workflow is the surface that
+consumes it, and a red result there is a release finding in its own right
+rather than something the top-level checker can waive or has already covered.
+
+The evidence comparison is clone-shape invariant: each branch name is compared
+once whether it is seen as a local head or as origin's remote-tracking ref,
+every tag is compared by the commit it peels to, and pull-request merge refs
+and the symbolic origin HEAD are excluded from the comparison because no
+reader can clone them. All of them are still scanned.
 
 ## Future-ingress enforcement
 

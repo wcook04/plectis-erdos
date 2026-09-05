@@ -1,18 +1,27 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-"""Focused tests for the bounded public corpus query surface."""
+"""Focused tests for the bounded public corpus query surface.
+
+Functional cases reuse one imported CLI parser so exhaustive projections are
+loaded once. Explicit subprocess cases below retain the installed-script,
+working-directory, and process-output boundaries.
+"""
 
 from __future__ import annotations
 
-import json
+import contextlib
 import copy
+import io
+import json
 import re
 import subprocess
 import sys
+from collections.abc import Callable
 from pathlib import Path
 
 import query_corpus
+import query_semantic
 from query_corpus import (
     agent_tour_packet,
     all_entrypoints,
@@ -36,6 +45,7 @@ from check_problem_note_sources import (
     note_pinned_commit,
     pinned_commit as corpus_pinned_commit,
     snapshot_lines,
+    snapshot_lines_batch,
 )
 from refresh_source_coordinates import PAPERS as LIVE_COORDINATE_PAPERS
 
@@ -103,35 +113,55 @@ PROGRAMME_EXPECTATIONS = {
 }
 
 
-def query(*args: str) -> dict[str, object]:
-    completed = subprocess.run(
-        [sys.executable, str(SCRIPT), *args],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=True,
+def invoke_main(
+    main: Callable[[], int],
+    script: Path,
+    args: tuple[str, ...],
+) -> subprocess.CompletedProcess[str]:
+    """Exercise one CLI parser while retaining immutable projection caches."""
+    stdout = io.StringIO()
+    stderr = io.StringIO()
+    previous_argv = sys.argv
+    try:
+        sys.argv = [str(script), *args]
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            try:
+                returncode = main()
+            except SystemExit as exc:
+                returncode = exc.code if isinstance(exc.code, int) else 1
+    finally:
+        sys.argv = previous_argv
+    return subprocess.CompletedProcess(
+        [sys.executable, str(script), *args],
+        returncode,
+        stdout.getvalue(),
+        stderr.getvalue(),
     )
+
+
+def query(*args: str) -> dict[str, object]:
+    completed = invoke_main(query_corpus.main, SCRIPT, args)
+    completed.check_returncode()
     return json.loads(completed.stdout)
 
 
+def validate_in_process_query_dispatch() -> None:
+    """The validator seam must preserve the public CLI packet and format."""
+    args = ("--claim", "denominator_exclusion")
+    packet, output_format = query_corpus.query_args_packet(args)
+    completed = invoke_main(query_corpus.main, SCRIPT, args)
+    completed.check_returncode()
+    assert output_format == "json"
+    assert packet == json.loads(completed.stdout)
+
+
 def run(*args: str) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
-        [sys.executable, str(SCRIPT), *args],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    return invoke_main(query_corpus.main, SCRIPT, args)
 
 
 def semantic_query(*args: str) -> dict[str, object]:
-    completed = subprocess.run(
-        [sys.executable, str(SEMANTIC_SCRIPT), *args],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=True,
-    )
+    completed = invoke_main(query_semantic.main, SEMANTIC_SCRIPT, args)
+    completed.check_returncode()
     return json.loads(completed.stdout)
 
 
@@ -433,6 +463,25 @@ def validate_research_corpus_fingerprint() -> None:
         raise AssertionError("research corpus digest mutation escaped")
 
 
+def validate_lean_code_projection() -> None:
+    """The delimiter-jump lexer must retain exact source coordinates."""
+    source = (
+        'namespace Visible -- namespace Hidden\n'
+        '/- outer\n/- nested -/\nnamespace AlsoHidden\n-/\n'
+        'def quoted := "namespace StringHidden \\" still hidden"\n'
+        'namespace Final\n'
+    )
+    projected = query_corpus.lean_code_projection(source)
+    assert len(projected) == len(source)
+    assert [index for index, char in enumerate(projected) if char == "\n"] == [
+        index for index, char in enumerate(source) if char == "\n"
+    ]
+    assert "namespace Visible" in projected
+    assert "namespace Final" in projected
+    assert "Hidden" not in projected
+    assert "StringHidden" not in projected
+
+
 def validate_agent_tour() -> None:
     packet = agent_tour_packet()
     assert packet["kind"] == "agent_corpus_tour"
@@ -676,6 +725,82 @@ def validate_paper_guide() -> None:
     ]
 
 
+def validate_indexed_declaration_search_equivalence() -> None:
+    """The folded prefilter must preserve ranking on a stable atlas sample."""
+    prepared_rows = query_corpus.declaration_search_rows()
+    sampled_by_id = {
+        prepared[0]["id"]: prepared
+        for prepared in (
+            *prepared_rows[:256],
+            *prepared_rows[::509],
+            prepared_rows[-1],
+        )
+    }
+    assert len(sampled_by_id) >= 550
+    for (
+        _row,
+        primary,
+        haystack,
+        _primary_folded,
+        _haystack_folded,
+    ) in sampled_by_id.values():
+        assert query_corpus.fast_declaration_search_terms(primary) == frozenset(
+            query_corpus.search_terms(primary)
+        )
+        assert query_corpus.fast_declaration_search_terms(haystack) == frozenset(
+            query_corpus.search_terms(haystack)
+        )
+    for phrase in (
+        "denominator obstruction",
+        "divisibility certificate",
+        "BooleanMobiusSkipRowCofinal",
+        "prefix whole phrase",
+        "solving the open problem",
+        "unknown mathematical phrase",
+    ):
+        expected = {}
+        for prepared in sampled_by_id.values():
+            row, primary, haystack, primary_folded, haystack_folded = prepared
+            rank = query_corpus.search_rank(
+                phrase,
+                primary,
+                haystack,
+                primary_folded=primary_folded,
+                haystack_folded=haystack_folded,
+            )
+            if rank is not None:
+                expected[row["id"]] = rank
+        all_actual = {
+            row["id"]: rank
+            for rank, row in query_corpus.ranked_declaration_search_rows(phrase, {})
+        }
+        actual = {
+            row_id: all_actual[row_id]
+            for row_id in sampled_by_id
+            if row_id in all_actual
+        }
+        assert actual == expected
+
+
+def validate_bounded_declaration_search_materialization() -> None:
+    """Broad search must not decorate every declaration it later discards."""
+    original = query_corpus.compact_declaration
+    compacted: list[str] = []
+
+    def counted(row: dict[str, object]) -> dict[str, object]:
+        compacted.append(str(row["id"]))
+        return original(row)
+
+    query_corpus.compact_declaration = counted
+    try:
+        packet = query_corpus.search_packet("totient", 3)
+    finally:
+        query_corpus.compact_declaration = original
+    assert 0 < len(compacted) <= 3
+    assert packet["match_count"] > len(compacted)
+    assert packet["omitted_match_count"] == packet["match_count"] - 3
+
+
 def validate_natural_language_search() -> None:
     assert query_corpus.search_rank("exact_id", "exact_id", "body") == 0
     assert query_corpus.search_rank("exact", "exact_id", "body") == 1
@@ -743,6 +868,67 @@ def validate_natural_language_search() -> None:
         "| requested=#300 | out_of_scope=#300 "
     )
     assert "claim_effect=none" in boundary_card.stdout
+
+    problem_question = "What failed on Erdős 1041 and what remains open?"
+    problem_bound = query("--ask", problem_question, "--format", "json")
+    assert problem_bound["kind"] == "semantic_slice"
+    problem_cells = problem_bound["semantic_cells"]
+    assert [(row["kind"], row["handle"]) for row in problem_cells] == [
+        ("reading_route", "erdos_1041"),
+        ("open_proposition", "remaining_open.erdos_1041_lemniscate_connection"),
+    ]
+    assert all(
+        row["selection_reason"] == "explicit_problem_number_route"
+        for row in problem_cells
+    )
+    assert problem_bound["query_interpretation"]["problem_constraint"] == {
+        "erdos_number": 1041,
+        "route_id": "erdos_1041",
+        "authority_command": (
+            "python3 scripts/query_corpus.py --route erdos_1041"
+        ),
+        "selection_policy": (
+            "explicit_number_excludes_other_problem_results_routes_and_open_records"
+        ),
+    }
+    problem_route_cell = problem_cells[0]
+    assert problem_route_cell["content"]["route"]["id"] == "erdos_1041"
+    assert problem_route_cell["content"]["route"]["erdos_number"] == 1041
+    assert problem_route_cell["content"]["canonical_problem_route"] == (
+        "python3 scripts/query_corpus.py --route erdos_1041"
+    )
+    assert problem_route_cell["content"]["mathematical_signal_spine"][
+        "problem"
+    ] == 1041
+    assert [
+        row["id"]
+        for row in problem_bound["operator_synthesis"]["exact_open_records"]
+    ] == ["remaining_open.erdos_1041_lemniscate_connection"]
+    problem_bound_text = json.dumps(problem_bound, ensure_ascii=False)
+    assert "remaining_open.unbounded_certificate_supply" not in problem_bound_text
+    assert "transport_curvature_programme" not in problem_bound_text
+
+    lay_overview = query(
+        "--ask", "Explain this project to a non-specialist", "--format", "json"
+    )
+    assert lay_overview["kind"] == "repository_overview"
+    assert lay_overview["reader_entry"] == {
+        "human_entry": "HUMAN_ENTRY.md",
+        "instant_orientation": (
+            "python3 scripts/query_corpus.py --route instant_orientation"
+        ),
+        "boundary": (
+            "The human entry explains in ordinary language and the route "
+            "supplies bounded navigation; neither is proof authority."
+        ),
+    }
+    assert lay_overview["query_interpretation"]["routed_by"] == (
+        "ordinary_cold_reader_phrase"
+    )
+    assert "ErdosProblems.Hlow.verify.V1" not in json.dumps(
+        lay_overview, ensure_ascii=False
+    )
+
     dictionary = query("--vocabulary")
     assert dictionary["problem_registry_contract"]["source"] == "docs/problems.json"
     assert len(dictionary["problem_registry_contract"]["problems"]) == 8
@@ -796,6 +982,16 @@ def validate_natural_language_search() -> None:
         natural_search = query("--search", search_text, "--limit", "10")
         assert natural_search["results"][0]["kind"] == "reading_route"
         assert natural_search["results"][0]["id"] == route_id
+    geometry_search = query(
+        "--search",
+        "what Stern Brocot or continued fraction geometry is proved",
+        "--limit",
+        "10",
+    )
+    assert geometry_search["routing_receipt"] == {
+        "selection": "controlled_vocabulary_route",
+        "declaration_scan_required": False,
+    }
 
     capability_question = (
         "What can I search in this mathematical corpus and how do I traverse "
@@ -897,7 +1093,16 @@ def validate_natural_language_search() -> None:
     )
     assert portfolio_search["results"][0]["kind"] == "reading_route"
     assert portfolio_search["results"][0]["id"] == "instant_orientation"
-    ruled_out = query("--search", "what is ruled out", "--limit", "10")
+    original_declaration_search = query_corpus.ranked_declaration_search_rows
+    query_corpus.ranked_declaration_search_rows = (
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            AssertionError("controlled multi-route query must not build declaration index")
+        )
+    )
+    try:
+        ruled_out = query("--search", "what is ruled out", "--limit", "10")
+    finally:
+        query_corpus.ranked_declaration_search_rows = original_declaration_search
     assert {
         row["id"]
         for row in ruled_out["results"]
@@ -906,6 +1111,10 @@ def validate_natural_language_search() -> None:
         "transport_curvature_programme",
         "lambert_obstruction_interfaces",
         "arithmetic_obstruction_interfaces",
+    }
+    assert ruled_out["routing_receipt"] == {
+        "selection": "exact_authored_multi_route_term",
+        "declaration_scan_required": False,
     }
     for row in ruled_out["results"]:
         if (
@@ -1251,6 +1460,9 @@ def validate_connection_query_ranking() -> None:
 
 def validate_paper_semantic_citation_aliases() -> None:
     """Qualified authored roles must resolve ordinary source-level paper links."""
+    corpus = query_semantic.load()
+    role_index = query_semantic.paper_citation_role_index(corpus)
+    assert query_semantic.paper_citation_role_index(corpus) is role_index
     packet = semantic_query(
         "paper-coverage",
         "--paper",
@@ -1757,11 +1969,15 @@ def validate_module_synopsis_owner_adoption() -> None:
 
 
 def main() -> int:
+    validate_in_process_query_dispatch()
     validate_programme_routes()
     validate_indexed_problem_routes()
     validate_research_corpus_fingerprint()
+    validate_lean_code_projection()
     validate_agent_tour()
     validate_paper_guide()
+    validate_indexed_declaration_search_equivalence()
+    validate_bounded_declaration_search_materialization()
     validate_natural_language_search()
     validate_indexed_declaration_lookup()
     validate_route_memory_cards()
@@ -2736,10 +2952,14 @@ def main() -> int:
     aliases = json.loads((ROOT / "paper" / "module-aliases.json").read_text(encoding="utf-8"))
     assert aliases["alias_count"] == len(aliases["aliases"])
     assert len({row["sigil"] for row in aliases["aliases"]}) == aliases["alias_count"]
+    # Exhaustive alias coverage belongs to the indexed resolver used by the
+    # packet builder. Building all downstream claim/paper joins 126 times made
+    # this one assertion dominate the release gate; representative full module
+    # packets above and below still exercise those joins through the same resolver.
     for row in aliases["aliases"]:
-        resolved = query("--module", row["sigil"], "--limit", "1")
-        assert resolved["module"]["path"] == row["path"]
-        assert resolved["paper_sigil"] == row["sigil"]
+        resolved, method = query_corpus.resolve_module_handle(row["sigil"])
+        assert resolved["path"] == row["path"]
+        assert method == "paper_sigil"
 
     exact_row_module = query(
         "--module", "BooleanMobiusSkipRowCofinal", "--limit", "12"
@@ -3339,10 +3559,25 @@ def main() -> int:
         "source link below would be treated as a pinned snapshot"
     )
     corpus_default_commit = corpus_pinned_commit()
+    anchors = paper_anchor_inventory()
     snapshot_cache: dict[tuple[str, str], list[str]] = {}
+    pinned_snapshot_requests = set()
+    for anchor in anchors:
+        paper_source = anchor["paper"]["source"]
+        if paper_source in live_coordinate_papers:
+            continue
+        note_commit = note_pinned_commit(
+            (ROOT / paper_source).read_text(encoding="utf-8"),
+            corpus_default_commit,
+        )
+        for link in anchor["source_links"]:
+            if link["declaration"]:
+                module, _, _line_text = link["source_ref"].rpartition(":")
+                pinned_snapshot_requests.add((note_commit, module))
+    snapshot_lines_batch(pinned_snapshot_requests, snapshot_cache)
     live_link_count = 0
     pinned_link_count = 0
-    for anchor in paper_anchor_inventory():
+    for anchor in anchors:
         paper_source = anchor["paper"]["source"]
         if paper_source in live_coordinate_papers:
             for link in anchor["source_links"]:

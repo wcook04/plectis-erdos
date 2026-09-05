@@ -55,7 +55,9 @@ changes this repository.
 ## Boundary
 
 Installing a skill installs instructions, not dependencies, models, credits,
-or mathematical authority. A harness may use a different skill convention; in
+or mathematical authority. It also does not make repository commands runnable
+from an unrelated directory: locate the intended Plectis Lean checkout and run
+the workflow from its root. A harness may use a different skill convention; in
 that case keep the workflows repo-local and point the agent at
 `AGENTS.override.md`. Never claim support for a provider that has not loaded
 and executed the installed skill.

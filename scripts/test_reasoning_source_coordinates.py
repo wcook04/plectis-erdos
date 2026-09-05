@@ -39,7 +39,30 @@ def run_git(root: Path, *args: str) -> str:
     return result.stdout.strip()
 
 
+def check_comment_projection() -> None:
+    source = (
+        'def visible := 1 -- def lineHidden := 2\n'
+        '/- outer /- nested -/ def blockHidden := 3 -/\n'
+        'def quoted := "/- string content stays -/"\n'
+        'def escaped := "quote: \\" -- still in string" -- hidden again\n'
+    )
+    projected = coordinates.strip_lean_comments(source)
+    require(len(projected) == len(source), "comment projection changed source offsets")
+    require(
+        [index for index, char in enumerate(projected) if char == "\n"]
+        == [index for index, char in enumerate(source) if char == "\n"],
+        "comment projection changed source lines",
+    )
+    require("def visible" in projected, "comment projection removed Lean code")
+    require("lineHidden" not in projected, "line-comment content survived")
+    require("blockHidden" not in projected, "nested block-comment content survived")
+    require("string content stays" in projected, "string content was treated as a comment")
+    require("still in string" in projected, "escaped quote ended a string early")
+    require("hidden again" not in projected, "comment after escaped string survived")
+
+
 def main() -> int:
+    check_comment_projection()
     with tempfile.TemporaryDirectory(prefix="reasoning-coordinate-test-") as temporary:
         root = Path(temporary)
         run_git(root, "init", "--quiet")
@@ -91,10 +114,19 @@ def main() -> int:
                 "GIT_REPLACE_REF_BASE": "refs/replacements/wrong",
                 "PYTHONPATH": "/private/wrong-python-path",
             }
-            with patch.dict(os.environ, hostile_environment, clear=False):
-                rendered, declarations, authored_locations, resolved_pin = (
-                    coordinates.render_all()
-                )
+            original_subprocess_run = subprocess.run
+            with patch.dict(os.environ, hostile_environment, clear=False), patch.object(
+                coordinates.subprocess,
+                "run",
+                wraps=original_subprocess_run,
+            ) as run_child:
+                rendered, declarations, authored_locations, resolved_pin = coordinates.render_all()
+            batch_calls = [
+                call
+                for call in run_child.call_args_list
+                if call.args and call.args[0] == ["git", "cat-file", "--batch"]
+            ]
+            require(len(batch_calls) == 1, "pinned sources were not fetched in one Git batch")
             require(resolved_pin == pin, "pinned source commit drifted")
             require(declarations == 1, "unexpected declaration count")
             require(authored_locations == 2, "unexpected authored location count")

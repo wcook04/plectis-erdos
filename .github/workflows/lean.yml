@@ -83,6 +83,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0
+          filter: blob:none # retain history without eagerly transferring obsolete large blobs
           persist-credentials: false
       - name: Detect an exact Erdős 1041 research-corpus publication
         id: scope
@@ -116,6 +117,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0 # change gate compares the complete PR or push range
+          filter: blob:none # retain history without eagerly transferring obsolete large blobs
           persist-credentials: false
       - name: Install the pinned Python runtime
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -224,47 +226,54 @@ jobs:
           lake exe cache get
       - name: Memory-bounded Lean build
         if: steps.lean-inputs.outputs.changed == 'true'
-        # Drain independent Lucas modules without Lake's unbounded ready-set
-        # fan-out. Lake's own trace hashes validate restored project outputs;
-        # final serialized Lake checks remain the proof-authority check.
-        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness
-      - name: Build the problem-centric library
-        if: steps.lean-inputs.outputs.changed == 'true'
-        # This is already a default root. Keep an explicit warm authority check
-        # so the problem-centric root has its own CI receipt after the bounded
-        # planner; restored Lake traces make the repeated check cheap.
-        run: lake build ErdosProblems
-      - name: Build downstream consumer example
-        if: steps.lean-inputs.outputs.changed == 'true'
-        run: lake build Examples
-      - name: Build foreign-corpus statement adapters
-        if: steps.lean-inputs.outputs.changed == 'true'
-        # These restate another corpus's propositions verbatim and derive them
-        # from this library, so an external `formal_proof` link points at them.
-        # They are not a default target, so without an explicit build a change
-        # here would break the link target silently.
-        run: lake build FormalConjecturesAdapter
-      - name: Build foreign-corpus variant candidates
-        if: steps.lean-inputs.outputs.changed == 'true'
-        # Named separately rather than left to the line above: the library and
-        # one of its modules share the name `FormalConjecturesAdapter`, so that
-        # target resolves to the module and would build this file only by
-        # accident. These are the statements offered upstream as new
-        # `variants.*` declarations, and each is a `formal_proof` link target.
-        run: lake build FormalConjecturesVariants
-      - name: Build residual-evaluation fixtures
-        if: steps.lean-inputs.outputs.changed == 'true'
-        # Ground truth for `scripts/residual_evaluator.py`.  Also not a default
-        # target: without an explicit build, the evaluator would start reporting
-        # that it could not decide anything, and the cause would look like a
-        # tactic-budget limit rather than a missing module.
-        run: lake build ResidualBench
+        # One wrapper owner drains the two public roots plus every supported
+        # non-default consumer. It prebuilds with bounded fan-out.
+        # The final serialized Lake checks remain the proof-authority check.
+        # Raw follow-up builds would duplicate work outside the shared
+        # validation key, so every supported target is named here instead.
+        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants ResidualBench
+      # actions/cache saves only when the job succeeds. A build that compiles
+      # the whole tree and then fails the dependency-index check below threw
+      # away the compiled oleans, so every rerun paid a cold build again.
+      # Save the compiled tree as soon as the build step finishes, whatever
+      # the later evidence checks decide.
+      - name: Save project Lean cache after the build
+        if: always() && steps.lean-inputs.outputs.changed == 'true'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake
+          key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
       - name: Verify elaborated dependency index
+        id: dependency-index
         if: steps.lean-inputs.outputs.changed == 'true'
-        # The first changed environment performs the full export and writes an
-        # exact receipt into .lake. An exact cache restore reuses that receipt;
-        # changed formal/exporter inputs force a fresh export.
-        run: python3 scripts/build_lean_dependency_index.py --check
+        # The coordinated build above is the sole compilation owner. This
+        # explicit full check exports that already-built environment and writes
+        # its exact receipt into .lake; plain --check is always noncompiling.
+        continue-on-error: true
+        run: python3 scripts/build_lean_dependency_index.py --check --full-check
+      # The tracked index can only be refreshed from an elaborated environment,
+      # which is exactly what this job has just built. When the check finds the
+      # tracked index stale, export the fresh one and publish it as a run
+      # artifact so the operator can land it without a local full build. The
+      # job still fails below: the artifact is evidence for a commit, not a
+      # waiver of the check.
+      - name: Export the fresh dependency index for the operator
+        if: steps.dependency-index.outcome == 'failure'
+        run: python3 scripts/build_lean_dependency_index.py
+      - name: Upload the fresh dependency index
+        if: steps.dependency-index.outcome == 'failure'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lean-dependency-index-${{ github.sha }}
+          path: |
+            docs/lean_dependency_index.json
+            docs/lean_dependency_index_check.json
+          if-no-files-found: error
+      - name: Fail on a stale dependency index
+        if: steps.dependency-index.outcome == 'failure'
+        run: |
+          echo "the tracked dependency index is stale; download artifact lean-dependency-index-${{ github.sha }} and commit it" >&2
+          exit 1
       - name: Record documentation-only build skip
         if: steps.lean-inputs.outputs.changed != 'true'
         run: echo "No Lean source or proof-environment input changed; compilation is unchanged."
@@ -285,6 +294,7 @@ jobs:
           # bind them to the contributor-visible head commit instead.
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
+          filter: blob:none # retain history without eagerly transferring obsolete large blobs
           persist-credentials: false
       - name: Detect external-verification inputs
         id: external-inputs
@@ -490,6 +500,15 @@ jobs:
       # into an actual gate.  The empty-output assertion is the load-bearing
       # one: without it, any future change that stops producing audit lines
       # would silently pass both grep checks.
+      # The two Comparator packets above build ExternalVerification and
+      # ExternalVerification1049 as a side effect of checking them.  Nothing
+      # checks ExternalVerification1041SolvedFamilies against a challenge, so
+      # nothing built it, and `lake env lean` on its audit file failed with
+      # "unknown module prefix" on every run since the library was published.
+      # Build it explicitly so the audit below elaborates against real oleans.
+      - name: Build the audited solved-families library
+        if: steps.external-inputs.outputs.changed == 'true'
+        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness ExternalVerification1041SolvedFamilies.Solution
       - name: Post-verification axiom audit (gated)
         if: steps.external-inputs.outputs.changed == 'true'
         run: |
@@ -547,6 +566,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0 # the pinned-history gates resolve the formal-source commit
+          filter: blob:none # retain history without eagerly transferring obsolete large blobs
           persist-credentials: false
       - name: Report the interpreter a reader would actually use
         run: python3 -VV
@@ -610,6 +630,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0 # corpus descriptor resolves the pinned proof-source tag
+          filter: blob:none # retain history without eagerly transferring obsolete large blobs
           persist-credentials: false
       - name: Check content-addressed Erdős 1041 research corpus
         run: python3 scripts/check_erdos1041_research_corpus.py
@@ -653,16 +674,11 @@ jobs:
       - name: Cross-surface release checks (proof trust, claims, projections)
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/check_release.py
-      # Most committed `check_*.py` gates are reached transitively: check_release
-      # subprocesses the problem-note, semantic-corpus, theory-lab, and rendered
-      # -paper checks, and test_check_release_ref imports the release-ref wrapper.
-      # The five below were reached by nothing, so only habit kept them current.
-      # check_cold_clone_comprehension is the one that stings: it is the gate
-      # that tests the published first-contact promise -- clone this, follow a
-      # claim -- and it was the least enforced check in the repository.
-      - name: Cold-clone comprehension (guards the published first-contact test)
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/check_cold_clone_comprehension.py
+      # Most committed `check_*.py` gates are reached transitively. In
+      # particular, check_release runs the combined cold-clone
+      # baseline-plus-adversarial program once; repeating the standalone
+      # baseline here added no authority. test_check_release_ref imports the
+      # release-ref wrapper, while the distinct checks below remain explicit.
       - name: Test the claim-following verb reports drift
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_verify_claims.py
@@ -699,10 +715,11 @@ jobs:
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/check_markdown_table_render.py --fail-on overflow .
       # The freshness comparison above is only meaningful if a projection is a
-      # pure function of the committed tree.  This job checks `main` out as a
-      # local branch and a pull request out as a topic branch, so a builder that
-      # consults the refs a checkout carries renders differently in the two and
-      # fails one of them with no file having changed.
+      # pure function of the committed tree. This test exports HEAD without Git
+      # metadata, injects hostile ambient Git/Python settings, and requires every
+      # builder in the bounded probe to accept committed bytes without rewriting them.
+      # A builder that relies on checkout-local refs therefore fails regardless
+      # of whether this job started from `main` or a pull-request topic branch.
       - name: Test projections do not depend on the checkout shape
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_projection_checkout_independence.py

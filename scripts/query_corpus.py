@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import bisect
+import gzip
 import hashlib
 import json
 import re
@@ -28,6 +29,7 @@ from build_module_synopsis_index import (
 )
 
 ROOT = Path(__file__).resolve().parent.parent
+DECLARATION_SEARCH_INDEX = ROOT / "docs" / "declaration_search_index.json.gz"
 DEFAULT_LIMIT = 20
 MAX_LIMIT = 100
 MODULE_PACKET_LIMIT = 12
@@ -396,6 +398,22 @@ SEMANTIC_VOCABULARY = (
             "--route agent_native_corpus_navigation",
         ),
     },
+    {
+        "id": "continued_fraction_run_geometry",
+        "vocabulary_kind": "entity",
+        "pref_label": "Stern-Brocot and continued-fraction run geometry",
+        "alt_labels": (
+            "stern brocot",
+            "continued fraction geometry",
+            "continued fraction run geometry",
+        ),
+        "query_expansions": (
+            "stern brocot cylinder fibonacci continuant",
+        ),
+        "route_hints": (
+            "--route probabilistic_gcd_geometry",
+        ),
+    },
 )
 
 
@@ -412,56 +430,69 @@ def atlas_declarations(atlas: dict[str, Any]) -> list[dict[str, Any]]:
     ]
 
 
+_LEAN_PROJECTION_MARKER = re.compile(r'--|/-|-/|"|\\|\n')
+_LEAN_NON_NEWLINE_RUN = re.compile(r"[^\n]+")
+
+
+def _masked_lean_span(value: str) -> str:
+    """Blank a Lean lexical span without changing offsets or line numbers."""
+    return _LEAN_NON_NEWLINE_RUN.sub(lambda match: " " * len(match.group()), value)
+
+
 def lean_code_projection(text: str) -> str:
     """Replace Lean comments and strings with spaces while preserving lines."""
     projected: list[str] = []
     block_depth = 0
-    in_string = False
-    escaped = False
+    state = "code"
+    string_escaped = False
     cursor = 0
-    while cursor < len(text):
-        pair = text[cursor : cursor + 2]
-        char = text[cursor]
+    for match in _LEAN_PROJECTION_MARKER.finditer(text):
+        token = match.group()
+        gap = text[cursor : match.start()]
+        projected.append(
+            gap if state == "code" and not block_depth else _masked_lean_span(gap)
+        )
+
         if block_depth:
-            if pair == "/-":
-                projected.extend((" ", " "))
+            if token == "/-":
                 block_depth += 1
-                cursor += 2
-            elif pair == "-/":
-                projected.extend((" ", " "))
+            elif token == "-/":
                 block_depth -= 1
-                cursor += 2
-            else:
-                projected.append("\n" if char == "\n" else " ")
-                cursor += 1
-            continue
-        if in_string:
-            projected.append("\n" if char == "\n" else " ")
-            if escaped:
-                escaped = False
-            elif char == "\\":
-                escaped = True
-            elif char == '"':
-                in_string = False
-            cursor += 1
-            continue
-        if pair == "--":
-            while cursor < len(text) and text[cursor] != "\n":
-                projected.append(" ")
-                cursor += 1
-            continue
-        if pair == "/-":
-            projected.extend((" ", " "))
+            projected.append(_masked_lean_span(token))
+        elif state == "line_comment":
+            projected.append(_masked_lean_span(token))
+            if token == "\n":
+                state = "code"
+        elif state == "string":
+            projected.append(_masked_lean_span(token))
+            escaped_token = string_escaped and not gap
+            if string_escaped and gap:
+                string_escaped = False
+            if escaped_token:
+                string_escaped = False
+            elif token == "\\":
+                string_escaped = True
+            elif token == '"':
+                state = "code"
+                string_escaped = False
+        elif token == "--":
+            state = "line_comment"
+            projected.append("  ")
+        elif token == "/-":
             block_depth = 1
-            cursor += 2
-            continue
-        if char == '"':
+            projected.append("  ")
+        elif token == '"':
+            state = "string"
+            string_escaped = False
             projected.append(" ")
-            in_string = True
-            cursor += 1
-            continue
-        projected.append(char)
-        cursor += 1
+        else:
+            projected.append(token)
+        cursor = match.end()
+
+    tail = text[cursor:]
+    projected.append(
+        tail if state == "code" and not block_depth else _masked_lean_span(tail)
+    )
     return "".join(projected)
 
 
@@ -1088,19 +1119,22 @@ def formal_dependency_path(
 
 
 @lru_cache(maxsize=1)
-def declaration_row_indexes() -> dict[str, dict[str, Any]]:
+def declaration_row_indexes() -> dict[str, Any]:
     """Index atlas rows without eagerly resolving every Lean namespace."""
     atlas = load("docs/declaration_atlas.json")
     by_name: dict[str, list[dict[str, Any]]] = {}
     by_module: dict[str, list[dict[str, Any]]] = {}
+    by_source: dict[tuple[str, int, str], dict[str, Any]] = {}
     for row in atlas_declarations(atlas):
         by_name.setdefault(row["name"], []).append(row)
         by_module.setdefault(row["module"], []).append(row)
+        by_source[(row["module"], row["line"], row["name"])] = row
     for rows in by_module.values():
         rows.sort(key=lambda row: (row["line"], row["name"]))
     return {
         "by_name": by_name,
         "by_module": by_module,
+        "by_source": by_source,
     }
 
 
@@ -1248,7 +1282,9 @@ def formal_affordance_shape_matches(
 
 
 def formal_context_symbol_matches(
-    context_terms: set[str], affordance: dict[str, Any]
+    context_terms: set[str],
+    affordance: dict[str, Any],
+    binder_symbol_terms: frozenset[str] | set[str] | None = None,
 ) -> list[str]:
     """Match premise-language context against elaborated binder type symbols.
 
@@ -1257,18 +1293,19 @@ def formal_context_symbol_matches(
     symbols distinguish which of several conclusion-compatible theorems fits
     the premises the operator says are available.
     """
-    binder_symbols = {
-        symbol
-        for binder in affordance.get("binders", [])
-        for symbol in (
-            binder.get("type_head", ""),
-            *binder.get("type_symbols", []),
+    if binder_symbol_terms is None:
+        binder_symbols = {
+            symbol
+            for binder in affordance.get("binders", [])
+            for symbol in (
+                binder.get("type_head", ""),
+                *binder.get("type_symbols", []),
+            )
+            if symbol
+        }
+        binder_symbol_terms = set().union(
+            *(search_terms(symbol) for symbol in binder_symbols)
         )
-        if symbol
-    }
-    binder_symbol_terms = set().union(
-        *(search_terms(symbol) for symbol in binder_symbols)
-    )
     return sorted(
         context_term
         for context_term in context_terms
@@ -1284,6 +1321,79 @@ def formal_context_symbol_matches(
             for symbol_term in binder_symbol_terms
         )
     )
+
+
+@lru_cache(maxsize=1)
+def formal_goal_candidate_rows() -> tuple[
+    tuple[
+        str,
+        dict[str, Any],
+        dict[str, Any],
+        frozenset[str],
+        frozenset[str],
+        str,
+        frozenset[str],
+    ],
+    ...,
+]:
+    """Precompute immutable theorem features shared by goal-support queries."""
+    adjacency = lean_dependency_adjacency()
+    if adjacency is None:
+        return ()
+    declarations = declaration_row_indexes()["by_source"]
+    rows = []
+    theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
+    for handle, affordance in adjacency["formal_type_affordances"].items():
+        node = adjacency["nodes_by_handle"][handle]
+        declaration = declarations.get(
+            (node["module"], node["line"], node["name"])
+        )
+        if (
+            node["declaration_kind"] not in theorem_kinds
+            or declaration is None
+            or not declaration_externally_addressable(declaration)
+        ):
+            continue
+        symbol_terms = frozenset().union(
+            *(
+                search_terms(symbol)
+                for symbol in (
+                    affordance["conclusion_head"],
+                    *affordance["conclusion_symbols"],
+                )
+            )
+        )
+        statement_text = " ".join(
+            str(value)
+            for value in (
+                declaration.get("signature"),
+                declaration.get("docstring"),
+            )
+            if value
+        )
+        binder_symbols = {
+            symbol
+            for binder in affordance.get("binders", [])
+            for symbol in (
+                binder.get("type_head", ""),
+                *binder.get("type_symbols", []),
+            )
+            if symbol
+        }
+        rows.append(
+            (
+                handle,
+                declaration,
+                affordance,
+                symbol_terms,
+                frozenset(search_terms(statement_text)),
+                normalized_search_text(statement_text),
+                frozenset().union(
+                    *(search_terms(symbol) for symbol in binder_symbols)
+                ),
+            )
+        )
+    return tuple(rows)
 
 
 def formal_goal_support_packet(
@@ -1346,47 +1456,19 @@ def formal_goal_support_packet(
         normalized_search_text(request["context"]),
     )
     shape_cues = formal_goal_shape_cues(request["goal"])
-    declaration_rows = declaration_rows_by_qualified_name()
     ranked = []
-    for handle, affordance in adjacency[
-        "formal_type_affordances"
-    ].items():
-        node = adjacency["nodes_by_handle"][handle]
-        if node["declaration_kind"] not in {
-            "theorem",
-            "lemma",
-            "corollary",
-            "proposition",
-        }:
-            continue
-        declaration = declaration_rows.get(handle)
-        if (
-            declaration is None
-            or not declaration_externally_addressable(declaration)
-        ):
-            continue
-        symbol_terms = set().union(
-            *(
-                search_terms(symbol)
-                for symbol in (
-                    affordance["conclusion_head"],
-                    *affordance["conclusion_symbols"],
-                )
-            )
-        )
-        statement_text = " ".join(
-            str(value)
-            for value in (
-                declaration.get("signature"),
-                declaration.get("docstring"),
-            )
-            if value
-        )
-        statement_terms = search_terms(statement_text)
+    for (
+        handle,
+        declaration,
+        affordance,
+        symbol_terms,
+        statement_terms,
+        normalized_statement_text,
+        binder_symbol_terms,
+    ) in formal_goal_candidate_rows():
         context_phrase_match = bool(
             context_phrase
-            and context_phrase
-            in normalized_search_text(statement_text)
+            and context_phrase in normalized_statement_text
         )
         shape_matches = formal_affordance_shape_matches(
             shape_cues, affordance
@@ -1395,7 +1477,7 @@ def formal_goal_support_packet(
         goal_statement_matches = sorted(goal_terms & statement_terms)
         context_matches = sorted(context_terms & statement_terms)
         formal_context_matches = formal_context_symbol_matches(
-            context_terms, affordance
+            context_terms, affordance, binder_symbol_terms
         )
         if (
             not shape_matches
@@ -2936,6 +3018,7 @@ def paper_coordinate(label: str | None, index: dict[str, dict[str, Any]]) -> dic
     return coordinate
 
 
+@lru_cache(maxsize=512)
 def claim_packet(claim_id: str) -> dict[str, Any]:
     claims = load("docs/claims.json")
     claim_index = {row["id"]: row for row in claims["claims"]}
@@ -3036,6 +3119,7 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
     }
 
 
+@lru_cache(maxsize=2_048)
 def paper_anchor_packet(handle: str, kind: str = "paper_anchor") -> dict[str, Any]:
     matches = [
         row
@@ -3167,6 +3251,7 @@ def paper_label_packet(label: str) -> dict[str, Any]:
     return paper_anchor_packet(label, kind="paper_label")
 
 
+@lru_cache(maxsize=512)
 def open_proposition_packet(open_id: str) -> dict[str, Any]:
     claims = load("docs/claims.json")
     proposition = next(
@@ -3951,6 +4036,7 @@ def reviewed_result_family_module_routes(
     return routes
 
 
+@lru_cache(maxsize=4_096)
 def declaration_packet(name: str, limit: int) -> dict[str, Any]:
     matches = declaration_rows_for_handle(name)
     if not matches:
@@ -3971,6 +4057,7 @@ def declaration_packet(name: str, limit: int) -> dict[str, Any]:
     }
 
 
+@lru_cache(maxsize=4_096)
 def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     match = re.fullmatch(r"(.+\.lean):(\d+)", source_ref.strip())
     if match is None:
@@ -3986,7 +4073,7 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     module = next((row for row in atlas["modules"] if row["path"] == module_path), None)
     if module is None:
         raise KeyError(f"unknown Lean source module: {module_path}")
-    source_lines = (ROOT / module_path).read_text(encoding="utf-8").splitlines()
+    source_lines = cached_source_lines(module_path)
     if line > len(source_lines):
         raise ValueError(
             f"source coordinate line {line} exceeds {module_path} length {len(source_lines)}"
@@ -4071,6 +4158,13 @@ def declaration_externally_addressable(row: dict[str, Any]) -> bool:
     ) is None
 
 
+@lru_cache(maxsize=128)
+def cached_source_lines(module_path: str) -> tuple[str, ...]:
+    """Read a source once for repeated coordinate and declaration queries."""
+
+    return tuple((ROOT / module_path).read_text(encoding="utf-8").splitlines())
+
+
 def compact_declaration(row: dict[str, Any]) -> dict[str, Any]:
     return {
         "name": row["name"],
@@ -4143,6 +4237,58 @@ def module_roles(claims: dict[str, Any]) -> dict[str, str]:
     return roles
 
 
+@lru_cache(maxsize=1)
+def module_handle_indexes() -> dict[str, Any]:
+    """Index exact module, stem, and paper-sigil handles once per process."""
+    atlas = load("docs/declaration_atlas.json")
+    aliases = load("paper/module-aliases.json")["aliases"]
+    modules = atlas["modules"]
+    by_stem: dict[str, list[dict[str, Any]]] = {}
+    for row in modules:
+        by_stem.setdefault(Path(row["path"]).stem.casefold(), []).append(row)
+    return {
+        "by_id": {row["id"]: row for row in modules},
+        "by_path": {row["path"]: row for row in modules},
+        "by_stem": by_stem,
+        "alias_by_sigil": {row["sigil"].casefold(): row for row in aliases},
+        "alias_by_path": {row["path"]: row for row in aliases},
+    }
+
+
+def resolve_module_handle(handle: str) -> tuple[dict[str, Any], str]:
+    """Resolve one module handle without rebuilding a full module packet."""
+    requested_handle = handle
+    indexes = module_handle_indexes()
+    alias = indexes["alias_by_sigil"].get(handle.casefold())
+    resolution = "exact_module_handle"
+    if alias is not None:
+        handle = alias["path"]
+        resolution = "paper_sigil"
+    normalized = handle.replace(".", "/") + ".lean" if "/" not in handle else handle
+    normalized = normalized.removeprefix("./")
+    module = (
+        indexes["by_id"].get(handle)
+        or indexes["by_path"].get(handle)
+        or indexes["by_path"].get(normalized)
+    )
+    if module is None and alias is None:
+        stem_matches = indexes["by_stem"].get(
+            Path(handle).name.removesuffix(".lean").casefold(), []
+        )
+        if len(stem_matches) > 1:
+            candidates = ", ".join(row["path"] for row in stem_matches[:8])
+            raise KeyError(
+                f"ambiguous module shorthand: {requested_handle}; candidates: "
+                f"{candidates}"
+            )
+        if len(stem_matches) == 1:
+            module = stem_matches[0]
+            resolution = "unique_module_stem"
+    if module is None:
+        raise KeyError(f"unknown module handle: {handle}")
+    return module, resolution
+
+
 def compact_module(row: dict[str, Any], roles: dict[str, str]) -> dict[str, Any]:
     return {
         "id": row["id"],
@@ -4191,11 +4337,13 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
         if "/" not in resolved_handle and not resolved_handle.endswith(".lean")
         else resolved_handle
     ).removeprefix("./")
-    declaration_matches = [
-        row
-        for row in atlas_declarations(atlas)
-        if row["name"] == resolved_handle
-    ]
+    # Reuse the immutable atlas grouping owned by exact lookup. Building and
+    # sorting the 153k-row module map inside every connection card made four
+    # cards in the canonical corpus suite pay the same full scan four times.
+    declaration_indexes = declaration_row_indexes()
+    declaration_matches = list(
+        declaration_indexes["by_name"].get(resolved_handle, ())
+    )
     module = next(
         (
             row
@@ -4214,17 +4362,11 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
 
     roles = module_roles(claims)
     by_module = {row["id"]: row for row in atlas["modules"]}
-    declarations_by_path: dict[str, list[dict[str, Any]]] = {}
-    for row in atlas_declarations(atlas):
-        declarations_by_path.setdefault(row["module"], []).append(row)
-    for rows in declarations_by_path.values():
-        rows.sort(key=lambda row: (row["line"], row["name"]))
-
     source_path = ROOT / module["path"]
     source_text = source_path.read_text(encoding="utf-8")
     source_counts = identifier_counts(source_text)
     anchor_names = {row["name"] for row in declaration_matches}
-    module_declarations = declarations_by_path.get(module["path"], [])
+    module_declarations = declaration_indexes["by_module"].get(module["path"], [])
     declaration_relevance: dict[str, dict[str, Any]] = {}
     if query:
         query_terms = semantic_content_terms(query) or search_terms(query)
@@ -4319,7 +4461,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
         imported = by_module.get(imported_id)
         if imported is None:
             continue
-        rows = declarations_by_path.get(imported["path"], [])
+        rows = declaration_indexes["by_module"].get(imported["path"], [])
         used = [row for row in rows if source_counts.get(row["name"], 0) > 0]
         pool = used or rows
         propositions = [row for row in pool if row["kind"] in {"theorem", "lemma"}]
@@ -4357,7 +4499,9 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
     for importer in importer_rows[: min(6, limit)]:
         importer_path = ROOT / importer["path"]
         importer_lines = importer_path.read_text(encoding="utf-8").splitlines()
-        importer_declarations = declarations_by_path.get(importer["path"], [])
+        importer_declarations = declaration_indexes["by_module"].get(
+            importer["path"], []
+        )
         consumer_rows: list[tuple[dict[str, Any], list[str]]] = []
         for index, row in enumerate(importer_declarations):
             end = (
@@ -4489,41 +4633,8 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
     requested_handle = handle
     atlas = load("docs/declaration_atlas.json")
     claims = load("docs/claims.json")
-    aliases = load("paper/module-aliases.json")["aliases"]
-    alias = next((row for row in aliases if row["sigil"].casefold() == handle.casefold()), None)
-    resolution = "exact_module_handle"
-    if alias is not None:
-        handle = alias["path"]
-        resolution = "paper_sigil"
-    normalized = handle.replace(".", "/") + ".lean" if "/" not in handle else handle
-    normalized = normalized.removeprefix("./")
-    module = next(
-        (
-            row
-            for row in atlas["modules"]
-            if handle in (row["id"], row["path"]) or normalized == row["path"]
-        ),
-        None,
-    )
-    if module is None and alias is None:
-        requested_stem = Path(handle).name.removesuffix(".lean").casefold()
-        stem_matches = [
-            row
-            for row in atlas["modules"]
-            if Path(row["path"]).stem.casefold() == requested_stem
-        ]
-        if len(stem_matches) > 1:
-            candidates = ", ".join(row["path"] for row in stem_matches[:8])
-            raise KeyError(
-                f"ambiguous module shorthand: {requested_handle}; candidates: "
-                f"{candidates}"
-            )
-        if len(stem_matches) == 1:
-            module = stem_matches[0]
-            handle = module["path"]
-            resolution = "unique_module_stem"
-    if module is None:
-        raise KeyError(f"unknown module handle: {handle}")
+    module, resolution = resolve_module_handle(handle)
+    module_indexes = module_handle_indexes()
     roles = module_roles(claims)
     module_view = {
         **module,
@@ -4535,11 +4646,7 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
     }
     imported_rows = [row for row in atlas["modules"] if row["id"] in module["imports"]]
     importer_rows = [row for row in atlas["modules"] if module["id"] in row["imports"]]
-    declarations = [
-        row
-        for row in atlas_declarations(atlas)
-        if row["module"] == module["path"]
-    ]
+    declarations = declaration_row_indexes()["by_module"].get(module["path"], [])
     attached_claim_ids = sorted(
         {
             claim_id
@@ -4594,9 +4701,9 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
             "authority": "docs/declaration_atlas.json::modules",
         },
         "module": module_view,
-        "paper_sigil": next(
-            (row["sigil"] for row in aliases if row["path"] == module["path"]), None
-        ),
+        "paper_sigil": module_indexes["alias_by_path"].get(
+            module["path"], {}
+        ).get("sigil"),
         "attached_claims": claim_rows,
         "reviewed_result_families": reviewed_family_routes,
         "claim_family_routes": claim_family_routes,
@@ -4823,20 +4930,24 @@ SEARCH_TERM_ALIASES = {
     "solved": "resolution_status",
     "unresolved": "resolution_status",
 }
+SEARCH_CAMEL_BOUNDARY_RE = re.compile(r"(?<=[a-z0-9])(?=[A-Z])")
+SEARCH_NO_GO_RE = re.compile(r"\bno[\s-]+go\b")
+SEARCH_TOKEN_RE = re.compile(r"[a-z0-9]+")
 
 
 @lru_cache(maxsize=32_768)
 def search_terms(value: str) -> set[str]:
     """Return stable lexical terms for bounded natural-language fallback."""
     terms: set[str] = set()
-    value = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", value)
+    value = SEARCH_CAMEL_BOUNDARY_RE.sub(" ", value)
     folded = "".join(
         character
         for character in unicodedata.normalize("NFKD", value.casefold())
         if not unicodedata.combining(character)
     )
-    folded = re.sub(r"\bno[\s-]+go\b", " obstruction ", folded)
-    for token in re.findall(r"[a-z0-9]+", folded):
+    if "no" in folded:
+        folded = SEARCH_NO_GO_RE.sub(" obstruction ", folded)
+    for token in SEARCH_TOKEN_RE.findall(folded):
         if token in SEARCH_STOP_WORDS:
             continue
         if token.endswith("ing") and len(token) > 6:
@@ -4893,7 +5004,7 @@ def normalized_search_text(value: str) -> str:
         for character in unicodedata.normalize("NFKD", value.casefold())
         if not unicodedata.combining(character)
     )
-    return " ".join(re.findall(r"[a-z0-9]+", folded))
+    return " ".join(SEARCH_TOKEN_RE.findall(folded))
 
 
 def is_repository_overview_query(query: str) -> bool:
@@ -4910,6 +5021,7 @@ def is_repository_overview_query(query: str) -> bool:
         "lay of the land",
         "walk me through this codebase",
         "what are the interesting and non trivial results",
+        "explain this project",
         "explain this project to me",
         "what has been formalized",
         "comprehensive tour",
@@ -5167,7 +5279,10 @@ def semantic_query_operator(query: str) -> dict[str, Any]:
     query_terms = search_terms(query)
     if (
         "resolution_status" in query_terms
-        and query_terms & {"claim", "public", "release", "status"}
+        and (
+            query_terms & {"claim", "public", "release", "status"}
+            or explicit_erdos_problem_numbers(query)
+        )
     ) or (
         "what should i try next" in query_text
         or "what blocks" in query_text
@@ -5418,10 +5533,19 @@ def is_generic_claim_status_query(
     )
 
 
-def search_rank(query: str, primary: str, haystack: str) -> int | None:
+def search_rank(
+    query: str,
+    primary: str,
+    haystack: str,
+    *,
+    primary_folded: str | None = None,
+    haystack_folded: str | None = None,
+    primary_terms: frozenset[str] | set[str] | None = None,
+    haystack_terms: frozenset[str] | set[str] | None = None,
+) -> int | None:
     needle = query.casefold()
-    key = primary.casefold()
-    body = haystack.casefold()
+    key = primary_folded if primary_folded is not None else primary.casefold()
+    body = haystack_folded if haystack_folded is not None else haystack.casefold()
     if needle == key:
         return 0
     if key.startswith(needle):
@@ -5433,8 +5557,8 @@ def search_rank(query: str, primary: str, haystack: str) -> int | None:
     query_terms = semantic_content_terms(query)
     if not query_terms:
         return None
-    key_terms = search_terms(primary)
-    body_terms = search_terms(haystack)
+    key_terms = primary_terms if primary_terms is not None else search_terms(primary)
+    body_terms = haystack_terms if haystack_terms is not None else search_terms(haystack)
     if query_terms <= key_terms:
         return 4
     if query_terms <= body_terms:
@@ -5453,6 +5577,170 @@ def search_rank(query: str, primary: str, haystack: str) -> int | None:
     if matched >= required:
         return 10 + len(query_terms) - matched
     return None
+
+
+@lru_cache(maxsize=1)
+def declaration_search_rows() -> tuple[
+    tuple[dict[str, Any], str, str, str, str],
+    ...,
+]:
+    """Prepare folded declaration text once without tokenizing the whole atlas."""
+    atlas = load("docs/declaration_atlas.json")
+    prepared = []
+    for row in atlas_declarations(atlas):
+        primary = row["name"]
+        haystack = " ".join(
+            str(value)
+            for value in (row["signature"], row.get("docstring"), row["module"])
+            if value
+        )
+        prepared.append(
+            (
+                row,
+                primary,
+                haystack,
+                primary.casefold(),
+                haystack.casefold(),
+            )
+        )
+    return tuple(prepared)
+
+
+def fast_declaration_search_terms(value: str) -> frozenset[str]:
+    """Tokenize mostly-ASCII atlas text without the generic Unicode slow path."""
+    separated = SEARCH_CAMEL_BOUNDARY_RE.sub(" ", value)
+    folded = separated.casefold()
+    if not folded.isascii():
+        folded = "".join(
+            character
+            for character in unicodedata.normalize("NFKD", folded)
+            if not unicodedata.combining(character)
+        )
+    if "no" in folded:
+        folded = SEARCH_NO_GO_RE.sub(" obstruction ", folded)
+    terms = set()
+    for token in SEARCH_TOKEN_RE.findall(folded):
+        if token in SEARCH_STOP_WORDS:
+            continue
+        if token.endswith("ing") and len(token) > 6:
+            token = token[:-3]
+        elif token.endswith("s") and len(token) > 4 and not token.endswith("ss"):
+            token = token[:-1]
+        terms.add(SEARCH_TERM_ALIASES.get(token, token))
+    return frozenset(terms)
+
+
+def build_declaration_search_term_index() -> dict[str, Any]:
+    """Build the exhaustive declaration-search index from the tracked atlas."""
+    by_term: dict[str, list[int]] = {}
+    by_name: dict[str, list[int]] = {}
+    module_terms: dict[str, frozenset[str]] = {}
+    for index, prepared in enumerate(declaration_search_rows()):
+        row, primary, haystack, _primary_folded, _haystack_folded = prepared
+        by_name.setdefault(row["name"], []).append(index)
+        signature = str(row.get("signature") or "")
+        docstring = str(row.get("docstring") or "")
+        # Every current atlas signature contains its declaration spelling. Keep
+        # a fallback for future declaration kinds, but do not tokenize 4.9 MB
+        # of names twice on every cold process. Modules repeat across 153,671
+        # rows, so tokenize each of the 1,023 paths once rather than another
+        # 8.3 MB per process.
+        local_text = f"{signature} {docstring}"
+        if primary not in signature:
+            local_text = f"{primary} {local_text}"
+        module = row["module"]
+        shared_terms = module_terms.get(module)
+        if shared_terms is None:
+            shared_terms = fast_declaration_search_terms(module)
+            module_terms[module] = shared_terms
+        terms = fast_declaration_search_terms(local_text) | shared_terms
+        for term in terms:
+            by_term.setdefault(term, []).append(index)
+    return {
+        "schema": "erdos249257-declaration-search-index/1",
+        "atlas_source_fingerprint": load("docs/declaration_atlas.json")[
+            "source_fingerprint"
+        ],
+        "by_term": by_term,
+        "by_name": by_name,
+    }
+
+
+@lru_cache(maxsize=1)
+def declaration_search_term_index() -> dict[str, Any]:
+    """Load the generated index, rebuilding safely when its binding is stale."""
+    atlas_fingerprint = load("docs/declaration_atlas.json")["source_fingerprint"]
+    try:
+        compressed = DECLARATION_SEARCH_INDEX.read_bytes()
+        if len(compressed) > 16 * 1024 * 1024:
+            raise ValueError("compressed declaration search index exceeds 16 MiB")
+        packet = json.loads(gzip.decompress(compressed))
+        if packet.get("schema") != "erdos249257-declaration-search-index/1":
+            raise ValueError("unknown declaration search index schema")
+        if packet.get("atlas_source_fingerprint") != atlas_fingerprint:
+            raise ValueError("declaration search index is stale")
+        if not isinstance(packet.get("by_term"), dict) or not isinstance(
+            packet.get("by_name"), dict
+        ):
+            raise ValueError("declaration search index mappings are missing")
+        return packet
+    except (FileNotFoundError, OSError, EOFError, gzip.BadGzipFile, ValueError, json.JSONDecodeError):
+        # Search stays functional in partial or locally edited checkouts. The
+        # tracked projection is a speed path, never a second source of truth.
+        return build_declaration_search_term_index()
+
+
+def ranked_declaration_search_rows(
+    query: str,
+    hint_targets: Mapping[tuple[str, str], int],
+) -> list[tuple[int, dict[str, Any]]]:
+    """Rank candidates selected by a process-local inverted lexical index."""
+    prepared_rows = declaration_search_rows()
+    term_index = declaration_search_term_index()
+    candidate_indexes: set[int] = set()
+    term_variants = [semantic_content_terms(query), *semantic_query_variants(query)]
+    for terms in term_variants:
+        if not terms:
+            continue
+        required = 1 if len(terms) == 1 else max(2, (2 * len(terms) + 2) // 3)
+        overlaps = Counter(
+            index
+            for term in terms
+            for index in term_index["by_term"].get(term, ())
+        )
+        candidate_indexes.update(
+            index for index, count in overlaps.items() if count >= required
+        )
+    needle = query.casefold()
+    candidate_indexes.update(
+        index
+        for index, prepared in enumerate(prepared_rows)
+        if needle in prepared[3] or needle in prepared[4]
+    )
+    for (kind, handle), _priority in hint_targets.items():
+        if kind == "declaration":
+            candidate_indexes.update(term_index["by_name"].get(handle, ()))
+
+    ranks: dict[int, int] = {}
+    for index in candidate_indexes:
+        (
+            _row,
+            primary,
+            haystack,
+            primary_folded,
+            haystack_folded,
+        ) = prepared_rows[index]
+        rank = search_rank(
+            query,
+            primary,
+            haystack,
+            primary_folded=primary_folded,
+            haystack_folded=haystack_folded,
+        )
+        if rank is not None:
+            ranks[index] = rank
+
+    return [(rank, prepared_rows[index][0]) for index, rank in ranks.items()]
 
 
 def search_result_sort_key(
@@ -5487,10 +5775,8 @@ def search_result_sort_key(
     )
 
 
-def exact_discovery_route(
-    query: str, claims: dict[str, Any]
-) -> dict[str, Any] | None:
-    """Resolve an authored first-contact phrase without scanning 151k declarations.
+def exact_discovery_routes(query: str, claims: dict[str, Any]) -> list[dict[str, Any]]:
+    """Resolve every route owning an exact authored first-contact phrase.
 
     Discovery terms are an explicit routing contract, not fuzzy corpus content.
     An exact normalized match may therefore take the fast path while all other
@@ -5506,17 +5792,25 @@ def exact_discovery_route(
         }:
             continue
         matches.append(row)
-    if len(matches) != 1:
-        return None
-    row = matches[0]
-    return {
-        "kind": "reading_route",
-        "id": row["id"],
-        "route_kind": row.get("route_kind", "reading_route"),
-        "title": row.get("title"),
-        "intent": row["intent"],
-        "problem_target_claim_ids": row.get("problem_target_claim_ids", []),
-    }
+    return [
+        {
+            "kind": "reading_route",
+            "id": row["id"],
+            "route_kind": row.get("route_kind", "reading_route"),
+            "title": row.get("title"),
+            "intent": row["intent"],
+            "problem_target_claim_ids": row.get("problem_target_claim_ids", []),
+        }
+        for row in matches
+    ]
+
+
+def exact_discovery_route(
+    query: str, claims: dict[str, Any]
+) -> dict[str, Any] | None:
+    """Resolve one unambiguous authored first-contact phrase."""
+    routes = exact_discovery_routes(query, claims)
+    return routes[0] if len(routes) == 1 else None
 
 
 def has_exact_discovery_term(query: str, claims: dict[str, Any]) -> bool:
@@ -5711,10 +6005,10 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
     return route
 
 
-def corpus_scope_boundary_packet(query: str) -> dict[str, Any] | None:
-    """Reject explicit problem numbers absent from the live public registry."""
+def explicit_problem_numbers(query: str) -> set[int]:
+    """Return Erdős problem numbers explicitly named in ordinary text."""
     normalized_query = normalized_search_text(query)
-    requested_numbers = {
+    return {
         int(match)
         for pattern in (
             r"\berdos(?:\s+problem)?\s*#?\s*(\d+)\b",
@@ -5722,6 +6016,22 @@ def corpus_scope_boundary_packet(query: str) -> dict[str, Any] | None:
         )
         for match in re.findall(pattern, normalized_query)
     }
+
+
+def explicit_erdos_problem_numbers(query: str) -> set[int]:
+    """Return numbers attached explicitly to the name Erdős."""
+    return {
+        int(match)
+        for match in re.findall(
+            r"\berdos(?:\s+problem)?\s*#?\s*(\d+)\b",
+            normalized_search_text(query),
+        )
+    }
+
+
+def corpus_scope_boundary_packet(query: str) -> dict[str, Any] | None:
+    """Reject explicit problem numbers absent from the live public registry."""
+    requested_numbers = explicit_problem_numbers(query)
     if not requested_numbers:
         return None
 
@@ -5758,6 +6068,66 @@ def corpus_scope_boundary_packet(query: str) -> dict[str, Any] | None:
             "requested problem; this corpus will not substitute ranked results "
             "from other problems."
         ),
+    }
+
+
+def explicit_problem_reading_route(
+    query: str, claims: dict[str, Any]
+) -> dict[str, Any] | None:
+    """Bind one explicitly named indexed problem to its canonical route.
+
+    This is deliberately stronger than lexical ranking. Once a reader names a
+    single Erdős number, unrelated declarations, open records, and programme
+    routes must not enter the bounded answer merely because they share words
+    such as ``open``, ``failed``, or ``programme``.
+    """
+    requested_numbers = explicit_erdos_problem_numbers(query)
+    if len(requested_numbers) != 1:
+        return None
+    problem_number = next(iter(requested_numbers))
+    indexed_numbers = {
+        int(row["erdos_number"])
+        for row in load("docs/problems.json").get("problems", [])
+    }
+    mentioned_indexed_numbers = {
+        int(token)
+        for token in re.findall(r"\b\d+\b", normalized_search_text(query))
+        if int(token) in indexed_numbers
+    }
+    if mentioned_indexed_numbers != {problem_number}:
+        return None
+    problem = next(
+        (
+            row
+            for row in load("docs/problems.json").get("problems", [])
+            if int(row["erdos_number"]) == problem_number
+        ),
+        None,
+    )
+    if problem is None:
+        return None
+    problem_id = str(problem["problem_id"])
+    target_claim_ids = (problem_id, f"universal_{problem_number}")
+    target_claim = next(
+        (row for row in claims["claims"] if row["id"] in target_claim_ids),
+        None,
+    )
+    remaining_open_ids = (
+        list(target_claim.get("remaining_open_proposition_ids", []))
+        if target_claim is not None
+        else []
+    )
+    return {
+        "kind": "reading_route",
+        "id": problem_id,
+        "route_kind": "problem_route",
+        "title": problem["short_title"],
+        "intent": problem["question"],
+        "problem_target_claim_ids": (
+            [target_claim["id"]] if target_claim is not None else [problem_id]
+        ),
+        "remaining_open_proposition_ids": remaining_open_ids,
+        "explicit_problem_number": problem_number,
     }
 
 
@@ -5833,6 +6203,34 @@ def direct_route_search_packet(
     }
 
 
+def direct_routes_search_packet(
+    query: str,
+    limit: int,
+    routes: list[dict[str, Any]],
+    *,
+    selection: str,
+) -> dict[str, Any]:
+    """Return an exact multi-route phrase without an exhaustive corpus scan."""
+    packet = direct_route_search_packet(
+        query,
+        limit,
+        routes[0],
+        selection=selection,
+    )
+    routed_results: list[dict[str, Any]] = []
+    for route in routes:
+        routed_route = dict(route)
+        if route.get("route_kind") == "mathematical_programme":
+            routed_route["route_memory"] = route_packet(route["id"]).get(
+                "route_memory"
+            )
+        routed_results.append(routed_route)
+    packet["match_count"] = len(routed_results)
+    packet["results"] = routed_results[:limit]
+    packet["omitted_match_count"] = max(0, len(routed_results) - limit)
+    return packet
+
+
 def search_packet(query: str, limit: int) -> dict[str, Any]:
     query = query.strip()
     if not query:
@@ -5853,8 +6251,20 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 problem_route.get("remaining_open_proposition_ids", [])
             ),
         )
-    exact_route = exact_discovery_route(query, claims)
-    if exact_route is not None:
+    explicit_problem_route = explicit_problem_reading_route(query, claims)
+    if explicit_problem_route is not None:
+        return direct_route_search_packet(
+            query,
+            limit,
+            explicit_problem_route,
+            selection="explicit_problem_number_route",
+            remaining_open_proposition_ids=tuple(
+                explicit_problem_route["remaining_open_proposition_ids"]
+            ),
+        )
+    exact_routes = exact_discovery_routes(query, claims)
+    if len(exact_routes) == 1:
+        exact_route = exact_routes[0]
         return direct_route_search_packet(
             query,
             limit,
@@ -5863,6 +6273,13 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             remaining_open_proposition_ids=tuple(
                 exact_route.get("remaining_open_proposition_ids", [])
             ),
+        )
+    if len(exact_routes) > 1:
+        return direct_routes_search_packet(
+            query,
+            limit,
+            exact_routes,
+            selection="exact_authored_multi_route_term",
         )
     hinted_route_ids = [
         handle
@@ -5915,6 +6332,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
         and is_generic_claim_status_query(query, claims["status_taxonomy"])
     )
     ranked: list[tuple[int, str, dict[str, Any]]] = []
+    deferred_declaration_match_count = 0
 
     for artifact in artifact_inventory():
         rank = search_rank(
@@ -6055,26 +6473,58 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 )
             )
 
-    for row in atlas_declarations(atlas):
-        rank = search_rank(
-            query,
-            row["name"],
-            " ".join(str(value) for value in (row["signature"], row.get("docstring"), row["module"]) if value),
-        )
-        if (
-            hint_priority := hint_targets.get(
-                ("declaration", row["name"])
+    # Controlled-vocabulary route queries already have their intended reading
+    # routes in ``hint_targets``.  Building the exhaustive 153k-declaration
+    # lexical index for those queries adds seconds while contributing only
+    # incidental declaration matches.  Retain it for unhinted discovery and
+    # for vocabulary entries that explicitly name a declaration.
+    search_declarations = not hinted_route_ids or any(
+        kind == "declaration" for kind, _handle in hint_targets
+    )
+    if search_declarations:
+        declaration_matches = ranked_declaration_search_rows(query, hint_targets)
+        deferred_declaration_match_count = len(declaration_matches)
+        adjusted_declaration_matches = []
+        for rank, row in declaration_matches:
+            if (
+                hint_priority := hint_targets.get(
+                    ("declaration", row["name"])
+                )
+            ) is not None:
+                rank = -10 + hint_priority
+            stable_key = (
+                f"declaration:{row['module']}:{row['line']}:{row['name']}"
             )
-        ) is not None:
-            rank = -10 + hint_priority
-        if rank is not None:
+            adjusted_declaration_matches.append((rank, stable_key, row))
+        # A bounded search can emit at most ``limit`` declaration rows. Rank
+        # the lightweight atlas rows first, then resolve namespaces and route
+        # payloads only for that possible output window. Broad terms used to
+        # decorate tens of thousands of rows before discarding almost all of
+        # them at the final slice.
+        adjusted_declaration_matches.sort(
+            key=lambda item: (
+                item[0],
+                0
+                if item[0] <= 2
+                else int(not declaration_externally_addressable(item[2])),
+                0 if item[0] <= 2 else 5,
+                item[1],
+            )
+        )
+        for rank, stable_key, row in adjusted_declaration_matches[:limit]:
             result = {"kind": "declaration", **compact_declaration(row)}
             if row.get("signature"):
                 result["signature_excerpt"] = str(row["signature"])[:240]
             result["route_memory"] = declaration_route_memory_rows(
                 [row], claims
             )[0]["route_memory"]
-            ranked.append((rank, f"declaration:{row['module']}:{row['line']}:{row['name']}", result))
+            ranked.append(
+                (
+                    rank,
+                    stable_key,
+                    result,
+                )
+            )
 
     for row in atlas["modules"]:
         sigil = sigil_by_path.get(row["path"])
@@ -6360,6 +6810,14 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
     ranked.sort(key=search_result_sort_key)
     results = [item[2] for item in ranked]
     emitted_results = results[:limit]
+    materialized_declaration_match_count = min(
+        deferred_declaration_match_count, limit
+    )
+    total_match_count = (
+        len(results)
+        + deferred_declaration_match_count
+        - materialized_declaration_match_count
+    )
     problems = load("docs/problems.json").get("problems", [])
     for result in emitted_results:
         if result["kind"] != "module":
@@ -6383,9 +6841,9 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
         "authority_posture": "navigation_projection_not_proof_authority",
         "query": query,
         "query_interpretation": semantic_query_interpretation(query),
-        "match_count": len(results),
+        "match_count": total_match_count,
         "results": emitted_results,
-        "omitted_match_count": max(0, len(results) - limit),
+        "omitted_match_count": max(0, total_match_count - limit),
         "limit": limit,
         "artifact_availability_receipt": {
             "status": (
@@ -6424,11 +6882,7 @@ def semantic_result_key(result: dict[str, Any]) -> str:
 
 def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
     """Resolve authored claim handles to exact atlas signatures and source lines."""
-    atlas = load("docs/declaration_atlas.json")
-    declarations = {
-        (row["name"], row["module"], row["line"]): row
-        for row in atlas_declarations(atlas)
-    }
+    declarations = declaration_row_indexes()["by_source"]
     claims = load("docs/claims.json")
     identity = formal_source_identity(claims)
     repository = identity["repository"].rstrip("/")
@@ -6471,32 +6925,16 @@ def declaration_source_dependency_candidates(
     This is source-current lexical evidence, not an elaborator dependency
     trace. The distinction is retained in every emitted row.
     """
-    atlas = load("docs/declaration_atlas.json")
-    matches = [
-        row
-        for row in atlas_declarations(atlas)
-        if row["name"] == name or qualified_declaration_name(row) == name
-    ]
+    matches = declaration_rows_for_handle(name)
     if len(matches) != 1:
         return []
     declaration = matches[0]
-    module = next(
-        row
-        for row in atlas["modules"]
-        if row["path"] == declaration["module"]
-    )
-    module_declarations = sorted(
-        (
-            row
-            for row in atlas_declarations(atlas)
-            if row["module"] == declaration["module"]
-        ),
-        key=lambda row: (row["line"], row["name"]),
-    )
+    module_indexes = module_handle_indexes()
+    module = module_indexes["by_path"][declaration["module"]]
+    declarations_by_module = declaration_row_indexes()["by_module"]
+    module_declarations = declarations_by_module[declaration["module"]]
     declaration_index = module_declarations.index(declaration)
-    source_lines = (ROOT / declaration["module"]).read_text(
-        encoding="utf-8"
-    ).splitlines()
+    source_lines = cached_source_lines(declaration["module"])
     span_end = (
         module_declarations[declaration_index + 1]["line"] - 1
         if declaration_index + 1 < len(module_declarations)
@@ -6509,43 +6947,43 @@ def declaration_source_dependency_candidates(
     visible_paths = {
         declaration["module"],
         *(
-            row["path"]
-            for row in atlas["modules"]
-            if row["id"] in module.get("imports", [])
+            module_indexes["by_id"][module_id]["path"]
+            for module_id in module.get("imports", [])
+            if module_id in module_indexes["by_id"]
         ),
     }
     candidates = []
-    for row in atlas_declarations(atlas):
-        candidate_name = row["name"]
-        if (
-            row["module"] not in visible_paths
-            or row["id"] == declaration["id"]
-            or len(candidate_name) < 3
-            or row["kind"] not in ("theorem", "lemma")
-        ):
-            continue
-        occurrences = list(
-            re.finditer(rf"\b{re.escape(candidate_name)}\b", span)
-        )
-        if not occurrences:
-            continue
-        candidates.append(
-            (
-                occurrences[0].start(),
-                -len(candidate_name),
-                {
-                    "name": candidate_name,
-                    "qualified_name": qualified_declaration_name(row),
-                    "declaration_kind": row["kind"],
-                    "signature": row.get("signature"),
-                    "source_ref": f"{row['module']}:{row['line']}",
-                    "use_count_in_declaration_span": len(occurrences),
-                    "evidence_posture": (
-                        "source_lexical_dependency_candidate_not_elaborator_dependency_proof"
-                    ),
-                },
+    for visible_path in visible_paths:
+        for row in declarations_by_module.get(visible_path, ()):
+            candidate_name = row["name"]
+            if (
+                row["id"] == declaration["id"]
+                or len(candidate_name) < 3
+                or row["kind"] not in ("theorem", "lemma")
+            ):
+                continue
+            occurrences = list(
+                re.finditer(rf"\b{re.escape(candidate_name)}\b", span)
             )
-        )
+            if not occurrences:
+                continue
+            candidates.append(
+                (
+                    occurrences[0].start(),
+                    -len(candidate_name),
+                    {
+                        "name": candidate_name,
+                        "qualified_name": qualified_declaration_name(row),
+                        "declaration_kind": row["kind"],
+                        "signature": row.get("signature"),
+                        "source_ref": f"{row['module']}:{row['line']}",
+                        "use_count_in_declaration_span": len(occurrences),
+                        "evidence_posture": (
+                            "source_lexical_dependency_candidate_not_elaborator_dependency_proof"
+                        ),
+                    },
+                )
+            )
     candidates.sort(key=lambda item: (item[0], item[1], item[2]["name"]))
     return [item[2] for item in candidates[:limit]]
 
@@ -6729,6 +7167,13 @@ def semantic_cell(
             "programme": programme,
             "route_memory": packet.get("route_memory"),
         }
+        if packet["kind"] == "problem_route":
+            content["mathematical_signal_spine"] = packet[
+                "mathematical_signal_spine"
+            ]
+            content["canonical_problem_route"] = (
+                f"python3 scripts/query_corpus.py --route {handle}"
+            )
         expansion_command = f"python3 scripts/query_corpus.py --route {handle}"
         if programme and operator_id in ("trace", "digest"):
             witness_edges.extend(
@@ -7377,7 +7822,6 @@ def module_local_declaration_results(
     query_terms = semantic_content_terms(query)
     if not query_terms:
         return []
-    atlas = load("docs/declaration_atlas.json")
     theorem_requested = (
         semantic_query_operator(query)["id"] == "support"
         or bool(
@@ -7386,9 +7830,9 @@ def module_local_declaration_results(
         )
     )
     ranked = []
-    for row in atlas_declarations(atlas):
-        if row["module"] != module_result["path"]:
-            continue
+    for row in declaration_row_indexes()["by_module"].get(
+        module_result["path"], []
+    ):
         candidate_terms = search_terms(
             " ".join(
                 str(value)
@@ -7486,6 +7930,23 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
         return paper_reading_guide_packet()
     search = search_packet(query, max(12, min(MAX_LIMIT, limit)))
     interpretation = search["query_interpretation"]
+    routing_selection = search.get("routing_receipt", {}).get("selection")
+    if routing_selection == "explicit_problem_number_route":
+        constrained_route = search["results"][0]
+        interpretation = {
+            **interpretation,
+            "problem_constraint": {
+                "erdos_number": constrained_route["explicit_problem_number"],
+                "route_id": constrained_route["id"],
+                "authority_command": (
+                    "python3 scripts/query_corpus.py --route "
+                    f"{constrained_route['id']}"
+                ),
+                "selection_policy": (
+                    "explicit_number_excludes_other_problem_results_routes_and_open_records"
+                ),
+            },
+        }
     operator_id = interpretation["operator"]["id"]
     hint_targets = set(semantic_hint_targets(query))
     directly_routed = [
@@ -7700,8 +8161,13 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
                 ]
             )
     else:
+        selection_reason = (
+            "explicit_problem_number_route"
+            if routing_selection == "explicit_problem_number_route"
+            else "ranked_query_relative_match"
+        )
         selected_with_reasons = [
-            (result, "ranked_query_relative_match")
+            (result, selection_reason)
             for result in search["results"][
                 : min(limit, MAX_SEMANTIC_CELLS)
             ]
@@ -7724,10 +8190,9 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
                     )
                 )
             elif result["kind"] == "reading_route":
+                route_row = route_index.get(result["id"], result)
                 boundary_ids.extend(
-                    route_index[result["id"]].get(
-                        "remaining_open_proposition_ids", []
-                    )
+                    route_row.get("remaining_open_proposition_ids", [])
                 )
         existing_open_ids = {
             result["id"]
@@ -8130,6 +8595,7 @@ def bounded_programme_signal_projection(spine: Mapping[str, Any]) -> dict[str, A
     }
 
 
+@lru_cache(maxsize=256)
 def route_packet(route_id: str) -> dict[str, Any]:
     claims = load("docs/claims.json")
     route = next(
@@ -9139,6 +9605,16 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
         "kind": "repository_overview",
         "schema_version": "erdos249257-repository-overview/2",
         "authority_posture": "bounded_public_orientation_not_proof_authority",
+        "reader_entry": {
+            "human_entry": "HUMAN_ENTRY.md",
+            "instant_orientation": (
+                "python3 scripts/query_corpus.py --route instant_orientation"
+            ),
+            "boundary": (
+                "The human entry explains in ordinary language and the route "
+                "supplies bounded navigation; neither is proof authority."
+            ),
+        },
         "mathematical_signal_spine": mathematical_signal_spine(claims),
         "coverage_receipt": {
             "mathematical_programme_count": len(programmes),
@@ -10215,7 +10691,15 @@ def render_card(packet: dict[str, Any]) -> str:
     )
 
 
-def main() -> int:
+def query_args_packet(
+    argv: list[str] | tuple[str, ...] | None = None,
+) -> tuple[dict[str, Any], str]:
+    """Parse one CLI request and return its packet before output encoding.
+
+    The public process boundary still goes through :func:`main`.  In-process
+    validators can use this seam to exercise the same parser and dispatch
+    without serializing a packet only to parse those bytes back immediately.
+    """
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--claim", metavar="ID")
@@ -10274,7 +10758,7 @@ def main() -> int:
             "to JSON; all explicit routes also default to JSON"
         ),
     )
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     if args.format:
         output_format = args.format
     elif args.tour or args.papers:
@@ -10290,76 +10774,81 @@ def main() -> int:
         parser.error(f"--limit must be between 1 and {MAX_LIMIT}")
     if not 1 <= args.depth <= 8:
         parser.error("--depth must be between 1 and 8")
+    if args.claim:
+        packet = claim_packet(args.claim)
+    elif args.paper_label:
+        packet = paper_label_packet(args.paper_label)
+    elif args.paper_source:
+        packet = paper_source_packet(args.paper_source)
+    elif args.paper_anchor:
+        packet = paper_anchor_packet(args.paper_anchor)
+    elif args.open:
+        packet = open_proposition_packet(args.open)
+    elif args.declaration:
+        packet = declaration_packet(args.declaration, args.limit)
+    elif args.goal_support:
+        packet = formal_goal_support_packet(
+            args.goal_support,
+            args.limit,
+            explicit_goal=True,
+        )
+    elif args.proof_plan:
+        packet = formal_proof_plan_packet(
+            args.proof_plan,
+            args.limit,
+            args.depth,
+            explicit_goal=True,
+        )
+    elif args.proof_cone:
+        packet = formal_dependency_proof_cone(
+            args.proof_cone, args.depth, args.limit
+        )
+    elif args.dependency_path:
+        packet = formal_dependency_path(
+            args.dependency_path[0],
+            args.dependency_path[1],
+            args.depth,
+        )
+    elif args.source:
+        packet = source_coordinate_packet(args.source, args.limit)
+    elif args.artifact:
+        packet = artifact_packet(args.artifact)
+    elif args.publication_artifact:
+        packet = publication_artifact_packet(args.publication_artifact)
+    elif args.publication_evidence:
+        packet = publication_evidence_packet(args.publication_evidence)
+    elif args.module:
+        packet = module_packet(args.module, args.limit)
+    elif args.connections:
+        packet = connection_card(args.connections, args.limit, args.query)
+    elif args.route:
+        packet = route_packet(args.route)
+    elif args.status:
+        packet = claim_status_packet(args.status, args.limit)
+    elif args.publication_family:
+        packet = publication_family_packet(args.publication_family)
+    elif args.publication_architecture:
+        packet = publication_architecture_packet()
+    elif args.overview:
+        packet = repository_overview_packet()
+    elif args.papers:
+        packet = paper_reading_guide_packet()
+    elif args.tour:
+        packet = agent_tour_packet()
+    elif args.vocabulary:
+        packet = semantic_dictionary_packet()
+    elif args.search:
+        packet = search_packet(args.search, args.limit)
+    elif args.ask:
+        packet = semantic_slice_packet(args.ask, args.limit)
+    else:
+        packet = summary_packet()
+    return packet, output_format
+
+
+def main() -> int:
     try:
-        if args.claim:
-            packet = claim_packet(args.claim)
-        elif args.paper_label:
-            packet = paper_label_packet(args.paper_label)
-        elif args.paper_source:
-            packet = paper_source_packet(args.paper_source)
-        elif args.paper_anchor:
-            packet = paper_anchor_packet(args.paper_anchor)
-        elif args.open:
-            packet = open_proposition_packet(args.open)
-        elif args.declaration:
-            packet = declaration_packet(args.declaration, args.limit)
-        elif args.goal_support:
-            packet = formal_goal_support_packet(
-                args.goal_support,
-                args.limit,
-                explicit_goal=True,
-            )
-        elif args.proof_plan:
-            packet = formal_proof_plan_packet(
-                args.proof_plan,
-                args.limit,
-                args.depth,
-                explicit_goal=True,
-            )
-        elif args.proof_cone:
-            packet = formal_dependency_proof_cone(
-                args.proof_cone, args.depth, args.limit
-            )
-        elif args.dependency_path:
-            packet = formal_dependency_path(
-                args.dependency_path[0],
-                args.dependency_path[1],
-                args.depth,
-            )
-        elif args.source:
-            packet = source_coordinate_packet(args.source, args.limit)
-        elif args.artifact:
-            packet = artifact_packet(args.artifact)
-        elif args.publication_artifact:
-            packet = publication_artifact_packet(args.publication_artifact)
-        elif args.publication_evidence:
-            packet = publication_evidence_packet(args.publication_evidence)
-        elif args.module:
-            packet = module_packet(args.module, args.limit)
-        elif args.connections:
-            packet = connection_card(args.connections, args.limit, args.query)
-        elif args.route:
-            packet = route_packet(args.route)
-        elif args.status:
-            packet = claim_status_packet(args.status, args.limit)
-        elif args.publication_family:
-            packet = publication_family_packet(args.publication_family)
-        elif args.publication_architecture:
-            packet = publication_architecture_packet()
-        elif args.overview:
-            packet = repository_overview_packet()
-        elif args.papers:
-            packet = paper_reading_guide_packet()
-        elif args.tour:
-            packet = agent_tour_packet()
-        elif args.vocabulary:
-            packet = semantic_dictionary_packet()
-        elif args.search:
-            packet = search_packet(args.search, args.limit)
-        elif args.ask:
-            packet = semantic_slice_packet(args.ask, args.limit)
-        else:
-            packet = summary_packet()
+        packet, output_format = query_args_packet()
     except (KeyError, ValueError, json.JSONDecodeError, OSError) as exc:
         print(f"query_corpus: {exc}", file=sys.stderr)
         return 2

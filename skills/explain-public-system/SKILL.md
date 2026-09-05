@@ -83,5 +83,6 @@ surface.
 Keep the authority order explicit: Lean checks the exact proposition in the
 source; the claim registry controls the public description; papers explain;
 external experts and mathematical communities decide broader acceptance over
-time. All eight headline problems remain open unless the current tracked
-claim authorities say otherwise.
+time. Read the current problem count and status from
+`python3 scripts/query_corpus.py --overview --format card`; do not freeze the
+roster in this skill.

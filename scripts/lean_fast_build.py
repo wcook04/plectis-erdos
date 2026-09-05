@@ -26,7 +26,7 @@ import subprocess
 import sys
 import time
 import tomllib
-from typing import Iterable
+from typing import Any, Iterable
 
 import validation_singleflight as singleflight
 import lean_package_share
@@ -84,19 +84,47 @@ def module_name(source: Path, root: Path = ROOT) -> str:
     return ".".join(source.relative_to(root).with_suffix("").parts)
 
 
+def lake_library_rows(root: Path = ROOT) -> list[dict[str, Any]]:
+    """Return declared Lake libraries, including their logical source roots."""
+    lakefile = root / "lakefile.toml"
+    if not lakefile.is_file():
+        return []
+    try:
+        config = tomllib.loads(lakefile.read_text(encoding="utf-8"))
+    except (OSError, tomllib.TOMLDecodeError) as error:
+        raise ValueError(f"cannot parse Lake configuration: {lakefile}") from error
+    return [row for row in config.get("lean_lib", []) if isinstance(row, dict)]
+
+
+def lake_source_roots(root: Path = ROOT) -> tuple[Path, ...]:
+    """Return longest-first roots used to derive logical Lean module names."""
+    roots = {root.resolve()}
+    for library in lake_library_rows(root):
+        src_dir = library.get("srcDir")
+        if isinstance(src_dir, str) and src_dir:
+            roots.add((root / src_dir).resolve())
+    return tuple(sorted(roots, key=lambda path: len(path.parts), reverse=True))
+
+
 def discover(root: Path = ROOT) -> dict[str, Path]:
     modules: dict[str, Path] = {}
+    source_roots = lake_source_roots(root)
     for directory, dirnames, filenames in os.walk(root):
         # Prune .lake and other hidden trees before traversal; filtering after
         # Path.rglob still pays to enumerate the complete dependency cache.
         dirnames[:] = [name for name in dirnames if not name.startswith(".")]
         directory_path = Path(directory)
-        module_prefix = directory_path.relative_to(root).parts
         for filename in filenames:
             if not filename.endswith(".lean") or filename.startswith("_"):
                 continue
             source = directory_path / filename
-            module = ".".join((*module_prefix, filename[:-5]))
+            resolved_source = source.resolve()
+            logical_root = next(
+                candidate
+                for candidate in source_roots
+                if resolved_source.is_relative_to(candidate)
+            )
+            module = module_name(resolved_source, logical_root)
             modules[module] = source
     return modules
 
@@ -180,11 +208,15 @@ def resolve_targets(
             continue
         target_path = (root / candidate).resolve()
         if target_path.suffix == ".lean":
-            try:
-                path_module = module_name(target_path, root.resolve())
-            except ValueError:
-                path_module = None
-            if path_module in modules and modules[path_module].resolve() == target_path:
+            path_module = next(
+                (
+                    name
+                    for name, source in modules.items()
+                    if source.resolve() == target_path
+                ),
+                None,
+            )
+            if path_module is not None:
                 resolved.append(path_module)
                 continue
         raise ValueError(f"unknown local Lean target: {target}")
@@ -194,18 +226,17 @@ def resolve_targets(
 def lake_library_names(root: Path = ROOT) -> set[str] | None:
     """Return declared Lake library names, or ``None`` for fixture roots."""
 
-    lakefile = root / "lakefile.toml"
-    if not lakefile.is_file():
+    if not (root / "lakefile.toml").is_file():
         return None
-    try:
-        config = tomllib.loads(lakefile.read_text(encoding="utf-8"))
-    except (OSError, tomllib.TOMLDecodeError) as error:
-        raise ValueError(f"cannot parse Lake configuration: {lakefile}") from error
-    return {
-        library["name"]
-        for library in config.get("lean_lib", [])
-        if isinstance(library, dict) and isinstance(library.get("name"), str)
-    }
+    names: set[str] = set()
+    for library in lake_library_rows(root):
+        name = library.get("name")
+        if isinstance(name, str):
+            names.add(name)
+        for glob in library.get("globs", []):
+            if isinstance(glob, str):
+                names.add(glob.removesuffix(".*"))
+    return names
 
 
 def is_registered_lake_module(name: str, root: Path = ROOT) -> bool:
@@ -502,6 +533,11 @@ def propagate_stale_targets(
             if name in stale or graph[name] & stale:
                 stale.add(name)
     return stale
+
+
+def missing_olean_targets(names: Iterable[str], root: Path = ROOT) -> list[str]:
+    """Return unquestionably stale targets without asking Lake to rehash."""
+    return [name for name in names if not olean(name, root).is_file()]
 
 
 def build_one(name: str, root: Path = ROOT) -> tuple[str, int, float]:
@@ -812,16 +848,30 @@ def main(argv: list[str] | None = None) -> int:
     build_waves = waves(reachable(target_modules, graph), graph)
     use_lake_staleness = args.lake_staleness
 
+    staleness_label = "mtime"
     if use_lake_staleness:
         # One verbose Lake authority query reports the complete stale import
-        # closure.  Partition that verdict into topological waves locally.
+        # closure. Partition that verdict into topological waves locally. A
+        # genuinely partial cold cache is cheaper and equally sound to start
+        # from its missing outputs: those targets and their dependents must be
+        # rebuilt under any Lake verdict. The final serialized Lake build still
+        # verifies content traces and catches any independent stale output.
         lake_targets = sorted(
             name
             for name in reachable(target_modules, graph)
             if name not in direct_target_names
         )
+        missing_targets = missing_olean_targets(lake_targets, root)
+        if missing_targets:
+            initial_stale_targets = missing_targets
+            staleness_label = "missing-output+final-lake"
+        else:
+            initial_stale_targets = (
+                lake_stale_targets(lake_targets, root) if lake_targets else []
+            )
+            staleness_label = "lake-trace"
         stale_targets = propagate_stale_targets(
-            lake_stale_targets(lake_targets, root) if lake_targets else [],
+            initial_stale_targets,
             build_waves,
             graph,
         )
@@ -857,7 +907,7 @@ def main(argv: list[str] | None = None) -> int:
     print(
         f"lean-fast-build: targets={','.join(target_modules)}; "
         f"{sum(map(len, pending))} stale/missing module(s), jobs={args.jobs}, "
-        f"staleness={'lake-trace' if use_lake_staleness else 'mtime'}",
+        f"staleness={staleness_label}",
         flush=True,
     )
     if args.plan:

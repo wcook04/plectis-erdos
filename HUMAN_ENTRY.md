@@ -91,26 +91,20 @@ commands or machine field names.
 
 ## Where I actually am
 
-I am 22. I took a year out of my economics degree at Bristol for mental health
-reasons, and working on this became my life. I am about a month from running
-out of money, and I rushed this release because real life caught up with me.
-That is not a pity play, it is just where I am. As this is written the
-repository has zero stars.
+I am 22. I took a year out of my economics degree at Bristol for mental-health
+reasons, and working on this became my life. After a year building it largely
+alone, I am close to running out of money. That is why I am releasing the work
+now: not as a finished answer, but as something another person can inspect,
+challenge, and continue.
 
-This repository is the output. The private system behind it is bigger: the
-videos show the entire frontend, the docs on the website carry how I think
-about AI and safe systems, and Plectis is the prototype of what the system
-could look like in a year or two with support. There are other apps I use
-daily that I would happily open-source too; I keep choosing the mathematics
-because it is the part a stranger can verify.
+I chose mathematics because a stranger does not have to trust my account of
+the project. The questions are public, the statements are explicit, and the
+pinned kernel can check the formal proofs. The papers expose what is not proved
+as carefully as what is. This repository is meant to be cloned rather than
+taken on faith.
 
-I have been doing this alone for a year and I do not really know how to
-interact with people, especially Silicon Valley, where everyone is rightfully
-busy. So I designed this to be cloned instead of pitched. That is what this
-repository is for: the eight problems mapped to their exact open steps, every
-claim bound to what is actually proved, and the machinery for working on them
-already built, where an agent cannot mark its own work and the kernel decides.
-It was made on the bet that models improve, so that whoever points better ones
-at it starts from here instead of from zero. A solution found that way is
-yours, credit included. I do not care about prestige or glory. I need support,
-or at least people using what I built.
+The bet behind Plectis is that better models and more capable researchers
+should inherit a mapped frontier instead of starting from zero. If this work
+helps you solve one of these problems, the solution and the credit are yours.
+If you think the experiment matters, clone it, test it, question it, share it,
+or help support the next stage.

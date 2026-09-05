@@ -115,43 +115,85 @@ def synthetic_manifest(gate_returncode: int, checkpoint: str) -> dict:
     }
 
 
+def fixture_repository(parent: Path) -> Path:
+    """Create the smallest real Git source that exercises clone/reset/mutation."""
+
+    root = parent / "source"
+    root.mkdir()
+    (root / "README.md").write_text("publication mutation fixture\n", encoding="utf-8")
+    environment = singleflight.command_environment()
+    for command in (
+        ["git", "init", "--quiet"],
+        ["git", "add", "--", "README.md"],
+        [
+            "git",
+            "-c",
+            "user.name=Plectis fixture",
+            "-c",
+            "user.email=fixture@example.invalid",
+            "commit",
+            "--quiet",
+            "-m",
+            "fixture",
+        ],
+    ):
+        completed = subprocess.run(
+            command,
+            cwd=root,
+            env=environment,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        )
+        require(
+            completed.returncode == 0,
+            completed.stderr.strip() or completed.stdout.strip(),
+        )
+    return root
+
+
 def main() -> int:
     check_subprocess_isolation()
-    checkpoint = resolve_commit("HEAD")
     assert parse_check_count("check_release: all 5,207 checks passed") == 5207
     assert parse_check_count("failure across 4,920 checks") == 4920
 
     with tempfile.TemporaryDirectory() as directory:
-        shared = clone_at_checkpoint(checkpoint, Path(directory))
-        alternates = shared / ".git" / "objects" / "info" / "alternates"
-        assert alternates.is_file()
-        assert alternates.read_text().strip()
+        root = fixture_repository(Path(directory))
+        with patch.object(experiment, "ROOT", root):
+            checkpoint = resolve_commit("HEAD")
+            shared_parent = Path(directory) / "shared"
+            shared_parent.mkdir()
+            shared = clone_at_checkpoint(checkpoint, shared_parent)
+            alternates = shared / ".git" / "objects" / "info" / "alternates"
+            assert alternates.is_file()
+            assert alternates.read_text().strip()
 
-    invalid = run_mutations(
-        synthetic_manifest(1, checkpoint),
-        ["T1"],
-        30,
-        "HEAD",
-        checkpoint,
-    )
-    assert invalid["status"] == "invalid_baseline"
-    assert invalid["baseline"]["status"] == "failed"
-    assert invalid["summary"]["baseline_valid"] is False
-    assert invalid["summary"]["run_count"] == 0
-    assert invalid["results"] == []
+            invalid = run_mutations(
+                synthetic_manifest(1, checkpoint),
+                ["T1"],
+                30,
+                "HEAD",
+                checkpoint,
+            )
+            assert invalid["status"] == "invalid_baseline"
+            assert invalid["baseline"]["status"] == "failed"
+            assert invalid["summary"]["baseline_valid"] is False
+            assert invalid["summary"]["run_count"] == 0
+            assert invalid["results"] == []
 
-    valid = run_mutations(
-        synthetic_manifest(0, checkpoint),
-        ["T1"],
-        30,
-        "HEAD",
-        checkpoint,
-    )
-    assert valid["status"] == "completed"
-    assert valid["baseline"]["status"] == "passed"
-    assert valid["summary"]["baseline_valid"] is True
-    assert valid["summary"]["run_count"] == 1
-    assert valid["results"][0]["outcome"] == "escaped"
+            valid = run_mutations(
+                synthetic_manifest(0, checkpoint),
+                ["T1"],
+                30,
+                "HEAD",
+                checkpoint,
+            )
+            assert valid["status"] == "completed"
+            assert valid["baseline"]["status"] == "passed"
+            assert valid["summary"]["baseline_valid"] is True
+            assert valid["summary"]["run_count"] == 1
+            assert valid["results"][0]["outcome"] == "escaped"
 
     print(
         "publication_mutation_harness: red baseline aborts without outcomes; "

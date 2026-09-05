@@ -28,9 +28,10 @@
     "erdos-1049-rational-base-lambert",
     "claim-faithful-publication-systems",
     "cold-clone-to-proof-receipt",
+    "open-source-mathematics-strategy",
     "plectis-public-system"
   ],
-  "paper_count": 14,
+  "paper_count": 15,
   "publication_taxonomy": {
     "generated_by": "docs/papers/build_publication_taxonomy.py",
     "what_these_fields_are": "How each manuscript was published: what kind of document it is, whether anyone outside this project reviewed it, and how to cite it.",
@@ -54,11 +55,11 @@
     "by_publication_class": {
       "problem_paper": 9,
       "reasoning_surface": 2,
-      "methods_paper": 2,
+      "methods_paper": 3,
       "software_paper": 1
     },
     "by_manuscript_status": {
-      "technical_report": 11,
+      "technical_report": 12,
       "working_research_record": 2,
       "retired_provenance": 1
     },
@@ -130,7 +131,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-257-main-paper.md",
       "local_source": "paper/erdos249-257-main-paper.tex",
-      "source_sha256": "sha256:05504d02bcac59ff9e4edde6a5f9fd29ddb421fbf692ef99b2b6b8c8dd079fc3",
+      "source_sha256": "sha256:0455d0feaf5088394eb449a6a3056b89f4021f0a2fd74338c2b3766a7437e6df",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex",
@@ -1106,8 +1107,8 @@
       ],
       "citations_rendered": 55,
       "local_pdf": "erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:78d3d622120e64c17d3609b1cbf60e78eb672278d107ac5c046f4ebcb9edc946",
-      "pdf_byte_count": 457994,
+      "pdf_sha256": "sha256:5c6b1c8722ac6657b36b136cbce4aa927e452e18d9487f14bb2d7e30d6de717f",
+      "pdf_byte_count": 457684,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1172,7 +1173,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
       "local_source": "paper/erdos-68-factorial-denominator-irrationality.tex",
-      "source_sha256": "sha256:e57cff93f7c28986c2fcb00f70ee8184ca312927057ed1dba58e1c3f73bfee02",
+      "source_sha256": "sha256:6004f99a7a651ce3c417de64481cb4e61435d48d9d663c39c4c10329218df4b3",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex",
@@ -1306,8 +1307,8 @@
         "manuscript_title": "Factorial-Channel Obstructions and Exact Orbit Boundaries"
       },
       "local_pdf": "erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:65755857ef68526fe8e170765085a851c28e891e594f63a42f09c8a31da0c5ce",
-      "pdf_byte_count": 162325,
+      "pdf_sha256": "sha256:1aad4e3de0ca57efa6f7dc75b3a3a9782ad51d811cd8873ac02e1384345b6b6e",
+      "pdf_byte_count": 162321,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1373,7 +1374,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:480ec017fe6c974d0364d17147d9d38473ad6691d892f13a27144cc9b2af0161",
+      "source_sha256": "sha256:cf6e73efdc61b9740a8a1192ba1c08eb7448af35547b4fa60446a5479ec4c797",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-243-reciprocal-tail-rigidity.tex",
@@ -1551,8 +1552,8 @@
       ],
       "citations_rendered": 31,
       "local_pdf": "erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:60cef2e047b9f2b538c9de38a6c2d5c40921763379ce7e43af74e1863ffcf03a",
-      "pdf_byte_count": 168070,
+      "pdf_sha256": "sha256:596de3605ce7ba7e1cf6e3ae675edd18128200dca8c5fb6bcb32a8a67baadf47",
+      "pdf_byte_count": 168125,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1613,7 +1614,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
       "local_source": "paper/erdos-249-binary-totient-series.tex",
-      "source_sha256": "sha256:edf97ec3bc07a32cfab4ce8b0cbab128ecb52c8273c29e80ec517a2df0acda6a",
+      "source_sha256": "sha256:c0b231a545c4547119ade449712a9b3a7abb5f24f8c86d1bfef52d195c57c2d3",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex",
@@ -1807,8 +1808,8 @@
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:5adf841fdb199ce09875c913e85d17b002d92da7e83617394f079d3e7e80e2fa",
-      "pdf_byte_count": 205000,
+      "pdf_sha256": "sha256:4639b22f5b7939d044288ba2b8a7e65a22c5298ddf45746cd26b4d06a1825394",
+      "pdf_byte_count": 204789,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1869,7 +1870,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:dbc921881938501f2ef70575bc50edfe2ab3a45658557bc4c1a4ad41be8569e0",
+      "source_sha256": "sha256:c6eb6ac9a59f4ed54f69c646d3be0f9d223b462ef05b8d91f17981634bd5a177",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-totient-reasoning-surface.tex",
@@ -2773,8 +2774,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:9664c8f6adbfa2d152db8990c67964f2054572563e8aca16277d3e7b9262bb66",
-      "pdf_byte_count": 727415,
+      "pdf_sha256": "sha256:1362ab9f18ae7f5f0bdb135c5b5a590357133a35733e34b41658f2fcd55499e6",
+      "pdf_byte_count": 727403,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2830,7 +2831,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md",
       "local_source": "paper/erdos-251-prime-gap-dyadic-series.tex",
-      "source_sha256": "sha256:33eed2665d666e8308324aecab441c2292b6efdb4945b46127f9cb81e98bdf67",
+      "source_sha256": "sha256:26ba1ed562faf6f12ee08508015304bdcb928d50b0894134773d3f766561ce06",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-251-prime-gap-dyadic-series.tex",
@@ -2978,8 +2979,8 @@
       ],
       "citations_rendered": 22,
       "local_pdf": "erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:d68a13200e6b50ab5ad77b3f90d0217cdf3468468b2c8e1058eccbb609180c78",
-      "pdf_byte_count": 152780,
+      "pdf_sha256": "sha256:6b27357483993223aebd78f1c52ca9e469480921160a371edcda26719305956c",
+      "pdf_byte_count": 152776,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3045,7 +3046,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:ca29a9d33833ab35475f11b0ff4546a1b66e0b2c22d67ddfe492cdf451eeadbb",
+      "source_sha256": "sha256:008da9c21dbffa7c145d51235227f9bc11d8425f2f1bda4f1b830c352742692a",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex",
@@ -3199,8 +3200,8 @@
       ],
       "citations_rendered": 24,
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:a635a6b6659a29b81f5ff01487519c2b9f4131dafaee10d57a38e5e3cdd80f36",
-      "pdf_byte_count": 180770,
+      "pdf_sha256": "sha256:642ddeecd8d863309eb5410977606d7df2662b869ef101af23ba59b59fcbaaa8",
+      "pdf_byte_count": 180766,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3266,7 +3267,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:eb0404cc8435d4d259d5cd73746ed4cabfb6006f3e64f079f5d171af7863c874",
+      "source_sha256": "sha256:6124c97dd2973e2e4b187c6483648905415b4606da7a173e8c125bf0ca77f7e9",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos257-mersenne-reasoning-surface.tex",
@@ -4104,8 +4105,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:9e655222f53030c846dc99fdd55a0e477a63d97e43409a249aee3af5e82d7fe1",
-      "pdf_byte_count": 666939,
+      "pdf_sha256": "sha256:e66b04c2bd451d313c504b8d80bcfb6fe8165e48665978b230911bfbc95f4de8",
+      "pdf_byte_count": 666905,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4166,7 +4167,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
       "local_source": "paper/erdos-269-three-prime-running-lcm.tex",
-      "source_sha256": "sha256:993fbb3c41ee140e25b950e48af2b1e501b6565519743da8d06099c120ef820c",
+      "source_sha256": "sha256:379f505866b529978ff8289927fed1bf6db669dc62ffc19e397e413638d2bcec",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-269-three-prime-running-lcm.tex",
@@ -4338,8 +4339,8 @@
       ],
       "citations_rendered": 17,
       "local_pdf": "erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:5219206c788be2387e30793668d71c6584506c7b9f9dae714ae699ab5242b371",
-      "pdf_byte_count": 169790,
+      "pdf_sha256": "sha256:159671807503b132abb2e7bf5981b87ce38fbc3fd0496bf47d54a1ca7f07ed45",
+      "pdf_byte_count": 169782,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4405,7 +4406,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
       "local_source": "paper/erdos-1041-lemniscate-newton-flow.tex",
-      "source_sha256": "sha256:a630d40fcef6560ea00c550f44b4db826807e4965a5a5b76461ec38b132e5775",
+      "source_sha256": "sha256:73bd294ddf307371a8115200a3e14b27b640e84edeff625e2f08e6f2f688bbae",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex",
@@ -4617,7 +4618,7 @@
         "manuscript_title": "Critical-Value Separation and Admissible Hubs"
       },
       "local_pdf": "erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:a4123d65989861bc3e8d09a0db706ef8882ad85c24cb6e43c237bcea9ce994ad",
+      "pdf_sha256": "sha256:1b66d0cc1d1a391c93e946e2583a7be9d6d2fc37f8ad7e9c3846354dadee191a",
       "pdf_byte_count": 159431,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -4684,7 +4685,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
       "local_source": "paper/erdos-1049-rational-base-lambert.tex",
-      "source_sha256": "sha256:9f51fc9e345b84055acec8820374000216621275df8d72b71e2518f5ee12da40",
+      "source_sha256": "sha256:b748ded6e65009967fdc1ec157a253d174f5ceb19ab44eba889a35ebb4816418",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1049-rational-base-lambert.tex",
@@ -4872,8 +4873,8 @@
         "manuscript_title": "Sharp Height and Four-Jet Obstructions at Base 3/2"
       },
       "local_pdf": "erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:5ca77f3bb004e9b90c02c6adfc57459b018da97f55dc352832b227209f89e77b",
-      "pdf_byte_count": 184855,
+      "pdf_sha256": "sha256:20e0ecccc16ef312dfa5da8422efe260b42ea016cc03e9cfcaef7cc06b79c92d",
+      "pdf_byte_count": 184877,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -5229,7 +5230,7 @@
         "manuscript_title": "Problem-Sized Lean Worlds"
       },
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:844b5b5ac743be733b90db6871a21bccc34c3d410174cdede9ba6ba060267a89",
+      "pdf_sha256": "sha256:bdbdcccc5127fafaca687a575222c81fd49930eb9779f24805255970488293c9",
       "pdf_byte_count": 143343,
       "first_pass": {
         "stated_by_the_paper": true,
@@ -5426,8 +5427,8 @@
       ],
       "citations_rendered": 10,
       "local_pdf": "cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:cbd91a794c2c949ed727fbd08ee43bdd4c161b1b8e813f4f6d8cc509aeefd4ee",
-      "pdf_byte_count": 83165,
+      "pdf_sha256": "sha256:5c6be84b7122c1b273c9a8966bd9faab59e7590203153b1c4535d61c735e70d9",
+      "pdf_byte_count": 83163,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -5456,6 +5457,272 @@
             "id": "sec:limits",
             "title": "Limits and transfer conditions",
             "line": 181
+          }
+        ],
+        "unresolved_count": 0
+      }
+    },
+    {
+      "paper_id": "open-source-mathematics-strategy",
+      "title": "From Spare Compute to Cumulative Mathematics",
+      "title_source": "manuscript",
+      "question_this_paper_answers": "How can outsiders contribute compute, mathematical direction, architecture, or review without receiving authority to declare a proof?",
+      "subject": "Systems paper",
+      "subject_kind": "system",
+      "form": "Open-source research strategy",
+      "owns": "the open-source strategy: how outside compute, mathematics, architecture improvements, review, and credit enter one bounded commons",
+      "not_authority_for": "a solution to any Erd\u0151s problem, measured discovery-rate improvement, human peer review, novelty, significance, or community endorsement",
+      "publication_state": "active",
+      "publication_class": "methods_paper",
+      "publication_class_basis": "owns names 'architecture'",
+      "manuscript_status": "technical_report",
+      "peer_review_state": "not_externally_reviewed",
+      "doi": null,
+      "doi_absence_reason": "no_archival_deposit_yet",
+      "preferred_citation": {
+        "author": "Will Cook",
+        "year": "2026",
+        "title": "From Spare Compute to Cumulative Mathematics",
+        "repository": "plectis-lean-erdos249-257",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/open-source-mathematics-strategy.tex",
+        "licence": "CC-BY-4.0",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). From Spare Compute to Cumulative Mathematics. plectis-lean-erdos249-257. CC-BY-4.0. https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/open-source-mathematics-strategy.tex",
+        "derived_from": [
+          "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
+        ]
+      },
+      "relation_to_this_repository": "native",
+      "home_repository": "plectis-lean-erdos249-257",
+      "licence": "CC-BY-4.0",
+      "copyright": "2026 Will Cook",
+      "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
+      "local_source": "paper/open-source-mathematics-strategy.tex",
+      "source_sha256": "sha256:02b26c5be582d9748db4f2e8a5739666c06685d46477aded795f44dfd9f2a554",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/open-source-mathematics-strategy.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/open-source-mathematics-strategy.tex",
+      "section_count": 29,
+      "sections": [
+        {
+          "level": 1,
+          "id": "open-source-mathematics-strategy",
+          "title": "From Spare Compute to Cumulative Mathematics",
+          "line": 1
+        },
+        {
+          "level": 1,
+          "id": "sec:strategy",
+          "title": "The strategy",
+          "line": 33
+        },
+        {
+          "level": 2,
+          "id": "two-coupled-goals-not-one-endless-agent",
+          "title": "Two coupled goals, not one endless agent",
+          "line": 47
+        },
+        {
+          "level": 2,
+          "id": "what-one-clone-lets-a-contributor-do",
+          "title": "What one clone lets a contributor do",
+          "line": 69
+        },
+        {
+          "level": 1,
+          "id": "sec:model",
+          "title": "A production model for mathematical progress",
+          "line": 80
+        },
+        {
+          "level": 1,
+          "id": "sec:math",
+          "title": "Why begin with hard mathematics",
+          "line": 124
+        },
+        {
+          "level": 1,
+          "id": "sec:object",
+          "title": "The public research object",
+          "line": 141
+        },
+        {
+          "level": 1,
+          "id": "sec:protocol",
+          "title": "The contribution protocol",
+          "line": 160
+        },
+        {
+          "level": 1,
+          "id": "sec:attention",
+          "title": "From an agent claim to mathematical attention",
+          "line": 202
+        },
+        {
+          "level": 1,
+          "id": "sec:credit",
+          "title": "Progress, provenance, and credit",
+          "line": 226
+        },
+        {
+          "level": 2,
+          "id": "record-now-trace-consequences-later",
+          "title": "Record now, trace consequences later",
+          "line": 264
+        },
+        {
+          "level": 1,
+          "id": "sec:security",
+          "title": "Distributed compute without distributed authority",
+          "line": 276
+        },
+        {
+          "level": 1,
+          "id": "sec:prior",
+          "title": "Precedents and the missing composition",
+          "line": 292
+        },
+        {
+          "level": 4,
+          "id": "distributed-compute.",
+          "title": "Distributed compute.",
+          "line": 298
+        },
+        {
+          "level": 4,
+          "id": "distributed-mathematical-insight.",
+          "title": "Distributed mathematical insight.",
+          "line": 304
+        },
+        {
+          "level": 4,
+          "id": "distributed-formalisation.",
+          "title": "Distributed formalisation.",
+          "line": 310
+        },
+        {
+          "level": 4,
+          "id": "multi-agent-formal-research.",
+          "title": "Multi-agent formal research.",
+          "line": 316
+        },
+        {
+          "level": 4,
+          "id": "proof-abundance.",
+          "title": "Proof abundance.",
+          "line": 322
+        },
+        {
+          "level": 1,
+          "id": "sec:add-problem",
+          "title": "Adding another problem world",
+          "line": 330
+        },
+        {
+          "level": 1,
+          "id": "sec:growth",
+          "title": "Participation and growth",
+          "line": 348
+        },
+        {
+          "level": 1,
+          "id": "sec:evaluation",
+          "title": "Evaluation",
+          "line": 370
+        },
+        {
+          "level": 1,
+          "id": "sec:learning",
+          "title": "Learning from every run",
+          "line": 400
+        },
+        {
+          "level": 2,
+          "id": "sec:local-to-general",
+          "title": "The local-to-general track",
+          "line": 442
+        },
+        {
+          "level": 1,
+          "id": "sec:science",
+          "title": "A bounded transfer hypothesis beyond mathematics",
+          "line": 477
+        },
+        {
+          "level": 1,
+          "id": "sec:limits",
+          "title": "Limits and governance",
+          "line": 487
+        },
+        {
+          "level": 1,
+          "id": "sec:execution",
+          "title": "Execution order",
+          "line": 511
+        },
+        {
+          "level": 1,
+          "id": "sec:conclusion",
+          "title": "Conclusion",
+          "line": 533
+        },
+        {
+          "level": 1,
+          "id": "app:routes",
+          "title": "Public entry routes",
+          "line": 543
+        },
+        {
+          "level": 1,
+          "id": "declaration-of-generative-ai-use",
+          "title": "Declaration of generative AI use",
+          "line": 577
+        }
+      ],
+      "citations_rendered": 21,
+      "local_pdf": "open-source-mathematics-strategy.pdf",
+      "pdf_sha256": "sha256:8951a953ac99c03dc63712ad69a5e12baae305b8ed8459b6b15c54a264fc11c6",
+      "pdf_byte_count": 129773,
+      "first_pass": {
+        "stated_by_the_paper": false,
+        "provenance": "editorial selection; this paper states no reading route of its own",
+        "sections": [
+          {
+            "id": "sec:strategy",
+            "title": "The strategy",
+            "line": 33
+          },
+          {
+            "id": "sec:object",
+            "title": "The public research object",
+            "line": 141
+          },
+          {
+            "id": "sec:protocol",
+            "title": "The contribution protocol",
+            "line": 160
+          },
+          {
+            "id": "sec:attention",
+            "title": "From an agent claim to mathematical attention",
+            "line": 202
+          },
+          {
+            "id": "sec:security",
+            "title": "Distributed compute without distributed authority",
+            "line": 276
+          },
+          {
+            "id": "sec:growth",
+            "title": "Participation and growth",
+            "line": 348
+          },
+          {
+            "id": "sec:limits",
+            "title": "Limits and governance",
+            "line": 487
           }
         ],
         "unresolved_count": 0
