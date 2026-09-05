@@ -458,6 +458,14 @@ def refresh_environment_validation_metadata(
     packet["environment_validation"]["command"] = (
         ENVIRONMENT_VALIDATION_COMMAND
     )
+    # The packet embeds the release's formal-source pin. A checkpoint advance
+    # moves that pin without touching the elaborated environment, and CI's
+    # full export re-reads it, so a refresh that kept the old pin left the
+    # tracked index one field behind every fresh export (2026-09-05).
+    claims_path = root / "docs" / "claims.json"
+    if claims_path.is_file():
+        claims = json.loads(claims_path.read_text(encoding="utf-8"))
+        packet["formal_source"] = claims["release"]["formal_source"]
     content = encoded(packet)
     input_fingerprint = check_input_fingerprint(root)
     safe_output_text(output, content, root=root)
