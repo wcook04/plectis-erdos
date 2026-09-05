@@ -2,13 +2,13 @@
   "schema": "erdos249257-problem-index-source/1",
   "artifact_role": "authored_problem_owned_navigation_source",
   "index_path": "docs/problems.json",
-  "purpose": "Name every Erdős problem this repository holds formal material for, say what is checked and what is not, and route to the note, the modules, and the surviving obligation. Everything derivable from source -- module paths, declaration counts, note digests -- is filled in by the builder rather than authored here.",
+  "purpose": "Route every represented Erdős problem to its checked results, short paper, modules and open obligations. The builder supplies source-derived coordinates, counts and digests.",
   "authority_posture": "authored_navigation_source_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
   "index_max_bytes": 65536,
   "note_coverage_floor": 0.6,
-  "note_coverage_rule": "A note pins its links so they cannot break when the library moves; the cost is that it can fall silently behind. check_problem_note_sources.py --coverage measures the gap as the fraction of declarations that exist now which the note actually links, and fails below this floor. Lower it only as a deliberate, recorded decision.",
+  "note_coverage_rule": "Pinned links remain stable but can lag current declarations. check_problem_note_sources.py --coverage measures the linked fraction against its recorded floor; changing that floor requires an explicit decision.",
   "upstream_ref": "codex/problem-centric-erdos",
-  "upstream_rule": "The branch the expansion library is developed on. Coverage is gated against this checkout, which is what the notes are built from; the distance to this ref is reported and never gated, because failing on another branch's motion would make the check red through no fault of this tree.",
+  "upstream_rule": "Coverage is gated against this authoring checkout; distance to the upstream branch is reported, not gated.",
   "library_roots": [
     {
       "root": "Erdos249257.lean",
@@ -53,7 +53,7 @@
         "ErdosProblems.Erdos68.StrictSuccessorArithmetic"
       ],
       "note_coverage_floor": 0.05,
-      "note_coverage_rationale": "This imported research packet exposes a large utility and strategy library (706 declarations) while the public note intentionally pins only the theorem-level dependency chain and frontier. Required headline links remain mandatory; the lower fraction is a recorded property of this unusually broad module family, not a waiver of source-link validity.",
+      "note_coverage_rationale": "The imported family includes 706 utility and strategy declarations; the note links the theorem dependency chain and frontier. Its recorded floor preserves mandatory headline and valid source links.",
       "note_artifact_id": "erdos_68_note",
       "required_note_declarations": [
         {
@@ -136,7 +136,7 @@
         "ErdosProblems.Erdos243.WeightedCRTRepair"
       ],
       "note_coverage_floor": 0.35,
-      "note_coverage_rationale": "The note pins the complete result spine in ReciprocalTailRigidity and SparseResetRecovery, including every headline declaration. The other seven modules in the build closure are supporting integer-dynamics machinery reached through those checked consumers; naming them here (they were previously absent from this index despite being imported by ErdosProblems/Root.lean) enlarged the coverage denominator from two modules to nine without any change to the note. The floor is recorded at the honest new denominator rather than kept high by re-hiding modules.",
+      "note_coverage_rationale": "The note links the headline results in ReciprocalTailRigidity and SparseResetRecovery. Coverage includes their seven supporting modules: nine modules total, with the floor set against that full closure.",
       "note_artifact_id": "erdos_243_note",
       "required_note_declarations": [
         {
@@ -218,7 +218,7 @@
       "status": "open",
       "question": "Is the binary Lambert series sum phi(n)/2^n irrational?",
       "note_coverage_floor": 0.5,
-      "note_coverage_rationale": "Deliberately lowered from the 0.6 default at the v0.7.0 freeze: the block-gap conditional route (the TotientStrictPrimeEscape rewrite) landed with the release integration, after the note was written. RESULTS.md and the module docstrings route readers to the new declarations; the note will be repinned and extended to cover them in its next revision.",
+      "note_coverage_rationale": "The recorded floor accounts for the block-gap conditional route landing after the note at v0.7.0. RESULTS.md and module docstrings expose those declarations; headline links remain required.",
       "directory": "ErdosProblems/Erdos249",
       "principal_module": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
       "companion_modules": [
@@ -600,7 +600,7 @@
       ],
       "what_is_not_checked": [
         "Irrationality or transcendence in any three-prime case.",
-        "The paper now derives the actual bounded positive reduced carry from rationality, including the infinite shell-digit bridge, smooth-factor cancellation, and a cell-rank quadratic tail bound. These assembled actual-series deductions are ordinary proofs and still require complete Lean formalization.",
+        "The actual rationality-to-carry bridge, including shell digits, smooth-factor cancellation and the sharp quadratic bound, is proved in the paper; complete Lean formalization is pending.",
         "CofinalLocalWindowEscape for those actual words; it is an explicit hypothesis of the checked consumer, not a theorem.",
         "A proof that the actual three-channel word satisfies the block-null, anchor, or factorisation hypotheses of the migrated abstract consumers.",
         "The infinite limit of the jump expansion; only its finite core is checked.",
@@ -613,7 +613,7 @@
         },
         {
           "id": "actual_rational_carry_instantiation",
-          "statement": "Formalize the paper-proved actual bridge: identify the radix and block digits with literal shell multiplicities, clear the smooth denominator factor, group logarithmic cells by rank, and sum the quadratic geometric majorant. This is formalization debt, not an additional mathematical premise of the cofinal-escape criterion."
+          "statement": "Formalize the proved shell-digit identity, smooth-denominator cancellation and cell-rank geometric majorant. These are proof-coverage gaps; only cofinal escape is an unproved premise of the paper criterion."
         },
         {
           "id": "nonstationary_analytic_theorem",
@@ -624,8 +624,8 @@
           "statement": "Replace one finite denominator exclusion by a family whose exclusion bound tends to infinity."
         }
       ],
-      "finite_search": "The integer-only dyadic-window checker reproduces three exact packet certificates and, for all 106,666 pairs with denominator B <= 1000 coprime to 30 and dyadic start 100 <= a <= 500, finds an escaping window of length at most 18; the largest first successful length is 14. This is finite proof-consumer evidence only and proves neither unbounded-denominator nor cofinal escape.",
-      "source_priority_note": "Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it. For {2,3,5}, the ordinary paper proof bounds X_a by (n_a^2+8n_a+18)/9 and derives the actual bounded reduced carry from rationality. Actual cofinal local-window escape alone suffices for irrationality; that escape remains unproved."
+      "finite_search": "The integer checker verifies three packet certificates and all 106,666 pairs with B <= 1000, coprime to 30, and 100 <= a <= 500. Each escapes within length 18; the largest first successful length is 14. Unbounded-denominator/cofinal escape remains open.",
+      "source_priority_note": "The paper proves two-prime transcendence using Loxton–van der Poorten via Bugeaud–Laurent; Steve Fan published the same reduction on 26 June 2026. For {2,3,5}, it proves X_a <= (n_a²+8n_a+18)/9 and the actual rationality-to-carry bridge. These ordinary proofs are not fully formalized. Actual cofinal residue-window escape remains unproved."
     },
     {
       "problem_id": "erdos_1041",
@@ -683,7 +683,7 @@
         },
         {
           "id": "formalize_ordinary_metric_and_budget_assemblies",
-          "statement": "Formalize the ordinary geometric and torus/psh assemblies. The budget reduction leaves FP_m for m>=5 open; it supplies no metric endpoint."
+          "statement": "Formalize the ordinary geometric assemblies and reflected-derivative critical-value bound. The budget reduction leaves FP_m for m>=5 open; it supplies no metric endpoint."
         },
         {
           "id": "repair_or_refute_saddle_block",
@@ -714,7 +714,7 @@
         "manifest": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
         "checkpoint": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
         "authority_posture": "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority",
-        "reading_rule": "Read the short paper and docs/claims.json; docs/PALOMAR_RESULT_SHOWCASE.json orders six ordinary families: critical_value_separation_connector (separated simple nonzero critical value); sharp_collinear_diameter (optimal collinear bound, all degrees); primitive_sparse_quintic_paths (z^5+a z^4+b z+c); translated_cubic_quotient_fibres and translated_quartic_quotient_fibres (P((z-h)^q), q>=2, cubic/quartic P); critical_value_mean_budget (every enclosing disk, degrees 2-5, critical multiplicities). Metric corollaries use open-unit-disk roots; cubic fibres require two distinct zero values, while quintic/quartic conclusions permit coincident listed occurrences. The quartic lift uses the cited quartic theorem. Exact hypotheses and narrower formal boundaries are in those family rows. Read FRONTIER.md before the dated, nonexhaustive STRONGEST_RESULTS.json activation map; research discovery is not Comparator admission."
+        "reading_rule": "Read the short paper, docs/claims.json and the six ordinary family rows in docs/PALOMAR_RESULT_SHOWCASE.json for solved metric regimes, the critical-value budget and exact formal boundaries. Read FRONTIER.md before the dated STRONGEST_RESULTS.json; discovery is not Comparator admission."
       }
     },
     {

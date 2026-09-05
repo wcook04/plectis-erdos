@@ -301,7 +301,7 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 **Critical-Value Separation and Admissible Hubs**
 
-[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex) · 37 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
+[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex) · 36 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos-1041-lemniscate-newton-flow.md#sec:problem), [The Newton value equation](full-text/erdos-1041-lemniscate-newton-flow.md#sec:newton), [A proof gap in the unrestricted argument](full-text/erdos-1041-lemniscate-newton-flow.md#sec:gap), [Complements and further questions](full-text/erdos-1041-lemniscate-newton-flow.md#sec:open).
 
@@ -313,13 +313,13 @@ This paper states no reading route. Its evidence boundary is in [The problem](fu
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-1049-rational-base-lambert.md#sec:problem), [Integer scalar content is neutral](full-text/erdos-1049-rational-base-lambert.md#sec:primitive), [Endpoint residues at (3,2) and the four-jet kernel](full-text/erdos-1049-rational-base-lambert.md#sec:endpoints), [Complements and further questions](full-text/erdos-1049-rational-base-lambert.md#sec:open).
 
-### Lean proves the formal statement. Who checks that the README describes it faithfully?
+### How does a research system turn agent work into inspectable mathematical claims?
 
 **Problem-Sized Lean Worlds**
 
 [full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex) · 46 sections · `claim-faithful-publication-systems` · native to this repository
 
-The paper's own reading map sends a first pass to [What can be trusted](full-text/claim-faithful-publication-systems-paper.md#sec:trust).
+This paper states no reading route. Its evidence boundary is in [The whole lifecycle in one picture](full-text/claim-faithful-publication-systems-paper.md#sec:lifecycle), [The public Lean repository](full-text/claim-faithful-publication-systems-paper.md#sec:public), [Inspection routes](full-text/claim-faithful-publication-systems-paper.md#sec:routes), [What can be trusted](full-text/claim-faithful-publication-systems-paper.md#sec:trust).
 
 ### How can a reasoning agent comprehend a large Lean corpus before compiling, then cross into replayable proof authority and incremental validation?
 

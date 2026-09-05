@@ -13139,7 +13139,7 @@
             "id": "divisibility_weighted_support_irrationality",
             "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
             "summary": "Finite divisibility-weighted mass implies hereditary all-base irrationality, including explicit reciprocal-divergent short-gap supports.",
-            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.",
             "comparator_disposition": "not_applicable_not_a_lean_proposition",
             "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
           },
@@ -13147,7 +13147,7 @@
             "id": "sub_logstar_reciprocal_mass_irrationality",
             "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
             "summary": "Rational p/q forces liminf H_A(x)/ell(x) at least lambda_b(p/q)/2; sub-log-star mass implies hereditary all-base irrationality.",
-            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.",
             "comparator_disposition": "not_applicable_not_a_lean_proposition",
             "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
           },
@@ -13155,7 +13155,7 @@
             "id": "arbitrary_prime_power_support_irrationality",
             "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
             "summary": "Every infinite subset of the prime powers, with fixed dilations and finite modifications, has irrational sum at every integer base, using the reviewed analytic correlation input.",
-            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.",
             "comparator_disposition": "not_applicable_not_a_lean_proposition",
             "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
           },
@@ -13163,7 +13163,7 @@
             "id": "variable_exponent_fractional_cover_irrationality",
             "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
             "summary": "For finite positive divisor frames F_j and 0<alpha_j<=1, summability of C_j 2^(j alpha_j) B_j/(B_j-1)^2 with B_j=2^alpha_j gives hereditary all-base irrationality; fixed-alpha positive covers are included by regrouping.",
-            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.",
             "comparator_disposition": "not_applicable_not_a_lean_proposition",
             "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
           },
@@ -13171,15 +13171,15 @@
             "id": "four_ninths_square_root_repair_windows",
             "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
             "summary": "4/9 membership is equivalent to a repair at some N in every interval [K,K+2 floor(sqrt K)+12). A single strict-increase window excludes membership.",
-            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.",
             "comparator_disposition": "not_applicable_not_a_lean_proposition",
             "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
           },
           {
             "id": "twenty_one_two_anchor_divergence_density",
             "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
-            "summary": "1/21 membership is equivalent to cofinal divergence on the 60 favorable classes modulo 105, equivalently upper density at least 2/7 or divergent reciprocal mass of those rows.",
-            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+            "summary": "For the 1/21 greedy support, membership is equivalent to divergent reciprocal mass on the favorable selected rows. Two anchors give 60/105 favorable classes and conditional upper density >= 2/7; twelve anchors give a larger restricted set with 1011/1260 favorable classes and conditional upper density >= 337/840 > 2/5. Each density refers to its own restricted set; no membership or lower density is established.",
+            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.",
             "comparator_disposition": "not_applicable_not_a_lean_proposition",
             "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
           },
@@ -13187,7 +13187,7 @@
             "id": "prime_cofactor_repair_obstruction",
             "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
             "summary": "Actual modulus-420 tetraprime repair fails infinitely often; an exact 80-anchor prefix gives prime-cofactor jumps at least 7 for multiplier 120 and at least 2 for multiplier 420. General infinite admissible supports defeat every finite fixed multiplier menu.",
-            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.",
             "comparator_disposition": "not_applicable_not_a_lean_proposition",
             "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
           },
@@ -13195,7 +13195,7 @@
             "id": "prime_repair_finite_support_rigidity",
             "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
             "summary": "Bounded prime jumps characterize finite greedy support; eventual repair at every prime characterizes zero or a single Mersenne atom for targets below one.",
-            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.",
             "comparator_disposition": "not_applicable_not_a_lean_proposition",
             "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
           },
@@ -13480,10 +13480,10 @@
           {
             "id": "critical_value_mean_budget",
             "contribution_class": "ordinary proved auxiliary theorem; novelty unassessed",
-            "summary": "For every monic complex polynomial of degree n with 2 <= n <= 5, whose roots lie in any disk of radius R >= 0, the critical points c_j counted with multiplicity satisfy sum_j |f(c_j)|^(1/n) <= (n-1)R. The constant is attained by f(z)=(z-tau)^n-lambda in its centered disk of radius |lambda|^(1/n). More generally FP_(n-1) implies this critical-value budget at every degree. Mechanism: The symmetric critical-value functional is continuous plurisubharmonic on the root polydisk, including multiple-critical loci, so successive maximum principles move its maximum to the root torus. An exact self-inversive product identity there converts critical values to the free-point inequality; concavity changes exponent 1/(n-1) to 1/n. FP1-FP4 supply degrees two through five. FP4 combines a central log-energy/variance estimate with an outer K4-Holder and radical bound.",
+            "summary": "For monic f of degree 2 <= n <= 5 with roots in any radius-R disk, sum_j |f(c_j)|^(1/n) <= (n-1)R, counting critical multiplicities, sharply. In every degree FP_(n-1) implies the budget: the reflected derivative and maximum modulus give |f(c_j)| <= product_k |1-conj(c_j)c_k| in the unit disk, radial contraction handles the boundary, and concavity supplies exponent 1/n. FP1-FP4 settle degrees two through five.",
             "evidence_mode": "Ordinary paper and research-note proofs; scalar Lean support is not a formalization of this theorem",
             "comparator_disposition": "not_applicable_not_a_lean_proposition",
-            "boundary": "This is an ordinary mathematical proof of an auxiliary critical-value budget, not a complete Lean formalization or Comparator result. The scalar Lean companion assumes the nonnegative entries and sum bound; it does not prove the polynomial identity, plurisubharmonic reduction or complete free-point inequalities and must not represent this family. The bound controls merge-level capacities, not inverse-ray lengths or admissible-hub selection; it does not prove the parent metric endpoint. The higher-degree free-point burden remains FP_m for m >= 5. Equality on the radial family prevents a universal strict improvement of this budget."
+            "boundary": "Ordinary proof; the full reflected-derivative and finite-point arguments are not yet Lean-checked or Comparator-admitted. The budget bounds critical values, not path lengths or hub selection. FP_m remains open here for m >= 5; the radial family attains equality."
           },
           {
             "id": "newton_value_decay",
@@ -13707,7 +13707,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1758
+        "line": 1736
       }
     },
     {
@@ -13731,7 +13731,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 107
+        "line": 105
       }
     },
     {
@@ -13779,7 +13779,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "exact nonintegrality of every reduced tail",
-        "line": 1574
+        "line": 1560
       }
     },
     {
@@ -13791,7 +13791,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "actual cofinal local-window escape",
-        "line": 1609
+        "line": 1595
       }
     },
     {
@@ -13803,7 +13803,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "function-faithful two-dimensional representation",
-        "line": 1688
+        "line": 1674
       }
     },
     {
@@ -13815,7 +13815,7 @@
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "global overlap-height growth",
-        "line": 1485
+        "line": 1480
       }
     },
     {
@@ -13827,7 +13827,7 @@
         "source": "paper/erdos-249-binary-totient-series.tex",
         "environment": "problem",
         "title": "first-harmonic anti-concentration on supplier fibres",
-        "line": 1672
+        "line": 1700
       }
     },
     {
@@ -13839,7 +13839,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "weakest native recurrence criterion",
-        "line": 1819
+        "line": 1797
       }
     },
     {
@@ -13851,7 +13851,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "actual-orbit invariant",
-        "line": 1841
+        "line": 1819
       }
     },
     {
@@ -13863,7 +13863,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1863
+        "line": 1841
       }
     }
   ],

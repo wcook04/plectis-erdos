@@ -108,10 +108,10 @@
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
     "claim-faithful-publication-systems-paper.pdf": "sha256:bdbdcccc5127fafaca687a575222c81fd49930eb9779f24805255970488293c9",
-    "docs/claims.json": "sha256:4f148ecc2c3467846ca515f32e009644e0764b4052d31e6e2150b85bee562668",
+    "docs/claims.json": "sha256:fed62e6cc144c4a1bbfa2863756e739a980c190d8d1fe571c720db30a0459c99",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:770984ca3495d5626f811a054df70a2f8307385065b94e59a9afed239098c924",
-    "docs/publication_contract.json": "sha256:be13d7a233de59c7294fc4113c4d51aaa5c80b2b75939249d21a8ddef3eb2c1f",
+    "docs/problems.json": "sha256:4d5b1c2a6e89c7d7ed6935762f332a6201415c43742ba2568be5e02e4d1cc6bb",
+    "docs/publication_contract.json": "sha256:9d5bd4a9ff7c86a7d8d7d2ed0d1efaa842ae8c4f65e77614d9a7c9eba1d28b3d",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1758,
+        "line": 1736,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -354,7 +354,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "section",
-        "line": 107,
+        "line": 105,
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "title": "Introduction"
       },
@@ -402,7 +402,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1574,
+        "line": 1560,
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "title": "exact nonintegrality of every reduced tail"
       },
@@ -414,7 +414,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1609,
+        "line": 1595,
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "title": "actual cofinal local-window escape"
       },
@@ -426,7 +426,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1688,
+        "line": 1674,
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "title": "function-faithful two-dimensional representation"
       },
@@ -438,7 +438,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1485,
+        "line": 1480,
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "global overlap-height growth"
       },
@@ -450,7 +450,7 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1672,
+        "line": 1700,
         "source": "paper/erdos-249-binary-totient-series.tex",
         "title": "first-harmonic anti-concentration on supplier fibres"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1819,
+        "line": 1797,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "weakest native recurrence criterion"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1841,
+        "line": 1819,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "actual-orbit invariant"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1863,
+        "line": 1841,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },
@@ -529,9 +529,9 @@
       "CORPUS_MANIFEST.json",
       "PUBLIC_CORPUS_CHECKPOINT.json"
     ],
-    "reading_rule": "Read the short paper and docs/claims.json; docs/PALOMAR_RESULT_SHOWCASE.json orders six ordinary families: critical_value_separation_connector (separated simple nonzero critical value); sharp_collinear_diameter (optimal collinear bound, all degrees); primitive_sparse_quintic_paths (z^5+a z^4+b z+c); translated_cubic_quotient_fibres and translated_quartic_quotient_fibres (P((z-h)^q), q>=2, cubic/quartic P); critical_value_mean_budget (every enclosing disk, degrees 2-5, critical multiplicities). Metric corollaries use open-unit-disk roots; cubic fibres require two distinct zero values, while quintic/quartic conclusions permit coincident listed occurrences. The quartic lift uses the cited quartic theorem. Exact hypotheses and narrower formal boundaries are in those family rows. Read FRONTIER.md before the dated, nonexhaustive STRONGEST_RESULTS.json activation map; research discovery is not Comparator admission.",
+    "reading_rule": "Read the short paper, docs/claims.json and the six ordinary family rows in docs/PALOMAR_RESULT_SHOWCASE.json for solved metric regimes, the critical-value budget and exact formal boundaries. Read FRONTIER.md before the dated STRONGEST_RESULTS.json; discovery is not Comparator admission.",
     "source_index": {
-      "content_digest": "sha256:770984ca3495d5626f811a054df70a2f8307385065b94e59a9afed239098c924",
+      "content_digest": "sha256:4d5b1c2a6e89c7d7ed6935762f332a6201415c43742ba2568be5e02e4d1cc6bb",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {

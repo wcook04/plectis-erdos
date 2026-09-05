@@ -331,8 +331,8 @@
         "relative_judgement": "A completed sharp value inequality through degree five, placed ahead of local calculus and perturbation machinery. It remains auxiliary: the paper's solved metric regimes deserve priority and no path-length conclusion follows from this budget.",
         "evidence_status": "ordinary_paper_proof_not_comparator_evidence",
         "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=1041].families[critical_value_mean_budget]",
-        "hard_mechanism": "The symmetric critical-value functional is continuous plurisubharmonic on the root polydisk, including multiple-critical loci, so successive maximum principles move its maximum to the root torus. An exact self-inversive product identity there converts critical values to the free-point inequality; concavity changes exponent 1/(n-1) to 1/n. FP1-FP4 supply degrees two through five. FP4 combines a central log-energy/variance estimate with an outer K4-Holder and radical bound.",
-        "open_boundary": "This is an ordinary mathematical proof of an auxiliary critical-value budget, not a complete Lean formalization or Comparator result. The scalar Lean companion assumes the nonnegative entries and sum bound; it does not prove the polynomial identity, plurisubharmonic reduction or complete free-point inequalities and must not represent this family. The bound controls merge-level capacities, not inverse-ray lengths or admissible-hub selection; it does not prove the parent metric endpoint. The higher-degree free-point burden remains FP_m for m >= 5. Equality on the radial family prevents a universal strict improvement of this budget."
+        "hard_mechanism": "On the unit circle Re(z f′/f) >= n/2 gives |nf-zf′| <= |f′|. The reflected derivative G(z)=n product_k(1-conj(c_k)z) has no zeros in the disk for interior roots, so maximum modulus bounds each |f(c_j)| by product_k |1-conj(c_j)c_k|. Radial contraction includes boundary roots and multiplicities. FP1-FP4 and scalar concavity give the sharp budget through degree five.",
+        "open_boundary": "This is an ordinary mathematical proof of an auxiliary critical-value budget, not a complete Lean formalization or Comparator result. The scalar Lean companion assumes the nonnegative entries and sum bound; it does not prove the reflected-derivative comparison or complete free-point inequalities and must not represent this family. The bound controls merge-level capacities, not inverse-ray lengths or admissible-hub selection; it does not prove the parent metric endpoint. The higher-degree free-point burden remains FP_m for m >= 5. Equality on the radial family prevents a universal strict improvement of this budget."
       },
       {
         "family_id": "critical_value_separation_connector",
@@ -448,7 +448,7 @@
         "relative_judgement": "A useful obstruction or exact target reduction, placed below complete support regimes; it supplies no surviving all-depth repair producer.",
         "evidence_status": "reviewed_ordinary_proof_with_exact_finite_checks_not_new_lean_or_comparator_authority",
         "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=257].families[twenty_one_two_anchor_divergence_density]",
-        "hard_mechanism": "Two selected fractional atoms rule out alignment on sixty classes modulo 105; upper-half skips amplify this finite phase certificate to a conditional upper-density bound.",
+        "hard_mechanism": "Selected fractional atoms exclude alignment on exact residue classes. Upper-half skips turn 60 classes modulo 105 into upper density >= 2/7 on the two-anchor restricted set; twelve anchors enlarge that set and give 1011 classes modulo 1260, hence upper density >= 337/840.",
         "open_boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
       }
     ],
@@ -2343,9 +2343,9 @@
         "comparator_eligibility": "source_landed_but_not_comparator_configured",
         "queue_role": "source_landscape_review_not_comparator_evidence",
         "source_declaration": "Ordinary theorem FP_(n-1) implies (S)_n, and degree-two-through-five corollary",
-        "source_file": "research_corpus/Erdos1041/FreePointTorusPshReduction.md",
-        "source_anchor": "37-40; 42-181",
-        "source_commit": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+        "source_file": "docs/research/erdos1041-reflected-critical-value-bound.md",
+        "source_anchor": "6-118",
+        "source_commit": "ccb9324347bf84b88bef902b593f18aef6be4249",
         "paper": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "paper_anchor": "res:critical-value-budget",
         "statement": "For every monic complex polynomial of degree n with 2 <= n <= 5, whose roots lie in any disk of radius R >= 0, the critical points c_j counted with multiplicity satisfy sum_j |f(c_j)|^(1/n) <= (n-1)R. The constant is attained by f(z)=(z-tau)^n-lambda in its centered disk of radius |lambda|^(1/n). More generally FP_(n-1) implies this critical-value budget at every degree.",
@@ -2355,8 +2355,8 @@
           "At general n >= 2, the bridge assumes FP_(n-1) for arbitrary points of the closed unit disk; FP_m is established here for m <= 4."
         ],
         "conclusion": "A sharp arithmetic-mean budget for all critical-value capacities in degrees two through five, with an all-degree conditional reduction to FP; no metric path conclusion.",
-        "hard_mechanism": "The symmetric critical-value functional is continuous plurisubharmonic on the root polydisk, including multiple-critical loci, so successive maximum principles move its maximum to the root torus. An exact self-inversive product identity there converts critical values to the free-point inequality; concavity changes exponent 1/(n-1) to 1/n. FP1-FP4 supply degrees two through five. FP4 combines a central log-energy/variance estimate with an outer K4-Holder and radical bound.",
-        "attribution": "Ordinary source proofs at paper pin 99f4bf47422abbd8757cbb22b50ba079d764d3a7: research_corpus/Erdos1041/FreePointTorusPshReduction.md:37-40; FreePointMeanInequalityFP3.md:19 and FreePointZeroInsertionFP4Matching.md:133 in the same public research directory supply FP3/FP4. The enclosing-disk extension follows by normalization, or by comparing to its minimal radius. No novelty, priority or external-review acceptance is claimed.",
+        "hard_mechanism": "On the unit circle Re(z f′/f) >= n/2 gives |nf-zf′| <= |f′|. The reflected derivative G(z)=n product_k(1-conj(c_k)z) has no zeros in the disk for interior roots, so maximum modulus bounds each |f(c_j)| by product_k |1-conj(c_j)c_k|. Radial contraction includes boundary roots and multiplicities. FP1-FP4 and scalar concavity give the sharp budget through degree five.",
+        "attribution": "The pointwise reflected-derivative comparison and its critical-value consumer are proved in docs/research/erdos1041-reflected-critical-value-bound.md at ccb9324347bf84b88bef902b593f18aef6be4249. The note cites the classical boundary reflection ingredient. FP3/FP4 remain at 99f4bf47422abbd8757cbb22b50ba079d764d3a7 in research_corpus/Erdos1041/FreePointMeanInequalityFP3.md and FreePointZeroInsertionFP4Matching.md.",
         "limitations": [
           "This is an ordinary mathematical proof of an auxiliary critical-value budget, not a complete Lean formalization or Comparator result.",
           "The scalar Lean companion assumes the nonnegative entries and sum bound; it does not prove the polynomial identity, plurisubharmonic reduction or complete free-point inequalities and must not represent this family.",
