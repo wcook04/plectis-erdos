@@ -74,7 +74,8 @@ cofinally many such pairs would exclude eventual integrality
 \lword{Erdos251/PrimeGapDyadicTail.lean}{1112}
       {primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch}
       {the conditional prime-gap small-mismatch theorem}.
-Neither smallness nor its cofinal occurrence is proved.  The quadratic example
+An explicit remainder bound certifies one actual adjacent pair at $h=1$,
+$N=2$; its cofinal occurrence is not proved.  The quadratic example
 $g_n=2(n^2+4n+2)$, $T_n=2(n+4)^2$ shows that positivity, parity, polynomial
 growth, unboundedness, and nonperiodicity cannot force this mechanism.  A
 second example has finite sum $-n/2^n$ and non-eventually-periodic coefficients
@@ -988,7 +989,8 @@ small-shift obstruction}; its quantified form is the
 small-mismatch theorem}; and the actual-prime-gap specialisation is the
 \lword{Erdos251/PrimeGapDyadicTail.lean}{1112}{primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch}{prime-gap
 specialisation}.  Theorem~\ref{res:smallpair} is conditional on its two tail
-inequalities; no theorem asserting that such pairs occur is claimed here.
+inequalities. Corollary~\ref{res:finite-smallpair} below supplies one actual
+pair; no theorem supplies their cofinal occurrence.
 
 All three are stated for a rational orbit, while the prime-gap tail
 $\mathcal T$ of Section~\ref{sec:tail} is real, so the rational statement does
@@ -1019,7 +1021,8 @@ adjacent pair after the alleged onset of integrality.
 \noindent Corollary~\ref{res:smallpair-real} is proved here and is not a
 declaration in the pinned Lean module, whose small-shift theorems are stated
 for the rational orbit.  It is the form that applies to the real tail, and it
-carries the same two unproved inequalities as its rational counterpart.
+carries the same two smallness conditions as its rational counterpart.
+Their cofinal occurrence remains unproved.
 
 The third hypothesis, on its own, is available.  For the actual gaps tabulated
 in Section~\ref{sec:problem} it reads $g_4=2\ne4=g_3$ at $h=1$, $N=2$; and
@@ -1259,33 +1262,80 @@ has absolute value at most $R_{h,N,L}(M)$, so under~\eqref{eq:truncation} the
 full sum lies at positive distance from every integer.
 \end{proof}
 
-\noindent The last distance-to-integers inference is the elementary paper
-argument in the displayed proof: an error at most $R$ cannot reach an integer
-when the approximation is farther than $R$ from every integer.  It is not
-currently a named Lean declaration.  For instance, if
-$S_{h,N,L}=2/5$ and $R_{h,N,L}(M)=1/20$, the full sum lies within $1/20$ of
-$2/5$ and so at distance at least $7/20$ from every integer, which settles
-\eqref{eq:shift-escape} at that $N$.  The prime-gap tail
-bound, the convergence used above, and the existence of blocks satisfying
-\eqref{eq:truncation} are not consequences of that inference.  The
-proposition's full sum is moreover real-valued, so the reverse-triangle step
-used here is a paper proof and not an instance of any rational-valued formal
-declaration.
+\begin{proposition}[An explicit actual-gap remainder bound]\label{res:explicit-remainder}
+Set $P(x)=x^4+8x^3+36x^2+104x+150$.  For $h,N\ge0$ and $L\ge1$,
+\[
+ \left|\mathcal T_{N+h}-\mathcal T_N-S_{h,N,L}\right|
+ \le E_{h,N,L}:=
+ \frac{1250}{2^L}\bigl(P(N+h+L+2)+P(N+L+2)\bigr).
+\]
+In particular this bound requires no conjectural estimate on prime gaps.
+\end{proposition}
 
-\noindent Taking the classical bound $M(n)\ll n\log n$, a choice
-$L=\lceil A\log_2(N+h+2)\rceil$ with any fixed $A>1$ makes the right side a
-negative power of $N$ up to logarithms.  Thus~\eqref{eq:truncation} asks for a finite
-dyadic anti-concentration estimate on a logarithmic-length block, not control
-of an infinite tail and not eventual periodicity of the full gap sequence.
-For Problem~\ref{prob:smallpair}, the same truncation must certify two adjacent
-full-tail values inside the open unit interval, together with the displayed
-gap mismatch.  A finite prefix is useful only when its omitted tail is
-rigorously dominated.
+\begin{proof}
+The checked estimate $p_n\le1250(n+1)^4$ gives
+$0\le g_n\le p_{n+1}\le1250(n+2)^4$
+\lword{Erdos251/PrimeGapDyadicTail.lean}{360}{prime0_le_polynomial}{the polynomial prime bound}.
+The omitted absolute tail is therefore at most
+\[
+ 1250\sum_{j>L}\frac{(N+h+j+2)^4+(N+j+2)^4}{2^j}.
+\]
+For $m\ge0$, the polynomial identity
+$2P(m)=(m+1)^4+P(m+1)$ telescopes to
+\[
+ \sum_{k=1}^{J}\frac{(m+k)^4}{2^k}
+ =P(m)-\frac{P(m+J)}{2^J}.
+\]
+The last term tends to zero.  Apply this identity with
+$m=N+h+L+2$ and $m=N+L+2$, after writing $j=L+k$.
+\end{proof}
+
+\begin{corollary}[An actual adjacent small-mismatch pair]\label{res:finite-smallpair}
+The shifts $\mathcal T_3-\mathcal T_2$ and $\mathcal T_4-\mathcal T_3$
+both lie in $(-1,1)$ and neither is an integer.  The corresponding gaps
+satisfy $g_4=2\ne4=g_3$.
+\end{corollary}
+
+\begin{proof}
+Take $h=1$ and $L=40$.  Direct integer calculation from the first $46$
+primes gives the following block numerators and error numerators, with common
+denominator $Q=2^{40}=1099511627776$:
+\[
+\begin{array}{c|r|r}
+ N&D_{1,N,40}&Q E_{1,N,40}\\\hline
+ 2&-662838684750&11764181250\\
+ 3& 873345886050&12805761250
+\end{array}
+\]
+For each row, writing $D$ and $B$ for the last two entries, one checks
+\[
+ |D|+B<Q,\qquad
+ B<\min\{D\bmod Q,\ Q-(D\bmod Q)\}.
+\]
+The first inequality puts the entire certified interval inside $(-1,1)$;
+the second excludes every integer.  These are strict integer comparisons,
+not inferences from rounded numerical tails.  The script
+\texttt{scripts/check\_prime\_gap\_tail\_certificate.py} regenerates the
+prime list, both rows, the polynomial identity and the strict margins.
+\end{proof}
+
+The remainder estimate and its assembly with the finite computation are
+ordinary proofs here, not new Lean declarations.  The bound produces a
+certificate for these two actual tails; it does not produce such pairs
+cofinally, or for every fixed shift length.  Thus it supplies an instance of
+the local obstruction without establishing Problem~\ref{prob:smallpair}.
+
+For fixed $h$, the explicit bound also gives a logarithmic truncation length:
+$L=\lceil A\log_2(N+h+2)\rceil$ with fixed $A>4$ makes
+$E_{h,N,L}=O((N+h+2)^{4-A})$ as $N\to\infty$.  The familiar sharper
+prime-growth estimate can improve the constant in this window length, but is
+not needed to make the certificate finite.  The unresolved work is to place
+the dyadic block away from the integer arcs often enough at these scales.
 
 What~\eqref{eq:truncation} requires is joint control of the finite block of
 weighted differences $(g_{N+h+1}-g_{N+1},\ldots,g_{N+h+L}-g_{N+L})$ modulo
 powers of two, along a block of logarithmic length.  We do not know how to obtain such control and
-we make no progress on it here.  The strongest results on prime gaps address a
+the finite certificate above does not establish it.  The strongest results on prime gaps address a
 different shape of question.  Zhang's bounded-gap theorem
 \cite[Theorem~1, p.~1122]{zhang2014} produces infinitely many bounded
 consecutive-prime gaps.
@@ -1311,9 +1361,11 @@ rewriting by $D_{h,N,L}$, the finite-approximation inference, the positive
 carry countermodel above, the identification of the concrete tail
 $\mathcal T$ with the checked recurrence, and the real form of the small-shift
 obstruction in Corollary~\ref{res:smallpair-real}.
-The missing statements are the multiple-in-shift lemma used by
-Problem~\ref{prob:divisor-hit}, a prime-gap tail domination sharp enough for a
-certificate, and a cofinal anti-concentration or adjacent-mismatch theorem.
+The explicit polynomial remainder bound and its two finite certificates above
+are ordinary mathematical proofs with exact integer replay; their Lean
+formalization remains to be supplied.  The remaining producer is a cofinal
+anti-concentration or adjacent-mismatch theorem.  The multiple-in-shift lemma
+used by Problem~\ref{prob:divisor-hit} also remains to be formalised.
 No theorem supplies the cofinal pairs in~\eqref{eq:smallpair}, and no cited
 prime-distribution estimate is claimed or formalised as supplying those
 statements.
