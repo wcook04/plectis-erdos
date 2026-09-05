@@ -1242,8 +1242,8 @@ If $n\in J$, the integer identity $u_n(L/d_n)=W$ gives
 $L/d_n\equiv Wu_n^{-1}\pmod p$.  Summing proves the congruence.
 The reduced denominator is $L/\gcd(B,L)$; the
 \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/0d34630e1cc9d2b1ac6edfa7cfdba83b31bdc8fe/ErdosProblems/Erdos68/PrimePoleDenominator.lean#L41}{prime-power survival criterion}
-gives $p$-valuation $e$ exactly when $p\nmid B$.  Since $W$ is nonzero modulo $p$, this is the stated
-inverse-sum condition.
+gives $p$-valuation $e$ exactly when $p\nmid B$.  Since $W$ is nonzero modulo $p$, this is the
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/6e28e93fc9d8d67c382260b5f3d5fa65ceb2363d/ErdosProblems/Erdos68/PrimePoleCriterion.lean#L223}{maximal-hit cancellation criterion}.
 \end{proof}
 
 At the endpoint $M=p-1$ with $p\ge5$, Wilson's theorem supplies the hit $n=p-2$.
