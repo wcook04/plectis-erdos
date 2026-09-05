@@ -135,7 +135,7 @@ $\forall h\, \forall N_0\, \exists N \exists L$.
 \coord{binary-digit} \scale{fixed} \ev{Lean}
 \end{prop}
 
-\begin{prop}[Cofinal positivity, and why it is exactly half a certificate]
+\begin{prop}[Cofinal positivity and the endpoint obstruction]
 \label{prop:sign}
 The true actual-LCM tail difference is strictly positive for every $a \ge 8$,
 with no irrationality hypothesis
@@ -145,9 +145,9 @@ At a translated offset $J$ and depth $K$ satisfying
 $J+K+(a+6)<2\cdot2^a$ and $2H+J+K+2<2^K$, integrality forces the residue
 to the \emph{top edge}, exactly $2^{K} - e$
 (\lean{Erdos257PeriodNoncollapse.actualLcm\_integral\_forces\_topEdgeResidue}{TotientActualLcmOrbitSign.lean:211}).
-Positivity does not exclude the top edge. So the strongest cofinal fact the
-corpus owns about the actual object supplies one of the two inequalities a
-certificate needs and provably cannot supply the other.
+This fixes the sign of the true survivor, but does not construct a
+central-band certificate.  The top-edge residue remains compatible with
+integrality and needs an independent arithmetic exclusion.
 \coord{actual-lcm} \scale{cofinal} \ev{Lean}
 \end{prop}
 
@@ -204,8 +204,8 @@ sum at \texttt{:359}, aperiodicity at \texttt{:487}, parity match at \texttt{:19
 \end{prop}
 
 Propositions~\ref{prop:sign}--\ref{prop:parity} are the four facts a reader
-should carry into the next section: the corpus's best cofinal information is
-half a certificate, its best rank information runs the wrong way, its
+should carry into the next section: cofinal positivity leaves an endpoint-residue obstruction, the rank information
+runs the wrong way, its
 reformulations are equivalences rather than reductions, and every purely
 qualitative property of the coefficient word is satisfied by a rational
 countermodel.
@@ -264,8 +264,8 @@ at full resolution and bounded range, so B1 says extending them is evidence
 forever and proof never. Every unconditional \emph{cofinal} theorem (letterwise
 positivity for all $a \ge 8$, the tail bounds from $\varphi(m) \le m$,
 unbounded Mersenne-shadow denominator growth) sits at coarse resolution and
-unbounded range, and Proposition~\ref{prop:sign} proves in the corpus's own
-coordinate that this is exactly half a certificate.
+unbounded range. Proposition~\ref{prop:sign} illustrates why such sign
+information can leave the arithmetic endpoint obstruction unresolved.
 
 \subsection{B1: the finite-inspection barrier, as a theorem}
 
