@@ -2,7 +2,7 @@
   "schema": "plectis_strongest_result_activation_map_v2",
   "problem_id": "erdos_1041",
   "status": "open",
-  "source_checkpoint": "0cf31dbc7a9b607aa68d537a4f3a7be57ae52a98",
+  "source_checkpoint": "123d98a0c198ebf6754740bf23b236087c6b469c",
   "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
   "results": [
     {
@@ -2430,6 +2430,56 @@
       "public_authority_paths": [
         "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/HubTaylorSpokeCertificate.md",
         "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_hub_taylor_spoke_certificate.py"
+      ]
+    },
+    {
+      "source_result_id": "critical_spectrum_blaschke_zero_separation_2026_09_05",
+      "exact_statement": "Let B be a finite Blaschke product of degree k>=2 with zeros b_1..b_k in the disc and |B(c)|>=m>0 at every critical point c in the disc. Then (a) rho(b_i,b_j) >= 2 sqrt(m)/(1+m), i.e. hyperbolic distance d(b_i,b_j) >= 4 artanh(sqrt m), for every i != j (an identity at k=2, where the unique critical value has modulus tanh^2(d/4), and asymptotically sharp at every k); (b) prod_{l != j} rho(b_l,b_j) = (1-|b_j|^2)|B'(b_j)| >= m for every j, asymptotically sharp on b_j = r omega^j as r -> 1. Proofs: {|B|<m} contains no critical point so it splits into k degree-one components; (a) by factoring B = phi_i phi_j R with |B| <= |phi_i phi_j| and the connectivity of a degree-two sublevel set containing its critical point; (b) by Schwarz-Pick on the inverse of B/m on one component. On the ancestor component of the low-critical ODE this holds with m = mu/t = e^-x and NO failure hypothesis. The 7-armed star B = (z^7 - r^7)/(1 - r^7 z^7) realises the 9/25 attractor's Blaschke data for every r >= 0.942490 (certified at r = 99/100: m = 0.9320653 > e^-X_* and rho^2 >= 0.9993311 > tanh^2(d_min(1)/2)), so there is no realisability obstruction at that level.",
+      "status": "ordinary_complete_unconditional_theorem_with_exact_rational_witnesses_not_lean_checked_novelty_not_claimed",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalSpectrumClusterSeparation.md",
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_critical_spectrum_separation.py"
+      ]
+    },
+    {
+      "source_result_id": "hyperbolic_packing_arity_floor_two_fifths_2026_09_05",
+      "exact_statement": "Let f be a squarefree monic polynomial of degree n>=2 and mu its least critical-value modulus. If mu<=2/5 then two distinct roots of f are joined by a rectifiable curve inside {|f|<1} of length strictly less than 2; no hypothesis on root locations, arity, or capacity. Scale-free form: every squarefree monic f has two distinct roots joined inside {|f|<(5/2)mu} by a curve of length below 2((5/2)mu)^(1/n). Mechanism: identical to ClusterSeparationLowCriticalClosure.md (ancestor component, COVER failure, boundary hop, comparison ODE, rounding discipline) except the arity floor. Lemma P: with h the COVER observer at the origin of the uniformised ancestor component, b_j its k roots, lam_j=-log|b_j|, D=d_min(a), E=e^(2/a)-1 (so cosh(D/2)=e^(2/a) and the hyperbolic ball B(b_j,D/2) has area 2 pi E), the balls are pairwise disjoint, at most one contains 0, G(z)=-log|z| is harmonic off 0 so the hyperbolic mean value property gives lam_j=(1/A_0) int_{B_j} G dA_hyp for every non-exceptional j, and the bathtub rearrangement against the centred ball of the same area (cosh R=C) gives sum_j lam_j <= delta(a)/2 + [(C-1)/2 log((C+1)/(C-1)) + log((C+1)/2)]/E with C=1+(k-1)E (one exceptional ball) or the same without delta/2 with C=1+kE (none); the sum is at most the larger of the two, so failure forces k >= min(1+2(exp(E(x-delta/2)-1)-1)/E, 2(exp(Ex-1)-1)/E) (P), using (C-1)artanh(1/C)<=1. The certificate takes the maximum of (P), the COVER floor and the landed ordered profile. Floating supremum of the hitting time drops from 0.99364 to X_*=0.89374, so 0.410 is the mechanism's ceiling; exact rational certificate in quick mode X_cert=91437302713/100000000000<0.914374 and (2/5)exp(X_cert)<1.",
+      "status": "ordinary_complete_all_degree_target_regime_proof_with_exact_rational_certificate_not_lean_checked_conductor_read_not_independently_reviewed",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/HyperbolicPackingArityFloor.md",
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_packing_arity_floor.py"
+      ]
+    },
+    {
+      "source_result_id": "fixed_degree_angular_cluster_closure_2026_09_05",
+      "exact_statement": "Let f be squarefree monic of degree n>=3 with least critical-value modulus mu. If mu<=mu_n then two distinct roots of f are joined inside {|f|<1} by a rectifiable curve of length below 2, with certified mu_4=61/100, mu_5=139/250, mu_6=253/500, mu_7=23/50, mu_8=209/500, mu_9=19/50 (mechanism values exp(-B_n)=0.6102, 0.5566, 0.5067, 0.4608, 0.4187, 0.3803; at n=3 the value 333/500 is a sanity row since degree three is proved in the corpus; from n=10 the all-degree theorem is the better statement). Mechanism: a STATIC bound, no ODE. With w_j=e^(-d_j) for the hyperbolic distances from the COVER observer, failure gives w_iw_j<=r^2=e^(-d_min) for every pair and w_j<=W=tanh(delta/4) (Lemma 2, the hyperbolic law of cosines with the angle kept: s_ij=sin^2((phi_i-phi_j)/2) >= 2M w_iw_j - w_i^2 - w_j^2 with M=cosh d_min), and Lemma 3 (angular second moment): sum_{i<j} s_ij = (k^2-|sum_j e^{i phi_j}|^2)/4 <= k^2/4. Summing gives M S^2 <= k^2/4 + (M+k-1)Q with S=sum w_j, Q=sum w_j^2 <= rS + W(W-r), hence Theorem 4: x <= Theta(k,a) = 2S(k,a)/(1-W^2) with S the positive root of M S^2-(M+k-1)rS-[k^2/4+(M+k-1)W(W-r)]=0. With k<=n and a<=1, log(1/mu) <= min(Lambda(n,1), Theta(n,1)) under failure, and Theta is the binding branch at every n>=3 (Theta(k,1) ~ 0.0980k against Lambda(k,1) = 0.1362k, a uniform 1.389-fold strengthening of the arity floor).",
+      "status": "ordinary_complete_fixed_degree_family_of_theorems_with_exact_rational_certificate_not_lean_checked_conductor_read_monotonicity_in_area_asserted",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedDegreeClusterSeparationClosure.md",
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_fixed_degree_cluster_closure.py"
+      ]
+    },
+    {
+      "source_result_id": "near_fekete_inner_model_widening_2026_09_05",
+      "exact_statement": "Proposition 1 (exact inner reduction): f(z)=rho^n Q(z/rho)+C with Q'=n prod(Z-Z_j), sum Z_j=0, is an exact change of variables, and min_c L(c)=2R+rho min_j A_j+O(rho^2) with A_j=-2|Z_j|+int over the two arms of (1-cos chi) ds. Lemma 3/Proposition 4 (hub endpoint cancellation): at a simple hub the two branch tangents satisfy T_+=-T_-, so in the tangent-support identity the hub terms cancel and A_j=-K_j, the total curvature charge of the two arms; the minimum two-arm obligation in the cusp is exactly max_j K_j>=0. Corollary 5: two straight rays perpendicular to the radius give A_j=0, radial arms give -2|Z_j|. The corpus cusp model of NearFeketeCuspLaw.md is a proper slice for every n>=4 (2n-5 real parameters against 1; the slice reproduces kappa_n at n=3..6 to 5e-7..4e-11). Admissibility is vacuous in the cusp (threshold n(1-c)/rho^n -> infinity). Exact chord certificates (Fraction arithmetic, Kantorovich critical discs) refute the |f(c)|^s-weighted mean of L(c) at (n,s)=(4,4),(4,8),(5,8).",
+      "status": "ordinary_proofs_of_the_inner_reduction_and_charge_identity_plus_exact_chord_certificates_degree_five_refutation_withdrawn_by_conductor",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/NearFeketeInnerModelWidening.md",
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_near_fekete_inner_model.py"
+      ]
+    },
+    {
+      "source_result_id": "exterior_energy_has_no_floor_from_the_failure_inequalities_2026_09_05",
+      "exact_statement": "Theorem E: for every s_0>0 there is a squarefree monic f with every root in the open unit disc, a level t<=1, and a component C of {|f|<t} holding k>=2 roots pairwise at hyperbolic distance >= d_min(a) in its uniformisation, with a COVER observer h at |f(h)|=mu, lam_j<=delta(a)/2 for every root and sum_j lam_j=x=log(t/mu) exactly, every critical value inside C of modulus >= mu, and yet the exterior coefficient energy S=sum l|beta_l|^2 of C is below s_0. Concretely f=z^n-q(n) at t=1 with q(n) the self-consistent separation threshold gives S(n)=(1/n)log(1/(1-q^2))(1+o(1)), q(n)->0.65131, so S->0 while x->0.42879 and a->1. Exact identities (E1)-(E5) express S through the exterior Blaschke data.",
+      "status": "exact_negative_result_on_an_explicit_family_checked_at_40_digits_not_lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ExteriorEnergyFloorClosure.md",
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_exterior_energy_floor.py"
       ]
     }
   ]

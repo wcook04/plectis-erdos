@@ -1235,7 +1235,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 [Dated frontier](../research_corpus/Erdos1041/FRONTIER.md) · [strongest-result map](../research_corpus/Erdos1041/STRONGEST_RESULTS.json) · [corpus manifest](../research_corpus/Erdos1041/CORPUS_MANIFEST.json) · [checkpoint](../research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json)
 
-This source-fingerprinted route contains 207 activated research results at source checkpoint `0cf31dbc7a9b607aa68d537a4f3a7be57ae52a98`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
+This source-fingerprinted route contains 212 activated research results at source checkpoint `123d98a0c198ebf6754740bf23b236087c6b469c`. Read the dated frontier first: the map preserves hypotheses, falsifiers, and open gaps.
 
 Authority boundary: these are public research evidence, not reviewed claim-registry entries or Comparator interfaces. They do not close Erdős #1041 or promote research-corpus rows into the checked result set.
 
