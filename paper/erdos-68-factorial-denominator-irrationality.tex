@@ -1240,8 +1240,9 @@ $\sum_{n\in J}u_n^{-1}\ne0$ in $\mathbb F_p$.
 Write $L=p^eW$, where $p\nmid W$.  If $v_p(d_n)<e$, then $p\mid L/d_n$.
 If $n\in J$, the integer identity $u_n(L/d_n)=W$ gives
 $L/d_n\equiv Wu_n^{-1}\pmod p$.  Summing proves the congruence.
-The reduced denominator is $L/\gcd(B,L)$; its $p$-valuation is $e$ exactly
-when $p\nmid B$.  Since $W$ is nonzero modulo $p$, this is the stated
+The reduced denominator is $L/\gcd(B,L)$; the
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/0d34630e1cc9d2b1ac6edfa7cfdba83b31bdc8fe/ErdosProblems/Erdos68/PrimePoleDenominator.lean#L41}{prime-power survival criterion}
+gives $p$-valuation $e$ exactly when $p\nmid B$.  Since $W$ is nonzero modulo $p$, this is the stated
 inverse-sum condition.
 \end{proof}
 
