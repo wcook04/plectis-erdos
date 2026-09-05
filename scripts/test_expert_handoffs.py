@@ -137,7 +137,18 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
         "conditional_carry_escape",
     ]
 
-    packet = handoffs.semantic_endpoint_handoff_packet()
+    # This fixture tests a four-family context, not the live programme's size.
+    # New canonical families must not invalidate its exact projection assertions.
+    load_json = handoffs.load_json
+    palomar = deepcopy(load_json(handoffs.PALOMAR))
+    for programme in palomar["selection_contract"]["programme_family_order"]:
+        if int(programme["problem"]) == 1041:
+            programme["family_ids"] = [
+                "newton_value_decay", "ray_separation", "translation_avoidance", "root_retention"
+            ]
+    with patch.object(handoffs, "load_json", side_effect=lambda path:
+                      palomar if path == handoffs.PALOMAR else load_json(path)):
+        packet = handoffs.semantic_endpoint_handoff_packet()
     assert packet["root_family_ids"] == route["root_family_ids"]
     assert "no second rank store" in route["authority_posture"]
     assert "all-eight-problem semantic registry" in packet["coverage_boundary"]
@@ -263,7 +274,7 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
 
     # Relation-array order is not a hierarchy: canonical programme positions
     # determine the emitted peer order even when the input array is reversed.
-    palomar = handoffs.load_json(handoffs.PALOMAR)
+    # Reuse the same bounded programme fixture for this metamorphic check.
     claims = handoffs._claim_family_rows(handoffs.load_json(handoffs.CLAIMS))
     ranks = handoffs._canonical_family_ranks(palomar)
     reversed_palomar = deepcopy(palomar)

@@ -1374,12 +1374,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:cf6e73efdc61b9740a8a1192ba1c08eb7448af35547b4fa60446a5479ec4c797",
+      "source_sha256": "sha256:ea262db63c8c70627f33e466f263dc3f4db04af3e763890260bec495d4503dbf",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-243-reciprocal-tail-rigidity.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-243-reciprocal-tail-rigidity.tex",
-      "section_count": 28,
+      "section_count": 29,
       "sections": [
         {
           "level": 1,
@@ -1467,93 +1467,99 @@
         },
         {
           "level": 1,
+          "id": "sec:lcmrecords",
+          "title": "Weighted first crossings of LCM records",
+          "line": 628
+        },
+        {
+          "level": 1,
           "id": "sec:open",
           "title": "Complements and further questions",
-          "line": 628
+          "line": 700
         },
         {
           "level": 2,
           "id": "global-height-and-old-factor-overlap",
           "title": "Global height and old-factor overlap",
-          "line": 690
+          "line": 762
         },
         {
           "level": 2,
           "id": "repair-entropy-across-a-recovery",
           "title": "Repair entropy across a recovery",
-          "line": 700
+          "line": 772
         },
         {
           "level": 2,
           "id": "the-direct-analytic-question",
           "title": "The direct analytic question",
-          "line": 775
+          "line": 847
         },
         {
           "level": 2,
           "id": "a-barrier-extension",
           "title": "A barrier extension",
-          "line": 797
+          "line": 869
         },
         {
           "level": 2,
           "id": "formalisation-targets",
           "title": "Formalisation targets",
-          "line": 812
+          "line": 884
         },
         {
           "level": 4,
           "id": "erd\u0151sstraus.",
           "title": "Erd\u0151s\u2013Straus.",
-          "line": 816
+          "line": 888
         },
         {
           "level": 4,
           "id": "duverney.",
           "title": "Duverney.",
-          "line": 822
+          "line": 894
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 828
+          "line": 900
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 832
+          "line": 904
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 840
+          "line": 912
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 846
+          "line": 918
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 852
+          "line": 924
         },
         {
           "level": 1,
           "id": "app:residue",
           "title": "A factorial residue reduction for forced orbits",
-          "line": 858
+          "line": 930
         }
       ],
       "citations_rendered": 31,
       "local_pdf": "erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:596de3605ce7ba7e1cf6e3ae675edd18128200dca8c5fb6bcb32a8a67baadf47",
-      "pdf_byte_count": 168125,
+      "pdf_sha256": "sha256:069a8f5119957f68ca3c834dcc1f2a6acacc674ca1899ee346cf2d17d7f94f3b",
+      "pdf_byte_count": 178755,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1571,7 +1577,7 @@
           {
             "id": "sec:open",
             "title": "Complements and further questions",
-            "line": 628
+            "line": 700
           }
         ],
         "unresolved_count": 0
@@ -3058,12 +3064,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:e477ab92055c1ba53a5ed84005a45d0d39e5191c76a041bfd113a7caf40beaa9",
+      "source_sha256": "sha256:1c41e47b000cc285e4f68bbe3bfcc37eb40f42fd2830eecec1ce8628dc489fd9",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-257-mersenne-support-subseries.tex",
-      "section_count": 26,
+      "section_count": 31,
       "sections": [
         {
           "level": 1,
@@ -3075,157 +3081,187 @@
           "level": 1,
           "id": "sec:problem",
           "title": "Introduction and main results",
-          "line": 41
+          "line": 43
         },
         {
           "level": 4,
           "id": "the-finite-support-theorem.",
           "title": "The finite-support theorem.",
-          "line": 68
+          "line": 70
         },
         {
           "level": 4,
           "id": "structure.",
           "title": "Structure.",
-          "line": 95
+          "line": 97
+        },
+        {
+          "level": 1,
+          "id": "sec:eight-return-extensions",
+          "title": "Extensions beyond reciprocal summability",
+          "line": 103
+        },
+        {
+          "level": 2,
+          "id": "divisibility-weighted-and-quantitative-criteria",
+          "title": "Divisibility-weighted and quantitative criteria",
+          "line": 109
+        },
+        {
+          "level": 2,
+          "id": "positive-fractional-divisor-covers",
+          "title": "Positive fractional divisor covers",
+          "line": 139
+        },
+        {
+          "level": 4,
+          "id": "the-prime-power-regime.",
+          "title": "The prime-power regime.",
+          "line": 184
+        },
+        {
+          "level": 2,
+          "id": "a-finite-deadline-for-the-actual-repair-problem",
+          "title": "A finite deadline for the actual repair problem",
+          "line": 190
         },
         {
           "level": 1,
           "id": "sec:period",
           "title": "Finite-support denominator periods",
-          "line": 101
+          "line": 205
         },
         {
           "level": 1,
           "id": "sec:forced",
           "title": "Rational values and scaled tails",
-          "line": 128
+          "line": 232
         },
         {
           "level": 4,
           "id": "integral-scaled-tails-and-unboundedness.",
           "title": "Integral scaled tails, and unboundedness.",
-          "line": 134
+          "line": 238
         },
         {
           "level": 4,
           "id": "divisor-coverage-cannot-have-long-gaps.",
           "title": "Divisor coverage cannot have long gaps.",
-          "line": 165
+          "line": 269
         },
         {
           "level": 4,
           "id": "a-reciprocal-sum-lower-bound.",
           "title": "A reciprocal-sum lower bound.",
-          "line": 183
+          "line": 287
         },
         {
           "level": 4,
           "id": "a-booleanm\u00f6bius-characterisation.",
           "title": "A Boolean\u2013M\u00f6bius characterisation.",
-          "line": 213
+          "line": 317
         },
         {
           "level": 4,
           "id": "combined-constraints-on-a-rational-counterexample.",
           "title": "Combined constraints on a rational counterexample.",
-          "line": 255
+          "line": 359
         },
         {
           "level": 1,
           "id": "sec:map",
           "title": "Representative known irrational supports",
-          "line": 261
+          "line": 365
         },
         {
           "level": 4,
           "id": "why-periodic-weights-give-divisibility.",
           "title": "Why periodic weights give divisibility.",
-          "line": 265
+          "line": 369
         },
         {
           "level": 1,
           "id": "sec:bouquet",
           "title": "Structured supports: preserving the remaining divisibility",
-          "line": 343
+          "line": 447
         },
         {
           "level": 1,
           "id": "sec:squarefree",
           "title": "Squarefree support and a coordinate-dependent obstruction",
-          "line": 410
+          "line": 514
         },
         {
           "level": 2,
           "id": "the-values-are-known-at-every-power-of-two-base",
           "title": "The values are known at every power-of-two base",
-          "line": 428
+          "line": 532
         },
         {
           "level": 2,
           "id": "two-block-certificate-hypotheses-have-no-instance",
           "title": "Two block-certificate hypotheses have no instance",
-          "line": 456
+          "line": 560
         },
         {
           "level": 2,
           "id": "the-obstruction-is-a-normalisation-not-the-value",
           "title": "The obstruction is a normalisation, not the value",
-          "line": 502
+          "line": 606
         },
         {
           "level": 1,
           "id": "sec:geometry",
           "title": "Achievement-set geometry and the value 1/2",
-          "line": 522
+          "line": 626
         },
         {
           "level": 2,
           "id": "geometry-after-restricting-the-allowed-exponents",
           "title": "Geometry after restricting the allowed exponents",
-          "line": 554
+          "line": 658
         },
         {
           "level": 2,
           "id": "the-value-12",
           "title": "The value 1/2",
-          "line": 586
+          "line": 690
         },
         {
           "level": 4,
           "id": "exact-row-transport-at-the-endpoint.",
           "title": "Exact-row transport at the endpoint.",
-          "line": 608
+          "line": 712
         },
         {
           "level": 2,
           "id": "a-second-rational-target",
           "title": "A second rational target",
-          "line": 692
+          "line": 796
         },
         {
           "level": 2,
           "id": "the-scaled-greedy-criterion-at-121",
           "title": "The scaled-greedy criterion at 1/21",
-          "line": 716
+          "line": 820
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Open problems",
-          "line": 792
+          "line": 896
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 898
+          "line": 1002
         }
       ],
-      "citations_rendered": 24,
+      "citations_rendered": 25,
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:16da8453229ce6d0483c3602e50098c8cf7e2690aee47c80195106cfcfce975a",
-      "pdf_byte_count": 188555,
+      "pdf_sha256": "sha256:290abcff1a2e5d1bde8ab831575cd36f0ee6876a860ac0200eec4bcef437eaf3",
+      "pdf_byte_count": 206020,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3233,12 +3269,12 @@
           {
             "id": "sec:period",
             "title": "Finite-support denominator periods",
-            "line": 101
+            "line": 205
           },
           {
             "id": "sec:map",
             "title": "Representative known irrational supports",
-            "line": 261
+            "line": 365
           },
           {
             "id": "sec:ask",
@@ -3248,7 +3284,7 @@
           {
             "id": "sec:open",
             "title": "Open problems",
-            "line": 792
+            "line": 896
           }
         ],
         "unresolved_count": 1
@@ -4430,12 +4466,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
       "local_source": "paper/erdos-1041-lemniscate-newton-flow.tex",
-      "source_sha256": "sha256:73bd294ddf307371a8115200a3e14b27b640e84edeff625e2f08e6f2f688bbae",
+      "source_sha256": "sha256:bcf214a1bfa0e9182fe2c75c214cafe015595be18efbc6ab56e23c595146fea9",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-1041-lemniscate-newton-flow.tex",
-      "section_count": 33,
+      "section_count": 37,
       "sections": [
         {
           "level": 1,
@@ -4453,187 +4489,211 @@
           "level": 1,
           "id": "sec:critical-value-separation",
           "title": "An all-degree critical-value separation theorem",
-          "line": 105
+          "line": 106
         },
         {
           "level": 4,
           "id": "bdry:critical-value-separation",
           "title": "Evidence and exact boundary.",
-          "line": 198
+          "line": 204
         },
         {
           "level": 1,
           "id": "sec:solved-polynomial-families",
           "title": "Three exact solved polynomial families",
-          "line": 206
+          "line": 212
         },
         {
           "level": 2,
           "id": "subsec:sharp-collinear-chebyshev",
           "title": "Sharp collinear zeros",
-          "line": 212
+          "line": 218
         },
         {
           "level": 4,
           "id": "rem:sharp-collinear-formal-boundary",
           "title": "Formal boundary.",
-          "line": 283
+          "line": 289
         },
         {
           "level": 2,
           "id": "subsec:primitive-sparse-quintic",
           "title": "The primitive sparse quintic",
-          "line": 289
+          "line": 295
         },
         {
           "level": 4,
           "id": "rem:primitive-quintic-formal-boundary",
           "title": "Formal boundary.",
-          "line": 375
+          "line": 381
         },
         {
           "level": 2,
           "id": "subsec:translated-cubic-quotient-fibres",
           "title": "Translated cubic quotient fibres",
-          "line": 381
+          "line": 387
         },
         {
           "level": 4,
           "id": "rem:cubic-quotient-formal-boundary",
           "title": "Formal boundary.",
-          "line": 440
+          "line": 448
         },
         {
           "level": 4,
           "id": "bdry:solved-polynomial-families",
           "title": "Shared assurance boundary.",
-          "line": 446
+          "line": 454
         },
         {
           "level": 1,
           "id": "sec:frontier",
           "title": "The current frontier: what survives near Fekete configurations",
-          "line": 452
+          "line": 460
         },
         {
           "level": 2,
           "id": "near-fekete-stability-removes-the-radial-distraction",
           "title": "Near-Fekete stability removes the radial distraction",
-          "line": 458
+          "line": 466
         },
         {
           "level": 2,
           "id": "a-bounded-radius-concyclic-class",
           "title": "A bounded-radius concyclic class",
-          "line": 476
+          "line": 484
         },
         {
           "level": 2,
           "id": "cyclic-trinomial-fibres",
           "title": "Cyclic trinomial fibres",
-          "line": 486
+          "line": 494
         },
         {
           "level": 2,
           "id": "coefficient-controlled-cyclic-tetranomial-spokes",
           "title": "Coefficient-controlled cyclic tetranomial spokes",
-          "line": 503
+          "line": 511
         },
         {
           "level": 2,
-          "id": "translated-quartic-quotient-fibres",
+          "id": "sec:translated-quartic-quotient-fibres",
           "title": "Translated quartic quotient fibres",
-          "line": 551
+          "line": 559
+        },
+        {
+          "level": 2,
+          "id": "a-critical-value-budget-through-degree-five",
+          "title": "A critical-value budget through degree five",
+          "line": 587
+        },
+        {
+          "level": 4,
+          "id": "the-three-point-mechanism.",
+          "title": "The three-point mechanism.",
+          "line": 611
+        },
+        {
+          "level": 4,
+          "id": "four-points-require-two-complementary-estimates.",
+          "title": "Four points require two complementary estimates.",
+          "line": 641
+        },
+        {
+          "level": 4,
+          "id": "from-free-points-to-critical-values.",
+          "title": "From free points to critical values.",
+          "line": 669
         },
         {
           "level": 2,
           "id": "the-degree-five-target-is-now-explicit",
           "title": "The degree-five target is now explicit",
-          "line": 579
+          "line": 700
         },
         {
           "level": 2,
           "id": "the-no-go-boundaries-force-hub-selection",
           "title": "The no-go boundaries force hub selection",
-          "line": 614
+          "line": 735
         },
         {
           "level": 2,
           "id": "the-surviving-carrier-and-the-actual-open-endpoint",
           "title": "The surviving carrier and the actual open endpoint",
-          "line": 632
+          "line": 753
         },
         {
           "level": 1,
           "id": "sec:newton",
           "title": "The Newton value equation",
-          "line": 644
+          "line": 765
         },
         {
           "level": 1,
           "id": "sec:arguments",
           "title": "Arguments, not moduli",
-          "line": 676
+          "line": 797
         },
         {
           "level": 1,
           "id": "sec:gap",
           "title": "A proof gap in the unrestricted argument",
-          "line": 698
+          "line": 819
         },
         {
           "level": 1,
           "id": "sec:finite",
           "title": "Finite evidence",
-          "line": 720
+          "line": 841
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Complements and further questions",
-          "line": 735
+          "line": 856
         },
         {
           "level": 2,
           "id": "repair-or-refute-the-saddle-block",
           "title": "1. Repair or refute the saddle block",
-          "line": 741
+          "line": 862
         },
         {
           "level": 2,
           "id": "the-compact-ray-cut-decomposition",
           "title": "2. The compact ray-cut decomposition",
-          "line": 758
+          "line": 879
         },
         {
           "level": 2,
           "id": "metric-fan-in-without-losing-the-coefficient",
           "title": "3. Metric fan-in without losing the coefficient",
-          "line": 784
+          "line": 905
         },
         {
           "level": 2,
           "id": "coefficient-perturbation-and-stability",
           "title": "4. Coefficient perturbation and stability",
-          "line": 822
+          "line": 943
         },
         {
           "level": 2,
           "id": "the-global-newton-flow-claim-ceiling",
           "title": "5. The global Newton-flow claim ceiling",
-          "line": 856
+          "line": 977
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 879
+          "line": 1000
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 885
+          "line": 1006
         }
       ],
       "citations_rendered": 9,
@@ -4642,8 +4702,8 @@
         "manuscript_title": "Critical-Value Separation and Admissible Hubs"
       },
       "local_pdf": "erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:1b66d0cc1d1a391c93e946e2583a7be9d6d2fc37f8ad7e9c3846354dadee191a",
-      "pdf_byte_count": 159431,
+      "pdf_sha256": "sha256:76bb81eafb766c74a8aa1860e54c73c725f2d1838dacf6bd3bae6c2f96342698",
+      "pdf_byte_count": 174574,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4656,17 +4716,17 @@
           {
             "id": "sec:newton",
             "title": "The Newton value equation",
-            "line": 644
+            "line": 765
           },
           {
             "id": "sec:gap",
             "title": "A proof gap in the unrestricted argument",
-            "line": 698
+            "line": 819
           },
           {
             "id": "sec:open",
             "title": "Complements and further questions",
-            "line": 735
+            "line": 856
           }
         ],
         "unresolved_count": 0

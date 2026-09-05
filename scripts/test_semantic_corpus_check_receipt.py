@@ -6,6 +6,9 @@
 from __future__ import annotations
 
 import copy
+import argparse
+import contextlib
+import io
 import json
 import hashlib
 import tempfile
@@ -55,6 +58,35 @@ def main() -> int:
             "paper selection changed full or shortened module aliases")
     require(query.paper_citation_role_index(citation_corpus, frozenset()) == {},
             "citation index cache leaked across selected manuscript modules")
+    # Citation selection affects priority, never the universe of backlog candidates.
+    backlog_roles = [
+        {"id": module, "module": module, "declaration": "Namespace.same",
+         "interpretation_tier": "source_structural_family", "statement_node": "structural"}
+        for module in ("Erdos249257/Cited.lean", "Erdos249257/Uncited.lean")
+    ]
+    backlog = {"declaration_roles": backlog_roles, "statement_nodes": [], "zones": []}
+    atlas = {"declarations": [{"id": role["id"], "line": 1, "kind": "theorem",
+                               "signature": "True"} for role in backlog_roles]}
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        (root / "paper").mkdir()
+        (root / "paper" / "selected.tex").write_text(
+            r"\lref{Cited.lean}{1}{same}", encoding="utf-8")
+        for paper in (None, "SELECTED", "missing"):
+            args = argparse.Namespace(paper=paper, problem=None, limit=40)
+            output = io.StringIO()
+            with patch.object(query, "ROOT", root), patch.object(
+                query, "load_declaration_atlas", return_value=atlas
+            ), contextlib.redirect_stdout(output):
+                query.cmd_structural_backlog(backlog, args)
+            result = json.loads(output.getvalue())
+            require(result["module_backlog_count"] == 2,
+                    "paper selection removed uncited structural candidates")
+            selected_counts = {row["module"]: row["paper_selected_role_count"]
+                               for row in result["results"]}
+            require(selected_counts == {"Erdos249257/Cited.lean": int(paper != "missing"),
+                                        "Erdos249257/Uncited.lean": 0},
+                    "short citation names escaped their module or paper filter")
     module_fixture = {"schema": "test", "declaration_roles": roles,
                       "declaration_role_module_ranges": ranges}
     module_text = builder.render(module_fixture)

@@ -664,51 +664,49 @@
         }
       ],
       "what_is_checked": [
-        "At a noncritical point of a curve tangent to the complex Newton vector field -f/f', the polynomial value has derivative w' = -w.",
-        "The exponentially rescaled value has derivative zero. This local identity does not by itself construct or globally integrate a Newton trajectory.",
-        "A finite Newton-flow connection can only join endpoints whose polynomial values lie on the same positive ray; distinct critical-value arguments therefore exclude such a connection.",
-        "For two translated critical values, the ray-collision locus is a real affine line with an exact one-parameter description.",
-        "A finite family of ray-collision lines can be avoided by an arbitrarily small common translation.",
-        "An explicit root-retention estimate keeps roots of a sufficiently small constant perturbation inside the unit disc."
+        "At a noncritical point of a curve tangent to -f/f', its polynomial value satisfies w'=-w.",
+        "The exponentially rescaled value has derivative zero; global trajectories are not constructed.",
+        "An exact exponential endpoint relation forces values onto the same positive ray, excluding connections between distinct arguments.",
+        "The ray-collision locus of two translated values has an exact real affine-line parameterization.",
+        "An arbitrarily small common translation avoids finitely many ray-collision lines.",
+        "A quantitative bound retains roots in the unit disk under small constant perturbations."
       ],
       "what_is_not_checked": [
-        "The unrestricted Erdős #1041 endpoint. Ordinary proofs already establish separated simple-critical-value connectors, the sharp collinear diameter bound, primitive sparse quintics, and translated cubic and quartic cyclic-quotient families; their complete geometric assemblies are not formalized by the narrower auxiliary kernels.",
-        "The sharp critical-value mean budget sum_j |f(c_j)|^(1/n) <= (n-1)R for every enclosing disk in degrees two through five is proved ordinarily via FP1-FP4 and the torus/psh bridge. Scalar Lean consumers do not formalize this analytic theorem, and the budget alone gives no metric endpoint.",
-        "Separate Comparator configurations for selected finite kernels do not certify the ordinary full theorems or constitute terminal external receipts. Newly present source is not classified as checked merely by appearing in the module inventory.",
-        "The historical March 2026 spanning-tree route uses an invalid three-ended local saddle block in its printed Proposition 12 proof. This does not refute Proposition 12 itself or the independent solved families above.",
-        "An unrestricted treatment of clustered critical values, multiple saddles, component-stable perturbation and strict metric gluing; these are not supplied by the local Newton identities."
+        "The unrestricted endpoint and full formalizations of the six ordinary theorem families routed below. Their finite/scalar kernels do not formalize the geometric or analytic assemblies.",
+        "Separate Comparator configurations are not terminal external receipts; module presence is not checking evidence.",
+        "The March 2026 Proposition 12 proof uses an invalid three-ended saddle block. This does not refute the proposition or the independent solved families."
       ],
       "open_obligations": [
         {
           "id": "extend_solved_metric_regimes",
-          "statement": "Extend the proved separated-simple-critical-value, collinear, sparse-quintic or cyclic-quotient regimes beyond their actual hypotheses, especially to clustered critical values and multiple saddles; the unrestricted endpoint remains open independently of the historical saddle-block route."
+          "statement": "Extend the solved regimes to clustered critical values and multiple saddles."
         },
         {
           "id": "formalize_ordinary_metric_and_budget_assemblies",
-          "statement": "Formalize the complete ordinary geometric assemblies and the torus/psh critical-value budget bridge without substituting their finite or scalar kernels. The all-degree budget reduction leaves the higher free-point inputs FP_m for m >= 5 open; a metric consumer is a separate mathematical obligation."
+          "statement": "Formalize the ordinary geometric and torus/psh assemblies. The budget reduction leaves FP_m for m>=5 open; it supplies no metric endpoint."
         },
         {
           "id": "repair_or_refute_saddle_block",
-          "statement": "Replace the false three-ended interior saddle neighbourhood by a valid four-pronged or cut-annulus block and reprove the required incidence statement, or construct a polynomial counterexample to that incidence statement."
+          "statement": "Repair the historical incidence argument with a four-pronged or cut-annulus block, or give a polynomial counterexample."
         },
         {
           "id": "compact_ray_cut_strip_decomposition",
-          "statement": "Build a compact strip or cell decomposition after cutting along critical-value rays, without presupposing the unproved local valence count."
+          "statement": "Construct a compact critical-ray-cut decomposition without assuming the disputed local valence."
         },
         {
           "id": "metric_gluing_below_two",
-          "statement": "Glue the local pieces with strict quantitative slack while preserving the sharp one-over-two-pi length bookkeeping."
+          "statement": "Glue with strict slack and the sharp one-over-two-pi length budget."
         },
         {
           "id": "two_stage_stable_perturbation",
-          "statement": "First separate critical values, then apply the checked small translation, while retaining roots, the selected component, collars, ray separation, and a strict length margin."
+          "statement": "Separate critical values, then translate, preserving roots, component, collars, ray separation and strict length slack."
         },
         {
           "id": "relative_global_newton_flow_theorem",
-          "statement": "Prove the global relative Newton-flow theorem that turns the checked ray separation into the required root-to-root curve inside the original open lemniscate."
+          "statement": "Turn checked ray separation into a global root-to-root curve in the original open lemniscate."
         }
       ],
-      "finite_search": "A raster search samples named failure modes through degree ten and returns candidate upper bounds only. It is finite numerical evidence, not a topology proof or a counterexample certificate.",
+      "finite_search": "Raster search through degree ten gives candidate upper bounds, not topology proofs or counterexample certificates.",
       "research_corpus": {
         "directory": "research_corpus/Erdos1041",
         "frontier": "research_corpus/Erdos1041/FRONTIER.md",
@@ -716,7 +714,7 @@
         "manifest": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
         "checkpoint": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
         "authority_posture": "public_safe_research_evidence_not_reviewed_claim_registry_or_Lean_proof_authority",
-        "reading_rule": "Start with the short paper and docs/claims.json review families, ordered in docs/PALOMAR_RESULT_SHOWCASE.json: critical_value_separation_connector (a simple nonzero critical value separated from all other normalized critical values); sharp_collinear_diameter (optimal all-degree bound for collinear zero occurrences); primitive_sparse_quintic_paths (z^5+a z^4+b z+c, open-disk roots for the path); translated_cubic_quotient_fibres (P((z-h)^q), cubic P, q>=2, open-disk roots and two distinct zero values); translated_quartic_quotient_fibres (quartic P, listed open-disk roots, using the cited quartic theorem); then critical_value_mean_budget (every enclosing disk, degrees 2-5, critical multiplicities). These are ordinary proofs, with narrower formal evidence separately identified. Read FRONTIER.md for current boundaries before the dated STRONGEST_RESULTS.json activation map: that map is not exhaustive or a claim registry. Source notes, refutations and falsifiers retain their hypotheses; neither source presence nor a finite kernel promotes the full result to Comparator evidence."
+        "reading_rule": "Read the short paper and docs/claims.json; docs/PALOMAR_RESULT_SHOWCASE.json orders six ordinary families: critical_value_separation_connector (separated simple nonzero critical value); sharp_collinear_diameter (optimal collinear bound, all degrees); primitive_sparse_quintic_paths (z^5+a z^4+b z+c); translated_cubic_quotient_fibres and translated_quartic_quotient_fibres (P((z-h)^q), q>=2, cubic/quartic P); critical_value_mean_budget (every enclosing disk, degrees 2-5, critical multiplicities). Metric corollaries use open-unit-disk roots; cubic fibres require two distinct zero values, while quintic/quartic conclusions permit coincident listed occurrences. The quartic lift uses the cited quartic theorem. Exact hypotheses and narrower formal boundaries are in those family rows. Read FRONTIER.md before the dated, nonexhaustive STRONGEST_RESULTS.json activation map; research discovery is not Comparator admission."
       }
     },
     {

@@ -8669,6 +8669,20 @@ def route_packet(route_id: str) -> dict[str, Any]:
     if route_id == "instant_orientation":
         packet["mathematical_signal_spine"] = mathematical_signal_spine(claims)
     if route.get("route_kind") == "mathematical_programme":
+        # The resolved programme below owns its title, focus and ceiling.
+        # Discovery prose has served its purpose once this exact route is open;
+        # retain its owner handle rather than duplicating it in the packet.
+        packet["route"] = {
+            key: value
+            for key, value in route.items()
+            if key not in {
+                "title", "mathematical_focus", "claim_ceiling",
+                "intent", "discovery_terms",
+            }
+        }
+        packet["route"]["prose_source"] = (
+            "docs/orientation.json::mathematical_programmes[" + route_id + "]"
+        )
         core_claims = [claim_index[claim_id] for claim_id in route["core_claim_ids"]]
         packet["programme"] = {
             "title": route["title"],
@@ -9623,6 +9637,19 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
         row["problem"]: row
         for row in load("docs/PALOMAR_RESULT_SHOWCASE.json")["frontier_by_problem"]
     }
+    signal = mathematical_signal_spine(claims)
+    # Keep mathematical content and rank at the front door. Repeated review
+    # commentary belongs to the authored selection record, alongside the exact
+    # source boundary which remains present in every ranked overview row.
+    routed_signal_fields = ("evidence_certainty", "overclaim_risk")
+    for result in signal["ranked_frontier"]:
+        for field in routed_signal_fields:
+            result.pop(field, None)
+    signal["overview_projection"] = {
+        "routed_fields": list(routed_signal_fields),
+        "detail": "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_ranking",
+        "retained": "all ranks, identities, consequences, mechanisms and exact boundaries",
+    }
     packet = {
         "kind": "repository_overview",
         "schema_version": "erdos249257-repository-overview/2",
@@ -9637,7 +9664,7 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
                 "supplies bounded navigation; neither is proof authority."
             ),
         },
-        "mathematical_signal_spine": mathematical_signal_spine(claims),
+        "mathematical_signal_spine": signal,
         "coverage_receipt": {
             "mathematical_programme_count": len(programmes),
             "mathematical_programme_ids": [row["id"] for row in programmes],
@@ -9669,7 +9696,15 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
                 "erdos_number": row["erdos_number"],
                 "title": row["short_title"],
                 "status": row["status"],
-                "note": row.get("note"),
+                "note": (
+                    {
+                        key: row["note"][key]
+                        for key in ("artifact_id", "source_path", "rendered_path")
+                        if key in row["note"]
+                    }
+                    if row.get("note")
+                    else None
+                ),
                 "open_obligation_ids": [
                     item["id"] for item in row.get("open_obligations", [])
                 ],

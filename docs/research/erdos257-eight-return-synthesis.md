@@ -136,6 +136,38 @@ This is an ordinary assembled theorem with an exact finite phase certificate.
 No positive lower density, positive logarithmic density, or actual membership
 is asserted.
 
+### A stronger finite-anchor certificate
+
+The same argument has now been checked with the selected set
+
+    F = {5,7,8,9,10,18,20,24,28,42,45,60}.
+
+Its phase period is 1260. Exactly 1011 classes satisfy
+
+    sum_(a in F) 2^(2R mod a)/(2^a-1) > (2^(2R) mod 21)/21.
+
+The verifier [selected_phase_density_audit.py](../../scripts/erdos257_selected_phase_density_audit.py)
+checks the selected prefix by both rational remainders and integer enclosures,
+then compares every phase using exact integers. Its mask and exact margins are
+in the assimilation receipt. Thus the corresponding restricted divergence set
+has conditional upper density at least **337/840 > 2/5**. Membership of 1/21
+is equivalent to upper density at least 2/5 for this new restricted set, and
+to its infinitude or divergent reciprocal mass. The older 2/7 assertion is
+about the two-anchor restricted set; the stronger bound uses this larger F.
+
+For completeness, the amplification uses an exact finite identity. At depth
+N=2R, the integer quotient coin at each a>R is 2^(N-a). If an aligned word
+skips k in that upper half, its remaining budget is below that coin; the
+subsequent binary coins down to 1 spend every remaining integer unit. The
+terminal remainder must therefore be zero. That remainder is exactly
+Q_N=floor(2^N/21)-sum_(selected a<=N)floor(2^N/(2^a-1)). Actual greedy
+admissibility instead makes Q_N at least the selected fractional mass minus
+the target phase, which is positive on each favorable class. Alignment is
+impossible there. Every skip k consequently gives at least
+(1011/2520)k-O(1) divergent rows in ceil(k/2)<=R<k. Cofinal skips give the
+upper-density bound; disjoint such windows give divergent reciprocal mass.
+The existing cofinal-divergence consumer proves the reverse implications.
+
 ## 5. A variable-exponent fractional-cover theorem
 
 This extension is derived during assimilation from r8's progression resolvent
