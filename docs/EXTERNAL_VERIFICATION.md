@@ -112,7 +112,7 @@ These checked obstructions are an alphabetical, deliberately unranked tier. They
 - **[#257](#programme-257) · Arbitrary prime power support irrationality** (`arbitrary_prime_power_support_irrationality`)<br>
   Every infinite subset of the prime powers, with fixed dilations and finite modifications, has irrational sum at every integer base, using the reviewed analytic correlation input.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **[#243](#programme-243) · Bounded negative exclusion** (`bounded_negative_exclusion`)<br>
   Normalised vanishing excludes a cofinally bounded negative part and forces eventual Sylvester behaviour.<br>
@@ -132,7 +132,7 @@ These checked obstructions are an alphabetical, deliberately unranked tier. They
 - **[#257](#programme-257) · Divisibility weighted support irrationality** (`divisibility_weighted_support_irrationality`)<br>
   Finite divisibility-weighted mass implies hereditary all-base irrationality, including explicit reciprocal-divergent short-gap supports.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **[#1049](#programme-1049) · Endpoint residues** (`endpoint_residues`)<br>
   Endpoint residues at 2 and 3 exclude a common multiplier under unit-endpoint hypotheses.<br>
@@ -152,7 +152,7 @@ These checked obstructions are an alphabetical, deliberately unranked tier. They
 - **[#257](#programme-257) · Four ninths square root repair windows** (`four_ninths_square_root_repair_windows`)<br>
   4/9 membership is equivalent to a repair at some N in every interval [K,K+2 floor(sqrt K)+12). A single strict-increase window excludes membership.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **[#257](#programme-257) · Half and twenty one frontiers** (`half_and_twenty_one_frontiers`)<br>
   Exact greedy characterisations, finite-support exclusions, the odd 2-adic two-thirds-band bound, and two conditional rational-half countermodel frontiers isolate local constraints around the remaining 1/2 and 1/21 alternatives.<br>
@@ -177,12 +177,12 @@ These checked obstructions are an alphabetical, deliberately unranked tier. They
 - **[#257](#programme-257) · Prime cofactor repair obstruction** (`prime_cofactor_repair_obstruction`)<br>
   Actual modulus-420 tetraprime repair fails infinitely often; an exact 80-anchor prefix gives prime-cofactor jumps at least 7 for multiplier 120 and at least 2 for multiplier 420. General infinite admissible supports defeat every finite fixed multiplier menu.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **[#257](#programme-257) · Prime repair finite support rigidity** (`prime_repair_finite_support_rigidity`)<br>
   Bounded prime jumps characterize finite greedy support; eventual repair at every prime characterizes zero or a single Mersenne atom for targets below one.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **[#269](#programme-269) · Rank two kernel no go** (`rank_two_kernel_no_go`)<br>
   The 2,3,5 kernel has checked minor -1/15 and is not rank one. The paper additionally proves arbitrarily large nonsingular minors for three distinct primes by a dense-rotation staircase construction, excluding every finite exact separation across the displayed coordinate split.<br>
@@ -197,17 +197,17 @@ These checked obstructions are an alphabetical, deliberately unranked tier. They
 - **[#257](#programme-257) · Sub logstar reciprocal mass irrationality** (`sub_logstar_reciprocal_mass_irrationality`)<br>
   Rational p/q forces liminf H_A(x)/ell(x) at least lambda_b(p/q)/2; sub-log-star mass implies hereditary all-base irrationality.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **[#257](#programme-257) · Twenty one two anchor divergence density** (`twenty_one_two_anchor_divergence_density`)<br>
-  1/21 membership is equivalent to cofinal divergence on the 60 favorable classes modulo 105, equivalently upper density at least 2/7 or divergent reciprocal mass of those rows.<br>
+  For the 1/21 greedy support, membership is equivalent to divergent reciprocal mass on the favorable selected rows. Two anchors give 60/105 favorable classes and conditional upper density >= 2/7; twelve anchors give a larger restricted set with 1011/1260 favorable classes and conditional upper density >= 337/840 > 2/5. Each density refers to its own restricted set; no membership or lower density is established.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **[#257](#programme-257) · Variable exponent fractional cover irrationality** (`variable_exponent_fractional_cover_irrationality`)<br>
   For finite positive divisor frames F_j and 0<alpha_j<=1, summability of C_j 2^(j alpha_j) B_j/(B_j-1)^2 with B_j=2^alpha_j gives hereditary all-base irrationality; fixed-alpha positive covers are included by regrouping.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 ### Complete inventory, kept subordinate
 
@@ -1011,42 +1011,42 @@ Exact registry keys and Comparator routing are listed separately.
 - **Divisibility weighted support irrationality**<br>
   Finite divisibility-weighted mass implies hereditary all-base irrationality, including explicit reciprocal-divergent short-gap supports.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **Sub logstar reciprocal mass irrationality**<br>
   Rational p/q forces liminf H_A(x)/ell(x) at least lambda_b(p/q)/2; sub-log-star mass implies hereditary all-base irrationality.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **Arbitrary prime power support irrationality**<br>
   Every infinite subset of the prime powers, with fixed dilations and finite modifications, has irrational sum at every integer base, using the reviewed analytic correlation input.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **Variable exponent fractional cover irrationality**<br>
   For finite positive divisor frames F_j and 0<alpha_j<=1, summability of C_j 2^(j alpha_j) B_j/(B_j-1)^2 with B_j=2^alpha_j gives hereditary all-base irrationality; fixed-alpha positive covers are included by regrouping.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **Four ninths square root repair windows**<br>
   4/9 membership is equivalent to a repair at some N in every interval [K,K+2 floor(sqrt K)+12). A single strict-increase window excludes membership.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **Twenty one two anchor divergence density**<br>
-  1/21 membership is equivalent to cofinal divergence on the 60 favorable classes modulo 105, equivalently upper density at least 2/7 or divergent reciprocal mass of those rows.<br>
+  For the 1/21 greedy support, membership is equivalent to divergent reciprocal mass on the favorable selected rows. Two anchors give 60/105 favorable classes and conditional upper density >= 2/7; twelve anchors give a larger restricted set with 1011/1260 favorable classes and conditional upper density >= 337/840 > 2/5. Each density refers to its own restricted set; no membership or lower density is established.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **Prime cofactor repair obstruction**<br>
   Actual modulus-420 tetraprime repair fails infinitely often; an exact 80-anchor prefix gives prime-cofactor jumps at least 7 for multiplier 120 and at least 2 for multiplier 420. General infinite admissible supports defeat every finite fixed multiplier menu.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **Prime repair finite support rigidity**<br>
   Bounded prime jumps characterize finite greedy support; eventual repair at every prime characterizes zero or a single Mersenne atom for targets below one.<br>
   **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.<br>
-  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.
+  *Evidence.* reviewed ordinary theorem or obstruction; novelty unassessed · Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.
 
 - **Finite period noncollapse**<br>
   The multiplicative order of the base modulo a reduced finite-sum denominator is the support lcm, forcing denominator growth.<br>
@@ -1207,7 +1207,7 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Source and priority note</summary>
 
-Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it. For {2,3,5}, the ordinary paper proof bounds X_a by (n_a^2+8n_a+18)/9 and derives the actual bounded reduced carry from rationality. Actual cofinal local-window escape alone suffices for irrationality; that escape remains unproved.
+The paper proves two-prime transcendence using Loxton–van der Poorten via Bugeaud–Laurent; Steve Fan published the same reduction on 26 June 2026. For {2,3,5}, it proves X_a <= (n_a²+8n_a+18)/9 and the actual rationality-to-carry bridge. These ordinary proofs are not fully formalized. Actual cofinal residue-window escape remains unproved.
 
 </details>
 
@@ -1395,7 +1395,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
 6. **Critical value mean budget** (`critical_value_mean_budget`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** A completed sharp value inequality through degree five, placed ahead of local calculus and perturbation machinery. It remains auxiliary: the paper's solved metric regimes deserve priority and no path-length conclusion follows from this budget.
    - **Source authority.** Canonical review family `critical_value_mean_budget` in [claims](../docs/claims.json)
-   - **Boundary.** This is an ordinary mathematical proof of an auxiliary critical-value budget, not a complete Lean formalization or Comparator result. The scalar Lean companion assumes the nonnegative entries and sum bound; it does not prove the polynomial identity, plurisubharmonic reduction or complete free-point inequalities and must not represent this family. The bound controls merge-level capacities, not inverse-ray lengths or admissible-hub selection; it does not prove the parent metric endpoint. The higher-degree free-point burden remains FP_m for m >= 5. Equality on the radial family prevents a universal strict improvement of this budget.
+   - **Boundary.** Ordinary proof; the full reflected-derivative and finite-point arguments are not yet Lean-checked or Comparator-admitted. The budget bounds critical values, not path lengths or hub selection. FP_m remains open here for m >= 5; the radial family attains equality.
 
 7. **Newton value decay** (`newton_value_decay`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The Newton value equation and exponential first integral are the load-bearing local mechanism, while metric gluing to a short curve remains open.
@@ -1452,8 +1452,8 @@ Exact registry keys and Comparator routing are listed separately.
   *Evidence.* ordinary proved restricted metric theorem; novelty unassessed · Ordinary full theorem; any separately identified Lean kernel has a narrower statement
 
 - **Critical value mean budget**<br>
-  For every monic complex polynomial of degree n with 2 <= n <= 5, whose roots lie in any disk of radius R >= 0, the critical points c_j counted with multiplicity satisfy sum_j |f(c_j)|^(1/n) <= (n-1)R. The constant is attained by f(z)=(z-tau)^n-lambda in its centered disk of radius |lambda|^(1/n). More generally FP_(n-1) implies this critical-value budget at every degree. Mechanism: The symmetric critical-value functional is continuous plurisubharmonic on the root polydisk, including multiple-critical loci, so successive maximum principles move its maximum to the root torus. An exact self-inversive product identity there converts critical values to the free-point inequality; concavity changes exponent 1/(n-1) to 1/n. FP1-FP4 supply degrees two through five. FP4 combines a central log-energy/variance estimate with an outer K4-Holder and radical bound.<br>
-  **Boundary.** This is an ordinary mathematical proof of an auxiliary critical-value budget, not a complete Lean formalization or Comparator result. The scalar Lean companion assumes the nonnegative entries and sum bound; it does not prove the polynomial identity, plurisubharmonic reduction or complete free-point inequalities and must not represent this family. The bound controls merge-level capacities, not inverse-ray lengths or admissible-hub selection; it does not prove the parent metric endpoint. The higher-degree free-point burden remains FP_m for m >= 5. Equality on the radial family prevents a universal strict improvement of this budget.<br>
+  For monic f of degree 2 <= n <= 5 with roots in any radius-R disk, sum_j |f(c_j)|^(1/n) <= (n-1)R, counting critical multiplicities, sharply. In every degree FP_(n-1) implies the budget: the reflected derivative and maximum modulus give |f(c_j)| <= product_k |1-conj(c_j)c_k| in the unit disk, radial contraction handles the boundary, and concavity supplies exponent 1/n. FP1-FP4 settle degrees two through five.<br>
+  **Boundary.** Ordinary proof; the full reflected-derivative and finite-point arguments are not yet Lean-checked or Comparator-admitted. The budget bounds critical values, not path lengths or hub selection. FP_m remains open here for m >= 5; the radial family attains equality.<br>
   *Evidence.* ordinary proved auxiliary theorem; novelty unassessed · Ordinary paper and research-note proofs; scalar Lean support is not a formalization of this theorem
 
 - **Newton value decay**<br>

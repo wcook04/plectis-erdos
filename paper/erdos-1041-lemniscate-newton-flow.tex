@@ -37,92 +37,51 @@ remaining metric problem for Erd\H{o}s~\#1041}
 
 \begin{abstract}
 \noindent
-Let $f(z)=\prod_i(z-z_i)$ be monic with roots in the closed unit disc.  Erd\H{o}s,
-Herzog, and Piranian ask whether two roots can always be joined by a curve of
-length less than $2$ inside $\{|f|<1\}$.  The global assertion remains open.
-
-The strongest all-degree sufficient regime proved here is controlled by
-critical-value separation.  Let $c$ be a simple critical point with
-$v=f(c)\ne0$.  If every other critical point $d$ satisfies
-$|1-f(d)/v|\ge S>1$, then the square-root-resolved inverse branch through $c$
-gives a root connector of length at most
+Erd\H{o}s, Herzog, and Piranian ask whether every monic polynomial of degree
+$n\ge2$ with roots in the open unit disc has two roots joined inside
+$\{|f|<1\}$ by a curve of length less than $2$.  We prove an all-degree
+sufficient condition in terms of the separation of critical values.
+If $c$ is a simple critical point, $v=f(c)\ne0$, and
+$|1-f(d)/v|\ge S>1$ at every other critical point, the two resolved inverse
+rays through $c$ join distinct roots inside $\{|f|\le|v|\}$ with length at
+most
 \[
- 2|v|^{1/n}(1+S)^{1/n}
-       \sqrt{\log\!\frac{S}{S-1}}
+ 2|v|^{1/n}(1+S)^{1/n}\sqrt{\log\!\frac{S}{S-1}}.
 \]
-inside $\{|f|\le|v|\}$.  Hence the connector is shorter than
-$2|v|^{1/n}$ whenever
-$(1+S)^{2/n}\log(S/(S-1))<1$.  Exact uniform choices are $S=4$ for
-$n\ge3$, $S=3$ for $n\ge4$, and $S=2$ for $n\ge6$.  For roots in the open
-unit disc these hypotheses prove Erd\H{o}s~\#1041 for the polynomial.  The
-analytic proof, degree monotonicity, threshold estimates and length
-consequence are ordinary mathematics; no Lean formalisation of this
-separation theorem or its numerical kernel is supplied here.
+For roots in the open unit disc, this proves the desired bound when
+$S=4$ and $n\ge3$, $S=3$ and $n\ge4$, or $S=2$ and $n\ge6$.
+The proof resolves the saddle by a square-root coordinate.  Critical-value
+separation makes the inverse branch univalent on a larger disc; P\'olya's
+area inequality then bounds its Taylor coefficients and hence its length.
 
-A second all-degree result is sharp rather than merely sufficient: for
-collinear zeros of diameter $D$, one adjacent-root segment lies below
-$C_n(D/2)^n$, where
-$C_n=(2^{n-1}\cos^n(\pi/(2n)))^{-1}$, and equality occurs for affine
-Chebyshev configurations.  We also close the primitive sparse quintic family
-and every translated cubic quotient-fibre family of degree $3q$, $q\ge2$.
-For each family the exact Lean-checked selector is displayed separately from
-the ordinary normalization, fibre, moment, and path assembly.  A further
-unconditional auxiliary theorem gives the sharp critical-value budget
-$\sum_{j=1}^{n-1}|f(c_j)|^{1/n}\le(n-1)R$ for $2\le n\le5$, where $R$
-is the radius of an enclosing root disk.  Its proof combines finite disk
-inequalities with a pointwise reflected-derivative bound; it controls merge
-levels, not the lengths of the paths reaching them.
+We also prove the sharp adjacent-root bound for collinear zeros, with affine
+Chebyshev equality configurations, and solve the primitive sparse quintic
+and translated cubic quotient-fibre families.  An auxiliary sharp bound
+$\sum_{j=1}^{n-1}|f(c_j)|^{1/n}\le(n-1)R$ holds through degree five for
+roots in a disc of radius $R$.  Its proof compares critical values with the
+reflected derivative and uses finite-point inequalities in the unit disc.
+These are ordinary mathematical proofs; the paper identifies separately the
+Lean-checked selectors, inequalities, and Newton-flow identities they use.
 
-This result exposes rather than hides the surviving frontier: it gives no
-control when critical values form a near tie, and it excludes multiple
-saddles.  Those are precisely the clustered regimes still requiring a grouped
-contour, an admissible-hub selector, or another argument.  Complementary exact
-inputs sharpen that boundary.  At every critical point, two nearest-root
-occurrences have total Euclidean distance at most $2$; Lean checks the
-reciprocal critical balance and disk inverse-square estimate used by the
-ordinary polynomial-level argument, but these estimates alone do not prove
-containment.  An exact quintic has a nearest straight spoke that leaves
-$\{|f|<1\}$, and an exact cubic has an escaping midpoint on every straight
-root-pair segment.
-
-Along the complex Newton field $-f/f'$, the value satisfies
-$f(z(t))=e^{-t}f(z(0))$. Lean checks this value equation, the resulting
-positive-ray obstruction to finite saddle connections, and the finite
-translation and root-retention interfaces.
-
-Outside the separated regime, the remaining metric problem is one of
-admissible-hub selection.  On the ray-separated dense class, one must find a
-critical hub $c$ whose two inverse-ray arms stay in the relevant component and
-satisfy
-\[
-  \min_{c\ \mathrm{admissible}} L(c)\le2.
-\]
-At degree five, a critical value at most $1/M_5$, where
-\[
- M_5=(1-t_*)(1+t_*)^3\sqrt{16t_*^2-4t_*+1},
- \qquad t_*={5\over16}+{3\sqrt{105}\over80},
- \qquad 1/M_5=0.2760461\ldots,
-\]
-would give two contained nearest-root spokes of total length at most $2$.
-The near-Fekete reduction removes radial deficits from this containment
-question, but neither the general hub selection nor its degree-five form is
-proved. The threshold and no-go witnesses are ordinary proofs, exact
-certificates, or computations, not additional kernel-checked theorems.
-Coefficient genericity, component stability, planar topology, and metric
-gluing remain open.
+The unrestricted problem remains open.  Critical values near a tie and
+multiple saddles escape the separation argument.  Exact counterexamples
+also show that short Euclidean chords or critical spokes need not stay in
+the lemniscate.  The remaining task is to select and control a contained
+root connector; the critical-value budget alone does not bound its length.
 \end{abstract}
 
-\begin{paperresult}{What the analysis isolates}
-\textbf{Exact inputs.} Critical-point balance gives two nearest-root
-distances with total at most $2$, while the Newton flow transports $f$
-exactly by $f(z(t))=e^{-t}f(z(0))$.  Exact examples show why straight spokes
-and root-pair segments do not solve the containment problem.  \textbf{Sharp
-degree-five target.} A critical value at most $1/M_5$ would suffice.
-\textbf{Proved algebraic budget.} The sum of critical-value $n$-th roots is
-at most $(n-1)R$ through degree five; converting this budget into short
-contained paths is a separate metric problem.
-\textbf{Open boundary.} The missing theorem is an admissible critical hub
-whose inverse-ray arms stay in the right component and meet the metric bound.
+\begin{paperresult}{From critical-value separation to a short path}
+\textbf{Proved regime.} An isolated simple critical value gives a univalent
+resolved inverse branch.  An area estimate bounds the branch coefficients,
+which control the length of its two root arms.  Theorem~\ref{res:critical-value-separation}
+gives the bound and Corollary~\ref{res:critical-value-thresholds} gives explicit
+sufficient separations in every degree $n\ge3$.
+\textbf{Complementary results.} Sharp solved families and the critical-value
+budget through degree five supply geometric and algebraic information beyond
+that regime.
+\textbf{Open boundary.} Near-tied critical values and multiple saddles
+require another construction.  An admissible-hub selector is one sufficient
+route to the target, not a proved characterization of every possible solution.
 \end{paperresult}
 
 \externalreviewobject{The paper proves an all-degree critical-value-separation
@@ -169,10 +128,17 @@ global topology or the length-$2$ gluing argument.
 \section{The problem}\label{sec:problem}
 
 \begin{problem}[Erd\H{o}s \#1041]\label{res:problem}
-Let $f(z)=\prod_{i=1}^{n}(z-z_i)$ be monic with $z_i\in\dbar$, the open unit
-disc.  Show that two of the roots can be joined by a curve of length less than
+Let $f(z)=\prod_{i=1}^{n}(z-z_i)$ be monic of degree $n\ge2$, with
+$z_i\in\dbar$, the open unit disc.  Show that two of the roots can be joined by a curve of length less than
 $2$ lying in the open lemniscate $E=\{z\in\mathbb{C}:|f(z)|<1\}$.
 \end{problem}
+
+The open-disc hypothesis is essential for this formulation.  For
+$f(z)=z^2-1$, whose roots lie on the unit circle, every continuous path from
+$-1$ to $1$ meets the imaginary axis.  There $|f(iy)|=1+y^2\ge1$, so no
+such path lies in the open unit lemniscate.  Repeated roots, counted as distinct
+occurrences, give a constant path; the substantive case is therefore
+squarefree.
 
 \noindent Numbering and current status follow Bloom's Erd\H{o}s problem
 catalogue \cite{bloom}.

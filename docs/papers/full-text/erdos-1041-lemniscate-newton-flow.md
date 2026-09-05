@@ -17,7 +17,7 @@ The strongest all-degree sufficient regime proved here is controlled by critical
 ```
 inside $`\{|f|\le|v|\}`$. Hence the connector is shorter than $`2|v|^{1/n}`$ whenever $`(1+S)^{2/n}\log(S/(S-1))<1`$. Exact uniform choices are $`S=4`$ for $`n\ge3`$, $`S=3`$ for $`n\ge4`$, and $`S=2`$ for $`n\ge6`$. For roots in the open unit disc these hypotheses prove Erdős #1041 for the polynomial. The analytic proof, degree monotonicity, threshold estimates and length consequence are ordinary mathematics; no Lean formalisation of this separation theorem or its numerical kernel is supplied here.
 
-A second all-degree result is sharp rather than merely sufficient: for collinear zeros of diameter $`D`$, one adjacent-root segment lies below $`C_n(D/2)^n`$, where $`C_n=(2^{n-1}\cos^n(\pi/(2n)))^{-1}`$, and equality occurs for affine Chebyshev configurations. We also close the primitive sparse quintic family and every translated cubic quotient-fibre family of degree $`3q`$, $`q\ge2`$. For each family the exact Lean-checked selector is displayed separately from the ordinary normalization, fibre, moment, and path assembly. A further unconditional auxiliary theorem gives the sharp critical-value budget $`\sum_{j=1}^{n-1}|f(c_j)|^{1/n}\le(n-1)R`$ for $`2\le n\le5`$, where $`R`$ is the radius of an enclosing root disk. Its proof combines finite disk inequalities with a plurisubharmonic boundary reduction; it controls merge levels, not the lengths of the paths reaching them.
+A second all-degree result is sharp rather than merely sufficient: for collinear zeros of diameter $`D`$, one adjacent-root segment lies below $`C_n(D/2)^n`$, where $`C_n=(2^{n-1}\cos^n(\pi/(2n)))^{-1}`$, and equality occurs for affine Chebyshev configurations. We also close the primitive sparse quintic family and every translated cubic quotient-fibre family of degree $`3q`$, $`q\ge2`$. For each family the exact Lean-checked selector is displayed separately from the ordinary normalization, fibre, moment, and path assembly. A further unconditional auxiliary theorem gives the sharp critical-value budget $`\sum_{j=1}^{n-1}|f(c_j)|^{1/n}\le(n-1)R`$ for $`2\le n\le5`$, where $`R`$ is the radius of an enclosing root disk. Its proof combines finite disk inequalities with a pointwise reflected-derivative bound; it controls merge levels, not the lengths of the paths reaching them.
 
 This result exposes rather than hides the surviving frontier: it gives no control when critical values form a near tie, and it excludes multiple saddles. Those are precisely the clustered regimes still requiring a grouped contour, an admissible-hub selector, or another argument. Complementary exact inputs sharpen that boundary. At every critical point, two nearest-root occurrences have total Euclidean distance at most $`2`$; Lean checks the reciprocal critical balance and disk inverse-square estimate used by the ordinary polynomial-level argument, but these estimates alone do not prove containment. An exact quintic has a nearest straight spoke that leaves $`\{|f|<1\}`$, and an exact cubic has an escaping midpoint on every straight root-pair segment.
 
@@ -88,7 +88,7 @@ We study the Newton flow whose trajectories foliate the lemniscate.
 |:---|:---|:---|
 | Erdős \#1041 | Open | No proof is claimed. |
 | Critical-value separation | Ordinary all-degree theorem | A simple nonzero hub and $`(1+S)^{2/n}\log(S/(S-1))<1`$; the threshold, covering and area arguments remain ordinary; near ties and multiple saddles are excluded. |
-| Critical-value budget through degree five | Ordinary theorem; scalar Lean companion | $`\sum_j|f(c_j)|^{1/n}\le(n-1)R`$ for $`2\le n\le5`$; the torus maximum principle and complete finite-point inequalities remain ordinary proofs and do not control inverse-ray length. |
+| Critical-value budget through degree five | Ordinary theorem; scalar Lean companion | $`\sum_j|f(c_j)|^{1/n}\le(n-1)R`$ for $`2\le n\le5`$; the reflected-derivative comparison and complete finite-point inequalities remain ordinary proofs and do not control inverse-ray length. |
 | Newton value equation $`w'=-w`$ | Checked | Away from critical points, along any trajectory tangent to $`-f/f'`$. |
 | Exponential first integral | Checked | $`\tfrac{d}{dt}\bigl(e^{t}f(z(t))\bigr)=0`$. |
 | Ray separation of critical values | Checked (consumer form) | Endpoints of a finite connection share one oriented ray; distinct rays exclude a connection. |
@@ -606,7 +606,47 @@ The finite inequality behind the theorem concerns arbitrary points of the disk, 
        |1-\overline{c_j}c_k|\right)^{1/m}\le m,
  \qquad |c_j|\le1.
 ```
-We first establish the cases $`m\le4`$, then explain why $`(\mathrm{FP}_m)`$ implies the critical-value budget in degree $`m+1`$.
+The following pointwise bound explains why these finite inequalities control critical values in every degree.
+
+<div id="res:reflected-critical-value" class="lemma">
+
+**Lemma 12** (reflected-derivative bound). *If $`f`$ is monic of degree $`n\ge2`$ with roots in the closed unit disk, and $`c_1,\ldots,c_{n-1}`$ list its critical points with multiplicity, then
+``` math
+\begin{equation}
+\label{eq:critical-reflected-product}
+ |f(c_j)|\le\prod_{k=1}^{n-1}|1-\overline{c_j}c_k|.
+\end{equation}
+```*
+
+</div>
+
+<div class="proof">
+
+*Proof.* First put all roots $`a_i`$ strictly inside the disk. Gauss–Lucas does the same for the $`c_k`$, so
+``` math
+N(z)=nf(z)-zf'(z),\qquad
+ G(z)=n\prod_k(1-\overline{c_k}z)
+```
+have $`G\ne0`$ on the closed disk. On $`|\zeta|=1`$, $`|G(\zeta)|=|f'(\zeta)|`$, while
+``` math
+\operatorname{Re}\frac{\zeta f'(\zeta)}{f(\zeta)}
+ =\sum_i\left(\frac12+
+       \frac{1-|a_i|^2}{2|1-a_i\bar\zeta|^2}\right)\ge\frac n2.
+```
+Writing the logarithmic derivative as $`w`$, the identity $`|n-w|^2-|w|^2=n^2-2n\operatorname{Re}w\le0`$ gives $`|N|\le|G|`$ on the circle. The maximum-modulus principle applied to $`N/G`$ gives the same comparison inside. At $`c_j`$, $`N(c_j)=nf(c_j)`$; dividing by $`n`$ and conjugating each factor proves <a href="#eq:critical-reflected-product" data-reference-type="eqref" data-reference="eq:critical-reflected-product">[eq:critical-reflected-product]</a>. For closed-disk roots apply this result to $`f_r(z)=r^nf(z/r)`$, $`0<r<1`$, whose critical points are $`rc_k`$:
+``` math
+r^n|f(c_j)|\le\prod_k|1-r^2\overline{c_j}c_k|.
+```
+Let $`r\uparrow1`$. This also handles boundary critical points and all multiplicities without selecting local branches. ◻
+
+</div>
+
+Set $`m=n-1`$. By Gauss–Lucas and the lemma, $`(\mathrm{FP}_m)`$ gives $`\sum_jy_j\le m`$ for $`y_j=|f(c_j)|^{1/m}`$. Concavity now supplies the exponent in the theorem:
+``` math
+y^{m/(m+1)}\le\frac{my+1}{m+1}\quad(y\ge0),\qquad
+ \sum_j|f(c_j)|^{1/n}\le m.
+```
+For a root disk centred at $`h`$ of radius $`R>0`$, apply this inequality to $`R^{-n}f(h+Rz)`$; scaling back multiplies the sum by $`R`$. When $`R=0`$, all critical values vanish. It remains to prove $`(\mathrm{FP}_m)`$ for $`m\le4`$.
 
 <a id="the-three-point-mechanism."></a>
 
@@ -666,34 +706,7 @@ W\le(4-a-s)
 ```
 For the last inequality the right side decreases in $`a`$; at $`a=21/25`$ its maximum occurs at $`s=(-27+3\sqrt{473})/50`$ and is strictly below $`32`$. Thus $`S_4<4`$ in the outer region. The full polynomial, Taylor and radical certificates for these estimates are given in the public [four-point proof](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointZeroInsertionFP4Matching.md); the preceding short defect proof is recorded in the [three-point proof](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointMeanInequalityFP3.md).
 
-<a id="from-free-points-to-critical-values."></a>
-
-#### From free points to critical values.
-
-Here is the all-degree implication. After translating and scaling the root disk to radius one, write $`f_a(z)=\prod_{i=1}^n(z-a_i)`$ and consider
-``` math
-\Psi(a_1,\ldots,a_n)=
- \sum_{f_a'(c)=0}|f_a(c)|^{1/n},
-```
-counting multiplicity. Away from multiple critical points, local critical branches and their values are holomorphic, so $`\Psi`$ is plurisubharmonic. The symmetric multiset sum is continuous across critical collisions and locally bounded above; the removable-singularity theorem extends its plurisubharmonicity across that analytic locus. Applying the subharmonic maximum principle successively in each root coordinate reduces its maximum to $`|a_i|=1`$ for every $`i`$.
-
-On that torus, if $`f'(z)=n\prod_{k=1}^{n-1}(z-c_k)`$, then
-``` math
-\begin{equation}
-\label{eq:critical-torus-product}
- |f(c_j)|=\prod_{k=1}^{n-1}|1-\overline{c_j}c_k|.
-\end{equation}
-```
-Indeed, for a critical point $`c\ne0`$ that is not a root, conjugating $`\sum_i(c-a_i)^{-1}=0`$ gives $`\sum_i a_i/(1-\bar c a_i)=0`$, hence $`\sum_i(1-\bar c a_i)^{-1}=n`$. Thus $`|f'(1/\bar c)|=n|c|\,|f(1/\bar c)|`$. The product formulas and $`|f(1/\bar c)|=|c|^{-n}|f(c)|`$ give <a href="#eq:critical-torus-product" data-reference-type="eqref" data-reference="eq:critical-torus-product">[eq:critical-torus-product]</a>. At $`c=0`$ both sides are one; if $`c`$ is also a root, it lies on the unit circle and both sides vanish. Gauss–Lucas puts all critical points in the closed disk, so $`(\mathrm{FP}_{n-1})`$ applies, including multiplicities.
-
-Put $`m=n-1`$ and $`y_j=|f(c_j)|^{1/m}`$. The free-point inequality gives $`\sum_jy_j\le m`$. Concavity supplies exactly the exponent needed:
-``` math
-y^{m/(m+1)}\le\frac{my+1}{m+1}\quad(y\ge0),\qquad
- \sum_j|f(c_j)|^{1/n}\le m.
-```
-Scaling back multiplies the last sum by $`R`$, proving Theorem <a href="#res:critical-value-budget" data-reference-type="ref" data-reference="res:critical-value-budget">11</a>. If $`R=0`$, all critical values vanish and the conclusion is immediate.
-
-This is an ordinary proof. The public [torus reduction](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointTorusPshReduction.md) and its Lean companion separate the scalar concavity step from the plurisubharmonic maximum principle and polynomial identity; the companion formalises the scalar step, not those analytic bridges. The four-point Lean companion likewise contains algebraic kernels, not the complete logarithmic and calculus proof. No full Lean formalisation of the critical-value budget is claimed here.
+The complete budget is an ordinary theorem. The scalar concavity step has a Lean companion in the earlier [boundary-reduction note](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointTorusPshReduction.md); the pointwise polynomial comparison above replaces its plurisubharmonic argument. The four-point companion checks algebraic kernels, leaving the logarithmic and calculus estimates in the ordinary proof.
 
 The budget guarantees a critical value at most $`R^n`$, but does not force the smaller quintic threshold $`1/M_5`$ below. On the unit radial family all critical values have modulus one, so a uniformly strict improvement is unavailable. Nor does the value budget bound inverse-ray lengths: a path selection or metric comparison is still needed.
 
@@ -774,7 +787,7 @@ Let $`z(t)`$ be differentiable with $`z'(t)=N(z(t))`$, and put $`w(t)=f(z(t))`$.
 
 <div id="res:value" class="theorem">
 
-**Theorem 12** (value equation). *$`w'(t)=-w(t)`$.*
+**Theorem 13** (value equation). *$`w'(t)=-w(t)`$.*
 
 </div>
 
@@ -788,7 +801,7 @@ Observe what this says about the geometry. The value moves radially inward at ex
 
 <div id="res:ray" class="corollary">
 
-**Corollary 13** (ray separation). *The endpoints of any finite Newton-flow connection lie on the same oriented ray from $`0`$. Consequently, if two critical values lie on distinct positive rays, no Newton-flow saddle connection joins the corresponding critical points.*
+**Corollary 14** (ray separation). *The endpoints of any finite Newton-flow connection lie on the same oriented ray from $`0`$. Consequently, if two critical values lie on distinct positive rays, no Newton-flow saddle connection joins the corresponding critical points.*
 
 </div>
 
@@ -800,13 +813,13 @@ This is checked in consumer form: the kernel accepts the implication from the hy
 
 It is tempting to arrange a generic perturbation so that the critical values are pairwise distinct, or that their moduli are pairwise distinct, and to conclude that saddle connections are excluded. Neither is enough.
 
-Two distinct critical values can lie on one ray, and two critical values with distinct moduli certainly can: the ray records the argument, and the modulus is exactly the coordinate the flow contracts. By Corollary <a href="#res:ray" data-reference-type="ref" data-reference="res:ray">13</a> the invariant that excludes connections is the argument. What a perturbation must therefore achieve is pairwise distinct critical-value *arguments*, which is a condition on $`n-1`$ points modulo the circle rather than on their positions in the plane.
+Two distinct critical values can lie on one ray, and two critical values with distinct moduli certainly can: the ray records the argument, and the modulus is exactly the coordinate the flow contracts. By Corollary <a href="#res:ray" data-reference-type="ref" data-reference="res:ray">14</a> the invariant that excludes connections is the argument. What a perturbation must therefore achieve is pairwise distinct critical-value *arguments*, which is a condition on $`n-1`$ points modulo the circle rather than on their positions in the plane.
 
 The cost of that condition is also checked, and it is small.
 
 <div id="res:locus" class="theorem">
 
-**Theorem 14** (ray-collision locus). *Let $`a\ne b`$ be complex. Every common translation $`\beta`$ for which $`a+\beta`$ and $`b+\beta`$ lie on the same positive ray has the form
+**Theorem 15** (ray-collision locus). *Let $`a\ne b`$ be complex. Every common translation $`\beta`$ for which $`a+\beta`$ and $`b+\beta`$ lie on the same positive ray has the form
 ``` math
 \beta=\frac{ra-b}{1-r},
   \qquad r\in\mathbb{R}_{>0},\ r\ne1 .
@@ -836,7 +849,7 @@ and replaces the saddle by a three-ended neighbourhood having one connected lowe
 
 This diagnoses a proof step, not the proposition’s statement. A repair might cut an adjoining regular annulus along a separatrix or regular flow arc before forming the block, retain a four-pronged saddle neighbourhood and change the assembly, or replace the local construction by the ray-cut decomposition proposed below. Any repair must prove that its connector cost can be made arbitrarily small uniformly in the attachment points and that the repaired blocks still assemble to an embedded tree satisfying <a href="#eq:prop12-bound" data-reference-type="eqref" data-reference="eq:prop12-bound">[eq:prop12-bound]</a>. The shorter descriptions of the same three-ended block do not repair the four-sector topology.
 
-Corollary <a href="#res:ray" data-reference-type="ref" data-reference="res:ray">13</a> supplies one independent input for a different route: distinct critical-value arguments exclude saddle-to-saddle Newton connections. It does not itself prove the compact planar decomposition, classify all orbit endpoints or provide the metric gluing estimate. Those are separate problems below.
+Corollary <a href="#res:ray" data-reference-type="ref" data-reference="res:ray">14</a> supplies one independent input for a different route: distinct critical-value arguments exclude saddle-to-saddle Newton connections. It does not itself prove the compact planar decomposition, classify all orbit endpoints or provide the metric gluing estimate. Those are separate problems below.
 
 <a id="sec:finite"></a>
 
@@ -865,7 +878,7 @@ The dependency chain has five separate gates. A proof, a minimally corrected hyp
 
 <div id="prob:saddle1041" class="problem">
 
-**Problem 15** (corrected local saddle assembly). Under the hypotheses of Proposition 12, replace the invalid three-ended local model by a four-pronged block or by a block formed after a specified annular cut. Prove that for every $`\eta>0`$ its connector has total Euclidean length below $`\eta`$, uniformly over the selected attachment points, and that the corrected blocks assemble to an embedded tree satisfying
+**Problem 16** (corrected local saddle assembly). Under the hypotheses of Proposition 12, replace the invalid three-ended local model by a four-pronged block or by a block formed after a specified annular cut. Prove that for every $`\eta>0`$ its connector has total Euclidean length below $`\eta`$, uniformly over the selected attachment points, and that the corrected blocks assemble to an embedded tree satisfying
 ``` math
 \operatorname{len}(G_\varepsilon)
  \le\frac1{2\pi}\int_{2\alpha}^{\infty}P_V(t)\,dt+\varepsilon;
@@ -892,7 +905,7 @@ is transverse to the level boundaries, and no maximal $`X`$-trajectory has two s
 
 <div id="prob:reeb1041" class="problem">
 
-**Problem 16** (finite strip decomposition after ray cuts). For every $`\eta>0`$, construct disjoint Morse neighbourhoods $`N_j`$ with $`\sum_j\operatorname{diam}N_j<\eta`$ and a finite set of complete separatrix or regular-flow cuts so that every component of the complement is flow-diffeomorphic to a rectangle
+**Problem 17** (finite strip decomposition after ray cuts). For every $`\eta>0`$, construct disjoint Morse neighbourhoods $`N_j`$ with $`\sum_j\operatorname{diam}N_j<\eta`$ and a finite set of complete separatrix or regular-flow cuts so that every component of the complement is flow-diffeomorphic to a rectangle
 ``` math
 [a_S,b_S]\times[0,1],\qquad u(\Phi_S(t,s))=t,
 ```
@@ -924,7 +937,7 @@ gives the average trajectory estimate
 
 <div id="prob:metric1041" class="problem">
 
-**Problem 17** (additive-error strip gluing). Assuming Problem <a href="#prob:reeb1041" data-reference-type="ref" data-reference="prob:reeb1041">16</a>, select trajectories in all strips and connect them through the saddle and root neighbourhoods so that, for every $`\eta>0`$, the resulting embedded tree contains all $`m`$ roots and obeys
+**Problem 18** (additive-error strip gluing). Assuming Problem <a href="#prob:reeb1041" data-reference-type="ref" data-reference="prob:reeb1041">17</a>, select trajectories in all strips and connect them through the saddle and root neighbourhoods so that, for every $`\eta>0`$, the resulting embedded tree contains all $`m`$ roots and obeys
 ``` math
 \operatorname{len}(G)
  \le\frac1{2\pi}\int_{2\alpha}^{\infty}P_V(t)\,dt+\eta.
@@ -952,7 +965,7 @@ The constant-translation stage is no longer open. Once a finite critical-value f
 
 <div id="prob:perturb1041" class="problem">
 
-**Problem 18** (two-stage generic perturbation with slack). For fixed root discs, compact collar $`K`$, regular levels $`\alpha/2,\alpha,2\alpha,5\alpha/2`$ and collar slack $`q>0`$, prove that an arbitrarily small
+**Problem 19** (two-stage generic perturbation with slack). For fixed root discs, compact collar $`K`$, regular levels $`\alpha/2,\alpha,2\alpha,5\alpha/2`$ and collar slack $`q>0`$, prove that an arbitrarily small
 ``` math
 g_{\lambda,\beta}(z)=f(z)+\lambda z+\beta
 ```
@@ -980,7 +993,7 @@ Finite planar avoidance and the subsequent constant translation must not be reli
 
 <div id="prob:globalflow1041" class="problem">
 
-**Problem 19** (relative global Newton-flow theorem). On a compact regular band
+**Problem 20** (relative global Newton-flow theorem). On a compact regular band
 ``` math
 M_{a,b}=\{z:a\le-\log|p(z)|\le b\},
 ```

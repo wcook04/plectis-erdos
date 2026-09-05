@@ -8,23 +8,13 @@
 
 </div>
 
-Erdős Problem #257 asks whether
-``` math
-X_A=\sum_{a\in A}\frac1{2^a-1}
-```
-is irrational for every infinite $`A\subseteq\mathbb{N}_{>0}`$. The problem remains open. The leading fully formalized result in this paper’s source cut is the classical full-support theorem: for every integer $`b\ge2`$, $`\sum_{n\ge1}(b^n-1)^{-1}`$ is irrational. The checked proof uses a weighted certificate argument. The same development proves irrationality for every infinite pairwise-coprime support of convergent reciprocal mass and for every eventually periodic sequence of nonnegative rational weights whose periodic tail is not identically zero.
+Erdős Problem #257 asks whether $`X_A=\sum_{a\in A}(2^a-1)^{-1}`$ is irrational for every infinite $`A\subseteq\mathbb{N}_{>0}`$. We prove irrationality for several classes that allow divergent reciprocal mass: supports satisfying a divisibility-weighted summability criterion, supports whose reciprocal mass grows more slowly than an iterated logarithm, and supports admitting summable positive fractional divisor covers. Each criterion is hereditary under passage to infinite subsets and works at every integer base $`b\ge2`$. A separate argument, using Tao–Teräväinen’s correlation theorem, treats every infinite subset of the prime powers, including fixed dilations and finite modifications.
 
-For a finite nonempty support $`F`$, the reduced denominator $`D_F`$ of $`\sum_{n\in F}(b^n-1)^{-1}`$ satisfies
-``` math
-\operatorname{ord}_{D_F}(b)=\operatorname{lcm}(F);
-```
-if $`\operatorname{lcm}(F)\ge2`$, then $`\operatorname{lcm}(F)<D_F`$. For a hypothetical rational value on an infinite support, binary long division instead produces an unbounded integral scaled-tail orbit. The orbit obeys an exact recurrence, permits only sublogarithmic zero windows in the divisor-incidence sequence, and satisfies the reciprocal-mass bounds stated below. Boolean–Möbius inversion gives an exact orbit characterisation of all rational support values, but does not make the reconstructed support infinite.
+The first three arguments share a mechanism. Freeze a finite set of exponents by a common multiple, then average the remaining shifted atoms to produce arbitrarily small positive displacements. Rationality forces a fixed positive gap, giving the contradiction. Keeping the incomplete-period error in this average yields a quantitative necessary condition: a rational value forces reciprocal mass to grow at least at an explicit multiple of log-star. Positive fractional covers extend the argument to moving divisor frames, with exponents that may tend to zero.
 
-The achievement set of the weights $`(2^n-1)^{-1}`$ is compact, perfect, totally disconnected, nowhere dense, and of Lebesgue measure $`1`$. If the allowed exponent set has finite complement $`F`$, the restricted achievement set has measure $`2^{-|F|}`$; if the complement is infinite, it has measure zero. These geometric results classify sets of subsums, not the arithmetic nature of their points.
+For finite nonempty supports $`F`$, the reduced denominator $`D_F`$ satisfies $`\operatorname{ord}_{D_F}(b)=\operatorname{lcm}(F)`$. For infinite supports, the achievement set is compact, perfect, nowhere dense, and has Lebesgue measure $`1`$; restricting the exponents gives an exact volume dichotomy. At the rational targets $`1/2`$ and $`1/21`$, finite-support exclusion turns membership into a potential counterexample, and exact greedy criteria locate the remaining infinite-orbit question.
 
-Two rational targets make the remaining difficulty explicit. Membership of $`1/2`$ is equivalent to infinitely many omissions in its greedy expansion; non-membership is witnessed by one finite fatal gap. Membership of $`1/21`$ is equivalent to cofinal crossings of the exact scaled lower separatrix, or equivalently to failure of the stated fatal aligned branch. Neither membership question is resolved. A representation of either value must have infinite support.
-
-The ordinary proofs in Section <a href="#sec:eight-return-extensions" data-reference-type="ref" data-reference="sec:eight-return-extensions">2</a> also treat divisibility-weighted, sub-log-star and positive fractional-cover supports beyond reciprocal summability, and arbitrary prime-power sub-supports. They include a variable-exponent extension and an explicit square-root deadline for repairs on a hypothetical representing greedy orbit. These arguments have not been completely formalized in Lean and leave the unrestricted problem open.
+The analytic support criteria have ordinary proofs in Section <a href="#sec:eight-return-extensions" data-reference-type="ref" data-reference="sec:eight-return-extensions">2</a>. The accompanying Lean development checks the classical full-support, pairwise-coprime summable-support and periodic-weight theorems, the denominator identity, the geometric classification, and the stated orbit reductions. The unrestricted problem and the two rational membership questions remain open.
 
 <div class="center">
 
@@ -32,9 +22,9 @@ The ordinary proofs in Section <a href="#sec:eight-return-extensions" data-refe
 
 ------------------------------------------------------------------------
 
-**Strongest unconditional results**
+**Main results**
 
-**Arithmetic.** The full-support series is irrational at every integer base $`b\ge2`$; so are all infinite pairwise-coprime supports with $`\sum_{a\in A}1/a<\infty`$, and all eventually periodic nonnegative rational weight sequences with a nonzero periodic tail. Finite subsums have exact denominator order. **Geometry.** The achievement set is compact, perfect, nowhere dense, and has measure $`1`$, with an exact measure law after restricting exponents. **Open boundary.** The target values $`1/2`$ and $`1/21`$ remain undecided, and the geometric classification does not decide the arithmetic nature of individual subsums.
+**Infinite supports.** Divisibility-weighted summability, sub-log-star reciprocal mass, and positive fractional divisor covers each imply irrationality at every integer base, hereditarily. Every infinite prime-power sub-support also has irrational value, by a separate analytic argument. These results include supports with divergent reciprocal mass. **Finite supports.** The reduced denominator has multiplicative order exactly the least common multiple of the exponents. **Geometry and rational targets.** The subsum set has measure $`1`$ and an exact restricted-support volume law; finite-support exclusion and greedy criteria isolate the unresolved membership questions at $`1/2`$ and $`1/21`$.
 
 </div>
 
@@ -50,7 +40,7 @@ The ordinary proofs in Section <a href="#sec:eight-return-extensions" data-refe
 
 </div>
 
-See Erdős \[erdos1968, p. 222\], Erdős and Graham \[erdosgraham1980, p. 62\], and Erdős \[erdos1988, p. 105\]. Bloom’s current catalogue record reproduces the displayed problem and labels it open, while explicitly warning that the status is the website owner’s present assessment and may omit relevant literature \[erdosproblems\]. We therefore use the catalogue for numbering and current reported status only; the original publications and the later cited papers carry the mathematical claims.
+See Erdős \[erdos1968, p. 222\], Erdős and Graham \[erdosgraham1980, p. 62\], and Erdős \[erdos1988, p. 105\]. Bloom’s catalogue records the problem as open \[erdosproblems\].
 
 Write $`w_{n}=(2^n-1)^{-1}`$. Expanding each weight as a geometric series and interchanging the two nonnegative sums gives the coordinate this note works in. With the *divisor incidence* $`\operatorname{sc}_A(n)=\#\{d\mid n: d\in A\}`$,
 ``` math
@@ -104,7 +94,7 @@ Section <a href="#sec:period" data-reference-type="ref" data-reference="sec:per
 
 # Extensions beyond reciprocal summability
 
-The following arguments are ordinary mathematical proofs. Their complete analytic formalizations are not part of the checked theorem above. They exclude several further classes with divergent reciprocal mass; they do not decide the universal problem. Complete proofs, examples and countermodels are retained with this paper in [the analytic proof supplement](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/docs/research/erdos257-eight-return-proofs.md). The variable-exponent argument below and the finite repair deadline are compositions developed from those arguments.
+The following ordinary proofs exclude several classes with divergent reciprocal mass. Complete proofs, examples and countermodels appear in [the analytic proof supplement](https://github.com/wcook04/plectis-lean-erdos249-257/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-proofs.md). The variable-exponent argument below and the finite repair deadline are compositions developed from those arguments.
 
 <a id="divisibility-weighted-and-quantitative-criteria"></a>
 
@@ -200,7 +190,7 @@ For the actual greedy support of $`4/9`$, let $`Q_N=\lfloor4\cdot2^N/9\rfloor-P_
 ```
 One strictly increasing window would be a finite nonmembership certificate. Exact finite replay through rank $`4096`$ finds no such certificate and proves no all-depth statement.
 
-Fixed multiplicative schedules have a different fate. Eighty exactly certified selected anchors through rank $`727`$, together with Dirichlet’s theorem, give infinitely many prime-cofactor increases of at least seven at multiplier $`120`$ and at least two at multiplier $`420`$. In particular, the proposed modulus-$`420`$ tetraprime repair inequality is false despite its earlier finite-window evidence. This leaves unrestricted cofinal repairs open. At $`1/21`$, combining the actually selected exponents $`5`$ and $`7`$ gives $`60`$ favorable phase classes modulo $`105`$ and strengthens the conditional upper-density bound for divergent quotient rows from $`1/5`$ to $`2/7`$. It proves neither target’s membership. The complete phase certificate and the exact recurrence identities are in the [synthesis supplement](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/docs/research/erdos257-eight-return-synthesis.md).
+Fixed multiplicative schedules have a different fate. Eighty exactly certified selected anchors through rank $`727`$, together with Dirichlet’s theorem, give infinitely many prime-cofactor increases of at least seven at multiplier $`120`$ and at least two at multiplier $`420`$. In particular, the proposed modulus-$`420`$ tetraprime repair inequality is false despite its earlier finite-window evidence. This leaves unrestricted cofinal repairs open. At $`1/21`$, combining the actually selected exponents $`5`$ and $`7`$ gives $`60`$ favorable phase classes modulo $`105`$ and strengthens the conditional upper-density bound for divergent quotient rows from $`1/5`$ to $`2/7`$. Using instead the twelve selected exponents $`5,7,8,9,10,18,20,24,28,42,45,60`$ gives exactly $`1011`$ favorable classes modulo $`1260`$. The corresponding larger restricted divergence set has conditional upper density at least $`337/840>2/5`$. Its complete phase mask and an independent rational replay of the selected prefix are supplied with the synthesis. The older $`2/7`$ bound concerns the two-anchor restricted set. It proves neither target’s membership. The complete phase certificate and the exact recurrence identities are in the [synthesis supplement](https://github.com/wcook04/plectis-lean-erdos249-257/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-synthesis.md).
 
 <a id="sec:period"></a>
 
