@@ -119,11 +119,6 @@ These checked obstructions are an alphabetical, deliberately unranked tier. They
   **Boundary.** CoefficientOnlyNoGo checks the exact finite partial-sum identity and the two non-eventual-periodicity statements. It does not assert the infinite limit of the synthetic countermodel, identify its coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims.<br>
   *Evidence.* coefficient-only barrier; novelty and significance unassessed · Lean kernel plus authored synthesis
 
-- **[#269](#programme-269) · Conditional carry escape** (`conditional_carry_escape`)<br>
-  Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound. The load-bearing consumer is no_positive_reducedCarry_of_cofinalLocalWindowEscape; an absorbed nonzero common-factor carry reduces exactly to that consumer. CofinalLocalWindowEscape, windowBase, windowForcing, leastPositiveResidue, and the absorbed-carry bridge are subordinate finite-window mechanism evidence.<br>
-  **Boundary.** The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families.<br>
-  *Evidence.* conditional no-go consumer; novelty and significance unassessed · Lean kernel plus Comparator
-
 - **[#1049](#programme-1049) · Coordinatewise corridor no go** (`coordinatewise_corridor_no_go`)<br>
   The coordinatewise corridor forces a power-versus-linear inequality and cannot occur at base 3/2.<br>
   **Boundary.** This excludes one proof architecture and proves no irrationality statement.<br>
@@ -165,9 +160,9 @@ These checked obstructions are an alphabetical, deliberately unranked tier. They
   *Evidence.* no-go result · Lean kernel plus Comparator
 
 - **[#269](#programme-269) · Rank two kernel no go** (`rank_two_kernel_no_go`)<br>
-  The 2,3,5 kernel is not rank one and its smallest displayed minor equals -1/15.<br>
-  **Boundary.** Failure of rank one does not itself imply irrationality.<br>
-  *Evidence.* no-go result · Lean kernel plus Comparator
+  The 2,3,5 kernel has checked minor -1/15 and is not rank one. The paper additionally proves arbitrarily large nonsingular minors for three distinct primes by a dense-rotation staircase construction, excluding every finite exact separation across the displayed coordinate split.<br>
+  **Boundary.** The arbitrary-order dense-rotation and determinant argument is not covered by the existing Comparator representative or a linked Lean theorem. Neither finite-rank obstruction establishes irrationality or transcendence.<br>
+  *Evidence.* no-go result · Lean kernel plus Comparator for the specified 2-by-2 minor and rank-one obstruction; ordinary paper proof for arbitrary-order non-separability
 
 - **[#1049](#programme-1049) · Scalar content no go** (`scalar_content_no_go`)<br>
   Integer scalar content changes analytic error and exterior determinant by matching factors, yielding no margin by itself.<br>
@@ -180,11 +175,11 @@ Every contribution family and every statement-isolated interface remains queryab
 
 ### Complete serious-result universe
 
-All 70 source-current review families are accounted for here. The categories preserve honest selection reasons while the programme dossiers below retain each family's exact mechanism and boundary. This inventory is complete but deliberately does not compete with the ranked frontier for attention.
+All 73 source-current review families are accounted for here. The categories preserve honest selection reasons while the programme dossiers below retain each family's exact mechanism and boundary. This inventory is complete but deliberately does not compete with the ranked frontier for attention.
 
-- **represented (49).** [#257](#programme-257) `achievement_set_geometry`, [#249](#programme-249) `actual_foreign_residue_projection`, [#249](#programme-249) `actual_lcm_orbit_separation`, [#257](#programme-257) `boolean_mobius_carry`, [#257](#programme-257) `boolean_mobius_exact_row_dynamics`, [#243](#programme-243) `bounded_negative_exclusion`, [#243](#programme-243) `bounded_rise_coprimality`, [#243](#programme-243) `centered_state_dynamics`, [#251](#programme-251) `coefficient_only_no_go`, [#257](#programme-257) `composite_dilation_defect_identity`, [#269](#programme-269) `dyadic_block_alphabet`, [#251](#programme-251) `dyadic_tail_integrality_classification`, [#249](#programme-249) `eventually_periodic_lambert`, [#68](#programme-68) `factorial_carry_characterisation`, [#68](#programme-68) `factorial_channel_and_projection_rigidity`, [#257](#programme-257) `finite_period_noncollapse`, [#249](#programme-249) `first_harmonic_pivot_decomposition`, [#249](#programme-249) `fixed_precision_transport_no_go`, [#257](#programme-257) `half_membership_seam_classification`, [#1049](#programme-1049) `height_and_pade_arithmetic`, [#269](#programme-269) `height_fibre_and_shell`, [#251](#programme-251) `integral_shift_classification`, [#257](#programme-257) `known_irrational_supports`, [#1041](#programme-1041) `newton_value_decay`, [#257](#programme-257) `orthogonal_petal_sunflower_reduction`, [#257](#programme-257) `pairwise_coprime_support`, [#257](#programme-257) `periodic_nonnegative_weight_irrationality`, [#251](#programme-251) `prime_gap_reformulation`, [#1049](#programme-1049) `rational_base_tail_recurrence`, [#1041](#programme-1041) `ray_separation`, [#257](#programme-257) `restricted_achievement_sets`, [#1041](#programme-1041) `root_retention`, [#257](#programme-257) `shifted_odd_tail_state`, [#251](#programme-251) `small_mismatch_criterion`, [#249](#programme-249) `squared_lambert_gcd_moments`, [#249](#programme-249) `stern_brocot_cylinder_law`, [#249](#programme-249) `stern_brocot_run_fibonacci_stability`, [#249](#programme-249) `strict_prime_tail_orbit_gap`, [#269](#programme-269) `three_prime_lcm_cells`, [#249](#programme-249) `totient_carry_anti_compression`, [#249](#programme-249) `totient_certificate_equivalences`, [#249](#programme-249) `totient_kernel_all_base_index`, [#249](#programme-249) `totient_kernel_basis`, [#249](#programme-249) `totient_kernel_rank`, [#249](#programme-249) `totient_lambert_coefficients`, [#251](#programme-251) `totient_shift_propagation`, [#249](#programme-249) `totient_visible_coprime_lattice_mass`, [#1041](#programme-1041) `translation_avoidance`, [#269](#programme-269) `weighted_phase_carry_observer`
+- **represented (52).** [#257](#programme-257) `achievement_set_geometry`, [#249](#programme-249) `actual_foreign_residue_projection`, [#249](#programme-249) `actual_lcm_orbit_separation`, [#257](#programme-257) `boolean_mobius_carry`, [#257](#programme-257) `boolean_mobius_exact_row_dynamics`, [#243](#programme-243) `bounded_negative_exclusion`, [#243](#programme-243) `bounded_rise_coprimality`, [#243](#programme-243) `centered_state_dynamics`, [#251](#programme-251) `coefficient_only_no_go`, [#257](#programme-257) `composite_dilation_defect_identity`, [#269](#programme-269) `conditional_carry_escape`, [#269](#programme-269) `dyadic_block_alphabet`, [#251](#programme-251) `dyadic_tail_integrality_classification`, [#249](#programme-249) `eventually_periodic_lambert`, [#68](#programme-68) `factorial_carry_characterisation`, [#68](#programme-68) `factorial_channel_and_projection_rigidity`, [#257](#programme-257) `finite_period_noncollapse`, [#249](#programme-249) `first_harmonic_pivot_decomposition`, [#249](#programme-249) `fixed_precision_transport_no_go`, [#257](#programme-257) `half_membership_seam_classification`, [#1049](#programme-1049) `height_and_pade_arithmetic`, [#269](#programme-269) `height_fibre_and_shell`, [#251](#programme-251) `integral_shift_classification`, [#257](#programme-257) `known_irrational_supports`, [#1041](#programme-1041) `newton_value_decay`, [#257](#programme-257) `orthogonal_petal_sunflower_reduction`, [#257](#programme-257) `pairwise_coprime_support`, [#257](#programme-257) `periodic_nonnegative_weight_irrationality`, [#251](#programme-251) `prime_gap_reformulation`, [#1049](#programme-1049) `rational_base_tail_recurrence`, [#1041](#programme-1041) `ray_separation`, [#257](#programme-257) `restricted_achievement_sets`, [#1041](#programme-1041) `root_retention`, [#257](#programme-257) `shifted_odd_tail_state`, [#251](#programme-251) `small_mismatch_criterion`, [#249](#programme-249) `squared_lambert_gcd_moments`, [#249](#programme-249) `stern_brocot_cylinder_law`, [#249](#programme-249) `stern_brocot_run_fibonacci_stability`, [#249](#programme-249) `strict_prime_tail_orbit_gap`, [#269](#programme-269) `three_prime_lcm_cells`, [#249](#programme-249) `totient_carry_anti_compression`, [#249](#programme-249) `totient_certificate_equivalences`, [#249](#programme-249) `totient_fixed_rank_lcm_curvature`, [#249](#programme-249) `totient_kernel_all_base_index`, [#249](#programme-249) `totient_kernel_basis`, [#249](#programme-249) `totient_kernel_rank`, [#249](#programme-249) `totient_lambert_coefficients`, [#251](#programme-251) `totient_shift_propagation`, [#249](#programme-249) `totient_twoadic_pulse_blocks`, [#249](#programme-249) `totient_visible_coprime_lattice_mass`, [#1041](#programme-1041) `translation_avoidance`, [#269](#programme-269) `weighted_phase_carry_observer`
 
-- **subordinate (6).** [#269](#programme-269) `conditional_carry_escape`, [#68](#programme-68) `factorial_conditional_producers`, [#1049](#programme-1049) `four_jet_collision`, [#257](#programme-257) `half_and_twenty_one_frontiers`, [#243](#programme-243) `negative_mass_recovery`, [#249](#programme-249) `totient_carry_rank`
+- **subordinate (6).** [#68](#programme-68) `factorial_conditional_producers`, [#1049](#programme-1049) `four_jet_collision`, [#257](#programme-257) `half_and_twenty_one_frontiers`, [#243](#programme-243) `negative_mass_recovery`, [#249](#programme-249) `totient_carry_rank`, [#249](#programme-249) `totient_parity_separated_carry_countermodel`
 
 - **rejected (6).** [#1049](#programme-1049) `coordinatewise_corridor_no_go`, [#1049](#programme-1049) `endpoint_residues`, [#249](#programme-249) `lcm_factor_ideal_shift_algebra_no_go`, [#243](#programme-243) `negative_orbit_no_go`, [#269](#programme-269) `rank_two_kernel_no_go`, [#1049](#programme-1049) `scalar_content_no_go`
 
@@ -462,55 +457,65 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
    - **Source.** <code>Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis</code> in [Lean](../Erdos249257/TotientMahlerDefect.lean)
    - **Boundary.** The basis theorem does not connect rationality of the series to finite kernel rank.
 
-9. **Stern brocot run fibonacci stability** (`stern_brocot_run_fibonacci_stability`; deep mechanism and classification; source disposition `represented`)
+9. **Totient twoadic pulse blocks** (`totient_twoadic_pulse_blocks`; deep mechanism and classification; source disposition `represented`)
+   - **Why here.** After the basis and carry-rank structure, this actual CRT/Dirichlet producer shows what can be forced in totient arithmetic itself. Its cofinal half-turn residues do not exclude integral tail differences; no alignment with the separate curvature witnesses is proved.
+   - **Source authority.** Canonical review family `totient_twoadic_pulse_blocks` in [claims](../docs/claims.json)
+   - **Boundary.** For a fixed H the depth remains K < H; this is not arbitrary depth at fixed shift. The half-turn class contains integers. Neither a quantitative bound excluding that class nor actual tail nonintegrality follows. No configured ExternalVerification statement firewall or Comparator execution represents this family.
+
+10. **Totient fixed rank lcm curvature** (`totient_fixed_rank_lcm_curvature`; deep mechanism and classification; source disposition `represented`)
+   - **Why here.** Paired after actual two-adic pulses as a distinct quantitative arithmetic result: clean LCM offsets cancel the affine main term and expose an explicit small curvature on an exact integer lattice. No theorem aligns those offsets with the pulse primes or proves the primitive curvature nonzero.
+   - **Source authority.** Canonical review family `totient_fixed_rank_lcm_curvature` in [claims](../docs/claims.json)
+   - **Boundary.** The primitive integer z may be zero; its nonzero alternative is not produced. The estimate concerns the specified three ranks and clean offsets; it is not an unbounded nonlinear cancellation theorem or an irrationality result. No configured ExternalVerification statement firewall or Comparator execution represents this family.
+
+11. **Stern brocot run fibonacci stability** (`stern_brocot_run_fibonacci_stability`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** A genuine Fibonacci/continuant stability floor, but analytic denominator survival and the #249 endpoint remain unproved.
    - **Source.** <code>Erdos249257.ExternalVerification.runHeight_defect_fib_sum_lower</code> in [Lean](../Erdos249257/SternBrocotRunGeometry.lean)
    - **Boundary.** This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no #249 endpoint follows.
 
-10. **Eventually periodic lambert** (`eventually_periodic_lambert`; deep mechanism and classification; source disposition `represented`)
+12. **Eventually periodic lambert** (`eventually_periodic_lambert`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** This is a direct irrationality theorem for an exact structured coefficient class, but the totient-derived coefficients are not eventually periodic, so it is reusable background rather than a #249 frontier.
    - **Source authority.** Canonical review family `eventually_periodic_lambert` in [claims](../docs/claims.json)
    - **Boundary.** The totient-derived weights are not eventually periodic.
 
-11. **Fixed precision transport no go** (`fixed_precision_transport_no_go`; natural friction and no-go; source disposition `represented`)
+13. **Fixed precision transport no go** (`fixed_precision_transport_no_go`; natural friction and no-go; source disposition `represented`)
    - **Why here.** The committed representative unconditionally retires fixed-positive-precision local valuation/unit-word escape for every finite odd-unit word through centred completions, while its synthetic unrestricted high-quotient and finite-word scope supplies no actual totient endpoint.
    - **Source.** <code>Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo</code> in [Lean](../Erdos249257/TropicalCurvatureCarry.lean)
    - **Boundary.** This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős #249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families.
    - **Relation.** `contrary_evidence_for` `actual_foreign_residue_projection`: Fixed local precision admits synthetic completions, so any successful projection must use growing precision or global correlation.
 
-12. **Lcm factor ideal shift algebra no go** (`lcm_factor_ideal_shift_algebra_no_go`; natural friction and no-go; source disposition `rejected`)
+14. **Lcm factor ideal shift algebra no go** (`lcm_factor_ideal_shift_algebra_no_go`; natural friction and no-go; source disposition `rejected`)
    - **Why here.** A synthetic finite-shift obstruction retires one algebraic route while explicitly leaving actual totient forcing and the unbounded supply open.
    - **Source.** <code>Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient</code> in [Lean](../Erdos249257/LcmFactorIdealPulseObstruction.lean)
    - **Boundary.** The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open.
 
-13. **Actual foreign residue projection** (`actual_foreign_residue_projection`; conditional endpoint leverage; source disposition `represented`)
+15. **Actual foreign residue projection** (`actual_foreign_residue_projection`; conditional endpoint leverage; source disposition `represented`)
    - **Why here.** The committed representative exposes the exact finite foreign/divisor partition, geometric tail control, and generic separated-projection consumer for the canonical actual_foreign_residue_projection family; its controlled-projection bridge and unbounded supply remain open, so it is represented conditional evidence rather than a #249 endpoint.
    - **Source.** <code>Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation</code> in [Lean](../Erdos249257/ActualForeignResidueProjection.lean)
    - **Boundary.** This is only a finite partition/geometric-majorant reduction feeding a generic complement-noncancellation consumer. The ControlledForeignProjection analytic bridge and any unbounded supply of separated projections remain unproved; no Erdős #249 endpoint, novelty, significance, priority, or external-review claim follows.
    - **Relation.** `contrary_evidence_for` `fixed_precision_transport_no_go`: Fixed local precision admits synthetic completions, so any successful projection must use growing precision or global correlation.
 
-14. **Totient lambert coefficients** (`totient_lambert_coefficients`; supporting and long tail; source disposition `represented`)
+16. **Totient lambert coefficients** (`totient_lambert_coefficients`; supporting and long tail; source disposition `represented`)
    - **Why here.** The Lambert rewrite and prime-power coefficient structure orient the programme but provide no irrationality producer.
    - **Source authority.** Canonical review family `totient_lambert_coefficients` in [claims](../docs/claims.json)
    - **Boundary.** The coefficient identities do not prove irrationality.
 
-15. **Squared lambert gcd moments** (`squared_lambert_gcd_moments`; supporting and long tail; source disposition `represented`)
+17. **Squared lambert gcd moments** (`squared_lambert_gcd_moments`; supporting and long tail; source disposition `represented`)
    - **Why here.** A precise gcd-moment transfer identity, but it supplies no irrationality conclusion for the binary totient series.
    - **Source.** <code>Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series</code> in [Lean](../Erdos249257/GcdMomentCalculus.lean)
    - **Boundary.** This exact transfer identity does not prove irrationality of the binary totient series; the cited constant-weight q-Padé result remains external and no #249 endpoint follows.
 
-16. **Stern brocot cylinder law** (`stern_brocot_cylinder_law`; supporting and long tail; source disposition `represented`)
+18. **Stern brocot cylinder law** (`stern_brocot_cylinder_law`; supporting and long tail; source disposition `represented`)
    - **Why here.** Exact Stern–Brocot telescoping is reusable geometry, not an irrationality theorem or novelty claim.
    - **Source.** <code>Erdos249257.ExternalVerification.cylinderMass_split</code> in [Lean](../Erdos249257/GcdMomentCalculus.lean)
    - **Boundary.** This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the #249 endpoint remains open.
 
-17. **Totient visible coprime lattice mass** (`totient_visible_coprime_lattice_mass`; supporting and long tail; source disposition `represented`)
+19. **Totient visible coprime lattice mass** (`totient_visible_coprime_lattice_mass`; supporting and long tail; source disposition `represented`)
    - **Why here.** Exact visible-lattice normalization explains a mass term but is rational and does not settle Erdős #249.
    - **Source.** <code>Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one</code> in [Lean](../Erdos249257/GcdMomentCalculus.lean)
    - **Boundary.** This rational normalization identity does not prove irrationality of the binary totient series or settle #249.
 
 <details>
-<summary>Contribution families (19)</summary>
+<summary>Contribution families (22)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -609,10 +614,25 @@ Exact registry keys and Comparator routing are listed separately.
   **Boundary.** Equivalent producer statements are as hard as the unresolved target.<br>
   *Evidence.* exact equivalence and conditional reduction · Lean kernel
 
+- **Totient twoadic pulse blocks**<br>
+  For every fixed pair 2 <= K < H and every B, an actual prime p > max(B,H+K) has deltaTotient(H,p) congruent to 2^(K-1) modulo 2^K, with the preceding K-1 deltaTotient letters zero modulo 2^K. If the H-shifted actual totient tail differences are eventually integral, such prime indices cofinally carry the same half-turn residue. Mechanism: Choose one fresh prime for p+H and two fresh primes for each earlier position, all 1 modulo 2^K; finite CRT and Dirichlet produce the terminal prime. Exact K-step carry transport kills the homogeneous integer state modulo 2^K while retaining the terminal order-two residue.<br>
+  **Boundary.** For a fixed H the depth remains K < H; this is not arbitrary depth at fixed shift. The half-turn class contains integers. Neither a quantitative bound excluding that class nor actual tail nonintegrality follows. No configured ExternalVerification statement firewall or Comparator execution represents this family.<br>
+  *Evidence.* formalised structural result; novelty unassessed · Source Lean declarations at the paper pin; no configured ExternalVerification statement firewall or Comparator evidence
+
+- **Totient fixed rank lcm curvature**<br>
+  For a >= 4, j > 0 and j^2 <= 2^a, put H=lcm(1,...,2^a). The exact curvature phi(3H+j)-2phi(2H+j)+phi(H+j) equals 2phi(j)z for an integer z with |z| < (8 floor(H/j)+4)/a. A separate rough-Euler estimate gives phi(n) > n(1-2/a) for positive n < 2^(2*2^a) whose prime divisors exceed 2^a. Mechanism: The clean LCM window factors phi(kH+j) through phi(j) and rough cofactors. Counting their large prime divisors bounds Euler-density loss without the prime number theorem. The affine terms cancel in the second difference, while parity supplies the additional factor two.<br>
+  **Boundary.** The primitive integer z may be zero; its nonzero alternative is not produced. The estimate concerns the specified three ranks and clean offsets; it is not an unbounded nonlinear cancellation theorem or an irrationality result. No configured ExternalVerification statement firewall or Comparator execution represents this family.<br>
+  *Evidence.* formalised structural result; novelty unassessed · Source Lean declarations at the paper pin; no configured ExternalVerification statement firewall or Comparator evidence
+
+- **Totient parity separated carry countermodel**<br>
+  A single natural sequence c has c(n) <= 6 and c(n) <= n, agrees with phi(n) modulo 2, is not eventually periodic, and has dyadic sum exactly 3/2. For every N,G,K it has a block of K later pairs c(2^(k+i+3))=6, c(2^(k+i+3)+1)=0 whose successive marker indices are more than G apart. Mechanism: Add a sparse dyadic coboundary to a rational base sequence. The paired perturbations telescope in the weighted sum, while powers-of-two marker positions create aperiodicity and arbitrarily long separated blocks without changing parity.<br>
+  **Boundary.** This rules out an implication from the listed coarse properties; it does not refute irrationality of the actual totient series. Full totient multiplicativity, higher-adic information, and actual-LCM correlations are not supplied by the witness. No configured ExternalVerification statement firewall or Comparator execution represents this family.<br>
+  *Evidence.* formalised synthetic countermodel; novelty unassessed · Source Lean declarations at the paper pin; no configured ExternalVerification statement firewall or Comparator evidence
+
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (19)</summary>
+<summary>Technical registry and Comparator routing (22)</summary>
 
 - <code>totient_kernel_basis</code><br>
   Comparator: <code>targeted</code>
@@ -670,6 +690,15 @@ Exact registry keys and Comparator routing are listed separately.
 
 - <code>totient_certificate_equivalences</code><br>
   Comparator: <code>not_selected_deep_certificate_vocabulary</code>
+
+- <code>totient_twoadic_pulse_blocks</code><br>
+  Comparator: <code>not_selected_no_configured_statement_firewall</code>
+
+- <code>totient_fixed_rank_lcm_curvature</code><br>
+  Comparator: <code>not_selected_no_configured_statement_firewall</code>
+
+- <code>totient_parity_separated_carry_countermodel</code><br>
+  Comparator: <code>not_selected_no_configured_statement_firewall</code>
 
 </details>
 
@@ -1026,7 +1055,7 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Source and priority note</summary>
 
-Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it.
+Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it. For {2,3,5}, the ordinary paper proof bounds X_a by (n_a^2+8n_a+18)/9 and derives the actual bounded reduced carry from rationality. Actual cofinal local-window escape alone suffices for irrationality; that escape remains unproved.
 
 </details>
 
@@ -1041,34 +1070,34 @@ Every two-prime case is settled at transcendence level by a paper argument in th
 
 This is Palomar's source-current reader order, not review-matrix or Comparator roster order. Ranked results lead; conditional endpoint leverage, deep mechanisms, natural friction, and supporting rows follow unequally.
 
-1. **Conditional carry escape** (`conditional_carry_escape`; conditional endpoint leverage; source disposition `subordinate`)
-   - **Why here.** Below the #251 small-mismatch route because both CofinalLocalWindowEscape and the rationality-to-actual-series carry bridge remain open, but above medium finite #269 machinery because the exact residue-window contradiction is the endpoint consumer that such machinery must feed.
+1. **Conditional carry escape** (`conditional_carry_escape`; conditional endpoint leverage; source disposition `represented`)
+   - **Why here.** The paper now completes the rationality-to-actual-series carry bridge, smooth-factor cancellation and matching carry bound for the repeated {2,3,5} series. CofinalLocalWindowEscape for its literal data is the remaining arithmetic producer. This concrete conditional endpoint sits above finite #269 support machinery; the actual infinite bridge is not yet formalised or included in the Comparator representative.
    - **Source.** <code>Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape</code> in [Lean](../ErdosProblems/Erdos269/RestrictedFloorSum.lean)
-   - **Boundary.** The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families.
+   - **Boundary.** The formal predicate is CofinalLocalWindowEscape. For the literal {2,3,5} radix/digit data, the surviving producer must supply, for every positive B coprime to 30 and every onset a0>=1, an index ell>=a0 and length h>=1 whose least positive residue of -B times the window forcing modulo the window-base product exceeds K235(B,ell+h). This cofinal escape is unproved. The actual series bridge, smooth cancellation and bound are ordinary mathematical arguments, not new Comparator evidence or completed Lean formalizations. The existing source theorem still assumes the exact recurrence, positive integral carry and short bound. Irrationality remains open; this does not settle arbitrary three-prime sets or the de-duplicated series.
    - **Relation.** `mechanism_support_for` `weighted_phase_carry_observer`: The residue/coboundary split exposes finite carry data but does not supply the cofinal escape or actual-series bridge.
    - **Relation.** `contrary_evidence_for` `rank_two_kernel_no_go`: The finite kernel is not rank one, ruling out a tempting separable shortcut without producing carry escape.
 
 2. **Weighted phase carry observer** (`weighted_phase_carry_observer`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The exact residue-digit/coboundary decomposition is the committed representative of the weighted-phase observer family; it does not transport the separate finite-dimensional factorization or imply the #269 endpoint.
    - **Source.** <code>Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary</code> in [Lean](../ExternalVerification/Statements.lean)
-   - **Boundary.** The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. No rationality or irrationality conclusion follows; the actual three-prime running-LCM bridge and cofinal escape remain open.
+   - **Boundary.** The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. The actual {2,3,5} series-to-carry bridge is now proved separately in the paper, not by this observer theorem and not yet in Lean. Cofinal residue escape and the #269 endpoint remain open.
    - **Relation.** `mechanism_support_for` `conditional_carry_escape`: The residue/coboundary split exposes finite carry data but does not supply the cofinal escape or actual-series bridge.
 
 3. **Rank two kernel no go** (`rank_two_kernel_no_go`; natural friction and no-go; source disposition `rejected`)
    - **Why here.** A checked minor obstruction rules out rank one in a displayed finite kernel, but failure of rank one does not imply irrationality.
    - **Source.** <code>Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen</code> in [Lean](../ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
-   - **Boundary.** Failure of rank one does not itself imply irrationality.
+   - **Boundary.** The arbitrary-order dense-rotation and determinant argument is not covered by the existing Comparator representative or a linked Lean theorem. Neither finite-rank obstruction establishes irrationality or transcendence.
    - **Relation.** `contrary_evidence_for` `conditional_carry_escape`: The finite kernel is not rank one, ruling out a tempting separable shortcut without producing carry escape.
 
 4. **Height fibre and shell** (`height_fibre_and_shell`; deep mechanism and classification; source disposition `represented`)
-   - **Why here.** The finite height-fibre normal form and smooth-shell bound are substantive three-prime structure, but they do not produce the divisibility bridge consumed by the carry frontier.
+   - **Why here.** Finite height-fibre and shell bounds supply the checked ingredients for the paper's geometric-rank summation and actual quadratic tail bound. That ordinary infinite-tail argument now discharges the bound consumed by the carry frontier; actual cofinal escape and Lean formalization of the bridge remain outstanding.
    - **Source authority.** Canonical review family `height_fibre_and_shell` in [claims](../docs/claims.json)
-   - **Boundary.** The fibre bounds do not provide the missing divisibility bridge.
+   - **Boundary.** The infinite shell construction, series identification and tail bound are not yet formalised by the linked finite-source declarations. The actual cofinal residue-window escape remains unproved; the bound alone is no irrationality result.
 
 5. **Dyadic block alphabet** (`dyadic_block_alphabet`; supporting and long tail; source disposition `represented`)
    - **Why here.** The exact four-symbol block alphabet is a useful finite interface, subordinate to the carry consumer, weighted observer, and rank obstruction.
    - **Source authority.** Canonical review family `dyadic_block_alphabet` in [claims](../docs/claims.json)
-   - **Boundary.** The finite alphabet does not supply the needed carry escape.
+   - **Boundary.** The four-letter alphabet is formalised. Its identification with the literal infinite shell recurrence and ordered digit is proved in the paper but not yet in Lean; the alphabet alone does not supply actual carry escape.
 
 6. **Three prime lcm cells** (`three_prime_lcm_cells`; supporting and long tail; source disposition `represented`)
    - **Why here.** The smooth-prefix LCM identity is exact three-prime structure, but it does not supply the missing irrationality bridge.
@@ -1091,28 +1120,28 @@ Exact registry keys and Comparator routing are listed separately.
   *Evidence.* paper plus external theorem · paper argument plus cited theorem
 
 - **Height fibre and shell**<br>
-  Finite height-fibre normal form and a quadratic smooth-shell multiplicity bound.<br>
-  **Boundary.** The fibre bounds do not provide the missing divisibility bridge.<br>
-  *Evidence.* locally proved result; novelty unassessed · Lean kernel
+  Finite height-fibre normalization and the quadratic shell multiplicity bound are formalised. The paper sums the literal shells and proves X_a <= (n0^2+8n0+18)/9, where n0 is the sum of the floor logarithms of 2^a in bases 2,3,5. This gives the existing integer short bound K235(B,a) for an integral reduced carry B X_a.<br>
+  **Boundary.** The infinite shell construction, series identification and tail bound are not yet formalised by the linked finite-source declarations. The actual cofinal residue-window escape remains unproved; the bound alone is no irrationality result.<br>
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel for finite fibre and shell bounds; ordinary paper proof for the actual infinite shell sum and its quantitative normalized-tail bound
 
 - **Rank two kernel no go**<br>
-  The 2,3,5 kernel is not rank one and its smallest displayed minor equals -1/15.<br>
-  **Boundary.** Failure of rank one does not itself imply irrationality.<br>
-  *Evidence.* no-go result · Lean kernel plus Comparator
+  The 2,3,5 kernel has checked minor -1/15 and is not rank one. The paper additionally proves arbitrarily large nonsingular minors for three distinct primes by a dense-rotation staircase construction, excluding every finite exact separation across the displayed coordinate split.<br>
+  **Boundary.** The arbitrary-order dense-rotation and determinant argument is not covered by the existing Comparator representative or a linked Lean theorem. Neither finite-rank obstruction establishes irrationality or transcendence.<br>
+  *Evidence.* no-go result · Lean kernel plus Comparator for the specified 2-by-2 minor and rank-one obstruction; ordinary paper proof for arbitrary-order non-separability
 
 - **Dyadic block alphabet**<br>
   The exact dyadic block alphabet is 2, 6, 10, and 30.<br>
-  **Boundary.** The finite alphabet does not supply the needed carry escape.<br>
+  **Boundary.** The four-letter alphabet is formalised. Its identification with the literal infinite shell recurrence and ordered digit is proved in the paper but not yet in Lean; the alphabet alone does not supply actual carry escape.<br>
   *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
 - **Conditional carry escape**<br>
-  Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound. The load-bearing consumer is no_positive_reducedCarry_of_cofinalLocalWindowEscape; an absorbed nonzero common-factor carry reduces exactly to that consumer. CofinalLocalWindowEscape, windowBase, windowForcing, leastPositiveResidue, and the absorbed-carry bridge are subordinate finite-window mechanism evidence.<br>
-  **Boundary.** The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families.<br>
-  *Evidence.* conditional no-go consumer; novelty and significance unassessed · Lean kernel plus Comparator
+  The paper now derives the literal repeated {2,3,5} running-LCM carry from a hypothetical rational value: exact shell-digit transport gives the recurrence, a finite cleared prefix removes the denominator smooth part after a denominator-dependent onset, and X_a <= (n0^2+8n0+18)/9 gives the tested integer bound K235(B,a). Thus actual cofinal local-window residue escape is the remaining arithmetic input for this irrationality route. The existing Lean/Comparator consumer excludes any positive integral carry satisfying its recurrence, bound and escape predicate.<br>
+  **Boundary.** The formal predicate is CofinalLocalWindowEscape. For the literal {2,3,5} radix/digit data, the surviving producer must supply, for every positive B coprime to 30 and every onset a0>=1, an index ell>=a0 and length h>=1 whose least positive residue of -B times the window forcing modulo the window-base product exceeds K235(B,ell+h). This cofinal escape is unproved. The actual series bridge, smooth cancellation and bound are ordinary mathematical arguments, not new Comparator evidence or completed Lean formalizations. The existing source theorem still assumes the exact recurrence, positive integral carry and short bound. Irrationality remains open; this does not settle arbitrary three-prime sets or the de-duplicated series.<br>
+  *Evidence.* conditional actual-series reduction with a formalised finite consumer; novelty unassessed · Ordinary paper proof for the actual infinite-series bridge, eventual smooth-factor cancellation and carry bound; Lean kernel plus Comparator for the already configured abstract finite-window consumer
 
 - **Weighted phase carry observer**<br>
   An exact weighted-phase carry recurrence splits into a finite residue digit and an uncontrolled integral quotient coboundary; an explicit function-faithful finite-dimensional observer then forces finite realised span.<br>
-  **Boundary.** The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. No rationality or irrationality conclusion follows; the actual three-prime running-LCM bridge and cofinal escape remain open.<br>
+  **Boundary.** The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. The actual {2,3,5} series-to-carry bridge is now proved separately in the paper, not by this observer theorem and not yet in Lean. Cofinal residue escape and the #269 endpoint remain open.<br>
   *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
 - **Three prime finite search**<br>

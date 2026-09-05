@@ -1205,6 +1205,46 @@
           ],
           "comparator_disposition": "not_selected_deep_certificate_vocabulary",
           "boundary": "Equivalent producer statements are as hard as the unresolved target."
+        },
+        {
+          "id": "totient_twoadic_pulse_blocks",
+          "contribution_class": "formalised structural result; novelty unassessed",
+          "summary": "For every fixed pair 2 <= K < H and every B, an actual prime p > max(B,H+K) has deltaTotient(H,p) congruent to 2^(K-1) modulo 2^K, with the preceding K-1 deltaTotient letters zero modulo 2^K. If the H-shifted actual totient tail differences are eventually integral, such prime indices cofinally carry the same half-turn residue. Mechanism: Choose one fresh prime for p+H and two fresh primes for each earlier position, all 1 modulo 2^K; finite CRT and Dirichlet produce the terminal prime. Exact K-step carry transport kills the homogeneous integer state modulo 2^K while retaining the terminal order-two residue.",
+          "evidence_mode": "Source Lean declarations at the paper pin; no configured ExternalVerification statement firewall or Comparator evidence",
+          "comparator_disposition": "not_selected_no_configured_statement_firewall",
+          "declarations": [
+            "Erdos249257.exists_prime_totient_twoAdic_pulse_divisors",
+            "Erdos249257.exists_prime_deltaTotient_twoAdic_pulseBlock",
+            "Erdos249257.integral_tailDiff_modEq_half_of_twoAdic_pulse",
+            "Erdos249257.eventual_integral_tailDiff_has_cofinal_twoAdic_half_pulse"
+          ],
+          "boundary": "For a fixed H the depth remains K < H; this is not arbitrary depth at fixed shift. The half-turn class contains integers. Neither a quantitative bound excluding that class nor actual tail nonintegrality follows. No configured ExternalVerification statement firewall or Comparator execution represents this family."
+        },
+        {
+          "id": "totient_fixed_rank_lcm_curvature",
+          "contribution_class": "formalised structural result; novelty unassessed",
+          "summary": "For a >= 4, j > 0 and j^2 <= 2^a, put H=lcm(1,...,2^a). The exact curvature phi(3H+j)-2phi(2H+j)+phi(H+j) equals 2phi(j)z for an integer z with |z| < (8 floor(H/j)+4)/a. A separate rough-Euler estimate gives phi(n) > n(1-2/a) for positive n < 2^(2*2^a) whose prime divisors exceed 2^a. Mechanism: The clean LCM window factors phi(kH+j) through phi(j) and rough cofactors. Counting their large prime divisors bounds Euler-density loss without the prime number theorem. The affine terms cancel in the second difference, while parity supplies the additional factor two.",
+          "evidence_mode": "Source Lean declarations at the paper pin; no configured ExternalVerification statement firewall or Comparator evidence",
+          "comparator_disposition": "not_selected_no_configured_statement_firewall",
+          "declarations": [
+            "Erdos249257.TotientFixedRankLcmAsymptotic.one_sub_two_div_lt_totient_density_of_rough",
+            "Erdos249257.TotientFixedRankLcmAsymptotic.two_mul_totient_dvd_fixedRankSecondDifference",
+            "Erdos249257.TotientFixedRankLcmAsymptotic.fixed_rank_secondDifference_abs_lt",
+            "Erdos249257.TotientFixedRankLcmAsymptotic.exists_primitive_fixedRankCurvature_with_bound"
+          ],
+          "boundary": "The primitive integer z may be zero; its nonzero alternative is not produced. The estimate concerns the specified three ranks and clean offsets; it is not an unbounded nonlinear cancellation theorem or an irrationality result. No configured ExternalVerification statement firewall or Comparator execution represents this family."
+        },
+        {
+          "id": "totient_parity_separated_carry_countermodel",
+          "contribution_class": "formalised synthetic countermodel; novelty unassessed",
+          "summary": "A single natural sequence c has c(n) <= 6 and c(n) <= n, agrees with phi(n) modulo 2, is not eventually periodic, and has dyadic sum exactly 3/2. For every N,G,K it has a block of K later pairs c(2^(k+i+3))=6, c(2^(k+i+3)+1)=0 whose successive marker indices are more than G apart. Mechanism: Add a sparse dyadic coboundary to a rational base sequence. The paired perturbations telescope in the weighted sum, while powers-of-two marker positions create aperiodicity and arbitrarily long separated blocks without changing parity.",
+          "evidence_mode": "Source Lean declarations at the paper pin; no configured ExternalVerification statement firewall or Comparator evidence",
+          "comparator_disposition": "not_selected_no_configured_statement_firewall",
+          "declarations": [
+            "Erdos249257.TotientParityCoboundaryCountermodel.tsum_parityCoboundaryWeight_eq_three_halves",
+            "Erdos249257.TotientParityCoboundaryCountermodel.exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel"
+          ],
+          "boundary": "This rules out an implication from the listed coarse properties; it does not refute irrationality of the actual totient series. Full totient multiplicativity, higher-adic information, and actual-LCM correlations are not supplied by the witness. No configured ExternalVerification statement firewall or Comparator execution represents this family."
         }
       ]
     },
@@ -1461,22 +1501,22 @@
         {
           "id": "height_fibre_and_shell",
           "contribution_class": "locally proved result; novelty unassessed",
-          "summary": "Finite height-fibre normal form and a quadratic smooth-shell multiplicity bound.",
-          "evidence_mode": "Lean kernel",
+          "summary": "Finite height-fibre normalization and the quadratic shell multiplicity bound are formalised. The paper sums the literal shells and proves X_a <= (n0^2+8n0+18)/9, where n0 is the sum of the floor logarithms of 2^a in bases 2,3,5. This gives the existing integer short bound K235(B,a) for an integral reduced carry B X_a.",
+          "evidence_mode": "Lean kernel for finite fibre and shell bounds; ordinary paper proof for the actual infinite shell sum and its quantitative normalized-tail bound",
           "declarations": [
             "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight",
             "ErdosProblems.Erdos269.smoothExponentShell_card_quadratic"
           ],
           "comparator_disposition": "represented_by_three_prime_structure_target",
-          "boundary": "The fibre bounds do not provide the missing divisibility bridge."
+          "boundary": "The infinite shell construction, series identification and tail bound are not yet formalised by the linked finite-source declarations. The actual cofinal residue-window escape remains unproved; the bound alone is no irrationality result."
         },
         {
           "id": "rank_two_kernel_no_go",
           "contribution_class": "no-go result",
-          "summary": "The 2,3,5 kernel is not rank one and its smallest displayed minor equals -1/15.",
-          "evidence_mode": "Lean kernel plus Comparator",
+          "summary": "The 2,3,5 kernel has checked minor -1/15 and is not rank one. The paper additionally proves arbitrarily large nonsingular minors for three distinct primes by a dense-rotation staircase construction, excluding every finite exact separation across the displayed coordinate split.",
+          "evidence_mode": "Lean kernel plus Comparator for the specified 2-by-2 minor and rank-one obstruction; ordinary paper proof for arbitrary-order non-separability",
           "comparator_disposition": "targeted",
-          "boundary": "Failure of rank one does not itself imply irrationality."
+          "boundary": "The arbitrary-order dense-rotation and determinant argument is not covered by the existing Comparator representative or a linked Lean theorem. Neither finite-rank obstruction establishes irrationality or transcendence."
         },
         {
           "id": "dyadic_block_alphabet",
@@ -1487,13 +1527,13 @@
             "ErdosProblems.Erdos269.dyadicBlockBase235_cases"
           ],
           "comparator_disposition": "represented_by_three_prime_structure_target",
-          "boundary": "The finite alphabet does not supply the needed carry escape."
+          "boundary": "The four-letter alphabet is formalised. Its identification with the literal infinite shell recurrence and ordered digit is proved in the paper but not yet in Lean; the alphabet alone does not supply actual carry escape."
         },
         {
           "id": "conditional_carry_escape",
-          "contribution_class": "conditional no-go consumer; novelty and significance unassessed",
-          "summary": "Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound. The load-bearing consumer is no_positive_reducedCarry_of_cofinalLocalWindowEscape; an absorbed nonzero common-factor carry reduces exactly to that consumer. CofinalLocalWindowEscape, windowBase, windowForcing, leastPositiveResidue, and the absorbed-carry bridge are subordinate finite-window mechanism evidence.",
-          "evidence_mode": "Lean kernel plus Comparator",
+          "contribution_class": "conditional actual-series reduction with a formalised finite consumer; novelty unassessed",
+          "summary": "The paper now derives the literal repeated {2,3,5} running-LCM carry from a hypothetical rational value: exact shell-digit transport gives the recurrence, a finite cleared prefix removes the denominator smooth part after a denominator-dependent onset, and X_a <= (n0^2+8n0+18)/9 gives the tested integer bound K235(B,a). Thus actual cofinal local-window residue escape is the remaining arithmetic input for this irrationality route. The existing Lean/Comparator consumer excludes any positive integral carry satisfying its recurrence, bound and escape predicate.",
+          "evidence_mode": "Ordinary paper proof for the actual infinite-series bridge, eventual smooth-factor cancellation and carry bound; Lean kernel plus Comparator for the already configured abstract finite-window consumer",
           "comparator_disposition": "targeted",
           "declarations": [
             "ErdosProblems.Erdos269.CofinalLocalWindowEscape",
@@ -1503,7 +1543,7 @@
             "ErdosProblems.Erdos269.leastPositiveResidue",
             "ErdosProblems.Erdos269.no_positive_absorbedCarry_of_cofinalLocalWindowEscape"
           ],
-          "boundary": "The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families."
+          "boundary": "The formal predicate is CofinalLocalWindowEscape. For the literal {2,3,5} radix/digit data, the surviving producer must supply, for every positive B coprime to 30 and every onset a0>=1, an index ell>=a0 and length h>=1 whose least positive residue of -B times the window forcing modulo the window-base product exceeds K235(B,ell+h). This cofinal escape is unproved. The actual series bridge, smooth cancellation and bound are ordinary mathematical arguments, not new Comparator evidence or completed Lean formalizations. The existing source theorem still assumes the exact recurrence, positive integral carry and short bound. Irrationality remains open; this does not settle arbitrary three-prime sets or the de-duplicated series."
         },
         {
           "id": "weighted_phase_carry_observer",
@@ -1517,7 +1557,7 @@
             "ErdosProblems.Erdos269.residueDigit_mem_interval",
             "ErdosProblems.Erdos269.finite_realisedSpan_of_factorisation"
           ],
-          "boundary": "The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. No rationality or irrationality conclusion follows; the actual three-prime running-LCM bridge and cofinal escape remain open."
+          "boundary": "The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. The actual {2,3,5} series-to-carry bridge is now proved separately in the paper, not by this observer theorem and not yet in Lean. Cofinal residue escape and the #269 endpoint remain open."
         },
         {
           "id": "three_prime_finite_search",
@@ -1688,9 +1728,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:9ca22b2bddd0cc0b8950f454462dd20e2045547517ea1ac88a0251f8cb3deefb",
+    "owner_digest": "sha256:5028f94c0f3ecfaea6530303b355fe6639c8a8d6124521910fe6ccafffcc9c86",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:669ae15671ac204f882a855679cf6b73c767b57b296239762cb77d6a781ac908",
+    "projection_digest": "sha256:bec89015b46bc5f4928cd68ea35efdf9a8be23ef6492ffcc92a26ccd79b3c0da",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1812,6 +1852,33 @@
             "declaration_count": 4,
             "theorem_count": 4,
             "content_digest": "sha256:e03320c57d2ae0d42f52564023f4d62d92e805696bf010d6b48c66ecb053064b"
+          },
+          {
+            "module": "ErdosProblems.Erdos68.AdjacentUnitCarryWindow",
+            "path": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+            "present": true,
+            "line_count": 547,
+            "declaration_count": 17,
+            "theorem_count": 13,
+            "content_digest": "sha256:f79fb3a2a4bdb32a6776bb38f638012a6b61fae37b4ebe407e00ce35779277e1"
+          },
+          {
+            "module": "ErdosProblems.Erdos68.GapScalarNormalForm",
+            "path": "ErdosProblems/Erdos68/GapScalarNormalForm.lean",
+            "present": true,
+            "line_count": 316,
+            "declaration_count": 11,
+            "theorem_count": 11,
+            "content_digest": "sha256:9dc4edcd1f0852d6a38667c8ccebd1ffd3acd23b883875c2b836b6f233689826"
+          },
+          {
+            "module": "ErdosProblems.Erdos68.PrimeThresholdParity",
+            "path": "ErdosProblems/Erdos68/PrimeThresholdParity.lean",
+            "present": true,
+            "line_count": 627,
+            "declaration_count": 13,
+            "theorem_count": 13,
+            "content_digest": "sha256:44075cf0f2bfb06b0d18cd166c36c838a470d964f8c95cf27aed4e9198450925"
           }
         ],
         "note": {
@@ -1976,6 +2043,15 @@
             "declaration_count": 17,
             "theorem_count": 11,
             "content_digest": "sha256:7bd0b18c719d15929bcee8039eb56cc7692853e917853f25e5f74065f603a763"
+          },
+          {
+            "module": "ErdosProblems.Erdos243.RepairEntropy",
+            "path": "ErdosProblems/Erdos243/RepairEntropy.lean",
+            "present": true,
+            "line_count": 188,
+            "declaration_count": 6,
+            "theorem_count": 6,
+            "content_digest": "sha256:02ac5bbed6d2310b630748e0da50e41e25a47496931d5d476b54c297fb854e56"
           }
         ],
         "note": {
@@ -2079,6 +2155,60 @@
             "declaration_count": 17,
             "theorem_count": 11,
             "content_digest": "sha256:7c2833745d718e8efb4d9d824770fa7ce12a2feead633de32cd33cf3f32170e8"
+          },
+          {
+            "module": "ErdosProblems.Erdos249.CyclotomicAnchoredKill",
+            "path": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+            "present": true,
+            "line_count": 3415,
+            "declaration_count": 131,
+            "theorem_count": 103,
+            "content_digest": "sha256:a02fe36a65de2bb9461b98046556648d6fdb0d92aacfc49a3757144d202367c0"
+          },
+          {
+            "module": "ErdosProblems.Erdos249.FullDepthRayAmplifier",
+            "path": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+            "present": true,
+            "line_count": 443,
+            "declaration_count": 20,
+            "theorem_count": 17,
+            "content_digest": "sha256:052c39f8645190389f92527b7a0a8ad564fbf720e98a4636024d88dea48d4a26"
+          },
+          {
+            "module": "ErdosProblems.Erdos249.LcmJumpKillFromDiagonal",
+            "path": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
+            "present": true,
+            "line_count": 114,
+            "declaration_count": 9,
+            "theorem_count": 9,
+            "content_digest": "sha256:f70e36e744a43dd07a948b7634c5cffd9dc8731647c2f6f7485fc3957c577c5d"
+          },
+          {
+            "module": "ErdosProblems.Erdos249.PeriodMultipleEscape",
+            "path": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+            "present": true,
+            "line_count": 566,
+            "declaration_count": 47,
+            "theorem_count": 42,
+            "content_digest": "sha256:73e8f934132aa20b46aaf0bc039eac5b209d8dd6b3e3757d6b875b8f8209dc15"
+          },
+          {
+            "module": "ErdosProblems.Erdos249.RankOneSharpFloor",
+            "path": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+            "present": true,
+            "line_count": 725,
+            "declaration_count": 47,
+            "theorem_count": 46,
+            "content_digest": "sha256:bc8794842e327be54f9a604c70312b1ccd62f7d97b5e3a99f159846f248116ac"
+          },
+          {
+            "module": "ErdosProblems.Erdos249.RankOneSubrankObstruction",
+            "path": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+            "present": true,
+            "line_count": 372,
+            "declaration_count": 15,
+            "theorem_count": 12,
+            "content_digest": "sha256:63452725b4aeee0cdf7a0815b6b90c6d176d0ec19961a4f90aac11753f9992da"
           }
         ],
         "note": {
@@ -2137,9 +2267,9 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 19,
+          "family_count": 22,
           "by_class": {
-            "not_selected": 4,
+            "not_selected": 7,
             "represented_by": 1,
             "targeted": 14
           },
@@ -2162,7 +2292,10 @@
             "totient_carry_rank": "not_selected_deep_orbit_vocabulary",
             "totient_lambert_coefficients": "represented_by_basis_and_rank_targets",
             "eventually_periodic_lambert": "not_selected_prior_result",
-            "totient_certificate_equivalences": "not_selected_deep_certificate_vocabulary"
+            "totient_certificate_equivalences": "not_selected_deep_certificate_vocabulary",
+            "totient_twoadic_pulse_blocks": "not_selected_no_configured_statement_firewall",
+            "totient_fixed_rank_lcm_curvature": "not_selected_no_configured_statement_firewall",
+            "totient_parity_separated_carry_countermodel": "not_selected_no_configured_statement_firewall"
           }
         }
       },
@@ -2271,6 +2404,24 @@
             "declaration_count": 28,
             "theorem_count": 23,
             "content_digest": "sha256:7dd147a2bef89f7f23a168c02a8dfb4c7fee887314a7a5367d49336330eb1419"
+          },
+          {
+            "module": "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
+            "path": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+            "present": true,
+            "line_count": 113,
+            "declaration_count": 4,
+            "theorem_count": 3,
+            "content_digest": "sha256:33295748432356b8bc2a0c75120ad0cc8b3e591a4f7cd52ba2b1ec7a80628897"
+          },
+          {
+            "module": "ErdosProblems.Erdos257.SquarefreeSupportIncidence",
+            "path": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
+            "present": true,
+            "line_count": 493,
+            "declaration_count": 31,
+            "theorem_count": 24,
+            "content_digest": "sha256:ef3c0443acad216f82faccc72173f98d8cc776db8f41cb9fa139f7be03aa0e51"
           }
         ],
         "note": {
@@ -2433,7 +2584,7 @@
         ],
         "what_is_not_checked": [
           "Irrationality or transcendence in any three-prime case.",
-          "The derivation of the actual bounded positive carry, including the divisibility required to cancel the absorbed smooth denominator factor, from a hypothetical rational value of the original series.",
+          "The paper now derives the actual bounded positive reduced carry from rationality, including the infinite shell-digit bridge, smooth-factor cancellation, and a cell-rank quadratic tail bound. These assembled actual-series deductions are ordinary proofs and still require complete Lean formalization.",
           "CofinalLocalWindowEscape for those actual words; it is an explicit hypothesis of the checked consumer, not a theorem.",
           "A proof that the actual three-channel word satisfies the block-null, anchor, or factorisation hypotheses of the migrated abstract consumers.",
           "The infinite limit of the jump expansion; only its finite core is checked.",
@@ -2446,7 +2597,7 @@
           },
           {
             "id": "actual_rational_carry_instantiation",
-            "statement": "Identify the formal radix word with the checked four-symbol dyadic block base, formalize the exact block digit and its link to the original summand multiplicities, and derive the positive reduced carry recurrence and its bound from a hypothetical rational value."
+            "statement": "Formalize the paper-proved actual bridge: identify the radix and block digits with literal shell multiplicities, clear the smooth denominator factor, group logarithmic cells by rank, and sum the quadratic geometric majorant. This is formalization debt, not an additional mathematical premise of the cofinal-escape criterion."
           },
           {
             "id": "nonstationary_analytic_theorem",
@@ -2504,6 +2655,114 @@
             "declaration_count": 21,
             "theorem_count": 18,
             "content_digest": "sha256:8736b05c24517e4568cfdfc49f0180089951cc6397ad720d20271fbc9e5e7351"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
+            "path": "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+            "present": true,
+            "line_count": 576,
+            "declaration_count": 28,
+            "theorem_count": 19,
+            "content_digest": "sha256:e62da6357daf11741dc8176c1f4566145d2de2baee76efc98008ab8b898105e1"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.CubicQuotientFiberCase",
+            "path": "ErdosProblems/Erdos1041/CubicQuotientFiberCase.lean",
+            "present": true,
+            "line_count": 191,
+            "declaration_count": 9,
+            "theorem_count": 8,
+            "content_digest": "sha256:8d48e206629d9d6283b7f1c66aa01651d9ff45314c0ed541f566c329131fa6dd"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.CyclicTetranomialCoefficientCase",
+            "path": "ErdosProblems/Erdos1041/CyclicTetranomialCoefficientCase.lean",
+            "present": true,
+            "line_count": 182,
+            "declaration_count": 6,
+            "theorem_count": 6,
+            "content_digest": "sha256:7a0de6ca9655f8fd75be23cd24daae5907184ed8fa6594f3429cc03df3574053"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.CyclicTrinomialFiberCase",
+            "path": "ErdosProblems/Erdos1041/CyclicTrinomialFiberCase.lean",
+            "present": true,
+            "line_count": 149,
+            "declaration_count": 6,
+            "theorem_count": 6,
+            "content_digest": "sha256:6c7d5f5bbdae7466b61dea88bd628ca7d4e49d28f9a4267302a0a0f6df68b853"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail",
+            "path": "ErdosProblems/Erdos1041/PrimitiveQuinticBoundaryTail.lean",
+            "present": true,
+            "line_count": 246,
+            "declaration_count": 7,
+            "theorem_count": 6,
+            "content_digest": "sha256:25adf76b6e209c54688d5878f0524943dd85312a2a09a59673f56a9ba74d67dc"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
+            "path": "ErdosProblems/Erdos1041/PrimitiveQuinticInteriorTail.lean",
+            "present": true,
+            "line_count": 355,
+            "declaration_count": 7,
+            "theorem_count": 6,
+            "content_digest": "sha256:62346892d5a137e02a193774dff0d79b9583e59581f1341d1b78ecfef21a9ee7"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.SharpCollinearAlternation",
+            "path": "ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
+            "present": true,
+            "line_count": 194,
+            "declaration_count": 5,
+            "theorem_count": 5,
+            "content_digest": "sha256:5c49a2c0859f07fa6ee5e3ade4e405bf892d70b38e90b64d9a057d7cc007f8c4"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.SharpCollinearChebyshev",
+            "path": "ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean",
+            "present": true,
+            "line_count": 151,
+            "declaration_count": 12,
+            "theorem_count": 9,
+            "content_digest": "sha256:7a5caeceff9b667bf70241e90d7a40483ba0c5a9bfdad2115a069937a90af2cc"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.TetranomialElementarySymmetricSelector",
+            "path": "ErdosProblems/Erdos1041/TetranomialElementarySymmetricSelector.lean",
+            "present": true,
+            "line_count": 344,
+            "declaration_count": 11,
+            "theorem_count": 10,
+            "content_digest": "sha256:17c97e1b99b20eeaf2f2286f8744379bcbdd9bfa75c2b9b4c45dbd96b6e987a0"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.TetranomialL2Selector",
+            "path": "ErdosProblems/Erdos1041/TetranomialL2Selector.lean",
+            "present": true,
+            "line_count": 310,
+            "declaration_count": 14,
+            "theorem_count": 14,
+            "content_digest": "sha256:883371f85bd3033a69dbe09bf53d0f9bec202c31ef4b14c4ae78cb0f904ce978"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.TetranomialProductSensitiveSelector",
+            "path": "ErdosProblems/Erdos1041/TetranomialProductSensitiveSelector.lean",
+            "present": true,
+            "line_count": 118,
+            "declaration_count": 4,
+            "theorem_count": 4,
+            "content_digest": "sha256:5c85ec742f1c7b2f5bd1295c9db533274e141f1077fc3f37439a0482a299cae2"
+          },
+          {
+            "module": "ErdosProblems.Erdos1041.TetranomialTailProductSelector",
+            "path": "ErdosProblems/Erdos1041/TetranomialTailProductSelector.lean",
+            "present": true,
+            "line_count": 351,
+            "declaration_count": 10,
+            "theorem_count": 10,
+            "content_digest": "sha256:a2144b4fdacf466d68be3908870e0e721a5cd24a651072530a253b52770df875"
           }
         ],
         "note": {
@@ -2674,6 +2933,24 @@
             "declaration_count": 11,
             "theorem_count": 4,
             "content_digest": "sha256:8094ead680a8a3be3e7ad2c6c2fbc89cd51c9f84a360bfb46f91f6fc4b90cda1"
+          },
+          {
+            "module": "ErdosProblems.Erdos1049.AdelicHeightBridge",
+            "path": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+            "present": true,
+            "line_count": 347,
+            "declaration_count": 20,
+            "theorem_count": 19,
+            "content_digest": "sha256:3bfdcfd11ca443e6555f95261122334bffb18f686c22542d44bd60270309e4d3"
+          },
+          {
+            "module": "ErdosProblems.Erdos1049.BezoutPluckerJets",
+            "path": "ErdosProblems/Erdos1049/BezoutPluckerJets.lean",
+            "present": true,
+            "line_count": 279,
+            "declaration_count": 12,
+            "theorem_count": 11,
+            "content_digest": "sha256:4579858b1b497ca1c9a377a202bb3bf84d4cdaad20c0e3f5ba2730740cbccdb3"
           }
         ],
         "note": {

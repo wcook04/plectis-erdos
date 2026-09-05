@@ -245,7 +245,7 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
 
     assert carry_escape["family"]["family_id"] == "conditional_carry_escape"
     assert carry_escape["family"]["proof_status"] == (
-        "conditional no-go consumer; novelty and significance unassessed"
+        "conditional actual-series reduction with a formalised finite consumer; novelty unassessed"
     )
     weighted = next(
         row for row in carry_escape["relations"]
@@ -255,10 +255,11 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
     assert weighted["peer"]["source_declaration"].endswith(
         "finite_realisedSpan_of_factorisation"
     )
-    assert "actual three-prime running-LCM" in carry_escape["family"]["open_boundary"]
-    assert "cofinal local-window escape producer" in carry_escape["family"][
-        "open_boundary"
-    ]
+    boundary = carry_escape["family"]["open_boundary"]
+    assert "CofinalLocalWindowEscape" in boundary
+    assert "This cofinal escape is unproved" in boundary
+    assert "ordinary mathematical arguments" in boundary
+    assert "not new Comparator evidence or completed Lean formalizations" in boundary
 
     # Relation-array order is not a hierarchy: canonical programme positions
     # determine the emitted peer order even when the input array is reversed.
