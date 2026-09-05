@@ -103,6 +103,13 @@ def test_snapshot_clone_isolation_flags_are_pinned() -> None:
             "snapshot clone checked out before the requested immutable commit",
         )
         require(clone_cwd == source, "snapshot clone used a different source checkout")
+        checkout_commands = [argv for argv, _ in calls if "checkout" in argv]
+        require(
+            len(checkout_commands) == 1
+            and checkout_commands[0][:4]
+            == ["git", "-c", "checkout.workers=4", "checkout"],
+            "snapshot checkout lost its bounded parallel materialization",
+        )
 
 
 def test_receipt_destination_boundary() -> None:

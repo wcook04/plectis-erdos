@@ -240,7 +240,10 @@ def prepare_clone(commit: str, parent: Path) -> Path:
     if alternates.is_symlink() or shared_objects != expected_objects:
         raise SnapshotError("shared snapshot points at an unexpected Git object store")
     checked_out = run(
-        ["git", "checkout", "--detach", "--quiet", commit],
+        # Checkout dominates snapshot preparation. Bound Git's parallel file
+        # materialization independently of the caller's global configuration;
+        # this changes neither the selected tree nor validation concurrency.
+        ["git", "-c", "checkout.workers=4", "checkout", "--detach", "--quiet", commit],
         cwd=clone,
     )
     if checked_out.returncode != 0:
