@@ -2,7 +2,7 @@
   "schema": "plectis_strongest_result_activation_map_v2",
   "problem_id": "erdos_243",
   "status": "open",
-  "source_checkpoint": "41c30a98f6d71003a8de636002e6ce5fe0747380",
+  "source_checkpoint": "3d1e1e681d3d30976d3545f19591d14e33e02a49",
   "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
   "results": [
     {

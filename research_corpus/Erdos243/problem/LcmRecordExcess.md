@@ -11,6 +11,9 @@ Evidence: ordinary mathematical proof for the global theorems; the four finite
 arithmetic/charging statements are isolated in `LcmRecordExcess.lean`. Exact
 bounded computation is in `scripts/check_lcm_record_excess.py`. No global
 analytic theorem in this note is asserted to be Lean checked.
+The draft `LcmRecordCrossing.lean` connects the progression spacing, unique
+first crossings, and the finite record-only sum; its Lean validation is
+outstanding. The proofs below are ordinary mathematical arguments.
 
 Attribution: the unweighted first-crossing proof, LCM-record restriction,
 growing product-scale baseline, growth-defect identity, and subcritical
@@ -57,6 +60,12 @@ Every late strict rise has `rho_n=1`, since `rho_n>=2` would give
 At a record step this jump includes recovery from any drawdown:
 `d_n=R_(n+1)-R_n+(R_n-U_n)`. It is not the record increment alone.
 
+For example, the exact centred orbit starting from `C=54,D=385` begins
+with LCM numerators `54,47,69`: its second step rises by `22` but sets a
+record only `15` above the old one. The successive digits are `8,67`, both
+LCM-fresh. This finite prefix illustrates the distinction without asserting
+anything about a non-Sylvester infinite orbit.
+
 ## 2. A finite weighted crossing inequality
 
 Let `B>=1` be an integer, and suppose pairwise coprime integers
@@ -84,6 +93,15 @@ gives `(h-1)P<d_n`. Since `P>=B+1`, we have
 `sum_(new walls) f(tau)<=h f(U_n)<=r f(U_n)`. Every new wall is charged once;
 downward excursions and subsequent recrossings cause no extra charge.
 
+More explicitly, for each selected height `tau>R_T` reached by time `N`,
+choose the least `m>T` with `U_m>=tau`. Then `n=m-1` satisfies
+`U_j<tau<=U_(n+1)` for every `j<=n`, so `n` is a strict record step.
+Two steps cannot both be its first crossing: the successor of the earlier
+one would be an earlier state for the later one. Thus the selected heights
+partition by crossing time. The endpoint `U_N` may lie below a previously
+crossed height; only reachability by time `N`, equivalently the bound by
+`R_N`, matters. No monotonicity of the numerator sequence is used.
+
 For the first wall `tau_0>R_T`, `tau_0<=R_T+P`. If any walls are crossed,
 their adjacent intervals of length `P` cover `[R_T+P,R_N]` when this interval
 is nonempty, and `int_tau^(tau+P) f <= P f(tau)`. This gives (W).
@@ -93,15 +111,66 @@ For `f(t)=1/t`, (W) is the supplied finite bound
 `(1/P)log(R_N/(R_T+P))`. The general weight is a consequence of the same
 crossing mechanism, not a separate arithmetic exclusion.
 
+**Why the baseline is subtracted from the actual jump.** The distinction
+can already matter in the local arithmetic. Take `B=3`, covering divisors
+`5,7,11`, and `x=20`; then `5|20`, `7|21`, and `11|22` cover the integers
+immediately below the wall `tau=23`, with period `P=385`. Put
+`L=14245`, `a=751`, and `U=19`. These give
+`gcd(L,a)=1` and `d=(a-1)U-L=5`, hence a successor `U'=24` with centred
+error `V=-5`. If the prior running maximum is `22`, this step crosses
+`23`, while `(U'-22-B)_+=0`. Its actual excess is `d-B=2`, which can
+pay for the wall. This is a local arithmetic witness against replacing
+the jump in the charging argument; the prescribed prior maximum is not
+claimed to arise from an infinite canonical orbit. The exact checker
+reproduces both this witness and the finite prefix above, and separately
+tests the first-crossing partition on nonmonotone words.
+
 ## 3. Discharging the arithmetic supply; exact weighted criteria
 
-The original hypotheses imply `log C_n=o(n)`, by iterating
-`C_(n+1)/C_n=1-theta_n -> 1`. Since `M_n<=C_n` and each `rho_n>1`
-multiplies `M_n` by at least two, only `o(n)` indices up to `n` are nonfresh.
-Infinitely many digits are therefore fresh. Two fresh digits are coprime:
-the earlier one divides the later cumulative LCM. For each fixed `B`, choose
-`B` fresh digits exceeding `B`; all divide a sufficiently late `Lambda_T`.
-Thus the finite supply in (W) is available without any new hypothesis.
+The supply follows directly from unbounded numerator height. If `U_n` is
+unbounded, there are infinitely many record steps. Each is fresh, and its
+digit exceeds one: the positive jump satisfies
+`d_n=(a_n-1)U_n-Lambda_n>0`. For two record steps `r<s`, the earlier digit
+`a_r` divides `Lambda_s`, whereas `gcd(a_s,Lambda_s)=1`. Thus the record
+digits are pairwise coprime. Since they exceed one, they are distinct; only
+finitely many can be at most any fixed `B`. Choose `B` record digits greater
+than `B`, and take `T` after their indices. They all divide `Lambda_T` and
+provide exactly the supply required in (W). No estimate for the density of
+fresh indices, or for the growth of `C_n`, is needed.
+
+**Arithmetic weighted-record dichotomy.** More generally, suppose positive
+integer sequences `a_n,Lambda_n,U_n` and an integer sequence `V_n` satisfy
+
+\[
+\Lambda_{n+1}=\operatorname{lcm}(\Lambda_n,a_n),\qquad
+\rho_n=\gcd(\Lambda_n,a_n),\qquad
+\rho_n U_{n+1}=U_n-V_n,\qquad
+V_n=\Lambda_n-(a_n-1)U_n,\qquad -U_n\le 2V_n.
+\]
+
+For any finite nonnegative nonincreasing `f` on `[1,infinity)` with divergent
+integral, and any fixed integer `B>=0`,
+
+\[
+\sup_n U_n<\infty
+\quad\Longleftrightarrow\quad
+\sum_{n\in\mathcal R}(-V_n-B)_+ f(U_n)<\infty. \tag{A}
+\]
+
+**Proof.** If `U_n` is bounded, its positive integer running maximum can
+increase only finitely many times. The series therefore has finitely many
+nonzero terms. If `U_n` is unbounded, the lower centring bound alone makes
+every rise fresh: `rho_n>=2` would imply `U_(n+1)<=3U_n/4`. The preceding
+record-digit argument supplies the CRT block for any `B>=1`. Apply (W) after
+that block enters the cumulative LCM and let `R_N` tend to infinity. Its
+integral lower bound diverges. The case `B=0` follows by comparison with
+`B=1`. All finitely many terms before the chosen `T` are harmless. ∎
+
+This is a theorem about the arithmetic recurrence. It needs neither a
+reciprocal-sum representation nor `V_n/U_n -> 0`, and not even the upper
+centring bound. Those hypotheses enter when bounded height is converted to
+the original problem's eventual recurrence. Assertion (A) is an ordinary
+proof here, not a new kernel-checked statement.
 
 Centred zero is absorbing. If `E_n=0`, then
 `D_n=(a_n-1)C_n` and `C_(n+1)=C_n`; centring at the next index forces
@@ -225,6 +294,17 @@ as states, not nonterminal transitions. All cases reach centred zero within
 charged steps, both rational weights `1/t` and
 `1/[t ceil(log_2 max(2,t))]`, the exact growth-defect identity, and the two
 local falsifiers above. Finite data do not prove universal termination.
+
+A separate reconstruction tests the composition used by
+`finite_record_bound_of_old_coprime_moduli`: it constructs the CRT phase in
+`[P,2P)`, assigns each selected height directly to the earliest state reaching
+it, and checks the old-divisor covering and exact feedback at that state.
+It then compares the total wall mass with the record-excess sum, independently
+of the local charge totals. The same 6,008 cases give 12,016 exact rational
+weighted comparisons and 997 selected heights. The five additional heights
+in the local check lie below the translated CRT progression's starting point.
+This is finite evidence for the composition; the Lean draft still requires
+kernel validation and the infinite analytic argument remains separate.
 
 The remaining mathematical obligation is to derive finiteness in (G-E) for
 one admissible weight and one fixed `B` from genuine rational denominator

@@ -2,14 +2,14 @@
   "schema": "plectis_public_research_corpus_manifest_v2",
   "problem_id": "erdos_243",
   "status": "open",
-  "source_checkpoint": "41c30a98f6d71003a8de636002e6ce5fe0747380",
+  "source_checkpoint": "3d1e1e681d3d30976d3545f19591d14e33e02a49",
   "public_prefix": "research_corpus/Erdos243",
   "file_count": 140,
-  "total_bytes": 5170786,
+  "total_bytes": 5185478,
   "local_path_replacement_count": 2,
   "strongest_result_map": {
     "path": "research_corpus/Erdos243/STRONGEST_RESULTS.json",
-    "sha256": "579d65dd8ec32b192cd9e520a6c981adbff5c419a8c4930da1309697b63caf45",
+    "sha256": "13807a3ddaf5c9c4ddbcf13f231199bd6d48a428e6391bb0e12452dca5e0c6b2",
     "result_count": 95
   },
   "files": [
@@ -1244,11 +1244,11 @@
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/LcmRecordExcess.md",
       "public_path": "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/LcmRecordExcess.md",
-      "source_sha256": "121e7d9452e848beb6190195468c93a0477be74dafcc0311e5a303d90493f34a",
-      "published_sha256": "121e7d9452e848beb6190195468c93a0477be74dafcc0311e5a303d90493f34a",
+      "source_sha256": "c1b7881cbd7a50d2c4edc41f3f2c0a70dc5fb60bca4671f30c07d35d8538e5b6",
+      "published_sha256": "c1b7881cbd7a50d2c4edc41f3f2c0a70dc5fb60bca4671f30c07d35d8538e5b6",
       "relation": "exact_copy",
       "local_path_replacements": 0,
-      "bytes": 11214
+      "bytes": 15642
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/LcmRecordExcess.lean",
@@ -1262,20 +1262,20 @@
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_lcm_record_excess.py",
       "public_path": "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_lcm_record_excess.py",
-      "source_sha256": "a1bd477484c7ed7afb8c5f104bff955cbe84aa6d15ec10cbba598f4c5136633b",
-      "published_sha256": "a1bd477484c7ed7afb8c5f104bff955cbe84aa6d15ec10cbba598f4c5136633b",
+      "source_sha256": "70b541615062f07e229d2e97a7935034b6d286fec3561d5c3be7908b91d6fe56",
+      "published_sha256": "70b541615062f07e229d2e97a7935034b6d286fec3561d5c3be7908b91d6fe56",
       "relation": "exact_copy",
       "local_path_replacements": 0,
-      "bytes": 5129
+      "bytes": 10965
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/LcmRecordExcess.md",
       "public_path": "research_corpus/Erdos243/problem/LcmRecordExcess.md",
-      "source_sha256": "121e7d9452e848beb6190195468c93a0477be74dafcc0311e5a303d90493f34a",
-      "published_sha256": "121e7d9452e848beb6190195468c93a0477be74dafcc0311e5a303d90493f34a",
+      "source_sha256": "c1b7881cbd7a50d2c4edc41f3f2c0a70dc5fb60bca4671f30c07d35d8538e5b6",
+      "published_sha256": "c1b7881cbd7a50d2c4edc41f3f2c0a70dc5fb60bca4671f30c07d35d8538e5b6",
       "relation": "exact_copy",
       "local_path_replacements": 0,
-      "bytes": 11214
+      "bytes": 15642
     }
   ],
   "browser_frontier": {
