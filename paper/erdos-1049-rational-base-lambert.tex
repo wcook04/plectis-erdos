@@ -935,7 +935,8 @@ $|A|\le |B|k$, contrary to the hypothesis.
 \begin{theorem}[B\'ezout--Pl\"ucker tail collapse]
 \label{res:plucker-collapse}
 Let $R_0$ be a commutative ring and let $w_n=(A_n,B_n)\in R_0^2$.  Suppose
-that every $B_n$ is a unit and every adjacent minor vanishes:
+that each row is unimodular, meaning that $u_nA_n+v_nB_n=1$ for some
+$u_n,v_n\in R_0$, and that every adjacent minor vanishes:
 \[
  A_nB_{n+1}-B_nA_{n+1}=0\qquad(n\ge0).
 \]
@@ -950,10 +951,15 @@ width $2S+4R$.
 \end{theorem}
 
 \begin{proof}
-A unit second coordinate makes each row a unimodular anchor.  Vanishing of the
-next minor therefore writes the next row as a scalar multiple of the current
-one; induction places the entire tail on the line through $w_0$ and proves the
-pairwise-minor assertion.  A determinant-one B\'ezout shear sends $w_0$ to
+If $(a,b)$ is unimodular, say $ua+vb=1$, and $ay-bx=0$, then
+\[
+ (x,y)=(ux+vy)(a,b).
+\]
+Indeed, the first coordinate follows by replacing $ay$ with $bx$, and the
+second by the reverse substitution.  Apply this identity to consecutive rows:
+each next row is a scalar multiple of the current one.  Induction places the
+entire tail on the line through $w_0$ and proves the pairwise-minor assertion.
+A determinant-one B\'ezout shear sends $w_0$ to
 $(1,0)$, so all selector sums have only one free residue coordinate and occupy
 at most $2^S3^R$ values.  Finally
 \[
@@ -962,13 +968,20 @@ at most $2^S3^R$ values.  Finally
 and pigeonhole gives the two selectors.
 \end{proof}
 
-\noindent The minor propagation is
+\noindent No particular coordinate needs to be invertible: modulo six,
+$(2,3)$ is unimodular because $-2+3=1$, although neither entry is a unit.
+Some nondegeneracy is essential.  The three rows $(1,0),(0,0),(0,1)$ have
+zero adjacent minors but outer minor one; a zero middle row transmits no
+information between its neighbours.
+
+\noindent Minor propagation when every second coordinate is a unit is
 \lword{Erdos1049/BezoutPluckerJets.lean}{191}{adjacent_det_zero_forces_all_det_zero}{kernel checked};
 the one-dimensional collision after a B\'ezout shear is
 \lword{Erdos1049/BezoutPluckerJets.lean}{145}{binary_row_collision_of_anchor_det_zero}{kernel checked};
-and the explicit $2$/$3$-depth endpoint is
+and its explicit $2$/$3$-depth endpoint is
 \lword{Erdos1049/BezoutPluckerJets.lean}{249}{zmod_binary_tail_collision_of_two_three_depth}{kernel checked}.
-This conditional theorem is stronger than the ambient four-jet count only
+The rowwise-unimodular extension is proved above; its Lean verification is
+pending.  This conditional theorem is stronger than the ambient four-jet count only
 after its minor-vanishing hypothesis has been established.  No such all-tail
 hypothesis is proved here for an actual $q$-Ap\'ery or Zudilin family, and the
 theorem says nothing about whether the resulting selector difference has
