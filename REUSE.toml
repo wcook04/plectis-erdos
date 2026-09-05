@@ -19,3 +19,11 @@ path = ["erdos249-257-main-paper.pdf", "claim-faithful-publication-systems-paper
 precedence = "override"
 SPDX-FileCopyrightText = "2026 Will Cook"
 SPDX-License-Identifier = "CC-BY-4.0"
+
+# The independently authored distribution wrapper is MIT-0. This narrow
+# exception does not relicense the research corpus or its clone-local skills.
+[[annotations]]
+path = [".agents/skills/plectis-frontier/**"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Will Cook"
+SPDX-License-Identifier = "MIT-0"
