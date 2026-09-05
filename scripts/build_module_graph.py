@@ -131,6 +131,25 @@ def default_role(module: str) -> str:
     return NEW_ROLES.get(module, "Lean proof module")
 
 
+def local_imports(text: str) -> list[str]:
+    """Locate candidates cheaply, preserving the exact import matcher.
+
+    Large certificate bodies contain few imports. A literal substring search
+    skips their bytes in C without trying a multiline regex at every position.
+    Keep the existing grammar and order, including matches after blank lines.
+    """
+    imports: list[str] = []
+    position = text.find("import ")
+    while position != -1:
+        match = IMPORT_RE.match(text, position)
+        if match is not None:
+            imports.append(match.group(1))
+            position = text.find("import ", match.end())
+        else:
+            position = text.find("import ", position + 7)
+    return imports
+
+
 def build_graph(data: dict[str, object]) -> dict[str, object]:
     machine = data["machine_readable_paper"]
     current = machine["module_graph"]
@@ -148,14 +167,14 @@ def build_graph(data: dict[str, object]) -> dict[str, object]:
                 "id": module,
                 "path": path.relative_to(ROOT).as_posix(),
                 "role": roles.get(module, default_role(module)),
-                "imports": IMPORT_RE.findall(path.read_text(encoding="utf-8")),
+                "imports": local_imports(path.read_text(encoding="utf-8")),
             }
         )
     imports_by_id = {node["id"]: node["imports"] for node in nodes}
     root_imports = []
     for root_file in ROOT_FILES:
         root_imports.extend(
-            IMPORT_RE.findall((ROOT / root_file).read_text(encoding="utf-8"))
+            local_imports((ROOT / root_file).read_text(encoding="utf-8"))
         )
 
     root_reachable = set(root_imports)
