@@ -1381,21 +1381,21 @@
       "aggregate_config": "verification/comparator-replay-candidate.json",
       "aggregate_config_digest": "sha256:e8a6999c8e2e894a8a20a522f8253d3e7d519e0ae7371eed9e0755f855ed8acb",
       "aggregate_membership": "verification/comparator-replay-membership.json",
-      "aggregate_membership_digest": "sha256:686d59e4f0f23928c5bae14181f98e477195f91924843591cbe2ea269421286d",
+      "aggregate_membership_digest": "sha256:48d2e32d1e82d391eb92f52f42f3d4d3b96b609f4697a25d91cfe699cab732e7",
       "registered_claim_coverage": {
         "registry_authority": "docs/claims.json::claims",
-        "registry_digest": "sha256:98241667b8cd9a0ca62812614a7cbebad8ec63a9fa34233a0dbf8a4a6e913256",
+        "registry_digest": "sha256:c85200610bb72f2c6a9eee2afd8aca7331dc0c9059e6f6e4764fddb662395900",
         "registered_claim_count": 131,
         "classified_claim_count": 131,
         "classification_counts": {
           "cited_only_non_executable": 3,
-          "linked_transport": 28,
-          "missing_formal_transport": 92,
+          "linked_transport": 30,
+          "missing_formal_transport": 90,
           "open_non_executable": 8
         },
         "formal_claim_count": 120,
-        "linked_transport_claim_count": 28,
-        "missing_formal_transport_count": 92,
+        "linked_transport_claim_count": 30,
+        "missing_formal_transport_count": 90,
         "complete_formal_transport_coverage": false,
         "boundary": "A linked transport records an exact claim-owner edge to a separately declared Comparator interface. It does not establish full informal-claim semantic coverage, a Comparator execution, external review, assurance, novelty, significance, or publication acceptance.",
         "source": "verification/comparator-replay-membership.json::registered_claim_coverage",
@@ -1441,11 +1441,11 @@
   "inputs": {
     "claims": {
       "path": "docs/claims.json",
-      "digest": "sha256:c17ae33764a669aab9cf8e23d7d51b5d367fa5ada2dca0e5df229cf789ce234a"
+      "digest": "sha256:6c914f87c57b3750e34cd4530ce1c722b79fa54a64e961a7c9609302348b4479"
     },
     "declaration_atlas": {
       "path": "docs/declaration_atlas.json",
-      "digest": "sha256:bdfddab7c6ea1d0030d9f2ef3bcc108e6a17c257302e4c2239d3b878e551b7d1",
+      "digest": "sha256:92a3a68e90728a8a9e399e358f4228758de518e027f177580cbb1336c9edb0e2",
       "source_fingerprint": "sha256:9068b91dbf6e4b7cf5a2933721c25f094f5ab1e4f80a65903031fdd31a284f9a"
     },
     "palomar_showcase": {

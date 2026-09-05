@@ -16829,6 +16829,35 @@
           "name": "one_div_oddOrder_le_reciprocalMass_of_support_fraction",
           "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
           "line": 1480
+        },
+        {
+          "name": "dyadic_support_fraction_reciprocalMass_diverges_or_gt_one",
+          "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
+          "line": 2210
+        }
+      ],
+      "comparator_transports": [
+        {
+          "package_id": "ExternalVerification257RationalTailRigidity",
+          "interface_name": "Erdos249257.ExternalVerification257RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction",
+          "source_declarations": [
+            {
+              "name": "one_div_oddOrder_le_reciprocalMass_of_support_fraction",
+              "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
+              "line": 1480
+            }
+          ]
+        },
+        {
+          "package_id": "ExternalVerification257RationalTailRigidity",
+          "interface_name": "Erdos249257.ExternalVerification257RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one",
+          "source_declarations": [
+            {
+              "name": "dyadic_support_fraction_reciprocalMass_diverges_or_gt_one",
+              "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
+              "line": 2210
+            }
+          ]
         }
       ]
     },
@@ -17821,6 +17850,29 @@
           "name": "finite_period_noncollapse_rat_den",
           "module": "Erdos249257/CertificateKernel.lean",
           "line": 5246
+        },
+        {
+          "name": "coprime_base_den_finiteErdosSum",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 5221
+        }
+      ],
+      "comparator_transports": [
+        {
+          "package_id": "ExternalVerification257FinitePeriodNoncollapse",
+          "interface_name": "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den",
+          "source_declarations": [
+            {
+              "name": "coprime_base_den_finiteErdosSum",
+              "module": "Erdos249257/CertificateKernel.lean",
+              "line": 5221
+            },
+            {
+              "name": "finite_period_noncollapse_rat_den",
+              "module": "Erdos249257/CertificateKernel.lean",
+              "line": 5246
+            }
+          ]
         }
       ]
     },

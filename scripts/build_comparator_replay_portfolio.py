@@ -584,6 +584,7 @@ def compile_registered_claim_coverage(
     rows: list[dict[str, Any]] = []
     counts: Counter[str] = Counter()
     missing_ids: list[str] = []
+    partial_anchor_ids: list[str] = []
     for claim_id, claim in claim_by_id.items():
         transports = sorted(
             linked[claim_id].values(),
@@ -591,6 +592,17 @@ def compile_registered_claim_coverage(
         )
         status = claim["status"]
         declarations = claim["declarations"]
+        linked_anchors = {
+            (anchor["module"], anchor["name"], anchor["line"])
+            for transport in transports
+            for anchor in transport["source_declarations"]
+        }
+        unlinked_anchors = [
+            anchor for anchor in declarations
+            if (anchor["module"], anchor["name"], anchor["line"]) not in linked_anchors
+        ]
+        if transports and unlinked_anchors:
+            partial_anchor_ids.append(claim_id)
         if transports:
             if not declarations or status in {"open", "cited only"}:
                 raise PortfolioError(
@@ -622,6 +634,14 @@ def compile_registered_claim_coverage(
                 "registered_declarations": declarations,
                 "transport_count": len(transports),
                 "transports": transports,
+                "source_anchor_coverage": {
+                    "registered_count": len(declarations),
+                    "linked_count": len(declarations) - len(unlinked_anchors),
+                    "unlinked_declaration_indices": [
+                        index for index, anchor in enumerate(declarations)
+                        if anchor in unlinked_anchors
+                    ],
+                },
                 "reason": reason,
                 "semantic_coverage_status": "not_assessed_by_transport_link",
                 "executed_comparator_assurance": "not_asserted",
@@ -649,6 +669,13 @@ def compile_registered_claim_coverage(
         "linked_transport_claim_count": counts["linked_transport"],
         "missing_formal_transport_count": len(missing_ids),
         "missing_formal_claim_ids": sorted(missing_ids),
+        "linked_claims_with_unlinked_anchors": sorted(partial_anchor_ids),
+        "source_anchor_coverage_contract": (
+            "Indices are zero-based into each row's registered_declarations, avoiding "
+            "a duplicate source registry. Anchor coverage is not semantic completeness: "
+            "a transported theorem may imply an unlinked corollary. Assess the whole "
+            "claim before adding interfaces or asserting completeness."
+        ),
         "complete_formal_transport_coverage": not missing_ids,
         "claims": rows,
         "boundary": (

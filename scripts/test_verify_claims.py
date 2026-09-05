@@ -402,6 +402,19 @@ def main() -> int:
         linked_claim["comparator_transports"][0]["source_declarations"] = [
             {**linked_claim["declarations"][0], "line": ALPHA_KEYWORD_LINE + 1}
         ]
+        # The actual configured interface roster can grow before optional
+        # main-result descriptions do. Never report that metadata count as the
+        # configured Comparator selection.
+        register = build_register([linked_claim], main_results=[])
+        register["external_verification_packet"]["comparator"]["challenge_module"] = (
+            "ExternalVerificationFixture.Challenge"
+        )
+        configured = verify_claims.comparator_for("sample_claim", register)
+        require(
+            configured["selected_total"] == 1
+            and configured["catalogued_main_result_total"] == 0,
+            "configured Comparator selection was conflated with main-result metadata",
+        )
         malformed = verify_claims.comparator_for(
             "sample_claim",
             build_register([linked_claim], main_results=[]),

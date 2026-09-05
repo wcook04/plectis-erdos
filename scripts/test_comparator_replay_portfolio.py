@@ -387,6 +387,20 @@ def test_explicit_claim_transport_requires_exact_anchor_and_real_interface() -> 
         assert coverage["complete_formal_transport_coverage"] is True
         first_digest = coverage["registry_digest"]
 
+        # A single transport must not hide the remaining anchors of a compound
+        # claim, nor should a source-link audit pretend to decide implication.
+        extra_anchor = {**anchor, "name": "Fixture.additional", "line": 2}
+        claim["declarations"].append(extra_anchor)
+        claims_path.write_text(json.dumps(claims, indent=2) + "\n", encoding="utf-8")
+        partial = replay.build_portfolio(root).registered_claim_coverage
+        partial_row = next(r for r in partial["claims"] if r["claim_id"] == "fixture_claim")
+        assert partial["linked_claims_with_unlinked_anchors"] == ["fixture_claim"]
+        assert partial_row["source_anchor_coverage"]["registered_count"] == 2
+        assert partial_row["source_anchor_coverage"]["linked_count"] == 1
+        assert partial_row["source_anchor_coverage"]["unlinked_declaration_indices"] == [1]
+        assert partial_row["semantic_coverage_status"] == "not_assessed_by_transport_link"
+        claim["declarations"].pop()
+
         claim["statement"] = "The revised fixture source theorem holds."
         claims_path.write_text(json.dumps(claims, indent=2) + "\n", encoding="utf-8")
         assert (

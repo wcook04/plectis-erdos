@@ -2013,19 +2013,19 @@
   "registered_claim_coverage": {
     "schema": "plectis.comparator-registered-claim-coverage/1",
     "registry_authority": "docs/claims.json::claims",
-    "registry_digest": "sha256:98241667b8cd9a0ca62812614a7cbebad8ec63a9fa34233a0dbf8a4a6e913256",
+    "registry_digest": "sha256:c85200610bb72f2c6a9eee2afd8aca7331dc0c9059e6f6e4764fddb662395900",
     "registry_digest_definition": "sha256 of canonical JSON rows containing each registered claim id, status, statement, exact declaration anchors, and explicit transports",
     "registered_claim_count": 131,
     "classified_claim_count": 131,
     "classification_counts": {
       "cited_only_non_executable": 3,
-      "linked_transport": 28,
-      "missing_formal_transport": 92,
+      "linked_transport": 30,
+      "missing_formal_transport": 90,
       "open_non_executable": 8
     },
     "formal_claim_count": 120,
-    "linked_transport_claim_count": 28,
-    "missing_formal_transport_count": 92,
+    "linked_transport_claim_count": 30,
+    "missing_formal_transport_count": 90,
     "missing_formal_claim_ids": [
       "actual_lcm_positive_corridor_top_edge",
       "adelic_height_obstruction",
@@ -2054,7 +2054,6 @@
       "fatal_gap_right_tail_classification",
       "final_middle_cell_escape",
       "final_middle_neg_two_phase_sieve",
-      "finite_period_noncollapse",
       "first_harmonic_certificate_interface",
       "fixed_coefficient_rewind_contraction",
       "fixed_tail_survival_socket",
@@ -2090,7 +2089,6 @@
       "quarter_band_endpoint_cells",
       "rational_base_forcing_growth",
       "realized_rewind_phase_identity",
-      "reciprocal_mass_bound",
       "reset_deficit_escape_geometry",
       "residual_gauge_obstruction",
       "rewind_boundary_pair_obstruction",
@@ -2120,6 +2118,26 @@
       "van_assche_qapery_diagonal_no_go",
       "weighted_phase_carry_finite_observer"
     ],
+    "linked_claims_with_unlinked_anchors": [
+      "actual_foreign_residue_projection",
+      "actual_lcm_orbit_nonintegrality_frontier",
+      "composite_dilation_defect_identity",
+      "dyadic_totient_basis",
+      "dyadic_totient_certificate_interface",
+      "first_harmonic_pivot_decomposition",
+      "fixed_precision_transport_no_go",
+      "greedy_achievement_geometry",
+      "half_greedy_two_thirds_band",
+      "half_membership_seam_classification",
+      "lcm_factor_ideal_anchor_pulse_no_go",
+      "newton_ray_separation_consumer",
+      "orthogonal_petal_sunflower_reduction",
+      "periodic_nonnegative_weight_irrationality",
+      "strict_prime_tail_orbit_gap",
+      "terminal_scaled_vanishing_half_countermodel",
+      "totient_carry_kernel_anti_compression"
+    ],
+    "source_anchor_coverage_contract": "Indices are zero-based into each row's registered_declarations, avoiding a duplicate source registry. Anchor coverage is not semantic completeness: a transported theorem may imply an unlinked corollary. Assess the whole claim before adding interfaces or asserting completeness.",
     "complete_formal_transport_coverage": false,
     "claims": [
       {
@@ -2129,6 +2147,11 @@
         "registered_declarations": [],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
         "reason": "The claim is open and has no formal declaration to transport.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2140,6 +2163,11 @@
         "registered_declarations": [],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
         "reason": "The claim is open and has no formal declaration to transport.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2151,6 +2179,11 @@
         "registered_declarations": [],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
         "reason": "The claim is open and has no formal declaration to transport.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2173,6 +2206,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2208,6 +2249,11 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 1,
+          "unlinked_declaration_indices": []
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2219,6 +2265,11 @@
         "registered_declarations": [],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
         "reason": "The claim is open and has no formal declaration to transport.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2281,6 +2332,13 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 2,
+          "unlinked_declaration_indices": [
+            1
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2316,6 +2374,11 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 1,
+          "unlinked_declaration_indices": []
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2351,6 +2414,11 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 1,
+          "unlinked_declaration_indices": []
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2368,6 +2436,13 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2395,6 +2470,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2427,6 +2511,16 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2454,6 +2548,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2476,6 +2579,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2521,6 +2632,14 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2543,6 +2662,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2560,6 +2687,13 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2605,6 +2739,14 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            0,
+            2
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2650,6 +2792,14 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            1,
+            2
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2677,6 +2827,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2734,6 +2893,21 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 9,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2761,6 +2935,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2788,6 +2971,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2815,6 +3007,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2842,6 +3043,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2869,6 +3079,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2896,6 +3115,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2923,6 +3151,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2950,6 +3187,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -2977,6 +3223,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3004,6 +3259,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3031,6 +3295,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3063,6 +3336,16 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3085,6 +3368,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3112,6 +3403,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3174,6 +3474,22 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 10,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3201,6 +3517,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3233,6 +3558,16 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3255,6 +3590,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3277,6 +3620,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3294,6 +3645,13 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3374,6 +3732,21 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 10,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3401,6 +3774,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3423,6 +3805,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3460,6 +3850,17 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 5,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3487,6 +3888,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3524,6 +3934,17 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 5,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3551,6 +3972,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3578,6 +4008,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3595,6 +4034,13 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3622,6 +4068,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3654,6 +4109,16 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3756,6 +4221,30 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 18,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3808,6 +4297,20 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 8,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3840,6 +4343,16 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3857,6 +4370,13 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3884,6 +4404,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3906,6 +4435,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3928,6 +4465,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3950,6 +4495,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -3982,6 +4535,16 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4029,6 +4592,19 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 7,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4051,6 +4627,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4083,6 +4667,16 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4110,6 +4704,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4132,6 +4735,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4197,6 +4808,18 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 7,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4214,6 +4837,13 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4256,6 +4886,18 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 6,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4288,6 +4930,16 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4330,6 +4982,18 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 6,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4352,6 +5016,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4374,6 +5046,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4391,6 +5071,13 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4408,6 +5095,13 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4435,6 +5129,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4457,6 +5160,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4479,6 +5190,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4516,6 +5235,17 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 5,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4538,6 +5268,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4565,6 +5303,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4587,6 +5334,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4632,6 +5387,14 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4654,6 +5417,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4676,6 +5447,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4708,6 +5487,16 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4735,6 +5524,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4780,6 +5578,14 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4862,6 +5668,17 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 7,
+          "linked_count": 2,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            5,
+            6
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4949,6 +5766,27 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 15,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4976,6 +5814,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -4993,6 +5840,13 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5028,6 +5882,11 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 1,
+          "unlinked_declaration_indices": []
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5035,17 +5894,62 @@
       {
         "claim_id": "reciprocal_mass_bound",
         "claim_status": "proved here",
-        "classification": "missing_formal_transport",
+        "classification": "linked_transport",
         "registered_declarations": [
           {
             "name": "one_div_oddOrder_le_reciprocalMass_of_support_fraction",
             "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
             "line": 1480
+          },
+          {
+            "name": "dyadic_support_fraction_reciprocalMass_diverges_or_gt_one",
+            "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
+            "line": 2210
           }
         ],
-        "transport_count": 0,
-        "transports": [],
-        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "transport_count": 2,
+        "transports": [
+          {
+            "package_id": "ExternalVerification257RationalTailRigidity",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification257RationalTailRigidity.Challenge",
+            "solution_module": "ExternalVerification257RationalTailRigidity.Solution",
+            "interface_name": "Erdos249257.ExternalVerification257RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one",
+            "source_declarations": [
+              {
+                "name": "dyadic_support_fraction_reciprocalMass_diverges_or_gt_one",
+                "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
+                "line": 2210
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification257RationalTailRigidity",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification257RationalTailRigidity.Challenge",
+            "solution_module": "ExternalVerification257RationalTailRigidity.Solution",
+            "interface_name": "Erdos249257.ExternalVerification257RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction",
+            "source_declarations": [
+              {
+                "name": "one_div_oddOrder_le_reciprocalMass_of_support_fraction",
+                "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
+                "line": 1480
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          }
+        ],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 2,
+          "unlinked_declaration_indices": []
+        },
+        "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
       },
@@ -5080,6 +5984,11 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 1,
+          "unlinked_declaration_indices": []
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5115,6 +6024,11 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 1,
+          "unlinked_declaration_indices": []
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5185,6 +6099,19 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 8,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5250,6 +6177,18 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 7,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5287,6 +6226,17 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 5,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5319,6 +6269,16 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5330,6 +6290,11 @@
         "registered_declarations": [],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
         "reason": "The claim is cited only and has no local formal declaration to transport.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5341,6 +6306,11 @@
         "registered_declarations": [],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
         "reason": "The claim is cited only and has no local formal declaration to transport.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5352,6 +6322,11 @@
         "registered_declarations": [],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
         "reason": "The claim is cited only and has no local formal declaration to transport.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5389,6 +6364,17 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 5,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5416,6 +6402,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5438,6 +6433,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5460,6 +6463,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5535,6 +6546,20 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 9,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5557,6 +6582,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5584,6 +6617,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5629,6 +6671,14 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            1,
+            2
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5674,6 +6724,14 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            1,
+            2
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5719,6 +6777,14 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5746,6 +6812,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5876,6 +6951,31 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 20,
+          "linked_count": 1,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5931,6 +7031,14 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 2,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5958,6 +7066,15 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -5969,6 +7086,11 @@
         "registered_declarations": [],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
         "reason": "The claim is open and has no formal declaration to transport.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -6004,6 +7126,11 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 1,
+          "unlinked_declaration_indices": []
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -6039,6 +7166,11 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 1,
+          "unlinked_declaration_indices": []
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -6061,6 +7193,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -6083,6 +7223,14 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -6094,6 +7242,11 @@
         "registered_declarations": [],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
         "reason": "The claim is open and has no formal declaration to transport.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -6111,6 +7264,13 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -6146,6 +7306,11 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 1,
+          "unlinked_declaration_indices": []
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -6181,6 +7346,11 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 1,
+          "unlinked_declaration_indices": []
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -6188,17 +7358,50 @@
       {
         "claim_id": "finite_period_noncollapse",
         "claim_status": "unconditional progress",
-        "classification": "missing_formal_transport",
+        "classification": "linked_transport",
         "registered_declarations": [
           {
             "name": "finite_period_noncollapse_rat_den",
             "module": "Erdos249257/CertificateKernel.lean",
             "line": 5246
+          },
+          {
+            "name": "coprime_base_den_finiteErdosSum",
+            "module": "Erdos249257/CertificateKernel.lean",
+            "line": 5221
           }
         ],
-        "transport_count": 0,
-        "transports": [],
-        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "transport_count": 1,
+        "transports": [
+          {
+            "package_id": "ExternalVerification257FinitePeriodNoncollapse",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification257FinitePeriodNoncollapse.Challenge",
+            "solution_module": "ExternalVerification257FinitePeriodNoncollapse.Solution",
+            "interface_name": "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den",
+            "source_declarations": [
+              {
+                "name": "coprime_base_den_finiteErdosSum",
+                "module": "Erdos249257/CertificateKernel.lean",
+                "line": 5221
+              },
+              {
+                "name": "finite_period_noncollapse_rat_den",
+                "module": "Erdos249257/CertificateKernel.lean",
+                "line": 5246
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          }
+        ],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 2,
+          "unlinked_declaration_indices": []
+        },
+        "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
       },
@@ -6233,6 +7436,11 @@
             ]
           }
         ],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 1,
+          "unlinked_declaration_indices": []
+        },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -6244,6 +7452,11 @@
         "registered_declarations": [],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
         "reason": "The claim is open and has no formal declaration to transport.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -6255,6 +7468,11 @@
         "registered_declarations": [],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
         "reason": "The claim is open and has no formal declaration to transport.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
@@ -6287,6 +7505,16 @@
         ],
         "transport_count": 0,
         "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"

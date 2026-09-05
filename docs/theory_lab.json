@@ -18,8 +18,8 @@
  },
  "source_provenance": {
   "identity_kind": "content_addressed_input_set",
-  "declaration_atlas_digest": "sha256:bdfddab7c6ea1d0030d9f2ef3bcc108e6a17c257302e4c2239d3b878e551b7d1",
-  "semantic_corpus_digest": "sha256:07e215bc4e04d4c36484ac08eb0b7c6406f095556dfea7d620630e5d75cb75f5",
+  "declaration_atlas_digest": "sha256:92a3a68e90728a8a9e399e358f4228758de518e027f177580cbb1336c9edb0e2",
+  "semantic_corpus_digest": "sha256:442767cb1279f4798ba971eaa5e3453741242706de18ea7b79ca75f45cf68195",
   "authored_lab_source_digests": {
    "docs/semantic/lab/benchmark_items.json": "sha256:51e9f9fde535fdb0e526f0826239eace0cfa478a6f30b37d663c1432bd1f984f",
    "docs/semantic/lab/benchmark_results.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
@@ -98,7 +98,7 @@
   "explained_fraction": 0.0011,
   "authored_theorem_like": 144335,
   "unexplained_by_logical_class": {
-   "unconditional_object_theorem": 354,
+   "unconditional_object_theorem": 355,
    "reduction_or_transport": 94,
    "finite_instance": 85,
    "classical_formalised": 44,
@@ -106,7 +106,7 @@
    "representation_normalisation": 161,
    "barrier_no_go": 72,
    "equivalence_or_classification": 104,
-   "infrastructure": 5988,
+   "infrastructure": 5987,
    "generated_certificate_instance": 4
   },
   "outcome_states": {},
@@ -669,6 +669,7 @@
     "Z01::periodic_weight_irrationality",
     "Z01::rational_denominator_bridge",
     "Z01::rationality_forces_tail_period",
+    "Z01::reciprocal_summable_support_irrationality",
     "Z01::signed_protected_block_engine",
     "Z01::signed_weight_dichotomy",
     "Z01::stern_brocot_run_geometry",
@@ -5246,7 +5247,6 @@
     "structural::97ace670ddcaae796788",
     "structural::97ad5be830b5c627bb17",
     "structural::97bc276b72124db6eb42",
-    "structural::97c20bc9b39ec0978df0",
     "structural::97c7f6581602d540a4de",
     "structural::97cf802798f436e53ee0",
     "structural::97d196dbe0088993e079",

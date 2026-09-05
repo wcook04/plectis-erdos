@@ -612,8 +612,14 @@ def comparator_for(claim_id: str, claims: dict[str, Any]) -> dict[str, Any]:
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted",
         "interfaces": interfaces,
-        "selected_total": len(selected),
-        "bound_total": sum(1 for row in selected if row.get("claim_id")),
+        "selected_total": len(roster.get(current_package, set())),
+        "catalogued_main_result_total": len(selected),
+        "bound_total": len({
+            row.get("wrapper_declaration")
+            for row in selected
+            if row.get("claim_id")
+            and row.get("wrapper_declaration") in roster.get(current_package, set())
+        }),
         "permitted_axioms": config.get("permitted_axioms", []),
         "config": config.get("config"),
         "unregistered_contract": packet.get("claim_status_contract", {}).get(

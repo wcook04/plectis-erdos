@@ -2753,6 +2753,23 @@
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
       ]
+    },
+    {
+      "subject_kind": "statement_node",
+      "subject_id": "Z01::reciprocal_summable_support_irrationality",
+      "reviewer": "OpenAI gpt-5.6-sol",
+      "reviewer_type": "ai_semantic_consistency_review",
+      "reviewed_revision": "3506d189a2660213ec0e53ee29360a464007b8a1",
+      "reviewed_at": "2026-09-05",
+      "evidence_digest": "sha256:10eb8a3f0e28b2a3928d854145e22bd0c0c297031680bda9a17f8dad6e125817",
+      "review_scope": "Compared the registered reciprocal_summable_support wording and both paper statements against the exact theorem signature at Erdos249257/AllBaseReciprocalSupportIrrationality.lean:395. The Lean theorem quantifies over b : Nat and A : Set Nat, assumes 2 <= b, A.Infinite, and Summable (reciprocalSupportTerm A), and concludes Irrational (erdosSupportSeries b A). The source proof turns a hypothetical rational value into an integer radix-tail orbit; reciprocal summability supplies a close return, while infinitude supplies a strict increase, producing an integer difference strictly between zero and one. The public wording preserves every theorem hypothesis and adds no coprimality, periodicity, density, or powerful-support condition. This is a model source-to-wording consistency review, not Lean proof authority, human specialist review, or novelty assessment.",
+      "claim_ceiling": "The reviewed node states the unconditional reciprocal-summable support theorem only. Universal Erdos #257 remains open for reciprocal-divergent supports; no priority, novelty, external-review, or identification-with-Erdos claim is established.",
+      "source_refs": [
+        "docs/claims.json::claims[reciprocal_summable_support]",
+        "Erdos249257/AllBaseReciprocalSupportIrrationality.lean:395",
+        "paper/erdos-257-mersenne-support-subseries.tex:162",
+        "paper/erdos257-mersenne-reasoning-surface.tex:1617"
+      ]
     }
   ]
 }

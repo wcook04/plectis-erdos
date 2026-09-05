@@ -1,7 +1,7 @@
 {
-  "atlas_digest": "sha256:bdfddab7c6ea1d0030d9f2ef3bcc108e6a17c257302e4c2239d3b878e551b7d1",
+  "atlas_digest": "sha256:92a3a68e90728a8a9e399e358f4228758de518e027f177580cbb1336c9edb0e2",
   "builder_digest": "sha256:6e9e6ff5b706ed233a1d71e29ff854d3fbef42b4d2040b7cf1102baea99bf53c",
-  "claim_binding_fingerprint": "sha256:a22a81b459f36a5c148b3018d3c4f6d3d62ffefffa91551dcbac96f389be1e6f",
+  "claim_binding_fingerprint": "sha256:6bc8dbb101ac02ff96e6fe5f637578deef9aad6e1baea1a8974a54ae54a2b0a7",
   "generated_manifest_digest": "sha256:54b4d0c504cd2db35723153c7fff782c87a987d228d42a78f5fd36dff440f9cc",
   "schema": "erdos249257-declaration-atlas-check/1",
   "source_fingerprint": "sha256:9068b91dbf6e4b7cf5a2933721c25f094f5ab1e4f80a65903031fdd31a284f9a",
@@ -18,7 +18,7 @@
       "theorem": 151891
     },
     "module_count": 1102,
-    "principal_claim_link_count": 405,
+    "principal_claim_link_count": 407,
     "theorem_like_count": 152322
   }
 }

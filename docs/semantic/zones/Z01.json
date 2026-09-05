@@ -1237,6 +1237,30 @@
       "confidence": "high"
     },
     {
+      "id": "reciprocal_summable_support_irrationality",
+      "canonical_statement": "For every integer base b at least 2 and every infinite support A whose reciprocal-support term is summable, the support-restricted series sum over a in A of 1/(b^a - 1) is irrational. No pairwise-coprimality, periodicity, density, or powerful-support hypothesis is assumed.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "irrational_erdosSupportSeries_of_summable_reciprocal",
+          "module": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+          "line": 395
+        }
+      ],
+      "concepts": [
+        "support_coefficient",
+        "near_integer_criterion"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "binary LCM-Cesaro close return transferred to an integral radix-tail orbit",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The checked argument is not identified with Erdos's omitted coprimality-free proof. No novelty or priority conclusion is drawn.",
+      "scope_caveat": "This closes every infinite reciprocal-summable support at every integer base b at least 2. It does not settle reciprocal-divergent supports or universal Erdos #257, and it makes no novelty or priority claim or identification with Erdos's omitted coprimality-free argument.",
+      "confidence": "high"
+    },
+    {
       "id": "pairwise_coprime_support_irrationality",
       "canonical_statement": "For every base b at least 2 and every infinite pairwise-coprime support whose reciprocals are summable, the support series is irrational. Certificates are supplied by disjoint blocks of pairwise-coprime support elements together with the reciprocal-tail bound.",
       "logical_class": "classical_formalised",
@@ -4820,6 +4844,13 @@
       "line": 9922,
       "role": "statement",
       "statement_node": "omega_bigomega_support_bridge"
+    },
+    {
+      "declaration": "irrational_erdosSupportSeries_of_summable_reciprocal",
+      "module": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+      "line": 395,
+      "role": "statement",
+      "statement_node": "reciprocal_summable_support_irrationality"
     },
     {
       "declaration": "exists_linear_lt_pow",
@@ -8644,6 +8675,12 @@
       "to": "signed_protected_block_engine",
       "relation": "barrier_for",
       "basis": "shows residue selection alone cannot steer the protected-block frame onto nonzero cofactor residues for the period-four sign weight"
+    },
+    {
+      "from": "reciprocal_summable_support_irrationality",
+      "to": "pairwise_coprime_support_irrationality",
+      "relation": "generalises",
+      "basis": "The newer theorem drops pairwise coprimality while retaining the integer-base, infinite-support, and reciprocal-summability hypotheses."
     },
     {
       "from": "pairwise_coprime_support_irrationality",
