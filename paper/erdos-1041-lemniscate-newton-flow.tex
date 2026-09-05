@@ -70,7 +70,7 @@ the ordinary normalization, fibre, moment, and path assembly.  A further
 unconditional auxiliary theorem gives the sharp critical-value budget
 $\sum_{j=1}^{n-1}|f(c_j)|^{1/n}\le(n-1)R$ for $2\le n\le5$, where $R$
 is the radius of an enclosing root disk.  Its proof combines finite disk
-inequalities with a plurisubharmonic boundary reduction; it controls merge
+inequalities with a pointwise reflected-derivative bound; it controls merge
 levels, not the lengths of the paths reaching them.
 
 This result exposes rather than hides the surviving frontier: it gives no
@@ -223,7 +223,7 @@ Statement & Status & Exact boundary \\
 \midrule
 Erd\H{o}s \#1041 & Open & No proof is claimed. \\
 Critical-value separation & Ordinary all-degree theorem & A simple nonzero hub and $(1+S)^{2/n}\log(S/(S-1))<1$; the threshold, covering and area arguments remain ordinary; near ties and multiple saddles are excluded. \\
-Critical-value budget through degree five & Ordinary theorem; scalar Lean companion & $\sum_j|f(c_j)|^{1/n}\le(n-1)R$ for $2\le n\le5$; the torus maximum principle and complete finite-point inequalities remain ordinary proofs and do not control inverse-ray length. \\
+Critical-value budget through degree five & Ordinary theorem; scalar Lean companion & $\sum_j|f(c_j)|^{1/n}\le(n-1)R$ for $2\le n\le5$; the reflected-derivative comparison and complete finite-point inequalities remain ordinary proofs and do not control inverse-ray length. \\
 Newton value equation $w'=-w$ & Checked & Away from critical points, along any trajectory tangent to $-f/f'$. \\
 Exponential first integral & Checked & $\tfrac{d}{dt}\bigl(e^{t}f(z(t))\bigr)=0$. \\
 Ray separation of critical values & Checked (consumer form) & Endpoints of a finite connection share one oriented ray; distinct rays exclude a connection. \\
@@ -971,8 +971,56 @@ for
        |1-\overline{c_j}c_k|\right)^{1/m}\le m,
  \qquad |c_j|\le1.
 \]
-We first establish the cases $m\le4$, then explain why
-$(\mathrm{FP}_m)$ implies the critical-value budget in degree $m+1$.
+The following pointwise bound explains why these finite inequalities
+control critical values in every degree.
+
+\begin{lemma}[reflected-derivative bound]\label{res:reflected-critical-value}
+If $f$ is monic of degree $n\ge2$ with roots in the closed unit disk,
+and $c_1,\ldots,c_{n-1}$ list its critical points with multiplicity, then
+\begin{equation}\label{eq:critical-reflected-product}
+ |f(c_j)|\le\prod_{k=1}^{n-1}|1-\overline{c_j}c_k|.
+\end{equation}
+\end{lemma}
+\begin{proof}
+First put all roots $a_i$ strictly inside the disk.  Gauss--Lucas does the
+same for the $c_k$, so
+\[
+ N(z)=nf(z)-zf'(z),\qquad
+ G(z)=n\prod_k(1-\overline{c_k}z)
+\]
+have $G\ne0$ on the closed disk.  On $|\zeta|=1$,
+$|G(\zeta)|=|f'(\zeta)|$, while
+\[
+ \operatorname{Re}\frac{\zeta f'(\zeta)}{f(\zeta)}
+ =\sum_i\left(\frac12+
+       \frac{1-|a_i|^2}{2|1-a_i\bar\zeta|^2}\right)\ge\frac n2.
+\]
+Writing the logarithmic derivative as $w$, the identity
+$|n-w|^2-|w|^2=n^2-2n\operatorname{Re}w\le0$ gives
+$|N|\le|G|$ on the circle.  The maximum-modulus principle applied to
+$N/G$ gives the same comparison inside.  At $c_j$, $N(c_j)=nf(c_j)$;
+dividing by $n$ and conjugating each factor proves
+\eqref{eq:critical-reflected-product}.
+For closed-disk roots apply this result to
+$f_r(z)=r^nf(z/r)$, $0<r<1$, whose critical points are $rc_k$:
+\[
+ r^n|f(c_j)|\le\prod_k|1-r^2\overline{c_j}c_k|.
+\]
+Let $r\uparrow1$.  This also handles boundary critical points and all
+multiplicities without selecting local branches.
+\end{proof}
+
+Set $m=n-1$.  By Gauss--Lucas and the lemma, $(\mathrm{FP}_m)$ gives
+$\sum_jy_j\le m$ for $y_j=|f(c_j)|^{1/m}$.  Concavity now supplies the
+exponent in the theorem:
+\[
+ y^{m/(m+1)}\le\frac{my+1}{m+1}\quad(y\ge0),\qquad
+ \sum_j|f(c_j)|^{1/n}\le m.
+\]
+For a root disk centred at $h$ of radius $R>0$, apply this inequality to
+$R^{-n}f(h+Rz)$; scaling back multiplies the sum by $R$.  When $R=0$,
+all critical values vanish.  It remains to prove $(\mathrm{FP}_m)$ for
+$m\le4$.
 
 \paragraph{The three-point mechanism.}
 The one-point inequality is $1-|c_1|^2\le1$.  For two points put
@@ -1049,54 +1097,12 @@ certificates for these estimates are given in the public
 the preceding short defect proof is recorded in the
 \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointMeanInequalityFP3.md}{three-point proof}.
 
-\paragraph{From free points to critical values.}
-Here is the all-degree implication.  After translating and scaling the root
-disk to radius one, write $f_a(z)=\prod_{i=1}^n(z-a_i)$ and consider
-\[
- \Psi(a_1,\ldots,a_n)=
- \sum_{f_a'(c)=0}|f_a(c)|^{1/n},
-\]
-counting multiplicity.  Away from multiple critical points, local critical
-branches and their values are holomorphic, so $\Psi$ is plurisubharmonic.
-The symmetric multiset sum is continuous across critical collisions and
-locally bounded above; the removable-singularity theorem extends its
-plurisubharmonicity across that analytic locus.  Applying the subharmonic
-maximum principle successively in each root coordinate reduces its maximum
-to $|a_i|=1$ for every $i$.
-
-On that torus, if $f'(z)=n\prod_{k=1}^{n-1}(z-c_k)$, then
-\begin{equation}\label{eq:critical-torus-product}
- |f(c_j)|=\prod_{k=1}^{n-1}|1-\overline{c_j}c_k|.
-\end{equation}
-Indeed, for a critical point $c\ne0$ that is not a root, conjugating
-$\sum_i(c-a_i)^{-1}=0$ gives
-$\sum_i a_i/(1-\bar c a_i)=0$, hence
-$\sum_i(1-\bar c a_i)^{-1}=n$.
-Thus $|f'(1/\bar c)|=n|c|\,|f(1/\bar c)|$.
-The product formulas and $|f(1/\bar c)|=|c|^{-n}|f(c)|$
-give \eqref{eq:critical-torus-product}.  At $c=0$ both sides are one;
-if $c$ is also a root, it lies on the unit circle and both sides vanish.
-Gauss--Lucas puts all critical points in the closed disk, so
-$(\mathrm{FP}_{n-1})$ applies, including multiplicities.
-
-Put $m=n-1$ and $y_j=|f(c_j)|^{1/m}$.  The free-point inequality gives
-$\sum_jy_j\le m$.  Concavity supplies exactly the exponent needed:
-\[
- y^{m/(m+1)}\le\frac{my+1}{m+1}\quad(y\ge0),\qquad
- \sum_j|f(c_j)|^{1/n}\le m.
-\]
-Scaling back multiplies the last sum by $R$, proving
-Theorem~\ref{res:critical-value-budget}.  If $R=0$, all critical values
-vanish and the conclusion is immediate.
-
-This is an ordinary proof.  The public
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointTorusPshReduction.md}{torus reduction}
-and its Lean companion separate the scalar concavity step from the
-plurisubharmonic maximum principle and polynomial identity; the companion
-formalises the scalar step, not those analytic bridges.  The four-point Lean
-companion likewise contains algebraic kernels, not the complete logarithmic
-and calculus proof.  No full Lean formalisation of the critical-value budget
-is claimed here.
+The complete budget is an ordinary theorem.  The scalar concavity step
+has a Lean companion in the earlier
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointTorusPshReduction.md}{boundary-reduction note};
+the pointwise polynomial comparison above replaces its plurisubharmonic
+argument.  The four-point companion checks algebraic kernels, leaving the
+logarithmic and calculus estimates in the ordinary proof.
 
 The budget guarantees a critical value at most $R^n$, but does not force
 the smaller quintic threshold $1/M_5$ below.  On the unit radial family all
