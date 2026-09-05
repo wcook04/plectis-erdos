@@ -197,6 +197,9 @@ rows already form contiguous groups. A compact range table can select those
 groups without a second dataset. Keep selection labels inside the canonical
 digest boundary, check complete range coverage, and compare substring, case,
 empty-result, and combined-filter behavior with the full reader.
+Select the cited sources before constructing declaration aliases, and include
+that selection in any in-process index cache key. Preserve aliases shared by
+multiple modules; narrowing work must not silently narrow valid matches.
 
 If a common entry or status command repeatedly audits historical data because
 an active file crossed a storage threshold, inspect the storage lifecycle

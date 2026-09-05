@@ -39,6 +39,22 @@ def main() -> int:
     require(query.indexed_module_roles(role_bytes, ranges[:-1], "A") is None,
             "module ranges accepted incomplete coverage")
     require(query.indexed_module_roles(b"[]", [], "A") == [], "empty role array failed")
+    require(query.indexed_module_roles(role_bytes, ranges, ("A.lean", "B.lean")) == roles[:3],
+            "multiple module filters changed selection order")
+    require(query.indexed_module_roles(role_bytes, ranges, ()) == [],
+            "empty module selection decoded unrelated roles")
+    citation_corpus = {"declaration_roles": [
+        {"module": "Erdos249257/Shared.lean", "declaration": "A.one"},
+        {"module": "ErdosProblems/Other/Shared.lean", "declaration": "B.two"},
+        {"module": "Erdos249257/Different.lean", "declaration": "C.three"},
+    ]}
+    complete = query.paper_citation_role_index(citation_corpus)
+    selected = query.paper_citation_role_index(citation_corpus, frozenset({"Shared.lean"}))
+    require(selected == {key: rows for key, rows in complete.items()
+                         if key[0].endswith("Shared.lean")},
+            "paper selection changed full or shortened module aliases")
+    require(query.paper_citation_role_index(citation_corpus, frozenset()) == {},
+            "citation index cache leaked across selected manuscript modules")
     module_fixture = {"schema": "test", "declaration_roles": roles,
                       "declaration_role_module_ranges": ranges}
     module_text = builder.render(module_fixture)
