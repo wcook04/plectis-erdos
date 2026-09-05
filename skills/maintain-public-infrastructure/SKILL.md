@@ -179,6 +179,11 @@ payloads with a regex, but must preserve the original match, escape, duplicate,
 and non-overlap rules. Faster extraction does not justify skipping validation
 or recovery checks.
 
+Reject an optimization when its measured saving does not justify its extra
+passes or abstraction. A successful microbenchmark is not sufficient: prefer
+removing a multi-second delay from the actual journey over complicating an
+already-subsecond component. Keep the evidence and remove the unused approach.
+
 ## Validate the changed journey
 
 During the edit, run the narrow owner checks:

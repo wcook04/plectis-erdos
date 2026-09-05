@@ -102,7 +102,7 @@ actual tail, not the finite-rank structure of the totient's dyadic sections.
 \begin{paperresult}{What is proved here}
 \textbf{Unconditional structure.} The displayed family is a rational basis
 for the $2$-kernel of Euler's totient, so the sections through level $e$
-have rank exactly $2^e+1$.  The positive rank-one
+have rank exactly $2^e+1$ for $e\ge1$.  The positive rank-one
 M\"obius--Mersenne cone also has an exact unique minimizer and a uniform gap.
 \textbf{Series reduction.} Irrationality is equivalent to nonintegrality of
 the actual LCM-tail differences cofinally.  \textbf{Open boundary.} The basis
@@ -219,6 +219,99 @@ rational (Section~\ref{sec:carry-rank}).
 \begin{enumerate}[label=\textbf{R\arabic*.},ref=R\arabic*,leftmargin=2.4em,
   itemsep=0.2em,topsep=0.25em]
 
+\item\label{res:basis} \stag{unconditional progress}
+\textbf{Basis theorem.}  The family
+$\mathcal B=\{\ph_{0,0},\ph_{1,0}\}\cup\{\ph_{j,r}:j\ge1,\ r\ \text{odd},\
+0<r<2^j\}$ is linearly independent over $\Q$ and spans the same $\Q$-subspace
+of $\Q^{\N}$ as $\Ker_2(\ph)$; so $\mathcal B$ is a basis of that span, which
+is therefore infinite-dimensional.  Since the reductions make every remaining
+section a rational multiple of a member of $\mathcal B$, the $\Q$-linear
+relations among dyadic sections of $\ph$ are exactly those the reductions
+generate --- a one-line consequence of the checked statements, not a further
+one.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/TotientMahlerDefect.lean}{1265}{linearIndependent_oddCoreTotientKernelFamily}{independence},
+\mword{Erdos249257/TotientMahlerDefect.lean}{1380}{span_range_fullTotientKernel_eq_span_range_oddCore}{span equality},
+\mword{Erdos249257/TotientMahlerDefect.lean}{1392}{totientDyadicSectionBasis}{basis}.
+\emph{Registry:} \texttt{dyadic\_totient\_basis}.}
+
+\item\label{res:rank} \stag{unconditional progress}
+\textbf{Exact finite-level rank.}  For every $e\ge0$ the $2^e+1$ sections
+$\ph_{0,0}$, $\ph_{1,0}$ and $\ph_{j,r}$ with $1\le j\le e$, $r$ odd,
+$0<r<2^j$ are linearly independent over $\Q$, so their span has dimension
+exactly $2^e+1=2+\sum_{j=1}^{e}2^{j-1}$: exact, not an estimate, because the
+even residues are already dependent by the reductions.  Read instead as a
+truncation of the kernel, $V_e=\operatorname{span}_{\Q}\{\ph_{j,r}:0\le j\le
+e\}$ has $\dim V_e=2^e+1$ for every $e\ge1$, and $\dim V_0=1$: the counted
+family carries $\ph_{1,0}$, which is a level-one section, so the two readings
+agree from $e=1$ on and differ only at $e=0$.  At $e=1$ both readings say that
+$\ph(n)$, $\ph(2n)$ and $\ph(2n+1)$ are linearly independent over $\Q$.  The
+independence half of
+\ref{res:basis} follows by finite character; the span equality needs the
+reductions as well.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/TotientMahlerDefect.lean}{935}{linearIndependent_canonicalTotientKernelFamily}{independence},
+\mword{Erdos249257/TotientMahlerDefect.lean}{989}{finrank_canonicalTotientKernel_eq}{dimension},
+\mword{Erdos249257/TotientMahlerDefect.lean}{1084}{finrank_totientKernelThroughLevelFamily_eq}{the exact finite-truncation rank};
+the latter is the complete truncation wrapper, with its explicit hypothesis $e\ge1$,
+while the canonical-family rank is the intermediary because even residues reduce to
+the odd-core family.
+\mword{Erdos249257/TotientMahlerDefect.lean}{1145}{not_finiteDimensional_span_fullTotientKernel}{infinite-dimensionality directly}.}
+
+\item\label{res:carryrank} \stag{formalised here}
+\textbf{Rank lower bound for a rational scaled-tail sequence.}  If $\Stot$
+were rational then some integral scaled-tail sequence $u$ for the coefficients
+$\ph$, with positive multiplier, would have for \emph{every} $e$ dyadic
+sections through level $e$ --- formed from $u$ exactly as the $\ph_{j,r}$ are
+formed from $\ph$ --- spanning a space of dimension at least $2^e-1$.  The
+same lower bound holds for every positive-multiplier integral scaled-tail
+sequence.  This statement is specific to that
+binary scaled-tail representation; it does not constrain arguments formulated
+only through the Lambert weight, the coprimality identity, or tail differences.
+It is not an irrationality criterion, because no finite-rank upper bound is
+proved for the scaled-tail sequences supplied by rationality.
+{\footnotesize\emph{Checked:}
+\mword{Erdos249257/TotientCarryKernelRigidity.lean}{300}{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{the barrier},
+\mword{Erdos249257/TotientCarryKernelRigidity.lean}{211}{finrank_canonicalCarryKernel_ge_of_linearIndependent}{rank transport from \ref{res:rank}}.}
+
+The orbit-level form sharpens this rank barrier without closing it: under the
+same non-irrationality hypothesis, the same carry also has uniformly eventual
+dyadic-section periodicity modulo $v$, as recorded by
+\mword{Erdos249257/TotientTailCarryPeriod.lean}{224}{not_irrational_totientSeries_implies_mod_period_and_unbounded_rank}{the modular-period/rank frontier}.
+This does not turn quotient periodicity into a finite-$\mathbb Q$-rank bound.
+Indeed, if $p\mid v$, the totient forcing disappears modulo $p$ and the carry
+is the homogeneous geometric orbit $u_N\equiv2^N u_0$ modulo $p$
+(\mword{Erdos249257/TotientTailCarryPeriod.lean}{126}{totient_forcing_vanishes_mod_of_dvd_multiplier}{forcing vanishing};
+\mword{Erdos249257/TotientTailCarryPeriod.lean}{140}{totient_carry_modEq_geometric_of_dvd_multiplier}{geometric reduction}).
+This is the natural obstruction to extracting the missing finite-rank upper
+bound, so the irrationality of $\Stot$ remains open.
+
+\item\label{res:rankonefloor} \stag{unconditional progress}
+\textbf{Sharp positive rank-one and direct-sum floor.}  Put
+\[
+ \Theta_2=\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}=\Stot-\frac12,
+ \qquad
+ Q(e,Y)=
+ \frac{\bigl(\sum_{d=1}^{Y}\mu(d)/(2^d-1)^{e+2}\bigr)^2}
+      {\sum_{d=1}^{Y}\mu(d)/(2^d-1)^{2e+2}}.
+\]
+For every $e\ge1$ and $Y\ge4$, the quotient $Q(e,Y)$ is uniquely minimized
+at $(1,5)$ and satisfies $Q(e,Y)-\Theta_2>21/320>1/16$.  The stronger
+unit-fraction floor $1/15$ fails already at $(1,5)$.  Every nonempty finite
+positive weighted average of admissible $Q(e,Y)$ has the same strict
+$21/320$ separation.  In rational-linear-form language, if
+$Q(e,Y)=p/q$ with $p\in\Z$ and $q\ge1$, then
+$|q\Theta_2-p|>21q/320$.  Hence neither adding atoms nor taking positive direct
+sums can repair this rank-one approximation mechanism; signed cancellation
+and genuinely coupled higher-rank kernels remain outside the theorem.
+{\footnotesize\emph{Checked:}
+\lword{Erdos249/RankOneSharpFloor.lean}{534}{rankOneSubrankQuotient_eq_one_five_iff}{unique minimizer},
+\lword{Erdos249/RankOneSharpFloor.lean}{624}{rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty}{uniform $21/320$ floor},
+\lword{Erdos249/RankOneSharpFloor.lean}{634}{rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen}{$1/16$ floor},
+\lword{Erdos249/RankOneSharpFloor.lean}{645}{not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen}{$1/15$ failure},
+\lword{Erdos249/RankOneSharpFloor.lean}{655}{positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty}{positive direct sums},
+\lword{Erdos249/RankOneSharpFloor.lean}{693}{primitive_form_abs_gt_twentyOne_div_threeTwenty}{rational linear-form obstruction}.}
+
 \item\label{res:canonicalmersenne} \stag{formalised here}
 \textbf{Canonical Mersenne arithmetic frontier.}  Let
 \[
@@ -270,71 +363,6 @@ it does not produce the first non-integral shift or seed.
 \lword{Erdos249/FullDepthRayAmplifier.lean}{421}{cofinalFullDepthKillSupply_iff_periodMultipleKillSupply}{cofinal depth deletion},
 \lword{Erdos249/FullDepthRayAmplifier.lean}{438}{cofinalFullDepthKillSupply_iff_irrational}{cofinal endpoint}.}
 
-\item\label{res:basis} \stag{unconditional progress}
-\textbf{Basis theorem.}  The family
-$\mathcal B=\{\ph_{0,0},\ph_{1,0}\}\cup\{\ph_{j,r}:j\ge1,\ r\ \text{odd},\
-0<r<2^j\}$ is linearly independent over $\Q$ and spans the same $\Q$-subspace
-of $\Q^{\N}$ as $\Ker_2(\ph)$; so $\mathcal B$ is a basis of that span, which
-is therefore infinite-dimensional.  Since the reductions make every remaining
-section a rational multiple of a member of $\mathcal B$, the $\Q$-linear
-relations among dyadic sections of $\ph$ are exactly those the reductions
-generate --- a one-line consequence of the checked statements, not a further
-one.
-{\footnotesize\emph{Checked:}
-\mword{Erdos249257/TotientMahlerDefect.lean}{1265}{linearIndependent_oddCoreTotientKernelFamily}{independence},
-\mword{Erdos249257/TotientMahlerDefect.lean}{1380}{span_range_fullTotientKernel_eq_span_range_oddCore}{span equality},
-\mword{Erdos249257/TotientMahlerDefect.lean}{1392}{totientDyadicSectionBasis}{basis}.
-\emph{Registry:} \texttt{dyadic\_totient\_basis}.}
-
-\item\label{res:rank} \stag{unconditional progress}
-\textbf{Exact finite-level rank.}  For every $e\ge0$ the $2^e+1$ sections
-$\ph_{0,0}$, $\ph_{1,0}$ and $\ph_{j,r}$ with $1\le j\le e$, $r$ odd,
-$0<r<2^j$ are linearly independent over $\Q$, so their span has dimension
-exactly $2^e+1=2+\sum_{j=1}^{e}2^{j-1}$: exact, not an estimate, because the
-even residues are already dependent by the reductions.  Read instead as a
-truncation of the kernel, $V_e=\operatorname{span}_{\Q}\{\ph_{j,r}:0\le j\le
-e\}$ has $\dim V_e=2^e+1$ for every $e\ge1$, and $\dim V_0=1$: the counted
-family carries $\ph_{1,0}$, which is a level-one section, so the two readings
-agree from $e=1$ on and differ only at $e=0$.  At $e=1$ both readings say that
-$\ph(n)$, $\ph(2n)$ and $\ph(2n+1)$ are linearly independent over $\Q$.  The
-independence half of
-\ref{res:basis} follows by finite character; the span equality needs the
-reductions as well.
-{\footnotesize\emph{Checked:}
-\mword{Erdos249257/TotientMahlerDefect.lean}{935}{linearIndependent_canonicalTotientKernelFamily}{independence},
-\mword{Erdos249257/TotientMahlerDefect.lean}{989}{finrank_canonicalTotientKernel_eq}{dimension},
-\mword{Erdos249257/TotientMahlerDefect.lean}{1084}{finrank_totientKernelThroughLevelFamily_eq}{the exact finite-truncation rank};
-the latter is the complete truncation wrapper, with its explicit hypothesis $e\ge1$,
-while the canonical-family rank is the intermediary because even residues reduce to
-the odd-core family.
-\mword{Erdos249257/TotientMahlerDefect.lean}{1145}{not_finiteDimensional_span_fullTotientKernel}{infinite-dimensionality directly}.}
-
-\item\label{res:rankonefloor} \stag{unconditional progress}
-\textbf{Sharp positive rank-one and direct-sum floor.}  Put
-\[
- \Theta_2=\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}=\Stot-\frac12,
- \qquad
- Q(e,Y)=
- \frac{\bigl(\sum_{d=1}^{Y}\mu(d)/(2^d-1)^{e+2}\bigr)^2}
-      {\sum_{d=1}^{Y}\mu(d)/(2^d-1)^{2e+2}}.
-\]
-For every $e\ge1$ and $Y\ge4$, the quotient $Q(e,Y)$ is uniquely minimized
-at $(1,5)$ and satisfies $Q(e,Y)-\Theta_2>21/320>1/16$.  The stronger
-unit-fraction floor $1/15$ fails already at $(1,5)$.  Every nonempty finite
-positive weighted average of admissible $Q(e,Y)$ has the same strict
-$21/320$ separation.  In rational-linear-form language, if
-$Q(e,Y)=p/q$ with $p\in\Z$ and $q\ge1$, then
-$|q\Theta_2-p|>21q/320$.  Hence neither adding atoms nor taking positive direct
-sums can repair this rank-one approximation mechanism; signed cancellation
-and genuinely coupled higher-rank kernels remain outside the theorem.
-{\footnotesize\emph{Checked:}
-\lword{Erdos249/RankOneSharpFloor.lean}{534}{rankOneSubrankQuotient_eq_one_five_iff}{unique minimizer},
-\lword{Erdos249/RankOneSharpFloor.lean}{624}{rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty}{uniform $21/320$ floor},
-\lword{Erdos249/RankOneSharpFloor.lean}{634}{rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen}{$1/16$ floor},
-\lword{Erdos249/RankOneSharpFloor.lean}{645}{not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen}{$1/15$ failure},
-\lword{Erdos249/RankOneSharpFloor.lean}{655}{positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty}{positive direct sums},
-\lword{Erdos249/RankOneSharpFloor.lean}{693}{primitive_form_abs_gt_twentyOne_div_threeTwenty}{rational linear-form obstruction}.}
-
 \item\label{res:index} \stag{formalised here}
 \textbf{Canonical all-base index and unique coordinates.}  For every integer
 $k\ge2$ and level $e$, the two zero-residue channels are followed at level
@@ -367,34 +395,6 @@ classical Farey mediant argument (Section~\ref{sec:denominator}).
 \mword{Erdos249257/CertificateKernel.lean}{18384}{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{reduced-denominator form},
 \mword{Erdos249257/GapFareyBound.lean}{225}{gap_check_window_1_240_first_failure}{first failure}.
 \emph{Registry:} the row owns the reduced-denominator form only.}
-
-\item\label{res:carryrank} \stag{formalised here}
-\textbf{Rank lower bound for a rational scaled-tail sequence.}  If $\Stot$
-were rational then some integral scaled-tail sequence $u$ for the coefficients
-$\ph$, with positive multiplier, would have for \emph{every} $e$ dyadic
-sections through level $e$ --- formed from $u$ exactly as the $\ph_{j,r}$ are
-formed from $\ph$ --- spanning a space of dimension at least $2^e-1$.  The
-same lower bound holds for every positive-multiplier integral scaled-tail
-sequence.  This statement is specific to that
-binary scaled-tail representation; it does not constrain arguments formulated
-only through the Lambert weight, the coprimality identity, or tail differences.
-It is not an irrationality criterion, because no finite-rank upper bound is
-proved for the scaled-tail sequences supplied by rationality.
-{\footnotesize\emph{Checked:}
-\mword{Erdos249257/TotientCarryKernelRigidity.lean}{300}{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{the barrier},
-\mword{Erdos249257/TotientCarryKernelRigidity.lean}{211}{finrank_canonicalCarryKernel_ge_of_linearIndependent}{rank transport from \ref{res:rank}}.}
-
-The orbit-level form sharpens this rank barrier without closing it: under the
-same non-irrationality hypothesis, the same carry also has uniformly eventual
-dyadic-section periodicity modulo $v$, as recorded by
-\mword{Erdos249257/TotientTailCarryPeriod.lean}{224}{not_irrational_totientSeries_implies_mod_period_and_unbounded_rank}{the modular-period/rank frontier}.
-This does not turn quotient periodicity into a finite-$\mathbb Q$-rank bound.
-Indeed, if $p\mid v$, the totient forcing disappears modulo $p$ and the carry
-is the homogeneous geometric orbit $u_N\equiv2^N u_0$ modulo $p$
-(\mword{Erdos249257/TotientTailCarryPeriod.lean}{126}{totient_forcing_vanishes_mod_of_dvd_multiplier}{forcing vanishing};
-\mword{Erdos249257/TotientTailCarryPeriod.lean}{140}{totient_carry_modEq_geometric_of_dvd_multiplier}{geometric reduction}).
-This is the natural obstruction to extracting the missing finite-rank upper
-bound, so the irrationality of $\Stot$ remains open.
 
 \item\label{res:weight} \stag{checked; no registry row}
 \textbf{The \#249 weight.}  $\Stot=\sum_{d\ge1}\Aw(d)/(2^d-1)$ with
@@ -1215,7 +1215,13 @@ endpoint problem is still to prove a nonzero cofinal residue gap.
 $p>\max(D,2)$; then $\Aw(p)=p-2$ by \ref{res:weight}, and $p\nmid D(p-2)$, so
 $D\cdot\Aw(p)/p\notin\Z$.
 
-Two further checked results delimit narrower abstract hypothesis classes.
+The next two obstructions concern loss of arithmetic information.  Both
+construct synthetic carries compatible with the data retained by a proposed
+method: fixed-precision local symbols in one case, factor ideals and finite
+shift identities in the other.  Those data therefore cannot alone exclude a
+carry.  A successful argument must use some additional property of the actual
+totient differences; neither construction shows that the actual orbit has
+such a synthetic continuation.
 
 A fixed-precision transport theorem
 (\mword{Erdos249257/TropicalCurvatureCarry.lean}{137}{fixedPrecisionTropicalNoGo}{checked})
@@ -1225,9 +1231,9 @@ a prefix-locked centred completion.  The hard step is one-step modular
 recentering: the compatible carry is chosen by reducing the shifted state into
 an interval-sized power-of-two window, with an unrestricted quotient.  Induction
 then centres every letter of the finite word, whatever the incoming carry.
-Consequently, no contradiction can be extracted from a finite local
-valuation-unit signature read at a precision fixed in advance; this retires
-that fixed-positive-precision local strategy for good.  The theorem is
+Consequently, this finite local valuation-unit signature cannot by itself
+force escape from the centred window: every admissible word has a centred
+completion in the tested class.  The theorem is
 synthetic and finite-word only: its valuation/unit symbols and unrestricted
 high quotients do not encode the actual totient differences, so it mentions
 neither $\ph$ nor $\Stot$.  It does not provide a growing-precision or global

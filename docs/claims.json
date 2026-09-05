@@ -13542,7 +13542,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1482
+        "line": 1566
       }
     },
     {
@@ -13662,7 +13662,7 @@
         "source": "paper/erdos-249-binary-totient-series.tex",
         "environment": "problem",
         "title": "first-harmonic anti-concentration on supplier fibres",
-        "line": 1523
+        "line": 1529
       }
     },
     {
@@ -13674,7 +13674,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "weakest native recurrence criterion",
-        "line": 1543
+        "line": 1627
       }
     },
     {
@@ -13686,7 +13686,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "actual-orbit invariant",
-        "line": 1565
+        "line": 1649
       }
     },
     {
@@ -13698,7 +13698,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1587
+        "line": 1671
       }
     }
   ],
