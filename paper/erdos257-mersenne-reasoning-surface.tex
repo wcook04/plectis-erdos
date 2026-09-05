@@ -447,6 +447,28 @@ gap. Heredity follows from positivity of the weights, and the all-base
 assertion follows from $b^{h(a)}-1\ge2^{h(a)}-1$.
 \end{proof}
 
+\paragraph{The full dyadic error series.}
+The incomplete-period estimate has an infinite-support formulation that
+isolates exactly the needed hypothesis. For nonnegative $\alpha_a$ on
+$A\subseteq\Npos$, put
+\[
+ C(R)=\sum_{\substack{a\in A\\a\le R}}\alpha_a,
+ \qquad V=\sum_{a\in A}\frac{\alpha_a}{a}<\infty.
+\]
+Then for every integer $Q\ge0$,
+\[
+ \sum_{j\ge0}2^{-j}C(Q2^j)\le2QV<\infty.
+\]
+Indeed, every finite collection of scales sees a finite union of conductor
+cutoffs. Interchanging those finite sums and using
+$\sum_{j:\,a\le Q2^j}2^{-j}\le2Q/a$ bounds every finite partial sum by
+$2QV$; nonnegativity then gives convergence. Thus the entire error series
+is summable even when $\sum_a\alpha_a$ diverges. Taking
+$\alpha_a=(b^{h(a)}-1)^{-1}$ on $h(a)\le H$, and zero otherwise,
+supplies the small-part estimate above since $V\le W$. This closes the
+infinite-support averaging step; the prime-part split and choice of scales
+are the separate arithmetic steps in the full argument.
+
 \paragraph{A concrete support beyond reciprocal summability.}
 For $k\ge0$ put $B_k=2^{\,2^{\,2^k-k}}$ and
 $A^*=\{a\ge1:a\le B_{v_2(a)}\}$. In the layer $v_2(a)=k$, writing
@@ -481,6 +503,53 @@ regrouping. The short paper and supplement prove these statements, including
 the domination required before exchanging infinite sums and averages.
 The analytic statements in this subsection are ordinary proofs; the pinned
 formal-source table above records their separately verified predecessors.
+
+\subsection{A finite deadline for every real target}
+The repair mechanism does not require periodic digits or even a rational
+target. Let $x\ge0$, let $A_x$ be its actual greedy support, and define
+\[
+ P_0(x)=0,\qquad P_{N+1}(x)=2P_N(x)+d_{A_x}(N+1),\qquad
+ Q_N(x)=\lfloor2^Nx\rfloor-P_N(x).
+\]
+Here $d_{A_x}(n)=\#\{a\in A_x:a\mid n\}$ is the actual divisor load. The prefix bound makes $Q_N(x)$ a nonnegative integer.
+
+\begin{thm}[uniform repair criterion]\label{thm:generic-repair}
+For every real $x\ge0$,
+\[
+ x\in\mathcal{A}\quad\Longleftrightarrow\quad
+ \forall K\ \exists N\in[K,K+2\lfloor\sqrt K\rfloor+12):
+ Q_{N+1}(x)\le Q_N(x).
+\]
+Equivalently, repairs occur cofinally; equivalently,
+$Q_N(x)\le d_{A_x}(N+1)$ cofinally; equivalently, $Q_N(x)\le N+1$
+cofinally. One strictly increasing window excludes membership.
+\end{thm}
+
+\begin{proof}
+If $x\in\mathcal{A}$, the full tail identity and divisor-pair bound give
+$Q_N(x)\le2\sqrt N+4$. Put $s=\lfloor\sqrt K\rfloor$ and $T=2s+12$.
+Strict increase at each of the $T$ steps would give $Q_{K+T}(x)\ge T$.
+But $K+T<(s+4)^2$ gives $Q_{K+T}(x)<2(s+4)+4=T$, a contradiction.
+
+For the converse, the prefix recurrence and the nonnegative next binary
+floor digit give
+\[
+ 2Q_N(x)-d_{A_x}(N+1)\le Q_{N+1}(x).
+\]
+A repair therefore forces $Q_N(x)\le d_{A_x}(N+1)\le N+1$.
+If $x\notin\mathcal{A}$, a positive fatal gap $\delta$ persists in the actual
+greedy remainder; the prefix-tail identity yields
+$Q_N(x)\ge2^N\delta-1$ beyond that fatal rank. This eventually exceeds
+$N+1$, contradicting a cofinal linear bound. These implications give all
+the stated equivalences.
+\end{proof}
+
+The finite deadline comes from a growth comparison: strict increases of
+an integer sequence accumulate linearly, whereas represented tails have
+only a square-root bound. For $x=4/9$ this recovers the original repair
+problem with $Q_N=\lfloor4\cdot2^N/9\rfloor-P_N$. Exact replay through
+rank $4096$ finds no strict window for that target. The theorem identifies
+the certificate to seek; it does not supply its occurrence.
 
 \subsection{The unconditional record, half-value direction}
 
