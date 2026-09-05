@@ -56,8 +56,8 @@ area inequality then bounds its Taylor coefficients and hence its length.
 
 We also prove the sharp adjacent-root bound for collinear zeros, with affine
 Chebyshev equality configurations, and solve the primitive sparse quintic
-and translated cubic quotient-fibre families.  An auxiliary sharp bound
-$\sum_{j=1}^{n-1}|f(c_j)|^{1/n}\le(n-1)R$ holds through degree five for
+and translated cubic quotient-fibre families.  An auxiliary sharp power-sum bound
+$\sum_{j=1}^{n-1}|f(c_j)|^{1/(n-1)}\le(n-1)R^{n/(n-1)}$ holds through degree five for
 roots in a disc of radius $R$.  Its proof compares critical values with the
 reflected derivative and uses finite-point inequalities in the unit disc.
 These are ordinary mathematical proofs; the paper identifies separately the
@@ -922,6 +922,10 @@ bound the lengths of the paths that reach them.
 Let $f$ be monic of degree $2\le n\le5$, with roots in a disk of radius
 $R$.  If $c_1,\ldots,c_{n-1}$ are its critical points counted with
 multiplicity, then
+\begin{equation}\label{eq:critical-value-power-budget}
+ \sum_{j=1}^{n-1}|f(c_j)|^{1/(n-1)}\le(n-1)R^{n/(n-1)}.
+\end{equation}
+Consequently
 \[
  \sum_{j=1}^{n-1}|f(c_j)|^{1/n}\le(n-1)R.
 \]
@@ -976,17 +980,32 @@ Let $r\uparrow1$.  This also handles boundary critical points and all
 multiplicities without selecting local branches.
 \end{proof}
 
-Set $m=n-1$.  By Gauss--Lucas and the lemma, $(\mathrm{FP}_m)$ gives
-$\sum_jy_j\le m$ for $y_j=|f(c_j)|^{1/m}$.  Concavity now supplies the
-exponent in the theorem:
+Set $m=n-1$. By Gauss--Lucas and the lemma, $(\mathrm{FP}_m)$ gives
 \[
- y^{m/(m+1)}\le\frac{my+1}{m+1}\quad(y\ge0),\qquad
- \sum_j|f(c_j)|^{1/n}\le m.
+ \sum_j |f(c_j)|^{1/m}\le m
 \]
-For a root disk centred at $h$ of radius $R>0$, apply this inequality to
-$R^{-n}f(h+Rz)$; scaling back multiplies the sum by $R$.  When $R=0$,
-all critical values vanish.  It remains to prove $(\mathrm{FP}_m)$ for
-$m\le4$.
+on the unit disk. Apply this to $R^{-n}f(h+Rz)$ for a root disk
+centred at $h$ with $R>0$. Scaling the critical values back gives
+\eqref{eq:critical-value-power-budget}. If $R=0$, all critical values
+vanish. For the linear consequence put $y_j=|f(c_j)|^{1/m}$ in the
+unit-disk normalization and use
+\[
+ y^{m/(m+1)}\le\frac{my+1}{m+1}\quad(y\ge0).
+\]
+Summation gives $\sum_j|f(c_j)|^{1/n}\le m$, and scaling back multiplies
+this sum by $R$. It remains to prove $(\mathrm{FP}_m)$ for $m\le4$.
+The same argument works in any degree in which $(\mathrm{FP}_{n-1})$ holds.
+
+The stronger exponent controls concentration of the critical values.
+For $R>0$, write $r_j=|f(c_j)|^{1/n}$ and $p=n/(n-1)$. Then
+\[
+ \sum_j(r_j/R)^p\le n-1,\qquad
+ \#\{j:r_j\ge tR\}\le\frac{n-1}{t^p}\quad(t>0).
+\]
+The counting bound follows by retaining just those summands. Thus a large
+critical value consumes more of the budget than the linear estimate records;
+the radial equality family has every $r_j=R$. This distributional control
+still leaves the geometry of the joining paths to be supplied.
 
 \paragraph{The three-point mechanism.}
 The one-point inequality is $1-|c_1|^2\le1$.  For two points put
