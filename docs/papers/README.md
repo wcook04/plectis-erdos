@@ -237,7 +237,7 @@ The active mathematical notes form a growing problem-by-problem portfolio: Erdő
 
 **Factorial-Channel Obstructions and Exact Orbit Boundaries**
 
-[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex) · 20 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
+[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex) · 23 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos-68-factorial-denominator-irrationality.md#sec:problem), [Finite channel congruences and the LCM obstruction](full-text/erdos-68-factorial-denominator-irrationality.md#sec:channels), [Weighted projection rigidity](full-text/erdos-68-factorial-denominator-irrationality.md#sec:projection), [Open problems](full-text/erdos-68-factorial-denominator-irrationality.md#sec:open).
 
@@ -285,7 +285,7 @@ This paper states no reading route. Its evidence boundary is in [Finite-support 
 
 **Reciprocal Mersenne Subseries**
 
-[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos257-mersenne-reasoning-surface.tex) · 138 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
+[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos257-mersenne-reasoning-surface.tex) · 141 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem, and what is actually known](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-problem), [The wall](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-wall), [What the wall does not block](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-survivors).
 

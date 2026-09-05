@@ -80,9 +80,9 @@ If moreover $`\operatorname{lcm}(F)\ge2`$, then $`\operatorname{lcm}(F)<D_F`$.*
 
 The order statement is [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L5091), its reduced-denominator form is [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L5246), coprimality is [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L5221), and the growth clause is [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L5260).
 
-*Status.* The problem treated here is open, and this note does not close it. Every statement below marked as checked is a proposition that the pinned Lean kernel accepts from the sources this note links to, with no `sorry`, no added axiom, and no unchecked evaluation. That is a claim about the formal statement, not about its mathematical interest, its novelty, or the original problem. The unresolved obligations are named exactly, in their own section, and none of the finite computations, reductions, or no-go results here removes one of them.
+*Status.* The original problem remains open. Statements marked as Lean-checked refer to the linked propositions accepted by the pinned kernel, with no `sorry`, added axioms, or unchecked evaluation. The note states the remaining mathematical obligations explicitly.
 
-*Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers.
 
 <a id="structure."></a>
 
@@ -175,7 +175,7 @@ This yields moving frames with divergent reciprocal mass. Choosing $`\alpha_j=g_
 
 #### The prime-power regime.
 
-A separate ordinary argument proves irrationality for every infinite subset of the prime powers, at every integer base, including fixed dilations and finite modifications. Its analytic input is Tao–Teräväinen \[taoteravainen2025, Theorem 3.1\]. The proof uses the reciprocal mass of the selected primes as its scale, so arbitrarily slow divergence is retained; higher prime powers produce errors only on prime-square events. The equidistribution, small-prime, progression and exceptional-set hypotheses are checked in the supplement. The full-prime theorem and the authors’ stated full-prime-power extension are theirs; no priority claim is made for the returned thinning argument.
+A separate ordinary argument proves irrationality for every infinite subset of the prime powers, at every integer base, including fixed dilations and finite modifications. Its analytic input is Tao–Teräväinen \[taoteravainen2025, Theorem 3.1\]. The proof uses the reciprocal mass of the selected primes as its scale, so arbitrarily slow divergence is retained; higher prime powers produce errors only on prime-square events. The equidistribution, small-prime, progression and exceptional-set hypotheses are checked in the supplement. The full-prime theorem and the authors’ stated full-prime-power extension are due to Tao and Teräväinen.
 
 <a id="a-finite-deadline-for-the-actual-repair-problem"></a>
 
@@ -424,7 +424,7 @@ and proves that the binary block $`11`$ occurs infinitely often in its base-$`2`
 
 *The two analytic rows do not have the same standing.* Theorem 1.3 on p. 4, proved in Section 5 on pp. 44–56, of \[taoteravainen2025\] proves the prime-support case at base $`2`$, the series there being $`\sum_{n\ge1}\omega(n)/2^n`$. The extension to every integer base, and the prime-power support — which those authors themselves identify with Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> — are asserted by remark, with the modifications explicitly left to the reader. The table keeps the three apart, and only the first is proved.
 
-*Formalisation is not priority.* Rows marked “checked here” are Lean statements accepted by the pinned kernel. For the full support that is a formalisation of Erdős; Luca and Tachiya’s RIMS paper already proves the nonnegative purely-periodic case; a finite rational-prefix correction gives the eventual-periodic extension used here \[lucatachiya2017, Theorem 1, p. 139; proof pp. 149–150\], while Theorem A restates the broader signed purely-periodic theorem without reproducing its earlier proof. No priority is claimed anywhere in this table.
+The full-support result formalises Erdős’s theorem; Luca and Tachiya’s RIMS paper already proves the nonnegative purely-periodic case; a finite rational-prefix correction gives the eventual-periodic extension used here \[lucatachiya2017, Theorem 1, p. 139; proof pp. 149–150\], while Theorem A restates the broader signed purely-periodic theorem without reproducing its earlier proof.
 
 <div id="res:signed" class="remark">
 
@@ -448,34 +448,27 @@ where $`Q,c_i,e`$ are positive, $`E`$ is finite, the $`p_i>1`$ are pairwise copr
 ```
 Thus a new ray retains its entire petal as the modulus governing its hits along a progression with step $`M_F`$ ([reduced-modulus identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L192)).
 
-There are concrete infinite examples. Let $`r_0,r_1,\ldots=5,7,11,13,\ldots`$ be the primes after $`3`$, take $`Q=6`$, $`E=\varnothing`$, $`p_i=r_i^2`$, and alternate $`c_i=2,3`$. This gives $`A=\{50,147,242,507,\ldots\}`$; every member has exactly three prime factors counted with multiplicity. The bouquet, infinitude and factor count are [constructed](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L319), [proved](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L337), and [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L343), respectively. The missing step is not the existence of a bouquet. It is a simultaneous choice of a divisible block and a small following tail.
+There are concrete infinite examples. Let $`r_0,r_1,\ldots=5,7,11,13,\ldots`$ be the primes after $`3`$, take $`Q=6`$, $`E=\varnothing`$, $`p_i=r_i^2`$, and alternate $`c_i=2,3`$. This gives $`A=\{50,147,242,507,\ldots\}`$; every member has exactly three prime factors counted with multiplicity. The bouquet, infinitude and factor count are [constructed](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L319), [proved](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L337), and [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L343), respectively. The reciprocal-summable support theorem already settles these examples. The reduced-modulus identity describes their arithmetic structure; no additional block selector is needed for irrationality. The all-base argument is proved in [the support-averaging supplement](https://github.com/wcook04/plectis-lean-erdos249-257/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-proofs.md).
 
 <div id="res:sunflower" class="theorem">
 
-**Theorem 9** (orthogonal-petal sunflower criterion). *Let $`A`$ be a bouquet as above, put $`c(n)=\operatorname{sc}_A(n)`$, and define
-``` math
-T_N=\sum_{j\ge1}\frac{c(N+j)}{2^j},\qquad
- B_{N,K}=\sum_{r=1}^K c(N+r)2^{K-r}.
-```
-Suppose that for every $`K\ge1`$ there is an $`N\ge0`$ for which
-``` math
-2^K\mid B_{N,K},\qquad T_{N+K}\le16.
-```
-Then $`\sum_{a\in A}(2^a-1)^{-1}`$ is irrational.*
+**Theorem 9** (unconditional orthogonal-petal criterion). *Let $`A`$ be a bouquet as above. Then $`\sum_{a\in A}(b^a-1)^{-1}`$ is irrational for every integer $`b\ge2`$.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* Write the series as $`X=\sum_{n\ge1}c(n)2^{-n}`$. If $`qX`$ is an integer for some positive integer $`q`$, then $`qT_N`$ is an integer for every $`N`$: multiply the series by $`2^N`$ and remove its integral prefix. Choose $`K`$ with $`2^K>16q`$ and use the assumed selector. Splitting the tail gives
+*Proof.* Each positive core satisfies $`c_i\ge1`$. The support decomposition gives
 ``` math
-T_N=\frac{B_{N,K}}{2^K}+\frac{T_{N+K}}{2^K}.
+\sum_{a\in A}\frac1a
+ \le \sum_{a\in E}\frac1a+\sum_i\frac1{c_ip_i}
+ \le \sum_{a\in E}\frac1a+\sum_i\frac1{p_i}<\infty.
 ```
-The first term is integral, so $`qT_{N+K}/2^K`$ is an integer. It is strictly between zero and one: the upper bound follows from the selector, and positivity follows because any positive $`a\in A`$ divides arbitrarily large indices. This is a contradiction. ◻
+The exceptional sum is finite, and the last series is a defining bouquet hypothesis. The rays are distinct, so $`A`$ is infinite. Apply the all-base reciprocal-summable support theorem. In particular, the alternating-core example above gives an irrational sum at every integer base. ◻
 
 </div>
 
-The proof only needs one positive member of $`A`$; the bouquet is a proposed source of the selector, not a further ingredient in the contradiction. Likewise, $`16`$ can be replaced by any fixed finite positive bound. What must be uniform is the tail bound as $`K`$ grows. The pinned Lean proof implements the bound $`16`$ through finite windows and the [forced carry supply](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L531), then applies the [irrationality endpoint](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L540). The displayed selector is exactly [the remaining hypothesis](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L406). Neither the reduced-modulus identity nor reciprocal summability proves that selector here. In particular, the example above is not thereby proved to give an irrational sum.
+This composition makes the former selector hypothesis unnecessary. The older pinned [conditional endpoint](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L540) remains valid, but its [forced-slot hypothesis](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L406) is a burden of that certificate construction. The proof above uses the actual support’s reciprocal mass directly. Its composed statement should be distinguished from the older conditional declaration at the pinned formal-source checkpoint.
 
 <div id="res:compositedefect" class="theorem">
 
@@ -499,7 +492,7 @@ where $`\operatorname{ray}_{h_B}(i)=h_B.\mathrm{core}(i)h_B.\mathrm{petal}(i)`$.
 
 The first identity is the finite divisor partition checked at [exact dilation identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L30). The hard point is that a composite multiplier can create support divisors which are neither the multiplier itself nor old divisors of $`x`$; they are recorded by $`\delta_A`$ rather than silently discarded. The defect vanishes under the prime-support hypothesis by [prime-support no-defect](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L103), and the corresponding incidence formula is [prime specialization](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L119). For a bouquet, every non-exceptional foreign divisor injects into a unique petal divisor of $`x`$, yielding the displayed budget through [foreign-divisor classification](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L133) and [defect bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L151). The correction is concrete already for $`A=\{2,6\}`$: multiplying $`x=1`$ by the composite support element $`6`$ creates the additional support divisor $`2`$, so $`\delta_A(6,1)=1`$ ([two-six witness](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L218)).
 
-Thus a composite bouquet cannot be analysed by copying the prime formula until this explicit foreign channel has been budgeted. This theorem provides that local budget only; it neither bounds defects along an infinite orbit nor supplies the uniform tail selector required by Theorem <a href="#res:sunflower" data-reference-type="ref" data-reference="res:sunflower">9</a>.
+Thus a composite bouquet cannot be analysed by copying the prime formula until this explicit foreign channel has been budgeted. This theorem provides that local budget. The unconditional irrationality in Theorem <a href="#res:sunflower" data-reference-type="ref" data-reference="res:sunflower">9</a> follows instead from reciprocal summability, without estimating those orbit defects.
 
 <a id="sec:squarefree"></a>
 
@@ -987,13 +980,13 @@ If not, what cyclotomic, valuation or cancellation conditions characterise the r
 
 The order theorem supplies the inclusion from left to right, not its converse. A counterexample and corrected classification, or effective extremal bounds within $`\mathcal D_b(L)`$, would strengthen the lead theorem and feed height information back into Problem <a href="#prob:fatal-interval" data-reference-type="ref" data-reference="prob:fatal-interval">28</a>.
 
-For scope, all squarefree values at power-of-two bases, jointly in each finite family, are settled by Corollary 1.2 and Example 1.1 of  \[duverneytachiya, author-preprint p. 4\] (Corollary <a href="#res:sfsettled" data-reference-type="ref" data-reference="res:sfsettled">12</a>). Their cited corollary does not cover bases that are not powers of $`2`$, and this note makes no global open-status or priority claim for those values.
+For scope, all squarefree values at power-of-two bases, jointly in each finite family, are settled by Corollary 1.2 and Example 1.1 of  \[duverneytachiya, author-preprint p. 4\] (Corollary <a href="#res:sfsettled" data-reference-type="ref" data-reference="res:sfsettled">12</a>). Their cited corollary applies to power-of-two bases.
 
 <a id="statements-and-declarations"></a>
 
 # Statements and declarations
 
-This manuscript is authored exposition, not proof authority. The linked Lean snapshot is authoritative only for its exact propositions; kernel checking establishes that a proposition was proved, not that it is interesting, novel, or sufficient. The displayed proof of Corollary <a href="#res:blind" data-reference-type="ref" data-reference="res:blind">13</a>, the derivation of Corollary <a href="#res:sfsettled" data-reference-type="ref" data-reference="res:sfsettled">12</a> from  \[duverneytachiya, Cor. 1.2 and Ex. 1.1, author-preprint p. 4\], and the general finite-change argument (from the two checked prefix lemmas) are expository arguments rather than named checked statements.
+The inline links identify the exact formal statements used in each section. The analytic criteria in Section <a href="#sec:eight-return-extensions" data-reference-type="ref" data-reference="sec:eight-return-extensions">2</a> and the all-base bouquet composition in Theorem <a href="#res:sunflower" data-reference-type="ref" data-reference="res:sunflower">9</a> have ordinary proofs above and in the linked supplement. The displayed proof of Corollary <a href="#res:blind" data-reference-type="ref" data-reference="res:blind">13</a>, the derivation of Corollary <a href="#res:sfsettled" data-reference-type="ref" data-reference="res:sfsettled">12</a> from  \[duverneytachiya, Cor. 1.2 and Ex. 1.1, author-preprint p. 4\], and the general finite-change argument (from the two checked prefix lemmas) are expository arguments rather than named checked statements.
 
 The squarefree no-go interfaces, shifted coefficient, shift equivalence, Chinese-remainder block supply, and restricted-selector injectivity are directly checked statements linked at their use; they are not prose-only claims.
 

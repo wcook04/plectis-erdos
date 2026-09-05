@@ -82,7 +82,7 @@ FIRST_MINUTE_CONTRACT = {
             "integration of these research and publication operations",
             "reject overlapping work claims",
             "checks a proof of a precisely stated proposition",
-            "eight problems remain open",
+            "all still open",
         ),
         (3, 5): (
             "type a and type b",
@@ -97,32 +97,7 @@ FIRST_MINUTE_CONTRACT = {
             "problem-sized lean worlds and bounded theorem neighbourhoods",
             "1,024 lean modules and 153,396 declarations",
         ),
-        # Page spans remeasured after the September first-contact revision;
-        # the claim boundaries remain pinned at their rendered locations.
-        (8, 9): (
-            "comparator: an exact-statement firewall",
-            "palomar: selecting what deserves review",
-            "proof generation, verification, exposition, publication and community digestion",
-            "natural friction",
-            "writing can reveal errors in the research record",
-        ),
-        (10, 10): (
-            "finite range to the unbounded statement",
-            "a larger cutoff exists",
-            "relationship had not been registered",
-            "nine of the ten edits were rejected",
-        ),
-        (12, 12): (
-            "semantic single-flight coordination",
-            # Was "host-wide mathlib resource", which no layout could satisfy:
-            # TeX breaks the line at the hyphen, the extracted text reads
-            # "hostwide", and normalisation cannot put the hyphen back. This
-            # phrase pins the same sentence and cannot break at a hyphen.
-            "mathlib resource are serialized",
-            "four separate scaling limits",
-            "only an accepted receipt enters",
-            "using records of unsuccessful approaches",
-        ),
+
     },
     "cold-clone-to-proof-receipt.pdf": {
         (1, 1): (
@@ -436,8 +411,48 @@ def semantic_text(text: str) -> str:
     return re.sub(r"\s+", " ", text).lower()
 
 
+def section_anchor_errors(text: str, sections: tuple) -> list[str]:
+    """Keep evidence in its explanatory section without freezing pagination."""
+    compact = semantic_text(text)
+    errors = []
+    for start, end, anchors in sections:
+        first = compact.find(start)
+        last = compact.find(end, first + len(start)) if first >= 0 else -1
+        if first < 0 or last < 0:
+            errors.append(f"missing or unordered section boundaries: {start!r}, {end!r}")
+            continue
+        body = compact[first:last]
+        errors.extend(f"section {start!r}: missing anchor {anchor!r}"
+                      for anchor in anchors if anchor not in body)
+    return errors
+
+
+SYSTEMS_SECTION_CONTRACT = (('comparator: an exact-statement firewall',
+  'one complete boundary: finite is not unbounded',
+  ('comparator: an exact-statement firewall',
+   'palomar: selecting what deserves review',
+   'proof generation, verification, exposition, publication and community digestion',
+   'natural friction',
+   'writing can reveal errors in the research record')),
+ ('one complete boundary: finite is not unbounded',
+  'inspection routes',
+  ('finite range to the unbounded statement',
+   'a larger cutoff exists',
+   'relationship had not been registered',
+   'nine of the ten edits were rejected')),
+ ('scaling from one clone to a search network',
+  'relation to other approaches',
+  ('semantic single-flight coordination',
+   'mathlib resource are serialized',
+   'four separate scaling limits',
+   'only an accepted receipt enters',
+   'using records of unsuccessful approaches')))
+
 def first_minute_errors(pdf: Path, pdftotext: str) -> list[str]:
     errors: list[str] = []
+    if pdf.name == "claim-faithful-publication-systems-paper.pdf":
+        errors.extend(f"{pdf.name}: {error}" for error in section_anchor_errors(
+            rendered_text(pdf, pdftotext), SYSTEMS_SECTION_CONTRACT))
     contract = FIRST_MINUTE_CONTRACT.get(pdf.name, {})
     for (first, last), anchors in contract.items():
         try:

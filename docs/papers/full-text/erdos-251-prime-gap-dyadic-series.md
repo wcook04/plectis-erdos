@@ -36,7 +36,7 @@ so $`T_{N+h}-T_N`$ is integral exactly when $`(2^h-1)T_N`$ is. Consequently, $`T
 ```
 The missing step is to prove these nonintegralities for the actual prime-gap tails.
 
-There is an exact finite obstruction. Two adjacent $`h`$-shifts in $`(-1,1)`$ whose corresponding prime gaps differ cannot both be integral. Hence cofinally many such pairs would exclude eventual integrality [the conditional prime-gap small-mismatch theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1112). Neither smallness nor its cofinal occurrence is proved. The quadratic example $`g_n=2(n^2+4n+2)`$, $`T_n=2(n+4)^2`$ shows that positivity, parity, polynomial growth, unboundedness, and nonperiodicity cannot force this mechanism. A second example has finite sum $`-n/2^n`$ and non-eventually-periodic coefficients ([finite endpoint](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1157); [coefficient nonperiodicity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1163)). The actual prime gaps are also not eventually periodic ([prime-gap nonperiodicity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1023)), but that fact alone is insufficient. Problem #251 remains open: the exact unproved input is cofinal nonintegrality, or a prime-gap estimate strong enough to imply the adjacent-small-mismatch condition.
+There is an exact finite obstruction. Two adjacent $`h`$-shifts in $`(-1,1)`$ whose corresponding prime gaps differ cannot both be integral. Hence cofinally many such pairs would exclude eventual integrality [the conditional prime-gap small-mismatch theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1112). An explicit remainder bound certifies one actual adjacent pair at $`h=1`$, $`N=2`$; its cofinal occurrence is not proved. The quadratic example $`g_n=2(n^2+4n+2)`$, $`T_n=2(n+4)^2`$ shows that positivity, parity, polynomial growth, unboundedness, and nonperiodicity cannot force this mechanism. A second example has finite sum $`-n/2^n`$ and non-eventually-periodic coefficients ([finite endpoint](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1157); [coefficient nonperiodicity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1163)). The actual prime gaps are also not eventually periodic ([prime-gap nonperiodicity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1023)), but that fact alone is insufficient. Problem #251 remains open: the exact unproved input is cofinal nonintegrality, or a prime-gap estimate strong enough to imply the adjacent-small-mismatch condition.
 
 <div class="center">
 
@@ -121,9 +121,9 @@ Section <a href="#sec:tail" data-reference-type="ref" data-reference="sec:tail"
 
 The [unbounded-gap theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L57) states $`\forall M:\mathbb N,\ \exists n,\ M<\mathit{primeGap0}(n)`$, and the [prime/gap irrationality equivalence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L435) states, under $`\operatorname{Summable}(\mathit{primeDyadicTerm})`$, the equivalence between irrationality of the prime-term and prime-gap-term sums. The endpoint-proximate abstract classification is represented by [the pointwise shift classifier](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1551): for any real dyadic-tail recurrence with integer digits, irrationality of the initial state is equivalent to non-integrality of every positive shift, and hence to cofinal non-integrality of each fixed shift. Its rational-side mechanism is the exact denominator/congruence pair [denominator divisibility](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1279) and [power-of-two congruence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1291); together with the [eventual-integrality classifier](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1525), they explain why a rational initial state supplies an eventual integral shift. These are recurrence-level results; the cofinal nonintegrality property for the actual prime gaps remains unproved, so no irrationality claim for Problem #251 follows. The endpoint-adjacent specialisation [the conditional prime-gap small-mismatch theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1112) preserves the actual recurrence, the cofinal adjacent $`(-1,1)`$ hypotheses, and the unequal gap condition, and concludes failure of eventual integrality. The source does not supply those pairs, so this is a reduction exposing the missing prime-specific estimate.
 
-*Status.* The problem treated here is open, and this note does not close it. Every statement below marked as checked is a proposition that the pinned Lean kernel accepts from the sources this note links to, with no `sorry`, no added axiom, and no unchecked evaluation. That is a claim about the formal statement, not about its mathematical interest, its novelty, or the original problem. The unresolved obligations are named exactly, in their own section, and none of the finite computations, reductions, or no-go results here removes one of them.
+*Status.* The original problem remains open. Statements marked as Lean-checked refer to the linked propositions accepted by the pinned kernel, with no `sorry`, added axioms, or unchecked evaluation. The note states the remaining mathematical obligations explicitly.
 
-*Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers.
 
 | Statement | Status | Treatment here |
 |:---|:---|:---|
@@ -170,7 +170,7 @@ and let $`L_0=1`$, $`L_j=\operatorname{lcm}(1,\ldots,j)`$ for $`j\ge1`$.
 
 <div id="res:lcmdiagonal" class="theorem">
 
-**Theorem 1** (lcm-diagonal criterion). *Let $`g:\mathbb{N}\to\mathbb{Z}`$ and $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{N+1}=2T_N-g_{N+1}`$ for every $`N`$. Then
+**Theorem 1** ([lcm-diagonal criterion](https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/OrderLatticeDiagonal.lean#L153)). *Let $`g:\mathbb{N}\to\mathbb{Z}`$ and $`T:\mathbb{N}\to\mathbb{R}`$ satisfy $`T_{N+1}=2T_N-g_{N+1}`$ for every $`N`$. Then
 ``` math
 \operatorname{Irr}(T_0)
  \quad\Longleftrightarrow\quad
@@ -201,7 +201,7 @@ Then $`D_{N+1}=2D_N-\delta_N`$.
 
 <div id="res:signedwindow" class="theorem">
 
-**Theorem 2** (signed two-window normal form). *Assume that $`\delta_N`$ is even. The conjunction
+**Theorem 2** ([signed two-window normal form](https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/AffineShiftEscape.lean#L113)). *Assume that $`\delta_N`$ is even. The conjunction
 ``` math
 -1<D_N<1,\qquad -1<D_{N+1}<1,\qquad \delta_N\ne0
 ```
@@ -277,7 +277,7 @@ so the displayed strict separation contradicts $`|D_{N+r}|\le b(N+r)`$. Converse
 
 </div>
 
-The first equivalence shows that the apparent affine hierarchy contains no depth-dependent information: it is the pullback of even integrality through the recurrence identity. The fixed lattice removes that data dependence, but under the stated growth condition rational denominator separation already forces every required escape. Hence neither cofinal condition is an independent source of information about consecutive primes.
+The formal argument gives the [pointwise affine identity](https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/AffineCylinderCollapse.lean#L91), its [cofinal form](https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/AffineCylinderCollapse.lean#L162), and the [fixed-lattice equivalence](https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/AffineCylinderCollapse.lean#L308). The first equivalence shows that the apparent affine hierarchy contains no depth-dependent information: it is the pullback of even integrality through the recurrence identity. The fixed lattice removes that data dependence, but under the stated growth condition rational denominator separation already forces every required escape. Hence neither cofinal condition is an independent source of information about consecutive primes.
 
 Finally, the coarse coefficient profile itself has an exact infinite counterexample.
 
@@ -300,6 +300,8 @@ g_{N+2}-g_{N+1}\ne2,-2
 *Proof.* All assertions follow by expansion. In particular $`g_{n+1}-g_n=4n+10`$, while $`T_{N+h}-T_N`$ is the difference of two even integer squares. Strict growth makes the word unbounded and nonperiodic. ◻
 
 </div>
+
+The formal construction checks the [recurrence](https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean#L1596), [strict growth](https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean#L1632), [integrality of every shift](https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean#L1654), and [exclusion of adjacent differences of size two](https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean#L1644).
 
 <a id="sec:parts"></a>
 
@@ -599,7 +601,7 @@ then $`\sigma_h(N)`$ and $`\sigma_h(N+1)`$ cannot both be integral. Consequently
 
 </div>
 
-The finite contradiction is the [adjacent small-shift obstruction](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L979); its quantified form is the [cofinal small-mismatch theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1006); and the actual-prime-gap specialisation is the [prime-gap specialisation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1112). Theorem <a href="#res:smallpair" data-reference-type="ref" data-reference="res:smallpair">16</a> is conditional on its two tail inequalities; no theorem asserting that such pairs occur is claimed here.
+The finite contradiction is the [adjacent small-shift obstruction](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L979); its quantified form is the [cofinal small-mismatch theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1006); and the actual-prime-gap specialisation is the [prime-gap specialisation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1112). Theorem <a href="#res:smallpair" data-reference-type="ref" data-reference="res:smallpair">16</a> is conditional on its two tail inequalities. Corollary <a href="#res:finite-smallpair" data-reference-type="ref" data-reference="res:finite-smallpair">25</a> below supplies one actual pair; no theorem supplies their cofinal occurrence.
 
 All three are stated for a rational orbit, while the prime-gap tail $`\mathcal T`$ of Section <a href="#sec:tail" data-reference-type="ref" data-reference="sec:tail">4</a> is real, so the rational statement does not on its own discharge the instances that arise downstream. The same argument gives the real form directly.
 
@@ -620,7 +622,7 @@ then $`\sigma_h(N)`$ and $`\sigma_h(N+1)`$ do not both lie in $`\mathbb{Z}`$. Co
 
 </div>
 
-Corollary <a href="#res:smallpair-real" data-reference-type="ref" data-reference="res:smallpair-real">17</a> is proved here and is not a declaration in the pinned Lean module, whose small-shift theorems are stated for the rational orbit. It is the form that applies to the real tail, and it carries the same two unproved inequalities as its rational counterpart.
+Corollary <a href="#res:smallpair-real" data-reference-type="ref" data-reference="res:smallpair-real">17</a> is proved here and is not a declaration in the pinned Lean module, whose small-shift theorems are stated for the rational orbit. It is the form that applies to the real tail, and it carries the same two smallness conditions as its rational counterpart. Their cofinal occurrence remains unproved.
 
 The third hypothesis, on its own, is available. For the actual gaps tabulated in Section <a href="#sec:problem" data-reference-type="ref" data-reference="sec:problem">1</a> it reads $`g_4=2\ne4=g_3`$ at $`h=1`$, $`N=2`$; and Proposition <a href="#res:gap-nonperiodic" data-reference-type="ref" data-reference="res:gap-nonperiodic">18</a> below says precisely that for each fixed $`h\ge1`$ the inequality $`g_{N+h+1}\ne g_{N+1}`$ holds for arbitrarily large $`N`$, since its failure from some index onwards is eventual periodicity with period $`h`$. What is missing is the pair of inequalities, each of which constrains a complete infinite tail.
 
@@ -780,17 +782,69 @@ Then Problem <a href="#prob:escape" data-reference-type="ref" data-reference="p
 
 </div>
 
-The last distance-to-integers inference is the elementary paper argument in the displayed proof: an error at most $`R`$ cannot reach an integer when the approximation is farther than $`R`$ from every integer. It is not currently a named Lean declaration. For instance, if $`S_{h,N,L}=2/5`$ and $`R_{h,N,L}(M)=1/20`$, the full sum lies within $`1/20`$ of $`2/5`$ and so at distance at least $`7/20`$ from every integer, which settles <a href="#eq:shift-escape" data-reference-type="eqref" data-reference="eq:shift-escape">[eq:shift-escape]</a> at that $`N`$. The prime-gap tail bound, the convergence used above, and the existence of blocks satisfying <a href="#eq:truncation" data-reference-type="eqref" data-reference="eq:truncation">[eq:truncation]</a> are not consequences of that inference. The proposition’s full sum is moreover real-valued, so the reverse-triangle step used here is a paper proof and not an instance of any rational-valued formal declaration.
+<div id="res:explicit-remainder" class="proposition">
 
-Taking the classical bound $`M(n)\ll n\log n`$, a choice $`L=\lceil A\log_2(N+h+2)\rceil`$ with any fixed $`A>1`$ makes the right side a negative power of $`N`$ up to logarithms. Thus <a href="#eq:truncation" data-reference-type="eqref" data-reference="eq:truncation">[eq:truncation]</a> asks for a finite dyadic anti-concentration estimate on a logarithmic-length block, not control of an infinite tail and not eventual periodicity of the full gap sequence. For Problem <a href="#prob:smallpair" data-reference-type="ref" data-reference="prob:smallpair">22</a>, the same truncation must certify two adjacent full-tail values inside the open unit interval, together with the displayed gap mismatch. A finite prefix is useful only when its omitted tail is rigorously dominated.
+**Proposition 24** (An explicit actual-gap remainder bound). *Set $`P(x)=x^4+8x^3+36x^2+104x+150`$. For $`h,N\ge0`$ and $`L\ge1`$,
+``` math
+\left|\mathcal T_{N+h}-\mathcal T_N-S_{h,N,L}\right|
+ \le E_{h,N,L}:=
+ \frac{1250}{2^L}\bigl(P(N+h+L+2)+P(N+L+2)\bigr).
+```
+In particular this bound requires no conjectural estimate on prime gaps.*
 
-What <a href="#eq:truncation" data-reference-type="eqref" data-reference="eq:truncation">[eq:truncation]</a> requires is joint control of the finite block of weighted differences $`(g_{N+h+1}-g_{N+1},\ldots,g_{N+h+L}-g_{N+L})`$ modulo powers of two, along a block of logarithmic length. We do not know how to obtain such control and we make no progress on it here. The strongest results on prime gaps address a different shape of question. Zhang’s bounded-gap theorem \[zhang2014, Theorem 1, p. 1122\] produces infinitely many bounded consecutive-prime gaps. Maynard proves substantially more than an individual-gap statement: \[maynard2015, Theorem 1.1, p. 384\] bounds $`\liminf_n(p_{n+m}-p_n)`$ for every fixed $`m`$, and hence gives bounded clusters of every fixed size; \[maynard2015, Theorem 1.3, p. 385\] gives the explicit unconditional bound $`\liminf_n(p_{n+1}-p_n)\le 600`$. The large-gap theorem of Ford, Green, Konyagin, Maynard and Tao \[fgkmt2018, Theorem 1, p. 66\] bounds the largest single consecutive-prime gap below $`X`$. None of these results supplies the joint dyadic distribution of a logarithmic block of consecutive gap differences required by <a href="#eq:truncation" data-reference-type="eqref" data-reference="eq:truncation">[eq:truncation]</a>. The same introduction notes a separate sequel on chains of large gaps; the cited theorem itself supplies no residue-sensitive block estimate of the kind needed here.
+</div>
+
+<div class="proof">
+
+*Proof.* The checked estimate $`p_n\le1250(n+1)^4`$ gives $`0\le g_n\le p_{n+1}\le1250(n+2)^4`$ [the polynomial prime bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L360). The omitted absolute tail is therefore at most
+``` math
+1250\sum_{j>L}\frac{(N+h+j+2)^4+(N+j+2)^4}{2^j}.
+```
+For $`m\ge0`$, the polynomial identity $`2P(m)=(m+1)^4+P(m+1)`$ telescopes to
+``` math
+\sum_{k=1}^{J}\frac{(m+k)^4}{2^k}
+ =P(m)-\frac{P(m+J)}{2^J}.
+```
+The last term tends to zero. Apply this identity with $`m=N+h+L+2`$ and $`m=N+L+2`$, after writing $`j=L+k`$. ◻
+
+</div>
+
+<div id="res:finite-smallpair" class="corollary">
+
+**Corollary 25** (An actual adjacent small-mismatch pair). *The shifts $`\mathcal T_3-\mathcal T_2`$ and $`\mathcal T_4-\mathcal T_3`$ both lie in $`(-1,1)`$ and neither is an integer. The corresponding gaps satisfy $`g_4=2\ne4=g_3`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Take $`h=1`$ and $`L=40`$. Direct integer calculation from the first $`46`$ primes gives the following block numerators and error numerators, with common denominator $`Q=2^{40}=1099511627776`$:
+``` math
+\begin{array}{c|r|r}
+ N&D_{1,N,40}&Q E_{1,N,40}\\\hline
+ 2&-662838684750&11764181250\\
+ 3& 873345886050&12805761250
+\end{array}
+```
+For each row, writing $`D`$ and $`B`$ for the last two entries, one checks
+``` math
+|D|+B<Q,\qquad
+ B<\min\{D\bmod Q,\ Q-(D\bmod Q)\}.
+```
+The first inequality puts the entire certified interval inside $`(-1,1)`$; the second excludes every integer. These are strict integer comparisons, not inferences from rounded numerical tails. The script `scripts/check_prime_gap_tail_certificate.py` regenerates the prime list, both rows, the polynomial identity and the strict margins. ◻
+
+</div>
+
+The remainder estimate and its assembly with the finite computation are ordinary proofs here, not new Lean declarations. The bound produces a certificate for these two actual tails; it does not produce such pairs cofinally, or for every fixed shift length. Thus it supplies an instance of the local obstruction without establishing Problem <a href="#prob:smallpair" data-reference-type="ref" data-reference="prob:smallpair">22</a>.
+
+For fixed $`h`$, the explicit bound also gives a logarithmic truncation length: $`L=\lceil A\log_2(N+h+2)\rceil`$ with fixed $`A>4`$ makes $`E_{h,N,L}=O((N+h+2)^{4-A})`$ as $`N\to\infty`$. The familiar sharper prime-growth estimate can improve the constant in this window length, but is not needed to make the certificate finite. The unresolved work is to place the dyadic block away from the integer arcs often enough at these scales.
+
+What <a href="#eq:truncation" data-reference-type="eqref" data-reference="eq:truncation">[eq:truncation]</a> requires is joint control of the finite block of weighted differences $`(g_{N+h+1}-g_{N+1},\ldots,g_{N+h+L}-g_{N+L})`$ modulo powers of two, along a block of logarithmic length. We do not know how to obtain such control and the finite certificate above does not establish it. The strongest results on prime gaps address a different shape of question. Zhang’s bounded-gap theorem \[zhang2014, Theorem 1, p. 1122\] produces infinitely many bounded consecutive-prime gaps. Maynard proves substantially more than an individual-gap statement: \[maynard2015, Theorem 1.1, p. 384\] bounds $`\liminf_n(p_{n+m}-p_n)`$ for every fixed $`m`$, and hence gives bounded clusters of every fixed size; \[maynard2015, Theorem 1.3, p. 385\] gives the explicit unconditional bound $`\liminf_n(p_{n+1}-p_n)\le 600`$. The large-gap theorem of Ford, Green, Konyagin, Maynard and Tao \[fgkmt2018, Theorem 1, p. 66\] bounds the largest single consecutive-prime gap below $`X`$. None of these results supplies the joint dyadic distribution of a logarithmic block of consecutive gap differences required by <a href="#eq:truncation" data-reference-type="eqref" data-reference="eq:truncation">[eq:truncation]</a>. The same introduction notes a separate sequel on chains of large gaps; the cited theorem itself supplies no residue-sensitive block estimate of the kind needed here.
 
 <a id="what-remains-to-be-formalised."></a>
 
 #### What remains to be formalised.
 
-Unconditional convergence, the infinite series identity, the actual rational scaled-tail state and its recurrence, the eventual-integral-shift theorem, the abstract rationality classification, and the prime-specific local small-mismatch theorem are Lean-checked. Paper-level are the modular rewriting by $`D_{h,N,L}`$, the finite-approximation inference, the positive carry countermodel above, the identification of the concrete tail $`\mathcal T`$ with the checked recurrence, and the real form of the small-shift obstruction in Corollary <a href="#res:smallpair-real" data-reference-type="ref" data-reference="res:smallpair-real">17</a>. The missing statements are the multiple-in-shift lemma used by Problem <a href="#prob:divisor-hit" data-reference-type="ref" data-reference="prob:divisor-hit">20</a>, a prime-gap tail domination sharp enough for a certificate, and a cofinal anti-concentration or adjacent-mismatch theorem. No theorem supplies the cofinal pairs in <a href="#eq:smallpair" data-reference-type="eqref" data-reference="eq:smallpair">[eq:smallpair]</a>, and no cited prime-distribution estimate is claimed or formalised as supplying those statements.
+Unconditional convergence, the infinite series identity, the actual rational scaled-tail state and its recurrence, the eventual-integral-shift theorem, the abstract rationality classification, and the prime-specific local small-mismatch theorem are Lean-checked. Paper-level are the modular rewriting by $`D_{h,N,L}`$, the finite-approximation inference, the positive carry countermodel above, the identification of the concrete tail $`\mathcal T`$ with the checked recurrence, and the real form of the small-shift obstruction in Corollary <a href="#res:smallpair-real" data-reference-type="ref" data-reference="res:smallpair-real">17</a>. The explicit polynomial remainder bound and its two finite certificates above are ordinary mathematical proofs with exact integer replay; their Lean formalization remains to be supplied. The remaining producer is a cofinal anti-concentration or adjacent-mismatch theorem. The multiple-in-shift lemma used by Problem <a href="#prob:divisor-hit" data-reference-type="ref" data-reference="prob:divisor-hit">20</a> also remains to be formalised. No theorem supplies the cofinal pairs in <a href="#eq:smallpair" data-reference-type="eqref" data-reference="eq:smallpair">[eq:smallpair]</a>, and no cited prime-distribution estimate is claimed or formalised as supplying those statements.
 
 <a id="statements-and-declarations"></a>
 

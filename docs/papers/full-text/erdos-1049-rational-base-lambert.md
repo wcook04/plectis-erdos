@@ -8,23 +8,13 @@
 
 </div>
 
-Let
-``` math
-F(t)=\sum_{n\ge1}\frac1{t^n-1}.
-```
-Erdős Problem #1049 asks whether $`F(t)`$ is irrational for every rational $`t>1`$. The problem remains open, and this paper proves no irrationality result at $`t=3/2`$.
+Erdős Problem #1049 asks whether $`F(t)=\sum_{n\ge1}(t^n-1)^{-1}`$ is irrational for every rational $`t>1`$. We prove exact obstructions to several approximation methods at $`t=3/2`$ and a conditional reduction of the number of rows needed to cancel endpoint residues.
 
-The main exact input is
-``` math
-2^{64}<3^{41}<2^{65}.
-```
-It yields a uniform gap greater than $`3/13`$ between $`\log 2/\log 3`$ and every threshold in the rectangular Hermite–Padé exponent model considered here. It also shows that the scalar factor, and the scalar factor together with the universally forced first-order border, fall short of the required $`39/41`$ charge. These inequalities exclude the stated height mechanisms only; they do not exclude other Padé or determinant constructions.
+The integer bracket $`2^{64}<3^{41}<2^{65}`$ gives a uniform gap greater than $`3/13`$ between $`\log2/\log3`$ and every threshold in the rectangular Hermite–Padé exponent model studied here. The scalar factor and its universally forced first-order border also fall short of the required $`39/41`$ charge. These comparisons exclude the stated height mechanisms.
 
-The same bracket sharpens a finite four-jet count. At bottom depth $`R=41T`$, any $`M\ge130T+2S`$ integral polynomial pairs have two binary selectors with the same two endpoint jets in both coordinates. For $`T=1`$ this counting threshold is exact. A bounded-fibre lemma shows how a uniform bound on analytic-remainder multiplicities would force one collision outside the remainder nullspace. No such bound is proved for an actual $`q`$-Apéry or Zudilin family. Under the additional hypothesis that adjacent minors vanish and the second coordinates are units, a Bézout shear reduces the sufficient selector width from $`2S+4R`$ to $`S+2R`$.
+For the additive alternative, the same bracket gives a four-jet collision among binary selectors whenever $`M\ge130T+2S`$ polynomial pairs are used at bottom depth $`41T`$ and top depth $`S`$. The counting threshold is exact at $`T=1`$. If the rows modulo $`2^S3^R`$ are unimodular and their adjacent determinants vanish, a Bézout shear reduces all selector sums to one residue coordinate; $`S+2R`$ rows then suffice for $`R>0`$. Neither coordinate need be invertible. A separate bounded-fibre theorem states the additional multiplicity estimate that would force a collision with distinct analytic remainders.
 
-Two further obstructions explain why direct integer-base arguments do not transfer automatically to $`3/2`$. Integer scalar content scales local divisibility and Archimedean determinant height by the same factor, while unit endpoint coefficients keep both $`2`$ and $`3`$ out of a common divisor after specialisation. A six-condition coordinatewise clearing scheme forces $`s^{N+K+1}<r(N+K)`$; at $`r/s=3/2`$ this is impossible for every $`N,K\ge1`$. The exact cleared-tail recurrence contains the forcing term $`Bc(N+1)s^{N+1}`$, which is at least $`2^{N+1}`$ when $`s\ge2`$ and the integer data are positive.
-
-For comparison, Bundschuh and Väänänen’s published criterion proves irrationality for a restricted rational-base family containing $`7/2`$; only its elementary height check is formalised here. The Padé exponent bounds and the $`81/200`$ logarithmic-region calculations below likewise supply no analytic remainder estimate at $`3/2`$. The unresolved task is to construct a primitive, noncollapsed approximation family whose endpoint divisibility survives normalisation, whose selected polynomial pair and remainder are nonzero, and whose decay beats its height.
+Integer scalar content cannot improve the ratio of a determinant’s local divisor to its absolute height, while coordinatewise clearing at $`3/2`$ fails an exact exponential growth bound. The unresolved step is an actual approximation family combining primitive coefficients, a nonzero remainder, and decay faster than height growth. No irrationality theorem at $`3/2`$ is proved.
 
 <div class="center">
 
@@ -34,7 +24,7 @@ For comparison, Bundschuh and Väänänen’s published criterion proves irratio
 
 **What the paper rules out**
 
-**Exact arithmetic.** The bracket $`2^{64}<3^{41}<2^{65}`$ excludes the stated scalar and first-order Hermite–Padé height mechanisms at $`3/2`$. It also yields the sharp finite four-jet count at bottom depth $`41`$, with a Bézout–Plücker reduction under explicit minor and unit hypotheses. **Transfer obstruction.** Direct integer-base clearing fails by an exact growth inequality and forcing recurrence. **Open boundary.** No primitive noncollapsed approximation family with a sufficiently small nonzero remainder is constructed, so no irrationality at $`3/2`$ is proved.
+**Exact arithmetic.** The bracket $`2^{64}<3^{41}<2^{65}`$ excludes the stated scalar and first-order Hermite–Padé height mechanisms at $`3/2`$. It also yields the sharp finite four-jet count at bottom depth $`41`$, with a Bézout–Plücker reduction under explicit minor and unimodularity hypotheses. **Transfer obstruction.** Direct integer-base clearing fails by an exact growth inequality and forcing recurrence. **Open boundary.** No primitive noncollapsed approximation family with a sufficiently small nonzero remainder is constructed, so no irrationality at $`3/2`$ is proved.
 
 </div>
 
@@ -134,9 +124,9 @@ Two questions of scope are worth isolating. The corridor bound of Theorem <a hr
 
 For $`R=41T`$ with $`T>1`$, the displayed $`130T+2S`$ bound is uniform and sufficient, but no claim of exact optimality at every $`T`$ is made.
 
-*Status.* The problem treated here is open, and this note does not close it. Every statement below marked as checked is a proposition that the pinned Lean kernel accepts from the sources this note links to, with no `sorry`, no added axiom, and no unchecked evaluation. That is a claim about the formal statement, not about its mathematical interest, its novelty, or the original problem. The unresolved obligations are named exactly, in their own section, and none of the finite computations, reductions, or no-go results here removes one of them.
+*Status.* The original problem remains open. Statements marked as Lean-checked refer to the linked propositions accepted by the pinned kernel, with no `sorry`, added axioms, or unchecked evaluation. The note states the remaining mathematical obligations explicitly.
 
-*Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers.
 
 <a id="results-and-boundary."></a>
 
@@ -524,7 +514,7 @@ This finite escape principle is [checked here](https://github.com/wcook04/plecti
 
 <div id="res:plucker-collapse" class="theorem">
 
-**Theorem 15** (Bézout–Plücker tail collapse). *Let $`R_0`$ be a commutative ring and let $`w_n=(A_n,B_n)\in R_0^2`$. Suppose that every $`B_n`$ is a unit and every adjacent minor vanishes:
+**Theorem 15** (Bézout–Plücker tail collapse). *Let $`R_0`$ be a commutative ring and let $`w_n=(A_n,B_n)\in R_0^2`$. Suppose that each row is unimodular, meaning that $`u_nA_n+v_nB_n=1`$ for some $`u_n,v_n\in R_0`$, and that every adjacent minor vanishes:
 ``` math
 A_nB_{n+1}-B_nA_{n+1}=0\qquad(n\ge0).
 ```
@@ -538,7 +528,11 @@ Thus the sufficient width is $`S+2R`$, rather than the ambient two-coordinate wi
 
 <div class="proof">
 
-*Proof.* A unit second coordinate makes each row a unimodular anchor. Vanishing of the next minor therefore writes the next row as a scalar multiple of the current one; induction places the entire tail on the line through $`w_0`$ and proves the pairwise-minor assertion. A determinant-one Bézout shear sends $`w_0`$ to $`(1,0)`$, so all selector sums have only one free residue coordinate and occupy at most $`2^S3^R`$ values. Finally
+*Proof.* If $`(a,b)`$ is unimodular, say $`ua+vb=1`$, and $`ay-bx=0`$, then
+``` math
+(x,y)=(ux+vy)(a,b).
+```
+Indeed, the first coordinate follows by replacing $`ay`$ with $`bx`$, and the second by the reverse substitution. Apply this identity to consecutive rows: each next row is a scalar multiple of the current one. Induction places the entire tail on the line through $`w_0`$ and proves the pairwise-minor assertion. A determinant-one Bézout shear sends $`w_0`$ to $`(1,0)`$, so all selector sums have only one free residue coordinate and occupy at most $`2^S3^R`$ values. Finally
 ``` math
 2^S3^R<2^S4^R=2^{S+2R}\le2^k,
 ```
@@ -546,7 +540,9 @@ and pigeonhole gives the two selectors. ◻
 
 </div>
 
-The minor propagation is [kernel checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/BezoutPluckerJets.lean#L191); the one-dimensional collision after a Bézout shear is [kernel checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/BezoutPluckerJets.lean#L145); and the explicit $`2`$/$`3`$-depth endpoint is [kernel checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos1049/BezoutPluckerJets.lean#L249). This conditional theorem is stronger than the ambient four-jet count only after its minor-vanishing hypothesis has been established. No such all-tail hypothesis is proved here for an actual $`q`$-Apéry or Zudilin family, and the theorem says nothing about whether the resulting selector difference has nonzero analytic remainder.
+No particular coordinate needs to be invertible: modulo six, $`(2,3)`$ is unimodular because $`-2+3=1`$, although neither entry is a unit. Some nondegeneracy is essential. The three rows $`(1,0),(0,0),(0,1)`$ have zero adjacent minors but outer minor one; a zero middle row transmits no information between its neighbours.
+
+The unimodular [adjacent-to-pairwise determinant propagation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0cfa24a7fe555d75a9d9e7f119da4720a88c1396/ErdosProblems/Erdos1049/BezoutPluckerJets.lean#L191) and the resulting [modular selector collision](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0cfa24a7fe555d75a9d9e7f119da4720a88c1396/ErdosProblems/Erdos1049/BezoutPluckerJets.lean#L280) are Lean-checked, including the [explicit $`S+2R`$ threshold](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0cfa24a7fe555d75a9d9e7f119da4720a88c1396/ErdosProblems/Erdos1049/BezoutPluckerJets.lean#L299). The unit-coordinate statements are special cases of the stronger rowwise-coprime theorem. This conditional theorem is stronger than the ambient four-jet count only after its minor-vanishing hypothesis has been established. No such all-tail hypothesis is proved here for an actual $`q`$-Apéry or Zudilin family, and the theorem says nothing about whether the resulting selector difference has nonzero analytic remainder.
 
 **Boundary.** Corollary <a href="#res:rankfortyone" data-reference-type="ref" data-reference="res:rankfortyone">13</a> is a sharp finite kernel statement at $`T=1`$, not an analytic nonvanishing theorem. Theorem <a href="#res:boundedfibre" data-reference-type="ref" data-reference="res:boundedfibre">14</a> identifies the precise extra input needed to escape the nullspace, but this paper does not prove a multiplicity bound for the actual $`q`$-Apéry or Zudilin remainder family.
 
