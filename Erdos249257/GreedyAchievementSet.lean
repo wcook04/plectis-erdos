@@ -1537,8 +1537,8 @@ theorem mem_mersenneAchievementSet_of_greedySkippedSupport_infinite
   exact hskips (finite_greedyMersenneSkippedSupport_of_fatalAt hfatal)
 
 /-- Infinitely many omitted exponents are exactly a cofinal supply of skipped
-greedy branches.  This converts support cardinality into an orbit statement
-at arbitrarily late ranks. -/
+greedy branches.  This is the order-theoretic bridge from support cardinality
+to an orbit statement at arbitrarily late ranks. -/
 theorem greedyMersenneSkippedSupport_infinite_iff_cofinal_skips (x : ℝ) :
     (greedyMersenneSkippedSupport x).Infinite ↔
       ∀ K : ℕ, ∃ n : ℕ, K ≤ n ∧
@@ -1547,8 +1547,7 @@ theorem greedyMersenneSkippedSupport_infinite_iff_cofinal_skips (x : ℝ) :
   · intro hinfinite K
     obtain ⟨m, hm, hKm⟩ := hinfinite.exists_gt K
     have hm0 : m ≠ 0 := hm.1
-    have hsucc : m - 1 + 1 = m :=
-      Nat.sub_add_cancel (Nat.one_le_iff_ne_zero.mpr hm0)
+    have hsucc : m - 1 + 1 = m := Nat.sub_add_cancel (Nat.one_le_iff_ne_zero.mpr hm0)
     refine ⟨m - 1, by omega, ?_⟩
     apply (succ_mem_greedyMersenneSkippedSupport_iff x (m - 1)).mp
     simpa [hsucc] using hm
@@ -1556,8 +1555,7 @@ theorem greedyMersenneSkippedSupport_infinite_iff_cofinal_skips (x : ℝ) :
     apply Set.infinite_iff_exists_gt.mpr
     intro K
     obtain ⟨n, hKn, hskip⟩ := hcofinal K
-    refine ⟨n + 1,
-      (succ_mem_greedyMersenneSkippedSupport_iff x n).2 hskip, by omega⟩
+    refine ⟨n + 1, (succ_mem_greedyMersenneSkippedSupport_iff x n).2 hskip, by omega⟩
 
 /-- Strict superincreasingness makes normalized support coding injective. -/
 theorem positiveMersenneSupportValue_injective_normalized
@@ -2553,8 +2551,9 @@ theorem infinite_greedyMersenneSkippedSupport_of_half_mem
     (infinite_greedyMersenneSkippedSupport_of_rat_mem
       (q := (1 : ℚ) / 2) hhalf')
 
-/-- A nonnegative rational target belongs to the Mersenne achievement set
-exactly when its canonical greedy orbit omits infinitely many exponents. -/
+/-- **Rational greedy skip dichotomy.**  A nonnegative rational target belongs
+to the Mersenne achievement set exactly when its canonical greedy orbit omits
+infinitely many positive exponents. -/
 theorem rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite
     (q : ℚ) (hq : 0 ≤ q) :
     (q : ℝ) ∈ mersenneAchievementSet ↔

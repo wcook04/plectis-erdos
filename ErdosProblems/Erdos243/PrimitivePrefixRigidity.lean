@@ -133,4 +133,35 @@ theorem primitiveDigit_gcd_dvd_error
   rw [hde]
   exact Int.dvd_sub hdQA hdau
 
+/-! ## Finite multi-digit overlap closure -/
+
+/-- Two earlier digit divisors can be combined before measuring their overlap
+with the next Sylvester factor.  This packages the finite-prefix closure that
+the global anti-shadowing consumer needs; it still says nothing about an
+unbounded orbit or cofinal overlap growth. -/
+theorem primitiveDigit_lcm_gcd_dvd_error
+    {Q A a u digit₁ digit₂ : ℕ} {e : ℤ}
+    (hdigit₁ : digit₁ ∣ A)
+    (hdigit₂ : digit₂ ∣ A)
+    (hidentity :
+      (Q : ℤ) * A = ((a : ℤ) - 1) * u + e) :
+    (Int.gcd ((Nat.lcm digit₁ digit₂ : ℕ) : ℤ) ((a : ℤ) - 1) : ℤ) ∣ e := by
+  exact primitiveDigit_gcd_dvd_error (Nat.lcm_dvd hdigit₁ hdigit₂) hidentity
+
+/-! ## The zero-error consumer of prefix overlap -/
+
+/-- A complete-prefix overlap larger than the centered error forces exact
+Sylvester alignment at that prefix.  This is the reusable local consumer of
+`primitivePrefix_gcd_dvd_error`; it does not assert that such a strict overlap
+occurs on an unbounded actual orbit. -/
+theorem primitivePrefix_error_eq_zero_of_natAbs_lt_gcd_natAbs
+    {Q A a u : ℕ} {e : ℤ}
+    (hidentity :
+      (Q : ℤ) * A = ((a : ℤ) - 1) * u + e)
+        (hsmall : e.natAbs < ((Int.gcd (A : ℤ) ((a : ℤ) - 1) : ℤ).natAbs)) :
+    e = 0 := by
+  apply Int.eq_zero_of_dvd_of_natAbs_lt_natAbs
+    (primitivePrefix_gcd_dvd_error hidentity)
+  exact hsmall
+
 end ErdosProblems.Erdos243

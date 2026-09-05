@@ -209,7 +209,7 @@ def bounded_tail(text: str) -> str:
 
 def load_contract(root: Path) -> dict[str, Any]:
     value = load_json(root / CONTRACT_RELATIVE, root=root)
-    if value.get("schema") != "erdos-external-verification-release-contract/1":
+    if value.get("schema") != "erdos-external-verification-release-contract/2":
         raise ReplayError("unsupported external-verification release contract")
     pins = value.get("toolchain")
     if not isinstance(pins, dict) or set(pins) != {

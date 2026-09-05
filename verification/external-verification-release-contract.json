@@ -1,6 +1,6 @@
 {
-  "schema": "erdos-external-verification-release-contract/1",
-  "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
+  "schema": "erdos-external-verification-release-contract/2",
+  "repository": "https://github.com/wcook04/plectis-erdos",
   "identity": {
     "source_ref_kind": "full_git_commit",
     "source_tree_required": true,
@@ -31,10 +31,49 @@
       "system-manager-nonprivileged-unit"
     ]
   },
+  "aggregate_replay_portfolio": {
+    "config": "verification/comparator-replay-candidate.json",
+    "challenge_module": "ComparatorReplay.Challenge",
+    "solution_module": "ComparatorReplay.Solution",
+    "assurance_before_receipt": "replay_candidate",
+    "assurance_after_green_commit_bound_receipt": "commit_bound_comparator_replay_pass",
+    "boundary": "Comparator replay checks exact separately declared propositions and their axiom budget; it does not establish novelty, source fidelity, significance, peer review, or Palomar registration."
+  },
+  "programme_local_checks": {
+    "erdos_1049_numerical_height": {
+      "config": "verification/comparator-1049-numerical-height.json",
+      "challenge_module": "ExternalVerification1049.Challenge",
+      "solution_module": "ExternalVerification1049.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight"
+      ],
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "enable_nanoda": false,
+      "expected_negative_diagnostic": "Challenge and solution theorem statement do not match: 'Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight'"
+    }
+  },
+  "runtime_receipt_provenance": {
+    "producer": "github_actions",
+    "repository": "wcook04/plectis-erdos",
+    "workflow": "Lean CI",
+    "attestation_posture": "github_actions_environment_self_report_plus_uploaded_run_artifact",
+    "boundary": "The JSON receipt is a structured self-report bound to a source commit and Actions run. Preserve the uploaded artifact and public run logs; the JSON alone is not a cryptographic platform attestation."
+  },
   "release_assets": {
     "runtime_receipt_pattern": "external-verification-receipt-{source_commit}.json",
     "manifest_pattern": "external-verification-release-manifest-{source_commit}.json",
-    "retention": "attach_both_files_to_the_immutable_release_not_only_to_a_90_day_actions_run"
+    "runtime_log_files": [
+      "artifacts-positive.log",
+      "artifacts-negative.log",
+      "artifacts-portfolio-positive.log",
+      "artifacts-1049-positive.log",
+      "artifacts-1049-negative.log"
+    ],
+    "retention": "attach_receipt_manifest_and_all_five_digest_checked_logs_to_the_immutable_release_not_only_to_a_90_day_actions_run"
   },
   "tracked_artifacts": [
     "README.md",
@@ -48,6 +87,13 @@
     "verification/comparator.json",
     "verification/comparator-replay.json",
     "verification/comparator-negative-mismatch.json",
+    "verification/comparator-1049-numerical-height.json",
+    "verification/comparator-1049-numerical-height-negative-mismatch.json",
+    "verification/comparator-replay-candidate.json",
+    "verification/comparator-replay-membership.json",
+    "ComparatorReplay/Challenge.lean",
+    "ComparatorReplay/Solution.lean",
+    "scripts/build_comparator_replay_portfolio.py",
     "ExternalVerification/Statements.lean",
     "ExternalVerification/Challenge.lean",
     "ExternalVerification/Solution.lean",

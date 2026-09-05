@@ -1890,9 +1890,21 @@ def validate_external_assurance_routes() -> None:
         "Quot.sound",
         "Classical.choice",
     ]
-    assert comparator_assurance["public_wording"] == (
-        "Comparator-checked against a separately declared statement and axiom budget"
-    )
+    assert comparator_assurance["runtime_receipt_state"] in {
+        "absent", "invalid", "stale", "dirty", "current_green"
+    }
+    if comparator_assurance["runtime_receipt_state"] == "current_green":
+        assert comparator_assurance["public_wording"] == (
+            "Comparator-checked against a separately declared statement and axiom budget"
+        )
+    else:
+        assert comparator_assurance["receipt_licensed_public_wording"] is None
+        assert "no validated green receipt" in comparator_assurance["public_wording"]
+    replay = comparator_assurance["dynamic_comparator_replay_candidate"]
+    config = load("verification/comparator-replay-candidate.json")
+    membership = load("verification/comparator-replay-membership.json")
+    assert replay["package_count"] == len(membership["required_package_ids"])
+    assert replay["interface_count"] == len(config["theorem_names"])
     assert comparator_assurance["forbidden_wording"] == "independently verified"
     assert "does not assess novelty" in comparator_assurance["boundary"]
     assert comparator["authority_posture"].startswith(
@@ -1902,6 +1914,8 @@ def validate_external_assurance_routes() -> None:
         "docs/claims.json::external_verification_packet",
         "docs/EXTERNAL_VERIFICATION.md",
         comparator_assurance["config"],
+        "verification/comparator-replay-candidate.json",
+        "verification/comparator-replay-membership.json",
     ]
     assert "declaration" in comparator_route["adjacent_handle_classes"]
     comparator_card = run(

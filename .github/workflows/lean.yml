@@ -284,10 +284,10 @@ jobs:
     needs: change_scope
     if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only') }}
     runs-on: ubuntu-24.04
-    # Four isolated checks now run here: headline positive and mismatch, then
-    # the focused #1049 positive and mismatch. Each retains its own 20 minute
-    # ceiling, so the job ceiling must cover the full serial trust sequence.
-    timeout-minutes: 100
+    # Five isolated checks: headline positive and mismatch, the dynamically
+    # discovered portfolio, and the focused #1049 positive and mismatch.
+    # Each retains its own 20 minute ceiling.
+    timeout-minutes: 130
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -315,14 +315,16 @@ jobs:
             elif git diff --quiet "$base" "$head" -- \
               Erdos249257.lean 'Erdos249257/**' \
               ErdosProblems.lean 'ErdosProblems/**' \
-              ExternalVerification ExternalVerification1049 \
-              ExternalVerification1041SolvedFamilies 'verification/**' \
+              ExternalVerification 'ExternalVerification*/**' ComparatorReplay \
+              'verification/**' \
               lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
               docs/claims.json docs/problem_index_source.json docs/problems.json \
               docs/EXTERNAL_VERIFICATION.md docs/COMPARATOR_1049_NUMERICAL_HEIGHT.md \
               docs/external_verification_packet.json \
               formalization.yaml \
               scripts/build_external_verification.py \
+              scripts/build_comparator_replay_portfolio.py \
+              scripts/test_comparator_replay_portfolio.py \
               scripts/run_external_verification.py \
               scripts/test_external_verification.py \
               scripts/build_problem_index.py scripts/test_problem_index_assurance.py \
@@ -371,6 +373,8 @@ jobs:
         run: |
           set -euo pipefail
           lake exe cache get
+          python3 scripts/build_comparator_replay_portfolio.py --check
+          python3 scripts/test_comparator_replay_portfolio.py
           python3 scripts/test_external_verification.py
           python3 scripts/test_problem_index_assurance.py
           python3 -O scripts/test_external_verification.py
@@ -443,6 +447,9 @@ jobs:
           run_comparator verification/comparator-negative-mismatch.json \
             > artifacts-negative.log 2>&1
           negative_exit=$?
+          run_comparator verification/comparator-replay-candidate.json \
+            > artifacts-portfolio-positive.log 2>&1
+          portfolio_positive_exit=$?
           run_comparator verification/comparator-1049-numerical-height.json \
             > artifacts-1049-positive.log 2>&1
           local_1049_positive_exit=$?
@@ -451,10 +458,12 @@ jobs:
           local_1049_negative_exit=$?
           echo "positive_exit=$positive_exit" >> "$GITHUB_OUTPUT"
           echo "negative_exit=$negative_exit" >> "$GITHUB_OUTPUT"
+          echo "portfolio_positive_exit=$portfolio_positive_exit" >> "$GITHUB_OUTPUT"
           echo "local_1049_positive_exit=$local_1049_positive_exit" >> "$GITHUB_OUTPUT"
           echo "local_1049_negative_exit=$local_1049_negative_exit" >> "$GITHUB_OUTPUT"
           cat artifacts-positive.log
           cat artifacts-negative.log
+          cat artifacts-portfolio-positive.log
           cat artifacts-1049-positive.log
           cat artifacts-1049-negative.log
           exit 0
@@ -463,10 +472,12 @@ jobs:
         run: |
           positive_exit='${{ steps.comparator.outputs.positive_exit }}'
           negative_exit='${{ steps.comparator.outputs.negative_exit }}'
+          portfolio_positive_exit='${{ steps.comparator.outputs.portfolio_positive_exit }}'
           local_1049_positive_exit='${{ steps.comparator.outputs.local_1049_positive_exit }}'
           local_1049_negative_exit='${{ steps.comparator.outputs.local_1049_negative_exit }}'
           [[ -n "$positive_exit" ]] || positive_exit=-999
           [[ -n "$negative_exit" ]] || negative_exit=-999
+          [[ -n "$portfolio_positive_exit" ]] || portfolio_positive_exit=-999
           [[ -n "$local_1049_positive_exit" ]] || local_1049_positive_exit=-999
           [[ -n "$local_1049_negative_exit" ]] || local_1049_negative_exit=-999
           python3 scripts/run_external_verification.py \
@@ -476,6 +487,8 @@ jobs:
             --negative-exit "$negative_exit" \
             --positive-log artifacts-positive.log \
             --negative-log artifacts-negative.log \
+            --portfolio-positive-exit "$portfolio_positive_exit" \
+            --portfolio-positive-log artifacts-portfolio-positive.log \
             --local-1049-positive-exit "$local_1049_positive_exit" \
             --local-1049-negative-exit "$local_1049_negative_exit" \
             --local-1049-positive-log artifacts-1049-positive.log \
@@ -488,6 +501,9 @@ jobs:
             --comparator-bin "$RUNNER_TEMP/comparator/.lake/build/bin/comparator" \
             --lean4export-bin "$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export" \
             --landrun-bin "$RUNNER_TEMP/landrun"
+      - name: Enforce aggregate Comparator replay portfolio
+        if: steps.external-inputs.outputs.changed == 'true'
+        run: test '${{ steps.comparator.outputs.portfolio_positive_exit }}' = 0
       - name: "Enforce the #1049 programme-local packet"
         if: steps.external-inputs.outputs.changed == 'true'
         run: |
@@ -504,12 +520,8 @@ jobs:
       # into an actual gate.  The empty-output assertion is the load-bearing
       # one: without it, any future change that stops producing audit lines
       # would silently pass both grep checks.
-      # The two Comparator packets above build ExternalVerification and
-      # ExternalVerification1049 as a side effect of checking them.  Nothing
-      # checks ExternalVerification1041SolvedFamilies against a challenge, so
-      # nothing built it, and `lake env lean` on its audit file failed with
-      # "unknown module prefix" on every run since the library was published.
-      # Build it explicitly so the audit below elaborates against real oleans.
+      # Ensure the audit's local oleans exist independently of Comparator's
+      # isolated execution. The shared build owner reuses valid outputs.
       - name: Build the audited solved-families library
         if: steps.external-inputs.outputs.changed == 'true'
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness ExternalVerification1041SolvedFamilies.Solution
@@ -542,12 +554,18 @@ jobs:
             grep -n 'ofReduceBool\|Lean.trustCompiler' axiom-audit.log >&2
             exit 1
           fi
-      - name: Upload external-verification receipt
+      - name: Upload external-verification receipt and replay logs
         if: ${{ always() && steps.external-inputs.outputs.changed == 'true' }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: external-verification-receipt-${{ github.event.pull_request.head.sha || github.sha }}
-          path: artifacts/external-verification-receipt.json
+          path: |
+            artifacts/external-verification-receipt.json
+            artifacts-positive.log
+            artifacts-negative.log
+            artifacts-portfolio-positive.log
+            artifacts-1049-positive.log
+            artifacts-1049-negative.log
           if-no-files-found: error
 
   first-contact:

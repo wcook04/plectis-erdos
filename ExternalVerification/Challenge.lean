@@ -396,6 +396,12 @@ theorem irrational_erdosSum_full_support (b : ℕ) (hb : 2 ≤ b) :
     Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1)) :=
   (portfolioClaims Unit).problem257FullSupport b hb
 
+theorem irrational_erdosSupportSeries_of_summable_reciprocal
+    (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)
+    (hsum : Summable (Set.indicator A fun a : ℕ => (1 : ℝ) / a)) :
+    Irrational (erdosSupportSeries b A) :=
+  (portfolioClaims Unit).problem257ReciprocalSummableSupport b A hb hA hsum
+
 theorem irrational_erdosSupportSeries_pairwise_coprime
     (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)
     (hpair : A.Pairwise Nat.Coprime)

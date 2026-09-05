@@ -75,7 +75,7 @@
       "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary",
       "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
       "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
-      "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
+      "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_summable_reciprocal",
       "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
       "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
       "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface",
@@ -190,7 +190,7 @@
       "review_family": "factorial_carry_characterisation",
       "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
-      "original_source": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+      "original_source": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
       "statement": "Irrationality is equivalent to cofinally many strict-successor divisibility failures.",
       "boundary": "The equivalence does not prove that the cofinal failures occur.",
@@ -204,7 +204,7 @@
       "review_family": "factorial_carry_characterisation",
       "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
-      "original_source": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+      "original_source": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
       "statement": "Irrationality is equivalent to cofinally many non-unit carries.",
       "boundary": "The equivalence does not supply a cofinal carry producer.",
@@ -589,17 +589,17 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
-      "id": "erdos_support_pairwise_coprime",
+      "id": "erdos_support_reciprocal_summable",
       "problem": 257,
-      "review_family": "pairwise_coprime_support",
-      "claim_id": "support_families",
-      "contribution_class": "formalisation of an existing theorem",
-      "original_declaration": "Erdos249257.irrational_erdosSupportSeries_pairwise_coprime",
-      "original_source": "Erdos249257/CertificateKernel.lean",
-      "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
-      "statement": "For every integer base b >= 2 and every infinite pairwise-coprime support A with summable reciprocal mass, the support-restricted Mersenne series is irrational.",
-      "boundary": "This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit.",
-      "canonical_claim_status": "supports_registered_claim_family:support_families",
+      "review_family": "reciprocal_summable_support",
+      "claim_id": "reciprocal_summable_support",
+      "contribution_class": "locally proved all-base support theorem; novelty and priority unassessed",
+      "original_declaration": "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal",
+      "original_source": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_summable_reciprocal",
+      "statement": "For every integer base b >= 2 and every infinite support A with summable reciprocal mass, the support-restricted reciprocal-power series is irrational.",
+      "boundary": "The universal Erdos #257 assertion remains open only in the reciprocal-divergent regime. Novelty and priority are unassessed, and this proof is not identified with Erdos's omitted coprimality-free argument.",
+      "canonical_claim_status": "supports_registered_claim_family:reciprocal_summable_support",
       "local_proof_provenance": "proved_in_this_repository",
       "novelty_status": "unassessed_no_priority_claim"
     },
@@ -1381,11 +1381,22 @@
           "boundary": "Structured known families do not cover arbitrary infinite supports."
         },
         {
+          "id": "reciprocal_summable_support",
+          "contribution_class": "locally proved all-base support theorem; novelty and priority unassessed",
+          "summary": "Every infinite support with convergent reciprocal mass gives an irrational support-restricted reciprocal-power series at every integer base b at least 2.",
+          "evidence_mode": "Lean kernel; Comparator-selected",
+          "comparator_disposition": "targeted_stronger_reciprocal_summable_support",
+          "declarations": [
+            "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal"
+          ],
+          "boundary": "The universal Erdős #257 assertion remains open only in the reciprocal-divergent regime. Novelty and priority are unassessed, and the proof is not identified with Erdős's omitted coprimality-free argument."
+        },
+        {
           "id": "pairwise_coprime_support",
           "contribution_class": "formalisation of an existing theorem",
           "summary": "Infinite pairwise-coprime supports with summable reciprocal mass have irrational Mersenne support series by an adaptive CRT and weighted coefficient certificate argument.",
           "evidence_mode": "Lean kernel plus Comparator",
-          "comparator_disposition": "targeted_pairwise_coprime_support",
+          "comparator_disposition": "represented_by_reciprocal_summable_support",
           "boundary": "This structured support theorem does not settle arbitrary infinite supports; its infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit."
         },
         {
@@ -1688,9 +1699,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:9ca22b2bddd0cc0b8950f454462dd20e2045547517ea1ac88a0251f8cb3deefb",
+    "owner_digest": "sha256:5e3a1ea6b870e7806c3158a2b5fed0b45ab9f3124215e285fd539117ab456078",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:669ae15671ac204f882a855679cf6b73c767b57b296239762cb77d6a781ac908",
+    "projection_digest": "sha256:bcdaa8df59d0801e3d2aa74655d90c8708b6dbd8a2aff8d6afe4325f4e8f848f",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1709,10 +1720,10 @@
             "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
             "path": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
             "present": true,
-            "line_count": 1756,
-            "declaration_count": 63,
-            "theorem_count": 57,
-            "content_digest": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
+            "line_count": 12,
+            "declaration_count": 0,
+            "theorem_count": 0,
+            "content_digest": "sha256:a45f7993d4b6662068c68394af8cb8632fc4e220b789bf603ecf6ec511ba1ce9"
           },
           {
             "module": "ErdosProblems.Erdos68.CanonicalFactorialDigits",
@@ -1736,10 +1747,10 @@
             "module": "ErdosProblems.Erdos68.ChannelIntegralCongruence",
             "path": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
             "present": true,
-            "line_count": 1133,
-            "declaration_count": 55,
-            "theorem_count": 46,
-            "content_digest": "sha256:ea7c7f97d774c1cbb9021eb6708da60dcc09ecf6e3c872323aef312b6a026c97"
+            "line_count": 1273,
+            "declaration_count": 57,
+            "theorem_count": 48,
+            "content_digest": "sha256:39461fdf3fa1ff404e6b9ae3ba5e642c88250f62edde20216e1cd65563bd2227"
           },
           {
             "module": "ErdosProblems.Erdos68.DivisorFactorialCentre",
@@ -1790,19 +1801,19 @@
             "module": "ErdosProblems.Erdos68.PrimeUnitTranslator",
             "path": "ErdosProblems/Erdos68/PrimeUnitTranslator.lean",
             "present": true,
-            "line_count": 1730,
-            "declaration_count": 91,
-            "theorem_count": 70,
-            "content_digest": "sha256:ceec4294ac834abb7850fe8732a5eea455328ade40bf9a5eb66c6f37cbef2c9a"
+            "line_count": 1788,
+            "declaration_count": 92,
+            "theorem_count": 71,
+            "content_digest": "sha256:3ef49f719f4596f08efb76f561fef7badf7e287873ffd0ad2cb588cd4acf7a5d"
           },
           {
             "module": "ErdosProblems.Erdos68.PrimeZeroBranch",
             "path": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
             "present": true,
-            "line_count": 7293,
-            "declaration_count": 187,
-            "theorem_count": 155,
-            "content_digest": "sha256:de5508cb858fdaaa5d9c4b40bcb65a6960f8c7ebb6209887bd57e800c6674900"
+            "line_count": 7340,
+            "declaration_count": 188,
+            "theorem_count": 156,
+            "content_digest": "sha256:ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849"
           },
           {
             "module": "ErdosProblems.Erdos68.StrictSuccessorArithmetic",
@@ -1900,10 +1911,10 @@
             "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
             "path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
             "present": true,
-            "line_count": 2386,
-            "declaration_count": 77,
-            "theorem_count": 67,
-            "content_digest": "sha256:3145b8a5a4c3783fa4c79b726e20f55285a7a43ec58a5e876bf3e4a3d1f88ff9"
+            "line_count": 2433,
+            "declaration_count": 78,
+            "theorem_count": 68,
+            "content_digest": "sha256:34fc5cd1c61c2d53c88297298564926f12e1bf4ce2c921fc4c1ee037eb7a6c88"
           },
           {
             "module": "ErdosProblems.Erdos243.FiniteHorizonResidue",
@@ -1927,10 +1938,10 @@
             "module": "ErdosProblems.Erdos243.DynamicCancellation",
             "path": "ErdosProblems/Erdos243/DynamicCancellation.lean",
             "present": true,
-            "line_count": 399,
-            "declaration_count": 15,
-            "theorem_count": 15,
-            "content_digest": "sha256:82f16b7f678b422b2c939a1587d27c0fc8c3be08272079e6965eb184bb28d2d6"
+            "line_count": 624,
+            "declaration_count": 21,
+            "theorem_count": 21,
+            "content_digest": "sha256:0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76"
           },
           {
             "module": "ErdosProblems.Erdos243.FeedbackRealizability",
@@ -1963,10 +1974,10 @@
             "module": "ErdosProblems.Erdos243.PrimitivePrefixRigidity",
             "path": "ErdosProblems/Erdos243/PrimitivePrefixRigidity.lean",
             "present": true,
-            "line_count": 136,
-            "declaration_count": 6,
-            "theorem_count": 4,
-            "content_digest": "sha256:5bb23f80d66cb863e4504775476f0633d6814a749fe26a586596d390a0385327"
+            "line_count": 167,
+            "declaration_count": 8,
+            "theorem_count": 6,
+            "content_digest": "sha256:c04b152c6a21753c5157c8ba94681ff033b1d22ec3c5af2266068a0e590eeef9"
           },
           {
             "module": "ErdosProblems.Erdos243.WeightedCRTRepair",
@@ -2180,10 +2191,10 @@
             "module": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
             "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
             "present": true,
-            "line_count": 1584,
-            "declaration_count": 104,
-            "theorem_count": 82,
-            "content_digest": "sha256:453629d554e1f3b45b2dcb3e2d26431d5d0bf61c541be5506b1af24bd852e975"
+            "line_count": 1665,
+            "declaration_count": 116,
+            "theorem_count": 92,
+            "content_digest": "sha256:d284ca394ba94d6e43b2819757ce27eb86562949b525f8bbf81546d613abfcd1"
           }
         ],
         "note": {
@@ -2267,10 +2278,10 @@
             "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
             "path": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
             "present": true,
-            "line_count": 421,
-            "declaration_count": 28,
-            "theorem_count": 23,
-            "content_digest": "sha256:7dd147a2bef89f7f23a168c02a8dfb4c7fee887314a7a5367d49336330eb1419"
+            "line_count": 442,
+            "declaration_count": 29,
+            "theorem_count": 24,
+            "content_digest": "sha256:91ac7abcad41ac8f2d5c2733892f378c996a038650e4efdcc00ecc8ea11643c2"
           }
         ],
         "note": {
@@ -2311,9 +2322,10 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 14,
+          "family_count": 15,
           "by_class": {
             "not_applicable": 1,
+            "represented_by": 1,
             "targeted": 13
           },
           "dispositions": {
@@ -2324,7 +2336,8 @@
             "shifted_odd_tail_state": "targeted",
             "composite_dilation_defect_identity": "targeted",
             "known_irrational_supports": "targeted_full_support_representative",
-            "pairwise_coprime_support": "targeted_pairwise_coprime_support",
+            "reciprocal_summable_support": "targeted_stronger_reciprocal_summable_support",
+            "pairwise_coprime_support": "represented_by_reciprocal_summable_support",
             "periodic_nonnegative_weight_irrationality": "targeted_strongest_nonnegative_rational_weight",
             "orthogonal_petal_sunflower_reduction": "targeted_conditional_sunflower_reduction",
             "squarefree_support": "not_applicable_to_external_irrationality_input",
@@ -2348,19 +2361,19 @@
             "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
             "path": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
             "present": true,
-            "line_count": 729,
-            "declaration_count": 50,
-            "theorem_count": 34,
-            "content_digest": "sha256:b3279ce084c98e4e7521e0bb94d3e366de010a30548fab0b326390da16ff6c3c"
+            "line_count": 912,
+            "declaration_count": 55,
+            "theorem_count": 39,
+            "content_digest": "sha256:769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036"
           },
           {
             "module": "ErdosProblems.Erdos269.ResidueEscape",
             "path": "ErdosProblems/Erdos269/ResidueEscape.lean",
             "present": true,
-            "line_count": 164,
-            "declaration_count": 8,
-            "theorem_count": 6,
-            "content_digest": "sha256:826a3dd901c86f1876c7e03011447dafef8d3cb139a673227e921bef3a9dfe87"
+            "line_count": 187,
+            "declaration_count": 9,
+            "theorem_count": 7,
+            "content_digest": "sha256:a9ecacf70d358918e3135c39eb9e6c5c3587d99bc46b8726daba4fc8dd315e7e"
           },
           {
             "module": "ErdosProblems.Erdos269.RestrictedFloorSum",
@@ -2402,10 +2415,10 @@
             "module": "ErdosProblems.Erdos269.WeightedPhaseCarry",
             "path": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
             "present": true,
-            "line_count": 371,
-            "declaration_count": 23,
-            "theorem_count": 14,
-            "content_digest": "sha256:ef3e57a4728534e108bb4e668ceef2cc102c2cf001673d59d9c15cff7f0beb9e"
+            "line_count": 393,
+            "declaration_count": 24,
+            "theorem_count": 15,
+            "content_digest": "sha256:dfed95906a65288ea8b29213bcb996c1ca0832cfc10da01ab37aa868f2d7cef3"
           }
         ],
         "note": {
@@ -2500,10 +2513,10 @@
             "module": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
             "path": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
             "present": true,
-            "line_count": 323,
-            "declaration_count": 21,
-            "theorem_count": 18,
-            "content_digest": "sha256:8736b05c24517e4568cfdfc49f0180089951cc6397ad720d20271fbc9e5e7351"
+            "line_count": 435,
+            "declaration_count": 28,
+            "theorem_count": 25,
+            "content_digest": "sha256:9a2bc4dcafece55cd76b0bfe1a6b1dc8e1ebabf570c7ea92f9e53fe7629464fa"
           }
         ],
         "note": {
@@ -2625,10 +2638,10 @@
             "module": "ErdosProblems.Erdos1049.RationalBaseLambert",
             "path": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
             "present": true,
-            "line_count": 223,
-            "declaration_count": 16,
-            "theorem_count": 11,
-            "content_digest": "sha256:593c3b3e776820de229bad00c7f374bb39416099de60250b375d52cfa5f6e56a"
+            "line_count": 259,
+            "declaration_count": 19,
+            "theorem_count": 14,
+            "content_digest": "sha256:d71654b935e89d346654150c42eb2eec70cacd7c2159c7f23bf29c167ac05cbf"
           },
           {
             "module": "ErdosProblems.Erdos1049.RationalPadeArithmetic",
@@ -2751,14 +2764,14 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:f93c0f928a7e442f42f2bc1b947f51396a3966ea22c15d255b2833069cb86fdc",
+    "digest": "sha256:ff7c6c37ee533aa095de8d146268480f3af2e4983fe452d6d9b2c304f24fc127",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
-    "lakefile.toml": "sha256:b08ade613cd2983ae7fa79a9cca8759926d401d71ba77d476b51367d45006dbb",
+    "lakefile.toml": "sha256:d7306cd0edc5554ff3cf6d1a210f9e4474b2734c9daad2ebb1614e4d9e847e4e",
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a",
-  "solution_source_digest": "sha256:d30a98f75037ef23d3a0f75992c229a6f336d215ff8127cc8ee06f9b2f382e0a"
+  "config_digest": "sha256:148629b13dee6c9686898574359f41c82b7d81ada9b7eee6f11dccbfbfb814c2",
+  "solution_source_digest": "sha256:67a30468f5f564b196e6e404f476fab96ec12addf5db99a0d1cee03a27ac096d"
 }

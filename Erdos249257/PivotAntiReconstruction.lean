@@ -5,8 +5,8 @@ import Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds
 /-!
 # Anchored first-harmonic defect and pivot anti-reconstruction
 
-This module relates the finite first-harmonic estimates used in the #249
-argument.  For a finite set `T`, the anchor defect is
+This module gives the exact affine certificate consumed by the established
+first-harmonic backplane.  For a finite set `T`, the anchor defect is
 
 `sum N in T, (2 - 2 * windowFirstCos h N L)`.
 
@@ -17,13 +17,13 @@ decorrelation condition.
 
 The canonical natural-prime predicates at the end are intentionally unproved.
 The weakest is a singleton first-harmonic escape; the fibre-average window gap
-is a convenient stronger condition.  Centred variance and residual-weighted
-cancellation are sufficient alternatives, but neither is necessary.
+is a convenient stronger target, while centred variance and residual-weighted
+cancellation remain optional spectral routes rather than proof prerequisites.
 
 The fibre-free window-pair predicate is characterized exactly: it is
 equivalent to irrationality of the #249 totient series.  The converse uses
 only expansivity of the doubling orbit and an explicit two-point sample, so
-this endpoint is a geometric reformulation, not a weaker open condition.
+this endpoint is a geometric reformulation rather than a weaker open producer.
 -/
 
 namespace Erdos249257
@@ -123,8 +123,9 @@ theorem windowFirstExp_eq_unreduced (h N L : ℕ) :
     _ = _ := by push_cast; ring
 
 /-- Equal dyadic discrepancy residues give exactly equal first-harmonic
-phases.  Thus a congruence modulo `2^L` proves equality of the corresponding
-phases without choosing integer representatives or making an approximation. -/
+phases.  This is the finite lattice interface for an arithmetic collision
+argument: no choice of integer representatives or analytic approximation is
+left at the call site. -/
 theorem windowFirstExp_eq_of_discrepancy_emod_eq
     {h N N' L : ℕ}
     (hres :
@@ -133,8 +134,7 @@ theorem windowFirstExp_eq_of_discrepancy_emod_eq
     windowFirstExp h N L = windowFirstExp h N' L := by
   simp [windowFirstExp, windowFirstAngle, hres]
 
-/-- Equal dyadic discrepancy residues also give equal real parts of the
-first-harmonic phases. -/
+/-- Real-part version of the exact dyadic residue collision interface. -/
 theorem windowFirstCos_eq_of_discrepancy_emod_eq
     {h N N' L : ℕ}
     (hres :
@@ -215,8 +215,9 @@ theorem norm_windowFirstExp_sub_tailOrbitFirstExp_lt (h N L : ℕ) :
     _ = 2 * Real.pi * ((N : ℝ) + L + h + 2) / 2 ^ L := by ring
 
 /-- Any real-part gap in the infinite orbit survives finite truncation with
-the stated additive error.  The bound accepts an arbitrary threshold `a`, so
-the preceding estimate need not first be normalized to `4/5`. -/
+exactly the supplied additive error budget.  This is the packet-facing seam:
+arithmetic input may come from a lattice, variance, or anti-concentration
+argument without being normalized in advance to `4/5`. -/
 theorem windowFirstCos_le_add_of_tailOrbitGap
     {h N L : ℕ} {a ε : ℝ}
     (htail : (tailOrbitFirstExp h N).re ≤ a)
@@ -580,14 +581,15 @@ theorem firstHarmonicAnchorDefect_ge_iff_first_harmonic_gap
   rw [firstHarmonicAnchorDefect_eq]
   constructor <;> intro hbound <;> nlinarith
 
-/-! ## Finite-fibre variance identities -/
+/-! ## Finite-fibre variance intake -/
 
 /-- Additive real pairwise energy does not by itself force first-harmonic
 phase separation.  At every prescribed scale there is a two-point sample
 whose squared real gap is at least that scale while its exponential chord is
 exactly zero: integer-period aliasing erases the entire gap.  Consequently a
 variance input for real lifts must be supplemented by residue small-ball or
-phase anti-concentration information to imply `DTWWindowSeparatedPairs`. -/
+phase anti-concentration information before it can feed
+`DTWWindowSeparatedPairs`. -/
 theorem exists_large_real_pair_energy_with_zero_first_harmonic_chord
     (B : ℕ) :
     ∃ x y : ℝ,
@@ -612,8 +614,9 @@ theorem exists_large_real_pair_energy_with_zero_first_harmonic_chord
     rw [hperiod]
     norm_num
 
-/-- Exact finite complex bias--variance identity, stated for an arbitrary
-complex-valued function on a nonempty finite set. -/
+/-- Exact finite complex bias--variance identity.  This is kept independent
+of the pivot definitions so an arithmetic producer may first establish
+variance for whatever explicit complex error vector its prime toggles expose. -/
 theorem sum_norm_sq_eq_centered_add_mean
     {α : Type*} [DecidableEq α] (T : Finset α) (z : α → ℂ)
     (hT : T.Nonempty) :
@@ -664,9 +667,10 @@ theorem sum_norm_sq_eq_centered_add_mean
             ← Finset.mul_sum, hcross, mul_zero, add_zero,
             Finset.sum_const, nsmul_eq_mul]
 
-/-- Exact pairwise-energy form of finite complex variance.  It converts a
-lower bound for pairwise differences into a centred-variance bound without
-requiring a separate estimate of the finite-set mean. -/
+/-- Exact pairwise-energy form of finite complex variance.  This is the
+prime-toggle-friendly companion to `sum_norm_sq_eq_centered_add_mean`: an
+arithmetic producer may lower-bound separated pairs directly, without first
+guessing or estimating the fibre mean. -/
 theorem sum_pairwise_norm_sq_eq_two_card_mul_centered
     {α : Type*} [DecidableEq α] (T : Finset α) (z : α → ℂ)
     (hT : T.Nonempty) :
@@ -741,9 +745,11 @@ theorem card_mul_sq_le_sum_pairwise_norm_sq_of_separatedPairs
       simpa using Finset.sum_product T T
         (fun p : α × α => ‖z p.1 - z p.2‖ ^ 2)
 
-/-- Pairwise energy of the original vectors controls their squared distance
-from any fixed anchor.  The empirical mean contributes a nonnegative bias,
-so the conclusion requires no bound for that mean. -/
+/-- Pairwise energy of the original vectors already controls their squared
+distance from any fixed anchor.  This is the mean-free form needed by the
+window-phase route: the unknown empirical mean contributes only a
+nonnegative bias, so it never has to be estimated by the arithmetic
+producer. -/
 theorem card_div_five_le_sum_anchor_norm_sq_of_pairwise
     {α : Type*} [DecidableEq α] (T : Finset α) (z : α → ℂ) (a : ℂ)
     (hT : T.Nonempty)
@@ -767,7 +773,7 @@ theorem card_div_five_le_sum_anchor_norm_sq_of_pairwise
   change (T.card : ℝ) / 5 ≤ ∑ i ∈ T, ‖y i‖ ^ 2
   nlinarith [hdecomp]
 
-/-- Reconstruction error on a canonical pivot fibre. -/
+/-- Actual reconstruction error on a canonical supplier fibre. -/
 noncomputable def pivotReconstructionError (h N L s : ℕ) : ℂ :=
   pivotResidualAt h N L s -
     (starRingEnd ℂ) (pivotPhaseAt h N L s)
@@ -786,12 +792,12 @@ theorem pivotReconstructionError_eq_conj_phase_mul_window_sub_one
     Complex.inv_eq_conj hphase]
   ring
 
-/-- Unweighted first mode of the window phase on one pivot fibre. -/
+/-- Unweighted first mode of the actual window phase on one supplier fibre. -/
 noncomputable def pivotFiberWindowMode
     (h X L s m : ℕ) : ℂ :=
   ∑ N ∈ pivotFiber X L s m, windowFirstExp h N L
 
-/-- Residual-weighted first mode on one pivot fibre.  This is the
+/-- Residual-weighted first mode on one supplier fibre.  This is the
 anti-lock coefficient: the conjugate pivot phase multiplies the complete
 window phase, rather than a truncated or independently averaged proxy. -/
 noncomputable def pivotFiberResidualMode
@@ -799,7 +805,7 @@ noncomputable def pivotFiberResidualMode
   ∑ N ∈ pivotFiber X L s m,
     (starRingEnd ℂ) (pivotPhaseAt h N L s) * windowFirstExp h N L
 
-/-- Bare conjugate-pivot mode on one pivot fibre. -/
+/-- Bare conjugate-pivot mode on one supplier fibre. -/
 noncomputable def pivotFiberConjugatePhaseMode
     (h X L s m : ℕ) : ℂ :=
   ∑ N ∈ pivotFiber X L s m,
@@ -816,21 +822,22 @@ theorem pivotFiberReconstructionErrorSum_eq_twoMode
     mul_sub, mul_one, pivotFiberResidualMode,
     pivotFiberConjugatePhaseMode, Finset.sum_sub_distrib]
 
-/-- Mean reconstruction error on one canonical pivot fibre. -/
+/-- Mean reconstruction error on one canonical supplier fibre. -/
 noncomputable def pivotFiberReconstructionErrorMean
     (h X L s m : ℕ) : ℂ :=
   ((pivotFiber X L s m).card : ℂ)⁻¹ *
     ∑ N ∈ pivotFiber X L s m, pivotReconstructionError h N L s
 
-/-- Centred reconstruction-error energy on one canonical pivot fibre. -/
+/-- Centred reconstruction-error energy on one canonical supplier fibre.
+This is the literal variance socket for a prime-toggle producer. -/
 noncomputable def pivotFiberReconstructionVariance
     (h X L s m : ℕ) : ℝ :=
   ∑ N ∈ pivotFiber X L s m,
     ‖pivotReconstructionError h N L s -
       pivotFiberReconstructionErrorMean h X L s m‖ ^ 2
 
-/-- The pivot-fibre variance is exactly normalized pairwise energy, so its
-value is determined by pairwise reconstruction-error differences. -/
+/-- The actual pivot-fibre variance is exactly normalized pairwise energy.
+This removes the unknown fibre mean from the remaining arithmetic producer. -/
 theorem pivotFiberReconstructionVariance_eq_pairwise
     (h X L s m : ℕ) (hne : (pivotFiber X L s m).Nonempty) :
     2 * ((pivotFiber X L s m).card : ℝ) *
@@ -843,8 +850,10 @@ theorem pivotFiberReconstructionVariance_eq_pairwise
     (pivotFiber X L s m) (pivotReconstructionError h · L s) hne]
   rfl
 
-/-- A pairwise-energy bound of `2|F|^2/5` implies centred reconstruction
-variance at least `|F|/5`. -/
+/-- Pairwise-energy intake at the exact one-fifth threshold used by the
+#249 consumer.  A prime-toggle or separated-pairs argument can target this
+double sum directly; division by the unknown fibre cardinality is handled
+here once and for all. -/
 theorem pivotFiberReconstructionVariance_ge_one_fifth_of_pairwise
     {h X L s m : ℕ} (hne : (pivotFiber X L s m).Nonempty)
     (hpair :
@@ -860,8 +869,8 @@ theorem pivotFiberReconstructionVariance_ge_one_fifth_of_pairwise
   have henergy := pivotFiberReconstructionVariance_eq_pairwise h X L s m hne
   nlinarith
 
-/-- An anchor defect of at least one fifth per phase yields a certified kill
-on the same finite set, subject to the stated range and room hypotheses. -/
+/-- A defect of at least one fifth per phase is exactly enough to invoke the
+arbitrary-subset first-harmonic consumer. -/
 theorem exists_certifiedKill_of_firstHarmonicAnchorDefect
     {h X L : ℕ} (T : Finset ℕ)
     (hTlt : ∀ N ∈ T, N < 2 * X)
@@ -875,7 +884,7 @@ theorem exists_certifiedKill_of_firstHarmonicAnchorDefect
   rw [firstHarmonicAnchorDefect_eq] at hdefect
   nlinarith
 
-/-- Anchor defect restricted to one canonical large-prime pivot fibre. -/
+/-- Anchor defect restricted to one canonical large-prime supplier fibre. -/
 noncomputable def pivotFiberReconstructionDefect
     (h X L s m : ℕ) : ℝ :=
   firstHarmonicAnchorDefect h L (pivotFiber X L s m)
@@ -926,9 +935,9 @@ theorem pivotFiberReconstructionDefect_eq_sum_residual_norm_sq
           (starRingEnd ℂ) (pivotPhaseAt h N L s)‖ := by
           rw [Complex.inv_eq_conj hz]
 
-/-- The reconstruction defect is the centred variance plus the squared bias
-of the same error vector.  Hence a lower bound for the centred variance is
-also a lower bound for the defect. -/
+/-- The existing reconstruction defect is variance plus the squared bias of
+the same error vector.  In particular, positive conditional variance feeds
+the #249 consumer without estimating the four-term pivot budget. -/
 theorem pivotFiberReconstructionDefect_eq_variance_add_bias
     (h X L s m : ℕ) (hne : (pivotFiber X L s m).Nonempty) :
     pivotFiberReconstructionDefect h X L s m =
@@ -984,8 +993,8 @@ theorem pivotFiberReconstructionVariance_eq_twoMode_div_card
   rw [pivotFiberReconstructionVariance_eq_twoMode h X L s m hne,
     card_mul_norm_inv_natCast_mul_sq_eq_div (pivotFiber X L s m) hne]
 
-/-- Sufficient two-mode bounds with strict slack over the one-fifth
-threshold.  The second hypothesis is the normalized
+/-- Lean-friendly sufficient two-mode bounds with strict slack over the
+one-fifth consumer threshold.  The second hypothesis is the normalized
 anti-lock coefficient `‖(W₁-C₁)/|F|‖ ≤ 2/5`. -/
 theorem pivotFiberReconstructionVariance_ge_six_div_twentyfive_of_twoMode
     {h X L s m : ℕ} (hne : (pivotFiber X L s m).Nonempty)
@@ -1012,7 +1021,7 @@ theorem pivotFiberReconstructionVariance_ge_six_div_twentyfive_of_twoMode
   rw [pivotFiberReconstructionVariance_eq_twoMode h X L s m hne]
   nlinarith
 
-/-- The separate bounds `‖W₁‖ ≤ |F|/3` and `‖C₁‖ ≤ |F|/15`
+/-- The packet's separate `‖W₁‖ ≤ |F|/3` and `‖C₁‖ ≤ |F|/15`
 bounds imply the normalized anti-lock bound used above. -/
 theorem pivotFiberNormalizedAntiLock_le_two_fifths
     {h X L s m : ℕ} (hne : (pivotFiber X L s m).Nonempty)
@@ -1050,9 +1059,9 @@ theorem pivotFiberNormalizedAntiLock_le_two_fifths
           mul_le_mul_of_nonneg_left hsub (inv_nonneg.mpr hcard.le)
     _ = 2 / 5 := by field_simp
 
-/-- The three displayed mode estimates imply centred variance at least
-`6|F|/25`, which is strictly greater than `|F|/5`.  All three estimates remain
-hypotheses of this theorem. -/
+/-- The three concrete mode estimates from the natural-prime contour give
+centred variance at least `6|F|/25`, hence strictly more than the consumer's
+required `|F|/5`. -/
 theorem pivotFiberReconstructionVariance_ge_six_div_twentyfive_of_modeBounds
     {h X L s m : ℕ} (hne : (pivotFiber X L s m).Nonempty)
     (hwindow :
@@ -1069,7 +1078,7 @@ theorem pivotFiberReconstructionVariance_ge_six_div_twentyfive_of_modeBounds
   pivotFiberReconstructionVariance_ge_six_div_twentyfive_of_twoMode hne
     hwindow (pivotFiberNormalizedAntiLock_le_two_fifths hne hresidual hphase)
 
-/-- A one-fibre anti-reconstruction bound yields a certified kill in that
+/-- A one-fibre anti-reconstruction bound produces a certificate in that
 same fibre. -/
 theorem exists_certifiedKill_of_pivotFiberReconstructionDefect
     {h X L s m : ℕ}
@@ -1087,8 +1096,8 @@ theorem exists_certifiedKill_of_pivotFiberReconstructionDefect
     exact (Finset.mem_Ico.mp (Finset.mem_filter.mp hNsupplier).1).2
   · simpa [pivotFiberReconstructionDefect] using hdefect
 
-/-- A one-fifth lower bound on centred reconstruction variance yields a
-certified kill in the same fibre. -/
+/-- A one-fifth lower bound on centred reconstruction variance is already
+enough for the established one-fibre certificate consumer. -/
 theorem exists_certifiedKill_of_pivotFiberReconstructionVariance
     {h X L s m : ℕ}
     (hne : (pivotFiber X L s m).Nonempty)
@@ -1102,8 +1111,9 @@ theorem exists_certifiedKill_of_pivotFiberReconstructionVariance
   exact hvariance.trans (le_add_of_nonneg_right <| mul_nonneg
     (Nat.cast_nonneg _) (sq_nonneg _))
 
-/-- A pairwise reconstruction-error bound of `2|F|^2/5` yields a certified
-kill without a separate fibre-mean or variance hypothesis. -/
+/-- Pairwise-energy version of the one-fibre certificate intake.  This is the
+direct target for prime toggles or separated-pair counts: no fibre mean or
+intermediate variance estimate remains at the call site. -/
 theorem exists_certifiedKill_of_pivotFiberPairwiseEnergy
     {h X L s m : ℕ}
     (hne : (pivotFiber X L s m).Nonempty)
@@ -1118,10 +1128,11 @@ theorem exists_certifiedKill_of_pivotFiberPairwiseEnergy
   apply exists_certifiedKill_of_pivotFiberReconstructionVariance hne hroom
   exact pivotFiberReconstructionVariance_ge_one_fifth_of_pairwise hne hpair
 
-/-- Let `P` be a subset of the ordered fibre square whose pairs are separated
-by at least `δ`.  If `|P|δ² ≥ 2|F|²/5`, then the fibre contains a certified
-kill.  This is a finite statement; it does not assert that such sets exist
-cofinally. -/
+/-- Counted-separated-pairs version of the one-fibre certificate intake.
+This is a direct finite combinatorial target: supply a subset `P` of the
+ordered fibre square, a uniform separation `δ`, and enough total mass
+`|P| δ²`; the analytic variance layer and certificate extraction are then
+automatic. -/
 theorem exists_certifiedKill_of_pivotFiberSeparatedPairs
     {h X L s m : ℕ}
     (hne : (pivotFiber X L s m).Nonempty)
@@ -1160,8 +1171,7 @@ theorem pivotFiberReconstructionDefect_ge_one_fifth_of_windowPairwise
   exact card_div_five_le_sum_anchor_norm_sq_of_pairwise
     (pivotFiber X L s m) (windowFirstExp h · L) 1 hne hpair
 
-/-- A window-phase pairwise-energy bound of `2|F|²/5` yields a certified kill
-in the same fibre. -/
+/-- Direct finite certificate intake for window-phase pairwise energy. -/
 theorem exists_certifiedKill_of_pivotFiberWindowPairwiseEnergy
     {h X L s m : ℕ}
     (hne : (pivotFiber X L s m).Nonempty)
@@ -1175,9 +1185,10 @@ theorem exists_certifiedKill_of_pivotFiberWindowPairwiseEnergy
   apply exists_certifiedKill_of_pivotFiberReconstructionDefect hne hroom
   exact pivotFiberReconstructionDefect_ge_one_fifth_of_windowPairwise hne hpair
 
-/-- If a set `P` of ordered pairs in the fibre has window-phase separation at
-least `δ` and `|P|δ² ≥ 2|F|²/5`, then the fibre contains a certified kill.
-No reconstruction-error or pivot-residual estimate is assumed. -/
+/-- Counted separated pairs of raw window phases feed the direct pairwise
+energy intake.  This is the arithmetic-facing finite lattice socket: a
+producer may count phase-separated dyadic residues without reconstructing
+or estimating the pivot residual. -/
 theorem exists_certifiedKill_of_pivotFiberWindowSeparatedPairs
     {h X L s m : ℕ}
     (hne : (pivotFiber X L s m).Nonempty)
@@ -1196,9 +1207,8 @@ theorem exists_certifiedKill_of_pivotFiberWindowSeparatedPairs
     (card_mul_sq_le_sum_pairwise_norm_sq_of_separatedPairs
       (pivotFiber X L s m) (windowFirstExp h · L) P δ hP hδ hsep)
 
-/-- Cofinal uncentred condition: for every positive shift and every starting
-scale, some nonempty pivot fibre has reconstruction defect at least one fifth
-of its cardinality. -/
+/-- General uncentred producer: cofinally, one nonempty actual supplier fibre
+stays a fixed squared distance from locked reconstruction. -/
 def DTWPivotAntiReconstruction : Prop :=
   ∀ h : ℕ, 0 < h →
     ∀ X₀ : ℕ, ∃ X L s m : ℕ,
@@ -1210,9 +1220,9 @@ def DTWPivotAntiReconstruction : Prop :=
       ((pivotFiber X L s m).card : ℝ) / 5 ≤
         pivotFiberReconstructionDefect h X L s m
 
-/-- Stronger cofinal centred-variance condition.  Compared with
+/-- Stronger variance-only form of the cofinal producer.  Compared with
 `DTWPivotAntiReconstruction`, this discards the nonnegative mean-error bias
-and assumes the same one-fifth bound for centred fibre energy. -/
+and asks a prime-toggle argument only for centred fibre energy. -/
 def DTWPivotReconstructionVariance : Prop :=
   ∀ h : ℕ, 0 < h →
     ∀ X₀ : ℕ, ∃ X L s m : ℕ,
@@ -1224,9 +1234,9 @@ def DTWPivotReconstructionVariance : Prop :=
       ((pivotFiber X L s m).card : ℝ) / 5 ≤
         pivotFiberReconstructionVariance h X L s m
 
-/-- Cofinal first-harmonic escape on the canonical natural prime fibre.  It
-assumes only a `9/10` bound for the averaged window cosine; it has no
-residual-weighted or centred-variance hypothesis. -/
+/-- Cofinal first-harmonic escape on the canonical natural prime fibre.
+This is the weakest fibre-average input consumed by the uncentred anchor
+defect: no residual-weighted or centred-variance estimate is present. -/
 def DTWNaturalPivotWindowGap : Prop :=
   ∀ h : ℕ, 0 < h →
     ∀ X₀ : ℕ, ∃ X L : ℕ,
@@ -1237,10 +1247,10 @@ def DTWNaturalPivotWindowGap : Prop :=
       (pivotFiberWindowMode h X L (L - h) 1).re ≤
         (9 / 10 : ℝ) * (pivotFiber X L (L - h) 1).card
 
-/-- Strictly weaker pointwise condition: cofinally, one member of the
-canonical natural prime fibre has window cosine at most `9/10`.  A singleton
-argument yields a certificate, so neither a fibre average nor centred
-variance is required. -/
+/-- Strictly weaker pointwise socket: cofinally, one member of the canonical
+natural prime fibre escapes the locked first-harmonic arc.  The singleton
+subset consumer turns this directly into a certificate, so neither a fibre
+average nor centred variance is logically required. -/
 def DTWNaturalPivotPointEscape : Prop :=
   ∀ h : ℕ, 0 < h →
     ∀ X₀ : ℕ, ∃ X L N : ℕ,
@@ -1250,9 +1260,10 @@ def DTWNaturalPivotPointEscape : Prop :=
       N ∈ pivotFiber X L (L - h) 1 ∧
       windowFirstCos h N L ≤ (9 / 10 : ℝ)
 
-/-- Prime-indexed gap in the exact infinite tail orbit.  The statement has no
-finite-window or dyadic-room hypotheses: primality selects the lacunary
-exponent, and the phase is exactly `scaledTotientSeriesFirstExp`. -/
+/-- Prime-indexed gap in the exact infinite tail orbit.  This removes all
+finite-window, dyadic-room, and supplier bookkeeping from the remaining
+arithmetic theorem: primality selects the lacunary exponent, while the
+phase is exactly `scaledTotientSeriesFirstExp`. -/
 def DTWNaturalPrimeTailOrbitGap : Prop :=
   ∀ h : ℕ, 0 < h →
     ∀ N₀ : ℕ, ∃ p : ℕ,
@@ -1283,9 +1294,9 @@ theorem naturalPivotPointEscape_of_naturalPrimeTailOrbitGap
     · simpa [N] using htail
     · exact herror
 
-/-- Stronger optional spectral condition on the canonical natural prime
+/-- Stronger optional spectral producer on the canonical natural prime
 fibre.  Its first conjunct implies `DTWNaturalPivotWindowGap`; the residual
-and conjugate-pivot conjuncts are used only to bound centred variance. -/
+and conjugate-pivot conjuncts are needed only for the centred-variance route. -/
 def DTWNaturalPivotTwoModeCancellation : Prop :=
   ∀ h : ℕ, 0 < h →
     ∀ X₀ : ℕ, ∃ X L : ℕ,
@@ -1300,8 +1311,9 @@ def DTWNaturalPivotTwoModeCancellation : Prop :=
       ‖pivotFiberConjugatePhaseMode h X L (L - h) 1‖ ≤
         ((pivotFiber X L (L - h) 1).card : ℝ) / 15
 
-/-- Mean-free cofinal pairwise-energy condition.  By the exact finite-fibre
-identity, its lower bound implies reconstruction variance at least `|F|/5`. -/
+/-- Mean-free, cofinal pairwise-energy producer.  This is equivalent to a
+sufficient reconstruction-variance supply through the exact finite-fibre
+identity, while exposing only pair differences to arithmetic arguments. -/
 def DTWPivotPairwiseReconstructionEnergy : Prop :=
   ∀ h : ℕ, 0 < h →
     ∀ X₀ : ℕ, ∃ X L s m : ℕ,
@@ -1316,9 +1328,10 @@ def DTWPivotPairwiseReconstructionEnergy : Prop :=
             ‖pivotReconstructionError h N L s -
               pivotReconstructionError h N' L s‖ ^ 2
 
-/-- Cofinal counted-separated-pairs condition.  It assumes a subset of the
-ordered fibre square with uniform separation `δ` and mass
-`|P|δ² ≥ 2|F|²/5`. -/
+/-- Cofinal counted-separated-pairs producer.  This is a finite lattice and
+combinatorics socket beneath the pairwise-energy formulation: a proof may
+select only the arithmetically controlled ordered pairs and certify their
+common separation. -/
 def DTWPivotSeparatedPairs : Prop :=
   ∀ h : ℕ, 0 < h →
     ∀ X₀ : ℕ, ∃ X L s m : ℕ, ∃ P : Finset (ℕ × ℕ), ∃ δ : ℝ,
@@ -1351,9 +1364,9 @@ def DTWPivotWindowPairwiseEnergy : Prop :=
           ∑ N' ∈ pivotFiber X L s m,
             ‖windowFirstExp h N L - windowFirstExp h N' L‖ ^ 2
 
-/-- Counted-separated-pairs form of raw window-phase anti-concentration.  It
-assumes a subset of the ordered fibre square with one common lower bound for
-the chord separation. -/
+/-- Counted-separated-pairs form of raw window-phase anti-concentration.
+The remaining producer may select any controlled subset of the ordered fibre
+square and prove one common chord separation. -/
 def DTWPivotWindowSeparatedPairs : Prop :=
   ∀ h : ℕ, 0 < h →
     ∀ X₀ : ℕ, ∃ X L s m : ℕ, ∃ P : Finset (ℕ × ℕ), ∃ δ : ℝ,
@@ -1405,8 +1418,7 @@ theorem windowSeparatedPairs_of_pivotWindowSeparatedPairs
     (Finset.mem_filter.mp hN).1
   exact (Finset.mem_filter.mp hNsupplier).1
 
-/-- Counted separated raw-window pairs imply the corresponding lower bound
-for the complete window pairwise energy. -/
+/-- Counted raw-window pairs supply the complete window pairwise energy. -/
 theorem pivotWindowPairwiseEnergy_of_windowSeparatedPairs
     (hsep : DTWPivotWindowSeparatedPairs) :
     DTWPivotWindowPairwiseEnergy := by
@@ -1418,8 +1430,8 @@ theorem pivotWindowPairwiseEnergy_of_windowSeparatedPairs
     (card_mul_sq_le_sum_pairwise_norm_sq_of_separatedPairs
       (pivotFiber X L s m) (windowFirstExp h · L) P δ hP hδ hpairs)
 
-/-- Raw-window pairwise anti-concentration implies the uncentred anchor-defect
-bound directly, without passing through reconstruction variance. -/
+/-- Raw-window pairwise anti-concentration feeds the existing uncentred
+anchor defect without passing through reconstruction variance. -/
 theorem pivotAntiReconstruction_of_windowPairwiseEnergy
     (hpair : DTWPivotWindowPairwiseEnergy) :
     DTWPivotAntiReconstruction := by
@@ -1429,8 +1441,8 @@ theorem pivotAntiReconstruction_of_windowPairwiseEnergy
   exact ⟨X, L, s, m, hX, hs, hoverlap, hroom, hne,
     pivotFiberReconstructionDefect_ge_one_fifth_of_windowPairwise hne henergy⟩
 
-/-- Counted separated reconstruction-error pairs imply the complete
-pairwise-energy lower bound `2|F|²/5`. -/
+/-- Counted separated pairs supply the complete pairwise energy demanded by
+the existing #249 variance route. -/
 theorem pivotPairwiseReconstructionEnergy_of_separatedPairs
     (hsep : DTWPivotSeparatedPairs) :
     DTWPivotPairwiseReconstructionEnergy := by
@@ -1443,8 +1455,7 @@ theorem pivotPairwiseReconstructionEnergy_of_separatedPairs
       (pivotFiber X L s m) (pivotReconstructionError h · L s)
       P δ hP hδ hpairs)
 
-/-- The cofinal pairwise-energy condition implies the cofinal centred-variance
-condition by the exact finite-fibre identity. -/
+/-- Pairwise-energy supply feeds the established centred-variance producer. -/
 theorem pivotReconstructionVariance_of_pairwiseEnergy
     (hpair : DTWPivotPairwiseReconstructionEnergy) :
     DTWPivotReconstructionVariance := by
@@ -1454,9 +1465,8 @@ theorem pivotReconstructionVariance_of_pairwiseEnergy
   exact ⟨X, L, s, m, hX, hs, hoverlap, hroom, hne,
     pivotFiberReconstructionVariance_ge_one_fifth_of_pairwise hne henergy⟩
 
-/-- The two-mode condition implies the canonical window-gap condition using
-only its unweighted first-mode conjunct.  The `W₁` and `C₁` hypotheses are not
-used. -/
+/-- The old two-mode socket implies the canonical window-gap socket using
+only its unweighted first-mode conjunct. -/
 theorem naturalPivotWindowGap_of_naturalPivotTwoModeCancellation
     (htwo : DTWNaturalPivotTwoModeCancellation) :
     DTWNaturalPivotWindowGap := by
@@ -1485,9 +1495,9 @@ theorem pivotAntiReconstruction_of_naturalPivotWindowGap
       Nat.cast_nonneg _
     nlinarith
 
-/-- The natural-prime two-mode bounds imply cofinal reconstruction variance
-at least `6|F|/25`, and hence at least `|F|/5`.  The window, residual, and
-conjugate-phase estimates are all hypotheses. -/
+/-- The concrete natural-prime two-mode cancellation theorem supplies the
+existing cofinal reconstruction-variance socket, with `6/25` arithmetic
+slack before the `1/5` consumer threshold. -/
 theorem pivotReconstructionVariance_of_naturalPivotTwoModeCancellation
     (htwo : DTWNaturalPivotTwoModeCancellation) :
     DTWPivotReconstructionVariance := by
@@ -1505,8 +1515,8 @@ theorem pivotReconstructionVariance_of_naturalPivotTwoModeCancellation
       Nat.cast_nonneg _
     nlinarith
 
-/-- Cofinal reconstruction variance implies cofinal anti-reconstruction,
-because the omitted squared-bias term is nonnegative. -/
+/-- Cofinal reconstruction variance is a sufficient arithmetic producer for
+the established anti-reconstruction predicate. -/
 theorem pivotAntiReconstruction_of_reconstructionVariance
     (hvariance : DTWPivotReconstructionVariance) :
     DTWPivotAntiReconstruction := by
@@ -1518,8 +1528,8 @@ theorem pivotAntiReconstruction_of_reconstructionVariance
   exact hvar.trans (le_add_of_nonneg_right <| mul_nonneg
     (Nat.cast_nonneg _) (sq_nonneg _))
 
-/-- Cofinal pivot anti-reconstruction implies irrationality of the #249
-totient series by producing certified kills at arbitrarily large indices. -/
+/-- Cofinal pivot anti-reconstruction composes through the established
+certificate-supply theorem to the #249 irrationality target. -/
 theorem irrational_totient_series_of_pivotAntiReconstruction
     (hmix : DTWPivotAntiReconstruction) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
@@ -1545,8 +1555,7 @@ theorem irrational_totient_series_of_naturalPivotWindowGap
     (pivotAntiReconstruction_of_naturalPivotWindowGap hgap)
 
 /-- Exact singleton endpoint.  A cofinal point escape inside the canonical
-natural fibre gives the required finite estimate on the singleton `{N}` and
-therefore implies irrationality. -/
+natural fibre feeds the arbitrary-subset consumer with the singleton `{N}`. -/
 theorem irrational_totient_series_of_naturalPivotPointEscape
     (hpoint : DTWNaturalPivotPointEscape) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
@@ -1568,17 +1577,17 @@ theorem irrational_totient_series_of_naturalPivotPointEscape
   exact ⟨N, le_trans (le_trans (Nat.le_max_left _ _) hX)
     (Finset.mem_Ico.mp hNIco).1, L, hkill⟩
 
-/-- Exact prime-orbit endpoint.  The sole arithmetic hypothesis is a cofinal
-real-part gap for the prime-indexed infinite tail orbit; the preceding theorem
-transfers that gap to finite windows. -/
+/-- Exact prime-orbit endpoint.  The only assumed producer is a cofinal
+real-part gap for the prime-indexed infinite tail orbit; all finite
+certificate infrastructure is checked by the preceding bridge. -/
 theorem irrational_totient_series_of_naturalPrimeTailOrbitGap
     (hgap : DTWNaturalPrimeTailOrbitGap) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
   irrational_totient_series_of_naturalPivotPointEscape
     (naturalPivotPointEscape_of_naturalPrimeTailOrbitGap hgap)
 
-/-- Exact #249 variance endpoint: the cofinal centred-error condition implies
-irrationality through the variance--defect identity. -/
+/-- Exact #249 variance endpoint: proving the cofinal centred-error producer
+alone implies irrationality through the checked anti-reconstruction bridge. -/
 theorem irrational_totient_series_of_pivotReconstructionVariance
     (hvariance : DTWPivotReconstructionVariance) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
@@ -1606,9 +1615,9 @@ theorem irrational_totient_series_of_pivotWindowPairwiseEnergy
   irrational_totient_series_of_pivotAntiReconstruction
     (pivotAntiReconstruction_of_windowPairwiseEnergy hpair)
 
-/-- Exact #249 raw-window counted-separated-pairs endpoint.  Its hypotheses
-involve only dyadic window phases and a counted chord-separation bound on a
-pivot fibre. -/
+/-- Exact #249 raw-window counted-separated-pairs endpoint.  This is the
+pivot-fibre two-point socket: the arithmetic producer controls only dyadic
+window phases and their counted chord separation. -/
 theorem irrational_totient_series_of_pivotWindowSeparatedPairs
     (hsep : DTWPivotWindowSeparatedPairs) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
@@ -1751,7 +1760,8 @@ theorem windowSeparatedPairsAt_of_not_dyadic_scaled_totient_series
     (cofinally_scaledTotientSeriesFirstExp_adjacent_chord_ge_one_of_not_dyadic
       h hnd)
 
-/-- Irrationality implies the fibre-free condition at every positive shift. -/
+/-- Irrationality itself supplies the fibre-free endpoint at every positive
+shift. -/
 theorem windowSeparatedPairs_of_irrational_totient_series
     (hS : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) :
     DTWWindowSeparatedPairs := by
@@ -1759,18 +1769,18 @@ theorem windowSeparatedPairs_of_irrational_totient_series
   exact windowSeparatedPairsAt_of_cofinally_scaled_adjacent_chord h
     (cofinally_scaledTotientSeriesFirstExp_adjacent_chord_ge_one hS h hh)
 
-/-- The fibre-free window-pair condition is exactly equivalent to the
-irrationality of the #249 totient series.  Thus it is a geometric
-reformulation, not a logically weaker unresolved condition. -/
+/-- The fibre-free window-pair endpoint is exactly equivalent to the
+irrationality of the #249 totient series.  It is a useful geometric interface,
+but not a logically weaker unresolved arithmetic obligation. -/
 theorem dtwWindowSeparatedPairs_iff_irrational_totient_series :
     DTWWindowSeparatedPairs ↔
       Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
   ⟨irrational_totient_series_of_windowSeparatedPairs,
     windowSeparatedPairs_of_irrational_totient_series⟩
 
-/-- The stronger two-mode condition implies irrationality through the weaker
-window-gap condition.  Only the `W₀` bound is used; the `W₁` and `C₁` bounds
-are unnecessary for this implication. -/
+/-- Compatibility endpoint for the stronger two-mode socket.  Its proof now
+flows through the weaker window-gap route, making explicit that the `W₁` and
+`C₁` conjuncts are not on the certificate consumer's critical path. -/
 theorem irrational_totient_series_of_naturalPivotTwoModeCancellation
     (htwo : DTWNaturalPivotTwoModeCancellation) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=

@@ -619,7 +619,9 @@ def test_replay_subprocess_environment() -> None:
     )
 
 
-def synthetic_repository(parent: Path) -> tuple[Path, dict, str, str, str, Path]:
+def synthetic_repository(
+    parent: Path,
+) -> tuple[Path, dict, str, str, str, Path, Path]:
     root = parent / "repo"
     root.mkdir()
     git(root, "init", "-q")
@@ -634,7 +636,13 @@ def synthetic_repository(parent: Path) -> tuple[Path, dict, str, str, str, Path]
         if path == root / release.CONTRACT_PATH:
             continue
         path.parent.mkdir(parents=True, exist_ok=True)
-        if relative == "verification/comparator.json":
+        if relative in {
+            "verification/comparator.json",
+            "verification/comparator-replay-candidate.json",
+            "verification/comparator-1049-numerical-height.json",
+            "lean-toolchain",
+            "lake-manifest.json",
+        }:
             source = release.ROOT / relative
             path.write_bytes(source.read_bytes())
         else:
@@ -649,7 +657,18 @@ def synthetic_repository(parent: Path) -> tuple[Path, dict, str, str, str, Path]
     config = json.loads(
         (root / "verification/comparator.json").read_text(encoding="utf-8")
     )
+    portfolio_config = json.loads(
+        (root / "verification/comparator-replay-candidate.json").read_text(
+            encoding="utf-8"
+        )
+    )
     diagnostic = contract["replay"]["expected_negative_diagnostic"]
+    runtime_log_dir = parent / "runtime-logs"
+    runtime_log_dir.mkdir()
+    for filename in release.RUNTIME_LOG_BINDINGS:
+        (runtime_log_dir / filename).write_text(
+            f"synthetic runtime log: {filename}\n", encoding="utf-8"
+        )
     receipt = {
         "schema": release.RUNTIME_SCHEMA,
         "result": "pass",
@@ -658,6 +677,19 @@ def synthetic_repository(parent: Path) -> tuple[Path, dict, str, str, str, Path]
         "repository_tree": tree,
         "expected_repository_commit": commit,
         "repository_commit_matches_expected": True,
+        "ci": {
+            "repository": contract["runtime_receipt_provenance"]["repository"],
+            "run_id": "123456",
+            "run_attempt": "1",
+            "workflow": contract["runtime_receipt_provenance"]["workflow"],
+            "github_actions": True,
+            "provenance_matches_release_contract": True,
+            "attestation_posture": contract["runtime_receipt_provenance"][
+                "attestation_posture"
+            ],
+            "sandbox_mode": contract["replay"]["sandbox_modes"][0],
+        },
+        "proof_environment": release.expected_proof_environment(root),
         "comparator_toolchain": {
             "expected_revisions": contract["toolchain"],
             "observed_revisions": contract["toolchain"],
@@ -672,16 +704,58 @@ def synthetic_repository(parent: Path) -> tuple[Path, dict, str, str, str, Path]
             "permitted_axioms": config["permitted_axioms"],
             "config_digest": digest(root / "verification/comparator.json"),
         },
-        "checks": {
+        "comparator_replay_portfolio": {
+            "status": "commit_bound_comparator_replay_pass",
+            "config": "verification/comparator-replay-candidate.json",
+            "config_digest": digest(
+                root / "verification/comparator-replay-candidate.json"
+            ),
+            "challenge_module": portfolio_config["challenge_module"],
+            "solution_module": portfolio_config["solution_module"],
+            "theorem_names": portfolio_config["theorem_names"],
+            "theorem_count": len(portfolio_config["theorem_names"]),
+            "permitted_axioms": portfolio_config["permitted_axioms"],
+            "enable_nanoda": portfolio_config["enable_nanoda"],
+            "projection_check_exit": 0,
             "positive_comparator_exit": 0,
+            "positive_log_digest": digest(
+                runtime_log_dir / "artifacts-portfolio-positive.log"
+            ),
+        },
+        "checks": {
+            "projection_and_isolation_check_exit": 0,
+            "positive_comparator_exit": 0,
+            "negative_mismatch_comparator_exit": 1,
+            "positive_log_digest": digest(runtime_log_dir / "artifacts-positive.log"),
+            "negative_log_digest": digest(runtime_log_dir / "artifacts-negative.log"),
             "negative_fixture_rejected": True,
             "negative_expected_diagnostic": diagnostic,
+        },
+        "programme_local_checks": {
+            "erdos_1049_numerical_height": {
+                "config": "verification/comparator-1049-numerical-height.json",
+                "config_digest": digest(
+                    root / "verification/comparator-1049-numerical-height.json"
+                ),
+                "positive_comparator_exit": 0,
+                "positive_log_digest": digest(
+                    runtime_log_dir / "artifacts-1049-positive.log"
+                ),
+                "negative_mismatch_comparator_exit": 1,
+                "negative_log_digest": digest(
+                    runtime_log_dir / "artifacts-1049-negative.log"
+                ),
+                "negative_fixture_rejected": True,
+                "negative_expected_diagnostic": contract["programme_local_checks"][
+                    "erdos_1049_numerical_height"
+                ]["expected_negative_diagnostic"],
+            }
         },
         "whole_programme_disclosure": {"all_statuses_open": True},
     }
     receipt_path = parent / "runtime-receipt.json"
     write_json(receipt_path, receipt)
-    return root, contract, commit, tree, tag, receipt_path
+    return root, contract, commit, tree, tag, receipt_path, runtime_log_dir
 
 
 def test_replay_plan() -> None:
@@ -765,15 +839,148 @@ def test_public_problem_artifact_coverage() -> None:
 def test_release_manifest() -> None:
     with tempfile.TemporaryDirectory() as temporary:
         parent = Path(temporary)
-        root, contract, commit, tree, tag, receipt_path = synthetic_repository(parent)
+        (
+            root,
+            contract,
+            commit,
+            tree,
+            tag,
+            receipt_path,
+            runtime_log_dir,
+        ) = synthetic_repository(parent)
         manifest = release.build_manifest(
             root=root,
             source_commit=commit,
             source_tree=tree,
             release_tag=tag,
             runtime_receipt_path=receipt_path,
+            runtime_log_dir=runtime_log_dir,
         )
-        release.validate_manifest(manifest, root=root, runtime_receipt_path=receipt_path)
+        release.validate_manifest(
+            manifest,
+            root=root,
+            runtime_receipt_path=receipt_path,
+            runtime_log_dir=runtime_log_dir,
+        )
+
+        base_receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+        receipt_adversaries = [
+            (("ci", "repository"), "attacker/fork", "different repository"),
+            (("ci", "workflow"), "Untrusted CI", "different workflow"),
+            (("ci", "github_actions"), False, "not produced in GitHub Actions"),
+            (("ci", "run_id"), "not-numeric", "numeric Actions run identity"),
+            (("ci", "sandbox_mode"), "local-fake-landrun-smoke", "non-release sandbox"),
+            (("proof_environment", "lean_toolchain"), "leanprover/lean4:v0.0.0", "proof environment"),
+            (("checks", "projection_and_isolation_check_exit"), 1, "projection and isolation"),
+            (("checks", "projection_and_isolation_check_exit"), False, "projection and isolation"),
+            (("checks", "positive_comparator_exit"), False, "positive Comparator check"),
+            (("checks", "negative_mismatch_comparator_exit"), 0, "negative Comparator fixture"),
+            (("checks", "positive_log_digest"), None, "positive_log_digest"),
+            (("checks", "negative_log_digest"), "sha256:bad", "negative_log_digest"),
+            (
+                ("comparator_replay_portfolio", "positive_log_digest"),
+                None,
+                "lacks a log digest",
+            ),
+            (
+                ("programme_local_checks", "erdos_1049_numerical_height", "positive_log_digest"),
+                None,
+                "positive_log_digest",
+            ),
+            (
+                ("programme_local_checks", "erdos_1049_numerical_height", "negative_log_digest"),
+                None,
+                "negative_log_digest",
+            ),
+            (
+                ("programme_local_checks", "erdos_1049_numerical_height", "negative_mismatch_comparator_exit"),
+                0,
+                "#1049 local negative Comparator fixture",
+            ),
+            (
+                ("programme_local_checks", "erdos_1049_numerical_height", "negative_expected_diagnostic"),
+                "wrong diagnostic",
+                "#1049 local negative diagnostic",
+            ),
+            (
+                ("programme_local_checks", "erdos_1049_numerical_height", "config_digest"),
+                "sha256:" + "e" * 64,
+                "#1049 local Comparator config digest",
+            ),
+            (
+                ("comparator_replay_portfolio", "challenge_module"),
+                "Wrong.Challenge",
+                "Challenge module is stale",
+            ),
+            (
+                ("comparator_replay_portfolio", "solution_module"),
+                "Wrong.Solution",
+                "Solution module is stale",
+            ),
+            (("comparator_replay_portfolio", "enable_nanoda"), True, "enabled NanoDa"),
+            (("comparator_replay_portfolio", "projection_check_exit"), 1, "projection was stale"),
+            (("comparator_replay_portfolio", "projection_check_exit"), False, "projection was stale"),
+            (("comparator_replay_portfolio", "positive_comparator_exit"), 1, "did not pass"),
+            (("comparator_replay_portfolio", "positive_comparator_exit"), False, "did not pass"),
+            (
+                ("programme_local_checks", "erdos_1049_numerical_height", "positive_comparator_exit"),
+                False,
+                "#1049 local positive Comparator check",
+            ),
+            (("comparator_replay_portfolio", "config_digest"), "sha256:" + "f" * 64, "config digest is stale"),
+            (("comparator_replay_portfolio", "theorem_names"), ["Wrong.theorem"], "theorem set is stale"),
+        ]
+        for path, value, diagnostic in receipt_adversaries:
+            mutated = copy.deepcopy(base_receipt)
+            target = mutated
+            for key in path[:-1]:
+                target = target[key]
+            target[path[-1]] = value
+            expect_error(
+                lambda mutated=mutated: release.validate_runtime_receipt(
+                    mutated,
+                    root=root,
+                    source_commit=commit,
+                    source_tree=tree,
+                    release_contract=contract,
+                ),
+                diagnostic,
+            )
+        local_contract_adversaries = {
+            "challenge_module": "Wrong.Challenge",
+            "solution_module": "Wrong.Solution",
+            "theorem_names": ["Wrong.theorem"],
+            "permitted_axioms": ["Classical.choice"],
+            "enable_nanoda": True,
+        }
+        for field, value in local_contract_adversaries.items():
+            mutated_contract = copy.deepcopy(contract)
+            mutated_contract["programme_local_checks"][
+                "erdos_1049_numerical_height"
+            ][field] = value
+            expect_error(
+                lambda mutated_contract=mutated_contract: release.validate_runtime_receipt(
+                    base_receipt,
+                    root=root,
+                    source_commit=commit,
+                    source_tree=tree,
+                    release_contract=mutated_contract,
+                ),
+                f"#1049 local Comparator {field}",
+            )
+        tampered_log = runtime_log_dir / "artifacts-positive.log"
+        original_log = tampered_log.read_bytes()
+        tampered_log.write_bytes(original_log + b"tampered\n")
+        expect_error(
+            lambda: release.validate_manifest(
+                manifest,
+                root=root,
+                runtime_receipt_path=receipt_path,
+                runtime_log_dir=runtime_log_dir,
+            ),
+            "runtime log digest differs from receipt",
+        )
+        tampered_log.write_bytes(original_log)
         require(
             manifest["source"]["commit_url"].endswith("/commit/" + commit),
             "release manifest source URL is not commit-bound",
@@ -798,6 +1005,7 @@ def test_release_manifest() -> None:
             manifest["release_assets"]["required"] == [
                 f"external-verification-receipt-{commit}.json",
                 f"external-verification-release-manifest-{commit}.json",
+                *contract["release_assets"]["runtime_log_files"],
             ],
             "release manifest asset names are not commit-bound",
         )
@@ -809,7 +1017,10 @@ def test_release_manifest() -> None:
         wrong_tree["source"]["tree"] = "f" * 40
         expect_error(
             lambda: release.validate_manifest(
-                wrong_tree, root=root, runtime_receipt_path=receipt_path
+                wrong_tree,
+                root=root,
+                runtime_receipt_path=receipt_path,
+                runtime_log_dir=runtime_log_dir,
             ),
             "checkout tree",
         )
@@ -819,7 +1030,10 @@ def test_release_manifest() -> None:
         )
         expect_error(
             lambda: release.validate_manifest(
-                floating, root=root, runtime_receipt_path=receipt_path
+                floating,
+                root=root,
+                runtime_receipt_path=receipt_path,
+                runtime_log_dir=runtime_log_dir,
             ),
             "tracked-artifact identities are stale",
         )
@@ -834,6 +1048,7 @@ def test_release_manifest() -> None:
                 source_tree=tree,
                 release_tag=tag,
                 runtime_receipt_path=failed_path,
+                runtime_log_dir=runtime_log_dir,
             ),
             "not a final pass",
         )
@@ -844,6 +1059,7 @@ def test_release_manifest() -> None:
                 source_tree=tree,
                 release_tag="main",
                 runtime_receipt_path=receipt_path,
+                runtime_log_dir=runtime_log_dir,
             ),
             "non-floating tag",
         )

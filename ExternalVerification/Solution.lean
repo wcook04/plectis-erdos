@@ -32,6 +32,7 @@ import ErdosProblems.Erdos249.CyclotomicAnchoredKill
 import ErdosProblems.Erdos249.TotientStrictPrimeEscape
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
+import Erdos249257.AllBaseReciprocalSupportIrrationality
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
 import ErdosProblems.Erdos269.RestrictedFloorSum
 import ErdosProblems.Erdos269.WeightedPhaseCarry
@@ -820,6 +821,12 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.volume_mersenneAchievementSet
   · intro b hb
     simpa using Erdos249257.irrational_erdosSum_full_support b hb
+  · intro b A hb hA hsum
+    simpa [erdosSupportSeries,
+      Erdos249257.erdosSupportSeries,
+      Erdos249257.reciprocalSupportTerm] using
+      Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal
+        b A hb hA hsum
   · intro b A hb hA hpair hsum
     simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using
       Erdos249257.irrational_erdosSupportSeries_pairwise_coprime
@@ -1355,6 +1362,16 @@ theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
 theorem irrational_erdosSum_full_support (b : ℕ) (hb : 2 ≤ b) :
     Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1)) := by
   simpa using Erdos249257.irrational_erdosSum_full_support b hb
+
+theorem irrational_erdosSupportSeries_of_summable_reciprocal
+    (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)
+    (hsum : Summable (Set.indicator A fun a : ℕ => (1 : ℝ) / a)) :
+    Irrational (erdosSupportSeries b A) := by
+  simpa [erdosSupportSeries,
+    Erdos249257.erdosSupportSeries,
+    Erdos249257.reciprocalSupportTerm] using
+    Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal
+      b A hb hA hsum
 
 theorem irrational_erdosSupportSeries_pairwise_coprime
     (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)

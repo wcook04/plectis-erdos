@@ -2383,4 +2383,51 @@ theorem eventuallyBoundedNegativePart_eventually_zero
   have hKk : K ≤ k := by omega
   simpa [hNk] using hK k hKk
 
+/-- Paper-facing endpoint for the bounded-negative-part branch.  Along an
+exact positive product-cleared reciprocal-tail orbit
+`Cₙ₊₁ + Dₙ = aₙ Cₙ`, `Dₙ₊₁ = aₙ Dₙ` with centered state
+`Eₙ = Dₙ - (aₙ - 1) Cₙ`, eventual strict centering `|Eₙ| < Cₙ`, an eventual
+uniform lower bound `-B ≤ Eₙ`, and division-free normalized vanishing
+`K |Eₙ| < Cₙ` for every `K`, the original denominators satisfy the exact
+Sylvester recurrence `aₙ₊₁ = aₙ² - aₙ + 1` from some index onward.
+
+This composes `eventuallyBoundedNegativePart_eventually_zero` with
+`sylvesterNext_eventually_of_centered_zero`.  No periodicity or eventual
+periodicity is assumed anywhere in the chain, so the statement covers the
+whole bounded-negative regime including aperiodic orbits.
+
+The theorem is conditional on its normalized-vanishing hypothesis and
+therefore does not settle Erdős #243; the unrestricted problem still admits
+integer centered states with cofinally unbounded negative excursions, which
+these hypotheses exclude. -/
+theorem boundedNegativePart_sylvesterNext_eventually
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ)
+    (ha : ∀ n, 1 < a n)
+    (hCpos : ∀ n, 0 < C n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hcentered : ∃ N, ∀ n, N ≤ n → Int.natAbs (E n) < C n)
+    (hbound : ∃ N B : ℕ, ∀ n, N ≤ n → -(B : ℤ) ≤ E n)
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (E n) < C n) :
+    ∃ N, ∀ n, N ≤ n →
+      (a (n + 1) : ℤ) = sylvesterNext (a n : ℤ) := by
+  have hzero : ∃ N, ∀ n, N ≤ n → E n = 0 :=
+    eventuallyBoundedNegativePart_eventually_zero
+      a C D E ha hCpos hC hD hE hcentered hbound hvanish
+  apply sylvesterNext_eventually_of_centered_zero
+    (fun n ↦ (a n : ℤ)) (fun n ↦ (D n : ℤ)) (fun n ↦ (C n : ℤ))
+  · intro n
+    exact natDen_eq_nextDenState a D hD n
+  · intro n
+    exact natTail_eq_nextTailState a C D hC n
+  · obtain ⟨N, hN⟩ := hzero
+    refine ⟨N, fun n hn ↦ ?_⟩
+    have hn0 := hN n hn
+    rw [hE n] at hn0
+    exact hn0
+  · refine ⟨0, fun n _hn ↦ ?_⟩
+    exact_mod_cast (Nat.ne_of_gt (hCpos (n + 1)))
+
 end ErdosProblems.Erdos243

@@ -1,0 +1,2232 @@
+{
+  "schema": "plectis.comparator-replay-membership/1",
+  "required_package_ids": [
+    "ExternalVerification1041ContactSurvives",
+    "ExternalVerification1041CriticalGeometry",
+    "ExternalVerification1041CyclicTetranomialCoefficient",
+    "ExternalVerification1041CyclicTrinomialFiber",
+    "ExternalVerification1041FiniteAvoidance",
+    "ExternalVerification1041FirstMergeCriticalValueSeparation",
+    "ExternalVerification1041GeometricTail",
+    "ExternalVerification1041LevelSeparation",
+    "ExternalVerification1041LifetimeOrliczBound",
+    "ExternalVerification1041NewtonDecay",
+    "ExternalVerification1041NewtonDerivative",
+    "ExternalVerification1041NewtonSolve",
+    "ExternalVerification1041Noncritical",
+    "ExternalVerification1041NormRecipPowerSum",
+    "ExternalVerification1041OrliczNoUniformLinear",
+    "ExternalVerification1041QuadraticContact",
+    "ExternalVerification1041QuarticQuotientFiber",
+    "ExternalVerification1041ReciprocalHalfPlane",
+    "ExternalVerification1041ReciprocalRigidity",
+    "ExternalVerification1041RootRetention",
+    "ExternalVerification1041SecondAgeBound",
+    "ExternalVerification1041SignedMomentTetranomial",
+    "ExternalVerification1041SolvedFamilies",
+    "ExternalVerification1041StapleEquality",
+    "ExternalVerification1041StapleLength",
+    "ExternalVerification1041TetranomialSpokes",
+    "ExternalVerification1041TranslationAvoidance",
+    "ExternalVerification1041WeightedChainConsumer",
+    "ExternalVerification1049",
+    "ExternalVerification1049AdelicHeightBridge",
+    "ExternalVerification1049BezoutPluckerJets",
+    "ExternalVerification1049HermitePadeNoGo",
+    "ExternalVerification1049PrimeSupportSelectors",
+    "ExternalVerification1049RationalBaseBarrier",
+    "ExternalVerification243BoundedNegativePartRigidity",
+    "ExternalVerification243PeriodicNegativeOrbit",
+    "ExternalVerification243RepairEntropy",
+    "ExternalVerification243SummableNegativeMassRigidity",
+    "ExternalVerification249ActualLcmOrbit",
+    "ExternalVerification249BinaryCyclotomicAnchors",
+    "ExternalVerification249CanonicalMersenneFrontier",
+    "ExternalVerification249CarryRankFrontier",
+    "ExternalVerification249DyadicTotientKernel",
+    "ExternalVerification249FullDepthRayAmplifier",
+    "ExternalVerification249RankOneSharpFloor",
+    "ExternalVerification251ActualPrimeGapTail",
+    "ExternalVerification251AffineCircularity",
+    "ExternalVerification251LcmDiagonalCriterion",
+    "ExternalVerification251PolynomialShiftCountermodel",
+    "ExternalVerification251PrimeGapIdentity",
+    "ExternalVerification257AchievementSetGeometry",
+    "ExternalVerification257ActualUpperSuccessor",
+    "ExternalVerification257BooleanMobiusCarry",
+    "ExternalVerification257FinitePeriodNoncollapse",
+    "ExternalVerification257FourNinthsTetraprime",
+    "ExternalVerification257PositiveSkipEquivalence",
+    "ExternalVerification257RationalTailRigidity",
+    "ExternalVerification257ReciprocalSupport",
+    "ExternalVerification257ScaledGreedyTrap",
+    "ExternalVerification257TerminalScaledVanishing",
+    "ExternalVerification257TwentyOneFatalBranch",
+    "ExternalVerification269ActualShellOrbit",
+    "ExternalVerification269AllScaleLattice",
+    "ExternalVerification269CarryMechanism",
+    "ExternalVerification269IntegralBranchPinning",
+    "ExternalVerification269ThreePrimeStructure",
+    "ExternalVerification68AdjacentUnitCarryWindow",
+    "ExternalVerification68ChannelRadius",
+    "ExternalVerification68CompanionOrbitBoundary",
+    "ExternalVerification68MovingFactorScaleSplit",
+    "ExternalVerification68PrimePole",
+    "ExternalVerification68PrimeUnitTranslator",
+    "ExternalVerification68StrictSuccessorCarry"
+  ],
+  "required_interfaces_by_package": {
+    "ExternalVerification1041ContactSurvives": [
+      "Erdos249257.ExternalVerification1041ContactSurvives.contact_survives"
+    ],
+    "ExternalVerification1041CriticalGeometry": [
+      "Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes",
+      "Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity",
+      "Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity_strict",
+      "Erdos249257.ExternalVerification1041CriticalGeometry.criticalGeometricMean_twoRootProximity",
+      "Erdos249257.ExternalVerification1041CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes"
+    ],
+    "ExternalVerification1041CyclicTetranomialCoefficient": [
+      "Erdos249257.ExternalVerification1041CyclicTetranomialCoefficient.tetranomialRoot_spoke_factorization",
+      "Erdos249257.ExternalVerification1041CyclicTetranomialCoefficient.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget",
+      "Erdos249257.ExternalVerification1041CyclicTetranomialCoefficient.tetranomialRoot_spoke_norm_lt_one_of_rootBudget"
+    ],
+    "ExternalVerification1041CyclicTrinomialFiber": [
+      "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.cyclicTrinomial_two_short_fiber_displacements",
+      "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_factorization",
+      "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one_of_norm_lt_one"
+    ],
+    "ExternalVerification1041FiniteAvoidance": [
+      "Erdos249257.ExternalVerification1041FiniteAvoidance.exists_small_avoiding_finite_realAffineLines"
+    ],
+    "ExternalVerification1041FirstMergeCriticalValueSeparation": [
+      "Erdos249257.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_exact_convenient_thresholds",
+      "Erdos249257.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_length_lt_two_of_squared_bound"
+    ],
+    "ExternalVerification1041GeometricTail": [
+      "Erdos249257.ExternalVerification1041GeometricTail.tsum_geometric_tail"
+    ],
+    "ExternalVerification1041LevelSeparation": [
+      "Erdos249257.ExternalVerification1041LevelSeparation.exists_small_translation_separating_arguments_and_norms"
+    ],
+    "ExternalVerification1041LifetimeOrliczBound": [
+      "Erdos249257.ExternalVerification1041LifetimeOrliczBound.orlicz_le_of_lifetime_le"
+    ],
+    "ExternalVerification1041NewtonDecay": [
+      "Erdos249257.ExternalVerification1041NewtonDecay.no_newtonConnection_of_not_samePositiveRay"
+    ],
+    "ExternalVerification1041NewtonDerivative": [
+      "Erdos249257.ExternalVerification1041NewtonDerivative.newtonFlow_value_hasDerivAt"
+    ],
+    "ExternalVerification1041NewtonSolve": [
+      "Erdos249257.ExternalVerification1041NewtonSolve.newton_solve"
+    ],
+    "ExternalVerification1041Noncritical": [
+      "Erdos249257.ExternalVerification1041Noncritical.noncritical_on_of_norm_lt_uniform_lower_bound"
+    ],
+    "ExternalVerification1041NormRecipPowerSum": [
+      "Erdos249257.ExternalVerification1041NormRecipPowerSum.norm_recipPowerSum_le"
+    ],
+    "ExternalVerification1041OrliczNoUniformLinear": [
+      "Erdos249257.ExternalVerification1041OrliczNoUniformLinear.no_positive_uniform_linear_lower"
+    ],
+    "ExternalVerification1041QuadraticContact": [
+      "Erdos249257.ExternalVerification1041QuadraticContact.quadratic_contact_absorbs"
+    ],
+    "ExternalVerification1041QuarticQuotientFiber": [
+      "Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_axis_integral",
+      "Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_endpoint_budget_lt_two",
+      "Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_kernel_le_axis",
+      "Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_length_lt_two_of_le_endpoint_budget"
+    ],
+    "ExternalVerification1041ReciprocalHalfPlane": [
+      "Erdos249257.ExternalVerification1041ReciprocalHalfPlane.newtonReciprocalVector_supportingHalfPlane"
+    ],
+    "ExternalVerification1041ReciprocalRigidity": [
+      "Erdos249257.ExternalVerification1041ReciprocalRigidity.re_eq_zero_of_reciprocal_sum_eq_zero"
+    ],
+    "ExternalVerification1041RootRetention": [
+      "Erdos249257.ExternalVerification1041RootRetention.constant_perturbation_roots_in_unitDisk"
+    ],
+    "ExternalVerification1041SecondAgeBound": [
+      "Erdos249257.ExternalVerification1041SecondAgeBound.second_age_le_of_tail_lower"
+    ],
+    "ExternalVerification1041SignedMomentTetranomial": [
+      "Erdos249257.ExternalVerification1041SignedMomentTetranomial.exists_two_tails_norm_lt_one_of_exact_L2_budget",
+      "Erdos249257.ExternalVerification1041SignedMomentTetranomial.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget",
+      "Erdos249257.ExternalVerification1041SignedMomentTetranomial.sum_normSq_const_add_mul"
+    ],
+    "ExternalVerification1041SolvedFamilies": [
+      "Erdos249257.ExternalVerification1041SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound",
+      "Erdos249257.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke",
+      "Erdos249257.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies"
+    ],
+    "ExternalVerification1041StapleEquality": [
+      "Erdos249257.ExternalVerification1041StapleEquality.staple_length_eq"
+    ],
+    "ExternalVerification1041StapleLength": [
+      "Erdos249257.ExternalVerification1041StapleLength.staple_length_lt_two"
+    ],
+    "ExternalVerification1041TetranomialSpokes": [
+      "Erdos249257.ExternalVerification1041TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget",
+      "Erdos249257.ExternalVerification1041TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget",
+      "Erdos249257.ExternalVerification1041TetranomialSpokes.sum_normSq_const_add_mul",
+      "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_factorization",
+      "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget",
+      "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget"
+    ],
+    "ExternalVerification1041TranslationAvoidance": [
+      "Erdos249257.ExternalVerification1041TranslationAvoidance.exists_small_translation_separating_arguments"
+    ],
+    "ExternalVerification1041WeightedChainConsumer": [
+      "Erdos249257.ExternalVerification1041WeightedChainConsumer.weighted_chain_consumer"
+    ],
+    "ExternalVerification1049": [
+      "Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight"
+    ],
+    "ExternalVerification1049AdelicHeightBridge": [
+      "Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41",
+      "Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt",
+      "Erdos249257.ExternalVerification1049AdelicHeightBridge.fourJet_card_gt_two_pow_of_rank_41",
+      "Erdos249257.ExternalVerification1049AdelicHeightBridge.threeHalves_hankelChargeThreshold_lt_eightFortyOne",
+      "Erdos249257.ExternalVerification1049AdelicHeightBridge.threeHalves_rectangular_hp_gap_gt_threeThirteenths",
+      "Erdos249257.ExternalVerification1049AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive",
+      "Erdos249257.ExternalVerification1049AdelicHeightBridge.three_two_scalar_margin_lt_explicit",
+      "Erdos249257.ExternalVerification1049AdelicHeightBridge.twoPow_sixtyFour_lt_threePow_fortyOne",
+      "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge",
+      "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge",
+      "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial"
+    ],
+    "ExternalVerification1049BezoutPluckerJets": [
+      "Erdos249257.ExternalVerification1049BezoutPluckerJets.adjacent_det_zero_forces_all_det_zero",
+      "Erdos249257.ExternalVerification1049BezoutPluckerJets.anchor_det_zero_forces_all_det_zero",
+      "Erdos249257.ExternalVerification1049BezoutPluckerJets.binary_row_collision_of_anchor_det_zero",
+      "Erdos249257.ExternalVerification1049BezoutPluckerJets.zmod_binary_tail_collision_of_two_three_depth"
+    ],
+    "ExternalVerification1049HermitePadeNoGo": [
+      "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_eq_zero_iff",
+      "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_expansion",
+      "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_nonpos",
+      "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff",
+      "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_le_classical"
+    ],
+    "ExternalVerification1049PrimeSupportSelectors": [
+      "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primePowerSupportedOneRow_rationalGap",
+      "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedOneRow_rationalGap",
+      "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedTwoSelector_rationalGap",
+      "Erdos249257.ExternalVerification1049PrimeSupportSelectors.rationalTwoSelector_notBothTendstoZero",
+      "Erdos249257.ExternalVerification1049PrimeSupportSelectors.twoSelector_unimodularHeightDecay_tradeoff",
+      "Erdos249257.ExternalVerification1049PrimeSupportSelectors.zeroDenominatorCoordinates_binaryCollision"
+    ],
+    "ExternalVerification1049RationalBaseBarrier": [
+      "Erdos249257.ExternalVerification1049RationalBaseBarrier.rationalBaseClearedTailQ_succ",
+      "Erdos249257.ExternalVerification1049RationalBaseBarrier.threeHalves_no_coordinatewiseCorridor",
+      "Erdos249257.ExternalVerification1049RationalBaseBarrier.twoPow_le_rationalBaseForcingNat"
+    ],
+    "ExternalVerification243BoundedNegativePartRigidity": [
+      "Erdos249257.ExternalVerification243BoundedNegativePartRigidity.boundedNegativePart_completeRigidity"
+    ],
+    "ExternalVerification243PeriodicNegativeOrbit": [
+      "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit",
+      "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_periodicNegative_orbit",
+      "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit"
+    ],
+    "ExternalVerification243RepairEntropy": [
+      "Erdos249257.ExternalVerification243RepairEntropy.eventually_recoveryPayment_eq_one_of_fixedLength",
+      "Erdos249257.ExternalVerification243RepairEntropy.repairedFamily_recovery_energy_divisionFree",
+      "Erdos249257.ExternalVerification243RepairEntropy.repaired_card_bound_of_independent"
+    ],
+    "ExternalVerification243SummableNegativeMassRigidity": [
+      "Erdos249257.ExternalVerification243SummableNegativeMassRigidity.summableNegativeMass_completeRigidity"
+    ],
+    "ExternalVerification249ActualLcmOrbit": [
+      "Erdos249257.ExternalVerification249ActualLcmOrbit.actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix",
+      "Erdos249257.ExternalVerification249ActualLcmOrbit.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply"
+    ],
+    "ExternalVerification249BinaryCyclotomicAnchors": [
+      "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicAnchoredKillSupply_iff_irrational",
+      "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicLayer_unboundedPrimeDivisorSupply",
+      "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.exists_clean_binaryCyclotomicAnchor",
+      "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational"
+    ],
+    "ExternalVerification249CanonicalMersenneFrontier": [
+      "Erdos249257.ExternalVerification249CanonicalMersenneFrontier.fullMersenneBlockResidue_succ",
+      "Erdos249257.ExternalVerification249CanonicalMersenneFrontier.fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational",
+      "Erdos249257.ExternalVerification249CanonicalMersenneFrontier.fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint"
+    ],
+    "ExternalVerification249CarryRankFrontier": [
+      "Erdos249257.ExternalVerification249CarryRankFrontier.carryShift_dvd_iff_tailDiff_mem_int",
+      "Erdos249257.ExternalVerification249CarryRankFrontier.finrank_canonicalCarryKernel_ge_of_certificate",
+      "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit",
+      "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+      "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional",
+      "Erdos249257.ExternalVerification249CarryRankFrontier.totient_carryKernel_diff"
+    ],
+    "ExternalVerification249DyadicTotientKernel": [
+      "Erdos249257.ExternalVerification249DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks"
+    ],
+    "ExternalVerification249FullDepthRayAmplifier": [
+      "Erdos249257.ExternalVerification249FullDepthRayAmplifier.apFullDepthEscape_iff_irrational",
+      "Erdos249257.ExternalVerification249FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_irrational",
+      "Erdos249257.ExternalVerification249FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_periodMultipleKillSupply",
+      "Erdos249257.ExternalVerification249FullDepthRayAmplifier.eventually_twoSyndetic_fullDepthKillMultipliers_of_seed",
+      "Erdos249257.ExternalVerification249FullDepthRayAmplifier.exists_fullDepthKill_on_ray_iff_shift_notMem_int"
+    ],
+    "ExternalVerification249RankOneSharpFloor": [
+      "Erdos249257.ExternalVerification249RankOneSharpFloor.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen",
+      "Erdos249257.ExternalVerification249RankOneSharpFloor.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty",
+      "Erdos249257.ExternalVerification249RankOneSharpFloor.primitive_form_abs_gt_twentyOne_div_threeTwenty",
+      "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_eq_one_five_iff",
+      "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen",
+      "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty"
+    ],
+    "ExternalVerification251ActualPrimeGapTail": [
+      "Erdos249257.ExternalVerification251ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational",
+      "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral",
+      "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailState_recurrence",
+      "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small"
+    ],
+    "ExternalVerification251AffineCircularity": [
+      "Erdos249257.ExternalVerification251AffineCircularity.adjacent_small_mismatch_iff_signed_two_window",
+      "Erdos249257.ExternalVerification251AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral",
+      "Erdos249257.ExternalVerification251AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral"
+    ],
+    "ExternalVerification251LcmDiagonalCriterion": [
+      "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_allLcmDiagonal_nonintegral",
+      "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_cofinalNonintegralTailShifts",
+      "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_nonintegral_on_schedule",
+      "Erdos249257.ExternalVerification251LcmDiagonalCriterion.notIrrationalInitial_iff_exists_integral_positive_tailShift",
+      "Erdos249257.ExternalVerification251LcmDiagonalCriterion.tailShiftIntegral_iff_orderOf_dvd"
+    ],
+    "ExternalVerification251PolynomialShiftCountermodel": [
+      "Erdos249257.ExternalVerification251PolynomialShiftCountermodel.polynomialGapTailCountermodel"
+    ],
+    "ExternalVerification251PrimeGapIdentity": [
+      "Erdos249257.ExternalVerification251PrimeGapIdentity.primeGapSeries_summable",
+      "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries",
+      "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries",
+      "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_summable"
+    ],
+    "ExternalVerification257AchievementSetGeometry": [
+      "Erdos249257.ExternalVerification257AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume"
+    ],
+    "ExternalVerification257ActualUpperSuccessor": [
+      "Erdos249257.ExternalVerification257ActualUpperSuccessor.actualUpperRightPacketLinearEscape_iff_successorLinearEscape",
+      "Erdos249257.ExternalVerification257ActualUpperSuccessor.actualUpperSuccessorLinearEscape_completeCounterexample"
+    ],
+    "ExternalVerification257BooleanMobiusCarry": [
+      "Erdos249257.ExternalVerification257BooleanMobiusCarry.BooleanMobiusCarryCertificate.reconstructsSupport",
+      "Erdos249257.ExternalVerification257BooleanMobiusCarry.exists_booleanMobiusCarry_of_support_fraction",
+      "Erdos249257.ExternalVerification257BooleanMobiusCarry.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
+      "Erdos249257.ExternalVerification257BooleanMobiusCarry.support_fraction_of_booleanMobiusCarry"
+    ],
+    "ExternalVerification257FinitePeriodNoncollapse": [
+      "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den",
+      "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum"
+    ],
+    "ExternalVerification257FourNinthsTetraprime": [
+      "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprimePrimeRepair_defect_le_thirty_five",
+      "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprime_baseKernel",
+      "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprime_completeCounterexample"
+    ],
+    "ExternalVerification257PositiveSkipEquivalence": [
+      "Erdos249257.ExternalVerification257PositiveSkipEquivalence.cofinalPositiveHalfGreedySkips_iff_half_mem",
+      "Erdos249257.ExternalVerification257PositiveSkipEquivalence.greedyMersenneRemainderRat_half_pos"
+    ],
+    "ExternalVerification257RationalTailRigidity": [
+      "Erdos249257.ExternalVerification257RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one",
+      "Erdos249257.ExternalVerification257RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction",
+      "Erdos249257.ExternalVerification257RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction",
+      "Erdos249257.ExternalVerification257RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add"
+    ],
+    "ExternalVerification257ReciprocalSupport": [
+      "Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal"
+    ],
+    "ExternalVerification257ScaledGreedyTrap": [
+      "Erdos249257.ExternalVerification257ScaledGreedyTrap.mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded",
+      "Erdos249257.ExternalVerification257ScaledGreedyTrap.mersenneAchievementSet_eq_scaledGreedyTrap",
+      "Erdos249257.ExternalVerification257ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledLowerBranchCofinally",
+      "Erdos249257.ExternalVerification257ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded",
+      "Erdos249257.ExternalVerification257ScaledGreedyTrap.rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally",
+      "Erdos249257.ExternalVerification257ScaledGreedyTrap.scaledGreedyRemainder_tendsto_atTop_of_not_mem"
+    ],
+    "ExternalVerification257TerminalScaledVanishing": [
+      "Erdos249257.ExternalVerification257TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample"
+    ],
+    "ExternalVerification257TwentyOneFatalBranch": [
+      "Erdos249257.ExternalVerification257TwentyOneFatalBranch.one_div_twenty_one_mem_iff_not_fatalAlignedBranch",
+      "Erdos249257.ExternalVerification257TwentyOneFatalBranch.one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates",
+      "Erdos249257.ExternalVerification257TwentyOneFatalBranch.twentyOneClosedRow_forces_quotientGreedy",
+      "Erdos249257.ExternalVerification257TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_affine_supercapacity",
+      "Erdos249257.ExternalVerification257TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_strict_supercapacity"
+    ],
+    "ExternalVerification269ActualShellOrbit": [
+      "Erdos249257.ExternalVerification269ActualShellOrbit.actual_dyadicShellOrbit_recurrence_and_escape"
+    ],
+    "ExternalVerification269AllScaleLattice": [
+      "Erdos249257.ExternalVerification269AllScaleLattice.dyadicShellTsumTailR235_eq_range_add",
+      "Erdos249257.ExternalVerification269AllScaleLattice.exists_normalizedTailState_collision_of_value_eq_rat",
+      "Erdos249257.ExternalVerification269AllScaleLattice.heightNormalizer235_mul_windowMass_eq_int",
+      "Erdos249257.ExternalVerification269AllScaleLattice.qsmul_normalizedTailState_eq_int_of_value_eq_rat",
+      "Erdos249257.ExternalVerification269AllScaleLattice.smoothHeight_mul_prime_dvd_boundaryHeight",
+      "Erdos249257.ExternalVerification269AllScaleLattice.two_mul_heightNormalizer235"
+    ],
+    "ExternalVerification269CarryMechanism": [
+      "Erdos249257.ExternalVerification269CarryMechanism.carryLift_blockDefect",
+      "Erdos249257.ExternalVerification269CarryMechanism.carry_eq_residueDigit_add_coboundary",
+      "Erdos249257.ExternalVerification269CarryMechanism.no_carryLift_of_errorBound_below_twoPow",
+      "Erdos249257.ExternalVerification269CarryMechanism.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+      "Erdos249257.ExternalVerification269CarryMechanism.no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull",
+      "Erdos249257.ExternalVerification269CarryMechanism.perturbation_eq_zero_of_blockNull_twoAnchors"
+    ],
+    "ExternalVerification269IntegralBranchPinning": [
+      "Erdos249257.ExternalVerification269IntegralBranchPinning.integral_state_upward_closed",
+      "Erdos249257.ExternalVerification269IntegralBranchPinning.surviving_window_orbit_eq_true_state",
+      "Erdos249257.ExternalVerification269IntegralBranchPinning.trueNormalizedState_eq_telescope",
+      "Erdos249257.ExternalVerification269IntegralBranchPinning.trueNormalizedState_pinning"
+    ],
+    "ExternalVerification269ThreePrimeStructure": [
+      "Erdos249257.ExternalVerification269ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight",
+      "Erdos249257.ExternalVerification269ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen",
+      "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothExponentShell_card_quadratic",
+      "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight",
+      "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell",
+      "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation",
+      "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimePositiveJumpSet_card"
+    ],
+    "ExternalVerification68AdjacentUnitCarryWindow": [
+      "Erdos249257.ExternalVerification68AdjacentUnitCarryWindow.adjacentUnitCarryWindowDen_eq_twoStep_den",
+      "Erdos249257.ExternalVerification68AdjacentUnitCarryWindow.adjacentUnitCarryWindowOffset_eq_twoStep_factorization",
+      "Erdos249257.ExternalVerification68AdjacentUnitCarryWindow.consecutive_unit_carries_iff_positive_offset_le_den",
+      "Erdos249257.ExternalVerification68AdjacentUnitCarryWindow.twoStep_den_mul_transitionNormalizers"
+    ],
+    "ExternalVerification68ChannelRadius": [
+      "Erdos249257.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_three_halves_upper",
+      "Erdos249257.ExternalVerification68ChannelRadius.not_isLittleO_square_subsequence_radius",
+      "Erdos249257.ExternalVerification68ChannelRadius.square_subsequence_radius_three_halves_lower"
+    ],
+    "ExternalVerification68CompanionOrbitBoundary": [
+      "Erdos249257.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries",
+      "Erdos249257.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_genericShift",
+      "Erdos249257.ExternalVerification68CompanionOrbitBoundary.tsum_unitFactTerm_eq_exp_one_sub_two"
+    ],
+    "ExternalVerification68MovingFactorScaleSplit": [
+      "Erdos249257.ExternalVerification68MovingFactorScaleSplit.fixedOwnerPair_eventually_absorbed",
+      "Erdos249257.ExternalVerification68MovingFactorScaleSplit.movingPrivateFactorScaleSplit_implies_irrational",
+      "Erdos249257.ExternalVerification68MovingFactorScaleSplit.splitFactorNormalizedCollision_implies_irrational"
+    ],
+    "ExternalVerification68PrimePole": [
+      "Erdos249257.ExternalVerification68PrimePole.factorialGapPrefixLCMNumerator_mod_prime"
+    ],
+    "ExternalVerification68PrimeUnitTranslator": [
+      "Erdos249257.ExternalVerification68PrimeUnitTranslator.channelResidual_appendPrimeTranslator",
+      "Erdos249257.ExternalVerification68PrimeUnitTranslator.exists_remote_factorialGrid_primeTranslator_reduction",
+      "Erdos249257.ExternalVerification68PrimeUnitTranslator.primeTranslator_exact_profile"
+    ],
+    "ExternalVerification68StrictSuccessorCarry": [
+      "Erdos249257.ExternalVerification68StrictSuccessorCarry.companionOrbit_completeCharacterization",
+      "Erdos249257.ExternalVerification68StrictSuccessorCarry.strictSuccessorCarry_completeCharacterization"
+    ]
+  },
+  "growth_policy": "New eligible packages and theorem interfaces are included automatically. The builder appends them to these baselines; removing a required package or interface needs an explicit reviewed membership migration.",
+  "boundary": "This file prevents silent package or theorem-interface coverage shrinkage. It does not assert that Comparator has run or that Palomar registered any package.",
+  "result_family_coverage": {
+    "schema": "plectis.comparator-result-family-coverage/1",
+    "registry_authority": "docs/claims.json::external_verification_packet.review_matrix",
+    "registry_digest": "sha256:23a3e71e1424d2e1776a0fda5afba144aa8548abd6ec0cdbfdbbcaaece30681c",
+    "registered_family_count": 71,
+    "classified_family_count": 71,
+    "execution_classification_counts": {
+      "has_executable_challenge_package": 48,
+      "intentionally_non_executable": 23
+    },
+    "registered_comparator_classification_counts": {
+      "not_applicable_to_comparator": 8,
+      "not_selected_for_comparator": 10,
+      "represented_by_selected_interface": 8,
+      "targeted_exact_interface": 45
+    },
+    "family_linked_current_interface_count": 48,
+    "family_linked_replay_candidate_interface_count": 17,
+    "unassociated_current_interface_count": 3,
+    "unassociated_replay_candidate_interface_count": 188,
+    "families": [
+      {
+        "problem": 68,
+        "family_id": "factorial_carry_characterisation",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 2,
+        "current_comparator_interface_count": 2,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 2,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
+              "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 68,
+        "family_id": "factorial_channel_and_projection_rigidity",
+        "registry_comparator_disposition": "represented_by_isolated_headline",
+        "registered_comparator_classification": "represented_by_selected_interface",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry represents this family through another selected interface; comparator_disposition=represented_by_isolated_headline."
+      },
+      {
+        "problem": 68,
+        "family_id": "factorial_conditional_producers",
+        "registry_comparator_disposition": "not_selected_deep_project_predicate_stack",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_deep_project_predicate_stack."
+      },
+      {
+        "problem": 68,
+        "family_id": "factorial_finite_certificates",
+        "registry_comparator_disposition": "not_applicable_to_external_execution",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_to_external_execution."
+      },
+      {
+        "problem": 68,
+        "family_id": "factorial_lcm_growth",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_declaration",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_declaration."
+      },
+      {
+        "problem": 243,
+        "family_id": "centered_state_dynamics",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 243,
+        "family_id": "negative_orbit_no_go",
+        "registry_comparator_disposition": "targeted_representative_periodic_theorem",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 243,
+        "family_id": "bounded_rise_coprimality",
+        "registry_comparator_disposition": "represented_by_stronger_selected_boundary_theorem",
+        "registered_comparator_classification": "represented_by_selected_interface",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry represents this family through another selected interface; comparator_disposition=represented_by_stronger_selected_boundary_theorem."
+      },
+      {
+        "problem": 243,
+        "family_id": "bounded_negative_exclusion",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 243,
+        "family_id": "negative_mass_recovery",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "totient_kernel_basis",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "totient_kernel_rank",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 2,
+        "current_comparator_interface_count": 2,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 2,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
+              "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "totient_kernel_all_base_index",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "totient_visible_coprime_lattice_mass",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.tsum_pos_coprime_inv_mersenne_eq_one"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "squared_lambert_gcd_moments",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.tsum_totient_div_mersenne_sq_eq_gcd_moment_series"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "stern_brocot_run_fibonacci_stability",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.runHeight_defect_fib_sum_lower"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "stern_brocot_cylinder_law",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.cylinderMass_split"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "lcm_factor_ideal_shift_algebra_no_go",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "fixed_precision_transport_no_go",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "actual_lcm_orbit_separation",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 1,
+        "executable_package_count": 2,
+        "executable_interface_count": 2,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification249ActualLcmOrbit",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification249ActualLcmOrbit.Challenge",
+            "solution_module": "ExternalVerification249ActualLcmOrbit.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification249ActualLcmOrbit.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "actual_foreign_residue_projection",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "first_harmonic_pivot_decomposition",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.irrational_totient_series_of_pivotResidualDecorrelation"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "strict_prime_tail_orbit_gap",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "totient_carry_anti_compression",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 1,
+        "executable_package_count": 2,
+        "executable_interface_count": 2,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification249CarryRankFrontier",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification249CarryRankFrontier.Challenge",
+            "solution_module": "ExternalVerification249CarryRankFrontier.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 249,
+        "family_id": "totient_finite_denominator_exclusion",
+        "registry_comparator_disposition": "not_selected_finite_family_has_separate_receipt",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_finite_family_has_separate_receipt."
+      },
+      {
+        "problem": 249,
+        "family_id": "totient_carry_rank",
+        "registry_comparator_disposition": "not_selected_deep_orbit_vocabulary",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_deep_orbit_vocabulary."
+      },
+      {
+        "problem": 249,
+        "family_id": "totient_lambert_coefficients",
+        "registry_comparator_disposition": "represented_by_basis_and_rank_targets",
+        "registered_comparator_classification": "represented_by_selected_interface",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry represents this family through another selected interface; comparator_disposition=represented_by_basis_and_rank_targets."
+      },
+      {
+        "problem": 249,
+        "family_id": "eventually_periodic_lambert",
+        "registry_comparator_disposition": "not_selected_prior_result",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_prior_result."
+      },
+      {
+        "problem": 249,
+        "family_id": "totient_certificate_equivalences",
+        "registry_comparator_disposition": "not_selected_deep_certificate_vocabulary",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_deep_certificate_vocabulary."
+      },
+      {
+        "problem": 251,
+        "family_id": "prime_gap_reformulation",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 251,
+        "family_id": "integral_shift_classification",
+        "registry_comparator_disposition": "not_selected_abstract_family_represented_in_manifest",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_abstract_family_represented_in_manifest."
+      },
+      {
+        "problem": 251,
+        "family_id": "dyadic_tail_integrality_classification",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 251,
+        "family_id": "totient_shift_propagation",
+        "registry_comparator_disposition": "represented_by_integral_shift_family",
+        "registered_comparator_classification": "represented_by_selected_interface",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry represents this family through another selected interface; comparator_disposition=represented_by_integral_shift_family."
+      },
+      {
+        "problem": 251,
+        "family_id": "small_mismatch_criterion",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 1,
+        "executable_package_count": 2,
+        "executable_interface_count": 2,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification251ActualPrimeGapTail",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification251ActualPrimeGapTail.Challenge",
+            "solution_module": "ExternalVerification251ActualPrimeGapTail.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 251,
+        "family_id": "coefficient_only_no_go",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 2,
+        "current_comparator_interface_count": 2,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 2,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.coefficientOnlyNoGo",
+              "Erdos249257.ExternalVerification.exists_primeGap0_gt"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "finite_period_noncollapse",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "boolean_mobius_carry",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 4,
+        "executable_package_count": 3,
+        "executable_interface_count": 5,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification257BooleanMobiusCarry",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification257BooleanMobiusCarry.Challenge",
+            "solution_module": "ExternalVerification257BooleanMobiusCarry.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification257BooleanMobiusCarry.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification257RationalTailRigidity",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification257RationalTailRigidity.Challenge",
+            "solution_module": "ExternalVerification257RationalTailRigidity.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification257RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction",
+              "Erdos249257.ExternalVerification257RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction",
+              "Erdos249257.ExternalVerification257RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "boolean_mobius_exact_row_dynamics",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "half_membership_seam_classification",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "shifted_odd_tail_state",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.exists_shifted_odd_tail_nat_states_of_support_fraction"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "composite_dilation_defect_identity",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.supportCoeff_mul_eq_add_defect"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "known_irrational_supports",
+        "registry_comparator_disposition": "targeted_full_support_representative",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.irrational_erdosSum_full_support"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "reciprocal_summable_support",
+        "registry_comparator_disposition": "targeted_stronger_reciprocal_summable_support",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_summable_reciprocal"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "pairwise_coprime_support",
+        "registry_comparator_disposition": "represented_by_reciprocal_summable_support",
+        "registered_comparator_classification": "represented_by_selected_interface",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry represents this family through another selected interface; comparator_disposition=represented_by_reciprocal_summable_support."
+      },
+      {
+        "problem": 257,
+        "family_id": "periodic_nonnegative_weight_irrationality",
+        "registry_comparator_disposition": "targeted_strongest_nonnegative_rational_weight",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "orthogonal_petal_sunflower_reduction",
+        "registry_comparator_disposition": "targeted_conditional_sunflower_reduction",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "squarefree_support",
+        "registry_comparator_disposition": "not_applicable_to_external_irrationality_input",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_to_external_irrationality_input."
+      },
+      {
+        "problem": 257,
+        "family_id": "achievement_set_geometry",
+        "registry_comparator_disposition": "targeted_measure_theorem",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.volume_mersenneAchievementSet"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "restricted_achievement_sets",
+        "registry_comparator_disposition": "targeted_measure_dichotomy",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "half_and_twenty_one_frontiers",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.seven_le_of_intBand_odd"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 269,
+        "family_id": "three_prime_lcm_cells",
+        "registry_comparator_disposition": "targeted_running_lcm_identity",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 269,
+        "family_id": "two_prime_transcendence",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_declaration",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_declaration."
+      },
+      {
+        "problem": 269,
+        "family_id": "height_fibre_and_shell",
+        "registry_comparator_disposition": "represented_by_three_prime_structure_target",
+        "registered_comparator_classification": "represented_by_selected_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 2,
+        "executable_package_count": 1,
+        "executable_interface_count": 2,
+        "packages": [
+          {
+            "package_id": "ExternalVerification269ThreePrimeStructure",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification269ThreePrimeStructure.Challenge",
+            "solution_module": "ExternalVerification269ThreePrimeStructure.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification269ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight",
+              "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothExponentShell_card_quadratic"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 269,
+        "family_id": "rank_two_kernel_no_go",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 269,
+        "family_id": "dyadic_block_alphabet",
+        "registry_comparator_disposition": "represented_by_three_prime_structure_target",
+        "registered_comparator_classification": "represented_by_selected_interface",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry represents this family through another selected interface; comparator_disposition=represented_by_three_prime_structure_target."
+      },
+      {
+        "problem": 269,
+        "family_id": "conditional_carry_escape",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 1,
+        "executable_package_count": 2,
+        "executable_interface_count": 2,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification269CarryMechanism",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification269CarryMechanism.Challenge",
+            "solution_module": "ExternalVerification269CarryMechanism.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification269CarryMechanism.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 269,
+        "family_id": "weighted_phase_carry_observer",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 1,
+        "executable_package_count": 2,
+        "executable_interface_count": 2,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.carry_eq_residueDigit_add_coboundary"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification269CarryMechanism",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification269CarryMechanism.Challenge",
+            "solution_module": "ExternalVerification269CarryMechanism.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification269CarryMechanism.carry_eq_residueDigit_add_coboundary"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 269,
+        "family_id": "three_prime_finite_search",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_theorem",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_theorem."
+      },
+      {
+        "problem": 1041,
+        "family_id": "newton_value_decay",
+        "registry_comparator_disposition": "not_selected_compact_calculus_family",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 1,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification1041NewtonDerivative",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification1041NewtonDerivative.Challenge",
+            "solution_module": "ExternalVerification1041NewtonDerivative.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification1041NewtonDerivative.newtonFlow_value_hasDerivAt"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 1041,
+        "family_id": "ray_separation",
+        "registry_comparator_disposition": "represented_by_translation_avoidance_targets",
+        "registered_comparator_classification": "represented_by_selected_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 1,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification1041NewtonDecay",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification1041NewtonDecay.Challenge",
+            "solution_module": "ExternalVerification1041NewtonDecay.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification1041NewtonDecay.no_newtonConnection_of_not_samePositiveRay"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 1041,
+        "family_id": "translation_avoidance",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 1041,
+        "family_id": "root_retention",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 1041,
+        "family_id": "published_proof_gap",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
+      },
+      {
+        "problem": 1041,
+        "family_id": "lemniscate_finite_search",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_theorem",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_theorem."
+      },
+      {
+        "problem": 1049,
+        "family_id": "scalar_content_no_go",
+        "registry_comparator_disposition": "not_selected_scalar_content_scaling_family",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_scalar_content_scaling_family."
+      },
+      {
+        "problem": 1049,
+        "family_id": "endpoint_residues",
+        "registry_comparator_disposition": "not_selected_endpoint_residue_and_common_multiplier_family",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_endpoint_residue_and_common_multiplier_family."
+      },
+      {
+        "problem": 1049,
+        "family_id": "four_jet_collision",
+        "registry_comparator_disposition": "not_selected_finite_combinatorial_family",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_finite_combinatorial_family."
+      },
+      {
+        "problem": 1049,
+        "family_id": "coordinatewise_corridor_no_go",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 1049,
+        "family_id": "rational_base_tail_recurrence",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 1049,
+        "family_id": "seven_halves_irrationality",
+        "registry_comparator_disposition": "not_applicable_to_external_irrationality_conclusion",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_to_external_irrationality_conclusion."
+      },
+      {
+        "problem": 1049,
+        "family_id": "height_and_pade_arithmetic",
+        "registry_comparator_disposition": "targeted",
+        "registered_comparator_classification": "targeted_exact_interface",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 1,
+        "current_comparator_interface_count": 1,
+        "replay_candidate_interface_count": 4,
+        "executable_package_count": 2,
+        "executable_interface_count": 5,
+        "packages": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification1049HermitePadeNoGo",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification1049HermitePadeNoGo.Challenge",
+            "solution_module": "ExternalVerification1049HermitePadeNoGo.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_eq_zero_iff",
+              "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_nonpos",
+              "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff",
+              "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_le_classical"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      }
+    ],
+    "growth_policy": "Every review-matrix family is joined dynamically. A newly targeted family must acquire an executable Challenge interface; represented, not-selected, and not-applicable families remain visible with their registry disposition as the explicit non-execution reason.",
+    "boundary": "Family classification records package/interface discoverability only. It is not a Comparator run, axiom audit, kernel receipt, Palomar review, submission, registration, publication, novelty, or significance claim."
+  },
+  "legacy_package_record_assimilation": {
+    "schema": "plectis.legacy-palomar-package-assimilation/1",
+    "source_snapshot": {
+      "repository": "wcook04/plectis-erdos-lean",
+      "tag": "v0.1.1",
+      "revision": "3a108347a146e86667fe124bfad20a145b639596",
+      "tree": "5e79a3d703fbc1e2ce31b55a95a0c719a5682e06",
+      "record_layout": "{package_id}/comparator.json + {package_id}/formalization.yaml",
+      "record_count": 21,
+      "comparator_interface_count": 86,
+      "identity_boundary": "The revision and tree identify the historical 21-pair packaging snapshot; the rows below are provenance constraints, not live Comparator configs."
+    },
+    "configuration_delta": {
+      "legacy_shape": "one Comparator config per package",
+      "current_aggregate_config": "verification/comparator-replay-candidate.json",
+      "legacy_enable_nanoda": true,
+      "current_enable_nanoda": false,
+      "interpretation": "The old NanoDa flag was configuration, not a green external receipt. The current aggregate keeps NanoDa off explicitly and preserves every legacy theorem interface for ordinary Comparator replay."
+    },
+    "formalization_policy": {
+      "current_owner": "formalization.yaml",
+      "per_package_manifests": "historical_only_do_not_recreate",
+      "interpretation": "The 21 old formalization.yaml files were package-specific release metadata. Their exact snapshot remains identified above; current repository metadata is canonicalized in the single root manifest and corpus owners."
+    },
+    "package_records": [
+      {
+        "package_id": "ExternalVerification1041CriticalGeometry",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification1041CriticalGeometry.criticalGeometricMean_twoRootProximity",
+          "Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity",
+          "Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity_strict",
+          "Erdos249257.ExternalVerification1041CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes",
+          "Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification1041CyclicTrinomialFiber",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_factorization",
+          "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one_of_norm_lt_one",
+          "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.cyclicTrinomial_two_short_fiber_displacements"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification1041FirstMergeCriticalValueSeparation",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_exact_convenient_thresholds",
+          "Erdos249257.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_length_lt_two_of_squared_bound"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification1041QuarticQuotientFiber",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_kernel_le_axis",
+          "Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_axis_integral",
+          "Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_endpoint_budget_lt_two",
+          "Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_length_lt_two_of_le_endpoint_budget"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification1041SolvedFamilies",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification1041SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound",
+          "Erdos249257.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies",
+          "Erdos249257.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification1041TetranomialSpokes",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_factorization",
+          "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget",
+          "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget",
+          "Erdos249257.ExternalVerification1041TetranomialSpokes.sum_normSq_const_add_mul",
+          "Erdos249257.ExternalVerification1041TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget",
+          "Erdos249257.ExternalVerification1041TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification1049AdelicHeightBridge",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial",
+          "Erdos249257.ExternalVerification1049AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive",
+          "Erdos249257.ExternalVerification1049AdelicHeightBridge.twoPow_sixtyFour_lt_threePow_fortyOne",
+          "Erdos249257.ExternalVerification1049AdelicHeightBridge.threeHalves_rectangular_hp_gap_gt_threeThirteenths",
+          "Erdos249257.ExternalVerification1049AdelicHeightBridge.threeHalves_hankelChargeThreshold_lt_eightFortyOne",
+          "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge",
+          "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge",
+          "Erdos249257.ExternalVerification1049AdelicHeightBridge.three_two_scalar_margin_lt_explicit",
+          "Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41",
+          "Erdos249257.ExternalVerification1049AdelicHeightBridge.fourJet_card_gt_two_pow_of_rank_41",
+          "Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification1049HermitePadeNoGo",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_expansion",
+          "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_nonpos",
+          "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_eq_zero_iff",
+          "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_le_classical",
+          "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification1049PrimeSupportSelectors",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedTwoSelector_rationalGap",
+          "Erdos249257.ExternalVerification1049PrimeSupportSelectors.rationalTwoSelector_notBothTendstoZero",
+          "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedOneRow_rationalGap",
+          "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primePowerSupportedOneRow_rationalGap",
+          "Erdos249257.ExternalVerification1049PrimeSupportSelectors.twoSelector_unimodularHeightDecay_tradeoff",
+          "Erdos249257.ExternalVerification1049PrimeSupportSelectors.zeroDenominatorCoordinates_binaryCollision"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification1049RationalBaseBarrier",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification1049RationalBaseBarrier.rationalBaseClearedTailQ_succ",
+          "Erdos249257.ExternalVerification1049RationalBaseBarrier.twoPow_le_rationalBaseForcingNat",
+          "Erdos249257.ExternalVerification1049RationalBaseBarrier.threeHalves_no_coordinatewiseCorridor"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification243PeriodicNegativeOrbit",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit",
+          "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_periodicNegative_orbit",
+          "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification249BinaryCyclotomicAnchors",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.exists_clean_binaryCyclotomicAnchor",
+          "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicLayer_unboundedPrimeDivisorSupply",
+          "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicAnchoredKillSupply_iff_irrational",
+          "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification249RankOneSharpFloor",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_eq_one_five_iff",
+          "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty",
+          "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen",
+          "Erdos249257.ExternalVerification249RankOneSharpFloor.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen",
+          "Erdos249257.ExternalVerification249RankOneSharpFloor.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty",
+          "Erdos249257.ExternalVerification249RankOneSharpFloor.primitive_form_abs_gt_twentyOne_div_threeTwenty"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification251ActualPrimeGapTail",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification251ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational",
+          "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailState_recurrence",
+          "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral",
+          "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification251PolynomialShiftCountermodel",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification251PolynomialShiftCountermodel.polynomialGapTailCountermodel"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification257FinitePeriodNoncollapse",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den",
+          "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification257RationalTailRigidity",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification257RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction",
+          "Erdos249257.ExternalVerification257RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add",
+          "Erdos249257.ExternalVerification257RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction",
+          "Erdos249257.ExternalVerification257RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification257ReciprocalSupport",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification269ThreePrimeStructure",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight",
+          "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell",
+          "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimePositiveJumpSet_card",
+          "Erdos249257.ExternalVerification269ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight",
+          "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothExponentShell_card_quadratic",
+          "Erdos249257.ExternalVerification269ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen",
+          "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification68ChannelRadius",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification68ChannelRadius.square_subsequence_radius_three_halves_lower",
+          "Erdos249257.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_three_halves_upper",
+          "Erdos249257.ExternalVerification68ChannelRadius.not_isLittleO_square_subsequence_radius"
+        ]
+      },
+      {
+        "package_id": "ExternalVerification68CompanionOrbitBoundary",
+        "legacy_theorem_names": [
+          "Erdos249257.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_genericShift",
+          "Erdos249257.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries",
+          "Erdos249257.ExternalVerification68CompanionOrbitBoundary.tsum_unitFactTerm_eq_exp_one_sub_two"
+        ]
+      }
+    ],
+    "boundary": "This monotone subset guard proves only that the legacy Comparator interfaces remain represented in the dynamic aggregate. It does not claim a current Comparator run, NanoDa success, Palomar registration, peer review, or mathematical correctness."
+  }
+}

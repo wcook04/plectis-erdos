@@ -406,7 +406,7 @@ theorem supplierPrime_not_globally_isolated_counterexample :
   have hpivot : pivotPrime 18 20 1 = 19 :=
     pivotPrime_eq_of_argument_eq_mul_prime (by norm_num) hp (by norm_num) harg
   have hpSet : 19 ∈ pivotSupplierPrimes 16 20 1 2 := by
-    decide
+    decide +kernel
   have hfiber : 18 ∈ pivotFiber 16 20 1 2 :=
     (mem_pivotFiber_iff_exists_supplierPrime (by norm_num) (by
       have hsqrt : Nat.sqrt 16 = 4 := by

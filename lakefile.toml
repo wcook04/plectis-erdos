@@ -97,3 +97,224 @@ srcDir = "residualbench"
 [[lean_lib]]
 name = "ExternalVerification1041SolvedFamilies"
 globs = ["ExternalVerification1041SolvedFamilies.*"]
+
+# Retained per-entry proof and Comparator-replay targets. They remain
+# non-default so each capability can be validated explicitly.
+
+[[lean_lib]]
+name = "ExternalVerification1041ContactSurvives"
+
+[[lean_lib]]
+name = "ExternalVerification1041CriticalGeometry"
+
+[[lean_lib]]
+name = "ExternalVerification1041CyclicTetranomialCoefficient"
+
+[[lean_lib]]
+name = "ExternalVerification1041CyclicTrinomialFiber"
+
+[[lean_lib]]
+name = "ExternalVerification1041FiniteAvoidance"
+
+[[lean_lib]]
+name = "ExternalVerification1041FirstMergeCriticalValueSeparation"
+
+[[lean_lib]]
+name = "ExternalVerification1041GeometricTail"
+
+[[lean_lib]]
+name = "ExternalVerification1041LevelSeparation"
+
+[[lean_lib]]
+name = "ExternalVerification1041LifetimeOrliczBound"
+
+[[lean_lib]]
+name = "ExternalVerification1041NewtonDecay"
+
+[[lean_lib]]
+name = "ExternalVerification1041NewtonDerivative"
+
+[[lean_lib]]
+name = "ExternalVerification1041NewtonSolve"
+
+[[lean_lib]]
+name = "ExternalVerification1041Noncritical"
+
+[[lean_lib]]
+name = "ExternalVerification1041NormRecipPowerSum"
+
+[[lean_lib]]
+name = "ExternalVerification1041OrliczNoUniformLinear"
+
+[[lean_lib]]
+name = "ExternalVerification1041QuadraticContact"
+
+[[lean_lib]]
+name = "ExternalVerification1041QuarticQuotientFiber"
+
+[[lean_lib]]
+name = "ExternalVerification1041ReciprocalHalfPlane"
+
+[[lean_lib]]
+name = "ExternalVerification1041ReciprocalRigidity"
+
+[[lean_lib]]
+name = "ExternalVerification1041RootRetention"
+
+[[lean_lib]]
+name = "ExternalVerification1041SecondAgeBound"
+
+[[lean_lib]]
+name = "ExternalVerification1041SignedMomentTetranomial"
+
+[[lean_lib]]
+name = "ExternalVerification1041StapleEquality"
+
+[[lean_lib]]
+name = "ExternalVerification1041StapleLength"
+
+[[lean_lib]]
+name = "ExternalVerification1041TetranomialSpokes"
+
+[[lean_lib]]
+name = "ExternalVerification1041TranslationAvoidance"
+
+[[lean_lib]]
+name = "ExternalVerification1041WeightedChainConsumer"
+
+[[lean_lib]]
+name = "ExternalVerification1049AdelicHeightBridge"
+
+[[lean_lib]]
+name = "ExternalVerification1049BezoutPluckerJets"
+
+[[lean_lib]]
+name = "ExternalVerification1049HermitePadeNoGo"
+
+[[lean_lib]]
+name = "ExternalVerification1049PrimeSupportSelectors"
+
+[[lean_lib]]
+name = "ExternalVerification1049RationalBaseBarrier"
+
+[[lean_lib]]
+name = "ExternalVerification243BoundedNegativePartRigidity"
+
+[[lean_lib]]
+name = "ExternalVerification243PeriodicNegativeOrbit"
+
+[[lean_lib]]
+name = "ExternalVerification243RepairEntropy"
+
+[[lean_lib]]
+name = "ExternalVerification243SummableNegativeMassRigidity"
+
+[[lean_lib]]
+name = "ExternalVerification249ActualLcmOrbit"
+
+[[lean_lib]]
+name = "ExternalVerification249BinaryCyclotomicAnchors"
+
+[[lean_lib]]
+name = "ExternalVerification249CanonicalMersenneFrontier"
+
+[[lean_lib]]
+name = "ExternalVerification249CarryRankFrontier"
+
+[[lean_lib]]
+name = "ExternalVerification249DyadicTotientKernel"
+
+[[lean_lib]]
+name = "ExternalVerification249FullDepthRayAmplifier"
+
+[[lean_lib]]
+name = "ExternalVerification249RankOneSharpFloor"
+
+[[lean_lib]]
+name = "ExternalVerification251ActualPrimeGapTail"
+
+[[lean_lib]]
+name = "ExternalVerification251AffineCircularity"
+
+[[lean_lib]]
+name = "ExternalVerification251LcmDiagonalCriterion"
+
+[[lean_lib]]
+name = "ExternalVerification251PolynomialShiftCountermodel"
+
+[[lean_lib]]
+name = "ExternalVerification251PrimeGapIdentity"
+
+[[lean_lib]]
+name = "ExternalVerification257AchievementSetGeometry"
+
+[[lean_lib]]
+name = "ExternalVerification257ActualUpperSuccessor"
+
+[[lean_lib]]
+name = "ExternalVerification257BooleanMobiusCarry"
+
+[[lean_lib]]
+name = "ExternalVerification257FinitePeriodNoncollapse"
+
+[[lean_lib]]
+name = "ExternalVerification257FourNinthsTetraprime"
+
+[[lean_lib]]
+name = "ExternalVerification257PositiveSkipEquivalence"
+
+[[lean_lib]]
+name = "ExternalVerification257RationalTailRigidity"
+
+[[lean_lib]]
+name = "ExternalVerification257ReciprocalSupport"
+
+[[lean_lib]]
+name = "ExternalVerification257ScaledGreedyTrap"
+
+[[lean_lib]]
+name = "ExternalVerification257TerminalScaledVanishing"
+
+[[lean_lib]]
+name = "ExternalVerification257TwentyOneFatalBranch"
+
+[[lean_lib]]
+name = "ExternalVerification269ActualShellOrbit"
+
+[[lean_lib]]
+name = "ExternalVerification269AllScaleLattice"
+
+[[lean_lib]]
+name = "ExternalVerification269CarryMechanism"
+
+[[lean_lib]]
+name = "ExternalVerification269IntegralBranchPinning"
+
+[[lean_lib]]
+name = "ExternalVerification269ThreePrimeStructure"
+
+[[lean_lib]]
+name = "ExternalVerification68AdjacentUnitCarryWindow"
+
+[[lean_lib]]
+name = "ExternalVerification68ChannelRadius"
+
+[[lean_lib]]
+name = "ExternalVerification68CompanionOrbitBoundary"
+
+[[lean_lib]]
+name = "ExternalVerification68MovingFactorScaleSplit"
+
+[[lean_lib]]
+name = "ExternalVerification68PrimePole"
+
+[[lean_lib]]
+name = "ExternalVerification68PrimeUnitTranslator"
+
+[[lean_lib]]
+name = "ExternalVerification68StrictSuccessorCarry"
+
+# Generated aggregate over every statement-isolated per-entry packet. This is
+# a replay candidate target, not evidence that Comparator has run.
+[[lean_lib]]
+name = "ComparatorReplay"

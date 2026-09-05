@@ -1698,6 +1698,63 @@ theorem exists_remote_factorialGrid_primeTranslator_reduction
         simp [appendPrimeTranslatorIndex, primeTranslatorIndex] <;>
         omega
 
+/-! The same remote construction retains strictness when the un-translated
+residual is known not to be an integer.  The nonintegrality premise is kept
+explicit: the construction does not manufacture the missing producer for the
+Erdős #68 irrationality problem. -/
+theorem exists_remote_factorialGrid_primeTranslator_strict_reduction
+    (n B : ℕ)
+    (hnonint :
+      ∀ k : ℤ,
+        channelResidual (n + 2)
+          (cramerChannelKernelCoeff (factorialGridIndex n (B + 1)))
+          (factorialGridIndex n (B + 1)) ≠ (k : ℝ)) :
+    ∃ p : ℕ, ∃ z : ℤ,
+      p.Prime ∧
+      (∀ j : Sum (Fin (n + 2)) (Fin 2),
+        B < appendPrimeTranslatorIndex
+          (factorialGridIndex n (B + 1)) p j) ∧
+      (∀ d ∈ Finset.Icc 2 (n + 2),
+        channelNumerator
+          (appendPrimeTranslatorCoeff
+            (cramerChannelKernelCoeff (factorialGridIndex n (B + 1))) p z)
+          (appendPrimeTranslatorIndex
+            (factorialGridIndex n (B + 1)) p) d = 0) ∧
+      factorialMoment
+          (appendPrimeTranslatorCoeff
+            (cramerChannelKernelCoeff (factorialGridIndex n (B + 1))) p z)
+          (appendPrimeTranslatorIndex
+            (factorialGridIndex n (B + 1)) p) ≠ 0 ∧
+      0 < |channelResidual (n + 2)
+          (appendPrimeTranslatorCoeff
+            (cramerChannelKernelCoeff (factorialGridIndex n (B + 1))) p z)
+          (appendPrimeTranslatorIndex
+            (factorialGridIndex n (B + 1)) p)| ∧
+      |channelResidual (n + 2)
+          (appendPrimeTranslatorCoeff
+            (cramerChannelKernelCoeff (factorialGridIndex n (B + 1))) p z)
+          (appendPrimeTranslatorIndex
+            (factorialGridIndex n (B + 1)) p)| ≤
+        (1 : ℝ) / 2 := by
+  obtain ⟨p, hpBound, hp⟩ :=
+    Nat.exists_infinite_primes (max (n + 3) (B + 2))
+  have hDp : n + 2 < p := by omega
+  obtain ⟨z, hchannels, hmoment, hstrict, hresidual⟩ :=
+    exists_primeTranslator_strict_reduced_kernel
+      (cramerChannelKernelCoeff (factorialGridIndex n (B + 1)))
+      (factorialGridIndex n (B + 1)) (by omega) hp hDp
+      (cramerFactorialGrid_channels_zero n (B + 1))
+      (cramerFactorialGrid_moment_ne_zero n (B + 1)) hnonint
+  refine ⟨p, z, hp, ?_, hchannels, hmoment, hstrict, hresidual⟩
+  intro j
+  cases j with
+  | inl j =>
+      exact factorialGridIndex_gt n B j
+  | inr j =>
+      fin_cases j <;>
+        simp [appendPrimeTranslatorIndex, primeTranslatorIndex] <;>
+        omega
+
 #print axioms primeTranslator_channelResidual_eq_one
 #print axioms primeTranslator_scaled_channelResidual_eq_int
 #print axioms exists_channelResidual_eq_moment_mul_factorialGapTail_add_int
@@ -1718,6 +1775,7 @@ theorem exists_remote_factorialGrid_primeTranslator_reduction
 #print axioms cramerFactorialGrid_channelNumerator_ne_zero_of_max_lt
 #print axioms exists_factorialGrid_primeTranslator_reduced_kernel
 #print axioms exists_remote_factorialGrid_primeTranslator_reduction
+#print axioms exists_remote_factorialGrid_primeTranslator_strict_reduction
 #print axioms summable_channelResidualTerm
 #print axioms channelResidual_add_coeff
 #print axioms factorialGapTail_eq_shifted_tsum

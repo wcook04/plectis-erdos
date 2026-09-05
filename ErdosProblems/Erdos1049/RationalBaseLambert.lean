@@ -78,6 +78,42 @@ theorem sevenHalves_bundschuhVaananen_margin :
   norm_num at hpi ⊢
   linarith
 
+/-- The exact power certificate implies the logarithmic estimate used at
+base `7 / 2`. -/
+theorem sevenHalves_log_ratio_lt_seven_eighteenths :
+    Real.log 2 / Real.log 7 < (7 : ℝ) / 18 := by
+  have hpows : (2 : ℝ) ^ 18 < (7 : ℝ) ^ 7 := by
+    exact_mod_cast sevenHalves_power_certificate
+  have hlogs :
+      Real.log ((2 : ℝ) ^ 18) < Real.log ((7 : ℝ) ^ 7) :=
+    Real.strictMonoOn_log
+      (Set.mem_Ioi.mpr (by positivity)) (Set.mem_Ioi.mpr (by positivity)) hpows
+  rw [Real.log_pow, Real.log_pow] at hlogs
+  norm_num at hlogs
+  have hlog7 : 0 < Real.log (7 : ℝ) := Real.log_pos (by norm_num)
+  apply (div_lt_iff₀ hlog7).2
+  nlinarith
+
+/-- The elementary `pi > 3` bound puts `7 / 18` strictly inside the
+Bundschuh--Väänänen height margin. -/
+theorem sevenEighteenths_lt_bundschuhVaananenMargin :
+    (7 : ℝ) / 18 < 1 / 2 - 1 / Real.pi ^ 2 := by
+  have hpiSq : (9 : ℝ) < Real.pi ^ 2 := by
+    nlinarith [Real.pi_gt_three]
+  have hinv : 1 / Real.pi ^ 2 < (1 : ℝ) / 9 :=
+    one_div_lt_one_div_of_lt (by norm_num) hpiSq
+  norm_num at hinv ⊢
+  linarith
+
+/-- Fully kernel-checked parameter verification for the first nonintegral
+base covered by the published height theorem.  Combining this declaration
+with that external theorem gives irrationality of the Lambert value at
+`7 / 2`; no analytic theorem is introduced as an axiom here. -/
+theorem sevenHalves_mem_bundschuhVaananenHeightRegion :
+    BundschuhVaananenHeightRegion 7 2 := by
+  exact sevenHalves_log_ratio_lt_seven_eighteenths.trans
+    sevenEighteenths_lt_bundschuhVaananenMargin
+
 /-- The complete elementary Archimedean height inequality for `q = 7/2`.
 Applying the external analytic irrationality theorem remains a separate step. -/
 theorem sevenHalves_archimedean_height_condition :

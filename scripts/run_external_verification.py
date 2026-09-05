@@ -265,6 +265,8 @@ def main() -> int:
     parser.add_argument("--negative-exit", type=int, default=-999)
     parser.add_argument("--positive-log", type=Path)
     parser.add_argument("--negative-log", type=Path)
+    parser.add_argument("--portfolio-positive-exit", type=int, default=-999)
+    parser.add_argument("--portfolio-positive-log", type=Path)
     parser.add_argument("--local-1049-positive-exit", type=int, default=-999)
     parser.add_argument("--local-1049-negative-exit", type=int, default=-999)
     parser.add_argument("--local-1049-positive-log", type=Path)
@@ -286,11 +288,29 @@ def main() -> int:
         ["python3", "scripts/build_external_verification.py", "--check"],
         cwd=ROOT,
     ).returncode
+    portfolio_projection_check = run(
+        ["python3", "scripts/build_comparator_replay_portfolio.py", "--check"],
+        cwd=ROOT,
+    ).returncode
     claims = json.loads(_read_input_text(ROOT / "docs/claims.json", root=ROOT))
     owner = claims["external_verification_packet"]
     packet = json.loads(
         _read_input_text(ROOT / "docs/external_verification_packet.json", root=ROOT)
     )
+    comparator_config = json.loads(
+        _read_input_text(ROOT / owner["comparator"]["config"], root=ROOT)
+    )
+    portfolio_config_path = ROOT / "verification/comparator-replay-candidate.json"
+    portfolio_config = json.loads(
+        _read_input_text(portfolio_config_path, root=ROOT)
+    )
+    release_contract = json.loads(
+        _read_input_text(
+            ROOT / "verification/external-verification-release-contract.json",
+            root=ROOT,
+        )
+    )
+    receipt_provenance = release_contract["runtime_receipt_provenance"]
     manifest = json.loads(_read_input_text(ROOT / "lake-manifest.json", root=ROOT))
     mathlib = next(package for package in manifest["packages"] if package["name"] == "mathlib")
     observed_revisions = {
@@ -319,23 +339,41 @@ def main() -> int:
         local_1049_negative_text,
         EXPECTED_1049_MISMATCH,
     )
+    log_digests = {
+        "positive": digest(args.positive_log),
+        "negative": digest(args.negative_log),
+        "portfolio_positive": digest(args.portfolio_positive_log),
+        "local_1049_positive": digest(args.local_1049_positive_log),
+        "local_1049_negative": digest(args.local_1049_negative_log),
+    }
+    ci_provenance_matches = (
+        os.environ.get("GITHUB_ACTIONS") == "true"
+        and os.environ.get("GITHUB_REPOSITORY") == receipt_provenance["repository"]
+        and os.environ.get("GITHUB_WORKFLOW") == receipt_provenance["workflow"]
+        and str(os.environ.get("GITHUB_RUN_ID", "")).isdigit()
+        and str(os.environ.get("GITHUB_RUN_ATTEMPT", "")).isdigit()
+    )
     all_statuses_open = all(
         row["status"] == "open" for row in packet["problem_index"]["problems"]
     )
     passed = (
         projection_check == 0
+        and portfolio_projection_check == 0
         and args.positive_exit == 0
         and negative_semantic_rejection
+        and args.portfolio_positive_exit == 0
         and args.local_1049_positive_exit == 0
         and local_1049_negative_semantic_rejection
         and pins_match
         and all(binary_digests.values())
+        and all(log_digests.values())
+        and ci_provenance_matches
         and expected_commit_matches
-        and args.sandbox_mode in {"user-manager", "system-manager-nonprivileged-unit", "local-fake-landrun-smoke"}
+        and args.sandbox_mode in release_contract["replay"]["sandbox_modes"]
         and all_statuses_open
     )
     receipt = {
-        "schema": "erdos-external-verification-runtime-receipt/1",
+        "schema": "erdos-external-verification-runtime-receipt/2",
         "result": "pass" if passed else "fail",
         "phase": args.phase,
         "repository_commit": repository_commit,
@@ -348,6 +386,9 @@ def main() -> int:
             "run_id": os.environ.get("GITHUB_RUN_ID"),
             "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
             "workflow": os.environ.get("GITHUB_WORKFLOW"),
+            "github_actions": os.environ.get("GITHUB_ACTIONS") == "true",
+            "provenance_matches_release_contract": ci_provenance_matches,
+            "attestation_posture": receipt_provenance["attestation_posture"],
             "sandbox_mode": args.sandbox_mode,
         },
         "proof_environment": {
@@ -374,15 +415,38 @@ def main() -> int:
             "config_digest": packet["config_digest"],
             "challenge_import_closure": packet["challenge_import_closure"],
             "trusted_build_inputs": packet["trusted_build_inputs"],
-            "theorem_names": [row["wrapper_declaration"] for row in owner["main_results"]],
-            "permitted_axioms": owner["comparator"]["permitted_axioms"],
+            "theorem_names": comparator_config["theorem_names"],
+            "permitted_axioms": comparator_config["permitted_axioms"],
+        },
+        "comparator_replay_portfolio": {
+            "status": (
+                "commit_bound_comparator_replay_pass"
+                if args.portfolio_positive_exit == 0
+                else "commit_bound_comparator_replay_fail"
+            ),
+            "config": "verification/comparator-replay-candidate.json",
+            "config_digest": digest(portfolio_config_path),
+            "challenge_module": portfolio_config["challenge_module"],
+            "solution_module": portfolio_config["solution_module"],
+            "theorem_names": portfolio_config["theorem_names"],
+            "theorem_count": len(portfolio_config["theorem_names"]),
+            "permitted_axioms": portfolio_config["permitted_axioms"],
+            "enable_nanoda": portfolio_config["enable_nanoda"],
+            "projection_check_exit": portfolio_projection_check,
+            "positive_comparator_exit": args.portfolio_positive_exit,
+            "positive_log_digest": log_digests["portfolio_positive"],
+            "boundary": (
+                "This exact-commit receipt records Comparator replay of the aggregate "
+                "per-entry proposition portfolio. It does not establish novelty, source "
+                "fidelity, significance, peer review, or Palomar registration."
+            ),
         },
         "checks": {
             "projection_and_isolation_check_exit": projection_check,
             "positive_comparator_exit": args.positive_exit,
-            "positive_log_digest": digest(args.positive_log),
+            "positive_log_digest": log_digests["positive"],
             "negative_mismatch_comparator_exit": args.negative_exit,
-            "negative_log_digest": digest(args.negative_log),
+            "negative_log_digest": log_digests["negative"],
             "negative_fixture_rejected": negative_semantic_rejection,
             "negative_expected_diagnostic": EXPECTED_MISMATCH,
         },
@@ -394,9 +458,9 @@ def main() -> int:
                     ROOT / "verification/comparator-1049-numerical-height.json"
                 ),
                 "positive_comparator_exit": args.local_1049_positive_exit,
-                "positive_log_digest": digest(args.local_1049_positive_log),
+                "positive_log_digest": log_digests["local_1049_positive"],
                 "negative_mismatch_comparator_exit": args.local_1049_negative_exit,
-                "negative_log_digest": digest(args.local_1049_negative_log),
+                "negative_log_digest": log_digests["local_1049_negative"],
                 "negative_fixture_rejected": local_1049_negative_semantic_rejection,
                 "negative_expected_diagnostic": EXPECTED_1049_MISMATCH,
             }

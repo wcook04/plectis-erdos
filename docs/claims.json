@@ -12118,7 +12118,7 @@
         "review_family": "factorial_carry_characterisation",
         "contribution_class": "locally proved result; novelty unassessed",
         "original_declaration": "ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
-        "original_source": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+        "original_source": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
         "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
         "statement": "Irrationality is equivalent to cofinally many strict-successor divisibility failures.",
         "boundary": "The equivalence does not prove that the cofinal failures occur."
@@ -12129,7 +12129,7 @@
         "review_family": "factorial_carry_characterisation",
         "contribution_class": "locally proved result; novelty unassessed",
         "original_declaration": "ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
-        "original_source": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+        "original_source": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
         "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
         "statement": "Irrationality is equivalent to cofinally many non-unit carries.",
         "boundary": "The equivalence does not supply a cofinal carry producer."
@@ -12433,16 +12433,16 @@
         "boundary": "This is the classical full-support theorem, not universal Erdos #257."
       },
       {
-        "id": "erdos_support_pairwise_coprime",
+        "id": "erdos_support_reciprocal_summable",
         "problem": 257,
-        "review_family": "pairwise_coprime_support",
-        "claim_id": "support_families",
-        "contribution_class": "formalisation of an existing theorem",
-        "original_declaration": "Erdos249257.irrational_erdosSupportSeries_pairwise_coprime",
-        "original_source": "Erdos249257/CertificateKernel.lean",
-        "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
-        "statement": "For every integer base b >= 2 and every infinite pairwise-coprime support A with summable reciprocal mass, the support-restricted Mersenne series is irrational.",
-        "boundary": "This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit."
+        "review_family": "reciprocal_summable_support",
+        "claim_id": "reciprocal_summable_support",
+        "contribution_class": "locally proved all-base support theorem; novelty and priority unassessed",
+        "original_declaration": "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal",
+        "original_source": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_summable_reciprocal",
+        "statement": "For every integer base b >= 2 and every infinite support A with summable reciprocal mass, the support-restricted reciprocal-power series is irrational.",
+        "boundary": "The universal Erdos #257 assertion remains open only in the reciprocal-divergent regime. Novelty and priority are unassessed, and this proof is not identified with Erdos's omitted coprimality-free argument."
       },
       {
         "id": "periodic_nonnegative_weight_irrationality",
@@ -13168,11 +13168,22 @@
             "boundary": "Structured known families do not cover arbitrary infinite supports."
           },
           {
+            "id": "reciprocal_summable_support",
+            "contribution_class": "locally proved all-base support theorem; novelty and priority unassessed",
+            "summary": "Every infinite support with convergent reciprocal mass gives an irrational support-restricted reciprocal-power series at every integer base b at least 2.",
+            "evidence_mode": "Lean kernel; Comparator-selected",
+            "comparator_disposition": "targeted_stronger_reciprocal_summable_support",
+            "declarations": [
+              "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal"
+            ],
+            "boundary": "The universal Erdős #257 assertion remains open only in the reciprocal-divergent regime. Novelty and priority are unassessed, and the proof is not identified with Erdős's omitted coprimality-free argument."
+          },
+          {
             "id": "pairwise_coprime_support",
             "contribution_class": "formalisation of an existing theorem",
             "summary": "Infinite pairwise-coprime supports with summable reciprocal mass have irrational Mersenne support series by an adaptive CRT and weighted coefficient certificate argument.",
             "evidence_mode": "Lean kernel plus Comparator",
-            "comparator_disposition": "targeted_pairwise_coprime_support",
+            "comparator_disposition": "represented_by_reciprocal_summable_support",
             "boundary": "This structured support theorem does not settle arbitrary infinite supports; its infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit."
           },
           {
@@ -13817,6 +13828,24 @@
           "name": "no_newtonConnection_of_not_samePositiveRay",
           "module": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
           "line": 315
+        }
+      ]
+    },
+    {
+      "id": "reciprocal_summable_support",
+      "label": "Every reciprocal-summable infinite support is irrational at every integer base",
+      "status": "proved here",
+      "statement": "For every integer base b ≥ 2 and every infinite A ⊆ ℕ with ∑_{a∈A} 1/a < ∞, the series ∑_{a∈A} 1/(bᵃ − 1) is irrational.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "res:reciprocal-summable-support",
+      "readme_headline": true,
+      "declarations": [
+        {
+          "name": "irrational_erdosSupportSeries_of_summable_reciprocal",
+          "module": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+          "line": 395
         }
       ]
     },

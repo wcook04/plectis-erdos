@@ -2893,51 +2893,47 @@ theorem irrational_totientSeries_of_canonicalAdjacentSuffixCentralSupply
   exact irrational_totientSeries_of_diagonalAdjacentSuffixGapSupply
     (diagonalAdjacentSuffixGapSupply_of_canonical hsupply)
 
-/-- The exact signed penultimate-coordinate supply implies irrationality of
-the totient series.  The supply itself remains unproved. -/
+/-- The exact signed penultimate-coordinate producer closes Erdős #249. -/
 theorem irrational_totientSeries_of_canonicalAdjacentSuffixPenultimateExactSupply
     (hsupply : CanonicalAdjacentSuffixPenultimateExactSupply) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
   exact irrational_totientSeries_of_canonicalAdjacentSuffixCentralSupply
     (canonicalAdjacentSuffixCentralSupply_iff_penultimateExact.mpr hsupply)
 
-/-- The sharp penultimate-margin supply implies irrationality of the totient
-series through the canonical adjacent-suffix route.  The supply itself
-remains unproved. -/
+/-- The sharp penultimate-margin producer closes Erdős #249 through the
+canonical adjacent-suffix consumer. -/
 theorem irrational_totientSeries_of_canonicalAdjacentSuffixPenultimateMarginSupply
     (hsupply : CanonicalAdjacentSuffixPenultimateMarginSupply) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
   exact irrational_totientSeries_of_canonicalAdjacentSuffixCentralSupply
     (canonicalAdjacentSuffixCentralSupply_of_penultimateMargin hsupply)
 
-/-- The parity-complete penultimate-band supply implies irrationality of the
-totient series through the canonical adjacent-suffix route.  The supply
-itself remains unproved. -/
+/-- The parity-complete penultimate-band producer closes Erdős #249 through
+the canonical adjacent-suffix consumer. -/
 theorem irrational_totientSeries_of_canonicalAdjacentSuffixPenultimateStrongBandSupply
     (hsupply : CanonicalAdjacentSuffixPenultimateStrongBandSupply) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
   exact irrational_totientSeries_of_canonicalAdjacentSuffixCentralSupply
     (canonicalAdjacentSuffixCentralSupply_of_penultimateStrongBand hsupply)
 
-/-- Centrality at arbitrarily large strict LCM jumps implies irrationality
-of the totient series.  The centrality condition remains unproved. -/
+/-- Centrality at arbitrarily large strict LCM jumps already closes the
+irrationality consumer. -/
 theorem irrational_totientSeries_of_canonicalAdjacentSuffixJumpCentralSupply
     (hsupply : CanonicalAdjacentSuffixJumpCentralSupply) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
   exact irrational_totientSeries_of_canonicalAdjacentSuffixCentralSupply
     (canonicalAdjacentSuffixCentralSupply_of_jump hsupply)
 
-/-- Nonnegative canonical slack at arbitrarily large strict LCM jumps
-likewise implies irrationality of the totient series. -/
+/-- Nonnegative canonical slack at arbitrarily large strict LCM jumps closes
+the same irrationality consumer. -/
 theorem irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply
     (hsupply : CanonicalAdjacentSuffixJumpSlackSupply) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
   apply irrational_totientSeries_of_canonicalAdjacentSuffixJumpCentralSupply
   exact (canonicalAdjacentSuffixJumpCentralSupply_iff_slackSupply).2 hsupply
 
-/-- The post-jump supply implies irrationality of the totient series via
-plateau transport and the canonical adjacent-suffix route.  The supply
-itself remains unproved. -/
+/-- The post-jump producer closes Erdős #249 through plateau transport and
+the existing canonical adjacent-suffix consumer. -/
 theorem irrational_totientSeries_of_canonicalAdjacentSuffixPostJumpSlackSupply
     (hsupply : CanonicalAdjacentSuffixPostJumpSlackSupply) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by

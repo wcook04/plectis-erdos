@@ -33,6 +33,8 @@ OUTPUTS = {
     "human": ROOT / "docs/EXTERNAL_VERIFICATION.md",
     "outreach": ROOT / "docs/OUTREACH_EVIDENCE_CAPSULES.md",
 }
+AGGREGATE_COMPARATOR_PATH = ROOT / "verification/comparator-replay-candidate.json"
+AGGREGATE_MEMBERSHIP_PATH = ROOT / "verification/comparator-replay-membership.json"
 
 IMPORT_LINE_RE = re.compile(r"^import\s+([^\n]+)$", re.M)
 PRIOR_RESULT_RE = re.compile(
@@ -62,6 +64,32 @@ def imports_in_text(text: str) -> list[str]:
 
 def sha256_bytes(data: bytes) -> str:
     return "sha256:" + hashlib.sha256(data).hexdigest()
+
+
+def load_aggregate_comparator_source() -> dict:
+    """Load the broad candidate without turning configuration into a run claim."""
+    candidate = json.loads(AGGREGATE_COMPARATOR_PATH.read_text(encoding="utf-8"))
+    membership = json.loads(AGGREGATE_MEMBERSHIP_PATH.read_text(encoding="utf-8"))
+    theorem_names = candidate.get("theorem_names")
+    required_packages = membership.get("required_package_ids")
+    if (
+        not isinstance(theorem_names, list)
+        or not theorem_names
+        or any(not isinstance(name, str) or not name for name in theorem_names)
+        or len(set(theorem_names)) != len(theorem_names)
+    ):
+        raise ValueError("dynamic aggregate Comparator theorem roster is malformed")
+    if (
+        not isinstance(required_packages, list)
+        or not required_packages
+        or any(not isinstance(name, str) or not name for name in required_packages)
+        or sorted(set(required_packages)) != required_packages
+    ):
+        raise ValueError("dynamic aggregate Comparator membership is malformed")
+    return {
+        "theorem_names": theorem_names,
+        "required_package_ids": required_packages,
+    }
 
 
 class UnsafeVerificationPath(ValueError):
@@ -416,6 +444,14 @@ def quote(value: str) -> str:
     return json.dumps(value, ensure_ascii=False)
 
 
+def public_evidence_mode(value: str) -> str:
+    """Render configured Comparator selection without inventing a receipt."""
+    return value.replace(
+        "Lean kernel plus Comparator",
+        "Lean kernel; Comparator-selected",
+    )
+
+
 SORRY_RE = re.compile(r"\bsorry\b")
 CHALLENGE_FILENAME = "Challenge.lean"
 
@@ -479,28 +515,33 @@ def sorry_census() -> dict:
 
 
 def render_sorry_boundary(census: dict) -> str:
-    """Name the fixtures rather than asserting a count the reader cannot check."""
+    """Summarise trusted fixtures and point to the exact generated roster."""
     files = sorted(census["challenge"])
     if not files:
         return (
             "No sorry anywhere in the repository, including the Comparator "
             "challenge fixtures."
         )
-    listed = "; ".join(files)
-    where = (
-        f"the statement-isolated Comparator challenge fixture ({listed})"
-        if len(files) == 1
-        else f"one of the statement-isolated Comparator challenge fixtures ({listed})"
-    )
+    release_fixture = "ExternalVerification/Challenge.lean"
+    release_count = census["challenge"].get(release_fixture, 0)
+    aggregate_files = [path for path in files if path != release_fixture]
+    aggregate_count = sum(census["challenge"][path] for path in aggregate_files)
     return (
-        f"Every sorry is a trusted proposition package in {where}. Each is the "
-        "fixture against which Comparator checks the proof-bearing solution; "
-        "the proof corpus and every solution wrapper have sorry_count 0."
+        "Every sorry is a trusted statement slot in a statement-isolated Comparator "
+        f"Challenge.lean fixture: {aggregate_count} slots across "
+        f"{len(aggregate_files)} dynamically discovered per-entry packages, plus "
+        f"{release_count} release-selected umbrella slot in {release_fixture}. "
+        "verification/comparator-replay-membership.json records the exact aggregate "
+        "package roster. Comparator checks the matching proof-bearing solutions; the "
+        "proof corpus and every solution wrapper have sorry_count 0."
     )
 
 
 def render_formalization(
-    packet: dict, problem_projection: dict, comparator_source: dict
+    packet: dict,
+    problem_projection: dict,
+    comparator_source: dict,
+    aggregate_comparator_source: dict,
 ) -> str:
     schema_commit = packet["formalization_schema"]["commit"]
     census = sorry_census()
@@ -578,17 +619,22 @@ def render_formalization(
             packet, row.get("review_family", "")
         )
         lines.append("      literature_dependencies:")
+        references = fidelity.get("references", []) if fidelity else []
+        if references:
+            for reference in references:
+                lines.extend([
+                    f"        - statement: {quote(fidelity['source_statement'] + ' [registry pointer: ' + reference + ']')}",
+                    '          source: "docs/papers/corpus.json"',
+                ])
+        else:
+            lines[-1] = "      literature_dependencies: []"
         if fidelity:
-            for reference in fidelity.get("references", []):
-                lines.append(f"        - {quote(reference)}")
             lines.extend([
                 f"      source_statement: {quote(fidelity['source_statement'])}",
                 f"      source_mapping: {quote(fidelity['mapping'])}",
                 f"      historical_attribution: {quote(fidelity['historical_attribution'])}",
                 f"      logical_dependency: {quote(fidelity['logical_dependency'])}",
             ])
-        else:
-            lines[-1] = "      literature_dependencies: []"
     lines.extend([
         "automation:",
         "  methods:",
@@ -604,6 +650,13 @@ def render_formalization(
         f"  theorem_name_count: {len(comparator_source['theorem_names'])}",
         "  theorem_names:",
         *[f"    - {quote(name)}" for name in comparator_source["theorem_names"]],
+        "  aggregate_candidate:",
+        '    config: "verification/comparator-replay-candidate.json"',
+        '    membership: "verification/comparator-replay-membership.json"',
+        f"    package_count: {len(aggregate_comparator_source['required_package_ids'])}",
+        f"    theorem_name_count: {len(aggregate_comparator_source['theorem_names'])}",
+        '    growth_policy: "auto_include_eligible_packages_and_interfaces_no_silent_shrink"',
+        '    receipt_status: "candidate_no_current_green_receipt_asserted"',
         "review:",
         "  status: \"self-assessed\"",
         "  reviewers: []",
@@ -632,7 +685,7 @@ def render_formalization(
             lines.extend([
                 f"      - id: {quote(family['id'])}",
                 f"        contribution_class: {quote(family['contribution_class'])}",
-                f"        evidence_mode: {quote(family['evidence_mode'])}",
+                f"        evidence_mode: {quote(public_evidence_mode(family['evidence_mode']))}",
                 f"        comparator_disposition: {quote(family['comparator_disposition'])}",
                 f"        summary: {quote(family['summary'])}",
                 f"        boundary: {quote(family['boundary'])}",
@@ -646,7 +699,7 @@ def render_formalization(
                     f"        logical_dependency: {quote(fidelity['logical_dependency'])}",
                 ])
     lines.extend([
-        "acknowledgements: null",
+        'acknowledgements: "Mathlib contributors; Thomas F. Bloom and the Erdős Problems project for the public problem catalogue."',
         "external_verification:",
         "  owner: \"docs/claims.json::external_verification_packet\"",
         f"  problem_index: {quote(packet['problem_index_projection'])}",
@@ -744,7 +797,10 @@ def _details_block(summary: str, body_lines: list[str]) -> list[str]:
 def _render_family_item(family: dict) -> list[str]:
     """One Markdown list item = one family; explicit breaks keep fields grouped."""
     label = _family_display_label(family["id"])
-    evidence = f"{family['contribution_class']} · {family['evidence_mode']}"
+    evidence = (
+        f"{family['contribution_class']} · "
+        f"{public_evidence_mode(family['evidence_mode'])}"
+    )
     return [
         f"- **{label}**<br>",
         f"  {family['summary']}<br>",
@@ -1288,7 +1344,7 @@ def _render_signal_spine(packet: dict, signal_authority: dict) -> list[str]:
                 f"  **Boundary.** {family['boundary']}<br>",
                 (
                     f"  *Evidence.* {family['contribution_class']} · "
-                    f"{family['evidence_mode']}"
+                    f"{public_evidence_mode(family['evidence_mode'])}"
                 ),
                 "",
             ]
@@ -1316,6 +1372,8 @@ def render_human(
     problem_projection: dict,
     signal_authority: dict,
 ) -> str:
+    comparator_source, _ = load_comparator_source(packet)
+    configured_theorem_count = len(comparator_source["theorem_names"])
     source_by_id = {row["problem_id"]: row for row in problem_source["problems"]}
     families_by_problem = {
         int(problem["problem"]): problem["families"] for problem in packet["review_matrix"]
@@ -1478,11 +1536,16 @@ def render_human(
             # here, ahead of first use. (2026-08-15)
             (
                 f"**How verification works.** The {len(packet['main_results'])} selected "
-                "propositions are declared again without proofs. Comparator checks that the proof-bearing modules "
+                "registered propositions are declared again without proofs. The live "
+                f"configuration names {configured_theorem_count} theorems: "
+                f"those {len(packet['main_results'])} rows plus "
+                f"{configured_theorem_count - len(packet['main_results'])} "
+                "executable support interfaces. Comparator is configured to check that the proof-bearing modules "
                 "match those independent statements and a fixed axiom budget. A named "
                 "altered statement must fail. This checks formal propositions only. It "
                 "does not assess exposition, citations, intended meaning, novelty, or "
-                "significance. Technical detail is in the [Comparator interface appendix]"
+                "significance. Only a green exact-commit receipt licenses Comparator-checked "
+                "wording. Technical detail is in the [Comparator interface appendix]"
                 "(#comparator-interface-appendix)."
             ),
             "",
@@ -1511,7 +1574,10 @@ def render_human(
                 "an unregistered declaration a principal result."
             ),
             (
-                f"The {len(packet['main_results'])} exact interfaces cover all eight programmes. "
+                f"The {len(packet['main_results'])} registered exact interfaces cover all eight "
+                f"programmes; {configured_theorem_count} theorem names are "
+                "configured because executable support interfaces remain checkable without "
+                "becoming registered main-result rows. "
                 "Local proof provenance is recorded separately from novelty, which remains "
                 "unassessed unless a source-fidelity row says otherwise. The trusted challenge "
                 "contains one proposition-package fixture and imports only "
@@ -1617,12 +1683,16 @@ def build_outputs(
     closure: list[Path],
 ) -> dict[Path, bytes]:
     comparator_source, config_bytes = load_comparator_source(packet)
+    aggregate_comparator_source = load_aggregate_comparator_source()
     negative_bytes = (json.dumps(negative_config(packet), indent=2) + "\n").encode()
     return {
         OUTPUTS["config"]: config_bytes,
         OUTPUTS["negative_config"]: negative_bytes,
         OUTPUTS["formalization"]: render_formalization(
-            packet, problem_projection, comparator_source
+            packet,
+            problem_projection,
+            comparator_source,
+            aggregate_comparator_source,
         ).encode(),
         OUTPUTS["packet"]: render_packet(
             packet,

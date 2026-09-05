@@ -1370,6 +1370,12 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
   problem257FullSupport :
     ∀ b : ℕ, 2 ≤ b →
       Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1))
+  problem257ReciprocalSummableSupport :
+    ∀ (b : ℕ) (A : Set ℕ),
+      2 ≤ b →
+      A.Infinite →
+      Summable (Set.indicator A fun a : ℕ => (1 : ℝ) / a) →
+      Irrational (erdosSupportSeries b A)
   problem257PairwiseCoprime :
     ∀ (b : ℕ) (A : Set ℕ),
       2 ≤ b →

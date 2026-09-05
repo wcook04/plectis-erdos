@@ -22,6 +22,8 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable, Mapping
 
+import external_verification_release as external_release
+
 from build_module_synopsis_index import (
     OWNER_ADOPTION as MODULE_SYNOPSIS_OWNER_ADOPTION,
     QUERY_CONTRACT as MODULE_SYNOPSIS_QUERY_CONTRACT,
@@ -2112,6 +2114,31 @@ def current_corpus_census() -> dict[str, Any]:
     }
 
 
+def runtime_receipt_state(relative_path: str) -> tuple[str, str]:
+    """License assurance only from a valid receipt for this unchanged checkout."""
+    path = ROOT / relative_path
+    if not path.is_file():
+        return "absent", "No local runtime receipt is present."
+    try:
+        receipt = external_release.load_json(path)
+        head = external_release.git(ROOT, "rev-parse", "HEAD")
+        tree = external_release.git(ROOT, "rev-parse", "HEAD^{tree}")
+        if receipt.get("repository_commit") != head or receipt.get("repository_tree") != tree:
+            return "stale", "Local runtime receipt is bound to another commit or tree."
+        if external_release.git(ROOT, "status", "--porcelain", "--untracked-files=normal"):
+            return "dirty", "The working tree differs from the receipt's committed snapshot."
+        external_release.validate_runtime_receipt(
+            receipt,
+            root=ROOT,
+            source_commit=head,
+            source_tree=tree,
+            release_contract=external_release.contract(ROOT),
+        )
+    except Exception as exc:
+        return "invalid", f"Local runtime receipt failed validation: {exc}"
+    return "current_green", "A validated green receipt matches this unchanged commit and tree."
+
+
 def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
     """Project exact external-assurance owners as bounded reading routes.
 
@@ -2123,6 +2150,26 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
     """
     external = claims["external_verification_packet"]
     comparator = external["comparator"]
+    runtime_receipt = external["receipt_contract"]["runtime_output"]
+    receipt_state, receipt_detail = runtime_receipt_state(runtime_receipt)
+    replay_config_path = "verification/comparator-replay-candidate.json"
+    replay_membership_path = "verification/comparator-replay-membership.json"
+    replay_portfolio: dict[str, Any] = {"status": "not_present_in_this_commit"}
+    replay_owners = []
+    if (ROOT / replay_config_path).is_file() and (ROOT / replay_membership_path).is_file():
+        replay_config = load(replay_config_path)
+        replay_membership = load(replay_membership_path)
+        replay_owners = [replay_config_path, replay_membership_path]
+        replay_portfolio = {
+            "status": "commit_bound_comparator_replay_pass" if receipt_state == "current_green" else "replay_candidate",
+            "receipt_state": receipt_state,
+            "package_count": len(replay_membership["required_package_ids"]),
+            "interface_count": len(replay_config["theorem_names"]),
+            "aggregate_config": replay_config_path,
+            "membership": replay_membership_path,
+            "projection_check": "python3 scripts/build_comparator_replay_portfolio.py --check",
+            "boundary": "Configured membership is not execution evidence. The query does not revalidate source projection freshness; run the owner check before replay.",
+        }
     palomar_owner = "docs/PALOMAR_POLICY_RECONCILIATION.json"
     if (ROOT / palomar_owner).is_file():
         reconciliation = load(palomar_owner)
@@ -2202,15 +2249,18 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
                 "docs/EXTERNAL_VERIFICATION.md",
                 "docs/claims.json::external_verification_packet",
                 comparator["config"],
+                *replay_owners,
             ],
             "query_steps": [
                 "python3 scripts/build_external_verification.py --check",
                 "python3 scripts/test_external_verification.py",
+                "python3 scripts/build_comparator_replay_portfolio.py --check",
             ],
             "authority_owners": [
                 "docs/claims.json::external_verification_packet",
                 "docs/EXTERNAL_VERIFICATION.md",
                 comparator["config"],
+                *replay_owners,
             ],
             "adjacent_handle_classes": [
                 "artifact",
@@ -2229,8 +2279,19 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
                 "challenge_module": comparator["challenge_module"],
                 "solution_module": comparator["solution_module"],
                 "permitted_axioms": comparator["permitted_axioms"],
-                "runtime_receipt": external["receipt_contract"]["runtime_output"],
-                "public_wording": external["receipt_contract"]["public_wording"],
+                "runtime_receipt": runtime_receipt,
+                "runtime_receipt_state": receipt_state,
+                "runtime_receipt_state_detail": receipt_detail,
+                "dynamic_comparator_replay_candidate": replay_portfolio,
+                "public_wording": (
+                    external["receipt_contract"]["public_wording"]
+                    if receipt_state == "current_green"
+                    else "Comparator replay configured; no validated green receipt for this checkout"
+                ),
+                "receipt_licensed_public_wording": (
+                    external["receipt_contract"]["public_wording"]
+                    if receipt_state == "current_green" else None
+                ),
                 "forbidden_wording": external["receipt_contract"]["forbidden_wording"],
                 "boundary": external["boundary"],
             },

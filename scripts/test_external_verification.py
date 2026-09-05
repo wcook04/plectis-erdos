@@ -545,6 +545,64 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("sorryAx", audit_step)
         self.assertIn("depends on axioms", audit_step)
 
+    def test_ci_executes_and_preserves_the_dynamic_portfolio(self) -> None:
+        from external_verification_release import RUNTIME_LOG_BINDINGS
+
+        workflow = (ROOT / ".github/workflows/lean.yml").read_text()
+        external = workflow.split("  external-verification:", 1)[1].split(
+            "  first-contact:", 1
+        )[0]
+        gate = external.split("id: external-inputs", 1)[1].split(
+            "- name:", 1
+        )[0]
+        self.assertIn("'ExternalVerification*/**'", gate)
+        self.assertIn("ComparatorReplay", gate)
+        self.assertIn("scripts/build_comparator_replay_portfolio.py", gate)
+        self.assertIn("run_comparator verification/comparator-replay-candidate.json", external)
+        self.assertIn('--portfolio-positive-exit "$portfolio_positive_exit"', external)
+        self.assertIn("--portfolio-positive-log artifacts-portfolio-positive.log", external)
+        self.assertIn("test '${{ steps.comparator.outputs.portfolio_positive_exit }}' = 0", external)
+        upload = external.split(
+            "- name: Upload external-verification receipt and replay logs", 1
+        )[1]
+        for filename in RUNTIME_LOG_BINDINGS:
+            self.assertIn(filename, upload)
+        self.assertIn("if-no-files-found: error", upload)
+
+    def test_query_receipt_presence_does_not_imply_assurance(self) -> None:
+        import query_corpus as query
+        import external_verification_release as release
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            path = root / "receipt.json"
+            with patch.object(query, "ROOT", root):
+                self.assertEqual(query.runtime_receipt_state("receipt.json")[0], "absent")
+                path.write_text("not JSON")
+                self.assertEqual(query.runtime_receipt_state("receipt.json")[0], "invalid")
+                path.write_text(json.dumps({"repository_commit": "head", "repository_tree": "tree"}))
+
+                def git_result(_root, *args):
+                    return "head" if args == ("rev-parse", "HEAD") else "tree"
+
+                with patch.object(release, "git", side_effect=git_result):
+                    self.assertEqual(query.runtime_receipt_state("receipt.json")[0], "dirty")
+                with patch.object(release, "git", return_value="other"):
+                    self.assertEqual(query.runtime_receipt_state("receipt.json")[0], "stale")
+
+                def clean_git(_root, *args):
+                    return "" if args[0] == "status" else git_result(_root, *args)
+
+                with patch.object(release, "git", side_effect=clean_git), patch.object(
+                    release, "contract", return_value={}
+                ), patch.object(release, "validate_runtime_receipt") as validate:
+                    validate.side_effect = release.ReleaseIdentityError("failed verification")
+                    self.assertEqual(query.runtime_receipt_state("receipt.json")[0], "invalid")
+                    validate.side_effect = None
+                    self.assertEqual(query.runtime_receipt_state("receipt.json")[0], "current_green")
+                    self.assertEqual(validate.call_args.kwargs["source_commit"], "head")
+                    self.assertEqual(validate.call_args.kwargs["source_tree"], "tree")
+
 
 if __name__ == "__main__":
     unittest.main()

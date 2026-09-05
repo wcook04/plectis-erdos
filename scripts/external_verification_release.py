@@ -28,8 +28,26 @@ import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTRACT_PATH = Path("verification/external-verification-release-contract.json")
-SCHEMA = "erdos-external-verification-release-manifest/1"
-RUNTIME_SCHEMA = "erdos-external-verification-runtime-receipt/1"
+SCHEMA = "erdos-external-verification-release-manifest/2"
+RUNTIME_SCHEMA = "erdos-external-verification-runtime-receipt/2"
+RUNTIME_LOG_BINDINGS = {
+    "artifacts-positive.log": ("checks", "positive_log_digest"),
+    "artifacts-negative.log": ("checks", "negative_log_digest"),
+    "artifacts-portfolio-positive.log": (
+        "comparator_replay_portfolio",
+        "positive_log_digest",
+    ),
+    "artifacts-1049-positive.log": (
+        "programme_local_checks",
+        "erdos_1049_numerical_height",
+        "positive_log_digest",
+    ),
+    "artifacts-1049-negative.log": (
+        "programme_local_checks",
+        "erdos_1049_numerical_height",
+        "negative_log_digest",
+    ),
+}
 FULL_SHA_RE = re.compile(r"[0-9a-f]{40}")
 TAG_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*")
 SYNTHETIC_MERGE_MESSAGE_RE = re.compile(
@@ -180,7 +198,7 @@ def full_sha(value: Any, field: str) -> str:
 
 def contract(root: Path) -> dict[str, Any]:
     value = load_json(root / CONTRACT_PATH, root=root)
-    if value.get("schema") != "erdos-external-verification-release-contract/1":
+    if value.get("schema") != "erdos-external-verification-release-contract/2":
         raise ReleaseIdentityError("unsupported external-verification release contract")
     pins = value.get("toolchain")
     if not isinstance(pins, dict) or set(pins) != {
@@ -238,6 +256,41 @@ def expected_config(root: Path, relative_path: str) -> dict[str, Any]:
     return value
 
 
+def expected_proof_environment(root: Path) -> dict[str, str]:
+    """Return the exact Lean and mathlib identities pinned by the checkout."""
+    try:
+        lean_toolchain = _read_safe_bytes(
+            root / "lean-toolchain", root=root
+        ).decode("utf-8").strip()
+    except UnicodeDecodeError as exc:
+        raise ReleaseIdentityError("lean-toolchain is not UTF-8") from exc
+    manifest = load_json(root / "lake-manifest.json", root=root)
+    packages = manifest.get("packages")
+    if not isinstance(packages, list):
+        raise ReleaseIdentityError("lake-manifest.json has no package list")
+    mathlib_rows = [
+        row
+        for row in packages
+        if isinstance(row, dict) and row.get("name") == "mathlib"
+    ]
+    if len(mathlib_rows) != 1:
+        raise ReleaseIdentityError("lake-manifest.json must pin exactly one mathlib package")
+    mathlib_revision = full_sha(
+        mathlib_rows[0].get("rev"), "lake-manifest mathlib revision"
+    )
+    if not lean_toolchain:
+        raise ReleaseIdentityError("lean-toolchain is empty")
+    return {
+        "lean_toolchain": lean_toolchain,
+        "mathlib_revision": mathlib_revision,
+    }
+
+
+def is_success_exit(value: Any) -> bool:
+    """Accept the integer exit status 0, never JSON booleans such as false."""
+    return isinstance(value, int) and not isinstance(value, bool) and value == 0
+
+
 def validate_runtime_receipt(
     receipt: dict[str, Any],
     *,
@@ -258,6 +311,31 @@ def validate_runtime_receipt(
         raise ReleaseIdentityError("runtime receipt lacks the explicit release commit expectation")
     if receipt.get("repository_commit_matches_expected") is not True:
         raise ReleaseIdentityError("runtime receipt did not match its expected commit")
+
+    provenance = release_contract.get("runtime_receipt_provenance")
+    ci = receipt.get("ci")
+    if not isinstance(provenance, dict) or not isinstance(ci, dict):
+        raise ReleaseIdentityError("runtime receipt lacks release provenance")
+    if ci.get("repository") != provenance.get("repository"):
+        raise ReleaseIdentityError("runtime receipt came from a different repository")
+    if ci.get("workflow") != provenance.get("workflow"):
+        raise ReleaseIdentityError("runtime receipt came from a different workflow")
+    if ci.get("github_actions") is not True:
+        raise ReleaseIdentityError("runtime receipt was not produced in GitHub Actions")
+    if ci.get("provenance_matches_release_contract") is not True:
+        raise ReleaseIdentityError("runtime receipt provenance was not contract-matched")
+    if ci.get("attestation_posture") != provenance.get("attestation_posture"):
+        raise ReleaseIdentityError("runtime receipt attestation posture is stale")
+    if not all(
+        isinstance(ci.get(field), str) and ci[field].isdigit()
+        for field in ("run_id", "run_attempt")
+    ):
+        raise ReleaseIdentityError("runtime receipt lacks numeric Actions run identity")
+    if ci.get("sandbox_mode") not in release_contract["replay"]["sandbox_modes"]:
+        raise ReleaseIdentityError("runtime receipt used a non-release sandbox mode")
+
+    if receipt.get("proof_environment") != expected_proof_environment(root):
+        raise ReleaseIdentityError("runtime receipt proof environment differs from checkout")
 
     comparator = receipt.get("comparator_toolchain")
     pins = release_contract["toolchain"]
@@ -289,16 +367,121 @@ def validate_runtime_receipt(
     ):
         raise ReleaseIdentityError("runtime receipt config digest is stale")
 
+    portfolio = receipt.get("comparator_replay_portfolio")
+    portfolio_contract = release_contract.get("aggregate_replay_portfolio")
+    if not isinstance(portfolio_contract, dict):
+        raise ReleaseIdentityError("release contract lacks aggregate replay portfolio")
+    portfolio_path = portfolio_contract.get("config")
+    if not isinstance(portfolio_path, str):
+        raise ReleaseIdentityError("release contract has no aggregate replay config")
+    portfolio_config = expected_config(root, portfolio_path)
+    if not isinstance(portfolio, dict):
+        raise ReleaseIdentityError("runtime receipt lacks aggregate Comparator replay evidence")
+    if portfolio.get("status") != "commit_bound_comparator_replay_pass":
+        raise ReleaseIdentityError("aggregate Comparator replay is not a commit-bound pass")
+    if portfolio.get("config") != portfolio_path:
+        raise ReleaseIdentityError("aggregate Comparator replay config path is noncanonical")
+    if portfolio.get("config_digest") != sha256_file(
+        root / portfolio_path, root=root
+    ):
+        raise ReleaseIdentityError("aggregate Comparator replay config digest is stale")
+    if portfolio.get("theorem_names") != portfolio_config["theorem_names"]:
+        raise ReleaseIdentityError("aggregate Comparator replay theorem set is stale")
+    if portfolio.get("challenge_module") != portfolio_contract.get("challenge_module"):
+        raise ReleaseIdentityError("aggregate Comparator Challenge module is stale")
+    if portfolio.get("solution_module") != portfolio_contract.get("solution_module"):
+        raise ReleaseIdentityError("aggregate Comparator Solution module is stale")
+    if portfolio.get("challenge_module") != portfolio_config.get("challenge_module"):
+        raise ReleaseIdentityError("aggregate Comparator Challenge differs from config")
+    if portfolio.get("solution_module") != portfolio_config.get("solution_module"):
+        raise ReleaseIdentityError("aggregate Comparator Solution differs from config")
+    if portfolio.get("theorem_count") != len(portfolio_config["theorem_names"]):
+        raise ReleaseIdentityError("aggregate Comparator replay theorem count is stale")
+    if portfolio.get("permitted_axioms") != portfolio_config.get("permitted_axioms"):
+        raise ReleaseIdentityError("aggregate Comparator replay axiom budget is stale")
+    if portfolio_config.get("enable_nanoda") is not False:
+        raise ReleaseIdentityError("aggregate Comparator config enabled NanoDa")
+    if portfolio.get("enable_nanoda") is not portfolio_config.get("enable_nanoda"):
+        raise ReleaseIdentityError("aggregate Comparator replay enabled NanoDa")
+    if not is_success_exit(portfolio.get("projection_check_exit")):
+        raise ReleaseIdentityError("aggregate Comparator replay projection was stale")
+    if not is_success_exit(portfolio.get("positive_comparator_exit")):
+        raise ReleaseIdentityError("aggregate Comparator replay did not pass")
+    if not isinstance(portfolio.get("positive_log_digest"), str) or re.fullmatch(
+        r"sha256:[0-9a-f]{64}", portfolio["positive_log_digest"]
+    ) is None:
+        raise ReleaseIdentityError("aggregate Comparator replay lacks a log digest")
+
     checks = receipt.get("checks")
     expected_diagnostic = release_contract["replay"]["expected_negative_diagnostic"]
     if not isinstance(checks, dict):
         raise ReleaseIdentityError("runtime receipt lacks check results")
-    if checks.get("positive_comparator_exit") != 0:
+    if not is_success_exit(checks.get("projection_and_isolation_check_exit")):
+        raise ReleaseIdentityError("runtime projection and isolation check did not pass")
+    if not is_success_exit(checks.get("positive_comparator_exit")):
         raise ReleaseIdentityError("runtime positive Comparator check did not pass")
+    negative_exit = checks.get("negative_mismatch_comparator_exit")
+    if isinstance(negative_exit, bool) or not isinstance(negative_exit, int) or negative_exit == 0:
+        raise ReleaseIdentityError("runtime negative Comparator fixture was not rejected by exit status")
+    for key in ("positive_log_digest", "negative_log_digest"):
+        if not isinstance(checks.get(key), str) or re.fullmatch(
+            r"sha256:[0-9a-f]{64}", checks[key]
+        ) is None:
+            raise ReleaseIdentityError(f"runtime Comparator check lacks {key}")
     if checks.get("negative_fixture_rejected") is not True:
         raise ReleaseIdentityError("runtime negative fixture was not rejected")
     if checks.get("negative_expected_diagnostic") != expected_diagnostic:
         raise ReleaseIdentityError("runtime negative diagnostic differs from contract")
+
+    local = receipt.get("programme_local_checks", {}).get(
+        "erdos_1049_numerical_height"
+    )
+    if not isinstance(local, dict):
+        raise ReleaseIdentityError("runtime receipt lacks the #1049 local Comparator check")
+    local_contract = release_contract.get("programme_local_checks", {}).get(
+        "erdos_1049_numerical_height"
+    )
+    if not isinstance(local_contract, dict):
+        raise ReleaseIdentityError("release contract lacks the #1049 local Comparator check")
+    local_config_path = local_contract.get("config")
+    if not isinstance(local_config_path, str):
+        raise ReleaseIdentityError("release contract has no #1049 Comparator config")
+    if local.get("config") != local_config_path:
+        raise ReleaseIdentityError("#1049 local Comparator config path is noncanonical")
+    if local.get("config_digest") != sha256_file(root / local_config_path, root=root):
+        raise ReleaseIdentityError("#1049 local Comparator config digest is stale")
+    local_config = expected_config(root, local_config_path)
+    for field in (
+        "challenge_module",
+        "solution_module",
+        "theorem_names",
+        "permitted_axioms",
+        "enable_nanoda",
+    ):
+        if local_config.get(field) != local_contract.get(field):
+            raise ReleaseIdentityError(f"#1049 local Comparator {field} differs from contract")
+    if local_config.get("enable_nanoda") is not False:
+        raise ReleaseIdentityError("#1049 local Comparator config enabled NanoDa")
+    if not is_success_exit(local.get("positive_comparator_exit")):
+        raise ReleaseIdentityError("#1049 local positive Comparator check did not pass")
+    local_negative_exit = local.get("negative_mismatch_comparator_exit")
+    if (
+        isinstance(local_negative_exit, bool)
+        or not isinstance(local_negative_exit, int)
+        or local_negative_exit == 0
+    ):
+        raise ReleaseIdentityError("#1049 local negative Comparator fixture was not rejected by exit status")
+    if local.get("negative_fixture_rejected") is not True:
+        raise ReleaseIdentityError("#1049 local negative fixture was not rejected")
+    if local.get("negative_expected_diagnostic") != local_contract.get(
+        "expected_negative_diagnostic"
+    ):
+        raise ReleaseIdentityError("#1049 local negative diagnostic differs from contract")
+    for key in ("positive_log_digest", "negative_log_digest"):
+        if not isinstance(local.get(key), str) or re.fullmatch(
+            r"sha256:[0-9a-f]{64}", local[key]
+        ) is None:
+            raise ReleaseIdentityError(f"#1049 local Comparator check lacks {key}")
     if receipt.get("whole_programme_disclosure", {}).get("all_statuses_open") is not True:
         raise ReleaseIdentityError("runtime receipt lost the all-eight-open disclosure")
 
@@ -320,6 +503,30 @@ def artifact_rows(
     return rows
 
 
+def runtime_log_rows(
+    receipt: dict[str, Any],
+    runtime_log_dir: Path,
+    release_contract: dict[str, Any],
+) -> list[dict[str, str]]:
+    """Hash the five uploaded replay logs and match them to the receipt."""
+    expected_files = list(RUNTIME_LOG_BINDINGS)
+    if release_contract.get("release_assets", {}).get("runtime_log_files") != expected_files:
+        raise ReleaseIdentityError("release contract runtime-log roster is stale")
+    rows: list[dict[str, str]] = []
+    for filename, receipt_path in RUNTIME_LOG_BINDINGS.items():
+        value: Any = receipt
+        for key in receipt_path:
+            if not isinstance(value, dict):
+                value = None
+                break
+            value = value.get(key)
+        actual = sha256_file(runtime_log_dir / filename)
+        if value != actual:
+            raise ReleaseIdentityError(f"runtime log digest differs from receipt: {filename}")
+        rows.append({"path": filename, "sha256": actual})
+    return rows
+
+
 def build_manifest(
     *,
     root: Path,
@@ -327,6 +534,7 @@ def build_manifest(
     source_tree: str,
     release_tag: str,
     runtime_receipt_path: Path,
+    runtime_log_dir: Path,
 ) -> dict[str, Any]:
     release_contract = contract(root)
     exact_source_identity(root, source_commit, source_tree, release_tag)
@@ -338,6 +546,7 @@ def build_manifest(
         source_tree=source_tree,
         release_contract=release_contract,
     )
+    log_rows = runtime_log_rows(receipt, runtime_log_dir, release_contract)
     assets = release_contract["release_assets"]
     runtime_name = assets["runtime_receipt_pattern"].format(
         source_commit=source_commit
@@ -367,8 +576,9 @@ def build_manifest(
             "result": "pass",
             "theorem_count": len(receipt["statement_contract"]["theorem_names"]),
         },
+        "runtime_logs": log_rows,
         "release_assets": {
-            "required": [runtime_name, manifest_name],
+            "required": [runtime_name, manifest_name, *assets["runtime_log_files"]],
             "retention": assets["retention"],
         },
         "independent_replay": {
@@ -389,6 +599,7 @@ def validate_manifest(
     *,
     root: Path,
     runtime_receipt_path: Path,
+    runtime_log_dir: Path,
 ) -> None:
     if manifest.get("schema") != SCHEMA:
         raise ReleaseIdentityError("unsupported release manifest schema")
@@ -428,6 +639,9 @@ def validate_manifest(
         source_tree=source_tree,
         release_contract=release_contract,
     )
+    expected_log_rows = runtime_log_rows(receipt, runtime_log_dir, release_contract)
+    if manifest.get("runtime_logs") != expected_log_rows:
+        raise ReleaseIdentityError("manifest runtime-log identities are stale")
     if manifest.get("runtime_receipt", {}).get("sha256") != sha256_file(runtime_receipt_path):
         raise ReleaseIdentityError("manifest runtime-receipt digest is stale")
     expected_names = [
@@ -437,6 +651,7 @@ def validate_manifest(
         release_contract["release_assets"]["manifest_pattern"].format(
             source_commit=source_commit
         ),
+        *release_contract["release_assets"]["runtime_log_files"],
     ]
     if manifest.get("release_assets", {}).get("required") != expected_names:
         raise ReleaseIdentityError("manifest release-asset names are not canonical")
@@ -537,6 +752,7 @@ def parser() -> argparse.ArgumentParser:
         sub = subparsers.add_parser(name)
         sub.add_argument("--root", type=Path, default=ROOT)
         sub.add_argument("--receipt", type=Path, required=True)
+        sub.add_argument("--runtime-log-dir", type=Path, required=True)
         if name == "build":
             sub.add_argument("--source-commit", required=True)
             sub.add_argument("--source-tree", required=True)
@@ -559,6 +775,7 @@ def main() -> int:
                 source_tree=args.source_tree,
                 release_tag=args.release_tag,
                 runtime_receipt_path=args.receipt.resolve(),
+                runtime_log_dir=args.runtime_log_dir.resolve(),
             )
             write_json(args.output, manifest, overwrite=args.overwrite)
             print(args.output)
@@ -568,6 +785,7 @@ def main() -> int:
                 manifest,
                 root=root,
                 runtime_receipt_path=args.receipt.resolve(),
+                runtime_log_dir=args.runtime_log_dir.resolve(),
             )
             print(
                 "external-verification release manifest valid: "
