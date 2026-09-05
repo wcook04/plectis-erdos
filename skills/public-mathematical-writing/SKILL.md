@@ -75,6 +75,17 @@ For a paper or theorem explanation:
 7. End the result where the evidence ends. State the next open implication
    plainly instead of closing with promotional language.
 
+## Remove redundant qualifications
+
+Keep a qualification when it changes a hypothesis, quantifier, implication,
+attribution, evidence class, or the specific open step. State that information
+once where the reader needs it. Remove repeated reminders that finite checks
+are finite, that a partial theorem does not solve the whole problem, or that
+Lean does not certify prose when the surrounding statement already makes the
+boundary clear. Preserve mathematical counterexamples and method obstructions;
+negative wording alone is not a reason to cut them. Use the recovered space
+for the proof's mechanism, a useful calculation, or a motivating example.
+
 ## Conceptual structure and corpus selection
 
 For a substantial paper revision, use the public frontier and comprehension

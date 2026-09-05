@@ -917,6 +917,19 @@
           "evidence_mode": "paper argument plus cited theorem",
           "comparator_disposition": "not_applicable_not_a_lean_declaration",
           "boundary": "Comparator cannot certify the cited input or authored deduction."
+        },
+        {
+          "id": "factorial_analytic_growth_boundaries",
+          "contribution_class": "formalized applicability boundary; no novelty claim",
+          "summary": "For u_n=n!-1, u_(n+1)/u_n^2 tends to zero and u_n^(1/2^n) tends to one. The absolute quadratic-growth errors are not summable.",
+          "evidence_mode": "Lean kernel",
+          "declarations": [
+            "Erdos68.tendsto_factorialGap_succ_div_sq",
+            "Erdos68.not_summable_abs_factorialGap_succ_div_sq_sub_one",
+            "Erdos68.tendsto_factorialGap_rpow_one_div_two_pow"
+          ],
+          "comparator_disposition": "not_selected_compact_calculus_family",
+          "boundary": "These limits rule out direct application of the cited fast-growth criteria; they neither formalize those external criteria nor decide factorial-gap irrationality."
         }
       ]
     },
@@ -3164,7 +3177,7 @@
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
-    "lakefile.toml": "sha256:b08ade613cd2983ae7fa79a9cca8759926d401d71ba77d476b51367d45006dbb",
+    "lakefile.toml": "sha256:94d06c231d084040b36ca1b263f81f1a292fd77cb6e41d8419e83a564de69d38",
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },

@@ -7,8 +7,8 @@
 % Build from the public paper directory with `make`.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
-\renewcommand{\commitshort}{99f4bf47422a}
+\renewcommand{\commit}{a43d2c0cd17ad499ec3f12e1acec4bc9dabc2900}
+\renewcommand{\commitshort}{a43d2c0cd17a}
 \usepackage{longtable}
 \hypersetup{
   pdftitle={Factorial-channel obstructions and exact orbit boundaries for Erdős Problem 68},
@@ -220,12 +220,9 @@ is rational and supply no recurrence estimate for its digits or remainders.
 The returned derivation additionally gives the converse for this particular
 representation: the digits $d_m(\Ser)$ are eventually zero only if $\Ser$ is
 rational, equivalently the factorial tail state is eventually integral.  That
-converse is not yet kernel-checked here, and nothing below uses it as though it
-were.
+converse is not yet kernel-checked here.
 
-Note what the criterion is not.  Canonical normalisation is an exact
-reformulation of rationality.  It does not by itself supply an obstruction, and
-a zero digit is not the same event as a zero-branch hit: the returned data
+A zero canonical digit is not the same event as a zero-branch hit: the returned data
 contain canonical zero digits at $m=5$ and $m=23$, while the zero-branch list
 is empty through $m=100000$.
 
@@ -259,8 +256,7 @@ For $n\ge4$, the first omitted summand $1/((n+1)!-1)$ is then already larger
 than $1/(np_n)$, so this natural $p_n$ cannot satisfy their tail hypothesis.
 Cancellation in the reduced prefix denominator could in principle give a
 smaller scale, but proving enough cancellation is another form of the present
-denominator problem.  Thus the source supplies an exact comparison boundary,
-not a proof of Problem~\#68.
+denominator problem.
 
 Duverney's fast-series criteria fail at a different, equally exact boundary.
 His Theorem~3.1 assumes two-sided quadratic denominator growth
@@ -272,6 +268,12 @@ The all-positive specialization in Corollary~3.2 additionally requires
 \]
 whereas the summands tend to one here
 \cite[Corollary~3.2, p.~287]{duverney}.  Neither criterion applies.
+Lean checks both this nonsummability and the preceding ratio limit in
+\lword{Erdos68/FactorialAnalyticBoundary.lean}{52}{tendsto_factorialGap_succ_div_sq}{ratio-limit theorem}
+and
+\lword{Erdos68/FactorialAnalyticBoundary.lean}{84}{not_summable_abs_factorialGap_succ_div_sq_sub_one}{nonsummability theorem}.
+The ratio proof divides numerator and denominator by $(n!)^2$;
+the resulting terms tend to zero while $(1-1/n!)^2$ tends to one.
 
 The sharp recent theorem of Barreto, Kang, Kim, Kova\v{c}, and Zhang has a
 similarly explicit ceiling.  Its $d=1$ case proves irrationality of
@@ -280,7 +282,12 @@ $\sum_n1/a_n$ when $a_n^{1/2^n}\to\infty$, whereas
   (n!-1)^{1/2^n}\longrightarrow1
 \]
 for the present choice $a_n=n!-1$
-\cite[Theorems~2--3, pp.~2--4]{barreto-et-al}.  The proof nevertheless
+\cite[Theorems~2--3, pp.~2--4]{barreto-et-al}.
+The latter limit is also checked in
+\lword{Erdos68/FactorialAnalyticBoundary.lean}{131}{tendsto_factorialGap_rpow_one_div_two_pow}{dyadic-root limit theorem}:
+for $n\ge2$, the bound $0\le\log(n!-1)\le n^2$ gives
+$\log(n!-1)/2^n\to0$, and exponentiation gives the limit one.
+The proof of the cited theorem
 identifies a useful exact criterion: Mahler's elementary rationality floor is
 contradicted by prefix-clearing integers $D_N$ for which the cleared positive
 tails satisfy $\liminf_ND_Nr_N=0$
@@ -307,8 +314,7 @@ series \cite[Theorem~3.1 and Corollary~3.1, pp.~390--391]
 $\prod_{n\le N}(an+b)$, not the individual number $N!-1$.  Applied to the
 display above, the classical Cantor--Oppenheim criterion still needs
 $1-b_m\ne0$ infinitely often---precisely the missing cofinal non-unit-carry assertion
-that remains open.  The identity is therefore a rigorous literature bridge,
-not a hidden solution.
+that remains open.
 
 \section{Finite channel congruences and the LCM obstruction}\label{sec:channels}
 
@@ -1198,12 +1204,10 @@ zero-branch event occurs at any $m\le100000$; its cited executable and source
 digest were not supplied, so that zero-branch classification remains external
 finite evidence.  The strict-successor carry computation used above is local
 and independently regenerated: its exact source, GMP backend, canonical
-payload, and receipt digests form the certificate archive.  The two
-claims must not be conflated.  The local certificate establishes
+payload, and receipt digests form the certificate archive.  The local certificate establishes
 $b_{300000}\ne1$, and the checked theorem converts precisely that fact into
 $q\ge300000$.
 
-None of these changes a quantifier.
 
 \section{Open problems}\label{sec:open}
 
@@ -1216,10 +1220,9 @@ The exact frontier comes first:
  (\forall B)(\exists m>B)\;b_m\ne1.
 \tag{9.1}\label{eq:exact-frontier68}
 \]
-This is a formal theorem, not a heuristic reduction.  The remaining gap is
-quantified: the finite mechanisms in the preceding sections need one of the
-following cofinal inputs.  The table separates those missing inputs from the
-formal results that would consume them.
+The finite mechanisms in the preceding sections need one of the following
+cofinal inputs.  The table pairs each missing input with the formal result
+that would consume it.
 
 \begin{center}
 \small
@@ -1455,17 +1458,12 @@ original scalar problem.  A solution must use an exact determinant or
 finite-difference identity, a valuation or parity obstruction, a cancellation
 bound, or a gcd-of-minors argument controlling the finite oscillatory block.
 
-Erd\H{o}s~\#68 remains open.  No statement above proves irrationality or
-excludes every rational value.  The finite checked consequence is nevertheless
-unconditional: every rational representation with positive denominator has
-$q\ge300000$.
+Erd\H{o}s~\#68 remains open.  Every rational representation with positive
+denominator has $q\ge300000$.
 
 \section*{Statements and declarations}
 
-Lean does not authorise the exposition, the citation choices, or the
-interpretation, for which the author remains responsible.  This manuscript is
-authored exposition, not Lean proof authority.  The checked
-core is the canonical factorial digit kernel, the finite defect automaton
+The checked core is the canonical factorial digit kernel, the finite defect automaton
 algebra, floor-factorial channel arithmetic, the channel congruence and its
 integral normal form, the two-term prime corrector, weighted projection rigidity,
 the factor-split projection reduction, the fixed-index factorial-base
@@ -1492,20 +1490,20 @@ been kernel-checked here, and are labelled as such wherever they appear.  The
 factorial-gap lcm growth bound is derived here from
 the exact factorial-congruence multiplicity theorem of Garaev--Luca--Shparlinski
 \cite[arXiv v1, Thm.~12, p.~16]{garaev-luca-shparlinski}; it is source-verified,
-not a verbatim theorem of that paper, not kernel-checked here, and load-bearing
-for nothing above.  The finite computations are finite.
+not kernel-checked here, and unused in the preceding results.
 
 \appendix
 \section{Guide to the formal sources}\label{app:sources}
 
 The public \texttt{ErdosProblems.Erdos68} package contains the checked source
-for this note.  The pinned snapshot contains fifteen cited modules:
+for this note.  The cited modules include:
 \texttt{AdjacentUnitCarryWindow},
 \texttt{CanonicalFactorialDigits},
 \texttt{ChannelBreakpointRigidity},
 \texttt{ChannelIntegralCongruence},
 \texttt{DivisorFactorialCentre},
 \texttt{EndpointWeightedPrivateSupport},
+\texttt{FactorialAnalyticBoundary},
 \texttt{FactorialCarry},
 \texttt{FactorialChannelCertificate},
 \texttt{FactorialZeroPlateau},
@@ -1515,11 +1513,8 @@ for this note.  The pinned snapshot contains fifteen cited modules:
 \texttt{PrimeUnitTranslator},
 \texttt{PrimeZeroBranch}, and
 \texttt{StrictSuccessorArithmetic}.
-Only these public modules belong to the manuscript source surface; no private
-auxiliary digit-rigidity file is cited or projected.  The public root imports
-every cited module.  The declaration table below is
-pinned to the shared formal-source commit used throughout this problem-note
-series.
+The declaration links are pinned to the formal-source commit listed at the
+start of this note.
 
 \begin{itemize}[leftmargin=*]
 \item \lref{Erdos68/AdjacentUnitCarryWindow.lean}{148}{consecutive_unit_carries_iff_positive_offset_le_den}

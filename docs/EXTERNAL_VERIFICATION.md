@@ -215,11 +215,11 @@ Every contribution family and every statement-isolated interface remains queryab
 
 ### Complete serious-result universe
 
-All 87 source-current review families are accounted for here. The categories preserve honest selection reasons while the programme dossiers below retain each family's exact mechanism and boundary. This inventory is complete but deliberately does not compete with the ranked frontier for attention.
+All 88 source-current review families are accounted for here. The categories preserve honest selection reasons while the programme dossiers below retain each family's exact mechanism and boundary. This inventory is complete but deliberately does not compete with the ranked frontier for attention.
 
 - **represented (66).** [#257](#programme-257) `achievement_set_geometry`, [#249](#programme-249) `actual_foreign_residue_projection`, [#249](#programme-249) `actual_lcm_orbit_separation`, [#257](#programme-257) `arbitrary_prime_power_support_irrationality`, [#257](#programme-257) `boolean_mobius_carry`, [#257](#programme-257) `boolean_mobius_exact_row_dynamics`, [#243](#programme-243) `bounded_negative_exclusion`, [#243](#programme-243) `bounded_rise_coprimality`, [#243](#programme-243) `centered_state_dynamics`, [#251](#programme-251) `coefficient_only_no_go`, [#257](#programme-257) `composite_dilation_defect_identity`, [#269](#programme-269) `conditional_carry_escape`, [#1041](#programme-1041) `critical_value_mean_budget`, [#1041](#programme-1041) `critical_value_separation_connector`, [#257](#programme-257) `divisibility_weighted_support_irrationality`, [#269](#programme-269) `dyadic_block_alphabet`, [#251](#programme-251) `dyadic_tail_integrality_classification`, [#249](#programme-249) `eventually_periodic_lambert`, [#68](#programme-68) `factorial_carry_characterisation`, [#68](#programme-68) `factorial_channel_and_projection_rigidity`, [#257](#programme-257) `finite_period_noncollapse`, [#249](#programme-249) `first_harmonic_pivot_decomposition`, [#249](#programme-249) `fixed_precision_transport_no_go`, [#257](#programme-257) `four_ninths_square_root_repair_windows`, [#257](#programme-257) `half_membership_seam_classification`, [#1049](#programme-1049) `height_and_pade_arithmetic`, [#269](#programme-269) `height_fibre_and_shell`, [#251](#programme-251) `integral_shift_classification`, [#257](#programme-257) `known_irrational_supports`, [#1041](#programme-1041) `newton_value_decay`, [#257](#programme-257) `orthogonal_petal_sunflower_reduction`, [#257](#programme-257) `pairwise_coprime_support`, [#257](#programme-257) `periodic_nonnegative_weight_irrationality`, [#257](#programme-257) `prime_cofactor_repair_obstruction`, [#251](#programme-251) `prime_gap_reformulation`, [#257](#programme-257) `prime_repair_finite_support_rigidity`, [#1041](#programme-1041) `primitive_sparse_quintic_paths`, [#1049](#programme-1049) `rational_base_tail_recurrence`, [#1041](#programme-1041) `ray_separation`, [#257](#programme-257) `restricted_achievement_sets`, [#1041](#programme-1041) `root_retention`, [#1041](#programme-1041) `sharp_collinear_diameter`, [#257](#programme-257) `shifted_odd_tail_state`, [#251](#programme-251) `small_mismatch_criterion`, [#249](#programme-249) `squared_lambert_gcd_moments`, [#249](#programme-249) `stern_brocot_cylinder_law`, [#249](#programme-249) `stern_brocot_run_fibonacci_stability`, [#249](#programme-249) `strict_prime_tail_orbit_gap`, [#257](#programme-257) `sub_logstar_reciprocal_mass_irrationality`, [#269](#programme-269) `three_prime_lcm_cells`, [#249](#programme-249) `totient_carry_anti_compression`, [#249](#programme-249) `totient_certificate_equivalences`, [#249](#programme-249) `totient_fixed_rank_lcm_curvature`, [#249](#programme-249) `totient_kernel_all_base_index`, [#249](#programme-249) `totient_kernel_basis`, [#249](#programme-249) `totient_kernel_rank`, [#249](#programme-249) `totient_lambert_coefficients`, [#251](#programme-251) `totient_shift_propagation`, [#249](#programme-249) `totient_twoadic_pulse_blocks`, [#249](#programme-249) `totient_visible_coprime_lattice_mass`, [#1041](#programme-1041) `translated_cubic_quotient_fibres`, [#1041](#programme-1041) `translated_quartic_quotient_fibres`, [#1041](#programme-1041) `translation_avoidance`, [#257](#programme-257) `twenty_one_two_anchor_divergence_density`, [#257](#programme-257) `variable_exponent_fractional_cover_irrationality`, [#269](#programme-269) `weighted_phase_carry_observer`
 
-- **subordinate (6).** [#68](#programme-68) `factorial_conditional_producers`, [#1049](#programme-1049) `four_jet_collision`, [#257](#programme-257) `half_and_twenty_one_frontiers`, [#243](#programme-243) `negative_mass_recovery`, [#249](#programme-249) `totient_carry_rank`, [#249](#programme-249) `totient_parity_separated_carry_countermodel`
+- **subordinate (7).** [#68](#programme-68) `factorial_analytic_growth_boundaries`, [#68](#programme-68) `factorial_conditional_producers`, [#1049](#programme-1049) `four_jet_collision`, [#257](#programme-257) `half_and_twenty_one_frontiers`, [#243](#programme-243) `negative_mass_recovery`, [#249](#programme-249) `totient_carry_rank`, [#249](#programme-249) `totient_parity_separated_carry_countermodel`
 
 - **rejected (6).** [#1049](#programme-1049) `coordinatewise_corridor_no_go`, [#1049](#programme-1049) `endpoint_residues`, [#249](#programme-249) `lcm_factor_ideal_shift_algebra_no_go`, [#243](#programme-243) `negative_orbit_no_go`, [#269](#programme-269) `rank_two_kernel_no_go`, [#1049](#programme-1049) `scalar_content_no_go`
 
@@ -269,7 +269,7 @@ This is Palomar's source-current reader order, not review-matrix or Comparator r
    - **Relation.** `supports_without_producing` `factorial_carry_characterisation`: Finite channel rigidity feeds the carry endpoint route but supplies no cofinal non-unit carry.
 
 <details>
-<summary>Contribution families (5)</summary>
+<summary>Contribution families (6)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -298,10 +298,15 @@ Exact registry keys and Comparator routing are listed separately.
   **Boundary.** Comparator cannot certify the cited input or authored deduction.<br>
   *Evidence.* paper plus external theorem · paper argument plus cited theorem
 
+- **Factorial analytic growth boundaries**<br>
+  For u_n=n!-1, u_(n+1)/u_n^2 tends to zero and u_n^(1/2^n) tends to one. The absolute quadratic-growth errors are not summable.<br>
+  **Boundary.** These limits rule out direct application of the cited fast-growth criteria; they neither formalize those external criteria nor decide factorial-gap irrationality.<br>
+  *Evidence.* formalized applicability boundary; no novelty claim · Lean kernel
+
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (5)</summary>
+<summary>Technical registry and Comparator routing (6)</summary>
 
 - <code>factorial_carry_characterisation</code><br>
   Comparator: <code>targeted</code>
@@ -317,6 +322,9 @@ Exact registry keys and Comparator routing are listed separately.
 
 - <code>factorial_lcm_growth</code><br>
   Comparator: <code>not_applicable_not_a_lean_declaration</code>
+
+- <code>factorial_analytic_growth_boundaries</code><br>
+  Comparator: <code>not_selected_compact_calculus_family</code>
 
 </details>
 

@@ -692,8 +692,8 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "df6e4a589ab00b0a8dc4e9ce391e7accd0955da48b24fcb7aa131596be9865bf",
-    "source_review_family_count": 87,
+    "source_review_matrix_sha256": "ef1637c51f1d8512939b29c008a45dd8b741c4ba66174affc10558577f6a4ab7",
+    "source_review_family_count": 88,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
     "source_review_family_ids": [
@@ -702,6 +702,7 @@
       "factorial_conditional_producers",
       "factorial_finite_certificates",
       "factorial_lcm_growth",
+      "factorial_analytic_growth_boundaries",
       "centered_state_dynamics",
       "negative_orbit_no_go",
       "bounded_rise_coprimality",
@@ -897,7 +898,8 @@
       "four_ninths_square_root_repair_windows": "represented",
       "twenty_one_two_anchor_divergence_density": "represented",
       "prime_cofactor_repair_obstruction": "represented",
-      "prime_repair_finite_support_rigidity": "represented"
+      "prime_repair_finite_support_rigidity": "represented",
+      "factorial_analytic_growth_boundaries": "subordinate"
     },
     "targeted_theorem_forest_discoveries": [
       {
