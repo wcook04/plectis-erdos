@@ -636,10 +636,7 @@ and the displayed rational representation, then concludes $m\le q$.  The
 source-level specialization
 \lword{Erdos68/FactorialZeroPlateau.lean}{940}
 {sixty_seven_le_rational_denominator}{index-$67$ denominator bound}
-supplies the prime-index miss used above.  These are finite implications:
-they do not manufacture misses at arbitrarily large indices, and they do not
-turn the separately checked $300000$-cell GMP computation into a Lean
-evaluation or a cofinal theorem.
+supplies the prime-index miss used above.
 
 There is a second, more arithmetic mechanism at doubled prime indices.  For
 every odd prime $p$, the kernel now specializes the strict-successor
@@ -654,8 +651,7 @@ prime-power criterion to the literal prefixes:
 Consequently, failure of both displayed branches for a cofinal family of odd
 primes proves $\Ser$ irrational.  This is a sharper two-stage target than a
 bare square nondivisibility assertion: it exposes separately the only two
-carry values and predecessor residues that can survive.  It remains a
-criterion, not the missing cofinal input.
+carry values and predecessor residues that can survive.
 
 The formal theorem is not restricted to those hand-reduced indices.  A
 separately implemented exact GMP integer computation certifies all $299998$
@@ -984,8 +980,7 @@ count exceeds one; see
 \pdecl{one_lt_factorialBlockPrimeHitCount_of_odd_reflection}.  Thus a
 linear-size divisor need not be private.
 
-This warning applies to a genuine source theorem, not an inferred change of
-sign.  Stewart states that for every $\varepsilon>0$ there are infinitely
+Stewart states that for every $\varepsilon>0$ there are infinitely
 many odd $n$ whose least prime factor $q$ of $n!-1$ satisfies
 \[
  n<q<
@@ -1125,23 +1120,18 @@ formulation above.
 
 \begin{remark}[the exact remaining boundary]
 \label{bdry:companion-orbit-nonconcentration}
-The theorem isolates the problem without solving it.  A proof of Problem~\#68
-must still show that the orbit $\lfloor m!C\rfloor\bmod m$ does not eventually
-concentrate at $-2$.  Finite computation can measure this concentration but
-cannot discharge the cofinal quantifier.
+The remaining problem is to show that $\lfloor m!C\rfloor\bmod m$
+differs from $-2$ at arbitrarily large indices.
 \end{remark}
 
 \section{Limits of fixed-coordinate arguments}\label{sec:nogo}
-
-The following are closed routes.  They are part of the result, not caveats
-attached to it.
 
 \begin{itemize}
 \item Residue vectors, their recurrences, and window widths admit synthetic
   all-hit blocks.  They cannot prove irrationality on their own.
 \item Known pointwise prime congruences, prime-dilation congruences, parity, and
   the exact prime coefficient formula admit a synthetic rational countermodel.
-  A congruence family that a rational number could also satisfy decides nothing.
+
 \item Wilson quotients, harmonic sums, $p$-adic gamma identities, and factorial
   residues do not control the required Archimedean floor without an additional
   coupling theorem.  Every prime-window test factors into a sharp Archimedean
@@ -1159,7 +1149,7 @@ attached to it.
   cancellation coordinate (\S\ref{sec:channels}), and factorial valuations
   cannot absorb the channel LCM obstruction.
 \item \phantomsection\label{bdry:fixed-owner-absorption}A fixed pair of low-index private owners cannot make the projection
-  the argument cofinal.  If the owner index $n$ is fixed and $p>n!-1$, then
+  argument cofinal.  If the owner index $n$ is fixed and $p>n!-1$, then
   $n!-1\mid(p-1)!$, so its private quotient in the factorial block at $p$ is
   exactly one.  Lean checks this uniformly in
   \pdecl{factorialBlockPrivateQuotient_eq_one_of_gap_lt} and checks the
@@ -1182,10 +1172,7 @@ An exact continued-fraction computation gives
  \qquad\Longrightarrow\qquad
  q\ge 2^{39990}>10^{12038}.
 \]
-The computation starts from a rational enclosure, so it does not assume that
-$\Ser$ has an infinite continued fraction.
-
-Here is the enclosure and the verification argument.  Set $D=2^B$, and let
+Set $D=2^B$, and let
 $N$ be the first index with $N!-1>D$.  Define
 \[
  \ell=\sum_{n=2}^{N-1}\left\lfloor\frac{D}{n!-1}\right\rfloor,
