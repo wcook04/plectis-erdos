@@ -154,6 +154,14 @@ Check the declaration's actual parameters and proof. If a stronger consumer
 with fewer assumptions is useful, expose and validate it in Lean as well.
 Do not count that interface improvement as a new solution of the missing input.
 
+When a proof uses an invertible coordinate only to obtain a Bézout identity,
+check whether rowwise coprimality is the real hypothesis. Over a composite
+modulus a pair can be unimodular with neither coordinate invertible. Explain
+the identity that carries the argument, and test any proposed weakening
+against degenerate intermediate rows; vanishing adjacent determinants alone
+need not propagate. Keep the generalized ordinary proof distinct from the
+previously checked specialization until the stronger source passes Lean.
+
 A failed-route survey must include the relevant problem source and route
 memory, not only one semantic query. An empty barrier result can mean limited
 index coverage. Group failures by the exact obstruction they prove: a lost
