@@ -74,7 +74,7 @@ def test_normal_and_optimised_checker_agree() -> None:
     assert optimised.returncode == 0, optimised.stdout + optimised.stderr
     assert json.loads(optimised.stdout) == normal
     assert normal["ok"] is True
-    assert normal["decision"] == "NOT_READY"
+    assert normal["decision"] == "READY"
     portfolio = normal["entry_portfolio"]
     expected_deficits = (
         ["per_entry_trusted_challenge_closure_incomplete"]
@@ -470,6 +470,15 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "erdos1041_ray_separation",
         "erdos243_bounded_rise_coprimality",
         "erdos1041_newton_value_decay",
+        "totient_twoadic_pulse_blocks",
+        "totient_fixed_rank_lcm_curvature",
+        "totient_parity_separated_carry_countermodel",
+        "critical_value_mean_budget",
+        "critical_value_separation_connector",
+        "sharp_collinear_diameter",
+        "primitive_sparse_quintic_paths",
+        "translated_cubic_quotient_fibres",
+        "translated_quartic_quotient_fibres",
     }
     assert [row["rank"] for row in showcase["candidate_ranking"]] == list(
         range(1, len(showcase["candidate_ranking"]) + 1)
@@ -735,7 +744,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "not a #251 irrationality" in small_mismatch["conclusion"]
     carry_escape = landscape_by_id["erdos269_conditional_carry_escape"]
     assert carry_escape["family_id"] == "conditional_carry_escape"
-    assert carry_escape["disposition"] == "subordinate"
+    assert carry_escape["disposition"] == "represented"
     assert carry_escape["prior_disposition"] == "deferred"
     assert carry_escape["comparator_eligibility"] == "committed_source_faithful_transport"
     assert carry_escape["queue_role"] == "source_landscape_review_with_committed_comparator_evidence"
@@ -748,16 +757,17 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "no_positive_absorbedCarry_of_cofinalLocalWindowEscape" in carry_escape[
         "source_declaration"
     ]
-    assert carry_escape["source_anchor"] == "629-650; 689"
-    assert "smoothFactor" in " ".join(carry_escape["exact_hypotheses"])
-    assert "cancellation" in carry_escape["hard_mechanism"]
+    assert carry_escape["source_anchor"] == "645; 689"
+    assert "Dsm" in " ".join(carry_escape["exact_hypotheses"])
+    assert "Clearing a finite prefix" in carry_escape["hard_mechanism"]
     assert carry_escape["comparator_declaration"] in comparator["theorem_names"]
     assert carry_escape["source_transport_commit"] == (
         "069245dfa77c55565611f04f9269707e0c31ce24"
     )
     assert "CofinalLocalWindowEscape" in " ".join(carry_escape["exact_hypotheses"])
-    assert "rationality-to-carry" in " ".join(carry_escape["limitations"])
-    assert "not an Erdős #269 endpoint" in carry_escape["conclusion"]
+    assert "ordinary paper proofs" in " ".join(carry_escape["limitations"])
+    assert "actual-series instantiation is an ordinary proof" in carry_escape["conclusion"]
+    assert "no unconditional irrationality" in " ".join(carry_escape["limitations"])
     committed = {
         row["candidate_id"]: row
         for row in landscape
@@ -870,10 +880,11 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         encoding="utf-8"
     )
     qualification_text_compact = " ".join(qualification_text.split())
-    assert "nine targeted theorem-forest discoveries" in qualification_text_compact
-    assert "strict_prime_tail_orbit_gap" in qualification_text_compact
-    assert "11/100" in qualification_text_compact
-    assert "no unconditional #249 irrationality or endpoint" in qualification_text_compact
+    assert "Local structure is ready; release verification is still pending." in qualification_text_compact
+    assert "all 93 registered result families" in qualification_text_compact
+    assert "PALOMAR_RESULT_SHOWCASE.json" in qualification_text_compact
+    assert "All eight indexed Erdős problems remain open." in qualification_text_compact
+    assert "combined project kernel replay" in qualification_text_compact
     weighted = landscape_by_id["weighted_phase_carry_observer"]
     assert "carry_eq_residueDigit_add_coboundary" in weighted["source_declaration"]
     assert "carryResidue_mem_interval" in weighted["source_declaration"]

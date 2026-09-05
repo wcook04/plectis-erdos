@@ -188,51 +188,58 @@
   "palomar_entry_portfolio": {
     "release_shape": "coherent_multi_entry_catalog",
     "membership_authority": "HEAD:verification/comparator-replay-membership.json",
-    "package_count": 73,
-    "interface_count": 205,
-    "challenge_solution_pair_count": 73,
-    "lake_target_count": 73,
-    "hard_cap_compliant_count": 73,
+    "package_count": 79,
+    "interface_count": 221,
+    "challenge_solution_pair_count": 79,
+    "lake_target_count": 79,
+    "hard_cap_compliant_count": 79,
     "auditability_warning_count": 0,
     "maximum_challenge_bytes": 7473,
     "maximum_challenge_lines": 212,
-    "trusted_closure_compliant_count": 73,
-    "qualification_committed_head_trusted_closure_compliant_count_at_audit": 72,
-    "qualification_committed_head_trusted_closure_failure_at_audit": {
-      "package_id": "ExternalVerification1049",
-      "project_local_import": "ExternalVerification1049.Statements",
-      "source_current_disposition": "The worktree Challenge imports the two required Mathlib modules directly and preserves the theorem statement, but the HEAD-bound qualification checker must continue to report the committed snapshot until that source repair lands."
-    },
-    "valid_per_entry_config_count": 73,
+    "trusted_closure_compliant_count": 79,
+    "qualification_committed_head_trusted_closure_compliant_count_at_audit": 79,
+    "valid_per_entry_config_count": 79,
     "valid_per_entry_config": "ExternalVerification1041SolvedFamilies/comparator.json",
     "generated_config_count": 72,
     "missing_per_entry_config_count": 0,
-    "config_materialization_status": "all_73_exact_configs_materialized_as_generated_projection_not_execution_evidence",
+    "config_materialization_status": "all_79_exact_configs_materialized_as_generated_projection_not_execution_evidence",
     "source_bound_package_match_count": 4,
     "source_bound_package_matches": [
       {
         "claim_id": "totient_carry_kernel_anti_compression",
+        "review_family": "totient_carry_anti_compression",
         "package_id": "ExternalVerification249CarryRankFrontier",
         "interface_name": "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
-        "source_declaration": "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
+        "source_module": "Erdos249257/TotientTailCarryPeriod.lean",
+        "source_declaration": "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+        "evidence": "claim anchor + main-result source link + exact Solution import/use; Comparator execution not asserted"
       },
       {
         "claim_id": "dyadic_totient_certificate_interface",
+        "review_family": "totient_kernel_rank",
         "package_id": "ExternalVerification249DyadicTotientKernel",
         "interface_name": "Erdos249257.ExternalVerification249DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks",
-        "source_declaration": "Erdos249257.finrank_totientKernelThroughLevelFamily_eq"
+        "source_module": "Erdos249257/TotientMahlerDefect.lean",
+        "source_declaration": "Erdos249257.finrank_totientKernelThroughLevelFamily_eq",
+        "evidence": "claim anchor + main-result source link + exact Solution import/use; Comparator execution not asserted"
       },
       {
         "claim_id": "boolean_mobius_carry",
+        "review_family": "boolean_mobius_carry",
         "package_id": "ExternalVerification257BooleanMobiusCarry",
         "interface_name": "Erdos249257.ExternalVerification257BooleanMobiusCarry.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
-        "source_declaration": "Erdos249257.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry"
+        "source_module": "Erdos249257/BooleanMobiusCarry.lean",
+        "source_declaration": "Erdos249257.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
+        "evidence": "claim anchor + main-result source link + exact Solution import/use; Comparator execution not asserted"
       },
       {
         "claim_id": "reciprocal_summable_support",
+        "review_family": "reciprocal_summable_support",
         "package_id": "ExternalVerification257ReciprocalSupport",
         "interface_name": "Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal",
-        "source_declaration": "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal"
+        "source_module": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+        "source_declaration": "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal",
+        "evidence": "claim anchor + main-result source link + exact Solution import/use; Comparator execution not asserted"
       }
     ],
     "current_interface_packaging_boundary": "Qualified wrapper names naturally differ across packages and cannot be used to infer semantic absence. Four positive package matches are source-bound by a claim anchor, main-result source link, and exact Solution import/use; other families remain unassessed rather than declared absent.",
@@ -262,8 +269,8 @@
     },
     "comparator": {
       "path": "verification/comparator.json",
-      "committed_sha256": "148629b13dee6c9686898574359f41c82b7d81ada9b7eee6f11dccbfbfb814c2",
-      "theorem_name_count": 51,
+      "committed_sha256": "9410c50fccb5532709d6dfc83cbf36e1079adda759ac78ad1d35fb037ea8661b",
+      "theorem_name_count": 54,
       "challenge_module": "ExternalVerification.Challenge",
       "solution_module": "ExternalVerification.Solution",
       "permitted_axioms": [
@@ -1332,13 +1339,10 @@
     }
   ],
   "qualification_decision": {
-    "decision": "NOT_READY",
-    "reason": "The full 73-package portfolio and its exact config catalog are materialized, with four source-bound matches already established including the reciprocal-summable flagship. The CI-only umbrella is excluded from intake and is not a structural deficit. The committed HEAD still records one per-entry project-local closure; after that prepared repair lands, fixed-kernel replay and release evidence remain separate requirements.",
+    "decision": "READY",
+    "reason": "All 79 per-entry packages have independent trusted Challenge closures and exact source-current configs covering 221 interfaces. The committed legacy Comparator roster of 54 declarations is fully partitioned. This is local structural qualification only; combined project validation and actual commit-bound fixed-kernel replay remain release requirements.",
     "readiness_rule": "NOT_READY remains mandatory until every catalog entry has a trusted Challenge closure and an explicit source-faithful config. After those structural repairs, project release assurance still requires a successful commit-bound replay through the configured fixed Comparator kernel. Submission and later registration each require their own explicit human confirmation; neither is authorized by this file.",
-    "safe_local_repairs_remaining": [
-      "land the prepared ExternalVerification1049 direct-Mathlib import repair without changing its theorem statement",
-      "assess additional current-result/package fidelity only through explicit source-declaration and claim transport evidence; do not infer absence from wrapper namespace differences"
-    ],
+    "safe_local_repairs_remaining": [],
     "external_follow_on": [
       "successful commit-bound fixed-kernel replay is required for project release assurance",
       "editorial review may be recorded if it occurs",

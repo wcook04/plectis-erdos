@@ -1560,7 +1560,7 @@
     },
     "palomar_showcase": {
       "path": "docs/PALOMAR_RESULT_SHOWCASE.json",
-      "digest": "sha256:ce37cd763068bdd8a15864c1d216d0e319a7f7ff70cd0aa63c280b0b5dbfcc6d",
+      "digest": "sha256:1ca6d3c8c9c86c286be6490c393d2c778c6cd7bb483fe2b549187d6c684b926e",
       "selector": "family_display_order"
     },
     "placement": {

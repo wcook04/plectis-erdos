@@ -5,7 +5,7 @@
     "claim_registry": "docs/claims.json",
     "proof_authority": "Lean source checked by the pinned kernel",
     "comparator_authority": "HEAD:verification/comparator.json",
-    "comparator_sha256": "148629b13dee6c9686898574359f41c82b7d81ada9b7eee6f11dccbfbfb814c2",
+    "comparator_sha256": "9410c50fccb5532709d6dfc83cbf36e1079adda759ac78ad1d35fb037ea8661b",
     "comparator_theorem_count": 51,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_sha256": "05a939c10475617521011d7f2ca602e5af221efefe9671d557362879199cfb51",
@@ -29,6 +29,9 @@
       "Erdos249257.ExternalVerification.cylinderMass_split",
       "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
       "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo",
+      "Erdos249257.ExternalVerification.actualLcmTailDiff_shift_pos",
+      "Erdos249257.ExternalVerification.actualLcm_trueEndpointSurvivor_neg",
+      "Erdos249257.ExternalVerification.actualLcm_integral_forces_topEdgeResidue",
       "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
       "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
       "Erdos249257.ExternalVerification.exists_clean_binaryCyclotomicAnchor",
@@ -1075,8 +1078,8 @@
     ],
     "comparator_screen": {
       "authority": "HEAD:verification/comparator.json",
-      "comparator_sha256": "148629b13dee6c9686898574359f41c82b7d81ada9b7eee6f11dccbfbfb814c2",
-      "theorem_count": 51,
+      "comparator_sha256": "9410c50fccb5532709d6dfc83cbf36e1079adda759ac78ad1d35fb037ea8661b",
+      "theorem_count": 54,
       "roster_field": "candidate_universe.declarations",
       "partition": "candidate_value_dispositions.eligible_groups",
       "semantic_role": "Exact current Comparator evidence/eligibility/admission screen nested inside the wider source universe; its count is derived from the bound roster and it does not define candidate-universe membership."
@@ -1099,6 +1102,9 @@
       "Erdos249257.ExternalVerification.cylinderMass_split",
       "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
       "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo",
+      "Erdos249257.ExternalVerification.actualLcmTailDiff_shift_pos",
+      "Erdos249257.ExternalVerification.actualLcm_trueEndpointSurvivor_neg",
+      "Erdos249257.ExternalVerification.actualLcm_integral_forces_topEdgeResidue",
       "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
       "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
       "Erdos249257.ExternalVerification.exists_clean_binaryCyclotomicAnchor",
@@ -1172,9 +1178,12 @@
       {
         "disposition": "represented",
         "declarations": [
-          "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply"
+          "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+          "Erdos249257.ExternalVerification.actualLcmTailDiff_shift_pos",
+          "Erdos249257.ExternalVerification.actualLcm_trueEndpointSurvivor_neg",
+          "Erdos249257.ExternalVerification.actualLcm_integral_forces_topEdgeResidue"
         ],
-        "reason": "The committed wrapper represents the one coherent actual_lcm_orbit_separation family. Its source-level sign, true-survivor, and top-edge mechanisms remain documented in the source-landscape record, while the cofinal separation supply and top-edge exclusion remain open; it stays below the selected reciprocal-summable theorem and is not duplicated."
+        "reason": "The actual-LCM family includes the positive tail difference, negative true-endpoint survivor, and the forced top-edge residue under integrality, alongside the conditional irrationality consumer. These isolate the remaining top-edge and cofinal separation obligations and do not supply them."
       },
       {
         "disposition": "represented",
@@ -3060,6 +3069,24 @@
       "family_id": "actual_foreign_residue_projection",
       "disposition": "supporting_conditional_reduction",
       "reason": "The committed representative exposes the exact finite foreign/divisor partition, geometric tail control, and generic separated-projection consumer for the canonical actual_foreign_residue_projection family; its controlled-projection bridge and unbounded supply remain open, so it is represented conditional evidence rather than a #249 endpoint."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.actualLcmTailDiff_shift_pos",
+      "family_id": "actual_lcm_orbit_separation",
+      "disposition": "supporting_conditional_reduction",
+      "reason": "A checked component of the actual-LCM sign and survivor mechanism, represented with its conditional separation consumer; it does not discharge the top-edge exclusion or cofinal separation supply."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.actualLcm_trueEndpointSurvivor_neg",
+      "family_id": "actual_lcm_orbit_separation",
+      "disposition": "supporting_conditional_reduction",
+      "reason": "A checked component of the actual-LCM sign and survivor mechanism, represented with its conditional separation consumer; it does not discharge the top-edge exclusion or cofinal separation supply."
+    },
+    {
+      "declaration": "Erdos249257.ExternalVerification.actualLcm_integral_forces_topEdgeResidue",
+      "family_id": "actual_lcm_orbit_separation",
+      "disposition": "supporting_conditional_reduction",
+      "reason": "A checked component of the actual-LCM sign and survivor mechanism, represented with its conditional separation consumer; it does not discharge the top-edge exclusion or cofinal separation supply."
     }
   ],
   "frontier_by_problem": [
@@ -3107,7 +3134,10 @@
         "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
         "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
         "Erdos249257.ExternalVerification.exists_clean_binaryCyclotomicAnchor",
-        "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation"
+        "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation",
+        "Erdos249257.ExternalVerification.actualLcmTailDiff_shift_pos",
+        "Erdos249257.ExternalVerification.actualLcm_trueEndpointSurvivor_neg",
+        "Erdos249257.ExternalVerification.actualLcm_integral_forces_topEdgeResidue"
       ]
     },
     {
