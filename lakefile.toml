@@ -225,6 +225,9 @@ name = "ExternalVerification249CarryRankFrontier"
 name = "ExternalVerification249DyadicTotientKernel"
 
 [[lean_lib]]
+name = "ExternalVerification249FiniteCertificates"
+
+[[lean_lib]]
 name = "ExternalVerification249FullDepthRayAmplifier"
 
 [[lean_lib]]

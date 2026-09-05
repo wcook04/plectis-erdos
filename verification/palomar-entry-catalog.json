@@ -1,9 +1,9 @@
 {
   "schema": "plectis.palomar-entry-catalog/1",
   "membership_authority": "verification/comparator-replay-membership.json",
-  "package_count": 73,
-  "interface_count": 205,
-  "entry_ready_for_replay_count": 73,
+  "package_count": 74,
+  "interface_count": 210,
+  "entry_ready_for_replay_count": 74,
   "blocked_package_ids": [],
   "source_bound_package_match_count": 4,
   "entries": [
@@ -903,6 +903,29 @@
           "evidence": "claim anchor + main-result source link + exact Solution import/use; Comparator execution not asserted"
         }
       ]
+    },
+    {
+      "package_id": "ExternalVerification249FiniteCertificates",
+      "config_path": "verification/palomar-entries/ExternalVerification249FiniteCertificates.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification249FiniteCertificates.Challenge",
+      "solution_module": "ExternalVerification249FiniteCertificates.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification249FiniteCertificates.totientSeries_denominator_exclusion",
+        "Erdos249257.ExternalVerification249FiniteCertificates.exists_certifiedKill_iff_tail_diff_notMem_int",
+        "Erdos249257.ExternalVerification249FiniteCertificates.tail_diff_mem_int_iff_scaled_series_mem_int",
+        "Erdos249257.ExternalVerification249FiniteCertificates.irrational_totient_series_iff_all_tail_diffs_nonintegral",
+        "Erdos249257.ExternalVerification249FiniteCertificates.irrational_totient_series_iff_pointwise_certificates"
+      ],
+      "interface_count": 5,
+      "challenge_sha256": "1c0e7300318ba58b06017d1ef38a7247246a9326b1b3d4851689195e9b19b6e1",
+      "solution_sha256": "112d93b6476f96c8bd0c41693463572d1a456797dd6b117efffbac8e0b71fe99",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
     },
     {
       "package_id": "ExternalVerification249FullDepthRayAmplifier",

@@ -44,6 +44,7 @@
     "ExternalVerification249CanonicalMersenneFrontier",
     "ExternalVerification249CarryRankFrontier",
     "ExternalVerification249DyadicTotientKernel",
+    "ExternalVerification249FiniteCertificates",
     "ExternalVerification249FullDepthRayAmplifier",
     "ExternalVerification249RankOneSharpFloor",
     "ExternalVerification251ActualPrimeGapTail",
@@ -265,6 +266,13 @@
     "ExternalVerification249DyadicTotientKernel": [
       "Erdos249257.ExternalVerification249DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks"
     ],
+    "ExternalVerification249FiniteCertificates": [
+      "Erdos249257.ExternalVerification249FiniteCertificates.exists_certifiedKill_iff_tail_diff_notMem_int",
+      "Erdos249257.ExternalVerification249FiniteCertificates.irrational_totient_series_iff_all_tail_diffs_nonintegral",
+      "Erdos249257.ExternalVerification249FiniteCertificates.irrational_totient_series_iff_pointwise_certificates",
+      "Erdos249257.ExternalVerification249FiniteCertificates.tail_diff_mem_int_iff_scaled_series_mem_int",
+      "Erdos249257.ExternalVerification249FiniteCertificates.totientSeries_denominator_exclusion"
+    ],
     "ExternalVerification249FullDepthRayAmplifier": [
       "Erdos249257.ExternalVerification249FullDepthRayAmplifier.apFullDepthEscape_iff_irrational",
       "Erdos249257.ExternalVerification249FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_irrational",
@@ -449,7 +457,7 @@
     "family_linked_current_interface_count": 48,
     "family_linked_replay_candidate_interface_count": 17,
     "unassociated_current_interface_count": 3,
-    "unassociated_replay_candidate_interface_count": 188,
+    "unassociated_replay_candidate_interface_count": 193,
     "families": [
       {
         "problem": 68,
@@ -2013,19 +2021,19 @@
   "registered_claim_coverage": {
     "schema": "plectis.comparator-registered-claim-coverage/1",
     "registry_authority": "docs/claims.json::claims",
-    "registry_digest": "sha256:c85200610bb72f2c6a9eee2afd8aca7331dc0c9059e6f6e4764fddb662395900",
+    "registry_digest": "sha256:eb3aaf28ffaff90f4a5726098b6cba3dc5ecaaf53b315e2fa2187d2c1e1900c7",
     "registry_digest_definition": "sha256 of canonical JSON rows containing each registered claim id, status, statement, exact declaration anchors, and explicit transports",
     "registered_claim_count": 131,
     "classified_claim_count": 131,
     "classification_counts": {
       "cited_only_non_executable": 3,
-      "linked_transport": 30,
-      "missing_formal_transport": 90,
+      "linked_transport": 32,
+      "missing_formal_transport": 88,
       "open_non_executable": 8
     },
     "formal_claim_count": 120,
-    "linked_transport_claim_count": 30,
-    "missing_formal_transport_count": 90,
+    "linked_transport_claim_count": 32,
+    "missing_formal_transport_count": 88,
     "missing_formal_claim_ids": [
       "actual_lcm_positive_corridor_top_edge",
       "adelic_height_obstruction",
@@ -2036,7 +2044,6 @@
       "bounded_rise_fresh_modulus_barrier",
       "campbell_shift_synchronization_boundary",
       "canonical_jump_slack_reduction",
-      "certificate_completeness",
       "certificate_reduction",
       "certified_kill_instances",
       "channel_quotient_band_breakpoint",
@@ -2044,7 +2051,6 @@
       "cofinal_strip_return_closure",
       "concrete_producer_carry_coordinates",
       "concrete_seam_adapter",
-      "denominator_exclusion",
       "diagonal_fresh_loss_reduction",
       "diagonal_pincer_reduction",
       "diagonal_pincer_t64_endpoint_certificate",
@@ -4827,7 +4833,7 @@
       {
         "claim_id": "denominator_exclusion",
         "claim_status": "formalised here",
-        "classification": "missing_formal_transport",
+        "classification": "linked_transport",
         "registered_declarations": [
           {
             "name": "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053",
@@ -4835,16 +4841,32 @@
             "line": 18572
           }
         ],
-        "transport_count": 0,
-        "transports": [],
+        "transport_count": 1,
+        "transports": [
+          {
+            "package_id": "ExternalVerification249FiniteCertificates",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification249FiniteCertificates.Challenge",
+            "solution_module": "ExternalVerification249FiniteCertificates.Solution",
+            "interface_name": "Erdos249257.ExternalVerification249FiniteCertificates.totientSeries_denominator_exclusion",
+            "source_declarations": [
+              {
+                "name": "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053",
+                "module": "Erdos249257/CertificateKernel.lean",
+                "line": 18572
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          }
+        ],
         "source_anchor_coverage": {
           "registered_count": 1,
-          "linked_count": 0,
-          "unlinked_declaration_indices": [
-            0
-          ]
+          "linked_count": 1,
+          "unlinked_declaration_indices": []
         },
-        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
       },
@@ -4905,7 +4927,7 @@
       {
         "claim_id": "certificate_completeness",
         "claim_status": "proved here",
-        "classification": "missing_formal_transport",
+        "classification": "linked_transport",
         "registered_declarations": [
           {
             "name": "exists_certifiedKill_iff_tail_diff_notMem_int",
@@ -4928,19 +4950,83 @@
             "line": 399
           }
         ],
-        "transport_count": 0,
-        "transports": [],
+        "transport_count": 4,
+        "transports": [
+          {
+            "package_id": "ExternalVerification249FiniteCertificates",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification249FiniteCertificates.Challenge",
+            "solution_module": "ExternalVerification249FiniteCertificates.Solution",
+            "interface_name": "Erdos249257.ExternalVerification249FiniteCertificates.exists_certifiedKill_iff_tail_diff_notMem_int",
+            "source_declarations": [
+              {
+                "name": "exists_certifiedKill_iff_tail_diff_notMem_int",
+                "module": "Erdos249257/LcmConeFlatness.lean",
+                "line": 316
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification249FiniteCertificates",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification249FiniteCertificates.Challenge",
+            "solution_module": "ExternalVerification249FiniteCertificates.Solution",
+            "interface_name": "Erdos249257.ExternalVerification249FiniteCertificates.irrational_totient_series_iff_all_tail_diffs_nonintegral",
+            "source_declarations": [
+              {
+                "name": "irrational_totient_series_iff_all_tail_diffs_nonintegral",
+                "module": "Erdos249257/LcmConeFlatness.lean",
+                "line": 386
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification249FiniteCertificates",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification249FiniteCertificates.Challenge",
+            "solution_module": "ExternalVerification249FiniteCertificates.Solution",
+            "interface_name": "Erdos249257.ExternalVerification249FiniteCertificates.irrational_totient_series_iff_pointwise_certificates",
+            "source_declarations": [
+              {
+                "name": "irrational_totient_series_iff_pointwise_certificates",
+                "module": "Erdos249257/LcmConeFlatness.lean",
+                "line": 399
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification249FiniteCertificates",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification249FiniteCertificates.Challenge",
+            "solution_module": "ExternalVerification249FiniteCertificates.Solution",
+            "interface_name": "Erdos249257.ExternalVerification249FiniteCertificates.tail_diff_mem_int_iff_scaled_series_mem_int",
+            "source_declarations": [
+              {
+                "name": "tail_diff_mem_int_iff_scaled_series_mem_int",
+                "module": "Erdos249257/LcmConeFlatness.lean",
+                "line": 327
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          }
+        ],
         "source_anchor_coverage": {
           "registered_count": 4,
-          "linked_count": 0,
-          "unlinked_declaration_indices": [
-            0,
-            1,
-            2,
-            3
-          ]
+          "linked_count": 4,
+          "unlinked_declaration_indices": []
         },
-        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
       },

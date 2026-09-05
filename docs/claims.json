@@ -16092,6 +16092,19 @@
           "module": "Erdos249257/CertificateKernel.lean",
           "line": 18572
         }
+      ],
+      "comparator_transports": [
+        {
+          "package_id": "ExternalVerification249FiniteCertificates",
+          "interface_name": "Erdos249257.ExternalVerification249FiniteCertificates.totientSeries_denominator_exclusion",
+          "source_declarations": [
+            {
+              "name": "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053",
+              "module": "Erdos249257/CertificateKernel.lean",
+              "line": 18572
+            }
+          ]
+        }
       ]
     },
     {
@@ -16164,6 +16177,52 @@
           "name": "irrational_totient_series_iff_pointwise_certificates",
           "module": "Erdos249257/LcmConeFlatness.lean",
           "line": 399
+        }
+      ],
+      "comparator_transports": [
+        {
+          "package_id": "ExternalVerification249FiniteCertificates",
+          "interface_name": "Erdos249257.ExternalVerification249FiniteCertificates.exists_certifiedKill_iff_tail_diff_notMem_int",
+          "source_declarations": [
+            {
+              "name": "exists_certifiedKill_iff_tail_diff_notMem_int",
+              "module": "Erdos249257/LcmConeFlatness.lean",
+              "line": 316
+            }
+          ]
+        },
+        {
+          "package_id": "ExternalVerification249FiniteCertificates",
+          "interface_name": "Erdos249257.ExternalVerification249FiniteCertificates.tail_diff_mem_int_iff_scaled_series_mem_int",
+          "source_declarations": [
+            {
+              "name": "tail_diff_mem_int_iff_scaled_series_mem_int",
+              "module": "Erdos249257/LcmConeFlatness.lean",
+              "line": 327
+            }
+          ]
+        },
+        {
+          "package_id": "ExternalVerification249FiniteCertificates",
+          "interface_name": "Erdos249257.ExternalVerification249FiniteCertificates.irrational_totient_series_iff_all_tail_diffs_nonintegral",
+          "source_declarations": [
+            {
+              "name": "irrational_totient_series_iff_all_tail_diffs_nonintegral",
+              "module": "Erdos249257/LcmConeFlatness.lean",
+              "line": 386
+            }
+          ]
+        },
+        {
+          "package_id": "ExternalVerification249FiniteCertificates",
+          "interface_name": "Erdos249257.ExternalVerification249FiniteCertificates.irrational_totient_series_iff_pointwise_certificates",
+          "source_declarations": [
+            {
+              "name": "irrational_totient_series_iff_pointwise_certificates",
+              "module": "Erdos249257/LcmConeFlatness.lean",
+              "line": 399
+            }
+          ]
         }
       ]
     },
