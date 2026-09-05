@@ -41,6 +41,7 @@ import ErdosProblems.Erdos68.ChannelBreakpointRigidity
 import ErdosProblems.Erdos68.ChannelIntegralCongruence
 import ErdosProblems.Erdos68.DivisorFactorialCentre
 import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
+import ErdosProblems.Erdos68.FactorialAnalyticBoundary
 import ErdosProblems.Erdos68.FactorialCarry
 import ErdosProblems.Erdos68.FactorialChannelCertificate
 import ErdosProblems.Erdos68.FactorialZeroPlateau
