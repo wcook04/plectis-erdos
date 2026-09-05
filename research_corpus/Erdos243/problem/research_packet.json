@@ -8,7 +8,9 @@
       "producer_ids": []
     },
     "producer_relations": {
-      "equivalent_to_target": [],
+      "equivalent_to_target": [
+        "weighted_lcm_record_summability"
+      ],
       "target_deciding_but_stronger": [
         "exclude_aperiodic_negative_state_orbits",
         "formalise_lcm_weighted_theorem",
@@ -25,7 +27,7 @@
       ],
       "out_of_scope_for_target": []
     },
-    "selection_rule": "The original rigidity statement remains the frontier; every producer is a sufficient stronger route until an equivalence theorem is recorded."
+    "selection_rule": "The declared Erdős 243 target remains authoritative. weighted_lcm_record_summability is an exactly equivalent universal producer by weighted_lcm_record_excess; its reciprocal and logarithmically discounted instances are specializations, not separate endpoint progress. Other producer relations retain their stated scope."
   },
   "source_returns": [
     {
@@ -132,6 +134,11 @@
       "attachment": "state/formal_math/type_b_return_batches/erdos243_20260905_eight_return_stream_01/sources/r08_primitive_numerator_rigidity_arbitrary_cancellation.md",
       "role": "Type B full-parent return (desk 06_square_payment): two-unit primitive rises under arbitrary cancellation, the odd lattice and one-unit lattice rigidity, finite cyclic menus, the clean-step characterisation (Corollary 6), the exact bridge identity and its q Q_n / G_n criterion (Corollary 10, shown here to be an equivalence rather than a sufficient condition), and the p^3 three-rise family. Verified; landed inside primitive_record_two_unit_rigidity. The pasted file carries operator text and stray JSON braces after the mathematics; they are not content.",
       "sha256": "916e8ea08725c38bf1db5b03828fbce9bcf22f3da6589feac8be20397756dd4a"
+    },
+    {
+      "attachment": "800c8dc4-803e-4914-93f1-b89c46722429/pasted-text.txt",
+      "sha256": "620117f23abf459a9bd1c735cc779aee7f47f5b17dd34f84d86b656b08cf5135",
+      "role": "User-supplied LCM record first-crossing proof, growing baseline, original-growth defect identity and record-only log-log theorem; independently verified and extended to decreasing divergent-integral weights in LcmRecordExcess.md. The separate closeout and PACKET attachments are historical navigation evidence, not additional proofs."
     }
   ],
   "primary_sources": [
@@ -1319,6 +1326,43 @@
       "source_sha256": "9eae4c00f88d8738d6e1347fde1ec9f55758d233190e8a65b89f90205f0e2bf2",
       "source_current": true,
       "return_batch_id": "erdos243_20260905_eight_return_stream_01"
+    },
+    {
+      "id": "weighted_lcm_record_excess",
+      "status": "ordinary_proof_verified_not_lean_formalized",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/LcmRecordExcess.md",
+      "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_lcm_record_excess.py",
+      "statement": "Under the original rational reciprocal-sum and quadratic-growth hypotheses, let U=C/M and V=E/M be the cumulative-LCM integer coordinates and let R be the indices setting a new running U maximum. For every finite nonnegative nonincreasing weight f on [1,infinity) with divergent integral, eventual Sylvester recurrence is equivalent to finiteness of sum over R of (-V-B)_+ f(U) for some fixed integer B>=0. A finite first-crossing bound is (1/P) integral from R_T+P to R_N of f for any old CRT supply of B pairwise-coprime divisors greater than B. This includes reciprocal weights and all fixed iterated logarithmic discounts. The exact growth-defect consumer replaces the summand by U f(U) (a_n^2/a_(n+1)-1-B/U)_+, with a summable difference bounded by 3 U f(U)/a_n. The supplied record-only subcritical log-log criterion is also verified.",
+      "claim_boundary": "Ordinary global proof; local Lean module has finite arithmetic and weighted charging lemmas only and its build is separately recorded. An exact equivalent reformulation, not a proof that any sufficient sum is finite. U records are not raw C records or primitive u records; actual jumps include drawdown recovery. The unrestricted problem remains open.",
+      "evidence_class": "ordinary_proof",
+      "source_sha256": "121e7d9452e848beb6190195468c93a0477be74dafcc0311e5a303d90493f34a",
+      "source_current": true,
+      "named_consumers": [
+        "weighted_lcm_record_summability",
+        "strict_rise_loglog_negative_lcm_rigidity"
+      ],
+      "proof_relations": {
+        "extends": [
+          "shifted_excess_mass_obstruction",
+          "strict_rise_loglog_lcm_ordinary_rigidity"
+        ],
+        "does_not_discharge": [
+          "global_lcm_repair_lower_bound",
+          "reset_payment_lower_bound"
+        ]
+      },
+      "finite_lean_core": {
+        "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/LcmRecordExcess.lean",
+        "declarations": [
+          "ErdosProblems.Erdos243.LcmRecordExcess.rise_is_fresh",
+          "ErdosProblems.Erdos243.LcmRecordExcess.covered_wall_forces_excess",
+          "ErdosProblems.Erdos243.LcmRecordExcess.wall_count_le_excess",
+          "ErdosProblems.Erdos243.LcmRecordExcess.weighted_wall_charge"
+        ],
+        "validation_state": "pending",
+        "job_id": "cf_a163556250034727800e",
+        "scope": "finite lemmas only; global transfer and divergence remain ordinary proofs"
+      }
     }
   ],
   "experimental_result": {
@@ -2482,9 +2526,16 @@
       "status_note": "Advisory Type B proof candidate from dogfood_return_4, corroborated structurally by dogfood_return_5. Not Lean checked and not a parent proof; next consumer is formalise_lcm_weighted_theorem.",
       "status": "ordinary_proof_closed_lean_formalization_open",
       "resolved_ordinary_by": "strict_rise_loglog_lcm_ordinary_rigidity"
+    },
+    {
+      "id": "weighted_lcm_record_summability",
+      "priority": 1,
+      "statement": "For every canonical rational reciprocal-sum orbit with a_(n+1)/a_n^2 -> 1, prove that there exist a finite nonnegative nonincreasing f with divergent integral and a fixed integer B>=0 for which sum over LCM record indices of U_n f(U_n) (a_n^2/a_(n+1)-1-B/U_n)_+ is finite. The global weighted first-crossing theorem proves this universal assertion exactly equivalent to Erdős 243. Fixed choices f=1/t and f=1/(t log(et)) are useful specializations; no such finiteness is currently established from the parent assumptions. Scalar vanishing and subexponential height do not suffice; the missing input is genuine denominator feedback.",
+      "logical_relation": "equivalent_to_target",
+      "equivalence_result_id": "weighted_lcm_record_excess"
     }
   ],
-  "claim_ceiling": "Erdos #243 remains open. The strongest longitudinal theorem is now slow-negative-part rigidity: under the exact dynamics and normalised vanishing, a negative part bounded by (1 - delta) log2 log2 C_n forces the Sylvester recurrence; its Lean core (bounded CRT block, common-divisor persistence, the landing theorem and the block-form contradiction) is kernel-checked in SlowRiseBarrier.lean and the transfer to the canonical orbit is an ordinary proof. Any counterexample therefore has limsup (-E_n)_+ / log2 log2 C_n >= 1 and multiplier overlaps bounded by the next negative magnitude. The coprimality route is provably capped at rises O(log C_n). The 1/n threshold is verified with constant exactly 1. Erdos #243 remains open. After restoring the missing height-29-to-parent transport, the exact t=0 source cascade proves factor-41 extinction of the entire (35,-6) negative branch, eight cofinal returns on every (31,-10) parent, and four cofinal returns on every descendant (41,-20) parent at factor 61. Combining all certified blocks yields exact continuation 1061100/29229187 for the formerly inert factor-25 branch. This is a source-conditioned finite-cylinder contraction, not a global transfer theorem. Composite negative modes with raw factors 32,35,36,38,40,57,64,66,75,76 remain, and the decisive analytic producer is still a global negative-mass, cumulative-LCM, or repair-payment theorem. No unrestricted #243 solution is claimed.",
+  "claim_ceiling": "Erdős #243 remains open. The packet contains Lean-checked conditional arithmetic results and ordinary global rigidity criteria. The weighted LCM record-excess theorem proves an exact equivalence between the Sylvester endpoint and finiteness of a discounted record-excess series for any fixed decreasing weight with divergent integral. It discards non-record indices, subtracts B M_n from the raw negative error, and permits arbitrary fixed iterated-logarithmic discounts. The missing direction is to establish finiteness from genuine rational denominator feedback. Only the finite arithmetic and charging core is a Lean target; the global weighted theorem is ordinary proof. The earlier inclusive raw-record log-log, critical rounding, primitive two-unit, and polynomial-profile exclusions retain their own hypotheses and evidence classes. No unrestricted solution, universal termination claim, or external novelty assessment follows.",
   "public_projection": {
     "state": "kernel_checked_source_published_incrementally",
     "repository": "https://github.com/wcook04/plectis-erdos-lean",
@@ -2587,7 +2638,43 @@
       "witness_profile": "every witness with L >= 15 is a constant unreduced E = -G run with C_n = G(c+n), i.e. primitive e = -1 and u = c, c+1, ...; the two L = 22 witnesses are (p,q) = (2,1223) and (2,2339) with E = -1 for twenty steps then payment 11",
       "script": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_survival_cost_probe.py",
       "command": "./repo-python .../erdos243_survival_cost_probe.py --qmax 3000"
+    },
+    "survival_cost_q20000_2026_09_05": {
+      "statement": "g(L) = min D_0 over gcd(p,q)=1, p<q<=20000, of orbits surviving >= L steps without E = 0 (121,590,395 orbits, 578 s).",
+      "g_at_least_L": {
+        "5": 11,
+        "6": 22,
+        "9": 43,
+        "12": 86,
+        "15": 173,
+        "18": 358,
+        "20": 1081,
+        "22": 1223,
+        "23": 3911,
+        "24": 4678,
+        "26": 5441,
+        "29": 11618
+      },
+      "growth": "g(L) ~ 1.3^L to 1.4^L (exponential), far below the factorial cost a chance survivor would pay",
+      "longest_L": 29,
+      "witness_profile": "every witness with L >= 15 at both scales is a constant unreduced E = -G run (C_n = G(c+n)), i.e. the primitive e = -1 lattice walk after one gcd payment; the L = 29 witnesses are (p,q) = (5819,11618) with E = -1764 repeated (u = 4,5,6,...) and (6133,11618) with E = -1332 repeated; no non-lattice orbit survives 15 steps at q <= 20000",
+      "interpretation": "the primitive e = -1 lattice is the unique long-survival mechanism observed at small scale; its cheapness comes from the arithmetic-progression numerators sharing prime factors with earlier numerators (little new residue information per step), while a walk with varying errors visits numerators with new large prime factors and pays a fresh residue condition each step",
+      "script": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_survival_cost_probe.py",
+      "command": "./repo-python .../erdos243_survival_cost_probe.py --qmax 20000 --top 30"
+    },
+    "weighted_lcm_record_excess_20260905": {
+      "script": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_lcm_record_excess.py",
+      "cases": 6008,
+      "distinct_seeds": 6000,
+      "nonterminal_transitions": 26171,
+      "terminal_states": 6008,
+      "inspected_states": 32179,
+      "charged_walls": 1002,
+      "charged_steps": 814,
+      "capped": 0,
+      "evidence_boundary": "finite exact checks only; the supplied 32179 count includes terminal states"
     }
   },
-  "claim_ceiling_addendum_2026_09_05_erdos243_eight_return_assimilation": "Eight Type B full-parent returns (batch erdos243_20260905_eight_return_stream_01, from packet erdos243_full_parent_octuple_2026_09_05) were verified and assimilated. Erdos #243 remains open; none of the eight is a parent solution candidate, and every one proves parent-relevant mathematics under a restricted hypothesis. The two strongest longitudinal theorems are now (a) the CRITICAL-BOUNDARY ROUNDING THEOREM: if a_(n+1)/a_n^2 -> 1, sum 1/a_n is rational, and eventually delta_n <= 1/n + sum_(j<=m) 1/(n l_1(n) ... l_j(n)) for a fixed m, then the sequence is eventually Sylvester; this is strictly stronger than one_over_n_threshold_verified (limsup n delta_n < 1), which it supersedes, and it is the first corpus route that PRODUCES a bounded negative part from an analytic envelope with no arithmetic, hence outside the class capped by SlowNegativePartRigidity.md Proposition 7; and (b) the PRIMITIVE RECORD TWO-UNIT THEOREM: if every sufficiently late record-setting step of the reduced numerator rises by at most 2, the sequence is eventually Sylvester, with no hypothesis at non-record steps and no bound on the cancellation factors; its three structural lemmas are Lean-checked in PrimitiveRecordBarrier.lean and its analytic prime-power supply is an ordinary proof. The parent is now EQUIVALENT to excluding cofinally many clean primitive record jumps of size at least three (r08 Corollary 6). The log-log constant of the corpus barrier is an ARTEFACT of instantiating the block moduli as whole fresh multipliers: one prime factor per fresh multiplier lowers the wall by an exponential, and log2 log2 C_n is provably the worst case of the barrier family over supplies, so no wall argument beats it without a lower bound on the smooth part of the multipliers. Also landed: the B-shifted excess-mass obstruction, the exact B-shifted generalisation of the Lean summable-negative-mass consumer; the record-excess dichotomy K = 0 or K > 1 with the inclusive log-log boundary, Euler amplification, and the sharp coprimality gap constant sigma^(-1) with the Fermat witness 2; polynomial-profile rigidity excluding every exact quadratic profile of normalised leading coefficient 1 or 2, every rational-multiple-of-a-quadratic profile at positive lower density, every rational-root profile in every degree, and every linear error template of slope 1 to 7; the sharpened height dichotomy limsup u_n/n = infinity or limsup P^+(v_n)/R_n = infinity, with primitive negative part unbounded at the critical boundary lambda >= 1; the unconditional primitive square transport with the Legendre defect charged to h_n alone and the explicit log2 C_N bound; and the good-prime wall, a landing barrier with no hypothesis after the crossing that applies to finite segments. Four no-gos are recorded so they are not retried: the Legendre invariant admits walks with rises of order u and cannot close the parent alone; the literal landing-class hint is vacuous; an index-shift wrapper over CumulativeLcmTransfer does not close the open prime supply of bounded_lcm_negative_arithmetic_core; and the record-jump barrier provably stops at 2 for squarefree fresh multipliers. Proof, computation, Lean, review, publication and canonicalization statuses remain distinct per result."
+  "claim_ceiling_addendum_2026_09_05_erdos243_eight_return_assimilation": "Eight Type B full-parent returns (batch erdos243_20260905_eight_return_stream_01, from packet erdos243_full_parent_octuple_2026_09_05) were verified and assimilated. Erdos #243 remains open; none of the eight is a parent solution candidate, and every one proves parent-relevant mathematics under a restricted hypothesis. The two strongest longitudinal theorems are now (a) the CRITICAL-BOUNDARY ROUNDING THEOREM: if a_(n+1)/a_n^2 -> 1, sum 1/a_n is rational, and eventually delta_n <= 1/n + sum_(j<=m) 1/(n l_1(n) ... l_j(n)) for a fixed m, then the sequence is eventually Sylvester; this is strictly stronger than one_over_n_threshold_verified (limsup n delta_n < 1), which it supersedes, and it is the first corpus route that PRODUCES a bounded negative part from an analytic envelope with no arithmetic, hence outside the class capped by SlowNegativePartRigidity.md Proposition 7; and (b) the PRIMITIVE RECORD TWO-UNIT THEOREM: if every sufficiently late record-setting step of the reduced numerator rises by at most 2, the sequence is eventually Sylvester, with no hypothesis at non-record steps and no bound on the cancellation factors; its three structural lemmas are Lean-checked in PrimitiveRecordBarrier.lean and its analytic prime-power supply is an ordinary proof. The parent is now EQUIVALENT to excluding cofinally many clean primitive record jumps of size at least three (r08 Corollary 6). The log-log constant of the corpus barrier is an ARTEFACT of instantiating the block moduli as whole fresh multipliers: one prime factor per fresh multiplier lowers the wall by an exponential, and log2 log2 C_n is provably the worst case of the barrier family over supplies, so no wall argument beats it without a lower bound on the smooth part of the multipliers. Also landed: the B-shifted excess-mass obstruction, the exact B-shifted generalisation of the Lean summable-negative-mass consumer; the record-excess dichotomy K = 0 or K > 1 with the inclusive log-log boundary, Euler amplification, and the sharp coprimality gap constant sigma^(-1) with the Fermat witness 2; polynomial-profile rigidity excluding every exact quadratic profile of normalised leading coefficient 1 or 2, every rational-multiple-of-a-quadratic profile at positive lower density, every rational-root profile in every degree, and every linear error template of slope 1 to 7; the sharpened height dichotomy limsup u_n/n = infinity or limsup P^+(v_n)/R_n = infinity, with primitive negative part unbounded at the critical boundary lambda >= 1; the unconditional primitive square transport with the Legendre defect charged to h_n alone and the explicit log2 C_N bound; and the good-prime wall, a landing barrier with no hypothesis after the crossing that applies to finite segments. Four no-gos are recorded so they are not retried: the Legendre invariant admits walks with rises of order u and cannot close the parent alone; the literal landing-class hint is vacuous; an index-shift wrapper over CumulativeLcmTransfer does not close the open prime supply of bounded_lcm_negative_arithmetic_core; and the record-jump barrier provably stops at 2 for squarefree fresh multipliers. Proof, computation, Lean, review, publication and canonicalization statuses remain distinct per result.",
+  "weighted_record_propagation_receipt": "docs/formal_math/review_routes/erdos243_weighted_lcm_record_propagation.json"
 }

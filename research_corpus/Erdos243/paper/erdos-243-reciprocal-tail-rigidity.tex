@@ -61,6 +61,9 @@ $\sum_n(-E_n)_+/C_n<\infty$, the Sylvester recurrence is recovered
       {sylvesterNext_eventually_of_summable_negativeRelativeMass}
       {the finite-negative-mass recovery theorem}.
 The summability hypothesis is not known for the canonical orbit.
+An ordinary first-crossing argument in Section~\ref{sec:lcmrecords} gives
+smaller equivalent sufficient sums, restricted to LCM numerator records and
+allowing logarithmic discounts; their finiteness remains open as well.
 
 Several sharper exclusions explain why the remaining case is genuinely
 unbounded.  A negative error cannot be constant, at any magnitude or scale, and
@@ -1225,6 +1228,107 @@ which is why the hypothesis of Theorem~\ref{res:mass} is summability of
 $(-E_n)_+/C_n$ and not a bound on it.
 \end{example}
 
+\section{Weighted first crossings of LCM records}\label{sec:lcmrecords}
+
+The summability criterion admits a smaller series: only steps setting a new
+LCM numerator record need contribute, a fixed LCM-scale baseline may be
+subtracted, and the remaining mass may be logarithmically discounted.
+The result in this section is an ordinary mathematical proof. Its finite
+arithmetic and charging lemmas are isolated in
+\texttt{LcmRecordExcess.lean}; the global analytic argument is not formalised.
+
+Set
+\[
+ L_n=\operatorname{lcm}(q,a_0,\ldots,a_{n-1}),\quad
+ M_n=D_n/L_n,\quad U_n=C_n/M_n,\quad V_n=E_n/M_n.
+\]
+The rational tail has denominator dividing $L_n$, so $U_n$ and $V_n$ are
+integers. With $\rho_n=\gcd(L_n,a_n)$, the exact updates are
+\[
+ M_{n+1}=M_n\rho_n,\qquad
+ \rho_nU_{n+1}=U_n-V_n,\qquad V_n=L_n-(a_n-1)U_n.
+\]
+Write $R_n=\max_{j\le n}U_j$ and
+$\mathcal R=\{n:U_{n+1}>R_n\}$. Centring implies that every sufficiently
+late strict rise has $\rho_n=1$: otherwise $U_{n+1}\le3U_n/4$.
+Its actual jump is therefore $d_n=U_{n+1}-U_n=-V_n$.
+
+\begin{theorem}[weighted record excess]\label{res:weightedrecord}
+Assume the growth and rationality hypotheses of Problem~\ref{res:problem}.
+Let $f:[1,\infty)\to[0,\infty)$ be finite and nonincreasing, with
+$\int_1^\infty f(t)\,dt=\infty$. Then the sequence is eventually Sylvester
+if and only if, for some integer $B\ge0$,
+\[
+ \sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)<\infty.
+\]
+\end{theorem}
+
+\begin{proof}
+Fix $B\ge1$. There are eventually $B$ pairwise coprime old digits
+$m_0,\ldots,m_{B-1}>B$ dividing $L_T$. Indeed,
+$C_{n+1}/C_n=1-E_n/C_n\to1$ gives $\log C_n=o(n)$; since
+$M_n\le C_n$, the update for $M_n$ permits only $o(n)$ indices with
+$\rho_n>1$. The other digits are mutually coprime and tend to infinity.
+
+Put $P=\prod_i m_i$ and choose $x$ by the Chinese remainder theorem with
+$m_i\mid x+i$. Consider the heights $\tau=x+B+kP$. A first crossing
+$U_n\le R_n<\tau\le U_n+d_n$ is a record step. If $d_n\le B$, then
+$U_n\in[\tau-B,\tau)$, so some $m_i$ divides $U_n$. It also divides
+$L_n$, hence divides $d_n=(a_n-1)U_n-L_n$, contradicting
+$0<d_n\le B<m_i$.
+
+If the step first crosses $h\ge1$ such heights, their spacing gives
+$(h-1)P<d_n$. With $r=d_n-B\ge1$ and $P\ge B+1$, we have
+$d_n=B+r\le Pr$, whence $h\le r$. Monotonicity of $f$ now gives
+\[
+ \sum_{\substack{\tau\text{ first crossed}\\\text{at step }n}}f(\tau)
+ \le(d_n-B)f(U_n).
+\]
+Each height above $R_T$ has one first crossing. Summing, and comparing each
+interval of length $P$ with its left endpoint, yields the finite bound
+\begin{equation}\label{eq:weightedcrossing}
+ \sum_{\substack{T\le n<N\\n\in\mathcal R}}(-V_n-B)_+f(U_n)
+ \ge\frac1P\int_{R_T+P}^{R_N} f(t)\,dt.
+\end{equation}
+If the endpoint fails, centred zero is never reached on a sufficiently late
+tail. Integrality gives $1/U_n\le|V_n|/U_n=|E_n|/C_n\to0$, hence
+$R_n\to\infty$. The right side diverges, for every $B\ge1$; $B=0$ follows
+by domination. Conversely a Sylvester tail telescopes to
+$x_n=1/(a_n-1)$, so $V_n=0$ eventually.
+\end{proof}
+
+For example, $f(t)=1/[t\log(et)]$ gives the sufficient condition
+\[
+ \sum_{n\in\mathcal R}\frac{(-V_n-B)_+}{U_n\log(eU_n)}<\infty.
+\]
+Its finite lower bound in~\eqref{eq:weightedcrossing} is
+$P^{-1}\log\bigl(\log(eR_N)/\log(e(R_T+P))\bigr)$.
+Further fixed iterated logarithmic factors are allowed whenever the integral
+still diverges. These are specialisations of one crossing theorem.
+
+The criterion also has an exact expression in the original growth defect.
+Put $\gamma_n=a_n^2/a_{n+1}-1$ and $\theta_n=E_n/C_n$. The defect identity
+gives
+\[
+ \gamma_n+\theta_n=
+ \frac{(1-\theta_n)(a_n-1+\theta_{n+1})}{a_{n+1}},
+ \qquad 0<\gamma_n+\theta_n<3/a_n
+\]
+eventually. Thus the two nonnegative summands
+$U_nf(U_n)(\gamma_n-B/U_n)_+$ and $(-V_n-B)_+f(U_n)$ differ by at most
+$3U_nf(U_n)/a_n$. This is summable because
+$U_n\le C_n=\exp(o(n))$, $f(U_n)\le f(1)$, and
+$a_n\ge\exp(c2^n)$ eventually for some $c>0$.
+Consequently Theorem~\ref{res:weightedrecord} is equivalent to finiteness of
+\begin{equation}\label{eq:weightedgrowth}
+ \sum_{n\in\mathcal R}U_nf(U_n)
+ \left(\frac{a_n^2}{a_{n+1}}-1-\frac B{U_n}\right)_+
+\end{equation}
+for some $B$. The original hypotheses do not currently supply this
+finiteness. In particular, termwise convergence to zero is insufficient.
+Also, $d_n$ is the actual jump, including any recovery from a drawdown; it
+must not be replaced by $R_{n+1}-R_n$ in the crossing proof.
+
 \section{Complements and further questions}\label{sec:open}
 
 Problem~\#243 is open.  The negative case has narrowed, and it is worth being
@@ -1406,12 +1510,11 @@ at infinitely many indices?
 \end{problem}
 
 \noindent The two displayed formulations are equivalent up to changing the
-positive constant; the second is not a weaker target.  A positive answer is
-not yet, by itself, a proof of Problem~\#243: the missing bridge is a comparison
-of $M_n$ with a subexponential state or exact cancellation-payment scale.
-No assertion such as $M_n\mid C_n$ or $M_n\le C_n$ is used here.  Proving such
-a bridge together with Problem~\ref{res:lcmheight} would collide with the
-subexponential tail-height budget forced by normalised vanishing.
+positive constant; the second is not a weaker target. On the canonical orbit,
+Section~\ref{sec:lcmrecords} supplies $M_n\mid C_n$ and $M_n\le C_n$.
+Therefore a positive answer would contradict the subexponential tail-height
+budget and prove Problem~\#243. The missing input is the proposed lower
+bound on overlap growth.
 
 There is also a more local-looking question whose content is nevertheless the
 entire prefix.  Put $A_n=\prod_{j<n}a_j$, so $D_n=D_0A_n$.  From
@@ -1456,7 +1559,11 @@ Theorem~\ref{res:mass}.  Since $\delta_n\to0$, convergence is equivalently
 expressible as boundedness of the partial products
 $\prod_{n<N}(1+\delta_n)$; this is the same criterion in multiplicative form.
 A negative answer requires a sequence satisfying the full growth and
-rationality hypotheses.  A locally admissible state orbit is insufficient.
+rationality hypotheses. A locally admissible state orbit is insufficient.
+By Theorem~\ref{res:weightedrecord}, it is enough to establish the finiteness
+of~\eqref{eq:weightedgrowth} for one decreasing weight with divergent
+integral and one fixed baseline. This replaces the all-index mass by a
+discounted series supported only at LCM records.
 
 \begin{remark}
 One further question is not left open here, since it is answered

@@ -6,6 +6,17 @@ integer product-cleared state behind the reciprocal-tail argument and proves
 several exact conditional consequences. The source is a project-local API,
 not a claim that Erdős #243 is solved.
 
+The newer [weighted LCM record-excess note](LcmRecordExcess.md) proves an
+ordinary global equivalence: for any decreasing weight with divergent
+integral, finiteness of the baseline-subtracted excess at LCM numerator records
+forces the Sylvester endpoint. This includes logarithmically discounted sums.
+The [finite Lean core](LcmRecordExcess.lean) isolates the crossing and charging
+lemmas; it does not formalise the global analytic argument. The
+[exact checker](scripts/check_lcm_record_excess.py) reproduces 6,008 bounded
+seed–modulus cases. Establishing the required summability from rational
+denominator feedback remains open; see `weighted_lcm_record_summability` in
+the [research packet](research_packet.json).
+
 ## Source and namespace
 
 The module imports only Mathlib order, finite-set, natural-number, `ZMod`,
