@@ -105,6 +105,37 @@ def test_snapshot_clone_isolation_flags_are_pinned() -> None:
         require(clone_cwd == source, "snapshot clone used a different source checkout")
 
 
+def test_snapshot_from_linked_worktree() -> None:
+    # Keep the tiny worktree fixture beside the checkout: hosts may prohibit
+    # materializing worktrees under ephemeral OS roots to avoid large copies.
+    with tempfile.TemporaryDirectory(dir=check_release_ref.ROOT.parent) as raw:
+        parent = Path(raw)
+        source = parent / "source"
+        source.mkdir()
+        git(source, "init", "-q")
+        git(source, "config", "user.email", "release-ref-test@example.invalid")
+        git(source, "config", "user.name", "Clean ref release test")
+        for command in check_release_ref.RELEASE_COMMANDS:
+            path = source / command[1]
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("print('fixture')\n", encoding="utf-8")
+        git(source, "add", ".")
+        git(source, "commit", "-qm", "worktree snapshot fixture")
+        commit_id = git(source, "rev-parse", "HEAD")
+        worktree = parent / "linked"
+        git(source, "worktree", "add", "--no-checkout", "--detach", str(worktree), commit_id)
+        destination = parent / "snapshot"
+        destination.mkdir()
+        with patch.object(check_release_ref, "ROOT", worktree):
+            clone = check_release_ref.prepare_clone(commit_id, destination)
+        require(git(clone, "rev-parse", "HEAD") == commit_id,
+                "linked-worktree snapshot changed the selected commit")
+        alternates = clone / ".git/objects/info/alternates"
+        require(Path(alternates.read_text().strip()).resolve() ==
+                (source / ".git/objects").resolve(),
+                "linked-worktree snapshot did not retain its exact shared object store")
+
+
 def test_receipt_destination_boundary() -> None:
     with tempfile.TemporaryDirectory() as raw:
         root = Path(raw)
@@ -313,6 +344,7 @@ def auxiliary_gate_source(*, label: str, exit_code: int) -> str:
 def main() -> int:
     test_snapshot_command_path_boundary()
     test_snapshot_clone_isolation_flags_are_pinned()
+    test_snapshot_from_linked_worktree()
     test_receipt_destination_boundary()
     test_singleflight_worker_flag_is_accepted()
     test_commit_ref_resolution_ends_git_options()

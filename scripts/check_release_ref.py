@@ -227,7 +227,11 @@ def prepare_clone(commit: str, parent: Path) -> Path:
     if cloned.returncode != 0:
         raise SnapshotError(cloned.stderr.strip() or "local clone failed")
     alternates = clone / ".git/objects/info/alternates"
-    source_git_dir = run(["git", "rev-parse", "--absolute-git-dir"], cwd=ROOT)
+    # Linked worktrees keep administrative files separately but share the
+    # common repository's object database, which --shared clone records.
+    source_git_dir = run(
+        ["git", "rev-parse", "--path-format=absolute", "--git-common-dir"], cwd=ROOT
+    )
     if source_git_dir.returncode != 0:
         raise SnapshotError(
             source_git_dir.stderr.strip() or "could not resolve source Git directory"
