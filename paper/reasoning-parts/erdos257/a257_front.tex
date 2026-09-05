@@ -265,6 +265,8 @@ the domination required before exchanging infinite sums and averages.
 The analytic statements in this subsection are ordinary proofs; the pinned
 formal-source table above records their separately verified predecessors.
 
+The formal development also checks the \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/WeightedSupportLimits.lean#L111}{summability of the dyadic observation mass}, its \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/WeightedSupportLimits.lean#L81}{vanishing mean}, and the \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/BatchReturnSynthesis.lean#L151}{irrationality consumer from close returns}. These are the checked analytic ingredients; the complete weighted criterion above still uses the ordinary assembly in the supplement.
+
 \subsection{A finite deadline for every real target}
 The repair mechanism does not require periodic digits or even a rational
 target. Let $x\ge0$, let $A_x$ be its actual greedy support, and define
@@ -304,6 +306,8 @@ $Q_N(x)\ge2^N\delta-1$ beyond that fatal rank. This eventually exceeds
 $N+1$, contradicting a cofinal linear bound. These implications give all
 the stated equivalences.
 \end{proof}
+
+The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/GreedyRepairCriterion.lean#L192}{uniform repair equivalence} is now kernel checked for every real target $x\ge0$.
 
 The finite deadline comes from a growth comparison: strict increases of
 an integer sequence accumulate linearly, whereas represented tails have

@@ -18,7 +18,7 @@ is irrational. The problem remains open. The strongest unconditional partial res
 ```
 It excludes eventual $`3/2`$ upper bounds for the normalized channel radius and little-$`o(t^3)`$ growth in this architecture. A complementary conditional advance proves that one moving prefix-private prime, together with explicit global complementary-residue and local collision-core scale bounds, implies irrationality; arbitrary factors of one moving private modulus suffice under the corresponding normalized projection hypotheses. Wilson’s theorem supplies the moving private factors cofinally. The two quantitative producers remain open.
 
-The note also proves two finite denominator exclusions and an exact prime-pole cancellation law. A GMP certificate gives $`300000\nmid Z_{300000}`$ and hence $`q\nmid299999!`$ in any representation $`S=a/q`$ with $`q>0`$; an independent continued-fraction certificate gives $`q\ge2^{39991}>10^{12039}`$. For a finite prefix, the complete maximal power $`q^e`$ of a prime survives reduction exactly when a reciprocal maximal-hit cofactor sum is nonzero; full cancellations occur at $`q=139`$ and $`q=2593`$.
+The note also proves two finite denominator exclusions and an exact prime-pole cancellation law. A GMP certificate gives $`300000\nmid Z_{300000}`$ and hence $`q\nmid299999!`$ in any representation $`S=a/q`$ with $`q>0`$; an independent continued-fraction certificate gives $`q\ge2^{39990}>10^{12038}`$. For a finite prefix, the complete maximal power $`q^e`$ of a prime survives reduction exactly when a reciprocal maximal-hit cofactor sum is nonzero; full cancellations occur at $`q=139`$ and $`q=2593`$.
 
 Two exact coordinates are recorded after these advances. For $`C=\sum_{n\ge2}(n!(n!-1))^{-1}`$, one has
 ``` math
@@ -61,7 +61,7 @@ irrational?
 |:---|:---|
 | Channel-radius obstruction | Under the exact cancellation and factorial-size hypotheses, the square-subsequence normalized radius is at least $`3/2`$; eventual $`3/2`$ upper bounds and little-$`o`$ decay are impossible. |
 | Moving-factor criteria | One moving prefix-private prime plus two explicit scale bounds implies irrationality; arbitrary factors of one moving private modulus suffice under normalized projection disagreement. The scale producers remain open. |
-| Finite denominator exclusions | If $`S=a/q`$ with $`q>0`$, then $`q\nmid299999!`$ and independently $`q\ge2^{39991}>10^{12039}`$. |
+| Finite denominator exclusions | If $`S=a/q`$ with $`q>0`$, then $`q\nmid299999!`$ and independently $`q\ge2^{39990}>10^{12038}`$. |
 | Prime-pole cancellation law | A maximal prime power survives finite-prefix reduction exactly when its reciprocal maximal-hit cofactor sum is nonzero. |
 | Fixed companion orbit | $`S`$ is rational iff $`\lfloor m!C\rfloor\equiv-2\pmod m`$ eventually; this is an exact coordinate, not the missing producer. |
 | Integral frontier | $`S\notin\mathbb Q`$ iff for every $`B`$ some $`m>B`$ satisfies $`m\nmid Z_m`$. |
@@ -74,11 +74,9 @@ Erdős states the problem on p. 102 of his 1988 survey and, in the same passage
 
 Numbering and current status follow [Bloom’s Erdős problem catalogue](https://www.erdosproblems.com/68) \[bloom\]. The problem is open. The companion series $`\sum_{n\ge0}1/n!=e`$ and $`\sum_{n\ge2}1/(n!+1)`$ sit in the same family, and the difficulty here is the same one that makes the Erdős–Borwein constant hard: the denominators $`n!-1`$ grow fast enough that convergence is trivial and slow enough, in the arithmetic sense, that no single congruence controls them.
 
-The definitions and claim boundary are repeated here so that the note is self-contained.
+*Status.* The original problem remains open. Statements marked as Lean-checked refer to the linked propositions accepted by the pinned kernel, with no `sorry`, added axioms, or unchecked evaluation. The note states the remaining mathematical obligations explicitly.
 
-*Status.* The problem treated here is open, and this note does not close it. Every statement below marked as checked is a proposition that the pinned Lean kernel accepts from the sources this note links to, with no `sorry`, no added axiom, and no unchecked evaluation. That is a claim about the formal statement, not about its mathematical interest, its novelty, or the original problem. The unresolved obligations are named exactly, in their own section, and none of the finite computations, reductions, or no-go results here removes one of them.
-
-*Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers. Those descriptions do not change the mathematical status of this note.
+*Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#strategy-protocol) are described in sibling papers.
 
 | Statement | Status | Exact boundary |
 |:---|:---|:---|
@@ -97,7 +95,7 @@ The definitions and claim boundary are repeated here so that the note is self-co
 | Fixed companion-orbit boundary | Checked | Rationality is equivalent to eventual residue $`-2`$ for the fixed factorial orbit; irrationality is equivalent to cofinal misses. No theorem produces those misses. |
 | Adjacent-unit cancellation normalizer | Checked | Under consecutive unit carries, the exact offset and denominator share the same positive two-step normalizer, so their window inequality reduces to the universal future numerator bound. |
 | Explicit denominator bound | Checked implication; exact finite certificate | Exact reduction gives $`60\nmid Z_{60}`$, $`64\nmid Z_{64}`$, and $`67\nmid Z_{67}`$. An exact GMP computation certifies all carries through $`300000`$ and $`b_{300000}\ne1`$; the Lean-checked carry theorem gives $`q\ge300000`$ in every rational representation $`S=a/q`$ with $`q>0`$. |
-| Digits eventually zero $`\iff`$ $`S`$ rational | Returned derivation | Complete on the return; not yet kernel-checked here. |
+| Digits eventually zero $`\iff`$ $`S`$ rational | Checked | The equivalence holds for the canonical factorial expansion of every real number. |
 | Factorial-gap lcm growth $`\gg N^{4/3}\log N`$ | Derived, source-verified | Derived below from a cited factorial-congruence theorem; not kernel-checked and not used as an input to any claim below. |
 | Finite certificates ($`D=3`$, $`D=9`$, $`D\le12`$) | Verified finite instances | Each excludes only the denominators it names. |
 | Unbounded strict nonvanishing | Open | Required to turn the channel rounding argument into an irrationality proof. |
@@ -117,17 +115,22 @@ This is the factorial base taken in its canonical form. The kernel checks the fl
 x=\lfloor x\rfloor+\sum_{m=2}^{N}\frac{d_m}{m!}
    +\frac{\theta_N}{N!},
 ```
-and the propagation rule: a zero remainder at one index forces every later digit to vanish. These are *canonical digit eq floor mul remainder*, *canonical digit nonneg*, *canonical digit lt radix*, *canonical remainder recurrence*, the [finite factorial expansion](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L196), and the [zero-remainder termination theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L269); they hold for every real $`x`$, including $`S`$.
+and the propagation rule: a zero remainder at one index forces every later digit to vanish. These are [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L124), [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L146), [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L153), [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L162), the [finite factorial expansion](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L196), and the [zero-remainder termination theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L269); they hold for every real $`x`$, including $`S`$.
 
 The rational direction is also kernel-checked. If $`q>0`$ and $`q\le n`$, then
 ``` math
 \operatorname{facFloor}(a/q,n)=((n!/q):\mathbb{Z})a,
 ```
-and the canonical digit at radix $`n+1`$ vanishes. These are the [cleared-floor formula](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L47) and the [rational-input termination theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L81). They imply that every rational input has an eventually zero canonical factorial-digit expansion. They do not decide whether $`S`$ is rational and supply no recurrence estimate for its digits or remainders.
+and the canonical digit at radix $`n+1`$ vanishes. These are the [cleared-floor formula](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L47) and the [rational-input termination theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L81). They imply that every rational input has an eventually zero canonical factorial-digit expansion.
 
-The returned derivation additionally gives the converse for this particular representation: the digits $`d_m(S)`$ are eventually zero only if $`S`$ is rational, equivalently the factorial tail state is eventually integral. That converse is not yet kernel-checked here, and nothing below uses it as though it were.
+The converse is also formalised, and holds for every real input:
+``` math
+x\in\mathbb Q\quad\Longleftrightarrow\quad
+ d_m(x)=0\ \text{for all sufficiently large }m.
+```
+The [termination equivalence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/a740c6d5bb630a71327ddb4c893c72a288f8519a/ErdosProblems/Erdos68/CanonicalFactorialTermination.lean#L78) follows from the growth of a positive remainder. If all digits after index $`N\ge1`$ vanish, the recurrence gives $`\theta_{N+k}\ge(k+1)\theta_N`$. Since every canonical remainder is less than one, $`\theta_N`$ must vanish. Thus $`x=\lfloor N!x\rfloor/N!`$.
 
-Note what the criterion is not. Canonical normalisation is an exact reformulation of rationality. It does not by itself supply an obstruction, and a zero digit is not the same event as a zero-branch hit: the returned data contain canonical zero digits at $`m=5`$ and $`m=23`$, while the zero-branch list is empty through $`m=100000`$.
+A zero canonical digit is not the same event as a zero-branch hit: the returned data contain canonical zero digits at $`m=5`$ and $`m=23`$, while the zero-branch list is empty through $`m=100000`$.
 
 A second exact reformulation runs through a defect automaton. For a rational centre recurrence $`F_m=mF_{m-1}+1+\varepsilon_m-C_m`$, the kernel checks that the integer ceiling defect code equals $`\lfloor m\delta_{m-1}-\varepsilon_m\rfloor`$ and that $`\delta_m=m\delta_{m-1}-\varepsilon_m-q_m`$, with the specialisation $`\varepsilon_m=1/(m!-1)`$ written out. What is checked is the algebra of the automaton. Proving that the finite-sum residual centre satisfies the premise is a separate step and is not done.
 
@@ -140,19 +143,19 @@ the last two denominators already show the obstruction:
 p_n\ge
   \frac{(n!-1)((n-1)!-1)}{n-1},
 ```
-because $`\gcd(n!-1,(n-1)!-1)=\gcd((n-1)!-1,n-1)\le n-1`$. For $`n\ge4`$, the first omitted summand $`1/((n+1)!-1)`$ is then already larger than $`1/(np_n)`$, so this natural $`p_n`$ cannot satisfy their tail hypothesis. Cancellation in the reduced prefix denominator could in principle give a smaller scale, but proving enough cancellation is another form of the present denominator problem. Thus the source supplies an exact comparison boundary, not a proof of Problem #68.
+because $`\gcd(n!-1,(n-1)!-1)=\gcd((n-1)!-1,n-1)\le n-1`$. For $`n\ge4`$, the first omitted summand $`1/((n+1)!-1)`$ is then already larger than $`1/(np_n)`$, so this natural $`p_n`$ cannot satisfy their tail hypothesis. Cancellation in the reduced prefix denominator could in principle give a smaller scale, but proving enough cancellation is another form of the present denominator problem.
 
 Duverney’s fast-series criteria fail at a different, equally exact boundary. His Theorem 3.1 assumes two-sided quadratic denominator growth $`cu_n^2\le u_{n+1}\le c'u_n^2`$, while for $`u_n=n!-1`$ one has $`u_{n+1}/u_n^2\to0`$ \[duverney, pp. 275, 285–286\]. The all-positive specialization in Corollary 3.2 additionally requires
 ``` math
 \sum_n\left|\frac{u_{n+1}}{u_n^2}-1\right|<\infty,
 ```
-whereas the summands tend to one here \[duverney, Corollary 3.2, p. 287\]. Neither criterion applies.
+whereas the summands tend to one here \[duverney, Corollary 3.2, p. 287\]. Neither criterion applies. Lean checks both this nonsummability and the preceding ratio limit in [ratio-limit theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialAnalyticBoundary.lean#L52) and [nonsummability theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialAnalyticBoundary.lean#L84). The ratio proof divides numerator and denominator by $`(n!)^2`$; the resulting terms tend to zero while $`(1-1/n!)^2`$ tends to one.
 
 The sharp recent theorem of Barreto, Kang, Kim, Kovač, and Zhang has a similarly explicit ceiling. Its $`d=1`$ case proves irrationality of $`\sum_n1/a_n`$ when $`a_n^{1/2^n}\to\infty`$, whereas
 ``` math
 (n!-1)^{1/2^n}\longrightarrow1
 ```
-for the present choice $`a_n=n!-1`$ \[barreto-et-al, Theorems 2–3, pp. 2–4\]. The proof nevertheless identifies a useful exact criterion: Mahler’s elementary rationality floor is contradicted by prefix-clearing integers $`D_N`$ for which the cleared positive tails satisfy $`\liminf_ND_Nr_N=0`$ \[barreto-et-al, Lemma 8 and Proposition 12, pp. 6, 9–12\]. The ordinary product of the factorial-gap denominators is far too large for that estimate; a transfer would need a low-height clearing subsequence, or enough exact cancellation in their least common multiple. Thus the new theorem supplies a precise target inequality and adaptive-cutoff architecture, but not the missing arithmetic bound.
+for the present choice $`a_n=n!-1`$ \[barreto-et-al, Theorems 2–3, pp. 2–4\]. The latter limit is also checked in [dyadic-root limit theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialAnalyticBoundary.lean#L131): for $`n\ge2`$, the bound $`0\le\log(n!-1)\le n^2`$ gives $`\log(n!-1)/2^n\to0`$, and exponentiation gives the limit one. The proof of the cited theorem identifies a useful exact criterion: Mahler’s elementary rationality floor is contradicted by prefix-clearing integers $`D_N`$ for which the cleared positive tails satisfy $`\liminf_ND_Nr_N=0`$ \[barreto-et-al, Lemma 8 and Proposition 12, pp. 6, 9–12\]. The ordinary product of the factorial-gap denominators is far too large for that estimate; a transfer would need a low-height clearing subsequence, or enough exact cancellation in their least common multiple. Thus the new theorem supplies a precise target inequality and adaptive-cutoff architecture, but not the missing arithmetic bound.
 
 The ordinary factorial-series direction survives more usefully. Dividing the strict-successor recurrence $`Z_m=mZ_{m-1}+1-b_m`$ by $`m!`$ and telescoping gives the exact finite identity
 ``` math
@@ -160,7 +163,7 @@ The ordinary factorial-series direction survives more usefully. Dividing the str
   =\frac{Z_2}{2!}
    +\sum_{m=3}^{M}\frac{1-b_m}{m!}.
 ```
-Thus the carry defects $`1-b_m`$ are genuine factorial-series coefficients. Hančl and Tijdeman give exact rationality classifications for polynomial coefficients and finite-difference criteria for broader ordinary factorial series \[hancl-tijdeman, Theorem 3.1 and Corollary 3.1, pp. 390–391\]. Their denominator is the cumulative linear product $`\prod_{n\le N}(an+b)`$, not the individual number $`N!-1`$. Applied to the display above, the classical Cantor–Oppenheim criterion still needs $`1-b_m\ne0`$ infinitely often—precisely the missing cofinal non-unit-carry assertion that remains open. The identity is therefore a rigorous literature bridge, not a hidden solution.
+Thus the carry defects $`1-b_m`$ are genuine factorial-series coefficients. Hančl and Tijdeman give exact rationality classifications for polynomial coefficients and finite-difference criteria for broader ordinary factorial series \[hancl-tijdeman, Theorem 3.1 and Corollary 3.1, pp. 390–391\]. Their denominator is the cumulative linear product $`\prod_{n\le N}(an+b)`$, not the individual number $`N!-1`$. Applied to the display above, the classical Cantor–Oppenheim criterion still needs $`1-b_m\ne0`$ infinitely often—precisely the missing cofinal non-unit-carry assertion that remains open.
 
 <a id="sec:channels"></a>
 
@@ -176,7 +179,7 @@ defines the integral channel weight $`W_{d,i}`$ obtained by cancelling that fact
 n\,W_{d,n-1}-W_{d,n}=0
   \qquad\text{whenever } d\nmid n .
 ```
-So the channel weight is arithmetically inert except at multiples of $`d`$. The formal statements are *factorial pow floor dvd factorial*, *channel weight mul denominator*, and *channel event eq zero of not dvd*.
+So the channel weight is arithmetically inert except at multiples of $`d`$. The formal statements are [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L25), [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L43), and [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L65).
 
 There is a separate finite rigidity before any congruence is taken. For a finite coefficient family $`(c_j,i_j)`$, write
 
@@ -196,7 +199,7 @@ In particular, in the first band $`d\le i_j<2d`$, channel cancellation $`C_d=0`$
 
 </div>
 
-The exact factorisation is checked for every quotient band at [the band identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L71), and its zero-channel consequence is [band cancellation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L91). The first-band form is explicit at [first-band factorisation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L101); the final breakpoint alternative is [breakpoint witness](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L130). The hard step is the constant quotient, not a valuation estimate: within one band every factorial has the same extracted power of $`d!`$. Thus a nonzero moment cannot be hidden entirely below $`2d`$ while the $`d`$-channel cancels. This is a finite-family obstruction only. It constructs no cancelling family, says nothing about simultaneous channels or residual size, and does not by itself address the cofinal non-unit-carry input for Problem #68.
+The exact factorisation is checked for every quotient band at [the band identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L71), and its zero-channel consequence is [band cancellation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L91). The first-band form is explicit at [first-band factorisation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L101); the final breakpoint alternative is [breakpoint witness](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L130). The hard step is the constant quotient, not a valuation estimate: within one band every factorial has the same extracted power of $`d!`$. Thus a nonzero moment cannot be hidden entirely below $`2d`$ while the $`d`$-channel cancels. This is a finite-family obstruction only. It constructs no cancelling family, says nothing about simultaneous channels or residual size, and does not by itself address the cofinal non-unit-carry input for Problem #68.
 
 Let $`\lambda`$ be a finitely supported integer vector on indices $`n\ge2`$, let $`M=M(\lambda)`$ be its factorial moment, and let $`V_{d}(\lambda)`$ be the $`d`$-th channel numerator. The kernel checks two facts about them.
 
@@ -239,7 +242,7 @@ Consequently, for sequences $`M(t),R(t)`$ satisfying the same three hypotheses f
 
 </div>
 
-The proof is finite. It takes the final block of $`2t`$ factorial gaps below $`D=2t^2`$, bounds their product by $`L_D`$ times an explicit power of $`D`$, and counts the loss from pairwise gcds by the cubic exponent $`\binom{2t+1}{3}`$. A Stirling estimate then converts the factorial upper bound on $`M`$ into the displayed lower bound for $`R`$. The pointwise statement is checked at [the sharp radius theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1222), and its sequence form at [the eventual no-go theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1241). A coarser checked form says that $`R(t)+1`$ cannot be $`o(t^3)`$ under the corresponding hypotheses from $`t\ge4096`$ onward [the little-o obstruction](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1043).
+The proof is finite. It takes the final block of $`2t`$ factorial gaps below $`D=2t^2`$, bounds their product by $`L_D`$ times an explicit power of $`D`$, and counts the loss from pairwise gcds by the cubic exponent $`\binom{2t+1}{3}`$. A Stirling estimate then converts the factorial upper bound on $`M`$ into the displayed lower bound for $`R`$. The pointwise statement is checked at [the sharp radius theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1222), and its sequence form at [the eventual no-go theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1241). A coarser checked form says that $`R(t)+1`$ cannot be $`o(t^3)`$ under the corresponding hypotheses from $`t\ge4096`$ onward [the little-o obstruction](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1043).
 
 The theorem does not show that a kernel attached to the factorial-gap series has vanishing channels through $`2t^2`$, nor does it construct the positive moment $`M`$ and radius $`R`$ with the stated factorial inequality. It therefore restricts any such channel construction but does not supply the missing cofinal non-unit carries.
 
@@ -283,13 +286,13 @@ The channel obstruction raises a natural question: can a finite support affect e
 
 The theorem holds uniformly over all primes. Its use is arithmetic: at zero cost in the moment it supplies a unit in the $`p`$-channel. Adding an integer multiple of this corrector to any candidate kernel shifts the $`p`$-channel numerator by multiples of $`p!-1`$ and leaves every other channel and the moment untouched.
 
-The consequence is already uniform in the support location. For every channel rank and every prescribed cutoff, Lean constructs a factorial-grid kernel and a remote prime-corrector pair entirely beyond that cutoff, with all requested low channels zero, nonzero factorial moment, and residual in $`[-1/2,1/2]`$; see *exists remote factorial grid prime translator reduction*. What is not available is strict nonvanishing: nothing proved here rules out the rounded residual being exactly zero, and no cofinal family with a strictly nonzero rounded residual has been produced. This is the most direct remaining hypothesis, stated in §<a href="#sec:open" data-reference-type="ref" data-reference="sec:open">10</a>.
+The consequence is already uniform in the support location. For every channel rank and every prescribed cutoff, Lean constructs a factorial-grid kernel and a remote prime-corrector pair entirely beyond that cutoff, with all requested low channels zero, nonzero factorial moment, and residual in $`[-1/2,1/2]`$; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/PrimeUnitTranslator.lean#L1657). What is not available is strict nonvanishing: nothing proved here rules out the rounded residual being exactly zero, and no cofinal family with a strictly nonzero rounded residual has been produced. This is the most direct remaining hypothesis, stated in §<a href="#sec:open" data-reference-type="ref" data-reference="sec:open">10</a>.
 
 <a id="sec:plateau"></a>
 
 # Zero plateaux, first exit, and denominator bounds
 
-A second, independent argument works on the rational grid rather than on channels. Let $`H`$ be a partial sum and $`q`$ a candidate denominator. The kernel checks the algebraic grid threshold: writing $`qH=k+r`$ and $`q(S-H)=u`$, the next $`q^{-1}`$ grid point $`(k+1)/q`$ lies below $`S`$ exactly when $`1\le r+u`$. It also checks the factorial plateau theorem: if $`H<G\le S`$, if $`n!G`$ is integral, and if $`n!(S-H)<1`$, then the strict successor of $`n!H`$ and the canonical floor of $`n!S`$ are the same grid integer.
+A second, independent argument works on the rational grid rather than on channels. Let $`H`$ be a partial sum and $`q`$ a candidate denominator. The kernel checks the algebraic grid threshold: writing $`qH=k+r`$ and $`q(S-H)=u`$, the next $`q^{-1}`$ grid point $`(k+1)/q`$ lies below $`S`$ exactly when $`1\le r+u`$. It also checks the [factorial plateau theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L82): if $`H<G\le S`$, if $`n!G`$ is integral, and if $`n!(S-H)<1`$, then the strict successor of $`n!H`$ and the canonical floor of $`n!S`$ are the same grid integer.
 
 Two rigidity statements follow. Consecutive plateau floors, scaled by the next radix, force the canonical factorial digit to vanish. And any first-exit offset $`\delta\in[0,2)`$ with carry $`b=-\lfloor\delta\rfloor`$ satisfies $`b\in\{0,-1\}`$: the exit is rigid, with exactly two alternatives.
 
@@ -331,7 +334,7 @@ S\notin\mathbb Q
   \quad\Longleftrightarrow\quad
   (\forall B)(\exists m>B)\ b_m\ne1.
 ```
-The forward implication is the checked [cofinal non-unit-carry criterion](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L945). In purely integral coordinates, the checked [strict-successor equivalence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L986) gives the same reduction without loss. Neither theorem produces the required cofinal witnesses. Exact rational normalization gives
+The full Erdős problem is now reduced without loss to producing those cofinally many non-unit carries. Exact rational normalization gives
 ``` math
 60\nmid Z_{60},\qquad 64\nmid Z_{64},\qquad 67\nmid Z_{67}.
 ```
@@ -359,13 +362,13 @@ Cancelling the common positive normalizer therefore reduces the complete window 
 ```
 the universal numerator bound for a reduced strict-successor gap.
 
-The four load-bearing formal statements are the [positive-offset window](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L148), [denominator telescope](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L215), [window-denominator identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L243), and [unit-pair offset factorization](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L337). They do not disprove adjacent unit carries. They prove that a surviving-prime, prime-power, or quotient-gcd obstruction obtained only after imposing the pair is circular: it rewrites a bound that every reduced positive fraction already satisfies. A successful cofinal argument must constrain the raw predecessor state before the pair assumption, for example through independent prefix arithmetic or an Archimedean non-concentration estimate.
+The four load-bearing formal statements are the [positive-offset window](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L148), [denominator telescope](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L215), [window-denominator identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L243), and [unit-pair offset factorization](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L337). They do not disprove adjacent unit carries. They prove that a surviving-prime, prime-power, or quotient-gcd obstruction obtained only after imposing the pair is circular: it rewrites a bound that every reduced positive fraction already satisfies. A successful cofinal argument must constrain the raw predecessor state before the pair assumption, for example through independent prefix arithmetic or an Archimedean non-concentration estimate.
 
 At $`m=60`$ the recurrence also proves $`b_{60}\ne1`$, and hence $`q\ge60`$. Since $`67`$ is prime, the prime-miss theorem applied at $`67`$ gives the stronger checked bound
 ``` math
 S=\frac aq,\ q>0 \quad\Longrightarrow\quad q\ge67.
 ```
-The two formal declarations behind this finite bound make its hypotheses explicit. The generic theorem [single non-unit carry bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L812) assumes $`m\ge3`$, an exact carry miss at that index, a positive denominator, and the displayed rational representation, then concludes $`m\le q`$. The source-level specialization [index-$`67`$ denominator bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialZeroPlateauCertificates.lean#L136) supplies the prime-index miss used above. These are finite implications: they do not manufacture misses at arbitrarily large indices, and they do not turn the separately checked $`300000`$-cell GMP computation into a Lean evaluation or a cofinal theorem.
+The two formal declarations behind this finite bound make its hypotheses explicit. The generic theorem [single non-unit carry bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L876) assumes $`m\ge3`$, an exact carry miss at that index, a positive denominator, and the displayed rational representation, then concludes $`m\le q`$. The source-level specialization [index-$`67`$ denominator bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L940) supplies the prime-index miss used above.
 
 There is a second, more arithmetic mechanism at doubled prime indices. For every odd prime $`p`$, the kernel now specializes the strict-successor prime-power criterion to the literal prefixes:
 ``` math
@@ -375,7 +378,7 @@ p^2\mid Z_{2p}
   \ \text{or}\
   \bigl(b_{2p}=1+p\ \text{and}\ p\mid 2Z_{2p-1}-1\bigr).
 ```
-Consequently, failure of both displayed branches for a cofinal family of odd primes proves $`S`$ irrational. This is a sharper two-stage target than a bare square nondivisibility assertion: it exposes separately the only two carry values and predecessor residues that can survive. It remains a criterion, not the missing cofinal input.
+Consequently, failure of both displayed branches for a cofinal family of odd primes proves $`S`$ irrational. This is a sharper two-stage target than a bare square nondivisibility assertion: it exposes separately the only two carry values and predecessor residues that can survive.
 
 The formal theorem is not restricted to those hand-reduced indices. A separately implemented exact GMP integer computation certifies all $`299998`$ carry cells for $`3\le m\le300000`$. Its unit carries occur exactly at
 ``` math
@@ -409,7 +412,7 @@ The third formal layer converts modular disagreement into exclusion.
 
 </div>
 
-The leave-one-out specialisation $`Q=R/r`$ also follows. More generally, let $`a,b`$ divide $`R`$ and take the complementary projection moduli $`R/a`$ and $`R/b`$. Lean checks the same quotient cancellation and collision-cap comparison for these factor projections. If $`\gcd(a,b)=1`$, then $`\operatorname{lcm}(R/a,R/b)=R`$, and the resulting branch-free factor-pair floor is at most the global complementary residue. The factors $`a,b`$ may both divide one private quotient. Thus the reduction needs no analytic input and no pair of distinct denominator indices, only suitable factors whose projections or factor-pair floor satisfy the stated bound. This is checked in *factorial block factor projection lcm eq private modulus* and *factorial block complementary factor pair floor le global*. <span id="res:split-factor-normalized-collision" label="res:split-factor-normalized-collision"></span>
+The leave-one-out specialisation $`Q=R/r`$ also follows. More generally, let $`a,b`$ divide $`R`$ and take the complementary projection moduli $`R/a`$ and $`R/b`$. Lean checks the same quotient cancellation and collision-cap comparison for these factor projections. If $`\gcd(a,b)=1`$, then $`\operatorname{lcm}(R/a,R/b)=R`$, and the resulting branch-free factor-pair floor is at most the global complementary residue. The factors $`a,b`$ may both divide one private quotient. Thus the reduction needs no analytic input and no pair of distinct denominator indices, only suitable factors whose projections or factor-pair floor satisfy the stated bound. This is checked in [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4387) and [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4854). <span id="res:split-factor-normalized-collision" label="res:split-factor-normalized-collision"></span>
 
 The transport to the literal factorial block is established directly rather than advisory. Lean builds the collision core $`C`$, private quotients $`r_i`$, private modulus $`R`$, and weighted numerator $`T`$ for the actual denominators $`i!-1`$, and proves both the endpoint congruence modulo $`R`$ and the required coprimality. Moreover, if $`m!-1`$ has canonical large prefix-private primes, then their complete prime-power product divides the single quotient owned by $`m`$ on the tailored block with parameter $`\lfloor m/2\rfloor+1`$, hence divides that block’s $`R`$.
 
@@ -419,7 +422,7 @@ C(S\cup\{a\})
  =\operatorname{lcm}\!\left(C(S),\,
      \gcd\!\left(d_a,\operatorname{lcm}_{j\in S}d_j\right)\right).
 ```
-Indeed, finite-family gcd–lcm distributivity collapses the lcm of all pairwise gcds against $`d_a`$ to this single gcd. The same formula holds after adjoining the distinguished base; see *pairwise collision core insert gcd lcm* and *collision core insert gcd lcm*. Thus each step needs only the old denominator lcm and the old collision core, with no pairwise rescan.
+Indeed, finite-family gcd–lcm distributivity collapses the lcm of all pairwise gcds against $`d_a`$ to this single gcd. The same formula holds after adjoining the distinguished base; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L556) and [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L586). Thus each step needs only the old denominator lcm and the old collision core, with no pairwise rescan.
 
 There is also an exact product–lcm bound. If $`\widetilde C(S)`$ denotes the collision core after cancelling a positive distinguished base, while $`L(S)=\operatorname{lcm}_{j\in S}d_j`$ and $`P(S)=\prod_{j\in S}d_j`$, then Lean proves
 ``` math
@@ -427,14 +430,14 @@ There is also an exact product–lcm bound. If $`\widetilde C(S)`$ denotes the c
  \qquad\text{hence}\qquad
  \widetilde C(S)\le \frac{P(S)}{L(S)}.
 ```
-See *collision core div base mul denominator lcm dvd denominator prod*. For the actual factorial block this specializes to
+See [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L800). For the actual factorial block this specializes to
 ``` math
 \operatorname{factorialBlockNormalizedCollisionCore}(p)
  \le
  \frac{\displaystyle\prod_{n\in I_p}(n!-1)}
       {\displaystyle\operatorname{lcm}_{n\in I_p}(n!-1)},
 ```
-where $`I_p`$ is the block index set; see *factorial block normalized collision core le gap prod div gap lcm*. This is an exact quantitative bridge from lower estimates for the factorial-gap lcm to upper estimates for the normalized collision core. It does not itself close the local scale bound: one still needs cofinal estimates strong enough at the selected private factor and factorial scale. A fixed-modulus hit count alone does not supply such control.
+where $`I_p`$ is the block index set; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3327). This is an exact quantitative bridge from lower estimates for the factorial-gap lcm to upper estimates for the normalized collision core. It does not itself close the local scale bound: one still needs cofinal estimates strong enough at the selected private factor and factorial scale. A fixed-modulus hit count alone does not supply such control.
 
 The distinguished-base cancellation is now exact prime by prime. Writing $`B=(p-1)!`$ and $`C`$ for the unnormalised factorial-block collision core,
 ``` math
@@ -442,17 +445,17 @@ The distinguished-base cancellation is now exact prime by prime. Writing $`B=(p-
  =\frac{C}{\gcd(B,C)},\qquad
  v_q(\widetilde C_p)=v_q(C)-\min\{v_q(B),v_q(C)\}.
 ```
-See *collision core div base eq pairwise collision core div gcd*, *collision core div base factorization*, and *factorial block normalized collision core factorization*. Consequently $`q^e\mid\widetilde C_p`$ exactly when the pairwise core carries $`q^{e+v_q(B)}`$; in the factorial block this forces two distinct gaps to be divisible by that higher power. Lean moreover proves the sharp surviving valuation cap
+See [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L698), [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L739), and [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3394). Consequently $`q^e\mid\widetilde C_p`$ exactly when the pairwise core carries $`q^{e+v_q(B)}`$; in the factorial block this forces two distinct gaps to be divisible by that higher power. Lean moreover proves the sharp surviving valuation cap
 ``` math
 v_q(\widetilde C_p)+v_q((p-1)!)<q.
 ```
-Thus every support prime satisfies $`p-1<q(q-1)<q^2`$, and, whenever $`k(k-1)\le p-1`$, $`\widetilde C_p`$ is coprime to $`k!`$; see *factorial block normalized collision factorization add base lt prime*, *factorial block prime sq gt pred of dvd normalized collision core*, and *factorial block normalized collision core coprime factorial of mul pred le*. This removes every factorial channel below the moving square-root cutoff, but does not yet bound the aggregate product of the remaining large prime powers at the selected quotient, nor force the complementary projections or residues cofinally. It therefore supplies a stronger exact reduction, not an irrationality proof.
+Thus every support prime satisfies $`p-1<q(q-1)<q^2`$, and, whenever $`k(k-1)\le p-1`$, $`\widetilde C_p`$ is coprime to $`k!`$; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3790), [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3982), and [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3997). This removes every factorial channel below the moving square-root cutoff, but does not yet bound the aggregate product of the remaining large prime powers at the selected quotient, nor force the complementary projections or residues cofinally. It therefore supplies a stronger exact reduction, not an irrationality proof.
 
 For collision estimates that already provide an upper-half hit, no exponent is lost to normalization. If $`q`$ divides a displayed factorial gap at some $`n\ge p`$, then $`q\nmid(p-1)!`$, and Lean proves for every $`e>0`$ that
 ``` math
 q^e\mid\widetilde C_p\quad\Longleftrightarrow\quad q^e\mid C_p.
 ```
-See *factorial block prime not dvd base of upper hit* and *factorial block prime power dvd normalized collision core iff of upper hit*. Combined with the two-hit theorem, this identifies every complete normalized upper-hit contribution with repeated full-power load in two distinct displayed gaps. The remaining arithmetic task is to aggregate those moving loads strongly enough for the normalized collision cap; this equivalence does not provide that estimate or the complementary-residue bound.
+See [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5012) and [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5113). Combined with the two-hit theorem, this identifies every complete normalized upper-hit contribution with repeated full-power load in two distinct displayed gaps. The remaining arithmetic task is to aggregate those moving loads strongly enough for the normalized collision cap; this equivalence does not provide that estimate or the complementary-residue bound.
 
 This bridge has an exact incidence-count form. For an upper-hit prime $`q`$ and every $`e>0`$, Lean proves
 ``` math
@@ -460,7 +463,7 @@ q^e\mid\widetilde C_p
  \quad\Longleftrightarrow\quad
  1<\#\{i\in I_p:q^e\mid i!-1\}.
 ```
-See *factorial block prime power dvd normalized collision core iff one lt hit count*. Hence a source estimate giving at most one $`q^e`$-hit deletes that exponent from the normalized core and yields $`v_q(\widetilde C_p)<e`$; see *factorial block normalized collision core factorization lt of hit count le one*. The remaining problem is genuinely aggregate: obtain sufficiently uniform incidence bounds over all moving support primes and exponents, multiply the surviving valuation contributions, and still close the complementary-residue coordinate.
+See [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5144). Hence a source estimate giving at most one $`q^e`$-hit deletes that exponent from the normalized core and yields $`v_q(\widetilde C_p)<e`$; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5187). The remaining problem is genuinely aggregate: obtain sufficiently uniform incidence bounds over all moving support primes and exponents, multiply the surviving valuation contributions, and still close the complementary-residue coordinate.
 
 The local aggregation is now exact. For every upper-hit prime $`q`$, Lean proves
 ``` math
@@ -469,7 +472,7 @@ v_q(\widetilde C_p)
  \#\left\{e\in[1,q-1]:
    1<\#\{i\in I_p:q^e\mid i!-1\}\right\};
 ```
-see *factorial block normalized collision core factorization eq repeated hit layer count*. There is therefore no additional valuation loss between prime-power incidence estimates and the complete local collision exponent. The open step is to bound these layer counts uniformly as $`q`$ and $`p`$ move, then control the product over all surviving primes strongly enough for the normalized collision cap; this theorem does not supply that global estimate.
+see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5213). There is therefore no additional valuation loss between prime-power incidence estimates and the complete local collision exponent. The open step is to bound these layer counts uniformly as $`q`$ and $`p`$ move, then control the product over all surviving primes strongly enough for the normalized collision cap; this theorem does not supply that global estimate.
 
 The same local load now has a distance-sensitive witness. Put $`B=(p-1)!`$. If $`q`$ is prime, $`e>0`$, and $`q^e\mid\widetilde C_p`$, Lean produces $`i<j`$ in $`I_p`$ such that
 ``` math
@@ -477,13 +480,13 @@ q^{e+v_q(B)}\mid i!-1,\qquad
  q^{e+v_q(B)}\mid j!-1,\qquad
  q^{e+v_q(B)}\le j^{\,j-i}.
 ```
-See *exists factorial block hit pair with normalized prime power le gap pow*. Consequently, if
+See [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3668). Consequently, if
 ``` math
 (2p-1)^d<q^{e+v_q(B)},
 ```
-then some such two hits satisfy $`d<j-i`$; see *exists factorial block hit pair distance gt of endpoint pow lt normalized prime power*. The spacing hypothesis in that reduction is now discharged internally.
+then some such two hits satisfy $`d<j-i`$; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3698). The spacing hypothesis in that reduction is now discharged internally.
 
-If $`q`$ is prime, then any two $`q^e`$-hits $`i<j`$ satisfy $`e<j-i`$, without an endpoint or large-prime hypothesis; see *factorial block prime hit pair distance gt exponent*. The point is that $`q\mid j!-1`$ already forces $`j<q`$, while the preceding gap-power inequality converts this automatic size relation into strict separation.
+If $`q`$ is prime, then any two $`q^e`$-hits $`i<j`$ satisfy $`e<j-i`$, without an endpoint or large-prime hypothesis; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3472). The point is that $`q\mid j!-1`$ already forces $`j<q`$, while the preceding gap-power inequality converts this automatic size relation into strict separation.
 
 Consequently Lean proves the global primewise diameter ceiling
 ``` math
@@ -491,18 +494,18 @@ q\mid\widetilde C_p
  \quad\Longrightarrow\quad
  v_q(\widetilde C_p)+v_q((p-1)!)<2p-3
 ```
-for every prime $`q`$ and $`p\ge2`$; see *factorial block normalized collision factorization add base lt block diameter*. The exponent-level version is *factorial block normalized collision exponent add base factorization lt block diameter*. Thus the earlier endpoint-prime estimate is a special case, and even primes already present in the normalization base pay for their base valuation inside the same block-diameter budget. This still does not control how many collision primes occur or the product of their bounded powers; those global estimates, together with the complementary-residue bound, remain open.
+for every prime $`q`$ and $`p\ge2`$; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3848). The exponent-level version is [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3817). Thus the earlier endpoint-prime estimate is a special case, and even primes already present in the normalization base pay for their base valuation inside the same block-diameter budget. This still does not control how many collision primes occur or the product of their bounded powers; those global estimates, together with the complementary-residue bound, remain open.
 
 The pairwise statement is stronger than the selected-witness form used in that proof. For arbitrary $`q,e`$ and any displayed hits $`i<j`$, Lean proves
 ``` math
 q^e\mid(i!-1),\quad q^e\mid(j!-1)
  \quad\Longrightarrow\quad q^e\le j^{\,j-i};
 ```
-see *factorial block prime power le gap pow of two hits*. Consequently, when $`q`$ is prime and $`e>0`$, every two $`q^e`$-hits in the block—not just one chosen pair—satisfy $`e<j-i`$; see *factorial block prime hit pair distance gt exponent*. Every prime-power hit layer is therefore an $`e`$-separated subset of the block. Lean now proves the finite cardinality corollary itself:
+see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3443). Consequently, when $`q`$ is prime and $`e>0`$, every two $`q^e`$-hits in the block—not just one chosen pair—satisfy $`e<j-i`$; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3472). Every prime-power hit layer is therefore an $`e`$-separated subset of the block. Lean now proves the finite cardinality corollary itself:
 ``` math
 (e+1)\#\{i\in I_p:q^e\mid i!-1\}\le 2p+e-2
 ```
-for $`p\ge2`$, prime $`q`$, and $`e>0`$; see *factorial block prime power hit count mul succ le*. The unweighted packing step is therefore complete. What remains is to combine it with the exact repeated-layer valuation identity, sum the prime-power weights over all moving collision primes, and prove a global product bound strong enough for the normalized collision cap.
+for $`p\ge2`$, prime $`q`$, and $`e>0`$; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3602). The unweighted packing step is therefore complete. What remains is to combine it with the exact repeated-layer valuation identity, sum the prime-power weights over all moving collision primes, and prove a global product bound strong enough for the normalized collision cap.
 
 For an endpoint prime carrying one upper-half hit, Lean now performs the first combination exactly. If $`p\ge2`$, $`q`$ is prime, and $`2p-1<q`$, then
 ``` math
@@ -511,7 +514,7 @@ v_q(\widetilde C_p)
  \#\left\{e\in[1,2p-4]:
    1<\#\{i\in I_p:q^e\mid i!-1\}\right\};
 ```
-see *factorial block normalized collision core factorization eq truncated repeated hit layer count*. Thus every repeated-hit layer outside the block-diameter window has been removed from the exact local valuation formula. The remaining estimate is still global and weighted: these truncated layer counts must be aggregated over the moving endpoint primes strongly enough to bound their complete prime-power product, and the independent complementary-residue coordinate remains open.
+see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5277). Thus every repeated-hit layer outside the block-diameter window has been removed from the exact local valuation formula. The remaining estimate is still global and weighted: these truncated layer counts must be aggregated over the moving endpoint primes strongly enough to bound their complete prime-power product, and the independent complementary-residue coordinate remains open.
 
 The endpoint incidence criterion itself no longer needs a selected upper-half anchor. For every prime $`q>2p-1`$ and $`e>0`$, Lean proves
 ``` math
@@ -519,34 +522,34 @@ q^e\mid\widetilde C_p
  \quad\Longleftrightarrow\quad
  1<\#\{i\in I_p:q^e\mid i!-1\};
 ```
-see *factorial block prime power dvd normalized collision core iff one lt hit count of endpoint lt base*. Thus an at-most-one $`q^e`$ incidence estimate forces $`v_q(\widetilde C_p)<e`$ without first choosing an upper hit; see *factorial block normalized collision core factorization lt of endpoint lt base of hit count le one*. At $`e=2`$ this gives the conditional squarefree conclusion $`v_q(\widetilde C_p)\le1`$; see *factorial block normalized collision core factorization le one of endpoint lt base of prime sq hit count le one*.
+see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5389). Thus an at-most-one $`q^e`$ incidence estimate forces $`v_q(\widetilde C_p)<e`$ without first choosing an upper hit; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5410). At $`e=2`$ this gives the conditional squarefree conclusion $`v_q(\widetilde C_p)\le1`$; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5436).
 
-More generally the endpoint inequality can be replaced by the exact condition $`q\nmid(p-1)!`$. For every such prime and every $`e>0`$, Lean proves the same hit-count equivalence; see *factorial block prime power dvd normalized collision core iff one lt hit count of not dvd base*. The at-most-one estimate cuts the normalized valuation below $`e`$, and its $`e=2`$ specialization gives conditional squarefreeness; see *factorial block normalized collision core factorization lt of not dvd base of hit count le one* and *factorial block normalized collision core factorization le one of not dvd base of prime sq hit count le one*. Every prime $`q\ge p`$ is absent from $`(p-1)!`$, so this covers the entire moving prime range at and above the block parameter. The result remains conditional: no theorem here supplies the uniform prime-square incidence premise or the global weighted product estimate.
+More generally the endpoint inequality can be replaced by the exact condition $`q\nmid(p-1)!`$. For every such prime and every $`e>0`$, Lean proves the same hit-count equivalence; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5319). The at-most-one estimate cuts the normalized valuation below $`e`$, and its $`e=2`$ specialization gives conditional squarefreeness; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5344) and [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L5370). Every prime $`q\ge p`$ is absent from $`(p-1)!`$, so this covers the entire moving prime range at and above the block parameter. The result remains conditional: no theorem here supplies the uniform prime-square incidence premise or the global weighted product estimate.
 
 The squarefreeness premise is not proved. An exhaustive modular scan through $`q\le2{,}000{,}000`$ and $`n\le240`$ found four individual square hits and no prime with two such hits. Separately, all $`498{,}501`$ pairs $`2\le a<b\le1000`$ have squarefree $`\gcd(a!-1,b!-1)`$, and the aggregate squarefree-collision scan through $`p=499`$ stays below $`0.374`$ of the upper-descending-factorial logarithmic scale. These are finite exact computations, not theorem authority or an asymptotic incidence bound.
 
-Cofinal prefix-private support itself is unconditional. Given any cutoff $`B`$, Lean chooses a prime $`q\ge B!+5`$, uses Wilson’s theorem to obtain $`q\mid(q-2)!-1`$, and takes the least factorial-gap hit $`m`$ of $`q`$. If $`m\le B`$, then $`q\le m!-1\le B!`$, a contradiction. Hence $`m>B`$; see *cofinal prefix private factorial gap hits*. A finite variant compares the product of a chosen set of primes, each at least $`5`$, with
+Cofinal prefix-private support itself is unconditional. Given any cutoff $`B`$, Lean chooses a prime $`q\ge B!+5`$, uses Wilson’s theorem to obtain $`q\mid(q-2)!-1`$, and takes the least factorial-gap hit $`m`$ of $`q`$. If $`m\le B`$, then $`q\le m!-1\le B!`$, a contradiction. Hence $`m>B`$; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L3097). A finite variant compares the product of a chosen set of primes, each at least $`5`$, with
 ``` math
 \prod_{2\le k\le B}(k!-1).
 ```
-If the prime product is larger, at least one chosen prime has no hit through $`B`$, while Wilson still bounds its least hit by $`q-2`$; see *exists late prefix private factorial gap hit of prime product lt*. These statements supply private factors, but they do not prove either scale estimate below. In particular, the unconditional construction gives no useful upper bound for $`q`$ in terms of its least hit $`m`$.
+If the prime product is larger, at least one chosen prime has no hit through $`B`$, while Wilson still bounds its least hit by $`q-2`$; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L3047). These statements supply private factors, but they do not prove either scale estimate below. In particular, the unconditional construction gives no useful upper bound for $`q`$ in terms of its least hit $`m`$.
 
-Wilson reflection also limits what can be inferred from a prime factor merely because it is linear in a later index. If $`n`$ is odd, $`n<q`$, and $`q\mid n!-1`$, then $`q\mid(q-n-1)!-1`$. When both indices lie in the same block and the reflected hit is earlier, equivalently $`q<2n+1`$, this repeated hit survives predecessor-factorial normalization and its full-block incidence count exceeds one; see *prime dvd reflected factorial gap of odd* and *prime dvd factorial block normalized collision core of odd reflection* and *one lt factorial block prime hit count of odd reflection*. Thus a linear-size divisor need not be private.
+Wilson reflection also limits what can be inferred from a prime factor merely because it is linear in a later index. If $`n`$ is odd, $`n<q`$, and $`q\mid n!-1`$, then $`q\mid(q-n-1)!-1`$. When both indices lie in the same block and the reflected hit is earlier, equivalently $`q<2n+1`$, this repeated hit survives predecessor-factorial normalization and its full-block incidence count exceeds one; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L3139) and [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L3231) and [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L3252). Thus a linear-size divisor need not be private.
 
-This warning applies to a genuine source theorem, not an inferred change of sign. Stewart states that for every $`\varepsilon>0`$ there are infinitely many odd $`n`$ whose least prime factor $`q`$ of $`n!-1`$ satisfies
+Stewart states that for every $`\varepsilon>0`$ there are infinitely many odd $`n`$ whose least prime factor $`q`$ of $`n!-1`$ satisfies
 ``` math
 n<q<
  \left(\frac{\sqrt{145}-1}{8}+\varepsilon\right)n;
 ```
 the printed text explicitly transfers estimate (9) from $`n!+1`$ to $`n!-1`$ \[stewart2004, p. 464\]. Wilson reflection then supplies the earlier hit $`q\mid(q-n-1)!-1`$. The source controls $`q`$ relative to the later index $`n`$, but it does not control $`q`$ relative to the private first-hit index $`m`$. Accordingly it is collision-core input, not the missing private-anchor or global product estimate.
 
-In fact one selected prime $`q`$ already furnishes the exact coprime factor pair $`(1,q)`$: its projection moduli are $`R`$ and $`R/q`$, whose least common multiple is $`R`$. Thus no second selected prime is needed; see *factorial gap large prefix private power modulus dvd tailored block private quotient* and *factorial gap large prefix private primes unit factor pair tailored block*. There is no hidden equality/disagreement branch in this specialization.
+In fact one selected prime $`q`$ already furnishes the exact coprime factor pair $`(1,q)`$: its projection moduli are $`R`$ and $`R/q`$, whose least common multiple is $`R`$. Thus no second selected prime is needed; see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L1419) and [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L1524). There is no hidden equality/disagreement branch in this specialization.
 
 Writing $`\rho`$ for the global complementary residue, Lean proves that the unit-pair floor is exactly
 ``` math
 \min\{\rho,R/q\};
 ```
-see *factorial block unit factor pair floor eq min*. Consequently the remaining factor-pair scale comparison must simultaneously beat the global complementary-residue coordinate and the local $`R/q`$ coordinate. After using $`L=CR`$, the latter is precisely the collision-cap comparison with the selected factor $`q`$, while the former is the global complementary-residue lower bound. Lean records this as the exact equivalence
+see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4701). Consequently the remaining factor-pair scale comparison must simultaneously beat the global complementary-residue coordinate and the local $`R/q`$ coordinate. After using $`L=CR`$, the latter is precisely the collision-cap comparison with the selected factor $`q`$, while the former is the global complementary-residue lower bound. Lean records this as the exact equivalence
 ``` math
 (2p+1)L < 2p^2(2p-1)!\min\{\rho,R/q\}
  \quad\Longleftrightarrow\quad
@@ -555,9 +558,9 @@ see *factorial block unit factor pair floor eq min*. Consequently the remaining 
   (2p+1)Cq < 2p^2(2p-1)!,
  \end{cases}
 ```
-see *factorial block unit factor pair floor scale iff*. Thus the factor reduction has no opaque floor premise left: the two surviving arithmetic estimates are exposed independently and neither follows merely from the existence of the selected prime.
+see [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4766). Thus the factor reduction has no opaque floor premise left: the two surviving arithmetic estimates are exposed independently and neither follows merely from the existence of the selected prime.
 
-<span id="res:moving-factor-scale-split" label="res:moving-factor-scale-split"></span> The irrationality implication works for every natural block parameter at least three, including composite parameters. What remains open is the arithmetic input. Wilson supplies cofinal prefix-private factors without analytic input. The stronger source-backed large-prime selection remains relevant because it supplies a positive-density family and a linear lower bound for $`q`$ relative to the original hit; neither result proves the global complementary-residue bound or the local collision-core bound. The surviving obligation is therefore to prove both sides of this exact branch-free scale split cofinally, packaged by *irrational factorial gap series of cofinal large prefix private unit scale split*.
+<span id="res:moving-factor-scale-split" label="res:moving-factor-scale-split"></span> The irrationality implication works for every natural block parameter at least three, including composite parameters. What remains open is the arithmetic input. Wilson supplies cofinal prefix-private factors without analytic input. The stronger source-backed large-prime selection remains relevant because it supplies a positive-density family and a linear lower bound for $`q`$ relative to the original hit; neither result proves the global complementary-residue bound or the local collision-core bound. The surviving obligation is therefore to prove both sides of this exact branch-free scale split cofinally, packaged by [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L1574).
 
 <a id="sec:companion-orbit"></a>
 
@@ -640,7 +643,7 @@ which is rational. Negating the eventual statement yields the cofinal formulatio
 
 <div id="bdry:companion-orbit-nonconcentration" class="remark">
 
-*Remark 1* (the exact remaining boundary). The theorem isolates the problem without solving it. A proof of Problem #68 must still show that the orbit $`\lfloor m!C\rfloor\bmod m`$ does not eventually concentrate at $`-2`$. Finite computation can measure this concentration but cannot discharge the cofinal quantifier.
+*Remark 1* (the exact remaining boundary). The remaining problem is to show that $`\lfloor m!C\rfloor\bmod m`$ differs from $`-2`$ at arbitrarily large indices.
 
 </div>
 
@@ -648,11 +651,9 @@ which is rational. Negating the eventual statement yields the cofinal formulatio
 
 # Limits of fixed-coordinate arguments
 
-The following are closed routes. They are part of the result, not caveats attached to it.
-
 - Residue vectors, their recurrences, and window widths admit synthetic all-hit blocks. They cannot prove irrationality on their own.
 
-- Known pointwise prime congruences, prime-dilation congruences, parity, and the exact prime coefficient formula admit a synthetic rational countermodel. A congruence family that a rational number could also satisfy decides nothing.
+- Known pointwise prime congruences, prime-dilation congruences, parity, and the exact prime coefficient formula admit a synthetic rational countermodel.
 
 - Wilson quotients, harmonic sums, $`p`$-adic gamma identities, and factorial residues do not control the required Archimedean floor without an additional coupling theorem. Every prime-window test factors into a sharp Archimedean strict-ceiling condition and a modular divisibility condition, and the missing ingredient is the coupling between them, not more congruences.
 
@@ -660,15 +661,81 @@ The following are closed routes. They are part of the result, not caveats attach
 
 - Zero-moment variations cannot create an additional fractional cancellation coordinate (§<a href="#sec:channels" data-reference-type="ref" data-reference="sec:channels">3</a>), and factorial valuations cannot absorb the channel LCM obstruction.
 
-- <span id="bdry:fixed-owner-absorption" label="bdry:fixed-owner-absorption"></span>A fixed pair of low-index private owners cannot make the projection the argument cofinal. If the owner index $`n`$ is fixed and $`p>n!-1`$, then $`n!-1\mid(p-1)!`$, so its private quotient in the factorial block at $`p`$ is exactly one. Lean checks this uniformly in *factorial block private quotient eq one of gap lt* and checks the two-owner consequence in *factorial block fixed pair private quotients eq one*. Thus the large private quotients seen at small blocks—for example the factor $`719`$ owned at $`n=6`$—are finite-range phenomena. The factor-level reduction does not require two moving denominator indices: two factors inside one moving private quotient can suffice. It still requires selected nontrivial factors that escape with $`p`$.
+- <span id="bdry:fixed-owner-absorption" label="bdry:fixed-owner-absorption"></span>A fixed pair of low-index private owners cannot make the projection argument cofinal. If the owner index $`n`$ is fixed and $`p>n!-1`$, then $`n!-1\mid(p-1)!`$, so its private quotient in the factorial block at $`p`$ is exactly one. Lean checks this uniformly in [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L2677) and checks the two-owner consequence in [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L2707). Thus the large private quotients seen at small blocks—for example the factor $`719`$ owned at $`n=6`$—are finite-range phenomena. The factor-level reduction does not require two moving denominator indices: two factors inside one moving private quotient can suffice. It still requires selected nontrivial factors that escape with $`p`$.
 
 <a id="sec:finite"></a>
 
 # Finite certificates
 
-The following are computations. Each excludes exactly the denominators it names and nothing more.
+<a id="a-denominator-bound-from-a-certified-interval"></a>
 
-The finite-support vector $`\lambda=2e_3-e_4`$ has, by kernel check, $`V_2=0`$, factorial moment $`-12`$, $`V_3=-2`$, $`V_4=11`$, and $`V_d=-12`$ for every $`d\ge5`$. Under the exact rational tail enclosure $`1/119<\Theta_4<1/50`$, its residual lies strictly between $`-93/575`$ and $`-309/13685`$; in particular it is nonzero and subunit.
+## A denominator bound from a certified interval
+
+An exact continued-fraction computation gives
+``` math
+S=a/q,\quad q>0
+ \qquad\Longrightarrow\qquad
+ q\ge 2^{39990}>10^{12038}.
+```
+Set $`D=2^B`$, and let $`N`$ be the first index with $`N!-1>D`$. Define
+``` math
+\ell=\sum_{n=2}^{N-1}\left\lfloor\frac{D}{n!-1}\right\rfloor,
+ \qquad
+ u=\ell+(N-2)+\left\lfloor\frac{2D}{N!-1}\right\rfloor+1.
+```
+Each rounded prefix term loses less than one. Also $`(n+1)!-1>(n+1)(n!-1)`$, so the tail starting at $`N`$ is less than $`2/(N!-1)`$. Hence $`\ell/D<S<u/D`$.
+
+Apply the continued-fraction algorithm to both rational endpoints. Retain a partial quotient only when their integer parts agree; subtract that integer and invert the two remainders, reversing their order. Stop when the integer parts disagree or an endpoint remainder is zero. Every retained quotient therefore belongs to every real number in the interval. If such a number is rational, its continued fraction cannot terminate before this shared prefix. Its reduced denominator is consequently at least the denominator of the last retained convergent, computed by
+``` math
+Q_{-2}=1,\qquad Q_{-1}=0,\qquad Q_k=a_kQ_{k-1}+Q_{k-2}.
+```
+For $`B=80000`$, the enclosure has scaled width $`u-\ell=7053`$ and forces $`23449`$ partial quotients. The last convergent denominator is at least $`2^{39990}`$. The replay also verifies directly that the preceding convergent lies outside the enclosure. All enclosure, quotient, and denominator operations use integers; the decimal inequality above is checked by integer exponentiation. The [integer replay](https://github.com/wcook04/plectis-lean-erdos249-257/blob/cd3bd6fe245867a435e15d503ccedd699c5d02e2/scripts/check_erdos68_continued_fraction.py) and its [receipt](https://github.com/wcook04/plectis-lean-erdos249-257/blob/cd3bd6fe245867a435e15d503ccedd699c5d02e2/verification/erdos68-continued-fraction.json) accompany the calculation.
+
+The divisibility exclusion $`q\nmid299999!`$ from the carry certificate is a different restriction. It requires a prime-power divisor that does not divide $`299999!`$, whereas the continued-fraction certificate bounds the denominator’s size. In particular, a denominator with no prime factor above $`299999`$ can still satisfy the divisibility exclusion if one prime occurs to a sufficiently high power.
+
+<a id="which-prime-powers-survive-prefix-reduction"></a>
+
+## Which prime powers survive prefix reduction
+
+A prime dividing a displayed denominator can disappear when the prefix is reduced. The cancellation is controlled by all indices with maximal valuation, rather than by a single factorial congruence.
+
+<div id="res:prime-pole" class="proposition">
+
+**Proposition 9** (maximal-hit cancellation). *Let $`M\ge2`$, put $`d_n=n!-1`$ for $`2\le n\le M`$, and write
+``` math
+L=\operatorname{lcm}(d_2,\ldots,d_M),\qquad
+ B=\sum_{n=2}^M L/d_n,\qquad H_M=B/L.
+```
+For a prime $`p\mid L`$, let $`e=v_p(L)`$ and $`J=\{n:2\le n\le M,\ v_p(d_n)=e\}`$. If $`d_n=p^e u_n`$ for $`n\in J`$, then
+``` math
+B\equiv \frac{L}{p^e}\sum_{n\in J}u_n^{-1}\pmod p.
+```
+Consequently the reduced denominator of $`H_M`$ contains $`p^e`$ if and only if $`\sum_{n\in J}u_n^{-1}\ne0`$ in $`\mathbb F_p`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Write $`L=p^eW`$, where $`p\nmid W`$. If $`v_p(d_n)<e`$, then $`p\mid L/d_n`$. If $`n\in J`$, the integer identity $`u_n(L/d_n)=W`$ gives $`L/d_n\equiv Wu_n^{-1}\pmod p`$. Summing proves the congruence. The reduced denominator is $`L/\gcd(B,L)`$; the [prime-power survival criterion](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0d34630e1cc9d2b1ac6edfa7cfdba83b31bdc8fe/ErdosProblems/Erdos68/PrimePoleDenominator.lean#L41) gives $`p`$-valuation $`e`$ exactly when $`p\nmid B`$. Since $`W`$ is nonzero modulo $`p`$, this is the [maximal-hit cancellation criterion](https://github.com/wcook04/plectis-lean-erdos249-257/blob/6e28e93fc9d8d67c382260b5f3d5fa65ceb2363d/ErdosProblems/Erdos68/PrimePoleCriterion.lean#L223). ◻
+
+</div>
+
+At the endpoint $`M=p-1`$ with $`p\ge5`$, Wilson’s theorem supplies the hit $`n=p-2`$. It need not survive reduction. Exact multiplication modulo $`p^2`$ gives
+``` math
+\begin{array}{c|c|c|c}
+ p & J & (u_n\bmod p)_{n\in J} & \sum_{n\in J}u_n^{-1}\bmod p\\
+ \hline
+ 139 & 69,122,137 & 6,49,73 & 116+122+40=0\\
+ 2593 & 349,2243,2591 & 1508,1566,1678 & 1367+356+870=0
+\end{array}
+```
+In both cases $`e=1`$, so $`p`$ disappears from the reduced prefix denominator. The calculation requires only the recurrence $`r_1=1`$, $`r_n\equiv nr_{n-1}\pmod{p^2}`$: a hit has $`r_n\equiv1\pmod p`$, and its lifted cofactor is $`(r_n-1)/p\pmod p`$. Neither list contains a hit with $`r_n=1`$ modulo $`p^2`$.
+
+<a id="finite-channel-and-carry-certificates"></a>
+
+## Finite channel and carry certificates
+
+The finite-support vector $`\lambda=2e_3-e_4`$ has, by kernel check, $`V_2=0`$, factorial moment $`-12`$, $`V_3=-2`$, $`V_4=11`$, and $`V_d=-12`$ for every $`d\ge5`$. Under the exact rational tail enclosure $`1/119<\Theta_4<1/50`$, its [residual](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L156) lies strictly between $`-93/575`$ and $`-309/13685`$; in particular it is nonzero and subunit.
 
 Exact integer regeneration verifies the canonical primitive kernels for every $`2\le D\le12`$: channels $`2`$ through $`D`$ vanish, the factorial moment is $`L_D`$, and the coefficient content is one. At $`D=9`$ the moment is $`L_9=31540008254514077395`$ and, after the stated prime-unit shift, $`1353/100000<R_9<1354/100000`$. At $`D=3`$ the vector $`c=(-40,55,-10,1)`$ on the support $`(3,4,5,6)`$ annihilates channels $`2`$ and $`3`$, has moment $`600`$, and satisfies
 ``` math
@@ -676,9 +743,11 @@ Exact integer regeneration verifies the canonical primitive kernels for every $`
 ```
 This excludes denominators dividing $`600`$.
 
-There are two different computations at the same endpoint. A returned interval computation reports the stronger geometric statement that no zero-branch event occurs at any $`m\le100000`$; its cited executable and source digest were not supplied, so that zero-branch classification remains external finite evidence. The strict-successor carry computation used above is local and independently regenerated: its exact source, GMP backend, canonical payload, and receipt digests form the certificate archive. The two claims must not be conflated. The local certificate establishes $`b_{300000}\ne1`$, and the checked theorem converts precisely that fact into $`q\ge300000`$.
-
-None of these changes a quantifier.
+There are two different computations at the same endpoint. A returned interval computation reports the stronger geometric statement that no zero-branch event occurs at any $`m\le100000`$; its cited executable and source digest were not supplied, so that zero-branch classification remains external finite evidence. The strict-successor carry computation used above is local and independently regenerated: its exact source, GMP backend, canonical payload, and receipt digests form the certificate archive. The local certificate establishes $`b_{300000}\ne1`$. It excludes more than denominators below $`300000`$. If $`q\mid(m-1)!`$ and $`m\ge3`$, the two numbers $`(m-1)!S`$ and $`m!S`$ are integers. The tail bound
+``` math
+0<k!(S-H_k)<\frac{2k!}{(k+1)!-1}<1\qquad(k\ge2)
+```
+then gives $`Z_k=k!S`$ at $`k=m-1,m`$. Substitution into $`Z_m=mZ_{m-1}+1-b_m`$ forces $`b_m=1`$. Thus the certified non-unit carry at $`m=300000`$ gives $`q\nmid299999!`$, and in particular $`q\ge300000`$.
 
 <a id="sec:open"></a>
 
@@ -693,7 +762,7 @@ S\notin\mathbb{Q}
  (\forall B)(\exists m>B)\;b_m\ne1.
 \tag{9.1}\label{eq:exact-frontier68}
 ```
-This is a formal theorem, not a heuristic reduction. The remaining gap is quantified: the finite mechanisms in the preceding sections need one of the following cofinal inputs. The table separates those missing inputs from the formal results that would consume them.
+The finite mechanisms in the preceding sections need one of the following cofinal inputs. The table pairs each missing input with the formal result that would consume it.
 
 <div class="center">
 
@@ -728,7 +797,7 @@ Let $`M_p`$ denote the moving private modulus, let $`q\mid M_p`$ be the selected
 
 <div id="prob:weighted-collision68" class="problem">
 
-**Problem 9** (weighted collision-product control). Prove on an unbounded family of tailored prime blocks both
+**Problem 10** (weighted collision-product control). Prove on an unbounded family of tailored prime blocks both
 ``` math
 \sum_r\#\{e:h_{r,e}(p)>1\}\log r
  <
@@ -761,11 +830,11 @@ and let $`B_n`$ be the repeated-support part of $`n!-1`$. The amplification modu
 A_n=\prod_{\substack{q\mid B_n\\
              v_q(v_n)<v_q(n!-1)}}q^{v_q(n!-1)}.
 ```
-Lean proves $`A_n\mid v_{n+1}`$ and, when $`A_n>1`$, that the new numerator has a nonzero projection modulo the whole product.
+Lean proves the [divisibility $`A_n\mid v_{n+1}`$](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L5604) and, when $`A_n>1`$, the [nonzero numerator projection](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L5619) modulo the whole product.
 
 <div id="prob:amplification68" class="problem">
 
-**Problem 10** (cofinal valuation amplification). Prove that there is $`\eta>0`$ and infinitely many genuinely nonterminal indices $`n`$ such that
+**Problem 11** (cofinal valuation amplification). Prove that there is $`\eta>0`$ and infinitely many genuinely nonterminal indices $`n`$ such that
 ``` math
 \log A_n\ge\eta\log v_{n+1},
 \tag{9.4}\label{eq:amplification-mass68}
@@ -806,7 +875,7 @@ The lower unit-carry branch is exactly
 
 <div id="prob:lower-cylinder68" class="problem">
 
-**Problem 11** (cofinal lower-endpoint escape). Prove for infinitely many primes $`p`$ that
+**Problem 12** (cofinal lower-endpoint escape). Prove for infinitely many primes $`p`$ that
 ``` math
 1+\frac1{p!-1}+\frac2p\le p\Delta_p.
 \tag{9.6}\label{eq:lower-cylinder68}
@@ -826,7 +895,7 @@ Any positive answer yields a non-unit carry directly and proves irrationality. C
 
 ## 4. Failure of the two exact doubled-prime branches
 
-For every odd prime $`p`$, the specialisation is
+For every odd prime $`p`$, the [doubled-prime criterion](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialZeroPlateauSupplement.lean#L257) is
 ``` math
 p^2\mid Z_{2p}
  \quad\Longleftrightarrow\quad
@@ -840,7 +909,7 @@ p^2\mid Z_{2p}
 
 <div id="prob:double-prime68" class="problem">
 
-**Problem 12** (cofinal doubled-prime branch failure). Prove that infinitely many odd primes $`p`$ satisfy simultaneously
+**Problem 13** (cofinal doubled-prime branch failure). Prove that infinitely many odd primes $`p`$ satisfy simultaneously
 ``` math
 \neg\bigl(b_{2p}=1\land p\mid Z_{2p-1}\bigr),
  \qquad
@@ -878,7 +947,7 @@ and $`N_d(n,t)=\det(A_{n,t})\ne0`$ after the largest support index. The finite i
 
 <div id="prob:cramer68" class="problem">
 
-**Problem 13** (Cramer residual nonintegrality). Construct an unbounded family $`(n,t)`$ for which
+**Problem 14** (Cramer residual nonintegrality). Construct an unbounded family $`(n,t)`$ for which
 ``` math
 \mathcal R_{n,t}\notin\mathbb{Z},
 ```
@@ -900,111 +969,111 @@ where $`\Delta(I,D)`$ is the gcd of the maximal minors.
 
 A termwise sign assertion is not admissible: adjacent signs already change. Nor does simply asking for $`\det(A_{n,t})S\notin\mathbb{Z}`$ add information to the original scalar problem. A solution must use an exact determinant or finite-difference identity, a valuation or parity obstruction, a cancellation bound, or a gcd-of-minors argument controlling the finite oscillatory block.
 
-Erdős #68 remains open. No statement above proves irrationality or excludes every rational value. The finite checked consequence is nevertheless unconditional: every rational representation with positive denominator has $`q\ge300000`$.
+Erdős #68 remains open. Every rational representation with positive denominator has $`q\ge300000`$.
 
 <a id="statements-and-declarations"></a>
 
 # Statements and declarations
 
-Lean does not authorise the exposition, the citation choices, or the interpretation, for which the author remains responsible. This manuscript is authored exposition, not Lean proof authority. The checked core is the canonical factorial digit kernel, the finite defect automaton algebra, floor-factorial channel arithmetic, the channel congruence and its integral normal form, the two-term prime corrector, weighted projection rigidity, the factor-split projection reduction, the fixed-index factorial-base absorption no-go, the rational-grid plateau and first-exit results, the first-crossing denominator bounds, and the literal-prefix prime obstruction through the exact $`p=11`$ instance, strengthened by the all-index eventual-unit-carry theorem and the exact reductions at $`m=60,64,67`$, the bound $`q\ge67`$, and the finite geometric peeling identity. It also checks the normalized strict-successor step and its finite factorial-series expansion in the carry defects $`1-b_m`$, the convergence $`Z_m/m!\to S`$, and the exact equivalence between irrationality and cofinally many non-unit carries. Source-current Lean additionally checks the fixed companion-orbit rationality boundary and its cofinal-miss dual; the staged Comparator package exposes those endpoints as one concise composite and keeps them subordinate to the actual channel and moving-factor advances. The GMP carry certificate through $`m=300000`$ is regenerated separately and hash-bound; combined with the checked carry theorem it gives $`q\ge300000`$, but it is not itself a Lean evaluation.
+The checked core is the canonical factorial digit kernel, the finite defect automaton algebra, floor-factorial channel arithmetic, the channel congruence and its integral normal form, the two-term prime corrector, weighted projection rigidity, the factor-split projection reduction, the fixed-index factorial-base absorption no-go, the rational-grid plateau and first-exit results, the first-crossing denominator bounds, and the literal-prefix prime obstruction through the exact $`p=11`$ instance, strengthened by the all-index eventual-unit-carry theorem and the exact reductions at $`m=60,64,67`$, the bound $`q\ge67`$, and the finite geometric peeling identity. It also checks the normalized strict-successor step and its finite factorial-series expansion in the carry defects $`1-b_m`$, the convergence $`Z_m/m!\to S`$, and the exact equivalence between irrationality and cofinally many non-unit carries. Source-current Lean additionally checks the fixed companion-orbit rationality boundary and its cofinal-miss dual; the staged Comparator package exposes those endpoints as one concise composite and keeps them subordinate to the actual channel and moving-factor advances. The GMP carry certificate through $`m=300000`$ is regenerated separately and hash-bound; combined with the checked carry theorem it gives $`q\ge300000`$, but it is not itself a Lean evaluation.
 
-The converse direction of the digit–rationality equivalence, the weighted primitive support decomposition, and the determinant-quotient reduction are returned derivations that have not been kernel-checked here, and are labelled as such wherever they appear. The factorial-gap lcm growth bound is derived here from the exact factorial-congruence multiplicity theorem of Garaev–Luca–Shparlinski \[garaev-luca-shparlinski, arXiv v1, Thm. 12, p. 16\]; it is source-verified, not a verbatim theorem of that paper, not kernel-checked here, and load-bearing for nothing above. The finite computations are finite.
+The weighted primitive support decomposition and the determinant-quotient reduction are returned derivations that have not been kernel-checked here, and are labelled as such wherever they appear. The factorial-gap lcm growth bound is derived here from the exact factorial-congruence multiplicity theorem of Garaev–Luca–Shparlinski \[garaev-luca-shparlinski, arXiv v1, Thm. 12, p. 16\]; it is source-verified, not kernel-checked here, and unused in the preceding results.
 
 <a id="app:sources"></a>
 
 # Guide to the formal sources
 
-The public `ErdosProblems.Erdos68` package contains the checked source for this note. The pinned snapshot contains seventeen cited modules: `AdjacentUnitCarryWindow`, `CanonicalFactorialDigits`, `ChannelBreakpointRigidity`, `ChannelIntegralCongruence`, `DivisorFactorialCentre`, `EndpointWeightedPrivateSupport`, `FactorialCarry`, `FactorialChannelCertificate`, `FactorialGapPlateauCore`, `FactorialZeroPlateau`, `FactorialZeroPlateauCertificates`, `FiniteDefectAutomaton`, `GapScalarNormalForm`, `PrimeThresholdParity`, `PrimeUnitTranslator`, `PrimeZeroBranch`, and `StrictSuccessorArithmetic`. Only these public modules belong to the manuscript source surface; no private auxiliary digit-rigidity file is cited or projected. The public root imports every cited module. The declaration table below is pinned to the shared formal-source commit used throughout this problem-note series.
+The public `ErdosProblems.Erdos68` package contains the checked source for this note. The cited modules include: `AdjacentUnitCarryWindow`, `CanonicalFactorialDigits`, `ChannelBreakpointRigidity`, `ChannelIntegralCongruence`, `DivisorFactorialCentre`, `EndpointWeightedPrivateSupport`, `FactorialAnalyticBoundary`, `FactorialCarry`, `FactorialChannelCertificate`, `FactorialZeroPlateau`, `FiniteDefectAutomaton`, `GapScalarNormalForm`, `PrimeThresholdParity`, `PrimeUnitTranslator`, `PrimeZeroBranch`, and `StrictSuccessorArithmetic`. The declaration links are pinned to the formal-source commit listed at the start of this note.
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L148)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L148)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L215)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L215)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L243)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L243)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L337)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean#L337)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L812)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L812)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialZeroPlateauCertificates.lean#L136)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialZeroPlateauCertificates.lean#L136)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L986)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L986)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L945)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean#L945)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L6146)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L6146)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4766)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4766)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/PrimeUnitTranslator.lean#L1559)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/PrimeUnitTranslator.lean#L1559)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L34)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L34)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L39)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L39)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L44)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L44)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L49)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L49)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L80)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L80)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L88)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L88)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L102)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L102)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L129)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L129)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L146)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L146)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L170)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L170)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L179)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L179)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L188)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L188)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L25)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L25)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L39)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L39)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L43)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L43)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L51)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L51)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L55)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L55)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L59)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L59)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L65)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L65)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L101)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L101)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L105)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L105)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L109)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L109)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L112)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L112)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L119)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L119)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L126)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L126)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L133)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L133)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L140)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L140)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L151)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L151)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L156)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L156)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1006)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1006)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1023)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1023)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1043)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1043)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1222)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1222)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/3506d189a2660213ec0e53ee29360a464007b8a1/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1241)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/66878a31f144c6714af357695e26b07d6653e02c/ErdosProblems/Erdos68/ChannelIntegralCongruence.lean#L1241)
 
 <a id="source-current-companion-orbit-and-comparator-routes."></a>
 

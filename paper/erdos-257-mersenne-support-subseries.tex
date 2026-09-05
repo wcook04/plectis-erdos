@@ -247,6 +247,8 @@ irrationality, and the binary atom comparison gives every larger base.
 The supplement gives all truncation estimates and an explicit
 reciprocal-divergent host with gaps $O(\log\log a)$.
 
+The formal development also checks the \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/WeightedSupportLimits.lean#L111}{summability of the dyadic observation mass}, its \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/WeightedSupportLimits.lean#L81}{vanishing mean}, and the \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/BatchReturnSynthesis.lean#L151}{irrationality consumer from close returns}. These are the checked analytic ingredients; the complete weighted criterion above still uses the ordinary assembly in the supplement.
+
 There is also a quantitative necessary condition for rationality.  Put
 $H_A(x)=\sum_{a\in A,\,a\le x}1/a$, let $T_0=2$,
 $T_{j+1}=2^{T_j}$, and set $\ell(x)=\min\{j:x\le T_j\}$.
@@ -390,6 +392,8 @@ $Q_N(x)\ge2^N\delta-1$ beyond that fatal rank. This eventually exceeds
 $N+1$, contradicting a cofinal linear bound. These implications give all
 the stated equivalences.
 \end{proof}
+
+The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/GreedyRepairCriterion.lean#L192}{uniform repair equivalence} is now kernel checked for every real target $x\ge0$.
 
 The finite deadline comes from a growth comparison: strict increases of
 an integer sequence accumulate linearly, whereas represented tails have
@@ -955,15 +959,7 @@ reciprocal-summable support theorem. In particular, the alternating-core
 example above gives an irrational sum at every integer base.
 \end{proof}
 
-This composition makes the former selector hypothesis unnecessary. The
-older pinned
-\mword{Erdos249257/SupportSunflowerDichotomy.lean}{540}{irrational_erdosSupportSeries_of_orthogonalPetalBouquet}{conditional endpoint}
-remains valid, but its
-\mword{Erdos249257/SupportSunflowerDichotomy.lean}{406}{SunflowerForcedSlotTailSelection}{forced-slot hypothesis}
-is a burden of that certificate construction. The proof above uses the
-actual support's reciprocal mass directly. Its composed statement should
-be distinguished from the older conditional declaration at the pinned
-formal-source checkpoint.
+The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/Erdos249257/BouquetReciprocalIrrationality.lean#L85}{unconditional all-base bouquet theorem} is now kernel checked. The older forced-slot selector is unnecessary for this corollary; it belongs to a stronger certificate construction.
 
 \begin{theorem}[the composite-dilation defect]
 \label{res:compositedefect}

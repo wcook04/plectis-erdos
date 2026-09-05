@@ -1723,12 +1723,10 @@
         "ErdosProblems.Decl.verify.D4",
         "ErdosProblems.Erdos1041.AttachmentAgeLifetimeOrlicz",
         "ErdosProblems.Erdos1041.CubicQuotientFiberCase",
-        "ErdosProblems.Erdos1041.CyclicFiberMeanSquare",
         "ErdosProblems.Erdos1041.FirstMergeCriticalValueSeparation",
         "ErdosProblems.Erdos1041.FreePointUniformRadius",
         "ErdosProblems.Erdos1041.LevelSeparation",
         "ErdosProblems.Erdos1041.NewtonFlowTrajectory",
-        "ErdosProblems.Erdos1041.PowerSeriesDerivative",
         "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
         "ErdosProblems.Erdos1041.QuarticQuotientFiberCase",
         "ErdosProblems.Erdos1041.ReciprocalNewtonExpansion",
@@ -2172,6 +2170,15 @@
           "role": "Lean proof module",
           "imports": [
             "Erdos249257.BooleanMobiusLocalRepair"
+          ]
+        },
+        {
+          "id": "Erdos249257.BouquetReciprocalIrrationality",
+          "path": "Erdos249257/BouquetReciprocalIrrationality.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.SupportSunflowerDichotomy",
+            "Erdos249257.AllBaseReciprocalSupportIrrationality"
           ]
         },
         {
@@ -8890,8 +8897,24 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos251.BoundedPerturbationCountermodel",
+          "path": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos251.OrderLatticeDiagonal",
           "path": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.PolynomialGapSeriesValue",
+          "path": "ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean",
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos251.PrimeGapDyadicTail"
@@ -8918,6 +8941,15 @@
           "imports": [
             "ErdosProblems.Erdos257.FatalCriticalDangerEndpointReduction",
             "ErdosProblems.Erdos257.HalfCounterexampleFrontier"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.BatchReturnSynthesis",
+          "path": "ErdosProblems/Erdos257/BatchReturnSynthesis.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.FourNinthsCofinalRepairConsumer",
+            "Erdos249257.AllBaseReciprocalSupportIrrationality"
           ]
         },
         {
@@ -8984,6 +9016,14 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos257.GreedyRepairCriterion",
+          "path": "ErdosProblems/Erdos257/GreedyRepairCriterion.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.BatchReturnSynthesis"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
           "path": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
           "role": "Lean proof module",
@@ -9035,6 +9075,22 @@
           "role": "Lean proof module",
           "imports": [
             "Erdos249257.CertificateKernel"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WeightedSupportAveraging",
+          "path": "ErdosProblems/Erdos257/WeightedSupportAveraging.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.ReciprocalSupportIrrationality"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WeightedSupportLimits",
+          "path": "ErdosProblems/Erdos257/WeightedSupportLimits.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WeightedSupportAveraging"
           ]
         },
         {
@@ -11367,7 +11423,24 @@
             "ErdosProblems.Erdos68.PrimeUnitTranslator",
             "ErdosProblems.Erdos68.PrimePoleCriterion",
             "ErdosProblems.Erdos68.PrimeZeroBranch",
-            "ErdosProblems.Erdos68.StrictSuccessorArithmetic"
+            "ErdosProblems.Erdos68.StrictSuccessorArithmetic",
+            "Erdos249257.BouquetReciprocalIrrationality",
+            "ErdosProblems.Erdos257.BatchReturnSynthesis",
+            "ErdosProblems.Erdos257.GreedyRepairCriterion",
+            "ErdosProblems.Erdos257.WeightedSupportAveraging",
+            "ErdosProblems.Erdos257.WeightedSupportLimits",
+            "ErdosProblems.Erdos251.BoundedPerturbationCountermodel",
+            "ErdosProblems.Erdos251.PolynomialGapSeriesValue",
+            "ErdosProblems.Erdos1049.UnimodularTail",
+            "ErdosProblems.Erdos243.LcmRecordExcess",
+            "ErdosProblems.Erdos243.SlowRiseBarrier",
+            "ErdosProblems.Erdos251.RealPrimeGapTail",
+            "ErdosProblems.Erdos1041.CyclicFiberMeanSquare",
+            "ErdosProblems.Erdos1041.LogKernelEnergy",
+            "ErdosProblems.Erdos1041.LogKernelVariance",
+            "ErdosProblems.Erdos1041.LogKernelCentralCertificate",
+            "ErdosProblems.Erdos1041.PowerSeriesDerivative",
+            "ErdosProblems.Erdos68.PrimePoleDenominator"
           ]
         },
         {
@@ -13687,15 +13760,18 @@
           {
             "id": "coefficient_only_no_go",
             "contribution_class": "coefficient-only barrier; novelty and significance unassessed",
-            "summary": "The exact finite carry identity and the two non-eventual-periodicity statements expose the coefficient-only barrier: irregularity and growth of a coefficient stream do not by themselves force irrationality, while the synthetic carry stream remains distinct from the actual prime-gap stream.",
-            "evidence_mode": "Lean kernel plus authored synthesis",
+            "summary": "For every convergent natural-digit dyadic series, every positive integer M and every finite prefix cutoff K, a perturbation M*delta_n with delta_n in {0,1} and zero below K makes the sum rational. Consequently a property satisfied by every such perturbation cannot force irrationality. The separate positive even strictly increasing polynomial word has dyadic value exactly 32.",
+            "evidence_mode": "Lean kernel; bounded-perturbation interfaces prepared for Comparator, runtime receipt separate",
             "comparator_disposition": "targeted",
             "declarations": [
               "ErdosProblems.Erdos251.carryPartialSum_natCast_eq",
               "ErdosProblems.Erdos251.carryCoeff_natCast_not_eventually_periodic",
-              "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic"
+              "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic",
+              "ErdosProblems.Erdos251.exists_rational_bounded_perturbation",
+              "ErdosProblems.Erdos251.not_forall_irrational_of_bounded_perturbation_invariant",
+              "ErdosProblems.Erdos251.not_irrational_tsum_polynomialGapDyadicTerm"
             ],
-            "boundary": "CoefficientOnlyNoGo checks the exact finite partial-sum identity and the two non-eventual-periodicity statements. It does not assert the infinite limit of the synthetic countermodel, identify its coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims."
+            "boundary": "The perturbations need not be prime gaps. Neither this obstruction nor the polynomial countermodel decides the actual prime-gap series."
           },
           {
             "id": "actual_real_prime_gap_tail",
@@ -13811,7 +13887,7 @@
             "declarations": [
               "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal"
             ],
-            "boundary": "The universal Erdős #257 assertion remains open only in the reciprocal-divergent regime. Novelty and priority are unassessed, and the proof is not identified with Erdős's omitted coprimality-free argument."
+            "boundary": "Infinitude and summability of reciprocal conductor mass are explicit. No coprimality is assumed. Supports with divergent reciprocal mass require another argument; universal Erdős #257 remains open."
           },
           {
             "id": "pairwise_coprime_support",
@@ -13831,11 +13907,16 @@
           },
           {
             "id": "orthogonal_petal_sunflower_reduction",
-            "contribution_class": "conditional reduction",
-            "summary": "A finite-core orthogonal-petal bouquet together with the exact uniform tail-selection predicate composes through the forced-carry certificate consumer to irrationality; the explicit alternating-core, squared-prime-petal witness shows the structural class is non-vacuous, but the selector remains open.",
-            "evidence_mode": "Lean kernel plus Comparator plus paper argument",
-            "comparator_disposition": "targeted_conditional_sunflower_reduction",
-            "boundary": "The bouquet and selector hypotheses remain explicit; the selector is not proved, so this is not an unconditional #257 support family."
+            "contribution_class": "unconditional all-base support-class corollary",
+            "summary": "Every finite-core orthogonal-petal bouquet has irrational reciprocal-power value at every integer base at least two. Its defining summable petal reciprocals bound the actual support reciprocals, so no forced-slot selector is needed.",
+            "evidence_mode": "Lean kernel; stronger Comparator interface configured, runtime receipt separate",
+            "comparator_disposition": "targeted_legacy_conditional_bouquet_with_stronger_per_entry_interface",
+            "boundary": "The bouquet structure, positive finite cores, pairwise-coprime petals and summable petal reciprocals remain explicit. The former selector belongs to a stronger certificate construction and is unnecessary for this corollary. This family is contained in reciprocal-summable supports and supplies no reciprocal-divergent or universal endpoint.",
+            "declarations": [
+              "Erdos249257.SupportSunflowerDichotomy.OrthogonalPetalBouquet.summable_reciprocalSupportTerm",
+              "Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet_allBase",
+              "Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet"
+            ]
           },
           {
             "id": "squarefree_support",
@@ -13873,9 +13954,17 @@
             "id": "divisibility_weighted_support_irrationality",
             "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
             "summary": "Finite divisibility-weighted mass implies hereditary all-base irrationality, including explicit reciprocal-divergent short-gap supports.",
-            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.",
-            "comparator_disposition": "not_applicable_not_a_lean_proposition",
-            "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+            "evidence_mode": "Ordinary full proof; Lean checks the finite orbit and dyadic estimates, full infinite-support dyadic error summability and the radix close-return endgame.",
+            "comparator_disposition": "not_applicable_full_irrationality_producer_not_formalized",
+            "boundary": "The complete divisibility-weighted theorem is proved in docs/research/erdos257-eight-return-proofs.md. The finite orbit and infinite-support dyadic error control are formalized, but the prime-part split and diagonal scale producer remain ordinary proof steps. No full-theorem Lean badge or universal #257 solution follows from the checked ingredients.",
+            "declarations": [
+              "ErdosProblems.Erdos257.cesaroMean_shiftedMersenneAtom_mul_le_gcdMean_add_error",
+              "ErdosProblems.Erdos257.dyadic_observation_sum_le",
+              "ErdosProblems.Erdos257.dyadic_supportObservationMass_sum_le",
+              "ErdosProblems.Erdos257.summable_dyadic_supportObservationMass",
+              "ErdosProblems.Erdos257.tendsto_dyadic_supportObservationMass_mean",
+              "ErdosProblems.Erdos257.irrational_erdosSupportSeries_of_radix_closeReturn"
+            ]
           },
           {
             "id": "sub_logstar_reciprocal_mass_irrationality",
@@ -13903,11 +13992,19 @@
           },
           {
             "id": "four_ninths_square_root_repair_windows",
-            "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
-            "summary": "4/9 membership is equivalent to a repair at some N in every interval [K,K+2 floor(sqrt K)+12). A single strict-increase window excludes membership.",
-            "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.",
-            "comparator_disposition": "not_applicable_not_a_lean_proposition",
-            "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+            "contribution_class": "exact actual-real-target equivalences and finite nonmembership criterion",
+            "summary": "For every real x>=0, let Q_N=floor(2^N x) minus the Lambert prefix numerator of the actual greedy support. Membership is equivalent to a nonincrease of Q in every [K,K+2 floor(sqrt K)+12), to cofinal nonincreases, and to cofinal bounds by the next divisor load or by N+1. One strict-increase window excludes membership; 4/9 is a specialization.",
+            "evidence_mode": "Lean kernel; generic Comparator interface configured, runtime receipt separate",
+            "comparator_disposition": "not_selected_for_legacy_comparator_registered_per_entry",
+            "boundary": "Rationality and periodic floor digits are not hypotheses. The theorem does not construct cofinal repairs or a strict window for 4/9,1/21 or1/2, and none of those open membership questions is decided. The stable historical family id is retained to preserve existing links.",
+            "canonical_mechanism_family": "generic_real_target_repair",
+            "declarations": [
+              "ErdosProblems.Erdos257.mem_iff_greedyBinaryDefect_sqrt_windows",
+              "ErdosProblems.Erdos257.mem_iff_greedyBinaryDefect_cofinal_repairs",
+              "ErdosProblems.Erdos257.mem_iff_greedyBinaryDefect_cofinal_load_bound",
+              "ErdosProblems.Erdos257.mem_iff_greedyBinaryDefect_cofinal_linear_bound",
+              "ErdosProblems.Erdos257.not_mem_of_greedyBinaryDefect_strict_sqrt_window"
+            ]
           },
           {
             "id": "twenty_one_two_anchor_divergence_density",
@@ -14277,7 +14374,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "Erd\\H{o}s \\#249",
-        "line": 4484
+        "line": 4425
       }
     },
     {
@@ -14301,7 +14398,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "unbounded certificate supply",
-        "line": 4495
+        "line": 4436
       }
     },
     {
@@ -14313,7 +14410,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
-        "line": 4519
+        "line": 4460
       }
     },
     {
@@ -14325,7 +14422,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1789
+        "line": 1785
       }
     },
     {
@@ -14337,7 +14434,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "universal Erd\\H{o}s \\#257",
-        "line": 4510
+        "line": 4451
       }
     },
     {
@@ -14457,7 +14554,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "weakest native recurrence criterion",
-        "line": 1848
+        "line": 1844
       }
     },
     {
@@ -14469,7 +14566,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "actual-orbit invariant",
-        "line": 1870
+        "line": 1866
       }
     },
     {
@@ -14481,7 +14578,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1892
+        "line": 1888
       }
     }
   ],
@@ -16212,6 +16309,30 @@
           "name": "tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
           "module": "Erdos249257/GcdMomentCalculus.lean",
           "line": 235
+        }
+      ],
+      "comparator_transports": [
+        {
+          "package_id": "ExternalVerification249SquaredLambert",
+          "interface_name": "Erdos249257.ExternalVerification249SquaredLambert.tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series",
+          "source_declarations": [
+            {
+              "name": "tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series",
+              "module": "Erdos249257/GcdMomentCalculus.lean",
+              "line": 216
+            }
+          ]
+        },
+        {
+          "package_id": "ExternalVerification249SquaredLambert",
+          "interface_name": "Erdos249257.ExternalVerification249SquaredLambert.tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
+          "source_declarations": [
+            {
+              "name": "tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
+              "module": "Erdos249257/GcdMomentCalculus.lean",
+              "line": 235
+            }
+          ]
         }
       ]
     },
@@ -18428,6 +18549,51 @@
           "name": "finite_realisedSpan_of_factorisation",
           "module": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
           "line": 335
+        }
+      ]
+    },
+    {
+      "id": "bounded_perturbation_irrationality_obstruction",
+      "label": "Arbitrary-prefix bounded-perturbation obstruction",
+      "status": "unconditional progress",
+      "statement": "For every convergent natural-digit dyadic series, every positive integer M and every finite prefix cutoff K, a perturbation M*delta_n with delta_n in {0,1} and zero below K makes the sum rational. Consequently a property satisfied by every such perturbation cannot force irrationality.",
+      "remaining_open_proposition_ids": [],
+      "paper_label": "res:boundedperturbation",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "exists_rational_bounded_perturbation",
+          "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+          "line": 163
+        },
+        {
+          "name": "not_forall_irrational_of_bounded_perturbation_invariant",
+          "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+          "line": 179
+        }
+      ],
+      "comparator_transports": [
+        {
+          "package_id": "ExternalVerification251BoundedPerturbation",
+          "interface_name": "Erdos249257.ExternalVerification251BoundedPerturbation.exists_rational_bounded_perturbation",
+          "source_declarations": [
+            {
+              "name": "exists_rational_bounded_perturbation",
+              "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+              "line": 163
+            }
+          ]
+        },
+        {
+          "package_id": "ExternalVerification251BoundedPerturbation",
+          "interface_name": "Erdos249257.ExternalVerification251BoundedPerturbation.not_forall_irrational_of_bounded_perturbation_invariant",
+          "source_declarations": [
+            {
+              "name": "not_forall_irrational_of_bounded_perturbation_invariant",
+              "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+              "line": 179
+            }
+          ]
         }
       ]
     }

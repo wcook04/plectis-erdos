@@ -286,7 +286,7 @@ def observed_result_atom_census(
 
     for index, row in enumerate(rows, 1):
         state = row.get("interpretation_state")
-        if state == "delegated_agent_editorial_best_attempt":
+        if state in {"delegated_agent_editorial_best_attempt", "agent_editorial_best_attempt"}:
             expected_keys = DELEGATED_KEYS
         elif state == "existing_source_linked_reviewer_card":
             expected_keys = CARD_KEYS
@@ -327,11 +327,16 @@ def observed_result_atom_census(
         if hits:
             raise ValueError(f"row {index}: private-only path at {hits[0]}")
 
-        if state == "delegated_agent_editorial_best_attempt":
+        if state in {"delegated_agent_editorial_best_attempt", "agent_editorial_best_attempt"}:
             interpretation = row["interpretation"]
             if not isinstance(interpretation, dict) or set(interpretation) != INTERPRETATION_KEYS:
                 raise ValueError(f"row {index}: malformed delegated interpretation")
-            if interpretation["actor"] != "delegated_agent_editorial":
+            expected_actor = (
+                "delegated_agent_editorial"
+                if state == "delegated_agent_editorial_best_attempt"
+                else "agent_editorial"
+            )
+            if interpretation["actor"] != expected_actor:
                 raise ValueError(f"row {index}: incorrect delegated actor")
             if interpretation["review_status"] != "llm_best_attempt_open_to_specialist_correction":
                 raise ValueError(f"row {index}: incorrect delegated review status")

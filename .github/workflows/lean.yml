@@ -456,6 +456,10 @@ jobs:
           run_comparator verification/comparator-1049-numerical-height-negative-mismatch.json \
             > artifacts-1049-negative.log 2>&1
           local_1049_negative_exit=$?
+          run_comparator verification/comparator-257-strong-negative-mismatch.json \
+            > artifacts-257-strong-negative.log 2>&1
+          strong_257_negative_exit=$?
+          echo "strong_257_negative_exit=$strong_257_negative_exit" >> "$GITHUB_OUTPUT"
           echo "positive_exit=$positive_exit" >> "$GITHUB_OUTPUT"
           echo "negative_exit=$negative_exit" >> "$GITHUB_OUTPUT"
           echo "portfolio_positive_exit=$portfolio_positive_exit" >> "$GITHUB_OUTPUT"
@@ -493,6 +497,8 @@ jobs:
             --local-1049-negative-exit "$local_1049_negative_exit" \
             --local-1049-positive-log artifacts-1049-positive.log \
             --local-1049-negative-log artifacts-1049-negative.log \
+            --strong-257-negative-exit "${{ steps.comparator.outputs.strong_257_negative_exit || '-999' }}" \
+            --strong-257-negative-log artifacts-257-strong-negative.log \
             --comparator-rev '${{ steps.tools.outputs.comparator_rev }}' \
             --lean4export-rev '${{ steps.tools.outputs.lean4export_rev }}' \
             --landrun-rev '${{ steps.tools.outputs.landrun_rev }}' \
@@ -504,6 +510,12 @@ jobs:
       - name: Enforce aggregate Comparator replay portfolio
         if: steps.external-inputs.outputs.changed == 'true'
         run: test '${{ steps.comparator.outputs.portfolio_positive_exit }}' = 0
+      - name: "Enforce the strongest #257 statement mismatch fixture"
+        if: steps.external-inputs.outputs.changed == 'true'
+        run: |
+          test -n '${{ steps.comparator.outputs.strong_257_negative_exit }}'
+          test '${{ steps.comparator.outputs.strong_257_negative_exit }}' != 0
+          grep -Fq "Challenge and solution theorem statement do not match: 'Erdos249257.ExternalVerification.Strong257.irrational_erdosSupportSeries_of_summable_reciprocal'" artifacts-257-strong-negative.log
       - name: "Enforce the #1049 programme-local packet"
         if: steps.external-inputs.outputs.changed == 'true'
         run: |
@@ -566,6 +578,7 @@ jobs:
             artifacts-portfolio-positive.log
             artifacts-1049-positive.log
             artifacts-1049-negative.log
+            artifacts-257-strong-negative.log
           if-no-files-found: error
 
   first-contact:

@@ -30,13 +30,14 @@ class ResultAtomCatalogTests(unittest.TestCase):
 
     def test_exact_public_census(self) -> None:
         summary = validate_result_atoms(self.rows)
-        self.assertEqual(summary["total"], 682)
-        self.assertEqual(summary["family_count"], 71)
+        self.assertEqual(summary["total"], 704)
+        self.assertEqual(summary["family_count"], 93)
         self.assertEqual(sum(summary["family_counts"].values()), summary["total"])
         self.assertEqual(len(summary["family_counts"]), summary["family_count"])
         self.assertEqual(
             summary["state_counts"],
             {
+                "agent_editorial_best_attempt": 22,
                 "delegated_agent_editorial_best_attempt": 276,
                 "existing_source_linked_reviewer_card": 406,
             },
@@ -45,13 +46,13 @@ class ResultAtomCatalogTests(unittest.TestCase):
             summary["band_counts"],
             {
                 "front_door": 10,
-                "frontier": 17,
-                "major_result": 13,
-                "mechanism": 19,
+                "frontier": 19,
+                "major_result": 29,
+                "mechanism": 23,
                 "technical_support": 12,
             },
         )
-        self.assertEqual(summary["promotion_count"], 7)
+        self.assertEqual(summary["promotion_count"], 23)
         self.assertEqual(summary["populated_family_count"], summary["family_count"])
         self.assertEqual(summary["zero_family_ids"], [])
         self.assertEqual(

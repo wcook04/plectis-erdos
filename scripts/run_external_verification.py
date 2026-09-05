@@ -26,6 +26,7 @@ EXPECTED_1049_MISMATCH = (
     "Challenge and solution theorem statement do not match: "
     "'Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight'"
 )
+EXPECTED_257_MISMATCH = "Challenge and solution theorem statement do not match: 'Erdos249257.ExternalVerification.Strong257.irrational_erdosSupportSeries_of_summable_reciprocal'"
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 
@@ -271,6 +272,8 @@ def main() -> int:
     parser.add_argument("--local-1049-negative-exit", type=int, default=-999)
     parser.add_argument("--local-1049-positive-log", type=Path)
     parser.add_argument("--local-1049-negative-log", type=Path)
+    parser.add_argument("--strong-257-negative-exit", type=int, default=-999)
+    parser.add_argument("--strong-257-negative-log", type=Path)
     parser.add_argument("--comparator-rev")
     parser.add_argument("--lean4export-rev")
     parser.add_argument("--landrun-rev")
@@ -339,7 +342,12 @@ def main() -> int:
         local_1049_negative_text,
         EXPECTED_1049_MISMATCH,
     )
+    strong_257_rejected = is_expected_negative_rejection(
+        args.strong_257_negative_exit, optional_runtime_text(args.strong_257_negative_log),
+        EXPECTED_257_MISMATCH,
+    )
     log_digests = {
+        "strong_257_negative": digest(args.strong_257_negative_log),
         "positive": digest(args.positive_log),
         "negative": digest(args.negative_log),
         "portfolio_positive": digest(args.portfolio_positive_log),
@@ -364,6 +372,7 @@ def main() -> int:
         and args.portfolio_positive_exit == 0
         and args.local_1049_positive_exit == 0
         and local_1049_negative_semantic_rejection
+        and strong_257_rejected
         and pins_match
         and all(binary_digests.values())
         and all(log_digests.values())
@@ -451,6 +460,14 @@ def main() -> int:
             "negative_expected_diagnostic": EXPECTED_MISMATCH,
         },
         "programme_local_checks": {
+            "erdos_257_strong_negative": {
+                "config": "verification/comparator-257-strong-negative-mismatch.json",
+                "config_digest": digest(ROOT / "verification/comparator-257-strong-negative-mismatch.json"),
+                "negative_mismatch_comparator_exit": args.strong_257_negative_exit,
+                "negative_log_digest": log_digests["strong_257_negative"],
+                "negative_fixture_rejected": strong_257_rejected,
+                "negative_expected_diagnostic": EXPECTED_257_MISMATCH,
+            },
             "erdos_1049_numerical_height": {
                 "headline_interface_count_changed": False,
                 "config": "verification/comparator-1049-numerical-height.json",

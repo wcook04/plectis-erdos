@@ -31,6 +31,9 @@ CONTRACT_PATH = Path("verification/external-verification-release-contract.json")
 SCHEMA = "erdos-external-verification-release-manifest/2"
 RUNTIME_SCHEMA = "erdos-external-verification-runtime-receipt/2"
 RUNTIME_LOG_BINDINGS = {
+    "artifacts-257-strong-negative.log": (
+        "programme_local_checks", "erdos_257_strong_negative", "negative_log_digest"
+    ),
     "artifacts-positive.log": ("checks", "positive_log_digest"),
     "artifacts-negative.log": ("checks", "negative_log_digest"),
     "artifacts-portfolio-positive.log": (
@@ -482,6 +485,22 @@ def validate_runtime_receipt(
             r"sha256:[0-9a-f]{64}", local[key]
         ) is None:
             raise ReleaseIdentityError(f"#1049 local Comparator check lacks {key}")
+    strong_contract = release_contract.get("programme_local_checks", {}).get("erdos_257_strong_negative")
+    strong = receipt.get("programme_local_checks", {}).get("erdos_257_strong_negative")
+    if not isinstance(strong_contract, dict) or not isinstance(strong, dict):
+        raise ReleaseIdentityError("runtime receipt lacks Strong257 negative evidence")
+    strong_path = strong_contract.get("config")
+    if not isinstance(strong_path, str) or strong.get("config") != strong_path:
+        raise ReleaseIdentityError("Strong257 negative config differs from contract")
+    if strong.get("config_digest") != sha256_file(root / strong_path, root=root):
+        raise ReleaseIdentityError("Strong257 negative config digest is stale")
+    strong_exit = strong.get("negative_mismatch_comparator_exit")
+    if type(strong_exit) is not int or strong_exit == 0 or strong.get("negative_fixture_rejected") is not True:
+        raise ReleaseIdentityError("Strong257 negative fixture was not rejected")
+    if strong.get("negative_expected_diagnostic") != strong_contract.get("expected_negative_diagnostic"):
+        raise ReleaseIdentityError("Strong257 negative diagnostic differs from contract")
+    if not isinstance(strong.get("negative_log_digest"), str) or re.fullmatch(r"sha256:[0-9a-f]{64}", strong["negative_log_digest"]) is None:
+        raise ReleaseIdentityError("Strong257 negative log digest is missing")
     if receipt.get("whole_programme_disclosure", {}).get("all_statuses_open") is not True:
         raise ReleaseIdentityError("runtime receipt lost the all-eight-open disclosure")
 
@@ -508,7 +527,7 @@ def runtime_log_rows(
     runtime_log_dir: Path,
     release_contract: dict[str, Any],
 ) -> list[dict[str, str]]:
-    """Hash the five uploaded replay logs and match them to the receipt."""
+    """Hash the uploaded replay logs and match them to the receipt."""
     expected_files = list(RUNTIME_LOG_BINDINGS)
     if release_contract.get("release_assets", {}).get("runtime_log_files") != expected_files:
         raise ReleaseIdentityError("release contract runtime-log roster is stale")

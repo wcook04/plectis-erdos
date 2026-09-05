@@ -4535,13 +4535,13 @@ One theorem, of any strength, giving a nontrivial digit statistic for $`S`$ or f
 
 # Complete result-family map
 
-This section places every registered family for this problem in the shared 71-family reader order. The five display bands control exposition only; the separate promotion state currently covers 7 families and is reported but does not hide or strengthen any family. Mathematical statements and evidence modes come from the public claim registry. Across all eight problems the public result-atom catalog contains 682 exact packet coordinates; this problem contributes 58. Catalog rows expose bounded statement excerpts plus full-source digests, not a claim that every complete packet statement is reproduced here.
+This section places every registered family for this problem in the shared 93-family reader order. The five display bands control exposition only; the separate promotion state currently covers 23 families and is reported but does not hide or strengthen any family. Mathematical statements and evidence modes come from the public claim registry. Across all eight problems the public result-atom catalog contains 704 exact packet coordinates; this problem contributes 61. Catalog rows expose bounded statement excerpts plus full-source digests, not a claim that every complete packet statement is reproduced here.
 
 <a id="strict-prime-tail-orbit-gap"></a>
 
 ## Strict prime tail orbit gap
 
-**Reader position.** 4 of 71; display band: front door. Formal editorial disposition: promote. These are separate classifications.
+**Reader position.** 3 of 93; display band: front door. Formal editorial disposition: promote. These are separate classifications.
 
 **Reader entry.** A cofinal strict gap along natural primes would force the binary totient series to be irrational.
 
@@ -4551,7 +4551,7 @@ A single two-branch source mechanism gives an 89/100 first-harmonic block saving
 
 **Exact boundary.** The 11/100 phase-density, cofinal natural-prime strict-gap, associated uniform-margin, and cofinal nonpositive-prime-shift producers remain unproved for the actual totient orbit. The scaled-angle and phase/integrality equivalences, finite 1 $`\le`$ h $`\le`$ 16 and k $`\le`$ 14 root exclusion, and non-dyadicity-to-cofinal-nonpositive-phase theorem provide classification or finite evidence only; they do not prove a density/equidistribution theorem, prime alignment, or actual dyadic-root entry. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős \#249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review.
 
-**Result-atom population.** 23 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 23 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -4601,7 +4601,7 @@ A single two-branch source mechanism gives an 89/100 first-harmonic block saving
 
 ## Totient certificate equivalences
 
-**Reader position.** 10 of 71; display band: front door. Formal editorial disposition: hold. These are separate classifications.
+**Reader position.** 9 of 93; display band: front door. Formal editorial disposition: hold. These are separate classifications.
 
 **Reader entry.** Several exact certificates express the same \#249 obstruction in different arithmetic coordinates.
 
@@ -4611,7 +4611,7 @@ Pointwise, cofinal, lcm-diagonal, and separated-window certificate supplies are 
 
 **Exact boundary.** Equivalent producer statements are as hard as the unresolved target.
 
-**Result-atom population.** 2 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 2 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
 
@@ -4627,7 +4627,7 @@ Pointwise, cofinal, lcm-diagonal, and separated-window certificate supplies are 
 
 ## Totient carry anti compression
 
-**Reader position.** 20 of 71; display band: major result. Formal editorial disposition: hold. These are separate classifications.
+**Reader position.** 19 of 93; display band: major result. Formal editorial disposition: hold. These are separate classifications.
 
 **Reader entry.** A rational binary totient series would have to reconcile periodic carry quotients with exponentially growing section rank.
 
@@ -4637,7 +4637,7 @@ If the binary totient coefficient series were rational, one positive-multiplier 
 
 **Exact boundary.** This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős \#249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-$`\mathbb{Q}`$-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and \#249 remains open.
 
-**Result-atom population.** 8 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 8 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -4657,7 +4657,7 @@ If the binary totient coefficient series were rational, one positive-multiplier 
 
 ## Fixed precision transport no go
 
-**Reader position.** 21 of 71; display band: major result. Formal editorial disposition: hold. These are separate classifications.
+**Reader position.** 22 of 93; display band: major result. Formal editorial disposition: hold. These are separate classifications.
 
 **Reader entry.** No fixed amount of local carry information can exclude every finite centered endpoint.
 
@@ -4667,7 +4667,7 @@ At every fixed positive precision, every finite word of odd valuation-unit symbo
 
 **Exact boundary.** This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős \#249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families.
 
-**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -4683,7 +4683,7 @@ At every fixed positive precision, every finite word of odd valuation-unit symbo
 
 ## Lcm factor ideal shift algebra no go
 
-**Reader position.** 22 of 71; display band: major result. Formal editorial disposition: hold. These are separate classifications.
+**Reader position.** 23 of 93; display band: major result. Formal editorial disposition: hold. These are separate classifications.
 
 **Reader entry.** Finite shift-polynomial algebra cannot kill every bounded LCM-compatible dyadic coboundary.
 
@@ -4693,7 +4693,7 @@ For every t at least 3, a nonzero synthetic dyadic coboundary survives every fin
 
 **Exact boundary.** The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős \#249 open.
 
-**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -4703,7 +4703,7 @@ For every t at least 3, a nonzero synthetic dyadic coboundary survives every fin
 
 ## Totient kernel rank
 
-**Reader position.** 23 of 71; display band: major result. Formal editorial disposition: merge. These are separate classifications.
+**Reader position.** 25 of 93; display band: major result. Formal editorial disposition: merge. These are separate classifications.
 
 **Reader entry.** The dyadic totient kernel has exact finite-level rank 2^e+1.
 
@@ -4713,17 +4713,69 @@ An independent constructive proof of exact finite-level dyadic rank 2^e+1, toget
 
 **Exact boundary.** Only the finite-level rank is presented as an additional result; full-kernel infinite-dimensionality is prior-art context, and no rationality-to-finite-rank bridge is proved.
 
-**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** exact selected interface; 2 executable interface(s), 2 repository-registered selected result interface(s).
 
 **Publication placement.** This family is also admitted to the short note.
 
+<a id="totient-twoadic-pulse-blocks"></a>
+
+## Totient twoadic pulse blocks
+
+**Reader position.** 36 of 93; display band: major result. Formal editorial disposition: promote. These are separate classifications.
+
+**Reader entry.** For every fixed pair 2 \<= K \< H and every B, an actual prime p \> max(B,H+K) has deltaTotient(H,p) congruent to 2^(K-1) modulo 2^K, with the preceding K-1 deltaTotient letters zero modulo 2^K. If the H-shifted actual totient tail differences are eventually integral, such prime indices cofinally carry the same half-turn residue. Mechanism: Choose one fresh prime for p+H and two fresh primes for each earlier position, all 1 modulo 2^K; finite CRT and Dirichlet produce the terminal prime. Exact K-step carry transport kills the homogeneous integer state modulo 2^K while retaining the terminal order-two residue.
+
+For every fixed pair 2 \<= K \< H and every B, an actual prime p \> max(B,H+K) has deltaTotient(H,p) congruent to 2^(K-1) modulo 2^K, with the preceding K-1 deltaTotient letters zero modulo 2^K. If the H-shifted actual totient tail differences are eventually integral, such prime indices cofinally carry the same half-turn residue. Mechanism: Choose one fresh prime for p+H and two fresh primes for each earlier position, all 1 modulo 2^K; finite CRT and Dirichlet produce the terminal prime. Exact K-step carry transport kills the homogeneous integer state modulo 2^K while retaining the terminal order-two residue.
+
+**Authority and reach.** Source Lean declarations at the paper pin; no configured ExternalVerification statement firewall or Comparator evidence; formalised structural result; novelty unassessed.
+
+**Exact boundary.** For a fixed H the depth remains K \< H; this is not arbitrary depth at fixed shift. The half-turn class contains integers. Neither a quantitative bound excluding that class nor actual tail nonintegrality follows. No configured ExternalVerification statement firewall or Comparator execution represents this family.
+
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+- `Erdos249257.exists_prime_totient_twoAdic_pulse_divisors`
+
+- `Erdos249257.exists_prime_deltaTotient_twoAdic_pulseBlock`
+
+- `Erdos249257.integral_tailDiff_modEq_half_of_twoAdic_pulse`
+
+- `Erdos249257.eventual_integral_tailDiff_has_cofinal_twoAdic_half_pulse`
+
+<a id="totient-parity-separated-carry-countermodel"></a>
+
+## Totient parity separated carry countermodel
+
+**Reader position.** 37 of 93; display band: major result. Formal editorial disposition: promote. These are separate classifications.
+
+**Reader entry.** A single natural sequence c has c(n) \<= 6 and c(n) \<= n, agrees with phi(n) modulo 2, is not eventually periodic, and has dyadic sum exactly 3/2. For every N,G,K it has a block of K later pairs c(2^(k+i+3))=6, c(2^(k+i+3)+1)=0 whose successive marker indices are more than G apart. Mechanism: Add a sparse dyadic coboundary to a rational base sequence. The paired perturbations telescope in the weighted sum, while powers-of-two marker positions create aperiodicity and arbitrarily long separated blocks without changing parity.
+
+A single natural sequence c has c(n) \<= 6 and c(n) \<= n, agrees with phi(n) modulo 2, is not eventually periodic, and has dyadic sum exactly 3/2. For every N,G,K it has a block of K later pairs c(2^(k+i+3))=6, c(2^(k+i+3)+1)=0 whose successive marker indices are more than G apart. Mechanism: Add a sparse dyadic coboundary to a rational base sequence. The paired perturbations telescope in the weighted sum, while powers-of-two marker positions create aperiodicity and arbitrarily long separated blocks without changing parity.
+
+**Authority and reach.** Source Lean declarations at the paper pin; no configured ExternalVerification statement firewall or Comparator evidence; formalised synthetic countermodel; novelty unassessed.
+
+**Exact boundary.** This rules out an implication from the listed coarse properties; it does not refute irrationality of the actual totient series. Full totient multiplicativity, higher-adic information, and actual-LCM correlations are not supplied by the witness. No configured ExternalVerification statement firewall or Comparator execution represents this family.
+
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+- `Erdos249257.TotientParityCoboundaryCountermodel.tsum_parityCoboundaryWeight_eq_three_halves`
+
+- `Erdos249257.TotientParityCoboundaryCountermodel.exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel`
+
 <a id="actual-foreign-residue-projection-1"></a>
 
 ## Actual foreign residue projection
 
-**Reader position.** 32 of 71; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
+**Reader position.** 50 of 93; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
 
 **Reader entry.** The Möbius residue diagonal splits into a controlled foreign part and an exact divisor part.
 
@@ -4733,7 +4785,7 @@ The finite Möbius residue diagonal splits exactly into projected foreign and di
 
 **Exact boundary.** This is only a finite partition/geometric-majorant reduction feeding a generic complement-noncancellation consumer. The ControlledForeignProjection analytic bridge and any unbounded supply of separated projections remain unproved; no Erdős \#249 endpoint, novelty, significance, priority, or external-review claim follows.
 
-**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -4749,7 +4801,7 @@ The finite Möbius residue diagonal splits exactly into projected foreign and di
 
 ## Totient kernel basis
 
-**Reader position.** 34 of 71; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
+**Reader position.** 52 of 93; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
 
 **Reader entry.** Every dyadic totient-kernel relation has an explicit odd-core normal form.
 
@@ -4759,7 +4811,7 @@ An explicit odd-core basis and relation normal form for the full dyadic totient 
 
 **Exact boundary.** The basis theorem does not connect rationality of the series to finite kernel rank.
 
-**Result-atom population.** 2 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 2 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -4769,7 +4821,7 @@ An explicit odd-core basis and relation normal form for the full dyadic totient 
 
 ## Totient kernel all base index
 
-**Reader position.** 36 of 71; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
+**Reader position.** 54 of 93; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
 
 **Reader entry.** The totient kernel has a canonical all-base spanning system, with exact rank conditional on affine-section independence.
 
@@ -4779,7 +4831,7 @@ For every base k at least 2, Lean checks the arithmetic reduction, exact nonmult
 
 **Exact boundary.** Lean does not prove all-base affine-section independence or formalise Martin’s theorem. The unconditional basis and rank conclusions in the paper use that external input.
 
-**Result-atom population.** 2 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 2 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -4789,7 +4841,7 @@ For every base k at least 2, Lean checks the arithmetic reduction, exact nonmult
 
 ## Stern brocot run fibonacci stability
 
-**Reader position.** 38 of 71; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
+**Reader position.** 56 of 93; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
 
 **Reader entry.** Stern–Brocot run defects force a sharp Fibonacci-sized height gain.
 
@@ -4799,7 +4851,7 @@ For a positive Stern-Brocot run word, the global height gain from run defects is
 
 **Exact boundary.** This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no \#249 endpoint follows.
 
-**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -4809,7 +4861,7 @@ For a positive Stern-Brocot run word, the global height gain from run defects is
 
 ## Stern brocot cylinder law
 
-**Reader position.** 40 of 71; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
+**Reader position.** 58 of 93; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
 
 **Reader entry.** Every positive Stern–Brocot cylinder splits exactly into its stop mass and two child cylinders.
 
@@ -4819,7 +4871,7 @@ At every positive Stern-Brocot node, the closed cylinder mass splits into stop m
 
 **Exact boundary.** This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the \#249 endpoint remains open.
 
-**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -4829,7 +4881,7 @@ At every positive Stern-Brocot node, the closed cylinder mass splits into stop m
 
 ## Eventually periodic lambert
 
-**Reader position.** 41 of 71; display band: mechanism. Formal editorial disposition: hold. These are separate classifications.
+**Reader position.** 60 of 93; display band: mechanism. Formal editorial disposition: hold. These are separate classifications.
 
 **Reader entry.** A finite rational first-power Lambert fold matching the divisor sums can only be the ordinary totient truncation.
 
@@ -4839,7 +4891,7 @@ Eventually periodic nonnegative rational weights give an irrational Lambert seri
 
 **Exact boundary.** The totient-derived weights are not eventually periodic.
 
-**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
 
@@ -4851,7 +4903,7 @@ Eventually periodic nonnegative rational weights give an irrational Lambert seri
 
 ## Totient lambert coefficients
 
-**Reader position.** 42 of 71; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
+**Reader position.** 61 of 93; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
 
 **Reader entry.** The Lambert-coefficient coordinate repackages the same arithmetic structure as the totient kernel.
 
@@ -4861,7 +4913,7 @@ The totient series is rewritten as a Lambert series with explicit nonnegative, u
 
 **Exact boundary.** The coefficient identities do not prove irrationality.
 
-**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** represented by selected interface; 0 executable interface(s), 0 repository-registered selected result interface(s).
 
@@ -4871,11 +4923,39 @@ The totient series is rewritten as a Lambert series with explicit nonnegative, u
 
 - `Erdos249257.tsum_primWeight_div_two_pow_sub_one_eq_totient_series`
 
+<a id="totient-fixed-rank-lcm-curvature"></a>
+
+## Totient fixed rank lcm curvature
+
+**Reader position.** 62 of 93; display band: mechanism. Formal editorial disposition: retain. These are separate classifications.
+
+**Reader entry.** For a \>= 4, j \> 0 and j^2 \<= 2^a, put H=lcm(1,...,2^a). The exact curvature phi(3H+j)-2phi(2H+j)+phi(H+j) equals 2phi(j)z for an integer z with \|z\| \< (8 floor(H/j)+4)/a. A separate rough-Euler estimate gives phi(n) \> n(1-2/a) for positive n \< 2^(2\*2^a) whose prime divisors exceed 2^a. Mechanism: The clean LCM window factors phi(kH+j) through phi(j) and rough cofactors. Counting their large prime divisors bounds Euler-density loss without the prime number theorem. The affine terms cancel in the second difference, while parity supplies the additional factor two.
+
+For a \>= 4, j \> 0 and j^2 \<= 2^a, put H=lcm(1,...,2^a). The exact curvature phi(3H+j)-2phi(2H+j)+phi(H+j) equals 2phi(j)z for an integer z with \|z\| \< (8 floor(H/j)+4)/a. A separate rough-Euler estimate gives phi(n) \> n(1-2/a) for positive n \< 2^(2\*2^a) whose prime divisors exceed 2^a. Mechanism: The clean LCM window factors phi(kH+j) through phi(j) and rough cofactors. Counting their large prime divisors bounds Euler-density loss without the prime number theorem. The affine terms cancel in the second difference, while parity supplies the additional factor two.
+
+**Authority and reach.** Source Lean declarations at the paper pin; no configured ExternalVerification statement firewall or Comparator evidence; formalised structural result; novelty unassessed.
+
+**Exact boundary.** The primitive integer z may be zero; its nonzero alternative is not produced. The estimate concerns the specified three ranks and clean offsets; it is not an unbounded nonlinear cancellation theorem or an irrationality result. No configured ExternalVerification statement firewall or Comparator execution represents this family.
+
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+- `Erdos249257.TotientFixedRankLcmAsymptotic.one_sub_two_div_lt_totient_density_of_rough`
+
+- `Erdos249257.TotientFixedRankLcmAsymptotic.two_mul_totient_dvd_fixedRankSecondDifference`
+
+- `Erdos249257.TotientFixedRankLcmAsymptotic.fixed_rank_secondDifference_abs_lt`
+
+- `Erdos249257.TotientFixedRankLcmAsymptotic.exists_primitive_fixedRankCurvature_with_bound`
+
 <a id="actual-lcm-orbit-separation"></a>
 
 ## Actual lcm orbit separation
 
-**Reader position.** 45 of 71; display band: frontier. Formal editorial disposition: hold. These are separate classifications.
+**Reader position.** 65 of 93; display band: frontier. Formal editorial disposition: hold. These are separate classifications.
 
 **Reader entry.** A cofinal 1/32 gap in the actual LCM orbit would close the existing irrationality consumer.
 
@@ -4885,9 +4965,9 @@ A cofinal quantitative 1/32 separation supply at canonically guarded odd ranks t
 
 **Exact boundary.** The quantitative 1/32 separation supply is sufficient but stronger than mere non-integrality, is not an equivalence, and remains open. The sign positivity alone does not exclude the negative true survivor; the top-edge forcing does not exclude that residue or supply cofinal non-integrality. These source declarations are supporting/contrary-boundary evidence, not a second actual-LCM family, and the punctured/top-edge boundary and \#249 endpoint remain open.
 
-**Result-atom population.** 4 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 4 of 704 public coordinates. The public atom catalog groups them under this family.
 
-**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+**Comparator assurance.** exact selected interface; 4 executable interface(s), 1 repository-registered selected result interface(s).
 
 **Publication placement.** This family is also admitted to the short note.
 
@@ -4907,7 +4987,7 @@ A cofinal quantitative 1/32 separation supply at canonically guarded odd ranks t
 
 ## First harmonic pivot decomposition
 
-**Reader position.** 51 of 71; display band: frontier. Formal editorial disposition: hold. These are separate classifications.
+**Reader position.** 71 of 93; display band: frontier. Formal editorial disposition: hold. These are separate classifications.
 
 **Reader entry.** The first harmonic can force a 9/10 gap once four explicit pivot budgets hold cofinally.
 
@@ -4917,7 +4997,7 @@ The supplier fibre is an exact prime-image/fibre bijection, while a checked fini
 
 **Exact boundary.** The fibre/image lemmas and the explicit counterexample establish neither global supplier-prime isolation nor a prime-distribution estimate. The 9X/10 gap is conditional on PivotBudgetAt and the stated dyadic-room inequality; irrationality is conditional on DTWPivotResidualDecorrelation, whose exact cofinal producer remains open. No decorrelation estimate supplying those budgets is proved, and the \#249 endpoint remains open.
 
-**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -4945,7 +5025,7 @@ The supplier fibre is an exact prime-image/fibre bijection, while a checked fini
 
 ## Totient visible coprime lattice mass
 
-**Reader position.** 68 of 71; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
+**Reader position.** 90 of 93; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
 
 **Reader entry.** The visible coprime Mersenne weights form an exact probability distribution.
 
@@ -4955,7 +5035,7 @@ The positive coprime Mersenne weights on the visible lattice sum to one, exposin
 
 **Exact boundary.** This rational normalization identity does not prove irrationality of the binary totient series or settle \#249.
 
-**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -4965,7 +5045,7 @@ The positive coprime Mersenne weights on the visible lattice sum to one, exposin
 
 ## Squared lambert gcd moments
 
-**Reader position.** 69 of 71; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
+**Reader position.** 91 of 93; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
 
 **Reader entry.** The squared-Mersenne Lambert series at one half is exactly a dyadic Pillai gcd moment.
 
@@ -4975,7 +5055,7 @@ At base one half, the totient-weighted squared-Mersenne Lambert series is the dy
 
 **Exact boundary.** This exact transfer identity does not prove irrationality of the binary totient series; the cited constant-weight q-Padé result remains external and no \#249 endpoint follows.
 
-**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -4985,7 +5065,7 @@ At base one half, the totient-weighted squared-Mersenne Lambert series is the dy
 
 ## Totient finite denominator exclusion
 
-**Reader position.** 70 of 71; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
+**Reader position.** 92 of 93; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
 
 **Reader entry.** Exact finite checks exclude a substantial but bounded range of rational denominators.
 
@@ -4995,7 +5075,7 @@ A Farey denominator exclusion through 7.96e34, sharp for its selected window, an
 
 **Exact boundary.** The selected finite window and certificate ceiling do not imply an unbounded producer.
 
-**Result-atom population.** 5 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 5 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
 
@@ -5005,7 +5085,7 @@ A Farey denominator exclusion through 7.96e34, sharp for its selected window, an
 
 ## Totient carry rank
 
-**Reader position.** 71 of 71; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
+**Reader position.** 93 of 93; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
 
 **Reader entry.** The legacy carry-rank coordinate is retained for traceability but has no distinct endpoint-bearing result.
 
@@ -5015,7 +5095,7 @@ Rationality forces a tempered integral tail orbit with unbounded finite-level ca
 
 **Exact boundary.** This is a necessary consequence, not a contradiction.
 
-**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+**Result-atom population.** 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 **Comparator assurance.** not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
 

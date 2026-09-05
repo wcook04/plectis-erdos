@@ -33,7 +33,7 @@ DECL_RE = re.compile(
     r"^[ \t]*(?:@\[[^\]\n]*\][ \t]*)*"
     r"(?:(?:private|protected|noncomputable|nonrec|local|scoped|unsafe|irreducible)"
     r"[ \t]+)*(?:theorem|lemma|def|abbrev|structure|class|inductive|coinductive|"
-    r"instance|axiom|constant|opaque)[ \t]+([A-Za-z0-9_'.]+)",
+    r"instance|axiom|constant|opaque)[ \t\r\n]+([A-Za-z0-9_'.]+)",
     re.MULTILINE,
 )
 

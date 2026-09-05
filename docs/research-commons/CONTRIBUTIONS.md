@@ -3,36 +3,12 @@
 
 # Accepted research contributions
 
-This file is generated from strict `accepted_receipt` JSON artifacts. It is an
-artifact-attribution view, not mathematical proof, claim authority, novelty review,
-release inclusion, a contributor comparison, or evidence about model quality.
+No accepted contribution receipts have been recorded yet.
 
-Negative and inconclusive artifacts appear on exactly the same chronological rail
-when repository acceptance records that they saved reproducible work.
+Will Cook maintains the project and is responsible for the initial release.
+As contributions are accepted, this page will name their contributors and
+link to the work and its review record. Prior mathematical work remains
+credited in the papers and source files.
 
-For each accepted record, follow its `public_frontier` route to inspect either the
-material result family or the architecture contribution contract. This
-canonical navigation does not change the credited artifact or its claim ceiling.
-
-For receipt-bound identity, impact, evidence, review, correction, promotion, and
-tagged-release facets, see the [accepted contribution recognition view](CONTRIBUTION_RECOGNITION.md)
-and its [machine-readable projection](contribution-recognition.json). Those views
-use the same accepted receipts and do not turn activity into scientific credit.
-Detached route-memory sidecars may bind intake, but they remain separate route authority
-and are not copied into or counted by this accepted-receipt attribution view.
-
-## Chronological accepted artifacts
-
-## Filter by contribution track
-
-## Filter by Erdős problem
-
-## Filter by architecture area
-
-## Filter by result class
-
-## Filter by requested disposition
-
-The source receipts remain the attribution evidence. Git history and GitHub issues
-or pull requests remain delivery history; neither this view nor a receipt changes
-`docs/claims.json` or any release state.
+See [how to contribute](../../CONTRIBUTING.md) and the
+[credit policy](CREDIT_POLICY.md).

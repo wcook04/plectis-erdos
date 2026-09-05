@@ -71,7 +71,7 @@ FIRST_MINUTE_CONTRACT = {
         (2, 4): (
             "tail differences and finite certificates",
             "membership of 1/2",
-            "no proof covers every infinite support",
+            "only the reciprocal-divergent regime remains for the universal quantifier",
             "the band is contiguous but bounded, not an unbounded family",
         ),
     },

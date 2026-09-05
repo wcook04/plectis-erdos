@@ -67,13 +67,15 @@ We study the Newton flow whose trajectories foliate the lemniscate.
 
 *Status.* The original problem remains open. Statements marked as Lean-checked refer to the linked propositions accepted by the pinned kernel, with no `sorry`, added axioms, or unchecked evaluation. The note states the remaining mathematical obligations explicitly.
 
-*Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#nameddest=systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#nameddest=cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) are described in sibling papers.
+*Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#strategy-protocol) are described in sibling papers.
 
 | Statement | Status | Exact boundary |
 |:---|:---|:---|
 | Erdős \#1041 | Open | No proof is claimed. |
 | Critical-value separation | Ordinary all-degree theorem | A simple nonzero hub and $`(1+S)^{2/n}\log(S/(S-1))<1`$; the threshold, covering and area arguments remain ordinary; near ties and multiple saddles are excluded. |
 | Critical-value budget through degree five | Ordinary theorem; scalar Lean companion | $`\sum_j|f(c_j)|^{1/n}\le(n-1)R`$ for $`2\le n\le5`$; the reflected-derivative comparison and complete finite-point inequalities remain ordinary proofs and do not control inverse-ray length. |
+| Coefficient energy to path length | Checked | Termwise differentiation and the length integral of the actual power series; the inverse branch and area bound must be supplied. |
+| Uniform central free-point region | Checked | Every positive number of points; $`|c_i|^2\le a<1`$ and $`e^L\le1+2L`$, where $`L=-\log(1-a)`$. |
 | Newton value equation $`w'=-w`$ | Checked | Away from critical points, along any trajectory tangent to $`-f/f'`$. |
 | Exponential first integral | Checked | $`\tfrac{d}{dt}\bigl(e^{t}f(z(t))\bigr)=0`$. |
 | Ray separation of critical values | Checked (consumer form) | Endpoints of a finite connection share one oriented ray; distinct rays exclude a connection. |
@@ -144,7 +146,7 @@ Cauchy–Schwarz applied to (6)–(7) now gives
       \sqrt{\sum_{k\ge1}\frac1{kR^{2k}}}
  = (1+R^2)^{1/n}\sqrt{\log\!\frac{R^2}{R^2-1}}.   \tag{8}
 ```
-Termwise integration on $`[-1,1]`$ gives $`\int_{-1}^{1}|Z'|\le2\sum_{k\ge1}|a_k|`$. Letting $`R\nearrow\sqrt S`$ proves (4). Injectivity makes $`Z(-1)`$ and $`Z(1)`$ distinct, while $`P(Z(\xi))=1-\xi^2\in[0,1]`$ on the real segment proves the claimed containment. Squaring (4) gives (5). ◻
+The [checked coefficient-to-length theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0d34630e1cc9d2b1ac6edfa7cfdba83b31bdc8fe/ErdosProblems/Erdos1041/PowerSeriesDerivative.lean#L120) formalises the passage from the subradius energy bounds to the actual power-series derivative. Termwise integration on $`[-1,1]`$ gives $`\int_{-1}^{1}|Z'|\le2\sum_{k\ge1}|a_k|`$. Letting $`R\nearrow\sqrt S`$ proves (4). Injectivity makes $`Z(-1)`$ and $`Z(1)`$ distinct, while $`P(Z(\xi))=1-\xi^2\in[0,1]`$ on the real segment proves the claimed containment. Squaring (4) gives (5). ◻
 
 </div>
 
@@ -190,7 +192,7 @@ Thus $`|v|=\mu\le R^n<1`$, so both the length and containment are strict at the 
 
 #### Evidence and exact boundary.
 
-The analytic continuation, monodromy, area formula and Pólya inequality in Theorem <a href="#res:critical-value-separation" data-reference-type="ref" data-reference="res:critical-value-separation">2</a> are ordinary mathematics. The companion symbolic replay checks the branch-value algebra, all three exact constant chains, and the nonempty boundary example $`P(z)=1-3z^2+z^3`$, whose other critical point is $`2`$ and satisfies $`1-P(2)=4`$. The degree monotonicity, exact threshold inequalities and conversion from the squared estimate to a strict length bound are also ordinary arguments. No corresponding Lean declaration is supplied by the pinned corpus; the symbolic replay is not a kernel-checked proof of the analytic theorem or its scalar consequences.
+The analytic continuation, monodromy, area formula and Pólya inequality in Theorem <a href="#res:critical-value-separation" data-reference-type="ref" data-reference="res:critical-value-separation">2</a> are ordinary mathematics. The companion symbolic replay checks the branch-value algebra, all three exact constant chains, and the nonempty boundary example $`P(z)=1-3z^2+z^3`$, whose other critical point is $`2`$ and satisfies $`1-P(2)=4`$. The degree monotonicity, exact threshold inequalities and conversion from the squared estimate to a strict length bound are supplied by the scalar companion. The coefficient-energy estimate, termwise differentiation and length integral are now Lean-checked for the actual power series. Constructing the univalent branch and supplying its area bound remain the geometric inputs to the full theorem.
 
 The method stops when a second critical value enters the resolved disc, and it assumes the selected saddle is simple. It therefore leaves the near-tie and multiple-saddle strata, makes no sharpness claim for the convenient thresholds, and does not prove an unrestricted admissible-hub selector, a COVER theorem, or Erdős #1041. Pólya supplies the global area inequality; the square-resolved covering and coefficient argument above assemble it into the displayed sufficient regime and exact constants.
 
@@ -681,6 +683,17 @@ The last expression has an exact nonnegative defect:
           +QE_2+(3-Q)|s|^2\ge0.
 ```
 Thus $`S\le3`$. Equality forces equal moduli and $`QE_2=0`$, hence all three points are zero; conversely the zero configuration attains equality. The bound comes from this defect identity, rather than from separately maximising the pairwise factors.
+
+<a id="a-uniform-central-region-in-every-degree."></a>
+
+#### A uniform central region in every degree.
+
+For $`m\ge1`$, let $`|c_i|^2\le a<1`$, with $`a\ge0`$, and put $`L=-\log(1-a)`$. The [uniform-radius theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/457e0c74b2666f7fb2d825c967e49e439a600b23/ErdosProblems/Erdos1041/FreePointUniformRadius.lean#L84) gives the actual geometric-mean inequality
+``` math
+e^L\le1+2L\quad\Longrightarrow\quad
+ \sum_{i=1}^m\left(\prod_{j=1}^m|1-\overline c_i c_j|\right)^{1/m}\le m.
+```
+Its mechanism is an adaptive logarithmic certificate. Write $`H_i=m^{-1}\sum_j\log|1-\overline c_i c_j|`$ and $`D_i=-\log(1-|c_i|^2)`$. For nonnegative caps $`M_i\ge H_i`$, the [checked adaptive theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/0d34630e1cc9d2b1ac6edfa7cfdba83b31bdc8fe/ErdosProblems/Erdos1041/LogKernelCentralCertificate.lean#L99) requires only $`\sum_i\Phi(M_i)D_i\le m`$, where $`\Phi(t)=\int_0^1(1-s)e^{st}\,ds`$. The uniform radius gives $`H_i,D_i\le L`$, so $`\Phi(L)L\le1`$ suffices; the displayed exponential condition is exactly this inequality when $`L>0`$, and $`L=0`$ is immediate.
 
 <a id="four-points-require-two-complementary-estimates."></a>
 

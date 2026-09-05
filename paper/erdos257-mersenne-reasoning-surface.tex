@@ -512,6 +512,8 @@ the domination required before exchanging infinite sums and averages.
 The analytic statements in this subsection are ordinary proofs; the pinned
 formal-source table above records their separately verified predecessors.
 
+The formal development also checks the \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/WeightedSupportLimits.lean#L111}{summability of the dyadic observation mass}, its \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/WeightedSupportLimits.lean#L81}{vanishing mean}, and the \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/BatchReturnSynthesis.lean#L151}{irrationality consumer from close returns}. These are the checked analytic ingredients; the complete weighted criterion above still uses the ordinary assembly in the supplement.
+
 \subsection{A finite deadline for every real target}
 The repair mechanism does not require periodic digits or even a rational
 target. Let $x\ge0$, let $A_x$ be its actual greedy support, and define
@@ -551,6 +553,8 @@ $Q_N(x)\ge2^N\delta-1$ beyond that fatal rank. This eventually exceeds
 $N+1$, contradicting a cofinal linear bound. These implications give all
 the stated equivalences.
 \end{proof}
+
+The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/GreedyRepairCriterion.lean#L192}{uniform repair equivalence} is now kernel checked for every real target $x\ge0$.
 
 The finite deadline comes from a growth comparison: strict increases of
 an integer sequence accumulate linearly, whereas represented tails have
@@ -4908,7 +4912,7 @@ new route for \#257.
 the displayed decomposition gives
 $\sum_{a\in A}1/a\le\sum_{a\in E}1/a+\sum_i1/p_i<\infty$.
 Infinitude and the all-base reciprocal-support theorem therefore settle
-every such bouquet unconditionally. This composition supersedes the
+every such bouquet unconditionally. The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/Erdos249257/BouquetReciprocalIrrationality.lean#L85}{all-base composition} is now kernel checked. This composition supersedes the
 conditional endpoint as a mathematical result. The pinned declaration
 above records the earlier certificate proof. \ev{Math}
 
@@ -4920,7 +4924,7 @@ petal decomposition), so the class can only be widened, never promoted to univer
 \end{obs}
 
 \begin{obs}[NM-08 / eventual periodicity and finite perturbations] \ev{Lean}
-\lean{irrational\_erdosSupportSeries\_eventuallyPeriodic}{CertificateKernel.lean:11604} (engine
+\lean{irrational\_erdosSupportSeries\_eventuallyPeriodic}{CertificateKernel.lean:11792} (engine
 line 11262, producer line 11072; finite-perturbation transfer lines 9139, 9148).
 \textbf{Yields:} $\forall b\ge2\ \forall m{>}0\ \forall N_0$: $A$ infinite and $m$-periodic above
 $N_0$ $\Rightarrow$ irrational. Plus: the class of supports with irrational series is closed
@@ -6416,10 +6420,10 @@ live, drawn tightly enough that the remaining region is small and its coordinate
 \clearpage
 \section{Complete result-family map}\label{sec:erdos-257-complete-family-map}
 
-This section places every registered family for this problem in the shared 71-family reader order.  The five display bands control exposition only; the separate promotion state currently covers 7 families and is reported but does not hide or strengthen any family.  Mathematical statements and evidence modes come from the public claim registry.  Across all eight problems the public result-atom catalog contains 682 exact packet coordinates; this problem contributes 62.  Catalog rows expose bounded statement excerpts plus full-source digests, not a claim that every complete packet statement is reproduced here.
+This section places every registered family for this problem in the shared 93-family reader order.  The five display bands control exposition only; the separate promotion state currently covers 23 families and is reported but does not hide or strengthen any family.  Mathematical statements and evidence modes come from the public claim registry.  Across all eight problems the public result-atom catalog contains 704 exact packet coordinates; this problem contributes 70.  Catalog rows expose bounded statement excerpts plus full-source digests, not a claim that every complete packet statement is reproduced here.
 
 \subsection{Reciprocal summable support}
-\textbf{Reader position.} 1 of 71; display band: front door.  Formal editorial disposition: promote.  These are separate classifications.
+\textbf{Reader position.} 5 of 93; display band: front door.  Formal editorial disposition: promote.  These are separate classifications.
 
 \textbf{Reader entry.} Every infinite reciprocal-summable support gives an irrational reciprocal-power subseries at every integer base, without pairwise coprimality.
 
@@ -6427,9 +6431,9 @@ Every infinite support with convergent reciprocal mass gives an irrational suppo
 
 \textbf{Authority and reach.} Lean kernel; Comparator-selected; locally proved all-base support theorem; novelty and priority unassessed.
 
-\textbf{Exact boundary.} The universal Erdős \#257 assertion remains open only in the reciprocal-divergent regime. Novelty and priority are unassessed, and the proof is not identified with Erdős's omitted coprimality-free argument.
+\textbf{Exact boundary.} Infinitude and summability of reciprocal conductor mass are explicit. No coprimality is assumed. Supports with divergent reciprocal mass require another argument; universal Erdős \#257 remains open.
 
-\textbf{Result-atom population.} 1 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -6440,7 +6444,7 @@ Every infinite support with convergent reciprocal mass gives an irrational suppo
 \end{itemize}
 
 \subsection{Half and twenty one frontiers}
-\textbf{Reader position.} 6 of 71; display band: front door.  Formal editorial disposition: split.  These are separate classifications.
+\textbf{Reader position.} 10 of 93; display band: front door.  Formal editorial disposition: split.  These are separate classifications.
 
 \textbf{Reader entry.} The \#257 frontier is concentrated in two explicit membership questions: 1/2 and 1/21.
 
@@ -6450,14 +6454,14 @@ Exact greedy characterisations, finite-support exclusions, the odd 2-adic two-th
 
 \textbf{Exact boundary.} Neither membership question is decided; the 2-adic bound is sharp locally, and the two countermodel routes require unconstructed terminal-scaled or cofinal-cylinder antecedents.
 
-\textbf{Result-atom population.} 23 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 23 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
 \textbf{Publication placement.} This family is also admitted to the short note.
 
 \subsection{Finite period noncollapse}
-\textbf{Reader position.} 13 of 71; display band: major result.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 16 of 93; display band: major result.  Formal editorial disposition: hold.  These are separate classifications.
 
 \textbf{Reader entry.} Finite periodic Mersenne patterns cannot collapse in the way a rational endpoint would require.
 
@@ -6467,14 +6471,14 @@ The multiplicative order of the base modulo a reduced finite-sum denominator is 
 
 \textbf{Exact boundary.} A finite-support denominator theorem does not settle an infinite-support sum.
 
-\textbf{Result-atom population.} 1 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
 \textbf{Publication placement.} This family is also admitted to the short note.
 
 \subsection{Known irrational supports}
-\textbf{Reader position.} 17 of 71; display band: major result.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 18 of 93; display band: major result.  Formal editorial disposition: hold.  These are separate classifications.
 
 \textbf{Reader entry.} Several broad support classes already give irrational Mersenne subseries unconditionally.
 
@@ -6484,14 +6488,14 @@ Full, factorial, power-of-two, multiple, eventually periodic, residue-class, and
 
 \textbf{Exact boundary.} Structured known families do not cover arbitrary infinite supports.
 
-\textbf{Result-atom population.} 1 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
 \textbf{Publication placement.} This family is also admitted to the short note.
 
 \subsection{Periodic nonnegative weight irrationality}
-\textbf{Reader position.} 19 of 71; display band: major result.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 20 of 93; display band: major result.  Formal editorial disposition: hold.  These are separate classifications.
 
 \textbf{Reader entry.} Every nontrivial periodic nonnegative Mersenne weighting in the stated class is irrational.
 
@@ -6501,14 +6505,125 @@ An eventually-periodic nonnegative rational coefficient sequence with a positive
 
 \textbf{Exact boundary.} This does not claim the broader mixed-sign periodic theorem; all coefficient, positivity, base, period, and threshold hypotheses remain explicit.
 
-\textbf{Result-atom population.} 1 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
 \textbf{Publication placement.} This family is also admitted to the short note.
 
+\subsection{Divisibility weighted support irrationality}
+\textbf{Reader position.} 32 of 93; display band: major result.  Formal editorial disposition: promote.  These are separate classifications.
+
+\textbf{Reader entry.} Finite divisibility-weighted mass implies hereditary all-base irrationality, including explicit reciprocal-divergent short-gap supports.
+
+Finite divisibility-weighted mass implies hereditary all-base irrationality, including explicit reciprocal-divergent short-gap supports.
+
+\textbf{Authority and reach.} Ordinary full proof; Lean checks the finite orbit and dyadic estimates, full infinite-support dyadic error summability and the radix close-return endgame.; reviewed ordinary theorem or obstruction; novelty unassessed.
+
+\textbf{Exact boundary.} The complete divisibility-weighted theorem is proved in docs/research/erdos257-eight-return-proofs.md. The finite orbit and infinite-support dyadic error control are formalized, but the prime-part split and diagonal scale producer remain ordinary proof steps. No full-theorem Lean badge or universal \#257 solution follows from the checked ingredients.
+
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
+
+\textbf{Comparator assurance.} not applicable to comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+\textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
+
+\begin{itemize}
+  \item \nolinkurl{ErdosProblems.Erdos257.cesaroMean_shiftedMersenneAtom_mul_le_gcdMean_add_error}
+  \item \nolinkurl{ErdosProblems.Erdos257.dyadic_observation_sum_le}
+  \item \nolinkurl{ErdosProblems.Erdos257.dyadic_supportObservationMass_sum_le}
+  \item \nolinkurl{ErdosProblems.Erdos257.summable_dyadic_supportObservationMass}
+  \item \nolinkurl{ErdosProblems.Erdos257.tendsto_dyadic_supportObservationMass_mean}
+  \item \nolinkurl{ErdosProblems.Erdos257.irrational_erdosSupportSeries_of_radix_closeReturn}
+\end{itemize}
+
+\subsection{Sub logstar reciprocal mass irrationality}
+\textbf{Reader position.} 33 of 93; display band: major result.  Formal editorial disposition: promote.  These are separate classifications.
+
+\textbf{Reader entry.} Rational p/q forces liminf H\_A(x)/ell(x) at least lambda\_b(p/q)/2; sub-log-star mass implies hereditary all-base irrationality.
+
+Rational p/q forces liminf H\_A(x)/ell(x) at least lambda\_b(p/q)/2; sub-log-star mass implies hereditary all-base irrationality.
+
+\textbf{Authority and reach.} Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.; reviewed ordinary theorem or obstruction; novelty unassessed.
+
+\textbf{Exact boundary.} Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal \#257 solution is asserted.
+
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
+
+\textbf{Comparator assurance.} not applicable to comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+\textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
+
+\subsection{Arbitrary prime power support irrationality}
+\textbf{Reader position.} 34 of 93; display band: major result.  Formal editorial disposition: promote.  These are separate classifications.
+
+\textbf{Reader entry.} Every infinite subset of the prime powers, with fixed dilations and finite modifications, has irrational sum at every integer base, using the reviewed analytic correlation input.
+
+Every infinite subset of the prime powers, with fixed dilations and finite modifications, has irrational sum at every integer base, using the reviewed analytic correlation input.
+
+\textbf{Authority and reach.} Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.; reviewed ordinary theorem or obstruction; novelty unassessed.
+
+\textbf{Exact boundary.} Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal \#257 solution is asserted.
+
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
+
+\textbf{Comparator assurance.} not applicable to comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+\textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
+
+\subsection{Variable exponent fractional cover irrationality}
+\textbf{Reader position.} 35 of 93; display band: major result.  Formal editorial disposition: promote.  These are separate classifications.
+
+\textbf{Reader entry.} For finite positive divisor frames F\_j and 0<alpha\_j<=1, summability of C\_j 2\textasciicircum{}(j alpha\_j) B\_j/(B\_j-1)\textasciicircum{}2 with B\_j=2\textasciicircum{}alpha\_j gives hereditary all-base irrationality; fixed-alpha positive covers are included by regrouping.
+
+For finite positive divisor frames F\_j and 0<alpha\_j<=1, summability of C\_j 2\textasciicircum{}(j alpha\_j) B\_j/(B\_j-1)\textasciicircum{}2 with B\_j=2\textasciicircum{}alpha\_j gives hereditary all-base irrationality; fixed-alpha positive covers are included by regrouping.
+
+\textbf{Authority and reach.} Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.; reviewed ordinary theorem or obstruction; novelty unassessed.
+
+\textbf{Exact boundary.} Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal \#257 solution is asserted.
+
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
+
+\textbf{Comparator assurance.} not applicable to comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+\textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
+
+\subsection{Prime cofactor repair obstruction}
+\textbf{Reader position.} 38 of 93; display band: major result.  Formal editorial disposition: promote.  These are separate classifications.
+
+\textbf{Reader entry.} Actual modulus-420 tetraprime repair fails infinitely often; an exact 80-anchor prefix gives prime-cofactor jumps at least 7 for multiplier 120 and at least 2 for multiplier 420. General infinite admissible supports defeat every finite fixed multiplier menu.
+
+Actual modulus-420 tetraprime repair fails infinitely often; an exact 80-anchor prefix gives prime-cofactor jumps at least 7 for multiplier 120 and at least 2 for multiplier 420. General infinite admissible supports defeat every finite fixed multiplier menu.
+
+\textbf{Authority and reach.} Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.; reviewed ordinary theorem or obstruction; novelty unassessed.
+
+\textbf{Exact boundary.} Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal \#257 solution is asserted.
+
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
+
+\textbf{Comparator assurance.} not applicable to comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+\textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
+
+\subsection{Prime repair finite support rigidity}
+\textbf{Reader position.} 39 of 93; display band: major result.  Formal editorial disposition: promote.  These are separate classifications.
+
+\textbf{Reader entry.} Bounded prime jumps characterize finite greedy support; eventual repair at every prime characterizes zero or a single Mersenne atom for targets below one.
+
+Bounded prime jumps characterize finite greedy support; eventual repair at every prime characterizes zero or a single Mersenne atom for targets below one.
+
+\textbf{Authority and reach.} Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.; reviewed ordinary theorem or obstruction; novelty unassessed.
+
+\textbf{Exact boundary.} Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal \#257 solution is asserted.
+
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
+
+\textbf{Comparator assurance.} not applicable to comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+\textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
+
 \subsection{Boolean mobius exact row dynamics}
-\textbf{Reader position.} 31 of 71; display band: mechanism.  Formal editorial disposition: split.  These are separate classifications.
+\textbf{Reader position.} 51 of 93; display band: mechanism.  Formal editorial disposition: split.  These are separate classifications.
 
 \textbf{Reader entry.} Exact Boolean Möbius rows provide both a construction mechanism and a distinct conditional 1/2-membership consumer.
 
@@ -6518,7 +6633,7 @@ If CofinalPositiveHalfGreedySkips holds—cofinally many positive rational-greed
 
 \textbf{Exact boundary.} CofinalPositiveHalfGreedySkips is an unproved global supply premise: for every N there must be c \ensuremath{\ge} max N 4 with a positive greedy remainder below mersenneWeightRat c. Finite exact rows, including one produced by a skipped core, do not establish cofinality. This is a conditional 1/2-membership/counterexample route, not an unconditional Erdős \#257 solution; the rank-two, endpoint-defect, and upper-half Boolean-word declarations remain subordinate evidence, and no novelty, priority, significance, or external-review claim is made.
 
-\textbf{Result-atom population.} 8 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 8 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -6535,7 +6650,7 @@ If CofinalPositiveHalfGreedySkips holds—cofinally many positive rational-greed
 \end{itemize}
 
 \subsection{Shifted odd tail state}
-\textbf{Reader position.} 33 of 71; display band: mechanism.  Formal editorial disposition: merge.  These are separate classifications.
+\textbf{Reader position.} 53 of 93; display band: mechanism.  Formal editorial disposition: merge.  These are separate classifications.
 
 \textbf{Reader entry.} A shifted odd-tail state gives an exact local coordinate for whether the greedy 1/2 construction survives.
 
@@ -6545,14 +6660,14 @@ A rational support fraction produces a positive natural shifted tail state satis
 
 \textbf{Exact boundary.} The state-extraction theorem does not exclude rational infinite supports or settle universal Erdős \#257; the support and rational-value hypotheses remain explicit.
 
-\textbf{Result-atom population.} 1 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
 \textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
 
 \subsection{Composite dilation defect identity}
-\textbf{Reader position.} 35 of 71; display band: mechanism.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 55 of 93; display band: mechanism.  Formal editorial disposition: hold.  These are separate classifications.
 
 \textbf{Reader entry.} Composite dilation differs from prime dilation by an explicit arithmetic defect.
 
@@ -6562,14 +6677,14 @@ The composite support-dilation identity splits the new divisor count into the ol
 
 \textbf{Exact boundary.} The exact defect is not bounded for arbitrary supports and supplies no tail selector or irrationality theorem; the bouquet budget remains conditional on its structural hypotheses.
 
-\textbf{Result-atom population.} 1 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
 \textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
 
 \subsection{Pairwise coprime support}
-\textbf{Reader position.} 37 of 71; display band: mechanism.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 57 of 93; display band: mechanism.  Formal editorial disposition: hold.  These are separate classifications.
 
 \textbf{Reader entry.} Pairwise coprimality is exactly what makes every support element a valid localized dilation parameter.
 
@@ -6579,14 +6694,14 @@ Infinite pairwise-coprime supports with summable reciprocal mass have irrational
 
 \textbf{Exact boundary.} This structured support theorem does not settle arbitrary infinite supports; its infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit.
 
-\textbf{Result-atom population.} 1 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} represented by selected interface; 0 executable interface(s), 0 repository-registered selected result interface(s).
 
 \textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
 
 \subsection{Restricted achievement sets}
-\textbf{Reader position.} 39 of 71; display band: mechanism.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 59 of 93; display band: mechanism.  Formal editorial disposition: hold.  These are separate classifications.
 
 \textbf{Reader entry.} Restricting the support preserves unique coding and gives a sharp zero-versus-finite-complement measure law.
 
@@ -6596,14 +6711,14 @@ Support-restricted coding is injective and the associated achievement set has ex
 
 \textbf{Exact boundary.} The measure dichotomy does not classify rational points.
 
-\textbf{Result-atom population.} 5 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 5 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
 \textbf{Publication placement.} This family is also admitted to the short note.
 
 \subsection{Boolean mobius carry}
-\textbf{Reader position.} 54 of 71; display band: frontier.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 77 of 93; display band: frontier.  Formal editorial disposition: hold.  These are separate classifications.
 
 \textbf{Reader entry.} The Boolean Möbius carry turns a hypothetical rational subseries into an exact arithmetic orbit with one unresolved global obstruction.
 
@@ -6613,7 +6728,7 @@ For p : \ensuremath{\mathbb{Z}} and q > 0, a nonempty normalized positive-index 
 
 \textbf{Exact boundary.} The equivalence is stated at the existence level with q > 0, 0 \ensuremath{\notin} A, and a positive support witness; it gives no contradiction, no universal Erdős \#257 irrationality result, and no producer of cofinally nonintegral shifts for the actual recurrence. The generic tempered-orbit theorem and the reciprocal-mass, unbounded-tail, and zero-window results are subordinate consequences, not separate families; the zero-window constant depends on the support and numerator and is not uniform. This does not settle every infinite support, and no novelty, priority, significance, external-review, or unrestricted \#257 endpoint claim is made.
 
-\textbf{Result-atom population.} 5 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 5 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -6629,7 +6744,7 @@ For p : \ensuremath{\mathbb{Z}} and q > 0, a nonempty normalized positive-index 
 \end{itemize}
 
 \subsection{Half membership seam classification}
-\textbf{Reader position.} 58 of 71; display band: frontier.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 78 of 93; display band: frontier.  Formal editorial disposition: hold.  These are separate classifications.
 
 \textbf{Reader entry.} Every local way the greedy 1/2 orbit can survive or fail is classified into explicit seam types.
 
@@ -6639,7 +6754,7 @@ Membership of 1/2 in the Mersenne achievement set is exactly equivalent to unbou
 
 \textbf{Exact boundary.} This exact endpoint-socket classification does not supply any unbounded terminal-false or upper-or-middle occurrences, cofinal supply, skipped-support producer, or half-membership witness; finite exact rows do not establish the required global supply. It is not an unconditional or universal Erdős \#257 result, and no novelty, priority, significance, or external-review claim is made.
 
-\textbf{Result-atom population.} 11 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 11 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
@@ -6659,24 +6774,72 @@ Membership of 1/2 in the Mersenne achievement set is exactly equivalent to unbou
 \end{itemize}
 
 \subsection{Orthogonal petal sunflower reduction}
-\textbf{Reader position.} 59 of 71; display band: frontier.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 79 of 93; display band: frontier.  Formal editorial disposition: hold.  These are separate classifications.
 
-\textbf{Reader entry.} Orthogonal-petal supports would be irrational once one exact uniform tail-selection predicate is proved.
+\textbf{Reader entry.} Every finite-core orthogonal-petal bouquet has irrational reciprocal-power value at every integer base at least two. Its defining summable petal reciprocals bound the actual support reciprocals, so no forced-slot selector is needed.
 
-A finite-core orthogonal-petal bouquet together with the exact uniform tail-selection predicate composes through the forced-carry certificate consumer to irrationality; the explicit alternating-core, squared-prime-petal witness shows the structural class is non-vacuous, but the selector remains open.
+Every finite-core orthogonal-petal bouquet has irrational reciprocal-power value at every integer base at least two. Its defining summable petal reciprocals bound the actual support reciprocals, so no forced-slot selector is needed.
 
-\textbf{Authority and reach.} Lean kernel; Comparator-selected plus paper argument; conditional reduction.
+\textbf{Authority and reach.} Lean kernel; stronger Comparator interface configured, runtime receipt separate; unconditional all-base support-class corollary.
 
-\textbf{Exact boundary.} The bouquet and selector hypotheses remain explicit; the selector is not proved, so this is not an unconditional \#257 support family.
+\textbf{Exact boundary.} The bouquet structure, positive finite cores, pairwise-coprime petals and summable petal reciprocals remain explicit. The former selector belongs to a stronger certificate construction and is unnecessary for this corollary. This family is contained in reciprocal-summable supports and supplies no reciprocal-divergent or universal endpoint.
 
-\textbf{Result-atom population.} 1 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
 \textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
 
+\begin{itemize}
+  \item \nolinkurl{Erdos249257.SupportSunflowerDichotomy.OrthogonalPetalBouquet.summable_reciprocalSupportTerm}
+  \item \nolinkurl{Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet_allBase}
+  \item \nolinkurl{Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet}
+\end{itemize}
+
+\subsection{Four ninths square root repair windows}
+\textbf{Reader position.} 80 of 93; display band: frontier.  Formal editorial disposition: retain.  These are separate classifications.
+
+\textbf{Reader entry.} For every real x>=0, let Q\_N=floor(2\textasciicircum{}N x) minus the Lambert prefix numerator of the actual greedy support. Membership is equivalent to a nonincrease of Q in every [K,K+2 floor(sqrt K)+12), to cofinal nonincreases, and to cofinal bounds by the next divisor load or by N+1. One strict-increase window excludes membership; 4/9 is a specialization.
+
+For every real x>=0, let Q\_N=floor(2\textasciicircum{}N x) minus the Lambert prefix numerator of the actual greedy support. Membership is equivalent to a nonincrease of Q in every [K,K+2 floor(sqrt K)+12), to cofinal nonincreases, and to cofinal bounds by the next divisor load or by N+1. One strict-increase window excludes membership; 4/9 is a specialization.
+
+\textbf{Authority and reach.} Lean kernel; generic Comparator interface configured, runtime receipt separate; exact actual-real-target equivalences and finite nonmembership criterion.
+
+\textbf{Exact boundary.} Rationality and periodic floor digits are not hypotheses. The theorem does not construct cofinal repairs or a strict window for 4/9,1/21 or1/2, and none of those open membership questions is decided. The stable historical family id is retained to preserve existing links.
+
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
+
+\textbf{Comparator assurance.} not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+\textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
+
+\begin{itemize}
+  \item \nolinkurl{ErdosProblems.Erdos257.mem_iff_greedyBinaryDefect_sqrt_windows}
+  \item \nolinkurl{ErdosProblems.Erdos257.mem_iff_greedyBinaryDefect_cofinal_repairs}
+  \item \nolinkurl{ErdosProblems.Erdos257.mem_iff_greedyBinaryDefect_cofinal_load_bound}
+  \item \nolinkurl{ErdosProblems.Erdos257.mem_iff_greedyBinaryDefect_cofinal_linear_bound}
+  \item \nolinkurl{ErdosProblems.Erdos257.not_mem_of_greedyBinaryDefect_strict_sqrt_window}
+\end{itemize}
+
+\subsection{Twenty one two anchor divergence density}
+\textbf{Reader position.} 81 of 93; display band: frontier.  Formal editorial disposition: retain.  These are separate classifications.
+
+\textbf{Reader entry.} For the 1/21 greedy support, membership is equivalent to divergent reciprocal mass on the favorable selected rows. Two anchors give 60/105 favorable classes and conditional upper density >= 2/7; twelve anchors give a larger restricted set with 1011/1260 favorable classes and conditional upper density >= 337/840 > 2/5. Each density refers to its own restricted set; no membership or lower density is established.
+
+For the 1/21 greedy support, membership is equivalent to divergent reciprocal mass on the favorable selected rows. Two anchors give 60/105 favorable classes and conditional upper density >= 2/7; twelve anchors give a larger restricted set with 1011/1260 favorable classes and conditional upper density >= 337/840 > 2/5. Each density refers to its own restricted set; no membership or lower density is established.
+
+\textbf{Authority and reach.} Ordinary full proof; finite portions independently checked by exact arithmetic. The new reduction module is not part of this paper’s published formal-source cut.; reviewed ordinary theorem or obstruction; novelty unassessed.
+
+\textbf{Exact boundary.} Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal \#257 solution is asserted.
+
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
+
+\textbf{Comparator assurance.} not applicable to comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+\textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
+
 \subsection{Achievement set geometry}
-\textbf{Reader position.} 66 of 71; display band: technical support.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 88 of 93; display band: technical support.  Formal editorial disposition: hold.  These are separate classifications.
 
 \textbf{Reader entry.} The unrestricted achievement set is compact, perfect, totally disconnected, nowhere dense, and of full measure.
 
@@ -6686,14 +6849,14 @@ Compactness, perfectness, total disconnectedness, nowhere density, and measure o
 
 \textbf{Exact boundary.} Geometry of the full set does not decide irrationality of every coded point.
 
-\textbf{Result-atom population.} 1 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
 
 \textbf{Publication placement.} This family remains in the complete long record and is not a short-note headline.
 
 \subsection{Squarefree support}
-\textbf{Reader position.} 67 of 71; display band: technical support.  Formal editorial disposition: hold.  These are separate classifications.
+\textbf{Reader position.} 89 of 93; display band: technical support.  Formal editorial disposition: hold.  These are separate classifications.
 
 \textbf{Reader entry.} Squarefree support has exact formal incidence structure, but its irrationality conclusion still rests on an external analytic input.
 
@@ -6703,7 +6866,7 @@ Lean checks squarefree incidence and no-go statements; the irrationality conclus
 
 \textbf{Exact boundary.} Comparator must not badge the paper-plus-external conclusion.
 
-\textbf{Result-atom population.} 1 of 682 public coordinates. The public atom catalog groups them under this family.
+\textbf{Result-atom population.} 1 of 704 public coordinates. The public atom catalog groups them under this family.
 
 \textbf{Comparator assurance.} not applicable to comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
 

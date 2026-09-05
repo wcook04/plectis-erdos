@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification257Strong.Challenge",
+  "solution_module": "ExternalVerification257Strong.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification.Strong257.irrational_erdosSupportSeries_of_summable_reciprocal",
+    "Erdos249257.ExternalVerification.Strong257.irrational_erdosSupportSeries_of_orthogonalPetalBouquet_allBase",
+    "Erdos249257.ExternalVerification.Strong257.mem_iff_greedyBinaryDefect_sqrt_windows"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}

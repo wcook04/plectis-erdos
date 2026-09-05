@@ -71,6 +71,12 @@ release carrying the external-verification claim must attach both:
   crosswalk](FORMAL_CONJECTURES_CROSSWALK.md) used to place the eight
   programmes against the upstream corpus.
 
+The release also retains the strongest #257 negative fixture's log. It restores
+the discarded coprimality assumption and must receive the exact statement-mismatch
+rejection. The runtime receipt binds its exit status, diagnostic and log digest;
+the release manifest checks that digest alongside the other five replay logs.
+An aggregate positive result cannot substitute for this rejection.
+
 The source commit must already be tagged, and the tag must resolve to that exact
 commit. From the tagged checkout, build the manifest with:
 

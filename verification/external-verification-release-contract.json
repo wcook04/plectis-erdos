@@ -54,6 +54,10 @@
       ],
       "enable_nanoda": false,
       "expected_negative_diagnostic": "Challenge and solution theorem statement do not match: 'Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight'"
+    },
+    "erdos_257_strong_negative": {
+      "config": "verification/comparator-257-strong-negative-mismatch.json",
+      "expected_negative_diagnostic": "Challenge and solution theorem statement do not match: 'Erdos249257.ExternalVerification.Strong257.irrational_erdosSupportSeries_of_summable_reciprocal'"
     }
   },
   "runtime_receipt_provenance": {
@@ -67,13 +71,14 @@
     "runtime_receipt_pattern": "external-verification-receipt-{source_commit}.json",
     "manifest_pattern": "external-verification-release-manifest-{source_commit}.json",
     "runtime_log_files": [
+      "artifacts-257-strong-negative.log",
       "artifacts-positive.log",
       "artifacts-negative.log",
       "artifacts-portfolio-positive.log",
       "artifacts-1049-positive.log",
       "artifacts-1049-negative.log"
     ],
-    "retention": "attach_receipt_manifest_and_all_five_digest_checked_logs_to_the_immutable_release_not_only_to_a_90_day_actions_run"
+    "retention": "attach_receipt_manifest_and_all_six_digest_checked_logs_to_the_immutable_release_not_only_to_a_90_day_actions_run"
   },
   "tracked_artifacts": [
     "README.md",
@@ -111,6 +116,7 @@
     "erdos-257-mersenne-support-subseries.pdf",
     "erdos-269-three-prime-running-lcm.pdf",
     "erdos-1041-lemniscate-newton-flow.pdf",
-    "erdos-1049-rational-base-lambert.pdf"
+    "erdos-1049-rational-base-lambert.pdf",
+    "verification/comparator-257-strong-negative-mismatch.json"
   ]
 }

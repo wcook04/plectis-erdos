@@ -1,6 +1,7 @@
 {
   "schema": "plectis.comparator-replay-membership/1",
   "required_package_ids": [
+    "ExternalVerification1041AnalyticBridges",
     "ExternalVerification1041ContactSurvives",
     "ExternalVerification1041CriticalGeometry",
     "ExternalVerification1041CyclicTetranomialCoefficient",
@@ -47,8 +48,10 @@
     "ExternalVerification249FiniteCertificates",
     "ExternalVerification249FullDepthRayAmplifier",
     "ExternalVerification249RankOneSharpFloor",
+    "ExternalVerification249SquaredLambert",
     "ExternalVerification251ActualPrimeGapTail",
     "ExternalVerification251AffineCircularity",
+    "ExternalVerification251BoundedPerturbation",
     "ExternalVerification251LcmDiagonalCriterion",
     "ExternalVerification251PolynomialShiftCountermodel",
     "ExternalVerification251PrimeGapIdentity",
@@ -61,6 +64,7 @@
     "ExternalVerification257RationalTailRigidity",
     "ExternalVerification257ReciprocalSupport",
     "ExternalVerification257ScaledGreedyTrap",
+    "ExternalVerification257Strong",
     "ExternalVerification257TerminalScaledVanishing",
     "ExternalVerification257TwentyOneFatalBranch",
     "ExternalVerification269ActualShellOrbit",
@@ -69,6 +73,7 @@
     "ExternalVerification269IntegralBranchPinning",
     "ExternalVerification269ThreePrimeStructure",
     "ExternalVerification68AdjacentUnitCarryWindow",
+    "ExternalVerification68CanonicalArithmetic",
     "ExternalVerification68ChannelRadius",
     "ExternalVerification68CompanionOrbitBoundary",
     "ExternalVerification68MovingFactorScaleSplit",
@@ -77,6 +82,10 @@
     "ExternalVerification68StrictSuccessorCarry"
   ],
   "required_interfaces_by_package": {
+    "ExternalVerification1041AnalyticBridges": [
+      "Erdos249257.ExternalVerification1041AnalyticBridges.freePointMean_from_adaptive_log_certificate",
+      "Erdos249257.ExternalVerification1041AnalyticBridges.powerSeries_length_from_subradius_energy"
+    ],
     "ExternalVerification1041ContactSurvives": [
       "Erdos249257.ExternalVerification1041ContactSurvives.contact_survives"
     ],
@@ -288,6 +297,10 @@
       "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen",
       "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty"
     ],
+    "ExternalVerification249SquaredLambert": [
+      "Erdos249257.ExternalVerification249SquaredLambert.tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series",
+      "Erdos249257.ExternalVerification249SquaredLambert.tsum_totient_div_mersenne_sq_eq_gcd_moment_series"
+    ],
     "ExternalVerification251ActualPrimeGapTail": [
       "Erdos249257.ExternalVerification251ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational",
       "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral",
@@ -298,6 +311,10 @@
       "Erdos249257.ExternalVerification251AffineCircularity.adjacent_small_mismatch_iff_signed_two_window",
       "Erdos249257.ExternalVerification251AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral",
       "Erdos249257.ExternalVerification251AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral"
+    ],
+    "ExternalVerification251BoundedPerturbation": [
+      "Erdos249257.ExternalVerification251BoundedPerturbation.exists_rational_bounded_perturbation",
+      "Erdos249257.ExternalVerification251BoundedPerturbation.not_forall_irrational_of_bounded_perturbation_invariant"
     ],
     "ExternalVerification251LcmDiagonalCriterion": [
       "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_allLcmDiagonal_nonintegral",
@@ -358,6 +375,11 @@
       "Erdos249257.ExternalVerification257ScaledGreedyTrap.rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally",
       "Erdos249257.ExternalVerification257ScaledGreedyTrap.scaledGreedyRemainder_tendsto_atTop_of_not_mem"
     ],
+    "ExternalVerification257Strong": [
+      "Erdos249257.ExternalVerification.Strong257.irrational_erdosSupportSeries_of_orthogonalPetalBouquet_allBase",
+      "Erdos249257.ExternalVerification.Strong257.irrational_erdosSupportSeries_of_summable_reciprocal",
+      "Erdos249257.ExternalVerification.Strong257.mem_iff_greedyBinaryDefect_sqrt_windows"
+    ],
     "ExternalVerification257TerminalScaledVanishing": [
       "Erdos249257.ExternalVerification257TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample"
     ],
@@ -408,6 +430,10 @@
       "Erdos249257.ExternalVerification68AdjacentUnitCarryWindow.consecutive_unit_carries_iff_positive_offset_le_den",
       "Erdos249257.ExternalVerification68AdjacentUnitCarryWindow.twoStep_den_mul_transitionNormalizers"
     ],
+    "ExternalVerification68CanonicalArithmetic": [
+      "Erdos249257.ExternalVerification68CanonicalArithmetic.rational_denominator_full_prime_exponent",
+      "Erdos249257.ExternalVerification68CanonicalArithmetic.rational_iff_factorial_floor_tail"
+    ],
     "ExternalVerification68ChannelRadius": [
       "Erdos249257.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_three_halves_upper",
       "Erdos249257.ExternalVerification68ChannelRadius.not_isLittleO_square_subsequence_radius",
@@ -441,23 +467,23 @@
   "result_family_coverage": {
     "schema": "plectis.comparator-result-family-coverage/1",
     "registry_authority": "docs/claims.json::external_verification_packet.review_matrix",
-    "registry_digest": "sha256:23a3e71e1424d2e1776a0fda5afba144aa8548abd6ec0cdbfdbbcaaece30681c",
-    "registered_family_count": 71,
-    "classified_family_count": 71,
+    "registry_digest": "sha256:d2e6cbc6fc73740fab3a6d2149334683004151fac7be14433bd7de8f479b1bea",
+    "registered_family_count": 93,
+    "classified_family_count": 93,
     "execution_classification_counts": {
-      "has_executable_challenge_package": 48,
-      "intentionally_non_executable": 23
+      "has_executable_challenge_package": 49,
+      "intentionally_non_executable": 44
     },
     "registered_comparator_classification_counts": {
-      "not_applicable_to_comparator": 8,
-      "not_selected_for_comparator": 10,
+      "not_applicable_to_comparator": 23,
+      "not_selected_for_comparator": 17,
       "represented_by_selected_interface": 8,
       "targeted_exact_interface": 45
     },
     "family_linked_current_interface_count": 51,
-    "family_linked_replay_candidate_interface_count": 17,
+    "family_linked_replay_candidate_interface_count": 22,
     "unassociated_current_interface_count": 3,
-    "unassociated_replay_candidate_interface_count": 193,
+    "unassociated_replay_candidate_interface_count": 199,
     "families": [
       {
         "problem": 68,
@@ -483,6 +509,20 @@
           }
         ],
         "non_executable_reason": null
+      },
+      {
+        "problem": 68,
+        "family_id": "canonical_factorial_digit_termination",
+        "registry_comparator_disposition": "not_selected_pending_exact_transport",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_pending_exact_transport."
       },
       {
         "problem": 68,
@@ -539,6 +579,20 @@
         "executable_interface_count": 0,
         "packages": [],
         "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_declaration."
+      },
+      {
+        "problem": 68,
+        "family_id": "factorial_analytic_growth_boundaries",
+        "registry_comparator_disposition": "not_selected_compact_calculus_family",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_compact_calculus_family."
       },
       {
         "problem": 243,
@@ -649,6 +703,20 @@
           }
         ],
         "non_executable_reason": null
+      },
+      {
+        "problem": 243,
+        "family_id": "arithmetic_weighted_record_dichotomy",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
       },
       {
         "problem": 249,
@@ -1079,6 +1147,48 @@
         "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_deep_certificate_vocabulary."
       },
       {
+        "problem": 249,
+        "family_id": "totient_twoadic_pulse_blocks",
+        "registry_comparator_disposition": "not_selected_no_configured_statement_firewall",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_no_configured_statement_firewall."
+      },
+      {
+        "problem": 249,
+        "family_id": "totient_fixed_rank_lcm_curvature",
+        "registry_comparator_disposition": "not_selected_no_configured_statement_firewall",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_no_configured_statement_firewall."
+      },
+      {
+        "problem": 249,
+        "family_id": "totient_parity_separated_carry_countermodel",
+        "registry_comparator_disposition": "not_selected_no_configured_statement_firewall",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_no_configured_statement_firewall."
+      },
+      {
         "problem": 251,
         "family_id": "prime_gap_reformulation",
         "registry_comparator_disposition": "targeted",
@@ -1195,9 +1305,9 @@
         "execution_classification": "has_executable_challenge_package",
         "registered_current_interface_count": 2,
         "current_comparator_interface_count": 2,
-        "replay_candidate_interface_count": 0,
-        "executable_package_count": 1,
-        "executable_interface_count": 2,
+        "replay_candidate_interface_count": 2,
+        "executable_package_count": 2,
+        "executable_interface_count": 4,
         "packages": [
           {
             "package_id": "ExternalVerification",
@@ -1208,9 +1318,33 @@
               "Erdos249257.ExternalVerification.coefficientOnlyNoGo",
               "Erdos249257.ExternalVerification.exists_primeGap0_gt"
             ]
+          },
+          {
+            "package_id": "ExternalVerification251BoundedPerturbation",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification251BoundedPerturbation.Challenge",
+            "solution_module": "ExternalVerification251BoundedPerturbation.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification251BoundedPerturbation.exists_rational_bounded_perturbation",
+              "Erdos249257.ExternalVerification251BoundedPerturbation.not_forall_irrational_of_bounded_perturbation_invariant"
+            ]
           }
         ],
         "non_executable_reason": null
+      },
+      {
+        "problem": 251,
+        "family_id": "actual_real_prime_gap_tail",
+        "registry_comparator_disposition": "not_selected_pending_exact_transport",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry deliberately does not select this family for Comparator; comparator_disposition=not_selected_pending_exact_transport."
       },
       {
         "problem": 257,
@@ -1408,9 +1542,9 @@
         "execution_classification": "has_executable_challenge_package",
         "registered_current_interface_count": 1,
         "current_comparator_interface_count": 1,
-        "replay_candidate_interface_count": 0,
-        "executable_package_count": 1,
-        "executable_interface_count": 1,
+        "replay_candidate_interface_count": 1,
+        "executable_package_count": 2,
+        "executable_interface_count": 2,
         "packages": [
           {
             "package_id": "ExternalVerification",
@@ -1419,6 +1553,15 @@
             "solution_module": "ExternalVerification.Solution",
             "interface_names": [
               "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_summable_reciprocal"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification257Strong",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification257Strong.Challenge",
+            "solution_module": "ExternalVerification257Strong.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.Strong257.irrational_erdosSupportSeries_of_summable_reciprocal"
             ]
           }
         ],
@@ -1465,14 +1608,14 @@
       {
         "problem": 257,
         "family_id": "orthogonal_petal_sunflower_reduction",
-        "registry_comparator_disposition": "targeted_conditional_sunflower_reduction",
+        "registry_comparator_disposition": "targeted_legacy_conditional_bouquet_with_stronger_per_entry_interface",
         "registered_comparator_classification": "targeted_exact_interface",
         "execution_classification": "has_executable_challenge_package",
         "registered_current_interface_count": 1,
         "current_comparator_interface_count": 1,
-        "replay_candidate_interface_count": 0,
-        "executable_package_count": 1,
-        "executable_interface_count": 1,
+        "replay_candidate_interface_count": 1,
+        "executable_package_count": 2,
+        "executable_interface_count": 2,
         "packages": [
           {
             "package_id": "ExternalVerification",
@@ -1481,6 +1624,15 @@
             "solution_module": "ExternalVerification.Solution",
             "interface_names": [
               "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification257Strong",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification257Strong.Challenge",
+            "solution_module": "ExternalVerification257Strong.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.Strong257.irrational_erdosSupportSeries_of_orthogonalPetalBouquet_allBase"
             ]
           }
         ],
@@ -1571,6 +1723,128 @@
           }
         ],
         "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "divisibility_weighted_support_irrationality",
+        "registry_comparator_disposition": "not_applicable_full_irrationality_producer_not_formalized",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_full_irrationality_producer_not_formalized."
+      },
+      {
+        "problem": 257,
+        "family_id": "sub_logstar_reciprocal_mass_irrationality",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
+      },
+      {
+        "problem": 257,
+        "family_id": "arbitrary_prime_power_support_irrationality",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
+      },
+      {
+        "problem": 257,
+        "family_id": "variable_exponent_fractional_cover_irrationality",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
+      },
+      {
+        "problem": 257,
+        "family_id": "four_ninths_square_root_repair_windows",
+        "registry_comparator_disposition": "not_selected_for_legacy_comparator_registered_per_entry",
+        "registered_comparator_classification": "not_selected_for_comparator",
+        "execution_classification": "has_executable_challenge_package",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 1,
+        "executable_package_count": 1,
+        "executable_interface_count": 1,
+        "packages": [
+          {
+            "package_id": "ExternalVerification257Strong",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification257Strong.Challenge",
+            "solution_module": "ExternalVerification257Strong.Solution",
+            "interface_names": [
+              "Erdos249257.ExternalVerification.Strong257.mem_iff_greedyBinaryDefect_sqrt_windows"
+            ]
+          }
+        ],
+        "non_executable_reason": null
+      },
+      {
+        "problem": 257,
+        "family_id": "twenty_one_two_anchor_divergence_density",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
+      },
+      {
+        "problem": 257,
+        "family_id": "prime_cofactor_repair_obstruction",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
+      },
+      {
+        "problem": 257,
+        "family_id": "prime_repair_finite_support_rigidity",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
       },
       {
         "problem": 269,
@@ -1755,6 +2029,90 @@
       },
       {
         "problem": 1041,
+        "family_id": "critical_value_separation_connector",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
+      },
+      {
+        "problem": 1041,
+        "family_id": "sharp_collinear_diameter",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
+      },
+      {
+        "problem": 1041,
+        "family_id": "primitive_sparse_quintic_paths",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
+      },
+      {
+        "problem": 1041,
+        "family_id": "translated_cubic_quotient_fibres",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
+      },
+      {
+        "problem": 1041,
+        "family_id": "translated_quartic_quotient_fibres",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
+      },
+      {
+        "problem": 1041,
+        "family_id": "critical_value_mean_budget",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
+      },
+      {
+        "problem": 1041,
         "family_id": "newton_value_decay",
         "registry_comparator_disposition": "not_selected_compact_calculus_family",
         "registered_comparator_classification": "not_selected_for_comparator",
@@ -1876,6 +2234,20 @@
         "executable_interface_count": 0,
         "packages": [],
         "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_theorem."
+      },
+      {
+        "problem": 1041,
+        "family_id": "low_critical_path_certificate",
+        "registry_comparator_disposition": "not_applicable_not_a_lean_proposition",
+        "registered_comparator_classification": "not_applicable_to_comparator",
+        "execution_classification": "intentionally_non_executable",
+        "registered_current_interface_count": 0,
+        "current_comparator_interface_count": 0,
+        "replay_candidate_interface_count": 0,
+        "executable_package_count": 0,
+        "executable_interface_count": 0,
+        "packages": [],
+        "non_executable_reason": "The registry marks Comparator execution as inapplicable to this family; comparator_disposition=not_applicable_not_a_lean_proposition."
       },
       {
         "problem": 1049,
@@ -2024,19 +2396,19 @@
   "registered_claim_coverage": {
     "schema": "plectis.comparator-registered-claim-coverage/1",
     "registry_authority": "docs/claims.json::claims",
-    "registry_digest": "sha256:9973af8db5056df6967d41d750bf3a75359616100cee3d7012899b33ebf4a2ba",
+    "registry_digest": "sha256:c8221e006eeca95fce209e721ce1df8d95441409c21936f41550bd22e2ffa103",
     "registry_digest_definition": "sha256 of canonical JSON rows containing each registered claim id, status, statement, exact declaration anchors, and explicit transports",
-    "registered_claim_count": 131,
-    "classified_claim_count": 131,
+    "registered_claim_count": 132,
+    "classified_claim_count": 132,
     "classification_counts": {
       "cited_only_non_executable": 3,
-      "linked_transport": 33,
-      "missing_formal_transport": 87,
+      "linked_transport": 35,
+      "missing_formal_transport": 86,
       "open_non_executable": 8
     },
-    "formal_claim_count": 120,
-    "linked_transport_claim_count": 33,
-    "missing_formal_transport_count": 87,
+    "formal_claim_count": 121,
+    "linked_transport_claim_count": 35,
+    "missing_formal_transport_count": 86,
     "missing_formal_claim_ids": [
       "adelic_height_obstruction",
       "adjacent_phase_separation_reduction",
@@ -2108,7 +2480,6 @@
       "selected_window_depth18_base",
       "signed_dyadic_moment_substrate",
       "square_crt_correction_suppression",
-      "squared_lambert_gcd_moments",
       "squared_mersenne_enclosure",
       "stern_brocot_cylinder_law",
       "stern_brocot_run_fibonacci_stability",
@@ -4488,7 +4859,7 @@
       {
         "claim_id": "squared_lambert_gcd_moments",
         "claim_status": "proved here",
-        "classification": "missing_formal_transport",
+        "classification": "linked_transport",
         "registered_declarations": [
           {
             "name": "tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series",
@@ -4501,17 +4872,49 @@
             "line": 235
           }
         ],
-        "transport_count": 0,
-        "transports": [],
+        "transport_count": 2,
+        "transports": [
+          {
+            "package_id": "ExternalVerification249SquaredLambert",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification249SquaredLambert.Challenge",
+            "solution_module": "ExternalVerification249SquaredLambert.Solution",
+            "interface_name": "Erdos249257.ExternalVerification249SquaredLambert.tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series",
+            "source_declarations": [
+              {
+                "name": "tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series",
+                "module": "Erdos249257/GcdMomentCalculus.lean",
+                "line": 216
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification249SquaredLambert",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification249SquaredLambert.Challenge",
+            "solution_module": "ExternalVerification249SquaredLambert.Solution",
+            "interface_name": "Erdos249257.ExternalVerification249SquaredLambert.tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
+            "source_declarations": [
+              {
+                "name": "tsum_totient_div_mersenne_sq_eq_gcd_moment_series",
+                "module": "Erdos249257/GcdMomentCalculus.lean",
+                "line": 235
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          }
+        ],
         "source_anchor_coverage": {
           "registered_count": 2,
-          "linked_count": 0,
-          "unlinked_declaration_indices": [
-            0,
-            1
-          ]
+          "linked_count": 2,
+          "unlinked_declaration_indices": []
         },
-        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
       },
@@ -7652,6 +8055,68 @@
           ]
         },
         "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "bounded_perturbation_irrationality_obstruction",
+        "claim_status": "unconditional progress",
+        "classification": "linked_transport",
+        "registered_declarations": [
+          {
+            "name": "exists_rational_bounded_perturbation",
+            "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+            "line": 163
+          },
+          {
+            "name": "not_forall_irrational_of_bounded_perturbation_invariant",
+            "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+            "line": 179
+          }
+        ],
+        "transport_count": 2,
+        "transports": [
+          {
+            "package_id": "ExternalVerification251BoundedPerturbation",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification251BoundedPerturbation.Challenge",
+            "solution_module": "ExternalVerification251BoundedPerturbation.Solution",
+            "interface_name": "Erdos249257.ExternalVerification251BoundedPerturbation.exists_rational_bounded_perturbation",
+            "source_declarations": [
+              {
+                "name": "exists_rational_bounded_perturbation",
+                "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+                "line": 163
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification251BoundedPerturbation",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification251BoundedPerturbation.Challenge",
+            "solution_module": "ExternalVerification251BoundedPerturbation.Solution",
+            "interface_name": "Erdos249257.ExternalVerification251BoundedPerturbation.not_forall_irrational_of_bounded_perturbation_invariant",
+            "source_declarations": [
+              {
+                "name": "not_forall_irrational_of_bounded_perturbation_invariant",
+                "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+                "line": 179
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          }
+        ],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 2,
+          "unlinked_declaration_indices": []
+        },
+        "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
       }

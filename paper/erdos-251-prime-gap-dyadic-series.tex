@@ -497,6 +497,19 @@ independent source of information about consecutive primes.
 Finally, the coarse coefficient profile itself has an exact infinite
 counterexample.
 
+\subsection{A bounded perturbation can change rationality}
+\begin{theorem}[bounded-perturbation obstruction]\label{res:boundedperturbation}
+Suppose $g_n$ are natural numbers and $\sum_{n\ge0}g_n/2^{n+1}$ converges.
+For every integer $M>0$ and cutoff $K$, there are digits $\delta_n\in\{0,1\}$,
+zero for $n<K$, such that $\sum_{n\ge0}(g_n+M\delta_n)/2^{n+1}$ is rational.
+\end{theorem}
+Choose a rational value just above the original sum and use the binary
+expansion of their difference, scaled by $M$, beyond the prescribed prefix.
+The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e2a9177a386c2567a46979c2c7f065c4a839a367/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L163}{construction}
+and its \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e2a9177a386c2567a46979c2c7f065c4a839a367/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L179}{invariant-property consequence}
+are kernel checked: a property shared by every admissible perturbation cannot
+by itself force irrationality. The perturbed digits need not remain prime gaps.
+
 \begin{proposition}[quadratic polynomial-shift countermodel]\label{res:polynomialcountermodel}
 Put
 \[
@@ -520,6 +533,9 @@ and hence unboundedness and nonperiodicity; it also yields
 Finally,
 \lword{Erdos251/PrimeGapDyadicTail.lean}{1654}{polynomialTailOrbit_shift_integral}{every fixed tail shift is integral}.
 \end{proof}
+
+The corresponding dyadic series has value exactly $32$, as shown by the
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e2a9177a386c2567a46979c2c7f065c4a839a367/ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean#L89}{checked rational-value theorem}.
 
 The formal construction checks the
 \href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean\#L1596}{recurrence},

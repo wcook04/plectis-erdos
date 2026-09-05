@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification251BoundedPerturbation.Challenge",
+  "solution_module": "ExternalVerification251BoundedPerturbation.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification251BoundedPerturbation.exists_rational_bounded_perturbation",
+    "Erdos249257.ExternalVerification251BoundedPerturbation.not_forall_irrational_of_bounded_perturbation_invariant"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}

@@ -20,6 +20,7 @@ import build_external_verification as builder
 from build_external_verification import imports_in_text, load_owner, validate
 from run_external_verification import (
     EXPECTED_1049_MISMATCH,
+    EXPECTED_257_MISMATCH,
     EXPECTED_MISMATCH,
     is_expected_negative_rejection,
 )
@@ -492,6 +493,8 @@ class ExternalVerificationContractTest(unittest.TestCase):
 
     def test_infrastructure_failure_cannot_masquerade_as_negative_rejection(self) -> None:
         self.assertTrue(is_expected_negative_rejection(1, EXPECTED_MISMATCH))
+        self.assertTrue(is_expected_negative_rejection(1, EXPECTED_257_MISMATCH, EXPECTED_257_MISMATCH))
+        self.assertFalse(is_expected_negative_rejection(1, EXPECTED_MISMATCH, EXPECTED_257_MISMATCH))
         self.assertTrue(
             is_expected_negative_rejection(1, EXPECTED_1049_MISMATCH, EXPECTED_1049_MISMATCH)
         )

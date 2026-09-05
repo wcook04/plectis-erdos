@@ -7,8 +7,8 @@
 % Build from the public paper directory with `make`.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{3506d189a2660213ec0e53ee29360a464007b8a1}
-\renewcommand{\commitshort}{a43d2c0cd17a}
+\renewcommand{\commit}{66878a31f144c6714af357695e26b07d6653e02c}
+\renewcommand{\commitshort}{66878a31f144}
 \usepackage{longtable}
 \hypersetup{
   pdftitle={Factorial-channel obstructions and exact orbit boundaries for Erdős Problem 68},
@@ -428,12 +428,12 @@ counts the loss from pairwise gcds by the cubic exponent
 $\binom{2t+1}{3}$.  A Stirling estimate then converts the factorial upper bound
 on $M$ into the displayed lower bound for $R$.  The pointwise statement is
 checked at
-\lword{Erdos68/ChannelIntegralCongruence.lean}{1084}{square_subsequence_radius_three_halves_lower}{the sharp radius theorem},
+\lword{Erdos68/ChannelIntegralCongruence.lean}{1222}{square_subsequence_radius_three_halves_lower}{the sharp radius theorem},
 and its sequence form at
-\lword{Erdos68/ChannelIntegralCongruence.lean}{1103}{no_eventual_square_subsequence_three_halves_upper}{the eventual no-go theorem}.
+\lword{Erdos68/ChannelIntegralCongruence.lean}{1241}{no_eventual_square_subsequence_three_halves_upper}{the eventual no-go theorem}.
 A coarser checked form says that $R(t)+1$ cannot be $o(t^3)$ under the
 corresponding hypotheses from $t\ge4096$ onward
-\lword{Erdos68/ChannelIntegralCongruence.lean}{905}{not_isLittleO_square_subsequence_radius}{the little-o obstruction}.
+\lword{Erdos68/ChannelIntegralCongruence.lean}{1043}{not_isLittleO_square_subsequence_radius}{the little-o obstruction}.
 
 The theorem does not show that a kernel attached to the factorial-gap series
 has vanishing channels through $2t^2$, nor does it construct the positive
@@ -516,7 +516,7 @@ A second, independent argument works on the rational grid rather than on channel
 Let $H$ be a partial sum and $q$ a candidate denominator.  The kernel checks
 the algebraic grid threshold: writing $qH=k+r$ and $q(\Ser-H)=u$, the next
 $q^{-1}$ grid point $(k+1)/q$ lies below $\Ser$ exactly when $1\le r+u$.  It
-also checks the \lword{Erdos68/FactorialZeroPlateau.lean}{106}{factorialGrid_plateau}{factorial plateau theorem}: if $H<G\le \Ser$, if $n!G$ is
+also checks the \lword{Erdos68/FactorialGapPlateauCore.lean}{82}{factorialGrid_plateau}{factorial plateau theorem}: if $H<G\le \Ser$, if $n!G$ is
 integral, and if $n!(\Ser-H)<1$, then the strict successor of $n!H$ and the
 canonical floor of $n!\Ser$ are the same grid integer.
 
@@ -1403,9 +1403,9 @@ modulus is
  A_n=\prod_{\substack{q\mid B_n\\
              v_q(v_n)<v_q(n!-1)}}q^{v_q(n!-1)}.
 \]
-Lean proves the \lword{Erdos68/PrimeZeroBranch.lean}{5557}{factorialGapRepeatedBirthAmplificationModulus_dvd_succ_den}{divisibility $A_n\mid v_{n+1}$}
+Lean proves the \lword{Erdos68/PrimeZeroBranch.lean}{5604}{factorialGapRepeatedBirthAmplificationModulus_dvd_succ_den}{divisibility $A_n\mid v_{n+1}$}
 and, when $A_n>1$, the
-\lword{Erdos68/PrimeZeroBranch.lean}{5572}{predecessorGapNumeratorNat_mod_repeatedBirthAmplificationModulus_ne_zero}{nonzero numerator projection}
+\lword{Erdos68/PrimeZeroBranch.lean}{5619}{predecessorGapNumeratorNat_mod_repeatedBirthAmplificationModulus_ne_zero}{nonzero numerator projection}
 modulo the whole product.
 
 \begin{problem}[cofinal valuation amplification]\label{prob:amplification68}
@@ -1474,7 +1474,7 @@ Archimedean cylinder.
 \subsection*{4. Failure of the two exact doubled-prime branches}
 
 For every odd prime $p$, the
-\lword{Erdos68/FactorialZeroPlateau.lean}{1352}{sq_dvd_double_strictFacTop_factorialGapPrefix_iff}{doubled-prime criterion} is
+\lword{Erdos68/FactorialZeroPlateauSupplement.lean}{257}{sq_dvd_double_strictFacTop_factorialGapPrefix_iff}{doubled-prime criterion} is
 \[
  p^2\mid Z_{2p}
  \quad\Longleftrightarrow\quad
@@ -1615,11 +1615,11 @@ start of this note.
 \item \lref{Erdos68/AdjacentUnitCarryWindow.lean}{215}{twoStep_den_mul_transitionNormalizers}
 \item \lref{Erdos68/AdjacentUnitCarryWindow.lean}{243}{adjacentUnitCarryWindowDen_eq_twoStep_den}
 \item \lref{Erdos68/AdjacentUnitCarryWindow.lean}{337}{adjacentUnitCarryWindowOffset_eq_twoStep_reducedNumerator}
-\item \lref{Erdos68/FactorialZeroPlateau.lean}{876}{rational_denominator_ge_of_nonunit_carry}
-\item \lref{Erdos68/FactorialZeroPlateau.lean}{940}{sixty_seven_le_rational_denominator}
-\item \lref{Erdos68/FactorialZeroPlateau.lean}{1090}{irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses}
-\item \lref{Erdos68/FactorialZeroPlateau.lean}{953}{irrational_factorialGapSeries_of_cofinal_nonunit_carries}
-\item \lref{Erdos68/PrimeZeroBranch.lean}{6099}{factorialGap_zero_branch_iff_lower_endpoint_cylinder}
+\item \lref{Erdos68/FactorialGapPlateauCore.lean}{812}{rational_denominator_ge_of_nonunit_carry}
+\item \lref{Erdos68/FactorialZeroPlateauCertificates.lean}{136}{sixty_seven_le_rational_denominator}
+\item \lref{Erdos68/FactorialGapPlateauCore.lean}{986}{irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses}
+\item \lref{Erdos68/FactorialGapPlateauCore.lean}{945}{irrational_factorialGapSeries_of_cofinal_nonunit_carries}
+\item \lref{Erdos68/PrimeZeroBranch.lean}{6146}{factorialGap_zero_branch_iff_lower_endpoint_cylinder}
 \item \lref{Erdos68/EndpointWeightedPrivateSupport.lean}{4766}{factorialBlock_unitFactorPairFloor_scale_iff}
 \item \lref{Erdos68/PrimeUnitTranslator.lean}{1559}{exists_cramerFactorialGridResidual_eq_det_mul_factorialGapSeries_add_int}
 \item \lref{Erdos68/DivisorFactorialCentre.lean}{34}{residualCentreTerm}
@@ -1651,11 +1651,11 @@ start of this note.
 \item \lref{Erdos68/FactorialChannelCertificate.lean}{140}{lambda34_channel_ge_five}
 \item \lref{Erdos68/FactorialChannelCertificate.lean}{151}{lambda34ResidualOfTail}
 \item \lref{Erdos68/FactorialChannelCertificate.lean}{156}{lambda34_residual_bounds}
-\item \lref{Erdos68/ChannelIntegralCongruence.lean}{868}{square_subsequence_radius_cubic_lower}
-\item \lref{Erdos68/ChannelIntegralCongruence.lean}{885}{no_eventual_square_subsequence_cubic_upper}
-\item \lref{Erdos68/ChannelIntegralCongruence.lean}{905}{not_isLittleO_square_subsequence_radius}
-\item \lref{Erdos68/ChannelIntegralCongruence.lean}{1084}{square_subsequence_radius_three_halves_lower}
-\item \lref{Erdos68/ChannelIntegralCongruence.lean}{1103}{no_eventual_square_subsequence_three_halves_upper}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{1006}{square_subsequence_radius_cubic_lower}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{1023}{no_eventual_square_subsequence_cubic_upper}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{1043}{not_isLittleO_square_subsequence_radius}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{1222}{square_subsequence_radius_three_halves_lower}
+\item \lref{Erdos68/ChannelIntegralCongruence.lean}{1241}{no_eventual_square_subsequence_three_halves_upper}
 \end{itemize}
 
 \begingroup

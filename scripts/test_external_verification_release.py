@@ -732,6 +732,14 @@ def synthetic_repository(
             "negative_expected_diagnostic": diagnostic,
         },
         "programme_local_checks": {
+            "erdos_257_strong_negative": {
+                "config": "verification/comparator-257-strong-negative-mismatch.json",
+                "config_digest": digest(root / "verification/comparator-257-strong-negative-mismatch.json"),
+                "negative_mismatch_comparator_exit": 1,
+                "negative_fixture_rejected": True,
+                "negative_log_digest": digest(runtime_log_dir / "artifacts-257-strong-negative.log"),
+                "negative_expected_diagnostic": contract["programme_local_checks"]["erdos_257_strong_negative"]["expected_negative_diagnostic"],
+            },
             "erdos_1049_numerical_height": {
                 "config": "verification/comparator-1049-numerical-height.json",
                 "config_digest": digest(
@@ -865,6 +873,12 @@ def test_release_manifest() -> None:
 
         base_receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
         receipt_adversaries = [
+            (('programme_local_checks', 'erdos_257_strong_negative', 'negative_mismatch_comparator_exit'), 0, 'Strong257 negative fixture was not rejected'),
+            (('programme_local_checks', 'erdos_257_strong_negative', 'negative_mismatch_comparator_exit'), False, 'Strong257 negative fixture was not rejected'),
+            (('programme_local_checks', 'erdos_257_strong_negative', 'negative_fixture_rejected'), False, 'Strong257 negative fixture was not rejected'),
+            (('programme_local_checks', 'erdos_257_strong_negative', 'negative_log_digest'), None, 'Strong257 negative log digest'),
+            (('programme_local_checks', 'erdos_257_strong_negative', 'negative_expected_diagnostic'), 'different theorem', 'Strong257 negative diagnostic'),
+            (('programme_local_checks', 'erdos_257_strong_negative', 'config_digest'), 'sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 'Strong257 negative config digest'),
             (("ci", "repository"), "attacker/fork", "different repository"),
             (("ci", "workflow"), "Untrusted CI", "different workflow"),
             (("ci", "github_actions"), False, "not produced in GitHub Actions"),

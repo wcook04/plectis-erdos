@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:6d133ebbc9c0116915b2fa69ebcf0238579e3e84206ba86f7723cd65da8cc6f5",
-  "module_count": 1119,
-  "synopsis_count": 924,
+  "source_fingerprint": "sha256:3cea6742dee47e0876b54961f0609c43ac24d123abc5befa457d8bc05e196b22",
+  "module_count": 1126,
+  "synopsis_count": 931,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -136,6 +136,11 @@
       "id": "Erdos249257.BooleanMobiusSkippedCoreExactRow",
       "path": "Erdos249257/BooleanMobiusSkippedCoreExactRow.lean",
       "synopsis": "Exact upper-half fill from a skipped Boolean Mersenne core Suppose a Boolean support `D ⊆ {2, …, c - 1}` is still below one half, but its deficit is smaller than the next Mersenne weight at rank `c`. At the usual odd endpoint `2c - 1`, the rank-`c` quotient is the top binary coin and can obstruct the direct suffix fill. One row earlier, at `M = 2c - 2`, the same deficit is strictly below the complete upper-half window. Hence it has an exact Boolean binary realization of width `c - 1`. This is an unconditional finite-row producer. It does not assert that the skipped ranks are cofinal; that is the remaining local-to-global supply issue."
+    },
+    {
+      "id": "Erdos249257.BouquetReciprocalIrrationality",
+      "path": "Erdos249257/BouquetReciprocalIrrationality.lean",
+      "synopsis": "Bouquet irrationality from reciprocal summability The support-class conclusion follows from the actual petal reciprocal bound. The older forced-slot selector is unnecessary for this irrationality theorem."
     },
     {
       "id": "Erdos249257.CampbellShiftSynchronization",
@@ -3973,9 +3978,19 @@
       "synopsis": "Erdős #251: the ±2 wall, and the affine 2-adic escape that removes it `PrimeGapDyadicTail` ends at `not_eventuallyIntegralTailShift_of_cofinal_small_mismatch`: to rule out eventual integrality of a fixed shift it asks for cofinally many **adjacent pairs** of shifts of modulus `< 1` whose digits differ. That producer is far more rigid than its wording suggests. The ±2 wall From `tailShift_succ` the digit is `δ = 2·T_h(N) - T_h(N+1)`. Two unit windows force `|δ| < 3`, and for actual prime gaps every digit is even, so a nonzero digit under the requested hypotheses is **exactly `±2`** (`digit_eq_two_or_neg_two_of_small_pair`), with the sign pinned to a half-unit window (`shift_gt_half_of_digit_eq_two` and `shift_lt_neg_half_of_digit_eq_neg_two`). For `h = 1` the requested supply is therefore: cofinally many adjacent prime gaps differing by exactly `2`. Sign changes alone — the standard input — do not deliver a prescribed magnitude. The replacement Every step of the recurrence buys one exact 2-adic bit instead. If the shift is integral then one further step makes it *even* (`evenIntegral_succ`), and `r` further steps confine it to a single affine class modulo `2^{r+1}` determined by the observed digit block: `T_h(N+r) ∈ -B_{h,N,r} + 2^{r+1}·ℤ` (`affinePowTwo_of_evenIntegral`). Escaping *that* lattice cofinally already rules out eventual integrality (`not_eventuallyIntegralTailShift_of_cofinal_affinePowTwo_escape`). This is a strictly weaker demand than the adjacent-small-pair certificate: * only **one** complete tail shift is tested, not two adjacent ones; * no archimedean unit "
     },
     {
+      "id": "ErdosProblems.Erdos251.BoundedPerturbationCountermodel",
+      "path": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+      "synopsis": "Bounded perturbations of dyadic digit series For a natural-digit dyadic series with sum `S`, every positive integer `M`, every cutoff `K`, and every real `r` satisfying `S < r < S + M / 2^K`, binary digits `δ_n` can be chosen so that Σ_{n ≥ 0} (g_n + M δ_n) / 2^{n+1} = r, with `δ_n = 0` for `n < K`. The construction takes the binary expansion of `(r-S)/M`: its first `K` digits vanish, and its finite floor telescope converges to that number. Density of the rationals then supplies a rational perturbed series, including when the original digits are the consecutive prime gaps. Each modified gap is between `g_n` and `g_n + M`, agrees with `g_n` modulo `M`, and leaves the prescribed initial segment unchanged. Consequently a property preserved under all these perturbations cannot, by itself, imply irrationality. The modified digits need not be prime gaps; the theorem makes no assertion about the rationality of the original prime-gap series."
+    },
+    {
       "id": "ErdosProblems.Erdos251.OrderLatticeDiagonal",
       "path": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
       "synopsis": "Erdős #251: the integral shifts form an order lattice, and one schedule decides Two structural refinements of the dyadic tail criterion. **The invariant is the multiplicative order, not a totient.** `tailShift_integral_iff_orderOf_dvd` : at any basepoint `N`, `tailShift T h N ∈ ℤ ↔ orderOf (2 : ZMod (T N).den) ∣ h`. So the integral shift lengths form a single principal lattice. Euler's totient is only a (possibly very non-minimal) witness. When the denominator is even the order is `0`, and the statement correctly says that *no positive* shift is integral. **One predetermined schedule decides irrationality.** `irrational_initial_iff_nonintegral_on_schedule` : any schedule `s` that tends to infinity, is eventually divisible by every positive integer, and is positive, already decides the problem on the *diagonal* pairs `(N, h) = (s j, s j)`. The corpus criterion quantifies over all shift lengths and all basepoints; this replaces both quantifiers by one predetermined sequence. The factorial schedule is the corollary `irrational_initial_iff_all_factorialDiagonal_nonintegral`; `lcm (1..j)` works identically and is much smaller. Erdős #251 remains open: producing the cofinal misses is still the missing prime-theoretic input."
+    },
+    {
+      "id": "ErdosProblems.Erdos251.PolynomialGapSeriesValue",
+      "path": "ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean",
+      "synopsis": "Erdős #251: the polynomial-gap countermodel series has the rational value `32` `PrimeGapDyadicTail` records the exact infinite countermodel `g_n = 2(n^2 + 4n + 2)`, `T_n = 2(n+4)^2` to coarse prime-gap arguments. The positive even gap series `Σ_{j ≥ 1} g_j / 2^j` has the rational value `T_0 = 32`. This module proves it in Lean. The finite telescope `Σ_{j ≤ N} g_j / 2^j = 32 - T_N / 2^N` is exact rational algebra from the recurrence; the terminal term `2(N+4)^2 / 2^N` tends to zero by polynomial against exponential growth; the terms are nonnegative, so the partial-sum limit is the `HasSum`. No ratio bound is needed. The countermodel is not the actual prime-gap word and nothing here bears on Erdős #251 itself."
     },
     {
       "id": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
@@ -3991,6 +4006,11 @@
       "id": "ErdosProblems.Erdos257.ActualUpperSuccessorCounterexampleEndpoint",
       "path": "ErdosProblems/Erdos257/ActualUpperSuccessorCounterexampleEndpoint.lean",
       "synopsis": "Erdős #257: actual upper-successor counterexample endpoint The realized upper/right-run analysis reaches half-membership from the exact `SeamActualUpperSuccessorLinearEscape` hypothesis. This module propagates that result to the problem-level endpoint: an infinite reciprocal-Mersenne support of exact value `1/2`, and hence failure of the universal irrationality assertion. No successor-linear escape certificate is constructed here. The theorems are conditional consequences of that open producer and do not solve Erdős Problem 257."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.BatchReturnSynthesis",
+      "path": "ErdosProblems/Erdos257/BatchReturnSynthesis.lean",
+      "synopsis": "Finite repair deadlines and return transport The September 2026 return batch proves a converse to the cofinal repair consumer in ordinary mathematics. Combining that converse with the existing support-uniform square-root tail bound gives more: every surviving orbit repairs within a square-root sized window. This is an exact equivalence at 4/9, not a proof that the repair producer holds. The analytic returns also use close returns outside reciprocal summability. Their radix transport must therefore accept close returns directly, without silently retaining the older reciprocal-summability hypothesis."
     },
     {
       "id": "ErdosProblems.Erdos257.FatalBorrowCofiniteCarryTransfer",
@@ -4028,6 +4048,11 @@
       "synopsis": "Erdős #257: the causal seven-column producer for `4/9` This module turns the surviving modulus-`120` computation into an exact Lean interface. The causal load is the union of selected divisors visible at the three earlier ranks `n/2`, `n/3`, and `n/5`. Inclusion-exclusion gives the seven-column formula without natural-number subtraction, and the union embeds in the full divisor load at `n`. The all-depth seven-column inequality is deliberately retained as a named hypothesis. Proving it would give actual repairs at every positive multiple of `120`, hence the infinite rational `4/9` counterexample packaged by `FourNinthsCofinalRepairConsumer`."
     },
     {
+      "id": "ErdosProblems.Erdos257.GreedyRepairCriterion",
+      "path": "ErdosProblems/Erdos257/GreedyRepairCriterion.lean",
+      "synopsis": "A repair criterion for every nonnegative real target The four-ninths argument does not require a rational or periodic target. For the actual greedy support of `x`, subtract its Lambert prefix integer from `floor (2^N x)`. Membership is equivalent to cofinal nonincreases of this natural defect, and also to a repair in every explicit square-root window. Nonmembership forces geometric growth through the actual fatal gap."
+    },
+    {
       "id": "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
       "path": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
       "synopsis": "Erdős #257: the rational-half counterexample frontier This module records two distinct boundary results. First, a `HalfTerminalOnlyScaledVanishingSequence` would produce an infinite support whose reciprocal-Mersenne subseries is exactly `1/2`, and would therefore refute the universal irrationality assertion. No such sequence is constructed here; finite suffix-cylinder computations do not supply the required cofinal hypothesis. Second, no finite Boolean support using ranks at least two can sum to `1/21`. This does not construct a representation of `1/21` or prove its membership in the achievement set. Neither result settles Erdős #257."
@@ -4056,6 +4081,16 @@
       "id": "ErdosProblems.Erdos257.SquarefreeSupportIncidence",
       "path": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
       "synopsis": "Erdős #257: the squarefree support against the block-certificate engines For a support `A ⊆ ℕ` the Lambert rearrangement carries the value `∑_{a ∈ A} 1/(b^a − 1)` onto the power series whose coefficient at `n` is the divisor incidence `sc_A(n) = #{d ∣ n : d ∈ A}` — this is `Erdos249257.supportCoeff`. The two engines in `Erdos249257.CertificateKernel` that accept an *arbitrary* support consume block certificates for that coefficient sequence: * `irrational_erdosSupportSeries_of_weighted_coeff_certificates`, whose first block is certified digitwise (`b^r ∣ sc_A(N+r)` for `1 ≤ r ≤ K`); and * `irrational_erdosSupportSeries_of_weighted_coeff_carry_certificates`, whose first block is certified in carried aggregate (`b^K ∣ ∑_{r ≤ K} sc_A(N+r)·b^(K−r)`), which is strictly weaker. This file settles the squarefree support `A = {d ≥ 2 : d squarefree}` against both, and then records — honestly — that the obstruction is a property of the *coefficient normalisation* rather than of the support. What is proved 1. `squarefreeIncidence_eq`: `sc_A(n) = 2^ω(n) − 1`, hence (`odd_squarefreeIncidence`) odd at every `n ≥ 2`, and never zero there (`one_le_squarefreeIncidence`). 2. `no_carry_block_certificate`: for every **even** base `b ≥ 2` the precision `q = b²` admits no carry block certificate at all — no `(N, K, L, C)`. The argument is not merely \"the opening parity fails\": the parity kills every `K ≥ 1` (`dvd_last_of_carry_block` shows both block conditions force `b ∣ sc_A(N+K)`), and the *density* of the support kills `K = 0`, because `sc_A ≥ 1` from `n = 2` on leaves no room under the arith"
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WeightedSupportAveraging",
+      "path": "ErdosProblems/Erdos257/WeightedSupportAveraging.lean",
+      "synopsis": "Finite averaging for divisibility-weighted supports The weighted support proof needs two finite estimates before taking any limit. The orbit estimate retains the geometric GCD factor discarded by the reciprocal-mass bound. The observation-length estimate sums incomplete-period errors across dyadic scales, charging each conductor only once. These are the actual finite estimates used in the analytic proof. The prime-part decomposition and the final choice of scales are separate steps."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WeightedSupportLimits",
+      "path": "ErdosProblems/Erdos257/WeightedSupportLimits.lean",
+      "synopsis": "Infinite-support observation errors The dyadic error estimate only needs summability after division by the conductor. The unweighted atom costs may have divergent sum. Every finite set of observation lengths sees a finite union of conductors, so the finite Fubini inequality applies before any infinite sum is bounded."
     },
     {
       "id": "ErdosProblems.Erdos269.BlockMassEngines",

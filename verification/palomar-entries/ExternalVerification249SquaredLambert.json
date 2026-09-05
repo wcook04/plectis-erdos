@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification249SquaredLambert.Challenge",
+  "solution_module": "ExternalVerification249SquaredLambert.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification249SquaredLambert.tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series",
+    "Erdos249257.ExternalVerification249SquaredLambert.tsum_totient_div_mersenne_sq_eq_gcd_moment_series"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}

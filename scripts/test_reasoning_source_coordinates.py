@@ -63,6 +63,11 @@ def check_comment_projection() -> None:
 
 def main() -> int:
     check_comment_projection()
+    parsed = coordinates.Resolver._parse_source(
+        "Sample.lean", "-- theorem hidden\n theorem\n    wrappedName : True := by trivial\n"
+    )
+    require(parsed.declarations == (("wrappedName", 2),),
+            "multiline declaration did not retain its keyword source line")
     with tempfile.TemporaryDirectory(prefix="reasoning-coordinate-test-") as temporary:
         root = Path(temporary)
         run_git(root, "init", "--quiet")
