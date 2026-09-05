@@ -106,6 +106,24 @@ def lake_source_roots(root: Path = ROOT) -> tuple[Path, ...]:
     return tuple(sorted(roots, key=lambda path: len(path.parts), reverse=True))
 
 
+def logical_source_root(
+    source: Path,
+    root: Path = ROOT,
+    source_roots: tuple[Path, ...] | None = None,
+) -> Path:
+    """Return the Lake source root that determines ``source``'s module name."""
+
+    resolved_source = source.resolve()
+    try:
+        return next(
+            candidate
+            for candidate in source_roots or lake_source_roots(root)
+            if resolved_source.is_relative_to(candidate)
+        )
+    except StopIteration as error:
+        raise ValueError(f"Lean source is outside the project: {source}") from error
+
+
 def discover(root: Path = ROOT) -> dict[str, Path]:
     modules: dict[str, Path] = {}
     source_roots = lake_source_roots(root)
@@ -119,12 +137,14 @@ def discover(root: Path = ROOT) -> dict[str, Path]:
                 continue
             source = directory_path / filename
             resolved_source = source.resolve()
-            logical_root = next(
-                candidate
-                for candidate in source_roots
-                if resolved_source.is_relative_to(candidate)
-            )
+            logical_root = logical_source_root(resolved_source, root, source_roots)
             module = module_name(resolved_source, logical_root)
+            existing = modules.get(module)
+            if existing is not None and existing.resolve() != resolved_source:
+                raise ValueError(
+                    f"duplicate logical Lean module {module}: "
+                    f"{existing.relative_to(root)} and {source.relative_to(root)}"
+                )
             modules[module] = source
     return modules
 
@@ -228,29 +248,39 @@ def lake_library_names(root: Path = ROOT) -> set[str] | None:
 
     if not (root / "lakefile.toml").is_file():
         return None
-    names: set[str] = set()
-    for library in lake_library_rows(root):
-        name = library.get("name")
-        if isinstance(name, str):
-            names.add(name)
-        for glob in library.get("globs", []):
-            if isinstance(glob, str):
-                names.add(glob.removesuffix(".*"))
-    return names
+    return {
+        name
+        for library in lake_library_rows(root)
+        if isinstance((name := library.get("name")), str)
+    }
 
 
 def is_registered_lake_module(name: str, root: Path = ROOT) -> bool:
     """Tell whether a discovered module name is a valid Lake library target."""
 
-    library_names = lake_library_names(root)
-    if library_names is None:
+    libraries = lake_library_rows(root)
+    if not (root / "lakefile.toml").is_file():
         # Small unit-test fixture roots do not need a Lake manifest to exercise
         # the historical module-target path.
         return True
-    return any(
-        name == library or name.startswith(f"{library}.")
-        for library in library_names
-    )
+    for library in libraries:
+        library_name = library.get("name")
+        if not isinstance(library_name, str):
+            continue
+        globs = library.get("globs")
+        if globs is None:
+            if name == library_name or name.startswith(f"{library_name}."):
+                return True
+            continue
+        for pattern in globs:
+            if not isinstance(pattern, str):
+                continue
+            if pattern.endswith(".*"):
+                if name.startswith(f"{pattern.removesuffix('.*')}."):
+                    return True
+            elif name == pattern:
+                return True
+    return False
 
 
 def direct_source_targets(
@@ -333,17 +363,14 @@ def changed_lean_paths(base: str, root: Path = ROOT) -> set[Path]:
 def changed_targets_from_paths(
     changed_paths: Iterable[Path], modules: dict[str, Path], root: Path = ROOT
 ) -> list[str]:
-    resolved_root = root.resolve()
-    changed: set[str] = set()
-    for path in changed_paths:
-        resolved_path = path.resolve()
-        try:
-            name = module_name(resolved_path, resolved_root)
-        except ValueError:
-            continue
-        if name in modules and modules[name].resolve() == resolved_path:
-            changed.add(name)
-    return sorted(changed)
+    modules_by_path = {source.resolve(): name for name, source in modules.items()}
+    return sorted(
+        {
+            modules_by_path[resolved]
+            for path in changed_paths
+            if (resolved := path.resolve()) in modules_by_path
+        }
+    )
 
 
 def changed_targets(
@@ -657,15 +684,33 @@ def run_final_authority_check(
 
 
 def run_source_authority_check(
-    sources: Iterable[Path], root: Path = ROOT
+    names: Iterable[str], modules: dict[str, Path], root: Path = ROOT
 ) -> int:
-    """Check unregistered Lean sources directly through the pinned Lake env."""
+    """Compile unregistered modules into Lake's importable output directory.
+
+    ``lake env`` supplies the dependency search path.  Explicit ``-R`` keeps
+    Lean's calculated module identity aligned with discovery for ``srcDir``
+    sources, while ``-o`` makes earlier direct modules importable by later
+    dependency waves.
+    """
 
     resolved_root = root.resolve()
-    for source in sources:
+    for name in names:
+        source = modules[name]
         relative_source = source.resolve().relative_to(resolved_root)
+        source_root = logical_source_root(source, root)
+        output = olean(name, root).resolve()
+        output.parent.mkdir(parents=True, exist_ok=True)
         result = _run(
-            lake_command("env", "lean", relative_source.as_posix()),
+            lake_command(
+                "env",
+                "lean",
+                "-R",
+                str(source_root),
+                "-o",
+                str(output),
+                relative_source.as_posix(),
+            ),
             cwd=root,
             timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
             check=False,
@@ -842,10 +887,11 @@ def main(argv: list[str] | None = None) -> int:
         package_code = prepare_dependency_packages(root, args.singleflight_state_root)
         if package_code:
             return package_code
-    direct_targets = direct_source_targets(target_modules, modules, root)
-    direct_target_names = set(direct_targets)
     graph = reachable_graph(target_modules, modules)
-    build_waves = waves(reachable(target_modules, graph), graph)
+    selected_modules = reachable(target_modules, graph)
+    direct_targets = direct_source_targets(selected_modules, modules, root)
+    direct_target_names = set(direct_targets)
+    build_waves = waves(selected_modules, graph)
     use_lake_staleness = args.lake_staleness
 
     staleness_label = "mtime"
@@ -858,7 +904,7 @@ def main(argv: list[str] | None = None) -> int:
         # verifies content traces and catches any independent stale output.
         lake_targets = sorted(
             name
-            for name in reachable(target_modules, graph)
+            for name in selected_modules
             if name not in direct_target_names
         )
         missing_targets = missing_olean_targets(lake_targets, root)
@@ -915,15 +961,34 @@ def main(argv: list[str] | None = None) -> int:
             print(line, flush=True)
         return 0
 
-    for wave in pending:
-        current = (
-            wave
-            if use_lake_staleness
-            else [name for name in wave if stale(name, modules, graph, root)]
-        )
-        failed = build_wave(current, args.jobs, root)
-        if failed:
-            raise RuntimeError("module prebuild failed: " + ", ".join(sorted(failed)))
+    pending_names = {name for wave in pending for name in wave}
+    direct_announced = False
+    for wave in build_waves:
+        current = [
+            name
+            for name in wave
+            if name in pending_names
+            and (
+                use_lake_staleness
+                or stale(name, modules, graph, root)
+            )
+        ]
+        if current:
+            failed = build_wave(current, args.jobs, root)
+            if failed:
+                raise RuntimeError(
+                    "module prebuild failed: " + ", ".join(sorted(failed))
+                )
+        direct_names = [name for name in wave if name in direct_target_names]
+        if direct_names and not direct_announced:
+            print(
+                "lean-fast-build: direct Lake environment source check",
+                flush=True,
+            )
+            direct_announced = True
+        source_result = run_source_authority_check(direct_names, modules, root)
+        if source_result:
+            return source_result
 
     lake_target_names = list(
         dict.fromkeys(
@@ -936,11 +1001,6 @@ def main(argv: list[str] | None = None) -> int:
         lake_result = run_final_authority_check(lake_target_names, root)
         if lake_result:
             return lake_result
-    if direct_targets:
-        print("lean-fast-build: direct Lake environment source check", flush=True)
-    source_result = run_source_authority_check(direct_targets.values(), root)
-    if source_result:
-        return source_result
     if args.singleflight_worker and root.resolve() == singleflight.ROOT.resolve():
         compacted = lean_package_share.compact_setup_json(root)
         print(

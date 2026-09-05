@@ -29,19 +29,75 @@ class LeanFastBuildTests(unittest.TestCase):
     def test_discovery_uses_declared_lake_source_roots(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            (root / "examples").mkdir()
+            (root / "examples" / "Examples").mkdir(parents=True)
             (root / "examples" / "Examples.lean").write_text(
-                "-- example\n", encoding="utf-8"
+                "import Examples.Leaf\n", encoding="utf-8"
+            )
+            (root / "examples" / "Examples" / "Leaf.lean").write_text(
+                "-- leaf\n", encoding="utf-8"
+            )
+            (root / "examples" / "Loose.lean").write_text(
+                "-- unregistered orphan\n", encoding="utf-8"
             )
             (root / "lakefile.toml").write_text(
                 '[[lean_lib]]\nname = "Examples"\nsrcDir = "examples"\n',
                 encoding="utf-8",
             )
 
+            modules = fast.discover(root)
             self.assertEqual(
-                fast.discover(root),
-                {"Examples": root / "examples" / "Examples.lean"},
+                modules,
+                {
+                    "Examples": root / "examples" / "Examples.lean",
+                    "Examples.Leaf": root / "examples" / "Examples" / "Leaf.lean",
+                    "Loose": root / "examples" / "Loose.lean",
+                },
             )
+            self.assertEqual(fast.local_graph(modules)["Examples"], {"Examples.Leaf"})
+            self.assertTrue(fast.is_registered_lake_module("Examples", root))
+            self.assertTrue(fast.is_registered_lake_module("Examples.Leaf", root))
+            self.assertFalse(fast.is_registered_lake_module("Loose", root))
+
+    def test_explicit_library_globs_do_not_register_prefix_extensions(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "adapters" / "Variants").mkdir(parents=True)
+            for relative in (
+                "Adapter.lean",
+                "Variants.lean",
+                "Variants/Child.lean",
+            ):
+                (root / "adapters" / relative).write_text(
+                    "-- source\n", encoding="utf-8"
+                )
+            (root / "lakefile.toml").write_text(
+                '[[lean_lib]]\nname = "Adapter"\nsrcDir = "adapters"\n'
+                'globs = ["Adapter", "Variants"]\n'
+                '[[lean_lib]]\nname = "Family"\nglobs = ["Family.*"]\n',
+                encoding="utf-8",
+            )
+
+            self.assertTrue(fast.is_registered_lake_module("Adapter", root))
+            self.assertTrue(fast.is_registered_lake_module("Variants", root))
+            self.assertFalse(fast.is_registered_lake_module("Variants.Child", root))
+            self.assertTrue(fast.is_registered_lake_module("Family.Leaf", root))
+            self.assertFalse(fast.is_registered_lake_module("Family", root))
+
+    def test_discovery_rejects_duplicate_logical_module_across_source_roots(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "src").mkdir()
+            (root / "Pkg.lean").write_text("-- root\n", encoding="utf-8")
+            (root / "src" / "Pkg.lean").write_text(
+                "-- alternate root\n", encoding="utf-8"
+            )
+            (root / "lakefile.toml").write_text(
+                '[[lean_lib]]\nname = "Pkg"\nsrcDir = "src"\n',
+                encoding="utf-8",
+            )
+
+            with self.assertRaisesRegex(ValueError, "duplicate logical Lean module Pkg"):
+                fast.discover(root)
 
     def test_problem_library_preserves_interpreter_stack_headroom(self) -> None:
         lakefile = tomllib.loads((fast.ROOT / "lakefile.toml").read_text(
@@ -686,6 +742,23 @@ import Pkg.TooLate
                     call.kwargs["timeout"], fast.GIT_COMMAND_TIMEOUT_SECONDS
                 )
 
+    def test_changed_target_keeps_src_dir_logical_identity(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "examples" / "Examples" / "Leaf.lean"
+            source.parent.mkdir(parents=True)
+            source.write_text("-- leaf\n", encoding="utf-8")
+            (root / "lakefile.toml").write_text(
+                '[[lean_lib]]\nname = "Examples"\nsrcDir = "examples"\n',
+                encoding="utf-8",
+            )
+            modules = fast.discover(root)
+
+            self.assertEqual(
+                fast.changed_targets_from_paths([source], modules, root),
+                ["Examples.Leaf"],
+            )
+
     def test_lake_commands_use_clean_environment_and_bounded_deadline(self) -> None:
         completed = fast.subprocess.CompletedProcess([], 0, "", "")
         with mock.patch.object(fast.subprocess, "run", return_value=completed) as run:
@@ -936,9 +1009,18 @@ import Pkg.TooLate
                         "build",
                         "+Pkg.Leaf",
                     ),
-                    # The missing registered output is prebuilt under the
-                    # bounded scheduler, then checked again at the serialized
-                    # Lake authority boundary before the direct source runs.
+                    # The missing registered output is prebuilt before the
+                    # direct source, then checked again at the final serialized
+                    # Lake authority boundary.
+                    fast.lake_command(
+                        "env",
+                        "lean",
+                        "-R",
+                        str(root.resolve()),
+                        "-o",
+                        str(fast.olean("examples.Examples", root).resolve()),
+                        "examples/Examples.lean",
+                    ),
                     fast.lake_command(
                         "--quiet",
                         "--no-ansi",
@@ -946,7 +1028,6 @@ import Pkg.TooLate
                         "build",
                         "+Pkg.Leaf",
                     ),
-                    fast.lake_command("env", "lean", "examples/Examples.lean"),
                 ],
             )
             for call in run.call_args_list:
@@ -992,13 +1073,21 @@ import Pkg.TooLate
                         "+Pkg.Dependency",
                     ),
                     fast.lake_command(
+                        "env",
+                        "lean",
+                        "-R",
+                        str(root.resolve()),
+                        "-o",
+                        str(fast.olean("examples.Consumer", root).resolve()),
+                        "examples/Consumer.lean",
+                    ),
+                    fast.lake_command(
                         "--quiet",
                         "--no-ansi",
                         "--log-level=error",
                         "build",
                         "+Pkg.Dependency",
                     ),
-                    fast.lake_command("env", "lean", "examples/Consumer.lean"),
                 ],
             )
             for call in run.call_args_list:
@@ -1008,6 +1097,96 @@ import Pkg.TooLate
                 self.assertEqual(
                     call.kwargs["timeout"], fast.LAKE_COMMAND_TIMEOUT_SECONDS
                 )
+
+    def test_reachable_direct_dependencies_run_in_topological_order(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            dependency = root / "Pkg" / "Dependency.lean"
+            examples_root = root / "examples" / "Examples.lean"
+            helper = root / "examples" / "Helper.lean"
+            consumer = root / "examples" / "Consumer.lean"
+            dependency.parent.mkdir(parents=True)
+            helper.parent.mkdir(parents=True)
+            dependency.write_text("-- dependency\n", encoding="utf-8")
+            examples_root.write_text("-- registered example root\n", encoding="utf-8")
+            helper.write_text("import Pkg.Dependency\n", encoding="utf-8")
+            consumer.write_text("import Helper\n", encoding="utf-8")
+            (root / "lakefile.toml").write_text(
+                '[[lean_lib]]\nname = "Pkg"\n'
+                '[[lean_lib]]\nname = "Examples"\nsrcDir = "examples"\n',
+                encoding="utf-8",
+            )
+            output = (
+                root
+                / ".lake"
+                / "build"
+                / "lib"
+                / "lean"
+                / "Pkg"
+                / "Dependency.olean"
+            )
+            output.parent.mkdir(parents=True)
+            output.write_text("olean\n", encoding="utf-8")
+            completed = fast.subprocess.CompletedProcess([], 0, "", "")
+            helper_output = fast.olean("Helper", root).resolve()
+            consumer_output = fast.olean("Consumer", root).resolve()
+
+            def compile_direct(command: list[str], **kwargs: object):
+                if command[:3] == fast.lake_command("env", "lean"):
+                    direct_output = Path(command[command.index("-o") + 1])
+                    source = command[-1]
+                    if source == "examples/Consumer.lean":
+                        self.assertTrue(
+                            helper_output.is_file(),
+                            "consumer must see the compiled direct dependency",
+                        )
+                    direct_output.parent.mkdir(parents=True, exist_ok=True)
+                    direct_output.write_text("mock olean\n", encoding="utf-8")
+                return completed
+
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast, "lake_stale_targets", return_value=[]
+            ) as stale_targets, mock.patch.object(
+                fast.subprocess, "run", side_effect=compile_direct
+            ) as run:
+                self.assertEqual(
+                    fast.main(["examples/Consumer.lean", "--lake-staleness"]),
+                    0,
+                )
+
+            stale_targets.assert_called_once_with(["Pkg.Dependency"], root)
+            self.assertTrue(helper_output.is_file())
+            self.assertTrue(consumer_output.is_file())
+            self.assertEqual(
+                [call.args[0] for call in run.call_args_list],
+                [
+                    fast.lake_command(
+                        "env",
+                        "lean",
+                        "-R",
+                        str((root / "examples").resolve()),
+                        "-o",
+                        str(helper_output),
+                        "examples/Helper.lean",
+                    ),
+                    fast.lake_command(
+                        "env",
+                        "lean",
+                        "-R",
+                        str((root / "examples").resolve()),
+                        "-o",
+                        str(consumer_output),
+                        "examples/Consumer.lean",
+                    ),
+                    fast.lake_command(
+                        "--quiet",
+                        "--no-ansi",
+                        "--log-level=error",
+                        "build",
+                        "+Pkg.Dependency",
+                    ),
+                ],
+            )
 
     def test_portfolio_direct_sources_finalize_source_current_shared_imports(
         self,
