@@ -166,6 +166,92 @@ HUMAN_SURFACES = (
 # compact human-surface budget so this gate can check the shelf without
 # changing the existing README contract.
 PAPER_LIBRARY_SURFACE = "docs/papers/README.md"
+HUMAN_ENTRY_SURFACE = "HUMAN_ENTRY.md"
+
+
+def paper_inventory_count(
+    registry: dict[str, Any] | None = None,
+    corpus: dict[str, Any] | None = None,
+) -> int:
+    """Return the exact authored paper population after checking its projection."""
+    if registry is None:
+        registry = json.loads(safe_read_text("docs/papers/paper_registry.json"))
+    if corpus is None:
+        corpus = json.loads(safe_read_text("docs/papers/corpus.json"))
+    registry_rows = registry.get("papers")
+    corpus_rows = corpus.get("papers")
+    expected_ids = corpus.get("expected_paper_ids")
+    require(isinstance(registry_rows, list), "paper registry lacks papers")
+    require(isinstance(corpus_rows, list), "paper corpus lacks papers")
+    require(isinstance(expected_ids, list), "paper corpus lacks expected_paper_ids")
+    registry_ids = [row.get("paper_id") for row in registry_rows]
+    corpus_ids = [row.get("paper_id") for row in corpus_rows]
+    require(
+        all(isinstance(paper_id, str) and paper_id for paper_id in registry_ids),
+        "paper registry contains a malformed paper id",
+    )
+    require(
+        len(registry_ids) == len(set(registry_ids)),
+        "paper registry contains duplicate paper ids",
+    )
+    require(
+        registry_ids == expected_ids == corpus_ids,
+        "paper corpus population drifted from its authored registry",
+    )
+    require(
+        corpus.get("paper_count") == len(registry_ids),
+        "paper corpus paper_count drifted from its authored registry",
+    )
+    return len(registry_ids)
+
+
+PAPER_INVENTORY_COUNT = paper_inventory_count()
+
+
+def reasoning_surface_pdfs(registry: dict[str, Any] | None = None) -> tuple[str, ...]:
+    """Read the complete long-reasoning population from the paper authority."""
+    if registry is None:
+        registry = json.loads(safe_read_text("docs/papers/paper_registry.json"))
+    rows = registry.get("papers")
+    require(isinstance(rows, list), "paper registry lacks papers")
+    pdfs = []
+    for row in rows:
+        if not isinstance(row, dict) or row.get("form") != "Reasoning surface":
+            continue
+        pdf = row.get("pdf")
+        require(
+            isinstance(pdf, str)
+            and pdf.endswith(".pdf")
+            and Path(pdf).name == pdf,
+            "paper registry contains a malformed reasoning-surface PDF",
+        )
+        pdfs.append(pdf)
+    require(bool(pdfs), "paper registry contains no reasoning surfaces")
+    require(
+        len(pdfs) == len(set(pdfs)),
+        "paper registry contains duplicate reasoning-surface PDFs",
+    )
+    return tuple(pdfs)
+
+
+def validate_reasoning_surface_routes(
+    readme_prefix: str,
+    *,
+    human_entry: str | None = None,
+    registry: dict[str, Any] | None = None,
+) -> None:
+    """Require every registered long record on a direct or one-hop human route."""
+    if human_entry is None:
+        human_entry = safe_read_text(HUMAN_ENTRY_SURFACE)
+    guide_is_linked = f"]({HUMAN_ENTRY_SURFACE}" in readme_prefix
+    for pdf in reasoning_surface_pdfs(registry):
+        if f"]({pdf})" in readme_prefix:
+            continue
+        require(
+            guide_is_linked and f"]({pdf})" in human_entry,
+            "README no longer exposes the registered full reasoning record "
+            f"{pdf} directly or through its linked {HUMAN_ENTRY_SURFACE}",
+        )
 # The shelf carries one section per shipped paper, so its size tracks the paper
 # corpus and not the prose around it. The flat 40,000 was set at a smaller
 # corpus and the shelf has been over it for some time; only the --quick lane
@@ -175,7 +261,7 @@ PAPER_LIBRARY_BYTES_PER_PAPER = 4_400
 PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES = (
     PAPER_LIBRARY_BASE_BUDGET_BYTES
     + PAPER_LIBRARY_BYTES_PER_PAPER
-    * len(json.loads(safe_read_text("docs/papers/corpus.json"))["papers"])
+    * PAPER_INVENTORY_COUNT
 )
 # Volatile semantic counts live on the audit surfaces, not the compact README.
 CENSUS_SURFACES = ("docs/RESULTS.md", "docs/TRUTH_AUDIT.md")
@@ -1245,11 +1331,10 @@ def validate_human_first_contact(
         ("#1049", "erdos-1049-rational-base-lambert.pdf"),
     ):
         require(problem in readme_prefix and f"]({filename})" in readme_prefix, f"README no longer exposes the individual Erdős {problem} paper")
-    for filename in (
-        "erdos249-totient-reasoning-surface.pdf",
-        "erdos257-mersenne-reasoning-surface.pdf",
-    ):
-        require(f"]({filename})" in readme_prefix, f"README no longer exposes the full reasoning record {filename}")
+    # HUMAN_ENTRY is a one-hop route, not another document concatenated into
+    # the bounded first-contact packet. Its size therefore does not spend the
+    # README or aggregate human-surface budgets above.
+    validate_reasoning_surface_routes(readme_prefix)
 
     problem_portfolio = readme_prefix.find("## Problem papers")
     raw_inventory = readme_prefix.find("## Corpus at a glance")
@@ -1310,7 +1395,10 @@ def validate_human_first_contact(
 
 
 def validate_paper_library_first_contact(
-    paper_readme: str, *, ranking: list[dict[str, Any]] | None = None
+    paper_readme: str,
+    *,
+    ranking: list[dict[str, Any]] | None = None,
+    paper_count: int | None = None,
 ) -> None:
     """Ensure the generated paper shelf leads with canonical mathematical signal.
 
@@ -1328,6 +1416,12 @@ def validate_paper_library_first_contact(
         showcase = json.loads(read("docs/PALOMAR_RESULT_SHOWCASE.json"))
         ranking = showcase.get("candidate_ranking")
     require(isinstance(ranking, list) and ranking, "Palomar candidate ranking is missing")
+    if paper_count is None:
+        paper_count = PAPER_INVENTORY_COUNT
+    require(
+        type(paper_count) is int and paper_count > 0,
+        "paper inventory count must be a positive integer",
+    )
     signal_heading = paper_readme.find("## Mathematical signal first")
     ranked_heading = paper_readme.find("### Ranked frontier")
     friction_heading = paper_readme.find("### Represented natural friction")
@@ -1335,7 +1429,7 @@ def validate_paper_library_first_contact(
         "### Explicitly subordinate, rejected, and long tail"
     )
     inventory_heading = paper_readme.find(
-        "## Problem portfolio (complete 15-paper inventory)"
+        f"## Problem portfolio (complete {paper_count}-paper inventory)"
     )
     positions = (
         signal_heading,

@@ -17,6 +17,8 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Sequence
 
+from result_atoms import load_result_atoms, validate_result_atoms
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = "plectis-lean-proof-cockpit/1"
@@ -190,6 +192,15 @@ def build_cockpit(
     claims = _read_json(root / "docs" / "claims.json")
     problems = _read_json(root / "docs" / "problems.json")
     paper_corpus = _read_json(root / "docs" / "papers" / "corpus.json")
+    palomar = _read_json(root / "docs" / "PALOMAR_RESULT_SHOWCASE.json")
+    family_order = palomar.get("family_display_order")
+    if not isinstance(family_order, list):
+        raise ValueError("Palomar showcase lacks family_display_order")
+    atom_summary = validate_result_atoms(
+        load_result_atoms(root / "docs" / "result-atoms.jsonl"),
+        claims,
+        family_order,
+    )
     status_counts = Counter(str(row.get("status", "unknown")) for row in claims["claims"])
     problem_rows = problems.get("problems", [])
     packet: dict[str, Any] = {
@@ -209,6 +220,39 @@ def build_cockpit(
             "declaration_count": orientation["scale"]["declaration_count"],
             "theorem_like_count": orientation["scale"]["theorem_like_count"],
             "paper_count": len(paper_corpus.get("papers", [])),
+            "result_family_count": atom_summary["family_count"],
+            "result_atom_count": atom_summary["total"],
+            "result_atom_interpretation_state_counts": atom_summary[
+                "state_counts"
+            ],
+            "result_atom_display_tier_counts": atom_summary["tier_counts"],
+            "result_family_display_band_counts": atom_summary["band_counts"],
+            "result_family_order_authority": (
+                "docs/PALOMAR_RESULT_SHOWCASE.json::family_display_order"
+            ),
+            "qualitative_result_family_order": {
+                "columns": [
+                    "family_id",
+                    "problem_id",
+                    "display_band",
+                    "editorial_disposition",
+                ],
+                "rows": [
+                    [
+                        row["family_id"],
+                        row["problem_id"],
+                        row["display_band"]["band"],
+                        row["editorial_disposition"],
+                    ]
+                    for row in family_order
+                ],
+                "ordering": "array position is the one-based global display order",
+            },
+            "result_population_authority_boundary": (
+                "Atom counts and qualitative family placement are navigation "
+                "and editorial metadata, not proof, novelty, significance, "
+                "Comparator execution, or release-readiness claims."
+            ),
         },
         "frontier": {
             "headline_open_proposition_count": len(
@@ -237,6 +281,12 @@ def build_cockpit(
             ),
             "goal_support": 'python3 scripts/query_corpus.py --goal-support "<goal>"',
             "proof_plan": 'python3 scripts/query_corpus.py --proof-plan "<goal>" --depth 4',
+            "result_atom": (
+                "python3 scripts/query_corpus.py --result-atom <atom_id>"
+            ),
+            "family_atoms": (
+                "python3 scripts/query_corpus.py --family-atoms <family_id>"
+            ),
             "kernel_check": "python3 scripts/lean_fast_build.py --jobs 2",
             "session_notary": "python3 scripts/proof_workbench.py --help",
             "fast_public_checks": "python3 scripts/proof_cockpit.py --check",
@@ -269,6 +319,23 @@ def render_card(packet: dict[str, Any]) -> str:
             f"corpus: {corpus['problem_count']} open problems | "
             f"{corpus['claim_count']} claims | {corpus['module_count']} modules | "
             f"{corpus['declaration_count']} declarations | {corpus['paper_count']} papers"
+        ),
+        (
+            f"results: {corpus['result_family_count']} families | "
+            f"{corpus['result_atom_count']} atoms | tiers="
+            + ",".join(
+                f"{tier}:{count}"
+                for tier, count in corpus[
+                    "result_atom_display_tier_counts"
+                ].items()
+            )
+            + " | interpretations="
+            + ",".join(
+                f"{state}:{count}"
+                for state, count in corpus[
+                    "result_atom_interpretation_state_counts"
+                ].items()
+            )
         ),
         (
             f"frontier: {frontier['headline_open_proposition_count']} exact headline open "

@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-"""Check or refresh reasoning-paper Lean links against their pinned commit.
+"""Check or refresh reasoning-paper Lean links against their pinned commits.
 
-The declaration name is the authority.  For each named ``\\lean`` citation in
-the authored #249/#257 reasoning parts, this tool resolves the declaration in
-the cited file at the commit pinned by the papers' preambles and rewrites the
-machine coordinate to its declaration line.  Module-level and deliberately
-unnamed location citations are left authored, but their files and numeric
-coordinates are still checked against the same commit.
+The declaration name is the authority.  For every paper registered with the
+reasoning-surface assembler, this tool resolves named ``\\lean`` citations and
+the problem-note ``\\lword``/``\\lref`` family against that paper's own pinned
+commit, then rewrites the machine coordinate to the declaration line.
+Module-level and deliberately unnamed location citations are left authored,
+but their files and numeric coordinates are still checked at the same pin.
 """
 
 from __future__ import annotations
@@ -21,14 +21,12 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import validation_singleflight as singleflight
+import assemble_reasoning_surfaces as assembler
+import check_problem_note_sources as problem_notes
 
 
 ROOT = Path(__file__).resolve().parent.parent
-PARTS_DIRS = (
-    ROOT / "paper" / "reasoning-parts" / "erdos249",
-    ROOT / "paper" / "reasoning-parts" / "erdos257",
-)
-PIN_RE = re.compile(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}")
+PIN_RE = re.compile(r"\\(?:new|renew)command\{\\commit\}\{([0-9a-f]{40})\}")
 LEAN_RE = re.compile(r"\\lean\{([^{}]*)\}\{([^{}]*)\}")
 TARGET_RE = re.compile(r"(.+\.lean)(?::(.*))?")
 DECL_RE = re.compile(
@@ -143,21 +141,22 @@ def strip_lean_comments(text: str) -> str:
     return "".join(output)
 
 
-def pinned_commit() -> str:
-    pins: dict[Path, str] = {}
-    for directory in PARTS_DIRS:
-        preamble = directory / "preamble.tex"
-        match = PIN_RE.search(preamble.read_text(encoding="utf-8"))
-        if not match:
-            raise CoordinateError(f"missing formal-source pin in {preamble.relative_to(ROOT)}")
-        pins[preamble] = match.group(1)
-    values = set(pins.values())
-    if len(values) != 1:
-        rendered = ", ".join(
-            f"{path.relative_to(ROOT)}={pin}" for path, pin in pins.items()
+def parts_directories() -> tuple[Path, ...]:
+    """Return authored directories in the assembler's paper order."""
+
+    return tuple(row["directory"] for row in assembler.PAPERS.values())
+
+
+def pinned_commit(directory: Path) -> str:
+    """Read one paper's immutable formal-source pin from its preamble."""
+
+    preamble = directory / "preamble.tex"
+    match = PIN_RE.search(preamble.read_text(encoding="utf-8"))
+    if not match:
+        raise CoordinateError(
+            f"missing formal-source pin in {preamble.relative_to(ROOT)}"
         )
-        raise CoordinateError(f"reasoning papers have different source pins: {rendered}")
-    return values.pop()
+    return match.group(1)
 
 
 class Resolver:
@@ -165,12 +164,6 @@ class Resolver:
         self.pin = pin
         self.cache: dict[str, PinnedSource] = {}
         self.errors: dict[str, str] = {}
-
-    @staticmethod
-    def repository_path(cited_file: str) -> str:
-        if cited_file.startswith(("ErdosProblems/", "Erdos249257/")):
-            return cited_file
-        return f"Erdos249257/{cited_file}"
 
     @staticmethod
     def _parse_source(repository_path: str, text: str) -> PinnedSource:
@@ -192,14 +185,11 @@ class Resolver:
         if not pending:
             return
         rows = []
-        for cited_file in pending:
-            if "\n" in cited_file or "\r" in cited_file:
-                self.errors[cited_file] = "source path contains a newline"
+        for repository_path in pending:
+            if "\n" in repository_path or "\r" in repository_path:
+                self.errors[repository_path] = "source path contains a newline"
                 continue
-            repository_path = self.repository_path(cited_file)
-            rows.append(
-                (cited_file, repository_path, f"{self.pin}:{repository_path}")
-            )
+            rows.append((repository_path, f"{self.pin}:{repository_path}"))
         if not rows:
             return
         result = subprocess.run(
@@ -208,7 +198,7 @@ class Resolver:
             check=False,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            input=("\n".join(spec for _, _, spec in rows) + "\n").encode("utf-8"),
+            input=("\n".join(spec for _, spec in rows) + "\n").encode("utf-8"),
             env=singleflight.command_environment(),
             timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
         )
@@ -216,14 +206,14 @@ class Resolver:
             detail = result.stderr.decode("utf-8", errors="replace").strip()
             raise CoordinateError(detail or "git cat-file --batch failed")
         cursor = 0
-        for cited_file, repository_path, _spec in rows:
+        for repository_path, _spec in rows:
             header_end = result.stdout.find(b"\n", cursor)
             if header_end < 0:
                 raise CoordinateError("truncated git cat-file batch header")
             header = result.stdout[cursor:header_end]
             cursor = header_end + 1
             if header.endswith(b" missing"):
-                self.errors[cited_file] = f"pinned source absent: {repository_path}"
+                self.errors[repository_path] = f"pinned source absent: {repository_path}"
                 continue
             fields = header.split()
             if len(fields) != 3 or fields[1] not in {b"blob", b"tree", b"commit", b"tag"}:
@@ -245,19 +235,19 @@ class Resolver:
                     f"pinned source is not UTF-8: {repository_path}"
                 ) from exc
             cursor = end + 1
-            self.cache[cited_file] = self._parse_source(repository_path, text)
+            self.cache[repository_path] = self._parse_source(repository_path, text)
         if cursor != len(result.stdout):
             raise CoordinateError("unexpected trailing git cat-file batch output")
 
-    def source(self, cited_file: str) -> PinnedSource:
-        if cited_file not in self.cache and cited_file not in self.errors:
-            self.preload([cited_file])
-        if cited_file in self.errors:
-            raise CoordinateError(self.errors[cited_file])
-        return self.cache[cited_file]
+    def source(self, repository_path: str) -> PinnedSource:
+        if repository_path not in self.cache and repository_path not in self.errors:
+            self.preload([repository_path])
+        if repository_path in self.errors:
+            raise CoordinateError(self.errors[repository_path])
+        return self.cache[repository_path]
 
-    def declaration_line(self, cited_file: str, cited_name: str) -> int:
-        source = self.source(cited_file)
+    def declaration_line(self, repository_path: str, cited_name: str) -> int:
+        source = self.source(repository_path)
         terminal = cited_name.rsplit(".", 1)[-1]
         candidates = [
             (name, line) for name, line in source.declarations if name == cited_name
@@ -279,8 +269,8 @@ class Resolver:
             )
         return candidates[0][1]
 
-    def validate_location(self, cited_file: str, coordinates: str | None) -> None:
-        source = self.source(cited_file)
+    def validate_location(self, repository_path: str, coordinates: str | None) -> None:
+        source = self.source(repository_path)
         if coordinates is None:
             return
         line_count = source.text.count("\n") + (not source.text.endswith("\n"))
@@ -288,8 +278,16 @@ class Resolver:
             line = int(value)
             if line < 1 or line > line_count:
                 raise CoordinateError(
-                    f"location {cited_file}:{line} outside pinned file (1-{line_count})"
+                    f"location {repository_path}:{line} outside pinned file (1-{line_count})"
                 )
+
+
+def reviewed_repository_path(cited_file: str) -> str:
+    """Resolve a ``\\lean`` target relative to the reviewed #249/#257 tree."""
+
+    if cited_file.startswith(("ErdosProblems/", "Erdos249257/")):
+        return cited_file
+    return f"Erdos249257/{cited_file}"
 
 
 def render_file(
@@ -313,47 +311,101 @@ def render_file(
                 f"{path.relative_to(ROOT)}:{line}: malformed Lean target {raw_target!r}"
             )
         cited_file, coordinates = target_match.groups()
+        repository_path = reviewed_repository_path(cited_file)
         if not name or ".lean" in name:
-            resolver.validate_location(cited_file, coordinates)
+            resolver.validate_location(repository_path, coordinates)
             locations += 1
             return match.group(0)
         try:
-            declaration_line = resolver.declaration_line(cited_file, name)
+            declaration_line = resolver.declaration_line(repository_path, name)
         except CoordinateError as exc:
             line = text.count("\n", 0, match.start()) + 1
             raise CoordinateError(f"{path.relative_to(ROOT)}:{line}: {exc}") from exc
         declarations += 1
         return f"\\lean{{{raw_name}}}{{{cited_file}:{declaration_line}}}"
 
-    return LEAN_RE.sub(replace, text), declarations, locations
+    updated = LEAN_RE.sub(replace, text)
+
+    def replace_note_link(match: re.Match[str]) -> str:
+        nonlocal declarations, locations
+        if match.group("word_file"):
+            raw_file = match.group("word_file")
+            raw_line = match.group("word_line")
+            raw_name = match.group("word_decl")
+        elif match.group("ref_file"):
+            raw_file = match.group("ref_file")
+            raw_line = match.group("ref_line")
+            raw_name = match.group("ref_decl")
+        else:
+            raw_file = match.group("loc_file")
+            raw_line = match.group("loc_line")
+            raw_name = None
+        repository_path = problem_notes.library_relative(normalize(raw_file))
+        if raw_name is None:
+            resolver.validate_location(repository_path, raw_line)
+            locations += 1
+            return match.group(0)
+        name = normalize(raw_name)
+        try:
+            declaration_line = resolver.declaration_line(repository_path, name)
+        except CoordinateError as exc:
+            line = updated.count("\n", 0, match.start()) + 1
+            raise CoordinateError(f"{path.relative_to(ROOT)}:{line}: {exc}") from exc
+        declarations += 1
+        return match.group(0).replace(
+            f"{{{raw_line}}}", f"{{{declaration_line}}}", 1
+        )
+
+    return problem_notes.LINK_RE.sub(replace_note_link, updated), declarations, locations
 
 
-def render_all() -> tuple[dict[Path, str], int, int, str]:
-    pin = pinned_commit()
-    resolver = Resolver(pin)
-    source_texts = {
-        path: path.read_text(encoding="utf-8")
-        for directory in PARTS_DIRS
-        for path in sorted(directory.glob("*.tex"))
-    }
-    cited_files = []
-    for text in source_texts.values():
-        for match in LEAN_RE.finditer(text):
-            target_match = TARGET_RE.fullmatch(normalize(match.group(2)))
-            if target_match is not None:
-                cited_files.append(target_match.group(1))
-    resolver.preload(cited_files)
+def render_all() -> tuple[dict[Path, str], int, int, tuple[str, ...]]:
     rendered: dict[Path, str] = {}
     declarations = 0
     locations = 0
-    for path, text in source_texts.items():
-        updated, declaration_count, location_count = render_file(
-            path, resolver, text
-        )
-        rendered[path] = updated
-        declarations += declaration_count
-        locations += location_count
-    return rendered, declarations, locations, pin
+    pins: list[str] = []
+    resolvers: dict[str, Resolver] = {}
+    for directory in parts_directories():
+        pin = pinned_commit(directory)
+        pins.append(pin)
+        resolver = resolvers.setdefault(pin, Resolver(pin))
+        source_texts = {
+            path: path.read_text(encoding="utf-8")
+            for path in sorted(directory.glob("*.tex"))
+        }
+        # Note-derived long papers share their mathematical source instead of
+        # carrying duplicate core/bibliography files. Audit that owner too.
+        for paper in assembler.PAPERS.values():
+            if paper["directory"] != directory or not paper.get("note_source"):
+                continue
+            note_source = paper["note_source"]
+            note_text = note_source.read_text(encoding="utf-8")
+            note_pin = PIN_RE.search(note_text)
+            if note_pin is None or note_pin.group(1) != pin:
+                raise CoordinateError(f"shared note and reasoning paper pins disagree: {note_source}")
+            source_texts[note_source] = note_text
+        cited_files: list[str] = []
+        for text in source_texts.values():
+            for match in LEAN_RE.finditer(text):
+                target_match = TARGET_RE.fullmatch(normalize(match.group(2)))
+                if target_match is not None:
+                    cited_files.append(reviewed_repository_path(target_match.group(1)))
+            for match in problem_notes.LINK_RE.finditer(text):
+                raw_file = (
+                    match.group("word_file")
+                    or match.group("ref_file")
+                    or match.group("loc_file")
+                )
+                cited_files.append(problem_notes.library_relative(normalize(raw_file)))
+        resolver.preload(cited_files)
+        for path, text in source_texts.items():
+            updated, declaration_count, location_count = render_file(
+                path, resolver, text
+            )
+            rendered[path] = updated
+            declarations += declaration_count
+            locations += location_count
+    return rendered, declarations, locations, tuple(dict.fromkeys(pins))
 
 
 def main() -> int:
@@ -363,7 +415,7 @@ def main() -> int:
     action.add_argument("--check", action="store_true")
     args = parser.parse_args()
     try:
-        rendered, declarations, locations, pin = render_all()
+        rendered, declarations, locations, pins = render_all()
     except (CoordinateError, OSError) as exc:
         print(f"refresh_reasoning_source_coordinates: {exc}", file=sys.stderr)
         return 2
@@ -377,7 +429,8 @@ def main() -> int:
         for path in stale:
             path.write_text(rendered[path], encoding="utf-8")
         print(
-            f"refreshed {declarations} declaration coordinates against {pin}; "
+            f"refreshed {declarations} declaration coordinates against "
+            f"{len(pins)} pinned commit(s); "
             f"validated {locations} authored location links"
         )
         return 0
@@ -389,7 +442,7 @@ def main() -> int:
         )
         return 1
     print(
-        f"reasoning source coordinates current at {pin}: "
+        f"reasoning source coordinates current at {len(pins)} pinned commit(s): "
         f"{declarations} declarations, {locations} authored locations"
     )
     return 0

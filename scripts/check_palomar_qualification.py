@@ -18,6 +18,7 @@ import re
 import stat
 import subprocess
 import sys
+import tomllib
 from pathlib import Path
 from typing import Any
 
@@ -80,6 +81,7 @@ CHALLENGE_SIZE_LIMIT_BYTES = 100 * 1024
 CHALLENGE_LINE_LIMIT = 1000
 CHALLENGE_WARNING_BYTES = 32 * 1024
 CHALLENGE_WARNING_LINES = 300
+PORTFOLIO_MEMBERSHIP_PATH = "verification/comparator-replay-membership.json"
 FORMALIZATION_SIZE_LIMIT_BYTES = 256 * 1024
 LICENSE_SIZE_LIMIT_BYTES = 1024 * 1024
 COMPILED_ARTIFACT_SUFFIXES = (
@@ -107,6 +109,13 @@ TARGET_LEAN_TOOLCHAIN = "leanprover/lean4:v4.29.1"
 COMPARATOR_REVISION = "789279735fe44c1c05dc54bb9f46ba4d9b8c7611"
 COMPARATOR_LEAN_TOOLCHAIN = "leanprover/lean4:v4.33.0-rc2"
 LEAN4EXPORT_REVISION = "6f4e21dd70c3c11d7fbd07d39e3192792c657448"
+CURRENT_PALOMAR_POLICY_REVISION = "4ed67de4fd69df383badb7857dff97e2fb734ab0"
+CURRENT_PALOMAR_POLICY_SHA256 = (
+    "625aa71c83eea99ac49d2376f70e9fbe1fe16ce5b0fd5bf282b89d3e5e7c3142"
+)
+CURRENT_PALOMAR_AGENT_PROTOCOL_SHA256 = (
+    "a329f015908c02797666a50e4c5dfc5e9b6cc41db380c71498ac84208f1ae17e"
+)
 KERNEL_SECURITY_AUTHORITIES = {
     "src/kernel/type_checker.cpp@v4.29.1": {
         "commit": "f72c35b3f637c8c6571d353742168ab66cc22c00",
@@ -307,6 +316,301 @@ def committed_lfs_pointer_paths(
                 returncode, process.args, stderr=stderr
             )
     return sorted(pointers)
+
+
+def lean_imports(text: str) -> list[str]:
+    """Return top-level imports after conservatively removing Lean comments."""
+    without_blocks = re.sub(r"/-.*?-/", "", text, flags=re.DOTALL)
+    without_lines = re.sub(r"(?m)--.*$", "", without_blocks)
+    return re.findall(r"(?m)^[ \t]*import[ \t]+([^\s]+)", without_lines)
+
+
+def catalog_entry_selection_violations(
+    entries: list[dict[str, Any]], package_ids: list[str]
+) -> list[str]:
+    """Reject CI aggregates and non-membership packages from Palomar intake."""
+    violations: list[str] = []
+    ids = [row.get("package_id") if isinstance(row, dict) else None for row in entries]
+    if (
+        not all(isinstance(package_id, str) and package_id for package_id in ids)
+        or len(ids) != len(set(ids))
+    ):
+        violations.append("catalog entries must have unique nonempty package ids")
+    aggregate_modules = {
+        "ExternalVerification.Challenge",
+        "ExternalVerification.Solution",
+        "ComparatorReplay.Challenge",
+        "ComparatorReplay.Solution",
+    }
+    aggregate_configs = {
+        "verification/comparator.json",
+        "verification/comparator-replay-candidate.json",
+        "verification/comparator-replay.json",
+    }
+    for row in entries:
+        if not isinstance(row, dict):
+            violations.append("catalog contains a non-object entry")
+            continue
+        package_id = row.get("package_id")
+        if package_id not in package_ids:
+            violations.append(f"catalog contains non-membership package {package_id}")
+        if row.get("challenge_module") in aggregate_modules or row.get(
+            "solution_module"
+        ) in aggregate_modules:
+            violations.append(
+                f"catalog selects CI-only aggregate module for {package_id}"
+            )
+        if row.get("config_path") in aggregate_configs:
+            violations.append(
+                f"catalog selects CI-only aggregate config for {package_id}"
+            )
+    return sorted(set(violations))
+
+
+def palomar_entry_portfolio_evidence(root: Path) -> dict[str, Any]:
+    """Audit committed replay packages as separate Palomar entry candidates."""
+    membership = json.loads(committed_bytes(root, PORTFOLIO_MEMBERSHIP_PATH))
+    package_ids = membership.get("required_package_ids", [])
+    interfaces = membership.get("required_interfaces_by_package", {})
+    tree_paths = {row["path"] for row in committed_tree_entries(root)}
+    local_modules = {
+        path[:-5].replace("/", "."): path
+        for path in tree_paths
+        if path.endswith(".lean")
+    }
+    lake = tomllib.loads(committed_text(root, "lakefile.toml"))
+    lake_targets = {
+        row.get("name") for row in lake.get("lean_lib", []) if isinstance(row, dict)
+    }
+    catalog_path = "verification/palomar-entry-catalog.json"
+    catalog_config_by_package: dict[str, str] = {}
+    catalog_entries_by_package: dict[str, dict[str, Any]] = {}
+    catalog_entry_violations: list[str] = []
+    catalog_materialization = "absent"
+    if catalog_path in tree_paths or (root / catalog_path).is_file():
+        if catalog_path in tree_paths:
+            catalog = json.loads(committed_bytes(root, catalog_path))
+            catalog_materialization = "committed_head"
+        else:
+            catalog = json.loads(safe_text(root / catalog_path, root=root))
+            catalog_materialization = "generated_worktree_not_release_evidence"
+        if catalog.get("schema") != "plectis.palomar-entry-catalog/1" or not isinstance(
+            catalog.get("entries"), list
+        ):
+            raise ValueError("committed Palomar entry catalog is malformed")
+        catalog_entries_by_package = {
+            row.get("package_id"): row
+            for row in catalog["entries"]
+            if isinstance(row, dict) and isinstance(row.get("package_id"), str)
+        }
+        catalog_entry_violations = catalog_entry_selection_violations(
+            catalog["entries"], package_ids
+        )
+        catalog_config_by_package = {
+            package_id: row.get("config_path")
+            for package_id, row in catalog_entries_by_package.items()
+            if isinstance(row.get("config_path"), str)
+        }
+
+    rows: list[dict[str, Any]] = []
+    for package_id in package_ids:
+        challenge_path = f"{package_id}/Challenge.lean"
+        solution_path = f"{package_id}/Solution.lean"
+        challenge = committed_bytes(root, challenge_path)
+        solution = committed_bytes(root, solution_path)
+        imports = lean_imports(challenge.decode("utf-8"))
+        project_local_imports = sorted(
+            module for module in imports if module in local_modules
+        )
+        expected_names = interfaces.get(package_id, [])
+        valid_configs: list[str] = []
+        config_paths = [f"{package_id}/comparator.json"]
+        catalog_config = catalog_config_by_package.get(package_id)
+        if catalog_config and catalog_config not in config_paths:
+            config_paths.append(catalog_config)
+        for config_path in config_paths:
+            if config_path in tree_paths:
+                config = json.loads(committed_bytes(root, config_path))
+            elif (root / config_path).is_file():
+                config = json.loads(safe_text(root / config_path, root=root))
+            else:
+                continue
+            if (
+                config.get("challenge_module") == f"{package_id}.Challenge"
+                and config.get("solution_module") == f"{package_id}.Solution"
+                and set(config.get("theorem_names", [])) == set(expected_names)
+                and set(config.get("permitted_axioms", []))
+                == {"propext", "Quot.sound", "Classical.choice"}
+            ):
+                valid_configs.append(config_path)
+        catalog_entry = catalog_entries_by_package.get(package_id)
+        catalog_challenge = challenge
+        catalog_solution = solution
+        if catalog_materialization == "generated_worktree_not_release_evidence":
+            catalog_challenge = safe_text(root / challenge_path, root=root).encode(
+                "utf-8"
+            )
+            catalog_solution = safe_text(root / solution_path, root=root).encode(
+                "utf-8"
+            )
+        if catalog_entry is not None and (
+            catalog_entry.get("challenge_sha256")
+            != hashlib.sha256(catalog_challenge).hexdigest()
+            or catalog_entry.get("solution_sha256")
+            != hashlib.sha256(catalog_solution).hexdigest()
+            or set(catalog_entry.get("theorem_names", [])) != set(expected_names)
+            or catalog_entry.get("challenge_module") != f"{package_id}.Challenge"
+            or catalog_entry.get("solution_module") != f"{package_id}.Solution"
+        ):
+            raise ValueError(
+                f"Palomar catalog entry disagrees with committed package source: {package_id}"
+            )
+        rows.append(
+            {
+                "package_id": package_id,
+                "lake_target_present": package_id in lake_targets,
+                "challenge_path": challenge_path,
+                "solution_path": solution_path,
+                "solution_present": solution_path in tree_paths,
+                "challenge_bytes": len(challenge),
+                "challenge_lines": len(challenge.splitlines()),
+                "hard_cap_compliant": len(challenge) <= CHALLENGE_SIZE_LIMIT_BYTES
+                and len(challenge.splitlines()) <= CHALLENGE_LINE_LIMIT,
+                "auditability_warning": len(challenge) > CHALLENGE_WARNING_BYTES
+                or len(challenge.splitlines()) > CHALLENGE_WARNING_LINES,
+                "project_local_imports": project_local_imports,
+                "trusted_closure_compliant": not project_local_imports,
+                "interface_count": len(expected_names),
+                "valid_config_paths": valid_configs,
+            }
+        )
+
+    current_config = json.loads(committed_bytes(root, "verification/comparator.json"))
+    umbrella_module = current_config.get("challenge_module", "")
+    umbrella_path = umbrella_module.replace(".", "/") + ".lean"
+    umbrella_imports = lean_imports(committed_text(root, umbrella_path))
+    umbrella_local_imports = sorted(
+        module for module in umbrella_imports if module in local_modules
+    )
+    coverage = membership.get("registered_claim_coverage", {})
+    claims = json.loads(committed_bytes(root, "docs/claims.json"))
+    claims_by_id = {
+        row.get("id"): row for row in claims.get("claims", []) if isinstance(row, dict)
+    }
+    source_bound_matches: list[dict[str, Any]] = []
+    for row in rows:
+        solution_text = committed_text(root, row["solution_path"])
+        solution_imports = set(lean_imports(solution_text))
+        package_names = interfaces.get(row["package_id"], [])
+        for result in claims.get("external_verification_packet", {}).get(
+            "main_results", []
+        ):
+            source_path = result.get("original_source", "")
+            source_declaration = result.get("original_declaration", "")
+            claim_id = result.get("claim_id")
+            source_module = (
+                source_path[:-5].replace("/", ".")
+                if isinstance(source_path, str) and source_path.endswith(".lean")
+                else ""
+            )
+            claim = claims_by_id.get(claim_id, {})
+            source_leaf = str(source_declaration).rsplit(".", 1)[-1]
+            claim_anchors = {
+                (anchor.get("module"), anchor.get("name"))
+                for anchor in claim.get("declarations", [])
+                if isinstance(anchor, dict)
+            }
+            candidate_interfaces = [
+                name for name in package_names if name.rsplit(".", 1)[-1] == source_leaf
+            ]
+            if not candidate_interfaces and len(package_names) == 1:
+                candidate_interfaces = list(package_names)
+            if (
+                source_module in solution_imports
+                and re.search(
+                    rf"(?<![A-Za-z0-9_]){re.escape(str(source_declaration))}(?![A-Za-z0-9_])",
+                    solution_text,
+                )
+                and (source_path, source_leaf) in claim_anchors
+                and len(candidate_interfaces) == 1
+            ):
+                source_bound_matches.append(
+                    {
+                        "claim_id": claim_id,
+                        "review_family": result.get("review_family"),
+                        "package_id": row["package_id"],
+                        "interface_name": candidate_interfaces[0],
+                        "source_module": source_path,
+                        "source_declaration": source_declaration,
+                        "evidence": (
+                            "claim anchor + main-result source link + exact Solution "
+                            "import/use; Comparator execution not asserted"
+                        ),
+                    }
+                )
+    missing_configs = sorted(
+        row["package_id"] for row in rows if not row["valid_config_paths"]
+    )
+    closure_failures = [
+        {
+            "package_id": row["package_id"],
+            "project_local_imports": row["project_local_imports"],
+        }
+        for row in rows
+        if not row["trusted_closure_compliant"]
+    ]
+    return {
+        "membership_path": PORTFOLIO_MEMBERSHIP_PATH,
+        "catalog_materialization": catalog_materialization,
+        "package_count": len(rows),
+        "interface_count": sum(row["interface_count"] for row in rows),
+        "lake_target_count": sum(row["lake_target_present"] for row in rows),
+        "challenge_solution_pair_count": sum(row["solution_present"] for row in rows),
+        "hard_cap_compliant_count": sum(row["hard_cap_compliant"] for row in rows),
+        "auditability_warning_count": sum(row["auditability_warning"] for row in rows),
+        "trusted_closure_compliant_count": sum(
+            row["trusted_closure_compliant"] for row in rows
+        ),
+        "trusted_closure_failures": closure_failures,
+        "valid_per_entry_config_count": len(rows) - len(missing_configs),
+        "missing_per_entry_config_package_ids": missing_configs,
+        "source_bound_package_match_count": len(source_bound_matches),
+        "source_bound_package_matches": source_bound_matches,
+        "umbrella_challenge_path": umbrella_path,
+        "umbrella_project_local_imports": umbrella_local_imports,
+        "umbrella_is_ci_aggregate_not_palomar_entry": True,
+        "catalog_entry_violations": sorted(set(catalog_entry_violations)),
+        "umbrella_intake_warning": (
+            "ExternalVerification and ComparatorReplay are CI-only aggregate surfaces "
+            "and are rejected as Palomar catalog entries. The committed HEAD umbrella "
+            f"currently has project-local imports: {umbrella_local_imports}."
+        ),
+        "linked_claim_transport_count": coverage.get("linked_transport_claim_count"),
+        "missing_formal_transport_count": coverage.get("missing_formal_transport_count"),
+        "statement_fidelity_boundary": (
+            "The membership owner plus Challenge/Solution package contract preserves "
+            f"{sum(row['interface_count'] for row in rows)} exact interface names. "
+            "It does not by itself prove semantic identity "
+            "with every informal claim or establish Comparator execution."
+        ),
+        "packages": rows,
+    }
+
+
+def palomar_entry_portfolio_deficits(facts: dict[str, Any]) -> list[str]:
+    deficits: list[str] = []
+    if facts["trusted_closure_compliant_count"] != facts["package_count"]:
+        deficits.append("per_entry_trusted_challenge_closure_incomplete")
+    if facts["valid_per_entry_config_count"] != facts["package_count"]:
+        deficits.append("per_entry_comparator_config_catalog_incomplete")
+    return deficits
+
+
+def palomar_entry_catalog_errors(facts: dict[str, Any]) -> list[str]:
+    return [
+        f"Palomar entry catalog violation: {violation}"
+        for violation in facts["catalog_entry_violations"]
+    ]
 
 
 def _license_name(path: str) -> bool:
@@ -549,6 +853,27 @@ def authority_errors(reconciliation: dict[str, Any]) -> list[str]:
         errors.append(
             f"Palomar requirement matrix omits official intake requirements: {missing_requirements}"
         )
+    intake = reconciliation.get("current_public_intake", {})
+    expected_intake = {
+        "submission_service": "https://submit.palomar-registry.org",
+        "agent_protocol": "https://submit.palomar-registry.org/llms.txt",
+        "agent_protocol_observed_sha256": CURRENT_PALOMAR_AGENT_PROTOCOL_SHA256,
+        "current_policy_commit": CURRENT_PALOMAR_POLICY_REVISION,
+        "current_policy_contributing_sha256": CURRENT_PALOMAR_POLICY_SHA256,
+        "repository": "wcook04/plectis-erdos",
+    }
+    for field, expected in expected_intake.items():
+        if intake.get(field) != expected:
+            errors.append(f"current Palomar public intake route disagrees on {field}")
+    confirmations = intake.get("required_human_confirmations", [])
+    if not isinstance(confirmations, list) or len(confirmations) != 2:
+        errors.append("Palomar intake must preserve both explicit human confirmations")
+    authorization_boundary = str(intake.get("authorization_boundary", ""))
+    if (
+        "No submission" not in authorization_boundary
+        or "authorized" not in authorization_boundary
+    ):
+        errors.append("Palomar intake route must not imply an authorized external action")
     return errors
 
 
@@ -1295,6 +1620,38 @@ def static_requirement_errors(root: Path, reconciliation: dict[str, Any], showca
     intake = repository_intake_evidence(root)
     errors.extend(repository_intake_errors(intake))
 
+    portfolio = palomar_entry_portfolio_evidence(root)
+    deficits.extend(palomar_entry_portfolio_deficits(portfolio))
+    errors.extend(palomar_entry_catalog_errors(portfolio))
+    recorded_portfolio = reconciliation.get("palomar_entry_portfolio", {})
+    for field in (
+        "package_count",
+        "interface_count",
+        "hard_cap_compliant_count",
+        "valid_per_entry_config_count",
+        "source_bound_package_match_count",
+    ):
+        if recorded_portfolio.get(field) != portfolio[field]:
+            errors.append(f"Palomar entry portfolio audit disagrees on {field}")
+    match_fields = ("claim_id", "package_id", "interface_name", "source_declaration")
+    recorded_matches = {
+        tuple(row.get(field) for field in match_fields)
+        for row in recorded_portfolio.get("source_bound_package_matches", [])
+        if isinstance(row, dict)
+    }
+    actual_matches = {
+        tuple(row.get(field) for field in match_fields)
+        for row in portfolio["source_bound_package_matches"]
+    }
+    if recorded_matches != actual_matches:
+        errors.append("Palomar source-bound package match evidence drifted")
+    if recorded_portfolio.get("release_shape") != "coherent_multi_entry_catalog":
+        errors.append("Palomar release shape must preserve the multi-entry catalog")
+    if recorded_portfolio.get("umbrella_disposition") != (
+        "ci_aggregate_not_a_palomar_entry"
+    ):
+        errors.append("umbrella Comparator package must not be presented as a Palomar entry")
+
     deficits.extend(formalization_metadata_deficits(formalization))
 
     selected = showcase.get("candidate_selection", {})
@@ -1350,6 +1707,7 @@ def evaluate(root: Path) -> dict[str, Any]:
     static_errors, deficits = static_requirement_errors(root, recon, showcase)
     errors.extend(static_errors)
     repository_intake = repository_intake_evidence(root)
+    entry_portfolio = palomar_entry_portfolio_evidence(root)
     decision = recon.get("qualification_decision", {}).get("decision")
     if deficits and decision != "NOT_READY":
         errors.append("qualification must remain NOT_READY while recorded structural deficits exist")
@@ -1362,8 +1720,10 @@ def evaluate(root: Path) -> dict[str, Any]:
         "comparator_theorem_count": len(comparator.get("theorem_names", [])),
         "selected_candidate": showcase.get("candidate_selection", {}).get("declaration"),
         "structural_deficits": sorted(set(deficits)),
-        "structural_warnings": repository_intake["warnings"],
+        "structural_warnings": repository_intake["warnings"]
+        + [entry_portfolio["umbrella_intake_warning"]],
         "repository_intake": repository_intake,
+        "entry_portfolio": entry_portfolio,
         "kernel_security": {
             "target_toolchain": recon["current_repository"]["kernel_security_disposition"][
                 "target_kernel"
@@ -1372,8 +1732,8 @@ def evaluate(root: Path) -> dict[str, Any]:
             "fixed_kernel_replay_configuration": "present",
             "fixed_kernel_replay_receipt": "required_not_established_here",
             "release_meaning": (
-                "READY is repository-local structural qualification only; release assurance "
-                "still requires the existing commit-bound fixed-kernel replay receipt"
+                "NOT_READY records real Palomar entry-structure deficits; release assurance "
+                "also still requires the existing commit-bound fixed-kernel replay receipt"
             ),
         },
         "external_follow_on": {

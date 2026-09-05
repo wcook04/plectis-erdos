@@ -1,0 +1,1571 @@
+{
+  "schema": "plectis.palomar-entry-catalog/1",
+  "membership_authority": "verification/comparator-replay-membership.json",
+  "package_count": 73,
+  "interface_count": 205,
+  "entry_ready_for_replay_count": 73,
+  "blocked_package_ids": [],
+  "source_bound_package_match_count": 4,
+  "entries": [
+    {
+      "package_id": "ExternalVerification1041ContactSurvives",
+      "config_path": "verification/palomar-entries/ExternalVerification1041ContactSurvives.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041ContactSurvives.Challenge",
+      "solution_module": "ExternalVerification1041ContactSurvives.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041ContactSurvives.contact_survives"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "017d8c847719c1359be97a2e33cf6b0a7d5da74448b6fc617608cd1d90df8ced",
+      "solution_sha256": "01053d81eb860ccda48f79b47f2de549211f8125e7e47fdf6032cd8b2a33bfa0",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041CriticalGeometry",
+      "config_path": "verification/palomar-entries/ExternalVerification1041CriticalGeometry.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041CriticalGeometry.Challenge",
+      "solution_module": "ExternalVerification1041CriticalGeometry.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041CriticalGeometry.criticalGeometricMean_twoRootProximity",
+        "Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity",
+        "Erdos249257.ExternalVerification1041CriticalGeometry.criticalDiskInverseBalance_twoRootProximity_strict",
+        "Erdos249257.ExternalVerification1041CriticalGeometry.nearestSpoke_unique_nearest_spoke_escapes",
+        "Erdos249257.ExternalVerification1041CriticalGeometry.allStraightCubic_every_pair_midpoint_escapes"
+      ],
+      "interface_count": 5,
+      "challenge_sha256": "584bb5eabb6d74ebe3eee5da4d6a2aa3f3c6826ab310a283e8d31132346aabc6",
+      "solution_sha256": "b1e4aafca85e49cf18c300c2c647d560ccdb45d53dbd7cccbe20b0251b68705c",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041CyclicTetranomialCoefficient",
+      "config_path": "verification/palomar-entries/ExternalVerification1041CyclicTetranomialCoefficient.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041CyclicTetranomialCoefficient.Challenge",
+      "solution_module": "ExternalVerification1041CyclicTetranomialCoefficient.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041CyclicTetranomialCoefficient.tetranomialRoot_spoke_factorization",
+        "Erdos249257.ExternalVerification1041CyclicTetranomialCoefficient.tetranomialRoot_spoke_norm_lt_one_of_rootBudget",
+        "Erdos249257.ExternalVerification1041CyclicTetranomialCoefficient.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "a93682078e84cf0d11d88b61f0f3cfb29331521e602119837a18ebbd68d81212",
+      "solution_sha256": "931d800ce393bcfd78bfc7b0c3de9b915afb089ee5e5bc21dbfe029350fac0a5",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041CyclicTrinomialFiber",
+      "config_path": "verification/palomar-entries/ExternalVerification1041CyclicTrinomialFiber.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041CyclicTrinomialFiber.Challenge",
+      "solution_module": "ExternalVerification1041CyclicTrinomialFiber.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_factorization",
+        "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.trinomialRoot_spoke_norm_lt_one_of_norm_lt_one",
+        "Erdos249257.ExternalVerification1041CyclicTrinomialFiber.cyclicTrinomial_two_short_fiber_displacements"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "5f0835b9a95ca711ee7e34f72ea9da377fe10565cfdaf1a190e099a22ec405e4",
+      "solution_sha256": "8694e1841ea45da449bbeae5112f68129d4286133710c909d1d5ca1bc4e79782",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041FiniteAvoidance",
+      "config_path": "verification/palomar-entries/ExternalVerification1041FiniteAvoidance.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041FiniteAvoidance.Challenge",
+      "solution_module": "ExternalVerification1041FiniteAvoidance.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041FiniteAvoidance.exists_small_avoiding_finite_realAffineLines"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "e2db0bfc7f76a8cbd8938e8ab3421376cdd02edd695c1ec4c372a82d224f0164",
+      "solution_sha256": "5d138d429e1732b7da69f5bc465dabdadcbccfb229801fbb8614bd1ec7be0296",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041FirstMergeCriticalValueSeparation",
+      "config_path": "verification/palomar-entries/ExternalVerification1041FirstMergeCriticalValueSeparation.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041FirstMergeCriticalValueSeparation.Challenge",
+      "solution_module": "ExternalVerification1041FirstMergeCriticalValueSeparation.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_exact_convenient_thresholds",
+        "Erdos249257.ExternalVerification1041FirstMergeCriticalValueSeparation.firstMerge_length_lt_two_of_squared_bound"
+      ],
+      "interface_count": 2,
+      "challenge_sha256": "d4a8fe074516e0ecf1ab03557a2310dc0e8c2bfd5af0e55cb75066ea58da8838",
+      "solution_sha256": "d0e8121da3fd2e989f3149fb2a4af2c8b0f45f8531b44b97ba1f3cbc0c68f9da",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041GeometricTail",
+      "config_path": "verification/palomar-entries/ExternalVerification1041GeometricTail.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041GeometricTail.Challenge",
+      "solution_module": "ExternalVerification1041GeometricTail.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041GeometricTail.tsum_geometric_tail"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "6667e1f2fd6d4c9d37181f98d413326e7ed4f4eb4ccb1ba686664617dc8bede1",
+      "solution_sha256": "3b9df9e2f712a1c142b1303b020496b4157f70856afc132822aad2940b3209b6",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041LevelSeparation",
+      "config_path": "verification/palomar-entries/ExternalVerification1041LevelSeparation.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041LevelSeparation.Challenge",
+      "solution_module": "ExternalVerification1041LevelSeparation.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041LevelSeparation.exists_small_translation_separating_arguments_and_norms"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "47c4f0ae55ae59335402211fd3f367196e7190ba323cc38f6dbf8ea6e308fcb7",
+      "solution_sha256": "4776e054ec3dbfecbc8b0e443d2006164d33a5d1b51c50e3cae06c53d3295dce",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041LifetimeOrliczBound",
+      "config_path": "verification/palomar-entries/ExternalVerification1041LifetimeOrliczBound.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041LifetimeOrliczBound.Challenge",
+      "solution_module": "ExternalVerification1041LifetimeOrliczBound.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041LifetimeOrliczBound.orlicz_le_of_lifetime_le"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "7985f25fdfa42bc417f7ff0f0b0831bc65b7e2b28072201ab0bbede0aa3abd1d",
+      "solution_sha256": "281fdd2a7447ffdf57fe3a3c843726e410ed44fcc052f47f289b26d3cd322f99",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041NewtonDecay",
+      "config_path": "verification/palomar-entries/ExternalVerification1041NewtonDecay.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041NewtonDecay.Challenge",
+      "solution_module": "ExternalVerification1041NewtonDecay.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041NewtonDecay.no_newtonConnection_of_not_samePositiveRay"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "0214076b719e1c3d52880b47696ed45f6ff70427ece6eed4874168c9642a5010",
+      "solution_sha256": "d76480b9984e509da53871bb73762565f13930f8b7179e9f66161858fa4ef290",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041NewtonDerivative",
+      "config_path": "verification/palomar-entries/ExternalVerification1041NewtonDerivative.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041NewtonDerivative.Challenge",
+      "solution_module": "ExternalVerification1041NewtonDerivative.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041NewtonDerivative.newtonFlow_value_hasDerivAt"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "78314bbf81bae9754356a06d4b1e2f672dc84726b4b8648d104969247f624dec",
+      "solution_sha256": "96e47bd1e357930a43a5441cc9c3bfa22d6bc7f9a768f0ba7b91457386f82d5e",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041NewtonSolve",
+      "config_path": "verification/palomar-entries/ExternalVerification1041NewtonSolve.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041NewtonSolve.Challenge",
+      "solution_module": "ExternalVerification1041NewtonSolve.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041NewtonSolve.newton_solve"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "0d0123d43cbbdca7fb553f870dbdd185bdaeb20bce984a2429ae0149ff8789fc",
+      "solution_sha256": "d074cd22f3512a1ec72bd434bc9d1a128254718689e98e58236bc542882a053e",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041Noncritical",
+      "config_path": "verification/palomar-entries/ExternalVerification1041Noncritical.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041Noncritical.Challenge",
+      "solution_module": "ExternalVerification1041Noncritical.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041Noncritical.noncritical_on_of_norm_lt_uniform_lower_bound"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "dead3d8d95f450a81fc1f69932c39cbc8d18e46ea6f72877c796f4606dd06211",
+      "solution_sha256": "0345023e9f3e3772450a5ae2c4f9d565609ead6b94f5f4a7ec8ea98544f5a981",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041NormRecipPowerSum",
+      "config_path": "verification/palomar-entries/ExternalVerification1041NormRecipPowerSum.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041NormRecipPowerSum.Challenge",
+      "solution_module": "ExternalVerification1041NormRecipPowerSum.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041NormRecipPowerSum.norm_recipPowerSum_le"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "4a6ef4c47581ab4def06f70c8409c51ca14fade4a6b147b02d2015a5feeef9d5",
+      "solution_sha256": "f56e82303d93ffc97eb185f6dc00896fc1a9b38a94c2f36506d75484e78d6bc8",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041OrliczNoUniformLinear",
+      "config_path": "verification/palomar-entries/ExternalVerification1041OrliczNoUniformLinear.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041OrliczNoUniformLinear.Challenge",
+      "solution_module": "ExternalVerification1041OrliczNoUniformLinear.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041OrliczNoUniformLinear.no_positive_uniform_linear_lower"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "dc88da010af25f2248499e8d7a7e8e293a242e0cb7ea7d63b7f5dc3447c0fe07",
+      "solution_sha256": "469fa9821b2160d2ddc7c5f16b9286661b6dc59e5cc64a3af8dbd7074b6dd35e",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041QuadraticContact",
+      "config_path": "verification/palomar-entries/ExternalVerification1041QuadraticContact.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041QuadraticContact.Challenge",
+      "solution_module": "ExternalVerification1041QuadraticContact.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041QuadraticContact.quadratic_contact_absorbs"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "748fbad323f6f4ff66ee7f6cb001ff094e429749d57b7e350fb55785aef09d34",
+      "solution_sha256": "dbb3b2a78fa815256cf0ea88169f26a77f5a584847dc4721d110bdc25d7fbf41",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041QuarticQuotientFiber",
+      "config_path": "verification/palomar-entries/ExternalVerification1041QuarticQuotientFiber.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041QuarticQuotientFiber.Challenge",
+      "solution_module": "ExternalVerification1041QuarticQuotientFiber.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_kernel_le_axis",
+        "Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_axis_integral",
+        "Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_endpoint_budget_lt_two",
+        "Erdos249257.ExternalVerification1041QuarticQuotientFiber.rootLift_length_lt_two_of_le_endpoint_budget"
+      ],
+      "interface_count": 4,
+      "challenge_sha256": "a099f669fedde0400fa6751721b3dadf63d69a61d20c75b8a7d0daf0305e2a4b",
+      "solution_sha256": "de2a2ef39395573987347007de06219ba095fa4c2223ea48b176260c43100bf3",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041ReciprocalHalfPlane",
+      "config_path": "verification/palomar-entries/ExternalVerification1041ReciprocalHalfPlane.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041ReciprocalHalfPlane.Challenge",
+      "solution_module": "ExternalVerification1041ReciprocalHalfPlane.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041ReciprocalHalfPlane.newtonReciprocalVector_supportingHalfPlane"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "4593ca959c33dfc52ccd1904a68c6961d18f96c87bd247f78d76ec67a0bde8a7",
+      "solution_sha256": "41cab49b37ccdfcc077704a7d387a700cf9463ae7f27ff2e49cde89ddabe9b08",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041ReciprocalRigidity",
+      "config_path": "verification/palomar-entries/ExternalVerification1041ReciprocalRigidity.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041ReciprocalRigidity.Challenge",
+      "solution_module": "ExternalVerification1041ReciprocalRigidity.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041ReciprocalRigidity.re_eq_zero_of_reciprocal_sum_eq_zero"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "e22d54799875eddbeeb647cc282462e7e6fe81369b39bd85c651612ce159a3c1",
+      "solution_sha256": "b9653dd67ad76cbc8d89f897eb52e52567bf505d825bc0a824ceaf3ac504a27b",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041RootRetention",
+      "config_path": "verification/palomar-entries/ExternalVerification1041RootRetention.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041RootRetention.Challenge",
+      "solution_module": "ExternalVerification1041RootRetention.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041RootRetention.constant_perturbation_roots_in_unitDisk"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "38422e0d5e32661602f6b4348f98ccd5d02db85340f3700b75eaef1bd309a47f",
+      "solution_sha256": "da842ebc236803c626761f8f9d2485b923f64c0de04d36ee746f15b2a9c690f8",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041SecondAgeBound",
+      "config_path": "verification/palomar-entries/ExternalVerification1041SecondAgeBound.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041SecondAgeBound.Challenge",
+      "solution_module": "ExternalVerification1041SecondAgeBound.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041SecondAgeBound.second_age_le_of_tail_lower"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "efbb1506fea12e9e7321725c63ddf7577bd89f20c0725f4cbee348957a63578a",
+      "solution_sha256": "86edb2d9840eecb12173f289ab54a6f6cf2e835c248e5db7b52e12878913a598",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041SignedMomentTetranomial",
+      "config_path": "verification/palomar-entries/ExternalVerification1041SignedMomentTetranomial.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041SignedMomentTetranomial.Challenge",
+      "solution_module": "ExternalVerification1041SignedMomentTetranomial.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041SignedMomentTetranomial.sum_normSq_const_add_mul",
+        "Erdos249257.ExternalVerification1041SignedMomentTetranomial.exists_two_tails_norm_lt_one_of_exact_L2_budget",
+        "Erdos249257.ExternalVerification1041SignedMomentTetranomial.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "313301dc90ffc48ce345be4dfe50cdcebd2f9084e0f8e590c96bc0c3a5783865",
+      "solution_sha256": "b49f7099902ab6ec6d0b72f34ec33175a9ab9134cf4b4a9a8c83de3413be227c",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041SolvedFamilies",
+      "config_path": "ExternalVerification1041SolvedFamilies/comparator.json",
+      "config_authority": "existing_package_owner_preserved",
+      "challenge_module": "ExternalVerification1041SolvedFamilies.Challenge",
+      "solution_module": "ExternalVerification1041SolvedFamilies.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041SolvedFamilies.cubic_safeRootSpoke",
+        "Erdos249257.ExternalVerification1041SolvedFamilies.primitiveQuintic_twoStrictTailEnergies",
+        "Erdos249257.ExternalVerification1041SolvedFamilies.SharpCollinear.existsPeakLeComparisonBound"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "508e5bf18231f88f361eb821864ee55a2b6dd9d6d50f49544f4eaef3188ab1f4",
+      "solution_sha256": "8a4d7f4bac5263aeb22da364d7db4a7576f3717d09a729196e13b542a9da5d39",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041StapleEquality",
+      "config_path": "verification/palomar-entries/ExternalVerification1041StapleEquality.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041StapleEquality.Challenge",
+      "solution_module": "ExternalVerification1041StapleEquality.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041StapleEquality.staple_length_eq"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "274bbafe04521941ff96d2ebe19c2cd8830e1e7383b5f3e96efd4f17d0bc2ff4",
+      "solution_sha256": "97f25a21cb13d015e948968c173da0becc5bd5f7ef525c271af9fb220346566f",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041StapleLength",
+      "config_path": "verification/palomar-entries/ExternalVerification1041StapleLength.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041StapleLength.Challenge",
+      "solution_module": "ExternalVerification1041StapleLength.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041StapleLength.staple_length_lt_two"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "d0c7680015eb1e09fd34d061c1afb1d5278f03c647c4ad7c1cac8f58207b8a7a",
+      "solution_sha256": "fd68120b98a44c5c816417200f77d36bd34adc3f4971cbfc0101cffe648b6e4e",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041TetranomialSpokes",
+      "config_path": "verification/palomar-entries/ExternalVerification1041TetranomialSpokes.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041TetranomialSpokes.Challenge",
+      "solution_module": "ExternalVerification1041TetranomialSpokes.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_factorization",
+        "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_rootBudget",
+        "Erdos249257.ExternalVerification1041TetranomialSpokes.tetranomialRoot_spoke_norm_lt_one_of_lowCoeffBudget",
+        "Erdos249257.ExternalVerification1041TetranomialSpokes.sum_normSq_const_add_mul",
+        "Erdos249257.ExternalVerification1041TetranomialSpokes.exists_two_tails_norm_lt_one_of_exact_L2_budget",
+        "Erdos249257.ExternalVerification1041TetranomialSpokes.exists_two_tetranomialRoot_safeSpokes_of_moment_coeff_budget"
+      ],
+      "interface_count": 6,
+      "challenge_sha256": "e5571575b172aee3b86142cfd56650a3a8477f7a195065a5a8803414a96058c3",
+      "solution_sha256": "91c2594a872544e8e47aef075b39b96bee9d510c0e3dbb491c66c96440d857fc",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041TranslationAvoidance",
+      "config_path": "verification/palomar-entries/ExternalVerification1041TranslationAvoidance.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041TranslationAvoidance.Challenge",
+      "solution_module": "ExternalVerification1041TranslationAvoidance.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041TranslationAvoidance.exists_small_translation_separating_arguments"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "6fdc2ccc8e5925d29e43867e8cf23d2a738f70ee7570d58ce70ab3d385755eeb",
+      "solution_sha256": "023e1abf8c41880dd5ed06ccd0a55ecbebabd4b8625119e6984f59109aa6908c",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1041WeightedChainConsumer",
+      "config_path": "verification/palomar-entries/ExternalVerification1041WeightedChainConsumer.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1041WeightedChainConsumer.Challenge",
+      "solution_module": "ExternalVerification1041WeightedChainConsumer.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1041WeightedChainConsumer.weighted_chain_consumer"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "2e618a1429a9ce9b6db32f550d3ed267abddfdd638ad5fe9920784fa3095aaaf",
+      "solution_sha256": "5c0826a880f1b87350aa54dae30a49ed693d75f9bdd415c9186129985fcb6c69",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1049",
+      "config_path": "verification/palomar-entries/ExternalVerification1049.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1049.Challenge",
+      "solution_module": "ExternalVerification1049.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "451265c2d83b329671c9b74be7978ea7d50012388f06f8a914dda37a235d3e7c",
+      "solution_sha256": "73f328a8cc8c22d9bf8ff79301465730cddaf1921ca8e7122857c9edacebb6b6",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1049AdelicHeightBridge",
+      "config_path": "verification/palomar-entries/ExternalVerification1049AdelicHeightBridge.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1049AdelicHeightBridge.Challenge",
+      "solution_module": "ExternalVerification1049AdelicHeightBridge.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial",
+        "Erdos249257.ExternalVerification1049AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive",
+        "Erdos249257.ExternalVerification1049AdelicHeightBridge.twoPow_sixtyFour_lt_threePow_fortyOne",
+        "Erdos249257.ExternalVerification1049AdelicHeightBridge.threeHalves_rectangular_hp_gap_gt_threeThirteenths",
+        "Erdos249257.ExternalVerification1049AdelicHeightBridge.threeHalves_hankelChargeThreshold_lt_eightFortyOne",
+        "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge",
+        "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge",
+        "Erdos249257.ExternalVerification1049AdelicHeightBridge.three_two_scalar_margin_lt_explicit",
+        "Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41",
+        "Erdos249257.ExternalVerification1049AdelicHeightBridge.fourJet_card_gt_two_pow_of_rank_41",
+        "Erdos249257.ExternalVerification1049AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt"
+      ],
+      "interface_count": 11,
+      "challenge_sha256": "7da818c6966767f446413adf0540b06592eb070d056f71d4232f13e3d22aaf21",
+      "solution_sha256": "233bba72cc39abe149e0e44248321b0186860d55db00a1c45179dbfc2d68e114",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1049BezoutPluckerJets",
+      "config_path": "verification/palomar-entries/ExternalVerification1049BezoutPluckerJets.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1049BezoutPluckerJets.Challenge",
+      "solution_module": "ExternalVerification1049BezoutPluckerJets.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1049BezoutPluckerJets.anchor_det_zero_forces_all_det_zero",
+        "Erdos249257.ExternalVerification1049BezoutPluckerJets.binary_row_collision_of_anchor_det_zero",
+        "Erdos249257.ExternalVerification1049BezoutPluckerJets.adjacent_det_zero_forces_all_det_zero",
+        "Erdos249257.ExternalVerification1049BezoutPluckerJets.zmod_binary_tail_collision_of_two_three_depth"
+      ],
+      "interface_count": 4,
+      "challenge_sha256": "3a73cf1979acf248b6c7178fe9df174b1480f5b35fccffb5636e502827d134ab",
+      "solution_sha256": "73fd0923bc303ffdb0697a3f3942427c36501b4e79ac6f730be36684fe750ec2",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1049HermitePadeNoGo",
+      "config_path": "verification/palomar-entries/ExternalVerification1049HermitePadeNoGo.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1049HermitePadeNoGo.Challenge",
+      "solution_module": "ExternalVerification1049HermitePadeNoGo.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_expansion",
+        "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_nonpos",
+        "Erdos249257.ExternalVerification1049HermitePadeNoGo.hpClearedGap_eq_zero_iff",
+        "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_le_classical",
+        "Erdos249257.ExternalVerification1049HermitePadeNoGo.rectangular_hp_threshold_eq_classical_iff"
+      ],
+      "interface_count": 5,
+      "challenge_sha256": "e2c05ede637a78571936b2b33826946707a60e93d43e71adc07e2b2cdc002131",
+      "solution_sha256": "d2827227f5b9b523f5a72c4cd23c2515cba58143281f90b3cbcfb43022c319c8",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1049PrimeSupportSelectors",
+      "config_path": "verification/palomar-entries/ExternalVerification1049PrimeSupportSelectors.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1049PrimeSupportSelectors.Challenge",
+      "solution_module": "ExternalVerification1049PrimeSupportSelectors.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedTwoSelector_rationalGap",
+        "Erdos249257.ExternalVerification1049PrimeSupportSelectors.rationalTwoSelector_notBothTendstoZero",
+        "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primeSupportedOneRow_rationalGap",
+        "Erdos249257.ExternalVerification1049PrimeSupportSelectors.primePowerSupportedOneRow_rationalGap",
+        "Erdos249257.ExternalVerification1049PrimeSupportSelectors.twoSelector_unimodularHeightDecay_tradeoff",
+        "Erdos249257.ExternalVerification1049PrimeSupportSelectors.zeroDenominatorCoordinates_binaryCollision"
+      ],
+      "interface_count": 6,
+      "challenge_sha256": "c5553b55facccbb6989587060fb4d309312eb06f4958df0b720e2ae8739433ce",
+      "solution_sha256": "5eafe632eb323bfa2695c681a4285e1bfa42110b1ae34241ee5b45d998bfd163",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification1049RationalBaseBarrier",
+      "config_path": "verification/palomar-entries/ExternalVerification1049RationalBaseBarrier.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification1049RationalBaseBarrier.Challenge",
+      "solution_module": "ExternalVerification1049RationalBaseBarrier.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification1049RationalBaseBarrier.rationalBaseClearedTailQ_succ",
+        "Erdos249257.ExternalVerification1049RationalBaseBarrier.twoPow_le_rationalBaseForcingNat",
+        "Erdos249257.ExternalVerification1049RationalBaseBarrier.threeHalves_no_coordinatewiseCorridor"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "8dc1a3e2d6117f299d1be5c0627f103a0aeb1a2b878f6a0caba93911ec1ac547",
+      "solution_sha256": "bed923ae79d13972ec589ebe44d85eea6602ca11dd0f22390e914da59e3a6e54",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification243BoundedNegativePartRigidity",
+      "config_path": "verification/palomar-entries/ExternalVerification243BoundedNegativePartRigidity.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification243BoundedNegativePartRigidity.Challenge",
+      "solution_module": "ExternalVerification243BoundedNegativePartRigidity.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification243BoundedNegativePartRigidity.boundedNegativePart_completeRigidity"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "e0054ef1bd002d194938028068e2000755219e32967d3652a17322e6d7f023a9",
+      "solution_sha256": "923e26a19b9685ac5b02cf9b63f8fc4a8833eb4b3feb5bb7168d00746ec51b96",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification243PeriodicNegativeOrbit",
+      "config_path": "verification/palomar-entries/ExternalVerification243PeriodicNegativeOrbit.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification243PeriodicNegativeOrbit.Challenge",
+      "solution_module": "ExternalVerification243PeriodicNegativeOrbit.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit",
+        "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_periodicNegative_orbit",
+        "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "acfe4334c87cc06ca172c93eff6a1f93975792c4bd69c8b19a3523544198acd3",
+      "solution_sha256": "078e3d76d02e2d0ae20aab8bfff1135e1eff488a2ac03ccf5b9ce7ba0f16e899",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification243RepairEntropy",
+      "config_path": "verification/palomar-entries/ExternalVerification243RepairEntropy.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification243RepairEntropy.Challenge",
+      "solution_module": "ExternalVerification243RepairEntropy.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification243RepairEntropy.repairedFamily_recovery_energy_divisionFree",
+        "Erdos249257.ExternalVerification243RepairEntropy.repaired_card_bound_of_independent",
+        "Erdos249257.ExternalVerification243RepairEntropy.eventually_recoveryPayment_eq_one_of_fixedLength"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "f5d2625c4b6bdfdd78ef7e10ae52ea677fd5233cab9816ba966024ad63d71d44",
+      "solution_sha256": "4b90cd071e545e871bc395626189cb6b66116e2c9695e9da6388faa5ca61faf2",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification243SummableNegativeMassRigidity",
+      "config_path": "verification/palomar-entries/ExternalVerification243SummableNegativeMassRigidity.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification243SummableNegativeMassRigidity.Challenge",
+      "solution_module": "ExternalVerification243SummableNegativeMassRigidity.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification243SummableNegativeMassRigidity.summableNegativeMass_completeRigidity"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "4df1b879366006c3a26732c2e0d1662e4fe6c0450eddf2c09a62729536993bd6",
+      "solution_sha256": "61cb2c170360e51229e4c6c7cbaefb109d725c45109524e8cfa9726c1fdc3617",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification249ActualLcmOrbit",
+      "config_path": "verification/palomar-entries/ExternalVerification249ActualLcmOrbit.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification249ActualLcmOrbit.Challenge",
+      "solution_module": "ExternalVerification249ActualLcmOrbit.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification249ActualLcmOrbit.actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix",
+        "Erdos249257.ExternalVerification249ActualLcmOrbit.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply"
+      ],
+      "interface_count": 2,
+      "challenge_sha256": "0a790cda1aa3d3355dbfd804f78d45047ed02726303d148997d8646396f1d665",
+      "solution_sha256": "d0276ee299633c836fc467ad60a20705fd58d21ac7ff63689e8e16f86f889c8b",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification249BinaryCyclotomicAnchors",
+      "config_path": "verification/palomar-entries/ExternalVerification249BinaryCyclotomicAnchors.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification249BinaryCyclotomicAnchors.Challenge",
+      "solution_module": "ExternalVerification249BinaryCyclotomicAnchors.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.exists_clean_binaryCyclotomicAnchor",
+        "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicLayer_unboundedPrimeDivisorSupply",
+        "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.binaryCyclotomicAnchoredKillSupply_iff_irrational",
+        "Erdos249257.ExternalVerification249BinaryCyclotomicAnchors.exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational"
+      ],
+      "interface_count": 4,
+      "challenge_sha256": "a72223cbdf3132e65ac4c156b3549261308c5949c52f1d23579fcc1cd017b39b",
+      "solution_sha256": "e61d129db6182ff6cba52d58a40f32aa525b9670c20ee78ac541df100103ca8e",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification249CanonicalMersenneFrontier",
+      "config_path": "verification/palomar-entries/ExternalVerification249CanonicalMersenneFrontier.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification249CanonicalMersenneFrontier.Challenge",
+      "solution_module": "ExternalVerification249CanonicalMersenneFrontier.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification249CanonicalMersenneFrontier.fullMersenneBlockResidue_succ",
+        "Erdos249257.ExternalVerification249CanonicalMersenneFrontier.fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint",
+        "Erdos249257.ExternalVerification249CanonicalMersenneFrontier.fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "c09fcd9ee1bfb4d82318fedecc61cf4e4cf4c0872e4aed9c6e808f6445750114",
+      "solution_sha256": "0d17a224f6d63994ea825634b2dd544482add166c88f52377bcc68de772e58c5",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification249CarryRankFrontier",
+      "config_path": "verification/palomar-entries/ExternalVerification249CarryRankFrontier.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification249CarryRankFrontier.Challenge",
+      "solution_module": "ExternalVerification249CarryRankFrontier.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit",
+        "Erdos249257.ExternalVerification249CarryRankFrontier.totient_carryKernel_diff",
+        "Erdos249257.ExternalVerification249CarryRankFrontier.finrank_canonicalCarryKernel_ge_of_certificate",
+        "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional",
+        "Erdos249257.ExternalVerification249CarryRankFrontier.carryShift_dvd_iff_tailDiff_mem_int",
+        "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank"
+      ],
+      "interface_count": 6,
+      "challenge_sha256": "0a4c8a0ef766468cd7ff95d3ea25fde8e4df5a741dc9817f66bbcc9edf0d006b",
+      "solution_sha256": "22e51f35c26da2fc5e64ff1a31b0f9cc6954e730cebca19342b08c309649e179",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": [
+        {
+          "claim_id": "totient_carry_kernel_anti_compression",
+          "review_family": "totient_carry_anti_compression",
+          "package_id": "ExternalVerification249CarryRankFrontier",
+          "interface_name": "Erdos249257.ExternalVerification249CarryRankFrontier.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+          "source_module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "source_declaration": "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+          "evidence": "claim anchor + main-result source link + exact Solution import/use; Comparator execution not asserted"
+        }
+      ]
+    },
+    {
+      "package_id": "ExternalVerification249DyadicTotientKernel",
+      "config_path": "verification/palomar-entries/ExternalVerification249DyadicTotientKernel.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification249DyadicTotientKernel.Challenge",
+      "solution_module": "ExternalVerification249DyadicTotientKernel.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification249DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "2bb9a2d191ef2f819fa668a3ad5d2e70fa36d9202514f80a4d4b601e21d1818e",
+      "solution_sha256": "a77733f1f2f29ea782fbb0a202168b202582dda0b4c5df604744dee1f1d8bf16",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": [
+        {
+          "claim_id": "dyadic_totient_certificate_interface",
+          "review_family": "totient_kernel_rank",
+          "package_id": "ExternalVerification249DyadicTotientKernel",
+          "interface_name": "Erdos249257.ExternalVerification249DyadicTotientKernel.dyadicTotientKernelOddCoreBasisAndFiniteRanks",
+          "source_module": "Erdos249257/TotientMahlerDefect.lean",
+          "source_declaration": "Erdos249257.finrank_totientKernelThroughLevelFamily_eq",
+          "evidence": "claim anchor + main-result source link + exact Solution import/use; Comparator execution not asserted"
+        }
+      ]
+    },
+    {
+      "package_id": "ExternalVerification249FullDepthRayAmplifier",
+      "config_path": "verification/palomar-entries/ExternalVerification249FullDepthRayAmplifier.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification249FullDepthRayAmplifier.Challenge",
+      "solution_module": "ExternalVerification249FullDepthRayAmplifier.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification249FullDepthRayAmplifier.eventually_twoSyndetic_fullDepthKillMultipliers_of_seed",
+        "Erdos249257.ExternalVerification249FullDepthRayAmplifier.exists_fullDepthKill_on_ray_iff_shift_notMem_int",
+        "Erdos249257.ExternalVerification249FullDepthRayAmplifier.apFullDepthEscape_iff_irrational",
+        "Erdos249257.ExternalVerification249FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_periodMultipleKillSupply",
+        "Erdos249257.ExternalVerification249FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_irrational"
+      ],
+      "interface_count": 5,
+      "challenge_sha256": "effd34b3e7191d7e77e04c49a9874529896d2ccc6526ec622188efcaabb6af3f",
+      "solution_sha256": "ea0d70244b179b8eada06d6415612786bd96f004288faf906932f9c442ed5ca1",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification249RankOneSharpFloor",
+      "config_path": "verification/palomar-entries/ExternalVerification249RankOneSharpFloor.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification249RankOneSharpFloor.Challenge",
+      "solution_module": "ExternalVerification249RankOneSharpFloor.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_eq_one_five_iff",
+        "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty",
+        "Erdos249257.ExternalVerification249RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen",
+        "Erdos249257.ExternalVerification249RankOneSharpFloor.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen",
+        "Erdos249257.ExternalVerification249RankOneSharpFloor.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty",
+        "Erdos249257.ExternalVerification249RankOneSharpFloor.primitive_form_abs_gt_twentyOne_div_threeTwenty"
+      ],
+      "interface_count": 6,
+      "challenge_sha256": "87fe8d197a51fa4d97e46e8a11ccb6990439c9eda684c5b07be8d37af225be84",
+      "solution_sha256": "7ed5fa212a8799c15a3ce7010a4d2e280d7cea9d9a3afe90b29d19e6caab1478",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification251ActualPrimeGapTail",
+      "config_path": "verification/palomar-entries/ExternalVerification251ActualPrimeGapTail.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification251ActualPrimeGapTail.Challenge",
+      "solution_module": "ExternalVerification251ActualPrimeGapTail.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification251ActualPrimeGapTail.exists_rationalPrimeGapTailState_representation_of_not_irrational",
+        "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailState_recurrence",
+        "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTailShift_eventuallyIntegral",
+        "Erdos249257.ExternalVerification251ActualPrimeGapTail.rationalPrimeGapTail_has_positive_shift_not_eventually_small"
+      ],
+      "interface_count": 4,
+      "challenge_sha256": "36deeb61a396fdd54003de9f0a52f24f190ec9e01fd0020179ce9fff90e961d2",
+      "solution_sha256": "7150e51cffea74576ca81e32db47b569cbbbd5812825825f997be6b3924ca566",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification251AffineCircularity",
+      "config_path": "verification/palomar-entries/ExternalVerification251AffineCircularity.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification251AffineCircularity.Challenge",
+      "solution_module": "ExternalVerification251AffineCircularity.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification251AffineCircularity.adjacent_small_mismatch_iff_signed_two_window",
+        "Erdos249257.ExternalVerification251AffineCircularity.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral",
+        "Erdos249257.ExternalVerification251AffineCircularity.cofinal_blockResidue_escape_iff_not_eventuallyIntegral"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "2352ba98b14803be055d904e08584a71d575b7a4710f86d591dc02895f6477a5",
+      "solution_sha256": "2a25fc3bb431df43554b997075301a50231669a4733a5305da3f6345eb601098",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification251LcmDiagonalCriterion",
+      "config_path": "verification/palomar-entries/ExternalVerification251LcmDiagonalCriterion.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification251LcmDiagonalCriterion.Challenge",
+      "solution_module": "ExternalVerification251LcmDiagonalCriterion.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification251LcmDiagonalCriterion.notIrrationalInitial_iff_exists_integral_positive_tailShift",
+        "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_cofinalNonintegralTailShifts",
+        "Erdos249257.ExternalVerification251LcmDiagonalCriterion.tailShiftIntegral_iff_orderOf_dvd",
+        "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_nonintegral_on_schedule",
+        "Erdos249257.ExternalVerification251LcmDiagonalCriterion.irrationalInitial_iff_allLcmDiagonal_nonintegral"
+      ],
+      "interface_count": 5,
+      "challenge_sha256": "c857fcf4947598240c88e084e46af3805703fbff1d53423f8a8cf4d075bbb1f2",
+      "solution_sha256": "1fa30719c2056bb35aecfdf9f3b150386504dd670b201f5672d914145cffb90b",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification251PolynomialShiftCountermodel",
+      "config_path": "verification/palomar-entries/ExternalVerification251PolynomialShiftCountermodel.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification251PolynomialShiftCountermodel.Challenge",
+      "solution_module": "ExternalVerification251PolynomialShiftCountermodel.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification251PolynomialShiftCountermodel.polynomialGapTailCountermodel"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "f033dc6801afc773bfecc7facf6737286a02522271661f15ce2b2a58d9103fcf",
+      "solution_sha256": "3ec6540777db5abeb33a2ae9b3f3f4278436d564f9aeccd75a776b2d8e3f209e",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification251PrimeGapIdentity",
+      "config_path": "verification/palomar-entries/ExternalVerification251PrimeGapIdentity.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification251PrimeGapIdentity.Challenge",
+      "solution_module": "ExternalVerification251PrimeGapIdentity.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_summable",
+        "Erdos249257.ExternalVerification251PrimeGapIdentity.primeGapSeries_summable",
+        "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_eq_two_add_primeGapSeries",
+        "Erdos249257.ExternalVerification251PrimeGapIdentity.primeSeries_irrational_iff_primeGapSeries"
+      ],
+      "interface_count": 4,
+      "challenge_sha256": "690e1ae04ba29b652f65b5b65fde623aca72e8d01dbbbc644d3f08e4f8cbba1b",
+      "solution_sha256": "5d88bb657f391c1f033ce052aad36b2626b95c5eaa70cea5e38f57cfb57fc31f",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification257AchievementSetGeometry",
+      "config_path": "verification/palomar-entries/ExternalVerification257AchievementSetGeometry.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification257AchievementSetGeometry.Challenge",
+      "solution_module": "ExternalVerification257AchievementSetGeometry.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification257AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "c701f2b18fae58ab33b09e93a2cc7a2b456f882bbc2ac8345095b9224815c978",
+      "solution_sha256": "35e2d738cb03f0c35a3fb02da1c12986b3769e0a77f49317c45e7d90b76c5dcc",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification257ActualUpperSuccessor",
+      "config_path": "verification/palomar-entries/ExternalVerification257ActualUpperSuccessor.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification257ActualUpperSuccessor.Challenge",
+      "solution_module": "ExternalVerification257ActualUpperSuccessor.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification257ActualUpperSuccessor.actualUpperRightPacketLinearEscape_iff_successorLinearEscape",
+        "Erdos249257.ExternalVerification257ActualUpperSuccessor.actualUpperSuccessorLinearEscape_completeCounterexample"
+      ],
+      "interface_count": 2,
+      "challenge_sha256": "c12aecbee3d82f716cafa30e15cc873cd3da670cdbbc11909de48402a4de0bf3",
+      "solution_sha256": "2d82cc5f15f656df5e96ce47e346c8fdd98776d4298d85ba0cf8bd3df77a07be",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification257BooleanMobiusCarry",
+      "config_path": "verification/palomar-entries/ExternalVerification257BooleanMobiusCarry.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification257BooleanMobiusCarry.Challenge",
+      "solution_module": "ExternalVerification257BooleanMobiusCarry.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification257BooleanMobiusCarry.exists_booleanMobiusCarry_of_support_fraction",
+        "Erdos249257.ExternalVerification257BooleanMobiusCarry.support_fraction_of_booleanMobiusCarry",
+        "Erdos249257.ExternalVerification257BooleanMobiusCarry.BooleanMobiusCarryCertificate.reconstructsSupport",
+        "Erdos249257.ExternalVerification257BooleanMobiusCarry.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry"
+      ],
+      "interface_count": 4,
+      "challenge_sha256": "a6b9f894b48a7e9bf0245f8516fa27c886a02814466f16e1bebee1280884c706",
+      "solution_sha256": "985a9878b5c485404dd8467b8697ea1216b215aa101256b521eae14d232ced6b",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": [
+        {
+          "claim_id": "boolean_mobius_carry",
+          "review_family": "boolean_mobius_carry",
+          "package_id": "ExternalVerification257BooleanMobiusCarry",
+          "interface_name": "Erdos249257.ExternalVerification257BooleanMobiusCarry.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
+          "source_module": "Erdos249257/BooleanMobiusCarry.lean",
+          "source_declaration": "Erdos249257.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
+          "evidence": "claim anchor + main-result source link + exact Solution import/use; Comparator execution not asserted"
+        }
+      ]
+    },
+    {
+      "package_id": "ExternalVerification257FinitePeriodNoncollapse",
+      "config_path": "verification/palomar-entries/ExternalVerification257FinitePeriodNoncollapse.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification257FinitePeriodNoncollapse.Challenge",
+      "solution_module": "ExternalVerification257FinitePeriodNoncollapse.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.finite_period_noncollapse_rat_den",
+        "Erdos249257.ExternalVerification257FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum"
+      ],
+      "interface_count": 2,
+      "challenge_sha256": "eef31494be0de3c764a58cbec40261342655507fdc66db77842c332318bb7078",
+      "solution_sha256": "61efbf6751f113b08f1ae35dec484ef94fdc6384e9b5aa5f66437a3a254f15a5",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification257FourNinthsTetraprime",
+      "config_path": "verification/palomar-entries/ExternalVerification257FourNinthsTetraprime.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification257FourNinthsTetraprime.Challenge",
+      "solution_module": "ExternalVerification257FourNinthsTetraprime.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprime_baseKernel",
+        "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprimePrimeRepair_defect_le_thirty_five",
+        "Erdos249257.ExternalVerification257FourNinthsTetraprime.fourNinthsTetraprime_completeCounterexample"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "c1232f288b6f28dc14856aaf0224a8a872da642907f22bb09096976c89467ac4",
+      "solution_sha256": "c968e97d827470c6ccea285d84c478ccf7c3aed4618c71b0b6215b4b5d4324c8",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification257PositiveSkipEquivalence",
+      "config_path": "verification/palomar-entries/ExternalVerification257PositiveSkipEquivalence.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification257PositiveSkipEquivalence.Challenge",
+      "solution_module": "ExternalVerification257PositiveSkipEquivalence.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification257PositiveSkipEquivalence.greedyMersenneRemainderRat_half_pos",
+        "Erdos249257.ExternalVerification257PositiveSkipEquivalence.cofinalPositiveHalfGreedySkips_iff_half_mem"
+      ],
+      "interface_count": 2,
+      "challenge_sha256": "fb65f78e146f5223f84085fa581b64604b62126444de88f0f4632958a5ba66ca",
+      "solution_sha256": "71b596c1b1842f0d2e80e61fcff5eb6023b6e247f9db45b8a02e2f5ddac48345",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification257RationalTailRigidity",
+      "config_path": "verification/palomar-entries/ExternalVerification257RationalTailRigidity.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification257RationalTailRigidity.Challenge",
+      "solution_module": "ExternalVerification257RationalTailRigidity.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification257RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction",
+        "Erdos249257.ExternalVerification257RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add",
+        "Erdos249257.ExternalVerification257RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction",
+        "Erdos249257.ExternalVerification257RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one"
+      ],
+      "interface_count": 4,
+      "challenge_sha256": "9e4f26d5af218ea7f78b37b83b7969c5b14177651ecba9ef8eb25ba9df53b8e3",
+      "solution_sha256": "e204497c8c3ad8828a73130987a2635786e94609e49798ea8b0cec55d8ae5b7e",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification257ReciprocalSupport",
+      "config_path": "verification/palomar-entries/ExternalVerification257ReciprocalSupport.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification257ReciprocalSupport.Challenge",
+      "solution_module": "ExternalVerification257ReciprocalSupport.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "001e8b59796b57f9629be978fa36516dd681e9a921cb916964a0cc1636aba68f",
+      "solution_sha256": "a9232da3d8fe0f9f9a0572a970da4be051e557d3f0519c0308cbca320ce33cfc",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": [
+        {
+          "claim_id": "reciprocal_summable_support",
+          "review_family": "reciprocal_summable_support",
+          "package_id": "ExternalVerification257ReciprocalSupport",
+          "interface_name": "Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal",
+          "source_module": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+          "source_declaration": "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal",
+          "evidence": "claim anchor + main-result source link + exact Solution import/use; Comparator execution not asserted"
+        }
+      ]
+    },
+    {
+      "package_id": "ExternalVerification257ScaledGreedyTrap",
+      "config_path": "verification/palomar-entries/ExternalVerification257ScaledGreedyTrap.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification257ScaledGreedyTrap.Challenge",
+      "solution_module": "ExternalVerification257ScaledGreedyTrap.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification257ScaledGreedyTrap.scaledGreedyRemainder_tendsto_atTop_of_not_mem",
+        "Erdos249257.ExternalVerification257ScaledGreedyTrap.mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded",
+        "Erdos249257.ExternalVerification257ScaledGreedyTrap.mersenneAchievementSet_eq_scaledGreedyTrap",
+        "Erdos249257.ExternalVerification257ScaledGreedyTrap.rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally",
+        "Erdos249257.ExternalVerification257ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledLowerBranchCofinally",
+        "Erdos249257.ExternalVerification257ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded"
+      ],
+      "interface_count": 6,
+      "challenge_sha256": "1c500928656f47fc53be1f2060197a7adc260e47acd4a28c0774a2466f0eadb4",
+      "solution_sha256": "14254fab493cd72d66aaccf84dded3c188ea8ff6a0e1a22ba0f1b72377ad191d",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification257TerminalScaledVanishing",
+      "config_path": "verification/palomar-entries/ExternalVerification257TerminalScaledVanishing.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification257TerminalScaledVanishing.Challenge",
+      "solution_module": "ExternalVerification257TerminalScaledVanishing.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification257TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "4991477f873aa135a2d11d3d67192a96594af5ef6947ba93e71db37056337ee4",
+      "solution_sha256": "6461e565ee89778b720a8edccb44d6a6c99bdd49ef5f3de9f7aeab03199b1de7",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification257TwentyOneFatalBranch",
+      "config_path": "verification/palomar-entries/ExternalVerification257TwentyOneFatalBranch.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification257TwentyOneFatalBranch.Challenge",
+      "solution_module": "ExternalVerification257TwentyOneFatalBranch.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification257TwentyOneFatalBranch.twentyOneClosedRow_forces_quotientGreedy",
+        "Erdos249257.ExternalVerification257TwentyOneFatalBranch.one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates",
+        "Erdos249257.ExternalVerification257TwentyOneFatalBranch.one_div_twenty_one_mem_iff_not_fatalAlignedBranch",
+        "Erdos249257.ExternalVerification257TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_strict_supercapacity",
+        "Erdos249257.ExternalVerification257TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_affine_supercapacity"
+      ],
+      "interface_count": 5,
+      "challenge_sha256": "448a531e5dde7374af21724a3a9a0f99b7dd5190cca35f7370090cbf80001719",
+      "solution_sha256": "26481dbd2b7e18e21254a83bf5da74661cc00d15e8d374d576c9a56822dc6687",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification269ActualShellOrbit",
+      "config_path": "verification/palomar-entries/ExternalVerification269ActualShellOrbit.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification269ActualShellOrbit.Challenge",
+      "solution_module": "ExternalVerification269ActualShellOrbit.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification269ActualShellOrbit.actual_dyadicShellOrbit_recurrence_and_escape"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "b79f67d662da6839b006be758815180970c0e04bcb8802a14bc1c079f7d67367",
+      "solution_sha256": "61ba831debf0522d7075878d47997665811d8252ee68de25b3003a337285117a",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification269AllScaleLattice",
+      "config_path": "verification/palomar-entries/ExternalVerification269AllScaleLattice.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification269AllScaleLattice.Challenge",
+      "solution_module": "ExternalVerification269AllScaleLattice.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification269AllScaleLattice.smoothHeight_mul_prime_dvd_boundaryHeight",
+        "Erdos249257.ExternalVerification269AllScaleLattice.two_mul_heightNormalizer235",
+        "Erdos249257.ExternalVerification269AllScaleLattice.heightNormalizer235_mul_windowMass_eq_int",
+        "Erdos249257.ExternalVerification269AllScaleLattice.dyadicShellTsumTailR235_eq_range_add",
+        "Erdos249257.ExternalVerification269AllScaleLattice.qsmul_normalizedTailState_eq_int_of_value_eq_rat",
+        "Erdos249257.ExternalVerification269AllScaleLattice.exists_normalizedTailState_collision_of_value_eq_rat"
+      ],
+      "interface_count": 6,
+      "challenge_sha256": "39449f700787f8ad9c1b9848a9cc86162eb7cb6c3c46ac0a80828fa8f9a34ca2",
+      "solution_sha256": "12699ec116bc1b10ed3743e48b96d3d3cc741dbad5a523b2aeb3d1ce42ee87aa",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification269CarryMechanism",
+      "config_path": "verification/palomar-entries/ExternalVerification269CarryMechanism.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification269CarryMechanism.Challenge",
+      "solution_module": "ExternalVerification269CarryMechanism.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification269CarryMechanism.no_carryLift_of_errorBound_below_twoPow",
+        "Erdos249257.ExternalVerification269CarryMechanism.no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull",
+        "Erdos249257.ExternalVerification269CarryMechanism.perturbation_eq_zero_of_blockNull_twoAnchors",
+        "Erdos249257.ExternalVerification269CarryMechanism.carryLift_blockDefect",
+        "Erdos249257.ExternalVerification269CarryMechanism.carry_eq_residueDigit_add_coboundary",
+        "Erdos249257.ExternalVerification269CarryMechanism.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
+      ],
+      "interface_count": 6,
+      "challenge_sha256": "5d3c3070ffa83b53f7178f546bf168b7a864a00c1bb24e31a3c56b3d62bb0a31",
+      "solution_sha256": "e34ff066744332075049393a10e0bb978651f180bb5b4851799b691c160969c2",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification269IntegralBranchPinning",
+      "config_path": "verification/palomar-entries/ExternalVerification269IntegralBranchPinning.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification269IntegralBranchPinning.Challenge",
+      "solution_module": "ExternalVerification269IntegralBranchPinning.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification269IntegralBranchPinning.trueNormalizedState_pinning",
+        "Erdos249257.ExternalVerification269IntegralBranchPinning.trueNormalizedState_eq_telescope",
+        "Erdos249257.ExternalVerification269IntegralBranchPinning.integral_state_upward_closed",
+        "Erdos249257.ExternalVerification269IntegralBranchPinning.surviving_window_orbit_eq_true_state"
+      ],
+      "interface_count": 4,
+      "challenge_sha256": "c882f834aad8cca287005054ca117e1b5f9c6a1667a1211d8c3c2408af93e81e",
+      "solution_sha256": "6a81d20495a8fd5e21f9c1747f86a790f50766a7a528a3d781a215a66849a277",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification269ThreePrimeStructure",
+      "config_path": "verification/palomar-entries/ExternalVerification269ThreePrimeStructure.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification269ThreePrimeStructure.Challenge",
+      "solution_module": "ExternalVerification269ThreePrimeStructure.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight",
+        "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell",
+        "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimePositiveJumpSet_card",
+        "Erdos249257.ExternalVerification269ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight",
+        "Erdos249257.ExternalVerification269ThreePrimeStructure.smoothExponentShell_card_quadratic",
+        "Erdos249257.ExternalVerification269ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen",
+        "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation"
+      ],
+      "interface_count": 7,
+      "challenge_sha256": "bb86ff5e8a3b161e25cb3d22bdf2856f0003d4a05dcde8d3ef66c664f676e1eb",
+      "solution_sha256": "50be5b16a63c73aba10ea74dd635d3390081a5c9226374a016b262da3b89af53",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification68AdjacentUnitCarryWindow",
+      "config_path": "verification/palomar-entries/ExternalVerification68AdjacentUnitCarryWindow.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification68AdjacentUnitCarryWindow.Challenge",
+      "solution_module": "ExternalVerification68AdjacentUnitCarryWindow.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification68AdjacentUnitCarryWindow.consecutive_unit_carries_iff_positive_offset_le_den",
+        "Erdos249257.ExternalVerification68AdjacentUnitCarryWindow.twoStep_den_mul_transitionNormalizers",
+        "Erdos249257.ExternalVerification68AdjacentUnitCarryWindow.adjacentUnitCarryWindowDen_eq_twoStep_den",
+        "Erdos249257.ExternalVerification68AdjacentUnitCarryWindow.adjacentUnitCarryWindowOffset_eq_twoStep_factorization"
+      ],
+      "interface_count": 4,
+      "challenge_sha256": "9d3bc3bb44b4c4e39db63a9e0293bb46b864ee2b5dc9de7bd4d68e9b8bba085b",
+      "solution_sha256": "eb94e30ac174db1a6c747d2d7e82f534d8f24eaf07e3eb239f215b2fadf06671",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification68ChannelRadius",
+      "config_path": "verification/palomar-entries/ExternalVerification68ChannelRadius.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification68ChannelRadius.Challenge",
+      "solution_module": "ExternalVerification68ChannelRadius.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification68ChannelRadius.square_subsequence_radius_three_halves_lower",
+        "Erdos249257.ExternalVerification68ChannelRadius.no_eventual_square_subsequence_three_halves_upper",
+        "Erdos249257.ExternalVerification68ChannelRadius.not_isLittleO_square_subsequence_radius"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "cd92d49d58929be9a9347e4920405b6214b478eafe24ea6c7e2fc99d69c637cf",
+      "solution_sha256": "08ac31291573715a73914f1b3b02f943784e31baa9b8b1ac06962af8dc753224",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification68CompanionOrbitBoundary",
+      "config_path": "verification/palomar-entries/ExternalVerification68CompanionOrbitBoundary.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification68CompanionOrbitBoundary.Challenge",
+      "solution_module": "ExternalVerification68CompanionOrbitBoundary.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_genericShift",
+        "Erdos249257.ExternalVerification68CompanionOrbitBoundary.companionOrbitBoundary_factorialGapSeries",
+        "Erdos249257.ExternalVerification68CompanionOrbitBoundary.tsum_unitFactTerm_eq_exp_one_sub_two"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "a70ce63cc43e1ed55bc217f9e5bb3589163eab6ac7e1f4f76b3bfe3a27ec4e8e",
+      "solution_sha256": "967f8ed3ea1732605ea1391861f64e1dd1a525c2bfa1f531c40233f0218db703",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification68MovingFactorScaleSplit",
+      "config_path": "verification/palomar-entries/ExternalVerification68MovingFactorScaleSplit.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification68MovingFactorScaleSplit.Challenge",
+      "solution_module": "ExternalVerification68MovingFactorScaleSplit.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification68MovingFactorScaleSplit.movingPrivateFactorScaleSplit_implies_irrational",
+        "Erdos249257.ExternalVerification68MovingFactorScaleSplit.splitFactorNormalizedCollision_implies_irrational",
+        "Erdos249257.ExternalVerification68MovingFactorScaleSplit.fixedOwnerPair_eventually_absorbed"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "ffd754619b4450110e54cb4e95658b1fa905b572bb1b26fb4647943f1c732004",
+      "solution_sha256": "a0ae2d492b188bd0b06046fec4677aa42e8323f4db2c783c3533a133e5049271",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification68PrimePole",
+      "config_path": "verification/palomar-entries/ExternalVerification68PrimePole.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification68PrimePole.Challenge",
+      "solution_module": "ExternalVerification68PrimePole.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification68PrimePole.factorialGapPrefixLCMNumerator_mod_prime"
+      ],
+      "interface_count": 1,
+      "challenge_sha256": "4301ac6f17e453902748ab8991e94519ad25e96d86e381b5e45ab5e2dbda61ff",
+      "solution_sha256": "8b84682c7e671706a0d45736360c7f08fae2882e3bf4951ef16ae17f309ad1e6",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification68PrimeUnitTranslator",
+      "config_path": "verification/palomar-entries/ExternalVerification68PrimeUnitTranslator.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification68PrimeUnitTranslator.Challenge",
+      "solution_module": "ExternalVerification68PrimeUnitTranslator.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification68PrimeUnitTranslator.primeTranslator_exact_profile",
+        "Erdos249257.ExternalVerification68PrimeUnitTranslator.channelResidual_appendPrimeTranslator",
+        "Erdos249257.ExternalVerification68PrimeUnitTranslator.exists_remote_factorialGrid_primeTranslator_reduction"
+      ],
+      "interface_count": 3,
+      "challenge_sha256": "bd14b69a4112041b7365147968297dbbc7f7af1df3b074b5c47a4efcb5a25ea3",
+      "solution_sha256": "8670c63c1fca2dcf8a4817d5b605fae0bc9b41fddb2c921d3c1f2110d54f08d9",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    },
+    {
+      "package_id": "ExternalVerification68StrictSuccessorCarry",
+      "config_path": "verification/palomar-entries/ExternalVerification68StrictSuccessorCarry.json",
+      "config_authority": "generated_by_portfolio_owner",
+      "challenge_module": "ExternalVerification68StrictSuccessorCarry.Challenge",
+      "solution_module": "ExternalVerification68StrictSuccessorCarry.Solution",
+      "theorem_names": [
+        "Erdos249257.ExternalVerification68StrictSuccessorCarry.companionOrbit_completeCharacterization",
+        "Erdos249257.ExternalVerification68StrictSuccessorCarry.strictSuccessorCarry_completeCharacterization"
+      ],
+      "interface_count": 2,
+      "challenge_sha256": "c3e5beb48e3c2039d78a39e43bfa07b1e56504ae5bb3a6789d5352f2534a2f04",
+      "solution_sha256": "38733e453837403a1d11339c2e36abf43a4aa9f1ffb24b33bb82b3bffb4203ee",
+      "palomar_trusted_challenge": {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": []
+      },
+      "execution_status": "not_run_not_asserted",
+      "source_bound_matches": []
+    }
+  ],
+  "boundary": "This catalog preserves per-package Comparator inputs. It is not a Comparator receipt, claim-completeness assertion, Palomar submission, review, acceptance, registration, or publication record."
+}

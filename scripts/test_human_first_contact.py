@@ -81,6 +81,21 @@ def main() -> None:
         "../README.md#problem-papers" in results,
         "RESULTS does not route readers to the current README paper anchor",
     )
+    normalized_results = " ".join(results.split())
+    for theorem_boundary in (
+        "leading source-current result for Problem 257",
+        "every infinite set `A` of positive integers",
+        "`∑_{a∈A} 1/a < ∞`",
+        "`∑_{a∈A} 1/(bᵃ−1)` is irrational",
+        "Pairwise coprimality is not assumed",
+        "reciprocal-divergent regime",
+        "classical full-support theorem is one known case",
+        "novelty and priority are unassessed",
+    ):
+        require(
+            theorem_boundary in normalized_results,
+            f"RESULTS lost the reciprocal-summable theorem boundary: {theorem_boundary}",
+        )
 
     require(
         len(prose_words(readme)) <= 1_400,
@@ -133,6 +148,21 @@ def main() -> None:
         "HUMAN_ENTRY does not explain the project before routing the reader",
     )
     require("All eight problems remain open" in human_entry, "human entry blurs the open boundary")
+    normalized_human_entry = " ".join(human_entry.split())
+    for theorem_boundary in (
+        "every integer base `b` at least two",
+        "every infinite set `A` of positive integers",
+        "`∑_{n∈A} n⁻¹ < ∞`",
+        "`∑_{n∈A} (bⁿ − 1)⁻¹` is irrational",
+        "Pairwise coprimality is not assumed",
+        "source-bound interpretation",
+        "reciprocal-divergent regime",
+        "novelty and priority have not been assessed",
+    ):
+        require(
+            theorem_boundary in normalized_human_entry,
+            f"human entry lost the reciprocal-summable theorem boundary: {theorem_boundary}",
+        )
     require(
         "Comparator" in human_entry and "Palomar" in human_entry,
         "human entry does not explain the two public review surfaces",
@@ -178,6 +208,22 @@ def main() -> None:
         require(
             (ROOT / f"docs/papers/full-text/{slug}.md").is_file(),
             f"missing Markdown paper for {slug}",
+        )
+
+    reasoning_slugs = (
+        "erdos68-factorial-reasoning-surface",
+        "erdos243-reciprocal-tail-reasoning-surface",
+        "erdos249-totient-reasoning-surface",
+        "erdos251-prime-gap-reasoning-surface",
+        "erdos257-mersenne-reasoning-surface",
+        "erdos269-running-lcm-reasoning-surface",
+        "erdos1041-lemniscate-reasoning-surface",
+        "erdos1049-rational-base-lambert-reasoning-surface",
+    )
+    for slug in reasoning_slugs:
+        require(
+            f"{slug}.pdf" in human_entry,
+            f"HUMAN_ENTRY omits the {slug} complete reasoning record",
         )
 
     details_at = results.find("<details>")

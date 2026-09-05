@@ -4521,6 +4521,496 @@ The evidence available leans one way, and I will say how far it leans.
 
 One theorem, of any strength, giving a nontrivial digit statistic for $`S`$ or for some $`\alpha_h`$: an upper bound $`o(N)`$ on the longest binary run in the first $`N`$ positions would not by itself decide \#249, but it would be the first evidence that the object is legible at all, and by Corollary <a href="#cor:digitform" data-reference-type="ref" data-reference="cor:digitform">273</a> any bound strong enough to give a positive proportion of digit changes in one block per scale would decide it. Failing that, the two concrete openings identified above are: the logarithmically averaged form of the block gap, where the entropy-decrement method is at least in the right regime (§<a href="#sub:pivot" data-reference-type="ref" data-reference="sub:pivot">12.3</a>); and the canonical prime fibre <a href="#eq:primefibre" data-reference-type="eqref" data-reference="eq:primefibre">[eq:primefibre]</a>, where every budget except one decorrelation estimate has been discharged. Neither is close. Both are well posed, and both can be started on today.
 
+<a id="sec:erdos-249-complete-family-map"></a>
+
+# Complete result-family map
+
+This section places every registered family for this problem in the shared 71-family reader order. The five display bands control exposition only; the separate promotion state currently covers 7 families and is reported but does not hide or strengthen any family. Mathematical statements and evidence modes come from the public claim registry. Across all eight problems the public result-atom catalog contains 682 exact packet coordinates; this problem contributes 58. Catalog rows expose bounded statement excerpts plus full-source digests, not a claim that every complete packet statement is reproduced here.
+
+<a id="strict-prime-tail-orbit-gap"></a>
+
+## Strict prime tail orbit gap
+
+**Reader position.** 4 of 71; display band: front door. Formal editorial disposition: promote. These are separate classifications.
+
+**Reader entry.** A cofinal strict gap along natural primes would force the binary totient series to be irrational.
+
+A single two-branch source mechanism gives an 89/100 first-harmonic block saving from an 11/100 nonpositive-phase density, or an adaptive pivot escape from a cofinal natural-prime tail-orbit strict gap below 9/10. The exact squaring law reduces the latter to a power-of-two orbit of one initial phase and shows that an entered dyadic root obstructs that producer, without proving such an entry. The load-bearing representative is the natural-prime irrationality reduction; block-gap, density, and phase-classification declarations remain subordinate.
+
+**Authority and reach.** Lean kernel; Comparator-selected; conditional reduction.
+
+**Exact boundary.** The 11/100 phase-density, cofinal natural-prime strict-gap, associated uniform-margin, and cofinal nonpositive-prime-shift producers remain unproved for the actual totient orbit. The scaled-angle and phase/integrality equivalences, finite 1 $`\le`$ h $`\le`$ 16 and k $`\le`$ 14 root exclusion, and non-dyadicity-to-cofinal-nonpositive-phase theorem provide classification or finite evidence only; they do not prove a density/equidistribution theorem, prime alignment, or actual dyadic-root entry. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős \#249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review.
+
+**Result-atom population.** 23 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+- `ErdosProblems.Erdos249.TotientTailOrbitBlockGap`
+
+- `ErdosProblems.Erdos249.TotientTailOrbitNonpositiveBlockDensity`
+
+- `ErdosProblems.Erdos249.tailOrbitBlockGap_of_nonpositiveBlockDensity`
+
+- `ErdosProblems.Erdos249.irrational_totient_series_of_tailOrbitBlockGap`
+
+- `ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap`
+
+- `ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap`
+
+- `ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap`
+
+- `ErdosProblems.Erdos249.tailOrbitFirstExp_succ`
+
+- `ErdosProblems.Erdos249.tailOrbitFirstExp_add`
+
+- `ErdosProblems.Erdos249.tailOrbitFirstExp_eq_initial_pow_two`
+
+- `ErdosProblems.Erdos249.naturalPrimeTailOrbitStrictGap_iff_initial_phase`
+
+- `ErdosProblems.Erdos249.tailOrbitFirstExp_eq_one_of_le`
+
+- `ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_phase_one`
+
+- `ErdosProblems.Erdos249.not_naturalPrimeTailOrbitStrictGap_of_dyadic_root`
+
+- `ErdosProblems.Erdos249.tailOrbitFirstExp_zero_eq_scaled_angle`
+
+- `ErdosProblems.Erdos249.tailOrbitFirstExp_eq_one_iff_tail_diff_mem_int`
+
+- `ErdosProblems.Erdos249.exists_tailOrbitFirstExp_zero_pow_two_eq_one_iff_dyadic`
+
+- `ErdosProblems.Erdos249.tailOrbitFirstExp_zero_pow_two_ne_one_upto_sixteen`
+
+- `ErdosProblems.Erdos249.cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic`
+
+- `ErdosProblems.Erdos249.naturalPrimeTailOrbitStrictGap_of_cofinal_nonpositive_prime_shift`
+
+<a id="totient-certificate-equivalences"></a>
+
+## Totient certificate equivalences
+
+**Reader position.** 10 of 71; display band: front door. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** Several exact certificates express the same \#249 obstruction in different arithmetic coordinates.
+
+Pointwise, cofinal, lcm-diagonal, and separated-window certificate supplies are exact or sufficient reformulations.
+
+**Authority and reach.** Lean kernel; exact equivalence and conditional reduction.
+
+**Exact boundary.** Equivalent producer statements are as hard as the unresolved target.
+
+**Result-atom population.** 2 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+- `Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_lcm_diagonal_certificate_supply`
+
+- `ErdosProblems.Erdos249.PeriodMultipleEscape.periodMultipleKillSupply_iff_irrational`
+
+- `Erdos249257.TotientTailPeriodKiller.dtwWindowSeparatedPairs_iff_irrational_totient_series`
+
+<a id="totient-carry-anti-compression"></a>
+
+## Totient carry anti compression
+
+**Reader position.** 20 of 71; display band: major result. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** A rational binary totient series would have to reconcile periodic carry quotients with exponentially growing section rank.
+
+If the binary totient coefficient series were rational, one positive-multiplier tempered integral carry would have dyadic sections uniformly eventually periodic modulo its multiplier while its canonical carry-section span has dimension at least 2^e $`-`$ 1 for every e. This is the orbit-level quotient-periodicity/anti-compression conjunction, distinct from the coefficient-side kernel-rank family.
+
+**Authority and reach.** Lean kernel; Comparator-selected; locally proved necessary consequence; novelty unassessed.
+
+**Exact boundary.** This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős \#249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-$`\mathbb{Q}`$-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and \#249 remains open.
+
+**Result-atom population.** 8 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+- `Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank`
+
+- `Erdos249257.finrank_canonicalCarryKernel_ge`
+
+- `Erdos249257.carrySectionsEventuallyPeriodicMod_of_shift_dvd`
+
+- `Erdos249257.totient_forcing_vanishes_mod_of_dvd_multiplier`
+
+- `Erdos249257.totient_carry_modEq_geometric_of_dvd_multiplier`
+
+<a id="fixed-precision-transport-no-go"></a>
+
+## Fixed precision transport no go
+
+**Reader position.** 21 of 71; display band: major result. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** No fixed amount of local carry information can exclude every finite centered endpoint.
+
+At every fixed positive precision, every finite word of odd valuation-unit symbols admits a compatible centred carry completion from any incoming integer state; bounded local signatures therefore cannot exclude all finite centred endpoints.
+
+**Authority and reach.** Lean kernel; Comparator-selected; unconditional synthetic no-go; novelty unassessed.
+
+**Exact boundary.** This is a synthetic finite-word construction with unrestricted incoming/high quotient states. It does not impose the actual totient-difference relation or provide growing-precision/global correlation, and it gives no Erdős \#249 endpoint or irrationality result. No novelty or priority claim is made. The one-step and finite-word completion theorems are subordinate mechanisms, not separate families.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+- `Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo`
+
+- `Erdos249257.TotientTailPeriodKiller.vu_step_has_centred_completion`
+
+- `Erdos249257.TotientTailPeriodKiller.vu_word_has_prefix_locked_completion`
+
+<a id="lcm-factor-ideal-shift-algebra-no-go"></a>
+
+## Lcm factor ideal shift algebra no go
+
+**Reader position.** 22 of 71; display band: major result. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** Finite shift-polynomial algebra cannot kill every bounded LCM-compatible dyadic coboundary.
+
+For every t at least 3, a nonzero synthetic dyadic coboundary survives every finite integer shift polynomial while retaining the period-LCM totient factor ideals, exact cleared-prefix cancellation, and uniform state and letter bounds.
+
+**Authority and reach.** Lean kernel; Comparator-selected; unconditional progress.
+
+**Exact boundary.** The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős \#249 open.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+<a id="totient-kernel-rank"></a>
+
+## Totient kernel rank
+
+**Reader position.** 23 of 71; display band: major result. Formal editorial disposition: merge. These are separate classifications.
+
+**Reader entry.** The dyadic totient kernel has exact finite-level rank 2^e+1.
+
+An independent constructive proof of exact finite-level dyadic rank 2^e+1, together with a kernel-checked full-kernel infinite-dimensionality corollary already implied by Coons’s non-2-regularity theorem.
+
+**Authority and reach.** Lean kernel; Comparator-selected; mixed local finite-level theorem and formalised prior consequence.
+
+**Exact boundary.** Only the finite-level rank is presented as an additional result; full-kernel infinite-dimensionality is prior-art context, and no rationality-to-finite-rank bridge is proved.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 2 executable interface(s), 2 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+<a id="actual-foreign-residue-projection-1"></a>
+
+## Actual foreign residue projection
+
+**Reader position.** 32 of 71; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
+
+**Reader entry.** The Möbius residue diagonal splits into a controlled foreign part and an exact divisor part.
+
+The finite Möbius residue diagonal splits exactly into projected foreign and divisor channels, the omitted finite foreign tail has a closed geometric majorant, and the generic complement-noncancellation consumer turns a controlled projection separated from every integer into a full-target miss.
+
+**Authority and reach.** Lean kernel; Comparator-selected; conditional reduction.
+
+**Exact boundary.** This is only a finite partition/geometric-majorant reduction feeding a generic complement-noncancellation consumer. The ControlledForeignProjection analytic bridge and any unbounded supply of separated projections remain unproved; no Erdős \#249 endpoint, novelty, significance, priority, or external-review claim follows.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+- `Erdos249257.ActualForeignResidueProjection.scaleFullTarget_miss_of_projected_separation`
+
+- `Erdos249257.ActualForeignResidueProjection.finiteResidueDiagonal_eq_projectedForeign_add_divisor`
+
+- `Erdos249257.ActualForeignResidueProjection.abs_foreignTailWindow_le_foreignComplementBound`
+
+<a id="totient-kernel-basis"></a>
+
+## Totient kernel basis
+
+**Reader position.** 34 of 71; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
+
+**Reader entry.** Every dyadic totient-kernel relation has an explicit odd-core normal form.
+
+An explicit odd-core basis and relation normal form for the full dyadic totient kernel.
+
+**Authority and reach.** Lean kernel; Comparator-selected; locally proved result; novelty unassessed.
+
+**Exact boundary.** The basis theorem does not connect rationality of the series to finite kernel rank.
+
+**Result-atom population.** 2 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+<a id="totient-kernel-all-base-index"></a>
+
+## Totient kernel all base index
+
+**Reader position.** 36 of 71; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
+
+**Reader entry.** The totient kernel has a canonical all-base spanning system, with exact rank conditional on affine-section independence.
+
+For every base k at least 2, Lean checks the arithmetic reduction, exact nonmultiple-residue coordinates, unconditional canonical spanning, and exact rank k^e+1 conditional on canonical-family linear independence.
+
+**Authority and reach.** Lean kernel for arithmetic, finite indexing, spanning, and the conditional-rank theorem; paper argument plus Martin’s cited theorem for independence; formalised unconditional spanning and conditional rank with external independence input.
+
+**Exact boundary.** Lean does not prove all-base affine-section independence or formalise Martin’s theorem. The unconditional basis and rank conclusions in the paper use that external input.
+
+**Result-atom population.** 2 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+<a id="stern-brocot-run-fibonacci-stability"></a>
+
+## Stern brocot run fibonacci stability
+
+**Reader position.** 38 of 71; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
+
+**Reader entry.** Stern–Brocot run defects force a sharp Fibonacci-sized height gain.
+
+For a positive Stern-Brocot run word, the global height gain from run defects is bounded below by the sharp Fibonacci coefficient F\_(r+1) times the total defect.
+
+**Authority and reach.** Lean kernel; Comparator-selected; formalised exact Fibonacci/continuant run stability floor.
+
+**Exact boundary.** This exact combinatorial stability floor does not establish analytic denominator survival, irrationality of the binary totient series, or novelty; no \#249 endpoint follows.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+<a id="stern-brocot-cylinder-law"></a>
+
+## Stern brocot cylinder law
+
+**Reader position.** 40 of 71; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
+
+**Reader entry.** Every positive Stern–Brocot cylinder splits exactly into its stop mass and two child cylinders.
+
+At every positive Stern-Brocot node, the closed cylinder mass splits into stop mass and the two child cylinders, giving an exact Markov recursion.
+
+**Authority and reach.** Lean kernel; Comparator-selected; formalised exact Stern-Brocot cylinder telescoping identity.
+
+**Exact boundary.** This exact telescoping recursion and its geometric interpretation do not prove irrationality of the binary totient series or novelty; the \#249 endpoint remains open.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+<a id="eventually-periodic-lambert"></a>
+
+## Eventually periodic lambert
+
+**Reader position.** 41 of 71; display band: mechanism. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** A finite rational first-power Lambert fold matching the divisor sums can only be the ordinary totient truncation.
+
+Eventually periodic nonnegative rational weights give an irrational Lambert series.
+
+**Authority and reach.** Lean kernel; Lean formalisation of existing result.
+
+**Exact boundary.** The totient-derived weights are not eventually periodic.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+- `Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic`
+
+<a id="totient-lambert-coefficients"></a>
+
+## Totient lambert coefficients
+
+**Reader position.** 42 of 71; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
+
+**Reader entry.** The Lambert-coefficient coordinate repackages the same arithmetic structure as the totient kernel.
+
+The totient series is rewritten as a Lambert series with explicit nonnegative, unbounded prime-power coefficients.
+
+**Authority and reach.** Lean kernel; locally proved result; novelty unassessed.
+
+**Exact boundary.** The coefficient identities do not prove irrationality.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** represented by selected interface; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+- `MersenneLambertLadder.tsum_primWeight_div_two_pow_sub_one`
+
+- `Erdos249257.tsum_primWeight_div_two_pow_sub_one_eq_totient_series`
+
+<a id="actual-lcm-orbit-separation"></a>
+
+## Actual lcm orbit separation
+
+**Reader position.** 45 of 71; display band: frontier. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** A cofinal 1/32 gap in the actual LCM orbit would close the existing irrationality consumer.
+
+A cofinal quantitative 1/32 separation supply at canonically guarded odd ranks transfers through the explicit raw-block approximation and error radius to the existing half-word/signed-margin irrationality consumer. The landed actual-LCM sign/top-edge analysis is supporting and contrary-boundary evidence: positivity leaves the true survivor negative, and integrality forces the exact top-edge residue.
+
+**Authority and reach.** Lean kernel; Comparator-selected; conditional reduction.
+
+**Exact boundary.** The quantitative 1/32 separation supply is sufficient but stronger than mere non-integrality, is not an equivalence, and remains open. The sign positivity alone does not exclude the negative true survivor; the top-edge forcing does not exclude that residue or supply cofinal non-integrality. These source declarations are supporting/contrary-boundary evidence, not a second actual-LCM family, and the punctured/top-edge boundary and \#249 endpoint remain open.
+
+**Result-atom population.** 4 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+- `Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply`
+
+- `Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply`
+
+- `Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply`
+
+- `Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_trueEndpointSurvivor_neg`
+
+- `Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue`
+
+- `Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos`
+
+<a id="first-harmonic-pivot-decomposition"></a>
+
+## First harmonic pivot decomposition
+
+**Reader position.** 51 of 71; display band: frontier. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** The first harmonic can force a 9/10 gap once four explicit pivot budgets hold cofinally.
+
+The supplier fibre is an exact prime-image/fibre bijection, while a checked finite counterexample shows that supplier-prime global isolation fails. The load-bearing result is an exact four-term first-harmonic decomposition; under the explicit PivotBudgetAt budgets, the centred real-part bound and three contribution bounds give the 9X/10 gap and a finite certificate, and the conditional pivot-residual-decorrelation theorem transfers a cofinal supply to irrationality.
+
+**Authority and reach.** Lean kernel; Comparator-selected; conditional reduction.
+
+**Exact boundary.** The fibre/image lemmas and the explicit counterexample establish neither global supplier-prime isolation nor a prime-distribution estimate. The 9X/10 gap is conditional on PivotBudgetAt and the stated dyadic-room inequality; irrationality is conditional on DTWPivotResidualDecorrelation, whose exact cofinal producer remains open. No decorrelation estimate supplying those budgets is proved, and the \#249 endpoint remains open.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+- `Erdos249257.TotientTailPeriodKiller.mem_pivotFiber_iff_exists_supplierPrime`
+
+- `Erdos249257.TotientTailPeriodKiller.pivotBaseOfPrime_injective_on_supplierPrimes`
+
+- `Erdos249257.TotientTailPeriodKiller.image_pivotSupplierPrimes_eq_pivotFiber`
+
+- `Erdos249257.TotientTailPeriodKiller.supplierPrime_not_globally_isolated_counterexample`
+
+- `Erdos249257.TotientTailPeriodKiller.windowFirstExp_sum_eq_pivot_decomposition`
+
+- `Erdos249257.TotientTailPeriodKiller.PivotBudgetAt`
+
+- `Erdos249257.TotientTailPeriodKiller.first_harmonic_gap_of_pivotBudgetAt`
+
+- `Erdos249257.TotientTailPeriodKiller.DTWPivotResidualDecorrelation`
+
+- `Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation`
+
+<a id="totient-visible-coprime-lattice-mass"></a>
+
+## Totient visible coprime lattice mass
+
+**Reader position.** 68 of 71; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** The visible coprime Mersenne weights form an exact probability distribution.
+
+The positive coprime Mersenne weights on the visible lattice sum to one, exposing the reduced-direction mass behind the fair-coin coprimality form of \#249.
+
+**Authority and reach.** Lean kernel; Comparator-selected; formalised exact visible-lattice normalization identity.
+
+**Exact boundary.** This rational normalization identity does not prove irrationality of the binary totient series or settle \#249.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+<a id="squared-lambert-gcd-moments"></a>
+
+## Squared lambert gcd moments
+
+**Reader position.** 69 of 71; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** The squared-Mersenne Lambert series at one half is exactly a dyadic Pillai gcd moment.
+
+At base one half, the totient-weighted squared-Mersenne Lambert series is the dyadic Pillai gcd-sum-minus-n series, exposing the first fair-coin gcd moment.
+
+**Authority and reach.** Lean kernel; Comparator-selected; formalised exact squared-Lambert first-moment transfer.
+
+**Exact boundary.** This exact transfer identity does not prove irrationality of the binary totient series; the cited constant-weight q-Padé result remains external and no \#249 endpoint follows.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+<a id="totient-finite-denominator-exclusion"></a>
+
+## Totient finite denominator exclusion
+
+**Reader position.** 70 of 71; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** Exact finite checks exclude a substantial but bounded range of rational denominators.
+
+A Farey denominator exclusion through 7.96e34, sharp for its selected window, and diagonal certificates through t=82.
+
+**Authority and reach.** Lean kernel and generated finite certificates; finite computation.
+
+**Exact boundary.** The selected finite window and certificate ceiling do not imply an unbounded producer.
+
+**Result-atom population.** 5 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+<a id="totient-carry-rank"></a>
+
+## Totient carry rank
+
+**Reader position.** 71 of 71; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** The legacy carry-rank coordinate is retained for traceability but has no distinct endpoint-bearing result.
+
+Rationality forces a tempered integral tail orbit with unbounded finite-level carry rank.
+
+**Authority and reach.** Lean kernel; conditional reduction.
+
+**Exact boundary.** This is a necessary consequence, not a contradiction.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** not selected for comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
 <a id="what-is-open-stated-exactly"></a>
 
 # What is open, stated exactly

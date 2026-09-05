@@ -134,6 +134,49 @@ def remove_semantic_anchor(text: str, token: str) -> str:
     )
 
 
+def test_dynamic_reasoning_surface_routes() -> None:
+    registry = json.loads(
+        diagnostic.read("docs/papers/paper_registry.json")
+    )
+    current_pdfs = diagnostic.reasoning_surface_pdfs(registry)
+    assert len(current_pdfs) == 8
+    readme = "Begin with [A reader's way in](HUMAN_ENTRY.md)."
+    guide = "\n".join(f"[record]({pdf})" for pdf in current_pdfs)
+    diagnostic.validate_reasoning_surface_routes(
+        readme, human_entry=guide, registry=registry
+    )
+
+    grown_registry = copy.deepcopy(registry)
+    grown_registry["papers"].append(
+        {
+            "paper_id": "erdos999-reasoning-surface",
+            "form": "Reasoning surface",
+            "pdf": "erdos999-reasoning-surface.pdf",
+        }
+    )
+    grown_guide = guide + "\n[record](erdos999-reasoning-surface.pdf)"
+    diagnostic.validate_reasoning_surface_routes(
+        readme, human_entry=grown_guide, registry=grown_registry
+    )
+    try:
+        diagnostic.validate_reasoning_surface_routes(
+            readme, human_entry=guide, registry=grown_registry
+        )
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError("missing dynamic reasoning-surface guide route escaped")
+
+    try:
+        diagnostic.validate_reasoning_surface_routes(
+            "README without the guide", human_entry=grown_guide, registry=grown_registry
+        )
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError("unlinked HUMAN_ENTRY reasoning route escaped")
+
+
 def check_route_memory_cold_clone() -> int:
     """Exercise the tracked-only route-memory entry for every selector."""
     descriptor = json.loads(
@@ -351,6 +394,7 @@ def check_repository_clone_identity() -> None:
 
 
 def main() -> int:
+    test_dynamic_reasoning_surface_routes()
     check_checker_child_environment()
     check_public_surface_file_boundary()
     check_repository_clone_identity()
@@ -391,7 +435,7 @@ def main() -> int:
         + "\n\n### Represented natural friction\n\n- fixture friction\n\n"
         "### Explicitly subordinate, rejected, and long tail\n\n"
         "- fixture long tail\n\n"
-        "## Problem portfolio (complete 15-paper inventory)\n"
+        f"## Problem portfolio (complete {diagnostic.PAPER_INVENTORY_COUNT}-paper inventory)\n"
     )
     diagnostic.validate_human_first_contact(quick_summary, human_surfaces)
     diagnostic.validate_human_first_contact(summary, human_surfaces)
@@ -463,6 +507,23 @@ def main() -> int:
     diagnostic.validate_paper_library_first_contact(
         compliant_paper_library, ranking=ranked_rows
     )
+    grown_paper_library = compliant_paper_library.replace(
+        f"complete {diagnostic.PAPER_INVENTORY_COUNT}-paper inventory",
+        f"complete {diagnostic.PAPER_INVENTORY_COUNT + 1}-paper inventory",
+    )
+    diagnostic.validate_paper_library_first_contact(
+        grown_paper_library,
+        ranking=ranked_rows,
+        paper_count=diagnostic.PAPER_INVENTORY_COUNT + 1,
+    )
+    try:
+        diagnostic.validate_paper_library_first_contact(
+            grown_paper_library, ranking=ranked_rows
+        )
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("paper-library wrong inventory count escaped")
     census = diagnostic.semantic_census()
     census_surfaces = {
         path: diagnostic.read(path) for path in diagnostic.CENSUS_SURFACES
@@ -492,7 +553,9 @@ def main() -> int:
 
     mutated_paper_library = compliant_paper_library.replace(
         "## Mathematical signal first",
-        "## Problem portfolio (complete 15-paper inventory)\n\n## Mathematical signal first",
+        "## Problem portfolio (complete "
+        f"{diagnostic.PAPER_INVENTORY_COUNT}-paper inventory)\n\n"
+        "## Mathematical signal first",
         1,
     )
     try:

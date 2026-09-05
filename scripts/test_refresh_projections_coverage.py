@@ -178,6 +178,15 @@ def main() -> int:
     paper_check = refresh_projections.projection_check_command(
         "scripts/export_paper_corpus.py"
     )
+    require("build_paper_result_integration.py" in checked,
+            "release must check the family/atom paper join")
+    require(
+        builders.index("build_comparator_replay_portfolio.py")
+        < builders.index("build_paper_result_integration.py")
+        < builders.index("assemble_reasoning_surfaces.py")
+        < builders.index("export_paper_corpus.py"),
+        "Comparator -> atom/family paper join -> assembly -> export order must close",
+    )
     require(
         paper_check[1].endswith("docs/papers/check_paper_corpus.py")
         and "--check" not in paper_check,

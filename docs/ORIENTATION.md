@@ -85,7 +85,7 @@ Interface, source declaration, and exact boundary, by rank:
 Palomar's presentation tiers are the reader routing contract (not a second rank or proof-status authority):
 `source-ranked frontier` → `conditional endpoint leverage` → `deep mechanism and classification` → `natural friction and no-go` → `supporting and long tail`
 
-Exact family-to-tier placements, open producers, and contrary evidence remain in `docs/orientation.json` under the same Palomar authority.
+Family-to-tier coordinates remain here; the exact relational judgements, open producers, and contrary evidence remain in `docs/PALOMAR_RESULT_SHOWCASE.json` and are reachable with `python3 scripts/query_corpus.py --overview`.
 
 ## What a claim status asserts
 

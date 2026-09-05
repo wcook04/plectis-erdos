@@ -12,7 +12,7 @@ import os
 import re
 import subprocess
 import tomllib
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 import validation_singleflight as singleflight
@@ -29,6 +29,7 @@ PROBLEMS_PATH = "docs/problems.json"
 METHODOLOGY_PATH = "docs/methodology.json"
 AGENT_ENTRY_PATH = "AGENTS.md"
 MAKEFILE_PATH = "paper/Makefile"
+PAPER_REGISTRY_PATH = "docs/papers/paper_registry.json"
 REUSE_PATH = "REUSE.toml"
 MANUSCRIPT_LICENSE = "CC-BY-4.0"
 NOTE_ARTIFACT_CLASS = "problem_note"
@@ -39,6 +40,12 @@ EVIDENCE_SCHEMA = "erdos249257-publication-evidence/1"
 ENTRY_SOURCE_SCHEMA = "erdos249257-publication-entry-source/1"
 ENTRY_PACKET_SCHEMA = "erdos249257-publication-entry-packet/1"
 MUTATION_MANIFEST_SCHEMA = "erdos249257-publication-mutation-operators/1"
+PAPER_REGISTRY_SCHEMA = "plectis_public_paper_registry_v0"
+PAPER_REGISTRY_REPOSITORY = "plectis-erdos"
+DYNAMIC_PAPER_TARGETS_COMMAND = (
+    "$(shell python3 ../scripts/export_paper_corpus.py --native-targets)"
+)
+SAFE_NATIVE_PAPER_STEM = re.compile(r"[a-z0-9][a-z0-9-]*")
 EXPECTED_INVARIANT_FAMILIES = (
     "proof_trust",
     "registry_structure",
@@ -219,12 +226,89 @@ def load_json(reader: RepositoryReader, relative: str) -> dict[str, Any]:
     return json.loads(reader.read_text(relative))
 
 
-def makefile_papers(text: str) -> set[str]:
+def native_registry_paper_targets(reader: RepositoryReader) -> set[str]:
+    """Derive safe native Make targets from the requested repository snapshot."""
+    try:
+        payload = load_json(reader, PAPER_REGISTRY_PATH)
+    except (FileNotFoundError, ValueError, json.JSONDecodeError, UnicodeError) as error:
+        raise ValueError(f"{PAPER_REGISTRY_PATH}: {error}") from error
+    if payload.get("schema") != PAPER_REGISTRY_SCHEMA:
+        raise ValueError(
+            f"{PAPER_REGISTRY_PATH} must use schema {PAPER_REGISTRY_SCHEMA}"
+        )
+    if payload.get("this_repository") != PAPER_REGISTRY_REPOSITORY:
+        raise ValueError("paper registry names the wrong repository")
+    rows = payload.get("papers")
+    if not isinstance(rows, list) or not rows:
+        raise ValueError("paper registry must contain a non-empty papers list")
+
+    paper_ids: set[str] = set()
+    sources: set[str] = set()
+    pdfs: set[str] = set()
+    targets: set[str] = set()
+    for index, row in enumerate(rows, 1):
+        if not isinstance(row, dict):
+            raise ValueError(f"paper registry row {index} must be an object")
+        paper_id = row.get("paper_id")
+        if not isinstance(paper_id, str) or not paper_id or paper_id in paper_ids:
+            raise ValueError(f"invalid or duplicate paper id: {paper_id!r}")
+        paper_ids.add(paper_id)
+        relation = row.get("relation_to_this_repository")
+        if relation not in {"native", "mirror"}:
+            raise ValueError(f"{paper_id}: invalid repository relation")
+        source = row.get("source")
+        pdf = row.get("pdf")
+        if not isinstance(source, str) or not isinstance(pdf, str):
+            raise ValueError(f"{paper_id}: source and pdf must be local paths")
+        for field, value in (("source", source), ("pdf", pdf)):
+            path = PurePosixPath(value)
+            if path.is_absolute() or ".." in path.parts:
+                raise ValueError(f"{paper_id}: {field} must stay inside the repository")
+        if source in sources:
+            raise ValueError(f"multiple paper rows use source {source}")
+        if pdf in pdfs:
+            raise ValueError(f"multiple paper rows use pdf {pdf}")
+        sources.add(source)
+        pdfs.add(pdf)
+        if relation != "native":
+            continue
+        stem = PurePosixPath(pdf).stem
+        if (
+            SAFE_NATIVE_PAPER_STEM.fullmatch(stem) is None
+            or source != f"paper/{stem}.tex"
+            or pdf != f"{stem}.pdf"
+        ):
+            raise ValueError(
+                f"{paper_id}: native paper has an unsafe or mismatched build target"
+            )
+        if stem in targets:
+            raise ValueError(f"duplicate native paper build target: {stem}")
+        targets.add(stem)
+    if not targets:
+        raise ValueError("paper registry contains no native build targets")
+    return targets
+
+
+def makefile_papers(
+    text: str, reader: RepositoryReader | None = None
+) -> set[str]:
+    """Read static paper targets or the one governed dynamic manifest command.
+
+    This parser never evaluates Make syntax.  The dynamic form is an exact
+    allow-list entry whose data is read through ``reader`` at the same ref.
+    """
     logical = text.replace("\\\n", " ")
-    match = re.search(r"(?m)^PAPERS\s*=\s*(.+)$", logical)
+    match = re.search(r"(?m)^PAPERS\s*(?::?=)\s*(.+)$", logical)
     if not match:
         return set()
-    return {token for token in match.group(1).split() if token}
+    value = match.group(1).strip()
+    if value == DYNAMIC_PAPER_TARGETS_COMMAND:
+        if reader is None:
+            raise ValueError("dynamic PAPERS manifest requires a RepositoryReader")
+        return native_registry_paper_targets(reader)
+    if "$(" in value or "${" in value or "$" in value:
+        raise ValueError("unsupported dynamic Make expression in PAPERS")
+    return {token for token in value.split() if token}
 
 
 def reuse_manuscript_pdfs(data: dict[str, Any]) -> set[str]:
@@ -1270,8 +1354,8 @@ def validate_publication_contract(
             )
 
     try:
-        built = makefile_papers(reader.read_text(MAKEFILE_PATH))
-    except (FileNotFoundError, UnicodeError) as error:
+        built = makefile_papers(reader.read_text(MAKEFILE_PATH), reader)
+    except (FileNotFoundError, ValueError, json.JSONDecodeError, UnicodeError) as error:
         errors.append(f"{MAKEFILE_PATH}: {error}")
         built = set()
     registered_bases = {Path(path).stem for path in source_paths if isinstance(path, str)}

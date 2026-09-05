@@ -4,6 +4,7 @@ import ErdosProblems.Erdos1049.AdelicHeightBridge
 import ErdosProblems.Erdos1049.BezoutPluckerJets
 import ErdosProblems.Erdos1049.HermitePadeNoGo
 import ErdosProblems.Erdos1049.QAperyDiagonalNonEquivalence
+import ErdosProblems.Erdos1049.QAperyTailDenominator
 import ErdosProblems.Erdos1049.RationalBaseLambert
 import ErdosProblems.Erdos1049.RationalPadeArithmetic
 import ErdosProblems.Erdos1049.ZudilinConeArithmetic
@@ -25,12 +26,18 @@ import ErdosProblems.Erdos249.PeriodMultipleEscape
 import ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
 import ErdosProblems.Erdos249.RankOneSubrankObstruction
 import ErdosProblems.Erdos249.TotientStrictPrimeEscape
+import ErdosProblems.Erdos251.AffineCylinderCollapse
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
+import ErdosProblems.Erdos257.ActualUpperSuccessorCounterexampleEndpoint
+import ErdosProblems.Erdos257.FourNinthsPrimorialRepair
 import ErdosProblems.Erdos257.HalfCounterexampleFrontier
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
 import ErdosProblems.Erdos257.SquarefreeSupportIncidence
 import ErdosProblems.Erdos269.BoundedRadixTailEscape
 import ErdosProblems.Erdos269.CarryLiftExtinction
+import ErdosProblems.Erdos269.IntegralBranchWidth
+import ErdosProblems.Erdos269.KernelCarryRank
+import ErdosProblems.Erdos269.RationalLatticeReduction
 import ErdosProblems.Erdos269.ResidueEscape
 import ErdosProblems.Erdos269.RestrictedFloorSum
 import ErdosProblems.Erdos269.ThreeChannelBlockRigidity
@@ -39,6 +46,7 @@ import ErdosProblems.Erdos269.WeightedPhaseCarry
 import ErdosProblems.Erdos68.CanonicalFactorialDigits
 import ErdosProblems.Erdos68.ChannelBreakpointRigidity
 import ErdosProblems.Erdos68.ChannelIntegralCongruence
+import ErdosProblems.Erdos68.CompanionOrbitRationality
 import ErdosProblems.Erdos68.DivisorFactorialCentre
 import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
 import ErdosProblems.Erdos68.FactorialCarry
@@ -46,6 +54,7 @@ import ErdosProblems.Erdos68.FactorialChannelCertificate
 import ErdosProblems.Erdos68.FactorialZeroPlateau
 import ErdosProblems.Erdos68.FiniteDefectAutomaton
 import ErdosProblems.Erdos68.PrimeUnitTranslator
+import ErdosProblems.Erdos68.PrimePoleCriterion
 import ErdosProblems.Erdos68.PrimeZeroBranch
 import ErdosProblems.Erdos68.StrictSuccessorArithmetic
 

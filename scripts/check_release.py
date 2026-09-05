@@ -1141,6 +1141,14 @@ def main(argv: list[str] | None = None) -> int:
     external_verification_check = _PROJECTION_CHECK_RESULTS[
         "scripts/build_external_verification.py"
     ]
+    paper_result_check = _PROJECTION_CHECK_RESULTS[
+        "scripts/build_paper_result_integration.py"
+    ]
+    check(
+        paper_result_check.returncode == 0,
+        "result-family/atom paper integration freshness failed: "
+        f"{paper_result_check.stdout.strip() or paper_result_check.stderr.strip()}",
+    )
     check(
         external_verification_check.returncode == 0,
         "external-verification projection or statement-isolation check failed: "
@@ -2529,13 +2537,25 @@ def main(argv: list[str] | None = None) -> int:
             key: architecture["canonical_gateway"][key]
             for key in ("source", "decision")
         },
-        "retained_companions": [
-            {key: companion[key] for key in ("source", "decision")}
+        "retained_companion_problem_ids": [
+            companion["id"].removesuffix("_reasoning_record")
             for companion in architecture.get("retained_companions", [])
         ],
+        "retained_companion_count": len(architecture.get("retained_companions", [])),
         "qualified_future_companion": {
             key: architecture["qualified_future_companion"][key]
             for key in ("id", "decision")
+        },
+        "full_detail": {
+            "omitted_fields": [
+                "retained_companions[].source",
+                "retained_companions[].decision",
+            ],
+            "owner": (
+                "docs/claims.json::machine_readable_paper.publication_assembly."
+                "publication_architecture"
+            ),
+            "query": "python3 scripts/query_corpus.py --publication-architecture",
         },
     }
     check(orientation.get("editorial_architecture")

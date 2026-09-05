@@ -8,26 +8,18 @@
 # Notes: one short standalone note per problem in the ErdosProblems expansion
 # library. Every name here must appear exactly once in
 # docs/publication_contract.json.
-PAPERS = erdos249-257-main-paper claim-faithful-publication-systems-paper \
-  cold-clone-to-proof-receipt open-source-mathematics-strategy \
-  erdos249-totient-reasoning-surface \
-  erdos257-mersenne-reasoning-surface \
-  erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
-  erdos-68-factorial-denominator-irrationality \
-  erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
-  erdos-269-three-prime-running-lcm erdos-1041-lemniscate-newton-flow \
-  erdos-1049-rational-base-lambert
-NOTES = erdos-68-factorial-denominator-irrationality \
-  erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
-  erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
-  erdos-269-three-prime-running-lcm erdos-1041-lemniscate-newton-flow \
-  erdos-1049-rational-base-lambert
+PAPERS := $(shell python3 ../scripts/export_paper_corpus.py --native-targets)
+ifeq ($(strip $(PAPERS)),)
+$(error The public paper registry could not provide valid native build targets)
+endif
+NOTES := $(shell python3 ../scripts/export_paper_corpus.py --native-targets --form "Problem note")
 ALIASES = module-aliases.tex
 PREAMBLE = problem-note-preamble.tex
 REASONING_ASSEMBLER = ../scripts/assemble_reasoning_surfaces.py
 REASONING_COORDINATES = ../scripts/refresh_reasoning_source_coordinates.py
-REASONING_249_PARTS = $(wildcard reasoning-parts/erdos249/*.tex)
-REASONING_257_PARTS = $(wildcard reasoning-parts/erdos257/*.tex)
+REASONING_PAPERS = $(filter %-reasoning-surface,$(PAPERS))
+REASONING_PARTS = $(wildcard reasoning-parts/*/*.tex)
+REASONING_NOTE_SOURCES = $(NOTES:%=%.tex)
 
 .PHONY: all check clean sync-root
 
@@ -51,11 +43,8 @@ check: all
 
 # The public reasoning manuscripts are flat generated projections. Their
 # authored parts remain small enough for focused mathematical review.
-erdos249-totient-reasoning-surface.tex: $(REASONING_249_PARTS) $(REASONING_ASSEMBLER)
-	python3 $(REASONING_ASSEMBLER) --write --paper 249
-
-erdos257-mersenne-reasoning-surface.tex: $(REASONING_257_PARTS) $(REASONING_ASSEMBLER)
-	python3 $(REASONING_ASSEMBLER) --write --paper 257
+$(REASONING_PAPERS:%=%.tex): $(REASONING_PARTS) $(REASONING_NOTE_SOURCES) $(REASONING_ASSEMBLER)
+	python3 $(REASONING_ASSEMBLER) --write
 
 # The notes share one preamble, so a change there rebuilds all of them.
 $(NOTES:%=%.pdf): $(PREAMBLE)

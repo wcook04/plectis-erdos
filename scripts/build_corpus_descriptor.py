@@ -27,6 +27,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from result_atoms import load_result_atoms, validate_result_atoms
+
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "corpus_descriptor.json"
 DESCRIPTOR_MAX_BYTES = 64_000
@@ -72,6 +74,7 @@ MAIN_PAPER_TEX = ROOT / "paper" / "erdos249-257-main-paper.tex"
 MAIN_PAPER_PDF = ROOT / "erdos249-257-main-paper.pdf"
 PAPER_ALIASES_PATH = ROOT / "paper" / "module-aliases.json"
 PALOMAR_SHOWCASE_PATH = ROOT / "docs" / "PALOMAR_RESULT_SHOWCASE.json"
+RESULT_ATOMS_PATH = ROOT / "docs" / "result-atoms.jsonl"
 README_SCALE_BEGIN = "<!-- BEGIN generated_corpus_at_a_glance -->"
 README_SCALE_END = "<!-- END generated_corpus_at_a_glance -->"
 README_PRINCIPAL_BEGIN = "<!-- BEGIN generated_principal_declaration_anchors -->"
@@ -252,7 +255,7 @@ def build_mathematical_signal_first(claims: dict[str, Any]) -> list[dict[str, An
 
 
 def build_mathematical_signal_presentation() -> dict[str, Any]:
-    """Expose Palomar's authored reader tiers without creating a rank store."""
+    """Expose compact Palomar coordinates without duplicating its prose."""
     showcase = json.loads(PALOMAR_SHOWCASE_PATH.read_text(encoding="utf-8"))
     contract = showcase.get("selection_contract")
     if not isinstance(contract, dict):
@@ -276,7 +279,6 @@ def build_mathematical_signal_presentation() -> dict[str, Any]:
                 "order": tier["order"],
                 "tier_id": tier["tier_id"],
                 "label": tier["label"],
-                "reader_role": tier["reader_role"],
             }
             for tier in sorted(tiers, key=lambda row: row["order"])
         ],
@@ -285,10 +287,62 @@ def build_mathematical_signal_presentation() -> dict[str, Any]:
                 "family_id": placement["family_id"],
                 "tier_id": placement["tier_id"],
                 "within_tier_order": placement.get("within_tier_order"),
-                "relative_judgement": placement["relative_judgement"],
             }
             for placement in placements
         ],
+        "full_detail": {
+            "omitted_fields": [
+                "tiers[].reader_role",
+                "relational_placements[].relative_judgement",
+            ],
+            "owner": "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract",
+            "query": "python3 scripts/query_corpus.py --overview",
+        },
+    }
+
+
+def build_editorial_architecture(architecture: dict[str, Any]) -> dict[str, Any]:
+    """Keep the complete problem shelf navigable without repeating paper paths."""
+    companions = architecture.get("retained_companions", [])
+    if not isinstance(companions, list):
+        raise ValueError("publication architecture retained_companions must be a list")
+    problem_ids = []
+    for companion in companions:
+        companion_id = companion.get("id") if isinstance(companion, dict) else None
+        suffix = "_reasoning_record"
+        if (
+            not isinstance(companion_id, str)
+            or not companion_id.startswith("erdos_")
+            or not companion_id.endswith(suffix)
+        ):
+            raise ValueError(
+                "retained companion id must be erdos_<problem>_reasoning_record"
+            )
+        problem_ids.append(companion_id[: -len(suffix)])
+    if len(set(problem_ids)) != len(problem_ids):
+        raise ValueError("retained companion problem ids must be unique")
+    return {
+        "canonical_gateway": {
+            key: architecture["canonical_gateway"][key]
+            for key in ("source", "decision")
+        },
+        "retained_companion_problem_ids": problem_ids,
+        "retained_companion_count": len(problem_ids),
+        "qualified_future_companion": {
+            key: architecture["qualified_future_companion"][key]
+            for key in ("id", "decision")
+        },
+        "full_detail": {
+            "omitted_fields": [
+                "retained_companions[].source",
+                "retained_companions[].decision",
+            ],
+            "owner": (
+                "docs/claims.json::machine_readable_paper.publication_assembly."
+                "publication_architecture"
+            ),
+            "query": "python3 scripts/query_corpus.py --publication-architecture",
+        },
     }
 
 
@@ -301,14 +355,12 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         # Keep only a first-read claim handle in the bounded orientation packet.
         # Exact statements and declarations remain in the digest-bound claims
         # document and are reachable from this claim id.
-        row = {
-            "id": claim["id"],
-            "status": claim["status"],
-            "paper_label": claim.get("paper_label"),
-        }
-        if claim.get("remaining_open_proposition_ids"):
-            row["remaining_open_proposition_ids"] = claim["remaining_open_proposition_ids"]
-        principal_claims.append(row)
+        principal_claims.append(
+            {
+                "id": claim["id"],
+                "status": claim["status"],
+            }
+        )
 
     machine_paper = claims["machine_readable_paper"]
     publication_assembly = machine_paper["publication_assembly"]
@@ -342,20 +394,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         if route.get("route_kind") == "mathematical_programme"
     ]
     architecture = publication_assembly["publication_architecture"]
-    editorial_architecture = {
-        "canonical_gateway": {
-            key: architecture["canonical_gateway"][key]
-            for key in ("source", "decision")
-        },
-        "retained_companions": [
-            {key: companion[key] for key in ("source", "decision")}
-            for companion in architecture.get("retained_companions", [])
-        ],
-        "qualified_future_companion": {
-            key: architecture["qualified_future_companion"][key]
-            for key in ("id", "decision")
-        },
-    }
+    editorial_architecture = build_editorial_architecture(architecture)
     state = publication_assembly["editorial_state"]
     editorial_state = {
         "current_priority": state["current_priority"],
@@ -399,6 +438,12 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         ],
         "non_claims": claims["non_claims"],
         "principal_claims": principal_claims,
+        "principal_claim_detail_omission": {
+            "omitted_fields": ["paper_label", "remaining_open_proposition_ids"],
+            "owner": "docs/claims.json::claims",
+            "query": "python3 scripts/query_corpus.py --claim <claim_id>",
+            "coverage": "every README-headline claim retains its id and status inline",
+        },
         "mathematical_programmes": mathematical_programmes,
         "editorial_architecture": editorial_architecture,
         "editorial_state": editorial_state,
@@ -624,8 +669,10 @@ def render_orientation_markdown(
     lines.extend(
         [
             "",
-            "Exact family-to-tier placements, open producers, and contrary evidence "
-            "remain in `docs/orientation.json` under the same Palomar authority.",
+            "Family-to-tier coordinates remain here; the exact relational judgements, "
+            "open producers, and contrary evidence remain in "
+            "`docs/PALOMAR_RESULT_SHOWCASE.json` and are reachable with "
+            "`python3 scripts/query_corpus.py --overview`.",
         ]
     )
     # REUSE-IgnoreEnd
@@ -983,6 +1030,13 @@ def build() -> dict[str, Any]:
     atlas = json.loads(ATLAS_PATH.read_text(encoding="utf-8"))
     methodology = json.loads(METHODOLOGY_PATH.read_text(encoding="utf-8"))
     paper_aliases = json.loads(PAPER_ALIASES_PATH.read_text(encoding="utf-8"))
+    palomar = json.loads(PALOMAR_SHOWCASE_PATH.read_text(encoding="utf-8"))
+    family_order = palomar.get("family_display_order")
+    if not isinstance(family_order, list):
+        raise ValueError("Palomar showcase lacks family_display_order")
+    atom_summary = validate_result_atoms(
+        load_result_atoms(RESULT_ATOMS_PATH), claims, family_order
+    )
     machine_paper = claims["machine_readable_paper"]
     release = claims["release"]
 
@@ -1039,6 +1093,49 @@ def build() -> dict[str, Any]:
         "corpus_id": "plectis_lean_erdos249_257_public",
         "release_provenance": release["public_projection"],
         "access": build_access_contract(repository),
+        "result_population": {
+            "family_count": atom_summary["family_count"],
+            "atom_count": atom_summary["total"],
+            "interpretation_state_counts": atom_summary["state_counts"],
+            "display_tier_counts": atom_summary["tier_counts"],
+            "display_band_counts": atom_summary["band_counts"],
+            "formal_promotion_count": atom_summary["promotion_count"],
+            "family_order_authority": (
+                "docs/PALOMAR_RESULT_SHOWCASE.json::family_display_order"
+            ),
+            "family_order_source_digest": file_digest(PALOMAR_SHOWCASE_PATH),
+            "catalog": "docs/result-atoms.jsonl",
+            "catalog_digest": file_digest(RESULT_ATOMS_PATH),
+            "atom_query": (
+                "python3 scripts/query_corpus.py --result-atom <atom_id>"
+            ),
+            "family_query": (
+                "python3 scripts/query_corpus.py --family-atoms <family_id>"
+            ),
+            "qualitative_family_order": {
+                "columns": [
+                    "family_id",
+                    "problem_id",
+                    "display_band",
+                    "editorial_disposition",
+                ],
+                "rows": [
+                    [
+                        row["family_id"],
+                        row["problem_id"],
+                        row["display_band"]["band"],
+                        row["editorial_disposition"],
+                    ]
+                    for row in family_order
+                ],
+                "ordering": "array position is the one-based global display order",
+            },
+            "authority_boundary": (
+                "Atom population and qualitative display order are navigation "
+                "and editorial coordinates. They do not establish proof, "
+                "novelty, significance, Comparator execution, or release readiness."
+            ),
+        },
         "authority_posture": {
             "proof": "Lean source checked by the pinned Lean kernel",
             "authored_argument": "docs/claims.json::machine_readable_paper.argument_graph",
@@ -1154,6 +1251,9 @@ def build() -> dict[str, Any]:
             "human_specialist_review_is_publication_prerequisite": False,
             "reasoned_publication_selection_spine": True,
             "complete_reviewed_family_disposition_drilldown": True,
+            "exact_result_atom_lookup": True,
+            "complete_result_atom_discovery": True,
+            "complete_qualitative_family_order": True,
         },
         "selection_navigation": selection_navigation,
         "retrieval_modes": {

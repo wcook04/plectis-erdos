@@ -1,13 +1,28 @@
-# Palomar qualification: exact current candidate
+# Palomar qualification: exact current portfolio
 
-Status: **READY for repository-local structural qualification; fixed-kernel
-release replay still required**.
+Status: **NOT READY for Palomar release**. The intended release preserves all
+73 existing packages. Its exact 73-config catalog is materialized; one
+trusted-closure repair is prepared but not yet committed, and a commit-bound
+fixed-kernel replay is still required.
 
 This is the repository-local qualification decision for the current
 main-compatible candidate. It is not a Palomar submission, registration, or
 editorial endorsement. The machine-readable source of this decision is
 [`PALOMAR_POLICY_RECONCILIATION.json`](PALOMAR_POLICY_RECONCILIATION.json);
 the result crosswalk is [`PALOMAR_RESULT_SHOWCASE.json`](PALOMAR_RESULT_SHOWCASE.json).
+
+The selected declaration below is the mathematical headline, not a request to
+discard the rest of the checked corpus. Palomar treats one configuration as
+one entry and audits every selected declaration. The source-current release
+shape is therefore a coherent catalog containing the 73 existing
+`ExternalVerification*` Challenge/Solution packages (205 exact interfaces).
+Wrapper namespaces naturally differ, so qualified-name inequality is not
+evidence that a result is absent. Four package matches are positively
+source-bound by the claim anchor, the current main-result source link, and the
+Solution's exact source import/use. This includes
+`ExternalVerification257ReciprocalSupport`, whose Challenge states the
+all-base reciprocal-summable theorem and whose Solution transports the current
+source theorem. Other families remain unassessed rather than declared absent.
 
 ## Candidate selected by mathematical signal
 
@@ -545,10 +560,10 @@ Comparator evidence even when a source-faithful transport is committed.
 
 | Cell | Current disposition | Evidence or remaining boundary |
 | --- | --- | --- |
-| Exact Challenge/Solution pair | pass | Distinct committed modules; configuration names both explicitly. |
-| Comparator path and axiom ceiling | pass structurally | `verification/comparator.json`; the final mechanical axiom report is still withheld. |
+| Exact Challenge/Solution portfolio | source-current complete; committed snapshot partial | All 73 package pairs and all 205 membership-owned interfaces are present, and all 73 source-current Challenges avoid project-local imports. The HEAD-bound checker still measures 72 because the `ExternalVerification1049.Challenge` direct-Mathlib repair is not qualification evidence until committed. |
+| Comparator paths and axiom ceiling | pass as generated projection | The catalog resolves all 73 exact configs: it preserves `ExternalVerification1041SolvedFamilies/comparator.json` and owns 72 generated configs. The root and replay configs remain CI aggregates, not Palomar entries. Config materialization is not execution evidence. |
 | Repository source envelope | pass | The committed ordinary-blob checkout is about 388 MiB, below the 500 MiB cap; no submitted gitlinks, Git LFS pointers, or forbidden compiled artifacts are present. The checker reports the exact current byte count. |
-| Challenge source envelope | pass with warning | `ExternalVerification/Challenge.lean` is a regular 24,666-byte, 565-line file, below the 100 KiB/1,000-line hard limits but above Palomar's 300-line auditability warning threshold. |
+| Per-entry Challenge source envelope | pass | All 73 package Challenges are below the 100 KiB/1,000-line hard limits. The largest is 7,473 bytes and 212 lines, so none crosses the 32 KiB/300-line warning threshold. |
 | Toolchain and Lakefile | pass for protocol compatibility | Lean v4.29.1 and the committed Lake project files satisfy the historical Palomar v4.28.0 floor. That floor is not treated as sufficient kernel-security assurance. |
 | Fixed-kernel Comparator replay | required for release; not established here | The workflow pins Comparator `7892797` on Lean v4.33.0-rc2 and lean4export `6f4e21d`. Configuration is not execution; a successful commit-bound receipt admitted by the existing external-verification release gate remains required. |
 | Git dependency provenance | pass structurally | All nine manifest Git packages use credential-free public GitHub URLs and full lowercase 40-character resolved revisions; materialization and transitive Challenge closure remain terminal checks. |
@@ -556,24 +571,33 @@ Comparator evidence even when a source-faithful transport is committed.
 | Formalization file envelope | pass | The generated `formalization.yaml` is regular UTF-8 and 155,752 bytes, below the 256 KiB intake cap; the checker remeasures the committed bytes after landing. |
 | Formalization metadata | pass | Generated from the canonical claims packet as v0.4 with a truthful project description, Will Cook as responsible maintainer, `math.NT`/`math.CO` classifications, accepted source types and relationships, and source-based origin metadata. The source authority pins upstream v0.4 commit `99c678e569c7c4c0772db297c5ddd5e4c9b6322e`. |
 | Informal account and boundaries | pass | The showcase gives the exact selected type, mechanism, attribution, limitations, and open frontier. |
-| Challenge import closure and solution axiom audit | withheld | Requires one immutable terminal Palomar-compatible mechanical validation. |
+| Challenge import closure and solution axiom audit | committed snapshot not ready | The catalog excludes the `ExternalVerification` and `ComparatorReplay` CI aggregates, so the umbrella's project-local import is a warning rather than an entry deficit. The committed HEAD still shows the `ExternalVerification1049` local Statements import; its direct-Mathlib worktree repair is not qualification evidence until committed. Every entry still needs immutable Palomar-compatible mechanical validation. |
 | Independent NanoDa replay | withheld | Must be bound to the same immutable source commit. |
 | Editorial review | withheld | External private Palomar pipeline; no human review is claimed. |
-| Registration/publication | operator-only | Not performed and not authorized in this lane. |
+| Submission/registration/publication | explicit human confirmation required | Not performed or authorized. Before submission, the intake protocol requires confirmation of repository, immutable commit, config path, and authorization relationship. Registration requires a separate confirmation after the review is shown. |
 
-The Challenge warning is not a mechanical rejection, but it is real review
-friction: this single Comparator configuration selects the whole committed
-spine, so Palomar's reviewer would audit every selected declaration. The
-qualification product keeps the warning visible instead of treating a hard-cap
-pass as proof that the statement surface is optimally small.
+The package split removes the aggregate auditability problem without removing
+mathematics: all 73 package Challenges are comfortably below both the hard caps
+and warning thresholds. The root umbrella remains explicitly rejected as a
+Palomar intake route because it is a CI aggregate; its own dependency shape is
+therefore a warning, not a deficit in the per-entry catalog. Palomar's trusted
+closure still excludes project-local imports inside an actual entry. The
+committed snapshot consequently retains one package-level closure deficit even
+though the source-current portfolio is 73/73 after the prepared direct-Mathlib
+repair. Exact interface
+preservation also does not prove semantic identity with every informal claim:
+the registered-claim owner currently records 28 linked transports and 92
+formal claims without an explicit transport.
 
-The exact repository-local structural decision is therefore **READY**. This is
-not a release-qualified verdict: after an immutable product commit is named,
-the existing external-verification release gate must still admit a successful
-fixed-kernel replay receipt. No such execution is inferred from the configured
-pins. Independent NanoDa replay may add evidence but is not conflated with that
-required Comparator receipt. Submission consent and registration remain
-operator actions.
+The exact repository-local structural decision is therefore **NOT READY**.
+Structural entry eligibility requires landing the one prepared package closure
+repair while retaining all 73 packages and the materialized catalog. The four positive source-bound
+matches do not imply that every family has been
+assessed: the claim owner still records 96 missing formal transports. After an
+immutable product commit is named, the existing external-verification release
+gate must still admit a successful fixed-kernel replay receipt. No execution,
+Palomar review, submission, registration, acceptance, or publication is
+inferred from the configured pins or this audit.
 
 ## Official authority capture
 

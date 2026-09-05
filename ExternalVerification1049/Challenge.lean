@@ -3,7 +3,8 @@ Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
-import ExternalVerification1049.Statements
+import Mathlib.Analysis.Real.Pi.Bounds
+import Mathlib.Analysis.SpecialFunctions.Log.Basic
 
 /-! The single hole is the trusted challenge presented to Comparator. -/
 

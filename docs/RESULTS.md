@@ -16,14 +16,15 @@ the displayed implication; it does not prove that its hypotheses occur.
 
 ## The short version
 
-The repository's clearest completed mathematics is concentrated in restricted
-forms of Problem 257. It checks the classical full-support theorem for every
-integer base `b ≥ 2`, a pairwise-coprime support theorem under explicit
-summability hypotheses, and an irrationality theorem for nonnegative rational
-eventually-periodic coefficients with a positive periodic tail. It also proves
-global topological and measure statements for Mersenne achievement sets.
-Universal Problem 257, which quantifies over every infinite support, remains
-open.
+The leading source-current result for Problem 257 proves that, for every
+integer base `b ≥ 2` and every infinite set `A` of positive integers with
+`∑_{a∈A} 1/a < ∞`, the series `∑_{a∈A} 1/(bᵃ−1)` is irrational. Pairwise
+coprimality is not assumed. This is a Lean-checked theorem under exactly those
+hypotheses; its novelty and priority are unassessed. The universal problem
+remains open only in the reciprocal-divergent regime. That does not make every
+support in that regime unresolved: the classical full-support theorem is one
+known case. Independent checked material covers eventually-periodic
+coefficients and the topology and measure of Mersenne achievement sets.
 
 Problem 249 contains the deepest collection of endpoint-facing mechanisms but
 no endpoint proof. The library determines the exact finite-level rank of the
@@ -60,10 +61,11 @@ scoped no-go theorems. No cofinal producer reaching irrationality is proved.
 classifications, and a coefficient-only countermodel boundary. A
 prime-specific cofinal tail witness is still missing.
 
-**Problem 257.** The corpus contains full-support and structured-support
-irrationality theorems, eventually-periodic coefficient results,
-achievement-set geometry, and exact half-value classifications. Irrationality
-for every infinite support and the `1/2` and `1/21` branches remain open.
+**Problem 257.** Every infinite reciprocal-summable support gives an irrational
+series at every integer base at least two, without a coprimality assumption.
+The corpus also contains full-support and eventually-periodic theorems,
+achievement-set geometry, and exact half-value classifications. The universal
+reciprocal-divergent regime and the `1/2` and `1/21` branches remain open.
 
 **Problem 269.** Exact three-prime LCM cell geometry, height identities, a
 rank obstruction, and conditional carry observers are checked. The
@@ -102,14 +104,19 @@ All eight Erdős problems remain open. The development is neither a partial
 solution nor an empty collection of restatements. For a first mathematical
 pass, the high-signal spine is:
 
-- **#257, a completed unconditional endpoint theorem in the full-support
-  case.** The checked divisor-block proof combines a bounded Bertrand/CRT first
-  block, middle-window divisor-pair averaging, weighted tail control, and
-  parameter closure (`irrational_erdosSum_full_support`). It proves the
-  canonical full-support series irrational in every integer base `b ≥ 2`, but
-  not universal #257. A distinct adaptive-CRT certificate proves irrationality
-  for every infinite pairwise-coprime support with summable reciprocal mass;
-  those structured-support hypotheses likewise leave arbitrary support open.
+- **#257, arbitrary reciprocal-summable supports at every integer base.** The
+  checked close-return theorem proves `∑_{a∈A} 1/(bᵃ−1)` irrational for every
+  `b ≥ 2` and every infinite `A` with `∑_{a∈A} 1/a < ∞`, without pairwise
+  coprimality
+  (`irrational_erdosSupportSeries_of_summable_reciprocal`). Its novelty and
+  priority are unassessed. The universal assertion remains open only in the
+  reciprocal-divergent regime, although some supports there are known. In
+  particular, the classical full-support theorem is independently formalised:
+  its divisor-block proof combines a bounded Bertrand/CRT first block,
+  middle-window divisor-pair averaging, weighted tail control, and parameter
+  closure (`irrational_erdosSum_full_support`). The older adaptive-CRT
+  certificate for pairwise-coprime reciprocal-summable supports remains a
+  separate, more restrictive mechanism.
   A deeper, genuinely distinct conditional route proves the base-2 support
   series under a finite-core orthogonal-petal bouquet plus the uniform
   `SunflowerForcedSlotTailSelection` predicate
@@ -212,10 +219,10 @@ boundary alongside Comparator-transported rows.
 
 | Disposition | Reader-facing treatment | Mathematical reason |
 |---|---|---|
-| **promote** | #257's full-support irrationality theorem, pairwise-coprime extension, orthogonal-petal reduction, and nonnegative rational eventually-periodic coefficient theorem, together with #249's actual-LCM separation reduction, lead the first pass. | The full-support row is an unconditional endpoint case for each `b ≥ 2`; the pairwise CRT and periodic denominator-clearing rows are distinct direct mechanisms; the bouquet and actual-LCM rows add unusually deep endpoint-facing conditional structure, with their unproved supplies kept adjacent rather than hidden. |
+| **promote** | #257's arbitrary reciprocal-summable support theorem, full-support formalisation, pairwise-coprime predecessor, orthogonal-petal reduction, and nonnegative rational eventually-periodic coefficient theorem, together with #249's actual-LCM separation reduction, lead the first pass. | The reciprocal-summable row broadens the pairwise-coprime theorem at each `b ≥ 2`; full support is an independent classical reciprocal-divergent case, while periodic denominator clearing preserves another distinct mechanism; the bouquet and actual-LCM rows add endpoint-facing conditional structure with their unproved supplies kept adjacent. |
 | **retain** | #257's achievement-set measure geometry, Boolean–Möbius exact-row conditional route, and sublogarithmic zero-window constraint, #68's exact carry equivalence, #249's diagonal full-target and foreign-residue reductions, finite kernel rank/basis, orbit-level carry anti-compression, and fixed-precision valuation/unit no-go, #243's bounded-rise, negative-orbit, and signed centered-recovery boundaries, #251's equivalence and countermodel, #269's height/rank obstruction and weighted-phase observer, #1041's admissible-hub/SPOKE-5 source frontier and Lean ray/root inputs, and #1049's recurrence, rectangular-threshold, and four-jet/no-go boundaries remain the strongest boundary for each problem. | The measure rows give consequential global geometry without classifying rational points; the Boolean–Möbius exact-row route gives a concrete local-to-cofinal half-membership mechanism under an unproved positive-skip supply, so it is useful endpoint-facing structure but not a contradiction; the sublog row gives a rationality-conditional coverage bound with a support/numerator-dependent constant, not a contradiction; the #68 and #249 rows are exact endpoint-adjacent or infinite-dimensionality results without their missing producers, while the #249 diagonal row makes integrality a full-target foreign-defect hit, the foreign-residue row adds an exact finite foreign/divisor split and closed geometric tail bound, and the orbit conjunction exposes modular periodicity alongside rank growth and its forcing-erasure friction; the fixed-precision row gives a prefix-locked centred completion for every finite compatible odd-unit word at fixed positive precision, so bounded local signatures cannot exclude every finite endpoint; its unrestricted high quotient is synthetic rather than actual totient arithmetic, and no #249 endpoint follows; the foreign row still needs the unproved `ControlledForeignProjection` bridge and unbounded separated-projection supply; the signed #243 recovery forces a centered defect to zero under exact displayed dynamics and bounded-negative hypotheses but leaves the unbounded mixed-sign branch open; the #269 observer exposes a finite residue/uncontrolled-coboundary split and a conditional finite-span criterion, but no finite-state quotient or endpoint; the source-only #1041 selector remains the direct degree-five/unrestricted socket while its local Lean inputs do not supply the global topology or metric selection; the #1049 rectangular threshold is sharp only for its explicit two-function model and the four-jet collision remains finite, so neither supplies an approximant/remainder bridge; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
 | **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite-denominator, scalar-height, and synthetic LCM-shift results form one supporting arithmetic route; #257's finite-period, state, and defect results form one supporting universal-boundary route. | These results reuse finite-level or finite-support interfaces and share the same endpoint gap; the scalar-height lemma transfers denominator information but is not an irrationality criterion. Grouping these mechanisms preserves their reuse value without making repeated local identities look like separate endpoint advances. |
-| **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; the canonical #257 full-support theorem stays promoted. | Provenance and known formalised cases establish context or a restricted theorem, not a new #249 conclusion; the completed full-support mechanism is the explicit exception because it is a direct checked endpoint case. |
+| **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms. | Provenance and known formalised cases establish context or a restricted theorem; they remain visible without outranking the leading source-current #257 theorem. |
 | **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. | Consequence and load-bearing mechanism are more informative to a first reader than paper order, while the per-problem sections preserve complete coverage and exact source routes. |
 | **long-tail-only** | Finite searches, measurement logs, routine certificate shards, and unselected conditional predicate stacks remain discoverable through the source maps, but do not lead the reader. | A finite range, routine shard, or unconstructed antecedent cannot establish a cofinal family or universal endpoint, so it is evidence for follow-up rather than first-contact signal. |
 
@@ -613,6 +620,16 @@ boundaries kept together.
 **#257 — is `∑_{n∈A} 1/(2ⁿ−1)` irrational for every infinite `A`? (reviewed
 core)**
 
+- Native unconditional: for every base `b ≥ 2` and every infinite support `A`
+  with summable reciprocal indicator, `erdosSupportSeries b A` is irrational,
+  with no pairwise-coprimality hypothesis —
+  `irrational_erdosSupportSeries_of_summable_reciprocal`,
+  `Erdos249257/AllBaseReciprocalSupportIrrationality.lean:395`; claims registry:
+  `reciprocal_summable_support`. The theorem leaves the universal assertion
+  open only for reciprocal-divergent supports. Some such supports, including
+  full support, are already known; this boundary does not classify every
+  reciprocal-divergent support as unresolved. Novelty and priority are
+  unassessed.
 - Native unconditional: for every finite nonempty support `F` of positive
   exponents and every base `b ≥ 2`, the reduced denominator of `∑_{n∈F} 1/(bⁿ−1)` is coprime to `b`
   and has multiplicative order exactly `lcm F` — `finite_period_noncollapse`
@@ -621,10 +638,11 @@ core)**
   hypothesis. Checked theorem; claims registry: `finite_period_noncollapse`
   (`res:period`). It is a finite-support denominator result, not an
   irrationality theorem for arbitrary infinite supports.
-- Formalised known results: the full-support series is irrational in every
-  base `b ≥ 2` (Erdős 1948; claim `eb_full_support`), as are pairwise-coprime
-  supports with summable reciprocals (Erdős 1968) and eventually periodic
-  supports.
+- Formalised known results include the full-support series in every base
+  `b ≥ 2` (Erdős 1948; claim `eb_full_support`), pairwise-coprime supports with
+  summable reciprocals (Erdős 1968), and eventually periodic supports. These
+  remain independent results and mechanisms rather than evidence that the
+  source-current theorem without a coprimality hypothesis was known or is novel.
 - The committed Comparator interface
   `irrational_erdosSupportSeries_pairwise_coprime` makes the pairwise-coprime
   row exact: for every base `b ≥ 2`, infinite support `A`, pairwise

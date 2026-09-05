@@ -35,6 +35,36 @@ def test_default_packet() -> None:
         register["remaining_open_propositions"]
     )
     assert packet["proof_authority"] == "Lean source checked by the pinned Lean kernel"
+    atoms = [
+        json.loads(line)
+        for line in (ROOT / "docs" / "result-atoms.jsonl")
+        .read_text(encoding="utf-8")
+        .splitlines()
+        if line.strip()
+    ]
+    palomar_order = json.loads(
+        (ROOT / "docs" / "PALOMAR_RESULT_SHOWCASE.json").read_text(
+            encoding="utf-8"
+        )
+    )["family_display_order"]
+    assert packet["corpus"]["result_atom_count"] == len(atoms)
+    assert packet["corpus"]["result_family_count"] == len(palomar_order)
+    assert [
+        row[0]
+        for row in packet["corpus"]["qualitative_result_family_order"]["rows"]
+    ] == [row["family_id"] for row in palomar_order]
+    assert sum(
+        packet["corpus"]["result_atom_interpretation_state_counts"].values()
+    ) == len(atoms)
+    assert sum(packet["corpus"]["result_atom_display_tier_counts"].values()) == len(
+        atoms
+    )
+    assert packet["next_actions"]["result_atom"].endswith(
+        "--result-atom <atom_id>"
+    )
+    assert packet["next_actions"]["family_atoms"].endswith(
+        "--family-atoms <family_id>"
+    )
     assert packet["next_actions"]["kernel_check"].endswith("--jobs 2")
     assert all("ai_workflow" not in json.dumps(row) for row in packet["workbench"]["sessions"])
 
@@ -80,6 +110,10 @@ def test_cli_json_and_card() -> None:
     assert card_run.returncode == 0, card_run.stderr
     assert "Plectis Lean proof cockpit" in card_run.stdout
     assert "only the pinned Lean kernel checks formal truth" in card_run.stdout
+    assert (
+        f"results: {packet['corpus']['result_family_count']} families | "
+        f"{packet['corpus']['result_atom_count']} atoms"
+    ) in card_run.stdout
 
 
 def test_public_agent_assets_exist() -> None:

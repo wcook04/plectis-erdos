@@ -145,6 +145,33 @@ commit-bound execution receipts, and Palomar submission/review outcomes
 separate in every downstream query and presentation. Preserve explicit missing
 transports until they are actually supplied and validated.
 
+## Propagate atoms and paper placement from their owners
+
+Keep registered claims, editorial result atoms, and result families as separate
+populations. Use `scripts/result_atoms.py --candidate-jsonl <batch.jsonl>` to
+validate a proposed atom batch before adding `--write`. Preserve attributed
+source statements, interpretation boundaries, and stable identities. Display
+bands come from `docs/PALOMAR_RESULT_SHOWCASE.json::family_display_order`;
+short/long placement comes from `paper/paper-result-integration-source.json`.
+Neither owner is a proof or execution receipt.
+
+The normal refresh derives the complete family catalogues and assembles the
+reasoning manuscripts before exporting their public text. Consult
+`scripts/assemble_reasoning_surfaces.py::PAPERS` to find each manuscript's
+authoring owner: a note-derived record reads its body and bibliography directly
+from the short note, while an independent record reads its authored parts.
+Do not recreate duplicate body files to repair a derived paper. Refresh the
+pinned source coordinates, assemble, rebuild affected PDFs, inspect their
+rendering, and rebind reviewed publication digests before exporting.
+
+When adding a manuscript, register it in `docs/papers/paper_registry.json`;
+Make derives native targets from that owner. Complete the existing publication
+contract and licence coverage, then run the ordinary refresh/release route.
+Inspect `--result-atom <atom_id>` and `--family-atoms <family_id>` after a
+population change: the latter must show strongest-first editorial ordering,
+bounded omissions, and a visible distinction between family interface metadata
+and registered-claim transport coverage.
+
 ## Reconcile work from an older clone
 
 An old clone is not an invalid contribution. Its starting commit is the common

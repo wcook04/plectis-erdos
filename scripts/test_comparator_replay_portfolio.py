@@ -82,6 +82,90 @@ def test_config_is_comparator_native_and_explicitly_non_nanoda() -> None:
     }
 
 
+def test_palomar_catalog_preserves_existing_owner_and_current_eligibility() -> None:
+    portfolio = replay.build_portfolio()
+    generated, rendered_catalog = replay.palomar_entry_outputs(portfolio)
+    catalog = json.loads(rendered_catalog)
+    assert catalog["package_count"] == len(portfolio.packages)
+    assert catalog["interface_count"] == len(portfolio.theorem_names)
+    assert catalog["entry_ready_for_replay_count"] == len(portfolio.packages)
+    assert catalog["blocked_package_ids"] == []
+    assert catalog["source_bound_package_match_count"] == sum(
+        bool(row["source_bound_matches"]) for row in catalog["entries"]
+    )
+    existing_owner_count = sum(
+        row["config_authority"] == "existing_package_owner_preserved"
+        for row in catalog["entries"]
+    )
+    assert len(generated) == len(portfolio.packages) - existing_owner_count
+
+    by_package = {row["package_id"]: row for row in catalog["entries"]}
+    solved = by_package["ExternalVerification1041SolvedFamilies"]
+    assert solved["config_path"] == (
+        "ExternalVerification1041SolvedFamilies/comparator.json"
+    )
+    assert solved["config_authority"] == "existing_package_owner_preserved"
+    assert replay.ROOT / solved["config_path"] not in generated
+    existing = json.loads(
+        (replay.ROOT / solved["config_path"]).read_text(encoding="utf-8")
+    )
+    assert existing["enable_nanoda"] is True
+
+    repaired = by_package["ExternalVerification1049"]
+    assert repaired["palomar_trusted_challenge"] == {
+        "status": "structurally_eligible_pending_replay",
+        "disallowed_imports": [],
+    }
+    generated_repaired = json.loads(
+        generated[replay.ROOT / repaired["config_path"]]
+    )
+    assert generated_repaired["theorem_names"] == repaired["theorem_names"]
+    assert generated_repaired["enable_nanoda"] is False
+    flagship = by_package["ExternalVerification257ReciprocalSupport"]
+    assert flagship["source_bound_matches"] == [
+        {
+            "claim_id": "reciprocal_summable_support",
+            "review_family": "reciprocal_summable_support",
+            "package_id": "ExternalVerification257ReciprocalSupport",
+            "interface_name": (
+                "Erdos249257.ExternalVerification257ReciprocalSupport."
+                "irrational_supportPowerSeries_of_summable_reciprocal"
+            ),
+            "source_module": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+            "source_declaration": (
+                "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal"
+            ),
+            "evidence": (
+                "claim anchor + main-result source link + exact Solution import/use; "
+                "Comparator execution not asserted"
+            ),
+        }
+    ]
+    assert all(row["execution_status"] == "not_run_not_asserted" for row in catalog["entries"])
+    assert "not a Comparator receipt" in catalog["boundary"]
+
+
+def test_palomar_disposition_rejects_synthetic_project_local_import() -> None:
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        package_dir = root / "ExternalVerificationFixture"
+        package_dir.mkdir()
+        (package_dir / "Challenge.lean").write_text(
+            "import ExternalVerificationFixture.Statements\n",
+            encoding="utf-8",
+        )
+        package = replay.Package(
+            name="ExternalVerificationFixture",
+            challenge_module="ExternalVerificationFixture.Challenge",
+            solution_module="ExternalVerificationFixture.Solution",
+            theorem_names=("Fixture.result",),
+        )
+        assert replay.palomar_challenge_disposition(package, root) == {
+            "status": "blocked_project_local_challenge_import",
+            "disallowed_imports": ["ExternalVerificationFixture.Statements"],
+        }
+
+
 def test_namespace_survives_nested_section_end() -> None:
     with tempfile.TemporaryDirectory() as temporary:
         path = Path(temporary) / "Challenge.lean"
@@ -633,6 +717,8 @@ def test_rejects_forbidden_solution_constructs() -> None:
 def main() -> int:
     test_live_portfolio_is_complete_unique_and_current()
     test_config_is_comparator_native_and_explicitly_non_nanoda()
+    test_palomar_catalog_preserves_existing_owner_and_current_eligibility()
+    test_palomar_disposition_rejects_synthetic_project_local_import()
     test_namespace_survives_nested_section_end()
     test_same_line_attributes_do_not_hide_interfaces()
     test_rejects_project_local_challenge_import()

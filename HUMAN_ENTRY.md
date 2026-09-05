@@ -31,9 +31,16 @@ reader wants to inspect the exact statement.
 ## A good first mathematical thread
 
 Problem 257 is the clearest place to begin with a completed theorem family.
-The repository checks irrationality for several restricted classes of supports
-and develops the topology and measure theory of the associated achievement
-sets. The universal question, covering every infinite support, is still open.
+For every integer base `b` at least two and every infinite set `A` of positive
+integers with `∑_{n∈A} n⁻¹ < ∞`, the repository proves that
+`∑_{n∈A} (bⁿ − 1)⁻¹` is irrational. Pairwise coprimality is not assumed. This
+source-bound interpretation keeps the theorem's explicit assumptions; its
+novelty and priority have not been assessed. The universal question remains
+open only for the reciprocal-divergent regime, although some supports in that
+regime, including full support, are already known to give irrational series. The
+[#257 paper](erdos-257-mersenne-support-subseries.pdf) gives the concise account,
+while its [complete reasoning record](erdos257-mersenne-reasoning-surface.pdf)
+also preserves the topology, measure theory, failed routes, and open targets.
 
 Problem 249 shows something different: what a failed route can teach. It
 contains exact reductions, finite denominator exclusions, and a long
@@ -47,6 +54,16 @@ denominators, rapidly growing reciprocal sums, prime gaps, running least common
 multiples, short curves in polynomial lemniscates, and Lambert-type series at
 rational bases. You can choose one from the paper list on the front page
 without understanding the rest of the corpus.
+
+Each problem also has a complete reasoning record for readers who want the
+longer chain of results and limits: [#68](erdos68-factorial-reasoning-surface.pdf),
+[#243](erdos243-reciprocal-tail-reasoning-surface.pdf),
+[#249](erdos249-totient-reasoning-surface.pdf),
+[#251](erdos251-prime-gap-reasoning-surface.pdf),
+[#257](erdos257-mersenne-reasoning-surface.pdf),
+[#269](erdos269-running-lcm-reasoning-surface.pdf),
+[#1041](erdos1041-lemniscate-reasoning-surface.pdf), and
+[#1049](erdos1049-rational-base-lambert-reasoning-surface.pdf).
 
 ## How to read the evidence
 

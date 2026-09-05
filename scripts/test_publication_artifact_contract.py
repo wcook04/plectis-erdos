@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import json
 import os
 import tempfile
 from pathlib import Path
@@ -14,9 +15,13 @@ from unittest.mock import patch
 
 from publication_contract import (
     CONTRACT_PATH,
+    DYNAMIC_PAPER_TARGETS_COMMAND,
     ENVIRONMENT_CONTRACT,
+    PAPER_REGISTRY_PATH,
+    PAPER_REGISTRY_SCHEMA,
     RepositoryReader,
     load_json,
+    makefile_papers,
     mutation_fixture_failures,
     validate_publication_contract,
 )
@@ -132,6 +137,104 @@ def assert_problem_note_route_template(reader: RepositoryReader) -> None:
     )
 
 
+def _registry_bytes(rows: list[object], *, schema: str = PAPER_REGISTRY_SCHEMA) -> bytes:
+    return (
+        json.dumps(
+            {
+                "schema": schema,
+                "this_repository": "plectis-erdos",
+                "support_sources": [],
+                "papers": rows,
+            }
+        )
+        + "\n"
+    ).encode("utf-8")
+
+
+def _native_row(stem: str, *, paper_id: str | None = None) -> dict[str, str]:
+    return {
+        "paper_id": paper_id or stem,
+        "source": f"paper/{stem}.tex",
+        "pdf": f"{stem}.pdf",
+        "relation_to_this_repository": "native",
+    }
+
+
+def assert_dynamic_makefile_manifest_is_data_only() -> None:
+    dynamic_makefile = f"PAPERS := {DYNAMIC_PAPER_TARGETS_COMMAND}\n"
+    rows = [
+        _native_row("alpha-paper"),
+        {
+            "paper_id": "external-mirror",
+            "source": "vendor/external.tex",
+            "pdf": "external.pdf",
+            "relation_to_this_repository": "mirror",
+        },
+        _native_row("beta-paper"),
+    ]
+    reader = RepositoryReader(
+        ROOT,
+        "HEAD",
+        {PAPER_REGISTRY_PATH: _registry_bytes(rows)},
+    )
+    with patch("publication_contract.subprocess.run", side_effect=AssertionError):
+        require(
+            makefile_papers(dynamic_makefile, reader)
+            == {"alpha-paper", "beta-paper"},
+            "dynamic Make manifest did not derive native targets from the reader ref",
+        )
+    require(
+        makefile_papers("PAPERS = historical-a historical-b\n")
+        == {"historical-a", "historical-b"},
+        "historical static PAPERS parsing regressed",
+    )
+    for unsupported in (
+        "PAPERS := $(shell touch should-not-run)\n",
+        "PAPERS = ${UNTRUSTED}\n",
+    ):
+        try:
+            makefile_papers(unsupported, reader)
+        except ValueError as exc:
+            require("unsupported dynamic Make expression" in str(exc), str(exc))
+        else:
+            raise AssertionError("unsupported Make expression was accepted")
+
+
+def assert_dynamic_manifest_registry_failures() -> None:
+    dynamic_makefile = f"PAPERS := {DYNAMIC_PAPER_TARGETS_COMMAND}\n"
+    bad_registries = (
+        _registry_bytes([_native_row("alpha")], schema="wrong-schema"),
+        _registry_bytes([_native_row("alpha"), _native_row("beta", paper_id="alpha")]),
+        _registry_bytes([_native_row("Unsafe_Name")]),
+        _registry_bytes(
+            [
+                {
+                    **_native_row("alpha"),
+                    "source": "paper/not-alpha.tex",
+                }
+            ]
+        ),
+        _registry_bytes([_native_row("alpha"), _native_row("alpha", paper_id="other")]),
+        b"{not json}\n",
+    )
+    for registry in bad_registries:
+        reader = RepositoryReader(ROOT, byte_overrides={PAPER_REGISTRY_PATH: registry})
+        try:
+            makefile_papers(dynamic_makefile, reader)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("malformed dynamic paper registry was accepted")
+
+    with tempfile.TemporaryDirectory(prefix="publication-registry-missing-") as temp:
+        try:
+            makefile_papers(dynamic_makefile, RepositoryReader(Path(temp)))
+        except ValueError as exc:
+            require(PAPER_REGISTRY_PATH in str(exc), str(exc))
+        else:
+            raise AssertionError("missing dynamic paper registry was accepted")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -142,6 +245,8 @@ def main() -> int:
     assert_committed_snapshot_environment()
     assert_worktree_symlink_boundary()
     assert_worktree_special_file_boundary()
+    assert_dynamic_makefile_manifest_is_data_only()
+    assert_dynamic_manifest_registry_failures()
     reader = RepositoryReader(ROOT, args.git_ref)
     assert_problem_note_route_template(reader)
     baseline_errors = validate_publication_contract(reader)

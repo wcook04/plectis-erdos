@@ -2013,19 +2013,19 @@
   "registered_claim_coverage": {
     "schema": "plectis.comparator-registered-claim-coverage/1",
     "registry_authority": "docs/claims.json::claims",
-    "registry_digest": "sha256:2a2647496f6af98917507ff0aa9bd9a0143f65971a67d8e799b8cc19aa9a6599",
+    "registry_digest": "sha256:98241667b8cd9a0ca62812614a7cbebad8ec63a9fa34233a0dbf8a4a6e913256",
     "registry_digest_definition": "sha256 of canonical JSON rows containing each registered claim id, status, statement, exact declaration anchors, and explicit transports",
     "registered_claim_count": 131,
     "classified_claim_count": 131,
     "classification_counts": {
       "cited_only_non_executable": 3,
-      "linked_transport": 24,
-      "missing_formal_transport": 96,
+      "linked_transport": 28,
+      "missing_formal_transport": 92,
       "open_non_executable": 8
     },
     "formal_claim_count": 120,
-    "linked_transport_claim_count": 24,
-    "missing_formal_transport_count": 96,
+    "linked_transport_claim_count": 28,
+    "missing_formal_transport_count": 92,
     "missing_formal_claim_ids": [
       "actual_lcm_positive_corridor_top_edge",
       "adelic_height_obstruction",
@@ -2078,7 +2078,6 @@
       "mixed_cofinal_half_carry_fan_in",
       "mixed_prime_power_layer_identity",
       "mobius_sign_support_no_go",
-      "newton_ray_separation_consumer",
       "parity_socket_obstruction",
       "period_four_signed_residue_obstruction",
       "periodic_signed_weight_dichotomy",
@@ -2107,19 +2106,16 @@
       "squared_mersenne_enclosure",
       "stern_brocot_cylinder_law",
       "stern_brocot_run_fibonacci_stability",
-      "sublog_zero_windows",
       "support_families",
       "tail_orbit_rigidity",
       "terminal_only_cofinal_closure",
       "terminal_scaled_vanishing_closure",
-      "terminal_scaled_vanishing_half_countermodel",
       "three_prime_cofinal_window_carry_extinction",
       "three_prime_finite_residue_contradiction",
       "totient_coprimality_probability",
       "transport_certificate_instances",
       "transport_curvature_reductions",
       "twenty_one_quotient_greedy_frontier",
-      "unbounded_carry_states",
       "upper_reset_band_certificates_through_thirty",
       "van_assche_qapery_diagonal_no_go",
       "weighted_phase_carry_finite_observer"
@@ -2230,7 +2226,7 @@
       {
         "claim_id": "newton_ray_separation_consumer",
         "claim_status": "unconditional progress",
-        "classification": "missing_formal_transport",
+        "classification": "linked_transport",
         "registered_declarations": [
           {
             "name": "exists_small_translation_separating_arguments",
@@ -2248,9 +2244,44 @@
             "line": 334
           }
         ],
-        "transport_count": 0,
-        "transports": [],
-        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "transport_count": 2,
+        "transports": [
+          {
+            "package_id": "ExternalVerification1041NewtonDecay",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification1041NewtonDecay.Challenge",
+            "solution_module": "ExternalVerification1041NewtonDecay.Solution",
+            "interface_name": "Erdos249257.ExternalVerification1041NewtonDecay.no_newtonConnection_of_not_samePositiveRay",
+            "source_declarations": [
+              {
+                "name": "no_newtonConnection_of_not_samePositiveRay",
+                "module": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
+                "line": 334
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification1041TranslationAvoidance",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification1041TranslationAvoidance.Challenge",
+            "solution_module": "ExternalVerification1041TranslationAvoidance.Solution",
+            "interface_name": "Erdos249257.ExternalVerification1041TranslationAvoidance.exists_small_translation_separating_arguments",
+            "source_declarations": [
+              {
+                "name": "exists_small_translation_separating_arguments",
+                "module": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
+                "line": 197
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          }
+        ],
+        "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
       },
@@ -5021,7 +5052,7 @@
       {
         "claim_id": "unbounded_carry_states",
         "claim_status": "proved here",
-        "classification": "missing_formal_transport",
+        "classification": "linked_transport",
         "registered_declarations": [
           {
             "name": "exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction",
@@ -5029,16 +5060,34 @@
             "line": 2383
           }
         ],
-        "transport_count": 0,
-        "transports": [],
-        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "transport_count": 1,
+        "transports": [
+          {
+            "package_id": "ExternalVerification257RationalTailRigidity",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification257RationalTailRigidity.Challenge",
+            "solution_module": "ExternalVerification257RationalTailRigidity.Solution",
+            "interface_name": "Erdos249257.ExternalVerification257RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction",
+            "source_declarations": [
+              {
+                "name": "exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction",
+                "module": "Erdos249257/RationalSupportCarrySkeleton.lean",
+                "line": 2383
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          }
+        ],
+        "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
       },
       {
         "claim_id": "sublog_zero_windows",
         "claim_status": "proved here",
-        "classification": "missing_formal_transport",
+        "classification": "linked_transport",
         "registered_declarations": [
           {
             "name": "supportCoeffZeroWindow_length_le_eps_logb_add",
@@ -5046,9 +5095,27 @@
             "line": 392
           }
         ],
-        "transport_count": 0,
-        "transports": [],
-        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "transport_count": 1,
+        "transports": [
+          {
+            "package_id": "ExternalVerification257RationalTailRigidity",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification257RationalTailRigidity.Challenge",
+            "solution_module": "ExternalVerification257RationalTailRigidity.Solution",
+            "interface_name": "Erdos249257.ExternalVerification257RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add",
+            "source_declarations": [
+              {
+                "name": "supportCoeffZeroWindow_length_le_eps_logb_add",
+                "module": "Erdos249257/SublogDivisorCoverage.lean",
+                "line": 392
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          }
+        ],
+        "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
       },
@@ -5816,7 +5883,7 @@
       {
         "claim_id": "terminal_scaled_vanishing_half_countermodel",
         "claim_status": "conditional reduction",
-        "classification": "missing_formal_transport",
+        "classification": "linked_transport",
         "registered_declarations": [
           {
             "name": "half_mem_mersenneAchievementSet_of_terminalScaledVanishing",
@@ -5839,9 +5906,32 @@
             "line": 48
           }
         ],
-        "transport_count": 0,
-        "transports": [],
-        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "transport_count": 1,
+        "transports": [
+          {
+            "package_id": "ExternalVerification257TerminalScaledVanishing",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification257TerminalScaledVanishing.Challenge",
+            "solution_module": "ExternalVerification257TerminalScaledVanishing.Solution",
+            "interface_name": "Erdos249257.ExternalVerification257TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample",
+            "source_declarations": [
+              {
+                "name": "exists_rational_half_counterexample_of_terminalScaledVanishing",
+                "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+                "line": 40
+              },
+              {
+                "name": "not_universal_of_terminalScaledVanishing",
+                "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+                "line": 48
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          }
+        ],
+        "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
       },

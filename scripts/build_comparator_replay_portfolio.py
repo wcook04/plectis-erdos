@@ -29,6 +29,8 @@ CHALLENGE_OUTPUT = ROOT / AGGREGATE_PACKAGE / "Challenge.lean"
 SOLUTION_OUTPUT = ROOT / AGGREGATE_PACKAGE / "Solution.lean"
 CONFIG_OUTPUT = ROOT / "verification" / "comparator-replay-candidate.json"
 MEMBERSHIP_OUTPUT = ROOT / "verification" / "comparator-replay-membership.json"
+PALOMAR_CATALOG_OUTPUT = ROOT / "verification" / "palomar-entry-catalog.json"
+PALOMAR_CONFIG_DIRECTORY = ROOT / "verification" / "palomar-entries"
 PERMITTED_AXIOMS = ("propext", "Quot.sound", "Classical.choice")
 
 IMPORT_RE = re.compile(r"(?m)^[ \t]*import[ \t]+(?P<module>[^\s]+)")
@@ -1036,6 +1038,185 @@ def render_config(portfolio: Portfolio) -> str:
     return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
 
 
+def render_entry_config(package: Package) -> str:
+    """Render one ordinary Comparator config without claiming execution."""
+    payload = {
+        "challenge_module": package.challenge_module,
+        "solution_module": package.solution_module,
+        "theorem_names": list(package.theorem_names),
+        "permitted_axioms": list(PERMITTED_AXIOMS),
+        "enable_nanoda": False,
+    }
+    return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+
+
+def existing_entry_config(package: Package, root: Path) -> Path | None:
+    """Keep a package-owned config authoritative when its interface is exact."""
+    path = root / package.name / "comparator.json"
+    if not path.is_file():
+        return None
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise PortfolioError(f"cannot read existing package config {path}: {exc}") from exc
+    if (
+        payload.get("challenge_module") != package.challenge_module
+        or payload.get("solution_module") != package.solution_module
+        or set(payload.get("theorem_names", [])) != set(package.theorem_names)
+        or set(payload.get("permitted_axioms", [])) != set(PERMITTED_AXIOMS)
+        or not isinstance(payload.get("enable_nanoda"), bool)
+    ):
+        raise PortfolioError(
+            f"existing package config disagrees with its exact interface: {path}"
+        )
+    return path
+
+
+def palomar_challenge_disposition(package: Package, root: Path) -> dict[str, Any]:
+    """Classify Palomar's stricter no-project-local-import Challenge boundary."""
+    challenge = root / package.name / "Challenge.lean"
+    imports = imports_in(challenge)
+    disallowed = sorted(
+        module
+        for module in imports
+        if module != "Mathlib" and not module.startswith("Mathlib.")
+    )
+    return {
+        "status": (
+            "blocked_project_local_challenge_import"
+            if disallowed
+            else "structurally_eligible_pending_replay"
+        ),
+        "disallowed_imports": disallowed,
+    }
+
+
+def source_bound_package_matches(
+    portfolio: Portfolio, root: Path
+) -> list[dict[str, Any]]:
+    """Find positive package transports without equating wrapper namespaces."""
+    claims = json.loads((root / "docs" / "claims.json").read_text(encoding="utf-8"))
+    claims_by_id = {
+        row.get("id"): row for row in claims.get("claims", []) if isinstance(row, dict)
+    }
+    matches: list[dict[str, Any]] = []
+    for package in portfolio.packages:
+        solution = root / package.name / "Solution.lean"
+        solution_text = solution.read_text(encoding="utf-8")
+        solution_imports = set(imports_in(solution))
+        for result in claims.get("external_verification_packet", {}).get(
+            "main_results", []
+        ):
+            source_path = result.get("original_source", "")
+            source_declaration = result.get("original_declaration", "")
+            claim_id = result.get("claim_id")
+            source_module = (
+                source_path[:-5].replace("/", ".")
+                if isinstance(source_path, str) and source_path.endswith(".lean")
+                else ""
+            )
+            source_leaf = str(source_declaration).rsplit(".", 1)[-1]
+            claim = claims_by_id.get(claim_id, {})
+            claim_anchors = {
+                (anchor.get("module"), anchor.get("name"))
+                for anchor in claim.get("declarations", [])
+                if isinstance(anchor, dict)
+            }
+            candidates = [
+                name
+                for name in package.theorem_names
+                if name.rsplit(".", 1)[-1] == source_leaf
+            ]
+            if not candidates and len(package.theorem_names) == 1:
+                candidates = list(package.theorem_names)
+            if (
+                source_module in solution_imports
+                and re.search(
+                    rf"(?<![A-Za-z0-9_]){re.escape(str(source_declaration))}(?![A-Za-z0-9_])",
+                    solution_text,
+                )
+                and (source_path, source_leaf) in claim_anchors
+                and len(candidates) == 1
+            ):
+                matches.append(
+                    {
+                        "claim_id": claim_id,
+                        "review_family": result.get("review_family"),
+                        "package_id": package.name,
+                        "interface_name": candidates[0],
+                        "source_module": source_path,
+                        "source_declaration": source_declaration,
+                        "evidence": (
+                            "claim anchor + main-result source link + exact Solution "
+                            "import/use; Comparator execution not asserted"
+                        ),
+                    }
+                )
+    return matches
+
+
+def palomar_entry_outputs(
+    portfolio: Portfolio, root: Path = ROOT
+) -> tuple[dict[Path, str], str]:
+    """Return generated configs plus their coherent, fail-closed catalog."""
+    outputs: dict[Path, str] = {}
+    entries: list[dict[str, Any]] = []
+    source_matches = source_bound_package_matches(portfolio, root)
+    for package in portfolio.packages:
+        existing = existing_entry_config(package, root)
+        if existing is None:
+            config_path = PALOMAR_CONFIG_DIRECTORY / f"{package.name}.json"
+            if root != ROOT:
+                config_path = root / "verification" / "palomar-entries" / f"{package.name}.json"
+            outputs[config_path] = render_entry_config(package)
+            config_authority = "generated_by_portfolio_owner"
+        else:
+            config_path = existing
+            config_authority = "existing_package_owner_preserved"
+        challenge_path = root / package.name / "Challenge.lean"
+        solution_path = root / package.name / "Solution.lean"
+        disposition = palomar_challenge_disposition(package, root)
+        entries.append(
+            {
+                "package_id": package.name,
+                "config_path": config_path.relative_to(root).as_posix(),
+                "config_authority": config_authority,
+                "challenge_module": package.challenge_module,
+                "solution_module": package.solution_module,
+                "theorem_names": list(package.theorem_names),
+                "interface_count": len(package.theorem_names),
+                "challenge_sha256": hashlib.sha256(challenge_path.read_bytes()).hexdigest(),
+                "solution_sha256": hashlib.sha256(solution_path.read_bytes()).hexdigest(),
+                "palomar_trusted_challenge": disposition,
+                "execution_status": "not_run_not_asserted",
+                "source_bound_matches": [
+                    row for row in source_matches if row["package_id"] == package.name
+                ],
+            }
+        )
+    blocked = [
+        row["package_id"]
+        for row in entries
+        if row["palomar_trusted_challenge"]["status"].startswith("blocked_")
+    ]
+    catalog = {
+        "schema": "plectis.palomar-entry-catalog/1",
+        "membership_authority": "verification/comparator-replay-membership.json",
+        "package_count": len(entries),
+        "interface_count": sum(row["interface_count"] for row in entries),
+        "entry_ready_for_replay_count": len(entries) - len(blocked),
+        "blocked_package_ids": blocked,
+        "source_bound_package_match_count": len(source_matches),
+        "entries": entries,
+        "boundary": (
+            "This catalog preserves per-package Comparator inputs. It is not a "
+            "Comparator receipt, claim-completeness assertion, Palomar submission, "
+            "review, acceptance, registration, or publication record."
+        ),
+    }
+    return outputs, json.dumps(catalog, ensure_ascii=False, indent=2) + "\n"
+
+
 def render_membership(portfolio: Portfolio) -> str:
     required = sorted(
         set(portfolio.required_packages) | {package.name for package in portfolio.packages}
@@ -1074,8 +1255,8 @@ def render_membership(portfolio: Portfolio) -> str:
     return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
 
 
-def expected_outputs(portfolio: Portfolio) -> dict[Path, str]:
-    return {
+def expected_outputs(portfolio: Portfolio, root: Path = ROOT) -> dict[Path, str]:
+    outputs = {
         CHALLENGE_OUTPUT: render_aggregate(
             tuple(package.challenge_module for package in portfolio.packages),
             role="Challenge",
@@ -1087,6 +1268,13 @@ def expected_outputs(portfolio: Portfolio) -> dict[Path, str]:
         CONFIG_OUTPUT: render_config(portfolio),
         MEMBERSHIP_OUTPUT: render_membership(portfolio),
     }
+    entry_outputs, catalog = palomar_entry_outputs(portfolio, root)
+    outputs.update(entry_outputs)
+    catalog_path = PALOMAR_CATALOG_OUTPUT
+    if root != ROOT:
+        catalog_path = root / "verification" / "palomar-entry-catalog.json"
+    outputs[catalog_path] = catalog
+    return outputs
 
 
 def write_changed_outputs(outputs: dict[Path, str]) -> int:

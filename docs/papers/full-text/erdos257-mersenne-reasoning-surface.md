@@ -2239,7 +2239,7 @@ A parallel iff for the right branch: an overshoot witness $`\le2^s`$ produces a 
 
 <div class="obs">
 
-*Observation 182* (The reset-band socket has a certified base case). `SeamUpperResetDyadicBandEscape` (O5’s second socket, discussed after §<a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a> above) is reduced by three new lemmas to a quarter-scale overshoot exclusion: the iff (<span class="sans-serif">\[Lean\]</span>) rewrites the reset-charge band as a successor-remainder avoidance; the identity (<span class="sans-serif">\[Lean\]</span>) rescales it by a factor of $`4`$; and (<span class="sans-serif">\[Lean\]</span>) derives the band from a quarter-scale overshoot exclusion plus the pulse bound $`\mathrm{abovePulse}\le
+*Observation 182* (The reset-band socket has a certified base case). `SeamUpperResetDyadicBandEscape` (O5’s second socket, discussed after §<a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">13.5</a> above) is reduced by three new lemmas to a quarter-scale overshoot exclusion: the iff (<span class="sans-serif">\[Lean\]</span>) rewrites the reset-charge band as a successor-remainder avoidance; the identity (<span class="sans-serif">\[Lean\]</span>) rescales it by a factor of $`4`$; and (<span class="sans-serif">\[Lean\]</span>) derives the band from a quarter-scale overshoot exclusion plus the pulse bound $`\mathrm{abovePulse}\le
 2(d-2)`$. Row $`d=13`$, the first row of the late regime, is then proved unconditionally to escape *every* band simultaneously: its successor remainder is exactly $`392`$ (, <span class="sans-serif">\[Lean\]</span>, <span class="sans-serif">\[Cert\]</span> for the numeral $`392`$). This is one certified row of a socket that is $`\forall
 d\ge13`$; it is evidence the base case is not itself an obstruction, nothing more.
 
@@ -3657,11 +3657,365 @@ It does not determine whether a short proof exists. Nothing in a catalogue of fa
 
 It does determine, with proof rather than inference, where a short proof cannot be. It cannot proceed by finite inspection, by fixed-precision arithmetic, by a bounded carry state, by a measure or category argument, by an irrationality-measure bound on $`E`$ or any constant of that type, or — on the universal side, as of Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">272</a> — by instantiating the present block-certificate engine at a general support. Each of those is closed with a mechanism, and a mechanism is reusable in a way that a failed attempt is not. That is the contribution: not a proof, and not a reduction, but a map of the region in which a proof cannot live, drawn tightly enough that the remaining region is small and its coordinates are named.
 
+<a id="sec:erdos-257-complete-family-map"></a>
+
+# Complete result-family map
+
+This section places every registered family for this problem in the shared 71-family reader order. The five display bands control exposition only; the separate promotion state currently covers 7 families and is reported but does not hide or strengthen any family. Mathematical statements and evidence modes come from the public claim registry. Across all eight problems the public result-atom catalog contains 682 exact packet coordinates; this problem contributes 62. Catalog rows expose bounded statement excerpts plus full-source digests, not a claim that every complete packet statement is reproduced here.
+
+<a id="reciprocal-summable-support"></a>
+
+## Reciprocal summable support
+
+**Reader position.** 1 of 71; display band: front door. Formal editorial disposition: promote. These are separate classifications.
+
+**Reader entry.** Every infinite reciprocal-summable support gives an irrational reciprocal-power subseries at every integer base, without pairwise coprimality.
+
+Every infinite support with convergent reciprocal mass gives an irrational support-restricted reciprocal-power series at every integer base b at least 2.
+
+**Authority and reach.** Lean kernel; Comparator-selected; locally proved all-base support theorem; novelty and priority unassessed.
+
+**Exact boundary.** The universal Erdős \#257 assertion remains open only in the reciprocal-divergent regime. Novelty and priority are unassessed, and the proof is not identified with Erdős’s omitted coprimality-free argument.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+- `Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal`
+
+<a id="half-and-twenty-one-frontiers"></a>
+
+## Half and twenty one frontiers
+
+**Reader position.** 6 of 71; display band: front door. Formal editorial disposition: split. These are separate classifications.
+
+**Reader entry.** The \#257 frontier is concentrated in two explicit membership questions: 1/2 and 1/21.
+
+Exact greedy characterisations, finite-support exclusions, the odd 2-adic two-thirds-band bound, and two conditional rational-half countermodel frontiers isolate local constraints around the remaining 1/2 and 1/21 alternatives.
+
+**Authority and reach.** Lean kernel; Comparator-selected; conditional reduction and no-go result.
+
+**Exact boundary.** Neither membership question is decided; the 2-adic bound is sharp locally, and the two countermodel routes require unconstructed terminal-scaled or cofinal-cylinder antecedents.
+
+**Result-atom population.** 23 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+<a id="finite-period-noncollapse"></a>
+
+## Finite period noncollapse
+
+**Reader position.** 13 of 71; display band: major result. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** Finite periodic Mersenne patterns cannot collapse in the way a rational endpoint would require.
+
+The multiplicative order of the base modulo a reduced finite-sum denominator is the support lcm, forcing denominator growth.
+
+**Authority and reach.** Lean kernel; Comparator-selected; locally proved result; novelty unassessed.
+
+**Exact boundary.** A finite-support denominator theorem does not settle an infinite-support sum.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+<a id="known-irrational-supports"></a>
+
+## Known irrational supports
+
+**Reader position.** 17 of 71; display band: major result. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** Several broad support classes already give irrational Mersenne subseries unconditionally.
+
+Full, factorial, power-of-two, multiple, eventually periodic, residue-class, and odd supports are formalised; pairwise-coprime support is split out as a dedicated non-dilation representative.
+
+**Authority and reach.** Lean kernel; Comparator-selected for full and pairwise-coprime support; Lean formalisation of existing results.
+
+**Exact boundary.** Structured known families do not cover arbitrary infinite supports.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+<a id="periodic-nonnegative-weight-irrationality"></a>
+
+## Periodic nonnegative weight irrationality
+
+**Reader position.** 19 of 71; display band: major result. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** Every nontrivial periodic nonnegative Mersenne weighting in the stated class is irrational.
+
+An eventually-periodic nonnegative rational coefficient sequence with a positive value in its periodic region has an irrational Lambert–Mersenne series; denominator clearing reduces the rational sequence to a periodic Nat-weight certificate.
+
+**Authority and reach.** Lean kernel; Comparator-selected; formalised here; novelty unassessed.
+
+**Exact boundary.** This does not claim the broader mixed-sign periodic theorem; all coefficient, positivity, base, period, and threshold hypotheses remain explicit.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+<a id="boolean-mobius-exact-row-dynamics"></a>
+
+## Boolean mobius exact row dynamics
+
+**Reader position.** 31 of 71; display band: mechanism. Formal editorial disposition: split. These are separate classifications.
+
+**Reader entry.** Exact Boolean Möbius rows provide both a construction mechanism and a distinct conditional 1/2-membership consumer.
+
+If CofinalPositiveHalfGreedySkips holds—cofinally many positive rational-greedy remainders below the next Mersenne weight—the skipped-core and upper-half Boolean-word construction supplies cofinally many exact local half rows, yielding (1 / 2 : $`\mathbb{R}`$) $`\in`$ mersenneAchievementSet. The load-bearing representative is half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips; exact-row construction, endpoint-defect transition, forced rank-two membership, and Boolean-word filling are subordinate mechanisms.
+
+**Authority and reach.** Lean kernel; conditional reduction; novelty unassessed.
+
+**Exact boundary.** CofinalPositiveHalfGreedySkips is an unproved global supply premise: for every N there must be c $`\ge`$ max N 4 with a positive greedy remainder below mersenneWeightRat c. Finite exact rows, including one produced by a skipped core, do not establish cofinality. This is a conditional 1/2-membership/counterexample route, not an unconditional Erdős \#257 solution; the rank-two, endpoint-defect, and upper-half Boolean-word declarations remain subordinate evidence, and no novelty, priority, significance, or external-review claim is made.
+
+**Result-atom population.** 8 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+- `Erdos249257.CofinalPositiveHalfGreedySkips`
+
+- `Erdos249257.exactLocalMersenneHalfRow_of_positiveHalfGreedySkip`
+
+- `Erdos249257.cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips`
+
+- `Erdos249257.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips`
+
+- `Erdos249257.two_mem_of_exact_localMersenneQuotient`
+
+- `Erdos249257.localEndpointDefect_succ`
+
+- `Erdos249257.exists_upperHalfBooleanWord_of_skippedCore`
+
+<a id="shifted-odd-tail-state"></a>
+
+## Shifted odd tail state
+
+**Reader position.** 33 of 71; display band: mechanism. Formal editorial disposition: merge. These are separate classifications.
+
+**Reader entry.** A shifted odd-tail state gives an exact local coordinate for whether the greedy 1/2 construction survives.
+
+A rational support fraction produces a positive natural shifted tail state satisfying the exact binary recurrence and modular doubling orbit modulo v.
+
+**Authority and reach.** Lean kernel; Comparator-selected; conditional reduction.
+
+**Exact boundary.** The state-extraction theorem does not exclude rational infinite supports or settle universal Erdős \#257; the support and rational-value hypotheses remain explicit.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+<a id="composite-dilation-defect-identity"></a>
+
+## Composite dilation defect identity
+
+**Reader position.** 35 of 71; display band: mechanism. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** Composite dilation differs from prime dilation by an explicit arithmetic defect.
+
+The composite support-dilation identity splits the new divisor count into the old coefficient, the distinguished divisor, and an exact finite defect; its bouquet specialization supplies a separate structural budget.
+
+**Authority and reach.** Lean kernel; Comparator-selected; unconditional progress.
+
+**Exact boundary.** The exact defect is not bounded for arbitrary supports and supplies no tail selector or irrationality theorem; the bouquet budget remains conditional on its structural hypotheses.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+<a id="pairwise-coprime-support"></a>
+
+## Pairwise coprime support
+
+**Reader position.** 37 of 71; display band: mechanism. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** Pairwise coprimality is exactly what makes every support element a valid localized dilation parameter.
+
+Infinite pairwise-coprime supports with summable reciprocal mass have irrational Mersenne support series by an adaptive CRT and weighted coefficient certificate argument.
+
+**Authority and reach.** Lean kernel; Comparator-selected; formalisation of an existing theorem.
+
+**Exact boundary.** This structured support theorem does not settle arbitrary infinite supports; its infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** represented by selected interface; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+<a id="restricted-achievement-sets"></a>
+
+## Restricted achievement sets
+
+**Reader position.** 39 of 71; display band: mechanism. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** Restricting the support preserves unique coding and gives a sharp zero-versus-finite-complement measure law.
+
+Support-restricted coding is injective and the associated achievement set has exact finite-complement measure or zero for infinite complement.
+
+**Authority and reach.** Lean kernel; Comparator-selected; locally proved result; novelty unassessed.
+
+**Exact boundary.** The measure dichotomy does not classify rational points.
+
+**Result-atom population.** 5 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family is also admitted to the short note.
+
+<a id="boolean-mobius-carry"></a>
+
+## Boolean mobius carry
+
+**Reader position.** 54 of 71; display band: frontier. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** The Boolean Möbius carry turns a hypothetical rational subseries into an exact arithmetic orbit with one unresolved global obstruction.
+
+For p : $`\mathbb{Z}`$ and q \> 0, a nonempty normalized positive-index support with erdosSupportSeries 2 A = p/q exists exactly when a quotient-only Boolean–Möbius carry certificate U exists. The certificate has U 0 = p, positive U, the square-root bound U(N) $`\le`$ q(2$`\surd`$N + 4), q-divisible carry differences, and a Boolean Möbius transform; the converse reconstructs the support from that transform. This quotient-level equivalence is distinct from the shifted natural-tail state family.
+
+**Authority and reach.** Lean kernel; Comparator-selected; locally proved exact equivalence plus conditional consequences; novelty unassessed.
+
+**Exact boundary.** The equivalence is stated at the existence level with q \> 0, 0 $`\notin`$ A, and a positive support witness; it gives no contradiction, no universal Erdős \#257 irrationality result, and no producer of cofinally nonintegral shifts for the actual recurrence. The generic tempered-orbit theorem and the reciprocal-mass, unbounded-tail, and zero-window results are subordinate consequences, not separate families; the zero-window constant depends on the support and numerator and is not uniform. This does not settle every infinite support, and no novelty, priority, significance, external-review, or unrestricted \#257 endpoint claim is made.
+
+**Result-atom population.** 5 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+- `Erdos249257.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry`
+
+- `Erdos249257.BooleanMobiusCarryCertificate`
+
+- `Erdos249257.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit`
+
+- `Erdos249257.one_div_oddOrder_le_reciprocalMass_of_support_fraction`
+
+- `Erdos249257.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction`
+
+- `Erdos249257.supportCoeffZeroWindow_length_le_eps_logb_add`
+
+<a id="half-membership-seam-classification"></a>
+
+## Half membership seam classification
+
+**Reader position.** 58 of 71; display band: frontier. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** Every local way the greedy 1/2 orbit can survive or fail is classified into explicit seam types.
+
+Membership of 1/2 in the Mersenne achievement set is exactly equivalent to unbounded false successor terminal bits, the unbounded upper-or-middle seam branch, cofinal terminal-false positions, unbounded skipped ranks along the integer seam, infinite greedy skipped support, and the absence of a last half-greedy skip. The load-bearing representative is half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse; the remaining equivalences are subordinate endpoint-socket evidence.
+
+**Authority and reach.** Lean kernel; Comparator-selected; locally proved exact endpoint classification; novelty unassessed.
+
+**Exact boundary.** This exact endpoint-socket classification does not supply any unbounded terminal-false or upper-or-middle occurrences, cofinal supply, skipped-support producer, or half-membership witness; finite exact rows do not establish the required global supply. It is not an unconditional or universal Erdős \#257 result, and no novelty, priority, significance, or external-review claim is made.
+
+**Result-atom population.** 11 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+- `Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse`
+
+- `Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedUpperOrMiddle`
+
+- `Erdos249257.unboundedTerminalFalse_iff_not_seamGreedyEventuallyRight`
+
+- `Erdos249257.cofinalTerminalFalse_of_unboundedTerminalFalse`
+
+- `Erdos249257.unboundedTerminalFalse_of_cofinalTerminalFalse`
+
+- `Erdos249257.unboundedTerminalFalse_iff_cofinalTerminalFalse`
+
+- `Erdos249257.half_mem_mersenneAchievementSet_iff_cofinalTerminalFalse`
+
+- `Erdos249257.half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong`
+
+- `Erdos249257.unboundedTerminalFalse_iff_greedyMersenneSkippedSupport_infinite`
+
+- `Erdos249257.half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip`
+
+<a id="orthogonal-petal-sunflower-reduction"></a>
+
+## Orthogonal petal sunflower reduction
+
+**Reader position.** 59 of 71; display band: frontier. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** Orthogonal-petal supports would be irrational once one exact uniform tail-selection predicate is proved.
+
+A finite-core orthogonal-petal bouquet together with the exact uniform tail-selection predicate composes through the forced-carry certificate consumer to irrationality; the explicit alternating-core, squared-prime-petal witness shows the structural class is non-vacuous, but the selector remains open.
+
+**Authority and reach.** Lean kernel; Comparator-selected plus paper argument; conditional reduction.
+
+**Exact boundary.** The bouquet and selector hypotheses remain explicit; the selector is not proved, so this is not an unconditional \#257 support family.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+<a id="achievement-set-geometry"></a>
+
+## Achievement set geometry
+
+**Reader position.** 66 of 71; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** The unrestricted achievement set is compact, perfect, totally disconnected, nowhere dense, and of full measure.
+
+Compactness, perfectness, total disconnectedness, nowhere density, and measure one for the unrestricted achievement set.
+
+**Authority and reach.** Lean kernel; Comparator-selected; mixed prior-art geometry and locally proved metric result; novelty unassessed.
+
+**Exact boundary.** Geometry of the full set does not decide irrationality of every coded point.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** exact selected interface; 1 executable interface(s), 1 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
+<a id="squarefree-support"></a>
+
+## Squarefree support
+
+**Reader position.** 67 of 71; display band: technical support. Formal editorial disposition: hold. These are separate classifications.
+
+**Reader entry.** Squarefree support has exact formal incidence structure, but its irrationality conclusion still rests on an external analytic input.
+
+Lean checks squarefree incidence and no-go statements; the irrationality conclusion uses an external analytic theorem in the paper.
+
+**Authority and reach.** Lean kernel plus paper argument plus cited theorem; Lean structure plus paper and external theorem.
+
+**Exact boundary.** Comparator must not badge the paper-plus-external conclusion.
+
+**Result-atom population.** 1 of 682 public coordinates. The public atom catalog groups them under this family.
+
+**Comparator assurance.** not applicable to comparator; 0 executable interface(s), 0 repository-registered selected result interface(s).
+
+**Publication placement.** This family remains in the complete long record and is not a short-note headline.
+
 <a id="what-is-open-stated-exactly"></a>
 
 # What is open, stated exactly
 
-Erdős \#257 asks whether $`\sum_{n\in A}1/(2^n-1)`$ is irrational for *every* infinite $`A\subseteq\mathbb{N}_{\ge 1}`$. Nothing in this paper decides this, in either the universal form or the single-target half-value form below. Every corpus result surveyed in Parts I–IV is either a fixed/bounded-scale instance, a coordinate reduction, or a producer socket still lacking its supply. This section states the exact open targets, in display mathematics, with their Lean sites where formalised and their precise logical relationships to one another. **Read the implication table in §<a href="#sec:v-table" data-reference-type="ref" data-reference="sec:v-table">12.8</a> before attacking any single target below**: several apparent waypoints are *equivalent* to the full problem, not easier approaches to it.
+Erdős \#257 asks whether $`\sum_{n\in A}1/(2^n-1)`$ is irrational for *every* infinite $`A\subseteq\mathbb{N}_{\ge 1}`$. Nothing in this paper decides this, in either the universal form or the single-target half-value form below. Every corpus result surveyed in Parts I–IV is either a fixed/bounded-scale instance, a coordinate reduction, or a producer socket still lacking its supply. This section states the exact open targets, in display mathematics, with their Lean sites where formalised and their precise logical relationships to one another. **Read the implication table in §<a href="#sec:v-table" data-reference-type="ref" data-reference="sec:v-table">13.8</a> before attacking any single target below**: several apparent waypoints are *equivalent* to the full problem, not easier approaches to it.
 
 <a id="notation-fixed-for-this-section"></a>
 
@@ -3800,7 +4154,7 @@ $`(\ast\ast)`$ is exactly one bit sharper and, via (an unconditional iff), is *e
 \text{(O3-supply)}\qquad \forall N\ \exists c\ge N,\ \mathtt{localBinarySuffix}\ D\ 1\ (2c-2)\ \notin\
 \big[\,2^{c-2},\,2^{c-2}+c-3\,\big]
 ```
-— a band of width $`c-2`$ inside a range of size $`2^{c-2}`$, exponentially weaker than the reset $`\sqrt{\text{-escape}}`$ target of §<a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a> (band width $`c`$ vs. width $`2^{(c+5)/2}`$).
+— a band of width $`c-2`$ inside a range of size $`2^{c-2}`$, exponentially weaker than the reset $`\sqrt{\text{-escape}}`$ target of §<a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">13.5</a> (band width $`c`$ vs. width $`2^{(c+5)/2}`$).
 
 The generic (non-greedy) sharp-fill theorem itself is already unconditional and strictly more general than every consumer built on it: (<span class="sans-serif">\[Lean\]</span>) needs only $`(\ast\ast)`$ for *some* below-half core $`D`$, not a greedy prefix — this is the escape route named in Prop. <a href="#prop:cpgs-equiv" data-reference-type="ref" data-reference="prop:cpgs-equiv">275</a>’s remark: abandoning the canonical greedy orbit (which forces $`\mathrm{CPGS}`$-equivalence) for an arbitrary below-half core is a genuinely different, still-open target.
 

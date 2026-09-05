@@ -68,45 +68,63 @@ def main() -> int:
         run_git(root, "init", "--quiet")
         run_git(root, "config", "user.name", "Coordinate Test")
         run_git(root, "config", "user.email", "coordinate-test@example.invalid")
-        source = root / "Erdos249257" / "Sample.lean"
-        source.parent.mkdir(parents=True)
-        source.write_text(
+        reviewed_source = root / "Erdos249257" / "Sample.lean"
+        problem_source = root / "ErdosProblems" / "Erdos68" / "Sample.lean"
+        reviewed_source.parent.mkdir(parents=True)
+        problem_source.parent.mkdir(parents=True)
+        source_text = (
             "namespace Sample\n\n"
             "/-- The declaration under test. -/\n"
             "theorem pinnedDeclaration : True := by trivial\n\n"
-            "end Sample\n",
-            encoding="utf-8",
+            "end Sample\n"
         )
+        reviewed_source.write_text(source_text, encoding="utf-8")
+        problem_source.write_text(source_text, encoding="utf-8")
+        run_git(root, "add", "Erdos249257/Sample.lean", "ErdosProblems/Erdos68/Sample.lean")
+        run_git(root, "commit", "--quiet", "-m", "first pin")
+        first_pin = run_git(root, "rev-parse", "HEAD")
+        reviewed_source.write_text("\n" + source_text, encoding="utf-8")
         run_git(root, "add", "Erdos249257/Sample.lean")
-        run_git(root, "commit", "--quiet", "-m", "pin source")
-        pin = run_git(root, "rev-parse", "HEAD")
+        run_git(root, "commit", "--quiet", "-m", "second pin")
+        second_pin = run_git(root, "rev-parse", "HEAD")
 
         parts_dirs = tuple(
             root / "paper" / "reasoning-parts" / problem
-            for problem in ("erdos249", "erdos257")
+            for problem in ("erdos68", "erdos249")
         )
-        for directory in parts_dirs:
+        for directory, command, pin in (
+            (parts_dirs[0], "renewcommand", first_pin),
+            (parts_dirs[1], "newcommand", second_pin),
+        ):
             directory.mkdir(parents=True)
             (directory / "preamble.tex").write_text(
-                rf"\newcommand{{\commit}}{{{pin}}}" + "\n",
-                encoding="utf-8",
+                rf"\{command}{{\commit}}{{{pin}}}" + "\n", encoding="utf-8"
             )
-        named = parts_dirs[0] / "part.tex"
+        note_named = root / "paper" / "shared-note.tex"
+        note_named.write_text(
+            rf"\renewcommand{{\commit}}{{{first_pin}}}" + "\n"
+            + r"\lref{Erdos68/Sample.lean}{1}{pinnedDeclaration}" + "\n",
+            encoding="utf-8",
+        )
+        named = parts_dirs[1] / "part.tex"
         named.write_text(
             r"\lean{Sample.pinnedDeclaration}{Sample.lean:1}" + "\n",
             encoding="utf-8",
         )
-        locations = parts_dirs[1] / "part.tex"
+        locations = parts_dirs[1] / "locations.tex"
         locations.write_text(
             r"\lean{}{Sample.lean:3} "
-            r"\lean{Sample.lean}{Sample.lean:1-4}" + "\n",
+            r"\lean{Sample.lean}{Sample.lean:1-5}" + "\n",
             encoding="utf-8",
         )
 
         original_root = coordinates.ROOT
-        original_parts_dirs = coordinates.PARTS_DIRS
+        original_papers = coordinates.assembler.PAPERS
         coordinates.ROOT = root
-        coordinates.PARTS_DIRS = parts_dirs
+        coordinates.assembler.PAPERS = {
+            "68": {"directory": parts_dirs[0], "note_source": note_named},
+            "249": {"directory": parts_dirs[1]},
+        }
         try:
             hostile_environment = {
                 "GIT_DIR": "/private/wrong-git-dir",
@@ -120,19 +138,26 @@ def main() -> int:
                 "run",
                 wraps=original_subprocess_run,
             ) as run_child:
-                rendered, declarations, authored_locations, resolved_pin = coordinates.render_all()
+                rendered, declarations, authored_locations, resolved_pins = coordinates.render_all()
             batch_calls = [
                 call
                 for call in run_child.call_args_list
                 if call.args and call.args[0] == ["git", "cat-file", "--batch"]
             ]
-            require(len(batch_calls) == 1, "pinned sources were not fetched in one Git batch")
-            require(resolved_pin == pin, "pinned source commit drifted")
-            require(declarations == 1, "unexpected declaration count")
+            require(len(batch_calls) == 2, "each distinct pin did not use one Git batch")
+            require(
+                resolved_pins == (first_pin, second_pin),
+                "per-paper source pins drifted",
+            )
+            require(declarations == 2, "unexpected declaration count")
             require(authored_locations == 2, "unexpected authored location count")
             require(
-                r"{Sample.lean:4}" in rendered[named],
+                r"{Sample.lean:5}" in rendered[named],
                 "named declaration coordinate was not refreshed",
+            )
+            require(
+                r"{Erdos68/Sample.lean}{4}{pinnedDeclaration}" in rendered[note_named],
+                "problem-note declaration coordinate was not refreshed",
             )
             require(
                 rendered[locations] == locations.read_text(encoding="utf-8"),
@@ -173,11 +198,12 @@ def main() -> int:
                 raise AssertionError("missing declaration citation was accepted")
         finally:
             coordinates.ROOT = original_root
-            coordinates.PARTS_DIRS = original_parts_dirs
+            coordinates.assembler.PAPERS = original_papers
 
     print(
         "test_reasoning_source_coordinates: stale declarations refresh to the pinned "
-        "line, authored locations survive, and missing declarations fail"
+        "line at each paper pin, problem-note links are covered, authored locations "
+        "survive, and missing declarations fail"
     )
     return 0
 

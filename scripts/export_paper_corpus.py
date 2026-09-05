@@ -145,7 +145,7 @@ class Paper:
         return self.relation_to_this_repository == "native"
 
 
-def papers_for_exported_corpus() -> tuple[Paper, ...]:
+def papers_for_exported_corpus(*, check_source_coverage: bool = True) -> tuple[Paper, ...]:
     """Load and validate the authored public paper inventory."""
     payload = json.loads(REGISTRY.read_text(encoding="utf-8"))
     if payload.get("schema") != REGISTRY_SCHEMA:
@@ -198,13 +198,30 @@ def papers_for_exported_corpus() -> tuple[Paper, ...]:
         str(path.relative_to(ROOT)) for path in (ROOT / "paper").glob("*.tex")
     }
     covered = registered_native_sources | set(support_sources)
-    if discovered != covered:
+    if check_source_coverage and discovered != covered:
         raise ValueError(
             "paper registry does not cover local paper/*.tex inputs: "
             f"missing={sorted(discovered - covered)}, "
             f"stale={sorted(covered - discovered)}"
         )
     return tuple(papers)
+
+
+def native_build_targets(form: str | None = None) -> tuple[str, ...]:
+    """Derive safe Make targets from the paper owner before source assembly."""
+    targets = []
+    for paper in papers_for_exported_corpus(check_source_coverage=False):
+        if not paper.is_native or (form is not None and paper.form != form):
+            continue
+        stem = paper.stem
+        if (re.fullmatch(r"[a-z0-9][a-z0-9-]*", stem) is None
+                or paper.source != f"paper/{stem}.tex"
+                or paper.pdf != f"{stem}.pdf"):
+            raise ValueError(f"{paper.paper_id}: native paper has an unsafe or mismatched build target")
+        targets.append(stem)
+    if len(targets) != len(set(targets)):
+        raise ValueError("native paper build targets are duplicated")
+    return tuple(targets)
 
 
 def _canonical_url(paper: Paper, *, raw: bool = False) -> str:
@@ -1480,13 +1497,26 @@ def main(argv: list[str] | None = None) -> int:
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--write", action="store_true", help="write the corpus into each repository")
     mode.add_argument("--check", action="store_true", help="report drift, write nothing, exit 1 if stale")
+    mode.add_argument("--native-targets", action="store_true", help="print registry-owned native Make targets without Pandoc")
     parser.add_argument(
         "--pandoc",
         metavar="ABSOLUTE_PATH",
         help="use this absolute Pandoc executable instead of trusted install paths",
     )
     parser.add_argument("--json", action="store_true", help="emit the report as JSON")
+    parser.add_argument("--form", help="with --native-targets, select one registry paper form")
     args = parser.parse_args(argv)
+
+    if args.native_targets:
+        try:
+            print(" ".join(native_build_targets(args.form)))
+        except (ValueError, OSError) as error:
+            print(str(error), file=sys.stderr)
+            return 2
+        return 0
+
+    if args.form is not None:
+        parser.error("--form is only valid with --native-targets")
 
     try:
         pandoc = resolve_pandoc(args.pandoc)

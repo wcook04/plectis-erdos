@@ -31,25 +31,19 @@ The universal problem remains open in the reciprocal-divergent regime;
 some supports in that regime, including full support, are already known to
 give irrational series. Novelty and priority of this result are unassessed.
 
-The rest of the corpus includes exact reductions, finite denominator
-exclusions, and counterexamples to proposed proof mechanisms. Each is useful
-for a different reason; the [result guide](docs/RESULTS.md) keeps their
-conclusions and remaining obligations separate.
+The [result guide](docs/RESULTS.md) separates other exact reductions,
+denominator exclusions, counterexamples, and open obligations.
 
 ![System map: pipeline, problem-sized Lean worlds, public artifacts, and the clone-work-return-credit loop](.github/system-map.png)
 
-If you solve one, the result and credit are yours. If this repository or
-Plectis materially helped, cite the release and say so. If useful, star or share
-the repository so another researcher finds it.
-The contribution record keeps solvers, collaborators, prior work, tools, and
-infrastructure distinct.
+If you solve one, the result and credit are yours. If Plectis materially helped,
+cite the release. The contribution record distinguishes mathematical credit,
+prior work, tools, and infrastructure.
 
-Start with [A reader's way in](HUMAN_ENTRY.md), a command-free tour of the
-problems and evidence boundary.
+Start with [A reader's way in](HUMAN_ENTRY.md), the human tour.
 
-Choose a checkout. Apply one of the three sparse manifests to the same
-no-checkout clone.
-The proof build needs `elan`; install it from the
+Choose a checkout. Apply one sparse manifest to the no-checkout clone. Proof
+builds need `elan`; see the
 [Lean setup guide](https://leanprover-community.github.io/get_started.html).
 
 ```bash
@@ -75,22 +69,18 @@ cd plectis-erdos
 python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.PeriodMultipleEscape
 ```
 
-The verifier links a claim to its declaration, paper, receipts, and stopping
-point; `--verify-all` checks them all.
-[REPRODUCIBILITY](docs/REPRODUCIBILITY.md) gives the smaller reader checkout,
-the 43-module quick Lean checkout, the complete proof source, and the full
-release replay. The [architecture and repository guide](ARCHITECTURE.md) and
-its [printable PDF](claim-faithful-publication-systems-paper.pdf) assume no Lean
-or project history.
+The verifier links claims to declarations, papers, receipts, and stopping
+points; `--verify-all` checks every claim.
+[REPRODUCIBILITY](docs/REPRODUCIBILITY.md) covers reader, quick-Lean,
+full-source, and release checkouts. The [architecture guide](ARCHITECTURE.md)
+and its [PDF](claim-faithful-publication-systems-paper.pdf) require no Lean or
+project history.
 
-Cloning runs no project code and the repository defines no submodules, Git LFS
-filters, or hooks. The verifier runs tracked Python; proof builds run the pinned
-Lean toolchain and Mathlib. [SECURITY](SECURITY.md) explains the boundary and
-private reporting route.
+Cloning runs no project code and defines no submodules, Git LFS filters, or
+hooks. Verification uses tracked Python; proof builds use pinned Lean and
+Mathlib. [SECURITY](SECURITY.md) covers the boundary and private reporting.
 
 ## What is here
-
-One paper per problem, each pairing checked progress with its open obligation.
 
 ## Problem papers
 
@@ -132,7 +122,7 @@ irrationality result, and the primitive construction remains open.
 
 Comparator compares proof-bearing modules against separately declared
 statements and a fixed axiom budget; an altered statement must be rejected.
-The portfolio is derived from registered packages rather than a frozen count.
+The portfolio is derived from registered packages.
 Configuration is not execution: only a green receipt for an exact commit
 licenses the description **Comparator-checked**.
 [`formalization.yaml`](formalization.yaml) records each selected result's source,
@@ -178,15 +168,11 @@ An agent arriving cold starts at [`AGENTS.override.md`](AGENTS.override.md).
 [The Agent Workbench](docs/AGENT_WORKBENCH.md) keeps machine routing and kernel
 probes out of the human reading path; only kernel receipts assert.
 
-The repository began with #249 and #257; historical module names and citation
-anchors remain usable in the broader Plectis corpus.
-The [joint #249/#257 manuscript](erdos249-257-main-paper.pdf) and the
-two claim-bounded reasoning surfaces
-([#249](erdos249-totient-reasoning-surface.pdf),
-[#257](erdos257-mersenne-reasoning-surface.pdf)) are kept
-for archive and provenance, not as a reading route; the per-problem papers are
-the live route.
-The [agent-navigation paper](cold-clone-to-proof-receipt.pdf) audits that route.
+Historical #249/#257 module names and the
+[joint manuscript](erdos249-257-main-paper.pdf) remain for archive and provenance.
+The eight per-problem papers and complete reasoning records are the
+live reading route; the
+[agent-navigation paper](cold-clone-to-proof-receipt.pdf) audits it.
 
 ## Citation and licence
 

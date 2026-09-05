@@ -6,6 +6,9 @@
 from __future__ import annotations
 
 import os
+import contextlib
+import io
+from dataclasses import replace
 from pathlib import Path
 from unittest.mock import patch
 
@@ -18,6 +21,31 @@ def require(condition: bool, message: str) -> None:
 
 
 def main() -> int:
+    papers = exporter.papers_for_exported_corpus(check_source_coverage=False)
+    native = next(paper for paper in papers if paper.is_native)
+    with patch.object(exporter, "resolve_pandoc", side_effect=AssertionError("unexpected Pandoc lookup")), contextlib.redirect_stdout(io.StringIO()) as output:
+        require(exporter.main(["--native-targets"]) == 0, "native target route failed")
+    require(native.stem in output.getvalue().split(), "native target omitted")
+    require(
+        set(exporter.native_build_targets("Problem note"))
+        == {paper.stem for paper in papers if paper.is_native and paper.form == "Problem note"},
+        "note prerequisites must derive from the same registry form",
+    )
+    for unsafe in (replace(native, pdf="bad;command.pdf"), replace(native, source="paper/other.tex")):
+        with patch.object(exporter, "papers_for_exported_corpus", return_value=(unsafe,)):
+            try:
+                exporter.native_build_targets()
+            except ValueError:
+                pass
+            else:
+                raise AssertionError("unsafe or mismatched Make target accepted")
+    with patch.object(exporter, "papers_for_exported_corpus", return_value=(native, native)):
+        try:
+            exporter.native_build_targets()
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("duplicate Make targets accepted")
     with patch.dict(os.environ, {"PATH": "/untrusted/ambient/bin"}, clear=False):
         pandoc = exporter.resolve_pandoc()
     require(pandoc is not None, "installed Pandoc was not found through trusted paths")

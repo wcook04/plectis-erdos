@@ -104,6 +104,11 @@ BUILDERS = (
     # This builder writes paper census macros; export must see those bytes.
     # It reads the authored problem registry, not the paper-derived index.
     "scripts/build_semantic_corpus.py",
+    # Family/atom paper joins consume the source-current Comparator portfolio.
+    # Assembly then incorporates both authored parts and generated catalogues.
+    "scripts/build_comparator_replay_portfolio.py",
+    "scripts/build_paper_result_integration.py",
+    "scripts/assemble_reasoning_surfaces.py",
     # The public paper registry and exporter own every clone-local manuscript
     # projection. Run them before the problem index, which joins against the
     # generated paper corpus.
@@ -113,7 +118,6 @@ BUILDERS = (
     "scripts/build_problem_index.py",
     "scripts/build_theory_lab.py",
     # External-verification projections consume the registry-derived portfolio.
-    "scripts/build_comparator_replay_portfolio.py",
     "scripts/build_external_verification.py",
     "docs/papers/build_publication_taxonomy.py",
     # The corpus descriptor reads paper/module-aliases.json, so the alias
@@ -139,6 +143,8 @@ WRITE_FLAGS: dict[str, tuple[str, ...]] = {
     "scripts/build_checked_diagonal_depth_roster.py": ("--write",),
     "scripts/refresh_reasoning_source_coordinates.py": ("--write",),
     "scripts/export_paper_corpus.py": ("--write",),
+    "scripts/build_paper_result_integration.py": ("--write",),
+    "scripts/assemble_reasoning_surfaces.py": ("--write",),
 }
 
 # Regeneration needs Pandoc, while the public lightweight checker validates the

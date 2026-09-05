@@ -29,9 +29,15 @@
     "claim-faithful-publication-systems",
     "cold-clone-to-proof-receipt",
     "open-source-mathematics-strategy",
-    "plectis-public-system"
+    "plectis-public-system",
+    "erdos68-factorial-reasoning-surface",
+    "erdos243-reciprocal-tail-reasoning-surface",
+    "erdos251-prime-gap-reasoning-surface",
+    "erdos269-running-lcm-reasoning-surface",
+    "erdos1041-lemniscate-reasoning-surface",
+    "erdos1049-rational-base-lambert-reasoning-surface"
   ],
-  "paper_count": 15,
+  "paper_count": 21,
   "publication_taxonomy": {
     "generated_by": "docs/papers/build_publication_taxonomy.py",
     "what_these_fields_are": "How each manuscript was published: what kind of document it is, whether anyone outside this project reviewed it, and how to cite it.",
@@ -54,13 +60,13 @@
     },
     "by_publication_class": {
       "problem_paper": 9,
-      "reasoning_surface": 2,
+      "reasoning_surface": 8,
       "methods_paper": 3,
       "software_paper": 1
     },
     "by_manuscript_status": {
       "technical_report": 12,
-      "working_research_record": 2,
+      "working_research_record": 8,
       "retired_provenance": 1
     },
     "peer_review": {
@@ -1876,12 +1882,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:82e29979a372d3d0727d0769cd5d5830f251d704ad85d9d361e34fa79bcc9339",
+      "source_sha256": "sha256:eaeaead2650786b4701f5a6a3244eb3ee5a45ed773929c06a0d0413f97f1b1e8",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos249-totient-reasoning-surface.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/erdos249-totient-reasoning-surface.tex",
-      "section_count": 149,
+      "section_count": 169,
       "sections": [
         {
           "level": 1,
@@ -2611,177 +2617,297 @@
         },
         {
           "level": 1,
+          "id": "sec:erdos-249-complete-family-map",
+          "title": "Complete result-family map",
+          "line": 4524
+        },
+        {
+          "level": 2,
+          "id": "strict-prime-tail-orbit-gap",
+          "title": "Strict prime tail orbit gap",
+          "line": 4530
+        },
+        {
+          "level": 2,
+          "id": "totient-certificate-equivalences",
+          "title": "Totient certificate equivalences",
+          "line": 4590
+        },
+        {
+          "level": 2,
+          "id": "totient-carry-anti-compression",
+          "title": "Totient carry anti compression",
+          "line": 4616
+        },
+        {
+          "level": 2,
+          "id": "fixed-precision-transport-no-go",
+          "title": "Fixed precision transport no go",
+          "line": 4646
+        },
+        {
+          "level": 2,
+          "id": "lcm-factor-ideal-shift-algebra-no-go",
+          "title": "Lcm factor ideal shift algebra no go",
+          "line": 4672
+        },
+        {
+          "level": 2,
+          "id": "totient-kernel-rank",
+          "title": "Totient kernel rank",
+          "line": 4692
+        },
+        {
+          "level": 2,
+          "id": "actual-foreign-residue-projection-1",
+          "title": "Actual foreign residue projection",
+          "line": 4712
+        },
+        {
+          "level": 2,
+          "id": "totient-kernel-basis",
+          "title": "Totient kernel basis",
+          "line": 4738
+        },
+        {
+          "level": 2,
+          "id": "totient-kernel-all-base-index",
+          "title": "Totient kernel all base index",
+          "line": 4758
+        },
+        {
+          "level": 2,
+          "id": "stern-brocot-run-fibonacci-stability",
+          "title": "Stern brocot run fibonacci stability",
+          "line": 4778
+        },
+        {
+          "level": 2,
+          "id": "stern-brocot-cylinder-law",
+          "title": "Stern brocot cylinder law",
+          "line": 4798
+        },
+        {
+          "level": 2,
+          "id": "eventually-periodic-lambert",
+          "title": "Eventually periodic lambert",
+          "line": 4818
+        },
+        {
+          "level": 2,
+          "id": "totient-lambert-coefficients",
+          "title": "Totient lambert coefficients",
+          "line": 4840
+        },
+        {
+          "level": 2,
+          "id": "actual-lcm-orbit-separation",
+          "title": "Actual lcm orbit separation",
+          "line": 4864
+        },
+        {
+          "level": 2,
+          "id": "first-harmonic-pivot-decomposition",
+          "title": "First harmonic pivot decomposition",
+          "line": 4896
+        },
+        {
+          "level": 2,
+          "id": "totient-visible-coprime-lattice-mass",
+          "title": "Totient visible coprime lattice mass",
+          "line": 4934
+        },
+        {
+          "level": 2,
+          "id": "squared-lambert-gcd-moments",
+          "title": "Squared lambert gcd moments",
+          "line": 4954
+        },
+        {
+          "level": 2,
+          "id": "totient-finite-denominator-exclusion",
+          "title": "Totient finite denominator exclusion",
+          "line": 4974
+        },
+        {
+          "level": 2,
+          "id": "totient-carry-rank",
+          "title": "Totient carry rank",
+          "line": 4994
+        },
+        {
+          "level": 1,
           "id": "what-is-open-stated-exactly",
           "title": "What is open, stated exactly",
-          "line": 4524
+          "line": 5014
         },
         {
           "level": 2,
           "id": "the-certificate-completeness-converter",
           "title": "The certificate-completeness converter",
-          "line": 4543
+          "line": 5033
         },
         {
           "level": 2,
           "id": "the-base-cofinal-obligation-the-wall",
           "title": "The base cofinal obligation \u2014 the wall",
-          "line": 4557
+          "line": 5047
         },
         {
           "level": 2,
           "id": "collapsing-free-parameters-the-multiple-diagonal-cone-chain",
           "title": "Collapsing free parameters: the multiple / diagonal / cone chain",
-          "line": 4577
+          "line": 5067
         },
         {
           "level": 4,
           "id": "multiple-period-collapse-formally-looser-but-endpoint-equivalent.",
           "title": "Multiple-period collapse (formally looser, but endpoint-equivalent).",
-          "line": 4583
+          "line": 5073
         },
         {
           "level": 4,
           "id": "diagonal-collapse-one-free-parameter.",
           "title": "Diagonal collapse \u2014 one free parameter.",
-          "line": 4594
+          "line": 5084
         },
         {
           "level": 4,
           "id": "cone-collapse-two-multipliers-still-the-same-wall.",
           "title": "Cone collapse \u2014 two multipliers, still the same wall.",
-          "line": 4609
+          "line": 5099
         },
         {
           "level": 4,
           "id": "pure-non-integrality-form-certificate-vocabulary-stripped-out.",
           "title": "Pure non-integrality form \u2014 certificate vocabulary stripped out.",
-          "line": 4622
+          "line": 5112
         },
         {
           "level": 2,
           "id": "the-exponential-sum-form",
           "title": "The exponential-sum form",
-          "line": 4634
+          "line": 5124
         },
         {
           "level": 2,
           "id": "the-actual-orbit-reformulation-and-the-top-edge-staircase",
           "title": "The actual-orbit reformulation and the top-edge staircase",
-          "line": 4657
+          "line": 5147
         },
         {
           "level": 4,
           "id": "route-pruning-total-staircase-collapse-is-impossible.",
           "title": "Route-pruning: total staircase collapse is impossible.",
-          "line": 4672
+          "line": 5162
         },
         {
           "level": 4,
           "id": "the-surviving-one-sided-target.",
           "title": "The surviving one-sided target.",
-          "line": 4684
+          "line": 5174
         },
         {
           "level": 4,
           "id": "five-strictly-weaker-links-each-independently-proved-sufficient.",
           "title": "Five strictly weaker links, each independently proved sufficient.",
-          "line": 4723
+          "line": 5213
         },
         {
           "level": 4,
           "id": "the-weakest-known-link-and-the-exact-identity-pinning-it.",
           "title": "The weakest known link, and the exact identity pinning it.",
-          "line": 4758
+          "line": 5248
         },
         {
           "level": 4,
           "id": "a-second-independent-finite-window-target-the-short-arithmetic-kill-supply.",
           "title": "A second, independent finite-window target: the short-arithmetic-kill supply.",
-          "line": 4779
+          "line": 5269
         },
         {
           "level": 4,
           "id": "a-diophantine-flavoured-alternative-the-raw-approximant-separation-supply.",
           "title": "A Diophantine-flavoured alternative: the raw-approximant separation supply.",
-          "line": 4795
+          "line": 5285
         },
         {
           "level": 2,
           "id": "a-problem-agnostic-normal-form-the-guard-cylinder-compression",
           "title": "A problem-agnostic normal form: the guard-cylinder compression",
-          "line": 4813
+          "line": 5303
         },
         {
           "level": 2,
           "id": "one-open-farey-problem-and-one-failed-rank-shortcut",
           "title": "One open Farey problem and one failed rank shortcut",
-          "line": 4826
+          "line": 5316
         },
         {
           "level": 4,
           "id": "a-counterfactual-rank-criterion.",
           "title": "A counterfactual rank criterion.",
-          "line": 4832
+          "line": 5322
         },
         {
           "level": 4,
           "id": "obligation-3-farey-growth-law.",
           "title": "Obligation 3 (Farey growth law).",
-          "line": 4855
+          "line": 5345
         },
         {
           "level": 2,
           "id": "equivalence-map",
           "title": "Equivalence map",
-          "line": 4870
+          "line": 5360
         },
         {
           "level": 2,
           "id": "what-new-mathematics-each-surviving-form-would-need",
           "title": "What new mathematics each surviving form would need",
-          "line": 4903
+          "line": 5393
         },
         {
           "level": 4,
           "id": "the-exponential-sum-form.",
           "title": "The exponential-sum form.",
-          "line": 4909
+          "line": 5399
         },
         {
           "level": 4,
           "id": "the-staircase-form.",
           "title": "The staircase form.",
-          "line": 4915
+          "line": 5405
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 4924
+          "line": 5414
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 4928
+          "line": 5418
         },
         {
           "level": 4,
           "id": "authority-boundary.",
           "title": "Authority boundary.",
-          "line": 4934
+          "line": 5424
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 4940
+          "line": 5430
         }
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:a4b5c7ed48bd1b860e5b8d517f7a87377fbc2af86837c49fcdcab86af20de5b9",
-      "pdf_byte_count": 727476,
+      "pdf_sha256": "sha256:74429b95dc99292e522ae0f12759142a6014019923db1b512c3145133912d2c9",
+      "pdf_byte_count": 762007,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3273,12 +3399,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:b683aa4410ff5068fcd7ad0a3bcd96121304447b35f6c37e24524a849eeb8ff9",
+      "source_sha256": "sha256:5beeab2fa79315d7c4e1c92a5f97a2c546ce65b2dd597eb59641f2797619b6e5",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos257-mersenne-reasoning-surface.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/erdos257-mersenne-reasoning-surface.tex",
-      "section_count": 138,
+      "section_count": 154,
       "sections": [
         {
           "level": 1,
@@ -4008,111 +4134,207 @@
         },
         {
           "level": 1,
+          "id": "sec:erdos-257-complete-family-map",
+          "title": "Complete result-family map",
+          "line": 3660
+        },
+        {
+          "level": 2,
+          "id": "reciprocal-summable-support",
+          "title": "Reciprocal summable support",
+          "line": 3666
+        },
+        {
+          "level": 2,
+          "id": "half-and-twenty-one-frontiers",
+          "title": "Half and twenty one frontiers",
+          "line": 3688
+        },
+        {
+          "level": 2,
+          "id": "finite-period-noncollapse",
+          "title": "Finite period noncollapse",
+          "line": 3708
+        },
+        {
+          "level": 2,
+          "id": "known-irrational-supports",
+          "title": "Known irrational supports",
+          "line": 3728
+        },
+        {
+          "level": 2,
+          "id": "periodic-nonnegative-weight-irrationality",
+          "title": "Periodic nonnegative weight irrationality",
+          "line": 3748
+        },
+        {
+          "level": 2,
+          "id": "boolean-mobius-exact-row-dynamics",
+          "title": "Boolean mobius exact row dynamics",
+          "line": 3768
+        },
+        {
+          "level": 2,
+          "id": "shifted-odd-tail-state",
+          "title": "Shifted odd tail state",
+          "line": 3802
+        },
+        {
+          "level": 2,
+          "id": "composite-dilation-defect-identity",
+          "title": "Composite dilation defect identity",
+          "line": 3822
+        },
+        {
+          "level": 2,
+          "id": "pairwise-coprime-support",
+          "title": "Pairwise coprime support",
+          "line": 3842
+        },
+        {
+          "level": 2,
+          "id": "restricted-achievement-sets",
+          "title": "Restricted achievement sets",
+          "line": 3862
+        },
+        {
+          "level": 2,
+          "id": "boolean-mobius-carry",
+          "title": "Boolean mobius carry",
+          "line": 3882
+        },
+        {
+          "level": 2,
+          "id": "half-membership-seam-classification",
+          "title": "Half membership seam classification",
+          "line": 3914
+        },
+        {
+          "level": 2,
+          "id": "orthogonal-petal-sunflower-reduction",
+          "title": "Orthogonal petal sunflower reduction",
+          "line": 3954
+        },
+        {
+          "level": 2,
+          "id": "achievement-set-geometry",
+          "title": "Achievement set geometry",
+          "line": 3974
+        },
+        {
+          "level": 2,
+          "id": "squarefree-support",
+          "title": "Squarefree support",
+          "line": 3994
+        },
+        {
+          "level": 1,
           "id": "what-is-open-stated-exactly",
           "title": "What is open, stated exactly",
-          "line": 3660
+          "line": 4014
         },
         {
           "level": 2,
           "id": "notation-fixed-for-this-section",
           "title": "Notation fixed for this section",
-          "line": 3666
+          "line": 4020
         },
         {
           "level": 2,
           "id": "target-o1-universal-erd\u0151s-257",
           "title": "Target O1 \u2014 Universal Erd\u0151s #257",
-          "line": 3675
+          "line": 4029
         },
         {
           "level": 2,
           "id": "target-o2-half-value-membership",
           "title": "Target O2 \u2014 Half-value membership",
-          "line": 3704
+          "line": 4058
         },
         {
           "level": 3,
           "id": "waypoints-that-are-actually-equivalent-to-o2-not-weaker",
           "title": "Waypoints that are actually EQUIVALENT to O2, not weaker",
-          "line": 3723
+          "line": 4077
         },
         {
           "level": 2,
           "id": "target-o3-cofinal-exact-local-mersenne-half-rows",
           "title": "Target O3 \u2014 Cofinal exact local Mersenne half rows",
-          "line": 3762
+          "line": 4116
         },
         {
           "level": 3,
           "id": "sharp-critical-capacity-conditions-the-booleanm\u00f6bius-lanes-producer-for-o3",
           "title": "Sharp critical-capacity conditions \u2014 the BooleanM\u00f6bius lane\u2019s producer for O3",
-          "line": 3779
+          "line": 4133
         },
         {
           "level": 2,
           "id": "sec:o4",
           "title": "Target O4 \u2014 Reset anti-concentration (sqrt-escape) and the R-run form",
-          "line": 3814
+          "line": 4168
         },
         {
           "level": 2,
           "id": "target-o5-the-remaining--2-1-middle-cell-exclusion",
           "title": "Target O5 \u2014 The remaining -2,-1 middle-cell exclusion",
-          "line": 3853
+          "line": 4207
         },
         {
           "level": 2,
           "id": "target-o2b-membership-of-121",
           "title": "Target O2b \u2014 Membership of 1/21",
-          "line": 3868
+          "line": 4222
         },
         {
           "level": 2,
           "id": "sec:v-table",
           "title": "Implication table",
-          "line": 3882
+          "line": 4236
         },
         {
           "level": 2,
           "id": "what-kind-of-new-mathematics-each-form-would-need",
           "title": "What kind of new mathematics each form would need",
-          "line": 3915
+          "line": 4269
         },
         {
           "level": 2,
           "id": "summary",
           "title": "Summary",
-          "line": 3927
+          "line": 4281
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 3933
+          "line": 4287
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 3937
+          "line": 4291
         },
         {
           "level": 4,
           "id": "authority-boundary.",
           "title": "Authority boundary.",
-          "line": 3943
+          "line": 4297
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 3949
+          "line": 4303
         }
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:f5be111475a17ecfd79cc62fc37e222974bbc3b49239104f05e931297794e8b4",
-      "pdf_byte_count": 669340,
+      "pdf_sha256": "sha256:70aa521dc699a46f8c928cef599fd0dd59030e25a889286f2f3731eff523592f",
+      "pdf_byte_count": 695601,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -5236,8 +5458,8 @@
         "manuscript_title": "Problem-Sized Lean Worlds"
       },
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:a7e437db1af180972814500a61ac8c7fcb4ee1b120ee5f3a58ab7bab05892dcc",
-      "pdf_byte_count": 143404,
+      "pdf_sha256": "sha256:fef2e629021fc15442c57e61d44902e7cc6519d787d95c9b79f01183c9a4d097",
+      "pdf_byte_count": 143405,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -5433,8 +5655,8 @@
       ],
       "citations_rendered": 10,
       "local_pdf": "cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:9e4b89dbc14bd14e0c1a960062577fd1cc832010a99869f5ffcbf988277b9954",
-      "pdf_byte_count": 83241,
+      "pdf_sha256": "sha256:7f4239eb54730ae2bde806aba9678ef725066d30f3e6bb4793c659614b51171f",
+      "pdf_byte_count": 83243,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -5990,6 +6212,1701 @@
             "id": "sec:distinctions",
             "title": "Five distinctions",
             "line": 166
+          }
+        ],
+        "unresolved_count": 0
+      }
+    },
+    {
+      "paper_id": "erdos68-factorial-reasoning-surface",
+      "title": "The Factorial-Denominator Series: Complete Reasoning Record",
+      "title_source": "manuscript",
+      "question_this_paper_answers": "What is the complete checked and failed-route record for Erd\u0151s #68, and which cofinal producer is still missing?",
+      "subject": "Erd\u0151s #68",
+      "subject_kind": "problem",
+      "form": "Reasoning surface",
+      "owns": "the complete problem-specific reasoning surface for Erd\u0151s #68, including all registered result families and their boundaries",
+      "not_authority_for": "proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erd\u0151s #68, which remains open",
+      "publication_state": "pending_source_publication",
+      "publication_class": "reasoning_surface",
+      "publication_class_basis": "owns names 'reasoning surface'",
+      "manuscript_status": "working_research_record",
+      "peer_review_state": "not_externally_reviewed",
+      "doi": null,
+      "doi_absence_reason": "no_archival_deposit_yet",
+      "preferred_citation": {
+        "author": "Will Cook",
+        "year": "2026",
+        "title": "The Factorial-Denominator Series: Complete Reasoning Record",
+        "repository": "plectis-erdos",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos68-factorial-reasoning-surface.tex",
+        "licence": "CC-BY-4.0",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). The Factorial-Denominator Series: Complete Reasoning Record. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos68-factorial-reasoning-surface.tex",
+        "derived_from": [
+          "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
+        ]
+      },
+      "relation_to_this_repository": "native",
+      "home_repository": "plectis-erdos",
+      "licence": "CC-BY-4.0",
+      "copyright": "2026 Will Cook",
+      "local_full_text": "docs/papers/full-text/erdos68-factorial-reasoning-surface.md",
+      "local_source": "paper/erdos68-factorial-reasoning-surface.tex",
+      "source_sha256": "sha256:d1bf92f49ffaefe5b4c1554fe8c88a144fc8e99681ecdb8c609a7c396aeaf162",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos68-factorial-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/erdos68-factorial-reasoning-surface.tex",
+      "section_count": 26,
+      "sections": [
+        {
+          "level": 1,
+          "id": "erdos68-factorial-reasoning-surface",
+          "title": "The Factorial-Denominator Series: Complete Reasoning Record",
+          "line": 1
+        },
+        {
+          "level": 1,
+          "id": "sec:problem",
+          "title": "The problem",
+          "line": 44
+        },
+        {
+          "level": 1,
+          "id": "sec:digits",
+          "title": "Canonical factorial digits",
+          "line": 105
+        },
+        {
+          "level": 1,
+          "id": "sec:channels",
+          "title": "Finite channel congruences and the LCM obstruction",
+          "line": 165
+        },
+        {
+          "level": 1,
+          "id": "sec:translator",
+          "title": "A two-term prime channel corrector",
+          "line": 272
+        },
+        {
+          "level": 1,
+          "id": "sec:plateau",
+          "title": "Zero plateaux, first exit, and denominator bounds",
+          "line": 288
+        },
+        {
+          "level": 2,
+          "id": "sec:adjacent-unit-no-go",
+          "title": "Why the adjacent-unit window is circular",
+          "line": 339
+        },
+        {
+          "level": 1,
+          "id": "sec:projection",
+          "title": "Weighted projection rigidity",
+          "line": 400
+        },
+        {
+          "level": 1,
+          "id": "sec:companion-orbit",
+          "title": "A fixed companion-orbit coordinate",
+          "line": 562
+        },
+        {
+          "level": 1,
+          "id": "sec:nogo",
+          "title": "Limits of fixed-coordinate arguments",
+          "line": 647
+        },
+        {
+          "level": 1,
+          "id": "sec:finite",
+          "title": "Finite certificates",
+          "line": 665
+        },
+        {
+          "level": 1,
+          "id": "sec:open",
+          "title": "Open problems",
+          "line": 683
+        },
+        {
+          "level": 2,
+          "id": "weighted-collision-mass-and-the-complementary-residue",
+          "title": "1. Weighted collision mass and the complementary residue",
+          "line": 711
+        },
+        {
+          "level": 2,
+          "id": "nonterminal-prime-power-amplification",
+          "title": "2. Nonterminal prime-power amplification",
+          "line": 751
+        },
+        {
+          "level": 2,
+          "id": "escape-from-the-lower-endpoint-interval",
+          "title": "3. Escape from the lower endpoint interval",
+          "line": 792
+        },
+        {
+          "level": 2,
+          "id": "failure-of-the-two-exact-doubled-prime-branches",
+          "title": "4. Failure of the two exact doubled-prime branches",
+          "line": 825
+        },
+        {
+          "level": 2,
+          "id": "a-finite-cramer-block-across-floor-discontinuities",
+          "title": "5. A finite Cramer block across floor discontinuities",
+          "line": 856
+        },
+        {
+          "level": 1,
+          "id": "statements-and-declarations",
+          "title": "Statements and declarations",
+          "line": 905
+        },
+        {
+          "level": 1,
+          "id": "app:sources",
+          "title": "Guide to the formal sources",
+          "line": 913
+        },
+        {
+          "level": 4,
+          "id": "source-current-companion-orbit-and-comparator-routes.",
+          "title": "Source-current companion orbit and Comparator routes.",
+          "line": 1009
+        },
+        {
+          "level": 1,
+          "id": "sec:erdos-68-complete-family-map",
+          "title": "Complete result-family map",
+          "line": 1015
+        },
+        {
+          "level": 2,
+          "id": "factorial-carry-characterisation",
+          "title": "Factorial carry characterisation",
+          "line": 1021
+        },
+        {
+          "level": 2,
+          "id": "factorial-channel-and-projection-rigidity",
+          "title": "Factorial channel and projection rigidity",
+          "line": 1045
+        },
+        {
+          "level": 2,
+          "id": "factorial-conditional-producers",
+          "title": "Factorial conditional producers",
+          "line": 1075
+        },
+        {
+          "level": 2,
+          "id": "factorial-lcm-growth",
+          "title": "Factorial lcm growth",
+          "line": 1095
+        },
+        {
+          "level": 2,
+          "id": "factorial-finite-certificates",
+          "title": "Factorial finite certificates",
+          "line": 1115
+        }
+      ],
+      "citations_rendered": 12,
+      "local_pdf": "erdos68-factorial-reasoning-surface.pdf",
+      "pdf_sha256": "sha256:6e9e8a1992e56f1f0cc0f2525d9aebf5ea244ce998f5122a6488cbb6c333215f",
+      "pdf_byte_count": 168950,
+      "first_pass": {
+        "stated_by_the_paper": false,
+        "provenance": "editorial selection; this paper states no reading route of its own",
+        "sections": [
+          {
+            "id": "sec:problem",
+            "title": "The problem",
+            "line": 44
+          },
+          {
+            "id": "sec:open",
+            "title": "Open problems",
+            "line": 683
+          },
+          {
+            "id": "sec:erdos-68-complete-family-map",
+            "title": "Complete result-family map",
+            "line": 1015
+          }
+        ],
+        "unresolved_count": 0
+      }
+    },
+    {
+      "paper_id": "erdos243-reciprocal-tail-reasoning-surface",
+      "title": "Reciprocal-Tail Rigidity: Complete Reasoning Record",
+      "title_source": "manuscript",
+      "question_this_paper_answers": "What is the complete state-dynamics and no-go record for Erd\u0151s #243, and which unbounded negative orbit regime survives?",
+      "subject": "Erd\u0151s #243",
+      "subject_kind": "problem",
+      "form": "Reasoning surface",
+      "owns": "the complete problem-specific reasoning surface for Erd\u0151s #243, including all registered result families and their boundaries",
+      "not_authority_for": "proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erd\u0151s #243, which remains open",
+      "publication_state": "pending_source_publication",
+      "publication_class": "reasoning_surface",
+      "publication_class_basis": "owns names 'reasoning surface'",
+      "manuscript_status": "working_research_record",
+      "peer_review_state": "not_externally_reviewed",
+      "doi": null,
+      "doi_absence_reason": "no_archival_deposit_yet",
+      "preferred_citation": {
+        "author": "Will Cook",
+        "year": "2026",
+        "title": "Reciprocal-Tail Rigidity: Complete Reasoning Record",
+        "repository": "plectis-erdos",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos243-reciprocal-tail-reasoning-surface.tex",
+        "licence": "CC-BY-4.0",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). Reciprocal-Tail Rigidity: Complete Reasoning Record. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos243-reciprocal-tail-reasoning-surface.tex",
+        "derived_from": [
+          "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
+        ]
+      },
+      "relation_to_this_repository": "native",
+      "home_repository": "plectis-erdos",
+      "licence": "CC-BY-4.0",
+      "copyright": "2026 Will Cook",
+      "local_full_text": "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md",
+      "local_source": "paper/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "source_sha256": "sha256:b4381647bf95cebfb11fb9692fc6e06e7035b746b6d14ec767ffd152d13d2fd5",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "section_count": 34,
+      "sections": [
+        {
+          "level": 1,
+          "id": "erdos243-reciprocal-tail-reasoning-surface",
+          "title": "Reciprocal-Tail Rigidity: Complete Reasoning Record",
+          "line": 1
+        },
+        {
+          "level": 1,
+          "id": "sec:problem",
+          "title": "Introduction",
+          "line": 23
+        },
+        {
+          "level": 4,
+          "id": "relation-to-prior-work.",
+          "title": "Relation to prior work.",
+          "line": 43
+        },
+        {
+          "level": 2,
+          "id": "structure",
+          "title": "Structure",
+          "line": 97
+        },
+        {
+          "level": 1,
+          "id": "sec:state",
+          "title": "The centred integer state",
+          "line": 105
+        },
+        {
+          "level": 4,
+          "id": "the-intended-reading-which-is-not-formalised.",
+          "title": "The intended reading, which is not formalised.",
+          "line": 155
+        },
+        {
+          "level": 1,
+          "id": "sec:defect",
+          "title": "The defect identity and its two consequences",
+          "line": 178
+        },
+        {
+          "level": 2,
+          "id": "two-step-cancellation-and-feedback",
+          "title": "Two-step cancellation and feedback",
+          "line": 229
+        },
+        {
+          "level": 1,
+          "id": "sec:descent",
+          "title": "Descent when the error is nonnegative",
+          "line": 320
+        },
+        {
+          "level": 1,
+          "id": "sec:constant",
+          "title": "Excluding a constant negative magnitude",
+          "line": 342
+        },
+        {
+          "level": 1,
+          "id": "sec:periodic",
+          "title": "Excluding a periodic negative magnitude",
+          "line": 389
+        },
+        {
+          "level": 1,
+          "id": "sec:barrier",
+          "title": "Bounded rise cannot remain coprime to fresh moduli",
+          "line": 429
+        },
+        {
+          "level": 1,
+          "id": "sec:bounded",
+          "title": "Excluding a bounded negative part",
+          "line": 531
+        },
+        {
+          "level": 1,
+          "id": "sec:mass",
+          "title": "Excluding finite normalised negative mass",
+          "line": 583
+        },
+        {
+          "level": 1,
+          "id": "sec:open",
+          "title": "Complements and further questions",
+          "line": 628
+        },
+        {
+          "level": 2,
+          "id": "global-height-and-old-factor-overlap",
+          "title": "Global height and old-factor overlap",
+          "line": 690
+        },
+        {
+          "level": 2,
+          "id": "repair-entropy-across-a-recovery",
+          "title": "Repair entropy across a recovery",
+          "line": 700
+        },
+        {
+          "level": 2,
+          "id": "the-direct-analytic-question",
+          "title": "The direct analytic question",
+          "line": 775
+        },
+        {
+          "level": 2,
+          "id": "a-barrier-extension",
+          "title": "A barrier extension",
+          "line": 797
+        },
+        {
+          "level": 2,
+          "id": "formalisation-targets",
+          "title": "Formalisation targets",
+          "line": 812
+        },
+        {
+          "level": 4,
+          "id": "erd\u0151sstraus.",
+          "title": "Erd\u0151s\u2013Straus.",
+          "line": 816
+        },
+        {
+          "level": 4,
+          "id": "duverney.",
+          "title": "Duverney.",
+          "line": 822
+        },
+        {
+          "level": 2,
+          "id": "statements-and-declarations",
+          "title": "Statements and declarations",
+          "line": 828
+        },
+        {
+          "level": 4,
+          "id": "artefact-and-data-availability.",
+          "title": "Artefact and data availability.",
+          "line": 832
+        },
+        {
+          "level": 4,
+          "id": "funding-and-competing-interests.",
+          "title": "Funding and competing interests.",
+          "line": 840
+        },
+        {
+          "level": 4,
+          "id": "acknowledgements.",
+          "title": "Acknowledgements.",
+          "line": 846
+        },
+        {
+          "level": 1,
+          "id": "app:index",
+          "title": "Guide to the formal sources",
+          "line": 852
+        },
+        {
+          "level": 1,
+          "id": "app:residue",
+          "title": "A factorial residue reduction for forced orbits",
+          "line": 858
+        },
+        {
+          "level": 1,
+          "id": "sec:erdos-243-complete-family-map",
+          "title": "Complete result-family map",
+          "line": 886
+        },
+        {
+          "level": 2,
+          "id": "centered-state-dynamics",
+          "title": "Centered state dynamics",
+          "line": 892
+        },
+        {
+          "level": 2,
+          "id": "negative-mass-recovery",
+          "title": "Negative mass recovery",
+          "line": 918
+        },
+        {
+          "level": 2,
+          "id": "bounded-negative-exclusion",
+          "title": "Bounded negative exclusion",
+          "line": 944
+        },
+        {
+          "level": 2,
+          "id": "bounded-rise-coprimality",
+          "title": "Bounded rise coprimality",
+          "line": 964
+        },
+        {
+          "level": 2,
+          "id": "negative-orbit-no-go",
+          "title": "Negative orbit no go",
+          "line": 988
+        }
+      ],
+      "citations_rendered": 31,
+      "local_pdf": "erdos243-reciprocal-tail-reasoning-surface.pdf",
+      "pdf_sha256": "sha256:1837a1f0dc443a99b9b8e8461e5674c2a55760a247d6003c1bb86dcd672b365e",
+      "pdf_byte_count": 178394,
+      "first_pass": {
+        "stated_by_the_paper": false,
+        "provenance": "editorial selection; this paper states no reading route of its own",
+        "sections": [
+          {
+            "id": "sec:problem",
+            "title": "Introduction",
+            "line": 23
+          },
+          {
+            "id": "sec:bounded",
+            "title": "Excluding a bounded negative part",
+            "line": 531
+          },
+          {
+            "id": "sec:open",
+            "title": "Complements and further questions",
+            "line": 628
+          },
+          {
+            "id": "sec:erdos-243-complete-family-map",
+            "title": "Complete result-family map",
+            "line": 886
+          }
+        ],
+        "unresolved_count": 0
+      }
+    },
+    {
+      "paper_id": "erdos251-prime-gap-reasoning-surface",
+      "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
+      "title_source": "manuscript",
+      "question_this_paper_answers": "What is the complete shift, countermodel, and finite-evidence record for Erd\u0151s #251, and which cofinal mismatch is missing?",
+      "subject": "Erd\u0151s #251",
+      "subject_kind": "problem",
+      "form": "Reasoning surface",
+      "owns": "the complete problem-specific reasoning surface for Erd\u0151s #251, including all registered result families and their boundaries",
+      "not_authority_for": "proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erd\u0151s #251, which remains open",
+      "publication_state": "pending_source_publication",
+      "publication_class": "reasoning_surface",
+      "publication_class_basis": "owns names 'reasoning surface'",
+      "manuscript_status": "working_research_record",
+      "peer_review_state": "not_externally_reviewed",
+      "doi": null,
+      "doi_absence_reason": "no_archival_deposit_yet",
+      "preferred_citation": {
+        "author": "Will Cook",
+        "year": "2026",
+        "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
+        "repository": "plectis-erdos",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos251-prime-gap-reasoning-surface.tex",
+        "licence": "CC-BY-4.0",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). Prime Gaps and Dyadic Tails: Complete Reasoning Record. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos251-prime-gap-reasoning-surface.tex",
+        "derived_from": [
+          "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
+        ]
+      },
+      "relation_to_this_repository": "native",
+      "home_repository": "plectis-erdos",
+      "licence": "CC-BY-4.0",
+      "copyright": "2026 Will Cook",
+      "local_full_text": "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md",
+      "local_source": "paper/erdos251-prime-gap-reasoning-surface.tex",
+      "source_sha256": "sha256:d5cf3cced6acbc6f9620b6350e05bc4323fe02382d1351039cfcedb734cf3aa2",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos251-prime-gap-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/erdos251-prime-gap-reasoning-surface.tex",
+      "section_count": 30,
+      "sections": [
+        {
+          "level": 1,
+          "id": "erdos251-prime-gap-reasoning-surface",
+          "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
+          "line": 1
+        },
+        {
+          "level": 1,
+          "id": "sec:problem",
+          "title": "Introduction",
+          "line": 55
+        },
+        {
+          "level": 4,
+          "id": "notation.",
+          "title": "Notation.",
+          "line": 84
+        },
+        {
+          "level": 4,
+          "id": "relation-to-prior-work.",
+          "title": "Relation to prior work.",
+          "line": 90
+        },
+        {
+          "level": 4,
+          "id": "the-strategy.",
+          "title": "The strategy.",
+          "line": 106
+        },
+        {
+          "level": 4,
+          "id": "outline.",
+          "title": "Outline.",
+          "line": 114
+        },
+        {
+          "level": 1,
+          "id": "sec:diagonal-collapse",
+          "title": "One diagonal, and two circular escape tests",
+          "line": 159
+        },
+        {
+          "level": 1,
+          "id": "sec:parts",
+          "title": "Summation by parts, with the endpoint retained",
+          "line": 304
+        },
+        {
+          "level": 2,
+          "id": "sec:infinite",
+          "title": "The infinite identity and the irrationality equivalence",
+          "line": 347
+        },
+        {
+          "level": 4,
+          "id": "the-summability-hypothesis.",
+          "title": "The summability hypothesis.",
+          "line": 395
+        },
+        {
+          "level": 1,
+          "id": "sec:tail",
+          "title": "The tail recurrence and integral shifts",
+          "line": 401
+        },
+        {
+          "level": 4,
+          "id": "the-actual-prime-gap-orbit.",
+          "title": "The actual prime-gap orbit.",
+          "line": 561
+        },
+        {
+          "level": 2,
+          "id": "sec:local-certificate",
+          "title": "Two adjacent small shifts cannot both be integral",
+          "line": 575
+        },
+        {
+          "level": 1,
+          "id": "sec:carry",
+          "title": "Nonperiodic coefficients with a rational sum",
+          "line": 641
+        },
+        {
+          "level": 4,
+          "id": "consequence-for-the-coefficients.",
+          "title": "Consequence for the coefficients.",
+          "line": 671
+        },
+        {
+          "level": 1,
+          "id": "sec:open",
+          "title": "Complements and further questions",
+          "line": 687
+        },
+        {
+          "level": 4,
+          "id": "a-finite-truncation-criterion.",
+          "title": "A finite truncation criterion.",
+          "line": 737
+        },
+        {
+          "level": 4,
+          "id": "what-remains-to-be-formalised.",
+          "title": "What remains to be formalised.",
+          "line": 789
+        },
+        {
+          "level": 2,
+          "id": "statements-and-declarations",
+          "title": "Statements and declarations",
+          "line": 795
+        },
+        {
+          "level": 4,
+          "id": "artefact-and-data-availability.",
+          "title": "Artefact and data availability.",
+          "line": 799
+        },
+        {
+          "level": 4,
+          "id": "funding-and-competing-interests.",
+          "title": "Funding and competing interests.",
+          "line": 807
+        },
+        {
+          "level": 4,
+          "id": "acknowledgements.",
+          "title": "Acknowledgements.",
+          "line": 813
+        },
+        {
+          "level": 1,
+          "id": "app:index",
+          "title": "Guide to the formal sources",
+          "line": 819
+        },
+        {
+          "level": 1,
+          "id": "sec:erdos-251-complete-family-map",
+          "title": "Complete result-family map",
+          "line": 825
+        },
+        {
+          "level": 2,
+          "id": "prime-gap-reformulation",
+          "title": "Prime gap reformulation",
+          "line": 831
+        },
+        {
+          "level": 2,
+          "id": "dyadic-tail-integrality-classification",
+          "title": "Dyadic tail integrality classification",
+          "line": 851
+        },
+        {
+          "level": 2,
+          "id": "integral-shift-classification",
+          "title": "Integral shift classification",
+          "line": 879
+        },
+        {
+          "level": 2,
+          "id": "small-mismatch-criterion",
+          "title": "Small mismatch criterion",
+          "line": 907
+        },
+        {
+          "level": 2,
+          "id": "coefficient-only-no-go",
+          "title": "Coefficient only no go",
+          "line": 937
+        },
+        {
+          "level": 2,
+          "id": "totient-shift-propagation",
+          "title": "Totient shift propagation",
+          "line": 963
+        }
+      ],
+      "citations_rendered": 22,
+      "local_pdf": "erdos251-prime-gap-reasoning-surface.pdf",
+      "pdf_sha256": "sha256:048f1c65f894f2ca35f3889e18b3a94d1e3773e13cbfbe266eccc5473c5048c0",
+      "pdf_byte_count": 166588,
+      "first_pass": {
+        "stated_by_the_paper": false,
+        "provenance": "editorial selection; this paper states no reading route of its own",
+        "sections": [
+          {
+            "id": "sec:problem",
+            "title": "Introduction",
+            "line": 55
+          },
+          {
+            "id": "sec:tail",
+            "title": "The tail recurrence and integral shifts",
+            "line": 401
+          },
+          {
+            "id": "sec:no-go",
+            "resolved": false,
+            "reason": "label not present in the current manuscript"
+          },
+          {
+            "id": "sec:open",
+            "title": "Complements and further questions",
+            "line": 687
+          },
+          {
+            "id": "sec:erdos-251-complete-family-map",
+            "title": "Complete result-family map",
+            "line": 825
+          }
+        ],
+        "unresolved_count": 1
+      }
+    },
+    {
+      "paper_id": "erdos269-running-lcm-reasoning-surface",
+      "title": "The Three-Prime Running LCM: Complete Reasoning Record",
+      "title_source": "manuscript",
+      "question_this_paper_answers": "What is the complete block, shell, carry, and observer record for Erd\u0151s #269, and which cofinal escape remains?",
+      "subject": "Erd\u0151s #269",
+      "subject_kind": "problem",
+      "form": "Reasoning surface",
+      "owns": "the complete problem-specific reasoning surface for Erd\u0151s #269, including all registered result families and their boundaries",
+      "not_authority_for": "proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erd\u0151s #269, which remains open",
+      "publication_state": "pending_source_publication",
+      "publication_class": "reasoning_surface",
+      "publication_class_basis": "owns names 'reasoning surface'",
+      "manuscript_status": "working_research_record",
+      "peer_review_state": "not_externally_reviewed",
+      "doi": null,
+      "doi_absence_reason": "no_archival_deposit_yet",
+      "preferred_citation": {
+        "author": "Will Cook",
+        "year": "2026",
+        "title": "The Three-Prime Running LCM: Complete Reasoning Record",
+        "repository": "plectis-erdos",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos269-running-lcm-reasoning-surface.tex",
+        "licence": "CC-BY-4.0",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). The Three-Prime Running LCM: Complete Reasoning Record. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos269-running-lcm-reasoning-surface.tex",
+        "derived_from": [
+          "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
+        ]
+      },
+      "relation_to_this_repository": "native",
+      "home_repository": "plectis-erdos",
+      "licence": "CC-BY-4.0",
+      "copyright": "2026 Will Cook",
+      "local_full_text": "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md",
+      "local_source": "paper/erdos269-running-lcm-reasoning-surface.tex",
+      "source_sha256": "sha256:77cf6de37ee2dbf5e7c4bedd28405acacd07e802cdf27c72aecc4dc8a9480bfd",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos269-running-lcm-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/erdos269-running-lcm-reasoning-surface.tex",
+      "section_count": 36,
+      "sections": [
+        {
+          "level": 1,
+          "id": "erdos269-running-lcm-reasoning-surface",
+          "title": "The Three-Prime Running LCM: Complete Reasoning Record",
+          "line": 1
+        },
+        {
+          "level": 1,
+          "id": "sec:problem",
+          "title": "Introduction",
+          "line": 41
+        },
+        {
+          "level": 4,
+          "id": "results-and-boundary.",
+          "title": "Results and boundary.",
+          "line": 98
+        },
+        {
+          "level": 2,
+          "id": "structure",
+          "title": "Structure",
+          "line": 104
+        },
+        {
+          "level": 1,
+          "id": "sec:lcm",
+          "title": "The running least common multiple as a product of pure powers",
+          "line": 112
+        },
+        {
+          "level": 1,
+          "id": "sec:cells",
+          "title": "Constancy on logarithmic cells and the jump points",
+          "line": 160
+        },
+        {
+          "level": 1,
+          "id": "sec:two-prime",
+          "title": "The two-prime sums are transcendental",
+          "line": 218
+        },
+        {
+          "level": 1,
+          "id": "sec:fibre",
+          "title": "The height-fibre normal form",
+          "line": 339
+        },
+        {
+          "level": 1,
+          "id": "sec:shell",
+          "title": "A quadratic bound for smooth exponent shells",
+          "line": 386
+        },
+        {
+          "level": 1,
+          "id": "sec:rank",
+          "title": "Non-separability of the three-prime kernel",
+          "line": 441
+        },
+        {
+          "level": 1,
+          "id": "sec:actual-orbit",
+          "title": "The actual shell orbit and its integral branch",
+          "line": 493
+        },
+        {
+          "level": 1,
+          "id": "sec:escape",
+          "title": "Dyadic blocks and a conditional carry contradiction",
+          "line": 576
+        },
+        {
+          "level": 2,
+          "id": "the-four-element-block-alphabet",
+          "title": "The four-element block alphabet",
+          "line": 582
+        },
+        {
+          "level": 2,
+          "id": "the-denominator-reduction-and-its-boundary",
+          "title": "The denominator reduction and its boundary",
+          "line": 626
+        },
+        {
+          "level": 2,
+          "id": "the-window-recurrence-and-the-residue-contradiction",
+          "title": "The window recurrence and the residue contradiction",
+          "line": 659
+        },
+        {
+          "level": 2,
+          "id": "a-finite-check-of-the-escape-condition",
+          "title": "A finite check of the escape condition",
+          "line": 744
+        },
+        {
+          "level": 1,
+          "id": "sec:open",
+          "title": "Complements and further questions",
+          "line": 762
+        },
+        {
+          "level": 2,
+          "id": "the-actual-block-data-and-the-missing-bridge",
+          "title": "The actual block data and the missing bridge",
+          "line": 768
+        },
+        {
+          "level": 2,
+          "id": "the-intrinsic-tail-question",
+          "title": "The intrinsic tail question",
+          "line": 826
+        },
+        {
+          "level": 2,
+          "id": "a-denominator-adaptive-sufficient-criterion",
+          "title": "A denominator-adaptive sufficient criterion",
+          "line": 848
+        },
+        {
+          "level": 2,
+          "id": "a-two-dimensional-analytic-representation",
+          "title": "A two-dimensional analytic representation",
+          "line": 884
+        },
+        {
+          "level": 2,
+          "id": "further-structural-constraints",
+          "title": "Further structural constraints",
+          "line": 914
+        },
+        {
+          "level": 2,
+          "id": "statements-and-declarations",
+          "title": "Statements and declarations",
+          "line": 933
+        },
+        {
+          "level": 4,
+          "id": "artefact-and-data-availability.",
+          "title": "Artefact and data availability.",
+          "line": 937
+        },
+        {
+          "level": 4,
+          "id": "funding-and-competing-interests.",
+          "title": "Funding and competing interests.",
+          "line": 943
+        },
+        {
+          "level": 4,
+          "id": "acknowledgements.",
+          "title": "Acknowledgements.",
+          "line": 949
+        },
+        {
+          "level": 1,
+          "id": "app:index",
+          "title": "Guide to the formal sources",
+          "line": 955
+        },
+        {
+          "level": 1,
+          "id": "sec:erdos-269-complete-family-map",
+          "title": "Complete result-family map",
+          "line": 961
+        },
+        {
+          "level": 2,
+          "id": "three-prime-lcm-cells",
+          "title": "Three prime lcm cells",
+          "line": 967
+        },
+        {
+          "level": 2,
+          "id": "two-prime-transcendence",
+          "title": "Two prime transcendence",
+          "line": 987
+        },
+        {
+          "level": 2,
+          "id": "weighted-phase-carry-observer",
+          "title": "Weighted phase carry observer",
+          "line": 1007
+        },
+        {
+          "level": 2,
+          "id": "height-fibre-and-shell",
+          "title": "Height fibre and shell",
+          "line": 1035
+        },
+        {
+          "level": 2,
+          "id": "conditional-carry-escape",
+          "title": "Conditional carry escape",
+          "line": 1059
+        },
+        {
+          "level": 2,
+          "id": "rank-two-kernel-no-go",
+          "title": "Rank two kernel no go",
+          "line": 1091
+        },
+        {
+          "level": 2,
+          "id": "dyadic-block-alphabet",
+          "title": "Dyadic block alphabet",
+          "line": 1111
+        },
+        {
+          "level": 2,
+          "id": "three-prime-finite-search",
+          "title": "Three prime finite search",
+          "line": 1133
+        }
+      ],
+      "citations_rendered": 17,
+      "local_pdf": "erdos269-running-lcm-reasoning-surface.pdf",
+      "pdf_sha256": "sha256:ef00c10e8706d9ddc54274f1ac2abe3a11310a4f095160f0bc3af98f0af66ed1",
+      "pdf_byte_count": 183970,
+      "first_pass": {
+        "stated_by_the_paper": false,
+        "provenance": "editorial selection; this paper states no reading route of its own",
+        "sections": [
+          {
+            "id": "sec:problem",
+            "title": "Introduction",
+            "line": 41
+          },
+          {
+            "id": "sec:lcm",
+            "title": "The running least common multiple as a product of pure powers",
+            "line": 112
+          },
+          {
+            "id": "sec:escape",
+            "title": "Dyadic blocks and a conditional carry contradiction",
+            "line": 576
+          },
+          {
+            "id": "sec:open",
+            "title": "Complements and further questions",
+            "line": 762
+          },
+          {
+            "id": "sec:erdos-269-complete-family-map",
+            "title": "Complete result-family map",
+            "line": 961
+          }
+        ],
+        "unresolved_count": 0
+      }
+    },
+    {
+      "paper_id": "erdos1041-lemniscate-reasoning-surface",
+      "title": "Lemniscates and Newton Flow: Complete Reasoning Record",
+      "title_source": "manuscript",
+      "question_this_paper_answers": "What is the complete Newton-flow, structured-family, and proof-gap record for Erd\u0151s #1041, and what global gluing remains?",
+      "subject": "Erd\u0151s #1041",
+      "subject_kind": "problem",
+      "form": "Reasoning surface",
+      "owns": "the complete problem-specific reasoning surface for Erd\u0151s #1041, including all registered result families and their boundaries",
+      "not_authority_for": "proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erd\u0151s #1041, which remains open",
+      "publication_state": "pending_source_publication",
+      "publication_class": "reasoning_surface",
+      "publication_class_basis": "owns names 'reasoning surface'",
+      "manuscript_status": "working_research_record",
+      "peer_review_state": "not_externally_reviewed",
+      "doi": null,
+      "doi_absence_reason": "no_archival_deposit_yet",
+      "preferred_citation": {
+        "author": "Will Cook",
+        "year": "2026",
+        "title": "Lemniscates and Newton Flow: Complete Reasoning Record",
+        "repository": "plectis-erdos",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos1041-lemniscate-reasoning-surface.tex",
+        "licence": "CC-BY-4.0",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). Lemniscates and Newton Flow: Complete Reasoning Record. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos1041-lemniscate-reasoning-surface.tex",
+        "derived_from": [
+          "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
+        ]
+      },
+      "relation_to_this_repository": "native",
+      "home_repository": "plectis-erdos",
+      "licence": "CC-BY-4.0",
+      "copyright": "2026 Will Cook",
+      "local_full_text": "docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md",
+      "local_source": "paper/erdos1041-lemniscate-reasoning-surface.tex",
+      "source_sha256": "sha256:47118d65446b9c96cc703589c11118cefed83a2666ce902b3a2fe457102fd0f7",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos1041-lemniscate-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/erdos1041-lemniscate-reasoning-surface.tex",
+      "section_count": 40,
+      "sections": [
+        {
+          "level": 1,
+          "id": "erdos1041-lemniscate-reasoning-surface",
+          "title": "Lemniscates and Newton Flow: Complete Reasoning Record",
+          "line": 1
+        },
+        {
+          "level": 1,
+          "id": "sec:problem",
+          "title": "The problem",
+          "line": 65
+        },
+        {
+          "level": 1,
+          "id": "sec:critical-value-separation",
+          "title": "An all-degree critical-value separation theorem",
+          "line": 105
+        },
+        {
+          "level": 4,
+          "id": "bdry:critical-value-separation",
+          "title": "Evidence and exact boundary.",
+          "line": 198
+        },
+        {
+          "level": 1,
+          "id": "sec:solved-polynomial-families",
+          "title": "Three exact solved polynomial families",
+          "line": 206
+        },
+        {
+          "level": 2,
+          "id": "subsec:sharp-collinear-chebyshev",
+          "title": "Sharp collinear zeros",
+          "line": 212
+        },
+        {
+          "level": 4,
+          "id": "rem:sharp-collinear-formal-boundary",
+          "title": "Formal boundary.",
+          "line": 283
+        },
+        {
+          "level": 2,
+          "id": "subsec:primitive-sparse-quintic",
+          "title": "The primitive sparse quintic",
+          "line": 289
+        },
+        {
+          "level": 4,
+          "id": "rem:primitive-quintic-formal-boundary",
+          "title": "Formal boundary.",
+          "line": 375
+        },
+        {
+          "level": 2,
+          "id": "subsec:translated-cubic-quotient-fibres",
+          "title": "Translated cubic quotient fibres",
+          "line": 381
+        },
+        {
+          "level": 4,
+          "id": "rem:cubic-quotient-formal-boundary",
+          "title": "Formal boundary.",
+          "line": 440
+        },
+        {
+          "level": 4,
+          "id": "bdry:solved-polynomial-families",
+          "title": "Shared assurance boundary.",
+          "line": 446
+        },
+        {
+          "level": 1,
+          "id": "sec:frontier",
+          "title": "The current frontier: what survives near Fekete configurations",
+          "line": 452
+        },
+        {
+          "level": 2,
+          "id": "near-fekete-stability-removes-the-radial-distraction",
+          "title": "Near-Fekete stability removes the radial distraction",
+          "line": 458
+        },
+        {
+          "level": 2,
+          "id": "a-bounded-radius-concyclic-class",
+          "title": "A bounded-radius concyclic class",
+          "line": 476
+        },
+        {
+          "level": 2,
+          "id": "cyclic-trinomial-fibres",
+          "title": "Cyclic trinomial fibres",
+          "line": 486
+        },
+        {
+          "level": 2,
+          "id": "coefficient-controlled-cyclic-tetranomial-spokes",
+          "title": "Coefficient-controlled cyclic tetranomial spokes",
+          "line": 503
+        },
+        {
+          "level": 2,
+          "id": "translated-quartic-quotient-fibres",
+          "title": "Translated quartic quotient fibres",
+          "line": 551
+        },
+        {
+          "level": 2,
+          "id": "the-degree-five-target-is-now-explicit",
+          "title": "The degree-five target is now explicit",
+          "line": 579
+        },
+        {
+          "level": 2,
+          "id": "the-no-go-boundaries-force-hub-selection",
+          "title": "The no-go boundaries force hub selection",
+          "line": 614
+        },
+        {
+          "level": 2,
+          "id": "the-surviving-carrier-and-the-actual-open-endpoint",
+          "title": "The surviving carrier and the actual open endpoint",
+          "line": 632
+        },
+        {
+          "level": 1,
+          "id": "sec:newton",
+          "title": "The Newton value equation",
+          "line": 644
+        },
+        {
+          "level": 1,
+          "id": "sec:arguments",
+          "title": "Arguments, not moduli",
+          "line": 676
+        },
+        {
+          "level": 1,
+          "id": "sec:gap",
+          "title": "A proof gap in the unrestricted argument",
+          "line": 698
+        },
+        {
+          "level": 1,
+          "id": "sec:finite",
+          "title": "Finite evidence",
+          "line": 720
+        },
+        {
+          "level": 1,
+          "id": "sec:open",
+          "title": "Complements and further questions",
+          "line": 735
+        },
+        {
+          "level": 2,
+          "id": "repair-or-refute-the-saddle-block",
+          "title": "1. Repair or refute the saddle block",
+          "line": 741
+        },
+        {
+          "level": 2,
+          "id": "the-compact-ray-cut-decomposition",
+          "title": "2. The compact ray-cut decomposition",
+          "line": 758
+        },
+        {
+          "level": 2,
+          "id": "metric-fan-in-without-losing-the-coefficient",
+          "title": "3. Metric fan-in without losing the coefficient",
+          "line": 784
+        },
+        {
+          "level": 2,
+          "id": "coefficient-perturbation-and-stability",
+          "title": "4. Coefficient perturbation and stability",
+          "line": 822
+        },
+        {
+          "level": 2,
+          "id": "the-global-newton-flow-claim-ceiling",
+          "title": "5. The global Newton-flow claim ceiling",
+          "line": 856
+        },
+        {
+          "level": 1,
+          "id": "statements-and-declarations",
+          "title": "Statements and declarations",
+          "line": 879
+        },
+        {
+          "level": 1,
+          "id": "app:sources",
+          "title": "Guide to the formal sources",
+          "line": 885
+        },
+        {
+          "level": 1,
+          "id": "sec:erdos-1041-complete-family-map",
+          "title": "Complete result-family map",
+          "line": 933
+        },
+        {
+          "level": 2,
+          "id": "root-retention",
+          "title": "Root retention",
+          "line": 939
+        },
+        {
+          "level": 2,
+          "id": "newton-value-decay",
+          "title": "Newton value decay",
+          "line": 959
+        },
+        {
+          "level": 2,
+          "id": "ray-separation",
+          "title": "Ray separation",
+          "line": 983
+        },
+        {
+          "level": 2,
+          "id": "published-proof-gap",
+          "title": "Published proof gap",
+          "line": 1007
+        },
+        {
+          "level": 2,
+          "id": "lemniscate-finite-search",
+          "title": "Lemniscate finite search",
+          "line": 1027
+        },
+        {
+          "level": 2,
+          "id": "translation-avoidance",
+          "title": "Translation avoidance",
+          "line": 1047
+        }
+      ],
+      "citations_rendered": 9,
+      "local_pdf": "erdos1041-lemniscate-reasoning-surface.pdf",
+      "pdf_sha256": "sha256:a25db073dd6be87851f1dbda71bd9c02a754004525073ea123fc345ec37b3bb2",
+      "pdf_byte_count": 166750,
+      "first_pass": {
+        "stated_by_the_paper": false,
+        "provenance": "editorial selection; this paper states no reading route of its own",
+        "sections": [
+          {
+            "id": "sec:problem",
+            "title": "The problem",
+            "line": 65
+          },
+          {
+            "id": "sec:newton",
+            "title": "The Newton value equation",
+            "line": 644
+          },
+          {
+            "id": "sec:gap",
+            "title": "A proof gap in the unrestricted argument",
+            "line": 698
+          },
+          {
+            "id": "sec:open",
+            "title": "Complements and further questions",
+            "line": 735
+          },
+          {
+            "id": "sec:erdos-1041-complete-family-map",
+            "title": "Complete result-family map",
+            "line": 933
+          }
+        ],
+        "unresolved_count": 0
+      }
+    },
+    {
+      "paper_id": "erdos1049-rational-base-lambert-reasoning-surface",
+      "title": "Rational-Base Lambert Series: Complete Reasoning Record",
+      "title_source": "manuscript",
+      "question_this_paper_answers": "What is the complete tail, height, Hermite\u2013Pad\u00e9, and mechanism record for Erd\u0151s #1049, and why is base 3/2 still open?",
+      "subject": "Erd\u0151s #1049",
+      "subject_kind": "problem",
+      "form": "Reasoning surface",
+      "owns": "the complete problem-specific reasoning surface for Erd\u0151s #1049, including all registered result families and their boundaries",
+      "not_authority_for": "proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erd\u0151s #1049, which remains open",
+      "publication_state": "pending_source_publication",
+      "publication_class": "reasoning_surface",
+      "publication_class_basis": "owns names 'reasoning surface'",
+      "manuscript_status": "working_research_record",
+      "peer_review_state": "not_externally_reviewed",
+      "doi": null,
+      "doi_absence_reason": "no_archival_deposit_yet",
+      "preferred_citation": {
+        "author": "Will Cook",
+        "year": "2026",
+        "title": "Rational-Base Lambert Series: Complete Reasoning Record",
+        "repository": "plectis-erdos",
+        "canonical_source_commit": null,
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
+        "licence": "CC-BY-4.0",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). Rational-Base Lambert Series: Complete Reasoning Record. plectis-erdos. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
+        "derived_from": [
+          "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
+        ]
+      },
+      "relation_to_this_repository": "native",
+      "home_repository": "plectis-erdos",
+      "licence": "CC-BY-4.0",
+      "copyright": "2026 Will Cook",
+      "local_full_text": "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md",
+      "local_source": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "source_sha256": "sha256:38116b2df59f567c0def85aa65fd23757232f8de0f4d9aff34e9fe86b747972d",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "moving_default_ref",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/main/paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "section_count": 37,
+      "sections": [
+        {
+          "level": 1,
+          "id": "erdos1049-rational-base-lambert-reasoning-surface",
+          "title": "Rational-Base Lambert Series: Complete Reasoning Record",
+          "line": 1
+        },
+        {
+          "level": 1,
+          "id": "sec:problem",
+          "title": "Introduction",
+          "line": 43
+        },
+        {
+          "level": 4,
+          "id": "relation-to-prior-work.",
+          "title": "Relation to prior work.",
+          "line": 57
+        },
+        {
+          "level": 4,
+          "id": "erd\u0151ss-integer-base-argument-in-outline.",
+          "title": "Erd\u0151s\u2019s integer-base argument, in outline.",
+          "line": 93
+        },
+        {
+          "level": 4,
+          "id": "the-direct-cut-and-clear-attempt-studied-here.",
+          "title": "The direct cut-and-clear attempt studied here.",
+          "line": 99
+        },
+        {
+          "level": 4,
+          "id": "terminology.",
+          "title": "Terminology.",
+          "line": 107
+        },
+        {
+          "level": 4,
+          "id": "the-shortfall-at-32.",
+          "title": "The shortfall at 3/2.",
+          "line": 115
+        },
+        {
+          "level": 4,
+          "id": "sharpness.",
+          "title": "Sharpness.",
+          "line": 129
+        },
+        {
+          "level": 4,
+          "id": "results-and-boundary.",
+          "title": "Results and boundary.",
+          "line": 141
+        },
+        {
+          "level": 4,
+          "id": "structure.",
+          "title": "Structure.",
+          "line": 147
+        },
+        {
+          "level": 1,
+          "id": "sec:sharp",
+          "title": "The sharp 41/65 certificate",
+          "line": 157
+        },
+        {
+          "level": 1,
+          "id": "sec:primitive",
+          "title": "Integer scalar content is neutral",
+          "line": 261
+        },
+        {
+          "level": 1,
+          "id": "sec:endpoints",
+          "title": "Endpoint residues at (3,2) and the four-jet kernel",
+          "line": 323
+        },
+        {
+          "level": 1,
+          "id": "sec:corridor",
+          "title": "Failure of coordinatewise clearing at 3/2",
+          "line": 580
+        },
+        {
+          "level": 1,
+          "id": "sec:tail",
+          "title": "The cleared-tail recurrence and the size of the forcing term",
+          "line": 657
+        },
+        {
+          "level": 1,
+          "id": "sec:sevenhalves",
+          "title": "The height criterion at 7/2",
+          "line": 719
+        },
+        {
+          "level": 2,
+          "id": "the-81200-logarithmic-region",
+          "title": "The 81/200 logarithmic region",
+          "line": 750
+        },
+        {
+          "level": 1,
+          "id": "sec:pade",
+          "title": "Denominator exponents for a homogenised Pad\u00e9 construction",
+          "line": 776
+        },
+        {
+          "level": 1,
+          "id": "sec:open",
+          "title": "Complements and further questions",
+          "line": 816
+        },
+        {
+          "level": 2,
+          "id": "exact-kernel-escape",
+          "title": "Exact kernel escape",
+          "line": 864
+        },
+        {
+          "level": 2,
+          "id": "determinant-families",
+          "title": "Determinant families",
+          "line": 931
+        },
+        {
+          "level": 2,
+          "id": "asymptotic-adequacy-after-kernel-escape",
+          "title": "Asymptotic adequacy after kernel escape",
+          "line": 957
+        },
+        {
+          "level": 2,
+          "id": "one-exact-alternative-criterion-test",
+          "title": "One exact alternative-criterion test",
+          "line": 977
+        },
+        {
+          "level": 2,
+          "id": "the-quantitative-height-limitation",
+          "title": "The quantitative height limitation",
+          "line": 1002
+        },
+        {
+          "level": 2,
+          "id": "statements-and-declarations",
+          "title": "Statements and declarations",
+          "line": 1030
+        },
+        {
+          "level": 4,
+          "id": "artefact-and-data-availability.",
+          "title": "Artefact and data availability.",
+          "line": 1034
+        },
+        {
+          "level": 4,
+          "id": "funding-and-competing-interests.",
+          "title": "Funding and competing interests.",
+          "line": 1040
+        },
+        {
+          "level": 4,
+          "id": "acknowledgements.",
+          "title": "Acknowledgements.",
+          "line": 1046
+        },
+        {
+          "level": 1,
+          "id": "app:index",
+          "title": "Guide to the formal sources",
+          "line": 1052
+        },
+        {
+          "level": 1,
+          "id": "sec:erdos-1049-complete-family-map",
+          "title": "Complete result-family map",
+          "line": 1058
+        },
+        {
+          "level": 2,
+          "id": "rational-base-tail-recurrence",
+          "title": "Rational base tail recurrence",
+          "line": 1064
+        },
+        {
+          "level": 2,
+          "id": "seven-halves-irrationality",
+          "title": "Seven halves irrationality",
+          "line": 1084
+        },
+        {
+          "level": 2,
+          "id": "endpoint-residues",
+          "title": "Endpoint residues",
+          "line": 1104
+        },
+        {
+          "level": 2,
+          "id": "height-and-pade-arithmetic",
+          "title": "Height and pade arithmetic",
+          "line": 1124
+        },
+        {
+          "level": 2,
+          "id": "coordinatewise-corridor-no-go",
+          "title": "Coordinatewise corridor no go",
+          "line": 1152
+        },
+        {
+          "level": 2,
+          "id": "scalar-content-no-go",
+          "title": "Scalar content no go",
+          "line": 1172
+        },
+        {
+          "level": 2,
+          "id": "four-jet-collision",
+          "title": "Four jet collision",
+          "line": 1192
+        }
+      ],
+      "citations_rendered": 31,
+      "local_pdf": "erdos1049-rational-base-lambert-reasoning-surface.pdf",
+      "pdf_sha256": "sha256:fb370d6710ebc388ec6b5dbd8d53b87793444c0458ec688ab3d79f443400988a",
+      "pdf_byte_count": 193884,
+      "first_pass": {
+        "stated_by_the_paper": false,
+        "provenance": "editorial selection; this paper states no reading route of its own",
+        "sections": [
+          {
+            "id": "sec:problem",
+            "title": "Introduction",
+            "line": 43
+          },
+          {
+            "id": "sec:primitive",
+            "title": "Integer scalar content is neutral",
+            "line": 261
+          },
+          {
+            "id": "sec:endpoints",
+            "title": "Endpoint residues at (3,2) and the four-jet kernel",
+            "line": 323
+          },
+          {
+            "id": "sec:open",
+            "title": "Complements and further questions",
+            "line": 816
+          },
+          {
+            "id": "sec:erdos-1049-complete-family-map",
+            "title": "Complete result-family map",
+            "line": 1058
           }
         ],
         "unresolved_count": 0

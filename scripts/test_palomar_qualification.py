@@ -74,15 +74,22 @@ def test_normal_and_optimised_checker_agree() -> None:
     assert optimised.returncode == 0, optimised.stdout + optimised.stderr
     assert json.loads(optimised.stdout) == normal
     assert normal["ok"] is True
-    assert normal["decision"] == "READY"
-    assert normal["structural_deficits"] == []
+    assert normal["decision"] == "NOT_READY"
+    portfolio = normal["entry_portfolio"]
+    expected_deficits = (
+        ["per_entry_trusted_challenge_closure_incomplete"]
+        if portfolio["trusted_closure_compliant_count"] < portfolio["package_count"]
+        else []
+    )
+    assert normal["structural_deficits"] == expected_deficits
+    assert any("CI-only aggregate" in warning for warning in normal["structural_warnings"])
     assert normal["kernel_security"] == {
         "fixed_kernel_replay_configuration": "present",
         "fixed_kernel_replay_receipt": "required_not_established_here",
         "palomar_protocol_requirement": "pass",
         "release_meaning": (
-            "READY is repository-local structural qualification only; release assurance "
-            "still requires the existing commit-bound fixed-kernel replay receipt"
+            "NOT_READY records real Palomar entry-structure deficits; release assurance "
+            "also still requires the existing commit-bound fixed-kernel replay receipt"
         ),
         "target_toolchain": "leanprover/lean4:v4.29.1",
     }
@@ -94,6 +101,105 @@ def test_normal_and_optimised_checker_agree() -> None:
         encoding="utf-8"
     )
     assert "operator_only" not in reconciliation_text
+
+
+def test_palomar_entry_portfolio_fails_closed_without_narrowing() -> None:
+    facts = checker.palomar_entry_portfolio_evidence(ROOT)
+    membership = json.loads(
+        checker.committed_bytes(
+            ROOT, "verification/comparator-replay-membership.json"
+        )
+    )
+    expected_package_count = len(membership["required_package_ids"])
+    expected_interface_count = sum(
+        len(interfaces)
+        for interfaces in membership["required_interfaces_by_package"].values()
+    )
+    assert facts["package_count"] == expected_package_count
+    assert facts["interface_count"] == expected_interface_count
+    assert facts["lake_target_count"] == expected_package_count
+    assert facts["challenge_solution_pair_count"] == expected_package_count
+    assert facts["hard_cap_compliant_count"] == expected_package_count
+    assert facts["auditability_warning_count"] == 0
+    assert facts["trusted_closure_compliant_count"] in {
+        facts["package_count"] - 1,
+        facts["package_count"],
+    }
+    if facts["trusted_closure_compliant_count"] < facts["package_count"]:
+        assert facts["trusted_closure_failures"] == [
+            {
+                "package_id": "ExternalVerification1049",
+                "project_local_imports": ["ExternalVerification1049.Statements"],
+            }
+        ]
+    else:
+        assert facts["trusted_closure_failures"] == []
+    assert facts["catalog_materialization"] in {
+        "committed_head",
+        "generated_worktree_not_release_evidence",
+    }
+    assert facts["valid_per_entry_config_count"] == expected_package_count
+    assert facts["missing_per_entry_config_package_ids"] == []
+    assert facts["source_bound_package_match_count"] == 4
+    flagship = next(
+        row
+        for row in facts["source_bound_package_matches"]
+        if row["claim_id"] == "reciprocal_summable_support"
+    )
+    assert flagship == {
+        "claim_id": "reciprocal_summable_support",
+        "review_family": "reciprocal_summable_support",
+        "package_id": "ExternalVerification257ReciprocalSupport",
+        "interface_name": (
+            "Erdos249257.ExternalVerification257ReciprocalSupport."
+            "irrational_supportPowerSeries_of_summable_reciprocal"
+        ),
+        "source_module": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+        "source_declaration": (
+            "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal"
+        ),
+        "evidence": (
+            "claim anchor + main-result source link + exact Solution import/use; "
+            "Comparator execution not asserted"
+        ),
+    }
+    assert facts["umbrella_project_local_imports"] == [
+        "ExternalVerification.Statements"
+    ]
+    assert facts["catalog_entry_violations"] == []
+    assert checker.palomar_entry_catalog_errors(facts) == []
+    registered_coverage = membership["registered_claim_coverage"]
+    assert facts["linked_claim_transport_count"] == registered_coverage[
+        "linked_transport_claim_count"
+    ]
+    assert facts["missing_formal_transport_count"] == registered_coverage[
+        "missing_formal_transport_count"
+    ]
+    assert checker.palomar_entry_portfolio_deficits(facts) == (
+        ["per_entry_trusted_challenge_closure_incomplete"]
+        if facts["trusted_closure_compliant_count"] < facts["package_count"]
+        else []
+    )
+
+    repaired = copy.deepcopy(facts)
+    repaired["umbrella_project_local_imports"] = []
+    repaired["trusted_closure_compliant_count"] = repaired["package_count"]
+    repaired["valid_per_entry_config_count"] = repaired["package_count"]
+    assert checker.palomar_entry_portfolio_deficits(repaired) == []
+
+    bad_entries = [
+        {
+            "package_id": "ExternalVerification257ReciprocalSupport",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "config_path": "verification/comparator.json",
+        }
+    ]
+    violations = checker.catalog_entry_selection_violations(
+        bad_entries, ["ExternalVerification257ReciprocalSupport"]
+    )
+    assert any("CI-only aggregate module" in row for row in violations)
+    assert any("CI-only aggregate config" in row for row in violations)
 
 
 def test_v04_profile_rejects_missing_source_relationship() -> None:
@@ -172,6 +278,16 @@ def test_pinned_classification_authorities_are_required() -> None:
     ]
     errors = checker.authority_errors(damaged)
     assert any("arxiv-categories.json" in error for error in errors)
+
+    damaged = copy.deepcopy(reconciliation)
+    damaged["current_public_intake"]["required_human_confirmations"].pop()
+    errors = checker.authority_errors(damaged)
+    assert any("both explicit human confirmations" in error for error in errors)
+
+    damaged = copy.deepcopy(reconciliation)
+    damaged["current_public_intake"]["current_policy_commit"] = "0" * 40
+    errors = checker.authority_errors(damaged)
+    assert any("current_policy_commit" in error for error in errors)
 
     damaged = copy.deepcopy(reconciliation)
     damaged["official_authorities"] = [
@@ -1120,6 +1236,7 @@ def test_adversarial_roster_drop_is_not_silently_accepted() -> None:
 if __name__ == "__main__":
     test_safe_input_boundary()
     test_normal_and_optimised_checker_agree()
+    test_palomar_entry_portfolio_fails_closed_without_narrowing()
     test_v04_profile_rejects_missing_source_relationship()
     test_generated_formalization_reads_committed_head_only()
     test_structural_qualification_ignores_mutable_source_reads()

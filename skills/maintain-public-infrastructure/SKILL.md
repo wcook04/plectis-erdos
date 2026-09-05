@@ -90,6 +90,13 @@ Prefer consolidation over another guide:
 - deep guides explain authority and mutation boundaries, not a second routing
   taxonomy.
 
+Population checks must derive membership from the owning registry and verify
+that its projections agree; do not freeze the current count in a live fixture.
+Test growth and stale-count rejection. Keep synthetic invalid fixtures separate
+from the live baseline so a repaired defect is not required to remain present.
+Apply submission gates to the selected submission objects: a separately labelled
+CI aggregate is not a failed submission merely because it has a different scope.
+
 If two public surfaces must repeat a fact, identify which one owns it and give
 the other a route pointer or a generated projection. Do not copy a private
 system's full doctrine into this repository; port only the public capability
