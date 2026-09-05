@@ -12,13 +12,16 @@ repositories, private caches, auto-memory, or unpublished state.
 
 Route the actual task before opening broad files:
 
+Proof-only sparse clones include the build wrapper, but omit corpus queries
+and skills. For those tasks, run `git sparse-checkout disable` first to fetch
+the omitted files. Focused builds need no expansion.
+
 ```sh
 python3 scripts/agent_entry.py --entry "<task in ordinary language>"
 ```
 
-It recommends a task lane, the smallest read set, and the relevant skills;
-`python3 scripts/agent_entry.py --skills` is the complete catalog. Its routing
-metadata is navigation, not mathematical authority.
+`python3 scripts/agent_entry.py --skills` lists all workflows. Routing metadata
+is navigation, not mathematical authority.
 
 ## Route the task before reading broadly
 

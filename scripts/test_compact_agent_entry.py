@@ -64,6 +64,10 @@ def main() -> int:
     encoded = text.encode("utf-8")
 
     assert len(encoded) < 8_000, len(encoded)
+    assert "Focused builds need no expansion." in text
+    assert text.index("git sparse-checkout disable") < text.index(
+        'python3 scripts/agent_entry.py --entry "<task in ordinary language>"'
+    ), "sparse expansion must be explained before the unavailable router"
     for required in (
         'query_corpus.py --ask "<question>"',
         "query_corpus.py --overview --format card",
