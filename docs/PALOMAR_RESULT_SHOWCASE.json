@@ -378,6 +378,78 @@
         "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=1041].families[translated_quartic_quotient_fibres]",
         "hard_mechanism": "Cyclic mean-square averaging puts the quotient roots in the open disk. For alpha=1/q, a lifted chord has density bounded by (sqrt(d^2+x^2))^(alpha-1) <= x^(alpha-1); integration bounds its length by |a|^alpha+|b|^alpha < 2. Splitting at the origin handles the branch singularity.",
         "open_boundary": "The research Lean companion checks scalar lift-density, integration and endpoint-budget consumers. It does not prove the cited quartic geometry, construct a continuous root lift, establish full cyclic fibres or assemble the path. There is no matching Comparator theorem for this complete ordinary family."
+      },
+      {
+        "family_id": "divisibility_weighted_support_irrationality",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "A complete ordinary support regime, placed before target-specific repair probes; it excludes divergent-reciprocal cases beyond the checked reciprocal-support floor.",
+        "evidence_status": "reviewed_ordinary_proof_with_exact_finite_checks_not_new_lean_or_comparator_authority",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=257].families[divisibility_weighted_support_irrationality]",
+        "hard_mechanism": "Finite gcd-orbit bounds followed by a second average over observation lengths control incomplete periods while freezing divisibility cores; the explicit short-gap host has divergent reciprocal mass.",
+        "open_boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+      },
+      {
+        "family_id": "variable_exponent_fractional_cover_irrationality",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "A complete ordinary support regime, placed before target-specific repair probes; it excludes divergent-reciprocal cases beyond the checked reciprocal-support floor.",
+        "evidence_status": "reviewed_ordinary_proof_with_exact_finite_checks_not_new_lean_or_comparator_authority",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=257].families[variable_exponent_fractional_cover_irrationality]",
+        "hard_mechanism": "Positive progression resolvents and a summable triple-series dominator permit block-dependent fractional exponents tending to zero, preserving overlap in moving divisor frames.",
+        "open_boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+      },
+      {
+        "family_id": "arbitrary_prime_power_support_irrationality",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "A complete ordinary support regime, placed before target-specific repair probes; it excludes divergent-reciprocal cases beyond the checked reciprocal-support floor.",
+        "evidence_status": "reviewed_ordinary_proof_with_exact_finite_checks_not_new_lean_or_comparator_authority",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=257].families[arbitrary_prime_power_support_irrationality]",
+        "hard_mechanism": "Prime-local dilation differences and a selected-prime reciprocal-mass scale allow the stated correlation theorem to treat arbitrarily thinned prime-power supports.",
+        "open_boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+      },
+      {
+        "family_id": "sub_logstar_reciprocal_mass_irrationality",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "A complete ordinary support regime, placed before target-specific repair probes; it excludes divergent-reciprocal cases beyond the checked reciprocal-support floor.",
+        "evidence_status": "reviewed_ordinary_proof_with_exact_finite_checks_not_new_lean_or_comparator_authority",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=257].families[sub_logstar_reciprocal_mass_irrationality]",
+        "hard_mechanism": "A rational phase gap and the finite gcd-weighted average force reciprocal-mass increments at two-tower-step scales, giving a quantitative liminf obstruction to every rational representation.",
+        "open_boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+      },
+      {
+        "family_id": "prime_cofactor_repair_obstruction",
+        "tier_id": "natural_friction_and_no_go",
+        "relative_judgement": "A useful obstruction or exact target reduction, placed below complete support regimes; it supplies no surviving all-depth repair producer.",
+        "evidence_status": "reviewed_ordinary_proof_with_exact_finite_checks_not_new_lean_or_comparator_authority",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=257].families[prime_cofactor_repair_obstruction]",
+        "hard_mechanism": "Eighty exactly certified selected anchors amplify divisor incidence on reduced prime progressions; Dirichlet supplies infinitely many actual failures of the fixed repair producer.",
+        "open_boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+      },
+      {
+        "family_id": "prime_repair_finite_support_rigidity",
+        "tier_id": "natural_friction_and_no_go",
+        "relative_judgement": "A useful obstruction or exact target reduction, placed below complete support regimes; it supplies no surviving all-depth repair producer.",
+        "evidence_status": "reviewed_ordinary_proof_with_exact_finite_checks_not_new_lean_or_comparator_authority",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=257].families[prime_repair_finite_support_rigidity]",
+        "hard_mechanism": "Prime-row floor amplification detects finite greedy support and characterizes eventual repair at every prime below one.",
+        "open_boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+      },
+      {
+        "family_id": "four_ninths_square_root_repair_windows",
+        "tier_id": "supporting_and_long_tail",
+        "relative_judgement": "A useful obstruction or exact target reduction, placed below complete support regimes; it supplies no surviving all-depth repair producer.",
+        "evidence_status": "reviewed_ordinary_proof_with_exact_finite_checks_not_new_lean_or_comparator_authority",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=257].families[four_ninths_square_root_repair_windows]",
+        "hard_mechanism": "The support-uniform square-root tail bound and integer growth turn cofinal repair into an explicit finite-window condition under actual membership.",
+        "open_boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+      },
+      {
+        "family_id": "twenty_one_two_anchor_divergence_density",
+        "tier_id": "supporting_and_long_tail",
+        "relative_judgement": "A useful obstruction or exact target reduction, placed below complete support regimes; it supplies no surviving all-depth repair producer.",
+        "evidence_status": "reviewed_ordinary_proof_with_exact_finite_checks_not_new_lean_or_comparator_authority",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=257].families[twenty_one_two_anchor_divergence_density]",
+        "hard_mechanism": "Two selected fractional atoms rule out alignment on sixty classes modulo 105; upper-half skips amplify this finite phase certificate to a conditional upper-density bound.",
+        "open_boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
       }
     ],
     "programme_family_order": [
@@ -437,6 +509,10 @@
       {
         "problem": 257,
         "family_ids": [
+          "divisibility_weighted_support_irrationality",
+          "variable_exponent_fractional_cover_irrationality",
+          "arbitrary_prime_power_support_irrationality",
+          "sub_logstar_reciprocal_mass_irrationality",
           "known_irrational_supports",
           "pairwise_coprime_support",
           "orthogonal_petal_sunflower_reduction",
@@ -447,6 +523,10 @@
           "boolean_mobius_carry",
           "achievement_set_geometry",
           "restricted_achievement_sets",
+          "prime_cofactor_repair_obstruction",
+          "prime_repair_finite_support_rigidity",
+          "four_ninths_square_root_repair_windows",
+          "twenty_one_two_anchor_divergence_density",
           "half_and_twenty_one_frontiers",
           "composite_dilation_defect_identity",
           "finite_period_noncollapse"
