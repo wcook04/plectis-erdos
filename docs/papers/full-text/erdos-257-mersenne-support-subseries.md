@@ -96,7 +96,7 @@ The order statement is [checked](https://github.com/wcook04/plectis-lean-erdos24
 
 #### Structure.
 
-Section <a href="#sec:period" data-reference-type="ref" data-reference="sec:period">2</a> develops the arithmetic of Theorem <a href="#res:period" data-reference-type="ref" data-reference="res:period">2</a>. Section <a href="#sec:forced" data-reference-type="ref" data-reference="sec:forced">3</a> collects what rationality would force on an arbitrary infinite support, which is the part of this note that quantifies over every support rather than sampling. Section <a href="#sec:map" data-reference-type="ref" data-reference="sec:map">4</a> gives representative supports already known to give irrational values, grouped by the argument that reaches them. Section <a href="#sec:squarefree" data-reference-type="ref" data-reference="sec:squarefree">5</a> treats the squarefree support, whose values are known at every power-of-two base and which two of the arguments used here provably cannot reach at any even base. Section <a href="#sec:geometry" data-reference-type="ref" data-reference="sec:geometry">6</a> gives the unrestricted and support-restricted topology and measure classifications, followed by the exact $`1/2`$ and $`1/21`$ membership criteria and unresolved branches. Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">7</a> states what remains.
+Section <a href="#sec:period" data-reference-type="ref" data-reference="sec:period">2</a> develops the arithmetic of Theorem <a href="#res:period" data-reference-type="ref" data-reference="res:period">2</a>. Section <a href="#sec:forced" data-reference-type="ref" data-reference="sec:forced">3</a> collects what rationality would force on an arbitrary infinite support, which is the part of this note that quantifies over every support rather than sampling. Section <a href="#sec:map" data-reference-type="ref" data-reference="sec:map">4</a> gives representative supports already known to give irrational values, grouped by the argument that reaches them. Section <a href="#sec:squarefree" data-reference-type="ref" data-reference="sec:squarefree">6</a> treats the squarefree support, whose values are known at every power-of-two base and which two of the arguments used here provably cannot reach at any even base. Section <a href="#sec:geometry" data-reference-type="ref" data-reference="sec:geometry">7</a> gives the unrestricted and support-restricted topology and measure classifications, followed by the exact $`1/2`$ and $`1/21`$ membership criteria and unresolved branches. Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">8</a> states what remains.
 
 <a id="sec:period"></a>
 
@@ -336,9 +336,76 @@ and proves that the binary block $`11`$ occurs infinitely often in its base-$`2`
 
 *Remark 1* (signed periodic weights: a gap in the method, not in the mathematics). Dropping nonnegativity weakens the conclusion available, and it is worth being exact about where. For $`u\colon\mathbb{N}_{>0}\to\mathbb{Z}`$ periodic and $`b\ge2`$, what is checked here is a *dichotomy*: the series $`\sum_{n\ge1}u(n)/(b^n-1)`$ is irrational, *or* some power of $`b`$ times its value is an integer ([checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L14175)). For a nonnegative support indicator the terminating alternative is excluded by the rows above; for mixed signs this argument does not exclude it.
 
-The terminating alternative never in fact occurs. Theorem A in Luca and Tachiya’s 2017 RIMS paper explicitly restates their earlier Theorem 1.1 in the exact form needed here: $`\sum_{n\ge1}a_n/(q^n-1)`$ is irrational for every integer $`q`$ with $`|q|>1`$ and every nonzero purely periodic integer sequence $`(a_n)`$ \[lucatachiya2017, Theorem A, p. 139\]. Thus the disjunction above is a consequence of the chosen argument, not a feature of the problem: the second branch is empty, and their author restatement is what shows it. The RIMS paper does not reproduce the earlier proof or verify the broader eventual-rational formulation, so neither is claimed here. The local statement retains only the interest of being an independently checked argument with a visible boundary. Section <a href="#sec:squarefree" data-reference-type="ref" data-reference="sec:squarefree">5</a> records a second, sharper instance of the same phenomenon.
+The terminating alternative never in fact occurs. Theorem A in Luca and Tachiya’s 2017 RIMS paper explicitly restates their earlier Theorem 1.1 in the exact form needed here: $`\sum_{n\ge1}a_n/(q^n-1)`$ is irrational for every integer $`q`$ with $`|q|>1`$ and every nonzero purely periodic integer sequence $`(a_n)`$ \[lucatachiya2017, Theorem A, p. 139\]. Thus the disjunction above is a consequence of the chosen argument, not a feature of the problem: the second branch is empty, and their author restatement is what shows it. The RIMS paper does not reproduce the earlier proof or verify the broader eventual-rational formulation, so neither is claimed here. The local statement retains only the interest of being an independently checked argument with a visible boundary. Section <a href="#sec:squarefree" data-reference-type="ref" data-reference="sec:squarefree">6</a> records a second, sharper instance of the same phenomenon.
 
 </div>
+
+<a id="sec:bouquet"></a>
+
+# Structured supports: preserving the remaining divisibility
+
+The periodic argument manufactures long divisible blocks. For a sparse composite support the difficulty is different: after finitely many support elements have been absorbed into a congruence modulus, what arithmetic freedom remains in the others? A finite-core bouquet makes that question exact. Write
+``` math
+A=E\cup\{c_i p_i:i\ge0\},\qquad c_i\mid Q,\quad e\mid Q\ (e\in E),
+```
+where $`Q,c_i,e`$ are positive, $`E`$ is finite, the $`p_i>1`$ are pairwise coprime and coprime to $`Q`$, and $`\sum_i p_i^{-1}<\infty`$. The petals $`p_i`$ need not be prime. For every finite set $`F`$ of indices, put $`M_F=Q\prod_{j\in F}p_j`$. Then
+``` math
+\frac{c_i p_i}{\gcd(c_i p_i,M_F)}=p_i\qquad(i\notin F).
+```
+Thus a new ray retains its entire petal as the modulus governing its hits along a progression with step $`M_F`$ ([reduced-modulus identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L192)).
+
+There are concrete infinite examples. Let $`r_0,r_1,\ldots=5,7,11,13,\ldots`$ be the primes after $`3`$, take $`Q=6`$, $`E=\varnothing`$, $`p_i=r_i^2`$, and alternate $`c_i=2,3`$. This gives $`A=\{50,147,242,507,\ldots\}`$; every member has exactly three prime factors counted with multiplicity. The bouquet, infinitude and factor count are [constructed](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L319), [proved](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L337), and [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L343), respectively. The missing step is not the existence of a bouquet. It is a simultaneous choice of a divisible block and a small following tail.
+
+<div id="res:sunflower" class="theorem">
+
+**Theorem 8** (orthogonal-petal sunflower criterion). *Let $`A`$ be a bouquet as above, put $`c(n)=\operatorname{sc}_A(n)`$, and define
+``` math
+T_N=\sum_{j\ge1}\frac{c(N+j)}{2^j},\qquad
+ B_{N,K}=\sum_{r=1}^K c(N+r)2^{K-r}.
+```
+Suppose that for every $`K\ge1`$ there is an $`N\ge0`$ for which
+``` math
+2^K\mid B_{N,K},\qquad T_{N+K}\le16.
+```
+Then $`\sum_{a\in A}(2^a-1)^{-1}`$ is irrational.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Write the series as $`X=\sum_{n\ge1}c(n)2^{-n}`$. If $`qX`$ is an integer for some positive integer $`q`$, then $`qT_N`$ is an integer for every $`N`$: multiply the series by $`2^N`$ and remove its integral prefix. Choose $`K`$ with $`2^K>16q`$ and use the assumed selector. Splitting the tail gives
+``` math
+T_N=\frac{B_{N,K}}{2^K}+\frac{T_{N+K}}{2^K}.
+```
+The first term is integral, so $`qT_{N+K}/2^K`$ is an integer. It is strictly between zero and one: the upper bound follows from the selector, and positivity follows because any positive $`a\in A`$ divides arbitrarily large indices. This is a contradiction. ◻
+
+</div>
+
+The proof only needs one positive member of $`A`$; the bouquet is a proposed source of the selector, not a further ingredient in the contradiction. Likewise, $`16`$ can be replaced by any fixed finite positive bound. What must be uniform is the tail bound as $`K`$ grows. The pinned Lean proof implements the bound $`16`$ through finite windows and the [forced carry supply](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L531), then applies the [irrationality endpoint](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L540). The displayed selector is exactly [the remaining hypothesis](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L406). Neither the reduced-modulus identity nor reciprocal summability proves that selector here. In particular, the example above is not thereby proved to give an irrational sum.
+
+<div id="res:compositedefect" class="theorem">
+
+**Theorem 9** (the composite-dilation defect). *Let $`A\subseteq\mathbb{N}`$ and let $`a,x\in\mathbb{N}_{>0}`$ with $`a\in A`$. Define the foreign-divisor defect
+``` math
+\delta_A(a,x)=\#\{d\mid ax:d\in A,\ d\nmid x,\ d\ne a\}.
+```
+Then the divisor incidence satisfies the exact identity
+``` math
+\operatorname{sc}_A(ax)=\operatorname{sc}_A(x)+\mathbf 1_{a\nmid x}+\delta_A(a,x).
+```
+If every member of $`A`$ is prime, then $`\delta_A(a,x)=0`$, so the familiar prime-support dilation formula is recovered. More generally, if $`A`$ has an `OrthogonalPetalBouquet` witness $`h_B`$, then for every $`i\in\mathbb{N}`$,
+``` math
+\delta_A(\operatorname{ray}_{h_B}(i),x)\le
+  |h_B.\mathrm{exceptional}|+
+  \operatorname{sc}_{\operatorname{range}(h_B.\mathrm{petal})}(x),
+```
+where $`\operatorname{ray}_{h_B}(i)=h_B.\mathrm{core}(i)h_B.\mathrm{petal}(i)`$.*
+
+</div>
+
+The first identity is the finite divisor partition checked at [exact dilation identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L30). The hard point is that a composite multiplier can create support divisors which are neither the multiplier itself nor old divisors of $`x`$; they are recorded by $`\delta_A`$ rather than silently discarded. The defect vanishes under the prime-support hypothesis by [prime-support no-defect](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L103), and the corresponding incidence formula is [prime specialization](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L119). For a bouquet, every non-exceptional foreign divisor injects into a unique petal divisor of $`x`$, yielding the displayed budget through [foreign-divisor classification](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L133) and [defect bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L151). The correction is concrete already for $`A=\{2,6\}`$: multiplying $`x=1`$ by the composite support element $`6`$ creates the additional support divisor $`2`$, so $`\delta_A(6,1)=1`$ ([two-six witness](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L218)).
+
+Thus a composite bouquet cannot be analysed by copying the prime formula until this explicit foreign channel has been budgeted. This theorem provides that local budget only; it neither bounds defects along an infinite orbit nor supplies the uniform tail selector required by Theorem <a href="#res:sunflower" data-reference-type="ref" data-reference="res:sunflower">8</a>.
 
 <a id="sec:squarefree"></a>
 
@@ -348,7 +415,7 @@ Let $`A_{\mathrm{sf}}=\{d\ge2: d\text{ squarefree}\}`$: a support of density $`6
 
 <div id="res:sfcount" class="theorem">
 
-**Theorem 8** (squarefree divisor incidence). *For every $`n\ge1`$ the number of squarefree divisors of $`n`$ is $`2^{\omega(n)}`$, where $`\omega(n)`$ is the number of distinct prime factors, and hence
+**Theorem 10** (squarefree divisor incidence). *For every $`n\ge1`$ the number of squarefree divisors of $`n`$ is $`2^{\omega(n)}`$, where $`\omega(n)`$ is the number of distinct prime factors, and hence
 ``` math
 \operatorname{sc}_{A_{\mathrm{sf}}}(n)=2^{\omega(n)}-1 .
 ```
@@ -376,7 +443,7 @@ and rational translation preserves the joint linear independence with $`1`$.
 
 <div id="res:sfsettled" class="corollary">
 
-**Corollary 9** (joint power-of-two-base theorem). *For every $`h\ge1`$, the $`h+1`$ numbers
+**Corollary 11** (joint power-of-two-base theorem). *For every $`h\ge1`$, the $`h+1`$ numbers
 ``` math
 1,\quad X_{A_{\mathrm{sf}}}(2),\quad X_{A_{\mathrm{sf}}}(4),\quad\ldots,\quad X_{A_{\mathrm{sf}}}(2^h)
 ```
@@ -408,11 +475,11 @@ b^K\mid\displaystyle\sum_{r=1}^{K}f(N+r)b^{K-r}.
 \end{array}
 \tag{4}\label{eq:block-first}
 ```
-Thus the data $`N,K,L,C`$ may depend on $`q`$. The parity of Theorem <a href="#res:sfcount" data-reference-type="ref" data-reference="res:sfcount">8</a> refutes both alternatives for the squarefree incidence sequence at every even base.
+Thus the data $`N,K,L,C`$ may depend on $`q`$. The parity of Theorem <a href="#res:sfcount" data-reference-type="ref" data-reference="res:sfcount">10</a> refutes both alternatives for the squarefree incidence sequence at every even base.
 
 <div id="res:blind" class="corollary">
 
-**Corollary 10** (neither divisibility-first hypothesis has an instance). *For the squarefree support $`A_{\mathrm{sf}}`$ and every even base $`b\ge2`$, neither the digitwise nor the carry-aware block-certificate hypothesis holds. Both fail already at precision $`q=b^2`$.*
+**Corollary 12** (neither divisibility-first hypothesis has an instance). *For the squarefree support $`A_{\mathrm{sf}}`$ and every even base $`b\ge2`$, neither the digitwise nor the carry-aware block-certificate hypothesis holds. Both fail already at precision $`q=b^2`$.*
 
 </div>
 
@@ -436,13 +503,13 @@ The two formal nonexistence statements are checked directly as [the carry-aware 
 
 ## The obstruction is a normalisation, not the value
 
-Corollary <a href="#res:blind" data-reference-type="ref" data-reference="res:blind">10</a> is a statement about two arguments failing on a value that Corollary <a href="#res:sfsettled" data-reference-type="ref" data-reference="res:sfsettled">9</a> shows to be irrational. The question it raises is therefore not whether the value can be reached, but what the failure is a property *of*. It is a property of where the support starts.
+Corollary <a href="#res:blind" data-reference-type="ref" data-reference="res:blind">12</a> is a statement about two arguments failing on a value that Corollary <a href="#res:sfsettled" data-reference-type="ref" data-reference="res:sfsettled">11</a> shows to be irrational. The question it raises is therefore not whether the value can be reached, but what the failure is a property *of*. It is a property of where the support starts.
 
 Adjoin $`1`$ to the support and write $`A_{\mathrm{sf}}^{+}=A_{\mathrm{sf}}\cup\{1\}`$, the full squarefree support. Then
 ``` math
 X_{A_{\mathrm{sf}}^{+}}(b)-X_{A_{\mathrm{sf}}}(b)=\frac1{b-1}\in\mathbb{Q},
 ```
-so the two supports pose the same irrationality question at every base, while the divisor incidence changes from $`2^{\omega(n)}-1`$ to $`2^{\omega(n)}`$ — from odd to even at every $`n\ge2`$. The parity obstruction of Corollary <a href="#res:blind" data-reference-type="ref" data-reference="res:blind">10</a> evaporates under a shift that provably cannot change the answer. The shifted coefficient identity and the exact equivalence of the two irrationality questions are checked as [$`2^{\omega(n)}`$ incidence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L314) and [the shift iff](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L335).
+so the two supports pose the same irrationality question at every base, while the divisor incidence changes from $`2^{\omega(n)}-1`$ to $`2^{\omega(n)}`$ — from odd to even at every $`n\ge2`$. The parity obstruction of Corollary <a href="#res:blind" data-reference-type="ref" data-reference="res:blind">12</a> evaporates under a shift that provably cannot change the answer. The shifted coefficient identity and the exact equivalence of the two irrationality questions are checked as [$`2^{\omega(n)}`$ incidence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L314) and [the shift iff](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L335).
 
 More is true: the shifted first-block condition at base $`2`$ asks for $`2^{r}\mid 2^{\omega(N+r)}`$, that is $`\omega(N+r)\ge r`$ for $`1\le r\le K`$, and a Chinese-remainder construction reserving $`r`$ fresh primes for each shift $`r`$ supplies such an $`N`$ for every $`K`$. This is checked both as the arithmetic block theorem [for $`\omega`$](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L441) and in the corresponding formal statement [for the shifted incidence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L485).
 
@@ -460,7 +527,7 @@ Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:pr
 
 <div id="res:geometry" class="theorem">
 
-**Theorem 11** (geometry of $`\mathcal A`$). *$`\mathcal A`$ is compact, perfect, totally disconnected and nowhere dense, and has Lebesgue measure $`1`$.*
+**Theorem 13** (geometry of $`\mathcal A`$). *$`\mathcal A`$ is compact, perfect, totally disconnected and nowhere dense, and has Lebesgue measure $`1`$.*
 
 </div>
 
@@ -502,7 +569,7 @@ The metric classification is exact. The summability lemma [controls digit terms]
 
 <div id="res:supportvolume" class="theorem">
 
-**Theorem 12** (volume dichotomy for every allowed support). *For every $`J\subseteq\mathbb{N}`$, exactly one of the following measure formulas applies:
+**Theorem 14** (volume dichotomy for every allowed support). *For every $`J\subseteq\mathbb{N}`$, exactly one of the following measure formulas applies:
 ``` math
 \begin{array}{ll}
 J=F^{\,c}\text{ for a finite }F,
@@ -520,7 +587,7 @@ For finite $`F`$, the division-free identity [multiplies the face volume by $`2^
 
 ## The value $`1/2`$
 
-A rational point of $`\mathcal A`$ attained by an infinite support refutes Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>. The distinguished candidate is $`1/2`$, and Theorem <a href="#res:half" data-reference-type="ref" data-reference="res:half">13</a> gives a self-contained pair of exact alternatives.
+A rational point of $`\mathcal A`$ attained by an infinite support refutes Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>. The distinguished candidate is $`1/2`$, and Theorem <a href="#res:half" data-reference-type="ref" data-reference="res:half">15</a> gives a self-contained pair of exact alternatives.
 
 The greedy expansion of $`1/2`$ is an exact finite computation as far as one cares to take it. Through level $`21`$ it takes the exponents
 ``` math
@@ -532,7 +599,7 @@ In the statement, $`u=(u_1,\dots,u_d)\in\{0,1\}^{d}`$ is a finite prefix, $`V(u)
 
 <div id="res:half" class="theorem">
 
-**Theorem 13** (membership and non-membership at $`1/2`$). *The value $`1/2`$ belongs to $`\mathcal A`$ if and only if its canonical greedy expansion omits infinitely many exponents. Dually, $`1/2\notin\mathcal A`$ is equivalent to the existence of a finite *fatal gap* — a prefix $`u`$ through rank $`d`$ with $`V(u)+T_{d+1}<\tfrac12<V(u)+w_{d+1}`$, which makes every continuation miss — and to the greedy orbit having a last skipped exponent. Moreover no finite support has value $`1/2`$.*
+**Theorem 15** (membership and non-membership at $`1/2`$). *The value $`1/2`$ belongs to $`\mathcal A`$ if and only if its canonical greedy expansion omits infinitely many exponents. Dually, $`1/2\notin\mathcal A`$ is equivalent to the existence of a finite *fatal gap* — a prefix $`u`$ through rank $`d`$ with $`V(u)+T_{d+1}<\tfrac12<V(u)+w_{d+1}`$, which makes every continuation miss — and to the greedy orbit having a last skipped exponent. Moreover no finite support has value $`1/2`$.*
 
 </div>
 
@@ -554,7 +621,7 @@ No compatibility between the finite witnesses is assumed. The global [forward en
 
 <div id="res:positiveskipexact" class="theorem">
 
-**Theorem 14** (positive skips characterise the half-value). *The condition `CofinalPositiveHalfGreedySkips` holds if and only if $`1/2\in\mathcal A`$.*
+**Theorem 16** (positive skips characterise the half-value). *The condition `CofinalPositiveHalfGreedySkips` holds if and only if $`1/2\in\mathcal A`$.*
 
 </div>
 
@@ -562,7 +629,7 @@ This is [the checked equivalence](https://github.com/wcook04/plectis-lean-erdos2
 
 <div id="res:terminalhalf" class="theorem">
 
-**Theorem 15** (terminal scaled vanishing implies the half-value). *Let $`S`$ be a `HalfTerminalOnlyScaledVanishingSequence`: its finite words exclude ranks $`0`$ and $`1`$, their depths tend to infinity, and the absolute terminal carry divided by $`2^M`$ tends to zero along the depths $`M`$. Then there is an infinite set $`A\subseteq\mathbb{N}`$ with*
+**Theorem 17** (terminal scaled vanishing implies the half-value). *Let $`S`$ be a `HalfTerminalOnlyScaledVanishingSequence`: its finite words exclude ranks $`0`$ and $`1`$, their depths tend to infinity, and the absolute terminal carry divided by $`2^M`$ tends to zero along the depths $`M`$. Then there is an infinite set $`A\subseteq\mathbb{N}`$ with*
 
 *``` math
 \sum_{a\in A}\frac1{2^a-1}=\frac12.
@@ -591,7 +658,7 @@ whose width is below $`1/9`$. Thus the band is an exact localization of one gree
 
 <div id="res:twothirdsband" class="theorem">
 
-**Theorem 16** (the sharp local two-adic obstruction). *Let $`p,D,q`$ be positive odd integers. If*
+**Theorem 18** (the sharp local two-adic obstruction). *Let $`p,D,q`$ be positive odd integers. If*
 
 *``` math
 q(2q+1)p<2D(3q+1),
@@ -605,44 +672,7 @@ q(2q+1)p<2D(3q+1),
 
 The hard step is genuinely $`2`$-adic. The band defect $`\Delta=6D-2pq`$ is positive and divisible by $`4`$ when $`p,D,q`$ are odd, so $`\Delta\ge4`$; combining that gap with the band inequalities forces $`p>6`$. The exact formal boundaries are the general localization [general band localization](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyTwoThirdsBand.lean#L88), the single-skip equivalence [two-thirds band](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyTwoThirdsBand.lean#L127), and the sharp numerator conclusion [odd numerator bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyTwoThirdsBand.lean#L231). Integral reciprocal states are excluded from the same band by [integral safety](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfGreedyTwoThirdsBand.lean#L185). This is a one-step local no-go result: it neither proves that the half-greedy orbit reaches or avoids the band nor settles half-membership.
 
-Two further conditional arguments sharpen the boundary around this half-value problem. They are logically distinct from the terminal scaled-vanishing question: one seeks irrationality from a structured support, while the other would produce a rational counterexample from cofinal geometric stages.
-
-<div id="res:sunflower" class="theorem">
-
-**Theorem 17** (orthogonal-petal sunflower criterion). *Let $`A\subseteq\mathbb{N}`$ support an `OrthogonalPetalBouquet` and satisfy `SunflowerForcedSlotTailSelection`. Then*
-
-*``` math
-\operatorname{Irrational}\!\left(\sum_{a\in A}\frac{1}{2^a-1}\right).
-```
-The bouquet hypothesis packages a finite exceptional/core part and residual petals that are nontrivial, pairwise coprime, and reciprocal-summable. The remaining selector hypothesis is a uniform tail condition: at every positive length $`K`$ it supplies a shifted block whose binary carry is divisible by $`2^K`$ while its residual tail is bounded. Neither hypothesis is constructed here, so this is a conditional reduction rather than a solution of Problem #257.*
-
-</div>
-
-The hard mechanism is the persistent-reduced-modulus averaging argument: the selector supplies carries, and the support-series theorem turns that supply into irrationality. The exact formal consumers are [forced carry supply](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L531) and [irrationality endpoint](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L540). The source definition of the selector makes the missing analytic obligation explicit at [uniform tail selector](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SupportSunflowerDichotomy.lean#L406).
-
-<div id="res:compositedefect" class="theorem">
-
-**Theorem 18** (the composite-dilation defect). *Let $`A\subseteq\mathbb{N}`$ and let $`a,x\in\mathbb{N}_{>0}`$ with $`a\in A`$. Define the foreign-divisor defect
-``` math
-\delta_A(a,x)=\#\{d\mid ax:d\in A,\ d\nmid x,\ d\ne a\}.
-```
-Then the divisor incidence satisfies the exact identity
-``` math
-\operatorname{sc}_A(ax)=\operatorname{sc}_A(x)+\mathbf 1_{a\nmid x}+\delta_A(a,x).
-```
-If every member of $`A`$ is prime, then $`\delta_A(a,x)=0`$, so the familiar prime-support dilation formula is recovered. More generally, if $`A`$ has an `OrthogonalPetalBouquet` witness $`h_B`$, then for every $`i\in\mathbb{N}`$,
-``` math
-\delta_A(\operatorname{ray}_{h_B}(i),x)\le
-  |h_B.\mathrm{exceptional}|+
-  \operatorname{sc}_{\operatorname{range}(h_B.\mathrm{petal})}(x),
-```
-where $`\operatorname{ray}_{h_B}(i)=h_B.\mathrm{core}(i)h_B.\mathrm{petal}(i)`$.*
-
-</div>
-
-The first identity is the finite divisor partition checked at [exact dilation identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L30). The hard point is that a composite multiplier can create support divisors which are neither the multiplier itself nor old divisors of $`x`$; they are recorded by $`\delta_A`$ rather than silently discarded. The defect vanishes under the prime-support hypothesis by [prime-support no-defect](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L103), and the corresponding incidence formula is [prime specialization](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L119). For a bouquet, every non-exceptional foreign divisor injects into a unique petal divisor of $`x`$, yielding the displayed budget through [foreign-divisor classification](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L133) and [defect bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L151). The correction is concrete already for $`A=\{2,6\}`$: multiplying $`x=1`$ by the composite support element $`6`$ creates the additional support divisor $`2`$, so $`\delta_A(6,1)=1`$ ([two-six witness](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CompositeDilationDefect.lean#L218)).
-
-Thus a composite bouquet cannot be analysed by copying the prime formula until this explicit foreign channel has been budgeted. This theorem provides that local budget only; it neither bounds defects along an infinite orbit nor supplies the uniform tail selector required by Theorem <a href="#res:sunflower" data-reference-type="ref" data-reference="res:sunflower">17</a>.
+A different conditional argument would produce an infinite support of value $`1/2`$ from cofinal geometric stages.
 
 <div id="res:cylinderhalf" class="theorem">
 
@@ -763,7 +793,7 @@ These conclusions remove alternative late Boolean branches; they do not exclude 
 
 # Open problems
 
-Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> remains the frame: the settled families in Section <a href="#sec:map" data-reference-type="ref" data-reference="sec:map">4</a> do not approach a universal quantifier, and the forced conditions in Section <a href="#sec:forced" data-reference-type="ref" data-reference="sec:forced">3</a> are not known to be contradictory. For the base-$`2`$ universal problem, three endpoint questions organise the remaining discussion. The universal problem and the half-value question are not independent, and the relation between them is asymmetric. No finite support has value $`1/2`$ (Theorem <a href="#res:half" data-reference-type="ref" data-reference="res:half">13</a>), so $`1/2\in\mathcal A`$ would exhibit an *infinite* support with a rational value and thereby refute Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>; equivalently, a positive answer to Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> puts $`1/2`$ outside $`\mathcal A`$. The converse direction does not follow: $`1/2\notin\mathcal A`$ would give a finite fatal-gap witness and eliminate this candidate, but would not imply the universal statement. The half-value question is therefore a one-sided test of \#257, not a second problem beside it.
+Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> remains the frame: the settled families in Section <a href="#sec:map" data-reference-type="ref" data-reference="sec:map">4</a> do not approach a universal quantifier, and the forced conditions in Section <a href="#sec:forced" data-reference-type="ref" data-reference="sec:forced">3</a> are not known to be contradictory. For the base-$`2`$ universal problem, three endpoint questions organise the remaining discussion. The universal problem and the half-value question are not independent, and the relation between them is asymmetric. No finite support has value $`1/2`$ (Theorem <a href="#res:half" data-reference-type="ref" data-reference="res:half">15</a>), so $`1/2\in\mathcal A`$ would exhibit an *infinite* support with a rational value and thereby refute Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>; equivalently, a positive answer to Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> puts $`1/2`$ outside $`\mathcal A`$. The converse direction does not follow: $`1/2\notin\mathcal A`$ would give a finite fatal-gap witness and eliminate this candidate, but would not imply the universal statement. The half-value question is therefore a one-sided test of \#257, not a second problem beside it.
 
 <div id="prob:one-over-twenty-one-membership" class="problem">
 
@@ -778,7 +808,7 @@ Equivalently, exclude the explicit fatal/cofinite/aligned branch $`\mathcal F_{2
 
 1.  **Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> itself**, for arbitrary infinite $`A`$. Section <a href="#sec:map" data-reference-type="ref" data-reference="sec:map">4</a> is a list of families and does not approach a universal statement; Section <a href="#sec:forced" data-reference-type="ref" data-reference="sec:forced">3</a> constrains every hypothetical counterexample without excluding one. Every counterexample would have unbounded scaled-tail states, sublogarithmic divisor-coverage gaps and an admissible Boolean–Möbius scaled-tail sequence; Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">5</a> adds its lower bound only under its stated convergence and odd-denominator hypotheses. No contradiction among the applicable constraints is known.
 
-2.  **Membership of $`1/2`$ in $`\mathcal A`$.** Theorem <a href="#res:half" data-reference-type="ref" data-reference="res:half">13</a> makes this exactly equivalent to infinitely many greedy skips, and to a fatal gap on the other side; neither is proved. A proof of non-membership would take the form of one finite fatal gap.
+2.  **Membership of $`1/2`$ in $`\mathcal A`$.** Theorem <a href="#res:half" data-reference-type="ref" data-reference="res:half">15</a> makes this exactly equivalent to infinitely many greedy skips, and to a fatal gap on the other side; neither is proved. A proof of non-membership would take the form of one finite fatal gap.
 
 3.  **Problem <a href="#prob:one-over-twenty-one-membership" data-reference-type="ref" data-reference="prob:one-over-twenty-one-membership">23</a>.** Theorem <a href="#res:one-over-twenty-one" data-reference-type="ref" data-reference="res:one-over-twenty-one">20</a> rules out finite support, while Theorem <a href="#res:one-over-twenty-one-frontier" data-reference-type="ref" data-reference="res:one-over-twenty-one-frontier">22</a> reduces membership exactly to excluding $`\mathcal F_{21}`$. Contradicting its forced eventual affine-supercapacity recurrence or producing arbitrarily deep closed canonical rows would suffice. Neither input is known, and neither is promoted to an equivalence.
 
@@ -863,13 +893,13 @@ If not, what cyclotomic, valuation or cancellation conditions characterise the r
 
 The order theorem supplies the inclusion from left to right, not its converse. A counterexample and corrected classification, or effective extremal bounds within $`\mathcal D_b(L)`$, would strengthen the lead theorem and feed height information back into Problem <a href="#prob:fatal-interval" data-reference-type="ref" data-reference="prob:fatal-interval">27</a>.
 
-For scope, all squarefree values at power-of-two bases, jointly in each finite family, are settled by Corollary 1.2 and Example 1.1 of  \[duverneytachiya, author-preprint p. 4\] (Corollary <a href="#res:sfsettled" data-reference-type="ref" data-reference="res:sfsettled">9</a>). Their cited corollary does not cover bases that are not powers of $`2`$, and this note makes no global open-status or priority claim for those values.
+For scope, all squarefree values at power-of-two bases, jointly in each finite family, are settled by Corollary 1.2 and Example 1.1 of  \[duverneytachiya, author-preprint p. 4\] (Corollary <a href="#res:sfsettled" data-reference-type="ref" data-reference="res:sfsettled">11</a>). Their cited corollary does not cover bases that are not powers of $`2`$, and this note makes no global open-status or priority claim for those values.
 
 <a id="statements-and-declarations"></a>
 
 # Statements and declarations
 
-This manuscript is authored exposition, not proof authority. The linked Lean snapshot is authoritative only for its exact propositions; kernel checking establishes that a proposition was proved, not that it is interesting, novel, or sufficient. The displayed proof of Corollary <a href="#res:blind" data-reference-type="ref" data-reference="res:blind">10</a>, the derivation of Corollary <a href="#res:sfsettled" data-reference-type="ref" data-reference="res:sfsettled">9</a> from  \[duverneytachiya, Cor. 1.2 and Ex. 1.1, author-preprint p. 4\], and the general finite-change argument (from the two checked prefix lemmas) are expository arguments rather than named checked statements.
+This manuscript is authored exposition, not proof authority. The linked Lean snapshot is authoritative only for its exact propositions; kernel checking establishes that a proposition was proved, not that it is interesting, novel, or sufficient. The displayed proof of Corollary <a href="#res:blind" data-reference-type="ref" data-reference="res:blind">12</a>, the derivation of Corollary <a href="#res:sfsettled" data-reference-type="ref" data-reference="res:sfsettled">11</a> from  \[duverneytachiya, Cor. 1.2 and Ex. 1.1, author-preprint p. 4\], and the general finite-change argument (from the two checked prefix lemmas) are expository arguments rather than named checked statements.
 
 The squarefree no-go interfaces, shifted coefficient, shift equivalence, Chinese-remainder block supply, and restricted-selector injectivity are directly checked statements linked at their use; they are not prose-only claims.
 

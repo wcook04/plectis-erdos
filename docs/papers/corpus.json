@@ -3046,12 +3046,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:2b74b7f11c1961561d8e12d9dc08af9b692740adc7fb21c52b69c5c2b0dfbfdc",
+      "source_sha256": "sha256:e477ab92055c1ba53a5ed84005a45d0d39e5191c76a041bfd113a7caf40beaa9",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-257-mersenne-support-subseries.tex",
-      "section_count": 25,
+      "section_count": 26,
       "sections": [
         {
           "level": 1,
@@ -3133,81 +3133,87 @@
         },
         {
           "level": 1,
+          "id": "sec:bouquet",
+          "title": "Structured supports: preserving the remaining divisibility",
+          "line": 343
+        },
+        {
+          "level": 1,
           "id": "sec:squarefree",
           "title": "Squarefree support and a coordinate-dependent obstruction",
-          "line": 343
+          "line": 410
         },
         {
           "level": 2,
           "id": "the-values-are-known-at-every-power-of-two-base",
           "title": "The values are known at every power-of-two base",
-          "line": 361
+          "line": 428
         },
         {
           "level": 2,
           "id": "two-block-certificate-hypotheses-have-no-instance",
           "title": "Two block-certificate hypotheses have no instance",
-          "line": 389
+          "line": 456
         },
         {
           "level": 2,
           "id": "the-obstruction-is-a-normalisation-not-the-value",
           "title": "The obstruction is a normalisation, not the value",
-          "line": 435
+          "line": 502
         },
         {
           "level": 1,
           "id": "sec:geometry",
           "title": "Achievement-set geometry and the value 1/2",
-          "line": 455
+          "line": 522
         },
         {
           "level": 2,
           "id": "geometry-after-restricting-the-allowed-exponents",
           "title": "Geometry after restricting the allowed exponents",
-          "line": 487
+          "line": 554
         },
         {
           "level": 2,
           "id": "the-value-12",
           "title": "The value 1/2",
-          "line": 519
+          "line": 586
         },
         {
           "level": 4,
           "id": "exact-row-transport-at-the-endpoint.",
           "title": "Exact-row transport at the endpoint.",
-          "line": 541
+          "line": 608
         },
         {
           "level": 2,
           "id": "a-second-rational-target",
           "title": "A second rational target",
-          "line": 662
+          "line": 692
         },
         {
           "level": 2,
           "id": "the-scaled-greedy-criterion-at-121",
           "title": "The scaled-greedy criterion at 1/21",
-          "line": 686
+          "line": 716
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Open problems",
-          "line": 762
+          "line": 792
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 868
+          "line": 898
         }
       ],
       "citations_rendered": 24,
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:d7e67f696d0f99bbdff99d4cb808b1fe6ba591cdc8d0da16317e26f31d5c0f45",
-      "pdf_byte_count": 184389,
+      "pdf_sha256": "sha256:16da8453229ce6d0483c3602e50098c8cf7e2690aee47c80195106cfcfce975a",
+      "pdf_byte_count": 188555,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3230,7 +3236,7 @@
           {
             "id": "sec:open",
             "title": "Open problems",
-            "line": 762
+            "line": 792
           }
         ],
         "unresolved_count": 1
