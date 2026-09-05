@@ -328,24 +328,52 @@ progression and exceptional-set hypotheses are checked in the supplement.
 The full-prime theorem and the authors' stated full-prime-power extension
 are due to Tao and Ter\"av\"ainen.
 
-\subsection{A finite deadline for the actual repair problem}
-For the actual greedy support of $4/9$, let
-$Q_N=\lfloor4\cdot2^N/9\rfloor-P_N$, with $P_N$ its integral Lambert
-prefix.  Under membership, the full tail identity and divisor-pair bound
-give $0\le Q_N\le2\sqrt N+4$ at every rank.  Put
-$s=\lfloor\sqrt K\rfloor$ and $T=2s+12$.  Strict increase at every step
-from $K$ through $K+T-1$ would imply $Q_{K+T}\ge T$.  But
-$K+T<(s+4)^2$ gives $Q_{K+T}<T$, a contradiction.  Combining this with
-the existing cofinal-repair consumer proves the exact equivalence
+\subsection{A finite deadline for every real target}
+The repair mechanism does not require periodic digits or even a rational
+target. Let $x\ge0$, let $A_x$ be its actual greedy support, and define
 \[
- \frac49\in\Ach
- \quad\Longleftrightarrow\quad
- \forall K\ \exists N\in[K,K+2\lfloor\sqrt K\rfloor+12):
- Q_{N+1}\le Q_N.
+ P_0(x)=0,\qquad P_{N+1}(x)=2P_N(x)+\scA_{A_x}(N+1),\qquad
+ Q_N(x)=\lfloor2^Nx\rfloor-P_N(x).
 \]
-One strictly increasing window would be a finite nonmembership
-certificate.  Exact finite replay through rank $4096$ finds no such
-certificate and proves no all-depth statement.
+The prefix bound makes $Q_N(x)$ a nonnegative integer.
+
+\begin{theorem}[uniform repair criterion]\label{res:generic-repair}
+For every real $x\ge0$,
+\[
+ x\in\Ach\quad\Longleftrightarrow\quad
+ \forall K\ \exists N\in[K,K+2\lfloor\sqrt K\rfloor+12):
+ Q_{N+1}(x)\le Q_N(x).
+\]
+Equivalently, repairs occur cofinally; equivalently,
+$Q_N(x)\le\scA_{A_x}(N+1)$ cofinally; equivalently, $Q_N(x)\le N+1$
+cofinally. One strictly increasing window excludes membership.
+\end{theorem}
+
+\begin{proof}
+If $x\in\Ach$, the full tail identity and divisor-pair bound give
+$Q_N(x)\le2\sqrt N+4$. Put $s=\lfloor\sqrt K\rfloor$ and $T=2s+12$.
+Strict increase at each of the $T$ steps would give $Q_{K+T}(x)\ge T$.
+But $K+T<(s+4)^2$ gives $Q_{K+T}(x)<2(s+4)+4=T$, a contradiction.
+
+For the converse, the prefix recurrence and the nonnegative next binary
+floor digit give
+\[
+ 2Q_N(x)-\scA_{A_x}(N+1)\le Q_{N+1}(x).
+\]
+A repair therefore forces $Q_N(x)\le\scA_{A_x}(N+1)\le N+1$.
+If $x\notin\Ach$, a positive fatal gap $\delta$ persists in the actual
+greedy remainder; the prefix-tail identity yields
+$Q_N(x)\ge2^N\delta-1$ beyond that fatal rank. This eventually exceeds
+$N+1$, contradicting a cofinal linear bound. These implications give all
+the stated equivalences.
+\end{proof}
+
+The finite deadline comes from a growth comparison: strict increases of
+an integer sequence accumulate linearly, whereas represented tails have
+only a square-root bound. For $x=4/9$ this recovers the original repair
+problem with $Q_N=\lfloor4\cdot2^N/9\rfloor-P_N$. Exact replay through
+rank $4096$ finds no strict window for that target. The theorem identifies
+the certificate to seek; it does not supply its occurrence.
 
 Fixed multiplicative schedules have a different fate.  Eighty exactly
 certified selected anchors through rank $727$, together with Dirichlet's
