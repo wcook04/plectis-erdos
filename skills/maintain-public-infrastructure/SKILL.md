@@ -118,7 +118,48 @@ the other a route pointer or a generated projection. Do not copy a private
 system's full doctrine into this repository; port only the public capability
 and the check that proves it works here.
 
-## Validate behavior, not decoration
+## Make the architecture easier to use
+
+Judge elegance by what the next contributor must understand and coordinate.
+A good repair removes a decision, a duplicate owner, a hidden dependency, or
+an opportunity to enter inconsistent state. Visual polish alone does not do
+that work. Keep one ordinary route for a task, put complexity behind its owning
+component, and expose a recovery action when that component cannot proceed.
+
+Before introducing an abstraction, identify the repeated behavior it replaces
+and its lifetime. For example, a committed reader may share immutable bytes
+after pinning a revision; a live worktree or staged-index reader must still see
+edits. Keep fixture overrides explicit and ahead of shared reads. Do not make
+callers learn a cache protocol to obtain correct source identity.
+
+After a repair, replay the workflow from a fresh contributor's position:
+can they find the right skill, run the default command, understand its result,
+and take the next action without consulting another parallel guide? Simplify
+the owning route when the answer is no.
+
+## Remove measured delays
+
+Start with commands that take more than a second. Measure the same task and
+input before and after; aim to bring interactive commands below one second
+before polishing already-fast paths. Keep the original output or compare its
+structured meaning, and retain the adversarial cases that protect the boundary.
+
+For a release in a shared checkout, use
+`python3 scripts/check_release_ref.py --ref HEAD --receipt .validation-singleflight/release-head.json`.
+Its receipt records elapsed time for every gate, including timeouts. Profile
+the slow gate next. When profiling `check_release.py` itself, its normal entry
+dispatches through singleflight: profile the worker inside a disposable clean
+snapshot so the measurement covers validation rather than receipt collection.
+Do not bypass singleflight to launch competing builds in the working checkout.
+
+Look for repeated file parsing, repeated index construction, serial Git
+subprocesses, and duplicated validation ownership before adding concurrency.
+JSON loaders can decode UTF-8 bytes directly instead of translating newlines;
+verify exact output equivalence. Batch known immutable Git reads through the
+reader that owns the snapshot. Test binary framing, missing paths, moving refs,
+and live index/worktree changes when changing that boundary.
+
+## Validate the changed journey
 
 During the edit, run the narrow owner checks:
 
@@ -162,6 +203,12 @@ agent entry, deep agent guidance, skill routing, human contribution entry,
 release checks, CI, generated projections, and any query or proof consumer
 named by the changed contract. Package or submit only after those dispositions
 are explicit.
+
+Carry each reusable lesson into this public skill or the more specific public
+owner skill during the work. State the trigger, the correct action, and the
+boundary that prevents misuse; do not accumulate dated benchmark logs here.
+Keep measured evidence with the change. A private note or conversation summary
+does not make the lesson available to the next public-clone contributor.
 
 ## Closeout
 

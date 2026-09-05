@@ -132,6 +132,53 @@ def assert_problem_note_route_template(reader: RepositoryReader) -> None:
     )
 
 
+def assert_snapshot_reuse_and_live_readers() -> None:
+    """Keep batch framing, moving refs, overrides, and live index reads distinct."""
+    with tempfile.TemporaryDirectory(prefix="publication-snapshot-", dir=ROOT) as temp:
+        root = Path(temp)
+        live = RepositoryReader(root)
+
+        def git(*args: str) -> None:
+            result = live._git_run(*args)
+            require(result.returncode == 0, result.stderr.decode(errors="replace"))
+
+        git("init", "--quiet")
+        original = b"binary\x00line\n123 blob 4\nend\r\n"
+        (root / "a").write_bytes(original)
+        (root / "b").write_bytes(b"old b")
+        git("add", "a", "b")
+        git("-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid",
+            "commit", "--quiet", "-m", "first")
+        snapshot = RepositoryReader(root, "HEAD")
+        with patch.object(snapshot, "_git_run", wraps=snapshot._git_run) as calls:
+            snapshot.prefetch(["0-missing", "a", "a", "missing"])
+            require(snapshot.read_bytes("a") == original, "batch changed binary bytes")
+            require(snapshot.read_bytes("a") == original, "repeated snapshot read drifted")
+            require(sum(call.args[:2] == ("cat-file", "--batch")
+                        for call in calls.call_args_list) == 1, "batch was duplicated")
+            require(not any(call.args[0] == "show" for call in calls.call_args_list),
+                    "prefetched bytes were read again through Git")
+        staged = RepositoryReader(root, ":")
+        overlay = snapshot.with_overrides({"a": b"overlay"})
+        require(overlay.read_bytes("a") == b"overlay", "overlay lost its replacement")
+        require(snapshot.read_bytes("a") == original, "overlay modified its parent")
+        require(staged.read_bytes("a") == original, "initial staged bytes drifted")
+        (root / "a").write_bytes(b"new a")
+        (root / "b").write_bytes(b"new b")
+        require(live.read_bytes("a") == b"new a", "worktree reader cached stale bytes")
+        git("add", "a", "b")
+        require(staged.read_bytes("a") == b"new a", "index reader cached stale bytes")
+        git("-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid",
+            "commit", "--quiet", "-m", "second")
+        require(snapshot.read_bytes("b") == b"old b", "snapshot mixed moved HEAD bytes")
+        require(overlay.read_bytes("b") == b"old b", "overlay mixed moved HEAD bytes")
+        require(RepositoryReader(root, "HEAD").read_bytes("b") == b"new b",
+                "new snapshot did not observe moved HEAD")
+        snapshot.byte_overrides["a"] = b"mutation"
+        require(snapshot.read_bytes("a") == b"mutation", "cache hid fixture override")
+        require(not snapshot.exists("missing"), "batch invented a missing file")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -142,6 +189,7 @@ def main() -> int:
     assert_committed_snapshot_environment()
     assert_worktree_symlink_boundary()
     assert_worktree_special_file_boundary()
+    assert_snapshot_reuse_and_live_readers()
     reader = RepositoryReader(ROOT, args.git_ref)
     assert_problem_note_route_template(reader)
     baseline_errors = validate_publication_contract(reader)
