@@ -165,6 +165,12 @@ verify exact output equivalence. Batch known immutable Git reads through the
 reader that owns the snapshot. Test binary framing, missing paths, moving refs,
 and live index/worktree changes when changing that boundary.
 
+When many fixtures consult one historical checkpoint, share its small derived
+summary within the reader's lifetime instead of rebuilding or retaining the
+whole atlas. Return a copy to each consumer. Reuse only successful immutable
+identities: missing objects can be fetched, symbolic refs can move, and a new
+reader must observe the repository again.
+
 ## Validate the changed journey
 
 During the edit, run the narrow owner checks:

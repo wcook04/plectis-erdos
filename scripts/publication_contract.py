@@ -110,6 +110,8 @@ class RepositoryReader:
         self.byte_overrides = byte_overrides or {}
         self._snapshot_ref: str | None = None
         self._snapshot_bytes: dict[str, bytes] = {}
+        self._verified_commits: set[str] = set()
+        self._checkpoint_censuses: dict[str, dict[str, Any]] = {}
 
     def with_overrides(self, overrides: dict[str, bytes]) -> RepositoryReader:
         """Derive a fixture view without changing its snapshot or its parent."""
@@ -121,6 +123,8 @@ class RepositoryReader:
         )
         derived._snapshot_ref = self._snapshot_ref
         derived._snapshot_bytes = self._snapshot_bytes
+        derived._verified_commits = self._verified_commits
+        derived._checkpoint_censuses = self._checkpoint_censuses
         return derived
 
     def _git_spec(self, relative: str) -> str:
@@ -239,7 +243,9 @@ class RepositoryReader:
         return True
 
     def git_object_exists(self, object_name: str) -> bool:
-        return (
+        if object_name in self._verified_commits:
+            return True
+        exists = (
             self._git_run(
                 "cat-file",
                 "-e",
@@ -247,6 +253,12 @@ class RepositoryReader:
             ).returncode
             == 0
         )
+        # Successful immutable identities are shared for this reader's lifetime.
+        # Missing objects may be fetched, and symbolic refs may move: neither
+        # is cached. New readers always revalidate availability.
+        if exists and re.fullmatch(r"[0-9a-f]{40}", object_name):
+            self._verified_commits.add(object_name)
+        return exists
 
     def is_shallow_repository(self) -> bool:
         completed = self._git_run(
@@ -426,6 +438,38 @@ def validate_systems_evidence_source(
     return errors
 
 
+def evaluation_checkpoint_census(reader: RepositoryReader, checkpoint: str) -> dict[str, Any]:
+    """Share the small historical census, not the exhaustive atlas, across fixtures."""
+    if checkpoint in reader._checkpoint_censuses:
+        return dict(reader._checkpoint_censuses[checkpoint])
+    checkpoint_reader = RepositoryReader(reader.root, checkpoint)
+    checkpoint_reader.prefetch([CLAIMS_PATH, "docs/declaration_atlas.json"])
+    checkpoint_claims = load_json(checkpoint_reader, CLAIMS_PATH)
+    checkpoint_atlas = load_json(checkpoint_reader, "docs/declaration_atlas.json")
+    atlas_summary = checkpoint_atlas["summary"]
+    assembly = checkpoint_claims["machine_readable_paper"]["publication_assembly"]
+    census = {
+        "snapshot_kind": "evaluation_checkpoint_not_current_tree",
+        "claims_source": CLAIMS_PATH,
+        "declaration_atlas_source": "docs/declaration_atlas.json",
+        "module_count": atlas_summary["module_count"],
+        "declaration_count": atlas_summary["declaration_count"],
+        "theorem_like_count": atlas_summary["theorem_like_count"],
+        "generated_certificate_declaration_count": atlas_summary[
+            "generated_certificate_declaration_count"
+        ],
+        "curated_claim_count": len(checkpoint_claims["claims"]),
+        "contribution_family_count": len(assembly["contribution_families"]),
+        "status_count": len(checkpoint_claims["status_taxonomy"]),
+        "remaining_open_proposition_count": len(
+            checkpoint_claims["remaining_open_propositions"]
+        ),
+    }
+    if re.fullmatch(r"[0-9a-f]{40}", checkpoint):
+        reader._checkpoint_censuses[checkpoint] = census
+    return dict(census)
+
+
 def validate_mutation_evidence_receipt(
     receipt: dict[str, Any],
     artifact: dict[str, Any],
@@ -558,49 +602,19 @@ def validate_mutation_evidence_receipt(
     corpus_snapshot = evaluation.get("corpus_snapshot", {})
     checkpoint = str(evaluation.get("checkpoint") or "")
     unavailable_detail = reader.git_object_unavailable_detail(checkpoint)
-    checkpoint_claims: dict[str, Any] | None = None
-    checkpoint_atlas: dict[str, Any] | None = None
     if unavailable_detail is None:
         try:
-            checkpoint_reader = RepositoryReader(reader.root, checkpoint)
-            checkpoint_claims = load_json(checkpoint_reader, CLAIMS_PATH)
-            checkpoint_atlas = load_json(
-                checkpoint_reader,
-                "docs/declaration_atlas.json",
-            )
+            derived_snapshot = evaluation_checkpoint_census(reader, checkpoint)
         except (FileNotFoundError, json.JSONDecodeError, UnicodeError) as error:
             errors.append(
                 f"publication evidence checkpoint census is unreadable: {error}"
             )
-            checkpoint_claims = None
-            checkpoint_atlas = None
-    if checkpoint_claims is not None and checkpoint_atlas is not None:
-        atlas_summary = checkpoint_atlas["summary"]
-        assembly = checkpoint_claims["machine_readable_paper"][
-            "publication_assembly"
-        ]
-        derived_snapshot = {
-            "snapshot_kind": "evaluation_checkpoint_not_current_tree",
-            "claims_source": CLAIMS_PATH,
-            "declaration_atlas_source": "docs/declaration_atlas.json",
-            "module_count": atlas_summary["module_count"],
-            "declaration_count": atlas_summary["declaration_count"],
-            "theorem_like_count": atlas_summary["theorem_like_count"],
-            "generated_certificate_declaration_count": atlas_summary[
-                "generated_certificate_declaration_count"
-            ],
-            "curated_claim_count": len(checkpoint_claims["claims"]),
-            "contribution_family_count": len(assembly["contribution_families"]),
-            "status_count": len(checkpoint_claims["status_taxonomy"]),
-            "remaining_open_proposition_count": len(
-                checkpoint_claims["remaining_open_propositions"]
-            ),
-        }
-        if corpus_snapshot != derived_snapshot:
-            errors.append(
-                "publication evidence corpus snapshot drifted from the "
-                "evaluation-checkpoint claims and declaration atlas"
-            )
+        else:
+            if corpus_snapshot != derived_snapshot:
+                errors.append(
+                    "publication evidence corpus snapshot drifted from the "
+                    "evaluation-checkpoint claims and declaration atlas"
+                )
 
     protocol = evaluation.get("protocol", {})
     expected_protocol = {
