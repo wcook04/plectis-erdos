@@ -1688,7 +1688,18 @@ $\neg\mathrm{Irrational}(S) \to \exists v>0,\, \exists u:\mathbb{N}\to\mathbb{Z}
 \end{thm}
 
 \begin{thm}[cert:d4 --- \texttt{linearIndependent\_canonicalTotientKernelFamily}]
-For every $e:\mathbb{N}$, the canonical dyadic totient-kernel family $\mathrm{canonicalTotientKernelFamily}(e) : \mathrm{TotientCanonicalIndex}(e) \to \mathbb{N}\to\mathbb{Q}$, which has exactly $2^e+1$ channels, is linearly independent over $\mathbb{Q}$. Proved unconditionally by constructing, via CRT and Dirichlet's theorem on primes in arithmetic progression (\texttt{PrimesCongruentOne}/\texttt{PrimesInAP} from Mathlib), an explicit evaluation point at which one channel becomes prime and every other channel picks up a fresh prime $\equiv 1$ modulo a large power of $2$ — a genuine witnessed producer, not merely a dimension count. Consequently $\neg\mathrm{FiniteDimensional}\,\mathbb{Q}\,(\mathrm{span}\,\mathbb{Q}\,(\mathrm{range}\,\mathrm{fullTotientKernelFamily}))$. Self-flagged: this shows the dyadic-kernel side is infinite-rank; it is not itself an irrationality proof.
+For every $e\ge0$, the canonical family consisting of $\varphi(n)$,
+$\varphi(2n)$, and the odd-residue sections $\varphi(2^j n+r)$ with
+$1\le j\le e$ has $2^e+1$ linearly independent members over $\mathbb Q$.
+On odd inputs the first two members coincide.  CRT and Dirichlet's theorem
+construct a parity-separated evaluation matrix for the family with that pair
+merged; one even evaluation then separates the pair.  Together with the
+even-residue reductions this gives a basis of the full kernel, not just an
+infinite-rank consequence.  The actual sections through level $e$ have rank
+$2^e+1$ for $e\ge1$; at level zero their rank is one because $\varphi(2n)$
+has not yet entered.  The proof mechanism is detailed in
+Section~\ref{sec:mahler-defect}.  No rationality-to-finite-rank implication is
+proved for $S$.
 \par\noindent\ev{Lean} \scale{uniform} \coord{other:dyadic-kernel-rank} \lean{card\_totientCanonicalIndex}{TotientMahlerDefect.lean:61} \lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}
 \end{thm}
 
@@ -5086,19 +5097,53 @@ family to a finite-dimensional space, from which a rationality-forcing
 contradiction (or a genuine rank obstruction) might be extracted.
 
 \textbf{(b) Exact mechanism.}
-\begin{thm}[Infinite dyadic totient-kernel rank]
-For every depth \(e\ge0\), the canonical family of \(2^e+1\) dyadic
-totient-kernel channels (\(\mathtt{card\_totientCanonicalIndex}\),
-\lean{card\_totientCanonicalIndex}{TotientMahlerDefect.lean:61}) is linearly independent over
-\(\mathbb Q\), proved via a \texttt{SeparatedMinorCertificate} (an explicit
-finite evaluation-point assignment with nonzero determinant, forced by CRT +
-Dirichlet's theorem on primes in arithmetic progressions — one channel made
-prime, every other channel forced through a fresh prime \(\equiv1\bmod\) a
-large power of \(2\)).
+\begin{thm}[The dyadic totient basis and finite-level ranks]
+The sequences $\varphi(n)$, $\varphi(2n)$, and
+$\varphi(2^j n+r)$ for $j\ge1$ and odd $0<r<2^j$ form a
+$\mathbb Q$-basis of the span of the full dyadic totient kernel.
+The sections through level $e\ge1$ span a space of dimension $2^e+1$;
+the level-zero span has dimension one.
 \end{thm}
-\lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}; consequently the full
-infinite family spans an infinite-dimensional \(\mathbb Q\)-space,
-\lean{not\_finiteDimensional\_span\_fullTotientKernel}{TotientMahlerDefect.lean:1145}. A companion
+\lean{linearIndependent_oddCoreTotientKernelFamily}{TotientMahlerDefect.lean:1265}
+\lean{span_range_fullTotientKernel_eq_span_range_oddCore}{TotientMahlerDefect.lean:1380}
+\lean{finrank_totientKernelThroughLevelFamily_eq}{TotientMahlerDefect.lean:1084}
+
+\begin{proof}[Proof mechanism]
+Fix $e$.  Restrict the canonical finite family to odd $n$, where
+$\varphi(2n)=\varphi(n)$, and merge these two columns.  The remaining
+arguments $L_i(n)=a_i n+b_i$ are $n$ and the odd-residue affine forms;
+their slopes and residues are coprime and their pairwise cross determinants
+are nonzero.  For each target $i$, CRT prescribes an odd residue for $n$
+and a root of each other $L_j$ modulo a distinct large prime
+$q_j\equiv1\pmod{2^{e+3}}$.  Choosing $q_j$ larger than the nonzero
+cross determinant ensures that the target does not vanish modulo $q_j$.
+Dirichlet's theorem then makes the target value prime in the resulting
+reduced progression.  The odd residue of $n$ fixes
+$v_2(\varphi(L_i(n)))=d_i<e+2$, whereas each off-target totient is divisible
+by $q_j-1$, hence by $2^{e+2}$.
+
+Choose one such input $n_i$ per target and form
+$M_{ij}=\varphi(L_j(n_i))$.  Dividing column $j$ by $2^{d_j}$ gives an
+integer matrix congruent to the identity modulo $2$, so its determinant is
+nonzero.  This proves independence of the merged family on odd inputs
+\lean{exists_separatedMinorCertificate_totientAffineOddFamily}{TotientMahlerDefect.lean:882}.
+In a relation among the original columns, their two zero-residue coefficients
+$\alpha,\beta$ therefore satisfy $\alpha+\beta=0$, and all other coefficients
+vanish.  Evaluation at $n=2$ gives $\alpha+2\beta=0$, proving full independence
+\lean{linearIndependent_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}.
+
+The identities
+$\varphi(2^{j+1}n)=2^j\varphi(2n)$ and
+$\varphi(2^j n+2^{t+1}s)=2^t\varphi(2^{j-t-1}n+s)$ for odd
+$s$ and $0<2^{t+1}s<2^j$ reduce all remaining sections to these basis vectors.
+Finite character gives independence of their union.  The count through level
+$e\ge1$ is $2+\sum_{j=1}^{e}2^{j-1}=2^e+1$.
+\end{proof}
+
+The full-kernel infinite-dimensionality follows, but the explicit basis and
+finite-level ranks are the sharper statements explained here.
+\lean{not_finiteDimensional_span_fullTotientKernel}{TotientMahlerDefect.lean:1145}
+A companion
 impossibility result closes the natural repair attempt directly: a bounded
 \emph{compressed-adjoint certificate} — a triple \((Q,A,\mathrm{boundary})\)
 with \(Q\cdot v\cdot A=\mathrm{boundary}\), \(|\mathrm{boundary}|<Q\cdot v\),
