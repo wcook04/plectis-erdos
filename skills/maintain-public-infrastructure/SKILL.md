@@ -208,6 +208,8 @@ rotation route. Publish new targets atomically, preserve paths that existing
 readers may still hold, and verify replay, subsequent writes, and failures on
 both sides of publication. A manifest can change a file's role without moving
 or duplicating its contents.
+Follow the change through readers and closeout guards: they must resolve the
+active manifest rather than remember the filenames used at initialization.
 
 ## Validate the changed journey
 
