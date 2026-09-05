@@ -518,7 +518,7 @@ When the shared worktree contains unrelated in-progress edits, validate the
 committed snapshot without cleaning or stashing anyone's files:
 
 ```sh
-python3 scripts/check_release_ref.py --ref HEAD --receipt /tmp/release-head.json
+python3 scripts/check_release_ref.py --ref HEAD --receipt .validation-singleflight/release-head.json
 ```
 
 The wrapper uses a disposable local clone and excludes all caller worktree

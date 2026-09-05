@@ -579,6 +579,8 @@ def main() -> int:
     if args.timeout_seconds <= 0:
         parser.error("--timeout-seconds must be positive")
     try:
+        if args.receipt is not None:
+            safe_receipt_path(args.receipt)
         receipt, exit_code = validate_ref(
             args.ref,
             timeout_seconds=args.timeout_seconds,
@@ -587,12 +589,16 @@ def main() -> int:
     except (SnapshotError, OSError, subprocess.SubprocessError) as error:
         print(f"check_release_ref: {error}")
         return 2
-    if args.receipt is not None:
-        write_receipt(args.receipt, receipt)
     if args.format == "json":
         print(json.dumps(receipt, ensure_ascii=False, indent=2))
     else:
         print(render_text(receipt))
+    if args.receipt is not None:
+        try:
+            write_receipt(args.receipt, receipt)
+        except (SnapshotError, OSError) as error:
+            print(f"check_release_ref: {error}", file=sys.stderr)
+            return 2
     return exit_code
 
 

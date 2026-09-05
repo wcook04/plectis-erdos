@@ -196,7 +196,7 @@ python3 scripts/check_architecture_guide.py
 For a committed-snapshot release check in a dirty shared checkout:
 
 ```sh
-python3 scripts/check_release_ref.py --ref HEAD --receipt /tmp/release-head.json
+python3 scripts/check_release_ref.py --ref HEAD --receipt .validation-singleflight/release-head.json
 ```
 
 After Lean edits, run `python3 scripts/lean_fast_build.py --jobs 2

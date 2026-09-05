@@ -6,6 +6,8 @@
 from __future__ import annotations
 
 import json
+import contextlib
+import io
 import os
 import subprocess
 import sys
@@ -45,6 +47,32 @@ def test_snapshot_command_path_boundary() -> None:
             ),
             "snapshot command guard accepted a symlinked parent directory",
         )
+
+
+def test_invalid_receipt_fails_before_validation() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        linked = Path(raw) / "linked"
+        linked.symlink_to(Path(raw), target_is_directory=True)
+        with patch.object(sys, "argv", ["check_release_ref", "--receipt", str(linked / "out.json")]), \
+             patch.object(check_release_ref, "validate_ref") as validate, \
+             contextlib.redirect_stdout(io.StringIO()) as output:
+            require(check_release_ref.main() == 2, "invalid receipt did not fail cleanly")
+        require(not validate.called, "expensive validation ran before receipt preflight")
+        require("symlink" in output.getvalue(), "missing receipt diagnostic")
+
+
+def test_late_receipt_failure_preserves_validation_output() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        destination = Path(raw).resolve() / "out.json"
+        receipt = {"status": "validated", "sentinel": "result preserved"}
+        with patch.object(sys, "argv", ["check_release_ref", "--format", "json", "--receipt", str(destination)]), \
+             patch.object(check_release_ref, "validate_ref", return_value=(receipt, 0)), \
+             patch.object(check_release_ref, "write_receipt", side_effect=OSError("disk full")), \
+             contextlib.redirect_stdout(io.StringIO()) as output, \
+             contextlib.redirect_stderr(io.StringIO()) as errors:
+            require(check_release_ref.main() == 2, "late receipt write failure was ignored")
+        require(json.loads(output.getvalue()) == receipt, "validation result was lost")
+        require("disk full" in errors.getvalue(), "missing late write diagnostic")
 
 
 def test_snapshot_clone_isolation_flags_are_pinned(*, linked_worktree: bool = False) -> None:
@@ -340,6 +368,8 @@ def auxiliary_gate_source(*, label: str, exit_code: int) -> str:
 
 
 def main() -> int:
+    test_invalid_receipt_fails_before_validation()
+    test_late_receipt_failure_preserves_validation_output()
     test_snapshot_command_path_boundary()
     test_snapshot_clone_isolation_flags_are_pinned()
     test_snapshot_clone_isolation_flags_are_pinned(linked_worktree=True)
