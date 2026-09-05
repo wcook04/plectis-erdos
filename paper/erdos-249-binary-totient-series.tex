@@ -443,8 +443,7 @@ source.  For the independent fair-coin geometric waiting times used below,
 the second left-hand side is $\mathbb E[\gcd(X,Y)]$: the factor
 $(2^d-1)^{-2}$ is the mass of the event $d\mid X$ and $d\mid Y$, and
 $\sum_{d\mid g}\ph(d)=g$.  This exact first-moment identity does not imply
-irrationality of $\Stot$; no novelty claim is made for the
-divisor algebra.
+irrationality of $\Stot$.
 {\footnotesize\emph{Checked:}
 \mword{Erdos249257/GcdMomentCalculus.lean}{216}{tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series}{divisor-count layer},
 \mword{Erdos249257/GcdMomentCalculus.lean}{235}{tsum_totient_div_mersenne_sq_eq_gcd_moment_series}{first gcd moment}.}
@@ -1090,7 +1089,6 @@ constant
 (\mword{Erdos249257/GapFareyBound.lean}{176}{gap_check_window_1_240_le_79639646646701375323355774875831053}{checked}),
 and the transport to the series is a tail estimate
 (\mword{Erdos249257/CertificateKernel.lean}{15986}{tsum_totient_div_pow_two_ne_int_div_of_totient_gap_certificate}{checked}).
-\emph{The method is standard, and we claim no novelty for it.}
 
 Two things should be read off correctly.  First, the scale.  A window of $K$
 computed binary digits yields a mediant bound of order $2^{K/2}$: the same
@@ -1904,8 +1902,7 @@ non-$k$-regularity theorem nor the Bell--Smertnig Mahler classification supplies
 a finite-level rank, a basis, or the relations, so
 Theorem~\ref{thm:kkernelrank} is not a consequence of either.  A targeted
 literature search located no source stating the exact rank, the basis, or the
-normal form; that is a search result and not a novelty claim, and the statement
-remains subject to specialist review.
+normal form.
 
 \begin{remark}[excluded generic mechanisms]
 Unbounded prime support, exact multiplicative order, natural-boundary
@@ -1933,7 +1930,8 @@ Section~\ref{sec:open}.
 
 \begin{enumerate}
 \item Irrationality of $\Stot$ (\ref{res:open}) remains open.
-\item The lcm-diagonal and clean cyclotomic-anchor statements are exact
+\item The \mword{Erdos249257/LcmConeFlatness.lean}{426}{irrational_totient_series_iff_lcm_diagonal_certificate_supply}{lcm-diagonal}
+  and clean cyclotomic-anchor statements are exact
   equivalent formulations of \ref{res:equivalences}: they convert
   irrationality into the existence of an unbounded family of finite
   tail-difference certificates.  Finite instances are checked --- every
@@ -1958,7 +1956,7 @@ Section~\ref{sec:open}.
   under an explicit linear-independence hypothesis.  That hypothesis remains
   a paper deduction from Martin's Theorem~1; Martin's theorem is not
   formalised.  No source was located for the rank, basis, or normal form
-  themselves; that search result is not a priority verdict.
+  themselves.
 \end{enumerate}
 
 \noindent The correlation source that fits the normalised totient most

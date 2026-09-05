@@ -178,11 +178,8 @@ lcm-diagonal certificates for every $t\le82$.  The full kernel is therefore
 infinite-dimensional.  The paper also records exact equivalences between
 irrationality and several cofinal certificate or tail-nonintegrality supplies.
 Those equivalences re-express rather than solve the problem: no certificate at
-$t=83$, unbounded certificate family, or irrationality proof is obtained.  The
-contribution is the audited organization of checked results,
-coordinate-specific obstructions, and open implications---not a solution, an
-exhaustive reproduction of every repository theorem, or a priority claim for
-every formalisation.
+$t=83$, unbounded certificate family, or irrationality proof is obtained.  The results are organized by their proof mechanisms,
+coordinate-specific obstructions, and remaining implications.
 \end{abstract}
 
 \section*{How to read this document}
@@ -2932,13 +2929,12 @@ preserves oddness of the numerator
 (\lean{Erdos249257.SignedQMomentObstruction.scaled_dyadic_sum_odd}{SignedQMomentObstruction.lean:78},
 \ev{Lean}, \scale{uniform}, \coord{other:dyadic-parity}).
 
-\subsubsection{Generic tail-orbit rigidity: a self-labelled non-claim}
+\subsubsection{Generic tail-orbit rigidity}
 
-\texttt{GenericTailOrbitRigidity} is explicit in its own header that it
-asserts no novelty and no priority, and contains an explicit \texttt{NON\_CLAIM}
-guard against a superseded ``positive orbit'' route; it is a formal
-algebra/analysis interface, reproduced here only because it entered the
-public tree after the earlier parts of this paper were drafted.
+The scaled-tail recurrence turns rationality into an integer-orbit question.
+Its homogeneous error doubles at every step, so the subexponential boundary
+condition removes that error and identifies the orbit with the actual tail.
+The following equivalence exposes both parts of this argument.
 
 \begin{thm}[T7: tempered-orbit equivalence, abstract binary series]
 For any $c:\mathbb{N}\to\mathbb{N}$ with $c(n)\le n$, writing
