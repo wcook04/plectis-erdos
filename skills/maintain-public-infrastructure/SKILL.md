@@ -184,6 +184,20 @@ passes or abstraction. A successful microbenchmark is not sufficient: prefer
 removing a multi-second delay from the actual journey over complicating an
 already-subsecond component. Keep the evidence and remove the unused approach.
 
+For large generated JSON, first separate the data a command needs from the
+exhaustive export. Prefer a small byte-range index in an existing owner receipt
+over duplicating the corpus or adding another command. Bind ranges to the exact
+output bytes, validate their boundaries and member digests, and retain source
+freshness checks. Missing or unusable indexes should fall back to the ordinary
+reader. Compare indexed and complete reads across the affected command family;
+regenerate dependent input-digest receipts through their own builders.
+
+When filtered inventory still parses an exhaustive array, check whether its
+rows already form contiguous groups. A compact range table can select those
+groups without a second dataset. Keep selection labels inside the canonical
+digest boundary, check complete range coverage, and compare substring, case,
+empty-result, and combined-filter behavior with the full reader.
+
 ## Validate the changed journey
 
 During the edit, run the narrow owner checks:
@@ -200,6 +214,14 @@ python3 scripts/check_cold_clone_comprehension.py --quick
 Use the exact previously failing task with `agent_entry.py --entry` as a manual
 smoke. Before publication, run `python3 scripts/check_release.py` once; do not
 serially rerun every component after that full gate passes.
+
+In a shared checkout, validate the committed result with
+`python3 scripts/check_release_ref.py --ref <commit>`. If another contributor's
+inputs change during a projection refresh, use an isolated committed checkout
+to distinguish the intended output from concurrent edits. Compare structured
+fields before assigning the cause of drift. Regenerate through the owner and
+land only the verified change; a failed aggregate gate can expose an earlier
+missing refresh rather than a defect in the current patch.
 
 A long command is a concurrency window. While it runs, continue only work that
 cannot change its inputs or outputs: audit another route, inspect a disjoint

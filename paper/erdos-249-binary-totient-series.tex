@@ -78,6 +78,16 @@ mixture exceeds $\Theta_2=\Stot-1/2$ by more than $21/320$.  This rules out the
 complete positive rank-one and positive direct-sum mechanism, but not signed
 cancellation or genuinely coupled higher-rank approximants.
 
+The actual totient sequence also admits arbitrarily late pulse blocks modulo
+$2^K$ for every $2\le K<H$: all preceding letters of
+$\ph(n+H)-\ph(n)$ vanish and the terminal letter is $2^{K-1}$.
+Under eventual integral tail differences these force cofinal half-turn
+residues.  At LCM heights a separate estimate cancels the affine main term of
+$\ph(H+j),\ph(2H+j),\ph(3H+j)$, leaving a second difference in
+$2\ph(j)\Z$ with normalized size tending to zero.  The first theorem produces
+actual modular structure; the second gives quantitative real cancellation.
+They are not yet a common-scale contradiction.
+
 These structural theorems do not settle Erd\H{o}s Problem~\#249, which asks
 whether
 \[
@@ -132,8 +142,15 @@ M\"obius--Mersenne cone is also determined sharply: one unique minimizer,
 the uniform $21/320$ floor, the $1/16$ versus $1/15$ boundary, and closure
 under arbitrary finite positive mixing.
 
-The closest results concerning the open series are exact reformulations and
-conditional criteria.  The actual power-two LCM orbit gives a cofinal
+Two further theorems concern actual totient values.  A CRT--Dirichlet
+construction produces prescribed dyadic pulse blocks at arbitrarily late
+prime positions; eventual integral tail differences would inherit their
+half-turn residues.  On the LCM ray, cancelling three affine main terms gives
+a second difference in an explicit integer lattice with a vanishing relative
+error.  Sections~\ref{sec:twoadic-pulses} and~\ref{sec:lcm-curvature} give the
+constructions and explain the missing alignment between them.
+
+The exact endpoint formulations and conditional criteria remain useful.  The actual power-two LCM orbit gives a cofinal
 nonintegrality equivalence; the canonical Mersenne formulation removes the
 remote basepoint; and the full-depth theorem shows that one seed gives eventual
 $2$-syndeticity on its ray.  The independent first-harmonic argument turns four
@@ -971,6 +988,66 @@ Transporting \ref{res:rank} through that recurrence gives \ref{res:carryrank}.
 The complementary finite-rank upper bound, which would make this a proof of
 irrationality, is not available.
 
+\subsection{Actual dyadic pulses and their tail consequence}
+\label{sec:twoadic-pulses}
+
+The rank theorem describes the number of independent sections.  The next
+construction prescribes a whole congruence block of the actual totient values.
+Put $\Delta_H\ph(n)=\ph(n+H)-\ph(n)$.
+
+\begin{theorem}[arbitrarily late totient pulse blocks]
+\label{res:twoadic-pulses}
+For every $2\le K<H$ and every cutoff $B$, there is a prime
+$p>\max\{B,H+K\}$ such that
+\[
+ \Delta_H\ph(p)\equiv2^{K-1}\pmod{2^K},\qquad
+ \Delta_H\ph(p-j)\equiv0\pmod{2^K}\quad(1\le j<K).
+\]
+If $F_H(N):=R_{N+H}-R_N$ is integral for every sufficiently large $N$,
+then cofinally many such prime positions satisfy
+\[
+ F_H(p)\equiv2^{K-1}\pmod{2^K},\qquad |F_H(p)|\ge2^{K-1}.
+\]
+\end{theorem}
+
+\begin{proof}
+For each unwanted totient argument, choose a distinct prime
+$q>H+K$ with $q\equiv1\pmod{2^K}$, and require $q$ to divide that argument.
+Thus one prime is assigned to $p+H$, and two to each pair
+$p-j,p-j+H$.  Impose also $p\equiv1+2^{K-1}\pmod{2^K}$.
+The assigned primes are distinct and odd; the required residue of $p$ at each
+is nonzero because $1\le j<K<H<q$.  The Chinese remainder theorem therefore
+produces a reduced progression.  Dirichlet's theorem supplies primes $p$ in
+that progression beyond any cutoff.  Each assigned divisor forces
+$2^K\mid\ph(n)$, whereas $\ph(p)=p-1\equiv2^{K-1}\pmod{2^K}$.
+Negating the half-turn does not change it, proving the pulse assertion.
+
+For the tail consequence, iterate $F_H(N+1)=2F_H(N)-\Delta_H\ph(N+1)$
+through the $K$ positions ending at $p$:
+\[
+ F_H(p)=2^K F_H(p-K)
+       -\sum_{r=1}^K\Delta_H\ph(p-K+r)2^{K-r}.
+\]
+At a sufficiently late $p$ the entering state is integral, so it disappears
+modulo $2^K$.  Every letter except the last disappears too.  The surviving
+half-turn gives the claimed congruence and its least possible absolute value.
+\end{proof}
+
+The prime construction is checked at
+\mword{Erdos249257/TotientTwoAdicPulseBlock.lean}{54}{exists_prime_totient_twoAdic_pulse_divisors}{the divisor producer}
+and
+\mword{Erdos249257/TotientTwoAdicPulseBlock.lean}{211}{exists_prime_deltaTotient_twoAdic_pulseBlock}{the pulse block};
+the exact transfer and cofinal conclusion are
+\mword{Erdos249257/TotientTwoAdicPulseBlock.lean}{301}{integral_tailDiff_modEq_half_of_twoAdic_pulse}{checked}
+and
+\mword{Erdos249257/TotientTwoAdicPulseBlock.lean}{327}{eventual_integral_tailDiff_has_cofinal_twoAdic_half_pulse}{checked}.
+The inequality for $|F_H(p)|$ is the immediate integer consequence of that
+congruence.  Here $K<H$ is essential to the stated result: cofinal positions
+for a fixed shift do not give unbounded precision for that shift.  Nor does
+the construction bound $|F_H(p)|$ from above by less than $2^{K-1}$.
+That missing real estimate, at the same positions, prevents an irrationality
+conclusion.
+
 \section{A Farey-mediant denominator exclusion}\label{sec:denominator}
 
 \ref{res:denominator} is a Farey exclusion, and we say so before saying
@@ -1209,11 +1286,77 @@ shows what survives: only the final letters control that residue.  This
 prunes total dyadic annihilation, not every top-edge pattern; the remaining
 endpoint problem is still to prove a nonzero cofinal residue gap.
 
+\subsection{Cancelling the LCM main term}
+\label{sec:lcm-curvature}
+
+The positive LCM corridor controls a first difference.  A second difference
+removes the affine main term altogether and exposes a smaller integer scale.
+
+\begin{theorem}[LCM curvature with an exact local factor]
+\label{res:lcm-curvature}
+Let $a\ge4$, $j\ge1$, $j^2\le2^a$, and $H=\lcm(1,\ldots,2^a)$.
+There is an integer $z$ for which
+\[
+ \ph(3H+j)-2\ph(2H+j)+\ph(H+j)=2\ph(j)z,
+ \qquad |z|<\frac{8H/j+4}{a}.
+\]
+\end{theorem}
+
+\begin{proof}
+Set $A=H/j$.  The square-root bound on $j$ ensures that $j\mid H$ and that
+every prime dividing $j$ still divides $A$.  Hence, for $q=1,2,3$,
+\[
+ \ph(qH+j)=\ph(j)\ph(qA+1).
+\]
+Every prime divisor of $y=qA+1$ exceeds $2^a$, while
+$y<2^{2\cdot2^a}$.  If $s$ is the number of its distinct prime divisors,
+then $as<2\cdot2^a$, and the Euler product gives
+\[
+ 1-\frac2a<\frac{\ph(y)}y\le1.
+\]
+Thus the defect $d_q=\ph(j)(qA+1)-\ph(qH+j)$ satisfies
+$0\le d_q<2\ph(j)(qA+1)/a$.
+The affine terms cancel, leaving $-d_3+2d_2-d_1$; its absolute value is
+less than $2\ph(j)(8A+4)/a$.  Finally, $A$ is even and the three cofactors
+$qA+1$ are odd and greater than one, so each has even totient.  Factoring out
+$\ph(j)$ therefore leaves an even integer, which gives the stated $z$.
+\end{proof}
+
+The rough-density estimate, exact local divisibility and primitive bound are
+\mword{Erdos249257/TotientFixedRankLcmAsymptotic.lean}{50}{one_sub_two_div_lt_totient_density_of_rough}{checked},
+\mword{Erdos249257/TotientFixedRankLcmAsymptotic.lean}{519}{two_mul_totient_dvd_fixedRankSecondDifference}{checked}, and
+\mword{Erdos249257/TotientFixedRankLcmAsymptotic.lean}{637}{exists_primitive_fixedRankCurvature_with_bound}{checked}.
+For fixed $j$, the second difference divided by $H$ tends to zero.  This
+improves a fixed-density corridor to a vanishing relative error using only
+roughness and a height bound.  Its scale is still too large to force $z=0$,
+and no cofinal nonzero $z$ is supplied.  Moreover these LCM positions are not
+the prime positions of Section~\ref{sec:twoadic-pulses}; combining the two
+estimates would require an additional arithmetic alignment.
+
 \section{Obstructions for fixed-coordinate methods}\label{sec:nogo}
 
 \ref{res:primindex} has a one-line proof.  Take a prime
 $p>\max(D,2)$; then $\Aw(p)=p-2$ by \ref{res:weight}, and $p\nmid D(p-2)$, so
 $D\cdot\Aw(p)/p\notin\Z$.
+
+A concrete example shows how much apparently useful information can coexist
+with a rational value.  Begin with $c(0),c(1),\ldots=0,1,1,2,4,4,\ldots$,
+whose dyadic sum is $3/2$.  At every $m=2^{k+3}$ replace the pair $(4,4)$ at
+$m,m+1$ by $(6,0)$.  Each replacement has zero value:
+\[
+ \frac{2}{2^m}-\frac{4}{2^{m+1}}=0.
+\]
+The resulting $c$ satisfies $c(n)\le\min\{n,6\}$ and
+$c(n)\equiv\ph(n)\pmod2$, is not eventually periodic, and retains the exact
+sum $3/2$
+(\mword{Erdos249257/TotientParityCoboundaryCountermodel.lean}{359}{tsum_parityCoboundaryWeight_eq_three_halves}{checked}).
+Beyond any cutoff it even contains any prescribed finite number of $(6,0)$
+carry pairs with any prescribed minimum separation
+(\mword{Erdos249257/TotientParityCoboundaryCountermodel.lean}{637}{exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel}{checked}).
+Thus parity, aperiodicity and abundant separated carry markers do not jointly
+supply an irrationality argument.  The actual pulse producer in
+Section~\ref{sec:twoadic-pulses} uses finer arithmetic; its missing real bound
+remains a separate question.
 
 The next two obstructions concern loss of arithmetic information.  Both
 construct synthetic carries compatible with the data retained by a proposed

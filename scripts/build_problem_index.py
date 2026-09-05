@@ -15,6 +15,8 @@ obligations -- lives in ``docs/problem_index_source.json``.  Everything a
 machine can derive is derived here: module paths, declaration and theorem
 counts, note artifact routes, content digests, the standalone paper that writes
 the problem up, and the Comparator disposition of each contribution family.
+The authored module list supplies reading order, not an exhaustive inventory:
+remaining Lean files under each problem directory are appended deterministically.
 The index is therefore stale whenever the source, the Lean modules, the notes,
 the review matrix, or the paper corpus move.
 
@@ -103,6 +105,42 @@ def module_facts(module: str) -> dict[str, object]:
         "theorem_count": sum(1 for line in lines if THEOREM_RE.match(line)),
         "content_digest": sha256(text.encode("utf-8")),
     }
+
+
+def problem_modules(row: dict) -> list[str]:
+    """Keep the authored reading order, then inventory the owned source tree.
+
+    Discovery records source presence only. It neither extends authored
+    checked-result lists nor assigns claim or external-validation status.
+    Separately routed research corpora are not part of this directory walk.
+    """
+    raw = row["directory"]
+    pure = PurePosixPath(raw)
+    if (pure.is_absolute() or ".." in pure.parts or len(pure.parts) < 2
+            or pure.parts[:1] != (LIBRARY,)):
+        raise ValueError(f"unsafe problem directory: {raw}")
+    directory = ROOT.joinpath(*pure.parts)
+    if not directory.is_dir() or directory.resolve() != ROOT.resolve().joinpath(*pure.parts):
+        raise ValueError(f"missing or symlinked problem directory: {raw}")
+    names = list(dict.fromkeys(
+        [row["principal_module"], *row.get("companion_modules", [])]
+    ))
+    for name in names:
+        parts = name.split(".")
+        if parts[0] != LIBRARY or any(not part.isidentifier() for part in parts):
+            raise ValueError(f"unsafe problem module: {name}")
+        path = ROOT / module_path(name)
+        if path.resolve() != ROOT.resolve() / module_path(name):
+            raise ValueError(f"symlinked problem module: {name}")
+    seen = set(names)
+    for path in sorted(directory.rglob("*.lean")):
+        if not path.is_file() or path.resolve() != ROOT.resolve() / path.relative_to(ROOT):
+            raise ValueError(f"nonregular or symlinked problem module: {path}")
+        name = ".".join(path.relative_to(ROOT).with_suffix("").parts)
+        if name not in seen:
+            names.append(name)
+            seen.add(name)
+    return names
 
 
 def note_facts(artifact_id: str, artifacts: dict[str, dict]) -> dict[str, object] | None:
@@ -292,8 +330,7 @@ def build(
     papers = corpus_by_source(corpus)
     problems = []
     for row in source["problems"]:
-        modules = [module_facts(row["principal_module"])]
-        modules.extend(module_facts(name) for name in row.get("companion_modules", []))
+        modules = [module_facts(name) for name in problem_modules(row)]
         problem = {
             "problem_id": row["problem_id"],
             "erdos_number": row["erdos_number"],
@@ -410,7 +447,12 @@ def main() -> int:
                 f"{row['problem_id']}: note artifact {row['note_artifact_id']!r} "
                 "is not registered in the publication contract"
             )
-        for module in [row["principal_module"], *row.get("companion_modules", [])]:
+        try:
+            modules = problem_modules(row)
+        except ValueError as error:
+            errors.append(f"{row['problem_id']}: {error}")
+            modules = []
+        for module in modules:
             if not module.startswith(f"{LIBRARY}."):
                 errors.append(f"{row['problem_id']}: {module} is outside {LIBRARY}")
             elif not (ROOT / module_path(module)).is_file():
