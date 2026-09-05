@@ -368,8 +368,9 @@ The true actual-LCM tail difference is strictly positive for every $a \ge 8$,
 with no irrationality hypothesis
 (\lean{Erdos257PeriodNoncollapse.actualLcmTailDiff\_shift\_pos}{TotientActualLcmOrbitSign.lean:39},
 \lean{Erdos257PeriodNoncollapse.actualLcmTailOrbit\_pos}{TotientActualLcmOrbitSign.lean:144}).
-In the same coordinate, integrality of the orbit forces the residue to the
-\emph{top edge}, exactly $2^{K} - e$
+At a translated offset $J$ and depth $K$ satisfying
+$J+K+(a+6)<2\cdot2^a$ and $2H+J+K+2<2^K$, integrality forces the residue
+to the \emph{top edge}, exactly $2^{K} - e$
 (\lean{Erdos257PeriodNoncollapse.actualLcm\_integral\_forces\_topEdgeResidue}{TotientActualLcmOrbitSign.lean:211}).
 Positivity does not exclude the top edge. So the strongest cofinal fact the
 corpus owns about the actual object supplies one of the two inequalities a
@@ -2385,8 +2386,8 @@ this gives $0<\mathtt{actualLcmTailOrbit}\ a$.
 \end{prop}
 
 \begin{prop}[Integrality forces the exact top-edge residue — names the obstruction]\label{prop:SGN-03}
-Under the room bound of Prop.~\ref{prop:SGN-01} plus $2H+J+K+2<2^K$: integrality of the actual
-orbit forces
+For $a\ge8$, assume the longer-window bound $J+K+(a+6)<2\cdot2^a$
+and $2H+J+K+2<2^K$.  Integrality of the translated actual orbit forces
 \[
 \mathtt{windowDiscrepancy}\ H\ (H{+}J)\ K \bmod 2^K \;=\; 2^K - e
 \]
@@ -4068,7 +4069,8 @@ vs.\ foreign prime power), with absolute constants $4,8,32$ and no lookup table 
 $\mathtt{certifiedKill}$ needs the residue to avoid a \emph{symmetric} radius-$(N{+}h{+}L{+}2)$
 neighbourhood of $0$ on both sides. SGN-01 gives positivity only. Its companion
 \lean{actualLcm_integral_forces_topEdgeResidue}{TotientActualLcmOrbitSign.lean:211} proves that,
-under integrality, the consequence is not a kill but the opposite: the residue is forced to the
+under integrality, $J+K+(a+6)<2\cdot2^a$, and $2H+J+K+2<2^K$,
+the consequence is not a kill but the opposite: the residue is forced to the
 \emph{top edge}, exactly $2^K - e$ where $e$ is the true carry orbit (\lean{carryOrbit}{CarrySurvivorExtinction.lean:387}). So the
 lower half of the certified-kill band is discharged unconditionally and cofinally by SGN-01; the
 upper half is untouched, and what remains open is a genuinely different, one-sided statement about
