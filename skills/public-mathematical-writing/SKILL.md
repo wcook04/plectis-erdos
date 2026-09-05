@@ -186,6 +186,16 @@ python3 scripts/check_problem_note_sources.py --coverage
 python3 scripts/check_release.py
 ```
 
+After a manuscript changes, rebuild its shipped PDF before restamping
+`python3 scripts/check_publication_contract.py --restamp --apply`, then run
+`python3 scripts/build_publication_entry_packet.py`. Moved text also changes
+claim-owned paper anchor lines: refresh those with
+`python3 scripts/refresh_source_coordinates.py --claims-only`. This preserves
+the manuscript's reviewed source links. Refresh the generated paper corpus and
+run the clean-ref release check after committing the complete artifact set;
+a successful PDF build or digest restamp alone does not establish that the
+publication projections agree.
+
 Run `python3 scripts/lean_fast_build.py --jobs 2` after Lean changes. For paper
 changes, rebuild the owning manuscript and run its registered link and corpus
 checks; do not regenerate authored prose mechanically.
