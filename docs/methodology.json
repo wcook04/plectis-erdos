@@ -2,7 +2,7 @@
   "schema": "erdos249257-methodology/2",
   "title": "Formal proofs, mathematical claims, and what remains open",
   "artifact_role": "rules_for_mathematical_reasoning_and_public_claim_changes_not_proof_authority",
-  "scope": "This file defines how this repository distinguishes formal proof, intended mathematical meaning, public claims, and remaining open propositions. It does not prove any mathematical statement and does not replace human mathematical review.",
+  "scope": "This file defines how this repository distinguishes formal proof, intended mathematical meaning, public claims, and remaining open propositions. It does not prove any mathematical statement. Named LLM semantic review is the normal best-attempt authoring path; optional human or specialist review is recorded separately and may contest or upgrade that work later.",
   "human_preamble": [
     "This page records the rules used to relate the Lean development to the mathematical claims made in this repository, and to keep partial results from being overstated. It is generated from `docs/methodology.json`; run `python3 scripts/build_methodology.py` after changing that source. Lean source checked by the pinned Lean kernel remains proof authority.",
     "The machine source calls the six standing rules `method_axiom` records. They are repository rules, not Lean `axiom` declarations."
@@ -24,11 +24,26 @@
       "decides": "Whether identifiers, statuses, source coordinates, routes, projections, and generated files agree.",
       "does_not_decide": "Whether an informal statement is mathematically faithful or significant."
     },
-    "human_mathematical_review": {
-      "human_name": "Human mathematical review",
-      "decides_label": "Records a reviewed judgement about",
-      "decides": "Whether a formal proposition matches the intended statement, how it relates to prior work, what public claim it supports, and what remains open.",
-      "does_not_decide": "Whether the Lean kernel accepts the proof term."
+    "named_semantic_review": {
+      "human_name": "Named LLM semantic review",
+      "decides_label": "Records a best-attempt judgement about",
+      "decides": "A named model's source-bound best attempt at the intended meaning of a formal proposition, its family placement, its significance and editorial rank, the public claim it supports, what remains open, and faithful exposition.",
+      "does_not_decide": "Whether the Lean kernel accepts the proof term; whether novelty, priority, external peer review, or community acceptance has been established.",
+      "normal_authoring_path": true,
+      "record_fields": [
+        "model_identity",
+        "source_identity",
+        "review_scope",
+        "judgement",
+        "uncertainties"
+      ]
+    },
+    "human_specialist_review": {
+      "human_name": "Optional human or specialist review",
+      "decides_label": "Records a named reviewer's judgement about",
+      "decides": "A contest, correction, confirmation, or upgrade of intended meaning, family placement, significance, editorial rank, exposition, or relation to prior work.",
+      "does_not_decide": "Whether the Lean kernel accepts the proof term; nor does one review by itself establish novelty, priority, external peer-review consensus, or community acceptance.",
+      "publication_prerequisite": false
     },
     "blinded_recovery_evaluation": {
       "human_name": "Blinded recovery evaluation",
@@ -98,7 +113,7 @@
   "public_claim_cycle": [
     "lean_declaration",
     "checked_assumptions",
-    "reviewed_intended_meaning",
+    "named_semantic_review",
     "public_claim",
     "authored_exposition",
     "generated_projection",
@@ -140,10 +155,10 @@
       "id": "method_axiom.formal_proof_does_not_verify_intended_meaning",
       "title": "Formal proof does not verify intended meaning",
       "human_name": "Formal validity and mathematical faithfulness are separate questions",
-      "statement": "A checked Lean declaration and the intended mathematical statement remain distinct until human mathematical review records their correspondence.",
+      "statement": "A checked Lean declaration and its intended mathematical statement remain distinct until a named semantic review records a source-bound best-attempt correspondence.",
       "evidence_classes": [
         "lean_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "object:lean_declaration",
@@ -154,7 +169,7 @@
         "release.methodology_schema_and_references",
         "release.claim_transition_requirements"
       ],
-      "scope_limit": "The repository can require and route review; it cannot compute mathematical faithfulness.",
+      "scope_limit": "Semantic review does not become proof authority. Optional human or specialist review may contest, correct, confirm, or upgrade the recorded judgement later.",
       "local_instances": [
         {
           "relation": "illustrates",
@@ -180,7 +195,7 @@
       "statement": "A claim may move between coordinates, encodings, normalisations, or models only through a checked implication or equivalence whose direction and losses are explicit.",
       "evidence_classes": [
         "lean_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "object:representation",
@@ -218,7 +233,7 @@
       "evidence_classes": [
         "lean_check",
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "claim_status:conditional reduction",
@@ -261,7 +276,7 @@
       "evidence_classes": [
         "lean_check",
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "claim_status:verified finite instance",
@@ -303,7 +318,7 @@
       "statement": "A result advances an open target only when it states which remaining open proposition it proves, narrows, decomposes, re-expresses, or constrains.",
       "evidence_classes": [
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "argument_relation:advances_open_target",
@@ -314,7 +329,7 @@
         "release.methodology_schema_and_references",
         "release.claim_transition_requirements"
       ],
-      "scope_limit": "The repository checks that the claimed effect is explicit; human review decides whether the effect is mathematically significant.",
+      "scope_limit": "The repository checks that the effect is explicit; named semantic review supplies the best-attempt significance judgement, without asserting external peer review, novelty, priority, or community acceptance.",
       "local_instances": [
         {
           "relation": "illustrates",
@@ -352,7 +367,7 @@
       "statement": "Every frontier-facing partial result states both its positive conclusion and the exact proposition that survives it.",
       "evidence_classes": [
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "claim_status:conditional reduction",
@@ -372,7 +387,7 @@
       "statement": "Under a hypothetical rational value or counterexample, derive checked structural consequences instead of replacing proof with plausibility.",
       "evidence_classes": [
         "lean_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "object:necessary_consequence",
@@ -390,7 +405,7 @@
       "statement": "A finite checker needs a soundness theorem; calling it exact additionally requires a completeness theorem at the stated parameters.",
       "evidence_classes": [
         "lean_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "object:finite_certificate",
@@ -409,7 +424,7 @@
       "statement": "Each representation change identifies the checked theorem that transfers the claim and states the direction and any loss.",
       "evidence_classes": [
         "lean_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "object:representation",
@@ -427,7 +442,7 @@
       "group": "maintaining",
       "statement": "A failed strategy, counterexample, or disproved finite-state interpretation is retained when it rules out a recurring mathematical route.",
       "evidence_classes": [
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "object:necessary_consequence",
@@ -445,7 +460,7 @@
       "statement": "Distinguish proof-body, proposition, assumption, representation, finite-range, claim-status, exposition, and projection changes before deciding what must be updated.",
       "evidence_classes": [
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "change_type:proof_body_changed",
@@ -466,12 +481,13 @@
     },
     {
       "id": "principle.separate_lean_human_and_agent_authority",
-      "title": "Separate Lean, human, and agent authority",
+      "title": "Separate Lean, named semantic, and specialist authority",
       "group": "maintaining",
-      "statement": "Lean owns formal validity; humans own intended meaning, significance, and public framing; agents may search, propose, test, and expose consequences without inheriting either authority.",
+      "statement": "Lean owns formal validity. A named LLM best attempt is the normal author for intended meaning, family placement, significance and editorial ranking, and exposition. Optional human or specialist review is a separate record that may contest or upgrade that work; it is not a prerequisite for publishing an honest bounded result.",
       "evidence_classes": [
         "lean_check",
-        "human_mathematical_review"
+        "named_semantic_review",
+        "human_specialist_review"
       ],
       "applies_to": [
         "object:lean_declaration",
@@ -483,16 +499,16 @@
         "release.methodology_routes_exist",
         "release.proof_trust"
       ],
-      "scope_limit": "Human review does not replace kernel checking, and kernel checking does not replace human review."
+      "scope_limit": "Neither LLM semantic review nor human or specialist review proves a Lean proposition. Named semantic review does not establish novelty, priority, external peer review, or community acceptance."
     },
     {
       "id": "principle.update_authoritative_sources_before_projections",
       "title": "Update authoritative sources before projections",
       "group": "maintaining",
-      "statement": "Update Lean source first, then assumption and meaning review, then claim status, then authored exposition, then generated projections.",
+      "statement": "Update Lean source first, then checked assumptions and named semantic review, then claim status, authored exposition, and generated projections. Record any later human or specialist review alongside the semantic record rather than turning it into a publication gate.",
       "evidence_classes": [
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "change_type:lean_proposition_changed",
@@ -513,7 +529,7 @@
       "statement": "A reader using only the public checkout must be able to find the main argument, proof routes, public claim statuses, and remaining open propositions.",
       "evidence_classes": [
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "object:projection",
@@ -534,7 +550,7 @@
       "evidence_classes": [
         "lean_check",
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "object:lean_declaration",
@@ -549,7 +565,7 @@
         "release.methodology_projection_matches_source",
         "release.methodology_routes_exist"
       ],
-      "scope_limit": "Coverage does not turn support lemmas into separate headline claims: group plumbing under the smallest faithful contribution and require human review for significance."
+      "scope_limit": "Coverage does not turn support lemmas into separate headline claims: group plumbing under the smallest faithful contribution and record the named semantic significance judgement and its uncertainty."
     }
   ],
   "anti_principles": [
@@ -558,7 +574,7 @@
       "title": "Do not equate Lean acceptance with intended meaning",
       "statement": "Do not use a successful Lean check to bypass review of whether the proposition expresses the intended mathematics.",
       "evidence_classes": [
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "object:lean_declaration",
@@ -569,7 +585,7 @@
         "release.methodology_schema_and_references",
         "release.claim_transition_requirements"
       ],
-      "scope_limit": "The repository can require review but cannot automate the judgement."
+      "scope_limit": "The repository requires a named, source-bound semantic judgement before claim publication; the normal authoring path is an LLM best attempt, not an automatic promotion rule or a mandatory human gate."
     },
     {
       "id": "anti_principle.do_not_report_reduction_as_solution",
@@ -577,7 +593,7 @@
       "statement": "Do not narrate a conditional implication, equivalence, or criterion as closure of the original open problem.",
       "evidence_classes": [
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "claim_status:conditional reduction",
@@ -595,7 +611,7 @@
       "statement": "Do not treat a large checked range as evidence for an unbounded or universal assertion.",
       "evidence_classes": [
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "claim_status:verified finite instance",
@@ -614,7 +630,7 @@
       "statement": "Do not speak of a transformed representation as the original claim unless a checked implication or equivalence supplies that relation.",
       "evidence_classes": [
         "lean_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "object:representation",
@@ -649,7 +665,7 @@
       "title": "Do not use output volume as mathematical progress",
       "statement": "Counts of declarations, proof lines, certificates, or agent activity do not by themselves establish progress on an open problem.",
       "evidence_classes": [
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "applies_to": [
         "argument_relation:advances_open_target",
@@ -693,7 +709,7 @@
       "checked_by": [
         "release.methodology_schema_and_references"
       ],
-      "scope_limit": "A human-review route is valid when the judgement is not machine-decidable; it must still be explicit."
+      "scope_limit": "A named semantic-review route is valid when the judgement is not machine-decidable; its model or reviewer identity, source, scope, judgement, and uncertainties must still be explicit."
     }
   ],
   "worked_examples": [
@@ -741,7 +757,7 @@
       "narrative": "The carry and zero-window theorems state what a rational series value would force: reciprocal-mass lower bounds, unbounded carry states, and sublogarithmic zero windows in divisor coverage. These are necessary consequences of rationality. They constrain a hypothetical rational value; none of them rules it out, and the universal #257 statement remains open."
     }
   ],
-  "human_review_triggers": [
+  "semantic_review_triggers": [
     {
       "id": "claim_text_changed",
       "description": "The wording of a public claim changes."
@@ -810,7 +826,7 @@
         "lean_check",
         "repository_check"
       ],
-      "human_review": "on_trigger",
+      "semantic_review": "on_trigger",
       "review_triggers": [
         "intended_meaning_changed",
         "claim_text_changed"
@@ -827,9 +843,9 @@
       "minimum_evidence": [
         "lean_check",
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
-      "human_review": "required",
+      "semantic_review": "required",
       "forbidden_effects": [
         "change_open_target_status"
       ],
@@ -841,9 +857,9 @@
       "minimum_evidence": [
         "lean_check",
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
-      "human_review": "required",
+      "semantic_review": "required",
       "forbidden_effects": [
         "strengthen_public_claim_wording"
       ],
@@ -854,9 +870,9 @@
       "summary": "A claim moves between coordinates, encodings, or models",
       "minimum_evidence": [
         "lean_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
-      "human_review": "required",
+      "semantic_review": "required",
       "forbidden_effects": [
         "identify_representations_without_transport"
       ],
@@ -869,7 +885,7 @@
         "lean_check",
         "repository_check"
       ],
-      "human_review": "on_trigger",
+      "semantic_review": "on_trigger",
       "review_triggers": [
         "claim_text_changed",
         "claim_status_changed",
@@ -889,7 +905,7 @@
         "lean_check",
         "repository_check"
       ],
-      "human_review": "on_trigger",
+      "semantic_review": "on_trigger",
       "review_triggers": [
         "claim_text_changed",
         "claim_status_changed",
@@ -906,9 +922,9 @@
       "summary": "An advances-open-target relation is added or changed",
       "minimum_evidence": [
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
-      "human_review": "required",
+      "semantic_review": "required",
       "forbidden_effects": [
         "change_open_target_status"
       ],
@@ -919,9 +935,9 @@
       "summary": "The status of a public claim changes",
       "minimum_evidence": [
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
-      "human_review": "required",
+      "semantic_review": "required",
       "forbidden_effects": [
         "infer_unbounded_result"
       ],
@@ -932,9 +948,9 @@
       "summary": "Authored paper or documentation prose changes mathematically",
       "minimum_evidence": [
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
-      "human_review": "required",
+      "semantic_review": "required",
       "forbidden_effects": [
         "change_open_target_status"
       ],
@@ -946,7 +962,7 @@
       "minimum_evidence": [
         "repository_check"
       ],
-      "human_review": "not_required",
+      "semantic_review": "not_required",
       "forbidden_effects": [
         "bypass_projection_owner",
         "strengthen_public_claim_wording"
@@ -959,7 +975,7 @@
       "minimum_evidence": [
         "repository_check"
       ],
-      "human_review": "on_trigger",
+      "semantic_review": "on_trigger",
       "review_triggers": [
         "rule_semantics_changed"
       ],
@@ -977,12 +993,12 @@
       "required_evidence_classes": [
         "lean_check",
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "requirements": [
         "The declaration exists in the pinned public source and passes the Lean check.",
         "The public claim links to the declaration and uses a declared claim status.",
-        "Human mathematical review confirms that the proposition expresses the intended paper-facing statement.",
+        "A named, source-bound semantic review records the best-attempt judgement that the proposition expresses the intended paper-facing statement.",
         "Any remaining open proposition is stated explicitly."
       ],
       "checked_by": [
@@ -996,12 +1012,12 @@
       "trigger": "A claim is moved into different coordinates, an encoding, a recurrence, or another model.",
       "required_evidence_classes": [
         "lean_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "requirements": [
         "A checked implication or equivalence identifies the direction of transfer.",
         "The claim states anything not preserved by the transfer.",
-        "Human mathematical review confirms that the transferred statement is the intended one."
+        "A named, source-bound semantic review records the best-attempt judgement that the transferred statement is the intended one."
       ],
       "checked_by": [
         "release.methodology_schema_and_references",
@@ -1015,7 +1031,7 @@
       "required_evidence_classes": [
         "lean_check",
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "requirements": [
         "The supporting declaration is linked.",
@@ -1034,7 +1050,7 @@
       "required_evidence_classes": [
         "lean_check",
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "requirements": [
         "The claim status remains verified finite instance.",
@@ -1053,7 +1069,7 @@
       "trigger": "The argument graph says that a public claim advances an open target.",
       "required_evidence_classes": [
         "repository_check",
-        "human_mathematical_review"
+        "named_semantic_review"
       ],
       "requirements": [
         "The target claim has status open.",

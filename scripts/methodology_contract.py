@@ -39,7 +39,7 @@ MATHEMATICAL_RESEARCH_CYCLE = [
 PUBLIC_CLAIM_CYCLE = [
     "lean_declaration",
     "checked_assumptions",
-    "reviewed_intended_meaning",
+    "named_semantic_review",
     "public_claim",
     "authored_exposition",
     "generated_projection",
@@ -54,7 +54,15 @@ REMAINING_OPEN_EFFECTS = {
     "constrains",
 }
 
-HUMAN_REVIEW_MODES = {"required", "on_trigger", "not_required"}
+SEMANTIC_REVIEW_MODES = {"required", "on_trigger", "not_required"}
+
+NAMED_SEMANTIC_REVIEW_RECORD_FIELDS = {
+    "model_identity",
+    "source_identity",
+    "review_scope",
+    "judgement",
+    "uncertainties",
+}
 
 PRINCIPLE_GROUPS = {"proving", "publishing", "maintaining"}
 
@@ -69,7 +77,7 @@ LOCAL_INSTANCE_RELATIONS = {
 }
 
 # Change classes whose delta alters mathematical semantics; these may never
-# downgrade human mathematical review to a trigger.
+# downgrade named, source-bound semantic review to a trigger.
 SEMANTIC_REVIEW_CHANGE_CLASSES = {
     "lean_proposition_changed",
     "assumptions_changed",
@@ -77,6 +85,33 @@ SEMANTIC_REVIEW_CHANGE_CLASSES = {
     "open_problem_relation_changed",
     "claim_status_changed",
     "authored_exposition_changed",
+}
+
+REQUIRED_TRANSITION_EVIDENCE = {
+    "transition.lean_declaration_to_public_claim": {
+        "lean_check",
+        "repository_check",
+        "named_semantic_review",
+    },
+    "transition.representation_change_to_public_claim": {
+        "lean_check",
+        "named_semantic_review",
+    },
+    "transition.conditional_reduction_to_public_claim": {
+        "lean_check",
+        "repository_check",
+        "named_semantic_review",
+    },
+    "transition.finite_certificate_to_public_claim": {
+        "lean_check",
+        "repository_check",
+        "named_semantic_review",
+    },
+    "transition.public_claim_to_open_target_edge": {
+        "repository_check",
+        "named_semantic_review",
+    },
+    "transition.methodology_source_to_public_projections": {"repository_check"},
 }
 
 # Forbidden effects that specific change classes must always declare.
@@ -100,6 +135,9 @@ MUTATION_FIXTURE_IDS = {
     "authority_import_contract_removed",
     "mathematical_research_cycle_reordered",
     "public_claim_cycle_skips_review",
+    "named_semantic_review_not_normal_authoring_path",
+    "specialist_review_made_publication_gate",
+    "public_claim_transition_drops_lean_check",
 }
 
 
@@ -141,6 +179,15 @@ def validate_contract(claims: dict[str, Any], methodology: dict[str, Any]) -> li
         for field in ("human_name", "decides", "does_not_decide"):
             if not evidence.get(field):
                 errors.append(f"evidence class {evidence_id}: missing {field}")
+
+    named_review = methodology.get("evidence_classes", {}).get("named_semantic_review", {})
+    if named_review.get("normal_authoring_path") is not True:
+        errors.append("named_semantic_review must be the normal authoring path")
+    if set(named_review.get("record_fields", [])) != NAMED_SEMANTIC_REVIEW_RECORD_FIELDS:
+        errors.append("named_semantic_review must record identity, source, scope, judgement, and uncertainties")
+    specialist_review = methodology.get("evidence_classes", {}).get("human_specialist_review", {})
+    if specialist_review.get("publication_prerequisite") is not False:
+        errors.append("human_specialist_review must remain optional for publication")
 
     mathematical_objects = {
         row.get("id") for row in methodology.get("ontology", {}).get("mathematical_objects", [])
@@ -211,6 +258,21 @@ def validate_contract(claims: dict[str, Any], methodology: dict[str, Any]) -> li
         if unknown_guards:
             errors.append(f"{rule_id}: unknown validation guards {sorted(unknown_guards)}")
 
+    transition_rows = {
+        row.get("id"): row for row in methodology.get("transition_contracts", [])
+    }
+    if set(transition_rows) != set(REQUIRED_TRANSITION_EVIDENCE):
+        errors.append("transition_contracts must name the exact publication transitions")
+    for transition_id, required_evidence in REQUIRED_TRANSITION_EVIDENCE.items():
+        actual_evidence = set(
+            transition_rows.get(transition_id, {}).get("required_evidence_classes", [])
+        )
+        missing_evidence = required_evidence - actual_evidence
+        if missing_evidence:
+            errors.append(
+                f"{transition_id}: missing required evidence classes {sorted(missing_evidence)}"
+            )
+
     for row in methodology.get("method_axioms", []):
         rule_id = row.get("id", "<missing>")
         if not row.get("human_name"):
@@ -242,13 +304,13 @@ def validate_contract(claims: dict[str, Any], methodology: dict[str, Any]) -> li
         if row.get("group") not in PRINCIPLE_GROUPS:
             errors.append(f"{row.get('id', '<missing>')}: principle group must be one of {sorted(PRINCIPLE_GROUPS)}")
 
-    trigger_rows = methodology.get("human_review_triggers", [])
+    trigger_rows = methodology.get("semantic_review_triggers", [])
     trigger_ids = {row.get("id") for row in trigger_rows}
     if len(trigger_ids) != len(trigger_rows):
-        errors.append("human_review_triggers ids must be unique")
+        errors.append("semantic_review_triggers ids must be unique")
     for row in trigger_rows:
         if not row.get("id") or not row.get("description"):
-            errors.append("every human review trigger needs an id and a description")
+            errors.append("every semantic review trigger needs an id and a description")
 
     effect_rows = methodology.get("forbidden_effect_vocabulary", [])
     effect_ids = {row.get("id") for row in effect_rows}
@@ -275,20 +337,20 @@ def validate_contract(claims: dict[str, Any], methodology: dict[str, Any]) -> li
         unknown_evidence = set(minimum_evidence) - evidence_classes
         if unknown_evidence:
             errors.append(f"{class_id}: unknown evidence classes {sorted(unknown_evidence)}")
-        mode = row.get("human_review")
+        mode = row.get("semantic_review")
         triggers = row.get("review_triggers", [])
-        if mode not in HUMAN_REVIEW_MODES:
-            errors.append(f"{class_id}: human_review must be one of {sorted(HUMAN_REVIEW_MODES)}")
+        if mode not in SEMANTIC_REVIEW_MODES:
+            errors.append(f"{class_id}: semantic_review must be one of {sorted(SEMANTIC_REVIEW_MODES)}")
         elif mode == "required":
-            if "human_mathematical_review" not in minimum_evidence:
-                errors.append(f"{class_id}: required review must appear in minimum evidence")
+            if "named_semantic_review" not in minimum_evidence:
+                errors.append(f"{class_id}: required named semantic review must appear in minimum evidence")
         elif mode == "on_trigger":
             if not triggers:
                 errors.append(f"{class_id}: on_trigger review needs review_triggers")
         else:
             if triggers:
                 errors.append(f"{class_id}: not_required review must not carry review_triggers")
-            if "human_mathematical_review" in minimum_evidence:
+            if "named_semantic_review" in minimum_evidence:
                 errors.append(f"{class_id}: not_required review conflicts with review in minimum evidence")
         unknown_triggers = set(triggers) - trigger_ids
         if unknown_triggers:
@@ -301,7 +363,7 @@ def validate_contract(claims: dict[str, Any], methodology: dict[str, Any]) -> li
         if missing_required:
             errors.append(f"{class_id}: missing required forbidden effects {sorted(missing_required)}")
         if class_id in SEMANTIC_REVIEW_CHANGE_CLASSES and mode != "required":
-            errors.append(f"{class_id}: semantic change classes require human mathematical review")
+            errors.append(f"{class_id}: semantic change classes require named source-bound semantic review")
 
     examples = methodology.get("worked_examples", [])
     if not examples:
@@ -507,9 +569,9 @@ def render_markdown(methodology: dict[str, Any], claims: dict[str, Any]) -> str:
         [
             "## Before changing a public claim",
             "",
-            "Classify the change first. Each class states its minimum evidence, whether human mathematical review is needed, and the public consequence. The machine source additionally records, for each class, the effects the change must not have.",
+            "Classify the change first. Each class states its minimum evidence, whether named semantic review is needed, and the public consequence. The normal authoring path is a named, source-bound LLM best attempt; optional human or specialist review remains separate. The machine source additionally records, for each class, the effects the change must not have.",
             "",
-            "| Change | Minimum evidence | Mathematical review | Public consequence |",
+            "| Change | Minimum evidence | Semantic review | Public consequence |",
             "|---|---|---|---|",
         ]
     )
@@ -517,9 +579,9 @@ def render_markdown(methodology: dict[str, Any], claims: dict[str, Any]) -> str:
         evidence_names = ", ".join(
             evidence_classes[evidence_id]["human_name"] for evidence_id in row["minimum_evidence"]
         )
-        if row["human_review"] == "required":
+        if row["semantic_review"] == "required":
             review = "required"
-        elif row["human_review"] == "not_required":
+        elif row["semantic_review"] == "not_required":
             review = "not required"
         else:
             review = "only when " + " or ".join(
@@ -619,7 +681,7 @@ def mutation_fixture_errors(claims: dict[str, Any], methodology: dict[str, Any])
     proposition_class = next(
         row for row in review_downgraded["change_classes"] if row["id"] == "lean_proposition_changed"
     )
-    proposition_class["human_review"] = "on_trigger"
+    proposition_class["semantic_review"] = "on_trigger"
     proposition_class["review_triggers"] = ["claim_text_changed"]
     fixtures["semantic_change_review_downgraded"] = (claims, review_downgraded)
 
@@ -634,8 +696,25 @@ def mutation_fixture_errors(claims: dict[str, Any], methodology: dict[str, Any])
     fixtures["mathematical_research_cycle_reordered"] = (claims, reordered_research)
 
     skipped_review = deepcopy(methodology)
-    skipped_review["public_claim_cycle"].remove("reviewed_intended_meaning")
+    skipped_review["public_claim_cycle"].remove("named_semantic_review")
     fixtures["public_claim_cycle_skips_review"] = (claims, skipped_review)
+
+    non_authoring_review = deepcopy(methodology)
+    non_authoring_review["evidence_classes"]["named_semantic_review"]["normal_authoring_path"] = False
+    fixtures["named_semantic_review_not_normal_authoring_path"] = (claims, non_authoring_review)
+
+    specialist_gate = deepcopy(methodology)
+    specialist_gate["evidence_classes"]["human_specialist_review"]["publication_prerequisite"] = True
+    fixtures["specialist_review_made_publication_gate"] = (claims, specialist_gate)
+
+    model_only_transition = deepcopy(methodology)
+    lean_transition = next(
+        row
+        for row in model_only_transition["transition_contracts"]
+        if row["id"] == "transition.lean_declaration_to_public_claim"
+    )
+    lean_transition["required_evidence_classes"].remove("lean_check")
+    fixtures["public_claim_transition_drops_lean_check"] = (claims, model_only_transition)
 
     if set(fixtures) != MUTATION_FIXTURE_IDS:
         raise AssertionError("mutation fixtures drifted from MUTATION_FIXTURE_IDS")

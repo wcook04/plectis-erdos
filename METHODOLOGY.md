@@ -20,13 +20,13 @@ Limit: Kernel acceptance does not establish intended meaning, relevance, novelty
 
 ### 2. Formal validity and mathematical faithfulness are separate questions
 
-A checked Lean declaration and the intended mathematical statement remain distinct until human mathematical review records their correspondence.
+A checked Lean declaration and its intended mathematical statement remain distinct until a named semantic review records a source-bound best-attempt correspondence.
 
 Seen in: Named infinite-support irrationality families toward #257 (`support_families`).
 
 Recorded boundary: Prove irrationality for every infinite support A, not only the named support families formalised here (`remaining_open.universal_257_all_infinite_supports`).
 
-Limit: The repository can require and route review; it cannot compute mathematical faithfulness.
+Limit: Semantic review does not become proof authority. Optional human or specialist review may contest, correct, confirm, or upgrade the recorded judgement later.
 
 ### 3. A public claim crosses representations only through proved transport
 
@@ -66,7 +66,7 @@ Seen in: Unconditional denominator exclusion for the totient constant (`denomina
 
 Recorded boundary: This release does not settle Erdős #249 (`not_erdos_249_solution`).
 
-Limit: The repository checks that the claimed effect is explicit; human review decides whether the effect is mathematically significant.
+Limit: The repository checks that the effect is explicit; named semantic review supplies the best-attempt significance judgement, without asserting external peer review, novelty, priority, or community acceptance.
 
 ## Evidence responsibilities
 
@@ -82,11 +82,17 @@ Decides: Whether identifiers, statuses, source coordinates, routes, projections,
 
 Does not decide: Whether an informal statement is mathematically faithful or significant.
 
-### Human mathematical review
+### Named LLM semantic review
 
-Records a reviewed judgement about: Whether a formal proposition matches the intended statement, how it relates to prior work, what public claim it supports, and what remains open.
+Records a best-attempt judgement about: A named model's source-bound best attempt at the intended meaning of a formal proposition, its family placement, its significance and editorial rank, the public claim it supports, what remains open, and faithful exposition.
 
-Does not decide: Whether the Lean kernel accepts the proof term.
+Does not decide: Whether the Lean kernel accepts the proof term; whether novelty, priority, external peer review, or community acceptance has been established.
+
+### Optional human or specialist review
+
+Records a named reviewer's judgement about: A contest, correction, confirmation, or upgrade of intended meaning, family placement, significance, editorial rank, exposition, or relation to prior work.
+
+Does not decide: Whether the Lean kernel accepts the proof term; nor does one review by itself establish novelty, priority, external peer-review consensus, or community acceptance.
 
 ### Blinded recovery evaluation
 
@@ -106,7 +112,7 @@ A route may stop at any intermediate object. In particular, a necessary conseque
 
 ### Public claim path
 
-`lean_declaration` → `checked_assumptions` → `reviewed_intended_meaning` → `public_claim` → `authored_exposition` → `generated_projection` → `public_checkout`
+`lean_declaration` → `checked_assumptions` → `named_semantic_review` → `public_claim` → `authored_exposition` → `generated_projection` → `public_checkout`
 
 This is the authority order for publication. Kernel acceptance precedes assumption review; intended meaning is reviewed before a public claim; authored exposition precedes generated projections; and the public checkout is the final reader-facing surface.
 
@@ -128,8 +134,8 @@ This is the authority order for publication. Kernel acceptance precedes assumpti
 
 - A failed strategy, counterexample, or disproved finite-state interpretation is retained when it rules out a recurring mathematical route.
 - Distinguish proof-body, proposition, assumption, representation, finite-range, claim-status, exposition, and projection changes before deciding what must be updated.
-- Lean owns formal validity; humans own intended meaning, significance, and public framing; agents may search, propose, test, and expose consequences without inheriting either authority.
-- Update Lean source first, then assumption and meaning review, then claim status, then authored exposition, then generated projections.
+- Lean owns formal validity. A named LLM best attempt is the normal author for intended meaning, family placement, significance and editorial ranking, and exposition. Optional human or specialist review is a separate record that may contest or upgrade that work; it is not a prerequisite for publishing an honest bounded result.
+- Update Lean source first, then checked assumptions and named semantic review, then claim status, authored exposition, and generated projections. Record any later human or specialist review alongside the semantic record rather than turning it into a publication gate.
 
 ## Three examples from this development
 
@@ -167,19 +173,19 @@ Remaining open: `remaining_open.universal_257_all_infinite_supports`.
 
 ## Before changing a public claim
 
-Classify the change first. Each class states its minimum evidence, whether human mathematical review is needed, and the public consequence. The machine source additionally records, for each class, the effects the change must not have.
+Classify the change first. Each class states its minimum evidence, whether named semantic review is needed, and the public consequence. The normal authoring path is a named, source-bound LLM best attempt; optional human or specialist review remains separate. The machine source additionally records, for each class, the effects the change must not have.
 
-| Change | Minimum evidence | Mathematical review | Public consequence |
+| Change | Minimum evidence | Semantic review | Public consequence |
 |---|---|---|---|
 | A proof body changes; the stated proposition does not | Lean check, Repository check | only when intended meaning changed or claim text changed | No claim or exposition change follows automatically. Compare the axiom audit before and after. |
-| A stated proposition or its hypotheses change | Lean check, Repository check, Human mathematical review | required | Reconcile the claim wording, the remaining-open boundary, and the paper statement. |
-| The transitive assumptions of a declaration change | Lean check, Repository check, Human mathematical review | required | Reassess the proof posture even when the proposition is unchanged. |
-| A claim moves between coordinates, encodings, or models | Lean check, Human mathematical review | required | Record the transport theorem, its direction, and anything not preserved. |
+| A stated proposition or its hypotheses change | Lean check, Repository check, Named LLM semantic review | required | Reconcile the claim wording, the remaining-open boundary, and the paper statement. |
+| The transitive assumptions of a declaration change | Lean check, Repository check, Named LLM semantic review | required | Reassess the proof posture even when the proposition is unchanged. |
+| A claim moves between coordinates, encodings, or models | Lean check, Named LLM semantic review | required | Record the transport theorem, its direction, and anything not preserved. |
 | A checked bounded range or certificate family is extended | Lean check, Repository check | only when claim text changed or claim status changed or intended meaning changed or paper statement changed | Keep the finite status; update only the stated bound. |
 | A claim's declaration coordinates or links are corrected; the claim is otherwise unchanged | Lean check, Repository check | only when claim text changed or claim status changed or intended meaning changed | Link or correct the supporting declarations of an unchanged claim, then regenerate dependent projections. The mathematical claim does not change; a Lean check confirms the linked declaration exists and elaborates. |
-| An advances-open-target relation is added or changed | Repository check, Human mathematical review | required | Record the outstanding obligation affected and the exact relation. |
-| The status of a public claim changes | Repository check, Human mathematical review | required | State the theorem or review that licenses the new status. |
-| Authored paper or documentation prose changes mathematically | Repository check, Human mathematical review | required | Prose must not exceed the status recorded in the claim registry. |
+| An advances-open-target relation is added or changed | Repository check, Named LLM semantic review | required | Record the outstanding obligation affected and the exact relation. |
+| The status of a public claim changes | Repository check, Named LLM semantic review | required | State the theorem or review that licenses the new status. |
+| Authored paper or documentation prose changes mathematically | Repository check, Named LLM semantic review | required | Prose must not exceed the status recorded in the claim registry. |
 | A generated projection is rebuilt | Repository check | not required | Regenerate below the existing owners; no mathematical effect. |
 | docs/methodology.json changes | Repository check | only when rule semantics changed | Regenerate METHODOLOGY.md and the corpus descriptor. Rules route review; they do not decide mathematics. |
 
