@@ -24,10 +24,10 @@
       "subject_id": "Z01::erdos_borwein_full_support_irrationality",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:471e61ff8b9af7f90beb7602b7989a5dfb2e0608059b467d80c3517e18fd2b47",
-      "review_scope": "Canonical statement checked against all four cited declaration signatures and the eb_full_support and eb_constant claim boundaries. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:82a7df99e7334ce4245e44cdb20547e6dc5e49f660be6102e8ad4b4bb641d817",
+      "review_scope": "Canonical statement checked against all four cited declaration signatures and the eb_full_support and eb_constant claim boundaries. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint; not Lean proof authority, independent human mathematical review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -81,6 +81,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:471e61ff8b9af7f90beb7602b7989a5dfb2e0608059b467d80c3517e18fd2b47",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -89,10 +95,10 @@
       "subject_id": "Z01::lcm_gap_support_instances",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:9774968cd5ccdc4430079ade8442a453e142d67c37eb75c11079ff9b547b28e7",
-      "review_scope": "Factorial and power-of-two support wording checked against the general-base and base-two theorem signatures and the support_families boundary. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:39382e7b8a494d5308d7b48d3bd4ace6b67e873e54053ec9d64b88e4e9f10ef1",
+      "review_scope": "Factorial and power-of-two support wording checked against the general-base and base-two theorem signatures and the support_families boundary. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "These are named support families only, not universal Erdős #257; the receipt is not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -146,6 +152,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:9774968cd5ccdc4430079ade8442a453e142d67c37eb75c11079ff9b547b28e7",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -154,10 +166,10 @@
       "subject_id": "Z01::pairwise_coprime_support_irrationality",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:ba0164326429a52f0abf42e428d804238c55ffd9173a300add83ebf91b69ae01",
-      "review_scope": "Hypotheses and conclusion checked against the pairwise-coprime support theorem and its certificate-supply theorem. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:8af9daec1b4e639df3bd09bec73f1799dadc29ea427158c64165adaf12188fae",
+      "review_scope": "Hypotheses and conclusion checked against the pairwise-coprime support theorem and its certificate-supply theorem. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Named support-class consistency only, not universal Erdős #257, Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -211,6 +223,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:ba0164326429a52f0abf42e428d804238c55ffd9173a300add83ebf91b69ae01",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -219,10 +237,10 @@
       "subject_id": "Z01::periodic_weight_irrationality",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:fb659a68790f976b86c2896b1aa7ffcdb178b85a561b52d221f974375b38a0ee",
-      "review_scope": "Natural, rational, eventually-periodic, and residue-weight wording checked against the six cited signatures and nonnegative coefficient hypotheses. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:68526d33045a538d79786e2f6bbc0547be0d133cff4c1024a5be23aa9c0bbc89",
+      "review_scope": "Natural, rational, eventually-periodic, and residue-weight wording checked against the six cited signatures and nonnegative coefficient hypotheses. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Source-to-wording semantic consistency only; not a mixed-sign theorem, Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -276,6 +294,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:fb659a68790f976b86c2896b1aa7ffcdb178b85a561b52d221f974375b38a0ee",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -284,10 +308,10 @@
       "subject_id": "Z01::signed_weight_dichotomy",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:bf78dac8e3f6bcff3775ba28591e2b99fb2e7e6b1d461faa12caed79169b4158",
-      "review_scope": "Irrational-or-base-terminating dichotomy and its conditional corollary checked against the four cited integer-weight signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:46736451739a787898152f36df71478aff397a2049d8d9085d0dd39c50adc4cf",
+      "review_scope": "Irrational-or-base-terminating dichotomy and its conditional corollary checked against the four cited integer-weight signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "The terminating alternative remains part of the theorem; this receipt is not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -341,6 +365,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:bf78dac8e3f6bcff3775ba28591e2b99fb2e7e6b1d461faa12caed79169b4158",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -349,10 +379,10 @@
       "subject_id": "Z01::totient_denominator_exclusion_ladder",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:8aa8e1c76530959738a64274fa2d1d446268645681cfe267c8cfc05feff03d3a",
-      "review_scope": "All four denominator rungs and the three transported formulations checked against their exact signatures and denominator constants. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:de098eb11db5e144cfffd89bf65641d8af9fc1c5c8a1a4434f4714067c2ef35d",
+      "review_scope": "All four denominator rungs and the three transported formulations checked against their exact signatures and denominator constants. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "A bounded denominator exclusion and its transports, not irrationality of the Erdős #249 constant, Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -406,6 +436,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:8aa8e1c76530959738a64274fa2d1d446268645681cfe267c8cfc05feff03d3a",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -414,10 +450,10 @@
       "subject_id": "Z06::certificate_supply_is_equivalent_to_249",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:7a5aae342ff42ee0d7382d0a1a772384a336cae9dbac378f5567e47741c40446",
-      "review_scope": "Four iff theorems plus the integral-tail implication checked against exact signatures; the both-sides-open caveat was checked explicitly. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:5239ac387a856cd171734d798c58900a5f0e9058d6005d29064f5d79d863cb3d",
+      "review_scope": "Four iff theorems plus the integral-tail implication checked against exact signatures; the both-sides-open caveat was checked explicitly. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "This receipt confirms an equivalence to the open problem and does not establish either side, Lean proof authority, human review, or novelty.",
       "evidence_rebindings": [
         {
@@ -471,6 +507,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:7a5aae342ff42ee0d7382d0a1a772384a336cae9dbac378f5567e47741c40446",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -479,10 +521,10 @@
       "subject_id": "Z09::finite_level_dyadic_totient_independence",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:95c221cadf6a90d5e8d98bedf36df671157ed96cfc1551a148998c266f7718d2",
-      "review_scope": "Finite-level linear independence, separated-minor certificate, and exact 2^e+1 rank wording checked against four signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:66ac5ad9bae276d29d7200033bde776512e06cb7b2b7d9e59d11529ae0bc39d0",
+      "review_scope": "Finite-level linear independence, separated-minor certificate, and exact 2^e+1 rank wording checked against four signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Finite-level dyadic-section structure only, not irrationality of Erdős #249, Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -536,6 +578,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:95c221cadf6a90d5e8d98bedf36df671157ed96cfc1551a148998c266f7718d2",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -544,10 +592,10 @@
       "subject_id": "Z09::full_dyadic_kernel_infinite_dimensional",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:d0c87a1441d83a47a2304b1efb3aed09ebc6782ce8889afd96a5c4e5e0eca494",
-      "review_scope": "Infinite-dimensional span wording checked against the exact not_finiteDimensional theorem signature. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:a19eb36ec3f47f8bafbb7145206b026acde7da501fed672bc205b950259273a9",
+      "review_scope": "Infinite-dimensional span wording checked against the exact not_finiteDimensional theorem signature. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Coefficient-sequence structure only, not irrationality of Erdős #249, Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -601,6 +649,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:d0c87a1441d83a47a2304b1efb3aed09ebc6782ce8889afd96a5c4e5e0eca494",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -609,10 +663,10 @@
       "subject_id": "Z09::all_base_totient_kernel_arithmetic_index",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:92d17ca4a6934a1170ea2214f13202eff699b2566dc561933f64e1d3107ee4fa",
-      "review_scope": "Canonical arithmetic-and-index wording checked against the five cited declaration signatures and the nine-declaration all_base_totient_kernel_index_reduction headline boundary. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:b6b4d7c10ad3c9db3908999288cd765e60bd3502db19b7ec834367eb3ae355ed",
+      "review_scope": "Canonical arithmetic-and-index wording checked against the five cited declaration signatures and the nine-declaration all_base_totient_kernel_index_reduction headline boundary. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Arithmetic reduction, unique quotient/nonzero-digit coordinates, and finite-index cardinality only; not all-base affine-section independence, basis, rank, Martin's theorem, irrationality, Lean proof authority, independent human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -666,6 +720,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:92d17ca4a6934a1170ea2214f13202eff699b2566dc561933f64e1d3107ee4fa",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -674,10 +734,10 @@
       "subject_id": "Z12::mersenne_support_coding_normalisation",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:16ca65f96d8e1dafe3175e0a8e7884ec3e34323a0d665f747e6502b701f17b1b",
-      "review_scope": "Support-series identity, digit-map range, continuity role, and injectivity wording checked against the five cited declarations. Re-reviewed on 2026-09-02 after the declaration atlas moved the evidence coordinates of every cited declaration. Each cited declaration was located in the current source and its full statement compared byte for byte against the same declaration at the previously reviewed revision 9e231ce4371fcda607f81c4520d29b16dcb4482e: all are identical, only their line numbers moved. The canonical statement, boundary, and pinned formal-source revision are unchanged. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:2d2e3b0da9c3ec5539fe7a60aabbf48c8578a310b5630a079178c925738c47fd",
+      "review_scope": "Support-series identity, digit-map range, continuity role, and injectivity wording checked against the five cited declarations. Re-reviewed on 2026-09-02 after the declaration atlas moved the evidence coordinates of every cited declaration. Each cited declaration was located in the current source and its full statement compared byte for byte against the same declaration at the previously reviewed revision 9e231ce4371fcda607f81c4520d29b16dcb4482e: all are identical, only their line numbers moved. The canonical statement, boundary, and pinned formal-source revision are unchanged. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Representation and coding consistency only; not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -730,6 +790,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:16ca65f96d8e1dafe3175e0a8e7884ec3e34323a0d665f747e6502b701f17b1b",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -738,10 +804,10 @@
       "subject_id": "Z12::greedy_survival_characterisation",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:f06bedbf1112ae9aca6826d26613cee2e76aeb2101f470525fbed5eca4dd2ba2",
-      "review_scope": "Membership iff survival, support recovery, and residual-suffix identity checked against the three exact signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:4e39c83268162d45811d5c955f6c046647054ae19c1161e0b59546a07d0f8107",
+      "review_scope": "Membership iff survival, support recovery, and residual-suffix identity checked against the three exact signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Greedy representation consistency only; not resolution of half-value membership, Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -795,6 +861,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:f06bedbf1112ae9aca6826d26613cee2e76aeb2101f470525fbed5eca4dd2ba2",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -803,10 +875,10 @@
       "subject_id": "Z12::mersenne_achievement_set_cantor_geometry",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:2e384ab17ce514f9ad4b092da2d2ffce5da70f5647669d3abef13484473eb2fc",
-      "review_scope": "Compactness, perfection, total disconnectedness, and nowhere-density wording checked against four exact theorem signatures. Re-reviewed on 2026-09-02 after the declaration atlas moved the evidence coordinates of every cited declaration. Each cited declaration was located in the current source and its full statement compared byte for byte against the same declaration at the previously reviewed revision 9e231ce4371fcda607f81c4520d29b16dcb4482e: all are identical, only their line numbers moved. The canonical statement, boundary, and pinned formal-source revision are unchanged. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:acd92c4b70a7fd131325b050561f7f85e6d280703d3ed1b31226c632ce94f8aa",
+      "review_scope": "Compactness, perfection, total disconnectedness, and nowhere-density wording checked against four exact theorem signatures. Re-reviewed on 2026-09-02 after the declaration atlas moved the evidence coordinates of every cited declaration. Each cited declaration was located in the current source and its full statement compared byte for byte against the same declaration at the previously reviewed revision 9e231ce4371fcda607f81c4520d29b16dcb4482e: all are identical, only their line numbers moved. The canonical statement, boundary, and pinned formal-source revision are unchanged. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Topological properties only; measure one is separately evidenced. Not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -859,6 +931,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:2e384ab17ce514f9ad4b092da2d2ffce5da70f5647669d3abef13484473eb2fc",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -867,10 +945,10 @@
       "subject_id": "Z12::mersenne_achievement_set_measure_one",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:21c60fd0b687aeb9dc75e5c3912ff11d38b215d6153590dac89f1e41b6bf35eb",
-      "review_scope": "Cylinder-stage volumes, nested intersection, and final measure-one wording checked against four exact signatures after removing the unsupported topology clause. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:bced50008642304d3387d29487ddd3ec633a7a379b4cc8967756ae22fbfd2003",
+      "review_scope": "Cylinder-stage volumes, nested intersection, and final measure-one wording checked against four exact signatures after removing the unsupported topology clause. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Measure calculation only; nowhere density is separately evidenced. Not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -924,6 +1002,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:21c60fd0b687aeb9dc75e5c3912ff11d38b215d6153590dac89f1e41b6bf35eb",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -932,10 +1016,10 @@
       "subject_id": "Z12::half_membership_iff_infinite_greedy_skips",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:f732f6b91dfe28d691aae812a663ab1f6dae3b90d679f4dd73f991af4daaff35",
-      "review_scope": "Half-membership iff infinite skipped support checked against both exact signatures and the open-proposition boundary. Re-reviewed on 2026-09-02 after the declaration atlas moved the evidence coordinates of every cited declaration. Each cited declaration was located in the current source and its full statement compared byte for byte against the same declaration at the previously reviewed revision 9e231ce4371fcda607f81c4520d29b16dcb4482e: all are identical, only their line numbers moved. The canonical statement, boundary, and pinned formal-source revision are unchanged. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed again on 2026-09-02 after the public GreedyAchievementSet took the cofinal-skip criterion from the private source: the insertion moved this subject's evidence coordinates, and every declaration it cites was located at both revisions and its full statement compared byte for byte, all identical. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:1bb74b272d9362e0ca3cac3bc2d8f828de7b4397f67a3a2410273cf6c757c5d9",
+      "review_scope": "Half-membership iff infinite skipped support checked against both exact signatures and the open-proposition boundary. Re-reviewed on 2026-09-02 after the declaration atlas moved the evidence coordinates of every cited declaration. Each cited declaration was located in the current source and its full statement compared byte for byte against the same declaration at the previously reviewed revision 9e231ce4371fcda607f81c4520d29b16dcb4482e: all are identical, only their line numbers moved. The canonical statement, boundary, and pinned formal-source revision are unchanged. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed again on 2026-09-02 after the public GreedyAchievementSet took the cofinal-skip criterion from the private source: the insertion moved this subject's evidence coordinates, and every declaration it cites was located at both revisions and its full statement compared byte for byte, all identical. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Both sides remain open; the receipt does not decide membership, universal Erdős #257, Lean proof authority, human review, or novelty.",
       "evidence_rebindings": [
         {
@@ -987,6 +1071,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:f732f6b91dfe28d691aae812a663ab1f6dae3b90d679f4dd73f991af4daaff35",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -995,10 +1085,10 @@
       "subject_id": "Z14::final_middle_cell_neg_three_impossible",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:01accd75fbd7a3cc72b300177bee71849693f4c02858ca85c775f2720fe09979",
-      "review_scope": "The D>=13, middle-cell -3, eventually-right contradiction and explicit untouched branches checked against the two cited declarations. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:ab53d61ce81d4708185749dec6c59ea924d1a299d8b506d7393b47a56c0a394d",
+      "review_scope": "The D>=13, middle-cell -3, eventually-right contradiction and explicit untouched branches checked against the two cited declarations. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "One branch-local exclusion only; cells -2 and -1 and the pure-right branch remain. Not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -1052,6 +1142,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:01accd75fbd7a3cc72b300177bee71849693f4c02858ca85c775f2720fe09979",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1060,10 +1156,10 @@
       "subject_id": "Z14::upper_last_producer_impossible",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:45c5b96df85455d011f4c93e48fb59418fc291e9af7e0359de0e2d407e7c07ad",
-      "review_scope": "The D>=13 upper-transition eventually-right contradiction and explicit untouched branches checked against the exact theorem signature. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:b613145a180161f548f122a15e370203657669a723e6785daaf8b4a42a5cebde",
+      "review_scope": "The D>=13 upper-transition eventually-right contradiction and explicit untouched branches checked against the exact theorem signature. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Upper branch at a last false terminal only; middle and pure-right branches remain. Not Lean proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -1117,6 +1213,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:45c5b96df85455d011f4c93e48fb59418fc291e9af7e0359de0e2d407e7c07ad",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1125,10 +1227,10 @@
       "subject_id": "Z02::aggregate_imported_scales_fire",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:7cc813f7750f29b548911a58422ae60004856296c50479fea12f2fee5f9903e3",
-      "review_scope": "The historical aggregates and the current contiguous t<=82 theorem were checked against all four cited signatures and the repaired certified_kill_instances claim boundary. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:69923148da0a05db86e77b221753adae45e640fbd20cd898274c4ece839dd6e6",
+      "review_scope": "The historical aggregates and the current contiguous t<=82 theorem were checked against all four cited signatures and the repaired certified_kill_instances claim boundary. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "A finite aggregate only: no certificate at t=83 and no unbounded supply. Not Lean proof authority, independent human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -1182,6 +1284,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:7cc813f7750f29b548911a58422ae60004856296c50479fea12f2fee5f9903e3",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1190,10 +1298,10 @@
       "subject_id": "Z05::exact_full_target_pincer",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:17a22359ee0a8e1bb92f70caf186e2e08b947a553193b51941093d161b0fd0d3",
-      "review_scope": "The reduced-shadow decomposition, full-target equivalence, generic-scale transport, and restatement boundary were checked against all seven cited signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:f4c97761c513f3cffd1cabe60c734d304eacdbf50aa019d9ac7f2fbe0f6bb04f",
+      "review_scope": "The reduced-shadow decomposition, full-target equivalence, generic-scale transport, and restatement boundary were checked against all seven cited signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "An exact reformulation of diagonal integrality, not a proof of target avoidance, cofinal non-integrality, or Erdős #249. Not proof, human-review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -1247,6 +1355,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:17a22359ee0a8e1bb92f70caf186e2e08b947a553193b51941093d161b0fd0d3",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1255,10 +1369,10 @@
       "subject_id": "Z09::scalar_localisation_height_barrier",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:4d0da5257a32b2b6b02c8e7f4015cfa3a327253ac155b5bbff3777571adab3a3",
-      "review_scope": "Complementary-denominator divisibility, exact numerator transfer, and the rational-linear descender classification were checked against all four cited signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:35814b112c72c19bcfdab6cd9f08399022057f56f9a6a9fc6eead0d565fa8673",
+      "review_scope": "Complementary-denominator divisibility, exact numerator transfer, and the rational-linear descender classification were checked against all four cited signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Scalar clearing and rational-linear channels only; no irrationality conclusion or exclusion of nonlinear or multivariable methods. Not proof, human-review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -1312,6 +1426,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:4d0da5257a32b2b6b02c8e7f4015cfa3a327253ac155b5bbff3777571adab3a3",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1320,10 +1440,10 @@
       "subject_id": "Z11::sublogarithmic_zero_window_bound",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:c9860642e63b8d56ead71dcd67009fb67d7583db9d30d01d05e5b515dd1e43d9",
-      "review_scope": "The fixed-k bound, both epsilon-logarithmic forms, every rationality and positivity hypothesis, and the deliberately recorded docstring mismatch were checked against the three cited signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:9d25ead011cba3f428d4bd4d6126bdfc8716831339d2c927c7ebd565f97623ad",
+      "review_scope": "The fixed-k bound, both epsilon-logarithmic forms, every rationality and positivity hypothesis, and the deliberately recorded docstring mismatch were checked against the three cited signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "A necessary zero-window bound under an assumed rational support-series value, not an unconditional irrationality theorem or universal Erdős #257. Not proof, human-review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -1377,6 +1497,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:c9860642e63b8d56ead71dcd67009fb67d7583db9d30d01d05e5b515dd1e43d9",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1385,10 +1511,10 @@
       "subject_id": "Z12::mersenne_achievement_set_measure_one|complements|Z12::mersenne_achievement_set_cantor_geometry",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:d342ce8643480c1e496554e17279cef4e58da733c809b6fc41c513377479208d",
-      "review_scope": "Relation label and basis checked after separating measure evidence from topology evidence. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:b678db54a1e6c59594d5d04db1394989416b9269fbfb89919da1529ccacd337c",
+      "review_scope": "Relation label and basis checked after separating measure evidence from topology evidence. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "The nodes jointly support the fat Cantor description; neither node alone implies the other. Not proof or novelty authority.",
       "evidence_rebindings": [
         {
@@ -1442,6 +1568,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:d342ce8643480c1e496554e17279cef4e58da733c809b6fc41c513377479208d",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1450,10 +1582,10 @@
       "subject_id": "Z12::mersenne_achievement_set_cantor_geometry|transport_of|Z12::mersenne_support_coding_normalisation",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:2c89866e00bb0ec2dc201842d24382e066e778bd02b4576ca192efef1d8a23a7",
-      "review_scope": "Closed transport relation checked against the continuous injective digit-coding endpoint; the previous open-dependency label was rejected. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:1804309553a9c2be1ee30715203c8a04a245d6f4f828199d50c5b6b655766faf",
+      "review_scope": "Closed transport relation checked against the continuous injective digit-coding endpoint; the previous open-dependency label was rejected. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Typed semantic transport only, not Lean proof dependency, an open obligation, proof authority, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -1507,6 +1639,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:2c89866e00bb0ec2dc201842d24382e066e778bd02b4576ca192efef1d8a23a7",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1515,10 +1653,10 @@
       "subject_id": "Z12::erdos_borwein_constant_irrational|specialises|Z01::erdos_borwein_full_support_irrationality",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:fb8c0d3b0a7f0cb3d26f7cc335532626ff5d9fbab573e6877b7181e6a058469e",
-      "review_scope": "Base-two specialisation checked against the exact full-support and Erdős-Borwein signatures named in the relation basis. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:3379f53c7740963344caf775939cf88a014c939e010e586e7ae89d2ca0a8b95c",
+      "review_scope": "Base-two specialisation checked against the exact full-support and Erdős-Borwein signatures named in the relation basis. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "A semantic specialisation receipt only; not proof authority, human review, or novelty assessment.",
       "evidence_rebindings": [
         {
@@ -1572,6 +1710,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:fb8c0d3b0a7f0cb3d26f7cc335532626ff5d9fbab573e6877b7181e6a058469e",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1580,10 +1724,10 @@
       "subject_id": "Z12::half_membership_iff_infinite_greedy_skips|equivalent_to|Z12::fatal_half_gap_dichotomy",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:44479878f6a636e4ac14c6b70242260711ab219f0c001ade32b965ad28aefae9",
-      "review_scope": "Equivalence label and basis checked against the shared half-membership endpoint and finite-skip/fatal-gap classification. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:f250ec0c073ef1831f6e673d4a7a6f550523cb73c27b407b6dbc52fe4630c442",
+      "review_scope": "Equivalence label and basis checked against the shared half-membership endpoint and finite-skip/fatal-gap classification. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Both endpoint presentations remain open; this receipt does not decide either, prove universal Erdős #257, or supply novelty authority.",
       "evidence_rebindings": [
         {
@@ -1637,6 +1781,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:44479878f6a636e4ac14c6b70242260711ab219f0c001ade32b965ad28aefae9",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1645,10 +1795,10 @@
       "subject_id": "Z65::one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:593f3c020484e10d30e5a65e3213c0402e01385e94e045adf24d621d219dbba5",
-      "review_scope": "The finite-set quantifiers, rank-at-least-two hypothesis, exact target 1/21, denominator-order mechanism, and non-membership ceiling were checked against the theorem signature and proof. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:bd222237536d57fe0a0c2f8de22c9143a02bfcd0a1a85a0098682d47b44245d3",
+      "review_scope": "The finite-set quantifiers, rank-at-least-two hypothesis, exact target 1/21, denominator-order mechanism, and non-membership ceiling were checked against the theorem signature and proof. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Finite nontermination at one target only; not achievement-set membership, an infinite support, a counterexample, universal Erdős #257, human review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -1702,6 +1852,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:593f3c020484e10d30e5a65e3213c0402e01385e94e045adf24d621d219dbba5",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1710,10 +1866,10 @@
       "subject_id": "Z65::primitive_23_solution_is_a_positive_coprime_rank_decomposition",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:1b7e95e0e9a7a013ecb662a434520497ed940722dc4815fadba5b11b7473510e",
-      "review_scope": "Positivity, coprimality, and the exact 2p+3q=n equation were checked against the definition. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:9d528b8f44a27107fd4e9d9100cbfaf0532d954de78d40d1c17fb209c73c3d5c",
+      "review_scope": "Positivity, coprimality, and the exact 2p+3q=n equation were checked against the definition. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "A Diophantine representation definition only; not a reciprocal-Mersenne expansion identity, Booleanisation theorem, proof authority beyond the cited declaration, human review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -1767,6 +1923,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:1b7e95e0e9a7a013ecb662a434520497ed940722dc4815fadba5b11b7473510e",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1775,10 +1937,10 @@
       "subject_id": "Z65::primitive_23_cone_covers_every_rank_from_eleven",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:18691253add96179c34c592205101bd35592d5006a51b0ee989e74c2373d7c72",
-      "review_scope": "The uniform n>=11 quantifier and existence of a positive coprime 2p+3q representation were checked against the exact theorem signature and its parity split. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:ad94293b38e6f2862dc57a6749700729660fdd7c13582c745d47c2ad38118c8f",
+      "review_scope": "The uniform n>=11 quantifier and existence of a positive coprime 2p+3q representation were checked against the exact theorem signature and its parity split. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Eventual primitive-rank coverage only; not coefficient uniqueness, Booleanisation, achievement-set membership, universal Erdős #257, human review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -1832,6 +1994,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:18691253add96179c34c592205101bd35592d5006a51b0ee989e74c2373d7c72",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1840,10 +2008,10 @@
       "subject_id": "Z65::primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:d818a81d51eb735d4cc147fa663ce97890a4eb38e4d35f1153bda6b519abc7eb",
-      "review_scope": "Rank-ten nonexistence, two explicit rank-eleven witnesses, and two distinct witnesses at every rank 10k for k>=2 were checked against all three cited theorem signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:439487a3f16fc69f15ffde9135d6904a1e4cfaf42fbdeca6477d72c6eb9b4c67",
+      "review_scope": "Rank-ten nonexistence, two explicit rank-eleven witnesses, and two distinct witnesses at every rank 10k for k>=2 were checked against all three cited theorem signatures. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Exact collision data only; not a carry resolution, a zero-one support, achievement-set membership, universal Erdős #257, human review, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -1897,6 +2065,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:d818a81d51eb735d4cc147fa663ce97890a4eb38e4d35f1153bda6b519abc7eb",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1905,10 +2079,10 @@
       "subject_id": "Z65::one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two|complements|Z65::universal_mersenne_subseries_irrationality_is_the_erdos_257_assertion",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:e9e9c9b952327bd59e4221fa3111cb0e2e6ac3cb7e9d4b3cd5aa4945870aec8f",
-      "review_scope": "The complementary relation was checked as a finite-support boundary for one candidate rational target, not as an implication toward or away from the universal assertion. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:e8bbb9bfe465ba856e566f766431d8229a0e57158fe64d7f692d6449b5601348",
+      "review_scope": "The complementary relation was checked as a finite-support boundary for one candidate rational target, not as an implication toward or away from the universal assertion. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Typed navigation relation only; neither endpoint decides achievement-set membership or universal Erdős #257.",
       "evidence_rebindings": [
         {
@@ -1962,6 +2136,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:e9e9c9b952327bd59e4221fa3111cb0e2e6ac3cb7e9d4b3cd5aa4945870aec8f",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -1970,10 +2150,10 @@
       "subject_id": "Z65::primitive_23_cone_covers_every_rank_from_eleven|generated_by|Z65::primitive_23_solution_is_a_positive_coprime_rank_decomposition",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:fc841a256bc1c1469b1d3bdacd0f6fa37a2cca1324ff96b53cc44e4fb86b5cba",
-      "review_scope": "The theorem-to-definition relation was checked against the constructed witnesses and exact IsPrimitive23Solution predicate. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:c3a19717483b848dbae6b031f213ef67e7d9d65f8d74328eb618a00570a8b007",
+      "review_scope": "The theorem-to-definition relation was checked against the constructed witnesses and exact IsPrimitive23Solution predicate. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Typed semantic relation only; not a formal dependency receipt, Booleanisation, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -2027,6 +2207,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:fc841a256bc1c1469b1d3bdacd0f6fa37a2cca1324ff96b53cc44e4fb86b5cba",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -2035,10 +2221,10 @@
       "subject_id": "Z65::primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity|generated_by|Z65::primitive_23_solution_is_a_positive_coprime_rank_decomposition",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:ca5bb1b029f95f05b9ce25ae87ece8f16d02954b989e5f2b96ec7c8b982ff158",
-      "review_scope": "The defect and multiplicity node was checked as an exact family of instances of the primitive-rank definition. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:3df878fbdce03148b3ce6334cf2bb515a3ef4f5c55677f00d2471c587e477f14",
+      "review_scope": "The defect and multiplicity node was checked as an exact family of instances of the primitive-rank definition. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "Typed semantic relation only; not a zero-one coefficient theorem, formal proof dependency receipt, or novelty authority.",
       "evidence_rebindings": [
         {
@@ -2092,6 +2278,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:ca5bb1b029f95f05b9ce25ae87ece8f16d02954b989e5f2b96ec7c8b982ff158",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     },
@@ -2100,10 +2292,10 @@
       "subject_id": "Z65::primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity|complements|Z65::one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two",
       "reviewer": "Claude Opus 5",
       "reviewer_type": "ai_semantic_consistency_review",
-      "reviewed_revision": "bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753",
-      "reviewed_at": "2026-09-02",
-      "evidence_digest": "sha256:b7265e02cdf09fe51e006ad60883dc57eb8db54fa1850c5f9bfd4e47f9c93f3d",
-      "review_scope": "The relation was checked as a route-level complement: finite nontermination states the target boundary while recurrent primitive multiplicity identifies the unresolved collision mechanism. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority.",
+      "reviewed_revision": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "reviewed_at": "2026-09-04",
+      "evidence_digest": "sha256:ac0807cbf831fc597a329460c1b8e322b055ed1d09b739d521f0594387aa91bf",
+      "review_scope": "The relation was checked as a route-level complement: finite nontermination states the target boundary while recurrent primitive multiplicity identifies the unresolved collision mechanism. Re-reviewed on 2026-09-02 for the formal-source move from 9e231ce4371fcda607f81c4520d29b16dcb4482e to 0f41cf184ec7490b9713e7a7be681db1dd9e5084. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-02 for the formal-source move from 0f41cf184ec7490b9713e7a7be681db1dd9e5084 to bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753, the first public tree that compiles. Every declaration cited by this subject was located at both revisions and its full statement compared byte for byte: all identical, only line coordinates moved. This is a model consistency review, not human mathematical review and not Lean proof authority. Re-reviewed on 2026-09-04 for the formal-source move from bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753 to 99f4bf47422abbd8757cbb22b50ba079d764d3a7. Every declaration cited by this subject was located in both revisions and its full statement compared byte for byte: all are identical, and only their line coordinates moved. The canonical wording, typed relation basis, scope, and claim boundary are unchanged, so the reviewed source-to-wording consistency carries over verbatim to the new checkpoint. This is a model consistency review, not human mathematical review and not Lean proof authority.",
       "claim_ceiling": "The two nodes remain diagnostics; together they do not prove an expansion identity, Booleanisation, achievement-set membership, or universal Erdős #257.",
       "evidence_rebindings": [
         {
@@ -2157,6 +2349,12 @@
           "previous_evidence_fingerprint": "sha256:ef29184d9032e6f71644bc86e387a7e3009af88b5a8dd5f8747db70e9622dd05",
           "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
+        },
+        {
+          "previous_evidence_digest": "sha256:b7265e02cdf09fe51e006ad60883dc57eb8db54fa1850c5f9bfd4e47f9c93f3d",
+          "previous_evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "evidence_fingerprint": "sha256:5359ad5356a72eea24c0ae9b858bc61ebb23195a5c868b32f6e93b7be71519dc",
+          "reason": "re-review at a moved formal-source revision; every cited declaration's statement verified byte-identical across the move"
         }
       ]
     }

@@ -54,7 +54,7 @@
 % are handled locally so authors may write names verbatim.
 % ---------------------------------------------------------------------------
 \newcommand{\PK}{Erdos249257}
-\newcommand{\commit}{bb37f2c5bfcf4e858f454c25fb3bf53fc8df2753}
+\newcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 % \lean declaration file:line forms a hyperlink to the pinned public
 % formal-source checkpoint. The second argument is a machine coordinate,
@@ -1577,9 +1577,9 @@ respectively (in the same order).
 &
 \scale{fixed}
 &
-\lean{certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2860}
-\lean{diagonalPincerCertificateScales}{DiagonalPincerCertificates.lean:2842}
-\lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2844}
+\lean{certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2870}
+\lean{diagonalPincerCertificateScales}{DiagonalPincerCertificates.lean:2852}
+\lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2854}
 \\
 Diagonal-pincer certificates, extended scales through $t=64$
 &
@@ -1752,7 +1752,7 @@ $6,5,7,7,9,14,15,14,21,22,23,26,\ldots$.
 Each entry is a finite kernel computation on explicit totient values. The factorisations use
 checked prime-power blocks and Lucas primality certificates. Thus the bank proves a finite list
 of instances of $P(t)$; it does not prove that $P(t)$ holds for infinitely many $t$.
-\par\noindent\ev{Cert} \scale{fixed} \coord{other:lcm-diagonal} \lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2860} \lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2844} \lean{certifiedKill\_diagonal\_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928}
+\par\noindent\ev{Cert} \scale{fixed} \coord{other:lcm-diagonal} \lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2870} \lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2854} \lean{certifiedKill\_diagonal\_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928}
 
 The historical 28 deposits are now a strict subset of the aggregate theorem
 $\forall t\le82,\ P(t)$.  That theorem closes the finite interval without
@@ -2604,7 +2604,7 @@ theorem strengthens this historical list to $\forall t\le82,\ P\,t$, with no
 holes.  It does \emph{not} establish $P\,83$ or infinitely many $t$ and hence
 does not close Props.~\ref{prop:A10}/\ref{prop:B3}/\ref{prop:B7}.
 \scale{bounded}\ \ev{Cert}\ \coord{mobius-mersenne}\\
-\lean{certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2860}
+\lean{certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2870}
 \lean{ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82}{ErdosProblems/Skip/LadderT67.lean:71264}
 \end{prop}
 
@@ -3619,7 +3619,7 @@ non-negative periodic $\Rightarrow$ irrational (unconditional) & \lean{irrationa
 all $h\in[1,8]$ kill certificate at depth 16, $N{=}12$ & \lean{certifiedKill\_all\_small}{TotientTailPeriodKiller.lean:404} & fixed & $\forall h\in[1,8]$, \texttt{certifiedKill}\,$h$\,12\,16 (by \texttt{decide}) & other-binary-window\\
 $h\in[1,16]$, exponent 14 kill table & \lean{totient\_series\_ne\_rat\_of\_den\_dvd\_pow\_two\_mul\_mersenne\_upto\_sixteen}{CertificateKernel.lean:18890} & fixed & $\forall h\in[1,16]$, denominator exponent 14 (by \texttt{decide}) & other-binary-window\\
 rank-2 kill not shallower at $(h,N){=}(1,8)$ & \lean{totient\_tail\_rank\_two\_kill\_sound\_but\_not\_shallower\_cell}{CertificateKernel.lean:19090} & fixed & measured over $t{\le}20$ (30/40 cells) & other-binary-window\\
-28-point diagonal pincer table through $t{=}64$ & \lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2860} & fixed & $t\in\{1,2,3,4,5,7,8,9,11,13,16,17,\dots\}$ (28 explicit values) & other-lcm-diagonal\\
+28-point diagonal pincer table through $t{=}64$ & \lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2870} & fixed & $t\in\{1,2,3,4,5,7,8,9,11,13,16,17,\dots\}$ (28 explicit values) & other-lcm-diagonal\\
 contiguous diagonal certificate band through $t{\le}82$ & \lean{ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82}{ErdosProblems/Skip/LadderT67.lean:71264} & bounded & $\forall t{\le}82\,\exists L$; no $t{=}83$ certificate claimed & other-lcm-diagonal\\
 short kill at $a{=}4$ and $a{=}6$ & \lean{lcmDiagonalArithmeticKill\_two\_pow\_four}{TotientActualLcmShortKill.lean:18} & fixed & $a{=}4$, $a{=}6$ (concrete, kernel-checked) & mobius-mersenne\\
 square-CRT clean block: vanishing / nonvanishing witnesses & \lean{squareCRT\_clean\_block\_can\_vanish}{SquareCRTCube.lean:459} & fixed & witness $n{=}52$ (vanishes); witness $n{=}27$ (nonzero) & other-crt-dyadic-residue\\
@@ -3673,7 +3673,7 @@ absence of search:
 
 \begin{enumerate}[leftmargin=*]
 \item \textbf{Finite certificate tables.} Results such as
-\lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2860} (28 explicit
+\lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2870} (28 explicit
 values of $t$ through $t{=}64$, now a strict subset of the aggregate
 $\forall t\le82$ band),
 \lean{certifiedKill\_all\_small}{TotientTailPeriodKiller.lean:404} ($h\in[1,8]$ at fixed depth
@@ -4250,7 +4250,7 @@ Consequently a cofinal $1/32$-separation of the raw approximant from every integ
 \#249. The corpus verifies the analogous kill \emph{unconditionally} at exactly two exponents,
 $a=4$ and $a=6$
 (\lean{actualLcmTailOrbit_four_and_six_notMem_int}{TotientActualLcmShortKill.lean:35}, \ev{Cert},
-\scale{fixed}, via \lean{certifiedKill_diagonal_t16}{DiagonalPincerCertificates.lean:2832} and
+\scale{fixed}, via \lean{certifiedKill_diagonal_t16}{DiagonalPincerCertificates.lean:2842} and
 \lean{certifiedKill_diagonal_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928}). Nothing beyond
 $a=6$ is proved. The depth $q$ is not free: the supply predicate pins $2q{+}1 =
 \mathtt{oddGuardedCanonicalAdjacentSuffixDepth}(2^a)$, so per scale $a$ there is exactly one
@@ -4307,9 +4307,9 @@ statement (it implies certified-kill directly, without the separation-and-round 
 \subsubsection{b11 --- the diagonal pincer certificate bank (\coord{diagonal-pincer})}
 
 \begin{thm}
-\lean{certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2860}, with
-\lean{diagonalPincerCertificateScales}{DiagonalPincerCertificates.lean:2842} and
-\lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2844}. \ev{Cert}. \scale{fixed}.
+\lean{certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2870}, with
+\lean{diagonalPincerCertificateScales}{DiagonalPincerCertificates.lean:2852} and
+\lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2854}. \ev{Cert}. \scale{fixed}.
 \[
   \forall t\in\{1,2,3,4,5,7,8,9,11,13,16,17\},\ \exists L,\
   \mathtt{certifiedKill}\ (\mathtt{periodLcm}\ t)\ (\mathtt{periodLcm}\ t)\ L
@@ -6580,7 +6580,7 @@ witness already at $t=t_0$.
 $P(t)$ is verified for every $t\le82$
 (\lean{ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82}{ErdosProblems/Skip/LadderT67.lean:71264}).
 The historical bank contained 28 explicit values through $t=64$
-(\lean{Erdos249257.certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2860},
+(\lean{Erdos249257.certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2870},
 depths $[6,5,7,7,9,14,15,14,21,22,23,26,\dots]$ for
 $t\in\{1,2,3,4,5,7,8,9,11,13,16,17,\dots\}$; endpoint
 \lean{Erdos249257.certifiedKill_diagonal_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928})
