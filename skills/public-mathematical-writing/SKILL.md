@@ -144,6 +144,11 @@ not as an exhaustive inventory. Compare its modules with the actual problem
 source tree and its current research frontier. Preserve an authored reading
 order while making omitted source modules discoverable through the owning
 index builder. Source presence alone grants no proof or review status.
+When implementation and publication live in different source roots, inspect
+both before declaring formalization missing. An unpromoted implementation may
+already be stronger than the published result. Check its exact statement,
+dependency versions and validation evidence before transferring it; repair the
+missing publication route instead of rebuilding a weaker theorem.
 
 For each substantial omission, read the proof and its consumers. Test whether
 several existing ingredients discharge a premise that the paper still lists
@@ -152,6 +157,14 @@ convergence and quantifiers. An ordinary assembled proof may strengthen the
 paper before its complete Lean formalization exists, but label the uncovered
 bridge explicitly. Neither a theorem name nor a checked scalar ingredient
 certifies the assembled statement.
+
+When formalization is in scope, an uncovered bridge is work to undertake,
+not merely a disclaimer to add. Reuse existing proofs and formalize the
+mathematical step needed by the paper's actual conclusion. Prefer the bound
+on the genuine series or the inequality for actual disk points to a wrapper
+that assumes that conclusion. Keep the strongest justified ordinary result
+visible while the formal proof is developed; report partial coverage precisely
+and promote checked status only after the exact source passes Lean.
 
 Propagate a verified omission into the existing mathematical family, claim
 record, comprehension nodes, reviewer disposition and paper as appropriate.
@@ -222,7 +235,11 @@ claim-owned paper anchor lines: refresh those with
 the manuscript's reviewed source links. Refresh the generated paper corpus and
 run the clean-ref release check after committing the complete artifact set;
 a successful PDF build or digest restamp alone does not establish that the
-publication projections agree.
+publication projections agree. When new source links introduce modules, run
+`python3 scripts/build_paper_module_aliases.py`; when the review matrix changes,
+run `python3 scripts/build_external_verification.py`. Refresh the semantic,
+theory and corpus-descriptor projections after their inputs settle, with the
+descriptor last so it records the final source-alias digest.
 
 Run `python3 scripts/lean_fast_build.py --jobs 2` after Lean changes. For paper
 changes, rebuild the owning manuscript and run its registered link and corpus

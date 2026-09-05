@@ -53,10 +53,11 @@ gives a root connector of length at most
 inside $\{|f|\le|v|\}$.  Hence the connector is shorter than
 $2|v|^{1/n}$ whenever
 $(1+S)^{2/n}\log(S/(S-1))<1$.  Exact uniform choices are $S=4$ for
-$n\ge3$, $S=3$ for $n\ge4$, and $S=2$ for $n\ge7$.  For roots in the open
+$n\ge3$, $S=3$ for $n\ge4$, and $S=2$ for $n\ge6$.  For roots in the open
 unit disc these hypotheses prove Erd\H{o}s~\#1041 for the polynomial.  The
-analytic proof remains ordinary mathematics; Lean separately checks degree
-monotonicity, the three exact thresholds, and the squared-length consumer.
+analytic proof, degree monotonicity, threshold estimates and length
+consequence are ordinary mathematics; no Lean formalisation of this
+separation theorem or its numerical kernel is supplied here.
 
 A second all-degree result is sharp rather than merely sufficient: for
 collinear zeros of diameter $D$, one adjacent-root segment lies below
@@ -65,7 +66,12 @@ $C_n=(2^{n-1}\cos^n(\pi/(2n)))^{-1}$, and equality occurs for affine
 Chebyshev configurations.  We also close the primitive sparse quintic family
 and every translated cubic quotient-fibre family of degree $3q$, $q\ge2$.
 For each family the exact Lean-checked selector is displayed separately from
-the ordinary normalization, fibre, moment, and path assembly.
+the ordinary normalization, fibre, moment, and path assembly.  A further
+unconditional auxiliary theorem gives the sharp critical-value budget
+$\sum_{j=1}^{n-1}|f(c_j)|^{1/n}\le(n-1)R$ for $2\le n\le5$, where $R$
+is the radius of an enclosing root disk.  Its proof combines finite disk
+inequalities with a plurisubharmonic boundary reduction; it controls merge
+levels, not the lengths of the paths reaching them.
 
 This result exposes rather than hides the surviving frontier: it gives no
 control when critical values form a near tie, and it excludes multiple
@@ -112,6 +118,9 @@ distances with total at most $2$, while the Newton flow transports $f$
 exactly by $f(z(t))=e^{-t}f(z(0))$.  Exact examples show why straight spokes
 and root-pair segments do not solve the containment problem.  \textbf{Sharp
 degree-five target.} A critical value at most $1/M_5$ would suffice.
+\textbf{Proved algebraic budget.} The sum of critical-value $n$-th roots is
+at most $(n-1)R$ through degree five; converting this budget into short
+contained paths is a separate metric problem.
 \textbf{Open boundary.} The missing theorem is an admissible critical hub
 whose inverse-ray arms stay in the right component and meet the metric bound.
 \end{paperresult}
@@ -132,8 +141,9 @@ gluing in those complementary strata, so Problem~\#1041 remains open.  The
 degree-five target and the no-go witnesses are boundaries around the open
 theorem, not a hidden closure.}{Comparator
 selects the finite-family small-translation theorem and the quantified
-root-retention theorem, three solved-family kernels, and the numerical kernel
-of critical-value separation.  Each formal endpoint routes to the exact paper
+root-retention theorem and three solved-family kernels.  Critical-value
+separation, including its threshold analysis, has no corresponding formal
+endpoint in the pinned corpus.  Each formal endpoint routes to the exact paper
 result and boundary it supports; the covering-space and area argument and the
 frontier section remain ordinary evidence classes.}
 
@@ -212,7 +222,8 @@ We study the Newton flow whose trajectories foliate the lemniscate.
 Statement & Status & Exact boundary \\
 \midrule
 Erd\H{o}s \#1041 & Open & No proof is claimed. \\
-Critical-value separation & Ordinary all-degree theorem; Lean-checked numerical kernel & A simple nonzero hub and $(1+S)^{2/n}\log(S/(S-1))<1$; covering and area inputs stay ordinary; near ties and multiple saddles are excluded. \\
+Critical-value separation & Ordinary all-degree theorem & A simple nonzero hub and $(1+S)^{2/n}\log(S/(S-1))<1$; the threshold, covering and area arguments remain ordinary; near ties and multiple saddles are excluded. \\
+Critical-value budget through degree five & Ordinary theorem; scalar Lean companion & $\sum_j|f(c_j)|^{1/n}\le(n-1)R$ for $2\le n\le5$; the torus maximum principle and complete finite-point inequalities remain ordinary proofs and do not control inverse-ray length. \\
 Newton value equation $w'=-w$ & Checked & Away from critical points, along any trajectory tangent to $-f/f'$. \\
 Exponential first integral & Checked & $\tfrac{d}{dt}\bigl(e^{t}f(z(t))\bigr)=0$. \\
 Ray separation of critical values & Checked (consumer form) & Endpoints of a finite connection share one oriented ray; distinct rays exclude a connection. \\
@@ -325,7 +336,7 @@ Condition~\emph{(5)} holds for
 \[
  (n,S)=(n,4)\quad(n\ge3),\qquad
  (n,3)\quad(n\ge4),\qquad
- (n,2)\quad(n\ge7).
+ (n,2)\quad(n\ge6).
 \]
 If $f$ is monic with roots in the open unit disc, $c$ is a simple critical
 point with $v=f(c)\ne0$, and every other critical point satisfies the
@@ -340,10 +351,16 @@ For $S=4$ and $n\ge3$,
  \le5^{2/3}\log(1+1/3)<5^{2/3}/3<1,
 \]
 where the last radical inequality is $25<27$.  For $S=3$ and $n\ge4$,
-$4^{2/n}\log(3/2)\le2\log(1+1/2)<1$.  For $S=2$ and $n\ge7$, the positive
-exponential series gives
-$\exp(7/10)>12013/6000>2$, hence $\log2<7/10$, while
-$9\cdot7^7<10^7$ is exactly $(3^{2/7}\cdot7/10)^7<1$.
+$4^{2/n}\log(3/2)\le2\log(1+1/2)<1$.  For $S=2$ and $n\ge6$, use the exact bound
+$\log2<0.6931471808=:c$.  For example, summing the first nine terms of
+$\log2=2\sum_{k\ge0}((2k+1)3^{2k+1})^{-1}$ and bounding the positive
+remainder geometrically gives
+\[
+ \log2\le2\sum_{k=0}^{8}\frac1{(2k+1)3^{2k+1}}
+       +\frac9{4\cdot19\cdot3^{19}}<c.
+\]
+Exact rational arithmetic gives $3c^3<1$, so
+$3^{2/n}\log2\le3^{1/3}\log2<3^{1/3}c<1$.
 
 For the polynomial $f$, set $z=c+\rho e^{i\theta}w$ with
 $\rho=|v|^{1/n}$ and choose $\theta$ so that $P(w)=f(z)/v$ has
@@ -371,12 +388,11 @@ Theorem~\ref{res:critical-value-separation} are ordinary mathematics.  The
 companion symbolic replay checks the branch-value algebra, all three exact
 constant chains, and the nonempty boundary example
 $P(z)=1-3z^2+z^3$, whose other critical point is $2$ and satisfies
-$1-P(2)=4$.  The companion Lean module
-	exttt{FirstMergeCriticalValueSeparation} checks the degree monotonicity,
-all three exact coefficient thresholds, and the abstract implication from
-the squared connector estimate to length below two.  It does not formalize
-the analytic continuation, univalence, area formula, or P\'olya inequality,
-and therefore does not turn the complete analytic proof into a Lean theorem.
+$1-P(2)=4$.  The degree monotonicity, exact threshold inequalities and
+conversion from the squared estimate to a strict length bound are also
+ordinary arguments.  No corresponding Lean declaration is supplied by the
+pinned corpus; the symbolic replay is not a kernel-checked proof of the
+analytic theorem or its scalar consequences.
 
 The boundary is structural, not cosmetic.  This method says nothing when a
 second critical value enters the resolved disc, and it assumes the selected
@@ -563,7 +579,9 @@ At a zero,
  |bw_i+c|=|w_i|^4|w_i+a|.
 \]
 Thus, for $x_i=\Re z_i$ and $s_i=|z_i|^2$, the squared tail is exactly
-$E_i$ and \emph{(12)} becomes \emph{(10)}.
+$E_i$ and \emph{(12)} becomes \emph{(10)}.  If $r>0$, the third moment
+also gives $r^3=|\sum_i z_i^3|\le5<8$, so $r<2$ as required by the
+selector.
 
 For completeness, the selector is driven by the harmonic extension
 \[
@@ -578,7 +596,10 @@ while $H_r\le4-2r$ throughout the unit disc.  If $E_r(x,s)\ge1$, then
 \[
  5(1-s)\le2r(x+r/2).
 \]
-After putting $d=x+r/2$ and $u=1-x$, the remaining estimate is the exact
+Put $d=x+r/2$, $u=1-x$, $A=1-r/4-3x/4$, and
+$P=-u^2+(2r/5)A$.  The unsafe inequality gives $0\le d<2$.  Since
+$H_r=-du^2+(1-s)A$, it is nonpositive when $A\le0$; when $A>0$,
+the preceding bound gives $H_r\le dP$.  The remaining estimate is the exact
 sum-of-squares identity
 \[
  \frac1{31}-P
@@ -586,7 +607,8 @@ sum-of-squares identity
                +\frac14(u-\frac3{31})\right)^2
   +\frac{31}{40}\left(u-\frac3{31}\right)^2\ge0,
 \]
-which yields $H_r(x,s)\le2/31$ for every unsafe tail.  If four tails were
+which gives $P\le1/31$, and hence $H_r(x,s)\le2/31$ whether $P$ is
+positive or nonpositive.  Thus every unsafe tail has this smaller score.  If four tails were
 unsafe, \emph{(13)} would give
 \[
  5-2r\le4-2r+\frac8{31}<5-2r,
@@ -647,6 +669,17 @@ in every degree $3q\ge6$.
 \end{theorem}
 
 \begin{proof}
+Fix a $q$th root $y$ of a quotient root and a primitive $q$th root of unity
+$\zeta$.  The full fibre consists of $h+y\zeta^k$.  Since every fibre point
+lies in the open unit disc,
+\[
+ \frac1q\sum_{k=0}^{q-1}|h+y\zeta^k|^2
+   =|h|^2+|y|^2<1.                                \tag{14}
+\]
+Thus $|y|<1$, and the corresponding quotient root has modulus
+$|y|^q<1$.  This verifies the open-disc hypothesis for all quotient roots
+before applying the following selector.
+
 Write $P(w)=(w-r)(w-s)(w-v)$ and assign to $r$ the charge
 $A_r=\Re(r\overline{s+v})$, cyclically.  The exact sum is
 \[
@@ -657,27 +690,22 @@ distance-square identity give
 \[
  |tr-s|\,|tr-v|<1+t+t^2.
 \]
-Consequently
+Consequently, for $0\le t<1$,
 \[
- |P(tr)|<(1-t)(1+t+t^2)=1-t^3<1                 \tag{14}
+ |P(tr)|<(1-t)(1+t+t^2)=1-t^3\le1.              \tag{15}
 \]
-away from the root endpoint.
+At $t=1$ the polynomial vanishes.  The entire spoke is therefore strictly
+contained, including its origin endpoint.
 
-Fix a $q$th root $y$ of a quotient root and a primitive $q$th root of unity
-$\zeta$.  The full fibre consists of $h+y\zeta^k$.  Since every fibre point
-lies in the open unit disc,
-\[
- \frac1q\sum_{k=0}^{q-1}|h+y\zeta^k|^2
-   =|h|^2+|y|^2<1.                                \tag{15}
-\]
-Thus $|y|<1$.  For the safe quotient root from \emph{(14)}, two distinct
+For a nonzero safe quotient root from \emph{(15)}, two distinct
 fibre points satisfy
 \[
  f(h+ty\zeta^k)=P(t^qr),
 \]
 and their two spokes through $h$ have total length $2|y|<2$.  If the selected
 quotient root is zero, choose a nonzero quotient root and use the direct
-estimate $|P(ts)|<2t(1-t)\le1/2$; if none exists, $f$ has only one distinct
+estimate $|P(ts)|<2t(1-t)\le1/2$ for $0<t<1$, with zero values
+at both endpoints; if none exists, $f$ has only one distinct
 zero value, contrary to the hypothesis.
 \end{proof}
 
@@ -687,7 +715,7 @@ Lean checks the charge identity and selection, the two-distance envelope,
 the cubic product bound, the safe-spoke disjunction in
 Theorem~\ref{lem:cubic-safe-root-spoke}, and an exact quartic falsifier for
 this charge method.  It does not check the finite $q$-fibre construction,
-root-of-unity average \emph{(15)}, zero-root fallback, pullback, or geometric
+root-of-unity average \emph{(14)}, zero-root fallback, pullback, or geometric
 path assembly.  These are ordinary steps, and no literature-priority claim is
 made.
 
@@ -874,7 +902,7 @@ path object.  Without the signed-moment, root-dependent, or coefficient-only
 budget, the tetranomial case remains open; this family does not solve
 unrestricted Erd\H{o}s~\#1041.
 
-\subsection*{Translated quartic quotient fibres}
+\subsection*{Translated quartic quotient fibres}\label{sec:translated-quartic-quotient-fibres}
 
 Pendyala's degree-four theorem can also be lifted through every nontrivial
 cyclic power.  Let $P$ be a monic quartic, let $q\ge2$, and set
@@ -916,6 +944,165 @@ endpoint budget, and the final length fan-in.  It does not formalize
 Pendyala's geometric lemma, the continuous covering-space construction of the
 root lift, or the ordinary chord/radial case assembly.  This is a structured
 all-scale family, not a proof of unrestricted Erd\H{o}s~\#1041.
+
+\subsection*{A critical-value budget through degree five}
+
+The critical values satisfy a sharp aggregate bound in the first four
+nontrivial degrees.  This gives a budget for the merge levels; it does not
+bound the lengths of the paths that reach them.
+
+\begin{theorem}[critical-value budget in degrees two through five]
+\label{res:critical-value-budget}
+Let $f$ be monic of degree $2\le n\le5$, with roots in a disk of radius
+$R$.  If $c_1,\ldots,c_{n-1}$ are its critical points counted with
+multiplicity, then
+\[
+ \sum_{j=1}^{n-1}|f(c_j)|^{1/n}\le(n-1)R.
+\]
+The constant is attained by $f(z)=(z-\tau)^n-\lambda$ with enclosing
+disk centred at $\tau$ and radius $R=|\lambda|^{1/n}$.
+\end{theorem}
+
+The finite inequality behind the theorem concerns arbitrary points of the
+disk, without asking them to arise as critical points.  Write $(\mathrm{FP}_m)$
+for
+\[
+ \sum_{j=1}^m\left(\prod_{k=1}^m
+       |1-\overline{c_j}c_k|\right)^{1/m}\le m,
+ \qquad |c_j|\le1.
+\]
+We first establish the cases $m\le4$, then explain why
+$(\mathrm{FP}_m)$ implies the critical-value budget in degree $m+1$.
+
+\paragraph{The three-point mechanism.}
+The one-point inequality is $1-|c_1|^2\le1$.  For two points put
+$a=|c_1|$, $b=|c_2|$, and $d=|1-\overline c_1c_2|\le1+ab$.
+The square of the left side of $(\mathrm{FP}_2)$ is at most
+\[
+ 2(1+ab)(2-a^2-b^2)\le4(1-a^2b^2)\le4,
+\]
+by Cauchy--Schwarz and $a^2+b^2\ge2ab$.
+
+For three points put $x_i=1-|c_i|^2$,
+$d_{ij}=|1-\overline c_ic_j|$, and
+\[
+ S=\sum_{i=1}^3(x_i d_{ij}d_{ik})^{1/3},\qquad
+ Q=\sum_i|c_i|^2,\quad E_2=\sum_{i<j}|c_i|^2|c_j|^2,
+ \quad s=\sum_i c_i,
+\]
+where $\{i,j,k\}=\{1,2,3\}$ in each summand.  Hölder and
+Cauchy--Schwarz give
+\[
+ S^3\le(3-Q)(d_{12}+d_{13}+d_{23})^2
+ \le3(3-Q)(3+Q-|s|^2+E_2).
+\]
+The last expression has an exact nonnegative defect:
+\[
+ (3-Q)(3+Q-|s|^2+E_2)=9-\Delta,
+ \qquad
+ \Delta=\frac12\sum_{i<j}(|c_i|^2-|c_j|^2)^2
+          +QE_2+(3-Q)|s|^2\ge0.
+\]
+Thus $S\le3$.  Equality forces equal moduli and $QE_2=0$, hence all
+three points are zero; conversely the zero configuration attains equality.
+The bound comes from this defect identity, rather than from separately
+maximising the pairwise factors.
+
+\paragraph{Four points require two complementary estimates.}
+For four points the inequality is again true, with equality only when all
+points are zero.  Its proof divides at $\max_j|c_j|^2=21/25$.
+In the central region put
+\[
+ h_j=\frac14\log\prod_k|1-\overline c_jc_k|,
+ \quad L_j=-\log(1-|c_j|^2),\quad
+ E=\frac14\sum_{r\ge1}\frac{|\sum_kc_k^r|^2}{r}.
+\]
+The convergent logarithmic expansion gives
+$\sum_jh_j=-E$ and $\sum_jh_j^2\le E\,\frac14\sum_jL_j$.
+Exact polynomial and Taylor estimates give $h_j<11/50$,
+$\frac14\sum_jL_j<11/6$, and
+$\Phi(11/50)<6/11$, where
+$\Phi(t)=(e^t-1-t)/t^2$ is increasing, with $\Phi(0)=1/2$.
+Consequently
+\[
+ \sum_je^{h_j}\le4-E+\Phi(11/50)\sum_jh_j^2<4
+\]
+when $E>0$; when $E=0$, all power sums vanish and all four points are zero.
+
+In the outer region put $x_j=1-|c_j|^2$ and
+\[
+ W=(\sum_jx_j)(d_{12}+d_{34})(d_{13}+d_{24})(d_{14}+d_{23}).
+\]
+Hölder applied to the three perfect matchings of four vertices gives
+$S_4^4\le8W$.  If $a$ is the largest squared radius and $s$ is the sum
+of the other three, Cauchy--Schwarz and AM--GM give
+\[
+ W\le(4-a-s)
+ \left[\frac23\left(6+a+(1+a)s+\frac{s^2}{3}\right)\right]^{3/2}<32
+ \qquad(a\ge21/25).
+\]
+For the last inequality the right side decreases in $a$; at $a=21/25$
+its maximum occurs at $s=(-27+3\sqrt{473})/50$ and is strictly below $32$.
+Thus $S_4<4$ in the outer region.  The full polynomial, Taylor and radical
+certificates for these estimates are given in the public
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointZeroInsertionFP4Matching.md}{four-point proof};
+the preceding short defect proof is recorded in the
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointMeanInequalityFP3.md}{three-point proof}.
+
+\paragraph{From free points to critical values.}
+Here is the all-degree implication.  After translating and scaling the root
+disk to radius one, write $f_a(z)=\prod_{i=1}^n(z-a_i)$ and consider
+\[
+ \Psi(a_1,\ldots,a_n)=
+ \sum_{f_a'(c)=0}|f_a(c)|^{1/n},
+\]
+counting multiplicity.  Away from multiple critical points, local critical
+branches and their values are holomorphic, so $\Psi$ is plurisubharmonic.
+The symmetric multiset sum is continuous across critical collisions and
+locally bounded above; the removable-singularity theorem extends its
+plurisubharmonicity across that analytic locus.  Applying the subharmonic
+maximum principle successively in each root coordinate reduces its maximum
+to $|a_i|=1$ for every $i$.
+
+On that torus, if $f'(z)=n\prod_{k=1}^{n-1}(z-c_k)$, then
+\begin{equation}\label{eq:critical-torus-product}
+ |f(c_j)|=\prod_{k=1}^{n-1}|1-\overline{c_j}c_k|.
+\end{equation}
+Indeed, for a critical point $c\ne0$ that is not a root, conjugating
+$\sum_i(c-a_i)^{-1}=0$ gives
+$\sum_i a_i/(1-\bar c a_i)=0$, hence
+$\sum_i(1-\bar c a_i)^{-1}=n$.
+Thus $|f'(1/\bar c)|=n|c|\,|f(1/\bar c)|$.
+The product formulas and $|f(1/\bar c)|=|c|^{-n}|f(c)|$
+give \eqref{eq:critical-torus-product}.  At $c=0$ both sides are one;
+if $c$ is also a root, it lies on the unit circle and both sides vanish.
+Gauss--Lucas puts all critical points in the closed disk, so
+$(\mathrm{FP}_{n-1})$ applies, including multiplicities.
+
+Put $m=n-1$ and $y_j=|f(c_j)|^{1/m}$.  The free-point inequality gives
+$\sum_jy_j\le m$.  Concavity supplies exactly the exponent needed:
+\[
+ y^{m/(m+1)}\le\frac{my+1}{m+1}\quad(y\ge0),\qquad
+ \sum_j|f(c_j)|^{1/n}\le m.
+\]
+Scaling back multiplies the last sum by $R$, proving
+Theorem~\ref{res:critical-value-budget}.  If $R=0$, all critical values
+vanish and the conclusion is immediate.
+
+This is an ordinary proof.  The public
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointTorusPshReduction.md}{torus reduction}
+and its Lean companion separate the scalar concavity step from the
+plurisubharmonic maximum principle and polynomial identity; the companion
+formalises the scalar step, not those analytic bridges.  The four-point Lean
+companion likewise contains algebraic kernels, not the complete logarithmic
+and calculus proof.  No full Lean formalisation of the critical-value budget
+is claimed here.
+
+The budget guarantees a critical value at most $R^n$, but does not force
+the smaller quintic threshold $1/M_5$ below.  On the unit radial family all
+critical values have modulus one, so a uniformly strict improvement is
+unavailable.  Nor does the value budget bound inverse-ray lengths: a path
+selection or metric comparison is still needed.
 
 \subsection*{The degree-five target is now explicit}
 
@@ -987,9 +1174,11 @@ and at one degree-five witness.  Its algebraic factor
 \[
  \sum_{k=1}^{n-1}|f(c_k)|^{1/n}\le(n-1)R
 \]
-survives as a separate conjecture, but the metric factor is not automatic.
+is proved for $n\le5$ in Theorem~\ref{res:critical-value-budget} and remains
+conjectural in higher degrees.  The metric factor is not automatic even in
+the proved degrees.
 These two boundaries, including the distinction between the surviving
-algebraic half and the dead aggregate, are in
+algebraic budget and the failed length aggregate, are in
 \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/MinimalHubArmBudgetRefutation.md}{\texttt{MinimalHubArmBudgetRefutation.md}}
 and
 \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/SeparatrixAggregateReduction.md}{\texttt{SeparatrixAggregateReduction.md}}.
