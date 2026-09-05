@@ -9,15 +9,14 @@
 \renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
 \renewcommand{\commitshort}{99f4bf47422a}
 \hypersetup{
-  pdftitle={Sharp height and four-jet obstructions at base 3/2 for Erdős Problem 1049},
+  pdftitle={Rational-base irrationality and four-jet obstructions for Erdős Problem 1049},
   pdfsubject={Erdős Problem Notes: Problem 1049},
   pdfkeywords={irrationality, Lambert series, rational base, Padé approximation, Lean 4},
 }
 
-\runninghead{Erd\H{o}s \#1049: sharp obstructions at base 3/2}
-\title{Sharp Height and Four-Jet Obstructions at Base $3/2$}
-\subtitle{An exact $41/65$ certificate for Erd\H{o}s
-Problem~\#1049}
+\runninghead{Erd\H{o}s \#1049: rational-base regions and obstructions}
+\title{Rational-Base Irrationality and Four-Jet Obstructions}
+\subtitle{An explicit region and exact barriers for Erd\H{o}s Problem~\#1049}
 \author{Will Cook}
 \date{July 2026}
 
@@ -29,35 +28,34 @@ Problem~\#1049}
 \noindent
 Erd\H{o}s Problem~\#1049 asks whether
 \(F(t)=\sum_{n\ge1}(t^n-1)^{-1}\) is irrational for every rational \(t>1\).
-We prove exact obstructions to several approximation methods at \(t=3/2\)
-and a conditional reduction of the number of rows needed to cancel endpoint
-residues.
+Using Zudilin's polynomial linear forms, we prove irrationality when
+\[
+ \frac{\log b}{\log a}<\theta_*=0.405683021384\ldots,
+ \qquad a>b\ge1,\quad(a,b)=1.
+\]
+The constant is defined exactly below.  The region includes \(31/4\) and all
+its positive integer powers, beyond the earlier Bundschuh--V\"a\"an\"anen
+sufficient region.  The proof removes a cyclotomic divisor before
+specialisation, clears the rational base at the actual polynomial degree,
+and retains a positive integer linear form tending to zero.  This is an
+ordinary analytic theorem with an exact finite parameter certificate.
 
-The integer bracket \(2^{64}<3^{41}<2^{65}\) gives a uniform gap greater than
-\(3/13\) between \(\log2/\log3\) and every threshold in the rectangular
-Hermite--Pad\'e exponent model studied here.  The scalar factor and its
-universally forced first-order border also fall short of the required
-\(39/41\) charge.  These comparisons exclude the stated height mechanisms.
-
-For the additive alternative, the same bracket gives a four-jet collision
-among binary selectors whenever \(M\ge130T+2S\) polynomial pairs are used at
-bottom depth \(41T\) and top depth \(S\).  The counting threshold is exact
-at \(T=1\).  If the rows modulo \(2^S3^R\) are unimodular and their adjacent
-determinants vanish, a B\'ezout shear reduces all selector sums to one residue
-coordinate; \(S+2R\) rows then suffice for \(R>0\).  Neither coordinate need
-be invertible.  A separate bounded-fibre theorem states the additional
-multiplicity estimate that would force a collision with distinct analytic
-remainders.
-
-Integer scalar content cannot improve the ratio of a determinant's local
-divisor to its absolute height, while coordinatewise clearing at \(3/2\)
-fails an exact exponential growth bound.  The unresolved step is an actual
-approximation family combining primitive coefficients, a nonzero remainder,
-and decay faster than height growth.  No irrationality theorem at \(3/2\)
-is proved.
+At the still-open base \(3/2\), the checked bracket
+\(2^{64}<3^{41}<2^{65}\) excludes the stated rectangular Hermite--Pad\'e
+height mechanisms and gives a four-jet counting threshold exact at bottom
+depth \(41\).  For unimodular rows modulo \(2^S3^R\) whose adjacent
+determinants vanish, a Lean-checked B\'ezout argument reduces selector sums
+to one residue coordinate: \(S+2R\) rows suffice for \(R>0\).
+A bounded-fibre theorem identifies the extra multiplicity estimate needed
+to force distinct analytic remainders.  No actual approximation family with
+nonzero remainder and sufficient decay is constructed at \(3/2\).
 \end{abstract}
 
-\begin{paperresult}{What the paper rules out}
+\begin{paperresult}{Region theorem and the remaining obstruction}
+\textbf{Ordinary analytic theorem.} $F(a/b)$ is irrational for
+$\log b/\log a<\theta_*$, including $(31/4)^r$ for every integer $r\ge1$.
+The proof uses Zudilin's polynomial identities; it is not an end-to-end Lean theorem.
+
 \textbf{Exact arithmetic.} The bracket $2^{64}<3^{41}<2^{65}$ excludes the
 stated scalar and first-order Hermite--Pad\'e height mechanisms at $3/2$.
 It also yields the sharp finite four-jet count at bottom depth $41$, with a
@@ -96,6 +94,118 @@ settles a family of rational bases restricted by a
 height condition; that family contains $7/2$ and does not contain $3/2$.
 Between the two lies the question this note is about: what exactly stops the
 integer-base argument from running at $3/2$?
+
+\section{An explicit rational-base irrationality region}\label{sec:region}
+
+The rational-base extension depends on the degrees of the polynomials
+\emph{after} their cyclotomic divisor has been removed.  Clearing before that
+cancellation would pay an unnecessary denominator cost.
+
+Put $\psi_1(u)=\sum_{k\ge0}(k+u)^{-2}$ and let $\mathcal I$ consist of
+\[
+\begin{gathered}
+{}[1/14,1/12),\ [1/7,1/6),\ [3/14,1/4),\ [2/7,1/3),\\
+{}[5/14,2/5),\ [3/7,7/15),\ [1/2,8/15),\ [4/7,3/5),\\
+{}[9/14,2/3),\ [5/7,11/15),\ [11/14,4/5),\ [6/7,13/15),\
+{}[13/14,14/15).
+\end{gathered}
+\]
+Define
+\[
+ J=\sum_{[u,v)\in\mathcal I}(\psi_1(u)-\psi_1(v)),\qquad
+ C_0=266-\frac3{\pi^2}(225-J),\quad C_1=\frac{1091}{2},\quad
+ \theta_*=\frac{C_0}{C_1}.
+\]
+
+\begin{theorem}[rational-base region]\label{res:region}
+Let $a>b\ge1$ be coprime integers.  If
+$\log b/\log a<\theta_*$, then $F(a/b)$ is irrational.
+Moreover,
+\[
+ \frac{\log4}{\log31}<\frac{81}{200}<\theta_*<\frac12,
+\]
+so $F((31/4)^r)$ is irrational for every integer $r\ge1$.
+\end{theorem}
+
+\begin{proof}
+Take Zudilin's parameters
+$(a_0,a_1,a_2;b_n)=(14n+1,12n+1,14n+1;27n+2)$.
+His partial-fraction identities give $H_n=A_nF-B_n$.
+The polynomial calculation in Lemmas~3--5 and~7, particularly
+(16) and (21)--(24), gives
+\[
+ U_n=x^{-M_n}D_nA_n/\Omega_n\in\Z[x],\qquad
+ V_n=x^{-M_n}D_nB_n/\Omega_n\in\Z[x],
+\]
+where $M_n=266n^2+34n+1$,
+$D_n=\prod_{l\le15n}\Phi_l$, and
+$\Omega_n=\prod_{l=2}^{15n}\Phi_l^{\nu_l}$ is the source's cyclotomic divisor.
+This is a polynomial identity before evaluation: the proof cancels
+cyclotomic polynomial factors coprime to $x$, rather than merely cancelling
+integer values~\cite[Lemmas~4 and~7, pp.~157--161]{zudilin2004}.
+
+The summand degrees of $A_n$ increase by $40n+1-k>0$, so the unique
+highest term gives
+\[
+ K_n:=\deg A_n=(1091n^2+81n+2)/2.
+\]
+Every denominator in $B_n$ lowers degree by at least one.  Consequently
+\[
+ \deg U_n=W_n:=K_n-M_n+\sum_{l\le15n}(1-\nu_l)\varphi(l),
+ \qquad\deg V_n\le W_n-1.
+\]
+For fixed $x>1$, all factors in the defining positive series $H_n(x)$
+are positive, and its Pochhammer products give $\log H_n(x)=O_x(1)$.
+The cyclotomic identity
+$\log\Phi_l(x)=\varphi(l)\log x+O_x(\tau(l))$ therefore yields
+\[
+ \Lambda_n(x):=U_n(x)F(x)-V_n(x)>0,\qquad
+ \log\Lambda_n(x)=-(K_n-W_n)\log x+o(n^2).
+\]
+The floor formula for $\nu_l$ has support $\{n/l\}\in\bigcup\mathcal I$.
+Applying $\sum_{l\le y}\varphi(l)=3y^2/\pi^2+O(y\log y)$ to the blocks
+$(n/(k+v),n/(k+u)]$ gives
+\[
+ K_n/n^2\longrightarrow C_1,\qquad
+ (K_n-W_n)/n^2\longrightarrow C_0.
+\]
+Now $\widehat U_n=b^{W_n}U_n(a/b)$ and
+$\widehat V_n=b^{W_n}V_n(a/b)$ are integers, and the positive form
+$\widehat\Lambda_n=\widehat U_nF(a/b)-\widehat V_n$ satisfies
+\[
+ n^{-2}\log\widehat\Lambda_n\longrightarrow C_1\log b-C_0\log a<0.
+\]
+If $F(a/b)=P/Q$, then $Q\widehat\Lambda_n$ is a positive integer tending
+to zero, a contradiction.
+
+For the explicit base, the $k=0$ terms give
+$J\ge2015640690251/25971865920$.  With $\pi>157/50$, this implies
+\[
+ C_0-\frac{81}{200}C_1>
+ \frac{30066263041271}{133370942304600}>0.
+\]
+Combine this with $4^{200}<31^{81}$.  Positive powers leave the logarithmic
+ratio unchanged.  Finally $J\le\psi_1(1/14)\le196+\pi^2/6$, so
+$C_0<266.5<C_1/2$.
+\end{proof}
+
+The self-contained
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/78d88e384b4992c82b283c6f1f26602d5286f6d9/research_corpus/Erdos1049/RationalBaseRegion.md}{polynomial and analytic derivation}
+records the explicit forms, the polynomial interpretation of the source
+lemmas, the floor partition, and the convergent block-sum argument.
+The accompanying
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/78d88e384b4992c82b283c6f1f26602d5286f6d9/experiments/erdos1049_region_parameters.py}{exact rational checker}
+verifies the finite partition and parameter inequalities using only Python's
+standard library.  This theorem is an ordinary analytic proof; that finite
+certificate does not formalise its analytic steps.
+
+The gain over the earlier region is strict: $31^2<4^5$ and $\pi^2<10$
+give $\log4/\log31>2/5>1/2-1/\pi^2$.  The rational-base extension was
+anticipated in~\cite{zudilin2016}; the constant here is the reciprocal of the
+integer-base exponent in~\cite{zudilin2004}.  The base $3/2$ remains outside
+this region because $\log2/\log3>1/2$.
+
+\section{Approximation methods and prior work}\label{sec:context}
 
 \paragraph{Relation to prior work.}
 The \emph{Formal Conjectures} file for Problem~\#1049 contains the conjecture
@@ -221,11 +331,10 @@ threshold among the sources compared here for this value.  Zudilin's later
 Pad\'e-and-Hankel treatment also admits non-integral rational bases: its
 generalized $q$-logarithm remarks that its results also hold for non-integer
 $p=r/s$ with $|p|>1$, under an assumption $\log|r|>c\log|s|$ for some computable
-$c>0$~\cite{zudilin2016}.  No value of $c$ is computed there, and we do not
-compute one; we record the remark because it shows the rational-base extension
-was already contemplated, and because any threshold of that shape is a
-statement about $\log s/\log r$ of exactly the kind
-Section~\ref{sec:sevenhalves} treats.
+$c>0$~\cite{zudilin2016}.  No value of $c$ is computed there.  Section~\ref{sec:region} makes such a
+constant explicit for the 2004 forms: $c=1/\theta_*$.  Thus the rational-base
+extension was already contemplated; the contribution here is its explicit
+region and the complete denominator and decay argument.
 
 \paragraph{Erd\H{o}s's integer-base argument, in outline.}
 For an integer $b\ge2$, Erd\H{o}s rewrites
@@ -1288,9 +1397,10 @@ Consider the rational-height region
  \frac{\log b}{\log a}<\frac{81}{200}
  \qquad(a>b>0).
 \]
-No bibliographic source for an analytic irrationality theorem at this cutoff is
-asserted here.  The Lean module instead treats the displayed inequality as a
-definition and proves elementary memberships and exclusions.  In particular,
+Section~\ref{sec:region} proves an ordinary irrationality theorem on the
+larger region with cutoff $\theta_*>81/200$.  The Lean module treats the
+displayed inequality as a definition and checks its elementary memberships
+and exclusions; it does not formalise that analytic theorem.  In particular,
 \[
  \frac25
  <\frac{\log4}{\log31}
@@ -1309,8 +1419,8 @@ The same base lies strictly outside the earlier
 Bundschuh--V\"a\"an\"anen region
 (\lword{Erdos1049/ZudilinHeightRegion.lean}{91}{thirtyoneFour_outside_bundschuhVaananenHeightRegion}{checked}),
 so the $81/200$ inequality defines a strict set-theoretic enlargement of the
-earlier recorded logarithmic region.  Membership alone supplies no
-irrationality theorem for $31/4$.
+earlier recorded logarithmic region.  Together with Theorem~\ref{res:region}, this membership gives
+irrationality of $F(31/4)$ and all $F((31/4)^r)$, $r\ge1$.
 
 It still does not approach $3/2$.  The exact comparison
 \[

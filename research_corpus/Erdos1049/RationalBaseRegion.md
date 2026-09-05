@@ -223,6 +223,11 @@ The base \(31/4\) is outside it, because
 \(\log4/\log31>2/5>1/2-1/\pi^2\), using \(31^2<4^5\) and \(\pi^2<10\).
 Thus the argument extends that explicit sufficient region using Zudilin's
 forms; it does not prove irrationality at every rational base.
+Zudilin's [2016 paper](https://arxiv.org/abs/1601.02688), at the end of its
+introduction, already describes extensions to rational bases under a
+computable logarithmic height condition without specifying the constant.
+The contribution here is the explicit region and its complete clearing and
+decay argument for the 2004 forms.
 
 ## Reproduction and evidence
 
