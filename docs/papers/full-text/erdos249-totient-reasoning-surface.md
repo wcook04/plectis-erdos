@@ -99,7 +99,7 @@ This is obtained from a classical Stern–Brocot gap lemma () applied at window 
 
 <div id="prop:sign" class="prop">
 
-**Proposition 5** (Cofinal positivity, and why it is exactly half a certificate). *The true actual-LCM tail difference is strictly positive for every $`a \ge 8`$, with no irrationality hypothesis (, ). At a translated offset $`J`$ and depth $`K`$ satisfying $`J+K+(a+6)<2\cdot2^a`$ and $`2H+J+K+2<2^K`$, integrality forces the residue to the *top edge*, exactly $`2^{K} - e`$ (). Positivity does not exclude the top edge. So the strongest cofinal fact the corpus owns about the actual object supplies one of the two inequalities a certificate needs and provably cannot supply the other. `coord:actual-lcm` <span class="sans-serif">scale:cofinal</span> <span class="sans-serif">\[Lean\]</span>*
+**Proposition 5** (Cofinal positivity and the endpoint obstruction). *The true actual-LCM tail difference is strictly positive for every $`a \ge 8`$, with no irrationality hypothesis (, ). At a translated offset $`J`$ and depth $`K`$ satisfying $`J+K+(a+6)<2\cdot2^a`$ and $`2H+J+K+2<2^K`$, integrality forces the residue to the *top edge*, exactly $`2^{K} - e`$ (). This fixes the sign of the true survivor, but does not construct a central-band certificate. The top-edge residue remains compatible with integrality and needs an independent arithmetic exclusion. `coord:actual-lcm` <span class="sans-serif">scale:cofinal</span> <span class="sans-serif">\[Lean\]</span>*
 
 </div>
 
@@ -127,7 +127,7 @@ This is obtained from a classical Stern–Brocot gap lemma () applied at window 
 
 </div>
 
-Propositions <a href="#prop:sign" data-reference-type="ref" data-reference="prop:sign">5</a>–<a href="#prop:parity" data-reference-type="ref" data-reference="prop:parity">9</a> are the four facts a reader should carry into the next section: the corpus’s best cofinal information is half a certificate, its best rank information runs the wrong way, its reformulations are equivalences rather than reductions, and every purely qualitative property of the coefficient word is satisfied by a rational countermodel.
+Propositions <a href="#prop:sign" data-reference-type="ref" data-reference="prop:sign">5</a>–<a href="#prop:parity" data-reference-type="ref" data-reference="prop:parity">9</a> are the four facts a reader should carry into the next section: cofinal positivity leaves an endpoint-residue obstruction, the rank information runs the wrong way, its reformulations are equivalences rather than reductions, and every purely qualitative property of the coefficient word is satisfied by a rational countermodel.
 
 <a id="sec:wall"></a>
 
@@ -153,7 +153,7 @@ Fix two axes for a hypothetical proof of $`\mathrm{Sep}`$ (Definition <a href="
 
 - B2 closes the escape of retargeting; B3 records that no bounded result in the corpus has ever promoted.
 
-The corpus’s own results partition along these axes perfectly, which is the first evidence that the axes are the right ones. Every unconditional *finite* deposit (Proposition <a href="#prop:deposits" data-reference-type="ref" data-reference="prop:deposits">4</a>, the $`K=240`$ Farey rung of Theorem <a href="#thm:denom" data-reference-type="ref" data-reference="thm:denom">3</a>, the actual-LCM orbits at $`a = 4`$ and $`a = 6`$) sits at full resolution and bounded range, so B1 says extending them is evidence forever and proof never. Every unconditional *cofinal* theorem (letterwise positivity for all $`a \ge 8`$, the tail bounds from $`\varphi(m) \le m`$, unbounded Mersenne-shadow denominator growth) sits at coarse resolution and unbounded range, and Proposition <a href="#prop:sign" data-reference-type="ref" data-reference="prop:sign">5</a> proves in the corpus’s own coordinate that this is exactly half a certificate.
+The corpus’s own results partition along these axes perfectly, which is the first evidence that the axes are the right ones. Every unconditional *finite* deposit (Proposition <a href="#prop:deposits" data-reference-type="ref" data-reference="prop:deposits">4</a>, the $`K=240`$ Farey rung of Theorem <a href="#thm:denom" data-reference-type="ref" data-reference="thm:denom">3</a>, the actual-LCM orbits at $`a = 4`$ and $`a = 6`$) sits at full resolution and bounded range, so B1 says extending them is evidence forever and proof never. Every unconditional *cofinal* theorem (letterwise positivity for all $`a \ge 8`$, the tail bounds from $`\varphi(m) \le m`$, unbounded Mersenne-shadow denominator growth) sits at coarse resolution and unbounded range. Proposition <a href="#prop:sign" data-reference-type="ref" data-reference="prop:sign">5</a> illustrates why such sign information can leave the arithmetic endpoint obstruction unresolved.
 
 <a id="b1-the-finite-inspection-barrier-as-a-theorem"></a>
 
@@ -3279,9 +3279,9 @@ Third, the subset form (Theorem <a href="#thm:hgap-subset" data-reference-type=
 
 The headline (§<a href="#ssec:headline" data-reference-type="ref" data-reference="ssec:headline">9.2</a>) is row **e1-companion** of the source interface catalogue in full. The remaining thirteen rows below attack the same 249-supply obligation from independent coordinates in the Lean tree: the actual-LCM sign corridor, the top-edge staircase, the raw rational approximant, the short-window arithmetic word, the diagonal pincer certificate bank, the $`h`$-uniform single-window certificate, the Farey/continued-fraction denominator growth law, the 2-adic pulse block, the LCM-jump slack scalar, the prime-jump commutator, the Möbius–Mersenne denominator channel, and the carry-kernel rank. None of them is closed; each is recorded with its exact remaining content.
 
-<a id="sgn-01-the-positive-sign-half-of-the-certified-kill-band-coordactual-lcm-sign"></a>
+<a id="sgn-01-the-positive-sign-corridor-and-survivor-branch-coordactual-lcm-sign"></a>
 
-### SGN-01 — the positive-sign half of the certified-kill band (`coord:actual-lcm-sign`)
+### SGN-01 — the positive-sign corridor and survivor branch (`coord:actual-lcm-sign`)
 
 <div class="defn">
 
@@ -3301,7 +3301,7 @@ Hence $`0 < \mathtt{actualLcmTailOrbit}\ a`$ for every $`a\ge 8`$. The proof is 
 
 <div class="rem">
 
-*Remark 223* (Exactly half the certificate band, and where the other half goes). $`\mathtt{certifiedKill}`$ needs the residue to avoid a *symmetric* radius-$`(N{+}h{+}L{+}2)`$ neighbourhood of $`0`$ on both sides. SGN-01 gives positivity only. Its companion proves that, under integrality, $`J+K+(a+6)<2\cdot2^a`$, and $`2H+J+K+2<2^K`$, the consequence is not a kill but the opposite: the residue is forced to the *top edge*, exactly $`2^K - e`$ where $`e`$ is the true carry orbit (). So the lower half of the certified-kill band is discharged unconditionally and cofinally by SGN-01; the upper half is untouched, and what remains open is a genuinely different, one-sided statement about the top edge — row TE-04 below. The corpus’s own normal-form tables tag this row <span class="sans-serif">scale:bounded</span>; that tag is misleading, since only the window offset $`J`$ is bounded relative to the height, and the height $`2\cdot 2^a`$ itself is unbounded: the correct tag is <span class="sans-serif">scale:uniform</span>.
+*Remark 223* (The survivor sign and the endpoint residue). $`\mathtt{certifiedKill}`$ needs the residue to avoid a *symmetric* radius-$`(N{+}h{+}L{+}2)`$ neighbourhood of $`0`$ on both sides. SGN-01 gives positivity only. Its companion proves that, under integrality, $`J+K+(a+6)<2\cdot2^a`$, and $`2H+J+K+2<2^K`$, the consequence is not a kill but the opposite: the residue is forced to the *top edge*, exactly $`P-e`$ where $`P=2^K`$ and $`e`$ is the true carry orbit (). Writing $`B=2H+J+K+2`$, the proof gives $`0<e<B<P`$, hence $`P-B<P-e<P`$. This excludes the nonnegative true survivor; it does not discharge a lower certified-kill inequality. Indeed $`P-e>B`$ needs a further comparison, such as $`2B\le P`$, whereas the stated room condition only gives $`B<P`$. What remains is an independent arithmetic exclusion of the upper endpoint band — row TE-04 below. Positivity is uniform in the height $`a`$, but every depth-$`K`$ consequence retains its stated window and modulus bounds.
 
 </div>
 
@@ -3970,7 +3970,7 @@ So while the promotion audit is not literally eighteen-for-eighteen at the level
 | **Obligation** | **Row / site** | **Gap kind** | **Verdict and exact blocker** |
 |:---|:---|:---|:---|
 | -supply | e1-companion, | hypothesis strength | Not promotable. The consumer already has the obligation’s exact quantifier shape; the missing input is a single unproved arithmetic fact — a constant-saving first-harmonic (Weyl-sum) cancellation bound $`\sum_{N\in[X,2X)}\cos(2\pi\cdot(\ldots)/2^L)\le(9/10)X`$ — not proved at any $`X,h,L`$ anywhere in the corpus. |
-| 249-supply | SGN-01, | hypothesis strength | Not promotable. Positivity is exactly HALF of the needed certificate: the companion theorem in the same file proves integrality forces the residue to the TOP edge, not a kill — the lower half of the band is discharged unconditionally and cofinally, the upper half is untouched. |
+| 249-supply | SGN-01, | hypothesis strength | Not promotable. Positivity excludes the nonnegative true survivor. Under the longer-window and modulus-room bounds, integrality forces the residue to the upper endpoint band. This leaves an arithmetic obstruction; it does not supply a central-band certificate inequality. |
 | 249-supply | TE-04, | hypothesis strength | Not promotable. The consumer side is finished and cofinal (proved for every $`a\ge8`$); the residual is purely the one-sided residue-gap *producer*, unconditionally unsupplied at even one large $`a`$. |
 | 249-supply | TE-05-weakest, | hypothesis strength | Not promotable. The exact identity pinning the target shows the dominance inequality is equivalent to $`\mathrm{carryOrbit}\le0`$, and the sign machinery (SGN-02) already proves the true carry orbit is strictly *positive* under integrality — the corridor-escape branch the identity naturally supplies is exactly the branch already eliminated. |
 | 249-supply | SEP-02, | scale only | Not promotable. The analytic tail is fully discharged with an explicit, uniform error radius; only two exponents ($`a=4,6`$) have the resulting finite distance-to-integer question verified unconditionally (); nothing beyond $`a=6`$ is proved. |
@@ -4703,7 +4703,7 @@ Before any positive target, the file proves one entire proof shape is empty. For
 ```
 (a definition, unproved at any $`a`$) `coord:mobius-mersenne`.
 
-Note this is a *one-sided* inequality — only the upper (positive) carry arc is excluded, not a symmetric two-sided band — because the corridor’s lower half is already discharged unconditionally: for $`a\ge8`$ and $`J+(a{+}6)<2\cdot2^a`$,
+This *one-sided* inequality excludes the upper endpoint arc forced by an integral orbit under the stated window and room bounds. The sign input is the unconditional positivity statement: for $`a\ge8`$ and $`J+(a{+}6)<2\cdot2^a`$,
 ``` math
 0 < R_{2H+J}-R_{H+J}
 ```

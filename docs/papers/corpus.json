@@ -1902,7 +1902,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:e48a9430ecf29891589a9ea1b995223dbdda76de3f4ffa1fbc19c25df658e51f",
+      "source_sha256": "sha256:8c194e5217cae6da65f83d7adc7341632a2b4deab7350dbc6f2b574026ac0b91",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-totient-reasoning-surface.tex",
@@ -2277,8 +2277,8 @@
         },
         {
           "level": 3,
-          "id": "sgn-01-the-positive-sign-half-of-the-certified-kill-band-coordactual-lcm-sign",
-          "title": "SGN-01 \u2014 the positive-sign half of the certified-kill band (coord:actual-lcm-sign)",
+          "id": "sgn-01-the-positive-sign-corridor-and-survivor-branch-coordactual-lcm-sign",
+          "title": "SGN-01 \u2014 the positive-sign corridor and survivor branch (coord:actual-lcm-sign)",
           "line": 3282
         },
         {
@@ -2806,8 +2806,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:891b1a9941518c55ee23f5dae143ab55ce06e11c8a5660a9fe30f9d4544788df",
-      "pdf_byte_count": 730527,
+      "pdf_sha256": "sha256:7806e17f99a7fa761ec2d1a36b9e71cb08e8298f8665cd67d604a63da8d18393",
+      "pdf_byte_count": 730516,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
