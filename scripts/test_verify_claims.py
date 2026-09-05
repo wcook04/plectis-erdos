@@ -399,6 +399,15 @@ def main() -> int:
             and linked["executed_comparator_assurance"] == "not_asserted",
             "explicit transport was conflated with semantic or executed assurance",
         )
+        rendered = verify_claims.render_claim(verify_claims.follow_claim(
+            "sample_claim", build_register([linked_claim], main_results=[])
+        ))
+        require(
+            "[BOUND] Fixture.interface" in rendered
+            and "package   ExternalVerificationFixture" in rendered
+            and f"source    Sample.lean:{ALPHA_KEYWORD_LINE}" in rendered,
+            "reader-facing claim view dropped explicit per-entry transport evidence",
+        )
         linked_claim["comparator_transports"][0]["source_declarations"] = [
             {**linked_claim["declarations"][0], "line": ALPHA_KEYWORD_LINE + 1}
         ]

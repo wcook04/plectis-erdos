@@ -727,8 +727,18 @@ def render_claim(report: dict[str, Any]) -> str:
                 if interface.get("boundary"):
                     out.append("         boundary:")
                     out.extend(quoted(interface["boundary"], "           "))
+            for transport in comparator["transports"]:
+                if transport.get("link_source") != "claim_owner_explicit":
+                    continue
+                out.append(f"  [BOUND] {transport['interface_name']}")
+                out.append(f"         package   {transport['package_id']}")
+                for anchor in transport["source_declarations"]:
+                    out.append(
+                        f"         source    {anchor['module']}:{anchor['line']} "
+                        f"({anchor['name']})"
+                    )
             out.append(f"  axioms   {', '.join(comparator['permitted_axioms']) or '(none recorded)'}")
-            out.append(f"  config   {comparator['config']}")
+            out.append(f"  aggregate config   {comparator['config']}")
         else:
             out.append("  [NOT BOUND] no selected interface carries this claim id")
             out.append(
