@@ -217,6 +217,11 @@ or duplicating its contents.
 Follow the change through readers and closeout guards: they must resolve the
 active manifest rather than remember the filenames used at initialization.
 
+For tests of exact counts, order, or classifications, make the corresponding
+source input explicit in the fixture. A live research registry is not a frozen
+test dataset. Preserve exact assertions against controlled inputs, and use
+source-derived expectations when the test is intended to check live coverage.
+
 ## Validate the changed journey
 
 During the edit, run the narrow owner checks:
