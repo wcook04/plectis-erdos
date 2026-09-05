@@ -886,71 +886,111 @@ Exact registry keys and Comparator routing are listed separately.
 
 This is Palomar's source-current reader order, not review-matrix or Comparator roster order. Ranked results lead; conditional endpoint leverage, deep mechanisms, natural friction, and supporting rows follow unequally.
 
-1. **Known irrational supports** (`known_irrational_supports`; source-ranked frontier; global rank 1; source disposition `represented`)
+1. **Divisibility weighted support irrationality** (`divisibility_weighted_support_irrationality`; deep mechanism and classification; source disposition `represented`)
+   - **Why here.** A complete ordinary support regime, placed before target-specific repair probes; it excludes divergent-reciprocal cases beyond the checked reciprocal-support floor.
+   - **Source authority.** Canonical review family `divisibility_weighted_support_irrationality` in [claims](../docs/claims.json)
+   - **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.
+
+2. **Variable exponent fractional cover irrationality** (`variable_exponent_fractional_cover_irrationality`; deep mechanism and classification; source disposition `represented`)
+   - **Why here.** A complete ordinary support regime, placed before target-specific repair probes; it excludes divergent-reciprocal cases beyond the checked reciprocal-support floor.
+   - **Source authority.** Canonical review family `variable_exponent_fractional_cover_irrationality` in [claims](../docs/claims.json)
+   - **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.
+
+3. **Arbitrary prime power support irrationality** (`arbitrary_prime_power_support_irrationality`; deep mechanism and classification; source disposition `represented`)
+   - **Why here.** A complete ordinary support regime, placed before target-specific repair probes; it excludes divergent-reciprocal cases beyond the checked reciprocal-support floor.
+   - **Source authority.** Canonical review family `arbitrary_prime_power_support_irrationality` in [claims](../docs/claims.json)
+   - **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.
+
+4. **Sub logstar reciprocal mass irrationality** (`sub_logstar_reciprocal_mass_irrationality`; deep mechanism and classification; source disposition `represented`)
+   - **Why here.** A complete ordinary support regime, placed before target-specific repair probes; it excludes divergent-reciprocal cases beyond the checked reciprocal-support floor.
+   - **Source authority.** Canonical review family `sub_logstar_reciprocal_mass_irrationality` in [claims](../docs/claims.json)
+   - **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.
+
+5. **Known irrational supports** (`known_irrational_supports`; source-ranked frontier; global rank 1; source disposition `represented`)
    - **Why here.** Directly settles the canonical full-support member of Erdős #257 for every integer base b >= 2, while leaving universal arbitrary-support irrationality open.
    - **Source.** <code>Erdos249257.ExternalVerification.irrational_erdosSum_full_support</code> in [Lean](../Erdos249257/CertificateKernel.lean)
    - **Boundary.** This is the classical full-support theorem, not universal Erdos #257.
 
-2. **Pairwise coprime support** (`pairwise_coprime_support`; source-ranked frontier; global rank 2; source disposition `represented`)
+6. **Pairwise coprime support** (`pairwise_coprime_support`; source-ranked frontier; global rank 2; source disposition `represented`)
    - **Why here.** Direct irrationality for every infinite pairwise-coprime support with summable reciprocal mass, but not for arbitrary supports.
    - **Source.** <code>Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime</code> in [Lean](../Erdos249257/CertificateKernel.lean)
    - **Boundary.** This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit.
 
-3. **Orthogonal petal sunflower reduction** (`orthogonal_petal_sunflower_reduction`; source-ranked frontier; global rank 3; source disposition `represented`)
+7. **Orthogonal petal sunflower reduction** (`orthogonal_petal_sunflower_reduction`; source-ranked frontier; global rank 3; source disposition `represented`)
    - **Why here.** Direct irrationality under the displayed structure, but the structural predicates are not constructed for arbitrary supports.
    - **Source.** <code>Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet</code> in [Lean](../Erdos249257/SupportSunflowerDichotomy.lean)
    - **Boundary.** This is a conditional reduction: the bouquet structure and uniform tail-selection predicate remain hypotheses; neither is constructed for arbitrary supports, so this does not add an unconditional Erdos #257 support family or solve the universal problem.
 
-4. **Periodic nonnegative weight irrationality** (`periodic_nonnegative_weight_irrationality`; source-ranked frontier; global rank 4; source disposition `represented`)
+8. **Periodic nonnegative weight irrationality** (`periodic_nonnegative_weight_irrationality`; source-ranked frontier; global rank 4; source disposition `represented`)
    - **Why here.** Close to the Lambert-series endpoint but not a universal support theorem and not the mixed-sign statement.
    - **Source.** <code>Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic</code> in [Lean](../Erdos249257/CertificateKernel.lean)
    - **Boundary.** This is the nonnegative rational eventually-periodic coefficient theorem; its nonnegativity, eventual periodicity, and positive-tail hypotheses remain explicit, and the broader mixed-sign periodic theorem is not claimed.
 
-5. **Boolean mobius exact row dynamics** (`boolean_mobius_exact_row_dynamics`; conditional endpoint leverage; source disposition `represented`)
+9. **Boolean mobius exact row dynamics** (`boolean_mobius_exact_row_dynamics`; conditional endpoint leverage; source disposition `represented`)
    - **Why here.** The committed exact-row representative is one conditional Boolean–Möbius dynamics family: cofinal positive greedy skips yield cofinally many exact local half rows and conditional 1/2-membership, while finite rows do not supply the unproved cofinal premise.
    - **Source.** <code>Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips</code> in [Lean](../Erdos249257/BooleanMobiusSkipRowCofinal.lean)
    - **Boundary.** CofinalPositiveHalfGreedySkips is an unproved global supply premise: for every N there must be c ≥ max N 4 with a positive greedy remainder below mersenneWeightRat c. Finite exact rows, including one produced by a skipped core, do not establish cofinality. This is a conditional 1/2-membership/counterexample route, not an unconditional Erdős #257 solution; the rank-two, endpoint-defect, and upper-half Boolean-word declarations remain subordinate evidence, and no novelty, priority, significance, or external-review claim is made.
    - **Relation.** `reconstruction_support_for` `boolean_mobius_carry`: The Boolean–Möbius certificate reconstructs support, while exact rows still require a cofinal skip producer.
    - **Relation.** `conditional_producer_for` `half_membership_seam_classification`: Cofinal positive half-greedy skips conditionally give 1/2-membership, which the seam iff classifies as unbounded terminal-false/upper-or-middle supply; finite exact rows supply neither cofinal premise.
 
-6. **Half membership seam classification** (`half_membership_seam_classification`; source-ranked frontier; global rank 11; source disposition `represented`)
+10. **Half membership seam classification** (`half_membership_seam_classification`; source-ranked frontier; global rank 11; source disposition `represented`)
    - **Why here.** It classifies the concrete #257 half-membership endpoint exactly, closer to a usable target than an analytic recovery criterion or source-only certificate normal form, but supplies no occurrence witness.
    - **Source.** <code>Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse</code> in [Lean](../Erdos249257/HalfCylinderHalfMembershipClassification.lean)
    - **Boundary.** This exact endpoint-socket classification does not supply any unbounded terminal-false or upper-or-middle occurrences, cofinal supply, skipped-support producer, or half-membership witness; finite exact rows do not establish the required global supply. It is not an unconditional or universal Erdős #257 result, and no novelty, priority, significance, or external-review claim is made.
    - **Relation.** `conditional_producer_for` `boolean_mobius_exact_row_dynamics`: Cofinal positive half-greedy skips conditionally give 1/2-membership, which the seam iff classifies as unbounded terminal-false/upper-or-middle supply; finite exact rows supply neither cofinal premise.
 
-7. **Shifted odd tail state** (`shifted_odd_tail_state`; conditional endpoint leverage; source disposition `represented`)
+11. **Shifted odd tail state** (`shifted_odd_tail_state`; conditional endpoint leverage; source disposition `represented`)
    - **Why here.** It extracts a modular tail state only from explicit rational-support hypotheses and therefore does not exclude rational infinite supports.
    - **Source.** <code>Erdos249257.ExternalVerification.exists_shifted_odd_tail_nat_states_of_support_fraction</code> in [Lean](../Erdos249257/RationalSupportCarrySkeleton.lean)
    - **Boundary.** The state-extraction theorem does not exclude rational infinite supports or settle universal Erdős #257; the support and rational-value hypotheses remain explicit.
 
-8. **Boolean mobius carry** (`boolean_mobius_carry`; deep mechanism and classification; source disposition `represented`)
+12. **Boolean mobius carry** (`boolean_mobius_carry`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The committed representative preserves the existence-level quotient certificate, Boolean Möbius support reconstruction, positivity, and square-root bound; it supplies no universal irrationality contradiction or actual-recurrence producer.
    - **Source.** <code>Erdos249257.ExternalVerification.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry</code> in [Lean](../Erdos249257/BooleanMobiusCarry.lean)
    - **Boundary.** The equivalence is stated at the existence level with q > 0, 0 ∉ A, and a positive support witness; it gives no contradiction, no universal Erdős #257 irrationality result, and no producer of cofinally nonintegral shifts for the actual recurrence. The generic tempered-orbit theorem and the reciprocal-mass, unbounded-tail, and zero-window results are subordinate consequences, not separate families; the zero-window constant depends on the support and numerator and is not uniform. This does not settle every infinite support, and no novelty, priority, significance, external-review, or unrestricted #257 endpoint claim is made.
    - **Relation.** `reconstruction_support_for` `boolean_mobius_exact_row_dynamics`: The Boolean–Möbius certificate reconstructs support, while exact rows still require a cofinal skip producer.
 
-9. **Achievement set geometry** (`achievement_set_geometry`; deep mechanism and classification; source disposition `represented`)
+13. **Achievement set geometry** (`achievement_set_geometry`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The full-measure achievement-set theorem is consequential geometry, but it does not classify rational points or settle infinite-support irrationality.
    - **Source.** <code>Erdos249257.ExternalVerification.volume_mersenneAchievementSet</code> in [Lean](../Erdos249257/GreedyAchievementSet.lean)
    - **Boundary.** Geometry of the full set does not decide irrationality of every coded point.
 
-10. **Restricted achievement sets** (`restricted_achievement_sets`; deep mechanism and classification; source disposition `represented`)
+14. **Restricted achievement sets** (`restricted_achievement_sets`; deep mechanism and classification; source disposition `represented`)
    - **Why here.** The restricted-set measure dichotomy is structurally useful but does not classify rational values or prove universal irrationality.
    - **Source.** <code>Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy</code> in [Lean](../ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)
    - **Boundary.** The measure dichotomy does not classify rational points.
 
-11. **Half and twenty one frontiers** (`half_and_twenty_one_frontiers`; natural friction and no-go; source disposition `subordinate`)
+15. **Prime cofactor repair obstruction** (`prime_cofactor_repair_obstruction`; natural friction and no-go; source disposition `represented`)
+   - **Why here.** A useful obstruction or exact target reduction, placed below complete support regimes; it supplies no surviving all-depth repair producer.
+   - **Source authority.** Canonical review family `prime_cofactor_repair_obstruction` in [claims](../docs/claims.json)
+   - **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.
+
+16. **Prime repair finite support rigidity** (`prime_repair_finite_support_rigidity`; natural friction and no-go; source disposition `represented`)
+   - **Why here.** A useful obstruction or exact target reduction, placed below complete support regimes; it supplies no surviving all-depth repair producer.
+   - **Source authority.** Canonical review family `prime_repair_finite_support_rigidity` in [claims](../docs/claims.json)
+   - **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.
+
+17. **Four ninths square root repair windows** (`four_ninths_square_root_repair_windows`; supporting and long tail; source disposition `represented`)
+   - **Why here.** A useful obstruction or exact target reduction, placed below complete support regimes; it supplies no surviving all-depth repair producer.
+   - **Source authority.** Canonical review family `four_ninths_square_root_repair_windows` in [claims](../docs/claims.json)
+   - **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.
+
+18. **Twenty one two anchor divergence density** (`twenty_one_two_anchor_divergence_density`; supporting and long tail; source disposition `represented`)
+   - **Why here.** A useful obstruction or exact target reduction, placed below complete support regimes; it supplies no surviving all-depth repair producer.
+   - **Source authority.** Canonical review family `twenty_one_two_anchor_divergence_density` in [claims](../docs/claims.json)
+   - **Boundary.** Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted.
+
+19. **Half and twenty one frontiers** (`half_and_twenty_one_frontiers`; natural friction and no-go; source disposition `subordinate`)
    - **Why here.** Sharp local 2-adic band arithmetic excludes small odd numerators under stated hypotheses, but does not decide reachability or half-membership.
    - **Source.** <code>Erdos249257.ExternalVerification.seven_le_of_intBand_odd</code> in [Lean](../Erdos249257/HalfGreedyTwoThirdsBand.lean)
    - **Boundary.** Neither membership question is decided; the 2-adic bound is sharp locally, and the two countermodel routes require unconstructed terminal-scaled or cofinal-cylinder antecedents.
 
-12. **Composite dilation defect identity** (`composite_dilation_defect_identity`; supporting and long tail; source disposition `represented`)
+20. **Composite dilation defect identity** (`composite_dilation_defect_identity`; supporting and long tail; source disposition `represented`)
    - **Why here.** The exact composite-dilation defect exposes a real obstruction, but it supplies neither a tail selector nor an unconditional irrationality result.
    - **Source.** <code>Erdos249257.ExternalVerification.supportCoeff_mul_eq_add_defect</code> in [Lean](../Erdos249257/CompositeDilationDefect.lean)
    - **Boundary.** The exact defect is not bounded for arbitrary supports and supplies no tail selector or irrationality theorem; the bouquet budget remains conditional on its structural hypotheses.
 
-13. **Finite period noncollapse** (`finite_period_noncollapse`; supporting and long tail; source disposition `represented`)
+21. **Finite period noncollapse** (`finite_period_noncollapse`; supporting and long tail; source disposition `represented`)
    - **Why here.** The finite-period order interface is exact denominator infrastructure, but finite support cannot decide an infinite-support sum.
    - **Source.** <code>Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface</code> in [Lean](../Erdos249257/CertificateKernel.lean)
    - **Boundary.** A finite-support denominator theorem does not settle an infinite-support sum.
@@ -1291,9 +1331,9 @@ Exact registry keys and Comparator routing are listed separately.
 
 **Question.** For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate?
 
-**Checked frontier.** Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w.
+**Checked frontier.** At a noncritical point of a curve tangent to -f/f', its polynomial value satisfies w'=-w.
 
-**Open boundary.** Erdos Problem 1041 in unrestricted degree.
+**Open boundary.** The unrestricted endpoint and full formalizations of the six ordinary theorem families routed below. Their finite/scalar kernels do not formalize the geometric or analytic assemblies.
 
 **Read.** [Programme paper](../erdos-1041-lemniscate-newton-flow.pdf) · [Lean source](../ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
 

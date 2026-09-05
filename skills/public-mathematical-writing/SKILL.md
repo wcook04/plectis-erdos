@@ -236,10 +236,15 @@ the manuscript's reviewed source links. Refresh the generated paper corpus and
 run the clean-ref release check after committing the complete artifact set;
 a successful PDF build or digest restamp alone does not establish that the
 publication projections agree. When new source links introduce modules, run
-`python3 scripts/build_paper_module_aliases.py`; when the review matrix changes,
+`python3 scripts/build_paper_module_aliases.py`; when the review matrix or
+Palomar's authored family placements and programme order change,
 run `python3 scripts/build_external_verification.py`. Refresh the semantic,
 theory and corpus-descriptor projections after their inputs settle, with the
 descriptor last so it records the final source-alias digest.
+If pending Lean work shares the checkout, generate the publication projections
+from an isolated snapshot of the committed sources. Uncommitted build inputs
+and challenge fixtures alter reviewer hashes and hole inventories even when
+the manuscript edits are independent of those proofs.
 
 Run `python3 scripts/lean_fast_build.py --jobs 2` after Lean changes. For paper
 changes, rebuild the owning manuscript and run its registered link and corpus
