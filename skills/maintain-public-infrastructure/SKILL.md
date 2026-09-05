@@ -184,6 +184,14 @@ passes or abstraction. A successful microbenchmark is not sufficient: prefer
 removing a multi-second delay from the actual journey over complicating an
 already-subsecond component. Keep the evidence and remove the unused approach.
 
+For large generated JSON, first separate the data a command needs from the
+exhaustive export. Prefer a small byte-range index in an existing owner receipt
+over duplicating the corpus or adding another command. Bind ranges to the exact
+output bytes, validate their boundaries and member digests, and retain source
+freshness checks. Missing or unusable indexes should fall back to the ordinary
+reader. Compare indexed and complete reads across the affected command family;
+regenerate dependent input-digest receipts through their own builders.
+
 ## Validate the changed journey
 
 During the edit, run the narrow owner checks:

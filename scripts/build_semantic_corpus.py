@@ -1553,6 +1553,7 @@ def check_receipt(
         "builder_schema": payload["schema"],
         "input_fingerprint": payload["semantic_input_fingerprint"],
         "output_digest": f"sha256:{hashlib.sha256(text.encode('utf-8')).hexdigest()}",
+        "top_level_fields": top_level_field_spans(payload, text),
         "surface_digests": {
             path.relative_to(ROOT).as_posix(): (
                 f"sha256:{hashlib.sha256(expected.encode('utf-8')).hexdigest()}"
@@ -1572,6 +1573,26 @@ def check_receipt(
             "matched_a_full_builder_run"
         ),
     }
+
+
+def top_level_field_spans(payload: dict, text: str) -> list[dict]:
+    """Index the existing compact JSON bytes without another corpus artifact."""
+    encoded = text.encode("utf-8")
+    spans = []
+    position = 1
+    for key, value in payload.items():
+        member = json.dumps(
+            {key: value}, ensure_ascii=False, separators=(",", ":"),
+        ).encode("utf-8")[1:-1]
+        end = position + len(member)
+        if encoded[position:end] != member:
+            raise ValueError("semantic field index does not match the rendered corpus")
+        spans.append({"key": key, "start": position, "end": end,
+                      "sha256": hashlib.sha256(member).hexdigest()})
+        position = end + 1
+    if encoded[:1] != b"{" or encoded[position:] != b"\n":
+        raise ValueError("semantic field index requires the canonical compact object")
+    return spans
 
 
 def write_check_receipt(path: Path, receipt: dict) -> None:

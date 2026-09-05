@@ -137,13 +137,58 @@ PROBLEMS = tuple(
 PROBLEM_SCOPES = (*PROBLEMS, "both", "shared_substrate")
 
 
-@lru_cache(maxsize=1)
-def load() -> dict:
+def indexed_query_corpus(raw: bytes, receipt: dict) -> dict | None:
+    """Use a verified field index, falling back when its bytes or shape drift."""
+    if not isinstance(receipt, dict):
+        return None
+    spans = receipt.get("top_level_fields")
+    if not isinstance(spans, list) or not spans or raw[:1] != b"{" or raw[-2:] != b"}\n":
+        return None
+    if receipt.get("output_digest") != "sha256:" + hashlib.sha256(raw).hexdigest():
+        return None
+    result, seen, position = {}, set(), 1
+    try:
+        for index, span in enumerate(spans):
+            key, start, end = span["key"], span["start"], span["end"]
+            if (not isinstance(key, str) or key in seen or type(start) is not int
+                    or type(end) is not int or start != position or not start < end <= len(raw) - 2):
+                return None
+            seen.add(key)
+            member = raw[start:end]
+            prefix = json.dumps(key, ensure_ascii=False).encode("utf-8") + b":"
+            if (not member.startswith(prefix)
+                    or hashlib.sha256(member).hexdigest() != span.get("sha256")):
+                return None
+            separator = b"}" if index == len(spans) - 1 else b","
+            if raw[end:end + 1] != separator:
+                return None
+            if key != "declaration_roles":
+                field = json.loads(b"{" + member + b"}")
+                if set(field) != {key}:
+                    return None
+                result.update(field)
+            position = end + 1
+        return result if position == len(raw) - 1 and "declaration_roles" in seen else None
+    except (KeyError, TypeError, ValueError):
+        return None
+
+
+@lru_cache(maxsize=2)
+def load(include_declaration_roles: bool = True) -> dict:
     if not CORPUS.is_file():
         raise SystemExit(
             "docs/semantic_corpus.json missing; run python3 scripts/build_semantic_corpus.py"
         )
-    corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
+    raw = CORPUS.read_bytes()
+    corpus = None
+    if not include_declaration_roles:
+        try:
+            receipt = load_json(ROOT / "docs/semantic_corpus_check.json", "semantic query index")
+            corpus = indexed_query_corpus(raw, receipt)
+        except (OSError, ValueError, SystemExit):
+            pass
+    if corpus is None:
+        corpus = json.loads(raw.decode("utf-8"))
     if corpus.get("semantic_input_fingerprint") != semantic_input_fingerprint():
         raise SystemExit(
             "docs/semantic_corpus.json is stale relative to its inputs; "
@@ -173,7 +218,7 @@ def emit(payload: object) -> int:
 def load_json(path: Path, label: str) -> dict:
     if not path.is_file():
         raise SystemExit(f"{path.relative_to(ROOT)} missing; cannot run {label}")
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(path.read_bytes().decode("utf-8"))
 
 
 def load_palomar() -> dict:
@@ -2439,12 +2484,13 @@ def cmd_inventory(corpus: dict, args) -> int:
     total_matches = 0
     results = []
     for route in corpus["declaration_roles"]:
-        searchable = " ".join(
-            str(route.get(field) or "")
-            for field in ("id", "module", "declaration", "statement_node")
-        ).casefold()
-        if needle and needle not in searchable:
-            continue
+        if needle:
+            searchable = " ".join(
+                str(route.get(field) or "")
+                for field in ("id", "module", "declaration", "statement_node")
+            ).casefold()
+            if needle not in searchable:
+                continue
         if module_filter and module_filter not in str(route.get("module") or "").casefold():
             continue
         if role_filter and role_filter != str(route.get("role") or "").casefold():
@@ -2882,7 +2928,10 @@ def main() -> int:
     # Family relations are sourced from the canonical Palomar/claims records,
     # so they remain executable while the unrelated semantic-corpus projection
     # is awaiting its owner refresh.
-    corpus = {} if args.command == "family-relations" else load()
+    inventory_commands = {
+        "inventory", "paper-coverage", "problem-registry", "structural-backlog", "population-backlog",
+    }
+    corpus = {} if args.command == "family-relations" else load(args.command in inventory_commands)
     return COMMANDS[args.command](corpus, args)
 
 

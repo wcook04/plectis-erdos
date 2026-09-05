@@ -1,7 +1,7 @@
 {
   "builder_schema": "erdos249257-semantic-corpus/1",
-  "input_fingerprint": "sha256:247eca6cb400c136b8f28f10bb86a633a4f1cfe40c18bfae8b609152387c25b2",
-  "output_digest": "sha256:93a950f77ae139098c4185d4e726013fa22e051d9be683ee1e10af6be79fc981",
+  "input_fingerprint": "sha256:2e0db2b52dd4372b18c82c1cf0a833fddb731b39bb01eb67e2025c96c4f4c6a0",
+  "output_digest": "sha256:ad36be64b6878793e9a33990770eb0b6f749a5ba77a487376d7c59bba425ef2c",
   "schema": "erdos249257-semantic-corpus-check/1",
   "summary": {
     "declarations": 153671,
@@ -132,5 +132,133 @@
     "paper/claim-faithful-publication-systems-paper.tex": "sha256:9affc936d64f39dc9e71ec468688ed4d3bae638f042f8e1924529dda1ecc930c",
     "paper/cold-clone-to-proof-receipt.tex": "sha256:af53dce269a5911fddd4b2406dcb2425c0373b5aa489f114d90d84525f9ec4ea"
   },
+  "top_level_fields": [
+    {
+      "end": 41,
+      "key": "schema",
+      "sha256": "3ba666bd4bbec466604c8315aded71ec29974dd30e8eaaf8e75bec37a5ca09fa",
+      "start": 1
+    },
+    {
+      "end": 154,
+      "key": "artifact_role",
+      "sha256": "7a7a4246366aa3ff707c9a7c95a7b205b50f500f8e2d537b31727baadb222553",
+      "start": 42
+    },
+    {
+      "end": 329,
+      "key": "authority_posture",
+      "sha256": "5b3112ba83c3362344a863d9693aff554e4265911f490e4ed754ddc95832b2e3",
+      "start": 155
+    },
+    {
+      "end": 739,
+      "key": "purpose",
+      "sha256": "2ce59892043df4c9751bcf3f711a3b736cd45cd9f71ba6cd53c8c9afae5e78bc",
+      "start": 330
+    },
+    {
+      "end": 2707,
+      "key": "coverage_contract",
+      "sha256": "7f4c615754e6f2ff7e822289d49b0ad3d6f82a6ffaaf83c180e7132207f66641",
+      "start": 740
+    },
+    {
+      "end": 5675,
+      "key": "routing_basis_catalog",
+      "sha256": "68aaa9ca14a842c2de1380c29ed5e8957664550ebab491ec2c3ed81f4074c6f0",
+      "start": 2708
+    },
+    {
+      "end": 5923,
+      "key": "layering",
+      "sha256": "d86e1a26c2dac198ccef362ea5f36505b8d27538e80cecc56de27a91f0a29123",
+      "start": 5676
+    },
+    {
+      "end": 6371,
+      "key": "source_provenance",
+      "sha256": "676e4107fa5e30fedce97c16847328727c9e5d9466e2ea548d57effb9b951e27",
+      "start": 5924
+    },
+    {
+      "end": 6468,
+      "key": "evidence_fingerprint",
+      "sha256": "a39920f53079f0c3420722f223fcce1abf3efbd448f6b5c2f54decb30abb9124",
+      "start": 6372
+    },
+    {
+      "end": 6571,
+      "key": "semantic_input_fingerprint",
+      "sha256": "079df2ec66aeb8ab4070e963e12167d73379ba95d4e99f9be07ee96ad7b5fbaf",
+      "start": 6469
+    },
+    {
+      "end": 7523,
+      "key": "vocabularies",
+      "sha256": "6cec6d4b8df6e710d1d71cb69d099b3e1faf665d8840f3296e755b4d00bd4b2a",
+      "start": 6572
+    },
+    {
+      "end": 15459,
+      "key": "summary",
+      "sha256": "4dcb5531e8bbf610b71d4896bdd921d4365d4f688f9c61a3c7708fbdc00bf3a0",
+      "start": 7524
+    },
+    {
+      "end": 35499,
+      "key": "zones",
+      "sha256": "07d023f3aa086c3f80ede396f250e681f21d24c7dd1d3b1029e700c39bd34a37",
+      "start": 15460
+    },
+    {
+      "end": 181298,
+      "key": "concepts",
+      "sha256": "6030cbc72e77ca04b286bc9059ee276480df9b8c0f410233a7585525a97fe330",
+      "start": 35500
+    },
+    {
+      "end": 25487336,
+      "key": "statement_nodes",
+      "sha256": "a0681d2b61c37b9fdf7644fd2ff44bb00b1615b82ba5b2b037aabb2c224420d4",
+      "start": 181299
+    },
+    {
+      "end": 28119797,
+      "key": "relations",
+      "sha256": "4c1d10f36b78ef492a3abe20de51a6ed54792096fcc067cb914d9eb00607fd99",
+      "start": 25487337
+    },
+    {
+      "end": 28157495,
+      "key": "generated_families",
+      "sha256": "f70aa74e215fe18eab3b4de555ae37f76a1e473e1cf9144c4f53ae74d08872fb",
+      "start": 28119798
+    },
+    {
+      "end": 100056047,
+      "key": "declaration_roles",
+      "sha256": "6ce8eefa6c7780975fe5fdc46703bd0c17b9946ea1715eb333628f8d258ac280",
+      "start": 28157496
+    },
+    {
+      "end": 100170488,
+      "key": "frontier",
+      "sha256": "f1e1f115298fd425d682308ab0974c28b8573e8ff1bfd5054788fdbb07f56544",
+      "start": 100056048
+    },
+    {
+      "end": 100246089,
+      "key": "views",
+      "sha256": "e00696cf737293b87da7ec5e5832b119b7fa7f69438cce7d30e3720a111b8f0f",
+      "start": 100170489
+    },
+    {
+      "end": 100569090,
+      "key": "integrity",
+      "sha256": "f9363a6c8cda4119afb555b09356646787d79ed1b174ae85a48aedeecc0935e3",
+      "start": 100246090
+    }
+  ],
   "verification_posture": "content_addressed_generated_corpus_and_public_census_surfaces_matched_a_full_builder_run"
 }
