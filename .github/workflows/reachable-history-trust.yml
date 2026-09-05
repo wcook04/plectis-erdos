@@ -11,7 +11,10 @@ permissions:
 jobs:
   reachable-history-evidence:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    # The scan decompresses every reachable blob (about 9 GiB for this
+    # repository) and took 7 minutes locally; the 15-minute cap timed the
+    # job out twice on 2026-09-05 once a committed report let it run at all.
+    timeout-minutes: 90
     env:
       # Keep history inspection independent of runner-local Python imports,
       # bytecode caches, locale, and Git configuration.
@@ -34,7 +37,9 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           fetch-depth: 0
-          filter: blob:none # retain history without eagerly transferring obsolete large blobs
+          # No blob filter: the audit reads every reachable blob, and a
+          # partial clone fetches them one object at a time, far slower than
+          # one full clone.
           fetch-tags: true
           persist-credentials: false
       - name: Install the pinned Python runtime
