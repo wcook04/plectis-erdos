@@ -10,13 +10,13 @@
 
 \subsection{The object and the two exact statements}
 
-For an integer $n \ge 2$ set $x_n := 1/(2^n-1)$, and for $A \subseteq \{2,3,4,\dots\}$ write
+For an integer $n \ge 1$ set $x_n := 1/(2^n-1)$, and for $A \subseteq \Npos$ write
 $x_A := \sum_{n \in A} x_n$; the sum always converges, since $x_n = O(2^{-n})$. Erd\H{o}s's
 Problem \#257 asks a single universally quantified question about this family.
 
 \begin{defn}[Universal \#257, written (U)]
 \label{defn:U}
-Is $x_A = \sum_{n \in A} 1/(2^n-1)$ irrational for \emph{every} infinite $A \subseteq \N$?
+Is $x_A = \sum_{n \in A} 1/(2^n-1)$ irrational for \emph{every} infinite $A \subseteq \Npos$?
 \textbf{OPEN.} \ev{Open}
 \end{defn}
 
@@ -44,11 +44,14 @@ than as a list of disappointments.
 
 \subsection{The unconditional record, universal direction}
 
-Every landed unconditional irrationality theorem for (U) instantiates one engine: a
-weighted-coefficient block certificate over the divisor incidence
-$\operatorname{sc}_A(n) := \#\{d \mid n : d \in A\}$, the generic form being
-\texttt{irrational\_coeff\_series\_of\_weighted\_coeff\_block\_certificates}. The complete
-inventory of what that engine has been made to prove, uniformly in the base $b \ge 2$:
+There are two useful mechanisms. Block certificates prescribe divisor
+incidences and control the remaining tail. Small-shift arguments average the
+actual periodic atoms and produce a positive displacement smaller than the
+lattice spacing of a rational value. The latter proves irrationality for
+every infinite reciprocal-summable support, without a coprimality assumption,
+and extends to the weighted and fractional-cover classes below. The table
+records the earlier block-certificate families, uniformly in the base
+$b\ge2$; it is not an exhaustive list of irrational supports.
 
 \begin{center}
 \begin{longtable}{@{}p{0.30\textwidth}p{0.32\textwidth}p{0.30\textwidth}@{}}
@@ -70,15 +73,13 @@ Signed periodic weights & periodic integer weights, nonnegative, frequently nonz
 \end{longtable}
 \end{center}
 
-Two facts about this table are worth a specialist's attention more than any single row. First, the
-base restriction of the classical results is gone: the $b=2$ case of the first row recovers
-Erd\H{o}s's 1948 irrationality theorem for the Erd\H{o}s--Borwein constant
-$E = \sum_{n \ge 1} 1/(2^n-1)$ as a one-line corollary, and every row holds for all $b \ge 2$.
-Second, and more important, \emph{every} row lies inside a two-axis box --- divisor independence
-plus a global reciprocal-tail budget --- and the box is not an accident of effort. That is
-Barrier~\ref{bar:box}.
+The full-support row includes Erd\H{o}s's classical irrationality theorem
+for the Erd\H{o}s--Borwein constant
+$E=\sum_{n\ge1}(2^n-1)^{-1}$. The support-dependent certificate constructions
+explain the method requirements discussed in \S\ref{bar:box}. Those
+requirements do not limit the small-shift theorems.
 
-The one conditional extension worth naming is
+A related conditional extension is
 \lean{irrational\_erdosSupportSeries\_of\_orthogonalPetalBouquet}{SupportSunflowerDichotomy.lean:540},
 which strictly generalises pairwise coprimality (cores may be arbitrary divisors of one fixed $Q$)
 but still demands globally pairwise-coprime petals and summable reciprocal petal mass, and whose
@@ -105,6 +106,133 @@ result is formalised here.  The corpus still has no general theorem for an
 arbitrary positive-density nonperiodic or divisor-dense support, and the
 universal statement remains open.
 \end{rem}
+
+\subsection{Divisibility-weighted supports: why averaging twice works}
+\label{sec:257-weighted-returns}
+
+The following ordinary proof extends the reciprocal-summable theorem to
+explicit supports whose reciprocal sum diverges. Its full source, including
+the other analytic support criteria, is the
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-proofs.md}{analytic proof supplement}.
+
+\begin{thm}[Divisibility-weighted irrationality]\label{thm:257-weighted}
+Let $P$ be a finite nonempty set of primes and set
+$h(a)=\prod_{p\in P}p^{v_p(a)}$. For an integer $b\ge2$ and an infinite
+$A\subseteq\Npos$, suppose
+\[
+ W=\sum_{a\in A}\frac{h(a)}{a(b^{h(a)}-1)}<\infty.
+\]
+Then $S_b(A)=\sum_{a\in A}(b^a-1)^{-1}$ is irrational. The condition at
+$b=2$ gives this conclusion at every integer base $b\ge2$ and for every
+infinite subset of $A$. \ev{Math}
+\end{thm}
+
+\begin{proof}
+Write
+\[
+ \Delta(m)=\sum_{a\in A}\frac{b^{m\bmod a}-1}{b^a-1}.
+\]
+For fixed $m$ the sum converges. It is positive for $m>0$, because $A$
+contains an $a>m$. Division of $m$ by each $a$ gives the finite integer
+identity
+\[
+ \Delta(m)=(b^m-1)S_b(A)
+ -\sum_{\substack{a\in A\\a\le m}}
+       \sum_{i=1}^{\lfloor m/a\rfloor}b^{m-ia}.
+\]
+Thus $S_b(A)=u/v$, $v>0$, would force $\Delta(m)\ge1/v$ for every
+positive $m$. We construct arbitrarily small positive displacements.
+
+Fix $\varepsilon>0$. Choose a finite $F\subset A$ whose complementary
+weighted mass is less than $\varepsilon$, and put $L=\operatorname{lcm}F$
+(with $L=1$ if $F$ is empty). Let $p_* =\max P$, $r=|P|$, and, for large
+$H$, set
+\[
+ Q=L\prod_{p\in P}p^{\lfloor\log_p H\rfloor},\qquad
+ G=\lfloor H/p_*\rfloor.
+\]
+Then $Q\le LH^r$ and every atom in $F$ has zero displacement on $Q\N$.
+If $h(a)\le H$, then $h(a)\mid Q$; if $h(a)>H$, then $(a,Q)\ge G$.
+For the latter assertion, either all prime-power factors of $h(a)$ are
+at most $H$, so $h(a)\mid Q$, or one such factor exceeds $H$ and the
+corresponding factor of $Q$ is greater than $H/p_*$.
+
+Put $g=(a,Q)$. One orbit of $Qm\bmod a$ visits
+$0,g,\ldots,a-g$, and the sum of its uncentred atoms is $(b^g-1)^{-1}$.
+Complete orbits and one partial orbit therefore give
+\[
+ \frac1T\sum_{m=1}^T\frac{b^{Qm\bmod a}-1}{b^a-1}
+ \le \frac{g}{a(b^g-1)}+\frac1{T(b^g-1)}.
+\]
+The function $g/(b^g-1)$ decreases for positive integral $g$. Splitting
+at $a=QT$ and $h(a)=H$ consequently gives
+\begin{align*}
+ \mathcal A(Q,T):=\frac1T\sum_{m=1}^T\Delta(Qm)
+ \le {}&\varepsilon+
+ \frac1T\sum_{\substack{a\in A\\a\le QT\\h(a)\le H}}
+               \frac1{b^{h(a)}-1}\\
+ &+\frac{G(1+\log(QT))+Q}{b^G-1}+\frac4T.
+\end{align*}
+Here the harmonic bound handles the large-$h$ terms. For $a>QT$ there is
+no wrap: its atom is at most $2\,2^{Qm-a}$; summing first over $a$, then
+over $m$, gives the final $4/T$.
+
+The remaining incomplete-period sum need not have finite total mass.
+Instead average over $T=2^j$, $M\le j<2M$. For each fixed $a$,
+\[
+ \sum_{\substack{M\le j<2M\\a\le Q2^j}}2^{-j}\le\frac{2Q}{a}.
+\]
+This is a geometric tail starting at the first admissible $j$. Multiplying
+by $(b^{h(a)}-1)^{-1}$ and interchanging the two finite sums charges this
+error at most $2QW$, rather than $M$ separate copies of a divergent sum.
+Hence
+\[
+ \frac1M\sum_{j=M}^{2M-1}\mathcal A(Q,2^j)
+ \le\varepsilon+\frac{2QW}{M}
+ +\frac{G(1+\log Q+2M\log2)+Q}{b^G-1}+4\,2^{-M}.
+\]
+Choose $M=\lfloor b^{G/2}\rfloor$. Since $Q\le LH^r$ and
+$G\sim H/p_*$, every term after $\varepsilon$ tends to zero as
+$H\to\infty$. A finite average below $2\varepsilon$ contains a
+displacement below $2\varepsilon$. This contradicts the rational lattice
+gap. Heredity follows from positivity of the weights, and the all-base
+assertion follows from $b^{h(a)}-1\ge2^{h(a)}-1$.
+\end{proof}
+
+\paragraph{A concrete support beyond reciprocal summability.}
+For $k\ge0$ put $B_k=2^{\,2^{\,2^k-k}}$ and
+$A^*=\{a\ge1:a\le B_{v_2(a)}\}$. In the layer $v_2(a)=k$, writing
+$a=2^ku$ with $u$ odd gives
+\[
+ \sum_{\substack{a\le B_k\\v_2(a)=k}}
+ \frac{2^k}{a(2^{2^k}-1)}
+ \le\frac{1+\log B_k}{2^{2^k}-1}
+ \le 2^{1-2^k}+2(\log2)2^{-k}.
+\]
+These bounds sum to a finite number. In contrast, the reciprocal mass of
+the same layer is at least
+$(\log B_k-\log(4\cdot2^k))/2^{k+1}$ for large $k$, which tends to
+infinity. Every infinite subset of $A^*$ therefore has irrational $S_b$
+at every integer base. The supplement also shows that consecutive elements
+of $A^*$ have gaps $O(\log\log a)$.
+
+\paragraph{Other support criteria sharing the small-shift endgame.}
+If $H_A(x)=\sum_{a\in A,\,a\le x}1/a=o(\log^*x)$, then every
+infinite subset of $A$ has irrational $S_b$ at every integer base. A second
+criterion uses finite frames $F_j\subseteq\Npos$, their incidences
+$f_F(n)=\#\{a\in F:a\mid n\}$, exponents $0<\alpha_j\le1$, and
+nonnegative divisor majorants
+$f_{F_j}(n)^{\alpha_j}\le\sum_{d\mid n}c_{j,d}$. With
+$C_j=\sum_{d\ge1}c_{j,d}/d$ and $B_j=2^{\alpha_j}$, it suffices that
+\[
+ \sum_j C_j2^{j\alpha_j}\frac{B_j}{(B_j-1)^2}<\infty.
+\]
+Every infinite subset of $\bigcup_jF_j$ then has irrational $S_b$ at all
+integer bases. Fixed-exponent summable-cost covers fit this criterion after
+regrouping. The short paper and supplement prove these statements, including
+the domination required before exchanging infinite sums and averages.
+The analytic statements in this subsection are ordinary proofs; the pinned
+formal-source table above records their separately verified predecessors.
 
 \subsection{The unconditional record, half-value direction}
 
@@ -535,24 +663,22 @@ see a specific point of a nowhere-dense set having Lebesgue measure exactly $1$.
 
 \begin{obs}[The box; \textsc{observed pattern}]
 \label{obs:box}
-Every landed unconditional theorem in the table of \S\ref{sec:257-problem} requires the support to
-sit inside a two-axis box: \textbf{(i) divisor independence}, so that a CRT construction can
-prescribe the incidence $\operatorname{sc}_A$ across a block --- pairwise coprimality, periodicity,
-or dilation of a full support; \textbf{and (ii) a global tail budget}, so that the middle window's
-mass satisfies the height inequality $q(C+N+L+2) < b^L$ --- summable reciprocals, or sparsity that
-makes this trivial. No landed theorem sits outside the box. This is a complete audit of the landed
-inventory, not a theorem that no such support can exist.
-\coord{certificate-engine} \scale{uniform} \ev{Lean}\ev{Math}
+The support-dependent CRT certificate constructions have two separate jobs:
+prescribe enough divisor incidences to control a block, and bound the
+remaining tail so that $q(C+N+L+2)<b^L$. Pairwise-coprime petals and a
+summable reciprocal budget are sufficient inputs in the corresponding
+construction. These are requirements of that producer, not necessary
+conditions for irrationality. The small-shift method in
+\S\ref{sec:257-weighted-returns} uses neither a pairwise-coprime support nor
+ordinary reciprocal summability.
+\coord{certificate-engine} \ev{Math}
 \end{obs}
 
-\textbf{Rules out.} Any plan to obtain (U) by instantiating the existing engine at a general
-infinite $A$. For a general support the divisibility conditions $a \mid n$, $a \in A$, are
-\emph{entangled} through pairwise gcds, so no CRT construction can prescribe the incidence in a
-block, and the engine's first hypothesis is unsatisfiable by construction rather than by search
-failure. It also rules out closing the gap by ``removing the summability bound'' from Erd\H{o}s
-1968: the bound is consumed at exactly one step, \texttt{CertificateKernel.lean:9586--9598}, as a
-global tail budget. Removing it is not weakening a hypothesis; it requires a different, windowed
-argument.
+\textbf{What a general-support application still needs.} Shared factors
+impose compatibility conditions on CRT prescriptions; a proof must check
+those conditions and supply its tail estimate. The existing hypotheses
+cannot simply be omitted from the proof that uses them. This observation
+does not prove that all possible certificates or CRT constructions fail.
 
 \textbf{Explains only a method boundary.} The primes are infinite and pairwise coprime
 --- axis (i) is satisfied in the cleanest possible way, and
@@ -566,16 +692,14 @@ therefore does not recover that external theorem.
 
 \subsection{What the six barriers converge on}
 
-Both halves of \#257 terminate at the same missing object, stated twice in two coordinates. On the
-half-value side it is a near-integer anti-concentration bound for
-$\sum_{i \le L} (\tau(M+i) - 1)\,2^{-i}$, a geometrically weighted divisor sum in a short interval.
-On the universal side it is the dense-branch producer: for a divisor-dense $A$, a block of $K$
-consecutive indices with $2^K \mid \sum_{r=1}^{K} \operatorname{sc}_A(N+r)\,2^{K-r}$ and a bounded
-middle window. These are the same statement in the incidence coordinate. No result of that shape
-exists in the literature in any form, and the only rigorous results in that direction --- lower
-bounds on runs, and guarantees that patterns occur --- have the opposite logical type. That
-convergence, from two independent directions, is the strongest evidence the corpus offers that
-there is exactly one wall here rather than several.
+Several remaining approaches ask for arithmetic control of geometrically
+weighted divisor incidences. For the half-value probe one proposed input
+concerns $\sum_{i\le L}(\tau(M+i)-1)2^{-i}$; for a general support a block
+certificate instead concerns its own incidence $\operatorname{sc}_A$ and
+tail budget. Their similar appearance suggests useful comparisons, but does
+not make the two producers equivalent. The weighted and fractional-cover
+theorems show that small positive shifts can also be obtained without
+constructing either prescribed block.
 
 \section{What the wall does not block}
 \label{sec:257-survivors}
