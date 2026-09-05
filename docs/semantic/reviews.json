@@ -6,13 +6,13 @@
     "meaning": "A receipt records an explicit comparison of one canonical statement or typed relation against its cited Lean signatures and public claim boundary.",
     "digest_binding": "The digest covers the subject wording, evidence coordinates, formal-source revision, and declaration-atlas source fingerprint.",
     "reviewer_types": {
-      "ai_semantic_consistency_review": "A Type A model checked the authored meaning against exact public source signatures and status boundaries. This is not independent human mathematical review.",
-      "human_mathematical_review": "A named human reviewer checked the mathematical informalisation and relation."
+      "ai_semantic_consistency_review": "A named Type A model performed the normal source-bound semantic-review path: a best-attempt comparison of authored meaning against exact public source signatures and status boundaries. This is not Lean proof authority or optional human or specialist review.",
+      "human_specialist_review": "An optional named human or specialist reviewer contested, corrected, confirmed, or upgraded the mathematical informalisation or relation; this is not a publication prerequisite."
     },
     "non_claims": [
       "A receipt is not Lean proof authority.",
       "A receipt is not a novelty or prior-art judgement.",
-      "A model review is not represented as human mathematical review.",
+      "A model review is not represented as optional human or specialist review.",
       "Unreceipted nodes remain authored navigation, not reviewed semantic fidelity.",
       "A rebinding is not a re-review; it records that the atlas pin moved while the reviewed material did not."
     ],

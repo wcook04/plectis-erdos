@@ -155,8 +155,27 @@ def test_descriptor_exposes_an_exact_commit_mathematical_reasoning_route() -> No
     assert "--depth=1" not in profiles["release_history"]["commands"][0]
 
 
+def test_descriptor_review_capabilities_match_methodology() -> None:
+    descriptor = builder.build()
+    methodology = json.loads(
+        (ROOT / "docs" / "methodology.json").read_text(encoding="utf-8")
+    )
+    evidence = methodology["evidence_classes"]
+    capabilities = descriptor["capabilities"]
+
+    assert "human_mathematical_review_is_machine_decidable" not in capabilities
+    assert capabilities["named_semantic_review_is_machine_decidable"] is False
+    assert capabilities["named_semantic_review_is_normal_authoring_path"] is (
+        evidence["named_semantic_review"]["normal_authoring_path"]
+    )
+    assert capabilities["human_specialist_review_is_publication_prerequisite"] is (
+        evidence["human_specialist_review"]["publication_prerequisite"]
+    )
+
+
 if __name__ == "__main__":
     test_authored_readme_may_omit_generated_regions()
     test_palomar_signal_join_and_first_read_order()
     test_descriptor_exposes_an_exact_commit_mathematical_reasoning_route()
+    test_descriptor_review_capabilities_match_methodology()
     print("corpus orientation signal contracts passed")
