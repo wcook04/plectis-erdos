@@ -691,7 +691,7 @@ def build() -> tuple[dict[str, Any], dict[Path, str], str]:
                     )
                 rendered_rows.append("\\end{itemize}\n\n")
 
-        fragments[FRAGMENTS[problem]] = "".join(rendered_rows)
+        fragments[FRAGMENTS[problem]] = "".join(rendered_rows).rstrip("\n") + "\n"
         problems.append(
             {
                 "problem_id": problem_id,

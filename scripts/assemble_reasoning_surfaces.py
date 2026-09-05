@@ -277,6 +277,11 @@ def note_document_parts(row: dict[str, object]) -> tuple[str, str]:
     return core, match.group("back")
 
 
+def catalogue_part(path: Path) -> str:
+    """The assembler owns the paragraph separator, not the fragment's EOF."""
+    return path.read_text(encoding="utf-8").rstrip("\n") + "\n\n"
+
+
 def assemble(key: str) -> str:
     row = PAPERS[key]
     directory: Path = row["directory"]
@@ -288,7 +293,7 @@ def assemble(key: str) -> str:
                 "% ---- part core ----\n",
                 core,
                 "% ---- part family_catalogue ----\n",
-                (directory / "family_catalogue.tex").read_text(encoding="utf-8"),
+                catalogue_part(directory / "family_catalogue.tex"),
                 "% ---- part back ----\n",
                 back,
             )
@@ -296,7 +301,11 @@ def assemble(key: str) -> str:
         return "".join(chunks)
     for name in row["parts"]:
         chunks.append(f"% ---- part {name} ----\n")
-        chunks.append((directory / f"{name}.tex").read_text(encoding="utf-8"))
+        path = directory / f"{name}.tex"
+        chunks.append(
+            catalogue_part(path) if name.endswith("family_catalogue")
+            else path.read_text(encoding="utf-8")
+        )
     return "".join(chunks)
 
 

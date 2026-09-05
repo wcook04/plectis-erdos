@@ -70,6 +70,12 @@ class PaperResultIntegrationTests(unittest.TestCase):
         )
         self.assertEqual(len(self.fragments), len(self.output["problems"]))
 
+    def test_fragments_have_one_terminal_newline(self) -> None:
+        for path, text in self.fragments.items():
+            with self.subTest(path=path):
+                self.assertTrue(text.endswith("\n"))
+                self.assertFalse(text.endswith("\n\n"))
+
     def test_palomar_order_and_editorial_ceiling_are_preserved(self) -> None:
         family_count = len(self.order)
         self.assertEqual(
