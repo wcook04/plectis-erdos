@@ -3,11 +3,10 @@
 # SPDX-License-Identifier: Apache-2.0
 """Construct a leakage-controlled benchmark packet by temporal git cut.
 
-A packet is a detached git worktree of this repository checked out at the commit
-immediately BEFORE the target declaration was introduced, plus exactly those
-derived artifacts the chosen ablation arm is permitted to see. The target
-theorem is absent from the checkout by construction, so an agent cannot recover
-it by reading it, and the isolation does not depend on the agent's cooperation.
+A packet is a source snapshot at the commit immediately BEFORE the target
+was introduced, plus the artifacts allowed by its ablation arm. It carries no
+Git metadata or future objects. The evaluator must separately restrict the
+agent's filesystem and network access; a directory is not a process sandbox.
 
 The arms answer the question the whole layer exists to justify: does the
 semantic and mechanism scaffolding actually help recover mathematics, or would a
@@ -31,15 +30,18 @@ names a declaration that does not exist at the cut is dropped, because carrying
 it would leak the future. The filter is applied against declarations extracted
 from the cut checkout itself, never against the current atlas.
 
-The answer key is written outside the worktree. Nothing that identifies the
-target -- name, statement, module -- is placed inside it.
+The answer key and introducing-commit metadata stay outside the snapshot.
+Historical source may contain hints, so task suitability still requires review.
 """
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
+import shutil
+import tarfile
 from pathlib import Path
 import re
 import subprocess
@@ -103,16 +105,49 @@ def git(*args: str, cwd: Path | None = None) -> str:
     return proc.stdout
 
 
-def _remove_worktree(dest: Path) -> None:
-    """Remove a prior packet with the same bounded, ambient-free Git call."""
-    subprocess.run(
-        ("git", "worktree", "remove", "--force", str(dest)),
-        cwd=str(ROOT),
-        capture_output=True,
-        check=False,
-        env=singleflight.command_environment(),
+def materialize_cut(dest: Path, revision: str) -> None:
+    """Export tracked files without a shared object store or Git selectors."""
+    if dest.exists() or dest.is_symlink():
+        raise SystemExit(f"packet destination already exists: {dest}")
+    if dest == ROOT.resolve() or ROOT.resolve() in dest.parents:
+        raise SystemExit("packet destination must be outside the source repository")
+    archive = subprocess.run(
+        ("git", "archive", "--format=tar", revision), cwd=str(ROOT),
+        capture_output=True, check=True, env=singleflight.command_environment(),
         timeout=GIT_COMMAND_TIMEOUT_SECONDS,
-    )
+    ).stdout
+    with tarfile.open(fileobj=io.BytesIO(archive)) as bundle:
+        members = bundle.getmembers()
+        for member in members:
+            path = Path(member.name)
+            if (path.is_absolute() or ".." in path.parts or ".git" in path.parts
+                    or not (member.isdir() or member.isfile())):
+                raise SystemExit(f"unsupported snapshot member: {member.name}")
+        dest.mkdir(parents=True)
+        for member in members:
+            path = dest / member.name
+            if member.isdir():
+                path.mkdir(parents=True, exist_ok=True)
+            else:
+                path.parent.mkdir(parents=True, exist_ok=True)
+                source = bundle.extractfile(member)
+                assert source is not None
+                with source, path.open("wb") as output:
+                    shutil.copyfileobj(source, output)
+                path.chmod(0o755 if member.mode & 0o111 else 0o644)
+
+
+def remove_packet(dest: Path) -> None:
+    """Remove only a recognised generated snapshot, never an arbitrary directory."""
+    if dest == ROOT.resolve() or dest in ROOT.resolve().parents:
+        raise SystemExit("refusing to remove the source repository or an ancestor")
+    marker = dest / "docs/_packet/MANIFEST.json"
+    if dest.is_symlink() or not marker.is_file():
+        raise SystemExit("refusing to remove a directory without a packet manifest")
+    manifest = json.loads(marker.read_text(encoding="utf-8"))
+    if manifest.get("schema") != "erdos249257-benchmark-packet/2":
+        raise SystemExit("refusing to remove an unrecognised packet")
+    shutil.rmtree(dest)
 
 
 def code_mask(lines: list[str]) -> list[bool]:
@@ -264,14 +299,12 @@ def build_packet(target: str, arm: str, dest: Path, keep: bool, problem: str = "
     sha, parent, subject = introduction_commit(target)
     node = node_for(corpus, target)
 
-    if dest.exists():
-        _remove_worktree(dest)
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    git("worktree", "add", "--detach", str(dest), parent)
+    dest = dest.resolve()
+    materialize_cut(dest, parent)
 
     available = declarations_at(dest)
     if target in available:
-        _remove_worktree(dest)
+        shutil.rmtree(dest)
         raise SystemExit(
             f"LEAK: {target!r} is present at the cut {parent[:8]}; "
             "the -S search found a later edit, not the introduction"
@@ -395,12 +428,10 @@ def build_packet(target: str, arm: str, dest: Path, keep: bool, problem: str = "
         dropped["failure_receipts"] = drop
 
     manifest = {
-        "schema": "erdos249257-benchmark-packet/1",
+        "schema": "erdos249257-benchmark-packet/2",
         "arm": arm,
-        "cut_commit": parent,
-        "introducing_commit": sha,
-        "introducing_subject": subject,
-        "target_fingerprint": "sha256:" + hashlib.sha256(target.encode()).hexdigest(),
+        "isolation": "source_snapshot_without_git_history",
+        "runner_requirements": ["isolated filesystem", "restricted network access"],
         "declarations_at_cut": len(available),
         "injected": injected,
         "dropped_as_post_cut": {k: len(v) for k, v in dropped.items()},
@@ -408,7 +439,8 @@ def build_packet(target: str, arm: str, dest: Path, keep: bool, problem: str = "
         "leak_controls": [
             "target declaration verified absent from the checkout",
             "injected records filtered against declarations extracted from the checkout",
-            "target name, statement and module absent from the packet",
+            "answer-key identity and introducing metadata withheld from the manifest",
+            "Git metadata and future objects excluded from the snapshot",
             "capsule transfer challenges withheld",
         ],
     }
@@ -418,6 +450,9 @@ def build_packet(target: str, arm: str, dest: Path, keep: bool, problem: str = "
 
     answer = {
         "target": target,
+        "manifest_sha256": hashlib.sha256(
+            (packet_dir / "MANIFEST.json").read_bytes()
+        ).hexdigest(),
         "arm": arm,
         "cut_commit": parent,
         "introducing_commit": sha,
@@ -429,9 +464,6 @@ def build_packet(target: str, arm: str, dest: Path, keep: bool, problem: str = "
         "concepts": node.get("concepts") if node else [],
         "problem": node.get("problem") if node else None,
     }
-
-    if not keep:
-        pass  # caller removes; kept by default so the arm can be run
 
     return {"manifest": manifest, "answer_key": answer, "worktree": str(dest)}
 
@@ -445,23 +477,26 @@ def main() -> int:
         default="",
         help="the item's problem; required by the off-problem control arm",
     )
-    parser.add_argument("--dest", required=True, help="worktree path (outside the repo)")
+    parser.add_argument("--dest", required=True, help="new snapshot directory (outside the repo)")
     parser.add_argument(
         "--answer-key", help="write the answer key here (never inside the worktree)"
     )
     parser.add_argument("--remove", action="store_true", help="remove an existing packet and exit")
     args = parser.parse_args()
 
-    dest = Path(args.dest).resolve()
+    requested_dest = Path(args.dest)
+    if requested_dest.is_symlink():
+        raise SystemExit("packet destination must not be a symbolic link")
+    dest = requested_dest.resolve()
     if args.remove:
-        _remove_worktree(dest)
+        remove_packet(dest)
         print(f"removed {dest}")
         return 0
 
     result = build_packet(args.target, args.arm, dest, keep=True, problem=args.problem)
     if args.answer_key:
         key = Path(args.answer_key).resolve()
-        if str(key).startswith(str(dest)):
+        if key == dest or dest in key.parents:
             raise SystemExit("refusing to write the answer key inside the packet")
         key.parent.mkdir(parents=True, exist_ok=True)
         key.write_text(

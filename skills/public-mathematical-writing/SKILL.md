@@ -120,7 +120,9 @@ the lemmas so the reader understands each choice before carrying it through.
 Explain what a transformation gains and where its gain stops. Spend the most
 space on the hard step; abbreviate routine consequences. A catalogue of cases
 should follow the shared argument when that argument explains the cases.
-Typographic polish and promotional language cannot supply this structure.
+Typographic polish and promotional language cannot supply this structure. Where an equality case,
+limiting case, or short calculation reveals structure or helps reuse an idea,
+include it. Do not force an aside or merely restate the proof.
 
 Before shortening a theorem into a title, abstract, panel, or reading guide,
 check which hypotheses exclude elementary counterexamples. In particular,
@@ -228,6 +230,42 @@ ordered overview. Keep default routes bounded by summarizing repeated prose
 and preserving identities and detail handles; do not hide stronger results or
 raise response limits to accommodate duplication.
 
+## Systems and strategy papers
+
+Apply the same hierarchy used in mathematical exposition to an implementation
+or design argument. The main object is the system and its intended use; the
+supporting argument is the actual sequence of operations, records, and checks.
+Give difficult integration points and observed failures more explanation than
+routine setup. Keep proposals distinct from implemented behaviour and measured
+outcomes. The absence of a new theorem does not justify a looser prose standard.
+
+For a mechanism, make the same choices concrete: explain the problem that
+requires it, the decisive operation, and the constraint that determines its
+design. Trace an actual input through code and checks before presenting the
+workflow as implemented. A test fixture demonstrates behaviour under its test
+conditions; it is not a completed outside contribution or a deployment result.
+
+Run the language audit over the whole paper, including headings, captions,
+tables, transitions, conclusions, and shared macros. A central macro can keep
+repeating boilerplate after every individual section has been edited. An improved abstract cannot repair a
+body that still reads like agent instructions. Replace a process inventory
+with connected prose unless the reader needs to execute or compare the items.
+Define necessary project terms once; prefer the actual action to labels such
+as delta, consumer, authority plane, or fan-in. Remove slogans and repeated
+negative contrasts, including those used to advertise carefulness.
+
+Use Tao's exposition principle as a test of attention: can the reader see what
+took work, why it was needed, and what was learned? Preserve that explanation;
+cut the routine commentary around it. Then make a separate literal-language
+pass for actors, actions, unexplained nouns, repeated sentence patterns, and
+claims that became stronger during editing. Do not manufacture informality,
+private thoughts, or a personal anecdote to make the prose sound human.
+
+When a prose-pinning test blocks a sound rewrite, preserve the underlying
+claim or limitation and update its expected wording and mutation fixture.
+Do not keep a slogan merely because a test expects it. Check rendered page
+locations again after structural changes.
+
 ## Prose pass
 
 Use direct, understated English. Name the mathematician, contributor, program,
@@ -258,6 +296,14 @@ private-repository paths, or internal-only artifact locators. Replace them with
 a stable public page or download. When an unpublished artifact is necessary
 evidence, publish it through the repository's release process before linking
 it; otherwise remove the dependency and state the evidence boundary plainly.
+
+For links between papers, inspect the rendered PDF action and confirm that
+its named destination or page exists in the shipped target PDF. A source macro
+and a sibling filename can both pass checks while the rendered link is broken.
+PDF-native destinations and browser PDF fragments have different syntax;
+keep the generated Markdown links correct for browser readers as well.
+Shared link macros must be build dependencies of every consuming manuscript;
+rebuild those PDFs and rerun the rendered link audit after changing them.
 
 After changing mathematical content, run the owning paper, corpus, and claim
 checks before the validation floor below.

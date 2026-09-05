@@ -171,7 +171,7 @@ def main() -> int:
         (
             reflow_tolerant_replace(
                 systems_paper,
-                "semantic single-flight queue",
+                "semantic single-flight coordination",
                 "ordinary build command",
             ),
             "Lean queue architecture removed",
@@ -179,16 +179,16 @@ def main() -> int:
         (
             reflow_tolerant_replace(
                 systems_paper,
-                "The architecture treats six resources as non-fungible",
+                "The stages require different checks",
                 "The architecture uses several resources",
             ),
-            "non-fungible authority thesis removed",
+            "stage-specific checks removed",
         ),
         (
             reflow_tolerant_replace(
                 systems_paper,
-                "That reflexivity is provenance, not validation",
-                "That reflexivity validates the architecture",
+                "Its evaluation is author-operated",
+                "Its evaluation is independent",
             ),
             "self-authoring validation ceiling inflated",
         ),

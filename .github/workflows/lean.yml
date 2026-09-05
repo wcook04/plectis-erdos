@@ -767,6 +767,9 @@ jobs:
       - name: Test exact claim packet boundaries
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_claim_packet_boundaries.py
+
+      - name: Check benchmark packet isolation
+        run: python3 scripts/test_benchmark_packet_isolation.py
       - name: Test publication evidence time axis
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_publication_evidence_time_axis.py
@@ -776,6 +779,9 @@ jobs:
       # full text still omitted the generative-AI disclosure that both
       # manuscripts and both PDFs carried, which is the one drift a reader must
       # not meet. The checker ships in the corpus it guards; run it.
+      - name: Check rendered paper destinations
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
+        run: python3 scripts/check_public_paper_links.py
       - name: Test clone-local paper corpus is current
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 docs/papers/check_paper_corpus.py

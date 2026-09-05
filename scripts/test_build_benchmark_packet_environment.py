@@ -6,6 +6,9 @@
 from __future__ import annotations
 
 import os
+import io
+import tarfile
+import tempfile
 import subprocess
 from pathlib import Path
 from unittest.mock import patch
@@ -34,11 +37,17 @@ def main() -> int:
     }
     with patch.dict(os.environ, hostile, clear=False):
         expected = singleflight.command_environment()
-        with patch.object(
-            experiment.subprocess, "run", return_value=completed
+        archive = io.BytesIO()
+        with tarfile.open(fileobj=archive, mode="w"):
+            pass
+        exported = subprocess.CompletedProcess(
+            ["git"], returncode=0, stdout=archive.getvalue(), stderr=b""
+        )
+        with tempfile.TemporaryDirectory() as temporary, patch.object(
+            experiment.subprocess, "run", side_effect=[completed, exported]
         ) as runner:
             result = experiment.git("status", cwd=Path("/benchmark-fixture"))
-            experiment._remove_worktree(Path("/benchmark-fixture"))
+            experiment.materialize_cut(Path(temporary) / "snapshot", "fixture-revision")
 
     require(result == "ok\n", "benchmark Git helper did not return stdout")
     require(len(runner.call_args_list) == 2, "benchmark helpers made an unexpected call count")

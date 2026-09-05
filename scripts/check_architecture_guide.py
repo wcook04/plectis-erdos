@@ -206,20 +206,20 @@ PAPER_SECTION_ORDER = (
 
 PAPER_REQUIRED_ANCHOR_GROUPS = {
     "plain_purpose": (
-        "Among the systems compared in this paper, none spans this complete chain",
+        "Our contribution is architectural composition",
         "claim-transition architecture",
-        "six things that are commonly collapsed",
-        "bounded claim over the cited systems",
+        "integration of these research and publication operations",
+        "independent contributor use and gains in research",
         "All eight problems remain open",
-        "does not claim a solution to any of them",
+        "does not claim a solution to any of the eight problems",
     ),
     "problem_worlds_and_nonfungible_authority": (
-        "A problem is a mathematical world, not a folder",
+        "collection associated with one open problem",
         "bounded neighbourhood inside a problem-sized world",
-        "The architecture treats six resources as non-fungible",
-        "More reasoning cannot buy a write lease",
-        "two coupled graphs with a guarded crossing",
-        "Neither graph may rewrite the other by implication",
+        "The stages require different checks",
+        "Reject overlapping work claims",
+        "These are changes to the research process",
+        "Mathematical records change when a proof",
     ),
     "private_authority_and_concurrency": (
         "Durable state lives in files",
@@ -234,8 +234,8 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "past work from present permission",
         "SQLite store in write-ahead-log mode",
         "daemon as not running while queued jobs remained visible",
-        "always-on architecture",
-        "currently healthy service",
+        "The queue persisted, but the service was inactive",
+        "single-daemon guard prevents competing schedulers",
     ),
     "continuous_trace_boundary": (
         "313 visible progress updates and 3,491 command events",
@@ -272,10 +272,10 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "Palomar: selecting what deserves review",
         "proof generation, verification, exposition, publication and community digestion",
         "natural friction",
-        "Paper authoring itself participates in this loop",
-        "active digestion and interpretability pass in Tao's sense",
-        "That reflexivity is provenance, not validation",
-        "never local status fields",
+        "Writing can reveal errors in the research record",
+        "the author must return to the statements and repair the account",
+        "Its evaluation is author-operated",
+        "the step that took real work",
     ),
     "worked_boundary_and_failure": (
         "forall t\\le82",
@@ -287,10 +287,10 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
     ),
     "scale_without_authority_inflation": (
         "result mining",
-        "semantic single-flight queue",
+        "semantic single-flight coordination",
         "host-wide Mathlib resource",
         "four separate scaling limits",
-        "no-go graph as a new mathematical object",
+        "Using records of unsuccessful approaches",
         "graph-conditioned models",
         "design target rather than a reported benchmark",
     ),
@@ -299,7 +299,7 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "pull request or research-progress issue",
         "Only an accepted receipt enters",
         "Acceptance, mathematical claim status, and release inclusion remain separate",
-        "Attribution and pull requests are standard practice",
+        "Later corrections preserve the earlier record and its attribution",
     ),
     "real_public_routes": (
         "Erdos249257.lean",
@@ -397,7 +397,7 @@ def validate_systems_paper(text: str) -> None:
 
     require(
         "Problem-Sized Lean Worlds" in text
-        and "An authority-separated architecture from AI search to public mathematical claims"
+        and "How AI-assisted research is recorded, checked, and published"
         in text
     , "systems paper lost its plain architecture title")
     require(

@@ -59,3 +59,69 @@ def test_network_classification_distinguishes_broken_and_access_control(monkeypa
     assert not receipt["ok"]
     assert [row["status"] for row in receipt["broken_network_rows"]] == [404]
     assert [row["status"] for row in receipt["inconclusive_network_rows"]] == [403, 0]
+
+
+def test_named_destination_is_checked_literally(monkeypatch, tmp_path) -> None:
+    from types import SimpleNamespace
+
+    target = tmp_path / "target.pdf"
+    target.touch()
+    monkeypatch.setattr(MODULE, "ROOT", tmp_path)
+    monkeypatch.setattr(MODULE, "_load_pdf_reader", lambda: lambda _path: SimpleNamespace(
+        pages=[object()], named_destinations={"systems-trust": object()}
+    ))
+    rows = [
+        MODULE.LinkOccurrence("source.pdf", 1, "cross_pdf", "target.pdf", "systems-trust"),
+        MODULE.LinkOccurrence("source.pdf", 2, "cross_pdf", "target.pdf", "nameddest=systems-trust"),
+    ]
+    missing, invalid = MODULE.cross_pdf_destinations(rows, [target])
+    assert not missing
+    assert [row["page"] for row in invalid] == [2]
+    assert invalid[0]["destination"] == "nameddest=systems-trust"
+
+
+def test_remote_page_targets_are_zero_based_and_must_be_shipped(monkeypatch, tmp_path) -> None:
+    from types import SimpleNamespace
+
+    folder = tmp_path / "papers"
+    folder.mkdir()
+    target = folder / "target.pdf"
+    target.touch()
+    unshipped = folder / "draft.pdf"
+    unshipped.touch()
+    monkeypatch.setattr(MODULE, "ROOT", tmp_path)
+    monkeypatch.setattr(MODULE, "_load_pdf_reader", lambda: lambda _path: SimpleNamespace(
+        pages=[object(), object()], named_destinations={}
+    ))
+    rows = [MODULE.LinkOccurrence("papers/source.pdf", i + 1, "cross_pdf", "target.pdf", value)
+            for i, value in enumerate([0, 1, 2, -1, None])]
+    rows.append(MODULE.LinkOccurrence("papers/source.pdf", 6, "cross_pdf", "draft.pdf", 0))
+    missing, invalid = MODULE.cross_pdf_destinations(rows, [target])
+    assert [row.page for row in missing] == [6]
+    assert [row["destination"] for row in invalid] == [2, -1, None]
+
+
+def test_pdf_extraction_keeps_remote_destination_and_file_spec(monkeypatch, tmp_path) -> None:
+    from types import SimpleNamespace
+
+    class Ref:
+        def __init__(self, obj):
+            self.obj = obj
+
+        def get_object(self):
+            return self.obj
+
+    actions = [
+        {"/S": "/GoToR", "/F": Ref({"/F": "fallback.pdf", "/UF": "target.pdf"}),
+         "/D": "systems-trust"},
+        {"/S": "/GoToR", "/F": "target.pdf", "/D": [0, "/Fit"]},
+    ]
+    page = {"/Annots": [Ref({"/A": Ref(action)}) for action in actions]}
+    monkeypatch.setattr(MODULE, "ROOT", tmp_path)
+    source = tmp_path / "source.pdf"
+    source.touch()
+    monkeypatch.setattr(MODULE, "_load_pdf_reader", lambda: lambda _path: SimpleNamespace(pages=[page]))
+    rows = MODULE.pdf_links([source])
+    assert [(row.target, row.destination) for row in rows] == [
+        ("target.pdf", "systems-trust"), ("target.pdf", 0)
+    ]

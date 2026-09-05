@@ -410,9 +410,9 @@ def validate_systems_evidence_source(
         "release program": r"scripts/check_release\.py",
         "continuous-integration owner": r"\.github/workflows/lean\.yml",
         "human judgement boundary": (
-            r"does not technically force a second independent mathematician"
+            r"does not require a second independent mathematician to approve every result"
         ),
-        "coverage boundary": r"coverage boundary, not a reliability score",
+        "historical log availability": r"original run logs were not retained",
         "post-repair example": (
             r"post-repair witness accepts the current readme and rejects a "
             r"test copy containing the false clause"
@@ -1810,10 +1810,10 @@ def mutation_fixture_failures(reader: RepositoryReader) -> list[str]:
     source_path = systems["source_path"]
     original_source = reader.read_text(source_path)
     limited_sentence = (
-        "The evidence marks a coverage boundary, not a reliability score."
+        "original run logs were not retained."
     )
     inflated_sentence = (
-        "This example establishes a general reliability score for future errors."
+        "original run logs establish a general reliability score for future errors."
     )
     if limited_sentence not in original_source:
         failures.append("post_repair_source_fixture_anchor_missing")

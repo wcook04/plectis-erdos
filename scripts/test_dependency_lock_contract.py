@@ -35,6 +35,7 @@ RELEASE_VALIDATOR_REQUIREMENTS = (
     ("jsonschema", "3.2.0"),
     ("license-expression", "30.4.4"),
     ("pykwalify", "1.8.0"),
+    ("pypdf", "6.10.0"),
     ("pyrsistent", "0.20.0"),
     ("python-dateutil", "2.9.0.post0"),
     ("python-debian", "1.1.1"),

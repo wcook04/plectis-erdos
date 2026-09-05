@@ -2,7 +2,8 @@
 """Audit hyperlinks embedded in every PDF in the publication contract.
 
 The default pass is offline: it rejects host-local URI targets and checks that
-every cross-PDF link names a shipped sibling file.  ``--network`` additionally
+every cross-PDF link names a shipped sibling file and a destination that
+exists in its rendered PDF.  ``--network`` additionally
 requests every distinct public HTTP target after removing its fragment.  The
 network pass deliberately reports access-denied responses separately from
 broken targets; a publisher can inspect those sites without treating bot
@@ -38,6 +39,7 @@ class LinkOccurrence:
     page: int
     kind: str
     target: str
+    destination: str | int | None = None
 
 
 @dataclass(frozen=True)
@@ -88,12 +90,25 @@ def pdf_links(paths: Iterable[Path]) -> list[LinkOccurrence]:
                         LinkOccurrence(str(path.relative_to(ROOT)), page_number, "uri", str(uri))
                     )
                 if action.get("/S") == "/GoToR" and action.get("/F"):
+                    file_spec = action["/F"]
+                    if hasattr(file_spec, "get_object"):
+                        file_spec = file_spec.get_object()
+                    if isinstance(file_spec, dict):
+                        file_spec = file_spec.get("/UF") or file_spec.get("/F") or ""
+                    destination = action.get("/D")
+                    if isinstance(destination, list):
+                        destination = destination[0] if destination else None
+                    if isinstance(destination, int):
+                        destination = int(destination)
+                    elif destination is not None:
+                        destination = str(destination)
                     rows.append(
                         LinkOccurrence(
                             str(path.relative_to(ROOT)),
                             page_number,
                             "cross_pdf",
-                            str(action.get("/F")),
+                            str(file_spec),
+                            destination,
                         )
                     )
     return rows
@@ -165,14 +180,47 @@ def run_network(urls: Iterable[str], *, jobs: int, timeout: float) -> list[Netwo
         return sorted((future.result() for future in concurrent.futures.as_completed(futures)), key=lambda row: row.url)
 
 
+def cross_pdf_destinations(
+    rows: Iterable[LinkOccurrence], shipped: Iterable[Path]
+) -> tuple[list[LinkOccurrence], list[dict]]:
+    """Resolve the actual PDF action, not an HTTP fragment approximation."""
+    shipped_paths = {path.resolve() for path in shipped}
+    readers = {}
+    missing = []
+    invalid = []
+    for row in rows:
+        target = (ROOT / row.pdf).parent / row.target
+        target = target.resolve()
+        if target not in shipped_paths or not target.is_file():
+            missing.append(row)
+            continue
+        if target not in readers:
+            readers[target] = _load_pdf_reader()(str(target))
+        reader = readers[target]
+        destination = row.destination
+        if isinstance(destination, int):
+            valid = 0 <= destination < len(reader.pages)
+            reason = "page index is outside the target PDF"
+        elif isinstance(destination, str):
+            valid = destination in reader.named_destinations
+            reason = "named destination is absent from the target PDF"
+        else:
+            valid = False
+            reason = "remote PDF action has no destination"
+        if not valid:
+            invalid.append({**asdict(row), "reason": reason})
+    return missing, invalid
+
+
 def audit(*, network: bool, jobs: int, timeout: float) -> dict:
-    links = pdf_links(contract_pdfs())
+    shipped = contract_pdfs()
+    links = pdf_links(shipped)
     uri_rows = [row for row in links if row.kind == "uri"]
     cross_rows = [row for row in links if row.kind == "cross_pdf"]
     local_uri_rows = [
         row for row in uri_rows if any(marker in row.target for marker in LOCAL_URI_MARKERS)
     ]
-    missing_cross_rows = [row for row in cross_rows if not (ROOT / row.target).is_file()]
+    missing_cross_rows, invalid_destinations = cross_pdf_destinations(cross_rows, shipped)
 
     network_rows = run_network(
         (row.target for row in uri_rows), jobs=jobs, timeout=timeout
@@ -189,18 +237,19 @@ def audit(*, network: bool, jobs: int, timeout: float) -> dict:
         for row in network_rows
         if row.status == 0 or row.status in INCONCLUSIVE_HTTP_CODES
     ]
-    ok = not local_uri_rows and not missing_cross_rows and not broken
+    ok = not local_uri_rows and not missing_cross_rows and not invalid_destinations and not broken
     return {
         "schema": "public_paper_link_audit_v1",
         "ok": ok,
         "network_checked": network,
-        "pdf_count": len(contract_pdfs()),
+        "pdf_count": len(shipped),
         "annotation_count": len(links),
         "uri_annotation_count": len(uri_rows),
         "distinct_public_target_count": len({without_fragment(row.target) for row in uri_rows}),
         "cross_pdf_annotation_count": len(cross_rows),
         "local_uri_rows": [asdict(row) for row in local_uri_rows],
         "missing_cross_pdf_rows": [asdict(row) for row in missing_cross_rows],
+        "invalid_cross_pdf_destination_rows": invalid_destinations,
         "broken_network_rows": [asdict(row) for row in broken],
         "inconclusive_network_rows": [asdict(row) for row in inconclusive],
         "network_ok_count": sum(200 <= row.status < 400 for row in network_rows),
@@ -232,6 +281,11 @@ def main() -> int:
             f"{receipt['distinct_public_target_count']} distinct public targets, "
             f"{receipt['cross_pdf_annotation_count']} cross-PDF links"
         )
+        for row in receipt["missing_cross_pdf_rows"]:
+            print(f"MISSING {row['pdf']} page {row['page']}: {row['target']}")
+        for row in receipt["invalid_cross_pdf_destination_rows"]:
+            print(f"DESTINATION {row['pdf']} page {row['page']}: "
+                  f"{row['target']} -> {row['destination']!r}: {row['reason']}")
         if receipt["broken_network_rows"]:
             for row in receipt["broken_network_rows"]:
                 print(f"BROKEN {row['status']} {row['url']} {row['error']}")

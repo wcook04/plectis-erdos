@@ -76,47 +76,44 @@ FIRST_MINUTE_CONTRACT = {
         ),
     },
     "claim-faithful-publication-systems-paper.pdf": {
-        (1, 3): (
+        (1, 2): (
             "problem-sized lean worlds",
-            "among the systems compared in this paper, none spans this complete chain",
-            "six things that are commonly collapsed",
-            "more reasoning cannot buy a write lease",
-            "lean verifies that a proof establishes the formal statement written in the source",
+            "our contribution is architectural composition",
+            "integration of these research and publication operations",
+            "reject overlapping work claims",
+            "checks a proof of a precisely stated proposition",
             "eight problems remain open",
         ),
-        (3, 6): (
+        (3, 5): (
             "type a and type b",
             "313 visible progress updates and 3,491 command events",
             "compressed trace has an observation boundary",
             "authority-bearing artefact and receipt",
         ),
-        (6, 9): (
+        (5, 7): (
             "experiments are route selectors",
             "a lean no-go theorem",
-            "three oracles, not one",
+            "checking the result",
             "problem-sized lean worlds and bounded theorem neighbourhoods",
             "1,024 lean modules and 153,396 declarations",
         ),
-        # The three ranges below each moved one page later when the
-        # comprehension-packet section was added ahead of them. Every anchor was
-        # confirmed still present in the source and in the rendered PDF before
-        # its pin was moved: the section carrying it did not change, its
-        # position did.
-        (11, 12): (
+        # Page spans remeasured after the September first-contact revision;
+        # the claim boundaries remain pinned at their rendered locations.
+        (8, 9): (
             "comparator: an exact-statement firewall",
             "palomar: selecting what deserves review",
             "proof generation, verification, exposition, publication and community digestion",
             "natural friction",
-            "paper authoring itself participates in this loop",
+            "writing can reveal errors in the research record",
         ),
-        (13, 13): (
+        (10, 10): (
             "finite range to the unbounded statement",
             "a larger cutoff exists",
             "relationship had not been registered",
             "nine of the ten edits were rejected",
         ),
-        (15, 16): (
-            "semantic single-flight queue",
+        (12, 12): (
+            "semantic single-flight coordination",
             # Was "host-wide mathlib resource", which no layout could satisfy:
             # TeX breaks the line at the hyphen, the extracted text reads
             # "hostwide", and normalisation cannot put the hyphen back. This
@@ -124,7 +121,7 @@ FIRST_MINUTE_CONTRACT = {
             "mathlib resource are serialized",
             "four separate scaling limits",
             "only an accepted receipt enters",
-            "no-go graph as a new mathematical object",
+            "using records of unsuccessful approaches",
         ),
     },
     "cold-clone-to-proof-receipt.pdf": {

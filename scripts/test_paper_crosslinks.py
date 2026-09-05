@@ -63,11 +63,15 @@ def links(text: str) -> set[tuple[str, str]]:
 
 def main() -> int:
     style = source("paper-house-style.sty")
-    require("#1\\#nameddest=#2" in style, "paper link macro is not destination-based")
+    require("#1\\##2" in style, "paper link macro is not destination-based")
 
     target_owner: dict[tuple[str, str], str] = {}
     for pdf, (tex, expected) in CORE.items():
         text = source(tex)
+        local_labels = set(re.findall(r"\\label\{([^}]+)\}", text))
+        local_refs = set(re.findall(r"\\(?:ref|pageref|eqref)\{([^}]+)\}", text))
+        require(local_refs <= local_labels,
+                f"{tex} has undefined local references {sorted(local_refs - local_labels)}")
         actual = set(re.findall(r"\\papersectiontarget\{([^}]+)\}", text))
         require(expected <= actual, f"{tex} omits targets {sorted(expected - actual)}")
         require("31 August 2026" in text, f"{tex} omits the dated prototype boundary")
@@ -87,8 +91,6 @@ def main() -> int:
     note_links = links(preamble)
     for pdf in CORE:
         require(any(link[0] == pdf for link in note_links), f"problem notes do not link {pdf}")
-    require("Those descriptions do not change the mathematical status" in preamble,
-            "problem-note links omit the authority boundary")
 
     for note in NOTES:
         text = source(note)

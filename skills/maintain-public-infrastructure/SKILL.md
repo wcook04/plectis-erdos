@@ -78,6 +78,40 @@ contributor's work. Use the changed module's
 `python3 scripts/query_corpus.py --connections <module>` packet to verify that
 its downstream navigation still resolves.
 
+## Test the reader journey, not a frozen layout
+
+Start from a fresh clone of the public GitHub commit. A local maintainer
+checkout can contain improvements the stranger will never see. Record the
+public base and distinguish author-operated rehearsal from independent use.
+
+For a front-door change, follow both directions between the human introduction
+and agent entry, then reach a problem paper, its source, the contribution
+instructions, and credit. Put mutually exclusive setup choices in separate
+copyable blocks. Keep prerequisites before their first use in the guide that
+actually owns the commands. A small README may link that guide instead of
+repeating it; validators must traverse and test the link rather than force
+commands back above the human explanation. Mutate all linked evidence inputs
+in a semantic regression test and require the intended semantic failure; a
+formatting error is not evidence that a missing mathematical distinction was
+detected.
+
+An empty accepted-contribution view must explain its state and link project
+authorship and the contribution path. Never fabricate an accepted return to
+fill it. Check a return against the current repository identity as well as an
+accepted historical identity: GitHub redirects do not update a clone's typed
+submission contract.
+
+Review every canonical paper's bibliography and source comparisons, but report
+that bounded coverage separately from literature completeness or novelty.
+Retain version-specific citations until the referenced statements and locators
+have been compared; a changed preprint title is not enough to repin a theorem.
+
+A filtered clone needs both its source tags and the historical files consumed
+by release checks. Exercise that fetch path on cold objects. Batch only the
+needed historical files, and treat failed Git reads as unavailable evidence,
+never as successful absence checks. Preserve historical generator provenance;
+replace obsolete active patch routes with verified public source pins.
+
 ## Classify before changing
 
 Choose the first matching class:
@@ -138,7 +172,8 @@ after pinning a revision; a live worktree or staged-index reader must still see
 edits. Keep fixture overrides explicit and ahead of shared reads. Do not make
 callers learn a cache protocol to obtain correct source identity.
 
-After a repair, replay the workflow from a fresh contributor's position:
+After a repair, record its trigger, action, and validation in the owning public
+skill. Replay the workflow from a fresh contributor's position:
 can they find the right skill, run the default command, understand its result,
 and take the next action without consulting another parallel guide? Simplify
 the owning route when the answer is no.
