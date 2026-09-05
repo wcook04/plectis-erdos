@@ -209,6 +209,14 @@ Use the exact previously failing task with `agent_entry.py --entry` as a manual
 smoke. Before publication, run `python3 scripts/check_release.py` once; do not
 serially rerun every component after that full gate passes.
 
+In a shared checkout, validate the committed result with
+`python3 scripts/check_release_ref.py --ref <commit>`. If another contributor's
+inputs change during a projection refresh, use an isolated committed checkout
+to distinguish the intended output from concurrent edits. Compare structured
+fields before assigning the cause of drift. Regenerate through the owner and
+land only the verified change; a failed aggregate gate can expose an earlier
+missing refresh rather than a defect in the current patch.
+
 A long command is a concurrency window. While it runs, continue only work that
 cannot change its inputs or outputs: audit another route, inspect a disjoint
 skill family, prepare a fixture, or trace downstream consumers. Never spend the
