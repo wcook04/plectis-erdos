@@ -355,7 +355,7 @@ For a real recurrence put
 \]
 and let $L_0=1$, $L_j=\operatorname{lcm}(1,\ldots,j)$ for $j\ge1$.
 
-\begin{theorem}[lcm-diagonal criterion]\label{res:lcmdiagonal}
+\begin{theorem}[\href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/OrderLatticeDiagonal.lean\#L153}{lcm-diagonal criterion}]\label{res:lcmdiagonal}
 Let $g:\N\to\Z$ and $T:\N\to\R$ satisfy
 $T_{N+1}=2T_N-g_{N+1}$ for every $N$.  Then
 \[
@@ -394,7 +394,7 @@ rational recurrence and a fixed $h$, write
 \]
 Then $D_{N+1}=2D_N-\delta_N$.
 
-\begin{theorem}[signed two-window normal form]\label{res:signedwindow}
+\begin{theorem}[\href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/AffineShiftEscape.lean\#L113}{signed two-window normal form}]\label{res:signedwindow}
 Assume that $\delta_N$ is even.  The conjunction
 \[
  -1<D_N<1,\qquad -1<D_{N+1}<1,\qquad \delta_N\ne0
@@ -480,6 +480,10 @@ identity together with $|D_{N+r}|\le b(N+r)$.  The triangle inequality gives
 $|B_{h,N,r}-2^rz|>b(N+r)$ for every integer $z$.
 \end{proof}
 
+The formal argument gives the
+\href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/AffineCylinderCollapse.lean\#L91}{pointwise affine identity},
+its \href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/AffineCylinderCollapse.lean\#L162}{cofinal form},
+and the \href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/AffineCylinderCollapse.lean\#L308}{fixed-lattice equivalence}.
 The first equivalence shows that the apparent affine hierarchy contains no
 depth-dependent information: it is the pullback of even integrality through
 the recurrence identity.  The fixed lattice removes that data dependence, but
@@ -508,6 +512,12 @@ All assertions follow by expansion.  In particular
 $g_{n+1}-g_n=4n+10$, while $T_{N+h}-T_N$ is the difference of two even
 integer squares.  Strict growth makes the word unbounded and nonperiodic.
 \end{proof}
+
+The formal construction checks the
+\href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean\#L1596}{recurrence},
+\href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean\#L1632}{strict growth},
+\href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean\#L1654}{integrality of every shift},
+and \href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean\#L1644}{exclusion of adjacent differences of size two}.
 
 \section{Summation by parts, with the endpoint retained}\label{sec:parts}
 
