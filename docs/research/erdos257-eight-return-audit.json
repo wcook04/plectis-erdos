@@ -1,0 +1,254 @@
+{
+  "schema": "erdos257_eight_return_public_audit_v1",
+  "sources": [
+    {
+      "return_id": "r1",
+      "sha256": "97ef93a3e006541b20cfb346406f1c17e1be4658bee01093db4686d2639a94bf"
+    },
+    {
+      "return_id": "r2",
+      "sha256": "fb77afc7f27253283efc03a9dbf20c154c7ee2523603c63d0c4b72de6b21d958"
+    },
+    {
+      "return_id": "r3",
+      "sha256": "9ec80fbf9a50efc38b660eab81c56a73a4361e57c411fdb4fa437831dd116fd1"
+    },
+    {
+      "return_id": "r4",
+      "sha256": "dd73c79128db97febccde7d47a2785596c113648668f49cd052fa1d23427b925"
+    },
+    {
+      "return_id": "r5",
+      "sha256": "19fefb7ed00c4a8571af7c0a2b29910c4ea50c4d73dd75e9482257f005681f7e"
+    },
+    {
+      "return_id": "r6",
+      "sha256": "ae8821763d625c6fd3aa8d2fcbe9eed1365340b231342539cd47a814587dd53e"
+    },
+    {
+      "return_id": "r7",
+      "sha256": "d1dd2b9037d430a6b4122b42ffd2075c240b0d7c3c06edc2a59c18b84c633d30"
+    },
+    {
+      "return_id": "r8",
+      "sha256": "4448f08c92350504d44a3ae101d38bd5d1ad47faaf7bc1f71ee7bc34bf6d3514"
+    }
+  ],
+  "evidence_class": "exact_finite_arithmetic_and_reviewed_ordinary_proofs",
+  "lean_status": "new_reductions_pending_validation",
+  "parent_status": "open",
+  "exact_audit": {
+    "schema_version": "erdos257_eight_return_exact_audit_v1",
+    "arithmetic": "exact integers and fractions; outward enclosures for greedy bits",
+    "horizon": 4096,
+    "selected_count": 2065,
+    "enclosure_width": 2066,
+    "anchors": [
+      13,
+      17,
+      23,
+      37,
+      43,
+      61,
+      71,
+      73,
+      89,
+      101,
+      103,
+      107,
+      121,
+      127,
+      131,
+      137,
+      139,
+      157,
+      167,
+      179,
+      191,
+      197,
+      211,
+      221,
+      223,
+      229,
+      247,
+      251,
+      253,
+      257,
+      289,
+      299,
+      307,
+      311,
+      323,
+      341,
+      349,
+      353,
+      359,
+      367,
+      377,
+      389,
+      391,
+      419,
+      439,
+      443,
+      449,
+      451,
+      479,
+      499,
+      503,
+      517,
+      523,
+      527,
+      529,
+      533,
+      541,
+      557,
+      559,
+      569,
+      571,
+      577,
+      587,
+      599,
+      611,
+      617,
+      629,
+      641,
+      647,
+      649,
+      659,
+      671,
+      677,
+      689,
+      697,
+      701,
+      703,
+      709,
+      713,
+      727
+    ],
+    "prime_progressions": {
+      "120": {
+        "residue": "49508288073088691246957409607232601571449219332497154544379536137965765798130835671656882901236201203254632704432702702539185850921789616628750455713",
+        "modulus": "54504537328171036235182469292366166867650516696327142617665544372072402713538534684392898606865542609087669032402975452336718367987291321059174813629",
+        "prime_lower_cutoff": 727,
+        "load_upper_bound": 27,
+        "defect_jump_lower_bound": 7,
+        "infinite_family_authority": "ordinary proof plus Dirichlet, not finite replay"
+      },
+      "420": {
+        "residue": "37504312590098641599923175298794814820835712679139390991679386484592677105268182199498923089009861461967467500867761680298360972257921885205003621759",
+        "modulus": "54504537328171036235182469292366166867650516696327142617665544372072402713538534684392898606865542609087669032402975452336718367987291321059174813629",
+        "prime_lower_cutoff": 727,
+        "load_upper_bound": 37,
+        "defect_jump_lower_bound": 2,
+        "infinite_family_authority": "ordinary proof plus Dirichlet, not finite replay"
+      }
+    },
+    "repair_windows_checked": 3961,
+    "max_observed_wait": 4,
+    "repair_count": 2086,
+    "six_phase_certificate": [
+      [
+        3,
+        11
+      ],
+      [
+        4,
+        44
+      ],
+      [
+        6,
+        53
+      ],
+      [
+        7,
+        212
+      ],
+      [
+        9,
+        137
+      ],
+      [
+        12,
+        305
+      ]
+    ],
+    "two_anchor_phase_count": 60,
+    "two_anchor_period": 105,
+    "two_anchor_phases": [
+      3,
+      4,
+      6,
+      7,
+      9,
+      10,
+      12,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      21,
+      22,
+      24,
+      27,
+      30,
+      31,
+      33,
+      34,
+      36,
+      37,
+      39,
+      42,
+      45,
+      48,
+      49,
+      51,
+      52,
+      54,
+      55,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      66,
+      67,
+      69,
+      72,
+      73,
+      75,
+      76,
+      78,
+      79,
+      81,
+      82,
+      84,
+      87,
+      90,
+      93,
+      94,
+      96,
+      97,
+      99,
+      102
+    ],
+    "orbit_inequalities_checked": 4104,
+    "twenty_one_six_step_counterexample": {
+      "Q73": 1,
+      "Q79": 3
+    },
+    "endpoint_status": "open; finite windows do not establish all windows"
+  },
+  "prior_art": {
+    "prime_power_source": "https://arxiv.org/html/2512.01739v2",
+    "checked_input": "Theorem 3.1 and authors’ full-prime-power remark",
+    "novelty": "unassessed; no priority claim"
+  },
+  "proof": "erdos257-eight-return-proofs.md",
+  "synthesis": "erdos257-eight-return-synthesis.md",
+  "verifier": "../../scripts/erdos257_eight_return_exact_audit.py"
+}

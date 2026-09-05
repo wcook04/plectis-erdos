@@ -53,7 +53,7 @@ Erd\H{o}s Problem~\#257 asks whether
  X_A=\sum_{a\in A}\frac1{2^a-1}
 \]
 is irrational for every infinite \(A\subseteq\Npos\).  The problem remains
-open.  The strongest unconditional result treated here is the classical
+open.  The leading fully formalized result in this paper's source cut is the classical
 full-support theorem: for every integer \(b\ge2\),
 \(\sum_{n\ge1}(b^n-1)^{-1}\) is irrational.  The checked proof uses a
 weighted certificate argument.  The same development proves irrationality
@@ -90,6 +90,13 @@ equivalently to failure of the stated fatal aligned branch.  Neither
 membership question is resolved.  A representation of either value must have
 infinite support.
 
+The ordinary proofs in Section~\ref{sec:eight-return-extensions} also treat
+divisibility-weighted, sub-log-star and positive fractional-cover supports
+beyond reciprocal summability, and arbitrary prime-power sub-supports.
+They include a variable-exponent extension and an explicit square-root
+deadline for repairs on a hypothetical representing greedy orbit.  These
+arguments have not been completely formalized in Lean and leave the
+unrestricted problem open.
 \end{abstract}
 
 \begin{paperresult}{Strongest unconditional results}
@@ -196,6 +203,185 @@ Section~\ref{sec:geometry} gives the unrestricted and support-restricted
 topology and measure classifications, followed by the exact $1/2$ and $1/21$
 membership criteria and unresolved branches.  Section~\ref{sec:open} states
 what remains.
+
+\section{Extensions beyond reciprocal summability}
+\label{sec:eight-return-extensions}
+
+The following arguments are ordinary mathematical proofs.  Their complete
+analytic formalizations are not part of the checked theorem above.  They
+exclude several further classes with divergent reciprocal mass; they do not
+decide the universal problem.  Complete proofs, examples and countermodels
+are retained with this paper in
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/docs/research/erdos257-eight-return-proofs.md}{the analytic proof supplement}.
+The variable-exponent argument below and the finite repair deadline are
+compositions developed from those arguments.
+
+\subsection{Divisibility-weighted and quantitative criteria}
+For a finite nonempty prime set $P$, let
+$h(a)=\prod_{p\in P}p^{v_p(a)}$.  The weighted condition
+\[
+  \sum_{a\in A}\frac{h(a)}{a(2^{h(a)}-1)}<\infty
+  \tag{W}\label{eq:weighted-return}
+\]
+implies irrationality of $\sum_{a\in A}(b^a-1)^{-1}$ for every infinite
+$A$ and every integer $b\ge2$.  The conclusion is hereditary under passage
+to infinite subsets.  A fixed-base version replaces $2$ by $b$ in the
+condition; arbitrary nested divisibility chains have the same criterion
+with $h(a)$ the largest chain element dividing $a$.
+
+Here the decisive estimate is a finite orbit average.  If $g=(a,Q)$, then
+\[
+ \frac1T\sum_{m=1}^T
+ \frac{b^{Qm\bmod a}-1}{b^a-1}
+ \le \frac{g}{a(b^g-1)}+\frac1{T(b^g-1)}.
+\]
+The second term cannot be discarded before summing over $a$.  Choose $Q$
+to freeze the finite prefix and all small $P$-parts.  Average again over
+$T=2^j$, $M\le j<2M$.  The incomplete-period contribution from small
+$P$-parts is at most $2QW/M$, where $W$ is the sum in
+\eqref{eq:weighted-return}; the large-part contribution is suppressed by
+the exponential denominator.  This produces arbitrarily small positive
+shifted-atom displacements.  The integral lattice gap then gives
+irrationality, and the binary atom comparison gives every larger base.
+The supplement gives all truncation estimates and an explicit
+reciprocal-divergent host with gaps $O(\log\log a)$.
+
+There is also a quantitative necessary condition for rationality.  Put
+$H_A(x)=\sum_{a\in A,\,a\le x}1/a$, let $T_0=2$,
+$T_{j+1}=2^{T_j}$, and set $\ell(x)=\min\{j:x\le T_j\}$.
+For a reduced rational value $p/q$ at base $b$, write $q=q_s q_c$, where
+every prime factor of $q_s$ divides $b$ and $(q_c,b)=1$.  Choose
+$0\le c<q_s$ with $cq_c\equiv p\pmod {q_s}$, and put
+$\lambda=1-c/q_s$.  Then
+\[
+ \liminf_{x\to\infty}\frac{H_A(x)}{\ell(x)}\ge\frac\lambda2.
+ \tag{Q}\label{eq:logstar-mass}
+\]
+Indeed, at suitable multiples of the order of $b$ modulo $q_c$, rationality
+forces displacement at least $\lambda$.  Applying the finite orbit estimate
+after freezing the prefix through $M$, and averaging $J$ dyadic lengths,
+gives, with $X=L2^{J-1}$,
+\[
+ J\lambda < (J+2L)\bigl(H_A(X)-H_A(M)\bigr)+4.
+\]
+Taking $J$ a sufficiently large multiple of $L$ forces a mass increment
+arbitrarily close to $\lambda$.  The LCM bound allows this at successive
+scales separated by two tower steps, giving \eqref{eq:logstar-mass}.
+Consequently $H_A(x)=o(\ell(x))$ implies irrationality at every integer
+base, even when the reciprocal sum diverges.  The constant is a rational
+phase gap; no positive ordinary or logarithmic density is asserted.
+
+\subsection{Positive fractional divisor covers}
+Let $F_j$ be finite sets of positive integers and write
+$f_{F_j}(n)=\#\{a\in F_j:a\mid n\}$.  Suppose that
+$0<\alpha_j\le1$ and $c_{j,d}\ge0$ satisfy
+\[
+ f_{F_j}(n)^{\alpha_j}\le\sum_{d\mid n}c_{j,d},\qquad
+ C_j=\sum_{d\ge1}\frac{c_{j,d}}d.
+\]
+Set $B_j=2^{\alpha_j}$.
+
+\begin{theorem}[Variable-exponent positive covers]
+\label{thm:variable-fractional-cover}
+If
+\[
+ \sum_{j\ge1}C_j2^{j\alpha_j}
+           \frac{B_j}{(B_j-1)^2}<\infty,
+\]
+then every infinite subset of $\bigcup_jF_j$ has irrational Mersenne
+subseries at every integer base.  The exponents may tend to zero.
+\end{theorem}
+\begin{proof}
+Let $U_F(n)=\sum_{r\ge1}2^{-r}f_F(n+r)$ and
+$V_j(n)=\sum_{r\ge1}B_j^{-r}\sum_{d\mid n+r}c_{j,d}$.
+Subadditivity gives $U_{F_j}(n)^{\alpha_j}\le V_j(n)$.
+For each positive integer $L$, exact divisibility frequencies give
+\[
+ \lim_{X\to\infty}\frac1X\sum_{m=1}^X V_j(Lm)
+ =\sum_d\frac{c_{j,d}(d,L)}{d(B_j^{(d,L)}-1)}
+ \le\frac{C_j}{B_j-1}.
+\]
+Fix $\varepsilon>0$ and put $t_j=\varepsilon2^{-j}$.
+The finite-average divisibility bound $(L+r)/d$ gives the summable
+dominator
+\[
+ \sum_{j>J}C_jt_j^{-\alpha_j}
+ \left(\frac L{B_j-1}+\frac{B_j}{(B_j-1)^2}\right).
+\]
+It justifies passing the average through all three sums.  The limiting
+average of $\sum_{j>J}t_j^{-\alpha_j}V_j(Lm)$ is therefore at most
+$\sum_{j>J}C_jt_j^{-\alpha_j}/(B_j-1)$, which tends to zero as
+$J\to\infty$.  Choose $J$ making it less than one, and then choose $L$
+divisible by every member of $\bigcup_{j\le J}F_j$.
+Arbitrarily large $m$ make the displayed sum less than one.  At such
+points every remaining $U_{F_j}(Lm)<t_j$, so their total is less than
+$\varepsilon$.  The frozen atoms have zero displacement.  Infinitude
+gives strictly positive displacement, and the integral lattice argument
+excludes rationality.  The binary comparison transfers the returns to
+all integer bases.
+\end{proof}
+
+The fixed-exponent criterion $\sum_j C_j<\infty$ follows by regrouping
+finite frames into blocks with exponentially decreasing costs.  For a
+complete divisor frame $F=g\{d:d\mid M\}$, positive coefficients are
+provided multiplicatively by
+$\beta_\alpha(p^e)=(e+1)^\alpha-e^\alpha$.  When $M$ is squarefree the
+optimal cost is
+\[
+ \frac1g\prod_{p\mid M}\left(1+\frac{2^\alpha-1}{p}\right).
+\]
+This yields moving frames with divergent reciprocal mass.  Choosing
+$\alpha_j=g_j^{-1/3}$ and prime blocks whose reciprocal product is about
+$\exp(g_j^{1/3})$ makes the variable criterion summable when
+$g_j\ge16^j$; every fixed exponent fails for this particular frame
+decomposition.  This does not exclude other fixed-exponent covers of
+the same union.  Positivity matters: the divisor expansion for
+$F=\{2,3\}$ has coefficient $2^\alpha-2<0$ at $6$ when $\alpha<1$.
+
+\paragraph{The prime-power regime.}
+A separate ordinary argument proves irrationality for every infinite
+subset of the prime powers, at every integer base, including fixed
+dilations and finite modifications.  Its analytic input is
+Tao--Ter\"av\"ainen~\cite[Theorem~3.1]{taoteravainen2025}.
+The proof uses the reciprocal mass of the selected primes as its scale,
+so arbitrarily slow divergence is retained; higher prime powers produce
+errors only on prime-square events.  The equidistribution, small-prime,
+progression and exceptional-set hypotheses are checked in the supplement.
+The full-prime theorem and the authors' stated full-prime-power extension
+are theirs; no priority claim is made for the returned thinning argument.
+
+\subsection{A finite deadline for the actual repair problem}
+For the actual greedy support of $4/9$, let
+$Q_N=\lfloor4\cdot2^N/9\rfloor-P_N$, with $P_N$ its integral Lambert
+prefix.  Under membership, the full tail identity and divisor-pair bound
+give $0\le Q_N\le2\sqrt N+4$ at every rank.  Put
+$s=\lfloor\sqrt K\rfloor$ and $T=2s+12$.  Strict increase at every step
+from $K$ through $K+T-1$ would imply $Q_{K+T}\ge T$.  But
+$K+T<(s+4)^2$ gives $Q_{K+T}<T$, a contradiction.  Combining this with
+the existing cofinal-repair consumer proves the exact equivalence
+\[
+ \frac49\in\Ach
+ \quad\Longleftrightarrow\quad
+ \forall K\ \exists N\in[K,K+2\lfloor\sqrt K\rfloor+12):
+ Q_{N+1}\le Q_N.
+\]
+One strictly increasing window would be a finite nonmembership
+certificate.  Exact finite replay through rank $4096$ finds no such
+certificate and proves no all-depth statement.
+
+Fixed multiplicative schedules have a different fate.  Eighty exactly
+certified selected anchors through rank $727$, together with Dirichlet's
+theorem, give infinitely many prime-cofactor increases of at least seven
+at multiplier $120$ and at least two at multiplier $420$.  In particular,
+the proposed modulus-$420$ tetraprime repair inequality is false despite
+its earlier finite-window evidence.  This leaves unrestricted cofinal
+repairs open.  At $1/21$, combining the actually selected exponents $5$
+and $7$ gives $60$ favorable phase classes modulo $105$ and strengthens
+the conditional upper-density bound for divergent quotient rows from
+$1/5$ to $2/7$.  It proves neither target's membership.  The complete
+phase certificate and the exact recurrence identities are in the
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/docs/research/erdos257-eight-return-synthesis.md}{synthesis supplement}.
+
 
 \section{Finite-support denominator periods}\label{sec:period}
 
