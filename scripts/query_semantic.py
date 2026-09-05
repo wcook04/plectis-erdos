@@ -2150,13 +2150,6 @@ def cmd_structural_backlog(corpus: dict, args) -> int:
 
 def cmd_population_backlog(corpus: dict, args) -> int:
     """Rank paper-selected Lean citations that still lack statement semantics."""
-    role_index = paper_citation_role_index(corpus)
-    node_index = nodes_by_id(corpus)
-    zone_problems = {
-        str(row["zone_id"]): str(row["problem"])
-        for row in corpus.get("zones", [])
-        if row.get("zone_id") and row.get("problem")
-    }
     candidate_cap = min(args.limit, 12 if args.paper else 5)
     module_cap = min(args.limit, 12 if args.paper else 8)
     paper_cap = min(args.limit, 1 if args.paper else 3)
@@ -2170,9 +2163,22 @@ def cmd_population_backlog(corpus: dict, args) -> int:
             if needle in source.name.casefold()
             or needle in str(source.relative_to(ROOT)).casefold()
         ]
-    for source in sources:
-        text = source.read_text(encoding="utf-8")
-        citations = sorted(paper_lean_citations(text))
+    cited_sources = [
+        (source, sorted(paper_lean_citations(source.read_text(encoding="utf-8"))))
+        for source in sources
+    ]
+    cited_modules = frozenset(module.rsplit("/", 1)[-1]
+                              for _, citations in cited_sources for module, _, _ in citations)
+    if "declaration_roles" not in corpus:
+        corpus = load(True, tuple(sorted(cited_modules)))
+    role_index = paper_citation_role_index(corpus, cited_modules)
+    node_index = nodes_by_id(corpus)
+    zone_problems = {
+        str(row["zone_id"]): str(row["problem"])
+        for row in corpus.get("zones", [])
+        if row.get("zone_id") and row.get("problem")
+    }
+    for source, citations in cited_sources:
         linked_by_role: dict[str, dict] = {}
         unlinked_by_role: dict[str, dict] = {}
         absent = []
@@ -2945,7 +2951,7 @@ def main() -> int:
         nargs="?",
         help=(
             "detail id for node, mechanism, explains, expert-questions, or "
-            "family-relations (family id)"
+            "family-relations (family id); inventory accepts a search string"
         ),
     )
     parser.add_argument("--problem", choices=(*PROBLEMS, "shared_substrate"))
@@ -2963,19 +2969,19 @@ def main() -> int:
     )
     parser.add_argument(
         "--paper",
-        help="population-backlog case-insensitive paper path/name filter",
+        help="paper-coverage or population-backlog case-insensitive paper path/name filter",
     )
     parser.add_argument("--limit", type=int, default=40)
     args = parser.parse_args()
     # Family relations are sourced from the canonical Palomar/claims records,
     # so they remain executable while the unrelated semantic-corpus projection
-    # is awaiting its owner refresh. Paper coverage selects manuscript citations
+    # is awaiting its owner refresh. Paper queries select manuscript citations
     # before loading the corresponding declaration-role ranges.
     inventory_commands = {
-        "inventory", "problem-registry", "structural-backlog", "population-backlog",
+        "inventory", "problem-registry", "structural-backlog",
     }
     module_filter = (args.module or "") if args.command == "inventory" else ""
-    corpus = {} if args.command in {"family-relations", "paper-coverage"} else load(
+    corpus = {} if args.command in {"family-relations", "paper-coverage", "population-backlog"} else load(
         args.command in inventory_commands, module_filter,
     )
     return COMMANDS[args.command](corpus, args)
