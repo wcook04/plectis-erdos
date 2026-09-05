@@ -127,6 +127,13 @@ then regenerate corpus text and navigation through the owning builders. Record
 reusable authoring lessons here without private paths, live counts, mandatory
 model choices, or dependencies on another checkout.
 
+When a proof restricts inputs or changes coordinates, state which distinctions
+that step loses and how the original conclusion recovers them. Independence on
+a restricted domain may merge two original functions; explain the additional
+evaluation or argument that separates them before claiming independence of
+the full family. Follow the checked proof's recovery step, not just its main
+matrix or estimate.
+
 ## Read conditional results and failed routes mathematically
 
 For a conditional theorem, inspect the final consumer to separate assumptions
