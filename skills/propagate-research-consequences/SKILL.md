@@ -145,6 +145,17 @@ commit-bound execution receipts, and Palomar submission/review outcomes
 separate in every downstream query and presentation. Preserve explicit missing
 transports until they are actually supplied and validated.
 
+When reviewing coverage of the strongest results, revisit earlier
+`not_selected` dispositions against the current mathematical source. Compare
+the representative interface's hypotheses, conclusion, actual objects, and
+quantifiers with the strongest supported family statement. A scalar lemma,
+finite example, or stronger assumed premise does not cover a more general
+theorem merely because it belongs to the same family. Carry a strengthened
+statement through source checking, the executable aggregate and per-entry
+configurations, and a replay receipt bound to the resulting source revision.
+Keep ordinary or cited mathematics visible with its correct evidence class
+while its formalization is incomplete.
+
 ## Propagate atoms and paper placement from their owners
 
 Keep registered claims, editorial result atoms, and result families as separate
