@@ -22,8 +22,8 @@
 % useful one.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
-\renewcommand{\commitshort}{99f4bf47422a}
+\renewcommand{\commit}{c94b23bb94fd29186bece8aea70de195f81fd8ab}
+\renewcommand{\commitshort}{c94b23bb94fd}
 \hypersetup{
   pdftitle={Denominator periods, rational-value constraints and achievement-set geometry for Mersenne subseries (Erdős Problem 257)},
   pdfsubject={Erdős Problem Notes: Problem 257},
@@ -53,13 +53,28 @@ Erd\H{o}s Problem~\#257 asks whether
  X_A=\sum_{a\in A}\frac1{2^a-1}
 \]
 is irrational for every infinite \(A\subseteq\Npos\).  The problem remains
-open.  The strongest unconditional result treated here is the classical
-full-support theorem: for every integer \(b\ge2\),
-\(\sum_{n\ge1}(b^n-1)^{-1}\) is irrational.  The checked proof uses a
-weighted certificate argument.  The same development proves irrationality
-for every infinite pairwise-coprime support of convergent reciprocal mass and
-for every nonzero eventually periodic sequence of nonnegative rational
-weights.
+open.  The leading Lean-checked support-family theorem covers every infinite
+\(A\subseteq\Npos\) with convergent reciprocal mass, simultaneously at every
+integer base \(b\ge2\):
+\[
+ \sum_{a\in A}\frac1a<\infty
+ \quad\Longrightarrow\quad
+ \sum_{a\in A}\frac1{b^a-1}\notin\Q
+ \qquad(b\ge2).
+\]
+No pairwise-coprimality, periodicity or density hypothesis is imposed.  The
+proof first obtains arbitrarily close positive binary returns of the shifted
+divisor-tail sum from exact gcd-orbit means, an LCM-prefix limit and Cesaro
+averaging.  A uniform atom inequality transfers every such return to every
+larger radix, and an exact radix-\(b\) integral scaled-tail gap rules out
+rationality.  Thus every counterexample to Problem~\#257 must have divergent
+reciprocal mass.  Erd\H{o}s printed this theorem in 1968 for pairwise-coprime
+support at every integer base \(t\ge2\), and said in the next sentence that
+coprimality can be removed without printing that argument.  The all-base
+quantifier is therefore his.  What is proved here is the case he withheld: the
+same conclusion with no arithmetic hypothesis on the support at all.  No
+identification with Erd\H{o}s's omitted argument and no theorem-priority claim
+are made.
 
 For a finite nonempty support \(F\), the reduced denominator \(D_F\) of
 \(\sum_{n\in F}(b^n-1)^{-1}\) satisfies
@@ -93,10 +108,11 @@ infinite support.
 \end{abstract}
 
 \begin{paperresult}{Strongest unconditional results}
-\textbf{Arithmetic.} The full-support series is irrational at every integer
-base $b\ge2$; so are all convergent pairwise-coprime supports and all nonzero
-eventually periodic nonnegative rational weight sequences.  Finite subsums
-have exact denominator order.  \textbf{Geometry.} The achievement set is
+\textbf{Arithmetic.} Every infinite support of convergent reciprocal mass
+gives an irrational value at every integer base $b\ge2$, with no coprimality,
+periodicity or density hypothesis.  The full-support series and all nonzero
+eventually periodic nonnegative rational weight sequences are irrational at
+every integer base.  Finite subsums have exact denominator order.  \textbf{Geometry.} The achievement set is
 compact, perfect, nowhere dense, and has measure $1$, with an exact measure
 law after restricting exponents.  \textbf{Open boundary.} The target values
 $1/2$ and $1/21$ remain undecided, and the geometric classification does
@@ -152,6 +168,31 @@ $X_A(b)=\sum_{a\in A}(b^a-1)^{-1}$ for the value at an integer base $b\ge2$,
 with $X_A=X_A(2)$.  Base~$2$ is the case Problem~\ref{res:problem} asks about
 and is meant whenever no base is named.
 
+\paragraph{The reciprocal-summable support theorem.}
+This is the result closest to the universal quantifier in
+Problem~\ref{res:problem} that is proved here.
+
+\begin{theorem}[reciprocal-summable supports]\label{res:reciprocal-support}
+Let $A\subseteq\Npos$ be infinite.  If
+\[
+  \sum_{a\in A}\frac1a<\infty,
+\]
+then \(X_A(b)\) is irrational for every integer \(b\ge2\).
+\end{theorem}
+
+\noindent The exact checked declaration is
+\begin{quote}\small
+\texttt{Erdos249257.}\\
+\texttt{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}.
+\end{quote}
+Here the Lean hypothesis is
+\texttt{Summable (reciprocalSupportTerm A)}; because $A\subseteq\Npos$,
+this is precisely convergence of the displayed nonnegative reciprocal sum.
+The formal theorem has no pairwise-coprimality, periodicity or density
+assumption.  Its all-base quantifier is part of the checked statement, not a
+corollary asserted only in prose.
+
+
 \paragraph{The finite-support theorem.}
 For a finite nonempty $F\subseteq\Npos$ and an integer $b\ge2$, write
 \[
@@ -182,7 +223,10 @@ and the growth clause is
 
 \statusboundary
 
-\paragraph{Structure.}  Section~\ref{sec:period} develops the arithmetic of
+\paragraph{Structure.}
+Section~\ref{sec:reciprocal-support} gives the proof architecture of
+Theorem~\ref{res:reciprocal-support}, including its exact integer-gap
+endgame and the binary-to-radix transfer.  Section~\ref{sec:period} develops the arithmetic of
 Theorem~\ref{res:period}.  Section~\ref{sec:forced} collects what
 rationality would force on an arbitrary infinite support, which is the part of
 this note that quantifies over every support rather than sampling.
@@ -196,6 +240,135 @@ topology and measure classifications, followed by the exact $1/2$ and $1/21$
 membership criteria and unresolved branches.  Section~\ref{sec:open} states
 what remains.
 
+\section{Reciprocal-summable supports at every integer base}
+\label{sec:reciprocal-support}
+
+The hard step in Theorem~\ref{res:reciprocal-support} is not a sparse
+denominator estimate.  It is a recurrence argument which makes the initial
+radix-\(b\) divisor tail a strict minimum, together with a uniform comparison
+which transfers arbitrarily close binary returns to every larger radix.
+
+Let \(c_A(n)=\#\{d\mid n:d\in A\}\).  For \(b\ge2\), put
+\[
+ T_N^{(b)}=\sum_{n\ge1}\frac{c_A(N+n)}{b^n},
+ \qquad
+ \omega_{b,d}(N)=\frac{b^{N\bmod d}}{b^d-1}.
+\]
+Expanding each selected denominator geometrically and regrouping the
+nonnegative terms gives the shifted-atom identity
+\[
+ T_N^{(b)}=\sum_{d\in A}\omega_{b,d}(N).
+ \tag{2}\label{eq:shifted-support-atoms}
+\]
+In particular \(T_0^{(b)}=X_A(b)\).  Every atom is minimized at shift zero.
+If \(A\) is infinite and \(N>0\), choose \(d\in A\) with \(d>N\); then the
+\(d\)-atom is strictly larger at \(N\), and hence
+\[
+ T_0^{(b)}<T_N^{(b)}. \tag{3}\label{eq:strict-initial-minimum}
+\]
+
+We first work at \(b=2\).  For a positive sampling step \(Q\), the exact mean
+of the \(d\)-th binary atom along one orbit of positive \(Q\)-multiples is
+\[
+ M_Q(d)=\frac{\gcd(Q,d)}{d\bigl(2^{\gcd(Q,d)}-1\bigr)}.
+ \tag{4}\label{eq:gcd-orbit-mean}
+\]
+It satisfies \(0\le M_Q(d)\le1/d\).  Take
+\(Q_P=\operatorname{lcm}(1,\ldots,P)\).  For each fixed \(d\), eventually
+\(d\mid Q_P\), so \(M_{Q_P}(d)\) tends to \((2^d-1)^{-1}\).
+The reciprocal-mass hypothesis is exactly the summable majorant needed to
+pass this limit through the sum over \(d\in A\):
+\[
+ \sum_{d\in A}M_{Q_P}(d)\longrightarrow T_0^{(2)}.
+ \tag{5}\label{eq:lcm-prefix-orbit-limit}
+\]
+For fixed \(Q>0\), the Cesaro means of the complete shifted sums
+\(T_{(k+1)Q}^{(2)}\) tend to \(\sum_{d\in A}M_Q(d)\).  Choosing \(P\), then a
+sufficiently long finite average, and finally one term no larger than that
+average proves
+\[
+ \forall\varepsilon>0\ \exists N>0:\qquad
+  T_0^{(2)}<T_N^{(2)}<T_0^{(2)}+\varepsilon.
+ \tag{6}\label{eq:strict-close-return}
+\]
+
+The all-base step is a pointwise comparison, not a repetition of the orbit
+calculation.  If \(r=N\bmod d\), direct subtraction gives
+\[
+ \omega_{b,d}(N)-\omega_{b,d}(0)
+   =\frac{b^r-1}{b^d-1}.
+\]
+For \(r=0\) both sides below vanish.  For \(0<r<d\),
+\[
+ \frac{b^r-1}{b^d-1}
+ \le b^{-(d-r)}
+ \le 2^{-(d-r)}
+ \le 2\,\frac{2^r-1}{2^d-1}.
+\]
+Consequently, uniformly in \(b\ge2\), \(N\), and \(d\),
+\[
+ 0\le T_N^{(b)}-T_0^{(b)}
+ \le2\bigl(T_N^{(2)}-T_0^{(2)}\bigr).
+ \tag{7}\label{eq:binary-radix-transfer}
+\]
+Applying the binary close-return statement with tolerance
+\(\varepsilon/2\), then using~\eqref{eq:strict-initial-minimum}, yields
+\[
+ \forall b\ge2\ \forall\varepsilon>0\ \exists N>0:\qquad
+ T_0^{(b)}<T_N^{(b)}<T_0^{(b)}+\varepsilon.
+ \tag{8}\label{eq:all-base-close-return}
+\]
+The Lean-checked declarations corresponding to the atom comparison and the
+transferred close return are
+\mword{Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{270}{shiftedRadixAtom\_sub\_zero\_le\_two\_mul\_binary\_sub\_zero}{Lean}
+and
+\mword{Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{362}{exists\_shiftedRadixSupportAtom\_closeReturn\_of\_summable\_reciprocal}{Lean}.
+
+It remains to turn a close return into an arithmetic contradiction.  The atom
+recurrence sums exactly to
+\[
+ bT_N^{(b)}-T_{N+1}^{(b)}=c_A(N+1).
+ \tag{9}\label{eq:radix-tail-recurrence}
+\]
+Suppose \(T_0^{(b)}=X_A(b)=p/v\) with \(v>0\).  Starting from \(z_0=p\), define
+\[
+ z_{N+1}=bz_N-vc_A(N+1).
+\]
+Equation~\eqref{eq:radix-tail-recurrence} gives
+\(z_N=vT_N^{(b)}\in\mathbb Z\) for every \(N\).  Apply
+\eqref{eq:all-base-close-return} with \(\varepsilon=1/v\).  Then
+\[
+ 0<z_N-z_0=v\bigl(T_N^{(b)}-T_0^{(b)}\bigr)<1,
+\]
+which is impossible for an integer.  This proves
+Theorem~\ref{res:reciprocal-support}.  The exact summed recurrence and final
+theorem are
+\mword{Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{200}{tsum\_shiftedRadixSupportAtom\_step}{Lean}
+and
+\mword{Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{395}{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}{Lean}.
+
+One immediate consequence is worth making explicit.  The reciprocal sum over
+all powerful integers converges (use the standard representation
+\(n=x^2y^3\), with \(y\) squarefree, and dominate by
+\(\zeta(2)\zeta(3)\)).  Therefore every infinite support contained in the
+powerful integers, with no isolated-prime-power hypothesis at all, has
+irrational \(X_A(b)\) at every integer base \(b\ge2\).  This is a consequence
+of the general theorem, not a separate Comparator endpoint.
+
+\paragraph{Attribution and boundary.}\label{bdry:reciprocal-support}
+Erd\H{o}s's printed theorem on p.~222 reads: if \((n_i,n_j)=1\) and
+\(\sum1/n_i<\infty\), then \(\sum1/(t^{n_i}-1)\) is irrational for every
+\(t\ge2\).  It is already an all-base theorem.  The next sentence says that
+the condition \((n_i,n_j)=1\) is superfluous and that the details are not
+given; p.~226 repeats that boundary.  The single hypothesis
+Theorem~\ref{res:reciprocal-support} removes relative to the printed theorem
+is pairwise coprimality, which is exactly the hypothesis Erd\H{o}s said he
+could remove.  The base generality is his, not ours.  What is added is a
+complete machine-checked proof of the withheld case.  We do not identify this
+proof with Erd\H{o}s's omitted proof or make a theorem-priority claim.
+The theorem says nothing about supports with divergent reciprocal mass.
+Consequently it leaves Problem~\ref{res:problem} open, but it removes the
+entire reciprocal-summable region from the possible counterexample space.
 \section{Finite-support denominator periods}\label{sec:period}
 
 A finite support has a rational value.  The relevant arithmetic questions are
@@ -397,7 +570,7 @@ $(p,q)$ if
  q\mid 2U(N)-U(N+1)\quad(N\ge0),\qquad
  (\mu*Q_U)(n)\in\{0,1\}\quad(n\ge1).
 \end{gathered}
-\tag{2}\label{eq:bmc}
+\tag{10}\label{eq:bmc}
 \]
 The divisibility condition makes $Q_U$ integral; the last condition says that
 M\"obius inversion of the quotient is the indicator of a set.
@@ -448,7 +621,7 @@ hypotheses, and no jointly contradictory combination has been proved.
 \section{Representative known irrational supports}\label{sec:map}
 
 The following table is representative, not exhaustive.  It groups the
-displayed supports by five mechanisms rather than suggesting that its rows
+displayed supports by six mechanisms rather than suggesting that its rows
 classify all known cases.
 
 \begin{table}[htbp]
@@ -462,6 +635,12 @@ classify all known cases.
 \papertablehead
 Support $A$ & Bases & Mechanism and authority \\
 \midrule
+\multicolumn{3}{@{}l}{\emph{LCM-prefix orbit means and an integral tail gap}}\\
+arbitrary infinite $A$ with $\sum_{a\in A}a^{-1}<\infty$ & every $b\ge2$ &
+  Theorem~\ref{res:reciprocal-support};
+  \mword{Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{395}{irrational_erdosSupportSeries_of_summable_reciprocal}{checked here},
+  with exact boundary in Section~\ref{sec:reciprocal-support} \\
+\addlinespace
 \multicolumn{3}{@{}l}{\emph{Classical full support, and base change into it}}\\
 all of $\Npos$ & every $b\ge2$ & Erd\H{o}s 1948~\cite{erdos1948};
   \mword{Erdos249257/CertificateKernel.lean}{9045}{irrational_erdosSupportSeries_univ}{formalised here} \\
@@ -522,8 +701,12 @@ arbitrary infinite $A$ & --- & \textbf{Open} (Problem~\ref{res:problem}) \\
 \noindent In the sentence immediately following the p.~222 theorem,
 Erd\H{o}s says that pairwise coprimality can be removed by a more complicated
 argument, but he does not give that argument; p.~226 repeats that boundary.
-Accordingly the table uses only the fully printed pairwise-coprime
-theorem, not the stronger unproved-in-print extension.
+His printed theorem already quantifies over every integer base $t\ge2$, so the
+base generality of the first row is his.  The first row records a complete
+Lean-checked proof of the conclusion he stated and withheld, namely the same
+theorem with pairwise coprimality dropped.  The sparse-support row separately
+records his printed pairwise-coprime theorem and its formalisation.  Removing
+coprimality is the contribution, and it carries no priority claim.
 
 Under the additional hypothesis that the pairwise-coprime exponents are odd,
 Duverney, Suzuki and Tachiya strengthen this conclusion: Corollary~1 gives
@@ -710,7 +893,7 @@ they ask for $N,K,L,C\in\N$ with $K\le L$ satisfying the common conditions
  \exists t\in\N:\ f(N+L+1+t)>0,\\
  q(C+N+L+2)<b^L,
 \end{gathered}
-\tag{3}\label{eq:block-common}
+\tag{11}\label{eq:block-common}
 \]
 together with one of the two first-block conditions
 \[
@@ -719,7 +902,7 @@ together with one of the two first-block conditions
 \text{weighted:}&
 b^K\mid\displaystyle\sum_{r=1}^{K}f(N+r)b^{K-r}.
 \end{array}
-\tag{4}\label{eq:block-first}
+\tag{12}\label{eq:block-first}
 \]
 Thus the data $N,K,L,C$ may depend on $q$.  The parity of
 Theorem~\ref{res:sfcount} refutes both alternatives for the squarefree
@@ -1466,6 +1649,9 @@ can sustain such an affine recurrence without being the actual divisor pulse.
 Problem~\ref{res:problem} remains the frame: the settled families in
 Section~\ref{sec:map} do not approach a universal quantifier, and the forced
 conditions in Section~\ref{sec:forced} are not known to be contradictory.
+Theorem~\ref{res:reciprocal-support} does, however, force every counterexample
+into the reciprocal-divergent region
+$\sum_{a\in A}a^{-1}=\infty$.
 For the base-$2$ universal problem, three endpoint questions organise the
 remaining discussion.  The universal problem and the half-value question
 are not independent, and the relation between them is asymmetric.  No finite
@@ -1495,13 +1681,15 @@ claimed to be equivalent by itself.
 
 \begin{enumerate}
 \item \textbf{Problem~\ref{res:problem} itself}, for arbitrary infinite $A$.
-  Section~\ref{sec:map} is a list of families and does not approach a
-  universal statement; Section~\ref{sec:forced} constrains every hypothetical
-  counterexample without excluding one.  Every counterexample would have
+  Theorem~\ref{res:reciprocal-support} excludes every reciprocal-summable
+  support, so an unresolved counterexample must have divergent reciprocal
+  mass.  Section~\ref{sec:forced} constrains every hypothetical counterexample
+  without excluding one in that remaining region.  Every counterexample would have
   unbounded scaled-tail states, sublogarithmic divisor-coverage gaps and an
-  admissible Boolean--M\"obius scaled-tail sequence; Theorem~\ref{res:mass}
-  adds its lower bound only under its stated convergence and odd-denominator
-  hypotheses.  No contradiction among the applicable constraints is known.
+  admissible Boolean--M\"obius scaled-tail sequence.  The conditional lower
+  bounds in Theorem~\ref{res:mass} are now subordinate inside the proved
+  reciprocal-summable exclusion rather than the frontier itself.  No
+  contradiction is known in the reciprocal-divergent region.
 \item \textbf{Membership of $1/2$ in $\Ach$.}  Theorem~\ref{res:half} makes
   this exactly equivalent to infinitely many greedy skips, and to a fatal gap
   on the other side; neither is proved.  A proof of non-membership would take
