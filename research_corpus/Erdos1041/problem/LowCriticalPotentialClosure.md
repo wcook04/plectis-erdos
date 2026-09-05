@@ -1,4 +1,4 @@
-# Erdős 1041 for every polynomial with least critical value at most 197/1000
+# Erdős 1041 for every polynomial with least critical value at most 199/1000
 
 ## Status
 
@@ -11,7 +11,7 @@ The mechanism came from the eighth return of batch
 `erdos1041_20260905_eight_return_stream_01`, which proved the threshold `1/8`
 by a scalar potential. Its certificate replays exactly here. The assimilation
 delta is the exact comparison-ODE form of the same two inequalities, which
-raises the threshold to `197/1000` in every degree and to larger values at
+raises the threshold to `199/1000` in every degree and to larger values at
 fixed small degree, together with the exact reason the mechanism stops short
 of `1/5`.
 
@@ -23,7 +23,7 @@ Let `f` be a squarefree monic polynomial of degree `n >= 2`, and put
 mu = min{ |f(c)| : f'(c) = 0 } > 0.
 ```
 
-> **Theorem A.** If `mu <= 197/1000`, then two distinct roots of `f` are
+> **Theorem A.** If `mu <= 199/1000`, then two distinct roots of `f` are
 > joined by a rectifiable curve inside `{|f| < 1}` of length strictly less
 > than `2`.
 
@@ -32,11 +32,11 @@ component, or on any component capacity. A repeated root gives the constant
 curve, so the squarefree assumption is the nontrivial branch.
 
 > **Corollary B (scale-free form).** Every squarefree monic `f` has two
-> distinct roots joined inside `{|f| < (1000/197) mu}` by a curve of length
-> below `2 ((1000/197) mu)^(1/n)`.
+> distinct roots joined inside `{|f| < (1000/199) mu}` by a curve of length
+> below `2 ((1000/199) mu)^(1/n)`.
 
 *Proof of the corollary.* Apply Theorem A to `g(z) = s^(-n) f(sz)` with
-`s = ((1000/197) mu)^(1/n)`, whose least critical modulus is `197/1000`, and
+`s = ((1000/199) mu)^(1/n)`, whose least critical modulus is `199/1000`, and
 scale back. ∎
 
 > **Theorem C (fixed degree).** At degree `n = 4, 5, 6, 7` the same argument,
@@ -46,7 +46,7 @@ scale back. ∎
 > of the mechanism are `0.583`, `0.461`, `0.314`, `0.201`, and `0.688` at
 > `n = 3`, which is already solved.
 
-Every consequence for open-unit-disc roots is immediate: `mu <= 197/1000`
+Every consequence for open-unit-disc roots is immediate: `mu <= 199/1000`
 is a condition on the critical spectrum alone, and the curve lies in the open
 unit lemniscate.
 
@@ -56,7 +56,7 @@ unit lemniscate.
 `mu <= 1/2` with first-merge arity `k >= 17`, `mu <= 1/4` with `k >= 12`,
 `mu <= 1/8` with `k >= 10`, `mu <= 1/64` with `k >= 10`, each with a
 capacity-cutoff table for the lower arities. All of them keep an arity or a
-capacity hypothesis. Theorem A removes both at `mu <= 197/1000`; those rows
+capacity hypothesis. Theorem A removes both at `mu <= 199/1000`; those rows
 remain correct and remain useful as component-level information above that
 threshold.
 
@@ -185,7 +185,7 @@ The relaxation `a delta(a) <= delta_*` is exactly tight only at `a = 1`, so
 the potential method underestimates the forcing whenever the area is below
 the cap.
 
-## The exact comparison: `197/1000`
+## The exact comparison: `199/1000`
 
 Keep the differential inequality (4) itself. A counterexample's area function
 satisfies `a' >= G(x, a)` almost everywhere, is nondecreasing, and stays at
@@ -223,7 +223,9 @@ cells while `x` is small; every intermediate rational is floored onto the
 grid.
 
 The checker's quick mode (`--quick`, step `1/100`, nine grid points) certifies
-`X_cert < 1.6244`, hence `mu <= 197/1000`. The floating supremum of the
+`X_cert < 1.6244`, hence `mu <= 197/1000`; the full mode (step `1/800`,
+twelve grid points, run on 2026-09-05) certifies `X_cert < 1.61217`, hence
+`mu <= 199/1000`, which is the constant of Theorem A. The floating supremum of the
 mechanism is `X_* = 1.6100` at initial area about `0.056`, attained on a
 trajectory that rides with forced arity between six and seven and area growth
 near `0.4` per unit of `x`; since `e^(-1.6100) = 0.19989 < 1/5`, the
@@ -244,7 +246,7 @@ candidate list that survives every grid start with all levels below `1`.
 | 5 | 0.461 | 3/10 |
 | 6 | 0.314 | 1/4 |
 | 7 | 0.201 | 199/1000 |
-| >= 8 | 0.19989 | 197/1000 |
+| >= 8 | 0.19989 | 197/1000 (quick), 199/1000 (full) |
 
 The gap between the floating and certified columns at `n = 4, 5, 6` is
 discretisation loss in quick mode, not mathematics; the full-mode run narrows
@@ -252,7 +254,7 @@ it.
 
 ## Why this is not the parent theorem
 
-The regime `197/1000 < mu < 1` is untouched. The mechanism needs a failure
+The regime `199/1000 < mu < 1` is untouched. The mechanism needs a failure
 window `(mu, 1)` of logarithmic length about `1.61`; as `mu` approaches `1`
 the window closes, which is exactly the near-Fekete shell studied elsewhere
 in this directory. Neither inequality alone is the obstruction: the pair is

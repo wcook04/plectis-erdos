@@ -3011,8 +3011,8 @@
    "status": "ordinary_complete_all_degree_target_regime_proof_with_exact_rational_certificate_not_lean_checked_not_independently_reviewed",
    "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/LowCriticalPotentialClosure.md",
    "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_low_critical_potential_closure.py",
-   "statement": "Let f be a squarefree monic polynomial of degree n>=2 and mu its least critical-value modulus. If mu<=197/1000 then two distinct roots of f are joined by a rectifiable curve inside {|f|<1} of length strictly less than 2; no hypothesis on the root locations, the first-merge arity, or any component capacity is needed. Scale-free form: every squarefree monic f has two distinct roots joined inside {|f| < (1000/197) mu} by a curve of length below 2 ((1000/197) mu)^(1/n). The proof fixes a compact connected Gamma in K_mu through the least critical point, follows its ancestor component C_t, and plays two failure inequalities against each other at every level x=log(t/mu): COVER failure forces arity k(x) >= 2x/delta(a(x)) with delta(a)=-log(1-exp(-1/a)) and a(x)=Area(K_t)/pi (one-root Bergman plus the connected clopen-cover lemma), while boundary-hop failure forces the area growth a'(x) >= (1/(2 pi^2))[2 sqrt(k) - sqrt(2a(x+2))]_+^2 (averaged radial-lift lemma int L^2 <= Area/pi replacing Koebe, coarea, and the per-component perimeter inequality). Since a<=1 while t<1, the resulting differential inequality cannot survive past x=log(1000/197). The returned scalar potential V(a)=int_0^a delta gives 1/8; the exact comparison ODE with a grid over the initial area gives 197/1000 in every degree, and at fixed degree the Polya cap a<=(mu e^x)^(2/n) and the arity cap k<=n give larger thresholds, certified as mu<=1/3 (n=4), 3/10 (n=5), 1/4 (n=6), 199/1000 (n=7) in quick mode with the full-precision values recorded in the note.",
-   "claim_boundary": "Ordinary mathematics plus an exact rational certificate (implicit lower-Euler comparison with directed rounding, truncated exponential series, integer square roots). Not Lean-checked, not independently reviewed. The regime 197/1000 < mu < 1 remains open: the mechanism cannot reach mu near 1 because the failure window (mu,1) shrinks to nothing, which is exactly the near-Fekete shell. Erdos 1041 remains open.",
+   "statement": "Let f be a squarefree monic polynomial of degree n>=2 and mu its least critical-value modulus. If mu<=199/1000 then two distinct roots of f are joined by a rectifiable curve inside {|f|<1} of length strictly less than 2; no hypothesis on the root locations, the first-merge arity, or any component capacity is needed. Scale-free form: every squarefree monic f has two distinct roots joined inside {|f| < (1000/199) mu} by a curve of length below 2 ((1000/199) mu)^(1/n). The proof fixes a compact connected Gamma in K_mu through the least critical point, follows its ancestor component C_t, and plays two failure inequalities against each other at every level x=log(t/mu): COVER failure forces arity k(x) >= 2x/delta(a(x)) with delta(a)=-log(1-exp(-1/a)) and a(x)=Area(K_t)/pi (one-root Bergman plus the connected clopen-cover lemma), while boundary-hop failure forces the area growth a'(x) >= (1/(2 pi^2))[2 sqrt(k) - sqrt(2a(x+2))]_+^2 (averaged radial-lift lemma int L^2 <= Area/pi replacing Koebe, coarea, and the per-component perimeter inequality). Since a<=1 while t<1, the resulting differential inequality cannot survive past x=log(1000/199). The returned scalar potential V(a)=int_0^a delta gives 1/8; the exact comparison ODE with a grid over the initial area gives 199/1000 in every degree (full-precision certificate, X_cert=1.61217; quick mode certifies 197/1000), and at fixed degree the Polya cap a<=(mu e^x)^(2/n) and the arity cap k<=n give larger thresholds, certified as mu<=1/3 (n=4), 3/10 (n=5), 1/4 (n=6), 199/1000 (n=7) in quick mode with the full-precision values recorded in the note.",
+   "claim_boundary": "Ordinary mathematics plus an exact rational certificate (implicit lower-Euler comparison with directed rounding, truncated exponential series, integer square roots). Not Lean-checked, not independently reviewed. The regime 199/1000 < mu < 1 remains open: the mechanism cannot reach mu near 1 because the failure window (mu,1) shrinks to nothing, which is exactly the near-Fekete shell. Erdos 1041 remains open.",
    "named_consumers": [
     "low_critical_high_arity_first_merge_closure",
     "low_critical_component_capacity_defect_closure",
@@ -3027,9 +3027,10 @@
     "low_critical_component_capacity_defect_closure",
     "low_critical_arity_capacity_lattice_closure"
    ],
-   "source_sha256": "17fae4aba9a61043bc3be787bcac4cec13c964fc2dc707b7cad84056c72163da",
+   "source_sha256": "5cd8e776f7e4b2ab5995faff4bcb4ed19d879a564ee2b5b5eba9bea5b6a8eb5d",
    "source_current": true,
-   "return_batch_id": "erdos1041_20260905_eight_return_stream_01"
+   "return_batch_id": "erdos1041_20260905_eight_return_stream_01",
+   "superseded_by": "cluster_separation_low_critical_closure_nine_twentyfifths"
   },
   {
    "id": "chord_conditioned_bergman_geodesic_bound",
@@ -3254,6 +3255,84 @@
    "source_sha256": "6c76a3dde1ad68709c75feca1d0a8865ef6aaa7a07094db19444e4a18f73addd",
    "source_current": true,
    "return_batch_id": "erdos1041_20260905_eight_return_stream_01"
+  },
+  {
+   "id": "cluster_separation_low_critical_closure_nine_twentyfifths",
+   "status": "ordinary_complete_all_degree_target_regime_proof_with_exact_rational_certificate_not_lean_checked_not_independently_reviewed",
+   "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ClusterSeparationLowCriticalClosure.md",
+   "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cluster_separation_closure.py",
+   "statement": "Let f be a squarefree monic polynomial of degree n>=2 and mu its least critical-value modulus. If mu<=9/25 then two distinct roots of f are joined by a rectifiable curve inside {|f|<1} of length strictly less than 2; no hypothesis on root locations, first-merge arity, or component capacity is needed. Scale-free form: every squarefree monic f has two distinct roots joined inside {|f|<(25/9)mu} by a curve of length below 2((25/9)mu)^(1/n). The proof runs the failure ODE of LowCriticalPotentialClosure.md on the ANCESTOR COMPONENT C_t of the two-lobe set through the least critical point (every ingredient is per-component, so a(x)=Area(C_t)/pi replaces the global area for free) and adds a second arity floor: failure forces every pair of roots in C_t to be hyperbolically separated by d_min(a)=4 artanh(sqrt(tanh(1/a))) (the contrapositive of the connected-cluster Bergman barrier, which needs no pair selection and so is untouched by the refutation of universal merge-node selection), and combined with the COVER observer h (lambda_j=-log rho(h,b_j)<=delta(a)/2 for all j, d_1+d_2>=d_min so d_j>=d_min/2 for j>=2) this gives x<=Lambda(k,a):=max(delta(a)/2+(k-1)lam(g), k tau(a)/2) with tau(a)=-log tanh(1/a), lam(d)=-log tanh(d/2), g=2lam(tau/2)-lam(delta/2), the sharp ordered profile by convexity of lam. Since tau(a)<delta(a) for every a>0 this dominates the COVER floor k>=2x/delta(a). The boundary-hop inequality a'(x)>=(1/(2pi^2))[2sqrt(k)-sqrt(2a(x+2))]_+^2 and the Polya cap a<=1 are unchanged, so the same monotone implicit-Euler comparison with a geometric grid over the unknown initial area certifies X_cert=101437302713/100000000000<1.014374 and (9/25)exp(X_cert)<1. Floating supremum of the mechanism: X_*=0.99500, i.e. mu=0.36972 is unreachable by this mechanism with any certificate.",
+   "claim_boundary": "Ordinary mathematics plus an exact rational certificate (implicit lower-Euler comparison with directed rounding, odd-power series with geometric tails for tau and delta, integer square roots), replayed in quick mode (step 1/100, 8 grid points, ~3 min) by the verifier; full mode (step 1/400, 12 grid points) is slower and its output is the authority for any tighter constant. Not Lean-checked, not independently reviewed. The Bergman constant L^2<=4a artanh(s^2) was validated numerically against f=z^2-r^2 (bound exceeds the true geodesic length at every tested (r,t), ratio tending to 1). No fixed-degree constant is claimed in this row; the crude-floor fixed-degree values 1/2, 9/20, 2/5, 7/20 at n=4,5,6,7 are recorded in the note behind --per-degree and the sharp-floor fixed-degree lane is a live wave-2 item. The regime 0.370<mu<1 remains open (the near-Fekete shell, where the failure window closes). Erdos 1041 remains open.",
+   "named_consumers": [
+    "low_critical_potential_closure_all_degrees_2026_09_05",
+    "one_root_covering_of_the_first_merge_component",
+    "connected_cluster_bergman_certificate",
+    "connected_cluster_fixed_level_area_forcing",
+    "unconditional_constant_factor_pair_geodesic",
+    "capacity_geodesic_conjecture_and_its_equality_family"
+   ],
+   "evidence_class": "ordinary_proof_verified_this_pass_plus_exact_rational_certificate",
+   "supersedes": [
+    "low_critical_potential_closure_all_degrees_2026_09_05"
+   ],
+   "source_sha256": "6b41dbba0b975b0fe686ea33078a3066a6d9b15a6b0d153c7ccbc8b18de0929c",
+   "source_current": true,
+   "return_batch_id": "erdos1041_20260905_wave1_agent_landings_01"
+  },
+  {
+   "id": "cluster_pairwise_hyperbolic_separation_under_failure",
+   "status": "ordinary_complete_proof_contrapositive_of_landed_barrier_novelty_not_claimed",
+   "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ClusterSeparationLowCriticalClosure.md",
+   "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cluster_separation_closure.py",
+   "statement": "Let C be a regular component of {|f|<t} with t<1 holding k>=2 roots of the squarefree monic f, a=Area(C)/pi, and uniformise C by the disc. If two roots in C sit at hyperbolic distance d in the uniformisation and s=tanh(d/4), the hyperbolic geodesic of C joining them has Euclidean length L with L^2<=4a artanh(s^2) (Bergman-kernel Cauchy-Schwarz with the double integral of 1/(1-xy)^2 over [-s,s]^2 equal to 4 artanh(s^2)). Consequently, if no two distinct roots of f are joined inside {|f|<1} by a curve of length below 2, then EVERY pair of roots in C satisfies d>=d_min(a)=4 artanh(sqrt(tanh(1/a))). With one endpoint at zero this is the one-root COVER bound of R2MergeNodeSeparation.md; with s=q^(1/k) it is exactly the connected-cluster barrier a log((1+q^(2/k))/(1-q^(2/k)))<2. What is new is the use: the contrapositive needs no selection rule, so negative result 74 (universal merge-node selection is false) does not touch it.",
+   "claim_boundary": "Ordinary Bergman-space Cauchy-Schwarz, assumed known to the potential-theory literature; no novelty is claimed for the inequality, only for its contrapositive deployment as a failure constraint. Requires t regular and f squarefree. Erdos 1041 remains open.",
+   "named_consumers": [
+    "cluster_separation_low_critical_closure_nine_twentyfifths",
+    "connected_cluster_bergman_certificate",
+    "chord_conditioned_bergman_geodesic_bound",
+    "bergman_geodesic_moebius_invariance"
+   ],
+   "evidence_class": "ordinary_proof_with_numerical_validation",
+   "source_sha256": "6b41dbba0b975b0fe686ea33078a3066a6d9b15a6b0d153c7ccbc8b18de0929c",
+   "source_current": true,
+   "return_batch_id": "erdos1041_20260905_wave1_agent_landings_01"
+  },
+  {
+   "id": "centroid_variance_chord_chart_2026_09_05",
+   "status": "ordinary_complete_regime_theorem_with_sharp_threshold_and_exact_rational_replay_envelope_is_corpus_property",
+   "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentroidVarianceChordChart.md",
+   "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_centroid_variance_chord_chart.py",
+   "statement": "Let a_1..a_n be the roots of monic f, c their centroid, d_k=|a_k-c|, Var=(1/n)sum d_k^2, and r_(1)<=...<=r_(n) the ordered d_k. Proposition 1 (mean-square envelope, the uniform-weight member of the BarycentricEnvelope disc envelope): |f(z)|^(2/n)<=|z-c|^2+Var for every z. Theorem 2: if two distinct roots satisfy max(d_i,d_j)^2+Var<1 then the closed segment [a_i,a_j] lies in {|f|<1}; with all roots in the open unit disc it is a contained root chord of length below 2 and Erdos 1041 holds for f. The optimal pair is the two centroid-nearest roots, so the condition is r_(2)^2+Var<1. Corollary 3 (variance-only threshold, sharp): Var<(n-1)/(2n-1) suffices, and the threshold cannot be raised by the Markov step alone, with equality approached by z^n-rho^(n-1)z. Theorem 4: if max over [0,1] of the corpus carrier minimax Phi_ij is below 1 then [a_i,a_j] is contained; this is the p=1 minimax (Bdual) of BarycentricEnvelope.md used positively at a root/root pair, and it strictly widens the chord criterion.",
+   "claim_boundary": "Sections 1-3 are ordinary proofs of a sufficient condition and a regime; they do not prove unrestricted Erdos 1041. The envelope and the carrier functional are already corpus property (BarycentricEnvelope.md); what is new is the root-pair selection, the exact variance threshold with its extremal family, and the positive use of (Bdual). The verifier certifies the Corollary 3 sharp configuration and the even-degree diameter chord exactly and samples the envelope, Theorem 2 and Theorem 4 over random configurations as falsification evidence only. No Lean module exists. Erdos 1041 remains open.",
+   "named_consumers": [
+    "barycentric_envelope",
+    "centroid_hub_budget",
+    "translated_non_adjacent_trinomial_2026_09_05",
+    "centroid_moment_localisation_and_balanced_weight_duality_2026_09_05",
+    "moment_localised_coefficient_certificate_open_neighbourhood_2026_09_05"
+   ],
+   "evidence_class": "ordinary_proof_plus_exact_rational_replay_plus_floating_point_falsification",
+   "source_sha256": "ef8387500b96bce2d941fd6506aa5a8b3525e9c2aed5e29ea565cd62da0c9475",
+   "source_current": true,
+   "return_batch_id": "erdos1041_20260905_wave1_agent_landings_01"
+  },
+  {
+   "id": "variance_cannot_reach_the_critical_spectrum_2026_09_05",
+   "status": "ordinary_complete_all_degree_refutation_with_exact_integer_certificate",
+   "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentroidVarianceChordChart.md",
+   "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_centroid_variance_chord_chart.py",
+   "statement": "The two bridge inequalities that would hand the complement of the variance chart to the low-critical closure, D<=Var^(n(n-1)/2) with D=prod_(i<j)|a_i-a_j|^2/n^n, and mu<=Var^(n/2), are both invariant, homogeneous, and equalities on z^n-r^n, and both are FALSE for every n>=6. The single family f_n(z)=z^n-z (roots 0 and the (n-1)-st roots of unity; scale z->sz, 0<s<1, to put every root in the open disc without changing either ratio) has Var=(n-1)/n, D=mu^(n-1)=(n-1)^(n-1)/n^n, mu=(n-1)/n^(n/(n-1)), and D/Var^(n(n-1)/2)=(mu/Var^(n/2))^(n-1)=n^(n(n-3)/2)/(n-1)^((n-1)(n-2)/2)>1 for n>=6, certified as an integer inequality for 6<=n<=40 and proved for all n>=6. Hence second-moment data cannot reach mu, and the regular n-gon does NOT maximise the discriminant at fixed second moment for n>=6.",
+   "claim_boundary": "Ordinary proof plus exact integer/rational certificate. It refutes two bridge inequalities and makes no statement about Erdos 1041 itself; it exhibits no counterexample to the target. Answers the second-moment version of the stability question of HardRegimeIsNearFekete.md in the negative. Erdos 1041 remains open.",
+   "named_consumers": [
+    "centroid_variance_chord_chart_2026_09_05",
+    "hard_regime_is_near_fekete",
+    "low_critical_potential_closure_all_degrees_2026_09_05",
+    "cluster_separation_low_critical_closure_nine_twentyfifths"
+   ],
+   "evidence_class": "ordinary_proof_plus_exact_integer_certificate",
+   "source_sha256": "ef8387500b96bce2d941fd6506aa5a8b3525e9c2aed5e29ea565cd62da0c9475",
+   "source_current": true,
+   "return_batch_id": "erdos1041_20260905_wave1_agent_landings_01"
   }
  ],
  "negative_results": [
@@ -3334,7 +3413,11 @@
   "The unrestricted two-tail selector conjecture for tetranomials is FALSE. CyclicTetranomialCoefficientCase.md section 4 records, as evidence for a next selector conjecture, that an unrestricted probe over 6,348 configurations never found fewer than two roots with |c+b w^s|<1, and asks whether two roots must satisfy the tail bound |a w^r+w^m|<1 even when the coefficient budget fails. Take r=99/100 and F(z)=z^6+(5/2)r^2 z^4+(5/2)r^4 z^2+r^6. Its quotient w^3+(5/2)w^2+(5/2)w+1 factors as (w+1)(w^2+(3/2)w+1) with all roots unimodular, so every root of F has modulus r<1. At every quotient root the recorded tail is r^6(1+(5/2)zeta) with |zeta|=1, so its modulus is at least (3/2)r^6, and exactly (3/2)r^6-1 = 824440448203/2000000000000 > 0. ZERO roots satisfy the tail bound. SCOPE: this refutes the conjecture and its numerical evidence only; no proved theorem of that file is contradicted, since |b|+|c| = 3342970174401/1000000000000 > 1 there, and the sextic satisfies Erdos 1041 by the centred-circle quadrinomial arc certificate (CentredCircleQuadrinomialConnector.md), with a connector of length (r/2)arccos(3/4) < pi/5 on which |F| < 3-sqrt(5).",
   "A universal tail or radial selector for four-term polynomials cannot exist as stated, because the exceptional exponent relation n=3k with |a|>sqrt(3) is exactly the family in which the radial certificate can fail at EVERY root while the target conclusion still holds through a non-radial short circular arc. SCOPE: this constrains the shape of any future selector; it says nothing about Erdos 1041 itself.",
   "The sharp affine coefficient does not remove the pinching divergence of the Bergman route. Testing the reversible kernel of ChordConditionedBergman.md on the mean-zero function sgn gives lam(x) >= 1 - log(1+x)/artanh(x), hence lam(x)*log(1/(1-rho^2)) >= log(1/(1-rho^2)) - 4 log(1+x) -> infinity as x -> 1. Therefore no choice of the affine coefficient in L^2 - d^2 <= lam(E - d^2), including the optimal one, keeps the whole-component bound finite when the two marked points become hyperbolically separated at bounded area. On z^n - r^n at level 1 with r -> 1 the refined bound is ineffective at every fixed degree. SCOPE: a limitation of the estimate; that family is settled by its two radial arms of length 2r < 2, so it is not evidence against the parent.",
-  "The low-critical potential mechanism of LowCriticalPotentialClosure.md cannot reach mu close to 1 by any choice of constants: its two failure inequalities (COVER forces arity, boundary-hop forces area growth) need a failure window (mu,1) of logarithmic length at least about 1.61 to contradict Polya's area cap, because the extremal counterexample trajectory rides with forced arity between six and seven and area growth near 0.4 per unit of log t. The exact comparison ODE gives 0.19989 in every degree, so 1/5 is unreachable by this mechanism and the surviving regime 0.197 < mu < 1 requires a different tool. SCOPE: a limitation of the mechanism; the near-Fekete shell is addressed by other corpus results."
+  "The low-critical potential mechanism of LowCriticalPotentialClosure.md cannot reach mu close to 1 by any choice of constants: its two failure inequalities (COVER forces arity, boundary-hop forces area growth) need a failure window (mu,1) of logarithmic length at least about 1.61 to contradict Polya's area cap, because the extremal counterexample trajectory rides with forced arity between six and seven and area growth near 0.4 per unit of log t. The exact comparison ODE gives 0.19989 in every degree, so 1/5 is unreachable by this mechanism and the surviving regime 0.199 < mu < 1 requires a different tool. SCOPE: a limitation of the mechanism; the near-Fekete shell is addressed by other corpus results.",
+  "The ancestor-capacity coupling cannot improve the low-critical threshold. Composing the exact component capacity formula (Area<=pi cap^2), the capacity-speed law d log cap/d log t>=1/k of SharpSymmetricMergeEnvelope.md with non-negative jumps at attachments, and the fibre-coupled gap cap^n/t<k/(2n-k) of ExteriorBlaschkeFibreCapacityGap.md gives the degree-free constraint int_{x1}^{x2} dxi/k(xi)<=(1/2)log(1/a(x1))+(x2-X+log p0)/n on every failure trajectory, but it holds with about 18% slack on the extremal trajectory of both the 197/1000 and the 9/25 mechanisms (worst ratio 0.82). It binds only when k a'<2 on the attractor, and the attractor has k a' about 3.2-3.5. The structural reason is that every capacity-derived area cap enters as (something small)^(2/n) and tends to 1 in the large-degree limit. SCOPE (W1-A, 2026-09-05): retires the capacity route as a source of an ALL-DEGREE area cap for the failure ODE; the capacity-speed law, the merge envelope, and their fixed-degree uses are untouched.",
+  "Hyperbolic packing does not refine the cluster arity floor in the operative regime. Under failure the k roots of the ancestor component are pairwise at hyperbolic distance at least d_min(a), so j disjoint balls of radius d_min/2 give d_j>=2 arcsinh(sqrt(j) sinh(d_min/4))-d_min/2; this exceeds the triangle-inequality bound d_j>=d_min/2 only for j above exp(d_min/2), which is 14 at a=1, while the extremal trajectory rides at arity 7.1-7.3. SCOPE (W1-A, 2026-09-05): retires packing as a refinement of the ordered profile at the attractor; it would become binding for any mechanism forcing arity above about exp(2/a).",
+  "The discriminant/Fekete critical-value product adds nothing at moderate mu. From prod_j|f(c_j)|=D<=1 for roots in the closed unit disc and |f(c_j)|>=mu one gets only mu<=D^(1/(n-1)), which is satisfied by any D>=mu^(n-1) and imposes no constraint until mu->1. SCOPE (W1-A, 2026-09-05): the critical-value product reproduces the near-Fekete shell and cannot supply an independent second inequality for the low-critical mechanism; Fekete-deficit results conditioning on D directly are untouched.",
+  "The chord-chart extremal landscape (ChordChartExtremalLandscapeLab.md, measurement only): the maximiser of m(f), the intrinsic distance inside {|f|<1} between the closest pair of roots in that metric, over max|a_k|<=0.9999 is z^n-r^n at the radius cap at every degree 3..8 (verified upper bounds 1.943, 1.818, 1.678, 1.543, 1.415, 1.304 at n=3..8, all below 2 and inside the exact corpus brackets), so the corpus's regular-polygon extremum is the extremum of the intrinsic pair distance too. Chordless configurations (no contained straight root chord) exist at every degree 3..8 but only in a shell with max|a_k| within 10^-2 of 1, at Fekete ratio D in [0.67,0.95], not confined to odd degree and not asymptotically near-Fekete. The honest gap of the variance chart in its own coordinate is Var in [(n-1)/(2n-1), V_n) with V_3=(8/9)^(2/3) exactly and V_5=0.97933, V_7=0.98676 measured. SCOPE (W1-D, 2026-09-05): floating searches with reported basins; the composed cover 'contained root chord OR a hub in {0,centroid} union {critical points} with two contained straight spokes' was never defeated (residual-gap census 0 at every degree 3..8 over 70x500 adversarial restarts), and that disjunction is the smallest open sub-statement this lane isolates; it is not implied by anything in the corpus and the corpus kills each disjunct separately but not the disjunction. The n=8, r=0.99 rung of the radius ladder is blank because the N=201 Dijkstra path failed containment verification there; that is a grid limitation, not a datum."
  ],
  "finite_evidence": {
   "status": "candidate_search_only_not_proof",
@@ -3503,7 +3586,67 @@
     "statement": "Floating RK4 integration of the failure ODE a' = G(x,a) with the initial normalised area a0 swept over [1e-6, 1] gives a supremum hitting time 1.6100 at a0 = 0.056 in every degree n >= 8 (e^-1.61 = 0.19989), 1.6021 at n=7, 1.1579 at n=6 (0.3142), 0.7749 at n=5 (0.4608), 0.5392 at n=4 (0.5832), 0.3742 at n=3 (0.6878). Trajectories from tiny a0 join the same attractor rather than blowing up; the certified rational thresholds in the checker are below these floating values by the discretisation loss of the implicit lower-Euler scheme.",
     "evidence_class": "deterministic_floating_point_scan_only"
    }
-  ]
+  ],
+  "wave1_agent_landings_2026_09_05": {
+   "lanes": [
+    "W1-A cluster separation closure",
+    "W1-D centroid variance chord chart and extremal landscape lab"
+   ],
+   "cluster_separation_certificate_quick_mode": {
+    "X_cert": "101437302713/100000000000",
+    "mu_threshold": "9/25",
+    "worst_initial_area": 1e-06,
+    "grid_points": 8,
+    "step": "1/100",
+    "float_supremum_of_mechanism_X": 0.995,
+    "float_supremum_mu": 0.36972,
+    "replay": "./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cluster_separation_closure.py --quick",
+    "replayed_by_conductor": "rc=0 2026-09-05"
+   },
+   "exterior_energy_sensitivity_baseline_mechanism": {
+    "S_floor": [
+     0.05,
+     0.1,
+     0.15,
+     0.2,
+     0.25
+    ],
+    "mu_threshold_float": [
+     0.23,
+     0.264,
+     0.301,
+     0.341,
+     0.385
+    ],
+    "note": "floating, baseline 197/1000 mechanism; names the missing quantity S=sum l|beta_l|^2 of the ancestor component's exterior map"
+   },
+   "chord_chart_extremal_table": {
+    "degrees": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "sup_m_upper": [
+     1.94323,
+     1.81836,
+     1.67816,
+     1.54269,
+     1.41496,
+     1.30425
+    ],
+    "maximiser": "z^n - r^n at r=0.9999 in every degree",
+    "composed_cover_defeats": 0,
+    "replay": "./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_centroid_variance_chord_chart.py",
+    "replayed_by_conductor": "rc=0 2026-09-05"
+   },
+   "conductor_probes": {
+    "surviving_regime_hub_disjunction": "708 random survivors with mu>0.199 plus jittered/gap polygons to n=30: every one has a critical hub or the origin carrying two contained straight spokes of total length below 2; adversarial climbs at n=4..8 seeded at the regular polygon never exceed 2r",
+    "high_degree_random_families": "at n>=10 random angle/shell/disc families essentially always have mu<0.199; only near-regular arrangements survive the closure"
+   }
+  }
  },
  "open_producers": [
   {
@@ -3542,7 +3685,7 @@
    "priority": 1,
    "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_visibility_overlap.py",
    "receipt": "state/formal_math/erdos257_period_noncollapse/erdos1041_visibility_overlap_receipt.json",
-   "statement": "Prove (COVER): for monic g with roots in the closed unit disk there is a level lambda in [mu,1] and a compact CONNECTED subset Gamma of the first-merge component of {|g| <= lambda} carrying two roots, such that every point of Gamma lies within intrinsic distance 1 of a root of g, paths being allowed to run in the whole component. By visibility_overlap_reduction_to_a_one_root_statement this settles Erdos #1041, with no separate length obligation. Take Gamma as SMALL as possible and the ambient as LARGE as possible: the cheapest Gamma is the descending Newton branch pair from c*, on which the covering was measured in its strongest form -- straight segments at level 1 -- with zero uncovered points over 26 scored rows at 283 points per arc, at least 155 overlap points per row, and worst overlap length 1.90422 against a budget of 2. Two guards are mandatory: the level is NOT monotone, so never fix one (a fixed 1.01*mu reads 1.0349 where 1.0005*mu reads 0.9427); and a traced arc must be verified to lie in {|g| <= 1} before scoring, since at a degenerate hub the tracer leaves the lemniscate and reports a false covering failure. Do NOT route through the equality-stratum statement ONE-SPOKE: it is FALSE at n = 5 and is not necessary for (COVER). Do NOT strengthen to straight segments in general, to the nearest root, or to the Newton descent (on z(z-1) the descent from e^{i pi/3} has length 1.366 while the straight segment to 0 has length exactly 1). UPDATE 2026-09-05: LowCriticalPotentialClosure.md shows what COVER failure alone buys when played against boundary-hop failure across the whole level window: an unconditional parent regime mu <= 197/1000 in every degree. COVER itself stays open; the exact obstruction to pushing the same mechanism further is recorded (the failure window must have logarithmic length about 1.61)."
+   "statement": "Prove (COVER): for monic g with roots in the closed unit disk there is a level lambda in [mu,1] and a compact CONNECTED subset Gamma of the first-merge component of {|g| <= lambda} carrying two roots, such that every point of Gamma lies within intrinsic distance 1 of a root of g, paths being allowed to run in the whole component. By visibility_overlap_reduction_to_a_one_root_statement this settles Erdos #1041, with no separate length obligation. Take Gamma as SMALL as possible and the ambient as LARGE as possible: the cheapest Gamma is the descending Newton branch pair from c*, on which the covering was measured in its strongest form -- straight segments at level 1 -- with zero uncovered points over 26 scored rows at 283 points per arc, at least 155 overlap points per row, and worst overlap length 1.90422 against a budget of 2. Two guards are mandatory: the level is NOT monotone, so never fix one (a fixed 1.01*mu reads 1.0349 where 1.0005*mu reads 0.9427); and a traced arc must be verified to lie in {|g| <= 1} before scoring, since at a degenerate hub the tracer leaves the lemniscate and reports a false covering failure. Do NOT route through the equality-stratum statement ONE-SPOKE: it is FALSE at n = 5 and is not necessary for (COVER). Do NOT strengthen to straight segments in general, to the nearest root, or to the Newton descent (on z(z-1) the descent from e^{i pi/3} has length 1.366 while the straight segment to 0 has length exactly 1). UPDATE 2026-09-05: LowCriticalPotentialClosure.md shows what COVER failure alone buys when played against boundary-hop failure across the whole level window: an unconditional parent regime mu <= 199/1000 in every degree. COVER itself stays open; the exact obstruction to pushing the same mechanism further is recorded (the failure window must have logarithmic length about 1.61)."
   },
   {
    "id": "concyclic_form_a_cut_objective_below_one",
@@ -3678,5 +3821,6 @@
   ],
   "delivery_requirement": "Publish full proof sources and render the existing packet as a browser-readable frontier; freeze must independently verify offline premises and pinned public routes."
  },
- "claim_ceiling_addendum_2026_09_05_eight_return_assimilation": "Eight Type B full-parent returns (batch erdos1041_20260905_eight_return_stream_01, from packet erdos1041_full_parent_octuple_2026_09_04) were verified and assimilated. None proves unrestricted Erdos 1041. The strongest new regime is unconditional in every degree with no location, arity, or capacity hypothesis: every squarefree monic f with least critical-value modulus mu <= 197/1000 has two distinct roots joined inside {|f|<1} by a curve of length below 2 (LowCriticalPotentialClosure.md; the return proved 1/8 by a scalar potential, the exact comparison ODE sharpens it, and the mechanism provably cannot pass 0.19989). This supersedes the four arity/capacity lattices at mu<=1/2, 1/4, 1/8, 1/64 as parent-regime statements; they retain value as component-level information. The symmetric merge envelope conjectured in the 2026-08-28 capacity addendum is proved twice, with an exact capacity-speed identity d log cap/d log t = (1/2pi) int dtheta/(n-|B'|) and an exact non-negative fibre-variance defect; the large-degree exponent improves from (n-1)/m to k/m. The Bergman geodesic bound gains a chord-conditioned refinement L^2-d^2 <= lam(x)(E-d^2) with optimal spectral coefficient and explicit bounds; a rational cubic shows it fires where the first-two-level scalar criterion fails. New solved families: translated trinomials (z-h)^n+A(z-h)^m+C for every translation and every 1<=m<=n-2 (coprime exponents included), and every monic with at most four nonzero coefficients whose roots lie on one centred circle. The unrestricted two-tail tetranomial selector conjecture is refuted by an exact sextic. A pointwise polar-derivative Schur certificate |f(c_j)| < prod_l |1-conj(c_l)c_j| adds an interior defect to the free-point aggregate. All-degree invariants landed: a completed trace-curvature measure with sharp log-moment bound, a sharp nodal Crofton budget 2nR, and the polygonal contour with coefficient 1-sin(pi/d). The pinned degree-6 and degree-9 witnesses have exact two-segment noncritical-hub connectors of lengths below 1.757 and 1.529. What remains: the regime 197/1000 < mu < 1 in general degree, the translated adjacent trinomial family, unrestricted quadrinomials, COVER, combined charge, and the moved-block allocation. Proof, computation, review, publication, and canonicalization statuses remain distinct per result."
+ "claim_ceiling_addendum_2026_09_05_eight_return_assimilation": "Eight Type B full-parent returns (batch erdos1041_20260905_eight_return_stream_01, from packet erdos1041_full_parent_octuple_2026_09_04) were verified and assimilated. None proves unrestricted Erdos 1041. The strongest new regime is unconditional in every degree with no location, arity, or capacity hypothesis: every squarefree monic f with least critical-value modulus mu <= 199/1000 has two distinct roots joined inside {|f|<1} by a curve of length below 2 (LowCriticalPotentialClosure.md; the return proved 1/8 by a scalar potential, the exact comparison ODE sharpens it, and the mechanism provably cannot pass 0.19989). This supersedes the four arity/capacity lattices at mu<=1/2, 1/4, 1/8, 1/64 as parent-regime statements; they retain value as component-level information. The symmetric merge envelope conjectured in the 2026-08-28 capacity addendum is proved twice, with an exact capacity-speed identity d log cap/d log t = (1/2pi) int dtheta/(n-|B'|) and an exact non-negative fibre-variance defect; the large-degree exponent improves from (n-1)/m to k/m. The Bergman geodesic bound gains a chord-conditioned refinement L^2-d^2 <= lam(x)(E-d^2) with optimal spectral coefficient and explicit bounds; a rational cubic shows it fires where the first-two-level scalar criterion fails. New solved families: translated trinomials (z-h)^n+A(z-h)^m+C for every translation and every 1<=m<=n-2 (coprime exponents included), and every monic with at most four nonzero coefficients whose roots lie on one centred circle. The unrestricted two-tail tetranomial selector conjecture is refuted by an exact sextic. A pointwise polar-derivative Schur certificate |f(c_j)| < prod_l |1-conj(c_l)c_j| adds an interior defect to the free-point aggregate. All-degree invariants landed: a completed trace-curvature measure with sharp log-moment bound, a sharp nodal Crofton budget 2nR, and the polygonal contour with coefficient 1-sin(pi/d). The pinned degree-6 and degree-9 witnesses have exact two-segment noncritical-hub connectors of lengths below 1.757 and 1.529. What remains: the regime 199/1000 < mu < 1 in general degree, the translated adjacent trinomial family, unrestricted quadrinomials, COVER, combined charge, and the moved-block allocation. Proof, computation, review, publication, and canonicalization statuses remain distinct per result.",
+ "claim_ceiling_addendum_2026_09_05_wave1_agent_landings": "Wave-1 repo-native agent landings, 2026-09-05. The strongest unconditional all-degree regime is now mu<=9/25 (ClusterSeparationLowCriticalClosure.md, exact rational certificate replayed by the conductor), superseding the same-day 197/1000 closure by adding the contrapositive of the connected-cluster Bergman barrier as a second arity floor; the mechanism's floating supremum is mu=0.36972 and the missing quantity for any further gain is the exterior coefficient energy S of the ancestor component. The centroid-variance chord chart settles the root-statistic regime Var<(n-1)/(2n-1) by a straight root chord (sharp), and the exact refutation of both bridge inequalities shows second-moment data cannot reach the critical spectrum for n>=6. Three capacity/packing/discriminant couplings are recorded dead for the failure ODE. The extremal landscape of the intrinsic pair distance is the regular polygon at every degree 3..8, and the composed chord-or-hub cover is unbeaten. Erdos 1041 remains open; the surviving regime is 9/25<mu<1 at every degree n>=4 (n=3 proved in the corpus), and its high end is the near-Fekete shell."
 }
