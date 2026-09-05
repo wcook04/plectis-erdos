@@ -43,6 +43,10 @@ proof sources, failed routes, and cross-problem connections on GitHub.
 The [research skill](skills/mine-open-problem/SKILL.md) guides browser-only and
 enclosed Type B sessions toward proving the original problem using established
 results. The [skill catalog](skills/README.md) covers installation and contribution.
+Research frontiers also display the source-recorded distinction between the
+original target, equivalent reductions, and stronger sufficient routes when that
+classification is available. This helps readers use a reduction without confusing
+a failed approach with a disproof of the problem.
 
 ## What is here
 

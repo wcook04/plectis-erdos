@@ -28,6 +28,24 @@ statement without a located proof must not silently become an established premis
 Use the length the complete proof needs; neither a page quota nor an attack log
 substitutes for the original conclusion.
 
+Use the research packet's `frontier_integrity` when it is present. Its original
+target and canonical frontier are distinct from its inventory of possible
+producers. Only `equivalent_to_target` routes can replace the target;
+`target_deciding_but_stronger` routes are sufficient constructions whose failure
+does not refute the target. Auxiliary results still need a proved implication.
+The generated full research frontier displays these same source classifications,
+and new enclosed packets carry them in their ask and manifest. An exact producer
+identifier establishes source identity, not logical equivalence. For a universal
+assertion, a rigorously proved counterexample is a valid resolution; verify every
+original hypothesis, including any requirement that a support be infinite.
+If an older snapshot has no classification, inspect the original statement and
+the exact consumer implication rather than inferring equivalence from a title.
+An opening may attack the original problem directly without selecting a named
+producer. The existing producers do not exhaust the possible mathematics. Treat
+the corpus as usable proof material and constraints on already falsified claims,
+not a list of permitted approaches. Change routes when the mathematics warrants
+it; preserve the original hypotheses and conclusion through that change.
+
 No installation, terminal, or private repository is needed to read the corpus:
 
 1. Open the [mathematical graph](../../docs/semantic/BROWSER.md), choose the
