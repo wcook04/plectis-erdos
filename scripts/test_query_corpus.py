@@ -1373,6 +1373,23 @@ def validate_route_memory_cards() -> None:
     assert sum(
         line.startswith("problem_route | #") for line in overview_card.splitlines()
     ) == 8
+    frontier_source = query_corpus.load("docs/PALOMAR_RESULT_SHOWCASE.json")
+    expected_frontiers = {
+        row["problem"]: row for row in frontier_source["frontier_by_problem"]
+    }
+    assert overview_packet["problem_frontier_source"].endswith("::frontier_by_problem")
+    for problem in overview_packet["problem_fleet"]:
+        expected_frontier = expected_frontiers[problem["erdos_number"]]
+        assert problem["frontier_summary"] == expected_frontier["frontier_summary"]
+        assert problem["frontier_boundary"] == expected_frontier["open_boundary"]
+        assert (
+            f"problem_frontier | #{problem['erdos_number']} | "
+            f"{expected_frontier['frontier_summary']}"
+        ) in overview_card
+        assert (
+            f"problem_open | #{problem['erdos_number']} | "
+            f"{expected_frontier['open_boundary']}"
+        ) in overview_card
 
     search_card = query_corpus.render_card(
         query_corpus.search_packet("denominator_exclusion", 5)

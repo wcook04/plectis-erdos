@@ -12,7 +12,7 @@ Erdős Problem #257 asks whether
 ``` math
 X_A=\sum_{a\in A}\frac1{2^a-1}
 ```
-is irrational for every infinite $`A\subseteq\mathbb{N}_{>0}`$. The problem remains open. The strongest unconditional result treated here is the classical full-support theorem: for every integer $`b\ge2`$, $`\sum_{n\ge1}(b^n-1)^{-1}`$ is irrational. The checked proof uses a weighted certificate argument. The same development proves irrationality for every infinite pairwise-coprime support of convergent reciprocal mass and for every nonzero eventually periodic sequence of nonnegative rational weights.
+is irrational for every infinite $`A\subseteq\mathbb{N}_{>0}`$. The problem remains open. The strongest unconditional result treated here is the classical full-support theorem: for every integer $`b\ge2`$, $`\sum_{n\ge1}(b^n-1)^{-1}`$ is irrational. The checked proof uses a weighted certificate argument. The same development proves irrationality for every infinite pairwise-coprime support of convergent reciprocal mass and for every eventually periodic sequence of nonnegative rational weights whose periodic tail is not identically zero.
 
 For a finite nonempty support $`F`$, the reduced denominator $`D_F`$ of $`\sum_{n\in F}(b^n-1)^{-1}`$ satisfies
 ``` math
@@ -32,7 +32,7 @@ Two rational targets make the remaining difficulty explicit. Membership of $`1/2
 
 **Strongest unconditional results**
 
-**Arithmetic.** The full-support series is irrational at every integer base $`b\ge2`$; so are all convergent pairwise-coprime supports and all nonzero eventually periodic nonnegative rational weight sequences. Finite subsums have exact denominator order. **Geometry.** The achievement set is compact, perfect, nowhere dense, and has measure $`1`$, with an exact measure law after restricting exponents. **Open boundary.** The target values $`1/2`$ and $`1/21`$ remain undecided, and the geometric classification does not decide the arithmetic nature of individual subsums.
+**Arithmetic.** The full-support series is irrational at every integer base $`b\ge2`$; so are all infinite pairwise-coprime supports with $`\sum_{a\in A}1/a<\infty`$, and all eventually periodic nonnegative rational weight sequences with a nonzero periodic tail. Finite subsums have exact denominator order. **Geometry.** The achievement set is compact, perfect, nowhere dense, and has measure $`1`$, with an exact measure law after restricting exponents. **Open boundary.** The target values $`1/2`$ and $`1/21`$ remain undecided, and the geometric classification does not decide the arithmetic nature of individual subsums.
 
 </div>
 
@@ -262,6 +262,27 @@ Taken together: a counterexample to Problem <a href="#res:problem" data-referen
 
 # Representative known irrational supports
 
+<a id="why-periodic-weights-give-divisibility."></a>
+
+#### Why periodic weights give divisibility.
+
+The full-support and periodic-support results share one argument in the coefficients of <a href="#eq:incidence" data-reference-type="eqref" data-reference="eq:incidence">[eq:incidence]</a>. To see it, first take $`m\ge1`$ and a purely $`m`$-periodic weight $`w\colon\mathbb{N}_{>0}\to\mathbb{N}`$ and put
+``` math
+c_w(n)=\sum_{d\mid n}w(d).
+```
+Fix a prime $`p\nmid m`$ and write a positive integer as $`n=p^k u`$ with $`p\nmid u`$. Grouping divisors by their $`p`$-adic valuation gives
+``` math
+c_w(n)=\sum_{d\mid u}\sum_{j=0}^{k}w(dp^j).
+```
+Euler’s congruence $`p^{\varphi(m)}\equiv1\pmod m`$ makes each inner sequence periodic with a period dividing $`\varphi(m)`$. Choosing $`k=b\varphi(m)-1`$ therefore gives $`b`$ copies of a complete cycle:
+``` math
+\sum_{j=0}^{b\varphi(m)-1}w(dp^j)
+     =b\sum_{j=0}^{\varphi(m)-1}w(dp^j).
+```
+Thus $`b\mid c_w(n)`$. With $`r`$ distinct primes at these exact valuations, the divisor sum separates into $`r`$ such coordinates and gains a factor $`b^r`$. This is the arithmetic step that lets the certificate argument reach periodic supports: periodicity of the weights forces divisibility of their divisor transform. The full-support case is $`w\equiv1`$.
+
+Divisibility at one integer is not yet an irrationality proof. The checked argument arranges blocks of these valuations by the Chinese remainder theorem and controls the remaining weighted tail to obtain the required certificates. Its weighted form uses $`w(d)=\sum_{i=0}^{W-1}\mathbf1_{\{w(d)>i\}}`$ for a bound $`W`$ on $`w`$: each indicator layer is periodic, so the same divisor argument applies. The theorem cited in the table then clears a common denominator for rational weights and removes a finite prefix. Removing that prefix changes the series by a rational number; the periodic tail must still contain a positive weight. Without that hypothesis, a nonzero finitely supported sequence would give a rational counterexample.
+
 The following table is representative, not exhaustive. It groups the displayed supports by five mechanisms rather than suggesting that its rows classify all known cases.
 
 | Support $`A`$ | Bases | Mechanism and authority |
@@ -270,12 +291,12 @@ The following table is representative, not exhaustive. It groups the displayed s
 | all of $`\mathbb{N}_{>0}`$ | every $`b\ge2`$ | Erdős 1948 \[erdos1948\]; [formalised here](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L9045) |
 | multiples of a fixed $`d`$ | every $`b\ge2`$ | dilation: the multiples series at base $`b`$ *is* the full-support series at base $`b^d`$ ([checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L9103)) |
 |  |  |  |
-| eventually periodic | every $`b\ge2`$ | [checked here](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L12811); Luca–Tachiya prove the nonnegative purely-periodic case \[lucatachiya2017, Theorem 1, p. 139; proof pp. 149–150\]; finite rational prefixes give the infinite eventual case |
+| infinite eventually periodic | every $`b\ge2`$ | [checked here](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L12811); Luca–Tachiya prove the nonnegative purely-periodic case \[lucatachiya2017, Theorem 1, p. 139; proof pp. 149–150\]; finite rational prefixes give the infinite eventual case |
 | a residue class; the odd numbers | every $`b\ge2`$ | special cases of the row above ([residue class](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L11672), [odd](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L11686)); Luca–Tachiya’s Example 2 strengthens the odd row to joint linear independence of every finite divisor-convolution ladder, also for negative integer bases with absolute value greater than one \[lucatachiya2017, Example 2, p. 140\] |
 |  |  |  |
 | factorials $`\{n!\}`$ | every $`b\ge2`$ | [checked here](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L6035) |
 | powers of two $`\{2^k\}`$ | every $`b\ge2`$ | [checked here](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L6059) |
-| pairwise coprime, $`\sum_{a\in A}a^{-1}<\infty`$ | every $`b\ge2`$ | Erdős \[erdos1968\], theorem on p. 222; [formalised here](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L10776) |
+| infinite pairwise coprime, $`\sum_{a\in A}a^{-1}<\infty`$ | every $`b\ge2`$ | Erdős \[erdos1968\], theorem on p. 222; [formalised here](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L10776) |
 |  |  |  |
 | $`F_s(E)`$ and the monomial images $`\{j n^i:n\in F_s(E)\}`$ | $`b=q^j`$ with $`|q|^L\le s`$, $`L=\operatorname{lcm}(1,\dots,\ell)`$ | Duverney–Tachiya \[duverneytachiya, Cor. 1.2, author-preprint p. 4\]; linear independence, not only irrationality; not formalised here |
 | $`s`$-free positive integers, with or without $`1`$ | $`b=q^j`$, $`2\le |q|\le s`$, $`j\ge1`$ | *ibid.*, with $`E`$ the primes and $`\ell=i=1`$; deleting $`1`$ changes the value by $`1/(b-1)\in\mathbb{Q}`$ |

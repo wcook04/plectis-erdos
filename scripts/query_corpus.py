@@ -9609,6 +9609,10 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
     reviewed_family_by_problem = {
         str(row["erdos_number"]): row for row in reviewed_family_census
     }
+    frontier_by_problem = {
+        row["problem"]: row
+        for row in load("docs/PALOMAR_RESULT_SHOWCASE.json")["frontier_by_problem"]
+    }
     packet = {
         "kind": "repository_overview",
         "schema_version": "erdos249257-repository-overview/2",
@@ -9647,8 +9651,11 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
             "principal_claim_count": len(principal_claims),
             "indexed_problem_count": len(problems),
         },
+        "problem_frontier_source": "docs/PALOMAR_RESULT_SHOWCASE.json::frontier_by_problem",
         "problem_fleet": [
             {
+                "frontier_summary": frontier_by_problem[row["erdos_number"]]["frontier_summary"],
+                "frontier_boundary": frontier_by_problem[row["erdos_number"]]["open_boundary"],
                 "erdos_number": row["erdos_number"],
                 "title": row["short_title"],
                 "status": row["status"],
@@ -10619,6 +10626,15 @@ def render_card(packet: dict[str, Any]) -> str:
             ]
         )
         for problem in packet.get("problem_fleet", []):
+            if problem.get("frontier_summary"):
+                rows.append(
+                    f"problem_frontier | #{problem['erdos_number']} | "
+                    f"{problem['frontier_summary']}"
+                )
+                rows.append(
+                    f"problem_open | #{problem['erdos_number']} | "
+                    f"{problem['frontier_boundary']}"
+                )
             command = problem.get("route_memory")
             if not isinstance(command, str) or not command:
                 continue

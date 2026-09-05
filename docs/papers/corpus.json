@@ -3046,12 +3046,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:008da9c21dbffa7c145d51235227f9bc11d8425f2f1bda4f1b830c352742692a",
+      "source_sha256": "sha256:2b74b7f11c1961561d8e12d9dc08af9b692740adc7fb21c52b69c5c2b0dfbfdc",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-257-mersenne-support-subseries.tex",
-      "section_count": 24,
+      "section_count": 25,
       "sections": [
         {
           "level": 1,
@@ -3126,82 +3126,88 @@
           "line": 261
         },
         {
+          "level": 4,
+          "id": "why-periodic-weights-give-divisibility.",
+          "title": "Why periodic weights give divisibility.",
+          "line": 265
+        },
+        {
           "level": 1,
           "id": "sec:squarefree",
           "title": "Squarefree support and a coordinate-dependent obstruction",
-          "line": 322
+          "line": 343
         },
         {
           "level": 2,
           "id": "the-values-are-known-at-every-power-of-two-base",
           "title": "The values are known at every power-of-two base",
-          "line": 340
+          "line": 361
         },
         {
           "level": 2,
           "id": "two-block-certificate-hypotheses-have-no-instance",
           "title": "Two block-certificate hypotheses have no instance",
-          "line": 368
+          "line": 389
         },
         {
           "level": 2,
           "id": "the-obstruction-is-a-normalisation-not-the-value",
           "title": "The obstruction is a normalisation, not the value",
-          "line": 414
+          "line": 435
         },
         {
           "level": 1,
           "id": "sec:geometry",
           "title": "Achievement-set geometry and the value 1/2",
-          "line": 434
+          "line": 455
         },
         {
           "level": 2,
           "id": "geometry-after-restricting-the-allowed-exponents",
           "title": "Geometry after restricting the allowed exponents",
-          "line": 466
+          "line": 487
         },
         {
           "level": 2,
           "id": "the-value-12",
           "title": "The value 1/2",
-          "line": 498
+          "line": 519
         },
         {
           "level": 4,
           "id": "exact-row-transport-at-the-endpoint.",
           "title": "Exact-row transport at the endpoint.",
-          "line": 520
+          "line": 541
         },
         {
           "level": 2,
           "id": "a-second-rational-target",
           "title": "A second rational target",
-          "line": 641
+          "line": 662
         },
         {
           "level": 2,
           "id": "the-scaled-greedy-criterion-at-121",
           "title": "The scaled-greedy criterion at 1/21",
-          "line": 665
+          "line": 686
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Open problems",
-          "line": 741
+          "line": 762
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 847
+          "line": 868
         }
       ],
       "citations_rendered": 24,
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:642ddeecd8d863309eb5410977606d7df2662b869ef101af23ba59b59fcbaaa8",
-      "pdf_byte_count": 180766,
+      "pdf_sha256": "sha256:d7e67f696d0f99bbdff99d4cb808b1fe6ba591cdc8d0da16317e26f31d5c0f45",
+      "pdf_byte_count": 184389,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3224,7 +3230,7 @@
           {
             "id": "sec:open",
             "title": "Open problems",
-            "line": 741
+            "line": 762
           }
         ],
         "unresolved_count": 1
