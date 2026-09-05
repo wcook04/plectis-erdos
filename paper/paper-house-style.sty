@@ -105,26 +105,52 @@
 % hierarchy as the surrounding page: a short eyebrow, a substantial title,
 % one compact explanatory line, and an optional evidence badge.  The styles
 % are installed only when a manuscript loads TikZ.
+%
+% Two rules keep the figures legible at the narrow widths a five-stage row
+% needs.  Node text never hyphenates: a broken word inside a 2 cm box is the
+% single most visible defect a reader meets, so every box sets the penalties
+% to infinity and wraps at word boundaries instead.  Boxes that sit in one
+% row share one minimum height, so a title that wraps to two lines does not
+% make its box taller than its neighbours.
+%
+% A "band" is a tinted backdrop drawn on the background layer behind a group
+% of stages, with its name set as a small eyebrow above; a "gate" is a wide
+% horizontal bar that a candidate must cross; a "spine" is the rail of a
+% timeline, and "step dot" its numbered station.
+\newcommand{\papereyebrow}[1]{{\scriptsize\sffamily\bfseries\color{gray!70!black}#1}}
 \AtBeginDocument{%
   \@ifpackageloaded{tikz}{%
+    \pgfdeclarelayer{paperbackground}%
+    \pgfsetlayers{paperbackground,main}%
     \tikzset{
+      paper nohyphen/.style={execute at begin node={%
+        \hyphenpenalty=10000 \exhyphenpenalty=10000 \emergencystretch=1em\relax}},
       paper box/.style={draw=gray!48, line width=.45pt, rounded corners=3pt,
         fill=white, align=left, inner xsep=7pt, inner ysep=6pt,
-        font=\small},
+        font=\small, paper nohyphen},
       paper card/.style={paper box, minimum height=13mm},
       paper stage/.style={paper box, align=center, minimum height=14mm},
       paper arrow/.style={-{Stealth[length=2.15mm,width=1.45mm]},
         line width=.7pt, draw=gray!72!black},
       paper feedback/.style={paper arrow, densely dashed,
         draw=Violet!72!black},
+      paper leader/.style={densely dotted, line width=.5pt, draw=gray!60},
       paper eyebrow/.style={font=\scriptsize\sffamily\bfseries,
         text=gray!70!black},
       paper label/.style={font=\scriptsize\sffamily,
-        text=gray!72!black, fill=white, inner sep=1.5pt},
+        text=gray!72!black, fill=white, inner sep=1.5pt, paper nohyphen},
       paper badge/.style={rounded corners=2pt, inner xsep=4pt, inner ysep=2pt,
         font=\scriptsize\sffamily\bfseries},
       paper boundary/.style={densely dashed, line width=.55pt,
-        draw=gray!62}
+        draw=gray!62},
+      paper band/.style={rounded corners=4pt, draw=none},
+      paper band label/.style={font=\scriptsize\sffamily\bfseries,
+        inner sep=0pt},
+      paper gate/.style={paper box, align=center, fill=BurntOrange!7,
+        draw=BurntOrange!65!black, line width=.8pt, inner ysep=5pt},
+      paper spine/.style={line width=.9pt, draw=gray!55},
+      paper step dot/.style={circle, minimum size=5.6mm, inner sep=0pt,
+        line width=.6pt, font=\scriptsize\sffamily\bfseries}
     }%
   }{}%
 }

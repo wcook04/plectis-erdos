@@ -210,37 +210,55 @@ external review route cannot alter what Lean checked.
 \begin{figure}[!t]
 \centering
 \begin{tikzpicture}[
-  box/.style={paper stage, text width=2.05cm},
+  box/.style={paper stage, text width=2.3cm, minimum height=24mm, inner xsep=4pt},
   private/.style={box, fill=MidnightBlue!5, draw=MidnightBlue!55},
   formal/.style={box, fill=TealBlue!6, draw=TealBlue!60!black},
   public/.style={box, fill=ForestGreen!6, draw=ForestGreen!55!black},
   assure/.style={box, fill=BurntOrange!7, draw=BurntOrange!65!black},
   arr/.style={paper arrow},
-  back/.style={paper feedback},
-  lab/.style={font=\scriptsize\sffamily\bfseries, text=gray!70!black}
+  back/.style={paper feedback}
 ]
-\node[private] (intent) at (0,0) {{\scriptsize\sffamily\bfseries 1 \; SELECT}\\[3pt]
+% Five equal stages in one row.  Two tinted bands behind them mark what is
+% private and what ships; the dashed seam between the bands is the release
+% boundary.  Information returns along one rectilinear rail beneath the
+% bands; authority only ever moves along the top row.
+\node[private] (intent) at (0,0) {\papereyebrow{1 \; SELECT}\\[3pt]
   \textbf{Intent and route}\\[2pt]\scriptsize question, scope, claim};
-\node[private, right=3.5mm of intent] (reason) {{\scriptsize\sffamily\bfseries 2 \; TEST}\\[3pt]
+\node[private] (reason) at (2.75,0) {\papereyebrow{2 \; TEST}\\[3pt]
   \textbf{Reason and test}\\[2pt]\scriptsize candidates and failures};
-\node[formal, right=3.5mm of reason] (lean) {{\scriptsize\sffamily\bfseries 3 \; CHECK}\\[3pt]
+\node[formal] (lean) at (5.5,0) {\papereyebrow{3 \; CHECK}\\[3pt]
   \textbf{Formalise}\\[2pt]\scriptsize proof and kernel verdict};
-\node[public, right=3.5mm of lean] (claim) {{\scriptsize\sffamily\bfseries 4 \; EXPLAIN}\\[3pt]
+\node[public] (claim) at (8.25,0) {\papereyebrow{4 \; EXPLAIN}\\[3pt]
   \textbf{Public claim}\\[2pt]\scriptsize result, evidence, limit};
-\node[assure, right=3.5mm of claim] (review) {{\scriptsize\sffamily\bfseries 5 \; RELEASE}\\[3pt]
+\node[assure] (review) at (11,0) {\papereyebrow{5 \; RELEASE}\\[3pt]
   \textbf{Assure}\\[2pt]\scriptsize replay and boundary checks};
 \draw[arr] (intent) -- (reason);
 \draw[arr] (reason) -- (lean);
 \draw[arr] (lean) -- (claim);
 \draw[arr] (claim) -- (review);
-\draw[back] (review.south) to[out=-115,in=-65,looseness=1.15]
-  node[lab, below=4pt] {failures and review return as evidence; authority stays put} (reason.south);
-\node[font=\scriptsize\sffamily\bfseries, text=MidnightBlue!75!black,
-  above=5mm of $(intent.north)!0.5!(reason.north)$] {PRIVATE WORKBENCH};
-\node[font=\scriptsize\sffamily\bfseries, text=ForestGreen!62!black,
-  above=5mm of $(lean.north)!0.5!(review.north)$] {SELF-CONTAINED PUBLIC ARTEFACT};
-\draw[paper boundary] ($(reason.east)!0.5!(lean.west)+(0,-9mm)$) --
-  ($(reason.east)!0.5!(lean.west)+(0,12mm)$);
+% Bands and their names, on the background layer.
+\begin{pgfonlayer}{paperbackground}
+  \fill[paper band, fill=MidnightBlue!7]
+    ([xshift=-3mm,yshift=-3.5mm]intent.south west) rectangle
+    ([xshift=2.6mm,yshift=9.5mm]reason.north east);
+  \fill[paper band, fill=ForestGreen!7]
+    ([xshift=-2.6mm,yshift=-3.5mm]lean.south west) rectangle
+    ([xshift=3mm,yshift=9.5mm]review.north east);
+\end{pgfonlayer}
+\node[paper band label, text=MidnightBlue!75!black]
+  at ($(intent.north)!0.5!(reason.north)+(0,6.3mm)$) {PRIVATE WORKBENCH};
+\node[paper band label, text=ForestGreen!55!black]
+  at ($(lean.north)!0.5!(review.north)+(0,6.3mm)$) {SELF-CONTAINED PUBLIC ARTEFACT};
+\coordinate (seam) at ($(reason.east)!0.5!(lean.west)$);
+\draw[paper boundary, draw=gray!75]
+  ([yshift=-5.5mm]seam |- intent.south) -- ([yshift=11.5mm]seam |- intent.north);
+\node[paper label, above] at ([yshift=11.5mm]seam |- intent.north) {release boundary};
+% Return rail.
+\coordinate (rail) at (0,-1.75);
+\draw[back, rounded corners=3pt] (review.south) -- (review.south |- rail)
+  -- node[paper label, below, pos=.5]
+     {failures and review return as evidence; authority stays put}
+  (reason.south |- rail) -- (reason.south);
 \end{tikzpicture}
 \caption{The end-to-end architecture. The dashed vertical line marks the
 release boundary. Everything to its right remains usable without the private
@@ -261,7 +279,7 @@ The public \path{scripts/proof_cockpit.py} card gives an agent this separation.
 It reads checkout and toolchain
 identity, corpus scale, registered open propositions, problem obligations, and
 workbench sessions from public files.  It imports no private state and adds no
-evidence layer to Figure~\ref{fig:architecture}.  Its \texttt{--check} mode
+evidence layer to Figure~\ref{fig:lifecycle}.  Its \texttt{--check} mode
 runs the claim-registry, cold-clone, and projection-freshness checks; neither
 mode invokes Lean or decides whether prose follows from a theorem.
 
@@ -283,29 +301,28 @@ research path.
 \begin{figure}[!t]
 \centering
 \begin{tikzpicture}[
-  job/.style={paper stage, text width=2.35cm, minimum height=1.25cm},
-  arr/.style={paper arrow}
+  title/.style={font=\small\bfseries, align=center, text width=2.1cm,
+                paper nohyphen, anchor=south, inner sep=0pt},
+  note/.style={font=\scriptsize, align=center, text width=2.05cm,
+               paper nohyphen, anchor=north, inner sep=0pt},
+  station/.style={paper step dot}
 ]
-\node[job, fill=MidnightBlue!5] (invoke) at (0,0)
-  {{\scriptsize\sffamily\bfseries 1}\\[2pt]\textbf{Invoke}\\[2pt]\scriptsize bounded route};
-\node[job, fill=MidnightBlue!5, right=5mm of invoke] (work)
-  {{\scriptsize\sffamily\bfseries 2}\\[2pt]\textbf{Work}\\[2pt]\scriptsize continue or suspend};
-\node[job, fill=TealBlue!5, right=5mm of work] (validate)
-  {{\scriptsize\sffamily\bfseries 3}\\[2pt]\textbf{Validate}\\[2pt]\scriptsize computation or Lean};
-\node[job, fill=TealBlue!5, right=5mm of validate] (propagate)
-  {{\scriptsize\sffamily\bfseries 4}\\[2pt]\textbf{Propagate}\\[2pt]\scriptsize classify consequences};
-\node[job, fill=ForestGreen!6, below=8mm of propagate] (package)
-  {{\scriptsize\sffamily\bfseries 5}\\[2pt]\textbf{Package}\\[2pt]\scriptsize evidence and provenance};
-\node[job, fill=ForestGreen!6, left=5mm of package] (propose)
-  {{\scriptsize\sffamily\bfseries 6}\\[2pt]\textbf{Propose}\\[2pt]\scriptsize pull request or issue};
-\node[job, fill=BurntOrange!7, left=5mm of propose] (adopt)
-  {{\scriptsize\sffamily\bfseries 7}\\[2pt]\textbf{Review and adopt}\\[2pt]\scriptsize reconcile, accept, credit};
-\draw[arr] (invoke) -- (work);
-\draw[arr] (work) -- (validate);
-\draw[arr] (validate) -- (propagate);
-\draw[arr] (propagate) -- (package);
-\draw[arr] (package) -- (propose);
-\draw[arr] (propose) -- (adopt);
+% Seven stations on one timeline, read left to right without a row break.
+% Station colours follow the earlier grouping: research (1--2), validation
+% and propagation (3--4), packaging and proposal (5--6), maintainer adoption.
+\draw[paper spine] (-0.3,0) -- (13.3,0);
+\foreach \i/\x/\c/\t/\n in {
+  1/0.35/MidnightBlue/Invoke/bounded route,
+  2/2.4/MidnightBlue/Work/continue or suspend,
+  3/4.45/TealBlue/Validate/computation or Lean,
+  4/6.5/TealBlue/Propagate/classify consequences,
+  5/8.55/ForestGreen/Package/evidence and provenance,
+  6/10.6/ForestGreen/Propose/pull request or issue,
+  7/12.65/BurntOrange/Review and adopt/reconcile{,} accept{,} credit}{
+  \node[station, fill=\c!9, draw=\c!60!black, text=\c!75!black] (s\i) at (\x,0) {\i};
+  \node[title] at ([yshift=3.2mm]s\i.north) {\t};
+  \node[note] at ([yshift=-3.2mm]s\i.south) {\n};
+}
 \end{tikzpicture}
 \caption{The clone-local job lifecycle. Closure means that the present delta
 has evidence and dispositions; it does not mean that the open problem is
@@ -506,34 +523,35 @@ uses. Neither role receives the other's authority.
 \begin{figure}[!t]
 \centering
 \begin{tikzpicture}[
-  role/.style={paper stage, text width=3.05cm, minimum height=1.5cm},
-  object/.style={role, fill=TealBlue!6, draw=TealBlue!60!black,
-    text width=2.72cm},
-  output/.style={role, fill=ForestGreen!6, draw=ForestGreen!55!black,
-    text width=3.15cm},
+  role/.style={paper stage, text width=2.9cm, minimum height=3.0cm},
+  object/.style={paper stage, text width=4.3cm, minimum height=13mm,
+    inner ysep=4pt},
   arr/.style={paper arrow},
   feedback/.style={paper feedback}
 ]
+% A loop with two roles on the sides and the two objects they exchange on
+% the top and bottom edges.  The top edge is the hand-off that wakes
+% stewardship; the bottom edge is the appraisal that wakes discovery.
 \node[role, fill=MidnightBlue!5, draw=MidnightBlue!55] (mine) at (0,0)
-  {{\scriptsize\sffamily\bfseries DISCOVERY}\\[3pt]\textbf{Test the frontier}\\[2pt]
+  {\papereyebrow{DISCOVERY}\\[3pt]\textbf{Test the frontier}\\[2pt]
    \scriptsize compute, prove, or falsify};
-\node[object, right=7mm of mine] (delta)
-  {{\scriptsize\sffamily\bfseries HANDOFF}\\[3pt]\textbf{Landed delta}\\[2pt]
-   \scriptsize theorem, no-go, computation};
-\node[role, fill=BurntOrange!7, draw=BurntOrange!65!black,
-  right=7mm of delta] (steward)
-  {{\scriptsize\sffamily\bfseries STEWARDSHIP}\\[3pt]\textbf{Place the result}\\[2pt]
+\node[role, fill=BurntOrange!7, draw=BurntOrange!65!black] (steward) at (9.6,0)
+  {\papereyebrow{STEWARDSHIP}\\[3pt]\textbf{Place the result}\\[2pt]
    \scriptsize appraise, reconcile, explain};
-\node[output, below=9mm of delta] (surfaces)
-  {{\scriptsize\sffamily\bfseries PUBLIC SURFACE}\\[3pt]
-   \textbf{Current mathematical picture}\\[2pt]
+\node[object, fill=TealBlue!6, draw=TealBlue!60!black] (delta) at (4.8,0.8)
+  {\papereyebrow{HANDOFF}\\[2pt]\textbf{Landed delta}\\[1pt]
+   \scriptsize theorem, no-go, computation};
+\node[object, fill=ForestGreen!6, draw=ForestGreen!55!black] (surfaces) at (4.8,-0.8)
+  {\papereyebrow{PUBLIC SURFACE}\\[2pt]\textbf{Current mathematical picture}\\[1pt]
    \scriptsize paper order, evidence, frontier};
-\draw[arr] (mine) -- (delta);
-\draw[arr] (delta) -- (steward);
-\draw[arr] (steward) -- (surfaces);
-\draw[feedback] (surfaces.west) to[out=180,in=-90]
-  node[below left, font=\tiny\sffamily, align=center]
-  {ranked next question, missing evidence,\\discriminating test} (mine.south);
+\draw[arr] (mine.east |- delta) -- (delta.west);
+\draw[arr] (delta.east) -- (steward.west |- delta);
+\draw[feedback] (steward.west |- surfaces) -- (surfaces.east);
+\draw[feedback] (surfaces.west) -- (mine.east |- surfaces);
+\node[paper label, above=1.5mm of delta] {a landed delta wakes stewardship};
+\node[paper label, below=1.5mm of surfaces, text width=6.2cm, align=center]
+  {a ranked next question, missing evidence, or a discriminating test
+   wakes discovery};
 \end{tikzpicture}
 \caption{The coupled continuous-goal lifecycle. A landed mathematical delta
 wakes stewardship; a changed appraisal or consumer gap can change the next

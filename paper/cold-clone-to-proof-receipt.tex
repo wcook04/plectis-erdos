@@ -154,42 +154,54 @@ of understanding.
 
 \begin{figure}[!t]
 \centering
+\newcommand{\layercount}{\small\bfseries}%
 \begin{tikzpicture}[
-  wide/.style={paper box, text width=10.7cm},
-  branch/.style={paper box, text width=4.75cm, minimum height=2.6cm},
+  wide/.style={paper box, text width=10.9cm},
+  branch/.style={paper box, text width=5.0cm, minimum height=3.05cm},
   arr/.style={paper arrow},
   note/.style={paper label}
 ]
+% One exhaustive source, two partial views side by side, one reviewed
+% surface.  Each layer's count sits on its own line beneath the title so
+% it can never collide with it.
 \node[wide, fill=MidnightBlue!5] (atlas) at (0,0)
-  {{\scriptsize\sffamily\bfseries\color{gray!70!black} SOURCE INVENTORY}\\[3pt]
-   {\large\textbf{Exhaustive declaration atlas}}\hfill
-   {\small\bfseries\color{MidnightBlue!85}1,019 modules \(\cdot\) 153,253 declarations}\\[3pt]
+  {\papereyebrow{SOURCE INVENTORY}\\[3pt]
+   {\large\textbf{Exhaustive declaration atlas}}\\[2pt]
+   {\layercount\color{MidnightBlue!85}1,019 modules \(\cdot\) 153,253 declarations}\\[3pt]
    \footnotesize Every live declaration has source coordinates, a kind, a
    module role, and a route.};
-\node[branch, fill=BurntOrange!6, below=11mm of atlas, xshift=-2.82cm] (semantic)
-  {{\scriptsize\sffamily\bfseries\color{gray!70!black} AUTHORED MEANING}\\[3pt]
-   {\normalsize\textbf{Tiered semantic graph}}\\[4pt]
-   {\small\bfseries\color{BurntOrange!80!black}\SemanticAuthoredTheoremLike\ linked theorem-like declarations}\\[4pt]
+\node[branch, fill=BurntOrange!6, below=12mm of atlas, xshift=-3.05cm] (semantic)
+  {\papereyebrow{AUTHORED MEANING}\\[3pt]
+   {\normalsize\textbf{Tiered semantic graph}}\\[3pt]
+   {\layercount\color{BurntOrange!80!black}\SemanticAuthoredTheoremLike\ linked theorem-like declarations}\\[4pt]
    \footnotesize Authored interpretations are distinguished from exact
    source-structural families.};
-\node[branch, fill=TealBlue!5, below=11mm of atlas, xshift=2.82cm] (dep)
-  {{\scriptsize\sffamily\bfseries\color{gray!70!black} FORMAL STRUCTURE}\\[3pt]
-   {\normalsize\textbf{Loaded-root dependency index}}\\[4pt]
-   {\small\bfseries\color{TealBlue!72!black}exact reference edges}\\[4pt]
+\node[branch, fill=TealBlue!5, below=12mm of atlas, xshift=3.05cm] (dep)
+  {\papereyebrow{FORMAL STRUCTURE}\\[3pt]
+   {\normalsize\textbf{Loaded-root dependency index}}\\[3pt]
+   {\layercount\color{TealBlue!72!black}exact reference edges}\\[4pt]
    \footnotesize Type and value references are joined to source; unresolved
    rows remain explicit.};
-\node[wide, fill=ForestGreen!6, below=11mm of $(semantic.south)!0.5!(dep.south)$] (claims)
-  {{\scriptsize\sffamily\bfseries\color{gray!70!black} PUBLICATION SURFACE}\\[3pt]
-   {\large\textbf{Reviewed public claim map}}\hfill
-   {\small\bfseries\color{ForestGreen!68!black}101 claims \(\cdot\) 5 open propositions}\\[3pt]
+\node[wide, fill=ForestGreen!6, below=12mm of $(semantic.south)!0.5!(dep.south)$] (claims)
+  {\papereyebrow{PUBLICATION SURFACE}\\[3pt]
+   {\large\textbf{Reviewed public claim map}}\\[2pt]
+   {\layercount\color{ForestGreen!68!black}101 claims \(\cdot\) 5 open propositions}\\[3pt]
    \footnotesize Public wording records status, evidence, the claim ceiling,
    and the nearest stronger statement.};
-\coordinate (fork) at ($(atlas.south)+(0,-4mm)$);
-\draw[arr] (atlas.south) -- (fork) -| node[note,pos=.72] {authored selection} (semantic.north);
-\draw[arr] (fork) -| node[note,pos=.72] {formal slice} (dep.north);
-\draw[arr] (semantic.south) -- ++(0,-5mm) -|
-  node[note,pos=.28] {reviewed selection} ([xshift=-2.4cm]claims.north);
-\draw[arr] (dep.south) -- ++(0,-5mm) -| ([xshift=2.4cm]claims.north);
+% Fork: one trunk from the atlas, two drops.
+\coordinate (fork) at ($(atlas.south)+(0,-5mm)$);
+\draw[line width=.7pt, draw=gray!72!black] (atlas.south) -- (fork);
+\draw[arr, rounded corners=2pt] (fork) -| (semantic.north)
+  node[note, pos=.75, left=1pt] {authored selection};
+\draw[arr, rounded corners=2pt] (fork) -| (dep.north)
+  node[note, pos=.75, right=1pt] {formal slice};
+% Join: two drops into one trunk above the claim map.
+\coordinate (join) at ($(claims.north)+(0,5mm)$);
+\draw[line width=.7pt, draw=gray!72!black, rounded corners=2pt]
+  (semantic.south) |- (join) node[note, pos=.25, left=1pt] {reviewed selection};
+\draw[line width=.7pt, draw=gray!72!black, rounded corners=2pt]
+  (dep.south) |- (join);
+\draw[arr] (join) -- (claims.north);
 \end{tikzpicture}
 \caption{The navigation layers. The dependency index and semantic graph are
 different partial views of the exhaustive atlas; neither is presented as a
@@ -300,42 +312,52 @@ closes a goal, or that an English interpretation is mathematically faithful.
 \begin{figure}[!t]
 \centering
 \begin{tikzpicture}[
-  stagebox/.style={paper stage, text width=1.88cm},
-  exact/.style={stagebox, draw=ForestGreen!70!black, fill=ForestGreen!6},
+  stagebox/.style={paper stage, text width=2.3cm, minimum height=21.5mm, inner xsep=4pt},
   nav/.style={stagebox, draw=MidnightBlue!75, fill=MidnightBlue!5},
-  arr/.style={paper arrow},
-  phase/.style={draw, rounded corners=2pt, inner sep=3pt,
-    font=\scriptsize\sffamily\bfseries}
+  exact/.style={stagebox, draw=ForestGreen!70!black, fill=ForestGreen!6},
+  arr/.style={paper arrow}
 ]
-\node[nav] (clone)
-  {{\scriptsize\sffamily\bfseries\color{gray!70!black} 1 \; CLONE}\\[4pt]
+% Five equal stages; the two tinted bands behind them are the two
+% capabilities, and the dashed seam between the bands is the authority
+% boundary.  Everything left of the seam is advisory; everything right of
+% it is a replayable Lean process.
+\node[nav] (clone) at (0,0)
+  {\papereyebrow{1 \; CLONE}\\[3pt]
    \textbf{Cold clone}\\[2pt]\footnotesize committed projections};
-\node[nav, right=4mm of clone] (tour)
-  {{\scriptsize\sffamily\bfseries\color{gray!70!black} 2 \; ROUTE}\\[4pt]
+\node[nav] (tour) at (2.75,0)
+  {\papereyebrow{2 \; ROUTE}\\[3pt]
    \textbf{Bounded tour}\\[2pt]\footnotesize intent and scope};
-\node[nav, right=4mm of tour] (cone)
-  {{\scriptsize\sffamily\bfseries\color{gray!70!black} 3 \; FOCUS}\\[4pt]
+\node[nav] (cone) at (5.5,0)
+  {\papereyebrow{3 \; FOCUS}\\[3pt]
    \textbf{Proof cone}\\[2pt]\footnotesize exact declaration};
-\node[exact, right=4mm of cone] (probe)
-  {{\scriptsize\sffamily\bfseries\color{gray!70!black} 4 \; VERIFY}\\[4pt]
+\node[exact] (probe) at (8.25,0)
+  {\papereyebrow{4 \; VERIFY}\\[3pt]
    \textbf{Lean probe}\\[2pt]\footnotesize kernel verdict};
-\node[exact, right=4mm of probe] (claim)
-  {{\scriptsize\sffamily\bfseries\color{gray!70!black} 5 \; BIND}\\[4pt]
+\node[exact] (claim) at (11,0)
+  {\papereyebrow{5 \; BIND}\\[3pt]
    \textbf{Cited claim}\\[2pt]\footnotesize replay receipt};
 \draw[arr] (clone) -- (tour);
 \draw[arr] (tour) -- (cone);
 \draw[arr] (cone) -- (probe);
 \draw[arr] (probe) -- (claim);
-\draw[paper boundary] ($(cone.east)!0.5!(probe.west)+(0,-12mm)$) --
-  ($(cone.east)!0.5!(probe.west)+(0,13mm)$);
-\node[font=\scriptsize\sffamily\bfseries, text=gray!70!black,
-  above=14mm of $(cone.east)!0.5!(probe.west)$] {AUTHORITY BOUNDARY};
-\node[phase, draw=MidnightBlue!35, fill=MidnightBlue!4,
-  below=5mm of $(clone.south)!0.5!(cone.south)$]
-  {NAVIGATION \(\cdot\) fast, bounded, advisory};
-\node[phase, draw=ForestGreen!35, fill=ForestGreen!4,
-  below=5mm of $(probe.south)!0.5!(claim.south)$]
-  {PROOF \(\cdot\) exact input, pinned process, replayable};
+\begin{pgfonlayer}{paperbackground}
+  \fill[paper band, fill=MidnightBlue!7]
+    ([xshift=-3mm,yshift=-12.5mm]clone.south west) rectangle
+    ([xshift=2.6mm,yshift=3.5mm]cone.north east);
+  \fill[paper band, fill=ForestGreen!7]
+    ([xshift=-2.6mm,yshift=-12.5mm]probe.south west) rectangle
+    ([xshift=3mm,yshift=3.5mm]claim.north east);
+\end{pgfonlayer}
+\node[paper band label, text=MidnightBlue!75!black, align=center]
+  at ($(tour.south)+(0,-7.6mm)$)
+  {NAVIGATION\\[1pt]{\mdseries fast, bounded, advisory}};
+\node[paper band label, text=ForestGreen!55!black, align=center]
+  at ($(probe.south)!0.5!(claim.south)+(0,-7.6mm)$)
+  {PROOF\\[1pt]{\mdseries exact input, pinned process, replayable}};
+\coordinate (seam) at ($(cone.east)!0.5!(probe.west)$);
+\draw[paper boundary, draw=gray!75]
+  ([yshift=-14.5mm]seam |- clone.south) -- ([yshift=5.5mm]seam |- clone.north);
+\node[paper label, above] at ([yshift=5.5mm]seam |- clone.north) {authority boundary};
 \end{tikzpicture}
 \caption{The shortest path from first contact to an authoritative receipt.
 The agent chooses the route; the pinned Lean process supplies the verdict.}

@@ -215,37 +215,41 @@ harness, and describe the present multi-stage process for adding a problem.
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-  action/.style={paper stage,text width=3.15cm,minimum height=15mm},
+  action/.style={paper stage,text width=2.15cm,minimum height=19mm,
+                 inner xsep=4pt},
   arr/.style={paper arrow}
 ]
-\node[action,fill=MidnightBlue!5] (mine)
-  {{\scriptsize\sffamily\bfseries 1}\\[2pt]\textbf{Mine one route}\\[2pt]
+% Five parallel first actions in one row.  They are alternatives, not a
+% pipeline: none feeds another, and every one returns the same shape of
+% object, so each card has its own arrow into the shared output bar.
+\node[action,fill=MidnightBlue!5] (a1) at (0,0)
+  {\papereyebrow{1}\\[2pt]\textbf{Mine one route}\\[2pt]
    \scriptsize bounded theorem or obstruction};
-\node[action,fill=MidnightBlue!5,right=6mm of mine] (direct)
-  {{\scriptsize\sffamily\bfseries 2}\\[2pt]\textbf{Give direction}\\[2pt]
+\node[action,fill=MidnightBlue!5] (a2) at (2.75,0)
+  {\papereyebrow{2}\\[2pt]\textbf{Give direction}\\[2pt]
    \scriptsize hypothesis, example, or counterexample};
-\node[action,fill=TealBlue!5,right=6mm of direct] (formal)
-  {{\scriptsize\sffamily\bfseries 3}\\[2pt]\textbf{Check a claim}\\[2pt]
-   \scriptsize formalise or review};
-\node[action,fill=BurntOrange!6,below=6mm of $(mine.south)!0.5!(direct.south)$] (repair)
-  {{\scriptsize\sffamily\bfseries 4}\\[2pt]\textbf{Repair the machinery}\\[2pt]
+\node[action,fill=TealBlue!5] (a3) at (5.5,0)
+  {\papereyebrow{3}\\[2pt]\textbf{Check a claim}\\[2pt]
+   \scriptsize formalise or review one statement};
+\node[action,fill=BurntOrange!6] (a4) at (8.25,0)
+  {\papereyebrow{4}\\[2pt]\textbf{Repair the machinery}\\[2pt]
    \scriptsize navigation, validation, or exposition};
-\node[action,fill=BurntOrange!6,below=6mm of $(direct.south)!0.5!(formal.south)$] (add)
-  {{\scriptsize\sffamily\bfseries 5}\\[2pt]\textbf{Add a problem}\\[2pt]
+\node[action,fill=BurntOrange!6] (a5) at (11,0)
+  {\papereyebrow{5}\\[2pt]\textbf{Add a problem}\\[2pt]
    \scriptsize sourced world and boundary};
-\node[paper box,below=8mm of $(repair.south)!0.5!(add.south)$,
-      text width=10.8cm,fill=ForestGreen!6,align=center] (return)
-      {{\scriptsize\sffamily\bfseries COMMON OUTPUT}\\[3pt]
+\node[paper box,align=center,text width=12.6cm,fill=ForestGreen!6,
+      below=8mm of a3] (return)
+      {\papereyebrow{COMMON OUTPUT}\\[3pt]
        \textbf{Smallest inspectable delta}\\[2pt]
        \footnotesize source \(\cdot\) evidence \(\cdot\) limitation \(\cdot\) open statement};
-\draw[arr] (mine.south) -- (repair.north);
-\draw[arr] (direct.south) -- ($(repair.north)!0.5!(add.north)$);
-\draw[arr] (formal.south) -- (add.north);
-\draw[arr] (repair.south) -- (repair.south |- return.north);
-\draw[arr] (add.south) -- (add.south |- return.north);
+\foreach \i in {1,...,5}{
+  \draw[arr] (a\i.south) -- (a\i.south |- return.north);
+}
 \end{tikzpicture}
-\caption{Five useful first actions.  None requires an endpoint solution, and
-none receives a stronger status than the evidence returned with it.}
+\caption{Five useful first actions.  They are alternatives rather than
+stages: each returns the same kind of object.  None requires an endpoint
+solution, and none receives a stronger status than the evidence returned
+with it.}
 \label{fig:first-actions}
 \end{figure}
 
@@ -306,13 +310,19 @@ status merely because it changed the process.
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-  column/.style={paper box,align=center,text width=3.15cm,minimum height=5.0cm},
-  receipt/.style={paper box,align=left,text width=5.05cm,minimum height=1.5cm,
-                  font=\footnotesize},
+  column/.style={paper box,align=center,text width=3.35cm,minimum height=4.7cm,
+                 inner xsep=5pt},
+  receipt/.style={paper box,align=left,text width=3.9cm,
+                  font=\footnotesize,inner ysep=4pt},
   arr/.style={paper arrow}
 ]
-\node[column,fill=MidnightBlue!5] (roles)
-  {{\scriptsize\sffamily\bfseries OUTSIDE FUNCTIONS}\\[4pt]
+% Three stages read left to right.  Each transition stamps a receipt, drawn
+% directly beneath the arrow it documents.  Two dashed return rails carry
+% the recursive updates of equation (2.3): accepted mathematics enlarges the
+% corpus the engine reads, and accepted architecture improves the
+% infrastructure supplied as an input.
+\node[column,fill=MidnightBlue!5] (roles) at (0,0)
+  {\papereyebrow{OUTSIDE FUNCTIONS}\\[4pt]
    {\large\textbf{Inputs}}\\[6pt]
    \footnotesize mathematical direction\\[2pt]
    compute and agents\\[2pt]
@@ -320,34 +330,45 @@ status merely because it changed the process.
    infrastructure\\[2pt]
    review and exposition\\[2pt]
    new problems and funding};
-\node[column,fill=TealBlue!5,right=8mm of roles] (engine)
-  {{\scriptsize\sffamily\bfseries SHARED ENGINE}\\[4pt]
+\node[column,fill=TealBlue!5] (engine) at (5.3,0)
+  {\papereyebrow{SHARED ENGINE}\\[4pt]
    {\large\textbf{Candidate production}}\\[6pt]
    \footnotesize \textbf{1} choose a frontier\\[3pt]
    \textbf{2} read the relevant corpus\\[3pt]
    \textbf{3} reason, compute, formalise\\[3pt]
    \textbf{4} return a candidate};
-\node[column,fill=ForestGreen!6,right=8mm of engine] (result)
-  {{\scriptsize\sffamily\bfseries PUBLIC RESULT}\\[4pt]
+\node[column,fill=ForestGreen!6] (result) at (10.6,0)
+  {\papereyebrow{PUBLIC RESULT}\\[4pt]
    {\large\textbf{Review funnel}}\\[6pt]
    \footnotesize replay and challenge\\[3pt]
    statement reconciliation\\[3pt]
    \rule{2.3cm}{.35pt}\\[5pt]
    \textbf{Accepted corpus}\\[2pt]
    public provenance};
-\draw[arr] (roles) -- node[paper label,above]{contributions} (engine);
-\draw[arr] (engine) -- node[paper label,above]{candidate} (result);
+\draw[arr] (roles) -- node[paper label,above]{contributions} coordinate[pos=.5] (t1) (engine);
+\draw[arr] (engine) -- node[paper label,above]{candidate} coordinate[pos=.5] (t2) (result);
 
-\node[receipt,below=7mm of $(roles.south)!0.5!(engine.south)$] (resource)
-  {{\scriptsize\sffamily\bfseries RESOURCE RECEIPT}\\[2pt]
+% Receipts sit under the transition they document, joined by a dotted leader.
+\node[receipt] (resource) at ($(t1)+(0,-3.55)$)
+  {\papereyebrow{RESOURCE RECEIPT}\\[2pt]
    human time; compute; model and harness; starting commit};
-\node[receipt,right=7mm of resource] (lineage)
-  {{\scriptsize\sffamily\bfseries CONTRIBUTION RECEIPT}\\[2pt]
+\node[receipt] (lineage) at ($(t2)+(0,-3.55)$)
+  {\papereyebrow{CONTRIBUTION RECEIPT}\\[2pt]
    who supplied what; supporting evidence; later uses and repairs};
-\node[paper box,below=6mm of $(resource.south)!0.5!(lineage.south)$,
-      text width=10.9cm,align=center,fill=BurntOrange!6] (feedback)
-  {Accepted mathematics enlarges the corpus; accepted architecture improves later runs.};
-\draw[paper feedback] (feedback.west) to[out=180,in=-90] (roles.south);
+\draw[paper leader] (t1) -- (resource.north);
+\draw[paper leader] (t2) -- (lineage.north);
+
+% Return rails, drawn beneath the receipts so nothing crosses a box.
+\coordinate (rail1) at (0,-4.95);
+\coordinate (rail2) at (0,-5.55);
+\draw[paper feedback,rounded corners=3pt]
+  ([xshift=-3mm]result.south) -- ([xshift=-3mm]result.south |- rail1)
+  -- node[paper label,above,pos=.5] {mathematics enlarges the corpus \(K\)}
+  (rail1 -| engine.south) -- (engine.south);
+\draw[paper feedback,rounded corners=3pt]
+  ([xshift=3mm]result.south) -- ([xshift=3mm]result.south |- rail2)
+  -- node[paper label,below,pos=.5] {architecture improves later runs \(I\)}
+  (rail2 -| roles.south) -- (roles.south);
 \end{tikzpicture}
 \caption{The conversion loop.  The labels on the left are functions, not
 classes of people: one person may perform several, and several people may
@@ -391,26 +412,24 @@ problems.  Their papers expose materially different contribution points.
 
 \begin{figure}[H]
 \centering
+\newcommand{\problemnum}[1]{{\small\sffamily\bfseries\color{MidnightBlue!80!black}#1}}%
 \begin{tikzpicture}[
-  card/.style={paper card,text width=5.05cm,minimum height=1.35cm}
+  card/.style={paper card,text width=6.75cm,minimum height=14mm,
+               fill=MidnightBlue!4,inner ysep=4pt}
 ]
-\matrix[column sep=5mm,row sep=3mm] {
-  \node[card,fill=MidnightBlue!4] {\textbf{68 \quad Factorial reciprocal series}\\[-1pt]
-    \footnotesize carries and denominator escape}; &
-  \node[card,fill=MidnightBlue!4] {\textbf{243 \quad Reciprocal-tail rigidity}\\[-1pt]
-    \footnotesize discrete dynamics and recovery}; \\
-  \node[card,fill=TealBlue!4] {\textbf{249 \quad Binary totient series}\\[-1pt]
-    \footnotesize arithmetic tails and anti-concentration}; &
-  \node[card,fill=TealBlue!4] {\textbf{251 \quad Prime-gap dyadic series}\\[-1pt]
-    \footnotesize prime structure versus tail escape}; \\
-  \node[card,fill=ForestGreen!5] {\textbf{257 \quad Mersenne-support subseries}\\[-1pt]
-    \footnotesize achievement sets and rational targets}; &
-  \node[card,fill=ForestGreen!5] {\textbf{269 \quad Running-lcm sums}\\[-1pt]
-    \footnotesize finite-state structure and carries}; \\
-  \node[card,fill=BurntOrange!5] {\textbf{1041 \quad Lemniscate geometry}\\[-1pt]
-    \footnotesize local flow versus global path geometry}; &
-  \node[card,fill=BurntOrange!5] {\textbf{1049 \quad Rational-base series}\\[-1pt]
-    \footnotesize Lambert approximation kernels and obstructions}; \\
+% One tint for all eight: the cards are peers, and the earlier pairwise
+% colouring implied a grouping the paper never makes.  The problem number
+% sits in a fixed-width column so the titles align, and the description
+% hangs under the title rather than under the number.
+\matrix[column sep=5mm,row sep=2.5mm] {
+  \node[card] {\makebox[1.05cm][l]{\problemnum{68}}\parbox[t]{5.2cm}{\raggedright\textbf{Factorial reciprocal series}\\[1pt]\footnotesize carries and denominator escape}}; &
+  \node[card] {\makebox[1.05cm][l]{\problemnum{243}}\parbox[t]{5.2cm}{\raggedright\textbf{Reciprocal-tail rigidity}\\[1pt]\footnotesize discrete dynamics and recovery}}; \\
+  \node[card] {\makebox[1.05cm][l]{\problemnum{249}}\parbox[t]{5.2cm}{\raggedright\textbf{Binary totient series}\\[1pt]\footnotesize arithmetic tails and anti-concentration}}; &
+  \node[card] {\makebox[1.05cm][l]{\problemnum{251}}\parbox[t]{5.2cm}{\raggedright\textbf{Prime-gap dyadic series}\\[1pt]\footnotesize prime structure versus tail escape}}; \\
+  \node[card] {\makebox[1.05cm][l]{\problemnum{257}}\parbox[t]{5.2cm}{\raggedright\textbf{Mersenne-support subseries}\\[1pt]\footnotesize achievement sets and rational targets}}; &
+  \node[card] {\makebox[1.05cm][l]{\problemnum{269}}\parbox[t]{5.2cm}{\raggedright\textbf{Running-lcm sums}\\[1pt]\footnotesize finite-state structure and carries}}; \\
+  \node[card] {\makebox[1.05cm][l]{\problemnum{1041}}\parbox[t]{5.2cm}{\raggedright\textbf{Lemniscate geometry}\\[1pt]\footnotesize local flow versus global path geometry}}; &
+  \node[card] {\makebox[1.05cm][l]{\problemnum{1049}}\parbox[t]{5.2cm}{\raggedright\textbf{Rational-base series}\\[1pt]\footnotesize Lambert approximation kernels and obstructions}}; \\
 };
 \end{tikzpicture}
 \caption{Eight distinct research environments.  The results map and the
@@ -440,37 +459,36 @@ read as an authority ladder than as one all-purpose badge.
 
 \begin{figure}[H]
 \centering
+\newcommand{\what}[1]{{\footnotesize #1}}%
+\newcommand{\scope}[1]{{\scriptsize\itshape\color{gray!60!black}#1}}%
 \begin{tikzpicture}[
-  rung/.style={paper stage,text width=3.2cm,minimum height=2.35cm},
-  wide/.style={rung,text width=4.95cm},
-  arr/.style={paper arrow}
+  rung/.style={paper box,text width=8.9cm,minimum height=10.5mm,inner ysep=4pt}
 ]
-\node[rung,fill=MidnightBlue!5] (exp)
-  {{\scriptsize\sffamily\bfseries 1 \; FINITE EVIDENCE}\\[3pt]
-   \textbf{Experiment}\\[3pt]\footnotesize establishes a finite output\\[2pt]
-   \textit{Scope: no unbounded theorem}};
-\node[rung,fill=TealBlue!5,right=6mm of exp] (lean)
-  {{\scriptsize\sffamily\bfseries 2 \; FORMAL EVIDENCE}\\[3pt]
-   \textbf{Lean kernel}\\[3pt]\footnotesize accepts the exact proposition\\[2pt]
-   \textit{Scope: intended meaning is separate}};
-\node[rung,fill=ForestGreen!5,right=6mm of lean] (match)
-  {{\scriptsize\sffamily\bfseries 3 \; ALIGNMENT}\\[3pt]
-   \textbf{Statement review}\\[3pt]\footnotesize compares formal and informal claims\\[2pt]
-   \textit{Scope: no novelty judgement}};
-\node[wide,fill=BurntOrange!6,below=8mm of match] (expert)
-  {{\scriptsize\sffamily\bfseries 4 \; SCHOLARLY REVIEW}\\[3pt]
-   \textbf{Expert assessment}\\[3pt]\footnotesize soundness, relevance, and relation to prior work};
-\node[wide,fill=Violet!5,left=7mm of expert] (community)
-  {{\scriptsize\sffamily\bfseries 5 \; EXTERNAL OUTCOME}\\[3pt]
-   \textbf{Community uptake}\\[3pt]\footnotesize develops through criticism, use, and reuse};
-\draw[arr] (exp) -- (lean);
-\draw[arr] (lean) -- (match);
-\draw[arr] (match) -- (expert);
-\draw[arr] (expert) -- (community);
+% The prose calls this an authority ladder, so it is drawn as one: five
+% rungs rising to the right, the lowest first, each resting on the one
+% below.  Each rung names what the layer establishes and, on the right, what
+% it does not decide.  There are no arrows because the layers are not a
+% pipeline: a candidate may skip a rung, and nothing flows upward except the
+% object itself.
+\node[rung,fill=MidnightBlue!5] (r1) at (0,0)
+  {\papereyebrow{1 \; FINITE EVIDENCE}\hfill\scope{Scope: no unbounded theorem}\\[2pt]
+   \textbf{Experiment}\quad\what{establishes a finite output}};
+\node[rung,fill=TealBlue!5] (r2) at (0.95,1.12)
+  {\papereyebrow{2 \; FORMAL EVIDENCE}\hfill\scope{Scope: intended meaning is separate}\\[2pt]
+   \textbf{Lean kernel}\quad\what{accepts the exact proposition}};
+\node[rung,fill=ForestGreen!5] (r3) at (1.9,2.24)
+  {\papereyebrow{3 \; ALIGNMENT}\hfill\scope{Scope: no novelty judgement}\\[2pt]
+   \textbf{Statement review}\quad\what{compares formal and informal claims}};
+\node[rung,fill=BurntOrange!6] (r4) at (2.85,3.36)
+  {\papereyebrow{4 \; SCHOLARLY REVIEW}\hfill\scope{Scope: not a formal verdict}\\[2pt]
+   \textbf{Expert assessment}\quad\what{soundness, relevance, relation to prior work}};
+\node[rung,fill=Violet!5] (r5) at (3.8,4.48)
+  {\papereyebrow{5 \; EXTERNAL OUTCOME}\hfill\scope{Scope: not decided by this project}\\[2pt]
+   \textbf{Community uptake}\quad\what{develops through criticism, use, and reuse}};
 \end{tikzpicture}
-\caption{Evidence and acceptance remain separate.  A candidate need not pass
-through every box in a single line, but no earlier box inherits the authority
-of a later one.}
+\caption{The authority ladder.  Evidence and acceptance remain separate.  A
+candidate need not pass through every rung in a single line, but no earlier
+rung inherits the authority of a later one.}
 \label{fig:authority-ladder}
 \end{figure}
 
@@ -1056,26 +1074,30 @@ problem may still deserve a life outside it.  The proposed digestion route is:
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-  node distance=6mm and 9mm,
-  box/.style={paper stage,text width=3.3cm,minimum height=1.65cm},
-  gate/.style={box,fill=BurntOrange!7,text width=3.7cm},
+  node distance=5mm,
+  box/.style={paper stage,text width=6.2cm,minimum height=14mm,inner ysep=5pt},
+  gate/.style={paper gate,text width=8.6cm},
   arr/.style={paper arrow}
 ]
+% Read top to bottom.  The two gates are drawn wider than the objects they
+% admit, as bars a candidate must cross rather than as one more stage.
 \node[box,fill=MidnightBlue!5] (world)
-  {{\scriptsize\sffamily\bfseries LOCAL RESULT}\\[3pt]
-   \textbf{Hard-problem world}\\[2pt]\scriptsize proof, no-go, or computation};
-\node[gate,right=of world] (digest)
-  {{\scriptsize\sffamily\bfseries GATE 1}\\[3pt]
-   \textbf{Mathematical digestion}\\[2pt]\scriptsize hypotheses, prior art, falsifiers};
-\node[box,fill=TealBlue!5,right=of digest] (generic)
-  {{\scriptsize\sffamily\bfseries CANDIDATE}\\[3pt]
-   \textbf{Reusable theorem}\\[2pt]\scriptsize natural statement and consumers};
+  {\papereyebrow{LOCAL RESULT}\\[2pt]
+   \textbf{Hard-problem world}\\[1pt]\scriptsize proof, no-go, or computation};
+\node[gate,below=of world] (digest)
+  {\papereyebrow{GATE 1 \; MATHEMATICAL DIGESTION}\\[2pt]
+   \scriptsize hypotheses actually used \(\cdot\) prior art and collisions
+   \(\cdot\) falsified weakenings};
+\node[box,fill=TealBlue!5,below=of digest] (generic)
+  {\papereyebrow{CANDIDATE}\\[2pt]
+   \textbf{Reusable theorem}\\[1pt]\scriptsize natural statement and consumers};
 \node[gate,below=of generic] (expert)
-  {{\scriptsize\sffamily\bfseries GATE 2}\\[3pt]
-   \textbf{Expert stewardship}\\[2pt]\scriptsize meaning, fit, maintenance, credit};
-\node[box,fill=ForestGreen!6,left=of expert] (library)
-  {{\scriptsize\sffamily\bfseries SHARED OUTPUT}\\[3pt]
-   \textbf{Library result}\\[2pt]\scriptsize reused, or declined with reasons};
+  {\papereyebrow{GATE 2 \; EXPERT STEWARDSHIP}\\[2pt]
+   \scriptsize meaning \(\cdot\) library fit \(\cdot\) maintenance
+   \(\cdot\) credit};
+\node[box,fill=ForestGreen!6,below=of expert] (library)
+  {\papereyebrow{SHARED OUTPUT}\\[2pt]
+   \textbf{Library result}\\[1pt]\scriptsize reused, or declined with reasons};
 \draw[arr] (world) -- (digest);
 \draw[arr] (digest) -- (generic);
 \draw[arr] (generic) -- (expert);
