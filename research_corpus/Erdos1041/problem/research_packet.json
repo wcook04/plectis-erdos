@@ -3500,6 +3500,60 @@
    "source_sha256": "1c3da46d92cd748b3771cf129152fd72c5d8a518fcb88f4dd9b3dc3a52f99f79",
    "source_current": true,
    "return_batch_id": "erdos1041_20260905_wave1_agent_landings_01"
+  },
+  {
+   "id": "regular_family_adjacent_chord_law_2026_09_05",
+   "status": "ordinary_complete_proof_on_the_equality_family_with_exact_rational_bernstein_certificate",
+   "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/MiddleRegimeCanonicalHub.md",
+   "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_middle_regime_canonical_hub.py",
+   "statement": "Theorem A: for n>=3 and f=(z-tau)^n-lambda with |lambda|=m, the maximum of |f| on the chord joining two roots adjacent in argument about tau equals m(1+cos^n(pi/n)), attained only at the midpoint. Hence with roots in the open unit disc the adjacent chord is contained in {|f|<1} iff mu<kappa_n:=1/(1+cos^n(pi/n)); kappa_n decreases strictly to 1/2 (kappa_3=8/9, kappa_4=4/5, kappa_6=64/91), so kappa_n>1/2 at every degree. Theorem B (centroid spoke perturbation envelope): for roots a_j=c+lambda omega^j(1+delta_j) with |delta_j|<=delta<1, every centroid spoke has max|f|<=|f(c)|exp(2 delta S_n/(1-delta)), S_n=sum_{k<n} 1/min_{s in[0,1]}|1-s omega^k|. Theorem D: for (z^k-a^k)(z^k+b^k), k>=2, 0<b<=a<1, the centroid is the origin and the least critical point, mu=a^k b^k, the other critical values are (a^k+b^k)^2/4, and every origin spoke has max exactly max(a^k b^k,(a^k+b^k)^2/4)<1.",
+   "claim_boundary": "Equality-family and explicit-family statements; they say nothing about general f. The value at the regular n-gon was already corpus property (negative result 57); Theorem A generalises CentroidVarianceChordChart.md Lemma 6 from n=3 and supplies the sharp threshold kappa_n. Theorem B is perturbative and cannot be converted into a mu-threshold because sup|f(centroid)|=1 at every m_0<1 in the band (measured). Not Lean-checked. Erdos 1041 remains open.",
+   "named_consumers": [
+    "centroid_variance_chord_chart_2026_09_05",
+    "concyclic_alternation_theorem",
+    "hub_taylor_truncation_spoke_certificate_free_length_2026_09_05",
+    "symmetric_two_level_wall_admissible_product_and_scalar_no_go"
+   ],
+   "evidence_class": "ordinary_proof_plus_exact_rational_and_symbolic_certificates",
+   "source_sha256": "ccf3e3d082546641c8806bcf451d18248428d1a567404009e9eac3fb904fbee2",
+   "source_current": true,
+   "return_batch_id": "erdos1041_20260905_wave1_agent_landings_01"
+  },
+  {
+   "id": "central_root_family_no_uniform_fekete_rigidity_2026_09_05",
+   "status": "ordinary_complete_proof_with_exact_rational_thresholds",
+   "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/MiddleRegimeCanonicalHub.md",
+   "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_middle_regime_canonical_hub.py",
+   "statement": "Theorem C: f_{n,r}=z(z^{n-1}-r^{n-1}) has mu=(n-1)n^{-n/(n-1)}r^n -> 1 as n -> infinity, centroid 0 which is a root, eccentricity exactly 1, and centroid-spoke maximum exactly mu. Consequently mu does NOT control the deviation from a regular polygon uniformly in n: every eta obtained by perturbing (z-tau)^n-lambda must depend on n. Companion facts: D>=mu^{n-1} is sharp (equality on z^n-m); Var>=mu^{2/n} is false for n>=6 (Var=0.8679<0.8735 at n=8, m_0=0.6); sup|f(centroid)|=1 at every m_0<1 (measured). Exact eta-cap: from the corpus's Rouche enclosure of the Theorem-4 quintic of HubTaylorSpokeCertificate.md, mu<=0.9999878941954923, so any canonical-hub theorem of the form '2/5<mu<=1-eta implies a canonical chord or two canonical spokes' is false for eta<=1.2105804507e-05; measured sup of the canonical disjunction value under mu<=1-eta reaches 1-eta within 4e-5 at n=4,5 down to eta=1e-4, so 1.21e-5 < eta_true <= 1e-4.",
+   "claim_boundary": "Theorem C and the D-sharpness are ordinary proofs; the eta-cap is an exact rational certificate over the corpus's Rouche data (hub half exact, chord half floating); the Var and |f(centroid)| statements are measurements. This does not contradict fixed-degree Fekete rigidity, it degenerates the modulus. Erdos 1041 remains open.",
+   "named_consumers": [
+    "hard_regime_is_near_fekete",
+    "fixed_degree_angular_cluster_closure_2026_09_05",
+    "near_fekete_cusp_law_and_strict_local_maximality",
+    "degree_five_fixed_hub_set_refutation_in_the_surviving_regime_2026_09_05"
+   ],
+   "evidence_class": "ordinary_proof_plus_exact_rational_certificate_plus_measurement",
+   "source_sha256": "ccf3e3d082546641c8806bcf451d18248428d1a567404009e9eac3fb904fbee2",
+   "source_current": true,
+   "return_batch_id": "erdos1041_20260905_wave1_agent_landings_01"
+  },
+  {
+   "id": "spoke_maximum_exceeds_largest_critical_value_at_cstar_2026_09_05",
+   "status": "exact_rational_refutation_single_witness",
+   "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TieRaceLandscape.md",
+   "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tie_race_landscape.py",
+   "statement": "The statement 'at the least critical point c* the second-smallest straight-spoke maximum is at most the largest critical value nu_max' is FALSE. Witness: a monic octic with Gaussian-rational roots strictly inside the open unit disc, mu in [0.786546977037, 0.786546977039], nu_max<=0.78903690 (all seven critical points enclosed in pairwise disjoint Kantorovich discs of radius 10^-6, the least one separated from the others), at which seven of the eight straight spokes from c* carry a rational parameter s with |f|-10^-6 sup|f'|>nu_max for every point of the c* disc; the floating excess is m2(c*)-nu_max=+0.0026. The configuration is near-tied and near-regular (all critical values within 0.3 percent); a free hub near the critical cluster brings the second spoke maximum down to exactly mu.",
+   "claim_boundary": "Exact certificate (Fraction arithmetic, integer square roots rounded in the safe direction, Taylor-shift bounds for the derivative on discs and along segments). A single witness; the measured supremum of the excess over mu<=0.95 is 8e-5, 1e-3, 1.5e-3, 2.6e-3 at n=4,5,6,8 (basin records). Erdos 1041 remains open.",
+   "named_consumers": [
+    "straight_spoke_hub_criterion_separation",
+    "hub_taylor_truncation_spoke_certificate_free_length_2026_09_05",
+    "minimum_critical_straight_hub_counterexample",
+    "degree_five_fixed_hub_set_refutation_in_the_surviving_regime_2026_09_05"
+   ],
+   "evidence_class": "exact_rational_certificate",
+   "source_sha256": "2129c69aa217976bb58afbc86bdaabc146953b3ecb52e0c92cbbdba8b4dbab1e",
+   "source_current": true,
+   "return_batch_id": "erdos1041_20260905_wave1_agent_landings_01"
   }
  ],
  "negative_results": [
@@ -3593,7 +3647,10 @@
   "The critical spectrum cannot supply arity forcing for the cluster-separation mechanism, in principle: every consequence of large critical values says the roots are hyperbolically far apart, the same direction the failure hypothesis already forces, so a separation floor only tightens Lambda(k,a) and can never supply the missing opposing quantity (the exterior-area deficit S). Exactly: adding d_crit(x) = 4 artanh(e^{-x/2}) leaves K(x,a,d) unchanged at every (x,a) since d_crit > d_min iff x < tau(a) and there lam(d_crit/2) = x/2 gives k_B = 2 while lam(d_min/2) = tau/2 gives k_B = 2x/tau < 2, both reducing to max(2, 2x/delta); the zero-product sum form is implied by the failure separation throughout the window (ratio 0.0074 to 0.0538 on the attractor, slack 19x to 135x). The disjoint hyperbolic-disc AREA packing bound N(r) <= (cosh(r + d_min/2) - 1)/(cosh(d_min/2) - 1) is too weak (permits 9.94 roots at the inner radius where one fits; Phi(7.665, 1) = 1.758 against x = 0.998). A derived 'arity cap' from the sum form was wrong (failure gives an upper bound on lam_ij, so no contradiction arises); recorded so it is not re-derived. SCOPE (W2-A, 2026-09-05): retires the critical spectrum as a source of arity forcing for this mechanism only; Theorem 1 stands.",
   "The ordered profile Lambda(k,a) = max(delta/2 + (k-1) lam(g), k tau/2) of ClusterSeparationLowCriticalClosure.md is a relaxation that is not realisable for k >= 3: d_i + d_j = d(b_i,b_j) needs the observer on the geodesic through b_i, b_j, and the k_B branch demands that on every pair at once. Measured at a = 1 (d_min = 5.377073, d_low = 2.170077, R0 = 0.795060) the best realisable sum_j lam(d_j) is 0.5208 at k = 7 against the abstract 0.9532 (ratio 1.83) and 0.7283 at k = 30, never reaching the required x = 0.998; two roots at radius R0 have rho <= 0.974267 < tanh(d_min/2) = 0.990800, so at most one root sits at the COVER-saturating radius, and a d_min-separated ring contributes at most 2 pi / sqrt(2(cosh d_min - 1)) = 0.4310 however large. The rigorous replacement is the angular budget: ordering the roots by argument about the observer, consecutive gaps sum to 2 pi and each obeys cos Theta >= (cosh d_i cosh d_{i+1} - cosh d_min)/(sinh d_i sinh d_{i+1}), so failure forces sum_i Theta_i <= 2 pi. SCOPE (W2-A, 2026-09-05): the 9/25 theorem is CORRECT (Lambda is a valid upper bound on the sum, hence a valid floor); what is recorded is that the floor is far from sharp and the optimiser table is a lower bound for a maximum, so no threshold may be quoted from it before an exact certificate (live wave-3 lane). Side finding for the certificate owner: _k_lower returns a real-valued floor while k is an integer built from upper bounds on delta, tau, lam(g); ceil() is valid and strictly stronger, moving the floating replica from mu = 0.3685 to 0.3845 (9/25 -> 19/50) pending a rounding-direction audit.",
   "Instrument-defect class, SIXTH reproduction, 2026-09-05, same location as the fifth (the widened near-Fekete inner model, degree five, min_j A_j = +0.0227) and a stronger disguise: an interior maximin stationary point with three of four A_j equal to five digits, two branch integrators agreeing to twelve digits, a chord-sum audit, and persistence under the scale parameters (c, rho). All of that is compatible with a saddle-connection wall, because none of it moves the critical configuration Z. The configuration's critical values V_1=-0.025894-0.004727i and V_2=-0.025897-0.004727i have equal imaginary part to 1.8e-12 with Re V_1 > Re V_2, so the arm of hub 2 (which follows Q = V_2 + s, s real increasing) runs into hub 1, and a third arm passes a hub at gap 1.1e-4; every Gaussian perturbation of Z at 1e-3 returns min_j A_j to negative (12/12, median -0.041). GENERAL RULE, extending negative results 43, 50 and 55: an optimiser on inverse-branch models must carry the wall guard (reject |Im V_i - Im V_j| < g whenever Re V_j > Re V_i, and colliding critical points), and an 'open condition' must be demonstrated by perturbing the configuration itself, not its scale parameters. SCOPE: the degree-five refutation of the min two-arm statement is withdrawn; the min statement is unrefuted; NearFeketeInnerModelWidening.md's inner reduction, charge identity, slice properness, and chord certificates are untouched.",
-  "The exterior coefficient energy S of the ancestor component has NO uniform lower bound derivable from the failure inequalities (Theorem E of ExteriorEnergyFloorClosure.md): the family z^n - q(n) at t = 1 realises separation, COVER saturation, and the critical-value floor with S -> 0. SCOPE (W2-E, 2026-09-05): retires 'a floor on S from (x, a, k, separation)' as a route; the cap a <= 1 cannot be improved this way. The positive residue of the same computation is the hyperbolic packing floor, which raised the regime to 2/5 by a different route."
+  "The exterior coefficient energy S of the ancestor component has NO uniform lower bound derivable from the failure inequalities (Theorem E of ExteriorEnergyFloorClosure.md): the family z^n - q(n) at t = 1 realises separation, COVER saturation, and the critical-value floor with S -> 0. SCOPE (W2-E, 2026-09-05): retires 'a floor on S from (x, a, k, separation)' as a route; the cap a <= 1 cannot be improved this way. The positive residue of the same computation is the hyperbolic packing floor, which raised the regime to 2/5 by a different route.",
+  "mu does not bound the deviation from a regular polygon uniformly in n: z(z^{n-1}-r^{n-1}) has mu -> 1 with eccentricity exactly 1 (MiddleRegimeCanonicalHub.md Theorem C). SCOPE (W3-D, 2026-09-05): retires every perturbative attack on 2/5<mu<=1-eta with n-independent eta; D>=mu^{n-1} is attained on z^n-m so no mu-conditioned deviation functional routed through D beats an exponentially weak constant; sup|f(centroid)|=1 at every m_0<1 so |f(centroid)|-based criteria have no mu-margin; the absolute-value spoke bound at the centroid reproduces the elementary-symmetric ceiling 0.219420; the regular n-gon is NOT the maximiser of the min-chord ratio for n>=4.",
+  "Conjecture P ('the two-root component of {|f|<t} containing c* is star-shaped from c* along its two root directions for every t below its attachment level T*', equivalently the merging-pair spoke maxima are at most T*) is FALSE, and false in the middle regime: with T* and the merging pair computed from the exact merge tree (steepest descent from c_j +- delta u_j identifies the two lobes each critical point joins, union-find over critical points sorted by value), pair_max/T* = 1.000005 (n=4, mu=0.532), 1.000195 (n=5, mu=0.787), 1.000207 (n=6, mu=0.645), 1.004089 (n=8, mu=0.308), and 1.00003..1.00007 at the three stored shell witnesses; every violation is a near-tied configuration with T*/mu-1 between 1e-5 and 1e-3. For cubics P is TRUE with equality exactly on the tie line (sup ratio 1.000000 over 22695 affine-normalised parameters, attained only at T*=mu). A 700x700 grid flood fill reported 0/534 violations because it cannot resolve near-tie necks: grid connectivity is not an instrument for near-ties. SCOPE (conductor, 2026-09-05): had P held, composing it with the k=2 window of the disk-family separation theorem (failure forces T*<coth(1)mu) and the merging-pair length floor would have settled every mu<tanh(1); that composition is dead as stated. Floating witnesses, method recorded in TieRaceLandscape.md (L5).",
+  "Measured laws of the tie race (TieRaceLandscape.md, floating, basin records): (L1) the canonical hub's margin is 1-mu: over 6000 samples per degree at n=5,6,8,10,12 the worst second spoke maximum at the centroid is about mu+0.02 in every mu-bin, the origin within 0.01 of it, and below mu~0.5 the adjacent chord adds a second cover; (L2) fixed-hub failures live only in the shell: continuation of the exact quintic of HubTaylorSpokeCertificate.md Theorem 4 downward in mu loses the failure the moment mu is capped at 0.9999 (objective 1.000003 at mu=0.999988 -> 0.999925), shell seeds at n=6,7 never fail, random climbs at n=5..8 with mu<=0.999 find none; (L4) statement Q, min over admissible critical hubs of m2(c)<=nu_max, has no violation in 667 survivors and adversarial climbs reach sup(min_c m2 - nu_max)=+0.000000 (equality at ties), with a +2.2e-7 violation only at the deep-shell quintic where nu_max>1; (L7) the merging-pair length floor (|a-c*|+|b-c*|)/(2mu^{1/n}) stays at or below 0.89, 0.82, 0.75, 0.66 at n=4,5,6,8 and the merging pair coincided with the nearest pair in every sample; (L8) on the maximisers of the spoke excess a free hub reaches min_h m2(h)=mu exactly, the hub lying inside one lobe on the line through the other root and c*. SCOPE: four natural fixed statements (spoke max at c* <= nu_max; P; the canonical hub set; the absolute-value spoke criterion) fail by 1e-4..1e-3 exactly at near-ties and hold with margin away from them; a completion must be a selection principle that is optimal at ties (a minimum over the tied hub cluster, a continuously placed hub, or a hub-free statement whose margin does not vanish at ties, of which the chord-minimum conjecture is the first)."
  ],
  "finite_evidence": {
   "status": "candidate_search_only_not_proof",
@@ -3877,6 +3934,92 @@
     "replay": "./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_hub_taylor_spoke_certificate.py",
     "replayed_by_conductor": "rc=0 2026-09-05"
    }
+  },
+  "tie_race_landscape_2026_09_05": {
+   "canonical_hub_margin_census": {
+    "degrees": [
+     5,
+     6,
+     8,
+     10,
+     12
+    ],
+    "samples_per_degree": 6000,
+    "worst_m2_centroid_by_bin": {
+     "[0.4,0.5)": "0.57-0.88",
+     "[0.5,0.6)": "0.64-0.70",
+     "[0.6,0.7)": "0.72-0.76",
+     "[0.7,0.8)": "0.82",
+     "[0.8,0.9)": "0.90-0.92",
+     "[0.9,0.95)": "0.95",
+     "[0.95,0.99)": "0.989",
+     "[0.99,1)": "0.995"
+    }
+   },
+   "fixed_hub_failure_continuation": {
+    "start_objective": 1.000003,
+    "start_mu": 0.999988,
+    "cap_0.9999_objective": 0.999925,
+    "shell_seeds_n6_n7": [
+     0.999997,
+     0.999994
+    ]
+   },
+   "cstar_spoke_excess_climb": {
+    "sup_m2_minus_numax_by_degree": {
+     "4": 8e-05,
+     "5": 0.00104,
+     "6": 0.00149,
+     "8": 0.00255
+    },
+    "certified_witness": "octic, TieRaceLandscape.md Theorem 1"
+   },
+   "statement_Q": {
+    "census": 667,
+    "violations": 0,
+    "climb_sup": 0.0,
+    "deep_shell_gap": 2.2e-07
+   },
+   "conjecture_P_violations": {
+    "4": 1.000005,
+    "5": 1.000195,
+    "6": 1.000207,
+    "8": 1.004089,
+    "shell_witnesses": "1.00003-1.00007",
+    "cubic_sup": 1.0
+   },
+   "merging_pair_floor_ratio": {
+    "4": 0.891,
+    "5": 0.824,
+    "6": 0.747,
+    "8": 0.661
+   },
+   "free_hub_reaches_mu": "8/8 maximisers, to 5 digits",
+   "replay": "./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tie_race_landscape.py"
+  },
+  "middle_regime_canonical_hub_2026_09_05": {
+   "kappa_n": {
+    "3": "8/9",
+    "4": "4/5",
+    "6": "64/91",
+    "limit": "1/2"
+   },
+   "eta_cap": 1.2105804507680389e-05,
+   "eta_bracket": "(1.21e-5, 1e-4]",
+   "chord_minimum_ratio_sup_by_degree": {
+    "3": 1.125,
+    "4": 1.156,
+    "5": 1.206,
+    "6": 1.239,
+    "7": 1.269,
+    "8": 1.305,
+    "9": 1.305,
+    "10": 1.349,
+    "12": 1.326,
+    "14": 1.352,
+    "16": 1.366
+   },
+   "replay": "./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_middle_regime_canonical_hub.py"
   }
  },
  "open_producers": [
@@ -3884,7 +4027,7 @@
    "id": "free_pair_geometric_mean_two_arm_selector",
    "priority": 1,
    "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_cegm_quartic_fixed_pair_no_go.py",
-   "statement": "Prove FP--GM: for a monic polynomial with roots in the closed unit disc, jointly choose distinct roots a_i,a_j and a hub h with |h-a_i|+|h-a_j|<=2 such that both hub arms lie in {|f|<=Gcrit}. Minimum-enclosing-disc scaling then gives length <2 and level <1 for open-disc roots. Do NOT prescribe the least-critical nearest pair: CEGMQuarticFixedPairNoGo.md refutes that selector in minimal degree four, with the selected roots in distinct Gcrit components. The finite KKT reduction remains usable only after the pair is included in the minimization; universal pointwise KKT upper bounds are also refuted by CriticalEllipseStationaryNoGo.md. Noncritical hubs are essential candidates. The augmented barycentric target disc gives exact local reach in every direction when target slack is positive, but its flow estimate controls action rather than arclength. Near Fekete, the component-degree theorem selects the complete noncrossing end block and removes angular adjacency. TiedNewtonFaceHorizontalFibreHubwiseNoGo.md proves that even the unique leftmost critical point can have delta_Q(c)>0, so do not demand HF negativity at every paired-trace or leftmost saddle. The same face is strictly rescued by TiedNewtonFacePositiveFibreRationalRescue.md using an unrelated rational noncritical hub; its fixed connector remains valid on the explicit coefficient box of l_infinity radius 1/6 with Bernstein margin 196/9375, confirming that direct finite charts are strictly more flexible than canonical fibres and already have transfer room. TiedNewtonFaceFibreProduct.md gives exact all-branch product contraction and the stronger moment system sum z_j^ell z_j'=0 through ell=n-2; product plus the zero moment is insufficient, so any fibre completion must exploit higher moments together with component monodromy. Otherwise prove min over all negative critical points delta_Q(c)<0, a component aggregate forcing a good point, or an all-degree finite intrinsic connector directly. The non-strict delta<=0 version still needs equality rigidity because zero may be approached from above. Then compose with a genuinely resolved finite near-Fekete transfer. Away from Fekete, connected-cluster Bergman, COVER, and combined charge remain independent consumers. Computation is falsifier evidence only. UPDATE 2026-09-05: PinnedWitnessNoncriticalHubConnectors.md supplies exact FP-GM shaped witnesses for the noncritical-hub clause on the two hardest stored configurations: fixed Gaussian hubs h_6=(3+2i)/25 and h_9=-1/5-4i/25, verified noncritical in exact arithmetic, both arms contained in {|f| < 99999/100000}, total lengths 29471595/2^24 < 1.757 and 12825029/2^23 < 1.529, valid on explicit 1e-9 root neighbourhoods. These are existence witnesses with the hub supplied; the producer still needs a rule producing h from the configuration, and the certified level leaves only about 4e-5 of margin at the hub value, so any selector must be quantitative at that scale. UPDATE 2026-09-05 (W2-D): the hub-Taylor truncation criterion max_{j<n} |T_j(a)| < 1 at a common hub h supplies BOTH containment and length < 2 (HubTaylorSpokeCertificate.md Theorem 2), so the producer's metric clause |h-a_i|+|h-a_j| <= 2 is automatic under that criterion. The fixed hub set {c*, admissible critical points, 0, centroid} is refuted as a completion by an exact quintic with mu > 0.99998 (Theorem 4 there), where a free hub 0.103 away from the set works; the rule producing h must be a neighbourhood-scale object around the split critical cluster, not a finite canonical set. Measured hub ranking over 2250 survivors: centroid first from n = 6 up."
+   "statement": "Prove FP--GM: for a monic polynomial with roots in the closed unit disc, jointly choose distinct roots a_i,a_j and a hub h with |h-a_i|+|h-a_j|<=2 such that both hub arms lie in {|f|<=Gcrit}. Minimum-enclosing-disc scaling then gives length <2 and level <1 for open-disc roots. Do NOT prescribe the least-critical nearest pair: CEGMQuarticFixedPairNoGo.md refutes that selector in minimal degree four, with the selected roots in distinct Gcrit components. The finite KKT reduction remains usable only after the pair is included in the minimization; universal pointwise KKT upper bounds are also refuted by CriticalEllipseStationaryNoGo.md. Noncritical hubs are essential candidates. The augmented barycentric target disc gives exact local reach in every direction when target slack is positive, but its flow estimate controls action rather than arclength. Near Fekete, the component-degree theorem selects the complete noncrossing end block and removes angular adjacency. TiedNewtonFaceHorizontalFibreHubwiseNoGo.md proves that even the unique leftmost critical point can have delta_Q(c)>0, so do not demand HF negativity at every paired-trace or leftmost saddle. The same face is strictly rescued by TiedNewtonFacePositiveFibreRationalRescue.md using an unrelated rational noncritical hub; its fixed connector remains valid on the explicit coefficient box of l_infinity radius 1/6 with Bernstein margin 196/9375, confirming that direct finite charts are strictly more flexible than canonical fibres and already have transfer room. TiedNewtonFaceFibreProduct.md gives exact all-branch product contraction and the stronger moment system sum z_j^ell z_j'=0 through ell=n-2; product plus the zero moment is insufficient, so any fibre completion must exploit higher moments together with component monodromy. Otherwise prove min over all negative critical points delta_Q(c)<0, a component aggregate forcing a good point, or an all-degree finite intrinsic connector directly. The non-strict delta<=0 version still needs equality rigidity because zero may be approached from above. Then compose with a genuinely resolved finite near-Fekete transfer. Away from Fekete, connected-cluster Bergman, COVER, and combined charge remain independent consumers. Computation is falsifier evidence only. UPDATE 2026-09-05: PinnedWitnessNoncriticalHubConnectors.md supplies exact FP-GM shaped witnesses for the noncritical-hub clause on the two hardest stored configurations: fixed Gaussian hubs h_6=(3+2i)/25 and h_9=-1/5-4i/25, verified noncritical in exact arithmetic, both arms contained in {|f| < 99999/100000}, total lengths 29471595/2^24 < 1.757 and 12825029/2^23 < 1.529, valid on explicit 1e-9 root neighbourhoods. These are existence witnesses with the hub supplied; the producer still needs a rule producing h from the configuration, and the certified level leaves only about 4e-5 of margin at the hub value, so any selector must be quantitative at that scale. UPDATE 2026-09-05 (W2-D): the hub-Taylor truncation criterion max_{j<n} |T_j(a)| < 1 at a common hub h supplies BOTH containment and length < 2 (HubTaylorSpokeCertificate.md Theorem 2), so the producer's metric clause |h-a_i|+|h-a_j| <= 2 is automatic under that criterion. The fixed hub set {c*, admissible critical points, 0, centroid} is refuted as a completion by an exact quintic with mu > 0.99998 (Theorem 4 there), where a free hub 0.103 away from the set works; the rule producing h must be a neighbourhood-scale object around the split critical cluster, not a finite canonical set. Measured hub ranking over 2250 survivors: centroid first from n = 6 up. UPDATE 2026-09-05 (conductor + W3-D): measured on the maximisers of the c*-spoke excess, the free hub h minimising the second spoke maximum reaches exactly mu, lying inside one lobe on the line through the other root and c* (one spoke through the saddle at value mu, the other inside its lobe); this is the two-segment path at level mu and exists iff some c*-spoke is sublevel-contained. The tie race is exactly balanced over the tied hub cluster (statement Q). A hub-free alternative with a non-vanishing tie margin: the chord-minimum conjecture min_{i<j} max_{[a_i,a_j]}|f| <= 2 mu (MiddleRegimeCanonicalHub.md), which needs no hub and no selector."
   },
   {
    "id": "fixed_safe_monodromy_block_average_lift_length",
@@ -4055,5 +4198,6 @@
  "claim_ceiling_addendum_2026_09_05_eight_return_assimilation": "Eight Type B full-parent returns (batch erdos1041_20260905_eight_return_stream_01, from packet erdos1041_full_parent_octuple_2026_09_04) were verified and assimilated. None proves unrestricted Erdos 1041. The strongest new regime is unconditional in every degree with no location, arity, or capacity hypothesis: every squarefree monic f with least critical-value modulus mu <= 199/1000 has two distinct roots joined inside {|f|<1} by a curve of length below 2 (LowCriticalPotentialClosure.md; the return proved 1/8 by a scalar potential, the exact comparison ODE sharpens it, and the mechanism provably cannot pass 0.19989). This supersedes the four arity/capacity lattices at mu<=1/2, 1/4, 1/8, 1/64 as parent-regime statements; they retain value as component-level information. The symmetric merge envelope conjectured in the 2026-08-28 capacity addendum is proved twice, with an exact capacity-speed identity d log cap/d log t = (1/2pi) int dtheta/(n-|B'|) and an exact non-negative fibre-variance defect; the large-degree exponent improves from (n-1)/m to k/m. The Bergman geodesic bound gains a chord-conditioned refinement L^2-d^2 <= lam(x)(E-d^2) with optimal spectral coefficient and explicit bounds; a rational cubic shows it fires where the first-two-level scalar criterion fails. New solved families: translated trinomials (z-h)^n+A(z-h)^m+C for every translation and every 1<=m<=n-2 (coprime exponents included), and every monic with at most four nonzero coefficients whose roots lie on one centred circle. The unrestricted two-tail tetranomial selector conjecture is refuted by an exact sextic. A pointwise polar-derivative Schur certificate |f(c_j)| < prod_l |1-conj(c_l)c_j| adds an interior defect to the free-point aggregate. All-degree invariants landed: a completed trace-curvature measure with sharp log-moment bound, a sharp nodal Crofton budget 2nR, and the polygonal contour with coefficient 1-sin(pi/d). The pinned degree-6 and degree-9 witnesses have exact two-segment noncritical-hub connectors of lengths below 1.757 and 1.529. What remains: the regime 199/1000 < mu < 1 in general degree, the translated adjacent trinomial family, unrestricted quadrinomials, COVER, combined charge, and the moved-block allocation. Proof, computation, review, publication, and canonicalization statuses remain distinct per result.",
  "claim_ceiling_addendum_2026_09_05_wave1_agent_landings": "Wave-1 repo-native agent landings, 2026-09-05. The strongest unconditional all-degree regime is now mu<=9/25 (ClusterSeparationLowCriticalClosure.md, exact rational certificate replayed by the conductor), superseding the same-day 197/1000 closure by adding the contrapositive of the connected-cluster Bergman barrier as a second arity floor; the mechanism's floating supremum is mu=0.36972 and the missing quantity for any further gain is the exterior coefficient energy S of the ancestor component. The centroid-variance chord chart settles the root-statistic regime Var<(n-1)/(2n-1) by a straight root chord (sharp), and the exact refutation of both bridge inequalities shows second-moment data cannot reach the critical spectrum for n>=6. Three capacity/packing/discriminant couplings are recorded dead for the failure ODE. The extremal landscape of the intrinsic pair distance is the regular polygon at every degree 3..8, and the composed chord-or-hub cover is unbeaten. Erdos 1041 remains open; the surviving regime is 9/25<mu<1 at every degree n>=4 (n=3 proved in the corpus), and its high end is the near-Fekete shell.",
  "claim_ceiling_addendum_2026_09_05_neck_forcing_and_hub_taylor": "Lanes W1-C and W2-D, 2026-09-05. Under failure the critical spectrum inside a k-root component is compressed to [N_k t, t) with certified N_k (0.76 at k=2 down to 0.16 at k=8), giving a third arity floor for the low-critical ODE; alone it certifies mu <= 1/5, weaker than the same-day 9/25, and composing the two does not move 9/25. The hub-Taylor truncation certificate max_{j<n} |T_j(a)| < 1 at a common hub gives containment AND length below 2 with no metric obligation (the metric clause of the two-segment reduction is deleted), and certifies the two hardest pinned witnesses at the centroid. An exact quintic with mu > 0.99998 refutes the fixed hub set {c*, admissible critical points, 0, centroid} as a completion, while a free hub 0.103 away works; the surviving target is free-hub existence. The intrinsic min-pair distance has supremum exactly 2 at every degree (regular polygon, r -> 1), so no degree-dependent slack exists in the true metric. Erdos 1041 remains open; the surviving regime is 9/25 < mu < 1 and its completion must produce a polynomial-adapted hub off every finite canonical set.",
- "claim_ceiling_addendum_2026_09_05_packing_floor_two_fifths_and_wall_withdrawal": "Wave 2 (2026-09-05, later). Three lanes independently found that the ordered profile Lambda(k,a) of the 9/25 note is a relaxation that is not realisable for k >= 3 (it lets every root sit antipodal to every other as seen from the COVER observer). Two rigorous replacements landed: the hyperbolic packing floor (Lemma P: disjoint hyperbolic balls, the mean value property of the disc Green function, bathtub rearrangement) gives the new unconditional all-degree regime mu <= 2/5 with an exact certificate and a mechanism ceiling of 0.410; the angular second-moment bound (Theta) gives a static fixed-degree family mu_4 = 61/100, mu_5 = 139/250, mu_6 = 253/500, mu_7 = 23/50, mu_8 = 209/500, mu_9 = 19/50. The critical spectrum is proved pointwise invisible to the mechanism, and the exterior energy S has no floor derivable from the failure inequalities. The reported degree-five refutation of the minimum two-arm statement is withdrawn as the sixth saddle-connection wall specimen; the min statement stands unrefuted. Erdos 1041 remains open; the surviving regime is 2/5 < mu < 1 in general degree (mu_n < mu < 1 for n <= 9), its completion must be a Euclidean hub construction off every finite canonical set, and the two named leads are the exact angular budget (a further factor on the arity floor, ceiling near 0.5 on this ODE) and free-hub existence."
+ "claim_ceiling_addendum_2026_09_05_packing_floor_two_fifths_and_wall_withdrawal": "Wave 2 (2026-09-05, later). Three lanes independently found that the ordered profile Lambda(k,a) of the 9/25 note is a relaxation that is not realisable for k >= 3 (it lets every root sit antipodal to every other as seen from the COVER observer). Two rigorous replacements landed: the hyperbolic packing floor (Lemma P: disjoint hyperbolic balls, the mean value property of the disc Green function, bathtub rearrangement) gives the new unconditional all-degree regime mu <= 2/5 with an exact certificate and a mechanism ceiling of 0.410; the angular second-moment bound (Theta) gives a static fixed-degree family mu_4 = 61/100, mu_5 = 139/250, mu_6 = 253/500, mu_7 = 23/50, mu_8 = 209/500, mu_9 = 19/50. The critical spectrum is proved pointwise invisible to the mechanism, and the exterior energy S has no floor derivable from the failure inequalities. The reported degree-five refutation of the minimum two-arm statement is withdrawn as the sixth saddle-connection wall specimen; the min statement stands unrefuted. Erdos 1041 remains open; the surviving regime is 2/5 < mu < 1 in general degree (mu_n < mu < 1 for n <= 9), its completion must be a Euclidean hub construction off every finite canonical set, and the two named leads are the exact angular budget (a further factor on the arity floor, ceiling near 0.5 on this ODE) and free-hub existence.",
+ "claim_ceiling_addendum_2026_09_05_tie_race_and_chord_minimum": "Wave 3 (2026-09-05, later). No new (n, mu) cell is closed. The middle regime 2/5<mu<1 is measured to be a canonical-hub regime with margin about 1-mu, fixed-hub failures exist only above mu=0.9999, and an exact eta-cap 1.21e-5 bounds any canonical-hub theorem; but mu does not control deviation from the regular polygon uniformly in n (central-root family), so no perturbative proof exists. Four natural fixed-path statements fail by 1e-4..1e-3 exactly at near-ties (one certified exactly), and the minimum over the tied hub cluster is exactly balanced at ties. The completion must be a selection principle optimal at ties. The first hub-free candidate with a margin that survives ties is the chord-minimum conjecture: min over root pairs of max_{[a,b]}|f| <= (1+cos^n(pi/n)) mu (weak form <= 2mu), measured sup ratio 1.13..1.37 at n=3..16 under mu>=2/5; its weak form would settle mu<=1/2 in every degree. Erdos 1041 remains open."
 }

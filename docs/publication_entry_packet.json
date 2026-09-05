@@ -110,16 +110,16 @@
     "claim-faithful-publication-systems-paper.pdf": "sha256:844b5b5ac743be733b90db6871a21bccc34c3d410174cdede9ba6ba060267a89",
     "docs/claims.json": "sha256:d3d4b6d922c636fa6a340cf8c2d06e76f61e9ee7ca632c70c478224d2929b4e7",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:d5b5cb236c98fcf3229c977b22d87785b60a5108349d08013da6938dc3b937a2",
+    "docs/problems.json": "sha256:999a012fd1598474bd4ebbb15dbde7639965e7f703dd5aa1fedc86faeebe029c",
     "docs/publication_contract.json": "sha256:ac1ba650efce6d3cefc22a09384621c41a2ef44849ff4b94f1f65d4d1172120d",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "paper/claim-faithful-publication-systems-paper.tex": "sha256:9affc936d64f39dc9e71ec468688ed4d3bae638f042f8e1924529dda1ecc930c",
-    "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:4fc95d887228705205916702f2d353e60fb5ff3e3cd40040646f99caa169147d",
-    "research_corpus/Erdos1041/FRONTIER.md": "sha256:c08aea84182361d90399ac299963c04f292fc330057b7bc763db7e3a8450df07",
-    "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:9d3a9c335926cda2dd056251cd7b2a59d26ed0e651d7490fe7479daf76faf29d",
-    "research_corpus/Erdos1041/STRONGEST_RESULTS.json": "sha256:cfbff2ae06eaf6e35eb94ae235a62a33cf1fccffb55bab2f97bbcc081923e83d",
+    "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:6bf406a6e39573841b664b059177b93b16292b7efc9caaf9aef8fb5765caf3db",
+    "research_corpus/Erdos1041/FRONTIER.md": "sha256:5f39610272f45c1d83ad7945d1b93daed3b52841814aa5a9b02ecd86d2c1731c",
+    "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:afb01ee026cbdec38b65419a02369e5cba14ec66ed5c3bd732597048ea4cd5f9",
+    "research_corpus/Erdos1041/STRONGEST_RESULTS.json": "sha256:4d7fb3007e7cdaaf84ad1b63d989c45eb98e3eccf3865a5f4d83d4327fc006f2",
     "scripts/run_publication_mutations.py": "sha256:06dd9a902ff7d7ac74b3bd7930e8f50b3db659dd6125f7711ff5dffa03fc305e"
   },
   "five_sentence_summary": [
@@ -497,26 +497,26 @@
   "research_frontier": {
     "authority_posture": "source_bound_research_evidence_with_individual_claim_boundaries_not_reviewed_claim_registry",
     "checkpoint_summary": {
-      "exported_source_file_count": 2467,
+      "exported_source_file_count": 2479,
       "source_subtree_tree": null,
       "status": "source_current_problem_snapshot"
     },
     "directory": "research_corpus/Erdos1041",
     "files": {
       "checkpoint": {
-        "content_digest": "sha256:9d3a9c335926cda2dd056251cd7b2a59d26ed0e651d7490fe7479daf76faf29d",
+        "content_digest": "sha256:afb01ee026cbdec38b65419a02369e5cba14ec66ed5c3bd732597048ea4cd5f9",
         "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json"
       },
       "frontier": {
-        "content_digest": "sha256:c08aea84182361d90399ac299963c04f292fc330057b7bc763db7e3a8450df07",
+        "content_digest": "sha256:5f39610272f45c1d83ad7945d1b93daed3b52841814aa5a9b02ecd86d2c1731c",
         "path": "research_corpus/Erdos1041/FRONTIER.md"
       },
       "manifest": {
-        "content_digest": "sha256:4fc95d887228705205916702f2d353e60fb5ff3e3cd40040646f99caa169147d",
+        "content_digest": "sha256:6bf406a6e39573841b664b059177b93b16292b7efc9caaf9aef8fb5765caf3db",
         "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json"
       },
       "strongest_results": {
-        "content_digest": "sha256:cfbff2ae06eaf6e35eb94ae235a62a33cf1fccffb55bab2f97bbcc081923e83d",
+        "content_digest": "sha256:4d7fb3007e7cdaaf84ad1b63d989c45eb98e3eccf3865a5f4d83d4327fc006f2",
         "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json"
       }
     },
@@ -531,12 +531,12 @@
     ],
     "reading_rule": "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes.",
     "source_index": {
-      "content_digest": "sha256:d5b5cb236c98fcf3229c977b22d87785b60a5108349d08013da6938dc3b937a2",
+      "content_digest": "sha256:999a012fd1598474bd4ebbb15dbde7639965e7f703dd5aa1fedc86faeebe029c",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
-      "result_count": 212,
-      "source_checkpoint": "123d98a0c198ebf6754740bf23b236087c6b469c",
+      "result_count": 215,
+      "source_checkpoint": "d51b2d340921e451b5f6ad51608b5e9624118d54",
       "status": "open"
     }
   },

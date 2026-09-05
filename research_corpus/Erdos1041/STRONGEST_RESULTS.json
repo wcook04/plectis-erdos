@@ -2,7 +2,7 @@
   "schema": "plectis_strongest_result_activation_map_v2",
   "problem_id": "erdos_1041",
   "status": "open",
-  "source_checkpoint": "123d98a0c198ebf6754740bf23b236087c6b469c",
+  "source_checkpoint": "d51b2d340921e451b5f6ad51608b5e9624118d54",
   "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
   "results": [
     {
@@ -2480,6 +2480,36 @@
       "public_authority_paths": [
         "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ExteriorEnergyFloorClosure.md",
         "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_exterior_energy_floor.py"
+      ]
+    },
+    {
+      "source_result_id": "regular_family_adjacent_chord_law_2026_09_05",
+      "exact_statement": "Theorem A: for n>=3 and f=(z-tau)^n-lambda with |lambda|=m, the maximum of |f| on the chord joining two roots adjacent in argument about tau equals m(1+cos^n(pi/n)), attained only at the midpoint. Hence with roots in the open unit disc the adjacent chord is contained in {|f|<1} iff mu<kappa_n:=1/(1+cos^n(pi/n)); kappa_n decreases strictly to 1/2 (kappa_3=8/9, kappa_4=4/5, kappa_6=64/91), so kappa_n>1/2 at every degree. Theorem B (centroid spoke perturbation envelope): for roots a_j=c+lambda omega^j(1+delta_j) with |delta_j|<=delta<1, every centroid spoke has max|f|<=|f(c)|exp(2 delta S_n/(1-delta)), S_n=sum_{k<n} 1/min_{s in[0,1]}|1-s omega^k|. Theorem D: for (z^k-a^k)(z^k+b^k), k>=2, 0<b<=a<1, the centroid is the origin and the least critical point, mu=a^k b^k, the other critical values are (a^k+b^k)^2/4, and every origin spoke has max exactly max(a^k b^k,(a^k+b^k)^2/4)<1.",
+      "status": "ordinary_complete_proof_on_the_equality_family_with_exact_rational_bernstein_certificate",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/MiddleRegimeCanonicalHub.md",
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_middle_regime_canonical_hub.py"
+      ]
+    },
+    {
+      "source_result_id": "central_root_family_no_uniform_fekete_rigidity_2026_09_05",
+      "exact_statement": "Theorem C: f_{n,r}=z(z^{n-1}-r^{n-1}) has mu=(n-1)n^{-n/(n-1)}r^n -> 1 as n -> infinity, centroid 0 which is a root, eccentricity exactly 1, and centroid-spoke maximum exactly mu. Consequently mu does NOT control the deviation from a regular polygon uniformly in n: every eta obtained by perturbing (z-tau)^n-lambda must depend on n. Companion facts: D>=mu^{n-1} is sharp (equality on z^n-m); Var>=mu^{2/n} is false for n>=6 (Var=0.8679<0.8735 at n=8, m_0=0.6); sup|f(centroid)|=1 at every m_0<1 (measured). Exact eta-cap: from the corpus's Rouche enclosure of the Theorem-4 quintic of HubTaylorSpokeCertificate.md, mu<=0.9999878941954923, so any canonical-hub theorem of the form '2/5<mu<=1-eta implies a canonical chord or two canonical spokes' is false for eta<=1.2105804507e-05; measured sup of the canonical disjunction value under mu<=1-eta reaches 1-eta within 4e-5 at n=4,5 down to eta=1e-4, so 1.21e-5 < eta_true <= 1e-4.",
+      "status": "ordinary_complete_proof_with_exact_rational_thresholds",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/MiddleRegimeCanonicalHub.md",
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_middle_regime_canonical_hub.py"
+      ]
+    },
+    {
+      "source_result_id": "spoke_maximum_exceeds_largest_critical_value_at_cstar_2026_09_05",
+      "exact_statement": "The statement 'at the least critical point c* the second-smallest straight-spoke maximum is at most the largest critical value nu_max' is FALSE. Witness: a monic octic with Gaussian-rational roots strictly inside the open unit disc, mu in [0.786546977037, 0.786546977039], nu_max<=0.78903690 (all seven critical points enclosed in pairwise disjoint Kantorovich discs of radius 10^-6, the least one separated from the others), at which seven of the eight straight spokes from c* carry a rational parameter s with |f|-10^-6 sup|f'|>nu_max for every point of the c* disc; the floating excess is m2(c*)-nu_max=+0.0026. The configuration is near-tied and near-regular (all critical values within 0.3 percent); a free hub near the critical cluster brings the second spoke maximum down to exactly mu.",
+      "status": "exact_rational_refutation_single_witness",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TieRaceLandscape.md",
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tie_race_landscape.py"
       ]
     }
   ]
