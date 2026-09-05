@@ -58,7 +58,7 @@ remain open.
 The note also proves two finite denominator exclusions and an exact prime-pole
 cancellation law.  A GMP certificate gives $300000\nmid Z_{300000}$ and hence
 $q\nmid299999!$ in any representation $\Ser=a/q$ with $q>0$; an independent
-continued-fraction certificate gives $q\ge2^{39991}>10^{12039}$.  For a finite
+continued-fraction certificate gives $q\ge2^{39990}>10^{12038}$.  For a finite
 prefix, the complete maximal power $q^e$ of a prime survives reduction exactly
 when a reciprocal maximal-hit cofactor sum is nonzero; full cancellations occur
 at $q=139$ and $q=2593$.
@@ -110,7 +110,7 @@ Contribution & Exact scope \\
 \midrule
 Channel-radius obstruction & Under the exact cancellation and factorial-size hypotheses, the square-subsequence normalized radius is at least $3/2$; eventual $3/2$ upper bounds and little-$o$ decay are impossible. \\
 Moving-factor criteria & One moving prefix-private prime plus two explicit scale bounds implies irrationality; arbitrary factors of one moving private modulus suffice under normalized projection disagreement.  The scale producers remain open. \\
-Finite denominator exclusions & If $\Ser=a/q$ with $q>0$, then $q\nmid299999!$ and independently $q\ge2^{39991}>10^{12039}$. \\
+Finite denominator exclusions & If $\Ser=a/q$ with $q>0$, then $q\nmid299999!$ and independently $q\ge2^{39990}>10^{12038}$. \\
 Prime-pole cancellation law & A maximal prime power survives finite-prefix reduction exactly when its reciprocal maximal-hit cofactor sum is nonzero. \\
 Fixed companion orbit & $\Ser$ is rational iff $\lfloor m!C\rfloor\equiv-2\pmod m$ eventually; this is an exact coordinate, not the missing producer. \\
 Integral frontier & $\Ser\notin\mathbb Q$ iff for every $B$ some $m>B$ satisfies $m\nmid Z_m$. \\
@@ -134,9 +134,6 @@ $\sum_{n\ge2}1/(n!+1)$ sit in the same family, and the difficulty here is the
 same one that makes the Erd\H{o}s--Borwein constant hard: the denominators
 $n!-1$ grow fast enough that convergence is trivial and slow enough, in the
 arithmetic sense, that no single congruence controls them.
-
-The definitions and claim boundary are repeated here so that the note is
-self-contained.
 
 \statusboundary
 
@@ -1177,8 +1174,104 @@ attached to it.
 
 \section{Finite certificates}\label{sec:finite}
 
-The following are computations.  Each excludes exactly the denominators it
-names and nothing more.
+\subsection{A denominator bound from a certified interval}
+
+An exact continued-fraction computation gives
+\[
+ \Ser=a/q,\quad q>0
+ \qquad\Longrightarrow\qquad
+ q\ge 2^{39990}>10^{12038}.
+\]
+The computation starts from a rational enclosure, so it does not assume that
+$\Ser$ has an infinite continued fraction.
+
+Here is the enclosure and the verification argument.  Set $D=2^B$, and let
+$N$ be the first index with $N!-1>D$.  Define
+\[
+ \ell=\sum_{n=2}^{N-1}\left\lfloor\frac{D}{n!-1}\right\rfloor,
+ \qquad
+ u=\ell+(N-2)+\left\lfloor\frac{2D}{N!-1}\right\rfloor+1.
+\]
+Each rounded prefix term loses less than one.  Also
+$(n+1)!-1>(n+1)(n!-1)$, so the tail starting at $N$ is less than
+$2/(N!-1)$.  Hence $\ell/D<\Ser<u/D$.
+
+Apply the continued-fraction algorithm to both rational endpoints.  Retain
+a partial quotient only when their integer parts agree; subtract that integer
+and invert the two remainders, reversing their order.  Stop when the integer
+parts disagree or an endpoint remainder is zero.  Every retained quotient
+therefore belongs to every real number in the interval.  If such a number is
+rational, its continued fraction cannot terminate before this shared prefix.
+Its reduced denominator is consequently at least the denominator of the last
+retained convergent, computed by
+\[
+ Q_{-2}=1,\qquad Q_{-1}=0,\qquad Q_k=a_kQ_{k-1}+Q_{k-2}.
+\]
+For $B=80000$, the enclosure has scaled width $u-\ell=7053$ and forces
+$23449$ partial quotients.  The last convergent denominator is at least
+$2^{39990}$.  The replay also verifies directly that the preceding convergent
+lies outside the enclosure.  All enclosure, quotient, and denominator
+operations use integers; the decimal inequality above is checked by integer
+exponentiation.  The
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/cd3bd6fe245867a435e15d503ccedd699c5d02e2/scripts/check_erdos68_continued_fraction.py}{integer replay}
+and its
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/cd3bd6fe245867a435e15d503ccedd699c5d02e2/verification/erdos68-continued-fraction.json}{receipt}
+accompany the calculation.
+
+The divisibility exclusion $q\nmid299999!$ from the carry certificate is a
+different restriction.  It requires a prime-power divisor that does not divide $299999!$,
+whereas the continued-fraction certificate bounds the denominator's size.
+In particular, a denominator with no prime factor above $299999$ can still
+satisfy the divisibility exclusion if one prime occurs to a sufficiently high
+power.
+
+\subsection{Which prime powers survive prefix reduction}
+
+A prime dividing a displayed denominator can disappear when the prefix is
+reduced.  The cancellation is controlled by all indices with maximal
+valuation, rather than by a single factorial congruence.
+
+\begin{proposition}[maximal-hit cancellation]\label{res:prime-pole}
+Let $M\ge2$, put $d_n=n!-1$ for $2\le n\le M$, and write
+\[
+ L=\operatorname{lcm}(d_2,\ldots,d_M),\qquad
+ B=\sum_{n=2}^M L/d_n,\qquad H_M=B/L.
+\]
+For a prime $p\mid L$, let $e=v_p(L)$ and
+$J=\{n:2\le n\le M,\ v_p(d_n)=e\}$.  If $d_n=p^e u_n$ for $n\in J$, then
+\[
+ B\equiv \frac{L}{p^e}\sum_{n\in J}u_n^{-1}\pmod p.
+\]
+Consequently the reduced denominator of $H_M$ contains $p^e$ if and only if
+$\sum_{n\in J}u_n^{-1}\ne0$ in $\mathbb F_p$.
+\end{proposition}
+
+\begin{proof}
+Write $L=p^eW$, where $p\nmid W$.  If $v_p(d_n)<e$, then $p\mid L/d_n$.
+If $n\in J$, the integer identity $u_n(L/d_n)=W$ gives
+$L/d_n\equiv Wu_n^{-1}\pmod p$.  Summing proves the congruence.
+The reduced denominator is $L/\gcd(B,L)$; its $p$-valuation is $e$ exactly
+when $p\nmid B$.  Since $W$ is nonzero modulo $p$, this is the stated
+inverse-sum condition.
+\end{proof}
+
+At the endpoint $M=p-1$ with $p\ge5$, Wilson's theorem supplies the hit $n=p-2$.
+It need not survive reduction.  Exact multiplication modulo $p^2$ gives
+\[
+\begin{array}{c|c|c|c}
+ p & J & (u_n\bmod p)_{n\in J} & \sum_{n\in J}u_n^{-1}\bmod p\\
+ \hline
+ 139 & 69,122,137 & 6,49,73 & 116+122+40=0\\
+ 2593 & 349,2243,2591 & 1508,1566,1678 & 1367+356+870=0
+\end{array}
+\]
+In both cases $e=1$, so $p$ disappears from the reduced prefix denominator.
+The calculation requires only the recurrence $r_1=1$,
+$r_n\equiv nr_{n-1}\pmod{p^2}$: a hit has $r_n\equiv1\pmod p$, and its
+lifted cofactor is $(r_n-1)/p\pmod p$.  Neither list contains a hit with
+$r_n=1$ modulo $p^2$.
+
+\subsection{Finite channel and carry certificates}
 
 The finite-support vector $\lambda=2e_3-e_4$ has, by kernel check, $V_2=0$,
 factorial moment $-12$, $V_3=-2$, $V_4=11$, and $V_d=-12$ for every $d\ge5$.
@@ -1205,8 +1298,15 @@ digest were not supplied, so that zero-branch classification remains external
 finite evidence.  The strict-successor carry computation used above is local
 and independently regenerated: its exact source, GMP backend, canonical
 payload, and receipt digests form the certificate archive.  The local certificate establishes
-$b_{300000}\ne1$, and the checked theorem converts precisely that fact into
-$q\ge300000$.
+$b_{300000}\ne1$.  It excludes more than denominators below $300000$.
+If $q\mid(m-1)!$ and $m\ge3$, the two numbers $(m-1)!\Ser$ and $m!\Ser$
+are integers.  The tail bound
+\[
+ 0<k!(\Ser-H_k)<\frac{2k!}{(k+1)!-1}<1\qquad(k\ge2)
+\]
+then gives $Z_k=k!\Ser$ at $k=m-1,m$.  Substitution into
+$Z_m=mZ_{m-1}+1-b_m$ forces $b_m=1$.  Thus the certified non-unit carry at
+$m=300000$ gives $q\nmid299999!$, and in particular $q\ge300000$.
 
 
 \section{Open problems}\label{sec:open}
