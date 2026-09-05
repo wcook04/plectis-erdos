@@ -197,6 +197,22 @@ rows already form contiguous groups. A compact range table can select those
 groups without a second dataset. Keep selection labels inside the canonical
 digest boundary, check complete range coverage, and compare substring, case,
 empty-result, and combined-filter behavior with the full reader.
+Select the cited sources before constructing declaration aliases, and include
+that selection in any in-process index cache key. Preserve aliases shared by
+multiple modules; narrowing work must not silently narrow valid matches.
+Apply source selection to ranked backlogs as well as coverage reports, but rank
+all matching sources before imposing the output limit. Selecting the first few
+files before ranking can make a faster worklist omit its highest-priority item.
+
+If a common entry or status command repeatedly audits historical data because
+an active file crossed a storage threshold, inspect the storage lifecycle
+before optimizing the audit. Keep active append files small through the owning
+rotation route. Publish new targets atomically, preserve paths that existing
+readers may still hold, and verify replay, subsequent writes, and failures on
+both sides of publication. A manifest can change a file's role without moving
+or duplicating its contents.
+Follow the change through readers and closeout guards: they must resolve the
+active manifest rather than remember the filenames used at initialization.
 
 ## Validate the changed journey
 

@@ -1,0 +1,12 @@
+{
+  "schema": "plectis_public_problem_corpus_checkpoint_v2",
+  "problem_id": "erdos_243",
+  "source_repository": "private_authoring_repository_not_included",
+  "source_commit": "41c30a98f6d71003a8de636002e6ce5fe0747380",
+  "exported_source_file_count": 140,
+  "status": "source_current_problem_snapshot",
+  "corpus_manifest_path": "research_corpus/Erdos243/CORPUS_MANIFEST.json",
+  "corpus_manifest_sha256": "0b1c49717ae47dc29c1e6af48568acbee7f0a4d670e57ddc39088b91a0c8b583",
+  "strongest_result_map_path": "research_corpus/Erdos243/STRONGEST_RESULTS.json",
+  "strongest_result_map_sha256": "579d65dd8ec32b192cd9e520a6c981adbff5c419a8c4930da1309697b63caf45"
+}

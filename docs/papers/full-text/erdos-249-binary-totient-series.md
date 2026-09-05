@@ -18,6 +18,8 @@ is a $`\mathbb{Q}`$-basis for the span of the $`2`$-kernel of Euler’s totient.
 
 A second unconditional theorem determines the positive rank-one Möbius–Mersenne cone exactly. Its quotient has the unique minimizer $`(e,Y)=(1,5)`$; every admissible quotient and every nonempty finite positive mixture exceeds $`\Theta_2=S-1/2`$ by more than $`21/320`$. This rules out the complete positive rank-one and positive direct-sum mechanism, but not signed cancellation or genuinely coupled higher-rank approximants.
 
+The actual totient sequence also admits arbitrarily late pulse blocks modulo $`2^K`$ for every $`2\le K<H`$: all preceding letters of $`\varphi(n+H)-\varphi(n)`$ vanish and the terminal letter is $`2^{K-1}`$. Under eventual integral tail differences these force cofinal half-turn residues. At LCM heights a separate estimate cancels the affine main term of $`\varphi(H+j),\varphi(2H+j),\varphi(3H+j)`$, leaving a second difference in $`2\varphi(j)\mathbb{Z}`$ with normalized size tending to zero. The first theorem produces actual modular structure; the second gives quantitative real cancellation. They are not yet a common-scale contradiction.
+
 These structural theorems do not settle Erdős Problem #249, which asks whether
 ``` math
 S=\sum_{n\ge1}\frac{\varphi(n)}{2^n}
@@ -56,7 +58,9 @@ is irrational; see Erdős and Graham \[erdosgraham1980, p. 61\] and Erdős \[
 
 The principal unconditional result is structural: the two zero-residue sections $`\varphi_{0,0}`$ and $`\varphi_{1,0}`$, together with the odd-residue sections, form a rational basis, and the two reduction identities below generate every rational relation among the sections. It gives exact finite-level rank but no rationality-to-finite-rank bridge. The positive rank-one Möbius–Mersenne cone is also determined sharply: one unique minimizer, the uniform $`21/320`$ floor, the $`1/16`$ versus $`1/15`$ boundary, and closure under arbitrary finite positive mixing.
 
-The closest results concerning the open series are exact reformulations and conditional criteria. The actual power-two LCM orbit gives a cofinal nonintegrality equivalence; the canonical Mersenne formulation removes the remote basepoint; and the full-depth theorem shows that one seed gives eventual $`2`$-syndeticity on its ray. The independent first-harmonic argument turns four explicit fibre bounds into a $`9X/10`$ window estimate, but irrationality requires their unproved cofinal form. The example $`38=2\cdot19`$ rules out the simplest global-isolation argument. The remaining inventory records finite Farey and diagonal certificates, Lambert and gcd-moment identities, and explicit limits of fixed-precision methods. None supplies the required cofinal input.
+Two further theorems concern actual totient values. A CRT–Dirichlet construction produces prescribed dyadic pulse blocks at arbitrarily late prime positions; eventual integral tail differences would inherit their half-turn residues. On the LCM ray, cancelling three affine main terms gives a second difference in an explicit integer lattice with a vanishing relative error. Sections <a href="#sec:twoadic-pulses" data-reference-type="ref" data-reference="sec:twoadic-pulses">4.1</a> and <a href="#sec:lcm-curvature" data-reference-type="ref" data-reference="sec:lcm-curvature">6.1</a> give the constructions and explain the missing alignment between them.
+
+The exact endpoint formulations and conditional criteria remain useful. The actual power-two LCM orbit gives a cofinal nonintegrality equivalence; the canonical Mersenne formulation removes the remote basepoint; and the full-depth theorem shows that one seed gives eventual $`2`$-syndeticity on its ray. The independent first-harmonic argument turns four explicit fibre bounds into a $`9X/10`$ window estimate, but irrationality requires their unproved cofinal form. The example $`38=2\cdot19`$ rules out the simplest global-isolation argument. The remaining inventory records finite Farey and diagonal certificates, Lambert and gcd-moment identities, and explicit limits of fixed-precision methods. None supplies the required cofinal input.
 
 *Status.* The problem treated here is open, and this note does not close it. Every statement below marked as checked is a proposition that the pinned Lean kernel accepts from the sources this note links to, with no `sorry`, no added axiom, and no unchecked evaluation. That is a claim about the formal statement, not about its mathematical interest, its novelty, or the original problem. The unresolved obligations are named exactly, in their own section, and none of the finite computations, reductions, or no-go results here removes one of them.
 
@@ -370,6 +374,41 @@ Producing evaluation points with exactly that parity pattern is what the arithme
 
 Multiplying successive scaled tails by $`2`$ turns a hypothetical rational value into an integral recurrence. For coefficients $`c:\mathbb{N}\to\mathbb{N}`$ satisfying $`c(n)\le n`$, and in particular for $`c=\varphi`$ since $`\varphi(n)\le n`$, the series $`\sum c(n)/2^n`$ is rational exactly when an integral scaled-tail sequence exists, that is, an integer sequence $`u`$ with $`u(N+1)=2u(N)-v\,c(N+1)`$ for every $`N`$ and $`u(N)/2^N\to0`$, for some integer $`v\ge1`$ ([checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L426)). Transporting <a href="#res:rank" data-reference-type="ref" data-reference="res:rank">[res:rank]</a> through that recurrence gives <a href="#res:carryrank" data-reference-type="ref" data-reference="res:carryrank">[res:carryrank]</a>. The complementary finite-rank upper bound, which would make this a proof of irrationality, is not available.
 
+<a id="sec:twoadic-pulses"></a>
+
+## Actual dyadic pulses and their tail consequence
+
+The rank theorem describes the number of independent sections. The next construction prescribes a whole congruence block of the actual totient values. Put $`\Delta_H\varphi(n)=\varphi(n+H)-\varphi(n)`$.
+
+<div id="res:twoadic-pulses" class="theorem">
+
+**Theorem 1** (arbitrarily late totient pulse blocks). *For every $`2\le K<H`$ and every cutoff $`B`$, there is a prime $`p>\max\{B,H+K\}`$ such that
+``` math
+\Delta_H\varphi(p)\equiv2^{K-1}\pmod{2^K},\qquad
+ \Delta_H\varphi(p-j)\equiv0\pmod{2^K}\quad(1\le j<K).
+```
+If $`F_H(N):=R_{N+H}-R_N`$ is integral for every sufficiently large $`N`$, then cofinally many such prime positions satisfy
+``` math
+F_H(p)\equiv2^{K-1}\pmod{2^K},\qquad |F_H(p)|\ge2^{K-1}.
+```*
+
+</div>
+
+<div class="proof">
+
+*Proof.* For each unwanted totient argument, choose a distinct prime $`q>H+K`$ with $`q\equiv1\pmod{2^K}`$, and require $`q`$ to divide that argument. Thus one prime is assigned to $`p+H`$, and two to each pair $`p-j,p-j+H`$. Impose also $`p\equiv1+2^{K-1}\pmod{2^K}`$. The assigned primes are distinct and odd; the required residue of $`p`$ at each is nonzero because $`1\le j<K<H<q`$. The Chinese remainder theorem therefore produces a reduced progression. Dirichlet’s theorem supplies primes $`p`$ in that progression beyond any cutoff. Each assigned divisor forces $`2^K\mid\varphi(n)`$, whereas $`\varphi(p)=p-1\equiv2^{K-1}\pmod{2^K}`$. Negating the half-turn does not change it, proving the pulse assertion.
+
+For the tail consequence, iterate $`F_H(N+1)=2F_H(N)-\Delta_H\varphi(N+1)`$ through the $`K`$ positions ending at $`p`$:
+``` math
+F_H(p)=2^K F_H(p-K)
+       -\sum_{r=1}^K\Delta_H\varphi(p-K+r)2^{K-r}.
+```
+At a sufficiently late $`p`$ the entering state is integral, so it disappears modulo $`2^K`$. Every letter except the last disappears too. The surviving half-turn gives the claimed congruence and its least possible absolute value. ◻
+
+</div>
+
+The prime construction is checked at [the divisor producer](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTwoAdicPulseBlock.lean#L54) and [the pulse block](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTwoAdicPulseBlock.lean#L211); the exact transfer and cofinal conclusion are [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTwoAdicPulseBlock.lean#L301) and [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTwoAdicPulseBlock.lean#L327). The inequality for $`|F_H(p)|`$ is the immediate integer consequence of that congruence. Here $`K<H`$ is essential to the stated result: cofinal positions for a fixed shift do not give unbounded precision for that shift. Nor does the construction bound $`|F_H(p)|`$ from above by less than $`2^{K-1}`$. That missing real estimate, at the same positions, prevents an irrationality conclusion.
+
 <a id="sec:denominator"></a>
 
 # A Farey-mediant denominator exclusion
@@ -483,11 +522,49 @@ A stronger unbounded approach asks for a quantitative anti-concentration bound. 
 
 There is also a precise no-go for a tempting substitute. In the positive short LCM window, a terminal dyadic staircase would force the complete discrepancy word to vanish modulo its terminal power of two, but the last positive arithmetic letter is strictly smaller than that modulus, so [the staircase is impossible under the stated room hypothesis](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L251). The companion [terminal-remainder identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientActualLcmTopEdgeStaircase.lean#L297) shows what survives: only the final letters control that residue. This prunes total dyadic annihilation, not every top-edge pattern; the remaining endpoint problem is still to prove a nonzero cofinal residue gap.
 
+<a id="sec:lcm-curvature"></a>
+
+## Cancelling the LCM main term
+
+The positive LCM corridor controls a first difference. A second difference removes the affine main term altogether and exposes a smaller integer scale.
+
+<div id="res:lcm-curvature" class="theorem">
+
+**Theorem 2** (LCM curvature with an exact local factor). *Let $`a\ge4`$, $`j\ge1`$, $`j^2\le2^a`$, and $`H=\operatorname{lcm}(1,\ldots,2^a)`$. There is an integer $`z`$ for which
+``` math
+\varphi(3H+j)-2\varphi(2H+j)+\varphi(H+j)=2\varphi(j)z,
+ \qquad |z|<\frac{8H/j+4}{a}.
+```*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Set $`A=H/j`$. The square-root bound on $`j`$ ensures that $`j\mid H`$ and that every prime dividing $`j`$ still divides $`A`$. Hence, for $`q=1,2,3`$,
+``` math
+\varphi(qH+j)=\varphi(j)\varphi(qA+1).
+```
+Every prime divisor of $`y=qA+1`$ exceeds $`2^a`$, while $`y<2^{2\cdot2^a}`$. If $`s`$ is the number of its distinct prime divisors, then $`as<2\cdot2^a`$, and the Euler product gives
+``` math
+1-\frac2a<\frac{\varphi(y)}y\le1.
+```
+Thus the defect $`d_q=\varphi(j)(qA+1)-\varphi(qH+j)`$ satisfies $`0\le d_q<2\varphi(j)(qA+1)/a`$. The affine terms cancel, leaving $`-d_3+2d_2-d_1`$; its absolute value is less than $`2\varphi(j)(8A+4)/a`$. Finally, $`A`$ is even and the three cofactors $`qA+1`$ are odd and greater than one, so each has even totient. Factoring out $`\varphi(j)`$ therefore leaves an even integer, which gives the stated $`z`$. ◻
+
+</div>
+
+The rough-density estimate, exact local divisibility and primitive bound are [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientFixedRankLcmAsymptotic.lean#L50), [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientFixedRankLcmAsymptotic.lean#L519), and [checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientFixedRankLcmAsymptotic.lean#L637). For fixed $`j`$, the second difference divided by $`H`$ tends to zero. This improves a fixed-density corridor to a vanishing relative error using only roughness and a height bound. Its scale is still too large to force $`z=0`$, and no cofinal nonzero $`z`$ is supplied. Moreover these LCM positions are not the prime positions of Section <a href="#sec:twoadic-pulses" data-reference-type="ref" data-reference="sec:twoadic-pulses">4.1</a>; combining the two estimates would require an additional arithmetic alignment.
+
 <a id="sec:nogo"></a>
 
 # Obstructions for fixed-coordinate methods
 
 <a href="#res:primindex" data-reference-type="ref" data-reference="res:primindex">[res:primindex]</a> has a one-line proof. Take a prime $`p>\max(D,2)`$; then $`A(p)=p-2`$ by <a href="#res:weight" data-reference-type="ref" data-reference="res:weight">[res:weight]</a>, and $`p\nmid D(p-2)`$, so $`D\cdot A(p)/p\notin\mathbb{Z}`$.
+
+A concrete example shows how much apparently useful information can coexist with a rational value. Begin with $`c(0),c(1),\ldots=0,1,1,2,4,4,\ldots`$, whose dyadic sum is $`3/2`$. At every $`m=2^{k+3}`$ replace the pair $`(4,4)`$ at $`m,m+1`$ by $`(6,0)`$. Each replacement has zero value:
+``` math
+\frac{2}{2^m}-\frac{4}{2^{m+1}}=0.
+```
+The resulting $`c`$ satisfies $`c(n)\le\min\{n,6\}`$ and $`c(n)\equiv\varphi(n)\pmod2`$, is not eventually periodic, and retains the exact sum $`3/2`$ ([checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientParityCoboundaryCountermodel.lean#L359)). Beyond any cutoff it even contains any prescribed finite number of $`(6,0)`$ carry pairs with any prescribed minimum separation ([checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientParityCoboundaryCountermodel.lean#L637)). Thus parity, aperiodicity and abundant separated carry markers do not jointly supply an irrationality argument. The actual pulse producer in Section <a href="#sec:twoadic-pulses" data-reference-type="ref" data-reference="sec:twoadic-pulses">4.1</a> uses finer arithmetic; its missing real bound remains a separate question.
 
 The next two obstructions concern loss of arithmetic information. Both construct synthetic carries compatible with the data retained by a proposed method: fixed-precision local symbols in one case, factor ideals and finite shift identities in the other. Those data therefore cannot alone exclude a carry. A successful argument must use some additional property of the actual totient differences; neither construction shows that the actual orbit has such a synthetic continuation.
 
@@ -605,11 +682,11 @@ Write $`H_t=\operatorname{lcm}(1,\dots,t)`$ ([definition](https://github.com/wco
 
 <div id="prob:diagonal" class="equivform">
 
-*Equivalent formulation 1* (lcm-diagonal escape). For every $`t_0`$ there is a $`t\ge t_0`$ with $`R_{2H_t}-R_{H_t}\notin\mathbb{Z}`$.
+*Equivalent formulation 3* (lcm-diagonal escape). For every $`t_0`$ there is a $`t\ge t_0`$ with $`R_{2H_t}-R_{H_t}\notin\mathbb{Z}`$.
 
 </div>
 
-By <a href="#res:equivalences" data-reference-type="ref" data-reference="res:equivalences">[res:equivalences]</a>, formulation <a href="#prob:diagonal" data-reference-type="ref" data-reference="prob:diagonal">1</a> is equivalent to irrationality of $`S`$. It identifies an exact decidable witness family, but is not claimed to reduce the difficulty of Erdős \#249. A finite list of successful certificates establishes the predicate only on its tested scales. Conversely, one pair $`h>0`$, $`N`$ with $`R_{N+h}-R_N\in\mathbb{Z}`$ already makes $`S`$ rational ([checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L357)).
+By <a href="#res:equivalences" data-reference-type="ref" data-reference="res:equivalences">[res:equivalences]</a>, formulation <a href="#prob:diagonal" data-reference-type="ref" data-reference="prob:diagonal">3</a> is equivalent to irrationality of $`S`$. It identifies an exact decidable witness family, but is not claimed to reduce the difficulty of Erdős \#249. A finite list of successful certificates establishes the predicate only on its tested scales. Conversely, one pair $`h>0`$, $`N`$ with $`R_{N+h}-R_N\in\mathbb{Z}`$ already makes $`S`$ rational ([checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L357)).
 
 The certificate is decidable at each $`t`$, and is kernel-checked at the $`28`$ listed scales between $`t=1`$ and $`t=64`$ ([list](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificatesT64.lean#L1933), [verification](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificatesT64.lean#L1967)). The current pinned source strengthens that historical list to every $`t\le82`$, with no gaps ([checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Skip/LadderT67.lean#L71264)). The theorem through $`t=82`$ supplies no instance at $`t=83`$ and does not discharge the cofinal quantifier.
 
@@ -617,7 +694,7 @@ The cyclotomic form exposes more arithmetic structure. Write $`C(n)=|\Phi_n(2)|`
 
 <div id="prob:cyclotomic" class="equivform">
 
-*Equivalent formulation 2* (cyclotomic-anchored phase escape). For every $`h\ge1`$ and every $`N_0`$, there exist primes $`q,p`$ and $`L\in\mathbb{N}`$ such that
+*Equivalent formulation 4* (cyclotomic-anchored phase escape). For every $`h\ge1`$ and every $`N_0`$, there exist primes $`q,p`$ and $`L\in\mathbb{N}`$ such that
 ``` math
 \gcd(p,hq)=1,\qquad p\mid C(hq),\qquad hq\mid p-1,
  \qquad p-1\ge N_0,
@@ -626,7 +703,7 @@ and $`(hq,p-1,L)`$ is a finite tail-difference certificate.
 
 </div>
 
-This is [CyclotomicAnchoredKillSupply](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L3231). For the binary layers, clean anchors satisfying every condition before the certificate are already supplied, and [the checked equivalence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L3327) identifies formulation <a href="#prob:cyclotomic" data-reference-type="ref" data-reference="prob:cyclotomic">2</a> with irrationality of $`S`$. The unknown is phase escape of the totient discrepancy modulo $`2^L`$, not large prime divisors or multiplicative order. The checked $`p=331`$ instances are finite models of this exact predicate; unbounded support alone does not imply it.
+This is [CyclotomicAnchoredKillSupply](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L3231). For the binary layers, clean anchors satisfying every condition before the certificate are already supplied, and [the checked equivalence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L3327) identifies formulation <a href="#prob:cyclotomic" data-reference-type="ref" data-reference="prob:cyclotomic">4</a> with irrationality of $`S`$. The unknown is phase escape of the totient discrepancy modulo $`2^L`$, not large prime divisors or multiplicative order. The checked $`p=331`$ instances are finite models of this exact predicate; unbounded support alone does not imply it.
 
 The [checked conditional support/period no-go](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L1706) makes that limitation exact. If $`S`$ were rational, its eventual integral tail-period law would supply some $`h>0`$, while [unbounded prime divisors](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean#L158) would persist on the same $`h`$-ray for the actual binary cyclotomic layers, by [the checked binary-layer theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean#L1693). Consequently, unbounded support cannot be the missing contradiction unless an additional carry- or phase-escape theorem relates that support to the period law. This is a necessary-state theorem under hypothetical rationality: it neither constructs a rational example nor proves that the rationality hypothesis is consistent, and Erdős \#249 remains open.
 
@@ -643,7 +720,7 @@ The earlier condition [ApFullDepthEscape](https://github.com/wcook04/plectis-lea
 
 <div id="prob:firstharmonic" class="problem">
 
-**Problem 3** (first-harmonic anti-concentration on supplier fibres). For each $`h\ge1`$, do there exist $`s\ge1`$ and $`0<\eta<1`$ such that, for every $`X_0`$, there are $`X,L`$ with
+**Problem 5** (first-harmonic anti-concentration on supplier fibres). For each $`h\ge1`$, do there exist $`s\ge1`$ and $`0<\eta<1`$ such that, for every $`X_0`$, there are $`X,L`$ with
 ``` math
 \max(X_0,1)\le X,\qquad h\le L-s,\qquad
  16(2X+h+L+2)\le2^L,
@@ -674,7 +751,7 @@ For a supplier write $`z_N`$ for its explicit totient pivot phase, $`w_N=\omega_
  \mathcal U&=\sum_{N\ {\mathrm{nonsupplier}}}\omega_N.
 \end{aligned}
 ```
-The exact identity is $`\sum_{X\le N<2X}\omega_N=\mathcal C+\mathcal M+\mathcal B+\mathcal U`$, and Problem <a href="#prob:firstharmonic" data-reference-type="ref" data-reference="prob:firstharmonic">3</a> asks precisely for
+The exact identity is $`\sum_{X\le N<2X}\omega_N=\mathcal C+\mathcal M+\mathcal B+\mathcal U`$, and Problem <a href="#prob:firstharmonic" data-reference-type="ref" data-reference="prob:firstharmonic">5</a> asks precisely for
 ``` math
 \operatorname{Re}\mathcal C\le\frac{14}{25}X,\qquad
  |\mathcal M|\le\frac1{100}X,\qquad
@@ -696,7 +773,7 @@ The hard missing step is therefore cofinal centred-correlation and error bounds,
 
 <div id="prob:carryrank" class="problem">
 
-**Problem 4** (totient carry-rank compression). Suppose $`v\ge1`$ and $`u:\mathbb{N}\to\mathbb{Z}`$ satisfy
+**Problem 6** (totient carry-rank compression). Suppose $`v\ge1`$ and $`u:\mathbb{N}\to\mathbb{Z}`$ satisfy
 ``` math
 u(N+1)=2u(N)-v\varphi(N+1),\qquad \frac{u(N)}{2^N}\longrightarrow0.
 ```
@@ -719,7 +796,7 @@ The stronger unit-fraction floor $`1/15`$ fails already at the minimizer. Thus a
 
 <div id="prob:hankel" class="problem">
 
-**Problem 5** (genuinely coupled denominator compression). Construct integers $`P_n`$ and $`Q_n>0`$ from a genuinely off-diagonal, vector-valued, or signed-cancellation Hankel–Schur–Padé kernel such that
+**Problem 7** (genuinely coupled denominator compression). Construct integers $`P_n`$ and $`Q_n>0`$ from a genuinely off-diagonal, vector-valued, or signed-cancellation Hankel–Schur–Padé kernel such that
 ``` math
 0<Q_n\left|\Theta_2-\frac{P_n}{Q_n}\right|\longrightarrow0.
 ```
@@ -737,7 +814,7 @@ This subsection previously posed the odd-prime kernel dimension as an open probl
 
 <div id="thm:kkernelrank" class="theorem">
 
-**Theorem 6** (exact rank of every totient $`k`$-kernel truncation). *Let $`k\ge2`$ and $`e\ge1`$ be integers, write $`F^{(k)}_{j,r}(n)=\varphi(k^jn+r)`$, and put
+**Theorem 8** (exact rank of every totient $`k`$-kernel truncation). *Let $`k\ge2`$ and $`e\ge1`$ be integers, write $`F^{(k)}_{j,r}(n)=\varphi(k^jn+r)`$, and put
 ``` math
 V_{k,e}=\operatorname{span}_{\mathbb{Q}}
  \{\,F^{(k)}_{j,r}:0\le j\le e,\ 0\le r<k^j\,\}.
@@ -757,11 +834,11 @@ F^{(k)}_{j,r}=C_k(t,u)\,F^{(k)}_{j-t,u},
 
 </div>
 
-The checked composite-base statement is deliberately cross-multiplied by $`\varphi(\gcd(k,u))`$; the displayed scalar is the equivalent paper-level normalisation after exact division. Lean also checks that this scalar is nonzero and gives the exact one-step functional reduction `allBaseTotientKernelSeq_mul_residue_step` in `Erdos249257/TotientKernelConditional.lean`. Thus the zero channel, arithmetic reduction, finite-index/cardinality, spanning, and conditional-rank layers have kernel receipts. Martin remains the external authority for the linear-independence input and hence for the unconditional basis and rank conclusion of Theorem <a href="#thm:kkernelrank" data-reference-type="ref" data-reference="thm:kkernelrank">6</a>.
+The checked composite-base statement is deliberately cross-multiplied by $`\varphi(\gcd(k,u))`$; the displayed scalar is the equivalent paper-level normalisation after exact division. Lean also checks that this scalar is nonzero and gives the exact one-step functional reduction `allBaseTotientKernelSeq_mul_residue_step` in `Erdos249257/TotientKernelConditional.lean`. Thus the zero channel, arithmetic reduction, finite-index/cardinality, spanning, and conditional-rank layers have kernel receipts. Martin remains the external authority for the linear-independence input and hence for the unconditional basis and rank conclusion of Theorem <a href="#thm:kkernelrank" data-reference-type="ref" data-reference="thm:kkernelrank">8</a>.
 
 The selection condition is $`k\nmid r`$, not $`\gcd(k,r)=1`$; for composite $`k`$ a basis residue may share prime factors with $`k`$. Independence is obtained by restricting to $`n=km+1`$, where the surviving channels become the affine forms $`L_0(m)=km+1`$ and $`L_{j,r}(m)=k^{j+1}m+(k^j+r)`$ with $`k\nmid r`$. These have positive slopes and satisfy $`a_ib_j\neq a_jb_i`$, so Martin’s Theorem 1 \[martin-phi-inequalities\] applies through the linear-independence consequence recorded in the prior-work subsection. The two zero-residue channels are proportional on that progression and are separated afterwards by evaluating at $`n=k`$, using $`\varphi(k^2)=k\varphi(k)`$ and $`\varphi(k)<k`$.
 
-At $`k=2`$ this recovers the dyadic rank theorem of Section <a href="#sec:rank" data-reference-type="ref" data-reference="sec:rank">3</a>; at $`k=\ell`$ an odd prime it gives the case first posed here. Neither Coons’s non-$`k`$-regularity theorem nor the Bell–Smertnig Mahler classification supplies a finite-level rank, a basis, or the relations, so Theorem <a href="#thm:kkernelrank" data-reference-type="ref" data-reference="thm:kkernelrank">6</a> is not a consequence of either. A targeted literature search located no source stating the exact rank, the basis, or the normal form; that is a search result and not a novelty claim, and the statement remains subject to specialist review.
+At $`k=2`$ this recovers the dyadic rank theorem of Section <a href="#sec:rank" data-reference-type="ref" data-reference="sec:rank">3</a>; at $`k=\ell`$ an odd prime it gives the case first posed here. Neither Coons’s non-$`k`$-regularity theorem nor the Bell–Smertnig Mahler classification supplies a finite-level rank, a basis, or the relations, so Theorem <a href="#thm:kkernelrank" data-reference-type="ref" data-reference="thm:kkernelrank">8</a> is not a consequence of either. A targeted literature search located no source stating the exact rank, the basis, or the normal form; that is a search result and not a novelty claim, and the statement remains subject to specialist review.
 
 <div class="remark">
 
@@ -769,7 +846,7 @@ At $`k=2`$ this recovers the dyadic rank theorem of Section <a href="#sec:rank"
 
 </div>
 
-A proof of formulation <a href="#prob:diagonal" data-reference-type="ref" data-reference="prob:diagonal">1</a> gives irrationality of $`S`$ by <a href="#res:equivalences" data-reference-type="ref" data-reference="res:equivalences">[res:equivalences]</a>. Its negation settles \#249 in the opposite direction: it supplies a positive-shift integral tail difference, which forces rationality. By contrast, failure of the sufficient bounds would rule out only those particular arguments.
+A proof of formulation <a href="#prob:diagonal" data-reference-type="ref" data-reference="prob:diagonal">3</a> gives irrationality of $`S`$ by <a href="#res:equivalences" data-reference-type="ref" data-reference="res:equivalences">[res:equivalences]</a>. Its negation settles \#249 in the opposite direction: it supplies a positive-shift integral tail difference, which forces rationality. By contrast, failure of the sufficient bounds would rule out only those particular arguments.
 
 <a id="the-independent-denominator-exclusion."></a>
 
@@ -789,7 +866,7 @@ The constant $`7.96\times10^{34}`$ of <a href="#res:denominator" data-reference-
 
 4.  Carry-rank compression and genuinely coupled denominator compression are separate contradiction targets. No required upper bound or coupled approximant family is proved.
 
-5.  The $`k`$-kernel rank statement of Theorem <a href="#thm:kkernelrank" data-reference-type="ref" data-reference="thm:kkernelrank">6</a> is independent of the irrationality problem and settles nothing about it. Its zero-residue, composite-base arithmetic, finite-index/cardinality, and spanning layers are Lean-checked. Lean also checks the exact-rank theorem under an explicit linear-independence hypothesis. That hypothesis remains a paper deduction from Martin’s Theorem 1; Martin’s theorem is not formalised. No source was located for the rank, basis, or normal form themselves; that search result is not a priority verdict.
+5.  The $`k`$-kernel rank statement of Theorem <a href="#thm:kkernelrank" data-reference-type="ref" data-reference="thm:kkernelrank">8</a> is independent of the irrationality problem and settles nothing about it. Its zero-residue, composite-base arithmetic, finite-index/cardinality, and spanning layers are Lean-checked. Lean also checks the exact-rank theorem under an explicit linear-independence hypothesis. That hypothesis remains a paper deduction from Martin’s Theorem 1; Martin’s theorem is not formalised. No source was located for the rank, basis, or normal form themselves; that search result is not a priority verdict.
 
 The correlation source that fits the normalised totient most directly is Balasubramanian–Giri–Srivastav \[bgs2017\], not a direct transfer of the Tao–Teräväinen method. Write
 ``` math

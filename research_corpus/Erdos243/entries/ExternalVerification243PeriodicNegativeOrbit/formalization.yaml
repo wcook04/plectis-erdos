@@ -1,0 +1,209 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #243: exclusion of eventually periodic negative-magnitude orbits"
+  description: >-
+    Clearing denominators in the rational case of Erdős Problem 243 produces an exact
+    integer orbit: multipliers a n at least 2 drive D(n+1) = a n D n and C(n+1) = C n + e n,
+    where e n is the magnitude of a negative Sylvester-centred error tied to the state by D
+    n + e n = (a n - 1) C n. Eventual periodicity of that magnitude sequence, with a fixed
+    positive drift M gained over one period, is the natural way such an orbit could carry a
+    rational value, since a repeating error pattern is the discrete analogue of a repeating
+    expansion. The strongest theorem is that this is impossible: for every offset N, every
+    period h > 0 and every positive drift M, positivity and e n < a n on the tail, together
+    with the exact recurrence and the shape equation, are contradictory. Two further
+    theorems give the same exclusion for genuinely periodic orbits at every common scale and
+    for the phase-primitive case, so the whole eventually periodic negative-magnitude family
+    is closed with no residual period, offset, drift or scale, which removes the first
+    construction an irrationality specialist would attempt for this dynamics. The mechanism
+    is prime propagation: a prime occurring in two multiplier states divides every later
+    denominator, tail and magnitude, so periodicity carries any prime divisor of the drift
+    back through all phases and a finite pigeonhole closes the phase-primitive case, while
+    if primitivity fails the shared prime divides the whole orbit, dividing it out strictly
+    decreases the positive drift, and strong induction returns to the primitive case. The
+    ingredients are elementary prime divisibility and pigeonhole, and the novelty of the
+    family is unassessed. The exact recurrence, the positive drift, the periodicity and the
+    bound e n < a n are hypotheses here, orbits that are aperiodic or that change sign lie
+    outside every statement, and Erdős Problem 243 remains open.
+  authors:
+    - "Will Cook"
+  responsible_maintainers:
+    - "Will Cook"
+  license: "Apache-2.0"
+
+palomar_qualification:
+  status: "draining"
+  submitted_at_commit: "c39cea6a976747d132a848d26f110b9c608d5a45"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification243PeriodicNegativeOrbit/comparator.json"
+  repository_scope: "per_family_configuration_with_public_monolithic_provenance"
+  challenge_dependency_boundary: "Mathlib_only"
+  blockers:
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    This is a coherent three-step mechanism chain, not three padded claims. It
+    excludes an eventually periodic negative tail under the exact recurrence,
+    drift, periodicity, and magnitude hypotheses without producing those
+    hypotheses for the unrestricted parent problem.
+
+sources:
+  - title: "Periodic negative-orbit exclusion for Erdős Problem 243"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      Lean source in ErdosProblems/Erdos243/ReciprocalTailRigidity.lean and
+      complete exposition at paper theorem res:periodic.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #243"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/243"
+    type: "web discussion"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11J72", "11B37"]
+
+editorial_assessment:
+  plectis_signal:
+    score: 87
+    band: "frontier"
+    components:
+      mathematical_advancement: 40
+      parent_problem_proximity: 18
+      theorem_strength: 13
+      mechanism_depth: 8
+      consequence_reach: 8
+    scale: "0 is the weakest coherent family still worth Comparator admission; 100 is the strongest direct contribution in the current portfolio"
+    authority_boundary: >-
+      Portfolio-relative editorial reading priority only, not proof authority,
+      novelty, Comparator replay, Palomar acceptance, mechanical readiness, or
+      submission authorization.
+  presentation_order:
+    - "eventually_periodic_negative_orbit_exclusion"
+    - "all_common_scales_periodic_negative_orbit_exclusion"
+    - "phase_primitive_periodic_negative_orbit_exclusion"
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner; no terminal replay verdict recorded.
+
+status:
+  scope: >-
+    The package selects the full three-step checked exclusion chain. Challenge
+    has one trusted specification sorry per selected theorem; proof-bearing
+    source and Solution are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  axiom_audit_status: "passed_exact_propext_Quot_sound_Classical_choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit"
+      file: "ExternalVerification243PeriodicNegativeOrbit/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243PeriodicNegativeOrbit/comparator.json"
+      canonical_claim_status: "source_checked_wrapper_focused_build_passed"
+      source_declaration: "ErdosProblems.Erdos243.no_eventuallyPeriodicNegative_orbit"
+      source_file: "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+      contribution_class: "eventually periodic structured-tail exclusion"
+      paper_result_label: "res:periodic"
+      boundary: >-
+        Exact recurrence, positive drift, eventual periodicity, and the
+        magnitude bound are hypotheses rather than outputs.
+    - declaration: "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_periodicNegative_orbit"
+      file: "ExternalVerification243PeriodicNegativeOrbit/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243PeriodicNegativeOrbit/comparator.json"
+      canonical_claim_status: "source_checked_wrapper_focused_build_passed"
+      source_declaration: "ErdosProblems.Erdos243.no_periodicNegative_orbit"
+      source_file: "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+      contribution_class: "all-common-scales periodic structured-tail exclusion"
+      paper_result_label: "res:periodic"
+      boundary: >-
+        The theorem excludes every common scale but assumes periodicity and
+        the genuine magnitude bound.
+    - declaration: "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit"
+      file: "ExternalVerification243PeriodicNegativeOrbit/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243PeriodicNegativeOrbit/comparator.json"
+      canonical_claim_status: "source_checked_wrapper_focused_build_passed"
+      source_declaration: "ErdosProblems.Erdos243.no_phasePrimitivePeriodicNegative_orbit"
+      source_file: "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+      contribution_class: "phase-primitive periodic structured-tail exclusion"
+      paper_result_label: "res:periodic"
+      boundary: >-
+        This is the primitive contradiction kernel consumed by the two
+        stronger scale-removal and eventual-tail endpoints.
+
+fidelity:
+  divergences: >-
+    The package exposes the exact source theorem chain and does not add a
+    producer for periodicity, positive drift, or the magnitude bound.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Source statements, strongest-first Comparator order, exact paper label,
+    source routes, and the open conditional boundary were reviewed. Focused
+    source/challenge/solution/deliberate-negative/axiom-audit elaboration
+    passed, with all three selected declarations using exactly propext,
+    Quot.sound, and Classical.choice.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification243PeriodicNegativeOrbit"
+  statements:
+    - source: "eventually periodic negative magnitudes are impossible"
+      lean: "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit"
+      module: "ExternalVerification243PeriodicNegativeOrbit/Challenge.lean"
+      status: "exact-source-transport-focused-build-passed"
+    - source: "periodic negative magnitudes are impossible at every common scale"
+      lean: "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_periodicNegative_orbit"
+      module: "ExternalVerification243PeriodicNegativeOrbit/Challenge.lean"
+      status: "exact-source-transport-focused-build-passed"
+    - source: "phase-primitive periodic negative magnitudes are impossible"
+      lean: "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit"
+      module: "ExternalVerification243PeriodicNegativeOrbit/Challenge.lean"
+      status: "exact-source-transport-focused-build-passed"

@@ -1,0 +1,195 @@
+{
+  "complete_parent_contraction_census": {
+    "activation_predicate": {
+      "active_source_digits_mod_10": [
+        4,
+        6
+      ],
+      "affine_slope_alone_sufficient": false,
+      "exact_separation": true,
+      "inert_source_digits_mod_10": [
+        0
+      ]
+    },
+    "all_negative_parent_count": 10282880304,
+    "child_outcome_totals": {
+      "cofinal_return": 58762693440,
+      "continuing_negative": 321710970384,
+      "positive_switch": 23505077376
+    },
+    "children_per_parent": 25,
+    "compressed_affine_cache_action": "source_current_cache_hit",
+    "height_twenty_four_parent_count": 16159149648,
+    "inert_child_transition_target": {
+      "centered_error_image": [
+        -1
+      ],
+      "eliminated_raw_height_factors": [
+        31,
+        36
+      ],
+      "negative_child_count": 257072007600,
+      "next_raw_height_factor": 26
+    },
+    "maximum_negative_children_per_parent": 25,
+    "minimum_negative_children_per_parent": 11,
+    "negative_child_counts_by_source_digit_and_error": {
+      "t=0,error=-1": 257072007600,
+      "t=4,error=-1": 20553118992,
+      "t=4,error=-11": 5872319712,
+      "t=4,error=-6": 5872319712,
+      "t=6,error=-1": 20580766416,
+      "t=6,error=-11": 5880218976,
+      "t=6,error=-6": 5880218976
+    },
+    "parent_profile_counts": {
+      "cofinal=0,positive=0,negative=25": 10282880304,
+      "cofinal=10,positive=4,negative=11": 5876269344
+    },
+    "parent_profile_counts_by_affine_slope_mod_25": {
+      "cofinal=0,positive=0,negative=25,slope=0": 1467612720,
+      "cofinal=0,positive=0,negative=25,slope=10": 1469472192,
+      "cofinal=0,positive=0,negative=25,slope=15": 1470907728,
+      "cofinal=0,positive=0,negative=25,slope=20": 1469246256,
+      "cofinal=0,positive=0,negative=25,slope=3": 1470077136,
+      "cofinal=0,positive=0,negative=25,slope=5": 1465191648,
+      "cofinal=0,positive=0,negative=25,slope=7": 1470372624,
+      "cofinal=10,positive=4,negative=11,slope=3": 2938568112,
+      "cofinal=10,positive=4,negative=11,slope=7": 2937701232
+    },
+    "parent_profile_counts_by_source_digit_and_slope": {
+      "cofinal=0,positive=0,negative=25,t=0,slope=0": 1467612720,
+      "cofinal=0,positive=0,negative=25,t=0,slope=10": 1469472192,
+      "cofinal=0,positive=0,negative=25,t=0,slope=15": 1470907728,
+      "cofinal=0,positive=0,negative=25,t=0,slope=20": 1469246256,
+      "cofinal=0,positive=0,negative=25,t=0,slope=3": 1470077136,
+      "cofinal=0,positive=0,negative=25,t=0,slope=5": 1465191648,
+      "cofinal=0,positive=0,negative=25,t=0,slope=7": 1470372624,
+      "cofinal=10,positive=4,negative=11,t=4,slope=3": 1468901808,
+      "cofinal=10,positive=4,negative=11,t=4,slope=7": 1467258048,
+      "cofinal=10,positive=4,negative=11,t=6,slope=3": 1469666304,
+      "cofinal=10,positive=4,negative=11,t=6,slope=7": 1470443184
+    }
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos243.heightTwentyFour_fullPayment",
+        "ErdosProblems.Erdos243.heightTwentyFour_fullCollapse"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "falsification_consequence": "All-negative parents eliminate uniform one-step contraction.  A binary active/inert split instead makes recurrent activation of inert fibers the required analytic producer.",
+      "survival_consequence": "A maximum of at most 24 negative children would supply a uniform factor-25 contraction bound on every actual affine fiber."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "uniform_factor25_negative_continuation_contraction",
+      "statement": "Every actual height-24 parent loses at least one of its 25 children from negative support, giving a uniform continuation ratio below one."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_height24_mod25_split_receipt.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height24_parent_contraction.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height24_mod25_split.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_height24_mod25_split_receipt.json"
+      ]
+    },
+    "probe": {
+      "computation": "Reuse the source-current 32490-key affine cache, retain each complete height-24 parent, and count its 25 children separately as cofinal, positive, or continuing negative.",
+      "falsifier": "Any exact parent profile with 25 continuing-negative children.",
+      "id": "exact_weighted_parent_local_factor25_outcome_histogram",
+      "question": "Is the aggregate factor-25 loss distributed across every actual parent, or concentrated in a proper subset of affine fibers?",
+      "resource_bounds": {
+        "children_per_parent": 25,
+        "height_twenty_four_parent_count": 16159149648,
+        "logical_child_count": 403978741200,
+        "weighted_affine_key_count": 32490
+      },
+      "stop_condition": "Stop after the complete weighted parent-profile histogram is exact; do not extend individual child orbits."
+    },
+    "problem": {
+      "claim_ceiling": "Exact parent-local factor-25 classification: 10282880304 actual parents have 25 negative children, while 5876269344 have the rigid profile 10 cofinal, 4 positive, 11 negative.  The split is exactly t=0 mod 10 inert versus t in {4,6} active; unrestricted #243 remains open.  All 257072007600 inert children have error -1, eliminating the error-specific raw factors 31 and 36 from the inert frontier.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The complete exact parent-local histogram contains all-negative fibers, decisively refuting uniform one-step contraction while opening a binary activation mechanism.",
+        "next_analytic_target": "Restrict to the exact t=0 mod 10, error -1 inert subfamily and test factor 26 using only the new source coordinates modulo 32 and 13; do not build the eliminated factor-31 or factor-36 branches."
+      },
+      "status": "exact_one_way_result",
+      "summary": "Exactly 10282880304 parents are inert with profile (0,0,25), and 5876269344 are active with profile (10,4,11); source digit t mod 10 separates them exactly as 0 versus {4,6}; every inert child has error -1, so only raw factor 26 remains on that branch."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "mechanism_decision": {
+    "active_parent_count": 5876269344,
+    "active_parent_profile": {
+      "cofinal_children": 10,
+      "continuing_negative_children": 11,
+      "positive_children": 4
+    },
+    "all_negative_parent_count": 10282880304,
+    "eliminated_inert_raw_height_factors": [
+      31,
+      36
+    ],
+    "exact_activation_predicate": {
+      "active_source_digits_mod_10": [
+        4,
+        6
+      ],
+      "inert_source_digits_mod_10": [
+        0
+      ],
+      "slope_alone_sufficient": false
+    },
+    "inert_child_error_image": [
+      -1
+    ],
+    "inert_next_raw_height_factor": 26,
+    "replacement_route": "bounded_gap_or_positive_density_activation",
+    "uniform_one_step_contraction": "eliminated"
+  },
+  "schema": "erdos243-height24-parent-contraction-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 22108,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height24_parent_contraction.py",
+      "sha256": "ea3db5b2657086c5760f3de81a5ef092d38d04dd5ee7c647e8ad3ec46c32bab0"
+    },
+    {
+      "byte_length": 29511,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height24_mod25_split.py",
+      "sha256": "c4fc34b80f8dc4af2f89bff9b432562bf8183882f986bbba437cea0812b6cf4e"
+    },
+    {
+      "byte_length": 10834,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos243_height24_mod25_split_receipt.json",
+      "sha256": "52b7f45102d59f35653f827f3aa284d01e09ceaf00b79ba9c0e9dd11d3b37b1d"
+    },
+    {
+      "byte_length": 28785,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "sha256": "dbf1701c50da7eda3b8ecd0c766e4703fa7ae7ab26d5551e849070769b644486"
+    },
+    {
+      "byte_length": 39396,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "14a0fd6a9fd0fb92e58cb2e5e0656fb28476d7400234db8c7d2b4f5b4b349b3b"
+    },
+    {
+      "byte_length": 102895,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "590e41b0275a67a7cc6ebd4343bc60c9b6b9e21ba87072cc0ae6f1a01852828c"
+    }
+  ],
+  "status": "verified_exact_binary_parent_fiber_split"
+}

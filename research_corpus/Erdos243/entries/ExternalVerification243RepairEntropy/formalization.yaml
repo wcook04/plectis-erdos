@@ -1,0 +1,131 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős #243: repair-entropy conservation"
+  description: >-
+    Exact recovery-product inequalities charge the square of a repaired
+    family's transversal LCM, bound independent repairs, and force fixed-length
+    reset payments to disappear under normalized vanishing. The results are
+    conditional and do not solve unrestricted Erdős #243.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification243RepairEntropy/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification243RepairEntropy/formalization.yaml"
+  repository_scope: "public_source_commit_c55323931665f57dcf4600a674696e2ee10042bc"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "conditional_repair_entropy_and_fixed_horizon_no_go"
+  submission_authorization: "operator_directed_submission_campaign"
+  blockers:
+    - "terminal positive acceptance and deliberate-negative mismatch rejection are not yet recorded on a supported runner"
+  note: >-
+    Comparator checks exact interface equality and proof replay; it does not
+    confer novelty, significance, peer review, or a solution of Erdős #243.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A63", "11B37"]
+
+sources:
+  - title: "Repair-entropy conservation for reciprocal-tail recoveries"
+    authors: ["Will Cook"]
+    type: "original-proof"
+    relationship: "other"
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+status:
+  scope: >-
+    Three compared declarations expose the square-LCM energy inequality, its
+    independent-family consequence, and fixed-length reset disappearance.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 3
+  sorry_boundary: >-
+    The only placeholders are the three trusted theorem bodies in
+    Challenge.lean; Solution.lean and the imported source are sorry-free.
+  axiom_audit_status: "pending_focused_lean_check"
+  permitted_axiom_budget: ["propext", "Quot.sound", "Classical.choice"]
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification243RepairEntropy.repairedFamily_recovery_energy_divisionFree"
+      file: "ExternalVerification243RepairEntropy/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243RepairEntropy/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      novelty_status: "unassessed"
+      contribution_class: "conditional exact recovery-energy inequality"
+      statement: >-
+        A repaired family pays the square of its transversal LCM inside the
+        division-free recovery budget.
+      boundary: >-
+        No lower repair-entropy rate or bound for growing recovery lengths is proved.
+      comparator_declaration: "Erdos249257.ExternalVerification243RepairEntropy.repairedFamily_recovery_energy_divisionFree"
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification243RepairEntropy.repaired_card_bound_of_independent"
+      file: "ExternalVerification243RepairEntropy/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243RepairEntropy/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      novelty_status: "unassessed"
+      contribution_class: "conditional independent-repair bound"
+      statement: "Independent repaired moduli satisfy the induced cardinality bound."
+      boundary: "The theorem assumes the displayed finite recovery hypotheses."
+      comparator_declaration: "Erdos249257.ExternalVerification243RepairEntropy.repaired_card_bound_of_independent"
+      literature_dependencies: []
+    - declaration: "Erdos249257.ExternalVerification243RepairEntropy.eventually_recoveryPayment_eq_one_of_fixedLength"
+      file: "ExternalVerification243RepairEntropy/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243RepairEntropy/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      novelty_status: "unassessed"
+      contribution_class: "conditional fixed-horizon reset no-go"
+      statement: >-
+        Under normalized vanishing, every sufficiently late recovery of a
+        prescribed positive length has total cancellation payment one.
+      boundary: "Recovery lengths tending to infinity remain uncontrolled."
+      comparator_declaration: "Erdos249257.ExternalVerification243RepairEntropy.eventually_recoveryPayment_eq_one_of_fixedLength"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex"]
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted verification packaging and claim-boundary review"
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation, and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The package restates the three source declarations literally in Mathlib-only
+    vocabulary and adds no mathematical conclusion.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Exact hypotheses, quantifiers, square-LCM exponent, normalized-vanishing
+    input, and the growing-horizon boundary were reviewed.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification243RepairEntropy"
+  statements:
+    - source: >-
+        ErdosProblems.Erdos243.repairedFamily_recovery_energy_divisionFree,
+        repaired_card_bound_of_independent, and
+        eventually_recoveryPayment_eq_one_of_fixedLength.
+      lean: "Erdos249257.ExternalVerification243RepairEntropy"
+      module: "ExternalVerification243RepairEntropy/Challenge.lean"
+      status: "exact_source_transport_pending_focused_check"
+      note: "The Challenge exposes the coherent family in literal Mathlib-only vocabulary."
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

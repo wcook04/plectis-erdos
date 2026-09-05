@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification243PeriodicNegativeOrbit.Challenge",
+  "solution_module": "ExternalVerification243PeriodicNegativeOrbit.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_eventuallyPeriodicNegative_orbit",
+    "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_periodicNegative_orbit",
+    "Erdos249257.ExternalVerification243PeriodicNegativeOrbit.no_phasePrimitivePeriodicNegative_orbit"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

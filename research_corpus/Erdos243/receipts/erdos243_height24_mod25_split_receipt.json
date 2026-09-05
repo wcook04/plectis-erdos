@@ -1,0 +1,320 @@
+{
+  "complete_height_twenty_four_split": {
+    "compressed_affine_cache_schema": "erdos243-height24-mod25-affine-cache/1",
+    "compressed_affine_cache_source_fingerprint": "5051df1fd69ebf0a7186a5a740dbc45825825b4ec982fa79fbacb1f42f4d6c73",
+    "compressed_affine_cache_status": "source_current_digest_bound",
+    "height_twenty_four_input_count": 16159149648,
+    "height_twenty_four_quotient_counts_mod_25": {
+      "0": 298205893008,
+      "10": 11752538688,
+      "13": 11752538688,
+      "15": 11752538688,
+      "18": 11752538688,
+      "20": 11752538688,
+      "23": 11752538688,
+      "3": 11752538688,
+      "5": 11752538688,
+      "8": 11752538688
+    },
+    "height_twenty_three_input_count": 673297902,
+    "height_twenty_two_weighted_key_count_mod_25": 32490,
+    "joint_affine_key_count_mod_25": 166140,
+    "logical_refined_class_count": 403978741200,
+    "multiplier_residue_counts_mod_25": {
+      "0": 11752538688,
+      "1": 298205893008,
+      "10": 11752538688,
+      "11": 11752538688,
+      "15": 11752538688,
+      "16": 11752538688,
+      "20": 11752538688,
+      "21": 11752538688,
+      "5": 11752538688,
+      "6": 11752538688
+    },
+    "preceding_quotient_counts_mod_25": {
+      "0": 286453354320,
+      "1": 11752538688,
+      "11": 11752538688,
+      "14": 11752538688,
+      "16": 11752538688,
+      "19": 11752538688,
+      "21": 11752538688,
+      "24": 11752538688,
+      "4": 11752538688,
+      "6": 11752538688,
+      "9": 11752538688
+    },
+    "successor_mode_counts": {
+      "payment=1,height=25,error=-1": 298205893008,
+      "payment=1,height=25,error=-11": 11752538688,
+      "payment=1,height=25,error=-6": 11752538688,
+      "payment=1,height=25,error=4": 11752538688,
+      "payment=1,height=25,error=9": 11752538688,
+      "payment=25,height=1,error=0": 58762693440
+    }
+  },
+  "cumulative_source_class_partition": {
+    "common_modulus": 674632838880000,
+    "continuing_negative_candidate_class_count": 965132911152,
+    "exact_partition": "537660303923520 zero + 136007402045328 positive + 965132911152 negative = 674632838880000",
+    "height_twenty_five_negative_candidate_count": 965132911152,
+    "positive_centered_class_count": 136007402045328,
+    "zero_centered_class_count": 537660303923520
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos243.heightTwentyFour_fullPaymentRootIdentity",
+        "ErdosProblems.Erdos243.heightTwentyFour_multiplierAtOneModFiveIdentity",
+        "ErdosProblems.Erdos243.heightTwentyFour_multiplierAtThreeModFiveIdentity",
+        "ErdosProblems.Erdos243.heightTwentyFour_precedingQuotientTwoIdentity",
+        "ErdosProblems.Erdos243.heightTwentyFour_precedingQuotientFourIdentity",
+        "ErdosProblems.Erdos243.heightTwentyFour_fullPayment",
+        "ErdosProblems.Erdos243.heightTwentyFour_fullCollapse"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "falsification_consequence": "An image disjoint from those roots eliminates the factor-25 cofinal mechanism and isolates the realized negative continuation modes.",
+      "survival_consequence": "Any actual c congruent to 1 or 3 modulo 5 forces payment 25 and an immediate cofinal return."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "height_twenty_four_source_reaches_factor25_cofinal_roots",
+      "statement": "The actual height-24 quotient image intersects c mod 5 in {1,3}, forcing full payment 25 and a cofinal return."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_height23_composite_split_receipt.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height24_mod25_split.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height23_composite_split.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_height23_composite_split_receipt.json"
+      ]
+    },
+    "probe": {
+      "computation": "Add the mod-25 affine source coordinates to the compressed cylinder, reconstruct p modulo 6375600, propagate the exact quotient chain, and classify all 25-adic refinements.",
+      "falsifier": "No actual quotient residue congruent to 1 or 3 modulo 5, hence zero full-payment/cofinal classes.",
+      "id": "weighted_affine_height24_mod25_source_split",
+      "question": "Which generic factor-25 successor modes occur on the complete exact height-24 source image?",
+      "resource_bounds": {
+        "logical_classified_lifts": 403978741200,
+        "source_family_count": 506880,
+        "source_modulus": 6375600
+      },
+      "stop_condition": "Stop after the complete factor-25 source image and successor modes are classified; do not audit later orbit horizons."
+    },
+    "problem": {
+      "claim_ceiling": "Exact complete classification of 403978741200 actual height-24 factor-25 refinements: 58762693440 force full payment and cofinal return, 23505077376 switch positive, and 321710970384 remain negative; unrestricted #243 remains open.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "Complete weighted affine source-cylinder enumeration at factor 25 opens an actual cofinal-return mechanism and removes 20.3643812% of the incoming negative support by collapse or sign switch.",
+        "next_analytic_target": "Test whether source-affine fibers give a uniform subunit upper bound on negative continuation mass across subsequent factors; this would turn the observed factor-25 loss into an expanding-boundary kill."
+      },
+      "status": "exact_one_way_result",
+      "summary": "Exactly 58762693440 actual refinements hit payment 25 and return cofinally; 23505077376 switch positive, the generic error-minus-nine mode is absent, and 321710970384 remain in three negative modes."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "factor_twenty_five_outcome_counts": {
+    "cofinal_return": 58762693440,
+    "continuing_negative": 321710970384,
+    "positive_switch": 23505077376,
+    "removed_from_negative_support": 82267770816
+  },
+  "schema": "erdos243-height24-mod25-split-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 29511,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height24_mod25_split.py",
+      "sha256": "c4fc34b80f8dc4af2f89bff9b432562bf8183882f986bbba437cea0812b6cf4e"
+    },
+    {
+      "byte_length": 19193,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height23_composite_split.py",
+      "sha256": "9dc4179bb6c1ad6ef2eb13d205d24fb21927d616f09d4d0e2198862cf34748d3"
+    },
+    {
+      "byte_length": 7881,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos243_height23_composite_split_receipt.json",
+      "sha256": "f2028d0f1042dc60dc63a229af8929ed57b8c1dfe3b91ac2b30b349463472eef"
+    },
+    {
+      "byte_length": 28785,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "sha256": "dbf1701c50da7eda3b8ecd0c766e4703fa7ae7ab26d5551e849070769b644486"
+    },
+    {
+      "byte_length": 36782,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "5fa90191cb4fe0107cf7f7e8cd838793dfac85b09f12ac0869415dbafbd27793"
+    },
+    {
+      "byte_length": 99027,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "1ec02a3ebb2b41bb156ade0487632833fa5193c4ae6daa9b328f317d5ae57cf6"
+    }
+  ],
+  "status": "verified_exact_height_twenty_four_cofinal_opening",
+  "symbolic_height_twenty_four_modes": {
+    "cofinal_preceding_quotient_classes_mod_25": [
+      2,
+      4,
+      7,
+      9,
+      12,
+      14,
+      17,
+      19,
+      22,
+      24
+    ],
+    "cofinal_preceding_quotient_classes_mod_5": [
+      2,
+      4
+    ],
+    "full_payment_identity": "(552*c^2+22*c+1)-2*(c-1)*(c-3)=5*(110*c^2+6*c-1)",
+    "full_payment_residue_classes_mod_5": [
+      1,
+      3
+    ],
+    "height_twenty_four_multiplier": "552*c^2+22*c+1",
+    "preceding_quotient_classes_by_successor_mode": {
+      "payment=1,height=25,error=-1": [
+        0,
+        16
+      ],
+      "payment=1,height=25,error=-11": [
+        1,
+        15
+      ],
+      "payment=1,height=25,error=-6": [
+        20,
+        21
+      ],
+      "payment=1,height=25,error=4": [
+        3,
+        5,
+        8,
+        11,
+        13,
+        18,
+        23
+      ],
+      "payment=1,height=25,error=9": [
+        6,
+        10
+      ],
+      "payment=25,height=1,error=0": [
+        2,
+        4,
+        7,
+        9,
+        12,
+        14,
+        17,
+        19,
+        22,
+        24
+      ]
+    },
+    "preceding_quotient_map_mod_25": {
+      "0": [
+        0,
+        16
+      ],
+      "10": [
+        6,
+        10
+      ],
+      "13": [
+        4,
+        12
+      ],
+      "15": [
+        1,
+        15
+      ],
+      "18": [
+        2,
+        14
+      ],
+      "20": [
+        20,
+        21
+      ],
+      "23": [
+        17,
+        24
+      ],
+      "3": [
+        7,
+        9
+      ],
+      "5": [
+        5,
+        11
+      ],
+      "8": [
+        19,
+        22
+      ],
+      "9": [
+        3,
+        8,
+        13,
+        18,
+        23
+      ]
+    },
+    "source_digits_by_successor_mode": {
+      "payment=1,height=25,error=-1": [
+        0,
+        14
+      ],
+      "payment=1,height=25,error=-11": [
+        15,
+        24
+      ],
+      "payment=1,height=25,error=-6": [
+        19,
+        20
+      ],
+      "payment=1,height=25,error=-9": [
+        2,
+        7,
+        12,
+        17,
+        22
+      ],
+      "payment=1,height=25,error=4": [
+        5,
+        9
+      ],
+      "payment=1,height=25,error=9": [
+        4,
+        10
+      ],
+      "payment=25,height=1,error=0": [
+        1,
+        3,
+        6,
+        8,
+        11,
+        13,
+        16,
+        18,
+        21,
+        23
+      ]
+    }
+  }
+}

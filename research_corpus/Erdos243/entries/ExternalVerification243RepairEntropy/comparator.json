@@ -1,0 +1,15 @@
+{
+  "challenge_module": "ExternalVerification243RepairEntropy.Challenge",
+  "solution_module": "ExternalVerification243RepairEntropy.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243RepairEntropy.repairedFamily_recovery_energy_divisionFree",
+    "Erdos249257.ExternalVerification243RepairEntropy.repaired_card_bound_of_independent",
+    "Erdos249257.ExternalVerification243RepairEntropy.eventually_recoveryPayment_eq_one_of_fixedLength"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

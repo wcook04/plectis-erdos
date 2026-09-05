@@ -1,7 +1,7 @@
 {
   "builder_schema": "erdos249257-semantic-corpus/1",
-  "input_fingerprint": "sha256:dddee1705e40022588ae87253c4502c35349f0275d06fc8007ddd555e0db22e8",
-  "output_digest": "sha256:a5f6dec07253cce0e89b8190d18542921dd254c710e9eb5cd0abe1bd75859be4",
+  "input_fingerprint": "sha256:2f3d2dbcc1b50e1354a95bd063ede7da937f3fdc2c5530dac70543bc342a7830",
+  "output_digest": "sha256:46b8710efa829757e507605c83066974d494a4adc8beebb18ce03e581d4519c8",
   "schema": "erdos249257-semantic-corpus-check/1",
   "summary": {
     "declarations": 153671,
@@ -190,7 +190,7 @@
     {
       "end": 6571,
       "key": "semantic_input_fingerprint",
-      "sha256": "c77073855f17cb3e5aecd1c9895c2c2110051f8ba81a313f13be011bb6b2e8cc",
+      "sha256": "056ab59374be2cd43ef3fe5c4263d9428bbc724a4f209b06135d138a77b74231",
       "start": 6469
     },
     {
@@ -218,52 +218,52 @@
       "start": 35500
     },
     {
-      "end": 25487336,
+      "end": 25491072,
       "key": "statement_nodes",
-      "sha256": "a0681d2b61c37b9fdf7644fd2ff44bb00b1615b82ba5b2b037aabb2c224420d4",
+      "sha256": "1aa4316343879444b9214b040f65b9e0ab08ca072f33903f59cec538b15b27b5",
       "start": 181299
     },
     {
-      "end": 28119797,
+      "end": 28123533,
       "key": "relations",
       "sha256": "4c1d10f36b78ef492a3abe20de51a6ed54792096fcc067cb914d9eb00607fd99",
-      "start": 25487337
+      "start": 25491073
     },
     {
-      "end": 28157495,
+      "end": 28161231,
       "key": "generated_families",
       "sha256": "f70aa74e215fe18eab3b4de555ae37f76a1e473e1cf9144c4f53ae74d08872fb",
-      "start": 28119798
+      "start": 28123534
     },
     {
-      "end": 100056047,
+      "end": 100059783,
       "key": "declaration_roles",
       "sha256": "6ce8eefa6c7780975fe5fdc46703bd0c17b9946ea1715eb333628f8d258ac280",
-      "start": 28157496
+      "start": 28161232
     },
     {
-      "end": 100170488,
+      "end": 100174224,
       "key": "frontier",
       "sha256": "f1e1f115298fd425d682308ab0974c28b8573e8ff1bfd5054788fdbb07f56544",
-      "start": 100056048
+      "start": 100059784
     },
     {
-      "end": 100246089,
+      "end": 100249825,
       "key": "views",
       "sha256": "e00696cf737293b87da7ec5e5832b119b7fa7f69438cce7d30e3720a111b8f0f",
-      "start": 100170489
+      "start": 100174225
     },
     {
-      "end": 100569090,
+      "end": 100572826,
       "key": "integrity",
       "sha256": "f9363a6c8cda4119afb555b09356646787d79ed1b174ae85a48aedeecc0935e3",
-      "start": 100246090
+      "start": 100249826
     },
     {
-      "end": 100683237,
+      "end": 100686973,
       "key": "declaration_role_module_ranges",
       "sha256": "fed2c611478b03fd07b4ecd91c98910e8ad05c418264be63820c3bc9a0c74f34",
-      "start": 100569091
+      "start": 100572827
     }
   ],
   "verification_posture": "content_addressed_generated_corpus_and_public_census_surfaces_matched_a_full_builder_run"
