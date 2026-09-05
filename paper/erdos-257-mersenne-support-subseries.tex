@@ -867,50 +867,39 @@ counted with multiplicity.  The bouquet, infinitude and factor count are
 \mword{Erdos249257/SupportSunflowerDichotomy.lean}{319}{alternatingPrimeSquareBouquet}{constructed},
 \mword{Erdos249257/SupportSunflowerDichotomy.lean}{337}{alternatingPrimeSquareSupport_infinite}{proved}, and
 \mword{Erdos249257/SupportSunflowerDichotomy.lean}{343}{alternatingPrimeSquareSupport_cardFactors_eq_three}{checked}, respectively.
-The missing step is not the existence of a bouquet.  It is a simultaneous
-choice of a divisible block and a small following tail.
+The reciprocal-summable support theorem already settles these examples.
+The reduced-modulus identity describes their arithmetic structure; no
+additional block selector is needed for irrationality. The all-base argument
+is proved in \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-proofs.md}{the support-averaging supplement}.
 
-\begin{theorem}[orthogonal-petal sunflower criterion]
+\begin{theorem}[unconditional orthogonal-petal criterion]
 \label{res:sunflower}
-Let $A$ be a bouquet as above, put $c(n)=\scA_A(n)$, and define
-\[
- T_N=\sum_{j\ge1}\frac{c(N+j)}{2^j},\qquad
- B_{N,K}=\sum_{r=1}^K c(N+r)2^{K-r}.
-\]
-Suppose that for every $K\ge1$ there is an $N\ge0$ for which
-\[
- 2^K\mid B_{N,K},\qquad T_{N+K}\le16.
-\]
-Then $\sum_{a\in A}(2^a-1)^{-1}$ is irrational.
+Let $A$ be a bouquet as above. Then
+$\sum_{a\in A}(b^a-1)^{-1}$ is irrational for every integer $b\ge2$.
 \end{theorem}
 
 \begin{proof}
-Write the series as $X=\sum_{n\ge1}c(n)2^{-n}$.  If $qX$ is an integer
-for some positive integer $q$, then $qT_N$ is an integer for every $N$:
-multiply the series by $2^N$ and remove its integral prefix.  Choose $K$
-with $2^K>16q$ and use the assumed selector.  Splitting the tail gives
+Each positive core satisfies $c_i\ge1$. The support decomposition gives
 \[
- T_N=\frac{B_{N,K}}{2^K}+\frac{T_{N+K}}{2^K}.
+ \sum_{a\in A}\frac1a
+ \le \sum_{a\in E}\frac1a+\sum_i\frac1{c_ip_i}
+ \le \sum_{a\in E}\frac1a+\sum_i\frac1{p_i}<\infty.
 \]
-The first term is integral, so $qT_{N+K}/2^K$ is an integer.  It is strictly
-between zero and one: the upper bound follows from the selector, and
-positivity follows because any positive $a\in A$ divides arbitrarily large
-indices.  This is a contradiction.
+The exceptional sum is finite, and the last series is a defining bouquet
+hypothesis. The rays are distinct, so $A$ is infinite. Apply the all-base
+reciprocal-summable support theorem. In particular, the alternating-core
+example above gives an irrational sum at every integer base.
 \end{proof}
 
-The proof only needs one positive member of $A$; the bouquet is a proposed
-source of the selector, not a further ingredient in the contradiction.
-Likewise, $16$ can be replaced by any fixed finite positive bound.  What must
-be uniform is the tail bound as $K$ grows.  The pinned Lean proof implements
-the bound $16$ through finite windows and the
-\mword{Erdos249257/SupportSunflowerDichotomy.lean}{531}{sunflowerForcedCarrySupply_of_orthogonalPetalBouquet}{forced carry supply},
-then applies the
-\mword{Erdos249257/SupportSunflowerDichotomy.lean}{540}{irrational_erdosSupportSeries_of_orthogonalPetalBouquet}{irrationality endpoint}.
-The displayed selector is exactly
-\mword{Erdos249257/SupportSunflowerDichotomy.lean}{406}{SunflowerForcedSlotTailSelection}{the remaining hypothesis}.
-Neither the reduced-modulus identity nor reciprocal summability proves that
-selector here.  In particular, the example above is not thereby proved to
-give an irrational sum.
+This composition makes the former selector hypothesis unnecessary. The
+older pinned
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{540}{irrational_erdosSupportSeries_of_orthogonalPetalBouquet}{conditional endpoint}
+remains valid, but its
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{406}{SunflowerForcedSlotTailSelection}{forced-slot hypothesis}
+is a burden of that certificate construction. The proof above uses the
+actual support's reciprocal mass directly. Its composed statement should
+be distinguished from the older conditional declaration at the pinned
+formal-source checkpoint.
 
 \begin{theorem}[the composite-dilation defect]
 \label{res:compositedefect}
@@ -955,8 +944,9 @@ so $\delta_A(6,1)=1$
 
 Thus a composite bouquet cannot be analysed by copying the prime formula
 until this explicit foreign channel has been budgeted.  This theorem provides
-that local budget only; it neither bounds defects along an infinite orbit nor
-supplies the uniform tail selector required by Theorem~\ref{res:sunflower}.
+that local budget. The unconditional irrationality in
+Theorem~\ref{res:sunflower} follows instead from reciprocal summability,
+without estimating those orbit defects.
 
 \section{Squarefree support and a coordinate-dependent obstruction}
 \label{sec:squarefree}
@@ -1901,10 +1891,11 @@ corollary applies to power-of-two bases.
 
 \section*{Statements and declarations}
 
-This manuscript is authored exposition, not proof authority.  The linked Lean
-snapshot is authoritative only for its exact propositions; kernel checking
-establishes that a proposition was proved, not that it is interesting, novel,
-or sufficient.  The displayed proof of Corollary~\ref{res:blind}, the
+The inline links identify the exact formal statements used in each section.
+The analytic criteria in Section~\ref{sec:eight-return-extensions} and the
+all-base bouquet composition in Theorem~\ref{res:sunflower} have ordinary
+proofs above and in the linked supplement. The displayed proof of
+Corollary~\ref{res:blind}, the
 derivation of Corollary~\ref{res:sfsettled} from
 ~\cite[Cor.~1.2 and Ex.~1.1, author-preprint p.~4]{duverneytachiya},
 and the general finite-change argument (from the two checked prefix lemmas) are

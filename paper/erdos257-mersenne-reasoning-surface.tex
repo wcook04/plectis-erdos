@@ -191,8 +191,8 @@ normalisation and reduce to explicit infinite-orbit alternatives; neither
 membership question is decided.
 
 Published work independently settles prime
-support at base~$2$ and squarefree support at every power-of-two base.  We
-claim no priority for those cited results.  Universal \#257 and both target
+support at base~$2$ and squarefree support at every power-of-two base.
+Universal \#257 and both target
 membership questions remain open.
 \end{abstract}
 
@@ -608,19 +608,22 @@ distinct subset sums of a row of seam weights are separated by at least $2^{s+1}
 nine coordinates the corpus has built --- truncation rung $J$, seam row $s$, integer margin, sharp
 tail margin, half-carry $K_n$, reverse-carry word, Boolean--M\"obius exact row, fatal-cell interval
 packing, Dedekind cut-locator --- is therefore a coordinate on the binary digits of \emph{one}
-specific real orbit. There is no family to range over.
+specific real orbit. Distinct supports cannot represent the same value.
 \coord{meta} \scale{uniform} \ev{Lean}\ev{Math}\\
 \textbf{Sites:} \lean{weightedBoolSum\_separated}{HalfCylinderIntegerGreedy.lean:447},
 \lean{three\_mul\_tailWeight\_add\_exactLateGap\_eq\_three\_mul\_headWeight}{HalfCylinderLargestSkipGap.lean:230},
 \lean{positiveMersenneDigitValue\_injective}{GreedyAchievementSet.lean:1582}.
 \end{obs}
 
-All six barriers below are consequences of Observation~\ref{obs:no-ensemble} in different
-directions: there is nothing to choose (\ref{bar:canon}), nothing weaker to prove
-(\ref{bar:collapse}), nothing to average over (\ref{bar:measure}), no information at the available
-scales (\ref{bar:scale}), no certificate in the provable direction (\ref{bar:asym}), and, on the
-universal side, no way to make a general support satisfy the certificate engine's first hypothesis
-(\ref{bar:box}).
+The next sections separate six limitations. Canonicalisation fixes the
+support for a specified value (\ref{bar:canon}); several proposed producers
+are equivalent to the original membership statement (\ref{bar:collapse});
+current estimates leave a scale gap (\ref{bar:scale}); and bounded replay
+needs a uniform continuation argument (\ref{bar:asym}). Measure and category
+do not decide the rational targets (\ref{bar:measure}). On the universal
+side, some supports violate the particular block engine's hypotheses
+(\ref{bar:box}). These have different causes and do not form an exhaustion
+of possible proof methods.
 
 \subsection{Barrier 1: canonicalisation --- the witness space is a singleton}
 \label{bar:canon}
@@ -844,67 +847,72 @@ as such wherever it is used below.
 \subsection{Barrier 4: decision asymmetry --- the certificates point the wrong way}
 \label{bar:asym}
 
-\begin{thm}[One-sidedness; \textsc{proved}]
+\begin{thm}[Finite failure and all-rank survival]
 \label{thm:one-sided}
-$1/2 \notin \mathcal{A}$ is $\Sigma^0_1$: a single finite object --- a fatal gap --- certifies it.
-$1/2 \in \mathcal{A}$ is $\Pi^0_1$, and no finite object certifies it. Consequently no finite
-computation, at any depth, can establish $1/2 \in \mathcal{A}$.
-\coord{meta} \scale{uniform} \ev{Lean}
+The target $1/2$ lies outside $\mathcal A$ if and only if its greedy orbit
+has a fatal gap. It belongs to $\mathcal A$ if and only if the greedy
+remainder stays below the remaining tail at every rank.
+\coord{greedy-orbit} \scale{uniform} \ev{Lean}
 \end{thm}
 
 \begin{proof}
-The dichotomy $1/2 \in \mathcal{A}$ or $\exists$ a fatal gap is unconditional
-(\lean{half\_mem\_mersenneAchievementSet\_or\_exists\_fatal\_gap}{HalfCutLocator.lean:623}), and the
-two alternatives are exactly complementary
-(\lean{existsFatalHalfGap\_iff\_half\_not\_mem\_mersenneAchievementSet}{HalfCutLocator.lean:643}),
-with \lean{ExistsFatalHalfGap}{HalfCutLocator.lean:526} a finite witness type. In the other
-direction, certified death implies non-membership
-(\lean{certifiedGreedyMersenneDeath\_not\_mem}{GreedyAchievementSet.lean:1762}, over
-\lean{CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1756}; $3/4$ is certified dead at
-level $1$, lookahead $0$, by
-\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1778}), whereas the
-absence of such a certificate at any depth $D$ is compatible with a certificate at depth $D+1$ and
-therefore proves nothing. Membership asserts survival at \emph{every} rank
-(Theorem~\ref{thm:greedy-survival}), an infinite conjunction with no finite sub-conjunction
-implying it.
+These are the
+\href{\repobase/Erdos249257/HalfCutLocator.lean\#L643}{fatal-gap equivalence}
+and the
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L1458}{greedy-survival criterion}.
+A
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L1756}{certified greedy death}
+records a strict failure using a rational upper bound for the tail;
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L1762}{such a certificate excludes membership}.
+For example,
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L1778}{$3/4$ has a certificate at level $1$ with lookahead $0$}.
 \end{proof}
 
-\textbf{Rules out.} Any programme whose plan is ``extend the certified depth''. Pushing the
-truncation rung to $J = 23$, the seam to row $10^6$, or the macro receipt to depth $10^8$ cannot in
-principle decide the branch --- each raises a lower bound on a death rank which, if the supported
-branch is correct, does not exist.
+For a rational target, a strict fatal gap is eventually detected by refining
+the rational tail bound. This gives a semidecision procedure for
+nonmembership. A computation that reports survival through rank $D$ records
+those finitely many comparisons; the survival criterion still requires an
+argument covering every later rank. Extending the replay can expose a fatal
+gap or suggest a useful invariant, but a successful finite replay by itself
+does not supply that argument.
 
-\textbf{Explains.} Every certificate the programme owns is of this one type. The certified depths
-grew by roughly two orders of magnitude across the recorded history with no change whatsoever in
-decision status; that is not a coincidence to be pushed through, it is the theorem above being
-observed empirically. Accumulated survival is not convergence toward proof.
+This is a limitation of bounded replay, not an impossibility theorem for
+finite proofs or certificates of membership. An inductive invariant, a
+proved recurrence, or a finite criterion with a uniform completeness theorem
+could establish the all-rank statement. The existence of such a reduction
+is a legitimate proof target. In particular, the logical form of the
+survival criterion does not rule it out.
 
-\subsection{Barrier 5: measure and category point in opposite directions}
+\subsection{Barrier 5: what measure and category leave undetermined}
 \label{bar:measure}
 
-\begin{prop}[The two soft heuristics contradict each other; \textsc{proved}]
+\begin{prop}[Positive measure and empty interior]
 \label{prop:soft}
-$\mathcal{A}$ has Lebesgue measure exactly $1$ inside an ambient span of $E \approx 1.6067$, a
-relative density of about $62\%$, and is simultaneously nowhere dense, perfect and totally
-disconnected (Theorem~\ref{thm:geometry}). Hence the measure heuristic --- ``a random point lies in
-$\mathcal{A}$ with probability $\approx 0.62$'' --- predicts \#257 \emph{false}, while the category
-heuristic --- ``$\mathcal{A}$ is meagre, so a generic point misses it'' --- predicts \#257
-\emph{true}. \coord{achievement-set} \scale{uniform} \ev{Lean}
+The achievement set $\mathcal A$ has
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L996}{Lebesgue measure $1$}
+and is
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L1681}{nowhere dense}.
+Thus a uniformly sampled point of $[0,E]$ belongs to $\mathcal A$ with
+probability $1/E$, while a Baire-generic point lies outside it.
+\coord{achievement-set} \scale{uniform} \ev{Lean}\ev{Math}
 \end{prop}
 
-\textbf{Rules out.} Every soft argument: measure-theoretic, Baire-category, metric number theory
-(almost-all / almost-none), and probabilistic digit models. The two standard notions of ``typical''
-disagree on this object, so neither can be the mechanism. Worse, by injectivity of the digit coding
-(Observation~\ref{obs:no-ensemble}) there is no ensemble of candidate representations to average
-over: each rational has exactly one candidate support, so counting, second-moment and pigeonhole
-arguments have nothing to range over. It also rules out deciding (U) by showing $\mathcal{A}$ is
-``small'': it is not small --- it is $62\%$ of its ambient interval by measure.
+These are compatible statements about different notions of typicality.
+Neither assigns a probability to membership of the fixed rational $1/2$,
+nor decides whether any rational has an infinite support. The rational
+points form a countable, hence null and meagre, set, so an almost-everywhere
+or generic-point conclusion alone leaves their membership undetermined.
+The checked geometry therefore supplies context, not evidence for either
+answer to (U) or (H).
 
-\textbf{Explains.} The programme's own probabilistic estimate sits squarely on the losing side of
-this split: under a Bernoulli$(1/2)$ digit model the expected number of counterexamples with
-$n \ge 32$ is about $2 \times 10^{-4}$, i.e.\ the model predicts $1/2 \in \mathcal{A}$. That
-estimate is worth exactly as much as the model, and the model is a measure-side object that cannot
-see a specific point of a nowhere-dense set having Lebesgue measure exactly $1$. \ev{Cert}
+The
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L1582}{injectivity of digit coding}
+likewise says that an achievable value has a unique support. It does not
+prohibit averaging over ranks, shifts, or finite approximations: the
+small-shift argument in Section~\ref{sec:257-weighted-returns} is one such
+use of averaging. A probabilistic model of the greedy digits would need a
+separate arithmetic justification before its predictions could bear on the
+specified target.
 
 \subsection{Barrier 6: the two-axis certificate box (universal direction)}
 \label{bar:box}
@@ -1171,8 +1179,8 @@ while the near-miss index gives the exact mismatch at each open obligation.
 \paragraph{Scale and coordinate discipline.} The direct certified instances
 remain fixed or bounded --- rungs $J \le 22$, seam rows $\le 200{,}000$, ranks
 $\le 3000$, and macro depth $\le 13{,}548{,}057$ --- whereas the open
-obligations are cofinal.  Theorem~\ref{thm:one-sided} shows that extending a
-bounded range does not establish a cofinal statement.  Coordinate tags are
+obligations are cofinal.  Theorem~\ref{thm:one-sided} identifies the all-rank obligation; extending a
+bounded range still requires a uniform argument for the remaining ranks.  Coordinate tags are
 equally literal: an obstruction in \coord{half-carry}, \coord{seam-row}, or
 \coord{diophantine} does not transfer to another representation without a
 proved map.  Coordinate-free barriers are marked explicitly.
