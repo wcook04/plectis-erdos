@@ -49,6 +49,29 @@ reveals a reusable failure class.
 This map is deliberately compact. Open the owner named by the failing journey;
 do not read every registry, graph, paper, or skill as a startup ritual.
 
+## Module graphs, labels, and projection freshness
+
+For module dependency inspection or graph maintenance, start with
+`python3 scripts/build_module_graph.py --check`. The graph lives at
+`docs/claims.json::machine_readable_paper.module_graph`: Lean source owns paths
+and import edges; each node's `role` is authored navigation metadata. The
+builder preserves existing roles and supplies defaults for new nodes.
+
+Correct a role at that authored field. Change an import in Lean source, then
+run `python3 scripts/build_module_graph.py` to derive the graph; do not repair
+an import edge by editing the JSON. Lean edits also require focused validation
+through `skills/lean-concurrent-validation/SKILL.md`. A clearer label does not
+change the corresponding theorem or claim status.
+
+For broader stale projections, use
+`python3 scripts/refresh_projections.py --check` to identify the failing owner.
+After the source correction, `python3 scripts/refresh_projections.py` runs the
+registered builders in dependency order. Claim their output paths first in a
+shared checkout. Do not regenerate unrelated projections over another
+contributor's work. Use the changed module's
+`python3 scripts/query_corpus.py --connections <module>` packet to verify that
+its downstream navigation still resolves.
+
 ## Classify before changing
 
 Choose the first matching class:

@@ -17,6 +17,16 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    "inspect the module dependency graph": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "refresh the authoring graph labels": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "check projection freshness and repair stale projections": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "prove a graph theorem in Lean": ("bounded_research", "mine-open-problem"),
     "explain how this repo works to a newcomer": ("understand_repository", "explain-public-system"),
     "I am new here and want to understand the eight open problems": (
         "understand_repository",
