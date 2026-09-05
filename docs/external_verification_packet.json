@@ -42,7 +42,7 @@
       "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
     },
     "roster_source": "verification/comparator.json",
-    "theorem_name_count": 51,
+    "theorem_name_count": 54,
     "theorem_names": [
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
@@ -61,6 +61,9 @@
       "Erdos249257.ExternalVerification.cylinderMass_split",
       "Erdos249257.ExternalVerification.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient",
       "Erdos249257.ExternalVerification.fixedPrecisionTropicalNoGo",
+      "Erdos249257.ExternalVerification.actualLcmTailDiff_shift_pos",
+      "Erdos249257.ExternalVerification.actualLcm_trueEndpointSurvivor_neg",
+      "Erdos249257.ExternalVerification.actualLcm_integral_forces_topEdgeResidue",
       "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
       "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
       "Erdos249257.ExternalVerification.exists_clean_binaryCyclotomicAnchor",
@@ -2786,10 +2789,10 @@
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
-    "lakefile.toml": "sha256:d7306cd0edc5554ff3cf6d1a210f9e4474b2734c9daad2ebb1614e4d9e847e4e",
+    "lakefile.toml": "sha256:e7bba499ed24eaff26c73c2981b90214792caefd7b2ec42869dd010eeee7e22f",
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:148629b13dee6c9686898574359f41c82b7d81ada9b7eee6f11dccbfbfb814c2",
+  "config_digest": "sha256:9410c50fccb5532709d6dfc83cbf36e1079adda759ac78ad1d35fb037ea8661b",
   "solution_source_digest": "sha256:67a30468f5f564b196e6e404f476fab96ec12addf5db99a0d1cee03a27ac096d"
 }

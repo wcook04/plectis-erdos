@@ -454,7 +454,7 @@
       "represented_by_selected_interface": 8,
       "targeted_exact_interface": 45
     },
-    "family_linked_current_interface_count": 48,
+    "family_linked_current_interface_count": 51,
     "family_linked_replay_candidate_interface_count": 17,
     "unassociated_current_interface_count": 3,
     "unassociated_replay_candidate_interface_count": 193,
@@ -874,10 +874,10 @@
         "registered_comparator_classification": "targeted_exact_interface",
         "execution_classification": "has_executable_challenge_package",
         "registered_current_interface_count": 1,
-        "current_comparator_interface_count": 1,
+        "current_comparator_interface_count": 4,
         "replay_candidate_interface_count": 1,
         "executable_package_count": 2,
-        "executable_interface_count": 2,
+        "executable_interface_count": 5,
         "packages": [
           {
             "package_id": "ExternalVerification",
@@ -885,6 +885,9 @@
             "challenge_module": "ExternalVerification.Challenge",
             "solution_module": "ExternalVerification.Solution",
             "interface_names": [
+              "Erdos249257.ExternalVerification.actualLcmTailDiff_shift_pos",
+              "Erdos249257.ExternalVerification.actualLcm_integral_forces_topEdgeResidue",
+              "Erdos249257.ExternalVerification.actualLcm_trueEndpointSurvivor_neg",
               "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply"
             ]
           },
@@ -2021,21 +2024,20 @@
   "registered_claim_coverage": {
     "schema": "plectis.comparator-registered-claim-coverage/1",
     "registry_authority": "docs/claims.json::claims",
-    "registry_digest": "sha256:eb3aaf28ffaff90f4a5726098b6cba3dc5ecaaf53b315e2fa2187d2c1e1900c7",
+    "registry_digest": "sha256:9973af8db5056df6967d41d750bf3a75359616100cee3d7012899b33ebf4a2ba",
     "registry_digest_definition": "sha256 of canonical JSON rows containing each registered claim id, status, statement, exact declaration anchors, and explicit transports",
     "registered_claim_count": 131,
     "classified_claim_count": 131,
     "classification_counts": {
       "cited_only_non_executable": 3,
-      "linked_transport": 32,
-      "missing_formal_transport": 88,
+      "linked_transport": 33,
+      "missing_formal_transport": 87,
       "open_non_executable": 8
     },
     "formal_claim_count": 120,
-    "linked_transport_claim_count": 32,
-    "missing_formal_transport_count": 88,
+    "linked_transport_claim_count": 33,
+    "missing_formal_transport_count": 87,
     "missing_formal_claim_ids": [
-      "actual_lcm_positive_corridor_top_edge",
       "adelic_height_obstruction",
       "adjacent_phase_separation_reduction",
       "affine_transport_annihilation",
@@ -6878,7 +6880,7 @@
       {
         "claim_id": "actual_lcm_positive_corridor_top_edge",
         "claim_status": "unconditional progress",
-        "classification": "missing_formal_transport",
+        "classification": "linked_transport",
         "registered_declarations": [
           {
             "name": "actualLcmTailDiff_shift_pos",
@@ -6896,18 +6898,66 @@
             "line": 211
           }
         ],
-        "transport_count": 0,
-        "transports": [],
+        "transport_count": 3,
+        "transports": [
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_name": "Erdos249257.ExternalVerification.actualLcmTailDiff_shift_pos",
+            "source_declarations": [
+              {
+                "name": "actualLcmTailDiff_shift_pos",
+                "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+                "line": 39
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_name": "Erdos249257.ExternalVerification.actualLcm_integral_forces_topEdgeResidue",
+            "source_declarations": [
+              {
+                "name": "actualLcm_integral_forces_topEdgeResidue",
+                "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+                "line": 211
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          },
+          {
+            "package_id": "ExternalVerification",
+            "package_role": "current_comparator_package",
+            "challenge_module": "ExternalVerification.Challenge",
+            "solution_module": "ExternalVerification.Solution",
+            "interface_name": "Erdos249257.ExternalVerification.actualLcm_trueEndpointSurvivor_neg",
+            "source_declarations": [
+              {
+                "name": "actualLcm_trueEndpointSurvivor_neg",
+                "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+                "line": 172
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          }
+        ],
         "source_anchor_coverage": {
           "registered_count": 3,
-          "linked_count": 0,
-          "unlinked_declaration_indices": [
-            0,
-            1,
-            2
-          ]
+          "linked_count": 3,
+          "unlinked_declaration_indices": []
         },
-        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
       },
