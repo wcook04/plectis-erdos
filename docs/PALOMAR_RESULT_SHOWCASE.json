@@ -2486,7 +2486,7 @@
     {
       "problem": 249,
       "status": "open",
-      "frontier_summary": "Finite dyadic and conditional all-base kernel rank, exact visible-lattice and gcd-moment identities, Stern-Brocot stability, the first-harmonic pivot decomposition, actual-LCM sign/top-edge support, the strict-prime phase-density/natural-prime conditional producer, and a synthetic LCM factor-ideal no-go are exposed.",
+      "frontier_summary": "The checked dyadic-section basis gives every rational relation among totient sections and exact rank 2^e+1 through each level e>=1. Its carry-recurrence consumer forces unbounded rational rank under hypothetical rationality; modular periodicity does not supply a contrary rank bound. The positive rank-one Mobius-Mersenne quotient has unique minimizer (1,5) and a uniform gap greater than 21/320, preserved by finite positive mixing. These are substantive structural and approximation obstructions. Full-depth ray amplification turns an existing seed into an eventually two-syndetic family, while the canonical residue and actual-LCM criteria still lack their required nonintegral seeds. The short paper explains the basis before its consumers and distinguishes synthetic no-go witnesses from the true totient orbit.",
       "open_boundary": "The binary totient series irrationality endpoint and the unbounded certificate supply.",
       "comparator_declarations": [
         "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
@@ -2523,7 +2523,7 @@
     {
       "problem": 257,
       "status": "open",
-      "frontier_summary": "The checked frontier combines achievement-set geometry, full and structured support irrationality, finite-period noncollapse, state extraction, composite-dilation defects, exact-row conditional dynamics, and the sharp two-adic band bound.",
+      "frontier_summary": "Checked results include known full, periodic and reciprocal-summable pairwise-coprime support irrationality, exact finite-denominator periods, and achievement-set measure and geometry. For finite-core bouquets, the unused petal survives exactly as a reduced modulus; an infinite alternating prime-square example has three prime factors per element. The bouquet irrationality endpoint still assumes a uniform forced-slot tail selector, which is not constructed. The short paper gives the direct denominator contradiction consuming that selector and the composite-dilation defect that prevents copying the prime argument. Exact rational-value constraints and the sharp local two-adic band obstruction do not settle half or 1/21 membership.",
       "open_boundary": "Universal irrationality for every infinite support, including the unresolved half and 1/21 membership routes.",
       "comparator_declarations": [
         "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
