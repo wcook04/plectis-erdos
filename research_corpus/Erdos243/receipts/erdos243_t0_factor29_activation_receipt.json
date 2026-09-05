@@ -1,0 +1,185 @@
+{
+  "complete_factor29_census": {
+    "exhaustive_source_parent_count": 77760,
+    "exhaustive_source_sample_count": 2255040,
+    "factor27_multiplier_counts_mod_812": {
+      "1": 544320,
+      "421": 622080,
+      "673": 622080,
+      "701": 311040,
+      "757": 155520
+    },
+    "factor27_quotient_counts_mod_29": {
+      "0": 544320,
+      "15": 622080,
+      "24": 622080,
+      "25": 311040,
+      "27": 155520
+    },
+    "factor28_multiplier_counts_mod_29": {
+      "0": 622080,
+      "1": 544320,
+      "15": 155520,
+      "16": 311040,
+      "8": 622080
+    },
+    "factor28_negative_parent_count": 1110551072832000,
+    "factor29_logical_refinement_count": 32205981112128000,
+    "factor29_parent_profile_counts": {
+      "cofinal=8,positive=6,negative=15": 1110551072832000
+    },
+    "factor29_successor_mode_counts": {
+      "payment=1,height=29,error=-1": 7773857509824000,
+      "payment=1,height=29,error=-6": 8884408582656000,
+      "payment=1,height=29,error=5": 4442204291328000,
+      "payment=1,height=29,error=7": 2221102145664000,
+      "payment=29,height=1,error=0": 8884408582656000
+    },
+    "uniform_negative_continuation_ratio": "15/29"
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos243.heightTwentyEight_multiplierQuotientIdentity",
+        "ErdosProblems.Erdos243.heightTwentyEight_quotientZeroMode",
+        "ErdosProblems.Erdos243.heightTwentyEight_quotientFifteenMode",
+        "ErdosProblems.Erdos243.heightTwentyEight_quotientTwentyFourMode",
+        "ErdosProblems.Erdos243.heightTwentyEight_quotientTwentyFiveMode",
+        "ErdosProblems.Erdos243.heightTwentyEight_quotientTwentySevenMode",
+        "ErdosProblems.Erdos243.heightTwentyEight_fullPaymentTwentyNine"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "falsification_consequence": "A split or inert profile would force source-state stratification before any uniform transfer estimate.",
+      "survival_consequence": "A common 15/29 continuation profile supplies a second exact uniform contraction block for the negative-mass route."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "factor29_uniformly_kills_the_factor28_homogeneous_boundary",
+      "statement": "Every actual multiplier-one height-28 parent has a full-payment factor-29 child and strictly fewer than 29 negative children."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor28_activation_receipt.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor29_activation.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor28_activation.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor28_activation_receipt.json",
+        "system/lib/formal_math_residue_cylinder.py",
+        "system/server/tests/test_formal_math_residue_cylinder.py"
+      ]
+    },
+    "probe": {
+      "computation": "Exhaust all 2255040 source samples from the 18 parent residues, two factor-26 parities, four surviving factor-26 targets, 27 factor-27 lifts, 20 negative factor-28 lifts, and 29 factor-29 lifts using exact modular quotient propagation.",
+      "falsifier": "Any actual factor-28 parent without profile (8,6,15), especially an all-negative parent.",
+      "id": "exact_factor29_parent_local_activation_census",
+      "question": "Does factor 29 uniformly kill part of the exact factor-28 negative boundary, and which quotient classes cause return or sign switch?",
+      "resource_bounds": {
+        "children_per_parent": 29,
+        "exhaustive_source_parent_count": 77760,
+        "exhaustive_source_sample_count": 2255040,
+        "logical_parent_count": 1110551072832000,
+        "logical_refinement_count": 32205981112128000
+      },
+      "stop_condition": "Stop after exact parent-local quotient and successor-mode multisets are established; do not extend individual orbit horizons."
+    },
+    "problem": {
+      "claim_ceiling": "Exact factor-29 classification on the multiplier-one factor-28 survivors: every actual parent has 8 cofinal, 6 positive, and 15 continuing-negative children. This kills the homogeneous boundary mode at factor 29 but does not solve unrestricted #243.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The complete source census has one parent profile, eight full returns per parent, and zero inert fibers.",
+        "next_analytic_target": "Compose the exact factor-26 continuation 4/13 and factor-29 continuation 15/29 in a source-conditioned negative-mass transfer, then stratify factors 30, 35, and 36 for the three surviving errors."
+      },
+      "status": "exact_one_way_result",
+      "summary": "Every one of the 1110551072832000 actual parents has profile (8,6,15). The exact quotient multiset is 0^7,15^8,24^8,25^4,27^2; q=15 forces full payment 29 and q=25,27 switch positive."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "mechanism_decision": {
+    "cofinal_children_per_parent": 8,
+    "continuing_negative_children_per_parent": 15,
+    "factor29_homogeneous_boundary": "killed",
+    "next_raw_factors": [
+      30,
+      35
+    ],
+    "positive_children_per_parent": 6,
+    "positive_states": [
+      {
+        "error": 5,
+        "height": 29,
+        "multiplicity": 4
+      },
+      {
+        "error": 7,
+        "height": 29,
+        "multiplicity": 2
+      }
+    ],
+    "surviving_negative_states": [
+      {
+        "error": -1,
+        "height": 29,
+        "multiplicity": 7
+      },
+      {
+        "error": -6,
+        "height": 29,
+        "multiplicity": 8
+      }
+    ],
+    "uniform_negative_continuation_ratio": "15/29"
+  },
+  "schema": "erdos243-t0-factor29-activation-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 16376,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor29_activation.py",
+      "sha256": "fa12495cbee003d9c93fabf714b0cded0ea7d91dd8da19ca010ae7503a8570b5"
+    },
+    {
+      "byte_length": 14259,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor28_activation.py",
+      "sha256": "b0dce5176480d2f098f71adde94092aa0961b209805ab963d2c15e3247d28ff7"
+    },
+    {
+      "byte_length": 6982,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor28_activation_receipt.json",
+      "sha256": "5e1ddebca1d3d3b4dc59fbb3147a53a1e7dc247d9bf10f3bc488b1c3f4b44410"
+    },
+    {
+      "byte_length": 34409,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "sha256": "0b528577cc9d6a928eab269ae69e8c9246f2d1985275454cbfe6eaa344a51290"
+    },
+    {
+      "byte_length": 49380,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "ce1d37e134ae590a8cfb737fce7313f54c6055db68f479caa94bdee418006d55"
+    },
+    {
+      "byte_length": 108907,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "4197a94a4b7f3adf8c4242a6ad2ca9e418b935e476bb45813757ebeff92af070"
+    },
+    {
+      "byte_length": 13105,
+      "path": "system/lib/formal_math_residue_cylinder.py",
+      "sha256": "603f08ffc5ff94a66d01b659401cd23a3e28ef857771c2a5cfd1d5b45125345d"
+    },
+    {
+      "byte_length": 9959,
+      "path": "system/server/tests/test_formal_math_residue_cylinder.py",
+      "sha256": "9d0f09f6af4fc8e43a5eb3996c1aa6e2d6e20d7dcbf919f64139a59fc72427c8"
+    }
+  ],
+  "status": "verified_uniform_factor29_boundary_killing"
+}

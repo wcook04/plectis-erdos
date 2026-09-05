@@ -3,19 +3,9 @@
 
 # Theory laboratory
 
-The semantic corpus answers *what is proved and how statements relate*. This
-layer asks three further questions:
-
-- **Which few mechanisms underlie those proofs?** The reusable reasons theorems
-  hold and methods fail, rather than the theorems themselves.
-- **What survives when the mathematics is deliberately perturbed?** A typed
-  intervention shifts a coefficient, changes a base, or drops a structural
-  precondition, records which mechanisms it predicts will break, and then checks.
-- **Does the explanation transfer to unseen mathematics?** A holdout uses the
-  commit before a theorem landed and measures whether the layer helps recover it.
-
-The third question tests the first two: a mechanism that reads well but does not
-improve held-out recovery is a story, not an explanation.
+The semantic corpus records proved statements and their relations. This layer
+records reusable proof mechanisms, predicts what changes under a perturbation,
+and prepares holdouts for testing whether an explanation helps recover a proof.
 
 ## Files
 
@@ -26,14 +16,11 @@ improve held-out recovery is a story, not an explanation.
 
 ## What a mechanism is
 
-An invariant, plus a transformation, plus the observable it controls. The test is
-predictive, not descriptive: given only the record, could a mathematician who has
-never seen this repository decide whether a *new* nearby statement is reachable
-by it? If not, the record is a label and the contract rejects it for missing one
-of `invariant`, `transformation`, `observable_controlled`.
-
-A theorem family is not a mechanism. A restatement is not a mechanism. A
-dependency cluster is not a mechanism.
+A mechanism record names an invariant, a transformation, and the observable it
+controls. The checker requires `invariant`, `transformation`, and
+`observable_controlled`; the author must explain how these help assess a nearby
+statement. A theorem name or dependency cluster alone does not supply that
+explanation.
 
 ## Why the negative space is first-class
 
@@ -56,12 +43,13 @@ than a story assembled afterwards.
 
 ## How holdouts avoid leaking
 
-`scripts/build_benchmark_packet.py` creates a detached git worktree at the commit
-before the target declaration was introduced. The target is absent from that
-checkout by construction — the control does not depend on the agent's restraint.
-Injected artifacts are filtered against declarations extracted from the checkout
-itself, so a mechanism record citing a future theorem is dropped rather than
-trimmed. Arms are cumulative:
+`scripts/build_benchmark_packet.py` exports a source snapshot from the commit
+before the target declaration was introduced and checks that the declaration
+is absent. The snapshot contains no Git metadata: a linked worktree would let
+the agent recover later answers from the shared object store. Introducing-commit
+metadata and the answer key stay outside the packet. Injected artifacts are
+filtered against declarations extracted from the snapshot, so a mechanism record
+citing a future theorem is dropped rather than trimmed. Arms are cumulative:
 
     signatures   the cut checkout alone
     graph        + statement graph, filtered to the cut
@@ -72,7 +60,12 @@ trimmed. Arms are cumulative:
 python3 scripts/build_benchmark_packet.py --target NAME --arm mechanism --dest /tmp/cut --answer-key /tmp/key.json
 ```
 
-The answer key is refused if it would be written inside the packet.
+The destination must be a new directory outside the source repository. The
+answer key is refused if it would be written inside the packet. The evaluator
+must give the agent an isolated filesystem and restricted network access; the
+builder creates inputs, not a process sandbox. Review historical source and
+injected explanations for answer hints before selecting an evaluation item.
+No performance improvement follows from constructing these packets alone.
 
 ## Routes
 

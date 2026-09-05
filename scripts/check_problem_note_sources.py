@@ -129,11 +129,11 @@ def safe_worktree_text(path: Path) -> str:
         os.close(descriptor)
 COMMENT_RE = re.compile(r"(?<!\\)%.*$")
 LINK_RE = re.compile(
-    r"""\\[lm]word\{(?P<word_file>[^{}]+)\}\{(?P<word_line>\d+)\}
+    r"""\\(?P<word_macro>[lm]word)\{(?P<word_file>[^{}]+)\}\{(?P<word_line>\d+)\}
             \{(?P<word_decl>[^{}]+)\}\{
-        |\\(?:lref|lrefx|mref)\{(?P<ref_file>[^{}]+)\}\{(?P<ref_line>\d+)\}
+        |\\(?P<ref_macro>lref|lrefx|mref)\{(?P<ref_file>[^{}]+)\}\{(?P<ref_line>\d+)\}
             \{(?P<ref_decl>[^{}]+)\}
-        |\\[lm]loc\{(?P<loc_file>[^{}]+)\}\{(?P<loc_line>\d+)\}""",
+        |\\(?P<loc_macro>[lm]loc)\{(?P<loc_file>[^{}]+)\}\{(?P<loc_line>\d+)\}""",
     re.X,
 )
 # A Lean declaration head: the keyword, optional modifiers, then the name.
@@ -388,18 +388,31 @@ def declares_at(lines: list[str], index: int, name: str) -> bool:
 
 
 def links(text: str) -> list[tuple[str, int, str | None]]:
+    """Return repository-relative targets, preserving each macro's path base.
+
+    Root-relative ``m*`` macros and ``href{\\repobase/...}`` must not be
+    rebased beneath ErdosProblems. Direct hrefs carry location evidence only;
+    descriptive prose is not a declaration name or headline-coverage credit.
+    """
     found: list[tuple[str, int, str | None]] = []
-    for match in LINK_RE.finditer(strip_comments(text)):
-        if match.group("word_file"):
-            found.append(
-                (match.group("word_file"), int(match.group("word_line")), match.group("word_decl"))
-            )
-        elif match.group("ref_file"):
-            found.append(
-                (match.group("ref_file"), int(match.group("ref_line")), match.group("ref_decl"))
-            )
+    clean = strip_comments(text)
+    for match in LINK_RE.finditer(clean):
+        kind = next(kind for kind in ("word", "ref", "loc") if match.group(kind + "_file"))
+        file_name = match.group(kind + "_file")
+        macro = match.group(kind + "_macro")
+        relative = file_name if macro.startswith("m") else library_relative(file_name)
+        declaration = match.group(kind + "_decl") if kind != "loc" else None
+        found.append((relative, int(match.group(kind + "_line")), declaration))
+    for match in re.finditer(r"\\href\{\\repobase/([^{}]+)\}", clean):
+        target = match.group(1)
+        if ".lean" not in target:
+            continue
+        location = re.fullmatch(r"(.+\.lean)\\?#L([0-9]+)", target)
+        if location is None:
+            # Keep malformed Lean links visible to the normal target validator.
+            found.append((target, 0, None))
         else:
-            found.append((match.group("loc_file"), int(match.group("loc_line")), None))
+            found.append((location.group(1), int(location.group(2)), None))
     return found
 
 
@@ -443,7 +456,7 @@ DeclarationKey = tuple[str, str]
 def linked_declaration_keys(note_text: str) -> set[DeclarationKey]:
     """Module-qualified declarations linked by one problem note."""
     return {
-        (library_relative(file_name), declaration)
+        (file_name, declaration)
         for file_name, _line, declaration in links(note_text)
         if declaration is not None
     }
@@ -660,7 +673,7 @@ def main() -> int:
             continue
         commit = note_pinned_commit(note_text, default_commit)
         snapshot_requests.update(
-            (commit, library_relative(file_name))
+            (commit, file_name)
             for file_name, _line_number, _declaration in links(note_text)
         )
     snapshot_lines_batch(snapshot_requests, cache)
@@ -689,7 +702,7 @@ def main() -> int:
             errors.append(f"{source}: authored no formal source links")
         for file_name, line_number, declaration in found:
             checked += 1
-            relative = library_relative(file_name)
+            relative = file_name
             lines = snapshot_lines(commit, relative, cache)
             if not lines:
                 errors.append(

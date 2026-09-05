@@ -197,10 +197,9 @@ normalisation and reduce to explicit infinite-orbit alternatives; neither
 membership question is decided.
 
 Published work independently settles prime
-support at base~$2$ and squarefree support at every power-of-two base.  We
-claim no priority for those cited results.  The universal assertion remains
-open only in the reciprocal-divergent regime, and both target membership
-questions remain open.
+support at base~$2$ and squarefree support at every power-of-two base.
+Universal \#257 and both target
+membership questions remain open.
 \end{abstract}
 
 \section*{How to read this document}
@@ -258,13 +257,13 @@ reduction, never as progress toward a solution.
 
 \subsection{The object and the two exact statements}
 
-For an integer $n \ge 2$ set $x_n := 1/(2^n-1)$, and for $A \subseteq \{2,3,4,\dots\}$ write
+For an integer $n \ge 1$ set $x_n := 1/(2^n-1)$, and for $A \subseteq \Npos$ write
 $x_A := \sum_{n \in A} x_n$; the sum always converges, since $x_n = O(2^{-n})$. Erd\H{o}s's
 Problem \#257 asks a single universally quantified question about this family.
 
 \begin{defn}[Universal \#257, written (U)]
 \label{defn:U}
-Is $x_A = \sum_{n \in A} 1/(2^n-1)$ irrational for \emph{every} infinite $A \subseteq \N$?
+Is $x_A = \sum_{n \in A} 1/(2^n-1)$ irrational for \emph{every} infinite $A \subseteq \Npos$?
 \textbf{OPEN.} \ev{Open}
 \end{defn}
 
@@ -292,12 +291,15 @@ than as a list of disappointments.
 
 \subsection{The unconditional record, universal direction}
 
-The strongest row below uses LCM--Ces\`aro close returns and an integer-orbit
-endgame.  The remaining local rows use the older weighted-coefficient block
-certificate over the divisor incidence
-$\operatorname{sc}_A(n) := \#\{d \mid n : d \in A\}$, whose generic form is
-\texttt{irrational\_coeff\_series\_of\_weighted\_coeff\_block\_certificates}.
-All rows hold uniformly in the base $b \ge 2$:
+There are two useful mechanisms. Block certificates prescribe divisor
+incidences and control the remaining tail. Small-shift arguments average the
+actual periodic atoms and produce a positive displacement smaller than the
+lattice spacing of a rational value. The latter proves irrationality for
+every infinite reciprocal-summable support, without a coprimality assumption,
+and extends to the weighted and fractional-cover classes below. The table
+starts with the reciprocal-summable theorem and retains the earlier
+block-certificate families, uniformly in the base $b\ge2$; the further
+ordinary extensions follow below.
 
 \begin{center}
 \begin{longtable}{@{}p{0.30\textwidth}p{0.32\textwidth}p{0.30\textwidth}@{}}
@@ -320,20 +322,25 @@ Signed periodic weights & periodic integer weights, nonnegative, frequently nonz
 \end{longtable}
 \end{center}
 
-Two facts about this table are worth a specialist's attention. First, the
-base restriction is gone: the $b=2$ case of the full-support row recovers
-Erd\H{o}s's 1948 irrationality theorem for the Erd\H{o}s--Borwein constant
-$E = \sum_{n \ge 1} 1/(2^n-1)$ as a one-line corollary, and every row holds for all $b \ge 2$.
-Second, the first row removes the old divisor-independence barrier altogether:
-summable reciprocal mass is now sufficient by itself.  Barrier~\ref{bar:box}
-therefore describes the older certificate mechanism, not the theorem frontier.
+The full-support row includes Erd\H{o}s's classical irrationality theorem
+for the Erd\H{o}s--Borwein constant
+$E=\sum_{n\ge1}(2^n-1)^{-1}$. The support-dependent certificate constructions
+explain the method requirements discussed in \S\ref{bar:box}. Those
+requirements do not limit the small-shift theorems.
 
-The one conditional extension worth naming is
-\lean{irrational\_erdosSupportSeries\_of\_orthogonalPetalBouquet}{SupportSunflowerDichotomy.lean:540},
-which strictly generalises pairwise coprimality (cores may be arbitrary divisors of one fixed $Q$)
-but still demands globally pairwise-coprime petals and summable reciprocal petal mass, and whose
-selector hypothesis \texttt{SunflowerForcedSlotTailSelection} is itself an unproved cofinal supply.
-Despite the file name there is no dichotomy theorem in that file. \ev{Lean}\ev{Open}
+The older bouquet endpoint
+\lean{irrational\_erdosSupportSeries\_of\_orthogonalPetalBouquet}{SupportSunflowerDichotomy.lean:540}
+assumes a forced-slot selector. Its conclusion is now unconditional by
+composition with the reciprocal-summable support theorem. Indeed, for
+$A=E\cup\{c_ip_i:i\ge0\}$ with $E$ finite and $c_i\ge1$,
+\[
+ \sum_{a\in A}\frac1a\le\sum_{a\in E}\frac1a+
+ \sum_i\frac1{c_ip_i}\le\sum_{a\in E}\frac1a+\sum_i\frac1{p_i}<\infty.
+\]
+Distinct bouquet rays give infinitude, so irrationality follows at every
+integer base. The selector remains a hypothesis of the older pinned
+certificate proof, not a mathematical prerequisite for this support class.
+\ev{Math}
 
 Two one-sided rigidity results constrain a hypothetical rational-valued support, both only from the
 sparse side. For any $A$ with a positive element and $x_A$ rational, divisor-free windows are at
@@ -355,6 +362,202 @@ result is formalised here.  The corpus still has no general theorem for an
 arbitrary positive-density nonperiodic or divisor-dense support, and the
 universal statement remains open.
 \end{rem}
+
+\subsection{Divisibility-weighted supports: why averaging twice works}
+\label{sec:257-weighted-returns}
+
+The following ordinary proof extends the reciprocal-summable theorem to
+explicit supports whose reciprocal sum diverges. Its full source, including
+the other analytic support criteria, is the
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-proofs.md}{analytic proof supplement}.
+
+\begin{thm}[Divisibility-weighted irrationality]\label{thm:257-weighted}
+Let $P$ be a finite nonempty set of primes and set
+$h(a)=\prod_{p\in P}p^{v_p(a)}$. For an integer $b\ge2$ and an infinite
+$A\subseteq\Npos$, suppose
+\[
+ W=\sum_{a\in A}\frac{h(a)}{a(b^{h(a)}-1)}<\infty.
+\]
+Then $S_b(A)=\sum_{a\in A}(b^a-1)^{-1}$ is irrational. The condition at
+$b=2$ gives this conclusion at every integer base $b\ge2$ and for every
+infinite subset of $A$. \ev{Math}
+\end{thm}
+
+\begin{proof}
+Write
+\[
+ \Delta(m)=\sum_{a\in A}\frac{b^{m\bmod a}-1}{b^a-1}.
+\]
+For fixed $m$ the sum converges. It is positive for $m>0$, because $A$
+contains an $a>m$. Division of $m$ by each $a$ gives the finite integer
+identity
+\[
+ \Delta(m)=(b^m-1)S_b(A)
+ -\sum_{\substack{a\in A\\a\le m}}
+       \sum_{i=1}^{\lfloor m/a\rfloor}b^{m-ia}.
+\]
+Thus $S_b(A)=u/v$, $v>0$, would force $\Delta(m)\ge1/v$ for every
+positive $m$. We construct arbitrarily small positive displacements.
+
+Fix $\varepsilon>0$. Choose a finite $F\subset A$ whose complementary
+weighted mass is less than $\varepsilon$, and put $L=\operatorname{lcm}F$
+(with $L=1$ if $F$ is empty). Let $p_* =\max P$, $r=|P|$, and, for large
+$H$, set
+\[
+ Q=L\prod_{p\in P}p^{\lfloor\log_p H\rfloor},\qquad
+ G=\lfloor H/p_*\rfloor.
+\]
+Then $Q\le LH^r$ and every atom in $F$ has zero displacement on $Q\N$.
+If $h(a)\le H$, then $h(a)\mid Q$; if $h(a)>H$, then $(a,Q)\ge G$.
+For the latter assertion, either all prime-power factors of $h(a)$ are
+at most $H$, so $h(a)\mid Q$, or one such factor exceeds $H$ and the
+corresponding factor of $Q$ is greater than $H/p_*$.
+
+Put $g=(a,Q)$. One orbit of $Qm\bmod a$ visits
+$0,g,\ldots,a-g$, and the sum of its uncentred atoms is $(b^g-1)^{-1}$.
+Complete orbits and one partial orbit therefore give
+\[
+ \frac1T\sum_{m=1}^T\frac{b^{Qm\bmod a}-1}{b^a-1}
+ \le \frac{g}{a(b^g-1)}+\frac1{T(b^g-1)}.
+\]
+The function $g/(b^g-1)$ decreases for positive integral $g$. Splitting
+at $a=QT$ and $h(a)=H$ consequently gives
+\begin{align*}
+ \mathcal A(Q,T):=\frac1T\sum_{m=1}^T\Delta(Qm)
+ \le {}&\varepsilon+
+ \frac1T\sum_{\substack{a\in A\\a\le QT\\h(a)\le H}}
+               \frac1{b^{h(a)}-1}\\
+ &+\frac{G(1+\log(QT))+Q}{b^G-1}+\frac4T.
+\end{align*}
+Here the harmonic bound handles the large-$h$ terms. For $a>QT$ there is
+no wrap: its atom is at most $2\,2^{Qm-a}$; summing first over $a$, then
+over $m$, gives the final $4/T$.
+
+The remaining incomplete-period sum need not have finite total mass.
+Instead average over $T=2^j$, $M\le j<2M$. For each fixed $a$,
+\[
+ \sum_{\substack{M\le j<2M\\a\le Q2^j}}2^{-j}\le\frac{2Q}{a}.
+\]
+This is a geometric tail starting at the first admissible $j$. Multiplying
+by $(b^{h(a)}-1)^{-1}$ and interchanging the two finite sums charges this
+error at most $2QW$, rather than $M$ separate copies of a divergent sum.
+Hence
+\[
+ \frac1M\sum_{j=M}^{2M-1}\mathcal A(Q,2^j)
+ \le\varepsilon+\frac{2QW}{M}
+ +\frac{G(1+\log Q+2M\log2)+Q}{b^G-1}+4\,2^{-M}.
+\]
+Choose $M=\lfloor b^{G/2}\rfloor$. Since $Q\le LH^r$ and
+$G\sim H/p_*$, every term after $\varepsilon$ tends to zero as
+$H\to\infty$. A finite average below $2\varepsilon$ contains a
+displacement below $2\varepsilon$. This contradicts the rational lattice
+gap. Heredity follows from positivity of the weights, and the all-base
+assertion follows from $b^{h(a)}-1\ge2^{h(a)}-1$.
+\end{proof}
+
+\paragraph{The full dyadic error series.}
+The incomplete-period estimate has an infinite-support formulation that
+isolates exactly the needed hypothesis. For nonnegative $\alpha_a$ on
+$A\subseteq\Npos$, put
+\[
+ C(R)=\sum_{\substack{a\in A\\a\le R}}\alpha_a,
+ \qquad V=\sum_{a\in A}\frac{\alpha_a}{a}<\infty.
+\]
+Then for every integer $Q\ge0$,
+\[
+ \sum_{j\ge0}2^{-j}C(Q2^j)\le2QV<\infty.
+\]
+Indeed, every finite collection of scales sees a finite union of conductor
+cutoffs. Interchanging those finite sums and using
+$\sum_{j:\,a\le Q2^j}2^{-j}\le2Q/a$ bounds every finite partial sum by
+$2QV$; nonnegativity then gives convergence. Thus the entire error series
+is summable even when $\sum_a\alpha_a$ diverges. Taking
+$\alpha_a=(b^{h(a)}-1)^{-1}$ on $h(a)\le H$, and zero otherwise,
+supplies the small-part estimate above since $V\le W$. This closes the
+infinite-support averaging step; the prime-part split and choice of scales
+are the separate arithmetic steps in the full argument.
+
+\paragraph{A concrete support beyond reciprocal summability.}
+For $k\ge0$ put $B_k=2^{\,2^{\,2^k-k}}$ and
+$A^*=\{a\ge1:a\le B_{v_2(a)}\}$. In the layer $v_2(a)=k$, writing
+$a=2^ku$ with $u$ odd gives
+\[
+ \sum_{\substack{a\le B_k\\v_2(a)=k}}
+ \frac{2^k}{a(2^{2^k}-1)}
+ \le\frac{1+\log B_k}{2^{2^k}-1}
+ \le 2^{1-2^k}+2(\log2)2^{-k}.
+\]
+These bounds sum to a finite number. In contrast, the reciprocal mass of
+the same layer is at least
+$(\log B_k-\log(4\cdot2^k))/2^{k+1}$ for large $k$, which tends to
+infinity. Every infinite subset of $A^*$ therefore has irrational $S_b$
+at every integer base. The supplement also shows that consecutive elements
+of $A^*$ have gaps $O(\log\log a)$.
+
+\paragraph{Other support criteria sharing the small-shift endgame.}
+If $H_A(x)=\sum_{a\in A,\,a\le x}1/a=o(\log^*x)$, then every
+infinite subset of $A$ has irrational $S_b$ at every integer base. A second
+criterion uses finite frames $F_j\subseteq\Npos$, their incidences
+$f_F(n)=\#\{a\in F:a\mid n\}$, exponents $0<\alpha_j\le1$, and
+nonnegative divisor majorants
+$f_{F_j}(n)^{\alpha_j}\le\sum_{d\mid n}c_{j,d}$. With
+$C_j=\sum_{d\ge1}c_{j,d}/d$ and $B_j=2^{\alpha_j}$, it suffices that
+\[
+ \sum_j C_j2^{j\alpha_j}\frac{B_j}{(B_j-1)^2}<\infty.
+\]
+Every infinite subset of $\bigcup_jF_j$ then has irrational $S_b$ at all
+integer bases. Fixed-exponent summable-cost covers fit this criterion after
+regrouping. The short paper and supplement prove these statements, including
+the domination required before exchanging infinite sums and averages.
+The analytic statements in this subsection are ordinary proofs; the pinned
+formal-source table above records their separately verified predecessors.
+
+\subsection{A finite deadline for every real target}
+The repair mechanism does not require periodic digits or even a rational
+target. Let $x\ge0$, let $A_x$ be its actual greedy support, and define
+\[
+ P_0(x)=0,\qquad P_{N+1}(x)=2P_N(x)+d_{A_x}(N+1),\qquad
+ Q_N(x)=\lfloor2^Nx\rfloor-P_N(x).
+\]
+Here $d_{A_x}(n)=\#\{a\in A_x:a\mid n\}$ is the actual divisor load. The prefix bound makes $Q_N(x)$ a nonnegative integer.
+
+\begin{thm}[uniform repair criterion]\label{thm:generic-repair}
+For every real $x\ge0$,
+\[
+ x\in\mathcal{A}\quad\Longleftrightarrow\quad
+ \forall K\ \exists N\in[K,K+2\lfloor\sqrt K\rfloor+12):
+ Q_{N+1}(x)\le Q_N(x).
+\]
+Equivalently, repairs occur cofinally; equivalently,
+$Q_N(x)\le d_{A_x}(N+1)$ cofinally; equivalently, $Q_N(x)\le N+1$
+cofinally. One strictly increasing window excludes membership.
+\end{thm}
+
+\begin{proof}
+If $x\in\mathcal{A}$, the full tail identity and divisor-pair bound give
+$Q_N(x)\le2\sqrt N+4$. Put $s=\lfloor\sqrt K\rfloor$ and $T=2s+12$.
+Strict increase at each of the $T$ steps would give $Q_{K+T}(x)\ge T$.
+But $K+T<(s+4)^2$ gives $Q_{K+T}(x)<2(s+4)+4=T$, a contradiction.
+
+For the converse, the prefix recurrence and the nonnegative next binary
+floor digit give
+\[
+ 2Q_N(x)-d_{A_x}(N+1)\le Q_{N+1}(x).
+\]
+A repair therefore forces $Q_N(x)\le d_{A_x}(N+1)\le N+1$.
+If $x\notin\mathcal{A}$, a positive fatal gap $\delta$ persists in the actual
+greedy remainder; the prefix-tail identity yields
+$Q_N(x)\ge2^N\delta-1$ beyond that fatal rank. This eventually exceeds
+$N+1$, contradicting a cofinal linear bound. These implications give all
+the stated equivalences.
+\end{proof}
+
+The finite deadline comes from a growth comparison: strict increases of
+an integer sequence accumulate linearly, whereas represented tails have
+only a square-root bound. For $x=4/9$ this recovers the original repair
+problem with $Q_N=\lfloor4\cdot2^N/9\rfloor-P_N$. Exact replay through
+rank $4096$ finds no strict window for that target. The theorem identifies
+the certificate to seek; it does not supply its occurrence.
 
 \subsection{The unconditional record, half-value direction}
 
@@ -482,19 +685,22 @@ distinct subset sums of a row of seam weights are separated by at least $2^{s+1}
 nine coordinates the corpus has built --- truncation rung $J$, seam row $s$, integer margin, sharp
 tail margin, half-carry $K_n$, reverse-carry word, Boolean--M\"obius exact row, fatal-cell interval
 packing, Dedekind cut-locator --- is therefore a coordinate on the binary digits of \emph{one}
-specific real orbit. There is no family to range over.
+specific real orbit. Distinct supports cannot represent the same value.
 \coord{meta} \scale{uniform} \ev{Lean}\ev{Math}\\
 \textbf{Sites:} \lean{weightedBoolSum\_separated}{HalfCylinderIntegerGreedy.lean:447},
 \lean{three\_mul\_tailWeight\_add\_exactLateGap\_eq\_three\_mul\_headWeight}{HalfCylinderLargestSkipGap.lean:230},
 \lean{positiveMersenneDigitValue\_injective}{GreedyAchievementSet.lean:1580}.
 \end{obs}
 
-All six barriers below are consequences of Observation~\ref{obs:no-ensemble} in different
-directions: there is nothing to choose (\ref{bar:canon}), nothing weaker to prove
-(\ref{bar:collapse}), nothing to average over (\ref{bar:measure}), no information at the available
-scales (\ref{bar:scale}), no certificate in the provable direction (\ref{bar:asym}), and, on the
-universal side, no way to make a general support satisfy the certificate engine's first hypothesis
-(\ref{bar:box}).
+The next sections separate six limitations. Canonicalisation fixes the
+support for a specified value (\ref{bar:canon}); several proposed producers
+are equivalent to the original membership statement (\ref{bar:collapse});
+current estimates leave a scale gap (\ref{bar:scale}); and bounded replay
+needs a uniform continuation argument (\ref{bar:asym}). Measure and category
+do not decide the rational targets (\ref{bar:measure}). On the universal
+side, some supports violate the particular block engine's hypotheses
+(\ref{bar:box}). These have different causes and do not form an exhaustion
+of possible proof methods.
 
 \subsection{Barrier 1: canonicalisation --- the witness space is a singleton}
 \label{bar:canon}
@@ -718,95 +924,94 @@ as such wherever it is used below.
 \subsection{Barrier 4: decision asymmetry --- the certificates point the wrong way}
 \label{bar:asym}
 
-\begin{thm}[One-sidedness; \textsc{proved}]
+\begin{thm}[Finite failure and all-rank survival]
 \label{thm:one-sided}
-$1/2 \notin \mathcal{A}$ is $\Sigma^0_1$: a single finite object --- a fatal gap --- certifies it.
-$1/2 \in \mathcal{A}$ is $\Pi^0_1$, and no finite object certifies it. Consequently no finite
-computation, at any depth, can establish $1/2 \in \mathcal{A}$.
-\coord{meta} \scale{uniform} \ev{Lean}
+The target $1/2$ lies outside $\mathcal A$ if and only if its greedy orbit
+has a fatal gap. It belongs to $\mathcal A$ if and only if the greedy
+remainder stays below the remaining tail at every rank.
+\coord{greedy-orbit} \scale{uniform} \ev{Lean}
 \end{thm}
 
 \begin{proof}
-The dichotomy $1/2 \in \mathcal{A}$ or $\exists$ a fatal gap is unconditional
-(\lean{half\_mem\_mersenneAchievementSet\_or\_exists\_fatal\_gap}{HalfCutLocator.lean:623}), and the
-two alternatives are exactly complementary
-(\lean{existsFatalHalfGap\_iff\_half\_not\_mem\_mersenneAchievementSet}{HalfCutLocator.lean:643}),
-with \lean{ExistsFatalHalfGap}{HalfCutLocator.lean:526} a finite witness type. In the other
-direction, certified death implies non-membership
-(\lean{certifiedGreedyMersenneDeath\_not\_mem}{GreedyAchievementSet.lean:1760}, over
-\lean{CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1754}; $3/4$ is certified dead at
-level $1$, lookahead $0$, by
-\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1776}), whereas the
-absence of such a certificate at any depth $D$ is compatible with a certificate at depth $D+1$ and
-therefore proves nothing. Membership asserts survival at \emph{every} rank
-(Theorem~\ref{thm:greedy-survival}), an infinite conjunction with no finite sub-conjunction
-implying it.
+These are the
+\href{\repobase/Erdos249257/HalfCutLocator.lean\#L643}{fatal-gap equivalence}
+and the
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L1458}{greedy-survival criterion}.
+A
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L1756}{certified greedy death}
+records a strict failure using a rational upper bound for the tail;
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L1762}{such a certificate excludes membership}.
+For example,
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L1778}{$3/4$ has a certificate at level $1$ with lookahead $0$}.
 \end{proof}
 
-\textbf{Rules out.} Any programme whose plan is ``extend the certified depth''. Pushing the
-truncation rung to $J = 23$, the seam to row $10^6$, or the macro receipt to depth $10^8$ cannot in
-principle decide the branch --- each raises a lower bound on a death rank which, if the supported
-branch is correct, does not exist.
+For a rational target, a strict fatal gap is eventually detected by refining
+the rational tail bound. This gives a semidecision procedure for
+nonmembership. A computation that reports survival through rank $D$ records
+those finitely many comparisons; the survival criterion still requires an
+argument covering every later rank. Extending the replay can expose a fatal
+gap or suggest a useful invariant, but a successful finite replay by itself
+does not supply that argument.
 
-\textbf{Explains.} Every certificate the programme owns is of this one type. The certified depths
-grew by roughly two orders of magnitude across the recorded history with no change whatsoever in
-decision status; that is not a coincidence to be pushed through, it is the theorem above being
-observed empirically. Accumulated survival is not convergence toward proof.
+This is a limitation of bounded replay, not an impossibility theorem for
+finite proofs or certificates of membership. An inductive invariant, a
+proved recurrence, or a finite criterion with a uniform completeness theorem
+could establish the all-rank statement. The existence of such a reduction
+is a legitimate proof target. In particular, the logical form of the
+survival criterion does not rule it out.
 
-\subsection{Barrier 5: measure and category point in opposite directions}
+\subsection{Barrier 5: what measure and category leave undetermined}
 \label{bar:measure}
 
-\begin{prop}[The two soft heuristics contradict each other; \textsc{proved}]
+\begin{prop}[Positive measure and empty interior]
 \label{prop:soft}
-$\mathcal{A}$ has Lebesgue measure exactly $1$ inside an ambient span of $E \approx 1.6067$, a
-relative density of about $62\%$, and is simultaneously nowhere dense, perfect and totally
-disconnected (Theorem~\ref{thm:geometry}). Hence the measure heuristic --- ``a random point lies in
-$\mathcal{A}$ with probability $\approx 0.62$'' --- predicts \#257 \emph{false}, while the category
-heuristic --- ``$\mathcal{A}$ is meagre, so a generic point misses it'' --- predicts \#257
-\emph{true}. \coord{achievement-set} \scale{uniform} \ev{Lean}
+The achievement set $\mathcal A$ has
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L996}{Lebesgue measure $1$}
+and is
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L1681}{nowhere dense}.
+Thus a uniformly sampled point of $[0,E]$ belongs to $\mathcal A$ with
+probability $1/E$, while a Baire-generic point lies outside it.
+\coord{achievement-set} \scale{uniform} \ev{Lean}\ev{Math}
 \end{prop}
 
-\textbf{Rules out.} Every soft argument: measure-theoretic, Baire-category, metric number theory
-(almost-all / almost-none), and probabilistic digit models. The two standard notions of ``typical''
-disagree on this object, so neither can be the mechanism. Worse, by injectivity of the digit coding
-(Observation~\ref{obs:no-ensemble}) there is no ensemble of candidate representations to average
-over: each rational has exactly one candidate support, so counting, second-moment and pigeonhole
-arguments have nothing to range over. It also rules out deciding (U) by showing $\mathcal{A}$ is
-``small'': it is not small --- it is $62\%$ of its ambient interval by measure.
+These are compatible statements about different notions of typicality.
+Neither assigns a probability to membership of the fixed rational $1/2$,
+nor decides whether any rational has an infinite support. The rational
+points form a countable, hence null and meagre, set, so an almost-everywhere
+or generic-point conclusion alone leaves their membership undetermined.
+The checked geometry therefore supplies context, not evidence for either
+answer to (U) or (H).
 
-\textbf{Explains.} The programme's own probabilistic estimate sits squarely on the losing side of
-this split: under a Bernoulli$(1/2)$ digit model the expected number of counterexamples with
-$n \ge 32$ is about $2 \times 10^{-4}$, i.e.\ the model predicts $1/2 \in \mathcal{A}$. That
-estimate is worth exactly as much as the model, and the model is a measure-side object that cannot
-see a specific point of a nowhere-dense set having Lebesgue measure exactly $1$. \ev{Cert}
+The
+\href{\repobase/Erdos249257/GreedyAchievementSet.lean\#L1582}{injectivity of digit coding}
+likewise says that an achievable value has a unique support. It does not
+prohibit averaging over ranks, shifts, or finite approximations: the
+small-shift argument in Section~\ref{sec:257-weighted-returns} is one such
+use of averaging. A probabilistic model of the greedy digits would need a
+separate arithmetic justification before its predictions could bear on the
+specified target.
 
 \subsection{Barrier 6: the two-axis certificate box (universal direction)}
 \label{bar:box}
 
 \begin{obs}[The older certificate box; \textsc{observed pattern}]
 \label{obs:box}
-Every unconditional theorem in the table of \S\ref{sec:257-problem} that
-factors through the weighted block-certificate engine requires the support to
-sit inside a two-axis box: \textbf{(i) divisor independence}, so that a CRT
-construction can prescribe the incidence $\operatorname{sc}_A$ across a block
---- pairwise coprimality, periodicity, or dilation of a full support; \textbf{and
-(ii) a global tail budget}, so that the middle window's mass satisfies the
-height inequality $q(C+N+L+2) < b^L$ --- summable reciprocals, or sparsity that
-makes this trivial.  The reciprocal-summable theorem lies outside the first
-axis because its LCM--Ces\`aro close-return proof does not use this certificate
-engine.  The box is therefore a complete audit of the older engine's landed
-instances, not a theorem about all possible support arguments.
-\coord{certificate-engine} \scale{uniform} \ev{Lean}\ev{Math}
+The support-dependent CRT certificate constructions have two separate jobs:
+prescribe enough divisor incidences to control a block, and bound the
+remaining tail so that $q(C+N+L+2)<b^L$. Pairwise-coprime petals and a
+summable reciprocal budget are sufficient inputs in the corresponding
+construction. These are requirements of that producer, not necessary
+conditions for irrationality. The small-shift method in
+\S\ref{sec:257-weighted-returns} uses neither a pairwise-coprime support nor
+ordinary reciprocal summability.
+\coord{certificate-engine} \ev{Math}
 \end{obs}
 
-\textbf{Rules out.} Any plan to obtain (U) by instantiating the existing engine at a general
-infinite $A$. For a general support the divisibility conditions $a \mid n$, $a \in A$, are
-\emph{entangled} through pairwise gcds, so no CRT construction can prescribe the incidence in a
-block, and the engine's first hypothesis is unsatisfiable by construction rather than by search
-failure. It also rules out closing the gap by ``removing the summability bound'' from Erd\H{o}s
-1968: the bound is consumed at exactly one step, \texttt{CertificateKernel.lean:9586--9598}, as a
-global tail budget. Removing it is not weakening a hypothesis; it requires a different, windowed
-argument.
+\textbf{What a general-support application still needs.} Shared factors
+impose compatibility conditions on CRT prescriptions; a proof must check
+those conditions and supply its tail estimate. The existing hypotheses
+cannot simply be omitted from the proof that uses them. This observation
+does not prove that all possible certificates or CRT constructions fail.
 
 \textbf{Explains only a method boundary.} The primes are infinite and pairwise coprime
 --- axis (i) is satisfied in the cleanest possible way, and
@@ -820,16 +1025,14 @@ therefore does not recover that external theorem.
 
 \subsection{What the six barriers converge on}
 
-Both halves of \#257 terminate at the same missing object, stated twice in two coordinates. On the
-half-value side it is a near-integer anti-concentration bound for
-$\sum_{i \le L} (\tau(M+i) - 1)\,2^{-i}$, a geometrically weighted divisor sum in a short interval.
-On the universal side it is the dense-branch producer: for a divisor-dense $A$, a block of $K$
-consecutive indices with $2^K \mid \sum_{r=1}^{K} \operatorname{sc}_A(N+r)\,2^{K-r}$ and a bounded
-middle window. These are the same statement in the incidence coordinate. No result of that shape
-exists in the literature in any form, and the only rigorous results in that direction --- lower
-bounds on runs, and guarantees that patterns occur --- have the opposite logical type. That
-convergence, from two independent directions, is the strongest evidence the corpus offers that
-there is exactly one wall here rather than several.
+Several remaining approaches ask for arithmetic control of geometrically
+weighted divisor incidences. For the half-value probe one proposed input
+concerns $\sum_{i\le L}(\tau(M+i)-1)2^{-i}$; for a general support a block
+certificate instead concerns its own incidence $\operatorname{sc}_A$ and
+tail budget. Their similar appearance suggests useful comparisons, but does
+not make the two producers equivalent. The weighted and fractional-cover
+theorems show that small positive shifts can also be obtained without
+constructing either prescribed block.
 
 \section{What the wall does not block}
 \label{sec:257-survivors}
@@ -1053,8 +1256,8 @@ while the near-miss index gives the exact mismatch at each open obligation.
 \paragraph{Scale and coordinate discipline.} The direct certified instances
 remain fixed or bounded --- rungs $J \le 22$, seam rows $\le 200{,}000$, ranks
 $\le 3000$, and macro depth $\le 13{,}548{,}057$ --- whereas the open
-obligations are cofinal.  Theorem~\ref{thm:one-sided} shows that extending a
-bounded range does not establish a cofinal statement.  Coordinate tags are
+obligations are cofinal.  Theorem~\ref{thm:one-sided} identifies the all-rank obligation; extending a
+bounded range still requires a uniform argument for the remaining ranks.  Coordinate tags are
 equally literal: an obstruction in \coord{half-carry}, \coord{seam-row}, or
 \coord{diophantine} does not transfer to another representation without a
 proved map.  Coordinate-free barriers are marked explicitly.
@@ -4692,7 +4895,7 @@ the known theorem.  It is no longer an open mathematical target or a claimed
 new route for \#257.
 \end{obs}
 
-\begin{obs}[NM-07 / sunflower bouquet, unproved selector plus false class-existence] \ev{Lean}
+\begin{obs}[NM-07 / sunflower bouquet: selector superseded, universal class-existence false]
 \lean{irrational\_erdosSupportSeries\_of\_orthogonalPetalBouquet}{SupportSunflowerDichotomy.lean:540}
 (selector def line 406; carry socket line 381; bouquet structure line 33).
 \textbf{Yields:} for $A=$ (finite exceptional set dividing $Q$) $\cup \{\mathrm{core}_i \cdot
@@ -4701,25 +4904,23 @@ new route for \#257.
 
 \par\medskip
 
-\textbf{Mismatch (\texttt{multiple}):} two gaps. (i) On the support: the bouquet class strictly
-generalises pairwise-coprime but still demands globally pairwise-coprime, summable petals — it
-inherits NM-06's exclusion of the primes and adds nothing in the divisor-dense regime. (ii) On
-the selector: \texttt{SunflowerForcedSlotTailSelection} is an unproved cofinal supply — grep for
-``dichotomy'' in the file returns only the namespace; despite the filename there is no dichotomy
-theorem there.
+\textbf{Current conclusion.} The selector is unnecessary for irrationality:
+the displayed decomposition gives
+$\sum_{a\in A}1/a\le\sum_{a\in E}1/a+\sum_i1/p_i<\infty$.
+Infinitude and the all-base reciprocal-support theorem therefore settle
+every such bouquet unconditionally. This composition supersedes the
+conditional endpoint as a mathematical result. The pinned declaration
+above records the earlier certificate proof. \ev{Math}
 
 \par\medskip
 
-\textbf{Closes it:} for the selector, $\forall K{>}0\ \exists N$, $2^K \mid$ the carried first
-block $\wedge\ \mathrm{binaryCoeffTail}(\mathrm{supportCoeff}\,A)(N{+}K)\le16$, from the
-bouquet's persistent-reduced-modulus averaging — the file states this is what that averaging
-argument is supposed to give. For the class: a bouquet-existence theorem $A$.Infinite $\to$
+\textbf{Remaining class boundary.} A bouquet-existence theorem $A$.Infinite $\to$
 Nonempty(bouquet structure) is \emph{false} as stated (take $A=$ all multiples of 6 — no coprime
 petal decomposition), so the class can only be widened, never promoted to universal.
 \end{obs}
 
-\begin{obs}[NM-08 / eventual periodicity, widest unconditional class, asymptotic obstruction] \ev{Lean}
-\lean{irrational\_erdosSupportSeries\_eventuallyPeriodic}{CertificateKernel.lean:11792} (engine
+\begin{obs}[NM-08 / eventual periodicity and finite perturbations] \ev{Lean}
+\lean{irrational\_erdosSupportSeries\_eventuallyPeriodic}{CertificateKernel.lean:11604} (engine
 line 11262, producer line 11072; finite-perturbation transfer lines 9139, 9148).
 \textbf{Yields:} $\forall b\ge2\ \forall m{>}0\ \forall N_0$: $A$ infinite and $m$-periodic above
 $N_0$ $\Rightarrow$ irrational. Plus: the class of supports with irrational series is closed
@@ -4727,11 +4928,12 @@ under finite symmetric difference in both directions.
 
 \par\medskip
 
-\textbf{Mismatch (\texttt{hypothesis\_strength}):} the widest unconditional class landed (all
-moduli, all thresholds, no bound anywhere), but eventual periodicity is a measure-zero, countable
-condition; the complement is everything interesting. The two-way finite-perturbation transfer
-shows the good class is a union of finite-symmetric-difference equivalence classes — precisely
-why it cannot be enlarged by prefix surgery; the obstruction is asymptotic.
+\textbf{Class boundary.} Eventual periodicity covers every modulus and
+threshold, but is not the widest unconditional support criterion. It and
+the nonperiodic small-shift regimes concern different classes. Finite
+symmetric difference preserves eventual periodicity, so changing a finite
+prefix cannot enlarge this particular class; a further extension must
+relax its asymptotic structure.
 
 \par\medskip
 
@@ -6049,14 +6251,13 @@ branch asks: for an \emph{arbitrary} $0$--$1$ arithmetic function, find a block 
 arguments on which the convolution with $\mathbf{1}$ is $2$-adically aligned. M\"obius inversion
 $\mathbf{1}_A = \mu * \mathtt{supportCoeff}\,A$ is exact and costs nothing, which makes the
 $2$-adic structure of the incidence directly readable, and that is the technique family to use:
-$2$-adic M\"obius/Dirichlet algebra on the divisor lattice, not analysis.  The
-landed instances of the older block-certificate engine live inside the
-two-axis box (divisor independence \emph{and} a global tail budget) because CRT
-prescribes an incidence pattern only when the divisibility conditions $a\mid
-n$ for $a\in A$ are independent; for general $A$ they are entangled through
-pairwise gcds and CRT has nothing to prescribe.  The reciprocal-summable
-theorem is not an instance of this engine: its close-return proof removes the
-divisor-independence axis while retaining the reciprocal-mass hypothesis.
+$2$-adic M\"obius/Dirichlet algebra is one possible source of compatible
+incidence prescriptions. Shared factors impose compatibility conditions on
+CRT data, which an application must verify. This is a requirement of that
+construction. The small-shift results in
+\S\ref{sec:257-weighted-returns} show why neither divisor independence nor
+ordinary reciprocal summability should be imposed on every irrationality
+argument.
 
 \subsubsection*{The specific obstacle, proved}
 

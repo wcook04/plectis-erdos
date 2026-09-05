@@ -426,7 +426,9 @@ SEMANTIC_VOCABULARY = (
 
 @lru_cache(maxsize=None)
 def load(rel: str) -> dict[str, Any]:
-    return json.loads((ROOT / rel).read_text(encoding="utf-8"))
+    # JSON accepts CR/LF whitespace itself. Avoid TextIO's universal-newline
+    # scan over the large atlas, retaining the explicit UTF-8 contract.
+    return json.loads((ROOT / rel).read_bytes().decode("utf-8"))
 
 
 def atlas_declarations(atlas: dict[str, Any]) -> list[dict[str, Any]]:
@@ -1126,21 +1128,28 @@ def formal_dependency_path(
 
 
 @lru_cache(maxsize=1)
+def declarations_by_module() -> dict[str, list[dict[str, Any]]]:
+    """Group module interfaces without constructing unrelated lookup indexes."""
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    for row in atlas_declarations(load("docs/declaration_atlas.json")):
+        grouped.setdefault(row["module"], []).append(row)
+    for rows in grouped.values():
+        rows.sort(key=lambda row: (row["line"], row["name"]))
+    return grouped
+
+
+@lru_cache(maxsize=1)
 def declaration_row_indexes() -> dict[str, Any]:
     """Index atlas rows without eagerly resolving every Lean namespace."""
     atlas = load("docs/declaration_atlas.json")
     by_name: dict[str, list[dict[str, Any]]] = {}
-    by_module: dict[str, list[dict[str, Any]]] = {}
     by_source: dict[tuple[str, int, str], dict[str, Any]] = {}
     for row in atlas_declarations(atlas):
         by_name.setdefault(row["name"], []).append(row)
-        by_module.setdefault(row["module"], []).append(row)
         by_source[(row["module"], row["line"], row["name"])] = row
-    for rows in by_module.values():
-        rows.sort(key=lambda row: (row["line"], row["name"]))
     return {
         "by_name": by_name,
-        "by_module": by_module,
+        "by_module": declarations_by_module(),
         "by_source": by_source,
     }
 
@@ -4668,13 +4677,12 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
         if "/" not in resolved_handle and not resolved_handle.endswith(".lean")
         else resolved_handle
     ).removeprefix("./")
-    # Reuse the immutable atlas grouping owned by exact lookup. Building and
-    # sorting the 153k-row module map inside every connection card made four
-    # cards in the canonical corpus suite pay the same full scan four times.
-    declaration_indexes = declaration_row_indexes()
-    declaration_matches = list(
-        declaration_indexes["by_name"].get(resolved_handle, ())
-    )
+    # A connection card needs module interfaces, not global coordinate/name
+    # indexes. A single exact-name filter preserves declaration handle matches.
+    module_rows = declarations_by_module()
+    declaration_matches = [
+        row for row in atlas_declarations(atlas) if row["name"] == resolved_handle
+    ]
     module = next(
         (
             row
@@ -4697,7 +4705,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
     source_text = source_path.read_text(encoding="utf-8")
     source_counts = identifier_counts(source_text)
     anchor_names = {row["name"] for row in declaration_matches}
-    module_declarations = declaration_indexes["by_module"].get(module["path"], [])
+    module_declarations = module_rows.get(module["path"], [])
     declaration_relevance: dict[str, dict[str, Any]] = {}
     if query:
         query_terms = semantic_content_terms(query) or search_terms(query)
@@ -4792,7 +4800,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
         imported = by_module.get(imported_id)
         if imported is None:
             continue
-        rows = declaration_indexes["by_module"].get(imported["path"], [])
+        rows = module_rows.get(imported["path"], [])
         used = [row for row in rows if source_counts.get(row["name"], 0) > 0]
         pool = used or rows
         propositions = [row for row in pool if row["kind"] in {"theorem", "lemma"}]
@@ -4830,7 +4838,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
     for importer in importer_rows[: min(6, limit)]:
         importer_path = ROOT / importer["path"]
         importer_lines = importer_path.read_text(encoding="utf-8").splitlines()
-        importer_declarations = declaration_indexes["by_module"].get(
+        importer_declarations = module_rows.get(
             importer["path"], []
         )
         consumer_rows: list[tuple[dict[str, Any], list[str]]] = []
@@ -8846,12 +8854,16 @@ def claim_route_memory_projection(
     return projection
 
 
-def bounded_programme_signal_projection(spine: Mapping[str, Any]) -> dict[str, Any]:
+def bounded_programme_signal_projection(
+    spine: Mapping[str, Any], *, problem_front_door: bool = False
+) -> dict[str, Any]:
     """Keep every signal identity while routing verbose judgement to detail.
 
     Programme routes are first-contact packets.  Palomar's complete per-family
     prose remains available through the problem route, but repeating it inside
-    every overlapping programme made those packets grow with the corpus.  This
+    every overlapping programme made those packets grow with the corpus. The
+    problem front door already carries full family statements and boundaries;
+    its duplicate signal prose is routed to the authored source owners. This
     projection keeps ordering, source, declaration, family, and relation-edge
     identities; only descriptive prose is omitted.
     """
@@ -8891,7 +8903,11 @@ def bounded_programme_signal_projection(spine: Mapping[str, Any]) -> dict[str, A
         results.append([result.get(key) for key in retained_fields] + [relations])
     if relation_reason_count:
         omitted_fields.add("relations[].reason")
-    detail_route = f"python3 scripts/query_corpus.py --route erdos_{problem}"
+    detail_route = (
+        "docs/PALOMAR_RESULT_SHOWCASE.json"
+        if problem_front_door
+        else f"python3 scripts/query_corpus.py --route erdos_{problem}"
+    )
     return {
         "problem": problem,
         "ordering_contract": spine["ordering_contract"],
@@ -8957,7 +8973,9 @@ def route_packet(route_id: str) -> dict[str, Any]:
             "kind": "problem_route",
             "authority_posture": problem_route["authority_posture"],
             "route": problem_route,
-            "mathematical_signal_spine": programme_signal,
+            "mathematical_signal_spine": bounded_programme_signal_projection(
+                programme_signal, problem_front_door=True
+            ),
             "proof_authority": "Lean source checked by the pinned Lean kernel",
             "release_provenance": claims["release"]["public_projection"],
             "validation": "python3 scripts/check_release.py",
@@ -8982,6 +9000,20 @@ def route_packet(route_id: str) -> dict[str, Any]:
     if route_id == "instant_orientation":
         packet["mathematical_signal_spine"] = mathematical_signal_spine(claims)
     if route.get("route_kind") == "mathematical_programme":
+        # The resolved programme below owns its title, focus and ceiling.
+        # Discovery prose has served its purpose once this exact route is open;
+        # retain its owner handle rather than duplicating it in the packet.
+        packet["route"] = {
+            key: value
+            for key, value in route.items()
+            if key not in {
+                "title", "mathematical_focus", "claim_ceiling",
+                "intent", "discovery_terms",
+            }
+        }
+        packet["route"]["prose_source"] = (
+            "docs/orientation.json::mathematical_programmes[" + route_id + "]"
+        )
         core_claims = [claim_index[claim_id] for claim_id in route["core_claim_ids"]]
         packet["programme"] = {
             "title": route["title"],
@@ -9932,6 +9964,23 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
     reviewed_family_by_problem = {
         str(row["erdos_number"]): row for row in reviewed_family_census
     }
+    frontier_by_problem = {
+        row["problem"]: row
+        for row in load("docs/PALOMAR_RESULT_SHOWCASE.json")["frontier_by_problem"]
+    }
+    signal = mathematical_signal_spine(claims)
+    # Keep mathematical content and rank at the front door. Repeated review
+    # commentary belongs to the authored selection record, alongside the exact
+    # source boundary which remains present in every ranked overview row.
+    routed_signal_fields = ("evidence_certainty", "overclaim_risk")
+    for result in signal["ranked_frontier"]:
+        for field in routed_signal_fields:
+            result.pop(field, None)
+    signal["overview_projection"] = {
+        "routed_fields": list(routed_signal_fields),
+        "detail": "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_ranking",
+        "retained": "all ranks, identities, consequences, mechanisms and exact boundaries",
+    }
     packet = {
         "kind": "repository_overview",
         "schema_version": "erdos249257-repository-overview/2",
@@ -9946,7 +9995,7 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
                 "supplies bounded navigation; neither is proof authority."
             ),
         },
-        "mathematical_signal_spine": mathematical_signal_spine(claims),
+        "mathematical_signal_spine": signal,
         "coverage_receipt": {
             "mathematical_programme_count": len(programmes),
             "mathematical_programme_ids": [row["id"] for row in programmes],
@@ -9970,12 +10019,23 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
             "principal_claim_count": len(principal_claims),
             "indexed_problem_count": len(problems),
         },
+        "problem_frontier_source": "docs/PALOMAR_RESULT_SHOWCASE.json::frontier_by_problem",
         "problem_fleet": [
             {
+                "frontier_summary": frontier_by_problem[row["erdos_number"]]["frontier_summary"],
+                "frontier_boundary": frontier_by_problem[row["erdos_number"]]["open_boundary"],
                 "erdos_number": row["erdos_number"],
                 "title": row["short_title"],
                 "status": row["status"],
-                "note": row.get("note"),
+                "note": (
+                    {
+                        key: row["note"][key]
+                        for key in ("artifact_id", "source_path", "rendered_path")
+                        if key in row["note"]
+                    }
+                    if row.get("note")
+                    else None
+                ),
                 "open_obligation_ids": [
                     item["id"] for item in row.get("open_obligations", [])
                 ],
@@ -10911,6 +10971,12 @@ def render_card(packet: dict[str, Any]) -> str:
                 card, route.get("follow", {}).get("route_memory")
             )
         ]
+        signal = packet["mathematical_signal_spine"]
+        signal_rows = (
+            [dict(zip(signal["result_fields"], row)) for row in signal["results"]]
+            if "result_fields" in signal
+            else signal["results"]
+        )
         rows.extend(
             (
                 f"programme_signal #{row['programme_order']} "
@@ -10918,7 +10984,7 @@ def render_card(packet: dict[str, Any]) -> str:
                 f"| source_disposition={row['source_disposition']} "
                 f"| declaration={row['declaration']}"
             )
-            for row in packet["mathematical_signal_spine"]["results"]
+            for row in signal_rows
         )
         return "\n".join(rows)
     if kind == "publication_family":
@@ -10990,6 +11056,15 @@ def render_card(packet: dict[str, Any]) -> str:
             ]
         )
         for problem in packet.get("problem_fleet", []):
+            if problem.get("frontier_summary"):
+                rows.append(
+                    f"problem_frontier | #{problem['erdos_number']} | "
+                    f"{problem['frontier_summary']}"
+                )
+                rows.append(
+                    f"problem_open | #{problem['erdos_number']} | "
+                    f"{problem['frontier_boundary']}"
+                )
             command = problem.get("route_memory")
             if not isinstance(command, str) or not command:
                 continue

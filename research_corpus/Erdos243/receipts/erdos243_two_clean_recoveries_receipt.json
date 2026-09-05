@@ -1,0 +1,342 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SparseResetRecovery.lean",
+      "falsification_consequence": "Even two aligned recoveries cannot be charged by their lengths alone; a viable lower bound must use unbounded prefix arithmetic or richer cross-recovery residue/prime data.",
+      "survival_consequence": "A two-recovery length charge would remain available as the first cross-recovery input to the global payment budget."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "two_clean_recovery_lengths_force_cumulative_payment",
+      "statement": "For two consecutive complete clean recoveries of lengths L1,L2, the product of their reset payments is at least L1+L2."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/TwoCleanRecoveriesComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SparseResetRecovery.lean",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_two_clean_recoveries.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_clean_prefix_tiny_reset.py"
+      ]
+    },
+    "probe": {
+      "computation": "Iterate the exact centered primitive cocycle from (19,14684) for six steps and verify both first-return and clean-payment predicates.",
+      "falsifier": "Two consecutive clean recoveries with product(h_j)<sum(L_j).",
+      "id": "exact_two_consecutive_clean_recovery_trace",
+      "question": "Can two consecutive aligned clean recoveries still pay less in total than their combined length?",
+      "resource_bounds": {
+        "exact_transition_count": 6
+      },
+      "stop_condition": "Stop after the second exact first return; any failed primitivity, centering, cleanliness, or return check invalidates the result."
+    },
+    "problem": {
+      "claim_ceiling": "Exact finite counterexample to length-only cumulative payment bounds across two clean recoveries; not an infinite orbit, not a general prefix-coherence counterexample, and not a solution of Erd\u0151s #243.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The exact lists prove two consecutive clean first returns and 4<6; extending the horizon cannot restore the universal inequality.",
+        "next_analytic_target": "Use unbounded complete-prefix CRT coherence or arithmetic relations between recoveries beyond their lengths and reset payments."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The exact primitive orbit from (19,14684) has consecutive clean recoveries with heights [19,11,13,19] and [19,13,17,19], payments [2,1,1] and [2,1,1], and cumulative payment 4<6<2^6."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "result_summary": "The exact primitive orbit from (19,14684) has consecutive clean recoveries with heights [19,11,13,19] and [19,13,17,19], payments [2,1,1] and [2,1,1], and cumulative payment 4<6<2^6.",
+  "schema": "erdos243-two-clean-recoveries-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 8563,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_two_clean_recoveries.py",
+      "sha256": "9ab00b3676e3d3270eb6bcf018fb69cdb3b554647178d8b75601a0541fd19423"
+    },
+    {
+      "byte_length": 9079,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_clean_prefix_tiny_reset.py",
+      "sha256": "1c4f16a5098bac282a981380a1f5fabe0f97333839571c093b34fc86f41ea1bb"
+    },
+    {
+      "byte_length": 1518,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/TwoCleanRecoveriesComputationalLab.md",
+      "sha256": "525ca9e17a075affd62729705eab4f7fd35399b07b09e11e7ee0ce2ab719fbf6"
+    },
+    {
+      "byte_length": 18948,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SparseResetRecovery.lean",
+      "sha256": "9382f94cc6aa852dec4566a1dd1c46451a0178bdd339ca194d99116a1f00381e"
+    },
+    {
+      "byte_length": 48510,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "1af34d0eba6f09552ec8db802f325e8ceb6f3eeba2d8e785b3989a1c383ef03f"
+    }
+  ],
+  "status": "verified_exact_two_recovery_mechanism_elimination",
+  "witness": {
+    "centered_errors": [
+      -3,
+      -2,
+      -6,
+      -7,
+      -4,
+      -2
+    ],
+    "cumulative_payment": 4,
+    "exact_u_values": [
+      19,
+      11,
+      13,
+      19,
+      13,
+      17,
+      19
+    ],
+    "initial_primitive_pair": [
+      19,
+      14684
+    ],
+    "payments": [
+      2,
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "recovery_lengths": [
+      3,
+      3
+    ],
+    "recovery_payments": [
+      2,
+      2
+    ],
+    "total_recovery_length": 6,
+    "trace": [
+      {
+        "a": {
+          "bit_length": 10,
+          "decimal_digits": 3,
+          "sha256_decimal": "089ee14b926fabea6dd95890032d1a37e69c1011c710977af774ec3a7b5b39a6",
+          "sign": 1
+        },
+        "centered_error": -3,
+        "index": 0,
+        "payment": 2,
+        "u": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "9400f1b21cb527d7fa3d3eabba93557a18ebe7a2ca4e471cfe5e4c5b4ca7f767",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 4,
+          "decimal_digits": 2,
+          "sha256_decimal": "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 14,
+          "decimal_digits": 5,
+          "sha256_decimal": "bd2c9d62ce3903b52e80c264069090ceea36fdeda013822ce48547497a55e242",
+          "sign": 1
+        },
+        "v_next": {
+          "bit_length": 23,
+          "decimal_digits": 7,
+          "sha256_decimal": "0f705a95e7313d062392089dce8e6f0ea3d4153aaa433f0af6bd49a86fa88c06",
+          "sign": 1
+        }
+      },
+      {
+        "a": {
+          "bit_length": 19,
+          "decimal_digits": 6,
+          "sha256_decimal": "9e32df089fd173f8c6e50e9dca4e7b0bef7e13b9da489c0b903641264c06336d",
+          "sign": 1
+        },
+        "centered_error": -2,
+        "index": 1,
+        "payment": 1,
+        "u": {
+          "bit_length": 4,
+          "decimal_digits": 2,
+          "sha256_decimal": "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 4,
+          "decimal_digits": 2,
+          "sha256_decimal": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 23,
+          "decimal_digits": 7,
+          "sha256_decimal": "0f705a95e7313d062392089dce8e6f0ea3d4153aaa433f0af6bd49a86fa88c06",
+          "sign": 1
+        },
+        "v_next": {
+          "bit_length": 42,
+          "decimal_digits": 13,
+          "sha256_decimal": "6f71fee83ed6df5e861d1dce4d19d60f4d4a0c8877a99d2da6beb27292330807",
+          "sign": 1
+        }
+      },
+      {
+        "a": {
+          "bit_length": 38,
+          "decimal_digits": 12,
+          "sha256_decimal": "d31e79f7703da29db6927319814f41173c435cdcc6da4de89153e4810e23d2ca",
+          "sign": 1
+        },
+        "centered_error": -6,
+        "index": 2,
+        "payment": 1,
+        "u": {
+          "bit_length": 4,
+          "decimal_digits": 2,
+          "sha256_decimal": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "9400f1b21cb527d7fa3d3eabba93557a18ebe7a2ca4e471cfe5e4c5b4ca7f767",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 42,
+          "decimal_digits": 13,
+          "sha256_decimal": "6f71fee83ed6df5e861d1dce4d19d60f4d4a0c8877a99d2da6beb27292330807",
+          "sign": 1
+        },
+        "v_next": {
+          "bit_length": 80,
+          "decimal_digits": 24,
+          "sha256_decimal": "802dbe4a98e4c2f0106330d8f26f11c2ec0d88a615529ac73cacd1063d00beef",
+          "sign": 1
+        }
+      },
+      {
+        "a": {
+          "bit_length": 75,
+          "decimal_digits": 23,
+          "sha256_decimal": "70d63f346824c0e6152b8d329e78af6a754a4462692897ade4120f9a46ae78d1",
+          "sign": 1
+        },
+        "centered_error": -7,
+        "index": 3,
+        "payment": 2,
+        "u": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "9400f1b21cb527d7fa3d3eabba93557a18ebe7a2ca4e471cfe5e4c5b4ca7f767",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 4,
+          "decimal_digits": 2,
+          "sha256_decimal": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 80,
+          "decimal_digits": 24,
+          "sha256_decimal": "802dbe4a98e4c2f0106330d8f26f11c2ec0d88a615529ac73cacd1063d00beef",
+          "sign": 1
+        },
+        "v_next": {
+          "bit_length": 154,
+          "decimal_digits": 47,
+          "sha256_decimal": "1b2edd0f22d82fd67d14582197f96f058d197245cd68380779ac673ecc1715e3",
+          "sign": 1
+        }
+      },
+      {
+        "a": {
+          "bit_length": 150,
+          "decimal_digits": 45,
+          "sha256_decimal": "b11a7124124a286d6b36a45a689181d1d90503f6bc4b60b022d84ff449ceffbd",
+          "sign": 1
+        },
+        "centered_error": -4,
+        "index": 4,
+        "payment": 1,
+        "u": {
+          "bit_length": 4,
+          "decimal_digits": 2,
+          "sha256_decimal": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 154,
+          "decimal_digits": 47,
+          "sha256_decimal": "1b2edd0f22d82fd67d14582197f96f058d197245cd68380779ac673ecc1715e3",
+          "sign": 1
+        },
+        "v_next": {
+          "bit_length": 303,
+          "decimal_digits": 92,
+          "sha256_decimal": "42f3011c918aa212221cf3c06281af2cd223127228f982bbb2bca6ae4cfdcd86",
+          "sign": 1
+        }
+      },
+      {
+        "a": {
+          "bit_length": 299,
+          "decimal_digits": 90,
+          "sha256_decimal": "4892279306cf2b57b8cb231cf57ffb22b6b24eacc2557fe2a2213c0b0e41fa69",
+          "sign": 1
+        },
+        "centered_error": -2,
+        "index": 5,
+        "payment": 1,
+        "u": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "9400f1b21cb527d7fa3d3eabba93557a18ebe7a2ca4e471cfe5e4c5b4ca7f767",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 303,
+          "decimal_digits": 92,
+          "sha256_decimal": "42f3011c918aa212221cf3c06281af2cd223127228f982bbb2bca6ae4cfdcd86",
+          "sign": 1
+        },
+        "v_next": {
+          "bit_length": 601,
+          "decimal_digits": 181,
+          "sha256_decimal": "29b2f6e0f7b0ac4606bd55e9818c1b22eec7cb6dcae08a2ed694c33f063bbc79",
+          "sign": 1
+        }
+      }
+    ],
+    "two_to_total_recovery_length": 64,
+    "verified_invariants": [
+      "every state is a positive primitive rational pair",
+      "both intervals return to height 19 for the first time after three steps",
+      "each interval starts with payment 2 and has two payment-one interior steps",
+      "the cumulative payment is 4<6<2^6"
+    ]
+  }
+}

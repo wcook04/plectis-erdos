@@ -8,7 +8,7 @@
 
 </div>
 
-This paper gives a claim-bounded map of the current formal attack on Erdős Problem 249, which asks whether $`S=\sum_{n\ge1}\varphi(n)/2^n`$ is irrational. The problem remains open. The unconditional headline results are an explicit rational basis for the full dyadic totient kernel, exact rank $`2^e+1`$ through every level $`e\ge1`$, a denominator exclusion through approximately $`7.96\times10^{34}`$, and finite lcm-diagonal certificates for every $`t\le82`$. The full kernel is therefore infinite-dimensional. The paper also records exact equivalences between irrationality and several cofinal certificate or tail-nonintegrality supplies. Those equivalences re-express rather than solve the problem: no certificate at $`t=83`$, unbounded certificate family, or irrationality proof is obtained. The contribution is the audited organization of checked results, coordinate-specific obstructions, and open implications—not a solution, an exhaustive reproduction of every repository theorem, or a priority claim for every formalisation.
+This paper gives a claim-bounded map of the current formal attack on Erdős Problem 249, which asks whether $`S=\sum_{n\ge1}\varphi(n)/2^n`$ is irrational. The problem remains open. The unconditional headline results are an explicit rational basis for the full dyadic totient kernel, exact rank $`2^e+1`$ through every level $`e\ge1`$, a denominator exclusion through approximately $`7.96\times10^{34}`$, and finite lcm-diagonal certificates for every $`t\le82`$. The full kernel is therefore infinite-dimensional. The paper also records exact equivalences between irrationality and several cofinal certificate or tail-nonintegrality supplies. Those equivalences re-express rather than solve the problem: no certificate at $`t=83`$, unbounded certificate family, or irrationality proof is obtained. The results are organized by their proof mechanisms, coordinate-specific obstructions, and remaining implications.
 
 <a id="how-to-read-this-document"></a>
 
@@ -99,7 +99,7 @@ This is obtained from a classical Stern–Brocot gap lemma () applied at window 
 
 <div id="prop:sign" class="prop">
 
-**Proposition 5** (Cofinal positivity, and why it is exactly half a certificate). *The true actual-LCM tail difference is strictly positive for every $`a \ge 8`$, with no irrationality hypothesis (, ). In the same coordinate, integrality of the orbit forces the residue to the *top edge*, exactly $`2^{K} - e`$ (). Positivity does not exclude the top edge. So the strongest cofinal fact the corpus owns about the actual object supplies one of the two inequalities a certificate needs and provably cannot supply the other. `coord:actual-lcm` <span class="sans-serif">scale:cofinal</span> <span class="sans-serif">\[Lean\]</span>*
+**Proposition 5** (Cofinal positivity and the endpoint obstruction). *The true actual-LCM tail difference is strictly positive for every $`a \ge 8`$, with no irrationality hypothesis (, ). At a translated offset $`J`$ and depth $`K`$ satisfying $`J+K+(a+6)<2\cdot2^a`$ and $`2H+J+K+2<2^K`$, integrality forces the residue to the *top edge*, exactly $`2^{K} - e`$ (). This fixes the sign of the true survivor, but does not construct a central-band certificate. The top-edge residue remains compatible with integrality and needs an independent arithmetic exclusion. `coord:actual-lcm` <span class="sans-serif">scale:cofinal</span> <span class="sans-serif">\[Lean\]</span>*
 
 </div>
 
@@ -127,7 +127,7 @@ This is obtained from a classical Stern–Brocot gap lemma () applied at window 
 
 </div>
 
-Propositions <a href="#prop:sign" data-reference-type="ref" data-reference="prop:sign">5</a>–<a href="#prop:parity" data-reference-type="ref" data-reference="prop:parity">9</a> are the four facts a reader should carry into the next section: the corpus’s best cofinal information is half a certificate, its best rank information runs the wrong way, its reformulations are equivalences rather than reductions, and every purely qualitative property of the coefficient word is satisfied by a rational countermodel.
+Propositions <a href="#prop:sign" data-reference-type="ref" data-reference="prop:sign">5</a>–<a href="#prop:parity" data-reference-type="ref" data-reference="prop:parity">9</a> are the four facts a reader should carry into the next section: cofinal positivity leaves an endpoint-residue obstruction, the rank information runs the wrong way, its reformulations are equivalences rather than reductions, and every purely qualitative property of the coefficient word is satisfied by a rational countermodel.
 
 <a id="sec:wall"></a>
 
@@ -153,7 +153,7 @@ Fix two axes for a hypothetical proof of $`\mathrm{Sep}`$ (Definition <a href="
 
 - B2 closes the escape of retargeting; B3 records that no bounded result in the corpus has ever promoted.
 
-The corpus’s own results partition along these axes perfectly, which is the first evidence that the axes are the right ones. Every unconditional *finite* deposit (Proposition <a href="#prop:deposits" data-reference-type="ref" data-reference="prop:deposits">4</a>, the $`K=240`$ Farey rung of Theorem <a href="#thm:denom" data-reference-type="ref" data-reference="thm:denom">3</a>, the actual-LCM orbits at $`a = 4`$ and $`a = 6`$) sits at full resolution and bounded range, so B1 says extending them is evidence forever and proof never. Every unconditional *cofinal* theorem (letterwise positivity for all $`a \ge 8`$, the tail bounds from $`\varphi(m) \le m`$, unbounded Mersenne-shadow denominator growth) sits at coarse resolution and unbounded range, and Proposition <a href="#prop:sign" data-reference-type="ref" data-reference="prop:sign">5</a> proves in the corpus’s own coordinate that this is exactly half a certificate.
+The corpus’s own results partition along these axes perfectly, which is the first evidence that the axes are the right ones. Every unconditional *finite* deposit (Proposition <a href="#prop:deposits" data-reference-type="ref" data-reference="prop:deposits">4</a>, the $`K=240`$ Farey rung of Theorem <a href="#thm:denom" data-reference-type="ref" data-reference="thm:denom">3</a>, the actual-LCM orbits at $`a = 4`$ and $`a = 6`$) sits at full resolution and bounded range, so B1 says extending them is evidence forever and proof never. Every unconditional *cofinal* theorem (letterwise positivity for all $`a \ge 8`$, the tail bounds from $`\varphi(m) \le m`$, unbounded Mersenne-shadow denominator growth) sits at coarse resolution and unbounded range. Proposition <a href="#prop:sign" data-reference-type="ref" data-reference="prop:sign">5</a> illustrates why such sign information can leave the arithmetic endpoint obstruction unresolved.
 
 <a id="b1-the-finite-inspection-barrier-as-a-theorem"></a>
 
@@ -765,7 +765,7 @@ Producers conclude an existence or a supply: a witnessed object, a witnessed fin
 
 <div class="thm">
 
-**Theorem 54** (cert:d4 — `linearIndependent_canonicalTotientKernelFamily`). *For every $`e:\mathbb{N}`$, the canonical dyadic totient-kernel family $`\mathrm{canonicalTotientKernelFamily}(e) : \mathrm{TotientCanonicalIndex}(e) \to \mathbb{N}\to\mathbb{Q}`$, which has exactly $`2^e+1`$ channels, is linearly independent over $`\mathbb{Q}`$. Proved unconditionally by constructing, via CRT and Dirichlet’s theorem on primes in arithmetic progression (`PrimesCongruentOne`/`PrimesInAP` from Mathlib), an explicit evaluation point at which one channel becomes prime and every other channel picks up a fresh prime $`\equiv 1`$ modulo a large power of $`2`$ — a genuine witnessed producer, not merely a dimension count. Consequently $`\neg\mathrm{FiniteDimensional}\,\mathbb{Q}\,(\mathrm{span}\,\mathbb{Q}\,(\mathrm{range}\,\mathrm{fullTotientKernelFamily}))`$. Self-flagged: this shows the dyadic-kernel side is infinite-rank; it is not itself an irrationality proof.*
+**Theorem 54** (cert:d4 — `linearIndependent_canonicalTotientKernelFamily`). *For every $`e\ge0`$, the canonical family consisting of $`\varphi(n)`$, $`\varphi(2n)`$, and the odd-residue sections $`\varphi(2^j n+r)`$ with $`1\le j\le e`$ has $`2^e+1`$ linearly independent members over $`\mathbb Q`$. On odd inputs the first two members coincide. CRT and Dirichlet’s theorem construct a parity-separated evaluation matrix for the family with that pair merged; one even evaluation then separates the pair. Together with the even-residue reductions this gives a basis of the full kernel, not just an infinite-rank consequence. The actual sections through level $`e`$ have rank $`2^e+1`$ for $`e\ge1`$; at level zero their rank is one because $`\varphi(2n)`$ has not yet entered. The proof mechanism is detailed in Section <a href="#sec:mahler-defect" data-reference-type="ref" data-reference="sec:mahler-defect">10.8</a>. No rationality-to-finite-rank implication is proved for $`S`$.*
 
 *<span class="sans-serif">scale:uniform</span> `coord:other:dyadic-kernel-rank`*
 
@@ -1516,7 +1516,7 @@ with no irrationality hypothesis — the true, infinite, real translated tail di
 
 <div id="prop:SGN-03" class="prop">
 
-**Proposition 136** (Integrality forces the exact top-edge residue — names the obstruction). *Under the room bound of Prop. <a href="#prop:SGN-01" data-reference-type="ref" data-reference="prop:SGN-01">135</a> plus $`2H+J+K+2<2^K`$: integrality of the actual orbit forces
+**Proposition 136** (Integrality forces the exact top-edge residue — names the obstruction). *For $`a\ge8`$, assume the longer-window bound $`J+K+(a+6)<2\cdot2^a`$ and $`2H+J+K+2<2^K`$. Integrality of the translated actual orbit forces
 ``` math
 \mathtt{windowDiscrepancy}\ H\ (H{+}J)\ K \bmod 2^K \;=\; 2^K - e
 ```
@@ -1799,11 +1799,11 @@ This subsection catalogues material that entered the public record after the res
 
 The file also supplies the underlying algebraic infrastructure: a rectangular Cauchy–Binet expansion derived from the Leibniz formula (, <span class="sans-serif">\[Lean\]</span>, <span class="sans-serif">scale:uniform</span>, `coord:other:hankel-determinant`, needed because Mathlib’s pinned determinant API does not expose rectangular Cauchy–Binet directly), and a finite unique-terminal-dyadic-exponent parity lemma showing that clearing a common denominator by its uniquely largest power of two preserves oddness of the numerator (, <span class="sans-serif">\[Lean\]</span>, <span class="sans-serif">scale:uniform</span>, `coord:other:dyadic-parity`).
 
-<a id="generic-tail-orbit-rigidity-a-self-labelled-non-claim"></a>
+<a id="generic-tail-orbit-rigidity"></a>
 
-### Generic tail-orbit rigidity: a self-labelled non-claim
+### Generic tail-orbit rigidity
 
-`GenericTailOrbitRigidity` is explicit in its own header that it asserts no novelty and no priority, and contains an explicit `NON_CLAIM` guard against a superseded “positive orbit” route; it is a formal algebra/analysis interface, reproduced here only because it entered the public tree after the earlier parts of this paper were drafted.
+The scaled-tail recurrence turns rationality into an integer-orbit question. Its homogeneous error doubles at every step, so the subexponential boundary condition removes that error and identifies the orbit with the actual tail. The following equivalence exposes both parts of this argument.
 
 <div class="thm">
 
@@ -3279,9 +3279,9 @@ Third, the subset form (Theorem <a href="#thm:hgap-subset" data-reference-type=
 
 The headline (§<a href="#ssec:headline" data-reference-type="ref" data-reference="ssec:headline">9.2</a>) is row **e1-companion** of the source interface catalogue in full. The remaining thirteen rows below attack the same 249-supply obligation from independent coordinates in the Lean tree: the actual-LCM sign corridor, the top-edge staircase, the raw rational approximant, the short-window arithmetic word, the diagonal pincer certificate bank, the $`h`$-uniform single-window certificate, the Farey/continued-fraction denominator growth law, the 2-adic pulse block, the LCM-jump slack scalar, the prime-jump commutator, the Möbius–Mersenne denominator channel, and the carry-kernel rank. None of them is closed; each is recorded with its exact remaining content.
 
-<a id="sgn-01-the-positive-sign-half-of-the-certified-kill-band-coordactual-lcm-sign"></a>
+<a id="sgn-01-the-positive-sign-corridor-and-survivor-branch-coordactual-lcm-sign"></a>
 
-### SGN-01 — the positive-sign half of the certified-kill band (`coord:actual-lcm-sign`)
+### SGN-01 — the positive-sign corridor and survivor branch (`coord:actual-lcm-sign`)
 
 <div class="defn">
 
@@ -3301,7 +3301,7 @@ Hence $`0 < \mathtt{actualLcmTailOrbit}\ a`$ for every $`a\ge 8`$. The proof is 
 
 <div class="rem">
 
-*Remark 223* (Exactly half the certificate band, and where the other half goes). $`\mathtt{certifiedKill}`$ needs the residue to avoid a *symmetric* radius-$`(N{+}h{+}L{+}2)`$ neighbourhood of $`0`$ on both sides. SGN-01 gives positivity only. Its companion proves that, under integrality, the consequence is not a kill but the opposite: the residue is forced to the *top edge*, exactly $`2^K - e`$ where $`e`$ is the true carry orbit (). So the lower half of the certified-kill band is discharged unconditionally and cofinally by SGN-01; the upper half is untouched, and what remains open is a genuinely different, one-sided statement about the top edge — row TE-04 below. The corpus’s own normal-form tables tag this row <span class="sans-serif">scale:bounded</span>; that tag is misleading, since only the window offset $`J`$ is bounded relative to the height, and the height $`2\cdot 2^a`$ itself is unbounded: the correct tag is <span class="sans-serif">scale:uniform</span>.
+*Remark 223* (The survivor sign and the endpoint residue). $`\mathtt{certifiedKill}`$ needs the residue to avoid a *symmetric* radius-$`(N{+}h{+}L{+}2)`$ neighbourhood of $`0`$ on both sides. SGN-01 gives positivity only. Its companion proves that, under integrality, $`J+K+(a+6)<2\cdot2^a`$, and $`2H+J+K+2<2^K`$, the consequence is not a kill but the opposite: the residue is forced to the *top edge*, exactly $`P-e`$ where $`P=2^K`$ and $`e`$ is the true carry orbit (). Writing $`B=2H+J+K+2`$, the proof gives $`0<e<B<P`$, hence $`P-B<P-e<P`$. This excludes the nonnegative true survivor; it does not discharge a lower certified-kill inequality. Indeed $`P-e>B`$ needs a further comparison, such as $`2B\le P`$, whereas the stated room condition only gives $`B<P`$. What remains is an independent arithmetic exclusion of the upper endpoint band — row TE-04 below. Positivity is uniform in the height $`a`$, but every depth-$`K`$ consequence retains its stated window and modulus bounds.
 
 </div>
 
@@ -3899,11 +3899,21 @@ Note also the coordinate warning from the manuscript’s own Appendix C (): cone
 
 <div class="thm">
 
-**Theorem 269** (Infinite dyadic totient-kernel rank). *For every depth $`e\ge0`$, the canonical family of $`2^e+1`$ dyadic totient-kernel channels ($`\mathtt{card\_totientCanonicalIndex}`$, ) is linearly independent over $`\mathbb Q`$, proved via a `SeparatedMinorCertificate` (an explicit finite evaluation-point assignment with nonzero determinant, forced by CRT + Dirichlet’s theorem on primes in arithmetic progressions — one channel made prime, every other channel forced through a fresh prime $`\equiv1\bmod`$ a large power of $`2`$).*
+**Theorem 269** (The dyadic totient basis and finite-level ranks). *The sequences $`\varphi(n)`$, $`\varphi(2n)`$, and $`\varphi(2^j n+r)`$ for $`j\ge1`$ and odd $`0<r<2^j`$ form a $`\mathbb Q`$-basis of the span of the full dyadic totient kernel. The sections through level $`e\ge1`$ span a space of dimension $`2^e+1`$; the level-zero span has dimension one.*
 
 </div>
 
-; consequently the full infinite family spans an infinite-dimensional $`\mathbb Q`$-space, . A companion impossibility result closes the natural repair attempt directly: a bounded *compressed-adjoint certificate* — a triple $`(Q,A,\mathrm{boundary})`$ with $`Q\cdot v\cdot A=\mathrm{boundary}`$, $`|\mathrm{boundary}|<Q\cdot v`$, $`A\ne0`$ — is provably impossible, . <span class="sans-serif">\[Lean\]</span> <span class="sans-serif">scale:uniform</span> (holds for every $`e`$; existence side is unconditional, via Mathlib’s CRT + primes-in-AP machinery) `coord:binary-digit` (dyadic totient-kernel — *not* the Möbius coordinate).
+<div class="proof">
+
+*Proof mechanism.* Fix $`e`$. Restrict the canonical finite family to odd $`n`$, where $`\varphi(2n)=\varphi(n)`$, and merge these two columns. The remaining arguments $`L_i(n)=a_i n+b_i`$ are $`n`$ and the odd-residue affine forms; their slopes and residues are coprime and their pairwise cross determinants are nonzero. For each target $`i`$, CRT prescribes an odd residue for $`n`$ and a root of each other $`L_j`$ modulo a distinct large prime $`q_j\equiv1\pmod{2^{e+3}}`$. Choosing $`q_j`$ larger than the nonzero cross determinant ensures that the target does not vanish modulo $`q_j`$. Dirichlet’s theorem then makes the target value prime in the resulting reduced progression. The odd residue of $`n`$ fixes $`v_2(\varphi(L_i(n)))=d_i<e+2`$, whereas each off-target totient is divisible by $`q_j-1`$, hence by $`2^{e+2}`$.
+
+Choose one such input $`n_i`$ per target and form $`M_{ij}=\varphi(L_j(n_i))`$. Dividing column $`j`$ by $`2^{d_j}`$ gives an integer matrix congruent to the identity modulo $`2`$, so its determinant is nonzero. This proves independence of the merged family on odd inputs . In a relation among the original columns, their two zero-residue coefficients $`\alpha,\beta`$ therefore satisfy $`\alpha+\beta=0`$, and all other coefficients vanish. Evaluation at $`n=2`$ gives $`\alpha+2\beta=0`$, proving full independence .
+
+The identities $`\varphi(2^{j+1}n)=2^j\varphi(2n)`$ and $`\varphi(2^j n+2^{t+1}s)=2^t\varphi(2^{j-t-1}n+s)`$ for odd $`s`$ and $`0<2^{t+1}s<2^j`$ reduce all remaining sections to these basis vectors. Finite character gives independence of their union. The count through level $`e\ge1`$ is $`2+\sum_{j=1}^{e}2^{j-1}=2^e+1`$. ◻
+
+</div>
+
+The full-kernel infinite-dimensionality follows, but the explicit basis and finite-level ranks are the sharper statements explained here. A companion impossibility result closes the natural repair attempt directly: a bounded *compressed-adjoint certificate* — a triple $`(Q,A,\mathrm{boundary})`$ with $`Q\cdot v\cdot A=\mathrm{boundary}`$, $`|\mathrm{boundary}|<Q\cdot v`$, $`A\ne0`$ — is provably impossible, . <span class="sans-serif">\[Lean\]</span> <span class="sans-serif">scale:uniform</span> (holds for every $`e`$; existence side is unconditional, via Mathlib’s CRT + primes-in-AP machinery) `coord:binary-digit` (dyadic totient-kernel — *not* the Möbius coordinate).
 
 **(c) Precise scope — coordinate-relative, stated explicitly by the source module.** This does *not* show irrationality of $`S`$. It proves the dyadic-kernel *side* is infinite-rank; the module’s own docstring names the missing input as “a rationality-side finite-rank compression, or equivalent contradiction.”
 
@@ -3960,7 +3970,7 @@ So while the promotion audit is not literally eighteen-for-eighteen at the level
 | **Obligation** | **Row / site** | **Gap kind** | **Verdict and exact blocker** |
 |:---|:---|:---|:---|
 | -supply | e1-companion, | hypothesis strength | Not promotable. The consumer already has the obligation’s exact quantifier shape; the missing input is a single unproved arithmetic fact — a constant-saving first-harmonic (Weyl-sum) cancellation bound $`\sum_{N\in[X,2X)}\cos(2\pi\cdot(\ldots)/2^L)\le(9/10)X`$ — not proved at any $`X,h,L`$ anywhere in the corpus. |
-| 249-supply | SGN-01, | hypothesis strength | Not promotable. Positivity is exactly HALF of the needed certificate: the companion theorem in the same file proves integrality forces the residue to the TOP edge, not a kill — the lower half of the band is discharged unconditionally and cofinally, the upper half is untouched. |
+| 249-supply | SGN-01, | hypothesis strength | Not promotable. Positivity excludes the nonnegative true survivor. Under the longer-window and modulus-room bounds, integrality forces the residue to the upper endpoint band. This leaves an arithmetic obstruction; it does not supply a central-band certificate inequality. |
 | 249-supply | TE-04, | hypothesis strength | Not promotable. The consumer side is finished and cofinal (proved for every $`a\ge8`$); the residual is purely the one-sided residue-gap *producer*, unconditionally unsupplied at even one large $`a`$. |
 | 249-supply | TE-05-weakest, | hypothesis strength | Not promotable. The exact identity pinning the target shows the dominance inequality is equivalent to $`\mathrm{carryOrbit}\le0`$, and the sign machinery (SGN-02) already proves the true carry orbit is strictly *positive* under integrality — the corridor-escape branch the identity naturally supplies is exactly the branch already eliminated. |
 | 249-supply | SEP-02, | scale only | Not promotable. The analytic tail is fully discharged with an explicit, uniform error radius; only two exponents ($`a=4,6`$) have the resulting finite distance-to-integer question verified unconditionally (); nothing beyond $`a=6`$ is proved. |
@@ -5183,7 +5193,7 @@ Before any positive target, the file proves one entire proof shape is empty. For
 ```
 (a definition, unproved at any $`a`$) `coord:mobius-mersenne`.
 
-Note this is a *one-sided* inequality — only the upper (positive) carry arc is excluded, not a symmetric two-sided band — because the corridor’s lower half is already discharged unconditionally: for $`a\ge8`$ and $`J+(a{+}6)<2\cdot2^a`$,
+This *one-sided* inequality excludes the upper endpoint arc forced by an integral orbit under the stated window and room bounds. The sign input is the unconditional positivity statement: for $`a\ge8`$ and $`J+(a{+}6)<2\cdot2^a`$,
 ``` math
 0 < R_{2H+J}-R_{H+J}
 ```

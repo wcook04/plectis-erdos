@@ -1,0 +1,323 @@
+{
+  "kind": "annex_notes",
+  "schema_version": "annex_notes_v1",
+  "slug": "arxiv-2406-17593-kovac-tao-ahmes-series",
+  "notes": [
+    {
+      "id": "n001",
+      "targets": [
+        "introduction"
+      ],
+      "note": "Navigation: Kovač and Tao study Ahmes series, Lambert subseries, irrationality sequences, simultaneous rational subseries, and Stolarsky's shifted-reciprocal problem. The PDF is arXiv:2406.17593v4 (14 July 2025), 28 pages; the Lambert-subseries results are stated on pp. 3–5 and proved on pp. 11–14.",
+      "tags": [
+        "arxiv-paper",
+        "source-checked",
+        "navigation",
+        "overview"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 100,
+      "relevance_justification": "Whole-source navigation after page-by-page review of the acquired v4 PDF.",
+      "routing": {
+        "problem_spaces": [
+          "erdos249_q_lambert_periodic_sieve",
+          "erdos257_period_noncollapse"
+        ],
+        "capabilities": [
+          "formal_math_prior_art"
+        ]
+      }
+    },
+    {
+      "id": "n002",
+      "targets": [
+        "proof-of-theorem-3thmmergedlambertreference-typeref-referenc"
+      ],
+      "note": "Exact Erdős #257 locator: Remark 4.1 on PDF/printed p. 13 proves that, for each fixed integer t ≥ 2 and every n, sum_{l>n} 1/(t^l-1) < 1/(t^n-1). Hence distinct supports give distinct Lambert subsums and the full subsum set is a Cantor set.",
+      "tags": [
+        "source-checked",
+        "erdos257",
+        "exact-locator",
+        "strict-tail",
+        "cantor-set"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 100,
+      "relevance_justification": "Direct literature authority for strict separation and unique support coding in the Erdős #257 manuscript.",
+      "routing": {
+        "problem_spaces": [
+          "erdos257_period_noncollapse"
+        ],
+        "capabilities": [
+          "formal_math_prior_art"
+        ]
+      }
+    },
+    {
+      "id": "n003",
+      "targets": [
+        "proof-of-theorem-3thmmergedlambertreference-typeref-referenc"
+      ],
+      "note": "Stronger adjacent result: Theorem 2.3 is stated on p. 5 and proved on pp. 13–14. If distinct bases 2 ≤ t_1 < ... < t_m satisfy sum_k 1/(t_k-1) > 1, then one can choose supports whose merged Lambert sum is rational, with at least one support infinite. This is a multi-base construction and is not a counterexample for one fixed base.",
+      "tags": [
+        "source-checked",
+        "theorem-2.3",
+        "stronger-adjacent-result",
+        "scope-boundary"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 98,
+      "relevance_justification": "Captures the paper's strongest nearby rationality construction without overstating its relevance to the fixed-base Erdős question.",
+      "routing": {
+        "problem_spaces": [
+          "erdos257_period_noncollapse"
+        ],
+        "capabilities": [
+          "formal_math_prior_art"
+        ]
+      }
+    },
+    {
+      "id": "n004",
+      "targets": [
+        "proofs-of-propositions-1proprandomizedreference-typeref-refe"
+      ],
+      "note": "Generic irrationality context: Propositions 2.1 and 2.2 (statements pp. 3–4; proofs pp. 11–13) show that rational subsums are exceptional in measure and Baire-category senses under the paper's respective hypotheses. These generic statements do not settle irrationality for every prescribed infinite support.",
+      "tags": [
+        "source-checked",
+        "measure-category",
+        "generic-results",
+        "scope-boundary"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 90,
+      "relevance_justification": "Separates almost-everywhere/topological-generic evidence from the universal Erdős #257 claim.",
+      "routing": {
+        "problem_spaces": [
+          "erdos257_period_noncollapse"
+        ],
+        "capabilities": [
+          "formal_math_prior_art"
+        ]
+      }
+    },
+    {
+      "id": "n005",
+      "targets": [
+        "proofs-of-theorems-4thmtype2reference-typeref-referencethmty"
+      ],
+      "note": "Irrationality-sequence limits: Theorem 2.4 (statement p. 6, proof pp. 15–16) rules out Type 2 when a_{n+1}/a_n^2 tends to 0. Theorem 2.5 (statement p. 7, proof pp. 16–17) gives a broad obstruction to Type 3, and Corollary 2.6 applies it to exponentially bounded growth.",
+      "tags": [
+        "source-checked",
+        "theorem-2.4",
+        "theorem-2.5",
+        "irrationality-sequences"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 86,
+      "relevance_justification": "Records the paper's negative boundary theorems for Erdős–Graham irrationality-sequence variants.",
+      "routing": {
+        "problem_spaces": [
+          "erdos249_q_lambert_periodic_sieve"
+        ],
+        "capabilities": [
+          "formal_math_prior_art"
+        ]
+      }
+    },
+    {
+      "id": "n006",
+      "targets": [
+        "proof-of-theorem-7thmtype3fasterreference-typeref-referencet"
+      ],
+      "note": "Existence at prescribed rapid growth: Theorem 2.7 (statement p. 7, proof pp. 17–19) constructs Type 3 irrationality sequences with any prescribed superexponential lower growth profile. This complements, rather than contradicts, the obstructions in Theorems 2.4–2.5.",
+      "tags": [
+        "source-checked",
+        "theorem-2.7",
+        "irrationality-sequences",
+        "existence"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 84,
+      "relevance_justification": "Preserves the positive existence theorem found during whole-source mining.",
+      "routing": {
+        "problem_spaces": [
+          "erdos249_q_lambert_periodic_sieve"
+        ],
+        "capabilities": [
+          "formal_math_prior_art"
+        ]
+      }
+    },
+    {
+      "id": "n007",
+      "targets": [
+        "proof-of-theorem-8thmhigherdreference-typeref-referencethmhi",
+        "proof-of-theorem-11thmstolarskyreference-typeref-referenceth"
+      ],
+      "note": "Higher-dimensional results: Theorem 2.8 (statement p. 9, proof pp. 19–25) constructs simultaneous rationality/interior phenomena in every fixed dimension with double-exponential growth. Theorem 2.11 (statement p. 10, proof pp. 25–27) constructs one sequence for which every rational shift has a rational reciprocal sum, negatively resolving the stated Stolarsky problem.",
+      "tags": [
+        "source-checked",
+        "theorem-2.8",
+        "theorem-2.11",
+        "higher-dimensional",
+        "stolarsky"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 82,
+      "relevance_justification": "Records strong non-cited results discovered by reading the complete paper.",
+      "routing": {
+        "problem_spaces": [
+          "erdos249_q_lambert_periodic_sieve"
+        ],
+        "capabilities": [
+          "formal_math_prior_art"
+        ]
+      }
+    },
+    {
+      "id": "n008",
+      "targets": [
+        "introduction"
+      ],
+      "note": "Version boundary: arXiv v4 treats the prime-support omega Lambert series as unresolved/conditional in its introduction. That is historically accurate for this July 2025 version but is superseded by Tao–Teräväinen, arXiv:2512.01739v2, Theorem 1.3 for the base-2 omega series. Kovač–Tao still does not settle the universal fixed-base support question.",
+      "tags": [
+        "source-checked",
+        "version-boundary",
+        "historical-status",
+        "erdos257"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 99,
+      "relevance_justification": "Prevents the annex from propagating an open-status statement made obsolete by a later theorem.",
+      "routing": {
+        "problem_spaces": [
+          "erdos257_period_noncollapse"
+        ],
+        "capabilities": [
+          "formal_math_prior_art"
+        ]
+      }
+    },
+    {
+      "id": "n009",
+      "targets": [
+        "statements-of-the-results/one-dimensional-results/lambert-subseries"
+      ],
+      "note": "Erdős #249 boundary: this paper concerns first-power 0/1 Lambert subseries and irrationality-sequence topology; it does not supply the signed Möbius/phi second-power finite Euler-sieve mechanism used in the #249 work.",
+      "tags": [
+        "source-checked",
+        "erdos249",
+        "boundary",
+        "scope"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 90,
+      "relevance_justification": "Prevents transfer between nearby but mathematically distinct Lambert-series regimes.",
+      "routing": {
+        "problem_spaces": [
+          "erdos249_q_lambert_periodic_sieve"
+        ],
+        "capabilities": [
+          "formal_math_prior_art"
+        ]
+      }
+    },
+    {
+      "id": "n010",
+      "targets": [
+        "introduction"
+      ],
+      "note": "Acquisition receipt: the local companion PDF is arXiv:2406.17593v4, title and authors verified, 28 pages, SHA-256 5ef233db5bf94a072de7e094e6d42864ba2d1f639e7cb951c02b4cf1d3d52b57. The browser download was verified to begin with the %PDF signature before assimilation.",
+      "tags": [
+        "source-checked",
+        "provenance",
+        "pdf",
+        "checksum"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 95,
+      "relevance_justification": "Provides exact identity and integrity evidence for the acquired source.",
+      "routing": {
+        "problem_spaces": [
+          "erdos249_q_lambert_periodic_sieve",
+          "erdos257_period_noncollapse"
+        ],
+        "capabilities": [
+          "formal_math_prior_art"
+        ]
+      }
+    },
+    {
+      "id": "n011",
+      "targets": [
+        "*"
+      ],
+      "note": "Complete-source and version-boundary receipt: all 28 pages of arXiv:2406.17593v4 were read sequentially. Page 2 records the folklore growth criterion and sharpness via shifted Sylvester sequences; pp. 3–10 state the main results, pp. 11–27 contain proofs, and pp. 27–28 contain references. The later Type 2/3 and simultaneous-rationality theorems do not settle #243. All page locators in this annex refer to arXiv v4, not the final journal pagination 572–608.",
+      "tags": [
+        "complete-read",
+        "version-boundary",
+        "page-locator",
+        "erdos-243"
+      ],
+      "added_at": "2026-07-28",
+      "relevance": 100,
+      "relevance_justification": "Prevents arXiv page numbers from being attributed to the final journal layout."
+    },
+    {
+      "id": "n012",
+      "targets": [
+        "proofs-of-theorems-4thmtype2reference-typeref-referencethmty"
+      ],
+      "note": "New Erdős #68 specialization (derived, not source-stated): in Lemma 5.1 take a_n=n!-1 and J_n=[a_n-(n^2+1),a_n] intersected with the positive integers. For n>=8, the single k=n+1 summand already proves the interval-overlap hypothesis. After setting x=n!, the positive cross-multiplied difference is x^2-(2n^4+3n^3+4n^2+2)x+(n^6+2n^5+5n^4+6n^3+7n^2+2n+1); n!>2n^4+3n^3+4n^2+2 for n>=8. Lemma 5.1 therefore gives positive integers b_n with n!-n^2-2<=b_n<=n!-1 and rational sum sum_{n>=2}1/b_n. Thus asymptotic growth arguments fail even under quadratic one-sided perturbations; the unperturbed #68 endpoint still requires an arithmetic rigidity argument.",
+      "tags": [
+        "source-checked",
+        "erdos68",
+        "lemma-5.1",
+        "derived-not-source-stated",
+        "quadratic-perturbation",
+        "scope-boundary"
+      ],
+      "added_at": "2026-07-29",
+      "relevance": 100,
+      "relevance_justification": "Sharpens Theorem 2.4 from an unspecified o(a_n) perturbation to an explicit n^2+1 window for the factorial-gap sequence and isolates the missing endpoint arithmetic.",
+      "routing": {
+        "problem_spaces": [
+          "erdos68"
+        ],
+        "capabilities": [
+          "formal_math_prior_art",
+          "proof_frontier"
+        ]
+      }
+    },
+    {
+      "id": "n013",
+      "targets": [
+        "*"
+      ],
+      "note": "CANT 2025 author-slide receipt for Erdős #68: slide 5 explicitly lists sum_{n>=2} 1/(n!-1) as an open problem (EP #68). Slide 18 states the Kovač–Tao positive theorem can produce an irrationality sequence with a_n = n! + O(log_2 log_2 n), then immediately emphasizes that irrationality of the exact n!-1 endpoint series is still unknown. Scope: this is source-stated evidence for the nearby-sequence result and the open endpoint boundary; it supplies no endpoint divisibility theorem. Text extraction and rendered slides 5 and 18 were both checked. The slide deck is independently indexed at annexes/kovac-cant-2025-several-irrationality-problems/source.pdf.",
+      "tags": [
+        "source-checked",
+        "author-slides",
+        "erdos68",
+        "page-locator",
+        "scope-boundary",
+        "open-problem",
+        "nearby-sequence"
+      ],
+      "added_at": "2026-07-30",
+      "relevance": 100,
+      "relevance_justification": "Direct author presentation restating #68 and sharply separating the proved nearby-sequence theorem from the unsolved exact endpoint.",
+      "routing": {
+        "problem_spaces": [
+          "erdos68"
+        ],
+        "capabilities": [
+          "formal_math_prior_art",
+          "proof_frontier"
+        ]
+      }
+    }
+  ]
+}

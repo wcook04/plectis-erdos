@@ -40,11 +40,15 @@ check: all
 	python3 $(REASONING_ASSEMBLER) --check
 	python3 ../scripts/check_rendered_paper_boundary.py
 	python3 ../scripts/check_problem_note_sources.py
+	python3 ../scripts/check_public_paper_links.py
 
 # The public reasoning manuscripts are flat generated projections. Their
 # authored parts remain small enough for focused mathematical review.
 $(REASONING_PAPERS:%=%.tex): $(REASONING_PARTS) $(REASONING_NOTE_SOURCES) $(REASONING_ASSEMBLER)
 	python3 $(REASONING_ASSEMBLER) --write
+
+# Every paper consumes the common link and typography macros.
+$(PAPERS:%=%.pdf): paper-house-style.sty
 
 # The notes share one preamble, so a change there rebuilds all of them.
 $(NOTES:%=%.pdf): $(PREAMBLE)

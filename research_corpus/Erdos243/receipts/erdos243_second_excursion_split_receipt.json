@@ -1,0 +1,1584 @@
+{
+  "consequence_reconciliation": {
+    "clean_return_family_frontier": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "update_now",
+      "reason": "four further cofinal-return subfamilies are exact"
+    },
+    "negative_unit_full_payment_route": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "decision": "update_now",
+      "reason": "full payment fourteen is exactly absent on all four classes"
+    },
+    "older_type_b_handoffs": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "verified_no_change",
+      "reason": "historical research inputs do not own the live claim boundary"
+    },
+    "public_projection": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "defer_with_reason",
+      "reason": "private exact source is not automatic publication authority",
+      "reentry_condition": "explicit public release wave with owner review"
+    }
+  },
+  "cumulative_source_class_closure": {
+    "common_modulus": 221,
+    "continuing_negative_support_candidate_class_count": 68,
+    "exact_closed_fraction": "140/221",
+    "exact_three_way_partition": "140 zero-centered + 13 positive + 68 negative candidates = 221",
+    "first_split_closed_class_count": 136,
+    "positive_centered_class_count_after_second_split": 13,
+    "remaining_class_count": 81,
+    "second_split_additional_closed_classes": [
+      105,
+      118,
+      170,
+      183
+    ],
+    "total_closed_class_count": 140
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos243.negativeFourHeightThirteen_fullPayment",
+        "ErdosProblems.Erdos243.negativeFourHeightThirteen_collapse"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "falsification_consequence": "The error-minus-four branch contains four further infinite cofinal-return subfamilies, while all thirteen complements switch to positive centered error. Together with the first split, 140 of 221 source classes modulo 221 are forced into the Sylvester tail and only 68 remain candidates for continuing negative support.",
+      "survival_consequence": "If all full-payment classes were absent, the immediate payment route to cofinal return would be closed at height 13."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "surviving_height_thirteen_classes_avoid_cofinal_return",
+      "statement": "None of the five source classes surviving the height-12 split can make a full payment at the next centered height."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_forced_excursion_split.py",
+        "system/lib/formal_math_residue_cylinder.py"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_second_excursion_split.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_forced_excursion_split.py",
+        "system/lib/formal_math_residue_cylinder.py",
+        "system/server/tests/test_formal_math_residue_cylinder.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Substitute each surviving source class into the exact q10 polynomial modulo divisor times target modulus, form the centered quotient numerator, divide its coefficients exactly modulo 14 or 17, and evaluate the complete residue tables.",
+      "falsifier": "A source residue cylinder with full height-13 payment, forcing primitive height one and the absorbing zero-centered tail.",
+      "id": "composite_modulus_height_thirteen_payment_split",
+      "question": "After exact division by 13, which source cylinders make the next multiplier divisible by the full primitive height?",
+      "resource_bounds": {
+        "avoided_next_integer_polynomial_degree": 2048,
+        "negative_four_residue_classes": 17,
+        "negative_unit_residue_classes": 56,
+        "representative_replays": 73,
+        "source_polynomial_degree": 1024
+      },
+      "stop_condition": "Stop after every one of the five source classes has one complete next-payment residue table; do not audit later arbitrary steps."
+    },
+    "problem": {
+      "claim_ceiling": "Exact cofinal return for four further classes modulo 221 and exact elimination of immediate full payment on the four negative-unit height-13 branches; unrestricted #243 remains open.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "one_way_theorem",
+        "decision_basis": "Composite-modulus coefficient arithmetic proves the exact quotient tables for all parameter lifts; exact reduced-pair replays are only regression checks.",
+        "next_analytic_target": "Discard the error-minus-four branch as a continuing-negative-support mechanism. Treat the payment-seven height-two boundary cylinders separately from the payment-one height-fourteen cylinders in the four remaining negative-unit source classes."
+      },
+      "status": "exact_one_way_result",
+      "summary": "For k=1+13*t, the height-13 error is -4 and payment 17 occurs exactly for t mod 17 in {8,9,13,14}, equivalently k mod 221 in {105,118,170,183}; every lift collapses to height one and e=0 forever. Each of the other thirteen t-classes switches to positive centered error +2 or +4 at height 17. On k mod 13 in {3,4,11,12}, height-13 payment is always 1 or 7 and never the full factor 14."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "infrastructure_receipt": {
+    "avoided_object": "degree-2048 giant integer quotient polynomial",
+    "library": "system/lib/formal_math_residue_cylinder.py",
+    "method": "recover (N/d) mod M from N mod (d*M) after exact coefficientwise divisibility",
+    "test": "system/server/tests/test_formal_math_residue_cylinder.py"
+  },
+  "negative_four_certificate": {
+    "branch": "height_13_centered_error_minus_four",
+    "conclusion": "four infinite arithmetic subfamilies pay 17 at height 13, collapse to primitive height one, and enter centered state zero; all thirteen non-full-payment classes switch to centered error +2 or +4 at height 17",
+    "continuing_negative_t_classes": [],
+    "full_payment_seventeen_k_classes_mod_221": [
+      105,
+      118,
+      170,
+      183
+    ],
+    "full_payment_seventeen_t_classes": [
+      8,
+      9,
+      13,
+      14
+    ],
+    "height_thirteen_multiplier_mod_17_by_t_mod_17": [
+      5,
+      13,
+      5,
+      5,
+      13,
+      5,
+      13,
+      5,
+      0,
+      0,
+      13,
+      5,
+      13,
+      0,
+      0,
+      5,
+      13
+    ],
+    "next_centered_error_by_t_mod_17": [
+      2,
+      4,
+      2,
+      2,
+      4,
+      2,
+      4,
+      2,
+      null,
+      null,
+      4,
+      2,
+      4,
+      null,
+      null,
+      2,
+      4
+    ],
+    "parameterization": "k=1+13*t",
+    "payment_by_t_mod_17": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      17,
+      17,
+      1,
+      1,
+      1,
+      17,
+      17,
+      1,
+      1
+    ],
+    "positive_error_four_t_classes": [
+      1,
+      4,
+      6,
+      10,
+      12,
+      16
+    ],
+    "positive_error_two_t_classes": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      11,
+      15
+    ],
+    "source_class_mod_13": 1,
+    "surviving_t_classes_mod_17": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      10,
+      11,
+      12,
+      15,
+      16
+    ]
+  },
+  "negative_unit_certificate": {
+    "branch": "height_13_centered_error_minus_one",
+    "conclusion": "the immediate full-payment collapse at height 13 is impossible on all four negative-unit source classes",
+    "full_payment_fourteen_class_count": 0,
+    "rows": [
+      {
+        "full_payment_fourteen_t_classes": [],
+        "height_thirteen_multiplier_mod_14_by_t_mod_14": [
+          1,
+          7,
+          1,
+          1,
+          7,
+          1,
+          1,
+          1,
+          7,
+          1,
+          1,
+          7,
+          1,
+          1
+        ],
+        "parameterization": "k=3+13*t",
+        "payment_by_t_mod_14": [
+          1,
+          7,
+          1,
+          1,
+          7,
+          1,
+          1,
+          1,
+          7,
+          1,
+          1,
+          7,
+          1,
+          1
+        ],
+        "payment_one_t_classes": [
+          0,
+          2,
+          3,
+          5,
+          6,
+          7,
+          9,
+          10,
+          12,
+          13
+        ],
+        "payment_seven_t_classes": [
+          1,
+          4,
+          8,
+          11
+        ],
+        "source_class_mod_13": 3
+      },
+      {
+        "full_payment_fourteen_t_classes": [],
+        "height_thirteen_multiplier_mod_14_by_t_mod_14": [
+          1,
+          1,
+          7,
+          1,
+          1,
+          7,
+          1,
+          1,
+          1,
+          7,
+          1,
+          1,
+          7,
+          1
+        ],
+        "parameterization": "k=4+13*t",
+        "payment_by_t_mod_14": [
+          1,
+          1,
+          7,
+          1,
+          1,
+          7,
+          1,
+          1,
+          1,
+          7,
+          1,
+          1,
+          7,
+          1
+        ],
+        "payment_one_t_classes": [
+          0,
+          1,
+          3,
+          4,
+          6,
+          7,
+          8,
+          10,
+          11,
+          13
+        ],
+        "payment_seven_t_classes": [
+          2,
+          5,
+          9,
+          12
+        ],
+        "source_class_mod_13": 4
+      },
+      {
+        "full_payment_fourteen_t_classes": [],
+        "height_thirteen_multiplier_mod_14_by_t_mod_14": [
+          1,
+          1,
+          7,
+          1,
+          1,
+          7,
+          1,
+          1,
+          1,
+          7,
+          1,
+          1,
+          7,
+          1
+        ],
+        "parameterization": "k=11+13*t",
+        "payment_by_t_mod_14": [
+          1,
+          1,
+          7,
+          1,
+          1,
+          7,
+          1,
+          1,
+          1,
+          7,
+          1,
+          1,
+          7,
+          1
+        ],
+        "payment_one_t_classes": [
+          0,
+          1,
+          3,
+          4,
+          6,
+          7,
+          8,
+          10,
+          11,
+          13
+        ],
+        "payment_seven_t_classes": [
+          2,
+          5,
+          9,
+          12
+        ],
+        "source_class_mod_13": 11
+      },
+      {
+        "full_payment_fourteen_t_classes": [],
+        "height_thirteen_multiplier_mod_14_by_t_mod_14": [
+          1,
+          1,
+          1,
+          7,
+          1,
+          1,
+          7,
+          1,
+          1,
+          1,
+          7,
+          1,
+          1,
+          7
+        ],
+        "parameterization": "k=12+13*t",
+        "payment_by_t_mod_14": [
+          1,
+          1,
+          1,
+          7,
+          1,
+          1,
+          7,
+          1,
+          1,
+          1,
+          7,
+          1,
+          1,
+          7
+        ],
+        "payment_one_t_classes": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          7,
+          8,
+          9,
+          11,
+          12
+        ],
+        "payment_seven_t_classes": [
+          3,
+          6,
+          10,
+          13
+        ],
+        "source_class_mod_13": 12
+      }
+    ],
+    "source_classes_mod_13": [
+      3,
+      4,
+      11,
+      12
+    ],
+    "universal_payment_set": [
+      1,
+      7
+    ]
+  },
+  "regression_replays": {
+    "negative_four_collapse_representatives": [
+      {
+        "parameter": 105,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 1,
+            "payment": 17
+          },
+          {
+            "centered_error": 0,
+            "height": 1,
+            "next_height": 1,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 8
+      },
+      {
+        "parameter": 118,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 1,
+            "payment": 17
+          },
+          {
+            "centered_error": 0,
+            "height": 1,
+            "next_height": 1,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 9
+      },
+      {
+        "parameter": 170,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 1,
+            "payment": 17
+          },
+          {
+            "centered_error": 0,
+            "height": 1,
+            "next_height": 1,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 13
+      },
+      {
+        "parameter": 183,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 1,
+            "payment": 17
+          },
+          {
+            "centered_error": 0,
+            "height": 1,
+            "next_height": 1,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 14
+      }
+    ],
+    "negative_four_positive_switch_representatives": [
+      {
+        "expected_positive_error": 2,
+        "parameter": 1,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 17,
+            "payment": 1
+          },
+          {
+            "centered_error": 2,
+            "height": 17,
+            "next_height": 15,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 0
+      },
+      {
+        "expected_positive_error": 4,
+        "parameter": 14,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 17,
+            "payment": 1
+          },
+          {
+            "centered_error": 4,
+            "height": 17,
+            "next_height": 13,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 1
+      },
+      {
+        "expected_positive_error": 2,
+        "parameter": 27,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 17,
+            "payment": 1
+          },
+          {
+            "centered_error": 2,
+            "height": 17,
+            "next_height": 3,
+            "payment": 5
+          }
+        ],
+        "t_residue_mod_17": 2
+      },
+      {
+        "expected_positive_error": 2,
+        "parameter": 40,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 17,
+            "payment": 1
+          },
+          {
+            "centered_error": 2,
+            "height": 17,
+            "next_height": 15,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 3
+      },
+      {
+        "expected_positive_error": 4,
+        "parameter": 53,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 17,
+            "payment": 1
+          },
+          {
+            "centered_error": 4,
+            "height": 17,
+            "next_height": 13,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 4
+      },
+      {
+        "expected_positive_error": 2,
+        "parameter": 66,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 17,
+            "payment": 1
+          },
+          {
+            "centered_error": 2,
+            "height": 17,
+            "next_height": 15,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 5
+      },
+      {
+        "expected_positive_error": 4,
+        "parameter": 79,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 17,
+            "payment": 1
+          },
+          {
+            "centered_error": 4,
+            "height": 17,
+            "next_height": 13,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 6
+      },
+      {
+        "expected_positive_error": 2,
+        "parameter": 92,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 17,
+            "payment": 1
+          },
+          {
+            "centered_error": 2,
+            "height": 17,
+            "next_height": 3,
+            "payment": 5
+          }
+        ],
+        "t_residue_mod_17": 7
+      },
+      {
+        "expected_positive_error": 4,
+        "parameter": 131,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 17,
+            "payment": 1
+          },
+          {
+            "centered_error": 4,
+            "height": 17,
+            "next_height": 13,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 10
+      },
+      {
+        "expected_positive_error": 2,
+        "parameter": 144,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 17,
+            "payment": 1
+          },
+          {
+            "centered_error": 2,
+            "height": 17,
+            "next_height": 3,
+            "payment": 5
+          }
+        ],
+        "t_residue_mod_17": 11
+      },
+      {
+        "expected_positive_error": 4,
+        "parameter": 157,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 17,
+            "payment": 1
+          },
+          {
+            "centered_error": 4,
+            "height": 17,
+            "next_height": 13,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 12
+      },
+      {
+        "expected_positive_error": 2,
+        "parameter": 196,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 17,
+            "payment": 1
+          },
+          {
+            "centered_error": 2,
+            "height": 17,
+            "next_height": 15,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 15
+      },
+      {
+        "expected_positive_error": 4,
+        "parameter": 209,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          },
+          {
+            "centered_error": -4,
+            "height": 13,
+            "next_height": 17,
+            "payment": 1
+          },
+          {
+            "centered_error": 4,
+            "height": 17,
+            "next_height": 13,
+            "payment": 1
+          }
+        ],
+        "t_residue_mod_17": 16
+      }
+    ],
+    "negative_unit_payment_representatives": [
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 0,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 1,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 2,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 3,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 4,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 5,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 6,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 7,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 8,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 9,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 10,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 11,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 12,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 3,
+        "t_residue_mod_14": 13,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 0,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 1,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 2,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 3,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 4,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 5,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 6,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 7,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 8,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 9,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 10,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 11,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 12,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 4,
+        "t_residue_mod_14": 13,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 0,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 1,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 2,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 3,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 4,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 5,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 6,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 7,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 8,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 9,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 10,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 11,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 12,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 11,
+        "t_residue_mod_14": 13,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 0,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 1,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 2,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 3,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 4,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 5,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 6,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 7,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 8,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 9,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 10,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 11,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 12,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 14,
+          "payment": 1
+        }
+      },
+      {
+        "source_residue_mod_13": 12,
+        "t_residue_mod_14": 13,
+        "terminal_row": {
+          "centered_error": -1,
+          "height": 13,
+          "next_height": 2,
+          "payment": 7
+        }
+      }
+    ]
+  },
+  "schema": "erdos243-second-excursion-split-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 21295,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_second_excursion_split.py",
+      "sha256": "5b881ff39bd68a6cd38f500d04777d7feb84d46fb356c0ec353bfa6b521656ce"
+    },
+    {
+      "byte_length": 14585,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_forced_excursion_split.py",
+      "sha256": "22b38d8f57f056744799a98e4f311b0a30f048cb6c36ce74c1de640e6c43336e"
+    },
+    {
+      "byte_length": 4234,
+      "path": "system/lib/formal_math_residue_cylinder.py",
+      "sha256": "e8963da6370a53c17e901fd2c2f6bd13e2f53a3880742d1c9a13c86ce8eb7fc4"
+    },
+    {
+      "byte_length": 1692,
+      "path": "system/server/tests/test_formal_math_residue_cylinder.py",
+      "sha256": "208bd1e5d0563a279eaa66a125de9e28d516051d568e7d4474eaabe3818e5ed4"
+    },
+    {
+      "byte_length": 11659,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "sha256": "61e931dbf70c0a1f2da684e87e0666f2737481d54eb67305c4e1d072af306c0d"
+    },
+    {
+      "byte_length": 11857,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "bdb6b3d97993a12ac55a082c1995e0c69771257084da68f1d32f45affd128d4d"
+    },
+    {
+      "byte_length": 62033,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "abb2ae4eb3c97984146135a97018cd3420ee687abe4efe0c764f05cef1cb7761"
+    }
+  ],
+  "status": "verified_exact_second_cofinal_return_split"
+}

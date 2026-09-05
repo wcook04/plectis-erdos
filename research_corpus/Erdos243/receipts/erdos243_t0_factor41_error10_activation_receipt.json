@@ -1,0 +1,238 @@
+{
+  "complete_factor41_error10_census": {
+    "branch_negative_continuation": "12/41",
+    "canonical_source_residue_table": [
+      37,
+      31,
+      0,
+      31,
+      21,
+      0,
+      21,
+      31,
+      0,
+      0,
+      31,
+      21,
+      0,
+      21,
+      31,
+      0,
+      31,
+      37,
+      30,
+      31,
+      30,
+      24,
+      30,
+      0,
+      21,
+      27,
+      24,
+      27,
+      21,
+      21,
+      21,
+      27,
+      24,
+      27,
+      21,
+      0,
+      30,
+      24,
+      30,
+      31,
+      30
+    ],
+    "factor29_through_current_negative_continuation": "6125/36859",
+    "factor31_effective_negative_continuation_after_this_mode": "875/1271",
+    "formerly_inert_factor25_chain_continuation": "17500/479167",
+    "incoming_state": {
+      "error": -10,
+      "height": 31
+    },
+    "logical_child_count": 76494757896668160000,
+    "logical_input_parent_count": 1865725802357760000,
+    "multiplier_counts_mod_41": {
+      "0": 8,
+      "21": 9,
+      "24": 4,
+      "27": 4,
+      "30": 6,
+      "31": 8,
+      "37": 2
+    },
+    "next_raw_factor": 41,
+    "prior_unit_divisors": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "source_stride": 3379847863392000,
+    "source_stride_mod_41": 12,
+    "successor_mode_counts_per_parent": {
+      "payment=1,height=41,error=-16": 8,
+      "payment=1,height=41,error=-20": 4,
+      "payment=1,height=41,error=18": 9,
+      "payment=1,height=41,error=20": 6,
+      "payment=1,height=41,error=4": 2,
+      "payment=1,height=41,error=8": 4,
+      "payment=41,height=1,error=0": 8
+    },
+    "uniform_parent_profile": {
+      "cofinal": 8,
+      "negative": 12,
+      "positive": 21
+    },
+    "universality_certificate": "The complete next source lift permutes F_41 because its stride and all prior exact quotient divisors through 31 are units.",
+    "weighted_cofinal_child_count": 14925806418862080000,
+    "weighted_negative_child_count": 22388709628293120000,
+    "weighted_positive_child_count": 39180241849512960000
+  },
+  "consequence_propagation": {
+    "anchor": {
+      "claim_ceiling": "source_conditioned_cofinal_mode_not_unrestricted_erdos243",
+      "delta_class": "status_or_authority_changed",
+      "strongest_authority": "exact_owner_checked_computation"
+    },
+    "decisions": [
+      {
+        "decision": "update_now",
+        "reason": "Binds the eight cofinal modes and exact continuation.",
+        "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md"
+      },
+      {
+        "decision": "update_now",
+        "reason": "Moves exact result, state-sensitive no-go, and producer.",
+        "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json"
+      },
+      {
+        "decision": "update_now",
+        "reason": "Executable owner is explicitly linked and auto-discovered.",
+        "surface": "corpus_computation_routes:erdos_243"
+      },
+      {
+        "decision": "verified_no_change",
+        "reason": "Its universal profiles remain exact inputs to this child branch.",
+        "surface": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor31_41_field_activation.py"
+      },
+      {
+        "decision": "outside_scope",
+        "reason": "Lexical collisions do not change their distinct residue cylinders.",
+        "surface": "four generic constant-name validator matches"
+      },
+      {
+        "decision": "defer_with_reason",
+        "reason": "No Lean theorem changed and unrestricted #243 remains open.",
+        "reentry": "A selected Lean-bound or owner-approved public claim lands.",
+        "surface": "Lean consumers and public projection"
+      }
+    ]
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "factor-41 error-minus-ten cofinal consequence"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "falsification_consequence": "A zero-free image would eliminate factor 41 as an immediate cofinal mechanism on this mode.",
+      "survival_consequence": "Eight of 41 children return cofinally and 21 switch positive, leaving only 12 negative on every (31,-10) parent."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "factor41_cofinally_activates_the_factor31_error10_mode",
+      "statement": "The next prime field image on (31,-10) contains zero and removes a fixed share of negative support from every actual parent."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor31_41_field_activation_receipt.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor41_error10_activation.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor31_41_field_activation.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor31_41_field_activation_receipt.json",
+        "system/lib/formal_math_residue_cylinder.py"
+      ]
+    },
+    "probe": {
+      "computation": "Propagate the exact cocycle over F_41 through the (31,-10) branch; use the unit source stride to transfer one 41-point table to every actual parent.",
+      "falsifier": "A nonunit prior divisor/stride, absence of zero, or any parent profile other than (8,21,12).",
+      "id": "complete_factor41_unit_stride_image_on_error10",
+      "question": "Does the only prime next-factor among the seven new negative modes force a cofinal return?",
+      "resource_bounds": {
+        "avoided_materialized_refinements": 76494757896668160000,
+        "canonical_field_evaluations": 41,
+        "logical_input_parents": 1865725802357760000
+      },
+      "stop_condition": "Stop after the complete prime-field profile and exact aggregate continuation are established."
+    },
+    "problem": {
+      "claim_ceiling": "Every actual (31,-10) parent has factor-41 profile (8,21,12), including eight cofinal children. Unrestricted #243 remains open.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "The complete field table is parent-independent by unit-stride permutation and contains eight full-payment residues.",
+        "next_analytic_target": "Probe successor raw factors 32,35,36,38,40,57,61. Factor 61 is prime; group the other six by shared-prime structure."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The universal F_41 image contains multiplier zero eight times and has profile (8 cofinal,21 positive,12 negative)."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "mechanism_decision": {
+    "factor29_through_current_negative_continuation": "6125/36859",
+    "factor31_effective_negative_continuation": "875/1271",
+    "factor41_profile": "cofinal=8,positive=21,negative=12",
+    "formerly_inert_factor25_chain_continuation": "17500/479167",
+    "next_step": "Probe successor raw factors 32,35,36,38,40,57,61. Factor 61 is prime; group the other six by shared-prime structure."
+  },
+  "schema": "erdos243-t0-factor41-error10-activation-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 12442,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor41_error10_activation.py",
+      "sha256": "4d019a7cee6579033dbecad094b49cb468594f6ae8d31ac8a85d143b2eee677d"
+    },
+    {
+      "byte_length": 20925,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor31_41_field_activation.py",
+      "sha256": "f7c1ebd44dd8b6ba7613942f937230c79d76231bab84e64e5c47f32c35d79635"
+    },
+    {
+      "byte_length": 13813,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor31_41_field_activation_receipt.json",
+      "sha256": "02f8029a56f93ce97105c8c021a07f6b9212d311e966bedaaafbb30356838480"
+    },
+    {
+      "byte_length": 54635,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "50cf2a789580d6560e91f575f2d8f0ba25024a6132f1136f0be149bd90518fda"
+    },
+    {
+      "byte_length": 107771,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "4ee477afd63652b343e85a91cf0da156daf0ef24d1eb4ed6d9d58e9b67dc4d2f"
+    },
+    {
+      "byte_length": 19582,
+      "path": "system/lib/formal_math_residue_cylinder.py",
+      "sha256": "27dce8074a9fab8616d4a8eb78869e2fdce271bff73e0f7ad6e2c01ee2925e15"
+    }
+  ],
+  "status": "verified_uniform_factor41_error10_cofinal_activation"
+}

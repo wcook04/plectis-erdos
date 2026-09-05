@@ -316,7 +316,7 @@
       "is_restatement_of_open_problem": false,
       "engine": "a lacunary zero-sum binary coboundary splice on a bounded parity-matching base sequence",
       "prior_art_state": "not_assessed",
-      "prior_art_note": "No priority or novelty claim is made. This is Proposition parity and barrier B7 in the reasoning-surface paper.",
+      "prior_art_note": "No priority or novelty claim is made. The short paper paper/erdos-249-binary-totient-series.tex::sec:nogo explains the binary coboundary cancellation and the joint scope of the preserved invariants; the reasoning-surface paper retains Proposition parity and barrier B7. Follow the evidence declaration through scripts/query_corpus.py --source Erdos249257/TotientParityCoboundaryCountermodel.lean:637 to recover the claim and remaining-open handles.",
       "scope_caveat": "The countermodel rules out deductions that use only the listed coarse coefficient-word invariants. It is not the totient sequence and does not rule out arguments using quantitative totient size, factorisation, or residue information.",
       "confidence": "high",
       "evidence": [
@@ -405,7 +405,7 @@
     },
     {
       "id": "fixed_rank_curvature_primitive_archimedean_bound",
-      "canonical_statement": "PROVED: on every clean offset j with j^2<=2^a, the rank-one, rank-two, and rank-three endpoint totients differ from a common affine main term by relative error below 2/a; their second difference is therefore explicitly o(H), divisible by 2*phi(j), and after dividing by that local factor is an integer z with |z|<(8(H/j)+4)/a and z=0 or |z|>=1.",
+      "canonical_statement": "PROVED: for a>=4, j>=1, j^2<=2^a, and H=periodLcm(2^a), the rank-one, rank-two, and rank-three endpoint totients differ from a common affine main term by relative error below 2/a; their second difference is explicitly o(H) as a tends to infinity with j fixed, divisible by 2*phi(j), and after dividing by that local factor is an integer z with |z|<(8(H/j)+4)/a and z=0 or |z|>=1.",
       "logical_class": "unconditional_object_theorem",
       "problem": "249",
       "concepts": [
@@ -415,8 +415,8 @@
       "is_restatement_of_open_problem": false,
       "engine": "clean LCM-ray factorisation, an elementary rough Euler-density estimate, affine-main-term cancellation, and exact local divisibility",
       "prior_art_state": "not_assessed",
-      "prior_art_note": "No priority or novelty claim is made. This records the fixed-rank quantitative frontier emphasized by the reasoning-surface paper.",
-      "scope_caveat": "The bound normalizes the remaining arithmetic obstruction but does not prove that the primitive integer z is nonzero, let alone that it supplies cofinally many tail-difference certificates.",
+      "prior_art_note": "No priority or novelty claim is made. The short paper paper/erdos-249-binary-totient-series.tex::res:lcm-curvature explains roughness, affine cancellation, and the exact local factor. The reasoning-surface paper retains the full fixed-rank lane. Follow scripts/query_corpus.py --source Erdos249257/TotientFixedRankLcmAsymptotic.lean:637 for the claim and remaining-open handles.",
+      "scope_caveat": "The bound normalizes the remaining arithmetic obstruction but does not prove that the primitive integer z is nonzero, let alone that it supplies cofinally many tail-difference certificates. Its actual-LCM positions differ from the prime positions of the two-adic pulse producer; combining the small relative curvature with those pulses requires a new arithmetic alignment.",
       "confidence": "high",
       "evidence": [
         {

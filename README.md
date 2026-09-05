@@ -154,6 +154,11 @@ clients. It does not require the private Plectis system or a new account.
 Installation, source smoke tests and actual hosted-agent compatibility remain
 separate checks; the guide states what each establishes.
 
+Working in a web app instead? Ask a repository agent to prepare a
+[source attachment](skills/erdos-research-return/SKILL.md#send-sources-to-a-model-without-a-repository-harness)
+for one question. Give the model the selected text, then bring its answer back
+for checking and contribution credit.
+
 ## Read or run it
 
 The reading order is [RESULTS](docs/RESULTS.md), [SCOPE](SCOPE.md), the

@@ -1,0 +1,170 @@
+{
+  "complete_height_twenty_three_split": {
+    "divided_height_twenty_two_quotient_counts_mod_24": {
+      "0": 16159149648
+    },
+    "height_twenty_three_input_count": 673297902,
+    "height_twenty_two_weighted_key_count": 570,
+    "logical_refined_class_count": 16159149648,
+    "multiplier_residue_counts_mod_24": {
+      "1": 16159149648
+    },
+    "successor_mode_counts": {
+      "payment=1,height=24,error=-1": 16159149648
+    }
+  },
+  "cumulative_source_class_partition": {
+    "common_modulus": 26985313555200,
+    "continuing_negative_candidate_class_count": 48477448944,
+    "exact_partition": "21499360633728 zero + 5437475472528 positive + 48477448944 negative = 26985313555200",
+    "height_twenty_four_negative_candidate_count": 48477448944,
+    "positive_centered_class_count": 5437475472528,
+    "zero_centered_class_count": 21499360633728
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos243.heightTwentyThree_actualMultiplierOneIdentity",
+        "ErdosProblems.Erdos243.heightTwentyThree_negativeSurvivorIdentity"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "falsification_consequence": "All 16159149648 lifts have z=0 and multiplier 1 modulo 24, eliminating full payment, positive switching, and payments 3, 4, and 12 on the actual source while isolating one rigid height-24 negative mode.",
+      "survival_consequence": "Any nontrivial mode would either force a cofinal return, switch sign, or split negative support across a smaller primitive height."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "height_twenty_three_source_realizes_nontrivial_composite_mode",
+      "statement": "Some actual height-23 source class realizes payment 3, 4, 8, 12, or 24 rather than the payment-one negative continuation."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_height22_mod23_split_receipt.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height23_composite_split.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height22_mod23_split.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_height22_mod23_split_receipt.json",
+        "system/lib/formal_math_residue_cylinder.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Compress 506880 source families to 6699 joint affine keys, aggregate 570 height-22 state keys, reconstruct the source parameter modulo 255024 by generalized CRT, and classify every 24-adic lift exactly.",
+      "falsifier": "A nonzero exact source count in any mode other than payment one, height 24, centered error -1.",
+      "id": "weighted_affine_key_composite_crt_height23_split",
+      "question": "Which of the six generic factor-24 successor modes occur on the complete corrected height-23 source?",
+      "resource_bounds": {
+        "composite_crt_modulus": 255024,
+        "height_twenty_two_weighted_key_count": 570,
+        "joint_affine_key_count": 6699,
+        "logical_classified_lifts": 16159149648,
+        "source_family_count": 506880
+      },
+      "stop_condition": "Stop after the complete factor-24 source image is classified; do not horizon-audit the height-24 continuation."
+    },
+    "problem": {
+      "claim_ceiling": "Exact elimination of all five nontrivial generic height-23 modes on 16159149648 source refinements; every actual class has divided quotient zero and multiplier one modulo 24, reaches height 24 with error -1, and unrestricted #243 remains open.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "Complete weighted-key enumeration with exact overlapping-modulus CRT eliminates five structurally distinct generic successor modes.",
+        "next_analytic_target": "Restrict the next probe to the singleton height-24 payment-one mode and test the factor-25 full-payment-five/twenty-five mechanisms."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The actual height-23 source image is the singleton z=0 and multiplier 1 modulo 24; every one of 16159149648 lifts reaches height 24 with centered error -1."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "schema": "erdos243-height23-composite-split-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 19193,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height23_composite_split.py",
+      "sha256": "9dc4179bb6c1ad6ef2eb13d205d24fb21927d616f09d4d0e2198862cf34748d3"
+    },
+    {
+      "byte_length": 21383,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_height22_mod23_split.py",
+      "sha256": "f3afe1d95db90ee8ae272a7d80bbb714d47852fde1ba6e6fb339e860b358e9b1"
+    },
+    {
+      "byte_length": 13604,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos243_height22_mod23_split_receipt.json",
+      "sha256": "f9067e3f5db76085783787db85a2680bbd4dfff5afc7e4928498d148c93a1bcb"
+    },
+    {
+      "byte_length": 10327,
+      "path": "system/lib/formal_math_residue_cylinder.py",
+      "sha256": "c3e71827d491493600b0646628a8e7d32dccfa6624987849525ce9e2afe914c5"
+    },
+    {
+      "byte_length": 26678,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "sha256": "5c80047bdca3ed9f4b1181e429df85ef4a188e32961e912e3783860f7940de5c"
+    },
+    {
+      "byte_length": 33674,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "1a236ac7dd0867a16f3528c6d8fa4d4ab0027a0a0e53e407ef01d69912f8a509"
+    },
+    {
+      "byte_length": 94824,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "f634a99c6bd004451a7689977677ec91460d716fab98575fd775d7a06064964e"
+    }
+  ],
+  "status": "verified_exact_height_twenty_three_singleton_mode",
+  "symbolic_height_twenty_three_modes": {
+    "composite_crt_modulus": 255024,
+    "height_twenty_three_multiplier": "506*z^2+21*z+1",
+    "lean_declarations": [
+      "ErdosProblems.Erdos243.heightTwentyThree_actualMultiplierOneIdentity",
+      "ErdosProblems.Erdos243.heightTwentyThree_negativeSurvivorIdentity"
+    ],
+    "source_digits_by_successor_mode": {
+      "payment=1,height=24,error=-1": [
+        0,
+        6,
+        12,
+        18
+      ],
+      "payment=12,height=2,error=-1": [
+        7,
+        11,
+        19,
+        23
+      ],
+      "payment=24,height=1,error=0": [
+        1,
+        5,
+        13,
+        17
+      ],
+      "payment=3,height=8,error=-3": [
+        2,
+        4,
+        8,
+        10,
+        14,
+        16,
+        20,
+        22
+      ],
+      "payment=4,height=6,error=-1": [
+        3,
+        15
+      ],
+      "payment=8,height=3,error=1": [
+        9,
+        21
+      ]
+    }
+  }
+}

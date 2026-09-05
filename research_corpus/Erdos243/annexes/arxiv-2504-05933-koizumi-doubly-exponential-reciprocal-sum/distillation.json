@@ -1,0 +1,10 @@
+{
+  "kind": "annex_distillation",
+  "schema_version": "annex_distillation_v1",
+  "slug": "arxiv-2504-05933-koizumi-doubly-exponential-reciprocal-sum",
+  "distillation_status": "placeholder",
+  "axes_covered": [],
+  "last_distilled_at": "2026-07-26T15:48:26.877054+00:00",
+  "distilled_by": "stub:annex_import",
+  "patterns": []
+}

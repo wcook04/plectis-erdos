@@ -12,13 +12,16 @@ repositories, private caches, auto-memory, or unpublished state.
 
 Route the actual task before opening broad files:
 
+Proof-only sparse clones include the build wrapper, but omit corpus queries
+and skills. For those tasks, run `git sparse-checkout disable` first to fetch
+the omitted files. Focused builds need no expansion.
+
 ```sh
 python3 scripts/agent_entry.py --entry "<task in ordinary language>"
 ```
 
-It recommends a task lane, the smallest read set, and the relevant skills;
-`python3 scripts/agent_entry.py --skills` is the complete catalog. Its routing
-metadata is navigation, not mathematical authority.
+`python3 scripts/agent_entry.py --skills` lists all workflows. Routing metadata
+is navigation, not mathematical authority.
 
 ## Route the task before reading broadly
 
@@ -196,7 +199,7 @@ python3 scripts/check_architecture_guide.py
 For a committed-snapshot release check in a dirty shared checkout:
 
 ```sh
-python3 scripts/check_release_ref.py --ref HEAD --receipt /tmp/release-head.json
+python3 scripts/check_release_ref.py --ref HEAD --receipt .validation-singleflight/release-head.json
 ```
 
 After Lean edits, run `python3 scripts/lean_fast_build.py --jobs 2

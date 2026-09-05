@@ -6,6 +6,8 @@
 from __future__ import annotations
 
 import json
+import io
+from contextlib import redirect_stdout
 import os
 import tempfile
 from pathlib import Path
@@ -258,7 +260,60 @@ def test_git_snapshot_batch_uses_one_clean_bounded_process() -> None:
     )
 
 
+
+def test_macro_bases_and_direct_formal_links() -> None:
+    note = r"""
+\lword{Erdos1041/Local.lean}{3}{local}{local proof}
+\mword{ExternalVerification1041SolvedFamilies/Solution.lean}{74}{existsPeakLeComparisonBound}{Chebyshev}
+\mref{research_corpus/Erdos1041/QuarticQuotientFiberCase.lean}{37}{rootLift_axis_integral}
+\mloc{OtherLibrary/Proof.lean}{9}
+\href{\repobase/ExternalVerification1041SolvedFamilies/Solution.lean\#L74}{Chebyshev}
+\href{\repobase/ExternalVerification1041SolvedFamilies/Solution.lean\#L24}{quintic}
+\href{\repobase/ExternalVerification1041SolvedFamilies/Solution.lean\#L14}{cubic}
+\href{\repobase/research_corpus/Erdos1041/QuarticQuotientFiberCase.lean\#L37}{primitive}
+\href{\repobase/research_corpus/Erdos1041/QuarticQuotientFiberCase.lean\#L59}{endpoint}
+% \href{\repobase/Fake.lean\#L1}{comment}
+"""
+    found = scanner.links(note)
+    require(len(found) == 9, "lost a macro or one of the five direct #1041 links")
+    require(found[0] == ("ErdosProblems/Erdos1041/Local.lean", 3, "local"), "lost expansion base")
+    require(found[1][0] == "ExternalVerification1041SolvedFamilies/Solution.lean", "rebased mword")
+    require(found[2][0] == "research_corpus/Erdos1041/QuarticQuotientFiberCase.lean", "rebased mref")
+    require(found[3] == ("OtherLibrary/Proof.lean", 9, None), "rebased mloc")
+    require([row[1] for row in found[4:]] == [74, 24, 14, 37, 59], "lost href coordinates")
+    require(all(row[2] is None for row in found[4:]), "href prose counted as declaration coverage")
+
+
+def test_root_link_failures_reach_validator() -> None:
+    """Valid root links pass; missing, blank, wrong-name and malformed links fail."""
+    def check(note: str) -> int:
+        def snapshot(_commit, relative, _cache):
+            return ["theorem correct : True := by trivial", ""] if relative == "Other/Proof.lean" else []
+        with patch.object(scanner.sys, "argv", ["check_problem_note_sources.py"]), \
+             patch.object(scanner, "note_sources", return_value=["paper/test.tex"]), \
+             patch.object(scanner, "pinned_commit", return_value="a" * 40), \
+             patch.object(scanner, "pinned_commitshort", return_value="a" * 12), \
+             patch.object(scanner, "safe_worktree_text", return_value=note), \
+             patch.object(scanner, "snapshot_lines_batch"), \
+             patch.object(scanner, "snapshot_lines", side_effect=snapshot), \
+             patch.object(scanner, "git_run", return_value=scanner.subprocess.CompletedProcess([], 0)), \
+             redirect_stdout(io.StringIO()):
+            return scanner.main()
+    require(check(r"\mword{Other/Proof.lean}{1}{correct}{proof}") == 0, "valid mword rejected")
+    require(check(r"\href{\repobase/Other/Proof.lean\#L1}{proof}") == 0, "valid href rejected")
+    for note in (
+        r"\mword{Other/Proof.lean}{1}{wrong}{proof}",
+        r"\href{\repobase/Other/Missing.lean\#L1}{proof}",
+        r"\href{\repobase/Other/Proof.lean\#L2}{blank}",
+        r"\href{\repobase/Other/Proof.lean\#L99}{outside}",
+        r"\href{\repobase/Other/Proof.lean\#Lzero}{malformed}",
+        r"\href{\repobase/Other/Proof.lean}{missing line}",
+    ):
+        require(check(note) != 0, f"bad formalization link passed: {note}")
+
 def main() -> int:
+    test_macro_bases_and_direct_formal_links()
+    test_root_link_failures_reach_validator()
     test_worktree_source_reader_boundary()
     test_comment_injection_is_not_a_declaration()
     test_split_declaration_head_resolves_at_keyword_line()

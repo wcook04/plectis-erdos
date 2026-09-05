@@ -44,11 +44,13 @@ import ErdosProblems.Erdos269.ThreeChannelBlockRigidity
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
 import ErdosProblems.Erdos269.WeightedPhaseCarry
 import ErdosProblems.Erdos68.CanonicalFactorialDigits
+import ErdosProblems.Erdos68.CanonicalFactorialTermination
 import ErdosProblems.Erdos68.ChannelBreakpointRigidity
 import ErdosProblems.Erdos68.ChannelIntegralCongruence
 import ErdosProblems.Erdos68.CompanionOrbitRationality
 import ErdosProblems.Erdos68.DivisorFactorialCentre
 import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
+import ErdosProblems.Erdos68.FactorialAnalyticBoundary
 import ErdosProblems.Erdos68.FactorialCarry
 import ErdosProblems.Erdos68.FactorialChannelCertificate
 import ErdosProblems.Erdos68.FactorialZeroPlateau

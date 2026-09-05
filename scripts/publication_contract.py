@@ -115,11 +115,42 @@ class RepositoryReader:
         self.root = root
         self.git_ref = git_ref
         self.byte_overrides = byte_overrides or {}
+        self._snapshot_ref: str | None = None
+        self._snapshot_bytes: dict[str, bytes] = {}
+        self._verified_commits: set[str] = set()
+        self._checkpoint_censuses: dict[str, dict[str, Any]] = {}
+
+    def with_overrides(self, overrides: dict[str, bytes]) -> RepositoryReader:
+        """Derive a fixture view without changing its snapshot or its parent."""
+        # Pin even an unread ref before forking so both views use one commit.
+        if self.git_ref not in (None, ":"):
+            self._git_spec(CONTRACT_PATH)
+        derived = RepositoryReader(
+            self.root, self.git_ref, {**self.byte_overrides, **overrides},
+        )
+        derived._snapshot_ref = self._snapshot_ref
+        derived._snapshot_bytes = self._snapshot_bytes
+        derived._verified_commits = self._verified_commits
+        derived._checkpoint_censuses = self._checkpoint_censuses
+        return derived
 
     def _git_spec(self, relative: str) -> str:
-        return f":{relative}" if self.git_ref == ":" else f"{self.git_ref}:{relative}"
+        if self.git_ref == ":":
+            return f":{relative}"
+        if self._snapshot_ref is None:
+            resolved = self._git_run(
+                "rev-parse", "--verify", "--end-of-options", f"{self.git_ref}^{{commit}}",
+                text=True,
+            )
+            revision = resolved.stdout.strip()
+            if resolved.returncode or re.fullmatch(r"[0-9a-f]{40}", revision) is None:
+                raise FileNotFoundError(f"publication snapshot ref does not resolve: {self.git_ref}")
+            self._snapshot_ref = revision
+        return f"{self._snapshot_ref}:{relative}"
 
-    def _git_run(self, *args: str, text: bool = False) -> subprocess.CompletedProcess[Any]:
+    def _git_run(
+        self, *args: str, text: bool = False, input: bytes | None = None,
+    ) -> subprocess.CompletedProcess[Any]:
         """Read a committed snapshot without inheriting ambient Git state."""
         return subprocess.run(
             ["git", *args],
@@ -127,9 +158,51 @@ class RepositoryReader:
             capture_output=True,
             check=False,
             text=text,
+            input=input,
             timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
             env=singleflight.command_environment(),
         )
+
+    def prefetch(self, relatives: list[str]) -> None:
+        """Read known immutable publication blobs in one bounded Git process.
+
+        Worktree and index readers stay live. Ref readers pin their first
+        commit, so later reads cannot mix cached bytes with a moved branch.
+        Overrides remain the first authority for mutation fixtures.
+        """
+        if self.git_ref in (None, ":"):
+            return
+        missing = sorted({
+            path for path in relatives
+            if isinstance(path, str) and "\n" not in path and "\r" not in path
+            and path not in self._snapshot_bytes and path not in self.byte_overrides
+        })
+        if not missing:
+            return
+        request = "".join(self._git_spec(path) + "\n" for path in missing).encode()
+        completed = self._git_run("cat-file", "--batch", input=request)
+        if completed.returncode:
+            return  # Ordinary reads retain their existing missing-file diagnostics.
+        output = completed.stdout
+        position = 0
+        for path in missing:
+            header_end = output.find(b"\n", position)
+            if header_end < 0:
+                return
+            header = output[position:header_end]
+            position = header_end + 1
+            if header.endswith(b" missing"):
+                continue
+            fields = header.split()
+            if len(fields) != 3 or not fields[2].isdigit():
+                return
+            size = int(fields[2])
+            end = position + size
+            if end >= len(output) or output[end:end + 1] != b"\n":
+                return
+            if fields[1] == b"blob":
+                self._snapshot_bytes[path] = output[position:end]
+            position = end + 1
 
     @staticmethod
     def _has_symlink_component(path: Path) -> bool:
@@ -145,6 +218,8 @@ class RepositoryReader:
     def read_bytes(self, relative: str) -> bytes:
         if relative in self.byte_overrides:
             return self.byte_overrides[relative]
+        if relative in self._snapshot_bytes:
+            return self._snapshot_bytes[relative]
         if self.git_ref is None:
             path = self.root / relative
             if self._has_symlink_component(path):
@@ -160,6 +235,8 @@ class RepositoryReader:
         if completed.returncode != 0:
             detail = completed.stderr.decode("utf-8", errors="replace").strip()
             raise FileNotFoundError(detail or relative)
+        if self.git_ref != ":":
+            self._snapshot_bytes[relative] = completed.stdout
         return completed.stdout
 
     def read_text(self, relative: str) -> str:
@@ -173,7 +250,9 @@ class RepositoryReader:
         return True
 
     def git_object_exists(self, object_name: str) -> bool:
-        return (
+        if object_name in self._verified_commits:
+            return True
+        exists = (
             self._git_run(
                 "cat-file",
                 "-e",
@@ -181,6 +260,12 @@ class RepositoryReader:
             ).returncode
             == 0
         )
+        # Successful immutable identities are shared for this reader's lifetime.
+        # Missing objects may be fetched, and symbolic refs may move: neither
+        # is cached. New readers always revalidate availability.
+        if exists and re.fullmatch(r"[0-9a-f]{40}", object_name):
+            self._verified_commits.add(object_name)
+        return exists
 
     def is_shallow_repository(self) -> bool:
         completed = self._git_run(
@@ -409,9 +494,9 @@ def validate_systems_evidence_source(
         "release program": r"scripts/check_release\.py",
         "continuous-integration owner": r"\.github/workflows/lean\.yml",
         "human judgement boundary": (
-            r"does not technically force a second independent mathematician"
+            r"does not require a second independent mathematician to approve every result"
         ),
-        "coverage boundary": r"coverage boundary, not a reliability score",
+        "historical log availability": r"original run logs were not retained",
         "post-repair example": (
             r"post-repair witness accepts the current readme and rejects a "
             r"test copy containing the false clause"
@@ -435,6 +520,38 @@ def validate_systems_evidence_source(
                 f"score-like shorthand {pattern!r}"
             )
     return errors
+
+
+def evaluation_checkpoint_census(reader: RepositoryReader, checkpoint: str) -> dict[str, Any]:
+    """Share the small historical census, not the exhaustive atlas, across fixtures."""
+    if checkpoint in reader._checkpoint_censuses:
+        return dict(reader._checkpoint_censuses[checkpoint])
+    checkpoint_reader = RepositoryReader(reader.root, checkpoint)
+    checkpoint_reader.prefetch([CLAIMS_PATH, "docs/declaration_atlas.json"])
+    checkpoint_claims = load_json(checkpoint_reader, CLAIMS_PATH)
+    checkpoint_atlas = load_json(checkpoint_reader, "docs/declaration_atlas.json")
+    atlas_summary = checkpoint_atlas["summary"]
+    assembly = checkpoint_claims["machine_readable_paper"]["publication_assembly"]
+    census = {
+        "snapshot_kind": "evaluation_checkpoint_not_current_tree",
+        "claims_source": CLAIMS_PATH,
+        "declaration_atlas_source": "docs/declaration_atlas.json",
+        "module_count": atlas_summary["module_count"],
+        "declaration_count": atlas_summary["declaration_count"],
+        "theorem_like_count": atlas_summary["theorem_like_count"],
+        "generated_certificate_declaration_count": atlas_summary[
+            "generated_certificate_declaration_count"
+        ],
+        "curated_claim_count": len(checkpoint_claims["claims"]),
+        "contribution_family_count": len(assembly["contribution_families"]),
+        "status_count": len(checkpoint_claims["status_taxonomy"]),
+        "remaining_open_proposition_count": len(
+            checkpoint_claims["remaining_open_propositions"]
+        ),
+    }
+    if re.fullmatch(r"[0-9a-f]{40}", checkpoint):
+        reader._checkpoint_censuses[checkpoint] = census
+    return dict(census)
 
 
 def validate_mutation_evidence_receipt(
@@ -569,49 +686,19 @@ def validate_mutation_evidence_receipt(
     corpus_snapshot = evaluation.get("corpus_snapshot", {})
     checkpoint = str(evaluation.get("checkpoint") or "")
     unavailable_detail = reader.git_object_unavailable_detail(checkpoint)
-    checkpoint_claims: dict[str, Any] | None = None
-    checkpoint_atlas: dict[str, Any] | None = None
     if unavailable_detail is None:
         try:
-            checkpoint_reader = RepositoryReader(reader.root, checkpoint)
-            checkpoint_claims = load_json(checkpoint_reader, CLAIMS_PATH)
-            checkpoint_atlas = load_json(
-                checkpoint_reader,
-                "docs/declaration_atlas.json",
-            )
+            derived_snapshot = evaluation_checkpoint_census(reader, checkpoint)
         except (FileNotFoundError, json.JSONDecodeError, UnicodeError) as error:
             errors.append(
                 f"publication evidence checkpoint census is unreadable: {error}"
             )
-            checkpoint_claims = None
-            checkpoint_atlas = None
-    if checkpoint_claims is not None and checkpoint_atlas is not None:
-        atlas_summary = checkpoint_atlas["summary"]
-        assembly = checkpoint_claims["machine_readable_paper"][
-            "publication_assembly"
-        ]
-        derived_snapshot = {
-            "snapshot_kind": "evaluation_checkpoint_not_current_tree",
-            "claims_source": CLAIMS_PATH,
-            "declaration_atlas_source": "docs/declaration_atlas.json",
-            "module_count": atlas_summary["module_count"],
-            "declaration_count": atlas_summary["declaration_count"],
-            "theorem_like_count": atlas_summary["theorem_like_count"],
-            "generated_certificate_declaration_count": atlas_summary[
-                "generated_certificate_declaration_count"
-            ],
-            "curated_claim_count": len(checkpoint_claims["claims"]),
-            "contribution_family_count": len(assembly["contribution_families"]),
-            "status_count": len(checkpoint_claims["status_taxonomy"]),
-            "remaining_open_proposition_count": len(
-                checkpoint_claims["remaining_open_propositions"]
-            ),
-        }
-        if corpus_snapshot != derived_snapshot:
-            errors.append(
-                "publication evidence corpus snapshot drifted from the "
-                "evaluation-checkpoint claims and declaration atlas"
-            )
+        else:
+            if corpus_snapshot != derived_snapshot:
+                errors.append(
+                    "publication evidence corpus snapshot drifted from the "
+                    "evaluation-checkpoint claims and declaration atlas"
+                )
 
     protocol = evaluation.get("protocol", {})
     expected_protocol = {
@@ -1043,15 +1130,8 @@ def validate_publication_entry_packet(
 
     if not errors:
         expected = build_publication_entry_packet(
-            RepositoryReader(
-                reader.root,
-                reader.git_ref,
-                {
-                    ENTRY_SOURCE_PATH: canonical_json_bytes(source),
-                }
-                if source_override is not None
-                else None,
-            )
+            reader.with_overrides({ENTRY_SOURCE_PATH: canonical_json_bytes(source)})
+            if source_override is not None else reader
         )
         if packet != expected:
             errors.append(
@@ -1262,6 +1342,11 @@ def validate_publication_contract(
     errors: list[str] = []
 
     try:
+        reader.prefetch([
+            CONTRACT_PATH, CLAIMS_PATH, EVIDENCE_PATH, ENTRY_SOURCE_PATH,
+            ENTRY_PACKET_PATH, MUTATION_MANIFEST_PATH, MUTATION_HARNESS_PATH,
+            PROBLEMS_PATH, MAKEFILE_PATH, REUSE_PATH, AGENT_ENTRY_PATH,
+        ])
         contract = contract_override or load_json(reader, CONTRACT_PATH)
     except (FileNotFoundError, json.JSONDecodeError, UnicodeError) as error:
         return [f"{CONTRACT_PATH}: {error}"]
@@ -1280,6 +1365,11 @@ def validate_publication_contract(
     artifacts = contract.get("artifacts")
     if not isinstance(artifacts, list) or not artifacts:
         return [*errors, "publication contract must contain artifacts"]
+
+    reader.prefetch([
+        *(row.get(field) for row in artifacts for field in ("source_path", "rendered_path")),
+        *(path for route in all_entrypoints(claims, contract) for path in route.get("read", [])),
+    ])
 
     artifact_ids = [row.get("id") for row in artifacts]
     source_paths = [row.get("source_path") for row in artifacts]
@@ -1736,9 +1826,7 @@ def mutation_fixture_failures(reader: RepositoryReader) -> list[str]:
     if ambiguous_reuse == reuse_text:
         failures.append("publication_license_precedence_fixture_anchor_missing")
     else:
-        overlay_reader = RepositoryReader(
-            reader.root,
-            reader.git_ref,
+        overlay_reader = reader.with_overrides(
             {REUSE_PATH: ambiguous_reuse.encode("utf-8")},
         )
         if not validate_publication_contract(overlay_reader):
@@ -1761,9 +1849,7 @@ def mutation_fixture_failures(reader: RepositoryReader) -> list[str]:
         failures.append("manuscript_source_license_fixture_anchor_missing")
     else:
         gateway["source_content_digest"] = sha256(mutated_source.encode("utf-8"))
-        overlay_reader = RepositoryReader(
-            reader.root,
-            reader.git_ref,
+        overlay_reader = reader.with_overrides(
             {source_path: mutated_source.encode("utf-8")},
         )
         if not validate_publication_contract(
@@ -1808,10 +1894,10 @@ def mutation_fixture_failures(reader: RepositoryReader) -> list[str]:
     source_path = systems["source_path"]
     original_source = reader.read_text(source_path)
     limited_sentence = (
-        "The evidence marks a coverage boundary, not a reliability score."
+        "original run logs were not retained."
     )
     inflated_sentence = (
-        "This example establishes a general reliability score for future errors."
+        "original run logs establish a general reliability score for future errors."
     )
     if limited_sentence not in original_source:
         failures.append("post_repair_source_fixture_anchor_missing")
@@ -1822,9 +1908,7 @@ def mutation_fixture_failures(reader: RepositoryReader) -> list[str]:
             1,
         )
         systems["source_content_digest"] = sha256(mutated_source.encode("utf-8"))
-        overlay_reader = RepositoryReader(
-            reader.root,
-            reader.git_ref,
+        overlay_reader = reader.with_overrides(
             {source_path: mutated_source.encode("utf-8")},
         )
         if not validate_publication_contract(

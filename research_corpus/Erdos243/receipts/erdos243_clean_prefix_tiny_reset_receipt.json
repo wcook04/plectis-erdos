@@ -1,0 +1,363 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "falsification_consequence": "A viable repair lower bound must charge global prefix/residue coherence or a product across complete recoveries; clean-prefix length alone cannot be converted into the required payment mass at the next reset.",
+      "survival_consequence": "Survival would leave a block-length-only exponential payment lemma as a possible input to the global telescoping budget."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "clean_prefix_forces_exponential_single_reset_payment",
+      "statement": "Whenever L consecutive negative centred steps have h=1 and are followed by a reset, the reset payment is at least 2^L."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanPrefixTinyResetComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/DynamicCancellation.lean",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SparseResetRecovery.lean"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_clean_prefix_tiny_reset.py"
+      ]
+    },
+    "probe": {
+      "computation": "Construct the canonical seed (tail_start,height,scale)=(16,5,1), continue the primitive rational cocycle exactly, and stop at its first h>1 step.",
+      "falsifier": "An exact trace with L negative h=1 steps immediately before a reset whose payment is less than 2^L.",
+      "id": "canonical_e_minus_one_prefix_continued_to_first_reset",
+      "question": "Does the exact canonical finite E=-1 construction admit a long negative h=1 prefix whose first subsequent reset has tiny payment?",
+      "stop_condition": "Stop at the first h>1 step or fail after 16 exact transitions."
+    },
+    "problem": {
+      "claim_ceiling": "Finite exact counterexample to a block-length-only single-reset payment bound; not an infinite orbit and not a solution of Erd\u0151s #243.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "status": "exact_one_way_result",
+      "summary": "The exact orbit has eight consecutive negative h=1 steps with errors [-1,-1,-1,-1,-1,-1,-1,-4], followed by e=-7 and reset payment h=2; therefore h>=2^L is false at L=8."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "schema": "erdos243-clean-prefix-tiny-reset-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 9079,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_clean_prefix_tiny_reset.py",
+      "sha256": "1c4f16a5098bac282a981380a1f5fabe0f97333839571c093b34fc86f41ea1bb"
+    },
+    {
+      "byte_length": 2173,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanPrefixTinyResetComputationalLab.md",
+      "sha256": "714516f64aa051fd32e55a74cddaa7e92c74bdd2e106a10266f89048be4f7fa9"
+    }
+  ],
+  "status": "verified_exact_counterexample",
+  "witness": {
+    "first_reset": {
+      "centered_error_at_reset": -7,
+      "index": 8,
+      "payment": 2,
+      "preceding_centered_errors": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -4
+      ],
+      "preceding_negative_cancellation_free_length": 8,
+      "strict_falsification": true,
+      "two_to_prefix_length": 256
+    },
+    "seed": {
+      "a": {
+        "bit_length": 26,
+        "decimal_digits": 8,
+        "sha256_decimal": "85e44d56a3164d416209b4921dedf59f9dc86d9ba81929ff6bdffb1b055ef4d0",
+        "sign": 1
+      },
+      "guaranteed_height": 5,
+      "k": {
+        "bit_length": 22,
+        "decimal_digits": 7,
+        "sha256_decimal": "0fa433dcd15a0f52d9290fbe627195c3db737c25feb4bf9b069a6b427e3cb666",
+        "sign": 1
+      },
+      "scale": 1,
+      "tail_start": 16
+    },
+    "trace": [
+      {
+        "a": {
+          "bit_length": 26,
+          "decimal_digits": 8,
+          "sha256_decimal": "85e44d56a3164d416209b4921dedf59f9dc86d9ba81929ff6bdffb1b055ef4d0",
+          "sign": 1
+        },
+        "centered_error": -1,
+        "index": 0,
+        "payment": 1,
+        "u": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "b17ef6d19c7a5b1ee83b907c595526dcb1eb06db8227d650d5dda0a9f4ce8cd9",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 30,
+          "decimal_digits": 9,
+          "sha256_decimal": "0bfc6d892895a3bf052136bee0373ceec568a2dbbb9998a2a5716ff9b264b4b9",
+          "sign": 1
+        }
+      },
+      {
+        "a": {
+          "bit_length": 52,
+          "decimal_digits": 16,
+          "sha256_decimal": "e9aef0cba0845ed1a793ff289716d514e6387ceff6832658640560fef6ee4f20",
+          "sign": 1
+        },
+        "centered_error": -1,
+        "index": 1,
+        "payment": 1,
+        "u": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 56,
+          "decimal_digits": 17,
+          "sha256_decimal": "80ac1dd92ec7da9f66fccf3ecbbb9e339bebdc1906a8f41372f6b59fba163b52",
+          "sign": 1
+        }
+      },
+      {
+        "a": {
+          "bit_length": 103,
+          "decimal_digits": 31,
+          "sha256_decimal": "653714f0b5c29c44dbc9eb8e5fc59003fbf96e8cf7b134a4976d01fb77df0411",
+          "sign": 1
+        },
+        "centered_error": -1,
+        "index": 2,
+        "payment": 1,
+        "u": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "9400f1b21cb527d7fa3d3eabba93557a18ebe7a2ca4e471cfe5e4c5b4ca7f767",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 107,
+          "decimal_digits": 33,
+          "sha256_decimal": "e619ba2ecbb4549696df6e3fc84c2327667a7ade88c61ff966d87b1ba11743dd",
+          "sign": 1
+        }
+      },
+      {
+        "a": {
+          "bit_length": 205,
+          "decimal_digits": 62,
+          "sha256_decimal": "3eecee113f632ae04c457de0961c013c6bc058b905170de210443a17c7e4a025",
+          "sign": 1
+        },
+        "centered_error": -1,
+        "index": 3,
+        "payment": 1,
+        "u": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "9400f1b21cb527d7fa3d3eabba93557a18ebe7a2ca4e471cfe5e4c5b4ca7f767",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "f5ca38f748a1d6eaf726b8a42fb575c3c71f1864a8143301782de13da2d9202b",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 210,
+          "decimal_digits": 63,
+          "sha256_decimal": "d8a7512c83dd23ec5d6f46a0b04bfc94c35487520d423323b2abafba1d7abd7c",
+          "sign": 1
+        }
+      },
+      {
+        "a": {
+          "bit_length": 410,
+          "decimal_digits": 124,
+          "sha256_decimal": "fed5b9973d5c2100f4b4cf2772358c7dd96c065e73e9514a455df4c237eaa2fb",
+          "sign": 1
+        },
+        "centered_error": -1,
+        "index": 4,
+        "payment": 1,
+        "u": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "f5ca38f748a1d6eaf726b8a42fb575c3c71f1864a8143301782de13da2d9202b",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "6f4b6612125fb3a0daecd2799dfd6c9c299424fd920f9b308110a2c1fbd8f443",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 414,
+          "decimal_digits": 125,
+          "sha256_decimal": "0eb6337e68698791ee495ccc3a3871713b8d1ea99aa3f572757eb542137c705e",
+          "sign": 1
+        }
+      },
+      {
+        "a": {
+          "bit_length": 820,
+          "decimal_digits": 247,
+          "sha256_decimal": "94f2a01b619e7aa7259a53f11c0c0d59ad25c1fbadf3ebd15f3152c2378a0eef",
+          "sign": 1
+        },
+        "centered_error": -1,
+        "index": 5,
+        "payment": 1,
+        "u": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "6f4b6612125fb3a0daecd2799dfd6c9c299424fd920f9b308110a2c1fbd8f443",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "785f3ec7eb32f30b90cd0fcf3657d388b5ff4297f2f9716ff66e9b69c05ddd09",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 824,
+          "decimal_digits": 248,
+          "sha256_decimal": "e4061e21ca0ba58249ec51e3ad9d1344a80885079938c07f647e6ce8161e0c08",
+          "sign": 1
+        }
+      },
+      {
+        "a": {
+          "bit_length": 1639,
+          "decimal_digits": 494,
+          "sha256_decimal": "eddc73cec678ed401cf40d99191608a44685ecfa12c143bf3553b788e395031e",
+          "sign": 1
+        },
+        "centered_error": -1,
+        "index": 6,
+        "payment": 1,
+        "u": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "785f3ec7eb32f30b90cd0fcf3657d388b5ff4297f2f9716ff66e9b69c05ddd09",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "535fa30d7e25dd8a49f1536779734ec8286108d115da5045d77f3b4185d8f790",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 1643,
+          "decimal_digits": 495,
+          "sha256_decimal": "668408e25b6116a874be9147ce6e4dcd6b2587a32e494c393b761aadcc113e08",
+          "sign": 1
+        }
+      },
+      {
+        "a": {
+          "bit_length": 3277,
+          "decimal_digits": 987,
+          "sha256_decimal": "37141d914e1f3436f9f22ff4ddcc8e0131966ab81d517c36770d6f268349e354",
+          "sign": 1
+        },
+        "centered_error": -4,
+        "index": 7,
+        "payment": 1,
+        "u": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "535fa30d7e25dd8a49f1536779734ec8286108d115da5045d77f3b4185d8f790",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "670671cd97404156226e507973f2ab8330d3022ca96e0c93bdbdb320c41adcaf",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 3281,
+          "decimal_digits": 988,
+          "sha256_decimal": "a4101b0ced5014ab24430d6bcd222652a45404afc0979980d7e0f02da2baddeb",
+          "sign": 1
+        }
+      },
+      {
+        "a": {
+          "bit_length": 6553,
+          "decimal_digits": 1973,
+          "sha256_decimal": "1f1fd4358ba391841568d6d4a6cded82a6db1e847415d61d810fedc4406e2fee",
+          "sign": 1
+        },
+        "centered_error": -7,
+        "index": 8,
+        "payment": 2,
+        "u": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "670671cd97404156226e507973f2ab8330d3022ca96e0c93bdbdb320c41adcaf",
+          "sign": 1
+        },
+        "u_next": {
+          "bit_length": 5,
+          "decimal_digits": 2,
+          "sha256_decimal": "4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3",
+          "sign": 1
+        },
+        "v": {
+          "bit_length": 6558,
+          "decimal_digits": 1974,
+          "sha256_decimal": "250888c672757de2d533556980099ab2c93f89915a139714329a5f2626907cc0",
+          "sign": 1
+        }
+      }
+    ],
+    "verified_invariants": [
+      "every stored state is a positive primitive rational pair",
+      "2*abs(e)<u at every step",
+      "h=gcd(a^2,u-e) at every step",
+      "the eight steps before the first reset have e<0 and h=1",
+      "the first reset has exact payment 2<2^8"
+    ]
+  }
+}

@@ -49,65 +49,57 @@ Achievement-Set Geometry}
 \begin{abstract}
 \noindent
 Erd\H{o}s Problem~\#257 asks whether
-\[
- X_A=\sum_{a\in A}\frac1{2^a-1}
-\]
-is irrational for every infinite \(A\subseteq\Npos\).  The problem remains
-open.  We prove that, for every integer \(b\ge2\), the sum
-\(\sum_{a\in A}(b^a-1)^{-1}\) is irrational whenever \(A\) is infinite and
-\(\sum_{a\in A}a^{-1}<\infty\).  No coprimality, periodicity, density, or
-powerful-support hypothesis is used.  The proof transfers binary
-LCM--Ces\`aro close returns to every radix and ends with an exact
-integer-orbit contradiction.  Thus the unresolved part of Problem~\#257 is
-the reciprocal-divergent case.  Novelty and priority are unassessed, and this
-proof is not identified with Erd\H{o}s's omitted coprimality-free argument.
-The development also retains the classical full-support theorem and proves
-irrationality for every nonzero eventually periodic sequence of nonnegative
-rational weights.
+\(X_A=\sum_{a\in A}(2^a-1)^{-1}\) is irrational for every infinite
+\(A\subseteq\Npos\).  We prove irrationality for several classes that
+allow divergent reciprocal mass: supports satisfying a divisibility-weighted
+summability criterion, supports whose reciprocal mass grows more slowly than
+an iterated logarithm, and supports admitting summable positive fractional
+divisor covers.  Each criterion is hereditary under passage to infinite
+subsets and works at every integer base \(b\ge2\).  A separate argument,
+using Tao--Ter\"av\"ainen's correlation theorem, treats every infinite
+subset of the prime powers, including fixed dilations and finite modifications.
 
-For a finite nonempty support \(F\), the reduced denominator \(D_F\) of
-\(\sum_{n\in F}(b^n-1)^{-1}\) satisfies
-\[
- \operatorname{ord}_{D_F}(b)=\operatorname{lcm}(F);
-\]
-if \(\operatorname{lcm}(F)\ge2\), then
-\(\operatorname{lcm}(F)<D_F\).  For a hypothetical rational value on an
-infinite support, binary long division instead produces an unbounded integral
-scaled-tail orbit.  The orbit obeys an exact recurrence, permits only
-sublogarithmic zero windows in the divisor-incidence sequence, and satisfies
-the reciprocal-mass bounds stated below.  Boolean--M\"obius inversion gives an
-exact orbit characterisation of all rational support values, but does not make
-the reconstructed support infinite.
+Every infinite reciprocal-summable support is already covered without
+a coprimality assumption: binary LCM--Ces\`aro close returns transfer to
+every integer radix, where an exact integer-orbit gap excludes rationality.
 
-The achievement set of the weights \((2^n-1)^{-1}\) is compact, perfect,
-totally disconnected, nowhere dense, and of Lebesgue measure \(1\).  If the
-allowed exponent set has finite complement \(F\), the restricted achievement
-set has measure \(2^{-|F|}\); if the complement is infinite, it has measure
-zero.  These geometric results classify sets of subsums, not the arithmetic
-nature of their points.
+The three extension arguments share a mechanism.  Freeze a finite set of
+exponents by a common multiple, then average the remaining shifted atoms to
+produce arbitrarily small positive displacements.  Rationality forces a
+fixed positive gap, giving the contradiction.  Keeping the incomplete-period
+error in this average yields a quantitative necessary condition: a rational
+value forces reciprocal mass to grow at least at an explicit multiple of
+log-star.  Positive fractional covers extend the argument to moving divisor
+frames, with exponents that may tend to zero.
 
-Two rational targets make the remaining difficulty explicit.  Membership of
-\(1/2\) is equivalent to infinitely many omissions in its greedy expansion;
-non-membership is witnessed by one finite fatal gap.  Membership of \(1/21\)
-is equivalent to cofinal crossings of the exact scaled lower separatrix, or
-equivalently to failure of the stated fatal aligned branch.  Neither
-membership question is resolved.  A representation of either value must have
-infinite support.
+For finite nonempty supports \(F\), the reduced denominator \(D_F\)
+satisfies \(\operatorname{ord}_{D_F}(b)=\operatorname{lcm}(F)\).
+For infinite supports, the achievement set is compact, perfect, nowhere
+dense, and has Lebesgue measure \(1\); restricting the exponents gives an
+exact volume dichotomy.  At the rational targets \(1/2\) and \(1/21\),
+finite-support exclusion turns membership into a potential counterexample,
+and exact greedy criteria locate the remaining infinite-orbit question.
 
+The analytic support criteria have ordinary proofs in
+Section~\ref{sec:eight-return-extensions}.  The accompanying Lean development
+checks arbitrary reciprocal-summable support at every integer base, the
+classical full-support and periodic-weight theorems, the denominator identity, the geometric
+classification, and the stated orbit reductions.  The unrestricted problem
+and the two rational membership questions remain open.
 \end{abstract}
 
-\begin{paperresult}{Strongest unconditional results}
-\textbf{Arithmetic.} Every infinite reciprocal-summable support gives an
-irrational series at every integer base $b\ge2$; this contains the classical
-pairwise-coprime theorem as a special case.  The full-support series and all
-nonzero eventually periodic nonnegative rational weight sequences are also
-irrational.  Finite subsums
-have exact denominator order.  \textbf{Geometry.} The achievement set is
-compact, perfect, nowhere dense, and has measure $1$, with an exact measure
-law after restricting exponents.  \textbf{Open boundary.} The target values
-$1/2$ and $1/21$ remain undecided; any universal counterexample must have
-divergent reciprocal mass, and the geometric classification does not decide
-the arithmetic nature of individual subsums.
+\begin{paperresult}{Main results}
+\textbf{Infinite supports.} Every infinite reciprocal-summable support has
+irrational value at every integer base, without coprimality. Divisibility-weighted summability, sub-log-star
+reciprocal mass, and positive fractional divisor covers each imply
+irrationality at every integer base, hereditarily.  Every infinite
+prime-power sub-support also has irrational value, by a separate analytic
+argument.  These results include supports with divergent reciprocal mass.
+\textbf{Finite supports.} The reduced denominator has multiplicative order
+exactly the least common multiple of the exponents.
+\textbf{Geometry and rational targets.} The subsum set has measure $1$ and
+an exact restricted-support volume law; finite-support exclusion and greedy
+criteria isolate the unresolved membership questions at $1/2$ and $1/21$.
 \end{paperresult}
 
 \section{Introduction and main results}\label{sec:problem}
@@ -119,12 +111,7 @@ $X_A=\sum_{a\in A}\dfrac1{2^a-1}$ irrational?
 
 \noindent See Erd\H{o}s~\cite[p.~222]{erdos1968}, Erd\H{o}s and
 Graham~\cite[p.~62]{erdosgraham1980}, and
-Erd\H{o}s~\cite[p.~105]{erdos1988}.  Bloom's current catalogue record
-reproduces the displayed problem and labels it open, while explicitly warning
-that the status is the website owner's present assessment and may omit
-relevant literature~\cite{erdosproblems}.  We therefore use the catalogue for
-numbering and current reported status only; the original publications and the
-later cited papers carry the mathematical claims.
+Erd\H{o}s~\cite[p.~105]{erdos1988}.  Bloom's catalogue records the problem as open~\cite{erdosproblems}.
 
 Write
 $\wgt n=(2^n-1)^{-1}$.  Expanding each weight as a geometric series and
@@ -220,6 +207,216 @@ Section~\ref{sec:geometry} gives the unrestricted and support-restricted
 topology and measure classifications, followed by the exact $1/2$ and $1/21$
 membership criteria and unresolved branches.  Section~\ref{sec:open} states
 what remains.
+
+\section{Extensions beyond reciprocal summability}
+\label{sec:eight-return-extensions}
+
+The following ordinary proofs exclude several classes with divergent
+reciprocal mass.  Complete proofs, examples and countermodels appear in
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-proofs.md}{the analytic proof supplement}.
+The variable-exponent argument below and the finite repair deadline are
+compositions developed from those arguments.
+
+\subsection{Divisibility-weighted and quantitative criteria}
+For a finite nonempty prime set $P$, let
+$h(a)=\prod_{p\in P}p^{v_p(a)}$.  The weighted condition
+\[
+  \sum_{a\in A}\frac{h(a)}{a(2^{h(a)}-1)}<\infty
+  \tag{W}\label{eq:weighted-return}
+\]
+implies irrationality of $\sum_{a\in A}(b^a-1)^{-1}$ for every infinite
+$A$ and every integer $b\ge2$.  The conclusion is hereditary under passage
+to infinite subsets.  A fixed-base version replaces $2$ by $b$ in the
+condition; arbitrary nested divisibility chains have the same criterion
+with $h(a)$ the largest chain element dividing $a$.
+
+Here the decisive estimate is a finite orbit average.  If $g=(a,Q)$, then
+\[
+ \frac1T\sum_{m=1}^T
+ \frac{b^{Qm\bmod a}-1}{b^a-1}
+ \le \frac{g}{a(b^g-1)}+\frac1{T(b^g-1)}.
+\]
+The second term cannot be discarded before summing over $a$.  Choose $Q$
+to freeze the finite prefix and all small $P$-parts.  Average again over
+$T=2^j$, $M\le j<2M$.  The incomplete-period contribution from small
+$P$-parts is at most $2QW/M$, where $W$ is the sum in
+\eqref{eq:weighted-return}; the large-part contribution is suppressed by
+the exponential denominator.  This produces arbitrarily small positive
+shifted-atom displacements.  The integral lattice gap then gives
+irrationality, and the binary atom comparison gives every larger base.
+The supplement gives all truncation estimates and an explicit
+reciprocal-divergent host with gaps $O(\log\log a)$.
+
+There is also a quantitative necessary condition for rationality.  Put
+$H_A(x)=\sum_{a\in A,\,a\le x}1/a$, let $T_0=2$,
+$T_{j+1}=2^{T_j}$, and set $\ell(x)=\min\{j:x\le T_j\}$.
+For a reduced rational value $p/q$ at base $b$, write $q=q_s q_c$, where
+every prime factor of $q_s$ divides $b$ and $(q_c,b)=1$.  Choose
+$0\le c<q_s$ with $cq_c\equiv p\pmod {q_s}$, and put
+$\lambda=1-c/q_s$.  Then
+\[
+ \liminf_{x\to\infty}\frac{H_A(x)}{\ell(x)}\ge\frac\lambda2.
+ \tag{Q}\label{eq:logstar-mass}
+\]
+Indeed, at suitable multiples of the order of $b$ modulo $q_c$, rationality
+forces displacement at least $\lambda$.  Applying the finite orbit estimate
+after freezing the prefix through $M$, and averaging $J$ dyadic lengths,
+gives, with $X=L2^{J-1}$,
+\[
+ J\lambda < (J+2L)\bigl(H_A(X)-H_A(M)\bigr)+4.
+\]
+Taking $J$ a sufficiently large multiple of $L$ forces a mass increment
+arbitrarily close to $\lambda$.  The LCM bound allows this at successive
+scales separated by two tower steps, giving \eqref{eq:logstar-mass}.
+Consequently $H_A(x)=o(\ell(x))$ implies irrationality at every integer
+base, even when the reciprocal sum diverges.  The constant is a rational
+phase gap; no positive ordinary or logarithmic density is asserted.
+
+\subsection{Positive fractional divisor covers}
+Let $F_j$ be finite sets of positive integers and write
+$f_{F_j}(n)=\#\{a\in F_j:a\mid n\}$.  Suppose that
+$0<\alpha_j\le1$ and $c_{j,d}\ge0$ satisfy
+\[
+ f_{F_j}(n)^{\alpha_j}\le\sum_{d\mid n}c_{j,d},\qquad
+ C_j=\sum_{d\ge1}\frac{c_{j,d}}d.
+\]
+Set $B_j=2^{\alpha_j}$.
+
+\begin{theorem}[Variable-exponent positive covers]
+\label{thm:variable-fractional-cover}
+If
+\[
+ \sum_{j\ge1}C_j2^{j\alpha_j}
+           \frac{B_j}{(B_j-1)^2}<\infty,
+\]
+then every infinite subset of $\bigcup_jF_j$ has irrational Mersenne
+subseries at every integer base.  The exponents may tend to zero.
+\end{theorem}
+\begin{proof}
+Let $U_F(n)=\sum_{r\ge1}2^{-r}f_F(n+r)$ and
+$V_j(n)=\sum_{r\ge1}B_j^{-r}\sum_{d\mid n+r}c_{j,d}$.
+Subadditivity gives $U_{F_j}(n)^{\alpha_j}\le V_j(n)$.
+For each positive integer $L$, exact divisibility frequencies give
+\[
+ \lim_{X\to\infty}\frac1X\sum_{m=1}^X V_j(Lm)
+ =\sum_d\frac{c_{j,d}(d,L)}{d(B_j^{(d,L)}-1)}
+ \le\frac{C_j}{B_j-1}.
+\]
+Fix $\varepsilon>0$ and put $t_j=\varepsilon2^{-j}$.
+The finite-average divisibility bound $(L+r)/d$ gives the summable
+dominator
+\[
+ \sum_{j>J}C_jt_j^{-\alpha_j}
+ \left(\frac L{B_j-1}+\frac{B_j}{(B_j-1)^2}\right).
+\]
+It justifies passing the average through all three sums.  The limiting
+average of $\sum_{j>J}t_j^{-\alpha_j}V_j(Lm)$ is therefore at most
+$\sum_{j>J}C_jt_j^{-\alpha_j}/(B_j-1)$, which tends to zero as
+$J\to\infty$.  Choose $J$ making it less than one, and then choose $L$
+divisible by every member of $\bigcup_{j\le J}F_j$.
+Arbitrarily large $m$ make the displayed sum less than one.  At such
+points every remaining $U_{F_j}(Lm)<t_j$, so their total is less than
+$\varepsilon$.  The frozen atoms have zero displacement.  Infinitude
+gives strictly positive displacement, and the integral lattice argument
+excludes rationality.  The binary comparison transfers the returns to
+all integer bases.
+\end{proof}
+
+The fixed-exponent criterion $\sum_j C_j<\infty$ follows by regrouping
+finite frames into blocks with exponentially decreasing costs.  For a
+complete divisor frame $F=g\{d:d\mid M\}$, positive coefficients are
+provided multiplicatively by
+$\beta_\alpha(p^e)=(e+1)^\alpha-e^\alpha$.  When $M$ is squarefree the
+optimal cost is
+\[
+ \frac1g\prod_{p\mid M}\left(1+\frac{2^\alpha-1}{p}\right).
+\]
+This yields moving frames with divergent reciprocal mass.  Choosing
+$\alpha_j=g_j^{-1/3}$ and prime blocks whose reciprocal product is about
+$\exp(g_j^{1/3})$ makes the variable criterion summable when
+$g_j\ge16^j$; every fixed exponent fails for this particular frame
+decomposition.  This does not exclude other fixed-exponent covers of
+the same union.  Positivity matters: the divisor expansion for
+$F=\{2,3\}$ has coefficient $2^\alpha-2<0$ at $6$ when $\alpha<1$.
+
+\paragraph{The prime-power regime.}
+A separate ordinary argument proves irrationality for every infinite
+subset of the prime powers, at every integer base, including fixed
+dilations and finite modifications.  Its analytic input is
+Tao--Ter\"av\"ainen~\cite[Theorem~3.1]{taoteravainen2025}.
+The proof uses the reciprocal mass of the selected primes as its scale,
+so arbitrarily slow divergence is retained; higher prime powers produce
+errors only on prime-square events.  The equidistribution, small-prime,
+progression and exceptional-set hypotheses are checked in the supplement.
+The full-prime theorem and the authors' stated full-prime-power extension
+are due to Tao and Ter\"av\"ainen.
+
+\subsection{A finite deadline for every real target}
+The repair mechanism does not require periodic digits or even a rational
+target. Let $x\ge0$, let $A_x$ be its actual greedy support, and define
+\[
+ P_0(x)=0,\qquad P_{N+1}(x)=2P_N(x)+\scA_{A_x}(N+1),\qquad
+ Q_N(x)=\lfloor2^Nx\rfloor-P_N(x).
+\]
+The prefix bound makes $Q_N(x)$ a nonnegative integer.
+
+\begin{theorem}[uniform repair criterion]\label{res:generic-repair}
+For every real $x\ge0$,
+\[
+ x\in\Ach\quad\Longleftrightarrow\quad
+ \forall K\ \exists N\in[K,K+2\lfloor\sqrt K\rfloor+12):
+ Q_{N+1}(x)\le Q_N(x).
+\]
+Equivalently, repairs occur cofinally; equivalently,
+$Q_N(x)\le\scA_{A_x}(N+1)$ cofinally; equivalently, $Q_N(x)\le N+1$
+cofinally. One strictly increasing window excludes membership.
+\end{theorem}
+
+\begin{proof}
+If $x\in\Ach$, the full tail identity and divisor-pair bound give
+$Q_N(x)\le2\sqrt N+4$. Put $s=\lfloor\sqrt K\rfloor$ and $T=2s+12$.
+Strict increase at each of the $T$ steps would give $Q_{K+T}(x)\ge T$.
+But $K+T<(s+4)^2$ gives $Q_{K+T}(x)<2(s+4)+4=T$, a contradiction.
+
+For the converse, the prefix recurrence and the nonnegative next binary
+floor digit give
+\[
+ 2Q_N(x)-\scA_{A_x}(N+1)\le Q_{N+1}(x).
+\]
+A repair therefore forces $Q_N(x)\le\scA_{A_x}(N+1)\le N+1$.
+If $x\notin\Ach$, a positive fatal gap $\delta$ persists in the actual
+greedy remainder; the prefix-tail identity yields
+$Q_N(x)\ge2^N\delta-1$ beyond that fatal rank. This eventually exceeds
+$N+1$, contradicting a cofinal linear bound. These implications give all
+the stated equivalences.
+\end{proof}
+
+The finite deadline comes from a growth comparison: strict increases of
+an integer sequence accumulate linearly, whereas represented tails have
+only a square-root bound. For $x=4/9$ this recovers the original repair
+problem with $Q_N=\lfloor4\cdot2^N/9\rfloor-P_N$. Exact replay through
+rank $4096$ finds no strict window for that target. The theorem identifies
+the certificate to seek; it does not supply its occurrence.
+
+Fixed multiplicative schedules have a different fate.  Eighty exactly
+certified selected anchors through rank $727$, together with Dirichlet's
+theorem, give infinitely many prime-cofactor increases of at least seven
+at multiplier $120$ and at least two at multiplier $420$.  In particular,
+the proposed modulus-$420$ tetraprime repair inequality is false despite
+its earlier finite-window evidence.  This leaves unrestricted cofinal
+repairs open.  At $1/21$, combining the actually selected exponents $5$
+and $7$ gives $60$ favorable phase classes modulo $105$ and strengthens
+the conditional upper-density bound for divergent quotient rows from
+$1/5$ to $2/7$.  Using instead the twelve selected exponents
+$5,7,8,9,10,18,20,24,28,42,45,60$ gives exactly $1011$ favorable classes
+modulo $1260$.  The corresponding larger restricted divergence set has
+conditional upper density at least $337/840>2/5$.  Its complete phase mask
+and an independent rational replay of the selected prefix are supplied with
+the synthesis.  The older $2/7$ bound concerns the two-anchor restricted set.
+It proves neither target's membership.  The complete
+phase certificate and the exact recurrence identities are in the
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-synthesis.md}{synthesis supplement}.
+
 
 \section{Finite-support denominator periods}\label{sec:period}
 
@@ -473,6 +670,44 @@ hypotheses, and no jointly contradictory combination has been proved.
 
 \section{Representative known irrational supports}\label{sec:map}
 
+\paragraph{Why periodic weights give divisibility.}
+The full-support and periodic-support results share one argument in the
+coefficients of~\eqref{eq:incidence}.  To see it, first take $m\ge1$ and a purely
+$m$-periodic weight $w\colon\Npos\to\N$ and put
+\[
+  c_w(n)=\sum_{d\mid n}w(d).
+\]
+Fix a prime $p\nmid m$ and write a positive integer as
+$n=p^k u$ with $p\nmid u$.
+Grouping divisors by their $p$-adic valuation gives
+\[
+  c_w(n)=\sum_{d\mid u}\sum_{j=0}^{k}w(dp^j).
+\]
+Euler's congruence $p^{\ph(m)}\equiv1\pmod m$ makes each inner
+sequence periodic with a period dividing $\ph(m)$.  Choosing
+$k=b\ph(m)-1$ therefore gives $b$ copies of a complete cycle:
+\[
+  \sum_{j=0}^{b\ph(m)-1}w(dp^j)
+     =b\sum_{j=0}^{\ph(m)-1}w(dp^j).
+\]
+Thus $b\mid c_w(n)$.  With $r$ distinct primes at these exact valuations,
+the divisor sum separates into $r$ such coordinates and gains a factor
+$b^r$.  This is the arithmetic step that lets the certificate argument
+reach periodic supports: periodicity of the weights forces divisibility of
+their divisor transform.  The full-support case is $w\equiv1$.
+
+Divisibility at one integer is not yet an irrationality proof.  The checked
+argument arranges blocks of these valuations by the Chinese remainder
+theorem and controls the remaining weighted tail to obtain the required
+certificates.  Its weighted form uses
+$w(d)=\sum_{i=0}^{W-1}\mathbf1_{\{w(d)>i\}}$ for a bound $W$ on $w$:
+each indicator layer is periodic, so the same divisor argument applies.
+The theorem cited in the table then clears a common denominator for rational
+weights and removes a finite prefix.  Removing that prefix changes the
+series by a rational number; the periodic tail must still contain a positive
+weight.  Without that hypothesis, a nonzero finitely supported sequence
+would give a rational counterexample.
+
 The following table is representative, not exhaustive.  It groups the
 displayed supports by five mechanisms rather than suggesting that its rows
 classify all known cases.
@@ -505,7 +740,7 @@ multiples of a fixed $d$ & every $b\ge2$ & dilation: the multiples series at
   (\mword{Erdos249257/CertificateKernel.lean}{9291}{irrational_erdosSupportSeries_multiples}{checked}) \\
 \addlinespace
 \multicolumn{3}{@{}l}{\emph{Periodicity of the coefficient sequence}}\\
-eventually periodic & every $b\ge2$ &
+infinite eventually periodic & every $b\ge2$ &
   \mword{Erdos249257/CertificateKernel.lean}{12999}{irrational_ratWeightSeries_eventuallyPeriodic}{checked here};
   Luca--Tachiya prove the nonnegative purely-periodic case
   \cite[Theorem~1, p.~139; proof pp.~149--150]{lucatachiya2017};
@@ -523,6 +758,10 @@ factorials $\{n!\}$ & every $b\ge2$ &
   \mword{Erdos249257/CertificateKernel.lean}{6223}{irrational_erdosSum_factorial_support}{checked here} \\
 powers of two $\{2^k\}$ & every $b\ge2$ &
   \mword{Erdos249257/CertificateKernel.lean}{6247}{irrational_erdosSum_two_pow_support}{checked here} \\
+infinite pairwise coprime, $\sum_{a\in A}a^{-1}<\infty$ & every $b\ge2$ &
+  Erd\H{o}s~\cite{erdos1968}, theorem on p.~222;
+  \mword{Erdos249257/CertificateKernel.lean}{10964}{irrational_erdosSupportSeries_pairwise_coprime}{formalised here} \\
+\addlinespace
 \multicolumn{3}{@{}l}{\emph{Multiplicative closure: Chowla--Erd\H{o}s, refined}}\\
 $F_s(E)$ and the monomial images
   $\{j n^i:n\in F_s(E)\}$ & $b=q^j$ with $|q|^L\le s$,
@@ -630,14 +869,12 @@ identify with Problem~\ref{res:problem} --- are asserted by remark, with the
 modifications explicitly left to the reader.  The table keeps the three apart,
 and only the first is proved.
 
-\emph{Formalisation is not priority.}  Rows marked ``checked here'' are Lean
-statements accepted by the pinned kernel.  For the full support that is a
-formalisation of Erd\H{o}s; Luca and Tachiya's RIMS paper already proves the
+The full-support result formalises Erd\H{o}s's theorem; Luca and Tachiya's RIMS paper already proves the
 nonnegative purely-periodic case; a finite rational-prefix correction gives
 the eventual-periodic extension used here
 \cite[Theorem~1, p.~139; proof pp.~149--150]{lucatachiya2017}, while
 Theorem~A restates the broader signed purely-periodic theorem without
-reproducing its earlier proof.  No priority is claimed anywhere in this table.
+reproducing its earlier proof.
 
 \begin{remark}[signed periodic weights: a gap in the method, not in the
 mathematics]\label{res:signed}
@@ -663,6 +900,117 @@ the interest of being an independently checked argument with a visible
 boundary.  Section~\ref{sec:squarefree} records a second, sharper instance of
 the same phenomenon.
 \end{remark}
+
+\section{Structured supports: preserving the remaining divisibility}
+\label{sec:bouquet}
+
+The periodic argument manufactures long divisible blocks.  For a sparse
+composite support the difficulty is different: after finitely many support
+elements have been absorbed into a congruence modulus, what arithmetic freedom
+remains in the others?  A finite-core bouquet makes that question exact.
+Write
+\[
+ A=E\cup\{c_i p_i:i\ge0\},\qquad c_i\mid Q,\quad e\mid Q\ (e\in E),
+\]
+where $Q,c_i,e$ are positive, $E$ is finite, the $p_i>1$ are pairwise coprime
+and coprime to $Q$, and $\sum_i p_i^{-1}<\infty$.  The petals $p_i$ need not
+be prime.  For every finite set $F$ of indices, put
+$M_F=Q\prod_{j\in F}p_j$.  Then
+\[
+ \frac{c_i p_i}{\gcd(c_i p_i,M_F)}=p_i\qquad(i\notin F).
+\]
+Thus a new ray retains its entire petal as the modulus governing its hits
+along a progression with step $M_F$
+(\mword{Erdos249257/SupportSunflowerDichotomy.lean}{192}{ray_div_gcd_frameStep}{reduced-modulus identity}).
+
+There are concrete infinite examples.  Let $r_0,r_1,\ldots=5,7,11,13,\ldots$
+be the primes after $3$, take $Q=6$, $E=\varnothing$, $p_i=r_i^2$, and
+alternate $c_i=2,3$.  This gives
+$A=\{50,147,242,507,\ldots\}$; every member has exactly three prime factors
+counted with multiplicity.  The bouquet, infinitude and factor count are
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{319}{alternatingPrimeSquareBouquet}{constructed},
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{337}{alternatingPrimeSquareSupport_infinite}{proved}, and
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{343}{alternatingPrimeSquareSupport_cardFactors_eq_three}{checked}, respectively.
+The reciprocal-summable support theorem already settles these examples.
+The reduced-modulus identity describes their arithmetic structure; no
+additional block selector is needed for irrationality. The all-base argument
+is proved in \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-proofs.md}{the support-averaging supplement}.
+
+\begin{theorem}[unconditional orthogonal-petal criterion]
+\label{res:sunflower}
+Let $A$ be a bouquet as above. Then
+$\sum_{a\in A}(b^a-1)^{-1}$ is irrational for every integer $b\ge2$.
+\end{theorem}
+
+\begin{proof}
+Each positive core satisfies $c_i\ge1$. The support decomposition gives
+\[
+ \sum_{a\in A}\frac1a
+ \le \sum_{a\in E}\frac1a+\sum_i\frac1{c_ip_i}
+ \le \sum_{a\in E}\frac1a+\sum_i\frac1{p_i}<\infty.
+\]
+The exceptional sum is finite, and the last series is a defining bouquet
+hypothesis. The rays are distinct, so $A$ is infinite. Apply the all-base
+reciprocal-summable support theorem. In particular, the alternating-core
+example above gives an irrational sum at every integer base.
+\end{proof}
+
+This composition makes the former selector hypothesis unnecessary. The
+older pinned
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{540}{irrational_erdosSupportSeries_of_orthogonalPetalBouquet}{conditional endpoint}
+remains valid, but its
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{406}{SunflowerForcedSlotTailSelection}{forced-slot hypothesis}
+is a burden of that certificate construction. The proof above uses the
+actual support's reciprocal mass directly. Its composed statement should
+be distinguished from the older conditional declaration at the pinned
+formal-source checkpoint.
+
+\begin{theorem}[the composite-dilation defect]
+\label{res:compositedefect}
+Let $A\subseteq\N$ and let $a,x\in\Npos$ with $a\in A$.  Define the foreign-divisor
+defect
+\[
+  \delta_A(a,x)=\#\{d\mid ax:d\in A,\ d\nmid x,\ d\ne a\}.
+\]
+Then the divisor incidence satisfies the exact identity
+\[
+  \scA_A(ax)=\scA_A(x)+\mathbf 1_{a\nmid x}+\delta_A(a,x).
+\]
+If every member of $A$ is prime, then $\delta_A(a,x)=0$, so the familiar
+prime-support dilation formula is recovered.  More generally, if $A$ has an
+\texttt{OrthogonalPetalBouquet} witness $h_B$, then for every $i\in\N$,
+\[
+  \delta_A(\operatorname{ray}_{h_B}(i),x)\le
+  |h_B.\mathrm{exceptional}|+
+  \scA_{\operatorname{range}(h_B.\mathrm{petal})}(x),
+\]
+where $\operatorname{ray}_{h_B}(i)=h_B.\mathrm{core}(i)h_B.\mathrm{petal}(i)$.
+\end{theorem}
+
+\noindent The first identity is the finite divisor partition checked at
+\mword{Erdos249257/CompositeDilationDefect.lean}{30}{supportCoeff_mul_eq_add_defect}{exact dilation identity}.
+The hard point is that a composite multiplier can create support divisors
+which are neither the multiplier itself nor old divisors of $x$; they are
+recorded by $\delta_A$ rather than silently discarded.  The defect vanishes
+under the prime-support hypothesis by
+\mword{Erdos249257/CompositeDilationDefect.lean}{103}{compositeDilationDefect_eq_zero_of_prime_support}{prime-support no-defect},
+and the corresponding incidence formula is
+\mword{Erdos249257/CompositeDilationDefect.lean}{119}{supportCoeff_mul_prime_support}{prime specialization}.
+For a bouquet, every non-exceptional foreign divisor injects into a unique
+petal divisor of $x$, yielding the displayed budget through
+\mword{Erdos249257/CompositeDilationDefect.lean}{133}{mem_compositeDilationDefect_bouquet_imp_exceptional_or_petal_dvd}{foreign-divisor classification}
+and
+\mword{Erdos249257/CompositeDilationDefect.lean}{151}{compositeDilationDefect_le_exceptional_add_petalCoeff}{defect bound}.
+The correction is concrete already for $A=\{2,6\}$: multiplying $x=1$ by
+the composite support element $6$ creates the additional support divisor $2$,
+so $\delta_A(6,1)=1$
+(\mword{Erdos249257/CompositeDilationDefect.lean}{218}{compositeDilationDefect_two_six_fixture}{two-six witness}).
+
+Thus a composite bouquet cannot be analysed by copying the prime formula
+until this explicit foreign channel has been budgeted.  This theorem provides
+that local budget. The unconditional irrationality in
+Theorem~\ref{res:sunflower} follows instead from reciprocal summability,
+without estimating those orbit defects.
 
 \section{Squarefree support and a coordinate-dependent obstruction}
 \label{sec:squarefree}
@@ -1207,84 +1555,8 @@ Integral reciprocal states are excluded from the same band by
 This is a one-step local no-go result: it neither proves that the half-greedy
 orbit reaches or avoids the band nor settles half-membership.
 
-Two further conditional arguments sharpen the boundary around this half-value
-problem.  They are logically distinct from the terminal scaled-vanishing
-question: one seeks irrationality from a structured support, while the other
-would produce a rational counterexample from cofinal geometric stages.
-
-\begin{theorem}[orthogonal-petal sunflower criterion]
-\label{res:sunflower}
-Let $A\subseteq\N$ support an
-\texttt{OrthogonalPetalBouquet} and satisfy
-\texttt{SunflowerForcedSlotTailSelection}.  Then
-
-\[
-  \operatorname{Irrational}\!\left(\sum_{a\in A}\frac{1}{2^a-1}\right).
-\]
-The bouquet hypothesis packages a finite exceptional/core part and residual
-petals that are nontrivial, pairwise coprime, and reciprocal-summable.  The
-remaining selector hypothesis is a uniform tail condition: at every positive
-length $K$ it supplies a shifted block whose binary carry is divisible by
-$2^K$ while its residual tail is bounded.  Neither hypothesis is constructed
-here, so this is a conditional reduction rather than a solution of
-Problem~\#257.
-\end{theorem}
-
-\noindent The hard mechanism is the persistent-reduced-modulus averaging
-argument: the selector supplies carries, and the support-series theorem
-turns that supply into irrationality.  The exact formal consumers are
-\mword{Erdos249257/SupportSunflowerDichotomy.lean}{531}{sunflowerForcedCarrySupply_of_orthogonalPetalBouquet}{forced carry supply}
-and
-\mword{Erdos249257/SupportSunflowerDichotomy.lean}{540}{irrational_erdosSupportSeries_of_orthogonalPetalBouquet}{irrationality endpoint}.
-The source definition of the selector makes the missing analytic obligation
-explicit at
-\mword{Erdos249257/SupportSunflowerDichotomy.lean}{406}{SunflowerForcedSlotTailSelection}{uniform tail selector}.
-
-\begin{theorem}[the composite-dilation defect]
-\label{res:compositedefect}
-Let $A\subseteq\N$ and let $a,x\in\Npos$ with $a\in A$.  Define the foreign-divisor
-defect
-\[
-  \delta_A(a,x)=\#\{d\mid ax:d\in A,\ d\nmid x,\ d\ne a\}.
-\]
-Then the divisor incidence satisfies the exact identity
-\[
-  \scA_A(ax)=\scA_A(x)+\mathbf 1_{a\nmid x}+\delta_A(a,x).
-\]
-If every member of $A$ is prime, then $\delta_A(a,x)=0$, so the familiar
-prime-support dilation formula is recovered.  More generally, if $A$ has an
-\texttt{OrthogonalPetalBouquet} witness $h_B$, then for every $i\in\N$,
-\[
-  \delta_A(\operatorname{ray}_{h_B}(i),x)\le
-  |h_B.\mathrm{exceptional}|+
-  \scA_{\operatorname{range}(h_B.\mathrm{petal})}(x),
-\]
-where $\operatorname{ray}_{h_B}(i)=h_B.\mathrm{core}(i)h_B.\mathrm{petal}(i)$.
-\end{theorem}
-
-\noindent The first identity is the finite divisor partition checked at
-\mword{Erdos249257/CompositeDilationDefect.lean}{30}{supportCoeff_mul_eq_add_defect}{exact dilation identity}.
-The hard point is that a composite multiplier can create support divisors
-which are neither the multiplier itself nor old divisors of $x$; they are
-recorded by $\delta_A$ rather than silently discarded.  The defect vanishes
-under the prime-support hypothesis by
-\mword{Erdos249257/CompositeDilationDefect.lean}{103}{compositeDilationDefect_eq_zero_of_prime_support}{prime-support no-defect},
-and the corresponding incidence formula is
-\mword{Erdos249257/CompositeDilationDefect.lean}{119}{supportCoeff_mul_prime_support}{prime specialization}.
-For a bouquet, every non-exceptional foreign divisor injects into a unique
-petal divisor of $x$, yielding the displayed budget through
-\mword{Erdos249257/CompositeDilationDefect.lean}{133}{mem_compositeDilationDefect_bouquet_imp_exceptional_or_petal_dvd}{foreign-divisor classification}
-and
-\mword{Erdos249257/CompositeDilationDefect.lean}{151}{compositeDilationDefect_le_exceptional_add_petalCoeff}{defect bound}.
-The correction is concrete already for $A=\{2,6\}$: multiplying $x=1$ by
-the composite support element $6$ creates the additional support divisor $2$,
-so $\delta_A(6,1)=1$
-(\mword{Erdos249257/CompositeDilationDefect.lean}{218}{compositeDilationDefect_two_six_fixture}{two-six witness}).
-
-Thus a composite bouquet cannot be analysed by copying the prime formula
-until this explicit foreign channel has been budgeted.  This theorem provides
-that local budget only; it neither bounds defects along an infinite orbit nor
-supplies the uniform tail selector required by Theorem~\ref{res:sunflower}.
+A different conditional argument would produce an infinite support of value
+$1/2$ from cofinal geometric stages.
 
 \begin{theorem}[cofinal cylinders imply an infinite half-support]
 \label{res:cylinderhalf}
@@ -1678,15 +1950,15 @@ and feed height information back into Problem~\ref{prob:fatal-interval}.
 each finite family, are settled by Corollary~1.2 and Example~1.1 of
 ~\cite[author-preprint p.~4]{duverneytachiya}
 (Corollary~\ref{res:sfsettled}).  Their cited
-corollary does not cover bases that are not powers of \(2\), and this note
-makes no global open-status or priority claim for those values.
+corollary applies to power-of-two bases.
 
 \section*{Statements and declarations}
 
-This manuscript is authored exposition, not proof authority.  The linked Lean
-snapshot is authoritative only for its exact propositions; kernel checking
-establishes that a proposition was proved, not that it is interesting, novel,
-or sufficient.  The displayed proof of Corollary~\ref{res:blind}, the
+The inline links identify the exact formal statements used in each section.
+The analytic criteria in Section~\ref{sec:eight-return-extensions} and the
+all-base bouquet composition in Theorem~\ref{res:sunflower} have ordinary
+proofs above and in the linked supplement. The displayed proof of
+Corollary~\ref{res:blind}, the
 derivation of Corollary~\ref{res:sfsettled} from
 ~\cite[Cor.~1.2 and Ex.~1.1, author-preprint p.~4]{duverneytachiya},
 and the general finite-change argument (from the two checked prefix lemmas) are

@@ -49,8 +49,10 @@
 % Stable cross-document links between sibling PDFs. A named destination is
 % more durable than a page number: sections may move while their semantic role
 % remains the same. All public PDFs are copied to one directory at release.
+% Local PDF GoToR links take the destination name directly; nameddest= is
+% an HTTP PDF-viewer fragment convention, not part of the destination name.
 \newcommand{\papersectiontarget}[1]{\hypertarget{#1}{}}
-\newcommand{\papersectionlink}[3]{\href{#1\#nameddest=#2}{#3}}
+\newcommand{\papersectionlink}[3]{\href{#1\##2}{#3}}
 
 \RequirePackage{titlesec}
 \titleformat{\section}{\Large\bfseries}{\thesection}{0.85em}{}

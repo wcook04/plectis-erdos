@@ -61,6 +61,16 @@ def check_rendered_file_boundary() -> None:
 
 def main() -> int:
     check_rendered_file_boundary()
+    sections = (("evidence section", "next section", ("bounded result",)),)
+    require(not boundary.section_anchor_errors(
+        "extra front matter\fEvidence section\fBounded result\fNext section", sections),
+        "pagination changed a section's content verdict")
+    require(bool(boundary.section_anchor_errors(
+        "Bounded result\fEvidence section\fNext section", sections)),
+        "an anchor outside its section passed")
+    require(bool(boundary.section_anchor_errors(
+        "Next section\fEvidence section\fBounded result", sections)),
+        "reversed section boundaries passed")
     hostile_environment = {
         "GIT_DIR": "/private/wrong-git-dir",
         "GIT_NAMESPACE": "refs/namespaces/wrong-release",

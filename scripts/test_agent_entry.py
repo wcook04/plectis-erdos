@@ -29,6 +29,38 @@ ROUTE_CASES = {
         "repository_architecture",
         "maintain-public-infrastructure",
     ),
+    "make the repo simpler and more coherent": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "clean up duplicated workflows": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "reduce bootstrap friction": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "tidy up the public repository": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "simplify this Lean proof": ("bounded_research", "mine-open-problem"),
+    "explain the repository organization to a newcomer": (
+        "understand_repository", "explain-public-system"
+    ),
+    "hydrate the Lean dependency cache": (
+        "lean_validation", "lean-concurrent-validation"
+    ),
+    "inspect a deferred validation receipt": (
+        "lean_validation", "lean-concurrent-validation"
+    ),
+    "inspect the module dependency graph": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "refresh the authoring graph labels": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "check projection freshness and repair stale projections": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "prove a graph theorem in Lean": ("bounded_research", "mine-open-problem"),
     "explain how this repo works to a newcomer": ("understand_repository", "explain-public-system"),
     "I am new here and want to understand the eight open problems": (
         "understand_repository",
@@ -223,6 +255,26 @@ def main() -> int:
     assert "lean_validation" in {
         row["id"] for row in duplicate_builds["alternatives"]
     }
+    mixed_task = "prove a lemma in Lean and fix duplicate builds"
+    mixed = entry_packet(catalog, mixed_task)
+    assert mixed["primary_lane"]["id"] == "bounded_research"
+    validation = next(
+        row for row in mixed["alternatives"] if row["id"] == "lean_validation"
+    )
+    assert validation["read"] == ["skills/lean-concurrent-validation/SKILL.md"]
+    assert validation["commands"] == [
+        "python3 scripts/lean_fast_build.py --plan --changed-from HEAD"
+    ]
+    assert "pinned Lean kernel" in validation["boundary"]
+    for task in ROUTE_CASES:
+        alternatives = entry_packet(catalog, task)["alternatives"]
+        assert len(alternatives) <= 2
+        assert all(len(row["read"]) <= 1 and len(row["commands"]) <= 1
+                   for row in alternatives)
+    mixed_cli = run_cli(ROOT, "--entry", mixed_task)
+    assert mixed_cli.returncode == 0, mixed_cli.stderr
+    assert "Open: skills/lean-concurrent-validation/SKILL.md" in mixed_cli.stdout
+    assert "Next: python3 scripts/lean_fast_build.py --plan --changed-from HEAD" in mixed_cli.stdout
 
     fallback = entry_packet(catalog, "frobnicate the unspecified material")
     assert fallback["route_status"] == "fallback"

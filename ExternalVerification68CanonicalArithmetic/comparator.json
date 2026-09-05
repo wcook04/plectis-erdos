@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification68CanonicalArithmetic.Challenge",
+  "solution_module": "ExternalVerification68CanonicalArithmetic.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification68CanonicalArithmetic.rational_iff_factorial_floor_tail",
+    "Erdos249257.ExternalVerification68CanonicalArithmetic.rational_denominator_full_prime_exponent"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

@@ -37,7 +37,7 @@
       "is_restatement_of_open_problem": false,
       "engine": "Fresh primes congruent to one modulo 2^K, a finite Chinese-remainder system for the terminal and preceding positions, and Dirichlet's theorem in the resulting coprime progression.",
       "prior_art_state": "formalisation_only",
-      "prior_art_note": "Lean-checked project arithmetic producer; no external priority claim is made.",
+      "prior_art_note": "Lean-checked project arithmetic producer; no external priority claim is made. The short paper paper/erdos-249-binary-totient-series.tex::res:twoadic-pulses explains the CRT-Dirichlet construction before its discrepancy and integral-tail consumers. Follow scripts/query_corpus.py --source Erdos249257/TotientTwoAdicPulseBlock.lean:54 for the claim and remaining-open handles.",
       "scope_caveat": "The theorem prescribes divisibility data for one finite block. It does not assert that the resulting discrepancy lies in a certificate's central arc.",
       "confidence": "high",
       "evidence": [
@@ -112,8 +112,8 @@
       "is_restatement_of_open_problem": false,
       "engine": "Choose a pulse prime beyond both B and N0+K, then transfer the length-K discrepancy congruence through the integral carry recurrence.",
       "prior_art_state": "formalisation_only",
-      "prior_art_note": "Lean-checked consequence of the arithmetic pulse producer under the rationality-side integrality hypothesis.",
-      "scope_caveat": "This is compatible with eventual integrality and produces no contradiction. It diagnoses the modular shape of the rational branch; it does not prove irrationality or a central-arc certificate.",
+      "prior_art_note": "Lean-checked consequence of the arithmetic pulse producer under the rationality-side integrality hypothesis. The short paper paper/erdos-249-binary-totient-series.tex::res:twoadic-pulses derives the integer half-turn consequence through the carry recurrence; the absolute-value lower bound there is an elementary consequence of the congruence.",
+      "scope_caveat": "This is compatible with eventual integrality and produces no contradiction. It diagnoses the modular shape of the rational branch; it does not prove irrationality or a central-arc certificate. The prime positions are not the actual-LCM positions of Z28::fixed_rank_curvature_primitive_archimedean_bound: a small-curvature estimate at those other positions cannot be applied here without a proved alignment.",
       "confidence": "high",
       "evidence": [
         {

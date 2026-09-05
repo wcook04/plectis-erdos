@@ -1,0 +1,135 @@
+{
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "falsification_consequence": "Any successful invariant must use multi-step payment, residue, or global prefix coherence rather than local negative magnitude.",
+      "survival_consequence": "A surviving descent law would provide a well-founded obstruction to cofinally unbounded negative excursions."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "negative_feedback_local_mass_descent",
+      "statement": "Some real alpha>=0 makes m/u^alpha strictly decrease on every primitive strictly centred negative-to-negative step with increasing multiplier."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/NegativeFeedbackDescentComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CenteredEuclideanFeedback.lean"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_negative_feedback_descent.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CenteredEuclideanFeedback.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Enumerate primitive pairs, execute two exact dynamically reduced centred steps, retain negative-to-negative transitions with increasing multiplier, and verify the Lean centered-quotient identity A*m=k*u_next+m_next.",
+      "falsifier": "One valid step with m_next>=m and u_next<=u, which makes every m/u^alpha with alpha>=0 nondecreasing simultaneously.",
+      "id": "exact_primitive_feedback_step_scan",
+      "question": "Can any nonnegative homogeneous power of the primitive scale turn negative mass into a one-step Lyapunov function?",
+      "stop_condition": "Stop on an exact small witness and bind a bounded regression census; do not increase bounds as evidence for an infinitary conclusion."
+    },
+    "problem": {
+      "claim_ceiling": "This eliminates every one-step homogeneous weight m/u^alpha for real alpha>=0; it does not exclude globally constrained aperiodic negative excursions.",
+      "id": "erdos_243",
+      "target_statement": "Force eventual Sylvester recurrence from rational reciprocal sum and a_(n+1)/a_n^2 tending to one."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "One exact transition eliminates the whole declared homogeneous Lyapunov family, not a larger finite census.",
+        "next_analytic_target": "Use multi-step cancellation payment, residue compatibility, or global prefix coherence; no one-step nonnegative homogeneous scale weight survives."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The primitive seed (9,62) sends scale u=9 to u_next=5 while negative mass goes from 1 to 2; every m/u^alpha with alpha>=0 strictly increases on this exact step."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "parameters": {
+    "max_multiplier": 100,
+    "max_u": 250
+  },
+  "result": {
+    "first_absolute_descent_counterexample": {
+      "a": 3,
+      "a_next": 5,
+      "centered_quotient_k": 2,
+      "h": 1,
+      "m": 1,
+      "m_next": 1,
+      "square_free_cancellation_quotient_A": 9,
+      "u": 3,
+      "u_next": 4,
+      "v": 5,
+      "v_next": 15
+    },
+    "first_all_nonnegative_homogeneous_weights_counterexample": {
+      "a": 8,
+      "a_next": 51,
+      "centered_quotient_k": 6,
+      "h": 2,
+      "m": 1,
+      "m_next": 2,
+      "square_free_cancellation_quotient_A": 32,
+      "u": 9,
+      "u_next": 5,
+      "v": 62,
+      "v_next": 248
+    },
+    "first_normalized_descent_counterexample": {
+      "a": 3,
+      "a_next": 6,
+      "centered_quotient_k": 1,
+      "h": 1,
+      "m": 1,
+      "m_next": 2,
+      "square_free_cancellation_quotient_A": 9,
+      "u": 6,
+      "u_next": 7,
+      "v": 11,
+      "v_next": 33
+    },
+    "homogeneous_weight_consequence": "Because m_next>=m and u_next<=u, m_next/u_next^alpha is at least m/u^alpha for every real alpha>=0; the stored witness is strict.",
+    "maximum_normalized_growth_ratio": {
+      "denominator": 251,
+      "numerator": 31250,
+      "witness": {
+        "a": 80,
+        "a_next": 6296,
+        "centered_quotient_k": 25,
+        "h": 1,
+        "m": 1,
+        "m_next": 125,
+        "square_free_cancellation_quotient_A": 6400,
+        "u": 250,
+        "u_next": 251,
+        "v": 19749,
+        "v_next": 1579920
+      }
+    },
+    "valid_negative_to_negative_increasing_steps": 464301
+  },
+  "schema": "erdos243-negative-feedback-descent/1",
+  "sources": [
+    {
+      "byte_length": 8975,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_negative_feedback_descent.py",
+      "sha256": "1211fb612092250c25c7796413506f079f7ac2ff658ffe5b388ac8a67abc4ad0"
+    },
+    {
+      "byte_length": 8834,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CenteredEuclideanFeedback.lean",
+      "sha256": "b76517fa7029f39587ab24668cec15dac1cd24266cec9a5946aa938cd30e3483"
+    },
+    {
+      "byte_length": 1583,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/NegativeFeedbackDescentComputationalLab.md",
+      "sha256": "1e4c4bd36bb0d1a80ec227b1728263583ff9755156454295bcc0fb2a91e9b89a"
+    },
+    {
+      "byte_length": 54852,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "42fd1e6988e03373d4f72d8f01e9a3189e2257f3af2d639027d240a09e5325e1"
+    }
+  ]
+}

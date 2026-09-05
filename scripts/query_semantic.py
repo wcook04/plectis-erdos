@@ -137,13 +137,98 @@ PROBLEMS = tuple(
 PROBLEM_SCOPES = (*PROBLEMS, "both", "shared_substrate")
 
 
-@lru_cache(maxsize=1)
-def load() -> dict:
+def indexed_query_corpus(raw: bytes, receipt: dict, module_filter: str | tuple[str, ...] = "") -> dict | None:
+    """Use a verified field index, falling back when its bytes or shape drift."""
+    if not isinstance(receipt, dict):
+        return None
+    spans = receipt.get("top_level_fields")
+    if not isinstance(spans, list) or not spans or raw[:1] != b"{" or raw[-2:] != b"}\n":
+        return None
+    if receipt.get("output_digest") != "sha256:" + hashlib.sha256(raw).hexdigest():
+        return None
+    result, seen, position = {}, set(), 1
+    role_array = None
+    try:
+        for index, span in enumerate(spans):
+            key, start, end = span["key"], span["start"], span["end"]
+            if (not isinstance(key, str) or key in seen or type(start) is not int
+                    or type(end) is not int or start != position or not start < end <= len(raw) - 2):
+                return None
+            seen.add(key)
+            member = raw[start:end]
+            prefix = json.dumps(key, ensure_ascii=False).encode("utf-8") + b":"
+            if (not member.startswith(prefix)
+                    or hashlib.sha256(member).hexdigest() != span.get("sha256")):
+                return None
+            separator = b"}" if index == len(spans) - 1 else b","
+            if raw[end:end + 1] != separator:
+                return None
+            if key != "declaration_roles":
+                field = json.loads(b"{" + member + b"}")
+                if set(field) != {key}:
+                    return None
+                result.update(field)
+            elif module_filter != "":
+                role_array = member[len(prefix):]
+            position = end + 1
+        if position != len(raw) - 1 or "declaration_roles" not in seen:
+            return None
+        if module_filter != "":
+            selected = indexed_module_roles(
+                role_array, result.get("declaration_role_module_ranges"), module_filter,
+            )
+            if selected is None:
+                return None
+            result["declaration_roles"] = selected
+        return result
+    except (KeyError, TypeError, ValueError):
+        return None
+
+
+def indexed_module_roles(raw: bytes, groups: object, module_filter: str | tuple[str, ...]) -> list[dict] | None:
+    """Select ranges by one substring or any supplied substring, in corpus order."""
+    if not isinstance(raw, bytes) or not isinstance(groups, list) or raw[:1] != b"[" or raw[-1:] != b"]":
+        return None
+    selected, position = [], 1
+    needles = tuple(value.casefold() for value in (
+        (module_filter,) if isinstance(module_filter, str) else module_filter
+    ))
+    try:
+        for index, group in enumerate(groups):
+            module, start, end, count = (group[key] for key in ("module", "start", "end", "count"))
+            if (not isinstance(module, str) or type(start) is not int or type(end) is not int
+                    or type(count) is not int or count < 1 or start != position
+                    or not start < end < len(raw)):
+                return None
+            if raw[end:end + 1] != (b"]" if index == len(groups) - 1 else b","):
+                return None
+            if any(needle in module.casefold() for needle in needles):
+                rows = json.loads(b"[" + raw[start:end] + b"]")
+                if len(rows) != count or any(row.get("module") != module for row in rows):
+                    return None
+                selected.extend(rows)
+            position = end + 1
+        return selected if position == len(raw) or (not groups and raw == b"[]") else None
+    except (KeyError, TypeError, ValueError, AttributeError):
+        return None
+
+
+@lru_cache(maxsize=2)
+def load(include_declaration_roles: bool = True, module_filter: str | tuple[str, ...] = "") -> dict:
     if not CORPUS.is_file():
         raise SystemExit(
             "docs/semantic_corpus.json missing; run python3 scripts/build_semantic_corpus.py"
         )
-    corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
+    raw = CORPUS.read_bytes()
+    corpus = None
+    if not include_declaration_roles or module_filter != "":
+        try:
+            receipt = load_json(ROOT / "docs/semantic_corpus_check.json", "semantic query index")
+            corpus = indexed_query_corpus(raw, receipt, module_filter)
+        except (OSError, ValueError, SystemExit):
+            pass
+    if corpus is None:
+        corpus = json.loads(raw.decode("utf-8"))
     if corpus.get("semantic_input_fingerprint") != semantic_input_fingerprint():
         raise SystemExit(
             "docs/semantic_corpus.json is stale relative to its inputs; "
@@ -173,7 +258,7 @@ def emit(payload: object) -> int:
 def load_json(path: Path, label: str) -> dict:
     if not path.is_file():
         raise SystemExit(f"{path.relative_to(ROOT)} missing; cannot run {label}")
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(path.read_bytes().decode("utf-8"))
 
 
 def load_palomar() -> dict:
@@ -186,7 +271,7 @@ def load_claims() -> dict:
 
 @lru_cache(maxsize=1)
 def load_declaration_atlas() -> dict:
-    return load_json(DECLARATION_ATLAS, "family-relations")
+    return load_json(DECLARATION_ATLAS, "declaration atlas")
 
 
 @lru_cache(maxsize=1)
@@ -1572,29 +1657,33 @@ def paper_citation_keys(module: str, declaration: str) -> set[tuple[str, str]]:
 
 
 _PAPER_CITATION_ROLE_INDEX_CACHE: tuple[
-    dict, dict[tuple[str, str], list[dict]]
+    dict, frozenset[str] | None, dict[tuple[str, str], list[dict]]
 ] | None = None
 
 
 def paper_citation_role_index(
     corpus: dict,
+    module_basenames: frozenset[str] | None = None,
 ) -> dict[tuple[str, str], list[dict]]:
     """Index immutable loaded-corpus citation aliases once per process."""
     global _PAPER_CITATION_ROLE_INDEX_CACHE
     if (
         _PAPER_CITATION_ROLE_INDEX_CACHE is not None
         and _PAPER_CITATION_ROLE_INDEX_CACHE[0] is corpus
+        and _PAPER_CITATION_ROLE_INDEX_CACHE[1] == module_basenames
     ):
-        return _PAPER_CITATION_ROLE_INDEX_CACHE[1]
+        return _PAPER_CITATION_ROLE_INDEX_CACHE[2]
     index: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for role in corpus["declaration_roles"]:
         module = role.get("module")
         declaration = role.get("declaration")
         if not module or not declaration:
             continue
+        if module_basenames is not None and module.rsplit("/", 1)[-1] not in module_basenames:
+            continue
         for key in paper_citation_keys(module, declaration):
             index[key].append(role)
-    _PAPER_CITATION_ROLE_INDEX_CACHE = (corpus, index)
+    _PAPER_CITATION_ROLE_INDEX_CACHE = (corpus, module_basenames, index)
     return index
 
 
@@ -1627,13 +1716,30 @@ def paper_lean_citations(text: str) -> set[tuple[str, int, str]]:
 def cmd_paper_coverage(corpus: dict, args) -> int:
     """Which statement nodes are reached by explicit Lean citations in each manuscript?"""
     contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
-    index = nodes_by_id(corpus)
-
     # The declaration role receipt, not a node's short evidence list, owns the
     # exhaustive citation route.  An earlier version used evidence lists and
     # consequently labelled node-routed citations "unmatched" whenever an
     # author had not repeated every supporting declaration on the node.
-    role_index = paper_citation_role_index(corpus)
+    artifacts = contract.get("artifacts", [])
+    if args.paper:
+        needle = args.paper.casefold()
+        artifacts = [artifact for artifact in artifacts
+                     if needle in artifact["id"].casefold()
+                     or needle in artifact["source_path"].casefold()]
+    cited_artifacts = []
+    for artifact in artifacts:
+        source = ROOT / artifact["source_path"]
+        if source.is_file():
+            cited_artifacts.append((artifact, {
+                (module, declaration)
+                for module, _, declaration in paper_lean_citations(source.read_text(encoding="utf-8"))
+            }))
+    cited_modules = frozenset(module.rsplit("/", 1)[-1]
+                              for _, citations in cited_artifacts for module, _ in citations)
+    if "declaration_roles" not in corpus:
+        corpus = load(True, tuple(sorted(cited_modules)))
+    index = nodes_by_id(corpus)
+    role_index = paper_citation_role_index(corpus, cited_modules)
     known_declarations = set(role_index)
     declaration_routes: dict[tuple[str, str], set[str]] = {
         key: {
@@ -1644,26 +1750,11 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
         for key, roles in role_index.items()
     }
 
-    artifacts = contract.get("artifacts", [])
-    if args.paper:
-        needle = args.paper.casefold()
-        artifacts = [
-            artifact
-            for artifact in artifacts
-            if needle in artifact["id"].casefold()
-            or needle in artifact["source_path"].casefold()
-        ]
-
+    nodes_by_problem = defaultdict(list)
+    for node in corpus["statement_nodes"]:
+        nodes_by_problem[node.get("problem")].append(node)
     rows = []
-    for artifact in artifacts:
-        source = ROOT / artifact["source_path"]
-        if not source.is_file():
-            continue
-        text = source.read_text(encoding="utf-8")
-        cited = {
-            (module, declaration)
-            for module, _, declaration in paper_lean_citations(text)
-        }
+    for artifact, cited in cited_artifacts:
         def routed_nodes(citation: tuple[str, str]) -> set[str]:
             return set().union(
                 *(
@@ -1699,11 +1790,7 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
         )
         per_problem = {}
         for problem in PROBLEM_SCOPES:
-            problem_nodes = [
-                node
-                for node in corpus["statement_nodes"]
-                if node.get("problem") == problem
-            ]
+            problem_nodes = nodes_by_problem[problem]
             authored_nodes = [
                 node
                 for node in problem_nodes
@@ -1903,11 +1990,8 @@ def cmd_problem_registry(corpus: dict, args) -> int:
 
 def cmd_structural_backlog(corpus: dict, args) -> int:
     """Rank structural-only theorem families for honest authored replacement."""
-    atlas = json.loads(
-        (ROOT / "docs" / "declaration_atlas.json").read_text(encoding="utf-8")
-    )
+    atlas = load_declaration_atlas()
     atlas_index = {row["id"]: row for row in atlas["declarations"]}
-    role_index = paper_citation_role_index(corpus)
     paper_selected_ids: set[str] = set()
     paper_sources = sorted((ROOT / "paper").glob("*.tex"))
     if args.paper:
@@ -1918,14 +2002,18 @@ def cmd_structural_backlog(corpus: dict, args) -> int:
             if needle in source.name.casefold()
             or needle in str(source.relative_to(ROOT)).casefold()
         ]
-    for source in paper_sources:
-        for module, _line, declaration in paper_lean_citations(
-            source.read_text(encoding="utf-8")
-        ):
-            for key in paper_citation_keys(module, declaration):
-                paper_selected_ids.update(
-                    role["id"] for role in role_index.get(key, [])
-                )
+    citations = {
+        citation
+        for source in paper_sources
+        for citation in paper_lean_citations(source.read_text(encoding="utf-8"))
+    }
+    cited_modules = frozenset(module.rsplit("/", 1)[-1] for module, _, _ in citations)
+    role_index = paper_citation_role_index(corpus, cited_modules)
+    for module, _line, declaration in citations:
+        for key in paper_citation_keys(module, declaration):
+            paper_selected_ids.update(
+                role["id"] for role in role_index.get(key, [])
+            )
 
     node_index = nodes_by_id(corpus)
     zone_problems = {
@@ -2063,13 +2151,6 @@ def cmd_structural_backlog(corpus: dict, args) -> int:
 
 def cmd_population_backlog(corpus: dict, args) -> int:
     """Rank paper-selected Lean citations that still lack statement semantics."""
-    role_index = paper_citation_role_index(corpus)
-    node_index = nodes_by_id(corpus)
-    zone_problems = {
-        str(row["zone_id"]): str(row["problem"])
-        for row in corpus.get("zones", [])
-        if row.get("zone_id") and row.get("problem")
-    }
     candidate_cap = min(args.limit, 12 if args.paper else 5)
     module_cap = min(args.limit, 12 if args.paper else 8)
     paper_cap = min(args.limit, 1 if args.paper else 3)
@@ -2083,9 +2164,22 @@ def cmd_population_backlog(corpus: dict, args) -> int:
             if needle in source.name.casefold()
             or needle in str(source.relative_to(ROOT)).casefold()
         ]
-    for source in sources:
-        text = source.read_text(encoding="utf-8")
-        citations = sorted(paper_lean_citations(text))
+    cited_sources = [
+        (source, sorted(paper_lean_citations(source.read_text(encoding="utf-8"))))
+        for source in sources
+    ]
+    cited_modules = frozenset(module.rsplit("/", 1)[-1]
+                              for _, citations in cited_sources for module, _, _ in citations)
+    if "declaration_roles" not in corpus:
+        corpus = load(True, tuple(sorted(cited_modules)))
+    role_index = paper_citation_role_index(corpus, cited_modules)
+    node_index = nodes_by_id(corpus)
+    zone_problems = {
+        str(row["zone_id"]): str(row["problem"])
+        for row in corpus.get("zones", [])
+        if row.get("zone_id") and row.get("problem")
+    }
+    for source, citations in cited_sources:
         linked_by_role: dict[str, dict] = {}
         unlinked_by_role: dict[str, dict] = {}
         absent = []
@@ -2439,12 +2533,13 @@ def cmd_inventory(corpus: dict, args) -> int:
     total_matches = 0
     results = []
     for route in corpus["declaration_roles"]:
-        searchable = " ".join(
-            str(route.get(field) or "")
-            for field in ("id", "module", "declaration", "statement_node")
-        ).casefold()
-        if needle and needle not in searchable:
-            continue
+        if needle:
+            searchable = " ".join(
+                str(route.get(field) or "")
+                for field in ("id", "module", "declaration", "statement_node")
+            ).casefold()
+            if needle not in searchable:
+                continue
         if module_filter and module_filter not in str(route.get("module") or "").casefold():
             continue
         if role_filter and role_filter != str(route.get("role") or "").casefold():
@@ -2857,7 +2952,7 @@ def main() -> int:
         nargs="?",
         help=(
             "detail id for node, mechanism, explains, expert-questions, or "
-            "family-relations (family id)"
+            "family-relations (family id); inventory accepts a search string"
         ),
     )
     parser.add_argument("--problem", choices=(*PROBLEMS, "shared_substrate"))
@@ -2875,14 +2970,21 @@ def main() -> int:
     )
     parser.add_argument(
         "--paper",
-        help="population-backlog case-insensitive paper path/name filter",
+        help="paper-coverage, population-backlog, or structural-backlog case-insensitive paper path/name filter",
     )
     parser.add_argument("--limit", type=int, default=40)
     args = parser.parse_args()
     # Family relations are sourced from the canonical Palomar/claims records,
     # so they remain executable while the unrelated semantic-corpus projection
-    # is awaiting its owner refresh.
-    corpus = {} if args.command == "family-relations" else load()
+    # is awaiting its owner refresh. Paper queries select manuscript citations
+    # before loading the corresponding declaration-role ranges.
+    inventory_commands = {
+        "inventory", "problem-registry", "structural-backlog",
+    }
+    module_filter = (args.module or "") if args.command == "inventory" else ""
+    corpus = {} if args.command in {"family-relations", "paper-coverage", "population-backlog"} else load(
+        args.command in inventory_commands, module_filter,
+    )
     return COMMANDS[args.command](corpus, args)
 
 

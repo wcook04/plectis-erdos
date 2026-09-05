@@ -1,0 +1,14 @@
+{
+  "challenge_module": "ExternalVerification1041AnalyticBridges.Challenge",
+  "solution_module": "ExternalVerification1041AnalyticBridges.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1041AnalyticBridges.powerSeries_length_from_subradius_energy",
+    "Erdos249257.ExternalVerification1041AnalyticBridges.freePointMean_from_adaptive_log_certificate"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

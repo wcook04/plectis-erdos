@@ -93,19 +93,13 @@
 % the papers cannot drift into different accounts of how they were made.
 \newcommand{\noteprovenance}{\paperprovenance}
 
-% The status paragraph every note carries, in its own words, before any result.
-% Kernel checking establishes the exact Lean proposition; it does not establish
-% that the proposition is the interesting one, that it is new, or that the
-% Erdős problem is closed.
+% State the shared evidence boundary once; each note states its exact open
+% remainder beside the relevant mathematics.
 \newcommand{\statusboundary}{%
-  \emph{Status.}  The problem treated here is open, and this note does not
-  close it.  Every statement below marked as checked is a proposition that the
-  pinned Lean kernel accepts from the sources this note links to, with no
-  \texttt{sorry}, no added axiom, and no unchecked evaluation.  That is a claim
-  about the formal statement, not about its mathematical interest, its
-  novelty, or the original problem.  The unresolved obligations are named
-  exactly, in their own section, and none of the finite computations,
-  reductions, or no-go results here removes one of them.
+  \emph{Status.} The original problem remains open. Statements marked as
+  Lean-checked refer to the linked propositions accepted by the pinned kernel,
+  with no \texttt{sorry}, added axioms, or unchecked evaluation. The note
+  states the remaining mathematical obligations explicitly.
   \companionpapercontext}
 
 % The mathematical notes remain standalone. These links supply optional
@@ -118,8 +112,7 @@
   {cold-clone-authority}{cold-clone route to proof authority}, and
   \papersectionlink{open-source-mathematics-strategy.pdf}%
   {strategy-protocol}{public contribution protocol} are described in sibling
-  papers. Those descriptions do not change the mathematical status of this
-  note.}
+  papers.}
 
 % Compact opening card for the separately stated Comparator theorem selected
 % from each problem note.  The prose supplied by each note owns the
@@ -134,7 +127,6 @@
   separately declared challenge statements and an axiom budget, then asks
   Lean's kernel to check the submitted proofs.  The
   \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/formalization.yaml}%
-  {formalisation manifest} and the commit-bound CI receipt record that check;
-  they do not assess novelty, significance, or whether the original problem is
-  solved.
+  {formalisation manifest} and the commit-bound CI receipt record the checked
+  statements and verification results.
   \end{quote}}

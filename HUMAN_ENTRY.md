@@ -106,6 +106,13 @@ must learn before the mathematics becomes visible. The
 back with its evidence and credit intact, without asking a human to speak in
 commands or machine field names.
 
+You can also work with a model in a web app. Ask a repository agent to prepare
+a source packet for one question: it can gather the selected committed files
+into a readable attachment, preserving where they came from. Bring the model's
+answer back for checking and credit through the same contribution route. The
+[research handoff guide](skills/erdos-research-return/SKILL.md#send-sources-to-a-model-without-a-repository-harness)
+gives the agent the preparation steps.
+
 ## Where I actually am
 
 I am 22. I took a year out of my economics degree at Bristol for mental-health

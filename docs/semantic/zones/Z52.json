@@ -117,7 +117,7 @@
       "is_restatement_of_open_problem": false,
       "engine": "clean LCM factorization plus parity of the primitive curvature factor",
       "prior_art_state": "not_assessed",
-      "prior_art_note": "No external priority or novelty claim is made for the exact divisibility statement.",
+      "prior_art_note": "No external priority or novelty claim is made. This exact local factor is consumed by exists_primitive_fixedRankCurvature_with_bound in Erdos249257/TotientFixedRankLcmAsymptotic.lean:637 and explained with its Archimedean bound in paper/erdos-249-binary-totient-series.tex::res:lcm-curvature. The complete interpreted consumer is Z28::fixed_rank_curvature_primitive_archimedean_bound; the existing Z52 node records its divisibility ingredient rather than a second copy of that quantitative theorem.",
       "scope_caveat": "Divisibility does not prove nonzero curvature, the extremal supply, a residue certificate, or irrationality. It does not imply stronger two-adic divisibility.",
       "confidence": "high",
       "evidence": [

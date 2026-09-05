@@ -8,7 +8,8 @@ description: Dogfood, organize, consolidate, and repair the public clone's agent
 Use this skill when a clean clone is confusing, a routed workflow is stale or
 duplicated, an advertised command only works in an authoring environment, or a
 new capability has not reached entry, validation, contribution, and downstream
-consumer surfaces. The product is a self-contained public journey, not more
+consumer surfaces. Repository cleanup, bootstrap friction, and architectural
+simplification belong here too. The product is a self-contained public journey, not more
 explanatory prose by default.
 
 ## Start from the observed journey
@@ -25,6 +26,11 @@ Record the expected first lane, the actual lane or failure, and the first file
 or command that became unusable. A file existing is not evidence that an agent
 can find or operate it. Preserve the exact task as a regression fixture when it
 reveals a reusable failure class.
+
+Replay ordinary contributor wording as well as owner terminology. A route that
+recognizes "architecture" but misses "clean up duplicated workflows" is not
+discoverable enough. Add focused registry cues and pair each repair with a
+nearby explanation or proof task that must keep its existing lane.
 
 ## Know the public owner graph
 
@@ -48,6 +54,63 @@ reveals a reusable failure class.
 
 This map is deliberately compact. Open the owner named by the failing journey;
 do not read every registry, graph, paper, or skill as a startup ritual.
+
+## Module graphs, labels, and projection freshness
+
+For module dependency inspection or graph maintenance, start with
+`python3 scripts/build_module_graph.py --check`. The graph lives at
+`docs/claims.json::machine_readable_paper.module_graph`: Lean source owns paths
+and import edges; each node's `role` is authored navigation metadata. The
+builder preserves existing roles and supplies defaults for new nodes.
+
+Correct a role at that authored field. Change an import in Lean source, then
+run `python3 scripts/build_module_graph.py` to derive the graph; do not repair
+an import edge by editing the JSON. Lean edits also require focused validation
+through `skills/lean-concurrent-validation/SKILL.md`. A clearer label does not
+change the corresponding theorem or claim status.
+
+For broader stale projections, use
+`python3 scripts/refresh_projections.py --check` to identify the failing owner.
+After the source correction, `python3 scripts/refresh_projections.py` runs the
+registered builders in dependency order. Claim their output paths first in a
+shared checkout. Do not regenerate unrelated projections over another
+contributor's work. Use the changed module's
+`python3 scripts/query_corpus.py --connections <module>` packet to verify that
+its downstream navigation still resolves.
+
+## Test the reader journey, not a frozen layout
+
+Start from a fresh clone of the public GitHub commit. A local maintainer
+checkout can contain improvements the stranger will never see. Record the
+public base and distinguish author-operated rehearsal from independent use.
+
+For a front-door change, follow both directions between the human introduction
+and agent entry, then reach a problem paper, its source, the contribution
+instructions, and credit. Put mutually exclusive setup choices in separate
+copyable blocks. Keep prerequisites before their first use in the guide that
+actually owns the commands. A small README may link that guide instead of
+repeating it; validators must traverse and test the link rather than force
+commands back above the human explanation. Mutate all linked evidence inputs
+in a semantic regression test and require the intended semantic failure; a
+formatting error is not evidence that a missing mathematical distinction was
+detected.
+
+An empty accepted-contribution view must explain its state and link project
+authorship and the contribution path. Never fabricate an accepted return to
+fill it. Check a return against the current repository identity as well as an
+accepted historical identity: GitHub redirects do not update a clone's typed
+submission contract.
+
+Review every canonical paper's bibliography and source comparisons, but report
+that bounded coverage separately from literature completeness or novelty.
+Retain version-specific citations until the referenced statements and locators
+have been compared; a changed preprint title is not enough to repin a theorem.
+
+A filtered clone needs both its source tags and the historical files consumed
+by release checks. Exercise that fetch path on cold objects. Batch only the
+needed historical files, and treat failed Git reads as unavailable evidence,
+never as successful absence checks. Preserve historical generator provenance;
+replace obsolete active patch routes with verified public source pins.
 
 ## Classify before changing
 
@@ -102,7 +165,106 @@ the other a route pointer or a generated projection. Do not copy a private
 system's full doctrine into this repository; port only the public capability
 and the check that proves it works here.
 
-## Validate behavior, not decoration
+## Make the architecture easier to use
+
+Judge elegance by what the next contributor must understand and coordinate.
+A good repair removes a decision, a duplicate owner, a hidden dependency, or
+an opportunity to enter inconsistent state. Visual polish alone does not do
+that work. Keep one ordinary route for a task, put complexity behind its owning
+component, and expose a recovery action when that component cannot proceed.
+
+Before introducing an abstraction, identify the repeated behavior it replaces
+and its lifetime. For example, a committed reader may share immutable bytes
+after pinning a revision; a live worktree or staged-index reader must still see
+edits. Keep fixture overrides explicit and ahead of shared reads. Do not make
+callers learn a cache protocol to obtain correct source identity.
+
+After a repair, record its trigger, action, and validation in the owning public
+skill. Replay the workflow from a fresh contributor's position:
+can they find the right skill, run the default command, understand its result,
+and take the next action without consulting another parallel guide? Simplify
+the owning route when the answer is no.
+
+## Remove measured delays
+
+Start with commands that take more than a second. Measure the same task and
+input before and after; aim to bring interactive commands below one second
+before polishing already-fast paths. Keep the original output or compare its
+structured meaning, and retain the adversarial cases that protect the boundary.
+
+For a release in a shared checkout, use
+`python3 scripts/check_release_ref.py --ref HEAD --receipt .validation-singleflight/release-head.json`.
+Its receipt records elapsed time for every gate, including timeouts. Profile
+the slow gate next. When profiling `check_release.py` itself, its normal entry
+dispatches through singleflight: profile the worker inside a disposable clean
+snapshot so the measurement covers validation rather than receipt collection.
+Do not bypass singleflight to launch competing builds in the working checkout.
+
+Look for repeated file parsing, repeated index construction, serial Git
+subprocesses, and duplicated validation ownership before adding concurrency.
+JSON loaders can decode UTF-8 bytes directly instead of translating newlines;
+verify exact output equivalence. Batch known immutable Git reads through the
+reader that owns the snapshot. Test binary framing, missing paths, moving refs,
+and live index/worktree changes when changing that boundary.
+
+When many fixtures consult one historical checkpoint, share its small derived
+summary within the reader's lifetime instead of rebuilding or retaining the
+whole atlas. Return a copy to each consumer. Reuse only successful immutable
+identities: missing objects can be fetched, symbolic refs can move, and a new
+reader must observe the repository again.
+
+Use profiler output to locate repeated work, then measure ordinary wall time:
+instrumentation can exaggerate a hot loop with hundreds of thousands of calls.
+For a text scanner, compare the old and new results over real inputs and
+adversarial grammar cases. A literal candidate search may avoid scanning large
+payloads with a regex, but must preserve the original match, escape, duplicate,
+and non-overlap rules. Faster extraction does not justify skipping validation
+or recovery checks.
+
+Reject an optimization when its measured saving does not justify its extra
+passes or abstraction. A successful microbenchmark is not sufficient: prefer
+removing a multi-second delay from the actual journey over complicating an
+already-subsecond component. Keep the evidence and remove the unused approach.
+
+For large generated JSON, first separate the data a command needs from the
+exhaustive export. Prefer a small byte-range index in an existing owner receipt
+over duplicating the corpus or adding another command. Bind ranges to the exact
+output bytes, validate their boundaries and member digests, and retain source
+freshness checks. Missing or unusable indexes should fall back to the ordinary
+reader. Compare indexed and complete reads across the affected command family;
+regenerate dependent input-digest receipts through their own builders.
+
+When filtered inventory still parses an exhaustive array, check whether its
+rows already form contiguous groups. A compact range table can select those
+groups without a second dataset. Keep selection labels inside the canonical
+digest boundary, check complete range coverage, and compare substring, case,
+empty-result, and combined-filter behavior with the full reader.
+Select the cited sources before constructing declaration aliases, and include
+that selection in any in-process index cache key. Preserve aliases shared by
+multiple modules; narrowing work must not silently narrow valid matches.
+Apply source selection to ranked backlogs as well as coverage reports, but rank
+all matching sources before imposing the output limit. Selecting the first few
+files before ranking can make a faster worklist omit its highest-priority item.
+When citations only affect ranking, narrow the citation index while retaining
+uncited candidates. Reuse the common atlas reader instead of introducing a
+second decoding path with different costs or errors.
+
+If a common entry or status command repeatedly audits historical data because
+an active file crossed a storage threshold, inspect the storage lifecycle
+before optimizing the audit. Keep active append files small through the owning
+rotation route. Publish new targets atomically, preserve paths that existing
+readers may still hold, and verify replay, subsequent writes, and failures on
+both sides of publication. A manifest can change a file's role without moving
+or duplicating its contents.
+Follow the change through readers and closeout guards: they must resolve the
+active manifest rather than remember the filenames used at initialization.
+
+For tests of exact counts, order, or classifications, make the corresponding
+source input explicit in the fixture. A live research registry is not a frozen
+test dataset. Preserve exact assertions against controlled inputs, and use
+source-derived expectations when the test is intended to check live coverage.
+
+## Validate the changed journey
 
 During the edit, run the narrow owner checks:
 
@@ -118,6 +280,14 @@ python3 scripts/check_cold_clone_comprehension.py --quick
 Use the exact previously failing task with `agent_entry.py --entry` as a manual
 smoke. Before publication, run `python3 scripts/check_release.py` once; do not
 serially rerun every component after that full gate passes.
+
+In a shared checkout, validate the committed result with
+`python3 scripts/check_release_ref.py --ref <commit>`. If another contributor's
+inputs change during a projection refresh, use an isolated committed checkout
+to distinguish the intended output from concurrent edits. Compare structured
+fields before assigning the cause of drift. Regenerate through the owner and
+land only the verified change; a failed aggregate gate can expose an earlier
+missing refresh rather than a defect in the current patch.
 
 A long command is a concurrency window. While it runs, continue only work that
 cannot change its inputs or outputs: audit another route, inspect a disjoint
@@ -174,6 +344,11 @@ kernel checks need an explicit resource plan and their own receipt, not a
 checkbox copied from another project's README. Our contribution workflow stays
 maintained and open to returns; do not inherit another artifact's non-maintenance
 policy merely because its verification design is useful.
+Carry each reusable lesson into this public skill or the more specific public
+owner skill during the work. State the trigger, the correct action, and the
+boundary that prevents misuse; do not accumulate dated benchmark logs here.
+Keep measured evidence with the change. A private note or conversation summary
+does not make the lesson available to the next public-clone contributor.
 
 ## Closeout
 

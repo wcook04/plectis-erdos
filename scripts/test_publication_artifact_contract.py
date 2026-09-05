@@ -19,7 +19,9 @@ from publication_contract import (
     ENVIRONMENT_CONTRACT,
     PAPER_REGISTRY_PATH,
     PAPER_REGISTRY_SCHEMA,
+    EVIDENCE_PATH,
     RepositoryReader,
+    evaluation_checkpoint_census,
     load_json,
     makefile_papers,
     mutation_fixture_failures,
@@ -233,6 +235,58 @@ def assert_dynamic_manifest_registry_failures() -> None:
             require(PAPER_REGISTRY_PATH in str(exc), str(exc))
         else:
             raise AssertionError("missing dynamic paper registry was accepted")
+def assert_snapshot_reuse_and_live_readers() -> None:
+    """Keep batch framing, moving refs, overrides, and live index reads distinct."""
+    with tempfile.TemporaryDirectory(prefix="publication-snapshot-", dir=ROOT) as temp:
+        root = Path(temp)
+        live = RepositoryReader(root)
+
+        def git(*args: str) -> None:
+            result = live._git_run(*args)
+            require(result.returncode == 0, result.stderr.decode(errors="replace"))
+
+        git("init", "--quiet")
+        original = b"binary\x00line\n123 blob 4\nend\r\n"
+        (root / "a").write_bytes(original)
+        (root / "b").write_bytes(b"old b")
+        git("add", "a", "b")
+        git("-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid",
+            "commit", "--quiet", "-m", "first")
+        snapshot = RepositoryReader(root, "HEAD")
+        with patch.object(snapshot, "_git_run", wraps=snapshot._git_run) as calls:
+            snapshot.prefetch(["0-missing", "a", "a", "missing"])
+            require(snapshot.read_bytes("a") == original, "batch changed binary bytes")
+            require(snapshot.read_bytes("a") == original, "repeated snapshot read drifted")
+            require(sum(call.args[:2] == ("cat-file", "--batch")
+                        for call in calls.call_args_list) == 1, "batch was duplicated")
+            require(not any(call.args[0] == "show" for call in calls.call_args_list),
+                    "prefetched bytes were read again through Git")
+        staged = RepositoryReader(root, ":")
+        overlay = snapshot.with_overrides({"a": b"overlay"})
+        require(overlay.read_bytes("a") == b"overlay", "overlay lost its replacement")
+        require(snapshot.read_bytes("a") == original, "overlay modified its parent")
+        require(staged.read_bytes("a") == original, "initial staged bytes drifted")
+        (root / "a").write_bytes(b"new a")
+        (root / "b").write_bytes(b"new b")
+        require(live.read_bytes("a") == b"new a", "worktree reader cached stale bytes")
+        git("add", "a", "b")
+        require(staged.read_bytes("a") == b"new a", "index reader cached stale bytes")
+        git("-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid",
+            "commit", "--quiet", "-m", "second")
+        require(snapshot.read_bytes("b") == b"old b", "snapshot mixed moved HEAD bytes")
+        require(overlay.read_bytes("b") == b"old b", "overlay mixed moved HEAD bytes")
+        require(RepositoryReader(root, "HEAD").read_bytes("b") == b"new b",
+                "new snapshot did not observe moved HEAD")
+        snapshot.byte_overrides["a"] = b"mutation"
+        require(snapshot.read_bytes("a") == b"mutation", "cache hid fixture override")
+        require(not snapshot.exists("missing"), "batch invented a missing file")
+        with patch.object(live, "_git_run", wraps=live._git_run) as calls:
+            for _ in range(2):
+                require(live.git_object_exists(snapshot._snapshot_ref), "commit disappeared")
+                require(live.git_object_exists("HEAD"), "HEAD disappeared")
+                require(not live.git_object_exists("0" * 40), "missing commit invented")
+            require(calls.call_count == 5,
+                    "only positive immutable commit identities may be reused")
 
 
 def main() -> int:
@@ -247,9 +301,17 @@ def main() -> int:
     assert_worktree_special_file_boundary()
     assert_dynamic_makefile_manifest_is_data_only()
     assert_dynamic_manifest_registry_failures()
+    assert_snapshot_reuse_and_live_readers()
     reader = RepositoryReader(ROOT, args.git_ref)
     assert_problem_note_route_template(reader)
     baseline_errors = validate_publication_contract(reader)
+    if not baseline_errors:
+        checkpoint = load_json(reader, EVIDENCE_PATH)["evaluation"]["checkpoint"]
+        census = evaluation_checkpoint_census(reader, checkpoint)
+        original_count = census["module_count"]
+        census["module_count"] = -1
+        require(evaluation_checkpoint_census(reader, checkpoint)["module_count"] == original_count,
+                "a consumer mutated the shared historical census")
     fixture_failures = mutation_fixture_failures(reader) if not baseline_errors else []
     if baseline_errors or fixture_failures:
         print(

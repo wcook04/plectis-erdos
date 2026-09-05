@@ -75,6 +75,204 @@ For a paper or theorem explanation:
 7. End the result where the evidence ends. State the next open implication
    plainly instead of closing with promotional language.
 
+## Remove redundant qualifications
+
+Do not repeat generic disclaimers about novelty or priority in each section.
+Attribute borrowed results where they enter the proof; preserve a specific
+unresolved attribution question only where it matters. For each section using
+Lean-checked mathematics, link the mathematical statement or a short
+descriptive phrase directly to its commit-pinned formal declaration. An
+unlinked declaration name or a source appendix alone does not meet this need.
+Verify that the linked theorem has the exact stated hypotheses and conclusion;
+keep an ordinary geometric assembly distinct from its checked ingredients.
+
+Keep a qualification when it changes a hypothesis, quantifier, implication,
+attribution, evidence class, or the specific open step. State that information
+once where the reader needs it. Remove repeated reminders that finite checks
+are finite, that a partial theorem does not solve the whole problem, or that
+Lean does not certify prose when the surrounding statement already makes the
+boundary clear. Preserve mathematical counterexamples and method obstructions;
+negative wording alone is not a reason to cut them. Use the recovered space
+for the proof's mechanism, a useful calculation, or a motivating example.
+
+## Conceptual structure and corpus selection
+
+For a substantial paper revision, use the public frontier and comprehension
+routes before choosing the headline. Start with
+`python3 scripts/query_corpus.py --overview --format card`, then follow the
+selected problem through `scripts/query_route_memory.py --problem <number>`
+and its exact declaration and claim handles. Read the current manuscript only
+as a candidate arrangement of that evidence. A ranked route is a starting
+point for mathematical judgment, not a significance verdict; check for strong
+results that the current reading route omits.
+
+Group related declarations by the mathematical work they accomplish. Compare
+the actual conclusions, removed hypotheses, decisive obstructions, and useful
+consumers. An equivalence earns prominence when its new coordinates enable a
+proof, a sharper reduction, a discriminating computation, or a concrete
+obstruction. Proximity to the original question alone does not put a bare
+reformulation ahead of a substantive theorem. Keep an exact equivalence
+available even when it belongs in supporting material.
+
+Mathematical elegance is conceptual. Choose definitions that expose the
+mechanism, use an example that makes the next construction natural, and arrange
+the lemmas so the reader understands each choice before carrying it through.
+Explain what a transformation gains and where its gain stops. Spend the most
+space on the hard step; abbreviate routine consequences. A catalogue of cases
+should follow the shared argument when that argument explains the cases.
+Typographic polish and promotional language cannot supply this structure. Where an equality case,
+limiting case, or short calculation reveals structure or helps reuse an idea,
+include it. Do not force an aside or merely restate the proof.
+
+Before shortening a theorem into a title, abstract, panel, or reading guide,
+check which hypotheses exclude elementary counterexamples. In particular,
+nonzero somewhere is not nonzero in an eventual tail, a finite prefix is not
+an infinite support, and summability must name the sequence being summed.
+Compare each compressed statement with the full declaration, including its
+quantifiers. Explain a necessary hypothesis with a small counterexample when
+that also reveals the mechanism.
+
+After a stable revision, use `skills/propagate-research-consequences/SKILL.md`:
+carry corrected meaning and useful reading order into their authored owners,
+then regenerate corpus text and navigation through the owning builders. Record
+reusable authoring lessons here without private paths, live counts, mandatory
+model choices, or dependencies on another checkout.
+
+When a proof restricts inputs or changes coordinates, state which distinctions
+that step loses and how the original conclusion recovers them. Independence on
+a restricted domain may merge two original functions; explain the additional
+evaluation or argument that separates them before claiming independence of
+the full family. Follow the checked proof's recovery step, not just its main
+matrix or estimate.
+
+Eliminating a sign or branch is not automatically part of a quantitative
+certificate. Write the certificate's actual inequality and check that it
+follows after any change of coordinates. For example, `0 < e < B < P` and
+`r = P - e` give `P - B < r < P`; they do not give `r > B` without another
+comparison, such as `P >= 2B`. Describe the proved exclusion until that
+comparison is supplied.
+
+## Check the meaning of numerical summaries
+
+When turning a computation into a stated bound, inspect the producing code and
+check the inequality with exact arithmetic. An integer of bit length `b` is at
+least `2^(b-1)`, not `2^b`; a decimal digit count is likewise not a lower-bound
+exponent. Name these fields separately in receipts. Preserve the exact
+mathematical conclusion when converting units, scales, and display formats;
+a successful computation does not validate a mistaken reading of its output.
+
+## Read conditional results and failed routes mathematically
+
+For a conditional theorem, inspect the final consumer to separate assumptions
+used in the contradiction from assumptions intended to produce its input.
+Write the shortest transparent argument before reproducing certificate
+bookkeeping. A structure with a constructed example can still lack its crucial
+selector; never describe that selector as proved because a docstring says so.
+Check the declaration's actual parameters and proof. If a stronger consumer
+with fewer assumptions is useful, expose and validate it in Lean as well.
+Do not count that interface improvement as a new solution of the missing input.
+
+When a proof uses an invertible coordinate only to obtain a Bézout identity,
+check whether rowwise coprimality is the real hypothesis. Over a composite
+modulus a pair can be unimodular with neither coordinate invertible. Explain
+the identity that carries the argument, and test any proposed weakening
+against degenerate intermediate rows; vanishing adjacent determinants alone
+need not propagate. Keep the generalized ordinary proof distinct from the
+previously checked specialization until the stronger source passes Lean.
+
+A failed-route survey must include the relevant problem source and route
+memory, not only one semantic query. An empty barrier result can mean limited
+index coverage. Group failures by the exact obstruction they prove: a lost
+hypothesis, a coordinate-dependent invariant, a quantitative incompatibility,
+or a failure to pass from finite witnesses to an infinite construction. State
+which proposed methods each obstruction excludes and which survive. A shared
+word or failure label is not a common mathematical theorem. Where one change
+of coordinates repairs a failure, show the before-and-after calculation;
+where it does not, preserve the counterexample and the remaining obligation.
+
+## Check the source universe before choosing the story
+
+Treat a curated paper, claim matrix, or external-review roster as a selection,
+not as an exhaustive inventory. Compare its modules with the actual problem
+source tree and its current research frontier. Preserve an authored reading
+order while making omitted source modules discoverable through the owning
+index builder. Source presence alone grants no proof or review status.
+When implementation and publication live in different source roots, inspect
+both before declaring formalization missing. An unpromoted implementation may
+already be stronger than the published result. Check its exact statement,
+dependency versions and validation evidence before transferring it; repair the
+missing publication route instead of rebuilding a weaker theorem.
+
+For each substantial omission, read the proof and its consumers. Test whether
+several existing ingredients discharge a premise that the paper still lists
+as open; write out that bridge, including normalization, endpoint conventions,
+convergence and quantifiers. An ordinary assembled proof may strengthen the
+paper before its complete Lean formalization exists, but label the uncovered
+bridge explicitly. Neither a theorem name nor a checked scalar ingredient
+certifies the assembled statement.
+
+Before leaving a finite certificate's tail estimate as an open input, combine
+available coefficient bounds with an explicit geometric or polynomial-moment
+remainder. Test the actual series with exact rational or integer comparisons,
+not a toy approximation or rounded decimals. A successful finite instance
+removes that local uncertainty; keep the separate cofinal quantifier visible.
+
+When formalization is in scope, an uncovered bridge is work to undertake,
+not merely a disclaimer to add. Reuse existing proofs and formalize the
+mathematical step needed by the paper's actual conclusion. Prefer the bound
+on the genuine series or the inequality for actual disk points to a wrapper
+that assumes that conclusion. Keep the strongest justified ordinary result
+visible while the formal proof is developed; report partial coverage precisely
+and promote checked status only after the exact source passes Lean.
+
+Propagate a verified omission into the existing mathematical family, claim
+record, comprehension nodes, reviewer disposition and paper as appropriate.
+Distinguish represented source mathematics from a configured or executed
+external-verification target. Reuse existing nodes; fix a missing route or
+consumer edge instead of duplicating the theorem. Refresh generated surfaces
+only after the authored meaning is settled. Rank by the mathematical gain,
+not the number of newly exposed modules or declarations. Verify the actual
+query output too: a family can exist in a registry yet be absent from the
+ordered overview. Keep default routes bounded by summarizing repeated prose
+and preserving identities and detail handles; do not hide stronger results or
+raise response limits to accommodate duplication.
+
+## Systems and strategy papers
+
+Apply the same hierarchy used in mathematical exposition to an implementation
+or design argument. The main object is the system and its intended use; the
+supporting argument is the actual sequence of operations, records, and checks.
+Give difficult integration points and observed failures more explanation than
+routine setup. Keep proposals distinct from implemented behaviour and measured
+outcomes. The absence of a new theorem does not justify a looser prose standard.
+
+For a mechanism, make the same choices concrete: explain the problem that
+requires it, the decisive operation, and the constraint that determines its
+design. Trace an actual input through code and checks before presenting the
+workflow as implemented. A test fixture demonstrates behaviour under its test
+conditions; it is not a completed outside contribution or a deployment result.
+
+Run the language audit over the whole paper, including headings, captions,
+tables, transitions, conclusions, and shared macros. A central macro can keep
+repeating boilerplate after every individual section has been edited. An improved abstract cannot repair a
+body that still reads like agent instructions. Replace a process inventory
+with connected prose unless the reader needs to execute or compare the items.
+Define necessary project terms once; prefer the actual action to labels such
+as delta, consumer, authority plane, or fan-in. Remove slogans and repeated
+negative contrasts, including those used to advertise carefulness.
+
+Use Tao's exposition principle as a test of attention: can the reader see what
+took work, why it was needed, and what was learned? Preserve that explanation;
+cut the routine commentary around it. Then make a separate literal-language
+pass for actors, actions, unexplained nouns, repeated sentence patterns, and
+claims that became stronger during editing. Do not manufacture informality,
+private thoughts, or a personal anecdote to make the prose sound human.
+
+When a prose-pinning test blocks a sound rewrite, preserve the underlying
+claim or limitation and update its expected wording and mutation fixture.
+Do not keep a slogan merely because a test expects it. Check rendered page
+locations again after structural changes.
+
 ## Prose pass
 
 Use direct, understated English. Name the mathematician, contributor, program,
@@ -106,6 +304,14 @@ a stable public page or download. When an unpublished artifact is necessary
 evidence, publish it through the repository's release process before linking
 it; otherwise remove the dependency and state the evidence boundary plainly.
 
+For links between papers, inspect the rendered PDF action and confirm that
+its named destination or page exists in the shipped target PDF. A source macro
+and a sibling filename can both pass checks while the rendered link is broken.
+PDF-native destinations and browser PDF fragments have different syntax;
+keep the generated Markdown links correct for browser readers as well.
+Shared link macros must be build dependencies of every consuming manuscript;
+rebuild those PDFs and rerun the rendered link audit after changing them.
+
 After changing mathematical content, run the owning paper, corpus, and claim
 checks before the validation floor below.
 
@@ -123,6 +329,25 @@ python3 scripts/test_public_writing_contract.py
 python3 scripts/check_problem_note_sources.py --coverage
 python3 scripts/check_release.py
 ```
+
+After a manuscript changes, rebuild its shipped PDF before restamping
+`python3 scripts/check_publication_contract.py --restamp --apply`, then run
+`python3 scripts/build_publication_entry_packet.py`. Moved text also changes
+claim-owned paper anchor lines: refresh those with
+`python3 scripts/refresh_source_coordinates.py --claims-only`. This preserves
+the manuscript's reviewed source links. Refresh the generated paper corpus and
+run the clean-ref release check after committing the complete artifact set;
+a successful PDF build or digest restamp alone does not establish that the
+publication projections agree. When new source links introduce modules, run
+`python3 scripts/build_paper_module_aliases.py`; when the review matrix or
+Palomar's authored family placements and programme order change,
+run `python3 scripts/build_external_verification.py`. Refresh the semantic,
+theory and corpus-descriptor projections after their inputs settle, with the
+descriptor last so it records the final source-alias digest.
+If pending Lean work shares the checkout, generate the publication projections
+from an isolated snapshot of the committed sources. Uncommitted build inputs
+and challenge fixtures alter reviewer hashes and hole inventories even when
+the manuscript edits are independent of those proofs.
 
 Run `python3 scripts/lean_fast_build.py --jobs 2` after Lean changes. For paper
 changes, rebuild the owning manuscript and run its registered link and corpus

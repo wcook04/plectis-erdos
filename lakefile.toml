@@ -321,3 +321,9 @@ name = "ExternalVerification68StrictSuccessorCarry"
 # a replay candidate target, not evidence that Comparator has run.
 [[lean_lib]]
 name = "ComparatorReplay"
+
+[[lean_lib]]
+name = "ExternalVerification1041AnalyticBridges"
+
+[[lean_lib]]
+name = "ExternalVerification68CanonicalArithmetic"

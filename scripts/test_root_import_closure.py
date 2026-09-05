@@ -12,6 +12,8 @@ import stat
 import tempfile
 from pathlib import Path
 
+from build_module_graph import local_imports
+
 
 ROOT = Path(__file__).resolve().parent.parent
 LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
@@ -322,6 +324,23 @@ def check_fixtures() -> None:
 
 
 def main() -> int:
+    # The accelerated builder must retain the original import grammar. Cover
+    # EOF, CRLF, blank-line consumption, inline lookalikes and invalid suffixes.
+    fragments = [
+        "", "import Erdos249257.A", "import ErdosProblems.B_2\n",
+        "import Erdos249257.A\r\n\n", " import Erdos249257.A\n",
+        "prefix import Erdos249257.A\n", "import Mathlib\n",
+        "import Erdos249257.A -- trailing text\n",
+        "import Erdos249257.A'\n", "import Erdos249257.A\t\n",
+    ]
+    for first in fragments:
+        for second in fragments:
+            for separator in ("", "\n", "\r\n"):
+                text = first + separator + second
+                require(
+                    local_imports(text) == IMPORT_RE.findall(text),
+                    f"accelerated module import scan changed grammar: {text!r}",
+                )
     check_fixtures()
     claims = json.loads(
         safe_public_text(ROOT, ROOT / "docs" / "claims.json")

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification243SummableNegativeMassRigidity.Challenge",
+  "solution_module": "ExternalVerification243SummableNegativeMassRigidity.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification243SummableNegativeMassRigidity.summableNegativeMass_completeRigidity"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

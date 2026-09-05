@@ -6,6 +6,8 @@
 from __future__ import annotations
 
 import json
+import contextlib
+import io
 import os
 import subprocess
 import sys
@@ -47,7 +49,33 @@ def test_snapshot_command_path_boundary() -> None:
         )
 
 
-def test_snapshot_clone_isolation_flags_are_pinned() -> None:
+def test_invalid_receipt_fails_before_validation() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        linked = Path(raw) / "linked"
+        linked.symlink_to(Path(raw), target_is_directory=True)
+        with patch.object(sys, "argv", ["check_release_ref", "--receipt", str(linked / "out.json")]), \
+             patch.object(check_release_ref, "validate_ref") as validate, \
+             contextlib.redirect_stdout(io.StringIO()) as output:
+            require(check_release_ref.main() == 2, "invalid receipt did not fail cleanly")
+        require(not validate.called, "expensive validation ran before receipt preflight")
+        require("symlink" in output.getvalue(), "missing receipt diagnostic")
+
+
+def test_late_receipt_failure_preserves_validation_output() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        destination = Path(raw).resolve() / "out.json"
+        receipt = {"status": "validated", "sentinel": "result preserved"}
+        with patch.object(sys, "argv", ["check_release_ref", "--format", "json", "--receipt", str(destination)]), \
+             patch.object(check_release_ref, "validate_ref", return_value=(receipt, 0)), \
+             patch.object(check_release_ref, "write_receipt", side_effect=OSError("disk full")), \
+             contextlib.redirect_stdout(io.StringIO()) as output, \
+             contextlib.redirect_stderr(io.StringIO()) as errors:
+            require(check_release_ref.main() == 2, "late receipt write failure was ignored")
+        require(json.loads(output.getvalue()) == receipt, "validation result was lost")
+        require("disk full" in errors.getvalue(), "missing late write diagnostic")
+
+
+def test_snapshot_clone_isolation_flags_are_pinned(*, linked_worktree: bool = False) -> None:
     """Share immutable objects without copying the multi-gigabyte object store."""
     with tempfile.TemporaryDirectory() as raw:
         source = Path(raw) / "source"
@@ -65,6 +93,19 @@ def test_snapshot_clone_isolation_flags_are_pinned() -> None:
         git(source, "add", ".")
         git(source, "commit", "-qm", "snapshot isolation fixture")
         commit_id = git(source, "rev-parse", "HEAD")
+
+        if linked_worktree:
+            linked = Path(raw) / "linked"
+            worktree = check_release_ref.run(
+                ["git", "worktree", "add", "--detach", str(linked), commit_id],
+                cwd=source,
+            )
+            require(worktree.returncode == 0, worktree.stderr)
+            source = linked
+            # Neither caller dirt nor the worktree-private index is an input.
+            (source / check_release_ref.RELEASE_COMMANDS[0][1]).write_text(
+                "raise RuntimeError('uncommitted caller change')\n", encoding="utf-8"
+            )
 
         original_root = check_release_ref.ROOT
         check_release_ref.ROOT = source
@@ -87,6 +128,15 @@ def test_snapshot_clone_isolation_flags_are_pinned() -> None:
                         git(clone, "rev-parse", "HEAD") == commit_id,
                         "snapshot commit drifted",
                     )
+                    require(
+                        git(clone, "status", "--porcelain") == "",
+                        "snapshot inherited caller changes",
+                    )
+                    require(
+                        "uncommitted caller change" not in
+                        (clone / check_release_ref.RELEASE_COMMANDS[0][1]).read_text(),
+                        "snapshot copied the dirty worktree command",
+                    )
         finally:
             check_release_ref.ROOT = original_root
 
@@ -103,6 +153,13 @@ def test_snapshot_clone_isolation_flags_are_pinned() -> None:
             "snapshot clone checked out before the requested immutable commit",
         )
         require(clone_cwd == source, "snapshot clone used a different source checkout")
+        checkout_commands = [argv for argv, _ in calls if "checkout" in argv]
+        require(
+            len(checkout_commands) == 1
+            and checkout_commands[0][:4]
+            == ["git", "-c", "checkout.workers=4", "checkout"],
+            "snapshot checkout lost its bounded parallel materialization",
+        )
 
 
 def test_snapshot_from_linked_worktree() -> None:
@@ -347,9 +404,12 @@ def auxiliary_gate_source(*, label: str, exit_code: int) -> str:
 
 
 def main() -> int:
+    test_invalid_receipt_fails_before_validation()
+    test_late_receipt_failure_preserves_validation_output()
     test_snapshot_command_path_boundary()
     test_snapshot_clone_isolation_flags_are_pinned()
     test_snapshot_from_linked_worktree()
+    test_snapshot_clone_isolation_flags_are_pinned(linked_worktree=True)
     test_receipt_destination_boundary()
     test_singleflight_worker_flag_is_accepted()
     test_commit_ref_resolution_ends_git_options()
@@ -642,6 +702,11 @@ def main() -> int:
                 [row["exit_code"] for row in passed["gate_results"]]
                 == [0, 0, 0, 0, 0],
                 "passing snapshot did not report every gate exit",
+            )
+            require(
+                all(0 <= row["wall_time_seconds"] <= passed["wall_time_seconds"]
+                    for row in passed["gate_results"]),
+                "passing snapshot lost bounded per-gate elapsed times",
             )
             require(
                 passed["failed_gate_count"] == 0,
@@ -966,6 +1031,10 @@ def main() -> int:
                 probe_only=False,
             )
             require(timeout_exit == 124, "timeout exit was not normalized to 124")
+            require(
+                timed_out["gate_results"][0]["wall_time_seconds"] >= TIMEOUT_SECONDS,
+                "timeout receipt lost elapsed time in the interrupted gate",
+            )
             require(
                 timed_out["status"] == "timeout",
                 "timed-out release gate was not reported as timeout",

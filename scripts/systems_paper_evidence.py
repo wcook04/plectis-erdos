@@ -140,8 +140,11 @@ def validate_systems_paper_evidence(
             errors.append("finite certificate claim does not terminate at the t ≤ 82 theorem")
         if re.search(r"t\\le\s*82", normalized) is None:
             errors.append("systems paper no longer states the registered t ≤ 82 band")
-        if r"no \(t=83\) or cofinal claim" not in normalized:
-            errors.append("systems paper lost the finite-band ceiling")
+        if (
+            "not prove the missing implication from the finite range to the unbounded statement"
+            not in normalized
+        ):
+            errors.append("systems paper lost the finite-to-unbounded boundary")
         if "import ErdosProblems.Skip.LadderT67" not in erdos_problems_root:
             errors.append("supported ErdosProblems root does not import the t ≤ 82 theorem")
 
@@ -204,8 +207,8 @@ def mutation_fixture_failures() -> list[str]:
         ),
         "finite_band_ceiling_removed": reflow_tolerant_replace(
             source,
-            r"no \(t=83\) or cofinal claim",
-            "a cofinal claim",
+            "not prove the missing implication from the finite range to the unbounded statement",
+            "prove the missing implication from the finite range to the unbounded statement",
         ),
     }
     failures: list[str] = []

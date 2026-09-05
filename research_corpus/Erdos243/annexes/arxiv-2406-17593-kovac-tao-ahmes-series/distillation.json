@@ -1,0 +1,62 @@
+{
+  "kind": "annex_distillation",
+  "schema_version": "annex_distillation_v1",
+  "slug": "arxiv-2406-17593-kovac-tao-ahmes-series",
+  "distillation_status": "partial",
+  "axes_covered": [
+    "paper_module_hologram"
+  ],
+  "last_distilled_at": "2026-07-10T11:18:48.674601+00:00",
+  "distilled_by": "codex:erdos_249_257_reports_and_prior_art_2026-07-10",
+  "patterns": [
+    {
+      "id": "p001",
+      "name": "Ahmes/Lambert subseries boundary map",
+      "one_liner": "Ahmes/Lambert subseries topology clarifies nearby Erdos irrationality questions and first-power boundaries, but does not supply the #249 signed second-power denominator mechanism.",
+      "axis": "paper_module_hologram",
+      "adoption_lane": 5,
+      "adoption_status": "rejected",
+      "adoption_action": "Record as an open-problem and first-power Lambert-subseries boundary, not as the active #249 denominator route.",
+      "rejection_reason": "Wrong direct-transfer regime: first-power 0/1 Lambert subseries and topological rationality constructions, not signed finite Euler-sieve zeta_q(2) combinations.",
+      "reevaluation_trigger": "Reopen if #249 work needs a broader Lambert subseries open-problem register or a comparison to omega(n)/2^n-style prime-support series.",
+      "source_locus": [
+        "statements-of-the-results/one-dimensional-results/lambert-subseries",
+        "proof-of-theorem-3thmmergedlambertreference-typeref-referenc",
+        "statements-of-the-results/one-dimensional-results/irrationality-sequences"
+      ],
+      "local_target": [
+        "docs/formal_math/erdos249_typeB_ambitious_modular_route.md"
+      ],
+      "relevance": 80,
+      "relevance_justification": "Useful to prevent conflating #249 with first-power Lambert subseries and Ahmes/open-problem cartography.",
+      "confidence": "high",
+      "notes_cross_ref": [
+        "n002",
+        "n003",
+        "n005"
+      ],
+      "added_at": "2026-07-08",
+      "last_refreshed_at": "2026-07-08"
+    },
+    {
+      "name": "Erdos257 strict separation and unique support coding",
+      "one_liner": "For every fixed base t at least 2, Lambert-subseries weights are strictly superincreasing, so supports code distinct points in a Cantor set.",
+      "axis": "paper_module_hologram",
+      "adoption_lane": 2,
+      "adoption_action": "Use as literature authority for strong separation and uniqueness; keep base-2 measure one and gap asymptotics attributed to the July referee synthesis pending formalization.",
+      "source_locus": [
+        "extracted.md"
+      ],
+      "local_target": [
+        "state/formal_math_research_operations/pilots/erdos257_issue217/july_2026_report_assimilation.json"
+      ],
+      "relevance": 100,
+      "relevance_justification": "Direct prior-art anchor for the #257 geometric branch.",
+      "confidence": "high",
+      "adoption_status": "evaluated",
+      "id": "p002",
+      "added_at": "2026-07-10",
+      "last_refreshed_at": "2026-07-10"
+    }
+  ]
+}

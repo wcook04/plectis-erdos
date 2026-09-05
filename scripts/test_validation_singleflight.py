@@ -66,15 +66,20 @@ class ValidationSingleflightTests(unittest.TestCase):
             clear=False,
         ):
             os.environ.pop(singleflight.SINGLEFLIGHT_STATE_ROOT_ENV, None)
-            root = singleflight.default_state_root()
+            checkout = Path(directory) / "checkout"
+            identity = checkout / "docs" / "repository_identity.json"
+            identity.parent.mkdir(parents=True)
+            identity.write_text(json.dumps({"current": {"slug": "research-fixture"}}))
+            with mock.patch.object(singleflight, "ROOT", checkout):
+                root = singleflight.default_state_root()
         self.assertEqual(
             root,
             Path(directory)
             / "plectis-lean"
-            / "plectis-lean-erdos249-257"
+            / "research-fixture"
             / "validation-singleflight-v1",
         )
-        self.assertNotEqual(root.parent, ROOT)
+        self.assertNotEqual(root.parent, checkout)
 
     def test_explicit_state_root_override_remains_available(self) -> None:
         with mock.patch.dict(

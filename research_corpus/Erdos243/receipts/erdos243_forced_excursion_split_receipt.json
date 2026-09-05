@@ -1,0 +1,467 @@
+{
+  "absorbing_tail_certificate": {
+    "full_payment_condition": "13 divides q10+1",
+    "next_primitive_height": "13/13=1",
+    "payment": "gcd(13,(q10+1)^2)=13",
+    "zero_state_reason": "a primitive rational state with numerator one has integral tail, hence centered error zero; the exact cocycle keeps height one and centered error zero thereafter"
+  },
+  "consequence_reconciliation": {
+    "expanding_boundary_family": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "update_now",
+      "reason": "eight of thirteen parameter classes are now exactly closed"
+    },
+    "five_survivor_classes": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "defer_with_reason",
+      "reason": "their next transition branches further; this receipt stops at the first complete residue partition",
+      "reentry_condition": "run an exact residue cylinder restricted to k mod 13 in {1,3,4,11,12}"
+    },
+    "generic_height_twelve_payment": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "decision": "update_now",
+      "reason": "the small divisibility consumer is suitable for kernel checking"
+    }
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos243.negativeUnitRecovery_heightTwelve_fullPayment",
+        "ErdosProblems.Erdos243.negativeUnitRecovery_heightTwelve_collapse"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "falsification_consequence": "Eight infinite arithmetic subfamilies are forced into the absorbing zero-centred tail. Any infinite negative-support construction inside this family must lie in k mod 13 in {1,3,4,11,12}.",
+      "survival_consequence": "If no class collapsed, every source parameter would remain eligible for the expanding-boundary mechanism at height 13."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "all_clean_return_parameters_survive_forced_expansion",
+      "statement": "After the forced 11->12 ascent, every member of the infinite clean-return family can continue an expanding negative excursion."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_infinite_clean_recovery_family.py"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_forced_excursion_split.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_infinite_clean_recovery_family.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Propagate q0(k)=33+79833600*k through ten exact integer-polynomial negative-unit transitions, reduce q10(k)+1 as a function on F_13, and factor the resulting degree-twelve polynomial.",
+      "falsifier": "A nonempty parameter residue class for which q10+1 vanishes modulo 13, forcing full payment 13, primitive height one, and zero centred state forever.",
+      "id": "height_twelve_payment_residue_split",
+      "question": "For which source parameters does the exact height-12 quotient make gcd(13,(q10+1)^2)=13 rather than one?",
+      "resource_bounds": {
+        "exact_polynomial_degree": 1024,
+        "finite_field_classes": 13,
+        "post_recovery_steps_per_replay_at_most": 3,
+        "representative_replays": 13
+      },
+      "stop_condition": "Stop after the exact F_13 factorisation classifies all thirteen source classes; do not extend representatives to a longer horizon."
+    },
+    "problem": {
+      "claim_ceiling": "Exact cofinal return for eight of thirteen congruence subfamilies inside the known infinite clean-return family; the five surviving classes and unrestricted #243 remain open.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "one_way_theorem",
+        "decision_basis": "The quotient is an exact degree-1024 integer polynomial in the source parameter, and its complete F_13 function factorisation classifies every lift, not only sampled representatives.",
+        "next_analytic_target": "Restrict every further expanding-excursion analysis to the five surviving source classes, and seek the next exact residue split rather than auditing longer arbitrary trajectories."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The exact reduced polynomial for q10(k)+1 over F_13 vanishes precisely for k mod 13 in {0,2,5,6,7,8,9,10}. Those eight classes pay 13 at height 12, collapse to height one, and have e=0 forever; only {1,3,4,11,12} survive to height 13."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "regression_replays": {
+    "collapse_representatives": [
+      {
+        "parameter": 0,
+        "parameter_mod_13": 0,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 1,
+            "payment": 13
+          },
+          {
+            "centered_error": 0,
+            "height": 1,
+            "next_height": 1,
+            "payment": 1
+          }
+        ]
+      },
+      {
+        "parameter": 2,
+        "parameter_mod_13": 2,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 1,
+            "payment": 13
+          },
+          {
+            "centered_error": 0,
+            "height": 1,
+            "next_height": 1,
+            "payment": 1
+          }
+        ]
+      },
+      {
+        "parameter": 5,
+        "parameter_mod_13": 5,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 1,
+            "payment": 13
+          },
+          {
+            "centered_error": 0,
+            "height": 1,
+            "next_height": 1,
+            "payment": 1
+          }
+        ]
+      },
+      {
+        "parameter": 6,
+        "parameter_mod_13": 6,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 1,
+            "payment": 13
+          },
+          {
+            "centered_error": 0,
+            "height": 1,
+            "next_height": 1,
+            "payment": 1
+          }
+        ]
+      },
+      {
+        "parameter": 7,
+        "parameter_mod_13": 7,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 1,
+            "payment": 13
+          },
+          {
+            "centered_error": 0,
+            "height": 1,
+            "next_height": 1,
+            "payment": 1
+          }
+        ]
+      },
+      {
+        "parameter": 8,
+        "parameter_mod_13": 8,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 1,
+            "payment": 13
+          },
+          {
+            "centered_error": 0,
+            "height": 1,
+            "next_height": 1,
+            "payment": 1
+          }
+        ]
+      },
+      {
+        "parameter": 9,
+        "parameter_mod_13": 9,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 1,
+            "payment": 13
+          },
+          {
+            "centered_error": 0,
+            "height": 1,
+            "next_height": 1,
+            "payment": 1
+          }
+        ]
+      },
+      {
+        "parameter": 10,
+        "parameter_mod_13": 10,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 1,
+            "payment": 13
+          },
+          {
+            "centered_error": 0,
+            "height": 1,
+            "next_height": 1,
+            "payment": 1
+          }
+        ]
+      }
+    ],
+    "survivor_representatives": [
+      {
+        "parameter": 1,
+        "parameter_mod_13": 1,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          }
+        ]
+      },
+      {
+        "parameter": 3,
+        "parameter_mod_13": 3,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          }
+        ]
+      },
+      {
+        "parameter": 4,
+        "parameter_mod_13": 4,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          }
+        ]
+      },
+      {
+        "parameter": 11,
+        "parameter_mod_13": 11,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          }
+        ]
+      },
+      {
+        "parameter": 12,
+        "parameter_mod_13": 12,
+        "rows": [
+          {
+            "centered_error": -1,
+            "height": 11,
+            "next_height": 12,
+            "payment": 1
+          },
+          {
+            "centered_error": -1,
+            "height": 12,
+            "next_height": 13,
+            "payment": 1
+          }
+        ]
+      }
+    ]
+  },
+  "residue_certificate": {
+    "exact_transition_count_to_q9": 9,
+    "expanding_survivor_classes": [
+      1,
+      3,
+      4,
+      11,
+      12
+    ],
+    "factorization": "7*x^2*(x-2)^2*(x-5)*(x-6)^2*(x-7)*(x-8)*(x-9)^2*(x-10) in F_13[x]",
+    "finite_field": "F_13",
+    "full_payment_collapse_classes": [
+      0,
+      2,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "periodicity_reason": "q10(k) is an exact integer polynomial, so q10(k)+1 modulo 13 depends only on k modulo 13",
+    "q10_plus_one_reduced_coefficients_low_to_high": [
+      0,
+      0,
+      1,
+      4,
+      2,
+      3,
+      9,
+      12,
+      8,
+      7,
+      7,
+      7,
+      7
+    ],
+    "q10_polynomial": {
+      "degree": 1024,
+      "sha256_newline_delimited_coefficients": "db33edea98524be99928375d36cd25c27ece132c2dab84f8ee698e427bf89e38"
+    },
+    "q9_polynomial": {
+      "all_coefficients_divisible_by_12": true,
+      "degree": 512,
+      "sha256_newline_delimited_coefficients": "b8ff232855793f6925607c72f1f66b821018a70290ebe2b87cb10406603ab5f6"
+    },
+    "reduction_rule": "x^13=x as a polynomial function on F_13",
+    "source_parameter": "k in nonnegative integers",
+    "source_quotient": "q0(k)=33+79833600*k",
+    "values_by_k_mod_13": [
+      0,
+      2,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "schema": "erdos243-forced-excursion-split-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 14585,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_forced_excursion_split.py",
+      "sha256": "22b38d8f57f056744799a98e4f311b0a30f048cb6c36ce74c1de640e6c43336e"
+    },
+    {
+      "byte_length": 24498,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_infinite_clean_recovery_family.py",
+      "sha256": "540c534b283feaa6c800eeb6b60e65fa384d4109216eaa8dfa00e70ecc6bcb51"
+    },
+    {
+      "byte_length": 10805,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "sha256": "ad3411e8bb780d78a4b907f9fff214e9ced7ad50bc65689667551fe5267e233d"
+    },
+    {
+      "byte_length": 9126,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "2bc0cd428152f54c351a894a82a9fc97188729d3002d6f7c477a69ef3633d5a4"
+    },
+    {
+      "byte_length": 57624,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "bb8a92e1c3da639e4de5fb38b3d7e9c060a47a929caddf5dbe4d92d2edf0e76d"
+    }
+  ],
+  "status": "verified_exact_cofinal_return_split"
+}

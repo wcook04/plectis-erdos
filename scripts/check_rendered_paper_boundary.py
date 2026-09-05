@@ -76,56 +76,28 @@ FIRST_MINUTE_CONTRACT = {
         ),
     },
     "claim-faithful-publication-systems-paper.pdf": {
-        (1, 3): (
+        (1, 2): (
             "problem-sized lean worlds",
-            "among the systems compared in this paper, none spans this complete chain",
-            "six things that are commonly collapsed",
-            "more reasoning cannot buy a write lease",
-            "lean verifies that a proof establishes the formal statement written in the source",
-            "eight problems remain open",
+            "our contribution is architectural composition",
+            "integration of these research and publication operations",
+            "reject overlapping work claims",
+            "checks a proof of a precisely stated proposition",
+            "all still open",
         ),
-        (3, 6): (
+        (3, 5): (
             "type a and type b",
             "313 visible progress updates and 3,491 command events",
             "compressed trace has an observation boundary",
             "authority-bearing artefact and receipt",
         ),
-        (6, 9): (
+        (5, 7): (
             "experiments are route selectors",
             "a lean no-go theorem",
-            "three oracles, not one",
+            "checking the result",
             "problem-sized lean worlds and bounded theorem neighbourhoods",
             "1,024 lean modules and 153,396 declarations",
         ),
-        # The three ranges below each moved one page later when the
-        # comprehension-packet section was added ahead of them. Every anchor was
-        # confirmed still present in the source and in the rendered PDF before
-        # its pin was moved: the section carrying it did not change, its
-        # position did.
-        (11, 12): (
-            "comparator: an exact-statement firewall",
-            "palomar: selecting what deserves review",
-            "proof generation, verification, exposition, publication and community digestion",
-            "natural friction",
-            "paper authoring itself participates in this loop",
-        ),
-        (13, 13): (
-            "finite range to the unbounded statement",
-            "a larger cutoff exists",
-            "relationship had not been registered",
-            "nine of the ten edits were rejected",
-        ),
-        (15, 16): (
-            "semantic single-flight queue",
-            # Was "host-wide mathlib resource", which no layout could satisfy:
-            # TeX breaks the line at the hyphen, the extracted text reads
-            # "hostwide", and normalisation cannot put the hyphen back. This
-            # phrase pins the same sentence and cannot break at a hyphen.
-            "mathlib resource are serialized",
-            "four separate scaling limits",
-            "only an accepted receipt enters",
-            "no-go graph as a new mathematical object",
-        ),
+
     },
     "cold-clone-to-proof-receipt.pdf": {
         (1, 1): (
@@ -439,8 +411,48 @@ def semantic_text(text: str) -> str:
     return re.sub(r"\s+", " ", text).lower()
 
 
+def section_anchor_errors(text: str, sections: tuple) -> list[str]:
+    """Keep evidence in its explanatory section without freezing pagination."""
+    compact = semantic_text(text)
+    errors = []
+    for start, end, anchors in sections:
+        first = compact.find(start)
+        last = compact.find(end, first + len(start)) if first >= 0 else -1
+        if first < 0 or last < 0:
+            errors.append(f"missing or unordered section boundaries: {start!r}, {end!r}")
+            continue
+        body = compact[first:last]
+        errors.extend(f"section {start!r}: missing anchor {anchor!r}"
+                      for anchor in anchors if anchor not in body)
+    return errors
+
+
+SYSTEMS_SECTION_CONTRACT = (('comparator: an exact-statement firewall',
+  'one complete boundary: finite is not unbounded',
+  ('comparator: an exact-statement firewall',
+   'palomar: selecting what deserves review',
+   'proof generation, verification, exposition, publication and community digestion',
+   'natural friction',
+   'writing can reveal errors in the research record')),
+ ('one complete boundary: finite is not unbounded',
+  'inspection routes',
+  ('finite range to the unbounded statement',
+   'a larger cutoff exists',
+   'relationship had not been registered',
+   'nine of the ten edits were rejected')),
+ ('scaling from one clone to a search network',
+  'relation to other approaches',
+  ('semantic single-flight coordination',
+   'mathlib resource are serialized',
+   'four separate scaling limits',
+   'only an accepted receipt enters',
+   'using records of unsuccessful approaches')))
+
 def first_minute_errors(pdf: Path, pdftotext: str) -> list[str]:
     errors: list[str] = []
+    if pdf.name == "claim-faithful-publication-systems-paper.pdf":
+        errors.extend(f"{pdf.name}: {error}" for error in section_anchor_errors(
+            rendered_text(pdf, pdftotext), SYSTEMS_SECTION_CONTRACT))
     contract = FIRST_MINUTE_CONTRACT.get(pdf.name, {})
     for (first, last), anchors in contract.items():
         try:

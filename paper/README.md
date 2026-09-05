@@ -3,6 +3,24 @@
 
 # Papers
 
+To understand the project, start with the
+[open-source strategy](../open-source-mathematics-strategy.pdf): why publish a
+research environment that others can continue, and how contributions return
+with evidence and credit. The [systems paper](../claim-faithful-publication-systems-paper.pdf)
+explains the implementation through concrete research examples.
+
+For a first read, choose a [problem and its PDF](../README.md#problem-papers).
+Each note also has [browser-readable text](../docs/papers/README.md); the
+generated index there includes longer companion papers and exact source links.
+The [literature map](../docs/PRIOR_ART.md#coverage-of-the-eight-problem-papers)
+explains the sources behind all eight notes. Return to the
+[reader introduction](../HUMAN_ENTRY.md), [contribution guide](../CONTRIBUTING.md),
+or [credit page](../CREDITS.md) at any point.
+
+Agents choosing a paper should use the [agent entry](../AGENTS.override.md)
+and its paper query before opening a large manuscript. Humans can simply read
+the note for the question that interests them.
+
 For the repository layout, sources of truth, build path, and release
 infrastructure, start with the plain-language
 [`ARCHITECTURE.md`](../ARCHITECTURE.md) at the repository root. The files in
@@ -206,3 +224,14 @@ hand. The systems paper is outlined by its description above.
 - Artefact availability, verification, and a conclusion stating the exact open boundaries once.
 - Auxiliary binary-carry criteria and the compact declaration map in appendices.
 - The sublogarithmic zero-window theorem for divisor coverage forced by a hypothetical rational support value.
+
+## Checking the built PDFs
+
+Install the pinned release dependencies from the repository root with
+`python3 -m pip install --require-hashes -r requirements-release.txt`.
+`make -C paper check` rebuilds the papers and checks the rendered links as well
+as the mathematical source coordinates. The PDF-link check verifies that each
+cross-paper destination exists in the shipped target. Run it separately with
+`python3 scripts/check_public_paper_links.py`; CI runs the same offline check.
+The optional `--network` pass checks external URLs and reports access-denied
+responses separately from broken links.

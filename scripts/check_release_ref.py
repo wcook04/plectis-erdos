@@ -244,7 +244,10 @@ def prepare_clone(commit: str, parent: Path) -> Path:
     if alternates.is_symlink() or shared_objects != expected_objects:
         raise SnapshotError("shared snapshot points at an unexpected Git object store")
     checked_out = run(
-        ["git", "checkout", "--detach", "--quiet", commit],
+        # Checkout dominates snapshot preparation. Bound Git's parallel file
+        # materialization independently of the caller's global configuration;
+        # this changes neither the selected tree nor validation concurrency.
+        ["git", "-c", "checkout.workers=4", "checkout", "--detach", "--quiet", commit],
         cwd=clone,
     )
     if checked_out.returncode != 0:
@@ -369,7 +372,8 @@ def validate_ref(
         try:
             for command in RELEASE_COMMANDS:
                 active_command = command
-                remaining = deadline - time.monotonic()
+                gate_started = time.monotonic()
+                remaining = deadline - gate_started
                 if remaining <= 0:
                     raise subprocess.TimeoutExpired(command, timeout_seconds)
                 completed = run(
@@ -383,6 +387,7 @@ def validate_ref(
                     {
                         "command": list(command),
                         "exit_code": completed.returncode,
+                        "wall_time_seconds": round(time.monotonic() - gate_started, 3),
                         "stdout_tail": bounded_tail(completed.stdout),
                         "stderr_tail": bounded_tail(completed.stderr),
                     }
@@ -427,6 +432,7 @@ def validate_ref(
                         "command": list(active_command),
                         "exit_code": None,
                         "status": "timeout",
+                        "wall_time_seconds": round(time.monotonic() - gate_started, 3),
                         "stdout_tail": timed_out_stdout,
                         "stderr_tail": timed_out_stderr,
                     }
@@ -585,8 +591,6 @@ def main() -> int:
             timeout_seconds=args.timeout_seconds,
             probe_only=args.probe_only,
         )
-        if args.receipt is not None:
-            write_receipt(args.receipt, receipt)
     except (SnapshotError, OSError, subprocess.SubprocessError) as error:
         print(f"check_release_ref: {error}")
         return 2
@@ -594,6 +598,12 @@ def main() -> int:
         print(json.dumps(receipt, ensure_ascii=False, indent=2))
     else:
         print(render_text(receipt))
+    if args.receipt is not None:
+        try:
+            write_receipt(args.receipt, receipt)
+        except (SnapshotError, OSError) as error:
+            print(f"check_release_ref: {error}", file=sys.stderr)
+            return 2
     return exit_code
 
 

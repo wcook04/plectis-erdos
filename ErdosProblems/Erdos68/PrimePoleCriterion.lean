@@ -1,4 +1,5 @@
 import ErdosProblems.Erdos68.PrimeZeroBranch
+import ErdosProblems.Erdos68.PrimePoleDenominator
 
 /-!
 # Erdős #68: finite prime-pole survival
@@ -72,6 +73,55 @@ private theorem prime_dvd_div_of_factorization_lt
   rw [hfact]
   omega
 
+/-- The literal prefix lcm is positive, including the empty prefix. -/
+theorem factorialGapPrefixLCM_pos (M : ℕ) : 0 < factorialGapPrefixLCM M := by
+  apply Nat.pos_of_ne_zero
+  apply Finset.lcm_ne_zero_iff.mpr
+  intro n hn
+  exact (factorialGap_pos_of_mem_Icc hn).ne'
+
+/-- The exact rational prefix is represented by the literal lcm numerator. -/
+theorem factorialGapPrefix_eq_lcm_ratio (M : ℕ) :
+    factorialGapPrefix M =
+      (factorialGapPrefixLCMNumerator M : ℚ) / factorialGapPrefixLCM M := by
+  have hL : (factorialGapPrefixLCM M : ℚ) ≠ 0 := by
+    exact_mod_cast (factorialGapPrefixLCM_pos M).ne'
+  unfold factorialGapPrefix factorialGapPrefixLCMNumerator
+  rw [Nat.cast_sum, Finset.sum_div]
+  apply Finset.sum_congr rfl
+  intro n hn
+  have hn1 : 1 ≤ n.factorial := Nat.factorial_pos n
+  have hd : ((n.factorial - 1 : ℕ) : ℚ) ≠ 0 := by
+    exact_mod_cast (factorialGap_pos_of_mem_Icc hn).ne'
+  rw [Nat.cast_div_charZero (factorialGap_dvd_prefixLCM hn)]
+  have hcast : ((n.factorial - 1 : ℕ) : ℚ) = (n.factorial : ℚ) - 1 := by
+    rw [Nat.cast_sub hn1, Nat.cast_one]
+  rw [← hcast]
+  field_simp
+
+/-- At the maximal displayed prime exponent, the lcm cofactor is a unit
+modulo the prime. -/
+theorem factorialGapPrefixLCM_cofactor_not_dvd
+    {q M e : ℕ} (hq : q.Prime)
+    (hmax : ∀ n ∈ Finset.Icc 2 M, ¬q ^ (e + 1) ∣ n.factorial - 1)
+    (hattain : ∃ n ∈ Finset.Icc 2 M, q ^ e ∣ n.factorial - 1) :
+    ¬q ∣ factorialGapPrefixLCM M / q ^ e := by
+  obtain ⟨n, hn, he⟩ := hattain
+  have hqeL := he.trans (factorialGap_dvd_prefixLCM hn)
+  have hlt : (factorialGapPrefixLCM M).factorization q < e + 1 := by
+    apply finset_lcm_factorization_lt_of_all_lt (by omega)
+      (fun n hn => factorialGap_pos_of_mem_Icc hn)
+    intro n hn
+    exact lt_of_not_ge fun hge => hmax n hn
+      ((hq.pow_dvd_iff_le_factorization (factorialGap_pos_of_mem_Icc hn).ne').2 hge)
+  intro hdiv
+  have hsucc : q ^ (e + 1) ∣ factorialGapPrefixLCM M := by
+    have hmul := Nat.mul_dvd_mul_left (q ^ e) hdiv
+    rw [Nat.mul_div_cancel' hqeL] at hmul
+    simpa only [pow_succ] using hmul
+  have hge := (hq.pow_dvd_iff_le_factorization (factorialGapPrefixLCM_pos M).ne').1 hsucc
+  omega
+
 /-- **Prime-pole numerator formula.**  If `e` is the positive maximum
 `q`-adic exponent among the displayed factorial gaps, the common-denominator
 numerator modulo `q` is the LCM cofactor times the reciprocal sum of the
@@ -109,25 +159,6 @@ theorem factorialGapPrefixLCMNumerator_mod_prime
   have hqeL : qe ∣ L := hqea.trans haL
   have hqePos : 0 < qe := pow_pos hq.pos e
   have hqeMulW : qe * W = L := Nat.mul_div_cancel' hqeL
-  have hWNotDvd : ¬q ∣ W := by
-    intro hqW
-    have hmul : qe * q ∣ qe * W := Nat.mul_dvd_mul_left qe hqW
-    have hsuccL : q ^ (e + 1) ∣ L := by
-      rw [pow_succ]
-      simpa [hqeMulW] using hmul
-    have hltEach :
-        ∀ n ∈ Finset.Icc 2 M,
-          (n.factorial - 1).factorization q < e + 1 := by
-      intro n hn
-      have hgapNe := (hgapPos n hn).ne'
-      exact lt_of_not_ge fun hge =>
-        hmax n hn ((hq.pow_dvd_iff_le_factorization hgapNe).2 hge)
-    have hltL : L.factorization q < e + 1 := by
-      exact finset_lcm_factorization_lt_of_all_lt
-        (by omega) hgapPos hltEach
-    have hgeL : e + 1 ≤ L.factorization q :=
-      (hq.pow_dvd_iff_le_factorization hLPos.ne').1 hsuccL
-    omega
   unfold factorialGapPrefixLCMNumerator factorialGapPrincipalResidue
   push_cast
   change
@@ -186,16 +217,40 @@ theorem factorialGapPrefixLCMNumerator_mod_prime
       (ZMod.natCast_eq_zero_iff _ _).2 hqQuot
     simp [hqeD, hcastZero]
 
-/-- The returned smallest cancellation witness: the lifted cofactors at the
-three maximal `139`-hits have reciprocal sum zero modulo `139`. -/
+
+/-- The full prime power survives in the reduced denominator of the actual
+rational prefix exactly when the maximal-hit inverse sum is nonzero. -/
+theorem factorialGapPrefix_den_full_prime_power_iff
+    {q M e : ℕ} (hq : q.Prime) (he : 1 ≤ e)
+    (hmax : ∀ n ∈ Finset.Icc 2 M, ¬q ^ (e + 1) ∣ n.factorial - 1)
+    (hattain : ∃ n ∈ Finset.Icc 2 M, q ^ e ∣ n.factorial - 1) :
+    (factorialGapPrefix M).den.factorization q =
+        (factorialGapPrefixLCM M).factorization q ↔
+      factorialGapPrincipalResidue q M e ≠ 0 := by
+  letI : Fact q.Prime := ⟨hq⟩
+  have hqL : q ∣ factorialGapPrefixLCM M := by
+    obtain ⟨n, hn, hdiv⟩ := hattain
+    exact (dvd_pow_self q (by omega : e ≠ 0)).trans
+      (hdiv.trans (factorialGap_dvd_prefixLCM hn))
+  rw [factorialGapPrefix_eq_lcm_ratio,
+    natRatio_den_factorization_eq_iff hq (factorialGapPrefixLCM_pos M) hqL]
+  have hW : ((factorialGapPrefixLCM M / q ^ e : ℕ) : ZMod q) ≠ 0 := by
+    intro hzero
+    exact factorialGapPrefixLCM_cofactor_not_dvd hq hmax hattain
+      ((ZMod.natCast_eq_zero_iff _ _).mp hzero)
+  have hB := factorialGapPrefixLCMNumerator_mod_prime hq he hmax hattain
+  rw [← ZMod.natCast_eq_zero_iff (factorialGapPrefixLCMNumerator M) q, hB]
+  exact mul_ne_zero_iff.trans (and_iff_right hW)
+
+/-- The three displayed cofactors cancel modulo 139. -/
 theorem primePoleResidue_139_cancel :
     ((6 : ZMod 139)⁻¹ + (49 : ZMod 139)⁻¹ + (73 : ZMod 139)⁻¹) = 0 := by
-  decide +kernel
+  decide
 
-/-- The second returned cancellation witness. -/
+/-- The three displayed cofactors cancel modulo 2593. -/
 theorem primePoleResidue_2593_cancel :
     ((1508 : ZMod 2593)⁻¹ + (1566 : ZMod 2593)⁻¹ +
       (1678 : ZMod 2593)⁻¹) = 0 := by
-  decide +kernel
+  decide
 
 end ErdosProblems.Erdos68

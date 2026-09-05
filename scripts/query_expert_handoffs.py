@@ -180,16 +180,15 @@ def load_json(path: Path) -> dict[str, Any]:
     every question.  Caching avoids reparsing it dozens of times, while the
     fresh process boundary preserves query-time source/Claims/Palomar reads.
     """
-    return json.loads(path.read_text(encoding="utf-8"))
+    # JSON accepts CR/LF whitespace directly; universal-newline translation
+    # needlessly scans the large atlas before the JSON parser scans it again.
+    return json.loads(path.read_bytes().decode("utf-8"))
 
 
 @lru_cache(maxsize=1)
 def mathematical_questions() -> list[dict[str, Any]]:
     rows = load_json(FRONTIER).get("expert_questions", [])
-    declarations = {
-        (row["module"], row["name"]): row
-        for row in load_json(ATLAS).get("declarations", [])
-    }
+    declarations = _canonical_declaration_index()
     # Coordinates are navigation data, not authored mathematical content.
     # Resolve them from the exhaustive live atlas so every expert-query surface
     # survives harmless source movement in the same way as semantic_corpus.json.

@@ -136,6 +136,7 @@
       "title": "Understand or explain the public system",
       "task_cues": [
         "explain",
+        "explain the repository",
         "understand",
         "overview",
         "what is this",
@@ -263,7 +264,13 @@
         "lake build",
         "build failure",
         "changed lean",
-        "concurrent validation"
+        "concurrent validation",
+        "dependency cache",
+        "cache hydration",
+        "hydrate lean",
+        "validation receipt",
+        "deferred validation",
+        "resource busy"
       ],
       "skills": [
         "lean-concurrent-validation"
@@ -376,7 +383,12 @@
         "send work back",
         "reviewed and credited",
         "package evidence",
-        "resume work"
+        "resume work",
+        "source packet",
+        "web app",
+        "without a harness",
+        "text attachment",
+        "offline dossier"
       ],
       "skills": [
         "erdos-research-return",
@@ -388,6 +400,7 @@
         "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"
       ],
       "commands": [
+        "python3 scripts/source_packet.py --help",
         "python3 scripts/continue_research.py --help",
         "python3 scripts/validate_research_return.py --help"
       ],
@@ -482,6 +495,12 @@
         "infrastructure maintenance",
         "public infrastructure",
         "generated projection",
+        "module dependency graph",
+        "module graph",
+        "graph labels",
+        "authoring graph",
+        "projection freshness",
+        "stale projections",
         "private dependency",
         "self contained",
         "unified infrastructure",
@@ -504,6 +523,12 @@
         "skills available",
         "skills are available",
         "repository organization",
+        "repo simpler",
+        "repository simpler",
+        "duplicated workflows",
+        "bootstrap friction",
+        "tidy up the public repository",
+        "repository cleanup",
         "contributor experience",
         "reproducibility"
       ],

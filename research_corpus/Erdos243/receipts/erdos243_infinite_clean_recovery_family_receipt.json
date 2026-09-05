@@ -1,0 +1,723 @@
+{
+  "congruence_certificate": {
+    "moduli": [
+      79833600,
+      6652800,
+      1663200,
+      332640,
+      55440,
+      7920,
+      990,
+      110,
+      11,
+      1
+    ],
+    "residues": [
+      33,
+      1026,
+      790020,
+      141372,
+      11088,
+      4752,
+      0,
+      0,
+      0,
+      0
+    ],
+    "rows": [
+      {
+        "base_next_quotient": 1026,
+        "height": 11,
+        "height_plus_one": 12,
+        "index": 0,
+        "next_quotient_modulus": 6652800,
+        "next_quotient_residue": 1026,
+        "payment": 4,
+        "quotient_modulus": 79833600,
+        "quotient_residue": 33
+      },
+      {
+        "base_next_quotient": 790020,
+        "height": 3,
+        "height_plus_one": 4,
+        "index": 1,
+        "next_quotient_modulus": 1663200,
+        "next_quotient_residue": 790020,
+        "payment": 1,
+        "quotient_modulus": 6652800,
+        "quotient_residue": 1026
+      },
+      {
+        "base_next_quotient": 499305754332,
+        "height": 4,
+        "height_plus_one": 5,
+        "index": 2,
+        "next_quotient_modulus": 332640,
+        "next_quotient_residue": 141372,
+        "payment": 1,
+        "quotient_modulus": 1663200,
+        "quotient_residue": 790020
+      },
+      {
+        "base_next_quotient": 16655129568,
+        "height": 5,
+        "height_plus_one": 6,
+        "index": 3,
+        "next_quotient_modulus": 55440,
+        "next_quotient_residue": 11088,
+        "payment": 1,
+        "quotient_modulus": 332640,
+        "quotient_residue": 141372
+      },
+      {
+        "base_next_quotient": 105388272,
+        "height": 6,
+        "height_plus_one": 7,
+        "index": 4,
+        "next_quotient_modulus": 7920,
+        "next_quotient_residue": 4752,
+        "payment": 1,
+        "quotient_modulus": 55440,
+        "quotient_residue": 11088
+      },
+      {
+        "base_next_quotient": 19762380,
+        "height": 7,
+        "height_plus_one": 8,
+        "index": 5,
+        "next_quotient_modulus": 990,
+        "next_quotient_residue": 0,
+        "payment": 1,
+        "quotient_modulus": 7920,
+        "quotient_residue": 4752
+      },
+      {
+        "base_next_quotient": 0,
+        "height": 8,
+        "height_plus_one": 9,
+        "index": 6,
+        "next_quotient_modulus": 110,
+        "next_quotient_residue": 0,
+        "payment": 1,
+        "quotient_modulus": 990,
+        "quotient_residue": 0
+      },
+      {
+        "base_next_quotient": 0,
+        "height": 9,
+        "height_plus_one": 10,
+        "index": 7,
+        "next_quotient_modulus": 11,
+        "next_quotient_residue": 0,
+        "payment": 1,
+        "quotient_modulus": 110,
+        "quotient_residue": 0
+      },
+      {
+        "base_next_quotient": 0,
+        "height": 10,
+        "height_plus_one": 11,
+        "index": 8,
+        "next_quotient_modulus": 1,
+        "next_quotient_residue": 0,
+        "payment": 1,
+        "quotient_modulus": 11,
+        "quotient_residue": 0
+      }
+    ]
+  },
+  "consequence_reconciliation": {
+    "assimilation_manifest": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/assimilation_manifest.json",
+      "decision": "verified_no_change",
+      "reason": "the owning Lean module is already present; the manifest does not enumerate individual theorem-strength refinements"
+    },
+    "computational_lab": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "decision": "update_now",
+      "reason": "the computation-to-proof bridge and its analytic consequence are new"
+    },
+    "lean_microcosm_projection": {
+      "authority_surface": "tools/meta/factory/build_lean_mathematics_microcosm_projection.py",
+      "decision": "defer_with_reason",
+      "reason": "the generated projection is navigation-only and its broad owner builder is not required to validate or land this exact source result",
+      "reentry_condition": "next uncontended scheduled projection refresh"
+    },
+    "prior_finite_checker": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_clean_recovery_length.py",
+      "decision": "verified_no_change",
+      "reason": "its finite witness and narrower claim remain exact"
+    },
+    "project_readme": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/README.md",
+      "decision": "verified_no_change",
+      "reason": "it carries build/navigation guidance, not this claim boundary"
+    },
+    "research_packet_or_crosswalk": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "decision": "update_now",
+      "reason": "the scale-only repair is newly eliminated by an unbounded family"
+    },
+    "self_renewal_terminal_residue": {
+      "authority_surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "decision": "update_now",
+      "reason": "direct same-cylinder concatenation is newly excluded by a universal terminal residue factorization"
+    },
+    "unrelated_namespace_validators": {
+      "authority_surface": "mathematical_consequence_map_v1 candidate map",
+      "decision": "outside_scope",
+      "reason": "the foreign-residue, adelic-height, and build-wrapper candidates are lexical namespace edges and do not consume this recovery mechanism"
+    }
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos243.negativeUnitTransitionNumerator_periodic",
+        "ErdosProblems.Erdos243.negativeUnitTransitionQuotient_periodic",
+        "ErdosProblems.Erdos243.cleanRecoveryWitness_normalizedNegativeMass_return"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "falsification_consequence": "Neither isolation nor large quotient/denominator scale can rescue strict normalized-mass descent at complete recoveries. A viable potential must retain changing prefix arithmetic across recoveries.",
+      "survival_consequence": "Large initial scale could still exclude the finite normalized-return fixture and rescue a scale-sensitive strict recovery descent."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "large_scale_breaks_complete_recovery_normalized_returns",
+      "statement": "The known normalized-state return is an isolated small-scale fixture, or sufficiently large initial quotient/denominator forces strict slack."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_infinite_clean_recovery_family.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Propagate quotient residues through the modulus chain 79,833,600 -> 6,652,800 -> ... -> 1, checking each exact payment and negative-unit transition; replay five spaced family members.",
+      "falsifier": "A certified nonzero period such that every nonnegative lift of the base quotient follows the same complete normalized return.",
+      "id": "descending_quotient_congruence_family",
+      "question": "Does the exact recovery pattern persist for an unbounded arithmetic progression of primitive initial states?",
+      "resource_bounds": {
+        "congruence_implications": 9,
+        "sample_replays": 5,
+        "steps_per_sample": 9
+      },
+      "stop_condition": "Stop after the nine exact congruence implications close at modulus one; sample replays cannot replace any failed implication."
+    },
+    "problem": {
+      "claim_ceiling": "An exact infinite arithmetic family of finite nine-step complete clean recoveries with identical normalized endpoint mass; not an infinite trajectory and not a solution of Erd\u0151s #243.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "The Lean-checked periodic transition identity and the exact descending residue certificate quantify over every lift; the family is unbounded.",
+        "next_analytic_target": "Seek a cross-recovery invariant using changing complete-prefix residues or prime support; discard all scale-only repairs of normalized descent."
+      },
+      "status": "exact_one_way_result",
+      "summary": "For every k>=0, q=33+79,833,600*k and (u,v)=(11,11*q-1) produce the same nine-step clean recovery, returning normalized negative mass exactly from 1/11 to 1/11."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "family": {
+    "centered_error_pattern": [
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "height_pattern": [
+      11,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "initial_quotient": "33+79833600*k",
+    "initial_state": "(11, 11*(33+79833600*k)-1)",
+    "normalized_mass_return": [
+      [
+        1,
+        11
+      ],
+      [
+        1,
+        11
+      ]
+    ],
+    "parameter_domain": "k in nonnegative integers",
+    "payment_pattern": [
+      4,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "period": 79833600
+  },
+  "regression_samples": [
+    {
+      "centered_errors": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "heights": [
+        11,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "initial_q": 33,
+      "initial_v_decimal_digits": 3,
+      "normalized_endpoint_return": [
+        [
+          1,
+          11
+        ],
+        [
+          1,
+          11
+        ]
+      ],
+      "parameter": 0,
+      "payments": [
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "centered_errors": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "heights": [
+        11,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "initial_q": 79833633,
+      "initial_v_decimal_digits": 9,
+      "normalized_endpoint_return": [
+        [
+          1,
+          11
+        ],
+        [
+          1,
+          11
+        ]
+      ],
+      "parameter": 1,
+      "payments": [
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "centered_errors": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "heights": [
+        11,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "initial_q": 159667233,
+      "initial_v_decimal_digits": 10,
+      "normalized_endpoint_return": [
+        [
+          1,
+          11
+        ],
+        [
+          1,
+          11
+        ]
+      ],
+      "parameter": 2,
+      "payments": [
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "centered_errors": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "heights": [
+        11,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "initial_q": 798336033,
+      "initial_v_decimal_digits": 10,
+      "normalized_endpoint_return": [
+        [
+          1,
+          11
+        ],
+        [
+          1,
+          11
+        ]
+      ],
+      "parameter": 10,
+      "payments": [
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "centered_errors": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "heights": [
+        11,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "initial_q": 7983360033,
+      "initial_v_decimal_digits": 11,
+      "normalized_endpoint_return": [
+        [
+          1,
+          11
+        ],
+        [
+          1,
+          11
+        ]
+      ],
+      "parameter": 100,
+      "payments": [
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "rejected_inexact_floor_switch": {
+    "authority_rule": "carry the full reduced pair through reduced_step, or assert exact divisibility before every quotient transition",
+    "exact_negative_unit_heights": [
+      11,
+      12,
+      13,
+      14,
+      3
+    ],
+    "exact_negative_unit_payments": [
+      1,
+      1,
+      1,
+      5
+    ],
+    "first_non_negative_unit_error": 1,
+    "initial_quotient": 539136,
+    "rejected_shortcut": "floor-dividing a nonintegral quotient transition and continuing the height/payment recurrence",
+    "terminal_class_parameter_z": 6
+  },
+  "schema": "erdos243-infinite-clean-recovery-family-receipt/2",
+  "self_renewal_experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "ErdosProblems.Erdos243.negativeUnitRecovery_terminalQuotient_even",
+        "ErdosProblems.Erdos243.negativeUnitRecovery_terminalQuotient_oddMultiple_41472",
+        "ErdosProblems.Erdos243.negativeUnitRecovery_terminal_nextPayment_one",
+        "ErdosProblems.Erdos243.negativeUnitRecovery_terminal_nextHeight_twelve"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "falsification_consequence": "The family cannot self-concatenate or enter another height-11 clean cylinder directly: payment one forces height 12. Any infinite construction must first control an expanding boundary excursion.",
+      "survival_consequence": "The family could be iterated verbatim to produce an infinite negative-unit recovery orbit."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "clean_recovery_family_direct_self_renewal",
+      "statement": "Some member of the arithmetic clean-recovery family ends in the same quotient congruence class and can therefore start another copy of the identical nine-step recovery."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_infinite_clean_recovery_family.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean"
+      ]
+    },
+    "probe": {
+      "computation": "Propagate the source parameter as an exact degree-64 integer polynomial, prove t=q6/990=-36 mod 1152 coefficientwise, then factor the last three transitions to obtain q9=41472*(2*z+1).",
+      "falsifier": "A universal factorization putting every q9 in the single class 41472 modulo 82944 while every allowed re-entry quotient is odd.",
+      "id": "terminal_quotient_residue_factorization",
+      "question": "Which exact residue class receives every terminal quotient, and can it re-enter the odd class 33 modulo 79,833,600?",
+      "resource_bounds": {
+        "regression_samples": 5,
+        "source_parameter_polynomial_degree": 64,
+        "symbolic_transition_count": 9
+      },
+      "stop_condition": "Stop once exact coefficient divisibility and the Lean algebraic consumer separate terminal and initial classes; no longer orbit audit."
+    },
+    "problem": {
+      "claim_ceiling": "Exact obstruction to directly concatenating this particular infinite family or switching immediately into any same-height clean recovery; not an exclusion of expanding continuations and not a solution of Erd\u0151s #243.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_eliminated",
+        "decision_basis": "Exact polynomial arithmetic gives t=q6/990=-36 mod 1152, and the Lean-checked terminal factorization gives q9=41472*(2*z+1).",
+        "next_analytic_target": "Control the forced expanding excursion beginning 11->12, rather than searching for another immediately clean height-11 return cylinder."
+      },
+      "status": "exact_one_way_result",
+      "summary": "Every family member has q9=41472 mod 82944, equivalently q9 is 41472 times an odd integer. Its next payment at height 11 is exactly one, forcing height 12; direct self-renewal and every immediate same-height clean-cylinder switch are impossible."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "self_renewal_parity_certificate": {
+    "conclusion": "q9 is always 41472 modulo 82944, while every reentry quotient 33+79833600*k is odd; direct self-concatenation is impossible and every switching cylinder receives one fixed terminal 2-adic/3-adic class",
+    "exact_factorization": [
+      "A=t*(7920*t+7)",
+      "q7=110*A",
+      "B=A*(990*A+8)=2*A*(495*A+4)",
+      "q8=11*B",
+      "q9=B*(110*B+9)"
+    ],
+    "forced_next_ascent": {
+      "consequence": "the terminal class cannot directly begin another height-11 clean recovery with all intermediate heights below 11",
+      "next_height": 12,
+      "payment": 1,
+      "payment_formula": "gcd(12,(q9+1)^2)",
+      "reason": "q9 is divisible by 41472 and hence by 12",
+      "return_height": 11
+    },
+    "lean_declarations": [
+      "ErdosProblems.Erdos243.negativeUnitRecovery_terminalQuotient_even",
+      "ErdosProblems.Erdos243.negativeUnitRecovery_terminalQuotient_oddMultiple_41472",
+      "ErdosProblems.Erdos243.negativeUnitRecovery_terminal_nextPayment_one",
+      "ErdosProblems.Erdos243.negativeUnitRecovery_terminal_nextHeight_twelve"
+    ],
+    "lean_validation_state": "lean_checked",
+    "regression_samples": [
+      {
+        "forced_next_height": 12,
+        "forced_next_payment": 1,
+        "parameter": 0,
+        "q6_div_990_bit_length": 300,
+        "q6_div_990_decimal_digits": 91,
+        "q6_div_990_mod_1152": 1116,
+        "required_reentry_residue_mod_2": 1,
+        "terminal_quotient_mod_2": 0,
+        "terminal_quotient_mod_82944": 41472
+      },
+      {
+        "forced_next_height": 12,
+        "forced_next_payment": 1,
+        "parameter": 1,
+        "q6_div_990_bit_length": 1656,
+        "q6_div_990_decimal_digits": 499,
+        "q6_div_990_mod_1152": 1116,
+        "required_reentry_residue_mod_2": 1,
+        "terminal_quotient_mod_2": 0,
+        "terminal_quotient_mod_82944": 41472
+      },
+      {
+        "forced_next_height": 12,
+        "forced_next_payment": 1,
+        "parameter": 2,
+        "q6_div_990_bit_length": 1720,
+        "q6_div_990_decimal_digits": 518,
+        "q6_div_990_mod_1152": 1116,
+        "required_reentry_residue_mod_2": 1,
+        "terminal_quotient_mod_2": 0,
+        "terminal_quotient_mod_82944": 41472
+      },
+      {
+        "forced_next_height": 12,
+        "forced_next_payment": 1,
+        "parameter": 10,
+        "q6_div_990_bit_length": 1868,
+        "q6_div_990_decimal_digits": 563,
+        "q6_div_990_mod_1152": 1116,
+        "required_reentry_residue_mod_2": 1,
+        "terminal_quotient_mod_2": 0,
+        "terminal_quotient_mod_82944": 41472
+      },
+      {
+        "forced_next_height": 12,
+        "forced_next_payment": 1,
+        "parameter": 100,
+        "q6_div_990_bit_length": 2081,
+        "q6_div_990_decimal_digits": 627,
+        "q6_div_990_mod_1152": 1116,
+        "required_reentry_residue_mod_2": 1,
+        "terminal_quotient_mod_2": 0,
+        "terminal_quotient_mod_82944": 41472
+      }
+    ],
+    "source_parameter_polynomial": {
+      "c_polynomial_degree": 64,
+      "q6_degree": 64,
+      "t_plus_36_coefficient_divisor": 1152,
+      "t_polynomial_coefficient_gcd": 36,
+      "t_polynomial_degree": 64
+    },
+    "terminal_residue": {
+      "equivalent_factorization": "q9=41472*(2*z+1)",
+      "modulus": 82944,
+      "residue": 41472
+    },
+    "universal_input_from_residue_chain": "q6=990*t with t=-36+1152*c(k)"
+  },
+  "source_records": [
+    {
+      "byte_length": 24498,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_infinite_clean_recovery_family.py",
+      "sha256": "540c534b283feaa6c800eeb6b60e65fa384d4109216eaa8dfa00e70ecc6bcb51"
+    },
+    {
+      "byte_length": 9753,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
+      "sha256": "c387bf1e3f0e904a3adc5df743577deaf2a6e87fbb950c6740653d6f339b33a2"
+    },
+    {
+      "byte_length": 7235,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "1320845b327910a927bfe65fb063507d175aa25a5a070a80b7cb3c717caa0dc2"
+    },
+    {
+      "byte_length": 54203,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "609b0fa561d3139c270045c2e69899b0eab70c63e8d170ceedae7177e70c8b92"
+    }
+  ],
+  "status": "verified_exact_infinite_family"
+}

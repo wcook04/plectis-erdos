@@ -73,6 +73,9 @@ def entry_packet(catalog: dict[str, Any], task: str) -> dict[str, Any]:
                 "score": row["score"],
                 "matched_cues": row["matched_cues"],
                 "skills": row["skills"],
+                "read": row["read"][:1],
+                "commands": row["commands"][:1],
+                "boundary": row["boundary"],
             }
             for row in alternatives
         ],
@@ -106,6 +109,10 @@ def render_entry(packet: dict[str, Any]) -> str:
         lines.extend(("", "Other plausible lanes:"))
         for row in packet["alternatives"]:
             lines.append(f"  - {row['id']}: {row['title']}")
+            for path in row["read"]:
+                lines.append(f"    Open: {path}")
+            for command in row["commands"]:
+                lines.append(f"    Next: {command}")
     lines.extend(("", f"All skills: {packet['catalog_command']}"))
     return "\n".join(lines)
 
