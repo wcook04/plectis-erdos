@@ -1237,22 +1237,34 @@ $\mathcal R=\{n:U_{n+1}>R_n\}$. Centring implies that every sufficiently
 late strict rise has $\rho_n=1$: otherwise $U_{n+1}\le3U_n/4$.
 Its actual jump is therefore $d_n=U_{n+1}-U_n=-V_n$.
 
-\begin{theorem}[weighted record excess]\label{res:weightedrecord}
-Assume the growth and rationality hypotheses of Problem~\ref{res:problem}.
-Let $f:[1,\infty)\to[0,\infty)$ be finite and nonincreasing, with
-$\int_1^\infty f(t)\,dt=\infty$. Then the sequence is eventually Sylvester
-if and only if, for some integer $B\ge0$,
+\begin{theorem}[arithmetic weighted-record dichotomy]\label{res:arithmeticrecord}
+Let $a_n,L_n,U_n$ be positive integers and $V_n$ integers satisfying
 \[
+ \begin{gathered}
+ L_{n+1}=\operatorname{lcm}(L_n,a_n),\qquad \rho_n=\gcd(L_n,a_n),\\
+ \rho_nU_{n+1}=U_n-V_n,\qquad
+ V_n=L_n-(a_n-1)U_n,\qquad -U_n\le2V_n.
+ \end{gathered}
+\]
+Let $f:[1,\infty)\to[0,\infty)$ be finite and nonincreasing, with
+$\int_1^\infty f(t)\,dt=\infty$. For each fixed integer $B\ge0$,
+\[
+ \sup_n U_n<\infty
+ \quad\Longleftrightarrow\quad
  \sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)<\infty.
 \]
 \end{theorem}
 
 \begin{proof}
-Fix $B\ge1$. There are eventually $B$ pairwise coprime old digits
-$m_0,\ldots,m_{B-1}>B$ dividing $L_T$. Indeed,
-$C_{n+1}/C_n=1-E_n/C_n\to1$ gives $\log C_n=o(n)$; since
-$M_n\le C_n$, the update for $M_n$ permits only $o(n)$ indices with
-$\rho_n>1$. The other digits are mutually coprime and tend to infinity.
+A bounded integer running maximum increases only finitely many times, so
+bounded $U_n$ gives a finite sum. Suppose instead that $U_n$ is unbounded.
+There are infinitely many record rises, each with $\rho_n=1$. Its digit is
+greater than one because $d_n=(a_n-1)U_n-L_n>0$. If $r<s$ are record
+indices, then $a_r\mid L_s$ and $\gcd(a_s,L_s)=1$, hence
+$\gcd(a_r,a_s)=1$. The record digits are therefore distinct and pairwise
+coprime. For any fixed $B\ge1$, choose $B$ of them greater than $B$,
+and take $T$ after their indices. These old digits
+$m_0,\ldots,m_{B-1}$ all divide $L_T$.
 
 Put $P=\prod_i m_i$ and choose $x$ by the Chinese remainder theorem with
 $m_i\mid x+i$. Consider the heights $\tau=x+B+kP$. A first crossing
@@ -1274,11 +1286,31 @@ interval of length $P$ with its left endpoint, yields the finite bound
  \sum_{\substack{T\le n<N\\n\in\mathcal R}}(-V_n-B)_+f(U_n)
  \ge\frac1P\int_{R_T+P}^{R_N} f(t)\,dt.
 \end{equation}
+Since $R_n\to\infty$, the right side diverges for every $B\ge1$.
+The case $B=0$ follows by domination.
+\end{proof}
+
+Only the lower centring bound was used. In particular, neither normalised
+vanishing nor a growth estimate for $C_n$ supplies the CRT moduli: the
+record digits themselves do so. Normalised vanishing enters in the following
+application to the original sequence.
+
+\begin{theorem}[weighted record excess]\label{res:weightedrecord}
+Assume the growth and rationality hypotheses of Problem~\ref{res:problem},
+and let $f$ be as in Theorem~\ref{res:arithmeticrecord}. The sequence is
+eventually Sylvester if and only if, for some integer $B\ge0$,
+\[
+ \sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)<\infty.
+\]
+\end{theorem}
+
+\begin{proof}
 If the endpoint fails, centred zero is never reached on a sufficiently late
-tail. Integrality gives $1/U_n\le|V_n|/U_n=|E_n|/C_n\to0$, hence
-$R_n\to\infty$. The right side diverges, for every $B\ge1$; $B=0$ follows
-by domination. Conversely a Sylvester tail telescopes to
-$x_n=1/(a_n-1)$, so $V_n=0$ eventually.
+tail. Integrality gives $1/U_n\le|V_n|/U_n=|E_n|/C_n\to0$, so $U_n$ is
+unbounded. Theorem~\ref{res:arithmeticrecord}, applied after the centring
+threshold, forces divergence for every $B$. Removing a finite prefix changes
+only finitely many global record terms. Conversely, a Sylvester tail
+telescopes to $x_n=1/(a_n-1)$, so $V_n=0$ eventually.
 \end{proof}
 
 For example, $f(t)=1/[t\log(et)]$ gives the sufficient condition
