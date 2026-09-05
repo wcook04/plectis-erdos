@@ -2,7 +2,7 @@
   "schema": "plectis_strongest_result_activation_map_v2",
   "problem_id": "erdos_1041",
   "status": "open",
-  "source_checkpoint": "fe4f0ba9566571f239b5b026a83131dfcbd84bfa",
+  "source_checkpoint": "0cf31dbc7a9b607aa68d537a4f3a7be57ae52a98",
   "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
   "results": [
     {
@@ -2390,6 +2390,46 @@
       "public_authority_paths": [
         "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CentroidVarianceChordChart.md",
         "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_centroid_variance_chord_chart.py"
+      ]
+    },
+    {
+      "source_result_id": "separated_neck_level_and_arity_forcing_2026_09_05",
+      "exact_statement": "Assume (FAIL): no two distinct roots of the squarefree monic f are joined inside {|f|<1} by a curve of length below 2. Theorem 1 (sharp separation): in every component C of {|f|<t}, t<1 regular, every pair of roots has pseudohyperbolic distance rho >= rho* = sqrt(1-e^-4) = 0.99079985..., with companion s* = (1-sqrt(1-rho*^2))/rho* = sqrt(tanh 1) = 0.87269362... and the rational identity 2s*/(1+s*^2) = rho* in E = e^2; the working constant 0.99 of the corpus discards 0.0008 of margin. Uniformise f/t = B, a Blaschke product of degree k with zeros w_j. Lobe separation: at most one zero lies within pseudohyperbolic distance s* of any point. Critical equation: moving a critical point to 0, sum_j (1-|v_j|^2)/v_j = 0. Theorem 2 (neck level): with m = min_j |v_j|, g(u) = (1-u^2)/u satisfies g(m) <= (k-1) g(s*), hence every critical value inside C satisfies |f(c)|/t = prod_j rho(c,w_j) >= N_k := m_k s*^(k-1), with N_k > 0.76159, 0.58144, 0.44592, 0.34404, 0.26726, 0.20911, 0.16476 for k = 2..8. Corollary 3: a two-root component born at critical modulus v cannot survive past v/tanh(1) < 1.31305 v. Corollary 4 (compressed critical spectrum): all critical values inside a k-root component at level t <= 1 lie in [N_k t, t). Corollary 5 (arity forcing): mu/t = |B(c*)| >= N_k(t), i.e. k(x) >= K(x) := min{k : N_k <= e^-x} with x = log(t/mu), a third arity-forcing inequality for the low-critical comparison ODE, independent of COVER and of the pairwise-separation floor.",
+      "status": "ordinary_complete_proof_under_the_failure_hypothesis_with_exact_rational_certificate_not_lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SeparatedNeckArityForcing.md",
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_separated_neck_arity_forcing.py"
+      ]
+    },
+    {
+      "source_result_id": "neck_augmented_low_critical_closure_one_fifth_2026_09_05",
+      "exact_statement": "Theorem 6: every squarefree monic f of degree n >= 2 with least critical-value modulus mu <= 1/5 has two distinct roots joined inside {|f|<1} by a rectifiable curve of length below 2. Proof: the certified comparison-ODE pipeline of LowCriticalPotentialClosure.md with the arity lower bound replaced by max(COVER floor, K(x)) from Corollary 5 and nothing else changed gives X_cert = 1.604373027130775 (quick mode) against 1.624373027130775 for COVER alone, and (1/5) exp(X_cert) < 1. This crosses the value 0.19989 that the parent note records as unreachable by the COVER/hop pair alone.",
+      "status": "ordinary_complete_all_degree_target_regime_proof_with_exact_rational_certificate_superseded_same_day_by_nine_twentyfifths",
+      "superseded_by": "cluster_separation_low_critical_closure_nine_twentyfifths",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SeparatedNeckArityForcing.md",
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_separated_neck_arity_forcing.py"
+      ]
+    },
+    {
+      "source_result_id": "hub_taylor_truncation_spoke_certificate_free_length_2026_09_05",
+      "exact_statement": "Let f be monic of degree n, h any point, and T_j the degree-j Taylor truncation of f at h. For every root a and s in [0,1], f(h+s(a-h)) = sum_{j<n} (s^j - s^{j+1}) T_j(a): the Abel/control-polygon weights are non-negative and sum to 1-s^n. Since T_{n-1}(a) = -(a-h)^n at a root, the criterion max_{j<n} |T_j(a)| < 1 already forces |a-h| < 1. Theorem 2: if two roots a, b satisfy max_j |T_j(a)| < 1 and max_j |T_j(b)| < 1 at a common hub h, then the broken line a -> h -> b lies in {|f|<1} AND has length below 2, so Erdos 1041 holds for f with no separate metric obligation; this deletes condition (iii) of two_segment_containment_reduction. The criterion is exact on z^n - lambda at h = 0 (every form equals mu, margin exactly 1 - mu). Certified positively at the root CENTROID on both pinned QC-refutation witnesses of StraightSpokeHubCriterionLab.md (degrees 6 and 9, mu = 0.99995098.. and 0.99994148.., where no critical hub works): two roots with max_j |T_j(a)|^2 < 1 (0.9999981468 and 0.9999868689) and total length bounded by 1.9999283607 and 1.9999669017, exact Fraction arithmetic with 48-bit isqrt upper bounds.",
+      "status": "ordinary_complete_elementary_theorem_with_exact_rational_certificate_identity_is_corpus_property",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/HubTaylorSpokeCertificate.md",
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_hub_taylor_spoke_certificate.py"
+      ]
+    },
+    {
+      "source_result_id": "degree_five_fixed_hub_set_refutation_in_the_surviving_regime_2026_09_05",
+      "exact_statement": "Theorem 4: an explicit monic quintic with all five roots strictly inside the open unit disc and least critical-value modulus mu >= 0.9999871398 > 9/25 has NO hub in {c*} u {critical c : |f(c)| < 1} u {0} u {centroid} carrying two straight spokes contained in {|f|<1}; every hub carries at most one. Certified exactly: five |a_j|^2 < 1; four critical points isolated one per Rouche disc of radius 2^-30; one disc inadmissible throughout; the three admissible critical hubs, the origin and the centroid each carry four rational escape witnesses t in {1/20, 1/10, 1/5} at which |f| - 5*3^4*(1-t)*2^-30 > 1. Erdos 1041 is not refuted there: a free hub near -0.05 - 0.09i carries two contained spokes (floating), 0.103 away from the fixed set, the scale of the split critical cluster rather than of the perturbation. Found by a wall-guarded adversarial climb in 40 restarts after 2250 random survivors had missed it.",
+      "status": "exact_rational_refutation_of_the_fixed_hub_disjunction",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/HubTaylorSpokeCertificate.md",
+        "research_corpus/Erdos1041/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_hub_taylor_spoke_certificate.py"
       ]
     }
   ]
