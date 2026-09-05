@@ -1302,6 +1302,23 @@
       "source_sha256": "8810daabcc1b8c6091f15bebcfdf69762c8f251503b09270ca5d8bc618909054",
       "source_current": true,
       "return_batch_id": "erdos243_20260905_eight_return_stream_01"
+    },
+    {
+      "id": "lcm_defect_criterion_is_primitive_reduction",
+      "status": "ordinary_proof_verified_not_lean_formalized",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/LcmDefectCriterionReduction.md",
+      "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_lcm_defect_criterion_probe.py",
+      "statement": "With A_(n-1) = lcm(a_1..a_(n-1)), the overlap debt M_n, the tail gcd G_n and the positive integers kappa_n = q A_(n-1)/v_n and kappa'_n = lcm(q, A_(n-1))/v_n: G_n = kappa_n L_(n-1) = kappa'_n M_n and E_n/M_n = kappa'_n e_n. Hence the Erdos-Straus (1964) Theorem 3, Tijdeman-Yuan (2002) Theorem 4.1 and Koizumi Corollary 20(1) quantities all carry the sign of E_n at every index and each criterion decides exactly the half-space E_n >= 0 eventually (closed by Koizumi Prop 19(2)). The lcm-weighted question of SlowNegativePartRigidity.md s4 is: at level <= 0 identical to the product criterion; at level < infinity equivalent to (-E_n)_+ = O(M_n); empty on cancellation-free tails; and blind to clean record jumps, since a clean step has h_n = 1 and contributes no factor to M_n. Erdos-Straus Theorem 1(ii) is exactly 'kappa_n u_n bounded' and its negation is the corpus's first necessary condition C_n -> infinity.",
+      "claim_boundary": "Ordinary proof over exact identities, verified on 4,472 exact frames and 610 clean triples (0 failures). It settles the <= 0 half of the corpus's open lcm question negatively and confines the < infinity half; it proves nothing about the parent. The classical size-plus-divisibility mechanism needs -e_n < 1/kappa_n <= 1 in the open branch, which for an integer e_n is the conclusion itself; the S4-R fixtures (c,m,H) = (10,3,6), (13,3,6), (100003,3,5) have every classical hypothesis quantity equal to -E_n = 3 at every index with G = L = kappa = M = 1. Badea's originals were not accessible; Erdos-Straus conditions (i)/(ii'') are OCR reconstructions.",
+      "named_consumers": [
+        "formalise_lcm_weighted_theorem",
+        "global_lcm_repair_lower_bound",
+        "strict_rise_loglog_lcm_ordinary_rigidity"
+      ],
+      "evidence_class": "ordinary_proof_verified_this_pass_plus_exact_finite_check",
+      "source_sha256": "9eae4c00f88d8738d6e1347fde1ec9f55758d233190e8a65b89f90205f0e2bf2",
+      "source_current": true,
+      "return_batch_id": "erdos243_20260905_eight_return_stream_01"
     }
   ],
   "experimental_result": {
@@ -2408,7 +2425,9 @@
     "The primitive record-jump barrier cannot be pushed from 2 to 3 by the same single-prime pointwise mechanism, and the reason is structural rather than technical. B simultaneously protected moduli require prod_(s != i) p_s <= (2/3) p_i^(l_i) for every i, because a prime survives in v_n only while u_n < (2/3) p^(l+1); with squarefree-ish fresh multipliers (l_i = 1) this caps B at 2. The parity half of the odd cut is what fixes the cap: an odd trap height H forces H-1 and H+1 both even, which kills the only jump-2 crossing, and no such parity obstruction exists at jump 3. Three exact families exhibit the boundary: r03 section 8 (u = p-1, v = p(p-4), a = p-2 for p = 2 mod 3, single crossing), r07 section 8 (p^2 | v, two-step, instance (10, 10527, 1054)) and r08 section 6 (p^3 | v, two-step, instance (10, 89177, 8919, -3, 1)). CAUTION on their reading: for FIXED p the ratio a'/a^2 tends to u/u' = 1 - 3/(u+3) and is bounded away from 1 (0.7683 at p = 11, 0.9290 at p = 41), so these are local witnesses and not orbit segments obeying the rate hypothesis; only the joint limit p -> infinity gives a'/a^2 -> 1 (0.99703 at p = 1009). SCOPE: any extension past jump 2 must add a second mechanism, for instance a simultaneous large 2-power in v, whose supply the parent hypotheses do not provide.",
     "The phase-map resonance framing is empty. On every clean step a_n^2 = e_(n+1) e_n^(-1) (mod u_(n+1)) is an identity; by Thue's lemma every unit modulo N is a ratio of integers at most sqrt(N), so 'the multiplier must be resonant' says nothing whenever 2|e_n e_(n+1)| >= u_(n+1) (77% of measured clean steps), and where it bites it says exactly that |e_n| is a continued-fraction denominator of a_n^2/u_(n+1) whose next partial quotient is about u_(n+1)/|e_n e_(n+1)|. Survival is a large-partial-quotient event and the missing frequency statement is Gauss-map genericity at one prescribed position. Resonance data is unique up to sign and imposes no n to n+1 compatibility. SCOPE: desk S3 (wave 2), 18,774 orbits / 78,098 steps, 0 failures; scripts/erdos243_phase_map_resonance_probe.py.",
     "No charge on clean rises can close the parent. The E = -1 cancellation-free family generalises verbatim to E = -m for every m (heights c_n = c + n m, invariant D_n = (a_n - 1) c_n - m, a_n = 1 + c_(n+1) k_n, k_0 = lambda prod_(j=2)^(H+1) c_j), so for every m >= 3 and every H there are exact orbits with H consecutive clean rises of size m, zero payment and normalised error m/c arbitrarily small (smallest instance (C_0, D_0) = (10, 21735997): seven consecutive (e, h) = (-3, 1) steps; verified to H = 40 at c = 100003). Moreover sum_(n<N) log h_n <= log C_N = o(N), so even a perfect disjoint charge per clean rise bounds the number of clean rises of size >= 3 below N only by O(log C_N), never by a constant; and no clean step is ever a Legendre defect (Theorem S2 forces h_n > 1 at a defect), so the Legendre charge is identically zero on the set r08 Corollary 6 says must be finite. SCOPE: desk S4 (wave 2); scripts/erdos243_clean_rise_cost_probe.py.",
-    "The wave-1 computational lab's proposed correction 'any valuation loss needs only p^2 | w' is false for l >= 2: the first valuation drop of p^l || v needs p^(l+1) | w (Lean: primitive_valuation_no_drop, PrimitiveRecordBarrier.lean; exhaustive check 0 failures), and full erasure needs p^(2l) | w. SCOPE: correction of a report, not of the returns."
+    "The wave-1 computational lab's proposed correction 'any valuation loss needs only p^2 | w' is false for l >= 2: the first valuation drop of p^l || v needs p^(l+1) | w (Lean: primitive_valuation_no_drop, PrimitiveRecordBarrier.lean; exhaustive check 0 failures), and full erasure needs p^(2l) | w. SCOPE: correction of a report, not of the returns.",
+    "The classical rational-Ahmes-series toolkit (Erdos-Straus 1964 Thm 1 and Thm 3, Badea, Tijdeman-Yuan 2002 Thm 4.1, Hancl-Tijdeman 2004, Koizumi Cor 20 and Remark 21) decides exactly the half-space E_n >= 0 eventually, because every one of its hypothesis quantities equals a positive multiple of -E_n (Theorem U1-2 of LcmDefectCriterionReduction.md); the lcm weight replaces the integer E_n by the integer kappa'_n e_n and 'a small integer is <= 0' is invariant under that primitive reduction. SCOPE: closes the literature route for the negative branch; the surviving regime (clean primitive record jumps >= 3, rough multipliers, log C_n = o(n)) is untouched by it.",
+    "At small scale the ONLY long-survival mechanism is the primitive e = -1 lattice walk. Over all p/q with q <= 3000 (2,736,187 orbits), every orbit surviving >= 15 steps is, after one gcd payment, u = c, c+1, c+2, ... with primitive error -1 (unreduced E = -G constant), which is the regime Lean-excluded as an infinite orbit; the minimal denominator surviving L steps grows like g(L) ~ 1.3^L (g(6)=22, g(12)=86, g(18)=358, g(22)=1223), an inert-dominated rate far below the factorial cost a chance survivor would pay. SCOPE: finite evidence (scripts/erdos243_survival_cost_probe.py); a counterexample must be a second self-consistent arithmetic structure with |e_n| -> infinity, none of which has been observed."
   ],
   "open_producers": [
     {
@@ -2419,7 +2438,7 @@
     {
       "id": "formalise_lcm_weighted_theorem",
       "priority": 2,
-      "statement": "Kernel-check the analytic bridge into the now-checked LCM arithmetic core: strict ceiling, qW_n+V_n->0, log(g_n)/log(a_n)->0, and extraction of infinitely many distinct old primes from the original sequence hypotheses."
+      "statement": "Kernel-check the analytic bridge into the now-checked LCM arithmetic core: strict ceiling, qW_n+V_n->0, log(g_n)/log(a_n)->0, and extraction of infinitely many distinct old primes from the original sequence hypotheses. UPDATE 2026-09-05 (wave 4): the lcm-weighted criterion at level <= 0 is the product criterion after primitive reduction (G_n = kappa'_n M_n, E_n/M_n = kappa'_n e_n; LcmDefectCriterionReduction.md Thm U1-2), and at level < infinity it is (-E_n)_+ = O(M_n), empty on cancellation-free tails and blind to clean record jumps (Thm U1-3). The analytic bridge worth formalising is therefore not an lcm gain; the honest target is (-e_n)_+ <= B for B >= 3 with arbitrary cancellation, proved for B <= 2 in PrimitiveRecordBarrier.lean."
     },
     {
       "id": "critical_boundary",
@@ -2449,7 +2468,7 @@
     {
       "id": "global_lcm_repair_lower_bound",
       "priority": 1,
-      "statement": "Prove that every infinite arithmetically realizable normalized-vanishing nonterminal orbit forces cumulative overlap debt M_n to violate the checked subexponential budget: for some fixed K, 2^n<=M_n^K at arbitrarily large n. Equivalently, rule out a divergent but termwise vanishing global negative-mass budget financing only sparse overlap repairs."
+      "statement": "Prove that every infinite arithmetically realizable normalized-vanishing nonterminal orbit forces cumulative overlap debt M_n to violate the checked subexponential budget: for some fixed K, 2^n<=M_n^K at arbitrarily large n. Equivalently, rule out a divergent but termwise vanishing global negative-mass budget financing only sparse overlap repairs. UPDATE 2026-09-05 (wave 4): M_n <= G_n <= C_n = e^(o(n)) and M_n grows only at paid steps; every record of u is set by a clean step, so any lower bound on overlap debt must be charged to the density-zero paid steps, not to the clean record jumps of the surviving regime (LcmDefectCriterionReduction.md Thm U1-3)."
     },
     {
       "id": "reset_payment_lower_bound",
@@ -2550,6 +2569,24 @@
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_rate_hypothesis_stress.py"
       ],
       "receipt": "state/formal_math/type_b_return_batches/erdos243_20260905_eight_return_stream_01/work/wave1_F_computational_lab.json"
+    },
+    "survival_cost_q3000_2026_09_05": {
+      "statement": "g(L) = min D_0 over gcd(p,q)=1, p<q<=3000, of orbits surviving >= L steps without E = 0; classification of witnesses by primitive error profile.",
+      "orbits": 2736187,
+      "g_at_least_L": {
+        "5": 11,
+        "6": 22,
+        "9": 43,
+        "12": 86,
+        "15": 173,
+        "18": 358,
+        "20": 1081,
+        "22": 1223
+      },
+      "longest_L": 22,
+      "witness_profile": "every witness with L >= 15 is a constant unreduced E = -G run with C_n = G(c+n), i.e. primitive e = -1 and u = c, c+1, ...; the two L = 22 witnesses are (p,q) = (2,1223) and (2,2339) with E = -1 for twenty steps then payment 11",
+      "script": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_survival_cost_probe.py",
+      "command": "./repo-python .../erdos243_survival_cost_probe.py --qmax 3000"
     }
   },
   "claim_ceiling_addendum_2026_09_05_erdos243_eight_return_assimilation": "Eight Type B full-parent returns (batch erdos243_20260905_eight_return_stream_01, from packet erdos243_full_parent_octuple_2026_09_05) were verified and assimilated. Erdos #243 remains open; none of the eight is a parent solution candidate, and every one proves parent-relevant mathematics under a restricted hypothesis. The two strongest longitudinal theorems are now (a) the CRITICAL-BOUNDARY ROUNDING THEOREM: if a_(n+1)/a_n^2 -> 1, sum 1/a_n is rational, and eventually delta_n <= 1/n + sum_(j<=m) 1/(n l_1(n) ... l_j(n)) for a fixed m, then the sequence is eventually Sylvester; this is strictly stronger than one_over_n_threshold_verified (limsup n delta_n < 1), which it supersedes, and it is the first corpus route that PRODUCES a bounded negative part from an analytic envelope with no arithmetic, hence outside the class capped by SlowNegativePartRigidity.md Proposition 7; and (b) the PRIMITIVE RECORD TWO-UNIT THEOREM: if every sufficiently late record-setting step of the reduced numerator rises by at most 2, the sequence is eventually Sylvester, with no hypothesis at non-record steps and no bound on the cancellation factors; its three structural lemmas are Lean-checked in PrimitiveRecordBarrier.lean and its analytic prime-power supply is an ordinary proof. The parent is now EQUIVALENT to excluding cofinally many clean primitive record jumps of size at least three (r08 Corollary 6). The log-log constant of the corpus barrier is an ARTEFACT of instantiating the block moduli as whole fresh multipliers: one prime factor per fresh multiplier lowers the wall by an exponential, and log2 log2 C_n is provably the worst case of the barrier family over supplies, so no wall argument beats it without a lower bound on the smooth part of the multipliers. Also landed: the B-shifted excess-mass obstruction, the exact B-shifted generalisation of the Lean summable-negative-mass consumer; the record-excess dichotomy K = 0 or K > 1 with the inclusive log-log boundary, Euler amplification, and the sharp coprimality gap constant sigma^(-1) with the Fermat witness 2; polynomial-profile rigidity excluding every exact quadratic profile of normalised leading coefficient 1 or 2, every rational-multiple-of-a-quadratic profile at positive lower density, every rational-root profile in every degree, and every linear error template of slope 1 to 7; the sharpened height dichotomy limsup u_n/n = infinity or limsup P^+(v_n)/R_n = infinity, with primitive negative part unbounded at the critical boundary lambda >= 1; the unconditional primitive square transport with the Legendre defect charged to h_n alone and the explicit log2 C_N bound; and the good-prime wall, a landing barrier with no hypothesis after the crossing that applies to finite segments. Four no-gos are recorded so they are not retried: the Legendre invariant admits walks with rises of order u and cannot close the parent alone; the literal landing-class hint is vacuous; an index-shift wrapper over CumulativeLcmTransfer does not close the open prime supply of bounded_lcm_negative_arithmetic_core; and the record-jump barrier provably stops at 2 for squarefree fresh multipliers. Proof, computation, Lean, review, publication and canonicalization statuses remain distinct per result."

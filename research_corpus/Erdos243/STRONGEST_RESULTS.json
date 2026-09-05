@@ -2,7 +2,7 @@
   "schema": "plectis_strongest_result_activation_map_v2",
   "problem_id": "erdos_243",
   "status": "open",
-  "source_checkpoint": "c8a36d24466dfce8c6b7b2e372bb5d0bedb8420f",
+  "source_checkpoint": "23911bbf810926422d1fb37847a610c16a7a7563",
   "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
   "results": [
     {
@@ -826,6 +826,16 @@
       "public_authority_paths": [
         "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
         "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_good_prime_wall_probe.py"
+      ]
+    },
+    {
+      "source_result_id": "lcm_defect_criterion_is_primitive_reduction",
+      "exact_statement": "With A_(n-1) = lcm(a_1..a_(n-1)), the overlap debt M_n, the tail gcd G_n and the positive integers kappa_n = q A_(n-1)/v_n and kappa'_n = lcm(q, A_(n-1))/v_n: G_n = kappa_n L_(n-1) = kappa'_n M_n and E_n/M_n = kappa'_n e_n. Hence the Erdos-Straus (1964) Theorem 3, Tijdeman-Yuan (2002) Theorem 4.1 and Koizumi Corollary 20(1) quantities all carry the sign of E_n at every index and each criterion decides exactly the half-space E_n >= 0 eventually (closed by Koizumi Prop 19(2)). The lcm-weighted question of SlowNegativePartRigidity.md s4 is: at level <= 0 identical to the product criterion; at level < infinity equivalent to (-E_n)_+ = O(M_n); empty on cancellation-free tails; and blind to clean record jumps, since a clean step has h_n = 1 and contributes no factor to M_n. Erdos-Straus Theorem 1(ii) is exactly 'kappa_n u_n bounded' and its negation is the corpus's first necessary condition C_n -> infinity.",
+      "status": "ordinary_proof_verified_not_lean_formalized",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/LcmDefectCriterionReduction.md",
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_lcm_defect_criterion_probe.py"
       ]
     }
   ]

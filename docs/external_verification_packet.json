@@ -1690,7 +1690,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:29e72bf98a44b1dc190bd111c2438181e72ed74842239243c1c242f81eb5a641",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:6d81b12fdae1602168d24db9765c2990b7d95d015052bf4bb7042917bcd4b2e3",
+    "projection_digest": "sha256:f76286499956b863d3b062ce78c0713a3f24d1efd9963f12cc207645036da950",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -2082,29 +2082,29 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos243/FRONTIER.md",
-              "content_digest": "sha256:464e4745da60220ccef022b869727d21b065a6666362e5189292838ad98fa39a"
+              "content_digest": "sha256:4d2c14cda9a879aee46641fd30a617ea33c83ec8e92c7543b290dec4bf0e2ad7"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos243/STRONGEST_RESULTS.json",
-              "content_digest": "sha256:f51722836c6ae315e625f5958bede40c9e8133c8a1b40cc3abe34b9a0a9d0688"
+              "content_digest": "sha256:1d838e6c246f52a8882c6c9fae55ab43402fb20591f3c20d307336bf42736380"
             },
             "manifest": {
               "path": "research_corpus/Erdos243/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:b16db1de0107a11ac2ca49b18992d21c7807300fcd30f6735af1db7b76a89fcc"
+              "content_digest": "sha256:62822e07455bd9a42156a926f057bce03dc4c2e7c3e629a1cd0ac4392ca8045e"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos243/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:7e00325fd181aeafced6f2c678250b4a3e431fa2ec789e47eadf8cc966f2bc74"
+              "content_digest": "sha256:34a7613e3d228fe1c9e70cb830da3eb15ac79aec9b8fc36f70921a908920815a"
             }
           },
           "strongest_result_summary": {
-            "source_checkpoint": "c8a36d24466dfce8c6b7b2e372bb5d0bedb8420f",
+            "source_checkpoint": "23911bbf810926422d1fb37847a610c16a7a7563",
             "status": "open",
-            "result_count": 93
+            "result_count": 94
           },
           "checkpoint_summary": {
             "source_subtree_tree": null,
-            "exported_source_file_count": 132,
+            "exported_source_file_count": 136,
             "status": "source_current_problem_snapshot"
           }
         }

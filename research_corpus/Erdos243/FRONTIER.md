@@ -5,6 +5,25 @@ result before attempting a proof; superseded results remain history.
 
 Under a_{n+1}/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence.
 
+## Original target and route relations
+
+Under a_{n+1}/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence.
+
+Canonical frontier kind: `declared_target`.
+
+Only an equivalent reduction can replace the original target. A stronger sufficient
+condition can solve it when proved; refuting that condition does not refute the target.
+Auxiliary results require an additional proved implication to decide the target.
+Exact producer identity is source identity, not a claim of logical equivalence.
+
+- equivalent_to_target: none
+- target_deciding_but_stronger: `exclude_aperiodic_negative_state_orbits`, `formalise_lcm_weighted_theorem`, `critical_boundary`, `weighted_sparse_reset_lower_bound`, `current_scale_anti_shadowing`, `global_primitive_prefix_anti_shadowing`, `primitive_modified_convergent_gcd_excess`, `global_lcm_repair_lower_bound`, `reset_payment_lower_bound`
+- auxiliary_not_target_deciding: `strict_rise_loglog_negative_lcm_rigidity`
+- out_of_scope_for_target: none
+
+The original rigidity statement remains the frontier; every producer is a sufficient stronger route until an equivalence theorem is recorded.
+
+
 ## Established results and their evidence
 
 ### product_cleared_tail_dynamics
@@ -795,6 +814,17 @@ Evidence/status: ordinary_proof_over_lean_core
 
 claim_boundary: Ordinary proofs over Lean-checked corpus rows (commonDivisor_persists, exists_consecutiveMultiples_between, dvd_denState_of_le); no Lean module, proposed declaration no_goodPrimeWall_landing. The frontier improvement is CONDITIONAL on an unproved smooth-part supply: with the only guaranteed supply, whole fresh multiplier parts, the bad-set count is about 2^(B-1) while only about T + B moduli exist, and a_j prime for every j is consistent with every hypothesis of the problem, in which case the theorem degrades to exactly log2 log2 C_n. So log2 log2 is provably the worst case of this barrier family over supplies, and no wall argument beats it without a new theorem about the smallest prime factors of the multipliers. The multiplier census (1,450 exact multipliers from 220 seeds, 230 prime, median smallest prime factor 103 at 31-60 digits) is an empirical observation and not a lemma. The theorem is a CANONICAL-coordinate statement and uses D_T | D_n, which fails in primitive coordinates. Corpus fixtures are not falsely excluded: on the E = -1 cancellation-free blocks and the (11, 11(33 + 79833600k) - 1) recovery family no admissible wall exists, and the probe verifies why. Erdos #243 remains open.
 
+### lcm_defect_criterion_is_primitive_reduction
+
+With A_(n-1) = lcm(a_1..a_(n-1)), the overlap debt M_n, the tail gcd G_n and the positive integers kappa_n = q A_(n-1)/v_n and kappa'_n = lcm(q, A_(n-1))/v_n: G_n = kappa_n L_(n-1) = kappa'_n M_n and E_n/M_n = kappa'_n e_n. Hence the Erdos-Straus (1964) Theorem 3, Tijdeman-Yuan (2002) Theorem 4.1 and Koizumi Corollary 20(1) quantities all carry the sign of E_n at every index and each criterion decides exactly the half-space E_n >= 0 eventually (closed by Koizumi Prop 19(2)). The lcm-weighted question of SlowNegativePartRigidity.md s4 is: at level <= 0 identical to the product criterion; at level < infinity equivalent to (-E_n)_+ = O(M_n); empty on cancellation-free tails; and blind to clean record jumps, since a clean step has h_n = 1 and contributes no factor to M_n. Erdos-Straus Theorem 1(ii) is exactly 'kappa_n u_n bounded' and its negation is the corpus's first necessary condition C_n -> infinity.
+
+Evidence/status: ordinary_proof_verified_not_lean_formalized
+
+- [LcmDefectCriterionReduction.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/LcmDefectCriterionReduction.md)
+- [erdos243_lcm_defect_criterion_probe.py](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_lcm_defect_criterion_probe.py)
+
+claim_boundary: Ordinary proof over exact identities, verified on 4,472 exact frames and 610 clean triples (0 failures). It settles the <= 0 half of the corpus's open lcm question negatively and confines the < infinity half; it proves nothing about the parent. The classical size-plus-divisibility mechanism needs -e_n < 1/kappa_n <= 1 in the open branch, which for an integer e_n is the conclusion itself; the S4-R fixtures (c,m,H) = (10,3,6), (13,3,6), (100003,3,5) have every classical hypothesis quantity equal to -E_n = 3 at every index with G = L = kappa = M = 1. Badea's originals were not accessible; Erdos-Straus conditions (i)/(ii'') are OCR reconstructions.
+
 ## Known failed routes
 
 Arbitrary finite deviations can be followed by an exact Sylvester tail, so no finite-prefix rule settles the problem.
@@ -901,6 +931,10 @@ No charge on clean rises can close the parent. The E = -1 cancellation-free fami
 
 The wave-1 computational lab's proposed correction 'any valuation loss needs only p^2 | w' is false for l >= 2: the first valuation drop of p^l || v needs p^(l+1) | w (Lean: primitive_valuation_no_drop, PrimitiveRecordBarrier.lean; exhaustive check 0 failures), and full erasure needs p^(2l) | w. SCOPE: correction of a report, not of the returns.
 
+The classical rational-Ahmes-series toolkit (Erdos-Straus 1964 Thm 1 and Thm 3, Badea, Tijdeman-Yuan 2002 Thm 4.1, Hancl-Tijdeman 2004, Koizumi Cor 20 and Remark 21) decides exactly the half-space E_n >= 0 eventually, because every one of its hypothesis quantities equals a positive multiple of -E_n (Theorem U1-2 of LcmDefectCriterionReduction.md); the lcm weight replaces the integer E_n by the integer kappa'_n e_n and 'a small integer is <= 0' is invariant under that primitive reduction. SCOPE: closes the literature route for the negative branch; the surviving regime (clean primitive record jumps >= 3, rough multipliers, log C_n = o(n)) is untouched by it.
+
+At small scale the ONLY long-survival mechanism is the primitive e = -1 lattice walk. Over all p/q with q <= 3000 (2,736,187 orbits), every orbit surviving >= 15 steps is, after one gcd payment, u = c, c+1, c+2, ... with primitive error -1 (unreduced E = -G constant), which is the regime Lean-excluded as an infinite orbit; the minimal denominator surviving L steps grows like g(L) ~ 1.3^L (g(6)=22, g(12)=86, g(18)=358, g(22)=1223), an inert-dominated rate far below the factorial cost a chance survivor would pay. SCOPE: finite evidence (scripts/erdos243_survival_cost_probe.py); a counterexample must be a second self-consistent arithmetic structure with |e_n| -> infinity, none of which has been observed.
+
 ## Open implications
 
 ### exclude_aperiodic_negative_state_orbits
@@ -912,7 +946,7 @@ Evidence/status: see the source; no formal status inferred
 
 ### formalise_lcm_weighted_theorem
 
-Kernel-check the analytic bridge into the now-checked LCM arithmetic core: strict ceiling, qW_n+V_n->0, log(g_n)/log(a_n)->0, and extraction of infinitely many distinct old primes from the original sequence hypotheses.
+Kernel-check the analytic bridge into the now-checked LCM arithmetic core: strict ceiling, qW_n+V_n->0, log(g_n)/log(a_n)->0, and extraction of infinitely many distinct old primes from the original sequence hypotheses. UPDATE 2026-09-05 (wave 4): the lcm-weighted criterion at level <= 0 is the product criterion after primitive reduction (G_n = kappa'_n M_n, E_n/M_n = kappa'_n e_n; LcmDefectCriterionReduction.md Thm U1-2), and at level < infinity it is (-E_n)_+ = O(M_n), empty on cancellation-free tails and blind to clean record jumps (Thm U1-3). The analytic bridge worth formalising is therefore not an lcm gain; the honest target is (-e_n)_+ <= B for B >= 3 with arbitrary cancellation, proved for B <= 2 in PrimitiveRecordBarrier.lean.
 
 Evidence/status: see the source; no formal status inferred
 
@@ -954,7 +988,7 @@ Evidence/status: see the source; no formal status inferred
 
 ### global_lcm_repair_lower_bound
 
-Prove that every infinite arithmetically realizable normalized-vanishing nonterminal orbit forces cumulative overlap debt M_n to violate the checked subexponential budget: for some fixed K, 2^n<=M_n^K at arbitrarily large n. Equivalently, rule out a divergent but termwise vanishing global negative-mass budget financing only sparse overlap repairs.
+Prove that every infinite arithmetically realizable normalized-vanishing nonterminal orbit forces cumulative overlap debt M_n to violate the checked subexponential budget: for some fixed K, 2^n<=M_n^K at arbitrarily large n. Equivalently, rule out a divergent but termwise vanishing global negative-mass budget financing only sparse overlap repairs. UPDATE 2026-09-05 (wave 4): M_n <= G_n <= C_n = e^(o(n)) and M_n grows only at paid steps; every record of u is set by a clean step, so any lower bound on overlap debt must be charged to the density-zero paid steps, not to the clean record jumps of the surviving regime (LcmDefectCriterionReduction.md Thm U1-3).
 
 Evidence/status: see the source; no formal status inferred
 
