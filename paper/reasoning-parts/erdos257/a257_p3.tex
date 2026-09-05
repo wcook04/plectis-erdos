@@ -699,7 +699,7 @@ the known theorem.  It is no longer an open mathematical target or a claimed
 new route for \#257.
 \end{obs}
 
-\begin{obs}[NM-07 / sunflower bouquet, unproved selector plus false class-existence] \ev{Lean}
+\begin{obs}[NM-07 / sunflower bouquet: selector superseded, universal class-existence false]
 \lean{irrational\_erdosSupportSeries\_of\_orthogonalPetalBouquet}{SupportSunflowerDichotomy.lean:540}
 (selector def line 406; carry socket line 381; bouquet structure line 33).
 \textbf{Yields:} for $A=$ (finite exceptional set dividing $Q$) $\cup \{\mathrm{core}_i \cdot
@@ -708,24 +708,22 @@ new route for \#257.
 
 \par\medskip
 
-\textbf{Mismatch (\texttt{multiple}):} two gaps. (i) On the support: the bouquet class strictly
-generalises pairwise-coprime but still demands globally pairwise-coprime, summable petals — it
-inherits NM-06's exclusion of the primes and adds nothing in the divisor-dense regime. (ii) On
-the selector: \texttt{SunflowerForcedSlotTailSelection} is an unproved cofinal supply — grep for
-``dichotomy'' in the file returns only the namespace; despite the filename there is no dichotomy
-theorem there.
+\textbf{Current conclusion.} The selector is unnecessary for irrationality:
+the displayed decomposition gives
+$\sum_{a\in A}1/a\le\sum_{a\in E}1/a+\sum_i1/p_i<\infty$.
+Infinitude and the all-base reciprocal-support theorem therefore settle
+every such bouquet unconditionally. This composition supersedes the
+conditional endpoint as a mathematical result. The pinned declaration
+above records the earlier certificate proof. \ev{Math}
 
 \par\medskip
 
-\textbf{Closes it:} for the selector, $\forall K{>}0\ \exists N$, $2^K \mid$ the carried first
-block $\wedge\ \mathrm{binaryCoeffTail}(\mathrm{supportCoeff}\,A)(N{+}K)\le16$, from the
-bouquet's persistent-reduced-modulus averaging — the file states this is what that averaging
-argument is supposed to give. For the class: a bouquet-existence theorem $A$.Infinite $\to$
+\textbf{Remaining class boundary.} A bouquet-existence theorem $A$.Infinite $\to$
 Nonempty(bouquet structure) is \emph{false} as stated (take $A=$ all multiples of 6 — no coprime
 petal decomposition), so the class can only be widened, never promoted to universal.
 \end{obs}
 
-\begin{obs}[NM-08 / eventual periodicity, widest unconditional class, asymptotic obstruction] \ev{Lean}
+\begin{obs}[NM-08 / eventual periodicity and finite perturbations] \ev{Lean}
 \lean{irrational\_erdosSupportSeries\_eventuallyPeriodic}{CertificateKernel.lean:11604} (engine
 line 11262, producer line 11072; finite-perturbation transfer lines 9139, 9148).
 \textbf{Yields:} $\forall b\ge2\ \forall m{>}0\ \forall N_0$: $A$ infinite and $m$-periodic above
@@ -734,11 +732,12 @@ under finite symmetric difference in both directions.
 
 \par\medskip
 
-\textbf{Mismatch (\texttt{hypothesis\_strength}):} the widest unconditional class landed (all
-moduli, all thresholds, no bound anywhere), but eventual periodicity is a measure-zero, countable
-condition; the complement is everything interesting. The two-way finite-perturbation transfer
-shows the good class is a union of finite-symmetric-difference equivalence classes — precisely
-why it cannot be enlarged by prefix surgery; the obstruction is asymptotic.
+\textbf{Class boundary.} Eventual periodicity covers every modulus and
+threshold, but is not the widest unconditional support criterion. It and
+the nonperiodic small-shift regimes concern different classes. Finite
+symmetric difference preserves eventual periodicity, so changing a finite
+prefix cannot enlarge this particular class; a further extension must
+relax its asymptotic structure.
 
 \par\medskip
 

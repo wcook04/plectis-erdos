@@ -79,12 +79,19 @@ $E=\sum_{n\ge1}(2^n-1)^{-1}$. The support-dependent certificate constructions
 explain the method requirements discussed in \S\ref{bar:box}. Those
 requirements do not limit the small-shift theorems.
 
-A related conditional extension is
-\lean{irrational\_erdosSupportSeries\_of\_orthogonalPetalBouquet}{SupportSunflowerDichotomy.lean:540},
-which strictly generalises pairwise coprimality (cores may be arbitrary divisors of one fixed $Q$)
-but still demands globally pairwise-coprime petals and summable reciprocal petal mass, and whose
-selector hypothesis \texttt{SunflowerForcedSlotTailSelection} is itself an unproved cofinal supply.
-Despite the file name there is no dichotomy theorem in that file. \ev{Lean}\ev{Open}
+The older bouquet endpoint
+\lean{irrational\_erdosSupportSeries\_of\_orthogonalPetalBouquet}{SupportSunflowerDichotomy.lean:540}
+assumes a forced-slot selector. Its conclusion is now unconditional by
+composition with the reciprocal-summable support theorem. Indeed, for
+$A=E\cup\{c_ip_i:i\ge0\}$ with $E$ finite and $c_i\ge1$,
+\[
+ \sum_{a\in A}\frac1a\le\sum_{a\in E}\frac1a+
+ \sum_i\frac1{c_ip_i}\le\sum_{a\in E}\frac1a+\sum_i\frac1{p_i}<\infty.
+\]
+Distinct bouquet rays give infinitude, so irrationality follows at every
+integer base. The selector remains a hypothesis of the older pinned
+certificate proof, not a mathematical prerequisite for this support class.
+\ev{Math}
 
 Two one-sided rigidity results constrain a hypothetical rational-valued support, both only from the
 sparse side. For any $A$ with a positive element and $x_A$ rational, divisor-free windows are at
