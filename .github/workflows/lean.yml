@@ -323,6 +323,7 @@ jobs:
               scripts/build_external_verification.py \
               scripts/run_external_verification.py \
               scripts/test_external_verification.py \
+              scripts/build_problem_index.py scripts/test_problem_index_assurance.py \
               scripts/test_external_verification_release.py \
               .github/workflows/lean.yml; then
               changed=false
@@ -369,6 +370,7 @@ jobs:
           set -euo pipefail
           lake exe cache get
           python3 scripts/test_external_verification.py
+          python3 scripts/test_problem_index_assurance.py
           python3 -O scripts/test_external_verification.py
           python3 scripts/test_external_verification_release.py
           python3 -O scripts/test_external_verification_release.py

@@ -241,6 +241,10 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
                 sys.executable,
                 str(ROOT / "scripts" / "test_external_verification_release.py"),
             ],
+            "problem_index_assurance": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_problem_index_assurance.py"),
+            ],
             "note_source": [
                 sys.executable,
                 str(ROOT / "scripts" / "check_problem_note_sources.py"),
@@ -1143,6 +1147,12 @@ def main(argv: list[str] | None = None) -> int:
         external_verification_release_check.returncode == 0,
         "external-verification replay or immutable release-identity contract failed: "
         f"{external_verification_release_check.stdout.strip() or external_verification_release_check.stderr.strip()}",
+    )
+    problem_assurance_check = publication_stage_results["problem_index_assurance"]
+    check(
+        problem_assurance_check.returncode == 0,
+        "problem navigation must keep Comparator execution wording conditional: "
+        f"{problem_assurance_check.stdout.strip() or problem_assurance_check.stderr.strip()}",
     )
     note_source_check = publication_stage_results["note_source"]
     check(

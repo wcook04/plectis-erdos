@@ -58,7 +58,8 @@ LIBRARY = "ErdosProblems"
 # comes first; the four are disjoint today.
 DISPOSITION_CLASSES = {
     "targeted": (
-        "Comparator checked a separately declared statement of this family"
+        "Comparator selected a separately declared statement of this family; "
+        "only a green exact-commit receipt records an executed check"
     ),
     "represented_by_": (
         "another selected interface carries this family's content"
@@ -339,12 +340,16 @@ def build(
         "status_vocabulary": source["status_vocabulary"],
         "library_roots": source["library_roots"],
         # Both routes below are joins into surfaces that already hold the
-        # answer.  The wording and the boundary are quoted from the packet
-        # rather than restated, so this projection cannot drift into a
-        # stronger description of Comparator than its owner allows.
+        # answer. Contract-licensed wording is conditional: this static
+        # navigation projection does not validate a commit-bound execution.
         "external_check": {
             "source": "docs/claims.json::external_verification_packet.review_matrix",
-            "public_wording": receipt.get("public_wording"),
+            "public_wording": (
+                "Comparator-selected interfaces; execution status requires "
+                "a green exact-commit receipt."
+            ),
+            "public_wording_after_green_receipt": receipt.get("public_wording"),
+            "execution_status_route": "python3 scripts/query_corpus.py --route comparator_assurance",
             "forbidden_wording": receipt.get("forbidden_wording"),
             "boundary": packet.get("boundary"),
             "review_status": packet.get("review_status"),
