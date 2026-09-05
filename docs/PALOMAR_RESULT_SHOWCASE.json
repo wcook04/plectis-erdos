@@ -461,6 +461,35 @@
         ],
         "hard_mechanism": "An eventually zero digit tail multiplies any positive remainder through increasing radices, contradicting the canonical fractional bound; a zero remainder supplies an explicit rational witness.",
         "open_boundary": "Nontermination for the factorial-gap series and an independent challenge replay remain unproved."
+      },
+      {
+        "family_id": "actual_real_prime_gap_tail",
+        "tier_id": "conditional_endpoint_leverage",
+        "relative_judgement": "The scaled actual prime-gap tail equals its convergent shifted-gap series and satisfies the real dyadic recurrence unconditionally. Irrationality of the actual prime series is equivalent to escape of its positive real tail shifts from integral values; cofinal adjacent small shifts with mismatched actual gaps imply irrationality.",
+        "source_declarations": [
+          "ErdosProblems.Erdos251.realPrimeGapTail_eq_tsum_shifted_gaps",
+          "ErdosProblems.Erdos251.realPrimeGapTail_recurrence",
+          "ErdosProblems.Erdos251.irrational_primeSeries_iff_realPrimeGapTail_escape",
+          "ErdosProblems.Erdos251.irrational_primeSeries_of_realPrimeGapTail_small_mismatch"
+        ],
+        "hard_mechanism": "The scaled actual prime-gap tail equals its convergent shifted-gap series and satisfies the real dyadic recurrence unconditionally. Irrationality of the actual prime series is equivalent to escape of its positive real tail shifts from integral values; cofinal adjacent small shifts with mismatched actual gaps imply irrationality.",
+        "open_boundary": "The actual infinite-series and recurrence bridge is checked. Cofinal small-mismatch supply remains an unproved hypothesis; the finite numerical witness and its polynomial tail estimate are ordinary proof and exact computation. These new real-tail interfaces have no independent challenge replay."
+      },
+      {
+        "family_id": "arithmetic_weighted_record_dichotomy",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "For positive integer LCM states with exact lcm/gcd update and feedback rho U_next=U-V, V=L-(a-1)U, and only the lower centering bound -U<=2V, bounded U is equivalent to finiteness of the record-step excess sum sum(-V-B)_+ f(U), for each fixed B>=0 and finite nonnegative nonincreasing weight with divergent integral. Unbounded height itself supplies arbitrarily many pairwise-coprime record digits; no fresh-index density or subexponential growth assumption is needed.",
+        "source_declarations": [],
+        "hard_mechanism": "For positive integer LCM states with exact lcm/gcd update and feedback rho U_next=U-V, V=L-(a-1)U, and only the lower centering bound -U<=2V, bounded U is equivalent to finiteness of the record-step excess sum sum(-V-B)_+ f(U), for each fixed B>=0 and finite nonnegative nonincreasing weight with divergent integral. Unbounded height itself supplies arbitrarily many pairwise-coprime record digits; no fresh-index density or subexponential growth assumption is needed.",
+        "open_boundary": "The finite CRT crossing and global divergent-integral argument are stated in the public paper. The full dichotomy has no Lean or external challenge certificate. Turning the canonical weighted criterion into universal Sylvester termination still requires a genuine upper summability bound."
+      },
+      {
+        "family_id": "low_critical_path_certificate",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "For any squarefree monic complex polynomial of degree at least two, minimum critical-value modulus at most 13/25 guarantees a rectifiable path of length below two between distinct roots inside its open unit lemniscate, with no root-location restriction. The proof combines hyperbolic root separation, a first-merger Green-function lower bound, and an area-growth contradiction; a portable exact rational certificate validates the threshold.",
+        "source_declarations": [],
+        "hard_mechanism": "For any squarefree monic complex polynomial of degree at least two, minimum critical-value modulus at most 13/25 guarantees a rectifiable path of length below two between distinct roots inside its open unit lemniscate, with no root-location restriction. The proof combines hyperbolic root separation, a first-merger Green-function lower bound, and an area-growth contradiction; a portable exact rational certificate validates the threshold.",
+        "open_boundary": "The sufficient small-critical-value condition is not proved for every unit-disk root configuration, so this does not solve the general problem. The analytic chain and certificate are not Lean formalized. Public source: research_corpus/Erdos1041/LowCriticalPathCertificate.md; replay: experiments/erdos1041_low_critical_path_certificate.py."
       }
     ],
     "programme_family_order": [
@@ -480,7 +509,8 @@
           "negative_mass_recovery",
           "centered_state_dynamics",
           "bounded_rise_coprimality",
-          "negative_orbit_no_go"
+          "negative_orbit_no_go",
+          "arithmetic_weighted_record_dichotomy"
         ]
       },
       {
@@ -515,7 +545,8 @@
           "dyadic_tail_integrality_classification",
           "integral_shift_classification",
           "totient_shift_propagation",
-          "coefficient_only_no_go"
+          "coefficient_only_no_go",
+          "actual_real_prime_gap_tail"
         ]
       },
       {
@@ -567,7 +598,8 @@
           "newton_value_decay",
           "ray_separation",
           "translation_avoidance",
-          "root_retention"
+          "root_retention",
+          "low_critical_path_certificate"
         ]
       },
       {
@@ -704,8 +736,8 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "bcbf22a62ef6c63e41ad70d8409e5cadf4d4d59e300d73b4f6260141f9d58feb",
-    "source_review_family_count": 89,
+    "source_review_matrix_sha256": "efbd3c995b0310d454e0d2495fd6a3f081551cef05df463dc2eb9205116bb4ec",
+    "source_review_family_count": 92,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
     "source_review_family_ids": [
@@ -721,6 +753,7 @@
       "bounded_rise_coprimality",
       "bounded_negative_exclusion",
       "negative_mass_recovery",
+      "arithmetic_weighted_record_dichotomy",
       "totient_kernel_basis",
       "totient_kernel_rank",
       "totient_kernel_all_base_index",
@@ -749,6 +782,7 @@
       "totient_shift_propagation",
       "small_mismatch_criterion",
       "coefficient_only_no_go",
+      "actual_real_prime_gap_tail",
       "divisibility_weighted_support_irrationality",
       "sub_logstar_reciprocal_mass_irrationality",
       "arbitrary_prime_power_support_irrationality",
@@ -791,6 +825,7 @@
       "root_retention",
       "published_proof_gap",
       "lemniscate_finite_search",
+      "low_critical_path_certificate",
       "scalar_content_no_go",
       "endpoint_residues",
       "four_jet_collision",
@@ -913,7 +948,10 @@
       "prime_cofactor_repair_obstruction": "represented",
       "prime_repair_finite_support_rigidity": "represented",
       "factorial_analytic_growth_boundaries": "subordinate",
-      "canonical_factorial_digit_termination": "represented"
+      "canonical_factorial_digit_termination": "represented",
+      "actual_real_prime_gap_tail": "represented",
+      "arithmetic_weighted_record_dichotomy": "represented",
+      "low_critical_path_certificate": "represented"
     },
     "targeted_theorem_forest_discoveries": [
       {

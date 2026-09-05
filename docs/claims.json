@@ -12837,6 +12837,14 @@
               "ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass"
             ],
             "boundary": "The exact criterion assumes a, D : ℕ → ℤ and C : ℕ → ℕ with the declared next-denominator and next-tail dynamics, C > 0, the strict centered step equation, division-free normalized vanishing, and Summable (negativeRelativeMass C (fun n ↦ centeredState (a n) (D n) (C n))). It does not prove these hypotheses for the original Erdős #243 orbit, supply a prime-specific producer, or establish an unconditional #243 endpoint or reciprocal-tail irrationality. Any surviving canonical orbit must have divergent normalized negative mass. This is distinct from centered_state_dynamics, whose recovery criterion uses a uniform lower-bound hypothesis; no novelty, priority, significance, or external-review claim is made."
+          },
+          {
+            "id": "arithmetic_weighted_record_dichotomy",
+            "contribution_class": "ordinary arithmetic theorem and canonical-orbit criterion",
+            "summary": "For positive integer LCM states with exact lcm/gcd update and feedback rho U_next=U-V, V=L-(a-1)U, and only the lower centering bound -U<=2V, bounded U is equivalent to finiteness of the record-step excess sum sum(-V-B)_+ f(U), for each fixed integer B>=0 and finite nonnegative nonincreasing weight with divergent integral. Unbounded height itself supplies arbitrarily many pairwise-coprime record digits; no fresh-index density or subexponential growth assumption is needed.",
+            "evidence_mode": "Ordinary proof with independent exact finite checks",
+            "comparator_disposition": "not_applicable_not_a_lean_proposition",
+            "boundary": "The finite CRT crossing and global divergent-integral argument are stated in the public paper. The full dichotomy has no Lean or external challenge certificate. Turning the canonical weighted criterion into universal Sylvester termination still requires a genuine upper summability bound."
           }
         ]
       },
@@ -13188,6 +13196,20 @@
               "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic"
             ],
             "boundary": "CoefficientOnlyNoGo checks the exact finite partial-sum identity and the two non-eventual-periodicity statements. It does not assert the infinite limit of the synthetic countermodel, identify its coefficient stream with actual prime gaps, establish a prime-gap tail bridge, prove #251 irrationality, or make novelty, priority, significance, or external-review claims."
+          },
+          {
+            "id": "actual_real_prime_gap_tail",
+            "contribution_class": "formalized actual-series bridge and conditional criterion",
+            "summary": "The scaled actual prime-gap tail equals its convergent shifted-gap series and satisfies the real dyadic recurrence unconditionally. Irrationality of the actual prime series is equivalent to escape of its positive real tail shifts from integral values; cofinal adjacent small shifts with mismatched actual gaps imply irrationality.",
+            "evidence_mode": "Lean kernel",
+            "declarations": [
+              "ErdosProblems.Erdos251.realPrimeGapTail_eq_tsum_shifted_gaps",
+              "ErdosProblems.Erdos251.realPrimeGapTail_recurrence",
+              "ErdosProblems.Erdos251.irrational_primeSeries_iff_realPrimeGapTail_escape",
+              "ErdosProblems.Erdos251.irrational_primeSeries_of_realPrimeGapTail_small_mismatch"
+            ],
+            "comparator_disposition": "not_selected_pending_exact_transport",
+            "boundary": "The actual infinite-series and recurrence bridge is checked. Cofinal small-mismatch supply remains an unproved hypothesis; the finite numerical witness and its polynomial tail estimate are ordinary proof and exact computation. These new real-tail interfaces have no independent challenge replay."
           }
         ]
       },
@@ -13525,17 +13547,29 @@
             "id": "translated_cubic_quotient_fibres",
             "contribution_class": "ordinary proved restricted metric theorem; novelty unassessed",
             "summary": "Let q >= 2, h be complex, P be monic cubic, and f(z)=P((z-h)^q). If all zeros of f lie in the open unit disk and f has at least two distinct zero values, two zeros are joined through h by a two-segment path shorter than two inside |f|<1. This solves this coefficient family in every degree 3q >= 6. Mechanism: Root-of-unity averaging puts every quotient root in the open unit disk. A cubic charge identity selects a root with a safe whole spoke by an AM-GM distance envelope. Two points of its cyclic fibre pull the safe spoke back to two segments through h; the zero-root fallback treats degeneracy.",
-            "evidence_mode": "Ordinary full theorem; any separately identified Lean kernel has a narrower statement",
+            "evidence_mode": "Ordinary full metric theorem; Lean checks the actual cyclic-fibre mean square and quotient-disk bridge",
             "comparator_disposition": "not_applicable_not_a_lean_proposition",
-            "boundary": "The separately configured cubic_safeRootSpoke kernel proves a safe cubic spoke for three supplied disk roots. Complete cyclic-fibre construction and averaging, the zero-root fallback, pullback and metric path assembly remain ordinary proof steps. No terminal external Comparator receipt or full-theorem formalization is asserted."
+            "boundary": "For a supplied primitive root of unity, Lean proves the complete orbit mean-square identity, the strict centre/radius budget, quotient-root disk membership, and composition-zero transfer. Constructing all required fibres, choosing or lifting the geometric path, handling degeneracies, and assembling its length bound remain ordinary proof steps. No full-theorem challenge replay is asserted.",
+            "declarations": [
+              "ErdosProblems.Erdos1041.cyclicFiber_sum_normSq",
+              "ErdosProblems.Erdos1041.cyclicFiber_normSq_add_lt_one",
+              "ErdosProblems.Erdos1041.cyclicFiber_quotient_norm_lt_one",
+              "ErdosProblems.Erdos1041.cyclicFiber_composition_zero"
+            ]
           },
           {
             "id": "translated_quartic_quotient_fibres",
             "contribution_class": "ordinary proved restricted metric theorem; novelty unassessed",
             "summary": "Let q >= 2, h be complex, P be monic quartic, and f(z)=P((z-h)^q). If all listed zeros of f lie in the open unit disk, two listed zero occurrences have a rectifiable connecting path shorter than two inside |f|<1. The ordinary argument lifts the cited quartic chord-or-radial theorem through every nontrivial cyclic power; multiplicity may give a degenerate path. Mechanism: Cyclic mean-square averaging puts the quotient roots in the open disk. For alpha=1/q, a lifted chord has density bounded by (sqrt(d^2+x^2))^(alpha-1) <= x^(alpha-1); integration bounds its length by |a|^alpha+|b|^alpha < 2. Splitting at the origin handles the branch singularity.",
-            "evidence_mode": "Ordinary full theorem; any separately identified Lean kernel has a narrower statement",
+            "evidence_mode": "Ordinary full metric theorem; Lean checks the actual cyclic-fibre mean square and quotient-disk bridge",
             "comparator_disposition": "not_applicable_not_a_lean_proposition",
-            "boundary": "The research Lean companion checks scalar lift-density, integration and endpoint-budget consumers. It does not prove the cited quartic geometry, construct a continuous root lift, establish full cyclic fibres or assemble the path. There is no matching Comparator theorem for this complete ordinary family."
+            "boundary": "For a supplied primitive root of unity, Lean proves the complete orbit mean-square identity, the strict centre/radius budget, quotient-root disk membership, and composition-zero transfer. Constructing all required fibres, choosing or lifting the geometric path, handling degeneracies, and assembling its length bound remain ordinary proof steps. No full-theorem challenge replay is asserted.",
+            "declarations": [
+              "ErdosProblems.Erdos1041.cyclicFiber_sum_normSq",
+              "ErdosProblems.Erdos1041.cyclicFiber_normSq_add_lt_one",
+              "ErdosProblems.Erdos1041.cyclicFiber_quotient_norm_lt_one",
+              "ErdosProblems.Erdos1041.cyclicFiber_composition_zero"
+            ]
           },
           {
             "id": "critical_value_mean_budget",
@@ -13600,6 +13634,14 @@
             "evidence_mode": "external computation",
             "comparator_disposition": "not_applicable_not_a_lean_theorem",
             "boundary": "Finite evidence does not settle the universal problem."
+          },
+          {
+            "id": "low_critical_path_certificate",
+            "contribution_class": "ordinary restricted metric theorem with exact rational certificate",
+            "summary": "For any squarefree monic complex polynomial of degree at least two, minimum critical-value modulus at most 13/25 guarantees a rectifiable path of length below two between distinct roots inside its open unit lemniscate, with no root-location restriction. The proof combines hyperbolic root separation, a first-merger Green-function lower bound, and an area-growth contradiction; a portable exact rational certificate validates the threshold.",
+            "evidence_mode": "Ordinary analytic proof plus exact rational computational certificate",
+            "comparator_disposition": "not_applicable_not_a_lean_proposition",
+            "boundary": "The sufficient small-critical-value condition is not proved for every unit-disk root configuration, so this does not solve the general problem. The analytic chain and certificate are not Lean formalized. Public source: research_corpus/Erdos1041/LowCriticalPathCertificate.md; replay: experiments/erdos1041_low_critical_path_certificate.py."
           }
         ]
       },
@@ -13626,10 +13668,15 @@
           {
             "id": "four_jet_collision",
             "contribution_class": "locally proved result and no-go result; novelty unassessed",
-            "summary": "Binary selectors collide in the four-jet signature at the stated rank and depth.",
+            "summary": "Binary selectors collide in the ambient four-jet signature at the stated rank and depth. For a modular tail whose every row is unimodular and whose adjacent minors vanish, all minors vanish and the sharper N<2^k collision threshold applies; at modulus 2^S 3^R with R>0, k>=S+2R suffices. Neither coordinate must be a unit: (2,3) modulo six is an example.",
             "evidence_mode": "Lean kernel",
             "comparator_disposition": "not_selected_finite_combinatorial_family",
-            "boundary": "A signed relation is not nonzero analytic data."
+            "boundary": "The weaker unimodularity hypothesis and compressed selector threshold are formalized. The collision gives a kernel element, not nonvanishing of an analytic remainder or an irrationality conclusion.",
+            "declarations": [
+              "ErdosProblems.Erdos1049.BezoutPluckerJets.adjacent_det_zero_forces_all_det_zero_of_isCoprime",
+              "ErdosProblems.Erdos1049.BezoutPluckerJets.zmod_binary_tail_collision_of_adjacent_det_zero_of_isCoprime",
+              "ErdosProblems.Erdos1049.BezoutPluckerJets.zmod_binary_tail_collision_of_two_three_depth_of_isCoprime"
+            ]
           },
           {
             "id": "coordinatewise_corridor_no_go",
