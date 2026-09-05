@@ -203,6 +203,9 @@ multiple modules; narrowing work must not silently narrow valid matches.
 Apply source selection to ranked backlogs as well as coverage reports, but rank
 all matching sources before imposing the output limit. Selecting the first few
 files before ranking can make a faster worklist omit its highest-priority item.
+When citations only affect ranking, narrow the citation index while retaining
+uncited candidates. Reuse the common atlas reader instead of introducing a
+second decoding path with different costs or errors.
 
 If a common entry or status command repeatedly audits historical data because
 an active file crossed a storage threshold, inspect the storage lifecycle

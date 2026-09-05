@@ -271,7 +271,7 @@ def load_claims() -> dict:
 
 @lru_cache(maxsize=1)
 def load_declaration_atlas() -> dict:
-    return load_json(DECLARATION_ATLAS, "family-relations")
+    return load_json(DECLARATION_ATLAS, "declaration atlas")
 
 
 @lru_cache(maxsize=1)
@@ -1990,11 +1990,8 @@ def cmd_problem_registry(corpus: dict, args) -> int:
 
 def cmd_structural_backlog(corpus: dict, args) -> int:
     """Rank structural-only theorem families for honest authored replacement."""
-    atlas = json.loads(
-        (ROOT / "docs" / "declaration_atlas.json").read_text(encoding="utf-8")
-    )
+    atlas = load_declaration_atlas()
     atlas_index = {row["id"]: row for row in atlas["declarations"]}
-    role_index = paper_citation_role_index(corpus)
     paper_selected_ids: set[str] = set()
     paper_sources = sorted((ROOT / "paper").glob("*.tex"))
     if args.paper:
@@ -2005,14 +2002,18 @@ def cmd_structural_backlog(corpus: dict, args) -> int:
             if needle in source.name.casefold()
             or needle in str(source.relative_to(ROOT)).casefold()
         ]
-    for source in paper_sources:
-        for module, _line, declaration in paper_lean_citations(
-            source.read_text(encoding="utf-8")
-        ):
-            for key in paper_citation_keys(module, declaration):
-                paper_selected_ids.update(
-                    role["id"] for role in role_index.get(key, [])
-                )
+    citations = {
+        citation
+        for source in paper_sources
+        for citation in paper_lean_citations(source.read_text(encoding="utf-8"))
+    }
+    cited_modules = frozenset(module.rsplit("/", 1)[-1] for module, _, _ in citations)
+    role_index = paper_citation_role_index(corpus, cited_modules)
+    for module, _line, declaration in citations:
+        for key in paper_citation_keys(module, declaration):
+            paper_selected_ids.update(
+                role["id"] for role in role_index.get(key, [])
+            )
 
     node_index = nodes_by_id(corpus)
     zone_problems = {
@@ -2969,7 +2970,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--paper",
-        help="paper-coverage or population-backlog case-insensitive paper path/name filter",
+        help="paper-coverage, population-backlog, or structural-backlog case-insensitive paper path/name filter",
     )
     parser.add_argument("--limit", type=int, default=40)
     args = parser.parse_args()
