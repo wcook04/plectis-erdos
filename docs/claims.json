@@ -17486,6 +17486,41 @@
           "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
           "line": 211
         }
+      ],
+      "comparator_transports": [
+        {
+          "package_id": "ExternalVerification",
+          "interface_name": "Erdos249257.ExternalVerification.actualLcmTailDiff_shift_pos",
+          "source_declarations": [
+            {
+              "name": "actualLcmTailDiff_shift_pos",
+              "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+              "line": 39
+            }
+          ]
+        },
+        {
+          "package_id": "ExternalVerification",
+          "interface_name": "Erdos249257.ExternalVerification.actualLcm_trueEndpointSurvivor_neg",
+          "source_declarations": [
+            {
+              "name": "actualLcm_trueEndpointSurvivor_neg",
+              "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+              "line": 172
+            }
+          ]
+        },
+        {
+          "package_id": "ExternalVerification",
+          "interface_name": "Erdos249257.ExternalVerification.actualLcm_integral_forces_topEdgeResidue",
+          "source_declarations": [
+            {
+              "name": "actualLcm_integral_forces_topEdgeResidue",
+              "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+              "line": 211
+            }
+          ]
+        }
       ]
     },
     {
