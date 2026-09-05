@@ -145,6 +145,13 @@ evaluation or argument that separates them before claiming independence of
 the full family. Follow the checked proof's recovery step, not just its main
 matrix or estimate.
 
+Eliminating a sign or branch is not automatically part of a quantitative
+certificate. Write the certificate's actual inequality and check that it
+follows after any change of coordinates. For example, `0 < e < B < P` and
+`r = P - e` give `P - B < r < P`; they do not give `r > B` without another
+comparison, such as `P >= 2B`. Describe the proved exclusion until that
+comparison is supplied.
+
 ## Check the meaning of numerical summaries
 
 When turning a computation into a stated bound, inspect the producing code and
