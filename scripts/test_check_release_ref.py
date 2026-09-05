@@ -667,6 +667,11 @@ def main() -> int:
                 "passing snapshot did not report every gate exit",
             )
             require(
+                all(0 <= row["wall_time_seconds"] <= passed["wall_time_seconds"]
+                    for row in passed["gate_results"]),
+                "passing snapshot lost bounded per-gate elapsed times",
+            )
+            require(
                 passed["failed_gate_count"] == 0,
                 "passing snapshot reported a failed gate",
             )
@@ -989,6 +994,10 @@ def main() -> int:
                 probe_only=False,
             )
             require(timeout_exit == 124, "timeout exit was not normalized to 124")
+            require(
+                timed_out["gate_results"][0]["wall_time_seconds"] >= TIMEOUT_SECONDS,
+                "timeout receipt lost elapsed time in the interrupted gate",
+            )
             require(
                 timed_out["status"] == "timeout",
                 "timed-out release gate was not reported as timeout",

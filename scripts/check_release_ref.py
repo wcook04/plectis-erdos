@@ -372,7 +372,8 @@ def validate_ref(
         try:
             for command in RELEASE_COMMANDS:
                 active_command = command
-                remaining = deadline - time.monotonic()
+                gate_started = time.monotonic()
+                remaining = deadline - gate_started
                 if remaining <= 0:
                     raise subprocess.TimeoutExpired(command, timeout_seconds)
                 completed = run(
@@ -386,6 +387,7 @@ def validate_ref(
                     {
                         "command": list(command),
                         "exit_code": completed.returncode,
+                        "wall_time_seconds": round(time.monotonic() - gate_started, 3),
                         "stdout_tail": bounded_tail(completed.stdout),
                         "stderr_tail": bounded_tail(completed.stderr),
                     }
@@ -430,6 +432,7 @@ def validate_ref(
                         "command": list(active_command),
                         "exit_code": None,
                         "status": "timeout",
+                        "wall_time_seconds": round(time.monotonic() - gate_started, 3),
                         "stdout_tail": timed_out_stdout,
                         "stderr_tail": timed_out_stderr,
                     }
