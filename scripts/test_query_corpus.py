@@ -1394,6 +1394,7 @@ def validate_route_memory_cards() -> None:
 
 
 def validate_connection_query_ranking() -> None:
+    query_corpus.declaration_row_indexes.cache_clear()
     packet = query_corpus.connection_card(
         "mersenneTail_lt_weight",
         8,
@@ -1418,6 +1419,13 @@ def validate_connection_query_ranking() -> None:
         "anchor_then_query_overlap_then_exact_source_span_relation"
     )
     assert receipt["excluded_module_broad_count"] > 100
+    assert query_corpus.declaration_row_indexes.cache_info().misses == 0
+    module_packet = query_corpus.connection_card(
+        "Erdos249257.GeometricCoprimality", 4
+    )
+    assert module_packet["anchor"]["handle_kind"] == "module"
+    assert module_packet["declarations"]
+    assert query_corpus.declaration_row_indexes.cache_info().misses == 0
 
     pattern = query_corpus.declaration_reference_pattern(
         {"producer", "producer_long"}

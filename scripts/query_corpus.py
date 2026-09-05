@@ -419,7 +419,9 @@ SEMANTIC_VOCABULARY = (
 
 @lru_cache(maxsize=None)
 def load(rel: str) -> dict[str, Any]:
-    return json.loads((ROOT / rel).read_text(encoding="utf-8"))
+    # JSON accepts CR/LF whitespace itself. Avoid TextIO's universal-newline
+    # scan over the large atlas, retaining the explicit UTF-8 contract.
+    return json.loads((ROOT / rel).read_bytes().decode("utf-8"))
 
 
 def atlas_declarations(atlas: dict[str, Any]) -> list[dict[str, Any]]:
@@ -1119,21 +1121,28 @@ def formal_dependency_path(
 
 
 @lru_cache(maxsize=1)
+def declarations_by_module() -> dict[str, list[dict[str, Any]]]:
+    """Group module interfaces without constructing unrelated lookup indexes."""
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    for row in atlas_declarations(load("docs/declaration_atlas.json")):
+        grouped.setdefault(row["module"], []).append(row)
+    for rows in grouped.values():
+        rows.sort(key=lambda row: (row["line"], row["name"]))
+    return grouped
+
+
+@lru_cache(maxsize=1)
 def declaration_row_indexes() -> dict[str, Any]:
     """Index atlas rows without eagerly resolving every Lean namespace."""
     atlas = load("docs/declaration_atlas.json")
     by_name: dict[str, list[dict[str, Any]]] = {}
-    by_module: dict[str, list[dict[str, Any]]] = {}
     by_source: dict[tuple[str, int, str], dict[str, Any]] = {}
     for row in atlas_declarations(atlas):
         by_name.setdefault(row["name"], []).append(row)
-        by_module.setdefault(row["module"], []).append(row)
         by_source[(row["module"], row["line"], row["name"])] = row
-    for rows in by_module.values():
-        rows.sort(key=lambda row: (row["line"], row["name"]))
     return {
         "by_name": by_name,
-        "by_module": by_module,
+        "by_module": declarations_by_module(),
         "by_source": by_source,
     }
 
@@ -4337,13 +4346,12 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
         if "/" not in resolved_handle and not resolved_handle.endswith(".lean")
         else resolved_handle
     ).removeprefix("./")
-    # Reuse the immutable atlas grouping owned by exact lookup. Building and
-    # sorting the 153k-row module map inside every connection card made four
-    # cards in the canonical corpus suite pay the same full scan four times.
-    declaration_indexes = declaration_row_indexes()
-    declaration_matches = list(
-        declaration_indexes["by_name"].get(resolved_handle, ())
-    )
+    # A connection card needs module interfaces, not global coordinate/name
+    # indexes. A single exact-name filter preserves declaration handle matches.
+    module_rows = declarations_by_module()
+    declaration_matches = [
+        row for row in atlas_declarations(atlas) if row["name"] == resolved_handle
+    ]
     module = next(
         (
             row
@@ -4366,7 +4374,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
     source_text = source_path.read_text(encoding="utf-8")
     source_counts = identifier_counts(source_text)
     anchor_names = {row["name"] for row in declaration_matches}
-    module_declarations = declaration_indexes["by_module"].get(module["path"], [])
+    module_declarations = module_rows.get(module["path"], [])
     declaration_relevance: dict[str, dict[str, Any]] = {}
     if query:
         query_terms = semantic_content_terms(query) or search_terms(query)
@@ -4461,7 +4469,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
         imported = by_module.get(imported_id)
         if imported is None:
             continue
-        rows = declaration_indexes["by_module"].get(imported["path"], [])
+        rows = module_rows.get(imported["path"], [])
         used = [row for row in rows if source_counts.get(row["name"], 0) > 0]
         pool = used or rows
         propositions = [row for row in pool if row["kind"] in {"theorem", "lemma"}]
@@ -4499,7 +4507,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
     for importer in importer_rows[: min(6, limit)]:
         importer_path = ROOT / importer["path"]
         importer_lines = importer_path.read_text(encoding="utf-8").splitlines()
-        importer_declarations = declaration_indexes["by_module"].get(
+        importer_declarations = module_rows.get(
             importer["path"], []
         )
         consumer_rows: list[tuple[dict[str, Any], list[str]]] = []
