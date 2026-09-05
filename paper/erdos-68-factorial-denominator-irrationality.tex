@@ -167,7 +167,7 @@ Exact carry characterization & Checked & The normalized strict successors conver
 Fixed companion-orbit boundary & Checked & Rationality is equivalent to eventual residue $-2$ for the fixed factorial orbit; irrationality is equivalent to cofinal misses.  No theorem produces those misses. \\
 Adjacent-unit cancellation normalizer & Checked & Under consecutive unit carries, the exact offset and denominator share the same positive two-step normalizer, so their window inequality reduces to the universal future numerator bound. \\
 Explicit denominator bound & Checked implication; exact finite certificate & Exact reduction gives $60\nmid Z_{60}$, $64\nmid Z_{64}$, and $67\nmid Z_{67}$.  An exact GMP computation certifies all carries through $300000$ and $b_{300000}\ne1$; the Lean-checked carry theorem gives $q\ge300000$ in every rational representation $\Ser=a/q$ with $q>0$. \\
-Digits eventually zero $\iff$ $\Ser$ rational & Returned derivation & Complete on the return; not yet kernel-checked here. \\
+Digits eventually zero $\iff$ $\Ser$ rational & Checked & The equivalence holds for the canonical factorial expansion of every real number. \\
 Factorial-gap lcm growth $\gg N^{4/3}\log N$ & Derived, source-verified & Derived below from a cited factorial-congruence theorem; not kernel-checked and not used as an input to any claim below. \\
 Finite certificates ($D=3$, $D=9$, $D\le12$) & Verified finite instances & Each excludes only the denominators it names. \\
 Unbounded strict nonvanishing & Open & Required to turn the channel rounding argument into an irrationality proof. \\
@@ -209,13 +209,18 @@ and the canonical digit at radix $n+1$ vanishes.  These are the
 formula} and the
 \lword{Erdos68/CanonicalFactorialDigits.lean}{81}{canonicalDigit_eq_zero_of_rational}{rational-input
 termination theorem}.  They imply that every rational input has an eventually
-zero canonical factorial-digit expansion.  They do not decide whether $\Ser$
-is rational and supply no recurrence estimate for its digits or remainders.
+zero canonical factorial-digit expansion.
 
-The returned derivation additionally gives the converse for this particular
-representation: the digits $d_m(\Ser)$ are eventually zero only if $\Ser$ is
-rational, equivalently the factorial tail state is eventually integral.  That
-converse is not yet kernel-checked here.
+The converse is also formalised, and holds for every real input:
+\[
+ x\in\mathbb Q\quad\Longleftrightarrow\quad
+ d_m(x)=0\ \text{for all sufficiently large }m.
+\]
+The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/a740c6d5bb630a71327ddb4c893c72a288f8519a/ErdosProblems/Erdos68/CanonicalFactorialTermination.lean#L78}{termination equivalence}
+follows from the growth of a positive remainder. If all digits after index
+$N\ge1$ vanish, the recurrence gives
+$\theta_{N+k}\ge(k+1)\theta_N$. Since every canonical remainder is less than
+one, $\theta_N$ must vanish. Thus $x=\lfloor N!x\rfloor/N!$.
 
 A zero canonical digit is not the same event as a zero-branch hit: the returned data
 contain canonical zero digits at $m=5$ and $m=23$, while the zero-branch list
@@ -1572,9 +1577,8 @@ GMP carry certificate through $m=300000$ is regenerated separately and
 hash-bound; combined with the checked carry theorem it gives $q\ge300000$,
 but it is not itself a Lean evaluation.
 
-The converse direction of the
-digit--rationality equivalence, the weighted primitive support decomposition,
-and the determinant-quotient reduction are returned derivations that have not
+The weighted primitive support decomposition and the determinant-quotient
+reduction are returned derivations that have not
 been kernel-checked here, and are labelled as such wherever they appear.  The
 factorial-gap lcm growth bound is derived here from
 the exact factorial-congruence multiplicity theorem of Garaev--Luca--Shparlinski
