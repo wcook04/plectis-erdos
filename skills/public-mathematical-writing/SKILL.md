@@ -159,7 +159,11 @@ Distinguish represented source mathematics from a configured or executed
 external-verification target. Reuse existing nodes; fix a missing route or
 consumer edge instead of duplicating the theorem. Refresh generated surfaces
 only after the authored meaning is settled. Rank by the mathematical gain,
-not the number of newly exposed modules or declarations.
+not the number of newly exposed modules or declarations. Verify the actual
+query output too: a family can exist in a registry yet be absent from the
+ordered overview. Keep default routes bounded by summarizing repeated prose
+and preserving identities and detail handles; do not hide stronger results or
+raise response limits to accommodate duplication.
 
 ## Prose pass
 

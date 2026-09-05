@@ -263,8 +263,8 @@
       "is_restatement_of_open_problem": false,
       "engine": "Finite rectangular exponent ranges and an exact lower-and-upper interval filter on smooth3Val.",
       "prior_art_state": "routine_corollary_or_specialisation",
-      "prior_art_note": "Standard finite smooth-number shell coordinate.",
-      "scope_caveat": "The definition supplies no cardinality or tail estimate. Its bases and coordinate bounds are ordered parameters; the shell is not invariant under silently relabelling them.",
+      "prior_art_note": "Standard finite smooth-number shell coordinate. The ordinary proof in paper/erdos-269-three-prime-running-lcm.tex::res:actual-tail-bound uses actual logarithmic-height cells [max(2^A,3^B,5^C),min(2^(A+1),3^(B+1),5^(C+1))) and the checked finite projection mechanism. It is an infinite-tail consumer of this coordinate, not a formalized consequence of the definition alone.",
+      "scope_caveat": "The definition alone supplies no cardinality or tail estimate. Its bases and coordinate bounds are ordered parameters; the shell is not invariant under silently relabelling them. In the actual {2,3,5} application the ordered bases give A>=B>=C, and the paper separately proves at most one nonempty cell at each total rank. The grouping and summation of the actual infinite tail remain to be formalized.",
       "confidence": "high",
       "evidence": [
         {
@@ -287,8 +287,8 @@
       "is_restatement_of_open_problem": false,
       "engine": "From a≤b≤c derive a+2b≤j; with b=a+d, the remaining gap is the nonnegative product d(3a+4d+3).",
       "prior_art_state": "routine_corollary_or_specialisation",
-      "prior_art_note": "Elementary arithmetic-geometric comparison for three sorted coordinates.",
-      "scope_caveat": "Sorting is a theorem hypothesis, not a free relabelling of an asymmetric smooth shell. This arithmetic inequality alone neither bounds a shell nor estimates an infinite tail.",
+      "prior_art_note": "Elementary arithmetic-geometric comparison for three sorted coordinates. The ordinary proof in paper/erdos-269-three-prime-running-lcm.tex::res:actual-tail-bound combines this quadratic multiplicity budget with a geometric factor 2^(-k) for each additional actual cell rank. It proves 0<X_a<=(n_a^2+8n_a+18)/9 and hence the bound required in res:actual-carry-bound; no external novelty claim or new Lean actual-tail theorem is asserted.",
+      "scope_caveat": "Sorting is a theorem hypothesis, not a free relabelling of an asymmetric smooth shell. This arithmetic inequality alone neither bounds a shell nor estimates an infinite tail. Its actual-tail consumer supplies the missing geometric and summation argument in ordinary mathematics; formalization of that consumer remains separate from the checked finite inequality.",
       "confidence": "high",
       "evidence": [
         {
@@ -311,8 +311,8 @@
       "is_restatement_of_open_problem": false,
       "engine": "Exact conjunction of strict escape above the bound and membership in the positive residue interval ending at C.",
       "prior_art_state": "routine_corollary_or_specialisation",
-      "prior_art_note": "Elementary modular-window predicate used by the finite contradiction.",
-      "scope_caveat": "The predicate does not produce an escaping residue. The denominator-dependent cofinal local-window escape theorem and the identification of the actual rational tail with a bounded carry remain open.",
+      "prior_art_note": "Elementary modular-window predicate used by the finite contradiction. The ordinary results paper/erdos-269-three-prime-running-lcm.tex::res:actual-carry-bound and res:actual-escape-endpoint now connect the literal {2,3,5} series, its actual digits, and the denominator-reduced bounded carry to this contradiction. See the same paper::prob:producer for the exact denominator-dependent cofinal escape quantifiers.",
+      "scope_caveat": "The predicate does not produce an escaping residue. The actual rational tail is identified with a positive bounded integral carry in the paper argument, including cancellation of the denominator factors 2,3,5; this bridge is not yet formalized. The remaining arithmetic hypothesis of that sufficient criterion is actual cofinal escape for every positive denominator B coprime to 30, beyond every onset, using the literal digits and the stated bound. A generic or finite escape computation does not supply that hypothesis.",
       "confidence": "high",
       "evidence": [
         {

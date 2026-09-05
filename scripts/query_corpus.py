@@ -8523,12 +8523,16 @@ def claim_route_memory_projection(
     return projection
 
 
-def bounded_programme_signal_projection(spine: Mapping[str, Any]) -> dict[str, Any]:
+def bounded_programme_signal_projection(
+    spine: Mapping[str, Any], *, problem_front_door: bool = False
+) -> dict[str, Any]:
     """Keep every signal identity while routing verbose judgement to detail.
 
     Programme routes are first-contact packets.  Palomar's complete per-family
     prose remains available through the problem route, but repeating it inside
-    every overlapping programme made those packets grow with the corpus.  This
+    every overlapping programme made those packets grow with the corpus. The
+    problem front door already carries full family statements and boundaries;
+    its duplicate signal prose is routed to the authored source owners. This
     projection keeps ordering, source, declaration, family, and relation-edge
     identities; only descriptive prose is omitted.
     """
@@ -8568,7 +8572,11 @@ def bounded_programme_signal_projection(spine: Mapping[str, Any]) -> dict[str, A
         results.append([result.get(key) for key in retained_fields] + [relations])
     if relation_reason_count:
         omitted_fields.add("relations[].reason")
-    detail_route = f"python3 scripts/query_corpus.py --route erdos_{problem}"
+    detail_route = (
+        "docs/PALOMAR_RESULT_SHOWCASE.json"
+        if problem_front_door
+        else f"python3 scripts/query_corpus.py --route erdos_{problem}"
+    )
     return {
         "problem": problem,
         "ordering_contract": spine["ordering_contract"],
@@ -8634,7 +8642,9 @@ def route_packet(route_id: str) -> dict[str, Any]:
             "kind": "problem_route",
             "authority_posture": problem_route["authority_posture"],
             "route": problem_route,
-            "mathematical_signal_spine": programme_signal,
+            "mathematical_signal_spine": bounded_programme_signal_projection(
+                programme_signal, problem_front_door=True
+            ),
             "proof_authority": "Lean source checked by the pinned Lean kernel",
             "release_provenance": claims["release"]["public_projection"],
             "validation": "python3 scripts/check_release.py",
@@ -10547,6 +10557,12 @@ def render_card(packet: dict[str, Any]) -> str:
                 card, route.get("follow", {}).get("route_memory")
             )
         ]
+        signal = packet["mathematical_signal_spine"]
+        signal_rows = (
+            [dict(zip(signal["result_fields"], row)) for row in signal["results"]]
+            if "result_fields" in signal
+            else signal["results"]
+        )
         rows.extend(
             (
                 f"programme_signal #{row['programme_order']} "
@@ -10554,7 +10570,7 @@ def render_card(packet: dict[str, Any]) -> str:
                 f"| source_disposition={row['source_disposition']} "
                 f"| declaration={row['declaration']}"
             )
-            for row in packet["mathematical_signal_spine"]["results"]
+            for row in signal_rows
         )
         return "\n".join(rows)
     if kind == "publication_family":

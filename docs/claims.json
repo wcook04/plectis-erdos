@@ -13330,7 +13330,7 @@
               "ErdosProblems.Erdos269.leastPositiveResidue",
               "ErdosProblems.Erdos269.no_positive_absorbedCarry_of_cofinalLocalWindowEscape"
             ],
-            "boundary": "For the literal {2,3,5} radix/digit data, the surviving producer must supply, for every positive B coprime to 30 and every onset a0>=1, an index ell>=a0 and length h>=1 whose least positive residue of -B times the window forcing modulo the window-base product exceeds K235(B,ell+h). This cofinal escape is unproved. The actual series bridge, smooth cancellation and bound are ordinary mathematical arguments, not new Comparator evidence or completed Lean formalizations. The existing source theorem still assumes the exact recurrence, positive integral carry and short bound. Irrationality remains open; this does not settle arbitrary three-prime sets or the de-duplicated series."
+            "boundary": "The formal predicate is CofinalLocalWindowEscape. For the literal {2,3,5} radix/digit data, the surviving producer must supply, for every positive B coprime to 30 and every onset a0>=1, an index ell>=a0 and length h>=1 whose least positive residue of -B times the window forcing modulo the window-base product exceeds K235(B,ell+h). This cofinal escape is unproved. The actual series bridge, smooth cancellation and bound are ordinary mathematical arguments, not new Comparator evidence or completed Lean formalizations. The existing source theorem still assumes the exact recurrence, positive integral carry and short bound. Irrationality remains open; this does not settle arbitrary three-prime sets or the de-duplicated series."
           },
           {
             "id": "weighted_phase_carry_observer",

@@ -1614,12 +1614,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
       "local_source": "paper/erdos-249-binary-totient-series.tex",
-      "source_sha256": "sha256:8ff482e006439818367e847276f5700a4b50174ee3a7c3378bb681903f242490",
+      "source_sha256": "sha256:dc00be4bd2ad840e7429c9e96b8c485e6d1f77f87d7fdd229993ce5e97200025",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-249-binary-totient-series.tex",
-      "section_count": 30,
+      "section_count": 32,
       "sections": [
         {
           "level": 1,
@@ -1631,175 +1631,187 @@
           "level": 1,
           "id": "sec:results",
           "title": "Introduction and main results",
-          "line": 47
+          "line": 49
         },
         {
           "level": 1,
           "id": "sec:family",
           "title": "The Lambert-series form of Problem #249",
-          "line": 244
+          "line": 248
         },
         {
           "level": 4,
           "id": "a-nearby-2026-totient-theorem-has-different-coordinates.",
           "title": "A nearby 2026 totient theorem has different coordinates.",
-          "line": 267
+          "line": 271
         },
         {
           "level": 4,
           "id": "exact-identities-and-representations.",
           "title": "Exact identities and representations.",
-          "line": 279
+          "line": 283
         },
         {
           "level": 1,
           "id": "sec:rank",
           "title": "Proof of the dyadic-section basis theorem",
-          "line": 316
+          "line": 320
         },
         {
           "level": 2,
           "id": "prior-work",
           "title": "Prior work",
-          "line": 320
+          "line": 324
         },
         {
           "level": 2,
           "id": "parity-separated-evaluation-matrices",
           "title": "Parity-separated evaluation matrices",
-          "line": 349
+          "line": 353
         },
         {
           "level": 1,
           "id": "sec:carry-rank",
           "title": "Carry-rank consequences of rationality",
-          "line": 367
+          "line": 371
+        },
+        {
+          "level": 2,
+          "id": "sec:twoadic-pulses",
+          "title": "Actual dyadic pulses and their tail consequence",
+          "line": 377
         },
         {
           "level": 1,
           "id": "sec:denominator",
           "title": "A Farey-mediant denominator exclusion",
-          "line": 373
+          "line": 412
         },
         {
           "level": 1,
           "id": "sec:fresh-prime",
           "title": "Fresh-prime losses in the diagonal probes",
-          "line": 383
+          "line": 422
         },
         {
           "level": 4,
           "id": "finite-square-crt-correction-suppression.",
           "title": "Finite square-CRT correction suppression.",
-          "line": 422
+          "line": 461
         },
         {
           "level": 4,
           "id": "canonical-strict-jump-slack.",
           "title": "Canonical strict-jump slack.",
-          "line": 437
+          "line": 476
         },
         {
           "level": 4,
           "id": "finite-foreign-residue-projection.",
           "title": "Finite foreign-residue projection.",
-          "line": 448
+          "line": 487
         },
         {
           "level": 4,
           "id": "the-actual-lcm-orbit-exact-frontier-and-sign-trap.",
           "title": "The actual LCM orbit: exact frontier and sign trap.",
-          "line": 468
+          "line": 507
         },
         {
           "level": 4,
           "id": "a-quantitative-separation-criterion.",
           "title": "A quantitative separation criterion.",
-          "line": 476
+          "line": 515
+        },
+        {
+          "level": 2,
+          "id": "sec:lcm-curvature",
+          "title": "Cancelling the LCM main term",
+          "line": 525
         },
         {
           "level": 1,
           "id": "sec:nogo",
           "title": "Obstructions for fixed-coordinate methods",
-          "line": 486
+          "line": 557
         },
         {
           "level": 1,
           "id": "sec:conditional-criteria",
           "title": "Conditional criteria",
-          "line": 498
+          "line": 575
         },
         {
           "level": 4,
           "id": "a-prime-orbit-sufficient-condition.",
           "title": "A prime-orbit sufficient condition.",
-          "line": 504
+          "line": 581
         },
         {
           "level": 4,
           "id": "finite-euler-factor-identities.",
           "title": "Finite Euler-factor identities.",
-          "line": 523
+          "line": 600
         },
         {
           "level": 4,
           "id": "mixed-differences-of-cyclotomic-layers.",
           "title": "Mixed differences of cyclotomic layers.",
-          "line": 550
+          "line": 627
         },
         {
           "level": 1,
           "id": "sec:frontier",
           "title": "Open problems",
-          "line": 596
+          "line": 673
         },
         {
           "level": 2,
           "id": "exact-equivalent-formulations",
           "title": "Exact equivalent formulations",
-          "line": 602
+          "line": 679
         },
         {
           "level": 2,
           "id": "exact-full-depth-reduction-and-a-stronger-sufficient-condition",
           "title": "Exact full-depth reduction and a stronger sufficient condition",
-          "line": 633
+          "line": 710
         },
         {
           "level": 2,
           "id": "structural-and-diophantine-routes",
           "title": "Structural and Diophantine routes",
-          "line": 693
+          "line": 770
         },
         {
           "level": 2,
           "id": "independent-extension",
           "title": "Independent extension",
-          "line": 732
+          "line": 809
         },
         {
           "level": 4,
           "id": "the-independent-denominator-exclusion.",
           "title": "The independent denominator exclusion.",
-          "line": 774
+          "line": 851
         },
         {
           "level": 2,
           "id": "sec:open",
           "title": "Logical status and analytic input",
-          "line": 780
+          "line": 857
         },
         {
           "level": 1,
           "id": "formal-source-notes",
           "title": "Formal source notes",
-          "line": 804
+          "line": 881
         },
         {
           "level": 4,
           "id": "claim-status.",
           "title": "Claim status.",
-          "line": 808
+          "line": 885
         }
       ],
       "citations_rendered": 21,
@@ -1808,8 +1820,8 @@
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:c499aff4736202ec56e023f3dee8cae116be6640ae73f143008ffde6c1e2bf8d",
-      "pdf_byte_count": 204813,
+      "pdf_sha256": "sha256:50143e5b050e05b4b39087201795576d6e8b783a7f28c9b777430819dca88526",
+      "pdf_byte_count": 215797,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1817,7 +1829,7 @@
           {
             "id": "sec:results",
             "title": "Introduction and main results",
-            "line": 47
+            "line": 49
           },
           {
             "id": "sec:ask",
@@ -1827,7 +1839,7 @@
           {
             "id": "sec:open",
             "title": "Logical status and analytic input",
-            "line": 780
+            "line": 857
           }
         ],
         "unresolved_count": 1
@@ -4179,7 +4191,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
       "local_source": "paper/erdos-269-three-prime-running-lcm.tex",
-      "source_sha256": "sha256:379f505866b529978ff8289927fed1bf6db669dc62ffc19e397e413638d2bcec",
+      "source_sha256": "sha256:950e70339353a61c7e2c4d064a49ba834a9c2b8fefe3c5dd21750f504d72d2de",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-269-three-prime-running-lcm.tex",
@@ -4196,163 +4208,163 @@
           "level": 1,
           "id": "sec:problem",
           "title": "Introduction",
-          "line": 41
+          "line": 42
         },
         {
           "level": 4,
           "id": "results-and-boundary.",
           "title": "Results and boundary.",
-          "line": 98
+          "line": 99
         },
         {
           "level": 2,
           "id": "structure",
           "title": "Structure",
-          "line": 104
+          "line": 105
         },
         {
           "level": 1,
           "id": "sec:lcm",
           "title": "The running least common multiple as a product of pure powers",
-          "line": 112
+          "line": 113
         },
         {
           "level": 1,
           "id": "sec:cells",
           "title": "Constancy on logarithmic cells and the jump points",
-          "line": 160
+          "line": 161
         },
         {
           "level": 1,
           "id": "sec:two-prime",
           "title": "The two-prime sums are transcendental",
-          "line": 218
+          "line": 219
         },
         {
           "level": 1,
           "id": "sec:fibre",
           "title": "The height-fibre normal form",
-          "line": 339
+          "line": 340
         },
         {
           "level": 1,
           "id": "sec:shell",
           "title": "A quadratic bound for smooth exponent shells",
-          "line": 386
+          "line": 387
         },
         {
           "level": 1,
           "id": "sec:rank",
           "title": "Non-separability of the three-prime kernel",
-          "line": 441
+          "line": 442
         },
         {
           "level": 1,
           "id": "sec:actual-orbit",
           "title": "The actual shell orbit and its integral branch",
-          "line": 493
+          "line": 505
         },
         {
           "level": 1,
           "id": "sec:escape",
           "title": "Dyadic blocks and a conditional carry contradiction",
-          "line": 576
+          "line": 678
         },
         {
           "level": 2,
           "id": "the-four-element-block-alphabet",
           "title": "The four-element block alphabet",
-          "line": 582
+          "line": 684
         },
         {
           "level": 2,
           "id": "the-denominator-reduction-and-its-boundary",
           "title": "The denominator reduction and its boundary",
-          "line": 626
+          "line": 728
         },
         {
           "level": 2,
           "id": "the-window-recurrence-and-the-residue-contradiction",
           "title": "The window recurrence and the residue contradiction",
-          "line": 659
+          "line": 761
         },
         {
           "level": 2,
           "id": "a-finite-check-of-the-escape-condition",
           "title": "A finite check of the escape condition",
-          "line": 744
+          "line": 846
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Complements and further questions",
-          "line": 762
+          "line": 864
         },
         {
           "level": 2,
-          "id": "the-actual-block-data-and-the-missing-bridge",
-          "title": "The actual block data and the missing bridge",
-          "line": 768
+          "id": "the-actual-block-data-and-its-bounded-carry",
+          "title": "The actual block data and its bounded carry",
+          "line": 870
         },
         {
           "level": 2,
           "id": "the-intrinsic-tail-question",
           "title": "The intrinsic tail question",
-          "line": 826
+          "line": 934
         },
         {
           "level": 2,
           "id": "a-denominator-adaptive-sufficient-criterion",
           "title": "A denominator-adaptive sufficient criterion",
-          "line": 848
+          "line": 956
         },
         {
           "level": 2,
           "id": "a-two-dimensional-analytic-representation",
           "title": "A two-dimensional analytic representation",
-          "line": 884
+          "line": 1009
         },
         {
           "level": 2,
           "id": "further-structural-constraints",
           "title": "Further structural constraints",
-          "line": 914
+          "line": 1039
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 933
+          "line": 1058
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 937
+          "line": 1062
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 943
+          "line": 1068
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 949
+          "line": 1074
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 955
+          "line": 1080
         }
       ],
       "citations_rendered": 17,
       "local_pdf": "erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:159671807503b132abb2e7bf5981b87ce38fbc3fd0496bf47d54a1ca7f07ed45",
-      "pdf_byte_count": 169782,
+      "pdf_sha256": "sha256:fe58aaffe05f57de7d8242432fe912e19a09c7c7134e2a23f9de67e12421703e",
+      "pdf_byte_count": 186157,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4360,22 +4372,22 @@
           {
             "id": "sec:problem",
             "title": "Introduction",
-            "line": 41
+            "line": 42
           },
           {
             "id": "sec:lcm",
             "title": "The running least common multiple as a product of pure powers",
-            "line": 112
+            "line": 113
           },
           {
             "id": "sec:escape",
             "title": "Dyadic blocks and a conditional carry contradiction",
-            "line": 576
+            "line": 678
           },
           {
             "id": "sec:open",
             "title": "Complements and further questions",
-            "line": 762
+            "line": 864
           }
         ],
         "unresolved_count": 0

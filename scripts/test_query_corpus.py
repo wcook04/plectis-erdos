@@ -280,6 +280,12 @@ def validate_indexed_problem_routes() -> None:
         row["problem"]: row
         for row in claims["external_verification_packet"]["review_matrix"]
     }
+    full_signals = {
+        row["problem"]: row
+        for row in query_corpus.mathematical_signal_spine(
+            claims, include_programme_detail=True
+        )["programme_spines"]
+    }
     for problem in problems:
         route_id = problem["problem_id"]
         packet = query("--route", route_id)
@@ -295,6 +301,30 @@ def validate_indexed_problem_routes() -> None:
         )
         assert route["paper"] == problem["paper"]
         assert route["open_obligations"] == problem["open_obligations"]
+        assert route["module_count"] == len(problem["modules"])
+        assert route["follow"]["semantic_problem_registry"].endswith(
+            f"--problem {problem['erdos_number']}"
+        )
+        signal = packet["mathematical_signal_spine"]
+        full_signal = full_signals[problem["erdos_number"]]
+        receipt = signal["projection_receipt"]
+        assert receipt["result_count"] == len(full_signal["results"])
+        # Detail must lead to an authored owner, not back to this compact route.
+        detail = receipt["detail_handles"]["complete_problem_signal"]
+        assert detail == "docs/PALOMAR_RESULT_SHOWCASE.json"
+        assert (ROOT / detail).is_file()
+        for values, expected in zip(signal["results"], full_signal["results"]):
+            actual = dict(zip(signal["result_fields"], values))
+            for field in ("family_id", "source_file", "source_declaration",
+                          "programme_order", "source_disposition"):
+                assert actual[field] == expected.get(field)
+            assert actual["relations"] == [
+                [relation.get(field) for field in signal["relation_fields"]]
+                for relation in expected.get("relations", [])
+            ]
+        card = query_corpus.render_card(packet)
+        assert all(f"family={row['family_id']} " in card
+                   for row in full_signal["results"])
         expected_families = review_matrix[problem["erdos_number"]]["families"]
         families = route["result_families"]
         assert [row["id"] for row in families] == [
