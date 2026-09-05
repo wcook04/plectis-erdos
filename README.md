@@ -26,32 +26,58 @@ infrastructure distinct.
 Start with [A reader's way in](HUMAN_ENTRY.md), a command-free tour of the
 problems and evidence boundary.
 
-Choose a checkout. Apply one of the three sparse manifests to the same
-no-checkout clone.
+For a small checkout, clone once, then run exactly one of the three choices
+below.
 The proof build needs `elan`; install it from the
 [Lean setup guide](https://leanprover-community.github.io/get_started.html).
 
 ```bash
-# Quick proof, full Lean source, or reader files: choose one manifest
 git clone --depth=1 --filter=blob:none --single-branch --no-checkout https://github.com/wcook04/plectis-lean-erdos249-257.git
+```
+
+**Quick proof:** the source needed for one bounded proof build.
+
+```bash
 git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-quick-sparse-checkout && git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-quick-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
+git -C plectis-lean-erdos249-257 checkout
+```
+
+**Full Lean source:** both public source trees and their build wrapper.
+
+```bash
 git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-sparse-checkout && git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
+git -C plectis-lean-erdos249-257 checkout
+```
+
+**Reader files:** papers and guides, without the Lean build tools.
+
+```bash
 git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/reader-sparse-checkout && git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
 git -C plectis-lean-erdos249-257 checkout
+```
 
-# Complete current corpus, fetch its pinned history, then inspect one claim
+After choosing quick proof or full Lean source, run the focused build:
+
+```bash
+cd plectis-lean-erdos249-257
+python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.PeriodMultipleEscape
+```
+
+For the complete corpus and claim verification, use this separate checkout
+instead of a sparse checkout:
+
+```bash
 git clone --depth=1 --filter=blob:none --single-branch https://github.com/wcook04/plectis-lean-erdos249-257.git plectis-current
 cd plectis-current
 git fetch --filter=blob:none --unshallow origin main
 python3 scripts/verify_claims.py --claim eb_full_support
 cd ..
+```
 
-# Blobless history for release validation
+For release validation with blobless history, use:
+
+```bash
 git clone --filter=blob:none --single-branch https://github.com/wcook04/plectis-lean-erdos249-257.git plectis-release
-
-# In the Lean-source checkout, run one bounded proof build
-cd plectis-lean-erdos249-257
-python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.PeriodMultipleEscape
 ```
 
 The verifier links a claim to its declaration, paper, receipts, and stopping

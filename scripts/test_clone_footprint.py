@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import re
 import unittest
 from pathlib import Path
 
@@ -15,6 +16,18 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class CloneFootprintTests(unittest.TestCase):
+    def test_copyable_blocks_do_not_combine_exclusive_checkout_choices(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        blocks = re.findall(r"```(?:bash|sh)\n(.*?)```", readme, re.S)
+        choices = [block for block in blocks if "sparse-checkout set" in block]
+        self.assertEqual(len(choices), 3)
+        for block in choices:
+            self.assertEqual(block.count("sparse-checkout set"), 1)
+            self.assertIn(footprint.LEAN_CHECKOUT_COMMAND, block)
+            self.assertNotIn("lean_fast_build.py", block)
+        for block in blocks:
+            self.assertLessEqual(block.count("git clone "), 1)
+
     def test_current_repository_stays_within_clone_budgets(self) -> None:
         report = footprint.build_report(footprint.committed_entries(ROOT))
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
