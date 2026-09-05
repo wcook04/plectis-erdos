@@ -250,5 +250,34 @@
   },
   "proof": "erdos257-eight-return-proofs.md",
   "synthesis": "erdos257-eight-return-synthesis.md",
-  "verifier": "../../scripts/erdos257_eight_return_exact_audit.py"
+  "verifier": "../../scripts/erdos257_eight_return_exact_audit.py",
+  "selected_phase_density_audit": {
+    "schema": "erdos257_selected_phase_density_audit_v1",
+    "arithmetic": "integer enclosures for selected anchors; exact integer phase comparisons",
+    "horizon": 64,
+    "period_cap": 1260,
+    "anchors": [
+      5,
+      7,
+      8,
+      9,
+      10,
+      18,
+      20,
+      24,
+      28,
+      42,
+      45,
+      60
+    ],
+    "period": 1260,
+    "favorable_count": 1011,
+    "conditional_upper_density_lower_bound": "337/840",
+    "favorable_mask_hex": "0xedbeffff9eff6dbfdbecfffb6dfedfefbfdbffb6fbfdbedfedb7f9ecfefbedbfdf6fbed9effedbfdbeffefb3dfedbeff7f9eff6dbfdbecfefb6ffedfefbfdbffb6ffed9effecb7fbecfedbfdbedf6fb6d9edfedbfdbeffefb3ffedbffb7f9edf6dfedbeff6fbffbedfedbfdfef96ff6d9edbecbffbecfedbffbecf7fb6d9edfefbfdbeff6fbfdbedbfdb7f9edf6ffedbfcb6fbfdbedfedbfffeffefb6d8",
+    "anchor_prefix_checked_by_two_methods": true,
+    "minimum_positive_gap": "14715332274447337881867848694743421159831086/66137746473937529842656221840876325853598293275",
+    "unfavorable_count": 249,
+    "boundary": "Upper-density bound conditional on 1/21 membership; no lower-density or membership theorem."
+  },
+  "selected_phase_verifier": "../../scripts/erdos257_selected_phase_density_audit.py"
 }
