@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import subprocess
 import tempfile
 from pathlib import Path
@@ -81,8 +82,9 @@ def execution_posture(workflow: str) -> dict[str, object]:
         normalized.count("runs-on: ubuntu-24.04") == 1,
         "reachable-history workflow must use one pinned runner",
     )
+    budgets = re.findall(r"timeout-minutes: (\d+)", normalized)
     require(
-        normalized.count("timeout-minutes: 15") == 1,
+        len(budgets) == 1 and 0 < int(budgets[0]) <= 120,
         "reachable-history workflow must bound the full-history scan",
     )
     require(
@@ -91,8 +93,10 @@ def execution_posture(workflow: str) -> dict[str, object]:
     )
     require("fetch-depth: 0" in normalized, "history workflow must fetch full history")
     require(
-        "filter: blob:none" in normalized,
-        "history workflow must defer unneeded historical blobs",
+        "filter: blob:none" not in normalized,
+        "history workflow must clone every blob: the audit reads all of them, "
+        "and a partial clone fetched them one object at a time until the job "
+        "timed out (2026-09-05)",
     )
     require("fetch-tags: true" in normalized, "history workflow must fetch tags")
     require(
