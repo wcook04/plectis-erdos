@@ -520,8 +520,8 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "1177b9c23c905304187d99ee4a34641dacd8c406566799f8758555bf8baeba44",
-    "source_review_family_count": 70,
+    "source_review_matrix_sha256": "0d15935955bdb82cba5463a6afa000848037f659363c8f918b6d9574e0738c4f",
+    "source_review_family_count": 73,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
     "source_review_family_ids": [
@@ -554,6 +554,9 @@
       "totient_lambert_coefficients",
       "eventually_periodic_lambert",
       "totient_certificate_equivalences",
+      "totient_twoadic_pulse_blocks",
+      "totient_fixed_rank_lcm_curvature",
+      "totient_parity_separated_carry_countermodel",
       "prime_gap_reformulation",
       "integral_shift_classification",
       "dyadic_tail_integrality_classification",
@@ -676,7 +679,7 @@
       "height_fibre_and_shell": "represented",
       "rank_two_kernel_no_go": "rejected",
       "dyadic_block_alphabet": "represented",
-      "conditional_carry_escape": "subordinate",
+      "conditional_carry_escape": "represented",
       "weighted_phase_carry_observer": "represented",
       "three_prime_finite_search": "long_tail",
       "newton_value_decay": "represented",
@@ -691,7 +694,10 @@
       "coordinatewise_corridor_no_go": "rejected",
       "rational_base_tail_recurrence": "represented",
       "seven_halves_irrationality": "long_tail",
-      "height_and_pade_arithmetic": "represented"
+      "height_and_pade_arithmetic": "represented",
+      "totient_twoadic_pulse_blocks": "represented",
+      "totient_fixed_rank_lcm_curvature": "represented",
+      "totient_parity_separated_carry_countermodel": "subordinate"
     },
     "targeted_theorem_forest_discoveries": [
       {
@@ -758,6 +764,21 @@
         "candidate_id": "erdos1041_newton_value_decay",
         "disposition": "represented",
         "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[erdos1041_newton_value_decay]"
+      },
+      {
+        "candidate_id": "totient_twoadic_pulse_blocks",
+        "disposition": "represented",
+        "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[totient_twoadic_pulse_blocks]"
+      },
+      {
+        "candidate_id": "totient_fixed_rank_lcm_curvature",
+        "disposition": "represented",
+        "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[totient_fixed_rank_lcm_curvature]"
+      },
+      {
+        "candidate_id": "totient_parity_separated_carry_countermodel",
+        "disposition": "subordinate",
+        "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[totient_parity_separated_carry_countermodel]"
       }
     ],
     "comparator_screen": {
@@ -1467,7 +1488,7 @@
       {
         "candidate_id": "erdos269_conditional_carry_escape",
         "family_id": "conditional_carry_escape",
-        "disposition": "subordinate",
+        "disposition": "represented",
         "prior_disposition": "deferred",
         "canonical_family_binding": "conditional_carry_escape",
         "comparator_eligibility": "committed_source_faithful_transport",
@@ -1484,28 +1505,39 @@
         ],
         "comparator_declaration": "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
         "supporting_comparator_declarations": [],
-        "transport_admission_boundary": "The source-faithful reduced-carry consumer is committed in ExternalVerification at 069245df, registered in the source-current committed verification/comparator.json screen, and bound to the canonical conditional_carry_escape review family. Claims commit 68b4b2b adds the subordinate absorbed-factor bridge: after exact nonzero-factor cancellation it reaches that same committed reduced-carry consumer. Comparator admission strengthens traceability only: neither theorem supplies CofinalLocalWindowEscape or the rationality-to-carry identification for the actual three-prime running-LCM series.",
+        "transport_admission_boundary": "Only the existing abstract reduced-carry consumer is represented by the committed ExternalVerification declaration and Comparator configuration. The ordinary actual-shell construction, eventual smooth-factor cancellation and quantitative carry bound are additional paper evidence in the same family; no new external statement, execution or acceptance is claimed.",
         "source_declaration": "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape; ErdosProblems.Erdos269.no_positive_absorbedCarry_of_cofinalLocalWindowEscape",
         "source_file": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-        "source_anchor": "629-650; 689",
-        "statement": "Cofinal local-window residue escape forces a contradiction with any positive reduced carry obeying the matching recurrence and short bound; the same consumer applies to an absorbed carry after exact cancellation of a nonzero common factor.",
+        "source_anchor": "645; 689",
+        "statement": "The paper now derives the literal repeated {2,3,5} running-LCM carry from a hypothetical rational value: exact shell-digit transport gives the recurrence, a finite cleared prefix removes the denominator smooth part after a denominator-dependent onset, and X_a <= (n0^2+8n0+18)/9 gives the tested integer bound K235(B,a). Thus actual cofinal local-window residue escape is the remaining arithmetic input for this irrationality route. The existing Lean/Comparator consumer excludes any positive integral carry satisfying its recurrence, bound and escape predicate.",
         "exact_hypotheses": [
-          "CofinalLocalWindowEscape b m shortBound supplies, for every positive B coprime to 30 and every starting point, a positive window base whose least-positive-residue escape exceeds shortBound.",
-          "B is positive and coprime to 30; d : ℕ → ℤ obeys d (n + 1) = b n * d n - B * m n, with d n > 0 and Int.natAbs (d n) ≤ shortBound B n.",
-          "For the subordinate absorbed-carry bridge, smoothFactor ≠ 0, c n = smoothFactor * d n, and c obeys the corresponding exact absorbed recurrence; cancellation reduces it to the same positive reduced-carry contradiction.",
-          "The displayed conclusion is a contradiction under these exact synthetic carry hypotheses; no rationality-to-carry or actual-series identification is assumed by the transport."
+          "Actual paper route: the repeated {2,3,5} running-LCM value is hypothetically rational with reduced denominator D=Dsm*B, where Dsm is {2,3,5}-smooth and gcd(B,30)=1.",
+          "For all sufficiently late a, d_a=B X_a is a positive integer obeying d_(a+1)=beta_a*d_a-B*m_a235; the paper proves this from exact finite clearing and the infinite shell sum.",
+          "With n0=sum_{p in {2,3,5}} floor(log_p(2^a)), the paper proves X_a <= (n0^2+8n0+18)/9. Since nu_a>=n0, integrality implies d_a<=floor(B*(nu_a^2+10nu_a+27)/9)=K235(B,a).",
+          "The sole remaining arithmetic hypothesis in this route is actual cofinal window escape: every positive B coprime to 30 and every a0>=1 admit ell>=a0,h>=1 with lpr_W(-B F)>K235(B,ell+h).",
+          "The configured Lean consumer remains abstract: it assumes a positive integral carry, the exact recurrence, the matching short bound and CofinalLocalWindowEscape; it does not formally instantiate the preceding ordinary series construction."
         ],
-        "conclusion": "The stated cofinal local-window escape is incompatible with a positive bounded reduced carry, and with its explicitly absorbed nonzero-factor form after cancellation; this is conditional reduction evidence, not an Erdős #269 endpoint.",
-        "hard_mechanism": "The exact integral window identity converts a positive reduced carry into a residue congruence, and the least-positive-residue lower bound contradicts the assumed short bound; the absorbed bridge makes the cancellation step explicit rather than treating common-factor normalization as automatic.",
-        "attribution": "This is the source-current #269 conditional_carry_escape family from RestrictedFloorSum.lean:629-650, 689, transported by the committed ExternalVerification batch at 069245df and canonically extended with the absorbed-factor bridge by Claims commit 68b4b2b; novelty, priority, significance, and external review remain unassessed.",
+        "conclusion": "For the repeated {2,3,5} series, the paper reduces irrationality to the displayed actual cofinal residue-window escape alone. The formal consumer certifies the final abstract contradiction; the actual-series instantiation is an ordinary proof.",
+        "hard_mechanism": "Count the smooth exponents crossing successive pure-power jumps, sum their quadratic bounds with geometric height decay, and obtain the normalized tail bound. Exact shell-digit summation supplies the recurrence. Clearing a finite prefix at a sufficiently large smooth height removes the smooth denominator part and leaves positive integral B X_a. A cofinal escaping window beyond that onset would force its endpoint carry outside its proved integer range.",
+        "attribution": "The finite consumer and absorbed-factor algebra remain the existing source-current #269 conditional_carry_escape family in RestrictedFloorSum.lean. The actual-series instantiation and bound are ordinary proofs in the short paper. No novelty, priority or new external review is claimed.",
         "limitations": [
-          "CofinalLocalWindowEscape is an unproved producer predicate; the source supplies no cofinal escaping windows.",
-          "The rationality-to-carry bridge and identification with the actual three-prime running-LCM recurrence remain open.",
-          "It proves no #269 irrationality or transcendence endpoint and makes no novelty, priority, significance, or external-review claim."
+          "Actual cofinal residue-window escape is still unproved; finite searches do not provide its quantifiers.",
+          "The infinite-series bridge, cancellation and quantitative bound have ordinary paper proofs and remain separate Lean formalization targets; the Comparator declaration has not been enlarged.",
+          "This route concerns the repeated {2,3,5} value and proves no unconditional irrationality or transcendence endpoint."
         ],
-        "source_landscape_rank_relative_to": "Below direct endpoint families and the stronger actual-LCM/first-harmonic conditional routes; retained as subordinate conditional no-go evidence because the producer and actual-series bridge are both open.",
-        "reason": "Subordinate source-landscape evidence after source transport and Comparator admission: the residue-escape consumer is a precise reusable contradiction, but its cofinal producer and actual-series/rationality identification are missing, so it cannot compete with completed endpoints or be promoted as an Erdős #269 result.",
-        "reversal_evidence": "A proof of the cofinal local-window escape predicate together with an actual running-LCM carry bridge would justify fresh ranking; another finite window search or residue identity would not."
+        "source_landscape_rank_relative_to": "Retained below completed endpoint results. The source landscape now includes a concrete ordinary reduction for the literal series with one remaining arithmetic producer, rather than an abstract consumer with an unidentified carry.",
+        "reason": "Represented after the actual-series bridge, smooth cancellation and matching bound were proved in the paper. These discharge previously listed mathematical prerequisites, leaving one explicit cofinal escape predicate. The Comparator roster and its abstract consumer evidence are unchanged.",
+        "reversal_evidence": "A proof of actual cofinal window escape would close this route for the repeated {2,3,5} value. Formalising the ordinary bridge would strengthen kernel coverage without proving the producer; another finite search would not remove the cofinal obligation.",
+        "paper": "paper/erdos-269-three-prime-running-lcm.tex",
+        "paper_anchor": "res:actual-escape-endpoint",
+        "paper_section": "sec:actual-orbit",
+        "paper_anchors": [
+          "res:actual-tail-bound",
+          "res:actual-cancellation",
+          "res:actual-carry-bound",
+          "res:actual-escape-endpoint",
+          "eq:actual-escape"
+        ]
       },
       {
         "candidate_id": "strict_prime_tail_orbit_gap",
@@ -1975,6 +2007,96 @@
         ],
         "reason": "Represented after committed source/config admission: this remains one coherent, reusable weighted-phase observer mechanism with exact finite-residue/uncontrolled-coboundary separation and a precise function-faithful span criterion. It stays below direct endpoint families because the admitted row exposes the residue decomposition but not a quotient recurrence, observer factorization, or #269 endpoint.",
         "reversal_evidence": "A committed transport of the observer factorization preserving its function-faithful hypotheses would strengthen representation; a proved quotient recurrence or scalar-to-function bridge yielding the #269 endpoint could promote it, while a routine residue restatement would not."
+      },
+      {
+        "candidate_id": "totient_twoadic_pulse_blocks",
+        "family_id": "totient_twoadic_pulse_blocks",
+        "disposition": "represented",
+        "source_file": "Erdos249257/TotientTwoAdicPulseBlock.lean",
+        "source_anchor": "54; 211; 301; 327",
+        "paper_anchor": "res:twoadic-pulses",
+        "paper_section": "sec:twoadic-pulses",
+        "statement": "For every fixed pair 2 <= K < H and every B, an actual prime p > max(B,H+K) has deltaTotient(H,p) congruent to 2^(K-1) modulo 2^K, with the preceding K-1 deltaTotient letters zero modulo 2^K. If the H-shifted actual totient tail differences are eventually integral, such prime indices cofinally carry the same half-turn residue.",
+        "exact_hypotheses": [
+          "H,K,B are natural numbers with 2 <= K < H; p is produced, not assumed.",
+          "The orbit-transfer conclusion additionally assumes every H-shifted tail difference beyond some N0 is integral; the producer alone assumes no tail integrality.",
+          "The transfer starts at p-K >= N0, so K dyadic steps erase the initial integer state modulo 2^K."
+        ],
+        "conclusion": "Arbitrary allowed depths admit actual arithmetic pulse blocks, and eventual integral tail differences must realize their nonzero half-turn residue cofinally.",
+        "hard_mechanism": "Choose one fresh prime for p+H and two fresh primes for each earlier position, all 1 modulo 2^K; finite CRT and Dirichlet produce the terminal prime. Exact K-step carry transport kills the homogeneous integer state modulo 2^K while retaining the terminal order-two residue.",
+        "limitations": [
+          "For a fixed H the depth remains K < H; this is not arbitrary depth at fixed shift.",
+          "The half-turn class contains integers. Neither a quantitative bound excluding that class nor actual tail nonintegrality follows.",
+          "No configured ExternalVerification statement firewall or Comparator execution represents this family."
+        ],
+        "reason": "Represented in the source landscape and short paper because this constructs actual totient arithmetic inputs at controlled depths, beyond a synthetic modular word or a bare equivalent endpoint. It is not in the Comparator-eligible selection roster.",
+        "reversal_evidence": "A bound excluding the forced half-turn class for the actual tail, or a compatible unbounded producer reaching an irrationality consumer, would strengthen mathematical status. A source-faithful configured firewall and execution would change external-evidence status only.",
+        "source_declaration": "Erdos249257.exists_prime_totient_twoAdic_pulse_divisors; Erdos249257.exists_prime_deltaTotient_twoAdic_pulseBlock; Erdos249257.integral_tailDiff_modEq_half_of_twoAdic_pulse; Erdos249257.eventual_integral_tailDiff_has_cofinal_twoAdic_half_pulse",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "attribution": "Public source at paper pin 99f4bf47422abbd8757cbb22b50ba079d764d3a7; mathematical value assessed here for routing, without novelty, priority, external-review acceptance or endpoint claims.",
+        "source_commit": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+        "paper": "paper/erdos-249-binary-totient-series.tex"
+      },
+      {
+        "candidate_id": "totient_fixed_rank_lcm_curvature",
+        "family_id": "totient_fixed_rank_lcm_curvature",
+        "disposition": "represented",
+        "source_file": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+        "source_anchor": "50; 519; 567; 637",
+        "paper_anchor": "res:lcm-curvature",
+        "paper_section": "sec:lcm-curvature",
+        "statement": "For a >= 4, j > 0 and j^2 <= 2^a, put H=lcm(1,...,2^a). The exact curvature phi(3H+j)-2phi(2H+j)+phi(H+j) equals 2phi(j)z for an integer z with |z| < (8 floor(H/j)+4)/a. A separate rough-Euler estimate gives phi(n) > n(1-2/a) for positive n < 2^(2*2^a) whose prime divisors exceed 2^a.",
+        "exact_hypotheses": [
+          "Curvature: natural a,j with a >= 4, j > 0 and j*j <= 2^a; H is the actual periodLcm(2^a), not an arbitrary period.",
+          "Rough-density support lemma: a > 0, n > 0, every prime divisor of n exceeds 2^a, and n < 2^(2*2^a).",
+          "The quotient H/j is natural integer division; the clean-window proof establishes the needed divisibility."
+        ],
+        "conclusion": "The three actual totient values have a cancelling affine main term, an explicit o(H) curvature bound at fixed j, and an exact 2phi(j) integer lattice factor.",
+        "hard_mechanism": "The clean LCM window factors phi(kH+j) through phi(j) and rough cofactors. Counting their large prime divisors bounds Euler-density loss without the prime number theorem. The affine terms cancel in the second difference, while parity supplies the additional factor two.",
+        "limitations": [
+          "The primitive integer z may be zero; its nonzero alternative is not produced.",
+          "The estimate concerns the specified three ranks and clean offsets; it is not an unbounded nonlinear cancellation theorem or an irrationality result.",
+          "No configured ExternalVerification statement firewall or Comparator execution represents this family."
+        ],
+        "reason": "Represented in the source landscape and short paper because an actual LCM-scale asymptotic cancellation and exact lattice normalization add quantitative arithmetic information beyond modular reformulation. It is not in the Comparator-eligible selection roster.",
+        "reversal_evidence": "A nonvanishing or noncancellation theorem for the actual primitive curvature with a useful endpoint consumer would strengthen the family. Configuring and executing a faithful external statement would add review evidence, not supply that theorem.",
+        "source_declaration": "Erdos249257.TotientFixedRankLcmAsymptotic.one_sub_two_div_lt_totient_density_of_rough; Erdos249257.TotientFixedRankLcmAsymptotic.two_mul_totient_dvd_fixedRankSecondDifference; Erdos249257.TotientFixedRankLcmAsymptotic.fixed_rank_secondDifference_abs_lt; Erdos249257.TotientFixedRankLcmAsymptotic.exists_primitive_fixedRankCurvature_with_bound",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "attribution": "Public source at paper pin 99f4bf47422abbd8757cbb22b50ba079d764d3a7; mathematical value assessed here for routing, without novelty, priority, external-review acceptance or endpoint claims.",
+        "source_commit": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+        "paper": "paper/erdos-249-binary-totient-series.tex"
+      },
+      {
+        "candidate_id": "totient_parity_separated_carry_countermodel",
+        "family_id": "totient_parity_separated_carry_countermodel",
+        "disposition": "subordinate",
+        "source_file": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+        "source_anchor": "359; 637",
+        "paper_anchor": "sec:nogo",
+        "paper_section": "sec:nogo",
+        "statement": "A single natural sequence c has c(n) <= 6 and c(n) <= n, agrees with phi(n) modulo 2, is not eventually periodic, and has dyadic sum exactly 3/2. For every N,G,K it has a block of K later pairs c(2^(k+i+3))=6, c(2^(k+i+3)+1)=0 whose successive marker indices are more than G apart.",
+        "exact_hypotheses": [
+          "The theorem constructs a synthetic natural-valued sequence; it makes no assertion that c(n)=phi(n).",
+          "For every natural N,G,K a starting k is produced with N < 2^(k+3), and the marker and separation conditions hold for all i < K.",
+          "The value theorem sums c(n)/2^n over all natural n."
+        ],
+        "conclusion": "Totient parity, both size bounds, aperiodicity, and arbitrarily long cofinal separated carry-marker blocks can coexist with the rational value 3/2.",
+        "hard_mechanism": "Add a sparse dyadic coboundary to a rational base sequence. The paired perturbations telescope in the weighted sum, while powers-of-two marker positions create aperiodicity and arbitrarily long separated blocks without changing parity.",
+        "limitations": [
+          "This rules out an implication from the listed coarse properties; it does not refute irrationality of the actual totient series.",
+          "Full totient multiplicativity, higher-adic information, and actual-LCM correlations are not supplied by the witness.",
+          "No configured ExternalVerification statement firewall or Comparator execution represents this family."
+        ],
+        "reason": "Subordinate source-landscape evidence sharpens the failed-route boundary: separated sparse markers do not repair a parity-only argument. It should accompany the positive actual-arithmetic results rather than compete with them as an endpoint.",
+        "reversal_evidence": "A proposed proof using only these properties is refuted by this witness. A strengthened argument must name a property not shared by it; external execution alone would not narrow that mathematical boundary.",
+        "source_declaration": "Erdos249257.TotientParityCoboundaryCountermodel.tsum_parityCoboundaryWeight_eq_three_halves; Erdos249257.TotientParityCoboundaryCountermodel.exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "attribution": "Public source at paper pin 99f4bf47422abbd8757cbb22b50ba079d764d3a7; mathematical value assessed here for routing, without novelty, priority, external-review acceptance or endpoint claims.",
+        "source_commit": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+        "paper": "paper/erdos-249-binary-totient-series.tex"
       }
     ]
   },
@@ -2544,8 +2666,8 @@
     {
       "problem": 269,
       "status": "open",
-      "frontier_summary": "A three-prime kernel minor, exact running-LCM/height identity, weighted-phase residue decomposition, and conditional local-window carry-escape consumer are checked.",
-      "open_boundary": "Irrationality or transcendence in any three-prime case.",
+      "frontier_summary": "The short paper now reduces irrationality of the repeated {2,3,5} running-LCM series to actual cofinal residue-window escape alone. Its ordinary proof constructs the exact shell carry, removes the smooth denominator part after an eventual onset, and proves the tested quadratic carry bound from X_a <= (n0^2+8n0+18)/9. Lean and Comparator cover the existing abstract finite-window contradiction and finite LCM structure; the actual infinite-series bridge and bound are not yet formalised. Arbitrary-order kernel non-separability is also an ordinary paper result, beyond the checked -1/15 minor.",
+      "open_boundary": "Actual cofinal residue-window escape for the repeated {2,3,5} route; irrationality or transcendence in three-prime cases remains open. The paper-proved infinite-series bridge and bound still require Lean formalization.",
       "comparator_declarations": [
         "Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen",
         "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight",

@@ -137,6 +137,30 @@ word or failure label is not a common mathematical theorem. Where one change
 of coordinates repairs a failure, show the before-and-after calculation;
 where it does not, preserve the counterexample and the remaining obligation.
 
+## Check the source universe before choosing the story
+
+Treat a curated paper, claim matrix, or external-review roster as a selection,
+not as an exhaustive inventory. Compare its modules with the actual problem
+source tree and its current research frontier. Preserve an authored reading
+order while making omitted source modules discoverable through the owning
+index builder. Source presence alone grants no proof or review status.
+
+For each substantial omission, read the proof and its consumers. Test whether
+several existing ingredients discharge a premise that the paper still lists
+as open; write out that bridge, including normalization, endpoint conventions,
+convergence and quantifiers. An ordinary assembled proof may strengthen the
+paper before its complete Lean formalization exists, but label the uncovered
+bridge explicitly. Neither a theorem name nor a checked scalar ingredient
+certifies the assembled statement.
+
+Propagate a verified omission into the existing mathematical family, claim
+record, comprehension nodes, reviewer disposition and paper as appropriate.
+Distinguish represented source mathematics from a configured or executed
+external-verification target. Reuse existing nodes; fix a missing route or
+consumer edge instead of duplicating the theorem. Refresh generated surfaces
+only after the authored meaning is settled. Rank by the mathematical gain,
+not the number of newly exposed modules or declarations.
+
 ## Prose pass
 
 Use direct, understated English. Name the mathematician, contributor, program,

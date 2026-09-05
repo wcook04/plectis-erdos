@@ -600,7 +600,7 @@
       ],
       "what_is_not_checked": [
         "Irrationality or transcendence in any three-prime case.",
-        "The derivation of the actual bounded positive carry, including the divisibility required to cancel the absorbed smooth denominator factor, from a hypothetical rational value of the original series.",
+        "The paper now derives the actual bounded positive reduced carry from rationality, including the infinite shell-digit bridge, smooth-factor cancellation, and a cell-rank quadratic tail bound. These assembled actual-series deductions are ordinary proofs and still require complete Lean formalization.",
         "CofinalLocalWindowEscape for those actual words; it is an explicit hypothesis of the checked consumer, not a theorem.",
         "A proof that the actual three-channel word satisfies the block-null, anchor, or factorisation hypotheses of the migrated abstract consumers.",
         "The infinite limit of the jump expansion; only its finite core is checked.",
@@ -613,7 +613,7 @@
         },
         {
           "id": "actual_rational_carry_instantiation",
-          "statement": "Identify the formal radix word with the checked four-symbol dyadic block base, formalize the exact block digit and its link to the original summand multiplicities, and derive the positive reduced carry recurrence and its bound from a hypothetical rational value."
+          "statement": "Formalize the paper-proved actual bridge: identify the radix and block digits with literal shell multiplicities, clear the smooth denominator factor, group logarithmic cells by rank, and sum the quadratic geometric majorant. This is formalization debt, not an additional mathematical premise of the cofinal-escape criterion."
         },
         {
           "id": "nonstationary_analytic_theorem",
@@ -625,7 +625,7 @@
         }
       ],
       "finite_search": "The integer-only dyadic-window checker reproduces three exact packet certificates and, for all 106,666 pairs with denominator B <= 1000 coprime to 30 and dyadic start 100 <= a <= 500, finds an escaping window of length at most 18; the largest first successful length is 14. This is finite proof-consumer evidence only and proves neither unbounded-denominator nor cofinal escape.",
-      "source_priority_note": "Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it."
+      "source_priority_note": "Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it. For {2,3,5}, the ordinary paper proof bounds X_a by (n_a^2+8n_a+18)/9 and derives the actual bounded reduced carry from rationality. Actual cofinal local-window escape alone suffices for irrationality; that escape remains unproved."
     },
     {
       "problem_id": "erdos_1041",

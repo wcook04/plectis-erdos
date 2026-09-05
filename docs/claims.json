@@ -12992,6 +12992,46 @@
             ],
             "comparator_disposition": "not_selected_deep_certificate_vocabulary",
             "boundary": "Equivalent producer statements are as hard as the unresolved target."
+          },
+          {
+            "id": "totient_twoadic_pulse_blocks",
+            "contribution_class": "formalised structural result; novelty unassessed",
+            "summary": "For every fixed pair 2 <= K < H and every B, an actual prime p > max(B,H+K) has deltaTotient(H,p) congruent to 2^(K-1) modulo 2^K, with the preceding K-1 deltaTotient letters zero modulo 2^K. If the H-shifted actual totient tail differences are eventually integral, such prime indices cofinally carry the same half-turn residue. Mechanism: Choose one fresh prime for p+H and two fresh primes for each earlier position, all 1 modulo 2^K; finite CRT and Dirichlet produce the terminal prime. Exact K-step carry transport kills the homogeneous integer state modulo 2^K while retaining the terminal order-two residue.",
+            "evidence_mode": "Source Lean declarations at the paper pin; no configured ExternalVerification statement firewall or Comparator evidence",
+            "comparator_disposition": "not_selected_no_configured_statement_firewall",
+            "declarations": [
+              "Erdos249257.exists_prime_totient_twoAdic_pulse_divisors",
+              "Erdos249257.exists_prime_deltaTotient_twoAdic_pulseBlock",
+              "Erdos249257.integral_tailDiff_modEq_half_of_twoAdic_pulse",
+              "Erdos249257.eventual_integral_tailDiff_has_cofinal_twoAdic_half_pulse"
+            ],
+            "boundary": "For a fixed H the depth remains K < H; this is not arbitrary depth at fixed shift. The half-turn class contains integers. Neither a quantitative bound excluding that class nor actual tail nonintegrality follows. No configured ExternalVerification statement firewall or Comparator execution represents this family."
+          },
+          {
+            "id": "totient_fixed_rank_lcm_curvature",
+            "contribution_class": "formalised structural result; novelty unassessed",
+            "summary": "For a >= 4, j > 0 and j^2 <= 2^a, put H=lcm(1,...,2^a). The exact curvature phi(3H+j)-2phi(2H+j)+phi(H+j) equals 2phi(j)z for an integer z with |z| < (8 floor(H/j)+4)/a. A separate rough-Euler estimate gives phi(n) > n(1-2/a) for positive n < 2^(2*2^a) whose prime divisors exceed 2^a. Mechanism: The clean LCM window factors phi(kH+j) through phi(j) and rough cofactors. Counting their large prime divisors bounds Euler-density loss without the prime number theorem. The affine terms cancel in the second difference, while parity supplies the additional factor two.",
+            "evidence_mode": "Source Lean declarations at the paper pin; no configured ExternalVerification statement firewall or Comparator evidence",
+            "comparator_disposition": "not_selected_no_configured_statement_firewall",
+            "declarations": [
+              "Erdos249257.TotientFixedRankLcmAsymptotic.one_sub_two_div_lt_totient_density_of_rough",
+              "Erdos249257.TotientFixedRankLcmAsymptotic.two_mul_totient_dvd_fixedRankSecondDifference",
+              "Erdos249257.TotientFixedRankLcmAsymptotic.fixed_rank_secondDifference_abs_lt",
+              "Erdos249257.TotientFixedRankLcmAsymptotic.exists_primitive_fixedRankCurvature_with_bound"
+            ],
+            "boundary": "The primitive integer z may be zero; its nonzero alternative is not produced. The estimate concerns the specified three ranks and clean offsets; it is not an unbounded nonlinear cancellation theorem or an irrationality result. No configured ExternalVerification statement firewall or Comparator execution represents this family."
+          },
+          {
+            "id": "totient_parity_separated_carry_countermodel",
+            "contribution_class": "formalised synthetic countermodel; novelty unassessed",
+            "summary": "A single natural sequence c has c(n) <= 6 and c(n) <= n, agrees with phi(n) modulo 2, is not eventually periodic, and has dyadic sum exactly 3/2. For every N,G,K it has a block of K later pairs c(2^(k+i+3))=6, c(2^(k+i+3)+1)=0 whose successive marker indices are more than G apart. Mechanism: Add a sparse dyadic coboundary to a rational base sequence. The paired perturbations telescope in the weighted sum, while powers-of-two marker positions create aperiodicity and arbitrarily long separated blocks without changing parity.",
+            "evidence_mode": "Source Lean declarations at the paper pin; no configured ExternalVerification statement firewall or Comparator evidence",
+            "comparator_disposition": "not_selected_no_configured_statement_firewall",
+            "declarations": [
+              "Erdos249257.TotientParityCoboundaryCountermodel.tsum_parityCoboundaryWeight_eq_three_halves",
+              "Erdos249257.TotientParityCoboundaryCountermodel.exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel"
+            ],
+            "boundary": "This rules out an implication from the listed coarse properties; it does not refute irrationality of the actual totient series. Full totient multiplicativity, higher-adic information, and actual-LCM correlations are not supplied by the witness. No configured ExternalVerification statement firewall or Comparator execution represents this family."
           }
         ]
       },
@@ -13248,22 +13288,22 @@
           {
             "id": "height_fibre_and_shell",
             "contribution_class": "locally proved result; novelty unassessed",
-            "summary": "Finite height-fibre normal form and a quadratic smooth-shell multiplicity bound.",
-            "evidence_mode": "Lean kernel",
+            "summary": "Finite height-fibre normalization and the quadratic shell multiplicity bound are formalised. The paper sums the literal shells and proves X_a <= (n0^2+8n0+18)/9, where n0 is the sum of the floor logarithms of 2^a in bases 2,3,5. This gives the existing integer short bound K235(B,a) for an integral reduced carry B X_a.",
+            "evidence_mode": "Lean kernel for finite fibre and shell bounds; ordinary paper proof for the actual infinite shell sum and its quantitative normalized-tail bound",
             "declarations": [
               "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight",
               "ErdosProblems.Erdos269.smoothExponentShell_card_quadratic"
             ],
             "comparator_disposition": "represented_by_three_prime_structure_target",
-            "boundary": "The fibre bounds do not provide the missing divisibility bridge."
+            "boundary": "The infinite shell construction, series identification and tail bound are not yet formalised by the linked finite-source declarations. The actual cofinal residue-window escape remains unproved; the bound alone is no irrationality result."
           },
           {
             "id": "rank_two_kernel_no_go",
             "contribution_class": "no-go result",
-            "summary": "The 2,3,5 kernel is not rank one and its smallest displayed minor equals -1/15.",
-            "evidence_mode": "Lean kernel plus Comparator",
+            "summary": "The 2,3,5 kernel has checked minor -1/15 and is not rank one. The paper additionally proves arbitrarily large nonsingular minors for three distinct primes by a dense-rotation staircase construction, excluding every finite exact separation across the displayed coordinate split.",
+            "evidence_mode": "Lean kernel plus Comparator for the specified 2-by-2 minor and rank-one obstruction; ordinary paper proof for arbitrary-order non-separability",
             "comparator_disposition": "targeted",
-            "boundary": "Failure of rank one does not itself imply irrationality."
+            "boundary": "The arbitrary-order dense-rotation and determinant argument is not covered by the existing Comparator representative or a linked Lean theorem. Neither finite-rank obstruction establishes irrationality or transcendence."
           },
           {
             "id": "dyadic_block_alphabet",
@@ -13274,13 +13314,13 @@
               "ErdosProblems.Erdos269.dyadicBlockBase235_cases"
             ],
             "comparator_disposition": "represented_by_three_prime_structure_target",
-            "boundary": "The finite alphabet does not supply the needed carry escape."
+            "boundary": "The four-letter alphabet is formalised. Its identification with the literal infinite shell recurrence and ordered digit is proved in the paper but not yet in Lean; the alphabet alone does not supply actual carry escape."
           },
           {
             "id": "conditional_carry_escape",
-            "contribution_class": "conditional no-go consumer; novelty and significance unassessed",
-            "summary": "Under the denominator-dependent cofinal local-window residue-escape predicate, no positive reduced carry can satisfy the exact multiplier recurrence together with its short bound. The load-bearing consumer is no_positive_reducedCarry_of_cofinalLocalWindowEscape; an absorbed nonzero common-factor carry reduces exactly to that consumer. CofinalLocalWindowEscape, windowBase, windowForcing, leastPositiveResidue, and the absorbed-carry bridge are subordinate finite-window mechanism evidence.",
-            "evidence_mode": "Lean kernel plus Comparator",
+            "contribution_class": "conditional actual-series reduction with a formalised finite consumer; novelty unassessed",
+            "summary": "The paper now derives the literal repeated {2,3,5} running-LCM carry from a hypothetical rational value: exact shell-digit transport gives the recurrence, a finite cleared prefix removes the denominator smooth part after a denominator-dependent onset, and X_a <= (n0^2+8n0+18)/9 gives the tested integer bound K235(B,a). Thus actual cofinal local-window residue escape is the remaining arithmetic input for this irrationality route. The existing Lean/Comparator consumer excludes any positive integral carry satisfying its recurrence, bound and escape predicate.",
+            "evidence_mode": "Ordinary paper proof for the actual infinite-series bridge, eventual smooth-factor cancellation and carry bound; Lean kernel plus Comparator for the already configured abstract finite-window consumer",
             "comparator_disposition": "targeted",
             "declarations": [
               "ErdosProblems.Erdos269.CofinalLocalWindowEscape",
@@ -13290,7 +13330,7 @@
               "ErdosProblems.Erdos269.leastPositiveResidue",
               "ErdosProblems.Erdos269.no_positive_absorbedCarry_of_cofinalLocalWindowEscape"
             ],
-            "boundary": "The representative assumes b,m : ℕ → ℕ, shortBound : ℕ → ℕ → ℕ, CofinalLocalWindowEscape b m shortBound, and for each positive B coprime to 30 a positive integer-valued d with d(n+1) = (b n : ℤ) d(n) − (B : ℤ) (m n : ℤ) and Int.natAbs (d n) ≤ shortBound B n; it then gives False. The absorbed-carry bridge additionally assumes smoothFactor ≠ 0, c n = smoothFactor * d n, and the corresponding exact absorbed recurrence, then cancels that factor to the same reduced consumer. The cofinal local-window escape producer and the bridge from the actual three-prime running-LCM series or its rationality to this reduced carry remain open. This is not a #269 endpoint or irrationality proof, and no actual-series identification, novelty, priority, significance, or external-review claim is made. It is one conditional window-carry family, distinct from the finite residue, rank-two, and weighted-phase observer families."
+            "boundary": "For the literal {2,3,5} radix/digit data, the surviving producer must supply, for every positive B coprime to 30 and every onset a0>=1, an index ell>=a0 and length h>=1 whose least positive residue of -B times the window forcing modulo the window-base product exceeds K235(B,ell+h). This cofinal escape is unproved. The actual series bridge, smooth cancellation and bound are ordinary mathematical arguments, not new Comparator evidence or completed Lean formalizations. The existing source theorem still assumes the exact recurrence, positive integral carry and short bound. Irrationality remains open; this does not settle arbitrary three-prime sets or the de-duplicated series."
           },
           {
             "id": "weighted_phase_carry_observer",
@@ -13304,7 +13344,7 @@
               "ErdosProblems.Erdos269.residueDigit_mem_interval",
               "ErdosProblems.Erdos269.finite_realisedSpan_of_factorisation"
             ],
-            "boundary": "The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. No rationality or irrationality conclusion follows; the actual three-prime running-LCM bridge and cofinal escape remain open."
+            "boundary": "The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. The actual {2,3,5} series-to-carry bridge is now proved separately in the paper, not by this observer theorem and not yet in Lean. Cofinal residue escape and the #269 endpoint remain open."
           },
           {
             "id": "three_prime_finite_search",
@@ -13566,7 +13606,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 104
+        "line": 107
       }
     },
     {
@@ -13614,7 +13654,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "exact nonintegrality of every reduced tail",
-        "line": 1409
+        "line": 1574
       }
     },
     {
@@ -13626,7 +13666,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "actual cofinal local-window escape",
-        "line": 1443
+        "line": 1609
       }
     },
     {
@@ -13638,7 +13678,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "function-faithful two-dimensional representation",
-        "line": 1502
+        "line": 1688
       }
     },
     {
@@ -13662,7 +13702,7 @@
         "source": "paper/erdos-249-binary-totient-series.tex",
         "environment": "problem",
         "title": "first-harmonic anti-concentration on supplier fibres",
-        "line": 1529
+        "line": 1672
       }
     },
     {
