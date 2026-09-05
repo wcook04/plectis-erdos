@@ -136,6 +136,7 @@
       "title": "Understand or explain the public system",
       "task_cues": [
         "explain",
+        "explain the repository",
         "understand",
         "overview",
         "what is this",
@@ -510,6 +511,12 @@
         "skills available",
         "skills are available",
         "repository organization",
+        "repo simpler",
+        "repository simpler",
+        "duplicated workflows",
+        "bootstrap friction",
+        "tidy up the public repository",
+        "repository cleanup",
         "contributor experience",
         "reproducibility"
       ],

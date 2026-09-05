@@ -8,7 +8,8 @@ description: Dogfood, organize, consolidate, and repair the public clone's agent
 Use this skill when a clean clone is confusing, a routed workflow is stale or
 duplicated, an advertised command only works in an authoring environment, or a
 new capability has not reached entry, validation, contribution, and downstream
-consumer surfaces. The product is a self-contained public journey, not more
+consumer surfaces. Repository cleanup, bootstrap friction, and architectural
+simplification belong here too. The product is a self-contained public journey, not more
 explanatory prose by default.
 
 ## Start from the observed journey
@@ -25,6 +26,11 @@ Record the expected first lane, the actual lane or failure, and the first file
 or command that became unusable. A file existing is not evidence that an agent
 can find or operate it. Preserve the exact task as a regression fixture when it
 reveals a reusable failure class.
+
+Replay ordinary contributor wording as well as owner terminology. A route that
+recognizes "architecture" but misses "clean up duplicated workflows" is not
+discoverable enough. Add focused registry cues and pair each repair with a
+nearby explanation or proof task that must keep its existing lane.
 
 ## Know the public owner graph
 

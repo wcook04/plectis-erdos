@@ -17,6 +17,22 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    "make the repo simpler and more coherent": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "clean up duplicated workflows": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "reduce bootstrap friction": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "tidy up the public repository": (
+        "repository_architecture", "maintain-public-infrastructure"
+    ),
+    "simplify this Lean proof": ("bounded_research", "mine-open-problem"),
+    "explain the repository organization to a newcomer": (
+        "understand_repository", "explain-public-system"
+    ),
     "hydrate the Lean dependency cache": (
         "lean_validation", "lean-concurrent-validation"
     ),
