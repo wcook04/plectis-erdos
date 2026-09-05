@@ -9,8 +9,8 @@
   "local_path_replacement_count": 0,
   "strongest_result_map": {
     "path": "research_corpus/Erdos243/STRONGEST_RESULTS.json",
-    "sha256": "a993679adeac9b94dbd51f0c01098a6a457640dc067d01ee9ca10e71dae04539",
-    "result_count": 85
+    "sha256": "5153d21e1ab0501a6901b88756e0eb4602f80bc08d91fcb60e5b896ece585e03",
+    "result_count": 88
   },
   "files": [
     {
@@ -1046,7 +1046,7 @@
   ],
   "browser_frontier": {
     "path": "research_corpus/Erdos243/FRONTIER.md",
-    "sha256": "3e701d581632b7b08657a4fb6f75a19a7c2f1ae3a7f235b8543ddae321ffdadd",
+    "sha256": "6ef0a46523cc3c9de269b713c220c7c82ec135a0ca81f598fbe42f695e270d91",
     "source": "exported research_packet.json"
   }
 }

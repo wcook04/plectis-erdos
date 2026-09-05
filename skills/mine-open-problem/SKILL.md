@@ -35,6 +35,8 @@ No installation, terminal, or private repository is needed to read the corpus:
    route fails, use its exact obstruction to select a different route. Do not
    silently weaken the theorem to fit an available helper result.
 
+Read dependency-directed: locate the complete statements, proofs and dependencies used by the current argument, then return to construction. Exhaustive line-by-line reading of unrelated sources is not a prerequisite. In repeated attempts, preserve which supplied results were used and which opening mechanisms converged on the same auxiliary claim, so the next allocation can change on evidence.
+
 For an enclosed packet, start with `00_ASK_TYPE_B.md` and its local dossiers.
 The packet's manifest identifies the pinned public commit and browser links.
 Use those links for missing sources or cross-problem connections; the shell

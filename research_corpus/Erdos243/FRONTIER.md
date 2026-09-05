@@ -14,6 +14,7 @@ C_{n+1}=a_n C_n-D_n=C_n-E_n and Delta_n C_{n+1}=a_n^2 E_n-E_{n+1}.
 Evidence/status: lean_checked
 
 - [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
+- [ReciprocalTailRigidity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean)
 
 claim_boundary: The named declarations establish the exact local recurrence for the cleared tail state and the Sylvester-defect identity under their explicit integer hypotheses. They do not, by themselves, establish eventual return, exclusion of every negative-support orbit, the full #243 counterexample, or any asymptotic conclusion beyond these identities.
 
@@ -24,6 +25,7 @@ If two consecutive centered errors vanish and the next product-cleared tail stat
 Evidence/status: lean_checked
 
 - [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
+- [ReciprocalTailRigidity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean)
 
 ### eventual_centered_zero_forces_sylvester_recurrence
 
@@ -32,6 +34,7 @@ Along the exact product-cleared D/C orbit, eventual centered-state zero plus eve
 Evidence/status: lean_checked
 
 - [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
+- [ReciprocalTailRigidity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean)
 
 ### scale_equivariance
 
@@ -40,6 +43,8 @@ The D/C/E integer-state dynamics commute with common scaling, eliminating duplic
 Evidence/status: lean_checked
 
 - [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
+- [ReciprocalTailRigidity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean)
+- Declaration locators not uniquely resolved: nextDenState_scale, nextTailState_scale, centeredState_scale.
 
 ### eventual_nonnegative_state_rigidity
 
@@ -47,6 +52,7 @@ A nonnegative natural tail state satisfying C_{n+1}+E_n=C_n has E_n=0 eventually
 
 Evidence/status: lean_checked
 
+- [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
 
 ### gap_product_criterion
 
@@ -84,6 +90,7 @@ Survival through H constant-negative updates depends only on a_0 modulo (H+1)!, 
 
 Evidence/status: lean_checked
 
+- [FiniteHorizonResidue.lean](problem/FiniteHorizonResidue.lean)
 
 ### constant_negative_orbit_excluded
 
@@ -91,6 +98,7 @@ No eventually constant negative centered state exists. After removing gcd(C_0,|E
 
 Evidence/status: lean_checked
 
+- [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
 
 ### eventually_periodic_negative_magnitude_excluded
 
@@ -98,6 +106,7 @@ No positive eventually periodic negative-state magnitude survives in the exact n
 
 Evidence/status: lean_checked
 
+- Declaration locators not uniquely resolved: no_phasePrimitivePeriodicNegative_orbit, no_periodicNegative_orbit, no_eventuallyPeriodicNegative_orbit.
 
 ### bounded_rise_reduced_tail_excluded
 
@@ -105,6 +114,7 @@ No exact reduced tail u_(n+1)+v_n=a_n*u_n, v_(n+1)=a_n*v_n with gcd(u_n,v_n)=1 c
 
 Evidence/status: lean_checked
 
+- [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
 
 ### cofinally_bounded_negative_branch_excluded
 
@@ -112,6 +122,7 @@ For the exact natural D/C tail, cofinally occurring positive negative-state magn
 
 Evidence/status: lean_checked
 
+- [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
 
 ### bounded_negative_part_rigidity
 
@@ -119,6 +130,7 @@ Under exact natural D/C dynamics, eventual strict centring |E_n|<C_n, division-f
 
 Evidence/status: lean_checked
 
+- [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
 
 ### dynamic_cancellation_payment
 
@@ -126,6 +138,7 @@ At every dynamically reduced exact tail step, with h_n=G_(n+1)/G_n and v_n=D_n/G
 
 Evidence/status: lean_checked
 
+- [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
 
 ### strict_gcd_growth_exponential_budget
 
@@ -133,6 +146,7 @@ For any positive divisibility chain G, if r strict increases occur in a finite i
 
 Evidence/status: lean_checked
 
+- [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
 
 ### strict_gcd_growth_sublinear_under_subexponential_tail
 
@@ -140,6 +154,7 @@ If every fixed power of a positive divisibility chain G_n is eventually below 2^
 
 Evidence/status: lean_checked
 
+- [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
 
 ### local_near_unit_tail_growth_from_normalized_vanishing
 
@@ -147,6 +162,7 @@ The exact identity C_(n+1)=C_n-E_n and the pointwise normalized bound K*|E_n|<C_
 
 Evidence/status: lean_checked
 
+- [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
 
 ### subexponential_tail_from_near_unit_growth
 
@@ -154,6 +170,8 @@ If every prescribed integer rate eventually bounds one-step growth by q*C_(n+1)<
 
 Evidence/status: lean_checked
 
+- [ReciprocalTailRigidity.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean)
+- [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
 
 ### sublinear_tail_gcd_growth_from_normalized_vanishing
 
@@ -161,6 +179,7 @@ Along the exact positive natural D/C orbit, division-free normalized centered-st
 
 Evidence/status: lean_checked
 
+- [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
 
 ### arbitrarily_late_constant_tail_gcd_blocks
 
@@ -168,6 +187,7 @@ Sublinear strict-growth count forces arbitrarily late finite blocks with no stri
 
 Evidence/status: lean_checked
 
+- [ReciprocalTailRigidity.lean](problem/ReciprocalTailRigidity.lean)
 
 ### primitive_raw_next_coprimality_and_square_content
 
@@ -175,6 +195,7 @@ For a primitive reduced input q+v=a*u with gcd(u,v)=1, gcd(u,q)=1 and gcd(q,a*v)
 
 Evidence/status: lean_checked
 
+- [DynamicCancellation.lean](problem/DynamicCancellation.lean)
 
 ### primitive_numerator_second_order_recurrence
 
@@ -182,6 +203,7 @@ Two consecutive dynamically reduced steps satisfy a_n^2*u_n+h_n*h_(n+1)*u_(n+2)=
 
 Evidence/status: lean_checked
 
+- [DynamicCancellation.lean](problem/DynamicCancellation.lean)
 
 ### square_cancellation_normal_form
 
@@ -189,6 +211,7 @@ The source kernel-checks the quotient overlap formula and the quotient-free norm
 
 Evidence/status: lean_checked_explicit_factor_core_wrapper_open
 
+- [DynamicCancellation.lean](problem/DynamicCancellation.lean)
 
 ### cancellation_free_dual_remainder
 
@@ -196,6 +219,7 @@ On a cancellation-free step, the defect relation and p_(n+1)=p_n-e_n imply the e
 
 Evidence/status: lean_checked
 
+- [DynamicCancellation.lean](problem/DynamicCancellation.lean)
 
 ### cancellation_free_curvature_square
 
@@ -203,6 +227,7 @@ The primitive second-order recurrence implies q_n^2+J_n=(a_(n+1)-a_n)p_n*p_(n+1)
 
 Evidence/status: lean_checked
 
+- [DynamicCancellation.lean](problem/DynamicCancellation.lean)
 
 ### excursion_matrix_square_determinant
 
@@ -210,6 +235,7 @@ For K=A-(a_r-1)B, alpha=A+(a_s-1)B, and beta=A(a_r-1)-(a_s-1)K, the centered-sta
 
 Evidence/status: lean_checked
 
+- [DynamicCancellation.lean](problem/DynamicCancellation.lean)
 
 ### primitive_matrix_exact_gcd_payment
 
@@ -217,6 +243,7 @@ For a primitive integer input vector (x,y) and primitive second matrix row (r,s)
 
 Evidence/status: lean_checked
 
+- [DynamicCancellation.lean](problem/DynamicCancellation.lean)
 
 ### excursion_block_exact_cancellation_payment
 
@@ -224,6 +251,7 @@ For the exact excursion data K=A-(a_r-1)B, alpha=A+(a_s-1)B, beta=A(a_r-1)-(a_s-
 
 Evidence/status: lean_checked
 
+- [DynamicCancellation.lean](problem/DynamicCancellation.lean)
 
 ### excursion_payment_multiplicative_accumulation
 
@@ -231,6 +259,7 @@ For any sequence of exact block scales Lambda_i satisfying Lambda_i*G_(t_i)=G_(t
 
 Evidence/status: lean_checked
 
+- [DynamicCancellation.lean](problem/DynamicCancellation.lean)
 
 ### square_residue_record_payment
 
@@ -238,6 +267,7 @@ Whenever scale growth GStop=Lambda*GStart carries a larger scale-weighted record
 
 Evidence/status: lean_checked
 
+- [DynamicCancellation.lean](problem/DynamicCancellation.lean)
 
 ### sparse_reset_recovery_forest
 
@@ -245,6 +275,7 @@ First-recovery intervals are laminar. Every reset recovery contains a reset-alig
 
 Evidence/status: lean_checked
 
+- [SparseResetRecovery.lean](problem/SparseResetRecovery.lean)
 
 ### division_free_weighted_recovery_payment
 
@@ -252,6 +283,7 @@ If K*|e_(r+i)|<u_(r+i) along a positive reduced interval, then K^L times the com
 
 Evidence/status: lean_checked
 
+- [SparseResetRecovery.lean](problem/SparseResetRecovery.lean)
 
 ### summable_negative_relative_mass_termination
 
@@ -259,6 +291,7 @@ For the exact integral update C_(n+1)=C_n-E_n with positive C, division-free nor
 
 Evidence/status: lean_checked
 
+- [SparseResetRecovery.lean](problem/SparseResetRecovery.lean)
 
 ### summable_negative_mass_sylvester_consumer
 
@@ -266,6 +299,7 @@ Along the exact product-cleared reciprocal-tail D/C orbit, positive natural tail
 
 Evidence/status: lean_checked
 
+- [SparseResetRecovery.lean](problem/SparseResetRecovery.lean)
 
 ### bounded_tail_normalized_vanishing_consumer
 
@@ -273,6 +307,7 @@ A uniformly bounded natural tail state together with division-free normalized va
 
 Evidence/status: lean_checked
 
+- [SparseResetRecovery.lean](problem/SparseResetRecovery.lean)
 
 ### strict_rise_crt_barrier
 
@@ -280,6 +315,7 @@ A natural state tending to infinity with upward increments bounded by B cannot, 
 
 Evidence/status: lean_checked
 
+- [LcmCriticalBoundary.lean](problem/LcmCriticalBoundary.lean)
 
 ### bounded_lcm_negative_arithmetic_core
 
@@ -287,6 +323,7 @@ For an exact LCM-state recurrence g_n U_(n+1)=U_n-V_n with V_n>=-B and centered 
 
 Evidence/status: lean_checked_prime_supply_bridge_open
 
+- [LcmCriticalBoundary.lean](problem/LcmCriticalBoundary.lean)
 
 ### weighted_lcm_block_debt_stabilisation
 
@@ -294,6 +331,7 @@ The exact multiplicatively weighted LCM recurrence telescopes over every finite 
 
 Evidence/status: lean_checked
 
+- [LcmCriticalBoundary.lean](problem/LcmCriticalBoundary.lean)
 
 ### primitive_finite_window_transfer
 
@@ -301,6 +339,7 @@ For the primitive recurrence u_(n+1)+v_n=a_n*u_n and v_(n+1)=a_n*v_n, define A a
 
 Evidence/status: lean_checked
 
+- [PrimitivePrefixRigidity.lean](problem/PrimitivePrefixRigidity.lean)
 
 ### primitive_complete_prefix_overlap
 
@@ -308,6 +347,7 @@ For a complete primitive prefix with v_n=Q*A_n and centered error e_n=Q*A_n-(a_n
 
 Evidence/status: lean_checked
 
+- [PrimitivePrefixRigidity.lean](problem/PrimitivePrefixRigidity.lean)
 
 ### reset_recovery_alignment_quantitative
 
@@ -329,6 +369,7 @@ The denominator-transport defect equals (u-e) times the failure of the centered 
 
 Evidence/status: lean_checked
 
+- [FeedbackRealizability.lean](problem/FeedbackRealizability.lean)
 
 ### primitive_square_root_feedback
 
@@ -336,6 +377,7 @@ On a cancellation-free step, factorizations a*e=L*uNext+t and a*t=r*uNext+eNext,
 
 Evidence/status: lean_checked
 
+- [FeedbackRealizability.lean](problem/FeedbackRealizability.lean)
 
 ### artificial_square_unit_not_realizable
 
@@ -343,6 +385,7 @@ For the artificial pattern a=u+2, e=-1, and centered quotient -(u+3), true feedb
 
 Evidence/status: lean_checked
 
+- [FeedbackRealizability.lean](problem/FeedbackRealizability.lean)
 
 ### cumulative_lcm_overlap_relocation
 
@@ -350,6 +393,7 @@ Define the cumulative digit LCM Lambda_n, product-cleared scale D_n, and cumulat
 
 Evidence/status: lean_checked
 
+- [GlobalLcmHeight.lean](problem/GlobalLcmHeight.lean)
 
 ### global_lcm_pseudo_euclidean_update
 
@@ -357,6 +401,7 @@ For F=Lambda-bY, a=b+1, and the raw lifted identity rho*YNext=aY-Lambda, Lean pr
 
 Evidence/status: lean_checked
 
+- [GlobalLcmHeight.lean](problem/GlobalLcmHeight.lean)
 
 ### returned_error_exact_telescope
 
@@ -364,6 +409,7 @@ For z=x-1/b, xNext=x-1/a, a=b+1, and bNext=a*b+Delta, the exact rational identit
 
 Evidence/status: lean_checked
 
+- [GlobalLcmHeight.lean](problem/GlobalLcmHeight.lean)
 
 ### returned_error_eventual_contraction
 
@@ -379,6 +425,7 @@ For the exact infinite clean-return family q0(k)=33+79833600*k, the forced 11->1
 Evidence/status: lean_checked_arithmetic_consumer_and_exact_polynomial_certificate
 
 - [CleanRecoveryLengthCounterexample.lean](problem/CleanRecoveryLengthCounterexample.lean)
+- [CleanRecoveryLengthCounterexample.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean)
 
 ### second_excursion_mod17_cofinal_return_split
 
@@ -387,6 +434,7 @@ On the surviving class k=1+13*t, the height-13 centered error is -4 and full pay
 Evidence/status: lean_checked_arithmetic_consumer_and_exact_composite_modulus_certificate
 
 - [CleanRecoveryLengthCounterexample.lean](problem/CleanRecoveryLengthCounterexample.lean)
+- [CleanRecoveryLengthCounterexample.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean)
 
 ### payment_seven_boundary_cascade_cofinal_return
 
@@ -395,6 +443,7 @@ All sixteen height-13 payment-seven source classes modulo 182 have multiplier 7 
 Evidence/status: lean_checked_final_payment_and_exact_composite_modulus_certificate
 
 - [CleanRecoveryLengthCounterexample.lean](problem/CleanRecoveryLengthCounterexample.lean)
+- [CleanRecoveryLengthCounterexample.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean)
 
 ### payment_one_height_fourteen_sign_split
 
@@ -403,6 +452,7 @@ The 40 remaining payment-one cylinders refine into 600 classes modulo 2730. Exac
 Evidence/status: lean_checked_transition_identities_and_exact_composite_modulus_certificate
 
 - [CleanRecoveryLengthCounterexample.lean](problem/CleanRecoveryLengthCounterexample.lean)
+- [CleanRecoveryLengthCounterexample.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean)
 
 ### height_sixteen_mod17_cofinal_return_and_sign_split
 
@@ -411,6 +461,7 @@ The 360 height-16 cylinders refine into 6120 classes modulo 46410. Exact value-l
 Evidence/status: lean_checked_transition_identities_and_exact_complete_cylinder_certificate
 
 - [CleanRecoveryLengthCounterexample.lean](problem/CleanRecoveryLengthCounterexample.lean)
+- [CleanRecoveryLengthCounterexample.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean)
 
 ### height_seventeen_rigidity_and_height_eighteen_mod19_return
 
@@ -419,6 +470,7 @@ All 8640 mod-4 lifts of the 2160 height-17 cylinders have d=0 mod 4, so nontrivi
 Evidence/status: lean_checked_transition_identities_and_exact_complete_cylinder_certificate
 
 - [CleanRecoveryLengthCounterexample.lean](problem/CleanRecoveryLengthCounterexample.lean)
+- [CleanRecoveryLengthCounterexample.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean)
 
 ### height_nineteen_payment_five_cofinal_return
 
@@ -427,6 +479,7 @@ The 69120 height-19 source classes refine into 691200 classes modulo 35271600. T
 Evidence/status: lean_checked_terminal_cascade_and_exact_complete_vectorized_cylinder
 
 - [CleanRecoveryLengthCounterexample.lean](problem/CleanRecoveryLengthCounterexample.lean)
+- [CleanRecoveryLengthCounterexample.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean)
 
 ### height_twenty_payment_seven_mode_elimination
 
@@ -435,6 +488,7 @@ The 506880 height-20 source cylinders refine into 10644480 classes modulo 740703
 Evidence/status: lean_checked_cascade_identities_and_exact_affine_complete_cylinder
 
 - [CleanRecoveryLengthCounterexample.lean](problem/CleanRecoveryLengthCounterexample.lean)
+- [CleanRecoveryLengthCounterexample.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean)
 
 ### height_twenty_one_payment_eleven_rigidity
 
@@ -443,6 +497,7 @@ The 8211456 height-20 survivors refine into 180652032 height-21 classes. Their q
 Evidence/status: lean_checked_transition_identities_and_exact_affine_complete_cylinder
 
 - [CleanRecoveryLengthCounterexample.lean](problem/CleanRecoveryLengthCounterexample.lean)
+- [CleanRecoveryLengthCounterexample.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean)
 
 ### height_twenty_two_mod23_centered_state_split
 
@@ -451,6 +506,7 @@ The 120931560 height-22 source families logically refine into 2781425880 classes
 Evidence/status: lean_checked_transition_identities_and_exact_compressed_affine_residue_count
 
 - [CleanRecoveryLengthCounterexample.lean](problem/CleanRecoveryLengthCounterexample.lean)
+- [CleanRecoveryLengthCounterexample.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean)
 
 ### height_twenty_three_factor24_singleton_mode
 
@@ -459,6 +515,7 @@ The 673297902 height-23 negative classes refine into 16159149648 logical lifts. 
 Evidence/status: lean_checked_transition_identities_and_exact_weighted_key_composite_crt_count
 
 - [CleanRecoveryLengthCounterexample.lean](problem/CleanRecoveryLengthCounterexample.lean)
+- [CleanRecoveryLengthCounterexample.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean)
 
 claim_boundary: This is a finite exact classification of the corrected height-23 source refinements. It does not classify the height-24 continuation or prove the unrestricted Erdos #243 theorem or eventual Sylvester recurrence.
 
@@ -539,6 +596,7 @@ Along the exact natural orbit from index N, a common divisor of C_n and D_n divi
 Evidence/status: lean_checked
 
 - [SlowRiseBarrier.lean](problem/SlowRiseBarrier.lean)
+- [SlowRiseBarrier.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowRiseBarrier.lean)
 
 claim_boundary: Unconditional integer persistence; it neither bounds the overlap by itself nor excludes any orbit alone.
 
@@ -549,6 +607,7 @@ For pairwise coprime moduli m_0..m_{B-1} > 1 with product P there is x with P <=
 Evidence/status: lean_checked
 
 - [SlowRiseBarrier.lean](problem/SlowRiseBarrier.lean)
+- [SlowRiseBarrier.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowRiseBarrier.lean)
 
 claim_boundary: Finite CRT statement with an explicit height bound; it replaces the unbounded shift of exists_shifted_consecutiveMultiples.
 
@@ -559,6 +618,7 @@ Let T >= N, let m_0..m_{B-1} > 1 be pairwise coprime divisors of D_T with produc
 Evidence/status: lean_checked
 
 - [SlowRiseBarrier.lean](problem/SlowRiseBarrier.lean)
+- [SlowRiseBarrier.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowRiseBarrier.lean)
 
 claim_boundary: The rise bound is only required below 2P and the negative bound only below 2P + B; the choice of moduli on the canonical orbit and the log-log threshold are the ordinary-proof transfer in SlowNegativePartRigidity.md, not formalised.
 
@@ -569,6 +629,7 @@ No reduced exact tail (a,u,v) from index N with a_n > 1 and u_n tending to infin
 Evidence/status: lean_checked
 
 - [SlowRiseBarrier.lean](problem/SlowRiseBarrier.lean)
+- [SlowRiseBarrier.lean](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowRiseBarrier.lean)
 
 claim_boundary: Reduced-tail theorem; it does not by itself supply the hypotheses on the canonical orbit.
 
@@ -579,6 +640,7 @@ Under the exact natural dynamics, positivity and division-free normalised vanish
 Evidence/status: ordinary_proof_over_lean_core
 
 - [SlowNegativePartRigidity.md](problem/SlowNegativePartRigidity.md)
+- [SlowNegativePartRigidity.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowNegativePartRigidity.md)
 
 claim_boundary: Conditional on normalised vanishing (supplied on the canonical orbit by Koizumi Cor. 10) and on the slow-negative hypothesis; the burn count and the transfer are ordinary proofs; Erdos #243 remains open.
 
@@ -589,6 +651,7 @@ For the canonical state of any counterexample to Erdos #243, limsup_n (-E_n)_+ /
 Evidence/status: ordinary_proof_over_lean_core
 
 - [SlowNegativePartRigidity.md](problem/SlowNegativePartRigidity.md)
+- [SlowNegativePartRigidity.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowNegativePartRigidity.md)
 
 claim_boundary: Necessary conditions on a counterexample; the constant 1 is the CRT-block constant of the method, not a proved sharp threshold for the problem.
 
@@ -599,6 +662,7 @@ Let Q_n = (a_1...a_{n-1}/a_n)(a_n^2/a_{n+1} - 1). If a_{n+1}/a_n^2 -> 1, sum 1/a
 Evidence/status: ordinary_proof
 
 - [SlowNegativePartRigidity.md](problem/SlowNegativePartRigidity.md)
+- [SlowNegativePartRigidity.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowNegativePartRigidity.md)
 
 claim_boundary: Original-coordinates form of the Lean-checked bounded-negative theorem composed with Koizumi's bridge; the LCM-prefactor strengthening limsup Q_n/M_n < infinity is not claimed.
 
@@ -609,6 +673,7 @@ If a_{n+1}/a_n^2 -> 1, sum 1/a_n is rational and limsup n (a_n^2/a_{n+1} - 1)_+ 
 Evidence/status: ordinary_proof
 
 - [SlowNegativePartRigidity.md](problem/SlowNegativePartRigidity.md)
+- [SlowNegativePartRigidity.md](formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowNegativePartRigidity.md)
 
 claim_boundary: Weaker than slow_negative_part_rigidity (its hypothesis implies a vanishing negative part); recorded as the explicit-constant sufficient condition in the language of the original problem; sharp for the method, not for the problem.
 
