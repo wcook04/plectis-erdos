@@ -3,7 +3,7 @@
   "artifact_role": "paper_sigil_to_lean_module_navigation_crosswalk",
   "authority_posture": "generated_navigation_projection_not_proof_authority",
   "heuristic": "Each CamelCase component contributes at most its first three characters.",
-  "alias_count": 126,
+  "alias_count": 129,
   "aliases": [
     {
       "sigil": "ActForResPro",
@@ -496,6 +496,11 @@
       "path": "Erdos249257/TotientCarryKernelRigidity.lean"
     },
     {
+      "sigil": "TotFixRanLcmAsy",
+      "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+      "path": "Erdos249257/TotientFixedRankLcmAsymptotic.lean"
+    },
+    {
       "sigil": "TotKerInd",
       "module": "Erdos249257/TotientKernelIndex.lean",
       "path": "Erdos249257/TotientKernelIndex.lean"
@@ -511,6 +516,11 @@
       "path": "Erdos249257/TotientMahlerDefect.lean"
     },
     {
+      "sigil": "TotParCobCou",
+      "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+      "path": "Erdos249257/TotientParityCoboundaryCountermodel.lean"
+    },
+    {
       "sigil": "TotTaiCarPer",
       "module": "Erdos249257/TotientTailCarryPeriod.lean",
       "path": "Erdos249257/TotientTailCarryPeriod.lean"
@@ -519,6 +529,11 @@
       "sigil": "TotTaiPerKil",
       "module": "Erdos249257/TotientTailPeriodKiller.lean",
       "path": "Erdos249257/TotientTailPeriodKiller.lean"
+    },
+    {
+      "sigil": "TotTwoAdiPulBlo",
+      "module": "Erdos249257/TotientTwoAdicPulseBlock.lean",
+      "path": "Erdos249257/TotientTwoAdicPulseBlock.lean"
     },
     {
       "sigil": "TroCurCar",
