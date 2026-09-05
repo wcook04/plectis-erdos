@@ -106,6 +106,8 @@ BUILDERS = (
     "scripts/build_problem_index.py",
     "scripts/build_semantic_corpus.py",
     "scripts/build_theory_lab.py",
+    # External-verification projections consume the registry-derived portfolio.
+    "scripts/build_comparator_replay_portfolio.py",
     "scripts/build_external_verification.py",
     "docs/papers/build_publication_taxonomy.py",
     # The corpus descriptor reads paper/module-aliases.json, so the alias

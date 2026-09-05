@@ -46,6 +46,15 @@ def checked_builders(source: str) -> set[str]:
     found: set[str] = set()
     tree = ast.parse(source)
     for node in ast.walk(tree):
+        if (
+            isinstance(node, ast.Subscript)
+            and isinstance(node.value, ast.Name)
+            and node.value.id == "_PROJECTION_CHECK_RESULTS"
+            and isinstance(node.slice, ast.Constant)
+            and isinstance(node.slice.value, str)
+            and BUILDER_NAME.match(Path(node.slice.value).name)
+        ):
+            found.add(Path(node.slice.value).name)
         if not isinstance(node, (ast.List, ast.Tuple)):
             continue
         literals = {
@@ -151,6 +160,15 @@ def main() -> int:
         "build_corpus_descriptor.py reads paper/module-aliases.json, so "
         "build_paper_module_aliases.py must run before it; with the current "
         "order a full refresh cannot converge",
+    )
+    require(
+        "build_comparator_replay_portfolio.py" in checked,
+        "release gate must consume the Comparator portfolio freshness result",
+    )
+    require(
+        builders.index("build_comparator_replay_portfolio.py")
+        < builders.index("build_external_verification.py"),
+        "Comparator portfolio must refresh before its external-verification consumer",
     )
     check_check_only_dispatch()
 

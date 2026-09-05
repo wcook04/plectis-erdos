@@ -1132,6 +1132,14 @@ def main(argv: list[str] | None = None) -> int:
         "generated problem-index freshness failed: "
         f"{problem_index_check.stdout.strip() or problem_index_check.stderr.strip()}",
     )
+    comparator_portfolio_check = _PROJECTION_CHECK_RESULTS[
+        "scripts/build_comparator_replay_portfolio.py"
+    ]
+    check(
+        comparator_portfolio_check.returncode == 0,
+        "Comparator portfolio projection freshness failed: "
+        f"{comparator_portfolio_check.stdout.strip() or comparator_portfolio_check.stderr.strip()}",
+    )
     external_verification_check = _PROJECTION_CHECK_RESULTS[
         "scripts/build_external_verification.py"
     ]
