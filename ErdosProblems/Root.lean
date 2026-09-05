@@ -59,14 +59,6 @@ import ErdosProblems.Erdos68.PrimeUnitTranslator
 import ErdosProblems.Erdos68.PrimePoleCriterion
 import ErdosProblems.Erdos68.PrimeZeroBranch
 import ErdosProblems.Erdos68.StrictSuccessorArithmetic
-
-/-!
-# Problem-centric Erdős formalization root
-
-This root is intentionally separate from the historical `Erdos249257`
-namespace. New research is grouped by the actual problem and mathematical
-object without forcing a repository-wide rename.
--/
 import Erdos249257.BouquetReciprocalIrrationality
 import ErdosProblems.Erdos257.BatchReturnSynthesis
 import ErdosProblems.Erdos257.GreedyRepairCriterion
@@ -84,3 +76,11 @@ import ErdosProblems.Erdos1041.LogKernelVariance
 import ErdosProblems.Erdos1041.LogKernelCentralCertificate
 import ErdosProblems.Erdos1041.PowerSeriesDerivative
 import ErdosProblems.Erdos68.PrimePoleDenominator
+
+/-!
+# Problem-centric Erdős formalization root
+
+This root is intentionally separate from the historical `Erdos249257`
+namespace. New research is grouped by the actual problem and mathematical
+object without forcing a repository-wide rename.
+-/
