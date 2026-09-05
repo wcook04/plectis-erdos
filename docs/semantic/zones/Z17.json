@@ -890,12 +890,12 @@
         {
           "declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 123
+          "line": 124
         },
         {
           "declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_dvd_threePrimeHeight",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 77
+          "line": 78
         }
       ],
       "concepts": [
@@ -918,17 +918,17 @@
         {
           "declaration": "ErdosProblems.Erdos269.threePrimeHeight_eq_of_sameLogCell",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 169
+          "line": 170
         },
         {
           "declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_eq_of_sameLogCell",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 179
+          "line": 180
         },
         {
           "declaration": "ErdosProblems.Erdos269.threePrimeKernelQ_eq_of_sameLogCell",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 191
+          "line": 192
         }
       ],
       "concepts": [
@@ -952,17 +952,17 @@
         {
           "declaration": "ErdosProblems.Erdos269.threePrimePositiveJumpSet_card",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 249
+          "line": 250
         },
         {
           "declaration": "ErdosProblems.Erdos269.threePrimeJumpSetWithOrigin_card",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 278
+          "line": 279
         },
         {
           "declaration": "ErdosProblems.Erdos269.positivePrimePowers_card",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 208
+          "line": 209
         }
       ],
       "concepts": [
@@ -985,32 +985,32 @@
         {
           "declaration": "ErdosProblems.Erdos269.threePrimeHeight_firstLogStep",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 294
+          "line": 295
         },
         {
           "declaration": "ErdosProblems.Erdos269.threePrimeHeight_secondLogStep",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 305
+          "line": 306
         },
         {
           "declaration": "ErdosProblems.Erdos269.threePrimeHeight_thirdLogStep",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 316
+          "line": 317
         },
         {
           "declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_firstLogStep",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 326
+          "line": 327
         },
         {
           "declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_secondLogStep",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 339
+          "line": 340
         },
         {
           "declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_thirdLogStep",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 352
+          "line": 353
         }
       ],
       "concepts": [
@@ -1034,12 +1034,12 @@
         {
           "declaration": "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 406
+          "line": 407
         },
         {
           "declaration": "ErdosProblems.Erdos269.smoothHeightFiber_kernel_sum",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 384
+          "line": 385
         }
       ],
       "concepts": [
@@ -1063,7 +1063,7 @@
         {
           "declaration": "ErdosProblems.Erdos269.threePrimeHeight_le_cube",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 430
+          "line": 431
         }
       ],
       "concepts": [
@@ -1086,22 +1086,22 @@
         {
           "declaration": "ErdosProblems.Erdos269.kernel_235_origin",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 443
+          "line": 444
         },
         {
           "declaration": "ErdosProblems.Erdos269.kernel_235_two",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 450
+          "line": 451
         },
         {
           "declaration": "ErdosProblems.Erdos269.kernel_235_three",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 458
+          "line": 459
         },
         {
           "declaration": "ErdosProblems.Erdos269.kernel_235_six",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 467
+          "line": 468
         }
       ],
       "concepts": [
@@ -1124,7 +1124,7 @@
         {
           "declaration": "ErdosProblems.Erdos269.kernel_235_not_rankOne",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 479
+          "line": 480
         }
       ],
       "concepts": [
@@ -1147,7 +1147,7 @@
         {
           "declaration": "ErdosProblems.Erdos269.tailStateStep_eq",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 490
+          "line": 491
         }
       ],
       "concepts": [
@@ -1170,22 +1170,22 @@
         {
           "declaration": "ErdosProblems.Erdos269.smoothExponentShell_card_le_dropFirst",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 543
+          "line": 544
         },
         {
           "declaration": "ErdosProblems.Erdos269.smoothExponentShell_card_le_dropThird",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 585
+          "line": 586
         },
         {
           "declaration": "ErdosProblems.Erdos269.smoothExponentShell_card_quadratic",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 646
+          "line": 647
         },
         {
           "declaration": "ErdosProblems.Erdos269.exponent_unique_in_short_interval",
           "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-          "line": 509
+          "line": 510
         }
       ],
       "concepts": [
@@ -1264,7 +1264,7 @@
         {
           "declaration": "ErdosProblems.Erdos1049.CoordinatewiseCorridor",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 113
+          "line": 149
         }
       ],
       "concepts": [
@@ -1287,7 +1287,7 @@
         {
           "declaration": "ErdosProblems.Erdos1049.coordinatewiseCorridor_implies_pow_lt_linear",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 121
+          "line": 157
         }
       ],
       "concepts": [
@@ -1310,12 +1310,12 @@
         {
           "declaration": "ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 155
+          "line": 191
         },
         {
           "declaration": "ErdosProblems.Erdos1049.three_mul_lt_two_pow_succ",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 142
+          "line": 178
         }
       ],
       "concepts": [
@@ -1338,12 +1338,12 @@
         {
           "declaration": "ErdosProblems.Erdos1049.rationalBasePrefixQ",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 168
+          "line": 204
         },
         {
           "declaration": "ErdosProblems.Erdos1049.rationalBaseClearedTailQ",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 181
+          "line": 217
         }
       ],
       "concepts": [
@@ -1366,12 +1366,12 @@
         {
           "declaration": "ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 187
+          "line": 223
         },
         {
           "declaration": "ErdosProblems.Erdos1049.rationalBasePrefixQ_succ",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 173
+          "line": 209
         }
       ],
       "concepts": [
@@ -1394,7 +1394,7 @@
         {
           "declaration": "ErdosProblems.Erdos1049.rationalBaseForcingNat",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 198
+          "line": 234
         }
       ],
       "concepts": [
@@ -1417,12 +1417,12 @@
         {
           "declaration": "ErdosProblems.Erdos1049.twoPow_le_rationalBaseForcingNat",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 204
+          "line": 240
         },
         {
           "declaration": "ErdosProblems.Erdos1049.rationalBaseForcingNat_one",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 218
+          "line": 254
         }
       ],
       "concepts": [
@@ -2144,336 +2144,336 @@
     {
       "declaration": "ErdosProblems.Erdos269.smooth3Val",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 31,
+      "line": 32,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.threePrimeHeight",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 36,
+      "line": 37,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.threePrimeKernelQ",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 40,
+      "line": 41,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothPrefixExponents",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 46,
+      "line": 47,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothPrefixLcm",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 53,
+      "line": 54,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.smooth3Val_dvd_threePrimeHeight_of_mem",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 59,
+      "line": 60,
       "role": "substrate",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_dvd_threePrimeHeight",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 77,
+      "line": 78,
       "role": "substrate",
       "statement_node": "n269_running_lcm_identity"
     },
     {
       "declaration": "ErdosProblems.Erdos269.pureFirst_mem_smoothPrefixExponents",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 84,
+      "line": 85,
       "role": "substrate",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.pureSecond_mem_smoothPrefixExponents",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 97,
+      "line": 98,
       "role": "substrate",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.pureThird_mem_smoothPrefixExponents",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 110,
+      "line": 111,
       "role": "substrate",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 123,
+      "line": 124,
       "role": "statement",
       "statement_node": "n269_running_lcm_identity"
     },
     {
       "declaration": "ErdosProblems.Erdos269.SameThreePrimeLogCell",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 163,
+      "line": 164,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.threePrimeHeight_eq_of_sameLogCell",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 169,
+      "line": 170,
       "role": "statement",
       "statement_node": "n269_log_cell_constancy"
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_eq_of_sameLogCell",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 179,
+      "line": 180,
       "role": "statement",
       "statement_node": "n269_log_cell_constancy"
     },
     {
       "declaration": "ErdosProblems.Erdos269.threePrimeKernelQ_eq_of_sameLogCell",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 191,
+      "line": 192,
       "role": "statement",
       "statement_node": "n269_log_cell_constancy"
     },
     {
       "declaration": "ErdosProblems.Erdos269.positivePrimePowers",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 204,
+      "line": 205,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.positivePrimePowers_card",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 208,
+      "line": 209,
       "role": "substrate",
       "statement_node": "n269_jump_set_cardinality"
     },
     {
       "declaration": "ErdosProblems.Erdos269.one_not_mem_positivePrimePowers",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 219,
+      "line": 220,
       "role": "substrate",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.positivePrimePowers_disjoint",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 229,
+      "line": 230,
       "role": "substrate",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.threePrimePositiveJumpSet",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 243,
+      "line": 244,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.threePrimePositiveJumpSet_card",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 249,
+      "line": 250,
       "role": "statement",
       "statement_node": "n269_jump_set_cardinality"
     },
     {
       "declaration": "ErdosProblems.Erdos269.threePrimeJumpSetWithOrigin",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 273,
+      "line": 274,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.threePrimeJumpSetWithOrigin_card",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 278,
+      "line": 279,
       "role": "statement",
       "statement_node": "n269_jump_set_cardinality"
     },
     {
       "declaration": "ErdosProblems.Erdos269.threePrimeHeight_firstLogStep",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 294,
+      "line": 295,
       "role": "statement",
       "statement_node": "n269_single_coordinate_jump"
     },
     {
       "declaration": "ErdosProblems.Erdos269.threePrimeHeight_secondLogStep",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 305,
+      "line": 306,
       "role": "statement",
       "statement_node": "n269_single_coordinate_jump"
     },
     {
       "declaration": "ErdosProblems.Erdos269.threePrimeHeight_thirdLogStep",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 316,
+      "line": 317,
       "role": "statement",
       "statement_node": "n269_single_coordinate_jump"
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_firstLogStep",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 326,
+      "line": 327,
       "role": "statement",
       "statement_node": "n269_single_coordinate_jump"
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_secondLogStep",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 339,
+      "line": 340,
       "role": "statement",
       "statement_node": "n269_single_coordinate_jump"
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_thirdLogStep",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 352,
+      "line": 353,
       "role": "statement",
       "statement_node": "n269_single_coordinate_jump"
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothExponentBox",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 368,
+      "line": 369,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothPointHeight",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 373,
+      "line": 374,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothHeightFiber",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 377,
+      "line": 378,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothHeightFiber_kernel_sum",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 384,
+      "line": 385,
       "role": "substrate",
       "statement_node": "n269_fiber_normal_form"
     },
     {
       "declaration": "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 406,
+      "line": 407,
       "role": "statement",
       "statement_node": "n269_fiber_normal_form"
     },
     {
       "declaration": "ErdosProblems.Erdos269.threePrimeHeight_le_cube",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 430,
+      "line": 431,
       "role": "statement",
       "statement_node": "n269_height_cubic_majorant"
     },
     {
       "declaration": "ErdosProblems.Erdos269.kernel_235_origin",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 443,
+      "line": 444,
       "role": "finite_instance",
       "statement_node": "n269_kernel_235_values"
     },
     {
       "declaration": "ErdosProblems.Erdos269.kernel_235_two",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 450,
+      "line": 451,
       "role": "finite_instance",
       "statement_node": "n269_kernel_235_values"
     },
     {
       "declaration": "ErdosProblems.Erdos269.kernel_235_three",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 458,
+      "line": 459,
       "role": "finite_instance",
       "statement_node": "n269_kernel_235_values"
     },
     {
       "declaration": "ErdosProblems.Erdos269.kernel_235_six",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 467,
+      "line": 468,
       "role": "finite_instance",
       "statement_node": "n269_kernel_235_values"
     },
     {
       "declaration": "ErdosProblems.Erdos269.kernel_235_not_rankOne",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 479,
+      "line": 480,
       "role": "finite_instance",
       "statement_node": "n269_kernel_235_not_rank_one"
     },
     {
       "declaration": "ErdosProblems.Erdos269.tailStateStep",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 487,
+      "line": 488,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.tailStateStep_eq",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 490,
+      "line": 491,
       "role": "statement",
       "statement_node": "n269_tail_step_normal_form"
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothExponentShell",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 500,
+      "line": 501,
       "role": "concept",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.exponent_unique_in_short_interval",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 509,
+      "line": 510,
       "role": "substrate",
       "statement_node": "n269_short_shell_quadratic"
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothExponentShell_card_le_dropFirst",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 543,
+      "line": 544,
       "role": "statement",
       "statement_node": "n269_short_shell_quadratic"
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothExponentShell_card_le_dropThird",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 585,
+      "line": 586,
       "role": "statement",
       "statement_node": "n269_short_shell_quadratic"
     },
     {
       "declaration": "ErdosProblems.Erdos269.sorted_pair_quadratic",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 629,
+      "line": 630,
       "role": "substrate",
       "statement_node": null
     },
     {
       "declaration": "ErdosProblems.Erdos269.smoothExponentShell_card_quadratic",
       "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
-      "line": 646,
+      "line": 647,
       "role": "statement",
       "statement_node": "n269_short_shell_quadratic"
     },
@@ -2515,77 +2515,77 @@
     {
       "declaration": "ErdosProblems.Erdos1049.CoordinatewiseCorridor",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 113,
+      "line": 149,
       "role": "representation",
       "statement_node": "n1049_coordinatewise_corridor_definition"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.coordinatewiseCorridor_implies_pow_lt_linear",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 121,
+      "line": 157,
       "role": "statement",
       "statement_node": "n1049_corridor_power_vs_linear"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.three_mul_lt_two_pow_succ",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 142,
+      "line": 178,
       "role": "substrate",
       "statement_node": "n1049_three_halves_barrier"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 155,
+      "line": 191,
       "role": "statement",
       "statement_node": "n1049_three_halves_barrier"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.rationalBasePrefixQ",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 168,
+      "line": 204,
       "role": "representation",
       "statement_node": "n1049_rational_base_tail_coordinates"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.rationalBasePrefixQ_succ",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 173,
+      "line": 209,
       "role": "substrate",
       "statement_node": "n1049_cleared_tail_recurrence"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.rationalBaseClearedTailQ",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 181,
+      "line": 217,
       "role": "representation",
       "statement_node": "n1049_rational_base_tail_coordinates"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 187,
+      "line": 223,
       "role": "statement",
       "statement_node": "n1049_cleared_tail_recurrence"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.rationalBaseForcingNat",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 198,
+      "line": 234,
       "role": "representation",
       "statement_node": "n1049_rational_base_forcing_magnitude"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.twoPow_le_rationalBaseForcingNat",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 204,
+      "line": 240,
       "role": "statement",
       "statement_node": "n1049_forcing_term_growth"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.rationalBaseForcingNat_one",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 218,
+      "line": 254,
       "role": "representation",
       "statement_node": "n1049_forcing_term_growth"
     },

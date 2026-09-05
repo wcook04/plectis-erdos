@@ -42,7 +42,31 @@
       "url": "https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/toolchains.json",
       "commit": "e215b184d1b659e8e3e641162a7d63708678016f",
       "sha256": "b9b749bd4c0c3fb485cbf53870d8fb791ae0e3e071db611b9ea6228d1c051bad",
-      "role": "closed minimum-toolchain contract; current minimum is v4.28.0"
+      "role": "historical protocol-compatibility floor; current minimum is v4.28.0, which is not by itself kernel-security assurance"
+    },
+    {
+      "authority": "leanprover/lean4",
+      "path": "src/kernel/type_checker.cpp@v4.29.1",
+      "url": "https://raw.githubusercontent.com/leanprover/lean4/f72c35b3f637c8c6571d353742168ab66cc22c00/src/kernel/type_checker.cpp",
+      "commit": "f72c35b3f637c8c6571d353742168ab66cc22c00",
+      "sha256": "31b9c86aef9d7357c42484fd4b54e8ff101ecfe73c872080f42200b4c0d486ee",
+      "role": "exact target-kernel source used to distinguish the v4.29.1 project pin from the later fixed isProp implementation"
+    },
+    {
+      "authority": "leanprover/lean4",
+      "path": "src/kernel/type_checker.cpp@v4.33.0-rc2",
+      "url": "https://raw.githubusercontent.com/leanprover/lean4/d8b18978322de05a8f3dba51ef03cf5461676c17/src/kernel/type_checker.cpp",
+      "commit": "d8b18978322de05a8f3dba51ef03cf5461676c17",
+      "sha256": "e996524515626fea05fdfd998e48fec8955881b94528a7bee2f678e526602b2c",
+      "role": "exact fixed Comparator-kernel source containing universe-normalized Prop recognition"
+    },
+    {
+      "authority": "leanprover/comparator",
+      "path": "lean-toolchain@789279735fe44c1c05dc54bb9f46ba4d9b8c7611",
+      "url": "https://raw.githubusercontent.com/leanprover/comparator/789279735fe44c1c05dc54bb9f46ba4d9b8c7611/lean-toolchain",
+      "commit": "789279735fe44c1c05dc54bb9f46ba4d9b8c7611",
+      "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+      "role": "exact source binding from the configured Comparator revision to Lean v4.33.0-rc2"
     },
     {
       "authority": "PalomarSubmission",
@@ -178,7 +202,47 @@
       "path": "lean-toolchain",
       "version": "leanprover/lean4:v4.29.1",
       "official_minimum": "v4.28.0",
-      "structural_status": "pass"
+      "structural_status": "pass",
+      "security_sufficiency": "not_established_by_protocol_floor"
+    },
+    "kernel_security_disposition": {
+      "scope": "separates Palomar protocol compatibility from project release kernel-security assurance without changing the target toolchain",
+      "palomar_protocol_requirement": {
+        "minimum": "v4.28.0",
+        "status": "pass",
+        "sufficient_for_kernel_security": false
+      },
+      "source_verified_issue": {
+        "id": "leanprover/lean4#14613",
+        "fixed_release": "v4.33.0",
+        "target_source_authority_path": "src/kernel/type_checker.cpp@v4.29.1",
+        "fixed_source_authority_path": "src/kernel/type_checker.cpp@v4.33.0-rc2",
+        "finding": "The target source recognizes Prop by whnf equality with mk_Prop; the fixed Comparator-kernel source checks a sort whose universe level normalizes to zero.",
+        "scope": "This exact source difference justifies requiring fixed-kernel replay for adversarial-source release assurance; it does not imply that configured replay has executed."
+      },
+      "target_kernel": {
+        "toolchain": "leanprover/lean4:v4.29.1",
+        "lean_commit": "f72c35b3f637c8c6571d353742168ab66cc22c00",
+        "source_authority_path": "src/kernel/type_checker.cpp@v4.29.1",
+        "security_status": "fixed_kernel_replay_required",
+        "boundary": "The Palomar v4.28.0 floor is satisfied, but target-kernel acceptance alone is not treated as adversarial-source security evidence."
+      },
+      "fixed_kernel_replay": {
+        "workflow_path": ".github/workflows/lean.yml",
+        "comparator_revision": "789279735fe44c1c05dc54bb9f46ba4d9b8c7611",
+        "comparator_kernel_toolchain": "leanprover/lean4:v4.33.0-rc2",
+        "comparator_kernel_commit": "d8b18978322de05a8f3dba51ef03cf5461676c17",
+        "comparator_source_authority_path": "lean-toolchain@789279735fe44c1c05dc54bb9f46ba4d9b8c7611",
+        "kernel_source_authority_path": "src/kernel/type_checker.cpp@v4.33.0-rc2",
+        "lean4export_revision": "6f4e21dd70c3c11d7fbd07d39e3192792c657448",
+        "configuration_status": "configured_not_execution_evidence",
+        "required_receipt_status": "required_not_established_here",
+        "release_gate": ".github/workflows/lean.yml",
+        "receipt_validator": "scripts/external_verification_release.py",
+        "contract_test": "scripts/test_external_verification_release.py",
+        "receipt_contract": "verification/external-verification-release-contract.json",
+        "boundary": "Pinned configuration identifies a fixed replay kernel; only a successful commit-bound runtime receipt admitted by the existing release gate establishes that the configured replay executed."
+      }
     },
     "license": {
       "path": "LICENSE",
@@ -1104,8 +1168,15 @@
       "id": "lean_toolchain_floor",
       "source": "PalomarSubmission/toolchains.json@e215b184d1b659e8e3e641162a7d63708678016f",
       "status": "pass",
-      "evidence": "lean-toolchain is v4.29.1, above the official v4.28.0 minimum.",
-      "disposition": "structurally_satisfied"
+      "evidence": "lean-toolchain is v4.29.1, above the historical Palomar protocol minimum v4.28.0. This compatibility pass is not kernel-security assurance.",
+      "disposition": "protocol_compatibility_only"
+    },
+    {
+      "id": "fixed_kernel_replay_security_disposition",
+      "source": "leanprover/comparator@789279735fe44c1c05dc54bb9f46ba4d9b8c7611 + leanprover/lean4@d8b18978322de05a8f3dba51ef03cf5461676c17",
+      "status": "required_for_release_not_established_here",
+      "evidence": "The committed workflow pins Comparator 789279735fe44c1c05dc54bb9f46ba4d9b8c7611, whose exact lean-toolchain source selects Lean v4.33.0-rc2, and lean4export 6f4e21dd70c3c11d7fbd07d39e3192792c657448. Configuration is not a successful execution: the existing commit-bound external-verification release receipt remains required.",
+      "disposition": "configuration_is_not_a_runtime_receipt"
     },
     {
       "id": "lake_manifest_and_dependency_pins",
@@ -1187,11 +1258,11 @@
   ],
   "qualification_decision": {
     "decision": "READY",
-    "reason": "The repository-local Palomar product binds the complete committed Comparator candidate universe to a deliberate full-support selection and satisfies the current v0.4 structural and metadata profile.",
-    "readiness_rule": "READY means the committed public checkout satisfies every repository-local structural requirement. External review, submission, registration, and publication are separately reported actions, not local qualification gates; Comparator theorem-name count alone never substitutes for qualification.",
+    "reason": "The repository-local Palomar product binds the committed Comparator candidate universe to its source-bound ranked selection and satisfies the current v0.4 structural and metadata profile.",
+    "readiness_rule": "READY means the committed public checkout satisfies every repository-local structural requirement. It does not mean release-qualified: the existing release gate still requires a successful commit-bound replay through the configured fixed Comparator kernel. External review, submission, registration, and publication are separately reported actions; Comparator theorem-name count or configuration alone never substitutes for execution evidence.",
     "safe_local_repairs_remaining": [],
     "external_follow_on": [
-      "independent replay may be attached as additional evidence",
+      "successful commit-bound fixed-kernel replay is required for project release assurance",
       "editorial review may be recorded if it occurs",
       "submission, registration, and publication may be recorded if they occur"
     ]

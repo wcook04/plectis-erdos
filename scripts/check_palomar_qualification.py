@@ -101,6 +101,25 @@ REQUIRED_REQUIREMENT_IDS = {
     "root_license",
     "formalization_file_envelope",
     "formalization_v04_metadata",
+    "fixed_kernel_replay_security_disposition",
+}
+TARGET_LEAN_TOOLCHAIN = "leanprover/lean4:v4.29.1"
+COMPARATOR_REVISION = "789279735fe44c1c05dc54bb9f46ba4d9b8c7611"
+COMPARATOR_LEAN_TOOLCHAIN = "leanprover/lean4:v4.33.0-rc2"
+LEAN4EXPORT_REVISION = "6f4e21dd70c3c11d7fbd07d39e3192792c657448"
+KERNEL_SECURITY_AUTHORITIES = {
+    "src/kernel/type_checker.cpp@v4.29.1": {
+        "commit": "f72c35b3f637c8c6571d353742168ab66cc22c00",
+        "sha256": "31b9c86aef9d7357c42484fd4b54e8ff101ecfe73c872080f42200b4c0d486ee",
+    },
+    "src/kernel/type_checker.cpp@v4.33.0-rc2": {
+        "commit": "d8b18978322de05a8f3dba51ef03cf5461676c17",
+        "sha256": "e996524515626fea05fdfd998e48fec8955881b94528a7bee2f678e526602b2c",
+    },
+    "lean-toolchain@789279735fe44c1c05dc54bb9f46ba4d9b8c7611": {
+        "commit": COMPARATOR_REVISION,
+        "sha256": "0d3c76ccd8772d8bcbe207241421a760312b71a6aa82f84194391fdf5cb026d6",
+    },
 }
 
 
@@ -530,6 +549,107 @@ def authority_errors(reconciliation: dict[str, Any]) -> list[str]:
         errors.append(
             f"Palomar requirement matrix omits official intake requirements: {missing_requirements}"
         )
+    return errors
+
+
+def kernel_security_errors(root: Path, reconciliation: dict[str, Any]) -> list[str]:
+    """Validate policy compatibility separately from kernel-security evidence."""
+    errors: list[str] = []
+    security = reconciliation.get("current_repository", {}).get(
+        "kernel_security_disposition", {}
+    )
+    authorities = {
+        row.get("path"): row
+        for row in reconciliation.get("official_authorities", [])
+        if isinstance(row, dict)
+    }
+    for path, expected in KERNEL_SECURITY_AUTHORITIES.items():
+        actual = authorities.get(path, {})
+        for field, value in expected.items():
+            if actual.get(field) != value:
+                errors.append(f"kernel-security authority {path} disagrees on {field}")
+
+    protocol = security.get("palomar_protocol_requirement", {})
+    if protocol.get("minimum") != "v4.28.0" or protocol.get("status") != "pass":
+        errors.append("Palomar v4.28.0 protocol requirement is not preserved")
+    if protocol.get("sufficient_for_kernel_security") is not False:
+        errors.append("Palomar protocol floor must not imply kernel-security assurance")
+    issue = security.get("source_verified_issue", {})
+    if issue.get("id") != "leanprover/lean4#14613":
+        errors.append("kernel-security disposition lacks the source-verified issue")
+    if issue.get("fixed_release") != "v4.33.0":
+        errors.append("kernel-security disposition records the wrong fixed release")
+    if issue.get("target_source_authority_path") != (
+        "src/kernel/type_checker.cpp@v4.29.1"
+    ) or issue.get("fixed_source_authority_path") != (
+        "src/kernel/type_checker.cpp@v4.33.0-rc2"
+    ):
+        errors.append("kernel-security issue does not bind both exact source versions")
+
+    target = security.get("target_kernel", {})
+    if target.get("toolchain") != TARGET_LEAN_TOOLCHAIN:
+        errors.append("kernel-security target does not record Lean v4.29.1")
+    if target.get("lean_commit") != KERNEL_SECURITY_AUTHORITIES[
+        "src/kernel/type_checker.cpp@v4.29.1"
+    ]["commit"]:
+        errors.append("kernel-security target records the wrong Lean commit")
+    if target.get("source_authority_path") != "src/kernel/type_checker.cpp@v4.29.1":
+        errors.append("kernel-security target lacks its exact source authority")
+    if committed_text(root, "lean-toolchain").strip() != target.get("toolchain"):
+        errors.append("kernel-security target disagrees with HEAD:lean-toolchain")
+    if target.get("security_status") != "fixed_kernel_replay_required":
+        errors.append("target-kernel security disposition is not fail-closed")
+
+    replay = security.get("fixed_kernel_replay", {})
+    if replay.get("comparator_revision") != COMPARATOR_REVISION:
+        errors.append("fixed-kernel replay records the wrong Comparator revision")
+    if replay.get("comparator_kernel_toolchain") != COMPARATOR_LEAN_TOOLCHAIN:
+        errors.append("fixed-kernel replay records the wrong Comparator kernel")
+    if replay.get("comparator_kernel_commit") != KERNEL_SECURITY_AUTHORITIES[
+        "src/kernel/type_checker.cpp@v4.33.0-rc2"
+    ]["commit"]:
+        errors.append("fixed-kernel replay records the wrong kernel commit")
+    if replay.get("kernel_source_authority_path") != (
+        "src/kernel/type_checker.cpp@v4.33.0-rc2"
+    ):
+        errors.append("fixed-kernel replay lacks its exact kernel source authority")
+    if replay.get("comparator_source_authority_path") != (
+        f"lean-toolchain@{COMPARATOR_REVISION}"
+    ):
+        errors.append("fixed-kernel replay lacks its exact Comparator source authority")
+    if replay.get("lean4export_revision") != LEAN4EXPORT_REVISION:
+        errors.append("fixed-kernel replay records the wrong lean4export revision")
+    if replay.get("configuration_status") != "configured_not_execution_evidence":
+        errors.append("fixed-kernel configuration is being presented as execution evidence")
+    if replay.get("required_receipt_status") != "required_not_established_here":
+        errors.append("fixed-kernel replay receipt is not explicitly required")
+    if replay.get("release_gate") != ".github/workflows/lean.yml":
+        errors.append("fixed-kernel replay does not name the existing release gate")
+    if replay.get("receipt_validator") != "scripts/external_verification_release.py":
+        errors.append("fixed-kernel replay does not name the existing receipt validator")
+    if replay.get("contract_test") != "scripts/test_external_verification_release.py":
+        errors.append("fixed-kernel replay does not name the existing contract test")
+
+    workflow = committed_text(root, ".github/workflows/lean.yml")
+    for label, variable, revision in (
+        ("Comparator", "COMPARATOR_REV", COMPARATOR_REVISION),
+        ("lean4export", "LEAN4EXPORT_REV", LEAN4EXPORT_REVISION),
+    ):
+        if not re.search(rf"^\s*{variable}:\s*{revision}\s*$", workflow, re.MULTILINE):
+            errors.append(f"committed workflow lacks the pinned {label} revision")
+
+    requirement = next(
+        (
+            row
+            for row in reconciliation.get("requirements", [])
+            if row.get("id") == "fixed_kernel_replay_security_disposition"
+        ),
+        {},
+    )
+    if requirement.get("status") != "required_for_release_not_established_here":
+        errors.append("fixed-kernel replay requirement has an unsafe status")
+    if requirement.get("disposition") != "configuration_is_not_a_runtime_receipt":
+        errors.append("fixed-kernel replay requirement confuses configuration with execution")
     return errors
 
 
@@ -1210,6 +1330,7 @@ def evaluate(root: Path) -> dict[str, Any]:
     showcase = load_json(root / "docs/PALOMAR_RESULT_SHOWCASE.json", root=root)
     comparator = json.loads(committed_bytes(root, "verification/comparator.json"))
     errors = authority_errors(recon)
+    errors.extend(kernel_security_errors(root, recon))
     errors.extend(roster_errors(root, comparator, showcase, recon))
     errors.extend(candidate_selection_errors(comparator, showcase, root))
     selected = showcase.get("candidate_selection", {})
@@ -1243,6 +1364,18 @@ def evaluate(root: Path) -> dict[str, Any]:
         "structural_deficits": sorted(set(deficits)),
         "structural_warnings": repository_intake["warnings"],
         "repository_intake": repository_intake,
+        "kernel_security": {
+            "target_toolchain": recon["current_repository"]["kernel_security_disposition"][
+                "target_kernel"
+            ]["toolchain"],
+            "palomar_protocol_requirement": "pass",
+            "fixed_kernel_replay_configuration": "present",
+            "fixed_kernel_replay_receipt": "required_not_established_here",
+            "release_meaning": (
+                "READY is repository-local structural qualification only; release assurance "
+                "still requires the existing commit-bound fixed-kernel replay receipt"
+            ),
+        },
         "external_follow_on": {
             "performed": [],
             "not_local_readiness_criteria": [

@@ -107,15 +107,15 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:bdbdcccc5127fafaca687a575222c81fd49930eb9779f24805255970488293c9",
-    "docs/claims.json": "sha256:06461897813ae89686bd7b05ad7eaeffd65a6dc542cf15b00acdd371b57f846a",
-    "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:669ae15671ac204f882a855679cf6b73c767b57b296239762cb77d6a781ac908",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:a7e437db1af180972814500a61ac8c7fcb4ee1b120ee5f3a58ab7bab05892dcc",
+    "docs/claims.json": "sha256:dcbabe392a532c77cc24e6ef05cff79008343f824428b452f76406ad77766185",
+    "docs/methodology.json": "sha256:c4f762538e14467af2adb2714e24099251325e819c395512c15767a1d551d1eb",
+    "docs/problems.json": "sha256:aaeb238cc02e76f242b570d70cfec748cdd28214b19ae134428d20092d863fa0",
     "docs/publication_contract.json": "sha256:077ca6e647745d0ccc0bf2cc9d9a045b99cd0fb753c6cb37bebecf73ca93a7ec",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:9affc936d64f39dc9e71ec468688ed4d3bae638f042f8e1924529dda1ecc930c",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:98287bcb929e603664b8e899a3014718d19a0cc3c62f1c68bf635926fa171c2c",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
     "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f",
@@ -132,7 +132,7 @@
   "historical_checker_example": {
     "current_owner_snapshot": {
       "contribution_family_count": 30,
-      "curated_claim_count": 130,
+      "curated_claim_count": 131,
       "remaining_open_proposition_count": 19,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7
@@ -282,7 +282,7 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 4434,
+        "line": 4484,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "Erd\\H{o}s \\#249"
       },
@@ -294,7 +294,7 @@
       "open_target_claim": "erdos_251",
       "paper_anchor": {
         "environment": "section",
-        "line": 103,
+        "line": 106,
         "source": "paper/erdos-251-prime-gap-dyadic-series.tex",
         "title": "Introduction"
       },
@@ -306,7 +306,7 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 4445,
+        "line": 4495,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "unbounded certificate supply"
       },
@@ -318,7 +318,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 4469,
+        "line": 4519,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "the half-value counterexample route"
       },
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1482,
+        "line": 1517,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -342,7 +342,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 4460,
+        "line": 4510,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "universal Erd\\H{o}s \\#257"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1543,
+        "line": 1576,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "weakest native recurrence criterion"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1565,
+        "line": 1598,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "actual-orbit invariant"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1587,
+        "line": 1620,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
     "source_index": {
-      "content_digest": "sha256:669ae15671ac204f882a855679cf6b73c767b57b296239762cb77d6a781ac908",
+      "content_digest": "sha256:aaeb238cc02e76f242b570d70cfec748cdd28214b19ae134428d20092d863fa0",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {
@@ -544,9 +544,9 @@
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "public_tag": "formal-source-2026-09-04",
-      "publication_state": "published_committed_checkpoint",
-      "ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+      "public_tag": "formal-source-2026-09-05",
+      "publication_state": "committed_checkpoint_pending_remote_publication",
+      "ref": "3506d189a2660213ec0e53ee29360a464007b8a1",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },
@@ -554,7 +554,7 @@
     "release_date": "2026-08-17",
     "release_tag": "v0.9.0",
     "release_version": "0.9.0",
-    "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
+    "repository": "https://github.com/wcook04/plectis-erdos",
     "revision_embedding_boundary": "A tracked file cannot contain its own Git commit id without self-reference. Content freshness is enforced by the owner hashes below; agents query the checkout revision at runtime."
   },
   "schema": "erdos249257-publication-entry-packet/1",

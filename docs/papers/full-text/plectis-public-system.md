@@ -2,11 +2,11 @@
 
 # Plectis: What a Stranger Can Check
 
-<div class="center">
+*What public evidence can and cannot show about a private system*
 
-<span class="smallcaps">Abstract</span>
+<a id="abstract"></a>
 
-</div>
+## Abstract
 
 This paper treats one named version of Plectis as a single case in a bounded descriptive analysis of testing public claims about software that cannot itself be published. The author releases selected code, fixed inputs, expected results, decision rules, and run records while the larger system remains private. What can a stranger conclude after rerunning those tests? The answer is narrow. The repository lets a reader inspect and rerun its published procedures. A matching result shows repeatability for a stated public case; it does not establish where the code came from, whether the expected answer is correct, whether the published selection resembles the private whole, or whether the private system works reliably.
 

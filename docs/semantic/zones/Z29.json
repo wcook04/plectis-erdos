@@ -57,17 +57,17 @@
         {
           "declaration": "exactLocalMersenneRowValue_mem_mersenneAchievementSet",
           "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
-          "line": 47
+          "line": 132
         },
         {
           "declaration": "abs_exactLocalMersenneRowValue_sub_half_le",
           "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
-          "line": 58
+          "line": 143
         },
         {
           "declaration": "half_mem_mersenneAchievementSet_of_cofinalExactLocalRows",
           "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
-          "line": 71
+          "line": 431
         }
       ]
     },
@@ -475,21 +475,21 @@
     {
       "declaration": "exactLocalMersenneRowValue_mem_mersenneAchievementSet",
       "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
-      "line": 47,
+      "line": 132,
       "role": "statement",
       "statement_node": "cofinal_exact_rows_force_half_membership"
     },
     {
       "declaration": "abs_exactLocalMersenneRowValue_sub_half_le",
       "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
-      "line": 58,
+      "line": 143,
       "role": "statement",
       "statement_node": "cofinal_exact_rows_force_half_membership"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_cofinalExactLocalRows",
       "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
-      "line": 71,
+      "line": 431,
       "role": "statement",
       "statement_node": "cofinal_exact_rows_force_half_membership"
     },

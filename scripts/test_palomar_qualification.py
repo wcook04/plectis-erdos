@@ -76,6 +76,16 @@ def test_normal_and_optimised_checker_agree() -> None:
     assert normal["ok"] is True
     assert normal["decision"] == "READY"
     assert normal["structural_deficits"] == []
+    assert normal["kernel_security"] == {
+        "fixed_kernel_replay_configuration": "present",
+        "fixed_kernel_replay_receipt": "required_not_established_here",
+        "palomar_protocol_requirement": "pass",
+        "release_meaning": (
+            "READY is repository-local structural qualification only; release assurance "
+            "still requires the existing commit-bound fixed-kernel replay receipt"
+        ),
+        "target_toolchain": "leanprover/lean4:v4.29.1",
+    }
     assert "operator_only_gates" not in normal
     assert "withheld_terminal_gates" not in normal
     assert normal["external_follow_on"]["performed"] == []
@@ -135,8 +145,11 @@ def test_structural_qualification_ignores_mutable_source_reads() -> None:
 
     def poisoned_worktree(path: Path, *, root: Path) -> str:
         value = original_safe_text(path, root=root)
-        if path.name == "CertificateKernel.lean":
-            return value.replace("irrational_erdosSum_full_support", "poisoned_source_name")
+        if path.name == "AllBaseReciprocalSupportIrrationality.lean":
+            return value.replace(
+                "irrational_erdosSupportSeries_of_summable_reciprocal",
+                "poisoned_source_name",
+            )
         return value
 
     checker.safe_text = poisoned_worktree
@@ -168,6 +181,55 @@ def test_pinned_classification_authorities_are_required() -> None:
     ]
     errors = checker.authority_errors(damaged)
     assert any("schema/formalization.schema.json" in error for error in errors)
+
+
+def test_kernel_security_disposition_fails_closed_without_claiming_execution() -> None:
+    reconciliation = json.loads(
+        (ROOT / "docs/PALOMAR_POLICY_RECONCILIATION.json").read_text()
+    )
+    assert checker.kernel_security_errors(ROOT, reconciliation) == []
+    security = reconciliation["current_repository"]["kernel_security_disposition"]
+    assert security["palomar_protocol_requirement"] == {
+        "minimum": "v4.28.0",
+        "status": "pass",
+        "sufficient_for_kernel_security": False,
+    }
+    assert security["fixed_kernel_replay"]["configuration_status"] == (
+        "configured_not_execution_evidence"
+    )
+    assert security["fixed_kernel_replay"]["required_receipt_status"] == (
+        "required_not_established_here"
+    )
+
+    damaged = copy.deepcopy(reconciliation)
+    damaged["current_repository"]["kernel_security_disposition"][
+        "palomar_protocol_requirement"
+    ]["sufficient_for_kernel_security"] = True
+    assert any(
+        "must not imply" in error
+        for error in checker.kernel_security_errors(ROOT, damaged)
+    )
+
+    damaged = copy.deepcopy(reconciliation)
+    damaged["current_repository"]["kernel_security_disposition"][
+        "fixed_kernel_replay"
+    ]["configuration_status"] = "pass"
+    assert any(
+        "execution evidence" in error
+        for error in checker.kernel_security_errors(ROOT, damaged)
+    )
+
+    damaged = copy.deepcopy(reconciliation)
+    target_authority = next(
+        row
+        for row in damaged["official_authorities"]
+        if row["path"] == "src/kernel/type_checker.cpp@v4.29.1"
+    )
+    target_authority["sha256"] = "0" * 64
+    assert any(
+        "v4.29.1 disagrees on sha256" in error
+        for error in checker.kernel_security_errors(ROOT, damaged)
+    )
 
 
 def test_repository_intake_contract() -> None:
@@ -237,10 +299,15 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert [row["problem"] for row in showcase["frontier_by_problem"]] == [68, 243, 249, 251, 257, 269, 1041, 1049]
     assert showcase["candidate_selection"]["declaration"] in names
     assert showcase["candidate_selection"]["declaration"] == (
-        "Erdos249257.ExternalVerification.irrational_erdosSum_full_support"
+        "Erdos249257.ExternalVerification."
+        "irrational_erdosSupportSeries_of_summable_reciprocal"
     )
-    assert showcase["candidate_selection"]["family_id"] == "known_irrational_supports"
-    assert showcase["candidate_selection"]["exact_hypotheses"] == ["2 <= b"]
+    assert showcase["candidate_selection"]["family_id"] == "reciprocal_summable_support"
+    assert showcase["candidate_selection"]["exact_hypotheses"] == [
+        "2 <= b",
+        "A is infinite",
+        "Summable (reciprocalSupportTerm A)",
+    ]
     assert showcase["candidate_selection"]["open_boundary"]
     assert showcase["candidate_selection"]["limitations"]
     assert showcase["candidate_universe"]["declarations"] == comparator["theorem_names"]
@@ -1057,6 +1124,7 @@ if __name__ == "__main__":
     test_generated_formalization_reads_committed_head_only()
     test_structural_qualification_ignores_mutable_source_reads()
     test_pinned_classification_authorities_are_required()
+    test_kernel_security_disposition_fails_closed_without_claiming_execution()
     test_repository_intake_contract()
     test_full_current_roster_and_eight_problem_crosswalk()
     test_adversarial_candidate_universe_drop_is_not_silently_accepted()

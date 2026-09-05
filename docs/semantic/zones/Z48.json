@@ -163,7 +163,7 @@
         {
           "declaration": "volume_supportedMersenneAchievementSet_dichotomy",
           "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
-          "line": 397
+          "line": 418
         }
       ]
     }
@@ -332,7 +332,7 @@
     {
       "declaration": "volume_supportedMersenneAchievementSet_dichotomy",
       "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
-      "line": 397,
+      "line": 418,
       "role": "statement",
       "statement_node": "supported_mersenne_sets_have_an_exact_finite_or_infinite_codimension_volume_dichotomy"
     }

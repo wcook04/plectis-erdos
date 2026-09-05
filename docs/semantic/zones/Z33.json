@@ -237,7 +237,7 @@
         {
           "declaration": "sevenHalves_archimedean_height_condition",
           "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-          "line": 83
+          "line": 119
         }
       ]
     }
@@ -379,7 +379,7 @@
     {
       "declaration": "sevenHalves_archimedean_height_condition",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 83,
+      "line": 119,
       "role": "statement",
       "statement_node": "seven_halves_satisfies_external_height_criterion_arithmetic"
     }

@@ -81,15 +81,60 @@ def declaration_lines() -> dict[tuple[str, str], int]:
     return {key: values[0] for key, values in rows.items()}
 
 
+def refresh_declaration_coordinate(
+    declaration: dict[str, object],
+    lines: dict[tuple[str, str], int],
+    *,
+    owner: str,
+) -> None:
+    """Refresh one exact authored module/name anchor without changing its identity."""
+    module = declaration.get("module")
+    name = declaration.get("name")
+    if not isinstance(module, str) or not isinstance(name, str):
+        raise RuntimeError(f"{owner} declaration identity is malformed: {declaration}")
+    key = (module, name)
+    if key not in lines:
+        raise RuntimeError(f"{owner} declaration absent from atlas: {key}")
+    declaration["line"] = lines[key]
+
+
+def write_text_if_changed(path: Path, content: str) -> bool:
+    """Write one projection only when its UTF-8 text changed."""
+    if path.is_file() and path.read_text(encoding="utf-8") == content:
+        return False
+    path.write_text(content, encoding="utf-8")
+    return True
+
+
 def render() -> tuple[str, dict[Path, str]]:
     lines = declaration_lines()
     claims = json.loads(CLAIMS.read_text(encoding="utf-8"))
     for claim in claims["claims"]:
         for decl in claim["declarations"]:
-            key = (decl["module"], decl["name"])
-            if key not in lines:
-                raise RuntimeError(f"claim declaration absent from atlas: {key}")
-            decl["line"] = lines[key]
+            refresh_declaration_coordinate(decl, lines, owner="claim")
+        transports = claim.get("comparator_transports", [])
+        if not isinstance(transports, list):
+            raise RuntimeError(
+                f"claim Comparator transports are malformed: {claim.get('id')}"
+            )
+        for transport in transports:
+            if not isinstance(transport, dict) or not isinstance(
+                transport.get("source_declarations"), list
+            ):
+                raise RuntimeError(
+                    f"claim Comparator transport is malformed: {claim.get('id')}"
+                )
+            for decl in transport["source_declarations"]:
+                if not isinstance(decl, dict):
+                    raise RuntimeError(
+                        f"claim Comparator transport declaration is malformed: "
+                        f"{claim.get('id')}"
+                    )
+                refresh_declaration_coordinate(
+                    decl,
+                    lines,
+                    owner="claim Comparator transport",
+                )
     for proposition in claims["remaining_open_propositions"]:
         anchor = proposition.get("paper_anchor")
         if anchor:
@@ -141,12 +186,12 @@ def main() -> int:
             return 1
         print("source coordinates current")
         return 0
-    CLAIMS.write_text(claims, encoding="utf-8")
+    write_text_if_changed(CLAIMS, claims)
     if args.claims_only:
         print("refreshed claim source coordinates")
     else:
         for path, paper in papers.items():
-            path.write_text(paper, encoding="utf-8")
+            write_text_if_changed(path, paper)
         print("refreshed claim and paper source coordinates")
     return 0
 

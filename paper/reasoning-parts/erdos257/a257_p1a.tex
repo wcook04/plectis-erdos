@@ -35,7 +35,7 @@ integer remainder rescaled by $4^{-s}$. If there is a cofinal sequence of rows
 \emph{seamGreedyFiniteValue(rows j)}$\to 1/2$ and, by closedness of the achievement set,
 $1/2$ is achieved.
 \par\ev{Lean}\scale{cofinal}\coord{seam-integer}
-\lean{half\_mem\_mersenneAchievementSet\_of\_subquadraticAlong}{HalfCylinderSeamLimit.lean:179}
+\lean{half\_mem\_mersenneAchievementSet\_of\_subquadraticAlong}{HalfCylinderSeamLimit.lean:243}
 \end{thm}
 
 \begin{thm}[Two-channel and dyadic cap sufficiency]
@@ -57,8 +57,8 @@ separated (\emph{HalfSecondChannelSeparatedRat}) at every skipped rank, then
 $1/2\in\mathrm{mersenneAchievementSet}$; a rational specialization discharges the
 hypothesis from row $7$ on.
 \par\ev{Lean}\scale{uniform}\coord{second-channel-phase}
-\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparation}{GreedyAchievementSet.lean:3118}
-\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparationRat\_from\_seven}{GreedyAchievementSet.lean:3151}
+\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparation}{GreedyAchievementSet.lean:3117}
+\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparationRat\_from\_seven}{GreedyAchievementSet.lean:3150}
 \end{thm}
 
 \begin{thm}[Straddle-prefix closed-set criterion]
@@ -95,8 +95,8 @@ $1/2\in\mathrm{mersenneAchievementSet}$. The strictly weaker-hypothesis, stronge
 socket \emph{SeamMiddleProducerRowEscape} ($s\le\mathrm{remainder}$ at every late middle
 row) implies the card escape and hence also closes the branch.
 \par\ev{Lean}\scale{uniform}\coord{seam-integer}
-\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerCardEscape}{HalfCylinderMiddleCarryLowerBound.lean:2364}
-\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerRowEscape}{HalfCylinderMiddleCarryLowerBound.lean:2371}
+\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerCardEscape}{HalfCylinderMiddleCarryLowerBound.lean:2574}
+\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerRowEscape}{HalfCylinderMiddleCarryLowerBound.lean:2581}
 \end{thm}
 
 \begin{thm}[Middle all-right tail forces strict defect]
@@ -108,8 +108,8 @@ $<$ \emph{seamTakeThreshold D}, equivalently a strict rational-skip defect. This
 overconstrains the ``last transition is middle, then forever right'' scenario, feeding
 the final-middle-cell exclusion (Theorem~\ref{thm:final-middle-cell}).
 \par\ev{Lean}\scale{uniform}\coord{seam-integer}
-\lean{middleProducer\_allRight\_forces\_carry\_lt\_tail}{HalfCylinderMiddleCarryLowerBound.lean:1814}
-\lean{middleProducer\_allRight\_forces\_rational\_skip}{HalfCylinderMiddleCarryLowerBound.lean:1888}
+\lean{middleProducer\_allRight\_forces\_carry\_lt\_tail}{HalfCylinderMiddleCarryLowerBound.lean:2024}
+\lean{middleProducer\_allRight\_forces\_rational\_skip}{HalfCylinderMiddleCarryLowerBound.lean:2098}
 \end{thm}
 
 \begin{thm}[Two-sided dyadic cell escape: global remainder control]
@@ -122,8 +122,8 @@ the universal two-sided bound $\forall s\ge 5,\;
 a global dyadic-scale control on the seam orbit independent of which branch fires at each
 row.
 \par\ev{Lean}\scale{uniform}\coord{seam-integer}
-\lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:4448}
-\lean{seamTwoSidedDyadicAt\_five}{HalfCylinderMiddleCarryLowerBound.lean:4431}
+\lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:5064}
+\lean{seamTwoSidedDyadicAt\_five}{HalfCylinderMiddleCarryLowerBound.lean:5047}
 \end{thm}
 
 \begin{thm}[Upper-reset dyadic-band escape, with rows $13$--$31$ certified]
@@ -137,7 +137,7 @@ kernel \texttt{decide} computation of the exact remainder at each row (e.g.\ row
 392$, row $31\to 4187487147$; none failing) — the current computational frontier of this
 sub-route.
 \par\ev{Lean}\scale{uniform}\coord{dyadic-boundary}
-\lean{half\_mem\_mersenneAchievementSet\_of\_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4790}
+\lean{half\_mem\_mersenneAchievementSet\_of\_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:5614}
 \lean{seamUpperResetDyadicBandEscape\_through\_thirty}{HalfCylinderUpperResetBandCertificates.lean:78}
 \end{thm}
 
@@ -152,7 +152,7 @@ Mersenne weights directly — since $\varphi=\mu * \mathrm{id}$ is itself
 M\"obius-built, this is a strong candidate for adaptation to \#249.
 \par\ev{Lean}\scale{uniform}\coord{mobius-mersenne}
 \lean{mobiusCenteredHalfCarry\_nonneg\_of\_supportSeries\_lt\_half}{HalfCylinderFinalMiddleCellEscape.lean:94}
-\lean{integerHalfCarry\_eq\_scaled\_residual\_add\_tail}{HalfCarryReachability.lean:871}
+\lean{integerHalfCarry\_eq\_scaled\_residual\_add\_tail}{HalfCarryReachability.lean:870}
 \end{thm}
 
 \begin{thm}[Square-root carry-growth route: current open numeric-analytic frontier]
@@ -169,8 +169,8 @@ exactly $1/2$. Only the upper bound remains open; a distinct socket from the dya
 track; whether that wall bears on this half-membership socket is unverified — treat any
 connection as \texttt{hypothesis}, not established.
 \par\ev{Lean}\scale{uniform}\coord{greedy-orbit}
-\lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:834}
-\lean{infinite\_support\_half\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:817}
+\lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:833}
+\lean{infinite\_support\_half\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:816}
 \end{thm}
 
 \begin{thm}[Governed frozen-margin producer family: three graded sockets]
@@ -196,16 +196,34 @@ open obligations. Base $2$ is the classical Erd\H{o}s--Borwein constant. This is
 terminal target every other rigidity/support theorem in this catalogue is measured
 against.
 \par\ev{Lean}\scale{uniform}\coord{mobius-mersenne}
-\lean{irrational\_erdosSum\_full\_support}{CertificateKernel.lean:8328}
-\lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8335}
+\lean{irrational\_erdosSum\_full\_support}{CertificateKernel.lean:8516}
+\lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8523}
+\end{thm}
+
+\begin{thm}[Reciprocal-summable support irrationality, unconditional]
+\label{thm:reciprocal-summable-support}
+For every base $b\ge2$ and every infinite support $A\subseteq\mathbb N$ with
+$\sum_{a\in A}1/a<\infty$, the series
+$\sum_{a\in A}1/(b^a-1)$ is irrational.  No pairwise-coprimality,
+periodicity, density, or powerful-support hypothesis is required.  Binary
+LCM--Ces\`aro close returns transfer to every radix through a pointwise
+displacement bound, and an exact integral tail orbit then excludes
+rationality.  The universal assertion remains open only in the
+reciprocal-divergent regime; this does not say that every support in that
+regime is unresolved.  Novelty and priority are unassessed, and this proof is
+not identified with Erd\H{o}s's omitted coprimality-free argument.
+\par\ev{Lean}\scale{uniform}\coord{mobius-mersenne}
+\lean{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}{AllBaseReciprocalSupportIrrationality.lean:395}
 \end{thm}
 
 \begin{thm}[Pairwise-coprime support irrationality, Erd\H{o}s 1968]
 \label{thm:pairwise-coprime}
 For every base $b\ge 2$ and every infinite pairwise-coprime support $A\subseteq\mathbb N$
-with summable reciprocals, $\sum_{a\in A} 1/(b^a-1)$ is irrational.
+with summable reciprocals, $\sum_{a\in A} 1/(b^a-1)$ is irrational.  This
+older adaptive-CRT theorem is retained as an attributed specialisation of
+Theorem~\ref{thm:reciprocal-summable-support}.
 \par\ev{Lean}\scale{uniform}\coord{mobius-mersenne}
-\lean{irrational\_erdosSupportSeries\_pairwise\_coprime}{CertificateKernel.lean:10776}
+\lean{irrational\_erdosSupportSeries\_pairwise\_coprime}{CertificateKernel.lean:10964}
 \end{thm}
 
 \begin{thm}[Generic weighted-coefficient block-certificate engine]
@@ -220,7 +238,7 @@ irrational. This is the single engine both the full-support theorem
 and left open for $\varphi$ — exactly why \#249 stays open where \#257 full-support
 closes.
 \par\ev{Lean}\scale{uniform}\coord{binary-digit}
-\lean{irrational\_coeff\_series\_of\_weighted\_coeff\_block\_certificates}{CertificateKernel.lean:8665}
+\lean{irrational\_coeff\_series\_of\_weighted\_coeff\_block\_certificates}{CertificateKernel.lean:8853}
 \end{thm}
 
 \begin{thm}[LCM-gap irrationality engine]
@@ -230,7 +248,7 @@ For base $b\ge 2$ and strictly monotone support $a:\mathbb N\to\mathbb N$ with $
 irrational. Pure statement about any strictly increasing exponent sequence and any base;
 no Mersenne-specific content.
 \par\ev{Lean}\scale{uniform}\coord{lcm-gap}
-\lean{irrational\_erdosSum\_of\_lcm\_gap}{CertificateKernel.lean:5883}
+\lean{irrational\_erdosSum\_of\_lcm\_gap}{CertificateKernel.lean:6071}
 \end{thm}
 
 \begin{thm}[Factorial-support and $2^k$-support instances]
@@ -240,8 +258,8 @@ For every $b\ge 2$: $\sum'_k 1/(b^{(k+1)!}-1)$ is irrational, and $\sum'_k
 \#257 statement family, not the universal theorem — the universal problem (every
 infinite $A$) remains open.
 \par\ev{Lean}\scale{uniform}\coord{lcm-gap}
-\lean{irrational\_erdosSum\_factorial\_support}{CertificateKernel.lean:6035}
-\lean{irrational\_erdosSum\_two\_pow\_support}{CertificateKernel.lean:6059}
+\lean{irrational\_erdosSum\_factorial\_support}{CertificateKernel.lean:6223}
+\lean{irrational\_erdosSum\_two\_pow\_support}{CertificateKernel.lean:6247}
 \end{thm}
 
 \begin{thm}[Multiples-support irrationality via dilation]
@@ -251,8 +269,8 @@ exact identity $\mathrm{erdosSupportSeries}\,b\,\{n:d\mid n\} = \sum'_k
 1/((b^d)^{k+1}-1)$ — dilation to base $b^d$ full support, reducing directly to
 Theorem~\ref{thm:full-support-catalogue}.
 \par\ev{Lean}\scale{uniform}\coord{dilation}
-\lean{irrational\_erdosSupportSeries\_multiples}{CertificateKernel.lean:9103}
-\lean{erdosSupportSeries\_multiples\_eq\_pow\_base\_full\_support}{CertificateKernel.lean:9054}
+\lean{irrational\_erdosSupportSeries\_multiples}{CertificateKernel.lean:9291}
+\lean{erdosSupportSeries\_multiples\_eq\_pow\_base\_full\_support}{CertificateKernel.lean:9242}
 \end{thm}
 
 \begin{thm}[Periodic-support irrationality: the periodic divisor-orbit sieve]
@@ -266,7 +284,7 @@ valuation $b\varphi(m)-1$ splits every divisor ray into complete residue cycles 
 a multiple of $b$ times, reusing the same bounded Bertrand/CRT frame as full support with
 exponent $b-1\to b\varphi(m)-1$.
 \par\ev{Lean}\scale{uniform}\coord{periodic-sieve}
-\lean{irrational\_erdosSupportSeries\_periodic}{CertificateKernel.lean:11590}
+\lean{irrational\_erdosSupportSeries\_periodic}{CertificateKernel.lean:11778}
 \end{thm}
 
 \begin{thm}[Eventually-periodic support irrationality]
@@ -274,7 +292,7 @@ exponent $b-1\to b\varphi(m)-1$.
 For every $b\ge 2$: an infinite support whose membership is $m$-periodic from some
 threshold $N_0$ on has $\mathrm{erdosSupportSeries}\,b\,A$ irrational.
 \par\ev{Lean}\scale{uniform}\coord{periodic-sieve}
-\lean{irrational\_erdosSupportSeries\_eventuallyPeriodic}{CertificateKernel.lean:11604}
+\lean{irrational\_erdosSupportSeries\_eventuallyPeriodic}{CertificateKernel.lean:11792}
 \end{thm}
 
 \begin{thm}[Residue-class and odd-support irrationality]
@@ -284,8 +302,8 @@ irrational. Specializing $m=2,c=1$: $\sum_{n\text{ odd}} 1/(b^n-1)$ is irrationa
 every $b\ge 2$ — the first support class of density strictly between $0$ and $1$ to
 land.
 \par\ev{Lean}\scale{uniform}\coord{periodic-sieve}
-\lean{irrational\_erdosSupportSeries\_residueClass}{CertificateKernel.lean:11672}
-\lean{irrational\_erdosSupportSeries\_odd}{CertificateKernel.lean:11686}
+\lean{irrational\_erdosSupportSeries\_residueClass}{CertificateKernel.lean:11860}
+\lean{irrational\_erdosSupportSeries\_odd}{CertificateKernel.lean:11874}
 \end{thm}
 
 \begin{thm}[Signed periodic-weight dichotomy and its unconditional one-sided closures]
@@ -297,9 +315,9 @@ divisor-coefficient \emph{intWeightedCoeff w} is one-sided (all nonnegative, or 
 nonpositive) and not eventually zero, the terminating branch is excluded and the series
 is unconditionally irrational.
 \par\ev{Lean}\scale{uniform}\coord{signed-divisor-calculus}
-\lean{irrational\_or\_bpow\_mul\_eq\_intCast\_intWeightedErdosSeries\_periodic}{CertificateKernel.lean:14175}
-\lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14583}
-\lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonpos\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14643}
+\lean{irrational\_or\_bpow\_mul\_eq\_intCast\_intWeightedErdosSeries\_periodic}{CertificateKernel.lean:14363}
+\lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14771}
+\lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonpos\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14831}
 \end{thm}
 
 \begin{thm}[Mersenne-channel denominator survival, T4]
@@ -349,7 +367,7 @@ divisor-involution $d\mapsto n/d$. This is exactly why the general signed-period
 theorem: no residue-blind selection can force a nonzero protected residue for every
 periodic signed weight.
 \par\ev{Lean}\scale{fixed}\coord{signed-divisor-calculus}
-\lean{intWeightedCoeff\_periodFourSignWeight\_eq\_zero\_of\_mod\_four\_eq\_three}{CertificateKernel.lean:14226}
+\lean{intWeightedCoeff\_periodFourSignWeight\_eq\_zero\_of\_mod\_four\_eq\_three}{CertificateKernel.lean:14414}
 \end{obs}
 
 \begin{thm}[M\"obius--Mersenne Lambert identity]
@@ -400,8 +418,8 @@ finite rational, contradicting irrationality. The mechanism (rational/finite-rep
 target, irrational full-series baseline $\Rightarrow$ complement support infinite) is
 fully general and would restate for \#249's own baseline constant if one exists.
 \par\ev{Lean}\scale{cofinal}\coord{greedy-orbit}
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583}
-\lean{irrational\_erdosBorweinMersenneConstant}{GreedyAchievementSet.lean:2469}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2582}
+\lean{irrational\_erdosBorweinMersenneConstant}{GreedyAchievementSet.lean:2467}
 \end{thm}
 
 \begin{thm}[The nine-way half-membership classification hub]
@@ -584,7 +602,7 @@ reduced socket \emph{SeamUpperResetCriticalBandEscape} is proved logically equiv
 Theorem~\ref{thm:upper-reset-band}'s band-avoidance hypothesis.
 \par\ev{Lean}\scale{uniform}\coord{dyadic-boundary}
 \lean{dyadicBandEscape\_iff\_exists\_critical}{HalfUpperResetCriticalBand.lean:108}
-\lean{seamUpperResetCriticalBandEscape\_iff}{HalfUpperResetCriticalBand.lean:883}
+\lean{seamUpperResetCriticalBandEscape\_iff}{HalfUpperResetCriticalBand.lean:1565}
 \end{thm}
 
 \begin{thm}[Final-middle-cell $-3$ excluded]
@@ -747,7 +765,7 @@ Irrationality of a support series is invariant under changing finitely many supp
 elements. Fully general; likely reusable for \#249 tails as well. Feeds the
 eventually-periodic theorem (Theorem~\ref{thm:eventually-periodic}).
 \par\ev{Lean}\scale{uniform}\coord{tail-transfer}
-\lean{irrational\_erdosSupportSeries\_tail\_of\_irrational}{CertificateKernel.lean:9476}
+\lean{irrational\_erdosSupportSeries\_tail\_of\_irrational}{CertificateKernel.lean:9664}
 \end{lem}
 
 \begin{lem}[Dyadic-vs-Mersenne exact excess reformulation]
@@ -819,8 +837,8 @@ Dirichlet incidence $1_A * 1$, \#257's analogue of $\tau$); $A=\mathrm{Set.univ}
 recovers the full-support series of Theorem~\ref{thm:full-support-catalogue}.
 \par\ev{Lean}\scale{n/a}\coord{binary-digit}
 \lean{mersenneAchievementSet}{GreedyAchievementSet.lean:571}
-\lean{erdosSupportSeries}{CertificateKernel.lean:8897}
-\lean{supportCoeff}{CertificateKernel.lean:8856}
+\lean{erdosSupportSeries}{CertificateKernel.lean:9085}
+\lean{supportCoeff}{CertificateKernel.lean:9044}
 \end{defn}
 
 \begin{prop}[Achievement-set topology: compact, closed, perfect, measure exactly one]

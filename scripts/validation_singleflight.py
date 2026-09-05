@@ -777,7 +777,11 @@ def validator_spec(
         if targets or ref:
             raise ValidationError("paper validation accepts no target or ref arguments")
         corpus = ROOT / "docs/papers/corpus.json"
+        registry = ROOT / "docs/papers/paper_registry.json"
+        exporter = ROOT / "scripts/export_paper_corpus.py"
         regular_file(corpus, "paper corpus")
+        regular_file(registry, "paper registry")
+        regular_file(exporter, "paper corpus exporter")
         try:
             entries = json.loads(corpus.read_text(encoding="utf-8")).get("papers", [])
         except (OSError, json.JSONDecodeError) as exc:
@@ -788,7 +792,13 @@ def validator_spec(
             "docs/papers/check_paper_corpus.py",
             "--singleflight-worker",
         ]
-        authority_paths = [ROOT / "docs/papers/check_paper_corpus.py", corpus, *sources]
+        authority_paths = [
+            ROOT / "docs/papers/check_paper_corpus.py",
+            exporter,
+            registry,
+            corpus,
+            *sources,
+        ]
     elif kind == "release":
         if targets:
             raise ValidationError("release validation accepts no targets")

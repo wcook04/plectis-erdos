@@ -1640,7 +1640,7 @@ acknowledgements: "Mathlib contributors; Thomas F. Bloom and the Erdős Problems
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:bcdaa8df59d0801e3d2aa74655d90c8708b6dbd8a2aff8d6afe4325f4e8f848f"
+  problem_index_digest: "sha256:aaeb238cc02e76f242b570d70cfec748cdd28214b19ae134428d20092d863fa0"
   problem_count: 8
   problems:
     - id: "erdos_68"

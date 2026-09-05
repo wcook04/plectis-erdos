@@ -22,8 +22,8 @@
 % useful one.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
-\renewcommand{\commitshort}{99f4bf47422a}
+\renewcommand{\commit}{3506d189a2660213ec0e53ee29360a464007b8a1}
+\renewcommand{\commitshort}{3506d189a266}
 \hypersetup{
   pdftitle={Denominator periods, rational-value constraints and achievement-set geometry for Mersenne subseries (Erdős Problem 257)},
   pdfsubject={Erdős Problem Notes: Problem 257},
@@ -53,13 +53,17 @@ Erd\H{o}s Problem~\#257 asks whether
  X_A=\sum_{a\in A}\frac1{2^a-1}
 \]
 is irrational for every infinite \(A\subseteq\Npos\).  The problem remains
-open.  The strongest unconditional result treated here is the classical
-full-support theorem: for every integer \(b\ge2\),
-\(\sum_{n\ge1}(b^n-1)^{-1}\) is irrational.  The checked proof uses a
-weighted certificate argument.  The same development proves irrationality
-for every infinite pairwise-coprime support of convergent reciprocal mass and
-for every nonzero eventually periodic sequence of nonnegative rational
-weights.
+open.  We prove that, for every integer \(b\ge2\), the sum
+\(\sum_{a\in A}(b^a-1)^{-1}\) is irrational whenever \(A\) is infinite and
+\(\sum_{a\in A}a^{-1}<\infty\).  No coprimality, periodicity, density, or
+powerful-support hypothesis is used.  The proof transfers binary
+LCM--Ces\`aro close returns to every radix and ends with an exact
+integer-orbit contradiction.  Thus the unresolved part of Problem~\#257 is
+the reciprocal-divergent case.  Novelty and priority are unassessed, and this
+proof is not identified with Erd\H{o}s's omitted coprimality-free argument.
+The development also retains the classical full-support theorem and proves
+irrationality for every nonzero eventually periodic sequence of nonnegative
+rational weights.
 
 For a finite nonempty support \(F\), the reduced denominator \(D_F\) of
 \(\sum_{n\in F}(b^n-1)^{-1}\) satisfies
@@ -93,14 +97,17 @@ infinite support.
 \end{abstract}
 
 \begin{paperresult}{Strongest unconditional results}
-\textbf{Arithmetic.} The full-support series is irrational at every integer
-base $b\ge2$; so are all convergent pairwise-coprime supports and all nonzero
-eventually periodic nonnegative rational weight sequences.  Finite subsums
+\textbf{Arithmetic.} Every infinite reciprocal-summable support gives an
+irrational series at every integer base $b\ge2$; this contains the classical
+pairwise-coprime theorem as a special case.  The full-support series and all
+nonzero eventually periodic nonnegative rational weight sequences are also
+irrational.  Finite subsums
 have exact denominator order.  \textbf{Geometry.} The achievement set is
 compact, perfect, nowhere dense, and has measure $1$, with an exact measure
 law after restricting exponents.  \textbf{Open boundary.} The target values
-$1/2$ and $1/21$ remain undecided, and the geometric classification does
-not decide the arithmetic nature of individual subsums.
+$1/2$ and $1/21$ remain undecided; any universal counterexample must have
+divergent reciprocal mass, and the geometric classification does not decide
+the arithmetic nature of individual subsums.
 \end{paperresult}
 
 \section{Introduction and main results}\label{sec:problem}
@@ -152,6 +159,23 @@ $X_A(b)=\sum_{a\in A}(b^a-1)^{-1}$ for the value at an integer base $b\ge2$,
 with $X_A=X_A(2)$.  Base~$2$ is the case Problem~\ref{res:problem} asks about
 and is meant whenever no base is named.
 
+\begin{theorem}[reciprocal-summable supports]
+\label{res:reciprocal-summable-support}
+Let $b\ge2$ be an integer and let $A\subseteq\Npos$ be infinite.  If
+$\sum_{a\in A}a^{-1}<\infty$, then $X_A(b)$ is irrational.
+\end{theorem}
+
+\noindent This is
+\mword{Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{395}{irrational_erdosSupportSeries_of_summable_reciprocal}{proved here}.
+The proof first obtains binary LCM--Ces\`aro close returns for the shifted
+support atoms.  A pointwise displacement bound transfers those returns to
+every integer radix, where an exact integral tail orbit contradicts
+rationality.  The theorem leaves precisely the reciprocal-divergent supports
+in the universal question.  Erd\H{o}s proved the pairwise-coprime special
+case and stated without details that coprimality could be removed; the checked
+argument here is not identified with that omitted proof, and its novelty and
+priority have not been assessed.
+
 \paragraph{The finite-support theorem.}
 For a finite nonempty $F\subseteq\Npos$ and an integer $b\ge2$, write
 \[
@@ -186,8 +210,9 @@ and the growth clause is
 Theorem~\ref{res:period}.  Section~\ref{sec:forced} collects what
 rationality would force on an arbitrary infinite support, which is the part of
 this note that quantifies over every support rather than sampling.
-Section~\ref{sec:map} gives representative supports already known to give
-irrational values, grouped by the argument that reaches them.
+Section~\ref{sec:map} places Theorem~\ref{res:reciprocal-summable-support}
+beside representative supports already known to give irrational values,
+grouped by the argument that reaches them.
 Section~\ref{sec:squarefree} treats
 the squarefree support, whose values are known at every power-of-two base and which two of the
 arguments used here provably cannot reach at any even base.
@@ -437,10 +462,11 @@ What the equivalence changes is the search space, not the difficulty.
 \paragraph{Combined constraints on a rational counterexample.}
 Taken together: a counterexample to Problem~\ref{res:problem} would have an
 unbounded scaled-tail sequence obeying an exact linear recurrence and
-sublogarithmic divisor-coverage gaps.  If its reciprocal sum converged and its
-reduced odd denominator part were greater than~$1$, it would also satisfy
-Theorem~\ref{res:mass}; at a dyadic rational value it would instead satisfy
-Theorem~\ref{res:dyadicmass}.  Theorem~\ref{res:bmc} reconstructs every
+sublogarithmic divisor-coverage gaps.  By
+Theorem~\ref{res:reciprocal-summable-support}, its reciprocal mass must
+diverge.  Theorems~\ref{res:mass} and~\ref{res:dyadicmass} remain useful
+conditional estimates for convergent reciprocal mass, but that regime can no
+longer contain a counterexample.  Theorem~\ref{res:bmc} reconstructs every
 rational value, but by itself does not force the reconstructed support to be
 infinite.  These qualifications matter: the statements have different
 hypotheses, and no jointly contradictory combination has been proved.
@@ -462,22 +488,31 @@ classify all known cases.
 \papertablehead
 Support $A$ & Bases & Mechanism and authority \\
 \midrule
+\multicolumn{3}{@{}l}{\emph{Reciprocal-summable supports}}\\
+arbitrary infinite $A$ with $\sum_{a\in A}a^{-1}<\infty$ & every $b\ge2$ &
+  Theorem~\ref{res:reciprocal-summable-support};
+  \mword{Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{395}{irrational_erdosSupportSeries_of_summable_reciprocal}{proved here} \\
+pairwise coprime, $\sum_{a\in A}a^{-1}<\infty$ & every $b\ge2$ &
+  Erd\H{o}s~\cite{erdos1968}, theorem on p.~222; retained as a separately
+  formalised specialisation
+  (\mword{Erdos249257/CertificateKernel.lean}{10964}{irrational_erdosSupportSeries_pairwise_coprime}{formalised here}) \\
+\addlinespace
 \multicolumn{3}{@{}l}{\emph{Classical full support, and base change into it}}\\
 all of $\Npos$ & every $b\ge2$ & Erd\H{o}s 1948~\cite{erdos1948};
-  \mword{Erdos249257/CertificateKernel.lean}{9045}{irrational_erdosSupportSeries_univ}{formalised here} \\
+  \mword{Erdos249257/CertificateKernel.lean}{9233}{irrational_erdosSupportSeries_univ}{formalised here} \\
 multiples of a fixed $d$ & every $b\ge2$ & dilation: the multiples series at
   base $b$ \emph{is} the full-support series at base $b^d$
-  (\mword{Erdos249257/CertificateKernel.lean}{9103}{irrational_erdosSupportSeries_multiples}{checked}) \\
+  (\mword{Erdos249257/CertificateKernel.lean}{9291}{irrational_erdosSupportSeries_multiples}{checked}) \\
 \addlinespace
 \multicolumn{3}{@{}l}{\emph{Periodicity of the coefficient sequence}}\\
 eventually periodic & every $b\ge2$ &
-  \mword{Erdos249257/CertificateKernel.lean}{12811}{irrational_ratWeightSeries_eventuallyPeriodic}{checked here};
+  \mword{Erdos249257/CertificateKernel.lean}{12999}{irrational_ratWeightSeries_eventuallyPeriodic}{checked here};
   Luca--Tachiya prove the nonnegative purely-periodic case
   \cite[Theorem~1, p.~139; proof pp.~149--150]{lucatachiya2017};
   finite rational prefixes give the infinite eventual case \\
 a residue class; the odd numbers & every $b\ge2$ & special cases of the row
-  above (\mword{Erdos249257/CertificateKernel.lean}{11672}{irrational_erdosSupportSeries_residueClass}{residue class},
-  \mword{Erdos249257/CertificateKernel.lean}{11686}{irrational_erdosSupportSeries_odd}{odd});
+  above (\mword{Erdos249257/CertificateKernel.lean}{11860}{irrational_erdosSupportSeries_residueClass}{residue class},
+  \mword{Erdos249257/CertificateKernel.lean}{11874}{irrational_erdosSupportSeries_odd}{odd});
   Luca--Tachiya's Example~2 strengthens the odd row to joint linear
   independence of every finite divisor-convolution ladder, also for negative
   integer bases with absolute value greater than one
@@ -485,13 +520,9 @@ a residue class; the odd numbers & every $b\ge2$ & special cases of the row
 \addlinespace
 \multicolumn{3}{@{}l}{\emph{Denominator gaps along a sparse support}}\\
 factorials $\{n!\}$ & every $b\ge2$ &
-  \mword{Erdos249257/CertificateKernel.lean}{6035}{irrational_erdosSum_factorial_support}{checked here} \\
+  \mword{Erdos249257/CertificateKernel.lean}{6223}{irrational_erdosSum_factorial_support}{checked here} \\
 powers of two $\{2^k\}$ & every $b\ge2$ &
-  \mword{Erdos249257/CertificateKernel.lean}{6059}{irrational_erdosSum_two_pow_support}{checked here} \\
-pairwise coprime, $\sum_{a\in A}a^{-1}<\infty$ & every $b\ge2$ &
-  Erd\H{o}s~\cite{erdos1968}, theorem on p.~222;
-  \mword{Erdos249257/CertificateKernel.lean}{10776}{irrational_erdosSupportSeries_pairwise_coprime}{formalised here} \\
-\addlinespace
+  \mword{Erdos249257/CertificateKernel.lean}{6247}{irrational_erdosSum_two_pow_support}{checked here} \\
 \multicolumn{3}{@{}l}{\emph{Multiplicative closure: Chowla--Erd\H{o}s, refined}}\\
 $F_s(E)$ and the monomial images
   $\{j n^i:n\in F_s(E)\}$ & $b=q^j$ with $|q|^L\le s$,
@@ -514,7 +545,8 @@ primes & $b=2$ proved & Tao--Ter\"av\"ainen~\cite{taoteravainen2025},
 primes, $b\ge3$; prime powers & --- & \emph{ibid.}, asserted as modifications
   with details omitted in the cited version \\
 \midrule
-arbitrary infinite $A$ & --- & \textbf{Open} (Problem~\ref{res:problem}) \\
+arbitrary infinite $A$ with $\sum_{a\in A}a^{-1}=\infty$ & --- &
+  \textbf{Open} (the remaining part of Problem~\ref{res:problem}) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -522,8 +554,10 @@ arbitrary infinite $A$ & --- & \textbf{Open} (Problem~\ref{res:problem}) \\
 \noindent In the sentence immediately following the p.~222 theorem,
 Erd\H{o}s says that pairwise coprimality can be removed by a more complicated
 argument, but he does not give that argument; p.~226 repeats that boundary.
-Accordingly the table uses only the fully printed pairwise-coprime
-theorem, not the stronger unproved-in-print extension.
+The first row above is a local Lean theorem with its own LCM--Ces\`aro and
+integer-orbit proof.  Novelty and priority are unassessed, and this checked
+proof is not identified with Erd\H{o}s's omitted argument.  The printed
+pairwise-coprime theorem remains represented as an attributed specialisation.
 
 Under the additional hypothesis that the pairwise-coprime exponents are odd,
 Duverney, Suzuki and Tachiya strengthen this conclusion: Corollary~1 gives
@@ -538,7 +572,7 @@ mechanisms, three on the literature rows, and one on what ``checked here''
 means.
 
 For the full-support row, the weighted certificate theorem is
-\mword{Erdos249257/CertificateKernel.lean}{8328}{irrational_erdosSum_full_support}{the exact checked statement};
+\mword{Erdos249257/CertificateKernel.lean}{8516}{irrational_erdosSum_full_support}{the exact checked statement};
 the support-series formulation displayed in the table is its later corollary.
 
 \emph{The mechanisms are not nested, and one non-containment is proved.}  The
@@ -548,7 +582,7 @@ rows do not.  The distinction is intrinsic: the
 denominator-gap criterion behind the factorial and power-of-two rows
 \emph{provably cannot} reach the full support: the prefix lcm grows too slowly
 for its hypothesis to hold
-(\mword{Erdos249257/CertificateKernel.lean}{6272}{lcm_gap_hypothesis_fails_full_support}{checked}).
+(\mword{Erdos249257/CertificateKernel.lean}{6460}{lcm_gap_hypothesis_fails_full_support}{checked}).
 Conversely the analytic method of~\cite{taoteravainen2025} reaches the primes,
 which are neither eventually periodic nor pairwise coprime with summable
 reciprocals.  No list contains another, and their union does not exhaust the
@@ -612,7 +646,7 @@ exact about where.  For $u\colon\Npos\to\Z$ periodic and
 $b\ge2$, what is checked here is a \emph{dichotomy}: the series
 $\sum_{n\ge1}u(n)/(b^n-1)$ is irrational, \emph{or} some power of $b$ times
 its value is an integer
-(\mword{Erdos249257/CertificateKernel.lean}{14175}{irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic}{checked}).
+(\mword{Erdos249257/CertificateKernel.lean}{14363}{irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic}{checked}).
 For a nonnegative support indicator the terminating alternative is excluded by
 the rows above; for mixed signs this argument does not exclude it.
 
@@ -813,9 +847,9 @@ $A\mathbin{\triangle}B$ is finite, choose $M$ above all of its elements.
 The two support series then have the same tail beyond $M$, while each omitted
 prefix is rational.  The two directions of this argument are exactly the
 checked prefix lemmas
-\mword{Erdos249257/CertificateKernel.lean}{9467}{irrational_erdosSupportSeries_of_tail}{Lean}
+\mword{Erdos249257/CertificateKernel.lean}{9655}{irrational_erdosSupportSeries_of_tail}{Lean}
 and
-\mword{Erdos249257/CertificateKernel.lean}{9476}{irrational_erdosSupportSeries_tail_of_irrational}{Lean}.
+\mword{Erdos249257/CertificateKernel.lean}{9664}{irrational_erdosSupportSeries_tail_of_irrational}{Lean}.
 Thus $X_A(b)$ is irrational if and only if $X_B(b)$ is irrational for every
 integer $b\ge2$.  The present shift is the smallest instance of a general
 checked finite-change principle.
@@ -846,9 +880,9 @@ Lebesgue measure~$1$.
 
 \noindent Checked as
 \mword{Erdos249257/GreedyAchievementSet.lean}{656}{isCompact_mersenneAchievementSet}{compact},
-\mword{Erdos249257/GreedyAchievementSet.lean}{1656}{perfect_mersenneAchievementSet}{perfect},
-\mword{Erdos249257/GreedyAchievementSet.lean}{1672}{isTotallyDisconnected_mersenneAchievementSet}{totally disconnected},
-\mword{Erdos249257/GreedyAchievementSet.lean}{1681}{isNowhereDense_mersenneAchievementSet}{nowhere dense},
+\mword{Erdos249257/GreedyAchievementSet.lean}{1654}{perfect_mersenneAchievementSet}{perfect},
+\mword{Erdos249257/GreedyAchievementSet.lean}{1670}{isTotallyDisconnected_mersenneAchievementSet}{totally disconnected},
+\mword{Erdos249257/GreedyAchievementSet.lean}{1679}{isNowhereDense_mersenneAchievementSet}{nowhere dense},
 and
 \mword{Erdos249257/GreedyAchievementSet.lean}{996}{volume_mersenneAchievementSet}{of measure one}.
 So $\Ach$ is a fat Cantor set: strict tail domination
@@ -895,7 +929,7 @@ example below uses an exact rational upper bound.  For
 $x=3/4$, the greedy algorithm skips $\wgt1=1$ and leaves residual $3/4$,
 while the exact zero-lookahead upper bound for the remaining tail is
 $2\wgt2=2/3<3/4$; hence $3/4\notin\Ach$
-(\mword{Erdos249257/GreedyAchievementSet.lean}{1784}{three_fourths_not_mem_mersenneAchievementSet}{Lean}).
+(\mword{Erdos249257/GreedyAchievementSet.lean}{1782}{three_fourths_not_mem_mersenneAchievementSet}{Lean}).
 
 The selector-to-subsum map sending a $0/1$ string $(\varepsilon_n)$ to
 $\sum_n\varepsilon_n\wgt n$, which the strict tail inequality makes injective,
@@ -999,7 +1033,7 @@ It traps a set with infinitely many forbidden coordinates below
 finite-codimension faces of arbitrarily small dyadic measure, yielding
 \lword{Erdos257/MersenneSubseriesRigidity.lean}{368}{volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite}{measure zero}.
 The two cases are assembled in
-\lword{Erdos257/MersenneSubseriesRigidity.lean}{397}{volume_supportedMersenneAchievementSet_dichotomy}{the formal dichotomy}.
+\lword{Erdos257/MersenneSubseriesRigidity.lean}{418}{volume_supportedMersenneAchievementSet_dichotomy}{the formal dichotomy}.
 This theorem classifies the size of the value set generated inside any
 prescribed family of exponents.  It does not classify the arithmetic nature
 of its individual points and therefore does not settle Problem~\ref{res:problem}.
@@ -1035,7 +1069,7 @@ Moreover no finite support has value $1/2$.
 \end{theorem}
 
 \noindent Checked as
-\mword{Erdos249257/GreedyAchievementSet.lean}{2583}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{the greedy form},
+\mword{Erdos249257/GreedyAchievementSet.lean}{2582}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{the greedy form},
 \mword{Erdos249257/HalfCylinderHalfMembershipClassification.lean}{126}{half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse}{the terminal-bit form},
 \mword{Erdos249257/HalfCylinderHalfMembershipClassification.lean}{213}{half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong}{the skipped-rank form},
 \mword{Erdos249257/HalfCylinderFatalGapRightTail.lean}{781}{seamGreedyEventuallyRight_iff_existsFatalHalfGap}{the fatal-gap equivalence},
@@ -1068,7 +1102,7 @@ their endpoints are cofinal by
 \mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{84}{cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips}{the row fan-in}.
 The row-value estimate makes the discrepancy at endpoint $n$ at most
 $(n+1)/2^n$, and closedness then places $1/2$ in $\Ach$,
-\mword{Erdos249257/BooleanMobiusCofinalExactRows.lean}{71}{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{the closed-set step}.
+\mword{Erdos249257/BooleanMobiusCofinalExactRows.lean}{431}{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{the closed-set step}.
 
 No compatibility between the finite witnesses is assumed.  The global
 \mword{Erdos249257/BooleanMobiusSkipRowCofinal.lean}{97}{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{forward endpoint theorem}
@@ -1111,8 +1145,8 @@ exclusion to show that the limiting support is infinite:
 \mword{Erdos249257/TerminalOnlyScaledVanishing.lean}{165}{half_mem_mersenneAchievementSet_of_terminalScaledVanishing}{achievement-set conclusion},
 \mword{Erdos249257/TerminalOnlyScaledVanishing.lean}{221}{exists_infinite_support_half_of_terminalScaledVanishing}{infinite-support lift}.
 The problem-level refutation is the direct formal consequence
-\lword{Erdos257/HalfCounterexampleFrontier.lean}{31}{exists_rational_half_counterexample_of_terminalScaledVanishing}{rational half counterexample},
-\lword{Erdos257/HalfCounterexampleFrontier.lean}{39}{not_universal_of_terminalScaledVanishing}{universal-claim refutation}.
+\lword{Erdos257/HalfCounterexampleFrontier.lean}{40}{exists_rational_half_counterexample_of_terminalScaledVanishing}{rational half counterexample},
+\lword{Erdos257/HalfCounterexampleFrontier.lean}{48}{not_universal_of_terminalScaledVanishing}{universal-claim refutation}.
 
 The formal source also proves equivalent terminal-bit and unbounded
 skipped-rank formulations in its internal half-cylinder seam coordinate; the
@@ -1297,7 +1331,7 @@ For every finite set $F$ of exponents with $n\ge2$ for all $n\in F$,
 \end{theorem}
 
 \noindent This is checked by
-\lword{Erdos257/HalfCounterexampleFrontier.lean}{61}{finiteErdosSum_ne_one_div_twenty_one}{the formal theorem}.
+\lword{Erdos257/HalfCounterexampleFrontier.lean}{1041}{finiteErdosSum_ne_one_div_twenty_one}{the formal theorem}.
 The reduced denominator $21$ has doubling order $6$, so the exact
 denominator--lcm identity forces every selected exponent to divide $6$.
 The lower bound $n\ge2$ leaves only $2,3,6$, and the remaining eight subsets
@@ -1463,9 +1497,10 @@ can sustain such an affine recurrence without being the actual divisor pulse.
 
 \section{Open problems}\label{sec:open}
 
-Problem~\ref{res:problem} remains the frame: the settled families in
-Section~\ref{sec:map} do not approach a universal quantifier, and the forced
-conditions in Section~\ref{sec:forced} are not known to be contradictory.
+Problem~\ref{res:problem} remains the frame.  Theorem~\ref{res:reciprocal-summable-support}
+settles every infinite support of convergent reciprocal mass, so the exact
+remaining universal boundary is the reciprocal-divergent case.  The forced
+conditions in Section~\ref{sec:forced} are not known to be contradictory there.
 For the base-$2$ universal problem, three endpoint questions organise the
 remaining discussion.  The universal problem and the half-value question
 are not independent, and the relation between them is asymmetric.  No finite
@@ -1494,14 +1529,12 @@ claimed to be equivalent by itself.
 \end{problem}
 
 \begin{enumerate}
-\item \textbf{Problem~\ref{res:problem} itself}, for arbitrary infinite $A$.
-  Section~\ref{sec:map} is a list of families and does not approach a
-  universal statement; Section~\ref{sec:forced} constrains every hypothetical
+\item \textbf{Problem~\ref{res:problem} itself}, now only for infinite $A$
+  with $\sum_{a\in A}a^{-1}=\infty$.  Section~\ref{sec:forced} constrains every hypothetical
   counterexample without excluding one.  Every counterexample would have
   unbounded scaled-tail states, sublogarithmic divisor-coverage gaps and an
-  admissible Boolean--M\"obius scaled-tail sequence; Theorem~\ref{res:mass}
-  adds its lower bound only under its stated convergence and odd-denominator
-  hypotheses.  No contradiction among the applicable constraints is known.
+  admissible Boolean--M\"obius scaled-tail sequence.  No contradiction among
+  the applicable constraints is known.
 \item \textbf{Membership of $1/2$ in $\Ach$.}  Theorem~\ref{res:half} makes
   this exactly equivalent to infinitely many greedy skips, and to a fatal gap
   on the other side; neither is proved.  A proof of non-membership would take
@@ -1556,7 +1589,7 @@ Theorem~\ref{res:scaled-greedy-trap}
 It asks for neither convergence, a prescribed $B$, a global bound nor bounded
 return gaps.  Two concrete stronger targets are cofinal recurrence of
 $Q_N\le1$
-(\mword{Erdos249257/BooleanMobiusCarry.lean}{2843}{one_div_twenty_one_mem_mersenneAchievementSet_of_defect_le_one_cofinally}{sufficient condition})
+(\mword{Erdos249257/BooleanMobiusCarry.lean}{2842}{one_div_twenty_one_mem_mersenneAchievementSet_of_defect_le_one_cofinally}{sufficient condition})
 and arbitrarily deep closed quotient rows $s_R\le2^R$.  Exact computation
 through rank $200{,}000$ records $96$ zero-defect returns and $4{,}956$ returns
 to $Q_N\le1$, with last observed ranks $193{,}690$ and $199{,}930$ and maximum

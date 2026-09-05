@@ -1905,6 +1905,21 @@ def validate_external_assurance_routes() -> None:
     membership = load("verification/comparator-replay-membership.json")
     assert replay["package_count"] == len(membership["required_package_ids"])
     assert replay["interface_count"] == len(config["theorem_names"])
+    claim_coverage = membership.get("registered_claim_coverage")
+    if claim_coverage is None:
+        assert replay["registered_claim_coverage"] == {
+            "status": "not_present_in_this_projection"
+        }
+    else:
+        projected = replay["registered_claim_coverage"]
+        for key, value in projected.items():
+            assert value == claim_coverage[key]
+        assert projected["registered_claim_count"] == len(load("docs/claims.json")["claims"])
+        assert projected["missing_formal_transport_count"] == len(
+            projected["missing_formal_claim_ids"]
+        )
+        assert "does not establish" in projected["boundary"]
+    assert replay["complete_claim_transport_check"].endswith("--require-complete-claims")
     assert comparator_assurance["forbidden_wording"] == "independently verified"
     assert "does not assess novelty" in comparator_assurance["boundary"]
     assert comparator["authority_posture"].startswith(

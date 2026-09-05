@@ -119,7 +119,7 @@ def projection_check_results() -> dict[str, subprocess.CompletedProcess[str]]:
 
     def check_builder(builder: str) -> tuple[str, subprocess.CompletedProcess[str]]:
         result = _SUBPROCESS_RUN(
-            [sys.executable, str(ROOT / builder), "--check"],
+            refresh_projections.projection_check_command(builder),
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -228,11 +228,9 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
     global _PROJECTION_CHECK_RESULTS
     projection_prefix = "projection:"
     commands = {
-        f"{projection_prefix}{builder}": [
-            sys.executable,
-            str(ROOT / builder),
-            "--check",
-        ]
+        f"{projection_prefix}{builder}": (
+            refresh_projections.projection_check_command(builder)
+        )
         for builder in refresh_projections.BUILDERS
     }
     commands.update(

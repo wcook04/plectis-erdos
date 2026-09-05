@@ -29,7 +29,7 @@ For $n:\N$:
 A finite Boolean support $D$ bounded by $n$ exactly hits the integer target $2^{n-1}-1$ under
 floor-division Mersenne quotients at scale $n$ — the natural-number carry accounting is
 exact, not merely close.
-\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{ExactLocalMersenneHalfRow}{BooleanMobiusCofinalExactRows.lean:31}
+\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{ExactLocalMersenneHalfRow}{BooleanMobiusCofinalExactRows.lean:34}
 \end{defn}
 
 \begin{defn}[257bm:d2 --- \texttt{localPrefixQuotient}, \texttt{localMersenneQuotient}, \texttt{localRepairInteger}]
@@ -65,7 +65,7 @@ are entirely sufficient. This weakening is simultaneously the whole reason the l
 tractable and the exact place an attacker must be careful: a proof that looks like it
 supplies coherent rows is doing strictly more work than is needed, and a proof that
 looks like it refutes coherent rows says nothing about this predicate.
-\par\noindent\ev{Open} \scale{cofinal} \coord{mobius-mersenne} \lean{CofinalExactLocalMersenneHalfRows}{BooleanMobiusCofinalExactRows.lean:38}
+\par\noindent\ev{Open} \scale{cofinal} \coord{mobius-mersenne} \lean{CofinalExactLocalMersenneHalfRows}{BooleanMobiusCofinalExactRows.lean:41}
 \end{defn}
 
 \subsubsection*{The two payoff consumers}
@@ -75,7 +75,7 @@ looks like it refutes coherent rows says nothing about this predicate.
 \mathrm{CofinalExactLocalMersenneHalfRows} \;\longrightarrow\; (1/2:\mathbb{R}) \in \mathrm{mersenneAchievementSet},
 \]
 where $\mathrm{mersenneAchievementSet} := \{x \mid \exists A:\mathrm{Set}\,\N,\ 0\notin A \wedge x = \mathrm{positiveMersenneSupportValue}(A)\}$. Proof: for each $N$ pick $n\ge N$ with exact row $D_N$; the real value $y_N$ of $D_N$ satisfies $|y_N-1/2|\le (n+1)/2^n\to0$ (257bm:i9); $\mathrm{mersenneAchievementSet}$ is compact (continuous image of $2^{\N}$ under the digit-coding map), hence closed, so the limit $1/2$ is achieved by an actual point. This is the theorem 257bm:d4, and hence ultimately every producer feeding it, must reach.
-\par\noindent\ev{Lean} \scale{cofinal} \coord{other:topological-achievement-set} \lean{half\_mem\_mersenneAchievementSet\_of\_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71}
+\par\noindent\ev{Lean} \scale{cofinal} \coord{other:topological-achievement-set} \lean{half\_mem\_mersenneAchievementSet\_of\_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:431}
 \end{thm}
 
 \begin{thm}[257bm:c2 --- \texttt{cofinalExactLocalMersenneHalfRows\_of\_positiveHalfGreedySkips}, \texttt{half\_mem\_mersenneAchievementSet\_of\_positiveHalfGreedySkips}]
@@ -224,7 +224,7 @@ checking exactly ONE nearest-boundary index per row. Specialised to the concrete
 charge, $\mathrm{SeamUpperResetCriticalBandEscape}$ is proved logically EQUIVALENT to
 $\mathrm{SeamUpperResetDyadicBandEscape}$ (the F5-style band-avoidance producer), hence also
 consumes into $\mathrm{half\_mem\_mersenneAchievementSet\_of\_upperResetCriticalBandEscape}$.
-\par\noindent\ev{Lean} \scale{uniform} \coord{other:dyadic-boundary} \lean{CriticalDyadicBandIndex}{HalfUpperResetCriticalBand.lean:33} \lean{dyadicBandEscape\_iff\_exists\_critical}{HalfUpperResetCriticalBand.lean:108} \lean{seamUpperResetCriticalBandEscape\_iff}{HalfUpperResetCriticalBand.lean:883} \lean{half\_mem\_mersenneAchievementSet\_of\_upperResetCriticalBandEscape}{HalfUpperResetCriticalBand.lean:896}
+\par\noindent\ev{Lean} \scale{uniform} \coord{other:dyadic-boundary} \lean{CriticalDyadicBandIndex}{HalfUpperResetCriticalBand.lean:33} \lean{dyadicBandEscape\_iff\_exists\_critical}{HalfUpperResetCriticalBand.lean:108} \lean{seamUpperResetCriticalBandEscape\_iff}{HalfUpperResetCriticalBand.lean:1565} \lean{half\_mem\_mersenneAchievementSet\_of\_upperResetCriticalBandEscape}{HalfUpperResetCriticalBand.lean:1578}
 \end{thm}
 
 \begin{prop}[257bm:c12 --- prerequisite \texttt{seamUpperResetCharge\_le}]
@@ -275,7 +275,7 @@ then the greedy skipped support is infinite and its reciprocal-Mersenne series e
 Nonnegativity of $C_G$ is unconditional (see 257bm:i-carry below); only the upper
 $2\sqrt N+4$ bound remains open. This is independent of 257bm:c11's dyadic-band route and
 257bm:c7's largest-skip socket.
-\par\noindent\ev{Open} \scale{cofinal} \coord{other:sqrt-carry-growth} \lean{infinite\_support\_half\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:817} \lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:834}
+\par\noindent\ev{Open} \scale{cofinal} \coord{other:sqrt-carry-growth} \lean{infinite\_support\_half\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:816} \lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:833}
 \end{thm}
 
 \begin{thm}[257rig:c17 --- cofinal terminal-strip witnesses imply half-membership]
@@ -319,7 +319,7 @@ $\mathrm{gap} = \mathrm{tail}(k+1+J)/2^J$, and 257bm:i2 (the tail growth bound) 
 $\mathrm{tail}(m)\le m+2$. What would close it: $\mathrm{margin}(k,J)\ge0$ as soon as
 $(k+J+3)/2^J < |\mathrm{halfGreedyNextDyadicExcessNumerator}(k)|/\mathrm{halfGreedyPrefixDenominator}(k)$
 — pure bookkeeping over existing lemmas, no new idea.
-\par\noindent\ev{Lean} \scale{uniform} \coord{other:frozen-margin} \lean{exists\_greedyHalfFrozenMargin\_nonneg\_of\_excess\_neg}{HalfCylinderFiniteShadow.lean:1198} \lean{exists\_greedyHalfFrozenMargin\_nonneg\_iff\_excess\_neg}{HalfCylinderFiniteShadow.lean:1229}
+\par\noindent\ev{Lean} \scale{uniform} \coord{other:frozen-margin} \lean{exists\_greedyHalfFrozenMargin\_nonneg\_of\_excess\_neg}{HalfCylinderFiniteShadow.lean:1196} \lean{exists\_greedyHalfFrozenMargin\_nonneg\_iff\_excess\_neg}{HalfCylinderFiniteShadow.lean:1227}
 \end{thm}
 
 \subsubsection*{The equivalence \texttt{CofinalPositiveHalfGreedySkips} reduces to}
@@ -332,7 +332,7 @@ Odd-denominator parity supplies the positivity clause in 257bm:c2 automatically.
 cofinal-positive-skip hypothesis is exactly the assertion that the greedy skipped support is
 infinite, which the displayed theorem identifies with half-membership. See 257bm:k5 for the
 reason this restatement does not itself prove membership.
-\par\noindent\ev{Lean} \scale{cofinal} \coord{other:topological-achievement-set} \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583} \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}
+\par\noindent\ev{Lean} \scale{cofinal} \coord{other:topological-achievement-set} \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2582} \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}
 \end{thm}
 
 \subsection{Invariants}
@@ -643,7 +643,7 @@ constructs, and since \#249 ($\varphi/2^n$) is itself built from a M\"obius/divi
 structure ($\varphi=\mu*\mathrm{id}$), this carry-nonnegativity mechanism is a strong candidate
 for direct reuse or close adaptation on the \#249 side. The analytic half of 257bm:k12's
 contradiction machine below; also the base case consumed by 257rig:c16's sqrt-bound route.
-\par\noindent\ev{Lean} \scale{uniform} \coord{other:mobius-centred-carry} \lean{integerHalfCarry\_eq\_scaled\_residual\_add\_tail}{HalfCarryReachability.lean:871} \lean{mobiusCenteredHalfCarry\_nonneg\_of\_supportSeries\_lt\_half}{HalfCylinderFinalMiddleCellEscape.lean:94}
+\par\noindent\ev{Lean} \scale{uniform} \coord{other:mobius-centred-carry} \lean{integerHalfCarry\_eq\_scaled\_residual\_add\_tail}{HalfCarryReachability.lean:870} \lean{mobiusCenteredHalfCarry\_nonneg\_of\_supportSeries\_lt\_half}{HalfCylinderFinalMiddleCellEscape.lean:94}
 \end{thm}
 
 \begin{thm}[257hg:i7 --- \texttt{halfGreedy\_skipped\_endpoint\_trichotomy} (G5)]
@@ -663,7 +663,7 @@ split inside the negative cell that the corpus has managed to exclude so far.
 \begin{defn}[257hg:i1 --- the Mersenne gap]
 Let $g_n:=w_n-T_n>0$, the
 per-level shortfall between a single weight and the true tail sum beyond it.
-\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{mersenneGap}{GreedyAchievementSet.lean:2337} \lean{mersenneGap\_pos}{GreedyAchievementSet.lean:2346}
+\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{mersenneGap}{GreedyAchievementSet.lean:2335} \lean{mersenneGap\_pos}{GreedyAchievementSet.lean:2344}
 \end{defn}
 
 \begin{thm}[257hg:i2 --- \texttt{mersenneGap\_tail\_le}, \texttt{tendsto\_mersenneGap\_tail\_zero}]
@@ -728,7 +728,7 @@ A global dyadic-scale control on the seam orbit, independent of which branch fir
 ingredient 257bm:c11/c12 needs to make its forbidden-band inequalities well-posed. The "exclude
 finitely many exceptional local cells, get a global dyadic bound by induction" pattern is generic
 to digit-DP dynamics.
-\par\noindent\ev{Lean} \scale{uniform} \coord{other:dyadic-scale} \lean{SeamTwoSidedDyadicCellEscape}{HalfCylinderMiddleCarryLowerBound.lean:4374} \lean{SeamTwoSidedDyadicCellEscape.step}{HalfCylinderMiddleCarryLowerBound.lean:4398} \lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:4448}
+\par\noindent\ev{Lean} \scale{uniform} \coord{other:dyadic-scale} \lean{SeamTwoSidedDyadicCellEscape}{HalfCylinderMiddleCarryLowerBound.lean:4990} \lean{SeamTwoSidedDyadicCellEscape.step}{HalfCylinderMiddleCarryLowerBound.lean:5014} \lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:5064}
 \end{thm}
 
 \begin{prop}[257bm:i14 --- \texttt{seamUpperResetDyadicBandEscape\_through\_thirty}, finite certificate to row 31]
@@ -741,7 +741,7 @@ band-escape route — a finite verified list to a concrete row, \emph{not} a cof
 open task is either extending the same finite-computation technique cofinally, or proving the
 general band-avoidance arithmetically (which is what 257bm:c11's quantifier collapse reduces the
 burden of).
-\par\noindent\ev{Cert} \scale{fixed} \coord{other:dyadic-boundary} \lean{SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4566} \lean{seamUpperResetDyadicBandEscape\_through\_thirty}{HalfCylinderUpperResetBandCertificates.lean:78} \lean{half\_mem\_mersenneAchievementSet\_of\_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4790}
+\par\noindent\ev{Cert} \scale{fixed} \coord{other:dyadic-boundary} \lean{SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:5182} \lean{seamUpperResetDyadicBandEscape\_through\_thirty}{HalfCylinderUpperResetBandCertificates.lean:78} \lean{half\_mem\_mersenneAchievementSet\_of\_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:5614}
 \end{prop}
 
 \subsubsection*{Abstract, fully problem-agnostic invariants read alongside this lane}

@@ -68,9 +68,11 @@ import stat
 import subprocess
 import sys
 import textwrap
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
+import build_comparator_replay_portfolio as comparator_portfolio
 import validation_singleflight as singleflight
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -460,34 +462,155 @@ def exposition_for(
     return {"status": status, "label": label, "papers": papers}
 
 
+def comparator_interface_roster(claims: dict[str, Any]) -> dict[str, set[str]]:
+    """Read the validated package/interface identities used by claim links."""
+
+    packet = claims.get("external_verification_packet") or {}
+    config_path = packet.get("comparator", {}).get("config")
+    roster: dict[str, set[str]] = {}
+    if isinstance(config_path, str):
+        content = safe_read_text(REPO_ROOT / config_path)
+        if content is not None:
+            try:
+                config = json.loads(content)
+            except json.JSONDecodeError:
+                config = {}
+            challenge = config.get("challenge_module")
+            names = config.get("theorem_names")
+            if isinstance(challenge, str) and isinstance(names, list) and all(
+                isinstance(name, str) for name in names
+            ):
+                roster[challenge.rsplit(".", 1)[0]] = set(names)
+
+    membership_content = safe_read_text(
+        REPO_ROOT / "verification" / "comparator-replay-membership.json"
+    )
+    if membership_content is not None:
+        try:
+            membership = json.loads(membership_content)
+        except json.JSONDecodeError:
+            membership = {}
+        rows = membership.get("required_interfaces_by_package")
+        if (
+            membership.get("schema") == "plectis.comparator-replay-membership/1"
+            and isinstance(rows, dict)
+        ):
+            for package_id, names in rows.items():
+                if isinstance(package_id, str) and isinstance(names, list) and all(
+                    isinstance(name, str) for name in names
+                ):
+                    roster[package_id] = set(names)
+    return roster
+
+
 def comparator_for(claim_id: str, claims: dict[str, Any]) -> dict[str, Any]:
     """Report whether a selected Comparator interface is bound to this claim.
 
     Comparator is a second *formal* channel, not a second opinion: it checks a
-    separately declared statement under a fixed axiom budget. Most claims are
-    not bound to one, and that is a design state rather than a gap, so the
-    register's own contract sentence is quoted here instead of paraphrased --
-    a paraphrase would be this module inventing claim language, which is the
-    exact failure the register exists to prevent.
+    separately declared statement under a fixed axiom budget. A formal claim
+    without an exact transport remains an explicit coverage gap. The register's
+    own boundary is quoted, and an interface link asserts neither full semantic
+    coverage nor a completed Comparator execution.
     """
+    claim = next(
+        (row for row in claims.get("claims", []) if row.get("id") == claim_id),
+        {},
+    )
+    declarations = claim.get("declarations", [])
+    claim_status = claim.get("status")
+
+    def unlinked_classification() -> str:
+        if declarations:
+            return "missing_formal_transport"
+        if claim_status == "open":
+            return "open_non_executable"
+        if claim_status == "cited only":
+            return "cited_only_non_executable"
+        return "unclassified"
+
     packet = claims.get("external_verification_packet") or {}
     if not packet:
-        return {"status": "packet_absent", "interfaces": []}
+        return {
+            "status": "packet_absent",
+            "transport_classification": unlinked_classification(),
+            "transports": [],
+            "linked_transport_count": 0,
+            "semantic_coverage_status": "not_assessed_by_transport_link",
+            "executed_comparator_assurance": "not_asserted",
+            "interfaces": [],
+        }
     selected = packet.get("main_results", [])
     config = packet.get("comparator", {})
-    interfaces = [
+    roster = comparator_interface_roster(claims)
+    current_package = str(config.get("challenge_module", "")).rsplit(".", 1)[0]
+    interfaces = []
+    for row in selected:
+        wrapper = row.get("wrapper_declaration")
+        if (
+            row.get("claim_id") != claim_id
+            or not isinstance(wrapper, str)
+            or wrapper not in roster.get(current_package, set())
+            or not comparator_portfolio.main_result_source_anchors(claim, row)
+        ):
+            continue
+        interfaces.append(
+            {
+                "id": row.get("id"),
+                "problem": row.get("problem"),
+                "wrapper_declaration": wrapper,
+                "original_declaration": row.get("original_declaration"),
+                "boundary": row.get("boundary"),
+                "source_declarations": comparator_portfolio.main_result_source_anchors(
+                    claim, row
+                ),
+            }
+        )
+    explicit = claim.get("comparator_transports", [])
+    explicit_transports: list[dict[str, Any]] = []
+    if isinstance(explicit, list):
+        for transport in explicit:
+            if not isinstance(transport, dict):
+                continue
+            try:
+                anchors = comparator_portfolio.validate_claim_transport_link(
+                    claim_id,
+                    claim,
+                    transport.get("package_id"),
+                    transport.get("interface_name"),
+                    transport.get("source_declarations"),
+                    roster,
+                )
+            except comparator_portfolio.PortfolioError:
+                continue
+            explicit_transports.append(
+                {**transport, "source_declarations": anchors}
+            )
+    transports = [
         {
-            "id": row.get("id"),
-            "problem": row.get("problem"),
-            "wrapper_declaration": row.get("wrapper_declaration"),
-            "original_declaration": row.get("original_declaration"),
-            "boundary": row.get("boundary"),
+            "link_source": "main_result_claim_id",
+            "package_id": current_package,
+            "interface_name": interface["wrapper_declaration"],
+            "source_declarations": interface["source_declarations"],
         }
-        for row in selected
-        if row.get("claim_id") == claim_id
+        for interface in interfaces
+    ] + [
+        {**transport, "link_source": "claim_owner_explicit"}
+        for transport in explicit_transports
+        if isinstance(transport.get("package_id"), str)
+        and isinstance(transport.get("interface_name"), str)
+        and isinstance(transport.get("source_declarations"), list)
     ]
+    if transports:
+        transport_classification = "linked_transport"
+    else:
+        transport_classification = unlinked_classification()
     return {
-        "status": "bound" if interfaces else "not_bound",
+        "status": "bound" if transports else "not_bound",
+        "transport_classification": transport_classification,
+        "transports": transports,
+        "linked_transport_count": len(transports),
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted",
         "interfaces": interfaces,
         "selected_total": len(selected),
         "bound_total": sum(1 for row in selected if row.get("claim_id")),
@@ -607,6 +730,12 @@ def render_claim(report: dict[str, Any]) -> str:
                 f"{comparator['bound_total']} carry a claim id"
             )
             out.extend(quoted(comparator["unregistered_contract"]))
+        out.append(
+            "  transport accounting: "
+            f"{comparator['transport_classification']}; "
+            "full informal-claim semantic coverage not assessed; "
+            "Comparator execution not asserted"
+        )
         out.append("  what Comparator does and does not settle:")
         out.extend(quoted(comparator["boundary"], "           "))
         out.append("")
@@ -658,6 +787,7 @@ def verify_all_claims(claims: dict[str, Any]) -> dict[str, Any]:
     label_index = index_paper_labels()
     written_up = 0
     comparator_bound = 0
+    comparator_classifications: Counter[str] = Counter()
     for claim in claims.get("claims", []):
         report = follow_claim(claim["id"], claims, label_index)
         declaration_count += len(report["declarations"])
@@ -683,6 +813,9 @@ def verify_all_claims(claims: dict[str, Any]) -> dict[str, Any]:
             )
         if report["comparator"]["status"] == "bound":
             comparator_bound += 1
+        comparator_classifications[
+            report["comparator"]["transport_classification"]
+        ] += 1
 
     known = {claim.get("id") for claim in claims.get("claims", [])}
     for prop in claims.get("remaining_open_propositions", []):
@@ -710,6 +843,12 @@ def verify_all_claims(claims: dict[str, Any]) -> dict[str, Any]:
         "declaration_count": declaration_count,
         "written_up_count": written_up,
         "comparator_bound_count": comparator_bound,
+        "comparator_transport_classification_counts": dict(
+            sorted(comparator_classifications.items())
+        ),
+        "missing_formal_comparator_transport_count": comparator_classifications[
+            "missing_formal_transport"
+        ],
         "paper_sources_present": label_index is not None,
         "problems": problems,
         "verified": not problems,

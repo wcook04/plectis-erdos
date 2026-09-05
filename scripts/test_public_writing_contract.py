@@ -36,6 +36,21 @@ def main() -> None:
     require("```" not in contributing, "human contribution guidance contains a command block")
     require("python3 " not in contributing, "human contribution guidance exposes commands")
 
+    for path in (
+        "paper/paper-house-style.sty", "paper/erdos249-257-main-paper.tex",
+        "paper/open-source-mathematics-strategy.tex",
+    ):
+        disclosure = " ".join(read(path).split())
+        for unsupported in (
+            "reviewed the claims", "reviewed and authorised the manuscript",
+            "selected and reviewed the public claims", "approved the published version",
+        ):
+            require(unsupported not in disclosure, f"{path} asserts unsupported personal review")
+    require(
+        "%.pdf: %.tex $(ALIASES) paper-house-style.sty" in read("paper/Makefile"),
+        "shared paper disclosure/style changes must invalidate PDFs",
+    )
+
     skill_path = "skills/public-mathematical-writing/SKILL.md"
     skill = read(skill_path)
     require("ai_workflow" not in skill and "/Users/" not in skill, "public writing skill has a private dependency")

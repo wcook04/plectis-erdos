@@ -85,6 +85,14 @@ A dependency or lexical reference is only a candidate. It is not, by itself, a
 semantic consequence. Never bulk-strengthen a family of claims because one
 declaration became stronger.
 
+When moving the pinned formal-source revision, use
+`python3 scripts/semantic_review.py --rereview-moved-revision` to inspect receipt
+migration before adding `--apply`. This route carries a review forward only
+when its wording and evidence identity are unchanged and every cited
+declaration's kind and full signature match across revisions. A source-line
+move alone is not new mathematics. Refused substantive changes need a fresh
+source-bound interpretation, not a hand-edited digest or a human-author gate.
+
 ## Inspect both propagation lanes
 
 For a mathematical delta, inspect the affected Lean consumers and imports,
@@ -105,6 +113,37 @@ For an architecture delta, inspect the compact agent entry, contributor docs,
 skills, builders, tests, generated routes, and any public paper that describes
 the changed behaviour. A local workflow lesson becomes a general skill or rule
 only when its scope and over-generalisation guard are explicit.
+
+## Keep Comparator coverage attached to claims
+
+When a change adds or strengthens a registered claim, inspect its exact
+Comparator interface as part of the same propagation pass. The coverage unit
+is `docs/claims.json::claims`, not every helper declaration and not a frozen
+number of result families. An open problem or cited result needs an explicit
+non-executable disposition, not a fabricated proof interface.
+
+Use the existing per-entry Challenge/Solution packages. Record the exact
+claim-to-interface edge through `main_results[].claim_id` or the claim owner's
+`comparator_transports[]`, with registered source declaration anchors. An
+interface with a similar name is a candidate for inspection, not a confirmed
+link. Check that its hypotheses and conclusion faithfully express the intended
+claim; LLM source-bound interpretation is a valid authoring attempt and remains
+contestable. Do not require a human mathematician to author the interface.
+
+After source validation, run the normal projection refresh. It regenerates the
+Comparator portfolio before the external-verification views. Inspect
+`verification/comparator-replay-membership.json::registered_claim_coverage`;
+the optional read-only gate is:
+
+```sh
+python3 scripts/build_comparator_replay_portfolio.py --require-complete-claims
+```
+
+Complete transport accounting is not complete informal-statement review and
+does not establish that Comparator executed. Keep transport coverage, exact
+commit-bound execution receipts, and Palomar submission/review outcomes
+separate in every downstream query and presentation. Preserve explicit missing
+transports until they are actually supplied and validated.
 
 ## Reconcile work from an older clone
 

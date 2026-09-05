@@ -22,10 +22,10 @@ ceiling.
 \end{defn}
 
 \begin{defn}[257-cofinal-rows]
-$\forall N\ \exists n \ge N$ with \lean{ExactLocalMersenneHalfRow}{BooleanMobiusCofinalExactRows.lean:31} $n$
+$\forall N\ \exists n \ge N$ with \lean{ExactLocalMersenneHalfRow}{BooleanMobiusCofinalExactRows.lean:34} $n$
 — i.e.\ cofinally many finite prefixes whose local Mersenne quotient lands exactly on the
 half-value residue class. Consumed unconditionally by
-\lean{half\_mem\_mersenneAchievementSet\_of\_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71}.
+\lean{half\_mem\_mersenneAchievementSet\_of\_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:431}.
 No coherence between the witnessing rows is demanded and none should be assumed: the rows may
 be, and in the corpus's own words, mutually incompatible — only their endpoint lengths need
 tend to infinity. Any weakening that reintroduces a compatibility requirement between rows is
@@ -65,10 +65,10 @@ in this theorem changes; the induction already consumes any $k$ uniformly.
 \end{obs}
 
 \begin{obs}[rc-2 / affine excess recurrence] \ev{Lean}
-\lean{affineRightExcess\_exactIterate}{HalfCylinderMiddleCarryLowerBound.lean:3320},
-\lean{affineRightExcess\_charge\_lt\_scaledInitial}{HalfCylinderMiddleCarryLowerBound.lean:3350},
-\lean{eventualRightTail\_excess\_exactIterate}{HalfCylinderMiddleCarryLowerBound.lean:3361}
-(recurrence \lean{rightBranch\_excess\_succ\_eq}{HalfCylinderMiddleCarryLowerBound.lean:2497}).
+\lean{affineRightExcess\_exactIterate}{HalfCylinderMiddleCarryLowerBound.lean:3562},
+\lean{affineRightExcess\_charge\_lt\_scaledInitial}{HalfCylinderMiddleCarryLowerBound.lean:3592},
+\lean{eventualRightTail\_excess\_exactIterate}{HalfCylinderMiddleCarryLowerBound.lean:3603}
+(recurrence \lean{rightBranch\_excess\_succ\_eq}{HalfCylinderMiddleCarryLowerBound.lean:2707}).
 \textbf{Yields:} for an R-run of length $k$ from row $S$: $X_k + \mathrm{charge}_k = 4^k X_0$
 exactly, with $X_j = \mathrm{rem}(S+j) - 2^{S+j}$ and $\mathrm{charge}_{j+1} = 4\,\mathrm{charge}_j
 + \mathrm{pulse}_j + 4$. Uniform in $k$, $S$, and the pulse word.
@@ -97,7 +97,7 @@ premise of rc-2 without invoking the open \texttt{SeamGreedyRemainderGapBound}.
 \end{obs}
 
 \begin{obs}[G5 / no-tie] \ev{Lean}
-\lean{seamGreedyFloorZ\_ne\_takeThreshold}{HalfCylinderMiddleCarryLowerBound.lean:1665}, with
+\lean{seamGreedyFloorZ\_ne\_takeThreshold}{HalfCylinderMiddleCarryLowerBound.lean:1875}, with
 \lean{halfGreedy\_skipped\_endpoint\_trichotomy}{HalfCylinderSkippedEndpointClassifier.lean:246}.
 \textbf{Yields:} $\forall s \ge 5$, the greedy decision boundary is never exactly attained.
 Combined with integrality this is the corpus's \emph{only} unconditional lower bound on the
@@ -133,8 +133,8 @@ needs a different arithmetic input, not a sharper truncation.
 \textbf{Yields:} at every upper reset row $d$, $13 \le d \le 30$, the reset charge $E_d =
 4\cdot\mathrm{overshoot}_d + \mathrm{abovePulse}_d$ avoids the linear-width band
 $(2^{d-j+1}-2(d+j),\ 2^{d-j+1}]$ for every $j \le d$ — the finite segment of
-\lean{SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4566}, which by
-\lean{half\_mem\_mersenneAchievementSet\_of\_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4790}
+\lean{SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:5182}, which by
+\lean{half\_mem\_mersenneAchievementSet\_of\_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:5614}
 delivers the whole \#257-false payoff.
 \textbf{Mismatch (\texttt{scale\_only}):} proved at 18 explicit rows by \texttt{interval\_cases}
 plus per-row \texttt{decide+kernel}; the obligation needs all $d \ge 13$. The band width here is
@@ -148,9 +148,9 @@ Only $O(d)$ separation is required, not sqrt-of-scale.
 \end{obs}
 
 \begin{obs}[oa-3b / M-ancestor and R-run closure] \ev{Lean}
-\lean{seamMiddleBranch\_nextRemainder\_ge\_row}{HalfCylinderMiddleCarryLowerBound.lean:2655},
-\lean{seamMiddleBranch\_nextRemainder\_ge\_expBarrier}{HalfCylinderMiddleCarryLowerBound.lean:2680},
-\lean{SeamUpperResetDyadicBandEscape.remainder\_ge\_row}{HalfCylinderMiddleCarryLowerBound.lean:4641}.
+\lean{seamMiddleBranch\_nextRemainder\_ge\_row}{HalfCylinderMiddleCarryLowerBound.lean:2886},
+\lean{seamMiddleBranch\_nextRemainder\_ge\_expBarrier}{HalfCylinderMiddleCarryLowerBound.lean:2906},
+\lean{SeamUpperResetDyadicBandEscape.remainder\_ge\_row}{HalfCylinderMiddleCarryLowerBound.lean:5596}.
 \textbf{Yields:} unconditional, uniform in $s\ge5$: a middle (M) branch forces $s+1 \le
 \mathrm{rem}(s+1)$, using no lower bound on the source remainder; with the row-scale source
 bound this upgrades to $2^{s+1}+(s+1) \le \mathrm{rem}(s+1)$. The minimal-counterexample argument
@@ -168,8 +168,8 @@ reset charge avoids the width-$2(d+j_0)$ band at its critical dyadic index. Then
 \end{obs}
 
 \begin{obs}[F2 / middle producer row escape] \ev{Lean}
-\lean{SeamMiddleProducerRowEscape}{HalfCylinderMiddleCarryLowerBound.lean:1769},
-\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerRowEscape}{HalfCylinderMiddleCarryLowerBound.lean:2371}
+\lean{SeamMiddleProducerRowEscape}{HalfCylinderMiddleCarryLowerBound.lean:1979},
+\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerRowEscape}{HalfCylinderMiddleCarryLowerBound.lean:2581}
 (via \texttt{.toCardEscape}, \texttt{.toTailEscape}, \lean{}{HalfCylinderMiddleCarryLowerBound.lean:1510}).
 \textbf{Yields:} if at every late middle row ($s \ge 13$, no carry, middle branch)
 $s \le \mathrm{rem}(s)$, then $1/2 \in \mathrm{mersenneAchievementSet}$. Module docstring: ``far
@@ -187,7 +187,7 @@ Equivalently, by \texttt{remainder\_ge\_row}, the U-reset band escape of F5b.
 \begin{obs}[LPC-sqrt / row-index sqrt escape] \ev{Lean}
 \lean{SeamMiddleProducerSqrtEscape}{HalfCylinderLastProducerContradiction.lean:84},
 \texttt{.toTailEscape}{}{HalfCylinderLastProducerContradiction.lean:98},
-\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerSqrtEscape}{HalfCylinderLastProducerContradiction.lean:458}.
+\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerSqrtEscape}{HalfCylinderLastProducerContradiction.lean:459}.
 \textbf{Yields:} if at every late middle row $2\sqrt{2s+2}+4 < \mathrm{producerCarry}(s)$, then
 $1/2 \in \mathrm{mersenneAchievementSet}$; \texttt{producerCarry} equals the middle coordinate
 $4\,\mathrm{rem}-\mathrm{belowPulse}-4$
@@ -204,11 +204,11 @@ middle coordinate.
 \end{obs}
 
 \begin{obs}[G2 + LPC upper case / narrow integer window] \ev{Lean}
-\lean{upperProducer\_not\_last}{HalfCylinderLastProducerContradiction.lean:299},
-\lean{middleProducer\_neg\_three\_not\_last}{HalfCylinderLastProducerContradiction.lean:364},
+\lean{upperProducer\_not\_last}{HalfCylinderLastProducerContradiction.lean:300},
+\lean{middleProducer\_neg\_three\_not\_last}{HalfCylinderLastProducerContradiction.lean:365},
 \lean{finalMiddleCell\_neg\_three\_not\_last}{HalfCylinderFinalMiddleCellEscape.lean:587},
-\lean{middleProducer\_allRight\_landingExcess\_window}{HalfCylinderMiddleCarryLowerBound.lean:2547},
-\lean{middleThenAllRight\_landingExcess\_two\_le}{HalfCylinderMiddleCarryLowerBound.lean:2319}.
+\lean{middleProducer\_allRight\_landingExcess\_window}{HalfCylinderMiddleCarryLowerBound.lean:2757},
+\lean{middleThenAllRight\_landingExcess\_two\_le}{HalfCylinderMiddleCarryLowerBound.lean:2529}.
 \textbf{Yields:} the upper-producer ``last transition before an all-right tail'' case is
 impossible unconditionally (affine carry $\le -8$); the middle cell at coordinate $-3$ is
 excluded unconditionally. What survives: a middle producer whose landing excess $X_{D+1}$
@@ -223,9 +223,9 @@ obstruction on $4\,\mathrm{rem}(D)-\mathrm{belowPulse}(D)-4$.
 \end{obs}
 
 \begin{obs}[F4 / two-sided cell exclusion] \ev{Lean}
-\lean{SeamTwoSidedDyadicCellEscape}{HalfCylinderMiddleCarryLowerBound.lean:4374},
-\lean{SeamTwoSidedDyadicCellEscape.step}{HalfCylinderMiddleCarryLowerBound.lean:4398},
-\lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:4448}.
+\lean{SeamTwoSidedDyadicCellEscape}{HalfCylinderMiddleCarryLowerBound.lean:4990},
+\lean{SeamTwoSidedDyadicCellEscape.step}{HalfCylinderMiddleCarryLowerBound.lean:5014},
+\lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:5064}.
 \textbf{Yields:} excluding exactly three integer values of the middle coordinate
 ($4\,\mathrm{rem}-\mathrm{belowPulse}-4 \notin \{-3,-2,-1\}$) plus one right-pulse-leak bound
 propagates, by induction from a decide-checked row-5 base, the two-sided invariant $\forall s
@@ -241,8 +241,8 @@ orbit, plus the right-pulse-leak inequality $4\cdot\mathrm{overshoot}+\mathrm{ab
 \end{obs}
 
 \begin{obs}[E1 / remainder ceiling] \ev{Lean}
-\lean{SeamGreedyRemainderGapBound}{HalfCylinderSeamLimit.lean:192},
-\lean{half\_mem\_mersenneAchievementSet\_of\_seamRemainderGapBound}{HalfCylinderSeamLimit.lean:303}
+\lean{SeamGreedyRemainderGapBound}{HalfCylinderSeamLimit.lean:266},
+\lean{half\_mem\_mersenneAchievementSet\_of\_seamRemainderGapBound}{HalfCylinderSeamLimit.lean:377}
 (weaker cofinal route \lean{}{HalfCylinderSeamLimit.lean:181}).
 \textbf{Yields:} if $\forall s \ge 6$, $\mathrm{rem}(s) < 2^{s+1}$, then $1/2 \in
 \mathrm{mersenneAchievementSet}$. The weaker cofinal form only needs the normalized remainder to
@@ -430,8 +430,8 @@ requirement, never isolated as a target anywhere prior to this bank.
 \end{obs}
 
 \begin{obs}[Frozen margin, ineffective horizon] \ev{Lean}
-\lean{exists\_greedyHalfFrozenMargin\_nonneg\_of\_excess\_neg}{HalfCylinderFiniteShadow.lean:1198},
-\lean{exists\_greedyHalfFrozenMargin\_nonneg\_iff\_excess\_neg}{HalfCylinderFiniteShadow.lean:1229}
+\lean{exists\_greedyHalfFrozenMargin\_nonneg\_of\_excess\_neg}{HalfCylinderFiniteShadow.lean:1196},
+\lean{exists\_greedyHalfFrozenMargin\_nonneg\_iff\_excess\_neg}{HalfCylinderFiniteShadow.lean:1227}
 (margin def line 1021, recurrence line 1036, monotonicity line 1094).
 \textbf{Yields:} at every dyadically safe rank $k>0$, $\mathrm{greedyHalfFrozenMargin}\,k\,J \ge
 0$ for \emph{some} horizon $J$ — the finite coefficient window eventually covers the centred
@@ -441,7 +441,7 @@ carry. Nonnegativity is monotone up in $J$.
 The exact-row route needs the crossing by the specific horizon $J=c-3$
 (\lean{halfGreedy\_precriticalSuffix\_lt\_iff\_frozenMargin\_nonneg}{BooleanMobiusCriticalCapacityCofinal.lean:866},
 $k=c-1$). All ingredients to make it effective already exist:
-\lean{binaryCoeffTail\_eq\_finiteCoeffWindow\_add\_shiftedTail}{HalfCylinderFiniteShadow.lean:203} gives
+\lean{binaryCoeffTail\_eq\_finiteCoeffWindow\_add\_shiftedTail}{HalfCylinderFiniteShadow.lean:202} gives
 $\mathrm{gap}=\mathrm{tail}(k{+}1{+}J)/2^J$, and
 \lean{binaryCoeffTail\_le}{GenericTailOrbitRigidity.lean:85} gives $\mathrm{tail}(m)\le m+2$.
 \textbf{Closes it:} margin$(k,J)\ge0$ as soon as $(k{+}J{+}3)/2^J <
@@ -473,7 +473,7 @@ above.
 \lean{CofinalPositiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:22},
 \lean{cofinalExactLocalMersenneHalfRows\_of\_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:84},
 line 60; A5
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583},
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2582},
 A6 (\lean{}{GreedyAchievementSet.lean:1515}); positivity discharge
 \lean{}{BooleanMobiusCriticalCapacityCofinal.lean:138}.
 \textbf{Yields:} cofinally many positive rational-greedy skips $\Rightarrow$
@@ -522,7 +522,7 @@ on the board.
 \begin{obs}[C4c / G3 / greedy carry vs.\ frozen prefix carry, coordinate mismatch] \ev{Lean}
 \lean{GreedyHalfCarryCofinalStripReturn}{CofinalStripReturn.lean:76},
 \lean{greedy\_half\_infinite\_of\_cofinalStripReturn}{CofinalStripReturn.lean:130}, line 157;
-\lean{infinite\_support\_half\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:817},
+\lean{infinite\_support\_half\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:816},
 line 805 (nonnegativity from line 842 /
 \lean{}{HalfCylinderFinalMiddleCellEscape.lean:94}).
 \textbf{Yields:} cofinal returns of the actual greedy carry to the square-root strip (C4c), or a
@@ -531,7 +531,7 @@ value exactly $1/2$.
 \textbf{Mismatch (\texttt{coordinate\_only}):} these bound the carry of the \emph{infinite}
 greedy support $\mathrm{greedyMersenneSupport}(1/2)$; sharp capacity is about the \emph{frozen
 finite prefix} $\mathrm{halfGreedyPrefixSupport}(c{-}1)$. The two carries agree only at index $k$
-(inside \lean{greedyHalfFrozenMargin\_eq\_actual\_skip\_margin}{HalfCylinderFiniteShadow.lean:1120}),
+(inside \lean{greedyHalfFrozenMargin\_eq\_actual\_skip\_margin}{HalfCylinderFiniteShadow.lean:1118}),
 not at depth $2c{-}3$ where the fill needs it. The bridge is already landed:
 \lean{halfGreedy\_precriticalSuffix\_lt\_iff\_futureSkipCoverage}{BooleanMobiusCriticalCapacityCofinal.lean:949}:
 sharp capacity $\Leftrightarrow \mathrm{mobiusCenteredHalfCarry}\,G\,(2c{-}4) \le
@@ -584,15 +584,16 @@ two can work through this dichotomy.
 \subsection{257-universal: thirteen near misses}
 
 \begin{obs}[NM-01 / the single certificate socket] \ev{Lean}
-\lean{irrational\_erdosSupportSeries\_of\_weighted\_coeff\_certificates}{CertificateKernel.lean:9031}
+\lean{irrational\_erdosSupportSeries\_of\_weighted\_coeff\_certificates}{CertificateKernel.lean:9219}
 (carry variant \lean{}{CertificateKernel.lean:9053}).
 \textbf{Yields:} $\forall b\ge2,\ \forall A\subseteq\mathbb N$ (no infinitude, no structure
 hypothesis at all): if $\forall q>0\ \exists N,K,L,C$ with $K\le L$, $b^r \mid
 \mathrm{supportCoeff}\,A\,(N{+}r)$ for $r\in[1,K]$, $\sum_{r=K+1}^L \mathrm{supportCoeff}\,A\,(N{+}r)
 b^{L-r}\le C$, $\exists t,\ 0<\mathrm{supportCoeff}\,A\,(N{+}L{+}1{+}t)$, and $q(C{+}N{+}L{+}2)<b^L$
-— then $\mathrm{erdosSupportSeries}\,b\,A$ is irrational. Every landed \#257 family (full
-support, multiples, periodic, eventually periodic, residue class, odd, pairwise coprime,
-sunflower bouquet) factors through this one socket.
+— then $\mathrm{erdosSupportSeries}\,b\,A$ is irrational. The certificate-based \#257 families
+(full support, multiples, periodic, eventually periodic, residue class, odd, pairwise coprime,
+and the conditional sunflower bouquet) factor through this socket.  The stronger
+reciprocal-summable theorem uses the separate close-return route.
 \textbf{Mismatch (\texttt{hypothesis\_strength}):} already universally quantified over $A$ — the
 universal quantifier is \emph{not} the gap. The hypothesis \texttt{hcert} is a cofinal producer
 supplied only for named classes; the theorem's own docstring: ``certificate existence for
@@ -605,7 +606,7 @@ aggregate form.
 \end{obs}
 
 \begin{obs}[NM-02 / single-target to all-rational-targets, promotable] \ev{Lean}
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2583}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2582}
 (forward \lean{}{GreedyAchievementSet.lean:2482}; reverse
 \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}).
 \textbf{Yields:} $(1/2:\mathbb R)\in\mathrm{mersenneAchievementSet} \Leftrightarrow
@@ -677,9 +678,9 @@ producer.
 \end{obs}
 
 \begin{obs}[NM-06 / pairwise-coprime engine excludes the primes, but the value is known] \ev{Lean}\ev{Cited}
-\lean{irrational\_erdosSupportSeries\_pairwise\_coprime}{CertificateKernel.lean:10776}
+\lean{irrational\_erdosSupportSeries\_pairwise\_coprime}{CertificateKernel.lean:10964}
 (direct certificate producer
-\lean{exists\_weighted\_coeff\_certificates\_supportCoeff\_pairwise\_coprime}{CertificateKernel.lean:9902}).
+\lean{exists\_weighted\_coeff\_certificates\_supportCoeff\_pairwise\_coprime}{CertificateKernel.lean:10090}).
 \textbf{Yields:} for every $b\ge2$, an infinite pairwise-coprime support with
 summable reciprocal mass has irrational support series.
 \textbf{Method boundary:} the primes satisfy the other hypotheses but
@@ -726,7 +727,7 @@ petal decomposition), so the class can only be widened, never promoted to univer
 \end{obs}
 
 \begin{obs}[NM-08 / eventual periodicity, widest unconditional class, asymptotic obstruction] \ev{Lean}
-\lean{irrational\_erdosSupportSeries\_eventuallyPeriodic}{CertificateKernel.lean:11604} (engine
+\lean{irrational\_erdosSupportSeries\_eventuallyPeriodic}{CertificateKernel.lean:11792} (engine
 line 11262, producer line 11072; finite-perturbation transfer lines 9139, 9148).
 \textbf{Yields:} $\forall b\ge2\ \forall m{>}0\ \forall N_0$: $A$ infinite and $m$-periodic above
 $N_0$ $\Rightarrow$ irrational. Plus: the class of supports with irrational series is closed
@@ -751,9 +752,9 @@ statement, not a re-run.
 \end{obs}
 
 \begin{obs}[NM-09 / lcm-gap, far-sparse edge only] \ev{Lean}
-\lean{irrational\_erdosSum\_of\_lcm\_gap}{CertificateKernel.lean:5883} (instances
-\lean{irrational\_erdosSum\_factorial\_support}{CertificateKernel.lean:6035},
-\lean{irrational\_erdosSum\_two\_pow\_support}{CertificateKernel.lean:6059}).
+\lean{irrational\_erdosSum\_of\_lcm\_gap}{CertificateKernel.lean:6071} (instances
+\lean{irrational\_erdosSum\_factorial\_support}{CertificateKernel.lean:6223},
+\lean{irrational\_erdosSum\_two\_pow\_support}{CertificateKernel.lean:6247}).
 \textbf{Yields:} $\forall b\ge2,\ \forall a:\mathbb N\to\mathbb N$ StrictMono, $a_0\ge1$: if
 $a_k - \mathrm{lcm}\{a_0,\dots,a_{k-1}\}\to\infty$ then $\sum_k 1/(b^{a_k}-1)$ is irrational, via
 \lean{irrational\_of\_den\_mul\_abs\_sub\_tendsto\_zero}{CertificateKernel.lean:5371}.
@@ -839,8 +840,8 @@ full verification; this is recorded as a strong promotability hypothesis, not a 
 \end{obs}
 
 \begin{obs}[NM-13 / signed periodic dichotomy, sign machinery free but periodicity still required] \ev{Lean}
-\lean{irrational\_or\_bpow\_mul\_eq\_intCast\_intWeightedErdosSeries\_periodic}{CertificateKernel.lean:14175},
-\lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14583}
+\lean{irrational\_or\_bpow\_mul\_eq\_intCast\_intWeightedErdosSeries\_periodic}{CertificateKernel.lean:14363},
+\lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14771}
 (nonpos mirror line 14315).
 \textbf{Yields:} $\forall b\ge2\ \forall m{>}0\ \forall$ $\mathbb Z$-valued $m$-periodic weight
 $w$: irrational$(\sum w(a)/(b^a-1))$ $\vee$ $\exists k,z,\ b^k x=z$; the terminating branch closes
@@ -924,9 +925,9 @@ $1/2\in\mathrm{mersenneAchievementSet}$ directly) for the scope in which they ar
 any of them as an easier waypoint is a mistake this index exists to prevent.
 
 \begin{rem}[hbound is equivalent to the conclusion, greedy support only]
-\lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:834}
+\lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:833}
 and its packaged form
-\lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_upperBound}{HalfCarryReachability.lean:953}
+\lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_upperBound}{HalfCarryReachability.lean:952}
 take a hypothesis \texttt{hbound}: $\forall N,\ \mathrm{mobiusCenteredHalfCarry}\,A\,N \le
 2\sqrt N + 4$. For the canonical greedy support $A=\mathrm{greedyMersenneSupport}(1/2)$
 specifically, \texttt{hbound} is logically \emph{equivalent} to the theorem's own conclusion

@@ -62,12 +62,12 @@
         {
           "declaration": "ExactLocalMersenneHalfRow",
           "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
-          "line": 31
+          "line": 34
         },
         {
           "declaration": "CofinalExactLocalMersenneHalfRows",
           "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
-          "line": 38
+          "line": 41
         },
         {
           "declaration": "exactRowSixSupport",
@@ -213,14 +213,14 @@
     {
       "declaration": "ExactLocalMersenneHalfRow",
       "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
-      "line": 31,
+      "line": 34,
       "role": "concept",
       "statement_node": "exact_rows_are_floor_quotient_hits_and_cofinality_requires_no_witness_coherence"
     },
     {
       "declaration": "CofinalExactLocalMersenneHalfRows",
       "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
-      "line": 38,
+      "line": 41,
       "role": "concept",
       "statement_node": "exact_rows_are_floor_quotient_hits_and_cofinality_requires_no_witness_coherence"
     },

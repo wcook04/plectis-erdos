@@ -561,6 +561,20 @@ class ValidationSingleflightTests(unittest.TestCase):
         self.assertIn('command.append("--singleflight-worker")', dependency_builder)
         self.assertNotIn("paper-render", singleflight.ROSTER_VALIDATORS)
 
+    def test_paper_spec_binds_the_public_export_owner(self) -> None:
+        spec = singleflight.validator_spec(
+            kind="paper",
+            targets=[],
+            ref=None,
+            state_root=ROOT / ".lake" / "singleflight-test",
+        )
+        authority_paths = {
+            row["path"] for row in spec["inputs"]["relevant_sources"]
+        }
+        self.assertIn("scripts/export_paper_corpus.py", authority_paths)
+        self.assertIn("docs/papers/paper_registry.json", authority_paths)
+        self.assertIn("docs/papers/check_paper_corpus.py", authority_paths)
+
 
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(

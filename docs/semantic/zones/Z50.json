@@ -68,7 +68,7 @@
       "prior_art_note":"Corpus-specific seam specialisation and transport; no historical priority claim is made.",
       "scope_caveat":"The equivalence is an exact coordinate reformulation. Neither global producer is proved, and finite row checks do not discharge the universal late-row quantifier.",
       "confidence":"high",
-      "evidence":[{"declaration":"seamUpperResetCriticalBandEscape_iff","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":883}]
+      "evidence":[{"declaration":"seamUpperResetCriticalBandEscape_iff","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":1565}]
     },
     {
       "id":"critical_band_supply_conditionally_forces_half_membership",
@@ -83,15 +83,15 @@
       "prior_art_note":"Corpus-specific conditional transport; no historical priority claim is made.",
       "scope_caveat":"The producer is unproved. The theorem neither establishes half-membership nor refutes the universal statement in Erdős #257, and it proves no equidistribution statement.",
       "confidence":"high",
-      "evidence":[{"declaration":"half_mem_mersenneAchievementSet_of_upperResetCriticalBandEscape","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":896}]
+      "evidence":[{"declaration":"half_mem_mersenneAchievementSet_of_upperResetCriticalBandEscape","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":1578}]
     }
   ],
   "declaration_roles": [
     {"declaration":"CriticalDyadicBandIndex","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":33,"role":"concept","statement_node":"critical_dyadic_band_index_encodes_the_nearest_power_transition"},
     {"declaration":"dyadicBandEscape_iff_exists_critical","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":108,"role":"statement","statement_node":"universal_dyadic_band_escape_collapses_to_one_critical_gap"},
     {"declaration":"seamUpperResetCharge_le","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":131,"role":"statement","statement_node":"actual_upper_reset_charge_stays_below_the_top_dyadic_boundary"},
-    {"declaration":"seamUpperResetCriticalBandEscape_iff","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":883,"role":"statement","statement_node":"critical_band_supply_is_exactly_the_all_band_supply"},
-    {"declaration":"half_mem_mersenneAchievementSet_of_upperResetCriticalBandEscape","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":896,"role":"statement","statement_node":"critical_band_supply_conditionally_forces_half_membership"}
+    {"declaration":"seamUpperResetCriticalBandEscape_iff","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":1565,"role":"statement","statement_node":"critical_band_supply_is_exactly_the_all_band_supply"},
+    {"declaration":"half_mem_mersenneAchievementSet_of_upperResetCriticalBandEscape","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":1578,"role":"statement","statement_node":"critical_band_supply_conditionally_forces_half_membership"}
   ],
   "intra_zone_relations": [
     {"from":"universal_dyadic_band_escape_collapses_to_one_critical_gap","to":"critical_dyadic_band_index_encodes_the_nearest_power_transition","relation":"generated_by","basis":"The existential certificate in the iff uses exactly CriticalDyadicBandIndex."},

@@ -248,14 +248,35 @@ def main() -> int:
                 check=False,
             )
         require(first.returncode == 0 and last.returncode == 0, "projection batch failed")
+        projection_commands = {
+            tuple(
+                check_release.refresh_projections.projection_check_command(builder)
+            ): builder
+            for builder in check_release.refresh_projections.BUILDERS
+        }
         require(
-            sorted(Path(args[1]).relative_to(check_release.ROOT).as_posix() for args in dispatched)
+            sorted(projection_commands.get(args, f"unexpected:{args!r}") for args in dispatched)
             == sorted(check_release.refresh_projections.BUILDERS),
             "release projection batch did not dispatch each authoritative builder once",
         )
         require(
             len(dispatched) == len(check_release.refresh_projections.BUILDERS),
             "release projection result cache repeated a builder",
+        )
+        paper_projection_command = tuple(
+            check_release.refresh_projections.projection_check_command(
+                "scripts/export_paper_corpus.py"
+            )
+        )
+        direct_exporter_command = (
+            sys.executable,
+            str(check_release.ROOT / "scripts/export_paper_corpus.py"),
+            "--check",
+        )
+        require(
+            dispatched.count(paper_projection_command) == 1
+            and direct_exporter_command not in dispatched,
+            "release projection batch bypassed the public no-Pandoc paper checker",
         )
     finally:
         check_release._PROJECTION_CHECK_RESULTS = None
@@ -303,6 +324,11 @@ def main() -> int:
         len(check_release._PROJECTION_CHECK_RESULTS or {})
         == len(check_release.refresh_projections.BUILDERS),
         "publication-stage pool did not populate the projection result cache",
+    )
+    require(
+        combined_dispatches.count(paper_projection_command) == 2
+        and direct_exporter_command not in combined_dispatches,
+        "publication-stage projection bypassed the public no-Pandoc paper checker",
     )
     require(
         {

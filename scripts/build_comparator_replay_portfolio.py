@@ -66,6 +66,7 @@ class Portfolio:
     required_packages: tuple[str, ...]
     required_interfaces_by_package: dict[str, tuple[str, ...]]
     result_family_coverage: dict[str, Any]
+    registered_claim_coverage: dict[str, Any]
     legacy_package_record_assimilation: dict[str, Any] | None = None
     assurance_status: str = "replay_candidate"
 
@@ -73,6 +74,7 @@ class Portfolio:
 FAMILY_REGISTRY_AUTHORITY = (
     "docs/claims.json::external_verification_packet.review_matrix"
 )
+CLAIM_REGISTRY_AUTHORITY = "docs/claims.json::claims"
 CURRENT_COMPARATOR_ROLE = "current_comparator_package"
 REPLAY_CANDIDATE_ROLE = "aggregate_replay_candidate_package"
 
@@ -341,6 +343,319 @@ def compile_result_family_coverage(
     }
 
 
+def main_result_source_anchors(
+    claim: dict[str, Any], result: dict[str, Any]
+) -> list[dict[str, Any]]:
+    """Resolve an explicitly claim-bound main result to one exact source anchor.
+
+    The claim id establishes ownership.  The declaration check only verifies
+    that the result's named source really is one of that claim's registered
+    anchors; it is never used to infer a claim from a theorem leaf.
+    """
+
+    source = result.get("original_source")
+    declaration = result.get("original_declaration")
+    if not isinstance(source, str) or not isinstance(declaration, str):
+        return []
+    matches = [
+        anchor
+        for anchor in claim["declarations"]
+        if anchor["module"] == source
+        and (
+            declaration == anchor["name"]
+            or declaration.endswith(f".{anchor['name']}")
+        )
+    ]
+    return matches if len(matches) == 1 else []
+
+
+def validate_claim_transport_link(
+    claim_id: str,
+    claim: dict[str, Any],
+    package_id: object,
+    interface_name: object,
+    source_declarations: object,
+    interface_roster: dict[str, set[str]],
+) -> list[dict[str, Any]]:
+    """Validate one owner-authored link without guessing from theorem leaves."""
+
+    if (
+        not isinstance(package_id, str)
+        or not isinstance(interface_name, str)
+        or not isinstance(source_declarations, list)
+        or not source_declarations
+        or not all(isinstance(anchor, dict) for anchor in source_declarations)
+        or any(anchor not in claim.get("declarations", []) for anchor in source_declarations)
+    ):
+        raise PortfolioError(
+            f"claim transport uses an unregistered source anchor: {claim_id}"
+        )
+    if interface_name not in interface_roster.get(package_id, set()):
+        raise PortfolioError(
+            "claim transport names an absent Comparator package/interface: "
+            f"{claim_id}: {package_id}: {interface_name}"
+        )
+    return sorted(
+        source_declarations,
+        key=lambda row: (row["module"], row["line"], row["name"]),
+    )
+
+
+def compile_registered_claim_coverage(
+    claims: dict[str, Any],
+    current_comparator: dict[str, Any],
+    replay_packages: tuple[Package, ...],
+) -> dict[str, Any]:
+    """Account for every registered claim without inferring semantic coverage.
+
+    A transport says only that Comparator has a separately declared interface
+    linked to exact formal source anchors.  It does not say that the interface
+    captures the full informal claim, that Comparator ran, or that any review
+    or assurance was completed.
+    """
+
+    claim_rows = claims.get("claims")
+    packet = claims.get("external_verification_packet")
+    if not isinstance(claim_rows, list) or not isinstance(packet, dict):
+        raise PortfolioError("docs/claims.json lacks the registered claim owner")
+    main_results = packet.get("main_results")
+    if not isinstance(main_results, list):
+        raise PortfolioError("registered claim main_results are malformed")
+
+    claim_by_id: dict[str, dict[str, Any]] = {}
+    digest_rows: list[dict[str, Any]] = []
+    for claim in claim_rows:
+        if not isinstance(claim, dict):
+            raise PortfolioError("registered claim row is malformed")
+        claim_id = claim.get("id")
+        status = claim.get("status")
+        declarations = claim.get("declarations")
+        explicit = claim.get("comparator_transports", [])
+        if (
+            not isinstance(claim_id, str)
+            or not claim_id
+            or claim_id in claim_by_id
+            or not isinstance(status, str)
+            or not status
+            or not isinstance(declarations, list)
+            or not all(
+                isinstance(anchor, dict)
+                and isinstance(anchor.get("name"), str)
+                and isinstance(anchor.get("module"), str)
+                and type(anchor.get("line")) is int
+                and anchor["line"] > 0
+                for anchor in declarations
+            )
+            or not isinstance(explicit, list)
+        ):
+            raise PortfolioError(f"registered claim identity is malformed: {claim_id}")
+        claim_by_id[claim_id] = claim
+        digest_rows.append(
+            {
+                "id": claim_id,
+                "status": status,
+                "statement": claim.get("statement"),
+                "declarations": declarations,
+                "comparator_transports": explicit,
+            }
+        )
+
+    current_names = current_comparator.get("theorem_names")
+    current_challenge = current_comparator.get("challenge_module")
+    current_solution = current_comparator.get("solution_module")
+    if (
+        not isinstance(current_names, list)
+        or not all(isinstance(name, str) and name for name in current_names)
+        or not isinstance(current_challenge, str)
+        or not isinstance(current_solution, str)
+    ):
+        raise PortfolioError("current Comparator claim transport roster is malformed")
+    current_package_id = current_challenge.rsplit(".", 1)[0]
+    package_catalog: dict[str, dict[str, Any]] = {
+        current_package_id: {
+            "package_role": CURRENT_COMPARATOR_ROLE,
+            "challenge_module": current_challenge,
+            "solution_module": current_solution,
+            "interface_names": set(current_names),
+        }
+    }
+    for package in replay_packages:
+        package_catalog[package.name] = {
+            "package_role": REPLAY_CANDIDATE_ROLE,
+            "challenge_module": package.challenge_module,
+            "solution_module": package.solution_module,
+            "interface_names": set(package.theorem_names),
+        }
+
+    linked: dict[str, dict[tuple[str, str, str], dict[str, Any]]] = {
+        claim_id: {} for claim_id in claim_by_id
+    }
+    interface_roster = {
+        package_id: set(package["interface_names"])
+        for package_id, package in package_catalog.items()
+    }
+
+    def add_transport(
+        claim_id: str,
+        package_id: str,
+        interface_name: str,
+        source_declarations: list[dict[str, Any]],
+        link_source: str,
+    ) -> None:
+        claim = claim_by_id[claim_id]
+        anchors = validate_claim_transport_link(
+            claim_id,
+            claim,
+            package_id,
+            interface_name,
+            source_declarations,
+            interface_roster,
+        )
+        package = package_catalog[package_id]
+        anchor_key = json.dumps(anchors, sort_keys=True, separators=(",", ":"))
+        key = (package_id, interface_name, anchor_key)
+        existing = linked[claim_id].get(key)
+        if existing is None:
+            linked[claim_id][key] = {
+                "package_id": package_id,
+                "package_role": package["package_role"],
+                "challenge_module": package["challenge_module"],
+                "solution_module": package["solution_module"],
+                "interface_name": interface_name,
+                "source_declarations": anchors,
+                "link_sources": [link_source],
+            }
+        elif link_source not in existing["link_sources"]:
+            existing["link_sources"].append(link_source)
+            existing["link_sources"].sort()
+
+    for result in main_results:
+        if not isinstance(result, dict):
+            raise PortfolioError("registered claim main-result row is malformed")
+        claim_id = result.get("claim_id")
+        if claim_id is None:
+            continue
+        if not isinstance(claim_id, str) or claim_id not in claim_by_id:
+            raise PortfolioError(f"main result names unknown registered claim: {claim_id}")
+        anchors = main_result_source_anchors(claim_by_id[claim_id], result)
+        if not anchors:
+            raise PortfolioError(
+                f"claim-bound main result lacks one exact registered source anchor: {claim_id}"
+            )
+        wrapper = result.get("wrapper_declaration")
+        if not isinstance(wrapper, str):
+            raise PortfolioError(f"claim-bound main result lacks an interface: {claim_id}")
+        add_transport(
+            claim_id,
+            current_package_id,
+            wrapper,
+            anchors,
+            "main_result_claim_id",
+        )
+
+    for claim_id, claim in claim_by_id.items():
+        for transport in claim.get("comparator_transports", []):
+            if not isinstance(transport, dict):
+                raise PortfolioError(
+                    f"explicit Comparator transport is malformed: {claim_id}"
+                )
+            package_id = transport.get("package_id")
+            interface_name = transport.get("interface_name")
+            source_declarations = transport.get("source_declarations")
+            if (
+                not isinstance(package_id, str)
+                or not isinstance(interface_name, str)
+                or not isinstance(source_declarations, list)
+                or not all(isinstance(anchor, dict) for anchor in source_declarations)
+            ):
+                raise PortfolioError(
+                    f"explicit Comparator transport is malformed: {claim_id}"
+                )
+            add_transport(
+                claim_id,
+                package_id,
+                interface_name,
+                source_declarations,
+                "claim_owner_explicit",
+            )
+
+    rows: list[dict[str, Any]] = []
+    counts: Counter[str] = Counter()
+    missing_ids: list[str] = []
+    for claim_id, claim in claim_by_id.items():
+        transports = sorted(
+            linked[claim_id].values(),
+            key=lambda row: (row["package_id"], row["interface_name"]),
+        )
+        status = claim["status"]
+        declarations = claim["declarations"]
+        if transports:
+            if not declarations or status in {"open", "cited only"}:
+                raise PortfolioError(
+                    f"non-formal claim cannot have an executable transport: {claim_id}"
+                )
+            classification = "linked_transport"
+            reason = None
+        elif declarations:
+            classification = "missing_formal_transport"
+            reason = "No explicit exact Comparator transport link is registered for this formal claim."
+            missing_ids.append(claim_id)
+        elif status == "open":
+            classification = "open_non_executable"
+            reason = "The claim is open and has no formal declaration to transport."
+        elif status == "cited only":
+            classification = "cited_only_non_executable"
+            reason = "The claim is cited only and has no local formal declaration to transport."
+        else:
+            raise PortfolioError(
+                "declaration-free claim needs an explicit open or cited-only status: "
+                f"{claim_id}"
+            )
+        counts[classification] += 1
+        rows.append(
+            {
+                "claim_id": claim_id,
+                "claim_status": status,
+                "classification": classification,
+                "registered_declarations": declarations,
+                "transport_count": len(transports),
+                "transports": transports,
+                "reason": reason,
+                "semantic_coverage_status": "not_assessed_by_transport_link",
+                "executed_comparator_assurance": "not_asserted",
+            }
+        )
+
+    digest_payload = json.dumps(
+        digest_rows,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return {
+        "schema": "plectis.comparator-registered-claim-coverage/1",
+        "registry_authority": CLAIM_REGISTRY_AUTHORITY,
+        "registry_digest": "sha256:" + hashlib.sha256(digest_payload).hexdigest(),
+        "registry_digest_definition": (
+            "sha256 of canonical JSON rows containing each registered claim id, "
+            "status, statement, exact declaration anchors, and explicit transports"
+        ),
+        "registered_claim_count": len(rows),
+        "classified_claim_count": len(rows),
+        "classification_counts": dict(sorted(counts.items())),
+        "formal_claim_count": sum(bool(row["registered_declarations"]) for row in rows),
+        "linked_transport_claim_count": counts["linked_transport"],
+        "missing_formal_transport_count": len(missing_ids),
+        "missing_formal_claim_ids": sorted(missing_ids),
+        "complete_formal_transport_coverage": not missing_ids,
+        "claims": rows,
+        "boundary": (
+            "A linked transport records an exact claim-owner edge to a separately "
+            "declared Comparator interface. It does not establish full informal-claim "
+            "semantic coverage, a Comparator execution, external review, assurance, "
+            "novelty, significance, or publication acceptance."
+        ),
+    }
 def membership_payload(root: Path = ROOT) -> dict[str, Any]:
     path = root / "verification" / "comparator-replay-membership.json"
     try:
@@ -680,12 +995,18 @@ def build_portfolio(root: Path = ROOT) -> Portfolio:
         current_comparator,
         package_tuple,
     )
+    registered_claim_coverage = compile_registered_claim_coverage(
+        claims,
+        current_comparator,
+        package_tuple,
+    )
     return Portfolio(
         package_tuple,
         tuple(all_theorems),
         required_packages,
         required_interfaces,
         result_family_coverage,
+        registered_claim_coverage,
         legacy_assimilation,
     )
 
@@ -744,6 +1065,7 @@ def render_membership(portfolio: Portfolio) -> str:
             "package."
         ),
         "result_family_coverage": portfolio.result_family_coverage,
+        "registered_claim_coverage": portfolio.registered_claim_coverage,
     }
     if portfolio.legacy_package_record_assimilation is not None:
         payload["legacy_package_record_assimilation"] = (
@@ -767,10 +1089,31 @@ def expected_outputs(portfolio: Portfolio) -> dict[Path, str]:
     }
 
 
+def write_changed_outputs(outputs: dict[Path, str]) -> int:
+    """Write only changed projections so equal Lean outputs keep their mtimes."""
+
+    changed = 0
+    for path, content in outputs.items():
+        if path.is_file() and path.read_text(encoding="utf-8") == content:
+            continue
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+        changed += 1
+    return changed
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--check", action="store_true", help="validate inputs and fail if generated outputs are stale"
+    )
+    parser.add_argument(
+        "--require-complete-claims",
+        action="store_true",
+        help=(
+            "read-only strict mode: fail unless every declaration-backed registered "
+            "claim has an explicit exact linked Comparator transport"
+        ),
     )
     args = parser.parse_args(argv)
     try:
@@ -780,7 +1123,12 @@ def main(argv: list[str] | None = None) -> int:
         print(f"comparator replay candidate error: {exc}", file=sys.stderr)
         return 1
 
-    if args.check:
+    claim_coverage = portfolio.registered_claim_coverage
+    incomplete_claim_coverage = args.require_complete_claims and not claim_coverage[
+        "complete_formal_transport_coverage"
+    ]
+
+    if args.check or args.require_complete_claims:
         stale = [
             path.relative_to(ROOT).as_posix()
             for path, expected in outputs.items()
@@ -793,19 +1141,28 @@ def main(argv: list[str] | None = None) -> int:
                 + "; run python3 scripts/build_comparator_replay_portfolio.py"
             )
             return 1
+        if incomplete_claim_coverage:
+            print(
+                "Comparator registered-claim coverage incomplete: "
+                f"{claim_coverage['missing_formal_transport_count']} formal claim(s) "
+                "lack explicit exact linked transports",
+                file=sys.stderr,
+            )
+            return 1
         print(
             "Comparator replay candidate current: "
             f"{len(portfolio.packages)} packages, {len(portfolio.theorem_names)} interfaces; "
+            f"claims={claim_coverage['linked_transport_claim_count']} linked/"
+            f"{claim_coverage['missing_formal_transport_count']} missing formal; "
             "no Comparator run or receipt asserted"
         )
         return 0
 
-    for path, content in outputs.items():
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(content, encoding="utf-8")
+    changed_outputs = write_changed_outputs(outputs)
     print(
         "wrote Comparator replay candidate: "
-        f"{len(portfolio.packages)} packages, {len(portfolio.theorem_names)} interfaces; "
+        f"{len(portfolio.packages)} packages, {len(portfolio.theorem_names)} interfaces, "
+        f"{changed_outputs} changed output(s); "
         "no Comparator run or receipt asserted"
     )
     return 0

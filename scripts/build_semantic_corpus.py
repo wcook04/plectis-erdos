@@ -71,7 +71,9 @@ OUTPUT = ROOT / "docs" / "semantic_corpus.json"
 LOCAL_CHECK_RECEIPT = ROOT / ".lake" / "aiw" / "semantic_corpus_check.json"
 TRACKED_CHECK_RECEIPT = ROOT / "docs" / "semantic_corpus_check.json"
 CHECK_RECEIPT_SCHEMA = "erdos249257-semantic-corpus-check/1"
-PROBLEM_INDEX = ROOT / "docs" / "problems.json"
+# Only authored problem identities are needed here. Reading the generated
+# problem index creates a cycle through paper export and the TeX census below.
+PROBLEM_REGISTRY = ROOT / "docs" / "problem_index_source.json"
 RESULTS = ROOT / "docs" / "RESULTS.md"
 TRUTH_AUDIT = ROOT / "docs" / "TRUTH_AUDIT.md"
 COLD_CLONE_PAPER = ROOT / "paper" / "cold-clone-to-proof-receipt.tex"
@@ -144,6 +146,8 @@ def safe_read_text(path: Path) -> str:
 def safe_write_text(path: Path, text: str) -> None:
     """Write a generated projection without following a replacement symlink."""
     candidate = _safe_semantic_path(path)
+    if candidate.exists() and safe_read_text(candidate) == text:
+        return
     flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
     flags |= getattr(os, "O_CLOEXEC", 0)
     flags |= getattr(os, "O_NOFOLLOW", 0)
@@ -219,7 +223,7 @@ DECLARATION_ROLES = (
 
 INDEXED_PROBLEMS = tuple(
     str(row["erdos_number"])
-    for row in json.loads(safe_read_text(PROBLEM_INDEX)).get(
+    for row in json.loads(safe_read_text(PROBLEM_REGISTRY)).get(
         "problems", []
     )
 )
@@ -273,7 +277,7 @@ def semantic_input_paths() -> list[Path]:
         Path(__file__).resolve(),
         ROOT / "scripts" / "semantic_family_compiler.py",
         ROOT / "scripts" / "semantic_review.py",
-        PROBLEM_INDEX,
+        PROBLEM_REGISTRY,
     ]
     return sorted(
         (path for path in [*fixed, *zone_files(), *relation_files()] if path.is_file()),

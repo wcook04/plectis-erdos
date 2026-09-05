@@ -573,22 +573,22 @@
         {
           "declaration": "greedyHalfFrozenMargin_succ",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 1054
+          "line": 1052
         },
         {
           "declaration": "greedyHalfFrozenMargin_cast_eq_pow_mul_window_sub_carry",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 1065
+          "line": 1063
         },
         {
           "declaration": "greedyHalfFrozenMargin_nonneg_iff_window_covers",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 1090
+          "line": 1088
         },
         {
           "declaration": "greedyHalfFrozenMargin_eq_actual_skip_margin",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 1120
+          "line": 1118
         }
       ],
       "concepts": [
@@ -613,27 +613,27 @@
         {
           "declaration": "futureSkipCapacity_factorization",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 228
+          "line": 227
         },
         {
           "declaration": "finiteCoeffWindow_covers_iff_terminal_le_skipCapacity",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 299
+          "line": 298
         },
         {
           "declaration": "futureSkipCapacityMargin_eq_reducedTailTax",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 361
+          "line": 360
         },
         {
           "declaration": "futureSkipCoverage_persistent",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 468
+          "line": 467
         },
         {
           "declaration": "finiteCoeffWindow_covers_of_one_future_skip",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 509
+          "line": 508
         }
       ],
       "concepts": [
@@ -658,17 +658,17 @@
         {
           "declaration": "scaledHalfResidual_le_one_of_finiteCoeffWindow",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 128
+          "line": 127
         },
         {
           "declaration": "rawHalfSlack_nonneg_of_finiteCoeffWindow",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 145
+          "line": 144
         },
         {
           "declaration": "scaledPrefixHalfResidual_le_one_of_terminal_le_skipCapacity",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 527
+          "line": 526
         }
       ],
       "concepts": [
@@ -695,7 +695,7 @@
         {
           "declaration": "exists_greedyHalfFrozenMargin_nonneg_iff_excess_neg",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 1229
+          "line": 1227
         }
       ],
       "concepts": [
@@ -719,7 +719,7 @@
         {
           "declaration": "half_mem_mersenneAchievementSet_of_governedFrozenMarginProducer",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 1275
+          "line": 1272
         },
         {
           "declaration": "half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative",
@@ -868,12 +868,12 @@
         {
           "declaration": "halfStripAdmissible_residual_eq",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 55
+          "line": 54
         },
         {
           "declaration": "halfStripAdmissible_abs_residual_le",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 549
+          "line": 548
         },
         {
           "declaration": "binaryCoeffTail_supportCoeff_lt_two_natSqrt_add_three",
@@ -902,7 +902,7 @@
         {
           "declaration": "preFeedbackGaugeSymmetry",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 605
+          "line": 604
         }
       ],
       "concepts": [
@@ -925,12 +925,12 @@
         {
           "declaration": "firstFeedbackChildCarries",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 674
+          "line": 673
         },
         {
           "declaration": "firstFeedbackChildCarries_of_preFeedbackGauge",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 718
+          "line": 717
         }
       ],
       "concepts": [
@@ -953,22 +953,22 @@
         {
           "declaration": "fixedCoeffNumeratorReachable_iff_endpoint",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 762
+          "line": 761
         },
         {
           "declaration": "firstWrap_rawEndpoint_decomposition",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 776
+          "line": 775
         },
         {
           "declaration": "actualFirstWrap_hole_eq_leftZeroCarry_add_one",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 786
+          "line": 785
         },
         {
           "declaration": "evenSeam_fullIntegerStrip_iff_escape",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 824
+          "line": 823
         }
       ],
       "concepts": [
@@ -992,12 +992,12 @@
         {
           "declaration": "greedyHalf_rankThree_prefix_fixture",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 837
+          "line": 836
         },
         {
           "declaration": "rankThree_rawSafe_but_seamNotEscaped",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 862
+          "line": 860
         }
       ],
       "concepts": [
@@ -1021,12 +1021,12 @@
         {
           "declaration": "primitivePrefix_greedyMersenneSupport_eq_prefixRat",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 915
+          "line": 913
         },
         {
           "declaration": "primitivePrefix_greedyHalf_eq_halfGreedyPrefixSupport_of_skip",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 968
+          "line": 966
         }
       ],
       "concepts": [
@@ -1352,12 +1352,12 @@
         {
           "declaration": "exists_lowerPrefix_wordPulse_eq_of_largestFalse_late",
           "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
-          "line": 85
+          "line": 110
         },
         {
           "declaration": "rowPulse_boundary_of_late_firstCrossing",
           "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
-          "line": 150
+          "line": 175
         }
       ],
       "concepts": [
@@ -3123,413 +3123,413 @@
     {
       "declaration": "wordSupport_subset_Iic",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 27,
+      "line": 26,
       "role": "representation",
       "statement_node": "finite_shadow_square_root_strip"
     },
     {
       "declaration": "wordSupport_inter_Iic",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 34,
+      "line": 33,
       "role": "representation",
       "statement_node": "finite_shadow_square_root_strip"
     },
     {
       "declaration": "one_not_mem_wordSupport_of_admissible",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 40,
+      "line": 39,
       "role": "substrate",
       "statement_node": "finite_shadow_square_root_strip"
     },
     {
       "declaration": "halfStripAdmissible_residual_eq",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 55,
+      "line": 54,
       "role": "statement",
       "statement_node": "finite_shadow_square_root_strip"
     },
     {
       "declaration": "finiteCoeffWindow",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 72,
+      "line": 71,
       "role": "concept",
       "statement_node": "finite_window_reduction_of_raw_half_residual"
     },
     {
       "declaration": "one_sub_pow_mul_halfResidual_eq_tail_sub_centered",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 80,
+      "line": 79,
       "role": "substrate",
       "statement_node": "finite_window_reduction_of_raw_half_residual"
     },
     {
       "declaration": "finiteCoeffWindow_le_binaryCoeffTail",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 97,
+      "line": 96,
       "role": "substrate",
       "statement_node": "finite_window_reduction_of_raw_half_residual"
     },
     {
       "declaration": "scaledHalfResidual_le_one_of_finiteCoeffWindow",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 128,
+      "line": 127,
       "role": "statement",
       "statement_node": "finite_window_reduction_of_raw_half_residual"
     },
     {
       "declaration": "rawHalfSlack_nonneg_of_finiteCoeffWindow",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 145,
+      "line": 144,
       "role": "statement",
       "statement_node": "finite_window_reduction_of_raw_half_residual"
     },
     {
       "declaration": "finiteCoeffWindowNumerator",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 160,
+      "line": 159,
       "role": "concept",
       "statement_node": "frozen_margin_integer_recurrence"
     },
     {
       "declaration": "futureSkipCapacity",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 169,
+      "line": 168,
       "role": "concept",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "finiteCoeffWindow_eq_numerator_div_pow",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 180,
+      "line": 179,
       "role": "representation",
       "statement_node": "frozen_margin_integer_recurrence"
     },
     {
       "declaration": "binaryCoeffTail_eq_finiteCoeffWindow_add_shiftedTail",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 203,
+      "line": 202,
       "role": "substrate",
       "statement_node": "finite_window_reduction_of_raw_half_residual"
     },
     {
       "declaration": "futureSkipCapacity_factorization",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 228,
+      "line": 227,
       "role": "statement",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "finiteCoeffWindowNumerator_covers_iff_terminal_le_skipCapacity",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 273,
+      "line": 272,
       "role": "statement",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "finiteCoeffWindow_covers_iff_terminal_le_skipCapacity",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 299,
+      "line": 298,
       "role": "statement",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "ReducedTailGapCoordinates",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 332,
+      "line": 331,
       "role": "concept",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "halfGreedyPrefix_reducedTailGapCoordinates",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 340,
+      "line": 339,
       "role": "substrate",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "futureSkipCapacityMargin_eq_reducedTailTax",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 361,
+      "line": 360,
       "role": "statement",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "futureSkipCoverage_iff_reducedTailTax",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 416,
+      "line": 415,
       "role": "statement",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "futureSkipCoverage_succ",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 443,
+      "line": 442,
       "role": "substrate",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "futureSkipCoverage_persistent",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 468,
+      "line": 467,
       "role": "statement",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "futureSkipWeight_le_capacity_of_not_mem",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 484,
+      "line": 483,
       "role": "substrate",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "finiteCoeffWindow_covers_of_one_future_skip",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 509,
+      "line": 508,
       "role": "statement",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "scaledPrefixHalfResidual_le_one_of_terminal_le_skipCapacity",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 527,
+      "line": 526,
       "role": "statement",
       "statement_node": "finite_window_reduction_of_raw_half_residual"
     },
     {
       "declaration": "halfStripAdmissible_abs_residual_le",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 549,
+      "line": 548,
       "role": "statement",
       "statement_node": "finite_shadow_square_root_strip"
     },
     {
       "declaration": "preFeedbackGaugeSymmetry",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 605,
+      "line": 604,
       "role": "statement",
       "statement_node": "pre_feedback_gauge_symmetry_barrier"
     },
     {
       "declaration": "supportCoeff_insert_divisor",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 642,
+      "line": 641,
       "role": "substrate",
       "statement_node": "first_feedback_child_carry_algebra"
     },
     {
       "declaration": "supportCoeff_insert_self",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 660,
+      "line": 659,
       "role": "substrate",
       "statement_node": "first_feedback_child_carry_algebra"
     },
     {
       "declaration": "firstFeedbackChildCarries",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 674,
+      "line": 673,
       "role": "statement",
       "statement_node": "first_feedback_child_carry_algebra"
     },
     {
       "declaration": "firstFeedbackChildCarries_of_preFeedbackGauge",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 718,
+      "line": 717,
       "role": "statement",
       "statement_node": "first_feedback_child_carry_algebra"
     },
     {
       "declaration": "FixedCoeffNumeratorReachable",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 746,
+      "line": 745,
       "role": "concept",
       "statement_node": "seam_hole_scalar_normal_forms"
     },
     {
       "declaration": "fixedCoeffCylinder_endpoint",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 753,
+      "line": 752,
       "role": "substrate",
       "statement_node": "seam_hole_scalar_normal_forms"
     },
     {
       "declaration": "fixedCoeffNumeratorReachable_iff_endpoint",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 762,
+      "line": 761,
       "role": "statement",
       "statement_node": "seam_hole_scalar_normal_forms"
     },
     {
       "declaration": "firstWrap_rawEndpoint_decomposition",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 776,
+      "line": 775,
       "role": "statement",
       "statement_node": "seam_hole_scalar_normal_forms"
     },
     {
       "declaration": "actualFirstWrap_hole_eq_leftZeroCarry_add_one",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 786,
+      "line": 785,
       "role": "statement",
       "statement_node": "seam_hole_scalar_normal_forms"
     },
     {
       "declaration": "hole_in_strip_iff_shiftedCarry_in_strip",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 803,
+      "line": 802,
       "role": "representation",
       "statement_node": "seam_hole_scalar_normal_forms"
     },
     {
       "declaration": "hole_avoids_integerStrip_iff",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 810,
+      "line": 809,
       "role": "representation",
       "statement_node": "seam_hole_scalar_normal_forms"
     },
     {
       "declaration": "evenSeam_fullIntegerStrip_iff_escape",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 824,
+      "line": 823,
       "role": "statement",
       "statement_node": "seam_hole_scalar_normal_forms"
     },
     {
       "declaration": "greedyHalf_rankThree_prefix_fixture",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 837,
+      "line": 836,
       "role": "finite_instance",
       "statement_node": "raw_dyadic_safety_does_not_force_seam_escape"
     },
     {
       "declaration": "rankThree_rawSafe_but_seamNotEscaped",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 862,
+      "line": 860,
       "role": "finite_instance",
       "statement_node": "raw_dyadic_safety_does_not_force_seam_escape"
     },
     {
       "declaration": "primitivePrefix_greedyMersenneSupport_eq_prefixRat",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 915,
+      "line": 913,
       "role": "statement",
       "statement_node": "real_to_rational_greedy_prefix_bridge"
     },
     {
       "declaration": "primitivePrefix_greedyMersenneSupport_succ_eq_of_skip",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 948,
+      "line": 946,
       "role": "statement",
       "statement_node": "real_to_rational_greedy_prefix_bridge"
     },
     {
       "declaration": "primitivePrefix_greedyHalf_eq_halfGreedyPrefixSupport_of_skip",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 968,
+      "line": 966,
       "role": "statement",
       "statement_node": "real_to_rational_greedy_prefix_bridge"
     },
     {
       "declaration": "greedyHalf_futureSkipCapacityMargin_eq_reducedTailTax",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 981,
+      "line": 979,
       "role": "substrate",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "greedyHalf_futureSkipCoverage_iff_reducedTailTax",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1009,
+      "line": 1007,
       "role": "substrate",
       "statement_node": "future_skip_capacity_factorization"
     },
     {
       "declaration": "greedyHalfFrozenMargin",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1039,
+      "line": 1037,
       "role": "concept",
       "statement_node": "frozen_margin_integer_recurrence"
     },
     {
       "declaration": "greedyHalfFrozenMargin_zero",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1046,
+      "line": 1044,
       "role": "representation",
       "statement_node": "frozen_margin_integer_recurrence"
     },
     {
       "declaration": "greedyHalfFrozenMargin_succ",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1054,
+      "line": 1052,
       "role": "statement",
       "statement_node": "frozen_margin_integer_recurrence"
     },
     {
       "declaration": "greedyHalfFrozenMargin_cast_eq_pow_mul_window_sub_carry",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1065,
+      "line": 1063,
       "role": "statement",
       "statement_node": "frozen_margin_integer_recurrence"
     },
     {
       "declaration": "greedyHalfFrozenMargin_nonneg_iff_window_covers",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1090,
+      "line": 1088,
       "role": "statement",
       "statement_node": "frozen_margin_integer_recurrence"
     },
     {
       "declaration": "greedyHalfFrozenMargin_nonneg_succ",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1112,
+      "line": 1110,
       "role": "statement",
       "statement_node": "frozen_margin_integer_recurrence"
     },
     {
       "declaration": "greedyHalfFrozenMargin_eq_actual_skip_margin",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1120,
+      "line": 1118,
       "role": "statement",
       "statement_node": "frozen_margin_integer_recurrence"
     },
     {
       "declaration": "greedyHalfFrozenMargin_nonneg_iff_reducedTailTax",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1149,
+      "line": 1147,
       "role": "substrate",
       "statement_node": "frozen_margin_integer_recurrence"
     },
     {
       "declaration": "tendsto_finiteCoeffWindow_atTop",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1167,
+      "line": 1165,
       "role": "substrate",
       "statement_node": "frozen_margin_first_passage_iff_negative_dyadic_excess"
     },
     {
       "declaration": "exists_greedyHalfFrozenMargin_nonneg_of_excess_neg",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1198,
+      "line": 1196,
       "role": "substrate",
       "statement_node": "frozen_margin_first_passage_iff_negative_dyadic_excess"
     },
     {
       "declaration": "exists_greedyHalfFrozenMargin_nonneg_iff_excess_neg",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1229,
+      "line": 1227,
       "role": "statement",
       "statement_node": "frozen_margin_first_passage_iff_negative_dyadic_excess"
     },
     {
       "declaration": "HalfGreedyGovernedFrozenMarginProducer",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1267,
+      "line": 1265,
       "role": "concept",
       "statement_node": "half_membership_from_frozen_margin_sockets"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_governedFrozenMarginProducer",
       "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-      "line": 1275,
+      "line": 1272,
       "role": "statement",
       "statement_node": "half_membership_from_frozen_margin_sockets"
     },
@@ -4292,35 +4292,35 @@
     {
       "declaration": "exists_lowerPrefix_wordPulse_eq_of_largestFalse_late",
       "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
-      "line": 85,
+      "line": 110,
       "role": "statement",
       "statement_node": "late_boundary_pulse_normalisation"
     },
     {
       "declaration": "late_firstCrossing_boundary",
       "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
-      "line": 115,
+      "line": 140,
       "role": "substrate",
       "statement_node": "late_boundary_pulse_normalisation"
     },
     {
       "declaration": "rowPulse_eq_two_of_boundary_one",
       "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
-      "line": 123,
+      "line": 148,
       "role": "substrate",
       "statement_node": "late_boundary_pulse_normalisation"
     },
     {
       "declaration": "rowPulse_eq_one_of_boundary_two",
       "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
-      "line": 137,
+      "line": 162,
       "role": "substrate",
       "statement_node": "late_boundary_pulse_normalisation"
     },
     {
       "declaration": "rowPulse_boundary_of_late_firstCrossing",
       "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
-      "line": 150,
+      "line": 175,
       "role": "statement",
       "statement_node": "late_boundary_pulse_normalisation"
     },

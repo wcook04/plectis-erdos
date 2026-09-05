@@ -3,7 +3,7 @@
   "artifact_role": "paper_sigil_to_lean_module_navigation_crosswalk",
   "authority_posture": "generated_navigation_projection_not_proof_authority",
   "heuristic": "Each CamelCase component contributes at most its first three characters.",
-  "alias_count": 126,
+  "alias_count": 127,
   "aliases": [
     {
       "sigil": "ActForResPro",
@@ -14,6 +14,11 @@
       "sigil": "AdeHeiObs",
       "module": "Erdos249257/AdelicHeightObstruction.lean",
       "path": "Erdos249257/AdelicHeightObstruction.lean"
+    },
+    {
+      "sigil": "AllBasRecSupIrr",
+      "module": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+      "path": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean"
     },
     {
       "sigil": "BooMobCar",

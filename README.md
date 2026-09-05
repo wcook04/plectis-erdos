@@ -3,8 +3,6 @@
 
 # Plectis: a public frontier across eight open Erdős problems
 
-![System map: pipeline, problem-sized Lean worlds, public artifacts, and the clone-work-return-credit loop](.github/system-map.png)
-
 Plectis applies AI search, computation, ordinary mathematics, and Lean to eight
 long-standing open Erdős problems: 68, 243, 249, 251, 257, 269, 1041, and 1049.
 **All eight problems remain open.** This repository does not solve any of them.
@@ -14,8 +12,31 @@ that another researcher can continue.
 Each problem exposes checked results, failed routes, and its open obligation.
 Lean checks formal statements, not intended meaning, novelty, or significance.
 
-Large-language-model agents drafted prose, proofs, and software. Will Cook
-reviewed the claims and sources and is responsible for the release.
+Large-language-model agents drafted prose, proofs, and software. Recorded model
+reviews are source-bound best attempts at mathematical interpretation, not
+independent specialist review. Will Cook maintains the project and is
+responsible for the release.
+
+## A result to start with
+
+For every integer base **b ≥ 2** and every infinite set **A of positive integers**
+with **∑ₐ∈A 1/a < ∞**, the series **∑ₐ∈A 1/(bᵃ − 1) is irrational**.
+The support need not be pairwise coprime: the theorem includes, for example,
+the squares. Its proof uses close returns of an integer-valued orbit, with
+summable reciprocal mass controlling the tail.
+
+Read the [formal theorem](Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395)
+and the [#257 paper](erdos-257-mersenne-support-subseries.pdf).
+The universal problem remains open in the reciprocal-divergent regime;
+some supports in that regime, including full support, are already known to
+give irrational series. Novelty and priority of this result are unassessed.
+
+The rest of the corpus includes exact reductions, finite denominator
+exclusions, and counterexamples to proposed proof mechanisms. Each is useful
+for a different reason; the [result guide](docs/RESULTS.md) keeps their
+conclusions and remaining obligations separate.
+
+![System map: pipeline, problem-sized Lean worlds, public artifacts, and the clone-work-return-credit loop](.github/system-map.png)
 
 If you solve one, the result and credit are yours. If this repository or
 Plectis materially helped, cite the release and say so. If useful, star or share
@@ -33,24 +54,24 @@ The proof build needs `elan`; install it from the
 
 ```bash
 # Quick proof, full Lean source, or reader files: choose one manifest
-git clone --depth=1 --filter=blob:none --single-branch --no-checkout https://github.com/wcook04/plectis-lean-erdos249-257.git
-git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-quick-sparse-checkout && git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-quick-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
-git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-sparse-checkout && git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
-git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/reader-sparse-checkout && git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin
-git -C plectis-lean-erdos249-257 checkout
+git clone --depth=1 --filter=blob:none --single-branch --no-checkout https://github.com/wcook04/plectis-erdos.git
+git -C plectis-erdos cat-file -e HEAD:scripts/lean-quick-sparse-checkout && git -C plectis-erdos show HEAD:scripts/lean-quick-sparse-checkout | git -C plectis-erdos sparse-checkout set --no-cone --stdin
+git -C plectis-erdos cat-file -e HEAD:scripts/lean-sparse-checkout && git -C plectis-erdos show HEAD:scripts/lean-sparse-checkout | git -C plectis-erdos sparse-checkout set --no-cone --stdin
+git -C plectis-erdos cat-file -e HEAD:scripts/reader-sparse-checkout && git -C plectis-erdos show HEAD:scripts/reader-sparse-checkout | git -C plectis-erdos sparse-checkout set --no-cone --stdin
+git -C plectis-erdos checkout
 
 # Complete current corpus, fetch its pinned history, then inspect one claim
-git clone --depth=1 --filter=blob:none --single-branch https://github.com/wcook04/plectis-lean-erdos249-257.git plectis-current
+git clone --depth=1 --filter=blob:none --single-branch https://github.com/wcook04/plectis-erdos.git plectis-current
 cd plectis-current
 git fetch --filter=blob:none --unshallow origin main
 python3 scripts/verify_claims.py --claim eb_full_support
 cd ..
 
 # Blobless history for release validation
-git clone --filter=blob:none --single-branch https://github.com/wcook04/plectis-lean-erdos249-257.git plectis-release
+git clone --filter=blob:none --single-branch https://github.com/wcook04/plectis-erdos.git plectis-release
 
 # In the Lean-source checkout, run one bounded proof build
-cd plectis-lean-erdos249-257
+cd plectis-erdos
 python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.PeriodMultipleEscape
 ```
 
@@ -88,9 +109,11 @@ No unbounded producer is proved.
 [**#251**](erdos-251-prime-gap-dyadic-series.pdf) checks the prime-gap identity
 and a tail-shift equivalence. The concrete prime-tail bridge remains open.
 
-[**#257**](erdos-257-mersenne-support-subseries.pdf) checks full support,
-finite-period noncollapse, and the Mersenne achievement set's topology and
-measure. The universal statement and the `1/2` and `1/21` targets remain open.
+[**#257**](erdos-257-mersenne-support-subseries.pdf) proves irrationality for
+every infinite reciprocal-summable support at every integer base at least two.
+It also develops finite-period noncollapse and the Mersenne achievement set's
+topology and measure. The universal statement and the `1/2` and `1/21` targets
+remain open.
 
 [**#269**](erdos-269-three-prime-running-lcm.pdf) records a two-prime
 transcendence argument. **This is not first and not formalised.** Steve Fan
@@ -107,8 +130,11 @@ irrationality result, and the primitive construction remains open.
 
 ## What the checks establish
 
-Comparator checks nineteen proof-bearing modules against separately declared
+Comparator compares proof-bearing modules against separately declared
 statements and a fixed axiom budget; an altered statement must be rejected.
+The portfolio is derived from registered packages rather than a frozen count.
+Configuration is not execution: only a green receipt for an exact commit
+licenses the description **Comparator-checked**.
 [`formalization.yaml`](formalization.yaml) records each selected result's source,
 boundary, `sorry` count, and axioms. The
 [verification packet](docs/EXTERNAL_VERIFICATION.md) covers all eight problem
@@ -152,8 +178,9 @@ An agent arriving cold starts at [`AGENTS.override.md`](AGENTS.override.md).
 [The Agent Workbench](docs/AGENT_WORKBENCH.md) keeps machine routing and kernel
 probes out of the human reading path; only kernel receipts assert.
 
-The repository began with #249 and #257 and keeps that name so old citations
-resolve. The [joint #249/#257 manuscript](erdos249-257-main-paper.pdf) and the
+The repository began with #249 and #257; historical module names and citation
+anchors remain usable in the broader Plectis corpus.
+The [joint #249/#257 manuscript](erdos249-257-main-paper.pdf) and the
 two claim-bounded reasoning surfaces
 ([#249](erdos249-totient-reasoning-surface.pdf),
 [#257](erdos257-mersenne-reasoning-surface.pdf)) are kept
@@ -178,15 +205,15 @@ relicense the research corpus or transfer credit for participants' mathematics.
 <!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
 ## Corpus at a glance
 
-The layer a mathematician should judge is small: 130 curated claim records in 30 contribution families, reaching Lean source through 404 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem.
+The layer a mathematician should judge is small: 131 curated claim records in 30 contribution families, reaching Lean source through 405 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem.
 
-The rest is engineering inventory. About 93% of the 153,671 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 92% of the 154,855 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
-| Lean modules (the two library roots) | 1,058 |
-| Formal results and supporting lemmas | 151,397 |
-| Curated claim records | 130 |
+| Lean modules (the two library roots) | 1,102 |
+| Formal results and supporting lemmas | 152,322 |
+| Curated claim records | 131 |
 | Contribution families | 30 |
 
 Generated shards are counted as formal source and never as separate

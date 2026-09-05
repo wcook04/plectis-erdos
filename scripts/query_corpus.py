@@ -2170,6 +2170,25 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
             "projection_check": "python3 scripts/build_comparator_replay_portfolio.py --check",
             "boundary": "Configured membership is not execution evidence. The query does not revalidate source projection freshness; run the owner check before replay.",
         }
+        claim_coverage = replay_membership.get("registered_claim_coverage")
+        replay_portfolio["registered_claim_coverage"] = (
+            {
+                key: claim_coverage[key]
+                for key in (
+                    "registry_authority", "registry_digest",
+                    "registered_claim_count", "classified_claim_count",
+                    "classification_counts", "formal_claim_count",
+                    "linked_transport_claim_count", "missing_formal_transport_count",
+                    "missing_formal_claim_ids", "complete_formal_transport_coverage",
+                    "boundary",
+                )
+            }
+            if isinstance(claim_coverage, dict)
+            else {"status": "not_present_in_this_projection"}
+        )
+        replay_portfolio["complete_claim_transport_check"] = (
+            "python3 scripts/build_comparator_replay_portfolio.py --require-complete-claims"
+        )
     palomar_owner = "docs/PALOMAR_POLICY_RECONCILIATION.json"
     if (ROOT / palomar_owner).is_file():
         reconciliation = load(palomar_owner)

@@ -1699,9 +1699,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:5e3a1ea6b870e7806c3158a2b5fed0b45ab9f3124215e285fd539117ab456078",
+    "owner_digest": "sha256:44a9fa1c7f75bd00f862b2db2545db9e2eef5a5cbcc5d2b0e7221eba93aff816",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:bcdaa8df59d0801e3d2aa74655d90c8708b6dbd8a2aff8d6afe4325f4e8f848f",
+    "projection_digest": "sha256:aaeb238cc02e76f242b570d70cfec748cdd28214b19ae134428d20092d863fa0",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1787,6 +1787,24 @@
             "declaration_count": 17,
             "theorem_count": 11,
             "content_digest": "sha256:170b6eadada6558fb37892ff30e4fbdb1e1c2474db33241da38867dcbd4213a6"
+          },
+          {
+            "module": "ErdosProblems.Erdos68.FactorialGapPlateauCore",
+            "path": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+            "present": true,
+            "line_count": 1008,
+            "declaration_count": 36,
+            "theorem_count": 31,
+            "content_digest": "sha256:65438aea5ab11f0319e14b9252aef9362f80c2d34e9186e799cb61754546a594"
+          },
+          {
+            "module": "ErdosProblems.Erdos68.FactorialZeroPlateauCertificates",
+            "path": "ErdosProblems/Erdos68/FactorialZeroPlateauCertificates.lean",
+            "present": true,
+            "line_count": 166,
+            "declaration_count": 13,
+            "theorem_count": 13,
+            "content_digest": "sha256:9402494d80f2d2310119bb0a1f0e5c8d9790a74be59794d70948ff98ab7f2b36"
           },
           {
             "module": "ErdosProblems.Erdos68.FiniteDefectAutomaton",

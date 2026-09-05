@@ -131,6 +131,14 @@ def render_json(aliases: dict[str, str]) -> str:
     return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
 
 
+def write_text_if_changed(path: Path, content: str) -> bool:
+    """Write one generated alias projection only when its text changed."""
+    if path.is_file() and path.read_text(encoding="utf-8") == content:
+        return False
+    path.write_text(content, encoding="utf-8")
+    return True
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if the generated file is stale")
@@ -154,11 +162,15 @@ def main() -> int:
         print(f"paper module aliases current: {len(modules)} unique modules")
         return 0
 
-    OUTPUT.write_text(expected_tex, encoding="utf-8")
-    JSON_OUTPUT.write_text(expected_json, encoding="utf-8")
+    changed = sum(
+        (
+            write_text_if_changed(OUTPUT, expected_tex),
+            write_text_if_changed(JSON_OUTPUT, expected_json),
+        )
+    )
     print(
-        f"wrote {OUTPUT.relative_to(ROOT)} and {JSON_OUTPUT.relative_to(ROOT)} "
-        f"with {len(modules)} unique module aliases"
+        f"paper module aliases current: {len(modules)} unique modules; "
+        f"updated {changed} output(s)"
     )
     return 0
 

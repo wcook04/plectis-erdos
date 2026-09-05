@@ -43,10 +43,11 @@ These fields describe how a manuscript was published. They say nothing about
 what it establishes; ``authority_order`` and ``verification_boundary`` still own
 that, and are left untouched.
 
-The canonical corpus builder lives in the private system repository and owns
-every other field. This projector is deliberately additive and idempotent: it
-reads ``corpus.json``, adds or refreshes only the keys above, and rewrites the
-file in the same format. Running it twice produces no second diff.
+The canonical corpus builder is ``scripts/export_paper_corpus.py`` in this
+repository and owns every other field. This projector is deliberately additive
+and idempotent: it reads ``corpus.json``, adds or refreshes only the keys above,
+and rewrites the file in the same format. Running it twice produces no second
+diff.
 
     python3 docs/papers/build_publication_taxonomy.py            # write
     python3 docs/papers/build_publication_taxonomy.py --check    # exit 1 if stale

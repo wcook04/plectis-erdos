@@ -35,6 +35,7 @@ read-only without paying for two redundant 150 MB regeneration passes.
 
 from __future__ import annotations
 
+import json
 import os
 import shutil
 import subprocess
@@ -46,6 +47,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import validation_singleflight as singleflight
+import build_paper_module_aliases
 import refresh_source_coordinates
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -152,6 +154,151 @@ def check_source_coordinate_title_contract() -> None:
             raise SystemExit(f"paper anchor resolved to an invalid line: {source}")
 
 
+def check_source_coordinate_transport_contract() -> None:
+    """Comparator transport anchors follow exact atlas coordinates and identities."""
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        claims_path = root / "claims.json"
+        atlas_path = root / "atlas.json"
+        anchor = {"name": "sourceTheorem", "module": "Fixture/Source.lean", "line": 3}
+        claims = {
+            "claims": [
+                {
+                    "id": "fixture_claim",
+                    "declarations": [dict(anchor)],
+                    "comparator_transports": [
+                        {
+                            "package_id": "Fixture",
+                            "interface_name": "Fixture.interface",
+                            "source_declarations": [dict(anchor)],
+                        }
+                    ],
+                }
+            ],
+            "remaining_open_propositions": [],
+        }
+        claims_path.write_text(json.dumps(claims), encoding="utf-8")
+        atlas_path.write_text(
+            json.dumps(
+                {
+                    "declarations": [
+                        {
+                            "name": anchor["name"],
+                            "module": anchor["module"],
+                            "line": 41,
+                        }
+                    ]
+                }
+            ),
+            encoding="utf-8",
+        )
+        with (
+            patch.object(refresh_source_coordinates, "CLAIMS", claims_path),
+            patch.object(refresh_source_coordinates, "ATLAS", atlas_path),
+            patch.object(refresh_source_coordinates, "PAPERS", ()),
+        ):
+            rendered, papers = refresh_source_coordinates.render()
+        refreshed = json.loads(rendered)
+        claim = refreshed["claims"][0]
+        refreshed_anchor = claim["comparator_transports"][0]["source_declarations"][0]
+        if papers or refreshed_anchor != {**anchor, "line": 41}:
+            raise SystemExit("Comparator transport anchor did not follow the exact atlas row")
+        if claim["declarations"][0] != {**anchor, "line": 41}:
+            raise SystemExit("claim declaration did not follow the exact atlas row")
+
+        claims_path.write_text(rendered, encoding="utf-8")
+        paper_path = root / "paper.tex"
+        paper_path.write_text("unchanged paper\n", encoding="utf-8")
+        stable_ns = 1_700_000_000_000_000_000
+        for path in (claims_path, paper_path):
+            os.utime(path, ns=(stable_ns, stable_ns))
+        with (
+            patch.object(refresh_source_coordinates, "CLAIMS", claims_path),
+            patch.object(refresh_source_coordinates, "ATLAS", atlas_path),
+            patch.object(refresh_source_coordinates, "PAPERS", (paper_path,)),
+            patch.object(sys, "argv", ["refresh_source_coordinates.py"]),
+        ):
+            if refresh_source_coordinates.main() != 0:
+                raise SystemExit("unchanged claim-coordinate writer failed")
+        if any(path.stat().st_mtime_ns != stable_ns for path in (claims_path, paper_path)):
+            raise SystemExit("unchanged claim/paper coordinate output was rewritten")
+
+        claims["claims"][0]["comparator_transports"][0]["source_declarations"][0] = {
+            "name": "absentTheorem",
+            "module": anchor["module"],
+            "line": 3,
+        }
+        claims_path.write_text(json.dumps(claims), encoding="utf-8")
+        with (
+            patch.object(refresh_source_coordinates, "CLAIMS", claims_path),
+            patch.object(refresh_source_coordinates, "ATLAS", atlas_path),
+            patch.object(refresh_source_coordinates, "PAPERS", ()),
+        ):
+            try:
+                refresh_source_coordinates.render()
+            except RuntimeError as error:
+                if "claim Comparator transport declaration absent from atlas" not in str(error):
+                    raise
+            else:
+                raise SystemExit("missing Comparator transport anchor was accepted")
+
+        atlas_path.write_text(
+            json.dumps(
+                {
+                    "declarations": [
+                        {"name": anchor["name"], "module": anchor["module"], "line": 41},
+                        {"name": anchor["name"], "module": anchor["module"], "line": 42},
+                    ]
+                }
+            ),
+            encoding="utf-8",
+        )
+        claims_path.write_text(json.dumps(claims), encoding="utf-8")
+        with patch.object(refresh_source_coordinates, "ATLAS", atlas_path):
+            try:
+                refresh_source_coordinates.declaration_lines()
+            except RuntimeError as error:
+                if "ambiguous declaration coordinates" not in str(error):
+                    raise
+            else:
+                raise SystemExit("ambiguous Comparator source identity was accepted")
+
+
+def check_module_alias_writer_stability() -> None:
+    """Byte-equal TeX and JSON alias outputs retain their mtimes."""
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        output = root / "paper" / "module-aliases.tex"
+        json_output = root / "paper" / "module-aliases.json"
+        output.parent.mkdir(parents=True)
+        modules = ["Erdos249257/FixtureModule.lean"]
+        patches = (
+            patch.object(build_paper_module_aliases, "ROOT", root),
+            patch.object(build_paper_module_aliases, "OUTPUT", output),
+            patch.object(build_paper_module_aliases, "JSON_OUTPUT", json_output),
+            patch.object(build_paper_module_aliases, "referenced_modules", return_value=modules),
+            patch.object(sys, "argv", ["build_paper_module_aliases.py"]),
+        )
+        with patches[0], patches[1], patches[2], patches[3], patches[4]:
+            if build_paper_module_aliases.main() != 0:
+                raise SystemExit("initial module-alias write failed")
+        stable_ns = 1_700_000_000_000_000_000
+        for path in (output, json_output):
+            os.utime(path, ns=(stable_ns, stable_ns))
+        patches = (
+            patch.object(build_paper_module_aliases, "ROOT", root),
+            patch.object(build_paper_module_aliases, "OUTPUT", output),
+            patch.object(build_paper_module_aliases, "JSON_OUTPUT", json_output),
+            patch.object(build_paper_module_aliases, "referenced_modules", return_value=modules),
+            patch.object(sys, "argv", ["build_paper_module_aliases.py"]),
+        )
+        with patches[0], patches[1], patches[2], patches[3], patches[4]:
+            if build_paper_module_aliases.main() != 0:
+                raise SystemExit("unchanged module-alias write failed")
+        if any(path.stat().st_mtime_ns != stable_ns for path in (output, json_output)):
+            raise SystemExit("unchanged module-alias output was rewritten")
+
+
 def materialise(destination: Path) -> None:
     """Materialise tracked ``HEAD`` without version-control or build metadata."""
     destination.mkdir()
@@ -233,6 +380,8 @@ def validate_checkout(checkout: Path) -> None:
 def main() -> int:
     check_run_contract()
     check_source_coordinate_title_contract()
+    check_source_coordinate_transport_contract()
+    check_module_alias_writer_stability()
     workspace = Path(tempfile.mkdtemp(prefix="projection-shape-"))
     try:
         checkout = workspace / "metadata-free"

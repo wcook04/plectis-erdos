@@ -101,10 +101,16 @@ BUILDERS = (
     # placing it afterwards makes one full refresh invalidate its own output.
     "scripts/refresh_source_coordinates.py",
     "scripts/refresh_reasoning_source_coordinates.py",
+    # This builder writes paper census macros; export must see those bytes.
+    # It reads the authored problem registry, not the paper-derived index.
+    "scripts/build_semantic_corpus.py",
+    # The public paper registry and exporter own every clone-local manuscript
+    # projection. Run them before the problem index, which joins against the
+    # generated paper corpus.
+    "scripts/export_paper_corpus.py",
     # Reads the refreshed claims and writes docs/problems.json, which the
     # corpus descriptor reads.
     "scripts/build_problem_index.py",
-    "scripts/build_semantic_corpus.py",
     "scripts/build_theory_lab.py",
     # External-verification projections consume the registry-derived portfolio.
     "scripts/build_comparator_replay_portfolio.py",
@@ -132,7 +138,22 @@ WRITE_FLAGS: dict[str, tuple[str, ...]] = {
     "scripts/build_off_diagonal_certificate_roster.py": ("--write",),
     "scripts/build_checked_diagonal_depth_roster.py": ("--write",),
     "scripts/refresh_reasoning_source_coordinates.py": ("--write",),
+    "scripts/export_paper_corpus.py": ("--write",),
 }
+
+# Regeneration needs Pandoc, while the public lightweight checker validates the
+# authored registry and recorded source/PDF hashes using only the stdlib. Keep
+# that check usable inside refresh's deliberately minimal subprocess PATH.
+CHECK_COMMANDS: dict[str, tuple[str, ...]] = {
+    "scripts/export_paper_corpus.py": ("docs/papers/check_paper_corpus.py",),
+}
+
+
+def projection_check_command(builder: str) -> list[str]:
+    override = CHECK_COMMANDS.get(builder)
+    if override is not None:
+        return [sys.executable, *(str(ROOT / value) for value in override)]
+    return [sys.executable, str(ROOT / builder), "--check"]
 
 
 def tracked_diff() -> set[str]:
@@ -170,8 +191,7 @@ def check_only() -> int:
             return 1
 
     def check_builder(builder: str) -> tuple[str, subprocess.CompletedProcess[str]]:
-        script = ROOT / builder
-        return builder, run([sys.executable, str(script), "--check"], cwd=ROOT)
+        return builder, run(projection_check_command(builder), cwd=ROOT)
 
     # Check mode is read-only and every builder reads the same committed
     # generation. Preserve dependency order for mutation in refresh(), but do
@@ -214,7 +234,7 @@ def refresh() -> int:
 
     stale = []
     for builder in BUILDERS:
-        result = run([sys.executable, str(ROOT / builder), "--check"], cwd=ROOT)
+        result = run(projection_check_command(builder), cwd=ROOT)
         if result.returncode != 0:
             stale.append((builder, result.stdout.strip() or result.stderr.strip()))
 

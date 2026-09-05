@@ -160,7 +160,7 @@
         {"declaration":"reduced_nextBlock_all_skips_safe_iff_gcdFree","module":"Erdos249257/DyadicPrefixCompression.lean","line":451},
         {"declaration":"reduced_nextBlock_gcdFree_margin_expanded","module":"Erdos249257/DyadicPrefixCompression.lean","line":463},
         {"declaration":"rawTakenResidual_adjacent_margin_of_predecessor_safe","module":"Erdos249257/DyadicPrefixCompression.lean","line":496},
-        {"declaration":"rawPredecessorOvershoot_of_gcdScaled","module":"Erdos249257/DyadicPrefixCompression.lean","line":3435}
+        {"declaration":"rawPredecessorOvershoot_of_gcdScaled","module":"Erdos249257/DyadicPrefixCompression.lean","line":3434}
       ]
     },
     {
@@ -245,7 +245,7 @@
       "confidence": "high",
       "evidence": [
         {"declaration":"mersenneLcm_through_seven_eq","module":"Erdos249257/DyadicPrefixCompression.lean","line":638},
-        {"declaration":"firstTake_rank9_after_rank5_fixture","module":"Erdos249257/DyadicPrefixCompression.lean","line":3460}
+        {"declaration":"firstTake_rank9_after_rank5_fixture","module":"Erdos249257/DyadicPrefixCompression.lean","line":3459}
       ]
     },
     {
@@ -262,8 +262,8 @@
       "scope_caveat": "This is a necessary consequence of an unsafe skip, not a contradiction: no theorem here supplies a lower bound forcing either adjacent gcd to reach p. It does not solve #257.",
       "confidence": "high",
       "evidence": [
-        {"declaration":"unsafeSandwich_consecutive_gcd_lt","module":"Erdos249257/DyadicPrefixCompression.lean","line":4298},
-        {"declaration":"greedyHalf_unsafeSkip_consecutive_gcd_lt","module":"Erdos249257/DyadicPrefixCompression.lean","line":4373}
+        {"declaration":"unsafeSandwich_consecutive_gcd_lt","module":"Erdos249257/DyadicPrefixCompression.lean","line":4297},
+        {"declaration":"greedyHalf_unsafeSkip_consecutive_gcd_lt","module":"Erdos249257/DyadicPrefixCompression.lean","line":4372}
       ]
     }
   ],
@@ -271,14 +271,14 @@
     {
       "declaration": "unsafeSandwich_consecutive_gcd_lt",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 4298,
+      "line": 4297,
       "role": "statement",
       "statement_node": "unsafe_skip_forces_two_adjacent_mersenne_gcd_deficits"
     },
     {
       "declaration": "greedyHalf_unsafeSkip_consecutive_gcd_lt",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 4373,
+      "line": 4372,
       "role": "statement",
       "statement_node": "unsafe_skip_forces_two_adjacent_mersenne_gcd_deficits"
     }

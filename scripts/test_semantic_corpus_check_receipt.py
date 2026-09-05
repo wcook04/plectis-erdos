@@ -7,6 +7,10 @@ from __future__ import annotations
 
 import copy
 import json
+import os
+import tempfile
+from pathlib import Path
+from unittest.mock import patch
 
 import build_semantic_corpus as builder
 import check_cold_clone_comprehension as cold_clone
@@ -18,6 +22,25 @@ def require(condition: bool, message: str) -> None:
 
 
 def main() -> int:
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory)
+        projection = root / "paper.tex"
+        with patch.object(builder, "ROOT", root):
+            builder.safe_write_text(projection, "unchanged")
+            os.utime(projection, ns=(1_000_000_000, 1_000_000_000))
+            builder.safe_write_text(projection, "unchanged")
+            require(projection.stat().st_mtime_ns == 1_000_000_000,
+                    "unchanged semantic TeX triggered a PDF rebuild")
+            builder.safe_write_text(projection, "changed")
+            require(projection.read_text() == "changed", "changed projection was skipped")
+            link = root / "linked.tex"
+            link.symlink_to(projection)
+            try:
+                builder.safe_write_text(link, "changed")
+            except builder.UnsafeSemanticCorpusInput:
+                pass
+            else:
+                raise AssertionError("equal-content symlink bypassed safe writer")
     receipt = json.loads(
         builder.safe_read_text(builder.TRACKED_CHECK_RECEIPT)
     )

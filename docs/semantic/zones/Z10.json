@@ -1629,12 +1629,12 @@
         {
           "declaration": "rawSafe_but_not_gcdScaled_fixture",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3450
+          "line": 3449
         },
         {
           "declaration": "factorEleven_predecessorOvershoot_not_inductive_fixture",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3472
+          "line": 3471
         }
       ],
       "concepts": [
@@ -1861,7 +1861,7 @@
         {
           "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipActualRawMarginSupply",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3393
+          "line": 3392
         },
         {
           "declaration": "halfGreedy_rawBlockWitness_of_actualRawMarginWitness",
@@ -1899,22 +1899,22 @@
         {
           "declaration": "blockDyadicSafeAt_iff_rawPredecessorOvershoot",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3405
+          "line": 3404
         },
         {
           "declaration": "gcd_dvd_predecessorOvershoot",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3496
+          "line": 3495
         },
         {
           "declaration": "gcdScaled_predecessorOvershoot_iff_primitiveQuotient",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 4409
+          "line": 4408
         },
         {
           "declaration": "blockDyadicSafeAt_of_gcdScaled_predecessorOvershoot",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 4422
+          "line": 4421
         }
       ],
       "concepts": [
@@ -1937,22 +1937,22 @@
         {
           "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipGcdOvershootSupply",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 4479
+          "line": 4478
         },
         {
           "declaration": "unsafeSkipGcdOvershootSupply_iff_primitive",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 4521
+          "line": 4520
         },
         {
           "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipPrimitiveOvershootSupply",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 4562
+          "line": 4561
         },
         {
           "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipElevenGcdOvershootSupply",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 4595
+          "line": 4594
         }
       ],
       "concepts": [
@@ -4007,119 +4007,119 @@
     {
       "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipActualRawMarginSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3393,
+      "line": 3392,
       "role": "statement",
       "statement_node": "half_membership_from_raw_block_margin_supply"
     },
     {
       "declaration": "blockDyadicSafeAt_iff_rawPredecessorOvershoot",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3405,
+      "line": 3404,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_predecessor_overshoot"
     },
     {
       "declaration": "rawPredecessorOvershoot_of_gcdScaled",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3435,
+      "line": 3434,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_predecessor_overshoot"
     },
     {
       "declaration": "rawSafe_but_not_gcdScaled_fixture",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3450,
+      "line": 3449,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_strictly_weaker_than_gcd_overshoot"
     },
     {
       "declaration": "firstTake_rank9_after_rank5_fixture",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3460,
+      "line": 3459,
       "role": "finite_instance",
       "statement_node": "raw_dyadic_safety_is_strictly_weaker_than_gcd_overshoot"
     },
     {
       "declaration": "factorEleven_predecessorOvershoot_not_inductive_fixture",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3472,
+      "line": 3471,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_strictly_weaker_than_gcd_overshoot"
     },
     {
       "declaration": "gcd_dvd_predecessorOvershoot",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 3496,
+      "line": 3495,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_predecessor_overshoot"
     },
     {
       "declaration": "gcdScaled_predecessorOvershoot_iff_primitiveQuotient",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 4409,
+      "line": 4408,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_predecessor_overshoot"
     },
     {
       "declaration": "blockDyadicSafeAt_of_gcdScaled_predecessorOvershoot",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 4422,
+      "line": 4421,
       "role": "statement",
       "statement_node": "raw_dyadic_safety_is_predecessor_overshoot"
     },
     {
       "declaration": "HalfGreedyUnsafeSkipGcdOvershootSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 4464,
+      "line": 4463,
       "role": "concept",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipGcdOvershootSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 4479,
+      "line": 4478,
       "role": "statement",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "HalfGreedyUnsafeSkipPrimitiveOvershootSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 4506,
+      "line": 4505,
       "role": "concept",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "unsafeSkipGcdOvershootSupply_iff_primitive",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 4521,
+      "line": 4520,
       "role": "statement",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipPrimitiveOvershootSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 4562,
+      "line": 4561,
       "role": "statement",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "HalfGreedyUnsafeSkipElevenGcdOvershootSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 4570,
+      "line": 4569,
       "role": "concept",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "unsafeSkipGcdOvershootSupply_of_eleven",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 4583,
+      "line": 4582,
       "role": "statement",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },
     {
       "declaration": "half_mem_mersenneAchievementSet_of_unsafeSkipElevenGcdOvershootSupply",
       "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 4595,
+      "line": 4594,
       "role": "statement",
       "statement_node": "half_membership_from_gcd_overshoot_supply"
     },

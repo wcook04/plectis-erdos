@@ -1,6 +1,7 @@
 # Palomar qualification: exact current candidate
 
-Status: **NOT READY**.
+Status: **READY for repository-local structural qualification; fixed-kernel
+release replay still required**.
 
 This is the repository-local qualification decision for the current
 main-compatible candidate. It is not a Palomar submission, registration, or
@@ -306,7 +307,7 @@ Mersenne achievement set. The exact-row, skipped-core, endpoint-defect, and
 upper-half Boolean-word declarations are subordinate mechanism evidence;
 finite exact rows do not prove the cofinal supply. This is endpoint-facing
 conditional evidence, not an unconditional #257 solution or refutation, and it
-does not change the full-support selection.
+does not supply the missing universal theorem.
 The #257 half-membership seam classification is also represented in the
 source landscape and committed Comparator screen. Canonical claims
 `0c2f4473` bind the exact family, and the source-faithful three-file transport
@@ -507,8 +508,15 @@ release lock or terminal validation claim:
 - Solution: `ExternalVerification.Solution`.
 - Permitted Comparator axioms: `propext`, `Quot.sound`, and
   `Classical.choice`.
-- Lean toolchain: `leanprover/lean4:v4.29.1`; the official minimum is
-  `v4.28.0`.
+- Lean toolchain: `leanprover/lean4:v4.29.1`; this passes Palomar's historical
+  `v4.28.0` protocol floor but does not by itself establish kernel-security
+  assurance.
+- Fixed-kernel replay configuration: Comparator
+  `789279735fe44c1c05dc54bb9f46ba4d9b8c7611`, whose pinned toolchain is Lean
+  `v4.33.0-rc2`, with lean4export
+  `6f4e21dd70c3c11d7fbd07d39e3192792c657448`. These pins describe a
+  configuration, not a successful execution; the existing commit-bound
+  external-verification receipt remains required for release assurance.
 - Root licence and declared project licence: `Apache-2.0`.
 - `lakefile.toml` and `lake-manifest.json` are present.
 
@@ -541,7 +549,8 @@ Comparator evidence even when a source-faithful transport is committed.
 | Comparator path and axiom ceiling | pass structurally | `verification/comparator.json`; the final mechanical axiom report is still withheld. |
 | Repository source envelope | pass | The committed ordinary-blob checkout is about 388 MiB, below the 500 MiB cap; no submitted gitlinks, Git LFS pointers, or forbidden compiled artifacts are present. The checker reports the exact current byte count. |
 | Challenge source envelope | pass with warning | `ExternalVerification/Challenge.lean` is a regular 24,666-byte, 565-line file, below the 100 KiB/1,000-line hard limits but above Palomar's 300-line auditability warning threshold. |
-| Toolchain and Lakefile | pass structurally | Lean v4.29.1 and the committed Lake project files satisfy the current structural profile. |
+| Toolchain and Lakefile | pass for protocol compatibility | Lean v4.29.1 and the committed Lake project files satisfy the historical Palomar v4.28.0 floor. That floor is not treated as sufficient kernel-security assurance. |
+| Fixed-kernel Comparator replay | required for release; not established here | The workflow pins Comparator `7892797` on Lean v4.33.0-rc2 and lean4export `6f4e21d`. Configuration is not execution; a successful commit-bound receipt admitted by the existing external-verification release gate remains required. |
 | Git dependency provenance | pass structurally | All nine manifest Git packages use credential-free public GitHub URLs and full lowercase 40-character resolved revisions; materialization and transitive Challenge closure remain terminal checks. |
 | Root licence | pass structurally | Exactly one conventional root licence file is present; `LICENSE` is regular nonempty UTF-8 below 1 MiB and its Apache-2.0 identifier matches the project metadata. |
 | Formalization file envelope | pass | The generated `formalization.yaml` is regular UTF-8 and 155,752 bytes, below the 256 KiB intake cap; the checker remeasures the committed bytes after landing. |
@@ -558,11 +567,13 @@ spine, so Palomar's reviewer would audit every selected declaration. The
 qualification product keeps the warning visible instead of treating a hard-cap
 pass as proof that the statement surface is optimally small.
 
-The exact decision is therefore **NOT READY**. The static v0.4 metadata deficit
-is closed, but after an immutable product commit is named, one non-duplicated
-terminal mechanical and independent-replay evidence bundle must still replace
-the withheld cells. Submission consent and registration remain operator
-actions.
+The exact repository-local structural decision is therefore **READY**. This is
+not a release-qualified verdict: after an immutable product commit is named,
+the existing external-verification release gate must still admit a successful
+fixed-kernel replay receipt. No such execution is inferred from the configured
+pins. Independent NanoDa replay may add evidence but is not conflated with that
+required Comparator receipt. Submission consent and registration remain
+operator actions.
 
 ## Official authority capture
 
@@ -576,6 +587,14 @@ JSON reconciliation file.
   at the same commit.
 - [PalomarSubmission toolchain contract](https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/toolchains.json)
   at `e215b184d1b659e8e3e641162a7d63708678016f`.
+- [Lean v4.29.1 kernel type checker](https://raw.githubusercontent.com/leanprover/lean4/f72c35b3f637c8c6571d353742168ab66cc22c00/src/kernel/type_checker.cpp)
+  at `f72c35b3f637c8c6571d353742168ab66cc22c00`, and the
+  [Lean v4.33.0-rc2 kernel type checker](https://raw.githubusercontent.com/leanprover/lean4/d8b18978322de05a8f3dba51ef03cf5461676c17/src/kernel/type_checker.cpp)
+  at `d8b18978322de05a8f3dba51ef03cf5461676c17`, bind the target/fixed-kernel
+  distinction to exact source bytes.
+- [Comparator's pinned toolchain](https://raw.githubusercontent.com/leanprover/comparator/789279735fe44c1c05dc54bb9f46ba4d9b8c7611/lean-toolchain)
+  binds configured Comparator revision
+  `789279735fe44c1c05dc54bb9f46ba4d9b8c7611` to Lean v4.33.0-rc2.
 - [PalomarSubmission formalization profile](https://raw.githubusercontent.com/PalomarRegistry/PalomarSubmission/e215b184d1b659e8e3e641162a7d63708678016f/formalization-profile.json)
   at the same commit.
 - [PalomarWeb registry explanation](https://raw.githubusercontent.com/PalomarRegistry/PalomarWeb/2114a47adcbdb3d737133cd8898474d418b4bee2/about.html)

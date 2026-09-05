@@ -28,8 +28,8 @@ problem-closure claim; every ranked family remains reachable below.
 
 | Rank | Family / status |
 |---:|---|
-| 1 | `known_irrational_supports` / `selected` |
-| 2 | `pairwise_coprime_support` / `represented` |
+| 1 | `reciprocal_summable_support` / `selected` |
+| 2 | `known_irrational_supports` / `represented` |
 | 3 | `orthogonal_petal_sunflower_reduction` / `represented` |
 | 4 | `periodic_nonnegative_weight_irrationality` / `represented` |
 | 5 | `actual_lcm_orbit_separation` / `represented` |
@@ -43,12 +43,12 @@ problem-closure claim; every ranked family remains reachable below.
 
 Interface, source declaration, and exact boundary, by rank:
 
-1. `known_irrational_supports`
+1. `reciprocal_summable_support`
+   `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_summable_reciprocal` → `Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal`
+   The universal Erdos #257 assertion remains open only in the reciprocal-divergent regime. Novelty and priority are unassessed, and this proof is not identified with Erdos's omitted coprimality-free argument.
+2. `known_irrational_supports`
    `Erdos249257.ExternalVerification.irrational_erdosSum_full_support` → `Erdos249257.irrational_erdosSum_full_support`
    This is the classical full-support theorem, not universal Erdos #257.
-2. `pairwise_coprime_support`
-   `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime` → `Erdos249257.irrational_erdosSupportSeries_pairwise_coprime`
-   This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit.
 3. `orthogonal_petal_sunflower_reduction`
    `Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet` → `Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet`
    This is a conditional reduction: the bouquet structure and uniform tail-selection predicate remain hypotheses; neither is constructed for arbitrary supports, so this does not add an unconditional Erdos #257 support family or solve the universal problem.
@@ -147,8 +147,8 @@ opens with a ten-minute verdict.
 
 Navigation inventory, not results. Generated certificate shards are
 counted as formal source, never as separate mathematical claims. The
-two roots currently expose 1,058 modules and
-153,671 declarations across #68, #243, #249,
+two roots currently expose 1,102 modules and
+154,855 declarations across #68, #243, #249,
 #251, #257, #269, #1041, and #1049; exact counts and atlas handles
 remain in `docs/orientation.json`.
 

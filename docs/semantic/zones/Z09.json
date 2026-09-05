@@ -250,7 +250,7 @@
         {
           "declaration": "paritySeparatedMatrix_det_ne_zero",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 823
+          "line": 834
         }
       ],
       "concepts": [
@@ -274,12 +274,12 @@
         {
           "declaration": "exists_totientAffinePrimeRow",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 513
+          "line": 524
         },
         {
           "declaration": "exists_totientAffineParityRow",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 729
+          "line": 740
         }
       ],
       "concepts": [
@@ -303,22 +303,22 @@
         {
           "declaration": "exists_separatedMinorCertificate_totientAffineOddFamily",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 882
+          "line": 893
         },
         {
           "declaration": "linearIndependent_totientAffineOddFamily",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 927
+          "line": 938
         },
         {
           "declaration": "linearIndependent_canonicalTotientKernelFamily",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 935
+          "line": 946
         },
         {
           "declaration": "finrank_canonicalTotientKernel_eq",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 989
+          "line": 1000
         }
       ],
       "concepts": [
@@ -551,7 +551,7 @@
         {
           "declaration": "not_finiteDimensional_span_fullTotientKernel",
           "module": "Erdos249257/TotientMahlerDefect.lean",
-          "line": 1145
+          "line": 1146
         }
       ],
       "concepts": [
@@ -718,7 +718,7 @@
         {
           "declaration": "not_irrational_totientSeries_implies_unbounded_carryRank_unconditional",
           "module": "Erdos249257/TotientCarryKernelRigidity.lean",
-          "line": 300
+          "line": 301
         }
       ],
       "concepts": [
@@ -1880,266 +1880,266 @@
     {
       "declaration": "TotientAffineIndex",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 226,
+      "line": 237,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineSlope",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 230,
+      "line": 241,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineResidue",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 235,
+      "line": 246,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineValue",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 240,
+      "line": 251,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 244,
+      "line": 255,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineOddFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 248,
+      "line": 259,
       "role": "concept",
       "statement_node": "finite_level_dyadic_totient_independence"
     },
     {
       "declaration": "totientAffineSlope_pos",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 251,
+      "line": 262,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineResidue_lt_slope",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 257,
+      "line": 268,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineSlope_coprime_residue",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 267,
+      "line": 278,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffine_parameters_injective",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 277,
+      "line": 288,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffine_cross_ne",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 311,
+      "line": 322,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineBaseResidue",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 333,
+      "line": 344,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineBaseResidue_odd",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 337,
+      "line": 348,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineCore",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 344,
+      "line": 355,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineBaseResidue_lt_modulus",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 348,
+      "line": 359,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineCore_pos",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 354,
+      "line": 365,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineCore_even",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 366,
+      "line": 377,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "totientAffineCore_lt_depthBound",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 379,
+      "line": 390,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "exists_totientAffineCore_depth",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 415,
+      "line": 426,
       "role": "substrate",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "exists_large_distinct_primes_modEq_one",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 434,
+      "line": 445,
       "role": "engine",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "exists_affine_root_mod_prime",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 457,
+      "line": 468,
       "role": "engine",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "affine_target_coprime_of_cross",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 475,
+      "line": 486,
       "role": "engine",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "TotientAffinePrimeRow",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 497,
+      "line": 508,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "exists_totientAffinePrimeRow",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 513,
+      "line": 524,
       "role": "statement",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "TotientAffineParityRow",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 717,
+      "line": 728,
       "role": "concept",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "exists_totientAffineParityRow",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 729,
+      "line": 740,
       "role": "statement",
       "statement_node": "crt_dirichlet_parity_row"
     },
     {
       "declaration": "paritySeparatedMatrix_det_ne_zero",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 823,
+      "line": 834,
       "role": "statement",
       "statement_node": "parity_separated_determinant_criterion"
     },
     {
       "declaration": "exists_separatedMinorCertificate_totientAffineOddFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 882,
+      "line": 893,
       "role": "statement",
       "statement_node": "finite_level_dyadic_totient_independence"
     },
     {
       "declaration": "linearIndependent_totientAffineOddFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 927,
+      "line": 938,
       "role": "statement",
       "statement_node": "finite_level_dyadic_totient_independence"
     },
     {
       "declaration": "linearIndependent_canonicalTotientKernelFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 935,
+      "line": 946,
       "role": "statement",
       "statement_node": "finite_level_dyadic_totient_independence"
     },
     {
       "declaration": "finrank_canonicalTotientKernel_eq",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 989,
+      "line": 1000,
       "role": "statement",
       "statement_node": "finite_level_dyadic_totient_independence"
     },
     {
       "declaration": "TotientDyadicKernelIndex",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1095,
+      "line": 1096,
       "role": "concept",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
     {
       "declaration": "fullTotientKernelFamily",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1098,
+      "line": 1099,
       "role": "concept",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
     {
       "declaration": "canonicalTotientKernelToFull",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1103,
+      "line": 1104,
       "role": "substrate",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
     {
       "declaration": "fullTotientKernelFamily_canonicalTotientKernelToFull",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1110,
+      "line": 1111,
       "role": "substrate",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
     {
       "declaration": "range_canonicalTotientKernelFamily_subset_full",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1122,
+      "line": 1123,
       "role": "substrate",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
     {
       "declaration": "nat_le_two_pow_self",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1129,
+      "line": 1130,
       "role": "substrate",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
     {
       "declaration": "not_finiteDimensional_span_fullTotientKernel",
       "module": "Erdos249257/TotientMahlerDefect.lean",
-      "line": 1145,
+      "line": 1146,
       "role": "statement",
       "statement_node": "full_dyadic_kernel_infinite_dimensional"
     },
@@ -2419,7 +2419,7 @@
     {
       "declaration": "not_irrational_totientSeries_implies_unbounded_carryRank_unconditional",
       "module": "Erdos249257/TotientCarryKernelRigidity.lean",
-      "line": 300,
+      "line": 301,
       "role": "statement",
       "statement_node": "rationality_forces_unbounded_carry_rank"
     },

@@ -19,6 +19,7 @@ does not.
 from __future__ import annotations
 
 import ast
+import json
 import re
 import subprocess
 from pathlib import Path
@@ -83,7 +84,11 @@ def check_check_only_dispatch() -> None:
         require(refresh_projections.check_only() == 0, "mocked check-only run failed")
     finally:
         refresh_projections.run = original
-    dispatched = [Path(args[1]).relative_to(ROOT).as_posix() for args in calls]
+    command_owners = {
+        tuple(refresh_projections.projection_check_command(builder)): builder
+        for builder in refresh_projections.BUILDERS
+    }
+    dispatched = [command_owners.get(args, f"unexpected:{args!r}") for args in calls]
     require(
         sorted(dispatched) == sorted(refresh_projections.BUILDERS),
         "check-only dispatch dropped or duplicated a projection builder",
@@ -169,6 +174,34 @@ def main() -> int:
         builders.index("build_comparator_replay_portfolio.py")
         < builders.index("build_external_verification.py"),
         "Comparator portfolio must refresh before its external-verification consumer",
+    )
+    paper_check = refresh_projections.projection_check_command(
+        "scripts/export_paper_corpus.py"
+    )
+    require(
+        paper_check[1].endswith("docs/papers/check_paper_corpus.py")
+        and "--check" not in paper_check,
+        "paper projection check must use the stdlib no-Pandoc verifier",
+    )
+    require(
+        builders.index("build_semantic_corpus.py")
+        < builders.index("export_paper_corpus.py")
+        < builders.index("build_problem_index.py"),
+        "semantic paper macros must precede export and its problem-index consumer",
+    )
+    import build_semantic_corpus as semantic
+    registry = ROOT / "docs" / "problem_index_source.json"
+    require(
+        registry in semantic.semantic_input_paths()
+        and ROOT / "docs" / "problems.json" not in semantic.semantic_input_paths(),
+        "semantic inputs must not cycle through the paper-derived problem index",
+    )
+    require(
+        semantic.INDEXED_PROBLEMS == tuple(
+            str(row["erdos_number"])
+            for row in json.loads(registry.read_text())["problems"]
+        ),
+        "semantic problem identities must follow the authored roster dynamically",
     )
     check_check_only_dispatch()
 

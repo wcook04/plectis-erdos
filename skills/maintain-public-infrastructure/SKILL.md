@@ -140,6 +140,34 @@ release checks, CI, generated projections, and any query or proof consumer
 named by the changed contract. Package or submit only after those dispositions
 are explicit.
 
+## External reference practices
+
+Compare concrete public journeys, not repository size or institutional labels.
+References inspected on 2026-09-05:
+
+- [Anthropic's Fermat repository](https://github.com/anthropics/fermats-last-theorem)
+  separates the exact headline statement, an axiom-guarded build, Comparator
+  replay, and independent-kernel evidence. Its offline pages connect theorem
+  statements, definitions, proof dependencies, and attribution. Reuse these
+  evaluation questions for our existing graph and assurance owners; do not
+  advertise any verification mode without its own reproducible result.
+- Its [formalization metadata](https://github.com/anthropics/fermats-last-theorem/blob/main/formalization.yaml)
+  records scope, source relationships, divergences, and self-assessed review.
+  A metadata file is not a proof or a requirement for human authorship. Keep
+  our generated metadata derived from the claim owner rather than maintaining
+  a second handwritten register.
+- [DeepMind's statement guide](https://github.com/google-deepmind/formal-conjectures/blob/main/STATEMENTS.md)
+  checks source fidelity, definitions, quantifier scope, domain restrictions,
+  boundary inputs, and impossible hypotheses. Apply these checks when authoring
+  each claim's Comparator challenge; a successful replay of a weakened or
+  vacuous statement does not repair the mismatch.
+
+Keep verification costs and checker/toolchain pins visible. Optional second
+kernel checks need an explicit resource plan and their own receipt, not a
+checkbox copied from another project's README. Our contribution workflow stays
+maintained and open to returns; do not inherit another artifact's non-maintenance
+policy merely because its verification design is useful.
+
 ## Closeout
 
 Return:

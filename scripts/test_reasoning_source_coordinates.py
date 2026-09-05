@@ -145,6 +145,18 @@ def main() -> int:
                 rendered_again[named] == named.read_text(encoding="utf-8"),
                 "coordinate rendering was not idempotent",
             )
+            stable_ns = 1_700_000_000_000_000_000
+            os.utime(named, ns=(stable_ns, stable_ns))
+            with patch.object(
+                sys,
+                "argv",
+                ["refresh_reasoning_source_coordinates.py", "--write"],
+            ):
+                require(coordinates.main() == 0, "unchanged reasoning writer failed")
+            require(
+                named.stat().st_mtime_ns == stable_ns,
+                "unchanged reasoning coordinate output was rewritten",
+            )
 
             named.write_text(
                 r"\lean{missingDeclaration}{Sample.lean:4}" + "\n",

@@ -353,6 +353,80 @@ def main() -> int:
             if not report["verified"]:
                 failures.append(f"{label}: sound register reported as broken {report['problems']}")
 
+        # Claim transport accounting is informative in the normal verifier:
+        # incomplete coverage remains honest without weakening source checks or
+        # turning the opt-in Comparator completeness policy into a default gate.
+        report = run_case(
+            root,
+            build_register([claim("Sample.alpha", ALPHA_KEYWORD_LINE)]),
+        )
+        require(report["verified"], "missing Comparator transport failed normal verification")
+        require(
+            report["missing_formal_comparator_transport_count"] == 1
+            and report["comparator_transport_classification_counts"]
+            == {"missing_formal_transport": 1},
+            "formal claim transport gap was not accounted explicitly",
+        )
+
+        linked_claim = claim("Sample.alpha", ALPHA_KEYWORD_LINE)
+        linked_claim["comparator_transports"] = [
+            {
+                "package_id": "ExternalVerificationFixture",
+                "interface_name": "Fixture.interface",
+                "source_declarations": linked_claim["declarations"],
+            }
+        ]
+        (root / "verification").mkdir(exist_ok=True)
+        (root / "verification" / "comparator-replay-membership.json").write_text(
+            json.dumps(
+                {
+                    "schema": "plectis.comparator-replay-membership/1",
+                    "required_interfaces_by_package": {
+                        "ExternalVerificationFixture": ["Fixture.interface"]
+                    }
+                }
+            ),
+            encoding="utf-8",
+        )
+        linked = verify_claims.comparator_for(
+            "sample_claim",
+            build_register([linked_claim], main_results=[]),
+        )
+        require(
+            linked["transport_classification"] == "linked_transport"
+            and linked["semantic_coverage_status"]
+            == "not_assessed_by_transport_link"
+            and linked["executed_comparator_assurance"] == "not_asserted",
+            "explicit transport was conflated with semantic or executed assurance",
+        )
+        linked_claim["comparator_transports"][0]["source_declarations"] = [
+            {**linked_claim["declarations"][0], "line": ALPHA_KEYWORD_LINE + 1}
+        ]
+        malformed = verify_claims.comparator_for(
+            "sample_claim",
+            build_register([linked_claim], main_results=[]),
+        )
+        require(
+            malformed["status"] == "not_bound"
+            and malformed["transport_classification"] == "missing_formal_transport",
+            "malformed explicit transport was reported as a bound claim link",
+        )
+
+        for status, expected in (
+            ("open", "open_non_executable"),
+            ("cited only", "cited_only_non_executable"),
+        ):
+            non_formal = claim("Sample.alpha", ALPHA_KEYWORD_LINE, status=status)
+            non_formal["declarations"] = []
+            accounting = verify_claims.comparator_for(
+                "sample_claim",
+                build_register([non_formal], main_results=[]),
+            )
+            require(
+                accounting["transport_classification"] == expected,
+                f"{status} claim did not receive explicit non-executable accounting",
+            )
+
         # A shifted line is drift, and drift must be named.
         report = run_case(root, build_register([claim("Sample.alpha", 2)]))
         if "drifted" not in statuses(report):

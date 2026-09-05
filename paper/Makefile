@@ -66,7 +66,7 @@ $(NOTES:%=%.pdf): $(PREAMBLE)
 $(ALIASES): erdos249-257-main-paper.tex ../scripts/build_paper_module_aliases.py
 	python3 ../scripts/build_paper_module_aliases.py
 
-%.pdf: %.tex $(ALIASES)
+%.pdf: %.tex $(ALIASES) paper-house-style.sty
 	@if command -v tectonic >/dev/null 2>&1; then \
 	  tectonic $< ; \
 	else \

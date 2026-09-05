@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import tempfile
 from pathlib import Path
+from unittest import mock
 
 import build_comparator_replay_portfolio as replay
 
@@ -154,6 +155,32 @@ def _write_fixture_package(root: Path, *, challenge_import: str, solution_body: 
     (docs / "claims.json").write_text(
         json.dumps(
             {
+                "claims": [
+                    {
+                        "id": "fixture_claim",
+                        "status": "proved here",
+                        "statement": "The fixture source theorem holds.",
+                        "declarations": [
+                            {
+                                "name": "sourceTheorem",
+                                "module": "FixtureSource.lean",
+                                "line": 1,
+                            }
+                        ],
+                    },
+                    {
+                        "id": "fixture_open",
+                        "status": "open",
+                        "statement": "The fixture open problem remains open.",
+                        "declarations": [],
+                    },
+                    {
+                        "id": "fixture_citation",
+                        "status": "cited only",
+                        "statement": "A cited fixture result.",
+                        "declarations": [],
+                    },
+                ],
                 "external_verification_packet": {
                     "review_matrix": [
                         {
@@ -234,6 +261,137 @@ def test_fixture_membership_projection_does_not_read_live_root() -> None:
         portfolio = replay.build_portfolio(root)
         membership = json.loads(replay.render_membership(portfolio))
         assert membership["required_package_ids"] == ["ExternalVerificationFixture"]
+        coverage = membership["registered_claim_coverage"]
+        assert coverage["registered_claim_count"] == 3
+        assert coverage["classification_counts"] == {
+            "cited_only_non_executable": 1,
+            "missing_formal_transport": 1,
+            "open_non_executable": 1,
+        }
+        assert coverage["missing_formal_claim_ids"] == ["fixture_claim"]
+        assert coverage["complete_formal_transport_coverage"] is False
+
+
+def test_explicit_claim_transport_requires_exact_anchor_and_real_interface() -> None:
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        _write_fixture_package(
+            root,
+            challenge_import="Mathlib",
+            solution_body="trivial",
+        )
+        claims_path = root / "docs" / "claims.json"
+        claims = json.loads(claims_path.read_text(encoding="utf-8"))
+        claim = claims["claims"][0]
+        anchor = claim["declarations"][0]
+        claim["comparator_transports"] = [
+            {
+                "package_id": "ExternalVerificationFixture",
+                "interface_name": "Fixture.interface",
+                "source_declarations": [anchor],
+            }
+        ]
+        claims_path.write_text(json.dumps(claims, indent=2) + "\n", encoding="utf-8")
+
+        portfolio = replay.build_portfolio(root)
+        coverage = portfolio.registered_claim_coverage
+        row = next(row for row in coverage["claims"] if row["claim_id"] == "fixture_claim")
+        assert row["classification"] == "linked_transport"
+        assert row["semantic_coverage_status"] == "not_assessed_by_transport_link"
+        assert row["executed_comparator_assurance"] == "not_asserted"
+        assert row["transports"][0]["source_declarations"] == [anchor]
+        assert coverage["complete_formal_transport_coverage"] is True
+        first_digest = coverage["registry_digest"]
+
+        claim["statement"] = "The revised fixture source theorem holds."
+        claims_path.write_text(json.dumps(claims, indent=2) + "\n", encoding="utf-8")
+        assert (
+            replay.build_portfolio(root).registered_claim_coverage["registry_digest"]
+            != first_digest
+        )
+
+        claim["comparator_transports"][0]["source_declarations"] = [
+            {**anchor, "line": 2}
+        ]
+        claims_path.write_text(json.dumps(claims, indent=2) + "\n", encoding="utf-8")
+        _expect_portfolio_error(root, "unregistered source anchor")
+
+        claim["comparator_transports"][0]["source_declarations"] = [anchor]
+        claim["comparator_transports"][0]["interface_name"] = "Fixture.absent"
+        claims_path.write_text(json.dumps(claims, indent=2) + "\n", encoding="utf-8")
+        _expect_portfolio_error(root, "absent Comparator package/interface")
+
+
+def test_main_result_claim_id_links_exact_source_without_claiming_semantics() -> None:
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        _write_fixture_package(root, challenge_import="Mathlib", solution_body="trivial")
+        claims_path = root / "docs" / "claims.json"
+        claims = json.loads(claims_path.read_text(encoding="utf-8"))
+        result = claims["external_verification_packet"]["main_results"][0]
+        result.update(
+            {
+                "claim_id": "fixture_claim",
+                "original_source": "FixtureSource.lean",
+                "original_declaration": "Fixture.sourceTheorem",
+            }
+        )
+        claims_path.write_text(json.dumps(claims, indent=2) + "\n", encoding="utf-8")
+
+        coverage = replay.build_portfolio(root).registered_claim_coverage
+        row = next(row for row in coverage["claims"] if row["claim_id"] == "fixture_claim")
+        assert row["classification"] == "linked_transport"
+        assert row["transports"][0]["link_sources"] == ["main_result_claim_id"]
+        assert row["semantic_coverage_status"] == "not_assessed_by_transport_link"
+
+        result["original_source"] = "WrongSource.lean"
+        claims_path.write_text(json.dumps(claims, indent=2) + "\n", encoding="utf-8")
+        _expect_portfolio_error(root, "lacks one exact registered source anchor")
+
+
+def test_complete_claim_requirement_is_opt_in_and_read_only() -> None:
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        _write_fixture_package(root, challenge_import="Mathlib", solution_body="trivial")
+        incomplete = replay.build_portfolio(root)
+        with mock.patch.object(
+            replay, "build_portfolio", return_value=incomplete
+        ), mock.patch.object(replay, "expected_outputs", return_value={}):
+            assert replay.main(["--check"]) == 0
+            assert replay.main(["--require-complete-claims"]) == 1
+
+        claims_path = root / "docs" / "claims.json"
+        claims = json.loads(claims_path.read_text(encoding="utf-8"))
+        anchor = claims["claims"][0]["declarations"][0]
+        claims["claims"][0]["comparator_transports"] = [
+            {
+                "package_id": "ExternalVerificationFixture",
+                "interface_name": "Fixture.interface",
+                "source_declarations": [anchor],
+            }
+        ]
+        claims_path.write_text(json.dumps(claims, indent=2) + "\n", encoding="utf-8")
+        complete = replay.build_portfolio(root)
+        with mock.patch.object(replay, "build_portfolio", return_value=complete), mock.patch.object(
+            replay, "expected_outputs", return_value={}
+        ):
+            assert replay.main(["--require-complete-claims"]) == 0
+
+
+def test_writer_preserves_equal_output_mtime() -> None:
+    with tempfile.TemporaryDirectory() as temporary:
+        root = Path(temporary)
+        unchanged = root / "ComparatorReplay" / "Challenge.lean"
+        unchanged.parent.mkdir(parents=True)
+        unchanged.write_text("same\n", encoding="utf-8")
+        timestamp = unchanged.stat().st_mtime_ns
+
+        assert replay.write_changed_outputs({unchanged: "same\n"}) == 0
+        assert unchanged.stat().st_mtime_ns == timestamp
+
+        changed = root / "verification" / "comparator-replay-membership.json"
+        assert replay.write_changed_outputs({changed: "new\n"}) == 1
+        assert changed.read_text(encoding="utf-8") == "new\n"
 
 
 def test_new_eligible_package_is_auto_included_and_baselined() -> None:
@@ -479,6 +637,10 @@ def main() -> int:
     test_same_line_attributes_do_not_hide_interfaces()
     test_rejects_project_local_challenge_import()
     test_fixture_membership_projection_does_not_read_live_root()
+    test_explicit_claim_transport_requires_exact_anchor_and_real_interface()
+    test_main_result_claim_id_links_exact_source_without_claiming_semantics()
+    test_complete_claim_requirement_is_opt_in_and_read_only()
+    test_writer_preserves_equal_output_mtime()
     test_new_eligible_package_is_auto_included_and_baselined()
     test_new_non_executable_family_is_auto_classified_with_registry_reason()
     test_targeted_family_cannot_lack_an_executable_package()
