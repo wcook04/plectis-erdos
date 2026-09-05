@@ -2,28 +2,17 @@
   "schema": "plectis_strongest_result_activation_map_v2",
   "problem_id": "erdos_243",
   "status": "open",
-  "source_checkpoint": "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1",
+  "source_checkpoint": "c8a36d24466dfce8c6b7b2e372bb5d0bedb8420f",
   "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the parent theorem. Route choice remains unrestricted.",
   "results": [
     {
-      "result_id": "product_cleared_tail_dynamics",
-      "status": "lean_checked",
       "source_result_id": "product_cleared_tail_dynamics",
-      "source_statement_sha256": "ad4b1a11c715aa8e48247d7e74a12f762ec833043f78e278106535f12f51e791",
       "exact_statement": "C_{n+1}=a_n C_n-D_n=C_n-E_n and Delta_n C_{n+1}=a_n^2 E_n-E_{n+1}.",
-      "hypotheses": "lean_checked",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "status": "lean_checked",
+      "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
         "research_corpus/Erdos243/problem/ReciprocalTailRigidity.lean"
-      ],
-      "superseded_by": null
+      ]
     },
     {
       "source_result_id": "centered_zero_forces_sylvester_step",
@@ -31,29 +20,17 @@
       "status": "lean_checked",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
         "research_corpus/Erdos243/problem/ReciprocalTailRigidity.lean"
       ]
     },
     {
-      "result_id": "eventual_centered_zero_forces_sylvester_recurrence",
-      "status": "lean_checked",
       "source_result_id": "eventual_centered_zero_forces_sylvester_recurrence",
-      "source_statement_sha256": "c4d062a5fef8c36b6e2a11c5b80d95401d2b1ad06335aa3a7084466dc0684dbd",
       "exact_statement": "Along the exact product-cleared D/C orbit, eventual centered-state zero plus eventual nonvanishing of the next tail state forces a_(n+1)=a_n^2-a_n+1 eventually.",
-      "hypotheses": "lean_checked",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "status": "lean_checked",
+      "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
         "research_corpus/Erdos243/problem/ReciprocalTailRigidity.lean"
-      ],
-      "superseded_by": null
+      ]
     },
     {
       "source_result_id": "scale_equivariance",
@@ -61,7 +38,6 @@
       "status": "lean_checked",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
         "research_corpus/Erdos243/problem/ReciprocalTailRigidity.lean"
       ],
       "unresolved_declaration_locators": [
@@ -201,24 +177,13 @@
       ]
     },
     {
-      "result_id": "subexponential_tail_from_near_unit_growth",
-      "status": "lean_checked",
       "source_result_id": "subexponential_tail_from_near_unit_growth",
-      "source_statement_sha256": "cc4614e02bbfc9dfe50cb49e56220e30931462b0e1de8106e3d016d76d219494",
       "exact_statement": "If every prescribed integer rate eventually bounds one-step growth by q*C_(n+1)<(q+1)*C_n, then every fixed power C_n^K is eventually below 2^n. The proof chooses q with (q+1)^K<2*q^K, iterates the denominator-cleared inequality, and absorbs the finite prefix by geometric domination.",
-      "hypotheses": "lean_checked",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "status": "lean_checked",
+      "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
         "research_corpus/Erdos243/problem/ReciprocalTailRigidity.lean"
-      ],
-      "superseded_by": null
+      ]
     },
     {
       "source_result_id": "sublinear_tail_gcd_growth_from_normalized_vanishing",
@@ -257,23 +222,13 @@
       ]
     },
     {
-      "result_id": "square_cancellation_normal_form",
-      "status": "lean_checked_explicit_factor_core_wrapper_open",
       "source_result_id": "square_cancellation_normal_form",
-      "source_statement_sha256": "3c74f70599d2b47fd468a03322727ed2f5b43229de01b8549c3f8a858b59c1b3",
       "exact_statement": "The source kernel-checks the quotient overlap formula and the quotient-free normal-form core: from a=d*alpha, q=d*omega, gcd(alpha,omega)=1, c=gcd(omega,d), d=b*c, and h=gcd(q,a^2), derive h=b*c^2, a=b*c*alpha, gcd(c,alpha)=1, denominator transport, c=v/gcd(v,vNext), and lcm(a,v)=c*vNext. A single convenience wrapper that manufactures every named quotient factor remains open, but the mathematical identities themselves are checked.",
-      "hypotheses": "lean_checked_explicit_factor_core_wrapper_open",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "status": "lean_checked_explicit_factor_core_wrapper_open",
+      "superseded_by": null,
       "public_authority_paths": [
         "research_corpus/Erdos243/problem/DynamicCancellation.lean"
-      ],
-      "superseded_by": null
+      ]
     },
     {
       "source_result_id": "cancellation_free_dual_remainder",
@@ -321,23 +276,13 @@
       ]
     },
     {
-      "result_id": "excursion_payment_multiplicative_accumulation",
-      "status": "lean_checked",
       "source_result_id": "excursion_payment_multiplicative_accumulation",
-      "source_statement_sha256": "16636692ab06b17916292d20ef91cddeb55faee073f54233ce354c6a44be3ffa",
       "exact_statement": "For any sequence of exact block scales Lambda_i satisfying Lambda_i*G_(t_i)=G_(t_(i+1)), the product of the first m payments times G_(t_0) is exactly G_(t_m). If G is bounded by a power-vs-2^n subexponential tail state C, then every fixed power of that whole payment product is eventually below 2^(t_m). This is the division-free multiplicative form of sublinear logarithmic cancellation mass. It budgets all sparse payments but does not itself force a contradiction.",
-      "hypotheses": "lean_checked",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "status": "lean_checked",
+      "superseded_by": null,
       "public_authority_paths": [
         "research_corpus/Erdos243/problem/DynamicCancellation.lean"
-      ],
-      "superseded_by": null
+      ]
     },
     {
       "source_result_id": "square_residue_record_payment",
@@ -376,23 +321,13 @@
       ]
     },
     {
-      "result_id": "summable_negative_mass_sylvester_consumer",
-      "status": "lean_checked",
       "source_result_id": "summable_negative_mass_sylvester_consumer",
-      "source_statement_sha256": "de4b5e4c59cd0db0729a821eb20a27257d0259ef254f63ba8529f507306a4651",
       "exact_statement": "Along the exact product-cleared reciprocal-tail D/C orbit, positive natural tail states, division-free normalized centered-state vanishing, and summability of natAbs(min(E_n,0))/C_n force the original denominator sequence to satisfy a_(n+1)=a_n^2-a_n+1 eventually. This paper-facing theorem directly composes finite-negative-mass termination with the checked centered-zero-to-Sylvester endpoint; no extra eventual nonvanishing hypothesis is required because positivity supplies it.",
-      "hypotheses": "lean_checked",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "status": "lean_checked",
+      "superseded_by": null,
       "public_authority_paths": [
         "research_corpus/Erdos243/problem/SparseResetRecovery.lean"
-      ],
-      "superseded_by": null
+      ]
     },
     {
       "source_result_id": "bounded_tail_normalized_vanishing_consumer",
@@ -440,23 +375,13 @@
       ]
     },
     {
-      "result_id": "primitive_complete_prefix_overlap",
-      "status": "lean_checked",
       "source_result_id": "primitive_complete_prefix_overlap",
-      "source_statement_sha256": "20ce0627fe84f81cc4569eb37974013a82969de9b3794cabb5c1cfe79baef131",
       "exact_statement": "For a complete primitive prefix with v_n=Q*A_n and centered error e_n=Q*A_n-(a_n-1)u_n, gcd(A_n,a_n-1) divides e_n. Consequently every earlier digit factor a_j with j<n contributes gcd(a_j,a_n-1) dividing e_n. This is an exact prefix-coherence constraint, not yet an unbounded anti-shadowing theorem.",
-      "hypotheses": "lean_checked",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "status": "lean_checked",
+      "superseded_by": null,
       "public_authority_paths": [
         "research_corpus/Erdos243/problem/PrimitivePrefixRigidity.lean"
-      ],
-      "superseded_by": null
+      ]
     },
     {
       "source_result_id": "reset_recovery_alignment_quantitative",
@@ -468,8 +393,10 @@
     {
       "source_result_id": "primitive_crt_limsup_rise_constant",
       "exact_statement": "The return proposes a strengthened primitive CRT consequence with limsup rise constant at least 1/log 2. The derivation depends on additional global growth bridges and is not used as a checked theorem.",
-      "status": "advisory_derivation_pending_growth_bridges_and_lean",
-      "superseded_by": null,
+      "status": "superseded_by_record_excess_dichotomy_inclusive_loglog",
+      "superseded_by": [
+        "record_excess_dichotomy_inclusive_loglog"
+      ],
       "public_authority_paths": []
     },
     {
@@ -482,23 +409,13 @@
       ]
     },
     {
-      "result_id": "primitive_square_root_feedback",
-      "status": "lean_checked",
       "source_result_id": "primitive_square_root_feedback",
-      "source_statement_sha256": "9e646f6a4a7e1228a948aed4af5b6f411468c69ca08b728c28104586a31dbc2d",
       "exact_statement": "On a cancellation-free step, factorizations a*e=L*uNext+t and a*t=r*uNext+eNext, together with the square defect equation, force Delta=a*L+r. The same two quotients generate v=(a-1+L)uNext+t and aNext=a(a-1+L)+(r+1). The exact norm identity t^2-e*eNext=(r*e-L*t)uNext is also kernel-checked.",
-      "hypotheses": "lean_checked",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "status": "lean_checked",
+      "superseded_by": null,
       "public_authority_paths": [
         "research_corpus/Erdos243/problem/FeedbackRealizability.lean"
-      ],
-      "superseded_by": null
+      ]
     },
     {
       "source_result_id": "artificial_square_unit_not_realizable",
@@ -528,23 +445,13 @@
       ]
     },
     {
-      "result_id": "returned_error_exact_telescope",
-      "status": "lean_checked",
       "source_result_id": "returned_error_exact_telescope",
-      "source_statement_sha256": "4551039b36862ceb910fe1329615cca057128d77218aecaa232938cb5dc872cd",
       "exact_statement": "For z=x-1/b, xNext=x-1/a, a=b+1, and bNext=a*b+Delta, the exact rational identity zNext=z+Delta/(a*b*bNext) holds whenever the three denominators are nonzero. This is an exact coordinate identity, not a well-founded termination measure.",
-      "hypotheses": "lean_checked",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "status": "lean_checked",
+      "superseded_by": null,
       "public_authority_paths": [
         "research_corpus/Erdos243/problem/GlobalLcmHeight.lean"
-      ],
-      "superseded_by": null
+      ]
     },
     {
       "source_result_id": "returned_error_eventual_contraction",
@@ -559,7 +466,6 @@
       "status": "lean_checked_arithmetic_consumer_and_exact_polynomial_certificate",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
         "research_corpus/Erdos243/problem/CleanRecoveryLengthCounterexample.lean"
       ]
     },
@@ -569,7 +475,6 @@
       "status": "lean_checked_arithmetic_consumer_and_exact_composite_modulus_certificate",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
         "research_corpus/Erdos243/problem/CleanRecoveryLengthCounterexample.lean"
       ]
     },
@@ -579,7 +484,6 @@
       "status": "lean_checked_final_payment_and_exact_composite_modulus_certificate",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
         "research_corpus/Erdos243/problem/CleanRecoveryLengthCounterexample.lean"
       ]
     },
@@ -589,7 +493,6 @@
       "status": "lean_checked_transition_identities_and_exact_composite_modulus_certificate",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
         "research_corpus/Erdos243/problem/CleanRecoveryLengthCounterexample.lean"
       ]
     },
@@ -599,7 +502,6 @@
       "status": "lean_checked_transition_identities_and_exact_complete_cylinder_certificate",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
         "research_corpus/Erdos243/problem/CleanRecoveryLengthCounterexample.lean"
       ]
     },
@@ -609,7 +511,6 @@
       "status": "lean_checked_transition_identities_and_exact_complete_cylinder_certificate",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
         "research_corpus/Erdos243/problem/CleanRecoveryLengthCounterexample.lean"
       ]
     },
@@ -619,7 +520,6 @@
       "status": "lean_checked_terminal_cascade_and_exact_complete_vectorized_cylinder",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
         "research_corpus/Erdos243/problem/CleanRecoveryLengthCounterexample.lean"
       ]
     },
@@ -629,7 +529,6 @@
       "status": "lean_checked_cascade_identities_and_exact_affine_complete_cylinder",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
         "research_corpus/Erdos243/problem/CleanRecoveryLengthCounterexample.lean"
       ]
     },
@@ -639,7 +538,6 @@
       "status": "lean_checked_transition_identities_and_exact_affine_complete_cylinder",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
         "research_corpus/Erdos243/problem/CleanRecoveryLengthCounterexample.lean"
       ]
     },
@@ -649,7 +547,6 @@
       "status": "lean_checked_transition_identities_and_exact_compressed_affine_residue_count",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
         "research_corpus/Erdos243/problem/CleanRecoveryLengthCounterexample.lean"
       ]
     },
@@ -659,7 +556,6 @@
       "status": "lean_checked_transition_identities_and_exact_weighted_key_composite_crt_count",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthCounterexample.lean",
         "research_corpus/Erdos243/problem/CleanRecoveryLengthCounterexample.lean"
       ]
     },
@@ -739,7 +635,6 @@
       "status": "lean_checked",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowRiseBarrier.lean",
         "research_corpus/Erdos243/problem/SlowRiseBarrier.lean"
       ]
     },
@@ -749,7 +644,6 @@
       "status": "lean_checked",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowRiseBarrier.lean",
         "research_corpus/Erdos243/problem/SlowRiseBarrier.lean"
       ]
     },
@@ -759,7 +653,6 @@
       "status": "lean_checked",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowRiseBarrier.lean",
         "research_corpus/Erdos243/problem/SlowRiseBarrier.lean"
       ]
     },
@@ -769,49 +662,26 @@
       "status": "lean_checked",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowRiseBarrier.lean",
         "research_corpus/Erdos243/problem/SlowRiseBarrier.lean"
       ]
     },
     {
-      "result_id": "slow_negative_part_rigidity",
-      "status": "ordinary_proof_over_lean_core",
       "source_result_id": "slow_negative_part_rigidity",
-      "source_statement_sha256": "2d09e76018e610e8a5fb85bbc91f39b42a7d9ea3150a05e8e5afd6f6d9f4e3db",
       "exact_statement": "Under the exact natural dynamics, positivity and division-free normalised vanishing, if for some delta in (0,1) every negative centred error eventually satisfies -E_n <= (1 - delta) log2 log2 C_n, then E_n = 0 eventually and a_{n+1} = a_n^2 - a_n + 1 eventually. The bounded-negative-part theorem is the constant-bound special case. Proof (Theorem 4 of the note): persistence bounds every multiplier overlap gcd(a_n, D_n) by the next negative magnitude, so at most log2 log2 C_n + 1; a burn count on the primes below that bound shows that all but O(T) indices in [T, 2^T] carry a new part above any fixed threshold; B such new parts are pairwise coprime divisors of D_{n_B+1} with product P satisfying log2 log2 (2P + B) <= 2T + B + O(1); the Lean landing theorem then contradicts the slow bound.",
-      "hypotheses": "ordinary_proof_over_lean_core",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "status": "ordinary_proof_over_lean_core",
+      "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowNegativePartRigidity.md",
         "research_corpus/Erdos243/problem/SlowNegativePartRigidity.md"
-      ],
-      "superseded_by": null
+      ]
     },
     {
-      "result_id": "counterexample_loglog_negative_excursions",
-      "status": "ordinary_proof_over_lean_core",
       "source_result_id": "counterexample_loglog_negative_excursions",
-      "source_statement_sha256": "6a080bfd0346f5aecc52cef46bfeee8a68ba0ee8be7b93abebf86dbbf4c3a4ff",
       "exact_statement": "For the canonical state of any counterexample to Erdos #243, limsup_n (-E_n)_+ / log2 log2 C_n >= 1, and gcd(a_n, D_n) <= -E_t at the first negative index t > n. This is a quantitative strengthening of the frontier-profile clause limsup (-E_n) = infinity.",
-      "hypotheses": "ordinary_proof_over_lean_core",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "status": "ordinary_proof_over_lean_core",
+      "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowNegativePartRigidity.md",
         "research_corpus/Erdos243/problem/SlowNegativePartRigidity.md"
-      ],
-      "superseded_by": null
+      ]
     },
     {
       "source_result_id": "erdos_straus_quantity_bounded_form",
@@ -819,171 +689,143 @@
       "status": "ordinary_proof",
       "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowNegativePartRigidity.md",
         "research_corpus/Erdos243/problem/SlowNegativePartRigidity.md"
       ]
     },
     {
-      "result_id": "one_over_n_threshold_verified",
-      "status": "ordinary_proof",
       "source_result_id": "one_over_n_threshold_verified",
-      "source_statement_sha256": "2416fb1c5784c18191a58871cdafde06ca1a703a754e1376bed173e00d32e9c8",
       "exact_statement": "If a_{n+1}/a_n^2 -> 1, sum 1/a_n is rational and limsup n (a_n^2/a_{n+1} - 1)_+ < 1, then the sequence is eventually Sylvester. The constant 1 is exactly the boundary of the Erdos-Straus method: the constant-negative template e_n = -1, c_n = c + n has n(-e_n)/c_n -> 1 and is excluded only by the prime-lock theorem. The hypothesis forces (-e_n)_+ <= C n^{-delta} -> 0, hence e_n >= 0 eventually (Koizumi Prop. 19(2)).",
-      "hypotheses": "ordinary_proof",
-      "named_consumers": [
-        "erdos_243_parent"
+      "status": "superseded_by_critical_boundary_integer_rounding_rigidity",
+      "superseded_by": [
+        "critical_boundary_integer_rounding_rigidity"
       ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
       "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowNegativePartRigidity.md",
         "research_corpus/Erdos243/problem/SlowNegativePartRigidity.md"
-      ],
-      "superseded_by": null
+      ]
     },
     {
-      "result_id": "cumulative_overlap_debt_divides_tail_numerator",
-      "status": "lean_checked",
       "source_result_id": "cumulative_overlap_debt_divides_tail_numerator",
-      "source_statement_sha256": "a5ee1cd222527200af3a21b5b43bb8d18d8bcf407d737d7676aac4ab0f51475b",
       "exact_statement": "With the unreduced tail C_n/D_n, the cumulative LCM scale Lambda_n and the overlap debt M_n=D_n/Lambda_n, the debt divides both the tail numerator and the centred state: M_n|C_n and M_n|E_n. Hence U_n=C_n/M_n and V_n=Lambda_n-(a_n-1)U_n are integral and satisfy the exact system rho_n U_(n+1)=U_n-V_n with rho_n=gcd(Lambda_n,a_n). The divisibility follows from the additive update alone: M_(n+1)=M_n rho_n divides a_n C_n through rho_n|a_n and divides D_n through rho_n|Lambda_n with M_n Lambda_n=D_n, so no subtraction and no positivity hypothesis enters.",
-      "hypotheses": "lean_checked",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "status": "lean_checked",
+      "superseded_by": null,
       "public_authority_paths": [
         "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CumulativeLcmTransfer.lean"
-      ],
-      "superseded_by": null
+      ]
     },
     {
-      "result_id": "lcm_freshness_budget_and_pairwise_coprimality",
-      "status": "lean_checked",
       "source_result_id": "lcm_freshness_budget_and_pairwise_coprimality",
-      "source_statement_sha256": "2c14c308122b450884e3f314f9a2bdf634f80e58ae26f116801f515c2f6f5e8f",
       "exact_statement": "Counting the steps with rho_n>1 by R(n) gives 2^R(n)<=M_n, and with 0<C_n also 2^R(n)<=C_n. Composed with the landed subexponential tail bound this gives R(n)=o(n): the LCM-fresh steps have density one. Any step with rho_j=1 has a_j coprime to every earlier multiplier, so the fresh multipliers form a pairwise-coprime family of whole moduli already present in the cumulative denominator. Freshness at the earlier index is not needed; only rho_j=1 at the later.",
-      "hypotheses": "lean_checked",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
-      "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CumulativeLcmTransfer.lean"
-      ],
-      "superseded_by": null
-    },
-    {
-      "result_id": "normalised_coordinate_fresh_block_barrier",
       "status": "lean_checked",
-      "source_result_id": "normalised_coordinate_fresh_block_barrier",
-      "source_statement_sha256": "6e967f8abefa367ca00cc1c7d4df076b069b9db6c07550fac3d6fd66e57516b8",
-      "exact_statement": "Given B pairwise-coprime moduli each exceeding B, all dividing Lambda_s for every s at or beyond T, the exact normalized step and centring identities, U_T below their product, a negative-part bound -B<=V_n on states with U_n below twice that product plus B, and U_n->infinity, a contradiction follows at the first crossing. The instantiated form takes the moduli to be the multipliers at LCM-fresh indices before T.",
-      "hypotheses": "lean_checked",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "superseded_by": null,
       "public_authority_paths": [
         "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CumulativeLcmTransfer.lean"
-      ],
-      "superseded_by": null
+      ]
     },
     {
-      "result_id": "fresh_prime_first_contact_requires_single_step_valuation_resonance",
-      "status": "ordinary_proof_verified_not_lean_formalized",
+      "source_result_id": "normalised_coordinate_fresh_block_barrier",
+      "exact_statement": "Given B pairwise-coprime moduli each exceeding B, all dividing Lambda_s for every s at or beyond T, the exact normalized step and centring identities, U_T below their product, a negative-part bound -B<=V_n on states with U_n below twice that product plus B, and U_n->infinity, a contradiction follows at the first crossing. The instantiated form takes the moduli to be the multipliers at LCM-fresh indices before T.",
+      "status": "lean_checked",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CumulativeLcmTransfer.lean"
+      ]
+    },
+    {
       "source_result_id": "fresh_prime_first_contact_requires_single_step_valuation_resonance",
-      "source_statement_sha256": "cb5d4890c71ca52ad65ced749cea4ceaf59e4a58ecbd8f3923ccc3031db678d0",
       "exact_statement": "If a_j is LCM-fresh and p^e exactly divides a_j, first later contact p|U_t requires t>=j+2 and v_p(a_(t-1))=v_p(Lambda_(t-1))>=e. Thus the entire source prime power must be paid in one overlap step, with residual-unit cancellation modulo p; many smaller payments cannot create first contact. Whole-modulus retirement and disjoint CRT-wall cumulative bounds follow.",
-      "hypotheses": "ordinary_proof_verified_not_lean_formalized",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
-      "public_authority_paths": [
-        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/R2CumulativePayment.md"
-      ],
-      "superseded_by": null
-    },
-    {
-      "result_id": "strict_rise_loglog_lcm_ordinary_rigidity",
       "status": "ordinary_proof_verified_not_lean_formalized",
-      "source_result_id": "strict_rise_loglog_lcm_ordinary_rigidity",
-      "source_statement_sha256": "71bde3500def1b86c8e389724951b9c299f1a9317e83058ddefd416bc717f37c",
-      "exact_statement": "Under the canonical exact LCM orbit and quadratic-growth hypotheses, if some delta in (0,1) bounds -V_n by (1-delta) log_2 log_2 max(4,U_n) at every sufficiently late strict rise, the orbit is eventually zero. The exact Q_n bridge shows finite upper limsup Q_n/M_n implies eventual Sylvester recurrence. Two consecutive gcd-payment-free steps force -u_n u_(n+2) to be a unit square modulo u_(n+1).",
-      "hypotheses": "ordinary_proof_verified_not_lean_formalized",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Re-derivation of this supplied result as the new parent-proof contribution."
-      ],
-      "why_it_matters": "Use this exact result and its hypotheses in the global arithmetic proof; conditional termination criteria do not establish their own hypotheses.",
+      "superseded_by": null,
       "public_authority_paths": [
         "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/R2CumulativePayment.md"
-      ],
-      "superseded_by": null
-    },
-    {
-      "result_id": "clean_prefix_length_payment_false",
-      "status": "exact_no_go",
-      "exact_statement": "A clean negative prefix of length eight can be followed by gcd payment two, so payment >= 2^length is false.",
-      "hypotheses": "Exact finite integer orbit witness; not an infinite canonical counterexample.",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Length-only or scalar-only universal repair charge."
-      ],
-      "why_it_matters": "Any global argument must retain unbounded prefix arithmetic, source primes or other changing state, not just a finite recovery length.",
-      "public_authority_paths": [
-        "research_corpus/Erdos243/problem/CleanPrefixTinyResetComputationalLab.md"
       ]
     },
     {
-      "result_id": "clean_recovery_length_and_scalar_descent_false",
-      "status": "exact_no_go",
-      "exact_statement": "The exact primitive orbit starting at (u,v)=(11,362) has a complete clean recovery of length nine, payment four, and the same endpoint normalized negative magnitude 1/11. Neither a universal payment >= length bound nor strict descent of the scalar negative magnitude over every recovery holds.",
-      "hypotheses": "Exact finite integer orbit witness; not an infinite canonical counterexample.",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Length-only or scalar-only universal repair charge."
-      ],
-      "why_it_matters": "Any global argument must retain unbounded prefix arithmetic, source primes or other changing state, not just a finite recovery length.",
+      "source_result_id": "strict_rise_loglog_lcm_ordinary_rigidity",
+      "exact_statement": "Under the canonical exact LCM orbit and quadratic-growth hypotheses, if some delta in (0,1) bounds -V_n by (1-delta) log_2 log_2 max(4,U_n) at every sufficiently late strict rise, the orbit is eventually zero. The exact Q_n bridge shows finite upper limsup Q_n/M_n implies eventual Sylvester recurrence. Two consecutive gcd-payment-free steps force -u_n u_(n+2) to be a unit square modulo u_(n+1).",
+      "status": "ordinary_proof_verified_not_lean_formalized",
+      "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/problem/CleanRecoveryLengthComputationalLab.md"
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/R2CumulativePayment.md"
       ]
     },
     {
-      "result_id": "two_recovery_length_payment_false",
-      "status": "exact_no_go",
-      "exact_statement": "Starting at (u,v)=(19,14684), two consecutive clean recoveries each have length three and payment two; total payment four is less than total length six. A universal bound based only on those lengths and payments is false.",
-      "hypotheses": "Exact finite integer orbit witness; not an infinite canonical counterexample.",
-      "named_consumers": [
-        "erdos_243_parent"
-      ],
-      "supersedes": [
-        "Length-only or scalar-only universal repair charge."
-      ],
-      "why_it_matters": "Any global argument must retain unbounded prefix arithmetic, source primes or other changing state, not just a finite recovery length.",
+      "source_result_id": "critical_boundary_integer_rounding_rigidity",
+      "exact_statement": "Integer-rounding rigidity at the critical rate boundary. (a) LINEAR BARRIER: let F_n > 0, r_n = F_(n+1)/F_n, eta_n = n(r_n - 1) - 1 eventually positive and nonincreasing to 0, and let X_n be positive integers with X_(n+1) <= r_n X_n; if M = ceil(X_n/n) satisfies M eta_n < 1 at some index n, then X_k <= M k and X_(k+1) - X_k <= M for every k >= n (five-line induction, reusable integer trap). (b) ENVELOPE RIGIDITY (r01 Theorem 2): under (8) eta_n > 0 eventually nonincreasing to 0 with d_n = F_(n+2) - 2F_(n+1) + F_n > 0, (9) n^2 d_n/(F_n eta_n) -> 1, (10) d_(n+1)/d_n = 1 - 1/n + O(eta_n/n + 1/n^2), (11) sum 1/F_n = infinity, any positive integers with c_(n+1) <= r_n c_n eventually satisfy c_n <= M n and (c_(n+1) - c_n)_+ <= M eventually. (c) CRITICAL BOUNDARY (r01 Theorem 1): if a_(n+1)/a_n^2 -> 1, sum 1/a_n is rational, and eventually a_n^2/a_(n+1) <= F(n+1)/F(n) - K_0/a_n for such an F, then C_n <= M n and (-E_n)_+ <= M eventually, hence a_(n+1) = a_n^2 - a_n + 1 eventually; in particular under delta_n <= 1/n + sum_(j<=m) 1/(n l_1(n) ... l_j(n)) for every fixed m >= 1, i.e. at 1/n plus every finite iterated-logarithm correction. The load-bearing inequality (16) has SHARP constant 1/2 - 1/(16R) for every R > 1/4 (r01 prints 1/4 after discarding a completed square), so the divergence constant at R_n -> 1 is 7/16, not 1/4; both (15) and the sharp (16) are tight, minimum slack exactly 0 on an exact rational grid.",
+      "status": "ordinary_proof_over_lean_core",
+      "superseded_by": null,
       "public_authority_paths": [
-        "research_corpus/Erdos243/problem/TwoCleanRecoveriesComputationalLab.md"
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_erdos243_integer_rounding_barrier.py"
+      ]
+    },
+    {
+      "source_result_id": "shifted_excess_mass_obstruction",
+      "exact_statement": "B-shifted excess-mass obstruction (r01 Theorem 4 and (47)). On a canonical orbit that is not eventually Sylvester, for every integer B >= 0 there are kappa_B > 0 and K_B with sum_(n<T) (-E_n - B)_+ / C_n >= kappa_B log C_T - K_B for all large T; hence sum_n (-E_n - B)_+ / C_n = infinity for every fixed B, and conversely finiteness of that sum for SOME integer B implies a_(n+1) = a_n^2 - a_n + 1 eventually. Two exhaustive cases: a block modulus m dividing C_s and D_s persists into every later E_n, so every positive jump is a positive multiple of m and kappa_B = 1 - B/m; otherwise the orbit avoids the shifted CRT block [x, x+B) at height x in [P, 2P), whose walls tau_k = x + kP + B satisfy H(t) = (1/P) log t + O(1) and where a step crossing h >= 1 walls has d - c >= (h-1)P + B + 2, giving kappa_B = 1/P. SHARPENING (this pass): r01 uses h <= d - c - B where its own display supplies h - 1 <= (d - c - B - 2)/P, so sum_(n<T) (-E_n - B)_+/C_n >= log C_T - O(1) - P sum_(n<T) 1/C_n and the Case 2 constant is 1 - o(1) on any orbit with C_n growing at least geometrically; and the moduli need not be whole fresh multipliers, since any B+1 pairwise-coprime divisors of D_N exceeding B+1 serve, distinct primes dividing D_N being the smallest choice.",
+      "status": "ordinary_proof_over_lean_core",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_erdos243_record_excess_dichotomy.py"
+      ]
+    },
+    {
+      "source_result_id": "primitive_record_two_unit_rigidity",
+      "exact_statement": "Primitive record two-unit rigidity (r07 sections 1-5, canonical form of the r03/r05/r08 family). Let a_n be strictly increasing positive integers with a_(n+1)/a_n^2 -> 1 and sum 1/a_n rational; write u_n/v_n for the reduced tail and R_n = max_(k<=n) u_k. If at every sufficiently late RECORD-SETTING step (u_(n+1) > R_n) one has u_(n+1) - u_n <= 2, then a_(n+1) = a_n^2 - a_n + 1 eventually. No hypothesis is imposed at non-record steps and no bound of any kind is imposed on the cancellation factors h_n. Ingredients: (i) the exact valuation law nu_p(v') = nu_p(a) + nu_p(v) - min(nu_p(w), nu_p(a) + nu_p(v)), so a valuation drop from l needs p^(l+1) | w and full erasure needs p^(2l) | w; (ii) protection, P = p^l | v_s and w_n < pP throughout an interval keeps P | v_n and p not dividing u_n; (iii) the odd cut, where the first crossing of an odd multiple H of p is forced to be a global record, p | v_tau kills the landing u_tau = H, and the only jump-2 crossing (H-1, H+1) has both endpoints even against gcd(u_n, u_(n+1)) = 1; (iv) the fresh odd large prime-power supply. COROLLARY LATTICE, in increasing hypothesis strength: e_n >= -2 at every step (r03 A) implies (u_(n+1) - u_n)_+ <= 2 at every step (r08 Theorem 1, identical to r05 B) implies every record jump at most 2 (r07); so this theorem implies all three. r08 Corollary 6 is the EQUIVALENCE 'eventual Sylvester recurrence iff #{n : h_n = 1 and e_n <= -3} < infinity'. r08 Corollary 10 is an equivalence, not merely a sufficient criterion: e_n = -q Q_n/G_n + o(1) exactly, so limsup q Q_n/G_n < 3 transcribes e_n >= -2 eventually. Separate axis needing the hypothesis at every clean step: odd lattice (r08 Thm 5), one-unit lattice (r08 Cor 8 = r03 C), eventual periodicity (r03 B = r08 Cor 9), finite cyclic menus (r08 Thm 7); each weakens to epoch records only. THREE-RISE FIXTURES: exact families from r03 section 8 (one step), r07 section 8 (p^2 | v, two steps) and r08 section 6 (p^3 | v, two steps), with the stated instances (10, 10527, 1054) and (10, 89177, 8919, -3, 1) reproducing exactly. LEAN: PrimitiveRecordBarrier.lean, declarations primitive_valuation_no_drop, protectedPrimePower_persists, odd_record_cut, exists_oddMultiple_trapHeight, numerator_bounded_of_oddPrimePower, centeredZero_forces_unit, sylvesterStep_of_centeredZero_pair, recordRiseTwo_sylvesterNext_eventually.",
+      "status": "lean_checked_prime_supply_bridge_open",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_erdos243_record_two_unit_barrier.py"
+      ]
+    },
+    {
+      "source_result_id": "record_excess_dichotomy_inclusive_loglog",
+      "exact_statement": "Record-excess dichotomy and the inclusive log-log boundary (r04). Write H_n = max_(j<=n) C_j, B_n = H_n - C_n, r_n = H_(n+1) - H_n, ell(x) = log2 log2 max(4, x), K = limsup_n (H_(n+1) - H_n)/ell(H_n). (1) DRAWDOWN LADDER: r_n = (-E_n - B_n)_+ and B_(n+1) = (B_n + E_n)_+, so 0 <= r_n <= (-E_n)_+ and sum_(j<n) r_j = (C_n - C_N) + B_n. (2) RECORD TRAP: a divisor of C_t and D_t at a record locks into every later record increment, so a pairwise-coprime block of moduli exceeding B and dividing D_T contradicts r_n <= B below height 2P + B; the record-increment trigger is strictly better than the corpus negative-error trigger since r_s <= (-E_s)_+. (3) RESCALING: sup_n G_n = infinity implies K = infinity, so K < infinity forces G_n constant on a tail and hence a genuinely primitive tail on which ALL multipliers are pairwise coprime with no counting argument. (4) EULER AMPLIFICATION: pre-sieving the CRT block with x = 0 mod v_N makes a block of length B cost only phi(v_N)/v_N * B fresh moduli, giving K_u >= v_N/phi(v_N) with v_N/phi(v_N) strictly increasing along the tail, so the supremum is never attained and the inequality is strict. DICHOTOMY: K = 0 or K > 1; every counterexample has limsup (H_(n+1) - H_n)/ell(H_n) >= g prod_(p in P)(1 - 1/p)^(-1) > 1 STRICTLY, hence limsup (-E_n)_+/ell(C_n) > 1 strictly, and the INCLUSIVE boundary limsup (-E_n)_+/ell(C_n) <= 1 already forces eventual Sylvester recurrence. Consequence: K < infinity on a nonterminating orbit forces sum over the primes of the stabilised primitive denominator of 1/p to converge. SHARP GAP CONSTANT (r04 Prop 8): for pairwise-coprime m_0 < m_1 < ... >= 2 with ell(m_j) = j + O(1) and sigma = prod (1 - 1/m_j), the whole-modulus-avoiding walk has limsup (u_(n+1) - u_n)/ell(u_n) = sigma^(-1) exactly; the FERMAT family m_j = 2^(2^j) + 1 has prod_(j<J) m_j = 2^(2^J) - 1, sigma_J -> 1/2 and gap constant exactly 2, with m_(j+1) = m_j^2 - 2 m_j + 2 differing from the Sylvester recurrence.",
+      "status": "ordinary_proof_over_lean_core",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_erdos243_record_excess_dichotomy.py"
+      ]
+    },
+    {
+      "source_result_id": "polynomial_profile_rigidity",
+      "exact_statement": "Polynomial-profile rigidity (r02 and r06 merged). For integer sequences with C_(n+1) = a_n C_n - D_n and D_(n+1) = a_n D_n: (A) EXACT QUADRATIC PROFILES ARE IMPOSSIBLE. There are no integers A >= 1, b, c, N with C_n = A(n^2 + bn + c) for all n >= N, and none with C_n = A(2n^2 + bn + c). An exact polynomial profile pins gcd(C_n, D_n) = A d(P) with d(P) the fixed divisor, so u_n = P(n)/d(P), all tail multipliers are pairwise coprime, and adjacent coprimality holds at every integer argument; the parity lemma forces the normalised leading coefficient into {1, 2}, leaving six translation classes k^2, k^2+k+1, k^2+k-1, 2k^2-1, 2k^2+2k+1, 2k^2+2k-1, carrying respectively the forbidden numerator words (1,0,1) mod 3, (1,0,1) mod 3, (7,8,0,5) mod 11, (3,3,0,1) mod 7, (1,0,3) mod 5, (2,0,2) mod 3, each unrealizable by the exact finite-state transport and each modulus MINIMAL over all moduli <= 40 and lengths 3-4. (B) RATIONAL-ROOT AND INTERSECTIVE PROFILES, merged density form neither return states: if P in Q[X] is nonconstant with a root modulo all but finitely many primes, then lower-density{n : C_n != P(n)} >= 1/p for some prime p dividing some D_t; in particular no eventual polynomial profile of any degree has a rational root. (C) DENSITY-ONE REPAIRS ARE IMPOSSIBLE: for every monic integer quadratic Q there is a forbidden block of length 3 or 4 at a modulus m >= 3, and for P = lambda Q with lambda rational, lower-density{n : C_n != P(n)} >= 1/m; monicity is unused in the proof, so this holds for every integer quadratic admitting a forbidden block. (D) LINEAR ERROR TEMPLATES: no exact integer orbit satisfies E_n = -s n + beta eventually for s = 1..7 and any beta, since 2 C_n is then the integer quadratic (s, -(s+2beta), 2K). RING PRIMITIVES: double zeros are absorbing; c_1 = 0 forces -c_0 c_2 = (a_0 c_0)^2; and c_2 = 0 forces the division-free quartic d_0^2 (d_0 + c_1)^2 + c_0^2 c_1 c_3 = 0, which separates a true feedback orbit from an independently chosen square root (the mod-11 word passes the square test and fails the quartic). CORRECTED CONSTANTS: for x^2+x+1 the certificate (1,0,1) mod 3 gives density 1/3 in place of r06's printed 1/7; over 8,241 monic pairs the MINIMAL certificate modulus never exceeds 41 while r06's construction reaches 919 (instance (b,c) = (-20,-22): minimal (7,17,0,14) mod 29 against constructed m = 487); and the slope restriction to s in {1,2} is an artefact of insisting on a monic Q.",
+      "status": "ordinary_proof_verified_not_lean_formalized",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_feedback_word_realizability.py"
+      ]
+    },
+    {
+      "source_result_id": "primitive_height_prime_height_dichotomy",
+      "exact_statement": "Primitive height versus prime height, and the critical rate boundary at lambda >= 1 (r05). (a) FRESH PRIME INSERTION: if rho_j = gcd(Lambda_j, a_j) = 1 and p^E exactly divides a_j, then p does not divide h_j, p does not divide u_(j+1), and p^E EXACTLY divides v_(j+1); the whole fresh prime power enters the reduced denominator in one step and none of it is paid at that step. (b) SHARPENED DICHOTOMY: on any counterexample, limsup u_n/n = infinity OR limsup P^+(v_n)/R_n = infinity, where P^+ is the largest prime factor and R_n = max_(k<=n) u_k is the running record; this is strictly stronger than the return's form with u_n in place of R_n. Equivalently, if the primitive numerator grows at most linearly then for every K there are infinitely many s with a prime p | v_s and p > K R_s. The proof uses density-one freshness with R(n) = o(n), Lemma (a), pairwise distinctness of the extracted primes, and pi(x) = o(x). (c) CRITICAL BOUNDARY: if n delta_n -> lambda in (0, infinity) on a counterexample, then limsup (-e_n)_+ = infinity, i.e. the PRIMITIVE negative part is unbounded; the endgame reroutes through the exact integer identity h_n m_(n+1) = m_n and the Lean-checked bounded_rise_reduced_tail_excluded rather than through r05's own unformalised Theorem (A). (d) FREE LEMMA: under eventual centring |e_n| < u_n/2, every strict primitive rise is cancellation-free, since h_n >= 2 gives u_(n+1) < (3/4) u_n; so 'clean' may be dropped from every rise hypothesis in r03, r05, r07 and r08 at no cost, and paid steps never set a record.",
+      "status": "ordinary_proof_verified_not_lean_formalized",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_erdos243_record_two_unit_barrier.py"
+      ]
+    },
+    {
+      "source_result_id": "unconditional_square_transport_legendre_defect_charge",
+      "exact_statement": "Unconditional primitive square transport and the Legendre defect charge (wave-2 desk S1). Let d_n be the largest divisor of u_(n+1) coprime to G_(n+1). LEMMA S1: h_n e_n e_(n+1) = v_n^2 (mod d_n) and gcd(v_n, d_n) = 1, with NO cleanliness and NO coprimality hypothesis, so the Legendre reading is non-vacuous at every step by construction. Corollaries: the Jacobi symbol (h_n e_n e_(n+1) | d) = +1 for d the odd part of d_n; and for every prime p | d_n with p = 3 mod 4, |h_n e_n e_(n+1)| is a quadratic non-residue mod p when e_n e_(n+1) < 0 and a residue when e_n e_(n+1) > 0, so the mechanism does not need sign changes. THEOREM S2 (defect charge): calling n a Legendre defect when (e_n e_(n+1) | p) = -1 for some prime p | d_n, Lemma S1 forces (h_n | p) = -1, hence h_n > 1 and h_n is not a perfect square, hence G_(n+1) >= 2 G_n and the defect indices below N number at most log2 C_N; under normalised vanishing that is o(N), so at density one e_n e_(n+1) is a quadratic residue modulo every prime dividing d_n. COROLLARY S2a: if |h_n e_n e_(n+1)| is a perfect square and e_n e_(n+1) < 0, then -1 is a quadratic residue mod d_n, so every odd prime factor of d_n is 1 mod 4 and 4 does not divide d_n; that multiplicative set has density zero.",
+      "status": "ordinary_proof_verified_not_lean_formalized",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_legendre_locking_probe.py"
+      ]
+    },
+    {
+      "source_result_id": "good_prime_wall_landing_barrier",
+      "exact_statement": "Good-prime wall and the smooth-part supply diagnosis (wave-2 desk S2). THEOREM S2: let N <= T < tau and let p_0, ..., p_(B-1) be distinct primes, each dividing D_T and none dividing C_tau; put P = prod p_r and assume C_T < P and 2P + B <= C_tau. With x in [P, 2P) the CRT block satisfying p_r | x + r and t = min{n > T : C_n >= x}, one has t <= tau, C_(t-1) < x, and C_t >= x + B, that is -E_(t-1) > B at height C_(t-1) < 2P. The theorem drops EVERY hypothesis about what happens after the crossing (no bound on later negative errors, no cofinal negativity, no C_n -> infinity, no lower bound on the moduli) and therefore applies to finite segments. LEMMA (badness is an up-set): for p | D_T, p | C_n for some n >= T implies p | C_m for every m >= n, so the primes of D_T the walk can reach below a ceiling tau are exactly those dividing C_tau, their product divides gcd(C_tau, D_tau), and above z_0 there are at most log C_tau / log z_0 of them. UNCONDITIONAL DICHOTOMY: for any counterexample, any T >= N and any distinct primes p_0..p_(B-1) dividing D_T with P > C_T, either some p_r divides C_n for all large n, or there is n with C_n < 2P and -E_n > B; the corpus kills the first branch by size, this lemma kills it by COUNT, which works for primes of any size including 2. CONDITIONAL FRONTIER IMPROVEMENT: if for arbitrarily large z there is T with C_T < z^(B/2) such that D_T has at least 3B+3 prime divisors in (sqrt z, z], with B = floor((pi(z) - pi(sqrt z) - 3)/3), then limsup (-E_n)_+ log log C_n / log C_n >= 1, a gain of order log C_n/(log log C_n)^2 over the unconditional log-log clause. DIAGNOSIS: the log2 log2 constant of SlowNegativePartRigidity.md is an ARTEFACT of instantiating the block moduli as whole fresh multipliers of size exp(lambda 2^(n_r)); one prime factor per fresh multiplier lowers the wall by an exponential.",
+      "status": "ordinary_proof_over_lean_core",
+      "superseded_by": null,
+      "public_authority_paths": [
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+        "research_corpus/Erdos243/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_good_prime_wall_probe.py"
       ]
     }
   ]

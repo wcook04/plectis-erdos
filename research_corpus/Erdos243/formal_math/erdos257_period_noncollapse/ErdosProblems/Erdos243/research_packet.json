@@ -92,6 +92,46 @@
       "attachment": "state/formal_math/type_b_return_batches/type_b_corpus_dogfood_20260904_octet_01/sources/dogfood_return_5.txt",
       "sha256": "33c6f88327d0ba48a9edabd2b930f9f431b4a9fd9049e165a071de5e9b2f5c32",
       "role": "Type B corpus-dogfood advisory return: independently corroborates the strict-rise log-log formalisation target and records the accepted design no-go that one-step coprimality cannot replace cumulative provenance."
+    },
+    {
+      "attachment": "state/formal_math/type_b_return_batches/erdos243_20260905_eight_return_stream_01/sources/r01_critical_boundary_integer_rounding.md",
+      "role": "Type B full-parent return (packet erdos243_full_parent_octuple_2026_09_05, desk 04_critical_mass): critical-boundary integer-rounding rigidity (Theorems 1 and 2), the periodic quadratic inequalities (15) and (16), supercritical survival (Proposition 3), and the B-shifted excess-mass obstruction (Theorem 4 and (47)). Every identity re-derived and no mathematical gap found; the constant in (16) is sharpened from 1/4 to 1/2 - 1/(16R) and the Case 2 crossing bound is sharpened. Landed as critical_boundary_integer_rounding_rigidity and shifted_excess_mass_obstruction.",
+      "sha256": "829e6d78cadf1b13a914d8214a3c90baf87b5ffdde9daa0fffe4c5bc435115c6"
+    },
+    {
+      "attachment": "state/formal_math/type_b_return_batches/erdos243_20260905_eight_return_stream_01/sources/r02_finite_field_feedback_polynomial_tail.md",
+      "role": "Type B full-parent return (desk 07_egyptian_arithmetic or 08_prefix_residue, pair unresolved): exclusion of exact quadratic numerator profiles by forbidden residue words, the exact-content proposition for polynomial tails, adjacent coprimality at every integer argument, and the recurrent-root exclusion. Verified; merged with r06 into polynomial_profile_rigidity.",
+      "sha256": "bf1da88b54dd8cbb0dd7549e2f40f982732da0b06cf12d9e0c39a89c1f90ca93"
+    },
+    {
+      "attachment": "state/formal_math/type_b_return_batches/erdos243_20260905_eight_return_stream_01/sources/r03_prime_square_retention_primitive_errors.md",
+      "role": "Type B full-parent return (desk 03_prefix_convergents): prime-square retention, the primitive e_n >= -2 rigidity, eventual periodicity, and the m-lattice condition. Verified; all four conclusions are corollaries of r07's record-only theorem, and r03's own section 4 proves the clean-step form once its crude w_n <= u_n + 2 is replaced by w_n <= (3/2) u_n. Landed inside primitive_record_two_unit_rigidity.",
+      "sha256": "1744bc53e3593b2602f803b386b46e5b38f53ab4811101f439b82efa9e9cedaf"
+    },
+    {
+      "attachment": "state/formal_math/type_b_return_batches/erdos243_20260905_eight_return_stream_01/sources/r04_record_excess_dichotomy.md",
+      "role": "Type B full-parent return (desk 01_global_crt_wall): the record-excess dichotomy K = 0 or K > 1, the drawdown ladder, record persistence and the record CRT trap, rescaling, pre-sieved Euler amplification, the inclusive log-log boundary, the convergent prime-reciprocal-sum consequence, and the sharp lacunary-avoidance gap constant with the Fermat witness. Fourteen claims verified with one repair to Proposition 5's block-modulus selection and attribution gaps toward SlowRiseBarrier.lean. Landed as record_excess_dichotomy_inclusive_loglog.",
+      "sha256": "b053a05e7a84a996802354602915b727314162fdbf2ca61940f89be17b1a4740"
+    },
+    {
+      "attachment": "state/formal_math/type_b_return_batches/erdos243_20260905_eight_return_stream_01/sources/r05_prime_barrier_cancellation_free_blocks.md",
+      "role": "Type B full-parent return (desk 05_global_cocycle, probable): fresh prime insertion, the height versus prime-height dichotomy, bounded-rise plus bounded clean-period rigidity, two-unit strict rises, the slowly-varying bounded-alphabet proposition, and the critical-boundary unboundedness at n delta_n -> lambda. Verified with one completeness repair to the elementary sieve; the only return to catch the nearest-integer selector defect in the packet generator. Landed as primitive_height_prime_height_dichotomy; its two-unit theorem is subsumed by r07.",
+      "sha256": "17fbb4f55033cb02c5d78f2dc860b911c2c392d8232a8a7e36f07891d602da52"
+    },
+    {
+      "attachment": "state/formal_math/type_b_return_batches/erdos243_20260905_eight_return_stream_01/sources/r06_sparse_polynomial_rigidity.md",
+      "role": "Type B full-parent return (desk 07_egyptian_arithmetic or 08_prefix_residue, pair unresolved): the absorbing-double-zero and quartic ring identities, the source-prime dichotomy, rational-root density, the monic quadratic case split, the density bound for scaled monic quadratics, and the sparse polynomial shadow. Verified with corrected constants (1/3 rather than 1/7 for x^2+x+1; minimal moduli at most 41 over 8,241 pairs) and an extension to every integer slope. Merged with r02 into polynomial_profile_rigidity.",
+      "sha256": "d7992198731a65fe2710880352ec401e2c8657c38192c42e6e7211d6f7d21db4"
+    },
+    {
+      "attachment": "state/formal_math/type_b_return_batches/erdos243_20260905_eight_return_stream_01/sources/r07_prime_power_record_jump_barriers.md",
+      "role": "Type B full-parent return (desk 02_prime_contact): the canonical record-only two-unit theorem under arbitrary cancellation, the valuation-loss threshold, protection below pP, the odd protected cut, the fresh odd large prime-power supply, and the quantitative record-excess obligation. Verified end to end; this is the dedup apex of the r03/r05/r07/r08 family and the source of the Lean module PrimitiveRecordBarrier.lean. Landed as primitive_record_two_unit_rigidity.",
+      "sha256": "09c8129b743594c6c333b249a840ee20e2da406d47fa252eae002126d3059548"
+    },
+    {
+      "attachment": "state/formal_math/type_b_return_batches/erdos243_20260905_eight_return_stream_01/sources/r08_primitive_numerator_rigidity_arbitrary_cancellation.md",
+      "role": "Type B full-parent return (desk 06_square_payment): two-unit primitive rises under arbitrary cancellation, the odd lattice and one-unit lattice rigidity, finite cyclic menus, the clean-step characterisation (Corollary 6), the exact bridge identity and its q Q_n / G_n criterion (Corollary 10, shown here to be an equivalence rather than a sufficient condition), and the p^3 three-rise family. Verified; landed inside primitive_record_two_unit_rigidity. The pasted file carries operator text and stray JSON braces after the mathematics; they are not content.",
+      "sha256": "916e8ea08725c38bf1db5b03828fbce9bcf22f3da6589feac8be20397756dd4a"
     }
   ],
   "primary_sources": [
@@ -561,8 +601,11 @@
     },
     {
       "id": "primitive_crt_limsup_rise_constant",
-      "status": "advisory_derivation_pending_growth_bridges_and_lean",
-      "statement": "The return proposes a strengthened primitive CRT consequence with limsup rise constant at least 1/log 2. The derivation depends on additional global growth bridges and is not used as a checked theorem."
+      "status": "superseded_by_record_excess_dichotomy_inclusive_loglog",
+      "statement": "The return proposes a strengthened primitive CRT consequence with limsup rise constant at least 1/log 2. The derivation depends on additional global growth bridges and is not used as a checked theorem.",
+      "superseded_by": [
+        "record_excess_dichotomy_inclusive_loglog"
+      ]
     },
     {
       "id": "feedback_transport_realizability",
@@ -946,13 +989,16 @@
     },
     {
       "id": "one_over_n_threshold_verified",
-      "status": "ordinary_proof",
+      "status": "superseded_by_critical_boundary_integer_rounding_rigidity",
       "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/SlowNegativePartRigidity.md",
       "supersedes": [
         "subcritical_one_over_n_threshold"
       ],
       "statement": "If a_{n+1}/a_n^2 -> 1, sum 1/a_n is rational and limsup n (a_n^2/a_{n+1} - 1)_+ < 1, then the sequence is eventually Sylvester. The constant 1 is exactly the boundary of the Erdos-Straus method: the constant-negative template e_n = -1, c_n = c + n has n(-e_n)/c_n -> 1 and is excluded only by the prime-lock theorem. The hypothesis forces (-e_n)_+ <= C n^{-delta} -> 0, hence e_n >= 0 eventually (Koizumi Prop. 19(2)).",
-      "claim_boundary": "Weaker than slow_negative_part_rigidity (its hypothesis implies a vanishing negative part); recorded as the explicit-constant sufficient condition in the language of the original problem; sharp for the method, not for the problem."
+      "claim_boundary": "Weaker than slow_negative_part_rigidity (its hypothesis implies a vanishing negative part); recorded as the explicit-constant sufficient condition in the language of the original problem; sharp for the method, not for the problem.",
+      "superseded_by": [
+        "critical_boundary_integer_rounding_rigidity"
+      ]
     },
     {
       "id": "cumulative_overlap_debt_divides_tail_numerator",
@@ -1066,6 +1112,196 @@
       "source_current": true,
       "return_batch_id": "type_b_r2_strengthen_20260904",
       "source_sha256": "e1110560ab07da9d0d3d4ab7a3cafdfcb36c82849e60cbc0c3e2a19fc9289d87"
+    },
+    {
+      "id": "critical_boundary_integer_rounding_rigidity",
+      "status": "ordinary_proof_over_lean_core",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+      "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_erdos243_integer_rounding_barrier.py",
+      "statement": "Integer-rounding rigidity at the critical rate boundary. (a) LINEAR BARRIER: let F_n > 0, r_n = F_(n+1)/F_n, eta_n = n(r_n - 1) - 1 eventually positive and nonincreasing to 0, and let X_n be positive integers with X_(n+1) <= r_n X_n; if M = ceil(X_n/n) satisfies M eta_n < 1 at some index n, then X_k <= M k and X_(k+1) - X_k <= M for every k >= n (five-line induction, reusable integer trap). (b) ENVELOPE RIGIDITY (r01 Theorem 2): under (8) eta_n > 0 eventually nonincreasing to 0 with d_n = F_(n+2) - 2F_(n+1) + F_n > 0, (9) n^2 d_n/(F_n eta_n) -> 1, (10) d_(n+1)/d_n = 1 - 1/n + O(eta_n/n + 1/n^2), (11) sum 1/F_n = infinity, any positive integers with c_(n+1) <= r_n c_n eventually satisfy c_n <= M n and (c_(n+1) - c_n)_+ <= M eventually. (c) CRITICAL BOUNDARY (r01 Theorem 1): if a_(n+1)/a_n^2 -> 1, sum 1/a_n is rational, and eventually a_n^2/a_(n+1) <= F(n+1)/F(n) - K_0/a_n for such an F, then C_n <= M n and (-E_n)_+ <= M eventually, hence a_(n+1) = a_n^2 - a_n + 1 eventually; in particular under delta_n <= 1/n + sum_(j<=m) 1/(n l_1(n) ... l_j(n)) for every fixed m >= 1, i.e. at 1/n plus every finite iterated-logarithm correction. The load-bearing inequality (16) has SHARP constant 1/2 - 1/(16R) for every R > 1/4 (r01 prints 1/4 after discarding a completed square), so the divergence constant at R_n -> 1 is 7/16, not 1/4; both (15) and the sharp (16) are tight, minimum slack exactly 0 on an exact rational grid.",
+      "claim_boundary": "Ordinary proofs verified this pass, consuming the Lean-checked bounded_negative_part_rigidity as the endpoint; the rounding half is not Lean-formalised. The theorem is QUALITATIVE: the onset index of (b) is exp^(m+1)(2 C_N/F_N), so no explicit constant is available and no finite orbit witnesses it (measured: starting from C_N = 10^6 F_N, a run to n = 10^7 burns 5.9e-4 of the budget). K_0 = 0 on all 489 exact canonical orbits with q <= 40, but only the existence of some finite K_0 is claimed. The route provably stops at sum 1/F_n < infinity, where the exact loss identity gives Y_T >= Y_N - sum 1/F_(n+1) > 0 and the maximal floor orbit survives (r01 Proposition 3). Hypotheses (9) and (10) are proof technique rather than boundaries: envelopes violating them still gave c_n = O(n) with the barrier engaging. Erdos #243 remains open. Lean: IntegerRoundingBarrier.lean kernel-checks the periodic quadratic inequality (15), the pointwise phase bound (16) in the sharp form with no ratio hypothesis, and the division-free linear barrier (18) with its rise corollary; the envelope bridge and the summation-by-parts contradiction remain ordinary proof. Desk S3 (wave 2) showed the burn identity is circular with the envelope hypothesis, so the theorem is strictly conditional on a divergent-reciprocal envelope.",
+      "named_consumers": [
+        "one_over_n_threshold_verified",
+        "bounded_negative_part_rigidity",
+        "critical_boundary",
+        "erdos_straus_quantity_bounded_form"
+      ],
+      "evidence_class": "ordinary_proof_verified_this_pass_over_lean_core_plus_exact_integer_and_exact_rational_replay",
+      "supersedes": [
+        "one_over_n_threshold_verified"
+      ],
+      "lean_module": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/IntegerRoundingBarrier.lean",
+      "source_declarations": [
+        "psi_sub_le_supporting_line",
+        "fract_lower_bound_of_ratio",
+        "linear_barrier_of_step_le",
+        "tail_le_prod_mul_of_shifted_growth"
+      ],
+      "source_sha256": "8810daabcc1b8c6091f15bebcfdf69762c8f251503b09270ca5d8bc618909054",
+      "source_current": true,
+      "return_batch_id": "erdos243_20260905_eight_return_stream_01"
+    },
+    {
+      "id": "shifted_excess_mass_obstruction",
+      "status": "ordinary_proof_over_lean_core",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+      "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_erdos243_record_excess_dichotomy.py",
+      "statement": "B-shifted excess-mass obstruction (r01 Theorem 4 and (47)). On a canonical orbit that is not eventually Sylvester, for every integer B >= 0 there are kappa_B > 0 and K_B with sum_(n<T) (-E_n - B)_+ / C_n >= kappa_B log C_T - K_B for all large T; hence sum_n (-E_n - B)_+ / C_n = infinity for every fixed B, and conversely finiteness of that sum for SOME integer B implies a_(n+1) = a_n^2 - a_n + 1 eventually. Two exhaustive cases: a block modulus m dividing C_s and D_s persists into every later E_n, so every positive jump is a positive multiple of m and kappa_B = 1 - B/m; otherwise the orbit avoids the shifted CRT block [x, x+B) at height x in [P, 2P), whose walls tau_k = x + kP + B satisfy H(t) = (1/P) log t + O(1) and where a step crossing h >= 1 walls has d - c >= (h-1)P + B + 2, giving kappa_B = 1/P. SHARPENING (this pass): r01 uses h <= d - c - B where its own display supplies h - 1 <= (d - c - B - 2)/P, so sum_(n<T) (-E_n - B)_+/C_n >= log C_T - O(1) - P sum_(n<T) 1/C_n and the Case 2 constant is 1 - o(1) on any orbit with C_n growing at least geometrically; and the moduli need not be whole fresh multipliers, since any B+1 pairwise-coprime divisors of D_N exceeding B+1 serve, distinct primes dividing D_N being the smallest choice.",
+      "claim_boundary": "Ordinary proof verified this pass over the Lean-checked bounded_crt_block, common_divisor_persistence_and_multiplier_overlap and lcm_freshness_budget_and_pairwise_coprimality; not Lean-formalised. Without the sharpening, kappa_B in Case 2 is 1/P with P a product of B+1 pairwise-coprime divisors of a doubly exponentially large denominator, so it is orbit-dependent and can be astronomically small; r01's abstract calls (41) quantitative, which oversells it, and the usable content is the qualitative divergence. The theorem constrains CUMULATIVE normalised mass only and says nothing about the depth of any single excursion. The promoted verifier replays the CRT block construction and the drawdown identities; the walk-level replay of the crossing bounds was run in wave-1 scratch and is not promoted. Erdos #243 remains open. NOT a state-system theorem: IntegerRoundingBarrier.lean kernel-checks the counter-model shifted_negativeRelativeMass_consumer_false (C_n = B n + 1, E_n = -B satisfies positivity, the exact update, division-free vanishing and zero shifted mass with E_n never 0), so the B-shifted generalisation of summable_negative_mass_sylvester_consumer holds only on the canonical orbit through Theorem 4's arithmetic dichotomy (the counter-model is the constant-negative template excluded by the prime-lock theorem). The bounded-product argument degrades to C_n = O(n) (tail_le_prod_mul_of_shifted_growth).",
+      "named_consumers": [
+        "summable_negative_mass_sylvester_consumer",
+        "summable_negative_relative_mass_termination",
+        "bounded_negative_part_rigidity",
+        "strict_rise_crt_barrier",
+        "exclude_aperiodic_negative_state_orbits"
+      ],
+      "evidence_class": "ordinary_proof_verified_this_pass_over_lean_core_plus_exact_finite_replay",
+      "lean_module": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/IntegerRoundingBarrier.lean",
+      "source_declarations": [
+        "shifted_negativeRelativeMass_consumer_false",
+        "tail_le_prod_mul_of_shifted_growth"
+      ],
+      "source_sha256": "8810daabcc1b8c6091f15bebcfdf69762c8f251503b09270ca5d8bc618909054",
+      "source_current": true,
+      "return_batch_id": "erdos243_20260905_eight_return_stream_01"
+    },
+    {
+      "id": "primitive_record_two_unit_rigidity",
+      "status": "lean_checked_prime_supply_bridge_open",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+      "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_erdos243_record_two_unit_barrier.py",
+      "statement": "Primitive record two-unit rigidity (r07 sections 1-5, canonical form of the r03/r05/r08 family). Let a_n be strictly increasing positive integers with a_(n+1)/a_n^2 -> 1 and sum 1/a_n rational; write u_n/v_n for the reduced tail and R_n = max_(k<=n) u_k. If at every sufficiently late RECORD-SETTING step (u_(n+1) > R_n) one has u_(n+1) - u_n <= 2, then a_(n+1) = a_n^2 - a_n + 1 eventually. No hypothesis is imposed at non-record steps and no bound of any kind is imposed on the cancellation factors h_n. Ingredients: (i) the exact valuation law nu_p(v') = nu_p(a) + nu_p(v) - min(nu_p(w), nu_p(a) + nu_p(v)), so a valuation drop from l needs p^(l+1) | w and full erasure needs p^(2l) | w; (ii) protection, P = p^l | v_s and w_n < pP throughout an interval keeps P | v_n and p not dividing u_n; (iii) the odd cut, where the first crossing of an odd multiple H of p is forced to be a global record, p | v_tau kills the landing u_tau = H, and the only jump-2 crossing (H-1, H+1) has both endpoints even against gcd(u_n, u_(n+1)) = 1; (iv) the fresh odd large prime-power supply. COROLLARY LATTICE, in increasing hypothesis strength: e_n >= -2 at every step (r03 A) implies (u_(n+1) - u_n)_+ <= 2 at every step (r08 Theorem 1, identical to r05 B) implies every record jump at most 2 (r07); so this theorem implies all three. r08 Corollary 6 is the EQUIVALENCE 'eventual Sylvester recurrence iff #{n : h_n = 1 and e_n <= -3} < infinity'. r08 Corollary 10 is an equivalence, not merely a sufficient criterion: e_n = -q Q_n/G_n + o(1) exactly, so limsup q Q_n/G_n < 3 transcribes e_n >= -2 eventually. Separate axis needing the hypothesis at every clean step: odd lattice (r08 Thm 5), one-unit lattice (r08 Cor 8 = r03 C), eventual periodicity (r03 B = r08 Cor 9), finite cyclic menus (r08 Thm 7); each weakens to epoch records only. THREE-RISE FIXTURES: exact families from r03 section 8 (one step), r07 section 8 (p^2 | v, two steps) and r08 section 6 (p^3 | v, two steps), with the stated instances (10, 10527, 1054) and (10, 89177, 8919, -3, 1) reproducing exactly. LEAN: PrimitiveRecordBarrier.lean, declarations primitive_valuation_no_drop, protectedPrimePower_persists, odd_record_cut, exists_oddMultiple_trapHeight, numerator_bounded_of_oddPrimePower, centeredZero_forces_unit, sylvesterStep_of_centeredZero_pair, recordRiseTwo_sylvesterNext_eventually.",
+      "claim_boundary": "The three structural lemmas and the composition are Lean-checked with no sorry (axiom audit: propext, Classical.choice, Quot.sound only; kernel receipt lake env lean, rc 0, 22 s, 0 errors), but the fresh odd large prime-power SUPPLY is carried as an explicit hypothesis and is an ordinary proof only; the module is not yet imported from the library root, and the authoritative lean_fast_build.py receipt is still owed. r07 Theorem 8 (the quantitative record-excess obligation) is recorded as an OPEN comment, not a sorry. FAMILY-LIMIT WORDING for the fixtures: each member is a one-step or two-step fixture, not an orbit segment obeying the rate hypothesis; for FIXED p the ratio a'/a^2 tends to u/u' = 1 - 3/(u+3), bounded away from 1 (measured 0.7683 at p = 11), and only the joint limit p -> infinity gives a'/a^2 -> 1 (0.99703 at p = 1009). The barrier provably stops at jumps of size 2: B simultaneously protected moduli would need prod_(s != i) p_s <= (2/3) p_i^(l_i) for every i, impossible for B >= 3 with squarefree fresh multipliers, and the three-rise fixtures exhibit that boundary. The composed theorem is vacuous on every computable finite orbit, since small seeds reach e_n = 0 long before the numerator reaches the protected height. Incomparable with bounded_rise_reduced_tail_excluded and slow_rise_reduced_tail_excluded, which allow any fixed rise bound but require h_n = 1. Erdos #243 remains open. Lean: PrimitiveRecordBarrier.lean kernel-checks the valuation-no-drop lemma, the protected prime-power persistence, the odd record cut, and the composed consumer recordRiseTwo_sylvesterNext_eventually; the fresh odd large prime-power supply is an explicit hypothesis of the consumer, discharged only by ordinary proof (r07 Lemma 7, r08 Lemma 4). Owner build receipt rc=0, 2026-09-05.",
+      "named_consumers": [
+        "bounded_rise_reduced_tail_excluded",
+        "slow_rise_reduced_tail_excluded",
+        "cofinally_bounded_negative_branch_excluded",
+        "eventually_periodic_negative_magnitude_excluded",
+        "dynamic_cancellation_payment",
+        "bounded_lcm_negative_arithmetic_core",
+        "exclude_aperiodic_negative_state_orbits"
+      ],
+      "evidence_class": "lean_checked_core_with_ordinary_supply_hypothesis_plus_exhaustive_exact_finite_falsifier",
+      "source_declarations": [
+        "primitive_valuation_no_drop",
+        "protectedPrimePower_persists",
+        "odd_record_cut",
+        "exists_oddMultiple_trapHeight",
+        "numerator_bounded_of_oddPrimePower",
+        "centeredZero_forces_unit",
+        "sylvesterStep_of_centeredZero_pair",
+        "recordRiseTwo_sylvesterNext_eventually"
+      ],
+      "lean_module": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/PrimitiveRecordBarrier.lean",
+      "source_sha256": "8810daabcc1b8c6091f15bebcfdf69762c8f251503b09270ca5d8bc618909054",
+      "source_current": true,
+      "return_batch_id": "erdos243_20260905_eight_return_stream_01"
+    },
+    {
+      "id": "record_excess_dichotomy_inclusive_loglog",
+      "status": "ordinary_proof_over_lean_core",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+      "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_erdos243_record_excess_dichotomy.py",
+      "statement": "Record-excess dichotomy and the inclusive log-log boundary (r04). Write H_n = max_(j<=n) C_j, B_n = H_n - C_n, r_n = H_(n+1) - H_n, ell(x) = log2 log2 max(4, x), K = limsup_n (H_(n+1) - H_n)/ell(H_n). (1) DRAWDOWN LADDER: r_n = (-E_n - B_n)_+ and B_(n+1) = (B_n + E_n)_+, so 0 <= r_n <= (-E_n)_+ and sum_(j<n) r_j = (C_n - C_N) + B_n. (2) RECORD TRAP: a divisor of C_t and D_t at a record locks into every later record increment, so a pairwise-coprime block of moduli exceeding B and dividing D_T contradicts r_n <= B below height 2P + B; the record-increment trigger is strictly better than the corpus negative-error trigger since r_s <= (-E_s)_+. (3) RESCALING: sup_n G_n = infinity implies K = infinity, so K < infinity forces G_n constant on a tail and hence a genuinely primitive tail on which ALL multipliers are pairwise coprime with no counting argument. (4) EULER AMPLIFICATION: pre-sieving the CRT block with x = 0 mod v_N makes a block of length B cost only phi(v_N)/v_N * B fresh moduli, giving K_u >= v_N/phi(v_N) with v_N/phi(v_N) strictly increasing along the tail, so the supremum is never attained and the inequality is strict. DICHOTOMY: K = 0 or K > 1; every counterexample has limsup (H_(n+1) - H_n)/ell(H_n) >= g prod_(p in P)(1 - 1/p)^(-1) > 1 STRICTLY, hence limsup (-E_n)_+/ell(C_n) > 1 strictly, and the INCLUSIVE boundary limsup (-E_n)_+/ell(C_n) <= 1 already forces eventual Sylvester recurrence. Consequence: K < infinity on a nonterminating orbit forces sum over the primes of the stabilised primitive denominator of 1/p to converge. SHARP GAP CONSTANT (r04 Prop 8): for pairwise-coprime m_0 < m_1 < ... >= 2 with ell(m_j) = j + O(1) and sigma = prod (1 - 1/m_j), the whole-modulus-avoiding walk has limsup (u_(n+1) - u_n)/ell(u_n) = sigma^(-1) exactly; the FERMAT family m_j = 2^(2^j) + 1 has prod_(j<J) m_j = 2^(2^J) - 1, sigma_J -> 1/2 and gap constant exactly 2, with m_(j+1) = m_j^2 - 2 m_j + 2 differing from the Sylvester recurrence.",
+      "claim_boundary": "Ordinary proofs verified this pass over the Lean core; not Lean-formalised. CORRECTION APPLIED: in r04 Proposition 5 the block moduli must be selected at fresh indices >= N, or they need not divide the rescaled denominator D_T/g_0; the repair takes T = N + ceil((1+eps)B) and the counts are unchanged. ATTRIBUTION: the C,D half of r04 Lemma 2 is the Lean-checked commonDivisor_persists, its CRT block is exists_consecutiveMultiples_between, and its first-crossing landing is slowRise_landing; the genuinely new content is the running-maximum clause, the record-increment trigger, and Propositions 5, 6, 8. The INCLUSIVE boundary rests entirely on Euler amplification and hence on the primitive tail; r04 Proposition 4 alone gives only the strict threshold. Proposition 8 is asymptotic and not pointwise; the ratio 3.0 at u = 4 is an ell(4) = 1 boundary artefact. sigma^(-1) is family-dependent and can be made any value in (1, infinity) by prefixing finitely many small pairwise-coprime moduli, so no universal constant exists for this route. The dichotomy leaves K = infinity open and gives no upper bound on K. The sum over the denominator primes of 1/p is NOT forced to diverge, so (30) is a new necessary condition rather than a contradiction. Erdos #243 remains open.",
+      "named_consumers": [
+        "slow_negative_part_rigidity",
+        "counterexample_loglog_negative_excursions",
+        "slow_rise_landing_barrier",
+        "common_divisor_persistence_and_multiplier_overlap",
+        "bounded_crt_block",
+        "strict_rise_loglog_lcm_ordinary_rigidity",
+        "primitive_crt_limsup_rise_constant"
+      ],
+      "evidence_class": "ordinary_proof_verified_this_pass_over_lean_core_plus_exact_identity_replay_and_exact_crt_witness",
+      "supersedes": [
+        "primitive_crt_limsup_rise_constant"
+      ],
+      "source_sha256": "8810daabcc1b8c6091f15bebcfdf69762c8f251503b09270ca5d8bc618909054",
+      "source_current": true,
+      "return_batch_id": "erdos243_20260905_eight_return_stream_01"
+    },
+    {
+      "id": "polynomial_profile_rigidity",
+      "status": "ordinary_proof_verified_not_lean_formalized",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+      "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_feedback_word_realizability.py",
+      "statement": "Polynomial-profile rigidity (r02 and r06 merged). For integer sequences with C_(n+1) = a_n C_n - D_n and D_(n+1) = a_n D_n: (A) EXACT QUADRATIC PROFILES ARE IMPOSSIBLE. There are no integers A >= 1, b, c, N with C_n = A(n^2 + bn + c) for all n >= N, and none with C_n = A(2n^2 + bn + c). An exact polynomial profile pins gcd(C_n, D_n) = A d(P) with d(P) the fixed divisor, so u_n = P(n)/d(P), all tail multipliers are pairwise coprime, and adjacent coprimality holds at every integer argument; the parity lemma forces the normalised leading coefficient into {1, 2}, leaving six translation classes k^2, k^2+k+1, k^2+k-1, 2k^2-1, 2k^2+2k+1, 2k^2+2k-1, carrying respectively the forbidden numerator words (1,0,1) mod 3, (1,0,1) mod 3, (7,8,0,5) mod 11, (3,3,0,1) mod 7, (1,0,3) mod 5, (2,0,2) mod 3, each unrealizable by the exact finite-state transport and each modulus MINIMAL over all moduli <= 40 and lengths 3-4. (B) RATIONAL-ROOT AND INTERSECTIVE PROFILES, merged density form neither return states: if P in Q[X] is nonconstant with a root modulo all but finitely many primes, then lower-density{n : C_n != P(n)} >= 1/p for some prime p dividing some D_t; in particular no eventual polynomial profile of any degree has a rational root. (C) DENSITY-ONE REPAIRS ARE IMPOSSIBLE: for every monic integer quadratic Q there is a forbidden block of length 3 or 4 at a modulus m >= 3, and for P = lambda Q with lambda rational, lower-density{n : C_n != P(n)} >= 1/m; monicity is unused in the proof, so this holds for every integer quadratic admitting a forbidden block. (D) LINEAR ERROR TEMPLATES: no exact integer orbit satisfies E_n = -s n + beta eventually for s = 1..7 and any beta, since 2 C_n is then the integer quadratic (s, -(s+2beta), 2K). RING PRIMITIVES: double zeros are absorbing; c_1 = 0 forces -c_0 c_2 = (a_0 c_0)^2; and c_2 = 0 forces the division-free quartic d_0^2 (d_0 + c_1)^2 + c_0^2 c_1 c_3 = 0, which separates a true feedback orbit from an independently chosen square root (the mod-11 word passes the square test and fails the quartic). CORRECTED CONSTANTS: for x^2+x+1 the certificate (1,0,1) mod 3 gives density 1/3 in place of r06's printed 1/7; over 8,241 monic pairs the MINIMAL certificate modulus never exceeds 41 while r06's construction reaches 919 (instance (b,c) = (-20,-22): minimal (7,17,0,14) mod 29 against constructed m = 487); and the slope restriction to s in {1,2} is an artefact of insisting on a monic Q.",
+      "claim_boundary": "Ordinary proofs verified this pass, with all nine finite-field certificates and the classification searches replayed exactly; no Lean module. The hypothesis is a SHAPE assumption on C_n that no known argument supplies, so nothing here is unconditional about the parent. A density version at prime moduli is structurally blocked: over a prime modulus every zero-free numerator word is realizable, so every prime-modulus certificate needs a numerator zero, and by common-divisor persistence a source prime eventually either never meets the numerator or always meets it; the measured blocked-successor fraction on 900 exact orbits decays like 1.5/p. Composite moduli are a strictly stronger and unexploited resource (mod 4 has 2 zero-free forbidden 3-words and 20 zero-free 4-words; mod 25 has 1,120 at length 3). Block LENGTH is a real parameter alongside the modulus: C_n = A(4n^2 - 2n - 1) escapes both returns and has no forbidden block of length 3 or 4 at any modulus <= 200, while the length-5 block (28,1,11,0,26) mod 29 excludes it. The local method provably cannot reach degree one. Erdos #243 remains open.",
+      "named_consumers": [
+        "feedback_transport_realizability",
+        "primitive_square_root_feedback",
+        "constant_negative_orbit_excluded",
+        "eventually_periodic_negative_magnitude_excluded",
+        "lcm_freshness_budget_and_pairwise_coprimality",
+        "common_divisor_persistence_and_multiplier_overlap",
+        "arbitrarily_late_constant_tail_gcd_blocks"
+      ],
+      "evidence_class": "ordinary_proof_verified_this_pass_plus_exhaustive_exact_finite_state_certificates",
+      "source_sha256": "8810daabcc1b8c6091f15bebcfdf69762c8f251503b09270ca5d8bc618909054",
+      "source_current": true,
+      "return_batch_id": "erdos243_20260905_eight_return_stream_01"
+    },
+    {
+      "id": "primitive_height_prime_height_dichotomy",
+      "status": "ordinary_proof_verified_not_lean_formalized",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+      "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_erdos243_record_two_unit_barrier.py",
+      "statement": "Primitive height versus prime height, and the critical rate boundary at lambda >= 1 (r05). (a) FRESH PRIME INSERTION: if rho_j = gcd(Lambda_j, a_j) = 1 and p^E exactly divides a_j, then p does not divide h_j, p does not divide u_(j+1), and p^E EXACTLY divides v_(j+1); the whole fresh prime power enters the reduced denominator in one step and none of it is paid at that step. (b) SHARPENED DICHOTOMY: on any counterexample, limsup u_n/n = infinity OR limsup P^+(v_n)/R_n = infinity, where P^+ is the largest prime factor and R_n = max_(k<=n) u_k is the running record; this is strictly stronger than the return's form with u_n in place of R_n. Equivalently, if the primitive numerator grows at most linearly then for every K there are infinitely many s with a prime p | v_s and p > K R_s. The proof uses density-one freshness with R(n) = o(n), Lemma (a), pairwise distinctness of the extracted primes, and pi(x) = o(x). (c) CRITICAL BOUNDARY: if n delta_n -> lambda in (0, infinity) on a counterexample, then limsup (-e_n)_+ = infinity, i.e. the PRIMITIVE negative part is unbounded; the endgame reroutes through the exact integer identity h_n m_(n+1) = m_n and the Lean-checked bounded_rise_reduced_tail_excluded rather than through r05's own unformalised Theorem (A). (d) FREE LEMMA: under eventual centring |e_n| < u_n/2, every strict primitive rise is cancellation-free, since h_n >= 2 gives u_(n+1) < (3/4) u_n; so 'clean' may be dropped from every rise hypothesis in r03, r05, r07 and r08 at no cost, and paid steps never set a record.",
+      "claim_boundary": "Ordinary proofs verified this pass, with (a) checked exhaustively on 1,111,992 prime instances over 749,215 primitive states; no Lean module. COMPLETENESS REPAIR: r05's elementary sieve needs the first k primes, or any family with divergent reciprocal sum; for the sparse family {3, 5, 17, 257} the displayed inequality still holds while prod (1 - 1/p) = 0.50001, so the closing step as written is false for a general distinct-prime family. PLACEMENT of (c): for lambda < 1 the conclusion is strictly WEAKER than one_over_n_threshold_verified, which already gives eventual Sylvester recurrence, so (c) adds information only at lambda >= 1; it is conditional on convergence of n delta_n and is silent otherwise. (b) gives no rate in either branch. r05 Theorem (A) is closed by bounded_rise_reduced_tail_excluded whenever h_n = 1 eventually, so its new content lies only in orbits with infinitely many paid steps, and its crossing threshold is understated (h >= p in place of the true p^(l+1) | w), whose repair replaces the fixed period bound L by the growing bound sqrt(2 u_r)/(6B). Erdos #243 remains open.",
+      "named_consumers": [
+        "lcm_freshness_budget_and_pairwise_coprimality",
+        "cumulative_overlap_debt_divides_tail_numerator",
+        "one_over_n_threshold_verified",
+        "constant_negative_orbit_excluded",
+        "bounded_rise_reduced_tail_excluded",
+        "primitive_record_two_unit_rigidity",
+        "critical_boundary"
+      ],
+      "evidence_class": "ordinary_proof_verified_this_pass_plus_exhaustive_exact_finite_replay",
+      "source_sha256": "8810daabcc1b8c6091f15bebcfdf69762c8f251503b09270ca5d8bc618909054",
+      "source_current": true,
+      "return_batch_id": "erdos243_20260905_eight_return_stream_01"
+    },
+    {
+      "id": "unconditional_square_transport_legendre_defect_charge",
+      "status": "ordinary_proof_verified_not_lean_formalized",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+      "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_legendre_locking_probe.py",
+      "statement": "Unconditional primitive square transport and the Legendre defect charge (wave-2 desk S1). Let d_n be the largest divisor of u_(n+1) coprime to G_(n+1). LEMMA S1: h_n e_n e_(n+1) = v_n^2 (mod d_n) and gcd(v_n, d_n) = 1, with NO cleanliness and NO coprimality hypothesis, so the Legendre reading is non-vacuous at every step by construction. Corollaries: the Jacobi symbol (h_n e_n e_(n+1) | d) = +1 for d the odd part of d_n; and for every prime p | d_n with p = 3 mod 4, |h_n e_n e_(n+1)| is a quadratic non-residue mod p when e_n e_(n+1) < 0 and a residue when e_n e_(n+1) > 0, so the mechanism does not need sign changes. THEOREM S2 (defect charge): calling n a Legendre defect when (e_n e_(n+1) | p) = -1 for some prime p | d_n, Lemma S1 forces (h_n | p) = -1, hence h_n > 1 and h_n is not a perfect square, hence G_(n+1) >= 2 G_n and the defect indices below N number at most log2 C_N; under normalised vanishing that is o(N), so at density one e_n e_(n+1) is a quadratic residue modulo every prime dividing d_n. COROLLARY S2a: if |h_n e_n e_(n+1)| is a perfect square and e_n e_(n+1) < 0, then -1 is a quadratic residue mod d_n, so every odd prime factor of d_n is 1 mod 4 and 4 does not divide d_n; that multiplicative set has density zero.",
+      "claim_boundary": "Ordinary proofs verified this pass, replayed exactly on 498 primitive frames from 60 canonical orbits; no Lean module (proposed targets primitive_squareTransport, primitive_squareTransport_unit, legendreDefect_forces_payment). The LANDING form of the r04 hint is VACUOUS and must not be retried: common-divisor persistence makes a landed p divide every later E_m, so the corollary's own hypothesis p does not divide E_n E_(n+1) fails; 332 of 332 landed slots are vacuous and 309 of 309 unlanded slots are non-vacuous. As a standalone constraint the invariant confines e_(n+1) to a single coset of the squares in (Z/d_n)^*, leaving (u_(n+1)/d_n) phi(d_n)/2^t = u^(1-o(1)) admissible errors per step, so it forbids no step and excludes no finite window; greedy Legendre-admissible walks have rises of order u, far above both the O(log u) coprimality cap and the log-log barrier. On the true orbit the invariant is an IDENTITY rather than an independent constraint, since e_(n+1) is already determined by v_n mod u_(n+1); its value is as a consistency test on templates in which v_n is not tracked. Converting the density-one 2^(-omega) congruence condition into a contradiction needs an equidistribution input the deterministic orbit does not supply. Corpus fixtures are not falsely excluded: 127 frames of the E = -1 cancellation-free and (11, 11(33 + 79833600k) - 1) families pass, and flat runs give the square +1 which imposes nothing. Erdos #243 remains open.",
+      "named_consumers": [
+        "strict_rise_loglog_lcm_ordinary_rigidity",
+        "primitive_square_root_feedback",
+        "feedback_transport_realizability",
+        "slow_negative_part_rigidity",
+        "exclude_aperiodic_negative_state_orbits"
+      ],
+      "evidence_class": "ordinary_proof_verified_this_pass_plus_exact_orbit_frame_replay",
+      "source_sha256": "8810daabcc1b8c6091f15bebcfdf69762c8f251503b09270ca5d8bc618909054",
+      "source_current": true,
+      "return_batch_id": "erdos243_20260905_eight_return_stream_01"
+    },
+    {
+      "id": "good_prime_wall_landing_barrier",
+      "status": "ordinary_proof_over_lean_core",
+      "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/EightReturnRigidityCriteria.md",
+      "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_good_prime_wall_probe.py",
+      "statement": "Good-prime wall and the smooth-part supply diagnosis (wave-2 desk S2). THEOREM S2: let N <= T < tau and let p_0, ..., p_(B-1) be distinct primes, each dividing D_T and none dividing C_tau; put P = prod p_r and assume C_T < P and 2P + B <= C_tau. With x in [P, 2P) the CRT block satisfying p_r | x + r and t = min{n > T : C_n >= x}, one has t <= tau, C_(t-1) < x, and C_t >= x + B, that is -E_(t-1) > B at height C_(t-1) < 2P. The theorem drops EVERY hypothesis about what happens after the crossing (no bound on later negative errors, no cofinal negativity, no C_n -> infinity, no lower bound on the moduli) and therefore applies to finite segments. LEMMA (badness is an up-set): for p | D_T, p | C_n for some n >= T implies p | C_m for every m >= n, so the primes of D_T the walk can reach below a ceiling tau are exactly those dividing C_tau, their product divides gcd(C_tau, D_tau), and above z_0 there are at most log C_tau / log z_0 of them. UNCONDITIONAL DICHOTOMY: for any counterexample, any T >= N and any distinct primes p_0..p_(B-1) dividing D_T with P > C_T, either some p_r divides C_n for all large n, or there is n with C_n < 2P and -E_n > B; the corpus kills the first branch by size, this lemma kills it by COUNT, which works for primes of any size including 2. CONDITIONAL FRONTIER IMPROVEMENT: if for arbitrarily large z there is T with C_T < z^(B/2) such that D_T has at least 3B+3 prime divisors in (sqrt z, z], with B = floor((pi(z) - pi(sqrt z) - 3)/3), then limsup (-E_n)_+ log log C_n / log C_n >= 1, a gain of order log C_n/(log log C_n)^2 over the unconditional log-log clause. DIAGNOSIS: the log2 log2 constant of SlowNegativePartRigidity.md is an ARTEFACT of instantiating the block moduli as whole fresh multipliers of size exp(lambda 2^(n_r)); one prime factor per fresh multiplier lowers the wall by an exponential.",
+      "claim_boundary": "Ordinary proofs over Lean-checked corpus rows (commonDivisor_persists, exists_consecutiveMultiples_between, dvd_denState_of_le); no Lean module, proposed declaration no_goodPrimeWall_landing. The frontier improvement is CONDITIONAL on an unproved smooth-part supply: with the only guaranteed supply, whole fresh multiplier parts, the bad-set count is about 2^(B-1) while only about T + B moduli exist, and a_j prime for every j is consistent with every hypothesis of the problem, in which case the theorem degrades to exactly log2 log2 C_n. So log2 log2 is provably the worst case of this barrier family over supplies, and no wall argument beats it without a new theorem about the smallest prime factors of the multipliers. The multiplier census (1,450 exact multipliers from 220 seeds, 230 prime, median smallest prime factor 103 at 31-60 digits) is an empirical observation and not a lemma. The theorem is a CANONICAL-coordinate statement and uses D_T | D_n, which fails in primitive coordinates. Corpus fixtures are not falsely excluded: on the E = -1 cancellation-free blocks and the (11, 11(33 + 79833600k) - 1) recovery family no admissible wall exists, and the probe verifies why. Erdos #243 remains open.",
+      "named_consumers": [
+        "slow_rise_landing_barrier",
+        "slow_negative_part_rigidity",
+        "counterexample_loglog_negative_excursions",
+        "bounded_crt_block",
+        "common_divisor_persistence_and_multiplier_overlap",
+        "record_excess_dichotomy_inclusive_loglog",
+        "exclude_aperiodic_negative_state_orbits"
+      ],
+      "evidence_class": "ordinary_proof_verified_this_pass_over_lean_core_plus_exact_engineered_landing_replay",
+      "source_sha256": "8810daabcc1b8c6091f15bebcfdf69762c8f251503b09270ca5d8bc618909054",
+      "source_current": true,
+      "return_batch_id": "erdos243_20260905_eight_return_stream_01"
     }
   ],
   "experimental_result": {
@@ -2165,13 +2401,20 @@
     "The corrected factor-31 profile is (4 cofinal,0 positive,27 negative), while the corrected factor-41 profile on (35,-6) is (2,39,0). Thus the factor-35 negative branch is completely extinct after factor 41, and the surviving factor-31 modes have raw factors 32,35,36,38,40,41.",
     "Corrected descendant field propagation forces cofinal return again: (31,-10) has factor-41 profile (8,21,12), and its (41,-20) child has factor-61 profile (4,6,51). The remaining exact frontier is composite raw factors 32,35,36,38,40,57,64,66,75,76.",
     "The coprimality route is capped at O(log C_n): for pairwise coprime old moduli with reciprocal sum at most 1/2, every window of length above 2^{k+1} (k the number of moduli below the window) contains an integer coprime to all of them, so a walk with rises O(2^k) = O(log u) for doubly exponential moduli avoids every old modulus forever (SlowNegativePartRigidity.md, Prop. 7; greedy witness in formal_math/probes/erdos243_crt_block_and_coprime_witness.py needs a maximal rise of 12 up to height 2e6 against Sylvester's numbers). The CRT block forces rises of order log2 log2 u only. Hence no argument using only pairwise coprimality and whole-modulus avoidance can exclude negative parts of order log C_n; the regime (1 - delta) log2 log2 C_n <= -E_n = o(C_n) needs the congruence E_n = D_n mod C_n beyond coprimality.",
-    "The Erdos-Straus LCM prefactor supplies no new sign information: M_n = q a_1...a_{n-1}/lcm divides c_n exactly, the LCM quantity is the product quantity divided by M_n, and both have the sign of e_n. Common-divisor persistence fails in LCM coordinates at cancellation steps (division by gcd(L_n, a_n)), so the bounded form limsup Q_n/M_n < infinity is not obtained."
+    "The Erdos-Straus LCM prefactor supplies no new sign information: M_n = q a_1...a_{n-1}/lcm divides c_n exactly, the LCM quantity is the product quantity divided by M_n, and both have the sign of e_n. Common-divisor persistence fails in LCM coordinates at cancellation steps (division by gcd(L_n, a_n)), so the bounded form limsup Q_n/M_n < infinity is not obtained.",
+    "The Legendre invariant cannot close Erdos #243 on its own. Lemma S1 (h_n e_n e_(n+1) = v_n^2 mod d_n) confines e_(n+1) to a single coset of the squares in (Z/d_n)^*, and the centred window has length u_(n+1), a multiple of d_n, so the admissible errors number (u_(n+1)/d_n) phi(d_n)/2^t with t = omega_odd(d_n) + O(1), which is u_(n+1)^(1-o(1)) because 2^omega(d) = d^o(1). The invariant therefore forbids no step and excludes no finite window. Exact fixture: 8 of 8 greedy Legendre-admissible walks ran 12 steps from u_0 in [100003, 100017] to heights about 8.65e6 with every |e_n|/u_(n+1) >= 0.4993, every condition verified as an exact quadratic residue against the full factorisation of each height. The mechanism therefore admits rises of order u, weaker as a standalone constraint than the coprimality route capped at O(log u), and it cannot reach the log2 log2 C_n barrier. SCOPE: this is a limitation of the mechanism as a standalone closer; Lemma S1 and Theorem S2 remain valid necessary conditions and Theorem S2's density-one residue clause is a genuine new frontier clause.",
+    "The literal landing-class hint is vacuous. The claim that 'at most one integer of a CRT block [x, x+B) is reachable, so the block has B degrees of freedom the walk does not' is true and empty: the orbit is deterministic, so exactly one integer is reachable at EVERY step, and the wall never asked for more than that the walk land somewhere in the block. The offset r = C_t - x = -(D_(t-1) + x) mod C_(t-1) is pinned by E_(t-1), which the wall designer cannot see and does not need. Separately, the landing form of the r04 square-transport hint is vacuous for the opposite reason: common-divisor persistence makes a landed prime p divide every later E_m, so the corollary's hypothesis that p does not divide E_n E_(n+1) fails (332 of 332 landed slots vacuous, 309 of 309 unlanded slots non-vacuous). SCOPE: the non-vacuous residue of the landing-class hint is the DIVISIBILITY form, namely gcd(a_n, C_(n+1)) = gcd(a_n, D_n), the no-entry-without-a-multiplier lemma, and the up-set lemma; those are landed as good_prime_wall_landing_barrier.",
+    "An index-shift wrapper over CumulativeLcmTransfer does NOT close the open prime supply of bounded_lcm_negative_arithmetic_core. Checked against the actual Lean statement of no_boundedNegative_lcmState_of_oldPrimeSupply (LcmCriticalBoundary.lean:199), whose hypotheses are hmPrime (m i is prime for every i >= N), hmLarge (B < m i), pairwise coprimality, and hmOld (m i divides D t for N <= i < t), with the consumer selecting B CONSECUTIVE indices from N. Two independent gaps. (1) Primality and size: CumulativeLcmTransfer supplies only multiplier facts (a i divides Lambda n for i < n; pairwise coprimality at fresh indices; a density-one freshness budget) and extracts no PRIME factor exceeding B from a multiplier, which may be B-smooth; that extraction is r07 Lemmas 6-7 and needs the analytic growth separation, so the bridge is analytic rather than clerical. (2) Index alignment: reindexing to a fresh subsequence breaks hmOld, whose divisibility is keyed to the same index as the orbit step, since a prime taken from fresh index phi(i) >= i divides D t only for t > phi(i). SCOPE: this refutes the wave-1 routing hint only; the corpus row itself is unaffected and its prime supply remains open.",
+    "The primitive record-jump barrier cannot be pushed from 2 to 3 by the same single-prime pointwise mechanism, and the reason is structural rather than technical. B simultaneously protected moduli require prod_(s != i) p_s <= (2/3) p_i^(l_i) for every i, because a prime survives in v_n only while u_n < (2/3) p^(l+1); with squarefree-ish fresh multipliers (l_i = 1) this caps B at 2. The parity half of the odd cut is what fixes the cap: an odd trap height H forces H-1 and H+1 both even, which kills the only jump-2 crossing, and no such parity obstruction exists at jump 3. Three exact families exhibit the boundary: r03 section 8 (u = p-1, v = p(p-4), a = p-2 for p = 2 mod 3, single crossing), r07 section 8 (p^2 | v, two-step, instance (10, 10527, 1054)) and r08 section 6 (p^3 | v, two-step, instance (10, 89177, 8919, -3, 1)). CAUTION on their reading: for FIXED p the ratio a'/a^2 tends to u/u' = 1 - 3/(u+3) and is bounded away from 1 (0.7683 at p = 11, 0.9290 at p = 41), so these are local witnesses and not orbit segments obeying the rate hypothesis; only the joint limit p -> infinity gives a'/a^2 -> 1 (0.99703 at p = 1009). SCOPE: any extension past jump 2 must add a second mechanism, for instance a simultaneous large 2-power in v, whose supply the parent hypotheses do not provide.",
+    "The phase-map resonance framing is empty. On every clean step a_n^2 = e_(n+1) e_n^(-1) (mod u_(n+1)) is an identity; by Thue's lemma every unit modulo N is a ratio of integers at most sqrt(N), so 'the multiplier must be resonant' says nothing whenever 2|e_n e_(n+1)| >= u_(n+1) (77% of measured clean steps), and where it bites it says exactly that |e_n| is a continued-fraction denominator of a_n^2/u_(n+1) whose next partial quotient is about u_(n+1)/|e_n e_(n+1)|. Survival is a large-partial-quotient event and the missing frequency statement is Gauss-map genericity at one prescribed position. Resonance data is unique up to sign and imposes no n to n+1 compatibility. SCOPE: desk S3 (wave 2), 18,774 orbits / 78,098 steps, 0 failures; scripts/erdos243_phase_map_resonance_probe.py.",
+    "No charge on clean rises can close the parent. The E = -1 cancellation-free family generalises verbatim to E = -m for every m (heights c_n = c + n m, invariant D_n = (a_n - 1) c_n - m, a_n = 1 + c_(n+1) k_n, k_0 = lambda prod_(j=2)^(H+1) c_j), so for every m >= 3 and every H there are exact orbits with H consecutive clean rises of size m, zero payment and normalised error m/c arbitrarily small (smallest instance (C_0, D_0) = (10, 21735997): seven consecutive (e, h) = (-3, 1) steps; verified to H = 40 at c = 100003). Moreover sum_(n<N) log h_n <= log C_N = o(N), so even a perfect disjoint charge per clean rise bounds the number of clean rises of size >= 3 below N only by O(log C_N), never by a constant; and no clean step is ever a Legendre defect (Theorem S2 forces h_n > 1 at a defect), so the Legendre charge is identically zero on the set r08 Corollary 6 says must be finite. SCOPE: desk S4 (wave 2); scripts/erdos243_clean_rise_cost_probe.py.",
+    "The wave-1 computational lab's proposed correction 'any valuation loss needs only p^2 | w' is false for l >= 2: the first valuation drop of p^l || v needs p^(l+1) | w (Lean: primitive_valuation_no_drop, PrimitiveRecordBarrier.lean; exhaustive check 0 failures), and full erasure needs p^(2l) | w. SCOPE: correction of a report, not of the returns."
   ],
   "open_producers": [
     {
       "id": "exclude_aperiodic_negative_state_orbits",
       "priority": 1,
-      "statement": "Attack the sole remaining signed-state obstruction, now quantified: any counterexample has negative excursions with -E_n > (1 - delta) log2 log2 C_n infinitely often for every delta > 0 (slow_negative_part_rigidity, counterexample_loglog_negative_excursions), with divergent normalised negative mass and with every multiplier overlap gcd(a_n, D_n) bounded by the next negative magnitude. Coprimality-only arguments are capped at O(log C_n) rises, so the producer must use the congruence E_n = D_n (mod C_n) or a second landing mechanism. Attack the sole remaining signed-state obstruction: cofinally unbounded negative excursions in the exact dynamic cocycle. Corrected unit-field propagation kills the factor-35 branch, forces eight cofinal returns on (31,-10) at factor 41, and forces four more on its (41,-20) child at factor 61. The exact formerly inert factor-25 continuation is now 1061100/29229187. The next analytic producer is a source-conditioned negative-mass or cumulative-LCM transfer theorem consuming these contractions. Compute composite raw factors 32,35,36,38,40,57,64,66,75,76 with exact nonunit transport."
+      "statement": "Attack the sole remaining signed-state obstruction, now quantified: any counterexample has negative excursions with -E_n > (1 - delta) log2 log2 C_n infinitely often for every delta > 0 (slow_negative_part_rigidity, counterexample_loglog_negative_excursions), with divergent normalised negative mass and with every multiplier overlap gcd(a_n, D_n) bounded by the next negative magnitude. Coprimality-only arguments are capped at O(log C_n) rises, so the producer must use the congruence E_n = D_n (mod C_n) or a second landing mechanism. Attack the sole remaining signed-state obstruction: cofinally unbounded negative excursions in the exact dynamic cocycle. Corrected unit-field propagation kills the factor-35 branch, forces eight cofinal returns on (31,-10) at factor 41, and forces four more on its (41,-20) child at factor 61. The exact formerly inert factor-25 continuation is now 1061100/29229187. The next analytic producer is a source-conditioned negative-mass or cumulative-LCM transfer theorem consuming these contractions. Compute composite raw factors 32,35,36,38,40,57,64,66,75,76 with exact nonunit transport. UPDATE 2026-09-05: the eight-return batch erdos243_20260905_eight_return_stream_01 narrows this producer to a single equivalent statement. By r08 Corollary 6 the parent is EQUIVALENT to '#{n : h_n = 1 and e_n <= -3} < infinity', and by the primitive record two-unit theorem every sufficiently late odd protected prime power in v must be crossed by a clean record jump of size at least three, with sum over record steps of (-e_n - 2)_+ divergent. Simultaneously a counterexample must have limsup (H_(n+1) - H_n)/ell(H_n) > 1 STRICTLY (record-excess dichotomy, inclusive log-log boundary), divergent B-shifted excess mass sum (-E_n - B)_+/C_n for EVERY fixed integer B, no polynomial profile of the landed classes, and, whenever D_T carries 3B+3 distinct prime divisors in a dyadic window, a rise exceeding B below height 2 z^B. Two further necessary conditions constrain the fine structure: h_n e_n e_(n+1) = v_n^2 mod d_n unconditionally, with the Legendre defect charged to h_n alone at all but log2 C_N indices; and limsup u_n/n = infinity or limsup P^+(v_n)/R_n = infinity. The single missing implication is a LOWER BOUND ON THE CANCELLATION COST OF A LARGE RECORD JUMP, or an upper bound on record jumps: a clean rise costs nothing in G_n by definition, so the attack must fall on v_(n+1) = a_n v_n, where every prime power of a fresh multiplier becomes a new protected source and each clean record jump manufactures the source that demands the next one. Four routes are now CLOSED and must not be re-attempted: the Legendre invariant alone (admits rises of order u), the literal landing-class hint (vacuous on a deterministic orbit), the index-shift wrapper over CumulativeLcmTransfer, and any single-prime pointwise barrier at jump 3."
     },
     {
       "id": "formalise_lcm_weighted_theorem",
@@ -2181,7 +2424,7 @@
     {
       "id": "critical_boundary",
       "priority": 3,
-      "statement": "Resolve the boundary n*(a_n^2/a_{n+1}-1)_+ approximately 1."
+      "statement": "Resolve the boundary n*(a_n^2/a_{n+1}-1)_+ approximately 1. UPDATE 2026-09-05: RESOLVED as far as an envelope-plus-integrality argument can reach, and the remaining boundary is named exactly. The critical-boundary rounding theorem (r01 Theorem 1, landed as critical_boundary_integer_rounding_rigidity) gives eventual Sylvester recurrence under delta_n <= 1/n + sum_(j<=m) 1/(n l_1(n) ... l_j(n)) for every fixed m, hence past the constant 1 and past every finite iterated-logarithm correction, together with the exp(-K/l_m) refinement; the witness delta_n = 1/n + 1/(n log n) shows this is STRICTLY stronger than one_over_n_threshold_verified. The mechanism is integrality of C_n against a stepwise real envelope, with per-step rounding loss averaging at least 7/16 by the sharp form of (16), and it uses no arithmetic of D_n, so it is outside the coprimality no-go. Its reach is bounded exactly: sum 1/F_n = infinity is the boundary, since a supercritical envelope leaves the maximal floor orbit with C_n/F_n bounded away from zero, and the onset index is exp^(m+1)(2 C_N/F_N), so the theorem is qualitative. The remaining case at the boundary is n delta_n -> lambda >= 1, where r05 (51) gives only that the PRIMITIVE negative part is unbounded; the next target is a family with n delta_n -> lambda and (-e_n)_+ growing like log log u_n, which is exactly the regime the frontier profile says a counterexample must occupy."
     },
     {
       "id": "weighted_sparse_reset_lower_bound",
@@ -2241,5 +2484,73 @@
       "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/R2CumulativePayment.md"
     ],
     "delivery_requirement": "Publish full proof sources and render the existing packet as a browser-readable frontier; freeze must independently verify offline premises and pinned public routes."
-  }
+  },
+  "finite_evidence": {
+    "type_b_2026_09_05_erdos243_rows": [
+      {
+        "id": "integer_rounding_linear_barrier_engagement",
+        "statement": "Exact envelope F(n) = n H_n satisfies r01's (8)-(11) as exact Fraction identities: eta_n = 1/H_n, d_n = 1/(n+1), n^2 d_n/(F_n eta_n) = n/(n+1), d_(n+1)/d_n = (n+1)/(n+2); 398 identities in quick mode and 1,998 in full mode, zero failures. The exact integer maximal floor orbit from N = 100 with C_N/F_N = 21/20 engages the linear barrier at n = 227 with the predicted M = 6, after which X_k <= 6k and X_(k+1) - X_k <= 6 hold to the end of the run, with X_T/T = 5.98625 at T = 4000 and 5.998167 at T = 30000. Inequality (15) has minimum slack exactly 0 (tight), and (16) with the sharp constant 1/2 - 1/(16R) has minimum slack exactly 0 (tight), while the constant 1/4 printed by r01 leaves slack 1/8 in quick mode and 1/16 in full mode.",
+        "evidence_class": "exact_computation",
+        "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_erdos243_integer_rounding_barrier.py"
+      },
+      {
+        "id": "primitive_valuation_and_odd_cut_exhaustive_counts",
+        "statement": "Over the r07 stated range (u < 45, v < 160): 4,325 primitive states, 6,928 (state, prime dividing v) combinations, 386 valuation drops, 346 full erasures, zero failures of the exact valuation identity, of the p^(l+1) drop threshold, of the p^(2l) erasure threshold, or of r03's p^2 form. Over the wider range (u < 60, v < 400): 14,515 states, 25,459 combinations, 1,277 drops, 1,127 erasures, zero failures. The odd cut has zero violations over 57,730 (state, prime, odd trap height) triples in quick mode and 430,644 in full mode. The three-rise families and both stated concrete instances reproduce exactly. r07 section 9's figure of 6,928 'prime/input combinations' is therefore (state, prime dividing v) pairs and is reproduced exactly.",
+        "evidence_class": "exhaustive_exact_computation",
+        "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_erdos243_record_two_unit_barrier.py"
+      },
+      {
+        "id": "record_excess_identities_and_fermat_gap_witness",
+        "statement": "Identities (13), (31) and (32) hold exactly on 4 canonical orbits in quick mode and 9 in full mode, with zero failures and the 1-Lipschitz bound |r_n - (q Q_n - B_n)_+| <= |E_n + q Q_n| everywhere; the o(1) in (32) is doubly exponentially small (tail values 1.50e-06, 1.40e-13, 1.23e-27, 9.42e-56, 5.55e-112 on 11/29). The pre-sieved block of r04 section 6 with B = 20, R = 6, eligible offsets 1,5,7,11,13,17,19 and moduli 23,29,31,37,41,43,47 reconstructs EXACTLY the integer 521026757646 quoted in the return, lies in [P, 2P) with P = 380356351134, and excludes all twenty positions; the sweep over (R, B) confirms that a block of length B costs only phi(R)/R * B fresh moduli. For the Fermat family, prod_(j<J) m_j = 2^(2^J) - 1 holds exactly, m_(j+1) = m_j^2 - 2 m_j + 2 holds, sigma_J -> 1/2, and direct enumeration of the avoiding set to 2e6 (quick) and 2e7 (full) gives maximal gap 7 at u = 24154 with maximal gap/ell(u) = 1.81162 for u >= 1000, below the sharp constant sigma^(-1) = 2.",
+        "evidence_class": "exact_computation",
+        "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_erdos243_record_excess_dichotomy.py"
+      },
+      {
+        "id": "legendre_locking_frame_census",
+        "statement": "Over 60 longest canonical orbits with q <= 300: 706 primitive frames, 498 with a non-trivial modulus d_n. Lemma S1 transport failures 0 of 498; unit-clause failures gcd(v_n, d_n) != 1 zero of 498; paid steps h_n > 1 covered and outside the R2 clean form 94; Jacobi = +1 confirmations 465 of 465; sign-change non-residue confirmations 90 of 90; same-sign residue confirmations 219 of 219; Legendre defects 34, all 34 with h_n > 1 and h_n a non-residue modulo every offending prime; perfect-square sign changes with d_n of the forced 1 mod 4 shape 12 of 12; non-vacuity rate (d_n carries a 3 mod 4 prime) 0.582; sign changes 158, negative steps 537, total steps 766; longest all-negative run 14 from seed (C_0, D_0) = (3, 179). Corpus fixtures: 127 frames, 0 transport failures.",
+        "evidence_class": "exact_computation",
+        "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_legendre_locking_probe.py"
+      },
+      {
+        "id": "good_prime_wall_landings_and_multiplier_smooth_part_census",
+        "statement": "Good-prime wall: 24 engineered landings with 0 counterexamples to Theorem S2, 0 persistence violations, 0 up-set violations, 0 height-budget violations; the lemma replays give 100 steps over 10 orbits for the landing-class identities, 2 prime-entry events with 0 violations of the no-entry-without-a-multiplier lemma, and 0 burn-budget violations. Multiplier smooth-part census over 1,450 exact multipliers from 220 seeds: median smallest prime factor 3 at 1-2 digits (n = 367), 3 at 3-5 digits (n = 301), 13 at 6-12 digits (n = 273), 43 at 13-30 digits (n = 289), 103 at 31-60 digits (n = 220); fraction with smallest prime factor below 1000 is 1.000, 0.897, 0.784, 0.782, 0.748 across those bands; 230 of 1,450 multipliers are prime. The smallest prime factor does not grow with the multiplier, which is the pool Corollary S2.4 consumes; this is empirical and is not a lemma.",
+        "evidence_class": "exact_computation",
+        "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_good_prime_wall_probe.py"
+      },
+      {
+        "id": "feedback_word_certificate_minimality_and_composite_modulus_gap",
+        "statement": "All nine finite-field certificates of r02 and r06 are verified empty by two independent implementations of the exact state-set transport, which agree on every certificate and were cross-checked against naive brute force for every modulus 2..13 at lengths 3 and 4 with zero mismatches. r02's section-7 table is reproduced with every raw value, and each row's minimal certificate over all moduli <= 40 and lengths 3-4 is exactly the one the table uses (moduli 3, 3, 11, 7, 5, 3), so the chosen moduli are forced. r06 Theorem 8: 8,241 monic pairs with -20 <= b <= 20 and -100 <= c <= 100, zero failures, block-length histogram {3: 8221, 4: 20}. Minimal certificate modulus histogram over the same pairs: {3: 5494, 4: 1385, 5: 547, 7: 456, 11: 132, 13: 74, 17: 59, 19: 49, 23: 4, above 24: 41}, true maximum 41 against the r06 construction reaching 919. Zero-free forbidden words number 0 for every prime modulus tested and are positive at every composite modulus tested (mod 4: 2 at length 3 and 20 at length 4; mod 12: 390 and 8,386; mod 25: 1,120 at length 3). Adjacent-coprime primitive quadratic survivors: 47 at leading coefficient 1 and 33 at 2, all in the three stated translation classes; 45, 118, 55, 47 at leading coefficients 3, 4, 5, 6, with the leading-4 family 4k^2 + s (1 + s = +- 2^j) infinite, so the finiteness of the normal-form list is an artefact of restricting to leading coefficient 1 or 2.",
+        "evidence_class": "exhaustive_exact_computation",
+        "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/check_feedback_word_realizability.py"
+      },
+      {
+        "id": "fresh_prime_insertion_and_three_rise_family_census",
+        "statement": "Fresh prime insertion (r05 Lemma 1) verified on 1,111,992 prime instances over 749,215 primitive states with the nearest-integer selector: zero failures of p not dividing h, p dividing v', or p not dividing u'. Valuation-drop events 64,999 and full-removal events 57,420, all with p^(l+1) dividing w and w >= p^(l+1); minimum w/p^2 at removal exactly 1.0. Clean strict rises of size at most 2 that cross a prime p | v with u < p <= u': ZERO over the whole sweep; clean rise-3 crossings: 205, including (10, 517) -> (13, 27401). The r05 section-6 three-rise family verified exactly for all 276 primes p in [11, 4000) with p = 2 mod 3, with a recomputed from the nearest-integer selector rather than assumed, and the named instance reproducing byte for byte. The nearest-integer selector correction is confirmed against an exact negative-branch orbit: prefix [3, 7, 43, 1807, 3263441] with a Sylvester tail gives C_0 = 2662511790121, E_0 = -2, true a_0 = 3, while floor(D_0/C_0) + 1 = 2, with divergence on all four negative-branch steps and none of the positive-branch steps.",
+        "evidence_class": "exhaustive_exact_computation"
+      }
+    ],
+    "strong_form_termination_survey_2026_09_05": {
+      "statement": "Strong form: every rational's nearest-integer pseudo-greedy expansion (a_n = floor(v_n/u_n + 3/2)) terminates (e_n = 0 eventually); this would imply Erdos #243. Finite computation only.",
+      "orbits_total": 127638150,
+      "unresolved": 0,
+      "horizon_hits": 0,
+      "full_sweep": "all p/q with q <= 20000: 121,590,395 orbits, every one reaches E = 0",
+      "random_sample": "479,976 orbits with q up to 1e16 across 12 decades; tie-flipped rule 684,181; improper x_0 > 1: 9,825",
+      "corpus_family": "(11, 11(33+79833600k)-1) for k < 20000; extremal k = 5386: 34 steps, negative run 31",
+      "longest_orbit_steps": 32,
+      "max_C_over_C0": 121.4,
+      "empirical_drift_log_ratio": -0.048214,
+      "model_drift_log_ratio": -0.045229,
+      "error_law": "at 48-bit q the normalised error E/C is i.i.d.-uniform on [-1/2, 1/2) to four digits; every longest theta-window sits below the extreme-value bound",
+      "absorption": "log(empirical/1-over-C) correlates with log d(C) at 0.894: 3-smooth heights 12.8x, C = 64 37x, primes 1.8x; E_n = 0 needs C_n | D_n and D_n is very smooth",
+      "scripts": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_orbit_engine.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_strong_termination_survey.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_primitive_residue_lab.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/scripts/erdos243_rate_hypothesis_stress.py"
+      ],
+      "receipt": "state/formal_math/type_b_return_batches/erdos243_20260905_eight_return_stream_01/work/wave1_F_computational_lab.json"
+    }
+  },
+  "claim_ceiling_addendum_2026_09_05_erdos243_eight_return_assimilation": "Eight Type B full-parent returns (batch erdos243_20260905_eight_return_stream_01, from packet erdos243_full_parent_octuple_2026_09_05) were verified and assimilated. Erdos #243 remains open; none of the eight is a parent solution candidate, and every one proves parent-relevant mathematics under a restricted hypothesis. The two strongest longitudinal theorems are now (a) the CRITICAL-BOUNDARY ROUNDING THEOREM: if a_(n+1)/a_n^2 -> 1, sum 1/a_n is rational, and eventually delta_n <= 1/n + sum_(j<=m) 1/(n l_1(n) ... l_j(n)) for a fixed m, then the sequence is eventually Sylvester; this is strictly stronger than one_over_n_threshold_verified (limsup n delta_n < 1), which it supersedes, and it is the first corpus route that PRODUCES a bounded negative part from an analytic envelope with no arithmetic, hence outside the class capped by SlowNegativePartRigidity.md Proposition 7; and (b) the PRIMITIVE RECORD TWO-UNIT THEOREM: if every sufficiently late record-setting step of the reduced numerator rises by at most 2, the sequence is eventually Sylvester, with no hypothesis at non-record steps and no bound on the cancellation factors; its three structural lemmas are Lean-checked in PrimitiveRecordBarrier.lean and its analytic prime-power supply is an ordinary proof. The parent is now EQUIVALENT to excluding cofinally many clean primitive record jumps of size at least three (r08 Corollary 6). The log-log constant of the corpus barrier is an ARTEFACT of instantiating the block moduli as whole fresh multipliers: one prime factor per fresh multiplier lowers the wall by an exponential, and log2 log2 C_n is provably the worst case of the barrier family over supplies, so no wall argument beats it without a lower bound on the smooth part of the multipliers. Also landed: the B-shifted excess-mass obstruction, the exact B-shifted generalisation of the Lean summable-negative-mass consumer; the record-excess dichotomy K = 0 or K > 1 with the inclusive log-log boundary, Euler amplification, and the sharp coprimality gap constant sigma^(-1) with the Fermat witness 2; polynomial-profile rigidity excluding every exact quadratic profile of normalised leading coefficient 1 or 2, every rational-multiple-of-a-quadratic profile at positive lower density, every rational-root profile in every degree, and every linear error template of slope 1 to 7; the sharpened height dichotomy limsup u_n/n = infinity or limsup P^+(v_n)/R_n = infinity, with primitive negative part unbounded at the critical boundary lambda >= 1; the unconditional primitive square transport with the Legendre defect charged to h_n alone and the explicit log2 C_N bound; and the good-prime wall, a landing barrier with no hypothesis after the crossing that applies to finite segments. Four no-gos are recorded so they are not retried: the Legendre invariant admits walks with rises of order u and cannot close the parent alone; the literal landing-class hint is vacuous; an index-shift wrapper over CumulativeLcmTransfer does not close the open prime supply of bounded_lcm_negative_arithmetic_core; and the record-jump barrier provably stops at 2 for squarefree fresh multipliers. Proof, computation, Lean, review, publication and canonicalization statuses remain distinct per result."
 }
