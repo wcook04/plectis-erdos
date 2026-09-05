@@ -17,6 +17,17 @@ restriction. Use established mathematics to advance the proof; do not spend the
 run reproving an available result or converting the assignment into a corpus audit.
 If no proof is obtained, state that honestly and preserve the strongest exact delta.
 
+For a solution assignment, derive every extra condition in a proposed criterion
+from the original hypotheses. Boundedness, density, regularity, uniformity as a
+parameter grows, auxiliary rationality and denominator savings are obligations,
+unless a supplied theorem proves them. Compare source-linked countermodels:
+which exact property of the original object excludes each relaxed model?
+Use that distinction to construct the missing implication or change approach.
+A new conditional criterion does not prove its own assumptions. An advisory
+statement without a located proof must not silently become an established premise.
+Use the length the complete proof needs; neither a page quota nor an attack log
+substitutes for the original conclusion.
+
 No installation, terminal, or private repository is needed to read the corpus:
 
 1. Open the [mathematical graph](../../docs/semantic/BROWSER.md), choose the

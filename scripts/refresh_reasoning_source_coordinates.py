@@ -61,57 +61,57 @@ def normalize(value: str) -> str:
     )
 
 
-def strip_lean_comments(text: str) -> str:
-    """Blank nested Lean comments without changing source line numbers."""
+_COMMENT_MARKER = re.compile(r'/-|-/')
+_CODE_MARKER = re.compile(r'/-|--|"')
+_STRING_MARKER = re.compile(r'\\.|"', re.S)
+_NON_NEWLINE = re.compile(r'[^\n]+')
 
+
+def strip_lean_comments(text: str) -> str:
+    """Blank nested comments in chunks, preserving every character position."""
     output: list[str] = []
     index = 0
     depth = 0
-    in_string = False
     while index < len(text):
         if depth:
-            if text.startswith("/-", index):
-                depth += 1
-                output.extend("  ")
-                index += 2
-            elif text.startswith("-/", index):
-                depth -= 1
-                output.extend("  ")
-                index += 2
-            else:
-                output.append("\n" if text[index] == "\n" else " ")
-                index += 1
-        elif in_string:
-            char = text[index]
-            output.append(char)
-            if char == "\\" and index + 1 < len(text):
-                output.append(text[index + 1])
-                index += 2
-            else:
-                if char == '"':
-                    in_string = False
-                index += 1
-        elif text.startswith("/-", index):
+            marker = _COMMENT_MARKER.search(text, index)
+            end = marker.end() if marker else len(text)
+            output.append(_NON_NEWLINE.sub(lambda m: ' ' * len(m.group()), text[index:end]))
+            if marker is None:
+                raise CoordinateError('unterminated block comment in pinned Lean source')
+            depth += 1 if marker.group() == '/-' else -1
+            index = end
+            continue
+        marker = _CODE_MARKER.search(text, index)
+        if marker is None:
+            output.append(text[index:])
+            break
+        output.append(text[index:marker.start()])
+        index = marker.start()
+        if marker.group() == '/-':
+            output.append('  ')
             depth = 1
-            output.extend("  ")
             index += 2
-        elif text.startswith("--", index):
-            newline = text.find("\n", index)
-            if newline < 0:
-                output.extend(" " * (len(text) - index))
-                break
-            output.extend(" " * (newline - index))
-            output.append("\n")
-            index = newline + 1
+        elif marker.group() == '--':
+            newline = text.find('\n', index)
+            end = len(text) if newline < 0 else newline
+            output.append(' ' * (end - index))
+            index = end
         else:
-            char = text[index]
-            output.append(char)
-            if char == '"':
-                in_string = True
+            start = index
             index += 1
+            while True:
+                string_marker = _STRING_MARKER.search(text, index)
+                if string_marker is None:
+                    index = len(text)
+                    break
+                index = string_marker.end()
+                if string_marker.group() == '"':
+                    break
+            output.append(text[start:index])
     if depth:
-        raise CoordinateError("unterminated block comment in pinned Lean source")
-    return "".join(output)
+        raise CoordinateError('unterminated block comment in pinned Lean source')
+    return ''.join(output)
 
 
 def pinned_commit() -> str:

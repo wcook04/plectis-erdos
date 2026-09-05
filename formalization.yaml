@@ -1618,7 +1618,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:f79a6ca963566a23428aaf63aeb1a98a38d4bee4530393d5e590ea17ef09a4d2"
+  problem_index_digest: "sha256:e612991c867d66ae333d9cab79b8d0b96a332ec049d9032bae47ee60ab2712f4"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -1682,12 +1682,12 @@ external_verification:
         manifest: "research_corpus/Erdos249/CORPUS_MANIFEST.json"
         checkpoint: "research_corpus/Erdos249/PUBLIC_CORPUS_CHECKPOINT.json"
         content_digests:
-          frontier: "sha256:f9844f8c1478d17c9fe8751001bcedcc58fc055e359bff79493a43a1fbbd61e3"
-          strongest_results: "sha256:db545efd7b86d75c10d1b73c4c9325b77180b27fe4480e8f7d861671fe32298a"
-          manifest: "sha256:37d599160f9e1254ee58c3c89e06519fa6ff7b0c78014c1304417d05c6026898"
-          checkpoint: "sha256:161340457169e636afa96e72b5d29c848c668cf6079ae1f2b913121862a1907f"
+          frontier: "sha256:71ad381168cb42f4fca4188224c7461e3896bca8e0de4c30f2f4b3f1f2db6406"
+          strongest_results: "sha256:cb314ce77cd92e214874fc828fe2f7b0ba71774a72f35e024d13b99610253a85"
+          manifest: "sha256:cefb44963d31946d9888e6f7dd8aa089c8823987cb0754411205417a3ae2bf45"
+          checkpoint: "sha256:37999f82f1d8510c063cb3695ac5a0fbaacf5ce906a33a0de04dea92568ae402"
         activated_result_count: 52
-        source_checkpoint: "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1"
+        source_checkpoint: "e199810f95d6033798d7dfcd247336119c888baa"
         source_subtree_tree: null
         promotion_boundary: "This route is public research evidence only; it is not a reviewed claim-registry entry or a Comparator interface."
     - id: "erdos_251"

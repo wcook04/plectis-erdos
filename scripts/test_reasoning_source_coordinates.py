@@ -40,6 +40,8 @@ def run_git(root: Path, *args: str) -> str:
 
 
 def main() -> int:
+    from test_lean_comment_scanner import main as check_scanner
+    check_scanner()
     with tempfile.TemporaryDirectory(prefix="reasoning-coordinate-test-") as temporary:
         root = Path(temporary)
         run_git(root, "init", "--quiet")

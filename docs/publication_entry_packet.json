@@ -110,7 +110,7 @@
     "claim-faithful-publication-systems-paper.pdf": "sha256:844b5b5ac743be733b90db6871a21bccc34c3d410174cdede9ba6ba060267a89",
     "docs/claims.json": "sha256:d3d4b6d922c636fa6a340cf8c2d06e76f61e9ee7ca632c70c478224d2929b4e7",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:f79a6ca963566a23428aaf63aeb1a98a38d4bee4530393d5e590ea17ef09a4d2",
+    "docs/problems.json": "sha256:e612991c867d66ae333d9cab79b8d0b96a332ec049d9032bae47ee60ab2712f4",
     "docs/publication_contract.json": "sha256:ac1ba650efce6d3cefc22a09384621c41a2ef44849ff4b94f1f65d4d1172120d",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
@@ -531,7 +531,7 @@
     ],
     "reading_rule": "Use the complete frontier and proof sources to solve the original problem. Follow docs/semantic/BROWSER.md for related mathematics across all problems. Ordinary proofs and Lean-checked results retain distinct evidence classes.",
     "source_index": {
-      "content_digest": "sha256:f79a6ca963566a23428aaf63aeb1a98a38d4bee4530393d5e590ea17ef09a4d2",
+      "content_digest": "sha256:e612991c867d66ae333d9cab79b8d0b96a332ec049d9032bae47ee60ab2712f4",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {

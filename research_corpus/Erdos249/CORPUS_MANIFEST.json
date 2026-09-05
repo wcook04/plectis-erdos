@@ -2,14 +2,14 @@
   "schema": "plectis_public_research_corpus_manifest_v2",
   "problem_id": "erdos_249",
   "status": "open",
-  "source_checkpoint": "c83f7c86ff88328eecc056a477f8a7caa6e2b1d1",
+  "source_checkpoint": "e199810f95d6033798d7dfcd247336119c888baa",
   "public_prefix": "research_corpus/Erdos249",
-  "file_count": 144,
-  "total_bytes": 2950450,
+  "file_count": 159,
+  "total_bytes": 3243546,
   "local_path_replacement_count": 0,
   "strongest_result_map": {
     "path": "research_corpus/Erdos249/STRONGEST_RESULTS.json",
-    "sha256": "db545efd7b86d75c10d1b73c4c9325b77180b27fe4480e8f7d861671fe32298a",
+    "sha256": "cb314ce77cd92e214874fc828fe2f7b0ba71774a72f35e024d13b99610253a85",
     "result_count": 52
   },
   "files": [
@@ -60,7 +60,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/AllBaseTotientKernel.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/AllBaseTotientKernel.lean",
+      "public_path": "research_corpus/Erdos249/shared_lean/AllBaseTotientKernel.lean",
       "source_sha256": "8f4bdb4fe8be80f261506aefca7fa9cf086b448b5094928b105756d78fc1830e",
       "published_sha256": "8f4bdb4fe8be80f261506aefca7fa9cf086b448b5094928b105756d78fc1830e",
       "relation": "exact_copy",
@@ -87,7 +87,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GeometricCoprimality.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GeometricCoprimality.lean",
+      "public_path": "research_corpus/Erdos249/shared_lean/GeometricCoprimality.lean",
       "source_sha256": "8d68ad20457400cdc9f9fb89ffbb682ec530662f99738277cb308abb628387d6",
       "published_sha256": "8d68ad20457400cdc9f9fb89ffbb682ec530662f99738277cb308abb628387d6",
       "relation": "exact_copy",
@@ -96,7 +96,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean",
+      "public_path": "research_corpus/Erdos249/shared_lean/SignedQMomentObstruction.lean",
       "source_sha256": "903015d2235e32995c9fa7564006ad1712b7c38b2a6cbc4c0874c196cbd80004",
       "published_sha256": "903015d2235e32995c9fa7564006ad1712b7c38b2a6cbc4c0874c196cbd80004",
       "relation": "exact_copy",
@@ -105,7 +105,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientActualLcmOrbitSeparation.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientActualLcmOrbitSeparation.lean",
+      "public_path": "research_corpus/Erdos249/shared_lean/TotientActualLcmOrbitSeparation.lean",
       "source_sha256": "d22834f286d9fbc206cd8fc23331a4e4815c90ad7b503454e7d51f34be0d0c97",
       "published_sha256": "d22834f286d9fbc206cd8fc23331a4e4815c90ad7b503454e7d51f34be0d0c97",
       "relation": "exact_copy",
@@ -114,7 +114,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientMahlerDefect.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientMahlerDefect.lean",
+      "public_path": "research_corpus/Erdos249/shared_lean/TotientMahlerDefect.lean",
       "source_sha256": "2dd59431e6b9f75facc105668b503c04972cd8352bb624f78c5bf0b068e06b43",
       "published_sha256": "2dd59431e6b9f75facc105668b503c04972cd8352bb624f78c5bf0b068e06b43",
       "relation": "exact_copy",
@@ -141,7 +141,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+      "public_path": "research_corpus/Erdos249/problem/CyclotomicAnchoredKill.lean",
       "source_sha256": "f592fa99c25c55c74cdea7ebaea7dec85774606837c6cbf46393cbab334be11c",
       "published_sha256": "f592fa99c25c55c74cdea7ebaea7dec85774606837c6cbf46393cbab334be11c",
       "relation": "exact_copy",
@@ -150,7 +150,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "public_path": "research_corpus/Erdos249/problem/FiniteEulerSieve.lean",
       "source_sha256": "24cb9197be06454e7cdfbf5f51b5ea1ad9c01dcc292134eb58f48ef2f8910e3d",
       "published_sha256": "24cb9197be06454e7cdfbf5f51b5ea1ad9c01dcc292134eb58f48ef2f8910e3d",
       "relation": "exact_copy",
@@ -177,7 +177,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/MobiusMersenneLadderSeparation.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/MobiusMersenneLadderSeparation.lean",
+      "public_path": "research_corpus/Erdos249/problem/MobiusMersenneLadderSeparation.lean",
       "source_sha256": "7e15c7be346cb763509f0067e02ac5c707f41426a5b2d7b96397586adda152b7",
       "published_sha256": "7e15c7be346cb763509f0067e02ac5c707f41426a5b2d7b96397586adda152b7",
       "relation": "exact_copy",
@@ -186,7 +186,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/ParityPerturbedRationalControl.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/ParityPerturbedRationalControl.lean",
+      "public_path": "research_corpus/Erdos249/problem/ParityPerturbedRationalControl.lean",
       "source_sha256": "312eba555f835500e5f09b1cc62adf15488a42af003f037077be4a2d1d4aea5e",
       "published_sha256": "312eba555f835500e5f09b1cc62adf15488a42af003f037077be4a2d1d4aea5e",
       "relation": "exact_copy",
@@ -204,7 +204,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "public_path": "research_corpus/Erdos249/problem/PeriodMultipleEscape.lean",
       "source_sha256": "ad46f970435fa931bb076d9e214ec11e2b5a0240ea19ca25fd51276d10a8780d",
       "published_sha256": "ad46f970435fa931bb076d9e214ec11e2b5a0240ea19ca25fd51276d10a8780d",
       "relation": "exact_copy",
@@ -222,7 +222,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "public_path": "research_corpus/Erdos249/problem/PrimeRayCyclotomicCurvature.lean",
       "source_sha256": "1476cea85a57094a8b9b916f9cbd53ceca9d4337f45852af1690afd690a13c48",
       "published_sha256": "1476cea85a57094a8b9b916f9cbd53ceca9d4337f45852af1690afd690a13c48",
       "relation": "exact_copy",
@@ -240,7 +240,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSharpFloor.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+      "public_path": "research_corpus/Erdos249/problem/RankOneSharpFloor.lean",
       "source_sha256": "d443f9e369d6deb38257daaf12bde7a758e27dac39a17a68513c1d0acaff3365",
       "published_sha256": "d443f9e369d6deb38257daaf12bde7a758e27dac39a17a68513c1d0acaff3365",
       "relation": "exact_copy",
@@ -258,7 +258,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/SignedAtomicHankelAsymptotics.md",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/SignedAtomicHankelAsymptotics.md",
+      "public_path": "research_corpus/Erdos249/problem/SignedAtomicHankelAsymptotics.md",
       "source_sha256": "9ced88363b2ec920c0bb06fa3020c23a4fd4f925ef8d255040e0cd7fe7a03a46",
       "published_sha256": "9ced88363b2ec920c0bb06fa3020c23a4fd4f925ef8d255040e0cd7fe7a03a46",
       "relation": "exact_copy",
@@ -294,7 +294,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+      "public_path": "research_corpus/Erdos249/problem/TotientStrictPrimeEscape.lean",
       "source_sha256": "74f348218ad5bd09857481e478789acfa7c5faa2c534bf6c48fa3127a084bc24",
       "published_sha256": "74f348218ad5bd09857481e478789acfa7c5faa2c534bf6c48fa3127a084bc24",
       "relation": "exact_copy",
@@ -312,7 +312,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
+      "public_path": "research_corpus/Erdos249/problem/research_packet.json",
       "source_sha256": "e4aa52dc7ed0d7edd0a7c2b5be5be8de6bc10386518cf7169c2b1ad4c162ff7e",
       "published_sha256": "e4aa52dc7ed0d7edd0a7c2b5be5be8de6bc10386518cf7169c2b1ad4c162ff7e",
       "relation": "exact_copy",
@@ -321,7 +321,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_all_base_multiplicative_kernel_rank.py",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_all_base_multiplicative_kernel_rank.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/check_all_base_multiplicative_kernel_rank.py",
       "source_sha256": "11bf05c287e939ada47b3a8c3fa5a6f5fbd96e29ffce48748ae81e86a46d361e",
       "published_sha256": "11bf05c287e939ada47b3a8c3fa5a6f5fbd96e29ffce48748ae81e86a46d361e",
       "relation": "exact_copy",
@@ -348,7 +348,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_prime_successor_precursor_cone.py",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_prime_successor_precursor_cone.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/check_prime_successor_precursor_cone.py",
       "source_sha256": "a6796aad0e06353c6caa37aa21af4d82e3dcb9722a60959b057541149f5e87ce",
       "published_sha256": "a6796aad0e06353c6caa37aa21af4d82e3dcb9722a60959b057541149f5e87ce",
       "relation": "exact_copy",
@@ -375,7 +375,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_signed_atomic_hankel.py",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_signed_atomic_hankel.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/check_signed_atomic_hankel.py",
       "source_sha256": "579cb7939ef30cb55b00de370ba45b74485e5fcb379dee31ef5b84155254bcce",
       "published_sha256": "579cb7939ef30cb55b00de370ba45b74485e5fcb379dee31ef5b84155254bcce",
       "relation": "exact_copy",
@@ -384,7 +384,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_three_prime_lock_precursor_cone.py",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_three_prime_lock_precursor_cone.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/check_three_prime_lock_precursor_cone.py",
       "source_sha256": "8a90480faf21e5fc3fea9c643b3d44d6e31ad04722cfd58829ade935983ac3de",
       "published_sha256": "8a90480faf21e5fc3fea9c643b3d44d6e31ad04722cfd58829ade935983ac3de",
       "relation": "exact_copy",
@@ -402,7 +402,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_two_prime_lock_precursor_cone.py",
-      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_two_prime_lock_precursor_cone.py",
+      "public_path": "research_corpus/Erdos249/problem/scripts/check_two_prime_lock_precursor_cone.py",
       "source_sha256": "dc2e78a6d8aacb90a9934f3c3841f2eea8c94e3fd528454d6b240a30be144b90",
       "published_sha256": "dc2e78a6d8aacb90a9934f3c3841f2eea8c94e3fd528454d6b240a30be144b90",
       "relation": "exact_copy",
@@ -958,7 +958,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/odd_slope_affine_totient/OddSlopeAffineTotient.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/odd_slope_affine_totient/OddSlopeAffineTotient.lean",
+      "public_path": "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/OddSlopeAffineTotient.lean",
       "source_sha256": "439a3b3f19be897e95cf3a3d9a3c4fe1bb847bf79623ce24b5b62c5fd7c45008",
       "published_sha256": "439a3b3f19be897e95cf3a3d9a3c4fe1bb847bf79623ce24b5b62c5fd7c45008",
       "relation": "exact_copy",
@@ -976,7 +976,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/odd_slope_affine_totient/TotientKernelReduction.lean",
-      "public_path": "research_corpus/Erdos249/formal_math/odd_slope_affine_totient/TotientKernelReduction.lean",
+      "public_path": "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/TotientKernelReduction.lean",
       "source_sha256": "8ea7a637bb9441b30e5b03defc7af81f9e432b7ffec6876bb2f5c44897c3503e",
       "published_sha256": "8ea7a637bb9441b30e5b03defc7af81f9e432b7ffec6876bb2f5c44897c3503e",
       "relation": "exact_copy",
@@ -1039,7 +1039,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/probes/erdos249_fixed_quotient_delay_law.py",
-      "public_path": "research_corpus/Erdos249/formal_math/probes/erdos249_fixed_quotient_delay_law.py",
+      "public_path": "research_corpus/Erdos249/probes/erdos249_fixed_quotient_delay_law.py",
       "source_sha256": "327bfc26df73c77c1fb76370c82a3d2c0259516cc70ef729538717f0e08ee247",
       "published_sha256": "327bfc26df73c77c1fb76370c82a3d2c0259516cc70ef729538717f0e08ee247",
       "relation": "exact_copy",
@@ -1072,6 +1072,15 @@
       "relation": "exact_copy",
       "local_path_replacements": 0,
       "bytes": 10011
+    },
+    {
+      "source_path": "source-provenance://formal_math/probes/receipt.py",
+      "public_path": "research_corpus/Erdos249/probes/receipt.py",
+      "source_sha256": "9d993f470c3167bd4be12c83b197d0c7450ca9ad7815f8e75b5c62ca881e1b1a",
+      "published_sha256": "9d993f470c3167bd4be12c83b197d0c7450ca9ad7815f8e75b5c62ca881e1b1a",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 4895
     },
     {
       "source_path": "source-provenance://state/formal_math/erdos257_period_noncollapse/erdos249_canonical_mersenne_residue_receipt.json",
@@ -1108,15 +1117,6 @@
       "relation": "exact_copy",
       "local_path_replacements": 0,
       "bytes": 82239
-    },
-    {
-      "source_path": "source-provenance://state/formal_math/erdos257_period_noncollapse/erdos249_pure_dyadic_pointwise_countermodel_receipt.json",
-      "public_path": "research_corpus/Erdos249/receipts/erdos249_pure_dyadic_pointwise_countermodel_receipt.json",
-      "source_sha256": "8d3ec881dbe721b637cc607ec2151088a2546b14ce5655801bf3fd1b9b20e1c9",
-      "published_sha256": "8d3ec881dbe721b637cc607ec2151088a2546b14ce5655801bf3fd1b9b20e1c9",
-      "relation": "exact_copy",
-      "local_path_replacements": 0,
-      "bytes": 7051
     },
     {
       "source_path": "source-provenance://state/formal_math/erdos257_period_noncollapse/erdos249_pure_dyadic_residue_delay_nogo_receipt.json",
@@ -1182,8 +1182,80 @@
       "bytes": 18042
     },
     {
+      "source_path": "source-provenance://system/__init__.py",
+      "public_path": "research_corpus/Erdos249/runtime/system/__init__.py",
+      "source_sha256": "d6d97d789ebc83dbcb0513d0351f4818143d3948eb9f6003db419067887d6834",
+      "published_sha256": "d6d97d789ebc83dbcb0513d0351f4818143d3948eb9f6003db419067887d6834",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 768
+    },
+    {
+      "source_path": "source-provenance://system/lib/formal_math_affine_cylinder.py",
+      "public_path": "research_corpus/Erdos249/runtime/system/lib/formal_math_affine_cylinder.py",
+      "source_sha256": "613646499ad2510670642c5d7d2308dd1b627cbc0b88cb683bd10a66447efc6c",
+      "published_sha256": "613646499ad2510670642c5d7d2308dd1b627cbc0b88cb683bd10a66447efc6c",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 16895
+    },
+    {
+      "source_path": "source-provenance://system/lib/formal_math_affine_word.py",
+      "public_path": "research_corpus/Erdos249/runtime/system/lib/formal_math_affine_word.py",
+      "source_sha256": "a3fb941e868f4a60ca3174a537c790a5aa5374743510fa7651cba73875be2f13",
+      "published_sha256": "a3fb941e868f4a60ca3174a537c790a5aa5374743510fa7651cba73875be2f13",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1426
+    },
+    {
+      "source_path": "source-provenance://system/lib/formal_math_experiment_contract.py",
+      "public_path": "research_corpus/Erdos249/runtime/system/lib/formal_math_experiment_contract.py",
+      "source_sha256": "65342f964ad6b1e9d38c08f7eb6bb17dd61a17a0ffc99d312f68c1273267b08f",
+      "published_sha256": "65342f964ad6b1e9d38c08f7eb6bb17dd61a17a0ffc99d312f68c1273267b08f",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 26435
+    },
+    {
+      "source_path": "source-provenance://system/lib/formal_math_modular_arcs.py",
+      "public_path": "research_corpus/Erdos249/runtime/system/lib/formal_math_modular_arcs.py",
+      "source_sha256": "d866c73328fd15c4291db9224965a95ef77a8c772531ba90d75de0a3bad6ccbc",
+      "published_sha256": "d866c73328fd15c4291db9224965a95ef77a8c772531ba90d75de0a3bad6ccbc",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 3069
+    },
+    {
+      "source_path": "source-provenance://system/lib/formal_math_probe_registry.py",
+      "public_path": "research_corpus/Erdos249/runtime/system/lib/formal_math_probe_registry.py",
+      "source_sha256": "f188624bcba058582e2249adae5edb679af5c92b72c359f115936a4a45ee23c4",
+      "published_sha256": "f188624bcba058582e2249adae5edb679af5c92b72c359f115936a4a45ee23c4",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 25866
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/AllBaseTotientKernel.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/AllBaseTotientKernel.lean",
+      "source_sha256": "8f4bdb4fe8be80f261506aefca7fa9cf086b448b5094928b105756d78fc1830e",
+      "published_sha256": "8f4bdb4fe8be80f261506aefca7fa9cf086b448b5094928b105756d78fc1830e",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 65282
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GeometricCoprimality.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GeometricCoprimality.lean",
+      "source_sha256": "8d68ad20457400cdc9f9fb89ffbb682ec530662f99738277cb308abb628387d6",
+      "published_sha256": "8d68ad20457400cdc9f9fb89ffbb682ec530662f99738277cb308abb628387d6",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 25011
+    },
+    {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean",
-      "public_path": "research_corpus/Erdos249/shared_lean/SignedQMomentObstruction.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/SignedQMomentObstruction.lean",
       "source_sha256": "903015d2235e32995c9fa7564006ad1712b7c38b2a6cbc4c0874c196cbd80004",
       "published_sha256": "903015d2235e32995c9fa7564006ad1712b7c38b2a6cbc4c0874c196cbd80004",
       "relation": "exact_copy",
@@ -1191,8 +1263,26 @@
       "bytes": 30825
     },
     {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientActualLcmOrbitSeparation.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientActualLcmOrbitSeparation.lean",
+      "source_sha256": "d22834f286d9fbc206cd8fc23331a4e4815c90ad7b503454e7d51f34be0d0c97",
+      "published_sha256": "d22834f286d9fbc206cd8fc23331a4e4815c90ad7b503454e7d51f34be0d0c97",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 12863
+    },
+    {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientMahlerDefect.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/TotientMahlerDefect.lean",
+      "source_sha256": "2dd59431e6b9f75facc105668b503c04972cd8352bb624f78c5bf0b068e06b43",
+      "published_sha256": "2dd59431e6b9f75facc105668b503c04972cd8352bb624f78c5bf0b068e06b43",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 59592
+    },
+    {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
-      "public_path": "research_corpus/Erdos249/problem/CyclotomicAnchoredKill.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
       "source_sha256": "f592fa99c25c55c74cdea7ebaea7dec85774606837c6cbf46393cbab334be11c",
       "published_sha256": "f592fa99c25c55c74cdea7ebaea7dec85774606837c6cbf46393cbab334be11c",
       "relation": "exact_copy",
@@ -1201,7 +1291,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
-      "public_path": "research_corpus/Erdos249/problem/FiniteEulerSieve.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
       "source_sha256": "24cb9197be06454e7cdfbf5f51b5ea1ad9c01dcc292134eb58f48ef2f8910e3d",
       "published_sha256": "24cb9197be06454e7cdfbf5f51b5ea1ad9c01dcc292134eb58f48ef2f8910e3d",
       "relation": "exact_copy",
@@ -1209,8 +1299,17 @@
       "bytes": 2327
     },
     {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/MobiusMersenneLadderSeparation.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/MobiusMersenneLadderSeparation.lean",
+      "source_sha256": "7e15c7be346cb763509f0067e02ac5c707f41426a5b2d7b96397586adda152b7",
+      "published_sha256": "7e15c7be346cb763509f0067e02ac5c707f41426a5b2d7b96397586adda152b7",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 28838
+    },
+    {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/ParityPerturbedRationalControl.lean",
-      "public_path": "research_corpus/Erdos249/problem/ParityPerturbedRationalControl.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/ParityPerturbedRationalControl.lean",
       "source_sha256": "312eba555f835500e5f09b1cc62adf15488a42af003f037077be4a2d1d4aea5e",
       "published_sha256": "312eba555f835500e5f09b1cc62adf15488a42af003f037077be4a2d1d4aea5e",
       "relation": "exact_copy",
@@ -1219,7 +1318,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
-      "public_path": "research_corpus/Erdos249/problem/PeriodMultipleEscape.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
       "source_sha256": "ad46f970435fa931bb076d9e214ec11e2b5a0240ea19ca25fd51276d10a8780d",
       "published_sha256": "ad46f970435fa931bb076d9e214ec11e2b5a0240ea19ca25fd51276d10a8780d",
       "relation": "exact_copy",
@@ -1228,7 +1327,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
-      "public_path": "research_corpus/Erdos249/problem/PrimeRayCyclotomicCurvature.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
       "source_sha256": "1476cea85a57094a8b9b916f9cbd53ceca9d4337f45852af1690afd690a13c48",
       "published_sha256": "1476cea85a57094a8b9b916f9cbd53ceca9d4337f45852af1690afd690a13c48",
       "relation": "exact_copy",
@@ -1237,7 +1336,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSharpFloor.lean",
-      "public_path": "research_corpus/Erdos249/problem/RankOneSharpFloor.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/RankOneSharpFloor.lean",
       "source_sha256": "d443f9e369d6deb38257daaf12bde7a758e27dac39a17a68513c1d0acaff3365",
       "published_sha256": "d443f9e369d6deb38257daaf12bde7a758e27dac39a17a68513c1d0acaff3365",
       "relation": "exact_copy",
@@ -1245,8 +1344,17 @@
       "bytes": 27198
     },
     {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/SignedAtomicHankelAsymptotics.md",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/SignedAtomicHankelAsymptotics.md",
+      "source_sha256": "9ced88363b2ec920c0bb06fa3020c23a4fd4f925ef8d255040e0cd7fe7a03a46",
+      "published_sha256": "9ced88363b2ec920c0bb06fa3020c23a4fd4f925ef8d255040e0cd7fe7a03a46",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 2996
+    },
+    {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
-      "public_path": "research_corpus/Erdos249/problem/TotientStrictPrimeEscape.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
       "source_sha256": "74f348218ad5bd09857481e478789acfa7c5faa2c534bf6c48fa3127a084bc24",
       "published_sha256": "74f348218ad5bd09857481e478789acfa7c5faa2c534bf6c48fa3127a084bc24",
       "relation": "exact_copy",
@@ -1255,7 +1363,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
-      "public_path": "research_corpus/Erdos249/problem/research_packet.json",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/research_packet.json",
       "source_sha256": "e4aa52dc7ed0d7edd0a7c2b5be5be8de6bc10386518cf7169c2b1ad4c162ff7e",
       "published_sha256": "e4aa52dc7ed0d7edd0a7c2b5be5be8de6bc10386518cf7169c2b1ad4c162ff7e",
       "relation": "exact_copy",
@@ -1263,8 +1371,17 @@
       "bytes": 115252
     },
     {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_all_base_multiplicative_kernel_rank.py",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_all_base_multiplicative_kernel_rank.py",
+      "source_sha256": "11bf05c287e939ada47b3a8c3fa5a6f5fbd96e29ffce48748ae81e86a46d361e",
+      "published_sha256": "11bf05c287e939ada47b3a8c3fa5a6f5fbd96e29ffce48748ae81e86a46d361e",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 17542
+    },
+    {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_prime_successor_precursor_cone.py",
-      "public_path": "research_corpus/Erdos249/problem/scripts/check_prime_successor_precursor_cone.py",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_prime_successor_precursor_cone.py",
       "source_sha256": "a6796aad0e06353c6caa37aa21af4d82e3dcb9722a60959b057541149f5e87ce",
       "published_sha256": "a6796aad0e06353c6caa37aa21af4d82e3dcb9722a60959b057541149f5e87ce",
       "relation": "exact_copy",
@@ -1272,8 +1389,17 @@
       "bytes": 10823
     },
     {
+      "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_signed_atomic_hankel.py",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_signed_atomic_hankel.py",
+      "source_sha256": "579cb7939ef30cb55b00de370ba45b74485e5fcb379dee31ef5b84155254bcce",
+      "published_sha256": "579cb7939ef30cb55b00de370ba45b74485e5fcb379dee31ef5b84155254bcce",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 1618
+    },
+    {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_three_prime_lock_precursor_cone.py",
-      "public_path": "research_corpus/Erdos249/problem/scripts/check_three_prime_lock_precursor_cone.py",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_three_prime_lock_precursor_cone.py",
       "source_sha256": "8a90480faf21e5fc3fea9c643b3d44d6e31ad04722cfd58829ade935983ac3de",
       "published_sha256": "8a90480faf21e5fc3fea9c643b3d44d6e31ad04722cfd58829ade935983ac3de",
       "relation": "exact_copy",
@@ -1282,7 +1408,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_two_prime_lock_precursor_cone.py",
-      "public_path": "research_corpus/Erdos249/problem/scripts/check_two_prime_lock_precursor_cone.py",
+      "public_path": "research_corpus/Erdos249/formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos249/scripts/check_two_prime_lock_precursor_cone.py",
       "source_sha256": "dc2e78a6d8aacb90a9934f3c3841f2eea8c94e3fd528454d6b240a30be144b90",
       "published_sha256": "dc2e78a6d8aacb90a9934f3c3841f2eea8c94e3fd528454d6b240a30be144b90",
       "relation": "exact_copy",
@@ -1291,7 +1417,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/odd_slope_affine_totient/OddSlopeAffineTotient.lean",
-      "public_path": "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/OddSlopeAffineTotient.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/odd_slope_affine_totient/OddSlopeAffineTotient.lean",
       "source_sha256": "439a3b3f19be897e95cf3a3d9a3c4fe1bb847bf79623ce24b5b62c5fd7c45008",
       "published_sha256": "439a3b3f19be897e95cf3a3d9a3c4fe1bb847bf79623ce24b5b62c5fd7c45008",
       "relation": "exact_copy",
@@ -1300,7 +1426,7 @@
     },
     {
       "source_path": "source-provenance://formal_math/odd_slope_affine_totient/TotientKernelReduction.lean",
-      "public_path": "research_corpus/Erdos249/side_projects/odd_slope_affine_totient/TotientKernelReduction.lean",
+      "public_path": "research_corpus/Erdos249/formal_math/odd_slope_affine_totient/TotientKernelReduction.lean",
       "source_sha256": "8ea7a637bb9441b30e5b03defc7af81f9e432b7ffec6876bb2f5c44897c3503e",
       "published_sha256": "8ea7a637bb9441b30e5b03defc7af81f9e432b7ffec6876bb2f5c44897c3503e",
       "relation": "exact_copy",
@@ -1309,17 +1435,26 @@
     },
     {
       "source_path": "source-provenance://formal_math/probes/erdos249_fixed_quotient_delay_law.py",
-      "public_path": "research_corpus/Erdos249/probes/erdos249_fixed_quotient_delay_law.py",
+      "public_path": "research_corpus/Erdos249/formal_math/probes/erdos249_fixed_quotient_delay_law.py",
       "source_sha256": "327bfc26df73c77c1fb76370c82a3d2c0259516cc70ef729538717f0e08ee247",
       "published_sha256": "327bfc26df73c77c1fb76370c82a3d2c0259516cc70ef729538717f0e08ee247",
       "relation": "exact_copy",
       "local_path_replacements": 0,
       "bytes": 6366
+    },
+    {
+      "source_path": "source-provenance://state/formal_math/erdos257_period_noncollapse/erdos249_pure_dyadic_pointwise_countermodel_receipt.json",
+      "public_path": "research_corpus/Erdos249/receipts/erdos249_pure_dyadic_pointwise_countermodel_receipt.json",
+      "source_sha256": "8d3ec881dbe721b637cc607ec2151088a2546b14ce5655801bf3fd1b9b20e1c9",
+      "published_sha256": "8d3ec881dbe721b637cc607ec2151088a2546b14ce5655801bf3fd1b9b20e1c9",
+      "relation": "exact_copy",
+      "local_path_replacements": 0,
+      "bytes": 7051
     }
   ],
   "browser_frontier": {
     "path": "research_corpus/Erdos249/FRONTIER.md",
-    "sha256": "f9844f8c1478d17c9fe8751001bcedcc58fc055e359bff79493a43a1fbbd61e3",
+    "sha256": "71ad381168cb42f4fca4188224c7461e3896bca8e0de4c30f2f4b3f1f2db6406",
     "source": "exported research_packet.json"
   }
 }
