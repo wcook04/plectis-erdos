@@ -669,6 +669,127 @@ boundary.  Section~\ref{sec:squarefree} records a second, sharper instance of
 the same phenomenon.
 \end{remark}
 
+\section{Structured supports: preserving the remaining divisibility}
+\label{sec:bouquet}
+
+The periodic argument manufactures long divisible blocks.  For a sparse
+composite support the difficulty is different: after finitely many support
+elements have been absorbed into a congruence modulus, what arithmetic freedom
+remains in the others?  A finite-core bouquet makes that question exact.
+Write
+\[
+ A=E\cup\{c_i p_i:i\ge0\},\qquad c_i\mid Q,\quad e\mid Q\ (e\in E),
+\]
+where $Q,c_i,e$ are positive, $E$ is finite, the $p_i>1$ are pairwise coprime
+and coprime to $Q$, and $\sum_i p_i^{-1}<\infty$.  The petals $p_i$ need not
+be prime.  For every finite set $F$ of indices, put
+$M_F=Q\prod_{j\in F}p_j$.  Then
+\[
+ \frac{c_i p_i}{\gcd(c_i p_i,M_F)}=p_i\qquad(i\notin F).
+\]
+Thus a new ray retains its entire petal as the modulus governing its hits
+along a progression with step $M_F$
+(\mword{Erdos249257/SupportSunflowerDichotomy.lean}{192}{ray_div_gcd_frameStep}{reduced-modulus identity}).
+
+There are concrete infinite examples.  Let $r_0,r_1,\ldots=5,7,11,13,\ldots$
+be the primes after $3$, take $Q=6$, $E=\varnothing$, $p_i=r_i^2$, and
+alternate $c_i=2,3$.  This gives
+$A=\{50,147,242,507,\ldots\}$; every member has exactly three prime factors
+counted with multiplicity.  The bouquet, infinitude and factor count are
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{319}{alternatingPrimeSquareBouquet}{constructed},
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{337}{alternatingPrimeSquareSupport_infinite}{proved}, and
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{343}{alternatingPrimeSquareSupport_cardFactors_eq_three}{checked}, respectively.
+The missing step is not the existence of a bouquet.  It is a simultaneous
+choice of a divisible block and a small following tail.
+
+\begin{theorem}[orthogonal-petal sunflower criterion]
+\label{res:sunflower}
+Let $A$ be a bouquet as above, put $c(n)=\scA_A(n)$, and define
+\[
+ T_N=\sum_{j\ge1}\frac{c(N+j)}{2^j},\qquad
+ B_{N,K}=\sum_{r=1}^K c(N+r)2^{K-r}.
+\]
+Suppose that for every $K\ge1$ there is an $N\ge0$ for which
+\[
+ 2^K\mid B_{N,K},\qquad T_{N+K}\le16.
+\]
+Then $\sum_{a\in A}(2^a-1)^{-1}$ is irrational.
+\end{theorem}
+
+\begin{proof}
+Write the series as $X=\sum_{n\ge1}c(n)2^{-n}$.  If $qX$ is an integer
+for some positive integer $q$, then $qT_N$ is an integer for every $N$:
+multiply the series by $2^N$ and remove its integral prefix.  Choose $K$
+with $2^K>16q$ and use the assumed selector.  Splitting the tail gives
+\[
+ T_N=\frac{B_{N,K}}{2^K}+\frac{T_{N+K}}{2^K}.
+\]
+The first term is integral, so $qT_{N+K}/2^K$ is an integer.  It is strictly
+between zero and one: the upper bound follows from the selector, and
+positivity follows because any positive $a\in A$ divides arbitrarily large
+indices.  This is a contradiction.
+\end{proof}
+
+The proof only needs one positive member of $A$; the bouquet is a proposed
+source of the selector, not a further ingredient in the contradiction.
+Likewise, $16$ can be replaced by any fixed finite positive bound.  What must
+be uniform is the tail bound as $K$ grows.  The pinned Lean proof implements
+the bound $16$ through finite windows and the
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{531}{sunflowerForcedCarrySupply_of_orthogonalPetalBouquet}{forced carry supply},
+then applies the
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{540}{irrational_erdosSupportSeries_of_orthogonalPetalBouquet}{irrationality endpoint}.
+The displayed selector is exactly
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{406}{SunflowerForcedSlotTailSelection}{the remaining hypothesis}.
+Neither the reduced-modulus identity nor reciprocal summability proves that
+selector here.  In particular, the example above is not thereby proved to
+give an irrational sum.
+
+\begin{theorem}[the composite-dilation defect]
+\label{res:compositedefect}
+Let $A\subseteq\N$ and let $a,x\in\Npos$ with $a\in A$.  Define the foreign-divisor
+defect
+\[
+  \delta_A(a,x)=\#\{d\mid ax:d\in A,\ d\nmid x,\ d\ne a\}.
+\]
+Then the divisor incidence satisfies the exact identity
+\[
+  \scA_A(ax)=\scA_A(x)+\mathbf 1_{a\nmid x}+\delta_A(a,x).
+\]
+If every member of $A$ is prime, then $\delta_A(a,x)=0$, so the familiar
+prime-support dilation formula is recovered.  More generally, if $A$ has an
+\texttt{OrthogonalPetalBouquet} witness $h_B$, then for every $i\in\N$,
+\[
+  \delta_A(\operatorname{ray}_{h_B}(i),x)\le
+  |h_B.\mathrm{exceptional}|+
+  \scA_{\operatorname{range}(h_B.\mathrm{petal})}(x),
+\]
+where $\operatorname{ray}_{h_B}(i)=h_B.\mathrm{core}(i)h_B.\mathrm{petal}(i)$.
+\end{theorem}
+
+\noindent The first identity is the finite divisor partition checked at
+\mword{Erdos249257/CompositeDilationDefect.lean}{30}{supportCoeff_mul_eq_add_defect}{exact dilation identity}.
+The hard point is that a composite multiplier can create support divisors
+which are neither the multiplier itself nor old divisors of $x$; they are
+recorded by $\delta_A$ rather than silently discarded.  The defect vanishes
+under the prime-support hypothesis by
+\mword{Erdos249257/CompositeDilationDefect.lean}{103}{compositeDilationDefect_eq_zero_of_prime_support}{prime-support no-defect},
+and the corresponding incidence formula is
+\mword{Erdos249257/CompositeDilationDefect.lean}{119}{supportCoeff_mul_prime_support}{prime specialization}.
+For a bouquet, every non-exceptional foreign divisor injects into a unique
+petal divisor of $x$, yielding the displayed budget through
+\mword{Erdos249257/CompositeDilationDefect.lean}{133}{mem_compositeDilationDefect_bouquet_imp_exceptional_or_petal_dvd}{foreign-divisor classification}
+and
+\mword{Erdos249257/CompositeDilationDefect.lean}{151}{compositeDilationDefect_le_exceptional_add_petalCoeff}{defect bound}.
+The correction is concrete already for $A=\{2,6\}$: multiplying $x=1$ by
+the composite support element $6$ creates the additional support divisor $2$,
+so $\delta_A(6,1)=1$
+(\mword{Erdos249257/CompositeDilationDefect.lean}{218}{compositeDilationDefect_two_six_fixture}{two-six witness}).
+
+Thus a composite bouquet cannot be analysed by copying the prime formula
+until this explicit foreign channel has been budgeted.  This theorem provides
+that local budget only; it neither bounds defects along an infinite orbit nor
+supplies the uniform tail selector required by Theorem~\ref{res:sunflower}.
+
 \section{Squarefree support and a coordinate-dependent obstruction}
 \label{sec:squarefree}
 
@@ -1212,84 +1333,8 @@ Integral reciprocal states are excluded from the same band by
 This is a one-step local no-go result: it neither proves that the half-greedy
 orbit reaches or avoids the band nor settles half-membership.
 
-Two further conditional arguments sharpen the boundary around this half-value
-problem.  They are logically distinct from the terminal scaled-vanishing
-question: one seeks irrationality from a structured support, while the other
-would produce a rational counterexample from cofinal geometric stages.
-
-\begin{theorem}[orthogonal-petal sunflower criterion]
-\label{res:sunflower}
-Let $A\subseteq\N$ support an
-\texttt{OrthogonalPetalBouquet} and satisfy
-\texttt{SunflowerForcedSlotTailSelection}.  Then
-
-\[
-  \operatorname{Irrational}\!\left(\sum_{a\in A}\frac{1}{2^a-1}\right).
-\]
-The bouquet hypothesis packages a finite exceptional/core part and residual
-petals that are nontrivial, pairwise coprime, and reciprocal-summable.  The
-remaining selector hypothesis is a uniform tail condition: at every positive
-length $K$ it supplies a shifted block whose binary carry is divisible by
-$2^K$ while its residual tail is bounded.  Neither hypothesis is constructed
-here, so this is a conditional reduction rather than a solution of
-Problem~\#257.
-\end{theorem}
-
-\noindent The hard mechanism is the persistent-reduced-modulus averaging
-argument: the selector supplies carries, and the support-series theorem
-turns that supply into irrationality.  The exact formal consumers are
-\mword{Erdos249257/SupportSunflowerDichotomy.lean}{531}{sunflowerForcedCarrySupply_of_orthogonalPetalBouquet}{forced carry supply}
-and
-\mword{Erdos249257/SupportSunflowerDichotomy.lean}{540}{irrational_erdosSupportSeries_of_orthogonalPetalBouquet}{irrationality endpoint}.
-The source definition of the selector makes the missing analytic obligation
-explicit at
-\mword{Erdos249257/SupportSunflowerDichotomy.lean}{406}{SunflowerForcedSlotTailSelection}{uniform tail selector}.
-
-\begin{theorem}[the composite-dilation defect]
-\label{res:compositedefect}
-Let $A\subseteq\N$ and let $a,x\in\Npos$ with $a\in A$.  Define the foreign-divisor
-defect
-\[
-  \delta_A(a,x)=\#\{d\mid ax:d\in A,\ d\nmid x,\ d\ne a\}.
-\]
-Then the divisor incidence satisfies the exact identity
-\[
-  \scA_A(ax)=\scA_A(x)+\mathbf 1_{a\nmid x}+\delta_A(a,x).
-\]
-If every member of $A$ is prime, then $\delta_A(a,x)=0$, so the familiar
-prime-support dilation formula is recovered.  More generally, if $A$ has an
-\texttt{OrthogonalPetalBouquet} witness $h_B$, then for every $i\in\N$,
-\[
-  \delta_A(\operatorname{ray}_{h_B}(i),x)\le
-  |h_B.\mathrm{exceptional}|+
-  \scA_{\operatorname{range}(h_B.\mathrm{petal})}(x),
-\]
-where $\operatorname{ray}_{h_B}(i)=h_B.\mathrm{core}(i)h_B.\mathrm{petal}(i)$.
-\end{theorem}
-
-\noindent The first identity is the finite divisor partition checked at
-\mword{Erdos249257/CompositeDilationDefect.lean}{30}{supportCoeff_mul_eq_add_defect}{exact dilation identity}.
-The hard point is that a composite multiplier can create support divisors
-which are neither the multiplier itself nor old divisors of $x$; they are
-recorded by $\delta_A$ rather than silently discarded.  The defect vanishes
-under the prime-support hypothesis by
-\mword{Erdos249257/CompositeDilationDefect.lean}{103}{compositeDilationDefect_eq_zero_of_prime_support}{prime-support no-defect},
-and the corresponding incidence formula is
-\mword{Erdos249257/CompositeDilationDefect.lean}{119}{supportCoeff_mul_prime_support}{prime specialization}.
-For a bouquet, every non-exceptional foreign divisor injects into a unique
-petal divisor of $x$, yielding the displayed budget through
-\mword{Erdos249257/CompositeDilationDefect.lean}{133}{mem_compositeDilationDefect_bouquet_imp_exceptional_or_petal_dvd}{foreign-divisor classification}
-and
-\mword{Erdos249257/CompositeDilationDefect.lean}{151}{compositeDilationDefect_le_exceptional_add_petalCoeff}{defect bound}.
-The correction is concrete already for $A=\{2,6\}$: multiplying $x=1$ by
-the composite support element $6$ creates the additional support divisor $2$,
-so $\delta_A(6,1)=1$
-(\mword{Erdos249257/CompositeDilationDefect.lean}{218}{compositeDilationDefect_two_six_fixture}{two-six witness}).
-
-Thus a composite bouquet cannot be analysed by copying the prime formula
-until this explicit foreign channel has been budgeted.  This theorem provides
-that local budget only; it neither bounds defects along an infinite orbit nor
-supplies the uniform tail selector required by Theorem~\ref{res:sunflower}.
+A different conditional argument would produce an infinite support of value
+$1/2$ from cofinal geometric stages.
 
 \begin{theorem}[cofinal cylinders imply an infinite half-support]
 \label{res:cylinderhalf}
