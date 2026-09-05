@@ -450,6 +450,17 @@
         "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=257].families[twenty_one_two_anchor_divergence_density]",
         "hard_mechanism": "Selected fractional atoms exclude alignment on exact residue classes. Upper-half skips turn 60 classes modulo 105 into upper density >= 2/7 on the two-anchor restricted set; twelve anchors enlarge that set and give 1011 classes modulo 1260, hence upper density >= 337/840.",
         "open_boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+      },
+      {
+        "family_id": "canonical_factorial_digit_termination",
+        "tier_id": "supporting_and_long_tail",
+        "relative_judgement": "This standard canonical-expansion criterion closes the paper formalization gap and supplies a reusable exact interface; it stays below the actual factorial-gap carry and channel results because it provides no nontermination argument for that series.",
+        "canonical_claim_commit": "a740c6d5bb630a71327ddb4c893c72a288f8519a",
+        "source_declarations": [
+          "ErdosProblems.Erdos68.exists_rat_eq_iff_eventually_zero_canonicalDigit"
+        ],
+        "hard_mechanism": "An eventually zero digit tail multiplies any positive remainder through increasing radices, contradicting the canonical fractional bound; a zero remainder supplies an explicit rational witness.",
+        "open_boundary": "Nontermination for the factorial-gap series and an independent challenge replay remain unproved."
       }
     ],
     "programme_family_order": [
@@ -458,7 +469,8 @@
         "family_ids": [
           "factorial_carry_characterisation",
           "factorial_conditional_producers",
-          "factorial_channel_and_projection_rigidity"
+          "factorial_channel_and_projection_rigidity",
+          "canonical_factorial_digit_termination"
         ]
       },
       {
@@ -692,12 +704,13 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "ef1637c51f1d8512939b29c008a45dd8b741c4ba66174affc10558577f6a4ab7",
-    "source_review_family_count": 88,
+    "source_review_matrix_sha256": "bcbf22a62ef6c63e41ad70d8409e5cadf4d4d59e300d73b4f6260141f9d58feb",
+    "source_review_family_count": 89,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
     "source_review_family_ids": [
       "factorial_carry_characterisation",
+      "canonical_factorial_digit_termination",
       "factorial_channel_and_projection_rigidity",
       "factorial_conditional_producers",
       "factorial_finite_certificates",
@@ -899,7 +912,8 @@
       "twenty_one_two_anchor_divergence_density": "represented",
       "prime_cofactor_repair_obstruction": "represented",
       "prime_repair_finite_support_rigidity": "represented",
-      "factorial_analytic_growth_boundaries": "subordinate"
+      "factorial_analytic_growth_boundaries": "subordinate",
+      "canonical_factorial_digit_termination": "represented"
     },
     "targeted_theorem_forest_discoveries": [
       {

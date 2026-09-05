@@ -37,6 +37,7 @@ import ErdosProblems.Erdos269.ThreeChannelBlockRigidity
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
 import ErdosProblems.Erdos269.WeightedPhaseCarry
 import ErdosProblems.Erdos68.CanonicalFactorialDigits
+import ErdosProblems.Erdos68.CanonicalFactorialTermination
 import ErdosProblems.Erdos68.ChannelBreakpointRigidity
 import ErdosProblems.Erdos68.ChannelIntegralCongruence
 import ErdosProblems.Erdos68.DivisorFactorialCentre

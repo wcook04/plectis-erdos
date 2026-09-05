@@ -1686,6 +1686,9 @@
         "ErdosProblems.Decl.verify.D3",
         "ErdosProblems.Decl.verify.D4",
         "ErdosProblems.Erdos1041.CubicQuotientFiberCase",
+        "ErdosProblems.Erdos1041.ExponentialRemainderBound",
+        "ErdosProblems.Erdos1041.NewtonFlowTrajectory",
+        "ErdosProblems.Erdos1041.PowerSeriesLengthBound",
         "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
         "ErdosProblems.Erdos1041.SharpCollinearChebyshev",
         "ErdosProblems.FreePosition.FreeKill18B",
@@ -8362,6 +8365,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1041.CoefficientEnergyBound",
+          "path": "ErdosProblems/Erdos1041/CoefficientEnergyBound.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
           "path": "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
           "role": "Lean proof module",
@@ -8388,10 +8397,32 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos1041.ExponentialRemainderBound",
+          "path": "ErdosProblems/Erdos1041/ExponentialRemainderBound.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
           "path": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.NewtonFlowTrajectory",
+          "path": "ErdosProblems/Erdos1041/NewtonFlowTrajectory.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.NewtonFlowRaySeparation"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.PowerSeriesLengthBound",
+          "path": "ErdosProblems/Erdos1041/PowerSeriesLengthBound.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.CoefficientEnergyBound"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail",
@@ -8759,6 +8790,14 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos68.CanonicalFactorialTermination",
+          "path": "ErdosProblems/Erdos68/CanonicalFactorialTermination.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.CanonicalFactorialDigits"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos68.ChannelBreakpointRigidity",
           "path": "ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean",
           "role": "Lean proof module",
@@ -8790,6 +8829,12 @@
             "ErdosProblems.Erdos68.FactorialChannelCertificate",
             "ErdosProblems.Erdos68.FactorialZeroPlateau"
           ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.FactorialAnalyticBoundary",
+          "path": "ErdosProblems/Erdos68/FactorialAnalyticBoundary.lean",
+          "role": "Lean proof module",
+          "imports": []
         },
         {
           "id": "ErdosProblems.Erdos68.FactorialCarry",
@@ -10816,10 +10861,12 @@
             "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
             "ErdosProblems.Erdos269.WeightedPhaseCarry",
             "ErdosProblems.Erdos68.CanonicalFactorialDigits",
+            "ErdosProblems.Erdos68.CanonicalFactorialTermination",
             "ErdosProblems.Erdos68.ChannelBreakpointRigidity",
             "ErdosProblems.Erdos68.ChannelIntegralCongruence",
             "ErdosProblems.Erdos68.DivisorFactorialCentre",
             "ErdosProblems.Erdos68.EndpointWeightedPrivateSupport",
+            "ErdosProblems.Erdos68.FactorialAnalyticBoundary",
             "ErdosProblems.Erdos68.FactorialCarry",
             "ErdosProblems.Erdos68.FactorialChannelCertificate",
             "ErdosProblems.Erdos68.FactorialZeroPlateau",
@@ -12667,6 +12714,19 @@
             "boundary": "An exact reformulation does not supply the required cofinal failures."
           },
           {
+            "id": "canonical_factorial_digit_termination",
+            "contribution_class": "formalized canonical expansion criterion",
+            "summary": "For every real x, its canonical factorial digits eventually vanish if and only if x is rational. A zero digit tail forces the initial fractional remainder to vanish: otherwise the radix recurrence grows beyond the canonical bound of one. The proof also constructs the rational witness from the factorial-scale floor.",
+            "evidence_mode": "Lean kernel",
+            "declarations": [
+              "ErdosProblems.Erdos68.exists_rat_eq_iff_eventually_zero_canonicalDigit",
+              "ErdosProblems.Erdos68.canonicalRemainder_eq_zero_of_zero_digit_tail",
+              "ErdosProblems.Erdos68.exists_rat_eq_of_canonicalRemainder_eq_zero"
+            ],
+            "comparator_disposition": "not_selected_pending_exact_transport",
+            "boundary": "This completes the canonical-expansion equivalence for arbitrary real inputs; no nontermination proof for the factorial-gap series or external challenge replay is supplied."
+          },
+          {
             "id": "factorial_channel_and_projection_rigidity",
             "contribution_class": "locally proved result; novelty unassessed",
             "summary": "Finite quotient-band channel factorisation and breakpoint, channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.",
@@ -13647,7 +13707,7 @@
         "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
         "environment": "problem",
         "title": "Erdős #68",
-        "line": 94
+        "line": 92
       }
     },
     {
@@ -13671,7 +13731,7 @@
         "source": "paper/erdos-251-prime-gap-dyadic-series.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 103
+        "line": 104
       }
     },
     {
@@ -13707,7 +13767,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1736
+        "line": 1734
       }
     },
     {
@@ -13743,7 +13803,7 @@
         "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
-        "line": 171
+        "line": 127
       }
     },
     {
@@ -13767,7 +13827,7 @@
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "Erdős #243",
-        "line": 99
+        "line": 100
       }
     },
     {
@@ -13815,7 +13875,7 @@
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "global overlap-height growth",
-        "line": 1480
+        "line": 1481
       }
     },
     {
@@ -13827,7 +13887,7 @@
         "source": "paper/erdos-249-binary-totient-series.tex",
         "environment": "problem",
         "title": "first-harmonic anti-concentration on supplier fibres",
-        "line": 1700
+        "line": 1696
       }
     },
     {
@@ -13839,7 +13899,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "weakest native recurrence criterion",
-        "line": 1797
+        "line": 1795
       }
     },
     {
@@ -13851,7 +13911,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "actual-orbit invariant",
-        "line": 1819
+        "line": 1817
       }
     },
     {
@@ -13863,7 +13923,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1841
+        "line": 1839
       }
     }
   ],
