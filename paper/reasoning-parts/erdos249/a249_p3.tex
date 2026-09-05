@@ -179,7 +179,7 @@ $h$-uniform single-window certificate, the Farey/continued-fraction denominator 
 denominator channel, and the carry-kernel rank. None of them is closed; each is recorded with its
 exact remaining content.
 
-\subsubsection{SGN-01 --- the positive-sign half of the certified-kill band (\coord{actual-lcm-sign})}
+\subsubsection{SGN-01 --- the positive-sign corridor and survivor branch (\coord{actual-lcm-sign})}
 
 \begin{defn}
 The \emph{actual LCM tail orbit} at exponent $a$ is
@@ -202,18 +202,21 @@ vs.\ foreign prime power), with absolute constants $4,8,32$ and no lookup table 
 \lean{periodLcm_lt_eight_mul_t_mul_lcmRayArithmeticLetter}{TotientActualLcmOrbitArithmetic.lean:1906}.
 \end{thm}
 
-\begin{rem}[Exactly half the certificate band, and where the other half goes]
+\begin{rem}[The survivor sign and the endpoint residue]
 $\mathtt{certifiedKill}$ needs the residue to avoid a \emph{symmetric} radius-$(N{+}h{+}L{+}2)$
 neighbourhood of $0$ on both sides. SGN-01 gives positivity only. Its companion
 \lean{actualLcm_integral_forces_topEdgeResidue}{TotientActualLcmOrbitSign.lean:211} proves that,
 under integrality, $J+K+(a+6)<2\cdot2^a$, and $2H+J+K+2<2^K$,
 the consequence is not a kill but the opposite: the residue is forced to the
-\emph{top edge}, exactly $2^K - e$ where $e$ is the true carry orbit (\lean{carryOrbit}{CarrySurvivorExtinction.lean:387}). So the
-lower half of the certified-kill band is discharged unconditionally and cofinally by SGN-01; the
-upper half is untouched, and what remains open is a genuinely different, one-sided statement about
-the top edge --- row TE-04 below. The corpus's own normal-form tables tag this row
-\scale{bounded}; that tag is misleading, since only the window offset $J$ is bounded relative to
-the height, and the height $2\cdot 2^a$ itself is unbounded: the correct tag is \scale{uniform}.
+\emph{top edge}, exactly $P-e$ where $P=2^K$ and $e$ is the true carry orbit
+(\lean{carryOrbit}{CarrySurvivorExtinction.lean:387}). Writing $B=2H+J+K+2$,
+the proof gives $0<e<B<P$, hence $P-B<P-e<P$. This excludes the nonnegative
+true survivor; it does not discharge a lower certified-kill inequality.
+Indeed $P-e>B$ needs a further comparison, such as $2B\le P$, whereas the
+stated room condition only gives $B<P$. What remains is an independent
+arithmetic exclusion of the upper endpoint band --- row TE-04 below.
+Positivity is uniform in the height $a$, but every depth-$K$ consequence
+retains its stated window and modulus bounds.
 \end{rem}
 
 \subsubsection{TE-04 --- the one-sided top-edge staircase (\coord{actual-lcm-top-edge})}
