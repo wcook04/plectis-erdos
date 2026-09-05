@@ -47,7 +47,7 @@ def test_snapshot_command_path_boundary() -> None:
         )
 
 
-def test_snapshot_clone_isolation_flags_are_pinned() -> None:
+def test_snapshot_clone_isolation_flags_are_pinned(*, linked_worktree: bool = False) -> None:
     """Share immutable objects without copying the multi-gigabyte object store."""
     with tempfile.TemporaryDirectory() as raw:
         source = Path(raw) / "source"
@@ -65,6 +65,19 @@ def test_snapshot_clone_isolation_flags_are_pinned() -> None:
         git(source, "add", ".")
         git(source, "commit", "-qm", "snapshot isolation fixture")
         commit_id = git(source, "rev-parse", "HEAD")
+
+        if linked_worktree:
+            linked = Path(raw) / "linked"
+            worktree = check_release_ref.run(
+                ["git", "worktree", "add", "--detach", str(linked), commit_id],
+                cwd=source,
+            )
+            require(worktree.returncode == 0, worktree.stderr)
+            source = linked
+            # Neither caller dirt nor the worktree-private index is an input.
+            (source / check_release_ref.RELEASE_COMMANDS[0][1]).write_text(
+                "raise RuntimeError('uncommitted caller change')\n", encoding="utf-8"
+            )
 
         original_root = check_release_ref.ROOT
         check_release_ref.ROOT = source
@@ -86,6 +99,15 @@ def test_snapshot_clone_isolation_flags_are_pinned() -> None:
                     require(
                         git(clone, "rev-parse", "HEAD") == commit_id,
                         "snapshot commit drifted",
+                    )
+                    require(
+                        git(clone, "status", "--porcelain") == "",
+                        "snapshot inherited caller changes",
+                    )
+                    require(
+                        "uncommitted caller change" not in
+                        (clone / check_release_ref.RELEASE_COMMANDS[0][1]).read_text(),
+                        "snapshot copied the dirty worktree command",
                     )
         finally:
             check_release_ref.ROOT = original_root
@@ -320,6 +342,7 @@ def auxiliary_gate_source(*, label: str, exit_code: int) -> str:
 def main() -> int:
     test_snapshot_command_path_boundary()
     test_snapshot_clone_isolation_flags_are_pinned()
+    test_snapshot_clone_isolation_flags_are_pinned(linked_worktree=True)
     test_receipt_destination_boundary()
     test_singleflight_worker_flag_is_accepted()
     test_commit_ref_resolution_ends_git_options()
