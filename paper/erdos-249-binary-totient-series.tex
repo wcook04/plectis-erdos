@@ -598,8 +598,9 @@ separation estimate and not a proof that such indices occur.
 \textbf{Positive LCM corridor and top-edge boundary.}  For $a\ge8$ and
 $J+(a+6)<2\cdot2^a$, the true translated orbit difference
 $\operatorname{totientTail}(2H_a+J)-\operatorname{totientTail}(H_a+J)$ is
-strictly positive.  If it is represented by an integer and the dyadic
-modulus has room for the directed endpoint strip, the carry survivor is
+strictly positive.  Under the longer-window condition
+$J+K+(a+6)<2\cdot2^a$, if this difference is represented by an integer
+and the dyadic modulus has room for the directed endpoint strip, the carry survivor is
 strictly negative and the discrepancy residue is exactly the top-edge
 representative $2^K-\text{carry}_K$, lying strictly between the strip's lower
 edge and $2^K$.  Thus the positive corridor eliminates the nonnegative true
@@ -1260,8 +1261,10 @@ $J+(a+6)<2\cdot2^a$, the first lookahead letter in the short LCM window is
 positive and large enough to dominate the directed infinite remainder; the
 whole translated difference is therefore positive.  The checked argument
 uses the arithmetic positivity of the LCM-ray letters and the directed tail
-bound, not an assumption about the sign of a finite residue.  In an integral
-orbit this positivity is transported by the carry recurrence: the true
+bound, not an assumption about the sign of a finite residue.  For a depth $K$
+with $J+K+(a+6)<2\cdot2^a$, positivity also holds at the shifted offset
+$J+K$.  In an integral orbit the carry recurrence identifies that later
+difference with the carry state: the true
 survivor is negative, and, once the dyadic modulus exceeds the endpoint strip,
 the window residue is forced to the top edge rather than the central arc
 \mword{Erdos249257/TotientActualLcmOrbitSign.lean}{211}{actualLcm_integral_forces_topEdgeResidue}{by the exact top-edge theorem}.
