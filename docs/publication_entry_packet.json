@@ -108,10 +108,10 @@
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
     "claim-faithful-publication-systems-paper.pdf": "sha256:bdbdcccc5127fafaca687a575222c81fd49930eb9779f24805255970488293c9",
-    "docs/claims.json": "sha256:f36a7d6703ea00938790829974f9cca82b50186094f716c2caee5623b7e02f25",
+    "docs/claims.json": "sha256:cbc1552131dde74b2d11f851e5a9ca7eec55ccfd39ae54fe9f9b1cf6bdfb9b78",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/problems.json": "sha256:bec89015b46bc5f4928cd68ea35efdf9a8be23ef6492ffcc92a26ccd79b3c0da",
-    "docs/publication_contract.json": "sha256:4e274591ba3dc18beda703a032afcb73db46c67faab10cf261ddd4d274a4775d",
+    "docs/problems.json": "sha256:770984ca3495d5626f811a054df70a2f8307385065b94e59a9afed239098c924",
+    "docs/publication_contract.json": "sha256:dda4f2cc20a39e797d466d6ebe92ce0d8bf1fae8ac0f6abb6de2d22aa59e2906",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1566,
+        "line": 1752,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -366,7 +366,7 @@
       "open_target_claim": "erdos_1041",
       "paper_anchor": {
         "environment": "problem",
-        "line": 161,
+        "line": 171,
         "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "title": "Erdős #1041"
       },
@@ -390,7 +390,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 96,
+        "line": 99,
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "Erdős #243"
       },
@@ -438,7 +438,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1381,
+        "line": 1485,
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "global overlap-height growth"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1627,
+        "line": 1813,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "weakest native recurrence criterion"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1649,
+        "line": 1835,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "actual-orbit invariant"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1671,
+        "line": 1857,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },
@@ -529,9 +529,9 @@
       "CORPUS_MANIFEST.json",
       "PUBLIC_CORPUS_CHECKPOINT.json"
     ],
-    "reading_rule": "Read FRONTIER.md first for dated refutations, surviving carriers, and open gaps. Then use STRONGEST_RESULTS.json as its source-fingerprinted activation map; its premises and falsifiers retain their own hypotheses and do not close Erdős 1041 or promote research-corpus rows into Comparator claims.",
+    "reading_rule": "Read the short paper and docs/claims.json; docs/PALOMAR_RESULT_SHOWCASE.json orders six ordinary families: critical_value_separation_connector (separated simple nonzero critical value); sharp_collinear_diameter (optimal collinear bound, all degrees); primitive_sparse_quintic_paths (z^5+a z^4+b z+c); translated_cubic_quotient_fibres and translated_quartic_quotient_fibres (P((z-h)^q), q>=2, cubic/quartic P); critical_value_mean_budget (every enclosing disk, degrees 2-5, critical multiplicities). Metric corollaries use open-unit-disk roots; cubic fibres require two distinct zero values, while quintic/quartic conclusions permit coincident listed occurrences. The quartic lift uses the cited quartic theorem. Exact hypotheses and narrower formal boundaries are in those family rows. Read FRONTIER.md before the dated, nonexhaustive STRONGEST_RESULTS.json activation map; research discovery is not Comparator admission.",
     "source_index": {
-      "content_digest": "sha256:bec89015b46bc5f4928cd68ea35efdf9a8be23ef6492ffcc92a26ccd79b3c0da",
+      "content_digest": "sha256:770984ca3495d5626f811a054df70a2f8307385065b94e59a9afed239098c924",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {

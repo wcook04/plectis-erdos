@@ -1336,6 +1336,70 @@
       "paper": "paper/erdos-257-mersenne-support-subseries.tex",
       "families": [
         {
+          "id": "divisibility_weighted_support_irrationality",
+          "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
+          "summary": "Finite divisibility-weighted mass implies hereditary all-base irrationality, including explicit reciprocal-divergent short-gap supports.",
+          "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+        },
+        {
+          "id": "sub_logstar_reciprocal_mass_irrationality",
+          "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
+          "summary": "Rational p/q forces liminf H_A(x)/ell(x) at least lambda_b(p/q)/2; sub-log-star mass implies hereditary all-base irrationality.",
+          "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+        },
+        {
+          "id": "arbitrary_prime_power_support_irrationality",
+          "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
+          "summary": "Every infinite subset of the prime powers, with fixed dilations and finite modifications, has irrational sum at every integer base, using the reviewed analytic correlation input.",
+          "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+        },
+        {
+          "id": "variable_exponent_fractional_cover_irrationality",
+          "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
+          "summary": "For finite positive divisor frames F_j and 0<alpha_j<=1, summability of C_j 2^(j alpha_j) B_j/(B_j-1)^2 with B_j=2^alpha_j gives hereditary all-base irrationality; fixed-alpha positive covers are included by regrouping.",
+          "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+        },
+        {
+          "id": "four_ninths_square_root_repair_windows",
+          "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
+          "summary": "4/9 membership is equivalent to a repair at some N in every interval [K,K+2 floor(sqrt K)+12). A single strict-increase window excludes membership.",
+          "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+        },
+        {
+          "id": "twenty_one_two_anchor_divergence_density",
+          "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
+          "summary": "1/21 membership is equivalent to cofinal divergence on the 60 favorable classes modulo 105, equivalently upper density at least 2/7 or divergent reciprocal mass of those rows.",
+          "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+        },
+        {
+          "id": "prime_cofactor_repair_obstruction",
+          "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
+          "summary": "Actual modulus-420 tetraprime repair fails infinitely often; an exact 80-anchor prefix gives prime-cofactor jumps at least 7 for multiplier 120 and at least 2 for multiplier 420. General infinite admissible supports defeat every finite fixed multiplier menu.",
+          "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+        },
+        {
+          "id": "prime_repair_finite_support_rigidity",
+          "contribution_class": "reviewed ordinary theorem or obstruction; novelty unassessed",
+          "summary": "Bounded prime jumps characterize finite greedy support; eventual repair at every prime characterizes zero or a single Mersenne atom for targets below one.",
+          "evidence_mode": "Ordinary full proof; finite portions independently checked by exact arithmetic. New Lean reduction module pending focused validation.",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "Complete proofs: docs/research/erdos257-eight-return-proofs.md; composed arguments: docs/research/erdos257-eight-return-synthesis.md. No complete Lean formalization, external acceptance, rational-target membership or universal #257 solution is asserted."
+        },
+        {
           "id": "finite_period_noncollapse",
           "contribution_class": "locally proved result; novelty unassessed",
           "summary": "The multiplicative order of the base modulo a reduced finite-sum denominator is the support lcm, forcing denominator growth.",
@@ -1574,6 +1638,54 @@
       "paper": "paper/erdos-1041-lemniscate-newton-flow.tex",
       "families": [
         {
+          "id": "critical_value_separation_connector",
+          "contribution_class": "ordinary proved restricted metric theorem; novelty unassessed",
+          "summary": "For degree n >= 3, leading coefficient of modulus one, P(0)=1, P'(0)=0 and P''(0) != 0, assume every other critical point d has |1-P(d)| >= S > 1. The resolved branch P(Z(xi))=1-xi^2 extends injectively to |xi|<sqrt(S), and joins distinct roots with length at most 2(1+S)^(1/n) sqrt(log(S/(S-1))). It is shorter than two when (1+S)^(2/n) log(S/(S-1)) < 1. For a monic polynomial with roots in the open unit disk, the normalized separation regimes (S=4,n>=3), (S=3,n>=4), or (S=2,n>=6) yield an actual path shorter than two inside |f|<1. These regimes have S>=2, so the selected critical value has minimum modulus and the discriminant bound gives |f(c)|<1; for a general S>1 the scaled length estimate alone does not supply that containment. Mechanism: Resolve the simple saddle by the quadratic value coordinate. Proper unramified continuation and monodromy give a univalent inverse branch; the polynomial lemniscate area bound controls its coefficient energy, and Cauchy-Schwarz gives the explicit connector length. Critical-value separation selects a least-modulus value for the sublevel scaling.",
+          "evidence_mode": "Ordinary full theorem; any separately identified Lean kernel has a narrower statement",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "The full analytic continuation, polynomial area estimate and geometric assembly are ordinary mathematics. ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean and the separate ExternalVerification1041FirstMergeCriticalValueSeparation package have been prepared for public promotion; focused public validation is pending. They concern numerical degree monotonicity, sufficient thresholds and a squared-length consumer, not analytic continuation or a polynomial path theorem. No terminal external Comparator receipt is asserted. Clustered critical values and multiple saddles are not covered; the criterion does not prove an unrestricted admissible-hub selector."
+        },
+        {
+          "id": "sharp_collinear_diameter",
+          "contribution_class": "ordinary proved restricted metric theorem; novelty unassessed",
+          "summary": "For a monic degree-n polynomial, n >= 2, with collinear zero occurrences of diameter D, two adjacent occurrences are connected by their segment of length at most D, on which |f| <= (D/2)^n / (2^(n-1) cos(pi/(2n))^n). The constant is optimal in every degree, with affine Chebyshev zero configurations attaining it. Open-unit-disk roots give a path shorter than two in |f|<1; coincident occurrences permit a constant path. Mechanism: Normalize the extreme roots to -1 and 1, take the alternating maxima in consecutive root gaps, and compare with a scaled Chebyshev polynomial by root counting. One gap has the sharp envelope; affine transport supplies the geometric segment and the Chebyshev configuration proves optimality.",
+          "evidence_mode": "Ordinary full theorem; any separately identified Lean kernel has a narrower statement",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "SharpCollinear.existsPeakLeComparisonBound in ExternalVerification1041SolvedFamilies is a separately configured finite alternation kernel. Gap-maximizer existence, affine normalization, path transport and equality-node geometry are ordinary proof steps. Configuration and local checking do not constitute a terminal external Comparator receipt, and the original main Comparator roster does not represent this whole theorem."
+        },
+        {
+          "id": "primitive_sparse_quintic_paths",
+          "contribution_class": "ordinary proved restricted metric theorem; novelty unassessed",
+          "summary": "For p(z)=z^5+a z^4+b z+c with all five zero occurrences w_i in the closed unit disk, at least two distinct indices satisfy |b w_i+c| <= 1. If a != 0, two satisfy strict inequality; if a=0 every index satisfies the bound, with equality exactly at |w_i|=1. With open-unit-disk zeros the selected radial spokes produce a path shorter than two in |p|<1, with a constant path when selected occurrences coincide. Mechanism: Rotation and the missing coefficients give three Newton moment identities. A harmonic separator and a sum-of-squares bound rule out four unsafe tail energies. An Abel decomposition then turns two safe tails into entire safe radial spokes.",
+          "evidence_mode": "Ordinary full theorem; any separately identified Lean kernel has a narrower statement",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "The separately configured primitiveQuintic_twoStrictTailEnergies kernel assumes the finite moment equations; it does not derive them from the polynomial roots, perform the rotation, or assemble the Abel-spoke path. The full sparse-quintic theorem is ordinary mathematics, and no terminal external Comparator receipt for the separate package is asserted."
+        },
+        {
+          "id": "translated_cubic_quotient_fibres",
+          "contribution_class": "ordinary proved restricted metric theorem; novelty unassessed",
+          "summary": "Let q >= 2, h be complex, P be monic cubic, and f(z)=P((z-h)^q). If all zeros of f lie in the open unit disk and f has at least two distinct zero values, two zeros are joined through h by a two-segment path shorter than two inside |f|<1. This solves this coefficient family in every degree 3q >= 6. Mechanism: Root-of-unity averaging puts every quotient root in the open unit disk. A cubic charge identity selects a root with a safe whole spoke by an AM-GM distance envelope. Two points of its cyclic fibre pull the safe spoke back to two segments through h; the zero-root fallback treats degeneracy.",
+          "evidence_mode": "Ordinary full theorem; any separately identified Lean kernel has a narrower statement",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "The separately configured cubic_safeRootSpoke kernel proves a safe cubic spoke for three supplied disk roots. Complete cyclic-fibre construction and averaging, the zero-root fallback, pullback and metric path assembly remain ordinary proof steps. No terminal external Comparator receipt or full-theorem formalization is asserted."
+        },
+        {
+          "id": "translated_quartic_quotient_fibres",
+          "contribution_class": "ordinary proved restricted metric theorem; novelty unassessed",
+          "summary": "Let q >= 2, h be complex, P be monic quartic, and f(z)=P((z-h)^q). If all listed zeros of f lie in the open unit disk, two listed zero occurrences have a rectifiable connecting path shorter than two inside |f|<1. The ordinary argument lifts the cited quartic chord-or-radial theorem through every nontrivial cyclic power; multiplicity may give a degenerate path. Mechanism: Cyclic mean-square averaging puts the quotient roots in the open disk. For alpha=1/q, a lifted chord has density bounded by (sqrt(d^2+x^2))^(alpha-1) <= x^(alpha-1); integration bounds its length by |a|^alpha+|b|^alpha < 2. Splitting at the origin handles the branch singularity.",
+          "evidence_mode": "Ordinary full theorem; any separately identified Lean kernel has a narrower statement",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "The research Lean companion checks scalar lift-density, integration and endpoint-budget consumers. It does not prove the cited quartic geometry, construct a continuous root lift, establish full cyclic fibres or assemble the path. There is no matching Comparator theorem for this complete ordinary family."
+        },
+        {
+          "id": "critical_value_mean_budget",
+          "contribution_class": "ordinary proved auxiliary theorem; novelty unassessed",
+          "summary": "For every monic complex polynomial of degree n with 2 <= n <= 5, whose roots lie in any disk of radius R >= 0, the critical points c_j counted with multiplicity satisfy sum_j |f(c_j)|^(1/n) <= (n-1)R. The constant is attained by f(z)=(z-tau)^n-lambda in its centered disk of radius |lambda|^(1/n). More generally FP_(n-1) implies this critical-value budget at every degree. Mechanism: The symmetric critical-value functional is continuous plurisubharmonic on the root polydisk, including multiple-critical loci, so successive maximum principles move its maximum to the root torus. An exact self-inversive product identity there converts critical values to the free-point inequality; concavity changes exponent 1/(n-1) to 1/n. FP1-FP4 supply degrees two through five. FP4 combines a central log-energy/variance estimate with an outer K4-Holder and radical bound.",
+          "evidence_mode": "Ordinary paper and research-note proofs; scalar Lean support is not a formalization of this theorem",
+          "comparator_disposition": "not_applicable_not_a_lean_proposition",
+          "boundary": "This is an ordinary mathematical proof of an auxiliary critical-value budget, not a complete Lean formalization or Comparator result. The scalar Lean companion assumes the nonnegative entries and sum bound; it does not prove the polynomial identity, plurisubharmonic reduction or complete free-point inequalities and must not represent this family. The bound controls merge-level capacities, not inverse-ray lengths or admissible-hub selection; it does not prove the parent metric endpoint. The higher-degree free-point burden remains FP_m for m >= 5. Equality on the radial family prevents a universal strict improvement of this budget."
+        },
+        {
           "id": "newton_value_decay",
           "contribution_class": "locally proved result and formalised calculus; novelty unassessed",
           "summary": "The Newton value equation and its exponential first integral are checked exactly.",
@@ -1728,7 +1840,7 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:5028f94c0f3ecfaea6530303b355fe6639c8a8d6124521910fe6ccafffcc9c86",
+    "owner_digest": "sha256:575431895ad636499a9fdbd1729c6b7f5a3294b107d05034589e6b5a4f2ab4be",
     "projection": "docs/problems.json",
     "projection_digest": "sha256:bec89015b46bc5f4928cd68ea35efdf9a8be23ef6492ffcc92a26ccd79b3c0da",
     "schema": "erdos249257-problem-index/1",

@@ -324,6 +324,60 @@
         ],
         "hard_mechanism": "The clean LCM window factors phi(kH+j) through phi(j) and rough cofactors. Counting their large prime divisors bounds Euler-density loss without the prime number theorem. The affine terms cancel in the second difference, while parity supplies the additional factor two.",
         "open_boundary": "The primitive integer z may be zero; its nonzero alternative is not produced. The estimate concerns the specified three ranks and clean offsets; it is not an unbounded nonlinear cancellation theorem or an irrationality result. No configured ExternalVerification statement firewall or Comparator execution represents this family."
+      },
+      {
+        "family_id": "critical_value_mean_budget",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "A completed sharp value inequality through degree five, placed ahead of local calculus and perturbation machinery. It remains auxiliary: the paper's solved metric regimes deserve priority and no path-length conclusion follows from this budget.",
+        "evidence_status": "ordinary_paper_proof_not_comparator_evidence",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=1041].families[critical_value_mean_budget]",
+        "hard_mechanism": "The symmetric critical-value functional is continuous plurisubharmonic on the root polydisk, including multiple-critical loci, so successive maximum principles move its maximum to the root torus. An exact self-inversive product identity there converts critical values to the free-point inequality; concavity changes exponent 1/(n-1) to 1/n. FP1-FP4 supply degrees two through five. FP4 combines a central log-energy/variance estimate with an outer K4-Holder and radical bound.",
+        "open_boundary": "This is an ordinary mathematical proof of an auxiliary critical-value budget, not a complete Lean formalization or Comparator result. The scalar Lean companion assumes the nonnegative entries and sum bound; it does not prove the polynomial identity, plurisubharmonic reduction or complete free-point inequalities and must not represent this family. The bound controls merge-level capacities, not inverse-ray lengths or admissible-hub selection; it does not prove the parent metric endpoint. The higher-degree free-point burden remains FP_m for m >= 5. Equality on the radial family prevents a universal strict improvement of this budget."
+      },
+      {
+        "family_id": "critical_value_separation_connector",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "A proved geometric regime placed ahead of the auxiliary critical-value budget and routine local Newton and perturbation inputs.",
+        "evidence_status": "ordinary_paper_proof_with_separate_auxiliary_kernel_boundary",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=1041].families[critical_value_separation_connector]",
+        "hard_mechanism": "Resolve the simple saddle by the quadratic value coordinate. Proper unramified continuation and monodromy give a univalent inverse branch; the polynomial lemniscate area bound controls its coefficient energy, and Cauchy-Schwarz gives the explicit connector length. Critical-value separation selects a least-modulus value for the sublevel scaling.",
+        "open_boundary": "The full analytic continuation, polynomial area estimate and geometric assembly are ordinary mathematics. ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean and the separate ExternalVerification1041FirstMergeCriticalValueSeparation package are now public source; focused public validation is pending. They concern numerical degree monotonicity, sufficient thresholds and a squared-length consumer, not analytic continuation or a polynomial path theorem. No terminal external Comparator receipt is asserted. Clustered critical values and multiple saddles are not covered; the criterion does not prove an unrestricted admissible-hub selector."
+      },
+      {
+        "family_id": "sharp_collinear_diameter",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "A proved geometric regime placed ahead of the auxiliary critical-value budget and routine local Newton and perturbation inputs.",
+        "evidence_status": "ordinary_paper_proof_with_separate_auxiliary_kernel_boundary",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=1041].families[sharp_collinear_diameter]",
+        "hard_mechanism": "Normalize the extreme roots to -1 and 1, take the alternating maxima in consecutive root gaps, and compare with a scaled Chebyshev polynomial by root counting. One gap has the sharp envelope; affine transport supplies the geometric segment and the Chebyshev configuration proves optimality.",
+        "open_boundary": "SharpCollinear.existsPeakLeComparisonBound in ExternalVerification1041SolvedFamilies is a separately configured finite alternation kernel. Gap-maximizer existence, affine normalization, path transport and equality-node geometry are ordinary proof steps. Configuration and local checking do not constitute a terminal external Comparator receipt, and the original main Comparator roster does not represent this whole theorem."
+      },
+      {
+        "family_id": "primitive_sparse_quintic_paths",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "A proved geometric regime placed ahead of the auxiliary critical-value budget and routine local Newton and perturbation inputs.",
+        "evidence_status": "ordinary_paper_proof_with_separate_auxiliary_kernel_boundary",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=1041].families[primitive_sparse_quintic_paths]",
+        "hard_mechanism": "Rotation and the missing coefficients give three Newton moment identities. A harmonic separator and a sum-of-squares bound rule out four unsafe tail energies. An Abel decomposition then turns two safe tails into entire safe radial spokes.",
+        "open_boundary": "The separately configured primitiveQuintic_twoStrictTailEnergies kernel assumes the finite moment equations; it does not derive them from the polynomial roots, perform the rotation, or assemble the Abel-spoke path. The full sparse-quintic theorem is ordinary mathematics, and no terminal external Comparator receipt for the separate package is asserted."
+      },
+      {
+        "family_id": "translated_cubic_quotient_fibres",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "A proved geometric regime placed ahead of the auxiliary critical-value budget and routine local Newton and perturbation inputs.",
+        "evidence_status": "ordinary_paper_proof_with_separate_auxiliary_kernel_boundary",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=1041].families[translated_cubic_quotient_fibres]",
+        "hard_mechanism": "Root-of-unity averaging puts every quotient root in the open unit disk. A cubic charge identity selects a root with a safe whole spoke by an AM-GM distance envelope. Two points of its cyclic fibre pull the safe spoke back to two segments through h; the zero-root fallback treats degeneracy.",
+        "open_boundary": "The separately configured cubic_safeRootSpoke kernel proves a safe cubic spoke for three supplied disk roots. Complete cyclic-fibre construction and averaging, the zero-root fallback, pullback and metric path assembly remain ordinary proof steps. No terminal external Comparator receipt or full-theorem formalization is asserted."
+      },
+      {
+        "family_id": "translated_quartic_quotient_fibres",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "A proved geometric regime placed ahead of the auxiliary critical-value budget and routine local Newton and perturbation inputs.",
+        "evidence_status": "ordinary_paper_proof_with_separate_auxiliary_kernel_boundary",
+        "authority": "docs/claims.json::external_verification_packet.review_matrix[problem=1041].families[translated_quartic_quotient_fibres]",
+        "hard_mechanism": "Cyclic mean-square averaging puts the quotient roots in the open disk. For alpha=1/q, a lifted chord has density bounded by (sqrt(d^2+x^2))^(alpha-1) <= x^(alpha-1); integration bounds its length by |a|^alpha+|b|^alpha < 2. Splitting at the origin handles the branch singularity.",
+        "open_boundary": "The research Lean companion checks scalar lift-density, integration and endpoint-budget consumers. It does not prove the cited quartic geometry, construct a continuous root lift, establish full cyclic fibres or assemble the path. There is no matching Comparator theorem for this complete ordinary family."
       }
     ],
     "programme_family_order": [
@@ -412,6 +466,12 @@
       {
         "problem": 1041,
         "family_ids": [
+          "critical_value_separation_connector",
+          "sharp_collinear_diameter",
+          "primitive_sparse_quintic_paths",
+          "translated_cubic_quotient_fibres",
+          "translated_quartic_quotient_fibres",
+          "critical_value_mean_budget",
           "newton_value_decay",
           "ray_separation",
           "translation_avoidance",
@@ -552,8 +612,8 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "6ca961eaa7f431b91b677f73ff9308a6c814c579e0e1a1c2700f3b49877dca41",
-    "source_review_family_count": 73,
+    "source_review_matrix_sha256": "df6e4a589ab00b0a8dc4e9ce391e7accd0955da48b24fcb7aa131596be9865bf",
+    "source_review_family_count": 87,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
     "source_review_family_ids": [
@@ -595,6 +655,14 @@
       "totient_shift_propagation",
       "small_mismatch_criterion",
       "coefficient_only_no_go",
+      "divisibility_weighted_support_irrationality",
+      "sub_logstar_reciprocal_mass_irrationality",
+      "arbitrary_prime_power_support_irrationality",
+      "variable_exponent_fractional_cover_irrationality",
+      "four_ninths_square_root_repair_windows",
+      "twenty_one_two_anchor_divergence_density",
+      "prime_cofactor_repair_obstruction",
+      "prime_repair_finite_support_rigidity",
       "finite_period_noncollapse",
       "boolean_mobius_carry",
       "boolean_mobius_exact_row_dynamics",
@@ -617,6 +685,12 @@
       "conditional_carry_escape",
       "weighted_phase_carry_observer",
       "three_prime_finite_search",
+      "critical_value_separation_connector",
+      "sharp_collinear_diameter",
+      "primitive_sparse_quintic_paths",
+      "translated_cubic_quotient_fibres",
+      "translated_quartic_quotient_fibres",
+      "critical_value_mean_budget",
       "newton_value_decay",
       "ray_separation",
       "translation_avoidance",
@@ -729,7 +803,21 @@
       "height_and_pade_arithmetic": "represented",
       "totient_twoadic_pulse_blocks": "represented",
       "totient_fixed_rank_lcm_curvature": "represented",
-      "totient_parity_separated_carry_countermodel": "subordinate"
+      "totient_parity_separated_carry_countermodel": "subordinate",
+      "critical_value_mean_budget": "represented",
+      "critical_value_separation_connector": "represented",
+      "sharp_collinear_diameter": "represented",
+      "primitive_sparse_quintic_paths": "represented",
+      "translated_cubic_quotient_fibres": "represented",
+      "translated_quartic_quotient_fibres": "represented",
+      "divisibility_weighted_support_irrationality": "represented",
+      "sub_logstar_reciprocal_mass_irrationality": "represented",
+      "arbitrary_prime_power_support_irrationality": "represented",
+      "variable_exponent_fractional_cover_irrationality": "represented",
+      "four_ninths_square_root_repair_windows": "represented",
+      "twenty_one_two_anchor_divergence_density": "represented",
+      "prime_cofactor_repair_obstruction": "represented",
+      "prime_repair_finite_support_rigidity": "represented"
     },
     "targeted_theorem_forest_discoveries": [
       {
@@ -811,6 +899,36 @@
         "candidate_id": "totient_parity_separated_carry_countermodel",
         "disposition": "subordinate",
         "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[totient_parity_separated_carry_countermodel]"
+      },
+      {
+        "candidate_id": "critical_value_mean_budget",
+        "disposition": "represented",
+        "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[critical_value_mean_budget]"
+      },
+      {
+        "candidate_id": "critical_value_separation_connector",
+        "disposition": "represented",
+        "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[critical_value_separation_connector]"
+      },
+      {
+        "candidate_id": "sharp_collinear_diameter",
+        "disposition": "represented",
+        "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[sharp_collinear_diameter]"
+      },
+      {
+        "candidate_id": "primitive_sparse_quintic_paths",
+        "disposition": "represented",
+        "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[primitive_sparse_quintic_paths]"
+      },
+      {
+        "candidate_id": "translated_cubic_quotient_fibres",
+        "disposition": "represented",
+        "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[translated_cubic_quotient_fibres]"
+      },
+      {
+        "candidate_id": "translated_quartic_quotient_fibres",
+        "disposition": "represented",
+        "source_landscape_record": "candidate_value_dispositions.source_landscape_candidates[translated_quartic_quotient_fibres]"
       }
     ],
     "comparator_screen": {
@@ -1036,8 +1154,14 @@
           "Ray separation is a geometric consumer of this invariant; translation avoidance and root retention are separate perturbative supports rather than proofs of trajectory existence or component stability.",
           "No Morse/Reeb topology or decomposition, saddle and annular-cut gluing, collar-slack transfer, curve of length less than two, or Erdős #1041 endpoint follows."
         ],
-        "source_landscape_rank_relative_to": "Above ray_separation, translation_avoidance, root_retention, and finite search as the common load-bearing local invariant, but below direct completed endpoint families because global flow existence, topology, perturbation stability, and strict metric fan-in remain open.",
+        "source_landscape_rank_relative_to": "Below the completed separation, collinear, sparse-quintic and cyclic-quotient metric regimes and the critical-value mean budget; above the elementary ray-separation consumer and routine perturbation inputs.",
         "ranked_below": [
+          "critical_value_separation_connector",
+          "sharp_collinear_diameter",
+          "primitive_sparse_quintic_paths",
+          "translated_cubic_quotient_fibres",
+          "translated_quartic_quotient_fibres",
+          "critical_value_mean_budget",
           "known_irrational_supports",
           "pairwise_coprime_support"
         ],
@@ -1060,7 +1184,7 @@
           "root_retention"
         ],
         "contrary_evidence": "The invalid local saddle-block route and the unresolved global-flow/component-stability/length obligations show that exact value decay alone cannot be promoted to a connecting-curve theorem.",
-        "reason": "Represented as the strongest underweighted #1041 mechanism: it is the exact local invariant consumed by every ray-based route, while the separate finite perturbation theorems and open global topology remain visible rather than being flattened into a false endpoint.",
+        "reason": "Represented as the common local differential invariant supporting the Newton-ray route, below the completed ordinary metric regimes and the substantive critical-value budget.",
         "reversal_evidence": "A source-faithful Comparator transport would strengthen executable review evidence; a proved relative global Newton-flow theorem plus component-stable topological and strict length fan-in would justify endpoint-facing promotion, while another local derivative identity or finite search would not."
       },
       {
@@ -2129,6 +2253,184 @@
         "attribution": "Public source at paper pin 99f4bf47422abbd8757cbb22b50ba079d764d3a7; mathematical value assessed here for routing, without novelty, priority, external-review acceptance or endpoint claims.",
         "source_commit": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
         "paper": "paper/erdos-249-binary-totient-series.tex"
+      },
+      {
+        "candidate_id": "critical_value_mean_budget",
+        "family_id": "critical_value_mean_budget",
+        "disposition": "represented",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "Ordinary theorem FP_(n-1) implies (S)_n, and degree-two-through-five corollary",
+        "source_file": "research_corpus/Erdos1041/FreePointTorusPshReduction.md",
+        "source_anchor": "37-40; 42-181",
+        "source_commit": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
+        "paper": "paper/erdos-1041-lemniscate-newton-flow.tex",
+        "paper_anchor": "res:critical-value-budget",
+        "statement": "For every monic complex polynomial of degree n with 2 <= n <= 5, whose roots lie in any disk of radius R >= 0, the critical points c_j counted with multiplicity satisfy sum_j |f(c_j)|^(1/n) <= (n-1)R. The constant is attained by f(z)=(z-tau)^n-lambda in its centered disk of radius |lambda|^(1/n). More generally FP_(n-1) implies this critical-value budget at every degree.",
+        "exact_hypotheses": [
+          "f is a monic complex polynomial of integer degree 2 <= n <= 5.",
+          "All roots lie in a disk of radius R >= 0; the disk need not be minimal. Critical points are counted with multiplicity.",
+          "At general n >= 2, the bridge assumes FP_(n-1) for arbitrary points of the closed unit disk; FP_m is established here for m <= 4."
+        ],
+        "conclusion": "A sharp arithmetic-mean budget for all critical-value capacities in degrees two through five, with an all-degree conditional reduction to FP; no metric path conclusion.",
+        "hard_mechanism": "The symmetric critical-value functional is continuous plurisubharmonic on the root polydisk, including multiple-critical loci, so successive maximum principles move its maximum to the root torus. An exact self-inversive product identity there converts critical values to the free-point inequality; concavity changes exponent 1/(n-1) to 1/n. FP1-FP4 supply degrees two through five. FP4 combines a central log-energy/variance estimate with an outer K4-Holder and radical bound.",
+        "attribution": "Ordinary source proofs at paper pin 99f4bf47422abbd8757cbb22b50ba079d764d3a7: research_corpus/Erdos1041/FreePointTorusPshReduction.md:37-40; FreePointMeanInequalityFP3.md:19 and FreePointZeroInsertionFP4Matching.md:133 in the same public research directory supply FP3/FP4. The enclosing-disk extension follows by normalization, or by comparing to its minimal radius. No novelty, priority or external-review acceptance is claimed.",
+        "limitations": [
+          "This is an ordinary mathematical proof of an auxiliary critical-value budget, not a complete Lean formalization or Comparator result.",
+          "The scalar Lean companion assumes the nonnegative entries and sum bound; it does not prove the polynomial identity, plurisubharmonic reduction or complete free-point inequalities and must not represent this family.",
+          "The bound controls merge-level capacities, not inverse-ray lengths or admissible-hub selection; it does not prove the parent metric endpoint.",
+          "The higher-degree free-point burden remains FP_m for m >= 5. Equality on the radial family prevents a universal strict improvement of this budget."
+        ],
+        "evidence_ceiling": "ordinary_mathematical_proof_not_Lean_or_Comparator_endpoint",
+        "transport_admission_boundary": "No configured statement firewall or Comparator evidence represents this ordinary theorem. Scalar auxiliary Lean results are not promoted to its conclusion.",
+        "reason": "Represented because the degree-four and degree-five budget is a substantive proved auxiliary inequality hidden in the research corpus. It precedes routine calculus inputs, while actual solved metric regimes deserve priority over this value-only result.",
+        "reversal_evidence": "A valid metric comparison consuming this budget, or higher-degree FP, would strengthen the frontier. Formalizing the complete analytic argument would strengthen evidence coverage without supplying the missing metric theorem."
+      },
+      {
+        "candidate_id": "critical_value_separation_connector",
+        "family_id": "critical_value_separation_connector",
+        "disposition": "represented",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "Ordinary theorem: critical_value_separation_connector",
+        "source_file": "research_corpus/Erdos1041/FirstMergeCriticalValueSeparationCertificate.md",
+        "source_anchor": "7-82; 84-190",
+        "paper": "paper/erdos-1041-lemniscate-newton-flow.tex",
+        "paper_anchor": "res:critical-value-separation; res:critical-value-thresholds",
+        "statement": "For degree n >= 3, leading coefficient of modulus one, P(0)=1, P'(0)=0 and P''(0) != 0, assume every other critical point d has |1-P(d)| >= S > 1. The resolved branch P(Z(xi))=1-xi^2 extends injectively to |xi|<sqrt(S), and joins distinct roots with length at most 2(1+S)^(1/n) sqrt(log(S/(S-1))). It is shorter than two when (1+S)^(2/n) log(S/(S-1)) < 1. For a monic polynomial with roots in the open unit disk, the normalized separation regimes (S=4,n>=3), (S=3,n>=4), or (S=2,n>=6) yield an actual path shorter than two inside |f|<1. These regimes have S>=2, so the selected critical value has minimum modulus and the discriminant bound gives |f(c)|<1; for a general S>1 the scaled length estimate alone does not supply that containment.",
+        "exact_hypotheses": [
+          "The distinguished critical point is simple and its critical value is nonzero before normalization.",
+          "All other normalized critical values are at distance at least S > 1 from 1; the metric sublevel corollary additionally assumes open-unit-disk roots and a sufficient threshold with S >= 2."
+        ],
+        "conclusion": "For degree n >= 3, leading coefficient of modulus one, P(0)=1, P'(0)=0 and P''(0) != 0, assume every other critical point d has |1-P(d)| >= S > 1. The resolved branch P(Z(xi))=1-xi^2 extends injectively to |xi|<sqrt(S), and joins distinct roots with length at most 2(1+S)^(1/n) sqrt(log(S/(S-1))). It is shorter than two when (1+S)^(2/n) log(S/(S-1)) < 1. For a monic polynomial with roots in the open unit disk, a normalized simple critical point satisfying a sufficient separation threshold yields an actual path of length below two inside |f|<1.",
+        "hard_mechanism": "Resolve the simple saddle by the quadratic value coordinate. Proper unramified continuation and monodromy give a univalent inverse branch; the polynomial lemniscate area bound controls its coefficient energy, and Cauchy-Schwarz gives the explicit connector length. Critical-value separation selects a least-modulus value for the sublevel scaling.",
+        "attribution": "Ordinary certificate and paper proof; the area argument uses the cited polynomial lemniscate area theorem. No external execution or novelty claim.",
+        "limitations": [
+          "The full analytic continuation, polynomial area estimate and geometric assembly are ordinary mathematics. ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean and the separate ExternalVerification1041FirstMergeCriticalValueSeparation package are now public source; focused public validation is pending. They concern numerical degree monotonicity, sufficient thresholds and a squared-length consumer, not analytic continuation or a polynomial path theorem. No terminal external Comparator receipt is asserted. Clustered critical values and multiple saddles are not covered; the criterion does not prove an unrestricted admissible-hub selector.",
+          "The unrestricted Erdős #1041 endpoint remains open.",
+          "A general S>1 satisfying the numerical length criterion still needs |f(c)|<1 for containment in the unit lemniscate. The explicit regimes have S>=2 and supply this via minimum critical modulus and the discriminant bound."
+        ],
+        "evidence_ceiling": "ordinary_full_theorem_with_separately_delimited_auxiliary_formal_evidence",
+        "transport_admission_boundary": "The full analytic continuation, polynomial area estimate and geometric assembly are ordinary mathematics. ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean and the separate ExternalVerification1041FirstMergeCriticalValueSeparation package are now public source; focused public validation is pending. They concern numerical degree monotonicity, sufficient thresholds and a squared-length consumer, not analytic continuation or a polynomial path theorem. No terminal external Comparator receipt is asserted. Clustered critical values and multiple saddles are not covered; the criterion does not prove an unrestricted admissible-hub selector.",
+        "reason": "A completed geometric regime belongs ahead of auxiliary value budgets and routine local calculus; its ordinary proof is discoverable without promoting a narrower formal kernel.",
+        "reversal_evidence": "A full source-faithful formalization would strengthen evidence coverage; extension beyond these actual hypotheses would strengthen the mathematical frontier.",
+        "source_commit": "99f4bf47422abbd8757cbb22b50ba079d764d3a7"
+      },
+      {
+        "candidate_id": "sharp_collinear_diameter",
+        "family_id": "sharp_collinear_diameter",
+        "disposition": "represented",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "Ordinary theorem: sharp_collinear_diameter",
+        "source_file": "paper/erdos-1041-lemniscate-newton-flow.tex",
+        "source_anchor": "thm:sharp-collinear-diameter; rem:sharp-collinear-formal-boundary",
+        "paper": "paper/erdos-1041-lemniscate-newton-flow.tex",
+        "paper_anchor": "thm:sharp-collinear-diameter; cor:collinear-erdos-1041",
+        "statement": "For a monic degree-n polynomial, n >= 2, with collinear zero occurrences of diameter D, two adjacent occurrences are connected by their segment of length at most D, on which |f| <= (D/2)^n / (2^(n-1) cos(pi/(2n))^n). The constant is optimal in every degree, with affine Chebyshev zero configurations attaining it. Open-unit-disk roots give a path shorter than two in |f|<1; coincident occurrences permit a constant path.",
+        "exact_hypotheses": [
+          "The polynomial is monic of degree n >= 2 and all zero occurrences are collinear.",
+          "The strict Erdős consequence assumes all roots lie in the open unit disk; zero occurrences are counted with multiplicity."
+        ],
+        "conclusion": "For a monic degree-n polynomial, n >= 2, with collinear zero occurrences of diameter D, two adjacent occurrences are connected by their segment of length at most D, on which |f| <= (D/2)^n / (2^(n-1) cos(pi/(2n))^n). The constant is optimal in every degree, with affine Chebyshev zero configurations attaining it. Open-unit-disk roots give a path shorter than two in |f|<1; coincident occurrences permit a constant path.",
+        "hard_mechanism": "Normalize the extreme roots to -1 and 1, take the alternating maxima in consecutive root gaps, and compare with a scaled Chebyshev polynomial by root counting. One gap has the sharp envelope; affine transport supplies the geometric segment and the Chebyshev configuration proves optimality.",
+        "attribution": "Paper proof, ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean and SharpCollinearAlternation.lean; selected finite kernel in ExternalVerification1041SolvedFamilies/Solution.lean. No novelty or external acceptance claim.",
+        "limitations": [
+          "SharpCollinear.existsPeakLeComparisonBound in ExternalVerification1041SolvedFamilies is a separately configured finite alternation kernel. Gap-maximizer existence, affine normalization, path transport and equality-node geometry are ordinary proof steps. Configuration and local checking do not constitute a terminal external Comparator receipt, and the original main Comparator roster does not represent this whole theorem.",
+          "The unrestricted Erdős #1041 endpoint remains open."
+        ],
+        "evidence_ceiling": "ordinary_full_theorem_with_separately_delimited_auxiliary_formal_evidence",
+        "transport_admission_boundary": "SharpCollinear.existsPeakLeComparisonBound in ExternalVerification1041SolvedFamilies is a separately configured finite alternation kernel. Gap-maximizer existence, affine normalization, path transport and equality-node geometry are ordinary proof steps. Configuration and local checking do not constitute a terminal external Comparator receipt, and the original main Comparator roster does not represent this whole theorem.",
+        "reason": "A completed geometric regime belongs ahead of auxiliary value budgets and routine local calculus; its ordinary proof is discoverable without promoting a narrower formal kernel.",
+        "reversal_evidence": "A full source-faithful formalization would strengthen evidence coverage; extension beyond these actual hypotheses would strengthen the mathematical frontier."
+      },
+      {
+        "candidate_id": "primitive_sparse_quintic_paths",
+        "family_id": "primitive_sparse_quintic_paths",
+        "disposition": "represented",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "Ordinary theorem: primitive_sparse_quintic_paths",
+        "source_file": "research_corpus/Erdos1041/PrimitiveQuinticInteriorTail.md",
+        "source_anchor": "9; theorem and proof",
+        "paper": "paper/erdos-1041-lemniscate-newton-flow.tex",
+        "paper_anchor": "thm:primitive-quintic-two-tail; rem:primitive-quintic-formal-boundary",
+        "statement": "For p(z)=z^5+a z^4+b z+c with all five zero occurrences w_i in the closed unit disk, at least two distinct indices satisfy |b w_i+c| <= 1. If a != 0, two satisfy strict inequality; if a=0 every index satisfies the bound, with equality exactly at |w_i|=1. With open-unit-disk zeros the selected radial spokes produce a path shorter than two in |p|<1, with a constant path when selected occurrences coincide.",
+        "exact_hypotheses": [
+          "The polynomial is exactly the monic sparse quintic z^5+a z^4+b z+c; all five roots are enumerated with multiplicity.",
+          "Closed-disk hypotheses give the tail bound; the strict connecting-path consequence uses open-disk roots. Distinct indices need not be distinct root values."
+        ],
+        "conclusion": "For p(z)=z^5+a z^4+b z+c with all five zero occurrences w_i in the closed unit disk, at least two distinct indices satisfy |b w_i+c| <= 1. If a != 0, two satisfy strict inequality; if a=0 every index satisfies the bound, with equality exactly at |w_i|=1. With open-unit-disk zeros the selected radial spokes produce a path shorter than two in |p|<1, with a constant path when selected occurrences coincide.",
+        "hard_mechanism": "Rotation and the missing coefficients give three Newton moment identities. A harmonic separator and a sum-of-squares bound rule out four unsafe tail energies. An Abel decomposition then turns two safe tails into entire safe radial spokes.",
+        "attribution": "Ordinary interior/boundary tail notes and paper proof; finite selector in ExternalVerification1041SolvedFamilies/Solution.lean. No novelty or priority claim.",
+        "limitations": [
+          "The separately configured primitiveQuintic_twoStrictTailEnergies kernel assumes the finite moment equations; it does not derive them from the polynomial roots, perform the rotation, or assemble the Abel-spoke path. The full sparse-quintic theorem is ordinary mathematics, and no terminal external Comparator receipt for the separate package is asserted.",
+          "The unrestricted Erdős #1041 endpoint remains open."
+        ],
+        "evidence_ceiling": "ordinary_full_theorem_with_separately_delimited_auxiliary_formal_evidence",
+        "transport_admission_boundary": "The separately configured primitiveQuintic_twoStrictTailEnergies kernel assumes the finite moment equations; it does not derive them from the polynomial roots, perform the rotation, or assemble the Abel-spoke path. The full sparse-quintic theorem is ordinary mathematics, and no terminal external Comparator receipt for the separate package is asserted.",
+        "reason": "A completed geometric regime belongs ahead of auxiliary value budgets and routine local calculus; its ordinary proof is discoverable without promoting a narrower formal kernel.",
+        "reversal_evidence": "A full source-faithful formalization would strengthen evidence coverage; extension beyond these actual hypotheses would strengthen the mathematical frontier.",
+        "source_commit": "99f4bf47422abbd8757cbb22b50ba079d764d3a7"
+      },
+      {
+        "candidate_id": "translated_cubic_quotient_fibres",
+        "family_id": "translated_cubic_quotient_fibres",
+        "disposition": "represented",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "Ordinary theorem: translated_cubic_quotient_fibres",
+        "source_file": "research_corpus/Erdos1041/CubicQuotientFiberCase.md",
+        "source_anchor": "25; theorem and proof",
+        "paper": "paper/erdos-1041-lemniscate-newton-flow.tex",
+        "paper_anchor": "thm:translated-cubic-quotient-fibres; rem:cubic-quotient-formal-boundary",
+        "statement": "Let q >= 2, h be complex, P be monic cubic, and f(z)=P((z-h)^q). If all zeros of f lie in the open unit disk and f has at least two distinct zero values, two zeros are joined through h by a two-segment path shorter than two inside |f|<1. This solves this coefficient family in every degree 3q >= 6.",
+        "exact_hypotheses": [
+          "q is an integer at least two, P is monic cubic, and f is exactly P((z-h)^q).",
+          "Every zero of f lies in the open unit disk and there are at least two distinct zero values."
+        ],
+        "conclusion": "Let q >= 2, h be complex, P be monic cubic, and f(z)=P((z-h)^q). If all zeros of f lie in the open unit disk and f has at least two distinct zero values, two zeros are joined through h by a two-segment path shorter than two inside |f|<1. This solves this coefficient family in every degree 3q >= 6.",
+        "hard_mechanism": "Root-of-unity averaging puts every quotient root in the open unit disk. A cubic charge identity selects a root with a safe whole spoke by an AM-GM distance envelope. Two points of its cyclic fibre pull the safe spoke back to two segments through h; the zero-root fallback treats degeneracy.",
+        "attribution": "Self-contained ordinary cubic quotient note and paper proof; safe-spoke kernel in ExternalVerification1041SolvedFamilies/Solution.lean. No external theorem, novelty or priority claim.",
+        "limitations": [
+          "The separately configured cubic_safeRootSpoke kernel proves a safe cubic spoke for three supplied disk roots. Complete cyclic-fibre construction and averaging, the zero-root fallback, pullback and metric path assembly remain ordinary proof steps. No terminal external Comparator receipt or full-theorem formalization is asserted.",
+          "The unrestricted Erdős #1041 endpoint remains open."
+        ],
+        "evidence_ceiling": "ordinary_full_theorem_with_separately_delimited_auxiliary_formal_evidence",
+        "transport_admission_boundary": "The separately configured cubic_safeRootSpoke kernel proves a safe cubic spoke for three supplied disk roots. Complete cyclic-fibre construction and averaging, the zero-root fallback, pullback and metric path assembly remain ordinary proof steps. No terminal external Comparator receipt or full-theorem formalization is asserted.",
+        "reason": "A completed geometric regime belongs ahead of auxiliary value budgets and routine local calculus; its ordinary proof is discoverable without promoting a narrower formal kernel.",
+        "reversal_evidence": "A full source-faithful formalization would strengthen evidence coverage; extension beyond these actual hypotheses would strengthen the mathematical frontier.",
+        "source_commit": "99f4bf47422abbd8757cbb22b50ba079d764d3a7"
+      },
+      {
+        "candidate_id": "translated_quartic_quotient_fibres",
+        "family_id": "translated_quartic_quotient_fibres",
+        "disposition": "represented",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_declaration": "Ordinary theorem: translated_quartic_quotient_fibres",
+        "source_file": "research_corpus/Erdos1041/QuarticQuotientFiberCase.md",
+        "source_anchor": "31; 56-206",
+        "paper": "paper/erdos-1041-lemniscate-newton-flow.tex",
+        "paper_anchor": "sec:translated-quartic-quotient-fibres",
+        "statement": "Let q >= 2, h be complex, P be monic quartic, and f(z)=P((z-h)^q). If all listed zeros of f lie in the open unit disk, two listed zero occurrences have a rectifiable connecting path shorter than two inside |f|<1. The ordinary argument lifts the cited quartic chord-or-radial theorem through every nontrivial cyclic power; multiplicity may give a degenerate path.",
+        "exact_hypotheses": [
+          "q is an integer at least two and f is exactly the monic quartic composition P((z-h)^q).",
+          "All listed zeros lie in the open unit disk; the conclusion concerns occurrences and permits a degenerate path.",
+          "The quotient geometry uses Pendyala's cited degree-four chord-or-radial theorem."
+        ],
+        "conclusion": "Let q >= 2, h be complex, P be monic quartic, and f(z)=P((z-h)^q). If all listed zeros of f lie in the open unit disk, two listed zero occurrences have a rectifiable connecting path shorter than two inside |f|<1. The ordinary argument lifts the cited quartic chord-or-radial theorem through every nontrivial cyclic power; multiplicity may give a degenerate path.",
+        "hard_mechanism": "Cyclic mean-square averaging puts the quotient roots in the open disk. For alpha=1/q, a lifted chord has density bounded by (sqrt(d^2+x^2))^(alpha-1) <= x^(alpha-1); integration bounds its length by |a|^alpha+|b|^alpha < 2. Splitting at the origin handles the branch singularity.",
+        "attribution": "Ordinary QuarticQuotientFiberCase.md and the short paper, with explicit use of the cited Pendyala quartic theorem; scalar companion research_corpus/Erdos1041/QuarticQuotientFiberCase.lean. No independent priority or external execution claim.",
+        "limitations": [
+          "The research Lean companion checks scalar lift-density, integration and endpoint-budget consumers. It does not prove the cited quartic geometry, construct a continuous root lift, establish full cyclic fibres or assemble the path. There is no matching Comparator theorem for this complete ordinary family.",
+          "The unrestricted Erdős #1041 endpoint remains open."
+        ],
+        "evidence_ceiling": "ordinary_full_theorem_with_separately_delimited_auxiliary_formal_evidence",
+        "transport_admission_boundary": "The research Lean companion checks scalar lift-density, integration and endpoint-budget consumers. It does not prove the cited quartic geometry, construct a continuous root lift, establish full cyclic fibres or assemble the path. There is no matching Comparator theorem for this complete ordinary family.",
+        "reason": "A completed geometric regime belongs ahead of auxiliary value budgets and routine local calculus; its ordinary proof is discoverable without promoting a narrower formal kernel.",
+        "reversal_evidence": "A full source-faithful formalization would strengthen evidence coverage; extension beyond these actual hypotheses would strengthen the mathematical frontier.",
+        "source_commit": "99f4bf47422abbd8757cbb22b50ba079d764d3a7"
       }
     ]
   },
@@ -2677,7 +2979,7 @@
     {
       "problem": 257,
       "status": "open",
-      "frontier_summary": "Checked results include known full, periodic and reciprocal-summable pairwise-coprime support irrationality, exact finite-denominator periods, and achievement-set measure and geometry. For finite-core bouquets, the unused petal survives exactly as a reduced modulus; an infinite alternating prime-square example has three prime factors per element. The bouquet irrationality endpoint still assumes a uniform forced-slot tail selector, which is not constructed. The short paper gives the direct denominator contradiction consuming that selector and the composite-dilation defect that prevents copying the prime argument. Exact rational-value constraints and the sharp local two-adic band obstruction do not settle half or 1/21 membership.",
+      "frontier_summary": "Checked results include known full, periodic and reciprocal-summable pairwise-coprime support irrationality, exact finite-denominator periods, and achievement-set measure and geometry. For finite-core bouquets, the unused petal survives exactly as a reduced modulus; an infinite alternating prime-square example has three prime factors per element. The bouquet irrationality endpoint still assumes a uniform forced-slot tail selector, which is not constructed. The short paper gives the direct denominator contradiction consuming that selector and the composite-dilation defect that prevents copying the prime argument. Exact rational-value constraints and the sharp local two-adic band obstruction do not settle half or 1/21 membership. Reviewed ordinary extensions now cover divisibility-weighted, sub-log-star, arbitrary prime-power and variable-exponent fractional-cover supports. The actual modulus-420 repair producer is refuted by an infinite prime-cofactor family. The square-root repair-window equivalence and conditional 2/7 divergence-density criterion sharpen the rational-target reductions without deciding them. Full proofs and finite certificates are linked from the updated #257 paper and review matrix; new Lean reduction validation is pending.",
       "open_boundary": "Universal irrationality for every infinite support, including the unresolved half and 1/21 membership routes.",
       "comparator_declarations": [
         "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
@@ -2710,8 +3012,8 @@
     {
       "problem": 1041,
       "status": "open",
-      "frontier_summary": "The short paper gives an all-degree critical-value-separation criterion and a sharp collinear-root bound by ordinary analytic arguments; these conclusions are not fully formalised. Lean checks the separation criterion’s degree monotonicity, exact sufficient thresholds, and squared-length consumer, as well as reciprocal critical balance, the disk inverse-square estimate, translation avoidance, and root retention. These inputs support concrete restricted regimes, not just a generic perturbation programme. Clustered critical values, multiple saddles, and the unrestricted admissible-hub and metric-gluing obligations remain open; the paper keeps its ordinary path assembly separate from the checked inputs.",
-      "open_boundary": "The unrestricted polynomial lemniscate connection problem.",
+      "frontier_summary": "The paper proves an all-degree simple-critical-value separation connector, the optimal collinear diameter envelope in every degree, the primitive sparse-quintic path theorem, and translated cubic and quartic cyclic-quotient families. These are ordinary geometric theorems; selected finite collinear, quintic and cubic kernels have a separate Comparator configuration, without a claimed terminal external receipt or formalized full path assembly. The quartic lift uses the cited degree-four theorem and scalar Lean companions. A sharp ordinary critical-value mean budget holds for every enclosing disk through degree five by the torus/psh bridge and FP1-FP4. This auxiliary value inequality does not itself control path lengths. Local Newton decay, ray separation, translation and root retention remain supporting inputs.",
+      "open_boundary": "The unrestricted polynomial lemniscate connection problem, including clustered critical values, multiple saddles and unrestricted metric gluing. Complete formalizations of the ordinary assemblies remain separate obligations. The auxiliary budget alone supplies no metric endpoint; its higher-degree free-point input remains open.",
       "comparator_declarations": [
         "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
         "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
