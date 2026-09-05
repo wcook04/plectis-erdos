@@ -77,6 +77,15 @@ For a paper or theorem explanation:
 
 ## Remove redundant qualifications
 
+Do not repeat generic disclaimers about novelty or priority in each section.
+Attribute borrowed results where they enter the proof; preserve a specific
+unresolved attribution question only where it matters. For each section using
+Lean-checked mathematics, link the mathematical statement or a short
+descriptive phrase directly to its commit-pinned formal declaration. An
+unlinked declaration name or a source appendix alone does not meet this need.
+Verify that the linked theorem has the exact stated hypotheses and conclusion;
+keep an ordinary geometric assembly distinct from its checked ingredients.
+
 Keep a qualification when it changes a hypothesis, quantifier, implication,
 attribution, evidence class, or the specific open step. State that information
 once where the reader needs it. Remove repeated reminders that finite checks
