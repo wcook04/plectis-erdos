@@ -17,6 +17,18 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    "Integrate Comparator and Palomar verification into the public repository": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
+    "integrate Palomar into the existing verification infrastructure": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
+    "repair Comparator integration and its assurance infrastructure": (
+        "repository_architecture",
+        "maintain-public-infrastructure",
+    ),
     "explain how this repo works to a newcomer": ("understand_repository", "explain-public-system"),
     "I am new here and want to understand the eight open problems": (
         "understand_repository",
