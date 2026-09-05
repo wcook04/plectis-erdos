@@ -137,7 +137,7 @@ PROBLEMS = tuple(
 PROBLEM_SCOPES = (*PROBLEMS, "both", "shared_substrate")
 
 
-def indexed_query_corpus(raw: bytes, receipt: dict) -> dict | None:
+def indexed_query_corpus(raw: bytes, receipt: dict, module_filter: str = "") -> dict | None:
     """Use a verified field index, falling back when its bytes or shape drift."""
     if not isinstance(receipt, dict):
         return None
@@ -147,6 +147,7 @@ def indexed_query_corpus(raw: bytes, receipt: dict) -> dict | None:
     if receipt.get("output_digest") != "sha256:" + hashlib.sha256(raw).hexdigest():
         return None
     result, seen, position = {}, set(), 1
+    role_array = None
     try:
         for index, span in enumerate(spans):
             key, start, end = span["key"], span["start"], span["end"]
@@ -167,24 +168,60 @@ def indexed_query_corpus(raw: bytes, receipt: dict) -> dict | None:
                 if set(field) != {key}:
                     return None
                 result.update(field)
+            elif module_filter:
+                role_array = member[len(prefix):]
             position = end + 1
-        return result if position == len(raw) - 1 and "declaration_roles" in seen else None
+        if position != len(raw) - 1 or "declaration_roles" not in seen:
+            return None
+        if module_filter:
+            selected = indexed_module_roles(
+                role_array, result.get("declaration_role_module_ranges"), module_filter,
+            )
+            if selected is None:
+                return None
+            result["declaration_roles"] = selected
+        return result
     except (KeyError, TypeError, ValueError):
         return None
 
 
+def indexed_module_roles(raw: bytes, groups: object, module_filter: str) -> list[dict] | None:
+    """Read module ranges carried inside the digest-bound canonical corpus."""
+    if not isinstance(raw, bytes) or not isinstance(groups, list) or raw[:1] != b"[" or raw[-1:] != b"]":
+        return None
+    selected, position = [], 1
+    try:
+        for index, group in enumerate(groups):
+            module, start, end, count = (group[key] for key in ("module", "start", "end", "count"))
+            if (not isinstance(module, str) or type(start) is not int or type(end) is not int
+                    or type(count) is not int or count < 1 or start != position
+                    or not start < end < len(raw)):
+                return None
+            if raw[end:end + 1] != (b"]" if index == len(groups) - 1 else b","):
+                return None
+            if module_filter.casefold() in module.casefold():
+                rows = json.loads(b"[" + raw[start:end] + b"]")
+                if len(rows) != count or any(row.get("module") != module for row in rows):
+                    return None
+                selected.extend(rows)
+            position = end + 1
+        return selected if position == len(raw) or (not groups and raw == b"[]") else None
+    except (KeyError, TypeError, ValueError, AttributeError):
+        return None
+
+
 @lru_cache(maxsize=2)
-def load(include_declaration_roles: bool = True) -> dict:
+def load(include_declaration_roles: bool = True, module_filter: str = "") -> dict:
     if not CORPUS.is_file():
         raise SystemExit(
             "docs/semantic_corpus.json missing; run python3 scripts/build_semantic_corpus.py"
         )
     raw = CORPUS.read_bytes()
     corpus = None
-    if not include_declaration_roles:
+    if not include_declaration_roles or module_filter:
         try:
             receipt = load_json(ROOT / "docs/semantic_corpus_check.json", "semantic query index")
-            corpus = indexed_query_corpus(raw, receipt)
+            corpus = indexed_query_corpus(raw, receipt, module_filter)
         except (OSError, ValueError, SystemExit):
             pass
     if corpus is None:
@@ -2931,7 +2968,10 @@ def main() -> int:
     inventory_commands = {
         "inventory", "paper-coverage", "problem-registry", "structural-backlog", "population-backlog",
     }
-    corpus = {} if args.command == "family-relations" else load(args.command in inventory_commands)
+    module_filter = (args.module or "") if args.command == "inventory" else ""
+    corpus = {} if args.command == "family-relations" else load(
+        args.command in inventory_commands, module_filter,
+    )
     return COMMANDS[args.command](corpus, args)
 
 

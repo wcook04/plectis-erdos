@@ -192,6 +192,12 @@ freshness checks. Missing or unusable indexes should fall back to the ordinary
 reader. Compare indexed and complete reads across the affected command family;
 regenerate dependent input-digest receipts through their own builders.
 
+When filtered inventory still parses an exhaustive array, check whether its
+rows already form contiguous groups. A compact range table can select those
+groups without a second dataset. Keep selection labels inside the canonical
+digest boundary, check complete range coverage, and compare substring, case,
+empty-result, and combined-filter behavior with the full reader.
+
 ## Validate the changed journey
 
 During the edit, run the narrow owner checks:

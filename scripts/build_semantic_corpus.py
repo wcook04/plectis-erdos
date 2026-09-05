@@ -1497,7 +1497,28 @@ def collect(*, defer_review_receipts: bool = False) -> dict:
             ),
         },
     }
+    payload["declaration_role_module_ranges"] = declaration_role_module_ranges(
+        payload["declaration_roles"]
+    )
     return payload
+
+
+def declaration_role_module_ranges(rows: list[dict]) -> list[dict]:
+    """Describe contiguous module groups within the canonical role array."""
+    groups = []
+    position = 1
+    for row in rows:
+        member = json.dumps(row, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+        module = row.get("module")
+        if not isinstance(module, str):
+            raise ValueError("declaration role index requires a module")
+        if not groups or groups[-1]["module"] != module:
+            groups.append({"module": module, "start": position, "end": position,
+                           "count": 0})
+        groups[-1]["end"] = position + len(member)
+        groups[-1]["count"] += 1
+        position += len(member) + 1
+    return groups
 
 
 def render(payload: dict) -> str:

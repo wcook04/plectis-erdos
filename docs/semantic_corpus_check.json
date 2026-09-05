@@ -1,7 +1,7 @@
 {
   "builder_schema": "erdos249257-semantic-corpus/1",
-  "input_fingerprint": "sha256:2e0db2b52dd4372b18c82c1cf0a833fddb731b39bb01eb67e2025c96c4f4c6a0",
-  "output_digest": "sha256:ad36be64b6878793e9a33990770eb0b6f749a5ba77a487376d7c59bba425ef2c",
+  "input_fingerprint": "sha256:dddee1705e40022588ae87253c4502c35349f0275d06fc8007ddd555e0db22e8",
+  "output_digest": "sha256:a5f6dec07253cce0e89b8190d18542921dd254c710e9eb5cd0abe1bd75859be4",
   "schema": "erdos249257-semantic-corpus-check/1",
   "summary": {
     "declarations": 153671,
@@ -190,7 +190,7 @@
     {
       "end": 6571,
       "key": "semantic_input_fingerprint",
-      "sha256": "079df2ec66aeb8ab4070e963e12167d73379ba95d4e99f9be07ee96ad7b5fbaf",
+      "sha256": "c77073855f17cb3e5aecd1c9895c2c2110051f8ba81a313f13be011bb6b2e8cc",
       "start": 6469
     },
     {
@@ -258,6 +258,12 @@
       "key": "integrity",
       "sha256": "f9363a6c8cda4119afb555b09356646787d79ed1b174ae85a48aedeecc0935e3",
       "start": 100246090
+    },
+    {
+      "end": 100683237,
+      "key": "declaration_role_module_ranges",
+      "sha256": "fed2c611478b03fd07b4ecd91c98910e8ad05c418264be63820c3bc9a0c74f34",
+      "start": 100569091
     }
   ],
   "verification_posture": "content_addressed_generated_corpus_and_public_census_surfaces_matched_a_full_builder_run"
