@@ -365,6 +365,30 @@ def check_moved_revision_with_changed_statement_is_refused() -> None:
     )
 
 
+def check_coordinate_move_requires_identical_signatures() -> None:
+    from copy import deepcopy
+
+    committed = cited_corpus(OLD_FINGERPRINT)
+    registry = sample_registry(committed)
+    candidate = deepcopy(committed)
+    candidate["evidence_fingerprint"] = NEW_FINGERPRINT
+    for node in candidate["statement_nodes"]:
+        node["evidence"][0]["id"] = "Erdos257/Example.lean:191:example_theorem"
+    reissues, refusals = rereview(registry, committed, candidate)
+    require(len(reissues) == 3 and not refusals, f"line-only move refused: {refusals}")
+    changed = {key: ("theorem", "theorem example_theorem : False") for key in CITED}
+    reissues, refusals = rereview(registry, committed, candidate, new=changed)
+    require(not reissues and refusals, "line move hid changed signature")
+    for field, value in (("resolved", False), ("kind", "axiom"),
+                         ("id", "Erdos257/Example.lean:191:different"),
+                         ("id", "Erdos257/Example.lean:bad:example_theorem")):
+        mutated = deepcopy(candidate)
+        mutated["statement_nodes"][0]["evidence"][0][field] = value
+        reissues, refusals = rereview(registry, committed, mutated)
+        require(any("Z01::example" in failure for failure in refusals),
+                f"coordinate normalization hid changed {field}")
+
+
 def check_moved_revision_with_vanished_declaration_is_refused() -> None:
     """A declaration absent from the old atlas cannot be proved unchanged."""
     committed = cited_corpus(OLD_FINGERPRINT)
@@ -416,6 +440,7 @@ def main() -> int:
     check_substantive_projection_excludes_only_the_pin()
     check_moved_revision_with_identical_statements_is_reissued()
     check_moved_revision_with_changed_statement_is_refused()
+    check_coordinate_move_requires_identical_signatures()
     check_moved_revision_with_vanished_declaration_is_refused()
     check_unmoved_revision_is_not_rereviewed()
     print(

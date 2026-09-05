@@ -557,6 +557,35 @@ def _cited_declarations(kind: str, subject: dict, nodes_by_id: dict) -> list[tup
     return sorted(cited)
 
 
+def _revision_comparison_material(kind: str, subject: dict, material: dict) -> dict:
+    """Ignore only valid source coordinates during signature-checked migration.
+
+    Live receipt digests still bind the exact coordinate. This comparison is
+    used only by the revision-move route, which separately requires identical
+    declaration kinds and full signatures in both atlases.
+    """
+    result = substantive_material(material)
+    if kind != "statement_node":
+        return result
+    identities = {}
+    for evidence in subject.get("evidence", []):
+        module, declaration = evidence.get("module"), evidence.get("declaration")
+        identity = evidence.get("id")
+        if not all(isinstance(value, str) and value for value in (module, declaration, identity)):
+            continue
+        prefix, suffix = f"{module}:", f":{declaration}"
+        if identity.startswith(prefix) and identity.endswith(suffix):
+            coordinate = identity[len(prefix):-len(suffix)]
+            if coordinate.isascii() and coordinate.isdecimal() and int(coordinate) > 0:
+                identities[identity] = f"{module}:<source-coordinate>:{declaration}"
+    result["evidence"] = sorted(
+        ({**row, "id": identities.get(row.get("id"), row.get("id"))}
+         for row in result.get("evidence", [])),
+        key=lambda row: (str(row.get("id")), str(row.get("kind"))),
+    )
+    return result
+
+
 def rereview_moved_revision(
     registry: dict,
     committed_corpus: dict,
@@ -636,7 +665,8 @@ def rereview_moved_revision(
             kind, new_subject, evidence_fingerprint=new_fingerprint, reviewed_revision=old_revision
         )
         changed = _field_changes(
-            substantive_material(old_material), substantive_material(new_material_old_rev)
+            _revision_comparison_material(kind, old_subject, old_material),
+            _revision_comparison_material(kind, new_subject, new_material_old_rev),
         )
         if changed:
             refusals.append(
