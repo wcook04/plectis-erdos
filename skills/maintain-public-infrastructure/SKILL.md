@@ -171,6 +171,14 @@ whole atlas. Return a copy to each consumer. Reuse only successful immutable
 identities: missing objects can be fetched, symbolic refs can move, and a new
 reader must observe the repository again.
 
+Use profiler output to locate repeated work, then measure ordinary wall time:
+instrumentation can exaggerate a hot loop with hundreds of thousands of calls.
+For a text scanner, compare the old and new results over real inputs and
+adversarial grammar cases. A literal candidate search may avoid scanning large
+payloads with a regex, but must preserve the original match, escape, duplicate,
+and non-overlap rules. Faster extraction does not justify skipping validation
+or recovery checks.
+
 ## Validate the changed journey
 
 During the edit, run the narrow owner checks:
