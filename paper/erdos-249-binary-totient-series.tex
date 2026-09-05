@@ -931,41 +931,69 @@ linear independence.
 
 \subsection{Parity-separated evaluation matrices}
 
-\ref{res:rank} is proved by exhibiting a square matrix of values of the
-sections whose determinant is nonzero, and the linear algebra at its centre is
-simpler than the arithmetic construction that feeds it.  We give the linear
-algebra first, then the arithmetic input it consumes.
+Fix a level $e$.  On odd inputs $n$, the two zero-residue sections
+satisfy $\ph(2n)=\ph(n)$.  We therefore first separate the smaller family
+\[
+  \ph(n),\qquad \ph(2^j n+r)
+  \quad(1\le j\le e,\ 0<r<2^j,\ r\text{ odd}),
+  \qquad n\text{ odd}.
+\]
+Write its affine arguments as $L_i(n)=a_i n+b_i$: the first is $n$,
+and the others have $a_i=2^j$ and $b_i=r$ odd.  These forms are pairwise
+nonproportional.  Indeed, $b_i/a_i$ is in lowest terms for each nonzero
+residue, so distinct levels or residues give distinct ratios; the first
+form has ratio zero.
 
-Evaluate the sections at one point apiece to get a square matrix $M$, and
-suppose each column $j$ admits a fixed power $2^{d_j}$ dividing every entry of
-that column such that, after dividing the column through by it, the diagonal
-entry is odd and every off-diagonal entry is even; call such an $M$ a
-\emph{parity-separated evaluation matrix}.  The normalised matrix is then the
-identity modulo $2$; its determinant is odd, hence nonzero, and the sections are
-independent
+For each target $i$ we construct an odd input $n_i$ such that
+\[
+  v_2\bigl(\ph(L_i(n_i))\bigr)=d_i<e+2,
+  \qquad
+  2^{e+2}\mid\ph(L_j(n_i))\quad(j\ne i).
+\]
+The integers $d_i$ depend on the target form, not on the other rows.
+For the target $L_i(n)=n$, prescribe $n\equiv3\pmod{2^{e+3}}$;
+for every other target prescribe $n\equiv1\pmod{2^{e+3}}$.
+Then $L_i(n)-1$ has the same two-adic valuation as, respectively,
+$2$ or $2^j+r-1$.  These are positive and less than $2^{e+2}$,
+which gives the required bound on $d_i$ once $L_i(n)$ is prime.
+
+To suppress an off-target form $L_j$, choose a fresh prime
+$q_j\equiv1\pmod{2^{e+3}}$, larger than all slopes and all nonzero cross
+products $|a_i b_j-a_j b_i|$, and impose $L_j(n)\equiv0\pmod{q_j}$.
+Its slope is invertible modulo $q_j$, so this determines a residue for $n$.
+The target cannot vanish in that residue: otherwise
+$q_j\mid a_i b_j-a_j b_i$, contrary to the choice of $q_j$.
+The Chinese remainder theorem combines these residues with the prescribed
+odd residue into one progression.  The target values along it form a reduced
+arithmetic progression, so Dirichlet's theorem supplies a prime target value.
+For every off-target value, $q_j\mid L_j(n)$ implies
+$q_j-1\mid\ph(L_j(n))$, giving the desired divisibility.
+This is the arithmetic construction behind
+\mword{Erdos249257/TotientMahlerDefect.lean}{882}{exists_separatedMinorCertificate_totientAffineOddFamily}{the checked evaluation minor}.
+
+Now set $M_{ij}=\ph(L_j(n_i))$ and divide column $j$ by $2^{d_j}$.
+Every quotient is an integer; the diagonal quotients are odd and the
+others are even.  The resulting matrix is the identity modulo $2$, so its
+determinant is odd.  Hence $\det M\ne0$, proving independence of the
+smaller family on odd inputs
 (\mword{Erdos249257/TotientMahlerDefect.lean}{823}{paritySeparatedMatrix_det_ne_zero}{checked}).
 
-Producing evaluation points with exactly that parity pattern is what the
-arithmetic input is for, and it is the harder half.  The Chinese remainder
-theorem together with Dirichlet's theorem on primes in arithmetic progressions
-makes one of the evaluated affine values prime, which fixes the exact power of
-$2$ dividing the diagonal entry, while every other value receives a fresh
-prime divisor congruent to $1$ modulo a large power of two, which supplies the
-one extra factor of two that the off-diagonal entries need
-(\mword{Erdos249257/TotientMahlerDefect.lean}{882}{exists_separatedMinorCertificate_totientAffineOddFamily}{checked}).
-Even residues never enter, because the second reduction has already carried
-them to odd residues at lower levels
-(\mword{Erdos249257/TotientMahlerDefect.lean}{169}{totientKernel_even_residue_reduce}{checked}).
+It remains to recover the two zero-residue columns.  In a relation among
+the original sections, let their coefficients be $\alpha$ and $\beta$.
+Restriction to odd inputs combines them into $(\alpha+\beta)\ph(n)$.
+The independence just proved forces every odd-residue coefficient to vanish
+and gives $\alpha+\beta=0$.  Evaluation at $n=2$ then gives
+$\alpha\ph(2)+\beta\ph(4)=\alpha+2\beta=0$, so $\alpha=\beta=0$.
+This proves the canonical finite-family independence used in
+\ref{res:rank}
+(\mword{Erdos249257/TotientMahlerDefect.lean}{935}{linearIndependent_canonicalTotientKernelFamily}{checked}).
 
-\ref{res:basis} then needs only two further steps, and both are short.  Linear
-independence is a property of finite subfamilies, so the level-$e$ statement,
-applied with $e$ above the largest level occurring in a given finite subset,
-already gives independence of the whole infinite family $\mathcal B$.  And
-the two reductions carry every remaining section onto a rational multiple of a
-member of $\mathcal B$, so the spans agree.  That the assembly is short is the
-point: the level-$e$ theorem was always the whole content, and stating its
-consequence as infinite-dimensionality understated it.  The sharp form is a
-basis.
+Every finite subset of $\mathcal B$ lies in such a canonical family, so
+$\mathcal B$ is independent.  The two reduction identities send each remaining
+dyadic section to a rational multiple of a member of $\mathcal B$; hence their
+spans agree.  Finally, after applying these reductions to any finite relation,
+independence forces every resulting basis coefficient to vanish.  This proves
+both the basis statement and the asserted normal form for all relations.
 
 \begin{remark}
 \ref{res:basis} and \ref{res:rank} concern $\ph$.  Their complete proofs are
