@@ -51,8 +51,8 @@ explanation of why a method fails, or a repair to the tools. The proposal is
 that these contributions should accumulate together: later attempts should
 have both better mathematics to draw on and a better environment for doing
 the work. This paper describes the contribution process, its precedents, and
-the tests needed to assess it. All eight problems remain open. The public
-workflow is implemented, but its usefulness to outside contributors and its
+the tests needed to assess it. The public workflow is implemented, but its
+usefulness to outside contributors and its
 effect on research productivity have not yet been established.
 \end{abstract}
 
@@ -405,7 +405,13 @@ files where it was included. Corrections add to that history.
 A compute contributor needs a well-chosen task. The default work packet names
 an open statement, relevant source material, a permitted experiment or proof
 attempt, and a stopping condition. Preparing useful packets is mathematical
-work; qualified review should precede large-scale distribution. That review
+work; qualified review should precede large-scale distribution. The public
+source-packet exporter makes a selected task portable: a contributor chooses
+committed files and a question, then uploads the resulting text attachment to
+a model outside the repository harness. The packet preserves the source pin
+and hashes so that the returned argument can be checked against the same
+starting material. Selecting enough context remains the contributor's job.
+That review
 has not been established for every current task.
 
 Mathematical direction and verification can be contributed separately. Someone
@@ -559,7 +565,9 @@ Agent Hunt studies bounties, locks, guarded ownership, and collaborative
 agents for autoformalisation \cite{agenthunt}.  Lean Atlas uses formal
 dependency information to reduce the declarations a person must inspect for
 semantic verification \cite{leanatlas}.  LeanMarathon adds a durable proof blueprint, scoped agents, and checked
-parallel integration for research-paper formalisation \cite{leanmarathon}.
+parallel integration for research-paper formalisation, including prose stored
+beside formal statements and checked against their proof dependencies
+\cite{leanmarathon}.
 These are close precedents for the working environment. The proposal here is
 to make its continuing mathematical record and infrastructure jointly
 contributable, with evidence and credit attached to accepted changes.

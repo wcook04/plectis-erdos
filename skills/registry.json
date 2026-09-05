@@ -383,7 +383,12 @@
         "send work back",
         "reviewed and credited",
         "package evidence",
-        "resume work"
+        "resume work",
+        "source packet",
+        "web app",
+        "without a harness",
+        "text attachment",
+        "offline dossier"
       ],
       "skills": [
         "erdos-research-return",
@@ -395,6 +400,7 @@
         "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"
       ],
       "commands": [
+        "python3 scripts/source_packet.py --help",
         "python3 scripts/continue_research.py --help",
         "python3 scripts/validate_research_return.py --help"
       ],

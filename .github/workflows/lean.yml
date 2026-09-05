@@ -770,6 +770,8 @@ jobs:
 
       - name: Check benchmark packet isolation
         run: python3 scripts/test_benchmark_packet_isolation.py
+      - name: Check offline source packet transport
+        run: python3 scripts/test_source_packet.py
       - name: Test publication evidence time axis
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_publication_evidence_time_axis.py

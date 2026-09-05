@@ -207,11 +207,10 @@ PAPER_SECTION_ORDER = (
 PAPER_REQUIRED_ANCHOR_GROUPS = {
     "plain_purpose": (
         "Our contribution is architectural composition",
-        "claim-transition architecture",
+        "trigger a review of the explanation",
         "integration of these research and publication operations",
-        "independent contributor use and gains in research",
-        "All eight problems remain open",
-        "does not claim a solution to any of the eight problems",
+        "all still open",
+        "whether this organisation improves research productivity has yet to be tested",
     ),
     "problem_worlds_and_nonfungible_authority": (
         "collection associated with one open problem",
@@ -256,12 +255,13 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         # of its own, and the federation sentence was rewritten there. The
         # property the old anchor held is the one still pinned: the working
         # memory federates and copies nothing into a central index. The three
-        # anchors after it pin the rest of that new section, so a later rewrite
-        # cannot delete the packet, its authority boundary, or its two refusals
-        # without this check going red.
+        # anchors after it retain the packet's candidate-argument role,
+        # target resolution, and budget recovery before final refusal.
         "nothing is copied into a central index",
         "Comprehension before the mathematics",
-        "The workspace plans inference and concludes nothing",
+        "groups premises into candidate arguments",
+        "returns no proof branches",
+        "shortens summaries and repeated branches",
         "reported as unanchored",
         "semantic second pass",
         "no projection may bulk-strengthen a family of claims",

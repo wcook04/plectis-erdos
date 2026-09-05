@@ -82,9 +82,9 @@ We describe how the implementation connects research records to formal checks
 and public explanations. Lean, the proof assistant used here, checks a proof
 of a precisely stated proposition. A separate record links selected
 propositions to the wording approved for the paper. Release checks then test
-those recorded relationships when files change. We call this a
-\emph{claim-transition architecture}; the phrase names this connection between
-an attempted result, its evidence, and its published statement.
+those recorded relationships when files change. A change to a proof's
+hypotheses can therefore trigger a review of the explanation that depends on
+it, rather than leave the paper describing an older statement.
 
 Several parts have close precedents. Agent Hunt coordinates formalisation
 work, LeanMarathon maintains a shared proof blueprint across long agent runs,
@@ -94,11 +94,6 @@ composition around a continuing problem record. Tao's account of proof
 generation, verification, exposition, and digestion motivates including the
 explanatory work in that record \cite{taoai}. The comparison in
 Section~\ref{sec:related} identifies the overlaps.
-
-All eight problems remain open. This paper does not claim a solution to any of
-the eight problems or a measured improvement in discovery rate. Its evidence
-is the implementation and the worked cases below. Independent contributor use
-and gains in research productivity remain questions for evaluation.
 
 \subsection{What the system records}
 
@@ -272,7 +267,15 @@ The operator supplies a research packet and brings the response back into the
 checkout, where the harness agent checks and integrates it. The labels describe
 substrate access, not model quality.
 
-The private packet builder prepares for two ways of reading. A browser-only
+The public \texttt{source\_packet.py} tool exports selected committed files
+into one readable attachment. It records the source commit and file hashes,
+preserves the complete selected text, and offers an offline checksum check.
+An operator can therefore send the same statement and surrounding evidence
+to a web-app model without asking it to navigate GitHub. The operator chooses
+the sources; the tool does not infer their dependency closure. Binary files
+are preserved as labelled base64 and require decoding before inspection.
+
+The private packet builder also prepares for two ways of reading. A browser-only
 recipient receives links to the public frontier and its source statements. An
 offline dossier carries the selected proofs and their dependencies. When it
 includes a runnable checker, the builder also packages its declared local
@@ -570,26 +573,32 @@ before broader retrieval.
 \subsection{Comprehension before the mathematics}
 \papersectiontarget{systems-comprehension}
 
-The working-memory compiler selects a task-specific reading packet before an
-agent attempts the mathematics. Each attached corpus retains its own index;
-nothing is copied into a central index. Compact descriptors and content
-fingerprints identify the sources. The compiler opens a larger atlas when the
-bounded query does not supply enough context.
+The private working-memory compiler separates orientation from focused work.
+An overview shows the available results and open questions so that an agent
+can choose a target. It does not construct candidate proof routes. A focused
+request names a claim, declaration, or premise; if no target can be resolved,
+it is reported as unanchored and returns no proof branches.
 
-The packet starts with the target statement, established results, and missing
-premises. It distinguishes formal dependencies from authored interpretations
-and suggested connections. Its inference workspace groups premises into
-candidate arguments and records tests or counterexamples that could reject
-them. A freshness check compares the recorded fingerprints with current
-sources and requests recompilation when they differ. The workspace plans
-inference and concludes nothing.
+Each attached corpus retains its own index; nothing is copied into a central
+index. Compact descriptors and content fingerprints identify the sources.
+The compiler opens a larger atlas when the bounded query does not supply
+enough context. The focused packet starts with the target, established
+results, and missing premises. Its workspace groups premises into candidate
+arguments and records tests or counterexamples that could reject them.
 
-A request that names no theorem, declaration, or claim is reported as unanchored
-before a proof route is proposed. If a packet exceeds its context budget, the
-compiler reports the requested and estimated size, the omitted material, and
-how to retrieve it; it exits non-zero rather than silently truncating. These
-checks make the selected context inspectable. Whether it leads to better
-mathematics requires the comparison proposed in Section~\ref{sec:related}.
+A freshness check compares the recorded projection and descriptor fingerprints
+with their current values and requests recompilation when they differ. An
+exactly named Lean definition can also be newer than its index. In that case,
+the compiler returns the current definition and use-site coordinates, and
+defers broader graph-based routes until the index is refreshed.
+
+When the selected material exceeds the context budget, the compiler first
+shortens summaries and repeated branches while preserving source identities
+and retrieval routes for omitted details. Only if the resulting packet still
+does not fit does it report the requested and estimated size and exit
+non-zero. These checks make the selected context inspectable. Whether it
+leads to better mathematics requires the comparison proposed in
+Section~\ref{sec:related}.
 
 \subsection{Consequence propagation}
 
@@ -684,16 +693,17 @@ verified'' is not.
 
 \subsection{Palomar: selecting what deserves review}
 
-Comparator's roster is an evidence inventory, not a ranking. Palomar adds the
-missing editorial layer. It groups declarations into result families, ranks
-them by mathematical signal, keeps the hard mechanism and surviving boundary
-adjacent, and selects a small review portfolio. A qualification check can say
-that the local packet satisfies its structural requirements. Submission,
-registration, acceptance, publication, and community uptake remain separate
-events.
+Comparator's roster supplies evidence for a review portfolio. To prepare that
+portfolio, maintainers compare result families in a local selection record.
+Each assessment explains the consequence, hard mechanism, evidence, and open
+remainder, then records why the family is selected, represented by another
+result, deferred, or set aside. The local Palomar qualification checker checks
+that this record covers its declared candidates and that the selected packet
+satisfies the submission requirements. The mathematical ranking is authored;
+the checker validates its supporting record.
 
 This separation matters under proof abundance. Counting theorems rewards
-generated volume and routine closure. Palomar instead asks which result changes
+generated volume and routine closure. Selection instead asks which result changes
 the mathematical picture, which conditional route is closest to an endpoint,
 which obstruction prevents wasted work, and which explanation will help an
 expert assess the claim. The ranking may guide attention; it cannot alter proof
@@ -1015,8 +1025,10 @@ and Lean feedback \cite{openprover}. Agent Hunt already studies concurrent
 formalisation with locks, bounties, guarded ownership, and collaborative
 agents \cite{agenthunt}. LeanMarathon uses an evolving Lean blueprint as both proof graph and shared
 record, with contract-scoped agents, adversarial target review, and parallel
-CI-gated proof work \cite{leanmarathon}. This directly overlaps the durability
-and statement-fidelity concerns here. DreamProver learns a compact reusable lemma library
+CI-gated proof work \cite{leanmarathon}. It also stores explanatory prose beside
+Lean types and checks agreement between cited and elaborated proof dependencies.
+This overlaps both the durability and checked-exposition concerns here.
+DreamProver learns a compact reusable lemma library
 through wake--sleep cycles \cite{dreamprover}. These are baselines for proof
 interaction, parallel search, and learned proof memory. The present work follows the result into the public research record, including
 its explanation, open obligations, and contribution history.

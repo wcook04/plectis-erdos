@@ -26,6 +26,39 @@ and provider identities separate.
 
 ## Prepare and validate
 
+### Send sources to a model without a repository harness
+
+First use `query_corpus.py --ask "<question>"` and read the selected frontier.
+Choose the exact statement, relevant source files, paper explanation and known
+obstructions needed for that question. Export those committed files into a
+readable attachment:
+
+```sh
+python3 scripts/source_packet.py build --revision HEAD \
+  --question "Explain the contribution and how a newcomer can help" \
+  --path README.md --path HUMAN_ENTRY.md --path CONTRIBUTING.md \
+  --output /tmp/plectis-sources.txt
+python3 scripts/source_packet.py verify /tmp/plectis-sources.txt
+```
+
+Replace the example question and paths with the selected mathematical target.
+The packet records the exact commit and source hashes. It reads committed
+bytes, so commit intended source changes before exporting them. The exporter
+does not infer a complete dependency set or run Lean. A byte-budget failure
+requires a smaller selection or an explicit larger budget; it never shortens
+the sources. Existing attachments are preserved.
+
+Upload the text file to the model and ask it to answer the recorded question.
+The recipient can read text directly without GitHub or a ZIP tool. Binary
+sources are labelled base64 and need decoding. If access fails, identify the
+unread part and continue only with accessible evidence; preparing a packet
+does not prove that a particular web app can read it. Preserve the returned
+answer and starting commit, then follow the validation and contribution route
+below. Local checksum verification detects corruption, not independent
+authentication of the claimed commit.
+
+### Record the research session
+
 Use `scripts/continue_research.py start` to bind the public origin, starting
 commit, contributor, route, intent, and stop condition. Do the bounded work in
 the same clone. Record positive, negative, inconclusive, and corrective results
