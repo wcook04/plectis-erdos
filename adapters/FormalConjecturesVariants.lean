@@ -4,6 +4,14 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import ExternalVerification.Solution
+import ErdosProblems.Erdos243.ReciprocalTailRigidity
+import Mathlib.Topology.Instances.Rat
+import Mathlib.Topology.Algebra.InfiniteSum.NatInt
+import Mathlib.Topology.Algebra.InfiniteSum.Order
+import Mathlib.Tactic.LinearCombination
+import Mathlib.Tactic.Zify
+import Mathlib.Tactic.FieldSimp
+import Mathlib.Tactic.Positivity
 
 /-!
 # Solved-variant candidates for Formal Conjectures
@@ -670,3 +678,195 @@ theorem erdos_257_variants_two_pow_support (b : ℕ) (hb : 2 ≤ b) :
   Erdos249257.irrational_erdosSum_two_pow_support b hb
 
 end Erdos249257.FormalConjecturesErdos257
+
+/-! ## Erdős 243, over the vocabulary upstream would own
+
+`243.lean` upstream carries one declaration, the open problem itself.  There is
+no hole to discharge, so the available route is a variant.  The filter this file
+applies keeps the #243 negative-orbit statements out: they are about an argument
+that failed here.  The statement below is about the object the problem asks
+about, a sequence of integers greater than one whose reciprocal sum is rational.
+
+Clearing denominators along such a sequence turns the tail into an integer
+sequence.  With `D 0 = q`, `D (n+1) = a n * D n`, `C 0 = p` and
+`C (n+1) = a n * C n - D n`, the identity `C n = D n * ∑ k ≥ n, 1 / a k` holds at
+every index, so `C` is a positive integer sequence.  The centred state
+`E n = D n - (a n - 1) * C n` measures deviation from the Sylvester tail identity
+and vanishes identically on Sylvester's sequence.  These are Koizumi's
+coordinates `(c n, d n, e n)`; the paper records the dictionary.
+
+Positivity of `C` is proved here from the rationality hypothesis rather than
+assumed, which is what makes the visible hypothesis one-sided.  `C (n+1) < 2 C n`
+together with `C > 0` is exactly the strict centring `|E n| < C n` that
+`boundedNegativePart_eventually_zero` requires, since `E n = C n - C (n+1)`.
+The bounded negative part and normalised vanishing stay visible: neither is a
+one-line Mathlib fact, and neither is discharged anywhere in this corpus.
+
+The three definitions are declared a second time in the namespace an upstream
+`243.lean` would use, and the statement is written over those constants, so the
+`formal_proof` link resolves to the exact proposition rather than a nearby one.
+Everything after the binder list is character-identical to the upstream text. -/
+
+namespace Erdos243
+
+/-- The denominator state of the cleared reciprocal tail: `D 0 = q` and
+`D (n + 1) = a n * D n`.  Upstream's `243.lean` would own this constant. -/
+def denState (q : ℕ) (a : ℕ → ℕ) : ℕ → ℕ
+  | 0 => q
+  | n + 1 => a n * denState q a n
+
+/-- The tail state of the cleared reciprocal tail: `C 0 = p` and
+`C (n + 1) = a n * C n - D n`.  When `∑ 1 / a n = p / q` this is the integer
+`C n = D n * ∑ k ≥ n, 1 / a k`. -/
+def tailState (p q : ℕ) (a : ℕ → ℕ) : ℕ → ℤ
+  | 0 => (p : ℤ)
+  | n + 1 => (a n : ℤ) * tailState p q a n - (denState q a n : ℤ)
+
+/-- The centred state `E n = D n - (a n - 1) * C n`.  It measures deviation from
+the Sylvester tail identity and vanishes at every index of Sylvester's
+sequence. -/
+def centredState (p q : ℕ) (a : ℕ → ℕ) (n : ℕ) : ℤ :=
+  (denState q a n : ℤ) - ((a n : ℤ) - 1) * tailState p q a n
+
+/-- `Erdos243.erdos_243.variants.bounded_negative_error`, over the constants an
+upstream problem file would own.  A strictly increasing hypothesis is not
+needed: `1 < a n` and the rational reciprocal sum carry the argument, and
+positivity of the tail state is derived rather than assumed. -/
+theorem bounded_negative_error
+    (a : ℕ → ℕ) (p q B : ℕ)
+    (ha : ∀ n, 1 < a n)
+    (hq : 0 < q)
+    (ha₂ : Summable ((1 : ℚ) / a ·))
+    (hpq : ∑' n, (1 : ℚ) / a n = (p : ℚ) / (q : ℚ))
+    (hgrow : ∀ n, tailState p q a (n + 1) < 2 * tailState p q a n)
+    (hbound : ∀ n, -(B : ℤ) ≤ centredState p q a n)
+    (hvanish : ∀ K : ℕ, ∃ N, ∀ n, N ≤ n →
+      (K : ℤ) * |centredState p q a n| < tailState p q a n) :
+    ∀ᶠ n in atTop, a n = a (n - 1) ^ 2 - a (n - 1) + 1 := by
+  classical
+  have hapos : ∀ m, 0 < a m := fun m => by have := ha m; omega
+  have hapos' : ∀ m, (0 : ℚ) < (a m : ℚ) := fun m => by exact_mod_cast hapos m
+  have hane : ∀ m, (a m : ℚ) ≠ 0 := fun m => (hapos' m).ne'
+  have hqne : (q : ℚ) ≠ 0 := by
+    have : (0 : ℚ) < (q : ℚ) := by exact_mod_cast hq
+    exact this.ne'
+  have hDrec : ∀ n, denState q a (n + 1) = a n * denState q a n := fun n => rfl
+  have hCrecZ : ∀ n, tailState p q a (n + 1)
+      = (a n : ℤ) * tailState p q a n - (denState q a n : ℤ) := fun n => rfl
+  have hDpos : ∀ n, 0 < denState q a n := by
+    intro n
+    induction n with
+    | zero => exact hq
+    | succ n ih => rw [hDrec n]; exact Nat.mul_pos (hapos n) ih
+  set T : ℕ → ℚ := fun n => ∑' k, (1 : ℚ) / a (k + n) with hT
+  have hTs : ∀ n, Summable (fun k => (1 : ℚ) / a (k + n)) := fun n =>
+    (summable_nat_add_iff n).mpr ha₂
+  have hTstep : ∀ n, T n = 1 / (a n : ℚ) + T (n + 1) := by
+    intro n
+    have e : ∀ k : ℕ, k + 1 + n = k + (n + 1) := fun k => by omega
+    simp only [hT]
+    rw [(hTs n).tsum_eq_zero_add]
+    simp only [Nat.zero_add, e]
+  have hTpos : ∀ n, 0 < T n := by
+    intro n
+    simp only [hT]
+    exact (hTs n).tsum_pos (fun k => (div_pos zero_lt_one (hapos' _)).le) 0
+      (div_pos zero_lt_one (hapos' _))
+  have hT0 : T 0 = (p : ℚ) / (q : ℚ) := by
+    simp only [hT, Nat.add_zero]
+    exact hpq
+  have hCT : ∀ n, ((tailState p q a n : ℤ) : ℚ)
+      = (denState q a n : ℚ) * T n := by
+    intro n
+    induction n with
+    | zero =>
+        show ((p : ℤ) : ℚ) = ((q : ℕ) : ℚ) * T 0
+        rw [hT0]
+        push_cast
+        field_simp
+    | succ n ih =>
+        have hstep : T (n + 1) = T n - 1 / (a n : ℚ) := by rw [hTstep n]; ring
+        have hinv : (a n : ℚ) * (1 / (a n : ℚ)) = 1 := by
+          rw [mul_one_div, div_self (hane n)]
+        rw [hCrecZ n, hDrec n, hstep]
+        push_cast [ih]
+        linear_combination (denState q a n : ℚ) * hinv
+  have hCpos : ∀ n, 0 < tailState p q a n := by
+    intro n
+    have h : (0 : ℚ) < ((tailState p q a n : ℤ) : ℚ) := by
+      rw [hCT n]
+      exact mul_pos (by exact_mod_cast hDpos n) (hTpos n)
+    exact_mod_cast h
+  have hCn : ∀ n, (((tailState p q a n).toNat : ℕ) : ℤ) = tailState p q a n :=
+    fun n => Int.toNat_of_nonneg (hCpos n).le
+  have hCposN : ∀ n, 0 < (tailState p q a n).toNat := by
+    intro n
+    have h1 := hCpos n
+    have h2 := hCn n
+    omega
+  have hEupd : ∀ n, centredState p q a n
+      = tailState p q a n - tailState p q a (n + 1) := by
+    intro n
+    rw [hCrecZ n]
+    simp only [centredState]
+    ring
+  have hCrecN : ∀ n, (tailState p q a (n + 1)).toNat + denState q a n
+      = a n * (tailState p q a n).toNat := by
+    intro n
+    have h1 := hCn (n + 1)
+    have h2 := hCn n
+    have h3 := hCrecZ n
+    zify
+    rw [h1, h2, h3]
+    ring
+  have hEdef : ∀ n, centredState p q a n
+      = ErdosProblems.Erdos243.centeredState (a n : ℤ) (denState q a n : ℤ)
+          (((tailState p q a n).toNat : ℕ) : ℤ) := by
+    intro n
+    rw [hCn n]
+    simp only [centredState, ErdosProblems.Erdos243.centeredState]
+  have hcentred : ∀ n,
+      Int.natAbs (centredState p q a n) < (tailState p q a n).toNat := by
+    intro n
+    have h1 := hEupd n
+    have h2 := hCpos n
+    have h3 := hCpos (n + 1)
+    have h4 := hgrow n
+    have h5 := hCn n
+    omega
+  have hvanishN : ∀ K : ℕ, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (centredState p q a n) < (tailState p q a n).toNat := by
+    intro K
+    obtain ⟨N, hN⟩ := hvanish K
+    refine ⟨N, fun n hn => ?_⟩
+    have h := hN n hn
+    have hcast : ((K * Int.natAbs (centredState p q a n) : ℕ) : ℤ)
+        < (((tailState p q a n).toNat : ℕ) : ℤ) := by
+      push_cast [Int.natCast_natAbs, hCn n]
+      linarith [h]
+    exact_mod_cast hcast
+  obtain ⟨N, hzero⟩ :=
+    ErdosProblems.Erdos243.boundedNegativePart_eventually_zero
+      a (fun n => (tailState p q a n).toNat) (denState q a)
+      (centredState p q a) B ha hCposN hCrecN hDrec hEdef hcentred hbound hvanishN
+  obtain ⟨M, hsyl⟩ :=
+    ErdosProblems.Erdos243.sylvesterNext_eventually_of_centered_zero
+      (fun n => (a n : ℤ)) (fun n => ((denState q a n : ℕ) : ℤ))
+      (fun n => (((tailState p q a n).toNat : ℕ) : ℤ))
+      (fun n => ErdosProblems.Erdos243.natDen_eq_nextDenState a (denState q a) hDrec n)
+      (fun n => ErdosProblems.Erdos243.natTail_eq_nextTailState a
+        (fun n => (tailState p q a n).toNat) (denState q a) hCrecN n)
+      ⟨N, fun n hn => by rw [← hEdef n]; exact hzero n hn⟩
+      ⟨0, fun n _ => by
+        show (((tailState p q a (n + 1)).toNat : ℕ) : ℤ) ≠ 0
+        exact_mod_cast (hCposN (n + 1)).ne'⟩
+  refine Filter.eventually_atTop.mpr ⟨M + 1, fun n hn => ?_⟩
+  have hm : M ≤ n - 1 := by omega
+  have h := hsyl (n - 1) hm
+  have hn1 : n - 1 + 1 = n := by omega
+  rw [hn1] at h
+  have hle : a (n - 1) ≤ a (n - 1) ^ 2 := Nat.le_self_pow (by norm_num) _
+  zify [hle]
+  simpa [ErdosProblems.Erdos243.sylvesterNext] using h
+
+end Erdos243
