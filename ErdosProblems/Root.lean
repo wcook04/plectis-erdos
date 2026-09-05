@@ -67,3 +67,20 @@ This root is intentionally separate from the historical `Erdos249257`
 namespace. New research is grouped by the actual problem and mathematical
 object without forcing a repository-wide rename.
 -/
+import Erdos249257.BouquetReciprocalIrrationality
+import ErdosProblems.Erdos257.BatchReturnSynthesis
+import ErdosProblems.Erdos257.GreedyRepairCriterion
+import ErdosProblems.Erdos257.WeightedSupportAveraging
+import ErdosProblems.Erdos257.WeightedSupportLimits
+import ErdosProblems.Erdos251.BoundedPerturbationCountermodel
+import ErdosProblems.Erdos251.PolynomialGapSeriesValue
+import ErdosProblems.Erdos1049.UnimodularTail
+import ErdosProblems.Erdos243.LcmRecordExcess
+import ErdosProblems.Erdos243.SlowRiseBarrier
+import ErdosProblems.Erdos251.RealPrimeGapTail
+import ErdosProblems.Erdos1041.CyclicFiberMeanSquare
+import ErdosProblems.Erdos1041.LogKernelEnergy
+import ErdosProblems.Erdos1041.LogKernelVariance
+import ErdosProblems.Erdos1041.LogKernelCentralCertificate
+import ErdosProblems.Erdos1041.PowerSeriesDerivative
+import ErdosProblems.Erdos68.PrimePoleDenominator

@@ -327,3 +327,12 @@ name = "ExternalVerification1041AnalyticBridges"
 
 [[lean_lib]]
 name = "ExternalVerification68CanonicalArithmetic"
+
+[[lean_lib]]
+name = "ExternalVerification257Strong"
+
+[[lean_lib]]
+name = "ExternalVerification249SquaredLambert"
+
+[[lean_lib]]
+name = "ExternalVerification251BoundedPerturbation"
