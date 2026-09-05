@@ -263,7 +263,13 @@
         "lake build",
         "build failure",
         "changed lean",
-        "concurrent validation"
+        "concurrent validation",
+        "dependency cache",
+        "cache hydration",
+        "hydrate lean",
+        "validation receipt",
+        "deferred validation",
+        "resource busy"
       ],
       "skills": [
         "lean-concurrent-validation"

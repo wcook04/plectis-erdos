@@ -30,8 +30,10 @@ Equivalent Lean source, toolchain, manifest, configuration, target, and command
 inputs produce the same semantic key across clones on the same host; unrelated
 paper and README edits do not defeat reuse. One
 detached owner runs; followers consume the same in-flight or terminal receipt.
-Different Lean validations queue behind one `lean-host` resource lock, so a
-focused check cannot race a root check or another clone's build. The resource
+Different Lean validations return terminal exit `75` with
+`exit_state=resource_busy` when the `lean-host` resource lock is occupied;
+they do not remain queued. A focused check cannot race a root check or another
+clone's build. The resource
 lock lives in a host-wide namespace above the repository-specific receipt
 cache. This also lets an independent authoring checkout implement the same
 small filesystem protocol without importing private code into this repository.
@@ -86,6 +88,14 @@ SIGKILL, the same owner automatically resumes the partial build up to three
 bounded attempts. Exhaustion becomes exit `75`, with the last signal exit kept
 in the receipt; it is never reported as a theorem failure. No person must
 recreate the build or supervise a retry loop.
+
+Distinguish those interrupted-child retries from admission deferral. A
+`resource_busy` receipt means no validator child started for that request.
+Continue disjoint work; after the current owner completes, reissue the exact
+deferred command to submit it again. Waiting on its terminal receipt cannot
+start the deferred build. For a live matching future, keep its key and collect
+that result instead of launching another target. Inspect `status --key <key>`
+at a result dependency or completion signal, not as a repeated timer loop.
 
 ## Storage and evidence boundary
 

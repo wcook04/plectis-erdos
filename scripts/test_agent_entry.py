@@ -17,6 +17,12 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    "hydrate the Lean dependency cache": (
+        "lean_validation", "lean-concurrent-validation"
+    ),
+    "inspect a deferred validation receipt": (
+        "lean_validation", "lean-concurrent-validation"
+    ),
     "inspect the module dependency graph": (
         "repository_architecture", "maintain-public-infrastructure"
     ),

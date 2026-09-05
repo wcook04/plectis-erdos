@@ -119,10 +119,12 @@ by focused replay and CI.
 
 Both commands automatically enter the tracked public singleflight scheduler.
 On one host, identical source/toolchain requests from separate clones join the
-same future, while different Lean validations serialize behind one heavy-build
-lock. The heavy lock is host-wide and intentionally lives above any repository
-slug, so public cold clones and other cooperating Plectis checkouts queue before
-Lake starts rather than discovering contention through SIGTERM. State defaults
+same future. A different request returns deferred exit `75` with
+`exit_state=resource_busy` while the heavy-build lock is occupied; no Lake
+child starts and no queued retry remains. Reissue that request after the
+current owner completes. The heavy lock is host-wide and intentionally lives
+above any repository slug, so public cold clones and other cooperating Plectis
+checkouts share the same admission boundary. State defaults
 to the platform cache directory under the public repository identity, not to
 the checkout. The cache retains bounded log tails
 and launches hourly terminal-state cleanup; it is disposable acceleration and
