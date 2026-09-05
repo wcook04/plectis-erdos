@@ -645,6 +645,11 @@ lies in the open unit disc,
 Thus $|y|<1$, and the corresponding quotient root has modulus
 $|y|^q<1$.  This verifies the open-disc hypothesis for all quotient roots
 before applying the following selector.
+The identity retains more information than these separate bounds:
+$|h|<1$ and every fibre radius is strictly below $\sqrt{1-|h|^2}$.
+Consequently, any two safe fibre spokes constructed below have total length
+strictly less than $2\sqrt{1-|h|^2}$.  The position of the symmetry centre
+therefore controls the metric budget; the bound $2$ discards this information.
 
 Write $P(w)=(w-r)(w-s)(w-v)$ and assign to $r$ the charge
 $A_r=\Re(r\overline{s+v})$, cyclically.  The exact sum is
@@ -668,7 +673,8 @@ fibre points satisfy
 \[
  f(h+ty\zeta^k)=P(t^qr),
 \]
-and their two spokes through $h$ have total length $2|y|<2$.  If the selected
+and their two spokes through $h$ have total length
+$2|y|<2\sqrt{1-|h|^2}\le2$.  If the selected
 quotient root is zero, choose a nonzero quotient root and use the direct
 estimate $|P(ts)|<2t(1-t)\le1/2$ for $0<t<1$, with zero values
 at both endpoints; if none exists, $f$ has only one distinct
