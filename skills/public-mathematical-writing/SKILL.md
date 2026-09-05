@@ -134,6 +134,15 @@ evaluation or argument that separates them before claiming independence of
 the full family. Follow the checked proof's recovery step, not just its main
 matrix or estimate.
 
+## Check the meaning of numerical summaries
+
+When turning a computation into a stated bound, inspect the producing code and
+check the inequality with exact arithmetic. An integer of bit length `b` is at
+least `2^(b-1)`, not `2^b`; a decimal digit count is likewise not a lower-bound
+exponent. Name these fields separately in receipts. Preserve the exact
+mathematical conclusion when converting units, scales, and display formats;
+a successful computation does not validate a mistaken reading of its output.
+
 ## Read conditional results and failed routes mathematically
 
 For a conditional theorem, inspect the final consumer to separate assumptions
