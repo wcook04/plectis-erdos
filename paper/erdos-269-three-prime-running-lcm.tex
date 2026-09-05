@@ -51,8 +51,7 @@ pure-power channels gives a Beatty word and reduces both sums to a
 Hecke--Mahler value.  The proof uses the theorem of Loxton and van der Poorten
 in the modern form stated by Bugeaud and Laurent; it is an argument in this
 paper, not a Lean formalisation.  Steve Fan posted the same reduction and
-conclusion before the first public release of this manuscript, and no priority
-is claimed here.
+conclusion before the first public release of this manuscript.
 
 For three pairwise distinct primes \(p,q,r\), we prove exact structure rather
 than irrationality.  If \(\Lprefix(x)\) is the least common multiple of the
@@ -84,18 +83,17 @@ denominator-dependent cofinal residue-window escape would contradict it.
 The actual-tail bridge is a paper proof; the finite residue contradiction and
 common-factor cancellation are checked in Lean.  A reproducible integer scan
 finds an escaping window of length at most \(18\) for each of \(106{,}666\)
-tested denominator/start pairs, but this is finite evidence only.
+tested denominator/start pairs.
 
 The three-prime problem remains open.  This criterion now has one unproved
 input: the actual \(\{2,3,5\}\) radix and forcing words must satisfy cofinal
-residue-window escape.  No irrationality or transcendence result for any three-prime instance
-is claimed.
+residue-window escape.
 \end{abstract}
 
 \begin{paperresult}{Proved cases, new structure, and limit}
 \textbf{Two primes.} Both versions of the series are transcendental for every
-pair of distinct primes, by reduction to a Hecke--Mahler value; no priority is
-claimed.  \textbf{Three primes.} This paper proves the exact LCM cell
+pair of distinct primes, by reduction to a Hecke--Mahler value.
+\textbf{Three primes.} This paper proves the exact LCM cell
 structure and a quadratic bound for the actual $\{2,3,5\}$ tail.  Together
 with the ordered-digit identity and smooth-factor cancellation, this reduces
 irrationality of that instance to the single cofinal residue-window escape
@@ -113,12 +111,9 @@ in $P$.  Erd\H{o}s Problem~\#269 asks whether
  \sum_{n\ge1}\frac{1}{[a_1,\ldots,a_n]}
 \]
 is irrational, where $[a_1,\ldots,a_n]$ is the least common
-multiple~\cite[p.~65]{erdosgraham1980}\cite[p.~106]{erdos1988}.  Numbering and
-current reported status follow Bloom's catalogue, whose current record
-reproduces the displayed problem and explicitly warns that its OPEN label is
-the website owner's present assessment and may omit relevant literature
-\cite{erdosproblems}.  The original publications, not the catalogue, carry
-the mathematical claims.  The universal problem remains open, but this note
+multiple~\cite[p.~65]{erdosgraham1980}\cite[p.~106]{erdos1988}.
+Bloom's catalogue records the universal problem as open~\cite{erdosproblems},
+but this note
 settles every two-prime instance; unresolved finite cases begin with
 $|P|=3$.
 
@@ -165,8 +160,8 @@ Sections
 \ref{sec:cells} and~\ref{sec:fibre} make the finite ingredients of the
 three-prime reindexing exact: they identify where the value is constant, by
 exactly what factor it changes when it changes, and give a finite
-rectangular-box fibre identity.  They do not establish the ordered three-prime
-infinite passage and imply no irrationality result for three primes.
+rectangular-box fibre identity.  Section~\ref{sec:actual-orbit} uses these
+ingredients to construct the actual infinite shell orbit.
 
 Throughout, $p,q,r$ are pairwise distinct primes, and a \emph{pure power} is a
 power $b^{e}$ of a single base; a \emph{pure $3$-power} is a power of $3$, and
@@ -237,8 +232,7 @@ $\log\lcm(1,\ldots,N)=\psi(N)$
 ~\cite[\S4.2, p.~75]{apostol1976}; Montgomery--Vaughan state this exact
 identity directly in Exercise~6.2.7~\cite[p.~183]{montgomeryvaughan2007}.
 We record the $P$-restricted form because
-every later statement in the formal development is derived from it, and we
-claim nothing new for it.
+every later statement in the formal development is derived from it.
 
 The line of argument developed below has four stages.  First, identify
 $\Lprefix$ exactly as a product of three pure powers, so that every later
@@ -276,11 +270,9 @@ question up to a harmless rational normalisation: its Nat-indexed series
 includes the empty-prefix least-common-multiple term.  Its rational,
 irrational, and infinite-prime assertions all end in \texttt{sorry}.
 The declarations described below are propositions about the objects
-the question is posed over.  No claim of priority is made for any of these
-declarations.  Kova\v{c} and Tao~\cite{kovactao2024} treat several
+the question is posed over.  Kova\v{c} and Tao~\cite{kovactao2024} treat several
 irrationality problems of Erd\H{o}s for series of unit fractions by elementary
-means; nothing from that work is used here.  We offer no numerical evidence
-about the value of the sum itself.
+means; nothing from that work is used here.
 
 \statusboundary
 
@@ -292,8 +284,7 @@ three-prime running-lcm geometry, finite shell bounds and the rank-two kernel wi
 formal denominator reduction and carry extinction retain their stated
 hypotheses.  The paper shell argument supplies eventual smooth-factor
 divisibility and the required actual-carry bound.  Cofinal escape remains open.  The dyadic-window scan covers
-\(106{,}666\) finite instances and changes no quantifier.  No result here proves
-irrationality or transcendence for three primes.
+\(106{,}666\) denominator/start pairs.
 
 \subsection*{Structure}
 Section~\ref{sec:lcm} identifies the running value.
@@ -910,8 +901,7 @@ logarithmic-cell constancy, the $3n$ positive-jump count, the finite
 height-fibre normal form, the quadratic shell-multiplicity bound, the
 determinant $-1/15$.  Arbitrary-order non-separability is the paper proof
 above; no linked Lean declaration currently formalises its dense-rotation
-construction or its arbitrary-size minors.  Neither result supplies the
-missing three-prime irrationality argument.
+construction or its arbitrary-size minors.
 
 \section{The actual shell orbit and its integral branch}\label{sec:actual-orbit}
 
@@ -1154,9 +1144,8 @@ leave the smooth numbers behind and argue with integer sequences alone: for a
 multiplier coprime to $30$, no positive sequence obeying the cleared recurrence
 can stay inside its bound once a certain residue condition holds arbitrarily
 far out (Theorem~\ref{res:windowconsumer}).  That residue condition,
-condition~\eqref{eq:escape} below, is the hypothesis; it is not proved here,
-and the closing subsection reports a finite computation, which is evidence for
-it and not a proof of it.
+condition~\eqref{eq:escape} below, remains unproved; the closing subsection
+reports a finite scan.
 
 \subsection{The four-element block alphabet}
 
@@ -1394,8 +1383,8 @@ This includes the endpoint correctly: the zero congruence class is represented
 by $C$, so $c=C$ gives $\operatorname{lpr}_C(x)=C$, not zero.  Lean checks this
 as
 \lword{Erdos269/ResidueEscape.lean}{138}{leastPositiveResidue_eq_natAbs_of_pos_le_modEq}{exact
-least-positive-residue classifier}.  This is only a finite theorem.  Applying
-it to the actual series uses the integral carry and bound proved above;
+least-positive-residue classifier}.  Applying it to the actual series uses
+the integral carry and bound proved above;
 constructing arbitrarily late escaping windows remains unproved.
 
 \begin{theorem}[a conditional contradiction for bounded carries]\label{res:windowconsumer}
@@ -1434,11 +1423,8 @@ packages the preceding cancellation and reduced-carry contradiction into one
 statement.  Under the cofinal escape hypothesis, it takes a nonzero smooth
 factor, an exact factorisation $c_n=D_{\mathrm{sm}}d_n$, the absorbed
 recurrence for $c_n$, and the positive short bound for $d_n$, and derives a
-contradiction.  This removes a manual composition step; it does not prove that
-the actual series supplies its hypotheses.  The paper shell argument supplies
-the factorisation, recurrence and specified bound; cofinal escape remains
-unproved.  In particular it is not an irrationality theorem
-for the three-prime running-LCM series, whose endpoint remains open.
+contradiction.  The paper shell argument supplies the factorisation,
+recurrence and specified bound; cofinal escape remains unproved.
 
 \subsection{A finite check of the escape condition}
 
@@ -1764,7 +1750,17 @@ The four-state calculation supplies no cofinal windows, and
 \texttt{rational\_of\_scaledTail\_integer} classifies no denominators.  The
 actual carry supplies a weighted block defect instead, so any successful
 argument must use that weighted identity or construct a different faithful
-lift.  None of these results is an irrationality theorem for \#269.
+lift.
+
+The obstructions identify three different limits.  Arbitrary-order minors
+exclude a finite exact separation of the kernel; the bounded-radix alternative
+leaves integral tails untouched; and the residue examples show that
+coprimality alone gives no useful denominator-independent residue bound.
+The actual-tail estimate resolves the size issue: rationality supplies
+$1\le BT_a\le K^{235}(B,a)$ after a denominator-dependent onset.  For the
+window criterion, the remaining task is to force the literal word's residue
+outside this finite carry interval, with the window allowed to depend on $B$
+and to begin beyond that onset.
 
 For the repeated $\{2,3,5\}$ series, the actual-tail bridge and bound are
 proved above.  Theorem~\ref{res:actual-escape-endpoint} leaves one sufficient
