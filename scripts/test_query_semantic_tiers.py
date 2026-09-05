@@ -846,12 +846,24 @@ def test_family_query_resolves_only_the_selected_relation_neighbourhood() -> Non
 
 
 def test_family_relations_project_claim_status_without_inventing_a_rank() -> None:
+    claims = deepcopy(load_claims())
+    fixture_statuses = {
+        "conditional_carry_escape": "fixture selected contribution status",
+        "weighted_phase_carry_observer": "fixture peer contribution status",
+    }
+    changed = set()
+    for review in claims["external_verification_packet"]["review_matrix"]:
+        for row in review["families"]:
+            if row["id"] in fixture_statuses:
+                row["contribution_class"] = fixture_statuses[row["id"]]
+                changed.add(row["id"])
+    assert changed == set(fixture_statuses)
     packet = build_tracked_atlas_family_packet(
-        "conditional_carry_escape"
+        "conditional_carry_escape", claims=claims,
     )
     family = packet["family"]
     assert family["proof_status"] == (
-        "conditional no-go consumer; novelty and significance unassessed"
+        "fixture selected contribution status"
     )
     assert family["proof_status_authority"].endswith(
         "families[].contribution_class"
@@ -861,7 +873,7 @@ def test_family_relations_project_claim_status_without_inventing_a_rank() -> Non
         if row["peer"]["family_id"] == "weighted_phase_carry_observer"
     )
     assert weighted["peer"]["proof_status"] == (
-        "locally proved result; novelty unassessed"
+        "fixture peer contribution status"
     )
 
 
