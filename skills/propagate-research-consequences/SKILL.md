@@ -172,6 +172,36 @@ population change: the latter must show strongest-first editorial ordering,
 bounded omissions, and a visible distinction between family interface metadata
 and registered-claim transport coverage.
 
+## Carry internal work into the public corpus
+
+Inspect unpublished source when the public corpus has a missing proof,
+counterexample, computation, or useful operational capability. Compare actual
+statements and dependencies against current public source: an absent filename
+is a candidate, not evidence that the mathematics is absent or ready to ship.
+Prefer the strongest useful object already supported by evidence; reconcile
+equivalent declarations instead of copying a second API.
+
+Transfer the dependency closure needed to understand and reproduce the object,
+including its proof or checker, required inputs, attribution, and licence.
+Replace private runtime dependencies and private-only instructions with public
+owners. Validate from the public checkout using its documented commands; an
+internal build receipt alone does not validate the reconciled public source.
+Preserve the distinction between an ordinary proof, exact finite computation,
+Lean proof, cited theorem, and external review.
+
+Then trace the whole consequence chain: registered claims, result atoms and
+families, comprehension and frontier routes, short and existing long papers,
+and eligible verification interfaces. Give each affected consumer an explicit
+disposition under this skill. Regenerate derived surfaces through their owners
+and inspect the resulting public navigation and paper rendering. A copied file
+or updated PDF alone does not complete the transfer. Deferred consumers need
+an owner and a concrete re-entry event; publication and review status still
+require their own evidence.
+
+Apply the same rule to reusable workflow lessons: put them in a public skill
+that a cold-clone contributor can follow, without private paths, live task
+identifiers, or unpublished machinery.
+
 ## Reconcile work from an older clone
 
 An old clone is not an invalid contribution. Its starting commit is the common
