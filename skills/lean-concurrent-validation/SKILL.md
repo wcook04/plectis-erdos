@@ -18,6 +18,19 @@ A plan reads the local graph and does not compile:
 python3 scripts/lean_fast_build.py --plan --changed-from HEAD
 ```
 
+For exhaustive local-source coverage, derive the population from this checkout:
+
+```sh
+python3 scripts/lean_source_population.py --pretty
+```
+
+This reports logical module identities, maximal import roots covering every
+discovered source, missing declared libraries, and a source-content digest.
+It includes isolated modules rather than assuming the customary root imports
+cover everything. Counts and roots are derived dynamically; the plan is not
+evidence that Lean or Comparator has run. Use the shared build owner below
+to validate the selected roots, and retain its terminal result separately.
+
 Normal execution automatically submits or joins an exact validation future:
 
 ```sh

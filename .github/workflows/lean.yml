@@ -178,6 +178,8 @@ jobs:
         run: python3 scripts/test_dependency_lock_contract.py
       - name: Test bounded build planner
         run: python3 scripts/test_lean_fast_build.py
+      - name: Test source-current exhaustive Lean coverage planner
+        run: python3 scripts/test_lean_source_population.py
       - name: Test dependency-bootstrap environment
         run: |
           python3 scripts/test_lean_dependency_environment.py
