@@ -5,6 +5,7 @@ Authors: Will Cook
 -/
 import ExternalVerification.Solution
 import Erdos249257.AllBaseReciprocalSupportIrrationality
+import Erdos249257.HalfCutLocator
 
 /-!
 # Solved-variant candidates for Formal Conjectures
@@ -357,6 +358,42 @@ theorem erdos_257_variants_finite_period_noncollapse
 /-- The upstream finite-sum definition is this repository's. -/
 theorem finiteErdosSum_eq (F : Finset ℕ) (b : ℕ) :
     Erdos257.finiteErdosSum F b = finiteErdosSum F b := rfl
+
+/-! ### The value one half
+
+`erdos_257` asks whether every infinite support gives an irrational sum.  A
+support with value `1/2` would answer it in the negative, provided the support
+is infinite.  The theorem below removes the proviso: no finite support has
+value `1/2`, so the half-value question is a one-sided test of the universal
+statement.
+
+The corpus proves this from the reduced denominator of a finite Mersenne
+fragment, which is odd at base two, while `1/2` has denominator `2`.  The
+exponent `0` needs no hypothesis here: its term is `1 / (2 ^ 0 - 1) = 0` under
+Lean's division convention, so erasing it from the finite support changes
+nothing. -/
+
+/-- No finite support has value `1/2`. -/
+theorem erdos_257_variants_half_not_finite_support
+    (A : Set ℕ) (hA : A.Finite) :
+    ∑' n : A, (1 : ℝ) / (2 ^ n.1 - 1) ≠ 1 / 2 := by
+  classical
+  have hsub : (∑' n : A, (1 : ℝ) / (2 ^ n.1 - 1))
+      = Erdos249257.erdosSupportSeries 2 A := by
+    rw [tsum_subtype A fun a : ℕ => (1 : ℝ) / (2 ^ a - 1)]
+    unfold Erdos249257.erdosSupportSeries
+    norm_num
+  rw [hsub, ← Erdos249257.positiveMersenneSupportValue_eq_erdosSupportSeries,
+    ← hA.coe_toFinset, Erdos249257.positiveMersenneSupportValue_coe_finset,
+    ← Finset.sum_subset (Finset.erase_subset 0 hA.toFinset) ?_,
+    ← Erdos249257.positiveMersenneSupportValue_coe_finset]
+  · exact Erdos249257.positiveMersenneSupportValue_coe_finset_ne_half
+      (Finset.notMem_erase 0 _)
+  · intro x hx hxe
+    have hx0 : x = 0 := by
+      by_contra hne
+      exact hxe (Finset.mem_erase.mpr ⟨hne, hx⟩)
+    simp [hx0]
 
 end Erdos249257.FormalConjecturesErdos257
 
