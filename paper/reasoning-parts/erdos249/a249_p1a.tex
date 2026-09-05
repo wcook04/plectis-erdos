@@ -34,7 +34,18 @@ $\neg\mathrm{Irrational}(S) \to \exists v>0,\, \exists u:\mathbb{N}\to\mathbb{Z}
 \end{thm}
 
 \begin{thm}[cert:d4 --- \texttt{linearIndependent\_canonicalTotientKernelFamily}]
-For every $e:\mathbb{N}$, the canonical dyadic totient-kernel family $\mathrm{canonicalTotientKernelFamily}(e) : \mathrm{TotientCanonicalIndex}(e) \to \mathbb{N}\to\mathbb{Q}$, which has exactly $2^e+1$ channels, is linearly independent over $\mathbb{Q}$. Proved unconditionally by constructing, via CRT and Dirichlet's theorem on primes in arithmetic progression (\texttt{PrimesCongruentOne}/\texttt{PrimesInAP} from Mathlib), an explicit evaluation point at which one channel becomes prime and every other channel picks up a fresh prime $\equiv 1$ modulo a large power of $2$ — a genuine witnessed producer, not merely a dimension count. Consequently $\neg\mathrm{FiniteDimensional}\,\mathbb{Q}\,(\mathrm{span}\,\mathbb{Q}\,(\mathrm{range}\,\mathrm{fullTotientKernelFamily}))$. Self-flagged: this shows the dyadic-kernel side is infinite-rank; it is not itself an irrationality proof.
+For every $e\ge0$, the canonical family consisting of $\varphi(n)$,
+$\varphi(2n)$, and the odd-residue sections $\varphi(2^j n+r)$ with
+$1\le j\le e$ has $2^e+1$ linearly independent members over $\mathbb Q$.
+On odd inputs the first two members coincide.  CRT and Dirichlet's theorem
+construct a parity-separated evaluation matrix for the family with that pair
+merged; one even evaluation then separates the pair.  Together with the
+even-residue reductions this gives a basis of the full kernel, not just an
+infinite-rank consequence.  The actual sections through level $e$ have rank
+$2^e+1$ for $e\ge1$; at level zero their rank is one because $\varphi(2n)$
+has not yet entered.  The proof mechanism is detailed in
+Section~\ref{sec:mahler-defect}.  No rationality-to-finite-rank implication is
+proved for $S$.
 \par\noindent\ev{Lean} \scale{uniform} \coord{other:dyadic-kernel-rank} \lean{card\_totientCanonicalIndex}{TotientMahlerDefect.lean:61} \lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}
 \end{thm}
 
