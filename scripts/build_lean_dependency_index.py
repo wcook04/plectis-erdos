@@ -38,6 +38,10 @@ LEAN_FAST_BUILD = ROOT / "scripts" / "lean_fast_build.py"
 LEAN_ROOT_BUILD_TIMEOUT_SECONDS = 4 * singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 CHECK_RECEIPT = ROOT / ".lake" / "aiw" / "lean_dependency_index_check.json"
 TRACKED_CHECK_RECEIPT = ROOT / "docs" / "lean_dependency_index_check.json"
+FULL_EXPORT_TRACKED_POSTURE = (
+    "tracked_receipt_from_full_supported_root_build_and_elaborated_"
+    "environment_export"
+)
 CHECK_RECEIPT_SCHEMA = "erdos249257-lean-dependency-index-check/1"
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 # The global single-flight environment deliberately strips ambient PATH.  The
@@ -1054,6 +1058,17 @@ def main() -> int:
         content,
         packet,
         input_fingerprint=initial_input_fingerprint,
+    )
+    # A full export must also mint the tracked receipt. Until 2026-09-05 only
+    # --refresh-validation-metadata wrote it, and that refresh refuses unless
+    # a tracked receipt already owns the output, so a fresh export could never
+    # be landed: the CI artifact carried a new index next to the old receipt.
+    write_check_receipt(
+        content,
+        packet,
+        input_fingerprint=initial_input_fingerprint,
+        receipt_path=TRACKED_CHECK_RECEIPT,
+        verification_posture=FULL_EXPORT_TRACKED_POSTURE,
     )
     print(
         f"wrote {OUTPUT} "
