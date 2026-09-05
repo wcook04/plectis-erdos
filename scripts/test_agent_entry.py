@@ -221,6 +221,26 @@ def main() -> int:
     assert "lean_validation" in {
         row["id"] for row in duplicate_builds["alternatives"]
     }
+    mixed_task = "prove a lemma in Lean and fix duplicate builds"
+    mixed = entry_packet(catalog, mixed_task)
+    assert mixed["primary_lane"]["id"] == "bounded_research"
+    validation = next(
+        row for row in mixed["alternatives"] if row["id"] == "lean_validation"
+    )
+    assert validation["read"] == ["skills/lean-concurrent-validation/SKILL.md"]
+    assert validation["commands"] == [
+        "python3 scripts/lean_fast_build.py --plan --changed-from HEAD"
+    ]
+    assert "pinned Lean kernel" in validation["boundary"]
+    for task in ROUTE_CASES:
+        alternatives = entry_packet(catalog, task)["alternatives"]
+        assert len(alternatives) <= 2
+        assert all(len(row["read"]) <= 1 and len(row["commands"]) <= 1
+                   for row in alternatives)
+    mixed_cli = run_cli(ROOT, "--entry", mixed_task)
+    assert mixed_cli.returncode == 0, mixed_cli.stderr
+    assert "Open: skills/lean-concurrent-validation/SKILL.md" in mixed_cli.stdout
+    assert "Next: python3 scripts/lean_fast_build.py --plan --changed-from HEAD" in mixed_cli.stdout
 
     fallback = entry_packet(catalog, "frobnicate the unspecified material")
     assert fallback["route_status"] == "fallback"
