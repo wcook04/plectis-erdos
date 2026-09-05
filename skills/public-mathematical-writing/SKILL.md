@@ -185,6 +185,12 @@ paper before its complete Lean formalization exists, but label the uncovered
 bridge explicitly. Neither a theorem name nor a checked scalar ingredient
 certifies the assembled statement.
 
+Before leaving a finite certificate's tail estimate as an open input, combine
+available coefficient bounds with an explicit geometric or polynomial-moment
+remainder. Test the actual series with exact rational or integer comparisons,
+not a toy approximation or rounded decimals. A successful finite instance
+removes that local uncertainty; keep the separate cofinal quantifier visible.
+
 When formalization is in scope, an uncovered bridge is work to undertake,
 not merely a disclaimer to add. Reuse existing proofs and formalize the
 mathematical step needed by the paper's actual conclusion. Prefer the bound
