@@ -1963,6 +1963,14 @@
           ]
         },
         {
+          "id": "Erdos249257.AllBaseReciprocalSupportIrrationality",
+          "path": "Erdos249257/AllBaseReciprocalSupportIrrationality.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.ReciprocalSupportIrrationality"
+          ]
+        },
+        {
           "id": "Erdos249257.BinaryTailWindowTransfer",
           "path": "Erdos249257/BinaryTailWindowTransfer.lean",
           "role": "Binary tail-window transfer interfaces",
@@ -7563,6 +7571,16 @@
           "role": "Residue wraps, reciprocal mass, and unbounded carries",
           "imports": [
             "Erdos249257.BooleanMobiusCarry"
+          ]
+        },
+        {
+          "id": "Erdos249257.ReciprocalSupportIrrationality",
+          "path": "Erdos249257/ReciprocalSupportIrrationality.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.RationalSupportCarrySkeleton",
+            "Erdos249257.MersenneTailAtoms",
+            "Erdos249257.CarrySurvivorExtinction"
           ]
         },
         {

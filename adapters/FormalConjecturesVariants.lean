@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import ExternalVerification.Solution
+import Erdos249257.AllBaseReciprocalSupportIrrationality
 
 /-!
 # Solved-variant candidates for Formal Conjectures
@@ -657,6 +658,18 @@ theorem erdos_257_variants_pairwise_coprime_support
     tsum_subtype A fun a : ℕ => (1 : ℝ) / ((b : ℝ) ^ a - 1)
   rw [h]
   exact Erdos249257.irrational_erdosSupportSeries_pairwise_coprime b A hb hA hpair
+    (summable_subtype_iff_indicator.mp hsum)
+
+/-- Infinite supports with summable reciprocals, no coprimality hypothesis. -/
+theorem erdos_257_variants_summable_reciprocal_support
+    (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)
+    (hsum : Summable fun a : A => (1 : ℝ) / (a : ℕ)) :
+    Irrational (∑' n : A, (1 : ℝ) / ((b : ℝ) ^ (n : ℕ) - 1)) := by
+  have h : (∑' n : A, (1 : ℝ) / ((b : ℝ) ^ (n : ℕ) - 1))
+      = Erdos249257.erdosSupportSeries b A :=
+    tsum_subtype A fun a : ℕ => (1 : ℝ) / ((b : ℝ) ^ a - 1)
+  rw [h]
+  exact Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal b A hb hA
     (summable_subtype_iff_indicator.mp hsum)
 
 /-- The positive factorials as support. -/
