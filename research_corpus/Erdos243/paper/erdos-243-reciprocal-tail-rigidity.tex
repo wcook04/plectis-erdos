@@ -8,8 +8,8 @@
 \input{problem-note-preamble}
 % Problem-specific source pin: #243's cancellation and feedback interfaces
 % advance independently of the corpus default.
-\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
-\renewcommand{\commitshort}{99f4bf47422a}
+\renewcommand{\commit}{c55323931665f57dcf4600a674696e2ee10042bc}
+\renewcommand{\commitshort}{c55323931665}
 \hypersetup{
   pdftitle={Excluding the bounded negative part: Lean-checked rigidity for Erdős Problem 243},
   pdfsubject={Erdős Problem Notes: Problem 243},
@@ -57,7 +57,7 @@ $E_n=0$ is absorbing.  The same argument in summable form gives a second
 criterion: under the exact dynamics, positivity, the strict centred-step
 equation, normalised vanishing, and
 $\sum_n(-E_n)_+/C_n<\infty$, the Sylvester recurrence is recovered
-\lword{Erdos243/SparseResetRecovery.lean}{510}
+\lword{Erdos243/SparseResetRecovery.lean}{175}
       {sylvesterNext_eventually_of_summable_negativeRelativeMass}
       {the finite-negative-mass recovery theorem}.
 The summability hypothesis is not known for the canonical orbit.
@@ -79,6 +79,16 @@ exact inequality
 \]
 Hence fixed-length recoveries are eventually cancellation-free, although
 recoveries of increasing length remain possible.
+
+One clause of that frontier is already published and is credited as such.  That
+a counterexample must have negative errors infinitely often is the
+contrapositive of Koizumi's Proposition~19(2)~\cite[Prop.~19(2)]{koizumi2025},
+which he attributes to Badea; Koizumi and Badea assume the sign is eventually
+nonnegative.  The theorem proved here assumes only that the negative part is
+eventually bounded, which admits sign changes of bounded depth at every scale,
+so it is a strengthening of their hypothesis rather than a new clause.  The
+unboundedness and divergent-mass parts of the frontier have no located
+antecedent.
 
 Koizumi's pseudo-greedy coordinates supply normalised vanishing and a stronger
 centring range for the canonical Erd\H{o}s orbit, but neither boundedness nor
@@ -189,7 +199,7 @@ $e_n$ at an index where the centred state is negative.
 
 His Theorem~16
 ~\cite[p.~11]{koizumi2025} shows
-that his Conjecture~6 --- that for a positive rational $r$ whose gap sequence
+that his Conjecture~6, that for a positive rational $r$ whose gap sequence
 satisfies $\varepsilon_n\to0$ one has $\varepsilon_n=0$ for all large $n$ ---
 is equivalent to an affirmative answer to the question of Erd\H{o}s and Graham
 recorded as his Question~5, which is Problem~\ref{res:problem} above.
@@ -1183,12 +1193,12 @@ hypothesis $C_{n+1}\ne0$ holds because $C_n>0$ throughout.
 \end{proof}
 
 \noindent The product argument is the
-\lword{Erdos243/SparseResetRecovery.lean}{423}{eventually_zero_of_summable_relativeGrowth}{summable
+\lword{Erdos243/SparseResetRecovery.lean}{90}{eventually_zero_of_summable_relativeGrowth}{summable
 relative growth}; its specialisation to negative mass is the
-\lword{Erdos243/SparseResetRecovery.lean}{488}{eventually_zero_of_summable_negativeRelativeMass}{vanishing
+\lword{Erdos243/SparseResetRecovery.lean}{155}{eventually_zero_of_summable_negativeRelativeMass}{vanishing
 from finite negative mass}, and the statement giving the recurrence directly is
 the
-\lword{Erdos243/SparseResetRecovery.lean}{510}{sylvesterNext_eventually_of_summable_negativeRelativeMass}{Sylvester
+\lword{Erdos243/SparseResetRecovery.lean}{175}{sylvesterNext_eventually_of_summable_negativeRelativeMass}{Sylvester
 recurrence from summable negative mass}.  This is a checked implication about
 the state system, not a derivation of normalised vanishing from
 Problem~\#243.  Normalised vanishing is still an input: it is what converts the
@@ -1345,7 +1355,11 @@ and
  \qquad
  \sum_{n=0}^{\infty}\frac{(-E_n)_+}{C_n}=\infty .
 \]
-In particular, negative indices occur infinitely often.  Thus the remaining
+In particular, negative indices occur infinitely often.  That last clause is
+not new: it is the contrapositive of Koizumi's Proposition~19(2), which he
+attributes to Badea, and it is what the present theorem strengthens by
+replacing eventual nonnegativity with eventual boundedness of the negative
+part.  Thus the remaining
 regime consists of globally coherent, unbounded negative excursions with
 divergent normalised negative mass.
 \end{proposition}

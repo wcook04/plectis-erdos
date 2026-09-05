@@ -1,0 +1,420 @@
+{
+  "complete_factor31_41_census": {
+    "aggregate_boundary_transfer": {
+      "factor29_through_factor31_41_negative_continuation": "189/899",
+      "factor31_negative_continuation": "27/31",
+      "factor41_negative_continuation": "0",
+      "formerly_inert_factor25_chain_continuation": "540/11687"
+    },
+    "avoided_materialized_refinement_count": 12693598762469760000,
+    "canonical_field_evaluation_count": 72,
+    "factor31_branch": {
+      "canonical_source_residue_table": [
+        1,
+        29,
+        29,
+        14,
+        0,
+        14,
+        0,
+        29,
+        21,
+        6,
+        14,
+        14,
+        6,
+        21,
+        29,
+        0,
+        14,
+        0,
+        14,
+        29,
+        29,
+        1,
+        28,
+        28,
+        29,
+        14,
+        28,
+        14,
+        29,
+        28,
+        28
+      ],
+      "current_multiplier_counts_mod_prime": {
+        "0": 4,
+        "1": 2,
+        "14": 8,
+        "21": 2,
+        "28": 5,
+        "29": 8,
+        "6": 2
+      },
+      "exact_parent_transport_crosscheck_table": [
+        1,
+        29,
+        29,
+        14,
+        0,
+        14,
+        0,
+        29,
+        21,
+        6,
+        14,
+        14,
+        6,
+        21,
+        29,
+        0,
+        14,
+        0,
+        14,
+        29,
+        29,
+        1,
+        28,
+        28,
+        29,
+        14,
+        28,
+        14,
+        29,
+        28,
+        28
+      ],
+      "full_payment_residue_absent": false,
+      "incoming_state": {
+        "error": -1,
+        "height": 30
+      },
+      "logical_child_count": 7229687484136320000,
+      "logical_input_parent_count": 233215725294720000,
+      "negative_continuation_ratio": "27/31",
+      "next_raw_factor": 31,
+      "prior_divisors_are_units": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "source_stride": 109027350432000,
+      "source_stride_mod_prime": 2,
+      "successor_mode_counts_per_parent": {
+        "payment=1,height=31,error=-1": 2,
+        "payment=1,height=31,error=-10": 8,
+        "payment=1,height=31,error=-4": 8,
+        "payment=1,height=31,error=-5": 2,
+        "payment=1,height=31,error=-7": 2,
+        "payment=1,height=31,error=-9": 5,
+        "payment=31,height=1,error=0": 4
+      },
+      "uniform_parent_profile": {
+        "cofinal": 4,
+        "negative": 27,
+        "positive": 0
+      },
+      "universality_certificate": "Every actual next lift permutes all source residues modulo the new prime because the exact source stride and all prior quotient divisors are units. The height-29 multiplier is first transported through factor 30 or 35 into the declared parent state.",
+      "weighted_negative_child_count": 6296824582957440000,
+      "weighted_positive_child_count": 0
+    },
+    "factor41_branch": {
+      "canonical_source_residue_table": [
+        28,
+        36,
+        0,
+        36,
+        9,
+        15,
+        9,
+        36,
+        36,
+        36,
+        36,
+        9,
+        15,
+        9,
+        36,
+        0,
+        36,
+        28,
+        30,
+        36,
+        30,
+        14,
+        30,
+        15,
+        9,
+        9,
+        14,
+        9,
+        9,
+        9,
+        9,
+        9,
+        14,
+        9,
+        9,
+        15,
+        30,
+        14,
+        30,
+        36,
+        30
+      ],
+      "current_multiplier_counts_mod_prime": {
+        "0": 2,
+        "14": 4,
+        "15": 4,
+        "28": 2,
+        "30": 6,
+        "36": 10,
+        "9": 13
+      },
+      "exact_parent_transport_crosscheck_table": [
+        28,
+        36,
+        0,
+        36,
+        9,
+        15,
+        9,
+        36,
+        36,
+        36,
+        36,
+        9,
+        15,
+        9,
+        36,
+        0,
+        36,
+        28,
+        30,
+        36,
+        30,
+        14,
+        30,
+        15,
+        9,
+        9,
+        14,
+        9,
+        9,
+        9,
+        9,
+        9,
+        14,
+        9,
+        9,
+        15,
+        30,
+        14,
+        30,
+        36,
+        30
+      ],
+      "full_payment_residue_absent": false,
+      "incoming_state": {
+        "error": -6,
+        "height": 35
+      },
+      "logical_child_count": 5463911278333440000,
+      "logical_input_parent_count": 133266128739840000,
+      "negative_continuation_ratio": "0/41",
+      "next_raw_factor": 41,
+      "prior_divisors_are_units": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "source_stride": 127198575504000,
+      "source_stride_mod_prime": 15,
+      "successor_mode_counts_per_parent": {
+        "payment=1,height=41,error=11": 2,
+        "payment=1,height=41,error=12": 6,
+        "payment=1,height=41,error=13": 4,
+        "payment=1,height=41,error=14": 10,
+        "payment=1,height=41,error=3": 4,
+        "payment=1,height=41,error=6": 13,
+        "payment=41,height=1,error=0": 2
+      },
+      "uniform_parent_profile": {
+        "cofinal": 2,
+        "negative": 0,
+        "positive": 39
+      },
+      "universality_certificate": "Every actual next lift permutes all source residues modulo the new prime because the exact source stride and all prior quotient divisors are units. The height-29 multiplier is first transported through factor 30 or 35 into the declared parent state.",
+      "weighted_negative_child_count": 0,
+      "weighted_positive_child_count": 5197379020853760000
+    }
+  },
+  "consequence_propagation": {
+    "anchor": {
+      "claim_ceiling": "source_conditioned_finite_cylinder_not_unrestricted_erdos243",
+      "delta_class": "status_or_authority_changed",
+      "strongest_authority": "exact_owner_checked_computation"
+    },
+    "cold_reader": {
+      "query": "problem cockpit Erdos 243 factor 31 factor 41 field permutation",
+      "status": "selected_result_and_open_boundary_visible"
+    },
+    "decisions": [
+      {
+        "decision": "update_now",
+        "reason": "Records the unit-field proof, exact tables, continuation, and next raw factors.",
+        "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md"
+      },
+      {
+        "decision": "update_now",
+        "reason": "Moves the exact result, negative mechanism, claim ceiling, and open producer.",
+        "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json"
+      },
+      {
+        "decision": "update_now",
+        "reason": "The executable owner is explicitly linked and auto-discovered.",
+        "surface": "corpus_computation_routes:erdos_243"
+      },
+      {
+        "decision": "outside_scope",
+        "reason": "Generic local constant-name collisions; their mathematics is unchanged.",
+        "surface": "three prior EXPECTED_MODE_COUNTS validators"
+      },
+      {
+        "decision": "verified_no_change",
+        "reason": "No Lean theorem authority changed; this is an exact computation receipt.",
+        "surface": "Lean consumers"
+      },
+      {
+        "decision": "defer_with_reason",
+        "reason": "Unrestricted #243 remains open and the release rule requires human review.",
+        "reentry": "A selected Lean-bound theorem or owner-approved public finite-cylinder claim lands.",
+        "surface": "public projection"
+      }
+    ]
+  },
+  "experiment_contract": {
+    "analytic_bridge": {
+      "consumer_declarations": [
+        "factor-31/factor-41 field-permutation consequence"
+      ],
+      "consumer_ref": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "falsification_consequence": "Failure of the unit-field image would require returning to source-stratified composite-cylinder enumeration.",
+      "survival_consequence": "Factor 31 forces four cofinal returns; factor 41 forces two cofinal returns and switches every other child positive, killing that branch."
+    },
+    "authority_boundary": "Experiment metadata and finite computation are evidence, not proof authority; claim status changes only through Lean, an exact counterexample, or the named owner verifier.",
+    "hypothesis": {
+      "id": "new_prime_field_images_uniformly_activate_both_split_modes",
+      "statement": "After exact transport into the declared parent state, the next prime field forces cofinal return or sign change on actual support."
+    },
+    "links": {
+      "analysis_refs": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor30_35_split_receipt.json"
+      ],
+      "input_receipt_refs": [],
+      "source_refs": [
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor31_41_field_activation.py",
+        "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor30_35_split.py",
+        "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor30_35_split_receipt.json",
+        "system/lib/formal_math_residue_cylinder.py",
+        "system/server/tests/test_formal_math_residue_cylinder.py"
+      ]
+    },
+    "probe": {
+      "computation": "Propagate the exact quotient cocycle over F_31 and F_41 using modular inverses for all prior certified divisions. Since each next source stride is a unit, enumerate one canonical complete field image per branch and transfer its multiset to every actual parent.",
+      "falsifier": "A nonunit prior divisor or source stride, failure to transport the height-29 multiplier, or a profile other than (4,0,27)/(2,39,0).",
+      "id": "complete_factor31_41_unit_stride_field_images",
+      "question": "Can coprime source-stride permutation replace 889 million materialized refinements and prove a uniform next-factor profile?",
+      "resource_bounds": {
+        "avoided_materialized_refinements": 12693598762469760000,
+        "canonical_field_evaluations": 72,
+        "factor31_logical_input_parents": 233215725294720000,
+        "factor41_logical_input_parents": 133266128739840000
+      },
+      "stop_condition": "Stop after both universal field images and exact weighted transfers are certified; do not materialize the parent-by-lift product."
+    },
+    "problem": {
+      "claim_ceiling": "Every actual surviving (30,-1) parent has factor-31 profile (4,0,27), and every surviving (35,-6) parent has factor-41 profile (2,39,0). Factor 41 kills all negative support on its branch; unrestricted #243 remains open.",
+      "id": "erdos_243",
+      "target_statement": "Under a_(n+1)/a_n^2 -> 1 and rational reciprocal sum, force eventual Sylvester recurrence."
+    },
+    "result": {
+      "progress": {
+        "authority_boundary": "This classification routes research attention; it does not promote finite evidence to proof authority.",
+        "class": "mechanism_opened",
+        "decision_basis": "All prior divisors and both source strides are units in the new prime fields, so complete lift inputs are residue permutations.",
+        "next_analytic_target": "Resolve the six factor-31 negative errors with raw factors 32,35,36,38,40,41; factor 41 is the only next prime."
+      },
+      "status": "exact_one_way_result",
+      "summary": "The complete F_31 image has profile (4,0,27); the complete F_41 image has profile (2,39,0). Unit source strides make these profiles universal across all actual parents."
+    },
+    "schema_version": "formal_math_experiment_contract_v1"
+  },
+  "mechanism_decision": {
+    "factor29_through_factor31_41_negative_continuation": "189/899",
+    "factor31_profile": "cofinal=4,positive=0,negative=27",
+    "factor41_profile": "cofinal=2,positive=39,negative=0",
+    "formerly_inert_factor25_chain_continuation": "540/11687",
+    "next_step": "Resolve the six factor-31 negative errors with raw factors 32,35,36,38,40,41; factor 41 is the only next prime."
+  },
+  "schema": "erdos243-t0-factor31-41-field-activation-receipt/1",
+  "source_records": [
+    {
+      "byte_length": 20925,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor31_41_field_activation.py",
+      "sha256": "f7c1ebd44dd8b6ba7613942f937230c79d76231bab84e64e5c47f32c35d79635"
+    },
+    {
+      "byte_length": 22812,
+      "path": "formal_math/erdos257_period_noncollapse/scripts/check_erdos243_t0_factor30_35_split.py",
+      "sha256": "fbcbbc23088686875b712b59869be1d2ade9a376623dc9b38932c0c08f360b32"
+    },
+    {
+      "byte_length": 16111,
+      "path": "state/formal_math/erdos257_period_noncollapse/erdos243_t0_factor30_35_split_receipt.json",
+      "sha256": "83d771f8a044ef7590b3db2932a181e5dcd6122f0fa0487914ee8dec53c2f26d"
+    },
+    {
+      "byte_length": 54635,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/CleanRecoveryLengthComputationalLab.md",
+      "sha256": "50cf2a789580d6560e91f575f2d8f0ba25024a6132f1136f0be149bd90518fda"
+    },
+    {
+      "byte_length": 107771,
+      "path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos243/research_packet.json",
+      "sha256": "4ee477afd63652b343e85a91cf0da156daf0ef24d1eb4ed6d9d58e9b67dc4d2f"
+    },
+    {
+      "byte_length": 19582,
+      "path": "system/lib/formal_math_residue_cylinder.py",
+      "sha256": "27dce8074a9fab8616d4a8eb78869e2fdce271bff73e0f7ad6e2c01ee2925e15"
+    },
+    {
+      "byte_length": 12287,
+      "path": "system/server/tests/test_formal_math_residue_cylinder.py",
+      "sha256": "a5691db425f1c3d8ad7cd5651b7bf3735c8a361062197c4de41b54e429eff0e1"
+    }
+  ],
+  "status": "verified_uniform_factor31_41_field_activation"
+}

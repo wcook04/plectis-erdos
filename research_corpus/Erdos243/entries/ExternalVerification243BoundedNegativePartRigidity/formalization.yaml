@@ -1,0 +1,169 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+version: "v0.4"
+
+project:
+  name: "Erdős #243: bounded-negative-part rigidity"
+  description: >-
+    Exact reciprocal-tail dynamics with eventual strict centering, an
+    eventual one-sided lower bound on the centered error, and division-free
+    normalized vanishing have zero centered defect eventually and obey the
+    exact Sylvester recurrence eventually. No periodicity assumption is used.
+    The theorem is conditional and does not settle unrestricted Erdős #243.
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Will Cook"
+
+palomar_qualification:
+  status: "candidate_pending_mechanical_gates"
+  selected_project: "formal_math/erdos257_period_noncollapse"
+  comparator_config: "formal_math/erdos257_period_noncollapse/ExternalVerification243BoundedNegativePartRigidity/comparator.json"
+  formalization_metadata: "formal_math/erdos257_period_noncollapse/ExternalVerification243BoundedNegativePartRigidity/formalization.yaml"
+  repository_scope: "private_source_not_yet_pinned_in_public_repository"
+  challenge_dependency_boundary: "Mathlib_only"
+  replay_status: "terminal_positive_and_deliberate_negative_pair_pending_supported_runner"
+  research_interest_status: "plausible_research_note_grade_conditional_rigidity_theorem"
+  submission_authorization: "operator_directed_submission_campaign_exact_public_identity_pending"
+  blockers:
+    - "result packet is not present in a public repository at a pinned full commit SHA"
+    - "terminal positive acceptance and deliberate-negative mismatch rejection have not been recorded on a supported runner"
+  note: >-
+    The open parent problem is an explicit theorem boundary, not an editorial
+    veto. No local artifact is represented as a Palomar verdict or registry
+    entry.
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11A63", "11B37"]
+
+sources:
+  - title: "Bounded-negative-part rigidity for reciprocal-tail dynamics"
+    authors:
+      - "Will Cook"
+    type: "original-proof"
+    relationship: "other"
+    note: >-
+      The proof combines natural-tail descent on the nonnegative branch with
+      gcd stabilization, scale reduction, and a shifted CRT obstruction on
+      the recurring bounded-negative branch.
+    license: "Apache-2.0"
+    author_endorsement: "participated"
+  - title: "Erdős Problem #243"
+    authors:
+      - "Thomas F. Bloom"
+    id: "https://www.erdosproblems.com/243"
+    type: "web discussion"
+    relationship: "background"
+    note: >-
+      The catalogue supplies the problem statement, numbering, references and
+      open status; the rigidity theorem is not attributed to the catalogue.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+  - title: "Mathlib"
+    authors:
+      - "The mathlib contributors"
+    id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "background"
+    license: "Apache-2.0"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    One compared theorem packages eventual zero centered defect and eventual
+    exact Sylvester recurrence under the full bounded-negative hypotheses.
+    Challenge.lean has one intentional Comparator specification sorry;
+    Solution.lean and the imported source are sorry-free.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: >-
+    The only deliberate placeholder is the trusted theorem body in
+    Challenge.lean. It is excluded from the proof-corpus count.
+  axiom_audit_status: "pending_focused_lean_check"
+  permitted_axiom_budget:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.ExternalVerification243BoundedNegativePartRigidity.boundedNegativePart_completeRigidity"
+      file: "ExternalVerification243BoundedNegativePartRigidity/Solution.lean"
+      sorry_count: 0
+      comparator_config: "ExternalVerification243BoundedNegativePartRigidity/comparator.json"
+      canonical_claim_status: "source_proved_wrapper_pending_focused_check"
+      local_proof_provenance: >-
+        Source theorems in
+        ErdosProblems/Erdos243/ReciprocalTailRigidity.lean at local source
+        commit 14bf635fe7165af31b60829accbb0676309921d2 and source SHA-256
+        457d7df8b038bff8d61ca7b8b9a1a000bb9ae6a69564416bcc1582941d5d53fb.
+      novelty_status: "unassessed"
+      contribution_class: "conditional exact reciprocal-tail rigidity"
+      statement: >-
+        The centered defect vanishes eventually and the denominator orbit
+        follows the exact Sylvester recurrence eventually.
+      boundary: >-
+        The result assumes its exact dynamics and analytic tail regime; it
+        does not exclude cofinally unbounded negative error or solve Erdős 243.
+      comparator_declaration: "Erdos249257.ExternalVerification243BoundedNegativePartRigidity.boundedNegativePart_completeRigidity"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "manual"
+      models: []
+      framework: "Mathematical interpretation and claim-boundary review"
+      tool_setup: "Human-directed scope and significance review"
+    - method: "agent"
+      models:
+        - "OpenAI Codex"
+      framework: "Lean 4 and Mathlib"
+      tool_setup: "AI-assisted formalization, verification packaging, and exposition"
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+        prompting_notes: "n/a"
+    - method: "other"
+      models: []
+      framework: "Comparator with NanoDa and Landrun"
+      tool_setup: >-
+        Positive acceptance and deliberate-negative mismatch rejection on a
+        supported runner; no terminal replay receipt is recorded here.
+    - method: "other"
+      models: []
+      framework: "Lean kernel"
+      tool_setup: "Focused source-local Lean checking with the pinned toolchain"
+  notes: >-
+    Human mathematical review remains separate from Lean checking, Comparator
+    preparation and any future Palomar editorial review.
+
+fidelity:
+  divergences: >-
+    The compared theorem combines the source-current zero-defect theorem and
+    its exact Sylvester consequence into their natural two-part reader
+    endpoint. It adds no claim beyond those checked declarations.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    The source theorem family, exact hypotheses, one-sided boundedness,
+    normalized-vanishing condition, and open-problem boundary were reviewed.
+    Focused Lean, axiom and Comparator replay remain distinct gates.
+
+alignment:
+  namespace: "Erdos249257.ExternalVerification243BoundedNegativePartRigidity"
+  statements:
+    - source: >-
+        ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero
+        and boundedNegativePart_sylvesterNext_eventually.
+      lean: "Erdos249257.ExternalVerification243BoundedNegativePartRigidity.boundedNegativePart_completeRigidity"
+      module: "ExternalVerification243BoundedNegativePartRigidity/Challenge.lean"
+      status: "exact-composite-transport-pending-check"
+      note: >-
+        The Challenge exposes the complete result family in literal
+        Mathlib-only vocabulary.
+
+acknowledgements: "Mathlib contributors; Thomas F. Bloom for the Erdős Problems catalogue."

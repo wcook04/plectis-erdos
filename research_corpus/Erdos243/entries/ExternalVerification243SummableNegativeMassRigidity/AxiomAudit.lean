@@ -1,0 +1,3 @@
+import ExternalVerification243SummableNegativeMassRigidity.Solution
+
+#print axioms Erdos249257.ExternalVerification243SummableNegativeMassRigidity.summableNegativeMass_completeRigidity
