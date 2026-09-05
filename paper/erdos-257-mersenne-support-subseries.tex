@@ -58,8 +58,8 @@ full-support theorem: for every integer \(b\ge2\),
 \(\sum_{n\ge1}(b^n-1)^{-1}\) is irrational.  The checked proof uses a
 weighted certificate argument.  The same development proves irrationality
 for every infinite pairwise-coprime support of convergent reciprocal mass and
-for every nonzero eventually periodic sequence of nonnegative rational
-weights.
+for every eventually periodic sequence of nonnegative rational weights
+whose periodic tail is not identically zero.
 
 For a finite nonempty support \(F\), the reduced denominator \(D_F\) of
 \(\sum_{n\in F}(b^n-1)^{-1}\) satisfies
@@ -94,8 +94,9 @@ infinite support.
 
 \begin{paperresult}{Strongest unconditional results}
 \textbf{Arithmetic.} The full-support series is irrational at every integer
-base $b\ge2$; so are all convergent pairwise-coprime supports and all nonzero
-eventually periodic nonnegative rational weight sequences.  Finite subsums
+base $b\ge2$; so are all infinite pairwise-coprime supports with
+$\sum_{a\in A}1/a<\infty$, and all eventually periodic nonnegative rational
+weight sequences with a nonzero periodic tail.  Finite subsums
 have exact denominator order.  \textbf{Geometry.} The achievement set is
 compact, perfect, nowhere dense, and has measure $1$, with an exact measure
 law after restricting exponents.  \textbf{Open boundary.} The target values
@@ -447,6 +448,44 @@ hypotheses, and no jointly contradictory combination has been proved.
 
 \section{Representative known irrational supports}\label{sec:map}
 
+\paragraph{Why periodic weights give divisibility.}
+The full-support and periodic-support results share one argument in the
+coefficients of~\eqref{eq:incidence}.  To see it, first take $m\ge1$ and a purely
+$m$-periodic weight $w\colon\Npos\to\N$ and put
+\[
+  c_w(n)=\sum_{d\mid n}w(d).
+\]
+Fix a prime $p\nmid m$ and write a positive integer as
+$n=p^k u$ with $p\nmid u$.
+Grouping divisors by their $p$-adic valuation gives
+\[
+  c_w(n)=\sum_{d\mid u}\sum_{j=0}^{k}w(dp^j).
+\]
+Euler's congruence $p^{\ph(m)}\equiv1\pmod m$ makes each inner
+sequence periodic with a period dividing $\ph(m)$.  Choosing
+$k=b\ph(m)-1$ therefore gives $b$ copies of a complete cycle:
+\[
+  \sum_{j=0}^{b\ph(m)-1}w(dp^j)
+     =b\sum_{j=0}^{\ph(m)-1}w(dp^j).
+\]
+Thus $b\mid c_w(n)$.  With $r$ distinct primes at these exact valuations,
+the divisor sum separates into $r$ such coordinates and gains a factor
+$b^r$.  This is the arithmetic step that lets the certificate argument
+reach periodic supports: periodicity of the weights forces divisibility of
+their divisor transform.  The full-support case is $w\equiv1$.
+
+Divisibility at one integer is not yet an irrationality proof.  The checked
+argument arranges blocks of these valuations by the Chinese remainder
+theorem and controls the remaining weighted tail to obtain the required
+certificates.  Its weighted form uses
+$w(d)=\sum_{i=0}^{W-1}\mathbf1_{\{w(d)>i\}}$ for a bound $W$ on $w$:
+each indicator layer is periodic, so the same divisor argument applies.
+The theorem cited in the table then clears a common denominator for rational
+weights and removes a finite prefix.  Removing that prefix changes the
+series by a rational number; the periodic tail must still contain a positive
+weight.  Without that hypothesis, a nonzero finitely supported sequence
+would give a rational counterexample.
+
 The following table is representative, not exhaustive.  It groups the
 displayed supports by five mechanisms rather than suggesting that its rows
 classify all known cases.
@@ -470,7 +509,7 @@ multiples of a fixed $d$ & every $b\ge2$ & dilation: the multiples series at
   (\mword{Erdos249257/CertificateKernel.lean}{9103}{irrational_erdosSupportSeries_multiples}{checked}) \\
 \addlinespace
 \multicolumn{3}{@{}l}{\emph{Periodicity of the coefficient sequence}}\\
-eventually periodic & every $b\ge2$ &
+infinite eventually periodic & every $b\ge2$ &
   \mword{Erdos249257/CertificateKernel.lean}{12811}{irrational_ratWeightSeries_eventuallyPeriodic}{checked here};
   Luca--Tachiya prove the nonnegative purely-periodic case
   \cite[Theorem~1, p.~139; proof pp.~149--150]{lucatachiya2017};
@@ -488,7 +527,7 @@ factorials $\{n!\}$ & every $b\ge2$ &
   \mword{Erdos249257/CertificateKernel.lean}{6035}{irrational_erdosSum_factorial_support}{checked here} \\
 powers of two $\{2^k\}$ & every $b\ge2$ &
   \mword{Erdos249257/CertificateKernel.lean}{6059}{irrational_erdosSum_two_pow_support}{checked here} \\
-pairwise coprime, $\sum_{a\in A}a^{-1}<\infty$ & every $b\ge2$ &
+infinite pairwise coprime, $\sum_{a\in A}a^{-1}<\infty$ & every $b\ge2$ &
   Erd\H{o}s~\cite{erdos1968}, theorem on p.~222;
   \mword{Erdos249257/CertificateKernel.lean}{10776}{irrational_erdosSupportSeries_pairwise_coprime}{formalised here} \\
 \addlinespace

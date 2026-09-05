@@ -75,6 +75,47 @@ For a paper or theorem explanation:
 7. End the result where the evidence ends. State the next open implication
    plainly instead of closing with promotional language.
 
+## Conceptual structure and corpus selection
+
+For a substantial paper revision, use the public frontier and comprehension
+routes before choosing the headline. Start with
+`python3 scripts/query_corpus.py --overview --format card`, then follow the
+selected problem through `scripts/query_route_memory.py --problem <number>`
+and its exact declaration and claim handles. Read the current manuscript only
+as a candidate arrangement of that evidence. A ranked route is a starting
+point for mathematical judgment, not a significance verdict; check for strong
+results that the current reading route omits.
+
+Group related declarations by the mathematical work they accomplish. Compare
+the actual conclusions, removed hypotheses, decisive obstructions, and useful
+consumers. An equivalence earns prominence when its new coordinates enable a
+proof, a sharper reduction, a discriminating computation, or a concrete
+obstruction. Proximity to the original question alone does not put a bare
+reformulation ahead of a substantive theorem. Keep an exact equivalence
+available even when it belongs in supporting material.
+
+Mathematical elegance is conceptual. Choose definitions that expose the
+mechanism, use an example that makes the next construction natural, and arrange
+the lemmas so the reader understands each choice before carrying it through.
+Explain what a transformation gains and where its gain stops. Spend the most
+space on the hard step; abbreviate routine consequences. A catalogue of cases
+should follow the shared argument when that argument explains the cases.
+Typographic polish and promotional language cannot supply this structure.
+
+Before shortening a theorem into a title, abstract, panel, or reading guide,
+check which hypotheses exclude elementary counterexamples. In particular,
+nonzero somewhere is not nonzero in an eventual tail, a finite prefix is not
+an infinite support, and summability must name the sequence being summed.
+Compare each compressed statement with the full declaration, including its
+quantifiers. Explain a necessary hypothesis with a small counterexample when
+that also reveals the mechanism.
+
+After a stable revision, use `skills/propagate-research-consequences/SKILL.md`:
+carry corrected meaning and useful reading order into their authored owners,
+then regenerate corpus text and navigation through the owning builders. Record
+reusable authoring lessons here without private paths, live counts, mandatory
+model choices, or dependencies on another checkout.
+
 ## Prose pass
 
 Use direct, understated English. Name the mathematician, contributor, program,
