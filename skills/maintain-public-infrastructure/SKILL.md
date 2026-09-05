@@ -8,7 +8,8 @@ description: Dogfood, organize, consolidate, and repair the public clone's agent
 Use this skill when a clean clone is confusing, a routed workflow is stale or
 duplicated, an advertised command only works in an authoring environment, or a
 new capability has not reached entry, validation, contribution, and downstream
-consumer surfaces. The product is a self-contained public journey, not more
+consumer surfaces. Repository cleanup, bootstrap friction, and architectural
+simplification belong here too. The product is a self-contained public journey, not more
 explanatory prose by default.
 
 ## Start from the observed journey
@@ -25,6 +26,11 @@ Record the expected first lane, the actual lane or failure, and the first file
 or command that became unusable. A file existing is not evidence that an agent
 can find or operate it. Preserve the exact task as a regression fixture when it
 reveals a reusable failure class.
+
+Replay ordinary contributor wording as well as owner terminology. A route that
+recognizes "architecture" but misses "clean up duplicated workflows" is not
+discoverable enough. Add focused registry cues and pair each repair with a
+nearby explanation or proof task that must keep its existing lane.
 
 ## Know the public owner graph
 
@@ -158,6 +164,20 @@ JSON loaders can decode UTF-8 bytes directly instead of translating newlines;
 verify exact output equivalence. Batch known immutable Git reads through the
 reader that owns the snapshot. Test binary framing, missing paths, moving refs,
 and live index/worktree changes when changing that boundary.
+
+When many fixtures consult one historical checkpoint, share its small derived
+summary within the reader's lifetime instead of rebuilding or retaining the
+whole atlas. Return a copy to each consumer. Reuse only successful immutable
+identities: missing objects can be fetched, symbolic refs can move, and a new
+reader must observe the repository again.
+
+Use profiler output to locate repeated work, then measure ordinary wall time:
+instrumentation can exaggerate a hot loop with hundreds of thousands of calls.
+For a text scanner, compare the old and new results over real inputs and
+adversarial grammar cases. A literal candidate search may avoid scanning large
+payloads with a regex, but must preserve the original match, escape, duplicate,
+and non-overlap rules. Faster extraction does not justify skipping validation
+or recovery checks.
 
 ## Validate the changed journey
 

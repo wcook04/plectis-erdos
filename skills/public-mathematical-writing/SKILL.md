@@ -116,6 +116,27 @@ then regenerate corpus text and navigation through the owning builders. Record
 reusable authoring lessons here without private paths, live counts, mandatory
 model choices, or dependencies on another checkout.
 
+## Read conditional results and failed routes mathematically
+
+For a conditional theorem, inspect the final consumer to separate assumptions
+used in the contradiction from assumptions intended to produce its input.
+Write the shortest transparent argument before reproducing certificate
+bookkeeping. A structure with a constructed example can still lack its crucial
+selector; never describe that selector as proved because a docstring says so.
+Check the declaration's actual parameters and proof. If a stronger consumer
+with fewer assumptions is useful, expose and validate it in Lean as well.
+Do not count that interface improvement as a new solution of the missing input.
+
+A failed-route survey must include the relevant problem source and route
+memory, not only one semantic query. An empty barrier result can mean limited
+index coverage. Group failures by the exact obstruction they prove: a lost
+hypothesis, a coordinate-dependent invariant, a quantitative incompatibility,
+or a failure to pass from finite witnesses to an infinite construction. State
+which proposed methods each obstruction excludes and which survive. A shared
+word or failure label is not a common mathematical theorem. Where one change
+of coordinates repairs a failure, show the before-and-after calculation;
+where it does not, preserve the counterexample and the remaining obligation.
+
 ## Prose pass
 
 Use direct, understated English. Name the mathematician, contributor, program,

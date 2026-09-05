@@ -15,7 +15,9 @@ from unittest.mock import patch
 from publication_contract import (
     CONTRACT_PATH,
     ENVIRONMENT_CONTRACT,
+    EVIDENCE_PATH,
     RepositoryReader,
+    evaluation_checkpoint_census,
     load_json,
     mutation_fixture_failures,
     validate_publication_contract,
@@ -177,6 +179,13 @@ def assert_snapshot_reuse_and_live_readers() -> None:
         snapshot.byte_overrides["a"] = b"mutation"
         require(snapshot.read_bytes("a") == b"mutation", "cache hid fixture override")
         require(not snapshot.exists("missing"), "batch invented a missing file")
+        with patch.object(live, "_git_run", wraps=live._git_run) as calls:
+            for _ in range(2):
+                require(live.git_object_exists(snapshot._snapshot_ref), "commit disappeared")
+                require(live.git_object_exists("HEAD"), "HEAD disappeared")
+                require(not live.git_object_exists("0" * 40), "missing commit invented")
+            require(calls.call_count == 5,
+                    "only positive immutable commit identities may be reused")
 
 
 def main() -> int:
@@ -193,6 +202,13 @@ def main() -> int:
     reader = RepositoryReader(ROOT, args.git_ref)
     assert_problem_note_route_template(reader)
     baseline_errors = validate_publication_contract(reader)
+    if not baseline_errors:
+        checkpoint = load_json(reader, EVIDENCE_PATH)["evaluation"]["checkpoint"]
+        census = evaluation_checkpoint_census(reader, checkpoint)
+        original_count = census["module_count"]
+        census["module_count"] = -1
+        require(evaluation_checkpoint_census(reader, checkpoint)["module_count"] == original_count,
+                "a consumer mutated the shared historical census")
     fixture_failures = mutation_fixture_failures(reader) if not baseline_errors else []
     if baseline_errors or fixture_failures:
         print(

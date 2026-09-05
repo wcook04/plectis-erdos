@@ -2463,7 +2463,7 @@
     {
       "problem": 68,
       "status": "open",
-      "frontier_summary": "Factorial-denominator irrationality is reduced to cofinally many strict-successor divisibility failures or non-unit carries; no cofinal producer is proved.",
+      "frontier_summary": "The checked square-subsequence channel theorem forces 3*t^3 < 2*(R+1) when t >= 2^32, a positive moment is divisible by channelLCM(2*t^2), and that moment is below (R+1)!-1. Thus this finite-channel strategy cannot have an eventual radius at or below the stated cubic threshold. A moving-private-factor criterion gives a separate conditional irrationality route; its quantitative tail and collision-core supplies remain unproved. The exact carry equivalences identify the cofinal obligation but do not produce its witnesses. See the short paper, res:channel-radius, for the obstruction and its proof mechanism.",
       "open_boundary": "Irrationality of the factorial-denominator series.",
       "comparator_declarations": [
         "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
@@ -2556,7 +2556,7 @@
     {
       "problem": 1041,
       "status": "open",
-      "frontier_summary": "Finite translation avoidance and quantified root retention are checked as isolated inputs to the incomplete Newton-flow route.",
+      "frontier_summary": "The short paper gives an all-degree critical-value-separation criterion and a sharp collinear-root bound by ordinary analytic arguments; these conclusions are not fully formalised. Lean checks the separation criterion’s degree monotonicity, exact sufficient thresholds, and squared-length consumer, as well as reciprocal critical balance, the disk inverse-square estimate, translation avoidance, and root retention. These inputs support concrete restricted regimes, not just a generic perturbation programme. Clustered critical values, multiple saddles, and the unrestricted admissible-hub and metric-gluing obligations remain open; the paper keeps its ordinary path assembly separate from the checked inputs.",
       "open_boundary": "The unrestricted polynomial lemniscate connection problem.",
       "comparator_declarations": [
         "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
@@ -2567,7 +2567,7 @@
     {
       "problem": 1049,
       "status": "open",
-      "frontier_summary": "The coordinatewise corridor is impossible at base 3/2 and the exact rational-base cleared-tail recurrence is checked.",
+      "frontier_summary": "The checked height obstruction at base 3/2 gives a uniform gap greater than 3/13 throughout the admissible rectangular Hermite-Padé exponent cone. Exact four-jet counting supplies collisions with threshold 130T+2S at depth 41T, sharp at T=1, but does not ensure that a collision survives outside the analytic remainder nullspace. The coordinatewise clearing corridor is also impossible at 3/2, and the rational-base cleared-tail recurrence is checked. These results rule out specified approximation mechanisms; primitive noncollapse and a remainder estimate strong enough for irrationality remain open.",
       "open_boundary": "Irrationality at base 3/2 and for rational bases generally.",
       "comparator_declarations": [
         "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
