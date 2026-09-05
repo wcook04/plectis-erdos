@@ -146,6 +146,11 @@ def test_receipt_destination_boundary() -> None:
 
         linked_receipt = root / "receipt.json"
         linked_receipt.symlink_to(sentinel)
+        with patch.object(sys, "argv", ["check_release_ref.py", "--receipt", str(linked_receipt)]), \
+             patch.object(check_release_ref, "validate_ref") as validation:
+            require(check_release_ref.main() == 2,
+                    "CLI accepted a symlinked receipt destination")
+            validation.assert_not_called()
         try:
             check_release_ref.write_receipt(linked_receipt, {"status": "blocked"})
         except check_release_ref.SnapshotError as error:

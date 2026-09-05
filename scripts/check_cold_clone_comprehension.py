@@ -1086,6 +1086,46 @@ FIRST_COMMAND_PROMISES = (
 FIRST_COMMAND_ARGV = ("--claim", "eb_full_support")
 
 
+def repository_clone_commands(repository: str | None = None) -> dict[str, str]:
+    """Derive README clone commands from the claim registry's repository identity."""
+    if repository is None:
+        claims = json.loads(read("docs/claims.json"))
+        repository = claims.get("release", {}).get("repository", "")
+    repository = repository.rstrip("/")
+    require(
+        bool(re.fullmatch(r"https://github\.com/[^/]+/[^/]+(?:\.git)?", repository)),
+        "claims release.repository is not a public GitHub repository identity",
+    )
+    repository_web = repository[:-4] if repository.endswith(".git") else repository
+    clone_url = f"{repository_web}.git"
+    checkout = repository_web.rsplit("/", 1)[-1]
+    return {
+        "lean_clone": (
+            "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
+            f"{clone_url}"
+        ),
+        "lean_sparse": (
+            f"git -C {checkout} cat-file -e HEAD:scripts/lean-sparse-checkout && "
+            f"git -C {checkout} show HEAD:scripts/lean-sparse-checkout | "
+            f"git -C {checkout} sparse-checkout set --no-cone --stdin"
+        ),
+        "lean_checkout": f"git -C {checkout} checkout",
+        "reader_sparse": (
+            f"git -C {checkout} cat-file -e HEAD:scripts/reader-sparse-checkout && "
+            f"git -C {checkout} show HEAD:scripts/reader-sparse-checkout | "
+            f"git -C {checkout} sparse-checkout set --no-cone --stdin"
+        ),
+        "full_clone": (
+            "git clone --depth=1 --filter=blob:none --single-branch "
+            f"{clone_url} plectis-current"
+        ),
+        "full_history_clone": (
+            "git clone --filter=blob:none --single-branch "
+            f"{clone_url} plectis-release"
+        ),
+    }
+
+
 def validate_first_command_keeps_its_promise(readme_prefix: str) -> None:
     """Run the advertised first command and require the promised output.
 
@@ -1124,30 +1164,14 @@ def validate_human_first_contact(
     check_architecture_guide.validate_guide(surfaces["ARCHITECTURE.md"])
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
-    lean_clone_command = (
-        "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
-        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
-    )
-    lean_sparse_command = (
-        "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-sparse-checkout && "
-        "git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | "
-        "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
-    )
-    lean_checkout_command = "git -C plectis-lean-erdos249-257 checkout"
+    clone_commands = repository_clone_commands()
+    lean_clone_command = clone_commands["lean_clone"]
+    lean_sparse_command = clone_commands["lean_sparse"]
+    lean_checkout_command = clone_commands["lean_checkout"]
     lean_build_command = "python3 scripts/lean_fast_build.py --jobs 2"
-    reader_sparse_command = (
-        "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/reader-sparse-checkout && "
-        "git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | "
-        "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
-    )
-    full_clone_command = (
-        "git clone --depth=1 --filter=blob:none --single-branch "
-        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
-    )
-    full_history_clone_command = (
-        "git clone --filter=blob:none --single-branch "
-        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
-    )
+    reader_sparse_command = clone_commands["reader_sparse"]
+    full_clone_command = clone_commands["full_clone"]
+    full_history_clone_command = clone_commands["full_history_clone"]
     require(
         lean_clone_command in readme_prefix
         and lean_sparse_command in readme_prefix
@@ -1193,28 +1217,19 @@ def validate_human_first_contact(
     require(all(position >= 0 for position in positions), f"README first-contact surface lost section sequence {section_order}")
     require(positions == sorted(positions), "README first-contact sections are out of order")
 
-    # The four sections above are the mathematician's reading order and they are
-    # correct as an order. What they cannot do is answer "is any of this real?"
-    # for someone who has not yet decided to read. Until 2026-08-16 the first
-    # command in this README appeared at byte 15,345 — after the eight problem
-    # papers, the external-verification account, the formal-results table, the
-    # open-wall section and the corpus census — so every route that returned a
-    # result was priced behind four screens of inventory.
-    #
-    # Positional, not keyword: `verify_claims.py` was already named under "Read
-    # or run it" when this was written, and being named there did not put it in
-    # front of anyone. The contract is that the cheapest runnable verb precedes
-    # the first section heading, i.e. it is inside the opening a reader always
-    # sees. Raising a byte budget to fund a new section must not quietly buy
-    # that back.
-    first_section = readme_prefix.find("\n## ")
+    # A mathematical result heading may lead the README. The useful invariant
+    # is that the bounded first-contact window still contains a labelled
+    # checkout route, every exact sparse/full command checked above, and the
+    # first advertised Python command whose behaviour is exercised below.
+    onboarding = readme_prefix.find("Choose a checkout.")
     first_command = readme_prefix.find("python3 scripts/")
+    require(onboarding >= 0, "README first-contact surface lost its checkout onboarding")
     require(first_command >= 0, "README first-contact surface no longer contains a runnable command")
-    require(first_section >= 0, "README first-contact surface lost its section headings")
-    require(first_command < first_section, f"README puts its first runnable command at byte {first_command}, below the "
-        f"first section heading at byte {first_section}; a reader deciding whether "
-        "this repository is worth their time meets an inventory before they meet "
-        "anything they can run")
+    require(
+        onboarding < readme_prefix.find(lean_clone_command) < first_command,
+        "README must label bounded checkout onboarding before its clone and first "
+        "Python commands",
+    )
     validate_first_command_keeps_its_promise(readme_prefix)
 
     require("[agent-navigation paper](cold-clone-to-proof-receipt.pdf)"
@@ -1919,7 +1934,13 @@ def validate_proof_plan_packets(proof_plans: dict[str, Any]) -> None:
     """
     blocked = proof_plans["blocked_integer_tail"]
     require(blocked["kind"] == "formal_proof_plan", "cold-clone comprehension invariant")
-    require(blocked["availability"] == "available", "cold-clone comprehension invariant")
+    require(
+        blocked["availability"] == "available",
+        "proof-plan dependency index is unavailable or stale: "
+        f"{blocked['availability']}. Run python3 scripts/build_lean_dependency_index.py "
+        "--check; follow its coordinated --check --full-check repair only after "
+        "the active Lean build finishes. Do not waive proof-plan availability.",
+    )
     require(blocked["terminal_candidate"]["name"] == "tail_diff_int_of_den_dvd", "cold-clone comprehension invariant")
     require(blocked["plan_status"] == (
         "blocked_by_unmatched_proposition_obligations"

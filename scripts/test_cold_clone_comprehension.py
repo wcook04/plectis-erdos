@@ -321,9 +321,39 @@ def check_public_surface_file_boundary() -> None:
             )
 
 
+def check_repository_clone_identity() -> None:
+    current = diagnostic.repository_clone_commands()
+    require(
+        current["lean_clone"].endswith(
+            "https://github.com/wcook04/plectis-erdos.git"
+        ),
+        "clone guidance disagrees with the current repository identity",
+    )
+    renamed = diagnostic.repository_clone_commands(
+        "https://github.com/example/repository-after-rename"
+    )
+    require(
+        renamed["lean_clone"].endswith(
+            "https://github.com/example/repository-after-rename.git"
+        ),
+        "clone guidance did not follow a renamed repository URL",
+    )
+    require(
+        "git -C repository-after-rename " in renamed["lean_sparse"],
+        "sparse-checkout guidance did not follow the renamed checkout directory",
+    )
+    require(
+        renamed["full_clone"].endswith(
+            "https://github.com/example/repository-after-rename.git plectis-current"
+        ),
+        "full-current clone guidance lost its explicit checkout destination",
+    )
+
+
 def main() -> int:
     check_checker_child_environment()
     check_public_surface_file_boundary()
+    check_repository_clone_identity()
     with patch.dict(os.environ, HOSTILE_ENVIRONMENT):
         route_memory_checks = check_route_memory_cold_clone()
     packets = diagnostic.collect_agent_packets()
@@ -367,14 +397,17 @@ def main() -> int:
     diagnostic.validate_human_first_contact(summary, human_surfaces)
     checks = 4
 
-    lean_clone_command = (
-        "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
-        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+    readme_prefix = diagnostic.first_bytes(
+        human_surfaces["README.md"], diagnostic.README_FIRST_CONTACT_BUDGET_BYTES
     )
-    full_clone_command = (
-        "git clone --depth=1 --filter=blob:none --single-branch "
-        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+    require(
+        0 <= readme_prefix.find("\n## ") < readme_prefix.find("Choose a checkout."),
+        "mathematical result headings must be allowed before bounded onboarding",
     )
+
+    clone_commands = diagnostic.repository_clone_commands()
+    lean_clone_command = clone_commands["lean_clone"]
+    full_clone_command = clone_commands["full_clone"]
     mutated_lean_clone_surfaces = human_surfaces.copy()
     mutated_lean_clone_surfaces["README.md"] = mutated_lean_clone_surfaces[
         "README.md"
@@ -398,6 +431,24 @@ def main() -> int:
         summary,
         mutated_full_clone_surfaces,
         "shallow blobless full-current clone option",
+    )
+    checks += 1
+
+    clone_position = human_surfaces["README.md"].find(lean_clone_command)
+    delay_bytes = diagnostic.README_FIRST_CONTACT_BUDGET_BYTES - clone_position + 1
+    mutated_late_onboarding = human_surfaces.copy()
+    mutated_late_onboarding["README.md"] = mutated_late_onboarding[
+        "README.md"
+    ].replace("Choose a checkout.", "x" * delay_bytes + "Choose a checkout.", 1)
+    require(
+        len(mutated_late_onboarding["README.md"].encode("utf-8"))
+        <= diagnostic.HUMAN_SURFACE_BUDGET_BYTES["README.md"],
+        "out-of-window onboarding fixture accidentally exceeded the whole-file budget",
+    )
+    assert_human_rejected(
+        summary,
+        mutated_late_onboarding,
+        "clone commands outside the bounded first-contact window",
     )
     checks += 1
 

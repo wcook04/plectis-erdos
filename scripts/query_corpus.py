@@ -29,6 +29,11 @@ from build_module_synopsis_index import (
     QUERY_CONTRACT as MODULE_SYNOPSIS_QUERY_CONTRACT,
     SCHEMA as MODULE_SYNOPSIS_SCHEMA,
 )
+from result_atoms import (
+    load_family_display_order,
+    load_result_atoms,
+    validate_result_atoms,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 DECLARATION_SEARCH_INDEX = ROOT / "docs" / "declaration_search_index.json.gz"
@@ -1854,6 +1859,252 @@ def reviewed_result_family_rows(
             if isinstance(family, dict) and isinstance(family.get("id"), str)
         ]
     return []
+
+
+RESULT_ATOM_TIER_PRECEDENCE = {
+    "flagship": 0,
+    "compact": 1,
+    "supporting_only": 2,
+}
+
+
+def public_result_atom_rows(
+    claims: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
+    """Load the complete public atom catalog and fail closed on drift."""
+    resolved_claims = claims if claims is not None else load("docs/claims.json")
+    rows = load_result_atoms()
+    validate_result_atoms(rows, resolved_claims)
+    return rows
+
+
+def reviewed_result_family_lookup(
+    claims: dict[str, Any],
+) -> dict[str, dict[str, Any]]:
+    """Index every public result family by its globally unique id."""
+    families: dict[str, dict[str, Any]] = {}
+    for problem_row in claims.get("external_verification_packet", {}).get(
+        "review_matrix", []
+    ):
+        problem_number = int(problem_row["problem"])
+        for family in problem_row.get("families", []):
+            family_id = str(family["id"])
+            if family_id in families:
+                raise ValueError(f"duplicate public result-family id: {family_id}")
+            families[family_id] = {
+                "problem_id": f"erdos_{problem_number}",
+                "erdos_number": problem_number,
+                **family,
+            }
+    if not families:
+        raise ValueError("public result-family registry is empty")
+    return families
+
+
+def result_family_display_lookup(
+    claims: dict[str, Any] | None = None,
+) -> dict[str, dict[str, Any]]:
+    """Load the authored qualitative order without inventing a scalar rank."""
+    rows = load_family_display_order()
+    lookup = {str(row["family_id"]): row for row in rows}
+    resolved_claims = claims if claims is not None else load("docs/claims.json")
+    family_ids = set(reviewed_result_family_lookup(resolved_claims))
+    if len(rows) != len(lookup):
+        raise ValueError("family display order contains duplicate families")
+    if set(lookup) != family_ids:
+        raise ValueError("family display order does not match the public family registry")
+    if [row.get("global_display_order") for row in rows] != list(
+        range(1, len(rows) + 1)
+    ):
+        raise ValueError("family display order is not contiguous")
+    return lookup
+
+
+def result_atom_sort_key(row: Mapping[str, Any]) -> tuple[int, int, str]:
+    """Order atoms strongest-first, then by stable source coordinate."""
+    tier = str(row.get("display_tier"))
+    if tier not in RESULT_ATOM_TIER_PRECEDENCE:
+        raise ValueError(f"unknown result-atom display tier: {tier}")
+    ordinal = row.get("source_ordinal")
+    if isinstance(ordinal, bool) or not isinstance(ordinal, int):
+        raise ValueError("result-atom source_ordinal must be an integer")
+    atom_id = row.get("atom_id")
+    if not isinstance(atom_id, str) or not atom_id:
+        raise ValueError("result-atom atom_id must be a nonempty string")
+    return RESULT_ATOM_TIER_PRECEDENCE[tier], ordinal, atom_id
+
+
+def result_family_interface_metadata(family_id: str) -> dict[str, Any]:
+    """Return family-level interface discovery without atom-level proof claims."""
+    membership = load("verification/comparator-replay-membership.json")
+    coverage = membership.get("result_family_coverage")
+    if not isinstance(coverage, Mapping):
+        raise ValueError("Comparator membership has no result-family coverage")
+    matches = [
+        row
+        for row in coverage.get("families", [])
+        if isinstance(row, Mapping) and row.get("family_id") == family_id
+    ]
+    if len(matches) != 1:
+        raise ValueError(f"Comparator membership has no unique family: {family_id}")
+    row = matches[0]
+    return {
+        "source": (
+            "verification/comparator-replay-membership.json::"
+            f"result_family_coverage.families[family_id={family_id}]"
+        ),
+        "registry_comparator_disposition": row.get(
+            "registry_comparator_disposition"
+        ),
+        "registered_comparator_classification": row.get(
+            "registered_comparator_classification"
+        ),
+        "execution_classification": row.get("execution_classification"),
+        "executable_package_count": row.get("executable_package_count"),
+        "executable_interface_count": row.get("executable_interface_count"),
+        "packages": row.get("packages", []),
+        "atom_level_proof": "not_asserted",
+        "authority_boundary": (
+            "Family package/interface discoverability is navigation metadata. "
+            "It does not establish that any or every member atom is expressed "
+            "by an interface, Comparator-executed, or Comparator-proved."
+        ),
+    }
+
+
+def registered_claim_coverage_summary() -> dict[str, Any]:
+    """Expose claim transport accounting separately from atom membership."""
+    membership = load("verification/comparator-replay-membership.json")
+    coverage = membership.get("registered_claim_coverage")
+    if not isinstance(coverage, Mapping):
+        return {"status": "not_present_in_this_projection"}
+    keys = (
+        "registry_authority",
+        "registry_digest",
+        "registered_claim_count",
+        "classified_claim_count",
+        "classification_counts",
+        "formal_claim_count",
+        "linked_transport_claim_count",
+        "missing_formal_transport_count",
+        "missing_formal_claim_ids",
+        "complete_formal_transport_coverage",
+        "boundary",
+    )
+    return {
+        **{key: coverage[key] for key in keys},
+        "source": (
+            "verification/comparator-replay-membership.json::"
+            "registered_claim_coverage"
+        ),
+        "query": "python3 scripts/query_corpus.py --route comparator_assurance",
+        "atom_linkage": "not_asserted",
+    }
+
+
+def result_atom_packet(atom_id: str) -> dict[str, Any]:
+    """Return one exact public result-atom coordinate and its family context."""
+    claims = load("docs/claims.json")
+    rows = public_result_atom_rows(claims)
+    matches = [row for row in rows if row["atom_id"] == atom_id]
+    if len(matches) != 1:
+        raise KeyError(f"unknown result atom: {atom_id}")
+    atom = matches[0]
+    family = reviewed_result_family_lookup(claims)[atom["family_id"]]
+    display = result_family_display_lookup(claims)[atom["family_id"]]
+    return {
+        "kind": "result_atom",
+        "atom": atom,
+        "family": family,
+        "family_display": display,
+        "family_interface_metadata": result_family_interface_metadata(
+            atom["family_id"]
+        ),
+        "registered_claim_coverage": registered_claim_coverage_summary(),
+        "family_atom_query": (
+            "python3 scripts/query_corpus.py --family-atoms "
+            f"{atom['family_id']}"
+        ),
+        "problem_route": (
+            "python3 scripts/query_corpus.py --route " f"{atom['problem_id']}"
+        ),
+        "authority_posture": (
+            "The catalog reproduces an exact packet result coordinate, source "
+            "statement digest, and bounded excerpt. Delegated interpretations are "
+            "attributed LLM best attempts open to specialist correction; Lean "
+            "source remains proof authority. Family Comparator metadata and "
+            "registered-claim transport accounting do not assert atom-level "
+            "Comparator coverage or execution."
+        ),
+        "validation": "python3 scripts/check_release.py",
+    }
+
+
+def family_result_atoms_packet(family_id: str, limit: int) -> dict[str, Any]:
+    """Return a strongest-first, bounded listing of one public family."""
+    claims = load("docs/claims.json")
+    family = reviewed_result_family_lookup(claims).get(family_id)
+    if family is None:
+        raise KeyError(f"unknown result family: {family_id}")
+    display = result_family_display_lookup(claims)[family_id]
+    rows = sorted(
+        (
+            row
+            for row in public_result_atom_rows(claims)
+            if row["family_id"] == family_id
+        ),
+        key=result_atom_sort_key,
+    )
+    emitted = rows[:limit]
+    state_counts = Counter(row["interpretation_state"] for row in rows)
+    tier_counts = Counter(row["display_tier"] for row in rows)
+    summaries = []
+    for row in emitted:
+        interpretation = row.get("interpretation") or {}
+        summaries.append(
+            {
+                "atom_id": row["atom_id"],
+                "result_id": row["result_id"],
+                "source_ordinal": row["source_ordinal"],
+                "statement_excerpt": row["statement_excerpt"],
+                "evidence_status": row["evidence_status"],
+                "display_tier": row["display_tier"],
+                "interpretation_state": row["interpretation_state"],
+                "one_sentence_result": interpretation.get("one_sentence_result"),
+                "query": (
+                    "python3 scripts/query_corpus.py --result-atom "
+                    f"{row['atom_id']}"
+                ),
+            }
+        )
+    return {
+        "kind": "result_family_atoms",
+        "family": family,
+        "family_display": display,
+        "family_interface_metadata": result_family_interface_metadata(family_id),
+        "registered_claim_coverage": registered_claim_coverage_summary(),
+        "atom_count": len(rows),
+        "ordering": "display_tier strongest-first, then source_ordinal, then atom_id",
+        "interpretation_state_counts": dict(sorted(state_counts.items())),
+        "display_tier_counts": dict(sorted(tier_counts.items())),
+        "atoms": summaries,
+        "omission_receipt": {
+            "emitted_atom_count": len(emitted),
+            "omitted_atom_count": max(0, len(rows) - len(emitted)),
+            "limit": limit,
+            "complete_catalog": "docs/result-atoms.jsonl",
+            "exact_atom_query": (
+                "python3 scripts/query_corpus.py --result-atom <atom_id>"
+            ),
+        },
+        "authority_posture": (
+            "Complete family membership with a bounded reader projection; "
+            "display tier and interpretation state do not confer proof, novelty, "
+            "priority, human review, or mathematical acceptance. Family interface "
+            "metadata does not assert atom-level Comparator coverage or execution."
+        ),
+        "validation": "python3 scripts/check_release.py",
+    }
 
 
 def claim_registry_context_for_claim(
@@ -10301,6 +10552,54 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| {packet.get('summary')} | problem={packet['problem_route']} "
             f"| paper={packet.get('paper_source_route') or 'none'}"
         )
+    if kind == "result_atom":
+        atom = packet["atom"]
+        interpretation = atom.get("interpretation") or {}
+        result = interpretation.get("one_sentence_result") or atom[
+            "statement_excerpt"
+        ]
+        family_display = packet.get("family_display", {}).get("display_band", {})
+        rows = [
+            (
+                f"result atom {atom['atom_id']} | family={atom['family_id']} "
+                f"| band={family_display.get('band', 'unclassified')} "
+                f"| tier={atom['display_tier']} | state={atom['interpretation_state']} "
+                f"| evidence={atom['evidence_status']} | {result}"
+            )
+        ]
+        if family_display.get("reader_hook"):
+            rows.append(f"family hook | {family_display['reader_hook']}")
+        if interpretation.get("why_it_matters"):
+            rows.append(f"why it matters | {interpretation['why_it_matters']}")
+        boundary = interpretation.get("exact_boundary") or packet.get(
+            "family", {}
+        ).get("boundary")
+        if boundary:
+            rows.append(f"boundary | {boundary}")
+        rows.append("Comparator boundary | atom-level proof and execution not asserted")
+        return "\n".join(rows)
+    if kind == "result_family_atoms":
+        family_display = packet.get("family_display", {}).get("display_band", {})
+        rows = [
+            (
+                f"family atoms {packet['family']['id']} "
+                f"| band={family_display.get('band', 'unclassified')} "
+                f"| total={packet['atom_count']} "
+                f"| emitted={packet['omission_receipt']['emitted_atom_count']} "
+                f"| omitted={packet['omission_receipt']['omitted_atom_count']}"
+            )
+        ]
+        if family_display.get("reader_hook"):
+            rows.append(f"reader hook | {family_display['reader_hook']}")
+        if packet.get("family", {}).get("boundary"):
+            rows.append(f"family boundary | {packet['family']['boundary']}")
+        rows.extend(
+            f"atom | {atom['atom_id']} | tier={atom['display_tier']} "
+            f"| state={atom['interpretation_state']} | {atom['statement_excerpt']}"
+            for atom in packet["atoms"]
+        )
+        rows.append("Comparator boundary | atom-level proof and execution not asserted")
+        return "\n".join(rows)
     if kind == "declaration":
         rows = []
         for row in packet["matches"]:
@@ -10810,6 +11109,8 @@ def query_args_packet(
     group.add_argument("--route", metavar="ID")
     group.add_argument("--status", metavar="CLAIM_STATUS")
     group.add_argument("--publication-family", metavar="ID")
+    group.add_argument("--result-atom", metavar="ATOM_ID")
+    group.add_argument("--family-atoms", metavar="FAMILY_ID")
     group.add_argument("--publication-architecture", action="store_true")
     group.add_argument("--overview", action="store_true")
     group.add_argument("--papers", action="store_true")
@@ -10907,6 +11208,10 @@ def query_args_packet(
         packet = claim_status_packet(args.status, args.limit)
     elif args.publication_family:
         packet = publication_family_packet(args.publication_family)
+    elif args.result_atom:
+        packet = result_atom_packet(args.result_atom)
+    elif args.family_atoms:
+        packet = family_result_atoms_packet(args.family_atoms, args.limit)
     elif args.publication_architecture:
         packet = publication_architecture_packet()
     elif args.overview:

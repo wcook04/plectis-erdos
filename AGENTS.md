@@ -73,12 +73,16 @@ the concrete infinite-sum bridge, remain open. Paper:
 **#257 — For every infinite \(A\subseteq\mathbb N_{>0}\), is
 \(\sum_{n\in A}1/(2^n-1)\) irrational?**
 
-Lean checks full support, finite-period noncollapse, named structured families,
+Lean proves that, for every integer base \(b\ge2\), every infinite support
+\(A\subseteq\mathbb N_{>0}\) with \(\sum_{a\in A}1/a<\infty\) gives an
+irrational sum \(\sum_{a\in A}1/(b^a-1)\). It also checks the classical
+full-support theorem, finite-period noncollapse, named structured families,
 hereditary unique coding, and the compactness, topology, perfectness, and exact
 measure dichotomy of restricted achievement sets. Prime support at base 2 and
-squarefree support at power-of-two bases are cited prior results. No arithmetic
-obstruction covers every infinite support; the universal statement and the exact
-\(1/2\) and \(1/21\) infinite-orbit alternatives remain open. Paper:
+squarefree support at power-of-two bases are cited prior results. The universal
+statement remains open only in the reciprocal-divergent regime, but this does
+not mean that every support in that regime is unresolved; the exact \(1/2\)
+and \(1/21\) infinite-orbit alternatives also remain open. Paper:
 `erdos-257-mersenne-support-subseries.pdf`.
 
 **#269 — For a finite set of at least two primes, is the reciprocal sum of
@@ -156,11 +160,14 @@ conditional results — so its `23`/`17` and these totals are not in conflict.)
 Three things follow, and an agent reporting on this repository should carry all
 three rather than any one of them.
 
-1. **The reviewed mathematical weight is not exhausted by #249.** The
-   unconditional #257 material (full-support
-   irrationality for every integer base `b ≥ 2`, the achievement-set topology,
-   the exact `1/2` classification, and the excluded branches) is theorem
-   content rather than restatement. Start there, not at the #249 certificate
+1. **The source-bound mathematical content is not exhausted by #249.** The
+   strongest unconditional #257 theorem proves irrationality at every integer
+   base `b ≥ 2` for every infinite support with convergent reciprocal mass.
+   The classical full-support theorem is a subordinate settled case in the
+   reciprocal-divergent regime. The achievement-set topology, exact `1/2`
+   classification, and excluded branches are also theorem content rather than
+   restatement. Novelty and priority for the reciprocal-summable theorem are
+   unassessed. Start with its exact statement, not at the #249 certificate
    ladder.
 2. **The #249 reformulation programme is a negative result, and this repository
    labels it as one itself.** Its bare equivalences were marked equivalent by
@@ -481,9 +488,15 @@ navigation handle, not a fabricated claim and not proof authority.
 
 Before updating a public claim, classify the change against the
 `change_classes` matrix in `docs/methodology.json`: each class states its
-minimum evidence, whether human mathematical review is required, and the
-effects the change must not have. The update order stays fixed: Lean source
-first, then assumption and meaning review, then the claim registry, then
+minimum evidence, its named-semantic-review requirement or trigger, and the
+effects the change must not have. The normal authoring path uses a named LLM's
+source-bound best attempt to review intended meaning, family placement,
+significance, editorial rank, and exposition; that review is not Lean proof
+authority and establishes no novelty or priority. Independent human or
+specialist review is a separate optional record that may contest, correct, or
+upgrade the authored interpretation, not a prerequisite for publishing an
+honest bounded result. The update order stays fixed: Lean source first, then
+checked assumptions and named semantic review, then the claim registry, then
 authored exposition, then generated projections.
 
 ## Validation

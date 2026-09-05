@@ -111,7 +111,7 @@
     "docs/claims.json": "sha256:dcbabe392a532c77cc24e6ef05cff79008343f824428b452f76406ad77766185",
     "docs/methodology.json": "sha256:c4f762538e14467af2adb2714e24099251325e819c395512c15767a1d551d1eb",
     "docs/problems.json": "sha256:aaeb238cc02e76f242b570d70cfec748cdd28214b19ae134428d20092d863fa0",
-    "docs/publication_contract.json": "sha256:077ca6e647745d0ccc0bf2cc9d9a045b99cd0fb753c6cb37bebecf73ca93a7ec",
+    "docs/publication_contract.json": "sha256:bf64dd79f2dbb745d42b3bb57e11a625355108f208ff53196d0837ce36ab436f",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
