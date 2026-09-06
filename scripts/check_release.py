@@ -1039,6 +1039,10 @@ HYGIENE_ALLOWLIST: dict[str, frozenset[str]] = {
     # A guard string in the clone-skill test, asserting the absence of exactly
     # this path shape.
     "scripts/test_clone_skills.py": frozenset({"src/ai_workflow"}),
+    # The history-audit self-test plants a synthetic AWS-key shape (the
+    # alphabet after the AKIA prefix) to prove the scanner flags it; it is a
+    # redaction fixture, never a credential.
+    "scripts/test_reachable_release_history.py": frozenset({"AKIAABCDEFGHIJKLMNOP"}),
 }
 
 # One pass over each file instead of one pass per rule: the tracked set holds
@@ -2306,6 +2310,18 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_export_conservation.py"),
             ],
+            # Two identities resolve against the same repository: the pinned
+            # formal source, where declaration permalinks must land, and the
+            # publication, which the release corrected after that checkpoint
+            # was pinned. A PDF, claim register or README link at the
+            # formal-source commit or tag still resolves and serves the
+            # pre-correction copy, so the binding is checked rather than
+            # assumed. This test also owns the reciprocal paper links, which
+            # no lane ran before.
+            "paper_crosslinks": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_paper_crosslinks.py"),
+            ],
             # The route-closure surface scan stays a report. Its fixtures are
             # the gate: a route written off with no label, no evidence, or a
             # label outside the vocabulary is rejected.
@@ -2639,6 +2655,12 @@ def main(argv: list[str] | None = None) -> int:
         negative_knowledge_check.returncode == 0,
         "negative-knowledge labelling failed: "
         f"{negative_knowledge_check.stdout.strip() or negative_knowledge_check.stderr.strip()}",
+    )
+    paper_crosslink_check = mid_checks["paper_crosslinks"]
+    check(
+        paper_crosslink_check.returncode == 0,
+        "paper crosslinks or the publication/formal-source link binding failed: "
+        f"{paper_crosslink_check.stdout.strip() or paper_crosslink_check.stderr.strip()}",
     )
     check_public_checkout_hygiene()
 

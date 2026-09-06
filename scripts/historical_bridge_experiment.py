@@ -1,13 +1,26 @@
 #!/usr/bin/env python3
-"""Run one historical bridge evaluation and state exactly what it can answer.
+"""Run one historical bridge fixture and state exactly what it can answer.
 
-Two questions must be kept apart, because a checkout of a past revision
-answers only the first.
+Three questions must be kept apart.  This module answers the first and answers
+neither of the other two.
+
+Q0, obligation extraction and candidate admissibility.  Given a stated target
+and a named candidate declaration, does the runtime at the parent revision
+expose the exact remaining obligation, and does the pinned kernel accept an
+authored candidate that carries neither the later declaration name nor the
+later module name?  Both halves are mechanical properties of the runtime and
+of one authored artifact, and both are measured inside a constructed
+environment whose dependencies come from the current tree.  Q0 is the whole of
+what this module establishes.
 
 Q1, interpretation.  Do the semantic layers present at a revision let a reader
-find the relevant mathematics and interpret it correctly?  The obstruction
-packet compiled inside the parent checkout is evidence about Q1: it shows
-which exact obligation the layers at that revision expose for a stated target.
+find the relevant mathematics and interpret it correctly?  This module does
+not answer Q1 and must not be reported as if it did.  It supplies its own
+authored candidate, it names the candidate declaration inside the compiler
+request, it runs only the derived-layer arm, and it puts no reader and no
+agent in the loop, so interpretation is never observed.  The Q1 association
+recorded here is a research-question link to the study this harness would be
+built from, and it is not a result.
 
 Q2, acceleration.  Do the derived layers as they stood in the past shorten the
 work of producing a later result?  This module does not answer Q2 and must not
@@ -15,6 +28,18 @@ be reported as if it did.  A past checkout does not isolate acceleration,
 because several channels can carry the later answer into the run.  The channel
 table below names each channel and says whether this module controls it.  The
 uncontrolled channels are limitations of every number this module prints.
+
+Environment.  The disposable clone holds parent source and current
+dependencies, because ``.lake/packages`` is symlinked from the current tree.
+The receipt must record the pins the parent revision declares and the pins the
+build actually uses, so that the hybrid is named rather than assumed.  See
+``DEPENDENCY_PIN_RECEIPT_CONTRACT``.
+
+Receipt path.  This module prints one packet to standard output and writes no
+file.  The runner captures the output to a staging path and promotes it to
+``docs/measurements/historical_bridge_experiment.json`` only after the output
+validates.  A partial file must never occupy the authoritative path.  See
+``RECEIPT_STATUS_CONTRACT``.
 
 Controlled here:
   parent_identity        the parent commit is recomputed from the introduction
@@ -65,9 +90,11 @@ Not controlled here, and therefore reported as limitations:
 
 Reading of the verdict.  A pass says that the runtime recovers an exact
 pre-introduction obligation for a supplied target and that an authored,
-name-free candidate is accepted by the kernel in the parent environment.  It
-does not say that the system invented the lemma, that the derived layers
-caused anything, or that a later result was produced faster.
+name-free candidate is accepted by the kernel in the hybrid parent
+environment.  That is a Q0 statement on a development fixture.  It does not
+say that the system invented the lemma, that a reader interprets the
+mathematics better, that the derived layers caused anything, or that a later
+result was produced faster.
 """
 
 from __future__ import annotations
@@ -100,6 +127,13 @@ HISTORICAL_BUILD_TARGET = "Erdos249257.HalfDivisorUnitDrop"
 # with the module docstring and with docs/methodology.json.
 
 QUESTIONS = {
+    "Q0_obligation_extraction_and_candidate_admissibility": (
+        "Given a stated target and a named candidate declaration, does the "
+        "runtime at the parent revision expose the exact remaining "
+        "obligation, and does the pinned kernel accept an authored candidate "
+        "that carries neither the later declaration name nor the later module "
+        "name, inside the constructed hybrid-dependency environment?"
+    ),
     "Q1_interpretation": (
         "Do the semantic layers present at a revision let a reader find the "
         "relevant mathematics and interpret it correctly?"
@@ -109,8 +143,21 @@ QUESTIONS = {
         "producing a later result?"
     ),
 }
-QUESTION_ANSWERED_BY_THIS_MODULE = "Q1_interpretation"
-QUESTION_NOT_ANSWERED_BY_THIS_MODULE = "Q2_acceleration"
+QUESTION_ANSWERED_BY_THIS_MODULE = (
+    "Q0_obligation_extraction_and_candidate_admissibility"
+)
+QUESTIONS_NOT_ANSWERED_BY_THIS_MODULE = (
+    "Q1_interpretation",
+    "Q2_acceleration",
+)
+# Why the Q1 association is a research-question link and not a result.
+Q1_ASSOCIATION_ONLY_BECAUSE = (
+    "the candidate proof is authored inside this module",
+    "the compiler request names the target statement and the exact candidate "
+    "declaration",
+    "only the derived-layer arm is run",
+    "no reader and no agent is in the loop, so interpretation is not observed",
+)
 
 CONTROLLED_LEAKAGE_CHANNELS = {
     "parent_identity": "parent commit recomputed and compared with the pin",
@@ -193,6 +240,89 @@ HELD_OUT_VARIANT_CLASSES = (
     "same_file_export_loss",
     "stale_rendered_artifact",
     "apparently_closed_route_whose_obstruction_is_unproved",
+)
+
+# Environment record.  The clone carries parent source and current
+# dependencies, so the receipt must name both pin sets.  The runner fills
+# these fields; this module does not read the parent manifest.
+DEPENDENCY_PIN_RECEIPT_CONTRACT = {
+    "environment": "hybrid_parent_source_with_current_dependencies",
+    "cause": (
+        ".lake/packages is symlinked from the current tree into the "
+        "disposable parent clone"
+    ),
+    "required_fields": {
+        "declared_dependency_pins": (
+            "the pins the parent revision declares, read at run time from "
+            "git show <parent_commit>:lake-manifest.json and "
+            "git show <parent_commit>:lean-toolchain"
+        ),
+        "effective_dependency_pins": (
+            "the pins the build actually uses, read from the current tree's "
+            "lake-manifest.json and lean-toolchain"
+        ),
+        "dependency_pin_environment": "historical, current, or hybrid",
+        "dependency_pin_divergence": (
+            "package names whose revision differs between the two sets, with "
+            "the toolchain comparison; an empty list is a recorded finding"
+        ),
+    },
+    "consequence": (
+        "a verdict from this harness describes the hybrid environment and "
+        "not what the parent revision would have built on its own pins"
+    ),
+}
+
+# Receipt path and status.  This module prints; the runner promotes.
+RECEIPT_STATUS_CONTRACT = {
+    "authoritative_path": "docs/measurements/historical_bridge_experiment.json",
+    "staging_path": (
+        "docs/measurements/historical_bridge_experiment.partial.json"
+    ),
+    "promotion_conditions": (
+        "staging file nonempty",
+        "staging file parses as JSON",
+        "schema_version equals " + SCHEMA,
+        "experiment_design present with question_answered",
+        "historical_build_receipt carries the four dependency pin fields",
+        "run_exit_status recorded",
+        "status set to complete",
+    ),
+    "status_values": {
+        "complete": "the run finished and every promotion condition held",
+        "aborted": (
+            "a control check raised; the reason is recorded in abort_reason"
+        ),
+        "partial": "the run stopped without an abort reason",
+    },
+    "reader_rule": (
+        "a receipt whose status is not complete carries no verdict and "
+        "supports no sentence in any paper, README or claim record"
+    ),
+}
+
+CLAIM_CEILING = (
+    "The evaluator recovers an exact pre-introduction obligation for a "
+    "supplied target and kernel-checks an authored, name-free bridge "
+    "candidate in the hybrid parent environment. That is Q0 evidence on a "
+    "development fixture: obligation extraction and candidate admissibility. "
+    "It does not answer Q1, because no reader and no agent is in the loop, "
+    "the candidate is authored here, and the candidate declaration is named "
+    "in the request. It does not answer Q2, because only one arm is run. It "
+    "does not claim autonomous synthesis, and it does not control the "
+    "channels listed under uncontrolled_leakage_channels."
+)
+
+PROMOTION_REENTRY = (
+    "to answer Q1, run the fresh-context use experiment: two arms with the "
+    "same task, target, access permissions and budget, participants holding "
+    "no wave report, audit or integration trace, and returns scored against "
+    "the six measured outcomes. To answer Q2 in addition, close the shared "
+    "object store and the dependency pin, screen the derived layers for "
+    "paraphrases of the target rather than only for its declaration name, "
+    "stop supplying the candidate declaration in the request, and run the "
+    "held-out variant classes on a corpus whose bridge was never inspected "
+    "while writing this harness"
 )
 
 
@@ -544,7 +674,14 @@ def run_experiment() -> dict[str, Any]:
         "experiment_design": {
             "questions": QUESTIONS,
             "question_answered": QUESTION_ANSWERED_BY_THIS_MODULE,
-            "question_not_answered": QUESTION_NOT_ANSWERED_BY_THIS_MODULE,
+            "questions_not_answered": list(
+                QUESTIONS_NOT_ANSWERED_BY_THIS_MODULE
+            ),
+            "q1_association_only_because": list(Q1_ASSOCIATION_ONLY_BECAUSE),
+            "dependency_pin_receipt_contract": (
+                DEPENDENCY_PIN_RECEIPT_CONTRACT
+            ),
+            "receipt_status_contract": RECEIPT_STATUS_CONTRACT,
             "controlled_leakage_channels": CONTROLLED_LEAKAGE_CHANNELS,
             "uncontrolled_leakage_channels": UNCONTROLLED_LEAKAGE_CHANNELS,
             "control_arm": CONTROL_ARM,
@@ -575,23 +712,8 @@ def run_experiment() -> dict[str, Any]:
             ),
         },
         "verdict": verdict,
-        "claim_ceiling": (
-            "The evaluator recovers an exact pre-introduction obligation for a "
-            "supplied target and kernel-checks an authored, name-free bridge "
-            "candidate in the parent environment. This is Q1 evidence on a "
-            "development fixture. It does not claim autonomous synthesis, it "
-            "does not measure acceleration, and it does not control the "
-            "channels listed under uncontrolled_leakage_channels."
-        ),
-        "promotion_reentry": (
-            "to answer Q2, add the ordinary source-and-documentation control "
-            "arm with target, access permissions and work budget held fixed, "
-            "close the shared object store and dependency pin, screen the "
-            "derived layers for paraphrases of the target rather than only for "
-            "its declaration name, stop supplying the candidate declaration in "
-            "the request, and run the held-out variant classes on a corpus "
-            "whose bridge was never inspected while writing this harness"
-        ),
+        "claim_ceiling": CLAIM_CEILING,
+        "promotion_reentry": PROMOTION_REENTRY,
     }
 
 

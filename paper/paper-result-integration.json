@@ -1552,7 +1552,7 @@
   "inputs": {
     "claims": {
       "path": "docs/claims.json",
-      "digest": "sha256:74aac0a451bd75b97884a97bf22de0b561561bd08f095cb9af6fb62b9f7b9661"
+      "digest": "sha256:3ce437bc3b90a553334eb1f8d7ac23900cfb00de613ac02a42dd71ec97390126"
     },
     "declaration_atlas": {
       "path": "docs/declaration_atlas.json",

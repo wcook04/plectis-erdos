@@ -14719,7 +14719,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 2043
+        "line": 2069
       }
     },
     {
@@ -14791,7 +14791,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "exact nonintegrality of every reduced tail",
-        "line": 1766
+        "line": 1794
       }
     },
     {
@@ -14803,7 +14803,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "actual cofinal local-window escape",
-        "line": 1801
+        "line": 1829
       }
     },
     {
@@ -14815,7 +14815,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "function-faithful two-dimensional representation",
-        "line": 1894
+        "line": 1922
       }
     },
     {
@@ -14827,7 +14827,7 @@
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "global overlap-height growth",
-        "line": 2008
+        "line": 2032
       }
     },
     {
@@ -14851,7 +14851,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "weakest native recurrence criterion",
-        "line": 2102
+        "line": 2128
       }
     },
     {
@@ -14863,7 +14863,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "actual-orbit invariant",
-        "line": 2124
+        "line": 2150
       }
     },
     {
@@ -14875,7 +14875,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 2146
+        "line": 2172
       }
     },
     {
@@ -14887,7 +14887,7 @@
         "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
         "environment": "problem",
         "title": "weighted collision-product control",
-        "line": 1562
+        "line": 1583
       }
     },
     {
@@ -14899,7 +14899,7 @@
         "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
         "environment": "problem",
         "title": "cofinal lower-endpoint escape",
-        "line": 1646
+        "line": 1667
       }
     },
     {

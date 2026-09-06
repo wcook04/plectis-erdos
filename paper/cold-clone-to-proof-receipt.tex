@@ -558,9 +558,17 @@ surrounding interpretation. Context-blind historical experiments also cannot
 establish training-data blindness.
 
 A checkout of an earlier revision answers a narrower question than it appears
-to answer. It can show whether the layers present at that revision helped a
-reader find and interpret the mathematics already there. It does not by itself
-show that those layers shortened the work of producing a later result, because
+to answer. The run implemented here supplies its own authored candidate, names
+the candidate declaration inside its request, exercises only the derived-layer
+arm, and observes no reader and no agent. It establishes that the runtime at
+the earlier revision exposes the exact remaining obligation for a stated target
+and that the kernel accepts an authored candidate carrying neither the later
+declaration name nor the later module name. Its clone carries the earlier
+source with the dependencies of the current tree, so its receipt records the
+pins that revision declared alongside the pins the build used. It does not show
+that the layers present at that revision helped a reader find and interpret the
+mathematics already there, and it does not show that those layers shortened the
+work of producing a later result, because
 later Git objects, a shared object store, generated dossiers and receipts,
 network access, context supplied in the prompt, and a model's familiarity with
 public mathematics can each reveal the target.

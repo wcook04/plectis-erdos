@@ -324,6 +324,27 @@ located.
 \emph{Remaining obligation.} Both exclusions are finite.  Ruling out an
 eventual all-unit carry tail is what would convert them into a proof.
 
+\paragraph{Finite exclusions and the unbounded obstruction.}
+Entries~1 and~5 have different reach, and the two statements are set beside
+each other here.  The continued-fraction certificate establishes one inequality
+about a hypothetical denominator, $q\ge2^{39990}$ and hence $q>10^{12038}$, for
+a value assumed rational.  It is finite in a strict sense: every extension of
+it raises the excluded range and returns a statement of the same form, so
+continuation of that computation leaves irrationality undecided.  The exclusion
+$q\nmid299999!$ is finite in the same sense, and it constrains the prime
+support of a hypothetical denominator rather than its size.
+Theorem~\ref{res:channel-radius} quantifies over an unbounded family instead.
+It holds for all $t\ge2^{32}$ and all $M,R$ satisfying its hypotheses, and its
+sequence form says that no radius function satisfies $2(R(t)+1)\le3t^3$
+eventually, so what it excludes is an asymptotic regime and not a set of
+denominators.  Its own limits are equally definite.  The hypotheses
+$\Lc_{2t^2}\mid M$ and $M<(R+1)!-1$ are carried, not derived from the
+factorial-gap series, and vanishing of the channels through $2t^2$ for the
+resulting family is unproved.  Converting the finite exclusions into an
+irrationality proof requires ruling out an eventual all-unit carry tail.
+Converting the channel obstruction into one requires the unbounded strict
+nonvanishing statement, which Section~\ref{sec:problem} records as open.
+
 \paragraph{6. Prime-pole cancellation law.}
 \label{res:lead-prime-pole}\phantomsection
 For a finite prefix, the complete maximal power $p^e$ of a prime survives

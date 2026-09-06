@@ -403,10 +403,28 @@ class LeanFastBuildTests(unittest.TestCase):
         external = workflow.split("id: external-inputs", 1)[1]
         external = external.split("- name: Initialize failure-safe", 1)[0]
 
+        import fnmatch
+        import re
+
+        def watched(segment: str, root: str) -> bool:
+            # The gates list git pathspecs, some of them globs such as
+            # ``'ExternalVerification*/**'``; a library is watched when its
+            # root is named literally or when a pathspec glob covers a file
+            # under it.
+            if root in segment:
+                return True
+            probe = f"{root}/Probe.lean"
+            for pattern in re.findall(r"'([^']+)'", segment):
+                if fnmatch.fnmatchcase(probe, pattern) or fnmatch.fnmatchcase(
+                    probe, pattern.replace("/**", "/*")
+                ):
+                    return True
+            return False
+
         for root in roots:
             with self.subTest(root=root):
                 self.assertTrue(
-                    root in core or root in external,
+                    watched(core, root) or watched(external, root),
                     f"lake library root {root!r} is in no CI gate, so changes "
                     f"to it never trigger a Lean build",
                 )

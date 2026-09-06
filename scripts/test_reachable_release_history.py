@@ -6,9 +6,15 @@
 from __future__ import annotations
 
 import argparse
+import io
 import json
+import os
 import re
+import shutil
+import subprocess
 import sys
+import tempfile
+import zipfile
 from pathlib import Path
 
 import audit_reachable_release_history as audit
@@ -435,6 +441,361 @@ def license_selection_errors(report: dict[str, object]) -> list[str]:
     ]
 
 
+# Bait for the absolute-private-path detector, assembled from parts so no
+# absolute operator path is ever spelled literally in a release-candidate file.
+# The scanner itself uses the same idiom for its own markers.
+_FIXTURE_ABSOLUTE_PATH = b"/" + b"Users" + b"/fixture-operator/private"
+
+SECRET_SHAPED_PAYLOAD = (
+    b"# working notes\n"
+    b"AWS_ACCESS_KEY_ID = AKIAABCDEFGHIJKLMNOP\n"
+    b"API_KEY = 0123456789abcdef0123456789abcdef\n"
+    b"contact: someone@example.org\n"
+    b"log written to " + _FIXTURE_ABSOLUTE_PATH + b"/session.log\n"
+)
+
+
+def _fixture_git(repo: Path, *args: str, stdin: bytes | None = None) -> str:
+    environment = dict(os.environ)
+    environment.update(
+        {
+            "GIT_AUTHOR_NAME": "Fixture",
+            "GIT_AUTHOR_EMAIL": "fixture@example.invalid",
+            "GIT_COMMITTER_NAME": "Fixture",
+            "GIT_COMMITTER_EMAIL": "fixture@example.invalid",
+            "GIT_CONFIG_NOSYSTEM": "1",
+            "GIT_CONFIG_GLOBAL": os.devnull,
+        }
+    )
+    completed = subprocess.run(
+        ["git", "-C", str(repo), *args],
+        input=stdin,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=True,
+        env=environment,
+    )
+    return completed.stdout.decode("utf-8", "surrogateescape").strip()
+
+
+def _unsafe_zip_bytes() -> bytes:
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        archive.writestr("../escape.txt", "escaped")
+        archive.writestr("ordinary.txt", "fine")
+    return buffer.getvalue()
+
+
+def build_fixture_repository(repo: Path) -> dict[str, str]:
+    """Create a scratch repository carrying every payload-selection class.
+
+    Scratch only.  Nothing here touches the release candidate, the private
+    workspace, or any other checkout.
+    """
+    repo.mkdir(parents=True, exist_ok=True)
+    _fixture_git(repo, "init", "-q", "-b", "main")
+    identifiers: dict[str, str] = {}
+
+    # A large generated projection whose payload is above the textual scan cap
+    # and still carries an absolute private path.  Size alone must not exclude
+    # it, or the audit would lose a release blocker.
+    generated = repo / "docs" / "generated_projection.json"
+    generated.parent.mkdir(parents=True, exist_ok=True)
+    filler = b'{"rows": [' + b'{"note": "generated"},' * 400000
+    generated.write_bytes(
+        filler + b'{"path": "' + _FIXTURE_ABSOLUTE_PATH + b'/generated.json"}]}\n'
+    )
+
+    # The same secret payload at an ordinary path and at a prohibited path.
+    # The prohibited copy carries a trailing marker so it is a distinct Git
+    # object.  ``rev-list --objects`` names an object at one path only, so a
+    # byte-identical copy would be invisible at its second path; that is a
+    # property of the object/path map this scanner consumes, and it is recorded
+    # as a known limitation rather than papered over by a fixture that assumes
+    # both occurrences are seen.
+    (repo / "docs" / "notes.md").write_bytes(SECRET_SHAPED_PAYLOAD)
+    prohibited = repo / "private" / "notes.md"
+    prohibited.parent.mkdir(parents=True, exist_ok=True)
+    prohibited.write_bytes(SECRET_SHAPED_PAYLOAD + b"# prohibited copy\n")
+    # A byte-identical duplicate pair, so the equivalence comparison covers an
+    # object the path map names once but that exists at two paths.
+    (repo / "docs" / "duplicate_a.txt").write_bytes(b"duplicate fixture body\n")
+    (repo / "docs" / "duplicate_b.txt").write_bytes(b"duplicate fixture body\n")
+
+    archive_path = repo / "docs" / "bundle.zip"
+    archive_path.write_bytes(_unsafe_zip_bytes())
+
+    (repo / "README.md").write_bytes(b"fixture\n")
+    _fixture_git(repo, "add", "-A")
+    _fixture_git(repo, "commit", "-q", "-m", "fixture history")
+    identifiers["head"] = _fixture_git(repo, "rev-parse", "HEAD")
+
+    # A blob reachable only through a tag that points straight at it, so the
+    # audit sees a payload with no tree path at all.
+    pathless = _fixture_git(
+        repo,
+        "hash-object",
+        "-w",
+        "--stdin",
+        stdin=SECRET_SHAPED_PAYLOAD + b"# reachable only through a tag\n",
+    )
+    _fixture_git(repo, "tag", "pathless-blob", pathless)
+    identifiers["pathless_blob"] = pathless
+    identifiers["secret_blob"] = _fixture_git(repo, "rev-parse", "HEAD:docs/notes.md")
+    identifiers["prohibited_blob"] = _fixture_git(
+        repo, "rev-parse", "HEAD:private/notes.md"
+    )
+    identifiers["duplicate_blob"] = _fixture_git(
+        repo, "rev-parse", "HEAD:docs/duplicate_a.txt"
+    )
+    identifiers["generated_blob"] = _fixture_git(
+        repo, "rev-parse", "HEAD:docs/generated_projection.json"
+    )
+    identifiers["archive_blob"] = _fixture_git(repo, "rev-parse", "HEAD:docs/bundle.zip")
+    return identifiers
+
+
+def _decision_view(report: dict[str, object]) -> dict[str, object]:
+    """Everything the release decision rests on, without run-local telemetry."""
+    view = json.loads(json.dumps(report))
+    view.pop("generated_at", None)
+    view.pop("scan", None)
+    return view
+
+
+def _finding_paths(report: dict[str, object], object_id: str) -> list[list[str]]:
+    rows = []
+    for section in ("security_findings", "privacy_findings", "archive_findings"):
+        for finding in report.get(section, []):
+            if finding.get("object_id") == object_id:
+                rows.append(sorted(finding.get("paths", [])))
+    return sorted(rows)
+
+
+def payload_selection_fixture_errors(repo: Path, identifiers: dict[str, str]) -> list[str]:
+    """Prove the selective request path reaches the legacy decision exactly."""
+    errors: list[str] = []
+    full = audit.build_audit(repo, payload_selection="full")
+    selective = audit.build_audit(repo, payload_selection="selective")
+    if _decision_view(full) != _decision_view(selective):
+        errors.append("selective payload selection changed the release decision evidence")
+    selection = selective["scan"]["payload_selection"]
+    if selection["payload_requested_bytes"] > selection["content_object_bytes"]:
+        errors.append("selective payload selection requested more than the full stream")
+    if selection.get("size_alone_never_excludes_a_payload") is not True:
+        errors.append("payload selection evidence does not record the size-cap boundary")
+
+    generated = identifiers["generated_blob"]
+    if not any(
+        finding.get("object_id") == generated
+        and finding.get("kind") == "absolute_private_filesystem_path"
+        for finding in selective.get("privacy_findings", [])
+    ):
+        errors.append(
+            "a payload above the textual scan cap lost its absolute-private-path finding"
+        )
+    for label, object_id in (
+        ("ordinary", identifiers["secret_blob"]),
+        ("prohibited", identifiers["prohibited_blob"]),
+    ):
+        if not any(
+            finding.get("object_id") == object_id
+            and finding.get("kind") == "aws_access_key_marker"
+            for finding in selective.get("security_findings", [])
+        ):
+            errors.append(f"the secret-shaped payload at the {label} path was not judged")
+    if not any(
+        finding.get("kind") == "private_or_working_path"
+        and finding.get("path") == "private/notes.md"
+        for finding in selective.get("privacy_findings", [])
+    ):
+        errors.append("the prohibited path occurrence was not judged")
+    if _finding_paths(full, identifiers["duplicate_blob"]) != _finding_paths(
+        selective, identifiers["duplicate_blob"]
+    ):
+        errors.append("a duplicated blob was judged differently by the two request paths")
+    if not any(
+        finding.get("object_id") == identifiers["archive_blob"]
+        and finding.get("kind") == "unsafe_archive"
+        for finding in selective.get("archive_findings", [])
+    ):
+        errors.append("the unsafe archive at a .zip path was not judged")
+    pathless = identifiers["pathless_blob"]
+    if not any(
+        finding.get("object_id") == pathless
+        for finding in selective.get("security_findings", [])
+    ):
+        errors.append("the pathless tag-referenced blob was not scanned")
+    if selective["scan"]["payload_selection"]["payload_required_object_count"] < 1:
+        errors.append("payload selection required no objects")
+    return errors
+
+
+def progress_fixture_errors(repo: Path, state_dir: Path) -> list[str]:
+    """Progress must name phase, objects, bytes, last object, and elapsed time."""
+    errors: list[str] = []
+    sidecar = state_dir / "fixture.progress.json"
+    stream = io.StringIO()
+    progress = audit.ProgressReporter(sidecar, stream=stream, interval_seconds=0.0)
+    audit.build_audit(repo, progress=progress)
+    progress.phase("done")
+    if not sidecar.is_file():
+        return ["progress sidecar was not written"]
+    state = json.loads(sidecar.read_text(encoding="utf-8"))
+    for field in (
+        "phase",
+        "objects_requested",
+        "objects_completed",
+        "bytes_streamed",
+        "last_object_id",
+        "elapsed_seconds",
+    ):
+        if field not in state:
+            errors.append(f"progress sidecar lacks {field}")
+    if not isinstance(state.get("bytes_streamed"), int) or state["bytes_streamed"] <= 0:
+        errors.append("progress sidecar recorded no streamed bytes")
+    if "phase=content_scan" not in stream.getvalue():
+        errors.append("progress did not report the content scan phase on stderr")
+    return errors
+
+
+def cache_fixture_errors(repo: Path, state_dir: Path) -> list[str]:
+    """Reuse completed payload verdicts without reusing occurrence judgements."""
+    errors: list[str] = []
+    os.environ[audit.STATE_DIR_ENV] = str(state_dir)
+    try:
+        cold = audit.open_content_cache(repo)
+        baseline = audit.build_audit(repo, cache=cold, payload_selection="selective")
+        cold.close()
+        if cold.statistics()["writes"] <= 0:
+            errors.append("the first run stored no reusable payload verdicts")
+
+        warm = audit.open_content_cache(repo)
+        resumed = audit.build_audit(repo, cache=warm, payload_selection="selective")
+        warm.close()
+        if _decision_view(resumed) != _decision_view(baseline):
+            errors.append("a cache-served run changed the release decision")
+        if resumed["scan"]["payload_selection"]["payload_requested_bytes"] != 0:
+            errors.append("a fully cached run still streamed payload bytes")
+        if resumed["scan"]["content_scan_cache"]["hits"] <= 0:
+            errors.append("the warm cache served no verdicts")
+
+        # Changed policy invalidates: the key carries the policy digest, so a
+        # policy change opens a different file rather than answering from a
+        # verdict reached under different rules.
+        original_terms = audit.PRIVATE_PATH_TERMS
+        audit.PRIVATE_PATH_TERMS = original_terms + ("scratchpad",)
+        try:
+            repolicy = audit.open_content_cache(repo)
+            if repolicy.key == warm.key:
+                errors.append("a policy change did not change the cache key")
+            if repolicy.entries:
+                errors.append("a policy change reused verdicts from the old policy")
+            repolicy.close()
+        finally:
+            audit.PRIVATE_PATH_TERMS = original_terms
+
+        # An interrupted run leaves a torn trailing line.  It must be discarded
+        # rather than read back as a clean verdict for an unfinished object.
+        assert warm.path is not None
+        interrupted_dir = state_dir / "interrupted"
+        interrupted_dir.mkdir(parents=True, exist_ok=True)
+        interrupted = interrupted_dir / warm.path.name
+        body = warm.path.read_text(encoding="utf-8")
+        lines = body.splitlines()
+        if len(lines) < 3:
+            errors.append("the cache fixture did not store enough entries to truncate")
+        else:
+            truncated_payload = "\n".join(lines[:-1]) + "\n" + lines[-1][: len(lines[-1]) // 2]
+            interrupted.write_text(truncated_payload, encoding="utf-8")
+            partial = audit.ContentScanCache(interrupted, warm.key)
+            if partial.truncated_entries < 1:
+                errors.append("a torn cache line was not discarded")
+            if len(partial.entries) != len(lines) - 2:
+                errors.append("a torn cache line was read back as a clean verdict")
+            resumed_partial = audit.build_audit(
+                repo, cache=partial, payload_selection="selective"
+            )
+            partial.close()
+            if _decision_view(resumed_partial) != _decision_view(baseline):
+                errors.append("resuming an interrupted cache changed the release decision")
+            if resumed_partial["scan"]["payload_selection"]["payload_requested_bytes"] <= 0:
+                errors.append("resuming an interrupted cache re-requested nothing")
+
+        # A changed ref set re-judges occurrences even though the payload
+        # verdicts for every pre-existing object are served from the cache.
+        leaked = repo / "private" / "leaked.md"
+        leaked.parent.mkdir(parents=True, exist_ok=True)
+        leaked.write_bytes(SECRET_SHAPED_PAYLOAD + b"# leaked into a prohibited path\n")
+        _fixture_git(repo, "add", "-A")
+        _fixture_git(repo, "commit", "-q", "-m", "introduce a prohibited occurrence")
+        rejudged_cache = audit.open_content_cache(repo)
+        rejudged = audit.build_audit(
+            repo, cache=rejudged_cache, payload_selection="selective"
+        )
+        rejudged_cache.close()
+        if not any(
+            finding.get("kind") == "private_or_working_path"
+            and finding.get("path") == "private/leaked.md"
+            for finding in rejudged.get("privacy_findings", [])
+        ):
+            errors.append("a changed ref set did not re-judge path occurrences")
+        if rejudged_cache.hits <= 0:
+            errors.append("the re-judged run served no payload verdict from the cache")
+        if rejudged["scan"]["audited_ref_digest"] == baseline["scan"]["audited_ref_digest"]:
+            errors.append("the report did not record a changed audited ref set")
+    finally:
+        os.environ.pop(audit.STATE_DIR_ENV, None)
+    return errors
+
+
+def subject_binding_fixture_errors(repo: Path) -> list[str]:
+    """A later HEAD must report stale-subject with its exact successors."""
+    errors: list[str] = []
+    report = audit.build_audit(repo, payload_selection="selective")
+    if not isinstance(report["scan"].get("audited_ref_names"), list) or not report["scan"][
+        "audited_ref_names"
+    ]:
+        errors.append("the report does not record the ref set it audited")
+    if not str(report["scan"].get("audited_ref_digest", "")).startswith("sha256:"):
+        errors.append("the report does not bind its audited ref set to a digest")
+    anchor = report["scan"]["anchor_commit"]
+    (repo / "docs" / "later.md").write_bytes(b"a later source change\n")
+    _fixture_git(repo, "add", "-A")
+    _fixture_git(repo, "commit", "-q", "-m", "later source change")
+    head = _fixture_git(repo, "rev-parse", "HEAD")
+    successors = audit.successor_commits(repo, anchor, head)
+    if successors != [head]:
+        errors.append("successor commit enumeration did not name the exact successor")
+    current = audit.build_audit(repo, payload_selection="selective")
+    messages = audit.comparison_errors(report, current, repo)
+    stale = [message for message in messages if message.startswith("stale-subject:")]
+    if not stale:
+        errors.append("a later HEAD did not report stale-subject")
+    elif head not in stale[0] or anchor not in stale[0]:
+        errors.append("the stale-subject report omits the anchor or the successor commit")
+    elif "docs/later.md" not in stale[0]:
+        errors.append("the stale-subject report omits the changed non-control path")
+    return errors
+
+
+def self_test_errors() -> list[str]:
+    """Run every payload-selection, progress, cache, and binding fixture."""
+    scratch = Path(tempfile.mkdtemp(prefix="reachable-history-fixture-"))
+    try:
+        repo = scratch / "repo"
+        state_dir = scratch / "state"
+        state_dir.mkdir(parents=True, exist_ok=True)
+        identifiers = build_fixture_repository(repo)
+        errors = payload_selection_fixture_errors(repo, identifiers)
+        errors.extend(progress_fixture_errors(repo, state_dir))
+        errors.extend(cache_fixture_errors(repo, state_dir))
+        errors.extend(subject_binding_fixture_errors(repo))
+        return errors
+    finally:
+        shutil.rmtree(scratch, ignore_errors=True)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -444,7 +805,30 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--release-gate", action="store_true", help="fail when the public clone is not safe")
     parser.add_argument("--report", type=Path, default=audit.REPORT_PATH)
+    parser.add_argument(
+        "--self-test",
+        action="store_true",
+        help="run the scratch-repository fixtures without a committed report",
+    )
+    parser.add_argument(
+        "--content-cache",
+        choices=("auto", "off", "read-only"),
+        default=os.environ.get(audit.CONTENT_CACHE_ENV, "auto"),
+        help="reuse payload verdicts across interrupted or superseded runs",
+    )
+    parser.add_argument(
+        "--no-progress", action="store_true", help="suppress progress telemetry"
+    )
     args = parser.parse_args(argv)
+    if args.self_test:
+        errors = adversarial_context_errors()
+        errors.extend(self_test_errors())
+        for error in errors:
+            print(f"test_reachable_release_history: ERROR: {error}", file=sys.stderr)
+        if errors:
+            return 2
+        print("test_reachable_release_history: self-test fixtures pass")
+        return 0
     if not args.check and not args.release_gate:
         # Bare invocation (no flags) is what every other scripts/test_*.py accepts and
         # what a plain `python3 scripts/test_reachable_release_history.py` run should do.
@@ -482,7 +866,16 @@ def main(argv: list[str] | None = None) -> int:
         for error in errors:
             print(f"test_reachable_release_history: ERROR: {error}", file=sys.stderr)
         return 2
-    current = audit.build_audit(ROOT)
+    progress = audit.ProgressReporter(
+        None if args.no_progress else audit.progress_path(ROOT, args.report),
+        enabled=not args.no_progress,
+    )
+    cache = audit.open_content_cache(ROOT, mode=args.content_cache)
+    try:
+        current = audit.build_audit(ROOT, progress=progress, cache=cache)
+    finally:
+        cache.close()
+    progress.phase("done")
     errors = audit.comparison_errors(report, current, ROOT)
     errors.extend(ref_snapshot_errors(report))
     errors.extend(blocker_context_errors(report))

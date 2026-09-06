@@ -430,6 +430,34 @@ the converse \texttt{cofinalLocalWindowEscape\_of\_irrational} at
 \commitshort\ pinned by this manuscript, so no linked declaration is offered
 for it here, and it enters the linked source at the next checkpoint.
 
+\emph{What the reformulation moves.}  The two sides of the equivalence are
+objects of different kinds.  Irrationality is a statement about one real value.
+The escape condition~\eqref{eq:actual-escape} is a statement about the integer
+window sequences of Section~\ref{sec:escape}, the
+\lword{Erdos269/RestrictedFloorSum.lean}{417}{windowBase}{window base}
+$W_{\ell,h}$ and the
+\lword{Erdos269/RestrictedFloorSum.lean}{422}{windowForcing}{window forcing}
+$F_{\ell,h}$ accumulated from the radix word and the digit word, and for each
+fixed denominator $B$ and each fixed window $(\ell,h)$ it is decided by one
+exact comparison between a least positive residue and the carry bound.  The
+transfer rests on the division-free identity
+$d_{\ell+h}=W_{\ell,h}d_\ell-BF_{\ell,h}$, which is
+\lword{Erdos269/RestrictedFloorSum.lean}{480}{integralCarry_window}{checked},
+together with the forcing of the endpoint carry to the canonical residue,
+\lword{Erdos269/RestrictedFloorSum.lean}{497}{leastPositiveResidue_windowForcing_eq_carry}{also
+checked}.  Every instance of the condition is therefore finite, while the
+condition itself carries two unbounded quantifiers.  Three exclusions fix what
+the equivalence rules out.  It holds for every short bound $sb$ dominated by
+$c(B)(n+1)^2$, so sharpening that bound produces no condition weaker than
+\#269 itself.  The countermodel $\operatorname{lpr}_{6}(-4)=2$ of
+Section~\ref{sec:open} shows that the canonical residue need not be coprime to
+the accumulated base.  The countermodel
+$\operatorname{lpr}_{60}(-37\cdot47)=1$ there shows that a fixed window has no
+denominator-independent lower bound on that residue.  A producer that closes
+the gap must accordingly supply the window as a function of the denominator and
+of the starting index, cofinally in both, and that obligation is a restatement
+of Erd\H{o}s~\#269 for $P=\{2,3,5\}$.
+
 \emph{Remaining obligation.}  The equivalence proves neither of its two sides.
 Problem~\ref{prob:producer} is a restatement of Erd\H{o}s~\#269 for
 $P=\{2,3,5\}$, so work on that condition is work on the target.  One corollary

@@ -24,18 +24,35 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 import threading
+import time
 import tarfile
 import zipfile
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterable, Iterator
+from typing import Callable, Iterable, Iterator, NamedTuple
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT_PATH = ROOT / "docs/release/reachable-history-audit.json"
 SCHEMA = "plectis.reachable_git_history_trust.v1"
 MAX_SINGLE_BLOB_BYTES = 50 * 1024 * 1024
+# Payloads above this size are excluded from the two scans that count or
+# recognise ordinary document text (address candidates and the custom license
+# marker).  Every other content scan in ``_scan_payload`` is deliberately
+# unbounded, so this cap is not a licence to skip a large payload entirely.
+TEXTUAL_SCAN_CAP_BYTES = 8 * 1024 * 1024
+
+# Progress and reusable-verdict state never enters the release candidate.  The
+# location is an environment override, then a sibling of the checkout, then the
+# platform temporary directory.  None of those is spelled as a literal path.
+STATE_DIR_ENV = "PLECTIS_RELEASE_AUDIT_STATE_DIR"
+PROGRESS_PATH_ENV = "PLECTIS_RELEASE_AUDIT_PROGRESS"
+PROGRESS_SECONDS_ENV = "PLECTIS_RELEASE_AUDIT_PROGRESS_SECONDS"
+CONTENT_CACHE_ENV = "PLECTIS_RELEASE_AUDIT_CONTENT_CACHE"
+DEFAULT_PROGRESS_SECONDS = 15.0
+STATE_DIR_NAME = "release-audit-state"
 
 # These files are the control plane for this audit.  They are checked by the
 # release workflow, but are excluded from the source-history delta comparison
@@ -230,6 +247,316 @@ def _scanner_source_fingerprint(root: Path) -> str:
         return "unavailable"
 
 
+def state_directory(root: Path) -> Path:
+    """Return a writable, never-tracked directory for progress and cache state."""
+    override = os.environ.get(STATE_DIR_ENV, "").strip()
+    candidates = [Path(override).expanduser()] if override else []
+    candidates.append(root.parent / STATE_DIR_NAME)
+    candidates.append(Path(tempfile.gettempdir()) / "plectis-release-audit-state")
+    for candidate in candidates:
+        try:
+            candidate.mkdir(parents=True, exist_ok=True)
+            probe = candidate / ".writable"
+            probe.write_text("", encoding="utf-8")
+            probe.unlink()
+            return candidate
+        except OSError:
+            continue
+    return Path(tempfile.mkdtemp(prefix="plectis-release-audit-"))
+
+
+def progress_path(root: Path, report_path: Path) -> Path:
+    """Return the progress sidecar location.
+
+    The default sits beside the report so an operator watching the audit does
+    not have to know where the state directory landed.  ``.gitignore`` excludes
+    ``docs/release/*.progress.json`` so the sidecar can never reach a commit.
+    """
+    override = os.environ.get(PROGRESS_PATH_ENV, "").strip()
+    if override:
+        return Path(override).expanduser()
+    sidecar = report_path.with_name(report_path.stem + ".progress.json")
+    try:
+        sidecar.parent.mkdir(parents=True, exist_ok=True)
+        return sidecar
+    except OSError:
+        return state_directory(root) / "reachable-history-audit.progress.json"
+
+
+class ProgressReporter:
+    """Emit bounded-cadence phase, object, and byte progress.
+
+    A process id and a wall clock are not progress.  Every update names the
+    phase, how many objects were requested and completed, how many payload
+    bytes have been streamed, and the last object id consumed, so an operator
+    can tell a slow run from a stalled one without attaching a debugger.
+    """
+
+    def __init__(
+        self,
+        path: Path | None,
+        *,
+        stream: object | None = None,
+        interval_seconds: float | None = None,
+        enabled: bool = True,
+    ) -> None:
+        self.path = path
+        self.stream = stream
+        self.enabled = enabled
+        if interval_seconds is None:
+            try:
+                interval_seconds = float(
+                    os.environ.get(PROGRESS_SECONDS_ENV, "") or DEFAULT_PROGRESS_SECONDS
+                )
+            except ValueError:
+                interval_seconds = DEFAULT_PROGRESS_SECONDS
+        self.interval_seconds = max(0.0, interval_seconds)
+        self.started_at = time.monotonic()
+        self._last_emit = 0.0
+        self.state: dict[str, object] = {
+            "phase": "starting",
+            "objects_requested": 0,
+            "objects_completed": 0,
+            "objects_reused_from_cache": 0,
+            "bytes_streamed": 0,
+            "bytes_requested": 0,
+            "last_object_id": "",
+            "elapsed_seconds": 0.0,
+        }
+
+    def phase(self, name: str, **fields: object) -> None:
+        self.state["phase"] = name
+        self.state.update(fields)
+        self.emit(force=True)
+
+    def advance(self, **fields: object) -> None:
+        for key, value in fields.items():
+            if isinstance(value, (int, float)) and key.startswith(("objects_", "bytes_")):
+                self.state[key] = (self.state.get(key) or 0) + value
+            else:
+                self.state[key] = value
+        self.emit()
+
+    def emit(self, *, force: bool = False) -> None:
+        if not self.enabled:
+            return
+        now = time.monotonic()
+        if not force and now - self._last_emit < self.interval_seconds:
+            return
+        self._last_emit = now
+        self.state["elapsed_seconds"] = round(now - self.started_at, 3)
+        self.state["updated_at"] = datetime.now(timezone.utc).isoformat()
+        line = (
+            "audit_reachable_release_history: phase={phase} "
+            "objects={objects_completed}/{objects_requested} "
+            "cached={objects_reused_from_cache} "
+            "streamed_bytes={bytes_streamed} "
+            "last_object={last_object_id} "
+            "elapsed_s={elapsed_seconds}".format(**self.state)
+        )
+        target = self.stream if self.stream is not None else sys.stderr
+        try:
+            print(line, file=target, flush=True)
+        except (OSError, ValueError):
+            pass
+        if self.path is None:
+            return
+        try:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            temporary = self.path.with_name(self.path.name + ".tmp")
+            temporary.write_text(
+                json.dumps(self.state, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+            )
+            os.replace(temporary, self.path)
+        except OSError:
+            pass
+
+    def snapshot(self) -> dict[str, object]:
+        self.state["elapsed_seconds"] = round(time.monotonic() - self.started_at, 3)
+        return dict(self.state)
+
+
+def policy_inputs_digest(root: Path) -> str:
+    """Digest every input that can change what a payload scan concludes.
+
+    The scanner source digest already covers the code.  This covers the tuned
+    policy surface and the artifact disposition manifest the release decision
+    consumes, so a manifest edit cannot be answered from a cached verdict.
+    """
+    manifest_path = root / "docs/primary-sources/redistribution-dispositions.json"
+    try:
+        manifest_digest = _sha256_bytes(manifest_path.read_bytes())
+    except OSError:
+        manifest_digest = "absent"
+    payload = {
+        "schema": SCHEMA,
+        "binary_suffixes": list(BINARY_SUFFIXES),
+        "archive_suffixes": list(ARCHIVE_SUFFIXES),
+        "private_path_terms": list(PRIVATE_PATH_TERMS),
+        "control_paths": sorted(CONTROL_PATHS),
+        "max_single_blob_bytes": MAX_SINGLE_BLOB_BYTES,
+        "textual_scan_cap_bytes": TEXTUAL_SCAN_CAP_BYTES,
+        "patterns": [
+            PRIVATE_PATH_RE.pattern.decode("latin-1"),
+            EMAIL_RE.pattern.decode("latin-1"),
+            PRIVATE_KEY_RE.pattern.decode("latin-1"),
+            AWS_KEY_RE.pattern.decode("latin-1"),
+            TOKEN_RE.pattern.decode("latin-1"),
+            ASSIGNMENT_RE.pattern.decode("latin-1"),
+            LICENSE_MARKER_RE.pattern.decode("latin-1"),
+        ],
+        "manifest_sha256": manifest_digest,
+    }
+    return "sha256:" + _sha256_bytes(
+        json.dumps(payload, sort_keys=True, ensure_ascii=False).encode("utf-8")
+    )
+
+
+class ContentScanCache:
+    """Reuse payload-derived primitives across interrupted or superseded runs.
+
+    Only payload-derived facts are stored.  Occurrence, path, and ref policy is
+    re-derived on every run from the live object/path map, because Git's
+    ``rev-list --objects`` names are hints: the same blob can appear at several
+    paths and each path is judged separately.  The cache key carries the
+    scanner source digest, the policy digest, and the scan mode the paths
+    imply, so a policy or code change starts a fresh file instead of answering
+    from a verdict reached under different rules.
+
+    An entry is appended only after its payload was fully read and scanned
+    without error.  A torn trailing line from a killed run is discarded on
+    load, so a partial shard can never be read back as a clean verdict.
+    """
+
+    HEADER_KIND = "plectis.reachable_history_content_scan_cache.v1"
+
+    def __init__(self, path: Path | None, key: str, *, writable: bool = True) -> None:
+        self.path = path
+        self.key = key
+        self.writable = writable and path is not None
+        self.entries: dict[str, dict[str, object]] = {}
+        self.hits = 0
+        self.misses = 0
+        self.writes = 0
+        self.truncated_entries = 0
+        self._handle = None
+        if path is not None:
+            self._load()
+
+    def _load(self) -> None:
+        assert self.path is not None
+        try:
+            raw = self.path.read_text(encoding="utf-8")
+        except OSError:
+            return
+        lines = raw.splitlines()
+        trailing_partial = bool(raw) and not raw.endswith("\n")
+        if trailing_partial and lines:
+            # The run that wrote this file was killed mid-append.
+            lines.pop()
+            self.truncated_entries += 1
+        for index, line in enumerate(lines):
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                # Anything after an unreadable line is untrusted.
+                self.truncated_entries += 1
+                break
+            if index == 0:
+                if not (
+                    isinstance(row, dict)
+                    and row.get("kind") == self.HEADER_KIND
+                    and row.get("key") == self.key
+                ):
+                    self.entries.clear()
+                    return
+                continue
+            if not isinstance(row, dict):
+                break
+            entry_key = row.get("k")
+            value = row.get("v")
+            if isinstance(entry_key, str) and isinstance(value, dict):
+                self.entries[entry_key] = value
+
+    @staticmethod
+    def entry_key(object_id: str, scan_mode: str) -> str:
+        return f"{object_id}|{scan_mode}"
+
+    def get(self, object_id: str, scan_mode: str) -> dict[str, object] | None:
+        value = self.entries.get(self.entry_key(object_id, scan_mode))
+        if value is None:
+            self.misses += 1
+            return None
+        self.hits += 1
+        return value
+
+    def put(self, object_id: str, scan_mode: str, value: dict[str, object]) -> None:
+        key = self.entry_key(object_id, scan_mode)
+        self.entries[key] = value
+        if not self.writable or self.path is None:
+            return
+        try:
+            if self._handle is None:
+                self.path.parent.mkdir(parents=True, exist_ok=True)
+                fresh = not self.path.exists() or self.path.stat().st_size == 0
+                self._handle = self.path.open("a", encoding="utf-8")
+                if fresh:
+                    self._handle.write(
+                        json.dumps(
+                            {"kind": self.HEADER_KIND, "key": self.key},
+                            sort_keys=True,
+                        )
+                        + "\n"
+                    )
+            self._handle.write(
+                json.dumps({"k": key, "v": value}, sort_keys=True, ensure_ascii=False) + "\n"
+            )
+            self._handle.flush()
+            self.writes += 1
+        except OSError:
+            self.writable = False
+
+    def close(self) -> None:
+        if self._handle is not None:
+            try:
+                self._handle.flush()
+                self._handle.close()
+            except OSError:
+                pass
+            self._handle = None
+
+    def statistics(self) -> dict[str, object]:
+        return {
+            "enabled": self.path is not None,
+            "writable": bool(self.writable),
+            "location_is_tracked": False,
+            "entries_loaded": len(self.entries) - self.writes,
+            "hits": self.hits,
+            "misses": self.misses,
+            "writes": self.writes,
+            "discarded_partial_entries": self.truncated_entries,
+        }
+
+
+def open_content_cache(
+    root: Path, *, mode: str = "auto", scanner_sha: str | None = None
+) -> ContentScanCache:
+    """Open the reusable payload-verdict store for this scanner and policy."""
+    if mode == "off":
+        return ContentScanCache(None, "disabled", writable=False)
+    scanner_sha = scanner_sha or _scanner_source_fingerprint(root)
+    key = _sha256_bytes(
+        json.dumps(
+            {"scanner": scanner_sha, "policy": policy_inputs_digest(root)}, sort_keys=True
+        ).encode("utf-8")
+    )
+    directory = state_directory(root)
+    path = directory / f"content-scan-cache-{key[:16]}.jsonl"
+    return ContentScanCache(path, key, writable=mode != "read-only")
+
+
 def _ref_class(refname: str) -> str:
     if refname.startswith("refs/heads/"):
         return "branch"
@@ -399,7 +726,33 @@ def object_metadata(root: Path, object_ids: Iterable[str]) -> dict[str, dict[str
     return metadata
 
 
-def object_contents(root: Path, object_ids: Iterable[str]) -> Iterator[tuple[str, str, bytes]]:
+def _read_exactly(stream, size: int, object_id: str) -> bytes:
+    """Read a whole payload or fail loudly.
+
+    ``BufferedReader.read(n)`` may return fewer bytes than asked for.  A short
+    read used to be scanned as if it were the whole object, which turns a
+    truncated stream into a clean verdict.  Refuse instead.
+    """
+    chunks: list[bytes] = []
+    remaining = size
+    while remaining > 0:
+        chunk = stream.read(remaining)
+        if not chunk:
+            raise RuntimeError(
+                "reachable-history audit read a truncated payload for object "
+                f"{object_id}: {size - remaining} of {size} bytes"
+            )
+        chunks.append(chunk)
+        remaining -= len(chunk)
+    return b"".join(chunks) if len(chunks) != 1 else chunks[0]
+
+
+def object_contents(
+    root: Path,
+    object_ids: Iterable[str],
+    *,
+    progress: ProgressReporter | None = None,
+) -> Iterator[tuple[str, str, bytes]]:
     ordered = sorted(set(object_ids))
     if not ordered:
         return
@@ -449,8 +802,14 @@ def object_contents(root: Path, object_ids: Iterable[str]) -> Iterator[tuple[str
                 size = int(pieces[2])
             except ValueError:
                 continue
-            payload = process.stdout.read(size)
+            payload = _read_exactly(process.stdout, size, object_id)
             process.stdout.read(1)  # trailing newline after each object
+            if progress is not None:
+                progress.advance(
+                    objects_completed=1,
+                    bytes_streamed=len(payload),
+                    last_object_id=object_id,
+                )
             yield object_id, object_type, payload
     finally:
         try:
@@ -573,32 +932,66 @@ def _path_history(root: Path, path: str, ref_rows: list[dict[str, str]]) -> dict
     }
 
 
-def _refs_containing_commits(root: Path, commits: Iterable[str], ref_rows: list[dict[str, str]]) -> list[str]:
-    """Return refs containing the requested commits with bounded Git calls.
+_REF_MEMBERSHIP_CACHE: dict[tuple[str, str], tuple[list[str], dict[str, int]]] = {}
 
-    ``merge-base --is-ancestor`` for every commit/ref pair is quadratic in
-    the number of findings and refs, which made the redacted audit effectively
-    unfinishable in a checkout carrying the release fleet's rescue refs.
-    Git's ``for-each-ref --contains`` asks the same reachability question in a
-    single repository walk per requested commit and retains the exact ref
-    semantics needed by the redacted evidence.
+
+def _ref_membership(root: Path, ref_rows: list[dict[str, str]]) -> tuple[list[str], dict[str, int]]:
+    """Build, once per ref set, a bitmask of which refs contain each commit.
+
+    ``for-each-ref --contains <commit>`` answers one commit per full
+    repository walk.  With tens of thousands of findings that walk repeated
+    per commit was the audit's wall-clock wall (hours, after the payload
+    stream itself had finished).  One ``rev-list`` per ref, streamed line by
+    line, gives the same reachability relation as a ``commit -> bitmask``
+    table: the refs whose tip reaches the commit are exactly the refs
+    ``for-each-ref --contains`` would list, tags peeled to their commits.
+    Refs that do not peel to a commit contribute nothing, as before.
     """
-    refs: set[str] = set()
+    names = sorted(
+        {
+            row["ref"]
+            for row in ref_rows
+            if row.get("ref", "").startswith("refs/") and row.get("peeled_commit")
+        }
+    )
+    key = (str(root), hashlib.sha256("\n".join(names).encode()).hexdigest())
+    cached = _REF_MEMBERSHIP_CACHE.get(key)
+    if cached is not None:
+        return cached
+    membership: dict[str, int] = {}
+    for index, ref in enumerate(names):
+        bit = 1 << index
+        process = subprocess.Popen(
+            ["git", "rev-list", ref, "--"],
+            cwd=root,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            env=git_environment(),
+        )
+        assert process.stdout is not None
+        for line in process.stdout:
+            commit = line.strip().decode("ascii", "replace")
+            if commit:
+                membership[commit] = membership.get(commit, 0) | bit
+        process.wait()
+    _REF_MEMBERSHIP_CACHE[key] = (names, membership)
+    return names, membership
+
+
+def _refs_containing_commits(root: Path, commits: Iterable[str], ref_rows: list[dict[str, str]]) -> list[str]:
+    """Return the refs containing the requested commits.
+
+    Same relation as ``for-each-ref --contains`` per commit, served from the
+    once-built membership table in ``_ref_membership`` so the cost is one
+    walk per ref rather than one walk per finding.
+    """
+    names, membership = _ref_membership(root, ref_rows)
+    mask = 0
     for commit in sorted(set(commits)):
         if not re.fullmatch(r"[0-9a-f]{40}", commit):
             continue
-        refs.update(
-            ref
-            for ref in _git_lines(
-                root,
-                "for-each-ref",
-                "--contains",
-                commit,
-                "--format=%(refname)",
-            )
-            if ref.startswith("refs/")
-        )
-    return sorted(refs)
+        mask |= membership.get(commit, 0)
+    return sorted(name for index, name in enumerate(names) if mask & (1 << index))
 
 
 def _ref_rows_by_name(ref_rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
@@ -689,36 +1082,108 @@ def _annotate_current_head_exposure(
         )
 
 
-def _content_findings(
-    object_id: str,
-    paths: list[str],
-    payload: bytes,
-    *,
-    scan_textual_payload: bool | None = None,
-) -> tuple[list[dict[str, object]], list[dict[str, object]], list[dict[str, object]]]:
-    security: list[dict[str, object]] = []
-    privacy: list[dict[str, object]] = []
-    license_rows: list[dict[str, object]] = []
-    # A pathless direct-ref object is not evidence of binary content.  Treating
-    # its synthetic ``<reachable-ref:...>`` label as binary would skip bounded
-    # textual scans and could hide a license marker in a direct-ref blob.
-    binary_like = any(_is_binary_path(path) for path in paths)
-    if scan_textual_payload is None:
-        scan_textual_payload = not binary_like and len(payload) <= 8 * 1024 * 1024
+class ScanMode(NamedTuple):
+    """Every payload-scan parameter that the object's paths decide."""
 
-    def add_match(target: list[dict[str, object]], kind: str, matches: list[bytes]) -> None:
-        if not matches:
-            return
-        target.append(
-            {
-                "kind": kind,
-                "object_id": object_id,
-                "paths": paths,
-                "match_count": len(matches),
-                "redacted_fingerprints": sorted({_redacted_fingerprint(match) for match in matches})[:16],
-            }
+    scan_textual_payload: bool
+    archive_branches: tuple[str, ...]
+
+    def digest(self) -> str:
+        return f"t{int(self.scan_textual_payload)}|a:{','.join(self.archive_branches)}"
+
+
+def _archive_branch_labels(paths: list[str]) -> tuple[str, ...]:
+    """Name the archive parser branches ``_archive_findings`` would take.
+
+    ``zip`` and ``tar`` are decided by the path suffix.  ``magic`` marks a
+    pathless direct-ref object whose branch is decided by the payload's leading
+    bytes, so the branch it resolved to is recorded alongside its rows.
+    """
+    labels: set[str] = set()
+    archive_paths = [path for path in paths if _is_archive_path(path)]
+    pathless = [path for path in paths if path.startswith("<reachable-ref:")]
+    for path in archive_paths:
+        labels.add("zip" if path.lower().endswith(".zip") else "tar")
+    if not archive_paths and pathless:
+        labels.add("magic")
+    return tuple(sorted(labels))
+
+
+def scan_mode_for(
+    paths: list[str], object_type: str, size_bytes: int
+) -> ScanMode:
+    """Derive the scan parameters from metadata and paths, before any payload.
+
+    This mirrors, exactly, the decisions ``build_audit`` used to make only once
+    a payload was already in memory.  Deriving them from ``--batch-check`` type
+    and size plus the path map is what lets the audit decline to request a
+    payload it would never consult.
+    """
+    if object_type == "blob":
+        binary_like = any(_is_binary_path(path) for path in paths)
+        textual = not binary_like and size_bytes <= TEXTUAL_SCAN_CAP_BYTES
+        branches = _archive_branch_labels(paths)
+    else:
+        textual = size_bytes <= TEXTUAL_SCAN_CAP_BYTES
+        branches = ()
+    return ScanMode(textual, branches)
+
+
+def _archive_member_rows(payload: bytes, branch: str) -> list[list[object]]:
+    """Parse one archive branch into redacted member rows.
+
+    ``archive_parse_failure`` carries the offending path in the original, so its
+    fingerprint is path-derived; it is stored with a null name and the live path
+    is substituted when the finding is assembled.
+    """
+
+    def unsafe_name(name: str) -> bool:
+        normalized = name.replace("\\", "/")
+        return (
+            normalized.startswith("/")
+            or "../" in normalized
+            or normalized == ".."
+            or "/.." in normalized
         )
 
+    rows: list[list[object]] = []
+    try:
+        if branch == "zip":
+            with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+                for member in archive.infolist():
+                    if unsafe_name(member.filename):
+                        rows.append(["unsafe_member_name", member.filename])
+                    if (member.external_attr >> 16) & 0o170000 == 0o120000:
+                        rows.append(["symlink_member", member.filename])
+        else:
+            with tarfile.open(fileobj=io.BytesIO(payload), mode="r:*") as archive:
+                for member in archive.getmembers():
+                    if unsafe_name(member.name):
+                        rows.append(["unsafe_member_name", member.name])
+                    if member.issym() or member.islnk():
+                        rows.append(["link_member", member.name])
+    except (OSError, EOFError, tarfile.TarError, zipfile.BadZipFile):
+        # A malformed archive is a review finding, not a parser crash.  The
+        # outer object/path identity still binds the remediation decision.
+        return [["archive_parse_failure", None]]
+    return rows
+
+
+def _match_primitive(matches: list[bytes]) -> dict[str, object]:
+    return {
+        "count": len(matches),
+        "fingerprints": sorted({_redacted_fingerprint(match) for match in matches})[:16],
+    }
+
+
+def _scan_payload(payload: bytes, mode: ScanMode) -> dict[str, object]:
+    """Reduce a payload to the redacted primitives every finding is built from.
+
+    Nothing here depends on the object's paths or refs, so the result is a
+    property of the immutable Git object under a fixed scanner and policy and
+    can be reused by a later run.  Path, occurrence, and ref judgements stay in
+    ``_findings_from_primitives`` and are redone on every run.
+    """
     private_keys = PRIVATE_KEY_RE.findall(payload) if b"PRIVATE KEY" in payload else []
     aws_keys = AWS_KEY_RE.findall(payload) if b"AKIA" in payload or b"ASIA" in payload else []
     tokens = TOKEN_RE.findall(payload) if any(
@@ -736,9 +1201,6 @@ def _content_findings(
             b"sk-",
         )
     ) else []
-    add_match(security, "private_key_material_marker", private_keys)
-    add_match(security, "aws_access_key_marker", aws_keys)
-    add_match(security, "credential_token_marker", tokens)
     assignment_markers = (
         b"AWS_SECRET_ACCESS_KEY",
         b"PRIVATE_KEY",
@@ -761,19 +1223,100 @@ def _content_findings(
         if any(marker in payload for marker in assignment_markers)
         else []
     )
-    add_match(security, "credential_assignment_marker", assignments)
     path_matches = (
         PRIVATE_PATH_RE.findall(payload)
         if any(marker in payload for marker in _PRIVATE_PATH_MARKERS)
         else []
     )
-    add_match(privacy, "absolute_private_filesystem_path", path_matches)
-    # An address is a privacy review candidate, not an automatic release
-    # blocker.  Count likely address separators without retaining or printing
-    # the address text; the blob/path identity remains the evidence binding.
-    emails = [b"email-candidate"] * payload.count(b"@") if scan_textual_payload and b"@" in payload else []
-    add_match(privacy, "email_address_candidate", emails)
-    if scan_textual_payload and LICENSE_MARKER_RE.pattern in payload:
+    primitives: dict[str, object] = {
+        "size_bytes": len(payload),
+        "private_key_material_marker": _match_primitive(private_keys),
+        "aws_access_key_marker": _match_primitive(aws_keys),
+        "credential_token_marker": _match_primitive(tokens),
+        "credential_assignment_marker": _match_primitive(assignments),
+        "absolute_private_filesystem_path": _match_primitive(path_matches),
+        # An address is a privacy review candidate, not an automatic release
+        # blocker.  Count likely address separators without retaining or
+        # printing the address text; the blob/path identity remains the
+        # evidence binding.
+        "email_candidate_count": (
+            payload.count(b"@") if mode.scan_textual_payload else 0
+        ),
+        "license_marker": bool(
+            mode.scan_textual_payload and LICENSE_MARKER_RE.pattern in payload
+        ),
+        "looks_like_archive_payload": _looks_like_archive_payload(payload),
+        "starts_with_pk": payload.startswith(b"PK\x03\x04"),
+    }
+    archive_rows: dict[str, object] = {}
+    magic_branch: str | None = None
+    for branch in mode.archive_branches:
+        if branch == "magic":
+            if not primitives["looks_like_archive_payload"]:
+                continue
+            magic_branch = "zip" if primitives["starts_with_pk"] else "tar"
+            archive_rows[magic_branch] = _archive_member_rows(payload, magic_branch)
+        else:
+            archive_rows.setdefault(branch, _archive_member_rows(payload, branch))
+    primitives["archive_rows"] = archive_rows
+    primitives["magic_branch"] = magic_branch
+    return primitives
+
+
+def _findings_from_primitives(
+    object_id: str,
+    paths: list[str],
+    primitives: dict[str, object],
+    mode: ScanMode,
+) -> tuple[
+    list[dict[str, object]],
+    list[dict[str, object]],
+    list[dict[str, object]],
+    list[dict[str, object]],
+]:
+    """Judge one object's live paths against reusable payload primitives."""
+    security: list[dict[str, object]] = []
+    privacy: list[dict[str, object]] = []
+    license_rows: list[dict[str, object]] = []
+    archives: list[dict[str, object]] = []
+
+    def add(target: list[dict[str, object]], kind: str, count: int, fingerprints: list[str]) -> None:
+        if not count:
+            return
+        target.append(
+            {
+                "kind": kind,
+                "object_id": object_id,
+                "paths": paths,
+                "match_count": count,
+                "redacted_fingerprints": list(fingerprints),
+            }
+        )
+
+    for kind in (
+        "private_key_material_marker",
+        "aws_access_key_marker",
+        "credential_token_marker",
+        "credential_assignment_marker",
+    ):
+        row = primitives.get(kind) or {}
+        add(security, kind, int(row.get("count", 0)), list(row.get("fingerprints", [])))
+    row = primitives.get("absolute_private_filesystem_path") or {}
+    add(
+        privacy,
+        "absolute_private_filesystem_path",
+        int(row.get("count", 0)),
+        list(row.get("fingerprints", [])),
+    )
+    email_count = int(primitives.get("email_candidate_count") or 0)
+    if email_count:
+        add(
+            privacy,
+            "email_address_candidate",
+            email_count,
+            [_redacted_fingerprint(b"email-candidate")],
+        )
+    if primitives.get("license_marker"):
         license_rows.append(
             {
                 "kind": "custom_third_party_license_marker",
@@ -782,58 +1325,74 @@ def _content_findings(
                 "interpretation": "label_is_not_redistribution_permission",
             }
         )
+
+    archive_rows = primitives.get("archive_rows") or {}
+    magic_branch = primitives.get("magic_branch")
+    archive_paths = [path for path in paths if _is_archive_path(path)]
+    if not archive_paths and any(path.startswith("<reachable-ref:") for path in paths):
+        if primitives.get("looks_like_archive_payload"):
+            archive_paths = paths
+    for path in archive_paths:
+        if _is_archive_path(path):
+            branch = "zip" if path.lower().endswith(".zip") else "tar"
+        else:
+            branch = magic_branch or ("zip" if primitives.get("starts_with_pk") else "tar")
+        member_rows = archive_rows.get(branch)
+        if member_rows is None:
+            continue
+        resolved = [
+            (str(kind), path if name is None else str(name)) for kind, name in member_rows
+        ]
+        if not resolved:
+            continue
+        archives.append(
+            {
+                "kind": "unsafe_archive",
+                "object_id": object_id,
+                "paths": paths,
+                "member_finding_count": len(resolved),
+                "member_finding_kinds": sorted({kind for kind, _ in resolved}),
+                "redacted_member_fingerprints": sorted(
+                    {
+                        _redacted_fingerprint(name.encode("utf-8", "surrogateescape"))
+                        for _, name in resolved
+                    }
+                )[:32],
+            }
+        )
+    return security, privacy, license_rows, archives
+
+
+def _content_findings(
+    object_id: str,
+    paths: list[str],
+    payload: bytes,
+    *,
+    scan_textual_payload: bool | None = None,
+) -> tuple[list[dict[str, object]], list[dict[str, object]], list[dict[str, object]]]:
+    """Legacy content-finding view, retained for narrow callers and fixtures."""
+    # A pathless direct-ref object is not evidence of binary content.  Treating
+    # its synthetic ``<reachable-ref:...>`` label as binary would skip bounded
+    # textual scans and could hide a license marker in a direct-ref blob.
+    if scan_textual_payload is None:
+        binary_like = any(_is_binary_path(path) for path in paths)
+        scan_textual_payload = (
+            not binary_like and len(payload) <= TEXTUAL_SCAN_CAP_BYTES
+        )
+    mode = ScanMode(bool(scan_textual_payload), ())
+    security, privacy, license_rows, _ = _findings_from_primitives(
+        object_id, paths, _scan_payload(payload, mode), mode
+    )
     return security, privacy, license_rows
 
 
 def _archive_findings(object_id: str, paths: list[str], payload: bytes) -> list[dict[str, object]]:
-    findings: list[dict[str, object]] = []
-
-    def unsafe_name(name: str) -> bool:
-        normalized = name.replace("\\", "/")
-        return normalized.startswith("/") or "../" in normalized or normalized == ".." or "/.." in normalized
-
-    archive_paths = [path for path in paths if _is_archive_path(path)]
-    if not archive_paths and any(path.startswith("<reachable-ref:") for path in paths):
-        if _looks_like_archive_payload(payload):
-            archive_paths = paths
-    for path in archive_paths:
-        member_rows: list[tuple[str, str]] = []
-        try:
-            if path.lower().endswith(".zip") or (
-                path.startswith("<reachable-ref:")
-                and payload.startswith(b"PK\x03\x04")
-            ):
-                with zipfile.ZipFile(io.BytesIO(payload)) as archive:
-                    for member in archive.infolist():
-                        if unsafe_name(member.filename):
-                            member_rows.append(("unsafe_member_name", member.filename))
-                        if (member.external_attr >> 16) & 0o170000 == 0o120000:
-                            member_rows.append(("symlink_member", member.filename))
-            else:
-                with tarfile.open(fileobj=io.BytesIO(payload), mode="r:*") as archive:
-                    for member in archive.getmembers():
-                        if unsafe_name(member.name):
-                            member_rows.append(("unsafe_member_name", member.name))
-                        if member.issym() or member.islnk():
-                            member_rows.append(("link_member", member.name))
-        except (OSError, EOFError, tarfile.TarError, zipfile.BadZipFile):
-            # A malformed archive is a review finding, not a parser crash.  The
-            # outer object/path identity still binds the remediation decision.
-            member_rows.append(("archive_parse_failure", path))
-        if member_rows:
-            findings.append(
-                {
-                    "kind": "unsafe_archive",
-                    "object_id": object_id,
-                    "paths": paths,
-                    "member_finding_count": len(member_rows),
-                    "member_finding_kinds": sorted({kind for kind, _ in member_rows}),
-                    "redacted_member_fingerprints": sorted(
-                        {_redacted_fingerprint(name.encode("utf-8", "surrogateescape")) for _, name in member_rows}
-                    )[:32],
-                }
-            )
-    return findings
+    """Legacy archive-finding view, retained for narrow callers and fixtures."""
+    mode = ScanMode(True, _archive_branch_labels(paths))
+    _, _, _, archives = _findings_from_primitives(
+        object_id, paths, _scan_payload(payload, mode), mode
+    )
+    return archives
 
 
 def _private_path_findings(object_id: str, paths: list[str]) -> list[dict[str, object]]:
@@ -1087,16 +1646,123 @@ def _manifest_artifact_object_ids(
     return sorted(object_ids)
 
 
-def build_audit(root: Path = ROOT) -> dict[str, object]:
+class ContentScanTarget(NamedTuple):
+    """One object's scan decision, derived before any payload is requested."""
+
+    object_id: str
+    object_type: str
+    size_bytes: int
+    paths: tuple[str, ...]
+    mode: ScanMode
+    required: bool
+    reason: str
+    lazy_commit_ref_binding: bool
+
+
+def content_scan_targets(
+    metadata: dict[str, dict[str, int | str]],
+    object_paths: dict[str, set[str]],
+    ref_names_by_object: dict[str, set[str]],
+) -> dict[str, ContentScanTarget]:
+    """Decide, from ``--batch-check`` metadata and the path map alone, which
+    payloads can influence a finding.
+
+    The scan loop used to make these decisions with the payload already in
+    memory, so every reachable blob, commit, and tag was decompressed and
+    shipped through the ``cat-file --batch`` pipe even when the object was
+    dropped on the next line.  Type and size are known from ``--batch-check``
+    before any payload is requested, and the path map is known from
+    ``rev-list --objects``, so the same decisions can be taken first.
+
+    An object is not required only when the scan loop would have discarded it
+    without consulting its payload: every path it carries is a control path, or
+    it has no path and no ref that would give it a synthetic one.  Size alone
+    never excludes an object, because the credential, private-key, token,
+    assignment, and absolute-path scans in ``_scan_payload`` are deliberately
+    unbounded; only address counting and the license marker respect
+    ``TEXTUAL_SCAN_CAP_BYTES``.
+    """
+    targets: dict[str, ContentScanTarget] = {}
+    for object_id in sorted(metadata):
+        details = metadata[object_id]
+        object_type = str(details.get("type", ""))
+        if object_type not in {"blob", "commit", "tag"}:
+            continue
+        try:
+            size_bytes = int(details.get("size_bytes", -1))
+        except (TypeError, ValueError):
+            size_bytes = -1
+        raw_paths = object_paths.get(object_id)
+        paths = sorted(path for path in (raw_paths or ()) if not _is_control_path(path))
+        lazy_commit_ref_binding = False
+        reason = ""
+        if not paths:
+            if raw_paths:
+                reason = "control_path_only"
+            else:
+                paths = [
+                    f"<reachable-ref:{ref}>"
+                    for ref in sorted(ref_names_by_object.get(object_id, set()))
+                ]
+                if not paths and object_type == "commit":
+                    paths = ["<reachable-ref:commit-object>"]
+                    lazy_commit_ref_binding = True
+                if not paths:
+                    reason = "unbound_object"
+        mode = scan_mode_for(paths, object_type, size_bytes)
+        if reason:
+            targets[object_id] = ContentScanTarget(
+                object_id, object_type, size_bytes, (), mode, False, reason, False
+            )
+            continue
+        if any(path.startswith("<reachable-ref:") for path in paths):
+            reason = "pathless_direct_ref_object"
+        elif mode.archive_branches:
+            reason = "archive_suffixed_path"
+        elif mode.scan_textual_payload:
+            reason = "textual_scannable_payload"
+        else:
+            reason = "unbounded_marker_scan"
+        targets[object_id] = ContentScanTarget(
+            object_id,
+            object_type,
+            size_bytes,
+            tuple(paths),
+            mode,
+            True,
+            reason,
+            lazy_commit_ref_binding,
+        )
+    return targets
+
+
+def build_audit(
+    root: Path = ROOT,
+    *,
+    progress: ProgressReporter | None = None,
+    cache: ContentScanCache | None = None,
+    payload_selection: str = "selective",
+) -> dict[str, object]:
+    if progress is not None:
+        progress.phase("refs")
     refs = snapshot_refs(root)
     scan_commit = head_commit(root)
     head_ref = active_head_ref(root)
+    if progress is not None:
+        progress.phase("object_discovery")
     object_paths, object_ids, ref_names_by_object = reachable_object_paths(root, refs)
+    if progress is not None:
+        progress.phase("object_metadata", reachable_object_count=len(object_ids))
     metadata = object_metadata(root, object_ids)
     manifest = _load_manifest_paths(root)
     all_paths = sorted({path for paths in object_paths.values() for path in paths})
     binary_paths = sorted(path for path in all_paths if _is_binary_path(path) and not _is_control_path(path))
     primary_paths = sorted(path for path in binary_paths if _is_primary_artifact_path(path))
+    if progress is not None:
+        progress.phase(
+            "artifact_path_history",
+            paths_to_walk=len(set(primary_paths) | set(manifest)),
+        )
     history_by_path = {
         path: _path_history(root, path, refs)
         for path in sorted(set(primary_paths) | set(manifest))
@@ -1134,33 +1800,63 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
         for object_id, details in metadata.items()
         if details.get("type") in {"blob", "commit", "tag"}
     )
-    for object_id, object_type, payload in object_contents(root, scanned_content_ids):
-        paths = sorted(path for path in object_paths.get(object_id, set()) if not _is_control_path(path))
-        lazy_commit_ref_binding = False
-        if not paths:
-            if object_paths.get(object_id):
-                continue
-            reachable_refs = set(ref_names_by_object.get(object_id, set()))
-            paths = [
-                f"<reachable-ref:{ref}>"
-                for ref in sorted(reachable_refs)
-            ]
-            if not paths and object_type == "commit":
-                paths = ["<reachable-ref:commit-object>"]
-                lazy_commit_ref_binding = True
-        if not paths:
-            continue
-        security, privacy, licenses = _content_findings(
-            object_id,
-            paths,
-            payload,
-            scan_textual_payload=(
-                None
-                if object_type == "blob"
-                else len(payload) <= 8 * 1024 * 1024
-            ),
+    targets = content_scan_targets(metadata, object_paths, ref_names_by_object)
+    required_ids = [object_id for object_id, target in targets.items() if target.required]
+    primitives_by_id: dict[str, dict[str, object]] = {}
+    if cache is not None and payload_selection != "full":
+        for object_id in required_ids:
+            hit = cache.get(object_id, targets[object_id].mode.digest())
+            if hit is not None:
+                primitives_by_id[object_id] = hit
+    if payload_selection == "full":
+        # The legacy request set: every reachable blob, commit, and tag.  Kept
+        # so a fixture can prove the selective path reaches the same decision.
+        requested_ids = list(scanned_content_ids)
+    else:
+        requested_ids = [
+            object_id for object_id in required_ids if object_id not in primitives_by_id
+        ]
+    requested_bytes = sum(int(metadata[object_id]["size_bytes"]) for object_id in requested_ids)
+    if progress is not None:
+        progress.phase(
+            "content_scan",
+            objects_requested=len(requested_ids),
+            bytes_requested=requested_bytes,
+            objects_reused_from_cache=len(primitives_by_id),
         )
-        archives = _archive_findings(object_id, paths, payload) if object_type == "blob" else []
+    for object_id, _object_type, payload in object_contents(
+        root, requested_ids, progress=progress
+    ):
+        target = targets.get(object_id)
+        if target is None or not target.required:
+            continue
+        primitives = _scan_payload(payload, target.mode)
+        primitives_by_id[object_id] = primitives
+        if cache is not None:
+            # Reached only after the whole payload was read and scanned without
+            # error, so an interrupted object never lands as a clean verdict.
+            cache.put(object_id, target.mode.digest(), primitives)
+    if progress is not None:
+        # Binding an object's history and ref reachability costs one repository
+        # walk per commit, so this phase can outlast the payload stream.  It
+        # gets its own counter for exactly that reason.
+        progress.phase(
+            "content_judgement",
+            objects_to_judge=len(primitives_by_id),
+            objects_judged=0,
+        )
+    for object_id in sorted(primitives_by_id):
+        if progress is not None:
+            progress.advance(objects_judged=1, last_object_id=object_id)
+        target = targets[object_id]
+        object_type = target.object_type
+        paths = list(target.paths)
+        lazy_commit_ref_binding = target.lazy_commit_ref_binding
+        security, privacy, licenses, archives = _findings_from_primitives(
+            object_id, paths, primitives_by_id[object_id], target.mode
+        )
+        if object_type != "blob":
+            archives = []
         finding_rows = (security, privacy, licenses, archives)
         if any(finding_rows):
             if lazy_commit_ref_binding:
@@ -1182,6 +1878,8 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
         license_findings.extend(licenses)
         archive_findings.extend(archives)
 
+    if progress is not None:
+        progress.phase("path_privacy")
     path_privacy_findings: list[dict[str, object]] = []
     for object_id, paths in sorted(object_paths.items()):
         if object_id not in metadata or metadata[object_id].get("type") != "blob":
@@ -1219,6 +1917,8 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
         _bind_finding_context([finding], context)
     privacy_findings.extend(private_ref_findings)
 
+    if progress is not None:
+        progress.phase("oversized_blob_review")
     oversized_findings: list[dict[str, object]] = []
     for object_id, details in sorted(metadata.items()):
         if details.get("type") != "blob" or int(details.get("size_bytes", -1)) <= MAX_SINGLE_BLOB_BYTES:
@@ -1243,6 +1943,8 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
         _bind_finding_context([finding], context)
         oversized_findings.append(finding)
 
+    if progress is not None:
+        progress.phase("unattributed_blob_review")
     unattributed_reachable_blob_findings: list[dict[str, object]] = []
     for object_id, details in sorted(metadata.items()):
         if (
@@ -1268,6 +1970,8 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
         _bind_finding_context([finding], context)
         unattributed_reachable_blob_findings.append(finding)
 
+    if progress is not None:
+        progress.phase("unmanifested_binary_review")
     other_primary_binary_paths = sorted(set(primary_paths) - set(manifest))
     other_binary_findings: list[dict[str, object]] = []
     for path in other_primary_binary_paths:
@@ -1369,6 +2073,8 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
         + license_blockers
         + oversized_blockers
     )
+    if progress is not None:
+        progress.phase("scan_boundary")
     scan_end_commit = head_commit(root)
     end_refs = snapshot_refs(root)
     scan_ref_changes = _ref_changes(refs, end_refs)
@@ -1385,6 +2091,28 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
             }
         ]
     safe = not release_blockers
+    content_object_bytes = sum(
+        int(metadata[object_id]["size_bytes"]) for object_id in scanned_content_ids
+    )
+    required_bytes = sum(int(metadata[object_id]["size_bytes"]) for object_id in required_ids)
+    skip_reasons: dict[str, int] = defaultdict(int)
+    for target in targets.values():
+        if not target.required:
+            skip_reasons[target.reason] += 1
+    payload_selection_evidence = {
+        "mode": payload_selection,
+        "content_object_count": len(scanned_content_ids),
+        "content_object_bytes": content_object_bytes,
+        "payload_required_object_count": len(required_ids),
+        "payload_required_bytes": required_bytes,
+        "payload_requested_object_count": len(requested_ids),
+        "payload_requested_bytes": requested_bytes,
+        "payload_not_required_by_reason": dict(sorted(skip_reasons.items())),
+        "textual_scan_cap_bytes": TEXTUAL_SCAN_CAP_BYTES,
+        "size_alone_never_excludes_a_payload": True,
+    }
+    if progress is not None:
+        progress.phase("assembly")
     remediation = _build_remediation(
         refs,
         artifact_records,
@@ -1408,6 +2136,14 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
             "reachable_blob_count": len(scanned_blob_ids),
             "single_blob_review_threshold_bytes": MAX_SINGLE_BLOB_BYTES,
             "control_paths_excluded_from_post_report_delta": sorted(CONTROL_PATHS),
+            "audited_ref_names": [row["ref"] for row in refs],
+            "audited_ref_digest": "sha256:"
+            + _sha256_bytes(json.dumps(refs, sort_keys=True).encode("utf-8")),
+            "payload_selection": payload_selection_evidence,
+            "content_scan_cache": (
+                cache.statistics() if cache is not None else {"enabled": False}
+            ),
+            "progress": progress.snapshot() if progress is not None else None,
         },
         "refs": refs,
         "inventory": {
@@ -1501,6 +2237,40 @@ def _public_ref_view(refs: list[dict[str, object]]) -> list[dict[str, object]]:
     ]
 
 
+MAX_REPORTED_SUCCESSOR_COMMITS = 32
+
+
+def successor_commits(root: Path, anchor: str, head: str) -> list[str]:
+    """List the commits, oldest first, that carried the subject past the anchor."""
+    if not re.fullmatch(r"[0-9a-f]{40}", anchor) or not re.fullmatch(r"[0-9a-f]{40}", head):
+        return []
+    return [
+        line
+        for line in _git_lines(root, "rev-list", "--reverse", f"{anchor}..{head}")
+        if re.fullmatch(r"[0-9a-f]{40}", line)
+    ]
+
+
+def _stale_subject_error(
+    root: Path, anchor: str, head: str, changed: set[str], boundary: str
+) -> str:
+    """Name the exact successor commits instead of an opaque staleness verdict."""
+    commits = successor_commits(root, anchor, head)
+    shown = commits[:MAX_REPORTED_SUCCESSOR_COMMITS]
+    suffix = "" if len(commits) == len(shown) else f" (+{len(commits) - len(shown)} more)"
+    ancestry = (
+        "" if commits else " (current head is not a descendant of the audited subject)"
+    )
+    changed_paths = sorted(changed - CONTROL_PATHS)
+    return (
+        f"stale-subject: history audit {boundary} {anchor} is not the current head "
+        f"{head}{ancestry}; successor commits ({len(commits)}): "
+        f"{', '.join(shown) if shown else 'none'}{suffix}; "
+        f"changed non-control paths ({len(changed_paths)}): "
+        f"{', '.join(changed_paths[:16]) if changed_paths else 'none'}"
+    )
+
+
 def comparison_errors(report: dict[str, object], current: dict[str, object], root: Path = ROOT) -> list[str]:
     errors: list[str] = []
     if report.get("schema") != SCHEMA:
@@ -1517,7 +2287,9 @@ def comparison_errors(report: dict[str, object], current: dict[str, object], roo
         if anchor != current_head:
             changed = set(_git_lines(root, "diff", "--name-only", f"{anchor}..HEAD"))
             if not changed.issubset(CONTROL_PATHS):
-                errors.append("history audit is stale: source/ref changes occurred after its scan anchor")
+                errors.append(
+                    _stale_subject_error(root, anchor, current_head, changed, "scan anchor")
+                )
         if _json_without_volatile(report) != _json_without_volatile(current):
             errors.append("committed history audit does not match the current reachable object/ref evidence")
     else:
@@ -1554,7 +2326,15 @@ def comparison_errors(report: dict[str, object], current: dict[str, object], roo
             elif current_head != scan["scan_end_commit"]:
                 changed = set(_git_lines(root, "diff", "--name-only", f"{scan['scan_end_commit']}..HEAD"))
                 if not changed.issubset(CONTROL_PATHS):
-                    errors.append("non-atomic history audit is stale: source changes occurred after scan end")
+                    errors.append(
+                        _stale_subject_error(
+                            root,
+                            scan["scan_end_commit"],
+                            current_head,
+                            changed,
+                            "non-atomic scan end",
+                        )
+                    )
             recorded_changes = scan.get("ref_changes")
             if not isinstance(recorded_changes, list) or recorded_changes != _ref_changes(start_refs, end_refs):
                 errors.append("non-atomic history audit ref-change evidence is inconsistent")
@@ -1585,11 +2365,49 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--check", action="store_true", help="validate the committed report against current history")
     parser.add_argument("--release-gate", action="store_true", help="return non-zero when the public clone is unsafe")
     parser.add_argument("--report", type=Path, default=REPORT_PATH)
+    parser.add_argument(
+        "--content-cache",
+        choices=("auto", "off", "read-only"),
+        default=os.environ.get(CONTENT_CACHE_ENV, "auto"),
+        help="reuse payload verdicts across interrupted or superseded runs",
+    )
+    parser.add_argument(
+        "--payload-selection",
+        choices=("selective", "full"),
+        default="selective",
+        help="request only payloads that can influence a finding, or every content object",
+    )
+    parser.add_argument(
+        "--progress-seconds",
+        type=float,
+        default=None,
+        help="minimum seconds between progress lines and sidecar writes",
+    )
+    parser.add_argument(
+        "--no-progress", action="store_true", help="suppress progress telemetry"
+    )
     args = parser.parse_args(argv)
 
+    progress = ProgressReporter(
+        None if args.no_progress else progress_path(ROOT, args.report),
+        interval_seconds=args.progress_seconds,
+        enabled=not args.no_progress,
+    )
+    cache = open_content_cache(ROOT, mode=args.content_cache)
+
     if args.write_report:
-        report = build_audit(ROOT)
+        try:
+            report = build_audit(
+                ROOT,
+                progress=progress,
+                cache=cache,
+                payload_selection=args.payload_selection,
+            )
+        finally:
+            cache.close()
+        progress.phase("writing_report")
         _write_report(report, args.report)
+        progress.phase("done")
         blockers = report["release_decision"]["safe_for_public_clone"] is False
         print(
             "audit_reachable_release_history: "
@@ -1606,7 +2424,16 @@ def main(argv: list[str] | None = None) -> int:
     except (OSError, json.JSONDecodeError) as exc:
         print(f"audit_reachable_release_history: cannot read report ({type(exc).__name__})", file=sys.stderr)
         return 2
-    current = build_audit(ROOT)
+    try:
+        current = build_audit(
+            ROOT,
+            progress=progress,
+            cache=cache,
+            payload_selection=args.payload_selection,
+        )
+    finally:
+        cache.close()
+    progress.phase("done")
     errors = comparison_errors(report, current, ROOT)
     if errors:
         for error in errors:

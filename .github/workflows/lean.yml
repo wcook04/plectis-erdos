@@ -13,7 +13,15 @@ name: Lean CI
 on:
   pull_request:
   # Manual dispatch remains the explicit way to revalidate main, a tag, or any
-  # other ref without a dummy commit.
+  # other ref without a dummy commit. This is also the merged-revision route,
+  # and it is an execution step rather than a hope: GitHub's own ref selector
+  # on "Run workflow" decides what every checkout below resolves, so after a
+  # merge, dispatching this workflow with ref `main` validates the exact
+  # merged commit and the run's job summary names the revision it tested. The
+  # release plan requires that dispatch and its run ids before the release is
+  # published. Nothing here validates a merged revision on its own: a
+  # pull_request run tests GitHub's synthetic merge of the head into the base
+  # at that moment, which is not the commit that lands.
   workflow_dispatch:
     inputs:
       scope:
@@ -119,6 +127,33 @@ jobs:
           fetch-depth: 0 # change gate compares the complete PR or push range
           filter: blob:none # retain history without eagerly transferring obsolete large blobs
           persist-credentials: false
+      # A green check is evidence about one revision, and on a pull_request the
+      # revision this job compiles is GitHub's synthetic merge of the head into
+      # the base, not the head a reviewer reads and not the commit that lands.
+      # A receipt that leaves that implicit lets a reader carry the verdict to
+      # the wrong commit, so the tested subject is named here in the run's own
+      # summary rather than inferred from the event.
+      - name: Name the tested revision
+        run: |
+          subject="$(git rev-parse HEAD)"
+          {
+            echo "### Tested revision"
+            echo
+            echo "- event: \`$EVENT_NAME\`"
+            echo "- checked-out subject: \`$subject\`"
+            if [[ "$EVENT_NAME" == "pull_request" ]]; then
+              echo "- pull-request head: \`$PR_HEAD_SHA\`"
+              echo "- pull-request base: \`$PR_BASE_SHA\`"
+              echo "- the subject is GitHub's synthetic merge commit, not the head and not the merged commit on the base branch"
+            fi
+            echo
+            echo "Validate the revision that actually lands by dispatching this workflow on that ref after the merge."
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "tested subject: $subject"
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
       - name: Install the pinned Python runtime
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
@@ -262,8 +297,15 @@ jobs:
       - name: Export the fresh dependency index for the operator
         if: steps.dependency-index.outcome == 'failure'
         run: python3 scripts/build_lean_dependency_index.py
-      - name: Upload the fresh dependency index
-        if: steps.dependency-index.outcome == 'failure'
+      # Uploaded on success as well. The index is the elaborated-environment
+      # receipt for this build, and only a job that has just built the tree can
+      # produce it. Keeping it for failures alone meant the release could not
+      # attach the index for the revision it publishes without a second two to
+      # three hour build. On failure the artifact carries the freshly exported
+      # index and the job still fails below; on success it carries the tracked
+      # index the check just certified.
+      - name: Upload the dependency index
+        if: ${{ !cancelled() && steps.lean-inputs.outputs.changed == 'true' }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: lean-dependency-index-${{ github.sha }}

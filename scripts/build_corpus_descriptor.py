@@ -526,6 +526,14 @@ def build_access_contract(repository: str) -> dict[str, Any]:
         "repository_web": repository,
         "clone_url": clone_url,
         "checkout_directory": checkout,
+        "placeholder_identities": {
+            "<published_commit>": (
+                "the publication identity: the merge commit or release tag that "
+                "carries the assembled papers and docs/claims.json, never the "
+                "formal-source commit, which pins only the checked Lean source"
+            ),
+            "<remote_ref>": "the branch or tag name that resolves to <published_commit>",
+        },
         "profiles": {
             "mathematical_reasoning": {
                 "purpose": (

@@ -211,6 +211,32 @@ argument here is not identified with the one he omitted, and its novelty and
 priority have not been assessed.  The printed pairwise-coprime theorem is
 retained below as an attributed specialisation.
 
+\emph{Where the coprimality hypothesis is not needed.}  The proof works in the
+shifted-atom coordinate $\sum_{d\in A}b^{N\bmod d}/(b^{d}-1)$, the
+\mword{Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{34}{shiftedRadixSupportAtom}{support-restricted
+radix atom} summed over $d$.  Each element of $A$ contributes one periodic
+orbit of its own period, and the sum records no relation between distinct
+elements.  Pairwise coprimality is a hypothesis about such relations, so this
+coordinate gives it no place to enter.  Reciprocal summability is consumed
+instead, at exactly one point.  The close return at shift $N$ comes from the
+LCM-prefix limit of the gcd-orbit means, then a Ces\`aro limit at the selected
+positive LCM step, then a single term no larger than that finite average, which
+is
+\mword{Erdos249257/ReciprocalSupportIrrationality.lean}{957}{exists_shiftedSupportAtom_closeReturn_of_summable_reciprocal}{checked}.
+Infinitude of $A$ supplies the strict minimality of the shift-$0$ value
+(\mword{Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{246}{shiftedRadixSupportAtom_zero_strictMinimum}{checked}),
+a displacement bound with constant $2$ uniform in $b$, $N$ and $d$ carries the
+binary returns to every integer radix
+(\mword{Erdos249257/AllBaseReciprocalSupportIrrationality.lean}{270}{shiftedRadixAtom_sub_zero_le_two_mul_binary_sub_zero}{checked}),
+and the integer orbit $u_{N+1}=bu_N-v\,\scA_A(N+1)$ forced by a rational value
+then has $u_N-u_0$ strictly between $0$ and $1$.  The unresolved regime sits
+outside this argument at the same single point: for an infinite support with
+$\sum_{a\in A}a^{-1}=\infty$ the averaging step has no summable majorant and
+supplies no close return.  Section~\ref{sec:eight-return-extensions} reaches
+subclasses of that regime by separate ordinary criteria, and
+Section~\ref{sec:forced} constrains a hypothetical rational value there without
+excluding one.
+
 \emph{Remaining obligation.}  Theorem~\ref{res:reciprocal-summable-support}
 settles every infinite support with $\sum_{a\in A}a^{-1}<\infty$.  The exact
 statement still to be proved for Problem~\ref{res:problem} is irrationality

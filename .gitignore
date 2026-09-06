@@ -47,3 +47,7 @@ _residual_probe.lean
 # Conventional scratch/output directory. Nothing under a top-level tmp/ is
 # ever tracked.
 /tmp/
+
+# Progress telemetry sidecar written while scripts/audit_reachable_release_history.py
+# runs. It is a liveness surface for a long scan, never release evidence.
+docs/release/*.progress.json

@@ -59,15 +59,30 @@
     "evidence_class": "blinded_recovery_evaluation",
     "questions": [
       {
+        "id": "Q0_obligation_extraction_and_candidate_admissibility",
+        "statement": "Given a stated target and a named candidate declaration, does the runtime at the parent revision expose the exact remaining obligation, and does the pinned kernel accept an authored candidate that carries neither the later declaration name nor the later module name, inside the constructed hybrid-dependency environment?",
+        "answerable_from_the_current_run": true,
+        "note": "This is a property of the runtime and of one authored candidate. It is a mechanical fixture result. No reader and no agent is observed, and no route is compared."
+      },
+      {
         "id": "Q1_interpretation",
-        "statement": "Do the current semantic layers help a reader find the relevant mathematics and interpret it correctly?",
-        "answerable_from_a_historical_checkout": true,
-        "note": "The obstruction packet compiled inside the past checkout is evidence about the layers as they stood at that revision."
+        "statement": "Do the semantic layers present at a revision let a reader find the relevant mathematics and interpret it correctly?",
+        "answerable_from_a_historical_checkout": false,
+        "answerable_from_the_current_run": false,
+        "research_question_association": "scripts/historical_bridge_experiment.py is the harness the Q1 study would be built from. The association is a research-agenda link and is not a result.",
+        "why_the_current_run_does_not_answer_it": [
+          "the candidate proof is authored in the harness rather than produced by a participant",
+          "the compiler request names the target statement and the exact candidate declaration, so the obligation is confirmed against an answer key rather than found",
+          "only the derived-layer arm is run, so no route is compared",
+          "no reader and no agent is in the loop, so interpretation is not observed at all"
+        ],
+        "what_would_answer_it": "the fresh-context use experiment: two arms, the same task, target, permissions and budget, participants with no access to any wave report, audit or integration trace, and returns scored against the six outcomes of controlled_comparison"
       },
       {
         "id": "Q2_acceleration",
         "statement": "Do the historical derived layers shorten the work of producing a later result?",
         "answerable_from_a_historical_checkout": false,
+        "answerable_from_the_current_run": false,
         "note": "A past checkout alone does not isolate acceleration. Every channel in leakage_channels with controlled false can carry the later answer into the run."
       }
     ],
@@ -210,7 +225,7 @@
           "definition": "A maintainer can integrate the return without reconstructing the reasoning that produced it."
         }
       ],
-      "reporting_rule": "Report both arms and every uncontrolled channel. A single-arm run reports Q1 only."
+      "reporting_rule": "Report both arms and every uncontrolled channel. A single-arm run with an authored candidate and a named candidate declaration reports Q0 only. It reports nothing about Q1 and nothing about Q2."
     },
     "fixture_separation": {
       "development_fixture_id": "half_divisor_coefficient_bridge",
@@ -244,7 +259,70 @@
         "checks": "The run must report the route as open and name the missing obstruction."
       }
     ],
-    "scope_limit": "This design records how a historical run must be read. It proves nothing, and it does not license any acceleration claim."
+    "scope_limit": "This design records how a historical run must be read. It proves nothing, and it licenses neither an interpretation claim nor an acceleration claim. The current run establishes obligation extraction and candidate admissibility in a constructed hybrid-dependency environment, and nothing beyond that.",
+    "claim_ceiling_of_the_current_run": "Q0_obligation_extraction_and_candidate_admissibility",
+    "question_answered_by_the_current_run": "Q0_obligation_extraction_and_candidate_admissibility",
+    "questions_not_answered_by_the_current_run": [
+      "Q1_interpretation",
+      "Q2_acceleration"
+    ],
+    "environment_record": {
+      "id": "hybrid_dependency_environment",
+      "statement": "The run does not reproduce the historical build environment. scripts/historical_bridge_experiment.py checks out the parent revision into a disposable clone and then symlinks .lake/packages from the current tree, so the parent source is elaborated against the current dependency set. The environment is a hybrid of past source and present dependencies, and the receipt must name it rather than leave it assumed.",
+      "required_receipt_fields": {
+        "historical_build_receipt.declared_dependency_pins": "the pins the parent revision declares, read at run time from git show <parent_commit>:lake-manifest.json and git show <parent_commit>:lean-toolchain",
+        "historical_build_receipt.effective_dependency_pins": "the pins the build actually uses, read from the current tree's lake-manifest.json and lean-toolchain, because .lake/packages is a symlink into the current tree",
+        "historical_build_receipt.dependency_pin_environment": "one of historical, current, or hybrid; the current design always produces hybrid",
+        "historical_build_receipt.dependency_pin_divergence": "the package names whose revision differs between the two pin sets, together with the toolchain comparison; an empty list is a recorded finding and not an absent field"
+      },
+      "effective_pins_observed_in_the_release_candidate_on_2026_09_06": {
+        "source": "lake-manifest.json and lean-toolchain at the release candidate root, read directly",
+        "lean_toolchain": "leanprover/lean4:v4.29.1",
+        "manifest_version": "1.1.0",
+        "packages": {
+          "mathlib": "5e932f97dd25535344f80f9dd8da3aab83df0fe6",
+          "plausible": "83e90935a17ca19ebe4b7893c7f7066e266f50d3",
+          "LeanSearchClient": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+          "importGraph": "48d5698bc464786347c1b0d859b18f938420f060",
+          "proofwidgets": "4dd0959c44d1af0462bd604d0f87c5781307d709",
+          "aesop": "7152850e7b216a0d409701617721b6e469d34bf6",
+          "Qq": "707efb56d0696634e9e965523a1bbe9ac6ce141d",
+          "batteries": "756e3321fd3b02a85ffda19fef789916223e578c",
+          "Cli": "7802da01beb530bf051ab657443f9cd9bc3e1a29"
+        },
+        "declared_pins_at_the_parent_revision": "not transcribed here; reading them requires git in the release candidate, which the wave contract reserves for the conductor. The run must read them and record them."
+      },
+      "consequence": "A verdict from this harness is a statement about the hybrid environment. It is not a statement about what the parent revision would have built on its own dependencies."
+    },
+    "receipt_path_rule": {
+      "authoritative_path": "docs/measurements/historical_bridge_experiment.json",
+      "staging_path": "docs/measurements/historical_bridge_experiment.partial.json",
+      "writer": "scripts/historical_bridge_experiment.py prints one JSON packet to standard output and writes no file. The runner captures that output to the staging path.",
+      "promotion_rule": "The staging file is promoted to the authoritative path only after every promotion condition holds. A partial, truncated or aborted output must never occupy the authoritative path, because a reader who finds a file there treats it as a completed run.",
+      "promotion_conditions": [
+        "the staging file is nonempty",
+        "the staging file parses as JSON",
+        "schema_version equals erdos249257-historical-bridge-experiment/1",
+        "experiment_design is present and carries question_answered",
+        "historical_build_receipt carries the four dependency pin fields of environment_record.required_receipt_fields",
+        "the process exit status is recorded in run_exit_status",
+        "status is set to complete"
+      ],
+      "status_field_contract": {
+        "field": "status",
+        "required": true,
+        "values": {
+          "complete": "the run finished, every promotion condition held, and the verdict fields are all present",
+          "aborted": "the run raised on a control check, for example a changed parent identity, a future module found in the parent checkout, or a failed historical dependency build; the reason is recorded in abort_reason",
+          "partial": "the run stopped without an abort reason, for example on a budget timeout or an interrupted build"
+        },
+        "companion_fields": {
+          "run_exit_status": "the process exit status of the run",
+          "abort_reason": "present when status is aborted"
+        },
+        "reader_rule": "A receipt whose status is not complete carries no verdict and supports no sentence in any paper, README or claim record. Only the authoritative path is citable, and only at status complete."
+      }
+    }
   },
   "human_capsule": [
     "The exact boundary between proved and open must remain explicit.",
