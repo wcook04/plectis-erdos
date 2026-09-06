@@ -340,7 +340,31 @@ the centre of its dyadic arc, at full arithmetic resolution.
 
 The following hold with no irrationality hypothesis. They are the results a
 specialist should know before reading further; each is stated at the scale at
-which it is actually proved.
+which it is actually proved. The first is the strongest unconditional theorem
+in the programme about a series driven by $\varphi$ itself, and it is stated
+first for that reason. Everything after it is negative knowledge about $S$:
+obstructions, reformulations, countermodels and finite exclusions.
+
+\begin{thm}[Irrationality of the fixed-resolution totient observables]
+\label{thm:residueobservable}
+Let $m \ge 2$, let $f : \N \to \Z$ satisfy $f(0) = 0$, and let $r < m$ satisfy
+$\gcd(r+1, m) = 1$ and $f(r) \ne 0$. Then $\sum_{n} f(\varphi(n) \bmod m)/2^{n}$
+is irrational. In particular $A_m = \sum_n (\varphi(n) \bmod m)/2^n$ is
+irrational for every $m \ge 3$, and $m \ge 3$ is sharp, since $A_1 = 0$ and
+$A_2 = 3/4$. The mechanism is the isolated-pulse argument of Erd\H{o}s 1948,
+and reducing $\varphi$ modulo $m$ is what makes the pulses isolated; the
+prior-art audit located no exact antecedent for the statement.
+
+This decides no instance of \#249. The coefficients of $S$ are the unreduced
+values $\varphi(n)$, and $S$ remains open. The Lean development lives in the
+private authoring tree at
+\texttt{ErdosProblems/Erdos249/ResidueClassTotientSeries.lean}, with
+\texttt{irrational\_totientObservable} at line 502, the dyadic form
+\texttt{fixed\_resolution\_observable\_irrational} at line 544 and the corollary
+\texttt{residue\_series\_irrational} at line 570. It is absent from the release
+tree at this checkpoint, so no link into the checkpoint is given.
+\coord{binary-digit} \scale{uniform} \ev{Lean}
+\end{thm}
 
 \begin{thm}[Sharp positive rank-one floor]
 \label{thm:rankonefloor}

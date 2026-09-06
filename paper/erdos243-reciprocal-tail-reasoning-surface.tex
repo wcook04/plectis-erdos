@@ -42,8 +42,21 @@
 Sylvester's sequence satisfies $a_{n+1}=a_n^2-a_n+1$ and has reciprocal sum
 $1$.  Erd\H{o}s asked whether every increasing integer sequence with
 $a_{n+1}/a_n^2\to1$ and rational reciprocal sum satisfies this recurrence
-eventually.  The leading result of this note is an exact criterion carrying
-those hypotheses and no others.  Write $(C_n,D_n,E_n)$ for the integer state
+eventually.  The leading result of this note carries no rationality hypothesis
+and no state hypothesis: if strictly increasing positive integers satisfy
+$a_n^2/a_{n+1}=1+3/n+o(n^{-3})$, then $\sum_n1/a_n$ is irrational
+(Theorem~\ref{res:cubicrate}).  That rate lies inside the growth hypothesis of
+Problem~\ref{res:problem}, since $1+3/n+o(n^{-3})\to1$, so on that rate class
+the assertion of the problem holds and no counterexample remains to be checked;
+the conclusion is reached by excluding a rational reciprocal sum rather than by
+producing the recurrence, and Sylvester's own sequence is not in the class.
+Every other rate remains undecided, and Problem~\#243 itself remains open.  The
+proof is ordinary mathematics resting on a rising-factorial cubic exclusion
+(Theorem~\ref{res:cubicexclusion}), with an exact finite replay of every finite
+claim, and no Lean declaration covers either statement.
+
+The strongest statement carrying the hypotheses of Problem~\ref{res:problem}
+and no others is a target-equivalent reformulation.  Write $(C_n,D_n,E_n)$ for the integer state
 of Section~\ref{sec:state}, $L_n=\lcm(q,a_0,\ldots,a_{n-1})$, $M_n=D_n/L_n$,
 $U_n=C_n/M_n$, $V_n=E_n/M_n$, and $\mathcal R$ for the set of steps that set a
 new record for $U$, where $q$ is a common denominator of the reciprocal sum.
@@ -53,7 +66,8 @@ where $f$ is any finite nonincreasing weight with divergent integral
 (Theorem~\ref{res:weightedrecord}).  Equation~\eqref{eq:weightedgrowth} is an
 equivalent form written in the growth defect $a_n^2/a_{n+1}-1$.
 
-That criterion is an ordinary mathematical proof.  Its finite first-crossing
+That criterion is a target-equivalent reformulation, and it is an ordinary
+mathematical proof.  Its finite first-crossing
 arithmetic is kernel-checked, in the
 \lword{Erdos243/LcmRecordExcess.lean}{31}{covered_wall_forces_excess}{covered-wall
 charge} and the three lemmas beside it, and the analytic half is not
@@ -72,8 +86,9 @@ than $1$, so $\Theta\le1$ already forces the recurrence.  One replaces a constan
 on the negative part by the bound $(1-\delta)\ell(C_n)$.  One states the
 Lean-checked endpoint in the language of the original problem, where the
 Erd\H{o}s--Straus quantity $Q_n$ is asked only for $\limsup_nQ_n<\infty$ in
-place of their $\limsup_nQ_n\le0$.  One is an unconditional irrationality
-criterion at the cubic rate $a_n^2/a_{n+1}=1+3/n+o(n^{-3})$.  The last two
+place of their $\limsup_nQ_n\le0$.  One is the cubic-rate irrationality
+theorem stated above, with the rising-factorial exclusion it rests on.  The
+last two
 record what the method cannot reach: the classical Ahmes criteria all decide
 exactly the half-space $E_n\ge0$ eventually, and pairwise coprimality with
 whole-modulus avoidance admits rises of order $\log C_n$.
@@ -230,8 +245,8 @@ $e_n$ at an index where the centred state is negative.
 
 His Theorem~16
 ~\cite[p.~11]{koizumi2025} shows
-that his Conjecture~6 --- that for a positive rational $r$ whose gap sequence
-satisfies $\varepsilon_n\to0$ one has $\varepsilon_n=0$ for all large $n$ ---
+that his Conjecture~6, that for a positive rational $r$ whose gap sequence
+satisfies $\varepsilon_n\to0$ one has $\varepsilon_n=0$ for all large $n$,
 is equivalent to an affirmative answer to the question of Erd\H{o}s and Graham
 recorded as his Question~5, which is Problem~\ref{res:problem} above.
 Two of the implications proved below have prior art in these canonical
@@ -287,14 +302,25 @@ $E$, and the whole question is whether $E$ can avoid vanishing.
 
 \begin{quote}\small
 \textbf{Strongest result.}
+If strictly increasing positive integers satisfy
+$a_n^2/a_{n+1}=1+3/n+o(n^{-3})$, then $\sum_n1/a_n$ is irrational
+(Theorem~\ref{res:cubicrate}).  The theorem assumes that rate and nothing else.
+The rate class sits inside the growth hypothesis of
+Problem~\ref{res:problem}, so the assertion of the problem holds on it, by
+exclusion of a rational reciprocal sum and not by production of the recurrence.
+This is an ordinary proof with an exact finite replay, and no Lean declaration
+covers it.
+
+\smallskip
+\textbf{Strongest statement under the problem's own hypotheses.}
 Under the hypotheses of Problem~\ref{res:problem} and no others, the sequence
 is eventually Sylvester if and only if the weighted record-excess sum
 $\sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)$ is finite for some integer $B\ge0$
 (Theorem~\ref{res:weightedrecord}).  This is an ordinary proof whose finite
 first-crossing arithmetic is kernel-checked and whose analytic half is not.
 The hypotheses of Problem~\ref{res:problem} do not supply that finiteness, so
-the criterion is an exact reformulation of the problem rather than a solution
-of it.
+the criterion is a target-equivalent reformulation of the problem rather than a
+solution of it.
 
 \smallskip
 \textbf{Strongest Lean-checked result.}
@@ -311,12 +337,6 @@ $\sum_n(-E_n)_+/C_n$ is finite, provided the strict centred-step equation is
 available (Theorem~\ref{res:mass}).
 
 \smallskip
-\textbf{Strongest exclusion of an unconditional kind.}
-At the cubic rate $a_n^2/a_{n+1}=1+3/n+o(n^{-3})$ the reciprocal sum is
-irrational (Theorem~\ref{res:cubicrate}).  This assumes no rationality and no
-state hypothesis, and it lies outside the regime of
-Problem~\ref{res:problem} only through its rate.
-
 \smallskip
 \textbf{What remains open.}
 Koizumi's coordinates provide normalised vanishing for the canonical orbit,
@@ -351,6 +371,9 @@ Section~\ref{sec:open}.
 
 \subsection*{Structure}
 
+Section~\ref{sec:cubicrate} proves the unconditional cubic-rate irrationality
+theorem, which is the only result here that settles the assertion of
+Problem~\ref{res:problem} on a class of sequences.
 Section~\ref{sec:state} sets up the state system, and Section~\ref{sec:defect}
 proves the defect identity, from which eventual vanishing of $E$ forces the
 Sylvester recurrence and a single vanishing error propagates.
@@ -363,7 +386,8 @@ constant magnitude (Section~\ref{sec:constant}), periodic magnitude
 (Sections~\ref{sec:barrier} and~\ref{sec:bounded}), finite normalised negative
 mass (Section~\ref{sec:mass}), and what is left (Section~\ref{sec:open}).
 These sections contain the new content; a reader who wants only the strongest
-statements should read Sections~\ref{sec:lcmrecords} and~\ref{sec:records}, and
+statements should read Section~\ref{sec:cubicrate}, then
+Sections~\ref{sec:lcmrecords} and~\ref{sec:records}, and
 then Section~\ref{sec:open}.  Appendix~\ref{app:index} is a guide to the formal
 sources, and Appendix~\ref{app:residue} records an exact residue reduction that
 an earlier finite search used.  Linked phrases open the corresponding Lean
@@ -375,6 +399,64 @@ a Lean module that is outside that revision, it says so in place of a link.
 unit fractions; Lean~4.
 \qquad
 \textbf{MSC 2020.} 11J72 (primary); 11B37, 11D68, 68V20 (secondary).
+
+\section{An unconditional irrationality theorem}\label{sec:cubicrate}
+
+The second theorem of this section is the note's lead, and it is stated in the
+sequence alone.  The first is the exclusion it rests on, and it is stated in
+the integer state $(C_n,D_n,E_n)$ that Section~\ref{sec:state} constructs from
+a rational reciprocal sum; a reader meeting $C_n$ for the first time can read
+Theorem~\ref{res:cubicrate} on its own and return here afterwards.
+
+\begin{theorem}[rising-factorial cubic exclusion]\label{res:cubicexclusion}
+For every exact positive integer orbit, every $\alpha\in\Q_{>0}$ and every
+$\beta\in\Q$,
+\[
+ \liminf_{X\to\infty}
+ \frac{\#\{n\le X:C_n\ne\alpha\,n(n+1)(n+2)+\beta\}}{X}>0 .
+\]
+\end{theorem}
+
+\begin{theorem}[cubic-rate irrationality]\label{res:cubicrate}
+If strictly increasing positive integers satisfy
+$a_n^2/a_{n+1}=1+3/n+o(n^{-3})$, then $\sum_n1/a_n$ is irrational.
+\end{theorem}
+
+\paragraph{Mechanism.}
+Density zero of the exceptions would give four consecutive agreements
+arbitrarily late, so the third difference is constant, $G_n$ stabilises, and the
+primitive tail carries an integral cubic $Q(n)=(m/6)n(n+1)(n+2)+c$ with
+$c=\pm1$ by adjacent coprimality.  For the irreducible case, a numerator zero
+makes an explicit quantity a square modulo the specialising prime, so Chebotarev
+square specialisation puts $x^2-1$ in the squares of the field generated by a
+root $x$ of the associated cubic; the trace conditions then force the sole
+integer scale $m=12$.  The two survivors
+$2n(n+1)(n+2)\pm1$ have numerator words modulo $7$ that the feedback recursion
+cannot realise, which gives lower density at least $1/28$.  For the corollary,
+rationality gives the canonical orbit with
+$C_{n+1}/C_n=a_n^2/a_{n+1}+O(1/a_n)$ and $1/a_n\ll n^{-3}$; an integer-extraction
+lemma at a regular rate then produces an exact rising-factorial cubic, against
+the exclusion.
+
+\paragraph{Evidence.}
+Ordinary proof with an exact finite replay of every finite claim, including the
+two words modulo $7$, the image $\{0,2,5,6\}$ of the recursion, the sole integer
+scale $12$, and the countermodel $n(n+1)(n+2)+(-1)^n$, whose ratio is
+$1+3/n+O(n^{-3})$ and which is not eventually polynomial.  This countermodel
+shows the exponent $o(n^{-\lambda})$ in the extraction lemma is sharp.  No Lean
+declaration covers either statement.
+
+\paragraph{Position.}
+Theorem~\ref{res:cubicrate} carries no rationality hypothesis and no state
+hypothesis, and it is the only unconditional irrationality statement in this
+note.  Its rate class lies inside the growth hypothesis of
+Problem~\ref{res:problem}, because $a_n^2/a_{n+1}=1+3/n+o(n^{-3})$ forces
+$a_{n+1}/a_n^2\to1$.  On that class the assertion of
+Problem~\ref{res:problem} therefore holds, because no sequence in it has a
+rational reciprocal sum; the recurrence is never exhibited, and Sylvester's own
+sequence, whose ratio $a_n^2/a_{n+1}$ is $1+O(1/a_n)$, is not in the class.
+The earlier sections decide nothing at this rate, and every other rate inside
+the growth hypothesis remains undecided.
 
 \section{The centred integer state}\label{sec:state}
 
@@ -1159,52 +1241,6 @@ excluded only by Theorem~\ref{res:constant}.  This sharpens the sufficient rate
 $a_n^2/a_{n+1}=1+o(1/n)$ recorded by Koizumi~\cite[Remark~21,
 p.~13]{koizumi2025} to an explicit constant.  Ordinary proof; the endgame is
 Koizumi's Proposition~19(2).
-
-\subsection{An unconditional irrationality criterion}
-
-\begin{theorem}[rising-factorial cubic exclusion]\label{res:cubicexclusion}
-For every exact positive integer orbit, every $\alpha\in\Q_{>0}$ and every
-$\beta\in\Q$,
-\[
- \liminf_{X\to\infty}
- \frac{\#\{n\le X:C_n\ne\alpha\,n(n+1)(n+2)+\beta\}}{X}>0 .
-\]
-\end{theorem}
-
-\begin{theorem}[cubic-rate irrationality]\label{res:cubicrate}
-If strictly increasing positive integers satisfy
-$a_n^2/a_{n+1}=1+3/n+o(n^{-3})$, then $\sum_n1/a_n$ is irrational.
-\end{theorem}
-
-\paragraph{Mechanism.}
-Density zero of the exceptions would give four consecutive agreements
-arbitrarily late, so the third difference is constant, $G_n$ stabilises, and the
-primitive tail carries an integral cubic $Q(n)=(m/6)n(n+1)(n+2)+c$ with
-$c=\pm1$ by adjacent coprimality.  For the irreducible case, a numerator zero
-makes an explicit quantity a square modulo the specialising prime, so Chebotarev
-square specialisation puts $x^2-1$ in the squares of the field generated by a
-root $x$ of the associated cubic; the trace conditions then force the sole
-integer scale $m=12$.  The two survivors
-$2n(n+1)(n+2)\pm1$ have numerator words modulo $7$ that the feedback recursion
-cannot realise, which gives lower density at least $1/28$.  For the corollary,
-rationality gives the canonical orbit with
-$C_{n+1}/C_n=a_n^2/a_{n+1}+O(1/a_n)$ and $1/a_n\ll n^{-3}$; an integer-extraction
-lemma at a regular rate then produces an exact rising-factorial cubic, against
-the exclusion.
-
-\paragraph{Evidence.}
-Ordinary proof with an exact finite replay of every finite claim, including the
-two words modulo $7$, the image $\{0,2,5,6\}$ of the recursion, the sole integer
-scale $12$, and the countermodel $n(n+1)(n+2)+(-1)^n$, whose ratio is
-$1+3/n+O(n^{-3})$ and which is not eventually polynomial.  This countermodel
-shows the exponent $o(n^{-\lambda})$ in the extraction lemma is sharp.  No Lean
-declaration covers either statement.
-
-\paragraph{Position.}
-Theorem~\ref{res:cubicrate} carries no rationality hypothesis and no state
-hypothesis.  Its rate is faster than the regime of Problem~\ref{res:problem}
-allows to be decided by the earlier sections, and it is the only unconditional
-irrationality statement in this note.
 
 \subsection{What the method cannot reach}
 

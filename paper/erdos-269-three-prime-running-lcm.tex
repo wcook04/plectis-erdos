@@ -13,7 +13,7 @@
 \renewcommand{\commit}{4ab50e144847a3393fb340341760e5d6907d702e}
 \renewcommand{\commitshort}{4ab50e144847}
 \hypersetup{
-  pdftitle={A window-escape equivalence and exact three-prime structure for Erdős Problem 269},
+  pdftitle={Transcendence of both two-prime running-LCM series, and the three-prime frontier, for Erdős Problem 269},
   pdfsubject={Erdős Problem Notes: Problem 269},
   pdfkeywords={transcendence, Hecke-Mahler values, least common multiple, smooth numbers, lattice sums, Lean 4},
 }
@@ -32,8 +32,8 @@
 
 \runninghead{Erd\H{o}s \#269: three-prime running lcm}
 \title{The Three-Prime Running\\Least Common Multiple}
-\subtitle{A window-escape equivalence, exact three-prime structure,
-and a two-prime transcendence theorem}
+\subtitle{Transcendence for every two-prime instance of Erd\H{o}s
+Problem~\#269, exact three-prime structure, and the frontier at three primes}
 \author{Will Cook}
 \date{July 2026}
 
@@ -43,37 +43,22 @@ and a two-prime transcendence theorem}
 
 \begin{abstract}
 \noindent
-For three pairwise distinct primes \(p,q,r\) the reciprocal running-LCM kernel
-\(\Kernel(i,j,k)=1/\Lprefix(p^{i}q^{j}r^{k})\) admits no finite exact
-separation.  For every order \(n\) there are injective index families \(I,J\)
-whose minor \(\det(\Kernel(I(a),J(b),k))_{0\le a,b<n}\) is nonzero
-simultaneously in every layer \(k\), and consequently for no finite \(d\) do
-there exist rational-valued \(f_\ell(i)\) and \(G_\ell(j,k)\) with
-\(\Kernel(i,j,k)=\sum_{\ell<d}f_\ell(i)G_\ell(j,k)\) for all \(i,j,k\).  Both
-halves are checked by the Lean kernel at the pinned source
-revision~\commitshort, from the hypotheses that \(p,q,r\) are prime with
-\(p\ne r\) and \(q\ne r\), and the index construction runs on a Mathlib-only
-staircase engine for two rotations without integer returns.  Steve Fan recorded
-the qualitative obstruction for \(|P|\ge3\) in a comment of 26 June 2026, and
-the running-LCM identity for every \(k\) is his.  The theorem excludes a class
-of representations of the kernel and settles no instance of the problem.
-
-The strongest statement proved about the literal \(\{2,3,5\}\) series is an
-equivalence.  The cofinal local-window escape condition
-of~\eqref{eq:actual-escape} holds if and only if the running-LCM series value
-is irrational, for every short bound dominated by \(c(B)(n+1)^2\); that
-condition is therefore a restatement of the problem, and the equivalence proves
-neither of its two sides.  The rationality-to-carry bridge underneath it gives,
-from a rational value with denominator \(q=2^{\alpha}3^{\beta}5^{\gamma}B\) and
-\(\gcd(B,30)=1\), an integral reduced carry from the explicit onset
-\(a_0=\alpha+1+2\beta+3\gamma\), satisfying the actual recurrence with
-\(0<d_a\le 90B(a+1)^2\).  Both are checked by the Lean kernel, at
-\texttt{ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:398} and
-\texttt{ErdosProblems/Erdos269/RationalityCarryBridge.lean:324} in the private
-formal source and in the Palomar cut.  They are pinned here by coordinate,
-because the formal-source checkpoint \commitshort\ of this release predates
-both modules, and both enter the linked source of this manuscript at the next
-formal-source checkpoint.
+For every pair of distinct primes \(p,q\) both versions of the series of
+Erd\H{o}s Problem~\#269 are transcendental: the original series
+\(\mathcal R_{p,q}\), in which a reciprocal of the running least common
+multiple is taken at every \(\{p,q\}\)-smooth integer, and the de-duplicated
+series \(\mathcal D_{p,q}\), in which each distinct running least common
+multiple contributes once.  The hypothesis is that \(p\) and \(q\) are prime
+and distinct, and nothing else is assumed.  Every instance of the problem with
+\(|P|=2\) is therefore settled, at the stronger level of transcendence, and no
+instance with \(|P|\ge3\) is settled here, so Erd\H{o}s~\#269 remains open from
+three primes on.  Ordering the two pure-power channels gives a Beatty word and
+reduces both sums to a Hecke--Mahler value; the proof uses the theorem of
+Loxton and van der Poorten in the modern form stated by Bugeaud and Laurent.
+It is an argument in this paper, and no Lean declaration formalises it.  Steve
+Fan posted the same factorisation, the same reduction and the same conclusion
+on 26 June 2026, before the first public release of this manuscript, so the
+priority for the two-prime case is his.
 
 If \(\Lprefix(x)\) is the least common multiple of the \(\{p,q,r\}\)-smooth
 numbers not exceeding \(x\), then
@@ -92,25 +77,50 @@ upward closed and rigid inside anchor intervals of subexponential width.  The
 actual tail admits a quadratic bound in its logarithmic rank: if
 $n_a=\lfloor\log_2(2^a)\rfloor+\lfloor\log_3(2^a)\rfloor+
 \lfloor\log_5(2^a)\rfloor$, then $X_a\le(n_a^2+8n_a+18)/9$.  These results
-identify the hard branch and do not exclude it.
+identify the hard branch and do not exclude it.  The running-LCM identity for
+every $k$ is Steve Fan's.
 
-A lattice certificate at window length \(128\) and launch \(a_1=10005\)
+The remaining results are negative knowledge about the three-prime case, and
+each is labelled by what it is.  The first is a proved class obstruction.
+For three pairwise distinct primes \(p,q,r\) the reciprocal running-LCM kernel
+\(\Kernel(i,j,k)=1/\Lprefix(p^{i}q^{j}r^{k})\) admits no finite exact
+separation.  For every order \(n\) there are injective index families \(I,J\)
+whose minor \(\det(\Kernel(I(a),J(b),k))_{0\le a,b<n}\) is nonzero
+simultaneously in every layer \(k\), and consequently for no finite \(d\) do
+there exist rational-valued \(f_\ell(i)\) and \(G_\ell(j,k)\) with
+\(\Kernel(i,j,k)=\sum_{\ell<d}f_\ell(i)G_\ell(j,k)\) for all \(i,j,k\).  Both
+halves are checked by the Lean kernel at the pinned source
+revision~\commitshort, from the hypotheses that \(p,q,r\) are prime with
+\(p\ne r\) and \(q\ne r\), and the index construction runs on a Mathlib-only
+staircase engine for two rotations without integer returns.  Steve Fan recorded
+the qualitative obstruction for \(|P|\ge3\) in a comment of 26 June 2026.  The
+theorem excludes a class of representations of the kernel and settles no
+instance of the problem.
+
+The second is a target-equivalent reformulation.  The cofinal local-window
+escape condition
+of~\eqref{eq:actual-escape} holds if and only if the running-LCM series value
+is irrational, for every short bound dominated by \(c(B)(n+1)^2\); that
+condition is therefore a restatement of the problem, and the equivalence proves
+neither of its two sides.  The rationality-to-carry bridge underneath it gives,
+from a rational value with denominator \(q=2^{\alpha}3^{\beta}5^{\gamma}B\) and
+\(\gcd(B,30)=1\), an integral reduced carry from the explicit onset
+\(a_0=\alpha+1+2\beta+3\gamma\), satisfying the actual recurrence with
+\(0<d_a\le 90B(a+1)^2\).  Both are checked by the Lean kernel, at
+\texttt{ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:398} and
+\texttt{ErdosProblems/Erdos269/RationalityCarryBridge.lean:324} in the private
+formal source and in the Palomar cut.  They are pinned here by coordinate,
+because the formal-source checkpoint \commitshort\ of this release predates
+both modules, and both enter the linked source of this manuscript at the next
+formal-source checkpoint.
+
+The third is a finite exclusion.  A lattice certificate at window length
+\(128\) and launch \(a_1=10005\)
 excludes every rational value whose reduced denominator is \(MB\) with \(M\) a
 \(30\)-smooth divisor of \(2^{10005}3^{6312}5^{4308}\), \(\gcd(B,30)=1\) and
 \(1<B\le1.1346\times10^{105}\).  The exclusion index is certified \(J=1\) from
 a reduced basis lying inside the budget.  This is a finite computation with a
 replayable receipt, and no Lean declaration carries any part of it.
-
-For every pair of distinct primes both versions of Erd\H{o}s Problem~\#269 are
-transcendental: the original series, in which a reciprocal is repeated at every
-smooth integer, and the de-duplicated series, in which each running least
-common multiple contributes once.  Ordering the two pure-power channels gives a
-Beatty word and reduces both sums to a Hecke--Mahler value.  The proof uses the
-theorem of Loxton and van der Poorten in the modern form stated by Bugeaud and
-Laurent.  It is an argument in this paper, and no Lean declaration formalises
-it.  Steve Fan posted the same reduction and the same conclusion on 26 June
-2026, before the first public release of this manuscript, so the priority for
-the two-prime case is his.
 
 The three-prime problem remains open.  A reproducible integer scan finds an
 escaping window of length at most \(18\) for each of \(106{,}666\) tested
@@ -119,26 +129,31 @@ quantifiers of~\eqref{eq:actual-escape} remain unproved.
 \end{abstract}
 
 \begin{paperresult}{Leading results, their evidence, and the limit}
-\textbf{The $\{2,3,5\}$ series.} Rationality gives a positive integral reduced
-carry after cancellation of the smooth denominator factor, and the cofinal
-residue-window escape condition of~\eqref{eq:actual-escape} is equivalent to
-irrationality of the series; the equivalence is kernel-checked in the private
-formal source and in the Palomar cut, at the coordinates given in
-Section~\ref{sec:lead}.  The escape condition is therefore a restatement of the
-problem, and the equivalence proves neither of its two sides.
-\textbf{Three primes.} The running-LCM kernel admits no finite exact
-separation: every order has a nonsingular minor, uniformly in the third
+\textbf{Two primes.} For every pair of distinct primes both the original
+repeated series and the de-duplicated series are transcendental, by reduction
+to a Hecke--Mahler value.  This settles every $|P|=2$ instance of
+Erd\H{o}s~\#269 at the level of transcendence.  It is an ordinary proof over a
+cited external theorem, with no Lean declaration.  Steve Fan published the same
+result first, on 26 June 2026.
+\textbf{Structure at three primes.} The exact LCM cell structure, the jump
+count, the height-fibre normal form, the quadratic shell bound and the
+quadratic bound for the actual $\{2,3,5\}$ tail are proved here; the
+running-LCM identity for every $k$ is Fan's.
+\textbf{Proved class obstruction.} The running-LCM kernel admits no finite
+exact separation: every order has a nonsingular minor, uniformly in the third
 coordinate.  Both halves are checked by the Lean kernel
-(Section~\ref{sec:lead}).  The exact LCM cell structure, the jump count, the
-height-fibre normal form, the quadratic shell bound and the quadratic bound for
-the actual $\{2,3,5\}$ tail are proved here as well.
+(Section~\ref{sec:lead}).
+\textbf{Target-equivalent reformulation.} Rationality gives a positive integral
+reduced carry after cancellation of the smooth denominator factor, and the
+cofinal residue-window escape condition of~\eqref{eq:actual-escape} is
+equivalent to irrationality of the series; the equivalence is kernel-checked in
+the private formal source and in the Palomar cut, at the coordinates given in
+Section~\ref{sec:lead}.  The escape condition is a restatement of the problem,
+and the equivalence proves neither of its two sides.
 \textbf{Finite exclusion.} A window-$128$ lattice certificate excludes an
 arithmetically described family of rational values with reduced denominator
 $MB$, $M$ a $30$-smooth divisor of $2^{10005}3^{6312}5^{4308}$ and
 $1<B\le1.1346\times10^{105}$.  It is a computational receipt.
-\textbf{Two primes.} Both versions of the series are transcendental for every
-pair of distinct primes, by reduction to a Hecke--Mahler value.  Steve Fan
-published the same result first.
 \textbf{Open boundary.} Erd\H{o}s~\#269 is open for every $|P|\ge3$.  A scan
 verifies escape only on $106{,}666$ finite denominator/start pairs; the
 required unbounded-denominator and cofinal-start quantifiers remain unproved.
@@ -341,13 +356,14 @@ Section~\ref{sec:escape} determines the block alphabet, proves the conditional
 contradiction, and states the remaining unproved hypothesis.
 Section~\ref{sec:open} collects the questions that remain.  Linked phrases open
 the corresponding Lean declaration at the pinned source
-revision~\commitshort.  Section~\ref{sec:lead} states the four leading results
+revision~\commitshort.  Section~\ref{sec:lead} states the five leading results
 first, each with its hypotheses, the evidence class of each part, and the
 obligation that remains; a reader who wants the strongest content of this note
-can stop after it.  The two transcendence theorems rest on the cited external
-theorem and carry no Lean declaration.  Arbitrary-order non-separability and
-the actual shell-orbit dichotomy are proved in this paper and are also checked
-by the Lean kernel at the pinned revision.
+can stop after it.  It opens with the two transcendence theorems, which are the
+only statements here that settle instances of the problem; they rest on the
+cited external theorem and carry no Lean declaration.  Arbitrary-order
+non-separability and the actual shell-orbit dichotomy are proved in this paper
+and are also checked by the Lean kernel at the pinned revision.
 
 \medskip
 \noindent\textbf{Keywords.} irrationality; least common multiple; smooth
@@ -362,7 +378,48 @@ hypotheses, the evidence class of each part of it, the attribution where prior
 art applies, and the exact obligation that remains.  Full statements and proofs
 appear in the sections named against each entry.
 
-\subsection*{1. The three-prime kernel has no finite exact separation}
+\subsection*{1. Both two-prime series are transcendental}
+
+\begin{theorem}[two-prime transcendence, restated]\label{res:lead-two-prime}
+Let $p$ and $q$ be distinct primes, let $\mathcal R_{p,q}$ be the running-LCM
+reciprocal sum of Erd\H{o}s Problem~\#269 for $P=\{p,q\}$, taken over every
+$\{p,q\}$-smooth integer, and let $\mathcal D_{p,q}$ be the de-duplicated sum,
+in which each distinct running least common multiple contributes once.  Then
+$\mathcal R_{p,q}$ and $\mathcal D_{p,q}$ are transcendental.
+\end{theorem}
+
+These are Theorems~\ref{res:two-prime-repeated-transcendence}
+and~\ref{res:two-prime-transcendence}, proved in
+Section~\ref{sec:two-prime}.  They carry no hypothesis beyond primality and
+distinctness of $p$ and $q$.
+
+\emph{What they settle.}  Erd\H{o}s~\#269 asks for irrationality of the
+running-LCM reciprocal sum for a finite set of primes $P$ with $|P|\ge2$.  The
+two theorems settle every instance with $|P|=2$, and they settle it at the
+stronger level of transcendence.  No instance with $|P|\ge3$ is settled in this
+note.
+
+\emph{Evidence.}  Ordinary proof in this paper.  The reduction orders the two
+pure-power channels into a Beatty word and expresses each sum through a
+Hecke--Mahler value; transcendence of that value is the theorem of Loxton and
+van der Poorten \cite[Theorem~8]{loxtonvdp1977}, quoted in the modern form of
+Bugeaud and Laurent's Theorem~1.1
+\cite[p.~61, Theorem~1.1]{bugeaudlaurent2023}.  No Lean declaration formalises
+either theorem, and neither is described as Lean-checked anywhere in this note.
+
+\emph{Attribution.}  Steve Fan posted the same factorisation, the same
+Hecke--Mahler reduction and the same conclusion on 26 June
+2026~\cite{fan2026comment}, with follow-up remarks extending the argument to
+arbitrary coprime pairs.  This manuscript was first released publicly on 22
+July 2026.  The priority for the two-prime case is his; the argument here is
+independent and is retained because it fixes the $|P|=2$ boundary of the
+problem.
+
+\emph{Remaining obligation.}  A third prime replaces the single Beatty boundary
+by a genuinely two-dimensional ordering problem, so neither theorem supplies a
+three-prime irrationality result.
+
+\subsection*{2. The three-prime kernel has no finite exact separation}
 
 \begin{theorem}[no finite separation, restated]\label{res:lead-infinite-rank}
 Let $p,q,r$ be primes with $p\ne q$, $p\ne r$ and $q\ne r$, and put
@@ -404,7 +461,7 @@ Theorem~\ref{res:lcm} is stated by Fan for every $k$ and is cited to him.
 displayed finite-sum form.  It is not an independence, irrationality or
 transcendence statement, and it settles no instance of Erd\H{o}s~\#269.
 
-\subsection*{2. The escape condition is a restatement of the problem}
+\subsection*{3. The escape condition is a restatement of the problem}
 
 Section~\ref{sec:open} states the cofinal local-window escape condition
 \eqref{eq:actual-escape}, and Theorem~\ref{res:actual-escape-endpoint} proves
@@ -464,7 +521,7 @@ $P=\{2,3,5\}$, so work on that condition is work on the target.  One corollary
 is available to the reader now: no sharpening of the short bound below
 $c(B)(n+1)^2$ makes the producer weaker than the problem itself.
 
-\subsection*{3. Rationality forces an integral reduced carry from an explicit onset}
+\subsection*{4. Rationality forces an integral reduced carry from an explicit onset}
 
 \begin{theorem}[rationality-to-carry bridge, pinned by coordinate]\label{res:lead-carry-bridge}
 Suppose the shell tail value equals $p/q$ with $q>0$, and write
@@ -489,7 +546,7 @@ the target itself, so the bridge reduces Erd\H{o}s~\#269 to Erd\H{o}s~\#269.
 What it contributes is the explicit onset and the explicit integral
 recurrence, which are the objects a finite certificate can attack.
 
-\subsection*{4. A certified exclusion of an arithmetic family of rational values}
+\subsection*{5. A certified exclusion of an arithmetic family of rational values}
 
 \begin{theorem}[window-$128$ block exclusion, computational certificate]\label{res:lead-block-exclusion}
 At window length $L=128$, launch $a_1=10005$ and $64$ starts, no rational value
@@ -519,14 +576,13 @@ separate continued-fraction receipt excludes every denominator below
 $2^{22482}$, about $10^{6768}$, from $13{,}109$ certified partial quotients;
 the two exclusions have different shapes and neither contains the other.
 
-\subsection*{Two primes, and where the priority sits}
+\subsection*{The order of these five entries}
 
-Section~\ref{sec:two-prime} proves that both versions of the series are
-transcendental for every pair of distinct primes.  Steve Fan posted the same
-factorisation, the same Hecke--Mahler reduction and the same conclusion on
-26 June 2026~\cite{fan2026comment}, before the first public release of this
-manuscript.  The priority for the two-prime case is his.  The material is
-retained here because it fixes the $|P|=2$ boundary of the problem.
+Entry~1 is the only one that settles instances of Erd\H{o}s~\#269.  Entry~2 is
+a proved class obstruction, entry~3 is a target-equivalent reformulation,
+entry~4 is the conditional reduction that reformulation consumes, and entry~5
+is a finite exclusion.  Entries~2 to~5 measure kernel effort and generality,
+and none of them decides any instance of the problem.
 
 \section{The running least common multiple as a product of pure powers}\label{sec:lcm}
 

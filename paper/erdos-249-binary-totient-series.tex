@@ -30,7 +30,7 @@
 \renewcommand{\commit}{4ab50e144847a3393fb340341760e5d6907d702e}
 \renewcommand{\commitshort}{4ab50e144847}
 \hypersetup{
-  pdftitle={A basis for the 2-kernel of Euler's totient},
+  pdftitle={Irrationality of the fixed-resolution totient observables, and a basis for the 2-kernel of Euler's totient, for Erdős Problem 249},
   pdfsubject={Erdős Problem Notes: Problem 249},
   pdfkeywords={irrationality, Euler totient, k-regular sequences, 2-kernel, Lambert series, Möbius inversion, linear independence, Lean 4},
 }
@@ -44,10 +44,10 @@
 % Status tag from the claim taxonomy, printed on every numbered result.
 \newcommand{\stag}[1]{{\normalfont\footnotesize\textsc{[#1]}}}
 
-\runninghead{Erd\H{o}s \#249: a basis for the dyadic totient sections}
-\title{A Basis for the 2-Kernel of Euler's Totient}
-\subtitle{Exact finite-level ranks and consequences for Erd\H{o}s
-Problem~\#249}
+\runninghead{Erd\H{o}s \#249: irrationality of the totient observables}
+\title{Irrationality of the Fixed-Resolution\\Totient Observables}
+\subtitle{An unconditional theorem, exact finite-level ranks, and the open
+boundary of Erd\H{o}s Problem~\#249}
 \author{Will Cook}
 \date{July 2026}
 
@@ -62,7 +62,23 @@ irrational.  It is open.  Each result below carries its hypotheses, the part
 of its proof a Lean kernel checked, and the part that rests on exact
 computation or on ordinary mathematics.
 
-The leading result is a sharp obstruction with an explicit constant.  Put
+The leading result is an unconditional irrationality theorem about the totient
+word.  Let $m\ge2$, let $f:\N\to\Z$ satisfy $f(0)=0$, and let $r<m$ satisfy
+$\gcd(r+1,m)=1$ and $f(r)\ne0$.  Then $\sum_nf(\ph(n)\bmod m)/2^n$ is
+irrational.  In particular $A_m=\sum_n(\ph(n)\bmod m)/2^n$ is irrational for
+every $m\ge3$, and $m\ge3$ is sharp because $A_1=0$ and $A_2=3/4$.  This
+settles the fixed-resolution observables of the totient word completely, and it
+says nothing about $\Stot$ itself, whose coefficients are unreduced;
+Erd\H{o}s~\#249 is not settled here and no instance of it is.  The proof is
+checked by the Lean kernel as \texttt{irrational\_totientObservable}, with the
+corollary \texttt{residue\_series\_irrational}, in the private authoring tree,
+and it is absent from the release tree at commit~\texttt{\commitshort};
+Section~\ref{sec:results} gives its private-source coordinate and marks it for
+the next formal-source cycle.  The mechanism is the isolated-pulse argument of
+Erd\H{o}s 1948, and reducing $\ph$ modulo $m$ is what makes the pulses
+isolated.
+
+The second result is a proved class obstruction with an explicit constant.  Put
 $\Theta_2=\sum_{d\ge1}\mu(d)/(2^d-1)^2$, which equals $\Stot-1/2$ by the
 convolution identity $\ph=\mu*\mathrm{id}$ recorded by Fan~\cite{fan2026}, and
 for $e\ge1$ and $Y\ge4$ put
@@ -79,7 +95,8 @@ direct-sum approximation mechanism is closed by this constant.  Signed
 cancellation and genuinely coupled higher-rank approximants lie outside the
 statement.
 
-The second result names the remaining analytic obligation exactly.  Write
+The third result is a conditional reduction, and it names the remaining
+analytic obligation exactly.  Write
 \[
   D_{h,N,L}=\sum_{j=0}^{L-1}\bigl(\ph(N+h+1+j)-\ph(N+1+j)\bigr)2^{L-1-j}.
 \]
@@ -94,7 +111,7 @@ gap, and the hypothesis is open.  It is one exponential-sum cancellation bound
 over a single dyadic block, which is the form in which this note states its
 request to a specialist in analytic number theory.
 
-The third result is quantitative.  Exact rational bracketing of $\Stot$ at
+The fourth result is a finite exclusion.  Exact rational bracketing of $\Stot$ at
 $80\,000$ bits forces $23\,438$ continued-fraction partial quotients, each
 retained only when both endpoint integer parts agree, so a representation
 $\Stot=a/q$ in lowest terms has $q\ge2^{39989}$ and $q>10^{12038}$.  That bound
@@ -103,16 +120,6 @@ and with no Lean proof.  The strongest kernel-checked size exclusion is the
 Farey-mediant bound
 $q>79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053\approx7.96\times10^{34}$.
 The two figures are recorded separately because their evidence classes differ.
-
-A fourth result is proved in the private authoring tree and is absent from the
-release tree at commit~\texttt{\commitshort}.  Let $m\ge2$, let $f:\N\to\Z$
-satisfy $f(0)=0$, and let $r<m$ satisfy $\gcd(r+1,m)=1$ and $f(r)\ne0$.  Then
-$\sum_{n}f(\ph(n)\bmod m)/2^n$ is irrational.  In particular
-$A_m=\sum_n(\ph(n)\bmod m)/2^n$ is irrational for every $m\ge3$, and $m\ge3$
-is sharp because $A_1=0$ and $A_2=3/4$.  This settles the fixed-resolution
-observables of the totient word completely.  It says nothing about $\Stot$
-itself, whose coefficients are unreduced.  Section~\ref{sec:results} gives its
-private-source coordinate and marks it for the next formal-source cycle.
 
 The structural results follow.  For $j\ge0$ and $0\le r<2^j$ write
 $\ph_{j,r}(n)=\ph(2^jn+r)$.  The family
@@ -183,7 +190,17 @@ literature~\cite{erdosproblems}.  We therefore use the catalogue for
 numbering and current reported status only; the two original sources carry
 the problem statement.
 
-The principal unconditional result is the sharp determination of the
+The principal unconditional result is an irrationality theorem about the
+totient word at a fixed resolution: for $m\ge2$, an integer-valued letter map
+$f$ with $f(0)=0$ and $f(r)\ne0$ at some $r<m$ with $\gcd(r+1,m)=1$, the series
+$\sum_nf(\ph(n)\bmod m)/2^n$ is irrational, so $A_m=\sum_n(\ph(n)\bmod m)/2^n$
+is irrational for every $m\ge3$.  It carries no hypothesis on $\Stot$ and
+decides no instance of Erd\H{o}s~\#249, whose coefficients are the unreduced
+values $\ph(n)$; the problem stays open.  Its Lean development is in the
+private authoring tree and is absent from this checkpoint, and
+item~\ref{res:residueobservable} records the coordinates.
+
+The strongest proved obstruction is the sharp determination of the
 positive rank-one M\"obius--Mersenne cone: one unique minimizer at
 $(e,Y)=(1,5)$, the uniform $21/320$ floor, the $1/16$ versus $1/15$ boundary,
 and closure under arbitrary finite positive mixing.  It closes the whole
@@ -294,6 +311,39 @@ rational (Section~\ref{sec:carry-rank}).
 \begin{enumerate}[label=\textbf{R\arabic*.},ref=R\arabic*,leftmargin=2.4em,
   itemsep=0.2em,topsep=0.25em]
 
+\item\label{res:residueobservable} \stag{proved in the authoring tree; absent from this checkpoint}
+\textbf{Fixed-resolution observables of the totient word are irrational.}
+Let $m\ge2$, let $f:\N\to\Z$ satisfy $f(0)=0$, and let $r<m$ satisfy
+$\gcd(r+1,m)=1$ and $f(r)\ne0$.  Then
+\[
+ \sum_{n\ge0}\frac{f(\ph(n)\bmod m)}{2^n}
+\]
+is irrational.  At $m=2^k$ the unit condition holds automatically at every
+even residue $r$, because $r+1$ is then odd.  In particular the least-residue
+series $A_m=\sum_n(\ph(n)\bmod m)/2^n$ is irrational for every $m\ge3$, and
+$m\ge3$ is sharp because $A_1=0$ and $A_2=3/4$.  The proof supplies cofinally
+many two-sided isolated pulses by the Chinese remainder theorem together with
+Dirichlet's theorem, converts one isolated pulse into a quantitative
+separation of $qT$ from every integer, and feeds that into a
+number-theory-free dyadic criterion.  The mechanism is the isolated-pulse
+argument of Erd\H{o}s~\cite{erdos1948}; reducing $\ph$ modulo $m$ is what
+makes the pulses isolated, and the prior-art audit located no exact
+antecedent for the statement.
+
+Two boundaries.  First, this says nothing about $\Stot$, whose coefficients
+are the unreduced values $\ph(n)$: the parent question stays open and stays
+distinct.  Second, the Lean development of this theorem lives in the private
+authoring tree and is \emph{not} present in the release tree at
+commit~\texttt{\commitshort}.  Its source coordinate there is
+\texttt{ErdosProblems/Erdos249/Residue\-Class\-Totient\-Series.lean}, with
+\texttt{irrational\_totientObservable} at line~502, the dyadic form
+\texttt{fixed\_resolution\_observable\_irrational} at line~544, and the
+corollary \texttt{residue\_series\_irrational} at line~570.  It is marked for
+the next formal-source cycle, and no link into this checkpoint is given
+because none would resolve.
+{\footnotesize\emph{Registry:} no row, because the declarations are absent
+from this checkpoint.}
+
 \item\label{res:rankonefloor} \stag{checked; no registry row}
 \textbf{Sharp positive rank-one and direct-sum floor.}  Put
 \[
@@ -384,39 +434,6 @@ anomalous rational approach.
 \emph{Registry:} the claim taxonomy of this release has no status for an
 exact computation that carries no Lean proof, so no row owns this result.}
 
-\item\label{res:residueobservable} \stag{proved in the authoring tree; absent from this checkpoint}
-\textbf{Fixed-resolution observables of the totient word are irrational.}
-Let $m\ge2$, let $f:\N\to\Z$ satisfy $f(0)=0$, and let $r<m$ satisfy
-$\gcd(r+1,m)=1$ and $f(r)\ne0$.  Then
-\[
- \sum_{n\ge0}\frac{f(\ph(n)\bmod m)}{2^n}
-\]
-is irrational.  At $m=2^k$ the unit condition holds automatically at every
-even residue $r$, because $r+1$ is then odd.  In particular the least-residue
-series $A_m=\sum_n(\ph(n)\bmod m)/2^n$ is irrational for every $m\ge3$, and
-$m\ge3$ is sharp because $A_1=0$ and $A_2=3/4$.  The proof supplies cofinally
-many two-sided isolated pulses by the Chinese remainder theorem together with
-Dirichlet's theorem, converts one isolated pulse into a quantitative
-separation of $qT$ from every integer, and feeds that into a
-number-theory-free dyadic criterion.  The mechanism is the isolated-pulse
-argument of Erd\H{o}s~\cite{erdos1948}; reducing $\ph$ modulo $m$ is what
-makes the pulses isolated, and the prior-art audit located no exact
-antecedent for the statement.
-
-Two boundaries.  First, this says nothing about $\Stot$, whose coefficients
-are the unreduced values $\ph(n)$: the parent question stays open and stays
-distinct.  Second, the Lean development of this theorem lives in the private
-authoring tree and is \emph{not} present in the release tree at
-commit~\texttt{\commitshort}.  Its source coordinate there is
-\texttt{ErdosProblems/Erdos249/Residue\-Class\-Totient\-Series.lean}, with
-\texttt{irrational\_totientObservable} at line~502, the dyadic form
-\texttt{fixed\_resolution\_observable\_irrational} at line~544, and the
-corollary \texttt{residue\_series\_irrational} at line~570.  It is marked for
-the next formal-source cycle, and no link into this checkpoint is given
-because none would resolve.
-{\footnotesize\emph{Registry:} no row, because the declarations are absent
-from this checkpoint.}
-
 \item\label{res:perioddeposits} \stag{checked; no registry row}
 \textbf{Eight denominator exclusions on new odd classes.}  The lcm-diagonal
 bank certifies kills at $\lcm(1,\ldots,t)$ through $t=64$, which covers every
@@ -451,7 +468,7 @@ of $\Q^{\N}$ as $\Ker_2(\ph)$; so $\mathcal B$ is a basis of that span, which
 is therefore infinite-dimensional.  Since the reductions make every remaining
 section a rational multiple of a member of $\mathcal B$, the $\Q$-linear
 relations among dyadic sections of $\ph$ are exactly those the reductions
-generate --- a one-line consequence of the checked statements, not a further
+generate, a one-line consequence of the checked statements and not a further
 one.
 {\footnotesize\emph{Checked:}
 \mword{Erdos249257/TotientMahlerDefect.lean}{1265}{linearIndependent_oddCoreTotientKernelFamily}{independence},
@@ -550,8 +567,8 @@ supply both.
 \textbf{Rank lower bound for a rational scaled-tail sequence.}  If $\Stot$
 were rational then some integral scaled-tail sequence $u$ for the coefficients
 $\ph$, with positive multiplier, would have for \emph{every} $e$ dyadic
-sections through level $e$ --- formed from $u$ exactly as the $\ph_{j,r}$ are
-formed from $\ph$ --- spanning a space of dimension at least $2^e-1$.  The
+sections through level $e$, formed from $u$ exactly as the $\ph_{j,r}$ are
+formed from $\ph$, spanning a space of dimension at least $2^e-1$.  The
 same lower bound holds for every positive-multiplier integral scaled-tail
 sequence.  This statement is specific to that
 binary scaled-tail representation; it does not constrain arguments formulated
@@ -656,9 +673,9 @@ strongest size exclusion of any evidence class is the certified
 continued-fraction floor $q>10^{12038}$ of \ref{res:cfdenominator}, which
 carries no Lean proof; a reader comparing the two should compare their
 evidence classes as well as their sizes.
-The constant is optimal for the window that produces it --- the window here is
+The constant is optimal for the window that produces it (the window here is
 the pair $(N,K)=(1,240)$, meaning $240$ committed binary digits of the series
-shifted by one --- in the sense that the next integer up is the exact first
+shifted by one) in the sense that the next integer up is the exact first
 denominator at which that window's certificate fails.  The method is the
 classical Farey mediant argument (Section~\ref{sec:denominator}).
 {\footnotesize\emph{Checked:}
@@ -903,8 +920,8 @@ unbounded, hence not eventually periodic, so \#249 is outside this class.
 
 \item\label{res:primindex} \stag{proved here}
 \textbf{No fixed common denominator clears the normalised weight.}  For every integer
-$D\ge1$ some $n\ge1$ has $D\cdot\Aw(n)/n\notin\Z$ --- for $D=6$ at the prime
-$n=7$, where $\Aw(7)/7=5/7$ --- and any $D$ clearing every coordinate up to a
+$D\ge1$ some $n\ge1$ has $D\cdot\Aw(n)/n\notin\Z$ (for $D=6$ at the prime
+$n=7$, where $\Aw(7)/7=5/7$), and any $D$ clearing every coordinate up to a
 horizon $N\ge4$ is divisible by an explicit two-tier primorial ($4$ at $p=2$,
 $p^2$ when $p^2\le N$, else $p$).  No argument that clears the coordinates
 $\Aw(n)/n$ by a single positive integer valid at all $n$ can therefore
@@ -1673,7 +1690,7 @@ whose forcing letters lie in the ideal generated by $\ph(H)$, which reproduces
 the true totient differences at $t-2$ prescribed indices, and which every
 finite integer shift polynomial carries to a pair with the same coboundary
 form, the same ideal memberships and an $\ell^1$-weight bound.  It does close
-that hypothesis class.  Two limits.  The witness is a spike --- its state is
+that hypothesis class.  Two limits.  The witness is a spike: its state is
 $-\ph(H)$ at $t-2$ points and zero elsewhere, so it stays uniformly bounded
 while the strip bounds it respects grow, and the construction is cheap for
 that reason.  And the shifted pairs are not asserted to be nonzero, so an
@@ -2194,9 +2211,9 @@ the open items of Section~\ref{sec:open}.
   and clean cyclotomic-anchor statements are exact
   equivalent formulations of \ref{res:equivalences}: they convert
   irrationality into the existence of an unbounded family of finite
-  tail-difference certificates.  Finite instances are checked --- every
-  $t\le82$, including the historical $28$-scale bank of
-  Section~\ref{sec:frontier} --- and the unbounded family is not.  The
+  tail-difference certificates.  Finite instances are checked, for every
+  $t\le82$ and including the historical $28$-scale bank of
+  Section~\ref{sec:frontier}, and the unbounded family is not.  The
   equivalences fix the exact missing quantifier but do not make that
   quantifier easier to prove.  \ref{res:denominator} is a finite instance of a
   \emph{different} family, the gap certificates of \ref{res:supply}, which
@@ -2281,9 +2298,9 @@ marked as such; the first three are drawn from checked statements, and the
 last assumes the unproved bounded-order condition.
 
 The small numerical
-instances printed above --- the level-three reductions, the certificate at
+instances printed above, the level-three reductions, the certificate at
 $(1,12,16)$, the first values of $\Aw$, the $p=3$ Euler-factor calculation,
-the mixed-difference table, and the values of $H_t$ --- are computations from
+the mixed-difference table, and the values of $H_t$, are computations from
 the definitions and checked identities beside them, and are not separate
 checked propositions.  Source theorems attributed to Allouche and Shallit,
 Martin, Coons, Bell and Smertnig, Kaneko--Suzuki--Tachiya, Luca--Tachiya, and

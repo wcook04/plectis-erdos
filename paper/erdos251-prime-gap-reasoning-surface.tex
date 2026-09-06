@@ -40,7 +40,34 @@ Let $p_0=2,p_1=3,\ldots$ enumerate the primes, let $g_n=p_{n+1}-p_n$, and write
  \Pi=\sum_{i\ge0}\frac{p_i}{2^{\,i+1}},\qquad
  S=\sum_{i\ge0}\frac{g_i}{2^{\,i+1}} .
 \]
-Every rational number equal to $\Pi$, and hence every rational equal to $S$,
+The leading theorem of this note is unconditional and exact.  The prime series
+converges, the gap series converges, and
+\[
+ \sum_{i\ge0}\frac{p_i}{2^{\,i+1}}
+ \;=\;2+\sum_{i\ge0}\frac{g_i}{2^{\,i+1}} ,
+\]
+The identity is checked by the Lean kernel at the pinned revision
+\lword{Erdos251/PrimeGapDyadicTail.lean}{427}{tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional}{in
+its unconditional form}, and the two convergence statements are checked beside
+it,
+\lword{Erdos251/PrimeGapDyadicTail.lean}{379}{summable_primeDyadicTerm}{for the
+prime series} and
+\lword{Erdos251/PrimeGapDyadicTail.lean}{385}{summable_primeGapDyadicTerm_of_summable_primeDyadicTerm}{for
+the gap series}, over the elementary polynomial bound
+$p_n\le1250(n+1)^4$
+\lword{Erdos251/PrimeGapDyadicTail.lean}{360}{prime0_le_polynomial}{proved
+here}.  No hypothesis is carried, the prime number theorem is not used, and the
+identity is exact rather than asymptotic.  No result in this note settles
+Erd\H{o}s Problem~\#251 or any instance of it, and irrationality of $\Pi$
+remains open.  A second unconditional theorem about the same object records
+that the consecutive gaps are unbounded and are not eventually periodic with
+any positive period
+\lword{Erdos251/PrimeGapDyadicTail.lean}{1023}{primeGap0_not_eventually_periodic}{by
+the exact factorial prime-free intervals}.
+
+The remaining statements are negative knowledge, and each is labelled by what
+it is.  The first is a finite exclusion.  Every rational number equal to
+$\Pi$, and hence every rational equal to $S$,
 has denominator at least $2^{589}>10^{177}$.  That floor is decided inside the
 Lean kernel by \texttt{decide +kernel} on a single Boolean certificate over the
 $1229$ primes below $10^{4}$, in the module
@@ -57,7 +84,8 @@ polynomial prime bound}.  That second step is an exact finite computation
 resting on a kernel-checked ingredient, and no Lean declaration carries it.
 Both bounds exclude an initial range of rationals and leave irrationality open.
 
-The exact remaining input is a free-pair condition.  Put
+The second is a target-equivalent reformulation, and it names the exact
+remaining input.  Put
 $T_N=2^{\,N+1}\bigl(S-\sum_{i\le N}g_i2^{-(i+1)}\bigr)$, so that
 $T_{N+1}=2T_N-g_{N+1}$.  Then $S$ is irrational if and only if for every
 modulus $t\ge1$ and every cutoff there are indices $M\equiv N\pmod t$ beyond
@@ -169,7 +197,13 @@ unproved input is cofinal nonintegrality in the free-pair form, or a prime-gap
 estimate strong enough to imply the adjacent-small-mismatch condition.
 \end{abstract}
 
-\begin{paperresult}{Denominator floor, exact criterion, and open boundary}
+\begin{paperresult}{The exact identity, the finite exclusions, and the open boundary}
+\textbf{Exact identity.} The prime-index dyadic series equals two plus the
+consecutive-prime-gap dyadic series, unconditionally, with both summability and
+the identity checked by the Lean kernel over an elementary polynomial prime
+bound.  The consecutive gaps are unbounded and not eventually periodic, also
+checked.  \textbf{No instance settled.} Nothing here proves irrationality of
+either series, and Erd\H{o}s~\#251 remains open.
 \textbf{Denominator floor.} Every rational equal to the prime series, and hence
 every rational equal to the prime-gap series, has denominator at least
 $2^{589}>10^{177}$ by a kernel-decided certificate, and at least
@@ -317,19 +351,21 @@ sequence $\kappa_n=n-1$, which is unbounded and hence not eventually periodic,
 and whose dyadic sum $\sum_{n\ge0}\kappa_n2^{-(n+1)}$ is zero.
 
 \paragraph{Outline.}
-Section~\ref{sec:denominator-floor} records the two denominator exclusions, the
-free-pair criterion that is equivalent to the target, the measurement of the
-event that criterion consumes, and the exact remaining prime-theoretic
-obligation.  Section~\ref{sec:diagonal-collapse} then gives the strongest exact
+Section~\ref{sec:parts} proves the leading theorem.  It replaces the primes by
+their consecutive gaps, the natural increments studied by prime-distribution
+theory.  Summation by parts with the endpoint retained gives an exact finite
+identity, and the termwise relation $v_n=2u_{n+1}-u_n$ between the gap terms
+and the prime terms makes the passage to the limit a matter of summability
+alone; the explicit polynomial prime bound supplies that summability inside the
+formal development, so the infinite identity is unconditional and
+kernel-checked.  Section~\ref{sec:denominator-floor} then records the two
+denominator exclusions, the free-pair criterion that is equivalent to the
+target, the measurement of the event that criterion consumes, and the exact
+remaining prime-theoretic obligation.
+Section~\ref{sec:diagonal-collapse} gives the strongest exact
 recurrence-level conclusions: the lcm-diagonal irrationality criterion, the
 signed two-window normal form, the affine and fixed-lattice circularity
 equivalences, and the quadratic polynomial-shift countermodel.
-Section~\ref{sec:parts} then replaces the primes by their consecutive gaps, the
-natural increments studied by prime-distribution theory.  Summation by parts
-with the endpoint retained gives an exact finite identity, and the termwise
-relation $v_n=2u_{n+1}-u_n$ between the gap terms and the prime terms makes the
-passage to the limit a matter of summability alone; the explicit polynomial
-prime bound supplies that summability inside the formal development.
 
 Section~\ref{sec:tail} rescales the tails of a dyadic series into a recurrence
 and develops it: the block identity, the integral-shift criterion, the
@@ -443,11 +479,145 @@ summation by parts; Lean~4.
 \qquad
 \textbf{MSC 2020.} 11J72 (primary); 11N05, 68V20 (secondary).
 
+\section{Summation by parts, with the endpoint retained}\label{sec:parts}
+
+Summation by parts trades a sequence for its consecutive differences.  The form
+recorded here is exact: it carries no error term, it assumes nothing about the
+sequence, and it retains the endpoint term rather than absorbing it into an
+estimate.  For a sequence $P$ of rational numbers and $n\ge0$ put
+\[
+ D(P,n)=\sum_{i=0}^{n-1}\frac{P(i)}{2^{\,i+1}},
+ \qquad
+ \Delta(P,n)=\sum_{i=0}^{n-1}\frac{P(i+1)-P(i)}{2^{\,i+1}} ,
+\]
+both empty, hence zero, at $n=0$.  We call these the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{101}{dyadicPartialSumQ}{dyadic partial
+sum} and the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{121}{dyadicDifferencePartialSumQ}{dyadic
+difference sum} of $P$.
+
+\begin{proposition}[finite summation by parts]\label{res:abel}
+For every rational sequence $P$ and every $n\ge0$,
+\[
+ D(P,n+1)=P(0)+\Delta(P,n)-\frac{P(n)}{2^{\,n+1}} .
+\]
+\end{proposition}
+
+\begin{proof}
+A routine induction on $n$.  At $n=0$ both sides equal $P(0)/2$.  For the step, adding
+$P(n+1)/2^{\,n+2}$ to the left and
+$\bigl(P(n+1)-P(n)\bigr)/2^{\,n+1}$ to the difference sum changes the endpoint
+term from $P(n)/2^{\,n+1}$ to $P(n+1)/2^{\,n+2}$, and the two adjustments agree.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{138}{dyadicPartialSumQ_eq_start_add_differences}{summation-by-parts
+identity}.  Nothing is assumed about $P$: no positivity, no monotonicity, and no
+convergence.
+
+Specialising to $P(i)=p_i$, whose first value is $p_0=2$, and writing
+$g_i=p_{i+1}-p_i$ for the zero-based gaps, gives the reformulation.
+
+\begin{theorem}[prime-gap reformulation]\label{res:parts}
+Let $p_0=2,p_1=3,\ldots$ be the primes in increasing order and
+$g_i=p_{i+1}-p_i$.  For every $n\ge0$,
+\[
+ \sum_{i=0}^{n}\frac{p_i}{2^{\,i+1}}
+ =2+\sum_{i=0}^{n-1}\frac{g_i}{2^{\,i+1}}-\frac{p_n}{2^{\,n+1}} .
+\]
+\end{theorem}
+
+\noindent Formalised as the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{172}{prime0_dyadic_summation_by_parts}{prime-gap
+summation by parts}, using the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{161}{primeGapPartialSumQ}{gap partial
+sum} and the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{156}{primeGap0_cast}{gap cast
+identity}; the latter records that the natural-number difference
+$p_{n+1}-p_n$ agrees with the difference taken in $\Q$, which needs
+$p_n\le p_{n+1}$, the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{152}{prime0_mono_step}{monotonicity
+step}.  The leading $2$ is the first prime, not a normalising constant.
+At $n=2$, for instance, the left side is $2/2+3/4+5/8=19/8$ and the right side
+is $2+(1/2+2/4)-5/8=19/8$.
+
+\subsection{The infinite identity and the irrationality equivalence}\label{sec:infinite}
+
+Write
+\[
+ u_n=\frac{p_n}{2^{\,n+1}},\qquad
+ v_n=\frac{g_n}{2^{\,n+1}}
+\]
+for the terms of the prime series and of the gap series, so that
+$\sum_{n\ge0}u_n=\Pi$.  The termwise identity $v_n=2u_{n+1}-u_n$ is the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{202}{primeGapDyadicTerm_eq}{dyadic
+discrete derivative}.  It expresses each gap term as an integer combination of
+two consecutive prime terms, so once $(u_n)$ is summable the gap series can be
+summed by rearranging two copies of the prime series, which is what the
+following proof does.
+
+\begin{theorem}[infinite prime-gap identity]\label{res:infinite}
+Let $u_n=p_n/2^{\,n+1}$ and $v_n=g_n/2^{\,n+1}$.  If $(u_n)$ is summable, then
+$(v_n)$ is summable and
+\[
+ \sum_{n\ge0}u_n=2+\sum_{n\ge0}v_n .
+\]
+\end{theorem}
+
+\begin{proof}
+The shifted sequence $(u_{n+1})$ is summable.  Sum
+$v_n=2u_{n+1}-u_n$ and use $u_0=1$:
+\[
+ \sum_{n\ge0}v_n
+ =2\left(\sum_{n\ge0}u_n-u_0\right)-\sum_{n\ge0}u_n
+ =\sum_{n\ge0}u_n-2 .
+\]
+\end{proof}
+
+\noindent The summability transfer is the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{385}{summable_primeGapDyadicTerm_of_summable_primeDyadicTerm}{gap-series
+summability theorem}, and the displayed identity is the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{404}{tsum_primeDyadicTerm_eq_two_add_primeGap}{infinite
+prime-gap identity}.
+
+\begin{corollary}[exact irrationality reformulation]\label{res:irr-equivalence}
+With $u_n$ and $v_n$ as in Theorem~\ref{res:infinite}, and $(u_n)$ summable,
+\[
+ \operatorname{Irr}\!\left(\sum_{n\ge0}u_n\right)
+ \quad\Longleftrightarrow\quad
+ \operatorname{Irr}\!\left(\sum_{n\ge0}v_n\right).
+\]
+The corresponding zero-based series with denominator $2^n$ is
+$4+2\sum_{n\ge0}v_n$ and has the same irrationality status.
+\end{corollary}
+
+\noindent These are the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{435}{irrational_tsum_primeDyadicTerm_iff_primeGap}{normalised
+irrationality equivalence}, the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{444}{tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap}{displayed-series
+identity}, and the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{459}{irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap}{displayed-series
+irrationality equivalence}.
+
+\paragraph{The summability hypothesis.}
+The formal source now proves the elementary polynomial bound
+$p_n\le1250(n+1)^4$, using prime counting and central-binomial growth, and
+deduces summability directly
+(\lword{Erdos251/PrimeGapDyadicTail.lean}{360}{prime0_le_polynomial}{polynomial bound},
+\lword{Erdos251/PrimeGapDyadicTail.lean}{379}{summable_primeDyadicTerm}{summability}).
+Thus Theorem~\ref{res:infinite} and Corollary~\ref{res:irr-equivalence} are now
+unconditional Lean-checked statements; the prime number theorem remains useful
+context but is no longer a proof dependency of this note.  The open content is
+exactly irrationality of the prime-gap series.  Concretely,
+$\Pi=3.674643966\ldots$ is irrational if and only if
+$\sum_{n\ge0}g_n2^{-(n+1)}=1.674643966\ldots$ is, and neither is known.
+
 \section{A denominator floor, and the exact remaining input}
 \label{sec:denominator-floor}
 
-The strongest statements available on this problem restrict the answer itself.
-Both are exclusions of rational values, and both leave irrationality open.
+The statements of this section are negative knowledge about the answer.  The
+first two are exclusions of rational values, the third is a restatement of the
+problem, and none of them settles any instance.
 
 \begin{theorem}[kernel-decided denominator floor]\label{res:denominatorfloor}
 Let $a\in\Z$ and $b\in\Npos$.  If $\Pi=a/b$ then $b\ge2^{589}$, and the same
@@ -802,139 +972,6 @@ The formal construction checks the
 \lword{Erdos251/PrimeGapDyadicTail.lean}{1632}{polynomialGapWord_strictMono}{strict growth},
 \lword{Erdos251/PrimeGapDyadicTail.lean}{1654}{polynomialTailOrbit_shift_integral}{integrality of every shift},
 and \lword{Erdos251/PrimeGapDyadicTail.lean}{1644}{polynomialGapWord_no_adjacent_two_digit}{exclusion of adjacent differences of size two}.
-
-\section{Summation by parts, with the endpoint retained}\label{sec:parts}
-
-Summation by parts trades a sequence for its consecutive differences.  The form
-recorded here is exact: it carries no error term, it assumes nothing about the
-sequence, and it retains the endpoint term rather than absorbing it into an
-estimate.  For a sequence $P$ of rational numbers and $n\ge0$ put
-\[
- D(P,n)=\sum_{i=0}^{n-1}\frac{P(i)}{2^{\,i+1}},
- \qquad
- \Delta(P,n)=\sum_{i=0}^{n-1}\frac{P(i+1)-P(i)}{2^{\,i+1}} ,
-\]
-both empty, hence zero, at $n=0$.  We call these the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{101}{dyadicPartialSumQ}{dyadic partial
-sum} and the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{121}{dyadicDifferencePartialSumQ}{dyadic
-difference sum} of $P$.
-
-\begin{proposition}[finite summation by parts]\label{res:abel}
-For every rational sequence $P$ and every $n\ge0$,
-\[
- D(P,n+1)=P(0)+\Delta(P,n)-\frac{P(n)}{2^{\,n+1}} .
-\]
-\end{proposition}
-
-\begin{proof}
-A routine induction on $n$.  At $n=0$ both sides equal $P(0)/2$.  For the step, adding
-$P(n+1)/2^{\,n+2}$ to the left and
-$\bigl(P(n+1)-P(n)\bigr)/2^{\,n+1}$ to the difference sum changes the endpoint
-term from $P(n)/2^{\,n+1}$ to $P(n+1)/2^{\,n+2}$, and the two adjustments agree.
-\end{proof}
-
-\noindent Formalised as the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{138}{dyadicPartialSumQ_eq_start_add_differences}{summation-by-parts
-identity}.  Nothing is assumed about $P$: no positivity, no monotonicity, and no
-convergence.
-
-Specialising to $P(i)=p_i$, whose first value is $p_0=2$, and writing
-$g_i=p_{i+1}-p_i$ for the zero-based gaps, gives the reformulation.
-
-\begin{theorem}[prime-gap reformulation]\label{res:parts}
-Let $p_0=2,p_1=3,\ldots$ be the primes in increasing order and
-$g_i=p_{i+1}-p_i$.  For every $n\ge0$,
-\[
- \sum_{i=0}^{n}\frac{p_i}{2^{\,i+1}}
- =2+\sum_{i=0}^{n-1}\frac{g_i}{2^{\,i+1}}-\frac{p_n}{2^{\,n+1}} .
-\]
-\end{theorem}
-
-\noindent Formalised as the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{172}{prime0_dyadic_summation_by_parts}{prime-gap
-summation by parts}, using the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{161}{primeGapPartialSumQ}{gap partial
-sum} and the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{156}{primeGap0_cast}{gap cast
-identity}; the latter records that the natural-number difference
-$p_{n+1}-p_n$ agrees with the difference taken in $\Q$, which needs
-$p_n\le p_{n+1}$, the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{152}{prime0_mono_step}{monotonicity
-step}.  The leading $2$ is the first prime, not a normalising constant.
-At $n=2$, for instance, the left side is $2/2+3/4+5/8=19/8$ and the right side
-is $2+(1/2+2/4)-5/8=19/8$.
-
-\subsection{The infinite identity and the irrationality equivalence}\label{sec:infinite}
-
-Write
-\[
- u_n=\frac{p_n}{2^{\,n+1}},\qquad
- v_n=\frac{g_n}{2^{\,n+1}}
-\]
-for the terms of the prime series and of the gap series, so that
-$\sum_{n\ge0}u_n=\Pi$.  The termwise identity $v_n=2u_{n+1}-u_n$ is the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{202}{primeGapDyadicTerm_eq}{dyadic
-discrete derivative}.  It expresses each gap term as an integer combination of
-two consecutive prime terms, so once $(u_n)$ is summable the gap series can be
-summed by rearranging two copies of the prime series, which is what the
-following proof does.
-
-\begin{theorem}[infinite prime-gap identity]\label{res:infinite}
-Let $u_n=p_n/2^{\,n+1}$ and $v_n=g_n/2^{\,n+1}$.  If $(u_n)$ is summable, then
-$(v_n)$ is summable and
-\[
- \sum_{n\ge0}u_n=2+\sum_{n\ge0}v_n .
-\]
-\end{theorem}
-
-\begin{proof}
-The shifted sequence $(u_{n+1})$ is summable.  Sum
-$v_n=2u_{n+1}-u_n$ and use $u_0=1$:
-\[
- \sum_{n\ge0}v_n
- =2\left(\sum_{n\ge0}u_n-u_0\right)-\sum_{n\ge0}u_n
- =\sum_{n\ge0}u_n-2 .
-\]
-\end{proof}
-
-\noindent The summability transfer is the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{385}{summable_primeGapDyadicTerm_of_summable_primeDyadicTerm}{gap-series
-summability theorem}, and the displayed identity is the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{404}{tsum_primeDyadicTerm_eq_two_add_primeGap}{infinite
-prime-gap identity}.
-
-\begin{corollary}[exact irrationality reformulation]\label{res:irr-equivalence}
-With $u_n$ and $v_n$ as in Theorem~\ref{res:infinite}, and $(u_n)$ summable,
-\[
- \operatorname{Irr}\!\left(\sum_{n\ge0}u_n\right)
- \quad\Longleftrightarrow\quad
- \operatorname{Irr}\!\left(\sum_{n\ge0}v_n\right).
-\]
-The corresponding zero-based series with denominator $2^n$ is
-$4+2\sum_{n\ge0}v_n$ and has the same irrationality status.
-\end{corollary}
-
-\noindent These are the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{435}{irrational_tsum_primeDyadicTerm_iff_primeGap}{normalised
-irrationality equivalence}, the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{444}{tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap}{displayed-series
-identity}, and the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{459}{irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap}{displayed-series
-irrationality equivalence}.
-
-\paragraph{The summability hypothesis.}
-The formal source now proves the elementary polynomial bound
-$p_n\le1250(n+1)^4$, using prime counting and central-binomial growth, and
-deduces summability directly
-(\lword{Erdos251/PrimeGapDyadicTail.lean}{360}{prime0_le_polynomial}{polynomial bound},
-\lword{Erdos251/PrimeGapDyadicTail.lean}{379}{summable_primeDyadicTerm}{summability}).
-Thus Theorem~\ref{res:infinite} and Corollary~\ref{res:irr-equivalence} are now
-unconditional Lean-checked statements; the prime number theorem remains useful
-context but is no longer a proof dependency of this note.  The open content is
-exactly irrationality of the prime-gap series.  Concretely,
-$\Pi=3.674643966\ldots$ is irrational if and only if
-$\sum_{n\ge0}g_n2^{-(n+1)}=1.674643966\ldots$ is, and neither is known.
 
 \section{The tail recurrence and integral shifts}\label{sec:tail}
 
