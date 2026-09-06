@@ -11,7 +11,6 @@ permissions:
 jobs:
   reachable-history-evidence:
     runs-on: ubuntu-24.04
-    # Both the scan and its independent evidence check read the full history.
     timeout-minutes: 90
     env:
       PYTHONPATH: ""
@@ -40,22 +39,24 @@ jobs:
         uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: "3.12.9"
-      - name: Exercise deleted-object and redaction fixtures
-        run: python3 scripts/test_reachable_release_history_environment.py
       - name: Scan the exact CI checkout and retain redacted evidence
         id: scan
-        # A committed report describes an earlier checkout. Comparing it with
-        # every later commit makes ordinary source/ref changes permanent CI
-        # failures. Scan this checkout instead, without replacing the retained
-        # historical report or changing any finding, disposition, ref or tag.
+        # A retained historical report is not a fresh report for each later
+        # push. Scan this checkout without replacing that historical record,
+        # changing dispositions, or mutating a branch or tag.
         run: >-
           python3 scripts/audit_reachable_release_history.py --write-report
           --report "$RUNNER_TEMP/reachable-history-audit.json"
-      - name: Validate current evidence and enforce the public-clone release gate
-        # Recompute and validate the evidence, including remediation context.
-        # A prohibited object still fails; freshly generated does not mean safe.
+      - name: Validate current redacted reachable-history evidence
         run: >-
-          python3 scripts/test_reachable_release_history.py --check --release-gate
+          python3 scripts/test_reachable_release_history.py --check
+          --report "$RUNNER_TEMP/reachable-history-audit.json"
+      - name: Exercise deleted-object and redaction fixtures
+        run: python3 scripts/test_reachable_release_history_environment.py
+      - name: Enforce the public-clone release gate
+        # Fresh evidence does not imply safety. Prohibited objects still fail.
+        run: >-
+          python3 scripts/test_reachable_release_history.py --release-gate
           --report "$RUNNER_TEMP/reachable-history-audit.json"
       - name: Preserve the redacted report even when the release gate fails
         if: ${{ always() && steps.scan.outcome != 'skipped' }}
