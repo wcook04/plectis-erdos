@@ -61,6 +61,39 @@ def depth18Word (k : ℕ) : HalfWord 18 := fun i ↦
     decide (((17 - k) / 2 ^ (18 - i.val)) % 2 = 1)
   else false
 
+/-- Transparent lookup for the square-root strip on rows `1,...,18`.
+Keeping the finite certificate independent of the opaque implementation of
+`Nat.sqrt` lets the kernel reduce the entire Boolean table. -/
+def depth18KernelBound (n : ℕ) : ℕ :=
+  if n < 4 then 6
+  else if n < 9 then 8
+  else if n < 16 then 10
+  else 12
+
+theorem depth18KernelBound_eq_halfStripBound
+    {n : ℕ} (hn : 1 ≤ n) (hn18 : n ≤ 18) :
+    depth18KernelBound n = halfStripBound n := by
+  unfold depth18KernelBound halfStripBound
+  split
+  · have hsqrt : Nat.sqrt n = 1 := by
+      symm
+      exact Nat.eq_sqrt.2 ⟨by omega, by omega⟩
+    simp [hsqrt]
+  · split
+    · have hsqrt : Nat.sqrt n = 2 := by
+        symm
+        exact Nat.eq_sqrt.2 ⟨by omega, by omega⟩
+      simp [hsqrt]
+    · split
+      · have hsqrt : Nat.sqrt n = 3 := by
+          symm
+          exact Nat.eq_sqrt.2 ⟨by omega, by omega⟩
+        simp [hsqrt]
+      · have hsqrt : Nat.sqrt n = 4 := by
+          symm
+          exact Nat.eq_sqrt.2 ⟨by omega, by omega⟩
+        simp [hsqrt]
+
 /-- Fully computable strip and terminal check for one depth-18 word. -/
 def depth18EntryCheck (k : ℕ) : Bool :=
   ((List.range 18).all fun j ↦
@@ -177,6 +210,7 @@ theorem depth18SelectedHalfWindow_nextRowDivisorAgreement :
 
 #print axioms wordCoeff_eq_supportCoeff_wordSupport
 #print axioms wordCarry_eq_integerHalfCarry
+#print axioms depth18KernelBound_eq_halfStripBound
 #print axioms depth18TableCheck_eq_true
 #print axioms depth18EntryCheck_eq_true
 #print axioms depth18Word_carry_bounds

@@ -1,0 +1,4 @@
+import ExternalVerification243SaturatedSquareTransport.Solution
+
+#print axioms Erdos249257.ExternalVerification243SaturatedSquareTransport.saturated_square_transport_raw
+#print axioms Erdos249257.ExternalVerification243SaturatedSquareTransport.legendre_defect_forces_nonsquare_content

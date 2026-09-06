@@ -1,4 +1,5 @@
 import ErdosProblems.Erdos257.FatalBorrowPositiveResidualPacket
+import Erdos249257.HalfResetSqrtEscapeScaleProducers
 import Erdos249257.HalfUpperResetCriticalBand
 
 /-!
@@ -20,17 +21,12 @@ namespace Erdos249257
 
 open HalfCylinderIntegerGreedy
 
-/-- The named all-depth producer at middle resets: the fourfold source
-remainder clears the uniform threshold plus maximal pulse. -/
-def SeamMiddleResetRemainderScaleProducer : Prop :=
-  ∀ (s : ℕ) (hs5 : 5 ≤ s), 10 ≤ s →
-    ¬ (seamAdjacentCut s hs5).successorCarries →
-      4 * (seamAdjacentCut s hs5).remainder +
-            (seamPerturbedFamily s (by omega)).gap -
-            (seamAdjacentCut s hs5).belowPulse <
-          (seamAdjacentCut s hs5).terminalWeight →
-        (3 * 2 ^ ((s + 5) / 2) + 2 * (s - 2) : ℕ) ≤
-          4 * (seamAdjacentCut s hs5).remainder
+-- `SeamMiddleResetRemainderScaleProducer` (the named all-depth producer at middle
+-- resets: the fourfold source remainder clears the uniform threshold plus maximal
+-- pulse) now lives in `Erdos249257.HalfResetSqrtEscapeScaleProducers`, imported
+-- above.  The definition is unchanged; it moved down into the Erdos249257
+-- machinery layer because two modules there consume it, and Erdos249257 never
+-- imports ErdosProblems.
 
 private theorem middleScale_seamIntegerGreedyRemainder_thirteen_ge :
     13 ≤ seamIntegerGreedyRemainder 13 := by

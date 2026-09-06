@@ -4,7 +4,7 @@
 # the whole repository for cosmetic gain, so the name stays and the description
 # carries the current scope instead.
 name = "erdos249257"
-version = "0.9.0"
+version = "0.10.0"
 description = "Lean 4 formalisation work on eight open Erdős problems: 68, 243, 249, 251, 257, 269, 1041, and 1049. All eight remain open. The library states what is checked and where each result stops."
 homepage = "https://github.com/wcook04/plectis-lean-erdos249-257"
 license = "Apache-2.0"
@@ -336,3 +336,64 @@ name = "ExternalVerification249SquaredLambert"
 
 [[lean_lib]]
 name = "ExternalVerification251BoundedPerturbation"
+
+# Packages brought across from the private formal tree in the 2026-09-06 corpus union.
+[[lean_lib]]
+name = "ExternalVerification1041CollinearChord"
+
+[[lean_lib]]
+name = "ExternalVerification1041DiskFamilySeparation"
+globs = ["ExternalVerification1041DiskFamilySeparation.+"]
+
+[[lean_lib]]
+name = "ExternalVerification1049RationalBaseContour"
+
+[[lean_lib]]
+name = "ExternalVerification243BoundedRiseReducedTail"
+globs = ["ExternalVerification243BoundedRiseReducedTail.+"]
+
+[[lean_lib]]
+name = "ExternalVerification243ProtectedEpochEnergy"
+
+[[lean_lib]]
+name = "ExternalVerification243RecordIncrementBarrier"
+
+[[lean_lib]]
+name = "ExternalVerification243SaturatedSquareTransport"
+
+[[lean_lib]]
+name = "ExternalVerification243SlowRiseBarrier"
+
+[[lean_lib]]
+name = "ExternalVerification243TwoModulusRecordCut"
+
+[[lean_lib]]
+name = "ExternalVerification249MobiusMersenneLadderStructure"
+globs = ["ExternalVerification249MobiusMersenneLadderStructure.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249ParityPerturbedRationalControl"
+globs = ["ExternalVerification249ParityPerturbedRationalControl.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249ResidueClassTotientSeries"
+globs = ["ExternalVerification249ResidueClassTotientSeries.+"]
+
+[[lean_lib]]
+name = "ExternalVerification249TotientKernelBasis"
+
+[[lean_lib]]
+name = "ExternalVerification251BoundedPerturbationCountermodel"
+globs = ["ExternalVerification251BoundedPerturbationCountermodel.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251FreePairEquivalence"
+globs = ["ExternalVerification251FreePairEquivalence.+"]
+
+[[lean_lib]]
+name = "ExternalVerification251KernelDenominatorFloor"
+globs = ["ExternalVerification251KernelDenominatorFloor.+"]
+
+[[lean_lib]]
+name = "ExternalVerification269WindowEscapeEquivalence"
+globs = ["ExternalVerification269WindowEscapeEquivalence.+"]
