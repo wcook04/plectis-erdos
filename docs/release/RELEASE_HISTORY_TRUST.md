@@ -12,6 +12,52 @@ The report also records a SHA-256 fingerprint of the scanner source. A change
 to the scanner implementation therefore requires regenerated evidence even
 when the changed file is otherwise part of the audit control plane.
 
+## What blocks and what is reported
+
+The scanner separates release hazards from history hygiene. Both are written
+into the report; only the first kind turns the release decision red.
+
+Release hazards block whenever they are reachable, in any commit: a credential
+shape that is not a declared fixture, a third-party artifact whose disposition
+is link-and-digest-only, an unmanifested primary-source binary, a pathless
+direct-ref blob, a missing ref object, a custom third-party license marker,
+an archive with a traversal or link member, a privacy-bearing ref name, and a
+non-atomic scan.
+
+History hygiene findings are `absolute_private_filesystem_path` and
+`private_or_working_path`. A workstation path inside an old file, or a
+filename containing a watch term, is retrievable by a clone but is not a
+credential, and this document forbids the only operation that could remove it
+from history. A policy that both forbids the fix and blocks on the finding can
+never go green, so these kinds block only when the exact object is the blob at
+the scanned tip, where an ordinary commit removes it. Exposure is decided per
+object, not per path: an old version of a file that still exists is
+historical, and the report records both `current_head_exposure` (the path is
+still present) and `current_head_object` (this blob is the tip's blob).
+Historical instances are listed under `accepted_findings` with the disposition
+`retained_historical_review_finding_not_a_release_blocker`.
+
+`oversized_blob` is reported and never gated. GitHub's push limit is the hard
+ceiling on any object that reached the public remote, the release checker
+owns current-tree size policy, and a generated index over the 50 MiB review
+threshold is information for the operator rather than a hazard. Every such
+object is listed with its exact size under `accepted_findings` as
+`reported_size_review_finding_not_a_release_blocker`.
+
+`docs/release/history-finding-dispositions.json` is the operator's reviewed
+disposition data, consumed by the scanner and fingerprinted into the report.
+It declares synthetic home segments that the release checker documents as
+fixtures, fingerprints of the checker's own synthetic credential literals
+(matched by SHA-256, never by value), exact reviewed paths whose watch-term
+match is a mathematical identifier, and object rows for individually reviewed
+findings. A dispositioned match is still reported, with its reason, under
+`accepted_findings`; the file can only add explanation, never delete a row. A
+credential shape whose fingerprint is not declared blocks regardless of path.
+
+A compressed single stream such as `index.json.gz` has no member names and is
+not an archive; only a real tar or zip is opened for member inspection, and a
+stream that does not even decompress remains an `archive_parse_failure`.
+
 The reachable-object walk retains the object ID of every ref, follows
 annotated-tag targets, and reviews direct blob refs even when no tree pathname
 exists. Such pathless objects receive a redacted ref binding; credential,
@@ -101,6 +147,9 @@ The cross-surface release checker, `python3 scripts/check_release.py`, does
 not invoke this gate; the reachable-history workflow is the surface that
 consumes it, and a red result there is a release finding in its own right
 rather than something the top-level checker can waive or has already covered.
+The workflow scans the exact checkout under test and validates that fresh
+report; the committed `docs/release/reachable-history-audit.json` is the last
+operator-anchored record, regenerated when the scanner or dispositions change.
 
 The evidence comparison is clone-shape invariant: each branch name is compared
 once whether it is seen as a local head or as origin's remote-tracking ref,
@@ -112,12 +161,12 @@ reader can clone them. All of them are still scanned.
 
 `.github/workflows/reachable-history-trust.yml` runs on every push and pull
 request (and is available by manual dispatch). Its checkout fetches the full
-history and tags, then runs the redacted evidence check, the deleted-object
-and redaction fixture, and the public-clone release gate. There is no
-path-filter exception for a future commit: a change anywhere in the
-repository re-enters this boundary. The release workflow also consumes the
-same gate through `scripts/check_release.py`, so a new reachable object cannot
-be treated as safe merely because the current-tree files look unchanged.
+history and tags, then scans that checkout, validates the fresh evidence, runs
+the deleted-object, disposition and redaction fixtures, and applies the
+public-clone release gate. There is no path-filter exception for a future
+commit: a change anywhere in the repository re-enters this boundary, so a new
+reachable object cannot be treated as safe merely because the current-tree
+files look unchanged.
 
 The workflow is assurance evidence, not authorization to mutate shared
 history. A red result stays red until an operator-approved remediation is
