@@ -5870,7 +5870,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:2936c42bc2e4853ceca89ba7a364f80960a57d84347cb11d983ae095ee60f423",
+      "source_sha256": "sha256:d50e3b342ece7f7f4a8eef616a4bd2830aa2c05128bef7a6660c58e267c56dde",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/main/paper/claim-faithful-publication-systems-paper.tex",
@@ -6127,31 +6127,31 @@
           "level": 4,
           "id": "scaling-beyond-this-corpus.",
           "title": "Scaling beyond this corpus.",
-          "line": 499
+          "line": 501
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 505
+          "line": 507
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Reproducibility",
-          "line": 513
+          "line": 515
         },
         {
           "level": 4,
           "id": "public-first-contact.",
           "title": "Public first contact.",
-          "line": 517
+          "line": 519
         },
         {
           "level": 4,
           "id": "dated-navigation-counts.",
           "title": "Dated navigation counts.",
-          "line": 528
+          "line": 530
         }
       ],
       "citations_rendered": 24,
@@ -6160,8 +6160,8 @@
         "manuscript_title": "Problem-Sized Lean Worlds"
       },
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:0cc5322eea915c2ac422501e459c31cddcba712f2cc9f975c562dab5c9b61325",
-      "pdf_byte_count": 129504,
+      "pdf_sha256": "sha256:98a803c66ffc3def007bc39fac0208cebc0a77a109e23cd57eaa6626df0ba09d",
+      "pdf_byte_count": 130898,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",

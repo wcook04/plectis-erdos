@@ -1,0 +1,156 @@
+{
+  "schema": "erdos249257-fresh-context-use-experiment/1",
+  "artifact_role": "internal_agent_reading_experiment_receipt_not_human_comprehension_evidence",
+  "run": "2026-09-06 run 1",
+  "candidate_read": "release/final-20260905 at C7 1a499c021d",
+  "design": {
+    "arms": {
+      "S": "Lean tree, manuscripts, root prose only",
+      "D": "arm S plus query_corpus, claims.json, semantic corpus, docs projections"
+    },
+    "tasks": {
+      "i": "#1049 rational-base region: ordinary proof versus formal components",
+      "ii": "#257 coprimality removal: inherited statement versus local proof",
+      "iii": "#68 finite bound versus unbounded theorem",
+      "iv": "#269 window-escape equivalence: what a reformulation transfers"
+    },
+    "participants": "one opus agent per task and arm, 40 tool calls and 25 minutes each, no network, no wave reports or audit material",
+    "adjudication": "blind to arm; every claimed statement checked against the cited Lean declaration then the manuscript; eight scores per return, no composite",
+    "score_scale": "0 to 2 for the six methodology outcomes; vocabulary_without_mechanism is a 0 to 2 penalty; evidence_bound_correction is 0 or 3"
+  },
+  "returns": [
+    {
+      "label": "R01",
+      "task": "task_ii_erdos257_coprimality",
+      "arm": "S",
+      "scores": {
+        "correct_reconstruction": 2,
+        "false_strengthening": 0,
+        "missed_hypotheses": 0,
+        "correct_open_remainder": 2,
+        "successful_replay": 1,
+        "usable_return_contribution": 2,
+        "vocabulary_without_mechanism": 0,
+        "evidence_bound_correction": 3
+      }
+    },
+    {
+      "label": "R02",
+      "task": "task_i_erdos1049_region",
+      "arm": "S",
+      "scores": {
+        "correct_reconstruction": 2,
+        "false_strengthening": 0,
+        "missed_hypotheses": 0,
+        "correct_open_remainder": 2,
+        "successful_replay": 2,
+        "usable_return_contribution": 2,
+        "vocabulary_without_mechanism": 0,
+        "evidence_bound_correction": 3
+      }
+    },
+    {
+      "label": "R03",
+      "task": "task_iv_erdos269_window_escape",
+      "arm": "D",
+      "scores": {
+        "correct_reconstruction": 2,
+        "false_strengthening": 0,
+        "missed_hypotheses": 0,
+        "correct_open_remainder": 2,
+        "successful_replay": 2,
+        "usable_return_contribution": 2,
+        "vocabulary_without_mechanism": 0,
+        "evidence_bound_correction": 0
+      }
+    },
+    {
+      "label": "R04",
+      "task": "task_iii_erdos68_finite_bound",
+      "arm": "S",
+      "scores": {
+        "correct_reconstruction": 2,
+        "false_strengthening": 0,
+        "missed_hypotheses": 0,
+        "correct_open_remainder": 2,
+        "successful_replay": 2,
+        "usable_return_contribution": 2,
+        "vocabulary_without_mechanism": 0,
+        "evidence_bound_correction": 0
+      }
+    },
+    {
+      "label": "R05",
+      "task": "task_iii_erdos68_finite_bound",
+      "arm": "D",
+      "scores": {
+        "correct_reconstruction": 2,
+        "false_strengthening": 0,
+        "missed_hypotheses": 0,
+        "correct_open_remainder": 2,
+        "successful_replay": 2,
+        "usable_return_contribution": 2,
+        "vocabulary_without_mechanism": 0,
+        "evidence_bound_correction": 0
+      }
+    },
+    {
+      "label": "R06",
+      "task": "task_iv_erdos269_window_escape",
+      "arm": "S",
+      "scores": {
+        "correct_reconstruction": 2,
+        "false_strengthening": 0,
+        "missed_hypotheses": 0,
+        "correct_open_remainder": 2,
+        "successful_replay": 2,
+        "usable_return_contribution": 2,
+        "vocabulary_without_mechanism": 0,
+        "evidence_bound_correction": 0
+      }
+    },
+    {
+      "label": "R07",
+      "task": "task_i_erdos1049_region",
+      "arm": "D",
+      "scores": {
+        "correct_reconstruction": 2,
+        "false_strengthening": 0,
+        "missed_hypotheses": 0,
+        "correct_open_remainder": 2,
+        "successful_replay": 2,
+        "usable_return_contribution": 2,
+        "vocabulary_without_mechanism": 0,
+        "evidence_bound_correction": 3
+      }
+    },
+    {
+      "label": "R08",
+      "task": "task_ii_erdos257_coprimality",
+      "arm": "D",
+      "scores": {
+        "correct_reconstruction": 2,
+        "false_strengthening": 0,
+        "missed_hypotheses": 0,
+        "correct_open_remainder": 2,
+        "successful_replay": 2,
+        "usable_return_contribution": 2,
+        "vocabulary_without_mechanism": 0,
+        "evidence_bound_correction": 3
+      }
+    }
+  ],
+  "confirmed_corpus_defects_repaired_at_C8": [
+    "two #1049 manuscript sentences said this release carries RationalBaseContour in its cut; the module is held outside the release",
+    "the #1049 claim row named 53/5, 83/6 and 122/7 as the next strip members while 54/5 and 56/5 also belong",
+    "the #257 reasoning-surface hypothesis table omitted every base b >= 2",
+    "the #257 open-remainder wording understated the theorem's reach (every A with summable reciprocals is settled; the divergent regime is open)"
+  ],
+  "reading_gap_recorded_not_a_defect": "the #269 Lean consumer requires recurrence, positivity and bound for every n and instantiates the escape at lo_0 = 0, while the paper's carry starts after onset",
+  "refuted_reports": [
+    "the #68 2^39990 and #249 2^39989 floors are consistent on disk (bit_length minus one is a genuine exponent)",
+    "the #269 abstract already carries the private-formal-source qualifier"
+  ],
+  "outcome_summary": "all eight returns reached the strongest supported statement with its hypotheses; no false strengthening; no missed hypothesis; no absent module described as Lean-checked in this checkout; arms S and D did not separate on these four tasks at this sample size",
+  "ceiling": "internal agent evidence; four tasks, two participants per task, eight returns; no sampling and no statistical claim; no bearing on human comprehension; no acceleration claim; question association Q1 interpretation only"
+}

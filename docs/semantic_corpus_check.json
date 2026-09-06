@@ -129,7 +129,7 @@
   "surface_digests": {
     "docs/RESULTS.md": "sha256:216a33b5d221346aac76f73344fe4a98a5d0f7b2127024f8754a563c9f6b99d3",
     "docs/TRUTH_AUDIT.md": "sha256:fa79ef61ce25ddf47d93aecb0b31469d31e2e701171ac4ae47d6517d74a9bb11",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:2936c42bc2e4853ceca89ba7a364f80960a57d84347cb11d983ae095ee60f423",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:d50e3b342ece7f7f4a8eef616a4bd2830aa2c05128bef7a6660c58e267c56dde",
     "paper/cold-clone-to-proof-receipt.tex": "sha256:1db36ee76888c784480b4cee14c83824cf4acf57518b03b4d9de00e98129903e"
   },
   "top_level_fields": [
