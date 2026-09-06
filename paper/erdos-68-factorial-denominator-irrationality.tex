@@ -7,8 +7,8 @@
 % Build from the public paper directory with `make`.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{66878a31f144c6714af357695e26b07d6653e02c}
-\renewcommand{\commitshort}{66878a31f144}
+\renewcommand{\commit}{4ab50e144847a3393fb340341760e5d6907d702e}
+\renewcommand{\commitshort}{4ab50e144847}
 \usepackage{longtable}
 \hypersetup{
   pdftitle={Factorial-channel obstructions and exact orbit boundaries for Erdős Problem 68},
@@ -216,8 +216,13 @@ The converse is also formalised, and holds for every real input:
  x\in\mathbb Q\quad\Longleftrightarrow\quad
  d_m(x)=0\ \text{for all sufficiently large }m.
 \]
-The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/a740c6d5bb630a71327ddb4c893c72a288f8519a/ErdosProblems/Erdos68/CanonicalFactorialTermination.lean#L78}{termination equivalence}
-follows from the growth of a positive remainder. If all digits after index
+The
+\lword{Erdos68/CanonicalFactorialTermination.lean}{78}{exists_rat_eq_iff_eventually_zero_canonicalDigit}{termination
+equivalence} follows from the growth of a positive remainder, through the
+\lword{Erdos68/CanonicalFactorialTermination.lean}{38}{canonicalRemainder_eq_zero_of_zero_digit_tail}{zero-tail
+remainder lemma} and the
+\lword{Erdos68/CanonicalFactorialTermination.lean}{54}{exists_rat_eq_of_canonicalRemainder_eq_zero}{rational
+witness}. If all digits after index
 $N\ge1$ vanish, the recurrence gives
 $\theta_{N+k}\ge(k+1)\theta_N$. Since every canonical remainder is less than
 one, $\theta_N$ must vanish. Thus $x=\lfloor N!x\rfloor/N!$.
@@ -632,12 +637,12 @@ checked bound
 \]
 The two formal declarations behind this finite bound make its hypotheses
 explicit.  The generic theorem
-\lword{Erdos68/FactorialZeroPlateau.lean}{876}
+\lword{Erdos68/FactorialGapPlateauCore.lean}{812}
 {rational_denominator_ge_of_nonunit_carry}{single non-unit carry bound}
 assumes $m\ge3$, an exact carry miss at that index, a positive denominator,
 and the displayed rational representation, then concludes $m\le q$.  The
 source-level specialization
-\lword{Erdos68/FactorialZeroPlateau.lean}{940}
+\lword{Erdos68/FactorialZeroPlateauCertificates.lean}{136}
 {sixty_seven_le_rational_denominator}{index-$67$ denominator bound}
 supplies the prime-index miss used above.
 
@@ -1203,9 +1208,9 @@ $2^{39990}$.  The replay also verifies directly that the preceding convergent
 lies outside the enclosure.  All enclosure, quotient, and denominator
 operations use integers; the decimal inequality above is checked by integer
 exponentiation.  The
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/cd3bd6fe245867a435e15d503ccedd699c5d02e2/scripts/check_erdos68_continued_fraction.py}{integer replay}
+\href{https://github.com/wcook04/plectis-erdos/blob/cd3bd6fe245867a435e15d503ccedd699c5d02e2/scripts/check_erdos68_continued_fraction.py}{integer replay}
 and its
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/cd3bd6fe245867a435e15d503ccedd699c5d02e2/verification/erdos68-continued-fraction.json}{receipt}
+\href{https://github.com/wcook04/plectis-erdos/blob/cd3bd6fe245867a435e15d503ccedd699c5d02e2/verification/erdos68-continued-fraction.json}{receipt}
 accompany the calculation.
 
 The divisibility exclusion $q\nmid299999!$ from the carry certificate is a
@@ -1241,9 +1246,9 @@ Write $L=p^eW$, where $p\nmid W$.  If $v_p(d_n)<e$, then $p\mid L/d_n$.
 If $n\in J$, the integer identity $u_n(L/d_n)=W$ gives
 $L/d_n\equiv Wu_n^{-1}\pmod p$.  Summing proves the congruence.
 The reduced denominator is $L/\gcd(B,L)$; the
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/0d34630e1cc9d2b1ac6edfa7cfdba83b31bdc8fe/ErdosProblems/Erdos68/PrimePoleDenominator.lean#L41}{prime-power survival criterion}
+\href{https://github.com/wcook04/plectis-erdos/blob/0d34630e1cc9d2b1ac6edfa7cfdba83b31bdc8fe/ErdosProblems/Erdos68/PrimePoleDenominator.lean#L41}{prime-power survival criterion}
 gives $p$-valuation $e$ exactly when $p\nmid B$.  Since $W$ is nonzero modulo $p$, this is the
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/6e28e93fc9d8d67c382260b5f3d5fa65ceb2363d/ErdosProblems/Erdos68/PrimePoleCriterion.lean#L223}{maximal-hit cancellation criterion}.
+\href{https://github.com/wcook04/plectis-erdos/blob/6e28e93fc9d8d67c382260b5f3d5fa65ceb2363d/ErdosProblems/Erdos68/PrimePoleCriterion.lean#L223}{maximal-hit cancellation criterion}.
 \end{proof}
 
 At the endpoint $M=p-1$ with $p\ge5$, Wilson's theorem supplies the hit $n=p-2$.

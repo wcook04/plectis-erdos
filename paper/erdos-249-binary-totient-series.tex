@@ -27,8 +27,8 @@
 % its own status column.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
-\renewcommand{\commitshort}{99f4bf47422a}
+\renewcommand{\commit}{4ab50e144847a3393fb340341760e5d6907d702e}
+\renewcommand{\commitshort}{4ab50e144847}
 \hypersetup{
   pdftitle={A basis for the 2-kernel of Euler's totient},
   pdfsubject={Erdős Problem Notes: Problem 249},
@@ -267,13 +267,13 @@ independence half of
 \ref{res:basis} follows by finite character; the span equality needs the
 reductions as well.
 {\footnotesize\emph{Checked:}
-\mword{Erdos249257/TotientMahlerDefect.lean}{935}{linearIndependent_canonicalTotientKernelFamily}{independence},
-\mword{Erdos249257/TotientMahlerDefect.lean}{989}{finrank_canonicalTotientKernel_eq}{dimension},
-\mword{Erdos249257/TotientMahlerDefect.lean}{1084}{finrank_totientKernelThroughLevelFamily_eq}{the exact finite-truncation rank};
+\mword{Erdos249257/TotientMahlerDefect.lean}{946}{linearIndependent_canonicalTotientKernelFamily}{independence},
+\mword{Erdos249257/TotientMahlerDefect.lean}{1000}{finrank_canonicalTotientKernel_eq}{dimension},
+\mword{Erdos249257/TotientMahlerDefect.lean}{1085}{finrank_totientKernelThroughLevelFamily_eq}{the exact finite-truncation rank};
 the latter is the complete truncation wrapper, with its explicit hypothesis $e\ge1$,
 while the canonical-family rank is the intermediary because even residues reduce to
 the odd-core family.
-\mword{Erdos249257/TotientMahlerDefect.lean}{1145}{not_finiteDimensional_span_fullTotientKernel}{infinite-dimensionality directly}.}
+\mword{Erdos249257/TotientMahlerDefect.lean}{1146}{not_finiteDimensional_span_fullTotientKernel}{infinite-dimensionality directly}.}
 
 \item\label{res:carryrank} \stag{formalised here}
 \textbf{Rank lower bound for a rational scaled-tail sequence.}  If $\Stot$
@@ -288,7 +288,7 @@ only through the Lambert weight, the coprimality identity, or tail differences.
 It is not an irrationality criterion, because no finite-rank upper bound is
 proved for the scaled-tail sequences supplied by rationality.
 {\footnotesize\emph{Checked:}
-\mword{Erdos249257/TotientCarryKernelRigidity.lean}{300}{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{the barrier},
+\mword{Erdos249257/TotientCarryKernelRigidity.lean}{301}{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{the barrier},
 \mword{Erdos249257/TotientCarryKernelRigidity.lean}{211}{finrank_canonicalCarryKernel_ge_of_linearIndependent}{rank transport from \ref{res:rank}}.}
 
 The orbit-level form sharpens this rank barrier without closing it: under the
@@ -408,8 +408,8 @@ shifted by one --- in the sense that the next integer up is the exact first
 denominator at which that window's certificate fails.  The method is the
 classical Farey mediant argument (Section~\ref{sec:denominator}).
 {\footnotesize\emph{Checked:}
-\mword{Erdos249257/CertificateKernel.lean}{18371}{tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053}{exclusion},
-\mword{Erdos249257/CertificateKernel.lean}{18384}{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{reduced-denominator form},
+\mword{Erdos249257/CertificateKernel.lean}{18559}{tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053}{exclusion},
+\mword{Erdos249257/CertificateKernel.lean}{18572}{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{reduced-denominator form},
 \mword{Erdos249257/GapFareyBound.lean}{225}{gap_check_window_1_240_first_failure}{first failure}.
 \emph{Registry:} the row owns the reduced-denominator form only.}
 
@@ -420,7 +420,7 @@ $\Aw(n)=\sum_{d\mid n}\ph(d)\mu(n/d)$; here $\Aw\ge0$, $\Aw(p)=p-2$,
 $\Aw(p^k)=\ph(p^k)-\ph(p^{k-1})$, and $\Aw$ is unbounded.  Its values at
 $n=1,\dots,10$ are $1,0,1,1,3,0,5,2,4,0$.
 {\footnotesize\emph{Checked:}
-\mword{Erdos249257/CertificateKernel.lean}{18445}{tsum_primWeight_div_two_pow_sub_one_eq_totient_series}{identity},
+\mword{Erdos249257/CertificateKernel.lean}{18633}{tsum_primWeight_div_two_pow_sub_one_eq_totient_series}{identity},
 \mword{Erdos249257/MersenneLambertLadder.lean}{370}{primWeight_nonneg}{sign},
 \mword{Erdos249257/MersenneLambertLadder.lean}{297}{primWeight_apply_prime}{primes},
 \mword{Erdos249257/MersenneLambertLadder.lean}{272}{primWeight_apply_prime_pow}{prime powers},
@@ -553,7 +553,7 @@ remains open.
 {\footnotesize\emph{Checked:}
 \mword{Erdos249257/DiagonalFreshLossBridge.lean}{2667}{canonicalAdjacentSuffixCentral_iff_slack_nonneg}{centrality equivalence},
 \mword{Erdos249257/DiagonalFreshLossBridge.lean}{2757}{canonicalAdjacentSuffixJumpCentralSupply_iff_slackSupply}{equivalence of the two conditions},
-\mword{Erdos249257/DiagonalFreshLossBridge.lean}{2932}{irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply}{conditional irrationality theorem}.}
+\mword{Erdos249257/DiagonalFreshLossBridge.lean}{2929}{irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply}{conditional irrationality theorem}.}
 
 \item\label{res:foreignresidue} \stag{conditional reduction}
 \textbf{Finite foreign-residue projection.}  For $H,D\in\N$, split the
@@ -592,7 +592,7 @@ nonintegrality criterion for the actual LCM diagonal, not a quantitative
 separation estimate and not a proof that such indices occur.
 {\footnotesize\emph{Checked:}
 \mword{Erdos249257/TotientActualLcmOrbitNonintegrality.lean}{37}{irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply}{exact frontier},
-\mword{Erdos249257/TotientActualLcmOrbitNonintegrality.lean}{53}{irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply}{forward implication}.}
+\mword{Erdos249257/TotientActualLcmOrbitNonintegrality.lean}{52}{irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply}{forward implication}.}
 
 \item\label{res:actualsign} \stag{unconditional progress}
 \textbf{Positive LCM corridor and top-edge boundary.}  For $a\ge8$ and
@@ -645,7 +645,7 @@ positive at some positive index of its periodic part, then
   formal proof.  By \ref{res:weight} the weight $\Aw$ is
 unbounded, hence not eventually periodic, so \#249 is outside this class.
 {\footnotesize\emph{Checked:}
-\mword{Erdos249257/CertificateKernel.lean}{12811}{irrational_ratWeightSeries_eventuallyPeriodic}{the periodic theorem}.}
+\mword{Erdos249257/CertificateKernel.lean}{12999}{irrational_ratWeightSeries_eventuallyPeriodic}{the periodic theorem}.}
 
 \item\label{res:primindex} \stag{proved here}
 \textbf{No fixed common denominator clears the normalised weight.}  For every integer
@@ -677,7 +677,7 @@ input.
 \mword{Erdos249257/LcmConeFlatness.lean}{399}{irrational_totient_series_iff_pointwise_certificates}{pointwise},
 \mword{Erdos249257/LcmConeFlatness.lean}{412}{irrational_totient_series_iff_certificate_supply}{cofinal at each shift},
 \mword{Erdos249257/LcmConeFlatness.lean}{426}{irrational_totient_series_iff_lcm_diagonal_certificate_supply}{$\lcm$ diagonal},
-\mword{Erdos249257/PivotAntiReconstruction.lean}{1765}{dtwWindowSeparatedPairs_iff_irrational_totient_series}{window-separated pairs}.}
+\mword{Erdos249257/PivotAntiReconstruction.lean}{1775}{dtwWindowSeparatedPairs_iff_irrational_totient_series}{window-separated pairs}.}
 
 \item\label{res:supply} \stag{conditional reduction}
 \textbf{A denominator-indexed gap-certificate hypothesis.}  Suppose that for
@@ -688,7 +688,7 @@ the one of \ref{res:equivalences}: the band scales with $q$, and the family is
 indexed by denominators rather than by shifts.  The converse is not proved and
 is not claimed.
 {\footnotesize\emph{Checked:}
-\mword{Erdos249257/CertificateKernel.lean}{16025}{irrational_tsum_totient_div_pow_two_of_gap_certificate_supply}{the conditional implication}.
+\mword{Erdos249257/CertificateKernel.lean}{16213}{irrational_tsum_totient_div_pow_two_of_gap_certificate_supply}{the conditional implication}.
 \emph{Registry:} no row currently owns this declaration.}
 
 \item\label{res:open} \stag{open}
@@ -726,7 +726,7 @@ $f$ & $\sum f(n)/2^n$ & weight $g=f*\mu$ & status \\
 $\tau$ & $1.6066951\ldots=\EB$ & $g\equiv1$ & The Erd\H{o}s--Borwein constant;
   irrational~\cite[theorem on p.~63]{erdos1948};
   formalised here in the Lambert form $\sum_{d\ge1}(2^d-1)^{-1}$
-  (\mword{Erdos249257/CertificateKernel.lean}{8335}{irrational_erdosBorwein_series}{checked}) \\
+  (\mword{Erdos249257/CertificateKernel.lean}{8523}{irrational_erdosBorwein_series}{checked}) \\
 $\omega$ & $0.5169428\ldots$ & $g=\mathbf 1_{\text{primes}}$ &
   Irrational at base $2$: Tao--Ter\"av\"ainen, Thm.~1.3, p.~4;
   proof pp.~44--56~\cite{taoteravainen2025} \\
@@ -783,9 +783,9 @@ misidentification; it does not settle or reduce the displayed problem.
 Several neighbouring Dirichlet-convolution identities are rational and
 exactly computable.  Writing $L(g):=\sum_{d\ge1}g(d)/(2^d-1)$, we have
 $\sum_{d\ge1}\mu(d)/(2^d-1)=\tfrac12$
-(\mword{Erdos249257/CertificateKernel.lean}{18434}{tsum_moebius_div_two_pow_sub_one_eq_half}{checked})
+(\mword{Erdos249257/CertificateKernel.lean}{18622}{tsum_moebius_div_two_pow_sub_one_eq_half}{checked})
 and $\sum_{d\ge1}\ph(d)/(2^d-1)=2$
-(\mword{Erdos249257/CertificateKernel.lean}{18429}{tsum_totient_div_two_pow_sub_one_eq_two}{checked}).
+(\mword{Erdos249257/CertificateKernel.lean}{18617}{tsum_totient_div_two_pow_sub_one_eq_two}{checked}).
 These belong to two distinct one-step M\"obius-convolution chains:
 \[
   L(\mathbf 1)=\EB \ \longmapsto\ L(\mu)=\tfrac12,
@@ -796,7 +796,7 @@ Thus $\Stot$ is one convolution step from the rational value $L(\ph)=2$, not
 from $\EB$; the parallel chains show that this transformation need not
 preserve rationality.  The squared-denominator representation
 $\Stot=\tfrac12+\sum_{d\ge1}\mu(d)/(2^d-1)^2$
-(\mword{Erdos249257/CertificateKernel.lean}{18454}{totient_series_eq_half_add_moebius_mersenne_square}{checked})
+(\mword{Erdos249257/CertificateKernel.lean}{18642}{totient_series_eq_half_add_moebius_mersenne_square}{checked})
 converges fast enough to recompute the decimal above.
 
 There is also an exact probabilistic reading, and it is more than a gloss.
@@ -805,7 +805,7 @@ Then
 \[
   \Stot=\tfrac12+\Pr[\gcd(X,Y)=1]
 \]
-(\mword{Erdos249257/CertificateKernel.lean}{18557}{totient_series_eq_half_add_visible_coprime_pairs}{checked}),
+(\mword{Erdos249257/CertificateKernel.lean}{18745}{totient_series_eq_half_add_visible_coprime_pairs}{checked}),
 the probability being the visible-coprime-pair series
 $\sum_{\gcd(m,n)=1}2^{-(m+n)}$.  That probability is related to a distribution
 over the Stern--Brocot tree in a completely explicit way.  For positive
@@ -967,14 +967,14 @@ arithmetic progression, so Dirichlet's theorem supplies a prime target value.
 For every off-target value, $q_j\mid L_j(n)$ implies
 $q_j-1\mid\ph(L_j(n))$, giving the desired divisibility.
 This is the arithmetic construction behind
-\mword{Erdos249257/TotientMahlerDefect.lean}{882}{exists_separatedMinorCertificate_totientAffineOddFamily}{the checked evaluation minor}.
+\mword{Erdos249257/TotientMahlerDefect.lean}{893}{exists_separatedMinorCertificate_totientAffineOddFamily}{the checked evaluation minor}.
 
 Now set $M_{ij}=\ph(L_j(n_i))$ and divide column $j$ by $2^{d_j}$.
 Every quotient is an integer; the diagonal quotients are odd and the
 others are even.  The resulting matrix is the identity modulo $2$, so its
 determinant is odd.  Hence $\det M\ne0$, proving independence of the
 smaller family on odd inputs
-(\mword{Erdos249257/TotientMahlerDefect.lean}{823}{paritySeparatedMatrix_det_ne_zero}{checked}).
+(\mword{Erdos249257/TotientMahlerDefect.lean}{834}{paritySeparatedMatrix_det_ne_zero}{checked}).
 
 It remains to recover the two zero-residue columns.  In a relation among
 the original sections, let their coefficients be $\alpha$ and $\beta$.
@@ -984,7 +984,7 @@ and gives $\alpha+\beta=0$.  Evaluation at $n=2$ then gives
 $\alpha\ph(2)+\beta\ph(4)=\alpha+2\beta=0$, so $\alpha=\beta=0$.
 This proves the canonical finite-family independence used in
 \ref{res:rank}
-(\mword{Erdos249257/TotientMahlerDefect.lean}{935}{linearIndependent_canonicalTotientKernelFamily}{checked}).
+(\mword{Erdos249257/TotientMahlerDefect.lean}{946}{linearIndependent_canonicalTotientKernelFamily}{checked}).
 
 Every finite subset of $\mathcal B$ lies in such a canonical family, so
 $\mathcal B$ is independent.  The two reduction identities send each remaining
@@ -1089,7 +1089,7 @@ $b+d$.  The excluded range is therefore $q\le b+d-1$, which is the printed
 constant
 (\mword{Erdos249257/GapFareyBound.lean}{176}{gap_check_window_1_240_le_79639646646701375323355774875831053}{checked}),
 and the transport to the series is a tail estimate
-(\mword{Erdos249257/CertificateKernel.lean}{15986}{tsum_totient_div_pow_two_ne_int_div_of_totient_gap_certificate}{checked}).
+(\mword{Erdos249257/CertificateKernel.lean}{16174}{tsum_totient_div_pow_two_ne_int_div_of_totient_gap_certificate}{checked}).
 
 Two things should be read off correctly.  First, the scale.  A window of $K$
 computed binary digits yields a mediant bound of order $2^{K/2}$: the same
@@ -1106,7 +1106,7 @@ is where we would ask a sceptical reader to look.
 The bound transfers to the coprimality form of Section~\ref{sec:family} with
 the constant halved: the visible-coprime-pair series has no representation
 $a/d$ with $d\le39\,819\,823\,323\,350\,687\,661\,677\,887\,437\,915\,526$
-(\mword{Erdos249257/CertificateKernel.lean}{18572}{tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526}{checked}),
+(\mword{Erdos249257/CertificateKernel.lean}{18760}{tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526}{checked}),
 that number being $(q_0-1)/2$ for the constant $q_0$ of
 \ref{res:denominator}.
 
@@ -1216,7 +1216,7 @@ work, not a closure of Problem~\#249.
 {\footnotesize\emph{Checked:}
 \mword{Erdos249257/DiagonalFreshLossBridge.lean}{2667}{canonicalAdjacentSuffixCentral_iff_slack_nonneg}{centrality equivalence},
 \mword{Erdos249257/DiagonalFreshLossBridge.lean}{2757}{canonicalAdjacentSuffixJumpCentralSupply_iff_slackSupply}{equivalence of the two conditions},
-\mword{Erdos249257/DiagonalFreshLossBridge.lean}{2932}{irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply}{conditional irrationality theorem}.}
+\mword{Erdos249257/DiagonalFreshLossBridge.lean}{2929}{irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply}{conditional irrationality theorem}.}
 
 \paragraph{Finite foreign-residue projection.}
 For a diagonal height $H$ and cutoff $D$, retain separately the residue

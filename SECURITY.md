@@ -32,12 +32,12 @@ or write access to important files. A green Lean build establishes proof
 checking for the imported declarations; it is not a general security audit.
 
 Report privately through
-[GitHub Private Vulnerability Reporting](https://github.com/wcook04/plectis-lean-erdos249-257/security/advisories/new).
+[GitHub Private Vulnerability Reporting](https://github.com/wcook04/plectis-erdos/security/advisories/new).
 
 Use it for anything sensitive: a supply-chain concern in the pinned
 toolchain or dependencies, a CI configuration issue, or leaked material that
 should not be public. Do not open a public issue with sensitive details.
 Mathematical errors and build failures are not security issues; use the
-[ordinary issue forms](https://github.com/wcook04/plectis-lean-erdos249-257/issues/new/choose)
+[ordinary issue forms](https://github.com/wcook04/plectis-erdos/issues/new/choose)
 for those. Reports get a best-effort response from a solo maintainer, normally
 within a week.

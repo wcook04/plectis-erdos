@@ -55,8 +55,58 @@ pull request; the [credit policy](docs/research-commons/CREDIT_POLICY.md)
 explains how accepted work is attributed. The
 [accepted contribution record](docs/research-commons/CONTRIBUTIONS.md) is public.
 
+Choose a checkout. Each block below is complete on its own; the first
+three are exclusive sparse manifests of the same clone.
+
+Clone without a checkout, then pick one sparse manifest:
+
 ```sh
-git clone --depth=1 --filter=blob:none https://github.com/wcook04/plectis-erdos.git
+git clone --depth=1 --filter=blob:none --single-branch --no-checkout https://github.com/wcook04/plectis-erdos.git
+```
+
+Quick proof check (the first proof's import cone only):
+
+```sh
+git -C plectis-erdos cat-file -e HEAD:scripts/lean-quick-sparse-checkout && git -C plectis-erdos show HEAD:scripts/lean-quick-sparse-checkout | git -C plectis-erdos sparse-checkout set --no-cone --stdin
+git -C plectis-erdos checkout
+```
+
+Complete Lean proof source:
+
+```sh
+git -C plectis-erdos cat-file -e HEAD:scripts/lean-sparse-checkout && git -C plectis-erdos show HEAD:scripts/lean-sparse-checkout | git -C plectis-erdos sparse-checkout set --no-cone --stdin
+git -C plectis-erdos checkout
+```
+
+Reader files only (papers, notes, and metadata; no Lean):
+
+```sh
+git -C plectis-erdos cat-file -e HEAD:scripts/reader-sparse-checkout && git -C plectis-erdos show HEAD:scripts/reader-sparse-checkout | git -C plectis-erdos sparse-checkout set --no-cone --stdin
+git -C plectis-erdos checkout
+```
+
+Complete current corpus, then fetch its pinned history and inspect one claim:
+
+```sh
+git clone --depth=1 --filter=blob:none --single-branch https://github.com/wcook04/plectis-erdos.git plectis-current
+cd plectis-current
+git fetch --filter=blob:none --unshallow origin main
+python3 scripts/verify_claims.py --claim eb_full_support
+```
+
+Blobless full history for release validation:
+
+```sh
+git clone --filter=blob:none --single-branch https://github.com/wcook04/plectis-erdos.git plectis-release
+```
+
+In a Lean-source checkout, one bounded proof build. Lean itself is installed
+through elan; the [Lean community setup guide](https://leanprover-community.github.io/get_started.html)
+covers that step.
+
+```sh
+cd plectis-erdos
+python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.PeriodMultipleEscape
 ```
 
 For smaller checkouts, proof builds, or release validation, follow the
@@ -70,9 +120,9 @@ a source packet for one question. The packet contains selected committed
 files in one attachment; bring the answer back through the same review and
 credit process. [The reader's guide](HUMAN_ENTRY.md) explains this route.
 
-The [architecture guide](ARCHITECTURE.md) and its
-[systems paper](claim-faithful-publication-systems-paper.pdf) explain how the
-research record is maintained. Neither requires Lean or project history.
+The [architecture and repository guide](ARCHITECTURE.md) and its
+[printable PDF](claim-faithful-publication-systems-paper.pdf) explain how the
+research record is maintained. Both assume no Lean or project history.
 Cloning runs no project code; see [security](SECURITY.md) for the execution
 boundary.
 
@@ -133,7 +183,8 @@ score it: a checked rendering is not a priority claim, and a conditional
 reduction still depends on its named open condition.
 
 `v0.9.0` is the citation anchor, and [`docs/claims.json`](docs/claims.json) pins
-its formal-source checkpoint. This public checkout is self-contained; only its
+its formal-source checkpoint. This is a self-contained public checkout of
+Plectis. It is not an entrypoint into any private development system; only its
 pinned Lean source is proof authority; do not infer results from private or
 unreleased work.
 

@@ -22,8 +22,8 @@
 % useful one.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{3506d189a2660213ec0e53ee29360a464007b8a1}
-\renewcommand{\commitshort}{3506d189a266}
+\renewcommand{\commit}{4ab50e144847a3393fb340341760e5d6907d702e}
+\renewcommand{\commitshort}{4ab50e144847}
 \hypersetup{
   pdftitle={Denominator periods, rational-value constraints and achievement-set geometry for Mersenne subseries (Erdős Problem 257)},
   pdfsubject={Erdős Problem Notes: Problem 257},
@@ -213,7 +213,7 @@ what remains.
 
 The following ordinary proofs exclude several classes with divergent
 reciprocal mass.  Complete proofs, examples and countermodels appear in
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-proofs.md}{the analytic proof supplement}.
+\href{https://github.com/wcook04/plectis-erdos/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-proofs.md}{the analytic proof supplement}.
 The variable-exponent argument below and the finite repair deadline are
 compositions developed from those arguments.
 
@@ -247,7 +247,7 @@ irrationality, and the binary atom comparison gives every larger base.
 The supplement gives all truncation estimates and an explicit
 reciprocal-divergent host with gaps $O(\log\log a)$.
 
-The formal development also checks the \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/WeightedSupportLimits.lean#L111}{summability of the dyadic observation mass}, its \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/WeightedSupportLimits.lean#L81}{vanishing mean}, and the \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/BatchReturnSynthesis.lean#L151}{irrationality consumer from close returns}. These are the checked analytic ingredients; the complete weighted criterion above still uses the ordinary assembly in the supplement.
+The formal development also checks the \href{https://github.com/wcook04/plectis-erdos/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/WeightedSupportLimits.lean#L111}{summability of the dyadic observation mass}, its \href{https://github.com/wcook04/plectis-erdos/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/WeightedSupportLimits.lean#L81}{vanishing mean}, and the \href{https://github.com/wcook04/plectis-erdos/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/BatchReturnSynthesis.lean#L151}{irrationality consumer from close returns}. These are the checked analytic ingredients; the complete weighted criterion above still uses the ordinary assembly in the supplement.
 
 There is also a quantitative necessary condition for rationality.  Put
 $H_A(x)=\sum_{a\in A,\,a\le x}1/a$, let $T_0=2$,
@@ -393,7 +393,7 @@ $N+1$, contradicting a cofinal linear bound. These implications give all
 the stated equivalences.
 \end{proof}
 
-The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/GreedyRepairCriterion.lean#L192}{uniform repair equivalence} is now kernel checked for every real target $x\ge0$.
+The \href{https://github.com/wcook04/plectis-erdos/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/GreedyRepairCriterion.lean#L192}{uniform repair equivalence} is now kernel checked for every real target $x\ge0$.
 
 The finite deadline comes from a growth comparison: strict increases of
 an integer sequence accumulate linearly, whereas represented tails have
@@ -419,7 +419,7 @@ and an independent rational replay of the selected prefix are supplied with
 the synthesis.  The older $2/7$ bound concerns the two-anchor restricted set.
 It proves neither target's membership.  The complete
 phase certificate and the exact recurrence identities are in the
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-synthesis.md}{synthesis supplement}.
+\href{https://github.com/wcook04/plectis-erdos/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-synthesis.md}{synthesis supplement}.
 
 
 \section{Finite-support denominator periods}\label{sec:period}
@@ -938,7 +938,7 @@ counted with multiplicity.  The bouquet, infinitude and factor count are
 The reciprocal-summable support theorem already settles these examples.
 The reduced-modulus identity describes their arithmetic structure; no
 additional block selector is needed for irrationality. The all-base argument
-is proved in \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-proofs.md}{the support-averaging supplement}.
+is proved in \href{https://github.com/wcook04/plectis-erdos/blob/e8458cdce502436d27af8a77d1e4d6742d3bcb69/docs/research/erdos257-eight-return-proofs.md}{the support-averaging supplement}.
 
 \begin{theorem}[unconditional orthogonal-petal criterion]
 \label{res:sunflower}
@@ -959,7 +959,7 @@ reciprocal-summable support theorem. In particular, the alternating-core
 example above gives an irrational sum at every integer base.
 \end{proof}
 
-The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/Erdos249257/BouquetReciprocalIrrationality.lean#L85}{unconditional all-base bouquet theorem} is now kernel checked. The older forced-slot selector is unnecessary for this corollary; it belongs to a stronger certificate construction.
+The \href{https://github.com/wcook04/plectis-erdos/blob/43c36af8b9d5795d0a965825ec01110b87159df6/Erdos249257/BouquetReciprocalIrrationality.lean#L85}{unconditional all-base bouquet theorem} is now kernel checked. The older forced-slot selector is unnecessary for this corollary; it belongs to a stronger certificate construction.
 
 \begin{theorem}[the composite-dilation defect]
 \label{res:compositedefect}
@@ -1976,6 +1976,49 @@ Ter\"av\"ainen, to Luca and Tachiya, and to Kova\v{c} and Tao are cited from
 the literature and are not formalised here.
 
 Erd\H{o}s Problem~\#257 remains open.
+
+\paragraph{Checked declarations behind the reviewed support families.}
+Every finite-core orthogonal-petal bouquet has irrational reciprocal-power
+value at every integer base at least two.  Its defining summable petal
+reciprocals bound the actual support reciprocals,
+\mword{Erdos249257/BouquetReciprocalIrrationality.lean}{19}{summable_reciprocalSupportTerm}{support
+summability}, so no forced-slot selector is needed:
+\mword{Erdos249257/BouquetReciprocalIrrationality.lean}{85}{irrational_erdosSupportSeries_of_orthogonalPetalBouquet_allBase}{all-base
+bouquet corollary}, specialising the base-two statement
+\mword{Erdos249257/SupportSunflowerDichotomy.lean}{540}{irrational_erdosSupportSeries_of_orthogonalPetalBouquet}{base-two
+bouquet theorem}.
+
+For the divisibility-weighted family the ordinary proof carries the full
+theorem; the kernel checks its analytic ingredients.  The finite orbit
+estimate is
+\lword{Erdos257/WeightedSupportAveraging.lean}{49}{cesaroMean_shiftedMersenneAtom_mul_le_gcdMean_add_error}{Ces\`aro
+orbit estimate} with the dyadic observation bound
+\lword{Erdos257/WeightedSupportAveraging.lean}{148}{dyadic_observation_sum_le}{dyadic
+observation bound}; for infinite supports the observation mass is bounded,
+\lword{Erdos257/WeightedSupportLimits.lean}{37}{dyadic_supportObservationMass_sum_le}{mass
+bound}, summable,
+\lword{Erdos257/WeightedSupportLimits.lean}{111}{summable_dyadic_supportObservationMass}{mass
+summability}, and has a mean limit,
+\lword{Erdos257/WeightedSupportLimits.lean}{81}{tendsto_dyadic_supportObservationMass_mean}{mean
+limit}.  The radix close-return endgame is
+\lword{Erdos257/BatchReturnSynthesis.lean}{151}{irrational_erdosSupportSeries_of_radix_closeReturn}{close-return
+irrationality}.  The prime-part split and the diagonal scale producer remain
+ordinary steps.
+
+For every real $x\ge0$, with $Q_N$ the difference between $\lfloor 2^N x\rfloor$
+and the Lambert prefix numerator of the actual greedy support, membership in
+the Mersenne achievement set is equivalent to a nonincrease of $Q$ in every
+window $[K,K+2\lfloor\sqrt K\rfloor+12)$,
+\lword{Erdos257/GreedyRepairCriterion.lean}{192}{mem_iff_greedyBinaryDefect_sqrt_windows}{square-root
+window criterion}, to cofinal nonincreases,
+\lword{Erdos257/GreedyRepairCriterion.lean}{175}{mem_iff_greedyBinaryDefect_cofinal_repairs}{cofinal
+repair criterion}, and to cofinal bounds by the next divisor load,
+\lword{Erdos257/GreedyRepairCriterion.lean}{207}{mem_iff_greedyBinaryDefect_cofinal_load_bound}{load
+bound criterion}, or by $N+1$,
+\lword{Erdos257/GreedyRepairCriterion.lean}{222}{mem_iff_greedyBinaryDefect_cofinal_linear_bound}{linear
+bound criterion}.  One strict-increase window excludes membership,
+\lword{Erdos257/GreedyRepairCriterion.lean}{232}{not_mem_of_greedyBinaryDefect_strict_sqrt_window}{strict-window
+exclusion}; the target $4/9$ is a specialisation.
 
 \begin{thebibliography}{10}
 \bibitem{kakeya1914} S.~Kakeya,

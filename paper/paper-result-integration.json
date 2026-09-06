@@ -1551,12 +1551,12 @@
   "inputs": {
     "claims": {
       "path": "docs/claims.json",
-      "digest": "sha256:fe2d1746bfb1b15a3367344766d04cfe6f24eeabc05b5a36ed3e84b87dc1d660"
+      "digest": "sha256:7ba40160753a52a257e70d0fd81b038478b61bc79c41fe708a6ee57a2331539f"
     },
     "declaration_atlas": {
       "path": "docs/declaration_atlas.json",
-      "digest": "sha256:a0117f8260ec84a4b269117802ddc70057cbfb58072f9dfe7116f21c837f671f",
-      "source_fingerprint": "sha256:3cea6742dee47e0876b54961f0609c43ac24d123abc5befa457d8bc05e196b22"
+      "digest": "sha256:6d9336b8c033e4f434e32cc1683ef896d14a5e5cac8fb911bc2efda32d3921ba",
+      "source_fingerprint": "sha256:765749a26af21197671c0175b0803d1b855641d5444c89a442001b5c67d61455"
     },
     "palomar_showcase": {
       "path": "docs/PALOMAR_RESULT_SHOWCASE.json",

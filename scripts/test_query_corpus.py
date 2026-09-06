@@ -55,7 +55,9 @@ SEMANTIC_SCRIPT = ROOT / "scripts" / "query_semantic.py"
 # Keep programme packets bounded without making a six-byte formatting change a
 # release failure. Eighteen kilobytes leaves modest headroom while remaining a
 # small first-read machine packet.
-PROGRAMME_PACKET_MAX_BYTES = 18_000
+# Raised from 18_000 on 2026-09-05 when the erdos257_half_story route grew to
+# 18,176 bytes with the reciprocal-summable and generic repair results.
+PROGRAMME_PACKET_MAX_BYTES = 19_000
 PROGRAMME_EXPECTATIONS = {
     "erdos257_half_story": {
         "title": "Achievement-set geometry and the rational-target seams",
@@ -1188,7 +1190,7 @@ def validate_indexed_declaration_lookup() -> None:
     wrapper = declaration_packet(wrapper_name, 20)
     wrapper_source = declaration_packet("irrational_erdosSum_full_support", 20)
     source = source_coordinate_packet(
-        "Erdos249257/CertificateKernel.lean:18384", 20
+        "Erdos249257/CertificateKernel.lean:18572", 20
     )
 
     assert bare == qualified
@@ -1256,7 +1258,7 @@ def validate_route_memory_cards() -> None:
     assert (
         "declaration tsum_totient_div_pow_two_ne_ratCast_of_den_le_"
         "79639646646701375323355774875831053 | theorem | "
-        "Erdos249257/CertificateKernel.lean:18384 | claims=denominator_exclusion "
+        "Erdos249257/CertificateKernel.lean:18572 | claims=denominator_exclusion "
         "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
         "erdos249_certificate_story"
     ) in declaration_card
@@ -1338,10 +1340,10 @@ def validate_route_memory_cards() -> None:
     ) in status_card
 
     source_card = query_corpus.render_card(
-        source_coordinate_packet("Erdos249257/CertificateKernel.lean:18384", 20)
+        source_coordinate_packet("Erdos249257/CertificateKernel.lean:18572", 20)
     )
     assert (
-        "source Erdos249257/CertificateKernel.lean:18384 "
+        "source Erdos249257/CertificateKernel.lean:18572 "
         "| module=Erdos249257.CertificateKernel | nearby_declarations=1 "
         "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
         "erdos249_certificate_story"
@@ -1350,14 +1352,19 @@ def validate_route_memory_cards() -> None:
     architecture_card = query_corpus.render_card(
         query_corpus.publication_architecture_packet()
     )
+    publication_assembly = query_corpus.load("docs/claims.json")[
+        "machine_readable_paper"
+    ]["publication_assembly"]
     expected_publication_family_count = len(
-        query_corpus.load("docs/claims.json")["machine_readable_paper"][
-            "publication_assembly"
-        ]["contribution_families"]
+        publication_assembly["contribution_families"]
+    )
+    expected_retained_companion_count = len(
+        publication_assembly["publication_architecture"]["retained_companions"]
     )
     assert architecture_card.startswith(
         "publication architecture | gateway=paper/erdos249-257-main-paper.tex "
-        f"| retained_companions=2 | families={expected_publication_family_count}"
+        f"| retained_companions={expected_retained_companion_count} "
+        f"| families={expected_publication_family_count}"
     )
     assert (
         "family_route | classical_full_support_and_named_257_families "
@@ -1764,6 +1771,7 @@ def validate_mathematical_signal_spine() -> None:
         "integral_shift_classification",
         "totient_shift_propagation",
         "coefficient_only_no_go",
+        "actual_real_prime_gap_tail",
     ]
     assert [row["tier_id"] for row in programme_spines[251]] == [
         "source_ranked_frontier",
@@ -1772,6 +1780,7 @@ def validate_mathematical_signal_spine() -> None:
         "deep_mechanism_and_classification",
         "deep_mechanism_and_classification",
         "natural_friction_and_no_go",
+        "conditional_endpoint_leverage",
     ]
     assert [row["family_id"] for row in programme_spines[269]] == [
         "conditional_carry_escape",
@@ -1860,6 +1869,7 @@ def validate_mathematical_signal_spine() -> None:
                 "integral_shift_classification",
                 "totient_shift_propagation",
                 "coefficient_only_no_go",
+                "actual_real_prime_gap_tail",
             ],
         ),
         (
@@ -2518,7 +2528,7 @@ def main() -> int:
     assert dyadic_totient_claim["claim"]["declarations"][0] == {
         "name": "exists_separatedMinorCertificate_totientAffineOddFamily",
         "module": "Erdos249257/TotientMahlerDefect.lean",
-        "line": 882,
+        "line": 893,
     }
     assert any(
         row["name"] == "not_finiteDimensional_span_fullTotientKernel"
@@ -2549,7 +2559,7 @@ def main() -> int:
     assert paper_label["attached_claims"][0]["id"] == "denominator_exclusion"
     assert paper_label["anchor_class"] == "registered_claim_anchor"
     assert any(
-        row["source_ref"] == "Erdos249257/CertificateKernel.lean:18384"
+        row["source_ref"] == "Erdos249257/CertificateKernel.lean:18572"
         for row in paper_label["source_links"]
     )
     assert paper_label["lean_source_identity"] == adelic["lean_source_identity"]
@@ -2784,9 +2794,10 @@ def main() -> int:
     )
     assert declaration["match_count"] == 1
     assert declaration["matches"][0]["claim_ids"] == ["denominator_exclusion"]
-    assert declaration["matches"][0]["source_ref"] == "Erdos249257/CertificateKernel.lean:18384"
+    assert declaration["matches"][0]["source_ref"] == "Erdos249257/CertificateKernel.lean:18572"
     assert declaration["matches"][0]["source_url"].startswith(
-        "https://github.com/wcook04/plectis-lean-erdos249-257/blob/"
+        claims_document["release"]["repository"]
+        + "/blob/"
         + formal_source["ref"]
         + "/"
     )
@@ -2822,11 +2833,11 @@ def main() -> int:
     assert local_declaration["paper_anchors"][0]["canonical_handle"] == "res:lift"
 
     source_coordinate = query(
-        "--source", "Erdos249257/CertificateKernel.lean:18383"
+        "--source", "Erdos249257/CertificateKernel.lean:18571"
     )
     assert source_coordinate["kind"] == "source_coordinate"
     assert source_coordinate["source"]["source_url"].endswith(
-        "/Erdos249257/CertificateKernel.lean#L18383"
+        "/Erdos249257/CertificateKernel.lean#L18571"
     )
     assert source_coordinate["source"]["lean_source_identity"] == adelic["lean_source_identity"]
     source_declaration = source_coordinate["nearby_declarations"][0]
@@ -3434,12 +3445,15 @@ def main() -> int:
             "ErdosProblems.Erdos251.carryPartialSum_natCast_eq",
             "ErdosProblems.Erdos251.carryCoeff_natCast_not_eventually_periodic",
             "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic",
+            "ErdosProblems.Erdos251.exists_rational_bounded_perturbation",
+            "ErdosProblems.Erdos251.not_forall_irrational_of_bounded_perturbation_invariant",
+            "ErdosProblems.Erdos251.not_irrational_tsum_polynomialGapDyadicTerm",
         ]
         assert any(
             anchor["source_ref"]
             == "paper/erdos-251-prime-gap-dyadic-series.tex:1"
             and set(anchor["matched_declarations"])
-            == {
+            >= {
                 "carryPartialSum_natCast_eq",
                 "carryCoeff_natCast_not_eventually_periodic",
                 "primeGap0_not_eventually_periodic",
@@ -3447,7 +3461,7 @@ def main() -> int:
             for anchor in coefficient_family["paper_route"]["matching_anchors"]
         )
         assert (
-            "finite partial-sum identity"
+            "decides the actual prime-gap series"
             in coefficient_family["open_boundary"]["boundary"]
         )
         assert coefficient_family["open_boundary"]["problem_route"] == (

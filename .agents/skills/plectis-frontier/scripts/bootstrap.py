@@ -15,7 +15,7 @@ import sys
 from typing import Any
 
 SOURCE_FILE = Path(__file__).resolve().parents[1] / "source.json"
-PUBLIC_URL = "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+PUBLIC_URL = "https://github.com/wcook04/plectis-erdos.git"
 REQUIRED = (
     "AGENTS.override.md", "AGENTS.md", "docs/claims.json",
     "scripts/agent_entry.py", "scripts/query_corpus.py",

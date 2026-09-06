@@ -10,8 +10,8 @@
 \usepackage{colortbl}
 % Problem-specific source pin: #269's local-window consumer advances
 % independently of the corpus default.
-\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
-\renewcommand{\commitshort}{99f4bf47422a}
+\renewcommand{\commit}{4ab50e144847a3393fb340341760e5d6907d702e}
+\renewcommand{\commitshort}{4ab50e144847}
 \hypersetup{
   pdftitle={A two-prime transcendence theorem and exact three-prime structure for Erdős Problem 269},
   pdfsubject={Erdős Problem Notes: Problem 269},
@@ -167,7 +167,7 @@ Throughout, $p,q,r$ are pairwise distinct primes, and a \emph{pure power} is a
 power $b^{e}$ of a single base; a \emph{pure $3$-power} is a power of $3$, and
 similarly for the other bases.  Call $n$ \emph{smooth} when
 $n=p^{i}q^{j}r^{k}$ for some $i,j,k\ge0$; this is the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{31}{smooth3Val}{smooth lattice
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{32}{smooth3Val}{smooth lattice
 value}.
 
 For $x\ge1$ write
@@ -178,15 +178,15 @@ For $x\ge1$ write
  r^{\lfloor\log_r x\rfloor},
 \]
 the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{53}{smoothPrefixLcm}{running least
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{54}{smoothPrefixLcm}{running least
 common multiple} and the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{36}{threePrimeHeight}{pure-power
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{37}{threePrimeHeight}{pure-power
 height}, where $\lfloor\log_b x\rfloor$ is the integer logarithm, the largest
 $e$ with $b^{e}\le x$.  Since $a_1,\ldots,a_n$ are exactly the smooth numbers
 up to $a_n$, we have $[a_1,\ldots,a_n]=\Lprefix(a_n)$, and the summands of the
 problem are the reciprocals of $\Lprefix$ along the enumeration.  The
 reciprocal of the height at a smooth point is the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{40}{threePrimeKernelQ}{lattice
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{41}{threePrimeKernelQ}{lattice
 kernel}
 \[
  \Kernel(i,j,k)=\frac{1}{\hgt(p^{i}q^{j}r^{k})} .
@@ -316,7 +316,7 @@ $i\le\lfloor\log_p x\rfloor$, $j\le\lfloor\log_q x\rfloor$,
 $k\le\lfloor\log_r x\rfloor$ and $p^{i}q^{j}r^{k}\le x$: the coordinate bounds
 make the index set finite, and the last condition is the actual constraint.
 This is the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{46}{smoothPrefixExponents}{smooth
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{47}{smoothPrefixExponents}{smooth
 prefix index set}.  Both conditions matter: the coordinate box is strictly
 larger than the prefix, since a product of three large pure powers can exceed
 $x$ while each factor does not.
@@ -341,15 +341,15 @@ product divides $\Lprefix(x)$ as well.  The two divisibilities give equality.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{123}{smoothPrefixLcm_eq_threePrimeHeight}{running-lcm
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{124}{smoothPrefixLcm_eq_threePrimeHeight}{running-lcm
 identity}, from the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{77}{smoothPrefixLcm_dvd_threePrimeHeight}{divisibility
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{78}{smoothPrefixLcm_dvd_threePrimeHeight}{divisibility
 into the height} and the three membership statements for the pure powers,
 namely the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{84}{pureFirst_mem_smoothPrefixExponents}{first},
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{97}{pureSecond_mem_smoothPrefixExponents}{second},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{85}{pureFirst_mem_smoothPrefixExponents}{first},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{98}{pureSecond_mem_smoothPrefixExponents}{second},
 and
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{110}{pureThird_mem_smoothPrefixExponents}{third}
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{111}{pureThird_mem_smoothPrefixExponents}{third}
 pure-power memberships.
 
 The hypothesis that the primes are pairwise distinct is used exactly once, in
@@ -384,7 +384,7 @@ Each of the three factors is a power of its base not exceeding $x$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{430}{threePrimeHeight_le_cube}{cubic
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{431}{threePrimeHeight_le_cube}{cubic
 majorant}, which needs no primality.  The exponent $3$ is the number of
 generating primes, and the bound is the reason the reciprocal kernel is
 comparable to $x^{-3}$ rather than to $x^{-1}$.
@@ -399,7 +399,7 @@ where the value stands still and by what factor it moves.
 
 Say that $x$ and $y$ lie in the same \emph{logarithmic cell} when
 $\lfloor\log_b x\rfloor=\lfloor\log_b y\rfloor$ for each of $b=p,q,r$: the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{163}{SameThreePrimeLogCell}{cell
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{164}{SameThreePrimeLogCell}{cell
 relation}.
 
 \begin{theorem}[constancy on cells]\label{res:cell}
@@ -414,11 +414,11 @@ through the three integer logarithms.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{179}{smoothPrefixLcm_eq_of_sameLogCell}{cell
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{180}{smoothPrefixLcm_eq_of_sameLogCell}{cell
 constancy of the running value}, the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{169}{threePrimeHeight_eq_of_sameLogCell}{cell
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{170}{threePrimeHeight_eq_of_sameLogCell}{cell
 constancy of the height}, and the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{191}{threePrimeKernelQ_eq_of_sameLogCell}{cell
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{192}{threePrimeKernelQ_eq_of_sameLogCell}{cell
 constancy of the kernel}.  The running value therefore changes only when one of
 the three logarithms changes, and the next theorem says by exactly how much.
 
@@ -434,17 +434,17 @@ gains one in its exponent while the others are unchanged.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{326}{smoothPrefixLcm_firstLogStep}{first},
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{339}{smoothPrefixLcm_secondLogStep}{second},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{327}{smoothPrefixLcm_firstLogStep}{first},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{340}{smoothPrefixLcm_secondLogStep}{second},
 and
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{352}{smoothPrefixLcm_thirdLogStep}{third}
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{353}{smoothPrefixLcm_thirdLogStep}{third}
 coordinate steps, over the corresponding statements for the height alone, which
 need no primality: the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{294}{threePrimeHeight_firstLogStep}{first
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{295}{threePrimeHeight_firstLogStep}{first
 height step}, the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{305}{threePrimeHeight_secondLogStep}{second},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{306}{threePrimeHeight_secondLogStep}{second},
 and the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{316}{threePrimeHeight_thirdLogStep}{third}.
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{317}{threePrimeHeight_thirdLogStep}{third}.
 
 The jump points are therefore the pure prime powers, and they do not collide
 across channels.
@@ -463,17 +463,17 @@ positive power of any prime.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{249}{threePrimePositiveJumpSet_card}{positive
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{250}{threePrimePositiveJumpSet_card}{positive
 jump count} and the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{278}{threePrimeJumpSetWithOrigin_card}{jump
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{279}{threePrimeJumpSetWithOrigin_card}{jump
 count with the origin}, over the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{208}{positivePrimePowers_card}{channel
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{209}{positivePrimePowers_card}{channel
 cardinality}, the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{229}{positivePrimePowers_disjoint}{channel
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{230}{positivePrimePowers_disjoint}{channel
 disjointness}, and the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{219}{one_not_mem_positivePrimePowers}{exclusion
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{220}{one_not_mem_positivePrimePowers}{exclusion
 of the origin}; the channels themselves are the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{204}{positivePrimePowers}{positive
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{205}{positivePrimePowers}{positive
 power sets}.  The exponent $0$ is omitted from each channel because it is the
 shared initial value, which is why the origin is counted once rather than three
 times.
@@ -643,10 +643,10 @@ this exactly, on a finite rectangular box.
 
 Write $\mathcal B(h_p,h_q,h_r)$ for the box of exponent triples with $i\le h_p$,
 $j\le h_q$, $k\le h_r$, the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{368}{smoothExponentBox}{exponent
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{369}{smoothExponentBox}{exponent
 box}, and, for a height $H$, write $F(H)$ for the set of points of the box whose
 running height $\hgt(p^{i}q^{j}r^{k})$ equals $H$, the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{377}{smoothHeightFiber}{height
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{378}{smoothHeightFiber}{height
 fibre}.  Distinct lattice points can carry the same height, and the coefficients
 of the normal form are exactly the sizes of these fibres.
 
@@ -666,11 +666,11 @@ $1/H$ by definition of the kernel, so the fibre contributes $\#F(H)/H$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{406}{finiteSmoothKernelSum_groupedByHeight}{height-fibre
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{407}{finiteSmoothKernelSum_groupedByHeight}{height-fibre
 normal form}, over the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{384}{smoothHeightFiber_kernel_sum}{fibre
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{385}{smoothHeightFiber_kernel_sum}{fibre
 sum}, with the height of a lattice point given by the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{373}{smoothPointHeight}{point
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{374}{smoothPointHeight}{point
 height}.
 
 For a worked instance take $(p,q,r)=(2,3,5)$ and the box $\mathcal B(1,1,1)$,
@@ -704,9 +704,9 @@ and it is stated over the full box rather than the smooth prefix, so it is not
 a statement about $\Lprefix$ at a cutoff.
 
 The same module records a one-step map $\tau(b,d,s)=b(s-d)$, the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{487}{tailStateStep}{variable-base
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{488}{tailStateStep}{variable-base
 tail step}, with the rewriting
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{490}{tailStateStep_eq}{that names its
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{491}{tailStateStep_eq}{that names its
 expanded form}.  No orbit of this map is analysed.
 
 \section{A quadratic bound for smooth exponent shells}\label{sec:shell}
@@ -715,7 +715,7 @@ A tail estimate needs to know how many lattice points can share a short
 multiplicative interval.  Fix a box $\mathcal B(h_p,h_q,h_r)$ and an interval
 $[\lo,\hi)$, and write $\mathcal S$ for the set of exponent triples of that box
 whose smooth value lies in that interval, the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{500}{smoothExponentShell}{smooth
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{501}{smoothExponentShell}{smooth
 exponent shell}.  Every bound below assumes the interval short in the
 multiplicative sense, meaning that $\hi$ is at most a stated multiple of $\lo$.
 
@@ -733,7 +733,7 @@ is impossible; the case $a>a'$ is symmetric.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{509}{exponent_unique_in_short_interval}{short-interval
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{510}{exponent_unique_in_short_interval}{short-interval
 uniqueness}.  The hypothesis is that the interval has multiplicative width at
 most $b$.
 
@@ -753,9 +753,9 @@ with the first coordinate projected away.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{585}{smoothExponentShell_card_le_dropThird}{third-coordinate
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{586}{smoothExponentShell_card_le_dropThird}{third-coordinate
 projection} and the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{543}{smoothExponentShell_card_le_dropFirst}{first-coordinate
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{544}{smoothExponentShell_card_le_dropFirst}{first-coordinate
 projection}.
 
 \begin{theorem}[quadratic multiplicity bound]\label{res:shell}
@@ -778,9 +778,9 @@ difference of the two sides is $d(3a+4d+3)\ge0$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic}{quadratic
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{647}{smoothExponentShell_card_quadratic}{quadratic
 shell bound}, over the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{629}{sorted_pair_quadratic}{sorted
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{630}{sorted_pair_quadratic}{sorted
 quadratic estimate}.  The constant $9$ is the square of the number of
 generating primes and appears because the bound is the arithmetic--geometric
 comparison for a sum of three sorted coordinates; sorting is a hypothesis, not
@@ -827,15 +827,15 @@ two.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{479}{kernel_235_not_rankOne}{non-separation
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{480}{kernel_235_not_rankOne}{non-separation
 witness}, over the four exact values, the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{443}{kernel_235_origin}{origin},
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{450}{kernel_235_two}{value at two},
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{458}{kernel_235_three}{value at
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{444}{kernel_235_origin}{origin},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{451}{kernel_235_two}{value at two},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{459}{kernel_235_three}{value at
 three}, and
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{467}{kernel_235_six}{value at six}.
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{468}{kernel_235_six}{value at six}.
 The exact determinant calculation is the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{721}{kernel_235_minor_eq_neg_one_fifteen}{rank-two
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{904}{kernel_235_minor_eq_neg_one_fifteen}{rank-two
 certificate}.
 The height at $6$ is $60$ rather than $6$ because the maximal pure powers below
 $6$ are $4$, $3$ and $5$: the running least common multiple at a smooth cutoff
@@ -1159,7 +1159,7 @@ inside one block.  Indeed, if
 \]
 then the ratio between the interval endpoints is $2\le b$, so strict
 monotonicity of the powers forces $e=f$.  This is the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{668}{dyadicInternalPower_exponent_unique}{checked
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{669}{dyadicInternalPower_exponent_unique}{checked
 internal-power uniqueness lemma}.  Each block therefore contributes at most one
 letter from each of the $3$- and $5$-channels, and exactly one letter $2$ at its
 right end.
@@ -1205,11 +1205,11 @@ $\beta_1\beta_2=60$ is the product of the four multipliers at
 $3,4,5,8$.
 
 The definition is the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{688}{dyadicBlockBase235}{dyadic
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{751}{dyadicBlockBase235}{dyadic
 block base}; Lean checks both the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{699}{dyadicBlockBase235_cases}{exact
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{762}{dyadicBlockBase235_cases}{exact
 four-case alphabet} and the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{711}{dyadicBlockBase235_mem_interval}{bounded-radix
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{774}{dyadicBlockBase235_mem_interval}{bounded-radix
 consequence}.  The radix word is therefore constrained to four values, and no
 growth hypothesis on it is needed.  Section~\ref{sec:open} gives a literal
 finite formula for the corresponding block digit $m_a^{235}$, matching the
@@ -1686,13 +1686,13 @@ may need.  The finite-observer formalisation isolates the precise
 faithfulness requirement: equality in a finite observer must imply equality
 after symbolic realisation, and a genuine finite-dimensional factorisation
 forces the realised symbolic span to be finite-dimensional
-(\lword{Erdos269/WeightedPhaseCarry.lean}{109}{carry_eq_residueDigit_add_coboundary}{residue--coboundary form},
-\lword{Erdos269/WeightedPhaseCarry.lean}{293}{CartierRealisation}{symbolic realisation},
-\lword{Erdos269/WeightedPhaseCarry.lean}{334}{finite_realisedSpan_of_factorisation}{checked}).
+(\lword{Erdos269/WeightedPhaseCarry.lean}{110}{carry_eq_residueDigit_add_coboundary}{residue--coboundary form},
+\lword{Erdos269/WeightedPhaseCarry.lean}{294}{CartierRealisation}{symbolic realisation},
+\lword{Erdos269/WeightedPhaseCarry.lean}{335}{finite_realisedSpan_of_factorisation}{checked}).
 The same finite formulation keeps the carry residue and residue digit in their
 declared intervals
-(\lword{Erdos269/WeightedPhaseCarry.lean}{150}{carryResidue_mem_interval}{carry interval},
-\lword{Erdos269/WeightedPhaseCarry.lean}{157}{residueDigit_mem_interval}{digit interval}).
+(\lword{Erdos269/WeightedPhaseCarry.lean}{151}{carryResidue_mem_interval}{carry interval},
+\lword{Erdos269/WeightedPhaseCarry.lean}{158}{residueDigit_mem_interval}{digit interval}).
 No theorem here proves that the literal realised span is infinite, so a
 general finite separable decomposition is neither assumed nor declared
 excluded.
@@ -1806,59 +1806,59 @@ to the actual $\{2,3,5\}$ word is not asserted.
 
 \begin{tabular}{@{}ll@{}}
 informal statement & linked Lean source\\
-smooth lattice value & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{31}{smooth3Val}\\
-pure-power height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{36}{threePrimeHeight}\\
-lattice kernel & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{40}{threePrimeKernelQ}\\
-smooth prefix index set & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{46}{smoothPrefixExponents}\\
-running least common multiple & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{53}{smoothPrefixLcm}\\
-prefix value divides the height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{59}{smooth3Val_dvd_threePrimeHeight_of_mem}\\
-divisibility into the height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{77}{smoothPrefixLcm_dvd_threePrimeHeight}\\
-first pure-power membership & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{84}{pureFirst_mem_smoothPrefixExponents}\\
-second pure-power membership & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{97}{pureSecond_mem_smoothPrefixExponents}\\
-third pure-power membership & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{110}{pureThird_mem_smoothPrefixExponents}\\
-running-lcm identity & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{123}{smoothPrefixLcm_eq_threePrimeHeight}\\
-cell relation & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{163}{SameThreePrimeLogCell}\\
-cell constancy of the height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{169}{threePrimeHeight_eq_of_sameLogCell}\\
-cell constancy of the running value & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{179}{smoothPrefixLcm_eq_of_sameLogCell}\\
-cell constancy of the kernel & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{191}{threePrimeKernelQ_eq_of_sameLogCell}\\
-positive power sets & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{204}{positivePrimePowers}\\
-channel cardinality & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{208}{positivePrimePowers_card}\\
-exclusion of the origin & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{219}{one_not_mem_positivePrimePowers}\\
-channel disjointness & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{229}{positivePrimePowers_disjoint}\\
-positive jump channels & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{243}{threePrimePositiveJumpSet}\\
-positive jump count & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{249}{threePrimePositiveJumpSet_card}\\
-jump set with the origin & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{273}{threePrimeJumpSetWithOrigin}\\
-jump count with the origin & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{278}{threePrimeJumpSetWithOrigin_card}\\
-first height step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{294}{threePrimeHeight_firstLogStep}\\
-second height step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{305}{threePrimeHeight_secondLogStep}\\
-third height step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{316}{threePrimeHeight_thirdLogStep}\\
-first coordinate step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{326}{smoothPrefixLcm_firstLogStep}\\
-second coordinate step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{339}{smoothPrefixLcm_secondLogStep}\\
-third coordinate step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{352}{smoothPrefixLcm_thirdLogStep}\\
-exponent box & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{368}{smoothExponentBox}\\
-point height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{373}{smoothPointHeight}\\
-height fibre & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{377}{smoothHeightFiber}\\
-fibre sum & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{384}{smoothHeightFiber_kernel_sum}\\
-height-fibre normal form & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{406}{finiteSmoothKernelSum_groupedByHeight}\\
-cubic majorant & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{430}{threePrimeHeight_le_cube}\\
-origin value & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{443}{kernel_235_origin}\\
-value at two & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{450}{kernel_235_two}\\
-value at three & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{458}{kernel_235_three}\\
-value at six & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{467}{kernel_235_six}\\
-non-separation witness & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{479}{kernel_235_not_rankOne}\\
-variable-base tail step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{487}{tailStateStep}\\
-expanded tail step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{490}{tailStateStep_eq}\\
-smooth exponent shell & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{500}{smoothExponentShell}\\
-short-interval uniqueness & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{509}{exponent_unique_in_short_interval}\\
-first-coordinate projection & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{543}{smoothExponentShell_card_le_dropFirst}\\
-third-coordinate projection & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{585}{smoothExponentShell_card_le_dropThird}\\
-sorted quadratic estimate & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{629}{sorted_pair_quadratic}\\
-quadratic shell bound & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic}\\
-dyadic internal power & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{662}{DyadicInternalPower}\\
-internal-power uniqueness & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{668}{dyadicInternalPower_exponent_unique}\\
-dyadic block base & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{688}{dyadicBlockBase235}\\
-exact dyadic radix alphabet & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{699}{dyadicBlockBase235_cases}\\
-bounded-radix consequence & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{711}{dyadicBlockBase235_mem_interval}\\
+smooth lattice value & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{32}{smooth3Val}\\
+pure-power height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{37}{threePrimeHeight}\\
+lattice kernel & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{41}{threePrimeKernelQ}\\
+smooth prefix index set & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{47}{smoothPrefixExponents}\\
+running least common multiple & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{54}{smoothPrefixLcm}\\
+prefix value divides the height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{60}{smooth3Val_dvd_threePrimeHeight_of_mem}\\
+divisibility into the height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{78}{smoothPrefixLcm_dvd_threePrimeHeight}\\
+first pure-power membership & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{85}{pureFirst_mem_smoothPrefixExponents}\\
+second pure-power membership & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{98}{pureSecond_mem_smoothPrefixExponents}\\
+third pure-power membership & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{111}{pureThird_mem_smoothPrefixExponents}\\
+running-lcm identity & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{124}{smoothPrefixLcm_eq_threePrimeHeight}\\
+cell relation & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{164}{SameThreePrimeLogCell}\\
+cell constancy of the height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{170}{threePrimeHeight_eq_of_sameLogCell}\\
+cell constancy of the running value & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{180}{smoothPrefixLcm_eq_of_sameLogCell}\\
+cell constancy of the kernel & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{192}{threePrimeKernelQ_eq_of_sameLogCell}\\
+positive power sets & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{205}{positivePrimePowers}\\
+channel cardinality & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{209}{positivePrimePowers_card}\\
+exclusion of the origin & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{220}{one_not_mem_positivePrimePowers}\\
+channel disjointness & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{230}{positivePrimePowers_disjoint}\\
+positive jump channels & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{244}{threePrimePositiveJumpSet}\\
+positive jump count & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{250}{threePrimePositiveJumpSet_card}\\
+jump set with the origin & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{274}{threePrimeJumpSetWithOrigin}\\
+jump count with the origin & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{279}{threePrimeJumpSetWithOrigin_card}\\
+first height step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{295}{threePrimeHeight_firstLogStep}\\
+second height step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{306}{threePrimeHeight_secondLogStep}\\
+third height step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{317}{threePrimeHeight_thirdLogStep}\\
+first coordinate step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{327}{smoothPrefixLcm_firstLogStep}\\
+second coordinate step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{340}{smoothPrefixLcm_secondLogStep}\\
+third coordinate step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{353}{smoothPrefixLcm_thirdLogStep}\\
+exponent box & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{369}{smoothExponentBox}\\
+point height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{374}{smoothPointHeight}\\
+height fibre & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{378}{smoothHeightFiber}\\
+fibre sum & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{385}{smoothHeightFiber_kernel_sum}\\
+height-fibre normal form & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{407}{finiteSmoothKernelSum_groupedByHeight}\\
+cubic majorant & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{431}{threePrimeHeight_le_cube}\\
+origin value & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{444}{kernel_235_origin}\\
+value at two & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{451}{kernel_235_two}\\
+value at three & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{459}{kernel_235_three}\\
+value at six & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{468}{kernel_235_six}\\
+non-separation witness & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{480}{kernel_235_not_rankOne}\\
+variable-base tail step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{488}{tailStateStep}\\
+expanded tail step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{491}{tailStateStep_eq}\\
+smooth exponent shell & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{501}{smoothExponentShell}\\
+short-interval uniqueness & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{510}{exponent_unique_in_short_interval}\\
+first-coordinate projection & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{544}{smoothExponentShell_card_le_dropFirst}\\
+third-coordinate projection & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{586}{smoothExponentShell_card_le_dropThird}\\
+sorted quadratic estimate & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{630}{sorted_pair_quadratic}\\
+quadratic shell bound & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{647}{smoothExponentShell_card_quadratic}\\
+dyadic internal power & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{663}{DyadicInternalPower}\\
+internal-power uniqueness & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{669}{dyadicInternalPower_exponent_unique}\\
+dyadic block base & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{751}{dyadicBlockBase235}\\
+exact dyadic radix alphabet & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{762}{dyadicBlockBase235_cases}\\
+bounded-radix consequence & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{774}{dyadicBlockBase235_mem_interval}\\
 least positive residue & \lrefx{Erdos269/ResidueEscape.lean}{26}{leastPositiveResidue}\\
 positive representative range & \lrefx{Erdos269/ResidueEscape.lean}{31}{leastPositiveResidue_pos_le}\\
 representative congruence & \lrefx{Erdos269/ResidueEscape.lean}{52}{leastPositiveResidue_modEq}\\

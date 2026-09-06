@@ -1,9 +1,9 @@
 {
   "schema": "erdos249257-declaration-search-index-check/1",
-  "index_sha256": "sha256:d169fde2942a557b02c8ba4f9ca4715cea9f954d0107ca55e9d1e93a32ea2e43",
-  "atlas_source_fingerprint": "sha256:3cea6742dee47e0876b54961f0609c43ac24d123abc5befa457d8bc05e196b22",
+  "index_sha256": "sha256:30b4ae1c0ef50991f186dfb4e91c587ec973f7b3ebc5aaf62059a65d6a8d6dd2",
+  "atlas_source_fingerprint": "sha256:765749a26af21197671c0175b0803d1b855641d5444c89a442001b5c67d61455",
   "implementation_sha256": {
     "scripts/build_declaration_search_index.py": "sha256:8e1e37a15fd183489ce6a03e63c49f559d3dc3c3c3d06d544520c75745695b21",
-    "scripts/query_corpus.py": "sha256:c2c0625f966026b947df9633fd0be2750ec3353fd9bb46321a7bed59abdaf0c4"
+    "scripts/query_corpus.py": "sha256:32781ba6862beacaae5ca363a6caf211ff8447384e24346a23255b2a3af04d99"
   }
 }

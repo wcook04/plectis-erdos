@@ -1,7 +1,7 @@
 {
   "builder_schema": "erdos249257-semantic-corpus/1",
-  "input_fingerprint": "sha256:cb291fe6dae2801ea077549afccc6df0221e8241bd3bdeda395ae540730a7ac2",
-  "output_digest": "sha256:a318af77ae9e0cb9689c70dc257931f96a92181d553faee62ec23c9346e137bf",
+  "input_fingerprint": "sha256:a4608093fb6862cc28515abeb946f60a2d491e326f7490e839f68c94eed7b793",
+  "output_digest": "sha256:d4c77f75a603e5b752b0e9ef5e569d24344f2cea6aded6e1b408c26e3944875f",
   "schema": "erdos249257-semantic-corpus-check/1",
   "summary": {
     "declarations": 155018,
@@ -129,8 +129,8 @@
   "surface_digests": {
     "docs/RESULTS.md": "sha256:c542ccbfb804c430d8aad65a369f5acfa63b7c5368040cf79f8a5f76048e6d48",
     "docs/TRUTH_AUDIT.md": "sha256:20c1ef71ce9a9f4a293f18dc86b33edcfab24ac59404519220cdfee1863bc23c",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:974b55ef6c09b5cd018806d9113a9151829e6630c8835766ee65159d9988ca9b",
-    "paper/cold-clone-to-proof-receipt.tex": "sha256:8b3628f2420c367c17ce5c75e9c25bc7330122c7b245053688cfabb0a6c41a8c"
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:d453a9bcb5f3c9646a4d71fdf31f91d09cb2b1f79eaf3a28a7ab3fb21e5019e7",
+    "paper/cold-clone-to-proof-receipt.tex": "sha256:76f6b5f1c992c55ceebda1d20088e6accf63471cc18e0de859f19229b9e5a165"
   },
   "top_level_fields": [
     {
@@ -176,94 +176,94 @@
       "start": 5676
     },
     {
-      "end": 6388,
+      "end": 6374,
       "key": "source_provenance",
-      "sha256": "9e3e6b4af5cccb5410960529c4d2589094c50bc6ec634d69feb287a65b1d3246",
+      "sha256": "74c00345ee03a7faeac3c71ac0e606f26e7c7beffed85354242baac633309721",
       "start": 5924
     },
     {
-      "end": 6485,
+      "end": 6471,
       "key": "evidence_fingerprint",
-      "sha256": "02e7a21d735488d64aeffdf24113e7037f239d5209ff2d6f053ddb84e9f9c661",
-      "start": 6389
+      "sha256": "4990d1c386c44ba4d16de86bc7b57afc2ee8988e3b9c5feed04407a8826f8fe1",
+      "start": 6375
     },
     {
-      "end": 6588,
+      "end": 6574,
       "key": "semantic_input_fingerprint",
-      "sha256": "fdbb6cc4436f4f43ec8a0b01164e5bf72d1fca902a7b102d890155610cf27300",
-      "start": 6486
+      "sha256": "6f7caba3511a00e5a70a08e0410c4a97542683809e759824b2eb552fb7c3befe",
+      "start": 6472
     },
     {
-      "end": 7540,
+      "end": 7526,
       "key": "vocabularies",
       "sha256": "6cec6d4b8df6e710d1d71cb69d099b3e1faf665d8840f3296e755b4d00bd4b2a",
-      "start": 6589
+      "start": 6575
     },
     {
-      "end": 15494,
+      "end": 15480,
       "key": "summary",
       "sha256": "06576a6014b14c53bc24eb962530be848ca3ee4fd3e54fa2b78156b07d9b5e73",
-      "start": 7541
+      "start": 7527
     },
     {
-      "end": 35534,
+      "end": 35520,
       "key": "zones",
       "sha256": "f538d145cd9a041eb628aad346b20a8544a877c63fb39a5c1c41270e7e19da90",
-      "start": 15495
+      "start": 15481
     },
     {
-      "end": 181333,
+      "end": 181319,
       "key": "concepts",
       "sha256": "6030cbc72e77ca04b286bc9059ee276480df9b8c0f410233a7585525a97fe330",
-      "start": 35535
+      "start": 35521
     },
     {
-      "end": 26766522,
+      "end": 26832269,
       "key": "statement_nodes",
-      "sha256": "f3aca5ac82e447b2898e6169d64a69f58ae9faed8cbc0c30188f228fac095a3f",
-      "start": 181334
+      "sha256": "b342007667ea30341904197573082c8629e7a31de5c6ad888a46d6379554c09a",
+      "start": 181320
     },
     {
-      "end": 29418625,
+      "end": 29504548,
       "key": "relations",
-      "sha256": "23e52a3d2e3824c3dc265c20f5efed41c4ce785527e0fc9151a44d5e1c3125b3",
-      "start": 26766523
+      "sha256": "5d4248eab9fd90795db20409b375f245afd3efb50e64f479031dd6db88f9a361",
+      "start": 26832270
     },
     {
-      "end": 29456323,
+      "end": 29542246,
       "key": "generated_families",
       "sha256": "f70aa74e215fe18eab3b4de555ae37f76a1e473e1cf9144c4f53ae74d08872fb",
-      "start": 29418626
+      "start": 29504549
     },
     {
-      "end": 102048974,
+      "end": 102134897,
       "key": "declaration_roles",
       "sha256": "d225cad423dc38fe0972d3bbda1f0e52ee0fd8c9f5d40ba9028e3bdf59bfc1e6",
-      "start": 29456324
+      "start": 29542247
     },
     {
-      "end": 102163415,
+      "end": 102249338,
       "key": "frontier",
       "sha256": "1d9eac93de40bb13746b6b1cdb66c13eb8db5a14839fffb6e1ef8bc98ff11625",
-      "start": 102048975
+      "start": 102134898
     },
     {
-      "end": 102239114,
+      "end": 102325037,
       "key": "views",
       "sha256": "a4bb7f111941cb2b500130abbbd5ef5fc6b5538b6b33f80cb28629847677f591",
-      "start": 102163416
+      "start": 102249339
     },
     {
-      "end": 102585494,
+      "end": 102671417,
       "key": "integrity",
       "sha256": "31949653700777017ee6840ffae40d52a5318d16c7117bdba354d6cc3996ea09",
-      "start": 102239115
+      "start": 102325038
     },
     {
-      "end": 102706761,
+      "end": 102792684,
       "key": "declaration_role_module_ranges",
       "sha256": "9bc17b7129a90a333e559daf7fde2ec2c8f52ed82fd5e2ddb60df5b0ae22cd93",
-      "start": 102585495
+      "start": 102671418
     }
   ],
   "verification_posture": "content_addressed_generated_corpus_and_public_census_surfaces_matched_a_full_builder_run"

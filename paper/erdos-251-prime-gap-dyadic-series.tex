@@ -8,8 +8,8 @@
 \input{problem-note-preamble}
 % Problem-specific source pin: #251 advances independently of the corpus
 % default, while the #249/#257 notes retain their own reviewed snapshot.
-\renewcommand{\commit}{3506d189a2660213ec0e53ee29360a464007b8a1}
-\renewcommand{\commitshort}{3506d189a266}
+\renewcommand{\commit}{4ab50e144847a3393fb340341760e5d6907d702e}
+\renewcommand{\commitshort}{4ab50e144847}
 \hypersetup{
   pdftitle={An integral-shift criterion for dyadic tail recurrences},
   pdfsubject={Erdős Problem Notes: Problem 251},
@@ -505,8 +505,8 @@ zero for $n<K$, such that $\sum_{n\ge0}(g_n+M\delta_n)/2^{n+1}$ is rational.
 \end{theorem}
 Choose a rational value just above the original sum and use the binary
 expansion of their difference, scaled by $M$, beyond the prescribed prefix.
-The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e2a9177a386c2567a46979c2c7f065c4a839a367/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L163}{construction}
-and its \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e2a9177a386c2567a46979c2c7f065c4a839a367/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L179}{invariant-property consequence}
+The \href{https://github.com/wcook04/plectis-erdos/blob/e2a9177a386c2567a46979c2c7f065c4a839a367/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L163}{construction}
+and its \href{https://github.com/wcook04/plectis-erdos/blob/e2a9177a386c2567a46979c2c7f065c4a839a367/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L179}{invariant-property consequence}
 are kernel checked: a property shared by every admissible perturbation cannot
 by itself force irrationality. The perturbed digits need not remain prime gaps.
 
@@ -535,7 +535,7 @@ Finally,
 \end{proof}
 
 The corresponding dyadic series has value exactly $32$, as shown by the
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/e2a9177a386c2567a46979c2c7f065c4a839a367/ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean#L89}{checked rational-value theorem}.
+\href{https://github.com/wcook04/plectis-erdos/blob/e2a9177a386c2567a46979c2c7f065c4a839a367/ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean#L89}{checked rational-value theorem}.
 
 The formal construction checks the
 \href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean\#L1596}{recurrence},
@@ -1512,6 +1512,20 @@ polynomial countermodel excludes the adjacent $\pm2$ trigger & \lrefx{Erdos251/P
 all polynomial-countermodel shifts are integral & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{1654}{polynomialTailOrbit_shift_integral}\\
 \end{tabular}
 \fi
+
+\paragraph{Checked declarations behind the actual prime-gap tail.}
+The scaled actual prime-gap tail equals its convergent shifted-gap series,
+\lword{Erdos251/RealPrimeGapTail.lean}{31}{realPrimeGapTail_eq_tsum_shifted_gaps}{shifted-gap
+series identity}, and satisfies the real dyadic recurrence unconditionally,
+\lword{Erdos251/RealPrimeGapTail.lean}{48}{realPrimeGapTail_recurrence}{real
+tail recurrence}.  Irrationality of the actual prime series is equivalent to
+escape of its positive real tail shifts from integral values,
+\lword{Erdos251/RealPrimeGapTail.lean}{73}{irrational_primeSeries_iff_realPrimeGapTail_escape}{escape
+equivalence}, and cofinal adjacent small shifts with mismatched actual gaps
+imply irrationality,
+\lword{Erdos251/RealPrimeGapTail.lean}{120}{irrational_primeSeries_of_realPrimeGapTail_small_mismatch}{small-mismatch
+criterion}.  These four declarations are kernel checked; none of them decides
+the escape hypothesis for the actual gaps.
 
 \begin{thebibliography}{99}
 \small

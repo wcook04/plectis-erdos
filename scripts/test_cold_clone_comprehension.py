@@ -642,6 +642,13 @@ def main() -> int:
     )
     checks += 1
 
+    # The production check recovers each anchor group from the README prefix
+    # joined with the routed first-contact surfaces it reads from disk. A
+    # README-only deletion therefore cannot fail while docs/RESULTS.md still
+    # carries the same anchor, so the deletion is applied to the routed reads
+    # too; the task then fails exactly when the anchor is gone everywhere a
+    # cold reader following the README would look.
+    original_safe_read_text = diagnostic.safe_read_text
     for task_id, requirements in diagnostic.human_tasks(summary).items():
         for alternatives in requirements:
             mutated = copy.deepcopy(human_surfaces)
@@ -650,7 +657,22 @@ def main() -> int:
                 mutated["README.md"] = remove_semantic_anchor(
                     mutated["README.md"], token
                 )
-            assert_human_rejected(summary, mutated, f"{task_id}: {alternatives}")
+
+            def routed_without_anchor(rel: str, _tokens=tuple(alternatives)) -> str:
+                text = original_safe_read_text(rel)
+                if rel in diagnostic.FIRST_CONTACT_ROUTED_SURFACES:
+                    # The production match normalizes whitespace, so an anchor
+                    # wrapped across a line break must be deleted in the same form.
+                    text = diagnostic.normalized(text)
+                    for token in _tokens:
+                        text = remove_semantic_anchor(text, token)
+                return text
+
+            diagnostic.safe_read_text = routed_without_anchor
+            try:
+                assert_human_rejected(summary, mutated, f"{task_id}: {alternatives}")
+            finally:
+                diagnostic.safe_read_text = original_safe_read_text
             checks += 1
 
     mutated = copy.deepcopy(human_surfaces)

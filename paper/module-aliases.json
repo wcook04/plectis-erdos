@@ -3,7 +3,7 @@
   "artifact_role": "paper_sigil_to_lean_module_navigation_crosswalk",
   "authority_posture": "generated_navigation_projection_not_proof_authority",
   "heuristic": "Each CamelCase component contributes at most its first three characters.",
-  "alias_count": 130,
+  "alias_count": 131,
   "aliases": [
     {
       "sigil": "ActForResPro",
@@ -614,6 +614,11 @@
       "sigil": "PriGapDyaTai",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
       "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
+    },
+    {
+      "sigil": "ReaPriGapTai",
+      "module": "ErdosProblems/Erdos251/RealPrimeGapTail.lean",
+      "path": "ErdosProblems/Erdos251/RealPrimeGapTail.lean"
     },
     {
       "sigil": "BouRadTaiEsc",

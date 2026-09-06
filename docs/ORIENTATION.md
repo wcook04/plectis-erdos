@@ -123,6 +123,9 @@ The prior-art record, not this table, supplies antecedents.
 - `remaining_open.twenty_one_scaled_remainder_cofinal_return` — Decide whether the scaled actual greedy remainder returns cofinally to one bounded interval: whether some B < ∞ has 2^N r_N ≤ B at arbitrarily large N.
 - `remaining_open.twenty_one_actual_orbit_invariant` — Decide whether a bounded-memory 2-adic or discrepancy invariant of the actual support forces a closed return or forbids permanent supercapacity, or prove no such invariant exists.
 - `remaining_open.twenty_one_final_skip_exclusion` — Decide whether the final-skip signatures prove |E − a_M| ≥ gap_M, contradicting 0 < a_M − E < gap_M, for E = ∑_{n≥1}(2^n − 1)^{−1} and the last-skip approximant a_M.
+- `remaining_open.erdos_68_weighted_collision_product_control` — Prove, on an unbounded family of tailored prime blocks, the weighted collision-product inequality (9.2) together with the independent complementary-residue inequality (2p+1) L_p < 2p^2 (2p-1)! rho_p; an average-over-p theorem is admissible only if its constants force both strict inequalities cofinally.
+- `remaining_open.erdos_68_cofinal_lower_endpoint_escape` — Prove for infinitely many primes p that 1 + 1/(p! - 1) + 2/p <= p Delta_p, equivalently ((p+2) p! - 2) v_p <= p^2 (p! - 1) u_p, or a growing-modulus version with u_p replaced by u_p mod d_p for a specified divisor d_p of v_p.
+- `remaining_open.erdos_1041_additive_error_strip_gluing` — Assuming the Reeb-type strip problem, select trajectories in all strips and connect them through the saddle and root neighbourhoods so that for every eta > 0 the resulting embedded tree contains all m roots and satisfies len(G) <= (1/2pi) * integral_{2 alpha}^{infinity} P_V(t) dt + eta, with total saddle, annular-cut and root-cap cost below eta and no multiplicative loss in 1/(2pi).
 
 ## Mathematical programmes
 

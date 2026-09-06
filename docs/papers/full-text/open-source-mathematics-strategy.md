@@ -36,13 +36,13 @@ The public workflow has two recurring jobs. The first investigates a mathematica
 
 The second job is needed because a successful proof attempt does not settle how the result should be presented or used. Five new declarations may amount to one routine lemma. A short counterexample may eliminate a line of research that was consuming most of the compute. A literature search may uncover a stronger theorem than the one leading the paper. The review changes the account of the result and, when appropriate, the next question to investigate.
 
-The [`coupled-research skill`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/run-coupled-research-goals/SKILL.md) passes source revisions, results, and check records between these jobs. A new theorem, correction, or review can trigger another pass. When nothing has changed, the jobs yield. The [systems paper](../../../claim-faithful-publication-systems-paper.pdf#systems-coupled-goals) explains the implementation; the [navigation paper](../../../cold-clone-to-proof-receipt.pdf#cold-clone-problem) examines how a new agent finds the mathematics and its checks. All of these public jobs can run without the private workbench.
+The [`coupled-research skill`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/run-coupled-research-goals/SKILL.md) passes source revisions, results, and check records between these jobs. A new theorem, correction, or review can trigger another pass. When nothing has changed, the jobs yield. The [systems paper](../../../claim-faithful-publication-systems-paper.pdf#systems-coupled-goals) explains the implementation; the [navigation paper](../../../cold-clone-to-proof-receipt.pdf#cold-clone-problem) examines how a new agent finds the mathematics and its checks. All of these public jobs can run without the private workbench.
 
 <a id="what-one-clone-lets-a-contributor-do"></a>
 
 ## What one clone lets a contributor do
 
-A newcomer can ask an agent to explain the repository before choosing a task. The [`explanation skill`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/explain-public-system/SKILL.md) directs it to the public papers and source, with the level of detail adapted to the reader. Figure <a href="#fig:first-actions" data-reference-type="ref" data-reference="fig:first-actions">1</a> gives examples of work that can follow. A contributor can also read a problem paper directly and proceed without an agent.
+A newcomer can ask an agent to explain the repository before choosing a task. The [`explanation skill`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/explain-public-system/SKILL.md) directs it to the public papers and source, with the level of detail adapted to the reader. Figure <a href="#fig:first-actions" data-reference-type="ref" data-reference="fig:first-actions">1</a> gives examples of work that can follow. A contributor can also read a problem paper directly and proceed without an agent.
 
 <figure id="fig:first-actions" data-latex-placement="H">
 
@@ -98,7 +98,7 @@ The repository uses established tools and contribution practices. Erdős Problem
 
 The same underlying substrate can support several reader projections: a short public primer, a specialist paper, a detailed proof account, Lean declarations, an agent explanation, and machine-readable queries. Each projection must link back to its source claims and evidence. A shorter or friendlier account does not acquire permission to strengthen them.
 
-An external runner begins at [`the compact agent entry`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/AGENTS.override.md). It can inspect all problem frontiers, choose a bounded question, read the relevant paper and source neighbourhood, run experiments or edit formal code, validate the result, and prepare a return. None of these steps requires access to the private workbench. A contributor is free to replace the agent, the scheduler, or the entire search policy while retaining the public evidence boundary.
+An external runner begins at [`the compact agent entry`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/AGENTS.override.md). It can inspect all problem frontiers, choose a bounded question, read the relevant paper and source neighbourhood, run experiments or edit formal code, validate the result, and prepare a return. None of these steps requires access to the private workbench. A contributor is free to replace the agent, the scheduler, or the entire search policy while retaining the public evidence boundary.
 
 <a id="sec:protocol"></a>
 
@@ -343,29 +343,29 @@ The public repository implements this contribution path for eight open Erdős pr
 
 </div>
 
-The public repository is [`wcook04/plectis-lean-erdos249-257`](https://github.com/wcook04/plectis-lean-erdos249-257). The shortest current routes are:
+The public repository is [`wcook04/plectis-lean-erdos249-257`](https://github.com/wcook04/plectis-erdos). The shortest current routes are:
 
 <div class="center">
 
 | Question | Public route |
 |:---|:---|
-| What is the experiment? | [`README.md`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/README.md) |
-| Where should an agent begin? | [`AGENTS.override.md`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/AGENTS.override.md) |
-| How can an agent explain the system? | [`explain-public-system skill`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/explain-public-system/SKILL.md) |
-| How can an agent run the coupled research lifecycle? | [`coupled-goal skill`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/run-coupled-research-goals/SKILL.md) |
-| How can an agent mine a frontier? | [`mine-open-problem skill`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/mine-open-problem/SKILL.md) |
-| How is a bounded Lean change validated? | [`lean-concurrent-validation skill`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/lean-concurrent-validation/SKILL.md) |
-| How are downstream consequences reconciled? | [`propagate-research-consequences skill`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/propagate-research-consequences/SKILL.md) |
-| How are clone skills installed elsewhere? | [`install-clone-skills skill`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/install-clone-skills/SKILL.md) |
-| What is proved and what remains open? | [`docs/RESULTS.md`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/RESULTS.md) |
-| Which papers and problems exist? | [`docs/papers/README.md`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/papers/README.md) |
-| How can I contribute mathematics? | [`CONTRIBUTING.md`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/CONTRIBUTING.md) and the research-progress issue form |
-| How can I improve the architecture? | [`architecture contribution guide`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md) and the architecture-proposal issue form |
-| How can an agent prepare a pull request? | [`submit-pull-request skill`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/submit-pull-request/SKILL.md) |
-| How can I propose or add another problem? | [`add-open-problem skill`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/add-open-problem/SKILL.md) |
-| How is a return validated? | [`erdos-research-return skill`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/erdos-research-return/SKILL.md) and the [`research-commons protocol`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/research-commons/README.md) |
-| How is credit recorded? | [`credit policy`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/research-commons/CREDIT_POLICY.md) |
-| What do Comparator and Palomar establish? | [`Comparator guide`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/EXTERNAL_VERIFICATION.md) and [`Palomar qualification`](https://github.com/wcook04/plectis-lean-erdos249-257/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/PALOMAR_QUALIFICATION.md) |
+| What is the experiment? | [`README.md`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/README.md) |
+| Where should an agent begin? | [`AGENTS.override.md`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/AGENTS.override.md) |
+| How can an agent explain the system? | [`explain-public-system skill`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/explain-public-system/SKILL.md) |
+| How can an agent run the coupled research lifecycle? | [`coupled-goal skill`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/run-coupled-research-goals/SKILL.md) |
+| How can an agent mine a frontier? | [`mine-open-problem skill`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/mine-open-problem/SKILL.md) |
+| How is a bounded Lean change validated? | [`lean-concurrent-validation skill`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/lean-concurrent-validation/SKILL.md) |
+| How are downstream consequences reconciled? | [`propagate-research-consequences skill`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/propagate-research-consequences/SKILL.md) |
+| How are clone skills installed elsewhere? | [`install-clone-skills skill`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/install-clone-skills/SKILL.md) |
+| What is proved and what remains open? | [`docs/RESULTS.md`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/RESULTS.md) |
+| Which papers and problems exist? | [`docs/papers/README.md`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/papers/README.md) |
+| How can I contribute mathematics? | [`CONTRIBUTING.md`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/CONTRIBUTING.md) and the research-progress issue form |
+| How can I improve the architecture? | [`architecture contribution guide`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md) and the architecture-proposal issue form |
+| How can an agent prepare a pull request? | [`submit-pull-request skill`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/submit-pull-request/SKILL.md) |
+| How can I propose or add another problem? | [`add-open-problem skill`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/add-open-problem/SKILL.md) |
+| How is a return validated? | [`erdos-research-return skill`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/skills/erdos-research-return/SKILL.md) and the [`research-commons protocol`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/research-commons/README.md) |
+| How is credit recorded? | [`credit policy`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/research-commons/CREDIT_POLICY.md) |
+| What do Comparator and Palomar establish? | [`Comparator guide`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/EXTERNAL_VERIFICATION.md) and [`Palomar qualification`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/PALOMAR_QUALIFICATION.md) |
 
 </div>
 

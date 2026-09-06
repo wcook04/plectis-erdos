@@ -45,7 +45,9 @@ MAX_SEMANTIC_CELLS = 4
 # public problems currently require just under 78 KB for the largest (#249)
 # source-current route, so retain a modest fixed ceiling instead of rejecting
 # the default public command or silently truncating that family inventory.
-OUTPUT_BUDGET_BYTES = 80_000
+# Raised from 80_000 on 2026-09-05: registering the six retained problem
+# reasoning records as paper sources took the --papers guide to 82,374 bytes.
+OUTPUT_BUDGET_BYTES = 90_000
 # The house agent-packet budget, shared with scripts/proof_state_compiler.py
 # (MAX_PACKET_BYTES) and scripts/build_corpus_descriptor.py
 # (DESCRIPTOR_MAX_BYTES).  OUTPUT_BUDGET_BYTES is the hard CLI ceiling; this is
@@ -88,7 +90,9 @@ AGENT_TOUR_BASE_BUDGET_BYTES = 18_000
 # The tour carries the complete reviewed result-family index as well as the
 # problem map.  The allowance scales with the canonical eight-problem and
 # reviewed-family census so it does not reject a complete, non-truncated tour.
-AGENT_TOUR_PER_PROBLEM_BUDGET_BYTES = 5_100
+# Raised from 5_100 on 2026-09-05: the tour reached 66,535 bytes against a
+# 66,400 budget after the September #257 results entered the signal spine.
+AGENT_TOUR_PER_PROBLEM_BUDGET_BYTES = 5_200
 # The tour also carries every remaining-open proposition, because the frontier
 # is what a cold agent is orienting towards. Registering the eight #243, #249,
 # #257 and #269 propositions the papers already state lengthened the tour past a
@@ -3149,6 +3153,40 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                 }
             )
 
+    # An assembled reasoning surface renders the same reasoning record as its
+    # problem note, so it repeats the note's labelled and titled anchors.  A
+    # companion row that names the note as ``anchor_owner`` keeps only the
+    # anchors the note does not already own; the duplicates would otherwise
+    # register twice, once under each source.
+    anchor_owner_by_source = {
+        row["source"]: row["anchor_owner"]
+        for row in paper_rows
+        if row.get("anchor_owner")
+    }
+    if anchor_owner_by_source:
+        owned_keys: dict[str, set[tuple[str, ...]]] = {}
+        for row in inventory:
+            source = row["paper"]["source"]
+            keys = owned_keys.setdefault(source, set())
+            if row["label"]:
+                keys.add(("label", row["label"]))
+            if row["title"]:
+                keys.add(("title", str(row["environment"]), canonical_paper_title(row["title"])))
+        kept: list[dict[str, Any]] = []
+        for row in inventory:
+            owner = anchor_owner_by_source.get(row["paper"]["source"])
+            if owner:
+                owner_keys = owned_keys.get(owner, set())
+                duplicate = (row["label"] and ("label", row["label"]) in owner_keys) or (
+                    row["title"]
+                    and ("title", str(row["environment"]), canonical_paper_title(row["title"]))
+                    in owner_keys
+                )
+                if duplicate:
+                    continue
+            kept.append(row)
+        inventory = kept
+
     for index, row in enumerate(inventory):
         same_paper_before = [
             candidate
@@ -3260,6 +3298,45 @@ def paper_anchor_routes_for_declarations(
             }
         )
     return routes
+
+
+def family_paper_route(
+    claims: Mapping[str, Any], paper_source: str | None, declarations: list[str]
+) -> dict[str, Any]:
+    """Resolve a reviewed family's exact paper return route.
+
+    The problem note is tried first.  A note summarises its families; the exact
+    declaration citations for many of them live only in the problem's complete
+    reasoning record, the retained companion that names the note as its
+    ``anchor_owner``.  When the note carries no matching anchor, the route
+    resolves to that record and says so, instead of reporting no route.
+    """
+    matching = paper_anchor_routes_for_declarations(paper_source, declarations)
+    resolved_source = paper_source
+    resolved_via = "problem_note"
+    if not matching and paper_source:
+        for row in public_paper_rows(claims):
+            if row.get("anchor_owner") != paper_source:
+                continue
+            candidate = paper_anchor_routes_for_declarations(row["source"], declarations)
+            if candidate:
+                matching = candidate
+                resolved_source = row["source"]
+                resolved_via = "reasoning_record"
+                break
+    return {
+        "source": resolved_source,
+        "problem_note": paper_source,
+        "resolved_via": resolved_via,
+        "command": (
+            "python3 scripts/query_corpus.py --paper-source "
+            f"{resolved_source}"
+        )
+        if resolved_source
+        else None,
+        "matching_anchors": matching,
+        "authority_posture": "authored_paper_navigation_not_proof_authority",
+    }
 
 
 def paper_source_packet(source: str) -> dict[str, Any]:
@@ -4339,21 +4416,9 @@ def reviewed_result_family_module_routes(
                         f"{declaration}"
                         for declaration in declarations
                     ],
-                    "paper_route": {
-                        "source": paper_source,
-                        "command": (
-                            "python3 scripts/query_corpus.py --paper-source "
-                            f"{paper_source}"
-                        )
-                        if paper_source
-                        else None,
-                        "matching_anchors": paper_anchor_routes_for_declarations(
-                            paper_source, declarations
-                        ),
-                        "authority_posture": (
-                            "authored_paper_navigation_not_proof_authority"
-                        ),
-                    },
+                    "paper_route": family_paper_route(
+                        claims, paper_source, declarations
+                    ),
                     "claim_paper_routes": claim_paper_routes,
                     "open_boundary": {
                         "boundary": family.get("boundary"),

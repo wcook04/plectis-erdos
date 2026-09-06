@@ -964,7 +964,8 @@
           "role": "Standalone theorem-led problem note for Erdős #251 and the prime-gap tail-shift boundary.",
           "anchor_label_allowlist": [
             "res:irr-equivalence",
-            "res:gap-nonperiodic"
+            "res:gap-nonperiodic",
+            "res:boundedperturbation"
           ]
         },
         {
@@ -1032,8 +1033,57 @@
             "res:one-over-twenty-one-frontier",
             "prob:one-over-twenty-one-membership",
             "res:terminalhalf",
-            "res:cylinderhalf"
+            "res:cylinderhalf",
+            "res:reciprocal-summable-support"
           ]
+        },
+        {
+          "title": "The Factorial-Denominator Series: Complete Reasoning Record",
+          "source": "paper/erdos68-factorial-reasoning-surface.tex",
+          "rendered": "erdos68-factorial-reasoning-surface.pdf",
+          "role": "Full problem-specific reasoning record for Erdős #68.",
+          "anchor_owner": "paper/erdos-68-factorial-denominator-irrationality.tex",
+          "anchor_label_allowlist": []
+        },
+        {
+          "title": "Reciprocal-Tail Rigidity: Complete Reasoning Record",
+          "source": "paper/erdos243-reciprocal-tail-reasoning-surface.tex",
+          "rendered": "erdos243-reciprocal-tail-reasoning-surface.pdf",
+          "role": "Full problem-specific reasoning record for Erdős #243.",
+          "anchor_owner": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+          "anchor_label_allowlist": []
+        },
+        {
+          "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
+          "source": "paper/erdos251-prime-gap-reasoning-surface.tex",
+          "rendered": "erdos251-prime-gap-reasoning-surface.pdf",
+          "role": "Full problem-specific reasoning record for Erdős #251.",
+          "anchor_owner": "paper/erdos-251-prime-gap-dyadic-series.tex",
+          "anchor_label_allowlist": []
+        },
+        {
+          "title": "The Three-Prime Running LCM: Complete Reasoning Record",
+          "source": "paper/erdos269-running-lcm-reasoning-surface.tex",
+          "rendered": "erdos269-running-lcm-reasoning-surface.pdf",
+          "role": "Full problem-specific reasoning record for Erdős #269.",
+          "anchor_owner": "paper/erdos-269-three-prime-running-lcm.tex",
+          "anchor_label_allowlist": []
+        },
+        {
+          "title": "Lemniscates and Newton Flow: Complete Reasoning Record",
+          "source": "paper/erdos1041-lemniscate-reasoning-surface.tex",
+          "rendered": "erdos1041-lemniscate-reasoning-surface.pdf",
+          "role": "Full problem-specific reasoning record for Erdős #1041.",
+          "anchor_owner": "paper/erdos-1041-lemniscate-newton-flow.tex",
+          "anchor_label_allowlist": []
+        },
+        {
+          "title": "Rational-Base Lambert Series: Complete Reasoning Record",
+          "source": "paper/erdos1049-rational-base-lambert-reasoning-surface.tex",
+          "rendered": "erdos1049-rational-base-lambert-reasoning-surface.pdf",
+          "role": "Full problem-specific reasoning record for Erdős #1049.",
+          "anchor_owner": "paper/erdos-1049-rational-base-lambert.tex",
+          "anchor_label_allowlist": []
         }
       ]
     },
@@ -1210,7 +1260,8 @@
             "support_families",
             "squarefree_support_irrationality",
             "prime_support_irrationality",
-            "universal_257"
+            "universal_257",
+            "reciprocal_summable_support"
           ],
           "status_summary": "Classical formalisation, cited special cases, and the open universal target.",
           "prior_art_posture": "Erdős owns full support and the pairwise-coprime family; Duverney–Tachiya own the base-2 squarefree-support theorem; Tao–Teräväinen own the base-2 prime-support theorem. The cited squarefree theorem does not cover bases b≥3, and the cited prime-power extension is remark-only. No priority claim is made for the formalised families.",
@@ -1584,7 +1635,8 @@
           "claim_ids": [
             "erdos_251",
             "prime_gap_unboundedness_and_nonperiodicity",
-            "prime_gap_irrationality_equivalence"
+            "prime_gap_irrationality_equivalence",
+            "bounded_perturbation_irrationality_obstruction"
           ],
           "status_summary": "An open prime-index endpoint, exact coefficient constraints, and a tail-shift irrationality equivalence for the still-open dyadic series.",
           "prior_art_posture": "The prime-gap facts and tail-shift equivalence are source-specific formal results; no novelty, priority, significance, or irrationality claim is made.",
@@ -12562,6 +12614,36 @@
             "operation": "narrows",
             "statement": "On the complementary fatal branch the last-skip approximant is pinned inside an exact one-sided interval around the Erdos-Borwein constant. Turning that interval into a contradiction still needs the final-skip signatures this proposition asks for."
           }
+        },
+        {
+          "from": "channel_quotient_band_breakpoint",
+          "relation": "advances_open_target",
+          "to": "erdos_68",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.erdos_68_weighted_collision_product_control",
+            "operation": "constrains",
+            "statement": "The finite quotient-band breakpoint fixes the exact factorial-moment channel structure on which the weighted collision-product inequality (9.2) and the complementary-residue inequality (9.3) are evaluated. It proves neither inequality on any unbounded family of tailored prime blocks."
+          }
+        },
+        {
+          "from": "channel_quotient_band_breakpoint",
+          "relation": "advances_open_target",
+          "to": "erdos_68",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.erdos_68_cofinal_lower_endpoint_escape",
+            "operation": "constrains",
+            "statement": "The breakpoint obstruction is a finite input to the same non-unit-carry producer that a cofinal lower-endpoint escape would complete. It supplies no prime p with 1 + 1/(p! - 1) + 2/p <= p Delta_p and no growing-modulus version."
+          }
+        },
+        {
+          "from": "newton_ray_separation_consumer",
+          "relation": "advances_open_target",
+          "to": "erdos_1041",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.erdos_1041_additive_error_strip_gluing",
+            "operation": "constrains",
+            "statement": "Ray separation restricts which strip trajectories can be exponential-decay Newton connections: their endpoint values must lie on one positive ray. It selects no trajectories, bounds no saddle or root-cap cost, and proves no additive-error length bound for the glued tree."
+          }
         }
       ]
     }
@@ -12573,11 +12655,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "3506d189a2660213ec0e53ee29360a464007b8a1",
+      "ref": "4ab50e144847a3393fb340341760e5d6907d702e",
       "ref_kind": "commit",
-      "publication_state": "committed_checkpoint_pending_remote_publication",
+      "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-09-05"
+      "public_tag": "formal-source-2026-09-05-r1"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
@@ -14579,6 +14661,42 @@
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
         "line": 1888
+      }
+    },
+    {
+      "id": "remaining_open.erdos_68_weighted_collision_product_control",
+      "status": "open",
+      "open_target_claim": "erdos_68",
+      "statement": "Prove, on an unbounded family of tailored prime blocks, the weighted collision-product inequality (9.2) together with the independent complementary-residue inequality (2p+1) L_p < 2p^2 (2p-1)! rho_p; an average-over-p theorem is admissible only if its constants force both strict inequalities cofinally.",
+      "paper_anchor": {
+        "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
+        "environment": "problem",
+        "title": "weighted collision-product control",
+        "line": 1374
+      }
+    },
+    {
+      "id": "remaining_open.erdos_68_cofinal_lower_endpoint_escape",
+      "status": "open",
+      "open_target_claim": "erdos_68",
+      "statement": "Prove for infinitely many primes p that 1 + 1/(p! - 1) + 2/p <= p Delta_p, equivalently ((p+2) p! - 2) v_p <= p^2 (p! - 1) u_p, or a growing-modulus version with u_p replaced by u_p mod d_p for a specified divisor d_p of v_p.",
+      "paper_anchor": {
+        "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
+        "environment": "problem",
+        "title": "cofinal lower-endpoint escape",
+        "line": 1458
+      }
+    },
+    {
+      "id": "remaining_open.erdos_1041_additive_error_strip_gluing",
+      "status": "open",
+      "open_target_claim": "erdos_1041",
+      "statement": "Assuming the Reeb-type strip problem, select trajectories in all strips and connect them through the saddle and root neighbourhoods so that for every eta > 0 the resulting embedded tree contains all m roots and satisfies len(G) <= (1/2pi) * integral_{2 alpha}^{infinity} P_V(t) dt + eta, with total saddle, annular-cut and root-cap cost below eta and no multiplicative loss in 1/(2pi).",
+      "paper_anchor": {
+        "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
+        "environment": "problem",
+        "title": "additive-error strip gluing",
+        "line": 1453
       }
     }
   ],

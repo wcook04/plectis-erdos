@@ -104,39 +104,39 @@ READER_SPARSE_PATTERNS = (
 READER_SPARSE_MANIFEST_TEXT = "\n".join(READER_SPARSE_PATTERNS) + "\n"
 LEAN_CLONE_COMMAND = (
     "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
-    "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+    "https://github.com/wcook04/plectis-erdos.git"
 )
 QUICK_LEAN_SPARSE_COMMAND = (
-    "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-quick-sparse-checkout && "
-    "git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-quick-sparse-checkout | "
-    "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
+    "git -C plectis-erdos cat-file -e HEAD:scripts/lean-quick-sparse-checkout && "
+    "git -C plectis-erdos show HEAD:scripts/lean-quick-sparse-checkout | "
+    "git -C plectis-erdos sparse-checkout set --no-cone --stdin"
 )
 LEAN_SPARSE_COMMAND = (
-    "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-sparse-checkout && "
-    "git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | "
-    "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
+    "git -C plectis-erdos cat-file -e HEAD:scripts/lean-sparse-checkout && "
+    "git -C plectis-erdos show HEAD:scripts/lean-sparse-checkout | "
+    "git -C plectis-erdos sparse-checkout set --no-cone --stdin"
 )
-LEAN_CHECKOUT_COMMAND = "git -C plectis-lean-erdos249-257 checkout"
+LEAN_CHECKOUT_COMMAND = "git -C plectis-erdos checkout"
 LEAN_BUILD_COMMAND = "python3 scripts/lean_fast_build.py --jobs 2"
 READER_CLONE_COMMAND = (
     "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
-    "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+    "https://github.com/wcook04/plectis-erdos.git"
 )
 READER_SPARSE_COMMAND = (
-    "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/reader-sparse-checkout && "
-    "git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | "
-    "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
+    "git -C plectis-erdos cat-file -e HEAD:scripts/reader-sparse-checkout && "
+    "git -C plectis-erdos show HEAD:scripts/reader-sparse-checkout | "
+    "git -C plectis-erdos sparse-checkout set --no-cone --stdin"
 )
 FULL_CLONE_COMMAND = (
     "git clone --depth=1 --filter=blob:none --single-branch "
-    "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+    "https://github.com/wcook04/plectis-erdos.git"
 )
 PINNED_HISTORY_FETCH_COMMAND = (
     "git fetch --filter=blob:none --unshallow origin main"
 )
 FULL_HISTORY_CLONE_COMMAND = (
     "git clone --filter=blob:none --single-branch "
-    "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+    "https://github.com/wcook04/plectis-erdos.git"
 )
 
 

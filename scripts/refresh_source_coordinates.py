@@ -29,6 +29,10 @@ ATLAS = ROOT / "docs" / "declaration_atlas.json"
 PAPERS = (
     ROOT / "paper" / "erdos249-257-main-paper.tex",
     ROOT / "paper" / "erdos-257-mersenne-support-subseries.tex",
+    # The #249 note cites through the same \mword shape; its 139 coordinates
+    # went stale on the 2026-09-05 checkpoint advance because nothing refreshed
+    # them.
+    ROOT / "paper" / "erdos-249-binary-totient-series.tex",
 )
 LINK_RE = re.compile(
     # \rootword carries the same {module}{line}{declaration}{label} shape as

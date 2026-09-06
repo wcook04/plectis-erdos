@@ -11,8 +11,8 @@
 % Build from the public paper directory with `make`.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{99f4bf47422abbd8757cbb22b50ba079d764d3a7}
-\renewcommand{\commitshort}{99f4bf47422a}
+\renewcommand{\commit}{4ab50e144847a3393fb340341760e5d6907d702e}
+\renewcommand{\commitshort}{4ab50e144847}
 \hypersetup{
   pdftitle={Critical-value separation, admissible hubs and Newton-flow geometry for Erdős Problem 1041},
   pdfsubject={Erdős Problem Notes: Problem 1041},
@@ -288,7 +288,7 @@ Cauchy--Schwarz applied to (6)--(7) now gives
       \sqrt{\sum_{k\ge1}\frac1{kR^{2k}}}
  = (1+R^2)^{1/n}\sqrt{\log\!\frac{R^2}{R^2-1}}.   \tag{8}
 \]
-The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/0d34630e1cc9d2b1ac6edfa7cfdba83b31bdc8fe/ErdosProblems/Erdos1041/PowerSeriesDerivative.lean#L120}{checked coefficient-to-length theorem} formalises the passage from the subradius energy bounds to the actual power-series derivative. Termwise integration on $[-1,1]$ gives
+The \href{https://github.com/wcook04/plectis-erdos/blob/0d34630e1cc9d2b1ac6edfa7cfdba83b31bdc8fe/ErdosProblems/Erdos1041/PowerSeriesDerivative.lean#L120}{checked coefficient-to-length theorem} formalises the passage from the subradius energy bounds to the actual power-series derivative. Termwise integration on $[-1,1]$ gives
 $\int_{-1}^{1}|Z'|\le2\sum_{k\ge1}|a_k|$.  Letting
 $R\nearrow\sqrt S$ proves (4).  Injectivity makes $Z(-1)$ and $Z(1)$
 distinct, while $P(Z(\xi))=1-\xi^2\in[0,1]$ on the real segment proves the
@@ -703,9 +703,9 @@ problem.  It does not add a proof of Erd\H{o}s~\#1041; it identifies the
 geometric regime in which the remaining difficulty is concentrated and kills
 several attractive but false shortcuts.  The source of the update is pinned to
 commit
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/tree/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041}{\texttt{f214a6b4}}
+\href{https://github.com/wcook04/plectis-erdos/tree/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041}{\texttt{f214a6b4}}
 and the dated synthesis is
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/FRONTIER.md}{\texttt{FRONTIER.md}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/FRONTIER.md}{\texttt{FRONTIER.md}}.
 The distinctions below are part of the result: a theorem, a refutation, a
 certificate, and a measurement do not have interchangeable force.
 
@@ -714,7 +714,7 @@ certificate, and a measurement do not have interchangeable force.
 Write $a_i=\rho_i u_i$, with $|u_i|=1$, and put
 $D=|\operatorname{disc}(f)|/n^n$.  The quantitative
 Fekete--Hadamard estimate in
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/NearFeketeRadialAngularSplit.md}{\texttt{NearFeketeRadialAngularSplit.md}}
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/NearFeketeRadialAngularSplit.md}{\texttt{NearFeketeRadialAngularSplit.md}}
 says that, when $D\ge1-\eta$ and
 $\eta\le1/(80n^2)$,
 \[
@@ -756,12 +756,12 @@ the unit circle, self-inversive realification and alternation against $z^n-c$
 select a zero-free gap on which the polynomial modulus is at most $2$; a
 harmonic normal-derivative argument transfers this arc bound strictly to the
 chord.  The complete ordinary proof is
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/ConcyclicAlternation.md}{\texttt{ConcyclicAlternation.md}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/ConcyclicAlternation.md}{\texttt{ConcyclicAlternation.md}}.
 
 The argument is an ordinary proof outside Lean.  The
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_exact_witness.py}{exact-rational checker}
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_exact_witness.py}{exact-rational checker}
 checks finitely many load-bearing identities and configurations, while the
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_alternation.py}{numerical checker}
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/scripts/check_erdos1041_concyclic_alternation.py}{numerical checker}
 is regression and stress-test evidence.  The arc constant $2$ is sharp on the
 regular $n$-gon, so this chord argument does not reach radii tending to $1$;
 the unrestricted concyclic case and Erd\H{o}s~\#1041 remain open.
@@ -1048,7 +1048,7 @@ maximising the pairwise factors.
 \paragraph{A uniform central region in every degree.}
 For $m\ge1$, let $|c_i|^2\le a<1$, with $a\ge0$, and put
 $L=-\log(1-a)$. The
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/457e0c74b2666f7fb2d825c967e49e439a600b23/ErdosProblems/Erdos1041/FreePointUniformRadius.lean#L84}{uniform-radius theorem}
+\href{https://github.com/wcook04/plectis-erdos/blob/457e0c74b2666f7fb2d825c967e49e439a600b23/ErdosProblems/Erdos1041/FreePointUniformRadius.lean#L84}{uniform-radius theorem}
 gives the actual geometric-mean inequality
 \[
  e^L\le1+2L\quad\Longrightarrow\quad
@@ -1057,7 +1057,7 @@ gives the actual geometric-mean inequality
 Its mechanism is an adaptive logarithmic certificate. Write
 $H_i=m^{-1}\sum_j\log|1-\overline c_i c_j|$ and
 $D_i=-\log(1-|c_i|^2)$. For nonnegative caps $M_i\ge H_i$, the
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/0d34630e1cc9d2b1ac6edfa7cfdba83b31bdc8fe/ErdosProblems/Erdos1041/LogKernelCentralCertificate.lean#L99}{checked adaptive theorem}
+\href{https://github.com/wcook04/plectis-erdos/blob/0d34630e1cc9d2b1ac6edfa7cfdba83b31bdc8fe/ErdosProblems/Erdos1041/LogKernelCentralCertificate.lean#L99}{checked adaptive theorem}
 requires only $\sum_i\Phi(M_i)D_i\le m$, where
 $\Phi(t)=\int_0^1(1-s)e^{st}\,ds$.
 The uniform radius gives $H_i,D_i\le L$, so $\Phi(L)L\le1$
@@ -1101,15 +1101,15 @@ For the last inequality the right side decreases in $a$; at $a=21/25$
 its maximum occurs at $s=(-27+3\sqrt{473})/50$ and is strictly below $32$.
 Thus $S_4<4$ in the outer region.  The full polynomial, Taylor and radical
 certificates for these estimates are given in the public
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointZeroInsertionFP4Matching.md}{four-point proof};
+\href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointZeroInsertionFP4Matching.md}{four-point proof};
 the preceding short defect proof is recorded in the
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointMeanInequalityFP3.md}{three-point proof}.
+\href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointMeanInequalityFP3.md}{three-point proof}.
 
 The complete budget is an ordinary theorem.  The scalar concavity step
 is checked by
 \href{\repobase/research_corpus/Erdos1041/FreePointTorusPshReduction.lean\#L62}{formal concavity bridge}
 and explained in the earlier
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointTorusPshReduction.md}{boundary-reduction note};
+\href{https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/research_corpus/Erdos1041/FreePointTorusPshReduction.md}{boundary-reduction note};
 the pointwise polynomial comparison above replaces its plurisubharmonic
 argument.  The four-point companion includes
 \href{\repobase/research_corpus/Erdos1041/FreePointFP4Complete.lean\#L69}{exact stationary-point slack inequality};
@@ -1170,7 +1170,7 @@ then Gr\"onwall's identity gives
 It replaces a P\'olya upper bound at that terminal node, but extending it to
 proper components and connecting it to the parent theorem remains open.  The
 degree-five statements and their evidence classes are recorded in
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/Degree5AssemblyAndSharpenedCuts.md}{\texttt{Degree5AssemblyAndSharpenedCuts.md}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/Degree5AssemblyAndSharpenedCuts.md}{\texttt{Degree5AssemblyAndSharpenedCuts.md}}.
 
 \subsection*{The no-go boundaries force hub selection}
 
@@ -1196,9 +1196,9 @@ conjectural in higher degrees.  The metric factor is not automatic even in
 the proved degrees.
 These two boundaries, including the distinction between the surviving
 algebraic budget and the failed length aggregate, are in
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/MinimalHubArmBudgetRefutation.md}{\texttt{MinimalHubArmBudgetRefutation.md}}
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/MinimalHubArmBudgetRefutation.md}{\texttt{MinimalHubArmBudgetRefutation.md}}
 and
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/SeparatrixAggregateReduction.md}{\texttt{SeparatrixAggregateReduction.md}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/SeparatrixAggregateReduction.md}{\texttt{SeparatrixAggregateReduction.md}}.
 
 Third, the origin is not a uniform near-Fekete hub.  An exact rational
 quintic with roots scaled by $999999/1000000$ has four of five origin spokes
@@ -1209,7 +1209,7 @@ mechanism is angular: the first several Fourier modes can point against
 different spokes.  The certificate is exact for the displayed witness; the
 claim that the phenomenon persists throughout a limiting family is
 computational.  The full witness and replay route are in
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/NearFeketeRadialAngularSplit.md}{\texttt{NearFeketeRadialAngularSplit.md}}.
+\href{https://github.com/wcook04/plectis-erdos/blob/f214a6b45528dc5eefe20ffadc35f2e981627d4c/research_corpus/Erdos1041/NearFeketeRadialAngularSplit.md}{\texttt{NearFeketeRadialAngularSplit.md}}.
 
 \subsection*{The surviving carrier and the actual open endpoint}
 
@@ -1588,9 +1588,22 @@ throughout this problem-note series.
 \item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{230}{norm_lt_one_of_near_root}
 \item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{257}{constant_perturbation_root_near_original}
 \item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{287}{constant_perturbation_roots_in_unitDisk}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{306}{samePositiveRay_of_real_exp_decay}
-\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{315}{no_newtonConnection_of_not_samePositiveRay}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{325}{samePositiveRay_of_real_exp_decay}
+\item \lref{Erdos1041/NewtonFlowRaySeparation.lean}{334}{no_newtonConnection_of_not_samePositiveRay}
 \end{itemize}
+
+\paragraph{Checked declarations behind the translated quotient-fibre families.}
+For the translated cubic and quartic quotient families $f(z)=P((z-h)^q)$ the
+metric theorems are ordinary; the kernel checks the cyclic-fibre mean square
+and the quotient-disk bridge.  The fibre norm identity is
+\lword{Erdos1041/CyclicFiberMeanSquare.lean}{21}{cyclicFiber_sum_normSq}{fibre
+mean square}, the strict unit bound is
+\lword{Erdos1041/CyclicFiberMeanSquare.lean}{37}{cyclicFiber_normSq_add_lt_one}{fibre
+unit bound}, the quotient roots land in the open disk by
+\lword{Erdos1041/CyclicFiberMeanSquare.lean}{60}{cyclicFiber_quotient_norm_lt_one}{quotient
+disk bridge}, and the composition vanishes on the fibre by
+\lword{Erdos1041/CyclicFiberMeanSquare.lean}{73}{cyclicFiber_composition_zero}{fibre
+zero identity}.
 
 \begin{thebibliography}{9}
 \bibitem{polya1928} G.~P\'olya,

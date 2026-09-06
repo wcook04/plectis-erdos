@@ -597,7 +597,7 @@ def main() -> int:
         "prime_gap_irrationality_equivalence": (
             "The prime-value series is irrational, proving the #251 endpoint."
         ),
-        "erdos_support_pairwise_coprime": (
+        "erdos_support_reciprocal_summable": (
             "This proves universal Erdos #257 for every infinite support."
         ),
         "totient_kernel_finite_rank": (

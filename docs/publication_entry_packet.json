@@ -107,15 +107,15 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:1022c0002cc98c3a182a669f88fcceafade25bd1f0a87907e0d223e077a5111b",
-    "docs/claims.json": "sha256:fe2d1746bfb1b15a3367344766d04cfe6f24eeabc05b5a36ed3e84b87dc1d660",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:315216c23e3225f48130ac65273795a1e0a0c0ca9ff9fcea8134e6189ef53606",
+    "docs/claims.json": "sha256:7ba40160753a52a257e70d0fd81b038478b61bc79c41fe708a6ee57a2331539f",
     "docs/methodology.json": "sha256:c4f762538e14467af2adb2714e24099251325e819c395512c15767a1d551d1eb",
     "docs/problems.json": "sha256:487f567647a1299ccb6669c7af60c309ea6c2c492835cce4aadb680a9a862b36",
-    "docs/publication_contract.json": "sha256:9ff71eaf1d5abdc03b2598fa97f54861aa9da6bb8126cd330818af5884a1a2fd",
+    "docs/publication_contract.json": "sha256:8f071cb6fbdc2671b3f691181a984b5c206ed7eb4d18a32f42a24e52ae39572e",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:974b55ef6c09b5cd018806d9113a9151829e6630c8835766ee65159d9988ca9b",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:d453a9bcb5f3c9646a4d71fdf31f91d09cb2b1f79eaf3a28a7ab3fb21e5019e7",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46",
     "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
     "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f",
@@ -133,7 +133,7 @@
     "current_owner_snapshot": {
       "contribution_family_count": 30,
       "curated_claim_count": 132,
-      "remaining_open_proposition_count": 19,
+      "remaining_open_proposition_count": 22,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7
     },
@@ -492,6 +492,42 @@
       },
       "statement": "Decide whether the final-skip signatures prove |E − a_M| ≥ gap_M, contradicting 0 < a_M − E < gap_M, for E = ∑_{n≥1}(2^n − 1)^{−1} and the last-skip approximant a_M.",
       "status": "open"
+    },
+    {
+      "id": "remaining_open.erdos_68_weighted_collision_product_control",
+      "open_target_claim": "erdos_68",
+      "paper_anchor": {
+        "environment": "problem",
+        "line": 1374,
+        "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
+        "title": "weighted collision-product control"
+      },
+      "statement": "Prove, on an unbounded family of tailored prime blocks, the weighted collision-product inequality (9.2) together with the independent complementary-residue inequality (2p+1) L_p < 2p^2 (2p-1)! rho_p; an average-over-p theorem is admissible only if its constants force both strict inequalities cofinally.",
+      "status": "open"
+    },
+    {
+      "id": "remaining_open.erdos_68_cofinal_lower_endpoint_escape",
+      "open_target_claim": "erdos_68",
+      "paper_anchor": {
+        "environment": "problem",
+        "line": 1458,
+        "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
+        "title": "cofinal lower-endpoint escape"
+      },
+      "statement": "Prove for infinitely many primes p that 1 + 1/(p! - 1) + 2/p <= p Delta_p, equivalently ((p+2) p! - 2) v_p <= p^2 (p! - 1) u_p, or a growing-modulus version with u_p replaced by u_p mod d_p for a specified divisor d_p of v_p.",
+      "status": "open"
+    },
+    {
+      "id": "remaining_open.erdos_1041_additive_error_strip_gluing",
+      "open_target_claim": "erdos_1041",
+      "paper_anchor": {
+        "environment": "problem",
+        "line": 1453,
+        "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
+        "title": "additive-error strip gluing"
+      },
+      "statement": "Assuming the Reeb-type strip problem, select trajectories in all strips and connect them through the saddle and root neighbourhoods so that for every eta > 0 the resulting embedded tree contains all m roots and satisfies len(G) <= (1/2pi) * integral_{2 alpha}^{infinity} P_V(t) dt + eta, with total saddle, annular-cut and root-cap cost below eta and no multiplicative loss in 1/(2pi).",
+      "status": "open"
     }
   ],
   "research_frontier": {
@@ -544,9 +580,9 @@
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "public_tag": "formal-source-2026-09-05",
-      "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "3506d189a2660213ec0e53ee29360a464007b8a1",
+      "public_tag": "formal-source-2026-09-05-r1",
+      "publication_state": "published_committed_checkpoint",
+      "ref": "4ab50e144847a3393fb340341760e5d6907d702e",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },
