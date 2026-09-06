@@ -110,14 +110,14 @@
     "claim-faithful-publication-systems-paper.pdf": "sha256:0fa6f24d6b0fea4589a69300b0d1b11de0b794d6e6d247fc753d49b23d456a8b",
     "docs/claims.json": "sha256:74aac0a451bd75b97884a97bf22de0b561561bd08f095cb9af6fb62b9f7b9661",
     "docs/methodology.json": "sha256:bc607790b41e60dfd245e6c7a3373725c70622e0f2963cd2925c1c996eaf35ff",
-    "docs/problems.json": "sha256:b74fbdbd52f99db147ade08ac03bd8be4e4d6add43458ba5d9c8686ae39e9f57",
+    "docs/problems.json": "sha256:5aff8a7cfa31fdc2b25985631ef99be697bb5b0ccf6e82c25f563fb5501141d3",
     "docs/publication_contract.json": "sha256:2d911879a40036d7b61f8bcd34b589b4af1c7b616de38de45819871e47c6f988",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:72cbf847dd101703370fa5620bd02932100040077512d2019c21229f47fb1aed",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
     "paper/claim-faithful-publication-systems-paper.tex": "sha256:0ef1f85fc2802a45709cd9abeaf0f0e7763352fb3a2f1926139ba80db1e64763",
     "research_corpus/Erdos1041/CORPUS_MANIFEST.json": "sha256:4bf6fed50b06cd07b9c5bb150d92fc7250836286c97a9190eb878a7037d70f46",
-    "research_corpus/Erdos1041/FRONTIER.md": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
+    "research_corpus/Erdos1041/FRONTIER.md": "sha256:82658f0951f4d66c5b261715f35659b28a5a189bc51ccd6274f0f27752196eab",
     "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json": "sha256:900aa94db792b2b72c63d115aad52a0431900a2f30ba08223ee9a83e7431ae4f",
     "research_corpus/Erdos1041/STRONGEST_RESULTS.json": "sha256:57e5d7cdfcb443a68039c0be4bfd9ea01278f50bc077396adc5cc7d3cefda3bf",
     "scripts/run_publication_mutations.py": "sha256:06dd9a902ff7d7ac74b3bd7930e8f50b3db659dd6125f7711ff5dffa03fc305e"
@@ -544,7 +544,7 @@
         "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json"
       },
       "frontier": {
-        "content_digest": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293",
+        "content_digest": "sha256:82658f0951f4d66c5b261715f35659b28a5a189bc51ccd6274f0f27752196eab",
         "path": "research_corpus/Erdos1041/FRONTIER.md"
       },
       "manifest": {
@@ -567,7 +567,7 @@
     ],
     "reading_rule": "Read the short paper, docs/claims.json and the six ordinary family rows in docs/PALOMAR_RESULT_SHOWCASE.json for solved metric regimes, the critical-value budget and exact formal boundaries. Read FRONTIER.md before the dated STRONGEST_RESULTS.json; discovery is not Comparator admission.",
     "source_index": {
-      "content_digest": "sha256:b74fbdbd52f99db147ade08ac03bd8be4e4d6add43458ba5d9c8686ae39e9f57",
+      "content_digest": "sha256:5aff8a7cfa31fdc2b25985631ef99be697bb5b0ccf6e82c25f563fb5501141d3",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {

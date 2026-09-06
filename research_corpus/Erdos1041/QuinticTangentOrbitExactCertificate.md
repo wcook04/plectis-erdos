@@ -18,8 +18,7 @@ certificate (ii) — the zero-level saddle hub with the SKIP pair — turning
 containment AND metric budget into ordinary proved mathematics with
 explicit margins.  It is the "one box around the orbit" seed of the
 recipe in `QuinticStarKernelMechanics.md` §7(b), and it serves the
-capture `cap_quick_exact_certificate_upgrade... / exact rational
-upgrades of orbit certificates` lane.
+exact rational upgrade of orbit certificates.
 
 ## Frame (and a sign flag on the landed text)
 

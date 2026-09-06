@@ -9,8 +9,7 @@ below, correcting the agent's `1/2` to `2`).  Checker:
 `scripts/check_erdos1041_aggregate_n3_inner_model.py`.
 
 Serves: FRONTIER §4.2's theorem-shaped target ("the matched-asymptotic
-derivation of `C(phase) > 0`", capture
-`cap_quick_derive_the_agg3_radial_constant_c_phase_3876935d5231`), the
+derivation of `C(phase) > 0`"), the
 owner campaign note `AggregateN3GateFreeCampaign.md` (whose addendum's
 inner model this makes exact and corrects), and the instrument law of
 FRONTIER §4.6 (a THIRD float-defect direction is exhibited).

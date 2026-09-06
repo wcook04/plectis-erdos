@@ -1953,7 +1953,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:d0f2d869debf520b33755cb8b67213a4ff0920c101a397a52187d6282beb2a34",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:b74fbdbd52f99db147ade08ac03bd8be4e4d6add43458ba5d9c8686ae39e9f57",
+    "projection_digest": "sha256:5aff8a7cfa31fdc2b25985631ef99be697bb5b0ccf6e82c25f563fb5501141d3",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -3644,7 +3644,7 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos1041/FRONTIER.md",
-              "content_digest": "sha256:d52c41636a103bffb88b5b7016855cef40b39a1e269f7b8b450937491f8d4293"
+              "content_digest": "sha256:82658f0951f4d66c5b261715f35659b28a5a189bc51ccd6274f0f27752196eab"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",

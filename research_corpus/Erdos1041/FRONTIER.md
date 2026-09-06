@@ -271,8 +271,7 @@ Added by the same-day solve session (owner files carry full proofs):
    a measured global margin.**  The Main Theorem of
    `QuinticStarKernelMechanics.md` closes (R1)'s first-order containment
    content AT EVERY DEGREE.  2026-08-30 state of obligation (a), the
-   EXCESS inequality `e_i + e_j <= 0` for the rightward arms (capture
-   `cap_quick_prove_the_model_excess_inequality_ex_the_c88f4d5faf54`):
+   EXCESS inequality `e_i + e_j <= 0` for the rightward arms:
    - PROVED on the one-face stratum at every degree with the explicit
      constant `2|c*|(pi/n - 1)` (`OneFaceRadialScatteringTheorem.md` —
      the (MLS-strict) `|M| = 1` base case; radial and rightward carriers
@@ -388,8 +387,7 @@ Added by the same-day solve session (owner files carry full proofs):
    (ii) the length-free Form A-cut family (`TruncatedSpokeReduction.md`,
    atlas-aligned) on the bulk, carried at real scale by the exact
    remainder budget (`FormACutQuantitativeExpansion.md` (S)) — model
-   margins alone fail near the gon (measured, round 3).  Capture:
-   `cap_quick_build_the_cut_5_finite_certificate_for_d_b122beb7e514`.
+   margins alone fail near the gon (measured, round 3).
 5. **Two-root component area bound — PROVED, and now EXPLICIT
    (2026-08-30)**: `ProperComponentUniformAreaGap.md` gives
    `A_{n,k} < (k/(2n-k))^{2/n}` for all `(n, k)`;

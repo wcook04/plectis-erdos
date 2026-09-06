@@ -15,8 +15,7 @@ globally by `CyclicTrinomialFiberCase.md`.  This note does NOT re-close
 the one-face model and must not be cited for that.
 
 What it proves is different and aims at the OPEN metric half of (R1)
-(FRONTIER §4.3(a), capture
-`cap_quick_prove_the_model_excess_inequality_ex_the_c88f4d5faf54`): a
+(FRONTIER §4.3(a)): a
 CRITICAL-HUB connector with STRICTLY NEGATIVE renormalised excess, with
 an explicit degree-uniform constant.  The origin connector has excess
 exactly `0` (`QuinticStarKernelMechanics.md` §5: straight-ray excess

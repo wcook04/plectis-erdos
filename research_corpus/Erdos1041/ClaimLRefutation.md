@@ -127,8 +127,7 @@ exist tie-guarded configurations where the merging set differs from the
 nearest pair", and the margins are far above instrument resolution. No exact
 arithmetic certificate is claimed. Claim L's failure does **not** refute (C),
 the nearest-pair theorem, or any landed exact result; it removes one proposed
-proof route for (C)'s metric floor. The tracked open question
-`cap_quick_erdos1041_decide_merging_pair_nearest_pa_20d69b8f9d6d` is answered:
+proof route for (C)'s metric floor. The open question of which merging pair is nearest is answered:
 **negative**. Erdős #1041 remains open.
 
 ## Replay

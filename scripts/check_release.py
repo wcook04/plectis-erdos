@@ -1039,35 +1039,6 @@ HYGIENE_ALLOWLIST: dict[str, frozenset[str]] = {
     # A guard string in the clone-skill test, asserting the absence of exactly
     # this path shape.
     "scripts/test_clone_skills.py": frozenset({"src/ai_workflow"}),
-    # Task Ledger captures quoted in the #1041 research corpus and in the
-    # expert-handoff query surface.
-    "research_corpus/Erdos1041/AggregateN3InnerModelClosedForm.md": frozenset(
-        {"cap_quick_derive_the_agg3_radial_constant_c_phase_3876935d5231"}
-    ),
-    "research_corpus/Erdos1041/CapacityGeodesicConjecture.md": frozenset(
-        {"cap_quick_erdos1041_decide_merging_pair_nearest_pa_20d69b8f9d6d"}
-    ),
-    "research_corpus/Erdos1041/ClaimLRefutation.md": frozenset(
-        {"cap_quick_erdos1041_decide_merging_pair_nearest_pa_20d69b8f9d6d"}
-    ),
-    "research_corpus/Erdos1041/FRONTIER.md": frozenset(
-        {
-            "cap_quick_prove_the_model_excess_inequality_ex_the_c88f4d5faf54",
-            "cap_quick_build_the_cut_5_finite_certificate_for_d_b122beb7e514",
-        }
-    ),
-    "research_corpus/Erdos1041/OneFaceRadialScatteringTheorem.md": frozenset(
-        {"cap_quick_prove_the_model_excess_inequality_ex_the_c88f4d5faf54"}
-    ),
-    "research_corpus/Erdos1041/QuinticTangentOrbitExactCertificate.md": frozenset(
-        {"cap_quick_exact_certificate_upgrade"}
-    ),
-    "research_corpus/Erdos1041/symmetric_two_level_wall_consequence_receipt.json": frozenset(
-        {"cap_quick_validate_symmetrictwolevelwall_lean_kern_b563c33a0ea9"}
-    ),
-    "scripts/query_expert_handoffs.py": frozenset(
-        {"cap_quick_erdos_1041_critical_pair_metric_scale_so_4510a65321c7"}
-    ),
 }
 
 # One pass over each file instead of one pass per rule: the tracked set holds

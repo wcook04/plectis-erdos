@@ -51,7 +51,7 @@
       "decision": "defer_with_reason",
       "mathematical_reason": "The new scalar source must not enter the project root until its focused wrapper build succeeds; two attempts were terminated by the canonical build firewall before theorem diagnostics.",
       "authority_surface_checked": "private root imports and focused validation contract",
-      "validation_or_reentry": "Task Ledger cap_quick_validate_symmetrictwolevelwall_lean_kern_b563c33a0ea9; re-enter after the canonical build lease clears"
+      "validation_or_reentry": "re-enter after the canonical build lease clears"
     },
     {
       "surface": "research_corpus/Erdos1041/CyclicTrinomialFiberCase.md",

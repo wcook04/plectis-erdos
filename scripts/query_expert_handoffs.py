@@ -573,8 +573,7 @@ def critical_pair_metric_scale_candidate_handoff(
                 "global Euclidean budget; novelty unassessed"
             ),
             "proof_status_authority": (
-                "Direct Lean source plus GlobalCriticalTwoNearestBudget.md; "
-                "adjudication receipt cap_quick_erdos_1041_critical_pair_metric_scale_so_4510a65321c7"
+                "Direct Lean source plus GlobalCriticalTwoNearestBudget.md"
             ),
             "summary": (
                 "The sharp constant-2 Euclidean metric budget for two nearest "
@@ -689,9 +688,7 @@ def critical_pair_metric_scale_candidate_handoff(
             "source_revision": CRITICAL_PAIR_SOURCE_REVISION,
             "promotion_commit": CRITICAL_PAIR_PROMOTION_COMMIT,
             "comparator": CRITICAL_PAIR_COMPARATOR_DECLARATION,
-            "adjudication_receipt": (
-                "cap_quick_erdos_1041_critical_pair_metric_scale_so_4510a65321c7"
-            ),
+            "adjudication_receipt": "GlobalCriticalTwoNearestBudget.md",
         },
         "follow": {
             "source": (

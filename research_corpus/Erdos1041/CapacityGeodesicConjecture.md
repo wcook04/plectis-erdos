@@ -452,7 +452,7 @@ Three sub-questions, in increasing order of strength.
    equation `Σ_k 1/(c − z_k) = 0` gives
    `1/d_j ≤ Σ_{k≠j} 1/d_k`, so a root close to `c*` forces another root close to
    `c*`. What is missing is the step from there to which two lobes actually
-   touch. Tracked as `cap_quick_erdos1041_decide_merging_pair_nearest_pa_20d69b8f9d6d`.
+   touch. That question is decided negatively in `ClaimLRefutation.md`.
 
    **Update 2026-08-28: Claim L is FALSE away from ties.** The gradient-proxy
    instrument this paragraph asks for was built and refutes Claim L at tie
