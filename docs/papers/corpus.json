@@ -4928,7 +4928,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:2998b615f3d564c1bfeacab48e58e93b271c967c6a03998b79a68f6775a1abb3",
+      "source_sha256": "sha256:36431013833c1100758194e835e7bced30d4d8fc5dcd7e9b57e17956aa9d8414",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex",
@@ -5107,115 +5107,115 @@
           "level": 2,
           "id": "from-formal-checking-to-mathematical-use",
           "title": "From formal checking to mathematical use",
-          "line": 374
+          "line": 372
         },
         {
           "level": 1,
           "id": "sec:example",
           "title": "One complete boundary: finite is not unbounded",
-          "line": 386
+          "line": 384
         },
         {
           "level": 1,
           "id": "sec:routes",
           "title": "Inspection routes",
-          "line": 414
+          "line": 412
         },
         {
           "level": 1,
           "id": "sec:trust",
           "title": "What can be trusted",
-          "line": 438
+          "line": 436
         },
         {
           "level": 1,
           "id": "sec:scaling",
           "title": "Scaling from one clone to a search network",
-          "line": 477
+          "line": 475
         },
         {
           "level": 2,
           "id": "clone-attach-compute-and-mine-bounded-results",
           "title": "Clone, attach compute, and mine bounded results",
-          "line": 485
+          "line": 483
         },
         {
           "level": 2,
           "id": "the-no-go-graph-as-a-new-mathematical-object",
           "title": "The no-go graph as a new mathematical object",
-          "line": 511
+          "line": 509
         },
         {
           "level": 2,
           "id": "an-experimental-agenda",
           "title": "An experimental agenda",
-          "line": 521
+          "line": 519
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Relation to other approaches",
-          "line": 527
+          "line": 525
         },
         {
           "level": 4,
           "id": "theorem-proving-agents.",
           "title": "Theorem-proving agents.",
-          "line": 531
+          "line": 529
         },
         {
           "level": 4,
           "id": "graphs-and-checked-exposition.",
           "title": "Graphs and checked exposition.",
-          "line": 537
+          "line": 535
         },
         {
           "level": 4,
           "id": "auditable-scientific-agents.",
           "title": "Auditable scientific agents.",
-          "line": 547
+          "line": 545
         },
         {
           "level": 4,
           "id": "contribution-and-limits.",
           "title": "Contribution and limits.",
-          "line": 555
+          "line": 553
         },
         {
           "level": 4,
           "id": "scaling-beyond-this-corpus.",
           "title": "Scaling beyond this corpus.",
-          "line": 561
+          "line": 559
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 567
+          "line": 565
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Reproducibility",
-          "line": 579
+          "line": 577
         },
         {
           "level": 4,
           "id": "public-first-contact.",
           "title": "Public first contact.",
-          "line": 583
+          "line": 581
         },
         {
           "level": 4,
           "id": "dated-navigation-counts.",
           "title": "Dated navigation counts.",
-          "line": 594
+          "line": 592
         }
       ],
-      "citations_rendered": 18,
+      "citations_rendered": 17,
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:8e83891f1fcdc437dbefbd45195615d1bb944f439c14800aefc4f88cc8d237f7",
-      "pdf_byte_count": 145445,
+      "pdf_sha256": "sha256:29e5ff7e80495a35555ed71c1bff6c00a34af4ef3a1585b29da98d38f56f5304",
+      "pdf_byte_count": 144790,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -5233,12 +5233,12 @@
           {
             "id": "sec:routes",
             "title": "Inspection routes",
-            "line": 414
+            "line": 412
           },
           {
             "id": "sec:trust",
             "title": "What can be trusted",
-            "line": 438
+            "line": 436
           }
         ],
         "unresolved_count": 0
@@ -5483,7 +5483,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/open-source-mathematics-strategy.md",
       "local_source": "paper/open-source-mathematics-strategy.tex",
-      "source_sha256": "sha256:d1d67485cc7e1195e0ef43c949cc4f8a99e275942e1d384c13a8e1016eb0103e",
+      "source_sha256": "sha256:bda180c92168800fb3ec74ab12ef6f56d8f72c2ad11a78cc3e8c8253b3298dc9",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/open-source-mathematics-strategy.tex",
@@ -5667,8 +5667,8 @@
       ],
       "citations_rendered": 21,
       "local_pdf": "open-source-mathematics-strategy.pdf",
-      "pdf_sha256": "sha256:54313f8c15771616118ac80e02442beb8ad1f5f7dbf64de053ac1c79dc603869",
-      "pdf_byte_count": 132379,
+      "pdf_sha256": "sha256:5df59aac866f6400311393473c0d690806280697ddc904b164c9a3021f1d965f",
+      "pdf_byte_count": 132970,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -5734,11 +5734,11 @@
         "year": "2026",
         "title": "Plectis: What a Stranger Can Check",
         "repository": "plectis",
-        "canonical_source_commit": null,
-        "canonical_source_url": "https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex",
+        "canonical_source_commit": "5f177b70ae10d7e899adf1612ece5a99714f7c0f",
+        "canonical_source_url": "https://github.com/wcook04/plectis/blob/5f177b70ae10d7e899adf1612ece5a99714f7c0f/paper/plectis-public-system.tex",
         "licence": "CC-BY-4.0",
         "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Plectis: What a Stranger Can Check. plectis. CC-BY-4.0. https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex",
+        "text": "Will Cook (2026). Plectis: What a Stranger Can Check. plectis, commit 5f177b70ae10d7e899adf1612ece5a99714f7c0f. CC-BY-4.0. https://github.com/wcook04/plectis/blob/5f177b70ae10d7e899adf1612ece5a99714f7c0f/paper/plectis-public-system.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -5750,10 +5750,10 @@
       "local_full_text": "docs/papers/full-text/plectis-public-system.md",
       "local_source": "docs/papers/mirror/plectis-public-system.tex",
       "source_sha256": "sha256:3a8a7dc855c974a161ada83ecc836cb512a08bfa1522eada95ab2c7ba72348ac",
-      "canonical_source_commit": null,
-      "canonical_source_pin_status": "moving_default_ref",
-      "canonical_source_url": "https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis/main/paper/plectis-public-system.tex",
+      "canonical_source_commit": "5f177b70ae10d7e899adf1612ece5a99714f7c0f",
+      "canonical_source_pin_status": "immutable_commit",
+      "canonical_source_url": "https://github.com/wcook04/plectis/blob/5f177b70ae10d7e899adf1612ece5a99714f7c0f/paper/plectis-public-system.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis/5f177b70ae10d7e899adf1612ece5a99714f7c0f/paper/plectis-public-system.tex",
       "section_count": 31,
       "sections": [
         {

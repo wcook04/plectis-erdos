@@ -369,11 +369,11 @@ def main() -> int:
 
     lean_clone_command = (
         "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
-        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+        "https://github.com/wcook04/plectis-erdos.git"
     )
     full_clone_command = (
         "git clone --depth=1 --filter=blob:none --single-branch "
-        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+        "https://github.com/wcook04/plectis-erdos.git"
     )
     mutated_lean_clone_surfaces = human_surfaces.copy()
     mutated_lean_clone_surfaces["README.md"] = mutated_lean_clone_surfaces[

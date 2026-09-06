@@ -46,21 +46,21 @@ git clone --depth=1 --filter=blob:none --single-branch --no-checkout https://git
 ```
 
 ```bash
-# Manifest 1 of 3: the full Lean source, then one bounded proof build
+# Manifest 1 of 3: the 43-module quick proof checkout
+git -C plectis-erdos cat-file -e HEAD:scripts/lean-quick-sparse-checkout && git -C plectis-erdos show HEAD:scripts/lean-quick-sparse-checkout | git -C plectis-erdos sparse-checkout set --no-cone --stdin
+git -C plectis-erdos checkout
+```
+
+```bash
+# Manifest 2 of 3: the full Lean source, then one bounded proof build
 git -C plectis-erdos cat-file -e HEAD:scripts/lean-sparse-checkout && git -C plectis-erdos show HEAD:scripts/lean-sparse-checkout | git -C plectis-erdos sparse-checkout set --no-cone --stdin
 git -C plectis-erdos checkout
 cd plectis-erdos && python3 scripts/lean_fast_build.py --jobs 2 ErdosProblems.Erdos249.PeriodMultipleEscape
 ```
 
 ```bash
-# Manifest 2 of 3: reader files (papers, maps, claim records; no Lean source)
+# Manifest 3 of 3: reader files (papers, maps, claim records; no Lean source)
 git -C plectis-erdos cat-file -e HEAD:scripts/reader-sparse-checkout && git -C plectis-erdos show HEAD:scripts/reader-sparse-checkout | git -C plectis-erdos sparse-checkout set --no-cone --stdin
-git -C plectis-erdos checkout
-```
-
-```bash
-# Manifest 3 of 3: the 43-module quick proof checkout
-git -C plectis-erdos cat-file -e HEAD:scripts/lean-quick-sparse-checkout && git -C plectis-erdos show HEAD:scripts/lean-quick-sparse-checkout | git -C plectis-erdos sparse-checkout set --no-cone --stdin
 git -C plectis-erdos checkout
 ```
 
