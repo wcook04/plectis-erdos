@@ -36,7 +36,7 @@ The paper gives a production model, contribution protocol, trust and security bo
 
 This project began with one undergraduate working without an institutional research team or a dedicated compute allocation. That fact does not validate the mathematics or the architecture. It makes the strategic question concrete: can the fixed cost of research infrastructure be paid once, published, and then shared by people who bring different scarce inputs?
 
-The intended answer is an open research commons. A mathematician may supply a theorem, counterexample, reference, or correction. A Lean contributor may formalise or audit one statement. A person with spare compute may run an agent against a bounded public frontier. An infrastructure contributor may improve navigation, experiments, validation, reproducibility, or the public contribution path. A reviewer may reconcile a formal statement with its intended meaning or decide that a returned result does not survive scrutiny. These are different contributions. None should have to masquerade as a solution to receive credit.
+The intended answer is an open research commons. A mathematician may supply a theorem, counterexample, reference, or correction. A Lean contributor may formalise or audit one statement. A person with spare compute may run an agent against a bounded public frontier; at present that means choosing a bounded task, operating it through a runner of their own, and returning evidence, not installing a turnkey client. An infrastructure contributor may improve navigation, experiments, validation, reproducibility, or the public contribution path. A reviewer may reconcile a formal statement with its intended meaning or decide that a returned result does not survive scrutiny. These are different contributions. None should have to masquerade as a solution to receive credit.
 
 The project is AI-native in a narrow, declared sense. Contributors may use language models and agent harnesses throughout the work, provided that their use is disclosed. Model assistance is neither a defect nor evidence of mathematical value. What enters the accepted record is the attributable delta: a mathematical idea, a question or direction that produces useful mathematics, a proof or counterexample, a review, or an architectural change that makes later research more effective. Each still needs the evidence and review appropriate to its claim.
 
@@ -143,6 +143,8 @@ Every row admits more than theorem proving. A mathematician may sharpen a hypoth
 # The public research object
 
 The unit of participation is a *problem world*. A problem world includes the endpoint question, current public status, principal theorems, formal source, experiments, known counterexamples, failed mechanisms, source literature, and exact open obligations. A bounded task is a neighbourhood in that world, not an invitation to read the repository indiscriminately.
+
+The research was initially developed inside a private workbench. The public release carries both the mathematical corpus and the workflows needed to inspect, validate, and return a contribution. A contributor uses the public checkout as the working environment; access to the private workbench is not part of the contribution protocol, and the workbench grants no proof or publication authority to a returned result.
 
 The public layers carry different kinds of evidence. Their order is easier to read as an authority ladder than as one all-purpose badge.
 
@@ -323,7 +325,7 @@ Agent Hunt studies bounties, locks, guarded ownership, and collaborative agents 
 
 #### Proof abundance.
 
-Tao separates problem solving into generation, verification, exposition, digestion and acceptance, and canonicalisation, and argues that proof abundance will create bottlenecks between these stages \[tao2026\]. The strategy here treats those bottlenecks as contribution surfaces. A reviewer who prevents an overclaim or an expositor who makes a hard step recoverable is not ancillary to the research pipeline.
+Tao separates problem solving into generation, verification, exposition, digestion and acceptance, and canonicalisation, and argues that proof abundance will create bottlenecks between these stages \[tao2026\]. The strategy here treats those bottlenecks as contribution surfaces. A reviewer who prevents an overclaim or an expositor who makes a hard step recoverable is not ancillary to the research pipeline. Tao’s rule of thumb, that a result whose authors cannot give a clear, correct, properly attributed expert-level account of it is incomplete even when formally verified, sets the bar for the exposition layer here: the record must let a person give that account, and whether it does is one of the measures in Section <a href="#sec:evaluation" data-reference-type="ref" data-reference="sec:evaluation">12</a>.
 
 The proposed composition joins these precedents. It combines volunteer compute, small shared insights, formal task decomposition, agent-native problem worlds, explicit negative knowledge, untrusted public returns, role-aware credit, and human review. The candidate contribution is this composition and its implementation in one open mathematical corpus. The paper makes no universal priority claim and reports no controlled comparison showing that the composition increases discovery rate.
 
@@ -396,6 +398,8 @@ The numerator must remain claim-bounded. One accepted counterexample may be more
 Longitudinal model comparisons should use immutable problem snapshots and held-out variants where possible. Public hard problems are susceptible to training-data contamination, and the repository itself will become more informative over time. A later model therefore receives both a stronger model and a richer corpus. The design should measure these factors separately rather than presenting every later success as model improvement.
 
 The present work supplies no such evaluation. It establishes an implemented case, an explicit protocol, and falsifiable measures for a later study.
+
+The first study should be small and diagnostic rather than a population estimate. An outside researcher receives one problem world and is asked to recover its strongest established statement, explain the main idea, state what remains unproved, distinguish a genuine obstruction from an unsuccessful attempt, and then undertake one bounded task and return it in a form the maintainer can assess without substantial reconstruction. Three presentations of the same material should be compared: the source, papers, and records in an ordinary repository; an information-equivalent static briefing written with care; and the navigation and record surfaces described here. The second condition is what separates the effect of the mechanisms from the effect of a better introductory paragraph. Failures are recorded at their own level: a command that could not be run, a source that could not be located, an interpretation that was corrected, or a result judged uninteresting are four different findings.
 
 <a id="sec:learning"></a>
 

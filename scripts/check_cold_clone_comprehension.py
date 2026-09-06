@@ -1126,27 +1126,27 @@ def validate_human_first_contact(
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
     lean_clone_command = (
         "git clone --depth=1 --filter=blob:none --single-branch --no-checkout "
-        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+        "https://github.com/wcook04/plectis-erdos.git"
     )
     lean_sparse_command = (
-        "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/lean-sparse-checkout && "
-        "git -C plectis-lean-erdos249-257 show HEAD:scripts/lean-sparse-checkout | "
-        "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
+        "git -C plectis-erdos cat-file -e HEAD:scripts/lean-sparse-checkout && "
+        "git -C plectis-erdos show HEAD:scripts/lean-sparse-checkout | "
+        "git -C plectis-erdos sparse-checkout set --no-cone --stdin"
     )
-    lean_checkout_command = "git -C plectis-lean-erdos249-257 checkout"
+    lean_checkout_command = "git -C plectis-erdos checkout"
     lean_build_command = "python3 scripts/lean_fast_build.py --jobs 2"
     reader_sparse_command = (
-        "git -C plectis-lean-erdos249-257 cat-file -e HEAD:scripts/reader-sparse-checkout && "
-        "git -C plectis-lean-erdos249-257 show HEAD:scripts/reader-sparse-checkout | "
-        "git -C plectis-lean-erdos249-257 sparse-checkout set --no-cone --stdin"
+        "git -C plectis-erdos cat-file -e HEAD:scripts/reader-sparse-checkout && "
+        "git -C plectis-erdos show HEAD:scripts/reader-sparse-checkout | "
+        "git -C plectis-erdos sparse-checkout set --no-cone --stdin"
     )
     full_clone_command = (
         "git clone --depth=1 --filter=blob:none --single-branch "
-        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+        "https://github.com/wcook04/plectis-erdos.git"
     )
     full_history_clone_command = (
         "git clone --filter=blob:none --single-branch "
-        "https://github.com/wcook04/plectis-lean-erdos249-257.git"
+        "https://github.com/wcook04/plectis-erdos.git"
     )
     require(
         lean_clone_command in readme_prefix
