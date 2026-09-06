@@ -118,7 +118,7 @@ private def twentyOneInitialSupport : Finset ℕ :=
 used below. -/
 private theorem greedyMersennePrefixRat_one_div_twenty_one_twenty :
     greedyMersennePrefixRat (1 / 21 : ℚ) 20 = twentyOneInitialSupport := by
-  native_decide
+  decide +kernel
 
 private theorem mem_twentyOnePrefixRat_iff_real_support
     {n d : ℕ} (hd1 : 1 ≤ d) (hdn : d ≤ n) :

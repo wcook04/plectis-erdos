@@ -64,7 +64,7 @@ watered-down version of the result.
 
 ## Verification
 
-From `formal_math/erdos257_period_noncollapse`:
+From the problem library `ErdosProblems/Erdos243`:
 
 ```sh
 ./scripts/lean_fast_build.py --jobs 2 \

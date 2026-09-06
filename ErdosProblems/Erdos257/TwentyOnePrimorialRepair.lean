@@ -179,7 +179,7 @@ theorem twentyOnePrimorialUnionLoad_240 :
     hselected 80 (by norm_num) (by norm_num),
     hselected 48 (by norm_num) (by norm_num)]
   simp only [selectedDivisors, P, Finset.mem_coe]
-  native_decide
+  decide +kernel
 
 /-- Exact seven-column form of the causal union at a positive multiple of
 `120`.  It is stated without subtraction so it remains an identity in `ℕ`. -/
