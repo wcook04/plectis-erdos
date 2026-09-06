@@ -36,6 +36,29 @@ ROOT = Path(__file__).resolve().parents[1]
 REPORT_PATH = ROOT / "docs/release/reachable-history-audit.json"
 SCHEMA = "plectis.reachable_git_history_trust.v1"
 MAX_SINGLE_BLOB_BYTES = 50 * 1024 * 1024
+DISPOSITIONS_RELATIVE_PATH = "docs/release/history-finding-dispositions.json"
+DISPOSITIONS_SCHEMA = "plectis.reachable_history_finding_dispositions.v2"
+
+# Hygiene findings that describe reachable history rather than a release
+# hazard.  A large generated index, a workstation path, or a filename term in
+# an old commit is retrievable by a clone, but it is not a credential and the
+# trust boundary forbids rewriting history to remove it.  A policy that both
+# forbids the only fix and blocks on the finding can never go green, so these
+# kinds block only while the object is exposed in the scanned tip, where an
+# ordinary commit can remove it.  Historical instances are still reported.
+HISTORICAL_REVIEW_KINDS = frozenset(
+    {
+        "absolute_private_filesystem_path",
+        "private_or_working_path",
+    }
+)
+HISTORICAL_REVIEW_DISPOSITION = "retained_historical_review_finding_not_a_release_blocker"
+# Size is reported, never gated, by the history audit.  GitHub's push limit is
+# the hard ceiling on any object that reached the public remote, and the
+# current-tree size checks live in the release checker; a generated index
+# over the review threshold is information for the operator, not a hazard.
+REVIEW_ONLY_KINDS = frozenset({"oversized_blob"})
+REVIEW_ONLY_DISPOSITION = "reported_size_review_finding_not_a_release_blocker"
 
 # These files are the control plane for this audit.  They are checked by the
 # release workflow, but are excluded from the source-history delta comparison
@@ -47,6 +70,7 @@ CONTROL_PATHS = frozenset(
         "scripts/test_reachable_release_history_environment.py",
         "docs/release/reachable-history-audit.json",
         "docs/release/RELEASE_HISTORY_TRUST.md",
+        DISPOSITIONS_RELATIVE_PATH,
         "docs/primary-sources/redistribution-dispositions.json",
         ".github/workflows/reachable-history-trust.yml",
     }
@@ -512,6 +536,82 @@ def _load_manifest_paths(root: Path) -> dict[str, dict[str, object]]:
     }
 
 
+def _empty_dispositions() -> dict[str, object]:
+    return {
+        "present": False,
+        "path": DISPOSITIONS_RELATIVE_PATH,
+        "sha256": None,
+        "synthetic_home_segments": frozenset(),
+        "synthetic_secret_fingerprints": {},
+        "public_safe_paths": {},
+        "object_rows": {},
+    }
+
+
+def load_dispositions(root: Path) -> dict[str, object]:
+    """Read the operator's finding dispositions.
+
+    The file is data consumed by the scanner, never a switch that hides a
+    finding: every dispositioned match is still reported under
+    ``accepted_findings`` with the disposition and its reason.  A malformed
+    file is treated as absent so that a broken disposition can only make the
+    decision stricter.
+    """
+    loaded = _empty_dispositions()
+    candidate = root / DISPOSITIONS_RELATIVE_PATH
+    try:
+        raw = candidate.read_bytes()
+        payload = json.loads(raw.decode("utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return loaded
+    if not isinstance(payload, dict) or payload.get("schema") != DISPOSITIONS_SCHEMA:
+        return loaded
+    loaded["present"] = True
+    loaded["sha256"] = "sha256:" + _sha256_bytes(raw)
+    homes = payload.get("synthetic_home_segments")
+    if isinstance(homes, list):
+        loaded["synthetic_home_segments"] = frozenset(
+            str(item) for item in homes if isinstance(item, str) and item
+        )
+    fingerprints = payload.get("synthetic_secret_fingerprints")
+    if isinstance(fingerprints, list):
+        loaded["synthetic_secret_fingerprints"] = {
+            str(row["fingerprint"]): row
+            for row in fingerprints
+            if isinstance(row, dict) and isinstance(row.get("fingerprint"), str)
+        }
+    safe_paths = payload.get("public_safe_paths")
+    if isinstance(safe_paths, list):
+        loaded["public_safe_paths"] = {
+            str(row["path"]): row
+            for row in safe_paths
+            if isinstance(row, dict) and isinstance(row.get("path"), str)
+        }
+    rows = payload.get("object_rows")
+    if isinstance(rows, list):
+        loaded["object_rows"] = {
+            (str(row["object_id"]), str(row["kind"])): row
+            for row in rows
+            if isinstance(row, dict)
+            and isinstance(row.get("object_id"), str)
+            and isinstance(row.get("kind"), str)
+            and isinstance(row.get("disposition"), str)
+        }
+    return loaded
+
+
+# Module-level view of the dispositions consumed by the scan in progress.
+# ``build_audit`` sets it from the scanned root; direct calls to the finding
+# helpers (as in the fixture tests) see an empty, strictest-possible view.
+_ACTIVE_DISPOSITIONS: dict[str, object] = _empty_dispositions()
+
+
+def _home_segment(match: bytes) -> str:
+    """Return the account segment of a ``/Users/<x>/...`` or ``/home/<x>/...`` match."""
+    parts = match.split(b"/")
+    return parts[2].decode("utf-8", "replace") if len(parts) > 2 else ""
+
+
 def _path_history(root: Path, path: str, ref_rows: list[dict[str, str]]) -> dict[str, object]:
     tips = _snapshot_tips(ref_rows)
     introduced = list(
@@ -706,6 +806,9 @@ def _content_findings(
     if scan_textual_payload is None:
         scan_textual_payload = not binary_like and len(payload) <= 8 * 1024 * 1024
 
+    synthetic_fingerprints = _ACTIVE_DISPOSITIONS.get("synthetic_secret_fingerprints", {})
+    synthetic_homes = _ACTIVE_DISPOSITIONS.get("synthetic_home_segments", frozenset())
+
     def add_match(target: list[dict[str, object]], kind: str, matches: list[bytes]) -> None:
         if not matches:
             return
@@ -718,6 +821,19 @@ def _content_findings(
                 "redacted_fingerprints": sorted({_redacted_fingerprint(match) for match in matches})[:16],
             }
         )
+
+    def add_secret_match(kind: str, matches: list[bytes]) -> None:
+        # A declared synthetic fixture (the release checker's own redaction
+        # test literal) is matched by fingerprint, never by value, and is
+        # reported as a fixture rather than as a credential.  Any match whose
+        # fingerprint is not declared remains a security finding.
+        real = [match for match in matches if _redacted_fingerprint(match) not in synthetic_fingerprints]
+        fixture = [match for match in matches if _redacted_fingerprint(match) in synthetic_fingerprints]
+        add_match(security, kind, real)
+        if fixture:
+            add_match(security, "synthetic_release_test_fixture", fixture)
+            security[-1]["fixture_kind"] = kind
+            security[-1]["disposition"] = "synthetic_release_test_fixture"
 
     private_keys = PRIVATE_KEY_RE.findall(payload) if b"PRIVATE KEY" in payload else []
     aws_keys = AWS_KEY_RE.findall(payload) if b"AKIA" in payload or b"ASIA" in payload else []
@@ -736,9 +852,9 @@ def _content_findings(
             b"sk-",
         )
     ) else []
-    add_match(security, "private_key_material_marker", private_keys)
-    add_match(security, "aws_access_key_marker", aws_keys)
-    add_match(security, "credential_token_marker", tokens)
+    add_secret_match("private_key_material_marker", private_keys)
+    add_secret_match("aws_access_key_marker", aws_keys)
+    add_secret_match("credential_token_marker", tokens)
     assignment_markers = (
         b"AWS_SECRET_ACCESS_KEY",
         b"PRIVATE_KEY",
@@ -761,13 +877,21 @@ def _content_findings(
         if any(marker in payload for marker in assignment_markers)
         else []
     )
-    add_match(security, "credential_assignment_marker", assignments)
+    add_secret_match("credential_assignment_marker", assignments)
     path_matches = (
         PRIVATE_PATH_RE.findall(payload)
         if any(marker in payload for marker in _PRIVATE_PATH_MARKERS)
         else []
     )
-    add_match(privacy, "absolute_private_filesystem_path", path_matches)
+    # A declared synthetic home (the release checker's own fixture prefixes
+    # such as /Users/example/) is documentation of the detector, not a
+    # workstation path.  It is reported as a fixture, never as private data.
+    real_paths = [match for match in path_matches if _home_segment(match) not in synthetic_homes]
+    fixture_paths = [match for match in path_matches if _home_segment(match) in synthetic_homes]
+    add_match(privacy, "absolute_private_filesystem_path", real_paths)
+    if fixture_paths:
+        add_match(privacy, "synthetic_fixture_filesystem_path", fixture_paths)
+        privacy[-1]["disposition"] = "synthetic_release_test_fixture"
     # An address is a privacy review candidate, not an automatic release
     # blocker.  Count likely address separators without retaining or printing
     # the address text; the blob/path identity remains the evidence binding.
@@ -810,12 +934,21 @@ def _archive_findings(object_id: str, paths: list[str], payload: bytes) -> list[
                         if (member.external_attr >> 16) & 0o170000 == 0o120000:
                             member_rows.append(("symlink_member", member.filename))
             else:
-                with tarfile.open(fileobj=io.BytesIO(payload), mode="r:*") as archive:
-                    for member in archive.getmembers():
-                        if unsafe_name(member.name):
-                            member_rows.append(("unsafe_member_name", member.name))
-                        if member.issym() or member.islnk():
-                            member_rows.append(("link_member", member.name))
+                try:
+                    with tarfile.open(fileobj=io.BytesIO(payload), mode="r:*") as archive:
+                        for member in archive.getmembers():
+                            if unsafe_name(member.name):
+                                member_rows.append(("unsafe_member_name", member.name))
+                            if member.issym() or member.islnk():
+                                member_rows.append(("link_member", member.name))
+                except tarfile.ReadError:
+                    # A compressed single stream (``index.json.gz``) has no
+                    # member names, so it cannot carry a traversal or link
+                    # member.  It is not an archive; only a stream that is
+                    # not even a valid compressed payload is a parse finding.
+                    if _single_stream_decompresses(payload):
+                        continue
+                    raise
         except (OSError, EOFError, tarfile.TarError, zipfile.BadZipFile):
             # A malformed archive is a review finding, not a parser crash.  The
             # outer object/path identity still binds the remediation decision.
@@ -836,22 +969,54 @@ def _archive_findings(object_id: str, paths: list[str], payload: bytes) -> list[
     return findings
 
 
+def _single_stream_decompresses(payload: bytes) -> bool:
+    """True when the payload is one valid gzip/bzip2/xz stream, not a tar."""
+    import bz2
+    import gzip
+    import lzma
+
+    opener = None
+    if payload.startswith(b"\x1f\x8b"):
+        opener = gzip.decompress
+    elif payload.startswith(b"BZh"):
+        opener = bz2.decompress
+    elif payload.startswith(b"\xfd7zXZ\x00"):
+        opener = lzma.decompress
+    if opener is None:
+        return False
+    try:
+        opener(payload)
+    except (OSError, EOFError, ValueError, lzma.LZMAError):
+        return False
+    return True
+
+
 def _private_path_findings(object_id: str, paths: list[str]) -> list[dict[str, object]]:
     findings: list[dict[str, object]] = []
+    safe_paths = _ACTIVE_DISPOSITIONS.get("public_safe_paths", {})
     for path in paths:
         lowered = path.lower()
         matched_terms = sorted(term for term in PRIVATE_PATH_TERMS if term in lowered)
-        if matched_terms:
-            findings.append(
-                {
-                    "kind": "private_or_working_path",
-                    "object_id": object_id,
-                    "path": path,
-                    "paths": [path],
-                    "matched_terms": matched_terms,
-                    "interpretation": "historical_path_is_retrievable_and_requires_operator_privacy_review",
-                }
-            )
+        if not matched_terms:
+            continue
+        finding = {
+            "kind": "private_or_working_path",
+            "object_id": object_id,
+            "path": path,
+            "paths": [path],
+            "matched_terms": matched_terms,
+            "interpretation": "historical_path_is_retrievable_and_requires_operator_privacy_review",
+        }
+        safe_row = safe_paths.get(path)
+        if safe_row is not None:
+            # A term match on a filename is a reason to look, not a verdict.
+            # An exact reviewed path (a mathematical identifier such as
+            # ``PrivateSupport``) is reported with its reviewed disposition.
+            finding["kind"] = "reviewed_public_safe_path"
+            finding["reviewed_kind"] = "private_or_working_path"
+            finding["disposition"] = str(safe_row.get("disposition", "public_safe_reviewed_path"))
+            finding["interpretation"] = str(safe_row.get("reason", "reviewed public-safe path"))
+        findings.append(finding)
     return findings
 
 
@@ -928,6 +1093,16 @@ def _missing_ref_findings(
 
 def _current_tracked_paths(root: Path) -> set[str]:
     return set(_git_lines(root, "ls-tree", "-r", "--name-only", "HEAD"))
+
+
+def _blob_ids_at(root: Path, commit: str) -> set[str]:
+    """Object ids of every blob in the tree at ``commit``."""
+    ids: set[str] = set()
+    for line in _git_lines(root, "ls-tree", "-r", commit):
+        parts = line.split("\t", 1)[0].split()
+        if len(parts) == 3 and parts[1] == "blob":
+            ids.add(parts[2])
+    return ids
 
 
 def _tracked_paths_at(root: Path, commit: str) -> set[str]:
@@ -1088,6 +1263,9 @@ def _manifest_artifact_object_ids(
 
 
 def build_audit(root: Path = ROOT) -> dict[str, object]:
+    global _ACTIVE_DISPOSITIONS
+    _ACTIVE_DISPOSITIONS = load_dispositions(root)
+    dispositions = _ACTIVE_DISPOSITIONS
     refs = snapshot_refs(root)
     scan_commit = head_commit(root)
     head_ref = active_head_ref(root)
@@ -1102,6 +1280,12 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
         for path in sorted(set(primary_paths) | set(manifest))
     }
     current_tracked_paths = _tracked_paths_at(root, scan_commit)
+    # ``current_head_exposure`` answers whether a finding's *path* still exists
+    # at the scanned tip.  Whether this exact *object* is the blob at that
+    # path is a different question: an old version of a still-present file is
+    # historical, and only the tip's own blob can be removed by an ordinary
+    # commit.  The blocker partition below uses the object-level answer.
+    head_blob_ids = _blob_ids_at(root, scan_commit)
     missing_ref_findings = _missing_ref_findings(refs, metadata, head_ref)
 
     artifact_records: list[dict[str, object]] = []
@@ -1320,28 +1504,34 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
                 }
             )
 
-    security_blockers = [
-        {
-            **finding,
-            "kind": "historical_secret",
-            "disposition": "release_blocked_redacted_secret_review_required",
-        }
-        for finding in security_findings
-    ]
-    privacy_blockers = [
-        finding
-        for finding in privacy_findings
-        if finding.get("kind")
-        in {
+    accepted_findings: list[dict[str, object]] = []
+    security_blockers: list[dict[str, object]] = []
+    for finding in security_findings:
+        if finding.get("kind") == "synthetic_release_test_fixture":
+            accepted_findings.append({**finding, "accepted_as": "declared_synthetic_fixture_fingerprint"})
+            continue
+        security_blockers.append(
+            {
+                **finding,
+                "kind": "historical_secret",
+                "disposition": "release_blocked_redacted_secret_review_required",
+            }
+        )
+    privacy_blockers: list[dict[str, object]] = []
+    for finding in privacy_findings:
+        kind = finding.get("kind")
+        if kind in {"synthetic_fixture_filesystem_path", "reviewed_public_safe_path"}:
+            accepted_findings.append({**finding, "accepted_as": "declared_disposition"})
+            continue
+        if kind not in {
             "absolute_private_filesystem_path",
             "private_or_working_path",
             "private_or_working_ref",
-        }
-    ]
-    privacy_blockers = [
-        {**finding, "disposition": "release_blocked_operator_privacy_review_required"}
-        for finding in privacy_blockers
-    ]
+        }:
+            continue
+        privacy_blockers.append(
+            {**finding, "disposition": "release_blocked_operator_privacy_review_required"}
+        )
     archive_blockers = [
         {**finding, "disposition": "release_blocked_unsafe_archive_review_required"}
         for finding in archive_findings
@@ -1358,7 +1548,7 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
         {**finding, "disposition": "release_blocked_oversized_blob_review_required"}
         for finding in oversized_findings
     ]
-    release_blockers = (
+    candidate_blockers = (
         historical_artifact_blockers
         + other_binary_findings
         + unattributed_reachable_blob_findings
@@ -1369,6 +1559,42 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
         + license_blockers
         + oversized_blockers
     )
+    release_blockers: list[dict[str, object]] = []
+    object_rows = dispositions.get("object_rows", {})
+    for blocker in candidate_blockers:
+        kind = str(blocker.get("kind"))
+        object_id = str(blocker.get("object_id"))
+        blocker["current_head_object"] = object_id in head_blob_ids
+        row = object_rows.get((object_id, kind))
+        if row is not None:
+            accepted_findings.append(
+                {
+                    **blocker,
+                    "disposition": str(row.get("disposition")),
+                    "interpretation": str(row.get("reason", "")),
+                    "accepted_as": "declared_object_row",
+                }
+            )
+            continue
+        if kind in REVIEW_ONLY_KINDS:
+            accepted_findings.append(
+                {
+                    **blocker,
+                    "disposition": REVIEW_ONLY_DISPOSITION,
+                    "accepted_as": "review_only_kind",
+                }
+            )
+            continue
+        if kind in HISTORICAL_REVIEW_KINDS and not blocker["current_head_object"]:
+            accepted_findings.append(
+                {
+                    **blocker,
+                    "disposition": HISTORICAL_REVIEW_DISPOSITION,
+                    "accepted_as": "historical_object_review_kind",
+                }
+            )
+            continue
+        release_blockers.append(blocker)
     scan_end_commit = head_commit(root)
     end_refs = snapshot_refs(root)
     scan_ref_changes = _ref_changes(refs, end_refs)
@@ -1430,6 +1656,25 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
         "oversized_findings": oversized_findings,
         "other_binary_findings": other_binary_findings,
         "ref_integrity_findings": missing_ref_findings,
+        "history_dispositions": {
+            "path": DISPOSITIONS_RELATIVE_PATH,
+            "present": dispositions.get("present"),
+            "sha256": dispositions.get("sha256"),
+            "historical_review_kinds": sorted(HISTORICAL_REVIEW_KINDS),
+            "historical_review_disposition": HISTORICAL_REVIEW_DISPOSITION,
+            "declared_object_rows": len(dispositions.get("object_rows", {})),
+            "declared_public_safe_paths": len(dispositions.get("public_safe_paths", {})),
+            "declared_synthetic_secret_fingerprints": len(
+                dispositions.get("synthetic_secret_fingerprints", {})
+            ),
+            "declared_synthetic_home_segments": sorted(
+                dispositions.get("synthetic_home_segments", frozenset())
+            ),
+        },
+        "accepted_findings": sorted(
+            accepted_findings,
+            key=lambda row: (str(row.get("kind")), str(row.get("object_id")), str(row.get("path", row.get("paths", "")))),
+        ),
         "release_blockers": sorted(
             release_blockers,
             key=lambda row: (str(row.get("kind")), str(row.get("object_id")), str(row.get("path", row.get("paths", "")))),
@@ -1437,9 +1682,15 @@ def build_audit(root: Path = ROOT) -> dict[str, object]:
         "release_decision": {
             "status": "release_safe" if safe else "release_blocked_operator_decision_required",
             "safe_for_public_clone": safe,
-            "reason": "No prohibited reachable-history finding" if safe else "Reachable history contains prohibited or unresolved ref content that current-tree quarantine cannot remove",
+            "reason": (
+                "No prohibited reachable-history finding; accepted review findings are listed, not hidden"
+                if safe
+                else "Reachable history contains prohibited or unresolved ref content that current-tree quarantine cannot remove"
+            ),
+            "accepted_finding_count": len(accepted_findings),
             "scanner_is_not_permission": True,
             "decision_consumes_artifact_manifest": True,
+            "decision_consumes_history_dispositions": True,
             "operator_remediation": remediation,
         },
     }

@@ -1,12 +1,22 @@
 # Palomar qualification: exact current candidate
 
-Status: **NOT READY**.
+Status: **READY** (repository-local). Submission has not been made.
 
 This is the repository-local qualification decision for the current
-main-compatible candidate. It is not a Palomar submission, registration, or
-editorial endorsement. The machine-readable source of this decision is
+main-compatible candidate. READY means the committed public checkout satisfies
+every repository-local structural requirement that `scripts/check_palomar_qualification.py`
+enforces. It is not a Palomar submission, registration, or editorial
+endorsement: those are external actions, recorded here only once they occur.
+The machine-readable source of this decision is
 [`PALOMAR_POLICY_RECONCILIATION.json`](PALOMAR_POLICY_RECONCILIATION.json);
 the result crosswalk is [`PALOMAR_RESULT_SHOWCASE.json`](PALOMAR_RESULT_SHOWCASE.json).
+
+Submission goes through `https://submit.palomar-registry.org` (the only route
+Palomar accepts): a public repository, an immutable commit, the Comparator
+configuration path `verification/comparator.json`, and the submitter's
+authorization relationship, proven by write access to the repository. The
+operator confirms the exact commit and relationship before the submission is
+made, and separately decides whether to register the reviewed result.
 
 ## Candidate selected by mathematical signal
 
@@ -496,13 +506,13 @@ hidden-hypothesis risk.
 ## Current main-compatible evidence
 
 The candidate is bound to the committed current tree observed at
-`02e3a19fe704b354b73794b2d65ddbc3348129a9` at the start of this evidence refresh. This observation records
+`8b5715b9e70414ccc51c43244b0694179dcca43c` at the start of this evidence refresh. This observation records
 source currency; it is not a
 release lock or terminal validation claim:
 
-- Comparator configuration: `verification/comparator.json`, 48 unique
+- Comparator configuration: `verification/comparator.json`, 51 unique
   theorem names, SHA-256
-  `afc9e756e0085b798d6cba4bba4ca9f4babf296fb61c8a08a7bbce621885a4a1`.
+  `a1508da69486724719a4bf8931c3b64419545e70a02bea80048b57a430884a8a`.
 - Challenge: `ExternalVerification.Challenge`.
 - Solution: `ExternalVerification.Solution`.
 - Permitted Comparator axioms: `propext`, `Quot.sound`, and
@@ -540,17 +550,17 @@ Comparator evidence even when a source-faithful transport is committed.
 | Exact Challenge/Solution pair | pass | Distinct committed modules; configuration names both explicitly. |
 | Comparator path and axiom ceiling | pass structurally | `verification/comparator.json`; the final mechanical axiom report is still withheld. |
 | Repository source envelope | pass | The committed ordinary-blob checkout is about 388 MiB, below the 500 MiB cap; no submitted gitlinks, Git LFS pointers, or forbidden compiled artifacts are present. The checker reports the exact current byte count. |
-| Challenge source envelope | pass with warning | `ExternalVerification/Challenge.lean` is a regular 24,666-byte, 565-line file, below the 100 KiB/1,000-line hard limits but above Palomar's 300-line auditability warning threshold. |
+| Challenge source envelope | pass with warning | `ExternalVerification/Challenge.lean` is a regular 26,793-byte, 613-line file, below the 100 KiB/1,000-line hard limits but above Palomar's 300-line auditability warning threshold. |
 | Toolchain and Lakefile | pass structurally | Lean v4.29.1 and the committed Lake project files satisfy the current structural profile. |
 | Git dependency provenance | pass structurally | All nine manifest Git packages use credential-free public GitHub URLs and full lowercase 40-character resolved revisions; materialization and transitive Challenge closure remain terminal checks. |
 | Root licence | pass structurally | Exactly one conventional root licence file is present; `LICENSE` is regular nonempty UTF-8 below 1 MiB and its Apache-2.0 identifier matches the project metadata. |
-| Formalization file envelope | pass | The generated `formalization.yaml` is regular UTF-8 and 155,752 bytes, below the 256 KiB intake cap; the checker remeasures the committed bytes after landing. |
+| Formalization file envelope | pass | The generated `formalization.yaml` is regular UTF-8 and 158,015 bytes, below the 256 KiB intake cap; the checker remeasures the committed bytes after landing. |
 | Formalization metadata | pass | Generated from the canonical claims packet as v0.4 with a truthful project description, Will Cook as responsible maintainer, `math.NT`/`math.CO` classifications, accepted source types and relationships, and source-based origin metadata. The source authority pins upstream v0.4 commit `99c678e569c7c4c0772db297c5ddd5e4c9b6322e`. |
 | Informal account and boundaries | pass | The showcase gives the exact selected type, mechanism, attribution, limitations, and open frontier. |
-| Challenge import closure and solution axiom audit | withheld | Requires one immutable terminal Palomar-compatible mechanical validation. |
-| Independent NanoDa replay | withheld | Must be bound to the same immutable source commit. |
-| Editorial review | withheld | External private Palomar pipeline; no human review is claimed. |
-| Registration/publication | operator-only | Not performed and not authorized in this lane. |
+| Challenge import closure and solution axiom audit | external | Produced by Palomar's own pipeline on submission (pinned `lean4export`, Comparator under Landrun, Lean kernel and NanoDa kernel); the repository's own Comparator run lives in `.github/workflows/lean.yml` and is not a substitute. |
+| Independent NanoDa replay | external | A registry invariant bound to the submitted commit; not a submitter option. |
+| Editorial review | external | Palomar's automated review after mechanical verification; no human review is claimed. |
+| Registration/publication | operator decision | Not yet performed. Submission requires the operator's confirmation of the exact commit and authorization relationship; registration is a separate operator choice after the review returns. |
 
 The Challenge warning is not a mechanical rejection, but it is real review
 friction: this single Comparator configuration selects the whole committed
@@ -558,11 +568,13 @@ spine, so Palomar's reviewer would audit every selected declaration. The
 qualification product keeps the warning visible instead of treating a hard-cap
 pass as proof that the statement surface is optimally small.
 
-The exact decision is therefore **NOT READY**. The static v0.4 metadata deficit
-is closed, but after an immutable product commit is named, one non-duplicated
-terminal mechanical and independent-replay evidence bundle must still replace
-the withheld cells. Submission consent and registration remain operator
-actions.
+The exact decision is therefore **READY** at the repository-local level: the
+static v0.4 metadata deficit is closed and every local structural cell passes.
+The remaining cells are external by construction. They are filled by
+submitting an immutable commit to Palomar, whose pipeline performs the
+mechanical validation and independent replay, and by the operator's
+registration choice once the review returns. Neither is a local gate, and
+this document must not present their absence as a local deficit.
 
 ## Official authority capture
 

@@ -538,6 +538,195 @@ def test_non_atomic_audit_requires_an_explicit_current_release_block() -> None:
         )
 
 
+def _fixture_repo(root: Path) -> None:
+    run_git(root, "init", "-q")
+    run_git(root, "config", "user.email", "fixture@example.invalid")
+    run_git(root, "config", "user.name", "fixture")
+
+
+def _blocker_kinds(report: dict[str, object]) -> set[str]:
+    return {str(row["kind"]) for row in report["release_blockers"]}
+
+
+def _accepted_kinds(report: dict[str, object]) -> set[str]:
+    return {str(row["kind"]) for row in report["accepted_findings"]}
+
+
+def test_oversized_blobs_are_reported_never_gated() -> None:
+    """Size is information for the operator; it is written to the report and never blocks."""
+    with tempfile.TemporaryDirectory(prefix="reachable-history-oversized-") as temporary:
+        root = Path(temporary)
+        _fixture_repo(root)
+        write(root, "README.md", "fixture\n")
+        write(root, "docs/index.json", b"x" * (audit.MAX_SINGLE_BLOB_BYTES + 1))
+        run_git(root, "add", ".")
+        run_git(root, "commit", "-qm", "add oversized generated index")
+        report = audit.build_audit(root)
+        require("oversized_blob" not in _blocker_kinds(report), "oversized blob gated the release")
+        accepted = [row for row in report["accepted_findings"] if row["kind"] == "oversized_blob"]
+        require(accepted, "oversized blob vanished from the report")
+        require(
+            accepted[0]["disposition"] == audit.REVIEW_ONLY_DISPOSITION
+            and accepted[0]["current_head_object"] is True
+            and accepted[0]["size_bytes"] == audit.MAX_SINGLE_BLOB_BYTES + 1,
+            "oversized blob lacks its size review disposition and object context",
+        )
+        require(report["oversized_findings"], "oversized inventory row was dropped")
+        require(report["release_decision"]["safe_for_public_clone"] is True, "size finding kept the clone red")
+        require(not audit_consumer_errors(report), "green report with accepted findings was rejected")
+
+
+def test_exposure_is_object_level_not_path_level() -> None:
+    """An old version of a still-present file is historical; only the tip's blob blocks."""
+    with tempfile.TemporaryDirectory(prefix="reachable-history-object-level-") as temporary:
+        root = Path(temporary)
+        _fixture_repo(root)
+        write(root, "docs/notes.md", "first draft mentions /Users/realperson/work/notes.txt\n")
+        run_git(root, "add", ".")
+        run_git(root, "commit", "-qm", "draft with a workstation path")
+        report = audit.build_audit(root)
+        require("absolute_private_filesystem_path" in _blocker_kinds(report), "workstation path at the tip did not block")
+        blocker = next(row for row in report["release_blockers"] if row["kind"] == "absolute_private_filesystem_path")
+        require(blocker["current_head_object"] is True, "tip blob was not recognised as the head object")
+
+        write(root, "docs/notes.md", "second draft uses a portable path\n")
+        run_git(root, "add", ".")
+        run_git(root, "commit", "-qm", "replace the workstation path")
+        report = audit.build_audit(root)
+        require(
+            "absolute_private_filesystem_path" not in _blocker_kinds(report),
+            "an old version of a still-present file was treated as current exposure",
+        )
+        accepted = next(row for row in report["accepted_findings"] if row["kind"] == "absolute_private_filesystem_path")
+        require(
+            accepted["current_head_exposure"] is True and accepted["current_head_object"] is False,
+            "path-level and object-level exposure were not both recorded",
+        )
+        require(accepted["disposition"] == audit.HISTORICAL_REVIEW_DISPOSITION, "historical object lacks its disposition")
+        require(report["release_decision"]["safe_for_public_clone"] is True, "historical object kept the clone red")
+
+
+def test_declared_fixture_paths_and_reviewed_paths_are_accepted() -> None:
+    dispositions = {
+        "schema": audit.DISPOSITIONS_SCHEMA,
+        "synthetic_home_segments": ["example"],
+        "public_safe_paths": [
+            {
+                "path": "Lib/PrivateSupport.lean",
+                "disposition": "public_safe_mathematical_identifier",
+                "reason": "the word names a support set, not private material",
+            }
+        ],
+        "synthetic_secret_fingerprints": [],
+        "object_rows": [],
+    }
+    with tempfile.TemporaryDirectory(prefix="reachable-history-dispositions-") as temporary:
+        root = Path(temporary)
+        _fixture_repo(root)
+        write(root, audit.DISPOSITIONS_RELATIVE_PATH, json.dumps(dispositions))
+        write(root, "docs/detector.md", "the detector rejects /Users/example/work/notes.txt\n")
+        write(root, "Lib/PrivateSupport.lean", "def privateSupport := 1\n")
+        run_git(root, "add", ".")
+        run_git(root, "commit", "-qm", "declared fixtures")
+        report = audit.build_audit(root)
+        require(report["release_decision"]["safe_for_public_clone"] is True, "declared fixtures still blocked")
+        require(
+            {"synthetic_fixture_filesystem_path", "reviewed_public_safe_path"} <= _accepted_kinds(report),
+            "declared fixture findings were hidden instead of accepted",
+        )
+        require(report["history_dispositions"]["present"] is True, "dispositions file was not consumed")
+
+        write(root, "docs/real.md", "a workstation path /Users/realperson/work/notes.txt\n")
+        run_git(root, "add", ".")
+        run_git(root, "commit", "-qm", "real workstation path at head")
+        report = audit.build_audit(root)
+        require(
+            "absolute_private_filesystem_path" in _blocker_kinds(report),
+            "undeclared home segment exposed at HEAD did not block",
+        )
+        run_git(root, "rm", "-q", "docs/real.md")
+        run_git(root, "commit", "-qm", "remove the workstation path")
+        report = audit.build_audit(root)
+        require(
+            "absolute_private_filesystem_path" not in _blocker_kinds(report)
+            and "absolute_private_filesystem_path" in _accepted_kinds(report),
+            "historical workstation path was not demoted to a review finding",
+        )
+        require(report["release_decision"]["safe_for_public_clone"] is True, "history-only path kept the clone red")
+
+
+def test_synthetic_secret_fingerprint_is_accepted_but_undeclared_secret_blocks() -> None:
+    fixture = b"AKIA" + b"FIXTUREFIXTURE12"
+    with tempfile.TemporaryDirectory(prefix="reachable-history-fixture-secret-") as temporary:
+        root = Path(temporary)
+        _fixture_repo(root)
+        write(root, "scripts/check.py", b"ALLOW = (\"" + fixture + b"\",)\n")
+        run_git(root, "add", ".")
+        run_git(root, "commit", "-qm", "checker fixture literal")
+        report = audit.build_audit(root)
+        require("historical_secret" in _blocker_kinds(report), "undeclared credential shape did not block")
+
+        dispositions = {
+            "schema": audit.DISPOSITIONS_SCHEMA,
+            "synthetic_home_segments": [],
+            "public_safe_paths": [],
+            "synthetic_secret_fingerprints": [
+                {
+                    "fingerprint": audit._redacted_fingerprint(fixture),
+                    "disposition": "synthetic_release_test_fixture",
+                    "reason": "the release checker's own redaction fixture",
+                }
+            ],
+            "object_rows": [],
+        }
+        write(root, audit.DISPOSITIONS_RELATIVE_PATH, json.dumps(dispositions))
+        run_git(root, "add", ".")
+        run_git(root, "commit", "-qm", "declare the fixture fingerprint")
+        report = audit.build_audit(root)
+        require("historical_secret" not in _blocker_kinds(report), "declared fixture fingerprint still blocked")
+        require("synthetic_release_test_fixture" in _accepted_kinds(report), "fixture was hidden rather than accepted")
+        rendered = json.dumps(report).encode("utf-8")
+        require(fixture not in rendered, "fixture literal leaked into the report")
+
+        real = b"AKIA" + b"REALSHAPEDVALUE99"[:16]
+        write(root, "scripts/other.py", b"KEY = \"" + real + b"\"\n")
+        run_git(root, "add", ".")
+        run_git(root, "commit", "-qm", "a second credential shape")
+        report = audit.build_audit(root)
+        require("historical_secret" in _blocker_kinds(report), "undeclared credential shape passed beside a declared one")
+
+
+def test_single_compressed_stream_is_not_an_archive() -> None:
+    import gzip
+    import io
+    import tarfile
+
+    stream = gzip.compress(b'{"index": [1, 2, 3]}')
+    require(
+        audit._archive_findings("c" * 40, ["docs/index.json.gz"], stream) == [],
+        "a gzip-compressed single stream was reported as an unsafe archive",
+    )
+    buffer = io.BytesIO()
+    with tarfile.open(fileobj=buffer, mode="w:gz") as archive:
+        info = tarfile.TarInfo(name="../escape.txt")
+        payload = b"escape"
+        info.size = len(payload)
+        archive.addfile(info, io.BytesIO(payload))
+    findings = audit._archive_findings("d" * 40, ["docs/bundle.tar.gz"], buffer.getvalue())
+    require(
+        findings and "unsafe_member_name" in findings[0]["member_finding_kinds"],
+        "a traversal member inside a real tar archive was not reported",
+    )
+    require(
+        audit._archive_findings("e" * 40, ["docs/broken.gz"], b"\x1f\x8bnot-a-stream")
+        and audit._archive_findings("e" * 40, ["docs/broken.gz"], b"\x1f\x8bnot-a-stream")[0][
+            "member_finding_kinds"
+        ]
+        == ["archive_parse_failure"],
+        "a corrupt compressed stream lost its parse-failure finding",
+    )
+
+
 def audit_consumer_errors(report: dict[str, object]) -> list[str]:
     """Import the evidence consumer without running the repository-wide scan."""
     import test_reachable_release_history as consumer
@@ -558,6 +747,11 @@ if __name__ == "__main__":
     test_secret_finding_is_redacted()
     test_token_families_are_detected_and_redacted()
     test_non_atomic_audit_requires_an_explicit_current_release_block()
+    test_oversized_blobs_are_reported_never_gated()
+    test_exposure_is_object_level_not_path_level()
+    test_declared_fixture_paths_and_reviewed_paths_are_accepted()
+    test_synthetic_secret_fingerprint_is_accepted_but_undeclared_secret_blocks()
+    test_single_compressed_stream_is_not_an_archive()
     posture = execution_posture(WORKFLOW.read_text(encoding="utf-8"))
     print(
         "test_reachable_release_history_environment: history boundary and redaction fixtures pass "
