@@ -8,22 +8,24 @@
 
 </div>
 
-For every pair of distinct primes, both versions of Erdős Problem #269 are transcendental: the original series, in which a reciprocal is repeated at every smooth integer, and the de-duplicated series, in which each running least common multiple contributes once. Ordering the two pure-power channels gives a Beatty word and reduces both sums to a Hecke–Mahler value. The proof uses the theorem of Loxton and van der Poorten in the modern form stated by Bugeaud and Laurent; it is an argument in this paper, not a Lean formalisation. Steve Fan posted the same reduction and conclusion before the first public release of this manuscript.
+For three pairwise distinct primes $`p,q,r`$ the reciprocal running-LCM kernel $`\operatorname{K}(i,j,k)=1/\operatorname{L}(p^{i}q^{j}r^{k})`$ admits no finite exact separation. For every order $`n`$ there are injective index families $`I,J`$ whose minor $`\det(\operatorname{K}(I(a),J(b),k))_{0\le a,b<n}`$ is nonzero simultaneously in every layer $`k`$, and consequently for no finite $`d`$ do there exist rational-valued $`f_\ell(i)`$ and $`G_\ell(j,k)`$ with $`\operatorname{K}(i,j,k)=\sum_{\ell<d}f_\ell(i)G_\ell(j,k)`$ for all $`i,j,k`$. Both halves are checked by the Lean kernel at the pinned source revision 4ab50e144847, from the hypotheses that $`p,q,r`$ are prime with $`p\ne r`$ and $`q\ne r`$, and the index construction runs on a Mathlib-only staircase engine for two rotations without integer returns. Steve Fan recorded the qualitative obstruction for $`|P|\ge3`$ in a comment of 26 June 2026, and the running-LCM identity for every $`k`$ is his. The theorem excludes a class of representations of the kernel and settles no instance of the problem.
 
-For three pairwise distinct primes $`p,q,r`$, we prove exact structure rather than irrationality. If $`\operatorname{L}(x)`$ is the least common multiple of the $`\{p,q,r\}`$-smooth numbers not exceeding $`x`$, then
+If $`\operatorname{L}(x)`$ is the least common multiple of the $`\{p,q,r\}`$-smooth numbers not exceeding $`x`$, then
 ``` math
 \operatorname{L}(x)=p^{\lfloor\log_p x\rfloor}
              q^{\lfloor\log_q x\rfloor}
              r^{\lfloor\log_r x\rfloor}.
 ```
-This identity gives the logarithmic cells, jump ratios, finite height-fibre normal form, and a quadratic bound for short smooth shells. The reciprocal kernel is not finitely separable: for every order there is a nonsingular minor, uniformly in the third coordinate.
+This identity gives the logarithmic cells, jump ratios, finite height-fibre normal form, and a quadratic bound for short smooth shells. For $`\{2,3,5\}`$, grouping jumps between consecutive powers of two produces the exact radix alphabet $`\{2,6,10,30\}`$. The literal shell tail satisfies an affine recurrence. Rationality places all of its normalised states on one rational lattice and forces a collision modulo one, and the integral branch is upward closed and rigid inside anchor intervals of subexponential width. The actual tail admits a quadratic bound in its logarithmic rank: if $`n_a=\lfloor\log_2(2^a)\rfloor+\lfloor\log_3(2^a)\rfloor+
+\lfloor\log_5(2^a)\rfloor`$, then $`X_a\le(n_a^2+8n_a+18)/9`$. These results identify the hard branch and do not exclude it.
 
-For $`\{2,3,5\}`$, grouping jumps between consecutive powers of two produces the exact radix alphabet $`\{2,6,10,30\}`$. The literal shell tail satisfies an affine recurrence. Rationality places all of its normalised states on one rational lattice, while the integral branch is upward closed and rigid inside anchor intervals of subexponential width. These results identify the hard branch but do not exclude it.
+Two further theorems are proved in the private formal source and in the Palomar cut. They are pinned here by coordinate, because the formal-source checkpoint 4ab50e144847 of this release predates both modules. The rationality-to-carry bridge gives, from a rational value with denominator $`q=2^{\alpha}3^{\beta}5^{\gamma}B`$ and $`\gcd(B,30)=1`$, an integral reduced carry from the explicit onset $`a_0=\alpha+1+2\beta+3\gamma`$, satisfying the actual recurrence with $`0<d_a\le 90B(a+1)^2`$ (`ErdosProblems/Erdos269/RationalityCarryBridge.lean:324`). The window-escape equivalence proves that the cofinal local-window escape condition of <a href="#eq:actual-escape" data-reference-type="eqref" data-reference="eq:actual-escape">[eq:actual-escape]</a> is equivalent to irrationality of the series, for every short bound dominated by $`c(B)(n+1)^2`$ (`ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:398`). That condition is therefore a restatement of the problem. The equivalence proves neither of its two sides. Both modules enter the linked source of this manuscript at the next formal-source checkpoint.
 
-The actual tail admits a quadratic bound in its logarithmic rank: if $`n_a=\lfloor\log_2(2^a)\rfloor+\lfloor\log_3(2^a)\rfloor+
-\lfloor\log_5(2^a)\rfloor`$, then $`X_a\le(n_a^2+8n_a+18)/9`$. This supplies the bound required by the carry argument. Rationality would therefore give a positive integral reduced carry, after cancellation of the smooth denominator factor. A denominator-dependent cofinal residue-window escape would contradict it. The actual-tail bridge is a paper proof; the finite residue contradiction and common-factor cancellation are checked in Lean. A reproducible integer scan finds an escaping window of length at most $`18`$ for each of $`106{,}666`$ tested denominator/start pairs.
+A lattice certificate at window length $`128`$ and launch $`a_1=10005`$ excludes every rational value whose reduced denominator is $`MB`$ with $`M`$ a $`30`$-smooth divisor of $`2^{10005}3^{6312}5^{4308}`$, $`\gcd(B,30)=1`$ and $`1<B\le1.1346\times10^{105}`$. The exclusion index is certified $`J=1`$ from a reduced basis lying inside the budget. This is a finite computation with a replayable receipt, and no Lean declaration carries any part of it.
 
-The three-prime problem remains open. This criterion now has one unproved input: the actual $`\{2,3,5\}`$ radix and forcing words must satisfy cofinal residue-window escape.
+For every pair of distinct primes both versions of Erdős Problem #269 are transcendental: the original series, in which a reciprocal is repeated at every smooth integer, and the de-duplicated series, in which each running least common multiple contributes once. Ordering the two pure-power channels gives a Beatty word and reduces both sums to a Hecke–Mahler value. The proof uses the theorem of Loxton and van der Poorten in the modern form stated by Bugeaud and Laurent. It is an argument in this paper, and no Lean declaration formalises it. Steve Fan posted the same reduction and the same conclusion on 26 June 2026, before the first public release of this manuscript, so the priority for the two-prime case is his.
+
+The three-prime problem remains open. A reproducible integer scan finds an escaping window of length at most $`18`$ for each of $`106{,}666`$ tested denominator/start pairs, and the unbounded-denominator and cofinal-start quantifiers of <a href="#eq:actual-escape" data-reference-type="eqref" data-reference="eq:actual-escape">[eq:actual-escape]</a> remain unproved.
 
 <div class="center">
 
@@ -31,9 +33,9 @@ The three-prime problem remains open. This criterion now has one unproved input:
 
 ------------------------------------------------------------------------
 
-**Proved cases, new structure, and limit**
+**Leading results, their evidence, and the limit**
 
-**Two primes.** Both versions of the series are transcendental for every pair of distinct primes, by reduction to a Hecke–Mahler value. **Three primes.** This paper proves the exact LCM cell structure and a quadratic bound for the actual $`\{2,3,5\}`$ tail. Together with the ordered-digit identity and smooth-factor cancellation, this reduces irrationality of that instance to the single cofinal residue-window escape condition in <a href="#eq:actual-escape" data-reference-type="eqref" data-reference="eq:actual-escape">[eq:actual-escape]</a>. **Open boundary.** A scan verifies escape only on $`106{,}666`$ finite denominator/start pairs; the required unbounded-denominator and cofinal-start quantifiers remain unproved.
+**Three primes.** The running-LCM kernel admits no finite exact separation: every order has a nonsingular minor, uniformly in the third coordinate. Both halves are checked by the Lean kernel (Section <a href="#sec:lead" data-reference-type="ref" data-reference="sec:lead">2</a>). The exact LCM cell structure, the jump count, the height-fibre normal form, the quadratic shell bound and the quadratic bound for the actual $`\{2,3,5\}`$ tail are proved here as well. **Reduction.** Rationality gives a positive integral reduced carry after cancellation of the smooth denominator factor, and the cofinal residue-window escape condition of <a href="#eq:actual-escape" data-reference-type="eqref" data-reference="eq:actual-escape">[eq:actual-escape]</a> is equivalent to irrationality of the series; the equivalence is kernel-checked in the private formal source and in the Palomar cut, at the coordinates given in Section <a href="#sec:lead" data-reference-type="ref" data-reference="sec:lead">2</a>. **Finite exclusion.** A window-$`128`$ lattice certificate excludes an arithmetically described family of rational values with reduced denominator $`MB`$, $`M`$ a $`30`$-smooth divisor of $`2^{10005}3^{6312}5^{4308}`$ and $`1<B\le1.1346\times10^{105}`$. It is a computational receipt. **Two primes.** Both versions of the series are transcendental for every pair of distinct primes, by reduction to a Hecke–Mahler value. Steve Fan published the same result first. **Open boundary.** Erdős #269 is open for every $`|P|\ge3`$. A scan verifies escape only on $`106{,}666`$ finite denominator/start pairs; the required unbounded-denominator and cofinal-start quantifiers remain unproved.
 
 </div>
 
@@ -53,11 +55,11 @@ In the primary 1988 source, Erdős states the infinite-$`P`$ assertion as a simp
 
 Three things are known and fix the shape of the question. The restriction $`|P|\ge2`$ is necessary: for $`P=\{p\}`$ the enumeration is $`a_n=p^{\,n-1}`$, so $`[a_1,\ldots,a_n]=p^{\,n-1}`$ and the sum is $`p/(p-1)`$, which is rational. For that reason we use the modern restriction $`|P|\ge2`$; the 1974 letter itself writes “given primes $`p_1,\ldots,p_r`$” without explicitly restricting $`r`$. For infinite $`P`$ the sum is always irrational, which Erdős calls a simple exercise \[erdos1988, p. 106\]. And in a letter of 1 January 1973 he recorded that he could prove irrationality once duplicate running-LCM values are removed \[erdos1974letter, p. 335\]; the one-page letter states this result but does not include its proof.
 
-That last remark is the one this note is closest to. The running least common multiple is not injective in $`n`$: it is constant along stretches of the enumeration and changes only at certain points. Removing duplicate summands means summing over the distinct values rather than over $`n`$. Section <a href="#sec:two-prime" data-reference-type="ref" data-reference="sec:two-prime">4</a> proves that both this de-duplicated sum and the original repeated sum are transcendental when $`|P|=2`$, by reducing them to a Hecke–Mahler value whose transcendence goes back to Loxton and van der Poorten \[loxtonvdp1977, Theorem 8\], quoted here in the modern form of Bugeaud and Laurent’s Theorem 1.1 \[bugeaudlaurent2023, p. 61, Theorem 1.1\].
+That last remark is the one this note is closest to. The running least common multiple is not injective in $`n`$: it is constant along stretches of the enumeration and changes only at certain points. Removing duplicate summands means summing over the distinct values rather than over $`n`$. Section <a href="#sec:two-prime" data-reference-type="ref" data-reference="sec:two-prime">5</a> proves that both this de-duplicated sum and the original repeated sum are transcendental when $`|P|=2`$, by reducing them to a Hecke–Mahler value whose transcendence goes back to Loxton and van der Poorten \[loxtonvdp1977, Theorem 8\], quoted here in the modern form of Bugeaud and Laurent’s Theorem 1.1 \[bugeaudlaurent2023, p. 61, Theorem 1.1\].
 
 This is an independent argument, not a recovery of the unprinted argument in the letter, and it is not the first public proof: Steve Fan posted the same factorisation, the same Hecke–Mahler reduction, and the same conclusion in the discussion thread of the problem’s page on 26 June 2026 \[fan2026comment\], with follow-up remarks there extending the argument to arbitrary coprime pairs. This manuscript was first released publicly on 22 July 2026, 26 days later, at commit `a9d3ab8`.
 
-Sections <a href="#sec:cells" data-reference-type="ref" data-reference="sec:cells">3</a> and <a href="#sec:fibre" data-reference-type="ref" data-reference="sec:fibre">5</a> make the finite ingredients of the three-prime reindexing exact: they identify where the value is constant, by exactly what factor it changes when it changes, and give a finite rectangular-box fibre identity. Section <a href="#sec:actual-orbit" data-reference-type="ref" data-reference="sec:actual-orbit">8</a> uses these ingredients to construct the actual infinite shell orbit.
+Sections <a href="#sec:cells" data-reference-type="ref" data-reference="sec:cells">4</a> and <a href="#sec:fibre" data-reference-type="ref" data-reference="sec:fibre">6</a> make the finite ingredients of the three-prime reindexing exact: they identify where the value is constant, by exactly what factor it changes when it changes, and give a finite rectangular-box fibre identity. Section <a href="#sec:actual-orbit" data-reference-type="ref" data-reference="sec:actual-orbit">9</a> uses these ingredients to construct the actual infinite shell orbit.
 
 Throughout, $`p,q,r`$ are pairwise distinct primes, and a *pure power* is a power $`b^{e}`$ of a single base; a *pure $`3`$-power* is a power of $`3`$, and similarly for the other bases. Call $`n`$ *smooth* when $`n=p^{i}q^{j}r^{k}`$ for some $`i,j,k\ge0`$; this is the [smooth lattice value](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L32).
 
@@ -76,19 +78,19 @@ For $`b\in\{p,q,r\}`$ we call the set of positive powers of $`b`$ the *$`b`$-cha
 
 Here “smooth” always means supported on the fixed prime set $`\{p,q,r\}`$. It is not the varying-bound notion counted by $`\Psi(x,y)`$ in the Dickman–Hildebrand theory \[hildebrand1986, Theorem 1\]; no smooth-number density asymptotic is used below. The relevant objects are the exact exponent lattice and its finite shells.
 
-We treat $`|P|=3`$ throughout, writing $`P=\{p,q,r\}`$, and the smallest instance is $`\{2,3,5\}`$. Theorem <a href="#res:dyadic-alphabet" data-reference-type="ref" data-reference="res:dyadic-alphabet">19</a> determines exactly the alphabet of the dyadic compression of the *jump word*, that is, of the sequence of prime multipliers of $`\operatorname{L}`$ read in increasing order of the points where $`\operatorname{L}`$ increases (Section <a href="#sec:cells" data-reference-type="ref" data-reference="sec:cells">3</a>): the radix $`\beta_a`$ of the block between $`2^{a}`$ and $`2^{a+1}`$, meaning the product of the multipliers that occur in that block, takes one of the four values $`2`$, $`6`$, $`10`$, $`30`$ and no others.
+We treat $`|P|=3`$ throughout, writing $`P=\{p,q,r\}`$, and the smallest instance is $`\{2,3,5\}`$. Theorem <a href="#res:dyadic-alphabet" data-reference-type="ref" data-reference="res:dyadic-alphabet">23</a> determines exactly the alphabet of the dyadic compression of the *jump word*, that is, of the sequence of prime multipliers of $`\operatorname{L}`$ read in increasing order of the points where $`\operatorname{L}`$ increases (Section <a href="#sec:cells" data-reference-type="ref" data-reference="sec:cells">4</a>): the radix $`\beta_a`$ of the block between $`2^{a}`$ and $`2^{a+1}`$, meaning the product of the multipliers that occur in that block, takes one of the four values $`2`$, $`6`$, $`10`$, $`30`$ and no others.
 
-Theorem <a href="#res:rank" data-reference-type="ref" data-reference="res:rank">12</a> shows that the smallest two-by-two restriction of the kernel at $`\{2,3,5\}`$ has determinant $`-1/15`$ and hence rank two. Theorem <a href="#res:infinite-rank" data-reference-type="ref" data-reference="res:infinite-rank">13</a> gives the full statement: nonsingular minors exist in every order, uniformly in the remaining coordinate, and every finite exact separation $`\sum_{\ell<d}f_\ell(i)G_\ell(j,k)`$ is impossible. The mechanism is a small computation: $`\operatorname{H}(6)=4\cdot3\cdot5=60`$ and not $`6`$, because the running least common multiple at a smooth cutoff already sees powers of the other primes that the cutoff itself does not contain.
+Theorem <a href="#res:rank" data-reference-type="ref" data-reference="res:rank">16</a> shows that the smallest two-by-two restriction of the kernel at $`\{2,3,5\}`$ has determinant $`-1/15`$ and hence rank two. Theorem <a href="#res:infinite-rank" data-reference-type="ref" data-reference="res:infinite-rank">17</a> gives the full statement: nonsingular minors exist in every order, uniformly in the remaining coordinate, and every finite exact separation $`\sum_{\ell<d}f_\ell(i)G_\ell(j,k)`$ is impossible. The mechanism is a small computation: $`\operatorname{H}(6)=4\cdot3\cdot5=60`$ and not $`6`$, because the running least common multiple at a smooth cutoff already sees powers of the other primes that the cutoff itself does not contain.
 
-The two-prime proof of Section <a href="#sec:two-prime" data-reference-type="ref" data-reference="sec:two-prime">4</a> does not require such a separation.
+The two-prime proof of Section <a href="#sec:two-prime" data-reference-type="ref" data-reference="sec:two-prime">5</a> does not require such a separation.
 
-The identification $`\operatorname{L}(x)=\operatorname{H}(x)`$ of Theorem <a href="#res:lcm" data-reference-type="ref" data-reference="res:lcm">1</a> is what makes every statement about $`\operatorname{L}`$ below computable from three integer logarithms. In the unrestricted case that identification follows by iterating the prime-exponent maximum rule for least common multiples: $`\operatorname{lcm}(1,\ldots,N)=\prod_{t\le N}t^{\lfloor\log_t N\rfloor}`$, the product being over the primes $`t\le N`$ \[apostol1976, Ex. 1.21(a), p. 22\]. Chebyshev’s function is the corresponding prime-power sum, so equivalently $`\log\operatorname{lcm}(1,\ldots,N)=\psi(N)`$  \[apostol1976, §4.2, p. 75\]; Montgomery–Vaughan state this exact identity directly in Exercise 6.2.7 \[montgomeryvaughan2007, p. 183\]. We record the $`P`$-restricted form because every later statement in the formal development is derived from it.
+The identification $`\operatorname{L}(x)=\operatorname{H}(x)`$ of Theorem <a href="#res:lcm" data-reference-type="ref" data-reference="res:lcm">5</a> is what makes every statement about $`\operatorname{L}`$ below computable from three integer logarithms. In the unrestricted case that identification follows by iterating the prime-exponent maximum rule for least common multiples: $`\operatorname{lcm}(1,\ldots,N)=\prod_{t\le N}t^{\lfloor\log_t N\rfloor}`$, the product being over the primes $`t\le N`$ \[apostol1976, Ex. 1.21(a), p. 22\]. Chebyshev’s function is the corresponding prime-power sum, so equivalently $`\log\operatorname{lcm}(1,\ldots,N)=\psi(N)`$  \[apostol1976, §4.2, p. 75\]; Montgomery–Vaughan state this exact identity directly in Exercise 6.2.7 \[montgomeryvaughan2007, p. 183\]. We record the $`P`$-restricted form because every later statement in the formal development is derived from it.
 
-The line of argument developed below has four stages. First, identify $`\operatorname{L}`$ exactly as a product of three pure powers, so that every later statement is a statement about three integer logarithms. Second, compress its jump word into dyadic blocks, whose radix takes only the four values of Theorem <a href="#res:dyadic-alphabet" data-reference-type="ref" data-reference="res:dyadic-alphabet">19</a>.
+The line of argument developed below has four stages. First, identify $`\operatorname{L}`$ exactly as a product of three pure powers, so that every later statement is a statement about three integer logarithms. Second, compress its jump word into dyadic blocks, whose radix takes only the four values of Theorem <a href="#res:dyadic-alphabet" data-reference-type="ref" data-reference="res:dyadic-alphabet">23</a>.
 
-Third, assume the sum rational with reduced denominator $`D`$, factor $`D=D_{\mathrm{sm}}B`$ where every prime divisor of $`D_{\mathrm{sm}}`$ lies in $`\{2,3,5\}`$ and $`\gcd(B,30)=1`$, prove that the integral carry states, the integers the argument tracks from step to step (Section <a href="#sec:escape" data-reference-type="ref" data-reference="sec:escape">9</a>), share the factor $`D_{\mathrm{sm}}`$, cancel it, and obtain a positive reduced carry $`d_n`$ bounded by a denominator-dependent $`K(B,n)`$ and satisfying $`d_{n+1}=b_nd_n-Bm_n`$. Fourth, find a stretch of consecutive steps over which the accumulated base and forcing put the residue of that carry above the bound, which is impossible.
+Third, assume the sum rational with reduced denominator $`D`$, factor $`D=D_{\mathrm{sm}}B`$ where every prime divisor of $`D_{\mathrm{sm}}`$ lies in $`\{2,3,5\}`$ and $`\gcd(B,30)=1`$, prove that the integral carry states, the integers the argument tracks from step to step (Section <a href="#sec:escape" data-reference-type="ref" data-reference="sec:escape">10</a>), share the factor $`D_{\mathrm{sm}}`$, cancel it, and obtain a positive reduced carry $`d_n`$ bounded by a denominator-dependent $`K(B,n)`$ and satisfying $`d_{n+1}=b_nd_n-Bm_n`$. Fourth, find a stretch of consecutive steps over which the accumulated base and forcing put the residue of that carry above the bound, which is impossible.
 
-The first two stages and the finite core of the fourth are proved and formalised here. The algebraic absorption-and-cancellation core of the third stage is also checked. The actual rationality-to-carry instantiation, including eventual divisibility by $`D_{\mathrm{sm}}`$, is proved in this paper in Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">17</a>, but is not yet formalised. The quadratic bound is proved in Theorem <a href="#res:actual-tail-bound" data-reference-type="ref" data-reference="res:actual-tail-bound">16</a>. The cofinal existence of windows in the fourth stage is the remaining hypothesis of the sufficient criterion in Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">10</a>. The third and fourth stages follow a pattern standard in irrationality proofs; what is specific here is that the radix word driving the carry is the block alphabet of Theorem <a href="#res:dyadic-alphabet" data-reference-type="ref" data-reference="res:dyadic-alphabet">19</a>.
+The first two stages and the finite core of the fourth are proved and formalised here. The algebraic absorption-and-cancellation core of the third stage is also checked. The actual rationality-to-carry instantiation, including eventual divisibility by $`D_{\mathrm{sm}}`$, is proved in this paper in Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">21</a>, but is not yet formalised. The quadratic bound is proved in Theorem <a href="#res:actual-tail-bound" data-reference-type="ref" data-reference="res:actual-tail-bound">20</a>. The cofinal existence of windows in the fourth stage is the remaining hypothesis of the sufficient criterion in Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">11</a>. The third and fourth stages follow a pattern standard in irrationality proofs; what is specific here is that the radix word driving the carry is the block alphabet of Theorem <a href="#res:dyadic-alphabet" data-reference-type="ref" data-reference="res:dyadic-alphabet">23</a>.
 
 The statement of Problem #269 has been formalised before, as a conjecture with an unfilled proof, in the *Formal Conjectures* collection \[formalconjectures269\]. That is a formal statement of the question up to a harmless rational normalisation: its Nat-indexed series includes the empty-prefix least-common-multiple term. Its rational, irrational, and infinite-prime assertions all end in `sorry`. The declarations described below are propositions about the objects the question is posed over. Kovač and Tao \[kovactao2024\] treat several irrationality problems of Erdős for series of unit fractions by elementary means; nothing from that work is used here.
 
@@ -106,9 +108,92 @@ The two transcendence theorems are arguments in this paper using the cited Bugea
 
 ## Structure
 
-Section <a href="#sec:lcm" data-reference-type="ref" data-reference="sec:lcm">2</a> identifies the running value. Section <a href="#sec:cells" data-reference-type="ref" data-reference="sec:cells">3</a> develops its jump structure, and Section <a href="#sec:two-prime" data-reference-type="ref" data-reference="sec:two-prime">4</a> uses that structure to prove transcendence of both two-prime sums. Section <a href="#sec:fibre" data-reference-type="ref" data-reference="sec:fibre">5</a> gives the finite three-prime normal form, Section <a href="#sec:shell" data-reference-type="ref" data-reference="sec:shell">6</a> bounds fibre multiplicity, and Section <a href="#sec:rank" data-reference-type="ref" data-reference="sec:rank">7</a> proves arbitrary-order non-separability of the kernel. Section <a href="#sec:actual-orbit" data-reference-type="ref" data-reference="sec:actual-orbit">8</a> constructs the actual infinite shell orbit, derives the all-scale rationality lattice, and analyses its integral branch. Section <a href="#sec:escape" data-reference-type="ref" data-reference="sec:escape">9</a> determines the block alphabet, proves the conditional contradiction, and states the remaining unproved hypothesis. Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">10</a> collects the questions that remain. Linked phrases open the corresponding Lean declaration at the pinned source revision 4ab50e144847. The two transcendence theorems use the cited external theorem; arbitrary-order non-separability and the actual shell-orbit results are also paper proofs, not Lean-formalised endpoints.
+Section <a href="#sec:lcm" data-reference-type="ref" data-reference="sec:lcm">3</a> identifies the running value. Section <a href="#sec:cells" data-reference-type="ref" data-reference="sec:cells">4</a> develops its jump structure, and Section <a href="#sec:two-prime" data-reference-type="ref" data-reference="sec:two-prime">5</a> uses that structure to prove transcendence of both two-prime sums. Section <a href="#sec:fibre" data-reference-type="ref" data-reference="sec:fibre">6</a> gives the finite three-prime normal form, Section <a href="#sec:shell" data-reference-type="ref" data-reference="sec:shell">7</a> bounds fibre multiplicity, and Section <a href="#sec:rank" data-reference-type="ref" data-reference="sec:rank">8</a> proves arbitrary-order non-separability of the kernel. Section <a href="#sec:actual-orbit" data-reference-type="ref" data-reference="sec:actual-orbit">9</a> constructs the actual infinite shell orbit, derives the all-scale rationality lattice, and analyses its integral branch. Section <a href="#sec:escape" data-reference-type="ref" data-reference="sec:escape">10</a> determines the block alphabet, proves the conditional contradiction, and states the remaining unproved hypothesis. Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">11</a> collects the questions that remain. Linked phrases open the corresponding Lean declaration at the pinned source revision 4ab50e144847. Section <a href="#sec:lead" data-reference-type="ref" data-reference="sec:lead">2</a> states the four leading results first, each with its hypotheses, the evidence class of each part, and the obligation that remains; a reader who wants the strongest content of this note can stop after it. The two transcendence theorems rest on the cited external theorem and carry no Lean declaration. Arbitrary-order non-separability and the actual shell-orbit dichotomy are proved in this paper and are also checked by the Lean kernel at the pinned revision.
 
 **Keywords.** irrationality; least common multiple; smooth numbers; lattice sums; Lean 4. **MSC 2020.** 11J72 (primary); 11A05, 11N25, 68V20 (secondary).
+
+<a id="sec:lead"></a>
+
+# The leading results
+
+This section states the results this note leads with. Each entry carries its hypotheses, the evidence class of each part of it, the attribution where prior art applies, and the exact obligation that remains. Full statements and proofs appear in the sections named against each entry.
+
+<a id="the-three-prime-kernel-has-no-finite-exact-separation"></a>
+
+## 1. The three-prime kernel has no finite exact separation
+
+<div id="res:lead-infinite-rank" class="theorem">
+
+**Theorem 1** (no finite separation, restated). *Let $`p,q,r`$ be primes with $`p\ne q`$, $`p\ne r`$ and $`q\ne r`$, and put $`\operatorname{K}(i,j,k)=1/\operatorname{L}(p^iq^jr^k)`$. For every $`n\ge0`$ there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$ such that
+``` math
+\det\bigl(\operatorname{K}(I(a),J(b),k)\bigr)_{0\le a,b<n}\ne0
+ \qquad\hbox{for every }k\ge0 .
+```
+Consequently, for no finite $`d`$ do there exist rational-valued functions $`f_\ell(i)`$ and $`G_\ell(j,k)`$, $`0\le\ell<d`$, with $`\operatorname{K}(i,j,k)=\sum_{\ell<d}f_\ell(i)G_\ell(j,k)`$ for all $`i,j,k`$.*
+
+</div>
+
+This is Theorem <a href="#res:infinite-rank" data-reference-type="ref" data-reference="res:infinite-rank">17</a>, proved in Section <a href="#sec:rank" data-reference-type="ref" data-reference="sec:rank">8</a>.
+
+*Evidence.* Both conjuncts are checked by the Lean kernel at the pinned revision 4ab50e144847. The uniform minor family is [checked](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/KernelCarryRank.lean#L376) and the exclusion of every finite separation is [checked](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/KernelCarryRank.lean#L388); the Lean forms assume $`p`$, $`q`$ and $`r`$ prime with $`p\ne r`$ and $`q\ne r`$, and they do not use $`p\ne q`$. The dense-rotation construction is discharged by the problem-neutral staircase engine [exists_staircase_indices](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Shared/IrrationalRotationStaircase.lean#L271), which realises the full $`n\times n`$ staircase pattern from two rotations without integer returns and depends on Mathlib only. The smallest visible witness, the $`\{2,3,5\}`$ minor $`-1/15`$, is [checked](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L904).
+
+*Attribution.* Steve Fan recorded the qualitative obstruction for $`|P|\ge3`$ in his comment of 26 June 2026 \[fan2026comment\], observing that the two-prime argument does not seem to generalise immediately. The quantitative form above, its uniformity in the third coordinate, and its formalisation are proved here. The running-LCM identity of Theorem <a href="#res:lcm" data-reference-type="ref" data-reference="res:lcm">5</a> is stated by Fan for every $`k`$ and is cited to him.
+
+*Remaining obligation.* The theorem excludes exact separations of the displayed finite-sum form. It is not an independence, irrationality or transcendence statement, and it settles no instance of Erdős #269.
+
+<a id="the-escape-condition-is-a-restatement-of-the-problem"></a>
+
+## 2. The escape condition is a restatement of the problem
+
+Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">11</a> states the cofinal local-window escape condition <a href="#eq:actual-escape" data-reference-type="eqref" data-reference="eq:actual-escape">[eq:actual-escape]</a>, and Theorem <a href="#res:actual-escape-endpoint" data-reference-type="ref" data-reference="res:actual-escape-endpoint">30</a> proves that the condition implies irrationality of the repeated $`\{2,3,5\}`$ series. The converse holds as well.
+
+<div id="res:lead-escape-equivalence" class="theorem">
+
+**Theorem 2** (window-escape equivalence, pinned by coordinate). *For the actual $`\{2,3,5\}`$ radix word $`\beta_a`$ and ordered digit word $`m_a^{235}`$, the cofinal local-window escape condition is equivalent to irrationality of the running-LCM series value, and the equivalence holds for every short bound $`sb`$ satisfying $`sb(B,n)\le c(B)(n+1)^2`$.*
+
+</div>
+
+*Evidence.* The forward implication is Theorem <a href="#res:actual-escape-endpoint" data-reference-type="ref" data-reference="res:actual-escape-endpoint">30</a>, an ordinary proof in this paper whose finite residue step is checked in Lean. The converse and the equivalence are checked by the Lean kernel in the private formal source and in the Palomar cut, as `actualCofinalLocalWindowEscape_iff_irrational_value` at `ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:398`, with the tail form `actualCofinalLocalWindowEscape_iff` at `:392` and the converse `cofinalLocalWindowEscape_of_irrational` at `:379`. That module is absent from the formal-source checkpoint 4ab50e144847 pinned by this manuscript, so no linked declaration is offered for it here, and it enters the linked source at the next checkpoint.
+
+*Remaining obligation.* The equivalence proves neither of its two sides. Problem <a href="#prob:producer" data-reference-type="ref" data-reference="prob:producer">29</a> is a restatement of Erdős #269 for $`P=\{2,3,5\}`$, so work on that condition is work on the target. One corollary is available to the reader now: no sharpening of the short bound below $`c(B)(n+1)^2`$ makes the producer weaker than the problem itself.
+
+<a id="rationality-forces-an-integral-reduced-carry-from-an-explicit-onset"></a>
+
+## 3. Rationality forces an integral reduced carry from an explicit onset
+
+<div id="res:lead-carry-bridge" class="theorem">
+
+**Theorem 3** (rationality-to-carry bridge, pinned by coordinate). *Suppose the shell tail value equals $`p/q`$ with $`q>0`$, and write $`q=2^{\alpha}3^{\beta}5^{\gamma}B`$ with $`\gcd(B,30)=1`$. Then from the onset $`a_0=\alpha+1+2\beta+3\gamma`$ the reduced states $`d_a=qX_a/(2^{\alpha}3^{\beta}5^{\gamma})`$ are integers satisfying $`d_{a+1}=\beta_a d_a-Bm_a^{235}`$, with $`0<d_a`$ and $`d_a\le 90B(a+1)^2`$.*
+
+</div>
+
+*Evidence.* Checked by the Lean kernel as `exists_reducedCarry_of_value_eq_rat` at `ErdosProblems/Erdos269/RationalityCarryBridge.lean:324`, in the private formal source and in the Palomar cut. Corollary <a href="#res:actual-carry-bound" data-reference-type="ref" data-reference="res:actual-carry-bound">27</a> below is the paper form of the same bridge. The Lean width $`90B(n+1)^2`$ is about two orders of magnitude cruder than the $`K^{235}(B,a)`$ of Section <a href="#sec:escape" data-reference-type="ref" data-reference="sec:escape">10</a>. The module is absent from the checkpoint pinned here.
+
+*Remaining obligation.* Under Theorem <a href="#res:lead-escape-equivalence" data-reference-type="ref" data-reference="res:lead-escape-equivalence">2</a> the producer this bridge consumes is the target itself, so the bridge reduces Erdős #269 to Erdős #269. What it contributes is the explicit onset and the explicit integral recurrence, which are the objects a finite certificate can attack.
+
+<a id="a-certified-exclusion-of-an-arithmetic-family-of-rational-values"></a>
+
+## 4. A certified exclusion of an arithmetic family of rational values
+
+<div id="res:lead-block-exclusion" class="theorem">
+
+**Theorem 4** (window-$`128`$ block exclusion, computational certificate). *At window length $`L=128`$, launch $`a_1=10005`$ and $`64`$ starts, no rational value of the $`\{2,3,5\}`$ running-LCM series has reduced denominator $`MB`$ with $`M`$ a $`30`$-smooth divisor of $`2^{10005}3^{6312}5^{4308}`$, $`\gcd(B,30)=1`$ and $`1<B\le B_{\max}`$, where $`B_{\max}`$ is the $`106`$-digit integer
+``` math
+B_{\max}=1134599670999687767349520845707093359257353022286558739363600235016103207564063373270305324172145281971729 ,
+```
+with $`\log_2B_{\max}=348.98`$.*
+
+</div>
+
+*Evidence.* This is a computational certificate and nothing else. The recorded quantities are the window product with $`\log_2P=386.41`$, the exclusion index $`J=1`$ certified from a reduced basis lying inside the per-start budget, an enclosure of width $`9.674\times10^{-227}`$, and a maximum ratio $`\max X/W=0.18600`$; the receipt records every check passed and no failure. No Lean declaration carries any part of the statement, so it rests on the correctness of the exact integer engine that produced the receipt.
+
+*Remaining obligation.* The exclusion is finite in $`B`$ and fixed in $`M`$. Every larger $`B`$ survives it, so it settles no instance of the problem. A separate continued-fraction receipt excludes every denominator below $`2^{22482}`$, about $`10^{6768}`$, from $`13{,}109`$ certified partial quotients; the two exclusions have different shapes and neither contains the other.
+
+<a id="two-primes-and-where-the-priority-sits"></a>
+
+## Two primes, and where the priority sits
+
+Section <a href="#sec:two-prime" data-reference-type="ref" data-reference="sec:two-prime">5</a> proves that both versions of the series are transcendental for every pair of distinct primes. Steve Fan posted the same factorisation, the same Hecke–Mahler reduction and the same conclusion on 26 June 2026 \[fan2026comment\], before the first public release of this manuscript. The priority for the two-prime case is his. The material is retained here because it fixes the $`|P|=2`$ boundary of the problem.
 
 <a id="sec:lcm"></a>
 
@@ -120,7 +205,7 @@ The identification below is routine, and its unrestricted analogue is classical,
 
 <div id="res:lcm" class="theorem">
 
-**Theorem 1** (the running least common multiple). *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
+**Theorem 5** (the running least common multiple). *Let $`p,q,r`$ be pairwise distinct primes and $`x\ge1`$. Then $`\operatorname{L}(x)=\operatorname{H}(x)`$.*
 
 </div>
 
@@ -142,11 +227,11 @@ x&1&2&3&4&5&6&7&8&9&10\\ \hline
 \operatorname{L}(x)&1&2&6&12&60&60&60&120&360&360
 \end{array}
 ```
-So $`\operatorname{L}(10)=8\cdot9\cdot5=360`$, which is indeed the least common multiple of the smooth numbers $`1,2,3,4,5,6,8,9,10`$, and $`\operatorname{L}(6)=4\cdot3\cdot5=60`$ rather than $`6`$: the running value at a smooth cutoff already contains powers of the other two primes that the cutoff itself does not. These ten values also illustrate two of the statements of Section <a href="#sec:cells" data-reference-type="ref" data-reference="sec:cells">3</a>, since the value is constant on $`\{5,6,7\}`$ and on $`\{9,10\}`$, and each change multiplies by a single prime, by $`2`$ at $`x=2,4,8`$, by $`3`$ at $`x=3,9`$, and by $`5`$ at $`x=5`$.
+So $`\operatorname{L}(10)=8\cdot9\cdot5=360`$, which is indeed the least common multiple of the smooth numbers $`1,2,3,4,5,6,8,9,10`$, and $`\operatorname{L}(6)=4\cdot3\cdot5=60`$ rather than $`6`$: the running value at a smooth cutoff already contains powers of the other two primes that the cutoff itself does not. These ten values also illustrate two of the statements of Section <a href="#sec:cells" data-reference-type="ref" data-reference="sec:cells">4</a>, since the value is constant on $`\{5,6,7\}`$ and on $`\{9,10\}`$, and each change multiplies by a single prime, by $`2`$ at $`x=2,4,8`$, by $`3`$ at $`x=3,9`$, and by $`5`$ at $`x=5`$.
 
 <div id="res:cube" class="proposition">
 
-**Proposition 2**. *For every $`x\ge1`$, $`\operatorname{H}(x)\le x^{3}`$.*
+**Proposition 6**. *For every $`x\ge1`$, $`\operatorname{H}(x)\le x^{3}`$.*
 
 </div>
 
@@ -162,19 +247,19 @@ Formalised as the [cubic majorant](https://github.com/wcook04/plectis-erdos/blob
 
 # Constancy on logarithmic cells and the jump points
 
-By Theorem <a href="#res:lcm" data-reference-type="ref" data-reference="res:lcm">1</a> the running value depends on $`x`$ only through the three integer logarithms. It is therefore constant wherever none of them changes and moves only where one of them does, and the next definition names the sets on which they are all constant, so that the next two theorems can say where the value stands still and by what factor it moves.
+By Theorem <a href="#res:lcm" data-reference-type="ref" data-reference="res:lcm">5</a> the running value depends on $`x`$ only through the three integer logarithms. It is therefore constant wherever none of them changes and moves only where one of them does, and the next definition names the sets on which they are all constant, so that the next two theorems can say where the value stands still and by what factor it moves.
 
 Say that $`x`$ and $`y`$ lie in the same *logarithmic cell* when $`\lfloor\log_b x\rfloor=\lfloor\log_b y\rfloor`$ for each of $`b=p,q,r`$: the [cell relation](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L164).
 
 <div id="res:cell" class="theorem">
 
-**Theorem 3** (constancy on cells). *If $`x,y\ge1`$ lie in the same logarithmic cell, then $`\operatorname{L}(x)=\operatorname{L}(y)`$. The same holds for the kernel at two smooth points whose values lie in one cell.*
+**Theorem 7** (constancy on cells). *If $`x,y\ge1`$ lie in the same logarithmic cell, then $`\operatorname{L}(x)=\operatorname{L}(y)`$. The same holds for the kernel at two smooth points whose values lie in one cell.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* Immediate from Theorem <a href="#res:lcm" data-reference-type="ref" data-reference="res:lcm">1</a>, since $`\operatorname{H}`$ depends on $`x`$ only through the three integer logarithms. ◻
+*Proof.* Immediate from Theorem <a href="#res:lcm" data-reference-type="ref" data-reference="res:lcm">5</a>, since $`\operatorname{H}`$ depends on $`x`$ only through the three integer logarithms. ◻
 
 </div>
 
@@ -182,13 +267,13 @@ Formalised as the [cell constancy of the running value](https://github.com/wcook
 
 <div id="res:jump" class="theorem">
 
-**Theorem 4** (single-coordinate jump ratios). *Let $`x,y\ge1`$. If $`\lfloor\log_p y\rfloor=\lfloor\log_p x\rfloor+1`$ while the other two logarithms agree, then $`\operatorname{L}(y)=p\,\operatorname{L}(x)`$; and similarly with $`q`$ or $`r`$ in place of $`p`$.*
+**Theorem 8** (single-coordinate jump ratios). *Let $`x,y\ge1`$. If $`\lfloor\log_p y\rfloor=\lfloor\log_p x\rfloor+1`$ while the other two logarithms agree, then $`\operatorname{L}(y)=p\,\operatorname{L}(x)`$; and similarly with $`q`$ or $`r`$ in place of $`p`$.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* By Theorem <a href="#res:lcm" data-reference-type="ref" data-reference="res:lcm">1</a> both sides are heights, and one factor of the height gains one in its exponent while the others are unchanged. ◻
+*Proof.* By Theorem <a href="#res:lcm" data-reference-type="ref" data-reference="res:lcm">5</a> both sides are heights, and one factor of the height gains one in its exponent while the others are unchanged. ◻
 
 </div>
 
@@ -198,7 +283,7 @@ The jump points are therefore the pure prime powers, and they do not collide acr
 
 <div id="res:count" class="theorem">
 
-**Theorem 5** (jump count). *Let $`n\ge0`$. The set of the first $`n`$ positive powers of $`p`$, of $`q`$, and of $`r`$ has exactly $`3n`$ elements, and adjoining the common origin $`1`$ gives exactly $`3n+1`$.*
+**Theorem 9** (jump count). *Let $`n\ge0`$. The set of the first $`n`$ positive powers of $`p`$, of $`q`$, and of $`r`$ has exactly $`3n`$ elements, and adjoining the common origin $`1`$ gives exactly $`3n+1`$.*
 
 </div>
 
@@ -210,11 +295,11 @@ The jump points are therefore the pure prime powers, and they do not collide acr
 
 Formalised as the [positive jump count](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L250) and the [jump count with the origin](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L279), over the [channel cardinality](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L209), the [channel disjointness](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L230), and the [exclusion of the origin](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L220); the channels themselves are the [positive power sets](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L205). The exponent $`0`$ is omitted from each channel because it is the shared initial value, which is why the origin is counted once rather than three times.
 
-Two channels never meet, so at each positive pure power exactly one of the three logarithms advances, and by Theorem <a href="#res:jump" data-reference-type="ref" data-reference="res:jump">4</a> the running value is multiplied there by the prime of that channel. Reading those multipliers in increasing order of the pure powers gives the *jump word* of $`\operatorname{L}`$: one letter from $`\{p,q,r\}`$ for each positive pure power, recording which prime the value is multiplied by at that point. At $`\{2,3,5\}`$ the pure powers in increasing order are $`2,3,4,5,8,9,16,25,27,32,\ldots`$, so the jump word begins
+Two channels never meet, so at each positive pure power exactly one of the three logarithms advances, and by Theorem <a href="#res:jump" data-reference-type="ref" data-reference="res:jump">8</a> the running value is multiplied there by the prime of that channel. Reading those multipliers in increasing order of the pure powers gives the *jump word* of $`\operatorname{L}`$: one letter from $`\{p,q,r\}`$ for each positive pure power, recording which prime the value is multiplied by at that point. At $`\{2,3,5\}`$ the pure powers in increasing order are $`2,3,4,5,8,9,16,25,27,32,\ldots`$, so the jump word begins
 ``` math
 2,\;3,2,\;5,2,\;3,2,\;5,3,2,\;\ldots
 ```
-where the grouping is the one used in Section <a href="#sec:escape" data-reference-type="ref" data-reference="sec:escape">9</a>: each group ends at a power of two.
+where the grouping is the one used in Section <a href="#sec:escape" data-reference-type="ref" data-reference="sec:escape">10</a>: each group ends at a power of two.
 
 <a id="sec:two-prime"></a>
 
@@ -224,7 +309,7 @@ The jump description gives a complete result in rank two. Temporarily let $`P=\{
 ``` math
 L_{p,q}(t)=p^{\lfloor\log_p t\rfloor}q^{\lfloor\log_q t\rfloor}.
 ```
-The argument of Theorem <a href="#res:lcm" data-reference-type="ref" data-reference="res:lcm">1</a>, with one coordinate omitted, identifies this as the running least common multiple of the $`\{p,q\}`$-smooth numbers up to $`t`$. Let
+The argument of Theorem <a href="#res:lcm" data-reference-type="ref" data-reference="res:lcm">5</a>, with one coordinate omitted, identifies this as the running least common multiple of the $`\{p,q\}`$-smooth numbers up to $`t`$. Let
 ``` math
 \mathcal D_{p,q}
  =1+\sum_{t\in\{p,p^2,\ldots\}\cup\{q,q^2,\ldots\}}
@@ -234,7 +319,7 @@ Thus $`\mathcal D_{p,q}`$ retains the initial value and exactly one reciprocal f
 
 <div id="res:two-prime-transcendence" class="theorem">
 
-**Theorem 6** (two-prime de-duplicated transcendence). *For every pair of distinct primes $`p,q`$, the number $`\mathcal D_{p,q}`$ is transcendental.*
+**Theorem 10** (two-prime de-duplicated transcendence). *For every pair of distinct primes $`p,q`$, the number $`\mathcal D_{p,q}`$ is transcendental.*
 
 </div>
 
@@ -300,7 +385,7 @@ The same value also controls the series before repeated running-LCM values are r
 
 <div id="res:two-prime-repeated-transcendence" class="theorem">
 
-**Theorem 7** (two-prime repeated-sum transcendence). *For every pair of distinct primes $`p,q`$, the number $`\mathcal R_{p,q}`$ is transcendental.*
+**Theorem 11** (two-prime repeated-sum transcendence). *For every pair of distinct primes $`p,q`$, the number $`\mathcal R_{p,q}`$ is transcendental.*
 
 </div>
 
@@ -347,7 +432,7 @@ Write $`\mathcal B(h_p,h_q,h_r)`$ for the box of exponent triples with $`i\le h_
 
 <div id="res:fibre" class="theorem">
 
-**Theorem 8** (finite normal form). *For every box $`\mathcal B=\mathcal B(h_p,h_q,h_r)`$,
+**Theorem 12** (finite normal form). *For every box $`\mathcal B=\mathcal B(h_p,h_q,h_r)`$,
 ``` math
 \sum_{(i,j,k)\in\mathcal B}\operatorname{K}(i,j,k)
  =\sum_{H}\frac{\#F(H)}{H},
@@ -371,7 +456,7 @@ p^{i}q^{j}r^{k}&1&2&3&5&6&10&15&30\\ \hline
 \operatorname{H}&1&2&6&60&60&360&360&10800
 \end{array}
 ```
-Six heights occur, two of them twice: the points $`5`$ and $`6`$ share the height $`60`$, and $`10`$ and $`15`$ share the height $`360`$. Theorem <a href="#res:fibre" data-reference-type="ref" data-reference="res:fibre">8</a> here reads
+Six heights occur, two of them twice: the points $`5`$ and $`6`$ share the height $`60`$, and $`10`$ and $`15`$ share the height $`360`$. Theorem <a href="#res:fibre" data-reference-type="ref" data-reference="res:fibre">12</a> here reads
 ``` math
 1+\tfrac12+\tfrac16+\tfrac1{60}+\tfrac1{60}+\tfrac1{360}+\tfrac1{360}
  +\tfrac1{10800}
@@ -380,7 +465,7 @@ Six heights occur, two of them twice: the points $`5`$ and $`6`$ share the heigh
 ```
 The two coefficients $`2`$ carry the whole content of the regrouping on this box; where the heights are pairwise distinct the identity is a relabelling and nothing more.
 
-Together with Theorem <a href="#res:cell" data-reference-type="ref" data-reference="res:cell">3</a> this is the finite core of the ordered prime-power jump expansion: the value is constant on cells, the cells are indexed by heights, and the coefficient of a height is the number of lattice points it collects. The passage to the infinite sum, and the explicit ordering of the pure powers that would make the expansion a series in the jumps, are not proved here. Theorem <a href="#res:fibre" data-reference-type="ref" data-reference="res:fibre">8</a> is an identity between two finite sums, and it is stated over the full box rather than the smooth prefix, so it is not a statement about $`\operatorname{L}`$ at a cutoff.
+Together with Theorem <a href="#res:cell" data-reference-type="ref" data-reference="res:cell">7</a> this is the finite core of the ordered prime-power jump expansion: the value is constant on cells, the cells are indexed by heights, and the coefficient of a height is the number of lattice points it collects. The passage to the infinite sum, and the explicit ordering of the pure powers that would make the expansion a series in the jumps, are not proved here. Theorem <a href="#res:fibre" data-reference-type="ref" data-reference="res:fibre">12</a> is an identity between two finite sums, and it is stated over the full box rather than the smooth prefix, so it is not a statement about $`\operatorname{L}`$ at a cutoff.
 
 The same module records a one-step map $`\tau(b,d,s)=b(s-d)`$, the [variable-base tail step](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L488), with the rewriting [that names its expanded form](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L491). No orbit of this map is analysed.
 
@@ -394,7 +479,7 @@ Informally, the next lemma says that an interval whose right endpoint is at most
 
 <div id="res:short" class="lemma">
 
-**Lemma 9** (uniqueness in a short interval). *Let $`b\ge1`$ and suppose $`\eta\le b\,\lambda`$. If $`b^{a}w`$ and $`b^{a'}w`$ both lie in $`[\lambda,\eta)`$, then $`a=a'`$.*
+**Lemma 13** (uniqueness in a short interval). *Let $`b\ge1`$ and suppose $`\eta\le b\,\lambda`$. If $`b^{a}w`$ and $`b^{a'}w`$ both lie in $`[\lambda,\eta)`$, then $`a=a'`$.*
 
 </div>
 
@@ -408,13 +493,13 @@ Formalised as the [short-interval uniqueness](https://github.com/wcook04/plectis
 
 <div id="res:drop" class="proposition">
 
-**Proposition 10**. *Let $`\mathcal S`$ be the shell of the box $`\mathcal B(h_p,h_q,h_r)`$ in $`[\lambda,\eta)`$. If $`\eta\le r\,\lambda`$ then $`\#\mathcal S\le(h_p+1)(h_q+1)`$; if $`\eta\le p\,\lambda`$ then $`\#\mathcal S\le(h_q+1)(h_r+1)`$.*
+**Proposition 14**. *Let $`\mathcal S`$ be the shell of the box $`\mathcal B(h_p,h_q,h_r)`$ in $`[\lambda,\eta)`$. If $`\eta\le r\,\lambda`$ then $`\#\mathcal S\le(h_p+1)(h_q+1)`$; if $`\eta\le p\,\lambda`$ then $`\#\mathcal S\le(h_q+1)(h_r+1)`$.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* Suppose $`\eta\le r\,\lambda`$. If two triples of $`\mathcal S`$ agree in their first two coordinates, Lemma <a href="#res:short" data-reference-type="ref" data-reference="res:short">9</a> applied with $`b=r`$ and $`w=p^{i}q^{j}`$ forces their third coordinates to agree as well. So the projection forgetting the third coordinate is injective on $`\mathcal S`$, and its image lies in a rectangle with $`(h_p+1)(h_q+1)`$ points. The case $`\eta\le p\,\lambda`$ is the same with the first coordinate projected away. ◻
+*Proof.* Suppose $`\eta\le r\,\lambda`$. If two triples of $`\mathcal S`$ agree in their first two coordinates, Lemma <a href="#res:short" data-reference-type="ref" data-reference="res:short">13</a> applied with $`b=r`$ and $`w=p^{i}q^{j}`$ forces their third coordinates to agree as well. So the projection forgetting the third coordinate is injective on $`\mathcal S`$, and its image lies in a rectangle with $`(h_p+1)(h_q+1)`$ points. The case $`\eta\le p\,\lambda`$ is the same with the first coordinate projected away. ◻
 
 </div>
 
@@ -422,7 +507,7 @@ Formalised as the [third-coordinate projection](https://github.com/wcook04/plect
 
 <div id="res:shell" class="theorem">
 
-**Theorem 11** (quadratic multiplicity bound). *Let $`\mathcal S`$ be the shell of the box $`\mathcal B(h_p,h_q,h_r)`$ in $`[\lambda,\eta)`$. Suppose $`\eta\le r\,\lambda`$ and $`h_p\le h_q\le h_r`$ with $`h_p+h_q+h_r=j`$. Then
+**Theorem 15** (quadratic multiplicity bound). *Let $`\mathcal S`$ be the shell of the box $`\mathcal B(h_p,h_q,h_r)`$ in $`[\lambda,\eta)`$. Suppose $`\eta\le r\,\lambda`$ and $`h_p\le h_q\le h_r`$ with $`h_p+h_q+h_r=j`$. Then
 ``` math
 9\,\#\mathcal S\le(j+3)^{2}.
 ```*
@@ -431,23 +516,23 @@ Formalised as the [third-coordinate projection](https://github.com/wcook04/plect
 
 <div class="proof">
 
-*Proof.* By Proposition <a href="#res:drop" data-reference-type="ref" data-reference="res:drop">10</a>, $`\#\mathcal S\le(h_p+1)(h_q+1)`$; under the sorting hypothesis the two surviving coordinates are the two smallest. It therefore suffices to prove that $`a\le b\le c`$ with $`a+b+c=j`$ gives $`9(a+1)(b+1)\le(j+3)^{2}`$. From $`a\le b\le c`$ we get $`a+2b\le j`$, so it is enough that $`9(a+1)(b+1)\le(a+2b+3)^{2}`$; writing $`b=a+d`$ with $`d\ge0`$, the difference of the two sides is $`d(3a+4d+3)\ge0`$. ◻
+*Proof.* By Proposition <a href="#res:drop" data-reference-type="ref" data-reference="res:drop">14</a>, $`\#\mathcal S\le(h_p+1)(h_q+1)`$; under the sorting hypothesis the two surviving coordinates are the two smallest. It therefore suffices to prove that $`a\le b\le c`$ with $`a+b+c=j`$ gives $`9(a+1)(b+1)\le(j+3)^{2}`$. From $`a\le b\le c`$ we get $`a+2b\le j`$, so it is enough that $`9(a+1)(b+1)\le(a+2b+3)^{2}`$; writing $`b=a+d`$ with $`d\ge0`$, the difference of the two sides is $`d(3a+4d+3)\ge0`$. ◻
 
 </div>
 
 Formalised as the [quadratic shell bound](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L647), over the [sorted quadratic estimate](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L630). The constant $`9`$ is the square of the number of generating primes and appears because the bound is the arithmetic–geometric comparison for a sum of three sorted coordinates; sorting is a hypothesis, not a normalisation, since the shell itself is not symmetric in the three bases. The last inequality of the proof is an equality when $`h_p=h_q=h_r`$, both sides then being $`9(h_p+1)^{2}`$, so no constant larger than $`9`$ survives that step.
 
-The bound is uniform in $`\lambda`$ and $`\eta`$ subject to the width condition, and it is stated for the actual filtered shell rather than for a lattice model of it. It is an input to a tail estimate and is not itself one: no series is bounded here. The estimate is elementary and uses no analytic input on the distribution of smooth numbers, only the projection of Proposition <a href="#res:drop" data-reference-type="ref" data-reference="res:drop">10</a>.
+The bound is uniform in $`\lambda`$ and $`\eta`$ subject to the width condition, and it is stated for the actual filtered shell rather than for a lattice model of it. It is an input to a tail estimate and is not itself one: no series is bounded here. The estimate is elementary and uses no analytic input on the distribution of smooth numbers, only the projection of Proposition <a href="#res:drop" data-reference-type="ref" data-reference="res:drop">14</a>.
 
 <a id="sec:rank"></a>
 
 # Non-separability of the three-prime kernel
 
-One might hope to write the three-prime kernel as $`f(i)g(j)h(k)`$ and so reduce the problem to one-dimensional criteria. Such a factorisation would force the value at $`(1,1,0)`$ to be determined by the values at $`(0,0,0)`$, $`(1,0,0)`$ and $`(0,1,0)`$, since the four values would then satisfy $`\operatorname{K}(0,0,0)\,\operatorname{K}(1,1,0)=\operatorname{K}(1,0,0)\,\operatorname{K}(0,1,0)`$. Theorem <a href="#res:rank" data-reference-type="ref" data-reference="res:rank">12</a> computes those four values at $`\{2,3,5\}`$ and finds that they do not: the failure is exact, and it occurs on the smallest rectangle on which it could occur.
+One might hope to write the three-prime kernel as $`f(i)g(j)h(k)`$ and so reduce the problem to one-dimensional criteria. Such a factorisation would force the value at $`(1,1,0)`$ to be determined by the values at $`(0,0,0)`$, $`(1,0,0)`$ and $`(0,1,0)`$, since the four values would then satisfy $`\operatorname{K}(0,0,0)\,\operatorname{K}(1,1,0)=\operatorname{K}(1,0,0)\,\operatorname{K}(0,1,0)`$. Theorem <a href="#res:rank" data-reference-type="ref" data-reference="res:rank">16</a> computes those four values at $`\{2,3,5\}`$ and finds that they do not: the failure is exact, and it occurs on the smallest rectangle on which it could occur.
 
 <div id="res:rank" class="theorem">
 
-**Theorem 12** (non-separability at $`\{2,3,5\}`$). *With $`(p,q,r)=(2,3,5)`$,
+**Theorem 16** (non-separability at $`\{2,3,5\}`$). *With $`(p,q,r)=(2,3,5)`$,
 ``` math
 \operatorname{K}(0,0,0)\,\operatorname{K}(1,1,0)
  -\operatorname{K}(1,0,0)\,\operatorname{K}(0,1,0)
@@ -469,7 +554,7 @@ A nonzero two-by-two minor rules out writing the kernel as $`f(i)g(j)h(k)`$ on t
 
 <div id="res:infinite-rank" class="theorem">
 
-**Theorem 13** (arbitrary-order non-separability). *Let $`p,q,r`$ be primes with $`p\ne q`$, $`p\ne r`$ and $`q\ne r`$. For every $`n\ge0`$ there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$ such that, for every $`k\ge0`$,
+**Theorem 17** (arbitrary-order non-separability). *Let $`p,q,r`$ be primes with $`p\ne q`$, $`p\ne r`$ and $`q\ne r`$. For every $`n\ge0`$ there are injective maps $`I,J:\{0,\ldots,n-1\}\to\mathbb{N}`$ such that, for every $`k\ge0`$,
 ``` math
 \det\bigl(\operatorname{K}(I(a),J(b),k)\bigr)_{0\le a,b<n}\ne0.
 ```
@@ -498,9 +583,11 @@ The ratios $`\alpha,\beta`$ are irrational: a rational ratio would give an equal
 
 </div>
 
-The exact $`-1/15`$ computation in Theorem <a href="#res:rank" data-reference-type="ref" data-reference="res:rank">12</a> is the smallest visible witness. Theorem <a href="#res:infinite-rank" data-reference-type="ref" data-reference="res:infinite-rank">13</a> excludes every finite exact separation of the displayed form, but it is still not an independence, irrationality or transcendence statement.
+The exact $`-1/15`$ computation in Theorem <a href="#res:rank" data-reference-type="ref" data-reference="res:rank">16</a> is the smallest visible witness. Theorem <a href="#res:infinite-rank" data-reference-type="ref" data-reference="res:infinite-rank">17</a> excludes every finite exact separation of the displayed form, but it is still not an independence, irrationality or transcendence statement.
 
-The linked declarations check the exact running-LCM identity, logarithmic-cell constancy, the $`3n`$ positive-jump count, the finite height-fibre normal form, the quadratic shell-multiplicity bound, the determinant $`-1/15`$. Arbitrary-order non-separability is the paper proof above; no linked Lean declaration currently formalises its dense-rotation construction or its arbitrary-size minors.
+The linked declarations check the exact running-LCM identity, logarithmic-cell constancy, the $`3n`$ positive-jump count, the finite height-fibre normal form, the quadratic shell-multiplicity bound, and the determinant $`-1/15`$. Arbitrary-order non-separability is checked as well. The uniform minor family is [checked](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/KernelCarryRank.lean#L376), the exclusion of every finite separation is [checked](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/KernelCarryRank.lean#L388), and the dense-rotation construction is discharged by the problem-neutral staircase engine [exists_staircase_indices](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Shared/IrrationalRotationStaircase.lean#L271), which uses Mathlib only. The Lean forms assume that $`p`$, $`q`$ and $`r`$ are prime with $`p\ne r`$ and $`q\ne r`$, and they do not use $`p\ne q`$.
+
+Index selection inside the construction is essential. The leading minors of the $`\{2,3,5\}`$ kernel are not a witness of infinite rank: row three is $`1/120`$ times row zero for $`j\le3`$ ([checked](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/KernelCarryRank.lean#L583)), and the proportionality fails at $`j=4`$ ([checked](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/KernelCarryRank.lean#L592)). A proof that read off leading minors alone would be false.
 
 <a id="sec:actual-orbit"></a>
 
@@ -515,7 +602,7 @@ and let $`b_a=\beta_a\in\{2,6,10,30\}`$ be the ordered block radix. For $`a\ge1`
 
 <div id="res:actual-orbit" class="theorem">
 
-**Theorem 14** (actual shell-orbit dichotomy). *The series $`\sum_{a\ge0}s_a`$ is summable, and for every $`a\ge0`$,
+**Theorem 18** (actual shell-orbit dichotomy). *The series $`\sum_{a\ge0}s_a`$ is summable, and for every $`a\ge0`$,
 ``` math
 X_{a+1}=b_aX_a-d_a.
 ```
@@ -562,7 +649,7 @@ The same finite clearing works simultaneously at all scales. Write $`h_a=\operat
 
 <div id="res:all-scale-lattice" class="theorem">
 
-**Theorem 15** (all-scale rationality lattice). *Every finite shell window clears at its upper normaliser: for all $`u,v\ge0`$ there is $`m\in\mathbb{N}`$ such that
+**Theorem 19** (all-scale rationality lattice). *Every finite shell window clears at its upper normaliser: for all $`u,v\ge0`$ there is $`m\in\mathbb{N}`$ such that
 ``` math
 h_{u+v}\sum_{i=0}^{v-1}s_{u+i}=m.
 ```
@@ -589,7 +676,7 @@ The strict upper endpoint is what permits division by two. Every summand in the 
 
 <div id="res:actual-tail-bound" class="theorem">
 
-**Theorem 16** (quadratic bound for the actual tail). *Put
+**Theorem 20** (quadratic bound for the actual tail). *Put
 ``` math
 n_a=a+\lfloor\log_3(2^a)\rfloor+\lfloor\log_5(2^a)\rfloor,
  \qquad
@@ -615,7 +702,7 @@ It has $`U\le2^{A+1}\le2L`$. Fixing the exponents of $`3`$ and $`5`$ therefore l
 ``` math
 (B+1)(C+1)\le\frac{(A+B+C+3)^2}{9},
 ```
-by the sorted quadratic inequality used in Theorem <a href="#res:shell" data-reference-type="ref" data-reference="res:shell">11</a>. Here sorting follows from the ordered bases, rather than being an extra hypothesis. Unique prime factorisation identifies these exponent triples with distinct smooth integers.
+by the sorted quadratic inequality used in Theorem <a href="#res:shell" data-reference-type="ref" data-reference="res:shell">15</a>. Here sorting follows from the ordered bases, rather than being an extra hypothesis. Unique prime factorisation identifies these exponent triples with distinct smooth integers.
 
 There is at most one nonempty cell of each rank $`n=A+B+C`$: as the cutoff increases, all three logarithms are nondecreasing, and equality of their sum forces equality of their vector. Every cell above $`t`$ has each coordinate at least its value at $`t`$. A cell of rank $`n_a+k`$ consequently has height at least $`\operatorname{H}(t)2^k`$, since each of the $`k`$ extra prime factors is at least $`2`$. Nonnegative summation over cells, allowing empty ranks, gives
 ``` math
@@ -630,7 +717,7 @@ The finite projection and sorted quadratic inequality are checked Lean ingredien
 
 <div id="res:actual-cancellation" class="corollary">
 
-**Corollary 17** (eventual smooth-factor cancellation). *Suppose the original repeated series is $`S=P/D`$, with $`D>0`$, and write $`D=D_{\mathrm{sm}}B`$, where $`D_{\mathrm{sm}}=2^u3^v5^w`$ and $`\gcd(B,30)=1`$. Choose $`a_D\ge1`$ so that $`2^{a_D}\ge\max(2^{u+1},3^v,5^w)`$. Then for every $`a\ge a_D`$, $`DX_a`$ is a positive integer divisible by $`D_{\mathrm{sm}}`$. Consequently $`BX_a`$ is a positive integer and
+**Corollary 21** (eventual smooth-factor cancellation). *Suppose the original repeated series is $`S=P/D`$, with $`D>0`$, and write $`D=D_{\mathrm{sm}}B`$, where $`D_{\mathrm{sm}}=2^u3^v5^w`$ and $`\gcd(B,30)=1`$. Choose $`a_D\ge1`$ so that $`2^{a_D}\ge\max(2^{u+1},3^v,5^w)`$. Then for every $`a\ge a_D`$, $`DX_a`$ is a positive integer divisible by $`D_{\mathrm{sm}}`$. Consequently $`BX_a`$ is a positive integer and
 ``` math
 BX_{a+1}=b_aBX_a-Bd_a.
 ```*
@@ -639,17 +726,17 @@ BX_{a+1}=b_aBX_a-Bd_a.
 
 <div class="proof">
 
-*Proof.* The original series is $`S=\sum_{a\ge0}s_a`$, by unique prime factorisation and summability. Clearing its finite prefix at $`h_a`$ gives $`DX_a=h_aP-Dm`$ for an integer $`m`$. Our choice of onset ensures $`D_{\mathrm{sm}}\mid h_a`$: the extra dyadic factor accounts for $`h_a=\operatorname{H}(2^a)/2`$. Thus $`D_{\mathrm{sm}}\mid DX_a`$. Positivity and the recurrence follow from Theorem <a href="#res:actual-orbit" data-reference-type="ref" data-reference="res:actual-orbit">14</a>. ◻
+*Proof.* The original series is $`S=\sum_{a\ge0}s_a`$, by unique prime factorisation and summability. Clearing its finite prefix at $`h_a`$ gives $`DX_a=h_aP-Dm`$ for an integer $`m`$. Our choice of onset ensures $`D_{\mathrm{sm}}\mid h_a`$: the extra dyadic factor accounts for $`h_a=\operatorname{H}(2^a)/2`$. Thus $`D_{\mathrm{sm}}\mid DX_a`$. Positivity and the recurrence follow from Theorem <a href="#res:actual-orbit" data-reference-type="ref" data-reference="res:actual-orbit">18</a>. ◻
 
 </div>
 
 Thus pairwise incongruence of the actual $`X_a`$ modulo one would prove irrationality. The source does not establish it: rationality predicts a collision rather than contradicting any known orbit theorem.
 
-The integral branch in Theorem <a href="#res:actual-orbit" data-reference-type="ref" data-reference="res:actual-orbit">14</a> has a further exact structure.
+The integral branch in Theorem <a href="#res:actual-orbit" data-reference-type="ref" data-reference="res:actual-orbit">18</a> has a further exact structure.
 
 <div id="res:pinning" class="theorem">
 
-**Theorem 18** (pinning and rigidity of the integral branch). *For every $`a\ge0`$,
+**Theorem 22** (pinning and rigidity of the integral branch). *For every $`a\ge0`$,
 ``` math
 X_a=\frac{d_a}{b_a}+\frac{X_{a+1}}{b_a},\qquad X_a>0.
 ```
@@ -679,13 +766,13 @@ This theorem turns indefinite survival of an integral seed inside the exact wind
 
 # Dyadic blocks and a conditional carry contradiction
 
-The section makes three moves and leaves one hypothesis standing. We first compress the jump word of Section <a href="#sec:cells" data-reference-type="ref" data-reference="sec:cells">3</a> into the blocks cut out by consecutive powers of two, and show that the multiplier of a block takes only four values (Theorem <a href="#res:dyadic-alphabet" data-reference-type="ref" data-reference="res:dyadic-alphabet">19</a>). We then record what can be cancelled from a hypothetical denominator, and exactly where that cancellation is still conditional (Theorem <a href="#res:denominator-reduction" data-reference-type="ref" data-reference="res:denominator-reduction">20</a>). Finally we leave the smooth numbers behind and argue with integer sequences alone: for a multiplier coprime to $`30`$, no positive sequence obeying the cleared recurrence can stay inside its bound once a certain residue condition holds arbitrarily far out (Theorem <a href="#res:windowconsumer" data-reference-type="ref" data-reference="res:windowconsumer">22</a>). That residue condition, condition <a href="#eq:escape" data-reference-type="eqref" data-reference="eq:escape">[eq:escape]</a> below, remains unproved; the closing subsection reports a finite scan.
+The section makes three moves and leaves one hypothesis standing. We first compress the jump word of Section <a href="#sec:cells" data-reference-type="ref" data-reference="sec:cells">4</a> into the blocks cut out by consecutive powers of two, and show that the multiplier of a block takes only four values (Theorem <a href="#res:dyadic-alphabet" data-reference-type="ref" data-reference="res:dyadic-alphabet">23</a>). We then record what can be cancelled from a hypothetical denominator, and exactly where that cancellation is still conditional (Theorem <a href="#res:denominator-reduction" data-reference-type="ref" data-reference="res:denominator-reduction">24</a>). Finally we leave the smooth numbers behind and argue with integer sequences alone: for a multiplier coprime to $`30`$, no positive sequence obeying the cleared recurrence can stay inside its bound once a certain residue condition holds arbitrarily far out (Theorem <a href="#res:windowconsumer" data-reference-type="ref" data-reference="res:windowconsumer">26</a>). That residue condition, condition <a href="#eq:escape" data-reference-type="eqref" data-reference="eq:escape">[eq:escape]</a> below, remains unproved; the closing subsection reports a finite scan.
 
 <a id="the-four-element-block-alphabet"></a>
 
 ## The four-element block alphabet
 
-Take $`(p,q,r)=(2,3,5)`$ and compress the jump word of Section <a href="#sec:cells" data-reference-type="ref" data-reference="sec:cells">3</a> between consecutive powers of two: a block starts just after $`2^a`$, includes every pure $`3`$- or $`5`$-power strictly between $`2^a`$ and $`2^{a+1}`$, and ends with the jump at $`2^{a+1}`$. A channel cannot occur twice inside one block. Indeed, if
+Take $`(p,q,r)=(2,3,5)`$ and compress the jump word of Section <a href="#sec:cells" data-reference-type="ref" data-reference="sec:cells">4</a> between consecutive powers of two: a block starts just after $`2^a`$, includes every pure $`3`$- or $`5`$-power strictly between $`2^a`$ and $`2^{a+1}`$, and ends with the jump at $`2^{a+1}`$. A channel cannot occur twice inside one block. Indeed, if
 ``` math
 2^a<b^e,b^f<2^{a+1}\qquad(b\ge2),
 ```
@@ -695,7 +782,7 @@ Let $`\beta_a`$, the *block radix*, be the product of the terminal dyadic factor
 
 <div id="res:dyadic-alphabet" class="theorem">
 
-**Theorem 19** (the dyadic block alphabet). *With $`(p,q,r)=(2,3,5)`$ and $`\beta_a`$ as above, for every $`a`$,
+**Theorem 23** (the dyadic block alphabet). *With $`(p,q,r)=(2,3,5)`$ and $`\beta_a`$ as above, for every $`a`$,
 ``` math
 \beta_a\in\{2,6,10,30\};
   \qquad\text{in particular}\qquad 2\le\beta_a\le30.
@@ -723,7 +810,7 @@ a & (2^{a},2^{a+1}) & \text{internal }3\text{-power} & \text{internal }5\text{-p
 ```
 Block $`4`$ is the only one of these six carrying an internal power in both channels, and block $`5`$ carries neither, so its radix falls back to the terminal factor alone. Multiplying the radices along a run of blocks gives the product of the jump-word letters over that run: for instance $`\beta_1\beta_2=60`$ is the product of the four multipliers at $`3,4,5,8`$.
 
-The definition is the [dyadic block base](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L751); Lean checks both the [exact four-case alphabet](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L762) and the [bounded-radix consequence](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L774). The radix word is therefore constrained to four values, and no growth hypothesis on it is needed. Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">10</a> gives a literal finite formula for the corresponding block digit $`m_a^{235}`$, matching the integer-only checker. What is not yet checked in Lean is the theorem that identifies that digit, its tail and its sharp carry bound with the original repeated series under a rationality hypothesis.
+The definition is the [dyadic block base](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L751); Lean checks both the [exact four-case alphabet](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L762) and the [bounded-radix consequence](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L774). The radix word is therefore constrained to four values, and no growth hypothesis on it is needed. Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">11</a> gives a literal finite formula for the corresponding block digit $`m_a^{235}`$, matching the integer-only checker. What is not yet checked in Lean is the theorem that identifies that digit, its tail and its sharp carry bound with the original repeated series under a rationality hypothesis.
 
 <a id="the-denominator-reduction-and-its-boundary"></a>
 
@@ -736,7 +823,7 @@ D=D_{\mathrm{sm}}B,\qquad
 ```
 The coprimality condition below is therefore intended as the endpoint of a reduction from an arbitrary $`D`$, not as a restriction on which rational values are being considered.
 
-The argument runs on a sequence of integers $`c_n`$, one for each step, called the *carry states*; they satisfy a recurrence $`c_{n+1}=b_nc_n-Dm_n`$ of the shape displayed below, driven by a radix word $`b_n`$ and a forcing word $`m_n`$. The name is meant to suggest the integer left after clearing $`D`$ from the $`n`$-th tail of the series. For the actual normalised shell tail, Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">17</a> supplies this reading and eventual divisibility in a paper proof. The formal statements below take the recurrence and common factor as hypotheses.
+The argument runs on a sequence of integers $`c_n`$, one for each step, called the *carry states*; they satisfy a recurrence $`c_{n+1}=b_nc_n-Dm_n`$ of the shape displayed below, driven by a radix word $`b_n`$ and a forcing word $`m_n`$. The name is meant to suggest the integer left after clearing $`D`$ from the $`n`$-th tail of the series. For the actual normalised shell tail, Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">21</a> supplies this reading and eventual divisibility in a paper proof. The formal statements below take the recurrence and common factor as hypotheses.
 
 Every fixed $`\{2,3,5\}`$-smooth factor divides the running height once the cutoff reaches that factor ([checked absorption](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/RestrictedFloorSum.lean#L548)). If the denominator-cleared carry states $`c_n`$ share the absorbed factor, so that $`c_n=D_{\mathrm{sm}}d_n`$, Lean cancels it from
 ``` math
@@ -748,15 +835,15 @@ d_{n+1}=b_nd_n-Bm_n
 ```
 ([checked cancellation](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/RestrictedFloorSum.lean#L581)). Positivity and the sharp denominator-dependent upper bound descend through the same positive factor ([checked bound transfer](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/RestrictedFloorSum.lean#L601)), and the reduced carry inherits the exact window identity ([checked window transfer](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/RestrictedFloorSum.lean#L612)).
 
-Informally: provided the smooth part $`D_{\mathrm{sm}}`$ divides every carry state, it can be divided out of the recurrence, leaving the same four statements with a multiplier coprime to $`30`$ in place of $`D`$. This remains a hypothesis of the formal consumer; Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">17</a> supplies it for the actual orbit after $`a_D`$.
+Informally: provided the smooth part $`D_{\mathrm{sm}}`$ divides every carry state, it can be divided out of the recurrence, leaving the same four statements with a multiplier coprime to $`30`$ in place of $`D`$. This remains a hypothesis of the formal consumer; Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">21</a> supplies it for the actual orbit after $`a_D`$.
 
 <div id="res:denominator-reduction" class="theorem">
 
-**Theorem 20** (conditional denominator reduction). *If the actual denominator-cleared carry for $`D=D_{\mathrm{sm}}B`$ has the common-factor form $`c_n=D_{\mathrm{sm}}d_n`$ with $`D_{\mathrm{sm}}>0`$, then its recurrence, positivity, bound, and window identity reduce to the same statements with multiplier $`B`$, where $`\gcd(B,30)=1`$.*
+**Theorem 24** (conditional denominator reduction). *If the actual denominator-cleared carry for $`D=D_{\mathrm{sm}}B`$ has the common-factor form $`c_n=D_{\mathrm{sm}}d_n`$ with $`D_{\mathrm{sm}}>0`$, then its recurrence, positivity, bound, and window identity reduce to the same statements with multiplier $`B`$, where $`\gcd(B,30)=1`$.*
 
 </div>
 
-Height absorption alone does not imply divisibility of a carry. The additional identity $`DX_a=h_aP-Dm`$ is what proves it here. The formal consumer does not yet contain that infinite-tail bridge. The specified sharp upper bound for the actual orbit follows from Theorem <a href="#res:actual-tail-bound" data-reference-type="ref" data-reference="res:actual-tail-bound">16</a>; its infinite-tail proof is likewise not part of the formal consumer.
+Height absorption alone does not imply divisibility of a carry. The additional identity $`DX_a=h_aP-Dm`$ is what proves it here. The formal consumer does not yet contain that infinite-tail bridge. The specified sharp upper bound for the actual orbit follows from Theorem <a href="#res:actual-tail-bound" data-reference-type="ref" data-reference="res:actual-tail-bound">20</a>; its infinite-tail proof is likewise not part of the formal consumer.
 
 <a id="the-window-recurrence-and-the-residue-contradiction"></a>
 
@@ -785,7 +872,7 @@ this is the [checked window identity](https://github.com/wcook04/plectis-erdos/b
 
 For $`C>0`$, let $`\operatorname{lpr}_C(x)\in\{1,\ldots,C\}`$ be the least positive representative of $`x\bmod C`$, with a zero residue represented by $`C`$. This is the [canonical representative](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ResidueEscape.lean#L26). Lean checks both its [positive range](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ResidueEscape.lean#L31) and its [congruence to the source integer](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/ResidueEscape.lean#L52). This convention matters: replacing $`\operatorname{lpr}_C(x)`$ by $`|x|`$ would not be a modular statement.
 
-Let $`K(B,n)`$ be a bound on the reduced carry at denominator $`B`$ and step $`n`$. It enters as a parameter: the statements below hold for whichever function $`K`$ is supplied. Theorem <a href="#res:actual-tail-bound" data-reference-type="ref" data-reference="res:actual-tail-bound">16</a> supplies the particular $`K^{235}`$ used for the actual series in Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">10</a>.
+Let $`K(B,n)`$ be a bound on the reduced carry at denominator $`B`$ and step $`n`$. It enters as a parameter: the statements below hold for whichever function $`K`$ is supplied. Theorem <a href="#res:actual-tail-bound" data-reference-type="ref" data-reference="res:actual-tail-bound">20</a> supplies the particular $`K^{235}`$ used for the actual series in Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">11</a>.
 
 Define *cofinal local-window escape* to mean that for every $`B>0`$ coprime to $`30`$ and every $`\ell_0`$, there are $`\ell\ge\ell_0`$ and $`h>0`$ such that
 ``` math
@@ -801,7 +888,7 @@ The next statement is the finite core of the argument. Informally, it says that 
 
 <div id="res:consumer" class="theorem">
 
-**Theorem 21** (the finite residue contradiction). *Let $`C>0`$, $`c>0`$, and $`|c|\le K`$. If $`c\equiv x\pmod C`$ and $`K<\operatorname{lpr}_C(x)`$, then the hypotheses are contradictory.*
+**Theorem 25** (the finite residue contradiction). *Let $`C>0`$, $`c>0`$, and $`|c|\le K`$. If $`c\equiv x\pmod C`$ and $`K<\operatorname{lpr}_C(x)`$, then the hypotheses are contradictory.*
 
 </div>
 
@@ -821,7 +908,7 @@ This includes the endpoint correctly: the zero congruence class is represented b
 
 <div id="res:windowconsumer" class="theorem">
 
-**Theorem 22** (a conditional contradiction for bounded carries). *Let $`(b_n)`$, $`(m_n)`$ and $`K`$ be the radix word, the forcing word and the bound of this subsection, and assume the cofinal escape property <a href="#eq:escape" data-reference-type="eqref" data-reference="eq:escape">[eq:escape]</a>. Fix $`B>0`$ coprime to $`30`$. There is no integral sequence $`d_n`$ satisfying simultaneously
+**Theorem 26** (a conditional contradiction for bounded carries). *Let $`(b_n)`$, $`(m_n)`$ and $`K`$ be the radix word, the forcing word and the bound of this subsection, and assume the cofinal escape property <a href="#eq:escape" data-reference-type="eqref" data-reference="eq:escape">[eq:escape]</a>. Fix $`B>0`$ coprime to $`30`$. There is no integral sequence $`d_n`$ satisfying simultaneously
 ``` math
 d_{n+1}=b_nd_n-Bm_n,\qquad d_n>0,\qquad
  |d_n|\le K(B,n)\quad(n\ge0).
@@ -835,7 +922,7 @@ d_{n+1}=b_nd_n-Bm_n,\qquad d_n>0,\qquad
 ``` math
 d_{\ell+h}\equiv -BF_{\ell,h}\pmod{|W_{\ell,h}|}.
 ```
-The endpoint state is positive and at most $`K(B,\ell+h)`$, whereas the canonical positive residue of the right-hand side is larger than this bound. Theorem <a href="#res:consumer" data-reference-type="ref" data-reference="res:consumer">21</a> is the contradiction. ◻
+The endpoint state is positive and at most $`K(B,\ell+h)`$, whereas the canonical positive residue of the right-hand side is larger than this bound. Theorem <a href="#res:consumer" data-reference-type="ref" data-reference="res:consumer">25</a> is the contradiction. ◻
 
 </div>
 
@@ -857,7 +944,7 @@ B&a&h&n&W&F&R&K\\ \hline
 \end{array}
 ```
 
-The first row reads as follows. The window starts at $`a=1`$ and has length $`2`$, so its base is the product of the two block radices, $`W=\beta_1\beta_2=6\cdot10=60`$; the forcing accumulated over the window is $`F=47`$; and $`\operatorname{lpr}_{60}(-47)=13`$, since $`-47+60=13`$, which exceeds the bound $`K=9`$. The other two rows are read the same way, with $`W=\beta_1\beta_2\beta_3=360`$ and $`W=\beta_1\beta_2\beta_3\beta_4=10800`$. The third row lies outside the domain of the escape condition, since $`\gcd(16,30)=2`$ while both <a href="#eq:escape" data-reference-type="eqref" data-reference="eq:escape">[eq:escape]</a> and Theorem <a href="#res:windowconsumer" data-reference-type="ref" data-reference="res:windowconsumer">22</a> quantify only over $`B>0`$ coprime to $`30`$. It is displayed to illustrate the window arithmetic at greater depth, not as an instance of the escape condition.
+The first row reads as follows. The window starts at $`a=1`$ and has length $`2`$, so its base is the product of the two block radices, $`W=\beta_1\beta_2=6\cdot10=60`$; the forcing accumulated over the window is $`F=47`$; and $`\operatorname{lpr}_{60}(-47)=13`$, since $`-47+60=13`$, which exceeds the bound $`K=9`$. The other two rows are read the same way, with $`W=\beta_1\beta_2\beta_3=360`$ and $`W=\beta_1\beta_2\beta_3\beta_4=10800`$. The third row lies outside the domain of the escape condition, since $`\gcd(16,30)=2`$ while both <a href="#eq:escape" data-reference-type="eqref" data-reference="eq:escape">[eq:escape]</a> and Theorem <a href="#res:windowconsumer" data-reference-type="ref" data-reference="res:windowconsumer">26</a> quantify only over $`B>0`$ coprime to $`30`$. It is displayed to illustrate the window arithmetic at greater depth, not as an instance of the escape condition.
 
 A fresh scan over every $`B\le1000`$ coprime to $`30`$ and every $`100\le a\le500`$ tested $`106{,}666`$ pairs. In every case a window of length at most $`18`$ made both $`W>K`$ and $`\operatorname{lpr}_{W}(-BF)>K`$; the largest first successful length was $`14`$. The computation uses integers only and is reproducible from the pinned checker. Neither the scan nor the three displayed certificates proves escape for unbounded $`B`$ or for cofinally many starts.
 
@@ -865,7 +952,7 @@ A fresh scan over every $`B\le1000`$ coprime to $`30`$ and every $`100\le a\le50
 
 # Complements and further questions
 
-Theorems <a href="#res:two-prime-transcendence" data-reference-type="ref" data-reference="res:two-prime-transcendence">6</a> and <a href="#res:two-prime-repeated-transcendence" data-reference-type="ref" data-reference="res:two-prime-repeated-transcendence">7</a> close both two-prime questions, at the stronger level of transcendence. The three-prime de-duplicated and repeated series are outside the one-dimensional Hecke–Mahler reduction used in those theorems and remain open. At three primes the exact unresolved statement is best separated from the now-proved actual-tail bridge and from the possible methods for excluding its integral branch.
+Theorems <a href="#res:two-prime-transcendence" data-reference-type="ref" data-reference="res:two-prime-transcendence">10</a> and <a href="#res:two-prime-repeated-transcendence" data-reference-type="ref" data-reference="res:two-prime-repeated-transcendence">11</a> close both two-prime questions, at the stronger level of transcendence. The three-prime de-duplicated and repeated series are outside the one-dimensional Hecke–Mahler reduction used in those theorems and remain open. At three primes the exact unresolved statement is best separated from the now-proved actual-tail bridge and from the possible methods for excluding its integral branch.
 
 <a id="the-actual-block-data-and-its-bounded-carry"></a>
 
@@ -889,7 +976,7 @@ Then, for $`a\ge1`$, the exact checker definitions are
 \tag{9.1}\label{eq:actual-digit}
 ```
 
-The first formula is the four-letter radix of Theorem <a href="#res:dyadic-alphabet" data-reference-type="ref" data-reference="res:dyadic-alphabet">19</a>; the second is the integer implemented by the pinned checker. If
+The first formula is the four-letter radix of Theorem <a href="#res:dyadic-alphabet" data-reference-type="ref" data-reference="res:dyadic-alphabet">23</a>; the second is the integer implemented by the pinned checker. If
 ``` math
 \nu_a=\#\{p^e:p\in\{2,3,5\},\ e\ge1,\ p^e<2^{a+1}\},
 ```
@@ -911,11 +998,11 @@ This $`T_a`$ is the normalised shell state $`X_a`$, whereas $`U_a`$ denotes the 
 \frac{m_j^{235}}{\beta_a\cdots\beta_j}
  =\frac{\operatorname{H}(2^a)}2s_j.
 ```
-Summing the nonnegative terms proves convergence and $`T_a=X_a`$ for $`a\ge1`$. Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">17</a> therefore supplies the integral reduced carry $`BT_a`$ after $`a_D`$. The actual-tail estimate also proves the specific integer bound required by the checker.
+Summing the nonnegative terms proves convergence and $`T_a=X_a`$ for $`a\ge1`$. Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">21</a> therefore supplies the integral reduced carry $`BT_a`$ after $`a_D`$. The actual-tail estimate also proves the specific integer bound required by the checker.
 
 <div id="res:actual-carry-bound" class="corollary">
 
-**Corollary 23** (the actual bounded reduced carry). *Under the rationality hypothesis and after the onset $`a_D`$ of Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">17</a>, $`BT_a`$ is an integer and
+**Corollary 27** (the actual bounded reduced carry). *Under the rationality hypothesis and after the onset $`a_D`$ of Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">21</a>, $`BT_a`$ is an integer and
 ``` math
 0<BT_a\le K^{235}(B,a),\qquad
  BT_{a+1}=\beta_aBT_a-Bm_a^{235}.
@@ -925,7 +1012,7 @@ Summing the nonnegative terms proves convergence and $`T_a=X_a`$ for $`a\ge1`$. 
 
 <div class="proof">
 
-*Proof.* Integrality, positivity and the recurrence follow from Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">17</a> and $`T_a=X_a`$. Theorem <a href="#res:actual-tail-bound" data-reference-type="ref" data-reference="res:actual-tail-bound">16</a> gives $`BT_a<B(\nu_a^2+10\nu_a+27)/9`$; an integer below that real bound is at most its floor, which is $`K^{235}(B,a)`$. ◻
+*Proof.* Integrality, positivity and the recurrence follow from Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">21</a> and $`T_a=X_a`$. Theorem <a href="#res:actual-tail-bound" data-reference-type="ref" data-reference="res:actual-tail-bound">20</a> gives $`BT_a<B(\nu_a^2+10\nu_a+27)/9`$; an integer below that real bound is at most its floor, which is $`K^{235}(B,a)`$. ◻
 
 </div>
 
@@ -937,7 +1024,7 @@ The actual bridge is therefore complete in the paper argument: the literal digit
 
 <div id="prob:tails269" class="problem">
 
-**Problem 24** (exact nonintegrality of every reduced tail). For every $`B\ge1`$ with $`\gcd(B,30)=1`$ and every $`a\ge1`$, prove
+**Problem 28** (exact nonintegrality of every reduced tail). For every $`B\ge1`$ with $`\gcd(B,30)=1`$ and every $`a\ge1`$, prove
 ``` math
 BT_a\notin\mathbb{Z}.
 \tag{9.4}\label{eq:tail-nonintegrality}
@@ -949,15 +1036,15 @@ This pointwise form is stronger-looking but cleaner than “cofinally nonintegra
 ``` math
 BT_{a+1}=\beta_aBT_a-Bm_a^{235}
 ```
-makes it integral at every later index. Thus a direct solution of Problem <a href="#prob:tails269" data-reference-type="ref" data-reference="prob:tails269">24</a>, joined to Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">17</a>, bypasses all residue-window machinery and does not require the sharp bound.
+makes it integral at every later index. Thus a direct solution of Problem <a href="#prob:tails269" data-reference-type="ref" data-reference="prob:tails269">28</a>, joined to Corollary <a href="#res:actual-cancellation" data-reference-type="ref" data-reference="res:actual-cancellation">21</a>, bypasses all residue-window machinery and does not require the sharp bound.
 
-The bounded-radix theorem gives a useful exact reduction. Since $`2\le\beta_a\le30`$, any real affine tail orbit either hits an integer or is, cofinally often, at distance at least $`1/31`$ from every integer ([checked](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean#L89)). It does not exclude the integral branch; Problem <a href="#prob:tails269" data-reference-type="ref" data-reference="prob:tails269">24</a> is exactly what must do so for the actual orbit.
+The bounded-radix theorem gives a useful exact reduction. Since $`2\le\beta_a\le30`$, any real affine tail orbit either hits an integer or is, cofinally often, at distance at least $`1/31`$ from every integer ([checked](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean#L89)). It does not exclude the integral branch; Problem <a href="#prob:tails269" data-reference-type="ref" data-reference="prob:tails269">28</a> is exactly what must do so for the actual orbit.
 
 <a id="a-denominator-adaptive-sufficient-criterion"></a>
 
 ## A denominator-adaptive sufficient criterion
 
-For the literal pair $`(m^{235},K^{235})`$, retain the window definitions of Section <a href="#sec:escape" data-reference-type="ref" data-reference="sec:escape">9</a>:
+For the literal pair $`(m^{235},K^{235})`$, retain the window definitions of Section <a href="#sec:escape" data-reference-type="ref" data-reference="sec:escape">10</a>:
 ``` math
 W_{\ell,h}=\prod_{j=0}^{h-1}\beta_{\ell+j},\qquad
  F_{\ell,0}=0,\qquad
@@ -966,7 +1053,7 @@ W_{\ell,h}=\prod_{j=0}^{h-1}\beta_{\ell+j},\qquad
 
 <div id="prob:producer" class="problem">
 
-**Problem 25** (actual cofinal local-window escape). Prove the displayed quantifier order
+**Problem 29** (actual cofinal local-window escape). Prove the displayed quantifier order
 ``` math
 \forall B\ge1\ (\gcd(B,30)=1),\ \forall a_0\ge1,\
  \exists\ell\ge a_0\ \exists h\ge1:\quad
@@ -979,13 +1066,13 @@ W_{\ell,h}=\prod_{j=0}^{h-1}\beta_{\ell+j},\qquad
 
 <div id="res:actual-escape-endpoint" class="theorem">
 
-**Theorem 26** (irrationality from actual cofinal escape). *If <a href="#eq:actual-escape" data-reference-type="eqref" data-reference="eq:actual-escape">[eq:actual-escape]</a> holds, then the original repeated $`\{2,3,5\}`$ running-LCM series is irrational.*
+**Theorem 30** (irrationality from actual cofinal escape). *If <a href="#eq:actual-escape" data-reference-type="eqref" data-reference="eq:actual-escape">[eq:actual-escape]</a> holds, then the original repeated $`\{2,3,5\}`$ running-LCM series is irrational.*
 
 </div>
 
 <div class="proof">
 
-*Proof.* Suppose the series is rational. Corollary <a href="#res:actual-carry-bound" data-reference-type="ref" data-reference="res:actual-carry-bound">23</a> supplies a denominator $`B\ge1`$ coprime to $`30`$ and, after $`a_D`$, positive integral states $`z_a=BT_a\le K^{235}(B,a)`$ with the actual recurrence. Choose an escaping window beginning at $`\ell\ge a_D`$. Iterating gives
+*Proof.* Suppose the series is rational. Corollary <a href="#res:actual-carry-bound" data-reference-type="ref" data-reference="res:actual-carry-bound">27</a> supplies a denominator $`B\ge1`$ coprime to $`30`$ and, after $`a_D`$, positive integral states $`z_a=BT_a\le K^{235}(B,a)`$ with the actual recurrence. Choose an escaping window beginning at $`\ell\ge a_D`$. Iterating gives
 ``` math
 z_{\ell+h}=W_{\ell,h}z_\ell-BF_{\ell,h}
           \equiv-BF_{\ell,h}\pmod{W_{\ell,h}}.
@@ -993,6 +1080,8 @@ z_{\ell+h}=W_{\ell,h}z_\ell-BF_{\ell,h}
 Since the least positive residue is larger than $`K^{235}(B,\ell+h)`$, and is at most $`W_{\ell,h}`$, the positive endpoint state is strictly below $`W_{\ell,h}`$. It must equal that least positive residue, contradicting its upper bound. Thus rationality is impossible. ◻
 
 </div>
+
+The converse of Theorem <a href="#res:actual-escape-endpoint" data-reference-type="ref" data-reference="res:actual-escape-endpoint">30</a> is proved in the private formal source and in the Palomar cut, as `cofinalLocalWindowEscape_of_irrational` at `ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:379`, and the two directions combine there into `actualCofinalLocalWindowEscape_iff_irrational_value` at `:398`, valid for every short bound dominated by $`c(B)(n+1)^2`$. Under that equivalence Problem <a href="#prob:producer" data-reference-type="ref" data-reference="prob:producer">29</a> is a restatement of Erdős #269 for $`P=\{2,3,5\}`$ and is no easier than the target. It is recorded here as a problem because the equivalence proves neither of its sides. Those modules are absent from the formal-source checkpoint 4ab50e144847 pinned by this manuscript and enter the linked source at the next checkpoint.
 
 Every $`\beta_a`$ is positive, so $`W_{\ell,h}>0`$ is automatic. The cofinal quantifier is present for a substantive reason: the integral reduced carry and its bound are available after the denominator-dependent onset $`a_D`$, and <a href="#eq:actual-escape" data-reference-type="eqref" data-reference="eq:actual-escape">[eq:actual-escape]</a> then supplies a window beyond that onset. Once such a window is chosen, the positive endpoint carry must equal the canonical residue exactly ([checked](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos269/RestrictedFloorSum.lean#L497)), yet it lies in the possible carry set $`\{1,\ldots,K^{235}(B,\ell+h)\}`$; the strict inequality excludes that set. This is a one-sided least-positive-residue statement, not two symmetric arcs around zero.
 
@@ -1030,7 +1119,7 @@ with $`\beta_a=2\,3^{\delta_{3,a}}5^{\delta_{5,a}}`$.
 
 <div class="problem">
 
-**Problem 27** (function-faithful two-dimensional representation). Express $`\mathcal D_{2,3,5}`$ as a nonconstant algebraic combination of values of a specified two-dimensional Hecke–Mahler, cone-generating or multivariate Mahler function and verify every hypothesis of a published value theorem; or give a conditional theorem under an explicit logarithmic nondegeneracy hypothesis; or prove that the literal series has no representation in the specified finite-dimensional class.
+**Problem 31** (function-faithful two-dimensional representation). Express $`\mathcal D_{2,3,5}`$ as a nonconstant algebraic combination of values of a specified two-dimensional Hecke–Mahler, cone-generating or multivariate Mahler function and verify every hypothesis of a published value theorem; or give a conditional theorem under an explicit logarithmic nondegeneracy hypothesis; or prove that the literal series has no representation in the specified finite-dimensional class.
 
 </div>
 
@@ -1055,7 +1144,7 @@ These lift conclusions remain conditional. The paper constructs the actual \#269
 
 The obstructions identify three different limits. Arbitrary-order minors exclude a finite exact separation of the kernel; the bounded-radix alternative leaves integral tails untouched; and the residue examples show that coprimality alone gives no useful denominator-independent residue bound. The actual-tail estimate resolves the size issue: rationality supplies $`1\le BT_a\le K^{235}(B,a)`$ after a denominator-dependent onset. For the window criterion, the remaining task is to force the literal word’s residue outside this finite carry interval, with the window allowed to depend on $`B`$ and to begin beyond that onset.
 
-For the repeated $`\{2,3,5\}`$ series, the actual-tail bridge and bound are proved above. Theorem <a href="#res:actual-escape-endpoint" data-reference-type="ref" data-reference="res:actual-escape-endpoint">26</a> leaves one sufficient arithmetic condition: cofinal escape for the literal digit word, with the window allowed to depend on the reduced denominator. That condition, or a direct exclusion of integral tails, remains unproved; Problem #269 stays open.
+For the repeated $`\{2,3,5\}`$ series, the actual-tail bridge and bound are proved above. Theorem <a href="#res:actual-escape-endpoint" data-reference-type="ref" data-reference="res:actual-escape-endpoint">30</a> leaves one sufficient arithmetic condition: cofinal escape for the literal digit word, with the window allowed to depend on the reduced denominator. That condition, or a direct exclusion of integral tails, remains unproved; Problem #269 stays open.
 
 <a id="statements-and-declarations"></a>
 
@@ -1083,7 +1172,7 @@ The problem numbering and status follow the Erdős Problems catalogue maintained
 
 # Guide to the formal sources
 
-Each linked phrase opens its Lean declaration at the pinned source revision 4ab50e144847. The running-LCM structure, residue arithmetic, and local-window bridge occupy separate modules. The following distinctions matter when reading them. The height statements hold for arbitrary bases, while the statements about $`\operatorname{L}`$ need the three primes to be distinct. The normal form of Section <a href="#sec:fibre" data-reference-type="ref" data-reference="sec:fibre">5</a> is a finite identity over a rectangular box, not a convergence theorem. The actual shell convergence, arbitrary-order non-separability, rationality lattice and orbit pinning are paper proofs. The paper also supplies eventual divisibility of actual carries by the smooth denominator factor; the formal cancellation lemma assumes that divisibility. Finally, the formal cofinal-escape predicate is an unproved hypothesis of Theorem <a href="#res:windowconsumer" data-reference-type="ref" data-reference="res:windowconsumer">22</a>; its application to the actual $`\{2,3,5\}`$ word is not asserted.
+Each linked phrase opens its Lean declaration at the pinned source revision 4ab50e144847. The running-LCM structure, residue arithmetic, and local-window bridge occupy separate modules. The following distinctions matter when reading them. The height statements hold for arbitrary bases, while the statements about $`\operatorname{L}`$ need the three primes to be distinct. The normal form of Section <a href="#sec:fibre" data-reference-type="ref" data-reference="sec:fibre">6</a> is a finite identity over a rectangular box, not a convergence theorem. The actual shell convergence, arbitrary-order non-separability, rationality lattice and orbit pinning are paper proofs. The paper also supplies eventual divisibility of actual carries by the smooth denominator factor; the formal cancellation lemma assumes that divisibility. Finally, the formal cofinal-escape predicate is an unproved hypothesis of Theorem <a href="#res:windowconsumer" data-reference-type="ref" data-reference="res:windowconsumer">26</a>; its application to the actual $`\{2,3,5\}`$ word is not asserted.
 
 <div class="thebibliography">
 

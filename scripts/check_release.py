@@ -1305,7 +1305,7 @@ def main(argv: list[str] | None = None) -> int:
     for claim in data["claims"]:
         check(claim["status"] in taxonomy,
               f"claim {claim['id']}: status {claim['status']!r} not in taxonomy")
-        if claim["status"] in ("cited only", "open"):
+        if claim["status"] in ("cited only", "open", "ordinary proof here"):
             check(not claim["declarations"],
                   f"claim {claim['id']}: {claim['status']!r} claims must not carry declarations")
         else:
@@ -2116,6 +2116,18 @@ def main(argv: list[str] | None = None) -> int:
                 str(ROOT / "scripts" / "check_rendered_paper_boundary.py"),
                 "--source-only",
             ],
+            # Two selection contracts the comprehension gate cannot see: a
+            # claim locator or a comparator selection that names something
+            # other than the declaration it advertises, and a private-frontier
+            # association counted as public coverage.
+            "selection_fidelity": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_selection_fidelity.py"),
+            ],
+            "coverage_namespaces": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_coverage_namespaces.py"),
+            ],
         }
     )
     architecture_check = mid_checks["architecture"]
@@ -2419,6 +2431,18 @@ def main(argv: list[str] | None = None) -> int:
         "human-facing paper boundary failed: "
         f"{boundary.stdout.strip() or boundary.stderr.strip()}",
     )
+    selection_fidelity_check = mid_checks["selection_fidelity"]
+    check(
+        selection_fidelity_check.returncode == 0,
+        "claim and comparator selection fidelity failed: "
+        f"{selection_fidelity_check.stdout.strip() or selection_fidelity_check.stderr.strip()}",
+    )
+    coverage_namespace_check = mid_checks["coverage_namespaces"]
+    check(
+        coverage_namespace_check.returncode == 0,
+        "coverage-namespace separation failed: "
+        f"{coverage_namespace_check.stdout.strip() or coverage_namespace_check.stderr.strip()}",
+    )
 
     descriptor = json.loads(read(ROOT / "docs" / "corpus_descriptor.json"))
     check(descriptor.get("schema") == "erdos249257-corpus-descriptor/5",
@@ -2426,8 +2450,8 @@ def main(argv: list[str] | None = None) -> int:
     check(descriptor.get("release_provenance") == public_projection,
           "corpus descriptor release provenance drifted from docs/claims.json")
     descriptor_path = ROOT / "docs" / "corpus_descriptor.json"
-    check(len(read_bytes(descriptor_path)) <= 64_000,
-          "corpus descriptor exceeds the 64 KB registration-envelope budget")
+    check(len(read_bytes(descriptor_path)) <= 72_000,
+          "corpus descriptor exceeds the 72 KB registration-envelope budget (raised 2026-09-06 with the 208-row register)")
     compact_graph = descriptor.get("compact_graph", {})
     check("module_graph" not in compact_graph and "high_salience_declarations" not in compact_graph,
           "corpus descriptor re-embedded an exhaustive graph removed in schema 3")

@@ -526,6 +526,8 @@ def comparator_for(claim_id: str, claims: dict[str, Any]) -> dict[str, Any]:
             return "open_non_executable"
         if claim_status == "cited only":
             return "cited_only_non_executable"
+        if claim_status == "ordinary proof here":
+            return "ordinary_proof_non_executable"
         return "unclassified"
 
     packet = claims.get("external_verification_packet") or {}

@@ -365,7 +365,7 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # 2026-09-01): the first screen now answers why these problems, what the
     # intended outcome was, what Lean contributes, and why the repository is
     # public, before the results inventory.
-    "README.md": 28_400 + 400 * INDEXED_PROBLEM_COUNT,
+    "README.md": 29_200 + 400 * INDEXED_PROBLEM_COUNT,  # base raised 28_400 -> 29_200 on 2026-09-06: the problem-papers section now carries each paper's leading result
     "ARCHITECTURE.md": 18_000,
     # SCOPE.md must list every remaining-open identifier and its bounded query,
     # so two lines of it are spoken for by each registered proposition: measured

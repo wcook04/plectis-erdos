@@ -36,7 +36,24 @@ remaining metric problem for Erd\H{o}s~\#1041}
 \noindent
 Erd\H{o}s, Herzog, and Piranian ask whether every monic polynomial of degree
 $n\ge2$ with roots in the open unit disc has two roots joined inside
-$\{|f|<1\}$ by a curve of length less than $2$.  We prove an all-degree
+$\{|f|<1\}$ by a curve of length less than $2$.  The problem is open.  Write
+$\mu=\min_{f'(c)=0}|f(c)|$ for the least critical-value modulus and
+$\rho=\mu^{1/n}$.  We prove three unconditional statements about arbitrary
+monic polynomials.  Every squarefree $f$ of degree $n\ge2$ whose least
+critical-value modulus satisfies $\mu\le13/25$ has two distinct roots joined
+inside $\{|f|<1\}$ by a rectifiable curve of length strictly below $2$, with
+no hypothesis on where the roots lie; that proof is ordinary analysis closed
+by an exact rational certificate, whose certified quantity is
+$X=635762889599/1000000000000$ and whose closing inequality is
+$(13/25)e^{X}<1$.  With the threshold removed, two zero occurrences of any
+monic $f$ of degree $n\ge2$ are joined inside $\{|f|\le2\mu\}$ by a path of
+length at most $(71/10)\rho$, and inside $\{|f|<1\}$ with length at most
+$5.7$ once the roots lie in the open unit disc and $\mu\le1/2$.  In degree
+three the problem itself is settled: every cubic with roots in the open unit
+disc has two listed root occurrences joined inside $\{|f|<1\}$ by a polygonal
+path of length below $2$.
+
+We also prove an all-degree
 sufficient condition in terms of the separation of critical values.
 If $c$ is a simple critical point, $v=f(c)\ne0$, and
 $|1-f(d)/v|\ge S>1$ at every other critical point, the two resolved inverse
@@ -67,7 +84,18 @@ the lemniscate.  The remaining task is to select and control a contained
 root connector; the critical-value budget alone does not bound its length.
 \end{abstract}
 
-\begin{paperresult}{From critical-value separation to a short path}
+\begin{paperresult}{Unconditional regimes, and a short path from critical-value separation}
+\textbf{Unconditional results.} Theorem~\ref{res:low-critical-thirteen-twentyfifths}
+settles every squarefree monic polynomial whose least critical-value modulus is
+at most $13/25$, in every degree, with no hypothesis on root locations.
+Theorem~\ref{res:constant-factor-path} removes the threshold and pays a
+constant factor: every monic polynomial has two zero occurrences joined by a
+path of length at most $(71/10)\mu^{1/n}$ inside $\{|f|\le2\mu\}$.
+Theorem~\ref{res:degree-three} settles degree three.  All three are ordinary
+mathematics.  The first is closed by an exact rational certificate carried by
+a replayable program in this repository, and the third has a companion Lean
+file in the research corpus that lies outside the pinned formal-source
+library, so none of the three carries a pinned-kernel receipt in this release.
 \textbf{Proved regime.} An isolated simple critical value gives a univalent
 resolved inverse branch.  An area estimate bounds the branch coefficients,
 which control the length of its two root arms.  Theorem~\ref{res:critical-value-separation}
@@ -81,16 +109,24 @@ require another construction.  An admissible-hub selector is one sufficient
 route to the target, not a proved characterization of every possible solution.
 \end{paperresult}
 
-\externalreviewobject{The paper proves an all-degree critical-value-separation
+\externalreviewobject{The paper proves three unconditional statements about
+arbitrary monic polynomials: a short contained connector whenever the least
+critical-value modulus is at most $13/25$, a constant-factor connector of
+length at most $(71/10)\mu^{1/n}$ inside $\{|f|\le2\mu\}$ with no threshold at
+all, and the full degree-three case.  It proves an all-degree
+critical-value-separation
 regime by a resolved inverse branch, the area formula, P\'olya's
 area--capacity inequality, and an exact coefficient estimate.  It proves a
 sharp all-degree collinear theorem, a complete primitive sparse quintic
 theorem, and translated cubic quotient-fibre theorems in every degree $3q$.
 It also checks exponential Newton-value decay, positive-ray collision
 interfaces, finite translation avoidance, and quantified root retention, and
-records the current near-Fekete residual.}{The separation and three
+records the current near-Fekete residual.}{The three unconditional theorems,
+the separation regime and the three
 solved-family assemblies are ordinary mathematics, not kernel-checked
-authority.
+authority.  The $13/25$ threshold, the $(71/10)$ constant and the
+degree-three theorem have no formal endpoint in the pinned corpus, and the
+complementary regime $13/25<\mu<1$ is untouched.
 It excludes near-tied critical values and multiple saddles.  The checked
 dynamical and perturbative inputs do not repair the global topology and metric
 gluing in those complementary strata, so Problem~\#1041 remains open.  The
@@ -185,6 +221,9 @@ We study the Newton flow whose trajectories foliate the lemniscate.
 Statement & Status & Exact boundary \\
 \midrule
 Erd\H{o}s \#1041 & Open & No proof is claimed. \\
+Low critical value $\mu\le13/25$ & Ordinary all-degree theorem with an exact rational certificate & Squarefree monic, $n\ge2$, least critical-value modulus at most $13/25$; no hypothesis on root locations, component arity or component capacity.  The analytic chain and the certificate are ordinary; nothing here is Lean-checked; the regime $13/25<\mu<1$ is untouched. \\
+Unconditional constant factor $(71/10)\mu^{1/n}$ & Ordinary all-degree theorem & Monic, $n\ge2$, no further hypothesis; containment is $\{|f|\le2\mu\}$ rather than $\{|f|<1\}$, and the constant $71/10$ exceeds the target $2$.  Degree two is the separate exact case with constant $2$. \\
+Degree three & Ordinary theorem, complete for that degree & Roots in the open unit disc, listed with multiplicity; the two selected roots are distinct in the squarefree case.  The spoke identity and its norm bound have a Lean companion in the research corpus, outside the pinned formal-source library. \\
 Critical-value separation & Ordinary all-degree theorem & A simple nonzero hub and $(1+S)^{2/n}\log(S/(S-1))<1$; the threshold, covering and area arguments remain ordinary; near ties and multiple saddles are excluded. \\
 Critical-value budget through degree five & Ordinary theorem; scalar Lean companion & $\sum_j|f(c_j)|^{1/n}\le(n-1)R$ for $2\le n\le5$; the reflected-derivative comparison and complete finite-point inequalities remain ordinary proofs and do not control inverse-ray length. \\
 Coefficient energy to path length & Checked & Termwise differentiation and the length integral of the actual power series; the inverse branch and area bound must be supplied. \\
@@ -205,6 +244,266 @@ Random search to degree $10$ & Verified finite instances & Upper bounds for samp
 \bottomrule
 \end{tabular}
 \end{table}
+
+\section{An unconditional regime: a small least critical value}
+\label{sec:low-critical-closure}
+
+The strongest unconditional statement in this note fixes a threshold on one
+scalar attached to $f$ and asks nothing else.  Throughout this section
+\[
+ \mu=\min_{f'(c)=0}|f(c)|
+\]
+is the least critical-value modulus.
+
+\begin{theorem}[a small least critical value forces a short connector]
+\label{res:low-critical-thirteen-twentyfifths}
+Let $f$ be squarefree and monic of degree $n\ge2$ with $\mu\le13/25$.  Then
+two distinct roots of $f$ are joined inside $\{|f|<1\}$ by a rectifiable
+curve of length strictly below $2$.  No hypothesis is placed on the locations
+of the roots, on the number of roots in any component, or on the capacity of
+any component.
+\end{theorem}
+
+\begin{corollary}[scale-free form]
+\label{res:low-critical-scale-free}
+Every squarefree monic $f$ of degree $n\ge2$ has two distinct roots joined
+inside $\{|f|<(25/13)\mu\}$ by a curve of length below
+$2\bigl((25/13)\mu\bigr)^{1/n}$.
+\end{corollary}
+
+\begin{proof}
+Apply Theorem~\ref{res:low-critical-thirteen-twentyfifths} to
+$s^{-n}f(sz)$ with $s=\bigl((25/13)\mu\bigr)^{1/n}$, whose least
+critical-value modulus is $13/25$, and scale back.  A repeated root occurrence
+gives the constant curve, so the squarefree case is the substantive one.
+\end{proof}
+
+\paragraph{Mechanism.}
+Assume no two distinct roots are joined inside $\{|f|<1\}$ by a curve of
+length below $2$.  Fix a regular level $t\in(\mu,1)$, let $C_t$ be the
+component descending from a critical point at level $\mu$, let $k\ge2$ be its
+root count, and put $x=\log(t/\mu)$ and $a=\operatorname{Area}(C_t)/\pi$.
+Uniformise $C_t$ by the disc, sending a point $h$ of $C_t$ whose intrinsic
+distance to every root is at least $1$ to the origin.  Three consequences of
+the assumed failure follow.  The radial Bergman kernel bound on the Riemann
+map forces pairwise hyperbolic separation
+$d(b_i,b_j)\ge4\operatorname{artanh}\sqrt{\tanh(1/a)}$.  The one-root
+estimate at $h$ forces $d(0,b_j)$ below the level of the corresponding Green
+function, and the Blaschke product identity forces
+$\sum_j\lambda(d_j)\ge x$ with $\lambda(d)=-\log\tanh(d/2)$.  Disjointness of
+the hyperbolic balls of radius half the separation, read on every hyperbolic
+circle about the origin through the law of cosines, converts the last two into
+an explicit lower bound for the arity $k$.  Winding and Cauchy--Schwarz on the
+level curves give the perimeter inequality
+$P_C(u)^2\le2\pi k\,u\,A_C'(u)$, and lifting the value radius from each root
+and closing along boundary arcs turns the arity floor into the area growth
+inequality
+\[
+ a'(x)\ \ge\ \frac1{2\pi^2}
+ \Bigl[\,2\sqrt k-\sqrt{2a(x+2)}\,\Bigr]_{+}^{2}.
+\]
+P\'olya's inequality caps $a$ at $1$ until the level reaches $1$.  A
+trajectory that is forced past that cap before $t=1$ contradicts the
+assumption.
+
+\paragraph{Certificate.}
+The threshold is the level at which the forced area passes the cap.  The
+companion program
+\texttt{experiments/erdos1041\_low\_critical\_path\_certificate.py} evaluates
+every accepted inequality in exact rational arithmetic, with directed rounding
+on every exponential, logarithm and square root, and with the rational
+brackets for $\pi$ and $\log2$ checked from Machin's identity.  The full
+replay uses $18$ area-table levels, $14$ radii per dual, $126$ certified
+duals, step $1/400$, and the single initial lower area $10^{-6}$.  It
+certifies
+\[
+ X=\frac{635762889599}{1000000000000}<0.6357629,
+ \qquad \frac{13}{25}e^{X}<1,
+\]
+which is Theorem~\ref{res:low-critical-thirteen-twentyfifths}.  The quick mode
+certifies $X=664373027131/1000000000000$ and the weaker threshold $51/100$.
+The floating optimiser that proposes the dual weights is outside the proof;
+only the rational upper bounds on the proposed pairs are used.
+
+\paragraph{Evidence and exact boundary.}
+\label{bdry:low-critical-closure}
+The analytic chain above is ordinary mathematics.  Its general inputs are the
+Riemann mapping theorem, the Bergman kernel, the argument principle, the
+coarea formula, and P\'olya's area inequality
+$\operatorname{Area}\{|f|\le t\}\le\pi t^{2/n}$
+\cite[printed pp.~280--282]{polya1928}.  The exact rational certificate is a
+kernel-free replayable computation, and no part of this theorem is
+Lean-checked or independently reviewed.  Prior art for the assembled statement
+is unassessed; the hyperbolic slice inequality follows from disjointness of
+the balls and the law of cosines and should be assumed known.  The public
+source of record is
+\texttt{research\_corpus/Erdos1041/LowCriticalPathCertificate.md}.  The exact
+remaining obligation is the complementary regime $13/25<\mu<1$, which this
+argument does not touch, so Erd\H{o}s~\#1041 remains open.
+
+\section{An unconditional all-degree constant-factor path theorem}
+\label{sec:constant-factor}
+
+Dropping the threshold entirely costs a constant.  For a monic degree-$n$
+polynomial put
+\[
+ K_t=\{z:|f(z)|\le t\},\qquad
+ \mu=\min_{f'(c)=0}|f(c)|,\qquad \rho=\mu^{1/n}.
+\]
+
+\begin{theorem}[unconditional constant-factor path]
+\label{res:constant-factor-path}
+For every monic polynomial $f$ of degree $n\ge2$, two zero occurrences are
+joined by a possibly degenerate path of length at most
+\[
+ \frac{71}{10}\,\rho
+\]
+inside $K_{2\mu}$.  If $f$ is squarefree, their locations are distinct.
+If every root lies in the open unit disc and $\mu\le1/2$, the construction
+may be chosen inside $\{|f|<1\}$ with length at most $5.7$.
+\end{theorem}
+
+The constant is the rationally certified specialization of a two-parameter
+bound.  If the selected working component contains $k\ge2$ roots, then for
+every $r\in(0,1)$ and $\lambda>1$ the proof constructs a path in
+$K_{\lambda\mu}$ whose length is at most
+\[
+ \sqrt{\frac2k}\left(
+   \frac{\sqrt2\,r}{(1-r)^2}
+   +\lambda^{1/n}\left(
+      \sqrt{\log(\lambda/r)}+
+      \frac{\pi}{\sqrt{\log\lambda}}
+    \right)
+ \right)\rho.                                      \tag{CF}
+\]
+For $n\ge3$, the choice $\lambda=2$, $r=3/20$ makes the bracket less
+than $71/10$: the largest case is $n=3$, where exact rational bounds give
+$66517563/9392500<71/10$.  Degree two has the exact root-segment bound
+$2\rho$.
+
+\begin{proof}[Proof architecture]
+Choose a critical point at level $\mu$ and a component at a regular level
+$t\in[\mu,\lambda\mu]$ that contains the corresponding first merge.  If a
+regular component $C'$ at level $\sigma$ contains $k'$ roots, winding and
+Cauchy--Schwarz give the local perimeter estimate
+\[
+ \mathcal H^1(\partial C')^2
+ \le2\pi k'\,\sigma\,\frac{d}{d\sigma}
+      \operatorname{Area}(K_\sigma\cap C').         \tag{CF1}
+\]
+P\'olya's area--capacity inequality
+$\operatorname{Area}(K_T)\le\pi T^{2/n}$ then selects $t$ with a
+degree-free boundary-length bound.
+
+For an argument avoiding the finitely many critical-value rays, lift the
+radial value segment from each root to $\partial C_t$.  Split each lift at
+level $r\mu$.  Koebe distortion controls the low pieces.  The exact
+precritical conformal-radius energy inequality
+\[
+ \sum_i\frac{\mu^2}{|f'(z_i)|^2}\le\rho^2          \tag{CF2}
+\]
+aggregates those pieces without paying once per root.  Coarea and~(CF1)
+control the high pieces on average over the argument.  Choose one argument
+realising that average, order the lift endpoints cyclically on
+$\partial C_t$, and use the shortest adjacent boundary arc.  Averaging the
+two lifts and the boundary arcs over the $k$ adjacent pairs gives~(CF).
+The strict unit-sublevel statement chooses the regular level below the top of
+the window when $\lambda\mu\le1$.
+\end{proof}
+
+\paragraph{Evidence and exact boundary.}
+\label{bdry:constant-factor}
+Theorem~\ref{res:constant-factor-path} is ordinary mathematics with no
+Lean-checked part.  It uses the capacity identity, P\'olya's area inequality,
+Cauchy--Schwarz, the univalent-map distortion estimate, and a finite graph
+exit lemma; no external paper theorem is imported into it.  The public source
+of record is
+\texttt{research\_corpus/Erdos1041/UnconditionalConstantFactorBound.md}.  Its
+containment level is $2\mu$ and its constant is $71/10$, so it does not reach
+either half of the target, and the sharp constant $2$ remains open.  The
+adjacent classical literature on lemniscate length measures a different
+object, namely the arclength of the level curve $\{|p|=1\}$, which is
+Erd\H{o}s~\#114: Borwein's $8\pi en$
+\cite{borwein1995}, Eremenko and Hayman's $9.173n$ \cite{eremenkohayman1999},
+Fryntov and Nazarov's asymptotically sharp $2n+o(n)$ \cite{fryntovnazarov2008},
+and Tao's resolution for large $n$ \cite{tao2025}.  A bound $74n^2$ is
+attributed to Pommerenke in the same family, and this note records no located
+reference for it.  None of these bounds a
+root-to-root path, and a dated search on 2 September 2026 located no
+constant-factor root-pair bound in arbitrary degree.
+
+\section{Degree three}
+\label{sec:degree-three}
+
+\begin{theorem}[the cubic case]
+\label{res:degree-three}
+Let $f(z)=\prod_{j=1}^{3}(z-z_j)$ with $|z_j|<1$, the roots listed with
+multiplicity.  Then two listed root occurrences are joined inside
+$\{|f|<1\}$ by a polygonal path of length strictly below $2$.  If $f$ is
+squarefree the two are distinct.
+\end{theorem}
+
+\begin{proof}
+Multiple roots give a constant path, so assume $f$ squarefree.  A component
+containing two roots contains a critical point, so the
+Erd\H{o}s--Herzog--Piranian component lemma \cite[p.~139]{ehp1958} supplies a
+critical point with critical-value modulus below one.
+
+Suppose first that $f'$ has two distinct zeros.  Choose a critical point $c$
+minimising $|f(c)|$, write the other one as $c+\delta$, and put $v=f(c)$, so
+$0<|v|<1$.  Monicity gives the exact expansion
+$f(c+d)=d^3-\tfrac32\delta d^2+v$.  Choose $\alpha$ with $\alpha^3=v$ and set
+$b=\delta/\alpha$; dividing by $v$ gives
+$f(c+\alpha w)/v=P_b(w)$ with
+\[
+ P_b(w)=w^3-\tfrac32bw^2+1 .
+\]
+At the other critical point $f(c+\delta)=v(1-b^3/2)$, so minimality of $|v|$
+is exactly the hypothesis $|1-b^3/2|\ge1$.
+
+Under that hypothesis $P_b$ has at least two zeros, with multiplicity, in the
+closed unit disc.  In the strict region a unit-circle zero $w$ would give
+$b=\tfrac23(w+w^{-2})$, and with $w^3=e^{2iu}$ and $c_u=\cos u$ a direct
+calculation gives $|1-b^3/2|^2=1+\tfrac{64}{729}c_u^4(16c_u^2-27)\le1$, an
+equality only at $c_u=0$, where $b=0$.  So the strict region has no
+unit-circle zero.  The radial deformation $b\mapsto sb$, $s\ge1$, stays in
+the strict region, since $z=b^3/2$ and $|1-z|^2>1$ give
+$|1-s^3z|^2-1=s^3(s^3|z|^2-2\Re z)>0$.  For large $s$, Rouch\'e's theorem on
+$|w|=1$ compares $P_{sb}$ with $-\tfrac32sbw^2$, whose modulus
+$\tfrac32s|b|$ exceeds $2\ge|w^3+1|$, so $P_{sb}$ has exactly two zeros in
+the open unit disc; no zero crosses the circle along the deformation.  The
+equality case follows by letting $s$ decrease to one and using continuity of
+the root multiset.
+
+If $P_b(w)=0$ and $0\le t\le1$, then
+$P_b(tw)=1-t^2-t^2(1-t)w^3$, so $|w|\le1$ gives
+$|P_b(tw)|\le(1-t^2)+t^2(1-t)|w|^3\le1-t^3\le1$.  The whole segment from $0$
+to $w$ is therefore safe.  Selecting two normalized roots $w_1,w_2$ with
+$|w_i|\le1$, the two segments from $c$ to $c+\alpha w_i$ lie in
+$\{|f|\le|v|\}\subset\{|f|<1\}$ and have combined length at most
+$2|\alpha|=2|v|^{1/3}<2$.
+
+If instead $f'$ has a double zero $c$, then $f(c+d)=d^3+v$ and the roots are
+$c+\alpha$, $c+\alpha\omega$, $c+\alpha\omega^2$.  Averaging their squared
+moduli gives $|c|^2+|\alpha|^2<1$, so $|\alpha|<1$; any two radial spokes
+have total length $2|\alpha|<2$, and along either spoke the value has modulus
+$|v|(1-t^3)<1$ away from the root endpoint.
+\end{proof}
+
+\paragraph{Evidence and exact boundary.}
+\label{bdry:degree-three}
+The reduction, the zero-count lemma and the assembly are ordinary
+mathematics.  The spoke identity $P_b(tw)=1-t^2-t^2(1-t)w^3$ and the norm
+bound that follows from it are stated as Lean declarations in
+\texttt{research\_corpus/Erdos1041/CubicCriticalHub.lean}, a research-corpus
+file that lies outside the pinned formal-source library, so this release
+attaches no pinned-kernel receipt to them.  The public source of record is
+\texttt{research\_corpus/Erdos1041/CubicCriticalHub.md}.  Pendyala proves the
+degree-four case \cite[Thm.~1, p.~1]{june2026}; whether degree three was
+already recorded on the Erd\H{o}s Problem~\#1041 discussion thread or in
+\cite{ehp1958} has not been adjudicated, so the priority question here is
+open.  The argument uses the sparse normalized form $w^3-\tfrac32bw^2+1$,
+and a higher-degree proof needs a replacement for that sparsity.
 
 \section{An all-degree critical-value separation theorem}
 \label{sec:critical-value-separation}
@@ -368,6 +667,17 @@ prove an unrestricted admissible-hub selector, a COVER theorem, or
 Erd\H{o}s~\#1041.  P\'olya supplies the global area inequality; the
 square-resolved covering and coefficient argument above assemble it into
 the displayed sufficient regime and exact constants.
+
+One attribution remains to be completed.  Dubinin's Theorem~1
+\cite{dubinin} is a P\'olya-type area inequality: the area of $\{|f|<s\}$ is
+at most $s^{2/n}$ times the area of $\{|f|<1\}$.  Tao identified it on the
+Erd\H{o}s Problem~\#1041 discussion page on 25 March 2026 as the source of
+that scaling factor.  The published text is paywalled and has been seen here
+only in that paraphrase, so the inequality is used in the form just stated,
+no sharper consequence is drawn from it, and reading the original before any
+external submission remains an open obligation.  Corollary~\ref{res:critical-value-thresholds}
+states $S=2$ at $n\ge6$; an earlier form of this threshold recorded $n\ge7$,
+which the sharp degree analysis above supersedes.
 
 \section{Three exact solved polynomial families}
 \label{sec:solved-polynomial-families}
@@ -1367,9 +1677,9 @@ the threshold $2$.  These are grid distances for the sampled configurations:
 upper bounds on those samples, not bounds over the family.  The apparent
 decrease with degree is a property of the sample, and we draw no conjecture from
 it.
-Future searches should target named failure modes---near-degenerate saddles,
-thin necks, boundary-critical configurations and almost-connected
-separatrices---and report those diagnostics.  Raster paths remain candidate
+Future searches should target four named failure modes: near-degenerate
+saddles, thin necks, boundary-critical configurations, and almost-connected
+separatrices.  They should report those diagnostics.  Raster paths remain candidate
 finders, never continuous certificates.
 
 \section{Complements and further questions}\label{sec:open}
@@ -1639,6 +1949,40 @@ zero identity}.
   \url{https://arxiv.org/abs/2606.24875},
   doi:\href{https://doi.org/10.48550/arXiv.2606.24875}
   {10.48550/arXiv.2606.24875}.
+\bibitem{dubinin} V.~N. Dubinin, \emph{Some inequalities for polynomials and
+  rational functions associated with lemniscates}, Zap. Nauchn. Sem. POMI
+  \textbf{404} (2012), 83--99; English translation, J. Math. Sci. \textbf{193}
+  (2013), no.~1, 45--54,
+  doi:\href{https://doi.org/10.1007/s10958-013-1432-4}{10.1007/s10958-013-1432-4}.
+  Theorem~1 is the P\'olya-type area inequality: the area of the sublevel
+  region $\{|f|<s\}$ is at most $s^{2/n}$ times the area of $\{|f|<1\}$.  It
+  was identified by T.~Tao on the Erd\H{o}s Problem~\#1041 discussion page,
+  25 March 2026, as the source of that scaling factor.  The published text is
+  paywalled and has been seen only in Tao's paraphrase, so the inequality is
+  used here exactly in the form just stated and no sharper consequence is
+  drawn from it.
+\bibitem{borwein1995} P.~Borwein,
+  \emph{The arc length of the lemniscate $\{|p(z)|=1\}$},
+  Proc. Amer. Math. Soc. (1995),
+  doi:\href{https://doi.org/10.1090/S0002-9939-1995-1223265-3}
+  {10.1090/S0002-9939-1995-1223265-3}.
+  Bound $8\pi en$ for the level-curve arclength of Erd\H{o}s~\#114.
+\bibitem{eremenkohayman1999} A.~Eremenko and W.~Hayman,
+  \emph{On the length of lemniscates},
+  Michigan Math. J. \textbf{46} (1999), no.~2, 409--415; preprint
+  arXiv:0805.2295. \url{https://arxiv.org/abs/0805.2295}.
+  Bound $9.173\,n$ for the same level-curve arclength.
+\bibitem{fryntovnazarov2008} A.~Fryntov and F.~Nazarov,
+  arXiv:0808.0717 (2008).
+  \url{https://arxiv.org/abs/0808.0717}.
+  Asymptotically sharp $2n+o(n)$ for the level-curve arclength, extremal at
+  $p(z)=z^n-1$.  The title of this preprint is not recorded in this
+  repository's prior-art file.
+\bibitem{tao2025} T.~Tao,
+  \emph{The maximal length of the Erd\H{o}s--Herzog--Piranian lemniscate in
+  high degree}, arXiv:2512.12455 (December 2025).
+  \url{https://arxiv.org/abs/2512.12455}.
+  Resolves the Erd\H{o}s~\#114 level-curve conjecture for large $n$.
 \end{thebibliography}
 
 \end{document}

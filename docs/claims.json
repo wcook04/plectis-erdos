@@ -944,7 +944,17 @@
           "rendered": "paper/erdos-68-factorial-denominator-irrationality.pdf",
           "role": "Standalone theorem-led problem note for Erdős #68 and the factorial-channel breakpoint boundary.",
           "anchor_label_allowlist": [
-            "res:bandbreakpoint"
+            "res:bandbreakpoint",
+            "bdry:fixed-owner-absorption",
+            "res:lead-carry-equivalence",
+            "res:lead-channel-radius",
+            "res:lead-companion-orbit",
+            "res:lead-denominator-exclusions",
+            "res:lead-moving-factor-split",
+            "res:lead-prime-pole",
+            "res:split-factor-normalized-collision",
+            "res:translator",
+            "sec:adjacent-unit-no-go"
           ]
         },
         {
@@ -954,7 +964,10 @@
           "role": "Standalone theorem-led problem note for Erdős #269 and the three-prime residue-escape boundary.",
           "anchor_label_allowlist": [
             "res:consumer",
-            "res:windowconsumer"
+            "res:windowconsumer",
+            "res:actual-orbit",
+            "res:all-scale-lattice",
+            "res:lead-infinite-rank"
           ]
         },
         {
@@ -965,7 +978,13 @@
           "anchor_label_allowlist": [
             "res:irr-equivalence",
             "res:gap-nonperiodic",
-            "res:boundedperturbation"
+            "res:boundedperturbation",
+            "res:affinecollapse",
+            "res:escape-irrational",
+            "res:lcmdiagonal",
+            "res:polynomialcountermodel",
+            "res:signedwindow",
+            "res:smallpair-real"
           ]
         },
         {
@@ -974,7 +993,9 @@
           "rendered": "paper/erdos-1041-lemniscate-newton-flow.pdf",
           "role": "Standalone theorem-led problem note for Erdős #1041 and the finite ray-separation boundary.",
           "anchor_label_allowlist": [
-            "res:ray"
+            "res:ray",
+            "res:critical-value-separation",
+            "thm:sharp-collinear-diameter"
           ]
         },
         {
@@ -985,7 +1006,11 @@
           "anchor_label_allowlist": [
             "res:nocorridor",
             "res:tailrec",
-            "res:forcing"
+            "res:forcing",
+            "res:31over4",
+            "res:archcap",
+            "res:region",
+            "res:zudilin-sharp-qorder"
           ]
         },
         {
@@ -994,7 +1019,13 @@
           "rendered": "erdos-243-reciprocal-tail-rigidity.pdf",
           "role": "Standalone theorem-led problem note for Erdős #243 and the bounded-rise fresh-modulus barrier.",
           "anchor_label_allowlist": [
-            "res:barrier"
+            "res:barrier",
+            "res:arithmeticrecord",
+            "res:bounded",
+            "res:constant",
+            "res:mass",
+            "res:slownegative",
+            "res:weightedrecord"
           ]
         },
         {
@@ -1008,7 +1039,15 @@
             "thm:kkernelrank",
             "res:factorideal",
             "res:actualorbit",
-            "res:actualsign"
+            "res:actualsign",
+            "res:canonicalmersenne",
+            "res:firstharmonicnormgap",
+            "res:fulldepth",
+            "res:lcmjump",
+            "res:orbitphase",
+            "res:paritycoboundary",
+            "res:perioddeposits",
+            "res:rankonefloor"
           ]
         },
         {
@@ -1034,7 +1073,18 @@
             "prob:one-over-twenty-one-membership",
             "res:terminalhalf",
             "res:cylinderhalf",
-            "res:reciprocal-summable-support"
+            "res:reciprocal-summable-support",
+            "res:blind",
+            "res:full-support-all-base",
+            "res:generic-repair",
+            "res:half-insufficiency",
+            "res:scaled-greedy-trap",
+            "res:scaled-lower-separatrix",
+            "res:supportvolume",
+            "thm:logstar-mass",
+            "thm:prime-power-supports",
+            "thm:variable-fractional-cover",
+            "thm:weighted-criterion"
           ]
         },
         {
@@ -1712,6 +1762,170 @@
           "primary_narrative_owner": "paper/erdos-1049-rational-base-lambert.tex",
           "source_route": "python3 scripts/query_corpus.py --claim three_halves_coordinatewise_corridor_no_go",
           "consumer_or_open_obligation": "The corridor exclusion covers only its stated six-condition architecture, while the recurrence and forcing bound supply no rationality bridge or bounded-state contradiction; irrationality at 3/2 and the universal #1049 assertion remain open.",
+          "view_decision": "problem_note_reference_detail"
+        },
+        {
+          "id": "erdos257_leading_contributions_2026_09_06",
+          "claim_ids": [
+            "uniform_square_root_repair_criterion",
+            "scaled_greedy_trap_dynamics",
+            "rational_membership_greedy_skip_criterion",
+            "full_support_zero_block_digit_witnesses",
+            "supported_achievement_set_volume_dichotomy",
+            "squarefree_incidence_normalisation_obstruction",
+            "variable_exponent_fractional_covers",
+            "divisibility_weighted_support_irrationality",
+            "sub_logstar_reciprocal_mass_irrationality",
+            "arbitrary_prime_power_support_irrationality",
+            "half_reduction_proved_insufficiency_layers",
+            "first_harmonic_norm_gap_reduction",
+            "totient_parity_coboundary_countermodel"
+          ],
+          "status_summary": "The uniform square-root repair criterion, the scaled greedy trap dynamics, the greedy-skip rational-membership criterion, zero-block digit witnesses, the achievement-set volume dichotomy, the squarefree-incidence obstruction, variable-exponent fractional covers, the divisibility-weighted, sub-log-star and prime-power support irrationality theorems, and the proved insufficiency layers of the half reduction.",
+          "prior_art_posture": "Erdős 1968 owns the reciprocal-summable statement and full support; Duverney and Tachiya own base-2 squarefree supports; the repair criterion, trap dynamics and weighted families have no located antecedent; novelty unassessed.",
+          "primary_narrative_owner": "paper/erdos-257-mersenne-support-subseries.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim uniform_square_root_repair_criterion",
+          "consumer_or_open_obligation": "Leaves remaining_open.universal_257_all_infinite_supports and remaining_open.half_value_membership.",
+          "view_decision": "problem_note_reference_detail"
+        },
+        {
+          "id": "erdos249_leading_contributions_2026_09_06",
+          "claim_ids": [
+            "rank_one_sharp_floor",
+            "canonical_mersenne_frontier",
+            "full_depth_ray_amplifier",
+            "period_multiple_denominator_deposits",
+            "totient_tail_orbit_cofinal_nonpositive_frontier",
+            "lcm_jump_certificate_instances"
+          ],
+          "status_summary": "The rank-one sharp floor 21/320, the first-harmonic norm-gap reduction, the canonical Mersenne frontier, the full-depth ray amplifier, period-multiple denominator deposits, the cofinal-nonpositive tail-orbit frontier, the parity coboundary countermodel and the lcm-jump certificate instances.",
+          "prior_art_posture": "Coons 2010 owns non-2-regularity; Martin 2006 owns affine independence; the explicit floor and the norm-gap reduction have no located antecedent; novelty unassessed.",
+          "primary_narrative_owner": "paper/erdos-249-binary-totient-series.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim rank_one_sharp_floor",
+          "consumer_or_open_obligation": "Leaves remaining_open.erdos_249_irrationality and names the exponential-sum estimate that would close it.",
+          "view_decision": "problem_note_reference_detail"
+        },
+        {
+          "id": "erdos243_leading_contributions_2026_09_06",
+          "claim_ids": [
+            "weighted_record_excess_criterion",
+            "arithmetic_weighted_record_dichotomy",
+            "lcm_record_first_crossing_core",
+            "bounded_negative_part_rigidity",
+            "summable_negative_mass_rigidity",
+            "reciprocal_series_realisation",
+            "constant_negative_exclusion",
+            "slow_rise_landing_barrier",
+            "slow_rise_reduced_tail_exclusion",
+            "slow_negative_part_rigidity"
+          ],
+          "status_summary": "The weighted record-excess criterion and its arithmetic dichotomy, the record first-crossing core, the bounded-negative and summable-negative-mass rigidity theorems, and the reciprocal-series realisation bridge.",
+          "prior_art_posture": "Koizumi owns the normalised-vanishing bridge and Badea the classical antecedent; the record-excess criterion has no located antecedent; novelty unassessed.",
+          "primary_narrative_owner": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim weighted_record_excess_criterion",
+          "consumer_or_open_obligation": "Leaves the finiteness of the weighted record-excess sum open (remaining_open.erdos_243_eventual_recurrence).",
+          "view_decision": "problem_note_reference_detail"
+        },
+        {
+          "id": "erdos1041_leading_contributions_2026_09_06",
+          "claim_ids": [
+            "erdos_1041_critical_value_separation",
+            "erdos_1041_sharp_collinear_diameter",
+            "erdos_1041_critical_geometry"
+          ],
+          "status_summary": "The critical-value separation regime with sharp constant, the sharp collinear diameter, and the critical-geometry proximity criteria.",
+          "prior_art_posture": "Pendyala-type results are incomparable; Dubinin and the arclength literature bound a different object; the 71/10 pair bound is adjudicated new; the rest unassessed.",
+          "primary_narrative_owner": "paper/erdos-1041-lemniscate-newton-flow.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim erdos_1041_critical_value_separation",
+          "consumer_or_open_obligation": "Leaves remaining_open.erdos_1041_lemniscate_connection; the 13/25 closure and degree three are ordinary proofs recorded on the open row.",
+          "view_decision": "problem_note_reference_detail"
+        },
+        {
+          "id": "erdos1049_leading_contributions_2026_09_06",
+          "claim_ids": [
+            "rational_base_irrationality_region",
+            "f_thirty_one_over_four_irrational",
+            "rational_base_degree_budget_cap",
+            "rational_base_threshold_equals_reciprocal_exponent",
+            "zudilin_sharp_hankel_qorder",
+            "zudilin_first_transformed_row_initial_monomial"
+          ],
+          "status_summary": "The region theorem and the 31/4 family at their ordinary-proof scope, the degree-budget cap, the threshold-equals-reciprocal-exponent identity, and the sharp Hankel order results.",
+          "prior_art_posture": "Zudilin 2016 announced the rational-base extension without a value and owns the Hankel inequality; Bundschuh and Väänänen 1994 own the published region; the explicit threshold has no located antecedent; novelty unassessed.",
+          "primary_narrative_owner": "paper/erdos-1049-rational-base-lambert.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim rational_base_irrationality_region",
+          "consumer_or_open_obligation": "Leaves remaining_open.erdos_1049_irrationality at base 3/2.",
+          "view_decision": "problem_note_reference_detail"
+        },
+        {
+          "id": "erdos68_leading_contributions_2026_09_06",
+          "claim_ids": [
+            "erdos68_square_subsequence_channel_radius",
+            "erdos68_channel_radius_method_ceiling",
+            "erdos68_companion_orbit_boundary",
+            "erdos68_strict_successor_carry_equivalence",
+            "erdos68_moving_factor_scale_split",
+            "erdos68_unit_factor_pair_floor_split",
+            "erdos68_kempner_index_denominator_exclusion",
+            "erdos68_gmp_carry_census_300000",
+            "erdos68_certified_cf_denominator_floor",
+            "erdos68_prime_pole_cancellation_law",
+            "erdos68_odd_pair_carry_break_equivalence",
+            "erdos68_odd_threshold_consumer_and_parity_pattern",
+            "erdos68_ultra_endpoint_cylinder_classification",
+            "erdos68_adjacent_unit_window_circularity",
+            "erdos68_erdos_straus_coboundary_collapse",
+            "erdos68_wilson_cofinal_prefix_private_hits",
+            "erdos68_wilson_reflection_no_go",
+            "erdos68_global_complementary_tail_reduction",
+            "erdos68_collision_scaled_fractional_part_criterion",
+            "erdos68_fixed_owner_absorption_no_go",
+            "erdos68_factor_split_projection_reduction",
+            "erdos68_wilson_square_record_entry",
+            "erdos68_nonterminal_square_record_entry",
+            "erdos68_residual_cofactor_recurrence",
+            "erdos68_terminal_wilson_owner_pairs",
+            "erdos68_unique_owner_squared_factorial_ceiling",
+            "erdos68_prime_unit_translator_remote_reduction",
+            "erdos68_canonical_digit_termination_equivalence"
+          ],
+          "status_summary": "Leading contributions surfaced by the 6 September inventory: the kernel-checked channel-radius obstruction, the companion-orbit boundary, the moving-factor scale split, exact carry equivalences, and the certified denominator exclusions.",
+          "prior_art_posture": "Channel radius, scale split and prime-pole law have no located antecedent; the companion-orbit boundary extends Cantor 1869 and Galambos 1976; novelty unassessed throughout.",
+          "primary_narrative_owner": "paper/erdos-68-factorial-denominator-irrationality.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim erdos68_square_subsequence_channel_radius",
+          "consumer_or_open_obligation": "Leaves remaining_open.erdos_68_irrationality; the denominator exclusions are finite evidence.",
+          "view_decision": "problem_note_reference_detail"
+        },
+        {
+          "id": "erdos251_leading_contributions_2026_09_06",
+          "claim_ids": [
+            "lcm_diagonal_rationality_criterion",
+            "dyadic_tail_shift_rationality_classification",
+            "affine_and_block_residue_escape_circularity",
+            "signed_two_window_normal_form",
+            "actual_real_prime_gap_tail_normal_form",
+            "polynomial_gap_countermodel_series_value"
+          ],
+          "status_summary": "The lcm-diagonal rationality criterion, the dyadic tail-shift classification, the affine and block residue-escape circularity, the signed two-window normal form, the actual real-tail normal form and the polynomial-gap countermodel value.",
+          "prior_art_posture": "Kovač owns the neighbouring telescoping countermodel (15 April 2026); the criteria and normal forms have no located antecedent; novelty unassessed.",
+          "primary_narrative_owner": "paper/erdos-251-prime-gap-dyadic-series.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim lcm_diagonal_rationality_criterion",
+          "consumer_or_open_obligation": "Leaves remaining_open.erdos_251_irrationality; the kernel denominator floor and free-pair criterion live outside the pinned source.",
+          "view_decision": "problem_note_reference_detail"
+        },
+        {
+          "id": "erdos269_leading_contributions_2026_09_06",
+          "claim_ids": [
+            "three_prime_kernel_no_finite_separation",
+            "three_prime_all_scale_rationality_lattice",
+            "three_prime_actual_shell_orbit_dichotomy",
+            "irrational_rotation_staircase_engine"
+          ],
+          "status_summary": "The three-prime kernel with no finite exact separation, the all-scale rationality lattice, and the actual shell-orbit dichotomy.",
+          "prior_art_posture": "Steve Fan owns the two-prime transcendence and the LCM identity (26 June 2026); the three-prime non-separability is adjudicated new; the others are unassessed.",
+          "primary_narrative_owner": "paper/erdos-269-three-prime-running-lcm.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim three_prime_kernel_no_finite_separation",
+          "consumer_or_open_obligation": "Leaves remaining_open.erdos_269_three_prime_irrationality; the window-escape equivalence shows the producer is the target.",
           "view_decision": "problem_note_reference_detail"
         }
       ]
@@ -12678,6 +12892,7 @@
     "proved here": "Lean theorem in the committed formal-source checkpoint; no novelty assertion is implied",
     "formalised here": "Known mathematics represented and checked in Lean",
     "unconditional progress": "Genuine theorem that does not settle the open problem",
+    "ordinary proof here": "Theorem proved in the note by ordinary mathematics; no Lean declaration proves its endpoint, and any kernel-checked ingredient is named in the note rather than listed here",
     "conditional reduction": "Exact implication whose remaining hypothesis is open",
     "verified finite instance": "Kernel-checked computation at a bounded range",
     "cited only": "External theorem used for positioning, not formalised",
@@ -14444,7 +14659,7 @@
         "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
         "environment": "problem",
         "title": "Erdős #68",
-        "line": 92
+        "line": 127
       }
     },
     {
@@ -14468,7 +14683,7 @@
         "source": "paper/erdos-251-prime-gap-dyadic-series.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 107
+        "line": 187
       }
     },
     {
@@ -14504,7 +14719,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1785
+        "line": 2043
       }
     },
     {
@@ -14528,7 +14743,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 105
+        "line": 144
       }
     },
     {
@@ -14540,7 +14755,7 @@
         "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
-        "line": 127
+        "line": 163
       }
     },
     {
@@ -14552,7 +14767,7 @@
         "source": "paper/erdos-1049-rational-base-lambert.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 71
+        "line": 114
       }
     },
     {
@@ -14564,7 +14779,7 @@
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "Erdős #243",
-        "line": 100
+        "line": 143
       }
     },
     {
@@ -14576,7 +14791,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "exact nonintegrality of every reduced tail",
-        "line": 1560
+        "line": 1760
       }
     },
     {
@@ -14588,7 +14803,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "actual cofinal local-window escape",
-        "line": 1595
+        "line": 1795
       }
     },
     {
@@ -14600,7 +14815,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "function-faithful two-dimensional representation",
-        "line": 1674
+        "line": 1888
       }
     },
     {
@@ -14612,7 +14827,7 @@
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "global overlap-height growth",
-        "line": 1511
+        "line": 2008
       }
     },
     {
@@ -14624,7 +14839,7 @@
         "source": "paper/erdos-249-binary-totient-series.tex",
         "environment": "problem",
         "title": "first-harmonic anti-concentration on supplier fibres",
-        "line": 1699
+        "line": 1953
       }
     },
     {
@@ -14636,7 +14851,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "weakest native recurrence criterion",
-        "line": 1844
+        "line": 2102
       }
     },
     {
@@ -14648,7 +14863,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "actual-orbit invariant",
-        "line": 1866
+        "line": 2124
       }
     },
     {
@@ -14660,7 +14875,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1888
+        "line": 2146
       }
     },
     {
@@ -14672,7 +14887,7 @@
         "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
         "environment": "problem",
         "title": "weighted collision-product control",
-        "line": 1374
+        "line": 1562
       }
     },
     {
@@ -14684,7 +14899,7 @@
         "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
         "environment": "problem",
         "title": "cofinal lower-endpoint escape",
-        "line": 1458
+        "line": 1646
       }
     },
     {
@@ -14696,7 +14911,7 @@
         "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "additive-error strip gluing",
-        "line": 1453
+        "line": 1763
       }
     }
   ],
@@ -14705,11 +14920,10 @@
       "id": "erdos_68",
       "label": "Erdős #68: irrationality of S = ∑_{n≥2} 1/(n! − 1)",
       "status": "open",
-      "statement": "The irrationality of the factorial-denominator series remains open in this release; the checked reductions and finite obstructions do not supply the required cofinal failure.",
+      "statement": "The irrationality of the factorial-denominator series remains open in this release. The strongest supported partial result is the square-subsequence channel-radius lower bound erdos68_square_subsequence_channel_radius, which is Lean-checked in full and excludes eventual 3/2 upper bounds together with little-o(t^3) growth for the normalized channel radius. The checked equivalences and the two finite denominator exclusions do not supply the required cofinal failure.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_68_irrationality"
       ],
-      "paper_label": null,
       "readme_headline": false,
       "declarations": []
     },
@@ -14717,7 +14931,7 @@
       "id": "erdos_269",
       "label": "Erdős #269: irrationality of running-LCM reciprocal sums",
       "status": "open",
-      "statement": "The running-LCM reciprocal sum remains unresolved from three or more primes in this release; the checked three-prime structure and conditional residue-escape consumer do not provide the missing rationality-to-carry bridge or cofinal escape.",
+      "statement": "The running-LCM reciprocal sum remains unresolved from three or more primes in this release. The rationality-to-carry bridge is closed by a kernel proof in the private formal source and in the Palomar cut, at ErdosProblems/Erdos269/RationalityCarryBridge.lean:324, and that module is absent from the formal-source checkpoint pinned by this release. The cofinal local-window escape condition is proved equivalent to irrationality of the series in the same two trees, at ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:398, so that condition is a restatement of the target rather than a weaker sufficient condition. What remains open is the target itself for every |P| >= 3.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_269_three_prime_irrationality"
       ],
@@ -14735,7 +14949,31 @@
       ],
       "paper_label": null,
       "readme_headline": false,
-      "declarations": []
+      "declarations": [],
+      "ordinary_proof_extensions": {
+        "status": "reviewed_ordinary_proofs_not_new_lean_or_comparator_claims",
+        "source": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos251/FreePairStateCompressionLab.md and AdjacentMismatchDensityLab.md in the private development",
+        "receipts": [
+          "state/formal_math/probes/erdos251_certified_cf_receipt.json",
+          "state/formal_math/probes/erdos251_kernel_denominator_certificate_receipt.json",
+          "state/formal_math/probes/erdos251_adjacent_mismatch_receipt.json"
+        ],
+        "outside_pinned_formal_source": [
+          "Kernel-decided denominator floor: every rational equal to the prime series, and hence every rational equal to the prime-gap series, has denominator at least 2^589 > 10^177, decided by decide +kernel on one Boolean certificate over the 1229 primes below 10^4. Lean theorems kernel_denominator_floor and kernel_denominator_floor_primeGap at lines 315 and 323 of ErdosProblems/Erdos251/KernelDenominatorFloor.lean, which is present in the private tree and in the Palomar cut and absent from this release tree. Scheduled for the next governed build.",
+          "Free-pair criterion: irrationality of the prime-gap dyadic series is equivalent to the existence, for every modulus t and every cutoff, of indices M congruent to N modulo t beyond the cutoff whose scaled tails differ by a non-integer. Lean theorems at lines 236, 92 and 186 of ErdosProblems/Erdos251/FreePairReduction.lean, present in the private tree and in the Palomar cut and absent from this release tree. Scheduled for the next governed build."
+        ],
+        "exact_computations": [
+          "Certified continued-fraction exclusion: every rational equal to the prime series has reduced denominator q >= 2^39997, hence q > 10^12040, from 23369 partial quotients at 80000 bits each forced by a rational bracket of width 1 with the separation verified, over the Lean-checked tail estimate p_n <= 1250(n+1)^4. No Lean declaration carries it. The receipt records the power-of-two exponent 39997, the bit length 39998, the strict decimal power 12040 and the decimal digit count 12041; the certified statement uses 39997 and 12040.",
+          "Adjacent-mismatch event density: over 6841648 primes below 1.2e8 and offsets h = 1 to 16 the reduced event occurs at every offset, at density between 0.00418 and 0.008248, with 56427 occurrences at h = 1 and the last at prime 119995753. A finite measurement over one range, supplying no cofinal statement.",
+          "Free-pair cofinality measurement: over 1270607 primes below 2e7, for every t up to 20 and every residue class modulo t, witnesses run through the index window 1143545 to 1270540, the leanest class at t = 20 carrying 90150 witnesses. Uniformity in t and in the cutoff is missing."
+        ],
+        "ordinary_proofs": [
+          "State compression: exchanging summation gives the sum over N <= X of T_N at most (p_{X+1} - p_0) + 2*T_X; under rationality with reduced odd denominator d, Markov's inequality forces some single value of T_N to be attained more than a constant times X/log X times on (X, 2X]. Rationality therefore makes the tail a finite-state object at every scale, so pairs with equal tails are abundant and the difficulty in the free-pair producer is the nonintegrality of the difference. The naive form with bound p_{X+1} is false.",
+          "Redundancy of the gap condition: under the free-pair lattice the difference of tails is an integer whenever the modulus divides the offset, and an integer cannot lie in the open interval from 1/2 to 1, so the first component of the reduced event is already a contradiction.",
+          "Sharpened residual: the narrowest sufficient prime-theoretic input recorded for the two-condition form is a pair of Polignac numbers differing by 2, both realised infinitely often inside a common index residue class modulo t, for every t. Weaker than a Hardy-Littlewood correlation at a fixed offset."
+        ],
+        "boundary": "None of the entries above is a new Lean formalisation in this release, a Comparator result, a Palomar acceptance, or a solution of Erdos Problem 251. The two entries under outside_pinned_formal_source are Lean theorems of the private development and are recorded here with their coordinates so that the public surface does not understate what has been proved; they carry no authority in this release until a governed build brings them into the pinned source."
+      }
     },
     {
       "id": "prime_gap_unboundedness_and_nonperiodicity",
@@ -14772,6 +15010,16 @@
       "readme_headline": false,
       "declarations": [
         {
+          "name": "prime0_le_polynomial",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 360
+        },
+        {
+          "name": "tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 427
+        },
+        {
           "name": "irrational_tsum_primeDyadicTerm_iff_primeGap",
           "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
           "line": 435
@@ -14801,7 +15049,53 @@
       ],
       "paper_label": null,
       "readme_headline": false,
-      "declarations": []
+      "declarations": [],
+      "ordinary_proof_extensions": {
+        "status": "reviewed_ordinary_proofs_not_new_lean_or_comparator_claims",
+        "source": "research_corpus/Erdos1041/",
+        "results": [
+          {
+            "id": "low_critical_thirteen_twentyfifths",
+            "statement": "Every squarefree monic f of degree n >= 2 whose least critical-value modulus mu = min{|f(c)| : f'(c)=0} satisfies mu <= 13/25 has two distinct roots joined inside {|f| < 1} by a rectifiable curve of length strictly below 2. No hypothesis is placed on root locations, on the number of roots in any component, or on component capacity. Scale-free form: every squarefree monic f has two distinct roots joined inside {|f| < (25/13) mu} by a curve of length below 2((25/13) mu)^(1/n).",
+            "evidence": "ordinary proof closed by an exact rational certificate; no Lean part anywhere",
+            "certificate": "X = 635762889599/1000000000000 < 0.6357629 with (13/25) exp(X) < 1, from the full replay at 18 area-table levels, 14 radii per dual, 126 certified duals, step 1/400, single initial lower area 1e-6; quick mode certifies X = 664373027131/1000000000000 and the weaker threshold 51/100",
+            "source": "research_corpus/Erdos1041/LowCriticalPathCertificate.md",
+            "replay": "experiments/erdos1041_low_critical_path_certificate.py",
+            "paper_label": "res:low-critical-thirteen-twentyfifths",
+            "prior_art": "unassessed",
+            "remaining_obligation": "the complementary regime 13/25 < mu < 1"
+          },
+          {
+            "id": "unconditional_constant_factor_71_over_10",
+            "statement": "For every monic f of degree n >= 2, with mu the least critical-value modulus and rho = mu^(1/n) = cap(K_mu), two zero occurrences are joined by a possibly degenerate path of length at most (71/10) rho inside K_{2mu} = {|f| <= 2mu}. In the squarefree branch the two locations are distinct. If every root lies in the open unit disc and mu <= 1/2, the construction lies inside {|f| < 1} with length at most 5.7.",
+            "evidence": "ordinary proof; no Lean part anywhere",
+            "certificate": "the two-parameter bracket at lambda = 2, r = 3/20 is at most 66517563/9392500 < 71/10 for every n >= 3, the largest case being n = 3; degree two is the separate exact root-segment case with constant 2",
+            "source": "research_corpus/Erdos1041/UnconditionalConstantFactorBound.md",
+            "receipt": "P: state/formal_math/erdos257_period_noncollapse/erdos1041_constant_factor_bound_receipt.json",
+            "paper_label": "res:constant-factor-path",
+            "prior_art": "adjudicated new on 2026-09-02; the adjacent Erdős #114 arclength family (Pommerenke, Borwein, Eremenko-Hayman, Fryntov-Nazarov, Tao) bounds the level curve {|p| = 1}, a different object",
+            "remaining_obligation": "the containment level is 2mu and the constant is 71/10, so neither half of the target is reached"
+          },
+          {
+            "id": "cubic_case_complete",
+            "statement": "Every f(z) = prod_{j=1}^{3}(z - z_j) with |z_j| < 1, roots listed with multiplicity, has two listed root occurrences joined inside {|f| < 1} by a polygonal path of length strictly below 2; in the squarefree case the two are distinct. The proof normalises to P_b(w) = w^3 - (3/2) b w^2 + 1 at a critical point of minimal critical-value modulus, uses a Rouché zero-count under |1 - b^3/2| >= 1, and closes with the identity P_b(tw) = 1 - t^2 - t^2(1-t) w^3, giving combined length at most 2|f(c)|^(1/3) < 2.",
+            "evidence": "ordinary proof; the spoke identity and its norm bound have Lean declarations in research_corpus/Erdos1041/CubicCriticalHub.lean, which lies outside the pinned formal-source library (ErdosProblems, Erdos249257) and therefore carries no pinned-kernel receipt and cannot be listed as a claim declaration",
+            "lean_companion_declarations": [
+              "normalizedCubic_spoke_identity (line 34)",
+              "cubicSpoke_envelope_le_one (line 42)",
+              "normalizedCubic_spoke_norm_le_one (line 53)",
+              "two_small_normalized_roots_give_short_hub (line 82)",
+              "normalizedCubic_two_small_roots_fan_in (line 96)"
+            ],
+            "source": "research_corpus/Erdos1041/CubicCriticalHub.md",
+            "receipt": "P: state/formal_math/erdos257_period_noncollapse/erdos1041_cubic_critical_hub_receipt.json",
+            "paper_label": "res:degree-three",
+            "prior_art": "unknown; whether degree three was already recorded on the erdosproblems.com #1041 thread or in Erdős-Herzog-Piranian 1958 has not been adjudicated. Pendyala arXiv:2606.24875 settles degree four.",
+            "remaining_obligation": "the argument uses the sparse normalized form w^3 - (3/2) b w^2 + 1; a higher-degree proof needs a replacement for that sparsity"
+          }
+        ],
+        "boundary": "These three are ordinary mathematics. No new Lean formalisation, Comparator result, Palomar acceptance, or solution of erdos_1041 is asserted, and the open row above is unchanged."
+      }
     },
     {
       "id": "newton_ray_separation_consumer",
@@ -14859,7 +15153,7 @@
       "id": "reciprocal_summable_support",
       "label": "Every reciprocal-summable infinite support is irrational at every integer base",
       "status": "proved here",
-      "statement": "For every integer base b ≥ 2 and every infinite A ⊆ ℕ with ∑_{a∈A} 1/a < ∞, the series ∑_{a∈A} 1/(bᵃ − 1) is irrational.",
+      "statement": "For every integer base b ≥ 2 and every infinite A ⊆ ℕ with ∑_{a∈A} 1/a < ∞, the series ∑_{a∈A} 1/(bᵃ − 1) is irrational. The complete implication from those hypotheses is inside the Lean check; no ordinary step and no finite certificate sits outside it. Attribution: Erdős printed the pairwise-coprime case for every integer base b ≥ 2 on p. 222 of Math. Student 36 (1968), 222–226, and on the same page wrote that pairwise coprimality can be removed by a more complicated argument, giving no details; p. 226 repeats that boundary. The statement is therefore his stated extension, and the proof and its checked development are what is local here. The argument is not identified with the one he omitted, and its novelty and priority are unassessed. Remaining obligation: what is left of universal #257 is exactly irrationality for every infinite A with ∑_{a∈A} 1/a = ∞.",
       "remaining_open_proposition_ids": [
         "remaining_open.universal_257_all_infinite_supports"
       ],
@@ -14877,7 +15171,7 @@
       "id": "eb_full_support",
       "label": "Full-support Erdős–Borwein irrationality, every integer base b ≥ 2",
       "status": "formalised here",
-      "statement": "For every integer b ≥ 2, the series ∑_{n≥1} 1/(bⁿ − 1) is irrational (Erdős, 1948).",
+      "statement": "For every integer b ≥ 2, the series ∑_{n≥1} 1/(bⁿ − 1) is irrational (Erdős, 1948). The statement and the mathematics are Erdős's; what is local is the formalisation and the certificate machine that carries it, namely a bounded Bertrand and Chinese-remainder first-block frame, a middle-window divisor-pair average with pigeonhole selection, and an explicit parameter closure. The same certificate family also supplies zero-block digit witnesses, recorded separately as full_support_zero_block_digit_witnesses.",
       "paper_label": "res:full",
       "readme_headline": true,
       "declarations": [
@@ -14885,6 +15179,16 @@
           "name": "irrational_erdosSum_full_support",
           "module": "Erdos249257/CertificateKernel.lean",
           "line": 8516
+        },
+        {
+          "name": "exists_weighted_block_certificates",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 8375
+        },
+        {
+          "name": "irrational_erdosSum_full_support_via_coeff_engine",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 8877
         }
       ]
     },
@@ -14996,7 +15300,7 @@
       "id": "three_prime_cofinal_window_carry_extinction",
       "label": "Conditional cofinal-window extinction of bounded carries for #269",
       "status": "conditional reduction",
-      "statement": "If the denominator-dependent cofinal local-window residue escape holds, then for every positive multiplier B coprime to 30 there is no positive integral sequence satisfying the exact cleared recurrence d_{n+1}=b_n d_n−B m_n together with the corresponding short bound. The same contradiction applies to an explicitly absorbed nonzero common-factor carry after exact cancellation. The bridge from the actual running-LCM series to this carry system and the cofinal escape remain open.",
+      "statement": "If the denominator-dependent cofinal local-window residue escape holds, then for every positive multiplier B coprime to 30 there is no positive integral sequence satisfying the exact cleared recurrence d_{n+1} = b_n d_n - B m_n together with the corresponding short bound. The same contradiction applies to an explicitly absorbed nonzero common-factor carry after exact cancellation. The bridge from the actual running-LCM series to this carry system is proved in the private formal source and in the Palomar cut at ErdosProblems/Erdos269/RationalityCarryBridge.lean:324, and that module is absent from the checkpoint pinned by this release. The cofinal escape hypothesis is equivalent to irrationality of the series, proved at ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:398 in the same two trees, so this row is a reduction of Erdos #269 to Erdos #269 and settles nothing.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_269_three_prime_irrationality"
       ],
@@ -16676,7 +16980,7 @@
       "id": "denominator_exclusion",
       "label": "Unconditional denominator exclusion for the totient constant",
       "status": "formalised here",
-      "statement": "S = ∑ φ(n)/2ⁿ is not equal to p/q for any integer p and any 1 ≤ q ≤ 79 639 646 646 701 375 323 355 774 875 831 053 (≈ 7.96 × 10³⁴). A lower bound on any rational representation, not a proof of irrationality.",
+      "statement": "S = ∑ φ(n)/2ⁿ is not equal to p/q for any integer p and any 1 ≤ q ≤ 79 639 646 646 701 375 323 355 774 875 831 053 (≈ 7.96 × 10³⁴). A lower bound on any rational representation, not a proof of irrationality. This is the strongest kernel-checked size exclusion. A strictly larger floor is available at a weaker evidence class: exact rational bracketing of S at 80000 bits forces 23438 continued-fraction partial quotients and gives q ≥ 2^39989 and q > 10^12038 for any representation S = a/q in lowest terms. That computation carries no Lean proof, and this release's status taxonomy has no status for it, so it owns no row.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_249_irrationality"
       ],
@@ -17254,7 +17558,7 @@
       "id": "dyadic_totient_basis",
       "label": "Explicit basis of the dyadic totient kernel span",
       "status": "unconditional progress",
-      "statement": "Lean constructs an explicit odd-core-indexed basis of the rational span of the full dyadic totient kernel, with exact span equality and linear independence. This is an independent constructive proof route; its infinite-dimensionality consequence is not an independent contribution because Coons's non-2-regularity theorem already implies it.",
+      "statement": "Lean constructs an explicit odd-core-indexed basis of the rational span of the full dyadic totient kernel, with exact span equality and linear independence. This is an independent constructive proof route. Its infinite-dimensionality consequence is not an independent contribution because Coons's non-2-regularity theorem already implies it, and its linear-independence half is subsumed by Martin, arXiv:math/0603053, Theorem 1. What has no located source is the explicit basis, the exact finite-level dimension formula, and the relation normal form; their novelty is unassessed, which is not the same as established.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_249_irrationality"
       ],
@@ -18230,7 +18534,8 @@
           "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
           "line": 465
         }
-      ]
+      ],
+      "cross_reference_note": "The unconditional qualitative equivalence in the same module, TotientTailOrbitCofinalNonpositive at line 412 and totientTailOrbitCofinalNonpositive_iff_irrational at line 445, is owned by the new row totient_tail_orbit_cofinal_nonpositive_frontier. This row keeps the block-density and prime-alignment conditional reductions."
     },
     {
       "id": "terminal_scaled_vanishing_half_countermodel",
@@ -18317,7 +18622,7 @@
       "id": "erdos_1049",
       "label": "Erdős #1049: irrationality of F(t) at rational bases",
       "status": "open",
-      "statement": "The universal rational-base irrationality assertion remains open in this release; checked exclusions at 3/2 and exact recurrence identities do not prove irrationality or rationality at a new endpoint.",
+      "statement": "The universal rational-base irrationality assertion remains open in this release. The release does settle a region of bases: F(a/b) is irrational whenever a > b >= 1 are coprime with log b / log a < theta* = 0.40568302138406054..., which is the claim rational_base_irrationality_region, and 31/4 with all its powers is the first base that region adds beyond the published region of Bundschuh and Vaananen. No base with log b / log a >= theta* is settled, so 3/2 at log 2 / log 3 = 0.630929753571... is undecided here, and the checked exclusions at 3/2 and the exact recurrence identities prove neither irrationality nor rationality there.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
@@ -18437,7 +18742,7 @@
       "id": "erdos_243",
       "label": "Erdős #243: eventual Sylvester recurrence",
       "status": "open",
-      "statement": "The eventual Sylvester recurrence assertion remains open in this release; the bounded-rise barrier and conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.",
+      "statement": "The eventual Sylvester recurrence assertion remains open in this release. The release now carries an exact criterion for it, the weighted record-excess criterion, whose finiteness hypothesis the growth hypothesis does not supply; the bounded-rise barrier and the conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_243_eventual_recurrence"
       ],
@@ -18496,9 +18801,9 @@
     },
     {
       "id": "bounded_negative_exclusion",
-      "label": "Cofinally bounded negative-magnitude exclusion",
+      "label": "Cofinally bounded negative-magnitude exclusion (the weaker sibling of the bounded-negative-part theorem)",
       "status": "conditional reduction",
-      "statement": "For natural sequences a, C, D, and magnitude and B > 0 satisfying 1 < a(n), C(n) > 0, C(n+1) + D(n) = a(n)·C(n), D(n+1) = a(n)·D(n), bounded rise C(n+1) ≤ C(n) + B, magnitude(n) > 0, division-free normalised vanishing (for every K, eventually K·magnitude(n) < C(n)), and a cofinal negative branch with 0 < e ≤ B and D(t) + e = (a(t)−1)·C(t), the hypotheses are inconsistent. This conditional no-go does not decide the full Erdős #243 endpoint or the mixed-sign and unbounded-negative regimes.",
+      "statement": "For natural sequences a, C, D, and magnitude and B > 0 satisfying 1 < a(n), C(n) > 0, C(n+1) + D(n) = a(n) C(n), D(n+1) = a(n) D(n), bounded rise C(n+1) <= C(n) + B, magnitude(n) > 0, division-free normalised vanishing (for every K, eventually K magnitude(n) < C(n)), and a cofinal negative branch with 0 < e <= B and D(t) + e = (a(t) - 1) C(t), the hypotheses are inconsistent. This row binds no_cofinallyBoundedNegative_of_normalizedVanishes at line 1748, which is the intermediate exclusion, and not the note's headline theorem; the headline theorem is the row bounded_negative_part_rigidity. This conditional no-go does not decide the full Erdos #243 endpoint or the mixed-sign and unbounded-negative regimes.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_243_eventual_recurrence"
       ],
@@ -18570,7 +18875,7 @@
       "id": "all_base_totient_kernel_conditional_rank",
       "label": "Conditional exact rank of the all-base totient kernel",
       "status": "conditional reduction",
-      "statement": "For integers k and e with 2 ≤ k and 1 ≤ e, if the explicit canonical all-base family is linearly independent over ℚ, then the span of the actual all-base totient kernel through level e has dimension k^e + 1. The linear-independence hypothesis is an external affine-ordering boundary; this coefficient-space result does not prove irrationality of the binary totient series.",
+      "statement": "For integers k and e with 2 ≤ k and 1 ≤ e, if the explicit canonical all-base family is linearly independent over ℚ, then the span of the actual all-base totient kernel through level e has dimension k^e + 1. This coefficient-space result does not prove irrationality of the binary totient series. Two facts about the hypothesis belong on this row. Martin, arXiv:math/0603053, Theorem 1 already subsumes the linear-independence conclusion, so the hypothesis is a theorem of the literature rather than an open question. And the private authoring tree carries a self-contained Lean proof of the unconditional form, finrank_allBaseTotientKernel_eq, resting on an all-slope auxiliary-prime row with no odd-slope and no primitivity hypothesis, together with an explicit Basis and the relation-module dimension ∑_{1≤j<e} k^j. That module is absent from this checkpoint, so this row records the conditional form only and is to be upgraded when the module enters the release tree.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_249_irrationality"
       ],
@@ -18619,7 +18924,7 @@
       ],
       "declarations": [],
       "ordinary_proof_extensions": {
-        "status": "reviewed_ordinary_proofs_not_new_lean_or_comparator_claims",
+        "status": "reviewed_ordinary_proofs_now_carried_by_named_claim_rows",
         "source": "docs/research/erdos257-eight-return-synthesis.md",
         "complete_proofs": "docs/research/erdos257-eight-return-proofs.md",
         "finite_audit": "docs/research/erdos257-eight-return-audit.json",
@@ -18629,12 +18934,18 @@
           "arbitrary prime-power subsets",
           "variable-exponent positive fractional divisor covers"
         ],
+        "family_claim_rows": [
+          "divisibility_weighted_support_irrationality",
+          "sub_logstar_reciprocal_mass_irrationality",
+          "arbitrary_prime_power_support_irrationality",
+          "variable_exponent_fractional_covers"
+        ],
         "reductions": [
-          "explicit square-root repair windows at 4/9",
-          "conditional divergence upper density 2/7 at 1/21"
+          "explicit square-root repair windows at 4/9, now subsumed by the uniform criterion at every real target",
+          "conditional divergence upper density at 1/21: 2/7 from the two selected anchors, and 337/840 from the twelve selected anchors"
         ],
         "refuted_producer": "eventual modulus-420 tetraprime repair on the actual 4/9 orbit",
-        "boundary": "No complete new Lean formalization, Comparator result, Palomar acceptance, rational-target membership, or solution of universal_257 is asserted."
+        "boundary": "No complete new Lean formalization, Comparator result, Palomar acceptance, rational-target membership, or solution of universal_257 is asserted. The four family rows carry status 'unconditional progress' with empty declarations, because their proofs are ordinary."
       }
     },
     {
@@ -18672,9 +18983,9 @@
     },
     {
       "id": "bounded_perturbation_irrationality_obstruction",
-      "label": "Arbitrary-prefix bounded-perturbation obstruction",
+      "label": "Bounded-perturbation obstruction, general and anchored at the actual prime gaps",
       "status": "unconditional progress",
-      "statement": "For every convergent natural-digit dyadic series, every positive integer M and every finite prefix cutoff K, a perturbation M*delta_n with delta_n in {0,1} and zero below K makes the sum rational. Consequently a property satisfied by every such perturbation cannot force irrationality.",
+      "statement": "For every convergent natural-digit dyadic series, every positive integer M and every finite prefix cutoff K, a perturbation M*delta_n with delta_n in {0,1} and zero below K makes the sum rational. Consequently a property satisfied by every such perturbation cannot force irrationality. The construction is also checked at the actual consecutive prime gaps: for every M >= 1 and every K there are such digits and a rational r with the perturbed prime-gap series equal to r, each perturbed gap lying between g_n and g_n + M and congruent to g_n modulo M. No theorem about the size or the residue of prime gaps that survives such a perturbation can therefore suffice for Erdos Problem 251.",
       "remaining_open_proposition_ids": [],
       "paper_label": "res:boundedperturbation",
       "readme_headline": false,
@@ -18688,6 +18999,21 @@
           "name": "not_forall_irrational_of_bounded_perturbation_invariant",
           "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
           "line": 179
+        },
+        {
+          "name": "exists_rational_bounded_perturbation_primeGap",
+          "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+          "line": 200
+        },
+        {
+          "name": "not_irrational_bounded_perturbation_primeGap",
+          "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+          "line": 210
+        },
+        {
+          "name": "perturbed_gap_bounds",
+          "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+          "line": 220
         }
       ],
       "comparator_transports": [
@@ -18712,6 +19038,2269 @@
               "line": 179
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "uniform_square_root_repair_criterion",
+      "label": "Uniform square-root repair criterion at every real target",
+      "status": "proved here",
+      "statement": "For every real x ≥ 0, write A_x for the actual greedy support of x, P_N for the Lambert prefix numerator generated by A_x, and Q_N(x) = ⌊2^N x⌋ − P_N(x), which the prefix bound makes a nonnegative integer. Membership of x in the Mersenne achievement set is equivalent to a nonincrease of Q at some N in every window [K, K + 2⌊√K⌋ + 12), equivalently to cofinal nonincreases, equivalently to Q_N(x) ≤ the next divisor load cofinally, equivalently to Q_N(x) ≤ N+1 cofinally. One strictly increasing window excludes membership. The criterion is uniform over every real target and supplies no repair occurrence, so it decides no individual target; the rank-4096 replay at 4/9 is an exact finite computation and is not part of any of these statements.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.half_value_membership",
+        "remaining_open.twenty_one_permanent_affine_supercapacity",
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "res:generic-repair",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "mem_iff_greedyBinaryDefect_sqrt_windows",
+          "module": "ErdosProblems/Erdos257/GreedyRepairCriterion.lean",
+          "line": 192
+        },
+        {
+          "name": "mem_iff_greedyBinaryDefect_cofinal_repairs",
+          "module": "ErdosProblems/Erdos257/GreedyRepairCriterion.lean",
+          "line": 175
+        },
+        {
+          "name": "mem_iff_greedyBinaryDefect_cofinal_load_bound",
+          "module": "ErdosProblems/Erdos257/GreedyRepairCriterion.lean",
+          "line": 207
+        },
+        {
+          "name": "mem_iff_greedyBinaryDefect_cofinal_linear_bound",
+          "module": "ErdosProblems/Erdos257/GreedyRepairCriterion.lean",
+          "line": 222
+        },
+        {
+          "name": "not_mem_of_greedyBinaryDefect_strict_sqrt_window",
+          "module": "ErdosProblems/Erdos257/GreedyRepairCriterion.lean",
+          "line": 232
+        }
+      ]
+    },
+    {
+      "id": "scaled_greedy_trap_dynamics",
+      "label": "The Mersenne achievement set is the non-escaping set of an explicit nearly doubling map",
+      "status": "proved here",
+      "statement": "Write scaledGreedyRemainder(x, N) = 2^N times the greedy Mersenne remainder of x after rank N, and mersenneScale(n) = 2^n / (2^n − 1). The scaled recursion sends y to 2y − mersenneScale(N+1) when mersenneScale(N+1) ≤ 2y, and to 2y otherwise. The Mersenne achievement set is exactly the set of reals x with 0 ≤ x and scaledGreedyRemainder(x, N) < 2 for every N; off that set the scaled remainder tends to infinity; and membership is equivalent to one bounded cofinal return. For a nonnegative rational the lower-branch crossing gives a further equivalent form, with the 1/21 instance recorded. Since the achievement set is compact, perfect, nowhere dense and of Lebesgue measure one, this exhibits a fat Cantor set as the filled non-escaping set of an explicit map. No orbit is constructed, so no rational membership question is decided. The compact, perfect and nowhere-dense structure is classical (Kakeya 1914; Kovač–Tao Remark 4.1); prior art for the dynamical identification is unassessed in the claim register.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.half_value_membership",
+        "remaining_open.twenty_one_permanent_affine_supercapacity",
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "res:scaled-greedy-trap",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "scaledGreedyRemainder_succ",
+          "module": "Erdos249257/GreedyTrapDynamics.lean",
+          "line": 72
+        },
+        {
+          "name": "mersenneAchievementSet_eq_scaledGreedyTrap",
+          "module": "Erdos249257/GreedyTrapDynamics.lean",
+          "line": 262
+        },
+        {
+          "name": "mem_mersenneAchievementSet_iff_forall_scaledRemainder_lt_two",
+          "module": "Erdos249257/GreedyTrapDynamics.lean",
+          "line": 245
+        },
+        {
+          "name": "scaledGreedyRemainder_tendsto_atTop_of_not_mem",
+          "module": "Erdos249257/GreedyTrapDynamics.lean",
+          "line": 189
+        },
+        {
+          "name": "mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded",
+          "module": "Erdos249257/GreedyTrapDynamics.lean",
+          "line": 225
+        },
+        {
+          "name": "rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally",
+          "module": "Erdos249257/GreedyTrapDynamics.lean",
+          "line": 152
+        },
+        {
+          "name": "one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded",
+          "module": "Erdos249257/GreedyTrapDynamics.lean",
+          "line": 275
+        }
+      ]
+    },
+    {
+      "id": "rational_membership_greedy_skip_criterion",
+      "label": "Rational membership is exactly cofinal greedy skipping",
+      "status": "proved here",
+      "statement": "For every rational q ≥ 0, q lies in the Mersenne achievement set if and only if its canonical greedy orbit omits infinitely many positive exponents, equivalently if and only if that orbit skips at arbitrarily late ranks, equivalently if and only if the scaled orbit crosses the moving lower separatrix cofinally. The half-value case is the specialisation at q = 1/2. The forward implication spends irrationality of the Erdős–Borwein constant, which is Erdős 1948, so this is not an unconditional greedy fact. The reverse direction is the classical greedy lemma for Cantor-type achievement sets and is folklore; the ambient achievement-set literature is recorded in prior_art_adjudication_2026_09_02.md as identified and unread, and the adjudication registers the criterion as new at medium confidence only. The criterion decides no individual rational.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.half_value_membership",
+        "remaining_open.twenty_one_permanent_affine_supercapacity",
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "res:scaled-lower-separatrix",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite",
+          "module": "Erdos249257/GreedyAchievementSet.lean",
+          "line": 2557
+        },
+        {
+          "name": "rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips",
+          "module": "Erdos249257/GreedyAchievementSet.lean",
+          "line": 2569
+        },
+        {
+          "name": "half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite",
+          "module": "Erdos249257/GreedyAchievementSet.lean",
+          "line": 2582
+        },
+        {
+          "name": "greedySkippedSupport_infinite_iff_scaledLowerBranchCofinally",
+          "module": "Erdos249257/GreedyTrapDynamics.lean",
+          "line": 129
+        }
+      ]
+    },
+    {
+      "id": "full_support_zero_block_digit_witnesses",
+      "label": "Zero-block and near-integer digit witnesses for the full-support value",
+      "status": "proved here",
+      "statement": "For every integer base b ≥ 2 and every q > 0 there are N and an integer z with 0 < b^N · ∑_{n≥1} 1/(b^n − 1) − z < 1/q; specialising q = b^K gives, for every K, a b^N-dilation exceeding an integer by strictly between 0 and b^(−K). So the base-b expansion of the full-support value contains arbitrarily long blocks of zero digits. This is the digit content of the certificate family that also proves the classical irrationality theorem. It is a statement about zero blocks alone: it asserts no normality and no digit-frequency law, and it says nothing about an arbitrary infinite support.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "res:full-support-all-base",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "near_int_witnesses_erdosSum_full_support",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 8896
+        },
+        {
+          "name": "zero_block_witnesses_erdosSum_full_support",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 8920
+        },
+        {
+          "name": "exists_weighted_block_certificates",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 8375
+        }
+      ]
+    },
+    {
+      "id": "supported_achievement_set_volume_dichotomy",
+      "label": "Exact volume dichotomy for every restricted Mersenne achievement set",
+      "status": "proved here",
+      "statement": "For every set J of allowed digit positions, either the omitted positions form a finite set F and the supported achievement set has Lebesgue measure exactly 2^(−|F|), or infinitely many positions are omitted and the measure is zero. Separately, if 0 ∉ J and the value ∑_{m∈J} 1/(2^m − 1) is rational then the supported achievement set is null. The second statement closes positive-measure selection over a rational fibre, which is the exact form of the fat-Cantor heuristic on the problem page; it leaves an exceptional null point unexcluded and decides no membership question.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "res:supportvolume",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "volume_supportedMersenneAchievementSet_dichotomy",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 418
+        },
+        {
+          "name": "volume_supportedMersenneAchievementSet_eq_zero_of_rat_value",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 399
+        }
+      ]
+    },
+    {
+      "id": "squarefree_incidence_normalisation_obstruction",
+      "label": "The squarefree support defeats both block-certificate hypotheses at every even base, and adjoining 1 repairs the digitwise one",
+      "status": "proved here",
+      "statement": "The squarefree divisor incidence is 2^ω(n) − 1, which is odd for every n ≥ 2. Consequently neither the carry-aggregate nor the digitwise block-certificate hypothesis of the arbitrary-support certificate engines has any instance at any even base. Adjoining 1 to the support shifts the value by a rational and makes the digitwise block condition satisfiable at every block length. The obstruction is therefore a property of the coefficient normalisation and not of the value: the squarefree value itself is known irrational at every power-of-two base by Duverney–Tachiya 2019, which is cited and not formalised here.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "res:blind",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "squarefreeIncidence_eq",
+          "module": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
+          "line": 111
+        },
+        {
+          "name": "odd_squarefreeIncidence",
+          "module": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
+          "line": 140
+        },
+        {
+          "name": "no_carry_block_certificate",
+          "module": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
+          "line": 222
+        },
+        {
+          "name": "not_exists_carry_certificates_squarefreeSupport",
+          "module": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
+          "line": 274
+        },
+        {
+          "name": "not_exists_digitwise_certificates_squarefreeSupport",
+          "module": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
+          "line": 292
+        },
+        {
+          "name": "exists_digitwise_block_squarefreeShiftedSupport",
+          "module": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
+          "line": 485
+        }
+      ]
+    },
+    {
+      "id": "variable_exponent_fractional_covers",
+      "label": "Variable-exponent positive fractional divisor covers",
+      "status": "ordinary proof here",
+      "statement": "Let F_j be finite sets of positive integers, let 0 < α_j ≤ 1 and c_{j,d} ≥ 0 satisfy f_{F_j}(n)^{α_j} ≤ ∑_{d|n} c_{j,d} with C_j = ∑_d c_{j,d}/d, and put B_j = 2^{α_j}. If ∑_j C_j 2^{j α_j} B_j/(B_j − 1)^2 < ∞ then every infinite subset of the union of the F_j has irrational Mersenne subseries at every integer base, and the exponents α_j may tend to zero. This is an ordinary proof, printed in full in the note; no Lean declaration carries it and no finite certificate is claimed for it. It reaches supports of divergent reciprocal mass, which is the only regime left open, and it exhausts no part of that regime.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "thm:variable-fractional-cover",
+      "readme_headline": false,
+      "declarations": []
+    },
+    {
+      "id": "divisibility_weighted_support_irrationality",
+      "label": "Divisibility-weighted summability implies all-base irrationality",
+      "status": "ordinary proof here",
+      "statement": "Let P be a finite nonempty set of primes and h(a) = ∏_{p∈P} p^{v_p(a)}. If A is infinite and ∑_{a∈A} h(a) / (a (2^{h(a)} − 1)) converges, then ∑_{a∈A} 1/(b^a − 1) is irrational for every integer b ≥ 2, and the conclusion is hereditary under passage to infinite subsets. This is an ordinary proof; the kernel covers only its analytic ingredients, namely the Cesàro orbit estimate, the dyadic observation bound and mass summability, the vanishing mean, and the close-return irrationality consumer. The prime-part split and the diagonal scale producer remain ordinary steps, so no Lean declaration carries the assembled criterion. An explicit reciprocal-divergent host with gaps O(log log a) is recorded in the supplement.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "thm:weighted-criterion",
+      "readme_headline": false,
+      "declarations": []
+    },
+    {
+      "id": "sub_logstar_reciprocal_mass_irrationality",
+      "label": "Sub-log-star reciprocal mass implies all-base irrationality",
+      "status": "ordinary proof here",
+      "statement": "With H_A(x) = ∑_{a∈A, a≤x} 1/a, the tower T_0 = 2, T_{j+1} = 2^{T_j}, and ℓ(x) = min{j : x ≤ T_j}, a reduced rational value p/q at base b forces liminf H_A(x)/ℓ(x) ≥ λ/2, where λ = 1 − c/q_s is the rational phase gap built from the split q = q_s q_c. Consequently H_A(x) = o(ℓ(x)) implies irrationality at every integer base, even when the reciprocal sum diverges. This is an ordinary proof with no Lean declaration. The constant is a rational phase gap; no positive ordinary or logarithmic density is asserted.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "thm:logstar-mass",
+      "readme_headline": false,
+      "declarations": []
+    },
+    {
+      "id": "arbitrary_prime_power_support_irrationality",
+      "label": "Every infinite prime-power sub-support has irrational value at every integer base",
+      "status": "ordinary proof here",
+      "statement": "Every infinite subset of the prime powers, including fixed dilations and finite modifications, has irrational Mersenne subseries at every integer base. This is an ordinary proof with no Lean declaration. Its analytic input is Theorem 3.1 of Tao–Teräväinen (arXiv:2512.01739), so the analytic authority is theirs; what is added here is the thinning of their printed family to every infinite subset. Those authors themselves identify the prime-power support with Erdős #257 and state their prime-power extension as a remark with the modifications left to the reader, so the boundary between the cited theorem and the extension is kept visible.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "thm:prime-power-supports",
+      "readme_headline": false,
+      "declarations": []
+    },
+    {
+      "id": "half_reduction_proved_insufficiency_layers",
+      "label": "The 1/2 reduction and five mechanisms proved insufficient to close it",
+      "status": "unconditional progress",
+      "statement": "Membership of 1/2 in the Mersenne achievement set is equivalent to a cofinal late largest skip, and it follows from the seam integer greedy remainder satisfying ρ_s ≤ 2^s infinitely often. Five named mechanisms are proved unable to close that reduction: the row recursion is simultaneously silent at s = 16; the model 2^s + 2 satisfies every row law and ceiling without ever returning to the half point; every ceiling growing at rate at least 4 is compatible with the descent law forever; every ceiling propagating by one-step interval induction is Ω(4^s); and the odd model 2^s + 3 obeys the step law inside a forward-invariant band, so no congruence modulo 2 empties a band of positive width. A sixth checked observation shows the orbit point is a dyadic rational at every finite row. These are exclusions of named mechanisms and decide nothing about 1/2. Recorded correction: the residual invariant reported as empirically true with maximum ratio 0.99989 over s in [6,3000] is false at s = 13, d = 7, where the residual 524419 exceeds the ceiling 2^19 = 524288.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.half_value_membership",
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "res:half-insufficiency",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "half_mem_iff_unboundedLargestSkipLate",
+          "module": "ErdosProblems/Skip/D2.lean",
+          "line": 307
+        },
+        {
+          "name": "half_mem_of_remainderReachesHalfPointCofinally",
+          "module": "ErdosProblems/Bit/R2.lean",
+          "line": 306
+        },
+        {
+          "name": "rowLaw_blind_at_16",
+          "module": "ErdosProblems/Rem/C1.lean",
+          "line": 436
+        },
+        {
+          "name": "exists_persistent_surplus_model",
+          "module": "ErdosProblems/Rem/C1.lean",
+          "line": 206
+        },
+        {
+          "name": "le_of_descent_of_quadrupling",
+          "module": "ErdosProblems/Rem/C1.lean",
+          "line": 109
+        },
+        {
+          "name": "IntervalCeiling.four_pow_le",
+          "module": "ErdosProblems/Three/T1.lean",
+          "line": 542
+        },
+        {
+          "name": "exists_persistent_odd_surplus_model",
+          "module": "ErdosProblems/Three/T3.lean",
+          "line": 618
+        },
+        {
+          "name": "two_pow_mul_y",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 746
+        },
+        {
+          "name": "not_residualInvariant",
+          "module": "ErdosProblems/Three/T1.lean",
+          "line": 159
+        }
+      ]
+    },
+    {
+      "id": "rank_one_sharp_floor",
+      "label": "Sharp positive rank-one and direct-sum floor for the Möbius–Mersenne cone",
+      "status": "unconditional progress",
+      "statement": "Let Θ₂ = ∑_{d≥1} μ(d)/(2^d − 1)², which equals S − 1/2, and for e ≥ 1, Y ≥ 4 let Q(e,Y) = (∑_{d≤Y} μ(d)/(2^d−1)^{e+2})² / ∑_{d≤Y} μ(d)/(2^d−1)^{2e+2}. Then Q(e,Y) ≥ Q(1,5) for every admissible pair with equality exactly at (1,5); Q(e,Y) − Θ₂ > 21/320 for every admissible pair; 1/16 is a valid uniform floor and 1/15 already fails at (1,5); every nonempty finite positive weighted average of admissible quotients keeps the same strict separation; and |qΘ₂ − p| > 21q/320 whenever Q(e,Y) = p/q with q ≥ 1. This closes the complete positive rank-one and positive direct-sum approximation mechanism with an explicit constant. Signed cancellation and genuinely coupled higher-rank approximants lie outside every statement here, so irrationality of S remains open. The series identity Θ₂ = S − 1/2 is Steve Fan's, from his dated comment on erdosproblems.com/249 of 16 May 2026; the floor is proved here. Novelty of the quotient family is unassessed.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": "res:rankonefloor",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "rankOneSubrankQuotient_eq_one_five_iff",
+          "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+          "line": 534
+        },
+        {
+          "name": "rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty",
+          "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+          "line": 624
+        },
+        {
+          "name": "rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen",
+          "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+          "line": 634
+        },
+        {
+          "name": "not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen",
+          "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+          "line": 645
+        },
+        {
+          "name": "positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty",
+          "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+          "line": 655
+        },
+        {
+          "name": "primitive_form_abs_gt_twentyOne_div_threeTwenty",
+          "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+          "line": 693
+        }
+      ]
+    },
+    {
+      "id": "first_harmonic_norm_gap_reduction",
+      "status": "conditional reduction",
+      "label": "Cofinal first-harmonic norm gap implies irrationality",
+      "statement": "Write D(h,N,L) = ∑_{j<L} (φ(N+h+1+j) − φ(N+1+j)) 2^{L−1−j}, the window discrepancy. Suppose that for every h > 0 and every X₀ there are X ≥ max(X₀,1) and L with 16(2X + h + L + 2) ≤ 2^L and ‖∑_{N=X}^{2X−1} exp(2πi D(h,N,L)/2^L)‖ ≤ (21/25) X. Then S = ∑ φ(n)/2ⁿ is irrational. The chain is complete in Lean: the complex norm saving dominates the real-part saving used by the certificate theorem, a constant-saving first-harmonic bound on one dyadic block forces a certified non-integrality witness inside that block, and a cofinal supply of such witnesses is irrationality. The hypothesis is a cofinal exponential-sum cancellation bound and is open; it is strictly stronger than irrationality, so it is a sufficient condition rather than an equivalence. This row owns the complex norm-gap declarations; the row first_harmonic_certificate_interface owns the real-part interface in FirstHarmonicGap.lean.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.unbounded_certificate_supply"
+      ],
+      "paper_label": "res:firstharmonicnormgap",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "DTWFirstHarmonicNormGap",
+          "module": "Erdos249257/FirstHarmonicPivot.lean",
+          "line": 75
+        },
+        {
+          "name": "exists_certifiedKill_of_first_harmonic_norm_gap",
+          "module": "Erdos249257/FirstHarmonicPivot.lean",
+          "line": 53
+        },
+        {
+          "name": "irrational_totient_series_of_first_harmonic_norm_gap",
+          "module": "Erdos249257/FirstHarmonicPivot.lean",
+          "line": 83
+        }
+      ]
+    },
+    {
+      "id": "canonical_mersenne_frontier",
+      "status": "conditional reduction",
+      "label": "Canonical Mersenne basepoint residue-gap normal form",
+      "statement": "For every c and every positive odd v, the statement that there are H > 0 and M with φ(v) | H, vM = 2^H − 1, and c + H + 1 < ((−totientBlock(H,c)) mod M) < M − (c + H + 1), quantified over all such c and v, is equivalent to irrationality of S. The basepoint is exactly c, the dyadic valuation of a prospective rational denominator, and the canonical statement dominates the older remote-basepoint centred-residue condition. Whenever M divides 2^H − 1 the finite residue obeys an exact recurrence. This removes analytic tails, carry trajectories, cyclotomic prime choice and remote-basepoint search from the equivalent residual; it does not prove the required central gap. The equivalence is at the level of the full statement over all (c,v); a verified gap at one (c,v) is not a landed per-instance denominator exclusion.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": "res:canonicalmersenne",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "FullMersenneCanonicalBasepointResidueGapSupply",
+          "module": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+          "line": 2863
+        },
+        {
+          "name": "fullMersenneBlockResidue_succ",
+          "module": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+          "line": 2322
+        },
+        {
+          "name": "fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint",
+          "module": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+          "line": 3132
+        },
+        {
+          "name": "fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational",
+          "module": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+          "line": 3165
+        }
+      ]
+    },
+    {
+      "id": "full_depth_ray_amplifier",
+      "status": "conditional reduction",
+      "label": "Full-depth ray amplification and the depth-locked equivalence",
+      "statement": "Fix d > 0 and N. If (d,N,L) is a finite tail-difference certificate at any depth L, then there is T > 0 such that every pair {t, t+1} with t ≥ T contains a multiplier m for which (md, N, md) is a certificate, so one seed forces an eventually 2-syndetic family whose depth equals its period. Pointwise, some t > 0 makes (td,N,td) certified exactly when the tail difference at shift d and basepoint N is non-integral. Consequently the depth-locked predicate ApFullDepthEscape is equivalent to irrationality of S rather than merely sufficient, and its cofinal-in-N version is equivalent both to the arbitrary-depth period-multiple condition and to irrationality. Requiring full depth loses no strength; it produces no first non-integral shift or seed.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.unbounded_certificate_supply"
+      ],
+      "paper_label": "res:fulldepth",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "eventually_twoSyndetic_fullDepthKillMultipliers_of_seed",
+          "module": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+          "line": 364
+        },
+        {
+          "name": "exists_fullDepthKill_on_ray_iff_shift_notMem_int",
+          "module": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+          "line": 388
+        },
+        {
+          "name": "apFullDepthEscape_iff_irrational",
+          "module": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+          "line": 406
+        },
+        {
+          "name": "cofinalFullDepthKillSupply_iff_periodMultipleKillSupply",
+          "module": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+          "line": 421
+        },
+        {
+          "name": "cofinalFullDepthKillSupply_iff_irrational",
+          "module": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+          "line": 438
+        }
+      ]
+    },
+    {
+      "id": "period_multiple_denominator_deposits",
+      "status": "verified finite instance",
+      "label": "Eight period-multiple denominator exclusions beyond the 64-smooth diagonal bank",
+      "statement": "Kernel-checked certified kills at basepoint N = 300 for the eight prime-power periods the lcm(1..64) diagonal bank cannot reach, h in {67, 81, 97, 101, 121, 125, 127, 128}, with residues 1654, 540, 7616, 1270, 478, 762, 530, 1552 at depths 11, 13, 13, 11, 10, 18, 11, 11. Each yields S ≠ r for every rational r whose denominator divides 2^300 (2^h − 1), covering odd classes outside every previously certified period, including the Cole factors 2^67 − 1 = 193707721 · 761838257287 and the Mersenne prime 2^127 − 1. The period-67 kill is additionally deposited at its own depth L = h = 67, the depth-locked form of the full-depth escape predicate made concrete at one point of the d = 67 ray.",
+      "bounded_domain": "The eight listed prime-power periods at the single basepoint N = 300, and the depth-locked instance at h = L = 67. No certificate at any other period beyond the diagonal bank and no cofinal supply is claimed.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.unbounded_certificate_supply"
+      ],
+      "paper_label": "res:perioddeposits",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "totient_series_ne_rat_of_certifiedKill",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 460
+        },
+        {
+          "name": "certifiedKill_67_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 471
+        },
+        {
+          "name": "certifiedKill_81_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 474
+        },
+        {
+          "name": "certifiedKill_97_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 477
+        },
+        {
+          "name": "certifiedKill_101_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 480
+        },
+        {
+          "name": "certifiedKill_121_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 483
+        },
+        {
+          "name": "certifiedKill_125_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 486
+        },
+        {
+          "name": "certifiedKill_127_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 490
+        },
+        {
+          "name": "certifiedKill_128_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 493
+        },
+        {
+          "name": "certifiedKill_67_300_fullDepth",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 498
+        },
+        {
+          "name": "totient_series_ne_rat_of_den_dvd_67_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 504
+        },
+        {
+          "name": "totient_series_ne_rat_of_den_dvd_127_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 534
+        }
+      ]
+    },
+    {
+      "id": "totient_tail_orbit_cofinal_nonpositive_frontier",
+      "status": "conditional reduction",
+      "label": "Qualitative tail-orbit normal form: cofinal left-half-plane visits",
+      "statement": "Let the first tail-orbit phase at shift h and basepoint N be the unit complex number whose argument is 2π times the fractional part of (2^h − 1) S doubled N times. Then irrationality of S is equivalent to the condition that for every h > 0 and every N₀ there is N ≥ N₀ with the real part of that phase at most 0. The reverse implication is short: an integral tail difference makes the phase 1 at that basepoint and at every larger one, contradicting the cofinal visit at the same shift. The forward implication is doubling expansivity applied to the non-dyadicity of the exact initial angle. This equivalence carries no quantitative parameter and supplies no visit; it does not promote unaligned visits to the stronger natural-prime strict-gap condition owned by strict_prime_tail_orbit_gap.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": "res:orbitphase",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "TotientTailOrbitCofinalNonpositive",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 412
+        },
+        {
+          "name": "cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 360
+        },
+        {
+          "name": "totientTailOrbitCofinalNonpositive_of_irrational",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 418
+        },
+        {
+          "name": "totientTailOrbitCofinalNonpositive_iff_irrational",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 445
+        }
+      ]
+    },
+    {
+      "id": "totient_parity_coboundary_countermodel",
+      "status": "proved here",
+      "label": "Parity, boundedness and aperiodicity together do not force irrationality",
+      "statement": "There is c : N → N with c(n) ≤ 6 and c(n) ≤ n for every n, with c(n) ≡ φ(n) mod 2 for every n, and not eventually periodic in the strong sense that for every N, G, K there are K explicit carry pulses beyond N pairwise separated by more than G, whose binary value ∑ c(n)/2ⁿ is exactly 3/2. The construction replaces the pair (4,4) at (m, m+1) by (6,0) at each lacunary rank m = 2^{k+3}, an exact binary coboundary. Consequently no argument that reads only the parity of φ(n), a uniform bound on the coefficients, and failure of eventual periodicity can establish irrationality of S. This retires a proof class; it asserts nothing about S itself.",
+      "paper_label": "res:paritycoboundary",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel",
+          "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+          "line": 637
+        }
+      ]
+    },
+    {
+      "id": "lcm_jump_certificate_instances",
+      "status": "verified finite instance",
+      "label": "The lcm-jump shift coincides with the diagonal shift at t = 2^k − 1",
+      "statement": "lcm(1,...,t) grows by a factor q exactly when t + 1 is a prime power q, so the lcm-jump length lcm(1,...,t+1) − lcm(1,...,t) equals (q − 1) lcm(1,...,t); at q = 2, that is at t = 2^k − 1, the jump shift and the diagonal shift are the same natural number. At those t every deposited diagonal certificate is a jump certificate with no new totient arithmetic. Deposits are exhibited at t = 1, 3, 7 and 31, the last read off the wave-31 diagonal certificate at lcm(1,...,31) = 72201776446800 and depth 49. The jump-supply hypothesis is cofinal and these deposits are finite, so the supply obligation is unchanged; what is removed is the appearance that the jump route is a separate unproduced obstacle. The scales t = 15 and t = 63 carry no deposit because decide cannot evaluate φ near 2^24 and 2^90.",
+      "bounded_domain": "The scales t = 1, 3, 7, 31 only. No deposit at t = 15 or t = 63 and no cofinal jump supply is claimed.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.unbounded_certificate_supply"
+      ],
+      "paper_label": "res:lcmjump",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "periodLcm_jump_eq_height_at_thirtyone",
+          "module": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
+          "line": 62
+        },
+        {
+          "name": "certifiedKill_lcm_jump_at_seven",
+          "module": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
+          "line": 68
+        },
+        {
+          "name": "certifiedKill_lcm_jump_at_one",
+          "module": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
+          "line": 76
+        },
+        {
+          "name": "certifiedKill_lcm_jump_at_three",
+          "module": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
+          "line": 81
+        },
+        {
+          "name": "certifiedKill_lcm_jump_at_thirtyone",
+          "module": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
+          "line": 109
+        }
+      ]
+    },
+    {
+      "id": "weighted_record_excess_criterion",
+      "label": "Weighted record-excess criterion for the eventual Sylvester recurrence",
+      "status": "unconditional progress",
+      "statement": "Under the growth and rationality hypotheses of Erdos #243 and no others, with L(n) = lcm(q, a(0), ..., a(n-1)), M(n) = D(n)/L(n), U(n) = C(n)/M(n), V(n) = E(n)/M(n) and R the set of steps that set a new record for U, the sequence is eventually Sylvester if and only if the sum over n in R of (-V(n) - B)_+ f(U(n)) is finite for some integer B >= 0, where f is any finite nonincreasing weight on [1, infinity) with divergent integral. The equivalent growth-defect form is finiteness of the sum over R of U(n) f(U(n)) (a(n)^2/a(n+1) - 1 - B/U(n))_+. This is an ordinary mathematical proof. The declarations listed below kernel-check only the finite first-crossing arithmetic and the per-step charge; the global analytic step, the passage from the per-step charge to divergence of the whole sum, is not formalised. The criterion does not settle Erdos #243: the growth hypothesis does not supply the stated finiteness, and termwise convergence to zero is insufficient.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_243_eventual_recurrence"
+      ],
+      "paper_label": "res:weightedrecord",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "rise_is_fresh",
+          "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "line": 14
+        },
+        {
+          "name": "covered_wall_forces_excess",
+          "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "line": 31
+        },
+        {
+          "name": "wall_count_le_excess",
+          "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "line": 47
+        },
+        {
+          "name": "weighted_wall_charge",
+          "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "line": 64
+        }
+      ]
+    },
+    {
+      "id": "arithmetic_weighted_record_dichotomy",
+      "label": "Arithmetic weighted-record dichotomy",
+      "status": "unconditional progress",
+      "statement": "For positive integers a(n), L(n), U(n) and integers V(n) satisfying L(n+1) = lcm(L(n), a(n)), rho(n) = gcd(L(n), a(n)), rho(n) U(n+1) = U(n) - V(n), V(n) = L(n) - (a(n) - 1) U(n) and the lower centring bound -U(n) <= 2 V(n), and for f finite and nonincreasing on [1, infinity) with divergent integral: sup U(n) is finite if and only if the sum over the record set of (-V(n) - B)_+ f(U(n)) is finite, for each fixed integer B >= 0. Only the lower centring bound is used, so neither normalised vanishing nor any growth estimate supplies the Chinese-remainder moduli; the record digits themselves supply them. This is an ordinary mathematical proof; the declarations listed below kernel-check the finite first-crossing arithmetic only. It does not settle Erdos #243.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_243_eventual_recurrence"
+      ],
+      "paper_label": "res:arithmeticrecord",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "rise_is_fresh",
+          "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "line": 14
+        },
+        {
+          "name": "covered_wall_forces_excess",
+          "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "line": 31
+        },
+        {
+          "name": "wall_count_le_excess",
+          "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "line": 47
+        },
+        {
+          "name": "weighted_wall_charge",
+          "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "line": 64
+        }
+      ]
+    },
+    {
+      "id": "lcm_record_first_crossing_core",
+      "label": "Finite first-crossing and charging core for LCM records",
+      "status": "proved here",
+      "statement": "Four finite arithmetic facts about a single step of the LCM record system: a strict rise of U at a covered height is fresh; a covered wall forces the step excess to exceed the baseline; the number of walls first crossed at one step is at most the excess; and the weighted charge over a finite wall set is bounded by the excess times the weight at the current height. These are the finite ingredients of the weighted record-excess criterion. They contain no analytic content and by themselves exclude nothing.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_243_eventual_recurrence"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "rise_is_fresh",
+          "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "line": 14
+        },
+        {
+          "name": "covered_wall_forces_excess",
+          "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "line": 31
+        },
+        {
+          "name": "wall_count_le_excess",
+          "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "line": 47
+        },
+        {
+          "name": "weighted_wall_charge",
+          "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+          "line": 64
+        }
+      ]
+    },
+    {
+      "id": "bounded_negative_part_rigidity",
+      "label": "Bounded negative part forces the Sylvester recurrence",
+      "status": "conditional reduction",
+      "statement": "For an exact integer orbit with a(n) > 1 and C(n) > 0 satisfying C(n+1) + D(n) = a(n) C(n), D(n+1) = a(n) D(n) and E(n) = D(n) - (a(n) - 1) C(n), under eventual strict centring, an eventually bounded negative part of E, and division-free normalised vanishing, E(n) = 0 for all large n and a(n+1) = a(n)^2 - a(n) + 1 for all large n. This is the note's headline conditional endpoint and is distinct from the weaker cofinally-bounded exclusion carried by the row bounded_negative_exclusion. The bound on the negative part is supplied by nothing in this release, and Koizumi's coordinates do not supply it for the canonical orbit; the endpoint is therefore conditional and does not settle Erdos #243. Prior art: the adjudication record F3b_243_bounded_negative_rigidity gives the verdict extends over Koizumi Proposition 19(2) and Badea, whose hypothesis is eventual nonnegativity.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_243_eventual_recurrence"
+      ],
+      "paper_label": "res:bounded",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "boundedNegativePart_eventually_zero",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 2265
+        },
+        {
+          "name": "eventuallyBoundedNegativePart_eventually_zero",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 2352
+        },
+        {
+          "name": "boundedNegativePart_sylvesterNext_eventually",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 2403
+        }
+      ]
+    },
+    {
+      "id": "summable_negative_mass_rigidity",
+      "label": "Finite normalised negative mass forces the Sylvester recurrence",
+      "status": "conditional reduction",
+      "statement": "For an exact integer orbit with C(n+1) = C(n) - E(n) and C(n) > 0, under the strict centred-step equation and division-free normalised vanishing, finiteness of the sum of (-E(n))_+/C(n) gives E(n) = 0 for all large n and the Sylvester recurrence. The summability hypothesis is not known for the canonical orbit, and the frontier proposition of the note states that every counterexample violates it. This criterion is multiplicative where the bounded-negative-part endpoint is arithmetic, and the two are incomparable. It does not settle Erdos #243.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_243_eventual_recurrence"
+      ],
+      "paper_label": "res:mass",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "eventually_zero_of_summable_relativeGrowth",
+          "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+          "line": 423
+        },
+        {
+          "name": "eventually_zero_of_summable_negativeRelativeMass",
+          "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+          "line": 488
+        },
+        {
+          "name": "sylvesterNext_eventually_of_summable_negativeRelativeMass",
+          "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+          "line": 510
+        }
+      ]
+    },
+    {
+      "id": "reciprocal_series_realisation",
+      "label": "The integer state realises the reciprocal series",
+      "status": "formalised here",
+      "statement": "For natural sequences a, C, D with a(n) > 0, D(n) > 0, C(n+1) + D(n) = a(n) C(n) and D(n+1) = a(n) D(n), one exact step removes 1/a(n) from the ratio C(n)/D(n); finite iteration telescopes to a partial reciprocal sum plus the endpoint ratio; and if the endpoint ratio tends to zero then the reciprocal series has sum C(0)/D(0). These carry no growth, centring or rationality hypothesis and exclude nothing. They close the loop between the integer state system and the series that motivates it. Producing the state attached to a given rational sum, which is the direction Erdos #243 needs, remains exposition and is not a checked statement.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_243_eventual_recurrence"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "tailRatio",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1895
+        },
+        {
+          "name": "tailRatio_eq_reciprocal_add_next",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1899
+        },
+        {
+          "name": "tailRatio_eq_partialReciprocalSum_add",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1923
+        },
+        {
+          "name": "reciprocalSeries_hasSum_of_tailRatio_tendsto_zero",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1949
+        }
+      ]
+    },
+    {
+      "id": "constant_negative_exclusion",
+      "label": "No constant negative magnitude, at any magnitude or scale",
+      "status": "unconditional progress",
+      "statement": "For an exact natural orbit with the denominator, tail and shape recurrences, no orbit has a constantly negative centred error of fixed magnitude, at any magnitude and at any scale. The normalised, scale-primitive and eventual forms are separate declarations. This is unconditional and kills the exact template sitting on the 1/n threshold; it is not a classification of a mixed-sign tail and it does not settle Erdos #243.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_243_eventual_recurrence"
+      ],
+      "paper_label": "res:constant",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "no_constantNegative_orbit",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 286
+        },
+        {
+          "name": "no_normalizedConstantNegative_orbit",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 100
+        },
+        {
+          "name": "no_scalePrimitiveConstantNegative_orbit",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 147
+        },
+        {
+          "name": "no_eventuallyConstantNegative_orbit",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 350
+        }
+      ]
+    },
+    {
+      "id": "slow_rise_landing_barrier",
+      "label": "Slow-rise landing and the coprime-block exclusion",
+      "status": "proved here",
+      "statement": "A common divisor of the numerator and denominator states persists, a multiplier overlap divides every later centred state, and a slow rise cannot land inside a bounded block of consecutive multiples of pairwise-coprime moduli. The landing form replaces gcd stabilisation by common-divisor persistence, so the rise bound is needed only below twice the modulus product. These are state-level obstructions with explicit hypotheses; they do not settle Erdos #243.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_243_eventual_recurrence"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "exists_consecutiveMultiples_between",
+          "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+          "line": 51
+        },
+        {
+          "name": "commonDivisor_persists",
+          "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+          "line": 111
+        },
+        {
+          "name": "multiplierOverlap_dvd_laterCenteredState",
+          "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+          "line": 162
+        },
+        {
+          "name": "slowRise_landing",
+          "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+          "line": 194
+        },
+        {
+          "name": "no_slowNegative_of_coprimeBlock",
+          "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+          "line": 280
+        }
+      ]
+    },
+    {
+      "id": "slow_rise_reduced_tail_exclusion",
+      "label": "Reduced-tail slow-rise exclusion",
+      "status": "unconditional progress",
+      "statement": "No reduced exact tail can rise slowly while remaining coprime to its own fresh moduli, under the stated persistence and block hypotheses. This declaration dominates the reduced bounded-rise exclusion already carried in the release. It is a reusable state-level obstruction and does not settle Erdos #243.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_243_eventual_recurrence"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "no_slowRise_reducedTail",
+          "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+          "line": 332
+        }
+      ]
+    },
+    {
+      "id": "slow_negative_part_rigidity",
+      "label": "A negative part below (1 - delta) log log C forces the Sylvester recurrence",
+      "status": "conditional reduction",
+      "statement": "For an exact natural orbit with a(n) > 1, C(n) > 0 and D(0) >= 1 under normalised vanishing, if there is delta in (0, 1) such that every sufficiently late index with E(n) < 0 satisfies -E(n) <= (1 - delta) log2 log2 C(n), then E(n) = 0 for all large n and a(n+1) = a(n)^2 - a(n) + 1 for all large n. The bounded-negative-part endpoint is the constant-bound special case. This is an ordinary mathematical proof; the declarations listed below kernel-check the persistence, transport, landing and coprime-block steps, while the burn-prime count and the choice of constants are ordinary mathematics. It is conditional on the slow-negative hypothesis, which is supplied by nothing in this release, and it does not settle Erdos #243. In the private frontier ledger this row is superseded on two axes by the record-excess dichotomy, which uses the drawdown-corrected record increment as its observable and closes the inclusive boundary.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_243_eventual_recurrence"
+      ],
+      "paper_label": "res:slownegative",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "commonDivisor_persists",
+          "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+          "line": 111
+        },
+        {
+          "name": "multiplierOverlap_dvd_laterCenteredState",
+          "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+          "line": 162
+        },
+        {
+          "name": "slowRise_landing",
+          "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+          "line": 194
+        },
+        {
+          "name": "no_slowNegative_of_coprimeBlock",
+          "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+          "line": 280
+        }
+      ]
+    },
+    {
+      "id": "erdos_1041_critical_value_separation",
+      "label": "Erdős #1041: all-degree critical-value separation regime",
+      "status": "unconditional progress",
+      "statement": "For P of degree n >= 3 with unit-modulus leading coefficient, P(0)=1, P'(0)=0, P''(0) != 0, and |1-P(d)| >= S > 1 at every other critical point, the square-root-resolved inverse branch continues holomorphically and injectively to |xi| < sqrt(S), its endpoints Z(-1) and Z(1) are distinct roots, and the connector satisfies int |Z'| <= 2(1+S)^(1/n) sqrt(log(S/(S-1))), which is below 2 exactly when (1+S)^(2/n) log(S/(S-1)) < 1. The convenient thresholds are S=4 for n>=3, S=3 for n>=4, and S=2 for n>=6. The analytic continuation, monodromy, area formula and Pólya area-capacity step are an ordinary proof; the declarations below are the kernel-checked numerical part, namely degree monotonicity of the squared coefficient, the three exact threshold inequalities, and the sign-free passage from the squared bound to a strict length below 2. The regime is conditional on a critical-spectrum inequality, and near-tied critical values and multiple saddles are excluded, so Erdős #1041 is untouched.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_1041_lemniscate_connection"
+      ],
+      "paper_label": "res:critical-value-separation",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "firstMergeSquaredCoefficient_antitone_degree",
+          "module": "ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean",
+          "line": 47
+        },
+        {
+          "name": "firstMerge_length_lt_two_of_squared_bound",
+          "module": "ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean",
+          "line": 68
+        },
+        {
+          "name": "firstMerge_exact_convenient_thresholds",
+          "module": "ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean",
+          "line": 191
+        }
+      ]
+    },
+    {
+      "id": "erdos_1041_sharp_collinear_diameter",
+      "label": "Erdős #1041: sharp collinear root-diameter theorem",
+      "status": "unconditional progress",
+      "statement": "Let f be monic of degree n >= 2 whose zero occurrences are collinear with diameter D. Some two adjacent zero occurrences are joined by a segment of length at most D on which |f| <= (D/2)^n / (2^(n-1) cos^n(pi/(2n))). The constant is best possible in every degree, with equality on affine images of the zeros of T_n whose extreme zeros have distance D. The affine normalisation, the gap-maximiser existence argument and the path transport are an ordinary proof; the declarations below are the kernel-checked finite part, namely the monic Chebyshev comparison endpoint and the alternation peak bound. Collinearity is a hypothesis on the root configuration, so this settles a family and leaves Erdős #1041 open.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_1041_lemniscate_connection"
+      ],
+      "paper_label": "thm:sharp-collinear-diameter",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "exists_peak_le_comparisonBound",
+          "module": "ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean",
+          "line": 133
+        },
+        {
+          "name": "exists_peak_le_of_monic_comparison",
+          "module": "ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
+          "line": 158
+        }
+      ]
+    },
+    {
+      "id": "erdos_1041_critical_geometry",
+      "label": "Erdős #1041: unconditional two-nearest-root budget at every critical point, with exact straight-path obstructions",
+      "status": "unconditional progress",
+      "statement": "At every non-root critical point c of a monic f of degree n >= 2, writing r^n = prod_k |c - z_k| for the geometric mean of the root distances, two distinct roots satisfy |c - z_i| + |c - z_j| <= 2r. Two exact countermodels are checked alongside it: the spoke through the nearest root can leave the unit lemniscate, and an explicit cubic admits no valid pair of straight spokes through its critical point. The metric budget is unconditional at every degree; it bounds a two-arm length and supplies no containment, so it does not give the required path and Erdős #1041 stays open.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_1041_lemniscate_connection"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "two_add_le_two_of_disk_inverse_balance",
+          "module": "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+          "line": 160
+        },
+        {
+          "name": "exists_two_roots_dist_sum_le_two_mul_geomMean",
+          "module": "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+          "line": 289
+        },
+        {
+          "name": "spoke_escapes_lemniscate_exact",
+          "module": "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+          "line": 382
+        }
+      ]
+    },
+    {
+      "id": "rational_base_irrationality_region",
+      "label": "Rational-base irrationality region b^mu < a for the Lambert value",
+      "status": "ordinary proof here",
+      "statement": "For coprime integers a > b >= 1 with b^mu < a, equivalently log b / log a < theta* = 1/mu = 0.40568302138406054101566030557693017464819107867787..., the Lambert value F(a/b) = sum_{m>=1} 1/((a/b)^m - 1) is irrational. Here mu = C_1/C_0 = 2.464978683574975037454488275535521581878..., C_1 = 1091/2, and C_0 = 266 - (3/pi^2)(225 - J) = 221.3000881650050251240426966922154102706... with J = sum over thirteen printed demi-intervals of (psi_1(u_i) - psi_1(v_i)) = 77.94318447500909592258956702399211044972..., the constants of Zudilin's direction (14,12,14;27). This is an ordinary proof, not a Lean theorem. It cites Zudilin 2004 Lemma 7 in its polynomial reading together with the inputs of that lemma's own proof, namely Lemma 3, the exponent M(a;b) of (16) supplied by Lemma 4, Heine's transform as Lemma 5, and the identity (9)-(11); every remaining step, including the nonrationality of F as a function, the transfer of Lemma 7 to explicit integer polynomials, the degree computation, positivity, the Archimedean size estimate and the limit (K_n - W_n)/n^2 -> C_0, is proved in the note. No declaration in this release's Lean library carries any part of the analytic argument. The rational bracket 81/200 < theta* < 1/2 that makes membership decidable is kernel-checked in the module RationalBaseContour, which this release carries in the external-verification cut and not in its Lean library. The universal assertion of Erdos #1049 over all rational t > 1 is untouched, and no base with log b / log a >= theta* is settled, so 3/2 at log 2 / log 3 = 0.6309297535714574370995271143427608542996... is not settled.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_1049_irrationality"
+      ],
+      "paper_label": "res:region",
+      "readme_headline": false,
+      "declarations": []
+    },
+    {
+      "id": "f_thirty_one_over_four_irrational",
+      "label": "F(31/4) and every F((31/4)^r) are irrational",
+      "status": "unconditional progress",
+      "statement": "F(31/4) is irrational, and so is F((31/4)^r) for every integer r >= 1. The base sits at log 4 / log 31 = 0.4036981731641997014370328005878493650194..., below 81/200 and below theta* = 0.40568302138406054..., and at 4^mu = 30.483515... < 31 < 4^{mu_BV} = 32.369642... with mu_BV = 2 pi^2/(pi^2 - 2) = 2.508284761994681157505052751018958770537..., so it lies outside the region log b / log a < 1/2 - 1/pi^2 = 0.3986788163576622285561205367902723610956... of Bundschuh and Vaananen 1994 Theorem 2 and inside the region of rational_base_irrationality_region. It is the base of least denominator and least numerator in the strip between the two regions. The irrationality itself comes from the region theorem, which is an ordinary proof and is not kernel-checked. What the listed declarations kernel-check is the finite height arithmetic: the integer certificate 4^200 < 31^81, membership of 31/4 and of every positive power in the 81/200 region, and exclusion of 31/4 from the Bundschuh-Vaananen region. The remaining finite input, 81/200 < theta*, is checked in the module RationalBaseContour of the external-verification cut and not in this release's Lean library.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_1049_irrationality"
+      ],
+      "paper_label": "res:31over4",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "thirtyoneFour_power_certificate",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 26
+        },
+        {
+          "name": "thirtyoneFour_mem_zudilinHeightRegion",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 45
+        },
+        {
+          "name": "thirtyoneFour_power_mem_zudilinHeightRegion",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 59
+        },
+        {
+          "name": "thirtyoneFour_outside_bundschuhVaananenHeightRegion",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "id": "rational_base_degree_budget_cap",
+      "label": "Degree-budget cap on base-uniform Pade-type families",
+      "status": "ordinary proof here",
+      "statement": "Let (U_n, V_n) in Z[x]^2 satisfy, for constants sigma, delta > 0 and h >= 0 independent of n and of the base: (1) U_n(x) F(x) - V_n(x) is nonzero for every real x > 1; (2) deg U_n, deg V_n <= delta n^2 (1 + o(1)); (3) log max(H(U_n), H(V_n)) <= h n^2 (1 + o(1)), where H is the largest absolute value of a coefficient; (4) log |U_n(x) F(x) - V_n(x)| = -sigma n^2 log x (1 + o(1)) for every real x > 1. Put d_n = max(deg U_n, deg V_n). Then sigma <= delta, and limsup n^{-2} log |b^{d_n} (U_n(a/b) F(a/b) - V_n(a/b))| <= delta log b - sigma log(a/b). Consequently the homogenised forms tend to zero whenever log b / log a < sigma/(sigma + delta), which is a sufficient region and not an exact decay criterion under a degree upper bound; its cutoff is at most 1/2. If in addition d_n/n^2 -> d, then d >= sigma, the limit exists and equals d log b - sigma log(a/b), and that exact-degree case has no decaying homogenised forms at 3/2. At the equality log b / log a = sigma/(sigma + d) the normalised logarithm is zero and these hypotheses decide neither behaviour. Hypothesis (3) is required: a bound on deg U_n alone controls |U_n(p)| only through H(U_n). This is an ordinary proof with no Lean module. The theorem constrains families satisfying its four hypotheses and does not exclude every possible Pade construction, so it is not an unconditional no-go at 3/2.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_1049_irrationality"
+      ],
+      "paper_label": "res:archcap",
+      "readme_headline": false,
+      "declarations": []
+    },
+    {
+      "id": "rational_base_threshold_equals_reciprocal_exponent",
+      "label": "Rational-base threshold equals the reciprocal integer-base exponent bound",
+      "status": "ordinary proof here",
+      "statement": "For Zudilin's family the exact degree limit is d = C_1 - C_0 and the decay exponent is sigma = C_0, so sigma/(sigma + d) = theta* and (sigma + d)/sigma = mu. Within this family the rational-base threshold is the reciprocal of the integer-base irrationality-exponent bound; the same pattern holds for Bundschuh and Vaananen, whose threshold is 1/mu_BV. Any future integer-base exponent bound achieved by forms with Lemma-7 type Z[p]-integrality and base-uniform size would enlarge the region of rational_base_irrationality_region to the reciprocal of the new bound; a bound 2.4234 would give 0.4126 and would admit 29/4. This is an ordinary proof with no Lean module, and the identity is proved only for families satisfying the hypotheses of rational_base_degree_budget_cap.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_1049_irrationality"
+      ],
+      "paper_label": "res:archcap",
+      "readme_headline": false,
+      "declarations": []
+    },
+    {
+      "id": "zudilin_sharp_hankel_qorder",
+      "label": "Sharp all-rank q-order and leading coefficient of Zudilin's normalised Hankel determinant",
+      "status": "unconditional progress",
+      "statement": "For every rank N, Zudilin's normalised Hankel determinant V_N^* at x = z = 1 has q-order exactly N(N-1)(2N-1)/6 and leading coefficient exactly (N!)^2 (N+1)!/2^N. Zudilin 2016, Section 4, proves only the inequality ord_q V_N^* >= N(N-1)(2N-1)/6 and uses it as an upper bound on |V_N^*|; equality is the statement that no further cancellation is available inside the determinant. The all-rank statement is an ordinary proof by an all-depth filtered reciprocal-state argument. What the listed declarations kernel-check is the all-depth associated-graded recurrence, the initial monomial of transformed row 1 in every column with order exactly l+1 and coefficient exactly -6, and the assembly of the two closed forms 6 ord = N(N-1)(2N-1) and 2^N lc = (N!)^2 (N+1)!. The initial-monomial theorem for rows j >= 2 is outside this release's Lean library: row j = 2, with initial monomial 18 q^{2l+3}, is checked in a module of the external-verification cut, and rows j >= 3 are open, so the Lean identification of V_N^* itself with the assembled leading matrix remains conditional on a row hypothesis. Independently, the order and leading coefficient were computed exactly for 1 <= N <= 7, giving orders 0, 1, 5, 14, 30, 55, 91 and coefficients 1, 6, 108, 4320, 324000, 40824000, 8001504000, each matching the closed forms. Nothing here decides the arithmetic nature of F(3/2).",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_1049_irrationality"
+      ],
+      "paper_label": "res:zudilin-sharp-qorder",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "hankelAssociatedCoeff_eq_reciprocal",
+          "module": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+          "line": 200
+        },
+        {
+          "name": "zudilinTransformedNormalizedMoment_one_initialMonomial",
+          "module": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+          "line": 1422
+        },
+        {
+          "name": "zudilinSharpHankelOrderAndCoeff_algebraicAssembly",
+          "module": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+          "line": 1753
+        }
+      ]
+    },
+    {
+      "id": "zudilin_first_transformed_row_initial_monomial",
+      "label": "First transformed Zudilin row: exact order and exact coefficient",
+      "status": "proved here",
+      "statement": "In every column l, the first transformed normalised Zudilin row v*_(l+1) - v*_l has order exactly l+1 and coefficient exactly -6 at that order. The complete statement is a Lean theorem in the committed formal-source checkpoint. Zudilin 2016, Section 4, proves an inequality for the determinant's order; for this one row the exact order and the exact coefficient are strictly stronger. Rows j >= 2 are not claimed by this declaration, and no irrationality statement follows from it.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_1049_irrationality"
+      ],
+      "paper_label": "res:zudilin-sharp-qorder",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "zudilinTransformedNormalizedMoment_one_initialMonomial",
+          "module": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+          "line": 1422
+        }
+      ],
+      "comparator_transports": [
+        {
+          "package_id": "ExternalVerification1049AdelicHeightBridge",
+          "interface_name": "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial",
+          "source_declarations": [
+            {
+              "name": "zudilinTransformedNormalizedMoment_one_initialMonomial",
+              "module": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+              "line": 1422
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "erdos68_square_subsequence_channel_radius",
+      "label": "Square-subsequence channel-radius lower bound for Erdős #68",
+      "status": "unconditional progress",
+      "statement": "Let t,M,R be naturals with t >= 2^32, M > 0, lcm_{2<=d<=2t^2}(d!-1) | M, and M < (R+1)!-1. Then 3t^3 < 2(R+1). Sequence form: no radius function satisfies 2(R(t)+1) <= 3t^3 eventually; and R(t)+1 is not o(t^3). Evidence. Lean at the pinned formal source covers the complete advertised endpoint, including all four hypotheses and both sequence forms. Attribution. Prior art relation is recorded as unassessed in state/formal_math/claim_frontier_v1.json#erdos68.channel_radius, so no novelty is asserted. Remaining obligation. Derive lcm_{2<=d<=2t^2}(d!-1) | M and M < (R+1)!-1 from the factorial-gap series and prove that the channels through 2t^2 vanish for the resulting family.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "res:lead-channel-radius",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "square_subsequence_radius_three_halves_lower",
+          "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+          "line": 1222
+        },
+        {
+          "name": "no_eventual_square_subsequence_three_halves_upper",
+          "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+          "line": 1241
+        },
+        {
+          "name": "not_isLittleO_square_subsequence_radius",
+          "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+          "line": 1043
+        },
+        {
+          "name": "square_subsequence_radius_cubic_lower",
+          "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+          "line": 1006
+        },
+        {
+          "name": "no_eventual_square_subsequence_cubic_upper",
+          "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+          "line": 1023
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the complete advertised endpoint, including all four hypotheses and both sequence forms",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "channel_radius_three_halves"
+    },
+    {
+      "id": "erdos68_channel_radius_method_ceiling",
+      "label": "Logarithmic-constraint ceiling of the channel-radius method",
+      "status": "unconditional progress",
+      "statement": "For t >= 4 and 9(R+1) = 16t^3, the finite logarithmic constraint of the channel argument is already satisfied. Hence that constraint alone cannot force a strict lower bound at the asymptotically optimized constant 16/9. Evidence. Lean at the pinned formal source covers the complete advertised endpoint. Attribution. Unassessed. Remaining obligation. A lower bound at the asymptotically optimized constant 16/9 needs an input beyond the finite logarithmic constraint.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "res:lead-channel-radius",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "sharp_radius_satisfies_square_log_constraint",
+          "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+          "line": 764
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the complete advertised endpoint",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "channel_radius_method_ceiling"
+    },
+    {
+      "id": "erdos68_companion_orbit_boundary",
+      "label": "Fixed companion-orbit rationality boundary for the factorial-gap series",
+      "status": "conditional reduction",
+      "statement": "S is rational iff (floor(m! C) + 2) mod m = 0 for every sufficiently large m, with C = sum_{n>=2} 1/(n!(n!-1)); equivalently S is irrational iff that residue is missed cofinally. The generic form holds at every real base point x for x + (e-2). Evidence. Lean at the pinned formal source covers both directions of the equivalence, at every real base point. Attribution. Extends the classical factorial-base rationality criterion of Cantor (1869), recorded in Galambos, Representations of Real Numbers by Infinite Series, Springer LNM 502 (1976), Chapter 1. The addition here is the telescope C = S - e + 2, the identification of the digit value m - 2, and the transport to the factorial-gap series. Adjudicated at docs/formal_math/palomar/prior_art_dispositions_v1.json#D1_68_companion_orbit_boundary as extends. Remaining obligation. Show that floor(m!C) mod m differs from -2 at arbitrarily large indices.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "res:lead-companion-orbit",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "not_irrational_factorialGapSeries_iff_eventually_companion_floor_neg_two",
+          "module": "ErdosProblems/Erdos68/CompanionOrbitRationality.lean",
+          "line": 438
+        },
+        {
+          "name": "irrational_factorialGapSeries_iff_cofinal_companion_floor_misses",
+          "module": "ErdosProblems/Erdos68/CompanionOrbitRationality.lean",
+          "line": 447
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "both directions of the equivalence, at every real base point",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "companion_orbit_boundary"
+    },
+    {
+      "id": "erdos68_strict_successor_carry_equivalence",
+      "label": "Strict-successor carry equivalence for irrationality of the factorial-gap series",
+      "status": "conditional reduction",
+      "statement": "S is irrational iff for every B there is m > B with m not dividing strictFacTopRat (factorialGapPrefix m) m; equivalently iff non-unit carries occur cofinally. S is rational iff the carry b_m equals 1 eventually. Evidence. Lean at the pinned formal source covers both directions of the equivalence. Attribution. Same antecedent as erdos68_companion_orbit_boundary: Cantor (1869) and Galambos (1976), Chapter 1. Remaining obligation. Produce the cofinally many indices m with m not dividing Z_m. The equivalence supplies no producer.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "res:lead-carry-equivalence",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
+          "module": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+          "line": 986
+        },
+        {
+          "name": "irrational_factorialGapSeries_of_cofinal_nonunit_carries",
+          "module": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+          "line": 945
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "both directions of the equivalence",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "strict_successor_carry_equivalence",
+      "citation_correction": "R/docs/RESULTS.md:275 cites ErdosProblems/Erdos68/FactorialZeroPlateau.lean:1090 for this declaration. That file is a twelve-line compatibility facade with zero theorems at R HEAD 8a28b2521e. The real home is ErdosProblems/Erdos68/FactorialGapPlateauCore.lean:986."
+    },
+    {
+      "id": "erdos68_moving_factor_scale_split",
+      "label": "Moving prefix-private factor scale split implies irrationality",
+      "status": "conditional reduction",
+      "statement": "If cofinally many m >= 4 carry a large prefix-private prime q of m!-1 with, at p = m/2 + 1, both (2p+1) L_p < 2p^2 (2p-1)! rho_p and (2p+1) C_p q < 2p^2 (2p-1)!, then S is irrational. The unit-factor pair floor is exactly min(rho_p, R_p/q), and its scale test is equivalent to the conjunction of those two inequalities. Evidence. Lean at the pinned formal source covers the implication from the two scale bounds, the floor identity, and the unconditional cofinal supply of prefix-private primes. Attribution. The supply proof uses Wilson's theorem, which is classical. The cofinality packaging is recorded as unassessed. Remaining obligation. Prove the global complementary-residue bound and the local collision-core cap cofinally. Neither follows from the existence of the selected prime.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "res:lead-moving-factor-split",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "irrational_factorialGapSeries_of_cofinal_largePrefixPrivate_unitScaleSplit",
+          "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+          "line": 1574
+        },
+        {
+          "name": "factorialBlock_unitFactorPairFloor_eq_min",
+          "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+          "line": 4701
+        },
+        {
+          "name": "cofinal_prefixPrivate_factorialGap_hits",
+          "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+          "line": 3097
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the implication from the two scale bounds, the floor identity, and the unconditional cofinal supply of prefix-private primes",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "moving_factor_scale_split"
+    },
+    {
+      "id": "erdos68_unit_factor_pair_floor_split",
+      "label": "Branch-free split of the unit-factor-pair scale test",
+      "status": "unconditional progress",
+      "statement": "For q dividing factorialBlockPrivateModulus p, the (1,q) complementary factor-pair floor equals min(rho_p, R_p/q), and the scale test (2p+1) L_p < 2p^2(2p-1)! times that floor is equivalent to the conjunction of the global complementary-residue bound and the local collision-core cap for q. Evidence. Lean at the pinned formal source covers the complete equivalence. Attribution. Unassessed. Remaining obligation. The split exposes the two surviving arithmetic estimates and proves neither.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "res:lead-moving-factor-split",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "factorialBlock_unitFactorPairFloor_scale_iff",
+          "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+          "line": 4766
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the complete equivalence",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "unit_factor_pair_floor_split"
+    },
+    {
+      "id": "erdos68_kempner_index_denominator_exclusion",
+      "label": "Kempner-index denominator exclusion from one non-unit carry",
+      "status": "unconditional progress",
+      "statement": "A non-unit strict-successor carry at index m forces every displayed rational denominator q of S to fail q | (m-1)!, equivalently the Kempner (Smarandache) function min{k : q | k!} is at least m. Instantiated in Lean at index 60: no displayed denominator divides 59!. Evidence. Lean at the pinned formal source covers the implication from a non-unit carry at index m to q not dividing (m-1)!, and the magnitude form q >= m; the Lean instantiation is at index 60. Certificate: the non-unit carry at m = 300000 is supplied by the separately implemented exact GMP census, not by the kernel. Attribution. Adjudicated at docs/formal_math/palomar/prior_art_dispositions_v1.json#D2_68_finite_denominator_exclusions as new for the numbers, classical for the method, with none located. Remaining obligation. This is a divisibility restriction at a finite depth. Ruling out an eventual all-unit carry tail is what would convert it into a proof.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "res:lead-denominator-exclusions",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "rational_denominator_not_dvd_pred_factorial_of_nonunit_carry",
+          "module": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+          "line": 836
+        },
+        {
+          "name": "rational_denominator_ge_of_nonunit_carry",
+          "module": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+          "line": 812
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the implication from a non-unit carry at index m to q not dividing (m-1)!, and the magnitude form q >= m; the Lean instantiation is at index 60",
+        "ordinary_proof": null,
+        "replayable_certificate": "the non-unit carry at m = 300000 is supplied by the separately implemented exact GMP census, not by the kernel"
+      },
+      "source_result_id": "kempner_index_exclusion"
+    },
+    {
+      "id": "erdos68_gmp_carry_census_300000",
+      "label": "Exact GMP strict-successor carry census through m = 300000",
+      "status": "unconditional progress",
+      "statement": "An exact GMP integer computation certifies every strict-successor carry for 3 <= m <= 300000. The only unit carries are m = 52, 591, 1030, 1407, 1438, 2164, 4258, 10991, 21236; the carry at 300000 is non-unit. With the Lean carry theorem this gives q >= 300000 and q not dividing 299999!. Evidence. Lean at the pinned formal source covers the consumer implication only. Ordinary proof: the composition of the certified carry with the Lean consumer. Certificate: an exact GMP integer computation of all 299998 carry cells for 3 <= m <= 300000, hash-bound in the companion research packet; this is not a kernel evaluation. Attribution. Same disposition as erdos68_kempner_index_denominator_exclusion. Remaining obligation. Extend the certified depth or rule out an eventual all-unit carry tail.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "res:lead-denominator-exclusions",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "rational_denominator_not_dvd_pred_factorial_of_nonunit_carry",
+          "module": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+          "line": 836
+        },
+        {
+          "name": "rational_denominator_ge_of_nonunit_carry",
+          "module": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+          "line": 812
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the consumer implication only",
+        "ordinary_proof": "the composition of the certified carry with the Lean consumer",
+        "replayable_certificate": "an exact GMP integer computation of all 299998 carry cells for 3 <= m <= 300000, hash-bound in the companion research packet; this is not a kernel evaluation"
+      },
+      "source_result_id": "gmp_carry_census_300000"
+    },
+    {
+      "id": "erdos68_certified_cf_denominator_floor",
+      "label": "Certified continued-fraction denominator floor q >= 2^39990 > 10^12038",
+      "status": "ordinary proof here",
+      "statement": "If S = a/q with q > 0 then q >= 2^39990 > 10^12038. At B = 80000 bits the exact rational enclosure has scaled width 7053 and forces 23449 continued-fraction partial quotients; the receipt records exponent 39990 and decimal exponent 12038. Evidence. No Lean declaration owns this statement. Ordinary proof: the continued-fraction argument: every partial quotient shared by both endpoints of a rational enclosure belongs to every real number in it, so a rational inside the enclosure has reduced denominator at least the last retained convergent denominator. Certificate: verification/erdos68-continued-fraction.json, replayed by scripts/check_erdos68_continued_fraction.py; the receipt records scale_bits 80000, bracket_width 7053, certified_quotients 23449, denominator_lower_bound_power_of_two_exponent 39990, strict_decimal_power_lower_bound 12038. Attribution. Method is textbook best approximation of the second kind. The adjudicated disposition records the numbers as new with none located. Remaining obligation. The bound is a magnitude restriction at one scale. Nothing here excludes a rational value of larger denominator.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "res:lead-denominator-exclusions",
+      "readme_headline": false,
+      "declarations": [],
+      "evidence_decomposition": {
+        "lean_kernel_checked": null,
+        "ordinary_proof": "the continued-fraction argument: every partial quotient shared by both endpoints of a rational enclosure belongs to every real number in it, so a rational inside the enclosure has reduced denominator at least the last retained convergent denominator",
+        "replayable_certificate": "verification/erdos68-continued-fraction.json, replayed by scripts/check_erdos68_continued_fraction.py; the receipt records scale_bits 80000, bracket_width 7053, certified_quotients 23449, denominator_lower_bound_power_of_two_exponent 39990, strict_decimal_power_lower_bound 12038"
+      },
+      "source_result_id": "certified_cf_denominator_floor",
+      "number_correction": "The receipt values are exponent 39990 and decimal exponent 12038. state/formal_math/claim_frontier_v1.json#erdos68.certified_cf_denominator_exclusion_10e12039, docs/formal_math/palomar/longitudinal_truth_2026_09_01.md:18 and docs/formal_math/palomar/prior_art_adjudication_2026_09_02.md:1638 each state one exponent too large; 2^39991 is 10^12038.49, so the pair 2^39991 > 10^12039 is false on its own terms."
+    },
+    {
+      "id": "erdos68_prime_pole_cancellation_law",
+      "label": "Maximal-hit prime-pole cancellation law for finite prefixes",
+      "status": "unconditional progress",
+      "statement": "For a prime q with positive maximal exponent e among the displayed factorial gaps through M, the common-denominator numerator satisfies B = (L/q^e) sum_{n in J} u_n^{-1} (mod q), so the full q^e survives reduced-prefix cancellation exactly when that reciprocal sum is nonzero. Full cancellations occur at q = 139 (hits 69, 122, 137) and q = 2593 (hits 349, 2243, 2591). Evidence. Lean at the pinned formal source covers the survival criterion and the residue formula. Certificate: the two full cancellations at p = 139 and p = 2593 are exact integer computations displayed in the note. Attribution. Unassessed. Remaining obligation. The law classifies survival at a finite prefix and says nothing about the infinite series.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "res:lead-prime-pole",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "factorialGapPrefix_den_full_prime_power_iff",
+          "module": "ErdosProblems/Erdos68/PrimePoleCriterion.lean",
+          "line": 223
+        },
+        {
+          "name": "factorialGapPrefixLCMNumerator_mod_prime",
+          "module": "ErdosProblems/Erdos68/PrimePoleCriterion.lean",
+          "line": 129
+        },
+        {
+          "name": "natRatio_den_factorization_eq_iff",
+          "module": "ErdosProblems/Erdos68/PrimePoleDenominator.lean",
+          "line": 41
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the survival criterion and the residue formula",
+        "ordinary_proof": null,
+        "replayable_certificate": "the two full cancellations at p = 139 and p = 2593 are exact integer computations displayed in the note"
+      },
+      "source_result_id": "prime_pole_cancellation_law",
+      "citation_correction": "The deep inventory records factorialGapPrefixLCMNumerator_mod_prime at PrimePoleCriterion.lean:79. At R HEAD the declaration is at line 129."
+    },
+    {
+      "id": "erdos68_odd_pair_carry_break_equivalence",
+      "label": "Odd-pair carry-break equivalence",
+      "status": "conditional reduction",
+      "statement": "S is irrational iff cofinally many odd m have a non-unit carry at m or at m+1; equivalently iff cofinally many odd m fail m(m+1) | strictFacTopRat (factorialGapPrefix (m+1)) (m+1). Evidence. Lean at the pinned formal source covers both directions of the equivalence. Attribution. Unassessed. Remaining obligation. Produce cofinally many odd m with a non-unit carry at m or at m+1.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "irrational_factorialGapSeries_iff_cofinal_odd_unit_carry_break",
+          "module": "ErdosProblems/Erdos68/PrimeThresholdParity.lean",
+          "line": 169
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "both directions of the equivalence",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "odd_pair_sparse_characterization"
+    },
+    {
+      "id": "erdos68_odd_threshold_consumer_and_parity_pattern",
+      "label": "Odd-index threshold consumer and the certified odd-index parity pattern",
+      "status": "conditional reduction",
+      "statement": "Through the certified horizon m <= 300000 the only odd D_m = -1 events are 5, 9, 23, the only prime ones are 5 and 23, and every certified unit carry satisfies A_m >= 2/m. Hence there is no full tail-free threshold failure at an odd index from 25 through 300000. Lean packages the consumer: every sufficiently large odd threshold proves irrationality. Evidence. Lean at the pinned formal source covers the consumer implication from an eventual odd-index threshold failure to irrationality. Certificate: the finite pattern, that the only odd rounding-digit events D_m = -1 through m <= 300000 are 5, 9 and 23, is a computational receipt, not a kernel result. Attribution. Unassessed. Whether this finite pattern connects to the fixed-modulus producer family is unverified. Remaining obligation. The finite absence of odd threshold failures from 25 through 300000 supplies no eventual statement.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "irrational_factorialGapSeries_of_eventual_odd_threshold",
+          "module": "ErdosProblems/Erdos68/PrimeThresholdParity.lean",
+          "line": 100
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the consumer implication from an eventual odd-index threshold failure to irrationality",
+        "ordinary_proof": null,
+        "replayable_certificate": "the finite pattern, that the only odd rounding-digit events D_m = -1 through m <= 300000 are 5, 9 and 23, is a computational receipt, not a kernel result"
+      },
+      "source_result_id": "odd_threshold_parity_pattern"
+    },
+    {
+      "id": "erdos68_ultra_endpoint_cylinder_classification",
+      "label": "Endpoint-cylinder classification of consecutive unit carries",
+      "status": "conditional reduction",
+      "statement": "Two consecutive unit carries at m and m+1 are equivalent to the single earlier canonical remainder lying in one of two endpoint cylinders of width of order m^-3, the lower pulled back from zero through two factorial digits and the upper its maximal-digit reflection. Irrationality is equivalent to cofinal escape from those cylinders along odd starts. Evidence. Lean at the pinned formal source covers both directions of the equivalence. Attribution. Unassessed. Remaining obligation. Prove cofinal escape from the two endpoint cylinders, whose widths are of order m^-3.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "irrational_factorialGapSeries_iff_cofinal_odd_ultra_endpoint_escape",
+          "module": "ErdosProblems/Erdos68/PrimeThresholdParity.lean",
+          "line": 407
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "both directions of the equivalence",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "ultra_endpoint_cylinder_classification"
+    },
+    {
+      "id": "erdos68_adjacent_unit_window_circularity",
+      "label": "Adjacent-unit carry window reduces to a universal numerator bound",
+      "status": "unconditional progress",
+      "statement": "The window denominator telescopes independently of the carries as D_m = V_(m+2) G_(m+1) G_m = V_m (m!-1)((m+1)!-1), while under an adjacent unit pair the offset factors as Omega_m = U_(m+2) G_(m+1) G_m. Cancelling the common normalizer reduces the whole window to 0 < U_(m+2) <= V_(m+2), the universal bound every reduced positive fraction satisfies. Evidence. Lean at the pinned formal source covers the complete telescope and offset factorization. Attribution. Unassessed. Remaining obligation. The declarations do not disprove adjacent unit carries. They prove that any surviving-prime, prime-power or quotient-gcd obstruction obtained only after imposing the pair is circular. A successful argument must constrain the raw predecessor state before the pair assumption.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "sec:adjacent-unit-no-go",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "adjacentUnitCarryWindowOffset_eq_twoStep_reducedNumerator",
+          "module": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+          "line": 337
+        },
+        {
+          "name": "consecutive_unit_carries_iff_positive_offset_le_den",
+          "module": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+          "line": 148
+        },
+        {
+          "name": "twoStep_den_mul_transitionNormalizers",
+          "module": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+          "line": 215
+        },
+        {
+          "name": "adjacentUnitCarryWindowDen_eq_twoStep_den",
+          "module": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+          "line": 243
+        },
+        {
+          "name": "consecutive_unit_carries_iff_integer_width_window",
+          "module": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+          "line": 62
+        },
+        {
+          "name": "primePow_dvd_twoStep_transitionNormalizers_iff_dvd_complement",
+          "module": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+          "line": 436
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the complete telescope and offset factorization",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "adjacent_unit_circularity_no_go"
+    },
+    {
+      "id": "erdos68_erdos_straus_coboundary_collapse",
+      "label": "Erdős–Straus coboundary criterion collapses back to eventual unit carries",
+      "status": "unconditional progress",
+      "statement": "For the coefficients d_m = 1 - b_m with 2 - m <= d_m <= 2: if B > 0 and eventually B d_m = m c_m - c_(m+1) with 2|c_(m+1)| < m, then every late state lies in (-B, 0], and at the first late index divisible by B the state is forced to zero, which is absorbing, so d_m = 0 eventually. Evidence. Lean at the pinned formal source covers the absorption argument on the finite residue state. Attribution. Consumes Erdős–Straus Theorem 2.1 in the formalisation of Koutsoukou-Argyraki, Li and Paulson (arXiv v2, Theorem 3.1). The criterion applies to the ordinary-factorial carry expansion, not to the denominators n!-1 directly. Remaining obligation. The whole Erdős–Straus route is reduced back to eventual unit carries and supplies no distinct obstruction.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "eventually_zero_of_bounded_coboundary_core",
+          "module": "ErdosProblems/Erdos68/FactorialZeroPlateauSupplement.lean",
+          "line": 157
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the absorption argument on the finite residue state",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "erdos_straus_coboundary_collapse"
+    },
+    {
+      "id": "erdos68_wilson_cofinal_prefix_private_hits",
+      "label": "Unconditional cofinal supply of prefix-private factorial-gap primes",
+      "status": "unconditional progress",
+      "statement": "For every cutoff B there are a prime q and an index m > B with q dividing m!-1 and q coprime to every earlier factorial gap. The proof chooses q >= B! + 5, uses Wilson to get q | (q-2)!-1, and takes the least hit. Evidence. Lean at the pinned formal source covers the complete advertised endpoint. Attribution. Wilson's theorem is classical. The cofinality packaging is recorded as unassessed. Remaining obligation. The supply is arithmetic only and carries no scale bound.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "res:lead-moving-factor-split",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "cofinal_prefixPrivate_factorialGap_hits",
+          "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+          "line": 3097
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the complete advertised endpoint",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "wilson_cofinal_prefix_private_hits"
+    },
+    {
+      "id": "erdos68_wilson_reflection_no_go",
+      "label": "Wilson reflection forces a second hit inside one factorial block",
+      "status": "unconditional progress",
+      "statement": "If n is odd, n < q, and q divides n!-1, then q divides (q-n-1)!-1. When both indices lie in one factorial block with q < 2n+1, that reflected hit puts q in the block's normalized collision core and its full-block hit count exceeds one. Evidence. Lean at the pinned formal source covers the complete advertised endpoint. Attribution. Wilson's theorem is classical. The reflection packaging is unassessed. Remaining obligation. The statement obstructs unique-support arguments at odd indices below 2n+1 and proves nothing about the series.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "prime_dvd_reflected_factorialGap_of_odd",
+          "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+          "line": 3139
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the complete advertised endpoint",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "wilson_reflection_no_go"
+    },
+    {
+      "id": "erdos68_global_complementary_tail_reduction",
+      "label": "Coefficient-free least private residue and the global complementary-tail criterion",
+      "status": "conditional reduction",
+      "statement": "Whenever the literal endpoint gap is positive, the least private residue is coefficient-free: rho_p = (R_p - (T_p mod R_p)) mod R_p. A cofinal family of prime blocks with R_p > 1 and (2p+1) L_p < 2p^2 (2p-1)! rho_p implies S is irrational. Evidence. Lean at the pinned formal source covers the implication from the cofinal scale hypothesis. Attribution. Unassessed. Remaining obligation. Produce a cofinal family of prime blocks satisfying the displayed scale inequality.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "irrational_factorialGapSeries_of_cofinal_global_complementaryTail",
+          "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+          "line": 6164
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the implication from the cofinal scale hypothesis",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "global_complementary_tail_reduction"
+    },
+    {
+      "id": "erdos68_collision_scaled_fractional_part_criterion",
+      "label": "Collision-scaled fractional-part criterion",
+      "status": "conditional reduction",
+      "statement": "C_p R_p = L_p and rho_p/R_p is exactly the gap from the collision-scaled genuine prefix C_p * s_(2p-1) to its next integer. Hence cofinal blocks with (2p+1) C_p < 2p^2 (2p-1)! ((floor(T_p/R_p)+1) - C_p s_(2p-1)) imply irrationality. Evidence. Lean at the pinned formal source covers the implication from the cofinal ceiling-gap hypothesis. Attribution. Unassessed. Remaining obligation. Produce the cofinal blocks. The criterion identifies the target and supplies no witness.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "irrational_factorialGapSeries_of_cofinal_collisionCeilingGap",
+          "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+          "line": 6254
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the implication from the cofinal ceiling-gap hypothesis",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "collision_scaled_fractional_part_criterion"
+    },
+    {
+      "id": "erdos68_fixed_owner_absorption_no_go",
+      "label": "Every fixed factorial-gap owner is eventually absorbed by the growing base",
+      "status": "unconditional progress",
+      "statement": "Every fixed factorial-gap owner is eventually absorbed by the growing base: for all p > n!-1 the private quotient at n is exactly 1, and a fixed pair of owners is simultaneously absorbed once p exceeds both source denominators. Evidence. Lean at the pinned formal source covers the complete advertised endpoint. Attribution. Unassessed. Remaining obligation. The absorption shows that large private quotients at small blocks are finite-range phenomena and leaves the moving-owner route open.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "bdry:fixed-owner-absorption",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "factorialBlockPrivateQuotient_eq_one_of_gap_lt",
+          "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+          "line": 2677
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the complete advertised endpoint",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "fixed_owner_absorption_no_go"
+    },
+    {
+      "id": "erdos68_factor_split_projection_reduction",
+      "label": "Factor-split projection reduction inside one private modulus",
+      "status": "unconditional progress",
+      "statement": "For arbitrary divisors a, b of the private modulus R_p, min(R_p/a, R_p/b) * max(a,b) = R_p, and coprime a, b give lcm(R_p/a, R_p/b) = R_p with a branch-free factor-pair floor at most the global complementary residue. The two factors may both divide one moving private quotient. Evidence. Lean at the pinned formal source covers the complete advertised endpoint. Attribution. Unassessed. Remaining obligation. The reduction removes the two-owner requirement and supplies no selected factors.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "res:lead-moving-factor-split",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "factorialBlock_complementaryFactorPairFloor_le_global",
+          "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+          "line": 4854
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the complete advertised endpoint",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "factor_split_projection_reduction"
+    },
+    {
+      "id": "erdos68_wilson_square_record_entry",
+      "label": "Wilson-endpoint square record entry into the reduced denominator",
+      "status": "unconditional progress",
+      "statement": "For a prime p >= 5 with p | ((p-1)/2)!-1, W_p = 1 (mod p), and no earlier square hit, the full square p^2 enters the residual cofactor and the actual reduced denominator at p-1 with a nonzero reduced-numerator projection. Lean also proves W_p = 1 (mod p) iff p^2 | (p-2)!-1. Kernel-checked at p = 107. Evidence. Lean at the pinned formal source covers the implication and the equivalence W_p = 1 mod p iff p^2 divides (p-2)!-1, with a kernel-checked instance at p = 107. Attribution. Unassessed. The universal first-square scan at 4931 is receipt authority, not a Lean theorem. Remaining obligation. No cofinal family of square record entries is produced.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "factorialGap_halfFactorial_Wilson_record_entry",
+          "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+          "line": 5295
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the implication and the equivalence W_p = 1 mod p iff p^2 divides (p-2)!-1, with a kernel-checked instance at p = 107",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "wilson_square_record_entry"
+    },
+    {
+      "id": "erdos68_nonterminal_square_record_entry",
+      "label": "Nonterminal square record entry at 971 with endpoint 610",
+      "status": "verified finite instance",
+      "statement": "971 divides 361!-1 and 971^2 divides 609!-1 with no earlier square hit and 609 < 971-2, so 971^2 enters the residual cofactor and the reduced denominator at endpoint 610 with a nonzero reduced-numerator projection, without using the Wilson endpoint. At m = 610 the cleared tail-free threshold also holds with strictly positive margin. Evidence. Lean at the pinned formal source covers the complete finite instance. Attribution. The enumeration of square hits q^2 | n!-1 for q <= 10^6 is a computational receipt; Costa, Gerbicz and Harvey, Table 1, rule out terminal Wilson square births for 10^6 < p < 2 x 10^13. Remaining obligation. One instance carries no cofinal statement.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "nineHundredSeventyOne_firstRepeatedPrimeSquare_entry",
+          "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+          "line": 5446
+        }
+      ],
+      "bounded_domain": "The single pair (q, n) = (971, 609) with endpoint 610. No other index is covered.",
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the complete finite instance",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "nonterminal_square_record_entry"
+    },
+    {
+      "id": "erdos68_residual_cofactor_recurrence",
+      "label": "Intrinsic recurrence of the componentwise residual cofactor",
+      "status": "unconditional progress",
+      "statement": "The componentwise accumulator obeys the exact intrinsic recurrence C_(n+1) R_n = C_n B_n D_n, where B_n is the unselected part of n!-1 and D_n the excess killed multiplicity. Every prime of B_n divides some earlier k!-1 (Wilson excludes the boundary prime n+1), and every prime of D_n is a killed source label colliding with n or n!-1. Hence residual denominator mass has exactly two inflow mechanisms and one outflow, globally and prime by prime. Evidence. Lean at the pinned formal source covers the exact recurrence. Attribution. Wilson's theorem is the classical input for excluding the boundary prime. Otherwise unassessed. Remaining obligation. No source theorem supplies cofinally large amplification or bounds the exceptional mass.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "factorialGapComponentwiseResidualCofactor_succ_intrinsic_recurrence",
+          "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+          "line": 4313
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the exact recurrence",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "residual_cofactor_dynamical_system"
+    },
+    {
+      "id": "erdos68_terminal_wilson_owner_pairs",
+      "label": "Terminal Wilson hits are globally unique, with a certified pair census below 50000",
+      "status": "unconditional progress",
+      "statement": "If the Wilson endpoint q-2 is the first factorial-one hit of a prime q >= 5, it is the only hit globally. Among the 5133 primes q <= 50000 there are 1801 such terminal-first-hit primes and 1799 consecutive comparable pairs fitting a common factorial block; for the canonical pair q = 37, 41 with owner indices 35, 39 in block p = 20, the complete factor-pair scale inequality closes. Evidence. Lean at the pinned formal source covers the uniqueness equivalence for a terminal first hit. Certificate: the census of 1801 terminal-first-hit primes and 1799 comparable consecutive pairs among the 5133 primes q <= 50000 is a computational receipt. Attribution. Wilson's theorem is classical. The census packaging is unassessed. Remaining obligation. The census supplies no cofinal owner-pair family.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "prime_terminal_factorialGap_hit_iff",
+          "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+          "line": 3320
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the uniqueness equivalence for a terminal first hit",
+        "ordinary_proof": null,
+        "replayable_certificate": "the census of 1801 terminal-first-hit primes and 1799 comparable consecutive pairs among the 5133 primes q <= 50000 is a computational receipt"
+      },
+      "source_result_id": "terminal_wilson_owner_pairs"
+    },
+    {
+      "id": "erdos68_unique_owner_squared_factorial_ceiling",
+      "label": "Squared-factorial ceiling excludes every one-owner closing certificate",
+      "status": "unconditional progress",
+      "statement": "Any one-owner closing inequality forces (2p+1) L_p < 2p^2 ((2p-1)!)^2, and the reverse squared-factorial bound excludes every one-owner certificate however unique support was produced. Evidence. Lean at the pinned formal source covers the ceiling inequality. Ordinary proof: the comparison of the ceiling against the derived growth bound log lcm_{2<=n<=N}(n!-1) >> N^{4/3} log N is an ordinary argument and is not kernel-checked. Attribution. The growth input is derived here from Theorem 12 of Garaev, Luca and Shparlinski, arXiv:math/0403422v1, page 16. The corollary is ours and is labelled as derived. Remaining obligation. The eventual source-to-ceiling comparison is not kernel-checked, so the one-owner route is closed only as an ordinary argument.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "factorialBlock_unique_owner_projection_lcm_ceiling",
+          "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+          "line": 6524
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the ceiling inequality",
+        "ordinary_proof": "the comparison of the ceiling against the derived growth bound log lcm_{2<=n<=N}(n!-1) >> N^{4/3} log N is an ordinary argument and is not kernel-checked",
+        "replayable_certificate": null
+      },
+      "source_result_id": "unique_owner_squared_factorial_ceiling"
+    },
+    {
+      "id": "erdos68_prime_unit_translator_remote_reduction",
+      "label": "Unconditional remote factorial-grid prime-translator reduction",
+      "status": "conditional reduction",
+      "statement": "For every cutoff n and support threshold B there are a prime p and an integer z such that the factorial-grid Cramer vector enlarged by z copies of the pair (p,-1) on (p-1,p) has every support index above B, zero channel numerator at every d in [2, n+2], nonzero factorial moment, and channel residual of absolute value at most 1/2. Evidence. Lean at the pinned formal source covers the complete advertised endpoint. Attribution. Unassessed. Remaining obligation. The residual bound 1/2 is non-strict and the reduced residual may be zero. A nonintegrality certificate for the untranslated residual is what is missing.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": "res:translator",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "exists_remote_factorialGrid_primeTranslator_reduction",
+          "module": "ErdosProblems/Erdos68/PrimeUnitTranslator.lean",
+          "line": 1657
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the complete advertised endpoint",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "prime_unit_translator_remote_reduction"
+    },
+    {
+      "id": "erdos68_canonical_digit_termination_equivalence",
+      "label": "Rationality is equivalent to eventual vanishing of the canonical factorial digits",
+      "status": "formalised here",
+      "statement": "For every real x, x is rational iff its canonical factorial digits eventually vanish. A zero digit tail forces the starting canonical remainder to vanish, and the proof constructs the rational witness floor(N! x)/N!. Evidence. Lean at the pinned formal source covers the equivalence at every real number. Attribution. This is the classical factorial-base rationality criterion of Cantor (1869), recorded in Galambos (1976), Chapter 1. It is represented and checked here, and no novelty is asserted. Remaining obligation. The criterion is the coordinate the two exact reformulations are transported along.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_68_irrationality"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "exists_rat_eq_iff_eventually_zero_canonicalDigit",
+          "module": "ErdosProblems/Erdos68/CanonicalFactorialTermination.lean",
+          "line": 78
+        }
+      ],
+      "evidence_decomposition": {
+        "lean_kernel_checked": "the equivalence at every real number",
+        "ordinary_proof": null,
+        "replayable_certificate": null
+      },
+      "source_result_id": "canonical_digit_termination_equivalence"
+    },
+    {
+      "id": "lcm_diagonal_rationality_criterion",
+      "label": "Lcm-diagonal criterion for dyadic tail recurrences",
+      "status": "conditional reduction",
+      "statement": "For every integer digit sequence g and every real sequence T with T(N+1) = 2*T(N) - g(N+1), the h-shift T(N+h) - T(N) is integral exactly when the reduced denominator of T(N) has multiplicative order of 2 dividing h, and irrationality of T(0) is equivalent to nonintegrality of the single diagonal T(2*L_j) - T(L_j) for every j, where L_0 = 1 and L_j = lcm(1,...,j). The same equivalence holds along any deciding schedule and along the factorial diagonal. This collapses a two-parameter escape condition to one countable diagonal, and supplies no nonintegral diagonal value for the actual prime gaps.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_251_irrationality"
+      ],
+      "paper_label": "res:lcmdiagonal",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "irrational_initial_iff_all_lcmDiagonal_nonintegral",
+          "module": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+          "line": 153
+        },
+        {
+          "name": "irrational_initial_iff_nonintegral_on_schedule",
+          "module": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+          "line": 110
+        },
+        {
+          "name": "irrational_initial_iff_all_factorialDiagonal_nonintegral",
+          "module": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+          "line": 138
+        },
+        {
+          "name": "tailShift_integral_iff_orderOf_dvd",
+          "module": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+          "line": 40
+        }
+      ]
+    },
+    {
+      "id": "dyadic_tail_shift_rationality_classification",
+      "label": "Exact rationality classification by integral tail shifts",
+      "status": "conditional reduction",
+      "statement": "For every real dyadic tail recurrence with integer digits, failure of irrationality of the initial state is equivalent to the existence of one integral positive shift at one index, and equivalently to one fixed positive shift being eventually integral. Dually, irrationality is equivalent to every positive shift being nonintegral at every basepoint, and equivalently to cofinal nonintegrality of each fixed shift. The classification is proved for arbitrary integer digits and supplies no nonintegral shift for the actual prime gaps.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_251_irrationality"
+      ],
+      "paper_label": "res:escape-irrational",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "not_irrational_initial_iff_exists_integral_positive_tailShift",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 1479
+        },
+        {
+          "name": "not_irrational_initial_iff_exists_eventually_integral_positive_tailShift",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 1525
+        },
+        {
+          "name": "irrational_initial_iff_all_positive_tailShifts_nonintegral",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 1551
+        },
+        {
+          "name": "irrational_initial_iff_cofinalNonintegralTailShifts",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 1572
+        }
+      ]
+    },
+    {
+      "id": "affine_and_block_residue_escape_circularity",
+      "label": "Both block-pullback escape tests are equivalent to their own conclusion",
+      "status": "unconditional progress",
+      "statement": "For every integer digit sequence and rational tail orbit, the affine power-of-two cylinder at any depth is exactly even integrality at the basepoint, so the cylinder carries no depth-dependent information, and cofinal affine escape is equivalent to failure of eventual integrality of the shift. Under any dyadically dominated terminal bound the same equivalence holds for the non-adaptive fixed block-residue lattice, with rational denominator separation alone supplying the reverse direction. Each escape hypothesis is therefore equivalent to the conclusion it was introduced to derive, so neither is an independent source of information about consecutive primes.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_251_irrationality"
+      ],
+      "paper_label": "res:affinecollapse",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "ratAffinePowTwo_iff_evenIntegral",
+          "module": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+          "line": 91
+        },
+        {
+          "name": "ratAffinePowTwo_depth_independent",
+          "module": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+          "line": 101
+        },
+        {
+          "name": "cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral",
+          "module": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+          "line": 162
+        },
+        {
+          "name": "exists_blockResidue_escape_of_not_integral",
+          "module": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+          "line": 259
+        },
+        {
+          "name": "cofinal_blockResidue_escape_iff_not_eventuallyIntegral",
+          "module": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+          "line": 308
+        }
+      ]
+    },
+    {
+      "id": "signed_two_window_normal_form",
+      "label": "Signed two-window normal form for the adjacent small-mismatch event",
+      "status": "unconditional progress",
+      "statement": "Under the hypotheses of the adjacent small-shift consumer, with even digit differences, a nonzero shift digit is forced to be exactly +2 or exactly -2, and the two-window condition is equivalent to the digit difference being +2 with the shift in the open interval from 1/2 to 1, or -2 with the shift in the open interval from -1 to -1/2. This is an exact local normal form for the event; it supplies no occurrence of the event.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_251_irrationality"
+      ],
+      "paper_label": "res:signedwindow",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "digit_eq_two_or_neg_two_of_small_pair",
+          "module": "ErdosProblems/Erdos251/AffineShiftEscape.lean",
+          "line": 58
+        },
+        {
+          "name": "shift_gt_half_of_digit_eq_two",
+          "module": "ErdosProblems/Erdos251/AffineShiftEscape.lean",
+          "line": 83
+        },
+        {
+          "name": "shift_lt_neg_half_of_digit_eq_neg_two",
+          "module": "ErdosProblems/Erdos251/AffineShiftEscape.lean",
+          "line": 96
+        },
+        {
+          "name": "adjacent_small_mismatch_iff_signed_two_window",
+          "module": "ErdosProblems/Erdos251/AffineShiftEscape.lean",
+          "line": 113
+        }
+      ]
+    },
+    {
+      "id": "actual_real_prime_gap_tail_normal_form",
+      "label": "Actual real prime-gap tail: unconditional recurrence and escape equivalence",
+      "status": "conditional reduction",
+      "statement": "The scaled real tail of the convergent prime-gap dyadic series equals its shifted-gap series and satisfies the integer-digit recurrence with no rationality hypothesis. Irrationality of the prime-index dyadic series is equivalent to cofinal nonintegrality of the positive shifts of that actual real tail, and a cofinal supply of adjacent small shifts with mismatched actual gaps implies irrationality. The supply is an explicit unproved hypothesis, so no irrationality follows here.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_251_irrationality"
+      ],
+      "paper_label": "res:smallpair-real",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "realPrimeGapTail_eq_tsum_shifted_gaps",
+          "module": "ErdosProblems/Erdos251/RealPrimeGapTail.lean",
+          "line": 31
+        },
+        {
+          "name": "realPrimeGapTail_recurrence",
+          "module": "ErdosProblems/Erdos251/RealPrimeGapTail.lean",
+          "line": 48
+        },
+        {
+          "name": "irrational_primeSeries_iff_realPrimeGapTail_escape",
+          "module": "ErdosProblems/Erdos251/RealPrimeGapTail.lean",
+          "line": 73
+        },
+        {
+          "name": "realTailShift_not_both_integral_of_small_pair_of_digit_ne",
+          "module": "ErdosProblems/Erdos251/RealPrimeGapTail.lean",
+          "line": 99
+        },
+        {
+          "name": "irrational_primeSeries_of_realPrimeGapTail_small_mismatch",
+          "module": "ErdosProblems/Erdos251/RealPrimeGapTail.lean",
+          "line": 120
+        }
+      ]
+    },
+    {
+      "id": "polynomial_gap_countermodel_series_value",
+      "label": "The quadratic gap word has dyadic value exactly 32",
+      "status": "unconditional progress",
+      "statement": "For the word g(n) = 2*(n^2 + 4*n + 2) with orbit T(n) = 2*(n+4)^2, the dyadic series has the exact rational value 32, every fixed tail shift is integral, and no adjacent difference equals 2 or -2. Positivity, evenness, strict growth, unboundedness and non-eventual-periodicity are therefore jointly compatible with a rational sum, so no argument using only those properties can force irrationality. The telescoping mechanism is the one Vjeko Kovac used against the variable-denominator conjecture printed under Erdos Problem 251, published on 15 April 2026 (kovac2026, Theorem 1). This row carries no priority claim and is not a result about Erdos Problem 251; it is a countermodel to a class of strategies.",
+      "remaining_open_proposition_ids": [],
+      "paper_label": "res:polynomialcountermodel",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "hasSum_polynomialGapDyadicTerm",
+          "module": "ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean",
+          "line": 77
+        },
+        {
+          "name": "tsum_polynomialGapDyadicTerm_eq",
+          "module": "ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean",
+          "line": 89
+        },
+        {
+          "name": "not_irrational_tsum_polynomialGapDyadicTerm",
+          "module": "ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean",
+          "line": 106
+        },
+        {
+          "name": "polynomialGapWord_no_adjacent_two_digit",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 1644
+        },
+        {
+          "name": "polynomialTailOrbit_shift_integral",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 1654
+        }
+      ]
+    },
+    {
+      "id": "three_prime_kernel_no_finite_separation",
+      "label": "Arbitrary-order non-separability of the three-prime running-LCM kernel",
+      "status": "unconditional progress",
+      "statement": "For primes p, q and r that are pairwise distinct, put K(i,j,k) = 1/L(p^i q^j r^k), where L(x) is the least common multiple of the {p,q,r}-smooth numbers not exceeding x. For every order n there are injective index families I and J from Fin n to the naturals such that det (K (I a) (J b) k) is nonzero, simultaneously for every third exponent k. Consequently, for no finite d do there exist rational-valued functions f_l(i) and G_l(j,k), l < d, with K(i,j,k) = sum_{l<d} f_l(i) G_l(j,k) for all i, j, k. Both conjuncts are checked by the Lean kernel; the Lean forms assume p, q and r prime with p != r and q != r, and they do not use p != q. The index selection is discharged by the problem-neutral staircase engine for two rotations without integer returns, and the smallest visible witness is the {2,3,5} minor -1/15. Leading minors alone are not a witness of infinite rank: row three of the {2,3,5} kernel is 1/120 times row zero for j <= 3 and the proportionality fails at j = 4, so index selection is essential. The theorem excludes exact separations of the displayed finite-sum form. It is not an independence, irrationality or transcendence statement, and it settles no instance of Erdos #269. Steve Fan recorded the qualitative obstruction for |P| >= 3 in his comment of 26 June 2026, and the running-LCM identity for every k is his; the quantitative form, its uniformity in k, and its formalisation are proved here.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_269_three_prime_irrationality"
+      ],
+      "paper_label": "res:lead-infinite-rank",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "exists_uniform_nonsingular_threePrimeKernel_minor",
+          "module": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+          "line": 313
+        },
+        {
+          "name": "exists_uniform_nonsingular_threePrimeKernel_minor_of_prime",
+          "module": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+          "line": 376
+        },
+        {
+          "name": "not_finite_separable_threePrimeKernel",
+          "module": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+          "line": 388
+        },
+        {
+          "name": "noIntegerOrbit_logb_of_prime",
+          "module": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+          "line": 154
+        },
+        {
+          "name": "kernel_235_row_three_eq_smul_row_zero",
+          "module": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+          "line": 583
+        },
+        {
+          "name": "kernel_235_row_three_ne_smul_row_zero_at_four",
+          "module": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+          "line": 592
+        },
+        {
+          "name": "kernel_235_minor_eq_neg_one_fifteen",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 904
+        }
+      ]
+    },
+    {
+      "id": "three_prime_all_scale_rationality_lattice",
+      "label": "All-scale rationality lattice and normalised-tail collision for #269",
+      "status": "conditional reduction",
+      "statement": "If the {2,3,5} shell-tail value equals p/q with q > 0, then at every scale a >= 1 the normalised dyadic tail state is (1/q)-integral, with an explicit integer witness built from the height normaliser and the cleared prefix. Consequently two distinct scales carry normalised tail states whose difference is an integer. The contrapositive is that pairwise incongruence of the normalised tail states modulo one gives irrationality. The statement covers every denominator at once, and the classical exceptional-integral-state branch is the sub-case in which one state is congruent to zero. What is proved is that one implication and its contrapositive. No equivalence is proved, no collision is excluded, and Erdos #269 remains open.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_269_three_prime_irrationality",
+        "remaining_open.erdos_269_reduced_tail_nonintegrality"
+      ],
+      "paper_label": "res:all-scale-lattice",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "heightNormalizer235_mul_windowMass_eq_int",
+          "module": "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+          "line": 158
+        },
+        {
+          "name": "dyadicShellTsumTailR235_eq_range_add",
+          "module": "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+          "line": 176
+        },
+        {
+          "name": "qsmul_normalizedTailState_eq_int_of_value_eq_rat",
+          "module": "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+          "line": 196
+        },
+        {
+          "name": "exists_normalizedTailState_collision_of_value_eq_rat",
+          "module": "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+          "line": 296
+        },
+        {
+          "name": "smoothHeight_mul_prime_dvd_boundaryHeight",
+          "module": "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+          "line": 51
+        },
+        {
+          "name": "two_mul_heightNormalizer235",
+          "module": "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+          "line": 101
+        }
+      ]
+    },
+    {
+      "id": "three_prime_actual_shell_orbit_dichotomy",
+      "label": "Actual shell-orbit recurrence and the integer-or-cofinally-far dichotomy for #269",
+      "status": "unconditional progress",
+      "statement": "The real dyadic shell masses of the literal {2,3,5} running-height series are summable, so the genuine infinite shell tail exists. Its normalised state satisfies the exact affine recurrence T(a+1) = b(a) T(a) - d(a) at every scale, where b(a) is the actual block radix and d(a) is the actual ordered block digit. Either some scale carries an integral state, or for every index there is a later scale at which the state lies at distance at least 1/31 from every integer. The dichotomy is unconditional and it excludes neither of its two branches, so it settles no instance of Erdos #269.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_269_three_prime_irrationality",
+        "remaining_open.erdos_269_reduced_tail_nonintegrality"
+      ],
+      "paper_label": "res:actual-orbit",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "summable_dyadicShellMassR235",
+          "module": "ErdosProblems/Erdos269/DyadicShellSummability.lean",
+          "line": 142
+        },
+        {
+          "name": "dyadicNormalizedShellTsumTailR235_succ",
+          "module": "ErdosProblems/Erdos269/DyadicShellSummability.lean",
+          "line": 177
+        },
+        {
+          "name": "dyadicShellTsumTail_integer_or_cofinal_far",
+          "module": "ErdosProblems/Erdos269/DyadicShellSummability.lean",
+          "line": 188
+        },
+        {
+          "name": "dyadicNormalizedTailStateR235_succ",
+          "module": "ErdosProblems/Erdos269/DyadicOrderedTailRecurrence.lean",
+          "line": 110
+        }
+      ]
+    },
+    {
+      "id": "irrational_rotation_staircase_engine",
+      "label": "Staircase realisation from two rotations without integer returns",
+      "status": "proved here",
+      "statement": "For real alpha and beta whose positive integer multiples never land on an integer, and for every n, there are strictly positive and pairwise distinct index families I and J with floor(fract(I a * alpha) + fract(J b * beta)) equal to one when b <= a and zero otherwise. The determinant of the reduced staircase matrix is computed exactly, and distinct primes satisfy the no-integer-return hypothesis. The module depends on Mathlib only and is problem-neutral. It carries no arithmetic conclusion about any series; it is the engine under the arbitrary-order non-separability theorem.",
+      "paper_label": "res:lead-infinite-rank",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "exists_pos_nat_fract_mem_Ioo",
+          "module": "ErdosProblems/Shared/IrrationalRotationStaircase.lean",
+          "line": 144
+        },
+        {
+          "name": "det_carryStaircase",
+          "module": "ErdosProblems/Shared/IrrationalRotationStaircase.lean",
+          "line": 237
+        },
+        {
+          "name": "exists_staircase_indices",
+          "module": "ErdosProblems/Shared/IrrationalRotationStaircase.lean",
+          "line": 271
         }
       ]
     }

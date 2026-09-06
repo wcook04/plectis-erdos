@@ -31,7 +31,7 @@ from result_atoms import load_result_atoms, validate_result_atoms
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "corpus_descriptor.json"
-DESCRIPTOR_MAX_BYTES = 64_000
+DESCRIPTOR_MAX_BYTES = 72_000  # raised from 64_000 on 2026-09-06 when the claim register grew from 132 to 208 rows
 ORIENTATION_MAX_BYTES = 32_000
 # Keep the human first-read projection aligned with the release scoreboard.
 # Detailed route inventories remain in the machine orientation and query API.

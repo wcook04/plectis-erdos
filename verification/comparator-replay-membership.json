@@ -2396,28 +2396,34 @@
   "registered_claim_coverage": {
     "schema": "plectis.comparator-registered-claim-coverage/1",
     "registry_authority": "docs/claims.json::claims",
-    "registry_digest": "sha256:c8221e006eeca95fce209e721ce1df8d95441409c21936f41550bd22e2ffa103",
+    "registry_digest": "sha256:a1cecb93ad41595d4305c845855af68b008177350aebbb1de2c4bb69efe57feb",
     "registry_digest_definition": "sha256 of canonical JSON rows containing each registered claim id, status, statement, exact declaration anchors, and explicit transports",
-    "registered_claim_count": 132,
-    "classified_claim_count": 132,
+    "registered_claim_count": 208,
+    "classified_claim_count": 208,
     "classification_counts": {
       "cited_only_non_executable": 3,
-      "linked_transport": 35,
-      "missing_formal_transport": 86,
-      "open_non_executable": 8
+      "linked_transport": 36,
+      "missing_formal_transport": 153,
+      "open_non_executable": 8,
+      "ordinary_proof_non_executable": 8
     },
-    "formal_claim_count": 121,
-    "linked_transport_claim_count": 35,
-    "missing_formal_transport_count": 86,
+    "formal_claim_count": 189,
+    "linked_transport_claim_count": 36,
+    "missing_formal_transport_count": 153,
     "missing_formal_claim_ids": [
+      "actual_real_prime_gap_tail_normal_form",
       "adelic_height_obstruction",
       "adjacent_phase_separation_reduction",
+      "affine_and_block_residue_escape_circularity",
       "affine_transport_annihilation",
       "all_base_totient_kernel_index_reduction",
+      "arithmetic_weighted_record_dichotomy",
       "boundary_pulse_normalization",
+      "bounded_negative_part_rigidity",
       "bounded_rise_fresh_modulus_barrier",
       "campbell_shift_synchronization_boundary",
       "canonical_jump_slack_reduction",
+      "canonical_mersenne_frontier",
       "certificate_reduction",
       "certified_kill_instances",
       "channel_quotient_band_breakpoint",
@@ -2425,30 +2431,71 @@
       "cofinal_strip_return_closure",
       "concrete_producer_carry_coordinates",
       "concrete_seam_adapter",
+      "constant_negative_exclusion",
       "diagonal_fresh_loss_reduction",
       "diagonal_pincer_reduction",
       "diagonal_pincer_t64_endpoint_certificate",
       "diagonal_pincer_t64_primality_closure",
       "dyadic_prefix_block_safety_interfaces",
+      "dyadic_tail_shift_rationality_classification",
       "eb_constant",
+      "erdos68_adjacent_unit_window_circularity",
+      "erdos68_canonical_digit_termination_equivalence",
+      "erdos68_channel_radius_method_ceiling",
+      "erdos68_collision_scaled_fractional_part_criterion",
+      "erdos68_companion_orbit_boundary",
+      "erdos68_erdos_straus_coboundary_collapse",
+      "erdos68_factor_split_projection_reduction",
+      "erdos68_fixed_owner_absorption_no_go",
+      "erdos68_global_complementary_tail_reduction",
+      "erdos68_gmp_carry_census_300000",
+      "erdos68_kempner_index_denominator_exclusion",
+      "erdos68_moving_factor_scale_split",
+      "erdos68_nonterminal_square_record_entry",
+      "erdos68_odd_pair_carry_break_equivalence",
+      "erdos68_odd_threshold_consumer_and_parity_pattern",
+      "erdos68_prime_pole_cancellation_law",
+      "erdos68_prime_unit_translator_remote_reduction",
+      "erdos68_residual_cofactor_recurrence",
+      "erdos68_square_subsequence_channel_radius",
+      "erdos68_strict_successor_carry_equivalence",
+      "erdos68_terminal_wilson_owner_pairs",
+      "erdos68_ultra_endpoint_cylinder_classification",
+      "erdos68_unique_owner_squared_factorial_ceiling",
+      "erdos68_unit_factor_pair_floor_split",
+      "erdos68_wilson_cofinal_prefix_private_hits",
+      "erdos68_wilson_reflection_no_go",
+      "erdos68_wilson_square_record_entry",
+      "erdos_1041_critical_geometry",
+      "erdos_1041_critical_value_separation",
+      "erdos_1041_sharp_collinear_diameter",
+      "f_thirty_one_over_four_irrational",
       "fatal_gap_right_tail_classification",
       "final_middle_cell_escape",
       "final_middle_neg_two_phase_sieve",
       "first_harmonic_certificate_interface",
+      "first_harmonic_norm_gap_reduction",
       "fixed_coefficient_rewind_contraction",
       "fixed_tail_survival_socket",
       "flexible_odd_window_affine_frontier",
       "flexible_odd_window_reduction",
       "fresh_prime_deficit_decomposition",
+      "full_depth_ray_amplifier",
+      "full_support_zero_block_digit_witnesses",
       "half_carry_reachability_compactness",
       "half_cylinder_finite_shadow",
       "half_divisor_unit_drop",
+      "half_reduction_proved_insufficiency_layers",
       "half_second_channel_reduction",
       "half_trapping_return_carry_interface",
       "integer_greedy_first_wrap_reduction",
+      "irrational_rotation_staircase_engine",
       "largest_skip_gap_propagation",
       "largest_skip_induction_reduction",
       "last_producer_tail_escape_reduction",
+      "lcm_diagonal_rationality_criterion",
+      "lcm_jump_certificate_instances",
+      "lcm_record_first_crossing_core",
       "localized_protected_seam_compactness",
       "mersenne_lambert_ladder",
       "mersenne_shadow_denominator",
@@ -2459,50 +2506,73 @@
       "mobius_sign_support_no_go",
       "parity_socket_obstruction",
       "period_four_signed_residue_obstruction",
+      "period_multiple_denominator_deposits",
       "periodic_signed_weight_dichotomy",
       "pivot_anti_reconstruction_reduction",
+      "polynomial_gap_countermodel_series_value",
       "power_two_bit_lift",
       "prime_gap_unboundedness_and_nonperiodicity",
       "primitive_coordinate_index_obstruction",
       "primitive_unit_gap_ceiling",
       "producer_carry_future_tail_socket",
       "quarter_band_endpoint_cells",
+      "rank_one_sharp_floor",
       "rational_base_forcing_growth",
+      "rational_membership_greedy_skip_criterion",
       "realized_rewind_phase_identity",
+      "reciprocal_series_realisation",
       "reset_deficit_escape_geometry",
       "residual_gauge_obstruction",
       "rewind_boundary_pair_obstruction",
       "rewind_seam_operational_bridge",
+      "scaled_greedy_trap_dynamics",
       "seam_producer_carry_alignment",
       "selected_half_carry_window_compactness",
       "selected_suffix_cylinder_propagation",
       "selected_suffix_pre_feedback_run",
       "selected_window_depth18_base",
       "signed_dyadic_moment_substrate",
+      "signed_two_window_normal_form",
+      "slow_negative_part_rigidity",
+      "slow_rise_landing_barrier",
+      "slow_rise_reduced_tail_exclusion",
       "square_crt_correction_suppression",
       "squared_mersenne_enclosure",
+      "squarefree_incidence_normalisation_obstruction",
       "stern_brocot_cylinder_law",
       "stern_brocot_run_fibonacci_stability",
+      "summable_negative_mass_rigidity",
       "support_families",
+      "supported_achievement_set_volume_dichotomy",
       "tail_orbit_rigidity",
       "terminal_only_cofinal_closure",
       "terminal_scaled_vanishing_closure",
+      "three_prime_actual_shell_orbit_dichotomy",
+      "three_prime_all_scale_rationality_lattice",
       "three_prime_cofinal_window_carry_extinction",
       "three_prime_finite_residue_contradiction",
+      "three_prime_kernel_no_finite_separation",
       "totient_coprimality_probability",
+      "totient_parity_coboundary_countermodel",
+      "totient_tail_orbit_cofinal_nonpositive_frontier",
       "transport_certificate_instances",
       "transport_curvature_reductions",
       "twenty_one_quotient_greedy_frontier",
+      "uniform_square_root_repair_criterion",
       "upper_reset_band_certificates_through_thirty",
       "van_assche_qapery_diagonal_no_go",
-      "weighted_phase_carry_finite_observer"
+      "weighted_phase_carry_finite_observer",
+      "weighted_record_excess_criterion",
+      "zudilin_sharp_hankel_qorder"
     ],
     "linked_claims_with_unlinked_anchors": [
       "actual_foreign_residue_projection",
       "actual_lcm_orbit_nonintegrality_frontier",
+      "bounded_perturbation_irrationality_obstruction",
       "composite_dilation_defect_identity",
       "dyadic_totient_basis",
       "dyadic_totient_certificate_interface",
+      "eb_full_support",
       "first_harmonic_pivot_decomposition",
       "fixed_precision_transport_no_go",
       "greedy_achievement_geometry",
@@ -2512,6 +2582,7 @@
       "newton_ray_separation_consumer",
       "orthogonal_petal_sunflower_reduction",
       "periodic_nonnegative_weight_irrationality",
+      "prime_gap_irrationality_equivalence",
       "strict_prime_tail_orbit_gap",
       "terminal_scaled_vanishing_half_countermodel",
       "totient_carry_kernel_anti_compression"
@@ -2603,6 +2674,16 @@
         "classification": "linked_transport",
         "registered_declarations": [
           {
+            "name": "prime0_le_polynomial",
+            "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+            "line": 360
+          },
+          {
+            "name": "tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional",
+            "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+            "line": 427
+          },
+          {
             "name": "irrational_tsum_primeDyadicTerm_iff_primeGap",
             "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
             "line": 435
@@ -2629,9 +2710,12 @@
           }
         ],
         "source_anchor_coverage": {
-          "registered_count": 1,
+          "registered_count": 3,
           "linked_count": 1,
-          "unlinked_declaration_indices": []
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
         },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
@@ -2771,6 +2855,16 @@
             "name": "irrational_erdosSum_full_support",
             "module": "Erdos249257/CertificateKernel.lean",
             "line": 8516
+          },
+          {
+            "name": "exists_weighted_block_certificates",
+            "module": "Erdos249257/CertificateKernel.lean",
+            "line": 8375
+          },
+          {
+            "name": "irrational_erdosSum_full_support_via_coeff_engine",
+            "module": "Erdos249257/CertificateKernel.lean",
+            "line": 8877
           }
         ],
         "transport_count": 1,
@@ -2794,9 +2888,12 @@
           }
         ],
         "source_anchor_coverage": {
-          "registered_count": 1,
+          "registered_count": 3,
           "linked_count": 1,
-          "unlinked_declaration_indices": []
+          "unlinked_declaration_indices": [
+            1,
+            2
+          ]
         },
         "reason": null,
         "semantic_coverage_status": "not_assessed_by_transport_link",
@@ -8072,6 +8169,21 @@
             "name": "not_forall_irrational_of_bounded_perturbation_invariant",
             "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
             "line": 179
+          },
+          {
+            "name": "exists_rational_bounded_perturbation_primeGap",
+            "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+            "line": 200
+          },
+          {
+            "name": "not_irrational_bounded_perturbation_primeGap",
+            "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+            "line": 210
+          },
+          {
+            "name": "perturbed_gap_bounds",
+            "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+            "line": 220
           }
         ],
         "transport_count": 2,
@@ -8112,11 +8224,2697 @@
           }
         ],
         "source_anchor_coverage": {
-          "registered_count": 2,
+          "registered_count": 5,
           "linked_count": 2,
+          "unlinked_declaration_indices": [
+            2,
+            3,
+            4
+          ]
+        },
+        "reason": null,
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "uniform_square_root_repair_criterion",
+        "claim_status": "proved here",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "mem_iff_greedyBinaryDefect_sqrt_windows",
+            "module": "ErdosProblems/Erdos257/GreedyRepairCriterion.lean",
+            "line": 192
+          },
+          {
+            "name": "mem_iff_greedyBinaryDefect_cofinal_repairs",
+            "module": "ErdosProblems/Erdos257/GreedyRepairCriterion.lean",
+            "line": 175
+          },
+          {
+            "name": "mem_iff_greedyBinaryDefect_cofinal_load_bound",
+            "module": "ErdosProblems/Erdos257/GreedyRepairCriterion.lean",
+            "line": 207
+          },
+          {
+            "name": "mem_iff_greedyBinaryDefect_cofinal_linear_bound",
+            "module": "ErdosProblems/Erdos257/GreedyRepairCriterion.lean",
+            "line": 222
+          },
+          {
+            "name": "not_mem_of_greedyBinaryDefect_strict_sqrt_window",
+            "module": "ErdosProblems/Erdos257/GreedyRepairCriterion.lean",
+            "line": 232
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 5,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "scaled_greedy_trap_dynamics",
+        "claim_status": "proved here",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "scaledGreedyRemainder_succ",
+            "module": "Erdos249257/GreedyTrapDynamics.lean",
+            "line": 72
+          },
+          {
+            "name": "mersenneAchievementSet_eq_scaledGreedyTrap",
+            "module": "Erdos249257/GreedyTrapDynamics.lean",
+            "line": 262
+          },
+          {
+            "name": "mem_mersenneAchievementSet_iff_forall_scaledRemainder_lt_two",
+            "module": "Erdos249257/GreedyTrapDynamics.lean",
+            "line": 245
+          },
+          {
+            "name": "scaledGreedyRemainder_tendsto_atTop_of_not_mem",
+            "module": "Erdos249257/GreedyTrapDynamics.lean",
+            "line": 189
+          },
+          {
+            "name": "mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded",
+            "module": "Erdos249257/GreedyTrapDynamics.lean",
+            "line": 225
+          },
+          {
+            "name": "rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally",
+            "module": "Erdos249257/GreedyTrapDynamics.lean",
+            "line": 152
+          },
+          {
+            "name": "one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded",
+            "module": "Erdos249257/GreedyTrapDynamics.lean",
+            "line": 275
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 7,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "rational_membership_greedy_skip_criterion",
+        "claim_status": "proved here",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite",
+            "module": "Erdos249257/GreedyAchievementSet.lean",
+            "line": 2557
+          },
+          {
+            "name": "rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips",
+            "module": "Erdos249257/GreedyAchievementSet.lean",
+            "line": 2569
+          },
+          {
+            "name": "half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite",
+            "module": "Erdos249257/GreedyAchievementSet.lean",
+            "line": 2582
+          },
+          {
+            "name": "greedySkippedSupport_infinite_iff_scaledLowerBranchCofinally",
+            "module": "Erdos249257/GreedyTrapDynamics.lean",
+            "line": 129
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "full_support_zero_block_digit_witnesses",
+        "claim_status": "proved here",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "near_int_witnesses_erdosSum_full_support",
+            "module": "Erdos249257/CertificateKernel.lean",
+            "line": 8896
+          },
+          {
+            "name": "zero_block_witnesses_erdosSum_full_support",
+            "module": "Erdos249257/CertificateKernel.lean",
+            "line": 8920
+          },
+          {
+            "name": "exists_weighted_block_certificates",
+            "module": "Erdos249257/CertificateKernel.lean",
+            "line": 8375
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "supported_achievement_set_volume_dichotomy",
+        "claim_status": "proved here",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "volume_supportedMersenneAchievementSet_dichotomy",
+            "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+            "line": 418
+          },
+          {
+            "name": "volume_supportedMersenneAchievementSet_eq_zero_of_rat_value",
+            "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+            "line": 399
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "squarefree_incidence_normalisation_obstruction",
+        "claim_status": "proved here",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "squarefreeIncidence_eq",
+            "module": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
+            "line": 111
+          },
+          {
+            "name": "odd_squarefreeIncidence",
+            "module": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
+            "line": 140
+          },
+          {
+            "name": "no_carry_block_certificate",
+            "module": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
+            "line": 222
+          },
+          {
+            "name": "not_exists_carry_certificates_squarefreeSupport",
+            "module": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
+            "line": 274
+          },
+          {
+            "name": "not_exists_digitwise_certificates_squarefreeSupport",
+            "module": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
+            "line": 292
+          },
+          {
+            "name": "exists_digitwise_block_squarefreeShiftedSupport",
+            "module": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
+            "line": 485
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 6,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "variable_exponent_fractional_covers",
+        "claim_status": "ordinary proof here",
+        "classification": "ordinary_proof_non_executable",
+        "registered_declarations": [],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
+        "reason": "The claim is proved in the note by ordinary mathematics and has no formal declaration to transport.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "divisibility_weighted_support_irrationality",
+        "claim_status": "ordinary proof here",
+        "classification": "ordinary_proof_non_executable",
+        "registered_declarations": [],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
+        "reason": "The claim is proved in the note by ordinary mathematics and has no formal declaration to transport.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "sub_logstar_reciprocal_mass_irrationality",
+        "claim_status": "ordinary proof here",
+        "classification": "ordinary_proof_non_executable",
+        "registered_declarations": [],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
+        "reason": "The claim is proved in the note by ordinary mathematics and has no formal declaration to transport.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "arbitrary_prime_power_support_irrationality",
+        "claim_status": "ordinary proof here",
+        "classification": "ordinary_proof_non_executable",
+        "registered_declarations": [],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
+        "reason": "The claim is proved in the note by ordinary mathematics and has no formal declaration to transport.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "half_reduction_proved_insufficiency_layers",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "half_mem_iff_unboundedLargestSkipLate",
+            "module": "ErdosProblems/Skip/D2.lean",
+            "line": 307
+          },
+          {
+            "name": "half_mem_of_remainderReachesHalfPointCofinally",
+            "module": "ErdosProblems/Bit/R2.lean",
+            "line": 306
+          },
+          {
+            "name": "rowLaw_blind_at_16",
+            "module": "ErdosProblems/Rem/C1.lean",
+            "line": 436
+          },
+          {
+            "name": "exists_persistent_surplus_model",
+            "module": "ErdosProblems/Rem/C1.lean",
+            "line": 206
+          },
+          {
+            "name": "le_of_descent_of_quadrupling",
+            "module": "ErdosProblems/Rem/C1.lean",
+            "line": 109
+          },
+          {
+            "name": "IntervalCeiling.four_pow_le",
+            "module": "ErdosProblems/Three/T1.lean",
+            "line": 542
+          },
+          {
+            "name": "exists_persistent_odd_surplus_model",
+            "module": "ErdosProblems/Three/T3.lean",
+            "line": 618
+          },
+          {
+            "name": "two_pow_mul_y",
+            "module": "ErdosProblems/Three/T2.lean",
+            "line": 746
+          },
+          {
+            "name": "not_residualInvariant",
+            "module": "ErdosProblems/Three/T1.lean",
+            "line": 159
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 9,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "rank_one_sharp_floor",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "rankOneSubrankQuotient_eq_one_five_iff",
+            "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+            "line": 534
+          },
+          {
+            "name": "rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty",
+            "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+            "line": 624
+          },
+          {
+            "name": "rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen",
+            "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+            "line": 634
+          },
+          {
+            "name": "not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen",
+            "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+            "line": 645
+          },
+          {
+            "name": "positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty",
+            "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+            "line": 655
+          },
+          {
+            "name": "primitive_form_abs_gt_twentyOne_div_threeTwenty",
+            "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
+            "line": 693
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 6,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "first_harmonic_norm_gap_reduction",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "DTWFirstHarmonicNormGap",
+            "module": "Erdos249257/FirstHarmonicPivot.lean",
+            "line": 75
+          },
+          {
+            "name": "exists_certifiedKill_of_first_harmonic_norm_gap",
+            "module": "Erdos249257/FirstHarmonicPivot.lean",
+            "line": 53
+          },
+          {
+            "name": "irrational_totient_series_of_first_harmonic_norm_gap",
+            "module": "Erdos249257/FirstHarmonicPivot.lean",
+            "line": 83
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "canonical_mersenne_frontier",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "FullMersenneCanonicalBasepointResidueGapSupply",
+            "module": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+            "line": 2863
+          },
+          {
+            "name": "fullMersenneBlockResidue_succ",
+            "module": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+            "line": 2322
+          },
+          {
+            "name": "fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint",
+            "module": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+            "line": 3132
+          },
+          {
+            "name": "fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational",
+            "module": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+            "line": 3165
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "full_depth_ray_amplifier",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "eventually_twoSyndetic_fullDepthKillMultipliers_of_seed",
+            "module": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+            "line": 364
+          },
+          {
+            "name": "exists_fullDepthKill_on_ray_iff_shift_notMem_int",
+            "module": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+            "line": 388
+          },
+          {
+            "name": "apFullDepthEscape_iff_irrational",
+            "module": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+            "line": 406
+          },
+          {
+            "name": "cofinalFullDepthKillSupply_iff_periodMultipleKillSupply",
+            "module": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+            "line": 421
+          },
+          {
+            "name": "cofinalFullDepthKillSupply_iff_irrational",
+            "module": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean",
+            "line": 438
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 5,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "period_multiple_denominator_deposits",
+        "claim_status": "verified finite instance",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "totient_series_ne_rat_of_certifiedKill",
+            "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+            "line": 460
+          },
+          {
+            "name": "certifiedKill_67_300",
+            "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+            "line": 471
+          },
+          {
+            "name": "certifiedKill_81_300",
+            "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+            "line": 474
+          },
+          {
+            "name": "certifiedKill_97_300",
+            "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+            "line": 477
+          },
+          {
+            "name": "certifiedKill_101_300",
+            "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+            "line": 480
+          },
+          {
+            "name": "certifiedKill_121_300",
+            "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+            "line": 483
+          },
+          {
+            "name": "certifiedKill_125_300",
+            "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+            "line": 486
+          },
+          {
+            "name": "certifiedKill_127_300",
+            "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+            "line": 490
+          },
+          {
+            "name": "certifiedKill_128_300",
+            "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+            "line": 493
+          },
+          {
+            "name": "certifiedKill_67_300_fullDepth",
+            "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+            "line": 498
+          },
+          {
+            "name": "totient_series_ne_rat_of_den_dvd_67_300",
+            "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+            "line": 504
+          },
+          {
+            "name": "totient_series_ne_rat_of_den_dvd_127_300",
+            "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+            "line": 534
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 12,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "totient_tail_orbit_cofinal_nonpositive_frontier",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "TotientTailOrbitCofinalNonpositive",
+            "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+            "line": 412
+          },
+          {
+            "name": "cofinally_tailOrbitFirstExp_re_nonpos_of_not_dyadic",
+            "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+            "line": 360
+          },
+          {
+            "name": "totientTailOrbitCofinalNonpositive_of_irrational",
+            "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+            "line": 418
+          },
+          {
+            "name": "totientTailOrbitCofinalNonpositive_iff_irrational",
+            "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+            "line": 445
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "totient_parity_coboundary_countermodel",
+        "claim_status": "proved here",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel",
+            "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+            "line": 637
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "lcm_jump_certificate_instances",
+        "claim_status": "verified finite instance",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "periodLcm_jump_eq_height_at_thirtyone",
+            "module": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
+            "line": 62
+          },
+          {
+            "name": "certifiedKill_lcm_jump_at_seven",
+            "module": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
+            "line": 68
+          },
+          {
+            "name": "certifiedKill_lcm_jump_at_one",
+            "module": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
+            "line": 76
+          },
+          {
+            "name": "certifiedKill_lcm_jump_at_three",
+            "module": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
+            "line": 81
+          },
+          {
+            "name": "certifiedKill_lcm_jump_at_thirtyone",
+            "module": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
+            "line": 109
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 5,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "weighted_record_excess_criterion",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "rise_is_fresh",
+            "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+            "line": 14
+          },
+          {
+            "name": "covered_wall_forces_excess",
+            "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+            "line": 31
+          },
+          {
+            "name": "wall_count_le_excess",
+            "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+            "line": 47
+          },
+          {
+            "name": "weighted_wall_charge",
+            "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+            "line": 64
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "arithmetic_weighted_record_dichotomy",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "rise_is_fresh",
+            "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+            "line": 14
+          },
+          {
+            "name": "covered_wall_forces_excess",
+            "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+            "line": 31
+          },
+          {
+            "name": "wall_count_le_excess",
+            "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+            "line": 47
+          },
+          {
+            "name": "weighted_wall_charge",
+            "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+            "line": 64
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "lcm_record_first_crossing_core",
+        "claim_status": "proved here",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "rise_is_fresh",
+            "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+            "line": 14
+          },
+          {
+            "name": "covered_wall_forces_excess",
+            "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+            "line": 31
+          },
+          {
+            "name": "wall_count_le_excess",
+            "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+            "line": 47
+          },
+          {
+            "name": "weighted_wall_charge",
+            "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+            "line": 64
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "bounded_negative_part_rigidity",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "boundedNegativePart_eventually_zero",
+            "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+            "line": 2265
+          },
+          {
+            "name": "eventuallyBoundedNegativePart_eventually_zero",
+            "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+            "line": 2352
+          },
+          {
+            "name": "boundedNegativePart_sylvesterNext_eventually",
+            "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+            "line": 2403
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "summable_negative_mass_rigidity",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "eventually_zero_of_summable_relativeGrowth",
+            "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+            "line": 423
+          },
+          {
+            "name": "eventually_zero_of_summable_negativeRelativeMass",
+            "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+            "line": 488
+          },
+          {
+            "name": "sylvesterNext_eventually_of_summable_negativeRelativeMass",
+            "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+            "line": 510
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "reciprocal_series_realisation",
+        "claim_status": "formalised here",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "tailRatio",
+            "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+            "line": 1895
+          },
+          {
+            "name": "tailRatio_eq_reciprocal_add_next",
+            "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+            "line": 1899
+          },
+          {
+            "name": "tailRatio_eq_partialReciprocalSum_add",
+            "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+            "line": 1923
+          },
+          {
+            "name": "reciprocalSeries_hasSum_of_tailRatio_tendsto_zero",
+            "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+            "line": 1949
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "constant_negative_exclusion",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "no_constantNegative_orbit",
+            "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+            "line": 286
+          },
+          {
+            "name": "no_normalizedConstantNegative_orbit",
+            "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+            "line": 100
+          },
+          {
+            "name": "no_scalePrimitiveConstantNegative_orbit",
+            "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+            "line": 147
+          },
+          {
+            "name": "no_eventuallyConstantNegative_orbit",
+            "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+            "line": 350
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "slow_rise_landing_barrier",
+        "claim_status": "proved here",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "exists_consecutiveMultiples_between",
+            "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+            "line": 51
+          },
+          {
+            "name": "commonDivisor_persists",
+            "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+            "line": 111
+          },
+          {
+            "name": "multiplierOverlap_dvd_laterCenteredState",
+            "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+            "line": 162
+          },
+          {
+            "name": "slowRise_landing",
+            "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+            "line": 194
+          },
+          {
+            "name": "no_slowNegative_of_coprimeBlock",
+            "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+            "line": 280
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 5,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "slow_rise_reduced_tail_exclusion",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "no_slowRise_reducedTail",
+            "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+            "line": 332
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "slow_negative_part_rigidity",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "commonDivisor_persists",
+            "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+            "line": 111
+          },
+          {
+            "name": "multiplierOverlap_dvd_laterCenteredState",
+            "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+            "line": 162
+          },
+          {
+            "name": "slowRise_landing",
+            "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+            "line": 194
+          },
+          {
+            "name": "no_slowNegative_of_coprimeBlock",
+            "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+            "line": 280
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos_1041_critical_value_separation",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "firstMergeSquaredCoefficient_antitone_degree",
+            "module": "ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean",
+            "line": 47
+          },
+          {
+            "name": "firstMerge_length_lt_two_of_squared_bound",
+            "module": "ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean",
+            "line": 68
+          },
+          {
+            "name": "firstMerge_exact_convenient_thresholds",
+            "module": "ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean",
+            "line": 191
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos_1041_sharp_collinear_diameter",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "exists_peak_le_comparisonBound",
+            "module": "ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean",
+            "line": 133
+          },
+          {
+            "name": "exists_peak_le_of_monic_comparison",
+            "module": "ErdosProblems/Erdos1041/SharpCollinearAlternation.lean",
+            "line": 158
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos_1041_critical_geometry",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "two_add_le_two_of_disk_inverse_balance",
+            "module": "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+            "line": 160
+          },
+          {
+            "name": "exists_two_roots_dist_sum_le_two_mul_geomMean",
+            "module": "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+            "line": 289
+          },
+          {
+            "name": "spoke_escapes_lemniscate_exact",
+            "module": "ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean",
+            "line": 382
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "rational_base_irrationality_region",
+        "claim_status": "ordinary proof here",
+        "classification": "ordinary_proof_non_executable",
+        "registered_declarations": [],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
+        "reason": "The claim is proved in the note by ordinary mathematics and has no formal declaration to transport.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "f_thirty_one_over_four_irrational",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "thirtyoneFour_power_certificate",
+            "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+            "line": 26
+          },
+          {
+            "name": "thirtyoneFour_mem_zudilinHeightRegion",
+            "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+            "line": 45
+          },
+          {
+            "name": "thirtyoneFour_power_mem_zudilinHeightRegion",
+            "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+            "line": 59
+          },
+          {
+            "name": "thirtyoneFour_outside_bundschuhVaananenHeightRegion",
+            "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+            "line": 91
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "rational_base_degree_budget_cap",
+        "claim_status": "ordinary proof here",
+        "classification": "ordinary_proof_non_executable",
+        "registered_declarations": [],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
+        "reason": "The claim is proved in the note by ordinary mathematics and has no formal declaration to transport.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "rational_base_threshold_equals_reciprocal_exponent",
+        "claim_status": "ordinary proof here",
+        "classification": "ordinary_proof_non_executable",
+        "registered_declarations": [],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
+        "reason": "The claim is proved in the note by ordinary mathematics and has no formal declaration to transport.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "zudilin_sharp_hankel_qorder",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "hankelAssociatedCoeff_eq_reciprocal",
+            "module": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+            "line": 200
+          },
+          {
+            "name": "zudilinTransformedNormalizedMoment_one_initialMonomial",
+            "module": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+            "line": 1422
+          },
+          {
+            "name": "zudilinSharpHankelOrderAndCoeff_algebraicAssembly",
+            "module": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+            "line": 1753
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "zudilin_first_transformed_row_initial_monomial",
+        "claim_status": "proved here",
+        "classification": "linked_transport",
+        "registered_declarations": [
+          {
+            "name": "zudilinTransformedNormalizedMoment_one_initialMonomial",
+            "module": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+            "line": 1422
+          }
+        ],
+        "transport_count": 1,
+        "transports": [
+          {
+            "package_id": "ExternalVerification1049AdelicHeightBridge",
+            "package_role": "aggregate_replay_candidate_package",
+            "challenge_module": "ExternalVerification1049AdelicHeightBridge.Challenge",
+            "solution_module": "ExternalVerification1049AdelicHeightBridge.Solution",
+            "interface_name": "Erdos249257.ExternalVerification1049AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial",
+            "source_declarations": [
+              {
+                "name": "zudilinTransformedNormalizedMoment_one_initialMonomial",
+                "module": "ErdosProblems/Erdos1049/AdelicHeightBridge.lean",
+                "line": 1422
+              }
+            ],
+            "link_sources": [
+              "claim_owner_explicit"
+            ]
+          }
+        ],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 1,
           "unlinked_declaration_indices": []
         },
         "reason": null,
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_square_subsequence_channel_radius",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "square_subsequence_radius_three_halves_lower",
+            "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+            "line": 1222
+          },
+          {
+            "name": "no_eventual_square_subsequence_three_halves_upper",
+            "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+            "line": 1241
+          },
+          {
+            "name": "not_isLittleO_square_subsequence_radius",
+            "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+            "line": 1043
+          },
+          {
+            "name": "square_subsequence_radius_cubic_lower",
+            "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+            "line": 1006
+          },
+          {
+            "name": "no_eventual_square_subsequence_cubic_upper",
+            "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+            "line": 1023
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 5,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_channel_radius_method_ceiling",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "sharp_radius_satisfies_square_log_constraint",
+            "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+            "line": 764
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_companion_orbit_boundary",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "not_irrational_factorialGapSeries_iff_eventually_companion_floor_neg_two",
+            "module": "ErdosProblems/Erdos68/CompanionOrbitRationality.lean",
+            "line": 438
+          },
+          {
+            "name": "irrational_factorialGapSeries_iff_cofinal_companion_floor_misses",
+            "module": "ErdosProblems/Erdos68/CompanionOrbitRationality.lean",
+            "line": 447
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_strict_successor_carry_equivalence",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
+            "module": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+            "line": 986
+          },
+          {
+            "name": "irrational_factorialGapSeries_of_cofinal_nonunit_carries",
+            "module": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+            "line": 945
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_moving_factor_scale_split",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "irrational_factorialGapSeries_of_cofinal_largePrefixPrivate_unitScaleSplit",
+            "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+            "line": 1574
+          },
+          {
+            "name": "factorialBlock_unitFactorPairFloor_eq_min",
+            "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+            "line": 4701
+          },
+          {
+            "name": "cofinal_prefixPrivate_factorialGap_hits",
+            "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+            "line": 3097
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_unit_factor_pair_floor_split",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "factorialBlock_unitFactorPairFloor_scale_iff",
+            "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+            "line": 4766
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_kempner_index_denominator_exclusion",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "rational_denominator_not_dvd_pred_factorial_of_nonunit_carry",
+            "module": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+            "line": 836
+          },
+          {
+            "name": "rational_denominator_ge_of_nonunit_carry",
+            "module": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+            "line": 812
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_gmp_carry_census_300000",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "rational_denominator_not_dvd_pred_factorial_of_nonunit_carry",
+            "module": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+            "line": 836
+          },
+          {
+            "name": "rational_denominator_ge_of_nonunit_carry",
+            "module": "ErdosProblems/Erdos68/FactorialGapPlateauCore.lean",
+            "line": 812
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 2,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_certified_cf_denominator_floor",
+        "claim_status": "ordinary proof here",
+        "classification": "ordinary_proof_non_executable",
+        "registered_declarations": [],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 0,
+          "linked_count": 0,
+          "unlinked_declaration_indices": []
+        },
+        "reason": "The claim is proved in the note by ordinary mathematics and has no formal declaration to transport.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_prime_pole_cancellation_law",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "factorialGapPrefix_den_full_prime_power_iff",
+            "module": "ErdosProblems/Erdos68/PrimePoleCriterion.lean",
+            "line": 223
+          },
+          {
+            "name": "factorialGapPrefixLCMNumerator_mod_prime",
+            "module": "ErdosProblems/Erdos68/PrimePoleCriterion.lean",
+            "line": 129
+          },
+          {
+            "name": "natRatio_den_factorization_eq_iff",
+            "module": "ErdosProblems/Erdos68/PrimePoleDenominator.lean",
+            "line": 41
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_odd_pair_carry_break_equivalence",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "irrational_factorialGapSeries_iff_cofinal_odd_unit_carry_break",
+            "module": "ErdosProblems/Erdos68/PrimeThresholdParity.lean",
+            "line": 169
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_odd_threshold_consumer_and_parity_pattern",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "irrational_factorialGapSeries_of_eventual_odd_threshold",
+            "module": "ErdosProblems/Erdos68/PrimeThresholdParity.lean",
+            "line": 100
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_ultra_endpoint_cylinder_classification",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "irrational_factorialGapSeries_iff_cofinal_odd_ultra_endpoint_escape",
+            "module": "ErdosProblems/Erdos68/PrimeThresholdParity.lean",
+            "line": 407
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_adjacent_unit_window_circularity",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "adjacentUnitCarryWindowOffset_eq_twoStep_reducedNumerator",
+            "module": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+            "line": 337
+          },
+          {
+            "name": "consecutive_unit_carries_iff_positive_offset_le_den",
+            "module": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+            "line": 148
+          },
+          {
+            "name": "twoStep_den_mul_transitionNormalizers",
+            "module": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+            "line": 215
+          },
+          {
+            "name": "adjacentUnitCarryWindowDen_eq_twoStep_den",
+            "module": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+            "line": 243
+          },
+          {
+            "name": "consecutive_unit_carries_iff_integer_width_window",
+            "module": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+            "line": 62
+          },
+          {
+            "name": "primePow_dvd_twoStep_transitionNormalizers_iff_dvd_complement",
+            "module": "ErdosProblems/Erdos68/AdjacentUnitCarryWindow.lean",
+            "line": 436
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 6,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_erdos_straus_coboundary_collapse",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "eventually_zero_of_bounded_coboundary_core",
+            "module": "ErdosProblems/Erdos68/FactorialZeroPlateauSupplement.lean",
+            "line": 157
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_wilson_cofinal_prefix_private_hits",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "cofinal_prefixPrivate_factorialGap_hits",
+            "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+            "line": 3097
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_wilson_reflection_no_go",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "prime_dvd_reflected_factorialGap_of_odd",
+            "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+            "line": 3139
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_global_complementary_tail_reduction",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "irrational_factorialGapSeries_of_cofinal_global_complementaryTail",
+            "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+            "line": 6164
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_collision_scaled_fractional_part_criterion",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "irrational_factorialGapSeries_of_cofinal_collisionCeilingGap",
+            "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+            "line": 6254
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_fixed_owner_absorption_no_go",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "factorialBlockPrivateQuotient_eq_one_of_gap_lt",
+            "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+            "line": 2677
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_factor_split_projection_reduction",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "factorialBlock_complementaryFactorPairFloor_le_global",
+            "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+            "line": 4854
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_wilson_square_record_entry",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "factorialGap_halfFactorial_Wilson_record_entry",
+            "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+            "line": 5295
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_nonterminal_square_record_entry",
+        "claim_status": "verified finite instance",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "nineHundredSeventyOne_firstRepeatedPrimeSquare_entry",
+            "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+            "line": 5446
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_residual_cofactor_recurrence",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "factorialGapComponentwiseResidualCofactor_succ_intrinsic_recurrence",
+            "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+            "line": 4313
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_terminal_wilson_owner_pairs",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "prime_terminal_factorialGap_hit_iff",
+            "module": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+            "line": 3320
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_unique_owner_squared_factorial_ceiling",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "factorialBlock_unique_owner_projection_lcm_ceiling",
+            "module": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+            "line": 6524
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_prime_unit_translator_remote_reduction",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "exists_remote_factorialGrid_primeTranslator_reduction",
+            "module": "ErdosProblems/Erdos68/PrimeUnitTranslator.lean",
+            "line": 1657
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "erdos68_canonical_digit_termination_equivalence",
+        "claim_status": "formalised here",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "exists_rat_eq_iff_eventually_zero_canonicalDigit",
+            "module": "ErdosProblems/Erdos68/CanonicalFactorialTermination.lean",
+            "line": 78
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 1,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "lcm_diagonal_rationality_criterion",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "irrational_initial_iff_all_lcmDiagonal_nonintegral",
+            "module": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+            "line": 153
+          },
+          {
+            "name": "irrational_initial_iff_nonintegral_on_schedule",
+            "module": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+            "line": 110
+          },
+          {
+            "name": "irrational_initial_iff_all_factorialDiagonal_nonintegral",
+            "module": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+            "line": 138
+          },
+          {
+            "name": "tailShift_integral_iff_orderOf_dvd",
+            "module": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+            "line": 40
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "dyadic_tail_shift_rationality_classification",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "not_irrational_initial_iff_exists_integral_positive_tailShift",
+            "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+            "line": 1479
+          },
+          {
+            "name": "not_irrational_initial_iff_exists_eventually_integral_positive_tailShift",
+            "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+            "line": 1525
+          },
+          {
+            "name": "irrational_initial_iff_all_positive_tailShifts_nonintegral",
+            "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+            "line": 1551
+          },
+          {
+            "name": "irrational_initial_iff_cofinalNonintegralTailShifts",
+            "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+            "line": 1572
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "affine_and_block_residue_escape_circularity",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "ratAffinePowTwo_iff_evenIntegral",
+            "module": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+            "line": 91
+          },
+          {
+            "name": "ratAffinePowTwo_depth_independent",
+            "module": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+            "line": 101
+          },
+          {
+            "name": "cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral",
+            "module": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+            "line": 162
+          },
+          {
+            "name": "exists_blockResidue_escape_of_not_integral",
+            "module": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+            "line": 259
+          },
+          {
+            "name": "cofinal_blockResidue_escape_iff_not_eventuallyIntegral",
+            "module": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+            "line": 308
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 5,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "signed_two_window_normal_form",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "digit_eq_two_or_neg_two_of_small_pair",
+            "module": "ErdosProblems/Erdos251/AffineShiftEscape.lean",
+            "line": 58
+          },
+          {
+            "name": "shift_gt_half_of_digit_eq_two",
+            "module": "ErdosProblems/Erdos251/AffineShiftEscape.lean",
+            "line": 83
+          },
+          {
+            "name": "shift_lt_neg_half_of_digit_eq_neg_two",
+            "module": "ErdosProblems/Erdos251/AffineShiftEscape.lean",
+            "line": 96
+          },
+          {
+            "name": "adjacent_small_mismatch_iff_signed_two_window",
+            "module": "ErdosProblems/Erdos251/AffineShiftEscape.lean",
+            "line": 113
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "actual_real_prime_gap_tail_normal_form",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "realPrimeGapTail_eq_tsum_shifted_gaps",
+            "module": "ErdosProblems/Erdos251/RealPrimeGapTail.lean",
+            "line": 31
+          },
+          {
+            "name": "realPrimeGapTail_recurrence",
+            "module": "ErdosProblems/Erdos251/RealPrimeGapTail.lean",
+            "line": 48
+          },
+          {
+            "name": "irrational_primeSeries_iff_realPrimeGapTail_escape",
+            "module": "ErdosProblems/Erdos251/RealPrimeGapTail.lean",
+            "line": 73
+          },
+          {
+            "name": "realTailShift_not_both_integral_of_small_pair_of_digit_ne",
+            "module": "ErdosProblems/Erdos251/RealPrimeGapTail.lean",
+            "line": 99
+          },
+          {
+            "name": "irrational_primeSeries_of_realPrimeGapTail_small_mismatch",
+            "module": "ErdosProblems/Erdos251/RealPrimeGapTail.lean",
+            "line": 120
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 5,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "polynomial_gap_countermodel_series_value",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "hasSum_polynomialGapDyadicTerm",
+            "module": "ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean",
+            "line": 77
+          },
+          {
+            "name": "tsum_polynomialGapDyadicTerm_eq",
+            "module": "ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean",
+            "line": 89
+          },
+          {
+            "name": "not_irrational_tsum_polynomialGapDyadicTerm",
+            "module": "ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean",
+            "line": 106
+          },
+          {
+            "name": "polynomialGapWord_no_adjacent_two_digit",
+            "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+            "line": 1644
+          },
+          {
+            "name": "polynomialTailOrbit_shift_integral",
+            "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+            "line": 1654
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 5,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "three_prime_kernel_no_finite_separation",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "exists_uniform_nonsingular_threePrimeKernel_minor",
+            "module": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+            "line": 313
+          },
+          {
+            "name": "exists_uniform_nonsingular_threePrimeKernel_minor_of_prime",
+            "module": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+            "line": 376
+          },
+          {
+            "name": "not_finite_separable_threePrimeKernel",
+            "module": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+            "line": 388
+          },
+          {
+            "name": "noIntegerOrbit_logb_of_prime",
+            "module": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+            "line": 154
+          },
+          {
+            "name": "kernel_235_row_three_eq_smul_row_zero",
+            "module": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+            "line": 583
+          },
+          {
+            "name": "kernel_235_row_three_ne_smul_row_zero_at_four",
+            "module": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+            "line": 592
+          },
+          {
+            "name": "kernel_235_minor_eq_neg_one_fifteen",
+            "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+            "line": 904
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 7,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "three_prime_all_scale_rationality_lattice",
+        "claim_status": "conditional reduction",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "heightNormalizer235_mul_windowMass_eq_int",
+            "module": "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+            "line": 158
+          },
+          {
+            "name": "dyadicShellTsumTailR235_eq_range_add",
+            "module": "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+            "line": 176
+          },
+          {
+            "name": "qsmul_normalizedTailState_eq_int_of_value_eq_rat",
+            "module": "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+            "line": 196
+          },
+          {
+            "name": "exists_normalizedTailState_collision_of_value_eq_rat",
+            "module": "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+            "line": 296
+          },
+          {
+            "name": "smoothHeight_mul_prime_dvd_boundaryHeight",
+            "module": "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+            "line": 51
+          },
+          {
+            "name": "two_mul_heightNormalizer235",
+            "module": "ErdosProblems/Erdos269/RationalLatticeReduction.lean",
+            "line": 101
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 6,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "three_prime_actual_shell_orbit_dichotomy",
+        "claim_status": "unconditional progress",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "summable_dyadicShellMassR235",
+            "module": "ErdosProblems/Erdos269/DyadicShellSummability.lean",
+            "line": 142
+          },
+          {
+            "name": "dyadicNormalizedShellTsumTailR235_succ",
+            "module": "ErdosProblems/Erdos269/DyadicShellSummability.lean",
+            "line": 177
+          },
+          {
+            "name": "dyadicShellTsumTail_integer_or_cofinal_far",
+            "module": "ErdosProblems/Erdos269/DyadicShellSummability.lean",
+            "line": 188
+          },
+          {
+            "name": "dyadicNormalizedTailStateR235_succ",
+            "module": "ErdosProblems/Erdos269/DyadicOrderedTailRecurrence.lean",
+            "line": 110
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 4,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
+        "semantic_coverage_status": "not_assessed_by_transport_link",
+        "executed_comparator_assurance": "not_asserted"
+      },
+      {
+        "claim_id": "irrational_rotation_staircase_engine",
+        "claim_status": "proved here",
+        "classification": "missing_formal_transport",
+        "registered_declarations": [
+          {
+            "name": "exists_pos_nat_fract_mem_Ioo",
+            "module": "ErdosProblems/Shared/IrrationalRotationStaircase.lean",
+            "line": 144
+          },
+          {
+            "name": "det_carryStaircase",
+            "module": "ErdosProblems/Shared/IrrationalRotationStaircase.lean",
+            "line": 237
+          },
+          {
+            "name": "exists_staircase_indices",
+            "module": "ErdosProblems/Shared/IrrationalRotationStaircase.lean",
+            "line": 271
+          }
+        ],
+        "transport_count": 0,
+        "transports": [],
+        "source_anchor_coverage": {
+          "registered_count": 3,
+          "linked_count": 0,
+          "unlinked_declaration_indices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "reason": "No explicit exact Comparator transport link is registered for this formal claim.",
         "semantic_coverage_status": "not_assessed_by_transport_link",
         "executed_comparator_assurance": "not_asserted"
       }

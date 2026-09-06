@@ -15,6 +15,7 @@ The [complete eight-problem return matrix](docs/SOURCE_MAP.md#complete-eight-pro
 
 Machine-resolvable open propositions:
 
+- `remaining_open.erdos_1041_additive_error_strip_gluing`: python3 scripts/query_corpus.py --open remaining_open.erdos_1041_additive_error_strip_gluing
 - `remaining_open.erdos_1041_lemniscate_connection`: python3 scripts/query_corpus.py --open remaining_open.erdos_1041_lemniscate_connection
 - `remaining_open.erdos_1049_irrationality`: python3 scripts/query_corpus.py --open remaining_open.erdos_1049_irrationality
 - `remaining_open.erdos_243_eventual_recurrence`: python3 scripts/query_corpus.py --open remaining_open.erdos_243_eventual_recurrence
@@ -26,7 +27,9 @@ Machine-resolvable open propositions:
 - `remaining_open.erdos_269_reduced_tail_nonintegrality`: python3 scripts/query_corpus.py --open remaining_open.erdos_269_reduced_tail_nonintegrality
 - `remaining_open.erdos_269_three_prime_irrationality`: python3 scripts/query_corpus.py --open remaining_open.erdos_269_three_prime_irrationality
 - `remaining_open.erdos_269_two_dimensional_representation`: python3 scripts/query_corpus.py --open remaining_open.erdos_269_two_dimensional_representation
+- `remaining_open.erdos_68_cofinal_lower_endpoint_escape`: python3 scripts/query_corpus.py --open remaining_open.erdos_68_cofinal_lower_endpoint_escape
 - `remaining_open.erdos_68_irrationality`: python3 scripts/query_corpus.py --open remaining_open.erdos_68_irrationality
+- `remaining_open.erdos_68_weighted_collision_product_control`: python3 scripts/query_corpus.py --open remaining_open.erdos_68_weighted_collision_product_control
 - `remaining_open.half_value_membership`: python3 scripts/query_corpus.py --open remaining_open.half_value_membership
 - `remaining_open.twenty_one_actual_orbit_invariant`: python3 scripts/query_corpus.py --open remaining_open.twenty_one_actual_orbit_invariant
 - `remaining_open.twenty_one_final_skip_exclusion`: python3 scripts/query_corpus.py --open remaining_open.twenty_one_final_skip_exclusion

@@ -604,7 +604,7 @@ def compile_registered_claim_coverage(
         if transports and unlinked_anchors:
             partial_anchor_ids.append(claim_id)
         if transports:
-            if not declarations or status in {"open", "cited only"}:
+            if not declarations or status in {"open", "cited only", "ordinary proof here"}:
                 raise PortfolioError(
                     f"non-formal claim cannot have an executable transport: {claim_id}"
                 )
@@ -620,9 +620,12 @@ def compile_registered_claim_coverage(
         elif status == "cited only":
             classification = "cited_only_non_executable"
             reason = "The claim is cited only and has no local formal declaration to transport."
+        elif status == "ordinary proof here":
+            classification = "ordinary_proof_non_executable"
+            reason = "The claim is proved in the note by ordinary mathematics and has no formal declaration to transport."
         else:
             raise PortfolioError(
-                "declaration-free claim needs an explicit open or cited-only status: "
+                "declaration-free claim needs an explicit open, cited-only or ordinary-proof status: "
                 f"{claim_id}"
             )
         counts[classification] += 1

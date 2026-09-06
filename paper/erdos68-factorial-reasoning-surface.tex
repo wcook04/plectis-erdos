@@ -41,24 +41,37 @@ Erd\H{o}s asked whether
 \]
 is irrational.  The problem remains open.  The strongest unconditional
 partial result here is a quantitative obstruction to the finite-channel
-strategy.  If a positive factorial moment $M$ is divisible by every channel
-modulus through $D=2t^2$ and satisfies $M<(R+1)!-1$, then, for $t\ge2^{32}$,
+strategy, and its complete statement is checked by the Lean kernel: for all
+$t,M,R\in\mathbb N$ with $t\ge2^{32}$, $M>0$, $\Lc_{2t^2}\mid M$ and
+$M<(R+1)!-1$,
 \[
   3t^3<2(R+1).
 \]
-It excludes eventual $3/2$ upper bounds for the normalized channel radius and
-little-$o(t^3)$ growth in this architecture.  A complementary conditional
+All four hypotheses are carried inside the formal statement, the proof is
+finite, and the conclusion excludes eventual $3/2$ upper bounds for the
+normalized channel radius together with little-$o(t^3)$ growth in this
+architecture.  The obligation it leaves is explicit: derive the divisibility
+and factorial-size hypotheses from the factorial-gap series itself, and prove
+that the channels through $2t^2$ vanish for the resulting family.  A
+complementary conditional
 advance proves that one moving prefix-private prime, together with explicit
 global complementary-residue and local collision-core scale bounds, implies
 irrationality; arbitrary factors of one moving private modulus suffice under
 the corresponding normalized projection hypotheses.  Wilson's theorem
-supplies the moving private factors cofinally.  The two quantitative producers
+supplies the moving private factors cofinally, so the surviving obligation
+there is the pair of scale bounds.  The two quantitative producers
 remain open.
 
 The note also proves two finite denominator exclusions and an exact prime-pole
 cancellation law.  A GMP certificate gives $300000\nmid Z_{300000}$ and hence
 $q\nmid299999!$ in any representation $\Ser=a/q$ with $q>0$; an independent
-continued-fraction certificate gives $q\ge2^{39990}>10^{12038}$.  For a finite
+continued-fraction certificate gives $q\ge2^{39990}>10^{12038}$.  These are
+two different constraints.  The first is a divisibility restriction that no
+denominator magnitude discharges; the second is a magnitude bound that no
+smoothness restriction discharges.  Both exponents are read from the replay
+receipt \path{verification/erdos68-continued-fraction.json}, which records
+scale $80000$ bits, bracket width $7053$, $23449$ certified partial quotients,
+power-of-two exponent $39990$, and strict decimal exponent $12038$.  For a finite
 prefix, the complete maximal power $q^e$ of a prime survives reduction exactly
 when a reciprocal maximal-hit cofactor sum is nonzero; full cancellations occur
 at $q=139$ and $q=2593$.
@@ -75,6 +88,18 @@ failures of $m\mid Z_m$.  These equivalences isolate the producer but do not
 supply it.  Finally, two consecutive unit carries reduce to the universal
 inequality $0<U_{m+2}\le V_{m+2}$, so a divisibility obstruction derived only
 after assuming that pair cannot exclude it.
+
+Two further exact reformulations are recorded in the working tree and are
+named here so that the frontier is visible in one place.  A shrinking-target
+normal form states that irrationality is equivalent to cofinal escape of the
+canonical factorial orbit from a lower endpoint cylinder whose radius is
+$O(m^{-2})$.  A uniform family boundary states, for every integer $t\ge-1$,
+that $\sum_{n\ge2}1/(n!+t)$ is rational exactly when
+$\lceil t\,m!\,C_t\rceil\equiv2\pmod m$ for all sufficiently large $m$, with
+$C_t=\sum_{n\ge2}1/(n!(n!+t))$, and it recovers the irrationality of $e$ at
+$t=0$.  Both statements sit outside the formal-source commit pinned by this
+note, they carry no declaration link below, and they are scheduled for the
+next formalisation cycle.
 \end{abstract}
 
 \begin{paperresult}{Main results and exact open boundary}
@@ -84,9 +109,19 @@ $3/2$ upper bounds and little-$o$ decay.  \textbf{Conditional advance.} One
 moving prefix-private factor plus two explicit scale bounds implies
 irrationality; the moving factors exist cofinally, while the scale bounds are
 open.  \textbf{Exact coordinates.} The fixed companion orbit and strict
-successor give lossless eventual/cofinal reformulations, not the missing
-producer.  \textbf{Open boundary.} No result here proves a cofinal miss or
-irrationality of $\Ser$.
+successor give lossless eventual/cofinal reformulations without the missing
+producer; both extend the classical factorial-base rationality criterion of
+Cantor \cite{cantor1869} in the form recorded by Galambos
+\cite[Ch.~1]{galambos1976}.  \textbf{Evidence split.} The channel radius,
+the moving-factor split, the two exact coordinates and the prime-pole law are
+Lean-checked at the pinned commit; the $299999!$ and continued-fraction
+denominator exclusions are ordinary proofs whose kernel-checked part is the
+implication from one non-unit carry, with the numbers supplied by replayable
+integer certificates.  \textbf{Held outside the checkpoint.} The
+shrinking-target normal form and the uniform boundary for
+$\sum_{n\ge2}1/(n!+t)$ are proved in the working tree and are not part of the
+pinned formal source.  \textbf{Open boundary.} No result here proves a
+cofinal miss or irrationality of $\Ser$.
 \end{paperresult}
 
 \section{The problem}\label{sec:problem}
@@ -174,6 +209,159 @@ Factorial-gap lcm growth $\gg N^{4/3}\log N$ & Derived, source-verified & Derive
 Finite certificates ($D=3$, $D=9$, $D\le12$) & Verified finite instances & Each excludes only the denominators it names. \\
 Unbounded strict nonvanishing & Open & Required to turn the channel rounding argument into an irrationality proof. \\
 \end{longtable}
+
+\section{Leading contributions}\label{sec:lead}
+
+Each entry below states the hypotheses it carries, separates the
+kernel-checked part from the ordinary part and from any replayable
+certificate, records the attribution where prior art applies, and names the
+exact obligation that remains.  The order is by strength of what is
+supported, and every statement is repeated in full in its own section.
+
+\paragraph{1. Square-subsequence channel radius.}
+\label{res:lead-channel-radius}\phantomsection
+For all $t,M,R\in\mathbb N$ with $t\ge2^{32}$, $M>0$, $\Lc_{2t^2}\mid M$ and
+$M<(R+1)!-1$, one has $3t^3<2(R+1)$; the sequence form says that no radius
+function satisfies $2(R(t)+1)\le3t^3$ eventually, and a third form says that
+$R(t)+1$ is not $o(t^3)$ under the corresponding hypotheses from $t\ge4096$
+onward.  This is Theorem~\ref{res:channel-radius}.
+\emph{Evidence.} The complete advertised endpoint is Lean-checked at
+\lword{Erdos68/ChannelIntegralCongruence.lean}{1222}{square_subsequence_radius_three_halves_lower}{the sharp radius theorem},
+with the sequence form at
+\lword{Erdos68/ChannelIntegralCongruence.lean}{1241}{no_eventual_square_subsequence_three_halves_upper}{the eventual no-go theorem}
+and the little-$o$ form at
+\lword{Erdos68/ChannelIntegralCongruence.lean}{1043}{not_isLittleO_square_subsequence_radius}{the little-o obstruction}.
+The method's own ceiling is checked separately at
+\lword{Erdos68/ChannelIntegralCongruence.lean}{764}{sharp_radius_satisfies_square_log_constraint}{the logarithmic-constraint evaluation}:
+for $t\ge4$ and $9(R+1)=16t^3$ the finite logarithmic constraint is already
+satisfied, so that constraint alone cannot force the asymptotically optimized
+constant $16/9$.  No part of this entry rests on a certificate or on an
+ordinary supplement.
+\emph{Attribution.} The prior-art relation for this family is recorded as
+unassessed, so no novelty is asserted for it here.
+\emph{Remaining obligation.} Derive $\Lc_{2t^2}\mid M$ and $M<(R+1)!-1$ from
+the factorial-gap series, and prove that the channels through $2t^2$ vanish
+for the resulting family.
+
+\paragraph{2. Moving-factor scale split.}
+\label{res:lead-moving-factor-split}\phantomsection
+If cofinally many $m\ge4$ carry a large prefix-private prime $q$ of $m!-1$
+such that, at $p=m/2+1$, both $(2p+1)L_p<2p^2(2p-1)!\,\rho_p$ and
+$(2p+1)C_pq<2p^2(2p-1)!$ hold, then $\Ser$ is irrational.  This is
+\S\ref{res:moving-factor-scale-split}.
+\emph{Evidence.} The implication is Lean-checked at
+\lref{Erdos68/PrimeZeroBranch.lean}{1574}{irrational_factorialGapSeries_of_cofinal_largePrefixPrivate_unitScaleSplit}.
+The split that removes the opaque floor premise is the exact equivalence
+\lref{Erdos68/EndpointWeightedPrivateSupport.lean}{4766}{factorialBlock_unitFactorPairFloor_scale_iff},
+resting on the floor identity
+\lref{Erdos68/EndpointWeightedPrivateSupport.lean}{4701}{factorialBlock_unitFactorPairFloor_eq_min}.
+The arithmetic supply is unconditional and also Lean-checked:
+\lref{Erdos68/PrimeZeroBranch.lean}{3097}{cofinal_prefixPrivate_factorialGap_hits}
+produces, for every cutoff, a prime $q$ and an index $m$ beyond it with
+$q\mid m!-1$ and $q$ coprime to every earlier factorial gap.
+\emph{Attribution.} The supply proof uses Wilson's theorem, which is
+classical; the cofinality packaging is recorded as unassessed.
+\emph{Remaining obligation.} Prove both sides of the branch-free scale split
+cofinally.  Neither side follows from the existence of the selected prime.
+
+\paragraph{3. Fixed companion-orbit boundary.}
+\label{res:lead-companion-orbit}\phantomsection
+With $C=\sum_{n\ge2}1/(n!(n!-1))$, the series $\Ser$ is rational exactly when
+$(\lfloor m!C\rfloor+2)\bmod m=0$ for every sufficiently large $m$, and
+irrational exactly when that residue is missed cofinally.  This is
+Theorem~\ref{res:companion-orbit-rationality-boundary}.
+\emph{Evidence.} Lean-checked in both directions at
+\path{ErdosProblems/Erdos68/CompanionOrbitRationality.lean}, endpoints
+\path{not_irrational_factorialGapSeries_iff_eventually_companion_floor_neg_two}
+and
+\path{irrational_factorialGapSeries_iff_cofinal_companion_floor_misses}.
+\emph{Attribution.} The statement extends the classical factorial-base
+rationality criterion, that a real number is rational exactly when its
+canonical factorial-base digits vanish from some index on, due to Cantor
+\cite{cantor1869} and recorded in Galambos \cite[Ch.~1]{galambos1976}.  The
+addition here is the telescope $C=\Ser-e+2$, the identification of the digit
+value $m-2$, and the transport of the criterion to the factorial-gap series.
+\emph{Remaining obligation.} Show that $\lfloor m!C\rfloor\bmod m$ differs
+from $-2$ at arbitrarily large indices.
+
+\paragraph{4. Strict-successor carry equivalence.}
+\label{res:lead-carry-equivalence}\phantomsection
+With $H_m=\sum_{2\le n\le m}(n!-1)^{-1}$ and $Z_m=\lfloor m!H_m\rfloor+1$,
+irrationality of $\Ser$ is equivalent to cofinally many failures of
+$m\mid Z_m$, equivalently to cofinally many non-unit carries.  This is
+\S\ref{res:strict-successor-complete-characterization}.
+\emph{Evidence.} Lean-checked at
+\lref{Erdos68/FactorialGapPlateauCore.lean}{986}{irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses}
+with the carry form at
+\lref{Erdos68/FactorialGapPlateauCore.lean}{945}{irrational_factorialGapSeries_of_cofinal_nonunit_carries}.
+\emph{Attribution.} Same antecedent as entry~3.
+\emph{Remaining obligation.} Produce the cofinal failures.  The equivalence
+supplies no producer.
+
+\paragraph{5. Finite denominator exclusions, two different constraints.}
+\label{res:lead-denominator-exclusions}\phantomsection
+If $\Ser=a/q$ with $q>0$, then $q\nmid299999!$, and independently
+$q\ge2^{39990}>10^{12038}$.
+\emph{Evidence.} The first exclusion is an ordinary proof with a
+kernel-checked part.  The kernel-checked part is the implication from one
+non-unit carry, at
+\lref{Erdos68/FactorialGapPlateauCore.lean}{836}{rational_denominator_not_dvd_pred_factorial_of_nonunit_carry}
+and, in the magnitude form, at
+\lref{Erdos68/FactorialGapPlateauCore.lean}{812}{rational_denominator_ge_of_nonunit_carry};
+the exact non-unit carry at $m=300000$ comes from a separately implemented
+GMP integer computation, whose payload, driver and backend are hash-bound in
+the companion research packet.  The second exclusion is an ordinary
+continued-fraction proof whose input is the replayable integer certificate
+\path{verification/erdos68-continued-fraction.json}, recording scale $80000$
+bits, bracket width $7053$, $23449$ certified partial quotients, power-of-two
+exponent $39990$, and strict decimal exponent $12038$.  A kernel-internal
+instance of the same implication gives $q\ge67$ at
+\lref{Erdos68/FactorialZeroPlateauCertificates.lean}{136}{sixty_seven_le_rational_denominator}.
+Neither exclusion implies the other: a denominator with no prime factor above
+$299999$ can still exceed $10^{12038}$, and a denominator far below that size
+can still fail to divide $299999!$ by carrying one prime to a high power.
+\emph{Attribution.} The continued-fraction method is textbook, and the
+adjudicated disposition records the numbers as new with no antecedent
+located.
+\emph{Remaining obligation.} Both exclusions are finite.  Ruling out an
+eventual all-unit carry tail is what would convert them into a proof.
+
+\paragraph{6. Prime-pole cancellation law.}
+\label{res:lead-prime-pole}\phantomsection
+For a finite prefix, the complete maximal power $p^e$ of a prime survives
+reduction exactly when the reciprocal maximal-hit cofactor sum is nonzero in
+$\mathbb F_p$.  This is Proposition~\ref{res:prime-pole}.
+\emph{Evidence.} Lean-checked at
+\lref{Erdos68/PrimePoleCriterion.lean}{223}{factorialGapPrefix_den_full_prime_power_iff},
+with the denominator-side criterion in
+\path{ErdosProblems/Erdos68/PrimePoleDenominator.lean}.  The two full
+cancellations at $p=139$ and $p=2593$ are exact integer computations
+displayed in \S\ref{sec:finite}.
+\emph{Attribution.} Recorded as unassessed.
+\emph{Remaining obligation.} The law classifies survival at a finite prefix
+and supplies no statement about the infinite series.
+
+\paragraph{7. Two normal forms held outside the pinned formal source.}
+\label{res:lead-held-outside-checkpoint}\phantomsection
+The first is a shrinking-target normal form: $\Ser$ is irrational exactly
+when the canonical factorial orbit escapes a lower endpoint cylinder
+cofinally, and because the scaled tail lies strictly between $0$ and $2/m$
+the trapping target has radius $O(m^{-2})$.  The second is a uniform boundary
+for the family Erd\H{o}s stated on p.~102: for every integer $t\ge-1$, with
+$C_t=\sum_{n\ge2}1/(n!(n!+t))$, the series $\sum_{n\ge2}1/(n!+t)$ is rational
+exactly when $\lceil t\,m!\,C_t\rceil\equiv2\pmod m$ for all sufficiently
+large $m$; the member $t=0$ is $e-2$, and its orbit never meets the residue
+class, so the family boundary reproves that $e$ is irrational.
+\emph{Evidence.} Both are proved in the working tree and neither is part of
+the formal-source commit pinned by this note, so neither carries a
+declaration link here.  They are named because the shrinking-target form is
+the only recorded formulation that gives the measure-theoretic shape of the
+obstruction, and the family form is the only one that covers the statement
+Erd\H{o}s actually made.
+\emph{Attribution.} Prior art for both is unassessed.  The $t=0$
+specialisation recovers a classical fact.
+\emph{Remaining obligation.} Formalise both into the pinned checkpoint in the
+next cycle, and prove cofinal escape from the endpoint cylinder.
 
 \section{Canonical factorial digits}\label{sec:digits}
 
@@ -559,7 +747,7 @@ The rational implementation of $Z_p$ agrees with the real-floor definition,
 and exact kernel reduction gives $11\nmid Z_{11}$.  Thus every rational
 representation of $\Ser$ has denominator at least $11$.
 
-\phantomsection\label{res:strict-successor-complete-characterization}
+\label{res:strict-successor-complete-characterization}\phantomsection
 The all-index recurrence is stronger.  Define its exact carry by
 \[
   Z_m=mZ_{m-1}+1-b_m .
@@ -718,7 +906,7 @@ pair of distinct denominator indices, only suitable factors whose projections
 or factor-pair floor satisfy the stated bound.  This is checked in
 \lref{Erdos68/EndpointWeightedPrivateSupport.lean}{4387}{factorialBlock_factorProjection_lcm_eq_privateModulus} and
 \lref{Erdos68/EndpointWeightedPrivateSupport.lean}{4854}{factorialBlock_complementaryFactorPairFloor_le_global}.
-\phantomsection\label{res:split-factor-normalized-collision}
+\label{res:split-factor-normalized-collision}\phantomsection
 
 The transport to the literal factorial block is established directly rather than
 advisory.  Lean builds the collision core $C$, private quotients $r_i$, private
@@ -1035,7 +1223,7 @@ factor reduction has no opaque floor premise left: the two surviving
 arithmetic estimates are exposed independently and neither follows merely
 from the existence of the selected prime.
 
-\phantomsection\label{res:moving-factor-scale-split}
+\label{res:moving-factor-scale-split}\phantomsection
 The irrationality implication works for every natural block parameter at
 least three, including composite parameters.  What remains open is the arithmetic
 input.  Wilson supplies cofinal prefix-private factors without analytic
@@ -1849,6 +2037,15 @@ Lean checks small exact misses; a hash-bound GMP scan reaches index 300000 and y
   {10.1017/CBO9780511897184.009}.
 \bibitem{bloom} T.~F. Bloom, \emph{Erd\H{o}s Problem \#68}.
   \url{https://www.erdosproblems.com/68}, accessed 28 July 2026.
+\bibitem{cantor1869}
+  G.~Cantor,
+  \emph{\"Uber die einfachen Zahlensysteme},
+  Z.\ Math.\ Phys.\ \textbf{14} (1869), 121--128.
+\bibitem{galambos1976}
+  J.~Galambos,
+  \emph{Representations of Real Numbers by Infinite Series},
+  Lecture Notes in Mathematics \textbf{502}, Springer, 1976, Chapter~1.
+  doi:\href{https://doi.org/10.1007/BFb0081642}{10.1007/BFb0081642}.
 \bibitem{garaev-luca-shparlinski}
   M.~Z. Garaev, F.~Luca, and I.~E. Shparlinski,
   \emph{Character sums and congruences with $n!$},

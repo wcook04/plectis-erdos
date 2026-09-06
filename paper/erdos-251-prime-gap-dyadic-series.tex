@@ -11,14 +11,16 @@
 \renewcommand{\commit}{4ab50e144847a3393fb340341760e5d6907d702e}
 \renewcommand{\commitshort}{4ab50e144847}
 \hypersetup{
-  pdftitle={An integral-shift criterion for dyadic tail recurrences},
+  pdftitle={A denominator floor and a free-pair criterion for the prime-gap dyadic series},
   pdfsubject={Erdős Problem Notes: Problem 251},
   pdfkeywords={irrationality, prime gaps, dyadic series, summation by parts, Lean 4},
 }
 
 \runninghead{Erd\H{o}s \#251: the prime-gap dyadic series}
-\title{An Integral-Shift Criterion for Dyadic Tail Recurrences}
-\subtitle{Erd\H{o}s Problem~\#251, with the principal statements checked in Lean~4}
+\title{A Denominator Floor and a Free-Pair Criterion for the Prime-Gap
+Dyadic Series}
+\subtitle{Erd\H{o}s Problem~\#251, with the recurrence-level statements checked
+in Lean~4}
 \author{Will Cook}
 \date{July 2026}
 
@@ -28,10 +30,84 @@
 
 \begin{abstract}
 \noindent
-Let $p_0=2,p_1=3,\ldots$ enumerate the primes and let
-$g_n=p_{n+1}-p_n$.  The polynomial bound $p_n\le1250(n+1)^4$ gives summability
-of the prime and gap terms.  Summation by parts, with the endpoint retained,
-yields
+Let $p_0=2,p_1=3,\ldots$ enumerate the primes, let $g_n=p_{n+1}-p_n$, and write
+\[
+ \Pi=\sum_{i\ge0}\frac{p_i}{2^{\,i+1}},\qquad
+ S=\sum_{i\ge0}\frac{g_i}{2^{\,i+1}} .
+\]
+Every rational number equal to $\Pi$, and hence every rational equal to $S$,
+has denominator at least $2^{589}>10^{177}$.  That floor is decided inside the
+Lean kernel by \texttt{decide +kernel} on a single Boolean certificate over the
+$1229$ primes below $10^{4}$, in the module
+\texttt{Erdos251/KernelDenominatorFloor.lean} of the private development; that
+module lies outside the source revision pinned by this note, so the statement
+is quoted with its coordinate and without a link, and it is scheduled for the
+next governed build.  An exact continued-fraction computation raises the floor
+to $2^{39997}>10^{12040}$: $23369$ partial quotients at a working scale of
+$80000$ bits, each forced by a rational bracket of width $1$ with the
+separation verified against that bracket, and with the tail controlled by the
+Lean-checked estimate $p_n\le1250(n+1)^4$
+\lword{Erdos251/PrimeGapDyadicTail.lean}{360}{prime0_le_polynomial}{the
+polynomial prime bound}.  That second step is an exact finite computation
+resting on a kernel-checked ingredient, and no Lean declaration carries it.
+Both bounds exclude an initial range of rationals and leave irrationality open.
+
+The exact remaining input is a free-pair condition.  Put
+$T_N=2^{\,N+1}\bigl(S-\sum_{i\le N}g_i2^{-(i+1)}\bigr)$, so that
+$T_{N+1}=2T_N-g_{N+1}$.  Then $S$ is irrational if and only if for every
+modulus $t\ge1$ and every cutoff there are indices $M\equiv N\pmod t$ beyond
+the cutoff with $T_M-T_N\notin\Z$.  The offset $M-N$ is free, so one
+nonintegral congruent pair per modulus and cutoff suffices in place of a supply
+at a single fixed offset.  Beyond a rational state with odd reduced denominator
+$d$, integrality of $T_M-T_N$ holds precisely when $M\equiv N$ modulo the
+multiplicative order of $2$ in $\Z/d\Z$.  The equivalence and that lattice
+statement are Lean theorems of the private module
+\texttt{Erdos251/FreePairReduction.lean}, also outside the pinned revision and
+also scheduled for the next governed build.  The nearest located antecedent is
+Schlage-Puchta~\cite{schlagepuchta2011}, whose Theorem~2 concerns periodic
+base-$b$ digit expansions and is a different object; the free-pair form is
+recorded as new at low confidence, with the dyadic tail-recurrence and
+B\'ezivin-style functional-equation sweep unrun.
+
+The event the criterion consumes is measured in the actual primes.  Over the
+$6\,841\,648$ primes below $1.2\times10^{8}$ and offsets $h=1,\ldots,16$ it
+occurs at every offset, with density between $0.00418$ and $0.008248$ and the
+two signs near balanced; at $h=1$ there are $56\,427$ occurrences, the last at
+the prime $119\,995\,753$.  This is a finite measurement over one range and it
+supplies no cofinal statement.  The narrowest sufficient prime-theoretic input
+recorded for the two-condition form is a pair of even numbers differing by $2$,
+each occurring infinitely often as a consecutive prime gap, inside a common
+index residue class modulo $t$.
+
+Three proved boundaries constrain any argument.  Raising every gap by at most
+$M$ while preserving its residue modulo $M$ and fixing any prescribed initial
+segment already makes the sum rational, so a hypothesis invariant under such
+perturbations cannot force irrationality
+(\lword{Erdos251/BoundedPerturbationCountermodel.lean}{163}{exists_rational_bounded_perturbation}{the
+construction},
+\lword{Erdos251/BoundedPerturbationCountermodel.lean}{179}{not_forall_irrational_of_bounded_perturbation_invariant}{its
+invariant-property consequence}, and the prime-anchored instances at
+\lword{Erdos251/BoundedPerturbationCountermodel.lean}{200}{exists_rational_bounded_perturbation_primeGap}{lines~200}
+and
+\lword{Erdos251/BoundedPerturbationCountermodel.lean}{210}{not_irrational_bounded_perturbation_primeGap}{210}).
+Both block-pullback escape tests are proved equivalent to the conclusion they
+were introduced to supply
+(\lword{Erdos251/AffineCylinderCollapse.lean}{162}{cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral}{the
+affine cylinder form} and
+\lword{Erdos251/AffineCylinderCollapse.lean}{308}{cofinal_blockResidue_escape_iff_not_eventuallyIntegral}{the
+fixed-lattice form}).  The quadratic word $g_n=2(n^2+4n+2)$ has the rational
+value $32$
+\lword{Erdos251/PolynomialGapSeriesValue.lean}{106}{not_irrational_tsum_polynomialGapDyadicTerm}{by
+a checked telescope}, so positivity, parity, strict growth, unboundedness and
+nonperiodicity are jointly compatible with rationality.  Its telescoping
+mechanism is the one Kova\v{c} used against the variable-denominator conjecture
+printed under the problem, published on 15 April
+2026~\cite[Theorem~1 and proof, pp.~1--2]{kovac2026}; the word carries no
+priority claim and is not a result about Problem~\#251.
+
+The reduction that carries the problem to the gap series is elementary and
+exact.  The polynomial bound $p_n\le1250(n+1)^4$ gives summability of the prime
+and gap terms.  Summation by parts, with the endpoint retained, yields
 \[
  \sum_{i=0}^{n}\frac{p_i}{2^{\,i+1}}
  \;=\;2+\sum_{i=0}^{n-1}\frac{g_i}{2^{\,i+1}}-\frac{p_n}{2^{\,n+1}},
@@ -47,8 +123,7 @@ and therefore the unconditional identity and irrationality equivalence
 This exact identity reduces Problem~\#251 to the dyadic gap series; it does not
 prove its irrationality.
 
-The rescaled tails satisfy $T_{N+1}=2T_N-g_{N+1}$.  For any real recurrence
-with integer digits,
+For any real recurrence with integer digits,
 \[
  T_{N+h}=2^hT_N-
  \bigl(g_{N+1}2^{h-1}+\cdots+g_{N+h}\bigr),
@@ -66,20 +141,16 @@ basepoints collapse to the single diagonal criterion
  T_{2L_j}-T_{L_j}\notin\Z\quad\hbox{for every }j\ge0.
 \]
 The missing step is to prove these nonintegralities for the actual prime-gap
-tails.
+tails, and the free-pair form above is the weakest recorded shape of that step.
 
-There is an exact finite obstruction.  Two adjacent $h$-shifts in $(-1,1)$
+There is also an exact finite obstruction.  Two adjacent $h$-shifts in $(-1,1)$
 whose corresponding prime gaps differ cannot both be integral.  Hence
 cofinally many such pairs would exclude eventual integrality
 \lword{Erdos251/PrimeGapDyadicTail.lean}{1112}
       {primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch}
       {the conditional prime-gap small-mismatch theorem}.
 An explicit remainder bound certifies one actual adjacent pair at $h=1$,
-$N=2$; its cofinal occurrence is not proved.  The quadratic example
-$g_n=2(n^2+4n+2)$, $T_n=2(n+4)^2$ shows that positivity, parity, polynomial
-growth, unboundedness, and nonperiodicity cannot force this mechanism.  A
-checked recurrence and integral-shift obstruction make this an exact
-countermodel, not a heuristic comparison.  A second example has finite sum
+$N=2$; its cofinal occurrence is not proved.  A second example has finite sum
 $-n/2^n$ and non-eventually-periodic coefficients
 (\lword{Erdos251/PrimeGapDyadicTail.lean}{1157}
       {carryPartialSum_natCast_eq}{finite endpoint};
@@ -88,20 +159,29 @@ $-n/2^n$ and non-eventually-periodic coefficients
 The actual prime gaps are also not eventually periodic
 (\lword{Erdos251/PrimeGapDyadicTail.lean}{1023}
       {primeGap0_not_eventually_periodic}{prime-gap nonperiodicity}),
-but that fact alone is insufficient.  Problem~\#251 remains open: the exact
-unproved input is cofinal nonintegrality, or a prime-gap estimate strong enough
-to imply the adjacent-small-mismatch condition.
+and that fact alone is insufficient.  Problem~\#251 remains open: the exact
+unproved input is cofinal nonintegrality in the free-pair form, or a prime-gap
+estimate strong enough to imply the adjacent-small-mismatch condition.
 \end{abstract}
 
-\begin{paperresult}{Exact reduction and missing input}
-\textbf{Reduction.} Summation by parts identifies the prime series with two
-plus the dyadic prime-gap series, so their irrationality questions are
-equivalent.  Tail rationality is equivalent to one integral shift and to one
-diagonal LCM-tail integrality.  \textbf{Finite obstruction.} Adjacent small
-shifts with unequal gaps cannot both be integral.  \textbf{Open boundary.}
-The polynomial countermodel proves that positivity, evenness, strict growth,
-and nonperiodicity do not force the required shift escape.  No result here
-proves cofinal smallness or nonintegrality for the actual prime gaps.
+\begin{paperresult}{Denominator floor, exact criterion, and open boundary}
+\textbf{Denominator floor.} Every rational equal to the prime series, and hence
+every rational equal to the prime-gap series, has denominator at least
+$2^{589}>10^{177}$ by a kernel-decided certificate, and at least
+$2^{39997}>10^{12040}$ by a certified continued-fraction prefix resting on a
+Lean-checked tail bound.  \textbf{Exact criterion.} Irrationality is equivalent
+to a free-pair nonintegrality condition on the scaled tails, with the shift
+offset free.  \textbf{Measured input.} The event that criterion consumes occurs
+at every tested offset over 6,841,648 primes; the narrowest sufficient
+prime-theoretic input recorded is a pair of even numbers differing by 2, each
+occurring infinitely often as a consecutive prime gap, inside a common index
+residue class.  \textbf{Open boundary.} Bounded perturbations preserving every
+gap's residue make the sum rational, both block-pullback escape tests are
+proved circular, and the polynomial word is a coarse-property countermodel
+citing Kova\v{c}.  No result here proves cofinal nonintegrality for the actual
+prime gaps.  \textbf{Reduction.} Summation by parts identifies the prime series
+with two plus the dyadic prime-gap series, and tail rationality is equivalent
+to one integral shift and to one diagonal lcm-tail integrality.
 \end{paperresult}
 
 \section{Introduction}\label{sec:problem}
@@ -232,7 +312,10 @@ sequence $\kappa_n=n-1$, which is unbounded and hence not eventually periodic,
 and whose dyadic sum $\sum_{n\ge0}\kappa_n2^{-(n+1)}$ is zero.
 
 \paragraph{Outline.}
-Section~\ref{sec:diagonal-collapse} begins with the strongest exact
+Section~\ref{sec:denominator-floor} records the two denominator exclusions, the
+free-pair criterion that is equivalent to the target, the measurement of the
+event that criterion consumes, and the exact remaining prime-theoretic
+obligation.  Section~\ref{sec:diagonal-collapse} then gives the strongest exact
 recurrence-level conclusions: the lcm-diagonal irrationality criterion, the
 signed two-window normal form, the affine and fixed-lattice circularity
 equivalences, and the quadratic polynomial-shift countermodel.
@@ -304,6 +387,13 @@ prime-specific estimate.
 Statement & Status & Treatment here \\
 \midrule
 Irrationality of $\Pi$ & Open & Not proved. \\
+Denominator floor $b\ge2^{589}$ for every rational value & Lean-checked in the private development; outside the pinned source & Theorem~\ref{res:denominatorfloor}; kernel-decided certificate. \\
+Certified continued-fraction exclusion $q>10^{12040}$ & Exact computation over a Lean-checked tail bound & Theorem~\ref{res:cfexclusion}; no Lean declaration. \\
+Free-pair irrationality criterion & Lean-checked in the private development; outside the pinned source; an equivalence & Theorem~\ref{res:freepair}. \\
+Actual real prime-gap tail recurrence and escape equivalence & Lean-checked unconditionally & Used in Theorem~\ref{res:freepair}. \\
+Adjacent-mismatch event in the actual primes & Finite measurement & Density over 6,841,648 primes; supplies no cofinal statement. \\
+State compression and redundancy of the gap condition & Ordinary proof; not formalised & Recorded after Theorem~\ref{res:freepair}. \\
+Polignac-pair sufficient input & Proposed sufficient theorem & Not proved. \\
 Lcm-diagonal irrationality criterion & Lean-checked abstractly; an equivalence & Theorem~\ref{res:lcmdiagonal}. \\
 Signed two-window normal form & Lean-checked abstractly; an equivalence & Theorem~\ref{res:signedwindow}. \\
 Affine and fixed-lattice cofinal escape tests & Lean-checked abstractly; both equivalences & Theorem~\ref{res:affinecollapse}; neither supplies a prime-specific estimate. \\
@@ -320,7 +410,7 @@ Rationality/integral-shift classification & Lean-checked abstractly; an equivale
 Finite-approximation gap & Paper-level & Elementary inference used in Proposition~\ref{res:truncation}; not a named Lean declaration at the pinned revision. \\
 Actual prime gaps are unbounded and not eventually periodic & Lean-checked & Proposition~\ref{res:gap-nonperiodic}. \\
 Adjacent small-mismatch pair excludes simultaneous integrality & Lean-checked & Theorem~\ref{res:smallpair}. \\
-Concrete prime-gap tail recurrence and rational-candidate bridge & Paper-level recurrence; Lean-checked conditional bridge & The rational candidate recurrence is unconditional; its representation of the actual scaled tail assumes non-irrationality. \\
+Concrete prime-gap tail recurrence and rational-candidate bridge & Lean-checked & The actual real tail satisfies the recurrence unconditionally; the rational-candidate representation of that tail assumes non-irrationality. \\
 Rationality alone forces periodic integer coefficients & False & Section~\ref{sec:carry}, Proposition~\ref{res:telescope}. \\
 Cofinal adjacent small-mismatch hypothesis & Proposed sufficient theorem & Problem~\ref{prob:smallpair}; not proved. \\
 \bottomrule
@@ -332,7 +422,12 @@ Cofinal adjacent small-mismatch hypothesis & Proposed sufficient theorem & Probl
 \emph{How to read the middle column.}  \emph{Proved here} marks a statement
 proved in the text; each such statement also carries a link to a Lean
 declaration where it appears below.
-\emph{Lean-checked} marks a statement accepted by the pinned kernel.  The modifier
+\emph{Lean-checked} marks a statement accepted by the pinned kernel.
+\emph{Lean-checked in the private development} marks a statement whose Lean
+proof lies outside the source revision pinned here, so it is quoted with its
+module coordinate and without a link.  \emph{Exact computation} marks a finite
+computation with a recorded receipt.  \emph{Ordinary proof} marks a derivation
+written out in prose with no formal check.  The modifier
 \emph{abstractly} marks a statement proved for an arbitrary integer digit
 sequence rather than for the actual prime gaps.  \emph{Proposed sufficient
 theorem} marks an unproved statement
@@ -346,6 +441,129 @@ summation by parts; Lean~4.
 \qquad
 \textbf{MSC 2020.} 11J72 (primary); 11N05, 68V20 (secondary).
 
+\section{A denominator floor, and the exact remaining input}
+\label{sec:denominator-floor}
+
+The strongest statements available on this problem restrict the answer itself.
+Both are exclusions of rational values, and both leave irrationality open.
+
+\begin{theorem}[kernel-decided denominator floor]\label{res:denominatorfloor}
+Let $a\in\Z$ and $b\in\Npos$.  If $\Pi=a/b$ then $b\ge2^{589}$, and the same
+floor holds for every rational equal to $S$, because $\Pi=2+S$.
+\end{theorem}
+
+\emph{Evidence.}  The statement is a Lean theorem in the private development,
+\texttt{kernel\_denominator\_floor} and
+\texttt{kernel\_denominator\_floor\_primeGap} at lines $315$ and $323$ of
+\texttt{ErdosProblems/Erdos251/KernelDenominatorFloor.lean}.  Its arithmetic
+core is one Boolean certificate over the $1229$ primes below $10^{4}$, accepted
+by \texttt{decide +kernel} at line $309$, with four Farey literals of $175$ to
+$181$ digits and no \texttt{native\_decide}.  Its analytic input is a rational
+bracket around $\Pi$ built from the partial sum through the $1229$th prime
+together with the polynomial tail estimate, the same estimate proved at
+\lword{Erdos251/PrimeGapDyadicTail.lean}{360}{prime0_le_polynomial}{line~360 of
+the prime-gap module}.  That module is absent from the source revision pinned
+by this note, so no link is printed for it and no reader is asked to accept the
+statement on the pinned revision; it is scheduled for the next governed build.
+Since $589\log_{10}2>177$, the floor exceeds $10^{177}$.
+
+\begin{theorem}[certified continued-fraction exclusion]\label{res:cfexclusion}
+Every rational equal to $\Pi$, and hence every rational equal to $S$, has
+reduced denominator $q\ge2^{39997}$, and therefore $q>10^{12040}$.
+\end{theorem}
+
+\emph{Evidence.}  This is an exact finite computation and no Lean declaration
+carries it.  The continued-fraction expansion of $\Pi$ is developed to $23369$
+partial quotients at a working scale of $80000$ bits.  Each quotient is forced
+by a rational bracket of width $1$ around the true value, and the separation
+$|q_n\Pi-p_n|>0$ is verified against that bracket, so the prefix is the true
+prefix rather than a floating-point reconstruction.  The bracket uses the
+Lean-checked tail estimate $p_n\le1250(n+1)^4$, so no conjecture enters.  The
+classical theorem that a best approximation of the second kind is a convergent
+then converts the certified prefix into the denominator
+bound~\cite{khinchin1964}.  The receipt is
+\texttt{state/formal\_math/probes/erdos251\_certified\_cf\_receipt.json}, which
+records the power-of-two exponent $39997$, the bit length $39998$, the strict
+decimal power $12040$, and the decimal digit count $12041$.  The certified
+statement is $q\ge2^{39997}$ and $q>10^{12040}$.  Printing the bit length or
+the digit count as an exponent overstates the bound by one power of two and one
+decimal order, and raising the printed exponent does not strengthen the proof.
+
+Neither bound decides the problem.  An exact criterion does.
+
+\begin{theorem}[free-pair criterion]\label{res:freepair}
+Let $T_N=2^{\,N+1}\bigl(S-\sum_{i\le N}g_i2^{-(i+1)}\bigr)$, so that
+$T_{N+1}=2T_N-g_{N+1}$ and $T_0=2S-1$.  Then $S$ is irrational if and only if
+for every $t\ge1$ and every $N_0$ there are $N,M\ge N_0$ with
+$M\equiv N\pmod t$ and $T_M-T_N\notin\Z$.
+\end{theorem}
+
+The offset $M-N$ is free, so one nonintegral congruent pair for each modulus
+and each cutoff suffices.  The mechanism is exact: beyond a rational state with
+odd reduced denominator $d$, the difference $T_M-T_N$ is integral precisely
+when $M\equiv N$ modulo the multiplicative order of $2$ in $\Z/d\Z$, so every
+rational orbit has a cutoff and a modulus $t$ at which integrality holds
+exactly on the congruence classes.
+
+\emph{Evidence.}  The equivalence, the lattice statement and the unconditional
+recurrence for the actual prime-gap tail are Lean theorems at lines $236$, $92$
+and $186$ of \texttt{ErdosProblems/Erdos251/FreePairReduction.lean} in the
+private development.  That module is also absent from the pinned formal source
+and is also scheduled for the next governed build.  The unconditional
+recurrence for the actual real tail is available at the pinned revision,
+\lword{Erdos251/RealPrimeGapTail.lean}{48}{realPrimeGapTail_recurrence}{the
+real prime-gap tail recurrence}, together with the fixed-offset escape
+equivalence
+\lword{Erdos251/RealPrimeGapTail.lean}{73}{irrational_primeSeries_iff_realPrimeGapTail_escape}{for
+the actual prime series}, so the passage from the free-pair form to the
+fixed-offset form is checked here and only the free-offset lattice waits on the
+next build.  The nearest located antecedent for the free-pair form is
+Schlage-Puchta~\cite{schlagepuchta2011}, whose Theorem~2 treats periodic
+base-$b$ digit expansions and is a different object; the form is recorded as
+new at low confidence, and the sweep of the dyadic tail-recurrence and
+B\'ezivin-style functional-equation literature has not been run.
+
+\paragraph{What is measured.}
+Over the $6\,841\,648$ primes below $1.2\times10^{8}$ and offsets
+$h=1,\ldots,16$, the reduced event occurs at every offset, with density between
+$0.00418$ and $0.008248$ and the two signs near balanced; at $h=1$ there are
+$56\,427$ occurrences, the last at the prime $119\,995\,753$.  Rescaled by
+$\log p$, the band densities run from $0.17671$ down to $0.13148$ with
+decelerating drift, so the count up to $X$ still grows like $X/(\log X)^2$.  Of
+$3\,200$ sampled hits across $h=1,\ldots,8$, every one satisfies the condition
+as literally stated, and the median distance to a window boundary is $0.127$
+against a worst case of $6.1\times10^{-7}$.  This is a finite measurement over
+one range and it supplies no cofinal statement.  The receipt is
+\texttt{state/formal\_math/probes/erdos251\_adjacent\_mismatch\_receipt.json}.
+
+\paragraph{Two consequences of the criterion, proved on paper.}
+Two further statements about the criterion are ordinary proofs recorded in the
+private development, and neither is formalised.  First, exchanging the order of
+summation gives $\sum_{N\le X}T_N\le(p_{X+1}-p_0)+2T_X$.  Under rationality
+with reduced odd denominator $d$, Markov's inequality supplies for each $C>1$ a
+set $B\subseteq(X,2X]$ of density at least $1-1/C$ on which
+$T_N\le C\log p_{2X}$; on that set $T_N$ lies in $\tfrac1d\Z$ and takes at most
+$dC\log p_{2X}+1$ values, so some single value is attained $\gg X/\log X$
+times.  Rationality therefore makes the tail a finite-state object at every
+scale, pairs with $T_M=T_N$ are abundant for free, and the whole difficulty in
+the free-pair producer is the nonintegrality of the difference.  Second, under
+the free-pair lattice the difference $T_M-T_N$ is an integer whenever the
+modulus divides the offset, and an integer cannot lie in $(\tfrac12,1)$, so the
+first component of the reduced event is already a contradiction and the gap
+condition adds nothing to it.  Both derivations were read and found sound by an
+internal audit.  Neither is Lean-checked, neither carries an independent check,
+and the naive form $\sum_{N\le X}T_N\le p_{X+1}$ is false.
+
+\paragraph{The exact remaining obligation.}
+Call an even number a \emph{Polignac number} when it occurs infinitely often as
+a difference of consecutive primes.  The narrowest sufficient prime-theoretic
+input recorded for the two-condition form of the event is a pair of Polignac
+numbers differing by $2$, both realised infinitely often inside a common index
+residue class modulo $t$, for every $t$.  That is weaker than a
+Hardy-Littlewood correlation at a fixed offset, and it sits beside bounded-gap
+technology.  Whether it follows from known results is open, and nothing here
+proves any case of it.
+
 \section{One diagonal, and two circular escape tests}\label{sec:diagonal-collapse}
 
 We first record the strongest recurrence-level conclusions.  They apply to
@@ -358,7 +576,7 @@ For a real recurrence put
 \]
 and let $L_0=1$, $L_j=\operatorname{lcm}(1,\ldots,j)$ for $j\ge1$.
 
-\begin{theorem}[\href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/OrderLatticeDiagonal.lean\#L153}{lcm-diagonal criterion}]\label{res:lcmdiagonal}
+\begin{theorem}[\lword{Erdos251/OrderLatticeDiagonal.lean}{153}{irrational_initial_iff_all_lcmDiagonal_nonintegral}{lcm-diagonal criterion}]\label{res:lcmdiagonal}
 Let $g:\N\to\Z$ and $T:\N\to\R$ satisfy
 $T_{N+1}=2T_N-g_{N+1}$ for every $N$.  Then
 \[
@@ -397,7 +615,7 @@ rational recurrence and a fixed $h$, write
 \]
 Then $D_{N+1}=2D_N-\delta_N$.
 
-\begin{theorem}[\href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/AffineShiftEscape.lean\#L113}{signed two-window normal form}]\label{res:signedwindow}
+\begin{theorem}[\lword{Erdos251/AffineShiftEscape.lean}{113}{adjacent_small_mismatch_iff_signed_two_window}{signed two-window normal form}]\label{res:signedwindow}
 Assume that $\delta_N$ is even.  The conjunction
 \[
  -1<D_N<1,\qquad -1<D_{N+1}<1,\qquad \delta_N\ne0
@@ -484,9 +702,9 @@ $|B_{h,N,r}-2^rz|>b(N+r)$ for every integer $z$.
 \end{proof}
 
 The formal argument gives the
-\href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/AffineCylinderCollapse.lean\#L91}{pointwise affine identity},
-its \href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/AffineCylinderCollapse.lean\#L162}{cofinal form},
-and the \href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/AffineCylinderCollapse.lean\#L308}{fixed-lattice equivalence}.
+\lword{Erdos251/AffineCylinderCollapse.lean}{91}{ratAffinePowTwo_iff_evenIntegral}{pointwise affine identity},
+its \lword{Erdos251/AffineCylinderCollapse.lean}{162}{cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral}{cofinal form},
+and the \lword{Erdos251/AffineCylinderCollapse.lean}{308}{cofinal_blockResidue_escape_iff_not_eventuallyIntegral}{fixed-lattice equivalence}.
 The first equivalence shows that the apparent affine hierarchy contains no
 depth-dependent information: it is the pullback of even integrality through
 the recurrence identity.  The fixed lattice removes that data dependence, but
@@ -505,10 +723,20 @@ zero for $n<K$, such that $\sum_{n\ge0}(g_n+M\delta_n)/2^{n+1}$ is rational.
 \end{theorem}
 Choose a rational value just above the original sum and use the binary
 expansion of their difference, scaled by $M$, beyond the prescribed prefix.
-The \href{https://github.com/wcook04/plectis-erdos/blob/e2a9177a386c2567a46979c2c7f065c4a839a367/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L163}{construction}
-and its \href{https://github.com/wcook04/plectis-erdos/blob/e2a9177a386c2567a46979c2c7f065c4a839a367/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L179}{invariant-property consequence}
+The \lword{Erdos251/BoundedPerturbationCountermodel.lean}{163}{exists_rational_bounded_perturbation}{construction}
+and its \lword{Erdos251/BoundedPerturbationCountermodel.lean}{179}{not_forall_irrational_of_bounded_perturbation_invariant}{invariant-property consequence}
 are kernel checked: a property shared by every admissible perturbation cannot
-by itself force irrationality. The perturbed digits need not remain prime gaps.
+by itself force irrationality.  The perturbed digits need not remain prime
+gaps.  The construction is also checked at the actual consecutive prime gaps,
+\lword{Erdos251/BoundedPerturbationCountermodel.lean}{200}
+      {exists_rational_bounded_perturbation_primeGap}{a rational perturbed
+prime-gap series} for every $M\ge1$ and every cutoff $K$, with the perturbed
+gap lying in $[g_n,g_n+M]$ and congruent to $g_n$ modulo $M$
+(\lword{Erdos251/BoundedPerturbationCountermodel.lean}{220}{perturbed_gap_bounds}{the
+gap bounds}).  Consequently no theorem about the size or the residue of prime
+gaps that survives such a perturbation can suffice for Problem~\#251; that
+class includes the bounded-gap and large-gap theorems cited below and
+equidistribution of $p_n$ modulo any fixed $q$, on taking $M=2q$.
 
 \begin{proposition}[quadratic polynomial-shift countermodel]\label{res:polynomialcountermodel}
 Put
@@ -534,14 +762,20 @@ Finally,
 \lword{Erdos251/PrimeGapDyadicTail.lean}{1654}{polynomialTailOrbit_shift_integral}{every fixed tail shift is integral}.
 \end{proof}
 
+The telescoping mechanism behind this word is the one Kova\v{c} used against
+the variable-denominator conjecture printed under the problem, published on
+15 April 2026~\cite[Theorem~1 and proof, pp.~1--2]{kovac2026}.  The word
+carries no priority claim, and it is recorded here as a countermodel to a
+class of strategies rather than as a result about Problem~\#251.
+
 The corresponding dyadic series has value exactly $32$, as shown by the
-\href{https://github.com/wcook04/plectis-erdos/blob/e2a9177a386c2567a46979c2c7f065c4a839a367/ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean#L89}{checked rational-value theorem}.
+\lword{Erdos251/PolynomialGapSeriesValue.lean}{89}{tsum_polynomialGapDyadicTerm_eq}{checked rational-value theorem}.
 
 The formal construction checks the
-\href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean\#L1596}{recurrence},
-\href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean\#L1632}{strict growth},
-\href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean\#L1654}{integrality of every shift},
-and \href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos251/problem/PrimeGapDyadicTail.lean\#L1644}{exclusion of adjacent differences of size two}.
+\lword{Erdos251/PrimeGapDyadicTail.lean}{1596}{polynomialTailOrbit_recurrence}{recurrence},
+\lword{Erdos251/PrimeGapDyadicTail.lean}{1632}{polynomialGapWord_strictMono}{strict growth},
+\lword{Erdos251/PrimeGapDyadicTail.lean}{1654}{polynomialTailOrbit_shift_integral}{integrality of every shift},
+and \lword{Erdos251/PrimeGapDyadicTail.lean}{1644}{polynomialGapWord_no_adjacent_two_digit}{exclusion of adjacent differences of size two}.
 
 \section{Summation by parts, with the endpoint retained}\label{sec:parts}
 
@@ -1392,11 +1626,22 @@ scaled-tail state and its recurrence, the eventual-integral-shift theorem, the
 abstract rationality classification, and the prime-specific local
 small-mismatch theorem are Lean-checked.  The quadratic polynomial-shift
 countermodel, including its exact recurrence, strict growth, failed adjacent
-trigger, and integral shifts, is also Lean-checked.  Paper-level are the modular
-rewriting by $D_{h,N,L}$, the finite-approximation inference, the positive
-carry countermodel above, the identification of the concrete tail
-$\mathcal T$ with the checked recurrence, and the real form of the small-shift
-obstruction in Corollary~\ref{res:smallpair-real}.
+trigger, and integral shifts, is also Lean-checked.  The identification of the
+concrete tail $\mathcal T$ with the checked recurrence is Lean-checked as well,
+\lword{Erdos251/RealPrimeGapTail.lean}{48}{realPrimeGapTail_recurrence}{at line~48
+of the real prime-gap tail module}, and so is the real form of the small-shift
+obstruction in Corollary~\ref{res:smallpair-real},
+\lword{Erdos251/RealPrimeGapTail.lean}{99}
+      {realTailShift_not_both_integral_of_small_pair_of_digit_ne}{at line~99 of
+the same module}; an earlier reading of this note placed both on the paper
+side, and that reading was wrong.  Paper-level are the modular rewriting by
+$D_{h,N,L}$, the finite-approximation inference, and the positive carry
+countermodel above.  The denominator floor of
+Theorem~\ref{res:denominatorfloor} and the free-pair criterion of
+Theorem~\ref{res:freepair} are Lean-checked in the private development and
+await the next governed build of the pinned source; the continued-fraction
+exclusion of Theorem~\ref{res:cfexclusion} and the density measurement have no
+Lean route at present.
 The explicit polynomial remainder bound and its two finite certificates above
 are ordinary mathematical proofs with exact integer replay; their Lean
 formalization remains to be supplied.  The remaining producer is a cofinal
@@ -1563,6 +1808,11 @@ the escape hypothesis for the actual gaps.
   doi:\href{https://doi.org/10.1090/jams/876}{10.1090/jams/876}.
   Theorem~1 on p.~66 gives the effective lower bound for the largest single
   consecutive-prime gap below $X$.
+\bibitem{khinchin1964} A.~Ya. Khinchin,
+  \emph{Continued Fractions}, University of Chicago Press, Chicago, 1964.
+  Cited for the classical fact that a best approximation of the second kind is
+  a convergent, which converts a certified partial-quotient prefix into a
+  denominator lower bound.
 \bibitem{kovactao2024} V.~Kova\v{c} and T.~Tao,
   \href{https://doi.org/10.1007/s10474-025-01528-0}{\emph{On several
   irrationality problems for Ahmes series}}, Acta Math. Hungar. \textbf{175}
@@ -1593,6 +1843,11 @@ the escape hypothesis for the actual gaps.
   Exercise~6.2.5, p.~183,
   doi:\href{https://doi.org/10.1017/CBO9780511618314.008}
   {10.1017/CBO9780511618314.008}.
+\bibitem{schlagepuchta2011} J.-C. Schlage-Puchta,
+  \emph{The irrationality of some number theoretical series},
+  arXiv:1105.1451, 2011.  Theorem~2 treats periodic base-$b$ digit expansions;
+  it is recorded here as the nearest located antecedent to the free-pair form
+  and as a different object.
 \bibitem{zhang2014} Y.~Zhang,
   \href{https://doi.org/10.4007/annals.2014.179.3.7}
   {\emph{Bounded gaps between primes}},

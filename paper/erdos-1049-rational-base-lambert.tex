@@ -9,15 +9,15 @@
 \renewcommand{\commit}{4ab50e144847a3393fb340341760e5d6907d702e}
 \renewcommand{\commitshort}{4ab50e144847}
 \hypersetup{
-  pdftitle={Sharp height and four-jet obstructions at base 3/2 for Erdős Problem 1049},
+  pdftitle={A rational-base irrationality region for the Lambert value, and sharp obstructions at base 3/2, for Erdős Problem 1049},
   pdfsubject={Erdős Problem Notes: Problem 1049},
   pdfkeywords={irrationality, Lambert series, rational base, Padé approximation, Lean 4},
 }
 
-\runninghead{Erd\H{o}s \#1049: sharp obstructions at base 3/2}
-\title{Sharp Height and Four-Jet Obstructions at Base $3/2$}
-\subtitle{An exact $41/65$ certificate for Erd\H{o}s
-Problem~\#1049}
+\runninghead{Erd\H{o}s \#1049: a rational-base irrationality region}
+\title{A Rational-Base Irrationality Region for the Lambert Value}
+\subtitle{The region $b^{\mu}<a$, the base $31/4$, and sharp obstructions at
+$3/2$, for Erd\H{o}s Problem~\#1049}
 \author{Will Cook}
 \date{July 2026}
 
@@ -29,10 +29,41 @@ Problem~\#1049}
 \noindent
 Erd\H{o}s Problem~\#1049 asks whether
 \(F(t)=\sum_{n\ge1}(t^n-1)^{-1}\) is irrational for every rational \(t>1\).
-We prove exact obstructions to several approximation methods at \(t=3/2\)
-and a conditional reduction of the number of rows needed to cancel endpoint
-residues.
+We prove that \(F(a/b)\) is irrational for every pair of coprime integers
+\(a>b\ge1\) with \(b^{\mu}<a\), where \(\mu=C_1/C_0=2.464978683574975\ldots\),
+equivalently \(\log b/\log a<\theta^{*}=1/\mu=0.40568302138406054\ldots\), and
+where \(C_1=1091/2\) and \(C_0=266-(3/\pi^{2})(225-J)\) are the constants of
+Zudilin's \((14,12,14;27)\) direction.  The first base this settles beyond the
+published region of Bundschuh and V\"a\"an\"anen is \(31/4\), together with
+every power \((31/4)^{r}\), \(r\ge1\).
 
+The region theorem is an ordinary proof.  It cites Zudilin's Lemma~7 together
+with the inputs of that lemma's own proof, and its remaining steps are proved
+here in full.  The finite arithmetic that places \(31/4\) inside the region
+and outside the earlier one is checked by the Lean kernel.  The rational
+bracket \(81/200<\theta^{*}<1/2\) around the derived constant is checked in
+the module \texttt{RationalBaseContour}, which belongs to the
+external-verification cut.  This release's Lean library does not carry that
+module.
+
+A degree-budget theorem bounds the reach of the same mechanism.  For a family
+of integer polynomial pairs with decay exponent \(\sigma\), degree exponent
+\(\delta\) and coefficient-height exponent \(h\), all three independent of the
+base, one has \(\sigma\le\delta\), so the homogenised forms are proved to decay
+only below \(\sigma/(\sigma+\delta)\le1/2\).  The base \(3/2\) sits at
+\(\log2/\log3=0.6309297535714574\ldots\), which is \(0.2252467\ldots\) above
+\(\theta^{*}\).
+
+We also determine the \(q\)-order of Zudilin's normalised Hankel determinant
+exactly: \(\operatorname{ord}_qV_N^{*}=N(N-1)(2N-1)/6\) at every rank, with
+leading coefficient \((N!)^{2}(N+1)!/2^{N}\), where the source proves the
+inequality alone.  The all-depth recurrence, the initial monomial of the first
+transformed row and the closed-form assembly are kernel-checked; the rows
+\(j\ge3\) are open, so the Lean identification of the determinant itself stays
+conditional on a row hypothesis.
+
+At \(3/2\) we prove exact obstructions to several approximation methods and a
+conditional reduction of the number of rows needed to cancel endpoint residues.
 The integer bracket \(2^{64}<3^{41}<2^{65}\) gives a uniform gap greater than
 \(3/13\) between \(\log2/\log3\) and every threshold in the rectangular
 Hermite--Pad\'e exponent model studied here.  The scalar factor and its
@@ -51,21 +82,33 @@ remainders.
 
 Integer scalar content cannot improve the ratio of a determinant's local
 divisor to its absolute height, while coordinatewise clearing at \(3/2\)
-fails an exact exponential growth bound.  The unresolved step is an actual
-approximation family combining primitive coefficients, a nonzero remainder,
-and decay faster than height growth.  No irrationality theorem at \(3/2\)
-is proved.
+fails an exact exponential growth bound.  The unresolved step at that base is
+an actual approximation family combining primitive coefficients, a nonzero
+remainder, and decay faster than height growth.  No irrationality theorem at
+\(3/2\) is proved.
 \end{abstract}
 
-\begin{paperresult}{What the paper rules out}
-\textbf{Exact arithmetic.} The bracket $2^{64}<3^{41}<2^{65}$ excludes the
-stated scalar and first-order Hermite--Pad\'e height mechanisms at $3/2$.
+\begin{paperresult}{What the paper proves}
+\textbf{New irrational bases.} $F(a/b)$ is irrational for coprime
+$a>b\ge1$ with $\log b/\log a<\theta^{*}=0.40568302138406054\ldots$
+(Theorem~\ref{res:region}).  The base $31/4$ and every power $(31/4)^{r}$ lie
+in that region and outside the published region of Bundschuh and
+V\"a\"an\"anen, whose cutoff is $1/2-1/\pi^{2}=0.398678816\ldots$
+(Theorem~\ref{res:31over4}).  \textbf{Evidence.} An ordinary proof citing
+Zudilin's Lemma~7 and the inputs of its proof, with the finite height
+arithmetic at $31/4$ checked by the Lean kernel.  \textbf{Reach of the
+mechanism.} A degree-budget theorem caps every base-uniform family of this
+shape at $\sigma/(\sigma+\delta)\le1/2$, and $3/2$ sits at
+$0.6309297535714574\ldots$ (Theorem~\ref{res:archcap}).
+\textbf{Exact arithmetic at $3/2$.} The bracket $2^{64}<3^{41}<2^{65}$ excludes
+the stated scalar and first-order Hermite--Pad\'e height mechanisms there.
 It also yields the sharp finite four-jet count at bottom depth $41$, with a
 B\'ezout--Pl\"ucker reduction under explicit minor and unimodularity hypotheses.
 \textbf{Transfer obstruction.} Direct integer-base clearing fails by an exact
 growth inequality and forcing recurrence.  \textbf{Open boundary.} No
 primitive noncollapsed approximation family with a sufficiently small
-nonzero remainder is constructed, so no irrationality at $3/2$ is proved.
+nonzero remainder is constructed at $3/2$, so no irrationality at $3/2$ is
+proved, and the universal assertion over all rational $t>1$ remains open.
 \end{paperresult}
 
 \section{Introduction}\label{sec:problem}
@@ -221,11 +264,23 @@ threshold among the sources compared here for this value.  Zudilin's later
 Pad\'e-and-Hankel treatment also admits non-integral rational bases: its
 generalized $q$-logarithm remarks that its results also hold for non-integer
 $p=r/s$ with $|p|>1$, under an assumption $\log|r|>c\log|s|$ for some computable
-$c>0$~\cite{zudilin2016}.  No value of $c$ is computed there, and we do not
-compute one; we record the remark because it shows the rational-base extension
-was already contemplated, and because any threshold of that shape is a
-statement about $\log s/\log r$ of exactly the kind
-Section~\ref{sec:sevenhalves} treats.
+$c>0$~\cite{zudilin2016}.  No value of $c$ is computed there.  That remark
+announces the shape of a rational-base extension for the generalized
+$q$-logarithm of that paper.  Section~\ref{sec:region} computes the constant
+for $F$ itself, $c=\mu=2.464978683574975\ldots$, and derives the region and its
+first new base from it.
+
+A third published rational-base region for this same series is Duverney's
+Th\'eor\`eme~2, whose hypothesis is
+$\log|s|/\log|r|<\frac13\bigl(1-3/\pi^{2}\bigr)=0.2320\ldots$
+\cite[Th\'eor\`eme~2, p.~174]{duverney1996}; his Th\'eor\`eme~1 for general
+numerators is weaker still.  Both cutoffs lie strictly inside the Bundschuh and
+V\"a\"an\"anen region.  Matala-aho, V\"a\"an\"anen and Zudilin's combined
+treatment of $q$-logarithms keeps the integer hypothesis $p=1/q\in\Z\setminus\{0,\pm1\}$
+throughout, and states in print that its methods do not sharpen the
+$q$-harmonic case of~\cite{zudilin2004}
+\cite[abstract p.~879; introduction p.~880]{matalaaho2006}.  So no printed
+region for $F$ reaches $\log4/\log31$.
 
 \paragraph{Erd\H{o}s's integer-base argument, in outline.}
 For an integer $b\ge2$, Erd\H{o}s rewrites
@@ -346,16 +401,23 @@ but no claim of exact optimality at every $T$ is made.
 \statusboundary
 
 \paragraph{Results and boundary.}
-The linked Lean declarations establish exact inequalities, congruences,
-finite collision counts, recurrence identities, and exclusions for the named
-models.  Bundschuh and V\"a\"an\"anen's irrationality theorem at \(7/2\),
-Rivin's functional nonrationality theorem, and the two-variable Mahler theorem
-used below remain external results.  None of the formal statements proves an
-irrationality result at a rational noninteger base.  At \(3/2\), the missing
+Theorems~\ref{res:region} and~\ref{res:31over4} are ordinary mathematics.  They
+consume Zudilin's Lemma~7 together with the inputs of that lemma's own proof,
+and every further step is proved in Section~\ref{sec:region}.  They are not
+kernel-checked.  The linked Lean declarations establish exact inequalities,
+congruences, finite collision counts, recurrence identities, and exclusions for
+the named models; among them are the height comparisons that place \(31/4\)
+inside the enlarged logarithmic region and outside the earlier one.  No Lean
+declaration in this release's library carries an irrationality statement at a
+rational noninteger base.  Bundschuh and V\"a\"an\"anen's irrationality theorem
+at \(7/2\), Rivin's functional nonrationality theorem, and the two-variable
+Mahler theorem used below remain external results.  At \(3/2\), the missing
 step is still an actual primitive approximation family with nonzero remainder
 and an asymptotic height margin.
 
 \paragraph{Structure.}
+Section~\ref{sec:region} states and proves the region theorem, the base $31/4$
+and the degree-budget cap on the mechanism that produces them.
 Section~\ref{sec:sharp} derives the height and charge exclusions from the sharp
 $41/65$ power certificate.  Section~\ref{sec:primitive} proves that integer scalar content is neutral for the
 local-to-Archimedean balance.
@@ -380,6 +442,284 @@ declaration at the pinned source revision~\commitshort.
 Pad\'e approximation; Lean~4.
 \qquad
 \textbf{MSC 2020.} 11J72 (primary); 11J82, 68V20 (secondary).
+
+\section{The region \texorpdfstring{$b^{\mu}<a$}{b\textasciicircum mu < a} and the base \texorpdfstring{$31/4$}{31/4}}\label{sec:region}
+
+This section states the note's leading results.  Fix Zudilin's direction
+$(\alpha_0,\alpha_1,\alpha_2;\beta)=(14,12,14;27)$ of
+\cite[Sec.~5]{zudilin2004} and put
+\[
+ C_1=(\alpha_0+\alpha_1+\alpha_2)\beta-\tfrac12(\alpha_1^{2}+\alpha_2^{2}+\beta^{2})
+ =\frac{1091}{2},
+ \qquad
+ C_0=266-\frac{3}{\pi^{2}}\,(225-J),
+\]
+\[
+ J=\sum_{i=1}^{13}\bigl(\psi_1(u_i)-\psi_1(v_i)\bigr),
+ \qquad
+ \psi_1(x)=\sum_{k\ge0}\frac1{(k+x)^{2}},
+\]
+the thirteen demi-intervals $[u_i,v_i)$ being
+$[1/14,1/12)$, $[1/7,1/6)$, $[3/14,1/4)$, $[2/7,1/3)$, $[5/14,2/5)$,
+$[3/7,7/15)$, $[1/2,8/15)$, $[4/7,3/5)$, $[9/14,2/3)$, $[5/7,11/15)$,
+$[11/14,4/5)$, $[6/7,13/15)$, $[13/14,14/15)$.  Numerically
+\[
+ J=77.94318447500909592258956702399211044972\ldots,
+ \qquad
+ C_0=221.3000881650050251240426966922154102706\ldots,
+\]
+\[
+ \mu:=\frac{C_1}{C_0}=2.464978683574975037454488275535521581878\ldots,
+ \qquad
+ \theta^{*}:=\frac1\mu=0.40568302138406054101566030557693017464819107867787\ldots
+\]
+The constant $\mu$ is the irrationality-exponent bound of
+\cite[Thm.~1, p.~154]{zudilin2004} for integer bases.
+
+\begin{theorem}[rational-base region]\label{res:region}
+Let $a>b\ge1$ be coprime integers with
+\[
+ b^{\mu}<a,
+ \qquad\text{equivalently}\qquad
+ \frac{\log b}{\log a}<\theta^{*}=0.40568302138406054\ldots
+\]
+Then $F(a/b)=\sum_{m\ge1}(( a/b)^{m}-1)^{-1}$ is irrational.
+\end{theorem}
+
+\begin{proof}[Proof, in outline]
+Write $x=a/b$ and keep the notation of \cite[Secs.~2--5]{zudilin2004}, with
+$a_j=\alpha_j n+1$ and, for the source's upper parameter, $\beta_n:=\beta n+2=27n+2$
+in place of the symbol $b$ that this note reserves for the denominator of the
+base.  Further, $m=m(c)=15$, $N=15n$, and $M_n=266n^{2}+34n+1$ is the integer of
+that paper's~(16).
+
+\emph{Step 1, the forms.}  Zudilin's Lemma~7 states, for parameters satisfying
+his~(14) and $s(c)>0$, that
+$p^{-M(c)}D_{m(c)}(p)\,\Omega^{-1}(p)\,H(c)\in\Z[p]\,h_p(1)+\Z[p]$, an inclusion
+between polynomial rings; the paper's own display~(24) distinguishes $\Z[p]$
+from its evaluation, and that reading is the one under which the source's proof
+of its Theorem~1 goes through.  The linear-form identity~(9)--(11) gives
+$H_n=A_nF-B_n$ with $A_n,B_n\in\Q(x)$.  Because $F$ is not a rational function
+of $x$, the pair $(U_n,V_n)$ supplied by Lemma~7 is forced to be
+$U_n=x^{-M_n}D_N A_n/\Omega_n$ and $V_n=x^{-M_n}D_N B_n/\Omega_n$, and Lemma~7
+says these two rational functions lie in $\Z[x]$.  The nonrationality of $F$ is
+proved from the $\varepsilon^{-1}\log(1/\varepsilon)$ growth of $F(1+\varepsilon)$,
+which no nonzero rational function has.
+
+\emph{Step 2, degrees.}  The $x$-degrees of the summands of $A_n$ increase
+strictly, with step $\alpha_0+\alpha_1+\alpha_2-k-2=40n+1-k$ for
+$k\le\beta_n-2$, so no cancellation occurs at the top and
+$K_n:=\deg A_n=(1091n^{2}+81n+2)/2$, whence $K_n/n^{2}\to C_1$.  Setting
+$W_n:=K_n-M_n+\sum_{l\le N}\varphi(l)-\sum_{l\le N}\nu_l\varphi(l)$ gives
+$\deg U_n=W_n$ and $\deg V_n\le W_n-1$.
+
+\emph{Step 3, homogenisation.}  Since both degrees are at most $W_n$, the
+numbers $\widehat U_n=b^{W_n}U_n(a/b)$ and $\widehat V_n=b^{W_n}V_n(a/b)$ are
+integers, so
+$\widehat\Lambda_n=b^{W_n}\Lambda_n(a/b)=\widehat U_nF(a/b)-\widehat V_n$ lies
+in $\Z F(a/b)+\Z$.  This is the only non-Archimedean step, and it is where the
+denominator $b$ is paid for.
+
+\emph{Step 4, positivity and size.}  Every factor of the summand
+$R(q^{t})$ of $H_n$ is positive for real $x>1$, and $D_N(x)>0$,
+$\Omega_n(x)>0$, so $\widehat\Lambda_n>0$ for every $n$.  Each
+$q$-Pochhammer factor lies in $[(q;q)_\infty,1]$, which bounds $\log H_n(x)$
+uniformly in $n$, and the cyclotomic correction over $l\le N$ costs
+$O_x(N\log N)$.  Hence
+$\log\widehat\Lambda_n=K_n\log b-(K_n-W_n)\log a+o(n^{2})$.
+
+\emph{Step 5, the limit and the contradiction.}  A Mertens estimate for
+$\sum_{l\le y}\varphi(l)$ together with the block decomposition of the
+condition $\{n/l\}\in[u,v)$ gives
+$(K_n-W_n)/n^{2}\to266-(3/\pi^{2})(225-J)=C_0$.  Therefore
+$n^{-2}\log\widehat\Lambda_n\to C_1\log b-C_0\log a$, which is negative exactly
+when $\log b/\log a<C_0/C_1=\theta^{*}$, so $\widehat\Lambda_n\to0$.  If
+$F(a/b)=P/Q$ with integers $Q\ge1$, then $Q\widehat\Lambda_n=P\widehat U_n-Q\widehat V_n$
+is a positive integer for every $n$ and tends to $0$, a contradiction.
+\end{proof}
+
+\noindent The hypothesis $b\ge1$ admits $b=1$, where the statement reduces to
+the known integer-base theorem.  Coprimality is a restriction on the pairs
+treated and is used nowhere in the argument.  Negative bases are excluded,
+because Step~4 is a positivity argument.
+
+\begin{theorem}[the first base beyond the published
+region]\label{res:31over4}
+$F(31/4)$ is irrational, and so is $F\bigl((31/4)^{r}\bigr)$ for every integer
+$r\ge1$.  Here
+\[
+ \frac{\log4}{\log31}=0.4036981731641997\ldots<\frac{81}{200}<\theta^{*},
+\]
+while $4^{\mu}=30.483515\ldots<31<4^{\mu_{\mathrm{BV}}}=32.369642\ldots$ with
+$\mu_{\mathrm{BV}}=2\pi^{2}/(\pi^{2}-2)=2.508284761994\ldots$, so $31/4$ lies
+outside the region $\log b/\log a<1/2-1/\pi^{2}=0.3986788163576622\ldots$ of
+\cite[Thm.~2, p.~177]{bv1994} and inside the region of
+Theorem~\ref{res:region}.
+\end{theorem}
+
+\begin{proof}
+The comparison $\log4/\log31<81/200$ is the integer certificate
+$4^{200}<31^{81}$, checked as
+\lword{Erdos1049/ZudilinHeightRegion.lean}{26}{thirtyoneFour_power_certificate}{the
+power certificate}, and the membership it yields is
+\lword{Erdos1049/ZudilinHeightRegion.lean}{45}{thirtyoneFour_mem_zudilinHeightRegion}{checked};
+the ratio $\log b/\log a$ is invariant under $(a,b)\mapsto(a^{r},b^{r})$, which
+gives the
+\lword{Erdos1049/ZudilinHeightRegion.lean}{59}{thirtyoneFour_power_mem_zudilinHeightRegion}{power
+family}, and $(31^{r},4^{r})$ are coprime.  The exclusion from the earlier
+region is
+\lword{Erdos1049/ZudilinHeightRegion.lean}{91}{thirtyoneFour_outside_bundschuhVaananenHeightRegion}{checked}.
+The remaining comparison $81/200<\theta^{*}$ is proved in
+Section~\ref{sec:regionbracket}.  Theorem~\ref{res:region} then applies.
+\end{proof}
+
+\subsection{The rational bracket around \texorpdfstring{$\theta^{*}$}{theta*}}\label{sec:regionbracket}
+
+The constant $\theta^{*}$ is defined by a trigamma series, so a decidable
+membership test needs explicit rational bounds on it.  Two are used.  The
+thirteen $k=0$ terms of the trigamma differences give $J\ge776/10$, hence
+$C_0>88371/400$ and therefore $81/200<\theta^{*}$.  In the other direction
+$J\le\psi_1(1/14)<198$ gives $C_0<266$ and therefore $\theta^{*}<532/1091<1/2$.
+So
+\[
+ \frac{81}{200}<\theta^{*}<\frac12 .
+\]
+Both bounds, the definitions of $C_0$, $C_1$ and $\theta^{*}$ from the
+trigamma series, the membership of $31/4$ and of every power, and the exclusion
+of $3/2$ are checked by the Lean kernel in the module
+\texttt{RationalBaseContour}, which this release carries in its
+external-verification cut.  The Lean library indexed in
+Appendix~\ref{app:index} does not carry that module.  The declarations are \texttt{zudilinJ\_ge},
+\texttt{zudilinC0\_gt}, \texttt{eightyOne\_twoHundredths\_lt\_zudilinContour},
+\texttt{zudilinContour\_lt\_half}, \texttt{thirtyoneFour\_mem\_zudilinContourRegion},
+\texttt{thirtyoneFour\_power\_mem\_zudilinContourRegion} and
+\texttt{threeHalves\_outside\_zudilinContourRegion}.  A finite-precision
+evaluation of the trigamma series with the integral tail bound over its first
+thousand terms gives the sharper enclosure
+$0.4056830211<\theta^{*}<0.4056830214$; that enclosure is a numerical receipt
+and is not kernel-checked.
+
+\subsection{Evidence, attribution and the remaining obligation}
+
+\paragraph{Evidence decomposition.}
+Theorems~\ref{res:region} and~\ref{res:31over4} are ordinary proofs.  Their
+citation set is Zudilin's Lemma~7 in its polynomial reading, together with the
+inputs of that lemma's own proof, namely his Lemma~3, the exponent $M(a;b)$
+of~(16) proved by his Lemma~4, Heine's transform as his Lemma~5, and the
+identity~(9)--(11) \cite{zudilin2004}.  Everything else in the outline above is
+proved here: the nonrationality of $F$, the transfer of Lemma~7 to explicit
+polynomials, the degree computation, positivity, the Archimedean size estimate,
+and the limit $(K_n-W_n)/n^{2}\to C_0$.  That last limit is the content of the
+source's Lemmas~1 and~2, and the elementary proof given above replaces them, so
+they are not part of the citation set.  Kernel-checked are the finite height
+comparisons of Theorem~\ref{res:31over4} in this library and the rational
+bracket of Section~\ref{sec:regionbracket} in the external-verification cut.
+Checked by exact computation are the reconstructions of
+$U_n$ and $V_n$ and of every degree and exponent claim for $n\le4$, together
+with the numerical values of $J$, $C_0$ and $\theta^{*}$; those are
+computational receipts.  No part of
+Theorem~\ref{res:region} is a Lean theorem.
+
+\paragraph{Attribution.}
+Bundschuh and V\"a\"an\"anen proved the irrationality of this value on the
+region $\log b/\log a<1/2-1/\pi^{2}=0.3986788163576622\ldots$
+\cite[Thm.~2, p.~177; hypotheses pp.~175--176]{bv1994}, and every base of
+Theorem~\ref{res:region} with $b\le3$ is already theirs.  Duverney proved an
+independent and strictly smaller region for the same series
+\cite[Th\'eor\`eme~2, p.~174]{duverney1996}.  Zudilin announced a rational-base
+extension of his generalized $q$-logarithm results under an assumption
+$\log|r|>c\log|s|$ for a computable $c>0$, without computing a value
+\cite{zudilin2016}.  Zudilin's 2004 paper supplies the forms and the exponent
+$\mu$ under the standing hypothesis $p=1/q\in\Z\setminus\{0,\pm1\}$, and it
+states no rational-base result \cite[Sec.~2, p.~154; Thm.~1]{zudilin2004}.  The
+contribution here is the explicit constant $c=\mu$ for $F$ itself, the region
+that constant defines, and its first new base.
+
+\paragraph{The exact remaining obligation.}
+Theorem~\ref{res:region} settles no base with $\log b/\log a\ge\theta^{*}$, and
+in particular settles nothing at $3/2$, whose parameter is
+$\log2/\log3=0.6309297535714574\ldots$, a gap of $0.2252467\ldots$ above
+$\theta^{*}$.  Enlarging the region by this proof requires a smaller integer-base
+exponent bound carried by forms with the $\Z[p]$-integrality of Lemma~7 type and
+with base-uniform size; a bound $2.4234$ would give $0.4126$ and would admit
+$29/4$.  Formalising the theorem requires Lemma~7 and its inputs, the
+identity~(9)--(11), the five elementary steps above, and the limit passage in
+Step~5.  None of those is formalised here.
+
+\begin{theorem}[degree-budget cap on the mechanism]\label{res:archcap}
+Let $(U_n,V_n)\in\Z[x]^{2}$ be a sequence such that, for constants
+$\sigma,\delta>0$ and $h\ge0$ independent of $n$ and of the base,
+\begin{enumerate}
+\item $\Lambda_n(x):=U_n(x)F(x)-V_n(x)\ne0$ for every real $x>1$;
+\item $\deg U_n,\deg V_n\le\delta n^{2}(1+o(1))$;
+\item $\log\max\bigl(H(U_n),H(V_n)\bigr)\le hn^{2}(1+o(1))$, where $H(P)$ is the
+largest absolute value of a coefficient of $P$;
+\item $\log|\Lambda_n(x)|=-\sigma n^{2}\log x\,(1+o(1))$ for every real $x>1$.
+\end{enumerate}
+Put $d_n:=\max(\deg U_n,\deg V_n)$.  Then $\sigma\le\delta$, and for every fixed
+rational base $a/b>1$,
+\[
+ \limsup_{n\to\infty}n^{-2}\log\bigl|b^{d_n}\Lambda_n(a/b)\bigr|
+ \le\delta\log b-\sigma\log(a/b).
+\]
+Consequently the homogenised forms tend to zero whenever
+$\log b/\log a<\sigma/(\sigma+\delta)$, a sufficient region whose cutoff is at
+most $1/2$.  If the actual degrees satisfy $d_n/n^{2}\to d$, then $d\ge\sigma$
+and the limit exists and equals $d\log b-\sigma\log(a/b)$; in that case the
+forms tend to zero below $\log b/\log a=\sigma/(\sigma+d)$ and their absolute
+values tend to infinity above it, so the exact-degree case has no decaying
+homogenised forms at $3/2$.
+\end{theorem}
+
+\begin{proof}[Proof, in outline]
+The displayed identity
+$n^{-2}\log|b^{d_n}\Lambda_n(a/b)|=(d_n/n^{2})\log b-\sigma\log(a/b)+o(1)$
+follows from hypotheses~(2) and~(4), and the degree bound is what makes
+$b^{d_n}U_n(a/b)$ and $b^{d_n}V_n(a/b)$ integers.  For $\sigma\le\delta$, fix an
+integer $p\ge2$, write $q_n=|U_n(p)|$ and $p_n=\operatorname{sign}(U_n(p))V_n(p)$;
+hypotheses~(2) and~(3) give $q_n=e^{(h+\delta\log p)n^{2}(1+o(1))}$, and
+hypothesis~(4) makes $|q_nF(p)-p_n|=e^{-\sigma n^{2}\log p\,(1+o(1))}$ two-sided.
+A standard minimal-$n$ argument then bounds the irrationality exponent of $F(p)$
+by $1+(h+\delta\log p)/(\sigma\log p)$.  Since $F(p)$ is irrational for every
+integer $p\ge2$~\cite{erdos1948,borwein1991}, Dirichlet gives
+$\mu(F(p))\ge2$, so $(\sigma-\delta)\log p\le h$ for every such $p$; the three
+constants do not depend on $p$, so letting $p\to\infty$ gives $\sigma\le\delta$.
+The exact-degree statement is the same argument run with $d+\varepsilon$ in
+place of $\delta$ for every $\varepsilon>0$.
+\end{proof}
+
+\noindent Hypothesis~(3) is essential and was absent from an earlier form of
+this statement: a bound on $\deg U_n$ alone controls $|U_n(p)|$ only through
+$H(U_n)$.  At the boundary $\log b/\log a=\sigma/(\sigma+d)$ the normalised
+logarithm is zero and these hypotheses decide neither behaviour.  Zudilin's
+family satisfies all four hypotheses with the exact degree limit $d=C_1-C_0$
+and decay exponent $\sigma=C_0$, so for it
+$\sigma/(\sigma+d)=\theta^{*}$ and $(\sigma+d)/\sigma=\mu$: within this family
+the rational-base threshold is the reciprocal of the integer-base
+irrationality-exponent bound.  Theorem~\ref{res:archcap} constrains families
+satisfying its hypotheses and does not exclude every possible Pad\'e
+construction.
+
+\paragraph{The region, explicitly.}
+Among coprime $a/b$ with $a\le60$ the region of Theorem~\ref{res:region} has
+$137$ members, of which $78$ are non-integral.  The tightest members are $53/5$,
+at margin $0.000313$ below $\theta^{*}$, and $31/4$, at margin $0.001985$; the
+closest miss is $52/5$ at $\theta=0.4073243836\ldots$, short by $0.001641$.  The
+bases new relative to \cite{bv1994} are those in the strip
+$s^{\mu}<r<s^{\mu_{\mathrm{BV}}}$, which is empty for $s=2$ and $s=3$, is
+$\{31\}$ for $s=4$, and is $\{53,54,56\}$ for $s=5$.  The strip is infinite:
+its width $s^{\mu_{\mathrm{BV}}}-s^{\mu}$ eventually exceeds $s$, so for every
+large enough denominator it contains an integer congruent to $1$ modulo $s$.
+Hence $31/4$ is the new base of least denominator and least numerator.
+
+\paragraph{The direction is optimal in its box.}
+Over the $37{,}533$ primitive directions on Zudilin's cone with all entries at
+most $30$, the quantity $\theta^{*}(\mathrm{dir})=C_0/C_1$ computed from his
+(25) and (26) is maximised by $(14,12,14;27)$ and its group image
+$(15,12,13;26)$, both at $0.4056830213840605\ldots$; the next value is
+$0.4056394327738419\ldots$, at $(16,13,14;28)$.  Larger boxes were not scanned,
+so this is a search result over that box and not a proof of optimality over the
+whole cone.
 
 \section{The sharp $41/65$ certificate}\label{sec:sharp}
 
@@ -502,6 +842,59 @@ Lean propositions.  Their role is exclusion: scalar content and the forced
 first-order border do not supply enough charge.  Higher residual valuations,
 determinant cancellation, a different integral model, and irrationality of
 $F(3/2)$ remain open.
+
+\subsection{The sharp $q$-order of the normalised Hankel
+determinant}\label{sec:hankel-order}
+
+The charge comparison of Corollary~\ref{res:sharpgaps} is a statement about how
+much denominator the Hankel determinant can shed.  How much it actually sheds
+is settled by the following exact order.
+
+\begin{theorem}[sharp all-rank $q$-order and leading
+coefficient]\label{res:zudilin-sharp-qorder}
+For every rank $N$, the normalised Hankel determinant $V_N^{*}$ of
+\cite[Sec.~4]{zudilin2016}, evaluated at $x=z=1$, has
+\[
+ \operatorname{ord}_q V_N^{*}=\frac{N(N-1)(2N-1)}{6},
+ \qquad
+ \text{leading coefficient}\quad\frac{(N!)^{2}(N+1)!}{2^{N}} .
+\]
+\end{theorem}
+
+\noindent The source proves the inequality
+$\operatorname{ord}_q V_N^{*}\ge N(N-1)(2N-1)/6$ and uses it as an upper bound
+on $|V_N^{*}|$ \cite[Sec.~4]{zudilin2016}.  Equality is the statement that no
+further cancellation is available inside the determinant, so the hope of a
+hidden cubic decay there is closed.
+
+\paragraph{Evidence decomposition.}
+The proof of Theorem~\ref{res:zudilin-sharp-qorder} is ordinary mathematics: an
+all-depth filtered reciprocal-state argument identifies the coefficient of the
+minimal monomial in each transformed row, and the row product is then assembled.
+Three parts of it are kernel-checked in this library.  The all-depth
+associated-graded recurrence is
+\lword{Erdos1049/AdelicHeightBridge.lean}{200}{hankelAssociatedCoeff_eq_reciprocal}{checked},
+the initial monomial of transformed row $1$ in every column, of order exactly
+$l+1$ and coefficient exactly $-6$, is
+\lword{Erdos1049/AdelicHeightBridge.lean}{1422}{zudilinTransformedNormalizedMoment_one_initialMonomial}{checked},
+and the two closed forms $6\operatorname{ord}=N(N-1)(2N-1)$ and
+$2^{N}\mathrm{lc}=(N!)^{2}(N+1)!$ are assembled in
+\lword{Erdos1049/AdelicHeightBridge.lean}{1753}{zudilinSharpHankelOrderAndCoeff_algebraicAssembly}{one
+checked theorem}.  The initial-monomial theorem for rows $j\ge2$ is outside this
+library; row $j=2$, with initial monomial $18q^{2l+3}$, is checked in a module
+of the external-verification cut, and rows $j\ge3$ are open, so the Lean
+identification of $V_N^{*}$ itself with the assembled leading matrix stays
+conditional on a row hypothesis.  Independently of the proof, the order and the
+leading coefficient were computed exactly for $1\le N\le7$, giving orders
+$0,1,5,14,30,55,91$ and leading coefficients
+$1,6,108,4320,324000,40824000,8001504000$, each matching the closed forms.
+
+\paragraph{Attribution and remaining obligation.}
+The antecedent is the inequality of \cite[Sec.~4]{zudilin2016}; the equality and
+the leading coefficient are proved here.  The remaining obligation is the
+initial-monomial theorem for every row $j\ge3$, which would discharge the row
+hypothesis and make the Lean statement unconditional.  Nothing in this
+subsection decides the arithmetic nature of $F(3/2)$.
 
 \section{Integer scalar content is neutral}\label{sec:primitive}
 
@@ -767,9 +1160,9 @@ representation.  It checks Proposition~3.6 under the displayed coprimality
 assumptions; it does not certify the later analytic deductions or
 Proposition~8.6.
 
-The methods that reduce denominators at integer bases---the factorial-coset
+The methods that reduce denominators at integer bases, the factorial-coset
 quotients of Rhin and Viola~\cite{rhinviola1996} and the order-twelve group and
-cyclotomic divisor of Zudilin~\cite{zudilin2004}---produce their gain as
+cyclotomic divisor of Zudilin~\cite{zudilin2004}, produce their gain as
 cyclotomic or factorial factors of the coefficient polynomials.
 Proposition~\ref{res:cyclounit} says that transporting such a factor through the
 homogenisation at $(3,2)$ contributes no power of $2$ and no power of $3$,
@@ -1288,9 +1681,13 @@ Consider the rational-height region
  \frac{\log b}{\log a}<\frac{81}{200}
  \qquad(a>b>0).
 \]
-No bibliographic source for an analytic irrationality theorem at this cutoff is
-asserted here.  The Lean module instead treats the displayed inequality as a
-definition and proves elementary memberships and exclusions.  In particular,
+The rational number $81/200$ is not itself a threshold with an analytic theorem
+attached to it.  It is the lower half of the rational bracket
+$81/200<\theta^{*}<1/2$ of Section~\ref{sec:regionbracket} around the derived
+constant of Theorem~\ref{res:region}, and its role is to make membership of the
+region of that theorem decidable by an integer comparison.  The Lean module of
+this library treats the displayed inequality as a definition and proves
+elementary memberships and exclusions.  In particular,
 \[
  \frac25
  <\frac{\log4}{\log31}
@@ -1309,8 +1706,10 @@ The same base lies strictly outside the earlier
 Bundschuh--V\"a\"an\"anen region
 (\lword{Erdos1049/ZudilinHeightRegion.lean}{91}{thirtyoneFour_outside_bundschuhVaananenHeightRegion}{checked}),
 so the $81/200$ inequality defines a strict set-theoretic enlargement of the
-earlier recorded logarithmic region.  Membership alone supplies no
-irrationality theorem for $31/4$.
+earlier recorded logarithmic region.  Combined with the bracket
+$81/200<\theta^{*}$, these memberships are exactly the finite input to
+Theorem~\ref{res:31over4}, which is where the irrationality of $F(31/4)$ and of
+every $F\bigl((31/4)^{r}\bigr)$ is proved.
 
 It still does not approach $3/2$.  The exact comparison
 \[
@@ -1727,6 +2126,13 @@ rectangular exponent model, and B\'ezout--Pl\"ucker tail collapse.  The link
 coordinates are validated against that pinned revision, so they remain correct
 as later work moves lines in the working tree.
 
+The finite arithmetic behind the rational bracket
+$81/200<\theta^{*}<1/2$ of Section~\ref{sec:regionbracket} lives in a further
+module, \texttt{RationalBaseContour}, which this release carries in its
+external-verification cut and not in the library indexed above.  Its
+declarations are named in Section~\ref{sec:regionbracket} and are not linked
+here, because no link coordinate for them exists at the pinned revision.
+
 % The linked source manifest is retained in the authored TeX for automated
 % validation, and kept outside the printed note.
 \iffalse
@@ -1849,6 +2255,20 @@ example.
   The remark that the results extend to non-integer \(p=r/s\), \(|p|>1\), under
   an assumption \(\log|r|>c\log|s|\) for a computable \(c>0\), is at the end of
   the introduction; no value of \(c\) is computed there.
+\bibitem{duverney1996} D.~Duverney,
+  \href{https://numdam.org/item/JTNB_1996__8_1_173_0.pdf}{\emph{\`A propos de la
+  s\'erie $\sum_{n\ge1}x^{n}/(q^{n}-1)$}},
+  J. Th\'eor. Nombres Bordeaux \textbf{8} (1996), no.~1, 173--181.
+  Th\'eor\`eme~2 on p.~174 gives the rational-base region
+  $\log|s|/\log|r|<\frac13(1-3/\pi^{2})=0.2320\ldots$ for this series;
+  Th\'eor\`eme~1, for a general numerator, is weaker.
+\bibitem{matalaaho2006} T.~Matala-aho, K.~V\"a\"an\"anen and W.~Zudilin,
+  \href{https://doi.org/10.1090/S0025-5718-05-01812-0}{\emph{New irrationality
+  measures for \(q\)-logarithms}}, Math. Comp. \textbf{75} (2006), no.~254,
+  879--889, doi:10.1090/S0025-5718-05-01812-0.  The hypothesis
+  \(p=1/q\in\Z\setminus\{0,\pm1\}\) is carried in the abstract on p.~879 and in
+  both theorem statements on p.~880, where the authors also record that their
+  methods do not sharpen the \(q\)-harmonic case of~\cite{zudilin2004}.
 \bibitem{adamczewskibell2013} B.~Adamczewski and J.~P. Bell,
   \href{https://arxiv.org/abs/1303.2019}{\emph{A problem about Mahler
   functions}}, Ann. Sc. Norm. Super. Pisa Cl. Sci. \textbf{17} (2017), no.~4,

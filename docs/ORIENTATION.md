@@ -97,6 +97,7 @@ The prior-art record, not this table, supplies antecedents.
 | proved here | Lean theorem in the committed formal-source checkpoint; no novelty assertion is implied |
 | formalised here | Known mathematics represented and checked in Lean |
 | unconditional progress | Genuine theorem that does not settle the open problem |
+| ordinary proof here | Theorem proved in the note by ordinary mathematics; no Lean declaration proves its endpoint, and any kernel-checked ingredient is named in the note rather than listed here |
 | conditional reduction | Exact implication whose remaining hypothesis is open |
 | verified finite instance | Kernel-checked computation at a bounded range |
 | cited only | External theorem used for positioning, not formalised |
@@ -186,7 +187,7 @@ order, never a significance proxy.
 The descriptor exposes the authored flagship spine, broader gateway cohort,
 and lower-signal dispositions with their reasons and open obligations.
 
-Flagship families: 7; gateway cohort: 15; lower-signal families: 15;
+Flagship families: 7; gateway cohort: 15; lower-signal families: 23;
 these are visibility tiers, not significance rankings.
 Use `python3 scripts/query_corpus.py --publication-architecture` for the
 selection decisions and `--publication-family <family_id>` for each full

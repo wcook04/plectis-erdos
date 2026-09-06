@@ -98,14 +98,117 @@ The following hold with no irrationality hypothesis. They are the results a
 specialist should know before reading further; each is stated at the scale at
 which it is actually proved.
 
-\begin{thm}[Denominator exclusion --- the headline unconditional fact]
+\begin{thm}[Sharp positive rank-one floor]
+\label{thm:rankonefloor}
+Put $\Theta_2=\sum_{d\ge1}\mu(d)/(2^d-1)^2$, which equals $S-1/2$ by the
+convolution identity $\ph=\mu*\mathrm{id}$ recorded by Steve Fan in his
+comment of 16 May 2026 on \texttt{erdosproblems.com/249}.  For $e\ge1$ and
+$Y\ge4$ set
+\[
+  Q(e,Y)=\frac{\bigl(\sum_{d=1}^{Y}\mu(d)/(2^d-1)^{e+2}\bigr)^2}
+               {\sum_{d=1}^{Y}\mu(d)/(2^d-1)^{2e+2}} .
+\]
+Then $Q(e,Y)\ge Q(1,5)$ for every admissible pair with equality exactly at
+$(1,5)$; $Q(e,Y)-\Theta_2>21/320$ for every admissible pair; $1/16$ is a valid
+uniform floor and $1/15$ fails already at $(1,5)$; every nonempty finite
+positive weighted average of admissible quotients keeps the same strict
+$21/320$ separation; and $|q\Theta_2-p|>21q/320$ whenever $Q(e,Y)=p/q$ with
+$q\ge1$.  The complete positive rank-one and positive direct-sum
+approximation mechanism is therefore closed with an explicit constant.  Signed
+cancellation and genuinely coupled higher-rank approximants lie outside every
+statement here.  Novelty of the family is unassessed.
+\coord{mobius-mersenne} \scale{uniform} \ev{Lean}
+\lean{rankOneSubrankQuotient\_eq\_one\_five\_iff}{ErdosProblems/Erdos249/RankOneSharpFloor.lean:534}
+\lean{rankOneSubrankQuotient\_sub\_theta\_two\_gt\_twentyOne\_div\_threeTwenty}{ErdosProblems/Erdos249/RankOneSharpFloor.lean:624}
+\lean{positive\_direct\_sum\_sub\_theta\_two\_gt\_twentyOne\_div\_threeTwenty}{ErdosProblems/Erdos249/RankOneSharpFloor.lean:655}
+\lean{primitive\_form\_abs\_gt\_twentyOne\_div\_threeTwenty}{ErdosProblems/Erdos249/RankOneSharpFloor.lean:693}
+\end{thm}
+
+\begin{thm}[The remaining analytic obligation, stated exactly]
+\label{thm:normgap}
+Write $D_{h,N,L}=\sum_{j<L}(\ph(N+h+1+j)-\ph(N+1+j))2^{L-1-j}$, which is
+$\mathtt{windowDiscrepancy}(h,N,L)$.  Suppose that for every $h>0$ and every
+$X_0$ there are $X\ge\max(X_0,1)$ and $L$ with $16(2X+h+L+2)\le2^L$ and
+\[
+  \Bigl\|\sum_{N=X}^{2X-1}e^{2\pi iD_{h,N,L}/2^L}\Bigr\|\le\tfrac{21}{25}X .
+\]
+Then $S$ is irrational.  The chain is checked with no remaining gap: the
+complex norm saving dominates the real-part saving, a constant-saving
+first-harmonic bound on one dyadic block forces a certified non-integrality
+witness inside that block, and a cofinal supply of such witnesses is
+irrationality.  The hypothesis is the whole remaining obligation and is one
+exponential-sum cancellation bound at the resolution $2^L$ that
+$\mathtt{certifiedKill\_depth\_floor}$ forces.  Section~\ref{sec:wall} shows
+this hypothesis is inequivalent to $\mathrm{Irrational}(S)$, so a proof of it
+is strictly stronger than the target.
+\coord{binary-digit} \scale{cofinal} \ev{Lean} for the implication,
+\ev{Open} for the hypothesis.
+\lean{Erdos249257.DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75}
+\lean{Erdos249257.exists\_certifiedKill\_of\_first\_harmonic\_norm\_gap}{FirstHarmonicPivot.lean:53}
+\lean{Erdos249257.irrational\_totient\_series\_of\_first\_harmonic\_norm\_gap}{FirstHarmonicPivot.lean:83}
+\end{thm}
+
+\begin{thm}[Certified continued-fraction denominator floor]
+\label{thm:cfdenom}
+Bracket $S$ by exact integers $\mathrm{lo}\le2^BS\le\mathrm{hi}$ at
+$B=80\,000$ bits and run the interval continued fraction, emitting a partial
+quotient only when both endpoints agree on it.  This forces $23\,438$ partial
+quotients, and if $S=a/q$ in lowest terms with $q>0$ then $q\ge2^{39989}$ and
+$q>10^{12038}$.  The two power bounds are checked separately against the
+integer denominator of the last certified convergent.  The bit length
+$39\,990$ and the decimal digit count $12\,039$ of that denominator are
+lengths rather than exponents; printing them as exponents overstates the
+result by one in each base, and earlier corpus prose did exactly that.  The
+preceding convergent is separated from the enclosure and the arithmetic
+reproduces the known expansions of $e$ and $\pi$.  The largest partial
+quotient in the prefix is $29\,403$ at index $15\,470$, so the prefix shows
+no anomalous rational approach.  This is an exact finite computation with no
+floating-point decision anywhere in it and with no Lean proof; it is a
+strictly larger floor than Theorem~\ref{thm:denom} and a strictly weaker
+evidence band.
+\coord{continued-fraction} \scale{bounded} \ev{Cert}
+Verifier \codeid{formal_math/probes/certified_continued_fraction.py}, receipt
+\codeid{state/formal_math/probes/erdos249_certified_cf_receipt.json}.
+\end{thm}
+
+\begin{thm}[Fixed-resolution observables of the totient word are irrational]
+\label{thm:residueobservable}
+Let $m\ge2$, let $f:\N\to\Z$ satisfy $f(0)=0$, and let $r<m$ satisfy
+$\gcd(r+1,m)=1$ and $f(r)\ne0$.  Then $\sum_{n}f(\ph(n)\bmod m)/2^n$ is
+irrational.  At $m=2^k$ the unit condition holds automatically at every even
+residue.  In particular $A_m=\sum_n(\ph(n)\bmod m)/2^n$ is irrational for
+every $m\ge3$, and $m\ge3$ is sharp because $A_1=0$ and $A_2=3/4$.  The proof
+supplies cofinally many two-sided isolated pulses by the Chinese remainder
+theorem with Dirichlet's theorem, converts one isolated pulse into a
+quantitative separation of $qT$ from every integer, and closes through a
+number-theory-free dyadic criterion for bounded integer coefficient sequences.
+The mechanism is the isolated-pulse argument of Erd\H{o}s 1948, and reducing
+$\ph$ modulo $m$ is what makes the pulses isolated; the prior-art audit
+located no exact antecedent for the statement.
+
+Two boundaries.  This says nothing about $S$, whose coefficients are the
+unreduced values $\ph(n)$, so the parent question stays open and stays
+distinct.  And the Lean development lives in the private authoring tree, at
+\codeid{ErdosProblems/Erdos249/ResidueClassTotientSeries.lean} with
+\codeid{irrational_totientObservable} at line 502,
+\codeid{fixed_resolution_observable_irrational} at line 544 and
+\codeid{residue_series_irrational} at line 570.  It is absent from the pinned
+formal-source checkpoint of this paper and is marked for the next formal-source
+cycle, so no link is given here and none would resolve.
+\coord{residue-observable} \scale{uniform} \ev{Lean} in the authoring tree,
+absent from this checkpoint.
+\end{thm}
+
+\begin{thm}[Denominator exclusion, the headline kernel-checked fact]
 \label{thm:denom}
 If $S \in \Q$ then its reduced denominator exceeds
 $Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \approx 7.96 \times 10^{34}$.
 Equivalently, $S \ne p$ for every $p \in \Q$ with $p.\mathrm{den} \le Q_0$.
 The bound is sharp for the method: $q = Q_0 + 1$ is the exact first failing
 denominator, exhibited as the mediant of two explicit unimodular Farey
-neighbours.
+neighbours.  This is the strongest kernel-checked size exclusion.  The
+strongest size exclusion of any band is Theorem~\ref{thm:cfdenom}, at
+$q>10^{12038}$, which carries no Lean proof.
 \coord{farey} \scale{bounded} \ev{Lean}
 \lean{Erdos249257.tsum\_totient\_div\_pow\_two\_ne\_ratCast\_of\_den\_le\_79639646646701375323355774875831053}{CertificateKernel.lean:18572}
 \lean{Erdos249257.gap\_check\_window\_1\_240\_first\_failure}{GapFareyBound.lean:225}

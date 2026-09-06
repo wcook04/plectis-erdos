@@ -8,9 +8,13 @@
 
 </div>
 
-Sylvester’s sequence satisfies $`a_{n+1}=a_n^2-a_n+1`$ and has reciprocal sum $`1`$. Erdős asked whether every increasing integer sequence with $`a_{n+1}/a_n^2\to1`$ and rational reciprocal sum satisfies this recurrence eventually. Write $`E_n`$ for the centred denominator-clearing error in Koizumi’s integer state coordinates. Our main result excludes the entire bounded-negative regime: under the exact $`C/D`$ dynamics, positivity, normalised vanishing, and an eventually bounded negative part, $`E_n=0`$ eventually, so the Sylvester recurrence holds eventually. Normalised vanishing itself yields the required strict centring after a finite shift.
+Sylvester’s sequence satisfies $`a_{n+1}=a_n^2-a_n+1`$ and has reciprocal sum $`1`$. Erdős asked whether every increasing integer sequence with $`a_{n+1}/a_n^2\to1`$ and rational reciprocal sum satisfies this recurrence eventually. The leading result of this note is an exact criterion carrying those hypotheses and no others. Write $`(C_n,D_n,E_n)`$ for the integer state of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a>, $`L_n=\operatorname{lcm}(q,a_0,\ldots,a_{n-1})`$, $`M_n=D_n/L_n`$, $`U_n=C_n/M_n`$, $`V_n=E_n/M_n`$, and $`\mathcal R`$ for the set of steps that set a new record for $`U`$, where $`q`$ is a common denominator of the reciprocal sum. Then the sequence is eventually Sylvester if and only if $`\sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)`$ is finite for some integer $`B\ge0`$, where $`f`$ is any finite nonincreasing weight with divergent integral (Theorem <a href="#res:weightedrecord" data-reference-type="ref" data-reference="res:weightedrecord">13</a>). Equation <a href="#eq:weightedgrowth" data-reference-type="eqref" data-reference="eq:weightedgrowth">[eq:weightedgrowth]</a> is an equivalent form written in the growth defect $`a_n^2/a_{n+1}-1`$.
 
-The proof has three arithmetic steps. Bounded negative errors give bounded upward increments of $`C_n`$. On a hypothetical tail with no zero error, integrality and normalised vanishing force $`C_n\to\infty`$; the tail gcd then stabilises. After reduction, the successive multipliers are pairwise coprime and each is coprime to all later numerators; a block of consecutive multiples contradicts these coprimality conditions. Finally, $`E_n=0`$ is absorbing. The same argument in summable form gives a second criterion: under the exact dynamics, positivity, the strict centred-step equation, normalised vanishing, and $`\sum_n(-E_n)_+/C_n<\infty`$, the Sylvester recurrence is recovered [the finite-negative-mass recovery theorem](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SparseResetRecovery.lean#L510). The summability hypothesis is not known for the canonical orbit. An ordinary first-crossing argument in Section <a href="#sec:lcmrecords" data-reference-type="ref" data-reference="sec:lcmrecords">10</a> gives smaller equivalent sufficient sums, restricted to LCM numerator records and allowing logarithmic discounts; their finiteness remains open as well.
+That criterion is an ordinary mathematical proof. Its finite first-crossing arithmetic is kernel-checked, in the [covered-wall charge](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/LcmRecordExcess.lean#L31) and the three lemmas beside it, and the analytic half is not formalised. The criterion settles nothing on its own, because the growth hypothesis does not supply the finiteness, and termwise convergence to zero is insufficient.
+
+Section <a href="#sec:records" data-reference-type="ref" data-reference="sec:records">5</a> carries further criteria in the record coordinates, each with its hypotheses and its evidence class. Write $`\ell(x)=\log_2\log_2\max(4,x)`$ and $`H_n=\max_{j\le n}C_j`$. Two are exact equivalences for the endpoint under arbitrary cancellation, one through the record-amplified negative error and one through unit true record increments. One is a dichotomy for the record-increment coefficient $`\Theta=\limsup_n(H_{n+1}-H_n)/\ell(H_n)`$, which is $`0`$ or strictly greater than $`1`$, so $`\Theta\le1`$ already forces the recurrence. One replaces a constant bound on the negative part by the bound $`(1-\delta)\ell(C_n)`$. One states the Lean-checked endpoint in the language of the original problem, where the Erdős–Straus quantity $`Q_n`$ is asked only for $`\limsup_nQ_n<\infty`$ in place of their $`\limsup_nQ_n\le0`$. One is an unconditional irrationality criterion at the cubic rate $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$. The last two record what the method cannot reach: the classical Ahmes criteria all decide exactly the half-space $`E_n\ge0`$ eventually, and pairwise coprimality with whole-modulus avoidance admits rises of order $`\log C_n`$.
+
+Two conditional endpoints on the state system are proved in Lean. Under the exact $`C/D`$ dynamics, positivity, normalised vanishing, and an eventually bounded negative part, $`E_n=0`$ eventually, so the Sylvester recurrence holds eventually [the bounded-negative-part theorem](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2403). Normalised vanishing itself yields the required strict centring after a finite shift. The same argument in summable form gives a second criterion: under the exact dynamics, positivity, the strict centred-step equation, normalised vanishing, and $`\sum_n(-E_n)_+/C_n<\infty`$, the Sylvester recurrence is recovered [the finite-negative-mass recovery theorem](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SparseResetRecovery.lean#L510). Neither hypothesis is known for the canonical orbit. The proof of the first has three arithmetic steps. Bounded negative errors give bounded upward increments of $`C_n`$. On a hypothetical tail with no zero error, integrality and normalised vanishing force $`C_n\to\infty`$; the tail gcd then stabilises. After reduction, the successive multipliers are pairwise coprime and each is coprime to all later numerators; a block of consecutive multiples contradicts these coprimality conditions. Finally, $`E_n=0`$ is absorbing.
 
 Several sharper exclusions explain why the remaining case is genuinely unbounded. A negative error cannot be constant, at any magnitude or scale, and cannot be periodic when $`|E_n|<a_n`$ and the drift is positive. If $`E_n\ge0`$, the state is nonincreasing and therefore eventually zero [nonnegative-error descent](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1837); the recurrence then follows from [eventual Sylvester recurrence](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1799). On a reduced recovery interval of length $`L`$, deleted old moduli satisfy the exact inequality
 ``` math
@@ -18,7 +22,9 @@ K^L\operatorname{lcm}(m_q:q\in R)^2<(K+1)^L.
 ```
 Hence fixed-length recoveries are eventually cancellation-free, although recoveries of increasing length remain possible.
 
-Koizumi’s pseudo-greedy coordinates supply normalised vanishing and a stronger centring range for the canonical Erdős orbit, but neither boundedness nor summability of its negative part. Thus any surviving orbit must have cofinally unbounded negative excursions and divergent normalised negative mass. Excluding that case is the exact open boundary, and Problem #243 remains open.
+One clause of that frontier is already published and is credited as such. That a counterexample must have negative errors infinitely often is the contrapositive of Koizumi’s Proposition 19(2) \[koizumi2025, Prop. 19(2)\], which he attributes to Badea; Koizumi and Badea assume the sign is eventually nonnegative. The theorem proved here assumes only that the negative part is eventually bounded, which admits sign changes of bounded depth at every scale, so it is a strengthening of their hypothesis rather than a new clause. The unboundedness and divergent-mass parts of the frontier have no located antecedent.
+
+Koizumi’s pseudo-greedy coordinates supply normalised vanishing and a stronger centring range for the canonical Erdős orbit, but neither boundedness nor summability of its negative part. Thus any surviving orbit must have cofinally unbounded negative excursions and divergent normalised negative mass. Excluding that case is the exact open boundary, and Problem #243 remains open
 
 <a id="sec:problem"></a>
 
@@ -44,7 +50,7 @@ See \[erdosgraham1980, p. 64\] and \[erdos1988, p. 105\]. Bloom’s catalogu
 
 #### Relation to prior work.
 
-Two published results reach the original problem under analytic hypotheses that are not assumed below. Their hypotheses are conditions on the sequence $`(a_n)`$ itself. Duverney’s is not comparable with the state-level hypotheses used here; the Erdős–Straus one, read through the dictionary of the next paragraph, is implied by nonnegativity of $`E`$, the hypothesis of Theorem <a href="#res:descent" data-reference-type="ref" data-reference="res:descent">12</a>, so that criterion already covers the descent proved below (see \[koizumi2025, Cor. 20(1) and Prop. 19(1), pp. 12–13\]). Erdős and Straus proved that if $`\lim a_n/a_{n-1}^{2}=1`$, the reciprocal sum is rational, and $`a_n`$ does not satisfy the recurrence, then
+Two published results reach the original problem under analytic hypotheses that are not assumed below. Their hypotheses are conditions on the sequence $`(a_n)`$ itself. Duverney’s is not comparable with the state-level hypotheses used here; the Erdős–Straus one, read through the dictionary of the next paragraph, is implied by nonnegativity of $`E`$, the hypothesis of Theorem <a href="#res:descent" data-reference-type="ref" data-reference="res:descent">28</a>, so that criterion already covers the descent proved below (see \[koizumi2025, Cor. 20(1) and Prop. 19(1), pp. 12–13\]). Erdős and Straus proved that if $`\lim a_n/a_{n-1}^{2}=1`$, the reciprocal sum is rational, and $`a_n`$ does not satisfy the recurrence, then
 ``` math
 \limsup_{n\to\infty}\ \frac{[a_1,\ldots,a_n]}{a_{n+1}}
  \left(\frac{a_{n+1}^{2}}{a_{n+2}}-1\right)>0,
@@ -72,11 +78,11 @@ a_n=\frac{d_n-e_n}{c_n}+1,\qquad
 ```
 and the proof of that lemma also gives $`c_{n+1}=a_nc_n-d_n`$. Under the dictionary $`(C_n,D_n,E_n)=(c_n,d_n,e_n)`$ these are exactly the objects of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a>: the first relation is the centring map $`\operatorname{ctr}`$ rewritten as $`e_n=d_n-(a_n-1)c_n`$, the second is Proposition <a href="#res:update" data-reference-type="ref" data-reference="res:update">2</a>, the third is the denominator update, and the fourth is the tail update. The lower-case $`e_n`$ of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a> is $`-E_n`$, so it is the negative of Koizumi’s $`e_n`$ at an index where the centred state is negative.
 
-His Theorem 16  \[koizumi2025, p. 11\] shows that his Conjecture 6 — that for a positive rational $`r`$ whose gap sequence satisfies $`\varepsilon_n\to0`$ one has $`\varepsilon_n=0`$ for all large $`n`$ — is equivalent to an affirmative answer to the question of Erdős and Graham recorded as his Question 5, which is Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> above. Two of the implications proved below have prior art in these canonical coordinates: his Lemma 13, that $`\varepsilon_n=0`$ forces $`\varepsilon_{n+1}=0`$, is the absorption of Theorem <a href="#res:absorb" data-reference-type="ref" data-reference="res:absorb">11</a>, and his Proposition 19(2), that $`\varepsilon_n\ge0`$ for all large $`n`$ forces $`\varepsilon_n=0`$ for all large $`n`$, is the descent of Theorem <a href="#res:descent" data-reference-type="ref" data-reference="res:descent">12</a>. These appear in canonical coordinates in \[koizumi2025, Lemma 13, p. 9; Prop. 19(2), p. 12\].
+His Theorem 16  \[koizumi2025, p. 11\] shows that his Conjecture 6 — that for a positive rational $`r`$ whose gap sequence satisfies $`\varepsilon_n\to0`$ one has $`\varepsilon_n=0`$ for all large $`n`$ — is equivalent to an affirmative answer to the question of Erdős and Graham recorded as his Question 5, which is Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> above. Two of the implications proved below have prior art in these canonical coordinates: his Lemma 13, that $`\varepsilon_n=0`$ forces $`\varepsilon_{n+1}=0`$, is the absorption of Theorem <a href="#res:absorb" data-reference-type="ref" data-reference="res:absorb">11</a>, and his Proposition 19(2), that $`\varepsilon_n\ge0`$ for all large $`n`$ forces $`\varepsilon_n=0`$ for all large $`n`$, is the descent of Theorem <a href="#res:descent" data-reference-type="ref" data-reference="res:descent">28</a>. These appear in canonical coordinates in \[koizumi2025, Lemma 13, p. 9; Prop. 19(2), p. 12\].
 
 The growth hypothesis in Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> is calibrated by two facts about Sylvester’s sequence. It satisfies $`a_n\approx c_0^{2^{n}}`$ with $`c_0=1.2640847\ldots`$, and shifting it further produces sequences with $`a_n\approx C^{2^{n}}`$ for arbitrarily large $`C`$ whose reciprocals still sum to a rational number \[kovactao2024, arXiv v4, p. 2\]. The classical sufficient condition for irrationality, $`\lim_n a_n^{1/2^{n}}=\infty`$, is therefore sharp. Kovač and Tao identify that condition as folklore  \[kovactao2024, arXiv v4, p. 2\]; they attribute the sharpness observation to Erdős (1975). A sequence with $`a_n/a_{n-1}^{2}\to1`$ has $`a_n^{1/2^{n}}`$ convergent, so that criterion says nothing about the sequences of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, and rationality is genuinely possible there. Sylvester’s sequence is `A000058` in the OEIS and its shifts `A129871`. For the recent literature on irrationality of Ahmes series we refer to Kovač and Tao \[kovactao2024\], who resolve several problems of Erdős and Graham drawn from the same two sources cited above, and whose introduction gives a sample of the intermediate work, including Sándor (1984) and Badea (1987). They do not treat Problem #243; the rigidity conclusion asked for there is not among their results.
 
-The *Formal Conjectures* collection contains a mathematically equivalent unproved declaration, up to its zero-based indexing  \[formalconjectures243\]. Its summand is $`\mathbb{Q}`$-valued, so Lean’s `Summable` hypothesis asserts the existence of a sum in $`\mathbb{Q}`$; the finite indexing shift changes that sum only by a rational prefix. The declaration therefore does encode the rationality premise, but its proof is `sorry`. Its role here is statement-level prior art; it supplies no proof authority, and the development below is independent of it. The machine-checked results concern the state system: they exclude constant and periodic negative magnitudes, the bounded-rise barrier of Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">18</a>, and the two conditional endpoints (Theorems <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a> and <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">25</a>), each stated with the exact hypotheses that separate it from Problem #243.
+The *Formal Conjectures* collection contains a mathematically equivalent unproved declaration, up to its zero-based indexing  \[formalconjectures243\]. Its summand is $`\mathbb{Q}`$-valued, so Lean’s `Summable` hypothesis asserts the existence of a sum in $`\mathbb{Q}`$; the finite indexing shift changes that sum only by a rational prefix. The declaration therefore does encode the rationality premise, but its proof is `sorry`. Its role here is statement-level prior art; it supplies no proof authority, and the development below is independent of it. The machine-checked results concern the state system: they exclude constant and periodic negative magnitudes, the bounded-rise barrier of Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">34</a>, and the two conditional endpoints (Theorems <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> and <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">41</a>), each stated with the exact hypotheses that separate it from Problem #243.
 
 The hypothesis is asymptotic and the conclusion is exact, so the argument must convert an analytic rate into an integer obstruction. The conversion used here is the classical one: clear denominators along the sequence, so that rationality makes a tail integral, and then centre that integer at the value it would take on Sylvester’s sequence. What remains is a single integer error $`E`$, and the whole question is whether $`E`$ can avoid vanishing.
 
@@ -84,21 +90,25 @@ The hypothesis is asymptotic and the conclusion is exact, so the argument must c
 
 *Companion system context.* The [claim and trust boundary](../../../claim-faithful-publication-systems-paper.pdf#systems-trust), [cold-clone route to proof authority](../../../cold-clone-to-proof-receipt.pdf#cold-clone-authority), and [public contribution protocol](../../../open-source-mathematics-strategy.pdf#strategy-protocol) are described in sibling papers.
 
-> **Strongest result.** Under the exact integer dynamics, positivity, normalised vanishing, and an eventually bounded negative part, the centred error $`E_n`$ is eventually zero. The original sequence therefore satisfies the Sylvester recurrence from some point onward (Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a>).
+> **Strongest result.** Under the hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> and no others, the sequence is eventually Sylvester if and only if the weighted record-excess sum $`\sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)`$ is finite for some integer $`B\ge0`$ (Theorem <a href="#res:weightedrecord" data-reference-type="ref" data-reference="res:weightedrecord">13</a>). This is an ordinary proof whose finite first-crossing arithmetic is kernel-checked and whose analytic half is not. The hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> do not supply that finiteness, so the criterion is an exact reformulation of the problem rather than a solution of it.
 >
-> **Second endpoint.** The same conclusion holds when the normalised negative mass $`\sum_n(-E_n)_+/C_n`$ is finite, provided the strict centred-step equation is available (Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">25</a>).
+> **Strongest Lean-checked result.** Under the exact integer dynamics, positivity, normalised vanishing, and an eventually bounded negative part, the centred error $`E_n`$ is eventually zero. The original sequence therefore satisfies the Sylvester recurrence from some point onward (Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a>). Hypothesis (5), the bound on the negative part, is supplied by nothing in this note.
 >
-> **What remains open.** Koizumi’s coordinates provide normalised vanishing for the canonical orbit, but they do not provide either bounded negative excursions or finite normalised negative mass. Any surviving counterexample must therefore have cofinally unbounded negative excursions and divergent normalised negative mass (Proposition <a href="#res:frontier" data-reference-type="ref" data-reference="res:frontier">29</a>).
+> **Second endpoint.** The same conclusion holds when the normalised negative mass $`\sum_n(-E_n)_+/C_n`$ is finite, provided the strict centred-step equation is available (Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">41</a>).
 >
-> **Proof spine.** Bounded negative errors control the rise of the integer tail state. A gcd stabilisation reduces the orbit to pairwise-coprime fresh moduli, and a block of consecutive multiples then gives the contradiction. The finite-mass argument replaces the uniform bound by a summable recovery estimate.
+> **Strongest exclusion of an unconditional kind.** At the cubic rate $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$ the reciprocal sum is irrational (Theorem <a href="#res:cubicrate" data-reference-type="ref" data-reference="res:cubicrate">25</a>). This assumes no rationality and no state hypothesis, and it lies outside the regime of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> only through its rate.
+>
+> **What remains open.** Koizumi’s coordinates provide normalised vanishing for the canonical orbit, but they do not provide either bounded negative excursions or finite normalised negative mass. Any surviving counterexample must therefore have cofinally unbounded negative excursions and divergent normalised negative mass (Proposition <a href="#res:frontier" data-reference-type="ref" data-reference="res:frontier">43</a>), record increments strictly above the log-log scale (Theorem <a href="#res:recorddichotomy" data-reference-type="ref" data-reference="res:recorddichotomy">14</a>), and unbounded record-amplified error (Theorem <a href="#res:recordamplified" data-reference-type="ref" data-reference="res:recordamplified">16</a>).
+>
+> **Proof spine.** The record criterion charges each first crossing of a CRT-selected height to the record excess at the step that crosses it, and the crossing heights carry a divergent weight. For the state-system endpoints, bounded negative errors control the rise of the integer tail state; a gcd stabilisation reduces the orbit to pairwise-coprime fresh moduli, and a block of consecutive multiples then gives the contradiction. The finite-mass argument replaces the uniform bound by a summable recovery estimate.
 
-The remaining exclusions sharpen this boundary. By Theorem <a href="#res:absorb" data-reference-type="ref" data-reference="res:absorb">11</a>, a counterexample has $`E_n\ne0`$ for every large $`n`$. By Theorem <a href="#res:descent" data-reference-type="ref" data-reference="res:descent">12</a> it cannot have $`E`$ eventually nonnegative. If its tail is all negative, Theorems <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">14</a> and <a href="#res:periodic" data-reference-type="ref" data-reference="res:periodic">15</a> exclude, respectively, constant magnitude and periodic magnitude in the stated regime $`e_n<a_n`$ with positive drift; they are not a classification of a mixed-sign tail. Under normalised vanishing, Theorems <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a> and <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">25</a> show that the negative part is neither bounded nor of finite normalised mass. What survives is stated in Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">11</a>.
+The remaining exclusions sharpen this boundary. By Theorem <a href="#res:absorb" data-reference-type="ref" data-reference="res:absorb">11</a>, a counterexample has $`E_n\ne0`$ for every large $`n`$. By Theorem <a href="#res:descent" data-reference-type="ref" data-reference="res:descent">28</a> it cannot have $`E`$ eventually nonnegative. If its tail is all negative, Theorems <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">30</a> and <a href="#res:periodic" data-reference-type="ref" data-reference="res:periodic">31</a> exclude, respectively, constant magnitude and periodic magnitude in the stated regime $`e_n<a_n`$ with positive drift; they are not a classification of a mixed-sign tail. Under normalised vanishing, Theorems <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> and <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">41</a> show that the negative part is neither bounded nor of finite normalised mass. What survives is stated in Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">12</a>.
 
 <a id="structure"></a>
 
 ## Structure
 
-Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a> sets up the state system, and Section <a href="#sec:defect" data-reference-type="ref" data-reference="sec:defect">3</a> proves the defect identity, from which eventual vanishing of $`E`$ forces the Sylvester recurrence and a single vanishing error propagates. Section <a href="#sec:descent" data-reference-type="ref" data-reference="sec:descent">4</a> disposes of the case $`E\ge0`$ in three lines. The rest of the note is the case $`E<0`$, in four widening steps: constant magnitude (Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">5</a>), periodic magnitude (Section <a href="#sec:periodic" data-reference-type="ref" data-reference="sec:periodic">6</a>), bounded magnitude via a coprimality barrier (Sections <a href="#sec:barrier" data-reference-type="ref" data-reference="sec:barrier">7</a> and <a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">8</a>), finite normalised negative mass (Section <a href="#sec:mass" data-reference-type="ref" data-reference="sec:mass">9</a>), and what is left (Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">11</a>). These sections contain the new content; a reader who wants only the strongest statements should read Sections <a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">8</a> and <a href="#sec:mass" data-reference-type="ref" data-reference="sec:mass">9</a>, and then Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">11</a>. Appendix <a href="#app:index" data-reference-type="ref" data-reference="app:index">12</a> is a guide to the formal sources, and Appendix <a href="#app:residue" data-reference-type="ref" data-reference="app:residue">13</a> records an exact residue reduction that an earlier finite search used. Linked phrases open the corresponding Lean declaration at the pinned source revision 4ab50e144847.
+Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a> sets up the state system, and Section <a href="#sec:defect" data-reference-type="ref" data-reference="sec:defect">3</a> proves the defect identity, from which eventual vanishing of $`E`$ forces the Sylvester recurrence and a single vanishing error propagates. Section <a href="#sec:lcmrecords" data-reference-type="ref" data-reference="sec:lcmrecords">4</a> then proves the exact record-excess criterion, and Section <a href="#sec:records" data-reference-type="ref" data-reference="sec:records">5</a> states the further criteria in the record coordinates. Section <a href="#sec:descent" data-reference-type="ref" data-reference="sec:descent">6</a> disposes of the case $`E\ge0`$ in three lines. The rest of the note is the case $`E<0`$, in four widening steps: constant magnitude (Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">7</a>), periodic magnitude (Section <a href="#sec:periodic" data-reference-type="ref" data-reference="sec:periodic">8</a>), bounded magnitude via a coprimality barrier (Sections <a href="#sec:barrier" data-reference-type="ref" data-reference="sec:barrier">9</a> and <a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">10</a>), finite normalised negative mass (Section <a href="#sec:mass" data-reference-type="ref" data-reference="sec:mass">11</a>), and what is left (Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">12</a>). These sections contain the new content; a reader who wants only the strongest statements should read Sections <a href="#sec:lcmrecords" data-reference-type="ref" data-reference="sec:lcmrecords">4</a> and <a href="#sec:records" data-reference-type="ref" data-reference="sec:records">5</a>, and then Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">12</a>. Appendix <a href="#app:index" data-reference-type="ref" data-reference="app:index">13</a> is a guide to the formal sources, and Appendix <a href="#app:residue" data-reference-type="ref" data-reference="app:residue">14</a> records an exact residue reduction that an earlier finite search used. Linked phrases open the corresponding Lean declaration at the pinned source revision 4ab50e144847. Where a section names a Lean module that is outside that revision, it says so in place of a link.
 
 **Keywords.** irrationality; Ahmes series; Sylvester’s sequence; unit fractions; Lean 4. **MSC 2020.** 11J72 (primary); 11B37, 11D68, 68V20 (secondary).
 
@@ -158,7 +168,9 @@ and $`D_n=a_n-1`$ with $`C_n=1`$ at every index: if $`D_n=a_n-1`$ and $`C_n=1`$ 
 
 Let $`T_n=\sum_{k\ge n}1/a_k`$ and suppose $`T_0\in\mathbb{Q}`$. Put $`D_0`$ equal to a common denominator and $`D_n=D_0a_0\cdots a_{n-1}`$, and set $`C_n=D_nT_n`$. Then $`C_n\in\mathbb{Z}`$ for every $`n`$, and from $`T_n=1/a_n+T_{n+1}`$ one gets $`C_{n+1}=a_nC_n-D_n`$, which is the tail update. On Sylvester’s sequence $`T_n=1/(a_n-1)`$ exactly, so $`D_n=(a_n-1)C_n`$ and $`E_n=0`$: the centred state measures deviation from the Sylvester tail identity, and it vanishes identically on the Sylvester orbit.
 
-None of this paragraph is formalised. The Lean module contains no series, no rationality hypothesis, and no growth hypothesis; it proves identities and implications about the integer system above, and about its natural-number realisation, for which the bridging identities are the [tail realisation](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1863), the [denominator realisation](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1875), and the [signed update law](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1972). The identification with reciprocal tails motivates the definitions. The formal development does not check that identification.
+The Lean module carries no rationality hypothesis and no growth hypothesis; it proves identities and implications about the integer system above, and about its natural-number realisation, for which the bridging identities are the [tail realisation](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1863), the [denominator realisation](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1875), and the [signed update law](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1972).
+
+The series itself is reached by three further declarations, which were absent from earlier revisions of this note. Write $`C_n/D_n`$ for the real ratio carried by the natural state, the [tail ratio](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1895). Given $`a_n>0`$, $`D_n>0`$, $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, one exact step removes $`1/a_n`$ from that ratio [one-step reciprocal identity](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1899), finite iteration telescopes to a partial sum plus the endpoint ratio [finite telescoping](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1923), and convergence of the endpoint ratio to zero identifies the infinite sum [the series realisation](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1949): $`\sum_n1/a_n`$ then has sum $`C_0/D_0`$. These three carry no growth hypothesis, no centring hypothesis and no rationality hypothesis, and they exclude nothing. They close the loop between the integer system and the series that motivates it. Producing the state of a given rational sum, which is the direction the problem needs, is the exposition of this paragraph and is not a checked statement.
 
 <div id="res:scale" class="proposition">
 
@@ -173,7 +185,7 @@ None of this paragraph is formalised. The Lean module contains no series, no rat
 
 </div>
 
-Formalised as the [denominator equivariance](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L65), the [tail equivariance](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L70), and the [centred equivariance](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L75). The system depends only on the ray through $`(D,C)`$. This is used twice below: once to normalise the finite search of Appendix <a href="#app:residue" data-reference-type="ref" data-reference="app:residue">13</a>, and once, in Theorem <a href="#res:periodic" data-reference-type="ref" data-reference="res:periodic">15</a>, as the induction step that removes common scale.
+Formalised as the [denominator equivariance](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L65), the [tail equivariance](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L70), and the [centred equivariance](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L75). The system depends only on the ray through $`(D,C)`$. This is used twice below: once to normalise the finite search of Appendix <a href="#app:residue" data-reference-type="ref" data-reference="app:residue">14</a>, and once, in Theorem <a href="#res:periodic" data-reference-type="ref" data-reference="res:periodic">31</a>, as the induction step that removes common scale.
 
 <a id="sec:defect"></a>
 
@@ -315,321 +327,25 @@ The defect identity has a second consequence, which is what makes a single vanis
 
 Formalised as the [absorption of a vanishing centred state](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2221), with the companion [contrapositive along a tail](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2248): if zero is absorbing beyond some index and $`E`$ does not vanish eventually, then $`E`$ is nowhere zero beyond that index.
 
-Absorption changes the shape of the problem. Either $`E`$ hits zero once and stays there, or it is never zero. Sections <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">5</a> and <a href="#sec:periodic" data-reference-type="ref" data-reference="sec:periodic">6</a> address the special all-negative case only. The mixed-sign analysis in Sections <a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">8</a> and <a href="#sec:mass" data-reference-type="ref" data-reference="sec:mass">9</a> instead separates cofinally negative errors from an eventually positive tail.
-
-<a id="sec:descent"></a>
-
-# Descent when the error is nonnegative
-
-The hypothesis of the theorem below is the update law of Proposition <a href="#res:update" data-reference-type="ref" data-reference="res:update">2</a> read inside $`\mathbb{N}`$: the error is nonnegative at every index, so the tail state never rises. This is the easy case, and it is settled in three lines.
-
-<div id="res:descent" class="theorem">
-
-**Theorem 12** (descent). *Let $`C,E:\mathbb{N}\to\mathbb{N}`$ satisfy $`C_{n+1}+E_n=C_n`$ for every $`n`$. Then $`E_n=0`$ for all sufficiently large $`n`$.*
-
-</div>
-
-<div class="proof">
-
-*Proof.* A one-line descent. The relation forces $`C_{n+1}\le C_n`$, so $`C`$ is a nonincreasing sequence of natural numbers and is eventually equal to its minimum; beyond that index $`C_{n+1}=C_n`$, and the relation gives $`E_n=0`$. ◻
-
-</div>
-
-Formalised as the [stabilisation of the nonnegative error](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1837), on the [eventual constancy of a nonincreasing sequence](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1819).
-
-The hypothesis is exactly one-sidedness: $`C`$ and $`E`$ take values in $`\mathbb{N}`$. If $`E_n<0`$ at infinitely many indices then $`C`$ rises there, nothing descends, and the argument is unavailable. That is the whole difficulty, and the rest of this note is directed at it.
-
-<a id="sec:constant"></a>
-
-# Excluding a constant negative magnitude
-
-Suppose the error is negative with a constant magnitude, $`E_n=-m`$ for a fixed $`m>0`$ and every $`n`$. By Proposition <a href="#res:update" data-reference-type="ref" data-reference="res:update">2</a> the state then climbs by exactly $`m`$ each step, so $`C_n=c+nm`$ with $`c=C_0`$, and the definition of the centred state becomes a *shape equation*
-``` math
-D_n+m=(a_n-1)\,(c+nm) .
-\tag{5.1}\label{eq:shape}
-```
-Together with $`D_{n+1}=a_nD_n`$ this is a closed system in $`(a,D)`$, and it has no solutions. The following instance shows how the failure happens; the theorem then shows that it cannot be avoided.
-
-<div id="ex:shape" class="example">
-
-**Example 13** (the shape equation running until it fails). Take $`m=c=1`$, so that $`C_n=1+n`$ and the shape equation <a href="#eq:shape" data-reference-type="eqref" data-reference="eq:shape">[eq:shape]</a> reads $`D_n+1=(a_n-1)(1+n)`$, and take $`D_0=1`$. Each step is now determined: at $`n=0`$ the equation reads $`2=(a_0-1)\cdot1`$, so $`a_0=3`$, and $`D_1=a_0D_0=3`$; at $`n=1`$ it reads $`4=(a_1-1)\cdot2`$, so $`a_1=3`$, and $`D_2=a_1D_1=9`$; at $`n=2`$ it reads $`10=(a_2-1)\cdot3`$, which has no integer solution, and the orbit stops. Longer prefixes occur for other starting values: the finite search recorded in Appendix <a href="#app:residue" data-reference-type="ref" data-reference="app:residue">13</a> found none longer than $`17`$ among the initial states below $`5000`$.
-
-</div>
-
-<div id="res:constant" class="theorem">
-
-**Theorem 14** (no constant negative magnitude). *There is no pair of sequences $`a,D:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$ for all $`n`$ satisfying $`D_{n+1}=a_nD_n`$ and <a href="#eq:shape" data-reference-type="eqref" data-reference="eq:shape">[eq:shape]</a>, for any $`m>0`$ and any $`c`$. The same holds if the shape only begins at some index.*
-
-</div>
-
-<div class="proof">
-
-*Proof when $`c`$ and $`m`$ are coprime.* Assume first $`\gcd(c,m)=1`$. Two facts about the multipliers do all the work, and the difficulty lies in the fact that they concern the same finite set of primes from opposite directions: the first makes every multiplier meet that set, the second lets each prime of the set meet at most one multiplier.
-
-*Every $`a_j`$ shares a prime with $`m`$.* Suppose $`\gcd(a_j,m)=1`$. Then $`m`$ is invertible modulo $`a_j`$, so some $`n`$ has $`c+nm\equiv0`$, that is $`a_j\mid C_n`$; and $`a_j\mid D_n`$ for every $`n>j`$, since $`D`$ is multiplicative with $`a_j`$ among its factors. Choosing such an $`n`$ beyond $`j`$ and reading <a href="#eq:shape" data-reference-type="eqref" data-reference="eq:shape">[eq:shape]</a> modulo $`a_j`$ gives $`a_j\mid m`$, contradicting $`\gcd(a_j,m)=1`$ and $`a_j\ge2`$.
-
-*A prime divisor of $`m`$ occurs in at most one $`a_j`$.* Suppose $`p\mid m`$ and $`p\mid a_j`$. For $`n>j`$ we have $`p\mid D_n`$, so <a href="#eq:shape" data-reference-type="eqref" data-reference="eq:shape">[eq:shape]</a> gives $`(a_n-1)C_n\equiv0 \pmod p`$. Now $`C_n=c+nm\equiv c`$, and $`p\nmid c`$ because $`p\mid m`$ and $`\gcd(c,m)=1`$; hence $`p\mid a_n-1`$, so $`p\nmid a_n`$. Thus $`p`$ cannot divide any later multiplier.
-
-The two facts are incompatible. Each of the infinitely many multipliers needs a prime divisor of $`m`$, and each prime divisor of $`m`$ serves at most one multiplier, while $`m`$ has only finitely many prime divisors. ◻
-
-</div>
-
-The case $`\gcd(c,m)=1`$ is the [scale-primitive exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L147). The special case $`m=c=1`$, worked through in Example <a href="#ex:shape" data-reference-type="ref" data-reference="ex:shape">13</a>, where $`m`$ has no prime divisors at all and the first fact is immediately contradictory, is recorded separately as the [normalised exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L100).
-
-<div class="proof">
-
-*Removing the scale.* For general $`c`$, put $`g=\gcd(c,m)`$. Equation <a href="#eq:shape" data-reference-type="eqref" data-reference="eq:shape">[eq:shape]</a> shows $`g\mid D_n`$ for every $`n`$, so dividing $`D`$, $`c`$ and $`m`$ by $`g`$ leaves a system of the same shape with coprime data, which the previous case excludes. ◻
-
-</div>
-
-Formalised as the [exclusion at every scale](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L286), and the eventual form, obtained by shifting the orbit to the first constant index, as the [eventual exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L350).
-
-Theorem <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">14</a> excludes a centred state that is eventually constant and negative, at every magnitude and every scale. It says nothing about a negative state whose magnitude changes, and the argument genuinely uses constancy: the finiteness of the set of prime divisors of $`m`$ is what the pigeonhole uses, and a varying magnitude presents a fresh set at each index.
-
-<a id="sec:periodic"></a>
-
-# Excluding a periodic negative magnitude
-
-The next case allows the magnitude to vary, provided it repeats. Write $`e_n=-E_n>0`$ for the magnitude, as in Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a>, so that $`C_{n+1}=C_n+e_n`$; suppose $`e`$ has period $`h`$, meaning $`e_{n+h}=e_n`$ for every $`n`$, and that the state gains a fixed *drift* $`M>0`$ over one period, meaning $`C_{n+h}=C_n+M`$ for every $`n`$.
-
-At $`h=1`$ this says that the magnitude is constant and that $`M`$ is its value, which is the situation of Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">5</a>; Theorem <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">14</a> already excludes it, and does so without the extra hypothesis $`e_n<a_n`$ imposed below. The new content is $`h\ge2`$.
-
-Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">5</a> could run its pigeonhole on the prime divisors of the single number $`m`$. Here the magnitude changes inside a period, and the number available to run it on is the drift $`M`$. Three lemmas replace the two facts of Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">5</a>. The first is that multipliers persist: every $`a_j`$ divides every strictly later denominator state, the [persistence of a multiplier](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L382). The second is a *lock*: a prime already dividing $`D`$ and also dividing the current multiplier is forced into the next tail state, the [one-step lock](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L402), and once present in both $`D`$ and $`C`$ it stays in every later $`D`$, $`C`$ and magnitude, the [persistence of a lock](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L429). The third transports a lock backwards through the period: if a divisor of the drift $`M`$ occurs in two multipliers, it is a common divisor of $`C_0`$ and of every magnitude, the [repeated-divisor transport](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L494), using that both the period relation and the drift iterate over any number of periods, the [iterated period](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L461) and the [iterated drift](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L476).
-
-<div id="res:periodic" class="theorem">
-
-**Theorem 15** (no periodic negative magnitude). *Let $`a,D,C,e:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$, $`e_n>0`$ and $`e_n<a_n`$ for every $`n`$, satisfying
-``` math
-D_{n+1}=a_nD_n,\qquad C_{n+1}=C_n+e_n,\qquad D_n+e_n=(a_n-1)C_n ,
-```
-and suppose $`e_{n+h}=e_n`$ and $`C_{n+h}=C_n+M`$ for some $`h>0`$ and $`M>0`$. This is impossible.*
-
-</div>
-
-<div class="proof">
-
-*Proof.* Strong induction on the drift $`M`$. The difficulty lies in the fact that a repeated prime divisor of $`M`$ need not contradict anything directly. It instead forces a common scale on the whole orbit, which can be divided out, and the induction runs on the drift that the division reduces.
-
-Suppose first that no prime divisor of $`M`$ is a common divisor of $`C_0`$ and of every magnitude. Repeated-divisor transport then applies in the contrapositive: a prime divisor of $`M`$ occurring in two of the multipliers would be exactly such a common divisor, so each prime divisor of $`M`$ occurs in at most one multiplier. Against this, the argument of Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">5</a> run phase by phase (along a fixed residue class modulo $`h`$ the magnitude is constant and $`C`$ advances by $`M`$ at each period, so the multipliers of that phase meet an arithmetic progression exactly as in Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">5</a>) makes every multiplier share a prime with $`M`$. Since $`M`$ has only finitely many prime divisors and there are infinitely many multipliers, pigeonhole gives a contradiction.
-
-Otherwise some prime $`p`$ divides $`M`$, divides $`C_0`$, and divides every magnitude. Then $`p\mid C_n`$ for every $`n`$, since $`C_{n+1}=C_n+e_n`$ and both summands on the right are divisible by $`p`$, and the shape equation $`D_n+e_n=(a_n-1)C_n`$ then gives $`p\mid D_n`$ for every $`n`$. Divide $`D`$, $`C`$ and $`e`$ by $`p`$. The multipliers are untouched, so $`a_n\ge2`$ and $`e_n<a_n`$ persist and the magnitudes stay positive; the three recurrences are homogeneous in $`(D,C,e)`$ and so survive; the period is still $`h`$; and the drift becomes $`M/p<M`$. The inductive hypothesis applies. ◻
-
-</div>
-
-The first of the two cases above is the [phase-primitive exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L548), the induction is the [exclusion at every scale](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L690), and the eventual form is the [eventual exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L796).
-
-The bound $`e_n<a_n`$ is a genuine restriction and not a normalisation. It is the range in which a multiplier cannot divide its own phase magnitude, which is what the lock argument needs. It holds in the intended reading, where $`e_n`$ is a centred representative and $`a_n`$ grows quadratically, but it is assumed here and not derived. The drift hypothesis $`M>0`$ is also used: a periodic magnitude with zero drift would be identically zero, which is the case already settled by Section <a href="#sec:descent" data-reference-type="ref" data-reference="sec:descent">4</a>.
-
-<div class="remark">
-
-*Remark 1*. On the canonical orbit of \[koizumi2025\], read through the dictionary of Section <a href="#sec:problem" data-reference-type="ref" data-reference="sec:problem">1</a>, the bound $`e_n<a_n`$ holds eventually. Lemma 15(2) there gives the centring range $`-C_n/2\le E_n<C_n/2`$, so $`e_n=|E_n|\le C_n/2`$ at a negative index, and the proof of Lemma 15(3) gives $`C_{n+1}\le\tfrac32C_n`$  \[koizumi2025, p. 9\], hence the uniform bound $`C_n\le C_0(3/2)^{n}`$. Against this, summability of $`\sum1/a_n`$ forces $`a_n\to\infty`$, and the growth hypothesis $`a_n^{2}/a_{n+1}\to1`$ gives $`a_{n+1}\ge a_n^{2}/2`$ for all large $`n`$, hence $`a_{n+1}\ge2a_n`$ once $`a_n\ge4`$; so the multipliers grow at least geometrically with ratio $`2`$ and outgrow the bound on $`C_n`$, making $`e_n/a_n`$ eventually small. Two caveats. Summability is used for this step, so the estimate is not available from the state recurrence alone; and the conclusion is eventual and not universal, whereas Theorem <a href="#res:periodic" data-reference-type="ref" data-reference="res:periodic">15</a> imposes $`e_n<a_n`$ at every index, so it is the eventual form of the exclusion cited above that applies. Under the periodicity hypothesis of Theorem <a href="#res:periodic" data-reference-type="ref" data-reference="res:periodic">15</a> the estimate is in any case unnecessary, since a periodic magnitude is bounded while the multipliers tend to infinity.
-
-</div>
-
-<a id="sec:barrier"></a>
-
-# Bounded rise cannot remain coprime to fresh moduli
-
-Periodicity is still a strong assumption. Removing it needs a different kind of obstruction, and the one used here is a counting argument about where an integer sequence with bounded upward steps must land.
-
-<div id="res:crt" class="lemma">
-
-**Lemma 16** (shifted blocks of consecutive multiples). *Let $`m_0,\ldots,m_{B-1}`$ be pairwise coprime and at least $`2`$. For every bound there is a $`t`$ beyond it with $`m_i\mid t+i`$ for each $`i<B`$.*
-
-</div>
-
-<div class="proof">
-
-*Proof.* Standard Chinese remaindering: solve $`t\equiv-i \pmod{m_i}`$ simultaneously, then add multiples of $`\prod_i m_i`$ to pass the bound. ◻
-
-</div>
-
-Formalised as the [shifted consecutive multiples](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L833).
-
-<div id="ex:crt" class="example">
-
-**Example 17** (a block of three consecutive multiples). Take $`B=3`$ and $`(m_0,m_1,m_2)=(3,4,5)`$. The congruences $`t\equiv0\pmod3`$, $`t\equiv3\pmod4`$ and $`t\equiv3\pmod5`$ hold exactly when $`t\equiv3\pmod{60}`$. At $`t=3`$ the block is $`3,4,5`$ with $`3\mid3`$, $`4\mid4`$ and $`5\mid5`$; at $`t=63`$ it is $`63,64,65`$ with $`3\mid63`$, $`4\mid64`$ and $`5\mid65`$. A sequence of natural numbers that starts at $`0`$, tends to infinity and rises by at most $`3`$ at each step cannot step over the block $`\{3,4,5\}`$: it has a first value at least $`3`$, that value is at most $`5`$, and every member of $`\{3,4,5\}`$ is divisible by one of the three moduli.
-
-</div>
-
-<div id="res:barrier" class="theorem">
-
-**Theorem 18** (bounded rise cannot remain coprime to fresh moduli). *Let $`u:\mathbb{N}\to\mathbb{N}`$ tend to infinity with $`u_{n+1}\le u_n+B`$ for a fixed $`B>0`$. Then $`u`$ cannot remain coprime to infinitely many fresh pairwise coprime moduli: there is no family of pairwise coprime $`m_i\ge2`$, one for each index, such that $`\gcd(m_i,u_t)=1`$ whenever $`i<t`$.*
-
-</div>
-
-<div class="proof">
-
-*Proof.* Take $`B`$ of the moduli, from indices beyond any chosen point, and use Lemma <a href="#res:crt" data-reference-type="ref" data-reference="res:crt">16</a> to find $`t`$ far out with the $`i`$th of them dividing $`t+i`$. The interval $`[t,t+B)`$ has length $`B`$, and $`u`$ climbs by at most $`B`$ per step while tending to infinity, so some $`u_s`$ lands in it. Then $`u_s=t+i`$ for some $`i<B`$, and the $`i`$th modulus divides $`u_s`$. Since that modulus is at least $`2`$, this contradicts $`\gcd(m_i,u_s)=1`$. ◻
-
-</div>
-
-Formalised as the [bounded-rise barrier](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L897). The key point is that the two hypotheses pull against each other exactly: divergence forces $`u`$ to travel arbitrarily far, and bounded rise forbids it from stepping over a window of width $`B`$. Uniformity of the bound is what the proof uses, and it is the hypothesis that cannot be relaxed by this argument: a rise bounded only along a subsequence leaves the intervening steps free to jump the window. We have not looked for a sequence of unbounded rise remaining coprime to every fresh modulus. The statement is elementary and we are not aware of a prior published form of it, but we would not be surprised if one exists.
-
-The moduli are indexed by the same set as the sequence, and the $`i`$th of them is asked to divide no value $`u_t`$ with $`t>i`$; nothing at all is asked of it at or before its own index. That asymmetry is what makes the hypothesis available in the application below, where $`m_i`$ is the $`i`$th multiplier and only the later numerators are known to be coprime to it.
-
-The barrier applies to the problem because a *reduced* exact tail already carries pairwise coprime moduli. Call $`(u,v)`$ a reduced exact tail with multipliers $`a`$ when $`\gcd(u_n,v_n)=1`$,
-``` math
-u_{n+1}+v_n=a_nu_n,\qquad v_{n+1}=a_nv_n .
-```
-Here $`u`$ is the numerator and $`v`$ the denominator: the two recurrences are those of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a>, with $`u`$ in the role of the tail state $`C`$ and $`v`$ in that of the denominator state $`D`$, and with coprimality imposed at every index.
-
-<div id="res:reduced" class="proposition">
-
-**Proposition 19** (reduced tails are pairwise coprime). *In a reduced exact tail, $`a_n`$ is coprime to $`v_n`$; the multipliers at distinct indices are pairwise coprime; and every earlier multiplier is coprime to every later numerator.*
-
-</div>
-
-These are the [step coprimality](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L983), the [pairwise coprimality](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1010), and the [whole-modulus avoidance](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1024). Feeding them to Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">18</a> gives the form used later: there is no reduced exact tail whose numerator tends to infinity with a uniformly bounded upward increment, the [reduced bounded-rise exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1035), together with its eventual form, the [eventual reduced exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1060).
-
-<div id="ex:reduced" class="example">
-
-**Example 20** (Sylvester’s sequence as a reduced exact tail). Put $`u_n=1`$ and $`v_n=D_n=1,2,6,42,1806,\ldots`$ as in Example <a href="#ex:sylvester" data-reference-type="ref" data-reference="ex:sylvester">3</a>, with multipliers $`a_n=v_n+1=2,3,7,43,1807,\ldots`$. Then $`\gcd(u_n,v_n)=1`$, $`u_{n+1}+v_n=1+v_n=a_nu_n`$ and $`v_{n+1}=a_nv_n`$, so this is a reduced exact tail, and Proposition <a href="#res:reduced" data-reference-type="ref" data-reference="res:reduced">19</a> returns the classical fact that Sylvester’s numbers are pairwise coprime. Its numerator is constant, so it satisfies every hypothesis of the exclusion just stated except divergence; since the tail exists, that hypothesis cannot be dropped.
-
-</div>
-
-An arbitrary orbit of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a> need not be reduced, so one more step is needed before the barrier can be applied to it: the common factor must stop changing. We call a set of indices *cofinal* when it is infinite, and say that a property holds *cofinally* when the set of indices at which it holds is cofinal. The step below is the only one connecting the orbit of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a> to the reduced tails of Proposition <a href="#res:reduced" data-reference-type="ref" data-reference="res:reduced">19</a>, and it is where the cofinal boundedness in the proof of Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a> is used.
-
-<div id="res:gcdstab" class="proposition">
-
-**Proposition 21** (the tail gcd stabilises). *Let $`(a,D,C)`$ be an exact natural orbit, that is, a triple of $`\mathbb{N}`$-valued sequences with $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, whose centred state $`E_n=\operatorname{ctr}(a_n,D_n,C_n)`$ is negative cofinally, with magnitudes bounded along that cofinal set. Then $`\gcd(C_n,D_n)`$ is eventually constant, and beyond that index the orbit divided by the stable gcd is a reduced exact tail.*
-
-</div>
-
-<div class="proof">
-
-*Proof.* The tail gcd $`\gcd(C_n,D_n)`$ divides its successor, the [gcd monotonicity](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1424), so the tail gcds form a positive divisibility chain. At an index where the centred state is negative the tail gcd is exactly $`\gcd(C_n,e_n)`$, the [gcd at a negative index](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1581), and is therefore at most the magnitude there; so the chain is bounded along the cofinal set of negative indices. A positive divisibility chain whose values are bounded along a cofinal set is eventually constant, the [chain stabilisation](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1599). Hence cofinally bounded negative magnitudes make the tail gcd stabilise, the [gcd stabilisation](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1630), and beyond that point dividing by the stable gcd leaves the numerator and denominator coprime, that is, a reduced exact tail. ◻
-
-</div>
-
-The stabilisation of the tail gcd is the checked statement cited at the end of the proof; the last clause, that the divided orbit is a reduced exact tail, is exposition and carries no separate label. Boundedness is required only *along a cofinal set*. That is what the situation gives: the tail gcd is controlled only at the negative indices, and cofinally many of them is all the divisibility chain needs.
-
-Normalised vanishing by itself gives a different, strictly weaker conclusion. For an exact natural orbit with $`C_n>0`$, put
-``` math
-G_n=\gcd(C_n,D_n),\qquad
- \Gamma(N)=\#\{0\le j<N:G_j<G_{j+1}\}.
-```
-
-<div id="res:gcdsparse" class="proposition">
-
-**Proposition 22** (normalised vanishing makes strict gcd changes sparse). *Assume
-``` math
-(\forall K\ge1)(\exists N)(\forall n\ge N)\qquad
-  K|E_n|<C_n.
-```
-Then, for every $`K\ge1`$, eventually $`K\Gamma(N)<N`$. Moreover, for every starting bound $`B`$ and block length $`L`$, some $`n\ge B`$ satisfies
-``` math
-G_n=G_{n+1}=\cdots=G_{n+L}.
-```*
-
-</div>
-
-The first assertion is the [sublinear strict-growth theorem](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2180); the second is the [arbitrarily late constant-block theorem](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2196). The proof first converts normalised vanishing into subexponential growth of $`C_n`$, then charges every strict divisibility increase of $`G_n`$ against a finite power-of-two budget. Sparse strict changes force long finite gaps between them.
-
-The quantifiers matter. Proposition <a href="#res:gcdstab" data-reference-type="ref" data-reference="res:gcdstab">21</a> uses cofinally bounded negative magnitudes and yields eventual constancy. Proposition <a href="#res:gcdsparse" data-reference-type="ref" data-reference="res:gcdsparse">22</a> uses only normalised vanishing and yields arbitrarily late constant blocks of each prescribed finite length. It does not yield one infinite constant tail, and it does not exclude cofinally unbounded negative excursions.
-
-<a id="sec:bounded"></a>
-
-# Excluding a bounded negative part
-
-Assembling the previous section gives Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a>, the endpoint of the barrier argument. Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">25</a> in the next section uses a different finiteness hypothesis. The two results are incomparable: Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">25</a> assumes only the state recurrence with $`C_n>0`$, while hypothesis (5) below does not imply finite *normalised negative mass*, by which we mean convergence of $`\sum_n(-E_n)_+/C_n`$, where $`x_+=\max(x,0)`$, since a constant negative part $`-b`$ gives $`C_n\sim bn`$ and hence a divergent sum. The hypotheses of Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a> are listed in full, because two of them are analytic inputs that are assumed here rather than derived from the growth condition of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>.
-
-Informally, hypotheses (5) and (6) below pull against each other. By Proposition <a href="#res:update" data-reference-type="ref" data-reference="res:update">2</a>, hypothesis (5) caps the rise of the tail state at $`B`$ per step, while hypothesis (6), once the error is nowhere zero, forces the tail state to diverge. Proposition <a href="#res:gcdstab" data-reference-type="ref" data-reference="res:gcdstab">21</a> makes the orbit reduced, and Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">18</a> then converts the tension into a contradiction: an integer sequence tending to infinity with upward steps of size at most $`B`$ cannot remain coprime to the pairwise coprime moduli a reduced tail carries. The complementary case, in which the error is eventually positive, is the descent of Theorem <a href="#res:descent" data-reference-type="ref" data-reference="res:descent">12</a>.
-
-<div id="res:bounded" class="theorem">
-
-**Theorem 23** (bounded negative part). *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ and $`E:\mathbb{N}\to\mathbb{Z}`$ satisfy*
-
-1.  *$`a_n>1`$ and $`C_n>0`$ for every $`n`$;*
-
-2.  *the exact dynamics $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$;*
-
-3.  *$`E_n=\operatorname{ctr}(a_n,D_n,C_n)`$ for every $`n`$;*
-
-4.  **eventual strict centring*: $`|E_n|<C_n`$ for all large $`n`$;*
-
-5.  **eventually bounded negative part*: $`-B\le E_n`$ for all large $`n`$, for some $`B`$;*
-
-6.  **normalised vanishing*: for every $`K`$ there is an $`N`$ with $`K\,|E_n|<C_n`$ for all $`n\ge N`$.*
-
-*Then $`E_n=0`$ for all sufficiently large $`n`$.*
-
-</div>
-
-<div class="proof">
-
-*Proof.* Suppose not. We first remove every late zero: by Theorem <a href="#res:absorb" data-reference-type="ref" data-reference="res:absorb">11</a> and its contrapositive form, $`E`$ is nowhere zero beyond the centring threshold. Two cases remain. If $`E`$ is negative cofinally, then (5) bounds those magnitudes, so Proposition <a href="#res:gcdstab" data-reference-type="ref" data-reference="res:gcdstab">21</a> makes the tail gcd stabilise and the orbit may be taken reduced past that point. Hypothesis (5) with Proposition <a href="#res:update" data-reference-type="ref" data-reference="res:update">2</a> gives $`C_{n+1}\le C_n+B`$, a bounded rise; hypothesis (6) with $`E`$ nowhere zero gives $`C_n\to\infty`$. A reduced exact tail with a divergent numerator and bounded rise is excluded by Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">18</a>. It remains to treat the case that $`E`$ is eventually positive, and there the descent of Theorem <a href="#res:descent" data-reference-type="ref" data-reference="res:descent">12</a> applies and forces $`E`$ to vanish, contradicting nowhere-vanishing. ◻
-
-</div>
-
-Formalised as the [bounded-negative-part rigidity](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2265), with the eventual form, in which the centring and the bound need only hold from some index, as the [eventual bounded-negative-part rigidity](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2352). The two auxiliary results it uses are the [divergence from normalised vanishing](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1733) and the [exclusion of cofinally bounded negative magnitudes](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1748), the latter over the [tail-divergence form](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1655).
-
-<div id="res:cor" class="corollary">
-
-**Corollary 24**. *Under the hypotheses of Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a>, together with $`C_{n+1}\ne0`$ for all large $`n`$, the multipliers satisfy $`a_{n+1}=a_n^{2}-a_n+1`$ for all sufficiently large $`n`$.*
-
-</div>
-
-<div class="proof">
-
-*Proof.* Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a> then Theorem <a href="#res:eventual" data-reference-type="ref" data-reference="res:eventual">10</a>. ◻
-
-</div>
-
-Hypotheses (1)–(3) are the state system, and (6) is the division-free form of $`|E_n|/C_n\to0`$. Hypothesis (4) is logically redundant: hypothesis (6) with $`K=1`$ gives $`|E_n|<C_n`$ eventually. It is retained because the displayed statement tracks the linked Lean declaration; shifting to the resulting threshold gives the same conclusion without an independent centring input. The formal source does not derive normalised vanishing from $`a_{n+1}/a_n^{2}\to1`$, so Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a> is, by itself, a conditional theorem about the state system. Combined with Koizumi’s bridge below, however, Corollary <a href="#res:cor" data-reference-type="ref" data-reference="res:cor">24</a> settles the bounded-negative canonical case of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>. What is unconditional in this note is the all-negative constant and periodic exclusions, Theorems <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">14</a> and <a href="#res:periodic" data-reference-type="ref" data-reference="res:periodic">15</a>, and the barrier itself, Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">18</a>.
-
-The conditionality can nevertheless be located precisely, because the missing inputs are supplied elsewhere. With the results of \[koizumi2025\], Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a> becomes a conditional theorem about Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> itself rather than about the state system alone. Let $`(a_n)`$ satisfy the hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>. After deleting a finite prefix, Corollary 10 of \[koizumi2025, p. 8\] makes the sequence the pseudo-greedy expansion of its own reciprocal sum, and Lemma 15 there supplies the integers $`c_n,d_n,e_n`$ of Section <a href="#sec:problem" data-reference-type="ref" data-reference="sec:problem">1</a>. Hypothesis (1) then holds: $`c_n`$ is a positive integer by Lemma 15(1), and $`a_n>1`$ after a further finite shift, because summability of $`\sum1/a_n`$ forces $`a_n\to\infty`$. Hypothesis (2) is the pair of recurrences $`c_{n+1}=a_nc_n-d_n`$ and $`d_{n+1}=a_nd_n`$ of Lemma 15(2), and hypothesis (3) is that lemma’s $`a_n=(d_n-e_n)/c_n+1`$ read as $`e_n=d_n-(a_n-1)c_n`$, which is the map $`\operatorname{ctr}`$. The centring range $`-c_n/2\le e_n<c_n/2`$ in the same lemma gives hypothesis (4) at every index, which is stronger than the eventual form used here. Hypothesis (6) is the vanishing of the gap sequence in Corollary 10, since $`\varepsilon_n=e_n/c_n`$. The sole hypothesis not supplied is (5), the eventual bound on the negative part; nothing in \[koizumi2025\] yields it and nothing here does either, so Problem #243 stays open.
-
-<a id="sec:mass"></a>
-
-# Excluding finite normalised negative mass
-
-Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a> uses a uniform bound on the negative part. A different finiteness hypothesis, on the total normalised negative mass, removes a further family of orbits, and the argument is multiplicative rather than arithmetic: it compares $`C`$ with a convergent product instead of with a system of congruences.
-
-<div id="res:mass" class="theorem">
-
-**Theorem 25** (finite normalised negative mass). *Let $`C_n\in\mathbb{N}_{>0}`$ and $`E_n\in\mathbb{Z}`$ satisfy
-``` math
-C_{n+1}=C_n-E_n,\qquad
- \forall K\ \exists N\ \forall n\ge N,\quad K|E_n|<C_n .
-```
-If
-``` math
-\sum_{n=0}^{\infty}\frac{(-E_n)_+}{C_n}<\infty ,
-```
-then $`E_n=0`$ eventually. For an exact reciprocal-tail orbit this implies $`a_{n+1}=a_n^2-a_n+1`$ eventually.*
-
-</div>
-
-<div class="proof">
-
-*Proof.* Put $`\delta_n=(-E_n)_+/C_n`$. The update gives $`C_{n+1}\le C_n(1+\delta_n)`$, so
-``` math
-C_N\le C_0\prod_{n<N}(1+\delta_n).
-```
-The product is bounded because $`\sum\delta_n`$ converges. Choose an integer $`M`$ above that bound and apply normalised vanishing with $`K=M`$. Then $`M|E_n|<C_n<M`$ for all sufficiently large $`n`$, forcing the integer $`E_n`$ to be zero. The final recurrence is Theorem <a href="#res:eventual" data-reference-type="ref" data-reference="res:eventual">10</a>, whose hypothesis $`C_{n+1}\ne0`$ holds because $`C_n>0`$ throughout. ◻
-
-</div>
-
-The product argument is the [summable relative growth](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SparseResetRecovery.lean#L423); its specialisation to negative mass is the [vanishing from finite negative mass](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SparseResetRecovery.lean#L488), and the statement giving the recurrence directly is the [Sylvester recurrence from summable negative mass](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SparseResetRecovery.lean#L510). This is a checked implication about the state system, not a derivation of normalised vanishing from Problem #243. Normalised vanishing is still an input: it is what converts the bound on $`C`$ into a bound on $`|E_n|`$, and nothing here derives it from the growth condition of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>.
-
-The transfer of the previous section applies here as well. On the canonical orbit of Corollary 10 of \[koizumi2025, p. 8\] the recurrence $`C_{n+1}=C_n-E_n`$ holds with $`C_n>0`$ by Lemma 15  \[koizumi2025, p. 9\], and normalised vanishing is the vanishing of the gap sequence, so Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">25</a> is a conditional theorem about Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> whose sole remaining hypothesis is summability of $`\sum_n(-E_n)_+/C_n`$. That hypothesis is not supplied there, and is the content of Problem <a href="#res:masshyp" data-reference-type="ref" data-reference="res:masshyp">33</a> below.
-
-<div id="ex:mass" class="example">
-
-**Example 26** (the product bound at a geometric rate). Suppose $`C_0=100`$ and $`(-E_n)_+/C_n\le2^{-n-1}`$ for every $`n`$, so that the normalised negative mass is at most $`1`$; the constraint at $`n=0`$ still permits $`E_0`$ as negative as $`-50`$. Since $`1+x\le e^{x}`$,
-``` math
-C_N\le100\prod_{n<N}\bigl(1+2^{-n-1}\bigr)\le100e<272
-```
-for every $`N`$. Normalised vanishing at $`K=272`$ then gives $`272|E_n|<C_n<272`$ for all large $`n`$, so $`|E_n|<1`$ and $`E_n=0`$ there. The constant $`272`$ comes from the total mass and not from any single magnitude, which is why the hypothesis of Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">25</a> is summability of $`(-E_n)_+/C_n`$ and not a bound on it.
-
-</div>
+Absorption changes the shape of the problem. Either $`E`$ hits zero once and stays there, or it is never zero. Sections <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">7</a> and <a href="#sec:periodic" data-reference-type="ref" data-reference="sec:periodic">8</a> address the special all-negative case only. The mixed-sign analysis in Sections <a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">10</a> and <a href="#sec:mass" data-reference-type="ref" data-reference="sec:mass">11</a> instead separates cofinally negative errors from an eventually positive tail.
 
 <a id="sec:lcmrecords"></a>
 
 # Weighted first crossings of LCM records
 
-The summability criterion admits a smaller series: only steps setting a new LCM numerator record need contribute, a fixed LCM-scale baseline may be subtracted, and the remaining mass may be logarithmically discounted. The result in this section is an ordinary mathematical proof. The [finite arithmetic and charging source](https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos243/problem/LcmRecordExcess.lean#L14) is available separately; the global analytic argument is not formalised.
+This section carries the leading result of the note. It is an exact criterion for Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, stated under the hypotheses of that problem and no others, and it is reached by a first-crossing argument rather than by a hypothesis on the negative part. Only steps setting a new LCM numerator record contribute, a fixed LCM-scale baseline may be subtracted, and the remaining mass may be logarithmically discounted.
+
+<a id="evidence."></a>
+
+#### Evidence.
+
+The result in this section is an ordinary mathematical proof. Its finite arithmetic and charging step are kernel-checked at the pinned revision: the [freshness of a rise](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/LcmRecordExcess.lean#L14), the [covered-wall excess bound](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/LcmRecordExcess.lean#L31), the [wall count](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/LcmRecordExcess.lean#L47), and the [weighted wall charge](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/LcmRecordExcess.lean#L64). The global analytic argument, which is the passage from the per-step charge to divergence of the whole sum, is not formalised. An exact finite replay covers $`6{,}008`$ seed-modulus cases over $`6{,}000`$ distinct rational seeds, $`26{,}171`$ nonterminal transitions and $`6{,}008`$ terminal states, and every case reaches centred zero within $`15`$ steps; finite data of that kind do not prove universal termination.
+
+<a id="remaining-obligation."></a>
+
+#### Remaining obligation.
+
+Derive finiteness of the displayed sum for one admissible weight and one fixed $`B`$ from rational denominator feedback, or contradict a nonterminal orbit by another route. The logarithmic discount weakens what suffices; it does not establish it.
 
 Set
 ``` math
@@ -645,7 +361,7 @@ Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. Centring im
 
 <div id="res:arithmeticrecord" class="theorem">
 
-**Theorem 27** (arithmetic weighted-record dichotomy). *Let $`a_n,L_n,U_n`$ be positive integers and $`V_n`$ integers satisfying
+**Theorem 12** (arithmetic weighted-record dichotomy). *Let $`a_n,L_n,U_n`$ be positive integers and $`V_n`$ integers satisfying
 ``` math
 \begin{gathered}
  L_{n+1}=\operatorname{lcm}(L_n,a_n),\qquad \rho_n=\gcd(L_n,a_n),\\
@@ -689,7 +405,7 @@ Only the lower centring bound was used. In particular, neither normalised vanish
 
 <div id="res:weightedrecord" class="theorem">
 
-**Theorem 28** (weighted record excess). *Assume the growth and rationality hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, and let $`f`$ be as in Theorem <a href="#res:arithmeticrecord" data-reference-type="ref" data-reference="res:arithmeticrecord">27</a>. The sequence is eventually Sylvester if and only if, for some integer $`B\ge0`$,
+**Theorem 13** (weighted record excess). *Assume the growth and rationality hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, and let $`f`$ be as in Theorem <a href="#res:arithmeticrecord" data-reference-type="ref" data-reference="res:arithmeticrecord">12</a>. The sequence is eventually Sylvester if and only if, for some integer $`B\ge0`$,
 ``` math
 \sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)<\infty.
 ```*
@@ -698,7 +414,7 @@ Only the lower centring bound was used. In particular, neither normalised vanish
 
 <div class="proof">
 
-*Proof.* If the endpoint fails, centred zero is never reached on a sufficiently late tail. Integrality gives $`1/U_n\le|V_n|/U_n=|E_n|/C_n\to0`$, so $`U_n`$ is unbounded. Theorem <a href="#res:arithmeticrecord" data-reference-type="ref" data-reference="res:arithmeticrecord">27</a>, applied after the centring threshold, forces divergence for every $`B`$. Removing a finite prefix changes only finitely many global record terms. Conversely, a Sylvester tail telescopes to $`x_n=1/(a_n-1)`$, so $`V_n=0`$ eventually. ◻
+*Proof.* If the endpoint fails, centred zero is never reached on a sufficiently late tail. Integrality gives $`1/U_n\le|V_n|/U_n=|E_n|/C_n\to0`$, so $`U_n`$ is unbounded. Theorem <a href="#res:arithmeticrecord" data-reference-type="ref" data-reference="res:arithmeticrecord">12</a>, applied after the centring threshold, forces divergence for every $`B`$. Removing a finite prefix changes only finitely many global record terms. Conversely, a Sylvester tail telescopes to $`x_n=1/(a_n-1)`$, so $`V_n=0`$ eventually. ◻
 
 </div>
 
@@ -714,7 +430,7 @@ The criterion also has an exact expression in the original growth defect. Put $`
  \frac{(1-\theta_n)(a_n-1+\theta_{n+1})}{a_{n+1}},
  \qquad 0<\gamma_n+\theta_n<3/a_n
 ```
-eventually. Thus the two nonnegative summands $`U_nf(U_n)(\gamma_n-B/U_n)_+`$ and $`(-V_n-B)_+f(U_n)`$ differ by at most $`3U_nf(U_n)/a_n`$. This is summable because $`U_n\le C_n=\exp(o(n))`$, $`f(U_n)\le f(1)`$, and $`a_n\ge\exp(c2^n)`$ eventually for some $`c>0`$. Consequently Theorem <a href="#res:weightedrecord" data-reference-type="ref" data-reference="res:weightedrecord">28</a> is equivalent to finiteness of
+eventually. Thus the two nonnegative summands $`U_nf(U_n)(\gamma_n-B/U_n)_+`$ and $`(-V_n-B)_+f(U_n)`$ differ by at most $`3U_nf(U_n)/a_n`$. This is summable because $`U_n\le C_n=\exp(o(n))`$, $`f(U_n)\le f(1)`$, and $`a_n\ge\exp(c2^n)`$ eventually for some $`c>0`$. Consequently Theorem <a href="#res:weightedrecord" data-reference-type="ref" data-reference="res:weightedrecord">13</a> is equivalent to finiteness of
 ``` math
 \begin{equation}
 \label{eq:weightedgrowth}
@@ -724,17 +440,605 @@ eventually. Thus the two nonnegative summands $`U_nf(U_n)(\gamma_n-B/U_n)_+`$ an
 ```
 for some $`B`$. The original hypotheses do not currently supply this finiteness. In particular, termwise convergence to zero is insufficient. Also, $`d_n`$ is the actual jump, including any recovery from a drawdown; it must not be replaced by $`R_{n+1}-R_n`$ in the crossing proof.
 
+<a id="sec:records"></a>
+
+# Criteria in the record coordinates
+
+The criterion of Section <a href="#sec:lcmrecords" data-reference-type="ref" data-reference="sec:lcmrecords">4</a> lives in the LCM coordinates $`U_n=C_n/M_n`$, where old divisors persist. The statements of this section live in the primitive coordinates, where old divisors can be deleted. They are collected here because each is an equivalence, a dichotomy, or an unconditional exclusion, and because each sharpens the profile of a counterexample in a direction the earlier sections do not reach.
+
+<a id="primitive-coordinates."></a>
+
+#### Primitive coordinates.
+
+Put $`G_n=\gcd(C_n,D_n)`$, $`u_n=C_n/G_n`$, $`v_n=D_n/G_n`$, $`\tilde e_n=E_n/G_n`$ and $`h_n=G_{n+1}/G_n`$, so that $`w_n=a_nu_n-v_n=u_n-\tilde e_n`$, $`h_nu_{n+1}=w_n`$, $`h_nv_{n+1}=a_nv_n`$ and $`\gcd(u_n,u_{n+1})=1`$. The primitive error $`\tilde e_n`$ is signed, and $`e_n=-E_n`$ of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a> remains the magnitude in the unreduced coordinates; neither is Koizumi’s rational gap $`\varepsilon_n`$ of Section <a href="#sec:problem" data-reference-type="ref" data-reference="sec:problem">1</a>. Write $`R_n=\max_{k\le n}u_k`$ and $`H_n=\max_{j\le n}C_j`$ for the two running maxima, $`s_n=R_{n+1}-R_n`$ for the true record increment, $`d_n=u_{n+1}-u_n`$ at a strict rise, $`m_n=(-\tilde e_n)_+`$, $`\mathcal A_n=R_nm_n/u_n`$ for the record-amplified negative error, $`\delta_n=(a_n^2/a_{n+1}-1)_+`$ for the growth defect, and $`\ell(x)=\log_2\log_2\max(4,x)`$. The symbol $`\mathcal A_n`$ is unrelated to the prefix product $`A_n`$ of Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">12</a>. A step is *clean* when $`h_n=1`$. Call the standing hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, read through Koizumi’s coordinates together with normalised vanishing, the hypotheses (H), and write (S) for the conclusion that the sequence is eventually Sylvester.
+
+<a id="source-and-evidence-conventions-for-this-section."></a>
+
+#### Source and evidence conventions for this section.
+
+Each statement below carries its own evidence line. “Lean” means that a declaration with that statement and a complete proof body is present in the formal sources. Several of the modules named below are outside the pinned public revision 4ab50e144847; those are marked, and no link is offered for them. Where a result is an ordinary proof over a Lean core, the Lean part is named exactly, and the part that is ordinary mathematics is named exactly as well.
+
+<a id="the-record-increment-coefficient"></a>
+
+## The record-increment coefficient
+
+<div id="res:recorddichotomy" class="theorem">
+
+**Theorem 14** (record-excess dichotomy). *Let $`\Theta=\limsup_n(H_{n+1}-H_n)/\ell(H_n)`$ on a nonterminating canonical orbit under (H). Then either $`G_n`$ is unbounded and $`\Theta`$ is infinite, or $`G_n`$ stabilises at a value $`g`$ and $`\Theta\ge g\,v_T/\varphi(v_T)`$ for every late $`T`$, so that $`\Theta>g\ge1`$. Hence $`\Theta=0`$ or $`\Theta>1`$, and $`\Theta\le1`$ forces (S).*
+
+</div>
+
+<div id="res:loglogboundary" class="corollary">
+
+**Corollary 15** (inclusive log-log boundary). *If $`\limsup_n(-E_n)_+/\ell(C_n)\le1`$ then (S) holds. Every counterexample therefore satisfies $`\limsup_n(-E_n)_+/\ell(C_n)>1`$ strictly.*
+
+</div>
+
+<a id="mechanism."></a>
+
+#### Mechanism.
+
+Four steps. The drawdown ladder $`r_n=(-E_n-B_n)_+`$ with $`B_{n+1}=(B_n+E_n)_+`$ and $`B_n=H_n-C_n`$ gives $`0\le r_n\le(-E_n)_+`$, so a bound on the record increment is weaker than a bound on the negative error and is therefore the better trigger. A divisor of $`C_t`$ and $`D_t`$ at a record locks into every later record increment, so a pairwise-coprime block of moduli above $`B`$ dividing $`D_T`$ contradicts $`r_n\le B`$ below height $`2P+B`$. If $`\sup_nG_n`$ is infinite then $`\Theta`$ is infinite, so a finite $`\Theta`$ forces a genuinely primitive tail on which all multipliers are pairwise coprime. Pre-sieving the CRT block with $`x\equiv0
+\pmod{v_N}`$ makes a block of length $`B`$ cost only $`\varphi(v_N)v_N^{-1}B`$ fresh moduli, which gives the strict inequality.
+
+<a id="evidence.-1"></a>
+
+#### Evidence.
+
+Ordinary proof over the Lean core. The kernel-checked ingredients are the [persistence of a common divisor](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L111), the [bounded CRT block](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L51), the [slow-rise landing lemma](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L194), and the [coprime-block exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L280). The running-maximum persistence clause, the record-increment trigger, the gcd rescaling and the pre-sieved amplification are ordinary mathematics. Finite replay: the identities hold exactly on four orbits, the $`B=20`$, $`R=6`$ CRT reconstruction equals $`521026757646`$ and excludes all twenty positions, and the Fermat product identity and the maximal gap ratio $`1.8116`$ at $`u\ge1000`$ against $`\sigma^{-1}=2`$ hold.
+
+<a id="remaining-obligation.-1"></a>
+
+#### Remaining obligation.
+
+No upper bound on $`\Theta`$ is proved. The branch $`\Theta=\infty`$ is exactly the surviving regime.
+
+<a id="two-exact-equivalences-under-arbitrary-cancellation"></a>
+
+## Two exact equivalences under arbitrary cancellation
+
+<div id="res:recordamplified" class="theorem">
+
+**Theorem 16** (record-amplified rigidity). *Under (H), the following are equivalent: (S); $`\limsup_n\mathcal A_n<\infty`$; $`\limsup_nR_n\delta_n<\infty`$. Each of those two limits superior is $`0`$ or $`+\infty`$.*
+
+</div>
+
+<div id="res:criticalrate" class="corollary">
+
+**Corollary 17** (the critical rate). *Under (H) and $`\delta_n=O(1/n)`$, with no convergence of $`n\delta_n`$ assumed, (S) is equivalent to $`u_n=O(n)`$ and to $`(-\tilde e_n)_+=O(1)`$. A counterexample at the critical rate therefore has $`\limsup_nu_n/n=\infty`$ and $`\limsup_n(-\tilde e_n)_+=\infty`$.*
+
+</div>
+
+<a id="mechanism.-1"></a>
+
+#### Mechanism.
+
+On a non-Sylvester orbit, arbitrarily late indices carry $`B`$ distinct primes above a chosen bound dividing $`v_T`$, because paid steps have density zero and a block of consecutive clean steps has pairwise-coprime multipliers all dividing the final denominator. A finite alternative between a CRT crossing and a deletion then forces some $`\mathcal A_n`$ above any prescribed level. The passage to the growth defect uses $`|\delta_n-m_n/u_n|\le3/a_n`$ and $`R_n/a_n\to0`$.
+
+<a id="evidence.-2"></a>
+
+#### Evidence.
+
+Ordinary proof. The step that a cancellation at $`s`$ is still visible at the first later negative error, in the form $`u_t\le u_{s+1}`$ and $`u_su_t\le R_t|\tilde e_t|u_{s+1}`$, is Lean-checked as `recordAmplified_error_after_cancellation` in `SaturatedSquareTransport.lean`, which is outside the pinned public revision 4ab50e144847. Exact fixture: $`15/134=1/10+1/85+1/5695`$, with primitive steps $`(15,134)\to(4,335)\to(1,5695)`$ and $`\mathcal A_1=15/4`$, meeting the visibility lemma with equality.
+
+<a id="remaining-obligation.-2"></a>
+
+#### Remaining obligation.
+
+The equivalence relocates the problem into the $`\mathcal A_n`$ axis. Nothing here bounds $`\mathcal A_n`$ on the canonical orbit.
+
+<div id="res:unitrecord" class="theorem">
+
+**Theorem 18** (unit record increments). *Under (H), if $`R_{n+1}-R_n\le1`$ for all large $`n`$, then $`a_{n+1}=a_n^2-a_n+1`$ for all large $`n`$. Hence (S) holds if and only if $`\#\{n:R_{n+1}-R_n\ge2\}`$ is finite. No hypothesis is placed on drawdowns, on record-setting jumps, or on the cancellation factors $`h_n`$.*
+
+</div>
+
+<a id="mechanism.-2"></a>
+
+#### Mechanism.
+
+Otherwise $`u_n\to\infty`$. A late fresh index $`j`$ cannot have all its exact prime powers below $`B=R_{j+1}+2`$, since $`a_j\mid\operatorname{lcm}(1,\ldots,B)`$ would give $`\log a_j\le B\log B`$ against the doubly exponential growth of $`a_j`$. So some exact prime power $`P=p^{k}`$ of $`a_j`$ exceeds $`R_s+2`$ at $`s=j+1`$ and divides $`v_s`$. Let $`Y`$ be the least multiple of $`p`$ above $`R_s`$. At the first $`t>s`$ with $`u_t\ge Y`$ the unit increment forces $`u_t=Y`$ exactly, while the valuation threshold keeps $`P\mid v_t`$, so $`p\mid u_t`$ contradicts primitivity.
+
+<a id="evidence.-3"></a>
+
+#### Evidence.
+
+Lean, with an explicit supply hypothesis. The declarations are `unit_recordIncrement_cut` and `recordIncrementOne_sylvesterNext_eventually` in `RecordIncrementBarrier.lean`, which is outside the pinned public revision 4ab50e144847. The prime-power supply is a hypothesis of the formal statement and is discharged at every late index by an ordinary proof, so the complete advertised endpoint is an ordinary proof with a kernel-checked principal part, namely the landing contradiction.
+
+<a id="relation."></a>
+
+#### Relation.
+
+This theorem is incomparable with the two-unit record theorem: a record-setting jump of size at most two bounds $`s_n\le2`$ rather than $`s_n\le1`$, and $`s_n\le1`$ allows arbitrarily large record-setting jumps after a drawdown. The fixture $`(8,177)\to(7,4071)\to(10,2373393)`$ with multipliers $`23`$ and $`583`$ has records $`8`$ and $`10`$, increment $`2`$, jump $`3`$ and $`\gcd(8,10)=2`$, which is why the parity step of the odd cut does not transfer from jumps to increments.
+
+<a id="protected-epochs-and-the-energy-criterion"></a>
+
+## Protected epochs and the energy criterion
+
+<div id="res:epochenergy" class="theorem">
+
+**Theorem 19** (protected epoch inequality). *Let the orbit satisfy the primitive cocycle with $`2|\tilde e_n|<u_n`$ from an index $`s`$. Let $`p\ge3`$ be prime, $`Q=p^{\ell}`$ divide $`v_s`$ with $`Q\ge16`$, put $`L=pQ/2`$, and assume $`R_s<L/2`$. Let $`\tau`$ be the first index with $`u_\tau\ge
+L`$, let $`J`$ be the set of steps in $`[s,\tau)`$ that first cross at least one odd multiple of $`p`$ in $`(L/2,L]`$, and put $`X=\sum_{n\in J}(d_n-2)`$. Then every $`n\in J`$ is a clean record step with $`d_n\ge3`$, and $`pQ\le(8p+8)\lvert J\rvert+4X+8p`$.*
+
+</div>
+
+<div id="res:energycriterion" class="theorem">
+
+**Theorem 20** (energy criterion). *Under (H), the energy $`\mathcal E=\sum_{n\ \mathrm{record}}\bigl(\mathbf 1_{d_n\ge3}u_n^{-1/2}
++(d_n-2)_+u_n^{-1}\bigr)`$ is finite if and only if (S) holds; and $`\sum_{n\ \mathrm{record}}(d_n-2)_+u_n^{-1/2}`$ is finite if and only if (S) holds.*
+
+</div>
+
+<a id="mechanism.-3"></a>
+
+#### Mechanism.
+
+Below $`L`$ the numerator satisfies $`w_n<\tfrac32L<p^{\ell+1}`$, so the prime power persists and $`p\nmid u_t`$ throughout $`[s,\tau]`$. Each barrier above $`R_s`$ is first crossed at a record step, where a jump of at most two would require either the forbidden landing or a pair of even endpoints. Barriers first crossed at one step lie in an interval of length $`d_n`$ with spacing $`2p`$, which gives the per-step capacity $`1+d_n/(2p)`$, and the barrier count is at least $`Q/8-1`$. For the criterion, an odd prime power of the required size is available at every late index, so each late window carries energy at least $`1/16`$, and the tail of a convergent series tends to zero.
+
+<a id="evidence.-4"></a>
+
+#### Evidence.
+
+The integer epoch inequality is Lean, as `protected_epoch_energy_integer` with its three counting lemmas in `ProtectedEpochEnergy.lean`, which is outside the pinned public revision 4ab50e144847. The real-valued corollary, the odd prime-power supply at every late index, and the global criterion are ordinary proofs. This discharges a quantitative record-excess target that an earlier wave had left open, and it uses one protected prime power rather than a product of moduli.
+
+<a id="a-slow-negative-part-and-the-original-coordinates"></a>
+
+## A slow negative part, and the original coordinates
+
+<div id="res:slownegative" class="theorem">
+
+**Theorem 21** (slow negative part). *Let $`(a,C,D)`$ be an exact natural orbit with $`a_n>1`$, $`C_n>0`$, $`D_0\ge1`$, under normalised vanishing. Suppose that for some $`\delta\in(0,1)`$ and all large $`n`$ with $`E_n<0`$ one has $`-E_n\le(1-\delta)\ell(C_n)`$. Then $`E_n=0`$ for all large $`n`$, and $`a_{n+1}=a_n^2-a_n+1`$ for all large $`n`$.*
+
+</div>
+
+Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> is the case of a constant bound, since a constant is eventually below $`(1-\delta)\ell(C_n)`$.
+
+<a id="mechanism.-4"></a>
+
+#### Mechanism.
+
+Normalised vanishing gives $`C_{n+1}<\tfrac32C_n`$, hence $`\ell(C_n)\le\log_2n+O(1)`$, and $`a_n`$ grows at least geometrically. The multiplier overlap $`\gcd(a_n,D_n)`$ is bounded by the next negative magnitude and therefore by $`\ell(C_n)+1`$. Splitting $`a_n`$ into the part coprime to $`D_n`$ and the burnt part, a poor index supplies a burn prime with valuation above $`\sqrt n`$, and such primes are injective across a window, so a window $`[T,2^T]`$ has at most $`T+O(1)`$ poor indices. The first $`B`$ rich indices give $`B`$ pairwise-coprime moduli above any prescribed size, and the block form of the landing lemma applies.
+
+<a id="evidence.-5"></a>
+
+#### Evidence.
+
+Ordinary proof over the Lean core. The kernel-checked ingredients are the [persistence of a common divisor](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L111), the [overlap transport](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L162), the [landing lemma](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L194) and the [coprime-block exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SlowRiseBarrier.lean#L280). The burn count and the choice of constants are ordinary mathematics. Corollary <a href="#res:loglogboundary" data-reference-type="ref" data-reference="res:loglogboundary">15</a> supersedes this theorem on two axes, the drawdown-corrected observable and the inclusive constant, and this theorem is retained because its hypothesis is stated directly on $`E_n`$.
+
+<div id="res:strausbounded" class="theorem">
+
+**Theorem 22** (the Erdős–Straus quantity, bounded form). *Let $`a_{n+1}/a_n^2\to1`$ and $`\sum1/a_n\in\mathbb{Q}`$, and put
+``` math
+Q_n=\frac{a_1a_2\cdots a_{n-1}}{a_n}
+     \left(\frac{a_n^2}{a_{n+1}}-1\right).
+```
+If $`\limsup_nQ_n<\infty`$ then the sequence is eventually Sylvester. If for some $`\delta>0`$ and all large $`n`$ one has $`Q_n\le(1-\delta)\lambda\,\ell(a_1\cdots a_{n-1}/a_n)`$, where $`\lambda>0`$ depends only on the sequence, the same conclusion holds.*
+
+</div>
+
+<a id="attribution."></a>
+
+#### Attribution.
+
+Erdős and Straus require $`\limsup_nQ_n\le0`$ in the corresponding criterion, with the least common multiple in place of the product \[erdosstraus1964, Theorem 3, p. 132\]; Koizumi’s Corollary 20(1) uses the product form \[koizumi2025, Cor. 20(1), p. 12\]. The statement above is the same Lean-checked endpoint as Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a>, transported into that language, and its content over the published criteria is the passage from $`\le0`$ to $`<\infty`$. It is the only place in this note where the machine-checked theorem is written in the vocabulary of the 1964 paper.
+
+<a id="evidence.-6"></a>
+
+#### Evidence.
+
+Ordinary proof composing Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> and Theorem <a href="#res:slownegative" data-reference-type="ref" data-reference="res:slownegative">21</a> with Koizumi’s bridge. The identity used is $`Q_n=-(B_{n-1}/c_1)\varepsilon_n+(B_{n-1}/c_1)\beta_nc_{n+1}`$ with $`\beta_k=O(1/a_k)`$, whose second term tends to zero because $`c_{n+1}\le
+c_1(3/2)^n`$ while $`a_n`$ is doubly exponential.
+
+<div id="res:onethreshold" class="theorem">
+
+**Theorem 23** (the $`1/n`$ threshold). *Let $`a_{n+1}/a_n^2\to1`$ and $`\sum1/a_n\in\mathbb{Q}`$. If $`\limsup_n n\,(a_n^2/a_{n+1}-1)_+<1`$, then $`a_{n+1}=a_n^2-a_n+1`$ for all large $`n`$.*
+
+</div>
+
+The constant $`1`$ is the boundary of this method. The template $`\tilde e_n\equiv-1`$ with $`u_n=c+n`$ has $`n(-\tilde e_n)/u_n\to1`$, meets every hypothesis of the Erdős–Straus criterion except the sign, and is excluded only by Theorem <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">30</a>. This sharpens the sufficient rate $`a_n^2/a_{n+1}=1+o(1/n)`$ recorded by Koizumi \[koizumi2025, Remark 21, p. 13\] to an explicit constant. Ordinary proof; the endgame is Koizumi’s Proposition 19(2).
+
+<a id="an-unconditional-irrationality-criterion"></a>
+
+## An unconditional irrationality criterion
+
+<div id="res:cubicexclusion" class="theorem">
+
+**Theorem 24** (rising-factorial cubic exclusion). *For every exact positive integer orbit, every $`\alpha\in\mathbb{Q}_{>0}`$ and every $`\beta\in\mathbb{Q}`$,
+``` math
+\liminf_{X\to\infty}
+ \frac{\#\{n\le X:C_n\ne\alpha\,n(n+1)(n+2)+\beta\}}{X}>0 .
+```*
+
+</div>
+
+<div id="res:cubicrate" class="theorem">
+
+**Theorem 25** (cubic-rate irrationality). *If strictly increasing positive integers satisfy $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$, then $`\sum_n1/a_n`$ is irrational.*
+
+</div>
+
+<a id="mechanism.-5"></a>
+
+#### Mechanism.
+
+Density zero of the exceptions would give four consecutive agreements arbitrarily late, so the third difference is constant, $`G_n`$ stabilises, and the primitive tail carries an integral cubic $`Q(n)=(m/6)n(n+1)(n+2)+c`$ with $`c=\pm1`$ by adjacent coprimality. For the irreducible case, a numerator zero makes an explicit quantity a square modulo the specialising prime, so Chebotarev square specialisation puts $`x^2-1`$ in the squares of the field generated by a root $`x`$ of the associated cubic; the trace conditions then force the sole integer scale $`m=12`$. The two survivors $`2n(n+1)(n+2)\pm1`$ have numerator words modulo $`7`$ that the feedback recursion cannot realise, which gives lower density at least $`1/28`$. For the corollary, rationality gives the canonical orbit with $`C_{n+1}/C_n=a_n^2/a_{n+1}+O(1/a_n)`$ and $`1/a_n\ll n^{-3}`$; an integer-extraction lemma at a regular rate then produces an exact rising-factorial cubic, against the exclusion.
+
+<a id="evidence.-7"></a>
+
+#### Evidence.
+
+Ordinary proof with an exact finite replay of every finite claim, including the two words modulo $`7`$, the image $`\{0,2,5,6\}`$ of the recursion, the sole integer scale $`12`$, and the countermodel $`n(n+1)(n+2)+(-1)^n`$, whose ratio is $`1+3/n+O(n^{-3})`$ and which is not eventually polynomial. This countermodel shows the exponent $`o(n^{-\lambda})`$ in the extraction lemma is sharp. No Lean declaration covers either statement.
+
+<a id="position."></a>
+
+#### Position.
+
+Theorem <a href="#res:cubicrate" data-reference-type="ref" data-reference="res:cubicrate">25</a> carries no rationality hypothesis and no state hypothesis. Its rate is faster than the regime of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> allows to be decided by the earlier sections, and it is the only unconditional irrationality statement in this note.
+
+<a id="what-the-method-cannot-reach"></a>
+
+## What the method cannot reach
+
+<div id="res:classicalhalfspace" class="proposition">
+
+**Proposition 26** (the classical criteria decide one half-space). *The overlap debt divides the tail gcd, so $`\kappa'_n=G_n/M_n`$ is a positive integer and $`E_n/M_n=\kappa'_n\tilde e_n`$ is an integer carrying the sign of $`E_n`$. Consequently the Erdős–Straus Theorem 3 quantity and Koizumi’s Corollary 20(1) quantity carry the sign of $`E_n`$ at every index, and each of those criteria decides exactly the half-space $`E_n\ge0`$ eventually, which Koizumi’s Proposition 19(2) closes. Moreover $`\limsup_nQ_n/M_n<\infty`$ holds if and only if $`(-E_n)_+=O(M_n)`$; that condition is equivalent to $`\limsup_nQ_n<\infty`$ on a cancellation-free tail, and every record of $`u`$ is set by a clean step, at which $`M`$ does not grow.*
+
+</div>
+
+<a id="evidence.-8"></a>
+
+#### Evidence.
+
+Ordinary proof over exact identities, with an exact finite replay on $`4{,}472`$ frames and $`610`$ clean triples, zero failures. The fixture family with $`C_n=c+nm`$, $`D_n=(a_n-1)C_n-m`$ and $`a_n=1+C_{n+1}k_n`$ realises, at $`(c,m,h)=(10,3,6)`$, $`(13,3,6)`$ and $`(100003,3,5)`$, arbitrarily long blocks on which every classical hypothesis quantity equals $`-E_n=3`$ at every index while $`G_n=\kappa'_n=M_n=1`$: the classical hypotheses fail by exactly $`m`$ units on a cancellation-free block.
+
+<a id="reading."></a>
+
+#### Reading.
+
+This is a negative result about the classical toolkit and about the note’s own LCM-weighted question. It proves nothing about the surviving regime. A third classical quantity, from Tijdeman and Yuan’s 2002 Theorem 4.1, enters the same computation; it is not cited here because this note carries no verified bibliographic record of that paper.
+
+<div id="res:coprimalitycap" class="proposition">
+
+**Proposition 27** (cap on the coprimality route). *Let $`m_0<m_1<\cdots`$ be pairwise coprime integers at least $`2`$ with $`\sum_i1/m_i\le1/2`$. For every $`x\ge1`$ and every $`L>2^{k+1}`$, where $`k=\#\{i:m_i\le x+L\}`$, the window $`[x,x+L)`$ contains an integer coprime to every $`m_i`$. Consequently there is a sequence $`u_n\to\infty`$ coprime to every $`m_i`$ with $`u_{n+1}-u_n\le2^{k(u_n)+1}+1`$, which for $`m_i\ge2^{2^i}`$ is a rise of order $`\log u_n`$. For pairwise-coprime $`m_j`$ with $`\ell(m_j)=j+O(1)`$ and $`\sigma=\prod_j(1-1/m_j)>0`$, the whole-modulus-avoiding walk has $`\limsup_n(u_{n+1}-u_n)/\ell(u_n)=\sigma^{-1}`$ exactly, and the Fermat family $`m_j=2^{2^j}+1`$ gives the constant exactly $`2`$.*
+
+</div>
+
+<a id="reading.-1"></a>
+
+#### Reading.
+
+Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">34</a> and the landing lemmas use about the multipliers only that they are pairwise coprime, that they divide later denominator states, and that a modulus dividing the current numerator is impossible at a landing. Proposition <a href="#res:coprimalitycap" data-reference-type="ref" data-reference="res:coprimalitycap">27</a> shows those data admit walks with rises of order $`\log u`$, while the CRT block forces rises only of order $`\ell(u)`$. No argument using only those data can exclude negative parts of order $`\log C_n`$, and the constant $`1`$ in Corollary <a href="#res:loglogboundary" data-reference-type="ref" data-reference="res:loglogboundary">15</a> is the CRT constant rather than a feature of the problem. Ordinary proof, with a numerical witness walk whose maximal rise against Sylvester’s numbers as moduli is $`12`$ up to height $`2\cdot10^6`$.
+
+<a id="the-exact-remaining-obstacle."></a>
+
+#### The exact remaining obstacle.
+
+Every criterion of this section leaves the same regime, which is
+``` math
+(1-\delta)\ell(C_n)\ \le\ -E_n\ =\ o(C_n)
+ \qquad\text{at infinitely many }n,
+```
+with divergent normalised negative mass, unbounded record-amplified error, and infinitely many clean primitive record jumps of size at least three. Any argument entering it must use the congruence $`E_n\equiv D_n\pmod{C_n}`$ beyond coprimality, or supply a second mechanism that forces landings.
+
+<a id="sec:descent"></a>
+
+# Descent when the error is nonnegative
+
+The hypothesis of the theorem below is the update law of Proposition <a href="#res:update" data-reference-type="ref" data-reference="res:update">2</a> read inside $`\mathbb{N}`$: the error is nonnegative at every index, so the tail state never rises. This is the easy case, and it is settled in three lines.
+
+<div id="res:descent" class="theorem">
+
+**Theorem 28** (descent). *Let $`C,E:\mathbb{N}\to\mathbb{N}`$ satisfy $`C_{n+1}+E_n=C_n`$ for every $`n`$. Then $`E_n=0`$ for all sufficiently large $`n`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* A one-line descent. The relation forces $`C_{n+1}\le C_n`$, so $`C`$ is a nonincreasing sequence of natural numbers and is eventually equal to its minimum; beyond that index $`C_{n+1}=C_n`$, and the relation gives $`E_n=0`$. ◻
+
+</div>
+
+Formalised as the [stabilisation of the nonnegative error](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1837), on the [eventual constancy of a nonincreasing sequence](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1819).
+
+The hypothesis is exactly one-sidedness: $`C`$ and $`E`$ take values in $`\mathbb{N}`$. If $`E_n<0`$ at infinitely many indices then $`C`$ rises there, nothing descends, and the argument is unavailable. That is the whole difficulty, and the rest of this note is directed at it.
+
+<a id="sec:constant"></a>
+
+# Excluding a constant negative magnitude
+
+Suppose the error is negative with a constant magnitude, $`E_n=-m`$ for a fixed $`m>0`$ and every $`n`$. By Proposition <a href="#res:update" data-reference-type="ref" data-reference="res:update">2</a> the state then climbs by exactly $`m`$ each step, so $`C_n=c+nm`$ with $`c=C_0`$, and the definition of the centred state becomes a *shape equation*
+``` math
+D_n+m=(a_n-1)\,(c+nm) .
+\tag{5.1}\label{eq:shape}
+```
+Together with $`D_{n+1}=a_nD_n`$ this is a closed system in $`(a,D)`$, and it has no solutions. The following instance shows how the failure happens; the theorem then shows that it cannot be avoided.
+
+<div id="ex:shape" class="example">
+
+**Example 29** (the shape equation running until it fails). Take $`m=c=1`$, so that $`C_n=1+n`$ and the shape equation <a href="#eq:shape" data-reference-type="eqref" data-reference="eq:shape">[eq:shape]</a> reads $`D_n+1=(a_n-1)(1+n)`$, and take $`D_0=1`$. Each step is now determined: at $`n=0`$ the equation reads $`2=(a_0-1)\cdot1`$, so $`a_0=3`$, and $`D_1=a_0D_0=3`$; at $`n=1`$ it reads $`4=(a_1-1)\cdot2`$, so $`a_1=3`$, and $`D_2=a_1D_1=9`$; at $`n=2`$ it reads $`10=(a_2-1)\cdot3`$, which has no integer solution, and the orbit stops. Longer prefixes occur for other starting values: the finite search recorded in Appendix <a href="#app:residue" data-reference-type="ref" data-reference="app:residue">14</a> found none longer than $`17`$ among the initial states below $`5000`$.
+
+</div>
+
+<div id="res:constant" class="theorem">
+
+**Theorem 30** (no constant negative magnitude). *There is no pair of sequences $`a,D:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$ for all $`n`$ satisfying $`D_{n+1}=a_nD_n`$ and <a href="#eq:shape" data-reference-type="eqref" data-reference="eq:shape">[eq:shape]</a>, for any $`m>0`$ and any $`c`$. The same holds if the shape only begins at some index.*
+
+</div>
+
+<div class="proof">
+
+*Proof when $`c`$ and $`m`$ are coprime.* Assume first $`\gcd(c,m)=1`$. Two facts about the multipliers do all the work, and the difficulty lies in the fact that they concern the same finite set of primes from opposite directions: the first makes every multiplier meet that set, the second lets each prime of the set meet at most one multiplier.
+
+*Every $`a_j`$ shares a prime with $`m`$.* Suppose $`\gcd(a_j,m)=1`$. Then $`m`$ is invertible modulo $`a_j`$, so some $`n`$ has $`c+nm\equiv0`$, that is $`a_j\mid C_n`$; and $`a_j\mid D_n`$ for every $`n>j`$, since $`D`$ is multiplicative with $`a_j`$ among its factors. Choosing such an $`n`$ beyond $`j`$ and reading <a href="#eq:shape" data-reference-type="eqref" data-reference="eq:shape">[eq:shape]</a> modulo $`a_j`$ gives $`a_j\mid m`$, contradicting $`\gcd(a_j,m)=1`$ and $`a_j\ge2`$.
+
+*A prime divisor of $`m`$ occurs in at most one $`a_j`$.* Suppose $`p\mid m`$ and $`p\mid a_j`$. For $`n>j`$ we have $`p\mid D_n`$, so <a href="#eq:shape" data-reference-type="eqref" data-reference="eq:shape">[eq:shape]</a> gives $`(a_n-1)C_n\equiv0 \pmod p`$. Now $`C_n=c+nm\equiv c`$, and $`p\nmid c`$ because $`p\mid m`$ and $`\gcd(c,m)=1`$; hence $`p\mid a_n-1`$, so $`p\nmid a_n`$. Thus $`p`$ cannot divide any later multiplier.
+
+The two facts are incompatible. Each of the infinitely many multipliers needs a prime divisor of $`m`$, and each prime divisor of $`m`$ serves at most one multiplier, while $`m`$ has only finitely many prime divisors. ◻
+
+</div>
+
+The case $`\gcd(c,m)=1`$ is the [scale-primitive exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L147). The special case $`m=c=1`$, worked through in Example <a href="#ex:shape" data-reference-type="ref" data-reference="ex:shape">29</a>, where $`m`$ has no prime divisors at all and the first fact is immediately contradictory, is recorded separately as the [normalised exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L100).
+
+<div class="proof">
+
+*Removing the scale.* For general $`c`$, put $`g=\gcd(c,m)`$. Equation <a href="#eq:shape" data-reference-type="eqref" data-reference="eq:shape">[eq:shape]</a> shows $`g\mid D_n`$ for every $`n`$, so dividing $`D`$, $`c`$ and $`m`$ by $`g`$ leaves a system of the same shape with coprime data, which the previous case excludes. ◻
+
+</div>
+
+Formalised as the [exclusion at every scale](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L286), and the eventual form, obtained by shifting the orbit to the first constant index, as the [eventual exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L350).
+
+Theorem <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">30</a> excludes a centred state that is eventually constant and negative, at every magnitude and every scale. It says nothing about a negative state whose magnitude changes, and the argument genuinely uses constancy: the finiteness of the set of prime divisors of $`m`$ is what the pigeonhole uses, and a varying magnitude presents a fresh set at each index.
+
+<a id="sec:periodic"></a>
+
+# Excluding a periodic negative magnitude
+
+The next case allows the magnitude to vary, provided it repeats. Write $`e_n=-E_n>0`$ for the magnitude, as in Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a>, so that $`C_{n+1}=C_n+e_n`$; suppose $`e`$ has period $`h`$, meaning $`e_{n+h}=e_n`$ for every $`n`$, and that the state gains a fixed *drift* $`M>0`$ over one period, meaning $`C_{n+h}=C_n+M`$ for every $`n`$.
+
+At $`h=1`$ this says that the magnitude is constant and that $`M`$ is its value, which is the situation of Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">7</a>; Theorem <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">30</a> already excludes it, and does so without the extra hypothesis $`e_n<a_n`$ imposed below. The new content is $`h\ge2`$.
+
+Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">7</a> could run its pigeonhole on the prime divisors of the single number $`m`$. Here the magnitude changes inside a period, and the number available to run it on is the drift $`M`$. Three lemmas replace the two facts of Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">7</a>. The first is that multipliers persist: every $`a_j`$ divides every strictly later denominator state, the [persistence of a multiplier](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L382). The second is a *lock*: a prime already dividing $`D`$ and also dividing the current multiplier is forced into the next tail state, the [one-step lock](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L402), and once present in both $`D`$ and $`C`$ it stays in every later $`D`$, $`C`$ and magnitude, the [persistence of a lock](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L429). The third transports a lock backwards through the period: if a divisor of the drift $`M`$ occurs in two multipliers, it is a common divisor of $`C_0`$ and of every magnitude, the [repeated-divisor transport](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L494), using that both the period relation and the drift iterate over any number of periods, the [iterated period](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L461) and the [iterated drift](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L476).
+
+<div id="res:periodic" class="theorem">
+
+**Theorem 31** (no periodic negative magnitude). *Let $`a,D,C,e:\mathbb{N}\to\mathbb{N}`$ with $`a_n\ge2`$, $`e_n>0`$ and $`e_n<a_n`$ for every $`n`$, satisfying
+``` math
+D_{n+1}=a_nD_n,\qquad C_{n+1}=C_n+e_n,\qquad D_n+e_n=(a_n-1)C_n ,
+```
+and suppose $`e_{n+h}=e_n`$ and $`C_{n+h}=C_n+M`$ for some $`h>0`$ and $`M>0`$. This is impossible.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Strong induction on the drift $`M`$. The difficulty lies in the fact that a repeated prime divisor of $`M`$ need not contradict anything directly. It instead forces a common scale on the whole orbit, which can be divided out, and the induction runs on the drift that the division reduces.
+
+Suppose first that no prime divisor of $`M`$ is a common divisor of $`C_0`$ and of every magnitude. Repeated-divisor transport then applies in the contrapositive: a prime divisor of $`M`$ occurring in two of the multipliers would be exactly such a common divisor, so each prime divisor of $`M`$ occurs in at most one multiplier. Against this, the argument of Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">7</a> run phase by phase (along a fixed residue class modulo $`h`$ the magnitude is constant and $`C`$ advances by $`M`$ at each period, so the multipliers of that phase meet an arithmetic progression exactly as in Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">7</a>) makes every multiplier share a prime with $`M`$. Since $`M`$ has only finitely many prime divisors and there are infinitely many multipliers, pigeonhole gives a contradiction.
+
+Otherwise some prime $`p`$ divides $`M`$, divides $`C_0`$, and divides every magnitude. Then $`p\mid C_n`$ for every $`n`$, since $`C_{n+1}=C_n+e_n`$ and both summands on the right are divisible by $`p`$, and the shape equation $`D_n+e_n=(a_n-1)C_n`$ then gives $`p\mid D_n`$ for every $`n`$. Divide $`D`$, $`C`$ and $`e`$ by $`p`$. The multipliers are untouched, so $`a_n\ge2`$ and $`e_n<a_n`$ persist and the magnitudes stay positive; the three recurrences are homogeneous in $`(D,C,e)`$ and so survive; the period is still $`h`$; and the drift becomes $`M/p<M`$. The inductive hypothesis applies. ◻
+
+</div>
+
+The first of the two cases above is the [phase-primitive exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L548), the induction is the [exclusion at every scale](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L690), and the eventual form is the [eventual exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L796).
+
+The bound $`e_n<a_n`$ is a genuine restriction and not a normalisation. It is the range in which a multiplier cannot divide its own phase magnitude, which is what the lock argument needs. It holds in the intended reading, where $`e_n`$ is a centred representative and $`a_n`$ grows quadratically, but it is assumed here and not derived. The drift hypothesis $`M>0`$ is also used: a periodic magnitude with zero drift would be identically zero, which is the case already settled by Section <a href="#sec:descent" data-reference-type="ref" data-reference="sec:descent">6</a>.
+
+<div class="remark">
+
+*Remark 1*. On the canonical orbit of \[koizumi2025\], read through the dictionary of Section <a href="#sec:problem" data-reference-type="ref" data-reference="sec:problem">1</a>, the bound $`e_n<a_n`$ holds eventually. Lemma 15(2) there gives the centring range $`-C_n/2\le E_n<C_n/2`$, so $`e_n=|E_n|\le C_n/2`$ at a negative index, and the proof of Lemma 15(3) gives $`C_{n+1}\le\tfrac32C_n`$  \[koizumi2025, p. 9\], hence the uniform bound $`C_n\le C_0(3/2)^{n}`$. Against this, summability of $`\sum1/a_n`$ forces $`a_n\to\infty`$, and the growth hypothesis $`a_n^{2}/a_{n+1}\to1`$ gives $`a_{n+1}\ge a_n^{2}/2`$ for all large $`n`$, hence $`a_{n+1}\ge2a_n`$ once $`a_n\ge4`$; so the multipliers grow at least geometrically with ratio $`2`$ and outgrow the bound on $`C_n`$, making $`e_n/a_n`$ eventually small. Two caveats. Summability is used for this step, so the estimate is not available from the state recurrence alone; and the conclusion is eventual and not universal, whereas Theorem <a href="#res:periodic" data-reference-type="ref" data-reference="res:periodic">31</a> imposes $`e_n<a_n`$ at every index, so it is the eventual form of the exclusion cited above that applies. Under the periodicity hypothesis of Theorem <a href="#res:periodic" data-reference-type="ref" data-reference="res:periodic">31</a> the estimate is in any case unnecessary, since a periodic magnitude is bounded while the multipliers tend to infinity.
+
+</div>
+
+<a id="sec:barrier"></a>
+
+# Bounded rise cannot remain coprime to fresh moduli
+
+Periodicity is still a strong assumption. Removing it needs a different kind of obstruction, and the one used here is a counting argument about where an integer sequence with bounded upward steps must land.
+
+<div id="res:crt" class="lemma">
+
+**Lemma 32** (shifted blocks of consecutive multiples). *Let $`m_0,\ldots,m_{B-1}`$ be pairwise coprime and at least $`2`$. For every bound there is a $`t`$ beyond it with $`m_i\mid t+i`$ for each $`i<B`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Standard Chinese remaindering: solve $`t\equiv-i \pmod{m_i}`$ simultaneously, then add multiples of $`\prod_i m_i`$ to pass the bound. ◻
+
+</div>
+
+Formalised as the [shifted consecutive multiples](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L833).
+
+<div id="ex:crt" class="example">
+
+**Example 33** (a block of three consecutive multiples). Take $`B=3`$ and $`(m_0,m_1,m_2)=(3,4,5)`$. The congruences $`t\equiv0\pmod3`$, $`t\equiv3\pmod4`$ and $`t\equiv3\pmod5`$ hold exactly when $`t\equiv3\pmod{60}`$. At $`t=3`$ the block is $`3,4,5`$ with $`3\mid3`$, $`4\mid4`$ and $`5\mid5`$; at $`t=63`$ it is $`63,64,65`$ with $`3\mid63`$, $`4\mid64`$ and $`5\mid65`$. A sequence of natural numbers that starts at $`0`$, tends to infinity and rises by at most $`3`$ at each step cannot step over the block $`\{3,4,5\}`$: it has a first value at least $`3`$, that value is at most $`5`$, and every member of $`\{3,4,5\}`$ is divisible by one of the three moduli.
+
+</div>
+
+<div id="res:barrier" class="theorem">
+
+**Theorem 34** (bounded rise cannot remain coprime to fresh moduli). *Let $`u:\mathbb{N}\to\mathbb{N}`$ tend to infinity with $`u_{n+1}\le u_n+B`$ for a fixed $`B>0`$. Then $`u`$ cannot remain coprime to infinitely many fresh pairwise coprime moduli: there is no family of pairwise coprime $`m_i\ge2`$, one for each index, such that $`\gcd(m_i,u_t)=1`$ whenever $`i<t`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Take $`B`$ of the moduli, from indices beyond any chosen point, and use Lemma <a href="#res:crt" data-reference-type="ref" data-reference="res:crt">32</a> to find $`t`$ far out with the $`i`$th of them dividing $`t+i`$. The interval $`[t,t+B)`$ has length $`B`$, and $`u`$ climbs by at most $`B`$ per step while tending to infinity, so some $`u_s`$ lands in it. Then $`u_s=t+i`$ for some $`i<B`$, and the $`i`$th modulus divides $`u_s`$. Since that modulus is at least $`2`$, this contradicts $`\gcd(m_i,u_s)=1`$. ◻
+
+</div>
+
+Formalised as the [bounded-rise barrier](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L897). The key point is that the two hypotheses pull against each other exactly: divergence forces $`u`$ to travel arbitrarily far, and bounded rise forbids it from stepping over a window of width $`B`$. Uniformity of the bound is what the proof uses, and it is the hypothesis that cannot be relaxed by this argument: a rise bounded only along a subsequence leaves the intervening steps free to jump the window. We have not looked for a sequence of unbounded rise remaining coprime to every fresh modulus. The statement is elementary and we are not aware of a prior published form of it, but we would not be surprised if one exists.
+
+The moduli are indexed by the same set as the sequence, and the $`i`$th of them is asked to divide no value $`u_t`$ with $`t>i`$; nothing at all is asked of it at or before its own index. That asymmetry is what makes the hypothesis available in the application below, where $`m_i`$ is the $`i`$th multiplier and only the later numerators are known to be coprime to it.
+
+The barrier applies to the problem because a *reduced* exact tail already carries pairwise coprime moduli. Call $`(u,v)`$ a reduced exact tail with multipliers $`a`$ when $`\gcd(u_n,v_n)=1`$,
+``` math
+u_{n+1}+v_n=a_nu_n,\qquad v_{n+1}=a_nv_n .
+```
+Here $`u`$ is the numerator and $`v`$ the denominator: the two recurrences are those of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a>, with $`u`$ in the role of the tail state $`C`$ and $`v`$ in that of the denominator state $`D`$, and with coprimality imposed at every index.
+
+<div id="res:reduced" class="proposition">
+
+**Proposition 35** (reduced tails are pairwise coprime). *In a reduced exact tail, $`a_n`$ is coprime to $`v_n`$; the multipliers at distinct indices are pairwise coprime; and every earlier multiplier is coprime to every later numerator.*
+
+</div>
+
+These are the [step coprimality](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L983), the [pairwise coprimality](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1010), and the [whole-modulus avoidance](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1024). Feeding them to Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">34</a> gives the form used later: there is no reduced exact tail whose numerator tends to infinity with a uniformly bounded upward increment, the [reduced bounded-rise exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1035), together with its eventual form, the [eventual reduced exclusion](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1060).
+
+<div id="ex:reduced" class="example">
+
+**Example 36** (Sylvester’s sequence as a reduced exact tail). Put $`u_n=1`$ and $`v_n=D_n=1,2,6,42,1806,\ldots`$ as in Example <a href="#ex:sylvester" data-reference-type="ref" data-reference="ex:sylvester">3</a>, with multipliers $`a_n=v_n+1=2,3,7,43,1807,\ldots`$. Then $`\gcd(u_n,v_n)=1`$, $`u_{n+1}+v_n=1+v_n=a_nu_n`$ and $`v_{n+1}=a_nv_n`$, so this is a reduced exact tail, and Proposition <a href="#res:reduced" data-reference-type="ref" data-reference="res:reduced">35</a> returns the classical fact that Sylvester’s numbers are pairwise coprime. Its numerator is constant, so it satisfies every hypothesis of the exclusion just stated except divergence; since the tail exists, that hypothesis cannot be dropped.
+
+</div>
+
+An arbitrary orbit of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a> need not be reduced, so one more step is needed before the barrier can be applied to it: the common factor must stop changing. We call a set of indices *cofinal* when it is infinite, and say that a property holds *cofinally* when the set of indices at which it holds is cofinal. The step below is the only one connecting the orbit of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a> to the reduced tails of Proposition <a href="#res:reduced" data-reference-type="ref" data-reference="res:reduced">35</a>, and it is where the cofinal boundedness in the proof of Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> is used.
+
+<div id="res:gcdstab" class="proposition">
+
+**Proposition 37** (the tail gcd stabilises). *Let $`(a,D,C)`$ be an exact natural orbit, that is, a triple of $`\mathbb{N}`$-valued sequences with $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$, whose centred state $`E_n=\operatorname{ctr}(a_n,D_n,C_n)`$ is negative cofinally, with magnitudes bounded along that cofinal set. Then $`\gcd(C_n,D_n)`$ is eventually constant, and beyond that index the orbit divided by the stable gcd is a reduced exact tail.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* The tail gcd $`\gcd(C_n,D_n)`$ divides its successor, the [gcd monotonicity](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1424), so the tail gcds form a positive divisibility chain. At an index where the centred state is negative the tail gcd is exactly $`\gcd(C_n,e_n)`$, the [gcd at a negative index](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1581), and is therefore at most the magnitude there; so the chain is bounded along the cofinal set of negative indices. A positive divisibility chain whose values are bounded along a cofinal set is eventually constant, the [chain stabilisation](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1599). Hence cofinally bounded negative magnitudes make the tail gcd stabilise, the [gcd stabilisation](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1630), and beyond that point dividing by the stable gcd leaves the numerator and denominator coprime, that is, a reduced exact tail. ◻
+
+</div>
+
+The stabilisation of the tail gcd is the checked statement cited at the end of the proof; the last clause, that the divided orbit is a reduced exact tail, is exposition and carries no separate label. Boundedness is required only *along a cofinal set*. That is what the situation gives: the tail gcd is controlled only at the negative indices, and cofinally many of them is all the divisibility chain needs.
+
+Normalised vanishing by itself gives a different, strictly weaker conclusion. For an exact natural orbit with $`C_n>0`$, put
+``` math
+G_n=\gcd(C_n,D_n),\qquad
+ \Gamma(N)=\#\{0\le j<N:G_j<G_{j+1}\}.
+```
+
+<div id="res:gcdsparse" class="proposition">
+
+**Proposition 38** (normalised vanishing makes strict gcd changes sparse). *Assume
+``` math
+(\forall K\ge1)(\exists N)(\forall n\ge N)\qquad
+  K|E_n|<C_n.
+```
+Then, for every $`K\ge1`$, eventually $`K\Gamma(N)<N`$. Moreover, for every starting bound $`B`$ and block length $`L`$, some $`n\ge B`$ satisfies
+``` math
+G_n=G_{n+1}=\cdots=G_{n+L}.
+```*
+
+</div>
+
+The first assertion is the [sublinear strict-growth theorem](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2180); the second is the [arbitrarily late constant-block theorem](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2196). The proof first converts normalised vanishing into subexponential growth of $`C_n`$, then charges every strict divisibility increase of $`G_n`$ against a finite power-of-two budget. Sparse strict changes force long finite gaps between them.
+
+The quantifiers matter. Proposition <a href="#res:gcdstab" data-reference-type="ref" data-reference="res:gcdstab">37</a> uses cofinally bounded negative magnitudes and yields eventual constancy. Proposition <a href="#res:gcdsparse" data-reference-type="ref" data-reference="res:gcdsparse">38</a> uses only normalised vanishing and yields arbitrarily late constant blocks of each prescribed finite length. It does not yield one infinite constant tail, and it does not exclude cofinally unbounded negative excursions.
+
+<a id="sec:bounded"></a>
+
+# Excluding a bounded negative part
+
+Assembling the previous section gives Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a>, the endpoint of the barrier argument. Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">41</a> in the next section uses a different finiteness hypothesis. The two results are incomparable: Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">41</a> assumes only the state recurrence with $`C_n>0`$, while hypothesis (5) below does not imply finite *normalised negative mass*, by which we mean convergence of $`\sum_n(-E_n)_+/C_n`$, where $`x_+=\max(x,0)`$, since a constant negative part $`-b`$ gives $`C_n\sim bn`$ and hence a divergent sum. The hypotheses of Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> are listed in full, because two of them are analytic inputs that are assumed here rather than derived from the growth condition of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>.
+
+Informally, hypotheses (5) and (6) below pull against each other. By Proposition <a href="#res:update" data-reference-type="ref" data-reference="res:update">2</a>, hypothesis (5) caps the rise of the tail state at $`B`$ per step, while hypothesis (6), once the error is nowhere zero, forces the tail state to diverge. Proposition <a href="#res:gcdstab" data-reference-type="ref" data-reference="res:gcdstab">37</a> makes the orbit reduced, and Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">34</a> then converts the tension into a contradiction: an integer sequence tending to infinity with upward steps of size at most $`B`$ cannot remain coprime to the pairwise coprime moduli a reduced tail carries. The complementary case, in which the error is eventually positive, is the descent of Theorem <a href="#res:descent" data-reference-type="ref" data-reference="res:descent">28</a>.
+
+<div id="res:bounded" class="theorem">
+
+**Theorem 39** (bounded negative part). *Let $`a,C,D:\mathbb{N}\to\mathbb{N}`$ and $`E:\mathbb{N}\to\mathbb{Z}`$ satisfy*
+
+1.  *$`a_n>1`$ and $`C_n>0`$ for every $`n`$;*
+
+2.  *the exact dynamics $`C_{n+1}+D_n=a_nC_n`$ and $`D_{n+1}=a_nD_n`$;*
+
+3.  *$`E_n=\operatorname{ctr}(a_n,D_n,C_n)`$ for every $`n`$;*
+
+4.  **eventual strict centring*: $`|E_n|<C_n`$ for all large $`n`$;*
+
+5.  **eventually bounded negative part*: $`-B\le E_n`$ for all large $`n`$, for some $`B`$;*
+
+6.  **normalised vanishing*: for every $`K`$ there is an $`N`$ with $`K\,|E_n|<C_n`$ for all $`n\ge N`$.*
+
+*Then $`E_n=0`$ for all sufficiently large $`n`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Suppose not. We first remove every late zero: by Theorem <a href="#res:absorb" data-reference-type="ref" data-reference="res:absorb">11</a> and its contrapositive form, $`E`$ is nowhere zero beyond the centring threshold. Two cases remain. If $`E`$ is negative cofinally, then (5) bounds those magnitudes, so Proposition <a href="#res:gcdstab" data-reference-type="ref" data-reference="res:gcdstab">37</a> makes the tail gcd stabilise and the orbit may be taken reduced past that point. Hypothesis (5) with Proposition <a href="#res:update" data-reference-type="ref" data-reference="res:update">2</a> gives $`C_{n+1}\le C_n+B`$, a bounded rise; hypothesis (6) with $`E`$ nowhere zero gives $`C_n\to\infty`$. A reduced exact tail with a divergent numerator and bounded rise is excluded by Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">34</a>. It remains to treat the case that $`E`$ is eventually positive, and there the descent of Theorem <a href="#res:descent" data-reference-type="ref" data-reference="res:descent">28</a> applies and forces $`E`$ to vanish, contradicting nowhere-vanishing. ◻
+
+</div>
+
+Formalised as the [bounded-negative-part rigidity](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2265), with the eventual form, in which the centring and the bound need only hold from some index, as the [eventual bounded-negative-part rigidity](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2352). The two auxiliary results it uses are the [divergence from normalised vanishing](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1733) and the [exclusion of cofinally bounded negative magnitudes](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1748), the latter over the [tail-divergence form](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L1655).
+
+<div id="res:cor" class="corollary">
+
+**Corollary 40**. *Under the hypotheses of Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a>, together with $`C_{n+1}\ne0`$ for all large $`n`$, the multipliers satisfy $`a_{n+1}=a_n^{2}-a_n+1`$ for all sufficiently large $`n`$.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> then Theorem <a href="#res:eventual" data-reference-type="ref" data-reference="res:eventual">10</a>. ◻
+
+</div>
+
+Hypotheses (1)–(3) are the state system, and (6) is the division-free form of $`|E_n|/C_n\to0`$. Hypothesis (4) is logically redundant: hypothesis (6) with $`K=1`$ gives $`|E_n|<C_n`$ eventually. It is retained because the displayed statement tracks the linked Lean declaration; shifting to the resulting threshold gives the same conclusion without an independent centring input. The formal source does not derive normalised vanishing from $`a_{n+1}/a_n^{2}\to1`$, so Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> is, by itself, a conditional theorem about the state system. Combined with Koizumi’s bridge below, however, Corollary <a href="#res:cor" data-reference-type="ref" data-reference="res:cor">40</a> settles the bounded-negative canonical case of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>. What is unconditional in this note is the all-negative constant and periodic exclusions, Theorems <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">30</a> and <a href="#res:periodic" data-reference-type="ref" data-reference="res:periodic">31</a>, and the barrier itself, Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">34</a>.
+
+The conditionality can nevertheless be located precisely, because the missing inputs are supplied elsewhere. With the results of \[koizumi2025\], Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> becomes a conditional theorem about Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> itself rather than about the state system alone. Let $`(a_n)`$ satisfy the hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>. After deleting a finite prefix, Corollary 10 of \[koizumi2025, p. 8\] makes the sequence the pseudo-greedy expansion of its own reciprocal sum, and Lemma 15 there supplies the integers $`c_n,d_n,e_n`$ of Section <a href="#sec:problem" data-reference-type="ref" data-reference="sec:problem">1</a>. Hypothesis (1) then holds: $`c_n`$ is a positive integer by Lemma 15(1), and $`a_n>1`$ after a further finite shift, because summability of $`\sum1/a_n`$ forces $`a_n\to\infty`$. Hypothesis (2) is the pair of recurrences $`c_{n+1}=a_nc_n-d_n`$ and $`d_{n+1}=a_nd_n`$ of Lemma 15(2), and hypothesis (3) is that lemma’s $`a_n=(d_n-e_n)/c_n+1`$ read as $`e_n=d_n-(a_n-1)c_n`$, which is the map $`\operatorname{ctr}`$. The centring range $`-c_n/2\le e_n<c_n/2`$ in the same lemma gives hypothesis (4) at every index, which is stronger than the eventual form used here. Hypothesis (6) is the vanishing of the gap sequence in Corollary 10, since $`\varepsilon_n=e_n/c_n`$. The sole hypothesis not supplied is (5), the eventual bound on the negative part; nothing in \[koizumi2025\] yields it and nothing here does either, so Problem #243 stays open.
+
+<a id="sec:mass"></a>
+
+# Excluding finite normalised negative mass
+
+Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> uses a uniform bound on the negative part. A different finiteness hypothesis, on the total normalised negative mass, removes a further family of orbits, and the argument is multiplicative rather than arithmetic: it compares $`C`$ with a convergent product instead of with a system of congruences.
+
+<div id="res:mass" class="theorem">
+
+**Theorem 41** (finite normalised negative mass). *Let $`C_n\in\mathbb{N}_{>0}`$ and $`E_n\in\mathbb{Z}`$ satisfy
+``` math
+C_{n+1}=C_n-E_n,\qquad
+ \forall K\ \exists N\ \forall n\ge N,\quad K|E_n|<C_n .
+```
+If
+``` math
+\sum_{n=0}^{\infty}\frac{(-E_n)_+}{C_n}<\infty ,
+```
+then $`E_n=0`$ eventually. For an exact reciprocal-tail orbit this implies $`a_{n+1}=a_n^2-a_n+1`$ eventually.*
+
+</div>
+
+<div class="proof">
+
+*Proof.* Put $`\delta_n=(-E_n)_+/C_n`$. The update gives $`C_{n+1}\le C_n(1+\delta_n)`$, so
+``` math
+C_N\le C_0\prod_{n<N}(1+\delta_n).
+```
+The product is bounded because $`\sum\delta_n`$ converges. Choose an integer $`M`$ above that bound and apply normalised vanishing with $`K=M`$. Then $`M|E_n|<C_n<M`$ for all sufficiently large $`n`$, forcing the integer $`E_n`$ to be zero. The final recurrence is Theorem <a href="#res:eventual" data-reference-type="ref" data-reference="res:eventual">10</a>, whose hypothesis $`C_{n+1}\ne0`$ holds because $`C_n>0`$ throughout. ◻
+
+</div>
+
+The product argument is the [summable relative growth](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SparseResetRecovery.lean#L423); its specialisation to negative mass is the [vanishing from finite negative mass](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SparseResetRecovery.lean#L488), and the statement giving the recurrence directly is the [Sylvester recurrence from summable negative mass](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/SparseResetRecovery.lean#L510). This is a checked implication about the state system, not a derivation of normalised vanishing from Problem #243. Normalised vanishing is still an input: it is what converts the bound on $`C`$ into a bound on $`|E_n|`$, and nothing here derives it from the growth condition of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>.
+
+The transfer of the previous section applies here as well. On the canonical orbit of Corollary 10 of \[koizumi2025, p. 8\] the recurrence $`C_{n+1}=C_n-E_n`$ holds with $`C_n>0`$ by Lemma 15  \[koizumi2025, p. 9\], and normalised vanishing is the vanishing of the gap sequence, so Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">41</a> is a conditional theorem about Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> whose sole remaining hypothesis is summability of $`\sum_n(-E_n)_+/C_n`$. That hypothesis is not supplied there, and is the content of Problem <a href="#res:masshyp" data-reference-type="ref" data-reference="res:masshyp">47</a> below.
+
+<div id="ex:mass" class="example">
+
+**Example 42** (the product bound at a geometric rate). Suppose $`C_0=100`$ and $`(-E_n)_+/C_n\le2^{-n-1}`$ for every $`n`$, so that the normalised negative mass is at most $`1`$; the constraint at $`n=0`$ still permits $`E_0`$ as negative as $`-50`$. Since $`1+x\le e^{x}`$,
+``` math
+C_N\le100\prod_{n<N}\bigl(1+2^{-n-1}\bigr)\le100e<272
+```
+for every $`N`$. Normalised vanishing at $`K=272`$ then gives $`272|E_n|<C_n<272`$ for all large $`n`$, so $`|E_n|<1`$ and $`E_n=0`$ there. The constant $`272`$ comes from the total mass and not from any single magnitude, which is why the hypothesis of Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">41</a> is summability of $`(-E_n)_+/C_n`$ and not a bound on it.
+
+</div>
+
 <a id="sec:open"></a>
 
 # Complements and further questions
 
 Problem #243 is open. The negative case has narrowed, and it is worth being precise about what is left.
 
-Each exclusion holds only in its stated regime. Theorems <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">14</a> and <a href="#res:periodic" data-reference-type="ref" data-reference="res:periodic">15</a> exclude the constant and the stated periodic magnitudes on an all-negative tail, and do not exclude those patterns merely along the negative indices of a mixed-sign tail; Theorems <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a> and <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">25</a> exclude a bounded negative part and finite normalised negative mass under normalised vanishing. Together with absorption and descent they fix the profile of any counterexample.
+Each exclusion holds only in its stated regime. Theorems <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">30</a> and <a href="#res:periodic" data-reference-type="ref" data-reference="res:periodic">31</a> exclude the constant and the stated periodic magnitudes on an all-negative tail, and do not exclude those patterns merely along the negative indices of a mixed-sign tail; Theorems <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> and <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">41</a> exclude a bounded negative part and finite normalised negative mass under normalised vanishing. Together with absorption and descent they fix the profile of any counterexample.
 
 <div id="res:frontier" class="proposition">
 
-**Proposition 29** (frontier profile for a counterexample). *For the canonical integer state attached to any counterexample to Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>,
+**Proposition 43** (frontier profile for a counterexample). *For the canonical integer state attached to any counterexample to Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>,
 ``` math
 E_n\ne0\quad\hbox{eventually},\qquad
  \frac{|E_n|}{C_n}\longrightarrow0,
@@ -751,7 +1055,7 @@ In particular, negative indices occur infinitely often. Thus the remaining regim
 
 <div class="proof">
 
-*Proof.* Koizumi’s canonical-tail transfer gives strict centring and normalised vanishing after a finite shift; the strict-centring hypothesis of Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a> also follows from normalised vanishing with $`K=1`$. Absorption then makes $`E_n\ne0`$ eventually, since eventual zero would give the Sylvester recurrence. Descent excludes an eventually nonnegative state. Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a> excludes a bounded negative part, and Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">25</a> excludes finite normalised negative mass. These statements are unchanged by deleting a finite prefix. ◻
+*Proof.* Koizumi’s canonical-tail transfer gives strict centring and normalised vanishing after a finite shift; the strict-centring hypothesis of Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> also follows from normalised vanishing with $`K=1`$. Absorption then makes $`E_n\ne0`$ eventually, since eventual zero would give the Sylvester recurrence. Descent excludes an eventually nonnegative state. Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> excludes a bounded negative part, and Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">41</a> excludes finite normalised negative mass. These statements are unchanged by deleting a finite prefix. ◻
 
 </div>
 
@@ -759,21 +1063,21 @@ Put
 ``` math
 \delta_n:=\frac{(-E_n)_+}{C_n}.
 ```
-Every argument in Sections <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">5</a>–<a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">8</a> uses a finiteness hypothesis: a fixed set of prime divisors, a fixed period, or a fixed bound on the negative part. Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">25</a> uses $`\sum_n\delta_n<\infty`$. Proposition <a href="#res:frontier" data-reference-type="ref" data-reference="res:frontier">29</a> records that a counterexample has none of them; it is a frontier statement, not an additional problem equivalent to the original one. Stated at the level of state orbits, the surviving obstruction is the following.
+Every argument in Sections <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">7</a>–<a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">10</a> uses a finiteness hypothesis: a fixed set of prime divisors, a fixed period, or a fixed bound on the negative part. Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">41</a> uses $`\sum_n\delta_n<\infty`$. Proposition <a href="#res:frontier" data-reference-type="ref" data-reference="res:frontier">43</a> records that a counterexample has none of them; it is a frontier statement, not an additional problem equivalent to the original one. Stated at the level of state orbits, the surviving obstruction is the following.
 
 <div id="res:excursions" class="problem">
 
-**Problem 30** (unbounded divergent-mass negative excursions). Exclude, or construct, an exact natural orbit $`(a,D,C)`$ with $`a_n>1`$ and $`C_n>0`$, whose multipliers satisfy $`\lim_n a_{n+1}/a_n^{2}=1`$ and whose centred state satisfies normalised vanishing, and which is negative infinitely often with magnitudes unbounded along that cofinal set and
+**Problem 44** (unbounded divergent-mass negative excursions). Exclude, or construct, an exact natural orbit $`(a,D,C)`$ with $`a_n>1`$ and $`C_n>0`$, whose multipliers satisfy $`\lim_n a_{n+1}/a_n^{2}=1`$ and whose centred state satisfies normalised vanishing, and which is negative infinitely often with magnitudes unbounded along that cofinal set and
 ``` math
 \sum_n\frac{(-E_n)_+}{C_n}=\infty .
 ```
-An excursion of this kind has none of the finiteness hypotheses just listed. By Proposition <a href="#res:frontier" data-reference-type="ref" data-reference="res:frontier">29</a> the canonical state of a counterexample is such an orbit after deletion of a finite prefix, so an exclusion would settle Problem #243. A construction would not settle it in the other direction: an exact state orbit need not arise from a sequence satisfying Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>.
+An excursion of this kind has none of the finiteness hypotheses just listed. By Proposition <a href="#res:frontier" data-reference-type="ref" data-reference="res:frontier">43</a> the canonical state of a counterexample is such an orbit after deletion of a finite prefix, so an exclusion would settle Problem #243. A construction would not settle it in the other direction: an exact state orbit need not arise from a sequence satisfying Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>.
 
 </div>
 
 <div class="remark">
 
-*Remark 2*. The hypotheses in Problem <a href="#res:excursions" data-reference-type="ref" data-reference="res:excursions">30</a> beyond the state recurrence are not decorative: the recurrence alone admits unbounded divergent-mass excursions. Put
+*Remark 2*. The hypotheses in Problem <a href="#res:excursions" data-reference-type="ref" data-reference="res:excursions">44</a> beyond the state recurrence are not decorative: the recurrence alone admits unbounded divergent-mass excursions. Put
 ``` math
 C_n=2^{n},\qquad b_0=2,\qquad b_{n+1}=\tfrac12 b_n(b_n+2),\qquad
  a_n=b_n+2,\qquad D_n=b_nC_n ,
@@ -834,7 +1138,7 @@ Thus a surviving nontrivial reset must have recovery length tending to infinity.
 
 <div id="res:lcmheight" class="problem">
 
-**Problem 31** (global overlap-height growth). For every nonterminal canonical orbit satisfying Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, must
+**Problem 45** (global overlap-height growth). For every nonterminal canonical orbit satisfying Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, must
 ``` math
 \limsup_{n\to\infty}\frac{\log M_n}{n}>0?
 ```
@@ -846,7 +1150,7 @@ at infinitely many indices?
 
 </div>
 
-The two displayed formulations are equivalent up to changing the positive constant; the second is not a weaker target. On the canonical orbit, Section <a href="#sec:lcmrecords" data-reference-type="ref" data-reference="sec:lcmrecords">10</a> supplies $`M_n\mid C_n`$ and $`M_n\le C_n`$. Therefore a positive answer would contradict the subexponential tail-height budget and prove Problem #243. The missing input is the proposed lower bound on overlap growth.
+The two displayed formulations are equivalent up to changing the positive constant; the second is not a weaker target. On the canonical orbit, Section <a href="#sec:lcmrecords" data-reference-type="ref" data-reference="sec:lcmrecords">4</a> supplies $`M_n\mid C_n`$ and $`M_n\le C_n`$. Therefore a positive answer would contradict the subexponential tail-height budget and prove Problem #243. The missing input is the proposed lower bound on overlap growth.
 
 There is also a more local-looking question whose content is nevertheless the entire prefix. Put $`A_n=\prod_{j<n}a_j`$, so $`D_n=D_0A_n`$. From
 ``` math
@@ -860,7 +1164,7 @@ The checked [tail-height estimate](https://github.com/wcook04/plectis-erdos/blob
 
 <div id="res:prefixgcd" class="problem">
 
-**Problem 32** (old-factor overlap). In every nonterminal canonical orbit satisfying Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, is
+**Problem 46** (old-factor overlap). In every nonterminal canonical orbit satisfying Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, is
 ``` math
 \limsup_{n\to\infty}
  \frac{\log\gcd(A_n,a_n-1)}{n}>0?
@@ -877,7 +1181,7 @@ A positive answer contradicts the displayed divisibility and the subexponential 
 
 <div id="res:masshyp" class="problem">
 
-**Problem 33** (summability from rationality). Let $`(a_n)`$ satisfy Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, and let $`(D_n,C_n,E_n)`$ be its canonical integer state. Must
+**Problem 47** (summability from rationality). Let $`(a_n)`$ satisfy Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, and let $`(D_n,C_n,E_n)`$ be its canonical integer state. Must
 ``` math
 \sum_{n=0}^{\infty}\delta_n
  =\sum_{n=0}^{\infty}\frac{(-E_n)_+}{C_n}<\infty ?
@@ -885,11 +1189,11 @@ A positive answer contradicts the displayed divisibility and the subexponential 
 
 </div>
 
-An affirmative answer closes Problem #243 by Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">25</a>. Since $`\delta_n\to0`$, convergence is equivalently expressible as boundedness of the partial products $`\prod_{n<N}(1+\delta_n)`$; this is the same criterion in multiplicative form. A negative answer requires a sequence satisfying the full growth and rationality hypotheses. A locally admissible state orbit is insufficient. By Theorem <a href="#res:weightedrecord" data-reference-type="ref" data-reference="res:weightedrecord">28</a>, it is enough to establish the finiteness of <a href="#eq:weightedgrowth" data-reference-type="eqref" data-reference="eq:weightedgrowth">[eq:weightedgrowth]</a> for one decreasing weight with divergent integral and one fixed baseline. This replaces the all-index mass by a discounted series supported only at LCM records.
+An affirmative answer closes Problem #243 by Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">41</a>. Since $`\delta_n\to0`$, convergence is equivalently expressible as boundedness of the partial products $`\prod_{n<N}(1+\delta_n)`$; this is the same criterion in multiplicative form. A negative answer requires a sequence satisfying the full growth and rationality hypotheses. A locally admissible state orbit is insufficient. By Theorem <a href="#res:weightedrecord" data-reference-type="ref" data-reference="res:weightedrecord">13</a>, it is enough to establish the finiteness of <a href="#eq:weightedgrowth" data-reference-type="eqref" data-reference="eq:weightedgrowth">[eq:weightedgrowth]</a> for one decreasing weight with divergent integral and one fixed baseline. This replaces the all-index mass by a discounted series supported only at LCM records.
 
 <div class="remark">
 
-*Remark 3*. One further question is not left open here, since it is answered in \[koizumi2025\]: whether normalised vanishing follows from $`a_{n+1}/a_n^{2}\to1`$ and rationality. It does. After deleting a finite prefix, Koizumi’s Corollary 10  \[koizumi2025, p. 8\] makes the sequence the pseudo-greedy expansion of its own reciprocal sum and gives $`\varepsilon_n\to0`$ under exactly the hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>; rationality is not needed for that step, only summability of $`\sum1/a_n`$. Since $`\varepsilon_n=E_n/C_n`$ under the intended reading of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a>, this is normalised vanishing. Strict centring comes from the same source and is stronger than what Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">23</a> assumes: for a rational reciprocal sum, the range $`-c_n/2\le e_n<c_n/2`$ of his Lemma 4(2)  \[koizumi2025, p. 11\] gives $`|E_n|<C_n`$ at every index, which is stronger than eventual strict centring. The eventual form also follows directly from normalised vanishing with $`K=1`$. What remains unsupplied is hypothesis (5), the bound on the negative part, which is why the theorem is still conditional.
+*Remark 3*. One further question is not left open here, since it is answered in \[koizumi2025\]: whether normalised vanishing follows from $`a_{n+1}/a_n^{2}\to1`$ and rationality. It does. After deleting a finite prefix, Koizumi’s Corollary 10  \[koizumi2025, p. 8\] makes the sequence the pseudo-greedy expansion of its own reciprocal sum and gives $`\varepsilon_n\to0`$ under exactly the hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>; rationality is not needed for that step, only summability of $`\sum1/a_n`$. Since $`\varepsilon_n=E_n/C_n`$ under the intended reading of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a>, this is normalised vanishing. Strict centring comes from the same source and is stronger than what Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">39</a> assumes: for a rational reciprocal sum, the range $`-c_n/2\le e_n<c_n/2`$ of his Lemma 4(2)  \[koizumi2025, p. 11\] gives $`|E_n|<C_n`$ at every index, which is stronger than eventual strict centring. The eventual form also follows directly from normalised vanishing with $`K=1`$. What remains unsupplied is hypothesis (5), the bound on the negative part, which is why the theorem is still conditional.
 
 </div>
 
@@ -899,7 +1203,7 @@ An affirmative answer closes Problem #243 by Theorem <a href="#res:mass" data-
 
 <div id="res:variablerise" class="problem">
 
-**Problem 34** (variable-rise CRT barrier). Determine the weakest growth condition on the positive increments of $`u_n`$ under which an unbounded integer sequence cannot remain coprime to infinitely many pairwise-coprime old moduli as in Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">18</a>. In particular, does the conclusion remain valid under the candidate condition
+**Problem 48** (variable-rise CRT barrier). Determine the weakest growth condition on the positive increments of $`u_n`$ under which an unbounded integer sequence cannot remain coprime to infinitely many pairwise-coprime old moduli as in Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">34</a>. In particular, does the conclusion remain valid under the candidate condition
 ``` math
 (u_{n+1}-u_n)_+=o\bigl(\log\log(u_n+3)\bigr)?
 ```
@@ -952,21 +1256,21 @@ The problem numbering and status follow the Erdős Problems catalogue maintained
 
 # Guide to the formal sources
 
-Each linked phrase opens its Lean declaration at the pinned source revision 4ab50e144847. The state system, the exclusions, the barrier, and the bounded-negative-part theorem are in `ReciprocalTailRigidity.lean`; the finite-negative-mass theorem is in `SparseResetRecovery.lean`; and the repair-entropy inequalities are in `RepairEntropy.lean`. The residue reduction of Appendix <a href="#app:residue" data-reference-type="ref" data-reference="app:residue">13</a> is in `FiniteHorizonResidue.lean`. Three distinctions are worth carrying into the source. The identification of any of these modules with reciprocal tails is the exposition of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a> and is not a checked statement. The periodic exclusion assumes the regime $`e_n<a_n`$. And the final Lean declaration lists strict centring and normalised vanishing as hypotheses; the former follows eventually from the latter with $`K=1`$, while the formal source derives neither from the original analytic problem. For the external bridge supplying them, see Sections <a href="#sec:problem" data-reference-type="ref" data-reference="sec:problem">1</a> and <a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">8</a>.
+Each linked phrase opens its Lean declaration at the pinned source revision 4ab50e144847. The state system, the exclusions, the barrier, and the bounded-negative-part theorem are in `ReciprocalTailRigidity.lean`; the finite-negative-mass theorem is in `SparseResetRecovery.lean`; and the repair-entropy inequalities are in `RepairEntropy.lean`. The residue reduction of Appendix <a href="#app:residue" data-reference-type="ref" data-reference="app:residue">14</a> is in `FiniteHorizonResidue.lean`. Three distinctions are worth carrying into the source. The identification of any of these modules with reciprocal tails is the exposition of Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a> and is not a checked statement. The periodic exclusion assumes the regime $`e_n<a_n`$. And the final Lean declaration lists strict centring and normalised vanishing as hypotheses; the former follows eventually from the latter with $`K=1`$, while the formal source derives neither from the original analytic problem. For the external bridge supplying them, see Sections <a href="#sec:problem" data-reference-type="ref" data-reference="sec:problem">1</a> and <a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">10</a>.
 
 <a id="app:residue"></a>
 
 # A factorial residue reduction for forced orbits
 
-In the case $`m=c=1`$ of Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">5</a>, where the shape equation <a href="#eq:shape" data-reference-type="eqref" data-reference="eq:shape">[eq:shape]</a> reads $`D_n+1=(a_n-1)(n+1)`$, each multiplier is determined by its predecessor; we call such an orbit *forced*. At index $`n`$ the numerator of the next multiplier is
+In the case $`m=c=1`$ of Section <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">7</a>, where the shape equation <a href="#eq:shape" data-reference-type="eqref" data-reference="eq:shape">[eq:shape]</a> reads $`D_n+1=(a_n-1)(n+1)`$, each multiplier is determined by its predecessor; we call such an orbit *forced*. At index $`n`$ the numerator of the next multiplier is
 ``` math
 \operatorname{num}(n,a)=(n+1)a^{2}-(n+2)a+(n+3),
 ```
-the [forced numerator](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L22), and the divisor is $`n+2`$. The orbit survives a step when that division is exact, giving a survival predicate, the [survival predicate](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L75). Example <a href="#ex:shape" data-reference-type="ref" data-reference="ex:shape">13</a> is the forced orbit from $`a=3`$ read this way: $`\operatorname{num}(0,3)=6`$ is divisible by $`2`$ and gives $`a_1=3`$, while $`\operatorname{num}(1,3)=13`$ is not divisible by $`3`$, so the orbit stops there. Deciding survival by iteration is expensive because the orbit grows doubly exponentially, and it is unnecessary: survival over a finite horizon depends on the initial value only through a factorial residue.
+the [forced numerator](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L22), and the divisor is $`n+2`$. The orbit survives a step when that division is exact, giving a survival predicate, the [survival predicate](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L75). Example <a href="#ex:shape" data-reference-type="ref" data-reference="ex:shape">29</a> is the forced orbit from $`a=3`$ read this way: $`\operatorname{num}(0,3)=6`$ is divisible by $`2`$ and gives $`a_1=3`$, while $`\operatorname{num}(1,3)=13`$ is not divisible by $`3`$, so the orbit stops there. Deciding survival by iteration is expensive because the orbit grows doubly exponentially, and it is unnecessary: survival over a finite horizon depends on the initial value only through a factorial residue.
 
 <div id="res:residue" class="theorem">
 
-**Theorem 35** (factorial residue reduction). *For all $`h`$ and all integers $`a\equiv b \pmod{(h+1)!}`$, the orbit from $`a`$ survives $`h`$ forced updates exactly when the orbit from $`b`$ does.*
+**Theorem 49** (factorial residue reduction). *For all $`h`$ and all integers $`a\equiv b \pmod{(h+1)!}`$, the orbit from $`a`$ survives $`h`$ forced updates exactly when the orbit from $`b`$ does.*
 
 </div>
 
@@ -978,9 +1282,9 @@ the [forced numerator](https://github.com/wcook04/plectis-erdos/blob/4ab50e14484
 
 Formalised as the [factorial residue reduction](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134), over the [shrinking-modulus transport](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L97), the [polynomial congruence](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L26), and the [exact-division cancellation](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L41); the modulus identifications are the [ascending-factorial form](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L59) and the [factorial value at the initial index](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L69).
 
-At $`h=1`$ the modulus is $`2!=2`$, and surviving one update means $`2\mid a^{2}-2a+3`$, which holds exactly for odd $`a`$: for instance $`\operatorname{num}(0,3)=6`$ but $`\operatorname{num}(0,4)=11`$. So one step of survival is decided by the parity of $`a`$ alone, which is Theorem <a href="#res:residue" data-reference-type="ref" data-reference="res:residue">35</a> at its smallest nontrivial horizon.
+At $`h=1`$ the modulus is $`2!=2`$, and surviving one update means $`2\mid a^{2}-2a+3`$, which holds exactly for odd $`a`$: for instance $`\operatorname{num}(0,3)=6`$ but $`\operatorname{num}(0,4)=11`$. So one step of survival is decided by the parity of $`a`$ alone, which is Theorem <a href="#res:residue" data-reference-type="ref" data-reference="res:residue">49</a> at its smallest nontrivial horizon.
 
-The search this supported is superseded. Running it over initial states below $`5000`$ produced forced prefixes of length $`17`$ and no longer; Theorem <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">14</a> now excludes the constant-negative case outright, for every seed and at every scale. The reduction is retained because it is exact, and because the shrinking-modulus technique transfers to any forced orbit whose step is a polynomial division.
+The search this supported is superseded. Running it over initial states below $`5000`$ produced forced prefixes of length $`17`$ and no longer; Theorem <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">30</a> now excludes the constant-negative case outright, for every seed and at every scale. The reduction is retained because it is exact, and because the shrinking-modulus technique transfers to any forced orbit whose step is a polynomial division.
 
 <a id="sec:erdos-243-complete-family-map"></a>
 

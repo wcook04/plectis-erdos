@@ -237,15 +237,15 @@ The active mathematical notes form a growing problem-by-problem portfolio: Erdő
 
 **Factorial-Channel Obstructions and Exact Orbit Boundaries**
 
-[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex) · 23 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
+[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex) · 31 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos-68-factorial-denominator-irrationality.md#sec:problem), [Finite channel congruences and the LCM obstruction](full-text/erdos-68-factorial-denominator-irrationality.md#sec:channels), [Weighted projection rigidity](full-text/erdos-68-factorial-denominator-irrationality.md#sec:projection), [Open problems](full-text/erdos-68-factorial-denominator-irrationality.md#sec:open).
 
 ### Which bounded negative-error behaviours can be excluded for Erdős #243, and which analytic hypotheses still keep it open?
 
-**Excluding the Bounded Negative Part**
+**An Exact Record-Excess Criterion**
 
-[full text](full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](../../erdos-243-reciprocal-tail-rigidity.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-243-reciprocal-tail-rigidity.tex) · 29 sections · `erdos-243-reciprocal-tail-rigidity` · native to this repository
+[full text](full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](../../erdos-243-reciprocal-tail-rigidity.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-243-reciprocal-tail-rigidity.tex) · 62 sections · `erdos-243-reciprocal-tail-rigidity` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:problem), [Excluding a bounded negative part](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:bounded), [Complements and further questions](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:open).
 
@@ -267,9 +267,9 @@ This paper states no reading route. Its evidence boundary is in [The wall](full-
 
 ### What tail-shift condition would prove irrationality in Erdős #251, which natural affine schedules provably cannot supply it, and what prime-gap input still survives?
 
-**An Integral-Shift Criterion for Dyadic Tail Recurrences**
+**A Denominator Floor and a Free-Pair Criterion for the Prime-Gap Dyadic Series**
 
-[full text](full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](../../erdos-251-prime-gap-dyadic-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-251-prime-gap-dyadic-series.tex) · 25 sections · `erdos-251-prime-gap-dyadic-series` · native to this repository
+[full text](full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](../../erdos-251-prime-gap-dyadic-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-251-prime-gap-dyadic-series.tex) · 29 sections · `erdos-251-prime-gap-dyadic-series` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-251-prime-gap-dyadic-series.md#sec:problem), [The tail recurrence and integral shifts](full-text/erdos-251-prime-gap-dyadic-series.md#sec:tail), [Complements and further questions](full-text/erdos-251-prime-gap-dyadic-series.md#sec:open).
 
@@ -277,7 +277,7 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 **Denominator Periods, Rational-Value Constraints and Achievement-Set Geometry**
 
-[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-257-mersenne-support-subseries.tex) · 32 sections · `erdos-257-mersenne-support-subseries` · native to this repository
+[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-257-mersenne-support-subseries.tex) · 35 sections · `erdos-257-mersenne-support-subseries` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Finite-support denominator periods](full-text/erdos-257-mersenne-support-subseries.md#sec:period), [Representative known irrational supports](full-text/erdos-257-mersenne-support-subseries.md#sec:map), [Open problems](full-text/erdos-257-mersenne-support-subseries.md#sec:open).
 
@@ -285,7 +285,7 @@ This paper states no reading route. Its evidence boundary is in [Finite-support 
 
 **Reciprocal Mersenne Subseries**
 
-[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos257-mersenne-reasoning-surface.tex) · 167 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
+[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos257-mersenne-reasoning-surface.tex) · 169 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem, and what is actually known](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-problem), [The wall](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-wall), [What the wall does not block](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-survivors).
 
@@ -293,7 +293,7 @@ This paper states no reading route. Its evidence boundary is in [The problem, an
 
 **The Three-Prime Running Least Common Multiple**
 
-[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-269-three-prime-running-lcm.tex) · 27 sections · `erdos-269-three-prime-running-lcm` · native to this repository
+[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-269-three-prime-running-lcm.tex) · 33 sections · `erdos-269-three-prime-running-lcm` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-269-three-prime-running-lcm.md#sec:problem), [The running least common multiple as a product of pure powers](full-text/erdos-269-three-prime-running-lcm.md#sec:lcm), [Dyadic blocks and a conditional carry contradiction](full-text/erdos-269-three-prime-running-lcm.md#sec:escape), [Complements and further questions](full-text/erdos-269-three-prime-running-lcm.md#sec:open).
 
@@ -301,15 +301,15 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 **Critical-Value Separation and Admissible Hubs**
 
-[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex) · 38 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
+[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex) · 46 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos-1041-lemniscate-newton-flow.md#sec:problem), [The Newton value equation](full-text/erdos-1041-lemniscate-newton-flow.md#sec:newton), [A proof gap in the unrestricted argument](full-text/erdos-1041-lemniscate-newton-flow.md#sec:gap), [Complements and further questions](full-text/erdos-1041-lemniscate-newton-flow.md#sec:open).
 
 ### Which linear-form constructions fail at the rational base 3/2 for Erdős #1049, and what primitive kernel is still needed?
 
-**Sharp Height and Four-Jet Obstructions at Base 3/2**
+**A Rational-Base Irrationality Region for the Lambert Value**
 
-[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../erdos-1049-rational-base-lambert.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-1049-rational-base-lambert.tex) · 30 sections · `erdos-1049-rational-base-lambert` · native to this repository
+[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../erdos-1049-rational-base-lambert.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos-1049-rational-base-lambert.tex) · 41 sections · `erdos-1049-rational-base-lambert` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-1049-rational-base-lambert.md#sec:problem), [Integer scalar content is neutral](full-text/erdos-1049-rational-base-lambert.md#sec:primitive), [Endpoint residues at (3,2) and the four-jet kernel](full-text/erdos-1049-rational-base-lambert.md#sec:endpoints), [Complements and further questions](full-text/erdos-1049-rational-base-lambert.md#sec:open).
 
@@ -357,7 +357,7 @@ The paper's own reading map sends a first pass to [The two exact reductions](ful
 
 **The Factorial-Denominator Series: Complete Reasoning Record** · **pending source publication**
 
-[full text](full-text/erdos68-factorial-reasoning-surface.md) · [PDF](../../erdos68-factorial-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos68-factorial-reasoning-surface.tex) · 31 sections · `erdos68-factorial-reasoning-surface` · native to this repository
+[full text](full-text/erdos68-factorial-reasoning-surface.md) · [PDF](../../erdos68-factorial-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos68-factorial-reasoning-surface.tex) · 39 sections · `erdos68-factorial-reasoning-surface` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos68-factorial-reasoning-surface.md#sec:problem), [Open problems](full-text/erdos68-factorial-reasoning-surface.md#sec:open), [Complete result-family map](full-text/erdos68-factorial-reasoning-surface.md#sec:erdos-68-complete-family-map).
 
@@ -365,7 +365,7 @@ This paper states no reading route. Its evidence boundary is in [The problem](fu
 
 **Reciprocal-Tail Rigidity: Complete Reasoning Record** · **pending source publication**
 
-[full text](full-text/erdos243-reciprocal-tail-reasoning-surface.md) · [PDF](../../erdos243-reciprocal-tail-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos243-reciprocal-tail-reasoning-surface.tex) · 36 sections · `erdos243-reciprocal-tail-reasoning-surface` · native to this repository
+[full text](full-text/erdos243-reciprocal-tail-reasoning-surface.md) · [PDF](../../erdos243-reciprocal-tail-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos243-reciprocal-tail-reasoning-surface.tex) · 69 sections · `erdos243-reciprocal-tail-reasoning-surface` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos243-reciprocal-tail-reasoning-surface.md#sec:problem), [Excluding a bounded negative part](full-text/erdos243-reciprocal-tail-reasoning-surface.md#sec:bounded), [Complements and further questions](full-text/erdos243-reciprocal-tail-reasoning-surface.md#sec:open), [Complete result-family map](full-text/erdos243-reciprocal-tail-reasoning-surface.md#sec:erdos-243-complete-family-map).
 
@@ -373,7 +373,7 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 **Prime Gaps and Dyadic Tails: Complete Reasoning Record** · **pending source publication**
 
-[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos251-prime-gap-reasoning-surface.tex) · 33 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
+[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos251-prime-gap-reasoning-surface.tex) · 37 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos251-prime-gap-reasoning-surface.md#sec:problem), [The tail recurrence and integral shifts](full-text/erdos251-prime-gap-reasoning-surface.md#sec:tail), [Complements and further questions](full-text/erdos251-prime-gap-reasoning-surface.md#sec:open), [Complete result-family map](full-text/erdos251-prime-gap-reasoning-surface.md#sec:erdos-251-complete-family-map).
 
@@ -381,7 +381,7 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 **The Three-Prime Running LCM: Complete Reasoning Record** · **pending source publication**
 
-[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos269-running-lcm-reasoning-surface.tex) · 36 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
+[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos269-running-lcm-reasoning-surface.tex) · 42 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos269-running-lcm-reasoning-surface.md#sec:problem), [The running least common multiple as a product of pure powers](full-text/erdos269-running-lcm-reasoning-surface.md#sec:lcm), [Dyadic blocks and a conditional carry contradiction](full-text/erdos269-running-lcm-reasoning-surface.md#sec:escape), [Complements and further questions](full-text/erdos269-running-lcm-reasoning-surface.md#sec:open), [Complete result-family map](full-text/erdos269-running-lcm-reasoning-surface.md#sec:erdos-269-complete-family-map).
 
@@ -389,7 +389,7 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 **Lemniscates and Newton Flow: Complete Reasoning Record** · **pending source publication**
 
-[full text](full-text/erdos1041-lemniscate-reasoning-surface.md) · [PDF](../../erdos1041-lemniscate-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos1041-lemniscate-reasoning-surface.tex) · 52 sections · `erdos1041-lemniscate-reasoning-surface` · native to this repository
+[full text](full-text/erdos1041-lemniscate-reasoning-surface.md) · [PDF](../../erdos1041-lemniscate-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos1041-lemniscate-reasoning-surface.tex) · 60 sections · `erdos1041-lemniscate-reasoning-surface` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:problem), [The Newton value equation](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:newton), [A proof gap in the unrestricted argument](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:gap), [Complements and further questions](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:open), [Complete result-family map](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:erdos-1041-complete-family-map).
 
@@ -397,7 +397,7 @@ This paper states no reading route. Its evidence boundary is in [The problem](fu
 
 **Rational-Base Lambert Series: Complete Reasoning Record** · **pending source publication**
 
-[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos1049-rational-base-lambert-reasoning-surface.tex) · 38 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
+[full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-erdos/blob/main/paper/erdos1049-rational-base-lambert-reasoning-surface.tex) · 49 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#sec:problem), [Integer scalar content is neutral](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#sec:primitive), [Endpoint residues at (3,2) and the four-jet kernel](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#sec:endpoints), [Complements and further questions](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#sec:open), [Complete result-family map](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#sec:erdos-1049-complete-family-map).
 

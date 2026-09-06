@@ -2963,7 +2963,7 @@ def main() -> int:
 
     module_run = run("--module", "Erdos249257/CertificateKernel.lean")
     assert module_run.returncode == 0
-    assert len(module_run.stdout.encode("utf-8")) <= 64_000
+    assert len(module_run.stdout.encode("utf-8")) <= 72_000
     module = json.loads(module_run.stdout)
     assert module["module"]["declaration_count"] > 400
     assert any(row["id"] == "eb_full_support" for row in module["attached_claims"])

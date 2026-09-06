@@ -107,11 +107,11 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:315216c23e3225f48130ac65273795a1e0a0c0ca9ff9fcea8134e6189ef53606",
-    "docs/claims.json": "sha256:7ba40160753a52a257e70d0fd81b038478b61bc79c41fe708a6ee57a2331539f",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:299bdbbfd59ee2f3e9a71b7a05aefdce459aadfad24baae01ffc89e9397f6f96",
+    "docs/claims.json": "sha256:6f1019689d699fd8f6c2b1e220652ffd9eb95ce80e545eb4eb5e9e972d886be0",
     "docs/methodology.json": "sha256:c4f762538e14467af2adb2714e24099251325e819c395512c15767a1d551d1eb",
-    "docs/problems.json": "sha256:487f567647a1299ccb6669c7af60c309ea6c2c492835cce4aadb680a9a862b36",
-    "docs/publication_contract.json": "sha256:8f071cb6fbdc2671b3f691181a984b5c206ed7eb4d18a32f42a24e52ae39572e",
+    "docs/problems.json": "sha256:b74fbdbd52f99db147ade08ac03bd8be4e4d6add43458ba5d9c8686ae39e9f57",
+    "docs/publication_contract.json": "sha256:0be6d4c64b3bf6ede68c5f3e789fd80ed37b22f5ac136bd5fff76e58c40a6ffb",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:6f83abcec928171296a635bf33bd4f1e992a15bf2b975469e09ab32fbb06188a",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
@@ -131,11 +131,11 @@
   ],
   "historical_checker_example": {
     "current_owner_snapshot": {
-      "contribution_family_count": 30,
-      "curated_claim_count": 132,
+      "contribution_family_count": 38,
+      "curated_claim_count": 208,
       "remaining_open_proposition_count": 22,
       "snapshot_kind": "current_canonical_owners",
-      "status_count": 7
+      "status_count": 8
     },
     "evidence_owner": "docs/publication_evidence.json",
     "plain_result": "One false README edit passed because its public claim had not been recorded. After the claim was recorded, the intact text passed and the same false edit failed.",
@@ -270,7 +270,7 @@
       "open_target_claim": "erdos_68",
       "paper_anchor": {
         "environment": "problem",
-        "line": 92,
+        "line": 127,
         "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
         "title": "Erdős #68"
       },
@@ -294,7 +294,7 @@
       "open_target_claim": "erdos_251",
       "paper_anchor": {
         "environment": "section",
-        "line": 107,
+        "line": 187,
         "source": "paper/erdos-251-prime-gap-dyadic-series.tex",
         "title": "Introduction"
       },
@@ -330,7 +330,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1785,
+        "line": 2043,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },
@@ -354,7 +354,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "section",
-        "line": 105,
+        "line": 144,
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "title": "Introduction"
       },
@@ -366,7 +366,7 @@
       "open_target_claim": "erdos_1041",
       "paper_anchor": {
         "environment": "problem",
-        "line": 127,
+        "line": 163,
         "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "title": "Erdős #1041"
       },
@@ -378,7 +378,7 @@
       "open_target_claim": "erdos_1049",
       "paper_anchor": {
         "environment": "section",
-        "line": 71,
+        "line": 114,
         "source": "paper/erdos-1049-rational-base-lambert.tex",
         "title": "Introduction"
       },
@@ -390,7 +390,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 100,
+        "line": 143,
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "Erdős #243"
       },
@@ -402,7 +402,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1560,
+        "line": 1760,
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "title": "exact nonintegrality of every reduced tail"
       },
@@ -414,7 +414,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1595,
+        "line": 1795,
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "title": "actual cofinal local-window escape"
       },
@@ -426,7 +426,7 @@
       "open_target_claim": "erdos_269",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1674,
+        "line": 1888,
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "title": "function-faithful two-dimensional representation"
       },
@@ -438,7 +438,7 @@
       "open_target_claim": "erdos_243",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1511,
+        "line": 2008,
         "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "title": "global overlap-height growth"
       },
@@ -450,7 +450,7 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1699,
+        "line": 1953,
         "source": "paper/erdos-249-binary-totient-series.tex",
         "title": "first-harmonic anti-concentration on supplier fibres"
       },
@@ -462,7 +462,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1844,
+        "line": 2102,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "weakest native recurrence criterion"
       },
@@ -474,7 +474,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1866,
+        "line": 2124,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "actual-orbit invariant"
       },
@@ -486,7 +486,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1888,
+        "line": 2146,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "final-skip Diophantine exclusion"
       },
@@ -498,7 +498,7 @@
       "open_target_claim": "erdos_68",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1374,
+        "line": 1562,
         "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
         "title": "weighted collision-product control"
       },
@@ -510,7 +510,7 @@
       "open_target_claim": "erdos_68",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1458,
+        "line": 1646,
         "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
         "title": "cofinal lower-endpoint escape"
       },
@@ -522,7 +522,7 @@
       "open_target_claim": "erdos_1041",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1453,
+        "line": 1763,
         "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "title": "additive-error strip gluing"
       },
@@ -567,7 +567,7 @@
     ],
     "reading_rule": "Read the short paper, docs/claims.json and the six ordinary family rows in docs/PALOMAR_RESULT_SHOWCASE.json for solved metric regimes, the critical-value budget and exact formal boundaries. Read FRONTIER.md before the dated STRONGEST_RESULTS.json; discovery is not Comparator admission.",
     "source_index": {
-      "content_digest": "sha256:487f567647a1299ccb6669c7af60c309ea6c2c492835cce4aadb680a9a862b36",
+      "content_digest": "sha256:b74fbdbd52f99db147ade08ac03bd8be4e4d6add43458ba5d9c8686ae39e9f57",
       "path": "docs/problems.json"
     },
     "strongest_result_summary": {

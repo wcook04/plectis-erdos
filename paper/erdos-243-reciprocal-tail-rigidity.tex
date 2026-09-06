@@ -11,7 +11,7 @@
 \renewcommand{\commit}{4ab50e144847a3393fb340341760e5d6907d702e}
 \renewcommand{\commitshort}{4ab50e144847}
 \hypersetup{
-  pdftitle={Excluding the bounded negative part: Lean-checked rigidity for Erdős Problem 243},
+  pdftitle={An exact record-excess criterion for Erdős Problem 243},
   pdfsubject={Erdős Problem Notes: Problem 243},
   pdfkeywords={irrationality, Ahmes series, Sylvester sequence, unit fractions, Lean 4},
 }
@@ -26,9 +26,9 @@
 \newcommand{\fnum}{\operatorname{num}}
 \newcommand{\surv}{\operatorname{Surv}}
 
-\runninghead{Erd\H{o}s \#243: excluding the bounded negative part}
-\title{Excluding the Bounded Negative Part}
-\subtitle{Lean-checked rigidity for Erd\H{o}s Problem~\#243}
+\runninghead{Erd\H{o}s \#243: an exact record-excess criterion}
+\title{An Exact Record-Excess Criterion}
+\subtitle{Rigidity criteria for Erd\H{o}s Problem~\#243}
 \author{Will Cook}
 \date{July 2026}
 
@@ -41,30 +41,63 @@
 Sylvester's sequence satisfies $a_{n+1}=a_n^2-a_n+1$ and has reciprocal sum
 $1$.  Erd\H{o}s asked whether every increasing integer sequence with
 $a_{n+1}/a_n^2\to1$ and rational reciprocal sum satisfies this recurrence
-eventually.  Write $E_n$ for the centred denominator-clearing error in
-Koizumi's integer state coordinates.  Our main result excludes the entire
-bounded-negative regime: under the exact $C/D$ dynamics, positivity,
-normalised vanishing, and an eventually bounded negative part, $E_n=0$
-eventually, so the Sylvester recurrence holds eventually.  Normalised
-vanishing itself yields the required strict centring after a finite shift.
+eventually.  The leading result of this note is an exact criterion carrying
+those hypotheses and no others.  Write $(C_n,D_n,E_n)$ for the integer state
+of Section~\ref{sec:state}, $L_n=\lcm(q,a_0,\ldots,a_{n-1})$, $M_n=D_n/L_n$,
+$U_n=C_n/M_n$, $V_n=E_n/M_n$, and $\mathcal R$ for the set of steps that set a
+new record for $U$, where $q$ is a common denominator of the reciprocal sum.
+Then the sequence is eventually Sylvester if and only if
+$\sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)$ is finite for some integer $B\ge0$,
+where $f$ is any finite nonincreasing weight with divergent integral
+(Theorem~\ref{res:weightedrecord}).  Equation~\eqref{eq:weightedgrowth} is an
+equivalent form written in the growth defect $a_n^2/a_{n+1}-1$.
 
-The proof has three arithmetic steps.  Bounded negative errors give bounded
-upward increments of $C_n$.  On a hypothetical tail with no zero error,
-integrality and normalised vanishing force $C_n\to\infty$; the tail gcd
-then stabilises.  After reduction, the successive multipliers are
-pairwise coprime and each is coprime to all later numerators; a block of
-consecutive multiples contradicts these coprimality conditions.  Finally,
-$E_n=0$ is absorbing.  The same argument in summable form gives a second
-criterion: under the exact dynamics, positivity, the strict centred-step
-equation, normalised vanishing, and
+That criterion is an ordinary mathematical proof.  Its finite first-crossing
+arithmetic is kernel-checked, in the
+\lword{Erdos243/LcmRecordExcess.lean}{31}{covered_wall_forces_excess}{covered-wall
+charge} and the three lemmas beside it, and the analytic half is not
+formalised.  The criterion settles nothing on its own, because the growth
+hypothesis does not supply the finiteness, and termwise convergence to zero is
+insufficient.
+
+Section~\ref{sec:records} carries further criteria in the record coordinates,
+each with its hypotheses and its evidence class.  Write
+$\ell(x)=\log_2\log_2\max(4,x)$ and $H_n=\max_{j\le n}C_j$.  Two are exact
+equivalences for the endpoint under arbitrary cancellation, one through the
+record-amplified negative error and one through unit true record increments.
+One is a dichotomy for the record-increment coefficient
+$\Theta=\limsup_n(H_{n+1}-H_n)/\ell(H_n)$, which is $0$ or strictly greater
+than $1$, so $\Theta\le1$ already forces the recurrence.  One replaces a constant bound
+on the negative part by the bound $(1-\delta)\ell(C_n)$.  One states the
+Lean-checked endpoint in the language of the original problem, where the
+Erd\H{o}s--Straus quantity $Q_n$ is asked only for $\limsup_nQ_n<\infty$ in
+place of their $\limsup_nQ_n\le0$.  One is an unconditional irrationality
+criterion at the cubic rate $a_n^2/a_{n+1}=1+3/n+o(n^{-3})$.  The last two
+record what the method cannot reach: the classical Ahmes criteria all decide
+exactly the half-space $E_n\ge0$ eventually, and pairwise coprimality with
+whole-modulus avoidance admits rises of order $\log C_n$.
+
+Two conditional endpoints on the state system are proved in Lean.  Under the
+exact $C/D$ dynamics, positivity, normalised vanishing, and an eventually
+bounded negative part, $E_n=0$ eventually, so the Sylvester recurrence holds
+eventually
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2403}
+      {boundedNegativePart_sylvesterNext_eventually}
+      {the bounded-negative-part theorem}.  Normalised vanishing itself yields
+the required strict centring after a finite shift.  The same argument in
+summable form gives a second criterion: under the exact dynamics, positivity,
+the strict centred-step equation, normalised vanishing, and
 $\sum_n(-E_n)_+/C_n<\infty$, the Sylvester recurrence is recovered
 \lword{Erdos243/SparseResetRecovery.lean}{510}
       {sylvesterNext_eventually_of_summable_negativeRelativeMass}
       {the finite-negative-mass recovery theorem}.
-The summability hypothesis is not known for the canonical orbit.
-An ordinary first-crossing argument in Section~\ref{sec:lcmrecords} gives
-smaller equivalent sufficient sums, restricted to LCM numerator records and
-allowing logarithmic discounts; their finiteness remains open as well.
+Neither hypothesis is known for the canonical orbit.  The proof of the first
+has three arithmetic steps.  Bounded negative errors give bounded upward
+increments of $C_n$.  On a hypothetical tail with no zero error, integrality
+and normalised vanishing force $C_n\to\infty$; the tail gcd then stabilises.
+After reduction, the successive multipliers are pairwise coprime and each is
+coprime to all later numerators; a block of consecutive multiples contradicts
+these coprimality conditions.  Finally, $E_n=0$ is absorbing.
 
 Several sharper exclusions explain why the remaining case is genuinely
 unbounded.  A negative error cannot be constant, at any magnitude or scale, and
@@ -81,12 +114,22 @@ exact inequality
 Hence fixed-length recoveries are eventually cancellation-free, although
 recoveries of increasing length remain possible.
 
+One clause of that frontier is already published and is credited as such.  That
+a counterexample must have negative errors infinitely often is the
+contrapositive of Koizumi's Proposition~19(2)~\cite[Prop.~19(2)]{koizumi2025},
+which he attributes to Badea; Koizumi and Badea assume the sign is eventually
+nonnegative.  The theorem proved here assumes only that the negative part is
+eventually bounded, which admits sign changes of bounded depth at every scale,
+so it is a strengthening of their hypothesis rather than a new clause.  The
+unboundedness and divergent-mass parts of the frontier have no located
+antecedent.
+
 Koizumi's pseudo-greedy coordinates supply normalised vanishing and a stronger
 centring range for the canonical Erd\H{o}s orbit, but neither boundedness nor
 summability of its negative part.  Thus any surviving orbit must have
 cofinally unbounded negative excursions and divergent normalised negative
 mass.  Excluding that case is the exact open boundary, and Problem~\#243
-remains open.
+remains open
 \end{abstract}
 
 \section{Introduction}\label{sec:problem}
@@ -243,10 +286,22 @@ $E$, and the whole question is whether $E$ can avoid vanishing.
 
 \begin{quote}\small
 \textbf{Strongest result.}
+Under the hypotheses of Problem~\ref{res:problem} and no others, the sequence
+is eventually Sylvester if and only if the weighted record-excess sum
+$\sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)$ is finite for some integer $B\ge0$
+(Theorem~\ref{res:weightedrecord}).  This is an ordinary proof whose finite
+first-crossing arithmetic is kernel-checked and whose analytic half is not.
+The hypotheses of Problem~\ref{res:problem} do not supply that finiteness, so
+the criterion is an exact reformulation of the problem rather than a solution
+of it.
+
+\smallskip
+\textbf{Strongest Lean-checked result.}
 Under the exact integer dynamics, positivity, normalised vanishing, and an
 eventually bounded negative part, the centred error $E_n$ is eventually zero.
 The original sequence therefore satisfies the Sylvester recurrence from some
-point onward (Theorem~\ref{res:bounded}).
+point onward (Theorem~\ref{res:bounded}).  Hypothesis~(5), the bound on the
+negative part, is supplied by nothing in this note.
 
 \smallskip
 \textbf{Second endpoint.}
@@ -255,19 +310,31 @@ $\sum_n(-E_n)_+/C_n$ is finite, provided the strict centred-step equation is
 available (Theorem~\ref{res:mass}).
 
 \smallskip
+\textbf{Strongest exclusion of an unconditional kind.}
+At the cubic rate $a_n^2/a_{n+1}=1+3/n+o(n^{-3})$ the reciprocal sum is
+irrational (Theorem~\ref{res:cubicrate}).  This assumes no rationality and no
+state hypothesis, and it lies outside the regime of
+Problem~\ref{res:problem} only through its rate.
+
+\smallskip
 \textbf{What remains open.}
 Koizumi's coordinates provide normalised vanishing for the canonical orbit,
 but they do not provide either bounded negative excursions or finite
 normalised negative mass.  Any surviving counterexample must therefore have
 cofinally unbounded negative excursions and divergent normalised negative
-mass (Proposition~\ref{res:frontier}).
+mass (Proposition~\ref{res:frontier}), record increments strictly above the
+log-log scale (Theorem~\ref{res:recorddichotomy}), and unbounded
+record-amplified error (Theorem~\ref{res:recordamplified}).
 
 \smallskip
 \textbf{Proof spine.}
-Bounded negative errors control the rise of the integer tail state.  A gcd
-stabilisation reduces the orbit to pairwise-coprime fresh moduli, and a block
-of consecutive multiples then gives the contradiction.  The finite-mass
-argument replaces the uniform bound by a summable recovery estimate.
+The record criterion charges each first crossing of a CRT-selected height to
+the record excess at the step that crosses it, and the crossing heights carry
+a divergent weight.  For the state-system endpoints, bounded negative errors
+control the rise of the integer tail state; a gcd stabilisation reduces the
+orbit to pairwise-coprime fresh moduli, and a block of consecutive multiples
+then gives the contradiction.  The finite-mass argument replaces the uniform
+bound by a summable recovery estimate.
 \end{quote}
 
 \noindent The remaining exclusions sharpen this boundary.  By
@@ -286,18 +353,21 @@ Section~\ref{sec:open}.
 Section~\ref{sec:state} sets up the state system, and Section~\ref{sec:defect}
 proves the defect identity, from which eventual vanishing of $E$ forces the
 Sylvester recurrence and a single vanishing error propagates.
-Section~\ref{sec:descent} disposes of the case $E\ge0$ in three lines.  The
-rest of the note is the case $E<0$, in four widening steps: constant magnitude
-(Section~\ref{sec:constant}), periodic magnitude
+Section~\ref{sec:lcmrecords} then proves the exact record-excess criterion, and
+Section~\ref{sec:records} states the further criteria in the record
+coordinates.  Section~\ref{sec:descent} disposes of the case $E\ge0$ in three
+lines.  The rest of the note is the case $E<0$, in four widening steps:
+constant magnitude (Section~\ref{sec:constant}), periodic magnitude
 (Section~\ref{sec:periodic}), bounded magnitude via a coprimality barrier
 (Sections~\ref{sec:barrier} and~\ref{sec:bounded}), finite normalised negative
 mass (Section~\ref{sec:mass}), and what is left (Section~\ref{sec:open}).
 These sections contain the new content; a reader who wants only the strongest
-statements should read Sections~\ref{sec:bounded} and~\ref{sec:mass}, and then
-Section~\ref{sec:open}.  Appendix~\ref{app:index} is a guide to the formal
+statements should read Sections~\ref{sec:lcmrecords} and~\ref{sec:records}, and
+then Section~\ref{sec:open}.  Appendix~\ref{app:index} is a guide to the formal
 sources, and Appendix~\ref{app:residue} records an exact residue reduction that
 an earlier finite search used.  Linked phrases open the corresponding Lean
-declaration at the pinned source revision~\commitshort.
+declaration at the pinned source revision~\commitshort.  Where a section names
+a Lean module that is outside that revision, it says so in place of a link.
 
 \medskip
 \noindent\textbf{Keywords.} irrationality; Ahmes series; Sylvester's sequence;
@@ -385,17 +455,35 @@ $T_n=1/(a_n-1)$ exactly, so $D_n=(a_n-1)C_n$ and $E_n=0$: the centred state
 measures deviation from the Sylvester tail identity, and it vanishes
 identically on the Sylvester orbit.
 
-None of this paragraph is formalised.  The Lean module contains no series, no
-rationality hypothesis, and no growth hypothesis; it proves identities and
-implications about the integer system above, and about its natural-number
-realisation, for which the bridging identities are the
+The Lean module carries no rationality hypothesis and no growth hypothesis; it
+proves identities and implications about the integer system above, and about its
+natural-number realisation, for which the bridging identities are the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{1863}{natTail_eq_nextTailState}{tail
 realisation}, the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{1875}{natDen_eq_nextDenState}{denominator
 realisation}, and the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{1972}{natTail_eq_sub_centeredState}{signed
-update law}.  The identification with reciprocal tails motivates the
-definitions.  The formal development does not check that identification.
+update law}.
+
+The series itself is reached by three further declarations, which were absent
+from earlier revisions of this note.  Write $C_n/D_n$ for the real ratio carried
+by the natural state, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1895}{tailRatio}{tail ratio}.
+Given $a_n>0$, $D_n>0$, $C_{n+1}+D_n=a_nC_n$ and $D_{n+1}=a_nD_n$, one exact
+step removes $1/a_n$ from that ratio
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1899}{tailRatio_eq_reciprocal_add_next}{one-step
+reciprocal identity}, finite iteration telescopes to a partial sum plus the
+endpoint ratio
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1923}{tailRatio_eq_partialReciprocalSum_add}{finite
+telescoping}, and convergence of the endpoint ratio to zero identifies the
+infinite sum
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1949}{reciprocalSeries_hasSum_of_tailRatio_tendsto_zero}{the
+series realisation}: $\sum_n1/a_n$ then has sum $C_0/D_0$.  These three carry no
+growth hypothesis, no centring hypothesis and no rationality hypothesis, and
+they exclude nothing.  They close the loop between the integer system and the
+series that motivates it.  Producing the state of a given rational sum, which is
+the direction the problem needs, is the exposition of this paragraph and is not a
+checked statement.
 
 \begin{proposition}[scale equivariance]\label{res:scale}
 For every $s,a,D,C\in\Z$,
@@ -615,6 +703,548 @@ and~\ref{sec:periodic} address the special all-negative case only.  The
 mixed-sign analysis
 in Sections~\ref{sec:bounded} and~\ref{sec:mass} instead separates cofinally
 negative errors from an eventually positive tail.
+
+\section{Weighted first crossings of LCM records}\label{sec:lcmrecords}
+
+This section carries the leading result of the note.  It is an exact criterion
+for Problem~\ref{res:problem}, stated under the hypotheses of that problem and
+no others, and it is reached by a first-crossing argument rather than by a
+hypothesis on the negative part.  Only steps setting a new LCM numerator record
+contribute, a fixed LCM-scale baseline may be subtracted, and the remaining mass
+may be logarithmically discounted.
+
+\paragraph{Evidence.}
+The result in this section is an ordinary mathematical proof.  Its finite
+arithmetic and charging step are kernel-checked at the pinned revision: the
+\lword{Erdos243/LcmRecordExcess.lean}{14}{rise_is_fresh}{freshness of a rise},
+the
+\lword{Erdos243/LcmRecordExcess.lean}{31}{covered_wall_forces_excess}{covered-wall
+excess bound}, the
+\lword{Erdos243/LcmRecordExcess.lean}{47}{wall_count_le_excess}{wall count}, and
+the
+\lword{Erdos243/LcmRecordExcess.lean}{64}{weighted_wall_charge}{weighted wall
+charge}.  The global analytic argument, which is the passage from the per-step
+charge to divergence of the whole sum, is not formalised.  An exact finite
+replay covers $6{,}008$ seed-modulus cases over $6{,}000$ distinct rational
+seeds, $26{,}171$ nonterminal transitions and $6{,}008$ terminal states, and
+every case reaches centred zero within $15$ steps; finite data of that kind do
+not prove universal termination.
+
+\paragraph{Remaining obligation.}
+Derive finiteness of the displayed sum for one admissible weight and one fixed
+$B$ from rational denominator feedback, or contradict a nonterminal orbit by
+another route.  The logarithmic discount weakens what suffices; it does not
+establish it.
+
+Set
+\[
+ L_n=\operatorname{lcm}(q,a_0,\ldots,a_{n-1}),\quad
+ M_n=D_n/L_n,\quad U_n=C_n/M_n,\quad V_n=E_n/M_n.
+\]
+The rational tail has denominator dividing $L_n$, so $U_n$ and $V_n$ are
+integers. With $\rho_n=\gcd(L_n,a_n)$, the exact updates are
+\[
+ M_{n+1}=M_n\rho_n,\qquad
+ \rho_nU_{n+1}=U_n-V_n,\qquad V_n=L_n-(a_n-1)U_n.
+\]
+Write $R_n=\max_{j\le n}U_j$ and
+$\mathcal R=\{n:U_{n+1}>R_n\}$. Centring implies that every sufficiently
+late strict rise has $\rho_n=1$: otherwise $U_{n+1}\le3U_n/4$.
+Its actual jump is therefore $d_n=U_{n+1}-U_n=-V_n$.
+
+\begin{theorem}[arithmetic weighted-record dichotomy]\label{res:arithmeticrecord}
+Let $a_n,L_n,U_n$ be positive integers and $V_n$ integers satisfying
+\[
+ \begin{gathered}
+ L_{n+1}=\operatorname{lcm}(L_n,a_n),\qquad \rho_n=\gcd(L_n,a_n),\\
+ \rho_nU_{n+1}=U_n-V_n,\qquad
+ V_n=L_n-(a_n-1)U_n,\qquad -U_n\le2V_n.
+ \end{gathered}
+\]
+Let $f:[1,\infty)\to[0,\infty)$ be finite and nonincreasing, with
+$\int_1^\infty f(t)\,dt=\infty$. For each fixed integer $B\ge0$,
+\[
+ \sup_n U_n<\infty
+ \quad\Longleftrightarrow\quad
+ \sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)<\infty.
+\]
+\end{theorem}
+
+\begin{proof}
+A bounded integer running maximum increases only finitely many times, so
+bounded $U_n$ gives a finite sum. Suppose instead that $U_n$ is unbounded.
+There are infinitely many record rises, each with $\rho_n=1$. Its digit is
+greater than one because $d_n=(a_n-1)U_n-L_n>0$. If $r<s$ are record
+indices, then $a_r\mid L_s$ and $\gcd(a_s,L_s)=1$, hence
+$\gcd(a_r,a_s)=1$. The record digits are therefore distinct and pairwise
+coprime. For any fixed $B\ge1$, choose $B$ of them greater than $B$,
+and take $T$ after their indices. These old digits
+$m_0,\ldots,m_{B-1}$ all divide $L_T$.
+
+Put $P=\prod_i m_i$ and choose $x$ by the Chinese remainder theorem with
+$m_i\mid x+i$. Consider the heights $\tau=x+B+kP$. A first crossing
+$U_n\le R_n<\tau\le U_n+d_n$ is a record step. If $d_n\le B$, then
+$U_n\in[\tau-B,\tau)$, so some $m_i$ divides $U_n$. It also divides
+$L_n$, hence divides $d_n=(a_n-1)U_n-L_n$, contradicting
+$0<d_n\le B<m_i$.
+
+If the step first crosses $h\ge1$ such heights, their spacing gives
+$(h-1)P<d_n$. With $r=d_n-B\ge1$ and $P\ge B+1$, we have
+$d_n=B+r\le Pr$, whence $h\le r$. Monotonicity of $f$ now gives
+\[
+ \sum_{\substack{\tau\text{ first crossed}\\\text{at step }n}}f(\tau)
+ \le(d_n-B)f(U_n).
+\]
+Each height above $R_T$ has one first crossing. Summing, and comparing each
+interval of length $P$ with its left endpoint, yields the finite bound
+\begin{equation}\label{eq:weightedcrossing}
+ \sum_{\substack{T\le n<N\\n\in\mathcal R}}(-V_n-B)_+f(U_n)
+ \ge\frac1P\int_{R_T+P}^{R_N} f(t)\,dt.
+\end{equation}
+Since $R_n\to\infty$, the right side diverges for every $B\ge1$.
+The case $B=0$ follows by domination.
+\end{proof}
+
+Only the lower centring bound was used. In particular, neither normalised
+vanishing nor a growth estimate for $C_n$ supplies the CRT moduli: the
+record digits themselves do so. Normalised vanishing enters in the following
+application to the original sequence.
+
+\begin{theorem}[weighted record excess]\label{res:weightedrecord}
+Assume the growth and rationality hypotheses of Problem~\ref{res:problem},
+and let $f$ be as in Theorem~\ref{res:arithmeticrecord}. The sequence is
+eventually Sylvester if and only if, for some integer $B\ge0$,
+\[
+ \sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)<\infty.
+\]
+\end{theorem}
+
+\begin{proof}
+If the endpoint fails, centred zero is never reached on a sufficiently late
+tail. Integrality gives $1/U_n\le|V_n|/U_n=|E_n|/C_n\to0$, so $U_n$ is
+unbounded. Theorem~\ref{res:arithmeticrecord}, applied after the centring
+threshold, forces divergence for every $B$. Removing a finite prefix changes
+only finitely many global record terms. Conversely, a Sylvester tail
+telescopes to $x_n=1/(a_n-1)$, so $V_n=0$ eventually.
+\end{proof}
+
+For example, $f(t)=1/[t\log(et)]$ gives the sufficient condition
+\[
+ \sum_{n\in\mathcal R}\frac{(-V_n-B)_+}{U_n\log(eU_n)}<\infty.
+\]
+Its finite lower bound in~\eqref{eq:weightedcrossing} is
+$P^{-1}\log\bigl(\log(eR_N)/\log(e(R_T+P))\bigr)$.
+Further fixed iterated logarithmic factors are allowed whenever the integral
+still diverges. These are specialisations of one crossing theorem.
+
+The criterion also has an exact expression in the original growth defect.
+Put $\gamma_n=a_n^2/a_{n+1}-1$ and $\theta_n=E_n/C_n$. The defect identity
+gives
+\[
+ \gamma_n+\theta_n=
+ \frac{(1-\theta_n)(a_n-1+\theta_{n+1})}{a_{n+1}},
+ \qquad 0<\gamma_n+\theta_n<3/a_n
+\]
+eventually. Thus the two nonnegative summands
+$U_nf(U_n)(\gamma_n-B/U_n)_+$ and $(-V_n-B)_+f(U_n)$ differ by at most
+$3U_nf(U_n)/a_n$. This is summable because
+$U_n\le C_n=\exp(o(n))$, $f(U_n)\le f(1)$, and
+$a_n\ge\exp(c2^n)$ eventually for some $c>0$.
+Consequently Theorem~\ref{res:weightedrecord} is equivalent to finiteness of
+\begin{equation}\label{eq:weightedgrowth}
+ \sum_{n\in\mathcal R}U_nf(U_n)
+ \left(\frac{a_n^2}{a_{n+1}}-1-\frac B{U_n}\right)_+
+\end{equation}
+for some $B$. The original hypotheses do not currently supply this
+finiteness. In particular, termwise convergence to zero is insufficient.
+Also, $d_n$ is the actual jump, including any recovery from a drawdown; it
+must not be replaced by $R_{n+1}-R_n$ in the crossing proof.
+
+
+\section{Criteria in the record coordinates}\label{sec:records}
+
+The criterion of Section~\ref{sec:lcmrecords} lives in the LCM coordinates
+$U_n=C_n/M_n$, where old divisors persist.  The statements of this section live
+in the primitive coordinates, where old divisors can be deleted.  They are
+collected here because each is
+an equivalence, a dichotomy, or an unconditional exclusion, and because each
+sharpens the profile of a counterexample in a direction the earlier sections do
+not reach.
+
+\paragraph{Primitive coordinates.}
+Put $G_n=\gcd(C_n,D_n)$, $u_n=C_n/G_n$, $v_n=D_n/G_n$, $\tilde e_n=E_n/G_n$
+and $h_n=G_{n+1}/G_n$, so that $w_n=a_nu_n-v_n=u_n-\tilde e_n$,
+$h_nu_{n+1}=w_n$, $h_nv_{n+1}=a_nv_n$ and $\gcd(u_n,u_{n+1})=1$.  The primitive
+error $\tilde e_n$ is signed, and $e_n=-E_n$ of Section~\ref{sec:state} remains
+the magnitude in the unreduced coordinates; neither is Koizumi's rational gap
+$\varepsilon_n$ of Section~\ref{sec:problem}.  Write $R_n=\max_{k\le n}u_k$ and
+$H_n=\max_{j\le n}C_j$ for the two running maxima, $s_n=R_{n+1}-R_n$ for the
+true record increment, $d_n=u_{n+1}-u_n$ at a strict rise,
+$m_n=(-\tilde e_n)_+$, $\mathcal A_n=R_nm_n/u_n$ for the record-amplified
+negative error, $\delta_n=(a_n^2/a_{n+1}-1)_+$ for the growth defect, and
+$\ell(x)=\log_2\log_2\max(4,x)$.  The symbol $\mathcal A_n$ is unrelated to the
+prefix product $A_n$ of Section~\ref{sec:open}.  A step is \emph{clean} when $h_n=1$.  Call the
+standing hypotheses of Problem~\ref{res:problem}, read through Koizumi's
+coordinates together with normalised vanishing, the hypotheses~(H), and write
+(S) for the conclusion that the sequence is eventually Sylvester.
+
+\paragraph{Source and evidence conventions for this section.}
+Each statement below carries its own evidence line.  ``Lean'' means that a
+declaration with that statement and a complete proof body is present in the
+formal sources.  Several of the modules named below are outside the pinned
+public revision~\commitshort; those are marked, and no link is offered for them.
+Where a result is an ordinary proof over a Lean core, the Lean part is named
+exactly, and the part that is ordinary mathematics is named exactly as well.
+
+\subsection{The record-increment coefficient}
+
+\begin{theorem}[record-excess dichotomy]\label{res:recorddichotomy}
+Let $\Theta=\limsup_n(H_{n+1}-H_n)/\ell(H_n)$ on a nonterminating canonical
+orbit under~(H).  Then either $G_n$ is unbounded and $\Theta$ is infinite, or
+$G_n$ stabilises at a value $g$ and $\Theta\ge g\,v_T/\varphi(v_T)$ for every
+late $T$, so that $\Theta>g\ge1$.  Hence $\Theta=0$ or $\Theta>1$, and
+$\Theta\le1$ forces~(S).
+\end{theorem}
+
+\begin{corollary}[inclusive log-log boundary]\label{res:loglogboundary}
+If $\limsup_n(-E_n)_+/\ell(C_n)\le1$ then~(S) holds.  Every counterexample
+therefore satisfies $\limsup_n(-E_n)_+/\ell(C_n)>1$ strictly.
+\end{corollary}
+
+\paragraph{Mechanism.}
+Four steps.  The drawdown ladder $r_n=(-E_n-B_n)_+$ with $B_{n+1}=(B_n+E_n)_+$
+and $B_n=H_n-C_n$ gives $0\le r_n\le(-E_n)_+$, so a bound on the record
+increment is weaker than a bound on the negative error and is therefore the
+better trigger.  A divisor of $C_t$ and $D_t$ at a record locks into every later
+record increment, so a pairwise-coprime block of moduli above $B$ dividing $D_T$
+contradicts $r_n\le B$ below height $2P+B$.  If $\sup_nG_n$ is infinite then
+$\Theta$ is infinite, so a finite $\Theta$ forces a genuinely primitive tail on
+which all
+multipliers are pairwise coprime.  Pre-sieving the CRT block with $x\equiv0
+\pmod{v_N}$ makes a block of length $B$ cost only $\varphi(v_N)v_N^{-1}B$ fresh
+moduli, which gives the strict inequality.
+
+\paragraph{Evidence.}
+Ordinary proof over the Lean core.  The kernel-checked ingredients are the
+\lword{Erdos243/SlowRiseBarrier.lean}{111}{commonDivisor_persists}{persistence of
+a common divisor}, the
+\lword{Erdos243/SlowRiseBarrier.lean}{51}{exists_consecutiveMultiples_between}{bounded
+CRT block}, the
+\lword{Erdos243/SlowRiseBarrier.lean}{194}{slowRise_landing}{slow-rise landing
+lemma}, and the
+\lword{Erdos243/SlowRiseBarrier.lean}{280}{no_slowNegative_of_coprimeBlock}{coprime-block
+exclusion}.  The running-maximum persistence clause, the record-increment
+trigger, the gcd rescaling and the pre-sieved amplification are ordinary
+mathematics.  Finite replay: the identities hold exactly on four orbits, the
+$B=20$, $R=6$ CRT reconstruction equals $521026757646$ and excludes all twenty
+positions, and the Fermat product identity and the maximal gap ratio $1.8116$ at
+$u\ge1000$ against $\sigma^{-1}=2$ hold.
+
+\paragraph{Remaining obligation.}
+No upper bound on $\Theta$ is proved.  The branch $\Theta=\infty$ is exactly the
+surviving regime.
+
+\subsection{Two exact equivalences under arbitrary cancellation}
+
+\begin{theorem}[record-amplified rigidity]\label{res:recordamplified}
+Under~(H), the following are equivalent: (S); $\limsup_n\mathcal A_n<\infty$;
+$\limsup_nR_n\delta_n<\infty$.  Each of those two limits superior is $0$ or
+$+\infty$.
+\end{theorem}
+
+\begin{corollary}[the critical rate]\label{res:criticalrate}
+Under~(H) and $\delta_n=O(1/n)$, with no convergence of $n\delta_n$ assumed,
+(S) is equivalent to $u_n=O(n)$ and to $(-\tilde e_n)_+=O(1)$.  A
+counterexample at the critical rate therefore has $\limsup_nu_n/n=\infty$ and
+$\limsup_n(-\tilde e_n)_+=\infty$.
+\end{corollary}
+
+\paragraph{Mechanism.}
+On a non-Sylvester orbit, arbitrarily late indices carry $B$ distinct primes
+above a chosen bound dividing $v_T$, because paid steps have density zero and a
+block of consecutive clean steps has pairwise-coprime multipliers all dividing
+the final denominator.  A finite alternative between a CRT crossing and a
+deletion then forces some $\mathcal A_n$ above any prescribed level.  The passage to the
+growth defect uses $|\delta_n-m_n/u_n|\le3/a_n$ and $R_n/a_n\to0$.
+
+\paragraph{Evidence.}
+Ordinary proof.  The step that a cancellation at $s$ is still visible at the
+first later negative error, in the form $u_t\le u_{s+1}$ and
+$u_su_t\le R_t|\tilde e_t|u_{s+1}$, is Lean-checked as
+\texttt{recordAmplified\_error\_after\_cancellation} in
+\texttt{SaturatedSquareTransport.lean}, which is outside the pinned public
+revision~\commitshort.  Exact fixture: $15/134=1/10+1/85+1/5695$, with primitive
+steps $(15,134)\to(4,335)\to(1,5695)$ and $\mathcal A_1=15/4$, meeting the
+visibility lemma with equality.
+
+\paragraph{Remaining obligation.}
+The equivalence relocates the problem into the $\mathcal A_n$ axis.  Nothing
+here bounds $\mathcal A_n$ on the canonical orbit.
+
+\begin{theorem}[unit record increments]\label{res:unitrecord}
+Under~(H), if $R_{n+1}-R_n\le1$ for all large $n$, then $a_{n+1}=a_n^2-a_n+1$
+for all large $n$.  Hence (S) holds if and only if
+$\#\{n:R_{n+1}-R_n\ge2\}$ is finite.  No hypothesis is placed on drawdowns, on
+record-setting jumps, or on the cancellation factors $h_n$.
+\end{theorem}
+
+\paragraph{Mechanism.}
+Otherwise $u_n\to\infty$.  A late fresh index $j$ cannot have all its exact prime
+powers below $B=R_{j+1}+2$, since $a_j\mid\lcm(1,\ldots,B)$ would give
+$\log a_j\le B\log B$ against the doubly exponential growth of $a_j$.  So some
+exact prime power $P=p^{k}$ of $a_j$ exceeds $R_s+2$ at $s=j+1$ and divides
+$v_s$.  Let $Y$ be the least multiple of $p$ above $R_s$.  At the first $t>s$
+with $u_t\ge Y$ the unit increment forces $u_t=Y$ exactly, while the valuation
+threshold keeps $P\mid v_t$, so $p\mid u_t$ contradicts primitivity.
+
+\paragraph{Evidence.}
+Lean, with an explicit supply hypothesis.  The declarations are
+\texttt{unit\_recordIncrement\_cut} and
+\texttt{recordIncrementOne\_sylvesterNext\_eventually} in
+\texttt{RecordIncrementBarrier.lean}, which is outside the pinned public
+revision~\commitshort.  The prime-power supply is a hypothesis of the formal
+statement and is discharged at every late index by an ordinary proof, so the
+complete advertised endpoint is an ordinary proof with a kernel-checked
+principal part, namely the landing contradiction.
+
+\paragraph{Relation.}
+This theorem is incomparable with the two-unit record theorem: a record-setting
+jump of size at most two bounds $s_n\le2$ rather than $s_n\le1$, and $s_n\le1$
+allows arbitrarily large record-setting jumps after a drawdown.  The fixture
+$(8,177)\to(7,4071)\to(10,2373393)$ with multipliers $23$ and $583$ has records
+$8$ and $10$, increment $2$, jump $3$ and $\gcd(8,10)=2$, which is why the
+parity step of the odd cut does not transfer from jumps to increments.
+
+\subsection{Protected epochs and the energy criterion}
+
+\begin{theorem}[protected epoch inequality]\label{res:epochenergy}
+Let the orbit satisfy the primitive cocycle with $2|\tilde e_n|<u_n$ from an
+index $s$.  Let $p\ge3$ be prime, $Q=p^{\ell}$ divide $v_s$ with $Q\ge16$, put
+$L=pQ/2$, and assume $R_s<L/2$.  Let $\tau$ be the first index with $u_\tau\ge
+L$, let $J$ be the set of steps in $[s,\tau)$ that first cross at least one odd
+multiple of $p$ in $(L/2,L]$, and put $X=\sum_{n\in J}(d_n-2)$.  Then every
+$n\in J$ is a clean record step with $d_n\ge3$, and
+$pQ\le(8p+8)\lvert J\rvert+4X+8p$.
+\end{theorem}
+
+\begin{theorem}[energy criterion]\label{res:energycriterion}
+Under~(H), the energy
+$\mathcal E=\sum_{n\ \mathrm{record}}\bigl(\mathbf 1_{d_n\ge3}u_n^{-1/2}
++(d_n-2)_+u_n^{-1}\bigr)$ is finite if and only if~(S) holds; and
+$\sum_{n\ \mathrm{record}}(d_n-2)_+u_n^{-1/2}$ is finite if and only if~(S)
+holds.
+\end{theorem}
+
+\paragraph{Mechanism.}
+Below $L$ the numerator satisfies $w_n<\tfrac32L<p^{\ell+1}$, so the prime power
+persists and $p\nmid u_t$ throughout $[s,\tau]$.  Each barrier above $R_s$ is
+first crossed at a record step, where a jump of at most two would require either
+the forbidden landing or a pair of even endpoints.  Barriers first crossed at one
+step lie in an interval of length $d_n$ with spacing $2p$, which gives the
+per-step capacity $1+d_n/(2p)$, and the barrier count is at least $Q/8-1$.  For
+the criterion, an odd prime power of the required size is available at every late
+index, so each late window carries energy at least $1/16$, and the tail of a
+convergent series tends to zero.
+
+\paragraph{Evidence.}
+The integer epoch inequality is Lean, as
+\texttt{protected\_epoch\_energy\_integer} with its three counting lemmas in
+\texttt{ProtectedEpochEnergy.lean}, which is outside the pinned public
+revision~\commitshort.  The real-valued corollary, the odd prime-power supply at
+every late index, and the global criterion are ordinary proofs.  This discharges
+a quantitative record-excess target that an earlier wave had left open, and it
+uses one protected prime power rather than a product of moduli.
+
+\subsection{A slow negative part, and the original coordinates}
+
+\begin{theorem}[slow negative part]\label{res:slownegative}
+Let $(a,C,D)$ be an exact natural orbit with $a_n>1$, $C_n>0$, $D_0\ge1$, under
+normalised vanishing.  Suppose that for some $\delta\in(0,1)$ and all large $n$
+with $E_n<0$ one has $-E_n\le(1-\delta)\ell(C_n)$.  Then $E_n=0$ for all large
+$n$, and $a_{n+1}=a_n^2-a_n+1$ for all large $n$.
+\end{theorem}
+
+\noindent Theorem~\ref{res:bounded} is the case of a constant bound, since a
+constant is eventually below $(1-\delta)\ell(C_n)$.
+
+\paragraph{Mechanism.}
+Normalised vanishing gives $C_{n+1}<\tfrac32C_n$, hence
+$\ell(C_n)\le\log_2n+O(1)$, and $a_n$ grows at least geometrically.  The
+multiplier overlap $\gcd(a_n,D_n)$ is bounded by the next negative magnitude and
+therefore by $\ell(C_n)+1$.  Splitting $a_n$ into the part coprime to $D_n$ and
+the burnt part, a poor index supplies a burn prime with valuation above
+$\sqrt n$, and such primes are injective across a window, so a window
+$[T,2^T]$ has at most $T+O(1)$ poor indices.  The first $B$ rich indices give
+$B$ pairwise-coprime moduli above any prescribed size, and the block form of the
+landing lemma applies.
+
+\paragraph{Evidence.}
+Ordinary proof over the Lean core.  The kernel-checked ingredients are the
+\lword{Erdos243/SlowRiseBarrier.lean}{111}{commonDivisor_persists}{persistence of
+a common divisor}, the
+\lword{Erdos243/SlowRiseBarrier.lean}{162}{multiplierOverlap_dvd_laterCenteredState}{overlap
+transport}, the
+\lword{Erdos243/SlowRiseBarrier.lean}{194}{slowRise_landing}{landing lemma} and
+the
+\lword{Erdos243/SlowRiseBarrier.lean}{280}{no_slowNegative_of_coprimeBlock}{coprime-block
+exclusion}.  The burn count and the choice of constants are ordinary
+mathematics.  Corollary~\ref{res:loglogboundary} supersedes this theorem on two
+axes, the drawdown-corrected observable and the inclusive constant, and this
+theorem is retained because its hypothesis is stated directly on $E_n$.
+
+\begin{theorem}[the Erd\H{o}s--Straus quantity, bounded form]\label{res:strausbounded}
+Let $a_{n+1}/a_n^2\to1$ and $\sum1/a_n\in\Q$, and put
+\[
+ Q_n=\frac{a_1a_2\cdots a_{n-1}}{a_n}
+     \left(\frac{a_n^2}{a_{n+1}}-1\right).
+\]
+If $\limsup_nQ_n<\infty$ then the sequence is eventually Sylvester.  If for
+some $\delta>0$ and all large $n$ one has
+$Q_n\le(1-\delta)\lambda\,\ell(a_1\cdots a_{n-1}/a_n)$, where $\lambda>0$
+depends only on the sequence, the same conclusion holds.
+\end{theorem}
+
+\paragraph{Attribution.}
+Erd\H{o}s and Straus require $\limsup_nQ_n\le0$ in the corresponding criterion,
+with the least common multiple in place of the product~\cite[Theorem~3,
+p.~132]{erdosstraus1964}; Koizumi's Corollary~20(1) uses the product
+form~\cite[Cor.~20(1), p.~12]{koizumi2025}.  The statement above is the same
+Lean-checked endpoint as Theorem~\ref{res:bounded}, transported into that
+language, and its content over the published criteria is the passage from
+$\le0$ to $<\infty$.  It is the only place in this note where the machine-checked
+theorem is written in the vocabulary of the 1964 paper.
+
+\paragraph{Evidence.}
+Ordinary proof composing Theorem~\ref{res:bounded} and
+Theorem~\ref{res:slownegative} with Koizumi's bridge.  The identity used is
+$Q_n=-(B_{n-1}/c_1)\varepsilon_n+(B_{n-1}/c_1)\beta_nc_{n+1}$ with
+$\beta_k=O(1/a_k)$, whose second term tends to zero because $c_{n+1}\le
+c_1(3/2)^n$ while $a_n$ is doubly exponential.
+
+\begin{theorem}[the $1/n$ threshold]\label{res:onethreshold}
+Let $a_{n+1}/a_n^2\to1$ and $\sum1/a_n\in\Q$.  If
+$\limsup_n n\,(a_n^2/a_{n+1}-1)_+<1$, then $a_{n+1}=a_n^2-a_n+1$ for all large
+$n$.
+\end{theorem}
+
+\noindent The constant $1$ is the boundary of this method.  The template
+$\tilde e_n\equiv-1$ with $u_n=c+n$ has $n(-\tilde e_n)/u_n\to1$, meets
+every hypothesis of the Erd\H{o}s--Straus criterion except the sign, and is
+excluded only by Theorem~\ref{res:constant}.  This sharpens the sufficient rate
+$a_n^2/a_{n+1}=1+o(1/n)$ recorded by Koizumi~\cite[Remark~21,
+p.~13]{koizumi2025} to an explicit constant.  Ordinary proof; the endgame is
+Koizumi's Proposition~19(2).
+
+\subsection{An unconditional irrationality criterion}
+
+\begin{theorem}[rising-factorial cubic exclusion]\label{res:cubicexclusion}
+For every exact positive integer orbit, every $\alpha\in\Q_{>0}$ and every
+$\beta\in\Q$,
+\[
+ \liminf_{X\to\infty}
+ \frac{\#\{n\le X:C_n\ne\alpha\,n(n+1)(n+2)+\beta\}}{X}>0 .
+\]
+\end{theorem}
+
+\begin{theorem}[cubic-rate irrationality]\label{res:cubicrate}
+If strictly increasing positive integers satisfy
+$a_n^2/a_{n+1}=1+3/n+o(n^{-3})$, then $\sum_n1/a_n$ is irrational.
+\end{theorem}
+
+\paragraph{Mechanism.}
+Density zero of the exceptions would give four consecutive agreements
+arbitrarily late, so the third difference is constant, $G_n$ stabilises, and the
+primitive tail carries an integral cubic $Q(n)=(m/6)n(n+1)(n+2)+c$ with
+$c=\pm1$ by adjacent coprimality.  For the irreducible case, a numerator zero
+makes an explicit quantity a square modulo the specialising prime, so Chebotarev
+square specialisation puts $x^2-1$ in the squares of the field generated by a
+root $x$ of the associated cubic; the trace conditions then force the sole
+integer scale $m=12$.  The two survivors
+$2n(n+1)(n+2)\pm1$ have numerator words modulo $7$ that the feedback recursion
+cannot realise, which gives lower density at least $1/28$.  For the corollary,
+rationality gives the canonical orbit with
+$C_{n+1}/C_n=a_n^2/a_{n+1}+O(1/a_n)$ and $1/a_n\ll n^{-3}$; an integer-extraction
+lemma at a regular rate then produces an exact rising-factorial cubic, against
+the exclusion.
+
+\paragraph{Evidence.}
+Ordinary proof with an exact finite replay of every finite claim, including the
+two words modulo $7$, the image $\{0,2,5,6\}$ of the recursion, the sole integer
+scale $12$, and the countermodel $n(n+1)(n+2)+(-1)^n$, whose ratio is
+$1+3/n+O(n^{-3})$ and which is not eventually polynomial.  This countermodel
+shows the exponent $o(n^{-\lambda})$ in the extraction lemma is sharp.  No Lean
+declaration covers either statement.
+
+\paragraph{Position.}
+Theorem~\ref{res:cubicrate} carries no rationality hypothesis and no state
+hypothesis.  Its rate is faster than the regime of Problem~\ref{res:problem}
+allows to be decided by the earlier sections, and it is the only unconditional
+irrationality statement in this note.
+
+\subsection{What the method cannot reach}
+
+\begin{proposition}[the classical criteria decide one half-space]\label{res:classicalhalfspace}
+The overlap debt divides the tail gcd, so $\kappa'_n=G_n/M_n$ is a positive
+integer and $E_n/M_n=\kappa'_n\tilde e_n$ is an integer carrying the sign of
+$E_n$.  Consequently the Erd\H{o}s--Straus
+Theorem~3 quantity and Koizumi's Corollary~20(1) quantity carry the sign of
+$E_n$ at every index, and each of those criteria decides exactly the half-space
+$E_n\ge0$ eventually, which Koizumi's Proposition~19(2) closes.  Moreover
+$\limsup_nQ_n/M_n<\infty$ holds if and only if $(-E_n)_+=O(M_n)$; that
+condition is equivalent to $\limsup_nQ_n<\infty$ on a cancellation-free tail,
+and every record of $u$ is set by a clean step, at which $M$ does not grow.
+\end{proposition}
+
+\paragraph{Evidence.}
+Ordinary proof over exact identities, with an exact finite replay on $4{,}472$
+frames and $610$ clean triples, zero failures.  The fixture family with
+$C_n=c+nm$, $D_n=(a_n-1)C_n-m$ and $a_n=1+C_{n+1}k_n$ realises, at
+$(c,m,h)=(10,3,6)$, $(13,3,6)$ and $(100003,3,5)$, arbitrarily long blocks on
+which every classical hypothesis quantity equals $-E_n=3$ at every index while
+$G_n=\kappa'_n=M_n=1$: the classical hypotheses fail by exactly $m$ units on a
+cancellation-free block.
+
+\paragraph{Reading.}
+This is a negative result about the classical toolkit and about the note's own
+LCM-weighted question.  It proves nothing about the surviving regime.  A third
+classical quantity, from Tijdeman and Yuan's 2002 Theorem~4.1, enters the same
+computation; it is not cited here because this note carries no verified
+bibliographic record of that paper.
+
+\begin{proposition}[cap on the coprimality route]\label{res:coprimalitycap}
+Let $m_0<m_1<\cdots$ be pairwise coprime integers at least $2$ with
+$\sum_i1/m_i\le1/2$.  For every $x\ge1$ and every $L>2^{k+1}$, where
+$k=\#\{i:m_i\le x+L\}$, the window $[x,x+L)$ contains an integer coprime to
+every $m_i$.  Consequently there is a sequence $u_n\to\infty$ coprime to every
+$m_i$ with $u_{n+1}-u_n\le2^{k(u_n)+1}+1$, which for $m_i\ge2^{2^i}$ is a rise
+of order $\log u_n$.  For pairwise-coprime $m_j$ with $\ell(m_j)=j+O(1)$ and
+$\sigma=\prod_j(1-1/m_j)>0$, the whole-modulus-avoiding walk has
+$\limsup_n(u_{n+1}-u_n)/\ell(u_n)=\sigma^{-1}$ exactly, and the Fermat family
+$m_j=2^{2^j}+1$ gives the constant exactly $2$.
+\end{proposition}
+
+\paragraph{Reading.}
+Theorem~\ref{res:barrier} and the landing lemmas use about the multipliers only
+that they are pairwise coprime, that they divide later denominator states, and
+that a modulus dividing the current numerator is impossible at a landing.
+Proposition~\ref{res:coprimalitycap} shows those data admit walks with rises of
+order $\log u$, while the CRT block forces rises only of order $\ell(u)$.  No
+argument using only those data can exclude negative parts of order $\log C_n$,
+and the constant $1$ in Corollary~\ref{res:loglogboundary} is the CRT constant
+rather than a feature of the problem.  Ordinary proof, with a numerical witness
+walk whose maximal rise against Sylvester's numbers as moduli is $12$ up to
+height $2\cdot10^6$.
+
+\paragraph{The exact remaining obstacle.}
+Every criterion of this section leaves the same regime, which is
+\[
+ (1-\delta)\ell(C_n)\ \le\ -E_n\ =\ o(C_n)
+ \qquad\text{at infinitely many }n,
+\]
+with divergent normalised negative mass, unbounded record-amplified error, and
+infinitely many clean primitive record jumps of size at least three.  Any
+argument entering it must use the congruence $E_n\equiv D_n\pmod{C_n}$ beyond
+coprimality, or supply a second mechanism that forces landings.
 
 \section{Descent when the error is nonnegative}\label{sec:descent}
 
@@ -1211,139 +1841,6 @@ constant $272$ comes from the total mass and not from any single magnitude,
 which is why the hypothesis of Theorem~\ref{res:mass} is summability of
 $(-E_n)_+/C_n$ and not a bound on it.
 \end{example}
-
-\section{Weighted first crossings of LCM records}\label{sec:lcmrecords}
-
-The summability criterion admits a smaller series: only steps setting a new
-LCM numerator record need contribute, a fixed LCM-scale baseline may be
-subtracted, and the remaining mass may be logarithmically discounted.
-The result in this section is an ordinary mathematical proof. The
-\href{https://github.com/wcook04/plectis-erdos/blob/b488fcff983e2db53239938b1b2867999c7b4959/research_corpus/Erdos243/problem/LcmRecordExcess.lean\#L14}{finite arithmetic and charging source}
-is available separately; the global analytic argument is not formalised.
-
-Set
-\[
- L_n=\operatorname{lcm}(q,a_0,\ldots,a_{n-1}),\quad
- M_n=D_n/L_n,\quad U_n=C_n/M_n,\quad V_n=E_n/M_n.
-\]
-The rational tail has denominator dividing $L_n$, so $U_n$ and $V_n$ are
-integers. With $\rho_n=\gcd(L_n,a_n)$, the exact updates are
-\[
- M_{n+1}=M_n\rho_n,\qquad
- \rho_nU_{n+1}=U_n-V_n,\qquad V_n=L_n-(a_n-1)U_n.
-\]
-Write $R_n=\max_{j\le n}U_j$ and
-$\mathcal R=\{n:U_{n+1}>R_n\}$. Centring implies that every sufficiently
-late strict rise has $\rho_n=1$: otherwise $U_{n+1}\le3U_n/4$.
-Its actual jump is therefore $d_n=U_{n+1}-U_n=-V_n$.
-
-\begin{theorem}[arithmetic weighted-record dichotomy]\label{res:arithmeticrecord}
-Let $a_n,L_n,U_n$ be positive integers and $V_n$ integers satisfying
-\[
- \begin{gathered}
- L_{n+1}=\operatorname{lcm}(L_n,a_n),\qquad \rho_n=\gcd(L_n,a_n),\\
- \rho_nU_{n+1}=U_n-V_n,\qquad
- V_n=L_n-(a_n-1)U_n,\qquad -U_n\le2V_n.
- \end{gathered}
-\]
-Let $f:[1,\infty)\to[0,\infty)$ be finite and nonincreasing, with
-$\int_1^\infty f(t)\,dt=\infty$. For each fixed integer $B\ge0$,
-\[
- \sup_n U_n<\infty
- \quad\Longleftrightarrow\quad
- \sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)<\infty.
-\]
-\end{theorem}
-
-\begin{proof}
-A bounded integer running maximum increases only finitely many times, so
-bounded $U_n$ gives a finite sum. Suppose instead that $U_n$ is unbounded.
-There are infinitely many record rises, each with $\rho_n=1$. Its digit is
-greater than one because $d_n=(a_n-1)U_n-L_n>0$. If $r<s$ are record
-indices, then $a_r\mid L_s$ and $\gcd(a_s,L_s)=1$, hence
-$\gcd(a_r,a_s)=1$. The record digits are therefore distinct and pairwise
-coprime. For any fixed $B\ge1$, choose $B$ of them greater than $B$,
-and take $T$ after their indices. These old digits
-$m_0,\ldots,m_{B-1}$ all divide $L_T$.
-
-Put $P=\prod_i m_i$ and choose $x$ by the Chinese remainder theorem with
-$m_i\mid x+i$. Consider the heights $\tau=x+B+kP$. A first crossing
-$U_n\le R_n<\tau\le U_n+d_n$ is a record step. If $d_n\le B$, then
-$U_n\in[\tau-B,\tau)$, so some $m_i$ divides $U_n$. It also divides
-$L_n$, hence divides $d_n=(a_n-1)U_n-L_n$, contradicting
-$0<d_n\le B<m_i$.
-
-If the step first crosses $h\ge1$ such heights, their spacing gives
-$(h-1)P<d_n$. With $r=d_n-B\ge1$ and $P\ge B+1$, we have
-$d_n=B+r\le Pr$, whence $h\le r$. Monotonicity of $f$ now gives
-\[
- \sum_{\substack{\tau\text{ first crossed}\\\text{at step }n}}f(\tau)
- \le(d_n-B)f(U_n).
-\]
-Each height above $R_T$ has one first crossing. Summing, and comparing each
-interval of length $P$ with its left endpoint, yields the finite bound
-\begin{equation}\label{eq:weightedcrossing}
- \sum_{\substack{T\le n<N\\n\in\mathcal R}}(-V_n-B)_+f(U_n)
- \ge\frac1P\int_{R_T+P}^{R_N} f(t)\,dt.
-\end{equation}
-Since $R_n\to\infty$, the right side diverges for every $B\ge1$.
-The case $B=0$ follows by domination.
-\end{proof}
-
-Only the lower centring bound was used. In particular, neither normalised
-vanishing nor a growth estimate for $C_n$ supplies the CRT moduli: the
-record digits themselves do so. Normalised vanishing enters in the following
-application to the original sequence.
-
-\begin{theorem}[weighted record excess]\label{res:weightedrecord}
-Assume the growth and rationality hypotheses of Problem~\ref{res:problem},
-and let $f$ be as in Theorem~\ref{res:arithmeticrecord}. The sequence is
-eventually Sylvester if and only if, for some integer $B\ge0$,
-\[
- \sum_{n\in\mathcal R}(-V_n-B)_+f(U_n)<\infty.
-\]
-\end{theorem}
-
-\begin{proof}
-If the endpoint fails, centred zero is never reached on a sufficiently late
-tail. Integrality gives $1/U_n\le|V_n|/U_n=|E_n|/C_n\to0$, so $U_n$ is
-unbounded. Theorem~\ref{res:arithmeticrecord}, applied after the centring
-threshold, forces divergence for every $B$. Removing a finite prefix changes
-only finitely many global record terms. Conversely, a Sylvester tail
-telescopes to $x_n=1/(a_n-1)$, so $V_n=0$ eventually.
-\end{proof}
-
-For example, $f(t)=1/[t\log(et)]$ gives the sufficient condition
-\[
- \sum_{n\in\mathcal R}\frac{(-V_n-B)_+}{U_n\log(eU_n)}<\infty.
-\]
-Its finite lower bound in~\eqref{eq:weightedcrossing} is
-$P^{-1}\log\bigl(\log(eR_N)/\log(e(R_T+P))\bigr)$.
-Further fixed iterated logarithmic factors are allowed whenever the integral
-still diverges. These are specialisations of one crossing theorem.
-
-The criterion also has an exact expression in the original growth defect.
-Put $\gamma_n=a_n^2/a_{n+1}-1$ and $\theta_n=E_n/C_n$. The defect identity
-gives
-\[
- \gamma_n+\theta_n=
- \frac{(1-\theta_n)(a_n-1+\theta_{n+1})}{a_{n+1}},
- \qquad 0<\gamma_n+\theta_n<3/a_n
-\]
-eventually. Thus the two nonnegative summands
-$U_nf(U_n)(\gamma_n-B/U_n)_+$ and $(-V_n-B)_+f(U_n)$ differ by at most
-$3U_nf(U_n)/a_n$. This is summable because
-$U_n\le C_n=\exp(o(n))$, $f(U_n)\le f(1)$, and
-$a_n\ge\exp(c2^n)$ eventually for some $c>0$.
-Consequently Theorem~\ref{res:weightedrecord} is equivalent to finiteness of
-\begin{equation}\label{eq:weightedgrowth}
- \sum_{n\in\mathcal R}U_nf(U_n)
- \left(\frac{a_n^2}{a_{n+1}}-1-\frac B{U_n}\right)_+
-\end{equation}
-for some $B$. The original hypotheses do not currently supply this
-finiteness. In particular, termwise convergence to zero is insufficient.
-Also, $d_n$ is the actual jump, including any recovery from a drawdown; it
-must not be replaced by $R_{n+1}-R_n$ in the crossing proof.
 
 \section{Complements and further questions}\label{sec:open}
 

@@ -1491,21 +1491,22 @@
       "aggregate_config": "verification/comparator-replay-candidate.json",
       "aggregate_config_digest": "sha256:d70424a8150e13a53f9f71e1bd70ec185116beb0515184883f36673d58780f6a",
       "aggregate_membership": "verification/comparator-replay-membership.json",
-      "aggregate_membership_digest": "sha256:66367b770cb9bbfa7b94b50d5c89f51498d4fb3c83172c9832170ee73b31ede1",
+      "aggregate_membership_digest": "sha256:83d284e1e0200e23f2c04201d41a5da8383e1e5aa0039759f6550688e24a22b1",
       "registered_claim_coverage": {
         "registry_authority": "docs/claims.json::claims",
-        "registry_digest": "sha256:c8221e006eeca95fce209e721ce1df8d95441409c21936f41550bd22e2ffa103",
-        "registered_claim_count": 132,
-        "classified_claim_count": 132,
+        "registry_digest": "sha256:a1cecb93ad41595d4305c845855af68b008177350aebbb1de2c4bb69efe57feb",
+        "registered_claim_count": 208,
+        "classified_claim_count": 208,
         "classification_counts": {
           "cited_only_non_executable": 3,
-          "linked_transport": 35,
-          "missing_formal_transport": 86,
-          "open_non_executable": 8
+          "linked_transport": 36,
+          "missing_formal_transport": 153,
+          "open_non_executable": 8,
+          "ordinary_proof_non_executable": 8
         },
-        "formal_claim_count": 121,
-        "linked_transport_claim_count": 35,
-        "missing_formal_transport_count": 86,
+        "formal_claim_count": 189,
+        "linked_transport_claim_count": 36,
+        "missing_formal_transport_count": 153,
         "complete_formal_transport_coverage": false,
         "boundary": "A linked transport records an exact claim-owner edge to a separately declared Comparator interface. It does not establish full informal-claim semantic coverage, a Comparator execution, external review, assurance, novelty, significance, or publication acceptance.",
         "source": "verification/comparator-replay-membership.json::registered_claim_coverage",
@@ -1551,11 +1552,11 @@
   "inputs": {
     "claims": {
       "path": "docs/claims.json",
-      "digest": "sha256:7ba40160753a52a257e70d0fd81b038478b61bc79c41fe708a6ee57a2331539f"
+      "digest": "sha256:6f1019689d699fd8f6c2b1e220652ffd9eb95ce80e545eb4eb5e9e972d886be0"
     },
     "declaration_atlas": {
       "path": "docs/declaration_atlas.json",
-      "digest": "sha256:6d9336b8c033e4f434e32cc1683ef896d14a5e5cac8fb911bc2efda32d3921ba",
+      "digest": "sha256:1303801eee82fbba5756765faaea4ca9a2bdd3344eb3822a86c176f4a8ca9df9",
       "source_fingerprint": "sha256:765749a26af21197671c0175b0803d1b855641d5444c89a442001b5c67d61455"
     },
     "palomar_showcase": {

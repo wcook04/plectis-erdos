@@ -95,6 +95,43 @@ integer base. The selector remains a hypothesis of the older pinned
 certificate proof, not a mathematical prerequisite for this support class.
 \ev{Math}
 
+\paragraph{The lead theorem: hypotheses, evidence, attribution, obligation.}
+The first table row is the strongest statement in the universal direction, and
+its four components are worth separating.
+\emph{Hypotheses.} An integer base $b\ge2$; an infinite $A\subseteq\Npos$; and
+$\sum_{a\in A}1/a<\infty$. No coprimality, periodicity, density or
+powerful-support hypothesis appears.
+\emph{Evidence.} The complete implication from those hypotheses to
+irrationality is kernel checked at
+\lean{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}{AllBaseReciprocalSupportIrrationality.lean:395};
+no ordinary step and no finite certificate sits outside that check. \ev{Lean}
+\emph{Attribution.} Erd\H{o}s printed the pairwise-coprime case for every
+integer base $b\ge2$ on p.~222 of Math.\ Student 36 (1968), 222--226, and on
+the same page wrote that pairwise coprimality can be removed by a more
+complicated argument, giving no details; p.~226 repeats that boundary. The
+statement is therefore his stated extension. The proof and its checked
+development are local, the argument here is not identified with the one he
+omitted, and novelty and priority for the argument are unassessed. \ev{Math}
+\emph{Remaining obligation.} What is left of (U) is exactly irrationality of
+$x_A$ for every infinite $A$ with $\sum_{a\in A}1/a=\infty$. Every later
+section of this document works inside that regime.
+
+\paragraph{The full-support row also carries digit information.}
+The certificate machine behind the full-support theorem is
+\lean{exists\_weighted\_block\_certificates}{CertificateKernel.lean:8375}, the
+abstraction is checked to lose nothing at
+\lean{irrational\_erdosSum\_full\_support\_via\_coeff\_engine}{CertificateKernel.lean:8877},
+and the same certificates give, for every base $b\ge2$ and every $K$, some
+$b^N$-dilation of the value exceeding an integer by strictly between $0$ and
+$b^{-K}$
+(\lean{near\_int\_witnesses\_erdosSum\_full\_support}{CertificateKernel.lean:8896},
+\lean{zero\_block\_witnesses\_erdosSum\_full\_support}{CertificateKernel.lean:8920}).
+So the base-$b$ expansion of the full-support value contains arbitrarily long
+zero blocks. \ev{Lean} This is a statement about zero blocks alone: it gives no
+normality and no digit-frequency law, and the theorem that the binary block
+$11$ occurs infinitely often in the base-$2$ value is Campbell's separate
+result, not formalised here. \ev{Lit}
+
 Two one-sided rigidity results constrain a hypothetical rational-valued support, both only from the
 sparse side. For any $A$ with a positive element and $x_A$ rational, divisor-free windows are at
 most logarithmic: for every $\varepsilon > 0$ there is $B$ with every zero window of
@@ -115,6 +152,147 @@ result is formalised here.  The corpus still has no general theorem for an
 arbitrary positive-density nonperiodic or divisor-dense support, and the
 universal statement remains open.
 \end{rem}
+
+\subsection{Exact descriptions of a rational-valued support}
+\label{sec:257-exact-descriptions}
+
+Three checked statements describe every hypothetical counterexample rather than
+sampling supports. Each is an equivalence, each is uniform in its target, and
+each is entirely inside the kernel check.
+
+\begin{thm}[Boolean--M\"obius scaled-tail correspondence]
+\label{thm:bmc}
+Let $p\in\Z$ and $q\ge1$. For $U\colon\N\to\Z$ set $Q_U(0)=0$ and
+$Q_U(n)=(2U(n-1)-U(n))/q$ for $n\ge1$, and call $U$ \emph{admissible} for
+$(p,q)$ when $U(0)=p$; $U(N)>0$ and $U(N)\le q(2\sqrt N+4)$ for every $N\ge0$;
+$q\mid 2U(N)-U(N+1)$ for every $N\ge0$; and $(\mu*Q_U)(n)\in\{0,1\}$ for every
+$n\ge1$. Then a support $A$ with $0\notin A$, with some positive element, and
+with $x_A=p/q$, exists if and only if an admissible $U$ for $(p,q)$ exists, and
+in that case $A=\{n:(\mu*Q_U)(n)=1\}$.
+\coord{mobius-mersenne} \scale{uniform} \ev{Lean}\\
+\textbf{Sites:} \lean{exists\_normalized\_support\_fraction\_iff\_exists\_booleanMobiusCarry}{BooleanMobiusCarry.lean:949},
+\lean{exists\_booleanMobiusCarry\_of\_support\_fraction}{BooleanMobiusCarry.lean:836},
+\lean{support\_fraction\_of\_booleanMobiusCarry}{BooleanMobiusCarry.lean:859}.
+\end{thm}
+
+\emph{Boundary and obligation.} The support the theorem produces is not
+required to be infinite, and a finite support supplies an admissible sequence
+for its own value, so existence of an admissible sequence is by itself no
+counterexample to (U). What the equivalence changes is the search space. The
+obligation it leaves is to decide whether an admissible sequence exists whose
+reconstructed support is infinite. Prior art for the correspondence is
+unassessed in the claim register and no priority is claimed. \ev{Math}
+
+\begin{thm}[Scaled greedy trap, escape, and bounded cofinal return]
+\label{thm:scaled-greedy-trap}
+Write $r_N(x)$ for the greedy Mersenne remainder of a real $x\ge0$ after rank
+$N$, put $y_N(x)=2^N r_N(x)$, and set $c_n=2^n/(2^n-1)$. The scaled recursion
+sends $y_N$ to $2y_N-c_{N+1}$ when $c_{N+1}\le2y_N$, and to $2y_N$ otherwise.
+For every real $x\ge0$: $x\in\mathcal{A}$ if and only if $y_N(x)<2$ for every
+$N$; if $x\notin\mathcal{A}$ then $y_N(x)\to+\infty$; and $x\in\mathcal{A}$ if
+and only if there is a real $B$ with $y_N(x)\le B$ for cofinally many $N$.
+\coord{achievement-set} \scale{uniform} \ev{Lean}\\
+\textbf{Sites:} \lean{scaledGreedyRemainder\_succ}{GreedyTrapDynamics.lean:72},
+\lean{mersenneAchievementSet\_eq\_scaledGreedyTrap}{GreedyTrapDynamics.lean:262},
+\lean{mem\_mersenneAchievementSet\_iff\_forall\_scaledRemainder\_lt\_two}{GreedyTrapDynamics.lean:245},
+\lean{scaledGreedyRemainder\_tendsto\_atTop\_of\_not\_mem}{GreedyTrapDynamics.lean:189},
+\lean{mem\_mersenneAchievementSet\_iff\_scaledRemainder\_cofinallyBounded}{GreedyTrapDynamics.lean:225}.
+\end{thm}
+
+\emph{Boundary and obligation.} By Theorem~\ref{thm:geometry} the set
+$\mathcal{A}$ is a compact, perfect, nowhere dense set of Lebesgue measure
+one, so this theorem exhibits a fat Cantor set as the filled non-escaping set
+of an explicit nearly doubling map. The compactness, perfectness and nowhere
+density are classical; novelty for the dynamical identification itself is
+unassessed. The theorem supplies no orbit: deciding (H), or membership of
+$1/21$, still requires one bounded cofinal return or one escape, and neither is
+proved. \ev{Math}
+
+\begin{thm}[Rational membership by cofinal greedy skips]
+\label{thm:rational-membership}
+For every rational $q\ge0$, $q\in\mathcal{A}$ if and only if the canonical
+greedy orbit of $q$ omits infinitely many positive exponents, equivalently if
+and only if that orbit skips at arbitrarily late ranks.
+\coord{greedy-orbit} \scale{uniform} \ev{Lean}\\
+\textbf{Sites:} \lean{rat\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2557},
+\lean{rat\_mem\_mersenneAchievementSet\_iff\_cofinal\_greedy\_skips}{GreedyAchievementSet.lean:2569}.
+\end{thm}
+
+\emph{Attribution and obligation.} The forward implication spends
+irrationality of the Erd\H{o}s--Borwein constant, which is Erd\H{o}s's 1948
+theorem. The reverse direction is the classical greedy lemma for Cantor-type
+achievement sets and is folklore. The ambient achievement-set literature is
+recorded in the corpus prior-art adjudication as identified and unread, so the
+criterion is registered as new at medium confidence only. The criterion decides
+no individual rational; the half-value specialisation is
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2582}.
+\ev{Math}
+
+\medskip\noindent The third exact description is uniform over every real
+target, and it turns membership into one finite window.
+
+The repair mechanism does not require periodic digits or even a rational
+target. Let $x\ge0$, let $A_x$ be its actual greedy support, and define
+\[
+ P_0(x)=0,\qquad P_{N+1}(x)=2P_N(x)+d_{A_x}(N+1),\qquad
+ Q_N(x)=\lfloor2^Nx\rfloor-P_N(x).
+\]
+Here $d_{A_x}(n)=\#\{a\in A_x:a\mid n\}$ is the actual divisor load. The prefix bound makes $Q_N(x)$ a nonnegative integer.
+
+\begin{thm}[uniform repair criterion]\label{thm:generic-repair}
+For every real $x\ge0$,
+\[
+ x\in\mathcal{A}\quad\Longleftrightarrow\quad
+ \forall K\ \exists N\in[K,K+2\lfloor\sqrt K\rfloor+12):
+ Q_{N+1}(x)\le Q_N(x).
+\]
+Equivalently, repairs occur cofinally; equivalently,
+$Q_N(x)\le d_{A_x}(N+1)$ cofinally; equivalently, $Q_N(x)\le N+1$
+cofinally. One strictly increasing window excludes membership.
+\end{thm}
+
+\begin{proof}
+If $x\in\mathcal{A}$, the full tail identity and divisor-pair bound give
+$Q_N(x)\le2\sqrt N+4$. Put $s=\lfloor\sqrt K\rfloor$ and $T=2s+12$.
+Strict increase at each of the $T$ steps would give $Q_{K+T}(x)\ge T$.
+But $K+T<(s+4)^2$ gives $Q_{K+T}(x)<2(s+4)+4=T$, a contradiction.
+
+For the converse, the prefix recurrence and the nonnegative next binary
+floor digit give
+\[
+ 2Q_N(x)-d_{A_x}(N+1)\le Q_{N+1}(x).
+\]
+A repair therefore forces $Q_N(x)\le d_{A_x}(N+1)\le N+1$.
+If $x\notin\mathcal{A}$, a positive fatal gap $\delta$ persists in the actual
+greedy remainder; the prefix-tail identity yields
+$Q_N(x)\ge2^N\delta-1$ beyond that fatal rank. This eventually exceeds
+$N+1$, contradicting a cofinal linear bound. These implications give all
+the stated equivalences.
+\end{proof}
+
+The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/GreedyRepairCriterion.lean#L192}{uniform repair equivalence} is now kernel checked for every real target $x\ge0$.
+
+The finite deadline comes from a growth comparison: strict increases of
+an integer sequence accumulate linearly, whereas represented tails have
+only a square-root bound. For $x=4/9$ this recovers the original repair
+problem with $Q_N=\lfloor4\cdot2^N/9\rfloor-P_N$. Exact replay through
+rank $4096$ finds no strict window for that target. The theorem identifies
+the certificate to seek; it does not supply its occurrence.
+The displayed proof is the ordinary reading of the checked statement; the
+square-root window equivalence, the three further equivalent forms and the
+one-window exclusion are all kernel checked, at
+\lean{mem\_iff\_greedyBinaryDefect\_sqrt\_windows}{ErdosProblems/Erdos257/GreedyRepairCriterion.lean:192},
+\lean{mem\_iff\_greedyBinaryDefect\_cofinal\_repairs}{ErdosProblems/Erdos257/GreedyRepairCriterion.lean:175},
+\lean{mem\_iff\_greedyBinaryDefect\_cofinal\_load\_bound}{ErdosProblems/Erdos257/GreedyRepairCriterion.lean:207},
+\lean{mem\_iff\_greedyBinaryDefect\_cofinal\_linear\_bound}{ErdosProblems/Erdos257/GreedyRepairCriterion.lean:222}
+and
+\lean{not\_mem\_of\_greedyBinaryDefect\_strict\_sqrt\_window}{ErdosProblems/Erdos257/GreedyRepairCriterion.lean:232}.
+\ev{Lean} The rank-$4096$ replay at $4/9$ is an exact computation and not a
+theorem. \ev{Compute} Prior art is unassessed. The obligation the criterion
+leaves is unchanged: deciding $1/2$, $1/21$ or $4/9$ still needs either one
+strictly increasing window or a cofinal supply of repairs, and neither is
+proved for any of those targets. \ev{Math}
+
 
 \subsection{Divisibility-weighted supports: why averaging twice works}
 \label{sec:257-weighted-returns}
@@ -267,54 +445,6 @@ formal-source table above records their separately verified predecessors.
 
 The formal development also checks the \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/WeightedSupportLimits.lean#L111}{summability of the dyadic observation mass}, its \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/WeightedSupportLimits.lean#L81}{vanishing mean}, and the \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/BatchReturnSynthesis.lean#L151}{irrationality consumer from close returns}. These are the checked analytic ingredients; the complete weighted criterion above still uses the ordinary assembly in the supplement.
 
-\subsection{A finite deadline for every real target}
-The repair mechanism does not require periodic digits or even a rational
-target. Let $x\ge0$, let $A_x$ be its actual greedy support, and define
-\[
- P_0(x)=0,\qquad P_{N+1}(x)=2P_N(x)+d_{A_x}(N+1),\qquad
- Q_N(x)=\lfloor2^Nx\rfloor-P_N(x).
-\]
-Here $d_{A_x}(n)=\#\{a\in A_x:a\mid n\}$ is the actual divisor load. The prefix bound makes $Q_N(x)$ a nonnegative integer.
-
-\begin{thm}[uniform repair criterion]\label{thm:generic-repair}
-For every real $x\ge0$,
-\[
- x\in\mathcal{A}\quad\Longleftrightarrow\quad
- \forall K\ \exists N\in[K,K+2\lfloor\sqrt K\rfloor+12):
- Q_{N+1}(x)\le Q_N(x).
-\]
-Equivalently, repairs occur cofinally; equivalently,
-$Q_N(x)\le d_{A_x}(N+1)$ cofinally; equivalently, $Q_N(x)\le N+1$
-cofinally. One strictly increasing window excludes membership.
-\end{thm}
-
-\begin{proof}
-If $x\in\mathcal{A}$, the full tail identity and divisor-pair bound give
-$Q_N(x)\le2\sqrt N+4$. Put $s=\lfloor\sqrt K\rfloor$ and $T=2s+12$.
-Strict increase at each of the $T$ steps would give $Q_{K+T}(x)\ge T$.
-But $K+T<(s+4)^2$ gives $Q_{K+T}(x)<2(s+4)+4=T$, a contradiction.
-
-For the converse, the prefix recurrence and the nonnegative next binary
-floor digit give
-\[
- 2Q_N(x)-d_{A_x}(N+1)\le Q_{N+1}(x).
-\]
-A repair therefore forces $Q_N(x)\le d_{A_x}(N+1)\le N+1$.
-If $x\notin\mathcal{A}$, a positive fatal gap $\delta$ persists in the actual
-greedy remainder; the prefix-tail identity yields
-$Q_N(x)\ge2^N\delta-1$ beyond that fatal rank. This eventually exceeds
-$N+1$, contradicting a cofinal linear bound. These implications give all
-the stated equivalences.
-\end{proof}
-
-The \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/43c36af8b9d5795d0a965825ec01110b87159df6/ErdosProblems/Erdos257/GreedyRepairCriterion.lean#L192}{uniform repair equivalence} is now kernel checked for every real target $x\ge0$.
-
-The finite deadline comes from a growth comparison: strict increases of
-an integer sequence accumulate linearly, whereas represented tails have
-only a square-root bound. For $x=4/9$ this recovers the original repair
-problem with $Q_N=\lfloor4\cdot2^N/9\rfloor-P_N$. Exact replay through
-rank $4096$ finds no strict window for that target. The theorem identifies
-the certificate to seek; it does not supply its occurrence.
 
 \subsection{The unconditional record, half-value direction}
 

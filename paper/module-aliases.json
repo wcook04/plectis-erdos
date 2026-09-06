@@ -3,7 +3,7 @@
   "artifact_role": "paper_sigil_to_lean_module_navigation_crosswalk",
   "authority_posture": "generated_navigation_projection_not_proof_authority",
   "heuristic": "Each CamelCase component contributes at most its first three characters.",
-  "alias_count": 131,
+  "alias_count": 141,
   "aliases": [
     {
       "sigil": "ActForResPro",
@@ -561,6 +561,11 @@
       "path": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean"
     },
     {
+      "sigil": "LcmRecExc",
+      "module": "ErdosProblems/Erdos243/LcmRecordExcess.lean",
+      "path": "ErdosProblems/Erdos243/LcmRecordExcess.lean"
+    },
+    {
       "sigil": "RecTaiRig",
       "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
       "path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
@@ -569,6 +574,11 @@
       "sigil": "RepEnt",
       "module": "ErdosProblems/Erdos243/RepairEntropy.lean",
       "path": "ErdosProblems/Erdos243/RepairEntropy.lean"
+    },
+    {
+      "sigil": "SloRisBar",
+      "module": "ErdosProblems/Erdos243/SlowRiseBarrier.lean",
+      "path": "ErdosProblems/Erdos243/SlowRiseBarrier.lean"
     },
     {
       "sigil": "SpaResRec",
@@ -591,6 +601,11 @@
       "path": "ErdosProblems/Erdos249/FullDepthRayAmplifier.lean"
     },
     {
+      "sigil": "LcmJumKilFroDia",
+      "module": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
+      "path": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean"
+    },
+    {
       "sigil": "PerMulEsc",
       "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
       "path": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean"
@@ -611,6 +626,31 @@
       "path": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean"
     },
     {
+      "sigil": "AffCylCol",
+      "module": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean",
+      "path": "ErdosProblems/Erdos251/AffineCylinderCollapse.lean"
+    },
+    {
+      "sigil": "AffShiEsc",
+      "module": "ErdosProblems/Erdos251/AffineShiftEscape.lean",
+      "path": "ErdosProblems/Erdos251/AffineShiftEscape.lean"
+    },
+    {
+      "sigil": "BouPerCou",
+      "module": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean",
+      "path": "ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean"
+    },
+    {
+      "sigil": "OrdLatDia",
+      "module": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean",
+      "path": "ErdosProblems/Erdos251/OrderLatticeDiagonal.lean"
+    },
+    {
+      "sigil": "PolGapSerVal",
+      "module": "ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean",
+      "path": "ErdosProblems/Erdos251/PolynomialGapSeriesValue.lean"
+    },
+    {
       "sigil": "PriGapDyaTai",
       "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
       "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean"
@@ -629,6 +669,11 @@
       "sigil": "CarLifExt",
       "module": "ErdosProblems/Erdos269/CarryLiftExtinction.lean",
       "path": "ErdosProblems/Erdos269/CarryLiftExtinction.lean"
+    },
+    {
+      "sigil": "KerCarRan",
+      "module": "ErdosProblems/Erdos269/KernelCarryRank.lean",
+      "path": "ErdosProblems/Erdos269/KernelCarryRank.lean"
     },
     {
       "sigil": "ResEsc",
@@ -654,6 +699,11 @@
       "sigil": "WeiPhaCar",
       "module": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
       "path": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean"
+    },
+    {
+      "sigil": "IrrRotSta",
+      "module": "ErdosProblems/Shared/IrrationalRotationStaircase.lean",
+      "path": "ErdosProblems/Shared/IrrationalRotationStaircase.lean"
     },
     {
       "sigil": "LadT67",
