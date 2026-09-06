@@ -206,10 +206,10 @@ PAPER_SECTION_ORDER = (
 
 PAPER_REQUIRED_ANCHOR_GROUPS = {
     "plain_purpose": (
-        "Among the systems compared in this paper, none spans this complete chain",
+        "compares it with neighbouring systems along stated dimensions and claims no priority",
         "claim-transition architecture",
         "six things that are commonly collapsed",
-        "bounded claim over the cited systems",
+        "after a proof is found, what exactly may move into a reviewed public claim",
         "All eight problems remain open",
         "does not claim a solution to any of them",
     ),
@@ -269,7 +269,7 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
     "assurance_and_digestion": (
         "Comparator: an exact-statement firewall",
         "Comparator-checked",
-        "Palomar: selecting what deserves review",
+        "Review selection, and what the Palomar registry is not",
         "proof generation, verification, exposition, publication and community digestion",
         "natural friction",
         "Paper authoring itself participates in this loop",
