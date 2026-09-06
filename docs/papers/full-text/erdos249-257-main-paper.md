@@ -1453,7 +1453,7 @@ These are not two independent open problems: Theorem <a href="#res:red21" data-
 ``` math
 \sum_{n\in A}\frac{1}{2^n-1}
 ```
-is irrational for every infinite set $`A\subseteq\mathbb{N}_{>0}`$, rather than only for the support families in Theorem <a href="#res:support" data-reference-type="ref" data-reference="res:support">5</a>.
+is irrational for every infinite set $`A\subseteq\mathbb{N}_{>0}`$. Theorem <a href="#res:support" data-reference-type="ref" data-reference="res:support">5</a> settles every $`A`$ with $`\sum_{a\in A}1/a<\infty`$; the regime $`\sum_{a\in A}1/a=\infty`$ is open.
 
 </div>
 

@@ -1491,10 +1491,10 @@
       "aggregate_config": "verification/comparator-replay-candidate.json",
       "aggregate_config_digest": "sha256:d70424a8150e13a53f9f71e1bd70ec185116beb0515184883f36673d58780f6a",
       "aggregate_membership": "verification/comparator-replay-membership.json",
-      "aggregate_membership_digest": "sha256:69a3fc4438836a9df5508ca524345606e592e00fba318cc6692ddd1986c05ecf",
+      "aggregate_membership_digest": "sha256:2e360da82fa01342816893d11299e0dc650d84d0f853d6e37ba239db8fa01f49",
       "registered_claim_coverage": {
         "registry_authority": "docs/claims.json::claims",
-        "registry_digest": "sha256:ee695fe8993eb7b0723d1b0b0bf11282a273205dfa4e10d343cf5efc7f41cc6a",
+        "registry_digest": "sha256:c9558a00ffa9d9eb0bc6673a7285930a7c84daec5a803b76a638eaa34e301f44",
         "registered_claim_count": 208,
         "classified_claim_count": 208,
         "classification_counts": {
@@ -1552,7 +1552,7 @@
   "inputs": {
     "claims": {
       "path": "docs/claims.json",
-      "digest": "sha256:3ce437bc3b90a553334eb1f8d7ac23900cfb00de613ac02a42dd71ec97390126"
+      "digest": "sha256:86f07cd522e35653842ca0e4093c8e747231ab8cf4f654493651c36397e13118"
     },
     "declaration_atlas": {
       "path": "docs/declaration_atlas.json",

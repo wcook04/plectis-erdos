@@ -24,7 +24,7 @@ A checked Lean declaration and its intended mathematical statement remain distin
 
 Seen in: Named infinite-support irrationality families toward #257 (`support_families`).
 
-Recorded boundary: Prove irrationality for every infinite support A, not only the named support families formalised here (`remaining_open.universal_257_all_infinite_supports`).
+Recorded boundary: Prove irrationality for every infinite support A. The theorem here settles every A with summable reciprocals; the regime sum 1/a = infinity is open (`remaining_open.universal_257_all_infinite_supports`).
 
 Limit: Semantic review does not become proof authority. Optional human or specialist review may contest, correct, confirm, or upgrade the recorded judgement later.
 

@@ -14707,7 +14707,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
-        "line": 4460
+        "line": 4461
       }
     },
     {
@@ -14726,7 +14726,7 @@
       "id": "remaining_open.universal_257_all_infinite_supports",
       "status": "open",
       "open_target_claim": "universal_257",
-      "statement": "Prove irrationality for every infinite support A, not only the named support families formalised here.",
+      "statement": "Prove irrationality for every infinite support A. The theorem here settles every A with summable reciprocals; the regime sum 1/a = infinity is open.",
       "paper_anchor": {
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
@@ -20079,7 +20079,7 @@
       "id": "f_thirty_one_over_four_irrational",
       "label": "F(31/4) and every F((31/4)^r) are irrational",
       "status": "unconditional progress",
-      "statement": "F(31/4) is irrational, and so is F((31/4)^r) for every integer r >= 1. The base sits at log 4 / log 31 = 0.4036981731641997014370328005878493650194..., below 81/200 and below theta* = 0.40568302138406054..., and at 4^mu = 30.483515... < 31 < 4^{mu_BV} = 32.369642... with mu_BV = 2 pi^2/(pi^2 - 2) = 2.508284761994681157505052751018958770537..., so it lies outside the region log b / log a < 1/2 - 1/pi^2 = 0.3986788163576622285561205367902723610956... of Bundschuh and Vaananen 1994 Theorem 2 and inside the region of rational_base_irrationality_region. The printed Bundschuh and Vaananen hypothesis for alpha = -1 is lambda < (1/2 + 1/pi^2)^{-1} with lambda = log h(q) / log |q|; at a positive reduced base q = a/b > 1 this reads log a / log(a/b) < (1/2 + 1/pi^2)^{-1}, which is the displayed inequality. Every base of rational_base_irrationality_region with b <= 3 is already covered by their theorem. It is the base of least denominator and least numerator in the strip between the two regions. The next members of that strip are 53/5, 83/6 and 122/7. The irrationality itself comes from the region theorem, which is an ordinary proof and is not kernel-checked. What the listed declarations kernel-check is the finite height arithmetic: the integer certificate 4^200 < 31^81, membership of 31/4 and of every positive power in the 81/200 region, and exclusion of 31/4 from the Bundschuh-Vaananen region. The remaining finite input, 81/200 < theta*, is checked in the module RationalBaseContour of the external-verification cut and not in this release's Lean library.",
+      "statement": "F(31/4) is irrational, and so is F((31/4)^r) for every integer r >= 1. The base sits at log 4 / log 31 = 0.4036981731641997014370328005878493650194..., below 81/200 and below theta* = 0.40568302138406054..., and at 4^mu = 30.483515... < 31 < 4^{mu_BV} = 32.369642... with mu_BV = 2 pi^2/(pi^2 - 2) = 2.508284761994681157505052751018958770537..., so it lies outside the region log b / log a < 1/2 - 1/pi^2 = 0.3986788163576622285561205367902723610956... of Bundschuh and Vaananen 1994 Theorem 2 and inside the region of rational_base_irrationality_region. The printed Bundschuh and Vaananen hypothesis for alpha = -1 is lambda < (1/2 + 1/pi^2)^{-1} with lambda = log h(q) / log |q|; at a positive reduced base q = a/b > 1 this reads log a / log(a/b) < (1/2 + 1/pi^2)^{-1}, which is the displayed inequality. Every base of rational_base_irrationality_region with b <= 3 is already covered by their theorem. It is the base of least denominator and least numerator in the strip between the two regions. For denominator 5 the strip holds 53/5, 54/5 and 56/5; the least numerators for denominators 6 and 7 are 83 and 122. The irrationality itself comes from the region theorem, which is an ordinary proof and is not kernel-checked. What the listed declarations kernel-check is the finite height arithmetic: the integer certificate 4^200 < 31^81, membership of 31/4 and of every positive power in the 81/200 region, and exclusion of 31/4 from the Bundschuh-Vaananen region. The remaining finite input, 81/200 < theta*, is checked in the module RationalBaseContour of the external-verification cut and not in this release's Lean library.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],

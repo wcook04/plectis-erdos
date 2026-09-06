@@ -2396,7 +2396,7 @@
   "registered_claim_coverage": {
     "schema": "plectis.comparator-registered-claim-coverage/1",
     "registry_authority": "docs/claims.json::claims",
-    "registry_digest": "sha256:ee695fe8993eb7b0723d1b0b0bf11282a273205dfa4e10d343cf5efc7f41cc6a",
+    "registry_digest": "sha256:c9558a00ffa9d9eb0bc6673a7285930a7c84daec5a803b76a638eaa34e301f44",
     "registry_digest_definition": "sha256 of canonical JSON rows containing each registered claim id, status, statement, exact declaration anchors, and explicit transports",
     "registered_claim_count": 208,
     "classified_claim_count": 208,

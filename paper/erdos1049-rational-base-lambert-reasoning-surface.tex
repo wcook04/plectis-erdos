@@ -594,8 +594,8 @@ So
 Both bounds, the definitions of $C_0$, $C_1$ and $\theta^{*}$ from the
 trigamma series, the membership of $31/4$ and of every power, and the exclusion
 of $3/2$ are checked by the Lean kernel in the module
-\texttt{RationalBaseContour}, which this release carries in its
-external-verification cut.  The Lean library indexed in
+\texttt{RationalBaseContour}, which is held in the external-verification
+package outside this release and is not carried in any cut of it.  The Lean library indexed in
 Appendix~\ref{app:index} does not carry that module.  The declarations are \texttt{zudilinJ\_ge},
 \texttt{zudilinC0\_gt}, \texttt{eightyOne\_twoHundredths\_lt\_zudilinContour},
 \texttt{zudilinContour\_lt\_half}, \texttt{thirtyoneFour\_mem\_zudilinContourRegion},
@@ -2162,8 +2162,8 @@ as later work moves lines in the working tree.
 
 The finite arithmetic behind the rational bracket
 $81/200<\theta^{*}<1/2$ of Section~\ref{sec:regionbracket} lives in a further
-module, \texttt{RationalBaseContour}, which this release carries in its
-external-verification cut and not in the library indexed above.  Its
+module, \texttt{RationalBaseContour}, which is held in the external-verification
+package outside this release and is not carried in any cut of it or in the library indexed above.  Its
 declarations are named in Section~\ref{sec:regionbracket} and are not linked
 here, because no link coordinate for them exists at the pinned revision.
 

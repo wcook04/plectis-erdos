@@ -108,10 +108,10 @@
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
     "claim-faithful-publication-systems-paper.pdf": "sha256:0cc5322eea915c2ac422501e459c31cddcba712f2cc9f975c562dab5c9b61325",
-    "docs/claims.json": "sha256:3ce437bc3b90a553334eb1f8d7ac23900cfb00de613ac02a42dd71ec97390126",
+    "docs/claims.json": "sha256:86f07cd522e35653842ca0e4093c8e747231ab8cf4f654493651c36397e13118",
     "docs/methodology.json": "sha256:8237a5ed053e2ed490990529494f3db1e91b74b269d8f88d1a39c15c7d188e13",
     "docs/problems.json": "sha256:5aff8a7cfa31fdc2b25985631ef99be697bb5b0ccf6e82c25f563fb5501141d3",
-    "docs/publication_contract.json": "sha256:531b79223bc0f24984e15ea4934e076001f63197dc65506c66c14844b4e3cb38",
+    "docs/publication_contract.json": "sha256:9e6a14e7c7bc486fbe320d93b6698061785865ebad0957bdd2d966b9800fc614",
     "docs/publication_entry_source.json": "sha256:16a39ca432218549e71cef8bc9f5e0c26f5a42c5d6a9ec27c9e8fd4a6afbb562",
     "docs/publication_evidence.json": "sha256:72cbf847dd101703370fa5620bd02932100040077512d2019c21229f47fb1aed",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
@@ -318,7 +318,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 4460,
+        "line": 4461,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "the half-value counterexample route"
       },
@@ -346,7 +346,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "universal Erd\\H{o}s \\#257"
       },
-      "statement": "Prove irrationality for every infinite support A, not only the named support families formalised here.",
+      "statement": "Prove irrationality for every infinite support A. The theorem here settles every A with summable reciprocals; the regime sum 1/a = infinity is open.",
       "status": "open"
     },
     {

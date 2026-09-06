@@ -66,7 +66,7 @@ There are two useful mechanisms. Block certificates prescribe divisor incidences
 
 | **Support class** | **Exact hypotheses** | **Site** <span class="sans-serif">\[Lean\]</span> |
 |:---|:---|:---|
-| Arbitrary reciprocal-summable support | $`A`$ infinite and $`\sum_{a\in A}1/a<\infty`$ |  |
+| Arbitrary reciprocal-summable support | $`A`$ infinite, $`\sum_{a\in A}1/a<\infty`$, every base $`b\ge2`$ |  |
 | Full support $`A = \mathbb{N}`$ | $`b \ge 2`$ |  |
 | Multiples $`A = d\mathbb{N}`$ | $`b \ge 2`$, $`d \ge 1`$ |  |
 | Purely periodic | $`m`$-periodic, contains a positive element |  |
