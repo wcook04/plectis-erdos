@@ -18,6 +18,26 @@ both observable.  The mutation style follows
 `test_cold_clone_comprehension.py`: validate the live tree, then prove the
 validator rejects the adversarial fixtures that encode each failure.
 
+There is a third shape, and it is the one a locator check cannot settle: the
+name resolves, the line is right, and the theorem underneath it now says
+something else.  A hypothesis appears, a definition the statement depends on
+is redefined, or the quantified domain narrows, and every name-shaped check
+stays green while the reader is routed to a different theorem than the one the
+claim describes.  Nothing here parses Lean.  The repository already carries
+the statement evidence in two places, and this script binds to both:
+
+* `docs/declaration_atlas.json` carries one row per declaration with `module`,
+  `name`, `kind`, `line`, and the full `signature` text, under a
+  `source_fingerprint` taken over the Lean sources themselves;
+* `docs/semantic/reviews.json` receipts are digest-bound through
+  `scripts/semantic_review.py`, whose material carries that fingerprint, and
+  whose revision-move route refuses any receipt whose cited declaration has a
+  different kind or signature on the two sides of the move.
+
+So a statement change under an unchanged name moves the atlas signature and
+the source fingerprint, and the existing digest path reports it.  The fixtures
+below drive that path directly, with no git and no Lean.
+
 Stdlib only, no Lean, no network, no git mutation.  Run from anywhere:
 
     python3 scripts/test_selection_fidelity.py
@@ -32,6 +52,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import semantic_review  # noqa: E402
 import verify_claims  # noqa: E402
 from lean_declaration_index import (  # noqa: E402
     declaration_keyword_line,
@@ -40,10 +61,15 @@ from lean_declaration_index import (  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 CLAIMS_PATH = ROOT / "docs" / "claims.json"
+ATLAS_PATH = ROOT / "docs" / "declaration_atlas.json"
 CATALOG_PATH = ROOT / "verification" / "palomar-entry-catalog.json"
 PACKAGE_PREFIX = "ExternalVerification"
 REQUIRED_PACKAGE_FILES = ("Challenge.lean", "Solution.lean")
 ACCEPTED_LOCATOR_STATUS = frozenset({"exact", "in_window"})
+
+# The atlas fields this script depends on, named so a schema change fails here
+# rather than quietly turning the statement check into a no-op.
+ATLAS_ROW_FIELDS = ("module", "name", "kind", "line", "signature")
 
 
 def require(condition: bool, message: str) -> None:
@@ -83,6 +109,76 @@ def validate_claim_declarations(claims: dict) -> list[str]:
                 errors.append(
                     f"claim {claim_id}: {module}:{resolved} mentions {name} "
                     "but no declaration keyword introduces it there"
+                )
+    return errors
+
+
+# --- claim-row statements ----------------------------------------------------
+
+
+def atlas_statement_index(atlas: dict) -> dict[tuple[str, str], dict]:
+    """Index the declaration atlas by the coordinate a claim row names."""
+    index: dict[tuple[str, str], dict] = {}
+    for row in atlas.get("declarations", []):
+        index[(str(row.get("module")), str(row.get("name")))] = row
+    return index
+
+
+def validate_atlas_statement_evidence(atlas: dict) -> list[str]:
+    """The atlas must still be the statement evidence this script assumes."""
+    errors: list[str] = []
+    if not str(atlas.get("source_fingerprint", "")).startswith("sha256:"):
+        errors.append(
+            "declaration atlas carries no sha256 source fingerprint, so no "
+            "receipt can be bound to the statements it records"
+        )
+    rows = atlas.get("declarations", [])
+    if not rows:
+        errors.append("declaration atlas records no declarations")
+    return errors
+
+
+def validate_claim_statements(
+    claims: dict, index: dict[tuple[str, str], dict]
+) -> list[str]:
+    """Every cited declaration must carry a statement, not just a name.
+
+    A locator check answers "is this name here".  This answers "does the
+    repository hold the text of what it says", which is the thing a receipt
+    can be bound to.  A claim citing a declaration with no atlas row, or with
+    an empty signature, is a claim whose statement nothing pins.
+    """
+    errors: list[str] = []
+    for claim in claims.get("claims", []):
+        claim_id = claim.get("id", "<unnamed>")
+        for declaration in claim.get("declarations", []) or []:
+            module = str(declaration.get("module", ""))
+            name = str(declaration.get("name", ""))
+            row = index.get((module, name))
+            if row is None:
+                errors.append(
+                    f"claim {claim_id}: {module}:{name} has no declaration "
+                    "atlas row, so its statement is not recorded anywhere a "
+                    "receipt can bind to"
+                )
+                continue
+            missing = [field for field in ATLAS_ROW_FIELDS if field not in row]
+            if missing:
+                errors.append(
+                    f"claim {claim_id}: atlas row for {module}:{name} lacks "
+                    f"{', '.join(missing)}"
+                )
+                continue
+            if not str(row.get("signature", "")).strip():
+                errors.append(
+                    f"claim {claim_id}: atlas row for {module}:{name} carries "
+                    "an empty signature"
+                )
+                continue
+            if name not in str(row["signature"]):
+                errors.append(
+                    f"claim {claim_id}: atlas signature for {module}:{name} "
+                    "does not name the declaration it is recorded against"
                 )
     return errors
 
@@ -376,13 +472,309 @@ def check_claim_locator_mutations(claims: dict) -> int:
     return checks
 
 
+# --- statement change under an unchanged name --------------------------------
+
+_FIXTURE_MODULE = "ErdosProblems/Fixture/StatementDrift.lean"
+_FIXTURE_DECLARATION = "tail_ratio_is_summable"
+_FIXTURE_EVIDENCE_ID = f"{_FIXTURE_MODULE}:41:{_FIXTURE_DECLARATION}"
+_FIXTURE_SIGNATURE = (
+    f"theorem {_FIXTURE_DECLARATION} (A : Set Nat) : Summable (tailRatio A)"
+)
+# The same declaration after a hypothesis is added.  The name, the module, and
+# the line are all unchanged; only the statement moved.
+_FIXTURE_SIGNATURE_WITH_HYPOTHESIS = (
+    f"theorem {_FIXTURE_DECLARATION} (A : Set Nat) (hA : A.Infinite) : "
+    "Summable (tailRatio A)"
+)
+_FIXTURE_OLD_FINGERPRINT = "sha256:" + "a" * 64
+_FIXTURE_NEW_FINGERPRINT = "sha256:" + "b" * 64
+_FIXTURE_NEW_REVISION = "0" * 40
+
+
+def _fixture_node(statement: str) -> dict:
+    """One statement node citing one declaration, shaped like the live corpus."""
+    return {
+        "id": "Zfx::tail_ratio_summability",
+        "canonical_statement": statement,
+        "logical_class": "unconditional_progress",
+        "problem": "257",
+        "evidence": [
+            {
+                "id": _FIXTURE_EVIDENCE_ID,
+                "kind": "theorem",
+                "resolved": True,
+                "module": _FIXTURE_MODULE,
+                "declaration": _FIXTURE_DECLARATION,
+            }
+        ],
+        "open_antecedents": [],
+        "scope_caveat": "",
+        "prior_art_state": "unassessed",
+    }
+
+
+def _fixture_registry(node: dict, *, fingerprint: str, revision: str) -> dict:
+    """A receipt whose digest is issued by the live semantic-review code."""
+    return {
+        "schema": semantic_review.REGISTRY_SCHEMA,
+        "reviews": [
+            {
+                "subject_kind": "statement_node",
+                "subject_id": node["id"],
+                "reviewer": "selection-fidelity fixture",
+                "reviewer_type": "model",
+                "reviewed_revision": revision,
+                "reviewed_at": "2026-09-06",
+                "review_scope": "fixture receipt for the statement-drift path",
+                "claim_ceiling": "fixture only; no mathematical authority",
+                "evidence_digest": semantic_review.subject_digest(
+                    "statement_node",
+                    node,
+                    evidence_fingerprint=fingerprint,
+                    reviewed_revision=revision,
+                ),
+            }
+        ],
+    }
+
+
+def check_statement_drift_under_an_unchanged_name(claims: dict) -> int:
+    """A statement change under the same name must reach the existing digest.
+
+    Three routes, all of them already in `scripts/semantic_review.py`:
+
+    1. the receipt digest covers the atlas source fingerprint, and that
+       fingerprint is taken over the Lean sources, so restating a theorem
+       makes every receipt over it stale;
+    2. the revision-move route compares the kind and full signature of every
+       cited declaration on both sides and refuses when they differ, which is
+       the exact "same name, different theorem" case;
+    3. restating the reviewed wording itself, with the sources unmoved, is
+       stale for the same reason.
+
+    Nothing here parses Lean and nothing runs git; the atlas signatures are
+    passed in, which is the seam `rereview_moved_revision` already exposes.
+    """
+    checks = 0
+    revision = str(
+        claims.get("release", {}).get("formal_source", {}).get("ref", "")
+    )
+    require(
+        len(revision) >= 7,
+        "docs/claims.json must pin a formal-source revision for receipts to name",
+    )
+    require(
+        revision != _FIXTURE_NEW_REVISION,
+        "the fixture's moved revision must differ from the pinned revision",
+    )
+    checks += 1
+
+    node = _fixture_node("The tail-ratio family is summable on every infinite support.")
+    registry = _fixture_registry(
+        node, fingerprint=_FIXTURE_OLD_FINGERPRINT, revision=revision
+    )
+
+    # Control: with the sources unmoved, the live validator accepts the receipt.
+    errors = semantic_review.apply_review_registry(
+        json.loads(json.dumps(registry)),
+        {node["id"]: json.loads(json.dumps(node))},
+        [],
+        evidence_fingerprint=_FIXTURE_OLD_FINGERPRINT,
+        reviewed_revision=revision,
+    )
+    require(not errors, f"the fixture receipt must validate unmoved: {errors}")
+    checks += 1
+
+    # Route 1: the Lean sources moved, so the fingerprint moved.  The name and
+    # the wording are untouched and the receipt is still reported stale.
+    errors = semantic_review.apply_review_registry(
+        json.loads(json.dumps(registry)),
+        {node["id"]: json.loads(json.dumps(node))},
+        [],
+        evidence_fingerprint=_FIXTURE_NEW_FINGERPRINT,
+        reviewed_revision=revision,
+    )
+    require(
+        any("digest is stale" in error for error in errors),
+        "a moved source fingerprint escaped the semantic-review digest",
+    )
+    checks += 1
+
+    old_corpus = {
+        "evidence_fingerprint": _FIXTURE_OLD_FINGERPRINT,
+        "statement_nodes": [json.loads(json.dumps(node))],
+        "relations": [],
+    }
+    new_corpus = {
+        "evidence_fingerprint": _FIXTURE_NEW_FINGERPRINT,
+        "statement_nodes": [json.loads(json.dumps(node))],
+        "relations": [],
+    }
+    unchanged = {
+        (_FIXTURE_MODULE, _FIXTURE_DECLARATION): ("theorem", _FIXTURE_SIGNATURE)
+    }
+    restated = {
+        (_FIXTURE_MODULE, _FIXTURE_DECLARATION): (
+            "theorem",
+            _FIXTURE_SIGNATURE_WITH_HYPOTHESIS,
+        )
+    }
+
+    # Control for route 2: identical signatures on both sides re-issue cleanly.
+    reissues, refusals = semantic_review.rereview_moved_revision(
+        json.loads(json.dumps(registry)),
+        old_corpus,
+        new_corpus,
+        new_revision=_FIXTURE_NEW_REVISION,
+        today="2026-09-06",
+        old_signatures=unchanged,
+        new_signatures=unchanged,
+    )
+    require(
+        len(reissues) == 1 and not refusals,
+        f"an unchanged statement must re-issue across a revision move: {refusals}",
+    )
+    checks += 1
+
+    # Route 2 proper: the added hypothesis is the disconfirming case.  The
+    # declaration name, module, and line are all unchanged.
+    reissues, refusals = semantic_review.rereview_moved_revision(
+        json.loads(json.dumps(registry)),
+        old_corpus,
+        new_corpus,
+        new_revision=_FIXTURE_NEW_REVISION,
+        today="2026-09-06",
+        old_signatures=unchanged,
+        new_signatures=restated,
+    )
+    require(
+        not reissues
+        and any(
+            "cited declaration statement differs" in refusal
+            and f"{_FIXTURE_MODULE}:{_FIXTURE_DECLARATION}" in refusal
+            for refusal in refusals
+        ),
+        "an added hypothesis under an unchanged declaration name escaped the "
+        f"revision-move statement comparison: {refusals}",
+    )
+    checks += 1
+
+    # A declaration the new atlas no longer records at all is the same class of
+    # failure and must be refused rather than re-issued.
+    reissues, refusals = semantic_review.rereview_moved_revision(
+        json.loads(json.dumps(registry)),
+        old_corpus,
+        new_corpus,
+        new_revision=_FIXTURE_NEW_REVISION,
+        today="2026-09-06",
+        old_signatures=unchanged,
+        new_signatures={},
+    )
+    require(
+        not reissues and refusals,
+        "a cited declaration absent from the moved atlas escaped the comparison",
+    )
+    checks += 1
+    return checks
+
+
+def check_self_consistent_wrongness(claims_path: Path) -> int:
+    """A claim restated away from its declaration must fail the digest path.
+
+    The failure this encodes is a tree that is wrong and internally tidy: the
+    reader-facing statement is edited, nothing is regenerated, and every
+    name-shaped and count-shaped check still passes because the declaration is
+    exactly where the row says it is.  The receipt is the only surface that
+    notices, because its digest covers the wording it reviewed.
+
+    The mutation happens in a temporary copy.  The live tree is read only.
+    """
+    checks = 0
+    with tempfile.TemporaryDirectory() as raw:
+        scratch = Path(raw)
+        copied_claims = scratch / "claims.json"
+        copied_claims.write_text(claims_path.read_text())
+        claims = json.loads(copied_claims.read_text())
+        revision = str(
+            claims.get("release", {}).get("formal_source", {}).get("ref", "")
+        )
+
+        node = _fixture_node(
+            "For every infinite support with summable reciprocal mass the "
+            "tail-ratio family is summable."
+        )
+        registry = _fixture_registry(
+            node, fingerprint=_FIXTURE_OLD_FINGERPRINT, revision=revision
+        )
+        (scratch / "semantic_corpus.json").write_text(
+            json.dumps(
+                {
+                    "evidence_fingerprint": _FIXTURE_OLD_FINGERPRINT,
+                    "statement_nodes": [node],
+                    "relations": [],
+                }
+            )
+        )
+        (scratch / "reviews.json").write_text(json.dumps(registry))
+
+        # Alter the statement only.  The cited declaration, its module, its
+        # line, and the pinned revision are all untouched, and nothing is
+        # regenerated: this is the self-consistent wrong tree.
+        corpus = json.loads((scratch / "semantic_corpus.json").read_text())
+        corpus["statement_nodes"][0]["canonical_statement"] = (
+            "For every infinite support the tail-ratio family is summable."
+        )
+        (scratch / "semantic_corpus.json").write_text(json.dumps(corpus))
+
+        altered = json.loads((scratch / "semantic_corpus.json").read_text())
+        errors = semantic_review.apply_review_registry(
+            json.loads((scratch / "reviews.json").read_text()),
+            {row["id"]: row for row in altered["statement_nodes"]},
+            [],
+            evidence_fingerprint=str(altered["evidence_fingerprint"]),
+            reviewed_revision=revision,
+        )
+        require(
+            any(
+                "digest is stale" in error and node["id"] in error
+                for error in errors
+            ),
+            "a claim restated away from its reviewed wording escaped the "
+            f"receipt digest: {errors}",
+        )
+        checks += 1
+
+        # The same tree, unaltered, must pass; otherwise the check above proves
+        # nothing about the alteration.
+        errors = semantic_review.apply_review_registry(
+            json.loads((scratch / "reviews.json").read_text()),
+            {node["id"]: json.loads(json.dumps(node))},
+            [],
+            evidence_fingerprint=_FIXTURE_OLD_FINGERPRINT,
+            reviewed_revision=revision,
+        )
+        require(not errors, f"the unaltered control must pass: {errors}")
+        checks += 1
+    return checks
+
+
 def main() -> int:
     claims = json.loads(CLAIMS_PATH.read_text())
+    atlas = json.loads(ATLAS_PATH.read_text())
+    index = atlas_statement_index(atlas)
     claim_errors = validate_claim_declarations(claims)
+    statement_errors = validate_atlas_statement_evidence(
+        atlas
+    ) + validate_claim_statements(claims, index)
     tree_errors, config_count, package_count = validate_tree(ROOT)
-    fixture_checks = check_fixtures() + check_claim_locator_mutations(claims)
+    fixture_checks = (
+        check_fixtures()
+        + check_claim_locator_mutations(claims)
+        + check_statement_drift_under_an_unchanged_name(claims)
+        + check_self_consistent_wrongness(CLAIMS_PATH)
+    )
 
-    errors = claim_errors + tree_errors
+    errors = claim_errors + statement_errors + tree_errors
     declaration_count = sum(
         len(claim.get("declarations") or []) for claim in claims.get("claims", [])
     )
@@ -393,7 +785,8 @@ def main() -> int:
         return 1
     print(
         "test_selection_fidelity: "
-        f"{declaration_count} claim declarations resolve; "
+        f"{declaration_count} claim declarations resolve and carry a recorded "
+        f"statement in {len(index)} atlas rows; "
         f"{config_count} comparator selections over {package_count} packages "
         "resolve to declared endpoints; "
         f"{fixture_checks} adversarial fixtures were rejected"

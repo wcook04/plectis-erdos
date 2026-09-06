@@ -46,10 +46,205 @@
       "publication_prerequisite": false
     },
     "blinded_recovery_evaluation": {
-      "human_name": "Blinded recovery evaluation",
-      "decides": "Whether an agent given the development as it stood before a declaration landed, and a stated subset of the derived layers, reconstructs that declaration's statement or proof mechanism. The holdout is a git checkout predating the target, so the target is absent by construction rather than by the agent's restraint.",
-      "does_not_decide": "Whether the recovered statement is novel, significant, or correctly proved; whether the mechanism credited for the recovery is the one the original proof used; or whether a recovery generalises beyond the held-out case."
+      "human_name": "Historical-layer evaluation",
+      "decides": "Whether the layers present at a past revision expose the obligation a stated target requires, and whether a candidate offered against that revision is accepted by the Lean kernel in the environment of that revision. This is interpretation evidence about the layers as they stood. The holdout is a git checkout predating the target, so the target declaration is absent from the working tree by construction rather than by the agent's restraint.",
+      "does_not_decide": "Whether the derived layers shortened the work of producing the later result. A past checkout does not isolate acceleration, because a shared object store, later receipts and dossiers, network access, context supplied in the request, and a model's familiarity with public mathematics can each carry the answer into the run. It also does not decide whether the recovered statement is novel, significant, or correctly proved; whether the mechanism credited for the recovery is the one the original proof used; or whether a recovery generalises beyond the held-out case."
     }
+  },
+  "historical_layer_experiment": {
+    "id": "historical_layer_experiment",
+    "title": "What a historical checkout can and cannot show",
+    "artifact_role": "experiment_design_contract_not_a_reported_result",
+    "owning_script": "scripts/historical_bridge_experiment.py",
+    "evidence_class": "blinded_recovery_evaluation",
+    "questions": [
+      {
+        "id": "Q1_interpretation",
+        "statement": "Do the current semantic layers help a reader find the relevant mathematics and interpret it correctly?",
+        "answerable_from_a_historical_checkout": true,
+        "note": "The obstruction packet compiled inside the past checkout is evidence about the layers as they stood at that revision."
+      },
+      {
+        "id": "Q2_acceleration",
+        "statement": "Do the historical derived layers shorten the work of producing a later result?",
+        "answerable_from_a_historical_checkout": false,
+        "note": "A past checkout alone does not isolate acceleration. Every channel in leakage_channels with controlled false can carry the later answer into the run."
+      }
+    ],
+    "leakage_channels": [
+      {
+        "id": "parent_identity",
+        "channel": "The checkout could silently be a different revision.",
+        "controlled": true,
+        "control": "implemented in scripts/historical_bridge_experiment.py"
+      },
+      {
+        "id": "future_declaration_name",
+        "channel": "The later declaration name could appear in the past tree.",
+        "controlled": true,
+        "control": "implemented in scripts/historical_bridge_experiment.py"
+      },
+      {
+        "id": "future_module_file",
+        "channel": "The later module file could exist in the past checkout.",
+        "controlled": true,
+        "control": "implemented in scripts/historical_bridge_experiment.py"
+      },
+      {
+        "id": "candidate_naming",
+        "channel": "The candidate source could name the later declaration or module.",
+        "controlled": true,
+        "control": "implemented in scripts/historical_bridge_experiment.py"
+      },
+      {
+        "id": "candidate_placeholder",
+        "channel": "The candidate could close its goal with sorry or admit.",
+        "controlled": true,
+        "control": "implemented in scripts/historical_bridge_experiment.py"
+      },
+      {
+        "id": "build_scope",
+        "channel": "Building more than the pre-existing dependency target could pull later source in.",
+        "controlled": true,
+        "control": "implemented in scripts/historical_bridge_experiment.py"
+      },
+      {
+        "id": "obstruction_scope",
+        "channel": "The compiler could read the current tree instead of the past checkout.",
+        "controlled": true,
+        "control": "implemented in scripts/historical_bridge_experiment.py"
+      },
+      {
+        "id": "measurement_order",
+        "channel": "Later-reuse evidence could be read before the proof run and steer it.",
+        "controlled": true,
+        "control": "implemented in scripts/historical_bridge_experiment.py"
+      },
+      {
+        "id": "shared_object_store",
+        "channel": "The disposable clone is made with git clone --shared, so every later commit, tree and blob of the current repository stays reachable by object id from inside the historical checkout.",
+        "controlled": false,
+        "consequence": "Report as a limitation until the clone is made without shared alternates."
+      },
+      {
+        "id": "dependency_pin",
+        "channel": "The historical clone symlinks .lake/packages from the current tree, so it builds against the current dependency pin rather than the one the past revision declared.",
+        "controlled": false,
+        "consequence": "Report as a limitation; the environment is not the historical environment."
+      },
+      {
+        "id": "derived_layer_content",
+        "channel": "Only the later declaration name is screened. A paraphrase, a semantic node, a receipt, a dossier, or a prose statement at the past revision that describes the same bridge is not detected.",
+        "controlled": false,
+        "consequence": "Report as a limitation; name absence is weaker than content absence."
+      },
+      {
+        "id": "supplied_context",
+        "channel": "The request handed to the compiler already names the target statement and the exact candidate declaration.",
+        "controlled": false,
+        "consequence": "Obstruction recovery is conditioned on an answer key and must not be described as search."
+      },
+      {
+        "id": "authored_candidate",
+        "channel": "The candidate proof is an authored reconstruction written with knowledge of the later proof.",
+        "controlled": false,
+        "consequence": "No synthesis claim may be made from this run."
+      },
+      {
+        "id": "no_agent_in_the_loop",
+        "channel": "No model runs inside the harness, so no search behaviour is observed.",
+        "controlled": false,
+        "consequence": "Nothing here measures what a model would find without the layers."
+      },
+      {
+        "id": "model_familiarity",
+        "channel": "A model asked to reproduce a bridge on a public problem may have seen the mathematics during training.",
+        "controlled": false,
+        "consequence": "Report as a limitation of any later model-in-the-loop run."
+      },
+      {
+        "id": "network_and_filesystem",
+        "channel": "Child processes are environment-sanitised and are not sandboxed against network or filesystem access.",
+        "controlled": false,
+        "consequence": "Report as a limitation until the runner isolates both."
+      },
+      {
+        "id": "no_control_arm",
+        "channel": "Only the derived-layer arm is run, so no route comparison exists.",
+        "controlled": false,
+        "consequence": "No acceleration statement may be made from a single arm."
+      }
+    ],
+    "controlled_comparison": {
+      "required_for": "Q2_acceleration",
+      "control_arm": "ordinary_source_and_documentation_route",
+      "treatment_arm": "derived_semantic_and_obstruction_layers",
+      "held_constant": [
+        "target_declaration",
+        "access_permissions",
+        "work_budget"
+      ],
+      "measured_outcomes": [
+        {
+          "id": "correct_reconstruction",
+          "definition": "The returned statement is logically equivalent to the target declaration's statement, with the same hypotheses and quantifiers."
+        },
+        {
+          "id": "false_strengthening",
+          "definition": "The returned statement drops a hypothesis, widens a quantifier, or otherwise claims more than the target."
+        },
+        {
+          "id": "missed_hypotheses",
+          "definition": "The returned statement omits a hypothesis the proof actually uses."
+        },
+        {
+          "id": "correct_identification_of_the_open_remainder",
+          "definition": "The run names the exact proposition that remains open after its contribution."
+        },
+        {
+          "id": "successful_replay",
+          "definition": "The returned artifact is accepted again from its stored bytes in the stated environment."
+        },
+        {
+          "id": "usable_returned_contribution",
+          "definition": "A maintainer can integrate the return without reconstructing the reasoning that produced it."
+        }
+      ],
+      "reporting_rule": "Report both arms and every uncontrolled channel. A single-arm run reports Q1 only."
+    },
+    "fixture_separation": {
+      "development_fixture_id": "half_divisor_coefficient_bridge",
+      "development_fixture_rule": "The half-divisor coefficient bridge was inspected while the harness was written. It may be used to debug the harness and must never be reported as an evaluation result.",
+      "evaluation_case_rule": "An evaluation case must be a target whose statement, proof, and derived-layer neighbourhood were not read while building or tuning the harness."
+    },
+    "held_out_variant_classes": [
+      {
+        "id": "ordinary_proof_presented_as_lean_checked",
+        "description": "A result proved in a note by ordinary mathematics is described as Lean-checked, or a kernel-checked ingredient is presented as proving the endpoint.",
+        "checks": "The run must return the correct evidence class for the target."
+      },
+      {
+        "id": "attractive_claim_absent_from_a_selector",
+        "description": "A strong claim exists in the source but a selector omits it, for example a headline flag left unset because no reviewed semantic node exists for it.",
+        "checks": "The run must find the claim through a route other than the selector, or report the omission."
+      },
+      {
+        "id": "same_file_export_loss",
+        "description": "A module is present in every tree while one copy carries declarations the others lack.",
+        "checks": "The run must detect that the same path holds different declaration sets."
+      },
+      {
+        "id": "stale_rendered_artifact",
+        "description": "A rendered document is out of step with its source, for example a root PDF and a paper-directory PDF that differ.",
+        "checks": "The run must prefer the source of record and report the divergence."
+      },
+      {
+        "id": "apparently_closed_route_whose_obstruction_is_unproved",
+        "description": "A route is recorded as closed, and the obstruction that would close it has not itself been proved.",
+        "checks": "The run must report the route as open and name the missing obstruction."
+      }
+    ],
+    "scope_limit": "This design records how a historical run must be read. It proves nothing, and it does not license any acceleration claim."
   },
   "human_capsule": [
     "The exact boundary between proved and open must remain explicit.",

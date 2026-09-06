@@ -24,7 +24,7 @@ Hence fixed-length recoveries are eventually cancellation-free, although recover
 
 One clause of that frontier is already published and is credited as such. That a counterexample must have negative errors infinitely often is the contrapositive of Koizumi’s Proposition 19(2) \[koizumi2025, Prop. 19(2)\], which he attributes to Badea; Koizumi and Badea assume the sign is eventually nonnegative. The theorem proved here assumes only that the negative part is eventually bounded, which admits sign changes of bounded depth at every scale, so it is a strengthening of their hypothesis rather than a new clause. The unboundedness and divergent-mass parts of the frontier have no located antecedent.
 
-Koizumi’s pseudo-greedy coordinates supply normalised vanishing and a stronger centring range for the canonical Erdős orbit, but neither boundedness nor summability of its negative part. Thus any surviving orbit must have cofinally unbounded negative excursions and divergent normalised negative mass. Excluding that case is the exact open boundary, and Problem #243 remains open
+Koizumi’s pseudo-greedy coordinates supply normalised vanishing and a stronger centring range for the canonical Erdős orbit, but neither boundedness nor summability of its negative part. Thus any surviving orbit must have cofinally unbounded negative excursions and divergent normalised negative mass. Excluding that case is the exact open boundary, and Problem #243 remains open.
 
 <a id="sec:problem"></a>
 

@@ -380,10 +380,9 @@ prime-specific estimate.
 
 \statusboundary
 
-\begin{table}[!t]
-\centering
+\begingroup
 \small
-\begin{tabular}{@{}
+\begin{longtable}{@{}
   >{\raggedright\arraybackslash}p{0.34\linewidth}
   >{\raggedright\arraybackslash}p{0.18\linewidth}
   >{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
@@ -419,11 +418,11 @@ Concrete prime-gap tail recurrence and rational-candidate bridge & Lean-checked 
 Rationality alone forces periodic integer coefficients & False & Section~\ref{sec:carry}, Proposition~\ref{res:telescope}. \\
 Cofinal adjacent small-mismatch hypothesis & Proposed sufficient theorem & Problem~\ref{prob:smallpair}; not proved. \\
 \bottomrule
-\end{tabular}
+\end{longtable}
+\endgroup
 
 \smallskip
-\begin{minipage}{0.94\linewidth}
-\footnotesize
+\noindent{\footnotesize
 \emph{How to read the middle column.}  \emph{Proved here} marks a statement
 proved in the text; each such statement also carries a link to a Lean
 declaration where it appears below.
@@ -436,9 +435,7 @@ written out in prose with no formal check.  The modifier
 \emph{abstractly} marks a statement proved for an arbitrary integer digit
 sequence rather than for the actual prime gaps.  \emph{Proposed sufficient
 theorem} marks an unproved statement
-which, if proved, would give irrationality of $\Pi$.
-\end{minipage}
-\end{table}
+which, if proved, would give irrationality of $\Pi$.\par}
 
 \medskip
 \noindent\textbf{Keywords.} irrationality; prime gaps; dyadic series;

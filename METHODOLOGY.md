@@ -94,11 +94,11 @@ Records a named reviewer's judgement about: A contest, correction, confirmation,
 
 Does not decide: Whether the Lean kernel accepts the proof term; nor does one review by itself establish novelty, priority, external peer-review consensus, or community acceptance.
 
-### Blinded recovery evaluation
+### Historical-layer evaluation
 
-Decides: Whether an agent given the development as it stood before a declaration landed, and a stated subset of the derived layers, reconstructs that declaration's statement or proof mechanism. The holdout is a git checkout predating the target, so the target is absent by construction rather than by the agent's restraint.
+Decides: Whether the layers present at a past revision expose the obligation a stated target requires, and whether a candidate offered against that revision is accepted by the Lean kernel in the environment of that revision. This is interpretation evidence about the layers as they stood. The holdout is a git checkout predating the target, so the target declaration is absent from the working tree by construction rather than by the agent's restraint.
 
-Does not decide: Whether the recovered statement is novel, significant, or correctly proved; whether the mechanism credited for the recovery is the one the original proof used; or whether a recovery generalises beyond the held-out case.
+Does not decide: Whether the derived layers shortened the work of producing the later result. A past checkout does not isolate acceleration, because a shared object store, later receipts and dossiers, network access, context supplied in the request, and a model's familiarity with public mathematics can each carry the answer into the run. It also does not decide whether the recovered statement is novel, significant, or correctly proved; whether the mechanism credited for the recovery is the one the original proof used; or whether a recovery generalises beyond the held-out case.
 
 ## Research and publication paths
 

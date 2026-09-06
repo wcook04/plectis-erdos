@@ -50,13 +50,13 @@ At this checkpoint the semantic graph yields three diagnostic views across every
 
 | View | #68 | #243 | #249 | #251 | #257 | #269 | #1041 | #1049 | both | shared | total |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| mechanically nonrecurring candidates | 0 | 3 | 89 | 0 | 169 | 0 | 0 | 5 | 0 | 19 | 285 |
+| mechanically nonrecurring candidates | 2 | 3 | 90 | 0 | 169 | 0 | 0 | 6 | 0 | 19 | 289 |
 | classical/prior-art formalisations | 0 | 1 | 36 | 0 | 23 | 0 | 0 | 1 | 0 | 40 | 101 |
 | bare open-problem equivalences | 0 | 0 | 15 | 0 | 15 | 0 | 0 | 0 | 0 | 2 | 32 |
 
-The graph contains 1,116 authored statement nodes above 6,107 exact source-structural families. The views overlap and are not a partition of either tier.
+The graph contains 1,123 authored statement nodes above 6,085 exact source-structural families. The views overlap and are not a partition of either tier.
 
-The internal adjudicated frontier shortlist contains 11 nodes; it is distinct from the 8-node public prior-art review queue. 230 nonrecurring candidates remain unassessed for prior art. The live authored open-antecedent surface has 52 clusters, of which 10 are marked endpoint-equivalent. None of these populations is a novelty census.
+The internal adjudicated frontier shortlist contains 11 nodes; it is distinct from the 10-node public prior-art review queue. 232 nonrecurring candidates remain unassessed for prior art. The live authored open-antecedent surface has 52 clusters, of which 10 are marked endpoint-equivalent. None of these populations is a novelty census.
 
 Of 23 substantial Lean propositions extracted from hypotheses of conditional theorems, 17 are provably equivalent to an endpoint: 14 to #249 and 3 to the `1/2` membership test for #257. Equivalence here is kernel-checked against the extracted proposition, not a claim that either endpoint is settled.
 <!-- END semantic_public_census -->

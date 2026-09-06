@@ -47,7 +47,10 @@ have both better mathematics to draw on and a better environment for doing
 the work. This paper describes the contribution process, its precedents, and
 the tests needed to assess it. The public workflow is implemented, but its
 usefulness to outside contributors and its
-effect on research productivity have not yet been established.
+effect on research productivity have not yet been established. No result
+reported in this paper comes from an outside contributor; the evidence behind
+it is an implemented workflow, internal agent rehearsals operated by the
+author, and deterministic checks of the repository's own contracts.
 \end{abstract}
 
 \section{The strategy}\label{sec:strategy}
@@ -548,7 +551,14 @@ formal proof, computation, and agent-return substrate for every comment.
 Mathlib uses ordinary fork-and-pull-request practice, human review, and
 source-level attribution.  The Carleson formalisation used a public blueprint
 and many claimable lemma-sized tasks, with formalisation feeding corrections
-back into the informal plan \cite{mathlib,carleson}.  Google DeepMind's
+back into the informal plan \cite{mathlib,carleson}.  The blueprint layer
+itself is \texttt{leanblueprint}, which records the Lean declarations that
+realise a statement, the statement and proof dependency edges an author
+declares, and a formalisation-readiness state for each node, and which checks
+that every named declaration exists in the project or one of its dependencies
+\cite{leanblueprint}.  Statement-to-declaration linking is therefore
+established practice, and this project claims none of it as new; what it adds
+is described in the composition below.  Google DeepMind's
 \texttt{formal-conjectures} repository similarly uses one-problem files,
 issue assignment, pull requests, metadata, and stable snapshots for a growing
 Lean benchmark \cite{formalconjectures}.  These projects demonstrate that
@@ -577,7 +587,11 @@ not ancillary to the research pipeline.
 The proposed composition joins these precedents.  It combines volunteer
 compute, small shared insights, formal task decomposition, agent-native
 problem worlds, explicit negative knowledge, untrusted public returns,
-role-aware credit, and human review.  The candidate contribution is this
+role-aware credit, and human review.  The maintained object is the
+relationship among public mathematical claims, the several evidence classes
+that support them, the failed routes whose obstructions have themselves been
+proved, the generated public projections, and a research task that continues
+after publication.  The candidate contribution is this
 composition and its implementation in one open mathematical corpus.  The
 paper reports no controlled comparison showing that the composition increases
 discovery rate.
@@ -662,6 +676,23 @@ must not be counted as independent discoveries.  A theorem accepted by Lean
 but rejected on intended meaning is not a successful public transition.
 Likewise, a strong negative result can improve the corpus even though the
 endpoint problem remains open.
+
+Two questions must be evaluated separately.  The first asks whether the
+current semantic layers help a reader find existing mathematics and interpret
+it correctly.  The second asks whether the derived layers as they stood in the
+past shorten the work of producing a later result.  Checking out a past
+revision answers the first and does not by itself isolate the second.  Later
+Git objects, a shared object store, generated dossiers and receipts, network
+access, context supplied in the prompt, and a model's familiarity with public
+mathematics can each reveal the target.  A comparison that means anything
+therefore holds the target, the access permissions, and the work budget fixed,
+and varies only whether the ordinary source-and-documentation route or the
+derived layers are available.  Its outcomes are stated in advance: correct
+reconstruction, false strengthening, missed hypotheses, correct identification
+of the open remainder, successful replay, and usable returned contribution.
+The channels the harness cannot control are reported as limitations.
+\repolink{docs/methodology.json}{docs/methodology.json} carries the channel
+list and the control status of each one.
 
 Longitudinal model comparisons should use immutable problem snapshots and
 held-out variants where possible.  Public hard problems are susceptible to
@@ -841,7 +872,7 @@ the next outcomes to measure.
 \section{Public entry routes}\label{app:routes}
 \papersectiontarget{strategy-entry-routes}
 
-The public repository is \href{\repobase}{\texttt{wcook04/plectis-lean-erdos249-257}}.
+The public repository is \href{\repobase}{\texttt{wcook04/plectis-erdos}}.
 The shortest current routes are:
 
 \begin{center}
@@ -948,6 +979,12 @@ accessed August 2026.
 L. Becker et al., \emph{A Blueprint for the Formalization of Carleson's
 Theorem on Convergence of Fourier Series}, 2025,
 \href{https://arxiv.org/abs/2405.06423}{arXiv:2405.06423}.
+
+\bibitem{leanblueprint}
+P. Massot, \emph{leanblueprint}, plasTeX plugin for Lean formalisation
+blueprints, 2020,
+\href{https://github.com/PatrickMassot/leanblueprint}{software repository},
+accessed September 2026.
 
 \bibitem{erdosproblems}
 T. F. Bloom, \emph{Erd\H{o}s Problems}, problem database, sources, and forum,

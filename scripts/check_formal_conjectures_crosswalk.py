@@ -61,8 +61,20 @@ CHECKED_EQUIVALENCE_KEYS = {
     "axioms",
     "upstream_declaration",
 }
-# A Lean proof that typechecks while depending on sorryAx proves nothing.
-FORBIDDEN_AXIOMS = frozenset({"sorryAx"})
+# A Lean proof that typechecks while depending on sorryAx proves nothing, and a
+# proof that reaches its statement through native evaluation carries the Lean
+# compiler and interpreter in its trusted base rather than the kernel alone.
+# Naming the individual bad axioms cannot express either rule, because the set of
+# ways to leave the kernel is open. Since Lean 4.29 the native evaluation path
+# adds a fresh axiom per computation, minted as `_native.<tactic>.ax` under the
+# enclosing declaration, so `native_decide` and `bv_decide` now reach an axiom
+# report under a name no denylist can enumerate in advance. The `Lean.reduceBool`
+# and `Lean.reduceNat` route still reports `Lean.trustCompiler`, and
+# `Lean.ofReduceBool` and `Lean.ofReduceNat` remain reachable directly. The check
+# is therefore a closed allow-list over the whole reported budget: every axiom
+# outside Palomar's ceiling fails, whatever it is called. This is the same closed
+# ceiling that `verification/comparator.json` declares.
+PERMITTED_AXIOMS = frozenset({"propext", "Quot.sound", "Classical.choice"})
 REQUIRED_COMPARISON_AXES = {
     "statement_scope",
     "indexing",
@@ -213,9 +225,10 @@ def checked_equivalence_errors(
 
     ``"none"`` is always acceptable and asserts nothing.  Any other value must
     name an adapter module that exists in this repository and states the
-    declaration being claimed, and must report an axiom budget free of
-    ``sorryAx``.  The point is that the claim is refused unless the artifact
-    backing it is present -- not that the claim is refused on principle.
+    declaration being claimed, and must report an axiom budget lying inside the
+    permitted ceiling.  The point is that the claim is refused unless the
+    artifact backing it is present, and the budget is admitted by an allow-list
+    so that an axiom nobody anticipated is refused rather than ignored.
     """
     if value == "none":
         return []
@@ -262,11 +275,18 @@ def checked_equivalence_errors(
     axioms = value.get("axioms")
     if not isinstance(axioms, list) or not axioms:
         errors.append(f"{label}: checked equivalence must report an axiom budget")
+    elif not all(isinstance(axiom, str) for axiom in axioms):
+        errors.append(f"{label}: axiom budget must be a list of axiom names")
     else:
-        forbidden = FORBIDDEN_AXIOMS.intersection(axioms)
-        if forbidden:
+        # `#print axioms` reports the transitive closure, so the whole reported
+        # budget is the thing to admit or refuse. Anything outside the ceiling
+        # fails, including a per-computation native axiom whose name is minted
+        # at elaboration time.
+        outside = sorted(set(axioms) - PERMITTED_AXIOMS)
+        if outside:
             errors.append(
-                f"{label}: axiom budget contains {', '.join(sorted(forbidden))}"
+                f"{label}: axiom budget leaves the permitted ceiling: "
+                f"{', '.join(outside)}"
             )
     return errors
 

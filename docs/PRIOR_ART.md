@@ -254,6 +254,18 @@ grouped by the problem whose note they serve.
 
   **Boundary.** Formulation, not proof; the note's saddle-block diagnosis of a recent manuscript is prose, not Lean.
 
+- V. S. Pendyala, *A Degree-Four Lemniscate Path Theorem*, [arXiv:2606.24875](https://arxiv.org/abs/2606.24875) (June 2026), Theorem 1, p. 1
+
+  The one exactly comparable adjacent result. It proves the degree-four case of the problem through a finite four-point radial lemma and a short polygonal connector. The note cites it for the quartic geometry of the translated quartic quotient-fibre family, where the local Lean module checks only the root-lift density, its exact primitive, and the strict endpoint budget.
+
+  **Boundary.** It settles degree four and reaches no other degree. The note's own unconditional statements hold in every degree `n >= 2` and pay for that with a larger constant, a weaker containment level, or a hypothesis on the least critical-value modulus. Nothing here adjudicates priority between the two, and unrestricted #1041 stays open.
+
+- V. N. Dubinin, *Some inequalities for polynomials and rational functions associated with a lemniscate*, Zap. Nauchn. Sem. POMI **404** (2012), 83–99, Theorem 1, printed p. 85; English translation, J. Math. Sci. **193** (2013), no. 1, 45–54, doi:[10.1007/s10958-013-1432-4](https://doi.org/10.1007/s10958-013-1432-4)
+
+  Theorem 1 assumes a holomorphic function giving a full `n`-fold covering of an annulus `t_1 < |w| < t_2` and, with `E` the complementary set defined there, states `(t_2/t_1)^(2/n) <= m(E ∪ D)/m(E)`. It is a Pólya-type area inequality under a covering hypothesis. T. Tao cited it on the erdosproblems.com #1041 discussion thread on 25 March 2026 for the relative area scaling factor. This entry closes the open attribution the note previously carried.
+
+  **Boundary.** No argument in the #1041 note uses this theorem. The area input used throughout is the absolute Pólya inequality `Area{|f| <= t} <= pi t^(2/n)` for unit-modulus leading coefficient (Pólya 1928, printed pp. 280–282), which carries no covering hypothesis. The theorem bounds areas and supplies no curve joining two roots. The research-corpus row `actual_component_merge_tree_area_lower_bound` states a relative area-growth inequality of the same shape under its own hypotheses and carries its own proof by boundary Cauchy–Schwarz and planar isoperimetry. That row is the one place in this release where Dubinin's theorem is the published neighbouring form, it is not an input to the row, and no priority is adjudicated.
+
 - Current evidence boundary: the committed [`research_corpus/Erdos1041/FRONTIER.md`](../research_corpus/Erdos1041/FRONTIER.md)
   is the dated route for the current source-only research state, not an
   antecedent source. It records certified strategy refutations, surviving
@@ -265,11 +277,29 @@ grouped by the problem whose note they serve.
 
 ### #1049
 
+- W. Zudilin, *Heine's basic transform and a permutation group for `q`-harmonic series*, *Acta Arith.* 111 (2004), no. 2, 153-164, doi:[10.4064/aa111-2-4](https://doi.org/10.4064/aa111-2-4)
+
+  Principal source of the region theorem. Lemma 7 in its polynomial reading, together with the inputs of that lemma's own proof (Lemma 3, the exponent `M(a;b)` of (16) supplied by Lemma 4, Heine's transform as Lemma 5, and the identity (9)-(11)), is the note's citation set. The direction `(14,12,14;27)`, the thirteen demi-intervals, the constants `C_1 = 545.5` and `C_0 = 221.30008816...`, and the ratio `C_1/C_0 = 2.46497868...` are printed on p. 162; the ratio is the integer-base irrationality-exponent bound of Theorem 1, p. 154.
+
+  **Boundary.** The paper carries the standing hypothesis `p = 1/q` in `Z \ {0, ±1}` and states no rational-base result. The numerical constants above are inherited from this source. What the note supplies is the rational specialisation of those forms, the denominator accounting, the resulting region, and its first new base. The region theorem is an ordinary proof and is not kernel-checked.
+
 - P. Bundschuh and K. Väänänen, *Compositio Math.* 91 (1994), Theorem 2, [official Numdam PDF](https://numdam.org/item/CM_1994__91_2_175_0.pdf) ([read source closure](primary-sources/totient-kernel/bundschuh-vaanenen-1994-source-closure.md))
 
-  External irrationality criterion at base `7/2`; the release checks only its elementary Archimedean height inequality.
+  The published rational-base region for this value, and the comparison region for `31/4`. Their printed hypothesis for `α = −1` is `λ < (1/2 + 1/π²)^{−1}` with `λ = log h(q)/log|q|`; at a positive reduced base `q = a/b > 1` this reads `log a/log(a/b) < (1/2 + 1/π²)^{−1}`, that is `log b/log a < 1/2 − 1/π² = 0.398678816...`. The release checks the elementary Archimedean height inequality at `7/2` and the exclusion of `31/4` from that region.
 
-  **Boundary.** The analytic argument remains external, and nothing follows at `3/2`.
+  **Boundary.** The analytic argument remains external. Every base of the note's region with `b ≤ 3` is already theirs, and nothing follows at `3/2`.
+
+- D. Duverney, *À propos de la série `∑ x^n/(q^n − 1)`*, *J. Théor. Nombres Bordeaux* 8 (1996), 173-181, Théorème 2, p. 174; T. Matala-aho, K. Väänänen and W. Zudilin, *New irrationality measures for `q`-logarithms*, *Math. Comp.* 75 (2006), 879-889
+
+  Two further published comparisons. Duverney's rational-base region for this series is `log|s|/log|r| < (1/3)(1 − 3/π²) = 0.2320...`, strictly inside the Bundschuh and Väänänen region. Matala-aho, Väänänen and Zudilin keep the integer hypothesis throughout and record in print that their methods do not sharpen the `q`-harmonic case of Zudilin 2004.
+
+  **Boundary.** None of the printed regions compared in the note reaches `log 4/log 31 = 0.403698173...`. That is a dated comparison over the located sources. It asserts no priority over other methods.
+
+- W. Zudilin, *On the irrationality of generalized `q`-logarithm*, arXiv:[1601.02688](https://arxiv.org/abs/1601.02688); *Res. Number Theory* 2 (2016), doi:[10.1007/s40993-016-0042-x](https://doi.org/10.1007/s40993-016-0042-x)
+
+  A different source role from the 2004 paper. The remark at the end of Section 2 says the results of that paper extend to non-integer `p = r/s`, `|p| > 1`, under an assumption `log|r| > c log|s|` for a computable `c > 0`. Section 4 of the same paper supplies the inequality on the normalised Hankel determinant order that the note sharpens to an equality.
+
+  **Boundary.** No value of `c` is computed there, and the remark is made for the generalized `q`-logarithm of that paper rather than for `F`. The 2004 linear forms, lemmas and constants are not from this source.
 
 - T. Amdeberhan and D. Zeilberger, [*$q$-Apéry irrationality proofs by $q$-WZ pairs* (1998)](https://doi.org/10.1006/aama.1997.0565) ([read source closure](primary-sources/reciprocal-tail/amdeberhan-zeilberger-1998-q-apery-source-closure.md)); W. Van Assche, [*Little $q$-Legendre polynomials and irrationality of certain Lambert series* (2001)](https://doi.org/10.1023/A:1012930828917) ([read source closure](primary-sources/reciprocal-tail/van-assche-2001-little-q-legendre-source-closure.md)); P. B. Borwein, [*On the irrationality of certain series* (1992)](https://doi.org/10.1017/S030500410007081X)
 

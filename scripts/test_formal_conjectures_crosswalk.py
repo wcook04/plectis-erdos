@@ -155,7 +155,80 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
         claim = mutated["problems"][4]["comparison"]["machine_checked_equivalence"]
         claim["axioms"] = list(claim["axioms"]) + ["sorryAx"]
         self.assertTrue(
-            any("axiom budget contains sorryAx" in e for e in self.errors(mutated))
+            any(
+                "axiom budget leaves the permitted ceiling: sorryAx" in e
+                for e in self.errors(mutated)
+            )
+        )
+
+    def test_per_computation_native_axiom_is_rejected(self) -> None:
+        """A 4.29-shaped native evaluation axiom must fail the ceiling.
+
+        Since Lean 4.29 `native_decide` no longer reaches the axiom report under
+        a fixed name. It mints one axiom per computation, `_native.<tactic>.ax`
+        under the enclosing declaration, with a disambiguating suffix. A rule
+        that names the bad axioms cannot see such a name, so the check has to
+        admit by allow-list. `bv_decide` takes the same route.
+        """
+        for minted in (
+            "Erdos249257.FormalConjecturesAdapter"
+            ".erdos_257_variants_tsum_top._native.native_decide.ax_1",
+            "Erdos249257.FormalConjecturesAdapter"
+            ".erdos_257_variants_tsum_top._native.bv_decide.ax_1",
+        ):
+            with self.subTest(axiom=minted):
+                mutated = copy.deepcopy(self.manifest)
+                claim = mutated["problems"][4]["comparison"][
+                    "machine_checked_equivalence"
+                ]
+                claim["axioms"] = list(claim["axioms"]) + [minted]
+                self.assertTrue(
+                    any(
+                        f"axiom budget leaves the permitted ceiling: {minted}" in e
+                        for e in self.errors(mutated)
+                    )
+                )
+
+    def test_legacy_native_evaluation_axioms_are_rejected(self) -> None:
+        """The pre-4.29 native evaluation markers must fail the same ceiling.
+
+        `Lean.reduceBool` and `Lean.reduceNat` still report `Lean.trustCompiler`,
+        and `Lean.ofReduceBool` and `Lean.ofReduceNat` remain reachable directly,
+        so both shapes have to be refused alongside the minted one.
+        """
+        for axiom in (
+            "Lean.trustCompiler",
+            "Lean.ofReduceBool",
+            "Lean.ofReduceNat",
+        ):
+            with self.subTest(axiom=axiom):
+                mutated = copy.deepcopy(self.manifest)
+                claim = mutated["problems"][4]["comparison"][
+                    "machine_checked_equivalence"
+                ]
+                claim["axioms"] = list(claim["axioms"]) + [axiom]
+                self.assertTrue(
+                    any(
+                        f"axiom budget leaves the permitted ceiling: {axiom}" in e
+                        for e in self.errors(mutated)
+                    )
+                )
+
+    def test_permitted_ceiling_alone_is_accepted(self) -> None:
+        """The allow-list must still admit the three permitted axioms.
+
+        A refusal that also refuses the live budget would be a gate nobody could
+        pass, so the positive direction is pinned here beside the negatives.
+        """
+        self.assertEqual(
+            crosswalk.PERMITTED_AXIOMS,
+            frozenset({"propext", "Quot.sound", "Classical.choice"}),
+        )
+        mutated = copy.deepcopy(self.manifest)
+        claim = mutated["problems"][4]["comparison"]["machine_checked_equivalence"]
+        claim["axioms"] = ["propext", "Quot.sound", "Classical.choice"]
+        self.assertEqual(
+            [e for e in self.errors(mutated) if "axiom budget" in e], []
         )
 
     def test_ladder_cannot_be_climbed_without_evidence(self) -> None:

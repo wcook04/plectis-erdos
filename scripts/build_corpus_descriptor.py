@@ -520,7 +520,7 @@ def build_access_contract(repository: str) -> dict[str, Any]:
     one already owned by this repository.
     """
     clone_url = repository if repository.endswith(".git") else f"{repository}.git"
-    checkout = "plectis-lean-erdos249-257"
+    checkout = repository.rstrip("/").rsplit("/", 1)[-1].removesuffix(".git")
     return {
         "schema": "plectis-public-corpus-access/1",
         "repository_web": repository,

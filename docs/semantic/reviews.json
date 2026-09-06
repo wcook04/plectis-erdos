@@ -3791,6 +3791,105 @@
           "reason": "declaration-atlas source fingerprint moved; reviewed wording, evidence coordinates, boundary, and formal-source revision were verified unchanged"
         }
       ]
+    },
+    {
+      "subject_kind": "statement_node",
+      "subject_id": "Z95::square_subsequence_channel_radius_cubic_lower_bound",
+      "reviewer": "Claude Opus 5",
+      "reviewer_type": "ai_semantic_consistency_review",
+      "reviewed_revision": "4ab50e144847a3393fb340341760e5d6907d702e",
+      "reviewed_at": "2026-09-06",
+      "evidence_digest": "sha256:94fc5c237be2a7d84d800e0cb18189787a29e844438fe0bf8869664178deda3d",
+      "review_scope": "Authored for the review debt on the claim erdos68_square_subsequence_channel_radius. The canonical wording was compared against the full Lean statements of square_subsequence_radius_cubic_lower, no_eventual_square_subsequence_cubic_upper and not_isLittleO_square_subsequence_radius in ErdosProblems/Erdos68/ChannelIntegralCongruence.lean at lines 1006, 1023 and 1043, and against the definition channelLCM at line 37, which is the lcm of d! - 1 over the interval Icc 2 D. All three declarations carry the threshold 4096 <= t, the three conditions 0 < M, channelLCM (2t^2) dividing M and M < (R+1)! - 1, and the stated conclusions t^3 < 8(R+1), the negated eventual upper bound, and the negated little-o statement against the filter atTop. The claim row states those three declarations under the threshold 2^32 that belongs to the sharper pair; that discrepancy is recorded as a patch to the claim statement and is the reason this node names 4096 explicitly.",
+      "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint. This is a model consistency review. It is not independent human mathematical review, not Lean proof authority, and not a novelty or prior-art judgement. It does not establish that the chosen node decomposition is the only reasonable one."
+    },
+    {
+      "subject_kind": "statement_node",
+      "subject_id": "Z95::square_subsequence_channel_radius_three_halves_lower_bound",
+      "reviewer": "Claude Opus 5",
+      "reviewer_type": "ai_semantic_consistency_review",
+      "reviewed_revision": "4ab50e144847a3393fb340341760e5d6907d702e",
+      "reviewed_at": "2026-09-06",
+      "evidence_digest": "sha256:f6a4974dca29a6cbc597a62daf24ed0de7fe65d007b6745f5acc8bb73a16e5ff",
+      "review_scope": "Authored for the review debt on the claim erdos68_square_subsequence_channel_radius. The canonical wording was compared against the full Lean statements of square_subsequence_radius_three_halves_lower and no_eventual_square_subsequence_three_halves_upper in ErdosProblems/Erdos68/ChannelIntegralCongruence.lean at lines 1222 and 1241, and against channelLCM at line 37. Both declarations carry the threshold 2^32 <= t and the same three conditions on M and R, and the conclusions are 3t^3 < 2(R+1) and the negation of an eventual 2(R(t)+1) <= 3t^3. The threshold appears in the proof through the bound 32 log 2 <= log t. No little-o form is proved at this threshold, and the node says so.",
+      "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint. This is a model consistency review. It is not independent human mathematical review, not Lean proof authority, and not a novelty or prior-art judgement. It does not establish that the chosen node decomposition is the only reasonable one."
+    },
+    {
+      "subject_kind": "statement_node",
+      "subject_id": "Z08::first_harmonic_saving_forces_certificate",
+      "reviewer": "Claude Opus 5",
+      "reviewer_type": "ai_semantic_consistency_review",
+      "reviewed_revision": "4ab50e144847a3393fb340341760e5d6907d702e",
+      "reviewed_at": "2026-09-06",
+      "evidence_digest": "sha256:5a50cd05b19afc25dfc9e30cad661cf18b8c369442f78c678d741dbbefeba17f",
+      "review_scope": "Re-review for the claim first_harmonic_norm_gap_reduction. The canonical wording was compared against exists_certifiedKill_of_first_harmonic_gap_subset and exists_certifiedKill_of_first_harmonic_gap in Erdos249257/FirstHarmonicGap.lean at lines 104 and 128, exists_certifiedKill_of_first_harmonic_norm_gap in Erdos249257/FirstHarmonicPivot.lean at line 53, and exists_certifiedKill_of_firstHarmonicAnchorDefect in Erdos249257/PivotAntiReconstruction.lean at line 874, together with windowFirstCos, windowFirstExp, windowDiscrepancy and certifiedKill at their definition sites. Two corrections were made to the wording before this receipt. The subset consumer requires only N < 2X for members of T rather than membership of the block [X,2X), so the node no longer states the stronger set condition. The complex-norm form is not the same statement as the real-part form; norm_gap composes into the real-part consumer through Complex.re_le_norm and 21/25 < 9/10, so the node now records it as strictly stronger. The anchor-defect equivalence is exact: firstHarmonicAnchorDefect_ge_iff_first_harmonic_gap at line 576 of the same module is an iff between the |T|/5 defect threshold and the 9/10 cosine threshold.",
+      "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint. This is a model consistency review. It is not independent human mathematical review, not Lean proof authority, and not a novelty or prior-art judgement. It does not establish that the chosen node decomposition is the only reasonable one."
+    },
+    {
+      "subject_kind": "statement_node",
+      "subject_id": "Z08::first_harmonic_socket_implies_249",
+      "reviewer": "Claude Opus 5",
+      "reviewer_type": "ai_semantic_consistency_review",
+      "reviewed_revision": "4ab50e144847a3393fb340341760e5d6907d702e",
+      "reviewed_at": "2026-09-06",
+      "evidence_digest": "sha256:e3c46ddc59bda1601d365e5eec3f3b986a3ea199bdaae72b43aefc4d6f97b789",
+      "review_scope": "Re-review for the claim first_harmonic_norm_gap_reduction. The canonical wording, the two recorded open antecedents and the evidence coordinates were compared against DTWFirstHarmonicNormGap at line 75, irrational_totient_series_of_first_harmonic_norm_gap at line 83, DTWPivotResidualDecorrelation at line 569 and irrational_totient_series_of_pivotResidualDecorrelation at line 577 in Erdos249257/FirstHarmonicPivot.lean, and against irrational_totient_series_of_certificate_supply at line 394 of Erdos249257/TotientTailPeriodKiller.lean. The transcribed antecedents match the two definitions binder for binder, including max X0 1 <= X, the room inequality 16(2X+h+L+2) <= 2^L and the constant 21/25, and PivotBudgetAt with its binding piece Re(pivotCenteredCorrelation) <= 14X/25. The assertion that neither hypothesis is proved anywhere in the corpus was checked by a repository-wide search over the Lean tree: both identifiers occur only as definitions and as theorem binders, in FirstHarmonicPivot.lean and in the ExternalVerification statement, challenge and solution modules. The claim row further records that the hypothesis is strictly stronger than irrationality, which this node expresses as a conditional implication rather than an equivalence.",
+      "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint. This is a model consistency review. It is not independent human mathematical review, not Lean proof authority, and not a novelty or prior-art judgement. It does not establish that the chosen node decomposition is the only reasonable one."
+    },
+    {
+      "subject_kind": "statement_node",
+      "subject_id": "Z54::the_five_atom_kernel_is_the_unique_minimiser_and_fixes_the_sharp_rank_one_gap",
+      "reviewer": "Claude Opus 5",
+      "reviewer_type": "ai_semantic_consistency_review",
+      "reviewed_revision": "4ab50e144847a3393fb340341760e5d6907d702e",
+      "reviewed_at": "2026-09-06",
+      "evidence_digest": "sha256:d4e4b297584d606b549b5d87dab828fa798bfbeedb651c92cbaed9d7cd4dadbe",
+      "review_scope": "Authored for the review debt on the claim rank_one_sharp_floor. The canonical wording was compared against the full Lean statements of rankOneSubrankQuotient_ge_one_five, rankOneSubrankQuotient_eq_one_five_iff, rankOneSubrankQuotient_one_five_sub_theta_two_gt_twentyOne_div_threeTwenty, rankOneSubrankQuotient_one_five_sub_theta_two_lt_one_div_fifteen, rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty, rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen and not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen in ErdosProblems/Erdos249/RankOneSharpFloor.lean at lines 518, 534, 586, 605, 624, 634 and 645, and against the definitions rankOneSubrankQuotient and mobiusMersennePrefix in ErdosProblems/Erdos249/RankOneSubrankObstruction.lean at lines 37 and 29 and mobiusMersenneTerm and mobiusMersenneTheta in Erdos249257/SignedQMomentObstruction.lean at lines 131 and 136. Unfolding the definitions gives exactly the prefix over 1 <= d <= Y of mu(d)/(2^d - 1)^r and the full ladder rung Theta_2, so the claim row's displayed formulas for Q(e,Y) and Theta_2 are faithful. The admissible range is 1 <= e and 4 <= Y in every declaration. The 1/15 statement is a negated universal quantification whose witness is the minimiser, which is what the node says. The identity Theta_2 = S - 1/2 was searched for in the Lean tree and is carried by no declaration, so the node records it as Steve Fan's attribution rather than as checked evidence.",
+      "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint. This is a model consistency review. It is not independent human mathematical review, not Lean proof authority, and not a novelty or prior-art judgement. It does not establish that the chosen node decomposition is the only reasonable one."
+    },
+    {
+      "subject_kind": "statement_node",
+      "subject_id": "Z54::positive_finite_averaging_cannot_evade_the_sharp_rank_one_gap",
+      "reviewer": "Claude Opus 5",
+      "reviewer_type": "ai_semantic_consistency_review",
+      "reviewed_revision": "4ab50e144847a3393fb340341760e5d6907d702e",
+      "reviewed_at": "2026-09-06",
+      "evidence_digest": "sha256:ba1d550c580a04ed672a98a88523c66c05d78fe6a94ae2f11845ec6444e9e74f",
+      "review_scope": "Authored for the review debt on the claim rank_one_sharp_floor. The canonical wording was compared against positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty in ErdosProblems/Erdos249/RankOneSharpFloor.lean at line 655. The declaration quantifies over a decidable index type, a nonempty finite set s, weights w with 0 < w i on s, and admissible e i and Y i on s, and concludes 21/320 < (sum of w i * Q(e i, Y i)) / (sum of w i) - Theta_2. The node states exactly those binders as a nonempty finite family with strictly positive weights, and its scope caveat records that signed weights, cancellation, zero weights and infinite combinations are outside the statement.",
+      "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint. This is a model consistency review. It is not independent human mathematical review, not Lean proof authority, and not a novelty or prior-art judgement. It does not establish that the chosen node decomposition is the only reasonable one."
+    },
+    {
+      "subject_kind": "statement_node",
+      "subject_id": "Z54::rational_rank_one_realisations_give_the_sharp_linear_form_error",
+      "reviewer": "Claude Opus 5",
+      "reviewer_type": "ai_semantic_consistency_review",
+      "reviewed_revision": "4ab50e144847a3393fb340341760e5d6907d702e",
+      "reviewed_at": "2026-09-06",
+      "evidence_digest": "sha256:933687dfdef8373b7adca3cc31ae2491be3fada3ae521eaf0b0a0182f2f4df16",
+      "review_scope": "Authored for the review debt on the claim rank_one_sharp_floor. The canonical wording was compared against primitive_form_abs_gt_twentyOne_div_threeTwenty in ErdosProblems/Erdos249/RankOneSharpFloor.lean at line 693. The declaration takes naturals e, Y, q and an integer p with 1 <= e, 4 <= Y, 1 <= q and the exact equality rankOneSubrankQuotient e Y = p / q, and concludes q * 21/320 < |q * Theta_2 - p|. Coprimality of p and q is not assumed, and the node's scope caveat says so.",
+      "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint. This is a model consistency review. It is not independent human mathematical review, not Lean proof authority, and not a novelty or prior-art judgement. It does not establish that the chosen node decomposition is the only reasonable one."
+    },
+    {
+      "subject_kind": "statement_node",
+      "subject_id": "Z33::rational_base_lambert_irrationality_region",
+      "reviewer": "Claude Opus 5",
+      "reviewer_type": "ai_semantic_consistency_review",
+      "reviewed_revision": "4ab50e144847a3393fb340341760e5d6907d702e",
+      "reviewed_at": "2026-09-06",
+      "evidence_digest": "sha256:333f36eaccff60db0cece39e15e61c89a4a11c04ddda5d3e6b2568343fe8b95c",
+      "review_scope": "Authored for the review debt on the claim rational_base_irrationality_region, whose declaration list is empty. The canonical wording was compared against the claim row, against the corresponding text of paper/erdos-1049-rational-base-lambert.tex, and against the full Lean statements of zudilinHeightRegion_pow, threeHalves_zudilin_power_obstruction, eightyOneTwoHundredths_lt_threeHalves_log_ratio, threeHalves_outside_zudilinHeightRegion and threeHalves_outside_bundschuhVaananenHeightRegion in ErdosProblems/Erdos1049/ZudilinHeightRegion.lean at lines 50, 100, 105, 122 and 130, together with the definitions ZudilinHeightRegion at line 22 of that module and BundschuhVaananenHeightRegion at line 44 of ErdosProblems/Erdos1049/RationalBaseLambert.lean. Those two definitions are the bare height inequalities log b / log a < 81/200 and log b / log a < 1/2 - 1/pi^2 with no analytic hypothesis attached. The constants were recomputed from the printed values: 1091/2 divided by 221.30008816500502 gives mu = 2.4649786835..., its reciprocal gives theta* = 0.4056830213..., and 266 - (3/pi^2)(225 - 77.943184475) reproduces C_0. The module RationalBaseContour, which the claim row and the paper name as carrying the bracket 81/200 < theta* < 1/2, was searched for across this checkout and occurs only in prose; it is absent from the Lean tree, which is what the claim row and the paper both assert. The analytic irrationality step of the region theorem is an ordinary proof in paper/erdos-1049-rational-base-lambert.tex. It is not checked by Lean, this review did not verify that proof, and nothing here upgrades it to kernel-checked evidence.",
+      "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint. This is a model consistency review. It is not independent human mathematical review, not Lean proof authority, and not a novelty or prior-art judgement. It does not establish that the chosen node decomposition is the only reasonable one."
+    },
+    {
+      "subject_kind": "statement_node",
+      "subject_id": "Z33::thirtyone_over_four_lies_in_the_new_region_and_outside_bundschuh_vaananen",
+      "reviewer": "Claude Opus 5",
+      "reviewer_type": "ai_semantic_consistency_review",
+      "reviewed_revision": "4ab50e144847a3393fb340341760e5d6907d702e",
+      "reviewed_at": "2026-09-06",
+      "evidence_digest": "sha256:50ac63d645583a33694ff73c93bb4150017cfd42eb622f33b0e6f771475470b4",
+      "review_scope": "Authored for the review debt on the claim f_thirty_one_over_four_irrational. The canonical wording was compared against the full Lean statements of thirtyoneFour_power_certificate, thirtyoneFour_log_ratio_lt_eightyOne_twoHundredths, thirtyoneFour_mem_zudilinHeightRegion, thirtyoneFour_power_mem_zudilinHeightRegion, twoFifths_lt_thirtyoneFour_log_ratio, bundschuhVaananenMargin_lt_twoFifths and thirtyoneFour_outside_bundschuhVaananenHeightRegion in ErdosProblems/Erdos1049/ZudilinHeightRegion.lean at lines 26, 30, 45, 59, 65, 79 and 91. The power form is stated for every r with 0 < r and is proved from the invariance lemma, so the wording for all positive powers is faithful. The printed decimals were recomputed: log 4 / log 31 = 0.40369817316..., 1/2 - 1/pi^2 = 0.39867881636..., 4^mu = 30.4835... and 4^{mu_BV} = 32.3696... with mu_BV = 2 pi^2/(pi^2 - 2) = 2.5082847620..., so 31/4 does lie strictly between the two regions. The minimality assertion was checked by an elementary enumeration: for b = 2 the strip requires an integer in (5.5216, 5.6893], for b = 3 it requires 15, which is not coprime to 3, and for b = 4 it admits only 31, so 31/4 has the least denominator and the least numerator in the strip. That enumeration is an ordinary verification and carries no declaration, and the node's scope caveat says so. The analytic irrationality step of the region theorem is an ordinary proof in paper/erdos-1049-rational-base-lambert.tex. It is not checked by Lean, this review did not verify that proof, and nothing here upgrades it to kernel-checked evidence.",
+      "claim_ceiling": "Source-to-wording semantic consistency at the pinned public checkpoint. This is a model consistency review. It is not independent human mathematical review, not Lean proof authority, and not a novelty or prior-art judgement. It does not establish that the chosen node decomposition is the only reasonable one."
     }
   ]
 }

@@ -1,16 +1,73 @@
 #!/usr/bin/env python3
-"""Run one leakage-resistant historical bridge evaluation.
+"""Run one historical bridge evaluation and state exactly what it can answer.
 
-The experiment checks out the parent of the bridge-introduction commit in a
-disposable local clone, builds only the pre-existing dependency target, asks
-the proof-state compiler for the exact obstruction, and checks an anonymised
-bridge candidate with that historical Lean environment.  Current-history
-reuse is measured only after the blind proof run and is never imported into
-the historical checkout.
+Two questions must be kept apart, because a checkout of a past revision
+answers only the first.
 
-This is a historical shadow evaluator, not a claim of autonomous lemma
-invention.  The candidate proof is an authored reconstruction whose utility
-and admissibility are tested under a real pre-introduction environment.
+Q1, interpretation.  Do the semantic layers present at a revision let a reader
+find the relevant mathematics and interpret it correctly?  The obstruction
+packet compiled inside the parent checkout is evidence about Q1: it shows
+which exact obligation the layers at that revision expose for a stated target.
+
+Q2, acceleration.  Do the derived layers as they stood in the past shorten the
+work of producing a later result?  This module does not answer Q2 and must not
+be reported as if it did.  A past checkout does not isolate acceleration,
+because several channels can carry the later answer into the run.  The channel
+table below names each channel and says whether this module controls it.  The
+uncontrolled channels are limitations of every number this module prints.
+
+Controlled here:
+  parent_identity        the parent commit is recomputed from the introduction
+                         commit and compared with the pinned value;
+  future_declaration     the future declaration name is absent from the parent
+    _name                ref across .lean, .json and .md, by ``git grep``;
+  future_module_file     the future module path does not exist in the parent
+                         checkout;
+  candidate_naming       the candidate source contains neither the future
+                         declaration name nor the future module name;
+  candidate_placeholder  the candidate source contains no ``sorry`` or
+                         ``admit``, and a ``sorryAx`` axiom in the kernel
+                         report fails the run;
+  build_scope            only the pre-existing dependency target is built
+                         inside the disposable parent clone;
+  obstruction_scope      the proof-state compiler runs against the parent
+                         checkout root, not the current tree;
+  measurement_order      later reuse in current history is scanned only after
+                         the proof run has finished.
+
+Not controlled here, and therefore reported as limitations:
+  shared_object_store    the disposable clone is created with ``git clone
+                         --shared``, so every later commit, tree and blob of
+                         the current repository stays reachable by object id
+                         from inside the historical checkout;
+  dependency_pin         ``.lake/packages`` is symlinked from the current tree,
+                         so the run uses the current dependency pin rather than
+                         the one the parent revision declared;
+  derived_layer_content  only the future declaration *name* is screened.  A
+                         paraphrase, a semantic node, a receipt, a dossier or a
+                         prose statement at the parent revision that describes
+                         the same bridge is not detected;
+  supplied_context       the request supplied to the compiler already names the
+                         target statement and the exact candidate declaration,
+                         so obstruction recovery is conditioned on an answer
+                         key rather than searched for;
+  authored_candidate     the candidate proof is an authored reconstruction
+                         written with knowledge of the later proof;
+  no_agent_in_the_loop   no model runs here, so nothing in this module measures
+                         what a model would find without the layers;
+  model_familiarity      a model asked to reproduce this bridge may have seen
+                         the public mathematics during training;
+  network_and_filesystem the child processes are environment-sanitised, and
+                         they are not sandboxed against network or filesystem
+                         access;
+  no_control_arm         there is no ordinary source-and-documentation arm, so
+                         no comparison between routes is available.
+
+Reading of the verdict.  A pass says that the runtime recovers an exact
+pre-introduction obligation for a supplied target and that an authored,
+name-free candidate is accepted by the kernel in the parent environment.  It
+does not say that the system invented the lemma, that the derived layers
+caused anything, or that a later result was produced faster.
 """
 
 from __future__ import annotations
@@ -37,6 +94,106 @@ EXPECTED_PARENT = "8906a4c7978b69ed197b54e981f1873720c8a7be"
 FUTURE_MODULE = "Erdos249257/RewindHalfDivisorAdapter.lean"
 FUTURE_NAME = "supportCoeff_eq_of_restriction_at_halfDivisor"
 HISTORICAL_BUILD_TARGET = "Erdos249257.HalfDivisorUnitDrop"
+
+# Design constants.
+# These describe the experiment.  They are declarative and must stay in step
+# with the module docstring and with docs/methodology.json.
+
+QUESTIONS = {
+    "Q1_interpretation": (
+        "Do the semantic layers present at a revision let a reader find the "
+        "relevant mathematics and interpret it correctly?"
+    ),
+    "Q2_acceleration": (
+        "Do the derived layers as they stood in the past shorten the work of "
+        "producing a later result?"
+    ),
+}
+QUESTION_ANSWERED_BY_THIS_MODULE = "Q1_interpretation"
+QUESTION_NOT_ANSWERED_BY_THIS_MODULE = "Q2_acceleration"
+
+CONTROLLED_LEAKAGE_CHANNELS = {
+    "parent_identity": "parent commit recomputed and compared with the pin",
+    "future_declaration_name": (
+        "git grep for the future declaration name at the parent ref across "
+        ".lean, .json and .md returns no hits"
+    ),
+    "future_module_file": "future module path absent from the parent checkout",
+    "candidate_naming": (
+        "candidate source excludes the future declaration name and module name"
+    ),
+    "candidate_placeholder": (
+        "candidate source excludes sorry and admit; a sorryAx axiom fails the run"
+    ),
+    "build_scope": "only the pre-existing dependency target is built",
+    "obstruction_scope": "the compiler reads the parent checkout root",
+    "measurement_order": "current-history reuse is scanned after the proof run",
+}
+UNCONTROLLED_LEAKAGE_CHANNELS = {
+    "shared_object_store": (
+        "git clone --shared keeps every later object reachable by id from the "
+        "historical checkout"
+    ),
+    "dependency_pin": (
+        ".lake/packages is symlinked from the current tree, so the historical "
+        "run uses the current dependency pin"
+    ),
+    "derived_layer_content": (
+        "only the declaration name is screened; a paraphrase, semantic node, "
+        "receipt, dossier or prose statement describing the same bridge is not"
+    ),
+    "supplied_context": (
+        "the compiler request names the target statement and the exact "
+        "candidate declaration"
+    ),
+    "authored_candidate": (
+        "the candidate proof was authored with knowledge of the later proof"
+    ),
+    "no_agent_in_the_loop": "no model runs, so no search behaviour is observed",
+    "model_familiarity": (
+        "a model reproducing this bridge may have seen the public mathematics "
+        "during training"
+    ),
+    "network_and_filesystem": (
+        "child processes are environment-sanitised and are not sandboxed"
+    ),
+    "no_control_arm": (
+        "no ordinary source-and-documentation arm is run, so no route "
+        "comparison is available"
+    ),
+}
+
+# The comparison a Q2 result would require.  Target, access permissions and
+# work budget are held fixed; only the route varies.
+CONTROL_ARM = "ordinary_source_and_documentation_route"
+TREATMENT_ARM = "derived_semantic_and_obstruction_layers"
+HELD_CONSTANT_ACROSS_ARMS = (
+    "target_declaration",
+    "access_permissions",
+    "work_budget",
+)
+MEASURED_OUTCOMES = (
+    "correct_reconstruction",
+    "false_strengthening",
+    "missed_hypotheses",
+    "correct_identification_of_the_open_remainder",
+    "successful_replay",
+    "usable_returned_contribution",
+)
+
+# Fixture separation.  The bridge below is the development fixture: its
+# obstruction and candidate were inspected while this harness was written, so
+# it can be used to debug the harness and must never be reported as an
+# evaluation result.  Evaluation cases are held out and unseen.
+DEVELOPMENT_FIXTURE_ID = "half_divisor_coefficient_bridge"
+FIXTURE_ROLE = "development_fixture_not_an_evaluation_case"
+HELD_OUT_VARIANT_CLASSES = (
+    "ordinary_proof_presented_as_lean_checked",
+    "attractive_claim_absent_from_a_selector",
+    "same_file_export_loss",
+    "stale_rendered_artifact",
+    "apparently_closed_route_whose_obstruction_is_unproved",
+)
 
 
 def _sha256_text(value: str) -> str:
@@ -384,6 +541,21 @@ def run_experiment() -> dict[str, Any]:
             "future_module": FUTURE_MODULE,
             "future_declaration": FUTURE_NAME,
         },
+        "experiment_design": {
+            "questions": QUESTIONS,
+            "question_answered": QUESTION_ANSWERED_BY_THIS_MODULE,
+            "question_not_answered": QUESTION_NOT_ANSWERED_BY_THIS_MODULE,
+            "controlled_leakage_channels": CONTROLLED_LEAKAGE_CHANNELS,
+            "uncontrolled_leakage_channels": UNCONTROLLED_LEAKAGE_CHANNELS,
+            "control_arm": CONTROL_ARM,
+            "treatment_arm": TREATMENT_ARM,
+            "held_constant_across_arms": list(HELD_CONSTANT_ACROSS_ARMS),
+            "measured_outcomes": list(MEASURED_OUTCOMES),
+            "arms_run_here": [TREATMENT_ARM],
+            "fixture_id": DEVELOPMENT_FIXTURE_ID,
+            "fixture_role": FIXTURE_ROLE,
+            "held_out_variant_classes": list(HELD_OUT_VARIANT_CLASSES),
+        },
         "leakage_controls": {
             "parent_future_name_hits": parent_hits,
             "candidate_source_uses_fresh_name": True,
@@ -404,13 +576,21 @@ def run_experiment() -> dict[str, Any]:
         },
         "verdict": verdict,
         "claim_ceiling": (
-            "The evaluator recovers an exact pre-introduction blocker and "
-            "kernel-checks an anonymised authored bridge candidate in the "
-            "real parent environment; it does not claim autonomous synthesis."
+            "The evaluator recovers an exact pre-introduction obligation for a "
+            "supplied target and kernel-checks an authored, name-free bridge "
+            "candidate in the parent environment. This is Q1 evidence on a "
+            "development fixture. It does not claim autonomous synthesis, it "
+            "does not measure acceleration, and it does not control the "
+            "channels listed under uncontrolled_leakage_channels."
         ),
         "promotion_reentry": (
-            "replace the authored candidate with a cut-conditioned generator "
-            "and repeat on a second corpus or prospective unseen bridge"
+            "to answer Q2, add the ordinary source-and-documentation control "
+            "arm with target, access permissions and work budget held fixed, "
+            "close the shared object store and dependency pin, screen the "
+            "derived layers for paraphrases of the target rather than only for "
+            "its declaration name, stop supplying the candidate declaration in "
+            "the request, and run the held-out variant classes on a corpus "
+            "whose bridge was never inspected while writing this harness"
         ),
     }
 

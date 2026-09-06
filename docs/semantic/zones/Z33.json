@@ -22,6 +22,16 @@
       "id": "external_height_route",
       "label": "external 7/2 height route",
       "note": "The elementary inequality side of the Bundschuh–Väänänen criterion at base 7/2, with the analytic irrationality theorem remaining external."
+    },
+    {
+      "id": "rational_base_region",
+      "label": "rational-base irrationality region b^mu < a",
+      "note": "The region of coprime rational bases a/b settled by the ordinary region theorem of this release, equivalently log b / log a < theta* = 1/mu = 0.40568302138406054..."
+    },
+    {
+      "id": "zudilin_height_region",
+      "label": "decidable 81/200 height region",
+      "note": "The predicate log b / log a < 81/200. It is a rational subregion of the derived region and makes membership decidable by one integer power comparison."
     }
   ],
   "statement_nodes": [
@@ -240,6 +250,105 @@
           "line": 119
         }
       ]
+    },
+    {
+      "id": "rational_base_lambert_irrationality_region",
+      "canonical_statement": "For coprime integers a > b >= 1 with b^mu < a, equivalently log b / log a < theta* = 1/mu = 0.40568302138406054101566030557693017464819107867787..., the Lambert value F(a/b) = sum over m >= 1 of 1/((a/b)^m - 1) is irrational. Here mu = C_1/C_0 = 2.464978683574975037454488275535521581878..., C_1 = 1091/2, and C_0 = 266 - (3/pi^2)(225 - J) = 221.3000881650050251240426966922154102706... with J = 77.94318447500909592258956702399211044972... the sum over thirteen printed demi-intervals of psi_1(u_i) - psi_1(v_i), the constants of Zudilin's direction (14,12,14;27). The proof is ordinary and is written in paper/erdos-1049-rational-base-lambert.tex. It cites Zudilin 2004 Lemma 7 in its polynomial reading together with the inputs of that lemma's own proof, and it proves every remaining step, including the nonrationality of F as a function, the transfer of Lemma 7 to explicit integer polynomials, the degree computation, positivity, the Archimedean size estimate and the limit (K_n - W_n)/n^2 -> C_0. No declaration in this release's Lean library carries any part of the analytic argument. The declarations attached to this node are the elementary height components that surround it: the region predicate log b / log a < 81/200 that makes membership decidable, the invariance of the height ratio under a common positive power, and the exclusion of 3/2 from that region and from the Bundschuh and Vaananen region log b / log a < 1/2 - 1/pi^2.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "1049",
+      "concepts": [
+        "rational_base_region",
+        "zudilin_height_region"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "an ordinary Hermite-Pade argument over Zudilin's direction (14,12,14;27) with the derived constants C_0 and C_1, together with the decidable rational region 81/200 that supplies membership",
+      "prior_art_state": "candidate_new_statement",
+      "prior_art_note": "The region theorem is presented as a candidate new consequence of Zudilin 2004 Lemma 7 and the inputs of that lemma's own proof. External priority review has not been completed, so no established novelty claim is made. The earlier published region log b / log a < 1/2 - 1/pi^2 is Bundschuh and Vaananen 1994 Theorem 2.",
+      "scope_caveat": "The analytic irrationality step is an ordinary proof in the note and is not checked by the Lean kernel; the attached declarations certify elementary height arithmetic only. The rational bracket 81/200 < theta* < 1/2 that makes the decidable region a subregion is checked in the module RationalBaseContour of the external-verification cut, which this release's Lean library does not carry. The universal assertion of Erdos 1049 over all rational t > 1 is untouched, and no base with log b / log a >= theta* is settled, so 3/2 at log 2 / log 3 = 0.6309297535714574370995271143427608542996... is not settled.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "zudilinHeightRegion_pow",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 50
+        },
+        {
+          "declaration": "threeHalves_zudilin_power_obstruction",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 100
+        },
+        {
+          "declaration": "eightyOneTwoHundredths_lt_threeHalves_log_ratio",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 105
+        },
+        {
+          "declaration": "threeHalves_outside_zudilinHeightRegion",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 122
+        },
+        {
+          "declaration": "threeHalves_outside_bundschuhVaananenHeightRegion",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 130
+        }
+      ]
+    },
+    {
+      "id": "thirtyone_over_four_lies_in_the_new_region_and_outside_bundschuh_vaananen",
+      "canonical_statement": "The integer comparison 4^200 < 31^81 gives log 4 / log 31 < 81/200, so 31/4 lies in the decidable height region, and invariance of the height ratio under a common positive power puts every (31/4)^r with r >= 1 in it as well. The same base lies outside the Bundschuh and Vaananen region: 31^2 < 4^5 gives 2/5 < log 4 / log 31, while pi^2 < 10 gives 1/2 - 1/pi^2 < 2/5. With the region theorem rational_base_lambert_irrationality_region, which is an ordinary proof, F(31/4) and every F((31/4)^r) with r >= 1 are irrational. The base sits at log 4 / log 31 = 0.4036981731641997014370328005878493650194..., between 1/2 - 1/pi^2 = 0.3986788163576622285561205367902723610956... and theta* = 0.40568302138406054..., equivalently at 4^mu = 30.483515... < 31 < 4^{mu_BV} = 32.369642... with mu_BV = 2 pi^2/(pi^2 - 2) = 2.508284761994681157505052751018958770537..., and it is the base of least denominator and least numerator in that strip.",
+      "logical_class": "finite_instance",
+      "problem": "1049",
+      "concepts": [
+        "rational_base_region",
+        "zudilin_height_region",
+        "external_height_route"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "two exact integer power comparisons, a rational upper bound on pi^2, and strict monotonicity of the logarithm",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The height arithmetic is elementary. Whether 31/4 is a new base depends on the region theorem it feeds and on the published region of Bundschuh and Vaananen 1994 Theorem 2, and that comparison is recorded as unassessed for priority.",
+      "scope_caveat": "The listed declarations certify height arithmetic only. Irrationality of F(31/4) comes from the region theorem, which is an ordinary proof and is not checked by the Lean kernel. The remaining finite input 81/200 < theta* is checked in the module RationalBaseContour of the external-verification cut, which this release's Lean library does not carry. Minimality of 31/4 in the strip is an elementary verification over the finitely many candidates with denominator at most 4 and carries no declaration.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "thirtyoneFour_power_certificate",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 26
+        },
+        {
+          "declaration": "thirtyoneFour_log_ratio_lt_eightyOne_twoHundredths",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 30
+        },
+        {
+          "declaration": "thirtyoneFour_mem_zudilinHeightRegion",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 45
+        },
+        {
+          "declaration": "thirtyoneFour_power_mem_zudilinHeightRegion",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 59
+        },
+        {
+          "declaration": "twoFifths_lt_thirtyoneFour_log_ratio",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 65
+        },
+        {
+          "declaration": "bundschuhVaananenMargin_lt_twoFifths",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 79
+        },
+        {
+          "declaration": "thirtyoneFour_outside_bundschuhVaananenHeightRegion",
+          "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "line": 91
+        }
+      ]
     }
   ],
   "declaration_roles": [
@@ -382,6 +491,97 @@
       "line": 119,
       "role": "statement",
       "statement_node": "seven_halves_satisfies_external_height_criterion_arithmetic"
+    },
+    {
+      "declaration": "ZudilinHeightRegion",
+      "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "line": 22,
+      "role": "concept",
+      "statement_node": "rational_base_lambert_irrationality_region"
+    },
+    {
+      "declaration": "zudilinHeightRegion_pow",
+      "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "line": 50,
+      "role": "statement",
+      "statement_node": "rational_base_lambert_irrationality_region"
+    },
+    {
+      "declaration": "threeHalves_zudilin_power_obstruction",
+      "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "line": 100,
+      "role": "statement",
+      "statement_node": "rational_base_lambert_irrationality_region"
+    },
+    {
+      "declaration": "eightyOneTwoHundredths_lt_threeHalves_log_ratio",
+      "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "line": 105,
+      "role": "statement",
+      "statement_node": "rational_base_lambert_irrationality_region"
+    },
+    {
+      "declaration": "threeHalves_outside_zudilinHeightRegion",
+      "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "line": 122,
+      "role": "statement",
+      "statement_node": "rational_base_lambert_irrationality_region"
+    },
+    {
+      "declaration": "threeHalves_outside_bundschuhVaananenHeightRegion",
+      "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "line": 130,
+      "role": "statement",
+      "statement_node": "rational_base_lambert_irrationality_region"
+    },
+    {
+      "declaration": "thirtyoneFour_power_certificate",
+      "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "line": 26,
+      "role": "statement",
+      "statement_node": "thirtyone_over_four_lies_in_the_new_region_and_outside_bundschuh_vaananen"
+    },
+    {
+      "declaration": "thirtyoneFour_log_ratio_lt_eightyOne_twoHundredths",
+      "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "line": 30,
+      "role": "statement",
+      "statement_node": "thirtyone_over_four_lies_in_the_new_region_and_outside_bundschuh_vaananen"
+    },
+    {
+      "declaration": "thirtyoneFour_mem_zudilinHeightRegion",
+      "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "line": 45,
+      "role": "statement",
+      "statement_node": "thirtyone_over_four_lies_in_the_new_region_and_outside_bundschuh_vaananen"
+    },
+    {
+      "declaration": "thirtyoneFour_power_mem_zudilinHeightRegion",
+      "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "line": 59,
+      "role": "statement",
+      "statement_node": "thirtyone_over_four_lies_in_the_new_region_and_outside_bundschuh_vaananen"
+    },
+    {
+      "declaration": "twoFifths_lt_thirtyoneFour_log_ratio",
+      "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "line": 65,
+      "role": "statement",
+      "statement_node": "thirtyone_over_four_lies_in_the_new_region_and_outside_bundschuh_vaananen"
+    },
+    {
+      "declaration": "bundschuhVaananenMargin_lt_twoFifths",
+      "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "line": 79,
+      "role": "statement",
+      "statement_node": "thirtyone_over_four_lies_in_the_new_region_and_outside_bundschuh_vaananen"
+    },
+    {
+      "declaration": "thirtyoneFour_outside_bundschuhVaananenHeightRegion",
+      "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+      "line": 91,
+      "role": "statement",
+      "statement_node": "thirtyone_over_four_lies_in_the_new_region_and_outside_bundschuh_vaananen"
     }
   ],
   "intra_zone_relations": [
@@ -414,6 +614,18 @@
       "to": "three_halves_scalar_product_formula_margin_is_negative",
       "relation": "complements",
       "basis": "The cited external height criterion succeeds arithmetically at 7/2, while the checked scalar-cone product-formula margin is negative at the resistant base 3/2."
+    },
+    {
+      "from": "thirtyone_over_four_lies_in_the_new_region_and_outside_bundschuh_vaananen",
+      "to": "rational_base_lambert_irrationality_region",
+      "relation": "specialises",
+      "basis": "31 and 4 are coprime with 4 < 31 and 4^mu = 30.483515... < 31, so 31/4 satisfies the region hypothesis, and the same holds for every positive power because the height ratio is invariant under a common power. Irrationality of F(31/4) and of every F((31/4)^r) is the region theorem read at those bases."
+    },
+    {
+      "from": "rational_base_lambert_irrationality_region",
+      "to": "seven_halves_satisfies_external_height_criterion_arithmetic",
+      "relation": "complements",
+      "basis": "The 7/2 lane supplies the arithmetic side of the external Bundschuh and Vaananen criterion, whose region log b / log a < 1/2 - 1/pi^2 is strictly smaller than the region proved here; 31/4 lies in the larger region and outside the smaller one."
     }
   ]
 }

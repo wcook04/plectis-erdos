@@ -168,12 +168,6 @@ The [unbounded-gap theorem](https://github.com/wcook04/plectis-erdos/blob/4ab50e
 | Rationality alone forces periodic integer coefficients | False | Section <a href="#sec:carry" data-reference-type="ref" data-reference="sec:carry">6</a>, Proposition <a href="#res:telescope" data-reference-type="ref" data-reference="res:telescope">23</a>. |
 | Cofinal adjacent small-mismatch hypothesis | Proposed sufficient theorem | Problem <a href="#prob:smallpair" data-reference-type="ref" data-reference="prob:smallpair">26</a>; not proved. |
 
-<div class="minipage">
-
-*How to read the middle column.* *Proved here* marks a statement proved in the text; each such statement also carries a link to a Lean declaration where it appears below. *Lean-checked* marks a statement accepted by the pinned kernel. *Lean-checked in the private development* marks a statement whose Lean proof lies outside the source revision pinned here, so it is quoted with its module coordinate and without a link. *Exact computation* marks a finite computation with a recorded receipt. *Ordinary proof* marks a derivation written out in prose with no formal check. The modifier *abstractly* marks a statement proved for an arbitrary integer digit sequence rather than for the actual prime gaps. *Proposed sufficient theorem* marks an unproved statement which, if proved, would give irrationality of $`\Pi`$.
-
-</div>
-
 **Keywords.** irrationality; prime gaps; dyadic series; summation by parts; Lean 4. **MSC 2020.** 11J72 (primary); 11N05, 68V20 (secondary).
 
 <a id="sec:denominator-floor"></a>

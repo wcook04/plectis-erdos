@@ -220,6 +220,206 @@ def check_fixtures() -> int:
     return checks
 
 
+# --- statement digests -------------------------------------------------------
+
+# The #243 specimen as a statement, not just a name. The realisation bridge
+# survived in all three trees while the release copy carried the extra
+# declarations, which is the shape a mirror export deletes. The same module is
+# also the clearest case of the second failure: the module is present on both
+# sides, the declaration keeps its name, and its hypotheses move.
+BRIDGE_SOURCE = (
+    "theorem tailRatio_eq_reciprocal_add_next (A : Set Nat) (n : Nat) :\n"
+    "    tailRatio A n = 1 / n + tailRatio A (n + 1) := by\n"
+    "  sorry\n"
+)
+BRIDGE_WITH_HYPOTHESIS = (
+    "theorem tailRatio_eq_reciprocal_add_next (A : Set Nat) (hA : A.Infinite)\n"
+    "    (n : Nat) :\n"
+    "    tailRatio A n = 1 / n + tailRatio A (n + 1) := by\n"
+    "  sorry\n"
+)
+BRIDGE_REFORMATTED = (
+    "theorem    tailRatio_eq_reciprocal_add_next (A : Set Nat) (n : Nat) :\n"
+    "    tailRatio A n = 1 / n + tailRatio A (n + 1) := by\n"
+    "  rfl\n"
+)
+
+# Every declaration keyword the digest recognises. Losing one would make a
+# whole class of declarations invisible to the law.
+DIGEST_KEYWORDS = (
+    "theorem",
+    "lemma",
+    "def",
+    "abbrev",
+    "opaque",
+    "axiom",
+    "class",
+    "structure",
+    "inductive",
+)
+
+
+def check_statement_digest_fixtures() -> int:
+    """A name that survives while its statement moves must be reported."""
+    checks = 0
+
+    source = conservation.statement_digests(BRIDGE_SOURCE)
+    require(
+        list(source) == ["tailRatio_eq_reciprocal_add_next"],
+        f"the bridge fixture must yield exactly its declaration: {list(source)}",
+    )
+    checks += 1
+
+    # Reformatting and a changed proof body must not move the digest. A digest
+    # that moves on whitespace reports every export as non-conserved, which is
+    # how a real check gets switched off.
+    require(
+        conservation.statement_digests(BRIDGE_REFORMATTED) == source,
+        "whitespace and proof-body changes must not move a statement digest",
+    )
+    checks += 1
+
+    # An added hypothesis must move it. This is the disconfirming case a
+    # `(module, declaration)` set comparison reports as conserved.
+    changed = conservation.statement_digests(BRIDGE_WITH_HYPOTHESIS)
+    require(
+        set(changed) == set(source)
+        and changed["tailRatio_eq_reciprocal_add_next"]
+        != source["tailRatio_eq_reciprocal_add_next"],
+        "an added hypothesis under an unchanged name left the digest fixed",
+    )
+    checks += 1
+
+    for keyword in DIGEST_KEYWORDS:
+        digests = conservation.statement_digests(f"{keyword} fixtureName : Nat := 1\n")
+        require(
+            list(digests) == ["fixtureName"],
+            f"the statement digest no longer recognises {keyword!r}",
+        )
+    checks += 1
+
+    # A declaration name inside a proof body or a comment is not a declaration.
+    require(
+        not conservation.statement_digests(
+            "-- theorem commented_out (n : Nat) : n = n\n  exact theorem_like n\n"
+        ),
+        "an indented reference must not be read as a declaration header",
+    )
+    checks += 1
+    return checks
+
+
+def check_statement_conservation_fixtures() -> int:
+    """The two halves of the law separate, over the named specimens."""
+    checks = 0
+    module = RECIPROCAL_BRIDGE_MODULE
+    key: Declaration = (module, "tailRatio_eq_reciprocal_add_next")
+    source_map = {
+        (module, name): f"sha256:{index}"
+        for index, name in enumerate(RECIPROCAL_BRIDGE_NAMES)
+    }
+
+    faithful = conservation.check_statement_conservation(source_map, dict(source_map))
+    require(faithful.conserved, "an identical export must conserve statements")
+    require(not faithful.describe(), "a conserved export must describe nothing")
+    checks += 1
+
+    dropped = dict(source_map)
+    del dropped[key]
+    report = conservation.check_statement_conservation(source_map, dropped)
+    require(
+        not report.conserved and report.absent == frozenset({key}),
+        f"a dropped declaration escaped the statement law: {report}",
+    )
+    require(
+        any("drops source declaration" in line for line in report.describe()),
+        "a dropped declaration must be described as dropped",
+    )
+    checks += 1
+
+    restated = dict(source_map)
+    restated[key] = "sha256:changed"
+    report = conservation.check_statement_conservation(source_map, restated)
+    require(
+        not report.conserved and report.restated == frozenset({key}),
+        f"a restated declaration escaped the statement law: {report}",
+    )
+    require(
+        any("changes its statement" in line for line in report.describe()),
+        "a restated declaration must be described as restated",
+    )
+    checks += 1
+
+    # The two failures are separate. A dropped declaration is not a restated
+    # one, and reporting either as the other sends the repair to the wrong
+    # place.
+    require(
+        not report.absent,
+        "a restated declaration must not also be reported as absent",
+    )
+    checks += 1
+
+    # An export that adds a declaration conserves the source. Additions are the
+    # ordinary case of an export that carries more than its input, and the
+    # `(module, declaration)` half of the law already reports them separately.
+    added = dict(source_map)
+    added[(LCM_JUMP_MODULE, "periodLcm_jump_eq_height_at_one")] = "sha256:new"
+    require(
+        conservation.check_statement_conservation(source_map, added).conserved,
+        "an added declaration must not break statement conservation",
+    )
+    checks += 1
+    return checks
+
+
+def check_statement_conservation_over_fixture_trees() -> int:
+    """Run the statement law over real files, including the #243 specimen."""
+    checks = 0
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        source_tree = root / "source_tree"
+        result_tree = root / "result_tree"
+        for tree, body in ((source_tree, BRIDGE_SOURCE), (result_tree, BRIDGE_SOURCE)):
+            path = tree / RECIPROCAL_BRIDGE_MODULE
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(f"import Mathlib\n\n{body}")
+
+        modules = [RECIPROCAL_BRIDGE_MODULE]
+        source = conservation.statements_of_tree(source_tree, modules)
+        result = conservation.statements_of_tree(result_tree, modules)
+        require(
+            conservation.check_statement_conservation(source, result).conserved,
+            "an identical fixture tree must conserve statements",
+        )
+        checks += 1
+
+        (result_tree / RECIPROCAL_BRIDGE_MODULE).write_text(
+            f"import Mathlib\n\n{BRIDGE_WITH_HYPOTHESIS}"
+        )
+        result = conservation.statements_of_tree(result_tree, modules)
+        report = conservation.check_statement_conservation(source, result)
+        require(
+            not report.conserved
+            and report.restated
+            == frozenset({(RECIPROCAL_BRIDGE_MODULE, "tailRatio_eq_reciprocal_add_next")}),
+            f"a restated specimen escaped the tree-level law: {report}",
+        )
+        checks += 1
+
+        # A module the result tree does not carry at all reports every one of
+        # its declarations as absent rather than as restated.
+        (result_tree / RECIPROCAL_BRIDGE_MODULE).unlink()
+        report = conservation.check_statement_conservation(
+            source, conservation.statements_of_tree(result_tree, modules)
+        )
+        require(
+            not report.conserved and report.absent == frozenset(source),
+            "a missing module escaped the tree-level law",
+        )
+        checks += 1
+    return checks
+
+
 def observe_live_specimens() -> list[str]:
     """Report, without asserting, where the three specimens actually live."""
     trees: dict[str, Path] = {"R release candidate": ROOT}
@@ -262,11 +462,22 @@ def observe_live_specimens() -> list[str]:
 
 def main() -> int:
     checks = check_fixtures()
+    statement_checks = (
+        check_statement_digest_fixtures()
+        + check_statement_conservation_fixtures()
+        + check_statement_conservation_over_fixture_trees()
+    )
     print(
         "test_export_conservation: "
         f"{checks} conservation fixtures held; "
         f"{len(TARGET_ONLY_SPECIMENS)} named specimens are preserved by a "
         "reconciled export and lost by a mirror export"
+    )
+    print(
+        "test_export_conservation: "
+        f"{statement_checks} statement fixtures held; a declaration that keeps "
+        "its name and changes its statement is reported separately from one "
+        "the export drops"
     )
     print("test_export_conservation: live specimen observation (not asserted)")
     for line in observe_live_specimens():

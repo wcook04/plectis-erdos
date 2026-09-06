@@ -551,7 +551,7 @@ The pairwise statement is stronger than the selected-witness form used in that p
 q^e\mid(i!-1),\quad q^e\mid(j!-1)
  \quad\Longrightarrow\quad q^e\le j^{\,j-i};
 ```
-see [](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3443). Consequently, when $`q`$ is prime and $`e>0`$, every two $`q^e`$-hits in the block—not just one chosen pair—satisfy $`e<j-i`$; see [](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3472). Every prime-power hit layer is therefore an $`e`$-separated subset of the block. Lean now proves the finite cardinality corollary itself:
+see [](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3443). Consequently, when $`q`$ is prime and $`e>0`$, every two $`q^e`$-hits in the block satisfy $`e<j-i`$, so the condition holds for every pair and one chosen pair does not suffice; see [](https://github.com/wcook04/plectis-erdos/blob/4ab50e144847a3393fb340341760e5d6907d702e/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L3472). Every prime-power hit layer is therefore an $`e`$-separated subset of the block. Lean now proves the finite cardinality corollary itself:
 ``` math
 (e+1)\#\{i\in I_p:q^e\mid i!-1\}\le 2p+e-2
 ```

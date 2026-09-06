@@ -77,7 +77,7 @@
   "statement_nodes": [
     {
       "id": "first_harmonic_saving_forces_certificate",
-      "canonical_statement": "If the first harmonic of the window residue has a constant saving on a nonempty finite set T of bases inside a dyadic block [X,2X) — sum of cosines at most (9/10)|T| — and the depth satisfies the room inequality 16(2X+h+L+2) ≤ 2^L, then some N in T carries a kill certificate at depth L. The complex-norm form (norm of the phase sum at most 21X/25) and the anchor-defect form (defect at least |T|/5) are the same statement in different dress.",
+      "canonical_statement": "If the first harmonic of the window residue has a constant saving on a nonempty finite set T of bases below 2X, meaning that the sum of windowFirstCos over T is at most (9/10)|T|, and the depth satisfies the room inequality 16(2X+h+L+2) ≤ 2^L, then some N in T carries a kill certificate at depth L. The anchor-defect form, defect at least |T|/5, is interderivable with the 9/10 cosine threshold on the same finite set. The complex-norm form on the full block, norm of the sum of windowFirstExp over [X,2X) at most 21X/25 with X positive, is strictly stronger than the real-part threshold it feeds, because the real part is dominated by the norm and 21/25 lies below 9/10.",
       "logical_class": "unconditional_object_theorem",
       "problem": "249",
       "evidence": [

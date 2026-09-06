@@ -202,17 +202,22 @@ only its printed proof, is incorrect, and set the strategy aside.  Section~\ref{
 records an independent diagnosis of the same failure through the local
 three-ended saddle model, together with possible repairs.  No counterexample
 to the proposition is exhibited there.  Pendyala's independent June 2026
-preprint \cite[Thm.~1, p.~1]{june2026} proves the degree-four case.  The quartic theorem does
+preprint \cite[Thm.~1, p.~1]{june2026} proves the degree-four case through a
+finite four-point radial lemma and a short polygonal connector.  That is the
+one exactly comparable result.  It settles degree four completely and reaches
+no other degree, while the unconditional theorems below hold in every degree
+$n\ge2$, under a hypothesis on the least critical-value modulus or under no
+root or threshold hypothesis at all, at the cost of a larger constant or a
+weaker containment level.  The quartic theorem does
 not close the problem.
 
 We study the Newton flow whose trajectories foliate the lemniscate.
 
 \statusboundary
 
-\begin{table}[t]
-\centering
+\begingroup
 \footnotesize
-\begin{tabular}{@{}
+\begin{longtable}{@{}
   >{\raggedright\arraybackslash}p{0.34\linewidth}
   >{\raggedright\arraybackslash}p{0.20\linewidth}
   >{\raggedright\arraybackslash}p{0.38\linewidth}@{}}
@@ -242,8 +247,8 @@ Coefficient perturbation and slack stability & Open & Must first create injectiv
 Reeb decomposition and length fan-in & Open & The two surviving producers. \\
 Random search to degree $10$ & Verified finite instances & Upper bounds for sampled configurations only. \\
 \bottomrule
-\end{tabular}
-\end{table}
+\end{longtable}
+\endgroup
 
 \section{An unconditional regime: a small least critical value}
 \label{sec:low-critical-closure}
@@ -668,14 +673,29 @@ Erd\H{o}s~\#1041.  P\'olya supplies the global area inequality; the
 square-resolved covering and coefficient argument above assemble it into
 the displayed sufficient regime and exact constants.
 
-One attribution remains to be completed.  Dubinin's Theorem~1
-\cite{dubinin} is a P\'olya-type area inequality: the area of $\{|f|<s\}$ is
-at most $s^{2/n}$ times the area of $\{|f|<1\}$.  Tao identified it on the
-Erd\H{o}s Problem~\#1041 discussion page on 25 March 2026 as the source of
-that scaling factor.  The published text is paywalled and has been seen here
-only in that paraphrase, so the inequality is used in the form just stated,
-no sharper consequence is drawn from it, and reading the original before any
-external submission remains an open obligation.  Corollary~\ref{res:critical-value-thresholds}
+The literature disposition for Dubinin's Theorem~1 is settled here.  The
+source is \cite{dubinin}, Theorem~1 on printed page~85 of the POMI original.
+It concerns a holomorphic function that gives a full $n$-fold covering of an
+annulus $t_1<|w|<t_2$, and, in the notation of that theorem, with $E$ its
+explicitly defined complementary set, it states
+\[
+ \Bigl(\frac{t_2}{t_1}\Bigr)^{2/n}\le\frac{m(E\cup D)}{m(E)}.
+\]
+The full covering and the explicit complementary set are hypotheses of the
+theorem.  Tao cited it on the Erd\H{o}s Problem~\#1041 discussion page on
+25 March 2026 for the relative scaling factor $s^{2/n}$ between the areas of
+two nested sublevel sets, which is the reading of the displayed inequality in
+which $E$ and $E\cup D$ are those two sublevel sets and the covering
+hypothesis holds.  No step of this note uses that relative inequality.  The
+area estimate~(7) above uses the absolute inequality
+$\operatorname{Area}\{|P|<T\}\le\pi T^{2/n}$ for a polynomial with
+unit-modulus leading coefficient, taken from P\'olya
+\cite[printed pp.~280--282]{polya1928}, and the same absolute inequality is
+the area input to Theorem~\ref{res:low-critical-thirteen-twentyfifths}
+and to Theorem~\ref{res:constant-factor-path}.  Dubinin's theorem is a
+neighbouring result on lemniscate areas under a covering hypothesis.  It
+bounds areas and supplies no curve joining two roots, so it leaves every
+statement of this note unchanged.  Corollary~\ref{res:critical-value-thresholds}
 states $S=2$ at $n\ge6$; an earlier form of this threshold recorded $n\ge7$,
 which the sharp degree analysis above supersedes.
 
@@ -1851,7 +1871,27 @@ A positive stronger theorem must give the graph and a finite edge bound; a
 negative answer should exhibit the simplest ray-separated polynomial carrying
 the remaining pathology.
 
-Erd\H{o}s~\#1041 remains open.  The source now publicly verifies the Newton
+Erd\H{o}s~\#1041 remains open.  Four separate statements are proved above,
+with different degree ranges, root hypotheses, containment levels and
+constants.  Theorem~\ref{res:low-critical-thirteen-twentyfifths} holds in
+every degree $n\ge2$ for squarefree $f$ under the single hypothesis
+$\mu\le13/25$, with no condition on where the roots lie, and gives a
+connector inside $\{|f|<1\}$ of length below $2$; the regime
+$13/25<\mu<1$ is untouched.  Theorem~\ref{res:constant-factor-path} drops
+every threshold and every root hypothesis, and pays for that with the
+constant $71/10$ and the weaker containment level $\{|f|\le2\mu\}$; the
+containment $\{|f|<1\}$ with length at most $5.7$ needs roots in the open
+unit disc and $\mu\le1/2$, and both fall short of the target constant $2$.
+Theorem~\ref{res:degree-three} settles degree three completely for roots in
+the open unit disc.  Theorem~\ref{res:critical-value-separation} holds in
+every degree and is conditional on the critical-value separation $S$, with
+the convenient thresholds $S=4$ for $n\ge3$, $S=3$ for $n\ge4$ and $S=2$ for
+$n\ge6$ from Corollary~\ref{res:critical-value-thresholds}.  All four are
+ordinary proofs.  Their Lean companions check named numerical, algebraic and
+power-series steps inside them, the degree-three companion lies outside the
+pinned formal-source library and carries no kernel receipt in this release,
+and the univalent branch, the area bounds and the certificate chain remain
+ordinary mathematics.  The source now publicly verifies the Newton
 kernel, finite ray avoidance and quantitative constant-translation root
 control; the coefficient perturbation, corrected planar decomposition and
 metric gluing remain the exact unresolved producers.
@@ -1950,17 +1990,19 @@ zero identity}.
   doi:\href{https://doi.org/10.48550/arXiv.2606.24875}
   {10.48550/arXiv.2606.24875}.
 \bibitem{dubinin} V.~N. Dubinin, \emph{Some inequalities for polynomials and
-  rational functions associated with lemniscates}, Zap. Nauchn. Sem. POMI
+  rational functions associated with a lemniscate}, Zap. Nauchn. Sem. POMI
   \textbf{404} (2012), 83--99; English translation, J. Math. Sci. \textbf{193}
   (2013), no.~1, 45--54,
   doi:\href{https://doi.org/10.1007/s10958-013-1432-4}{10.1007/s10958-013-1432-4}.
-  Theorem~1 is the P\'olya-type area inequality: the area of the sublevel
-  region $\{|f|<s\}$ is at most $s^{2/n}$ times the area of $\{|f|<1\}$.  It
-  was identified by T.~Tao on the Erd\H{o}s Problem~\#1041 discussion page,
-  25 March 2026, as the source of that scaling factor.  The published text is
-  paywalled and has been seen only in Tao's paraphrase, so the inequality is
-  used here exactly in the form just stated and no sharper consequence is
-  drawn from it.
+  Theorem~1, printed page~85, assumes a holomorphic function giving a full
+  $n$-fold covering of an annulus $t_1<|w|<t_2$ and, with $E$ the
+  complementary set defined there, states
+  $(t_2/t_1)^{2/n}\le m(E\cup D)/m(E)$.  This is a P\'olya-type area
+  inequality under a covering hypothesis.  T.~Tao cited it on the Erd\H{o}s
+  Problem~\#1041 discussion page, 25 March 2026, for the relative area
+  scaling factor.  It is recorded here as a neighbouring result, and no
+  argument in this note uses it; the area input used is the absolute
+  P\'olya inequality \cite{polya1928}.
 \bibitem{borwein1995} P.~Borwein,
   \emph{The arc length of the lemniscate $\{|p(z)|=1\}$},
   Proc. Amer. Math. Soc. (1995),

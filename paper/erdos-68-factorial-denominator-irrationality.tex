@@ -1079,8 +1079,8 @@ that proof.  For arbitrary $q,e$ and any displayed hits $i<j$, Lean proves
  \quad\Longrightarrow\quad q^e\le j^{\,j-i};
 \]
 see \lref{Erdos68/EndpointWeightedPrivateSupport.lean}{3443}{factorialBlock_primePower_le_gapPow_of_two_hits}.  Consequently,
-when $q$ is prime and $e>0$, every two $q^e$-hits in the block—not just one
-chosen pair—satisfy $e<j-i$; see
+when $q$ is prime and $e>0$, every two $q^e$-hits in the block satisfy $e<j-i$, so the
+condition holds for every pair and one chosen pair does not suffice; see
 \lref{Erdos68/EndpointWeightedPrivateSupport.lean}{3472}{factorialBlock_prime_hitPair_distance_gt_exponent}.
 Every prime-power hit layer is therefore an $e$-separated subset of the block.
 Lean now proves the finite cardinality corollary itself:

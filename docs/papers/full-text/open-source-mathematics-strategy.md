@@ -10,7 +10,7 @@
 
 We want someone with a mathematical idea, spare compute, or time to review a proof to be able to contribute to an ongoing research problem without first building a research environment. Plectis puts the papers, formal source, experiments, and tools in a public Git repository. A contributor can clone it, work on one question with an agent or by hand, and return a result for review. Accepted contributions retain their evidence and credit.
 
-The repository currently covers eight open Erdős problems. A useful return may be a proof, but it may also be a counterexample, a corrected reference, an explanation of why a method fails, or a repair to the tools. The proposal is that these contributions should accumulate together: later attempts should have both better mathematics to draw on and a better environment for doing the work. This paper describes the contribution process, its precedents, and the tests needed to assess it. The public workflow is implemented, but its usefulness to outside contributors and its effect on research productivity have not yet been established.
+The repository currently covers eight open Erdős problems. A useful return may be a proof, but it may also be a counterexample, a corrected reference, an explanation of why a method fails, or a repair to the tools. The proposal is that these contributions should accumulate together: later attempts should have both better mathematics to draw on and a better environment for doing the work. This paper describes the contribution process, its precedents, and the tests needed to assess it. The public workflow is implemented, but its usefulness to outside contributors and its effect on research productivity have not yet been established. No result reported in this paper comes from an outside contributor; the evidence behind it is an implemented workflow, internal agent rehearsals operated by the author, and deterministic checks of the repository’s own contracts.
 
 <a id="sec:strategy"></a>
 
@@ -192,7 +192,7 @@ Polymath projects invite participants at different mathematical levels to share 
 
 #### Distributed formalisation.
 
-Mathlib uses ordinary fork-and-pull-request practice, human review, and source-level attribution. The Carleson formalisation used a public blueprint and many claimable lemma-sized tasks, with formalisation feeding corrections back into the informal plan \[mathlib; carleson\]. Google DeepMind’s `formal-conjectures` repository similarly uses one-problem files, issue assignment, pull requests, metadata, and stable snapshots for a growing Lean benchmark \[formalconjectures\]. These projects demonstrate that large checked mathematical objects can be made publicly divisible.
+Mathlib uses ordinary fork-and-pull-request practice, human review, and source-level attribution. The Carleson formalisation used a public blueprint and many claimable lemma-sized tasks, with formalisation feeding corrections back into the informal plan \[mathlib; carleson\]. The blueprint layer itself is `leanblueprint`, which records the Lean declarations that realise a statement, the statement and proof dependency edges an author declares, and a formalisation-readiness state for each node, and which checks that every named declaration exists in the project or one of its dependencies \[leanblueprint\]. Statement-to-declaration linking is therefore established practice, and this project claims none of it as new; what it adds is described in the composition below. Google DeepMind’s `formal-conjectures` repository similarly uses one-problem files, issue assignment, pull requests, metadata, and stable snapshots for a growing Lean benchmark \[formalconjectures\]. These projects demonstrate that large checked mathematical objects can be made publicly divisible.
 
 <a id="multi-agent-formal-research."></a>
 
@@ -206,7 +206,7 @@ Agent Hunt studies bounties, locks, guarded ownership, and collaborative agents 
 
 Tao separates problem solving into generation, verification, exposition, digestion and acceptance, and canonicalisation, and argues that proof abundance will create bottlenecks between these stages \[tao2026\]. The strategy here treats those bottlenecks as contribution surfaces. A reviewer who prevents an overclaim or an expositor who makes a hard step recoverable is not ancillary to the research pipeline.
 
-The proposed composition joins these precedents. It combines volunteer compute, small shared insights, formal task decomposition, agent-native problem worlds, explicit negative knowledge, untrusted public returns, role-aware credit, and human review. The candidate contribution is this composition and its implementation in one open mathematical corpus. The paper reports no controlled comparison showing that the composition increases discovery rate.
+The proposed composition joins these precedents. It combines volunteer compute, small shared insights, formal task decomposition, agent-native problem worlds, explicit negative knowledge, untrusted public returns, role-aware credit, and human review. The maintained object is the relationship among public mathematical claims, the several evidence classes that support them, the failed routes whose obstructions have themselves been proved, the generated public projections, and a research task that continues after publication. The candidate contribution is this composition and its implementation in one open mathematical corpus. The paper reports no controlled comparison showing that the composition increases discovery rate.
 
 <a id="sec:add-problem"></a>
 
@@ -259,6 +259,8 @@ The strategy should be evaluated at each conversion boundary. Useful initial mea
 - change in useful output at controlled compute when navigation or another infrastructure component changes.
 
 The numerator must remain claim-bounded. One accepted counterexample may be more useful than hundreds of generated lemmas. Generated certificate shards must not be counted as independent discoveries. A theorem accepted by Lean but rejected on intended meaning is not a successful public transition. Likewise, a strong negative result can improve the corpus even though the endpoint problem remains open.
+
+Two questions must be evaluated separately. The first asks whether the current semantic layers help a reader find existing mathematics and interpret it correctly. The second asks whether the derived layers as they stood in the past shorten the work of producing a later result. Checking out a past revision answers the first and does not by itself isolate the second. Later Git objects, a shared object store, generated dossiers and receipts, network access, context supplied in the prompt, and a model’s familiarity with public mathematics can each reveal the target. A comparison that means anything therefore holds the target, the access permissions, and the work budget fixed, and varies only whether the ordinary source-and-documentation route or the derived layers are available. Its outcomes are stated in advance: correct reconstruction, false strengthening, missed hypotheses, correct identification of the open remainder, successful replay, and usable returned contribution. The channels the harness cannot control are reported as limitations. [`docs/methodology.json`](https://github.com/wcook04/plectis-erdos/blob/ca0e13f8acf5ccf48506e4bdb870953d3a0856fa/docs/methodology.json) carries the channel list and the control status of each one.
 
 Longitudinal model comparisons should use immutable problem snapshots and held-out variants where possible. Public hard problems are susceptible to training-data contamination, and the repository itself will become more informative over time. A later model therefore receives both a stronger model and a richer corpus. The design should measure these factors separately rather than presenting every later success as model improvement.
 
@@ -343,7 +345,7 @@ The public repository implements this contribution path for eight open Erdős pr
 
 </div>
 
-The public repository is [`wcook04/plectis-lean-erdos249-257`](https://github.com/wcook04/plectis-erdos). The shortest current routes are:
+The public repository is [`wcook04/plectis-erdos`](https://github.com/wcook04/plectis-erdos). The shortest current routes are:
 
 <div class="center">
 
@@ -394,6 +396,8 @@ Polymath Project, *General polymath rules*, [project rules](https://polymathproj
 Lean community, *Contributing to mathlib*, [contributor guide](https://leanprover-community.github.io/contribute/index.html), accessed August 2026.
 
 L. Becker et al., *A Blueprint for the Formalization of Carleson’s Theorem on Convergence of Fourier Series*, 2025, [arXiv:2405.06423](https://arxiv.org/abs/2405.06423).
+
+P. Massot, *leanblueprint*, plasTeX plugin for Lean formalisation blueprints, 2020, [software repository](https://github.com/PatrickMassot/leanblueprint), accessed September 2026.
 
 T. F. Bloom, *Erdős Problems*, problem database, sources, and forum, [erdosproblems.com](https://www.erdosproblems.com/), accessed August 2026.
 

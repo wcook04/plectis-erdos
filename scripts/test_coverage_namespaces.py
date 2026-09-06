@@ -12,8 +12,15 @@ Fixtures carry every rejection case, so no private tree is read.  The live
 pass over this release candidate is read-only and asserts only what the
 candidate itself owns: every declaration on a public claim row is present in
 the candidate source, and no row in the public register was imported from a
-private frontier.  Reader-surface counts are reported, never asserted, because
-`paper/` is under concurrent authorship.
+private frontier.
+
+The paper surface used to be reported rather than asserted, because `paper/`
+was under concurrent authorship.  The papers are frozen now, so the reader
+route is an assertion: every selected public claim reaches a paper anchor, its
+proof class agrees with whether it carries a Lean declaration at all, and every
+claim the README leads with reaches a current problem paper.  A reader-facing
+theorem that carries no declaration is legitimate exactly when its status says
+so, which is what `ordinary proof here`, `cited only`, and `open` are for.
 
 Stdlib only, no Lean, no network, no git mutation.
 """
@@ -21,6 +28,7 @@ Stdlib only, no Lean, no network, no git mutation.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -33,7 +41,30 @@ from lean_declaration_index import qualified_declarations  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 CLAIMS_PATH = ROOT / "docs" / "claims.json"
 RESULTS_PATH = ROOT / "docs" / "RESULTS.md"
+README_PATH = ROOT / "README.md"
 PAPER_DIR = ROOT / "paper"
+
+LABEL_PATTERN = re.compile(r"\\label\{([^}]+)\}")
+
+# Statuses whose own wording explains an absent Lean declaration.  A claim in
+# any other status must name at least one declaration, and a claim in one of
+# these must name none, because `ordinary proof here` says in the taxonomy that
+# no Lean declaration proves its endpoint.
+STATUSES_EXPLAINING_NO_DECLARATION = frozenset(
+    {"ordinary proof here", "cited only", "open"}
+)
+
+# The retired joint manuscript.  `README.md` presents it for archive and
+# provenance, so an anchor that lives only here is not a current reader route.
+ARCHIVE_PAPER_SOURCES = frozenset({"erdos249-257-main-paper.tex"})
+
+# The two README-headline claims whose declarations reach no current problem
+# paper: their only paper route is the retired joint manuscript.  This is a
+# real reader-route gap in the release candidate, named here so it stays
+# visible and so any further headline claim in the same position fails.
+ARCHIVE_ROUTED_HEADLINE_CLAIMS = frozenset(
+    {"diagonal_pincer_reduction", "adelic_height_obstruction"}
+)
 
 
 def require(condition: bool, message: str) -> None:
@@ -326,9 +357,118 @@ def check_live_tree() -> tuple[int, dict[str, int]]:
     return checks, counts
 
 
+# --- frozen-input paper coverage ---------------------------------------------
+
+
+def paper_sources() -> dict[str, str]:
+    """Every paper source, keyed by file name."""
+    if not PAPER_DIR.is_dir():
+        return {}
+    return {
+        path.name: path.read_text(errors="replace")
+        for path in sorted(PAPER_DIR.rglob("*.tex"))
+    }
+
+
+def anchor_sources(sources: dict[str, str]) -> dict[str, set[str]]:
+    """Map each paper anchor to the paper sources that define it."""
+    anchors: dict[str, set[str]] = {}
+    for name, text in sources.items():
+        for match in LABEL_PATTERN.finditer(text):
+            anchors.setdefault(match.group(1), set()).add(name)
+    return anchors
+
+
+def check_paper_surface_coverage() -> tuple[int, dict[str, int]]:
+    """Selected claims, their proof classes, and their reader routes agree."""
+    claims = json.loads(CLAIMS_PATH.read_text())
+    taxonomy = claims.get("status_taxonomy", {})
+    sources = paper_sources()
+    anchors = anchor_sources(sources)
+    readme = README_PATH.read_text(errors="replace") if README_PATH.is_file() else ""
+
+    require(bool(sources), "the release candidate must carry paper sources")
+
+    errors: list[str] = []
+    counts = {"selected": 0, "headline": 0, "no_declaration": 0}
+    for claim in claims.get("claims", []):
+        claim_id = claim.get("id", "<unnamed>")
+        status = str(claim.get("status", ""))
+        declarations = claim.get("declarations") or []
+        paper_label = str(claim.get("paper_label") or "")
+
+        if status not in taxonomy:
+            errors.append(f"{claim_id}: status {status!r} is outside the taxonomy")
+            continue
+
+        # Proof class against the formal roster.
+        if status in STATUSES_EXPLAINING_NO_DECLARATION:
+            counts["no_declaration"] += 1
+            if declarations:
+                errors.append(
+                    f"{claim_id}: status {status!r} says no Lean declaration "
+                    f"proves its endpoint, yet the row names {len(declarations)}"
+                )
+        elif not declarations:
+            errors.append(
+                f"{claim_id}: status {status!r} implies a Lean declaration and "
+                "the row names none; a status that explains the omission is "
+                f"one of {sorted(STATUSES_EXPLAINING_NO_DECLARATION)}"
+            )
+
+        if not paper_label:
+            continue
+        counts["selected"] += 1
+        defining = anchors.get(paper_label, set())
+        if not defining:
+            errors.append(
+                f"{claim_id}: paper anchor {paper_label} is defined in no "
+                "paper source, so the reader route is broken"
+            )
+            continue
+
+        if not claim.get("readme_headline"):
+            continue
+        counts["headline"] += 1
+        # The README leads with this claim, so its anchor must sit in a paper
+        # the README links.
+        linked = [
+            name
+            for name in sorted(defining)
+            if f"{name[: -len('.tex')]}.pdf" in readme
+        ]
+        if not linked:
+            errors.append(
+                f"{claim_id}: README leads with this claim and its anchor "
+                f"{paper_label} sits in {sorted(defining)}, none of which the "
+                "README links"
+            )
+            continue
+        # A headline claim must also reach a current problem paper by name.
+        current = [
+            name
+            for name in sorted(sources)
+            if name not in ARCHIVE_PAPER_SOURCES
+            and any(
+                str(declaration.get("name", "")) in sources[name]
+                for declaration in declarations
+            )
+        ]
+        if not current and claim_id not in ARCHIVE_ROUTED_HEADLINE_CLAIMS:
+            errors.append(
+                f"{claim_id}: README leads with this claim and no current "
+                "problem paper names any of its declarations; its only paper "
+                "route is the retired joint manuscript"
+            )
+
+    require(not errors, "paper-surface coverage failed:\n  " + "\n  ".join(errors))
+    return counts["selected"] + counts["headline"], counts
+
+
 def main() -> int:
     fixture_checks = check_fixtures()
     live_checks, counts = check_live_tree()
+    paper_checks, paper_counts = check_paper_surface_coverage()
     print(
         "test_coverage_namespaces: "
         f"{fixture_checks} coverage fixtures held; "
@@ -336,6 +476,14 @@ def main() -> int:
         f"{counts['public_claim_row']} declarations bound by a public claim "
         f"row, {counts['reader_exposed']} of them also named on a reader "
         f"surface, {counts['present_only']} bound but never named to a reader"
+    )
+    print(
+        "test_coverage_namespaces: "
+        f"{paper_checks} paper-surface checks held over "
+        f"{paper_counts['selected']} claims carrying a paper anchor, "
+        f"{paper_counts['headline']} of them README headlines, and "
+        f"{paper_counts['no_declaration']} claims whose status explains an "
+        "absent Lean declaration"
     )
     return 0
 

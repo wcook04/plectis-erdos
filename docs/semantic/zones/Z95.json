@@ -1,0 +1,76 @@
+{
+  "zone_id": "Z95",
+  "title": "Erdős 68 factorial-gap channel lcm: the Stirling radius constraint and its square-subsequence lower bounds",
+  "problem": "68",
+  "concepts": [
+    {
+      "id": "z95_channel_lcm",
+      "label": "channel lcm through D",
+      "note": "channelLCM D is the least common multiple of d! - 1 over 2 <= d <= D."
+    },
+    {
+      "id": "z95_channel_radius_hypotheses",
+      "label": "channel radius hypotheses",
+      "note": "A positive integer M divisible by the channel lcm through the depth and smaller than (R+1)! - 1. The three conditions are theorem binders in this module; they are not derived from the factorial-gap series."
+    },
+    {
+      "id": "z95_square_subsequence",
+      "label": "square subsequence D = 2t^2",
+      "note": "The reparameterisation of the channel depth by D = 2t^2, under which the radius lower bound is cubic in t."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "square_subsequence_channel_radius_cubic_lower_bound",
+      "canonical_statement": "Let t, M and R be naturals with 4096 <= t, 0 < M, channelLCM (2t^2) dividing M, and M < (R+1)! - 1, where channelLCM D is the least common multiple of d! - 1 over 2 <= d <= D. Then t^3 < 8(R+1). In sequence form, for functions M and R satisfying those three conditions at every t >= 4096 there is no T with 8(R(t)+1) <= t^3 for all t >= T, and the sequence R(t)+1 is not o(t^3) along the filter at infinity.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "68",
+      "concepts": ["z95_channel_lcm", "z95_channel_radius_hypotheses", "z95_square_subsequence"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "a Stirling lower bound on log channelLCM (2t^2) against the factorial-gap upper bound at radius R, specialised at k = 2t and D = 2t^2 and compared through the binomial identity 3*C(2t+1,3) + t = 4t^3",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The prior-art relation for the channel-radius family is recorded as unassessed in the claim frontier, so no novelty is asserted here.",
+      "scope_caveat": "The three channel conditions are theorem binders. This release does not derive divisibility of M by channelLCM (2t^2), or the bound M < (R+1)! - 1, from the factorial-gap series of Erdős 68, and no statement here decides rationality of that series.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration": "square_subsequence_radius_cubic_lower", "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean", "line": 1006},
+        {"declaration": "no_eventual_square_subsequence_cubic_upper", "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean", "line": 1023},
+        {"declaration": "not_isLittleO_square_subsequence_radius", "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean", "line": 1043}
+      ]
+    },
+    {
+      "id": "square_subsequence_channel_radius_three_halves_lower_bound",
+      "canonical_statement": "Under the same three channel conditions imposed from the larger threshold 2^32 <= t, namely 0 < M, channelLCM (2t^2) dividing M, and M < (R+1)! - 1, the sharper bound 3t^3 < 2(R+1) holds, that is R+1 > (3/2)t^3. In sequence form, for functions M and R satisfying those conditions at every t >= 2^32 there is no T with 2(R(t)+1) <= 3t^3 for all t >= T.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "68",
+      "concepts": ["z95_channel_lcm", "z95_channel_radius_hypotheses", "z95_square_subsequence"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the same Stirling radius constraint with the optimised logarithmic comparison, whose constant is absorbed by the threshold 2^32 through 32 log 2 <= log t",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The prior-art relation for the channel-radius family is recorded as unassessed in the claim frontier, so no novelty is asserted here.",
+      "scope_caveat": "The improved constant is bought with the larger threshold 2^32. The little-o form is proved only in the cubic regime at threshold 4096, and no statement here derives the channel conditions from the factorial-gap series or decides its rationality.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration": "square_subsequence_radius_three_halves_lower", "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean", "line": 1222},
+        {"declaration": "no_eventual_square_subsequence_three_halves_upper", "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean", "line": 1241}
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {"declaration": "square_subsequence_radius_cubic_lower", "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean", "line": 1006, "role": "statement", "statement_node": "square_subsequence_channel_radius_cubic_lower_bound"},
+    {"declaration": "no_eventual_square_subsequence_cubic_upper", "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean", "line": 1023, "role": "statement", "statement_node": "square_subsequence_channel_radius_cubic_lower_bound"},
+    {"declaration": "not_isLittleO_square_subsequence_radius", "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean", "line": 1043, "role": "statement", "statement_node": "square_subsequence_channel_radius_cubic_lower_bound"},
+    {"declaration": "square_subsequence_radius_three_halves_lower", "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean", "line": 1222, "role": "statement", "statement_node": "square_subsequence_channel_radius_three_halves_lower_bound"},
+    {"declaration": "no_eventual_square_subsequence_three_halves_upper", "module": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean", "line": 1241, "role": "statement", "statement_node": "square_subsequence_channel_radius_three_halves_lower_bound"}
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "square_subsequence_channel_radius_three_halves_lower_bound",
+      "to": "square_subsequence_channel_radius_cubic_lower_bound",
+      "relation": "complements",
+      "basis": "Neither statement contains the other. The three-halves bound has the larger constant, 3t^3/2 against t^3/8, and the larger threshold, 2^32 against 4096, so its channel conditions are imposed on a smaller range of t. The cubic regime is the one that carries the little-o form."
+    }
+  ]
+}

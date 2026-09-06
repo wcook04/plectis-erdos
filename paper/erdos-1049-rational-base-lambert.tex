@@ -32,8 +32,9 @@ Erd\H{o}s Problem~\#1049 asks whether
 We prove that \(F(a/b)\) is irrational for every pair of coprime integers
 \(a>b\ge1\) with \(b^{\mu}<a\), where \(\mu=C_1/C_0=2.464978683574975\ldots\),
 equivalently \(\log b/\log a<\theta^{*}=1/\mu=0.40568302138406054\ldots\), and
-where \(C_1=1091/2\) and \(C_0=266-(3/\pi^{2})(225-J)\) are the constants of
-Zudilin's \((14,12,14;27)\) direction.  The first base this settles beyond the
+where \(C_1=1091/2\) and \(C_0=266-(3/\pi^{2})(225-J)\) are the constants
+printed by Zudilin in 2004 for his \((14,12,14;27)\) direction, whose ratio is
+the integer-base irrationality-exponent bound proved there.  The first base this settles beyond the
 published region of Bundschuh and V\"a\"an\"anen is \(31/4\), together with
 every power \((31/4)^{r}\), \(r\ge1\).
 
@@ -266,9 +267,11 @@ generalized $q$-logarithm remarks that its results also hold for non-integer
 $p=r/s$ with $|p|>1$, under an assumption $\log|r|>c\log|s|$ for some computable
 $c>0$~\cite{zudilin2016}.  No value of $c$ is computed there.  That remark
 announces the shape of a rational-base extension for the generalized
-$q$-logarithm of that paper.  Section~\ref{sec:region} computes the constant
-for $F$ itself, $c=\mu=2.464978683574975\ldots$, and derives the region and its
-first new base from it.
+$q$-logarithm of that paper.  Section~\ref{sec:region} identifies an admissible
+constant for $F$ itself, $c=\mu=2.464978683574975\ldots$, which is the 2004
+bound quoted above, by specialising the 2004 forms at a rational base and
+carrying out the denominator accounting, and derives the region and its first
+new base from that constant.
 
 A third published rational-base region for this same series is Duverney's
 Th\'eor\`eme~2, whose hypothesis is
@@ -279,8 +282,8 @@ V\"a\"an\"anen region.  Matala-aho, V\"a\"an\"anen and Zudilin's combined
 treatment of $q$-logarithms keeps the integer hypothesis $p=1/q\in\Z\setminus\{0,\pm1\}$
 throughout, and states in print that its methods do not sharpen the
 $q$-harmonic case of~\cite{zudilin2004}
-\cite[abstract p.~879; introduction p.~880]{matalaaho2006}.  So no printed
-region for $F$ reaches $\log4/\log31$.
+\cite[abstract p.~879; introduction p.~880]{matalaaho2006}.  So none of the
+printed regions for $F$ compared here reaches $\log4/\log31$.
 
 \paragraph{Erd\H{o}s's integer-base argument, in outline.}
 For an integer $b\ge2$, Erd\H{o}s rewrites
@@ -463,18 +466,18 @@ the thirteen demi-intervals $[u_i,v_i)$ being
 $[1/14,1/12)$, $[1/7,1/6)$, $[3/14,1/4)$, $[2/7,1/3)$, $[5/14,2/5)$,
 $[3/7,7/15)$, $[1/2,8/15)$, $[4/7,3/5)$, $[9/14,2/3)$, $[5/7,11/15)$,
 $[11/14,4/5)$, $[6/7,13/15)$, $[13/14,14/15)$.  Numerically
-\[
- J=77.94318447500909592258956702399211044972\ldots,
- \qquad
- C_0=221.3000881650050251240426966922154102706\ldots,
-\]
-\[
- \mu:=\frac{C_1}{C_0}=2.464978683574975037454488275535521581878\ldots,
- \qquad
- \theta^{*}:=\frac1\mu=0.40568302138406054101566030557693017464819107867787\ldots
-\]
-The constant $\mu$ is the irrationality-exponent bound of
-\cite[Thm.~1, p.~154]{zudilin2004} for integer bases.
+\begin{align*}
+ J&=77.943184475009095922589567023992\ldots,\\
+ C_0&=221.300088165005025124042696692215\ldots,\\
+ \mu&:=\frac{C_1}{C_0}=2.464978683574975037454488275535\ldots,\\
+ \theta^{*}&:=\frac1\mu=0.405683021384060541015660305576\ldots
+\end{align*}
+The direction, the thirteen demi-intervals, the values $C_1=545.5$ and
+$C_0=221.30008816\ldots$ and the ratio $C_1/C_0=2.46497868\ldots$ are printed at
+\cite[p.~162]{zudilin2004}, where that ratio is the irrationality-exponent bound
+of \cite[Thm.~1, p.~154]{zudilin2004} for integer bases.  The further digits
+displayed above and the reciprocal $\theta^{*}$ are recomputed here from the
+same trigamma series.
 
 \begin{theorem}[rational-base region]\label{res:region}
 Let $a>b\ge1$ be coprime integers with
@@ -498,7 +501,10 @@ his~(14) and $s(c)>0$, that
 $p^{-M(c)}D_{m(c)}(p)\,\Omega^{-1}(p)\,H(c)\in\Z[p]\,h_p(1)+\Z[p]$, an inclusion
 between polynomial rings; the paper's own display~(24) distinguishes $\Z[p]$
 from its evaluation, and that reading is the one under which the source's proof
-of its Theorem~1 goes through.  The linear-form identity~(9)--(11) gives
+of its Theorem~1 goes through.  At the direction fixed above the parameter tuple
+is $c=(13,14,12,14,15,13)$ with $m(c)=15$ and $s(c)=n$, so $s(c)>0$, and the
+source's~(14) holds because $12n+1\le14n+1$ and $26n+2\le27n+2\le28n+2$.  The
+lemma therefore applies for every $n\ge1$.  The linear-form identity~(9)--(11) gives
 $H_n=A_nF-B_n$ with $A_n,B_n\in\Q(x)$.  Because $F$ is not a rational function
 of $x$, the pair $(U_n,V_n)$ supplied by Lemma~7 is forced to be
 $U_n=x^{-M_n}D_N A_n/\Omega_n$ and $V_n=x^{-M_n}D_N B_n/\Omega_n$, and Lemma~7
@@ -510,8 +516,9 @@ which no nonzero rational function has.
 strictly, with step $\alpha_0+\alpha_1+\alpha_2-k-2=40n+1-k$ for
 $k\le\beta_n-2$, so no cancellation occurs at the top and
 $K_n:=\deg A_n=(1091n^{2}+81n+2)/2$, whence $K_n/n^{2}\to C_1$.  Setting
-$W_n:=K_n-M_n+\sum_{l\le N}\varphi(l)-\sum_{l\le N}\nu_l\varphi(l)$ gives
-$\deg U_n=W_n$ and $\deg V_n\le W_n-1$.
+$W_n:=K_n-M_n+\sum_{l\le N}\varphi(l)-\sum_{l\le N}\nu_l\varphi(l)$, with
+$\nu_l$ the exponent of the source's~(22) in $\Omega_n=\prod_{l\ge2}\Phi_l^{\nu_l}$,
+gives $\deg U_n=W_n$ and $\deg V_n\le W_n-1$.
 
 \emph{Step 3, homogenisation.}  Since both degrees are at most $W_n$, the
 numbers $\widehat U_n=b^{W_n}U_n(a/b)$ and $\widehat V_n=b^{W_n}V_n(a/b)$ are
@@ -624,7 +631,10 @@ Theorem~\ref{res:region} is a Lean theorem.
 Bundschuh and V\"a\"an\"anen proved the irrationality of this value on the
 region $\log b/\log a<1/2-1/\pi^{2}=0.3986788163576622\ldots$
 \cite[Thm.~2, p.~177; hypotheses pp.~175--176]{bv1994}, and every base of
-Theorem~\ref{res:region} with $b\le3$ is already theirs.  Duverney proved an
+Theorem~\ref{res:region} with $b\le3$ is already theirs.  Their printed
+hypothesis for $\alpha=-1$ is $\lambda<(1/2+1/\pi^{2})^{-1}$ with
+$\lambda=\log h(q)/\log|q|$; at $q=a/b$ this reads
+$\log a/\log(a/b)<(1/2+1/\pi^{2})^{-1}$, which is the displayed inequality.  Duverney proved an
 independent and strictly smaller region for the same series
 \cite[Th\'eor\`eme~2, p.~174]{duverney1996}.  Zudilin announced a rational-base
 extension of his generalized $q$-logarithm results under an assumption
@@ -632,8 +642,10 @@ $\log|r|>c\log|s|$ for a computable $c>0$, without computing a value
 \cite{zudilin2016}.  Zudilin's 2004 paper supplies the forms and the exponent
 $\mu$ under the standing hypothesis $p=1/q\in\Z\setminus\{0,\pm1\}$, and it
 states no rational-base result \cite[Sec.~2, p.~154; Thm.~1]{zudilin2004}.  The
-contribution here is the explicit constant $c=\mu$ for $F$ itself, the region
-that constant defines, and its first new base.
+contribution here is the rational specialisation of the 2004 forms, with the
+denominator accounting and the limit passage carried out in full, which
+identifies the printed $\mu$ as an admissible $c$ for $F$ itself, together with
+the region that constant defines and its first new base.
 
 \paragraph{The exact remaining obligation.}
 Theorem~\ref{res:region} settles no base with $\log b/\log a\ge\theta^{*}$, and
@@ -2249,12 +2261,14 @@ example.
   Acta Arith. \textbf{111} (2004), no.~2, 153--164,
   doi:10.4064/aa111-2-4.
 \bibitem{zudilin2016} W.~Zudilin,
-  \href{https://arxiv.org/abs/1601.02688}{\emph{Irrationality of the generalized
-  \(q\)-logarithm}}, Res. Number Theory \textbf{2} (2016), Paper 24,
+  \href{https://arxiv.org/abs/1601.02688}{\emph{On the irrationality of
+  generalized \(q\)-logarithm}}, arXiv:1601.02688; Res. Number Theory
+  \textbf{2} (2016),
   doi:\href{https://doi.org/10.1007/s40993-016-0042-x}{10.1007/s40993-016-0042-x}.
   The remark that the results extend to non-integer \(p=r/s\), \(|p|>1\), under
   an assumption \(\log|r|>c\log|s|\) for a computable \(c>0\), is at the end of
-  the introduction; no value of \(c\) is computed there.
+  Section~2; no value of \(c\) is computed there, and the remark is made for the
+  generalized \(q\)-logarithm of that paper.
 \bibitem{duverney1996} D.~Duverney,
   \href{https://numdam.org/item/JTNB_1996__8_1_173_0.pdf}{\emph{\`A propos de la
   s\'erie $\sum_{n\ge1}x^{n}/(q^{n}-1)$}},

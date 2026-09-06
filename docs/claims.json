@@ -1834,7 +1834,7 @@
             "erdos_1041_critical_geometry"
           ],
           "status_summary": "The critical-value separation regime with sharp constant, the sharp collinear diameter, and the critical-geometry proximity criteria.",
-          "prior_art_posture": "Pendyala-type results are incomparable; Dubinin and the arclength literature bound a different object; the 71/10 pair bound is adjudicated new; the rest unassessed.",
+          "prior_art_posture": "Pendyala arXiv:2606.24875 Theorem 1 settles degree four completely through a finite four-point radial lemma and a short polygonal connector, and reaches no other degree; the rows here hold in every degree n >= 2 and pay for that with a larger constant, a weaker containment level, or a hypothesis on the least critical-value modulus. Dubinin 2012 Theorem 1 (Zap. Nauchn. Sem. POMI 404, printed page 85; translation J. Math. Sci. 193 (2013) 45-54) assumes a holomorphic function giving a full n-fold covering of an annulus t_1 < |w| < t_2 and states (t_2/t_1)^(2/n) <= m(E union D)/m(E) with E the complementary set defined there; no row uses it, because the area input throughout is the absolute Polya inequality Area{|f| <= t} <= pi t^(2/n) from Polya 1928, printed pp. 280-282, which carries no covering hypothesis. The lemniscate arclength literature bounds a different object. The 71/10 pair bound is adjudicated new; the rest is unassessed.",
           "primary_narrative_owner": "paper/erdos-1041-lemniscate-newton-flow.tex",
           "source_route": "python3 scripts/query_corpus.py --claim erdos_1041_critical_value_separation",
           "consumer_or_open_obligation": "Leaves remaining_open.erdos_1041_lemniscate_connection; the 13/25 closure and degree three are ordinary proofs recorded on the open row.",
@@ -14743,7 +14743,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 144
+        "line": 147
       }
     },
     {
@@ -14767,7 +14767,7 @@
         "source": "paper/erdos-1049-rational-base-lambert.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 114
+        "line": 115
       }
     },
     {
@@ -14791,7 +14791,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "exact nonintegrality of every reduced tail",
-        "line": 1760
+        "line": 1766
       }
     },
     {
@@ -14803,7 +14803,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "actual cofinal local-window escape",
-        "line": 1795
+        "line": 1801
       }
     },
     {
@@ -14815,7 +14815,7 @@
         "source": "paper/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "function-faithful two-dimensional representation",
-        "line": 1888
+        "line": 1894
       }
     },
     {
@@ -14911,7 +14911,7 @@
         "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "additive-error strip gluing",
-        "line": 1763
+        "line": 1783
       }
     }
   ],
@@ -14943,7 +14943,7 @@
       "id": "erdos_251",
       "label": "Erdős #251: irrationality of Π = ∑_{n≥1} p_n/2ⁿ",
       "status": "open",
-      "statement": "The prime-index dyadic series remains open in this release; the exact tail-shift equivalence, prime-gap unboundedness, and nonperiodicity do not supply the required cofinal escape for the actual prime gaps.",
+      "statement": "The prime-index dyadic series remains open in this release. The strongest supported statements restrict the answer itself. Every rational equal to Π = ∑_{i≥0} p_i/2^{i+1}, and hence every rational equal to the consecutive-prime-gap dyadic series, has denominator at least 2^589 > 10^177, decided inside the Lean kernel by decide +kernel on one Boolean certificate over the 1229 primes below 10^4 (kernel_denominator_floor and kernel_denominator_floor_primeGap at lines 315 and 323 of ErdosProblems/Erdos251/KernelDenominatorFloor.lean, present in the private tree and in the Palomar cut and absent from the formal-source checkpoint pinned by this release). An exact continued-fraction computation raises the floor to 2^39997 > 10^12040 from 23369 certified partial quotients at 80000 bits, resting on the Lean-checked tail bound p_n ≤ 1250(n+1)^4 (prime0_le_polynomial, ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:360); that second bound is an exact computation and no Lean declaration carries it. The exact remaining input is the free-pair condition: irrationality holds if and only if for every modulus t and every cutoff there are indices M ≡ N (mod t) beyond the cutoff whose scaled tails differ by a non-integer (irrational_primeGap_tsum_iff_cofinalFreePairNonintegral, ErdosProblems/Erdos251/FreePairReduction.lean:236, in the same two trees). The exact tail-shift equivalence, prime-gap unboundedness and nonperiodicity do not supply that escape. The polynomial-word countermodel carries no priority claim and is not a result about #251.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_251_irrationality"
       ],
@@ -15090,7 +15090,7 @@
             "source": "research_corpus/Erdos1041/CubicCriticalHub.md",
             "receipt": "P: state/formal_math/erdos257_period_noncollapse/erdos1041_cubic_critical_hub_receipt.json",
             "paper_label": "res:degree-three",
-            "prior_art": "unknown; whether degree three was already recorded on the erdosproblems.com #1041 thread or in Erdős-Herzog-Piranian 1958 has not been adjudicated. Pendyala arXiv:2606.24875 settles degree four.",
+            "prior_art": "unknown; whether degree three was already recorded on the erdosproblems.com #1041 thread or in Erdős-Herzog-Piranian 1958 has not been adjudicated. Pendyala arXiv:2606.24875 Theorem 1 settles degree four through a finite four-point radial lemma and a short polygonal connector; it reaches no other degree, so it leaves degree three open and this row settles it.",
             "remaining_obligation": "the argument uses the sparse normalized form w^3 - (3/2) b w^2 + 1; a higher-degree proof needs a replacement for that sparsity"
           }
         ],
@@ -19408,7 +19408,8 @@
           "module": "ErdosProblems/Erdos249/RankOneSharpFloor.lean",
           "line": 693
         }
-      ]
+      ],
+      "headline_disposition": "Held false. The result prices one approximation mechanism exactly and, by its own scope, excludes signed cancellation and genuinely coupled higher-rank approximants from its reach, so it constrains a family of attacks rather than advancing the irrationality target. The flagged #249 rows denominator_exclusion, certificate_reduction and certificate_completeness speak about the constant itself. The identity Theta_2 = S - 1/2 that connects this quotient family to the totient series is Steve Fan's and carries no declaration in this release's Lean library. The row binds to the reviewed nodes Z54::the_five_atom_kernel_is_the_unique_minimiser_and_fixes_the_sharp_rank_one_gap, Z54::positive_finite_averaging_cannot_evade_the_sharp_rank_one_gap and Z54::rational_rank_one_realisations_give_the_sharp_linear_form_error."
     },
     {
       "id": "first_harmonic_norm_gap_reduction",
@@ -19436,7 +19437,8 @@
           "module": "Erdos249257/FirstHarmonicPivot.lean",
           "line": 83
         }
-      ]
+      ],
+      "headline_disposition": "Held false. The hypothesis is a cofinal exponential-sum cancellation bound that is open and, as the row itself records, strictly stronger than irrationality, so the result is a sufficient condition. The #249 rows already flagged, certificate_reduction and certificate_completeness, carry the exact reduction to finite decidable certificates and its completeness, which is the stronger presentation of the same target. The review debt is settled independently of the flag: the row binds to the reviewed nodes Z08::first_harmonic_saving_forces_certificate and Z08::first_harmonic_socket_implies_249, and that obligation stands while the claim is published."
     },
     {
       "id": "canonical_mersenne_frontier",
@@ -20006,7 +20008,8 @@
           "module": "ErdosProblems/Erdos1041/FirstMergeCriticalValueSeparation.lean",
           "line": 191
         }
-      ]
+      ],
+      "prior_art": "The 2026-09-02 prior-art pass located no published critical-value-separation criterion of this shape and no priority claim is made. Dubinin 2012 Theorem 1 (POMI 404, printed page 85), a Polya-type area inequality under a full n-fold covering hypothesis, was flagged by that pass as a possible uncited input; it is not an input. The area step of this proof is the absolute Polya area-capacity inequality Area{|P| < T} <= pi T^(2/n) for unit-modulus leading coefficient, taken from Polya 1928, printed pp. 280-282. Pendyala arXiv:2606.24875 Theorem 1 settles degree four completely by a different mechanism, a finite four-point radial lemma with a short polygonal connector, and is unconditional in that degree, while this regime is conditional on the critical spectrum in every degree."
     },
     {
       "id": "erdos_1041_sharp_collinear_diameter",
@@ -20063,19 +20066,20 @@
       "id": "rational_base_irrationality_region",
       "label": "Rational-base irrationality region b^mu < a for the Lambert value",
       "status": "ordinary proof here",
-      "statement": "For coprime integers a > b >= 1 with b^mu < a, equivalently log b / log a < theta* = 1/mu = 0.40568302138406054101566030557693017464819107867787..., the Lambert value F(a/b) = sum_{m>=1} 1/((a/b)^m - 1) is irrational. Here mu = C_1/C_0 = 2.464978683574975037454488275535521581878..., C_1 = 1091/2, and C_0 = 266 - (3/pi^2)(225 - J) = 221.3000881650050251240426966922154102706... with J = sum over thirteen printed demi-intervals of (psi_1(u_i) - psi_1(v_i)) = 77.94318447500909592258956702399211044972..., the constants of Zudilin's direction (14,12,14;27). This is an ordinary proof, not a Lean theorem. It cites Zudilin 2004 Lemma 7 in its polynomial reading together with the inputs of that lemma's own proof, namely Lemma 3, the exponent M(a;b) of (16) supplied by Lemma 4, Heine's transform as Lemma 5, and the identity (9)-(11); every remaining step, including the nonrationality of F as a function, the transfer of Lemma 7 to explicit integer polynomials, the degree computation, positivity, the Archimedean size estimate and the limit (K_n - W_n)/n^2 -> C_0, is proved in the note. No declaration in this release's Lean library carries any part of the analytic argument. The rational bracket 81/200 < theta* < 1/2 that makes membership decidable is kernel-checked in the module RationalBaseContour, which this release carries in the external-verification cut and not in its Lean library. The universal assertion of Erdos #1049 over all rational t > 1 is untouched, and no base with log b / log a >= theta* is settled, so 3/2 at log 2 / log 3 = 0.6309297535714574370995271143427608542996... is not settled.",
+      "statement": "For coprime integers a > b >= 1 with b^mu < a, equivalently log b / log a < theta* = 1/mu = 0.40568302138406054101566030557693017464819107867787..., the Lambert value F(a/b) = sum_{m>=1} 1/((a/b)^m - 1) is irrational. Here mu = C_1/C_0 = 2.464978683574975037454488275535521581878..., C_1 = 1091/2, and C_0 = 266 - (3/pi^2)(225 - J) = 221.3000881650050251240426966922154102706... with J = sum over thirteen printed demi-intervals of (psi_1(u_i) - psi_1(v_i)) = 77.94318447500909592258956702399211044972..., the constants of Zudilin's direction (14,12,14;27). That direction, the thirteen demi-intervals, the values C_1 = 545.5 and C_0 = 221.30008816..., and the ratio C_1/C_0 = 2.46497868... are printed in Zudilin, Heine's basic transform and a permutation group for q-harmonic series, Acta Arith. 111 (2004), no. 2, page 162, where that ratio is the integer-base irrationality-exponent bound of its Theorem 1 on page 154. The constant theta* is the reciprocal of that printed ratio, and the further digits above are recomputed from the same trigamma series. What is established here is the rational specialisation of the 2004 forms with the denominator accounting and the limit passage carried out, which identifies mu as an admissible constant for F itself, the region that constant defines, and its first new base. Zudilin, On the irrationality of generalized q-logarithm, arXiv:1601.02688, Res. Number Theory 2 (2016), separately announces at the end of its Section 2 that the results of that later paper extend to non-integer p = r/s under an assumption log|r| > c log|s| for a computable c > 0, computing no value of c and making the remark for the generalized q-logarithm of that paper. This is an ordinary proof, not a Lean theorem. It cites Zudilin 2004 Lemma 7 in its polynomial reading together with the inputs of that lemma's own proof, namely Lemma 3, the exponent M(a;b) of (16) supplied by Lemma 4, Heine's transform as Lemma 5, and the identity (9)-(11); every remaining step, including the nonrationality of F as a function, the transfer of Lemma 7 to explicit integer polynomials, the degree computation, positivity, the Archimedean size estimate and the limit (K_n - W_n)/n^2 -> C_0, is proved in the note. No declaration in this release's Lean library carries any part of the analytic argument. The rational bracket 81/200 < theta* < 1/2 that makes membership decidable is kernel-checked in the module RationalBaseContour, which this release carries in the external-verification cut and not in its Lean library. The universal assertion of Erdos #1049 over all rational t > 1 is untouched, and no base with log b / log a >= theta* is settled, so 3/2 at log 2 / log 3 = 0.6309297535714574370995271143427608542996... is not settled.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
       "paper_label": "res:region",
       "readme_headline": false,
-      "declarations": []
+      "declarations": [],
+      "headline_disposition": "Held false, and the reason is not that the result is weak. The parent row erdos_1049 records this region as what the release settles for the problem, and it is the strongest #1049 statement here. The analytic argument is an ordinary proof and no declaration in this release's Lean library carries any part of it, so the row has an empty declaration list. The headline gate in scripts/build_semantic_corpus.py reaches a statement node only through a claim declaration, so a row with no declarations can never satisfy it, and flagging the row would leave the corpus check failing on headline_claims_without_reviewed_node. The README problem-papers entry for #1049 already presents the region with its evidence boundary. The mathematics is reviewed through the node Z33::rational_base_lambert_irrationality_region, which carries the region theorem's wording, the ordinary-proof boundary, and the elementary height components attached to it."
     },
     {
       "id": "f_thirty_one_over_four_irrational",
       "label": "F(31/4) and every F((31/4)^r) are irrational",
       "status": "unconditional progress",
-      "statement": "F(31/4) is irrational, and so is F((31/4)^r) for every integer r >= 1. The base sits at log 4 / log 31 = 0.4036981731641997014370328005878493650194..., below 81/200 and below theta* = 0.40568302138406054..., and at 4^mu = 30.483515... < 31 < 4^{mu_BV} = 32.369642... with mu_BV = 2 pi^2/(pi^2 - 2) = 2.508284761994681157505052751018958770537..., so it lies outside the region log b / log a < 1/2 - 1/pi^2 = 0.3986788163576622285561205367902723610956... of Bundschuh and Vaananen 1994 Theorem 2 and inside the region of rational_base_irrationality_region. It is the base of least denominator and least numerator in the strip between the two regions. The irrationality itself comes from the region theorem, which is an ordinary proof and is not kernel-checked. What the listed declarations kernel-check is the finite height arithmetic: the integer certificate 4^200 < 31^81, membership of 31/4 and of every positive power in the 81/200 region, and exclusion of 31/4 from the Bundschuh-Vaananen region. The remaining finite input, 81/200 < theta*, is checked in the module RationalBaseContour of the external-verification cut and not in this release's Lean library.",
+      "statement": "F(31/4) is irrational, and so is F((31/4)^r) for every integer r >= 1. The base sits at log 4 / log 31 = 0.4036981731641997014370328005878493650194..., below 81/200 and below theta* = 0.40568302138406054..., and at 4^mu = 30.483515... < 31 < 4^{mu_BV} = 32.369642... with mu_BV = 2 pi^2/(pi^2 - 2) = 2.508284761994681157505052751018958770537..., so it lies outside the region log b / log a < 1/2 - 1/pi^2 = 0.3986788163576622285561205367902723610956... of Bundschuh and Vaananen 1994 Theorem 2 and inside the region of rational_base_irrationality_region. The printed Bundschuh and Vaananen hypothesis for alpha = -1 is lambda < (1/2 + 1/pi^2)^{-1} with lambda = log h(q) / log |q|; at a positive reduced base q = a/b > 1 this reads log a / log(a/b) < (1/2 + 1/pi^2)^{-1}, which is the displayed inequality. Every base of rational_base_irrationality_region with b <= 3 is already covered by their theorem. It is the base of least denominator and least numerator in the strip between the two regions. The next members of that strip are 53/5, 83/6 and 122/7. The irrationality itself comes from the region theorem, which is an ordinary proof and is not kernel-checked. What the listed declarations kernel-check is the finite height arithmetic: the integer certificate 4^200 < 31^81, membership of 31/4 and of every positive power in the 81/200 region, and exclusion of 31/4 from the Bundschuh-Vaananen region. The remaining finite input, 81/200 < theta*, is checked in the module RationalBaseContour of the external-verification cut and not in this release's Lean library.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
@@ -20102,7 +20106,8 @@
           "module": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
           "line": 91
         }
-      ]
+      ],
+      "headline_disposition": "Held false. This is a specialisation of rational_base_irrationality_region at a single base, and its stated conclusion, irrationality of F(31/4) and of every F((31/4)^r), comes from that ordinary region theorem. The declarations listed here certify finite height arithmetic only, so flagging the row would put a claim in the principal set whose conclusion is not kernel-checked while its declaration handles are. The row binds to the reviewed node Z33::thirtyone_over_four_lies_in_the_new_region_and_outside_bundschuh_vaananen."
     },
     {
       "id": "rational_base_degree_budget_cap",
@@ -20132,7 +20137,7 @@
       "id": "zudilin_sharp_hankel_qorder",
       "label": "Sharp all-rank q-order and leading coefficient of Zudilin's normalised Hankel determinant",
       "status": "unconditional progress",
-      "statement": "For every rank N, Zudilin's normalised Hankel determinant V_N^* at x = z = 1 has q-order exactly N(N-1)(2N-1)/6 and leading coefficient exactly (N!)^2 (N+1)!/2^N. Zudilin 2016, Section 4, proves only the inequality ord_q V_N^* >= N(N-1)(2N-1)/6 and uses it as an upper bound on |V_N^*|; equality is the statement that no further cancellation is available inside the determinant. The all-rank statement is an ordinary proof by an all-depth filtered reciprocal-state argument. What the listed declarations kernel-check is the all-depth associated-graded recurrence, the initial monomial of transformed row 1 in every column with order exactly l+1 and coefficient exactly -6, and the assembly of the two closed forms 6 ord = N(N-1)(2N-1) and 2^N lc = (N!)^2 (N+1)!. The initial-monomial theorem for rows j >= 2 is outside this release's Lean library: row j = 2, with initial monomial 18 q^{2l+3}, is checked in a module of the external-verification cut, and rows j >= 3 are open, so the Lean identification of V_N^* itself with the assembled leading matrix remains conditional on a row hypothesis. Independently, the order and leading coefficient were computed exactly for 1 <= N <= 7, giving orders 0, 1, 5, 14, 30, 55, 91 and coefficients 1, 6, 108, 4320, 324000, 40824000, 8001504000, each matching the closed forms. Nothing here decides the arithmetic nature of F(3/2).",
+      "statement": "For every rank N, Zudilin's normalised Hankel determinant V_N^* at x = z = 1 has q-order exactly N(N-1)(2N-1)/6 and leading coefficient exactly (N!)^2 (N+1)!/2^N. Zudilin, On the irrationality of generalized q-logarithm, arXiv:1601.02688, Res. Number Theory 2 (2016), Section 4, proves only the inequality ord_q V_N^* >= N(N-1)(2N-1)/6 and uses it as an upper bound on |V_N^*|; equality is the statement that no further cancellation is available inside the determinant. The all-rank statement is an ordinary proof by an all-depth filtered reciprocal-state argument. What the listed declarations kernel-check is the all-depth associated-graded recurrence, the initial monomial of transformed row 1 in every column with order exactly l+1 and coefficient exactly -6, and the assembly of the two closed forms 6 ord = N(N-1)(2N-1) and 2^N lc = (N!)^2 (N+1)!. The initial-monomial theorem for rows j >= 2 is outside this release's Lean library: row j = 2, with initial monomial 18 q^{2l+3}, is checked in a module of the external-verification cut, and rows j >= 3 are open, so the Lean identification of V_N^* itself with the assembled leading matrix remains conditional on a row hypothesis. Independently, the order and leading coefficient were computed exactly for 1 <= N <= 7, giving orders 0, 1, 5, 14, 30, 55, 91 and coefficients 1, 6, 108, 4320, 324000, 40824000, 8001504000, each matching the closed forms. Nothing here decides the arithmetic nature of F(3/2).",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
@@ -20191,12 +20196,12 @@
       "id": "erdos68_square_subsequence_channel_radius",
       "label": "Square-subsequence channel-radius lower bound for Erdős #68",
       "status": "unconditional progress",
-      "statement": "Let t,M,R be naturals with t >= 2^32, M > 0, lcm_{2<=d<=2t^2}(d!-1) | M, and M < (R+1)!-1. Then 3t^3 < 2(R+1). Sequence form: no radius function satisfies 2(R(t)+1) <= 3t^3 eventually; and R(t)+1 is not o(t^3). Evidence. Lean at the pinned formal source covers the complete advertised endpoint, including all four hypotheses and both sequence forms. Attribution. Prior art relation is recorded as unassessed in state/formal_math/claim_frontier_v1.json#erdos68.channel_radius, so no novelty is asserted. Remaining obligation. Derive lcm_{2<=d<=2t^2}(d!-1) | M and M < (R+1)!-1 from the factorial-gap series and prove that the channels through 2t^2 vanish for the resulting family.",
+      "statement": "Let t,M,R be naturals with t >= 2^32, M > 0, lcm_{2<=d<=2t^2}(d!-1) | M, and M < (R+1)!-1. Then 3t^3 < 2(R+1). Sequence form: no radius function satisfies 2(R(t)+1) <= 3t^3 eventually. Under the corresponding hypotheses from t >= 4096 onward the cubic form gives t^3 < 8(R+1), no radius function satisfies 8(R(t)+1) <= t^3 eventually, and R(t)+1 is not o(t^3). Evidence. Lean at the pinned formal source covers the complete advertised endpoint at both thresholds, including all four hypotheses and every sequence form. Attribution. Prior art relation is recorded as unassessed in state/formal_math/claim_frontier_v1.json#erdos68.channel_radius, so no novelty is asserted. Remaining obligation. Derive lcm_{2<=d<=2t^2}(d!-1) | M and M < (R+1)!-1 from the factorial-gap series and prove that the channels through 2t^2 vanish for the resulting family.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_68_irrationality"
       ],
       "paper_label": "res:lead-channel-radius",
-      "readme_headline": false,
+      "readme_headline": true,
       "declarations": [
         {
           "name": "square_subsequence_radius_three_halves_lower",
@@ -20225,11 +20230,12 @@
         }
       ],
       "evidence_decomposition": {
-        "lean_kernel_checked": "the complete advertised endpoint, including all four hypotheses and both sequence forms",
+        "lean_kernel_checked": "the complete advertised endpoint at both thresholds, including all four hypotheses and every sequence form",
         "ordinary_proof": null,
         "replayable_certificate": null
       },
-      "source_result_id": "channel_radius_three_halves"
+      "source_result_id": "channel_radius_three_halves",
+      "headline_disposition": "Set true. The parent row erdos_68 names this bound as the strongest supported partial result for the problem, its conclusion and all four hypotheses are kernel-checked at the pinned formal source, and the release carried no headline claim for #68. The competing #68 rows are weaker for this purpose: erdos68_companion_orbit_boundary and erdos68_strict_successor_carry_equivalence restate the open problem as an equivalence rather than advance it, and erdos68_certified_cf_denominator_floor is an ordinary proof owned by no declaration. The row now binds to the reviewed semantic nodes Z95::square_subsequence_channel_radius_cubic_lower_bound and Z95::square_subsequence_channel_radius_three_halves_lower_bound."
     },
     {
       "id": "erdos68_channel_radius_method_ceiling",

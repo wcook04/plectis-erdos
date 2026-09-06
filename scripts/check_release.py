@@ -995,6 +995,205 @@ def check_proof_trust() -> None:
               f"proof-trust violation in {lean.relative_to(ROOT)}: {violation or ''}")
 
 
+# --- public-checkout hygiene --------------------------------------------------
+
+# The release gate passed while a tracked script carried two absolute operator
+# paths, and a person removed them by hand.  Every surface check in this file
+# reads a named file, so nothing was looking at the tracked set as a whole.
+# This scans it.
+#
+# Each rule names what may not reach a public checkout, and each allowlist entry
+# names the tracked file that is allowed to carry it and why.  An allowlist keyed
+# on the file plus the matched text stays valid when lines move.
+HYGIENE_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
+    # An operator's home directory. Absolute, host-specific, and useless to a
+    # reader who cloned the repository.
+    ("absolute_home_path", re.compile(r"/(?:Users|home)/[A-Za-z0-9._-]+/")),
+    # Private working-ledger identities. They name state no reader can reach.
+    ("ledger_id", re.compile(r"cap_quick_[A-Za-z0-9_]+|\bwi_[0-9a-f]{6,}\b|\bWorkItem[ _-]?[A-Za-z0-9]{2,}")),
+    # Credential shapes. None are expected; the rule exists so none can arrive.
+    (
+        "credential_shape",
+        re.compile(
+            r"(?i:palomar[_-]?(?:api[_-]?)?(?:token|key|secret|password))"
+            r"|\bsk-[A-Za-z0-9]{16,}\b|\bghp_[A-Za-z0-9]{20,}\b|\bAKIA[0-9A-Z]{16}\b"
+        ),
+    ),
+    # Private repository names, and any checkout-rooted path into one.
+    (
+        "private_repo_name",
+        re.compile(r"palomar-release|(?<![A-Za-z0-9_-])zenith(?![A-Za-z0-9_-])|src/ai_workflow"),
+    ),
+)
+
+# Synthetic home directories used inside adversarial fixtures. These are the
+# strings the fixtures feed to a redaction guard, so removing them would remove
+# the test's subject. No real operator path is spelled this way.
+HYGIENE_SYNTHETIC_HOME_PREFIXES = ("/Users/example/", "/Users/private/", "/Users/will/")
+
+# Pre-existing occurrences, each named with the tracked file that carries it.
+# A ledger id in a research note is a private working identity a reader cannot
+# resolve; these entries record that state rather than approving it, and any new
+# occurrence fails.
+HYGIENE_ALLOWLIST: dict[str, frozenset[str]] = {
+    # A guard string in the clone-skill test, asserting the absence of exactly
+    # this path shape.
+    "scripts/test_clone_skills.py": frozenset({"src/ai_workflow"}),
+    # Task Ledger captures quoted in the #1041 research corpus and in the
+    # expert-handoff query surface.
+    "research_corpus/Erdos1041/AggregateN3InnerModelClosedForm.md": frozenset(
+        {"cap_quick_derive_the_agg3_radial_constant_c_phase_3876935d5231"}
+    ),
+    "research_corpus/Erdos1041/CapacityGeodesicConjecture.md": frozenset(
+        {"cap_quick_erdos1041_decide_merging_pair_nearest_pa_20d69b8f9d6d"}
+    ),
+    "research_corpus/Erdos1041/ClaimLRefutation.md": frozenset(
+        {"cap_quick_erdos1041_decide_merging_pair_nearest_pa_20d69b8f9d6d"}
+    ),
+    "research_corpus/Erdos1041/FRONTIER.md": frozenset(
+        {
+            "cap_quick_prove_the_model_excess_inequality_ex_the_c88f4d5faf54",
+            "cap_quick_build_the_cut_5_finite_certificate_for_d_b122beb7e514",
+        }
+    ),
+    "research_corpus/Erdos1041/OneFaceRadialScatteringTheorem.md": frozenset(
+        {"cap_quick_prove_the_model_excess_inequality_ex_the_c88f4d5faf54"}
+    ),
+    "research_corpus/Erdos1041/QuinticTangentOrbitExactCertificate.md": frozenset(
+        {"cap_quick_exact_certificate_upgrade"}
+    ),
+    "research_corpus/Erdos1041/symmetric_two_level_wall_consequence_receipt.json": frozenset(
+        {"cap_quick_validate_symmetrictwolevelwall_lean_kern_b563c33a0ea9"}
+    ),
+    "scripts/query_expert_handoffs.py": frozenset(
+        {"cap_quick_erdos_1041_critical_pair_metric_scale_so_4510a65321c7"}
+    ),
+}
+
+# One pass over each file instead of one pass per rule: the tracked set holds
+# roughly two hundred megabytes of generated projection, and four separate
+# scans of it are the difference between a check and a wait.
+HYGIENE_COMBINED_PATTERN = re.compile(
+    "|".join(f"(?P<{kind}>{pattern.pattern})" for kind, pattern in HYGIENE_PATTERNS)
+)
+
+# A case-folded literal that every possible match of every rule must contain.
+# Substring search runs about ten times faster than the regex over the same
+# bytes, and the tracked set is mostly generated projection that matches
+# nothing, so the literal pass decides almost every file. Adding a rule means
+# adding the literal its matches always carry; leaving one out would make the
+# rule silently unenforceable, which is the failure this whole check exists to
+# catch.
+HYGIENE_PREFILTER_LITERALS = (
+    "/users/",
+    "/home/",
+    "cap_quick_",
+    "wi_",
+    "workitem",
+    "palomar",
+    "sk-",
+    "ghp_",
+    "akia",
+    "zenith",
+    "src/ai_workflow",
+)
+
+# One probe per rule. A rule that stops matching its own probe, or a probe the
+# literal prefilter would skip, turns the scan into a check that cannot fail.
+HYGIENE_PROBES: tuple[tuple[str, str], ...] = (
+    ("absolute_home_path", "see /Users/someone/src/notes.md"),
+    ("absolute_home_path", "see /home/someone/src/notes.md"),
+    ("ledger_id", "tracked as cap_quick_do_the_thing_0123456789ab"),
+    ("ledger_id", "tracked as wi_0123abcd"),
+    ("credential_shape", "PALOMAR_API_TOKEN=redacted"),
+    ("credential_shape", "ghp_0123456789abcdefghij0123"),
+    ("private_repo_name", "cloned from palomar-release"),
+    ("private_repo_name", "cloned from zenith"),
+    ("private_repo_name", "cloned into src/ai_workflow"),
+)
+
+# This file spells out every rule, every probe, and every allowlisted string, so
+# it matches its own patterns. It is allowed exactly those strings, computed
+# from the rules rather than restated beside them.
+HYGIENE_ALLOWLIST["scripts/check_release.py"] = frozenset(
+    match.group(0) for _, probe in HYGIENE_PROBES
+    for match in HYGIENE_COMBINED_PATTERN.finditer(probe)
+).union(*HYGIENE_ALLOWLIST.values())
+
+
+def tracked_text_files(root: Path) -> list[str]:
+    """Every tracked path, read-only, straight from the index."""
+    listing = run(
+        ["git", "ls-files", "-z"],
+        cwd=root,
+        capture_output=True,
+        text=True,
+        check=False,
+        timeout=SUBPROCESS_TIMEOUT_SECONDS,
+    )
+    if listing.returncode != 0:
+        return []
+    return [name for name in listing.stdout.split("\0") if name]
+
+
+def hygiene_findings(root: Path, tracked: list[str]) -> list[str]:
+    """Report every private-surface leak in the tracked text of a checkout."""
+    findings: list[str] = []
+    for name in tracked:
+        path = root / name
+        try:
+            payload = path.read_bytes()
+        except OSError:
+            continue
+        if b"\0" in payload[:8000]:
+            continue
+        try:
+            text = payload.decode("utf-8")
+        except UnicodeDecodeError:
+            continue
+        lowered = text.lower()
+        if not any(literal in lowered for literal in HYGIENE_PREFILTER_LITERALS):
+            continue
+        if not HYGIENE_COMBINED_PATTERN.search(text):
+            continue
+        allowed = HYGIENE_ALLOWLIST.get(name, frozenset())
+        for number, line in enumerate(text.splitlines(), start=1):
+            for match in HYGIENE_COMBINED_PATTERN.finditer(line):
+                kind = match.lastgroup or "unknown"
+                found = match.group(0)
+                if found in allowed:
+                    continue
+                if kind == "absolute_home_path" and found in HYGIENE_SYNTHETIC_HOME_PREFIXES:
+                    continue
+                findings.append(f"{name}:{number}: {kind} {found!r}")
+    return findings
+
+
+def check_public_checkout_hygiene() -> None:
+    """No tracked file may carry an operator path, ledger id, or private name."""
+    for kind, probe in HYGIENE_PROBES:
+        match = HYGIENE_COMBINED_PATTERN.search(probe)
+        check(
+            match is not None and match.lastgroup == kind,
+            f"public-checkout hygiene rule {kind} no longer matches its probe: {probe}",
+        )
+        check(
+            any(literal in probe.lower() for literal in HYGIENE_PREFILTER_LITERALS),
+            f"public-checkout hygiene prefilter would skip a {kind} match: {probe}",
+        )
+    tracked = tracked_text_files(ROOT)
+    check(
+        bool(tracked),
+        "public-checkout hygiene could not read the tracked file set from git",
+    )
+    findings = hygiene_findings(ROOT, tracked)
+    check(
+        not findings,
+        "public-checkout hygiene failed over "
+        f"{len(tracked)} tracked files: " + "; ".join(findings[:20]),
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -2128,6 +2327,21 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_coverage_namespaces.py"),
             ],
+            # A private-to-public export can carry every declaration name across
+            # and still lose a declaration or restate one under its old name.
+            # The law is stated here; the private exporter enforces it at its
+            # own write boundary.
+            "export_conservation": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_export_conservation.py"),
+            ],
+            # The route-closure surface scan stays a report. Its fixtures are
+            # the gate: a route written off with no label, no evidence, or a
+            # label outside the vocabulary is rejected.
+            "negative_knowledge_labels": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_negative_knowledge_labels.py"),
+            ],
         }
     )
     architecture_check = mid_checks["architecture"]
@@ -2443,6 +2657,19 @@ def main(argv: list[str] | None = None) -> int:
         "coverage-namespace separation failed: "
         f"{coverage_namespace_check.stdout.strip() or coverage_namespace_check.stderr.strip()}",
     )
+    export_conservation_check = mid_checks["export_conservation"]
+    check(
+        export_conservation_check.returncode == 0,
+        "export conservation failed: "
+        f"{export_conservation_check.stdout.strip() or export_conservation_check.stderr.strip()}",
+    )
+    negative_knowledge_check = mid_checks["negative_knowledge_labels"]
+    check(
+        negative_knowledge_check.returncode == 0,
+        "negative-knowledge labelling failed: "
+        f"{negative_knowledge_check.stdout.strip() or negative_knowledge_check.stderr.strip()}",
+    )
+    check_public_checkout_hygiene()
 
     descriptor = json.loads(read(ROOT / "docs" / "corpus_descriptor.json"))
     check(descriptor.get("schema") == "erdos249257-corpus-descriptor/5",

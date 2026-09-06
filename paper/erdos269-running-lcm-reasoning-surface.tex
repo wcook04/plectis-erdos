@@ -64,6 +64,23 @@ the qualitative obstruction for \(|P|\ge3\) in a comment of 26 June 2026, and
 the running-LCM identity for every \(k\) is his.  The theorem excludes a class
 of representations of the kernel and settles no instance of the problem.
 
+The strongest statement proved about the literal \(\{2,3,5\}\) series is an
+equivalence.  The cofinal local-window escape condition
+of~\eqref{eq:actual-escape} holds if and only if the running-LCM series value
+is irrational, for every short bound dominated by \(c(B)(n+1)^2\); that
+condition is therefore a restatement of the problem, and the equivalence proves
+neither of its two sides.  The rationality-to-carry bridge underneath it gives,
+from a rational value with denominator \(q=2^{\alpha}3^{\beta}5^{\gamma}B\) and
+\(\gcd(B,30)=1\), an integral reduced carry from the explicit onset
+\(a_0=\alpha+1+2\beta+3\gamma\), satisfying the actual recurrence with
+\(0<d_a\le 90B(a+1)^2\).  Both are checked by the Lean kernel, at
+\texttt{ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:398} and
+\texttt{ErdosProblems/Erdos269/RationalityCarryBridge.lean:324} in the private
+formal source and in the Palomar cut.  They are pinned here by coordinate,
+because the formal-source checkpoint \commitshort\ of this release predates
+both modules, and both enter the linked source of this manuscript at the next
+formal-source checkpoint.
+
 If \(\Lprefix(x)\) is the least common multiple of the \(\{p,q,r\}\)-smooth
 numbers not exceeding \(x\), then
 \[
@@ -82,22 +99,6 @@ actual tail admits a quadratic bound in its logarithmic rank: if
 $n_a=\lfloor\log_2(2^a)\rfloor+\lfloor\log_3(2^a)\rfloor+
 \lfloor\log_5(2^a)\rfloor$, then $X_a\le(n_a^2+8n_a+18)/9$.  These results
 identify the hard branch and do not exclude it.
-
-Two further theorems are proved in the private formal source and in the
-Palomar cut.  They are pinned here by coordinate, because the formal-source
-checkpoint \commitshort\ of this release predates both modules.  The
-rationality-to-carry bridge gives, from a rational value with denominator
-\(q=2^{\alpha}3^{\beta}5^{\gamma}B\) and \(\gcd(B,30)=1\), an integral reduced
-carry from the explicit onset \(a_0=\alpha+1+2\beta+3\gamma\), satisfying the
-actual recurrence with \(0<d_a\le 90B(a+1)^2\)
-(\texttt{ErdosProblems/Erdos269/RationalityCarryBridge.lean:324}).  The
-window-escape equivalence proves that the cofinal local-window escape condition
-of~\eqref{eq:actual-escape} is equivalent to irrationality of the series, for
-every short bound dominated by \(c(B)(n+1)^2\)
-(\texttt{ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:398}).  That
-condition is therefore a restatement of the problem.  The equivalence proves
-neither of its two sides.  Both modules enter the linked source of this
-manuscript at the next formal-source checkpoint.
 
 A lattice certificate at window length \(128\) and launch \(a_1=10005\)
 excludes every rational value whose reduced denominator is \(MB\) with \(M\) a
@@ -124,17 +125,19 @@ quantifiers of~\eqref{eq:actual-escape} remain unproved.
 \end{abstract}
 
 \begin{paperresult}{Leading results, their evidence, and the limit}
+\textbf{The $\{2,3,5\}$ series.} Rationality gives a positive integral reduced
+carry after cancellation of the smooth denominator factor, and the cofinal
+residue-window escape condition of~\eqref{eq:actual-escape} is equivalent to
+irrationality of the series; the equivalence is kernel-checked in the private
+formal source and in the Palomar cut, at the coordinates given in
+Section~\ref{sec:lead}.  The escape condition is therefore a restatement of the
+problem, and the equivalence proves neither of its two sides.
 \textbf{Three primes.} The running-LCM kernel admits no finite exact
 separation: every order has a nonsingular minor, uniformly in the third
 coordinate.  Both halves are checked by the Lean kernel
 (Section~\ref{sec:lead}).  The exact LCM cell structure, the jump count, the
 height-fibre normal form, the quadratic shell bound and the quadratic bound for
 the actual $\{2,3,5\}$ tail are proved here as well.
-\textbf{Reduction.} Rationality gives a positive integral reduced carry after
-cancellation of the smooth denominator factor, and the cofinal residue-window
-escape condition of~\eqref{eq:actual-escape} is equivalent to irrationality of
-the series; the equivalence is kernel-checked in the private formal source and
-in the Palomar cut, at the coordinates given in Section~\ref{sec:lead}.
 \textbf{Finite exclusion.} A window-$128$ lattice certificate excludes an
 arithmetically described family of rational values with reduced denominator
 $MB$, $M$ a $30$-smooth divisor of $2^{10005}3^{6312}5^{4308}$ and
@@ -472,7 +475,10 @@ of the $\{2,3,5\}$ running-LCM series has reduced denominator $MB$ with $M$ a
 $30$-smooth divisor of $2^{10005}3^{6312}5^{4308}$, $\gcd(B,30)=1$ and
 $1<B\le B_{\max}$, where $B_{\max}$ is the $106$-digit integer
 \[
- B_{\max}=1134599670999687767349520845707093359257353022286558739363600235016103207564063373270305324172145281971729 ,
+\begin{aligned}
+ B_{\max}={}&1134599670999687767349520845707093359257353022286558739363600235\\
+ &016103207564063373270305324172145281971729 ,
+\end{aligned}
 \]
 with $\log_2B_{\max}=348.98$.
 \end{theorem}
@@ -1983,10 +1989,13 @@ outside this finite carry interval, with the window allowed to depend on $B$
 and to begin beyond that onset.
 
 For the repeated $\{2,3,5\}$ series, the actual-tail bridge and bound are
-proved above.  Theorem~\ref{res:actual-escape-endpoint} leaves one sufficient
-arithmetic condition: cofinal escape for the literal digit word, with the
-window allowed to depend on the reduced denominator.  That condition, or a
-direct exclusion of integral tails, remains unproved; Problem~\#269 stays open.
+proved above.  Theorem~\ref{res:actual-escape-endpoint} leaves one arithmetic
+condition: cofinal escape for the literal digit word, with the window allowed
+to depend on the reduced denominator.  By the window-escape equivalence of
+Theorem~\ref{res:lead-escape-equivalence} that condition is equivalent to
+irrationality of the value, so proving it is proving Problem~\#269 for
+$P=\{2,3,5\}$.  That condition, or a direct exclusion
+of integral tails, remains unproved; Problem~\#269 stays open.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \subsection*{Statements and declarations}

@@ -150,6 +150,159 @@ def check_query_environment() -> None:
     )
 
 
+def published_claim_node_obligations(claims: dict) -> set[tuple[str, str]]:
+    """Return the declarations a published claim obliges to own a statement node.
+
+    This mirrors the builder's ``claim_without_node`` census: the obligation is
+    keyed on membership of the published ``claims`` list and on the declaration
+    being theorem-like. It is not keyed on ``readme_headline``.
+    """
+    required: set[tuple[str, str]] = set()
+    for claim in claims.get("claims", []):
+        for declaration in claim.get("declarations", []):
+            if declaration.get("kind") in ("theorem", "lemma"):
+                required.add((declaration["module"], declaration["name"]))
+    return required
+
+
+def headline_review_obligations(claims: dict) -> set[str]:
+    """Return the claim ids that additionally need a digest-reviewed node."""
+    return {
+        str(claim["id"])
+        for claim in claims.get("claims", [])
+        if claim.get("readme_headline")
+    }
+
+
+def check_builder_obligation_coupling() -> None:
+    """Fail if the builder stops keying these two censuses as modelled here."""
+    source = (ROOT / "scripts" / "build_semantic_corpus.py").read_text(
+        encoding="utf-8"
+    )
+    for fragment, message in (
+        (
+            'for claim in claims.get("claims", [])\n        for d in claim.get("declarations", [])',
+            "builder no longer derives the claim-node census from the published claims list",
+        ),
+        (
+            'if row["kind"] in ("theorem", "lemma") and not role.get("statement_node")',
+            "builder no longer restricts the claim-node census to theorem-like declarations",
+        ),
+        (
+            'if not claim.get("readme_headline"):\n            continue',
+            "builder no longer keys the reviewed-node census on readme_headline",
+        ),
+    ):
+        require(fragment in source, message)
+
+
+def check_disposition_does_not_retire_review() -> None:
+    """Clearing readme_headline keeps the node and its receipt obligatory.
+
+    Two separate editorial acts are distinguished. Removing a claim from the
+    README headline set is a presentation decision: the claim stays published,
+    so its theorem-like declarations still owe a statement node, and the receipt
+    already issued for that node stays valid, because the review digest covers
+    the reviewed mathematics and never the headline flag. Removing the claim
+    from the published set is a different act, and only that one retires the
+    obligation.
+    """
+    node, _relation, registry = fixtures()
+    node_registry = {
+        "schema": registry["schema"],
+        "reviews": [
+            review
+            for review in registry["reviews"]
+            if review["subject_kind"] == "statement_node"
+        ],
+    }
+    declaration = {
+        "module": "Sample.lean",
+        "name": "sample",
+        "kind": "theorem",
+    }
+    headline_claims = {
+        "claims": [
+            {
+                "id": "sample_claim",
+                "readme_headline": True,
+                "declarations": [dict(declaration)],
+            }
+        ]
+    }
+    demoted_claims = {
+        "claims": [
+            {
+                "id": "sample_claim",
+                "readme_headline": False,
+                "headline_disposition": (
+                    "Removed from the headline set as a presentation decision; "
+                    "the claim stays published and keeps its reviewed node."
+                ),
+                "declarations": [dict(declaration)],
+            }
+        ]
+    }
+    withdrawn_claims = {
+        "claims": [],
+        "non_claims": [
+            {
+                "id": "sample_claim",
+                "headline_disposition": (
+                    "Withdrawn from the published set; the semantic obligation "
+                    "is retired with the claim."
+                ),
+            }
+        ],
+    }
+
+    require(
+        headline_review_obligations(headline_claims) == {"sample_claim"},
+        "a headline claim must owe a digest-reviewed node",
+    )
+    require(
+        headline_review_obligations(demoted_claims) == set(),
+        "clearing readme_headline must drop only the reviewed-node census entry",
+    )
+
+    obligation = {("Sample.lean", "sample")}
+    require(
+        published_claim_node_obligations(headline_claims) == obligation,
+        "a headline claim must oblige its theorem declaration to own a node",
+    )
+    require(
+        published_claim_node_obligations(demoted_claims) == obligation,
+        "clearing readme_headline must not retire the statement-node obligation",
+    )
+    require(
+        published_claim_node_obligations(withdrawn_claims) == set(),
+        "withdrawing a claim from the published set must retire its node obligation",
+    )
+
+    # The receipt itself is unaffected by either editorial act, because the
+    # review digest covers the node's mathematics and not the claim ledger.
+    for label, _claims in (
+        ("headline", headline_claims),
+        ("demoted", demoted_claims),
+        ("withdrawn", withdrawn_claims),
+    ):
+        nodes = {node["id"]: deepcopy(node)}
+        errors = apply_review_registry(
+            deepcopy(node_registry),
+            nodes,
+            [],
+            evidence_fingerprint=FINGERPRINT,
+            reviewed_revision=REVISION,
+        )
+        require(not errors, f"{label} claim state invalidated a valid receipt: {errors}")
+        require(
+            bool(nodes[node["id"]].get("semantic_review")),
+            f"{label} claim state detached an attached receipt",
+        )
+
+    check_builder_obligation_coupling()
+
+
 def main() -> int:
     node, relation, registry = fixtures()
     nodes = {node["id"]: deepcopy(node)}
@@ -193,6 +346,7 @@ def main() -> int:
         )
         assert errors, f"{mutation} escaped semantic review validation"
 
+    check_disposition_does_not_retire_review()
     check_query_environment()
     query = run_query(
         "semantic-reviews",
@@ -211,7 +365,9 @@ def main() -> int:
 
     print(
         "semantic review test: baseline attached and queryable; all "
-        f"{len(mutations)} stale or malformed receipt mutations rejected"
+        f"{len(mutations)} stale or malformed receipt mutations rejected; "
+        "headline demotion keeps the node and receipt obligation, withdrawal "
+        "from the published set retires it"
     )
     return 0
 
