@@ -105,7 +105,7 @@ Then, with inverses in $\mathbb F_p$,
  \quad\Longleftrightarrow\quad
  \sum_{n\in J}u_n^{-1}\ne0\quad\hbox{in }\mathbb F_p.
 \end{equation}
-  The statement is checked in Lean: \lean{maximal_prime_power_survival}{ErdosProblems/Erdos68/PaperCompletePrimePole.lean:118}.
+  The statement is checked in Lean; see the \lloc{Erdos68/PaperCompletePrimePole.lean}{118}.
 \end{theorem}
 
 \begin{proof}
@@ -206,7 +206,7 @@ $\sum_{i=1}^{k-1}(k-i-1)a_i$, which is nonnegative.
 \begin{lemma}[factorial-gap gcd]\label{res:gap-gcd}
 For $2\le i<j$, the integer $g=\gcd(i!-1,j!-1)$ divides $j!/i!-1$, and
 $g\le j!/i!-1<j^{\,j-i}$.
-  The statement is checked in Lean: \lean{factorial_gap_gcd}{ErdosProblems/Erdos68/PaperCompleteGcdSegment.lean:28}.
+  The statement is checked in Lean; see the \lloc{Erdos68/PaperCompleteGcdSegment.lean}{28}.
 \end{lemma}
 
 \begin{proof}
@@ -223,7 +223,7 @@ For $2\le k\le N-1$,
  \sum_{n=N-k+1}^{N}\log(n!-1)
  \ \le\ \log \Lc_N+\binom{k+1}{3}\log N.
 \end{equation}
-  The statement is checked in Lean: \lean{segment_inequality}{ErdosProblems/Erdos68/PaperCompleteGcdSegment.lean:73}.
+  The statement is checked in Lean; see the \lloc{Erdos68/PaperCompleteGcdSegment.lean}{73}.
 \end{lemma}
 
 \begin{proof}
@@ -242,7 +242,7 @@ Taking logarithms of the resulting divisibility gives \eqref{eq:segment}.
  \liminf_{N\to\infty}\frac{\log \Lc_N}{N^{3/2}\log N}
  \ \ge\ \frac{2\sqrt2}{3}.
 \]
-  The statement is checked in Lean: \lean{common_denominator_growth_liminf}{ErdosProblems/Erdos68/PaperCompleteLiminf.lean:42}.
+  The statement is checked in Lean; see the \lloc{Erdos68/PaperCompleteLiminf.lean}{42}.
 \end{theorem}
 
 \begin{proof}
@@ -324,7 +324,7 @@ For $m\ge3$,
  b_m=1
  \iff m\mid Z_m
  \iff 1+\varepsilon_m<m\Delta_m\le2+\varepsilon_m .
-  The statement is checked in Lean: \lean{strict_successor_characterisation}{ErdosProblems/Erdos68/PaperCompleteExisting.lean:79}.
+  The statement is checked in Lean; see the \lloc{Erdos68/PaperCompleteExisting.lean}{79}.
 \end{equation}
 Moreover
 \begin{align}
@@ -455,7 +455,7 @@ For $m\ge3$ the finite condition
 \end{equation}
 implies the escape inequality in \eqref{eq:lower-escape}.  Cofinally many
 instances of \eqref{eq:finite-escape} therefore imply $\Ser\notin\Q$.
-  The statement is checked in Lean: \lean{lower_interval_criterion}{ErdosProblems/Erdos68/PaperCompleteExisting.lean:104}.
+  The statement is checked in Lean; see the \lloc{Erdos68/PaperCompleteExisting.lean}{104}.
 \end{proposition}
 
 \begin{proof}
@@ -509,7 +509,7 @@ for all sufficiently large $m$, and irrational exactly when that residue is
 missed cofinally.  The member $t=-1$ is $\Ser$, and the member $t=0$ is
 $e-2$, whose orbit is constantly $0$ and therefore misses the residue class
 at every $m\ge3$, so the boundary returns the irrationality of $e$.
-  The statement is checked in Lean: \lean{uniform_family_boundary}{ErdosProblems/Erdos68/PaperCompleteExisting.lean:125}.
+  The statement is checked in Lean; see the \lloc{Erdos68/PaperCompleteExisting.lean}{125}.
 \end{theorem}
 
 The $t=0$ specialisation recovers a classical fact and is included because it
@@ -599,7 +599,7 @@ $\min(\rho_p,R_p/q)$, and its scale inequality splits exactly:
  (2p+1)\Lc^{\mathrm{blk}}_p<K_p\rho_p,\\
  (2p+1)C_pq<K_p .
  \end{cases}
-  The statement is checked in Lean: \lean{moving_factor_min_split}{ErdosProblems/Erdos68/PaperCompleteSupplementary.lean:59}.
+  The statement is checked in Lean; see the \lloc{Erdos68/PaperCompleteSupplementary.lean}{59}.
 \end{equation}
 Testing both entries of the minimum and using
 \eqref{eq:core-normalisation} gives the equivalence, so the reduction has no
@@ -642,7 +642,7 @@ $kd\le i<(k+1)d$.  Then $M(c)=(d!)^k\chn dc$.  In particular, cancellation
 in the first band $d\le i<2d$ forces $M(c)=0$; and if every supported index
 is at least $d$ while $M(c)\ne0$ and $\chn dc=0$, then some supported index
 is at least $2d$.
-  The statement is checked in Lean: \lean{supported_quotient_band}{ErdosProblems/Erdos68/PaperCompleteSupportedBands.lean:25}.
+  The statement is checked in Lean; see the \lloc{Erdos68/PaperCompleteSupportedBands.lean}{25}.
 \end{theorem}
 
 \begin{proof}
@@ -674,7 +674,7 @@ Let $t,M,R\in\N$ satisfy
 Then $3t^3<2(R+1)$.  Consequently no family satisfying these hypotheses for
 all sufficiently large $t$ has $(R(t)+1)/t^3\le3/2$ eventually, and none has
 $R(t)=o(t^3)$.
-  The statement is checked in Lean: \lean{square_subsequence_radius}{ErdosProblems/Erdos68/PaperCompleteExisting.lean:236}.
+  The statement is checked in Lean; see the \lloc{Erdos68/PaperCompleteExisting.lean}{236}.
 \end{theorem}
 
 \begin{proof}
@@ -702,7 +702,7 @@ But $\log t\ge32\log2$ and $\tfrac23<\log2<1$ give
 $\tfrac13\log t-\tfrac{17}6\log2\ge\tfrac{47}6\log2>5$, while
 $4+2\log2/t^2<5$.  This contradiction proves the finite inequality, and the
 two sequence conclusions follow.
-  The statement is checked in Lean: \lean{square_subsequence_radius}{ErdosProblems/Erdos68/PaperCompleteExisting.lean:236}.
+  The statement is checked in Lean; see the \lloc{Erdos68/PaperCompleteExisting.lean}{236}.
 \end{proof}
 
 The hypotheses concern one specified cancellation architecture.  An
@@ -720,7 +720,7 @@ $M(t)<(R(t)+1)!-1$ for all sufficiently large $t$.  Then
 \[
  \liminf_{t\to\infty}\frac{R(t)+1}{t^3}\ \ge\ \frac{16}{9}.
 \]
-  The statement is checked in Lean: \lean{asymptotic_radius_constant_liminf}{ErdosProblems/Erdos68/PaperCompleteLiminf.lean:54}.
+  The statement is checked in Lean; see the \lloc{Erdos68/PaperCompleteLiminf.lean}{54}.
 \end{corollary}
 
 \begin{proof}
@@ -918,7 +918,7 @@ For an odd prime $p$, the carry range and $Z_{2p}=2pZ_{2p-1}+1-b_{2p}$ give
  \begin{cases}
  b_{2p}=1\ \hbox{and}\ p\mid Z_{2p-1},\ \hbox{or}\\
  b_{2p}=1+p\ \hbox{and}\ p\mid2Z_{2p-1}-1 .
-  The statement is checked in Lean: \lean{fixed_owner_absorption}{ErdosProblems/Erdos68/PaperCompleteSupplementary.lean:127}.
+  The statement is checked in Lean; see the \lloc{Erdos68/PaperCompleteSupplementary.lean}{127}.
  \end{cases}
 \end{equation}
 Reduction modulo $p$ forces $b_{2p}\equiv1\pmod p$, and the two displayed
