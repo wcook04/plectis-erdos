@@ -52,7 +52,7 @@ theorem cutCol_sub_at_left (c : ℚ) {m k l : ℕ} (hkl : k < l) (hlm : l ≤ m)
         cutCol c k ⟨k, lt_of_lt_of_le hkl hlm⟩ =
       1 - c := by
   have hk : k ≤ k ∧ k < l := ⟨le_rfl, hkl⟩
-  simpa [cutCol_sub (c := c) (hkl := hkl.le), hk]
+  simp [cutCol_sub (c := c) (hkl := hkl.le), hk]
 
 private lemma not_mem_other_cut_interval
     {t : ℕ} {ks : Fin t.succ → ℕ} (hmono : StrictMono ks)
@@ -64,12 +64,14 @@ private lemma not_mem_other_cut_interval
     exact hij (Fin.ext h)
   rcases Nat.lt_or_gt_of_ne hik with hltij | hgtij
   · have : (i : ℕ) + 1 ≤ (j : ℕ) := Nat.succ_le_of_lt hltij
-    have hleFin : i.succ ≤ j.castSucc := by
-      exact Fin.mk_le_mk.mpr (by simp [Fin.val_succ, Fin.coe_castSucc, this])
+    have hleFin : i.succ ≤ j.castSucc :=
+      Fin.mk_le_mk.mpr (by
+        change (i.succ : ℕ) ≤ (j.castSucc : ℕ)
+        simpa using this)
     have : ks i.succ ≤ ks j.castSucc := hmono.monotone hleFin
     exact (not_le_of_gt hlt) this
-  · have hltFin : j.castSucc < i.castSucc := by
-      exact Fin.mk_lt_mk.mpr (by simp [Fin.coe_castSucc, hgtij])
+  · have hltFin : j.castSucc < i.castSucc :=
+      Fin.mk_lt_mk.mpr (gt_iff_lt.mp hgtij)
     have : ks j.castSucc < ks i.castSucc := hmono hltFin
     exact (not_le_of_gt this) hle
 
@@ -79,43 +81,55 @@ theorem consecutive_cut_differences_linearIndependent
     {m t : ℕ} (c : ℚ) (hc : c ≠ 1)
     (ks : Fin t.succ → ℕ) (hmono : StrictMono ks) (hbound : ∀ i, ks i ≤ m) :
     LinearIndependent ℚ fun j : Fin t =>
-      cutCol (m := m) c (ks j.succ) - cutCol c (ks j.castSucc) := by
+      fun i : Fin m =>
+        cutCol (m := m) c (ks j.succ) i - cutCol c (ks j.castSucc) i := by
+  classical
+  have hstep : ∀ i : Fin t, i.castSucc < i.succ := by
+    intro i
+    exact Fin.mk_lt_mk.mpr (by
+      change (i.castSucc : ℕ) < (i.succ : ℕ)
+      simp)
   rw [Fintype.linearIndependent_iff]
-  intro g hg
-  funext j
+  intro g hg j
   have hlt : ks j.castSucc < m :=
-    lt_of_lt_of_le (hmono (Fin.castSucc_lt_succ j)) (hbound j.succ)
+    lt_of_lt_of_le (hmono (hstep j)) (hbound j.succ)
   let x : Fin m := ⟨ks j.castSucc, hlt⟩
   have hxval : (x : ℕ) = ks j.castSucc := rfl
   have hterm : ∀ i : Fin t,
-      (g i • (cutCol (m := m) c (ks i.succ) - cutCol c (ks i.castSucc))) x =
+      g i *
+          (cutCol (m := m) c (ks i.succ) x - cutCol c (ks i.castSucc) x) =
         if i = j then g j * (1 - c) else 0 := by
     intro i
     have hdiff :=
       cutCol_sub (c := c) (m := m) (k := ks i.castSucc) (l := ks i.succ)
-        (hkl := (hmono (Fin.castSucc_lt_succ i)).le) x
+        (hkl := (hmono (hstep i)).le) x
     by_cases hij : i = j
     · subst hij
-      have hx : ks i.castSucc ≤ (x : ℕ) ∧ (x : ℕ) < ks i.succ := by
-        refine ⟨le_rfl, ?_⟩
-        simpa [hxval] using hmono (Fin.castSucc_lt_succ i)
-      simp [Pi.smul_apply, smul_eq_mul, hdiff, hx]
+      have hx : ks i.castSucc ≤ (x : ℕ) ∧ (x : ℕ) < ks i.succ :=
+        ⟨le_rfl, by simpa [hxval] using hmono (hstep i)⟩
+      simp [hdiff, hx]
     · have hnot :
           ¬ (ks i.castSucc ≤ (x : ℕ) ∧ (x : ℕ) < ks i.succ) := by
         simpa [hxval] using not_mem_other_cut_interval hmono hij
-      simp [Pi.smul_apply, smul_eq_mul, hdiff, hnot]
+      simp [hdiff, hnot, hij]
   have hsum :
       (∑ i : Fin t,
-          g i • (cutCol (m := m) c (ks i.succ) - cutCol c (ks i.castSucc))) x =
+          g i *
+            (cutCol (m := m) c (ks i.succ) x -
+              cutCol c (ks i.castSucc) x)) =
         g j * (1 - c) := by
     simp_rw [hterm]
     simp [Finset.sum_ite_eq]
   have hx0 :
       (∑ i : Fin t,
-          g i • (cutCol (m := m) c (ks i.succ) - cutCol c (ks i.castSucc))) x = 0 := by
-    simpa using congrFun hg x
-  have : g j * (1 - c) = 0 := by
+          g i *
+            (cutCol (m := m) c (ks i.succ) x -
+              cutCol c (ks i.castSucc) x)) = 0 := by
+    have hfun := congrFun hg x
+    simpa [Pi.smul_apply, smul_eq_mul] using hfun
+  have hprod : g j * (1 - c) = 0 := by
     rw [← hsum, hx0]
-  nlinarith
+  have hsub : (1 - c : ℚ) ≠ 0 := sub_ne_zero.mpr (Ne.symm hc)
+  exact (mul_eq_zero.mp hprod).resolve_right hsub
 
 end ErdosProblems.Erdos269

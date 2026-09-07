@@ -83,6 +83,9 @@ import ErdosProblems.Erdos68.TailIdealCertificate
 import ErdosProblems.Erdos269.FloorProductLatticeJump
 import ErdosProblems.Erdos257.SignedFinitePeriodNoncollapse
 import ErdosProblems.Erdos257.DyadicShellSynchronisation
+import ErdosProblems.Erdos269.FiniteCutRank
+import ErdosProblems.Erdos269.R5PerturbationAndShadow
+import ErdosProblems.Erdos257.DyadicShellSynchronisation
 
 
 /-!
