@@ -1,0 +1,269 @@
+% Companion long-record migration for Erdős #269 round 6.
+% Destination label: long:finite-geometry
+% Not frozen R. Not a blind \input. Labels may collide with the short note;
+% assign destination labels as specified in R6LongRecordMigrations.md.
+% Extracted from Type B edits/relocation_extracts.tex.
+
+\section{Constancy on logarithmic cells and the jump points}\label{sec:cells}
+
+By Proposition~\ref{res:lcm} the running value depends on $x$ only through the
+three integer logarithms.  It is therefore constant wherever none of them
+changes and moves only where one of them does, and the next definition names
+the sets on which they are all constant, so that the next two theorems can say
+where the value stands still and by what factor it moves.
+
+Say that $x$ and $y$ lie in the same \emph{logarithmic cell} when
+$\lfloor\log_b x\rfloor=\lfloor\log_b y\rfloor$ for each of $b=p,q,r$: the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{163}{SameThreePrimeLogCell}{cell
+relation}.
+
+\begin{theorem}[constancy on cells]\label{res:cell}
+If $x,y\ge1$ lie in the same logarithmic cell, then
+$\Lprefix(x)=\Lprefix(y)$.  The same holds for the kernel at two smooth points
+whose values lie in one cell.
+\end{theorem}
+
+\begin{proof}
+Immediate from Proposition~\ref{res:lcm}, since $\hgt$ depends on $x$ only
+through the three integer logarithms.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{179}{smoothPrefixLcm_eq_of_sameLogCell}{cell
+constancy of the running value}, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{169}{threePrimeHeight_eq_of_sameLogCell}{cell
+constancy of the height}, and the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{191}{threePrimeKernelQ_eq_of_sameLogCell}{cell
+constancy of the kernel}.  The running value therefore changes only when one of
+the three logarithms changes, and the next theorem says by exactly how much.
+
+\begin{theorem}[single-coordinate jump ratios]\label{res:jump}
+Let $x,y\ge1$.  If $\lfloor\log_p y\rfloor=\lfloor\log_p x\rfloor+1$ while the
+other two logarithms agree, then $\Lprefix(y)=p\,\Lprefix(x)$; and similarly
+with $q$ or $r$ in place of $p$.
+\end{theorem}
+
+\begin{proof}
+By Proposition~\ref{res:lcm} both sides are heights, and one factor of the height
+gains one in its exponent while the others are unchanged.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{326}{smoothPrefixLcm_firstLogStep}{first},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{339}{smoothPrefixLcm_secondLogStep}{second},
+and
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{352}{smoothPrefixLcm_thirdLogStep}{third}
+coordinate steps, over the corresponding statements for the height alone, which
+need no primality: the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{294}{threePrimeHeight_firstLogStep}{first
+height step}, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{305}{threePrimeHeight_secondLogStep}{second},
+and the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{316}{threePrimeHeight_thirdLogStep}{third}.
+
+The jump points are therefore the pure prime powers, and they do not collide
+across channels.
+
+\begin{theorem}[jump count]\label{res:count}
+Let $n\ge0$.  The set of the first $n$ positive powers of $p$, of $q$, and of
+$r$ has exactly $3n$ elements, and adjoining the common origin $1$ gives
+exactly $3n+1$.
+\end{theorem}
+
+\begin{proof}
+The count is routine.  Within one channel the powers $b,b^{2},\ldots,b^{n}$ are distinct because
+$b\ge2$.  Across two channels a common value would be a positive power of two
+distinct primes, which unique factorisation forbids.  Finally $1$ is not a
+positive power of any prime.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{249}{threePrimePositiveJumpSet_card}{positive
+jump count} and the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{278}{threePrimeJumpSetWithOrigin_card}{jump
+count with the origin}, over the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{208}{positivePrimePowers_card}{channel
+cardinality}, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{229}{positivePrimePowers_disjoint}{channel
+disjointness}, and the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{219}{one_not_mem_positivePrimePowers}{exclusion
+of the origin}; the channels themselves are the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{204}{positivePrimePowers}{positive
+power sets}.  The exponent $0$ is omitted from each channel because it is the
+shared initial value, which is why the origin is counted once rather than three
+times.
+
+Two channels never meet, so at each positive pure power exactly one of the three
+logarithms advances, and by Theorem~\ref{res:jump} the running value is
+multiplied there by the prime of that channel.  Reading those multipliers in
+increasing order of the pure powers gives the \emph{jump word} of $\Lprefix$:
+one letter from $\{p,q,r\}$ for each positive pure power, recording which prime
+the value is multiplied by at that point.  At $\{2,3,5\}$ the pure powers in
+increasing order are $2,3,4,5,8,9,16,25,27,32,\ldots$, so the jump word begins
+\[
+ 2,\;3,2,\;5,2,\;3,2,\;5,3,2,\;\ldots
+\]
+where the grouping is the one used in Section~\ref{sec:escape}: each group ends
+at a power of two.
+
+
+
+\section{The height-fibre normal form}\label{sec:fibre}
+
+Grouping a lattice sum by the value of the running least common multiple turns
+it into a sum over heights whose coefficients are multiplicities.  We prove
+this exactly, on a finite rectangular box.
+
+Write $\mathcal B(h_p,h_q,h_r)$ for the box of exponent triples with $i\le h_p$,
+$j\le h_q$, $k\le h_r$, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{368}{smoothExponentBox}{exponent
+box}, and, for a height $H$, write $F(H)$ for the set of points of the box whose
+running height $\hgt(p^{i}q^{j}r^{k})$ equals $H$, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{377}{smoothHeightFiber}{height
+fibre}.  Distinct lattice points can carry the same height, and the coefficients
+of the normal form are exactly the sizes of these fibres.
+
+\begin{theorem}[finite normal form]\label{res:fibre}
+For every box $\mathcal B=\mathcal B(h_p,h_q,h_r)$,
+\[
+ \sum_{(i,j,k)\in\mathcal B}\Kernel(i,j,k)
+ =\sum_{H}\frac{\#F(H)}{H},
+\]
+the outer sum ranging over the heights actually attained on $\mathcal B$.
+\end{theorem}
+
+\begin{proof}
+The identity is a regrouping.  Partition $\mathcal B$ into the fibres of the
+height map.  On $F(H)$ every summand is
+$1/H$ by definition of the kernel, so the fibre contributes $\#F(H)/H$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{406}{finiteSmoothKernelSum_groupedByHeight}{height-fibre
+normal form}, over the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{384}{smoothHeightFiber_kernel_sum}{fibre
+sum}, with the height of a lattice point given by the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{373}{smoothPointHeight}{point
+height}.
+
+For a worked instance take $(p,q,r)=(2,3,5)$ and the box $\mathcal B(1,1,1)$,
+whose eight points carry the smooth values $1,2,3,5,6,10,15,30$ and the heights
+\[
+\begin{array}{c|cccccccc}
+p^{i}q^{j}r^{k}&1&2&3&5&6&10&15&30\\ \hline
+\hgt&1&2&6&60&60&360&360&10800
+\end{array}
+\]
+Six heights occur, two of them twice: the points $5$ and $6$ share the height
+$60$, and $10$ and $15$ share the height $360$.  Theorem~\ref{res:fibre} here
+reads
+\[
+ 1+\tfrac12+\tfrac16+\tfrac1{60}+\tfrac1{60}+\tfrac1{360}+\tfrac1{360}
+ +\tfrac1{10800}
+ =1+\tfrac12+\tfrac16+\tfrac2{60}+\tfrac2{360}+\tfrac1{10800}
+ =\tfrac{18421}{10800}.
+\]
+The two coefficients $2$ carry the whole content of the regrouping on this box;
+where the heights are pairwise distinct the identity is a relabelling and
+nothing more.
+
+Together with Theorem~\ref{res:cell} this is the finite core of the ordered
+prime-power jump expansion: the value is constant on cells, the cells are
+indexed by heights, and the coefficient of a height is the number of lattice
+points it collects.  The infinite shell identity is proved in Section~\ref{sec:actual-orbit}.  Theorem~\ref{res:fibre} is an identity between two finite sums,
+and it is stated over the full box rather than the smooth prefix, so it is not
+a statement about $\Lprefix$ at a cutoff.
+
+The same module records a one-step map $\tau(b,d,s)=b(s-d)$, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{487}{tailStateStep}{variable-base
+tail step}, with the rewriting
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{490}{tailStateStep_eq}{that names its
+expanded form}.  No orbit of this map is analysed.
+
+
+
+\section{A quadratic bound for smooth exponent shells}\label{sec:shell}
+
+A tail estimate needs to know how many lattice points can share a short
+multiplicative interval.  Fix a box $\mathcal B(h_p,h_q,h_r)$ and an interval
+$[\lo,\hi)$, and write $\mathcal S$ for the set of exponent triples of that box
+whose smooth value lies in that interval, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{500}{smoothExponentShell}{smooth
+exponent shell}.  Every bound below assumes the interval short in the
+multiplicative sense, meaning that $\hi$ is at most a stated multiple of $\lo$.
+
+Informally, the next lemma says that an interval whose right endpoint is at
+most $b$ times its left endpoint contains at most one of the numbers $b^{a}w$.
+
+\begin{lemma}[uniqueness in a short interval]\label{res:short}
+Let $b\ge1$ and suppose $\hi\le b\,\lo$.  If $b^{a}w$ and $b^{a'}w$ both lie in
+$[\lo,\hi)$, then $a=a'$.
+\end{lemma}
+
+\begin{proof}
+If $a<a'$ then $\hi\le b\,\lo\le b\cdot b^{a}w=b^{a+1}w\le b^{a'}w<\hi$, which
+is impossible; the case $a>a'$ is symmetric.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{509}{exponent_unique_in_short_interval}{short-interval
+uniqueness}.  The hypothesis is that the interval has multiplicative width at
+most $b$.
+
+\begin{proposition}\label{res:drop}
+Let $\mathcal S$ be the shell of the box $\mathcal B(h_p,h_q,h_r)$ in
+$[\lo,\hi)$.  If $\hi\le r\,\lo$ then $\#\mathcal S\le(h_p+1)(h_q+1)$; if
+$\hi\le p\,\lo$ then $\#\mathcal S\le(h_q+1)(h_r+1)$.
+\end{proposition}
+
+\begin{proof}
+Suppose $\hi\le r\,\lo$.  If two triples of $\mathcal S$ agree in their first
+two coordinates, Lemma~\ref{res:short} applied with $b=r$ and $w=p^{i}q^{j}$
+forces their third coordinates to agree as well.  So the projection forgetting
+the third coordinate is injective on $\mathcal S$, and its image lies in a
+rectangle with $(h_p+1)(h_q+1)$ points.  The case $\hi\le p\,\lo$ is the same
+with the first coordinate projected away.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{585}{smoothExponentShell_card_le_dropThird}{third-coordinate
+projection} and the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{543}{smoothExponentShell_card_le_dropFirst}{first-coordinate
+projection}.
+
+\begin{theorem}[quadratic multiplicity bound]\label{res:shell}
+Let $\mathcal S$ be the shell of the box $\mathcal B(h_p,h_q,h_r)$ in
+$[\lo,\hi)$.  Suppose $\hi\le r\,\lo$ and $h_p\le h_q\le h_r$ with
+$h_p+h_q+h_r=j$.  Then
+\[
+ 9\,\#\mathcal S\le(j+3)^{2}.
+\]
+\end{theorem}
+
+\begin{proof}
+By Proposition~\ref{res:drop}, $\#\mathcal S\le(h_p+1)(h_q+1)$; under the
+sorting hypothesis the two surviving coordinates are the two smallest.  It
+therefore
+suffices to prove that $a\le b\le c$ with $a+b+c=j$ gives
+$9(a+1)(b+1)\le(j+3)^{2}$.  From $a\le b\le c$ we get $a+2b\le j$, so it is
+enough that $9(a+1)(b+1)\le(a+2b+3)^{2}$; writing $b=a+d$ with $d\ge0$, the
+difference of the two sides is $d(3a+4d+3)\ge0$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic}{quadratic
+shell bound}, over the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{629}{sorted_pair_quadratic}{sorted
+quadratic estimate}.  The constant $9$ is the square of the number of
+generating primes and appears because the bound is the arithmetic--geometric
+comparison for a sum of three sorted coordinates; sorting is a hypothesis, not
+a normalisation, since the shell itself is not symmetric in the three bases.
+The last inequality of the proof is an equality when $h_p=h_q=h_r$, both sides
+then being $9(h_p+1)^{2}$, so no constant larger than $9$ survives that step.
+
+The bound is uniform in $\lo$ and $\hi$ subject to the width condition, and it
+is stated for the actual filtered shell rather than for a lattice model of it.
+It is an input to a tail estimate and is not itself one: no series is bounded
+here.  The estimate is elementary and uses no analytic input on the
+distribution of smooth numbers, only the projection of
+Proposition~\ref{res:drop}.

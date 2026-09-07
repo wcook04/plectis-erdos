@@ -1,0 +1,24 @@
+{
+  "rational_base_measure": {
+    "tail_cutoff": 512,
+    "exact_assertion": "300.4269 < exponent bound < 300.4270 < 301",
+    "display_only_theta_interval": [
+      0.4056830213826789,
+      0.4056830213854395
+    ],
+    "display_only_exponent_interval": [
+      300.42691448887774,
+      300.42691490671444
+    ],
+    "method": "all assertions evaluated with fractions.Fraction; floats only for display"
+  },
+  "finite_schur": {
+    "exact_cases": 12,
+    "support": "finite; exact rational Cauchy-Binet/Schur equality"
+  },
+  "lacunary": {
+    "exact_cases": 5,
+    "identity": "P_(n+1) Q_n - P_n Q_(n+1) = Q_n 2^(4^(n+1))"
+  },
+  "elapsed_seconds": 0.206650972366333
+}

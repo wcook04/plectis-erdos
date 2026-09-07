@@ -1,0 +1,5 @@
+PASS: 23 disjoint derivative-root discs, one critical point in each.
+PASS: every critical value of G lies in |v+1|<1/12.
+Hence mu>11/12>13/25; every pair satisfies |v_i/v_j-1|<2/11.
+Hence no selected critical value passes the radius-4/3 test at any centre in [0,1].
+PASS: mean |G(c)|^(8/23) > 46001266667/46000000000 >40001/40000>1.
